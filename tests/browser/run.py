@@ -55,6 +55,7 @@ def login(page, email, pw='motdepasse1'):
     page.wait_for_timeout(700)
 
 def logout(page):
+    page.click('[data-act=menu]'); page.wait_for_timeout(150)
     page.click('[data-act=logout]'); page.wait_for_timeout(400)
 
 with sync_playwright() as p:
@@ -74,6 +75,19 @@ with sync_playwright() as p:
     check('filtre domaine : 5 métiers', page.locator('.card.job').count() == 5)
     page.click('[data-dom=all]')
     page.screenshot(path=f'{SHOTS}/01-catalogue.png', full_page=False)
+    page.click('[data-act=menu]'); page.wait_for_timeout(150)
+    check('menu : s\'ouvre avec le bouton à trois traits', page.locator('#menu').is_visible())
+    page.screenshot(path=f'{SHOTS}/01b-menu.png')
+    page.click('h1'); page.wait_for_timeout(150)
+    check('menu : se ferme en cliquant ailleurs', not page.locator('#menu').is_visible())
+    goto(page, '#/verifier')
+    page.click('[data-act=search-toggle]'); page.wait_for_timeout(150)
+    check('loupe : champ de recherche affiché et actif', page.evaluate("document.activeElement.id") == 'hsearch')
+    page.keyboard.type('excel'); page.wait_for_timeout(400)
+    n2 = page.locator('.card.job').count()
+    check(f'recherche depuis le haut : retour au catalogue filtré ({n2} métiers)', '#/' in page.url and 0 < n2 < 50)
+    check('recherche depuis le haut : le champ garde le focus', page.evaluate("document.activeElement.id") == 'hsearch')
+    page.keyboard.press('Escape'); page.fill('#search', ''); page.wait_for_timeout(150)
 
     # --- Fiche formation (visiteur)
     goto(page, '#/formation/design-0-f')

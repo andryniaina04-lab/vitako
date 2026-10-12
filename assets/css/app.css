@@ -1,4 +1,5 @@
 /* Vitako : styles du site (repris du prototype) */
+[hidden]{display:none!important}
 /* Layout: sticky top bar, single centred column (max 1100px), catalogue grid that collapses to 1 column on phones */
 :root{
   --bg:#F3F6F1;--surface:#FFFFFF;--ink:#13241B;--muted:#56665C;--line:#D9E2D7;
@@ -269,3 +270,26 @@ a.back{display:inline-block}
   .dip-foot{grid-template-columns:1fr;gap:16px}
   .dip-seal{order:-1;margin:0 auto}
 }
+
+/* ---- Barre du haut : logo à gauche ; recherche, thème et menu à droite ---- */
+.top .wrap.topbar{position:relative;flex-wrap:nowrap;justify-content:space-between}
+.tb-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+.tb-pill{margin-right:4px}
+.iconbtn{position:relative;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;flex:none}
+.iconbtn:hover,.iconbtn.on{border-color:var(--accent);background:var(--accent-soft)}
+.dot-badge{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--gold);color:#fff;font-size:.68rem;font-weight:700;display:grid;place-items:center}
+.tb-search{position:absolute;left:16px;right:16px;top:calc(100% + 1px);display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--accent);border-radius:12px;padding:0 12px;box-shadow:0 10px 30px rgba(0,0,0,.12);z-index:6}
+.tb-search-ic{color:var(--muted);display:grid}
+.tb-search input{flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font-size:1rem;outline:none}
+.menu{position:absolute;right:16px;top:calc(100% + 8px);width:min(320px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);padding:8px;z-index:7;display:flex;flex-direction:column;gap:4px}
+.menu-who{display:flex;flex-direction:column;gap:4px;padding:10px 12px 12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.menu-who small{color:var(--muted);overflow-wrap:anywhere}
+.menu-who .pill{align-self:flex-start;margin-top:4px}
+.menu-list{display:flex;flex-direction:column}
+.menu-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600;background:none;border:0;cursor:pointer;text-align:left;width:100%;font-size:1rem}
+.menu-item:hover,.menu-item.on{background:var(--accent-soft)}
+.menu-item.on{color:var(--accent)}
+.menu-item.danger{color:var(--danger);border-top:1px solid var(--line);border-radius:0 0 10px 10px;margin-top:4px}
+.menu-cta{display:flex;flex-direction:column;gap:8px;padding:10px 4px 4px;border-top:1px solid var(--line);margin-top:4px}
+@media (max-width:480px){.tb-pill{display:none}}

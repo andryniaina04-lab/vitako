@@ -26,6 +26,7 @@ const S = {
   filter: { q: '', dom: 'all' },
   payOp: CFG.operators[0].id,
   booting: true,
+  ui: { menu: false, search: false, searchFocus: false },
 };
 
 const uid = () => S.session?.user?.id;
@@ -81,6 +82,11 @@ const I = {
   sun: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   moon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
 };
+I.search = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>';
+I.burger = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+I.close = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+I.sun = I.sun.replace('width="18" height="18"', 'width="20" height="20"');
+I.moon = I.moon.replace('width="18" height="18"', 'width="20" height="20"');
 const smallCheck = I.check.replace('<svg', '<svg width="14" height="14"');
 
 // ---------------------------------------------------------------------------
@@ -148,22 +154,41 @@ function gate(next) {
 function topbar() {
   const r = route();
   const on = (p) => (r.path === p ? ' on' : '');
-  let right;
-  if (S.session && isAdmin()) {
-    right = `<a class="lnk${on('/admin')}" href="#/admin">Administration${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
-      <a class="lnk${on('/mon-espace')}" href="#/mon-espace">Mon espace</a>
-      <button class="lnk" data-act="logout">Déconnexion</button>`;
-  } else if (S.session) {
-    right = `<a class="lnk${on('/mon-espace')}" href="#/mon-espace">Mon espace</a>` +
-      (S.profile && hasAccess() ? `<span class="pill">Abonné · ${daysLeft()} j</span>` : '<a class="btn sm" href="#/abonnement">S\'abonner</a>') +
-      '<button class="lnk" data-act="logout">Déconnexion</button>';
-  } else {
-    right = `<a class="lnk${on('/connexion')}" href="#/connexion">Connexion</a><a class="btn sm" href="#/inscription">Créer un compte</a>`;
+  const item = (href, label, extra = '') => `<a class="menu-item${on(href.slice(1))}" href="${href}">${label}${extra}</a>`;
+  let items = item('#/', 'Métiers et formations');
+  if (S.session) {
+    items += item('#/mon-espace', 'Mon espace');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '');
+    else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
+    else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
+  items += item('#/verifier', 'Vérifier une attestation');
+  const who = S.session
+    ? `<div class="menu-who"><b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
+        ${S.profile && hasAccess() && !isAdmin() ? `<span class="pill">Abonné · ${daysLeft()} j restants</span>` : ''}</div>`
+    : '';
+  const foot = S.session
+    ? '<button class="menu-item danger" data-act="logout">Déconnexion</button>'
+    : '<div class="menu-cta"><a class="btn" href="#/inscription">Créer un compte</a><a class="btn ghost" href="#/connexion">Connexion</a></div>';
   const dark = isDark();
+  const badge = S.session && isAdmin() && S.admin.pending ? `<span class="dot-badge">${S.admin.pending}</span>` : '';
   topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil"><i>${I.check.replace('currentColor', 'var(--accent-ink)')}</i>vitako</a>
-    <nav class="nav"><a class="lnk${on('/')}" href="#/">Métiers et formations</a>${right}
-      <button class="lnk themebtn" data-act="theme" aria-label="${dark ? 'Passer au thème clair' : 'Passer au thème sombre'}">${dark ? I.sun : I.moon}<span>${dark ? 'Clair' : 'Sombre'}</span></button></nav>`;
+    <div class="tb-actions">
+      ${S.session && S.profile && hasAccess() && !isAdmin() ? `<span class="pill tb-pill">Abonné · ${daysLeft()} j</span>` : ''}
+      <button class="iconbtn${S.ui.search ? ' on' : ''}" data-act="search-toggle" aria-label="Rechercher une formation" aria-expanded="${S.ui.search}" aria-controls="tb-search">${I.search}</button>
+      <button class="iconbtn" data-act="theme" aria-label="${dark ? 'Passer au thème clair' : 'Passer au thème sombre'}" title="${dark ? 'Thème clair' : 'Thème sombre'}">${dark ? I.sun : I.moon}</button>
+      <button class="iconbtn${S.ui.menu ? ' on' : ''}" data-act="menu" aria-label="${S.ui.menu ? 'Fermer le menu' : 'Ouvrir le menu'}" aria-expanded="${S.ui.menu}" aria-controls="menu">${S.ui.menu ? I.close : I.burger}${badge}</button>
+    </div>
+    <div class="tb-search" id="tb-search" ${S.ui.search ? '' : 'hidden'}>
+      <span class="tb-search-ic">${I.search}</span>
+      <input id="hsearch" type="search" autocomplete="off" placeholder="Rechercher un métier ou un logiciel (ex. graphiste, Photoshop, Excel)" aria-label="Rechercher un métier ou un logiciel" value="${esc(S.filter.q)}">
+    </div>
+    <nav class="menu" id="menu" aria-label="Menu principal" ${S.ui.menu ? '' : 'hidden'}>${who}<div class="menu-list">${items}</div>${foot}</nav>`;
+  if (S.ui.searchFocus) {
+    const h = document.getElementById('hsearch');
+    if (h) { h.focus(); h.setSelectionRange(h.value.length, h.value.length); }
+    S.ui.searchFocus = false;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -761,8 +786,14 @@ const showErr = (id, msg) => { const el = document.getElementById(id); if (el) {
 const busy = (btn, on, label) => { if (!btn) return; btn.disabled = on; if (label) btn.textContent = label; };
 
 document.addEventListener('click', async (e) => {
+  // Fermer le menu quand on clique ailleurs
+  if (S.ui.menu && !e.target.closest('#menu') && !e.target.closest('[data-act=menu]')) { S.ui.menu = false; topbar(); }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'menu') { S.ui.menu = !S.ui.menu; topbar(); if (S.ui.menu) document.querySelector('#menu .menu-item')?.focus(); return; }
+  if (t.dataset.act === 'search-toggle') {
+    S.ui.search = !S.ui.search; S.ui.menu = false; S.ui.searchFocus = S.ui.search; topbar(); return;
+  }
   if (t.dataset.dom) { S.filter.dom = t.dataset.dom; refreshGrid(); return; }
   if (t.dataset.op) { S.payOp = t.dataset.op; render(); return; }
   const a = t.dataset.act;
@@ -786,7 +817,7 @@ document.addEventListener('click', async (e) => {
     return;
   }
   if (a === 'reload') { render(); return; }
-  if (a === 'logout') { await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
+  if (a === 'logout') { S.ui.menu = false; await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
 
   if (a === 'mquiz-retry') {
     S.mquiz.answered = false; S.mquiz.answers = null;
@@ -827,7 +858,23 @@ document.addEventListener('click', async (e) => {
 });
 
 document.addEventListener('input', (e) => {
-  if (e.target.id === 'search') { S.filter.q = e.target.value; refreshGrid(); }
+  if (e.target.id === 'search') {
+    S.filter.q = e.target.value; refreshGrid();
+    const h = document.getElementById('hsearch'); if (h) h.value = S.filter.q;
+  }
+  if (e.target.id === 'hsearch') {
+    S.filter.q = e.target.value;
+    if (route().path !== '/') { S.ui.searchFocus = true; location.hash = '#/'; return; }
+    refreshGrid();
+    const c = document.getElementById('search'); if (c) c.value = S.filter.q;
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && (S.ui.menu || S.ui.search)) {
+    const wasMenu = S.ui.menu; S.ui.menu = false; if (!wasMenu) S.ui.search = false; topbar();
+    document.querySelector(wasMenu ? '[data-act=menu]' : '[data-act=search-toggle]')?.focus();
+  }
+  if (e.key === 'Enter' && e.target.id === 'hsearch') { document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 });
 
 document.addEventListener('submit', async (e) => {
@@ -952,6 +999,7 @@ document.addEventListener('submit', async (e) => {
 });
 
 window.addEventListener('hashchange', () => {
+  S.ui.menu = false;
   const { path } = route();
   if (!/\/examen$/.test(path)) { S.examResult = null; }
   render();
