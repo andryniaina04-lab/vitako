@@ -25,7 +25,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true),
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true),
-  ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 13, false),
+  ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true),
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 14, false),
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
@@ -10538,6 +10538,763 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Pourquoi ajouter une marge au forfait ?', '["Pour payer moins d''impôts","Pour les imprévus et les échanges","Ce n''est pas utile","Pour tromper le client"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'À quoi servent les pull requests en équipe ?', '["Faire relire le code avant de le fusionner","Dessiner la maquette","Supprimer le dépôt","Payer les développeurs"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Mobile Money ou virement","Uniquement des chèques étrangers","Aucun"]'::jsonb, 1);
+
+-- dev-1-f
+delete from public.exam_questions where course_id = 'dev-1-f';
+delete from public.module_questions where course_id = 'dev-1-f';
+delete from public.lessons where course_id = 'dev-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-f', 0, 'Le métier de développeur back-end depuis Madagascar', 'Ce que fait le back-end, les API, le trajet d''une requête, front-end, back-end et full-stack, les outils de base, les tâches, les clients et le plan d''apprentissage.', 'Quand vous payez par Mobile Money, réservez une chambre ou vous connectez à un compte, un programme invisible enregistre les données, vérifie vos droits et répond à votre application. Ce programme, c''est le **back-end**. Le développeur back-end le conçoit et le fait fonctionner de façon fiable et sûre. C''est un métier très demandé, qui se fait entièrement à distance. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un développeur back-end.
+> 2. Décrire le trajet d''une requête entre le navigateur et le serveur.
+> 3. Citer les langages et outils de base : PHP, Node.js, SQL.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un développeur back-end **construit la partie serveur d''une application : les données, les règles, la sécurité et les API qui permettent au front-end et aux autres services de fonctionner**.
+
+> [!definition] API
+> Une « porte d''entrée » d''un programme : une liste d''adresses et de règles qui permettent à d''autres programmes (une application mobile, un site, un partenaire) de demander ou d''envoyer des données. Exemple : `GET /api/chambres` renvoie la liste des chambres.
+
+## Le trajet d''une requête
+
+| Étape | Ce qui se passe | Exemple |
+| --- | --- | --- |
+| **1. Le client envoie une requête** | Le navigateur ou l''application appelle une adresse | « Réserver la chambre 3 du 12 au 15 juillet » |
+| **2. Le serveur reçoit** | Le programme back-end lit la demande | Vérifie que l''utilisateur est connecté |
+| **3. Les règles s''appliquent** | Le programme vérifie les données et les droits | La chambre est-elle libre ? Les dates sont-elles valides ? |
+| **4. La base de données** | Lecture et écriture des données | Enregistre la réservation |
+| **5. La réponse** | Le serveur renvoie un résultat | « Réservation confirmée, numéro 4821 » |
+
+## Front-end, back-end, full-stack
+
+| Rôle | Où s''exécute son code | Exemple de travail |
+| --- | --- | --- |
+| **Front-end** | Dans le navigateur | Le formulaire de réservation |
+| **Back-end** | Sur le serveur | L''enregistrement de la réservation, les règles, les e-mails de confirmation |
+| **Full-stack** | Les deux | L''application complète |
+
+## Les langages et outils de base
+
+| Outil | Rôle | Pourquoi l''apprendre |
+| --- | --- | --- |
+| **SQL** | Interroger et modifier une base de données | Presque toutes les applications utilisent une base de données |
+| **PHP** | Langage serveur très répandu | WordPress, Laravel et beaucoup de sites existants l''utilisent |
+| **Node.js** | JavaScript côté serveur | Même langage que le front-end, très utilisé pour les API |
+| **Git** | Historique du code | Indispensable pour travailler en équipe |
+| **HTTP** | Le protocole du web | Méthodes, codes de réponse, en-têtes |
+| **Linux** (bases) | Système des serveurs | Déployer et dépanner |
+
+> [!astuce]
+> Choisissez **un** langage pour commencer (PHP ou Node.js), et apprenez SQL en parallèle. Changer de langage plus tard est beaucoup plus facile quand on maîtrise bien le premier.
+
+## Les tâches courantes
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Concevoir la base de données** | Tables clients, réservations, paiements |
+| 2 | **Créer des API** | Liste des produits, création d''une commande |
+| 3 | **Gérer les comptes** | Inscription, connexion, mot de passe oublié |
+| 4 | **Connecter des services** | Paiement, envoi d''e-mails et de SMS |
+| 5 | **Sécuriser** | Mots de passe protégés, droits d''accès, validation des données |
+| 6 | **Déployer et surveiller** | Mettre en ligne, sauvegarder, corriger les pannes |
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Entreprises de services numériques** d''Antananarivo qui travaillent pour l''Europe.
+2. **Start-up** (paiement, livraison, éducation, agriculture).
+3. **Agences web** qui ont besoin de fonctions sur mesure.
+4. **Entreprises et ONG** qui veulent un outil de gestion interne.
+
+### À l''étranger
+
+1. **Agences et start-up francophones** qui recrutent des développeurs à distance.
+2. **Entreprises** qui ont des applications PHP ou Node.js à maintenir.
+
+> [!madagascar] Votre avantage
+> Les entreprises de services numériques malgaches recrutent régulièrement des développeurs back-end pour des clients européens. Les intégrations locales (Mobile Money, SMS, connexions lentes) sont aussi une compétence recherchée par les start-up qui visent le marché malgache.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive (16 Go conseillés), Windows avec WSL, macOS ou Linux |
+| **Éditeur** | Visual Studio Code |
+| **Logiciels** | Git, Node.js, PHP, une base de données (PostgreSQL ou MySQL) |
+| **Outil de test d''API** | Postman, Insomnia ou l''extension REST Client |
+| **Connexion et énergie** | Stables, avec une solution de secours |
+
+## Votre plan d''apprentissage
+
+1. **Bases de programmation** dans le langage choisi (4 à 6 semaines).
+2. **SQL et conception de bases de données** (3 à 4 semaines).
+3. **HTTP et API REST** (2 à 3 semaines).
+4. **Sécurité de base** (en continu).
+5. **Déploiement et Linux** (2 à 3 semaines).
+6. **Projets** : 2 à 3 API complètes pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - Le back-end gère les données, les règles, la sécurité et les API.
+> - Une requête : envoi, réception, règles, base de données, réponse.
+> - SQL + un langage (PHP ou Node.js) + Git + HTTP + bases de Linux.
+> - Clients : entreprises de services numériques, start-up, agences, entreprises étrangères.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Installez Visual Studio Code, Git, Node.js (ou PHP) et PostgreSQL (ou MySQL).
+> 2. Ouvrez les outils de développement de votre navigateur (onglet Réseau) sur un site que vous utilisez et observez 5 requêtes : adresse, méthode, code de réponse.
+> 3. Pour une application que vous connaissez, listez 5 tables de base de données probables et 5 API.
+> 4. Écrivez votre plan d''apprentissage sur 6 mois.
+>
+> **À livrer** : vos captures d''installation, vos 5 requêtes analysées, vos tables et API, votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 0, 0, 'Qu''est-ce qu''une API ?', '["Une base de données","Un ordinateur","Une porte d''entrée qui permet à d''autres programmes d''échanger des données","Une couleur de bouton"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 0, 1, 'Où s''exécute le code back-end ?', '["Sur le serveur","Dans l''imprimante","Sur une clé USB","Dans le navigateur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 0, 2, 'Quel langage sert à interroger une base de données ?', '["Markdown","CSS","HTML","SQL"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-f', 1, 'Les bases : HTTP, API REST, bases de données, SQL et sécurité', 'Méthodes et codes HTTP, routes REST et JSON, tables, clés et contraintes, requêtes SQL essentielles et 6 règles de sécurité.', 'Ce module vous donne les bases du back-end : le protocole HTTP, les API REST, la conception d''une base de données relationnelle, le SQL, et les règles de sécurité qu''aucun développeur ne peut ignorer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer les méthodes et les codes de réponse HTTP.
+> 2. Concevoir des routes d''API REST.
+> 3. Concevoir une base de données avec des tables reliées.
+> 4. Écrire les requêtes SQL essentielles.
+> 5. Appliquer 6 règles de sécurité de base.
+
+## HTTP : le langage du web
+
+### Les méthodes
+
+| Méthode | Usage | Exemple |
+| --- | --- | --- |
+| **GET** | Lire | Lire la liste des chambres |
+| **POST** | Créer | Créer une réservation |
+| **PUT** ou **PATCH** | Modifier | Changer les dates d''une réservation |
+| **DELETE** | Supprimer | Annuler une réservation |
+
+### Les codes de réponse
+
+| Code | Signification | Exemple |
+| --- | --- | --- |
+| **200** | Succès | La liste est renvoyée |
+| **201** | Créé | La réservation est enregistrée |
+| **400** | Requête invalide | Date de départ avant la date d''arrivée |
+| **401** | Non authentifié | Utilisateur non connecté |
+| **403** | Interdit | Un client essaie de voir la réservation d''un autre |
+| **404** | Introuvable | Chambre inexistante |
+| **409** | Conflit | La chambre est déjà réservée |
+| **500** | Erreur du serveur | Bug dans le programme |
+
+## Les API REST
+
+> [!definition] API REST
+> Une façon d''organiser une API autour de **ressources** (chambres, réservations, clients) avec des adresses claires et les méthodes HTTP. Les données sont souvent échangées au format **JSON**.
+
+| Méthode et adresse | Action |
+| --- | --- |
+| `GET /api/chambres` | Lister les chambres |
+| `GET /api/chambres/3` | Voir la chambre 3 |
+| `POST /api/reservations` | Créer une réservation |
+| `GET /api/reservations/4821` | Voir une réservation |
+| `DELETE /api/reservations/4821` | Annuler une réservation |
+
+```json
+{
+  "chambre_id": 3,
+  "arrivee": "2026-07-12",
+  "depart": "2026-07-15",
+  "personnes": 2
+}
+```
+
+## Concevoir une base de données
+
+> [!definition] Base de données relationnelle
+> Des données rangées dans des **tables** (comme des feuilles de calcul), reliées entre elles par des **clés**. PostgreSQL et MySQL sont les plus utilisées.
+
+### Les tables d''une maison d''hôtes
+
+| Table | Colonnes principales |
+| --- | --- |
+| **clients** | id, nom, email, telephone, cree_le |
+| **chambres** | id, nom, capacite, prix_nuit |
+| **reservations** | id, client_id, chambre_id, arrivee, depart, statut, cree_le |
+| **paiements** | id, reservation_id, montant, moyen, reference, statut |
+
+```sql
+CREATE TABLE chambres (
+  id SERIAL PRIMARY KEY,
+  nom TEXT NOT NULL,
+  capacite INTEGER NOT NULL CHECK (capacite > 0),
+  prix_nuit INTEGER NOT NULL CHECK (prix_nuit >= 0)
+);
+
+CREATE TABLE reservations (
+  id SERIAL PRIMARY KEY,
+  client_id INTEGER NOT NULL REFERENCES clients(id),
+  chambre_id INTEGER NOT NULL REFERENCES chambres(id),
+  arrivee DATE NOT NULL,
+  depart DATE NOT NULL CHECK (depart > arrivee),
+  statut TEXT NOT NULL DEFAULT ''en_attente'',
+  cree_le TIMESTAMP NOT NULL DEFAULT now()
+);
+```
+
+> [!definition] Clé primaire et clé étrangère
+> La **clé primaire** (`id`) identifie chaque ligne de façon unique. La **clé étrangère** (`client_id`) relie une ligne à une ligne d''une autre table. La base refuse une réservation pour un client qui n''existe pas.
+
+## Le SQL essentiel
+
+```sql
+-- Ajouter une chambre
+INSERT INTO chambres (nom, capacite, prix_nuit) VALUES (''Baobab'', 2, 180000);
+
+-- Chambres pour 2 personnes ou plus, de la moins chère à la plus chère
+SELECT nom, prix_nuit FROM chambres WHERE capacite >= 2 ORDER BY prix_nuit;
+
+-- La chambre 3 est-elle libre du 12 au 15 juillet ?
+SELECT COUNT(*) FROM reservations
+WHERE chambre_id = 3
+  AND statut <> ''annulee''
+  AND arrivee < ''2026-07-15''
+  AND depart > ''2026-07-12'';
+
+-- Modifier le statut d''une réservation
+UPDATE reservations SET statut = ''confirmee'' WHERE id = 4821;
+```
+
+> [!attention]
+> Un `UPDATE` ou un `DELETE` **sans** `WHERE` modifie ou supprime **toutes** les lignes de la table. Relisez toujours ces requêtes avant de les exécuter, et travaillez d''abord sur une base de test.
+
+## Les 6 règles de sécurité de base
+
+| N° | Règle | Pourquoi |
+| --- | --- | --- |
+| 1 | **Ne jamais faire confiance aux données reçues** : tout vérifier côté serveur | Le front-end peut être contourné |
+| 2 | **Requêtes préparées** (paramètres), jamais de SQL construit avec du texte de l''utilisateur | Éviter l''injection SQL |
+| 3 | **Mots de passe hachés** avec un algorithme adapté (bcrypt, Argon2), jamais en clair | Une fuite de base ne révèle pas les mots de passe |
+| 4 | **Vérifier les droits** à chaque requête | Un client ne doit pas voir les données d''un autre |
+| 5 | **Secrets hors du code** (variables d''environnement) | Une clé publiée sur GitHub peut être volée en quelques minutes |
+| 6 | **HTTPS** partout | Les données ne circulent pas en clair |
+
+> [!exemple] L''injection SQL
+> Si un programme construit `"SELECT * FROM clients WHERE email = ''" + email + "''"`, un attaquant peut envoyer un texte spécial qui transforme la requête et lit toute la table. Avec une requête préparée (`WHERE email = $1`), la valeur est toujours traitée comme une donnée, jamais comme du code.
+
+> [!madagascar]
+> Les applications malgaches manipulent souvent des **numéros de téléphone** et des **références de paiement Mobile Money**. Ce sont des données personnelles et financières : protégez-les comme des mots de passe (accès limité, journaux sans données sensibles en clair).
+
+> [!retenir]
+> - GET lit, POST crée, PUT ou PATCH modifie, DELETE supprime.
+> - Des codes de réponse précis : 200, 201, 400, 401, 403, 404, 409, 500.
+> - Des tables reliées par des clés, avec des contraintes.
+> - SELECT, INSERT, UPDATE et DELETE, toujours avec WHERE pour modifier.
+> - 6 règles de sécurité, dès la première ligne de code.
+
+## Exercice pratique : concevoir une API
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Concevez les tables d''une petite boutique (produits, clients, commandes, lignes de commande) et dessinez leurs relations.
+> 2. Écrivez les requêtes CREATE TABLE avec clés et contraintes, et exécutez-les dans PostgreSQL ou MySQL.
+> 3. Insérez des données de test et écrivez 10 requêtes SELECT, dont 2 avec jointure.
+> 4. Listez les routes REST de la boutique avec la méthode, l''adresse, les données envoyées et les codes de réponse possibles.
+>
+> **À livrer** : votre schéma, votre fichier SQL et votre liste de routes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 1, 0, 'Quelle méthode HTTP crée une ressource ?', '["HEAD","DELETE","GET","POST"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 1, 1, 'Quel code indique que la chambre est déjà réservée ?', '["200","409","201","500"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 1, 2, 'Comment protéger les mots de passe ?', '["Les envoyer par e-mail","Les hacher avec bcrypt ou Argon2","Les écrire dans le code","Les stocker en clair"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-f', 2, 'Les outils : Node.js, Express, PostgreSQL, PHP, Postman et outils payants', 'Création d''une API avec Express, requêtes préparées, validation et erreurs, équivalent PHP avec PDO, tests dans Postman, PhpStorm, Copilot et VPS.', 'Ce module vous fait écrire votre première API avec **Node.js** et **Express**, connectée à **PostgreSQL**, puis vous montre l''équivalent en **PHP**. Vous apprendrez à tester une API, à gérer les erreurs et à utiliser Git. Vous découvrirez enfin les outils payants : **PhpStorm**, **GitHub Copilot** et l''**hébergement VPS**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer une API simple avec Node.js et Express.
+> 2. Vous connecter à PostgreSQL avec des requêtes préparées.
+> 3. Valider les données et renvoyer les bons codes d''erreur.
+> 4. Tester une API avec Postman ou un outil équivalent.
+> 5. Comprendre ce qu''apportent PhpStorm, Copilot et un VPS.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Node.js** et **npm** | Exécuter du JavaScript côté serveur, installer des bibliothèques |
+| 2 | **Express** | Créer des routes d''API simplement |
+| 3 | **PHP** | Langage serveur, avec Composer pour les bibliothèques |
+| 4 | **PostgreSQL** ou **MySQL** | Bases de données |
+| 5 | **Postman** ou **Insomnia** | Tester les API |
+| 6 | **Git** et **GitHub** | Historique et partage du code |
+
+## Une API avec Node.js et Express
+
+### Créer le projet
+
+```bash
+mkdir api-ravinala && cd api-ravinala
+npm init -y
+npm install express pg dotenv
+```
+
+### Le fichier de configuration (jamais publié)
+
+```bash
+# .env  (à ajouter dans .gitignore)
+DATABASE_URL=postgres://utilisateur:motdepasse@localhost:5432/ravinala
+PORT=3000
+```
+
+### Le serveur
+
+```js
+// server.js
+require(''dotenv'').config();
+const express = require(''express'');
+const { Pool } = require(''pg'');
+
+const app = express();
+app.use(express.json());
+const db = new Pool({ connectionString: process.env.DATABASE_URL });
+
+// Lister les chambres
+app.get(''/api/chambres'', async (req, res) => {
+  const { rows } = await db.query(''SELECT id, nom, capacite, prix_nuit FROM chambres ORDER BY prix_nuit'');
+  res.json(rows);
+});
+
+// Voir une chambre
+app.get(''/api/chambres/:id'', async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id)) return res.status(400).json({ erreur: ''Identifiant invalide'' });
+  const { rows } = await db.query(''SELECT * FROM chambres WHERE id = $1'', [id]);
+  if (rows.length === 0) return res.status(404).json({ erreur: ''Chambre introuvable'' });
+  res.json(rows[0]);
+});
+
+app.listen(process.env.PORT, () => console.log(''API sur le port '' + process.env.PORT));
+```
+
+> [!definition] Requête préparée
+> Dans `WHERE id = $1`, la valeur est envoyée **à part** (`[id]`). La base la traite toujours comme une donnée, jamais comme du code : c''est la protection contre l''injection SQL.
+
+## Valider les données et gérer les erreurs
+
+```js
+app.post(''/api/reservations'', async (req, res) => {
+  const { client_id, chambre_id, arrivee, depart } = req.body;
+  if (!client_id || !chambre_id || !arrivee || !depart) {
+    return res.status(400).json({ erreur: ''Champs manquants'' });
+  }
+  if (new Date(depart) <= new Date(arrivee)) {
+    return res.status(400).json({ erreur: ''La date de départ doit être après la date d\''arrivée'' });
+  }
+  try {
+    const { rows: conflits } = await db.query(
+      `SELECT 1 FROM reservations
+       WHERE chambre_id = $1 AND statut <> ''annulee'' AND arrivee < $3 AND depart > $2`,
+      [chambre_id, arrivee, depart]
+    );
+    if (conflits.length > 0) return res.status(409).json({ erreur: ''Chambre déjà réservée'' });
+
+    const { rows } = await db.query(
+      `INSERT INTO reservations (client_id, chambre_id, arrivee, depart)
+       VALUES ($1, $2, $3, $4) RETURNING id, statut`,
+      [client_id, chambre_id, arrivee, depart]
+    );
+    res.status(201).json(rows[0]);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ erreur: ''Erreur interne'' });
+  }
+});
+```
+
+> [!attention]
+> Ne renvoyez jamais le détail d''une erreur technique au client (message de la base, chemin des fichiers) : il peut aider un attaquant. Enregistrez-le dans vos journaux, et renvoyez un message simple.
+
+## L''équivalent en PHP
+
+```php
+<?php
+// chambre.php?id=3
+$pdo = new PDO(getenv(''DATABASE_DSN''), getenv(''DB_USER''), getenv(''DB_PASS''));
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$id = filter_input(INPUT_GET, ''id'', FILTER_VALIDATE_INT);
+header(''Content-Type: application/json'');
+if ($id === false || $id === null) { http_response_code(400); echo json_encode([''erreur'' => ''Identifiant invalide'']); exit; }
+
+$stmt = $pdo->prepare(''SELECT id, nom, capacite, prix_nuit FROM chambres WHERE id = ?'');
+$stmt->execute([$id]);
+$chambre = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$chambre) { http_response_code(404); echo json_encode([''erreur'' => ''Chambre introuvable'']); exit; }
+echo json_encode($chambre);
+```
+
+Dans les vrais projets PHP, on utilise souvent un framework comme **Laravel** ou **Symfony**, qui organise les routes, la base de données et la sécurité.
+
+## Tester une API
+
+1. **Lancez** le serveur : `node server.js`.
+2. **Dans Postman** (ou Insomnia), créez une requête `GET http://localhost:3000/api/chambres`.
+3. **Testez** les cas d''erreur : identifiant invalide, chambre inexistante, dates inversées, chambre déjà réservée.
+4. **Enregistrez** vos requêtes dans une collection pour les rejouer à chaque modification.
+
+> [!astuce]
+> Pour chaque route, testez au moins **un cas qui marche** et **deux cas d''erreur**. La plupart des bugs se cachent dans les cas d''erreur.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **PhpStorm** | Éditeur complet de JetBrains pour PHP : refactorisation, débogage, base de données intégrée, compréhension de Laravel et Symfony |
+| **GitHub Copilot** | Assistant d''IA dans l''éditeur : propose du code et des tests, explique du code existant |
+| **Hébergement VPS** | Un serveur virtuel à vous (Linux) pour déployer vos API et vos bases de données |
+
+> [!definition] VPS (serveur privé virtuel)
+> Une partie d''un serveur physique louée chez un hébergeur, avec son propre système Linux. Vous y installez Node.js, PHP, PostgreSQL et votre application. Les offres d''entrée de gamme coûtent quelques dollars ou euros par mois.
+
+> [!madagascar]
+> Ces outils sont facturés en dollars ou en euros : PhpStorm et Copilot proposent des offres gratuites pour les étudiants, et Copilot a une offre gratuite limitée. Pour apprendre le déploiement, un petit VPS ou les offres gratuites de certains hébergeurs suffisent. Choisissez un serveur proche de vos utilisateurs (Europe, Afrique du Sud ou océan Indien) pour réduire les temps de réponse. Vérifiez les prix sur les sites officiels.
+
+> [!retenir]
+> - Express crée des routes ; `pg` se connecte à PostgreSQL avec des requêtes préparées.
+> - Validez les données, renvoyez les bons codes, cachez les détails techniques.
+> - PHP avec PDO suit les mêmes principes ; Laravel et Symfony organisent les gros projets.
+> - Testez chaque route avec un cas réussi et des cas d''erreur.
+> - PhpStorm, Copilot et un VPS quand vous travaillez sur de vrais projets.
+
+## Exercice pratique : votre première API
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez la base de données de la maison d''hôtes (chambres, clients, réservations).
+> 2. Créez l''API Express avec les routes : lister les chambres, voir une chambre, créer une réservation, annuler une réservation.
+> 3. Ajoutez la validation et les codes d''erreur.
+> 4. Testez toutes les routes dans Postman et enregistrez la collection.
+> 5. Publiez le code sur GitHub, sans le fichier `.env`.
+>
+> **À livrer** : le lien de votre dépôt et l''export de votre collection Postman.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 2, 0, 'Où mettre la chaîne de connexion à la base ?', '["Dans le README","Dans le fichier .env exclu de Git","Dans un commentaire","Dans le code publié"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 2, 1, 'Que renvoyer au client en cas d''erreur technique ?', '["Un message simple, le détail dans les journaux","Le chemin des fichiers","Le message complet de la base","Le mot de passe"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 2, 2, 'Combien de cas tester au minimum par route ?', '["Aucun","Un cas réussi et deux cas d''erreur","Cent cas","Un seul cas réussi"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-f', 3, 'Premier projet : l''API de commandes Mofo Express', 'Conception des tables et des routes, comptes, jetons et rôles, statuts de commande et paiement Mobile Money, transactions, tests automatiques et déploiement.', 'Dans ce module, vous réalisez une API complète pour une petite entreprise : comptes utilisateurs, commandes, paiement par Mobile Money vérifié manuellement, tests et mise en ligne sur un serveur. C''est le type de projet qui deviendra votre premier projet de portfolio back-end.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Concevoir une API à partir d''un besoin.
+> 2. Gérer l''inscription, la connexion et les droits.
+> 3. Gérer un circuit de commande et de paiement.
+> 4. Écrire des tests automatiques d''API.
+> 5. Déployer une API sur un serveur avec HTTPS.
+
+## Le cas pratique : « Mofo Express »
+
+> [!exemple] Votre client
+> **Mofo Express** est une petite boulangerie d''Antsirabe qui veut prendre des commandes en ligne (pain, mofo gasy, gâteaux) pour retrait en boutique. Les clients paient par Mobile Money et saisissent la référence de la transaction ; le gérant vérifie le paiement dans son application et valide la commande. Une développeuse front-end prépare le site ; vous construisez l''API.
+
+## Étape 1 : concevoir l''API
+
+### Les tables
+
+| Table | Colonnes principales |
+| --- | --- |
+| **utilisateurs** | id, nom, telephone, email, mot_de_passe_hash, role (client ou gerant) |
+| **produits** | id, nom, prix, disponible |
+| **commandes** | id, utilisateur_id, statut, total, retrait_le, cree_le |
+| **lignes_commande** | id, commande_id, produit_id, quantite, prix_unitaire |
+| **paiements** | id, commande_id, moyen, reference, statut, verifie_par, verifie_le |
+
+### Les routes
+
+| Route | Qui | Action |
+| --- | --- | --- |
+| `POST /api/inscription` | Tous | Créer un compte |
+| `POST /api/connexion` | Tous | Se connecter, recevoir un jeton |
+| `GET /api/produits` | Tous | Lister les produits disponibles |
+| `POST /api/commandes` | Client | Créer une commande |
+| `POST /api/commandes/:id/paiement` | Client | Saisir la référence Mobile Money |
+| `GET /api/mes-commandes` | Client | Voir ses commandes |
+| `GET /api/gerant/paiements` | Gérant | Voir les paiements à vérifier |
+| `POST /api/gerant/paiements/:id/valider` | Gérant | Valider ou refuser |
+
+> [!attention]
+> Le **prix** d''une commande doit être calculé **par le serveur**, à partir des prix de la base. Ne faites jamais confiance au total envoyé par le navigateur : un utilisateur peut le modifier.
+
+## Étape 2 : comptes, connexion et droits
+
+```js
+const bcrypt = require(''bcrypt'');
+const jwt = require(''jsonwebtoken'');
+
+// Inscription : le mot de passe est haché, jamais stocké en clair
+const hash = await bcrypt.hash(motDePasse, 12);
+await db.query(
+  ''INSERT INTO utilisateurs (nom, telephone, mot_de_passe_hash, role) VALUES ($1, $2, $3, $4)'',
+  [nom, telephone, hash, ''client'']
+);
+
+// Connexion : on compare, puis on signe un jeton
+const ok = await bcrypt.compare(motDePasse, utilisateur.mot_de_passe_hash);
+if (!ok) return res.status(401).json({ erreur: ''Identifiants incorrects'' });
+const jeton = jwt.sign({ id: utilisateur.id, role: utilisateur.role }, process.env.JWT_SECRET, { expiresIn: ''7d'' });
+
+// Vérifier le jeton et le rôle avant les routes protégées
+function exigeRole(role) {
+  return (req, res, next) => {
+    try {
+      const donnees = jwt.verify((req.headers.authorization || '''').replace(''Bearer '', ''''), process.env.JWT_SECRET);
+      if (role && donnees.role !== role) return res.status(403).json({ erreur: ''Accès interdit'' });
+      req.utilisateur = donnees;
+      next();
+    } catch {
+      res.status(401).json({ erreur: ''Connexion requise'' });
+    }
+  };
+}
+app.get(''/api/gerant/paiements'', exigeRole(''gerant''), listerPaiements);
+```
+
+> [!definition] Jeton (JWT)
+> Un texte signé par le serveur, qui prouve l''identité de l''utilisateur à chaque requête. Le serveur vérifie la signature avec un secret que lui seul connaît.
+
+> [!astuce]
+> Message d''erreur de connexion : dites toujours « Identifiants incorrects », sans préciser si c''est le téléphone ou le mot de passe qui est faux. Vous ne donnez pas d''indice à quelqu''un qui essaie de deviner les comptes.
+
+## Étape 3 : commande et paiement
+
+### Les statuts d''une commande
+
+```
+en_attente_paiement → paiement_a_verifier → confirmee → prete → retiree
+                                        ↘ refusee
+```
+
+### Les règles
+
+1. Une **référence de transaction** ne peut être utilisée qu''**une seule fois** (contrainte `UNIQUE` dans la base).
+2. Seul le **gérant** peut valider un paiement, et la validation enregistre **qui** et **quand**.
+3. Le passage d''un statut à l''autre suit l''ordre prévu : une commande refusée ne peut pas devenir « prête ».
+4. La validation d''un paiement et le changement de statut de la commande se font dans **une même transaction** de base de données.
+
+> [!definition] Transaction
+> Un groupe d''opérations exécutées « tout ou rien » : si une étape échoue, aucune modification n''est enregistrée. Elle évite par exemple un paiement validé dont la commande serait restée « en attente ».
+
+## Étape 4 : les tests automatiques
+
+```js
+// commandes.test.js (avec Vitest et Supertest)
+import { describe, it, expect } from ''vitest'';
+import request from ''supertest'';
+import { app } from ''./app.js'';
+
+describe(''POST /api/commandes'', () => {
+  it(''refuse une commande sans connexion'', async () => {
+    const res = await request(app).post(''/api/commandes'').send({ lignes: [] });
+    expect(res.status).toBe(401);
+  });
+  it(''calcule le total côté serveur'', async () => {
+    const res = await request(app)
+      .post(''/api/commandes'')
+      .set(''Authorization'', ''Bearer '' + jetonClientTest)
+      .send({ lignes: [{ produit_id: 1, quantite: 10 }], total: 1 });
+    expect(res.status).toBe(201);
+    expect(res.body.total).toBe(10 * 500); // le total envoyé (1) est ignoré
+  });
+});
+```
+
+| Cas à tester | Résultat attendu |
+| --- | --- |
+| Commande sans connexion | 401 |
+| Client qui appelle une route du gérant | 403 |
+| Référence Mobile Money déjà utilisée | 409 |
+| Total modifié par le navigateur | Ignoré, recalculé |
+| Validation par le gérant | Commande « confirmee », trace de qui et quand |
+
+## Étape 5 : déployer
+
+1. **Louez** un petit VPS Linux (ou utilisez une plateforme d''hébergement d''applications).
+2. **Installez** Node.js, PostgreSQL et un serveur web (Nginx) en proxy.
+3. **Configurez** les variables d''environnement sur le serveur.
+4. **Lancez** l''application avec un gestionnaire de processus (PM2 ou systemd) pour qu''elle redémarre en cas de panne.
+5. **Activez HTTPS** avec un certificat gratuit (Let''s Encrypt).
+6. **Programmez** une sauvegarde quotidienne de la base de données, et testez une restauration.
+
+> [!madagascar]
+> Prévoyez des réponses **légères** (seulement les champs utiles) et des messages d''erreur clairs : beaucoup d''utilisateurs auront une connexion lente. Côté gérant, pensez à une notification (SMS ou e-mail) quand un paiement attend sa vérification, pour que les clients ne patientent pas.
+
+> [!retenir]
+> - Concevez tables et routes avant de coder ; le serveur calcule les prix.
+> - Mots de passe hachés, jetons signés, rôles vérifiés.
+> - Statuts de commande contrôlés, référence unique, transactions.
+> - Tests automatiques des cas d''erreur et de sécurité.
+> - Déploiement avec variables d''environnement, HTTPS et sauvegardes testées.
+
+## Exercice pratique : l''API Mofo Express
+
+> [!exercice] Exercice pratique · 10 heures (sur plusieurs jours)
+> 1. Créez les tables avec leurs contraintes (dont la référence de paiement unique).
+> 2. Codez les 8 routes avec la validation et les rôles.
+> 3. Écrivez au moins 8 tests automatiques, dont les 5 cas du tableau.
+> 4. Documentez l''API dans le README (routes, exemples de requêtes et de réponses).
+> 5. Déployez sur un serveur avec HTTPS, ou préparez un guide de déploiement précis si vous n''avez pas encore de serveur.
+>
+> **À livrer** : le lien du dépôt, le README et l''adresse de l''API en ligne (ou le guide). C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 3, 0, 'Qui doit calculer le total d''une commande ?', '["Personne","Le serveur, avec les prix de la base","Le navigateur","Le client"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 3, 1, 'À quoi sert une transaction de base de données ?', '["Envoyer un SMS","Changer de mot de passe","Exécuter plusieurs opérations en tout ou rien","Payer une facture"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 3, 2, 'Quel code renvoyer quand un client appelle une route du gérant ?', '["302","201","200","403"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-f', 4, 'Trouver un poste ou des missions et se faire payer', 'Portfolio d''API, 5 canaux, préparation des tests techniques, chiffrage par tâches et devis en 8 points, paiements et évolution.', 'Les entreprises recrutent des développeurs back-end sur la base de ce qu''ils ont construit et de la qualité de leur code. Ce dernier module vous montre comment présenter vos projets, trouver un poste ou des missions, fixer vos prix, rédiger un devis et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de développeur back-end.
+> 2. Trouver un poste ou des missions grâce à 5 canaux.
+> 3. Préparer un test technique et un entretien.
+> 4. Chiffrer un projet et rédiger un devis.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+### Ce qu''un recruteur regarde
+
+1. **2 ou 3 API complètes** sur GitHub, avec un README clair : ce que fait l''API, comment la lancer, les routes, des exemples.
+2. **La qualité du code** : organisation des fichiers, noms clairs, validation, gestion des erreurs.
+3. **La sécurité** : mots de passe hachés, requêtes préparées, aucun secret dans le dépôt.
+4. **Les tests** automatiques.
+5. **Une version en ligne** de l''API ou une démonstration vidéo.
+
+> [!astuce]
+> Associez votre API à un petit front-end (le vôtre ou celui d''un partenaire) : un recruteur comprend mieux un projet qu''il peut utiliser. Une courte vidéo de démonstration de 2 minutes est aussi très efficace.
+
+## Où trouver un poste ou des missions : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Entreprises de services numériques à Madagascar** | Candidatez avec votre portfolio, préparez leurs tests techniques |
+| 2 | **Start-up malgaches** | Proposez vos compétences en intégration de paiement et en API |
+| 3 | **Agences web** | Fonctions sur mesure, maintenance d''applications PHP |
+| 4 | **Entreprises et agences étrangères** | Postes à distance, missions de maintenance ou de développement d''API |
+| 5 | **Plateformes de freelance** | Petites missions : corrections, API simples, connexions de services ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une agence web
+> « Bonjour, je suis développeur back-end (Node.js, PHP, PostgreSQL), basé à Antananarivo. Je développe des API sécurisées : comptes utilisateurs, commandes, intégration de paiements et d''e-mails. Voici un projet récent, une API de commandes avec paiement Mobile Money vérifié : [lien GitHub] et sa démonstration : [lien]. Je peux prendre en charge la partie serveur de vos projets ou la maintenance de vos applications existantes. »
+
+## Préparer un test technique
+
+| Type de test | Ce qui est évalué | Préparation |
+| --- | --- | --- |
+| **Questions de base** | HTTP, SQL, sécurité, langage choisi | Révisez les modules 2 et 3, expliquez à voix haute |
+| **Exercice SQL** | Requêtes avec jointures et regroupements | Pratiquez sur des jeux de données |
+| **Petite API à coder** | Organisation, validation, tests | Refaites votre API en temps limité |
+| **Lecture de code** | Trouver les bugs et les failles | Relisez du code avec la liste des 6 règles de sécurité |
+
+## Chiffrer un projet
+
+1. **Tarif horaire** : revenu mensuel visé ÷ heures facturables (exemple : 2 000 000 Ar ÷ 100 h = 20 000 Ar de l''heure).
+2. **Découpez** le projet en tâches et estimez chacune.
+3. **Ajoutez** 25 % de marge pour les imprévus.
+
+| Tâche (API Mofo Express) | Estimation |
+| --- | --- |
+| Conception des tables et des routes | 4 h |
+| Comptes et droits | 6 h |
+| Produits et commandes | 8 h |
+| Paiements et validation | 6 h |
+| Tests | 6 h |
+| Déploiement et sauvegardes | 4 h |
+| Documentation | 2 h |
+| **Sous-total** | **36 h** |
+| Marge 25 % | 9 h |
+| **Total** | **45 h × 20 000 Ar = 900 000 Ar** |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Le devis en 8 points
+
+1. **Le périmètre** : routes, fonctions, ce qui n''est pas compris (front-end, design, hébergement).
+2. **Ce que le client fournit** : accès, contenus, comptes des services externes.
+3. **La technologie** choisie.
+4. **Les tests** et la documentation livrés.
+5. **Le calendrier** et les étapes.
+6. **Le prix** et les échéances (par exemple 40 % au début, 60 % à la livraison).
+7. **La propriété du code** après paiement complet.
+8. **La maintenance** : garantie de correction pendant 30 jours, puis contrat mensuel possible.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur back-end confirmé** | Framework (Laravel, Symfony, NestJS), TypeScript, performance des bases de données |
+| **Développeur full-stack** | Front-end React (voir la formation Développeur front-end) |
+| **DevOps** | Docker, intégration continue, surveillance (voir la formation Administrateur systèmes et DevOps) |
+| **Spécialiste sécurité** | Tests de sécurité, normes (voir la formation Analyste en cybersécurité) |
+| **Architecte** | Conception de systèmes à grande échelle |
+
+> [!retenir]
+> - 2 ou 3 API complètes, testées, sécurisées et documentées.
+> - Entreprises de services numériques, start-up, agences, entreprises étrangères, plateformes.
+> - Préparez les questions de base, le SQL, une API en temps limité et la lecture de code.
+> - Chiffrez par tâches avec une marge, et rédigez un devis en 8 points.
+> - Évoluez vers un framework, le full-stack, le DevOps ou la sécurité.
+
+## Exercice pratique : lancer votre carrière
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Améliorez le README de vos projets et enregistrez une démonstration de 2 minutes.
+> 2. Faites un test d''entraînement : 10 questions SQL et une petite API en 2 heures.
+> 3. Chiffrez un projet d''API de 10 routes et rédigez le devis.
+> 4. Listez 10 entreprises ou agences et envoyez au moins 2 candidatures ou messages.
+>
+> **À livrer** : vos liens GitHub, votre vidéo, votre chiffrage, votre devis et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 4, 0, 'Que regarde un recruteur dans un dépôt ?', '["La couleur du thème","Rien","Le nombre d''emojis","README, qualité du code, sécurité et tests"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 4, 1, '36 heures plus 25 % de marge font…', '["61 heures","40 heures","36 heures","45 heures"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-f', 4, 2, 'Quand la propriété du code passe-t-elle au client ?', '["Avant le début","Jamais","Après le paiement complet","Au premier commit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que gère le back-end ?', '["L''impression","Les données, les règles, la sécurité et les API","Uniquement les images","Uniquement les couleurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle est la dernière étape du trajet d''une requête ?', '["L''envoi de la requête","La réponse du serveur","La lecture du formulaire","Le choix de la police"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que fait un développeur full-stack ?', '["La comptabilité","Le front-end et le back-end","Seulement le design","Seulement la base de données"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Combien de langages serveur choisir pour commencer ?', '["Un seul, plus SQL","Seulement HTML","Aucun","Cinq en même temps"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que signifie le code 404 ?', '["Créé","Succès","Conflit","Introuvable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que signifie le code 401 ?', '["Non authentifié","Interdit malgré la connexion","Erreur du serveur","Succès"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle adresse REST liste les chambres ?', '["POST /api/supprimer","GET /api/chambres","DELETE /api/chambres","GET /chambres.html?action=liste&x=1"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quel format est souvent utilisé par les API ?', '["DOCX","JSON","MP3","JPEG"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Qu''est-ce qu''une clé étrangère ?', '["Une clé USB","Un mot de passe étranger","Une colonne qui relie une ligne à une autre table","Un index de livre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que se passe-t-il avec un DELETE sans WHERE ?', '["Rien","Toutes les lignes sont supprimées","Une seule ligne est supprimée","La table est copiée"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Comment éviter l''injection SQL ?', '["Utiliser des majuscules","Construire le SQL avec le texte de l''utilisateur","Cacher le formulaire","Utiliser des requêtes préparées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Où vérifier les données reçues ?', '["Seulement dans le navigateur","Dans le CSS","Nulle part","Côté serveur, toujours"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle bibliothèque Node.js sert à créer des routes ?', '["Canva","Express","Figma","Excel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que fait $1 dans une requête PostgreSQL ?', '["Il supprime la table","Il marque un paramètre envoyé à part","Rien","Il vaut toujours 1 dollar"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'En PHP, quel outil permet les requêtes préparées ?', '["header","include","echo","PDO"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Qu''est-ce qu''un VPS ?', '["Une base de données gratuite","Un téléphone","Un logiciel de dessin","Un serveur virtuel loué avec son propre système"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quel outil sert à tester une API ?', '["CapCut","Postman ou Insomnia","Photoshop","Word"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quel message d''erreur de connexion est le plus sûr ?', '["Identifiants incorrects","Ce numéro n''existe pas","Mot de passe faux pour ce numéro","Le mot de passe commence par A"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Qu''est-ce qu''un jeton JWT ?', '["Un mot de passe en clair","Une table","Une pièce de monnaie","Un texte signé qui prouve l''identité à chaque requête"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Comment empêcher qu''une référence Mobile Money serve deux fois ?', '["Demander au client de promettre","Un commentaire dans le code","Une contrainte UNIQUE dans la base","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que doit enregistrer la validation d''un paiement ?', '["La couleur préférée du gérant","Le mot de passe du client","Qui a validé et quand","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que faut-il activer pour une API en ligne ?', '["Le mode avion","Le partage public de la base","HTTPS","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que faire des sauvegardes de la base ?', '["Les supprimer","Les publier","Les programmer chaque jour et tester une restauration","Ne jamais les tester"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Pourquoi associer l''API à un petit front-end dans le portfolio ?', '["Le recruteur comprend mieux un projet qu''il peut utiliser","Pour ralentir l''API","Pour cacher le code","C''est obligatoire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle évolution demande Docker et l''intégration continue ?', '["Traducteur","DevOps","Professeur de langue","Graphiste"]'::jsonb, 1);
 
 -- dev-3-a
 delete from public.exam_questions where course_id = 'dev-3-a';

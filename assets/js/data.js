@@ -1682,6 +1682,92 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-1-f": {
+  "hours": 20,
+  "description": "Le développeur back-end construit la partie serveur des applications : données, règles, sécurité et API. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des agences, à Madagascar et à l'étranger, avec PHP, Node.js et SQL : HTTP et API REST, bases de données, sécurité, comptes et droits, paiements, tests et déploiement. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le rôle du back-end et le trajet d'une requête",
+   "Utiliser HTTP, concevoir des API REST et des bases de données relationnelles",
+   "Écrire du SQL et appliquer les règles de sécurité de base",
+   "Créer une API avec Node.js et Express, et comprendre l'équivalent en PHP",
+   "Gérer comptes, droits, commandes, paiements, tests et déploiement",
+   "Construire un portfolio, réussir un test technique, chiffrer un projet et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de développeur back-end depuis Madagascar",
+    "summary": "Ce que fait le back-end, les API, le trajet d'une requête, front-end, back-end et full-stack, les outils de base, les tâches, les clients et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le trajet d'une requête",
+     "Front-end, back-end, full-stack",
+     "Les langages et outils de base",
+     "Les tâches courantes",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : votre point de départ"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : HTTP, API REST, bases de données, SQL et sécurité",
+    "summary": "Méthodes et codes HTTP, routes REST et JSON, tables, clés et contraintes, requêtes SQL essentielles et 6 règles de sécurité.",
+    "sections": [
+     "HTTP : le langage du web",
+     "Les API REST",
+     "Concevoir une base de données",
+     "Le SQL essentiel",
+     "Les 6 règles de sécurité de base",
+     "Exercice pratique : concevoir une API"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Node.js, Express, PostgreSQL, PHP, Postman et outils payants",
+    "summary": "Création d'une API avec Express, requêtes préparées, validation et erreurs, équivalent PHP avec PDO, tests dans Postman, PhpStorm, Copilot et VPS.",
+    "sections": [
+     "Les outils gratuits",
+     "Une API avec Node.js et Express",
+     ".env  (à ajouter dans .gitignore)",
+     "Valider les données et gérer les erreurs",
+     "L'équivalent en PHP",
+     "Tester une API",
+     "Les outils payants",
+     "Exercice pratique : votre première API"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : l'API de commandes Mofo Express",
+    "summary": "Conception des tables et des routes, comptes, jetons et rôles, statuts de commande et paiement Mobile Money, transactions, tests automatiques et déploiement.",
+    "sections": [
+     "Le cas pratique : « Mofo Express »",
+     "Étape 1 : concevoir l'API",
+     "Étape 2 : comptes, connexion et droits",
+     "Étape 3 : commande et paiement",
+     "Étape 4 : les tests automatiques",
+     "Étape 5 : déployer",
+     "Exercice pratique : l'API Mofo Express"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver un poste ou des missions et se faire payer",
+    "summary": "Portfolio d'API, 5 canaux, préparation des tests techniques, chiffrage par tâches et devis en 8 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver un poste ou des missions : 5 canaux",
+     "Préparer un test technique",
+     "Chiffrer un projet",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre carrière"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "dev-3-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur WordPress et Shopify un spécialiste recherché : audit, cahier des charges et offres à prix fixe, outils professionnels (Elementor Pro, thèmes premium, fonctions avancées de Shopify, un peu de Liquid et de PHP), méthode de travail sans risque (préproduction, Git, vitesse, sécurité, recette), sites conformes, multilingues et multidevises pour l'international, puis revenus récurrents et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

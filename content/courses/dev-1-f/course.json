@@ -1,0 +1,97 @@
+{
+  "id": "dev-1-f",
+  "hours": 20,
+  "description": "Le développeur back-end construit la partie serveur des applications : données, règles, sécurité et API. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des agences, à Madagascar et à l'étranger, avec PHP, Node.js et SQL : HTTP et API REST, bases de données, sécurité, comptes et droits, paiements, tests et déploiement. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le rôle du back-end et le trajet d'une requête",
+    "Utiliser HTTP, concevoir des API REST et des bases de données relationnelles",
+    "Écrire du SQL et appliquer les règles de sécurité de base",
+    "Créer une API avec Node.js et Express, et comprendre l'équivalent en PHP",
+    "Gérer comptes, droits, commandes, paiements, tests et déploiement",
+    "Construire un portfolio, réussir un test technique, chiffrer un projet et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de développeur back-end depuis Madagascar",
+      "summary": "Ce que fait le back-end, les API, le trajet d'une requête, front-end, back-end et full-stack, les outils de base, les tâches, les clients et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une API ?", "options": ["Une porte d'entrée qui permet à d'autres programmes d'échanger des données", "Une couleur de bouton", "Une base de données", "Un ordinateur"], "correct": 0 },
+        { "q": "Où s'exécute le code back-end ?", "options": ["Sur le serveur", "Dans le navigateur", "Dans l'imprimante", "Sur une clé USB"], "correct": 0 },
+        { "q": "Quel langage sert à interroger une base de données ?", "options": ["SQL", "CSS", "HTML", "Markdown"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : HTTP, API REST, bases de données, SQL et sécurité",
+      "summary": "Méthodes et codes HTTP, routes REST et JSON, tables, clés et contraintes, requêtes SQL essentielles et 6 règles de sécurité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle méthode HTTP crée une ressource ?", "options": ["POST", "GET", "DELETE", "HEAD"], "correct": 0 },
+        { "q": "Quel code indique que la chambre est déjà réservée ?", "options": ["409", "200", "201", "500"], "correct": 0 },
+        { "q": "Comment protéger les mots de passe ?", "options": ["Les hacher avec bcrypt ou Argon2", "Les stocker en clair", "Les envoyer par e-mail", "Les écrire dans le code"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Node.js, Express, PostgreSQL, PHP, Postman et outils payants",
+      "summary": "Création d'une API avec Express, requêtes préparées, validation et erreurs, équivalent PHP avec PDO, tests dans Postman, PhpStorm, Copilot et VPS.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où mettre la chaîne de connexion à la base ?", "options": ["Dans le fichier .env exclu de Git", "Dans le README", "Dans le code publié", "Dans un commentaire"], "correct": 0 },
+        { "q": "Que renvoyer au client en cas d'erreur technique ?", "options": ["Un message simple, le détail dans les journaux", "Le message complet de la base", "Le chemin des fichiers", "Le mot de passe"], "correct": 0 },
+        { "q": "Combien de cas tester au minimum par route ?", "options": ["Un cas réussi et deux cas d'erreur", "Aucun", "Un seul cas réussi", "Cent cas"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'API de commandes Mofo Express",
+      "summary": "Conception des tables et des routes, comptes, jetons et rôles, statuts de commande et paiement Mobile Money, transactions, tests automatiques et déploiement.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui doit calculer le total d'une commande ?", "options": ["Le serveur, avec les prix de la base", "Le navigateur", "Le client", "Personne"], "correct": 0 },
+        { "q": "À quoi sert une transaction de base de données ?", "options": ["Exécuter plusieurs opérations en tout ou rien", "Payer une facture", "Envoyer un SMS", "Changer de mot de passe"], "correct": 0 },
+        { "q": "Quel code renvoyer quand un client appelle une route du gérant ?", "options": ["403", "200", "201", "302"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver un poste ou des missions et se faire payer",
+      "summary": "Portfolio d'API, 5 canaux, préparation des tests techniques, chiffrage par tâches et devis en 8 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que regarde un recruteur dans un dépôt ?", "options": ["README, qualité du code, sécurité et tests", "Le nombre d'emojis", "La couleur du thème", "Rien"], "correct": 0 },
+        { "q": "36 heures plus 25 % de marge font…", "options": ["45 heures", "36 heures", "61 heures", "40 heures"], "correct": 0 },
+        { "q": "Quand la propriété du code passe-t-elle au client ?", "options": ["Après le paiement complet", "Avant le début", "Jamais", "Au premier commit"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que gère le back-end ?", "options": ["Les données, les règles, la sécurité et les API", "Uniquement les couleurs", "Uniquement les images", "L'impression"], "correct": 0 },
+    { "q": "Quelle est la dernière étape du trajet d'une requête ?", "options": ["La réponse du serveur", "L'envoi de la requête", "La lecture du formulaire", "Le choix de la police"], "correct": 0 },
+    { "q": "Que fait un développeur full-stack ?", "options": ["Le front-end et le back-end", "Seulement le design", "Seulement la base de données", "La comptabilité"], "correct": 0 },
+    { "q": "Combien de langages serveur choisir pour commencer ?", "options": ["Un seul, plus SQL", "Cinq en même temps", "Aucun", "Seulement HTML"], "correct": 0 },
+    { "q": "Que signifie le code 404 ?", "options": ["Introuvable", "Créé", "Succès", "Conflit"], "correct": 0 },
+    { "q": "Que signifie le code 401 ?", "options": ["Non authentifié", "Interdit malgré la connexion", "Succès", "Erreur du serveur"], "correct": 0 },
+    { "q": "Quelle adresse REST liste les chambres ?", "options": ["GET /api/chambres", "POST /api/supprimer", "GET /chambres.html?action=liste&x=1", "DELETE /api/chambres"], "correct": 0 },
+    { "q": "Quel format est souvent utilisé par les API ?", "options": ["JSON", "JPEG", "MP3", "DOCX"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une clé étrangère ?", "options": ["Une colonne qui relie une ligne à une autre table", "Un mot de passe étranger", "Une clé USB", "Un index de livre"], "correct": 0 },
+    { "q": "Que se passe-t-il avec un DELETE sans WHERE ?", "options": ["Toutes les lignes sont supprimées", "Rien", "Une seule ligne est supprimée", "La table est copiée"], "correct": 0 },
+    { "q": "Comment éviter l'injection SQL ?", "options": ["Utiliser des requêtes préparées", "Construire le SQL avec le texte de l'utilisateur", "Cacher le formulaire", "Utiliser des majuscules"], "correct": 0 },
+    { "q": "Où vérifier les données reçues ?", "options": ["Côté serveur, toujours", "Seulement dans le navigateur", "Nulle part", "Dans le CSS"], "correct": 0 },
+    { "q": "Quelle bibliothèque Node.js sert à créer des routes ?", "options": ["Express", "Canva", "Figma", "Excel"], "correct": 0 },
+    { "q": "Que fait $1 dans une requête PostgreSQL ?", "options": ["Il marque un paramètre envoyé à part", "Il vaut toujours 1 dollar", "Il supprime la table", "Rien"], "correct": 0 },
+    { "q": "En PHP, quel outil permet les requêtes préparées ?", "options": ["PDO", "echo", "header", "include"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un VPS ?", "options": ["Un serveur virtuel loué avec son propre système", "Un logiciel de dessin", "Une base de données gratuite", "Un téléphone"], "correct": 0 },
+    { "q": "Quel outil sert à tester une API ?", "options": ["Postman ou Insomnia", "Photoshop", "Word", "CapCut"], "correct": 0 },
+    { "q": "Quel message d'erreur de connexion est le plus sûr ?", "options": ["Identifiants incorrects", "Mot de passe faux pour ce numéro", "Ce numéro n'existe pas", "Le mot de passe commence par A"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un jeton JWT ?", "options": ["Un texte signé qui prouve l'identité à chaque requête", "Une pièce de monnaie", "Un mot de passe en clair", "Une table"], "correct": 0 },
+    { "q": "Comment empêcher qu'une référence Mobile Money serve deux fois ?", "options": ["Une contrainte UNIQUE dans la base", "Demander au client de promettre", "Rien", "Un commentaire dans le code"], "correct": 0 },
+    { "q": "Que doit enregistrer la validation d'un paiement ?", "options": ["Qui a validé et quand", "Rien", "La couleur préférée du gérant", "Le mot de passe du client"], "correct": 0 },
+    { "q": "Que faut-il activer pour une API en ligne ?", "options": ["HTTPS", "Le mode avion", "Le partage public de la base", "Rien"], "correct": 0 },
+    { "q": "Que faire des sauvegardes de la base ?", "options": ["Les programmer chaque jour et tester une restauration", "Ne jamais les tester", "Les supprimer", "Les publier"], "correct": 0 },
+    { "q": "Pourquoi associer l'API à un petit front-end dans le portfolio ?", "options": ["Le recruteur comprend mieux un projet qu'il peut utiliser", "C'est obligatoire", "Pour cacher le code", "Pour ralentir l'API"], "correct": 0 },
+    { "q": "Quelle évolution demande Docker et l'intégration continue ?", "options": ["DevOps", "Graphiste", "Traducteur", "Professeur de langue"], "correct": 0 }
+  ]
+}
