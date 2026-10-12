@@ -74,7 +74,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 10, false),
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
-  ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, false),
+  ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, false),
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 14, false),
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, false),
@@ -105,6 +105,620 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
+
+-- client-0-a
+delete from public.exam_questions where course_id = 'client-0-a';
+delete from public.module_questions where course_id = 'client-0-a';
+delete from public.lessons where course_id = 'client-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-a', 0, 'Se spécialiser : vente, support, fidélisation', 'Les 6 spécialités avancées, la découverte en 4 types de questions, caractéristique – avantage – preuve, conclusion et fidélisation.', 'Après quelques mois au téléphone, un téléconseiller peut rester sur des appels simples… ou se spécialiser dans des missions plus exigeantes et mieux payées : la vente, le support technique, le service client bilingue, la fidélisation. Ce module vous présente ces spécialités et vous apprend les techniques de conversation qui font la différence.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du métier.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener une découverte approfondie avec la méthode des 4 types de questions.
+> 4. Présenter une offre avec la méthode caractéristique – avantage – preuve.
+> 5. Conclure un appel de vente ou de fidélisation.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce qu''on fait | Ce qu''il faut |
+| --- | --- | --- | --- |
+| 1 | **Prise de rendez-vous qualifiés pour les entreprises** | Appeler des entreprises pour fixer des rendez-vous à des commerciaux | Aisance, résistance aux refus, compréhension des offres B2B |
+| 2 | **Vente à distance** | Présenter une offre et conclure la vente au téléphone | Écoute, persuasion, connaissance du produit |
+| 3 | **Support technique de niveau 2** | Résoudre les problèmes que le premier niveau n''a pas pu régler | Logique, patience, connaissances techniques |
+| 4 | **Service client bilingue** | Répondre en français et en anglais | Anglais oral courant |
+| 5 | **Fidélisation et rétention** | Appeler les clients qui veulent partir et leur proposer une solution | Empathie, sens de la négociation |
+| 6 | **Recouvrement amiable** | Relancer des factures impayées, négocier un échéancier | Fermeté polie, respect strict des règles |
+
+> [!definition] B2B et B2C
+> **B2B** (*business to business*) : une entreprise qui vend à d''autres entreprises. **B2C** (*business to consumer*) : une entreprise qui vend à des particuliers. Les appels B2B sont souvent mieux payés, mais demandent de comprendre le métier du client.
+
+> [!definition] Niveaux de support
+> Le **niveau 1** traite les demandes simples avec la base de connaissances. Le **niveau 2** traite les problèmes plus complexes transmis par le niveau 1. Le **niveau 3** est souvent l''équipe technique ou les ingénieurs.
+
+## Choisir sa spécialité
+
+1. **Regardez vos indicateurs** (Fondamentaux, module 4) : êtes-vous meilleur en résolution, en satisfaction ou en transformation ?
+2. **Écoutez vos préférences** : préférez-vous aider (support, service client) ou convaincre (vente, rendez-vous) ?
+3. **Évaluez votre anglais** : un bon anglais oral ouvre les postes bilingues, souvent mieux payés.
+4. **Regardez les offres** : quelles spécialités recrutent en télétravail en ce moment ?
+
+> [!madagascar] Votre avantage
+> Les entreprises francophones cherchent des téléconseillers spécialisés capables de comprendre leurs offres (logiciels, énergie, assurance, services aux entreprises). Un téléconseiller malgache formé et stable dans une spécialité est très recherché, surtout s''il parle aussi anglais.
+
+## La découverte approfondie : 4 types de questions
+
+Au niveau avancé, la découverte du besoin est l''étape la plus importante. Une bonne découverte fait que le client **se convainc lui-même**.
+
+| Type | But | Exemple (logiciel de facturation pour artisans) |
+| --- | --- | --- |
+| **1. Situation** | Comprendre le contexte | « Comment faites-vous vos devis et factures aujourd''hui ? » |
+| **2. Problème** | Faire apparaître les difficultés | « Combien de temps cela vous prend-il chaque semaine ? Vous arrive-t-il d''oublier de relancer une facture ? » |
+| **3. Conséquence** | Faire mesurer l''impact | « Que représentent ces factures oubliées sur une année ? » |
+| **4. Bénéfice** | Faire imaginer la solution | « Si vos relances partaient automatiquement, qu''est-ce que ça changerait pour vous ? » |
+
+> [!astuce]
+> Posez **peu de questions de situation** (elles agacent si elles sont trop nombreuses) et **plus de questions de problème et de conséquence**. Préparez-les à l''avance pour chaque campagne.
+
+## Présenter une offre : caractéristique – avantage – preuve
+
+Ne récitez pas une liste de fonctions. Reliez chaque élément au besoin entendu pendant la découverte.
+
+| Étape | Exemple |
+| --- | --- |
+| **Caractéristique** (ce que c''est) | « Le logiciel envoie les relances automatiquement… » |
+| **Avantage** (ce que ça change pour lui) | « … vous n''avez plus besoin d''y penser le soir, et vos factures sont payées plus vite… » |
+| **Preuve** (pourquoi le croire) | « … un menuisier de Lyon qui l''utilise depuis 6 mois nous dit qu''il a réduit ses retards de paiement de moitié. » |
+
+Utilisez uniquement des preuves **vraies**, fournies par l''entreprise (témoignages, chiffres, études de cas).
+
+## Conclure
+
+### Les signaux d''achat
+
+1. Le client pose des questions sur le **prix**, les **délais** ou la **mise en place**.
+2. Il parle **au futur** : « Et quand je l''aurai, je pourrai… »
+3. Il demande s''il peut **essayer**.
+
+### Les 3 façons de conclure
+
+| Méthode | Exemple |
+| --- | --- |
+| **La question directe** | « Voulez-vous qu''on démarre votre essai aujourd''hui ? » |
+| **L''alternative** | « Vous préférez la formule mensuelle ou annuelle ? » |
+| **Le résumé** | « Si je résume : gain de temps, relances automatiques, essai gratuit d''un mois. On lance l''essai ? » |
+
+> [!attention]
+> Ne mentez jamais, ne mettez pas de pression excessive et respectez un **refus clair**. Une vente forcée se termine souvent par une annulation, une réclamation, et une mauvaise réputation pour l''entreprise. Dans de nombreux pays, la vente par téléphone est encadrée par la loi : suivez strictement les règles et le script légal de l''entreprise.
+
+## La fidélisation : retenir un client qui veut partir
+
+1. **Écoutez la raison** sans l''interrompre.
+2. **Reformulez** et reconnaissez la frustration.
+3. **Cherchez la vraie cause** : prix, problème technique, service décevant, déménagement.
+4. **Proposez une solution adaptée**, dans les limites autorisées (formule moins chère, geste commercial, intervention technique).
+5. **Respectez la décision** si le client maintient sa résiliation, et facilitez-la : un client qui part bien peut revenir.
+
+> [!retenir]
+> - 6 spécialités : rendez-vous B2B, vente, support niveau 2, bilingue, fidélisation, recouvrement.
+> - Choisissez avec vos indicateurs, vos préférences et votre anglais.
+> - Découverte : situation, problème, conséquence, bénéfice.
+> - Présentation : caractéristique, avantage, preuve vraie.
+> - Conclure sans pression, et respecter un refus.
+
+## Exercice pratique : un appel de vente complet
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Choisissez un produit réel (logiciel, abonnement, service) et préparez 8 questions de découverte (2 de chaque type).
+> 3. Préparez 3 présentations caractéristique – avantage – preuve.
+> 4. Simulez 3 appels avec un proche (client intéressé, client hésitant, client qui refuse) et enregistrez-les.
+> 5. Notez pour chaque appel : les signaux d''achat entendus et la méthode de conclusion utilisée.
+>
+> **À livrer** : votre choix de spécialité, vos questions, vos présentations, vos enregistrements et vos notes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 0, 0, 'Que signifie B2B ?', '["Une entreprise qui vend à des particuliers","Un logiciel","Une entreprise qui vend à d''autres entreprises","Un type de casque"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 0, 1, 'Quel type de question fait mesurer l''impact d''un problème ?', '["La question d''accueil","La question fermée","La question de conséquence","La question de situation"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 0, 2, 'Quel est un signal d''achat ?', '["Le client dit non clairement","Le client demande le délai de mise en place","Le client ne parle pas","Le client raccroche"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-a', 1, 'Outils professionnels : Aircall et Salesforce', 'Numéroteur, étiquettes, enregistrements et statistiques ; pistes, comptes, contacts, opportunités et requêtes ; vues, rapports et formations gratuites.', 'Dans les entreprises qui recrutent des téléconseillers avancés, deux outils reviennent sans cesse : **Aircall** pour la téléphonie et **Salesforce** pour la gestion des clients. Ils sont fournis par l''entreprise, mais ceux qui les maîtrisent dès le premier jour sont plus productifs et plus vite promus. Ce module vous apprend leurs fonctions avancées.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées d''Aircall : numéroteur, étiquettes, notes, enregistrements, statistiques.
+> 2. Comprendre l''organisation de Salesforce : pistes, contacts, comptes, opportunités, requêtes.
+> 3. Suivre un prospect dans Salesforce, du premier appel à l''opportunité.
+> 4. Créer des vues et lire des rapports.
+> 5. Vous former gratuitement pour prouver vos compétences.
+
+## Aircall : la téléphonie des équipes à distance
+
+> [!definition] Téléphonie en ligne
+> Un service qui fournit des numéros de téléphone dans de nombreux pays et permet d''appeler depuis un ordinateur, avec un simple casque. Les appels, les enregistrements et les statistiques sont centralisés pour toute l''équipe.
+
+### Les fonctions à maîtriser
+
+| Fonction | À quoi elle sert |
+| --- | --- |
+| **Numéroteur** (*power dialer*) | Enchaîner automatiquement les appels d''une liste, sans composer les numéros |
+| **Étiquettes** (*tags*) | Classer chaque appel : rendez-vous fixé, rappel, refus, faux numéro |
+| **Notes d''appel** | Résumer l''appel, visible par toute l''équipe |
+| **Transferts** et **conférences** | Passer l''appel à un collègue ou l''ajouter à la conversation |
+| **Enregistrement** | Réécouter un appel pour la qualité et la formation, selon les règles légales |
+| **Messagerie vocale** | Messages déposés par les clients, à rappeler |
+| **Statistiques** | Nombre d''appels, durée, appels manqués, temps d''attente |
+| **Intégrations** | Lien avec le CRM (Salesforce, HubSpot) : chaque appel s''enregistre dans la fiche du client |
+
+### Une session de numérotation efficace
+
+1. **Préparez la liste** dans le CRM : contacts à appeler, filtrés et triés.
+2. **Lancez le numéroteur** avec cette liste.
+3. Pendant chaque appel, **gardez la fiche du contact ouverte** (elle s''affiche automatiquement avec l''intégration).
+4. Après chaque appel : **étiquette + note courte** en moins de 30 secondes.
+5. **Planifiez les rappels** demandés dans le CRM, avec date et heure.
+6. En fin de session : **regardez vos statistiques** et notez 1 amélioration.
+
+> [!attention]
+> L''enregistrement des appels est encadré par la loi dans de nombreux pays : le client doit souvent être **informé** (« Cet appel peut être enregistré… »). Suivez strictement la procédure de l''entreprise.
+
+## Salesforce : l''organisation des données clients
+
+Salesforce est un CRM très utilisé par les entreprises de toutes tailles. Il range les informations dans des **objets**.
+
+| Objet | Ce que c''est | Exemple |
+| --- | --- | --- |
+| **Piste** (*Lead*) | Une personne intéressée, pas encore qualifiée | Un artisan qui a téléchargé un guide sur le site |
+| **Compte** (*Account*) | Une entreprise ou un client | « Menuiserie Dupont » |
+| **Contact** | Une personne liée à un compte | M. Dupont, gérant |
+| **Opportunité** (*Opportunity*) | Une vente possible, avec un montant et une étape | « Logiciel – 12 licences – étape : rendez-vous fixé » |
+| **Requête** (*Case*) | Une demande ou un problème du client (service client) | « Erreur à l''export des factures » |
+| **Tâche** et **événement** | Un rappel à faire, un rendez-vous | « Rappeler M. Dupont jeudi 10 h » |
+
+### Suivre un prospect, du premier appel à l''opportunité
+
+1. **Ouvrez la piste** et lisez son historique (source, pages visitées, échanges).
+2. **Appelez** et menez la découverte (module 1).
+3. **Mettez à jour** les champs : taille de l''entreprise, besoin, budget, décideur, délai.
+4. Si la personne correspond aux critères : **convertissez la piste** en compte, contact et opportunité.
+5. **Fixez le rendez-vous** pour le commercial et créez l''événement.
+6. Si ce n''est pas le moment : **tâche de rappel** avec la date convenue.
+7. Si ce n''est pas un bon prospect : **statut « non qualifié »** avec la raison.
+
+> [!definition] Qualification
+> Vérifier qu''un prospect correspond à l''offre : il a le besoin, le budget, le pouvoir de décider, et un délai réaliste. Beaucoup d''entreprises utilisent une grille de questions précise pour cela.
+
+### Les vues de liste
+
+Une **vue de liste** est un filtre enregistré : « Mes pistes à rappeler aujourd''hui », « Requêtes ouvertes depuis plus de 48 h ». Créez vos propres vues pour commencer chaque journée avec la bonne liste.
+
+### Lire un rapport
+
+Les responsables suivent l''activité avec des **rapports** et des **tableaux de bord**. Comprenez au minimum :
+
+1. **Le nombre d''appels** et de contacts joints par jour.
+2. **Le nombre de rendez-vous fixés** ou de ventes, et le **taux de transformation**.
+3. **Le pipeline** : les opportunités à chaque étape.
+
+> [!definition] Pipeline
+> L''ensemble des opportunités en cours, classées par étape (nouveau, rendez-vous fixé, proposition envoyée, négociation, gagné, perdu). Il montre ce qui pourrait être vendu dans les semaines à venir.
+
+## Les autres outils fréquents
+
+| Outil | Usage |
+| --- | --- |
+| **HubSpot** | CRM complet, très utilisé par les PME |
+| **Zendesk**, **Freshdesk** | Service client multicanal (téléphone, e-mail, chat), requêtes |
+| **Ringover**, **RingCentral** | Autres solutions de téléphonie en ligne |
+| **Slack**, **Microsoft Teams** | Communication avec l''équipe et les superviseurs |
+
+Les principes sont les mêmes partout : fiche client, historique, statut, tâches, rapports.
+
+## Se former gratuitement et le prouver
+
+1. **Trailhead** (Salesforce) : parcours gratuits en ligne, avec badges à afficher sur votre CV et LinkedIn. Commencez par les modules d''introduction à Salesforce et à la gestion des pistes et opportunités.
+2. **HubSpot Academy** : cours gratuits sur la vente et le service client, avec certificats.
+3. **Les centres d''aide** d''Aircall et des autres outils : guides et vidéos.
+
+> [!madagascar]
+> Ces formations sont en ligne et gratuites, en anglais pour la plupart (parfois en français). Elles demandent une bonne connexion : téléchargez les contenus ou suivez-les aux heures où votre connexion est la meilleure. Un badge Trailhead sur votre CV fait souvent la différence face à d''autres candidats.
+
+> [!retenir]
+> - Aircall : numéroteur, étiquettes, notes, enregistrements (selon la loi), statistiques.
+> - Salesforce : pistes, comptes, contacts, opportunités, requêtes, tâches.
+> - Une piste qualifiée devient une opportunité ; sinon, rappel ou statut avec raison.
+> - Des vues de liste pour chaque journée, et des rapports pour suivre ses résultats.
+> - Trailhead et HubSpot Academy : des formations gratuites qui se voient sur le CV.
+
+## Exercice pratique : un mini-CRM de campagne
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un compte d''entraînement Salesforce gratuit (*Developer Edition* ou environnement Trailhead) et suivez un premier module Trailhead.
+> 2. Créez 10 pistes fictives d''artisans, avec source et besoin.
+> 3. Simulez les appels : qualifiez-en 3, convertissez-les en opportunités, planifiez 4 rappels, marquez 3 pistes « non qualifiées » avec la raison.
+> 4. Créez une vue « Mes rappels de la semaine ».
+> 5. Faites une capture du pipeline de vos opportunités.
+>
+> **À livrer** : votre badge Trailhead, des captures de vos pistes, opportunités, vue et pipeline.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 1, 0, 'À quoi sert un numéroteur (power dialer) ?', '["Écrire des e-mails","Enchaîner automatiquement les appels d''une liste","Enregistrer des chansons","Calculer les salaires"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 1, 1, 'Dans Salesforce, que devient une piste qualifiée ?', '["Un compte, un contact et une opportunité","Une facture","Une requête de support","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 1, 2, 'Qu''est-ce que le pipeline ?', '["Un câble réseau","L''ensemble des opportunités en cours, par étape","Un type d''appel","La liste des employés"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-a', 2, 'Qualité et rapidité : progresser chaque semaine', 'La grille de qualité sur 100, l''analyse des indicateurs, les objections en 4 temps, le script et le test A/B, la gestion de l''énergie.', 'Les meilleurs téléconseillers ne sont pas ceux qui parlent le mieux, mais ceux qui **progressent** chaque semaine : ils écoutent leurs propres appels, mesurent leurs résultats, travaillent leurs points faibles et protègent leur énergie. Ce module vous donne leurs méthodes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Évaluer vos appels avec une grille de qualité.
+> 2. Analyser vos indicateurs et choisir une action d''amélioration.
+> 3. Traiter les objections difficiles avec une méthode en 4 temps.
+> 4. Rédiger et améliorer un script de campagne.
+> 5. Gérer votre énergie et votre stress sur la durée.
+
+## La grille de qualité
+
+Les superviseurs évaluent les appels avec une grille. Utilisez-la vous-même chaque semaine sur **3 de vos appels enregistrés**.
+
+| N° | Critère | Points |
+| --- | --- | --- |
+| 1 | Accueil complet (entreprise, prénom, formule) | /5 |
+| 2 | Identification et vérification du client | /5 |
+| 3 | Découverte : questions ouvertes, problème, conséquence | /15 |
+| 4 | Reformulation avant la solution | /10 |
+| 5 | Solution ou proposition claire, adaptée au besoin | /15 |
+| 6 | Traitement des objections | /10 |
+| 7 | Ton : sourire, rythme, politesse, nom du client utilisé | /10 |
+| 8 | Respect du script légal et des procédures | /10 |
+| 9 | Conclusion : récapitulatif, prochaine étape, remerciement | /10 |
+| 10 | Note dans le CRM : complète et claire | /10 |
+| | **Total** | **/100** |
+
+> [!astuce] Écouter ses appels
+> C''est souvent désagréable au début d''entendre sa propre voix, mais c''est la méthode qui fait le plus progresser. Écoutez une fois pour le **contenu** (ce que vous avez dit), une deuxième fois pour la **forme** (ton, rythme, silences, mots parasites comme « euh » ou « en fait »).
+
+## Analyser ses indicateurs
+
+Chaque semaine, regardez vos chiffres et comparez-les à ceux de l''équipe.
+
+> [!exemple] Analyse d''une semaine de prise de rendez-vous
+>
+> | Indicateur | Vous | Moyenne de l''équipe |
+> | --- | --- | --- |
+> | Appels passés | 420 | 400 |
+> | Personnes jointes | 95 | 100 |
+> | Rendez-vous fixés | 9 | 14 |
+> | Taux de transformation (rendez-vous ÷ personnes jointes) | 9,5 % | 14 % |
+> | Rendez-vous annulés | 3 | 2 |
+>
+> *(Chiffres donnés en exemple.)* Vous appelez autant que les autres, mais vous transformez moins. Le problème n''est pas l''activité, c''est **la conversation**. Action : réécouter 5 appels où la personne a refusé, et repérer à quel moment elle a décroché.
+
+### La méthode : un seul point à la fois
+
+1. Repérez **l''indicateur le plus faible** par rapport à l''équipe.
+2. Trouvez **l''étape de l''appel** qui en est la cause (avec la grille de qualité).
+3. Choisissez **une seule action** pour la semaine (nouvelle accroche, nouvelle réponse à une objection).
+4. Mesurez la semaine suivante.
+
+## Les objections difficiles : la méthode en 4 temps
+
+| Temps | Ce qu''on fait | Exemple : « J''ai déjà un fournisseur. » |
+| --- | --- | --- |
+| **1. Accueillir** | Montrer qu''on a entendu, sans contredire | « C''est bien normal, la plupart de nos clients en avaient un aussi. » |
+| **2. Questionner** | Comprendre ce qu''il y a derrière | « Qu''est-ce qui vous plaît le plus chez lui ? Et s''il y avait une chose à améliorer ? » |
+| **3. Répondre** | Relier l''offre à ce qui a été dit | « Justement, nos clients nous rejoignent souvent pour les relances automatiques que vous venez de citer. » |
+| **4. Avancer** | Proposer une prochaine étape légère | « Je vous propose 20 minutes de démonstration jeudi, pour comparer. Ça vous va ? » |
+
+### Les objections avancées les plus fréquentes
+
+| Objection | Ce qu''elle cache souvent | Piste de réponse |
+| --- | --- | --- |
+| « Envoyez-moi une documentation. » | Une façon polie de raccourcir l''appel | « Avec plaisir. Pour vous envoyer la bonne, une seule question : … » |
+| « Ce n''est pas moi qui décide. » | Le décideur est quelqu''un d''autre | « Qui d''autre participe à la décision ? Pouvons-nous prévoir le rendez-vous avec lui ? » |
+| « Rappelez-moi dans 6 mois. » | Pas prioritaire, ou pas intéressé | « Bien sûr. Qu''est-ce qui aura changé dans 6 mois ? » |
+| « C''est trop cher. » | La valeur n''est pas claire | « Par rapport à quoi ? » puis rappeler le coût du problème (questions de conséquence) |
+
+## Le script de campagne : l''écrire et l''améliorer
+
+Au niveau avancé, on vous demandera parfois de **participer à l''écriture** du script.
+
+### La structure d''un script de prise de rendez-vous B2B
+
+1. **Accroche** en une phrase, liée à un problème courant de la cible.
+2. **Permission** de continuer.
+3. **3 à 5 questions** de qualification.
+4. **Proposition** du rendez-vous avec 2 créneaux.
+5. **Réponses** aux 5 objections principales.
+6. **Confirmation** : date, heure, participants, e-mail de confirmation.
+
+### Le test A/B
+
+> [!definition] Test A/B
+> Comparer deux versions (A et B) d''une même étape, par exemple deux accroches, sur deux groupes d''appels comparables, puis garder celle qui obtient le meilleur résultat.
+
+Testez **une seule différence à la fois**, sur au moins quelques dizaines de contacts joints, avant de conclure.
+
+## Gérer son énergie et son stress
+
+Le téléphone est un métier exigeant : refus répétés, clients agressifs, objectifs chiffrés.
+
+1. **Coupez vos sessions** : 50 minutes d''appels, 10 minutes de pause loin de l''écran.
+2. **Après un appel difficile** : 3 respirations lentes avant le suivant, et un verre d''eau.
+3. **Séparez** le refus de la personne : on refuse une offre, pas vous.
+4. **Notez une victoire par jour** : un client aidé, un rendez-vous obtenu, une objection bien traitée.
+5. **Protégez votre voix** : eau à température ambiante, pas de cris, repos vocal le week-end si possible.
+6. **Parlez** à votre superviseur ou à un collègue après un appel qui vous a touché.
+
+> [!madagascar]
+> Travailler pour l''Europe peut décaler vos horaires vers le soir. Gardez des **heures de sommeil régulières**, des repas à heure fixe, et un vrai moment de coupure après le travail. La fatigue se voit dans les indicateurs avant de se voir sur le visage.
+
+> [!retenir]
+> - Une grille de qualité sur 100, appliquée à 3 de vos appels chaque semaine.
+> - Un seul indicateur, une seule action, chaque semaine.
+> - Objections : accueillir, questionner, répondre, avancer.
+> - Un script structuré, amélioré par des tests A/B.
+> - Des pauses, de l''eau, du sommeil : votre énergie est votre outil.
+
+## Exercice pratique : votre plan de progression
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Évaluez 3 de vos appels enregistrés (modules précédents) avec la grille sur 100.
+> 2. Choisissez votre point le plus faible et rédigez votre action de la semaine.
+> 3. Préparez vos réponses en 4 temps aux 4 objections avancées.
+> 4. Rédigez un script complet de prise de rendez-vous B2B pour un logiciel ou un service réel, avec 2 versions de l''accroche à tester.
+> 5. Rédigez votre routine personnelle d''énergie (pauses, sommeil, voix).
+>
+> **À livrer** : vos 3 grilles, votre action, vos réponses aux objections, le script avec les 2 accroches et votre routine.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 2, 0, 'Combien d''actions d''amélioration choisir par semaine ?', '["Toutes à la fois","Dix","Une seule","Aucune"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 2, 1, 'Quelle est la première étape face à une objection ?', '["Raccrocher","Contredire le client","Baisser le prix","Accueillir sans contredire"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 2, 2, 'Qu''est-ce qu''un test A/B ?', '["Comparer deux versions d''une même étape et garder la meilleure","Un test de connexion","Un examen d''anglais","Un appel à deux personnes"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-a', 3, 'Clients internationaux : appels en anglais et règles des pays', 'Les phrases clés en anglais, l''alphabet international, comprendre les accents, adapter son style, règles légales et plan d''anglais de 3 mois.', 'Les postes bilingues et les campagnes pour des clients étrangers sont parmi les mieux payés du métier. Ils demandent un anglais oral solide, une bonne compréhension des cultures et le respect strict des règles de chaque pays. Ce module vous prépare à téléphoner en anglais et à travailler pour des entreprises étrangères.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Conduire un appel de service client en anglais avec les phrases clés.
+> 2. Comprendre les accents et faire répéter poliment.
+> 3. Adapter votre style aux habitudes de différents pays.
+> 4. Respecter les règles légales des appels à l''étranger.
+> 5. Progresser en anglais oral avec un plan de 3 mois.
+
+## L''appel en anglais : les phrases clés
+
+| Étape | Phrase en anglais |
+| --- | --- |
+| Accueil | « Thank you for calling Connexia, this is Hanta speaking. How can I help you today? » |
+| Identification | « Could I have your full name and account number, please? » |
+| Faire épeler | « Could you spell that for me, please? » |
+| Découverte | « Could you tell me a bit more about what happened? » |
+| Reformulation | « So if I understand correctly, your internet has been down since Monday evening, is that right? » |
+| Mise en attente | « Would you mind if I put you on hold for a minute while I check your account? » |
+| Retour | « Thank you for holding. » |
+| Excuses | « I''m sorry for the inconvenience. » |
+| Solution | « Here''s what I can do for you: … » |
+| Transfert | « I''m going to transfer you to our technical team, who will be able to help you further. » |
+| Conclusion | « Is there anything else I can help you with today? … Thank you for calling, have a great day! » |
+
+### L''alphabet téléphonique international
+
+Pour épeler sans erreur en anglais, on utilise l''alphabet de l''OTAN : **A** Alpha, **B** Bravo, **C** Charlie, **D** Delta, **E** Echo, **F** Foxtrot, **G** Golf, **H** Hotel, **I** India, **J** Juliett, **K** Kilo, **L** Lima, **M** Mike, **N** November, **O** Oscar, **P** Papa, **Q** Quebec, **R** Romeo, **S** Sierra, **T** Tango, **U** Uniform, **V** Victor, **W** Whiskey, **X** X-ray, **Y** Yankee, **Z** Zulu.
+
+> [!exemple] Épeler un nom
+> « That''s R for Romeo, A for Alpha, K for Kilo, O for Oscar, T for Tango, O for Oscar. »
+
+## Comprendre les accents et faire répéter
+
+Les clients anglophones ont des accents très variés (américain, britannique, australien, indien, nigérian…). Ne pas comprendre au premier coup est normal.
+
+### Faire répéter poliment
+
+1. « I''m sorry, could you repeat that, please? »
+2. « Could you speak a little more slowly, please? The line isn''t very clear. »
+3. « Just to make sure I got that right: … » (puis reformuler)
+
+**Ne faites jamais semblant** d''avoir compris : une erreur sur une adresse ou un numéro de compte coûte bien plus qu''une question.
+
+> [!astuce]
+> Écoutez chaque jour 15 minutes de contenus en anglais avec des accents différents (podcasts, actualités, vidéos de service client). Votre oreille s''habitue en quelques semaines.
+
+## Adapter son style aux pays
+
+| Habitude | Exemples de différences |
+| --- | --- |
+| **Formalité** | Les clients britanniques apprécient souvent la politesse indirecte (« Would you mind… ») ; les clients américains un ton plus direct et enthousiaste |
+| **Prénom ou nom** | Le prénom est vite utilisé aux États-Unis ; en France, « Monsieur Dupont » reste plus prudent |
+| **Rapidité** | Dans certaines cultures, on attend que l''on aille vite à la solution ; dans d''autres, un échange de politesse d''abord |
+| **Excuses** | « I''m sorry » est fréquent et attendu en anglais, même pour un petit désagrément |
+
+Ces tendances ne sont pas des règles : **écoutez le client** et adaptez-vous à son ton. Suivez avant tout les consignes de l''entreprise pour laquelle vous travaillez.
+
+## Les règles légales à l''étranger
+
+Chaque pays a ses règles pour les appels, en particulier les appels **sortants** et commerciaux.
+
+| Sujet | Ce qu''il faut savoir |
+| --- | --- |
+| **Horaires d''appel** | Souvent limités par la loi ou par l''entreprise, dans le fuseau du client |
+| **Listes d''opposition** | De nombreux pays ont des listes de personnes qui refusent le démarchage (par exemple Bloctel en France) ; l''entreprise doit en tenir compte |
+| **Consentement** | Certaines règles imposent d''avoir l''accord préalable des personnes pour certains appels commerciaux |
+| **Enregistrement** | Informer la personne que l''appel peut être enregistré |
+| **Données personnelles** | En Europe, le RGPD encadre l''utilisation des données des clients |
+| **Mentions obligatoires** | Nom de l''entreprise, raison de l''appel, droit de refuser |
+
+Vous n''avez pas à devenir juriste : c''est l''entreprise qui fixe les règles. Mais vous devez **les connaître et les appliquer à chaque appel**. Un téléconseiller qui contourne les règles met l''entreprise en danger, et perd en général son poste.
+
+## Progresser en anglais oral : plan de 3 mois
+
+| Mois | Objectif | Activités quotidiennes (30 à 45 min) |
+| --- | --- | --- |
+| **Mois 1** | Comprendre | Écoute de contenus variés, notes des phrases utiles, lecture à voix haute de scripts |
+| **Mois 2** | Répondre | Simulations d''appels avec un partenaire ou en vous enregistrant, avec le tableau des phrases clés |
+| **Mois 3** | Être à l''aise | Conversations libres (échanges linguistiques en ligne, groupes de conversation), appels simulés difficiles |
+
+### Les outils gratuits
+
+1. **Podcasts et vidéos** en anglais sur le service client et la vente.
+2. **Applications d''échange linguistique** pour parler avec des anglophones qui apprennent le français.
+3. **Vos propres enregistrements** : comparez votre prononciation avec un modèle.
+4. **Les cours gratuits** de HubSpot Academy ou Trailhead, en anglais : vous apprenez le métier et la langue en même temps.
+
+> [!madagascar]
+> Dans les entreprises à Antananarivo, les postes bilingues français-anglais sont souvent parmi les mieux rémunérés. Indiquez votre niveau honnêtement sur votre CV, et passez un test de niveau reconnu quand vous êtes prêt : c''est un argument fort pour une augmentation ou un poste à distance.
+
+> [!retenir]
+> - Une liste de phrases clés pour chaque étape de l''appel en anglais.
+> - L''alphabet international pour épeler sans erreur.
+> - Faire répéter poliment plutôt que faire semblant d''avoir compris.
+> - Adapter le ton, mais suivre les consignes de l''entreprise.
+> - Connaître et appliquer les règles légales de chaque pays.
+
+## Exercice pratique : votre premier appel en anglais
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Apprenez les phrases clés et l''alphabet international, puis épelez à voix haute 5 noms malgaches.
+> 2. Rédigez en anglais le script d''un appel entrant pour « Connexia » (panne internet).
+> 3. Simulez 2 appels en anglais avec un partenaire (ou en vous enregistrant dans les deux rôles), dont un client mécontent.
+> 4. Évaluez vos appels avec la grille de qualité du module 3.
+> 5. Écrivez votre plan d''anglais de 3 mois, jour par jour pour la première semaine.
+>
+> **À livrer** : votre script, vos 2 enregistrements, vos grilles et votre plan d''anglais.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 3, 0, 'Comment épeler la lettre R dans l''alphabet international ?', '["Rio","Robert","Rose","Romeo"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 3, 1, 'Que faire si vous ne comprenez pas un client anglophone ?', '["Faire semblant d''avoir compris","Répondre au hasard","Raccrocher","Le faire répéter poliment"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 3, 2, 'Qui fixe les règles légales des appels pour une campagne ?', '["Personne","Le client appelé","L''entreprise, et vous devez les appliquer à chaque appel","Le téléconseiller seul"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-a', 4, 'Évoluer et développer son activité', 'Les chemins d''évolution, la demande d''augmentation, les rémunérations fixe et variable, l''offre de prise de rendez-vous et l''encadrement d''une équipe.', 'Le métier de téléconseiller offre de vraies perspectives : postes de référent, de formateur, de superviseur, ou une activité de freelance spécialisé dans la prise de rendez-vous et la vente pour des entreprises étrangères. Ce dernier module vous aide à choisir votre chemin et à négocier votre progression.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre évolution en entreprise et activité de freelance.
+> 2. Préparer une demande d''évolution ou d''augmentation.
+> 3. Comprendre les rémunérations fixes et variables en freelance.
+> 4. Construire une offre de prise de rendez-vous pour des entreprises étrangères.
+> 5. Encadrer une petite équipe de téléconseillers.
+
+## Les chemins d''évolution
+
+| Chemin | Rôle | Ce qu''il faut démontrer |
+| --- | --- | --- |
+| **Référent** | Aide les collègues sur les cas difficiles | Excellents indicateurs, connaissance des procédures |
+| **Contrôleur qualité** | Écoute et évalue les appels, propose des améliorations | Écoute fine, objectivité, rigueur |
+| **Formateur** | Forme les nouveaux téléconseillers | Pédagogie, patience, maîtrise du métier |
+| **Superviseur** | Encadre une équipe, suit les objectifs | Organisation, communication, gestion des conflits |
+| **Chargé de clientèle grands comptes** | Gère des clients importants sur la durée | Relation client, négociation |
+| **Freelance spécialisé** | Prise de rendez-vous, vente, qualification pour plusieurs entreprises | Autonomie, résultats prouvés, capacité à se vendre |
+
+## Demander une évolution ou une augmentation
+
+### Préparer son dossier
+
+1. **Vos résultats** sur 3 à 6 mois : indicateurs comparés à la moyenne de l''équipe.
+2. **Vos contributions** : nouveaux collègues aidés, idées de script adoptées, procédures améliorées.
+3. **Vos compétences nouvelles** : anglais, badges Trailhead, maîtrise d''outils.
+4. **Votre demande précise** : quel poste ou quelle augmentation, et pourquoi.
+
+> [!exemple] Ouvrir l''entretien
+> « Depuis 6 mois, mon taux de résolution au premier appel est de 82 %, au-dessus des 74 % de l''équipe, et j''ai accompagné les 3 derniers nouveaux téléconseillers. J''ai aussi obtenu deux badges Trailhead. Je souhaiterais évoluer vers un poste de référent qualité. Qu''en pensez-vous, et quelles étapes me resteraient à franchir ? »
+
+Si la réponse est « pas maintenant », demandez **des objectifs précis et une date** pour en reparler.
+
+## Le freelance : comprendre les rémunérations
+
+| Mode | Comment | Pour le freelance |
+| --- | --- | --- |
+| **Fixe à l''heure** | Un prix par heure d''appels | Revenu sûr, mais lié au temps |
+| **Au résultat** | Un prix par rendez-vous qualifié ou par vente | Peut rapporter beaucoup… ou presque rien si la liste est mauvaise |
+| **Fixe + variable** | Un fixe horaire plus une prime par résultat | Le meilleur équilibre, le plus courant chez les freelances expérimentés |
+
+> [!definition] Rendez-vous qualifié
+> Un rendez-vous avec une personne qui correspond aux critères fixés par le client (taille d''entreprise, besoin, pouvoir de décision) et qui s''est réellement présentée. Le contrat doit définir **précisément** ce qu''est un rendez-vous qualifié et payé.
+
+> [!exemple] Calcul d''une offre fixe + variable
+> Fixe : 8 € de l''heure. Prime : 25 € par rendez-vous qualifié et honoré.
+> Sur 60 heures dans le mois avec 18 rendez-vous honorés : 60 × 8 + 18 × 25 = 480 + 450 = **930 €**, soit 15,50 € de l''heure en moyenne.
+> *(Chiffres donnés en exemple : les tarifs dépendent du pays du client, du secteur et de votre expérience.)*
+
+## Construire une offre de prise de rendez-vous
+
+### Les 7 éléments de l''offre
+
+1. **La cible** que vous savez appeler : artisans, PME, cabinets, écoles…
+2. **Le processus** : préparation de la liste, script validé, appels, qualification, rendez-vous dans l''agenda du commercial.
+3. **Les outils** : votre téléphonie et le CRM du client (ou le vôtre).
+4. **Le rapport** hebdomadaire : appels, personnes jointes, rendez-vous, refus et raisons.
+5. **La définition** du rendez-vous qualifié.
+6. **La rémunération** : fixe, variable, ou les deux.
+7. **L''essai** : 20 à 40 heures pour mesurer les résultats ensemble.
+
+### Les points de vigilance du contrat
+
+1. **La qualité de la liste** fournie par le client (numéros à jour, bonne cible).
+2. **Les règles légales** du pays des personnes appelées : c''est le client qui en est responsable, mais vous devez les respecter.
+3. **Le délai de paiement** des primes (rendez-vous honoré = la personne s''est présentée).
+4. **La propriété des données** : les contacts appartiennent au client.
+
+## Encadrer une petite équipe
+
+Avec plusieurs clients, vous pouvez constituer une équipe de téléconseillers que vous formez et encadrez.
+
+### Les 6 responsabilités du responsable d''équipe
+
+1. **Recruter** avec un test d''appel simulé.
+2. **Former** : produit, script, outils, règles légales.
+3. **Écouter** des appels chaque semaine et faire un retour individuel (grille de qualité).
+4. **Suivre** les indicateurs de chacun.
+5. **Motiver** : objectifs atteignables, reconnaissance des progrès.
+6. **Protéger** l''équipe : pauses respectées, soutien après les appels difficiles.
+
+> [!astuce] Le retour individuel en 3 temps
+> 1. **Un point fort** précis (« Ta reformulation à 2 min 10 était excellente. »).
+> 2. **Un point à travailler**, un seul (« Tu proposes le rendez-vous avant d''avoir posé les questions de conséquence. »).
+> 3. **Une action** pour la semaine (« Essaie d''ajouter cette question avant chaque proposition. »).
+
+> [!madagascar]
+> Une petite équipe de téléconseillers à Madagascar, formée, encadrée et respectueuse des règles, peut proposer à des entreprises francophones un service de qualité à un coût compétitif. La clé est la **qualité constante** : écoutes régulières, indicateurs suivis, et des personnes payées correctement et à l''heure.
+
+> [!retenir]
+> - 6 chemins : référent, qualité, formateur, superviseur, grands comptes, freelance.
+> - Une demande d''évolution s''appuie sur des résultats et des compétences prouvés.
+> - En freelance, le fixe + variable est souvent le meilleur équilibre.
+> - Une offre de rendez-vous précise, avec un essai et une définition claire du résultat payé.
+> - Encadrer, c''est former, écouter, suivre, motiver et protéger.
+
+## Exercice pratique : votre prochaine étape
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre chemin d''évolution pour les 12 prochains mois et justifiez-le.
+> 2. Préparez votre dossier d''évolution (résultats, contributions, compétences, demande), avec des chiffres réels ou d''exemple.
+> 3. Rédigez une offre complète de prise de rendez-vous en 7 éléments, avec un calcul fixe + variable.
+> 4. Rédigez un retour individuel en 3 temps à partir d''un de vos appels enregistrés, comme si vous étiez le superviseur.
+>
+> **À livrer** : votre choix, votre dossier, votre offre et votre retour individuel.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 4, 0, '60 heures à 8 € et 18 rendez-vous à 25 € rapportent…', '["1 500 €","450 €","930 €","480 €"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 4, 1, 'Que doit définir précisément un contrat de prise de rendez-vous ?', '["Ce qu''est un rendez-vous qualifié et payé","La couleur du logo","Le salaire du client","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-a', 4, 2, 'Combien de points à travailler dans un retour individuel ?', '["Un seul","Dix","Tous les défauts","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que fait le support de niveau 2 ?', '["Il vend des produits","Il recrute","Il résout les problèmes que le niveau 1 n''a pas pu régler","Il répond seulement aux questions simples"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Quelle spécialité consiste à retenir un client qui veut partir ?', '["Le recouvrement","La fidélisation","Le support technique","La saisie"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Quelles questions poser en petit nombre pendant la découverte ?', '["Les questions de situation","Les questions de problème","Les questions de bénéfice","Les questions de conséquence"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Quelle preuve utiliser dans une présentation ?', '["Un avis imaginaire","Aucune","Un chiffre inventé","Une preuve vraie fournie par l''entreprise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que faire face à un refus clair ?', '["Mentir sur l''offre","Insister jusqu''au oui","Rappeler 5 fois","Le respecter"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que faire si un client maintient sa résiliation ?', '["Respecter sa décision et la faciliter","Refuser la résiliation","Le menacer","Raccrocher"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'À quoi servent les étiquettes dans Aircall ?', '["Traduire l''appel","Payer les appels","Changer la couleur de l''écran","Classer chaque appel selon son résultat"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que faut-il souvent faire avant d''enregistrer un appel ?', '["Lui demander de payer","Couper le micro","Informer la personne","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Dans Salesforce, qu''est-ce qu''une requête (case) ?', '["Une vente gagnée","Un fichier audio","Une demande ou un problème du client","Un employé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que vérifie la qualification ?', '["La couleur préférée du client","Besoin, budget, pouvoir de décision et délai","Rien","Son âge exact"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Qu''est-ce qu''une vue de liste ?', '["Un filtre enregistré, comme « mes rappels du jour »","Un rapport annuel","Un contrat","Une photo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Quelle formation gratuite donne des badges Salesforce ?', '["CapCut","Trailhead","Duolingo","Canva"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Combien d''appels enregistrés évaluer chaque semaine ?', '["Un par an","Environ 3","100","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Vous appelez autant que l''équipe mais fixez moins de rendez-vous. Où est le problème ?', '["Dans le nombre d''appels","Dans la connexion","Nulle part","Dans la conversation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que cache souvent « Envoyez-moi une documentation » ?', '["Un grand intérêt","Une façon polie de raccourcir l''appel","Une demande de rendez-vous","Une plainte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que répondre à « Ce n''est pas moi qui décide » ?', '["Demander qui participe à la décision et l''inclure","Raccrocher","Envoyer une facture","Insister pour qu''il décide seul"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Combien de différences tester à la fois dans un test A/B ?', '["Toutes","Cinq","Une seule","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que faire après un appel difficile ?', '["Arrêter le travail pour la semaine","3 respirations lentes et un verre d''eau","Rappeler le client pour se disputer","Enchaîner immédiatement en criant"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Comment dire « mise en attente » poliment en anglais ?', '["« Bye. »","« Stop talking. »","« Would you mind if I put you on hold for a minute? »","« Wait. »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que veut dire « Thank you for holding » ?', '["Quel est votre nom ?","Rappelez plus tard","Au revoir","Merci de votre patience pendant l''attente"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Qu''est-ce qu''une liste d''opposition au démarchage ?', '["Une liste de prix","Une liste de personnes qui refusent les appels commerciaux","Une liste de clients fidèles","Une liste d''employés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que mettre dans un dossier de demande d''évolution ?', '["Une lettre de menace","Rien","Seulement ses besoins personnels","Résultats, contributions, compétences et demande précise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Qu''est-ce qu''un rendez-vous qualifié et honoré ?', '["Un rendez-vous avec une personne dans la cible, qui s''est présentée","Un e-mail envoyé","Un rendez-vous annulé","N''importe quel appel décroché"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'À qui appartiennent les contacts d''une campagne ?', '["À tout le monde","Au téléconseiller","Au client","À la plateforme"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-a', 'Que fait un responsable d''équipe pour protéger ses téléconseillers ?', '["Supprimer les pauses","Augmenter les objectifs chaque jour","Faire respecter les pauses et soutenir après les appels difficiles","Ne jamais écouter les appels"]'::jsonb, 2);
 
 -- client-0-f
 delete from public.exam_questions where course_id = 'client-0-f';

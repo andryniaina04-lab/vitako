@@ -362,6 +362,85 @@ export const DOMAINS = [
  }
 ];
 export const PUBLISHED = {
+ "client-0-a": {
+  "hours": 18,
+  "description": "Ce niveau Avancé prépare le téléconseiller aux missions mieux payées : vente et prise de rendez-vous pour les entreprises, support de niveau 2, service client bilingue, fidélisation. Il couvre les techniques de conversation avancées, les outils professionnels (Aircall, Salesforce), l'amélioration continue, les appels en anglais et les règles légales, puis l'évolution vers des postes d'encadrement ou une activité de freelance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité avancée et mener une découverte approfondie",
+   "Présenter une offre et conclure sans pression",
+   "Utiliser Aircall et Salesforce comme un professionnel",
+   "Progresser chaque semaine avec une grille de qualité et ses indicateurs",
+   "Téléphoner en anglais et respecter les règles des différents pays",
+   "Évoluer vers l'encadrement ou une activité de freelance spécialisé"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser : vente, support, fidélisation",
+    "summary": "Les 6 spécialités avancées, la découverte en 4 types de questions, caractéristique – avantage – preuve, conclusion et fidélisation.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Choisir sa spécialité",
+     "La découverte approfondie : 4 types de questions",
+     "Présenter une offre : caractéristique – avantage – preuve",
+     "Conclure",
+     "La fidélisation : retenir un client qui veut partir",
+     "Exercice pratique : un appel de vente complet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Aircall et Salesforce",
+    "summary": "Numéroteur, étiquettes, enregistrements et statistiques ; pistes, comptes, contacts, opportunités et requêtes ; vues, rapports et formations gratuites.",
+    "sections": [
+     "Aircall : la téléphonie des équipes à distance",
+     "Salesforce : l'organisation des données clients",
+     "Les autres outils fréquents",
+     "Se former gratuitement et le prouver",
+     "Exercice pratique : un mini-CRM de campagne"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : progresser chaque semaine",
+    "summary": "La grille de qualité sur 100, l'analyse des indicateurs, les objections en 4 temps, le script et le test A/B, la gestion de l'énergie.",
+    "sections": [
+     "La grille de qualité",
+     "Analyser ses indicateurs",
+     "Les objections difficiles : la méthode en 4 temps",
+     "Le script de campagne : l'écrire et l'améliorer",
+     "Gérer son énergie et son stress",
+     "Exercice pratique : votre plan de progression"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux : appels en anglais et règles des pays",
+    "summary": "Les phrases clés en anglais, l'alphabet international, comprendre les accents, adapter son style, règles légales et plan d'anglais de 3 mois.",
+    "sections": [
+     "L'appel en anglais : les phrases clés",
+     "Comprendre les accents et faire répéter",
+     "Adapter son style aux pays",
+     "Les règles légales à l'étranger",
+     "Progresser en anglais oral : plan de 3 mois",
+     "Exercice pratique : votre premier appel en anglais"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Évoluer et développer son activité",
+    "summary": "Les chemins d'évolution, la demande d'augmentation, les rémunérations fixe et variable, l'offre de prise de rendez-vous et l'encadrement d'une équipe.",
+    "sections": [
+     "Les chemins d'évolution",
+     "Demander une évolution ou une augmentation",
+     "Le freelance : comprendre les rémunérations",
+     "Construire une offre de prise de rendez-vous",
+     "Encadrer une petite équipe",
+     "Exercice pratique : votre prochaine étape"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "client-0-f": {
   "hours": 14,
   "description": "Le téléconseiller répond aux clients d'une entreprise par téléphone, règle leurs demandes, prend des rendez-vous ou présente une offre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des centres d'appels et des entreprises francophones depuis Madagascar. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

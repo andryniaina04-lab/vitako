@@ -1,0 +1,97 @@
+{
+  "id": "client-0-a",
+  "hours": 18,
+  "description": "Ce niveau Avancé prépare le téléconseiller aux missions mieux payées : vente et prise de rendez-vous pour les entreprises, support de niveau 2, service client bilingue, fidélisation. Il couvre les techniques de conversation avancées, les outils professionnels (Aircall, Salesforce), l'amélioration continue, les appels en anglais et les règles légales, puis l'évolution vers des postes d'encadrement ou une activité de freelance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité avancée et mener une découverte approfondie",
+    "Présenter une offre et conclure sans pression",
+    "Utiliser Aircall et Salesforce comme un professionnel",
+    "Progresser chaque semaine avec une grille de qualité et ses indicateurs",
+    "Téléphoner en anglais et respecter les règles des différents pays",
+    "Évoluer vers l'encadrement ou une activité de freelance spécialisé"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser : vente, support, fidélisation",
+      "summary": "Les 6 spécialités avancées, la découverte en 4 types de questions, caractéristique – avantage – preuve, conclusion et fidélisation.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie B2B ?", "options": ["Une entreprise qui vend à d'autres entreprises", "Une entreprise qui vend à des particuliers", "Un type de casque", "Un logiciel"], "correct": 0 },
+        { "q": "Quel type de question fait mesurer l'impact d'un problème ?", "options": ["La question de conséquence", "La question de situation", "La question fermée", "La question d'accueil"], "correct": 0 },
+        { "q": "Quel est un signal d'achat ?", "options": ["Le client demande le délai de mise en place", "Le client raccroche", "Le client dit non clairement", "Le client ne parle pas"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Aircall et Salesforce",
+      "summary": "Numéroteur, étiquettes, enregistrements et statistiques ; pistes, comptes, contacts, opportunités et requêtes ; vues, rapports et formations gratuites.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert un numéroteur (power dialer) ?", "options": ["Enchaîner automatiquement les appels d'une liste", "Enregistrer des chansons", "Écrire des e-mails", "Calculer les salaires"], "correct": 0 },
+        { "q": "Dans Salesforce, que devient une piste qualifiée ?", "options": ["Un compte, un contact et une opportunité", "Une facture", "Une requête de support", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce que le pipeline ?", "options": ["L'ensemble des opportunités en cours, par étape", "Un câble réseau", "La liste des employés", "Un type d'appel"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : progresser chaque semaine",
+      "summary": "La grille de qualité sur 100, l'analyse des indicateurs, les objections en 4 temps, le script et le test A/B, la gestion de l'énergie.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien d'actions d'amélioration choisir par semaine ?", "options": ["Une seule", "Dix", "Aucune", "Toutes à la fois"], "correct": 0 },
+        { "q": "Quelle est la première étape face à une objection ?", "options": ["Accueillir sans contredire", "Contredire le client", "Raccrocher", "Baisser le prix"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un test A/B ?", "options": ["Comparer deux versions d'une même étape et garder la meilleure", "Un examen d'anglais", "Un test de connexion", "Un appel à deux personnes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : appels en anglais et règles des pays",
+      "summary": "Les phrases clés en anglais, l'alphabet international, comprendre les accents, adapter son style, règles légales et plan d'anglais de 3 mois.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment épeler la lettre R dans l'alphabet international ?", "options": ["Romeo", "Robert", "Rose", "Rio"], "correct": 0 },
+        { "q": "Que faire si vous ne comprenez pas un client anglophone ?", "options": ["Le faire répéter poliment", "Faire semblant d'avoir compris", "Raccrocher", "Répondre au hasard"], "correct": 0 },
+        { "q": "Qui fixe les règles légales des appels pour une campagne ?", "options": ["L'entreprise, et vous devez les appliquer à chaque appel", "Personne", "Le téléconseiller seul", "Le client appelé"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Évoluer et développer son activité",
+      "summary": "Les chemins d'évolution, la demande d'augmentation, les rémunérations fixe et variable, l'offre de prise de rendez-vous et l'encadrement d'une équipe.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "60 heures à 8 € et 18 rendez-vous à 25 € rapportent…", "options": ["930 €", "480 €", "450 €", "1 500 €"], "correct": 0 },
+        { "q": "Que doit définir précisément un contrat de prise de rendez-vous ?", "options": ["Ce qu'est un rendez-vous qualifié et payé", "La couleur du logo", "Le salaire du client", "Rien"], "correct": 0 },
+        { "q": "Combien de points à travailler dans un retour individuel ?", "options": ["Un seul", "Dix", "Aucun", "Tous les défauts"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait le support de niveau 2 ?", "options": ["Il résout les problèmes que le niveau 1 n'a pas pu régler", "Il répond seulement aux questions simples", "Il vend des produits", "Il recrute"], "correct": 0 },
+    { "q": "Quelle spécialité consiste à retenir un client qui veut partir ?", "options": ["La fidélisation", "Le recouvrement", "Le support technique", "La saisie"], "correct": 0 },
+    { "q": "Quelles questions poser en petit nombre pendant la découverte ?", "options": ["Les questions de situation", "Les questions de problème", "Les questions de conséquence", "Les questions de bénéfice"], "correct": 0 },
+    { "q": "Quelle preuve utiliser dans une présentation ?", "options": ["Une preuve vraie fournie par l'entreprise", "Un chiffre inventé", "Un avis imaginaire", "Aucune"], "correct": 0 },
+    { "q": "Que faire face à un refus clair ?", "options": ["Le respecter", "Insister jusqu'au oui", "Rappeler 5 fois", "Mentir sur l'offre"], "correct": 0 },
+    { "q": "Que faire si un client maintient sa résiliation ?", "options": ["Respecter sa décision et la faciliter", "Refuser la résiliation", "Raccrocher", "Le menacer"], "correct": 0 },
+    { "q": "À quoi servent les étiquettes dans Aircall ?", "options": ["Classer chaque appel selon son résultat", "Changer la couleur de l'écran", "Payer les appels", "Traduire l'appel"], "correct": 0 },
+    { "q": "Que faut-il souvent faire avant d'enregistrer un appel ?", "options": ["Informer la personne", "Rien", "Lui demander de payer", "Couper le micro"], "correct": 0 },
+    { "q": "Dans Salesforce, qu'est-ce qu'une requête (case) ?", "options": ["Une demande ou un problème du client", "Une vente gagnée", "Un employé", "Un fichier audio"], "correct": 0 },
+    { "q": "Que vérifie la qualification ?", "options": ["Besoin, budget, pouvoir de décision et délai", "La couleur préférée du client", "Son âge exact", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une vue de liste ?", "options": ["Un filtre enregistré, comme « mes rappels du jour »", "Une photo", "Un rapport annuel", "Un contrat"], "correct": 0 },
+    { "q": "Quelle formation gratuite donne des badges Salesforce ?", "options": ["Trailhead", "Duolingo", "Canva", "CapCut"], "correct": 0 },
+    { "q": "Combien d'appels enregistrés évaluer chaque semaine ?", "options": ["Environ 3", "100", "Aucun", "Un par an"], "correct": 0 },
+    { "q": "Vous appelez autant que l'équipe mais fixez moins de rendez-vous. Où est le problème ?", "options": ["Dans la conversation", "Dans le nombre d'appels", "Dans la connexion", "Nulle part"], "correct": 0 },
+    { "q": "Que cache souvent « Envoyez-moi une documentation » ?", "options": ["Une façon polie de raccourcir l'appel", "Un grand intérêt", "Une demande de rendez-vous", "Une plainte"], "correct": 0 },
+    { "q": "Que répondre à « Ce n'est pas moi qui décide » ?", "options": ["Demander qui participe à la décision et l'inclure", "Raccrocher", "Insister pour qu'il décide seul", "Envoyer une facture"], "correct": 0 },
+    { "q": "Combien de différences tester à la fois dans un test A/B ?", "options": ["Une seule", "Toutes", "Cinq", "Aucune"], "correct": 0 },
+    { "q": "Que faire après un appel difficile ?", "options": ["3 respirations lentes et un verre d'eau", "Enchaîner immédiatement en criant", "Arrêter le travail pour la semaine", "Rappeler le client pour se disputer"], "correct": 0 },
+    { "q": "Comment dire « mise en attente » poliment en anglais ?", "options": ["« Would you mind if I put you on hold for a minute? »", "« Wait. »", "« Bye. »", "« Stop talking. »"], "correct": 0 },
+    { "q": "Que veut dire « Thank you for holding » ?", "options": ["Merci de votre patience pendant l'attente", "Au revoir", "Rappelez plus tard", "Quel est votre nom ?"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une liste d'opposition au démarchage ?", "options": ["Une liste de personnes qui refusent les appels commerciaux", "Une liste de clients fidèles", "Une liste de prix", "Une liste d'employés"], "correct": 0 },
+    { "q": "Que mettre dans un dossier de demande d'évolution ?", "options": ["Résultats, contributions, compétences et demande précise", "Seulement ses besoins personnels", "Une lettre de menace", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un rendez-vous qualifié et honoré ?", "options": ["Un rendez-vous avec une personne dans la cible, qui s'est présentée", "N'importe quel appel décroché", "Un rendez-vous annulé", "Un e-mail envoyé"], "correct": 0 },
+    { "q": "À qui appartiennent les contacts d'une campagne ?", "options": ["Au client", "Au téléconseiller", "À la plateforme", "À tout le monde"], "correct": 0 },
+    { "q": "Que fait un responsable d'équipe pour protéger ses téléconseillers ?", "options": ["Faire respecter les pauses et soutenir après les appels difficiles", "Supprimer les pauses", "Augmenter les objectifs chaque jour", "Ne jamais écouter les appels"], "correct": 0 }
+  ]
+}
