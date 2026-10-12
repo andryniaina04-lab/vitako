@@ -14,7 +14,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 14, false),
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
-  ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 16, false),
+  ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 12, false),
   ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
   ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 13, false),
@@ -8791,6 +8791,672 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle longueur est raisonnable pour un test de traduction gratuit ?', '["50 pages","5 000 mots","200 à 300 mots","Un livre entier"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'À quoi sert un forfait minimum ?', '["Payer moins d''impôts","Réduire le prix des gros projets","Remplacer le devis","Facturer correctement les très petites commandes"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Où vérifier la réputation de paiement d''une agence ?', '["Sur les forums de sites pour traducteurs comme ProZ","Sur sa propre publicité uniquement","En lui demandant si elle paie","Nulle part"]'::jsonb, 0);
+
+-- media-0-a
+delete from public.exam_questions where course_id = 'media-0-a';
+delete from public.module_questions where course_id = 'media-0-a';
+delete from public.lessons where course_id = 'media-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-a', 0, 'Se spécialiser et monter pour un résultat', 'Les 6 spécialités, la courbe de rétention et ses actions, la publicité orientée résultat, l''offre premium et les études de cas chiffrées.', 'Monter « proprement » ne suffit plus pour être bien payé : des milliers de monteurs savent couper et ajouter des sous-titres. Les clients paient plus un monteur qui comprend **leur objectif** (garder les spectateurs, vendre un produit, émouvoir) et qui maîtrise une spécialité. Ce module vous aide à choisir la vôtre et à raisonner comme un monteur qui produit des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités du montage freelance.
+> 2. Lire la courbe de rétention d''une vidéo YouTube et en tirer des actions.
+> 3. Monter une publicité vidéo orientée résultat.
+> 4. Choisir votre spécialité et construire une offre premium.
+> 5. Présenter des études de cas avec des chiffres.
+
+## Les 6 spécialités
+
+| N° | Spécialité | Objectif du client | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **YouTube et rétention** | Que les spectateurs regardent jusqu''au bout | Rythme, narration, habillage, lecture des statistiques |
+| 2 | **Publicités vidéo** | Vendre, obtenir des inscriptions | Accroches, formats courts, tests de versions |
+| 3 | **Podcasts vidéo et interviews** | Diffuser des conversations longues et en tirer des extraits | Multi-caméras, son, extraits courts |
+| 4 | **Documentaire et ONG** | Raconter une histoire vraie, émouvoir, informer | Narration, interviews, sous-titres, éthique |
+| 5 | **Événements et mariages** | Garder un souvenir fort | Émotion, musique, rapidité de livraison |
+| 6 | **Vidéo d''entreprise et formation** | Expliquer, former, présenter | Clarté, animations simples, cohérence de marque |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Documentaires et vidéos d''ONG** : de nombreux projets à Madagascar ont besoin de monteurs qui comprennent le contexte, les langues et les personnes filmées.
+> - **Tourisme** : hôtels, agences, offices de tourisme veulent des vidéos qui donnent envie de venir.
+> - **Créateurs francophones** : chaînes YouTube de France, Belgique, Canada et Afrique de l''Ouest.
+
+## YouTube : la rétention, l''indicateur roi
+
+> [!definition] Rétention d''audience
+> La part des spectateurs qui regardent encore la vidéo à chaque moment. YouTube l''affiche sous forme de **courbe** dans les statistiques de la chaîne. Une vidéo qui garde ses spectateurs est davantage recommandée par YouTube.
+
+### Lire la courbe de rétention
+
+| Ce que vous voyez | Ce que ça veut dire | Action au montage |
+| --- | --- | --- |
+| **Chute forte dans les 30 premières secondes** | L''introduction ne tient pas la promesse du titre | Accroche plus directe, entrer plus vite dans le sujet |
+| **Pente régulière** | Normal, mais à adoucir | Changements d''image, relances, texte à l''écran |
+| **Chute brutale à un moment précis** | Passage ennuyeux, publicité trop longue, digression | Couper ou raccourcir ce type de passage dans les prochaines vidéos |
+| **Bosse (remontée)** | Les spectateurs revoient ce passage | Moment fort : en faire un extrait court, s''en inspirer |
+
+> [!exemple] Analyse d''une vidéo de 10 minutes
+> La courbe passe de 100 % à 55 % dans les 40 premières secondes. Le créateur y présente sa chaîne et son sponsor avant d''entrer dans le sujet. Proposition : commencer par le résultat le plus étonnant de la vidéo, placer le sponsor après la première partie, et réduire l''introduction à 15 secondes. Sur la vidéo suivante, la rétention à 30 secondes passe de 55 % à 68 %.
+> *(Chiffres donnés en exemple.)*
+
+### Les techniques de rétention
+
+1. **Ouvrir une boucle** : annoncer quelque chose qui viendra plus tard (« et la troisième erreur, presque tout le monde la fait »).
+2. **Relancer** toutes les 1 à 2 minutes : nouvelle question, changement de décor, révélation.
+3. **Varier le visuel** : plans de coupe, zooms, textes, schémas, archives.
+4. **Couper sans pitié** les répétitions et les digressions.
+5. **Annoncer la suite** avant chaque transition de partie.
+
+## La publicité vidéo orientée résultat
+
+### La structure d''une publicité de 15 à 30 secondes
+
+| Moment | Contenu |
+| --- | --- |
+| **0 à 3 s** | Accroche : problème, résultat surprenant ou question |
+| **3 à 10 s** | Le produit en action, le bénéfice principal |
+| **10 à 20 s** | La preuve : démonstration, avis client, chiffre réel |
+| **20 à 30 s** | L''offre et l''appel à l''action, écrit et dit |
+
+### Plusieurs versions à tester
+
+Les annonceurs testent souvent **plusieurs versions** d''une même publicité pour garder la plus efficace. Proposez :
+
+1. **3 accroches différentes** sur le même corps de vidéo.
+2. **2 formats** : vertical 9:16 et carré 1:1 ou horizontal.
+3. **2 durées** : 15 et 30 secondes.
+
+> [!definition] Vidéo UGC
+> *User Generated Content* : une vidéo qui ressemble à celle d''un vrai client filmée au téléphone (témoignage, déballage, démonstration). Ce format est très utilisé en publicité, car il paraît plus naturel. Le monteur garde ce style authentique tout en rythmant la vidéo.
+
+## Choisir sa spécialité et l''offre premium
+
+1. **Regardez vos meilleurs projets** : lesquels vous ont plu et ont plu au client ?
+2. **Vérifiez la demande** : offres régulières sur les plateformes, groupes de créateurs, agences.
+3. **Comparez les budgets** : les publicités et les vidéos d''entreprise ont souvent plus de budget que les vlogs.
+4. **Construisez une offre premium** en 3 niveaux.
+
+> [!exemple] Offre « Monteur YouTube rétention »
+>
+> | | **Montage** | **Montage + extraits** | **Partenaire de chaîne** |
+> | --- | --- | --- | --- |
+> | Vidéos longues par mois | 4 | 4 | 4 |
+> | Vidéos courtes tirées des longues | — | 12 | 16 |
+> | Analyse de la rétention et recommandations | — | Mensuelle | Après chaque vidéo |
+> | Conseils sur titres et miniatures | — | — | Oui |
+> | Délai par vidéo | 72 h | 72 h | 48 h |
+
+## Les études de cas avec des chiffres
+
+Pour chaque projet important de votre portfolio :
+
+1. **Le client** et son objectif.
+2. **Le défi** (rétention faible, publicité qui ne vend pas, rushes difficiles).
+3. **Vos choix** de montage, et pourquoi.
+4. **Le résultat** : durée moyenne de visionnage, rétention à 30 secondes, coût par vente, vues, retours du client (avec son accord pour les chiffres).
+5. **Un extrait avant / après**.
+
+> [!attention] Erreurs fréquentes
+> - Ajouter des effets partout au lieu de servir l''histoire.
+> - Monter une publicité comme un film, sans accroche dans les 3 premières secondes.
+> - Ne jamais regarder les statistiques des vidéos montées.
+> - Présenter un portfolio sans résultats ni explication de vos choix.
+
+> [!retenir]
+> - 6 spécialités : YouTube, publicité, podcasts, documentaire, événements, entreprise.
+> - La courbe de rétention dit où les spectateurs partent : le montage peut le corriger.
+> - Publicité : accroche, bénéfice, preuve, offre, et plusieurs versions à tester.
+> - Une offre premium en 3 niveaux, avec analyse et recommandations.
+> - Des études de cas avec chiffres et avant / après.
+
+## Exercice pratique : monter pour un résultat
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Analysez une vidéo YouTube (la vôtre, ou décrivez une courbe d''exemple) et proposez 3 actions de montage.
+> 3. Montez une publicité de 20 à 30 secondes pour un produit malgache (vanille, artisanat, restaurant), avec 3 accroches différentes et 2 formats.
+> 4. Construisez votre offre premium en 3 niveaux.
+>
+> **À livrer** : votre justification, votre analyse, les 6 versions de la publicité et votre offre.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 0, 0, 'Que signifie une chute forte de la rétention dans les 30 premières secondes ?', '["La miniature est mauvaise","Le son est trop fort","L''introduction ne tient pas la promesse du titre","La vidéo est parfaite"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 0, 1, 'Que contiennent les 3 premières secondes d''une publicité ?', '["L''accroche","Le prix seul","Le générique","Le logo pendant 3 secondes"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 0, 2, 'Qu''est-ce qu''une vidéo UGC ?', '["Un film de cinéma","Un dessin animé","Une vidéo sans son","Une vidéo qui ressemble à celle d''un vrai client filmée au téléphone"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-a', 1, 'Outils professionnels : Premiere Pro, Final Cut Pro, DaVinci Resolve Studio', 'Choix du logiciel, proxys, modèles graphiques, Lumetri et oscilloscopes, son, montage par le texte, outils de Resolve Studio, relecture en ligne et échanges XML et AAF.', 'Les agences, les chaînes importantes et les sociétés de production travaillent souvent avec **Adobe Premiere Pro**, parfois avec **Final Cut Pro** (sur Mac) ou **DaVinci Resolve Studio**. Elles vous enverront des projets dans ces logiciels et attendront des fichiers compatibles. Ce module vous apprend leurs fonctions professionnelles, la relecture en ligne avec le client et l''échange de projets entre logiciels.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir le logiciel adapté à chaque client.
+> 2. Utiliser les fonctions professionnelles de Premiere Pro : proxys, modèles graphiques, couleur, son, montage par le texte.
+> 3. Utiliser les outils avancés de DaVinci Resolve Studio.
+> 4. Faire relire vos vidéos avec des annotations précises.
+> 5. Échanger un projet entre logiciels et avec d''autres professionnels.
+
+## Quel logiciel pour quel client ?
+
+| Logiciel | Points forts | Quand il s''impose |
+| --- | --- | --- |
+| **Adobe Premiere Pro** | Standard de nombreuses agences et chaînes ; lien avec After Effects, Photoshop, Audition | Le client ou l''agence travaille en Premiere et veut récupérer le projet |
+| **Final Cut Pro** | Très rapide et fluide sur Mac | Créateurs et studios équipés de Mac |
+| **DaVinci Resolve Studio** | Étalonnage de référence, outils d''IA avancés, achat en une fois | Projets exigeants en couleur et en son, documentaires, films |
+| **DaVinci Resolve (gratuit)** | Déjà très complet | La plupart des projets de créateurs |
+
+Demandez **au début** de chaque collaboration : « Avez-vous besoin du fichier de projet, et dans quel logiciel ? » Si la réponse est non, choisissez l''outil avec lequel vous êtes le plus efficace.
+
+## Premiere Pro : les fonctions professionnelles
+
+### 1. Les proxys
+
+> [!definition] Proxy
+> Une copie légère d''un rush (plus petite résolution, codec facile à lire) utilisée pendant le montage. Le logiciel utilise automatiquement les originaux pour l''export. Les proxys rendent fluide le montage de rushes 4K sur un ordinateur modeste.
+
+Premiere Pro peut créer les proxys **à l''importation** (réglages d''ingestion) et basculer entre proxys et originaux avec un bouton.
+
+### 2. Les modèles graphiques animés
+
+Les **modèles d''animations graphiques** (*Motion Graphics templates*, fichiers .mogrt) sont des titres, bandeaux de nom ou animations réutilisables, dont on modifie le texte et les couleurs dans le panneau **Objets graphiques essentiels**.
+
+1. Créez (ou achetez sous licence) un jeu de modèles **par client** : bandeau de nom, titre de partie, appel à l''abonnement.
+2. Rangez-les dans une bibliothèque.
+3. Utilisez-les sur chaque vidéo : cohérence parfaite et gain de temps.
+
+### 3. La couleur avec Lumetri
+
+1. **Correction de base** : balance des blancs, exposition, contraste.
+2. **Harmonisation** des plans entre eux, en s''aidant des **oscilloscopes** (*scopes*).
+3. **Style** (*look*) de la chaîne ou de la marque, enregistré et réutilisé.
+
+> [!definition] Oscilloscopes vidéo
+> Des graphiques qui mesurent objectivement la luminosité et les couleurs de l''image (forme d''onde, vectorscope). Ils permettent d''avoir une image correcte même si votre écran n''est pas parfaitement réglé.
+
+### 4. Le son
+
+1. **Classez** chaque piste (dialogue, musique, effets, ambiance) dans le panneau dédié au son.
+2. **Réduisez le bruit** et améliorez la voix avec les outils intégrés, avec modération.
+3. **Baissez automatiquement la musique** sous la voix (fonction de *ducking*).
+4. **Visez un niveau sonore** adapté à la plateforme (module 3).
+
+### 5. Le montage par le texte
+
+Premiere Pro peut **transcrire** automatiquement les rushes. Vous coupez alors dans le **texte** : supprimer une phrase dans la transcription la supprime dans la timeline. Très efficace pour les interviews et les podcasts. Vérifiez toujours le résultat à l''écoute.
+
+## DaVinci Resolve Studio : les outils avancés
+
+La version Studio (payante, achat en une fois) ajoute notamment à la version gratuite des outils accélérés et des fonctions d''IA. Les plus utiles pour un monteur :
+
+| Outil | Usage |
+| --- | --- |
+| **Réduction de bruit vidéo** | Nettoyer des images filmées en faible lumière |
+| **Isolation de la voix** | Séparer la voix du bruit de fond (vent, rue, ventilateur) |
+| **Masque intelligent** | Isoler une personne ou un objet pour corriger sa couleur séparément |
+| **Recadrage intelligent** | Adapter une vidéo horizontale en vertical en suivant le sujet |
+| **Accélération matérielle** | Exports et lecture plus rapides selon votre carte graphique |
+
+La liste exacte évolue avec les versions : vérifiez sur le site officiel.
+
+## La relecture en ligne avec le client
+
+Les outils de relecture (Frame.io et les fonctions de partage intégrées à certains logiciels) permettent au client de commenter **directement sur la vidéo**, à la seconde près.
+
+### Le processus
+
+1. **Envoyez** la version en ligne avec un lien.
+2. Le client **commente** sur l''image : « 02:15 – couper ici », il peut même dessiner sur l''image.
+3. Vous **importez les commentaires** dans votre logiciel (selon les intégrations disponibles) ou vous les traitez dans la liste.
+4. Vous **marquez chaque commentaire comme traité**.
+5. Vous envoyez la **nouvelle version** : le client compare les versions côte à côte.
+
+> [!astuce]
+> Les commentaires horodatés suppriment presque tous les malentendus. Même avec un client qui n''a jamais utilisé ces outils, envoyez-lui le lien avec une phrase d''explication : la plupart s''y mettent en quelques minutes.
+
+## Échanger un projet entre logiciels
+
+| Format | Usage |
+| --- | --- |
+| **XML** | Transférer un montage (plans, coupes, pistes) entre Premiere Pro, Final Cut Pro et DaVinci Resolve |
+| **AAF** | Envoyer le son à un mixeur qui travaille dans un logiciel audio professionnel |
+| **EDL** | Liste de montage simple, pour des échanges basiques |
+| **Projet consolidé** | Le projet avec **seulement** les médias utilisés, pour l''envoyer ou l''archiver |
+
+Les effets, titres et étalonnages ne passent pas toujours d''un logiciel à l''autre : prévenez le client et testez avant la livraison.
+
+> [!madagascar]
+> Les abonnements Adobe se paient chaque mois en devises par carte bancaire internationale ; DaVinci Resolve Studio et Final Cut Pro s''achètent une fois. Choisissez selon vos clients : si vos clients principaux exigent Premiere Pro, l''abonnement se rembourse vite ; sinon, la version gratuite de DaVinci Resolve suffit pour beaucoup de projets.
+
+> [!retenir]
+> - Demandez au début si le client veut le fichier de projet, et dans quel logiciel.
+> - Premiere Pro : proxys, modèles graphiques, Lumetri et oscilloscopes, outils de son, montage par le texte.
+> - DaVinci Resolve Studio : réduction de bruit, isolation de voix, masques, recadrage intelligent.
+> - Relecture en ligne avec commentaires horodatés.
+> - XML, AAF et projets consolidés pour échanger avec d''autres professionnels.
+
+## Exercice pratique : un projet de professionnel
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Avec la version d''essai de Premiere Pro (ou DaVinci Resolve), montez une interview de 3 minutes en utilisant des proxys et le montage par le texte.
+> 2. Créez 3 modèles graphiques (bandeau de nom, titre de partie, fin) et utilisez-les.
+> 3. Harmonisez les couleurs de 3 plans avec les oscilloscopes.
+> 4. Partagez la vidéo sur un outil de relecture en ligne et demandez à un proche 5 commentaires horodatés ; traitez-les.
+> 5. Exportez un XML du montage et ouvrez-le dans un autre logiciel.
+>
+> **À livrer** : la vidéo finale, une capture des oscilloscopes, le lien de relecture avec les commentaires traités et une capture du projet importé par XML.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 1, 0, 'À quoi sert un proxy ?', '["Traduire les sous-titres","Ajouter de la musique","Exporter plus lourd","Monter avec une copie légère des rushes"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 1, 1, 'À quoi sert le format XML ?', '["Envoyer un e-mail","Transférer un montage entre logiciels","Compresser une image","Écouter de la musique"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 1, 2, 'Quel avantage des commentaires horodatés du client ?', '["Ils sont interdits","Ils suppriment presque tous les malentendus","Ils allongent la vidéo","Ils remplacent le montage"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-a', 2, 'Qualité et rapidité : modèles, étalonnage, mixage et contrôle', 'Le modèle de projet par client, l''étalonnage en 4 étapes, le son en LUFS, la grille de 15 points, le nommage, la livraison et l''archivage.', 'Un monteur avancé livre plus vite, avec moins d''erreurs et une qualité constante. Il a des modèles de projet, des réglages enregistrés, une méthode d''étalonnage et de mixage, et un contrôle final qui ne laisse rien passer. Ce module vous donne ce système de travail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer un modèle de projet par client.
+> 2. Étalonner avec une méthode en 4 étapes.
+> 3. Mixer le son au bon niveau pour chaque plateforme.
+> 4. Contrôler une vidéo avec une grille de 15 points avant livraison.
+> 5. Nommer, livrer et archiver vos projets proprement.
+
+## Le modèle de projet par client
+
+Pour un client régulier, ne repartez jamais d''un projet vide.
+
+### Ce que contient un modèle
+
+1. **L''arborescence** des chutiers (dossiers du logiciel) : Rushes, Plans de coupe, Musique, Effets sonores, Graphiques, Séquences.
+2. **Les réglages de séquence** : résolution, cadence, format (16:9 et 9:16).
+3. **L''introduction et la fin** de la chaîne ou de la marque.
+4. **Les modèles graphiques** du client (titres, bandeaux, sous-titres).
+5. **Le style de couleur** enregistré.
+6. **Les réglages de son** : piste de voix traitée, musique avec baisse automatique.
+7. **Les préréglages d''export** : version finale, version de validation, version verticale.
+
+> [!astuce]
+> Un bon modèle peut faire gagner 30 minutes à 1 heure par vidéo. Pour un client qui publie 4 vidéos par mois, c''est une journée de travail économisée chaque mois.
+
+## L''étalonnage en 4 étapes
+
+> [!definition] Étalonnage
+> Le travail de la couleur et de la lumière d''une vidéo : corriger les défauts, harmoniser les plans, puis donner un style. On distingue la **correction** (rendre l''image juste) et le **style** (lui donner une ambiance).
+
+| Étape | Objectif | Outils |
+| --- | --- | --- |
+| **1. Normaliser** | Image juste : noirs, blancs, exposition | Forme d''onde, réglages de base |
+| **2. Balance des blancs** | Couleurs neutres : un mur blanc est blanc | Vectorscope, pipette sur un élément neutre |
+| **3. Harmoniser** | Tous les plans d''une scène se ressemblent | Comparaison côte à côte des plans |
+| **4. Style** | L''ambiance de la marque ou du film | Courbes, réglages de teinte, tables de couleur (LUT) |
+
+> [!definition] LUT
+> *Look-Up Table* : un fichier qui transforme les couleurs d''une image selon une règle enregistrée. On l''utilise pour convertir des images tournées en profil « plat » (log) ou pour appliquer un style. Appliquez-la **après** la correction de base, et dosez son intensité.
+
+### Les peaux
+
+Les spectateurs remarquent immédiatement une peau de couleur anormale. Vérifiez les tons de peau sur le vectorscope (beaucoup de logiciels affichent une ligne de référence pour les tons chair) et corrigez-les si un style les déforme.
+
+## Le son au bon niveau
+
+> [!definition] LUFS
+> Une unité qui mesure le **volume perçu** d''un son sur toute sa durée. Les plateformes ajustent le volume des vidéos autour d''une valeur cible : une vidéo trop forte est baissée, une vidéo trop faible paraît plus faible que les autres.
+
+| Destination | Repère courant de volume intégré |
+| --- | --- |
+| YouTube et la plupart des plateformes en ligne | Environ −14 LUFS |
+| Télévision (selon les pays) | Souvent autour de −23 ou −24 LUFS |
+| Podcasts | Souvent autour de −16 LUFS |
+
+Ces valeurs sont des **repères** : les plateformes les modifient parfois. Suivez les spécifications du client quand il en donne.
+
+### La méthode de mixage en 5 étapes
+
+1. **Nettoyez la voix** : réduction de bruit légère, coupure des fréquences graves inutiles.
+2. **Égalisez les niveaux** de voix entre les plans (aucune phrase plus forte qu''une autre).
+3. **Placez la musique** sous la voix, avec une baisse automatique pendant les paroles.
+4. **Ajoutez les effets sonores** et vérifiez qu''ils ne couvrent pas la voix.
+5. **Mesurez le volume intégré** avec l''outil du logiciel et ajustez vers la cible, sans jamais dépasser le niveau maximal de crête.
+
+## La grille de contrôle en 15 points
+
+| N° | Point | Oui / Non |
+| --- | --- | --- |
+| 1 | Accroche dans les premières secondes, conforme au brief | |
+| 2 | Aucun plan noir, aucune image figée involontaire | |
+| 3 | Aucun saut d''image non voulu, aucune fin de phrase coupée | |
+| 4 | Textes et sous-titres sans faute, synchronisés | |
+| 5 | Noms propres et chiffres vérifiés | |
+| 6 | Couleurs harmonisées, peaux naturelles | |
+| 7 | Voix claire, niveaux réguliers | |
+| 8 | Volume intégré proche de la cible, aucune saturation | |
+| 9 | Musiques, images et polices sous licence | |
+| 10 | Logo, introduction et fin conformes | |
+| 11 | Format, résolution et cadence conformes | |
+| 12 | Zones de sécurité respectées en vertical (rien sous les boutons) | |
+| 13 | Tous les retours du client traités | |
+| 14 | Vidéo regardée entièrement au casque et sur téléphone | |
+| 15 | Fichier nommé selon la convention | |
+
+## Nommer, livrer et archiver
+
+### La convention de nommage
+
+`AAAA-MM-JJ_Client_Titre_Version_Format.mp4`
+Exemple : `2026-03-14_VolaMalina_5erreurs_V2_16x9.mp4`
+
+Le client sait toujours quelle version il regarde, et vous aussi.
+
+### La livraison
+
+1. **Version finale** en haute qualité.
+2. **Versions déclinées** demandées (verticale, sans sous-titres, sans musique).
+3. **Fichier de sous-titres** séparé (SRT) si le client le souhaite pour YouTube.
+4. **Message de livraison** : liste des fichiers, ce qui a changé depuis la dernière version, points à vérifier.
+
+### L''archivage
+
+1. **Consolidez** le projet (seulement les médias utilisés).
+2. **Archivez** sur un disque externe et, si possible, une copie en ligne.
+3. **Indiquez** dans votre contrat combien de temps vous conservez les projets (par exemple 3 ou 6 mois) : au-delà, le client doit récupérer ses fichiers.
+4. **Supprimez** les fichiers de travail lourds de votre ordinateur.
+
+> [!madagascar]
+> Les disques externes sont un investissement indispensable : vos projets et ceux de vos clients ne doivent pas dépendre d''un seul ordinateur, surtout avec les coupures d''électricité. Gardez au moins **deux copies** des projets en cours, sur deux supports différents.
+
+> [!retenir]
+> - Un modèle de projet par client fait gagner des heures chaque mois.
+> - Étalonnage : normaliser, balance des blancs, harmoniser, style.
+> - Son : voix propre, niveaux réguliers, volume intégré proche de la cible.
+> - Une grille de 15 points avant chaque livraison.
+> - Une convention de nommage, une livraison complète et un archivage sûr.
+
+## Exercice pratique : votre système de qualité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un modèle de projet complet pour un client fictif (chutiers, séquences, graphiques, style, son, préréglages d''export).
+> 2. Étalonnez une scène de 5 plans filmés à des moments différents de la journée avec la méthode en 4 étapes.
+> 3. Mixez une vidéo de 3 minutes et mesurez son volume intégré.
+> 4. Passez la vidéo dans la grille de 15 points.
+> 5. Livrez-la avec la convention de nommage, une version verticale, un fichier SRT et un message de livraison.
+>
+> **À livrer** : une capture du modèle, la scène avant/après, la mesure de volume, la grille remplie et les fichiers livrés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 2, 0, 'Quelle est la première étape de l''étalonnage ?', '["Ajouter une LUT créative","Normaliser l''image","Exporter","Appliquer un style"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 2, 1, 'Que mesure le LUFS ?', '["La taille du fichier","Le volume perçu d''un son sur toute sa durée","La résolution","La cadence"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 2, 2, 'Quel repère de volume pour YouTube ?', '["−60 LUFS","0 LUFS","Environ −14 LUFS","+10 LUFS"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-a', 3, 'Clients internationaux : spécifications, licences et anglais', 'Spécifications de livraison et master, licences de musique, images et polices, vocabulaire anglais, transferts de gros fichiers, contrat et prix en devises.', 'Les agences, les marques et les créateurs étrangers sont souvent les clients les mieux payés pour un monteur. Ils ont des exigences précises : spécifications techniques, licences musicales, délais serrés, échanges en anglais. Ce module vous prépare à travailler avec eux de façon professionnelle depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire un document de spécifications techniques de livraison.
+> 2. Gérer les licences de musique, d''images et de polices.
+> 3. Échanger en anglais avec le vocabulaire du montage.
+> 4. Organiser les transferts de gros fichiers depuis Madagascar.
+> 5. Rédiger un contrat et fixer des prix en devises.
+
+## Les spécifications techniques de livraison
+
+Les agences et chaînes de télévision envoient souvent un document de **spécifications** (*delivery specs*). Lisez-le entièrement **avant** de commencer.
+
+| Élément | Exemple de spécification |
+| --- | --- |
+| Résolution et cadence | 3840 × 2160, 25 i/s |
+| Codec et conteneur | ProRes 422 HQ en .mov pour le master, H.264 en .mp4 pour le web |
+| Son | Stéréo, 48 kHz, 24 bits, volume intégré −23 LUFS |
+| Pistes audio séparées | Voix, musique, effets sur des pistes distinctes |
+| Sous-titres | Fichier SRT séparé, pas de sous-titres incrustés sur le master |
+| Marges | Zones de sécurité pour les titres |
+| Début et fin | Mire, décompte, secondes de noir |
+
+> [!definition] Master
+> La version de référence d''une vidéo, en très haute qualité, à partir de laquelle on crée toutes les autres versions (web, réseaux sociaux, télévision). On le livre souvent dans un codec peu compressé comme ProRes.
+
+> [!attention]
+> Une livraison qui ne respecte pas les spécifications peut être **refusée** automatiquement par une chaîne ou une plateforme. Vérifiez chaque point avec une liste, et ouvrez le fichier exporté pour contrôler ses caractéristiques.
+
+## Les licences : musique, images, polices
+
+Un client étranger peut recevoir une réclamation, voir sa vidéo bloquée ou devoir payer une amende si une musique ou une image est utilisée sans droit.
+
+| Ressource | Solutions courantes | À vérifier |
+| --- | --- | --- |
+| **Musique** | Bibliothèques sous abonnement (comme Epidemic Sound ou Artlist), bibliothèque audio de YouTube, compositeurs | Usage commercial ? Publicité ? Sur quelles plateformes ? Au nom de qui est la licence ? |
+| **Images et vidéos d''illustration** | Banques d''images sous licence, images fournies par le client | Usage commercial, mention de l''auteur |
+| **Polices** | Polices sous licence ou libres (comme celles de Google Fonts) | Usage vidéo et commercial autorisé |
+| **Effets sonores** | Bibliothèques sous licence | Usage commercial |
+
+### Les 3 règles
+
+1. **La licence doit couvrir l''usage du client** (publicité, chaîne YouTube monétisée, télévision).
+2. **Idéalement, la licence est au nom du client** : il garde ses droits même si vous arrêtez de travailler ensemble.
+3. **Gardez une trace** : liste des ressources utilisées dans chaque vidéo, avec la référence de la licence, livrée avec la vidéo.
+
+## Le vocabulaire anglais du monteur
+
+| Anglais | Français |
+| --- | --- |
+| footage / raw footage | rushes |
+| rough cut | premier montage (ours) |
+| fine cut | montage affiné |
+| picture lock | montage figé (plus de changement d''images) |
+| color grading | étalonnage |
+| sound mix | mixage |
+| B-roll | plans de coupe |
+| lower third | bandeau de nom |
+| captions / subtitles | sous-titres |
+| aspect ratio | format d''image (16:9, 9:16) |
+| turnaround time | délai de livraison |
+| revision round | tour de retours |
+| deliverables | livrables |
+
+> [!exemple] Message de livraison en anglais
+> « Hi Sarah, the fine cut of "5 Money Mistakes" is ready for review: [link]. Changes from V1: new intro (first 10 seconds), sponsor moved to 3:20, music level lowered under the voice. Once you''re happy with it, we''ll lock picture and I''ll move on to color grading and the final mix. Turnaround for the final version: 48 hours after your approval. »
+
+## Les transferts de gros fichiers depuis Madagascar
+
+### Organiser les échanges
+
+1. **Demandez aux clients** de déposer les rushes dans un dossier partagé (Google Drive, Dropbox, Frame.io) plutôt que par des liens qui expirent.
+2. **Téléchargez la nuit** ou aux heures où votre connexion est la meilleure.
+3. **Envoyez des versions légères** pour la relecture, et le master seulement à la fin.
+4. **Prévoyez le temps de transfert** dans vos délais, et annoncez-le.
+5. **Ayez une solution de secours** : forfait mobile, espace de coworking avec une bonne connexion.
+
+> [!exemple] Calcul d''un temps d''envoi
+> Un master de 20 Go avec un débit montant réel de 10 Mbit/s : 20 Go ≈ 160 000 Mbit, soit 160 000 ÷ 10 = 16 000 secondes, environ **4 h 30**. Prévoyez-le dans votre délai, ou livrez un fichier H.264 de haute qualité si le client l''accepte.
+
+## Le contrat et les prix en devises
+
+### Les clauses importantes
+
+1. **Les livrables** : versions, formats, spécifications.
+2. **Les étapes** : premier montage, montage affiné, montage figé, étalonnage, mixage, livraison.
+3. **Les tours de retours** à chaque étape ; au-delà, facturés.
+4. **Le montage figé** : après validation, un changement d''image entraîne un supplément.
+5. **Les licences** : qui achète quoi, au nom de qui.
+6. **Les fichiers de projet** : inclus ou non.
+7. **Le prix, la devise, l''acompte** et le calendrier de paiement.
+8. **La durée de conservation** des fichiers après la livraison.
+
+### Fixer ses prix
+
+1. Renseignez-vous sur les prix des monteurs de votre spécialité et de votre niveau dans le pays du client.
+2. Proposez des **forfaits par vidéo** (selon la durée et la complexité) ou des **forfaits mensuels**.
+3. Facturez à part les options : étalonnage poussé, motion design, versions supplémentaires, urgence.
+4. Demandez un **acompte** au démarrage pour un nouveau client.
+
+> [!madagascar]
+> Vos clients étrangers paient en devises : utilisez un moyen de paiement qui fonctionne depuis Madagascar (virement international, Payoneer, plateforme). Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez chaque facture et chaque relevé.
+
+> [!retenir]
+> - Lisez les spécifications de livraison avant de commencer, et contrôlez le fichier exporté.
+> - Des licences qui couvrent l''usage du client, idéalement à son nom, avec une liste des ressources.
+> - Un vocabulaire anglais de base : rough cut, fine cut, picture lock…
+> - Transferts organisés, temps d''envoi calculés et annoncés.
+> - Un contrat par étapes, avec montage figé et tours de retours.
+
+## Exercice pratique : une livraison internationale
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez un document de spécifications fictif pour une chaîne (master ProRes, son à −23 LUFS, SRT séparé, pistes audio séparées).
+> 2. Exportez une de vos vidéos selon ces spécifications et vérifiez les caractéristiques du fichier.
+> 3. Créez la liste des ressources de cette vidéo avec leur licence.
+> 4. Rédigez en anglais 2 messages : envoi du premier montage et envoi de la version finale.
+> 5. Calculez le temps d''envoi de votre master avec votre débit réel.
+> 6. Rédigez votre contrat type en 8 clauses.
+>
+> **À livrer** : les spécifications, le fichier exporté avec ses caractéristiques, la liste des licences, les 2 messages, votre calcul et le contrat.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 3, 0, 'Qu''est-ce qu''un master ?', '["Le premier montage","Le client principal","La version de référence en très haute qualité","Une version légère"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 3, 1, 'Au nom de qui une licence musicale doit-elle idéalement être ?', '["Du monteur","Du client","D''un ami","De personne"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 3, 2, 'Que veut dire « picture lock » ?', '["Le son est coupé","Le montage est figé : plus de changement d''images","La vidéo est supprimée","La miniature est validée"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-a', 4, 'Développer son activité : partenaire de contenu et équipe', 'L''offre de partenaire de contenu, les services complémentaires, la délégation, le circuit d''une vidéo en équipe et la rentabilité par client.', 'Un monteur seul vend ses heures. Pour gagner plus sans travailler jour et nuit, il peut vendre des résultats plutôt que du temps, construire des partenariats durables avec des créateurs, et s''entourer d''une petite équipe. Ce dernier module vous montre comment développer votre activité de montage.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Passer d''un prix par vidéo à une offre de partenaire de contenu.
+> 2. Proposer des services complémentaires à forte valeur.
+> 3. Déléguer les tâches répétitives à des assistants.
+> 4. Organiser une petite équipe de post-production.
+> 5. Suivre la rentabilité de chaque client.
+
+## Devenir partenaire de contenu
+
+Un créateur ou une marque qui publie régulièrement cherche plus qu''un monteur : un **partenaire** qui l''aide à faire grandir sa chaîne ou ses ventes.
+
+### Ce que propose un partenaire de contenu
+
+1. **Le montage** des vidéos longues et courtes.
+2. **L''analyse** des statistiques après chaque vidéo (rétention, durée moyenne de visionnage, taux de clics de la miniature).
+3. **Des recommandations** concrètes : structure, durée, accroches, sujets qui marchent.
+4. **Des idées** de formats et de séries.
+5. **Un rapport mensuel** clair.
+
+> [!exemple] Rapport mensuel d''un partenaire de contenu
+>
+> | Vidéo | Durée moyenne de visionnage | Rétention à 30 s | Observation |
+> | --- | --- | --- | --- |
+> | « 5 erreurs d''argent » | 4 min 10 | 71 % | Meilleure rétention du mois : accroche par le résultat |
+> | « Budget étudiant » | 2 min 50 | 58 % | Introduction trop longue |
+> | « Épargner 100 000 Ar » | 3 min 40 | 66 % | Bosse à 2:10 : en faire un extrait court |
+>
+> **Recommandations** : garder l''accroche par le résultat, introduction de 15 secondes maximum, une série « Défi épargne » en 4 épisodes.
+> *(Chiffres donnés en exemple.)*
+
+## Les services complémentaires à forte valeur
+
+| Service | Contenu | Pourquoi c''est rentable |
+| --- | --- | --- |
+| **Extraits courts en série** | 10 à 20 vidéos verticales par mois tirées des vidéos longues | Volume régulier, process rapide avec des modèles |
+| **Miniatures YouTube** | Création ou conseil, tests de plusieurs versions | Impact direct sur les vues |
+| **Habillage de chaîne** | Introduction, transitions, bandeaux, fin, modèles graphiques | Projet ponctuel bien payé |
+| **Sous-titres multilingues** | Sous-titres en français, anglais, malagasy | Audience élargie |
+| **Motion design simple** | Schémas animés, titres animés, infographies | Valeur ajoutée visible |
+| **Conseil de tournage** | Liste de plans, lumière, son, cadrage pour le client | Rushes de meilleure qualité, montage plus rapide |
+
+## Déléguer les tâches répétitives
+
+| Tâche à déléguer | Profil |
+| --- | --- |
+| Dérushage et sélection des bonnes prises | Assistant monteur |
+| Synchronisation des caméras et du son | Assistant monteur |
+| Sous-titres et leur correction | Sous-titreur |
+| Extraits courts à partir de vos repères | Monteur débutant formé |
+| Recherche de plans de coupe et de musiques | Assistant |
+
+Gardez pour vous : la **narration**, les **choix créatifs**, la **relation client** et le **contrôle final**.
+
+### Recruter un assistant monteur
+
+1. **Rédigez la mission** : tâches, logiciel, volume, délais, rémunération.
+2. **Faites un test payé** : dérusher 20 minutes de rushes avec une liste de repères, et monter 2 extraits courts.
+3. **Formez-le** avec vos modèles et votre convention de nommage.
+4. **Contrôlez** tout au début, puis par échantillon.
+5. **Payez à l''heure ou à la tâche**, correctement et à temps.
+
+> [!madagascar]
+> Former de jeunes monteurs malgaches à vos méthodes crée une équipe fiable et des emplois à distance. Commencez par une personne, sur des tâches simples, et faites-la évoluer : un assistant bien formé devient souvent un monteur complet en quelques mois.
+
+## Organiser une petite équipe de post-production
+
+### Le circuit d''une vidéo en équipe
+
+| Étape | Qui | Délai (exemple) |
+| --- | --- | --- |
+| 1. Réception des rushes, dérushage | Assistant | Jour 1 |
+| 2. Premier montage | Vous | Jour 2 |
+| 3. Retours du client | Client | Jour 3 |
+| 4. Montage affiné, couleur, son | Vous | Jour 4 |
+| 5. Sous-titres, extraits courts | Assistant | Jour 4 à 5 |
+| 6. Contrôle qualité (grille de 15 points) | Vous | Jour 5 |
+| 7. Livraison | Vous | Jour 5 |
+
+### Les outils de l''équipe
+
+1. **Stockage partagé** : dossiers en ligne avec la même arborescence pour tous.
+2. **Suivi des tâches** : un tableau (Trello, Notion) avec une carte par vidéo et ses étapes.
+3. **Relecture** : un outil de commentaires horodatés pour le client **et** pour l''équipe.
+4. **Communication** : un canal par client.
+5. **Procédures** : dérushage, nommage, export, livraison, archivage.
+
+## Suivre la rentabilité
+
+Chaque mois, pour chaque client :
+
+| Indicateur | Pourquoi |
+| --- | --- |
+| **Chiffre d''affaires** | Ce que le client vous paie |
+| **Coût de l''équipe** | Ce que vous payez aux assistants pour ce client |
+| **Vos heures** | Votre temps réel (gestion et contrôle compris) |
+| **Marge horaire** | (chiffre d''affaires − coût de l''équipe) ÷ vos heures |
+| **Nombre de tours de retours** | Un client qui demande beaucoup de retours coûte plus cher |
+
+> [!exemple] Lecture des chiffres
+> Client A : 1 200 € par mois, 400 € d''assistants, 20 heures de votre temps. Marge horaire : (1 200 − 400) ÷ 20 = **40 € de l''heure**.
+> Client B : 600 € par mois, 100 € d''assistants, 25 heures. Marge horaire : (600 − 100) ÷ 25 = **20 € de l''heure**.
+> *(Chiffres donnés en exemple.)* Action pour le client B : comprendre pourquoi il prend autant de temps (retours, rushes difficiles) et ajuster son forfait ou les règles de travail.
+
+> [!retenir]
+> - Un partenaire de contenu analyse, recommande et rend compte, en plus de monter.
+> - Des services complémentaires : extraits, miniatures, habillage, sous-titres, motion design, conseil.
+> - Déléguez le dérushage, la synchronisation et les sous-titres ; gardez la narration et le contrôle.
+> - Une équipe s''organise avec un circuit clair, des outils partagés et des procédures.
+> - Suivez la marge horaire de chaque client.
+
+## Exercice pratique : votre plan de développement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez une offre de partenaire de contenu avec rapport mensuel et prix.
+> 2. Choisissez 2 services complémentaires et rédigez leur offre.
+> 3. Rédigez la mission et le test payé d''un assistant monteur.
+> 4. Dessinez le circuit d''une vidéo en équipe pour votre spécialité.
+> 5. Calculez la marge horaire de 2 clients (réels ou d''exemple) et proposez une action pour le moins rentable.
+>
+> **À livrer** : votre offre, vos 2 services, la mission et le test, le circuit et vos calculs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 4, 0, 'Que fait un partenaire de contenu en plus du montage ?', '["Il vend des caméras","Il filme toujours à la place du client","Rien de plus","Il analyse les statistiques et fait des recommandations"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 4, 1, 'Quelle tâche garder pour vous ?', '["La synchronisation","Le dérushage","La narration et le contrôle final","La recherche de musiques"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-a', 4, 2, '1 200 € de chiffre d''affaires, 400 € d''assistants, 20 heures : quelle marge horaire ?', '["40 €","20 €","80 €","60 €"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quelle spécialité a souvent plus de budget que les vlogs ?', '["Les publicités et vidéos d''entreprise","Les vidéos de vacances personnelles","Aucune","Les vidéos sans client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que signifie une bosse dans la courbe de rétention ?', '["Une erreur de YouTube","Un passage ennuyeux","La fin de la vidéo","Les spectateurs revoient ce passage : c''est un moment fort"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Qu''est-ce qu''« ouvrir une boucle » ?', '["Annoncer quelque chose qui viendra plus tard","Mettre la vidéo en boucle","Répéter la même image","Couper le son"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Combien d''accroches tester pour une publicité ?', '["Une seule, toujours","Aucune","50","Plusieurs, par exemple 3"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que doit contenir une étude de cas de monteur ?', '["Objectif, défi, choix, résultat chiffré, avant / après","Seulement la vidéo finale","Votre CV","La liste de vos logiciels"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que demander au début d''une collaboration ?', '["Son âge","Si le client veut le fichier de projet, et dans quel logiciel","Rien","Son mot de passe YouTube"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que sont les modèles d''animations graphiques ?', '["Des titres et bandeaux réutilisables dont on modifie le texte","Des rushes","Des contrats","Des musiques"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'À quoi servent les oscilloscopes vidéo ?', '["Compresser le fichier","Mesurer objectivement lumière et couleurs","Ajouter des effets sonores","Couper la vidéo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Qu''est-ce que le montage par le texte ?', '["Écrire un scénario","Ajouter des sous-titres","Traduire la vidéo","Couper la vidéo en supprimant des phrases dans la transcription"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quel outil de Resolve Studio sépare la voix du bruit de fond ?', '["Le recadrage intelligent","Le XML","L''isolation de la voix","Le masque intelligent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'À quoi sert un fichier AAF ?', '["Envoyer le son à un mixeur dans un logiciel audio","Envoyer une facture","Créer une miniature","Publier sur YouTube"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Combien de temps un modèle de projet peut-il faire gagner par vidéo ?', '["1 seconde","10 jours","Aucun","30 minutes à 1 heure"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Qu''est-ce qu''une LUT ?', '["Une police","Un micro","Un fichier qui transforme les couleurs selon une règle","Un format audio"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quand appliquer une LUT de style ?', '["Après l''export","Jamais","Avant tout, à 100 %","Après la correction de base, en dosant l''intensité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que vérifier sur les peaux après un style ?', '["Qu''elles restent naturelles","Qu''elles soient vertes","Qu''elles soient en noir et blanc","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quelle convention de nommage est correcte ?', '["export.mp4","2026-03-14_VolaMalina_5erreurs_V2_16x9.mp4","video final final.mp4","sans titre.mp4"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Combien de copies des projets en cours garder ?', '["Une seule sur l''ordinateur","Une sur WhatsApp","Au moins deux, sur deux supports","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que faire avant de commencer un projet pour une chaîne de télévision ?', '["Lire entièrement les spécifications de livraison","Ignorer les spécifications","Exporter directement","Choisir la musique au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quel codec est souvent demandé pour un master ?', '["ProRes","MP3","JPEG","GIF"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que livrer avec la vidéo pour les licences ?', '["Les factures du monteur","Rien","La liste des ressources et la référence de leur licence","Les mots de passe des bibliothèques"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que veut dire « rough cut » ?', '["Premier montage","Étalonnage","Montage final","Mixage"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Un master de 20 Go à 10 Mbit/s prend environ…', '["2 minutes","4 h 30","20 secondes","3 jours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Que se passe-t-il si le client change des images après le montage figé ?', '["C''est impossible","Le projet est annulé","C''est un supplément, selon le contrat","C''est toujours gratuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Quelle tâche déléguer à un assistant monteur ?', '["Le dérushage","Le contrôle final","Les choix créatifs","La relation client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-a', 'Comment recruter un assistant monteur ?', '["Avec un test gratuit d''un mois","Sans test","Avec un test payé de dérushage et d''extraits","En lui confiant tout de suite le plus gros client"]'::jsonb, 2);
 
 -- media-0-f
 delete from public.exam_questions where course_id = 'media-0-f';

@@ -1433,6 +1433,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-0-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du monteur un professionnel orienté résultats : spécialité (YouTube, publicité, documentaire…), rétention d'audience, logiciels professionnels (Premiere Pro, Final Cut Pro, DaVinci Resolve Studio), étalonnage et mixage, spécifications de livraison et licences pour les clients étrangers, puis développement d'une activité de partenaire de contenu ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et monter pour un résultat : rétention, ventes, émotion",
+   "Utiliser Premiere Pro, Final Cut Pro et DaVinci Resolve Studio comme un professionnel",
+   "Étalonner et mixer au bon niveau, avec un contrôle en 15 points",
+   "Livrer selon des spécifications techniques et gérer les licences",
+   "Travailler avec des clients étrangers : anglais, transferts, contrats",
+   "Devenir partenaire de contenu et organiser une petite équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et monter pour un résultat",
+    "summary": "Les 6 spécialités, la courbe de rétention et ses actions, la publicité orientée résultat, l'offre premium et les études de cas chiffrées.",
+    "sections": [
+     "Les 6 spécialités",
+     "YouTube : la rétention, l'indicateur roi",
+     "La publicité vidéo orientée résultat",
+     "Choisir sa spécialité et l'offre premium",
+     "Les études de cas avec des chiffres",
+     "Exercice pratique : monter pour un résultat"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils professionnels : Premiere Pro, Final Cut Pro, DaVinci Resolve Studio",
+    "summary": "Choix du logiciel, proxys, modèles graphiques, Lumetri et oscilloscopes, son, montage par le texte, outils de Resolve Studio, relecture en ligne et échanges XML et AAF.",
+    "sections": [
+     "Quel logiciel pour quel client ?",
+     "Premiere Pro : les fonctions professionnelles",
+     "DaVinci Resolve Studio : les outils avancés",
+     "La relecture en ligne avec le client",
+     "Échanger un projet entre logiciels",
+     "Exercice pratique : un projet de professionnel"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : modèles, étalonnage, mixage et contrôle",
+    "summary": "Le modèle de projet par client, l'étalonnage en 4 étapes, le son en LUFS, la grille de 15 points, le nommage, la livraison et l'archivage.",
+    "sections": [
+     "Le modèle de projet par client",
+     "L'étalonnage en 4 étapes",
+     "Le son au bon niveau",
+     "La grille de contrôle en 15 points",
+     "Nommer, livrer et archiver",
+     "Exercice pratique : votre système de qualité"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux : spécifications, licences et anglais",
+    "summary": "Spécifications de livraison et master, licences de musique, images et polices, vocabulaire anglais, transferts de gros fichiers, contrat et prix en devises.",
+    "sections": [
+     "Les spécifications techniques de livraison",
+     "Les licences : musique, images, polices",
+     "Le vocabulaire anglais du monteur",
+     "Les transferts de gros fichiers depuis Madagascar",
+     "Le contrat et les prix en devises",
+     "Exercice pratique : une livraison internationale"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité : partenaire de contenu et équipe",
+    "summary": "L'offre de partenaire de contenu, les services complémentaires, la délégation, le circuit d'une vidéo en équipe et la rentabilité par client.",
+    "sections": [
+     "Devenir partenaire de contenu",
+     "Les services complémentaires à forte valeur",
+     "Déléguer les tâches répétitives",
+     "Organiser une petite équipe de post-production",
+     "Suivre la rentabilité",
+     "Exercice pratique : votre plan de développement"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "media-0-f": {
   "hours": 16,
   "description": "Le monteur vidéo transforme des heures d'images brutes en vidéos qui retiennent l'attention : vidéos YouTube, formats courts pour TikTok et Reels, publicités, événements. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à monter pour des créateurs francophones et des entreprises malgaches, en télétravail, avec DaVinci Resolve et CapCut gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "media-0-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du monteur un professionnel orienté résultats : spécialité (YouTube, publicité, documentaire…), rétention d'audience, logiciels professionnels (Premiere Pro, Final Cut Pro, DaVinci Resolve Studio), étalonnage et mixage, spécifications de livraison et licences pour les clients étrangers, puis développement d'une activité de partenaire de contenu ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et monter pour un résultat : rétention, ventes, émotion",
+    "Utiliser Premiere Pro, Final Cut Pro et DaVinci Resolve Studio comme un professionnel",
+    "Étalonner et mixer au bon niveau, avec un contrôle en 15 points",
+    "Livrer selon des spécifications techniques et gérer les licences",
+    "Travailler avec des clients étrangers : anglais, transferts, contrats",
+    "Devenir partenaire de contenu et organiser une petite équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et monter pour un résultat",
+      "summary": "Les 6 spécialités, la courbe de rétention et ses actions, la publicité orientée résultat, l'offre premium et les études de cas chiffrées.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie une chute forte de la rétention dans les 30 premières secondes ?", "options": ["L'introduction ne tient pas la promesse du titre", "La vidéo est parfaite", "Le son est trop fort", "La miniature est mauvaise"], "correct": 0 },
+        { "q": "Que contiennent les 3 premières secondes d'une publicité ?", "options": ["L'accroche", "Le logo pendant 3 secondes", "Le générique", "Le prix seul"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une vidéo UGC ?", "options": ["Une vidéo qui ressemble à celle d'un vrai client filmée au téléphone", "Un film de cinéma", "Un dessin animé", "Une vidéo sans son"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Premiere Pro, Final Cut Pro, DaVinci Resolve Studio",
+      "summary": "Choix du logiciel, proxys, modèles graphiques, Lumetri et oscilloscopes, son, montage par le texte, outils de Resolve Studio, relecture en ligne et échanges XML et AAF.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert un proxy ?", "options": ["Monter avec une copie légère des rushes", "Exporter plus lourd", "Ajouter de la musique", "Traduire les sous-titres"], "correct": 0 },
+        { "q": "À quoi sert le format XML ?", "options": ["Transférer un montage entre logiciels", "Envoyer un e-mail", "Compresser une image", "Écouter de la musique"], "correct": 0 },
+        { "q": "Quel avantage des commentaires horodatés du client ?", "options": ["Ils suppriment presque tous les malentendus", "Ils allongent la vidéo", "Ils remplacent le montage", "Ils sont interdits"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : modèles, étalonnage, mixage et contrôle",
+      "summary": "Le modèle de projet par client, l'étalonnage en 4 étapes, le son en LUFS, la grille de 15 points, le nommage, la livraison et l'archivage.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la première étape de l'étalonnage ?", "options": ["Normaliser l'image", "Appliquer un style", "Ajouter une LUT créative", "Exporter"], "correct": 0 },
+        { "q": "Que mesure le LUFS ?", "options": ["Le volume perçu d'un son sur toute sa durée", "La taille du fichier", "La résolution", "La cadence"], "correct": 0 },
+        { "q": "Quel repère de volume pour YouTube ?", "options": ["Environ −14 LUFS", "0 LUFS", "−60 LUFS", "+10 LUFS"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : spécifications, licences et anglais",
+      "summary": "Spécifications de livraison et master, licences de musique, images et polices, vocabulaire anglais, transferts de gros fichiers, contrat et prix en devises.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un master ?", "options": ["La version de référence en très haute qualité", "Le premier montage", "Une version légère", "Le client principal"], "correct": 0 },
+        { "q": "Au nom de qui une licence musicale doit-elle idéalement être ?", "options": ["Du client", "Du monteur", "D'un ami", "De personne"], "correct": 0 },
+        { "q": "Que veut dire « picture lock » ?", "options": ["Le montage est figé : plus de changement d'images", "La vidéo est supprimée", "La miniature est validée", "Le son est coupé"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : partenaire de contenu et équipe",
+      "summary": "L'offre de partenaire de contenu, les services complémentaires, la délégation, le circuit d'une vidéo en équipe et la rentabilité par client.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un partenaire de contenu en plus du montage ?", "options": ["Il analyse les statistiques et fait des recommandations", "Il filme toujours à la place du client", "Rien de plus", "Il vend des caméras"], "correct": 0 },
+        { "q": "Quelle tâche garder pour vous ?", "options": ["La narration et le contrôle final", "Le dérushage", "La synchronisation", "La recherche de musiques"], "correct": 0 },
+        { "q": "1 200 € de chiffre d'affaires, 400 € d'assistants, 20 heures : quelle marge horaire ?", "options": ["40 €", "60 €", "20 €", "80 €"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité a souvent plus de budget que les vlogs ?", "options": ["Les publicités et vidéos d'entreprise", "Les vidéos de vacances personnelles", "Les vidéos sans client", "Aucune"], "correct": 0 },
+    { "q": "Que signifie une bosse dans la courbe de rétention ?", "options": ["Les spectateurs revoient ce passage : c'est un moment fort", "Une erreur de YouTube", "Un passage ennuyeux", "La fin de la vidéo"], "correct": 0 },
+    { "q": "Qu'est-ce qu'« ouvrir une boucle » ?", "options": ["Annoncer quelque chose qui viendra plus tard", "Répéter la même image", "Mettre la vidéo en boucle", "Couper le son"], "correct": 0 },
+    { "q": "Combien d'accroches tester pour une publicité ?", "options": ["Plusieurs, par exemple 3", "Une seule, toujours", "Aucune", "50"], "correct": 0 },
+    { "q": "Que doit contenir une étude de cas de monteur ?", "options": ["Objectif, défi, choix, résultat chiffré, avant / après", "Seulement la vidéo finale", "Votre CV", "La liste de vos logiciels"], "correct": 0 },
+    { "q": "Que demander au début d'une collaboration ?", "options": ["Si le client veut le fichier de projet, et dans quel logiciel", "Son mot de passe YouTube", "Son âge", "Rien"], "correct": 0 },
+    { "q": "Que sont les modèles d'animations graphiques ?", "options": ["Des titres et bandeaux réutilisables dont on modifie le texte", "Des rushes", "Des musiques", "Des contrats"], "correct": 0 },
+    { "q": "À quoi servent les oscilloscopes vidéo ?", "options": ["Mesurer objectivement lumière et couleurs", "Couper la vidéo", "Ajouter des effets sonores", "Compresser le fichier"], "correct": 0 },
+    { "q": "Qu'est-ce que le montage par le texte ?", "options": ["Couper la vidéo en supprimant des phrases dans la transcription", "Écrire un scénario", "Ajouter des sous-titres", "Traduire la vidéo"], "correct": 0 },
+    { "q": "Quel outil de Resolve Studio sépare la voix du bruit de fond ?", "options": ["L'isolation de la voix", "Le masque intelligent", "Le recadrage intelligent", "Le XML"], "correct": 0 },
+    { "q": "À quoi sert un fichier AAF ?", "options": ["Envoyer le son à un mixeur dans un logiciel audio", "Envoyer une facture", "Créer une miniature", "Publier sur YouTube"], "correct": 0 },
+    { "q": "Combien de temps un modèle de projet peut-il faire gagner par vidéo ?", "options": ["30 minutes à 1 heure", "1 seconde", "Aucun", "10 jours"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une LUT ?", "options": ["Un fichier qui transforme les couleurs selon une règle", "Un micro", "Un format audio", "Une police"], "correct": 0 },
+    { "q": "Quand appliquer une LUT de style ?", "options": ["Après la correction de base, en dosant l'intensité", "Avant tout, à 100 %", "Jamais", "Après l'export"], "correct": 0 },
+    { "q": "Que vérifier sur les peaux après un style ?", "options": ["Qu'elles restent naturelles", "Qu'elles soient vertes", "Rien", "Qu'elles soient en noir et blanc"], "correct": 0 },
+    { "q": "Quelle convention de nommage est correcte ?", "options": ["2026-03-14_VolaMalina_5erreurs_V2_16x9.mp4", "video final final.mp4", "sans titre.mp4", "export.mp4"], "correct": 0 },
+    { "q": "Combien de copies des projets en cours garder ?", "options": ["Au moins deux, sur deux supports", "Aucune", "Une seule sur l'ordinateur", "Une sur WhatsApp"], "correct": 0 },
+    { "q": "Que faire avant de commencer un projet pour une chaîne de télévision ?", "options": ["Lire entièrement les spécifications de livraison", "Exporter directement", "Choisir la musique au hasard", "Ignorer les spécifications"], "correct": 0 },
+    { "q": "Quel codec est souvent demandé pour un master ?", "options": ["ProRes", "MP3", "GIF", "JPEG"], "correct": 0 },
+    { "q": "Que livrer avec la vidéo pour les licences ?", "options": ["La liste des ressources et la référence de leur licence", "Rien", "Les mots de passe des bibliothèques", "Les factures du monteur"], "correct": 0 },
+    { "q": "Que veut dire « rough cut » ?", "options": ["Premier montage", "Montage final", "Étalonnage", "Mixage"], "correct": 0 },
+    { "q": "Un master de 20 Go à 10 Mbit/s prend environ…", "options": ["4 h 30", "2 minutes", "3 jours", "20 secondes"], "correct": 0 },
+    { "q": "Que se passe-t-il si le client change des images après le montage figé ?", "options": ["C'est un supplément, selon le contrat", "C'est toujours gratuit", "C'est impossible", "Le projet est annulé"], "correct": 0 },
+    { "q": "Quelle tâche déléguer à un assistant monteur ?", "options": ["Le dérushage", "La relation client", "Les choix créatifs", "Le contrôle final"], "correct": 0 },
+    { "q": "Comment recruter un assistant monteur ?", "options": ["Avec un test payé de dérushage et d'extraits", "Sans test", "Avec un test gratuit d'un mois", "En lui confiant tout de suite le plus gros client"], "correct": 0 }
+  ]
+}
