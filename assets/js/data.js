@@ -1996,5 +1996,88 @@ export const PUBLISHED = {
     "minutes": 8
    }
   ]
+ },
+ "mkt-1-f": {
+  "hours": 14,
+  "description": "Le gestionnaire de publicités en ligne transforme un budget publicitaire en clients, sur Facebook, Instagram et Google. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à préparer, lancer, suivre et optimiser des campagnes pour des commerces malgaches et des clients étrangers, avec méthode et des chiffres clairs. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et le fonctionnement des régies publicitaires",
+   "Choisir un objectif, un public et un budget de test",
+   "Calculer CPM, CTR, CPC, coût par résultat et ROAS, et juger la rentabilité",
+   "Construire des campagnes dans le Gestionnaire de publicités Meta et Google Ads",
+   "Mener une campagne complète avec suivi quotidien et rapport",
+   "Fixer ses prix, séparer budget et rémunération, et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de gestionnaire de publicités en ligne depuis Madagascar",
+    "summary": "Ce que fait le métier, les 4 grandes régies, les 8 tâches, vos clients, qui paie quoi, et les règles à respecter.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les 4 grandes régies",
+     "Ce que fait un gestionnaire de publicités",
+     "Qui sont vos clients ?",
+     "Qui paie quoi ?",
+     "Les règles et les limites",
+     "Exercice pratique : observer les publicités"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : parcours client, objectifs, ciblage et indicateurs",
+    "summary": "Découverte, considération, conversion ; le choix de l'objectif ; les types de publics ; les 6 indicateurs ; la rentabilité ; le budget de test.",
+    "sections": [
+     "Le parcours du client en 3 étapes",
+     "Choisir l'objectif",
+     "Le ciblage",
+     "Les 6 indicateurs essentiels",
+     "Le budget de test",
+     "Exercice pratique : calculer et décider"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : Gestionnaire de publicités Meta, Google Ads, et les outils payants",
+    "summary": "Accès partenaire et compte administrateur, campagne Meta en 3 niveaux, pixel et API Conversions, campagne Google sur le Réseau de Recherche, Canva Pro et AdEspresso.",
+    "sections": [
+     "Les outils",
+     "L'accès professionnel aux comptes du client",
+     "Une campagne Meta en 3 niveaux",
+     "Le suivi des conversions",
+     "Google Ads : une campagne sur le Réseau de Recherche",
+     "Les outils payants",
+     "Exercice pratique : préparer deux campagnes"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Premier projet : la campagne d'inscriptions d'une école",
+    "summary": "Brief en 10 questions, plan calculé à l'envers, annonces à tester, routine quotidienne, décisions d'optimisation et rapport de campagne.",
+    "sections": [
+     "Le cas pratique : « Lingua Tana »",
+     "Étape 1 : le brief",
+     "Étape 2 : le plan de campagne",
+     "Étape 3 : créer des annonces qui font agir",
+     "Étape 4 : suivre et optimiser",
+     "Étape 5 : le rapport de campagne",
+     "Exercice pratique : la campagne Lingua Tana"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio et certifications, 5 canaux de prospection, modes de rémunération, contrat en 8 points, paiements et fidélisation.",
+    "sections": [
+     "Le portfolio du gestionnaire de publicités",
+     "Où trouver des clients : 5 canaux",
+     "Les modes de rémunération",
+     "Le contrat",
+     "Se faire payer",
+     "Garder ses clients",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 8
+   }
+  ]
  }
 };

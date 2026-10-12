@@ -1,0 +1,97 @@
+{
+  "id": "mkt-1-f",
+  "hours": 14,
+  "description": "Le gestionnaire de publicités en ligne transforme un budget publicitaire en clients, sur Facebook, Instagram et Google. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à préparer, lancer, suivre et optimiser des campagnes pour des commerces malgaches et des clients étrangers, avec méthode et des chiffres clairs. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et le fonctionnement des régies publicitaires",
+    "Choisir un objectif, un public et un budget de test",
+    "Calculer CPM, CTR, CPC, coût par résultat et ROAS, et juger la rentabilité",
+    "Construire des campagnes dans le Gestionnaire de publicités Meta et Google Ads",
+    "Mener une campagne complète avec suivi quotidien et rapport",
+    "Fixer ses prix, séparer budget et rémunération, et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de gestionnaire de publicités en ligne depuis Madagascar",
+      "summary": "Ce que fait le métier, les 4 grandes régies, les 8 tâches, vos clients, qui paie quoi, et les règles à respecter.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui paie le budget publicitaire ?", "options": ["Le client, directement à la régie", "Le gestionnaire, avec sa carte", "La régie, gratuitement", "Vitako"], "correct": 0 },
+        { "q": "Quelle régie permet de toucher les personnes qui cherchent déjà un produit ?", "options": ["Google Ads", "Meta Ads uniquement", "Aucune", "LinkedIn uniquement"], "correct": 0 },
+        { "q": "Peut-on promettre un nombre de ventes garanti ?", "options": ["Non, jamais", "Oui, toujours", "Oui, si le budget est grand", "Oui, sur Google seulement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : parcours client, objectifs, ciblage et indicateurs",
+      "summary": "Découverte, considération, conversion ; le choix de l'objectif ; les types de publics ; les 6 indicateurs ; la rentabilité ; le budget de test.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "210 000 Ar dépensés pour 30 ventes : quel est le coût par vente ?", "options": ["7 000 Ar", "30 000 Ar", "210 Ar", "6 300 000 Ar"], "correct": 0 },
+        { "q": "Quand une campagne est-elle rentable ?", "options": ["Quand le coût par vente est inférieur à la marge", "Quand il y a beaucoup de « J'aime »", "Quand le budget est dépensé", "Quand le CPM est élevé"], "correct": 0 },
+        { "q": "Que faire pendant les 2 ou 3 premiers jours d'une campagne ?", "options": ["Ne rien changer, sauf problème grave", "Tout modifier chaque matin", "Doubler le budget", "Arrêter la campagne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Gestionnaire de publicités Meta, Google Ads, et les outils payants",
+      "summary": "Accès partenaire et compte administrateur, campagne Meta en 3 niveaux, pixel et API Conversions, campagne Google sur le Réseau de Recherche, Canva Pro et AdEspresso.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quel niveau d'une campagne Meta règle-t-on le public et le budget ?", "options": ["L'ensemble de publicités", "La campagne", "La publicité", "La page"], "correct": 0 },
+        { "q": "À quoi servent les mots-clés à exclure dans Google Ads ?", "options": ["Éviter de payer des clics inutiles", "Augmenter les dépenses", "Changer la langue", "Créer des visuels"], "correct": 0 },
+        { "q": "Au nom de qui doit être le compte publicitaire du client ?", "options": ["Du client", "Du gestionnaire", "D'une agence au hasard", "De personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la campagne d'inscriptions d'une école",
+      "summary": "Brief en 10 questions, plan calculé à l'envers, annonces à tester, routine quotidienne, décisions d'optimisation et rapport de campagne.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "60 inscriptions voulues, 1 inscription pour 5 conversations : combien de conversations faut-il ?", "options": ["300", "12", "65", "60"], "correct": 0 },
+        { "q": "Beaucoup de messages mais peu d'inscriptions : où est souvent le problème ?", "options": ["Après la publicité : délai de réponse, prix, argumentaire", "Dans le CPM", "Dans la couleur du bouton", "Nulle part"], "correct": 0 },
+        { "q": "Qu'est-ce que la fatigue publicitaire ?", "options": ["Les personnes ont trop vu l'annonce et réagissent moins", "Le gestionnaire est fatigué", "Le budget est épuisé", "La régie est en panne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio et certifications, 5 canaux de prospection, modes de rémunération, contrat en 8 points, paiements et fidélisation.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment présenter sa rémunération sur une facture ?", "options": ["Séparée du budget publicitaire", "Mélangée au budget publicitaire", "Cachée", "En pourcentage du chiffre d'affaires uniquement"], "correct": 0 },
+        { "q": "Quelle preuve gratuite de connaissances peut-on obtenir ?", "options": ["Une certification Google Ads", "Un diplôme acheté", "Un faux témoignage", "Aucune"], "correct": 0 },
+        { "q": "Pourquoi une durée minimale de 3 mois ?", "options": ["Les premières semaines servent à tester", "Pour bloquer le client", "C'est obligatoire", "Pour payer moins d'impôts"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle d'un gestionnaire de publicités en ligne ?", "options": ["Transformer un budget publicitaire en clients, au plus bas coût", "Créer des logos", "Répondre aux messages des clients", "Développer des sites"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une régie publicitaire ?", "options": ["L'entreprise qui vend les espaces et fournit l'outil des annonces", "Une agence de voyage", "Un type de visuel", "Un logiciel de montage"], "correct": 0 },
+    { "q": "Que faire avant de lancer une campagne pour un produit de santé ?", "options": ["Vérifier les règles publicitaires de la régie", "Promettre une guérison", "Ignorer les règles", "Cacher le produit"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une conversion ?", "options": ["L'action voulue : achat, inscription, message, appel", "Un changement de devise", "Un type de visuel", "Une erreur de la régie"], "correct": 0 },
+    { "q": "Quel objectif choisir pour un commerce qui vend par Messenger ?", "options": ["Messages", "Notoriété", "Vues de vidéo uniquement", "Aucun"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un public personnalisé ?", "options": ["Des personnes déjà en contact avec la marque", "Un public inventé", "Un public de concurrents", "Un public sans ciblage"], "correct": 0 },
+    { "q": "Comment calcule-t-on le CTR ?", "options": ["Clics ÷ impressions × 100", "Dépense ÷ clics", "Ventes ÷ dépense", "Impressions ÷ clics"], "correct": 0 },
+    { "q": "150 000 Ar dépensés pour 900 clics : quel est le CPC ?", "options": ["Environ 167 Ar", "900 Ar", "1 500 Ar", "16 Ar"], "correct": 0 },
+    { "q": "Que mesure le ROAS ?", "options": ["Le chiffre d'affaires rapporté pour 1 unité dépensée", "Le nombre de clics", "Le coût de 1 000 impressions", "Le nombre d'abonnés"], "correct": 0 },
+    { "q": "Une paire rapporte 30 000 Ar de marge, le coût par vente est 35 000 Ar. La campagne est…", "options": ["Non rentable", "Très rentable", "Parfaite", "Gratuite"], "correct": 0 },
+    { "q": "Comment augmenter le budget d'une campagne qui marche ?", "options": ["Progressivement", "En le multipliant par 10 d'un coup", "En changeant tout", "En arrêtant la campagne"], "correct": 0 },
+    { "q": "Comment obtenir l'accès au compte Google Ads d'un client ?", "options": ["Par une demande d'association depuis un compte administrateur", "Avec son mot de passe Gmail", "En créant un compte à votre nom", "Par SMS"], "correct": 0 },
+    { "q": "Que règle-t-on au niveau de la campagne Meta ?", "options": ["L'objectif", "Le visuel", "Le texte", "Le bouton"], "correct": 0 },
+    { "q": "À quoi sert le pixel Meta ?", "options": ["Informer Meta des actions des visiteurs venus d'une publicité", "Créer des images", "Payer les annonces", "Bloquer les concurrents"], "correct": 0 },
+    { "q": "Pour un commerce qui vend par messages, comment connaître les ventes ?", "options": ["Le commerçant note les ventes dans un tableau", "Meta les devine", "On ne peut pas", "On les invente"], "correct": 0 },
+    { "q": "Quelle écriture correspond au mot-clé exact dans Google Ads ?", "options": ["[hôtel nosy be]", "\"hôtel nosy be\"", "hôtel nosy be", "{hôtel nosy be}"], "correct": 0 },
+    { "q": "Combien de titres peut contenir une annonce responsive de recherche ?", "options": ["Jusqu'à 15", "1", "100", "Aucun"], "correct": 0 },
+    { "q": "Quelle question du brief est souvent oubliée et décisive ?", "options": ["Qui répond aux messages, et en combien de temps", "La couleur préférée du client", "L'âge du gérant", "Le nom de l'hébergeur"], "correct": 0 },
+    { "q": "Que faire d'une annonce qui coûte 2 fois plus cher par conversation que les autres ?", "options": ["La mettre en pause", "Lui donner tout le budget", "La dupliquer 10 fois", "Ne rien faire pendant un mois"], "correct": 0 },
+    { "q": "Beaucoup de clics mais peu de messages : que revoir ?", "options": ["Le texte ou le bouton de l'annonce", "Le nom de la page", "L'adresse de l'école", "Rien"], "correct": 0 },
+    { "q": "Peut-on utiliser un témoignage inventé dans une annonce ?", "options": ["Non, jamais", "Oui, si personne ne vérifie", "Oui, avec un prénom courant", "Oui, une fois"], "correct": 0 },
+    { "q": "Que demander à l'école pour mesurer l'effet des appels ?", "options": ["Noter comment chaque élève a connu l'école", "Rien", "Supprimer le téléphone", "Arrêter la publicité"], "correct": 0 },
+    { "q": "Quel est un mode de rémunération courant ?", "options": ["Un forfait mensuel ou un pourcentage du budget", "Un pourcentage du salaire du client", "Un paiement en nature uniquement", "Aucun"], "correct": 0 },
+    { "q": "Que doit dire le contrat sur les résultats ?", "options": ["Vous vous engagez sur une méthode, pas sur un nombre de ventes", "Les ventes sont garanties", "Le client paie seulement s'il vend", "Rien"], "correct": 0 },
+    { "q": "Quelle bonne pratique fidélise un client ?", "options": ["Des rapports réguliers et honnêtes, avec des propositions", "Cacher les mauvais chiffres", "Ne jamais envoyer de rapport", "Augmenter le budget sans prévenir"], "correct": 0 }
+  ]
+}

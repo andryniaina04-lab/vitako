@@ -45,7 +45,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
-  ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 10, false),
+  ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 18, false),
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 11, false),
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 14, false),
@@ -13519,4 +13519,652 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Qui paie le budget de publicité payée sur Facebook ?', '["Personne, c''est gratuit","Le client, directement à Meta","Le community manager, sur son forfait","Vitako"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Avec un revenu visé de 1 200 000 Ar et 80 heures facturables, quel est le prix horaire ?', '["150 000 Ar","15 000 Ar","1 500 Ar","96 000 Ar"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Que faire pour garder un client longtemps ?', '["Baisser son prix chaque mois","Publier sans lui demander son avis","Envoyer le rapport à date fixe et proposer une idée nouvelle chaque mois","Ne lui écrire qu''en cas de problème"]'::jsonb, 2);
+
+-- mkt-1-f
+delete from public.exam_questions where course_id = 'mkt-1-f';
+delete from public.module_questions where course_id = 'mkt-1-f';
+delete from public.lessons where course_id = 'mkt-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-f', 0, 'Le métier de gestionnaire de publicités en ligne depuis Madagascar', 'Ce que fait le métier, les 4 grandes régies, les 8 tâches, vos clients, qui paie quoi, et les règles à respecter.', 'Chaque jour, des entreprises paient pour montrer leurs annonces sur Facebook, Instagram, Google ou TikTok. Mal gérée, cette publicité brûle de l''argent. Bien gérée, elle apporte des clients chaque jour. Le gestionnaire de publicités en ligne est la personne qui prépare, lance, surveille et améliore ces campagnes. Ce premier module vous montre ce métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un gestionnaire de publicités en ligne.
+> 2. Citer les 4 grandes régies publicitaires et ce qu''on y fait.
+> 3. Repérer vos premiers clients possibles.
+> 4. Comprendre qui paie quoi : votre travail et le budget publicitaire.
+> 5. Connaître les règles et les limites du métier.
+
+## Le métier en une phrase
+
+Un gestionnaire de publicités en ligne **transforme un budget publicitaire en clients, au coût le plus bas possible**.
+
+Il ne se contente pas d''appuyer sur « Booster la publication ». Il choisit l''objectif, le public, le message, le budget, puis il **mesure** chaque jour ce que rapporte chaque ariary dépensé, et il ajuste.
+
+> [!definition] Régie publicitaire
+> L''entreprise qui vend les espaces publicitaires et fournit l''outil pour créer les annonces. Exemples : Meta (Facebook, Instagram, Messenger, WhatsApp), Google (moteur de recherche, YouTube), TikTok, LinkedIn.
+
+## Les 4 grandes régies
+
+| Régie | Où s''affichent les annonces | Point fort | Exemple de client |
+| --- | --- | --- | --- |
+| **Meta Ads** | Facebook, Instagram, Messenger | Ciblage par âge, lieu, centres d''intérêt ; très utilisé à Madagascar | Boutique, restaurant, école |
+| **Google Ads** | Résultats de recherche Google, YouTube, sites partenaires | Toucher les personnes **qui cherchent déjà** le produit | Hôtel, agence de voyage, artisan |
+| **TikTok Ads** | Fil TikTok | Public jeune, vidéos courtes | Marque de mode, application |
+| **LinkedIn Ads** | LinkedIn | Cibler des professionnels par métier et entreprise | Formation professionnelle, logiciel, recrutement |
+
+Commencez par **Meta Ads**, puis **Google Ads** : ce sont les deux régies les plus demandées.
+
+> [!exemple] La différence entre Meta et Google
+> - Sur **Facebook**, Fara ne cherche pas de chaussures. Elle voit une publicité de baskets parce qu''elle a 24 ans, vit à Antananarivo et suit des pages de mode. On **crée** le besoin.
+> - Sur **Google**, un touriste tape « hôtel Nosy Be plage ». Il cherche déjà. On **répond** au besoin.
+
+## Ce que fait un gestionnaire de publicités
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | Comprendre l''objectif du client | « Je veux 50 commandes de plus par mois » |
+| 2 | Choisir la régie et le type de campagne | Meta, campagne « Messages » |
+| 3 | Définir le public | Femmes 20-40 ans, Antananarivo, intérêt « cosmétiques » |
+| 4 | Préparer les annonces | 3 visuels et 3 textes différents |
+| 5 | Fixer le budget | 30 000 Ar par jour pendant 7 jours |
+| 6 | Installer le suivi | Mesurer les messages, les visites, les achats |
+| 7 | Surveiller et optimiser | Couper ce qui ne marche pas, renforcer ce qui marche |
+| 8 | Rendre compte | Rapport : dépensé, obtenu, coût par résultat, propositions |
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Boutiques en ligne** sur Facebook : vêtements, cosmétiques, téléphones.
+2. **Restaurants et services de livraison**.
+3. **Écoles, universités privées, centres de formation** : campagnes d''inscription.
+4. **Hôtels et agences de voyage** : clients locaux et étrangers.
+5. **Immobilier** : promoteurs, agences.
+
+### À l''étranger
+
+1. **Petites entreprises francophones** qui n''ont pas le temps d''apprendre les outils.
+2. **Agences de marketing** qui sous-traitent la gestion des campagnes.
+3. **Boutiques en ligne** et **formateurs** qui vendent sur Internet.
+
+> [!madagascar] Votre avantage
+> Beaucoup de commerçants malgaches « boostent » leurs publications au hasard et ne savent pas ce que ça leur rapporte. Un gestionnaire qui montre des **chiffres clairs** (« 22 000 Ar dépensés par commande obtenue ») se distingue immédiatement.
+
+## Qui paie quoi ?
+
+C''est la règle la plus importante du métier :
+
+| Dépense | Qui paie | Comment |
+| --- | --- | --- |
+| **Le budget publicitaire** | Le client | Directement à la régie (Meta, Google), avec **son** moyen de paiement, dans **son** compte publicitaire |
+| **Votre travail** (création, gestion, rapports) | Le client | À vous, selon votre forfait |
+
+> [!attention]
+> Ne payez **jamais** la publicité d''un client avec votre propre carte ou votre propre compte pour la lui refacturer. En cas de désaccord ou de retard de paiement, c''est vous qui perdez l''argent. Le client vous donne un **accès** à son compte publicitaire ; il garde le contrôle des paiements.
+
+## Les règles et les limites
+
+### Les règles des régies
+
+Chaque régie a ses **règles publicitaires** : produits interdits ou limités (médicaments, armes, jeux d''argent…), promesses trompeuses interdites (« Perdez 10 kg en 3 jours »), images choquantes, données personnelles. Certaines catégories (logement, emploi, crédit, politique) ont des règles spéciales de ciblage. Une annonce qui ne respecte pas les règles est **refusée**, et un compte qui les enfreint souvent peut être **bloqué**.
+
+### L''honnêteté avec le client
+
+1. **Ne promettez jamais** un nombre de ventes garanti : vous ne contrôlez ni le produit, ni le prix, ni la façon dont le client répond aux messages.
+2. **Montrez les vrais chiffres**, même quand ils sont mauvais, avec une explication et une proposition.
+3. **Prévenez** que les premiers jours d''une campagne servent souvent à tester et à apprendre.
+
+> [!retenir]
+> - Un gestionnaire de publicités transforme un budget en clients, au plus bas coût possible.
+> - Meta crée le besoin, Google répond au besoin.
+> - 8 tâches : objectif, régie, public, annonces, budget, suivi, optimisation, rapport.
+> - Le budget publicitaire est payé par le client, dans son compte.
+> - Respecter les règles des régies et ne jamais promettre de ventes garanties.
+
+## Exercice pratique : observer les publicités
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Ouvrez la **Bibliothèque publicitaire de Meta** (gratuite, accessible à tous) et cherchez 3 entreprises malgaches qui font de la publicité.
+> 2. Pour chacune, notez : le produit, le format (image, vidéo, carrousel), l''accroche, l''appel à l''action.
+> 3. Cherchez sur Google 3 recherches commerciales (« hôtel Antsirabe », « formation anglais Antananarivo »…) et notez les annonces marquées « Sponsorisé ».
+> 4. Pour chaque annonce, dites si elle « crée » ou « répond » à un besoin, et proposez une amélioration.
+>
+> **À livrer** : votre tableau de 6 annonces avec vos observations et vos améliorations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 0, 0, 'Qui paie le budget publicitaire ?', '["La régie, gratuitement","Vitako","Le gestionnaire, avec sa carte","Le client, directement à la régie"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 0, 1, 'Quelle régie permet de toucher les personnes qui cherchent déjà un produit ?', '["Google Ads","Meta Ads uniquement","LinkedIn uniquement","Aucune"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 0, 2, 'Peut-on promettre un nombre de ventes garanti ?', '["Oui, toujours","Oui, si le budget est grand","Non, jamais","Oui, sur Google seulement"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-f', 1, 'Les bases : parcours client, objectifs, ciblage et indicateurs', 'Découverte, considération, conversion ; le choix de l''objectif ; les types de publics ; les 6 indicateurs ; la rentabilité ; le budget de test.', 'Avant d''ouvrir le gestionnaire de publicités, il faut comprendre la logique d''une campagne : le parcours du client, les objectifs, le ciblage, le budget et surtout les **chiffres** qui disent si une campagne marche. Ce module vous donne ces bases, avec des calculs simples que vous utiliserez tous les jours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Décrire le parcours du client en 3 étapes.
+> 2. Choisir l''objectif de campagne adapté.
+> 3. Définir un public : large, ciblé, ou personnes déjà en contact.
+> 4. Calculer et interpréter les 6 indicateurs essentiels.
+> 5. Fixer un budget de test raisonnable.
+
+## Le parcours du client en 3 étapes
+
+| Étape | Ce que pense la personne | Objectif publicitaire | Exemple pour une école de langues |
+| --- | --- | --- | --- |
+| **1. Découverte** | « Je ne vous connais pas » | Faire connaître : couverture, vues de vidéo | Vidéo : « Parler anglais en 3 mois, c''est possible » |
+| **2. Considération** | « Ça m''intéresse, je me renseigne » | Visites, messages, interactions | « Envoyez-nous un message pour le programme complet » |
+| **3. Conversion** | « Je suis prêt à acheter » | Inscriptions, ventes, prospects | « Inscription avant le 30 : 10 % de réduction » |
+
+> [!definition] Conversion
+> L''action que le client veut obtenir : un achat, une inscription, une demande de devis, un message, un appel. C''est le résultat qui compte le plus.
+
+Pour un petit commerce malgache qui vend par Messenger, l''objectif le plus utile est souvent **« Messages »** : la publicité pousse les gens à envoyer un message, et la vente se fait dans la conversation.
+
+## Choisir l''objectif
+
+Dans Meta Ads, l''objectif se choisit au début de la campagne. Les noms exacts changent parfois, mais les grandes familles restent :
+
+| Objectif | Quand l''utiliser |
+| --- | --- |
+| **Notoriété** | Lancer une marque, toucher le plus de monde possible |
+| **Trafic** | Envoyer des personnes vers un site |
+| **Interactions** (dont **messages**) | Obtenir des messages, des commentaires, des vues de vidéo |
+| **Prospects** | Recueillir des coordonnées (formulaire) |
+| **Ventes** | Obtenir des achats sur un site, avec un suivi installé |
+
+**Règle d''or** : choisissez l''objectif qui correspond au **résultat que le client veut payer**. La régie montre l''annonce aux personnes les plus susceptibles de faire **cette** action.
+
+## Le ciblage
+
+| Type de public | Ce que c''est | Exemple |
+| --- | --- | --- |
+| **Public large** | Lieu et âge seulement, la régie trouve les bonnes personnes | Antananarivo, 18-45 ans |
+| **Public par centres d''intérêt** | Personnes intéressées par certains sujets | Intérêt « cuisine », « mode », « anglais » |
+| **Public personnalisé** | Personnes déjà en contact avec la marque | Visiteurs du site, personnes qui ont envoyé un message, abonnés |
+| **Public similaire** | Personnes qui ressemblent aux clients actuels | Similaire aux acheteurs des 6 derniers mois |
+
+> [!astuce]
+> Ne ciblez pas trop étroit au début. Un public de quelques milliers de personnes dans une petite ville coûte cher et s''épuise vite. Les régies sont devenues très bonnes pour trouver les bonnes personnes dans un public assez large, **à condition que l''annonce soit claire**.
+
+## Les 6 indicateurs essentiels
+
+| Indicateur | Signification | Calcul |
+| --- | --- | --- |
+| **Impressions** | Nombre de fois où l''annonce a été affichée | Donné par la régie |
+| **CPM** | Coût pour 1 000 impressions | Dépense ÷ impressions × 1 000 |
+| **CTR** (taux de clics) | Part des personnes qui cliquent | Clics ÷ impressions × 100 |
+| **CPC** | Coût par clic | Dépense ÷ clics |
+| **CPA** (coût par résultat) | Coût d''une conversion (message, achat, inscription) | Dépense ÷ résultats |
+| **ROAS** (retour sur dépense publicitaire) | Chiffre d''affaires rapporté pour 1 unité dépensée | Chiffre d''affaires ÷ dépense |
+
+> [!exemple] Une campagne de 7 jours pour une boutique de chaussures
+> - Dépense : 210 000 Ar
+> - Impressions : 70 000 → CPM = 210 000 ÷ 70 000 × 1 000 = **3 000 Ar**
+> - Clics : 1 400 → CTR = 1 400 ÷ 70 000 × 100 = **2 %** ; CPC = 210 000 ÷ 1 400 = **150 Ar**
+> - Messages reçus : 120 → coût par message = 210 000 ÷ 120 = **1 750 Ar**
+> - Ventes : 30 paires à 85 000 Ar = 2 550 000 Ar → ROAS = 2 550 000 ÷ 210 000 ≈ **12**
+> - Coût par vente (CPA) = 210 000 ÷ 30 = **7 000 Ar**
+>
+> *(Chiffres donnés en exemple.)*
+
+### Savoir si une campagne est rentable
+
+Le client gagne de l''argent si le **coût par vente** est inférieur à sa **marge** sur une vente.
+
+> [!exemple] Rentable ou pas ?
+> Une paire de chaussures vendue 85 000 Ar coûte 55 000 Ar au commerçant (achat, transport). Sa marge est de 30 000 Ar. Avec un coût par vente de 7 000 Ar, il gagne 23 000 Ar par paire grâce à la publicité : **rentable**. Si le coût par vente montait à 35 000 Ar, il perdrait de l''argent sur chaque vente.
+
+Demandez toujours au client sa **marge approximative** : c''est ce qui fixe le coût par vente maximal acceptable.
+
+## Le budget de test
+
+1. **Commencez petit** : un budget quotidien modeste pendant 5 à 7 jours.
+2. **Testez 2 ou 3 annonces** différentes (visuels ou textes) dans la même campagne.
+3. **Ne changez rien pendant les 2 ou 3 premiers jours** : la régie a besoin de temps pour apprendre qui réagit.
+4. **Après la période de test**, gardez les annonces qui ont le coût par résultat le plus bas, et augmentez le budget **progressivement** (par exemple de 20 % tous les quelques jours).
+
+> [!definition] Phase d''apprentissage
+> La période où la régie teste différentes personnes pour trouver celles qui font l''action voulue. Les résultats y sont souvent irréguliers. Changer sans arrêt les réglages la fait recommencer.
+
+> [!madagascar]
+> Les montants publicitaires sont souvent facturés en devises (euros ou dollars) puis convertis. Pour vos rapports à un client malgache, convertissez les coûts en ariary avec le taux réellement payé, pour qu''il comprenne ce que lui coûte un message ou une vente.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Choisir l''objectif « Notoriété » quand le client veut des ventes.
+> - Cibler un public minuscule « pour être précis ».
+> - Modifier la campagne tous les jours.
+> - Regarder les « J''aime » au lieu du coût par résultat.
+> - Ignorer la marge du client.
+
+> [!retenir]
+> - Découverte, considération, conversion : un objectif par étape.
+> - Choisissez l''objectif qui correspond au résultat payé par le client.
+> - Publics larges, par intérêts, personnalisés, similaires.
+> - CPM, CTR, CPC, CPA, ROAS : calculez-les et comprenez-les.
+> - Une campagne est rentable si le coût par vente est inférieur à la marge.
+
+## Exercice pratique : calculer et décider
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Calculez les 6 indicateurs pour cette campagne : dépense 150 000 Ar, 60 000 impressions, 900 clics, 75 messages, 18 ventes à 45 000 Ar.
+> 2. Le produit coûte 30 000 Ar au commerçant : la campagne est-elle rentable ? Quel est le coût par vente maximal acceptable ?
+> 3. Pour 3 commerces différents (restaurant, école, hôtel), choisissez l''objectif de campagne et le public, et justifiez.
+> 4. Proposez un plan de test de 7 jours pour l''un d''eux : budget, nombre d''annonces, règles.
+>
+> **À livrer** : vos calculs, votre conclusion de rentabilité, vos 3 choix justifiés et votre plan de test.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 1, 0, '210 000 Ar dépensés pour 30 ventes : quel est le coût par vente ?', '["210 Ar","6 300 000 Ar","30 000 Ar","7 000 Ar"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 1, 1, 'Quand une campagne est-elle rentable ?', '["Quand le coût par vente est inférieur à la marge","Quand le CPM est élevé","Quand le budget est dépensé","Quand il y a beaucoup de « J''aime »"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 1, 2, 'Que faire pendant les 2 ou 3 premiers jours d''une campagne ?', '["Doubler le budget","Arrêter la campagne","Ne rien changer, sauf problème grave","Tout modifier chaque matin"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-f', 2, 'Les outils : Gestionnaire de publicités Meta, Google Ads, et les outils payants', 'Accès partenaire et compte administrateur, campagne Meta en 3 niveaux, pixel et API Conversions, campagne Google sur le Réseau de Recherche, Canva Pro et AdEspresso.', 'Ce module vous fait prendre en main les deux outils principaux du métier : le **Gestionnaire de publicités de Meta** et **Google Ads**. Vous apprenez à obtenir un accès professionnel aux comptes des clients, à construire une campagne dans le bon ordre et à installer le suivi des résultats. Vous découvrez aussi les outils payants qui font gagner du temps.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Obtenir un accès partenaire au compte publicitaire d''un client.
+> 2. Construire une campagne Meta en 3 niveaux.
+> 3. Comprendre le rôle du pixel et du suivi des conversions.
+> 4. Créer une campagne Google sur le Réseau de Recherche avec les bons mots-clés.
+> 5. Savoir quand utiliser Canva Pro et AdEspresso.
+
+## Les outils
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Meta Business Suite / gestion d''entreprise** | Regrouper pages, comptes publicitaires et accès des partenaires |
+| 2 | **Gestionnaire de publicités Meta** | Créer, suivre et optimiser les campagnes Facebook et Instagram |
+| 3 | **Bibliothèque publicitaire Meta** | Voir les publicités actives de n''importe quelle page (veille) |
+| 4 | **Google Ads** | Campagnes sur la recherche Google, YouTube et les sites partenaires |
+| 5 | **Canva** | Visuels et vidéos des annonces |
+| 6 | **Google Sheets** | Suivi des chiffres et rapports |
+
+## L''accès professionnel aux comptes du client
+
+### Chez Meta
+
+1. Le client possède un **portefeuille business** (anciennement Business Manager) qui contient sa page et son **compte publicitaire**.
+2. Vous créez votre propre portefeuille business.
+3. Le client vous ajoute comme **partenaire** et vous donne accès à son compte publicitaire et à sa page, avec les droits nécessaires.
+4. Le **moyen de paiement** reste celui du client, dans son compte.
+
+### Chez Google
+
+1. Vous créez un **compte administrateur** Google Ads (souvent appelé MCC), gratuit.
+2. Depuis ce compte, vous envoyez une **demande d''association** au compte Google Ads du client.
+3. Le client l''accepte : vous gérez son compte depuis le vôtre, il garde la propriété et la facturation.
+
+> [!attention]
+> Ne créez **jamais** le compte publicitaire d''un client à votre nom. Si vous arrêtez de travailler ensemble, il doit garder son compte, son historique et ses données.
+
+## Une campagne Meta en 3 niveaux
+
+| Niveau | Ce qu''on y règle | Exemple |
+| --- | --- | --- |
+| **1. Campagne** | L''**objectif** | Interactions → Messages |
+| **2. Ensemble de publicités** | Le **public**, les **emplacements**, le **budget**, les **dates** | Antananarivo, 18-45 ans, 30 000 Ar par jour, 7 jours |
+| **3. Publicité** | Le **visuel**, le **texte**, le **titre**, le **bouton** | Vidéo du plat du jour + « Commandez par message » |
+
+### Créer la campagne en 8 étapes
+
+1. Ouvrez le Gestionnaire de publicités, cliquez sur **Créer**.
+2. Choisissez l''**objectif** (module 2).
+3. Nommez clairement la campagne : `2026-03 | Messages | Menu du jour`.
+4. Au niveau de l''ensemble : **budget**, **dates**, **lieu**, **âge**, et centres d''intérêt si nécessaire.
+5. Laissez les **emplacements automatiques** au début (Facebook, Instagram, Messenger…).
+6. Au niveau de la publicité : importez **2 ou 3 visuels** ou vidéos, écrivez **2 ou 3 textes**.
+7. Choisissez le **bouton** (Envoyer un message, En savoir plus, Réserver…).
+8. Vérifiez l''**aperçu** sur chaque emplacement, puis publiez. L''annonce passe en **examen** avant d''être diffusée.
+
+> [!astuce] La convention de nommage
+> Nommez toujours campagnes, ensembles et publicités de la même façon : date, objectif, public, contenu. Quand vous gérez 10 clients et 50 campagnes, vous retrouvez tout en quelques secondes, et vos rapports sont plus clairs.
+
+## Le suivi des conversions
+
+Pour savoir si une publicité amène des **ventes sur un site**, il faut un outil de suivi.
+
+> [!definition] Pixel Meta et API Conversions
+> Le **pixel** est un petit code installé sur le site du client ; il informe Meta quand un visiteur venu d''une publicité fait une action (consulter un produit, ajouter au panier, acheter). L''**API Conversions** envoie ces informations directement depuis le serveur du site, de façon plus fiable. Sur Shopify ou WooCommerce, des intégrations permettent de les installer sans écrire de code.
+
+Pour un commerce qui vend **par messages**, le suivi se fait autrement : nombre de conversations commencées (donné par Meta) et **nombre de ventes** notées par le commerçant dans un tableau simple. Demandez au client de tenir ce tableau : sans lui, vous ne pouvez pas calculer le coût par vente.
+
+## Google Ads : une campagne sur le Réseau de Recherche
+
+Les annonces de recherche apparaissent quand quelqu''un tape certains **mots-clés** sur Google.
+
+### Les types de correspondance des mots-clés
+
+| Type | Écriture | Les annonces apparaissent pour… |
+| --- | --- | --- |
+| **Requête large** | hôtel nosy be | Des recherches proches, même avec d''autres mots (« logement Nosy Be pas cher ») |
+| **Expression exacte** | "hôtel nosy be" | Des recherches qui contiennent le sens de l''expression (« meilleur hôtel Nosy Be plage ») |
+| **Mot-clé exact** | [hôtel nosy be] | Des recherches de même sens que le mot-clé |
+
+> [!definition] Mots-clés à exclure
+> Des mots pour lesquels vous ne voulez **pas** que l''annonce apparaisse. Pour un hôtel haut de gamme : « gratuit », « emploi », « stage », « pas cher ». Ils évitent de payer des clics inutiles.
+
+### Créer la campagne en 7 étapes
+
+1. **Objectif** : prospects ou trafic vers le site (ou ventes, si le suivi est installé).
+2. **Type** : Réseau de Recherche.
+3. **Lieux et langues** : par exemple France, Belgique, Suisse et La Réunion pour un hôtel qui vise des voyageurs francophones.
+4. **Budget quotidien** et **stratégie d''enchères** (au début, souvent « Maximiser les clics » ou « Maximiser les conversions » si le suivi est installé).
+5. **Groupes d''annonces** : un groupe par thème (« hôtel Nosy Be », « séjour plongée Nosy Be »), avec 5 à 15 mots-clés chacun.
+6. **Annonces responsives** : jusqu''à 15 titres courts et 4 descriptions ; Google les combine.
+7. **Composants** (extensions) : liens vers d''autres pages, numéro de téléphone, accroches (« Petit-déjeuner inclus »).
+
+> [!exemple] Titres pour une annonce d''hôtel
+> « Hôtel face à la mer à Nosy Be » · « Bungalows avec petit-déjeuner » · « Réservez en direct, meilleur prix » · « Plongée et excursions sur place » · « À 15 min de l''aéroport »
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Canva Pro** | Kit de marque, redimensionnement en un clic, suppression d''arrière-plan, nombreuses vidéos et images | Dès que vous créez des annonces pour plusieurs clients chaque semaine |
+| **AdEspresso** (ou outils de suivi comparables) | Création et test de nombreuses variantes d''annonces Meta, rapports plus clairs | Quand vous gérez beaucoup de campagnes et de tests |
+| **Le budget publicitaire** | Le carburant des campagnes | Toujours payé par le client |
+
+Les prix changent : vérifiez-les sur les sites officiels.
+
+> [!madagascar]
+> Le paiement des publicités Meta et Google se fait en général par carte bancaire internationale. Avant de démarrer, vérifiez avec le client qu''il dispose d''un moyen de paiement accepté par la régie. Sans cela, la campagne ne pourra pas être diffusée.
+
+> [!retenir]
+> - Accès partenaire chez Meta, compte administrateur chez Google : le client garde son compte et ses paiements.
+> - Meta : campagne (objectif), ensemble (public, budget), publicité (visuel, texte).
+> - Pixel et API Conversions pour les sites ; tableau des ventes pour les commerces par messages.
+> - Google : mots-clés, types de correspondance, mots-clés exclus, annonces responsives.
+> - Une convention de nommage claire pour tout retrouver.
+
+## Exercice pratique : préparer deux campagnes
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Créez votre portefeuille business Meta et un compte administrateur Google Ads.
+> 2. Dans le Gestionnaire de publicités, préparez (sans la publier) une campagne « Messages » pour un restaurant d''Antananarivo : objectif, public, budget, 3 annonces.
+> 3. Rédigez la structure d''une campagne Google pour un hôtel de Nosy Be : 2 groupes d''annonces, 10 mots-clés chacun avec leur type, 10 mots-clés exclus, 10 titres et 4 descriptions.
+> 4. Créez dans Canva les 3 visuels de la campagne Meta.
+>
+> **À livrer** : captures de votre campagne Meta en brouillon, le document de la campagne Google et vos 3 visuels.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 2, 0, 'À quel niveau d''une campagne Meta règle-t-on le public et le budget ?', '["L''ensemble de publicités","La page","La campagne","La publicité"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 2, 1, 'À quoi servent les mots-clés à exclure dans Google Ads ?', '["Changer la langue","Éviter de payer des clics inutiles","Augmenter les dépenses","Créer des visuels"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 2, 2, 'Au nom de qui doit être le compte publicitaire du client ?', '["Du gestionnaire","D''une agence au hasard","De personne","Du client"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-f', 3, 'Premier projet : la campagne d''inscriptions d''une école', 'Brief en 10 questions, plan calculé à l''envers, annonces à tester, routine quotidienne, décisions d''optimisation et rapport de campagne.', 'Place à un vrai projet. Une école de langues d''Antananarivo vous confie sa campagne d''inscriptions pour la rentrée. Vous suivez toutes les étapes d''un gestionnaire de publicités professionnel : brief, plan, création, lancement, suivi quotidien, optimisation et rapport final.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Recueillir un brief publicitaire complet.
+> 2. Construire un plan de campagne chiffré.
+> 3. Créer des annonces qui donnent envie d''agir.
+> 4. Suivre et optimiser une campagne avec une routine quotidienne.
+> 5. Rédiger un rapport de campagne utile.
+
+## Le cas pratique : « Lingua Tana »
+
+> [!exemple] Votre client
+> **Lingua Tana** est une école d''anglais et de français à Antananarivo (Analakely). Elle ouvre 4 nouvelles classes de 15 élèves pour la rentrée, soit **60 places**. Une inscription coûte 300 000 Ar par trimestre. L''école reçoit les demandes par **Messenger** et par **téléphone**. Budget publicitaire prévu : **1 200 000 Ar** sur 4 semaines.
+
+## Étape 1 : le brief
+
+### Les 10 questions
+
+1. Quel est **l''objectif chiffré** ? (60 inscriptions)
+2. Qu''est-ce qui est vendu, **à quel prix** ?
+3. Quelle est la **marge** ou la valeur d''un client ? (un élève reste souvent plusieurs trimestres)
+4. Qui est le **client type** ? (lycéens, étudiants, jeunes actifs, parents)
+5. Quels sont les **arguments forts** ? (petites classes, professeurs, horaires du soir, certificat)
+6. Quelles **objections** reviennent ? (prix, temps, niveau)
+7. Comment les demandes sont-elles **traitées** ? Qui répond aux messages, en combien de temps ?
+8. Quel **budget** et quelle **durée** ?
+9. Quels **contenus** existent ? (photos, vidéos, témoignages)
+10. Quelles campagnes ont été faites **avant**, et avec quels résultats ?
+
+> [!attention]
+> La question 7 est souvent oubliée et elle est décisive : une publicité excellente ne sert à rien si personne ne répond aux messages pendant 2 jours. Vérifiez que l''école peut répondre vite, idéalement en moins d''une heure en journée.
+
+## Étape 2 : le plan de campagne
+
+### Calculer l''objectif inverse
+
+Partez du résultat voulu et remontez :
+
+| Étape | Hypothèse (à vérifier pendant le test) | Calcul |
+| --- | --- | --- |
+| Inscriptions voulues | 60 | — |
+| Taux de transformation message → inscription | 1 inscription pour 5 conversations | 60 × 5 = **300 conversations** nécessaires |
+| Coût estimé par conversation | 3 000 Ar | 300 × 3 000 = **900 000 Ar** |
+| Marge pour les tests et les imprévus | Environ 25 % | **≈ 1 125 000 Ar**, proche du budget prévu |
+
+*(Hypothèses données en exemple : seuls les vrais chiffres des premiers jours permettent de les ajuster.)*
+
+### Le plan sur 4 semaines
+
+| Semaine | Action | Budget |
+| --- | --- | --- |
+| **1** | Test : 1 campagne « Messages », 2 publics, 3 annonces | 250 000 Ar |
+| **2** | Garder le meilleur public et les 2 meilleures annonces, ajouter une vidéo témoignage | 300 000 Ar |
+| **3** | Augmenter progressivement le budget de ce qui marche ; relancer les personnes qui ont déjà écrit sans s''inscrire | 350 000 Ar |
+| **4** | Urgence réelle : « Plus que 12 places », « Inscriptions jusqu''au 30 » | 300 000 Ar |
+
+## Étape 3 : créer des annonces qui font agir
+
+### La structure d''une annonce
+
+1. **L''accroche** (première ligne) : un problème ou un désir du client type.
+2. **La solution** : ce que propose l''école, en 2 ou 3 points.
+3. **La preuve** : témoignage, chiffre, résultat.
+4. **L''appel à l''action** : ce qu''il faut faire, maintenant.
+
+> [!exemple] Trois annonces à tester
+> **A (problème)** : « Vous comprenez l''anglais mais vous bloquez à l''oral ? Classes de 15 élèves maximum, cours le soir à Analakely. 👉 Envoyez « ANGLAIS » pour recevoir le programme. »
+> **B (résultat)** : « En 3 mois, Tiana a réussi son entretien d''embauche en anglais. Rentrée le 5 septembre, 60 places. 👉 Écrivez-nous pour réserver votre test de niveau gratuit. »
+> **C (pratique)** : « Cours d''anglais du soir, 18 h – 20 h, près d''Analakely. 300 000 Ar le trimestre, paiement en 2 fois possible. 👉 Envoyez un message pour vous inscrire. »
+
+Le témoignage de l''annonce B doit être **réel**, avec l''accord de l''élève. N''inventez jamais un témoignage.
+
+### Les visuels
+
+1. **Des personnes** réelles (élèves, professeurs) plutôt que des images de banque.
+2. **Le texte principal lisible** sur un téléphone, en peu de mots.
+3. **Une vidéo verticale** de 15 à 30 secondes avec sous-titres.
+4. **Le format** adapté à chaque emplacement (carré ou vertical).
+
+## Étape 4 : suivre et optimiser
+
+### La routine quotidienne (15 à 20 minutes)
+
+1. **Vérifier la diffusion** : annonces actives, pas de refus, budget dépensé normalement.
+2. **Noter les chiffres** du jour dans le tableau de suivi : dépense, conversations, coût par conversation.
+3. **Demander à l''école** le nombre d''inscriptions de la veille.
+4. **Ne rien changer** pendant les premiers jours, sauf problème grave.
+
+### Les décisions d''optimisation (à partir du 3e ou 4e jour)
+
+| Situation | Décision |
+| --- | --- |
+| Une annonce coûte 2 fois plus cher par conversation que les autres | La mettre en pause |
+| Un public fonctionne nettement mieux | Lui donner plus de budget, progressivement |
+| Beaucoup de clics mais peu de messages | Revoir le texte ou le bouton : l''annonce attire mais ne convainc pas |
+| Beaucoup de messages mais peu d''inscriptions | Problème **après** la publicité : délai de réponse, prix, argumentaire ; en parler avec l''école |
+| Le coût par conversation augmente fortement en fin de campagne | Le public est fatigué : renouveler les visuels |
+
+> [!definition] Fatigue publicitaire
+> Quand les mêmes personnes voient trop souvent la même annonce, elles réagissent moins et le coût augmente. Le **taux de répétition** (nombre moyen de fois où une personne a vu l''annonce) aide à la repérer.
+
+## Étape 5 : le rapport de campagne
+
+### Les 6 parties
+
+1. **Résumé** : objectif, résultat, en 3 lignes.
+2. **Chiffres clés** : dépense, conversations, coût par conversation, inscriptions, coût par inscription.
+3. **Ce qui a le mieux marché** : annonce, public, format, avec les chiffres.
+4. **Ce qui a moins marché**, et pourquoi.
+5. **Retour sur le traitement des messages** : délai de réponse, taux de transformation.
+6. **Recommandations** pour la prochaine campagne.
+
+> [!exemple] Chiffres clés de fin de campagne
+>
+> | Indicateur | Résultat |
+> | --- | --- |
+> | Dépense | 1 180 000 Ar |
+> | Conversations | 410 |
+> | Coût par conversation | 2 880 Ar |
+> | Inscriptions | 64 |
+> | Coût par inscription | 18 440 Ar |
+> | Chiffre d''affaires (premier trimestre) | 19 200 000 Ar |
+>
+> *(Chiffres donnés en exemple.)*
+
+> [!madagascar]
+> À Madagascar, beaucoup de clients préfèrent appeler après avoir vu une publicité. Demandez à l''école de noter **comment** chaque nouvel élève a connu l''école (« Facebook », « ami », « affiche »). Sans cette question, une partie des résultats de la campagne reste invisible.
+
+> [!retenir]
+> - Un brief en 10 questions, dont le traitement des messages.
+> - Un plan calculé à l''envers, à partir du résultat voulu.
+> - Des annonces avec accroche, solution, preuve réelle et appel à l''action.
+> - Une routine quotidienne et des décisions à partir du 3e ou 4e jour.
+> - Un rapport en 6 parties, avec des recommandations.
+
+## Exercice pratique : la campagne Lingua Tana
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Remplissez le brief en 10 questions pour Lingua Tana (ou un vrai commerce de votre entourage).
+> 2. Faites le calcul inverse de la campagne et le plan sur 4 semaines.
+> 3. Rédigez 3 annonces et créez leurs visuels dans Canva (dont une vidéo courte).
+> 4. Créez le tableau de suivi quotidien dans Google Sheets, avec les formules du coût par conversation et par inscription.
+> 5. Remplissez le tableau avec des chiffres inventés pour 14 jours et rédigez le rapport de mi-campagne avec vos décisions d''optimisation.
+>
+> **À livrer** : le brief, le plan, les annonces, le tableau de suivi et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 3, 0, '60 inscriptions voulues, 1 inscription pour 5 conversations : combien de conversations faut-il ?', '["300","60","65","12"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 3, 1, 'Beaucoup de messages mais peu d''inscriptions : où est souvent le problème ?', '["Après la publicité : délai de réponse, prix, argumentaire","Nulle part","Dans le CPM","Dans la couleur du bouton"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 3, 2, 'Qu''est-ce que la fatigue publicitaire ?', '["Le gestionnaire est fatigué","Le budget est épuisé","Les personnes ont trop vu l''annonce et réagissent moins","La régie est en panne"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-f', 4, 'Trouver des clients et se faire payer', 'Portfolio et certifications, 5 canaux de prospection, modes de rémunération, contrat en 8 points, paiements et fidélisation.', 'Un gestionnaire de publicités qui montre des résultats chiffrés garde ses clients longtemps : chaque mois, ils voient ce que leur rapporte chaque ariary dépensé. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et organiser les paiements.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio crédible, même sans gros client.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Choisir un mode de rémunération et calculer vos prix.
+> 4. Rédiger un contrat qui protège les deux parties.
+> 5. Vous faire payer et garder vos clients.
+
+## Le portfolio du gestionnaire de publicités
+
+Le client veut voir des **résultats**. Au début, vous n''en avez pas encore beaucoup : construisez-les.
+
+1. **Votre projet Lingua Tana** (module 4) présenté comme une étude de cas, en précisant « projet d''étude ».
+2. **Une vraie petite campagne** : proposez à un commerce de votre entourage de gérer une campagne avec un petit budget **qu''il paie lui-même**, en échange d''un tarif réduit et du droit de montrer les résultats.
+3. **Des captures** des tableaux de bord (en masquant les informations confidentielles).
+4. **Votre méthode** : brief, plan, tests, suivi, rapport.
+5. **Les certifications gratuites** des régies : Google propose des certifications Google Ads gratuites ; Meta propose des formations en ligne. Elles prouvent vos connaissances.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Commerces qui boostent déjà** | Boutiques, restaurants, écoles qui font de la publicité sans méthode | Repérez-les dans la Bibliothèque publicitaire de Meta ; proposez une analyse gratuite de leurs annonces |
+| 2 | **Community managers et graphistes** | Leurs clients veulent aussi de la publicité | Proposez un partenariat : ils créent, vous gérez les campagnes |
+| 3 | **Agences de marketing** | Sous-traitance de campagnes | Montrez votre méthode et vos certifications |
+| 4 | **Plateformes de freelance** | Petites entreprises étrangères | Offre précise : « Gestion de vos publicités Facebook et Instagram, rapport hebdomadaire » ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 5 | **LinkedIn et groupes d''entrepreneurs** | PME, formateurs, e-commerçants | Publiez des conseils et des analyses d''annonces (sans critiquer nommément) |
+
+### Le message de prospection
+
+> [!exemple] Message à une boutique qui booste ses publications
+> « Bonjour Madame, j''ai vu que vous faites de la publicité pour vos robes sur Facebook, avec de très belles photos. Je suis gestionnaire de publicités et j''aide les boutiques à savoir exactement ce que leur rapporte chaque publicité : combien de messages et combien de ventes pour chaque ariary dépensé. Je vous propose une analyse gratuite de vos 3 dernières publicités, avec 3 conseils concrets. Est-ce que cela vous intéresse ? »
+
+## Les modes de rémunération
+
+| Mode | Comment | Avantages | Limites |
+| --- | --- | --- | --- |
+| **Forfait mensuel** | Un prix fixe pour la gestion des campagnes | Simple, revenu stable | À ajuster si le budget publicitaire augmente beaucoup |
+| **Pourcentage du budget** | Un pourcentage du budget publicitaire dépensé | S''adapte à la taille du client | Peut pousser à dépenser plus ; prévoir un minimum |
+| **Forfait + pourcentage** | Un minimum fixe, plus un pourcentage au-delà d''un certain budget | Équilibré | Plus complexe à expliquer |
+| **Frais de mise en place** | Un prix unique pour la première campagne (installation du suivi, création des annonces) | Paie le travail de départ | — |
+
+### Calculer un forfait mensuel
+
+1. **Revenu mensuel visé** (exemple : 1 500 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **15 000 Ar de l''heure**.
+2. **Temps par client et par mois** : création des annonces, suivi quotidien, optimisation, rapport (exemple : 15 heures pour un petit commerce).
+3. **Forfait** : 15 × 15 000 = **225 000 Ar par mois**, plus des frais de mise en place pour le premier mois.
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Votre rémunération ne doit **jamais** être mélangée avec le budget publicitaire. Sur le devis et la facture, séparez clairement : « Gestion des campagnes : X » et « Budget publicitaire (payé directement par le client à la régie) : Y ».
+
+## Le contrat
+
+### Les 8 points essentiels
+
+1. **Les régies** gérées et les **objectifs** de la collaboration.
+2. **Les tâches** comprises : création des annonces, suivi, optimisation, rapports (fréquence).
+3. **Ce qui n''est pas compris** : création de vidéos professionnelles, site internet, réponse aux messages des clients.
+4. **Le budget publicitaire** : montant indicatif, payé directement par le client à la régie.
+5. **Les responsabilités du client** : répondre aux messages, fournir les contenus, valider les annonces, communiquer les ventes.
+6. **L''absence de garantie de résultat** : vous vous engagez sur une méthode et un suivi, pas sur un nombre de ventes.
+7. **Le prix**, payé en début de mois.
+8. **La durée** (souvent 3 mois minimum, car les premières semaines servent à tester) et le **préavis**.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Garder ses clients
+
+1. **Un rapport à date fixe**, chaque semaine ou chaque mois.
+2. **Des chiffres qui parlent au client** : coût par vente, chiffre d''affaires généré, pas seulement des clics.
+3. **Une idée nouvelle** chaque mois : un nouveau format, un nouveau public, une nouvelle offre à tester.
+4. **De l''honnêteté** quand une campagne ne marche pas : expliquer, proposer, ajuster.
+5. **Des conseils au-delà de la publicité** : délai de réponse aux messages, page de vente, photos des produits. Le client voit que vous voulez qu''il vende, pas seulement qu''il dépense.
+
+> [!retenir]
+> - Un portfolio avec une étude de cas, une vraie petite campagne et des certifications gratuites.
+> - Prospection : analyse gratuite des annonces existantes.
+> - Forfait, pourcentage, ou les deux ; votre rémunération toujours séparée du budget.
+> - Un contrat clair : responsabilités du client, absence de garantie de résultat, durée minimale.
+> - Des rapports réguliers et honnêtes gardent les clients.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Passez une certification gratuite Google Ads (ou commencez le parcours de formation Meta).
+> 2. Présentez votre projet Lingua Tana en étude de cas de 3 pages.
+> 3. Calculez votre forfait mensuel et vos frais de mise en place.
+> 4. Rédigez votre contrat type en 8 points.
+> 5. Analysez les annonces de 3 commerces dans la Bibliothèque publicitaire de Meta et envoyez au moins un message de prospection avec votre analyse.
+>
+> **À livrer** : votre certificat ou votre progression, l''étude de cas, vos calculs, le contrat et vos 3 analyses.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 4, 0, 'Comment présenter sa rémunération sur une facture ?', '["Séparée du budget publicitaire","En pourcentage du chiffre d''affaires uniquement","Cachée","Mélangée au budget publicitaire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 4, 1, 'Quelle preuve gratuite de connaissances peut-on obtenir ?', '["Un faux témoignage","Une certification Google Ads","Aucune","Un diplôme acheté"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-f', 4, 2, 'Pourquoi une durée minimale de 3 mois ?', '["Pour bloquer le client","Les premières semaines servent à tester","C''est obligatoire","Pour payer moins d''impôts"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quel est le rôle d''un gestionnaire de publicités en ligne ?', '["Transformer un budget publicitaire en clients, au plus bas coût","Créer des logos","Répondre aux messages des clients","Développer des sites"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Qu''est-ce qu''une régie publicitaire ?', '["Une agence de voyage","Un type de visuel","L''entreprise qui vend les espaces et fournit l''outil des annonces","Un logiciel de montage"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que faire avant de lancer une campagne pour un produit de santé ?', '["Promettre une guérison","Cacher le produit","Ignorer les règles","Vérifier les règles publicitaires de la régie"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Qu''est-ce qu''une conversion ?', '["Un changement de devise","L''action voulue : achat, inscription, message, appel","Une erreur de la régie","Un type de visuel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quel objectif choisir pour un commerce qui vend par Messenger ?', '["Aucun","Vues de vidéo uniquement","Notoriété","Messages"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Qu''est-ce qu''un public personnalisé ?', '["Un public sans ciblage","Des personnes déjà en contact avec la marque","Un public inventé","Un public de concurrents"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Comment calcule-t-on le CTR ?', '["Ventes ÷ dépense","Impressions ÷ clics","Dépense ÷ clics","Clics ÷ impressions × 100"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', '150 000 Ar dépensés pour 900 clics : quel est le CPC ?', '["1 500 Ar","900 Ar","16 Ar","Environ 167 Ar"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que mesure le ROAS ?', '["Le nombre d''abonnés","Le chiffre d''affaires rapporté pour 1 unité dépensée","Le nombre de clics","Le coût de 1 000 impressions"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Une paire rapporte 30 000 Ar de marge, le coût par vente est 35 000 Ar. La campagne est…', '["Gratuite","Très rentable","Parfaite","Non rentable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Comment augmenter le budget d''une campagne qui marche ?', '["Progressivement","En changeant tout","En arrêtant la campagne","En le multipliant par 10 d''un coup"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Comment obtenir l''accès au compte Google Ads d''un client ?', '["Par SMS","Avec son mot de passe Gmail","Par une demande d''association depuis un compte administrateur","En créant un compte à votre nom"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que règle-t-on au niveau de la campagne Meta ?', '["Le bouton","L''objectif","Le texte","Le visuel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'À quoi sert le pixel Meta ?', '["Bloquer les concurrents","Informer Meta des actions des visiteurs venus d''une publicité","Payer les annonces","Créer des images"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Pour un commerce qui vend par messages, comment connaître les ventes ?', '["Le commerçant note les ventes dans un tableau","On les invente","On ne peut pas","Meta les devine"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quelle écriture correspond au mot-clé exact dans Google Ads ?', '["\"hôtel nosy be\"","hôtel nosy be","{hôtel nosy be}","[hôtel nosy be]"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Combien de titres peut contenir une annonce responsive de recherche ?', '["Aucun","1","100","Jusqu''à 15"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quelle question du brief est souvent oubliée et décisive ?', '["La couleur préférée du client","L''âge du gérant","Qui répond aux messages, et en combien de temps","Le nom de l''hébergeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que faire d''une annonce qui coûte 2 fois plus cher par conversation que les autres ?', '["Lui donner tout le budget","Ne rien faire pendant un mois","La dupliquer 10 fois","La mettre en pause"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Beaucoup de clics mais peu de messages : que revoir ?', '["L''adresse de l''école","Le nom de la page","Rien","Le texte ou le bouton de l''annonce"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Peut-on utiliser un témoignage inventé dans une annonce ?', '["Oui, si personne ne vérifie","Oui, une fois","Non, jamais","Oui, avec un prénom courant"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que demander à l''école pour mesurer l''effet des appels ?', '["Arrêter la publicité","Noter comment chaque élève a connu l''école","Supprimer le téléphone","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quel est un mode de rémunération courant ?', '["Aucun","Un pourcentage du salaire du client","Un paiement en nature uniquement","Un forfait mensuel ou un pourcentage du budget"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que doit dire le contrat sur les résultats ?', '["Les ventes sont garanties","Le client paie seulement s''il vend","Vous vous engagez sur une méthode, pas sur un nombre de ventes","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quelle bonne pratique fidélise un client ?', '["Des rapports réguliers et honnêtes, avec des propositions","Cacher les mauvais chiffres","Ne jamais envoyer de rapport","Augmenter le budget sans prévenir"]'::jsonb, 0);
 commit;
