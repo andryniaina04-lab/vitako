@@ -37,7 +37,7 @@ Dans ce module, vous produisez les premiers épisodes du podcast d'un client, du
 6. **Silence** de 10 secondes au début : il aide à la réduction de bruit.
 
 > [!astuce]
-> Améliorer l'enregistrement fait gagner bien plus de temps et de qualité que n'importe quel traitement après coup. Un bon guide d'enregistrement est l'un vos meilleurs outils.
+> Améliorer l'enregistrement fait gagner bien plus de temps et de qualité que n'importe quel traitement après coup. Un bon guide d'enregistrement est l'un de vos meilleurs outils.
 
 ## Étape 3 : produire avec un modèle
 

@@ -1,0 +1,97 @@
+{
+  "id": "gestion-3-f",
+  "hours": 14,
+  "description": "L'agent SAV e-commerce répond aux questions et réclamations des clients d'une boutique en ligne et trouve des solutions justes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des agences de support et des entreprises, à Madagascar et à l'étranger, avec l'e-mail et un helpdesk : parcours de commande, réponse en 5 étapes, clients en colère, politique de retour, tickets, réponses enregistrées, base de connaissances, escalade et compte rendu. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et le parcours d'une commande en ligne",
+    "Rédiger des réponses claires en 5 étapes avec le bon ton",
+    "Gérer un client en colère et appliquer une politique de retour",
+    "Utiliser l'e-mail, un helpdesk et le back-office d'une boutique",
+    "Traiter une file de tickets, escalader et rédiger un compte rendu",
+    "Se présenter, réussir un test, fixer son tarif et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'agent SAV e-commerce depuis Madagascar",
+      "summary": "Le parcours d'une commande, les demandes fréquentes, les tickets, les canaux, les qualités de l'agent, la confidentialité, les employeurs et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est souvent la demande la plus fréquente ?", "options": ["Le suivi de commande", "Les partenariats", "Les offres d'emploi", "Les questions de presse"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un ticket ?", "options": ["Une demande de client enregistrée avec son historique et son statut", "Un billet de transport", "Une facture", "Un code promo"], "correct": 0 },
+        { "q": "Que faire des données des clients ?", "options": ["Les utiliser seulement pour traiter la demande", "Les partager", "Les copier chez soi", "Les publier"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : réponse en 5 étapes, ton, clients en colère et politique de retour",
+      "summary": "Saluer, reconnaître, informer, proposer, conclure ; le ton ; la méthode ÉCART ; la politique de retour ; les gestes commerciaux ; les indicateurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de répondre à un client ?", "options": ["Vérifier sa commande", "Répondre tout de suite sans vérifier", "Attendre une semaine", "Lui demander de rappeler"], "correct": 0 },
+        { "q": "Que signifie le « R » de la méthode ÉCART ?", "options": ["Résoudre", "Refuser", "Répéter", "Relancer"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un geste commercial ?", "options": ["Une compensation accordée pour un désagrément", "Une publicité", "Une facture", "Une erreur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : e-mail, helpdesk, back-office et outils payants",
+      "summary": "Boîte de support organisée, tickets, statuts, étiquettes, notes internes et macros, lecture d'une commande, réponses enregistrées, base de connaissances, Gorgias et Zendesk.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert une note interne ?", "options": ["Informer l'équipe sans que le client la voie", "Écrire au client", "Payer le transporteur", "Fermer la boutique"], "correct": 0 },
+        { "q": "Que vérifier avant d'envoyer un modèle de réponse ?", "options": ["Qu'il est personnalisé et sans variable oubliée", "Rien", "Sa longueur seulement", "La couleur du texte"], "correct": 0 },
+        { "q": "Qu'apporte Gorgias pour l'e-commerce ?", "options": ["Les commandes affichées à côté du ticket", "La retouche photo", "La comptabilité", "Le montage vidéo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une semaine de SAV pour Lamba Studio",
+      "summary": "Prise de poste, tri par priorité, cas types (retard, casse, erreur, retour), escalade avec note complète et compte rendu hebdomadaire.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel ticket traiter en premier ?", "options": ["Une erreur d'adresse sur une commande pas encore expédiée", "Une demande de partenariat", "Une question sur une matière", "Un remerciement"], "correct": 0 },
+        { "q": "Que demander en cas de produit cassé ?", "options": ["Une photo du produit et du colis", "Rien", "Un paiement", "Une copie de la carte d'identité"], "correct": 0 },
+        { "q": "Quand escalader une demande ?", "options": ["Quand elle dépasse vos gestes autorisés", "Jamais", "Toujours", "Seulement le vendredi"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver du travail et se faire payer",
+      "summary": "Dossier de présentation, 5 canaux, tests de recrutement, tarifs et forfaits, conditions, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que proposer à une boutique qui répond seulement en journée ?", "options": ["Traiter ses messages le soir et le week-end", "Fermer sa boutique", "Baisser ses prix", "Rien"], "correct": 0 },
+        { "q": "Que faut-il éviter absolument dans un test d'écrit ?", "options": ["Les fautes d'orthographe", "Les formules de politesse", "Les solutions", "La signature"], "correct": 0 },
+        { "q": "Vers quel poste un agent peut-il évoluer ?", "options": ["Responsable du support", "Pilote d'avion", "Architecte", "Chirurgien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un agent SAV e-commerce ?", "options": ["Il répond aux clients et trouve des solutions justes", "Il fabrique les produits", "Il conduit les camions de livraison", "Il fait la comptabilité"], "correct": 0 },
+    { "q": "À quelle étape du parcours survient un colis perdu ?", "options": ["Expédition et livraison", "Avant l'achat", "Commande et paiement", "Préparation"], "correct": 0 },
+    { "q": "Quel canal est le plus courant pour le SAV ?", "options": ["L'e-mail", "Le fax", "La lettre papier", "Le télégramme"], "correct": 0 },
+    { "q": "Pourquoi Madagascar est-il un atout pour la relation client francophone ?", "options": ["Expérience en français et horaires décalés utiles", "Aucune raison", "Les produits y sont fabriqués", "Le PayPal y est illimité"], "correct": 0 },
+    { "q": "Quelle est la première étape d'une réponse ?", "options": ["Saluer avec le prénom", "Proposer une solution", "Signer", "Refuser"], "correct": 0 },
+    { "q": "Que faut-il éviter dans une réponse ?", "options": ["Le jargon interne", "Le vouvoiement", "Les phrases courtes", "Les excuses justifiées"], "correct": 0 },
+    { "q": "Comment transformer « Nous ne remboursons pas après 30 jours » ?", "options": ["Expliquer le délai et proposer une alternative autorisée", "Ne pas répondre", "Accuser le client", "Rembourser sans règle"], "correct": 0 },
+    { "q": "Que faire si un client devient insultant ?", "options": ["Rester poli et transmettre au responsable", "L'insulter à son tour", "Supprimer son compte", "Publier son message"], "correct": 0 },
+    { "q": "Qui fixe les règles de retour que l'agent applique ?", "options": ["La boutique, dans sa politique écrite", "L'agent seul", "Le client", "Le transporteur"], "correct": 0 },
+    { "q": "Que mesure le délai de première réponse ?", "options": ["Le temps avant la première réponse au client", "La durée de livraison", "Le temps de fabrication", "La durée du remboursement"], "correct": 0 },
+    { "q": "Pourquoi viser la réponse complète du premier coup ?", "options": ["Pour éviter des échanges en plus", "Pour écrire plus long", "Ce n'est pas utile", "Pour retarder le client"], "correct": 0 },
+    { "q": "Que fait un helpdesk ?", "options": ["Il transforme chaque message en ticket organisé", "Il livre les colis", "Il crée des logos", "Il fabrique les produits"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une macro ?", "options": ["Une réponse enregistrée avec des actions", "Un gros colis", "Un type de paiement", "Un client fidèle"], "correct": 0 },
+    { "q": "Où trouver le numéro de suivi d'un colis ?", "options": ["Dans la fiche de la commande", "Dans la base de connaissances", "Sur les réseaux sociaux", "Dans le guide des tailles"], "correct": 0 },
+    { "q": "Peut-on rembourser au-delà des limites fixées ?", "options": ["Non, il faut escalader", "Oui, toujours", "Oui, si le client insiste", "Oui, le week-end"], "correct": 0 },
+    { "q": "À quoi sert une base de connaissances ?", "options": ["Permettre aux clients de trouver seuls les réponses", "Stocker les mots de passe", "Facturer les clients", "Envoyer des publicités"], "correct": 0 },
+    { "q": "Qui paie Gorgias ou Zendesk ?", "options": ["L'employeur", "L'agent", "Le client final", "Le transporteur"], "correct": 0 },
+    { "q": "Que préparer dès la première semaine chez un client ?", "options": ["Un document de référence personnel", "Une facture d'avance", "Un nouveau logo", "Rien"], "correct": 0 },
+    { "q": "Par quoi commencer la journée depuis Madagascar ?", "options": ["Les messages arrivés pendant la nuit européenne", "Les demandes de partenariat", "La lecture des réseaux sociaux", "Rien de précis"], "correct": 0 },
+    { "q": "Que faire en cas d'erreur d'article envoyé ?", "options": ["S'excuser, renvoyer le bon article et fournir un retour gratuit", "Accuser le client", "Ignorer le message", "Demander des frais"], "correct": 0 },
+    { "q": "Que contient une bonne note d'escalade ?", "options": ["Le problème, ce qui a été fait, la question et le délai", "Seulement le nom du client", "Une plainte contre le client", "Rien"], "correct": 0 },
+    { "q": "Pourquoi signaler un produit souvent cassé ?", "options": ["Pour que la boutique améliore l'emballage", "Pour accuser le client", "Pour arrêter de vendre", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que contient un compte rendu hebdomadaire ?", "options": ["Volume, délais, motifs, problèmes et propositions", "Seulement vos heures", "Les mots de passe", "Des photos personnelles"], "correct": 0 },
+    { "q": "Que préciser dans vos horaires sur votre profil ?", "options": ["L'heure de Madagascar et celle du client", "Seulement l'heure de Madagascar", "Rien", "L'heure de New York"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

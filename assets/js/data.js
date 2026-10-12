@@ -3391,6 +3391,92 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-3-f": {
+  "hours": 14,
+  "description": "L'agent SAV e-commerce répond aux questions et réclamations des clients d'une boutique en ligne et trouve des solutions justes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des agences de support et des entreprises, à Madagascar et à l'étranger, avec l'e-mail et un helpdesk : parcours de commande, réponse en 5 étapes, clients en colère, politique de retour, tickets, réponses enregistrées, base de connaissances, escalade et compte rendu. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et le parcours d'une commande en ligne",
+   "Rédiger des réponses claires en 5 étapes avec le bon ton",
+   "Gérer un client en colère et appliquer une politique de retour",
+   "Utiliser l'e-mail, un helpdesk et le back-office d'une boutique",
+   "Traiter une file de tickets, escalader et rédiger un compte rendu",
+   "Se présenter, réussir un test, fixer son tarif et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'agent SAV e-commerce depuis Madagascar",
+    "summary": "Le parcours d'une commande, les demandes fréquentes, les tickets, les canaux, les qualités de l'agent, la confidentialité, les employeurs et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le parcours d'une commande en ligne",
+     "Les demandes les plus fréquentes",
+     "Les canaux",
+     "Les qualités de l'agent SAV",
+     "Qui sont vos employeurs et clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : vivre l'expérience client"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : réponse en 5 étapes, ton, clients en colère et politique de retour",
+    "summary": "Saluer, reconnaître, informer, proposer, conclure ; le ton ; la méthode ÉCART ; la politique de retour ; les gestes commerciaux ; les indicateurs.",
+    "sections": [
+     "La réponse en 5 étapes",
+     "Le ton",
+     "Gérer un client en colère : la méthode ÉCART",
+     "La politique de retour et de remboursement",
+     "La marge de manœuvre",
+     "Les indicateurs du service client",
+     "Exercice pratique : vos premières réponses"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : e-mail, helpdesk, back-office et outils payants",
+    "summary": "Boîte de support organisée, tickets, statuts, étiquettes, notes internes et macros, lecture d'une commande, réponses enregistrées, base de connaissances, Gorgias et Zendesk.",
+    "sections": [
+     "La boîte e-mail de support",
+     "Le helpdesk",
+     "Le back-office de la boutique",
+     "Les réponses enregistrées",
+     "La base de connaissances",
+     "Les helpdesks payants",
+     "Exercice pratique : monter un support"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : une semaine de SAV pour Lamba Studio",
+    "summary": "Prise de poste, tri par priorité, cas types (retard, casse, erreur, retour), escalade avec note complète et compte rendu hebdomadaire.",
+    "sections": [
+     "Le cas pratique : « Lamba Studio »",
+     "Étape 1 : la prise de poste",
+     "Étape 2 : trier la file",
+     "Étape 3 : les cas types",
+     "Étape 4 : escalader au bon moment",
+     "Étape 5 : le compte rendu hebdomadaire",
+     "Exercice pratique : une semaine chez Lamba Studio"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver du travail et se faire payer",
+    "summary": "Dossier de présentation, 5 canaux, tests de recrutement, tarifs et forfaits, conditions, paiements et évolution.",
+    "sections": [
+     "Votre dossier de présentation",
+     "Où trouver du travail : 5 canaux",
+     "Réussir un test de recrutement",
+     "Fixer sa rémunération",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : décrocher votre première mission"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-4-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait de l'aide-comptable un professionnel qui livre des dossiers fiables, prêts à être révisés : spécialité (tenue pour cabinets, fournisseurs, clients, projets d'ONG, paramétrage, trésorerie), diagnostic de dossier, logiciels payants (Sage, QuickBooks, Odoo) avec paramétrage, règles bancaires, lecture automatique et analytique, clôture mensuelle et dossier de révision, travail pour des cabinets étrangers et des bailleurs, puis forfaits, sous-traitance et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

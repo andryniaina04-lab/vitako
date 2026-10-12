@@ -89,7 +89,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
-  ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 11, false),
+  ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true),
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 18, false),
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
@@ -23636,6 +23636,610 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
 
+-- gestion-3-f
+delete from public.exam_questions where course_id = 'gestion-3-f';
+delete from public.module_questions where course_id = 'gestion-3-f';
+delete from public.lessons where course_id = 'gestion-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-f', 0, 'Le métier d''agent SAV e-commerce depuis Madagascar', 'Le parcours d''une commande, les demandes fréquentes, les tickets, les canaux, les qualités de l''agent, la confidentialité, les employeurs et le poste de travail.', 'Chaque boutique en ligne reçoit des questions et des réclamations : « Où est ma commande ? », « La taille ne va pas », « Le produit est arrivé cassé ». L''agent SAV (service après-vente) e-commerce répond à ces clients par e-mail, chat ou messagerie, trouve des solutions et garde les clients satisfaits. C''est un métier très demandé et entièrement faisable à distance. Ce premier module vous le présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un agent SAV e-commerce.
+> 2. Décrire le parcours d''une commande en ligne.
+> 3. Reconnaître les principales demandes des clients.
+> 4. Repérer vos premiers employeurs et clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un agent SAV e-commerce **répond aux questions et réclamations des clients d''une boutique en ligne, trouve une solution juste dans le respect des règles de la boutique, et transforme un client mécontent en client fidèle**.
+
+## Le parcours d''une commande en ligne
+
+| N° | Étape | Problèmes possibles |
+| --- | --- | --- |
+| 1 | **Avant l''achat** | Questions sur la taille, la matière, le délai |
+| 2 | **Commande et paiement** | Paiement refusé, erreur d''adresse, code promo qui ne marche pas |
+| 3 | **Préparation** | Rupture de stock, retard de préparation |
+| 4 | **Expédition et livraison** | Colis en retard, perdu, livré à la mauvaise adresse |
+| 5 | **Réception** | Produit cassé, erreur d''article, taille qui ne va pas |
+| 6 | **Après l''achat** | Retour, échange, remboursement, garantie |
+
+## Les demandes les plus fréquentes
+
+| Type de demande | Exemple | Part habituelle (ordre d''idée) |
+| --- | --- | --- |
+| **Suivi de commande** | « Où est mon colis ? » | Très souvent la première |
+| **Retour et échange** | « Je veux une taille au-dessus » | Fréquente |
+| **Remboursement** | « Je n''ai toujours pas été remboursé » | Fréquente |
+| **Produit défectueux ou cassé** | « Le vase est arrivé en morceaux » | Régulière |
+| **Question avant achat** | « Ce t-shirt taille-t-il grand ? » | Régulière |
+| **Modification ou annulation** | « Je me suis trompé d''adresse » | Régulière |
+| **Problème de paiement ou de code promo** | « Mon code ne marche pas » | Occasionnelle |
+
+> [!definition] Ticket
+> Une demande de client enregistrée dans l''outil de support, avec son historique, son statut (ouvert, en attente, résolu) et la personne qui la traite.
+
+## Les canaux
+
+1. **L''e-mail** : le plus courant, réponses écrites et soignées.
+2. **Le chat en direct** sur le site : réponses rapides, parfois plusieurs clients à la fois.
+3. **Les messageries** (WhatsApp, Messenger, Instagram).
+4. **Les commentaires et avis** sur les réseaux sociaux et les sites d''avis.
+5. **Le téléphone** : moins fréquent pour les petites boutiques, mais existe.
+
+## Les qualités de l''agent SAV
+
+1. **L''empathie** : comprendre la frustration du client.
+2. **L''écrit soigné** : orthographe, ton poli, phrases claires.
+3. **La rigueur** : vérifier la commande avant de répondre.
+4. **Le sens de la solution** : proposer, pas seulement expliquer.
+5. **Le respect des règles** : appliquer la politique de retour de la boutique.
+6. **Le calme** : rester courtois face à un client en colère.
+
+> [!attention]
+> L''agent SAV a souvent accès aux données des clients (nom, adresse, téléphone, commandes). Ces informations sont **confidentielles** : on ne les copie pas, on ne les partage pas, et on ne les utilise que pour traiter la demande.
+
+## Qui sont vos employeurs et clients ?
+
+### À Madagascar
+
+1. **Boutiques en ligne locales** qui vendent sur Facebook et sur leur site.
+2. **Centres d''appels et de relation client** qui travaillent pour des marques étrangères.
+3. **Entreprises de livraison** qui ont besoin de répondre aux clients.
+
+### À l''étranger
+
+1. **Petites et moyennes boutiques en ligne** francophones.
+2. **Marques** qui vendent sur des places de marché.
+3. **Agences de support externalisé** qui recrutent des agents à distance.
+
+> [!madagascar] Votre avantage
+> Madagascar est déjà connu pour la relation client en français, avec de nombreux centres d''appels. Les boutiques en ligne francophones cherchent des agents capables d''écrire un français correct et chaleureux, souvent sur des horaires décalés par rapport à l''Europe (soirées et week-ends), ce qui facilite le travail depuis Madagascar.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Assez puissant pour plusieurs onglets ouverts |
+| **Connexion** | Stable, avec une solution de secours (forfait mobile) |
+| **Électricité** | Batterie ou onduleur pour les coupures |
+| **Casque avec micro** | Pour le téléphone et les réunions |
+| **Lieu calme** | Pour vous concentrer |
+| **Outils** | Navigateur à jour, correcteur d''orthographe |
+
+> [!retenir]
+> - L''agent SAV répond aux clients et trouve des solutions justes.
+> - Les problèmes suivent le parcours de la commande.
+> - Le suivi de commande, les retours et les remboursements dominent.
+> - E-mail, chat, messageries, réseaux, téléphone.
+> - Les données des clients sont confidentielles.
+
+## Exercice pratique : vivre l''expérience client
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez 3 boutiques en ligne francophones.
+> 2. Lisez leur page de contact, leur foire aux questions et leur politique de retour.
+> 3. Notez : canaux proposés, délai de retour, conditions de remboursement, ton utilisé.
+> 4. Classez 10 questions que pourraient poser leurs clients selon les étapes du parcours de commande.
+>
+> **À livrer** : votre tableau comparatif des 3 boutiques et vos 10 questions classées.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 0, 0, 'Quelle est souvent la demande la plus fréquente ?', '["Les questions de presse","Les offres d''emploi","Les partenariats","Le suivi de commande"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 0, 1, 'Qu''est-ce qu''un ticket ?', '["Une facture","Un billet de transport","Une demande de client enregistrée avec son historique et son statut","Un code promo"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 0, 2, 'Que faire des données des clients ?', '["Les publier","Les partager","Les copier chez soi","Les utiliser seulement pour traiter la demande"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-f', 1, 'Les bases : réponse en 5 étapes, ton, clients en colère et politique de retour', 'Saluer, reconnaître, informer, proposer, conclure ; le ton ; la méthode ÉCART ; la politique de retour ; les gestes commerciaux ; les indicateurs.', 'Ce module vous donne les bases du SAV : la structure d''une bonne réponse, le ton à adopter, la gestion des clients mécontents, l''application de la politique de retour et les indicateurs qui mesurent la qualité du service.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une réponse claire en 5 étapes.
+> 2. Adopter un ton poli, chaleureux et professionnel.
+> 3. Gérer un client en colère avec une méthode.
+> 4. Appliquer une politique de retour et de remboursement.
+> 5. Comprendre les indicateurs du service client.
+
+## La réponse en 5 étapes
+
+| N° | Étape | Exemple |
+| --- | --- | --- |
+| 1 | **Saluer** avec le prénom | « Bonjour Claire, » |
+| 2 | **Reconnaître** la demande ou le problème | « Je comprends que votre colis n''est pas encore arrivé, alors qu''il était attendu mardi. » |
+| 3 | **Informer** après vérification | « J''ai vérifié : il est bloqué au centre de tri depuis 2 jours. » |
+| 4 | **Proposer** une solution et la prochaine étape | « J''ai ouvert une enquête auprès du transporteur. Si le colis n''avance pas d''ici vendredi, je vous renvoie l''article sans frais. » |
+| 5 | **Conclure** avec une formule et une signature | « Je reste à votre disposition. Bonne journée, Fanja, service client » |
+
+> [!astuce]
+> Ne répondez **jamais** avant d''avoir vérifié la commande. Une réponse générale (« les délais peuvent varier ») sans vérification donne l''impression que vous n''avez pas lu le message.
+
+## Le ton
+
+| À faire | À éviter |
+| --- | --- |
+| Vouvoyer (sauf si la marque tutoie) | Un ton froid ou administratif |
+| Phrases courtes et claires | Jargon interne (« statut 3 », « SKU ») |
+| Formules positives : « Je peux vous proposer… » | « Ce n''est pas possible », sans alternative |
+| S''excuser pour le désagrément quand c''est justifié | Rejeter la faute sur le client ou le transporteur |
+| Personnaliser | Copier un modèle sans l''adapter |
+
+> [!exemple] Transformer une phrase négative
+> Au lieu de : « Nous ne remboursons pas après 30 jours. »
+> Écrivez : « Votre commande date de 45 jours, au-delà du délai de retour de 30 jours. Je peux toutefois vous proposer un bon d''achat de 15 % sur votre prochaine commande. » (si la boutique l''autorise)
+
+## Gérer un client en colère : la méthode ÉCART
+
+| Lettre | Action |
+| --- | --- |
+| **É** | **Écouter** : lire tout le message, sans se vexer |
+| **C** | **Comprendre** et le dire : « Je comprends votre déception » |
+| **A** | **S''Approprier** la demande : « Je m''en occupe personnellement » |
+| **R** | **Résoudre** : proposer une solution concrète |
+| **T** | **Tenir** sa promesse et faire un suivi |
+
+> [!attention]
+> Si un client devient insultant ou menaçant, restez poli, ne répondez pas sur le même ton et **transmettez** la conversation à votre responsable selon la procédure de l''entreprise.
+
+## La politique de retour et de remboursement
+
+Chaque boutique a ses règles. Vous devez les connaître par cœur et les appliquer de la même façon pour tous.
+
+| Élément | Exemple de règle |
+| --- | --- |
+| **Délai de retour** | 30 jours après réception |
+| **État du produit** | Non porté, avec étiquettes |
+| **Frais de retour** | Gratuits pour un défaut, à la charge du client sinon |
+| **Mode de remboursement** | Sur le moyen de paiement initial |
+| **Délai de remboursement** | Après réception et contrôle du retour |
+| **Produits exclus** | Sous-vêtements, produits personnalisés |
+| **Preuve demandée** | Photo du produit et du colis en cas de casse |
+
+> [!madagascar]
+> Les règles légales sur les retours dépendent du **pays du client** (par exemple, l''Union européenne prévoit un droit de rétractation pour les achats en ligne). L''agent SAV n''a pas à les connaître toutes : il applique la politique écrite de la boutique et **demande à son responsable** en cas de doute.
+
+## La marge de manœuvre
+
+> [!definition] Geste commercial
+> Une compensation accordée au client pour un désagrément : bon d''achat, livraison offerte, petite remise. Chaque boutique fixe ce que l''agent peut accorder seul.
+
+| Situation | Exemple de geste autorisé |
+| --- | --- |
+| Retard de livraison important | Remboursement des frais de livraison |
+| Erreur de la boutique | Renvoi immédiat + bon d''achat |
+| Client fidèle mécontent | Bon d''achat de 10 % |
+| Demande hors règles | Escalade au responsable |
+
+## Les indicateurs du service client
+
+| Indicateur | Ce qu''il mesure |
+| --- | --- |
+| **Délai de première réponse** | Le temps avant la première réponse au client |
+| **Délai de résolution** | Le temps total pour régler la demande |
+| **Taux de résolution au premier contact** | Les demandes réglées en une seule réponse |
+| **Satisfaction client (CSAT)** | La note donnée par le client après l''échange |
+| **Nombre de tickets traités** | Le volume de travail |
+
+> [!astuce]
+> La vitesse compte, mais une réponse rapide et incomplète crée un deuxième, puis un troisième échange. Visez la **réponse complète du premier coup**.
+
+> [!retenir]
+> - Saluer, reconnaître, informer, proposer, conclure.
+> - Vérifier la commande avant toute réponse.
+> - Un ton chaleureux, positif, sans jargon.
+> - La méthode ÉCART pour les clients en colère.
+> - Appliquer la politique de la boutique et connaître sa marge de manœuvre.
+
+## Exercice pratique : vos premières réponses
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez une politique de retour fictive pour une boutique de vêtements.
+> 2. Répondez à 5 messages : colis en retard, taille à échanger, produit cassé, code promo refusé, client très en colère.
+> 3. Vérifiez chaque réponse avec les 5 étapes et le tableau du ton.
+> 4. Transformez 3 phrases négatives en phrases positives.
+>
+> **À livrer** : votre politique, vos 5 réponses et vos 3 transformations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 1, 0, 'Que faire avant de répondre à un client ?', '["Attendre une semaine","Répondre tout de suite sans vérifier","Lui demander de rappeler","Vérifier sa commande"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 1, 1, 'Que signifie le « R » de la méthode ÉCART ?', '["Relancer","Refuser","Répéter","Résoudre"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 1, 2, 'Qu''est-ce qu''un geste commercial ?', '["Une publicité","Une compensation accordée pour un désagrément","Une erreur","Une facture"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-f', 2, 'Les outils : e-mail, helpdesk, back-office et outils payants', 'Boîte de support organisée, tickets, statuts, étiquettes, notes internes et macros, lecture d''une commande, réponses enregistrées, base de connaissances, Gorgias et Zendesk.', 'Ce module vous fait découvrir les outils de l''agent SAV : d''abord **l''e-mail** et un **helpdesk** gratuit pour organiser les demandes, puis le back-office de la boutique, les réponses enregistrées et la base de connaissances. Vous découvrirez ensuite les helpdesks payants les plus utilisés en e-commerce : **Gorgias** et **Zendesk**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une boîte e-mail de support.
+> 2. Utiliser un helpdesk : tickets, statuts, étiquettes.
+> 3. Consulter une commande dans le back-office d''une boutique.
+> 4. Créer des réponses enregistrées et une base de connaissances.
+> 5. Comprendre ce qu''apportent Gorgias et Zendesk.
+
+## La boîte e-mail de support
+
+Beaucoup de petites boutiques commencent avec une simple adresse (par exemple « contact@… »).
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Libellés** (Suivi, Retour, Remboursement, Cassé) | Retrouver et compter les demandes |
+| **Message lu = traité ou marqué** | Ne rien oublier |
+| **Réponses enregistrées** (modèles) | Gagner du temps |
+| **Dossier « En attente »** | Suivre les demandes qui attendent le transporteur ou le client |
+| **Signature commune** | Image professionnelle |
+
+## Le helpdesk
+
+> [!definition] Helpdesk
+> Un logiciel qui transforme chaque message (e-mail, chat, réseaux sociaux) en ticket, le range, l''attribue à un agent et garde tout l''historique du client. Plusieurs helpdesks proposent une offre gratuite ou un essai.
+
+### Les notions clés
+
+| Notion | Rôle |
+| --- | --- |
+| **Statut** | Ouvert, en attente, résolu, fermé |
+| **Priorité** | Urgent, normal, faible |
+| **Attribution** | Qui traite le ticket |
+| **Étiquettes** | Le motif : suivi, retour, défaut |
+| **Note interne** | Un commentaire visible seulement par l''équipe |
+| **Macro** | Une réponse enregistrée avec des actions (changer le statut, ajouter une étiquette) |
+| **Vues** | Des listes filtrées : « mes tickets ouverts », « urgents » |
+
+> [!astuce]
+> Utilisez les **notes internes** pour expliquer ce que vous avez fait (« enquête ouverte chez le transporteur le 12/10 ») : un collègue qui reprend le ticket sait tout de suite où en est la demande.
+
+## Le back-office de la boutique
+
+L''agent SAV doit savoir lire une commande dans l''outil de la boutique (Shopify, WooCommerce ou autre).
+
+| Information | Où la trouver |
+| --- | --- |
+| Statut de la commande (payée, expédiée, livrée) | Fiche de la commande |
+| Numéro de suivi et transporteur | Fiche de la commande, section expédition |
+| Articles, tailles, prix | Détail de la commande |
+| Adresse de livraison | Fiche client ou commande |
+| Historique du client | Fiche client |
+| Remboursements effectués | Fiche de la commande |
+
+> [!attention]
+> Selon vos droits d''accès, vous pourrez peut-être rembourser ou modifier une commande. Ne le faites **que dans les limites fixées** par la boutique, et notez toujours l''action dans le ticket.
+
+## Les réponses enregistrées
+
+### Un exemple de modèle
+
+```
+Bonjour {prénom},
+
+Merci pour votre message. Votre commande n° {numéro} a été expédiée le {date} avec {transporteur}.
+
+Vous pouvez suivre votre colis ici : {lien de suivi}
+D''après le suivi, il devrait vous être livré {date estimée}.
+
+Si vous ne l''avez pas reçu d''ici là, répondez simplement à ce message et je m''en occupe.
+
+Bonne journée,
+{signature}
+```
+
+> [!attention]
+> Un modèle est un point de départ. Relisez toujours : un prénom manquant ou une date oubliée entre accolades fait très mauvaise impression.
+
+## La base de connaissances
+
+> [!definition] Base de connaissances
+> L''ensemble des articles d''aide (foire aux questions, guide des tailles, politique de retour) que les clients peuvent lire seuls, et que l''agent peut envoyer en lien.
+
+1. **Repérez** les 10 questions les plus fréquentes.
+2. **Rédigez** un article court et clair pour chacune.
+3. **Envoyez** le lien dans vos réponses quand c''est utile.
+4. **Mettez à jour** quand les règles changent.
+
+## Les helpdesks payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Gorgias** | Pensé pour l''e-commerce : affiche les commandes Shopify à côté du ticket, permet souvent de rembourser ou modifier depuis le ticket, regroupe e-mail, chat et réseaux sociaux, macros avec variables de commande |
+| **Zendesk** | Helpdesk très répandu : tickets multicanaux, base de connaissances, automatisations, rapports détaillés, nombreuses intégrations |
+
+> [!madagascar]
+> Ces outils sont payés **par l''employeur**, pas par l''agent. Pour vous former, utilisez les offres d''essai, les démonstrations et les centres d''aide officiels. Indiquer « Gorgias » ou « Zendesk » sur votre profil avec un exemple concret de ce que vous savez faire augmente vos chances d''être recruté.
+
+> [!retenir]
+> - Une boîte e-mail organisée avec libellés et modèles.
+> - Le helpdesk : statuts, priorités, étiquettes, notes internes, macros.
+> - Savoir lire une commande dans le back-office.
+> - Des modèles personnalisés et relus.
+> - Une base de connaissances qui évite des questions.
+
+## Exercice pratique : monter un support
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez une adresse e-mail de test et 5 libellés.
+> 2. Ouvrez un compte d''essai ou gratuit sur un helpdesk.
+> 3. Envoyez-vous 8 demandes variées et traitez-les avec statuts, étiquettes et notes internes.
+> 4. Créez 5 réponses enregistrées.
+> 5. Rédigez 3 articles de base de connaissances.
+>
+> **À livrer** : des captures de votre helpdesk, vos 5 modèles et vos 3 articles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 2, 0, 'À quoi sert une note interne ?', '["Informer l''équipe sans que le client la voie","Payer le transporteur","Fermer la boutique","Écrire au client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 2, 1, 'Que vérifier avant d''envoyer un modèle de réponse ?', '["Qu''il est personnalisé et sans variable oubliée","Rien","La couleur du texte","Sa longueur seulement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 2, 2, 'Qu''apporte Gorgias pour l''e-commerce ?', '["Les commandes affichées à côté du ticket","Le montage vidéo","La retouche photo","La comptabilité"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-f', 3, 'Premier projet : une semaine de SAV pour Lamba Studio', 'Prise de poste, tri par priorité, cas types (retard, casse, erreur, retour), escalade avec note complète et compte rendu hebdomadaire.', 'Dans ce module, vous prenez en charge le service client d''une boutique en ligne pendant une semaine type, comme le ferait un agent à distance. Vous apprendrez à prendre le poste, à traiter les tickets par priorité, à gérer les cas difficiles, à escalader au bon moment et à faire un compte rendu utile à la boutique.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer votre prise de poste dans une nouvelle boutique.
+> 2. Trier et traiter une file de tickets.
+> 3. Résoudre les cas types : retard, casse, retour, erreur.
+> 4. Escalader une demande correctement.
+> 5. Rédiger un compte rendu hebdomadaire.
+
+## Le cas pratique : « Lamba Studio »
+
+> [!exemple] Votre client
+> **Lamba Studio** est une boutique en ligne basée en France qui vend des vêtements et des accessoires inspirés des tissus malgaches. Elle reçoit environ 40 messages par jour (e-mail, chat, Instagram). La gérante, Mme Laure, vous recrute à distance pour traiter le service client du lundi au vendredi, avec une réponse sous 24 heures maximum.
+
+## Étape 1 : la prise de poste
+
+| À obtenir | Pourquoi |
+| --- | --- |
+| Accès au helpdesk et au back-office (droits limités) | Traiter les tickets et lire les commandes |
+| Politique de retour et de remboursement | Appliquer les règles |
+| Liste des gestes commerciaux autorisés | Savoir ce que vous pouvez accorder seul |
+| Transporteurs et délais habituels | Répondre aux questions de suivi |
+| Guide des tailles et fiches produits | Répondre avant achat |
+| Contact pour escalader | Savoir à qui transmettre |
+| Ton de la marque (vouvoiement, emojis ou non) | Écrire comme la boutique |
+
+> [!astuce]
+> Rédigez dès la première semaine un **document de référence** personnel : règles, cas fréquents, contacts. Il vous fera gagner beaucoup de temps et pourra servir à la boutique pour former un autre agent.
+
+## Étape 2 : trier la file
+
+### L''ordre de traitement
+
+| Priorité | Exemples |
+| --- | --- |
+| **1. Urgent** | Erreur d''adresse sur une commande pas encore expédiée, client très en colère, problème de paiement en cours |
+| **2. Problèmes après livraison** | Produit cassé, erreur d''article, colis perdu |
+| **3. Suivi et retours** | « Où est mon colis ? », demande de retour |
+| **4. Questions avant achat** | Tailles, matières, délais |
+| **5. Divers** | Partenariats, demandes hors SAV (à transmettre) |
+
+> [!madagascar]
+> Avec le décalage horaire (Madagascar a souvent une ou deux heures d''avance sur la France selon la saison), commencez votre journée en traitant les messages arrivés pendant la nuit européenne : les clients trouvent une réponse à leur réveil.
+
+## Étape 3 : les cas types
+
+### Colis en retard
+
+1. Vérifier le suivi.
+2. Si le colis avance : rassurer avec la date estimée.
+3. S''il est bloqué : ouvrir une enquête chez le transporteur et proposer une solution si le blocage dure.
+
+### Produit cassé
+
+1. S''excuser et demander une photo du produit et du colis.
+2. Proposer un renvoi ou un remboursement selon la politique.
+3. Noter le cas pour signaler un problème d''emballage s''il se répète.
+
+### Erreur d''article envoyé
+
+1. S''excuser : l''erreur vient de la boutique.
+2. Envoyer le bon article sans attendre le retour si la politique le permet.
+3. Fournir une étiquette de retour gratuite.
+
+### Demande de retour
+
+1. Vérifier le délai et l''état demandé.
+2. Envoyer la procédure de retour.
+3. Suivre jusqu''au remboursement.
+
+> [!exemple] Réponse à un produit cassé
+> « Bonjour Sophie, je suis vraiment désolée que votre pochette soit arrivée abîmée. Pourriez-vous m''envoyer une photo de la pochette et du colis ? Dès réception, je vous propose au choix un nouvel envoi sans frais ou un remboursement complet. Vous n''aurez pas besoin de nous renvoyer l''article abîmé. Belle journée, Fanja, Lamba Studio »
+
+## Étape 4 : escalader au bon moment
+
+| Escalader quand | À qui |
+| --- | --- |
+| La demande dépasse vos gestes autorisés | La gérante |
+| Un client menace d''un avis négatif public ou d''une action en justice | La gérante |
+| Un problème se répète (même produit cassé plusieurs fois) | La gérante ou la logistique |
+| Une demande de presse ou de partenariat arrive | La gérante |
+| Vous soupçonnez une fraude | La gérante |
+
+### La note d''escalade
+
+```
+Ticket : #4821 – commande 10392
+Client : M. Durand, 3e commande
+Problème : sac livré avec une anse décousue, demande un remboursement + 30 % de dédommagement.
+Fait : excuses, photo reçue, remboursement proposé selon la politique.
+Question : peut-on accorder un bon d''achat de 20 % ? Le client est fidèle.
+Délai : le client attend une réponse avant demain midi.
+```
+
+## Étape 5 : le compte rendu hebdomadaire
+
+| Rubrique | Exemple |
+| --- | --- |
+| **Volume** | 196 tickets traités |
+| **Délais** | Première réponse moyenne : 5 h ; 98 % sous 24 h |
+| **Motifs principaux** | Suivi 41 %, retours 22 %, tailles 15 % |
+| **Problèmes repérés** | 4 boucles d''oreilles cassées : emballage trop fragile |
+| **Propositions** | Ajouter un guide des tailles plus précis pour les robes |
+| **Satisfaction** | Note moyenne 4,6 sur 5 |
+
+> [!astuce]
+> Le compte rendu fait de vous plus qu''un agent : vous aidez la boutique à **réduire le nombre de problèmes**. C''est ce qui vous rend difficile à remplacer.
+
+> [!retenir]
+> - Une prise de poste complète et un document de référence.
+> - Un tri par priorité, en commençant par l''urgent.
+> - Une méthode pour chaque cas type.
+> - Une escalade claire, avec une note complète.
+> - Un compte rendu chiffré avec des propositions.
+
+## Exercice pratique : une semaine chez Lamba Studio
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Rédigez la politique de retour, les gestes autorisés et le ton de Lamba Studio.
+> 2. Inventez 20 tickets variés et traitez-les dans votre helpdesk par ordre de priorité.
+> 3. Rédigez 2 notes d''escalade.
+> 4. Rédigez le compte rendu de la semaine avec vos chiffres.
+>
+> **À livrer** : vos règles, vos 20 réponses, vos notes d''escalade et votre compte rendu. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 3, 0, 'Quel ticket traiter en premier ?', '["Un remerciement","Une erreur d''adresse sur une commande pas encore expédiée","Une demande de partenariat","Une question sur une matière"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 3, 1, 'Que demander en cas de produit cassé ?', '["Rien","Une copie de la carte d''identité","Une photo du produit et du colis","Un paiement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 3, 2, 'Quand escalader une demande ?', '["Jamais","Toujours","Quand elle dépasse vos gestes autorisés","Seulement le vendredi"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-f', 4, 'Trouver du travail et se faire payer', 'Dossier de présentation, 5 canaux, tests de recrutement, tarifs et forfaits, conditions, paiements et évolution.', 'Les boutiques en ligne et les agences de support recrutent régulièrement des agents à distance. Ce dernier module vous montre comment vous présenter, trouver un poste ou des clients, fixer votre rémunération et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer un dossier de présentation convaincant.
+> 2. Trouver des employeurs et des clients grâce à 5 canaux.
+> 3. Réussir un test de recrutement.
+> 4. Fixer votre tarif et vos conditions.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Votre dossier de présentation
+
+1. **Un CV ou profil** centré sur le service client : langues, outils, disponibilités.
+2. **Des exemples de réponses** : 3 à 5 réponses à des cas types (retard, casse, client en colère).
+3. **Votre projet Lamba Studio** : règles, compte rendu, notes d''escalade.
+4. **Vos outils** : helpdesk utilisé, back-office (Shopify, WooCommerce), outils de bureautique.
+5. **Vos horaires** : précisez les horaires disponibles en heure de Madagascar et en heure du client.
+
+## Où trouver du travail : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences de support externalisé** | Postulez, passez leurs tests d''écrit |
+| 2 | **Centres de relation client à Madagascar** | Expérience structurée, souvent un bon début |
+| 3 | **Boutiques en ligne francophones** | Proposez de prendre en charge leur SAV en soirée ou le week-end |
+| 4 | **Plateformes de freelance et sites d''emploi à distance** | Recherchez « service client », « support e-commerce » ; vérifiez qu''elles acceptent les profils basés à Madagascar |
+| 5 | **Boutiques locales** | Proposez de gérer leurs messages Facebook et WhatsApp |
+
+> [!exemple] Message à une boutique en ligne
+> « Bonjour, j''ai remarqué que votre boutique répond aux messages en semaine, de 9 h à 17 h. Je suis agent SAV e-commerce, basé à Madagascar, et je peux traiter vos messages le soir et le week-end en français, avec votre politique de retour et votre ton. Je vous propose une semaine d''essai. Vous trouverez ci-joint 3 exemples de réponses. »
+
+## Réussir un test de recrutement
+
+| Type de test | Comment réussir |
+| --- | --- |
+| **Rédaction de réponses** | Les 5 étapes, ton chaleureux, aucune faute |
+| **Cas difficiles** | Méthode ÉCART, solution concrète, respect de la politique |
+| **Orthographe et grammaire** | Relire, utiliser un correcteur |
+| **Vitesse de frappe** | S''entraîner régulièrement |
+| **Mise en situation** (chat) | Réponses courtes, une question à la fois |
+
+> [!attention]
+> Une seule faute d''orthographe dans un test d''écrit peut suffire à être écarté. Relisez **chaque** réponse avant de l''envoyer, même sous pression.
+
+## Fixer sa rémunération
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Au tarif horaire** | Heures de présence sur le helpdesk | 12 000 Ar de l''heure |
+| **Forfait mensuel à temps partiel** | 20 heures par semaine | 900 000 Ar par mois |
+| **Forfait boutique locale** | Messages Facebook et WhatsApp, 2 heures par jour | 350 000 Ar par mois |
+| **Mise en place** | Modèles de réponses, base de connaissances, politique | 300 000 Ar une fois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions
+
+1. **Les horaires** et les jours couverts.
+2. **Le délai de réponse** promis.
+3. **Les canaux** traités.
+4. **Les limites** : gestes commerciaux autorisés, escalade.
+5. **La confidentialité** des données des clients.
+6. **Le paiement** : mensuel ou par période, payé d''avance pour un forfait.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Employeur ou client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville si vous travaillez comme indépendant, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Agent senior** | Cas complexes, formation des nouveaux agents |
+| **Responsable du support** | Organisation de l''équipe, indicateurs, outils |
+| **Spécialiste helpdesk** | Paramétrage de Gorgias ou Zendesk, automatisations |
+| **Assistant e-commerce** | Gestion des commandes, des fiches produits, des stocks |
+| **Gestionnaire de boutique en ligne** | Voir la formation sur la gestion de boutique en ligne |
+
+> [!retenir]
+> - Un dossier avec des exemples de réponses et votre projet.
+> - Agences, centres d''appels, boutiques, plateformes, boutiques locales.
+> - Un test réussi : 5 étapes, ÉCART, zéro faute.
+> - Un tarif horaire ou un forfait, avec des conditions claires.
+> - Évoluez vers le support senior, la gestion d''équipe ou l''e-commerce.
+
+## Exercice pratique : décrocher votre première mission
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez votre profil et préparez 5 exemples de réponses.
+> 2. Faites un test d''orthographe en ligne et notez vos points faibles.
+> 3. Repérez 5 boutiques en ligne et 3 agences de support.
+> 4. Envoyez au moins 3 candidatures ou propositions personnalisées.
+>
+> **À livrer** : votre profil, vos exemples, votre liste et vos messages envoyés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 4, 0, 'Que proposer à une boutique qui répond seulement en journée ?', '["Baisser ses prix","Fermer sa boutique","Traiter ses messages le soir et le week-end","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 4, 1, 'Que faut-il éviter absolument dans un test d''écrit ?', '["Les solutions","Les fautes d''orthographe","Les formules de politesse","La signature"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-f', 4, 2, 'Vers quel poste un agent peut-il évoluer ?', '["Pilote d''avion","Chirurgien","Architecte","Responsable du support"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que fait un agent SAV e-commerce ?', '["Il fait la comptabilité","Il fabrique les produits","Il conduit les camions de livraison","Il répond aux clients et trouve des solutions justes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'À quelle étape du parcours survient un colis perdu ?', '["Expédition et livraison","Commande et paiement","Avant l''achat","Préparation"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Quel canal est le plus courant pour le SAV ?', '["Le fax","La lettre papier","Le télégramme","L''e-mail"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Pourquoi Madagascar est-il un atout pour la relation client francophone ?', '["Le PayPal y est illimité","Les produits y sont fabriqués","Aucune raison","Expérience en français et horaires décalés utiles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Quelle est la première étape d''une réponse ?', '["Refuser","Saluer avec le prénom","Signer","Proposer une solution"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que faut-il éviter dans une réponse ?', '["Les excuses justifiées","Les phrases courtes","Le jargon interne","Le vouvoiement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Comment transformer « Nous ne remboursons pas après 30 jours » ?', '["Expliquer le délai et proposer une alternative autorisée","Accuser le client","Rembourser sans règle","Ne pas répondre"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que faire si un client devient insultant ?', '["Publier son message","Supprimer son compte","Rester poli et transmettre au responsable","L''insulter à son tour"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Qui fixe les règles de retour que l''agent applique ?', '["Le transporteur","Le client","La boutique, dans sa politique écrite","L''agent seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que mesure le délai de première réponse ?', '["La durée de livraison","Le temps de fabrication","La durée du remboursement","Le temps avant la première réponse au client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Pourquoi viser la réponse complète du premier coup ?', '["Ce n''est pas utile","Pour retarder le client","Pour éviter des échanges en plus","Pour écrire plus long"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que fait un helpdesk ?', '["Il transforme chaque message en ticket organisé","Il fabrique les produits","Il crée des logos","Il livre les colis"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Qu''est-ce qu''une macro ?', '["Une réponse enregistrée avec des actions","Un client fidèle","Un gros colis","Un type de paiement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Où trouver le numéro de suivi d''un colis ?', '["Dans le guide des tailles","Dans la fiche de la commande","Dans la base de connaissances","Sur les réseaux sociaux"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Peut-on rembourser au-delà des limites fixées ?', '["Oui, le week-end","Non, il faut escalader","Oui, toujours","Oui, si le client insiste"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'À quoi sert une base de connaissances ?', '["Facturer les clients","Stocker les mots de passe","Permettre aux clients de trouver seuls les réponses","Envoyer des publicités"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Qui paie Gorgias ou Zendesk ?', '["Le client final","L''agent","L''employeur","Le transporteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que préparer dès la première semaine chez un client ?', '["Un nouveau logo","Un document de référence personnel","Rien","Une facture d''avance"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Par quoi commencer la journée depuis Madagascar ?', '["Les messages arrivés pendant la nuit européenne","Les demandes de partenariat","La lecture des réseaux sociaux","Rien de précis"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que faire en cas d''erreur d''article envoyé ?', '["S''excuser, renvoyer le bon article et fournir un retour gratuit","Ignorer le message","Accuser le client","Demander des frais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que contient une bonne note d''escalade ?', '["Rien","Une plainte contre le client","Seulement le nom du client","Le problème, ce qui a été fait, la question et le délai"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Pourquoi signaler un produit souvent cassé ?', '["Pour accuser le client","Pour que la boutique améliore l''emballage","Ce n''est pas utile","Pour arrêter de vendre"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que contient un compte rendu hebdomadaire ?', '["Seulement vos heures","Les mots de passe","Des photos personnelles","Volume, délais, motifs, problèmes et propositions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Que préciser dans vos horaires sur votre profil ?', '["Rien","L''heure de New York","L''heure de Madagascar et celle du client","Seulement l''heure de Madagascar"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement PayPal","Uniquement des chèques étrangers","Aucun"]'::jsonb, 0);
+
 -- gestion-4-a
 delete from public.exam_questions where course_id = 'gestion-4-a';
 delete from public.module_questions where course_id = 'gestion-4-a';
@@ -30479,7 +31083,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 6. **Silence** de 10 secondes au début : il aide à la réduction de bruit.
 
 > [!astuce]
-> Améliorer l''enregistrement fait gagner bien plus de temps et de qualité que n''importe quel traitement après coup. Un bon guide d''enregistrement est l''un vos meilleurs outils.
+> Améliorer l''enregistrement fait gagner bien plus de temps et de qualité que n''importe quel traitement après coup. Un bon guide d''enregistrement est l''un de vos meilleurs outils.
 
 ## Étape 3 : produire avec un modèle
 
