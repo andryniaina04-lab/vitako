@@ -1,0 +1,97 @@
+{
+  "id": "lang-0-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du rédacteur un spécialiste : choix d'un secteur, expertise visible dans les textes, outils professionnels (Semrush, Search Console, correcteurs avancés), stratégies de contenu avec pages piliers, écriture pour différents publics francophones et en écriture fantôme, puis copywriting de conversion et plans de contenu mensuels. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et prouver son expertise dans ses textes",
+    "Utiliser Semrush, Google Search Console et un correcteur avancé",
+    "Construire une stratégie de contenu avec page pilier et maillage interne",
+    "Produire plus vite et utiliser l'IA de façon responsable",
+    "Écrire pour différents publics francophones et appliquer un guide de style",
+    "Vendre des séquences d'e-mails, des pages de vente et des plans mensuels"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et écrire comme un expert",
+      "summary": "Les spécialités rentables, le choix de la vôtre, les critères de qualité de Google, les preuves d'expertise et l'offre de spécialiste.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que valorise Google sous l'abréviation E-E-A-T ?", "options": ["Expérience, expertise, autorité, fiabilité", "Écrire, envoyer, attendre, tester", "Le nombre de mots", "Les couleurs du site"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un sujet YMYL ?", "options": ["Un sujet qui peut avoir un impact sur la santé, l'argent ou la sécurité", "Un sujet amusant", "Un sujet sans importance", "Un type de publicité"], "correct": 0 },
+        { "q": "Qu'est-ce qui distingue un texte d'expert ?", "options": ["Des détails vrais, précis et vécus", "Des phrases très longues", "Beaucoup d'adjectifs", "L'absence de sources"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Semrush, Search Console et correcteurs",
+      "summary": "Recherche et difficulté des mots-clés, longue traîne, analyse des concurrents, opportunités dans Search Console, Grammarly, Antidote et choix des abonnements.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un mot-clé de longue traîne ?", "options": ["Une expression longue et précise, plus facile à atteindre", "Un mot très court", "Un mot interdit", "Un mot en anglais"], "correct": 0 },
+        { "q": "Quelles requêtes de Search Console sont des opportunités ?", "options": ["Celles en position 5 à 20 avec beaucoup d'impressions", "Celles en position 1", "Celles sans impressions", "Celles en position 200"], "correct": 0 },
+        { "q": "Pour quels textes Grammarly Premium est-il surtout utile ?", "options": ["Les textes en anglais", "Les textes en malagasy", "Les vidéos", "Les images"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : stratégie de contenu et production",
+      "summary": "Page pilier et groupe de contenus, maillage interne, mise à jour des anciens articles, processus en série, modèles et usage responsable de l'IA.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une page pilier ?", "options": ["Une page complète qui renvoie vers des articles détaillés sur chaque sous-sujet", "La page de contact", "Une publicité", "Une page vide"], "correct": 0 },
+        { "q": "Quel texte de lien est le meilleur ?", "options": ["« notre guide du circuit RN7 »", "« cliquez ici »", "« lien »", "« ici »"], "correct": 0 },
+        { "q": "Que faire de chaque fait proposé par un outil d'IA ?", "options": ["Le vérifier avec une source fiable", "Le publier tel quel", "Le doubler", "Le supprimer toujours"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : publics francophones, style et contrats",
+      "summary": "Écrire pour la France, la Belgique, la Suisse et le Québec, le guide de style, l'écriture en anglais, l'écriture fantôme et les contrats internationaux.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment dit-on « e-mail » au Québec ?", "options": ["Courriel", "Mél", "Lettre", "Message vocal"], "correct": 0 },
+        { "q": "Qu'est-ce que l'écriture fantôme ?", "options": ["Écrire des textes publiés sous le nom d'une autre personne", "Écrire la nuit", "Écrire sans relire", "Copier un texte"], "correct": 0 },
+        { "q": "Qu'est-ce que la transcréation ?", "options": ["Recréer l'effet d'un texte marketing dans une autre langue", "Traduire mot à mot", "Transcrire un audio", "Corriger l'orthographe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : conversion, plans mensuels et équipe",
+      "summary": "Séquence d'e-mails en 5 messages, page de vente en 9 parties, plans de contenu mensuels, rapport, prix à la valeur et équipe de rédacteurs.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien d'appels à l'action par e-mail de vente ?", "options": ["Un seul", "Dix", "Aucun", "Un par ligne"], "correct": 0 },
+        { "q": "Peut-on écrire de faux témoignages pour une page de vente ?", "options": ["Non, jamais", "Oui, si le produit est bon", "Oui, avec des prénoms inventés", "Oui, une seule fois"], "correct": 0 },
+        { "q": "Pourquoi un engagement initial de 6 mois pour un plan de contenu ?", "options": ["Le référencement prend du temps", "Pour bloquer le client", "C'est obligatoire", "Pour payer moins d'impôts"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité de copywriting consiste à écrire une série d'e-mails automatiques ?", "options": ["La séquence d'e-mails", "La fiche produit", "Le communiqué", "La traduction"], "correct": 0 },
+    { "q": "Quels sont les 4 critères pour choisir sa spécialité ?", "options": ["Connaissance, demande, valeur, plaisir", "Prix, couleur, police, longueur", "Âge, ville, sexe, religion", "Matin, midi, soir, nuit"], "correct": 0 },
+    { "q": "Quelle spécialité donne un vrai avantage à un rédacteur malgache ?", "options": ["Le tourisme à Madagascar et dans l'océan Indien", "Le ski alpin", "Les métros européens", "Aucune"], "correct": 0 },
+    { "q": "Que doit-on faire sur un sujet de santé ?", "options": ["Sourcer et faire relire par un expert", "Écrire sans sources", "Donner des conseils médicaux personnels", "Copier un forum"], "correct": 0 },
+    { "q": "Qu'est-ce que la difficulté d'un mot-clé ?", "options": ["L'effort estimé pour apparaître dans les premiers résultats", "Le nombre de lettres", "Le prix du mot", "La langue du mot"], "correct": 0 },
+    { "q": "Combien de mots-clés principaux par article ?", "options": ["Un", "Dix", "Aucun", "Cinquante"], "correct": 0 },
+    { "q": "Que chercher en analysant les 5 premiers résultats ?", "options": ["Ce qui manque à tous : votre angle unique", "Un texte à copier", "Les couleurs", "Le nom des auteurs uniquement"], "correct": 0 },
+    { "q": "Quel accès demander au client pour Search Console ?", "options": ["Un accès en lecture", "Son mot de passe Google", "Un accès propriétaire", "Aucun"], "correct": 0 },
+    { "q": "Que fait un correcteur avancé ?", "options": ["Il propose, vous décidez", "Il décide à votre place", "Il écrit l'article", "Il publie le texte"], "correct": 0 },
+    { "q": "Quand prendre un abonnement Semrush ?", "options": ["Quand il vous fait vendre plus, par exemple des plans mensuels", "Dès le premier jour, avant tout client", "Jamais", "Pour chaque article"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un groupe de contenus (cluster) ?", "options": ["Une page pilier et ses articles reliés", "Un groupe Facebook", "Un dossier d'images", "Une liste de clients"], "correct": 0 },
+    { "q": "Qu'est-ce que le maillage interne ?", "options": ["Les liens entre les pages d'un même site", "Les liens vers d'autres sites", "Le réseau Wi-Fi", "Le menu du restaurant"], "correct": 0 },
+    { "q": "Quel article mettre à jour en priorité ?", "options": ["Celui en position 5 à 20 ou dont le trafic baisse", "Celui en position 1 qui progresse", "Un article au hasard", "Le plus court"], "correct": 0 },
+    { "q": "Que faut-il ajouter lors d'une mise à jour ?", "options": ["La date de mise à jour", "Des fautes", "Des liens cassés", "Rien"], "correct": 0 },
+    { "q": "Pourquoi regrouper les tâches de même nature ?", "options": ["Pour gagner beaucoup de temps", "Pour travailler moins bien", "C'est obligatoire", "Pour le client uniquement"], "correct": 0 },
+    { "q": "Quel usage de l'IA est à éviter ?", "options": ["Inventer des chiffres ou des témoignages", "Proposer des idées de titres", "Reformuler une phrase lourde", "Vérifier la cohérence d'un plan"], "correct": 0 },
+    { "q": "Comment dit-on 90 en Belgique ?", "options": ["Nonante", "Quatre-vingt-dix", "Huitante", "Neuf-dix"], "correct": 0 },
+    { "q": "Que contient un guide de style ?", "options": ["Voix de la marque, tu ou vous, vocabulaire, typographie, formats, exemples", "La liste des salaires", "Le contrat de travail", "Le menu du site"], "correct": 0 },
+    { "q": "Quand écrire en anglais pour des clients ?", "options": ["Avec un niveau écrit réellement solide", "Avec un anglais scolaire", "Toujours, sans relecture", "Jamais, c'est interdit"], "correct": 0 },
+    { "q": "En écriture fantôme, d'où viennent les idées ?", "options": ["De la personne qui signe, recueillies en entretien", "De l'imagination du rédacteur", "D'un concurrent", "D'un outil d'IA uniquement"], "correct": 0 },
+    { "q": "Quand le texte appartient-il au client ?", "options": ["Après le paiement complet", "Avant de commencer", "Jamais", "Après la première correction"], "correct": 0 },
+    { "q": "Que contient le dernier e-mail d'une séquence de vente ?", "options": ["L'offre avec prix, garantie et date limite réelle", "Rien", "Un faux témoignage", "Une demande de mot de passe"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un « P.-S. » dans un e-mail de vente ?", "options": ["Un rappel de l'essentiel, souvent très lu", "Une signature légale", "Une pièce jointe", "Un lien caché"], "correct": 0 },
+    { "q": "Que montre un bon rapport mensuel de contenu ?", "options": ["Les résultats, les pages qui progressent et les prochaines actions", "Seulement la facture", "La liste des fautes", "Rien"], "correct": 0 },
+    { "q": "Comment recruter un rédacteur pour son équipe ?", "options": ["Avec un test payé sur un brief réel", "Sans test", "Avec un test gratuit de 10 articles", "Au hasard"], "correct": 0 }
+  ]
+}

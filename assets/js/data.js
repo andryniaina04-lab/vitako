@@ -1188,6 +1188,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-0-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du rédacteur un spécialiste : choix d'un secteur, expertise visible dans les textes, outils professionnels (Semrush, Search Console, correcteurs avancés), stratégies de contenu avec pages piliers, écriture pour différents publics francophones et en écriture fantôme, puis copywriting de conversion et plans de contenu mensuels. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et prouver son expertise dans ses textes",
+   "Utiliser Semrush, Google Search Console et un correcteur avancé",
+   "Construire une stratégie de contenu avec page pilier et maillage interne",
+   "Produire plus vite et utiliser l'IA de façon responsable",
+   "Écrire pour différents publics francophones et appliquer un guide de style",
+   "Vendre des séquences d'e-mails, des pages de vente et des plans mensuels"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et écrire comme un expert",
+    "summary": "Les spécialités rentables, le choix de la vôtre, les critères de qualité de Google, les preuves d'expertise et l'offre de spécialiste.",
+    "sections": [
+     "Les spécialités les plus rentables",
+     "Choisir sa spécialité",
+     "Ce que Google attend d'un expert",
+     "Prouver son expertise dans un texte",
+     "L'offre de spécialiste",
+     "Exercice pratique : devenir spécialiste"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils professionnels : Semrush, Search Console et correcteurs",
+    "summary": "Recherche et difficulté des mots-clés, longue traîne, analyse des concurrents, opportunités dans Search Console, Grammarly, Antidote et choix des abonnements.",
+    "sections": [
+     "Semrush : les fonctions du rédacteur",
+     "Analyser les pages concurrentes avant d'écrire",
+     "Google Search Console : les données du client",
+     "Corriger et améliorer avec un correcteur avancé",
+     "Quels abonnements, et quand ?",
+     "Exercice pratique : une recherche de professionnel"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : stratégie de contenu et production",
+    "summary": "Page pilier et groupe de contenus, maillage interne, mise à jour des anciens articles, processus en série, modèles et usage responsable de l'IA.",
+    "sections": [
+     "La page pilier et son groupe de contenus",
+     "Le maillage interne",
+     "Mettre à jour un ancien article",
+     "Produire plus vite sans baisser la qualité",
+     "Les outils d'IA : un usage professionnel",
+     "Exercice pratique : une stratégie de contenu"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux : publics francophones, style et contrats",
+    "summary": "Écrire pour la France, la Belgique, la Suisse et le Québec, le guide de style, l'écriture en anglais, l'écriture fantôme et les contrats internationaux.",
+    "sections": [
+     "Écrire pour différents publics francophones",
+     "Le guide de style",
+     "Écrire en anglais pour des clients ?",
+     "L'écriture fantôme",
+     "Contrats et tarifs internationaux",
+     "Exercice pratique : un client à l'étranger"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer son activité : conversion, plans mensuels et équipe",
+    "summary": "Séquence d'e-mails en 5 messages, page de vente en 9 parties, plans de contenu mensuels, rapport, prix à la valeur et équipe de rédacteurs.",
+    "sections": [
+     "Le copywriting de conversion",
+     "Vendre des plans de contenu mensuels",
+     "Le prix selon la valeur",
+     "Construire une petite équipe de rédacteurs",
+     "Exercice pratique : votre offre à forte valeur"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "lang-0-f": {
   "hours": 15,
   "description": "Le rédacteur web écrit les textes d'Internet : articles de blog, pages de site, fiches produits, e-mails. Le copywriter écrit des textes qui font agir. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à écrire pour des clients francophones et malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

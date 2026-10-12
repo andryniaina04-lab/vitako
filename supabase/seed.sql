@@ -54,7 +54,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
-  ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 14, false),
+  ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
   ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
   ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 15, false),
   ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 12, false),
@@ -6766,6 +6766,662 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures ?', '["Pour travailler moins","Parce que c''est obligatoire","Les clients préfèrent un forfait mensuel payé d''avance","Pour éviter de suivre son temps"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Qu''elles sont interdites","Rien","Qu''elles sont facturées en plus, au même tarif","Qu''elles sont gratuites"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel moyen de paiement utiliser avec un client local à Madagascar ?', '["Uniquement des espèces par la poste","Uniquement PayPal","Mobile Money ou virement bancaire","Un chèque étranger"]'::jsonb, 2);
+
+-- lang-0-a
+delete from public.exam_questions where course_id = 'lang-0-a';
+delete from public.module_questions where course_id = 'lang-0-a';
+delete from public.lessons where course_id = 'lang-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-a', 0, 'Se spécialiser et écrire comme un expert', 'Les spécialités rentables, le choix de la vôtre, les critères de qualité de Google, les preuves d''expertise et l''offre de spécialiste.', 'Un rédacteur qui écrit « sur tous les sujets » est en concurrence avec des milliers d''autres et avec les outils d''IA. Un rédacteur **spécialisé**, qui connaît un secteur et produit des textes qui rapportent, est rare et bien payé. Ce module vous aide à choisir votre spécialité et à comprendre ce que Google et les lecteurs attendent d''un expert.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les spécialités de la rédaction web et du copywriting.
+> 2. Choisir la vôtre et la justifier.
+> 3. Comprendre les critères de qualité de Google (expérience, expertise, autorité, fiabilité).
+> 4. Prouver votre expertise dans vos textes.
+> 5. Construire une offre de spécialiste.
+
+## Les spécialités les plus rentables
+
+### En rédaction web (informer et être trouvé)
+
+| Spécialité | Clients | Pourquoi c''est bien payé |
+| --- | --- | --- |
+| **Logiciels et numérique** (B2B) | Éditeurs de logiciels, startups | Sujets techniques, clients à forte valeur |
+| **E-commerce** | Boutiques en ligne | Fiches et guides d''achat en volume, impact direct sur les ventes |
+| **Tourisme et voyage** | Agences, hôtels, guides, offices de tourisme | Besoin de vraie connaissance du terrain |
+| **Finance et assurance** | Banques, courtiers, comparateurs | Sujets exigeants, très surveillés |
+| **Santé et bien-être** | Cliniques, laboratoires, médias spécialisés | Exige rigueur et sources fiables |
+
+### En copywriting (convaincre et faire agir)
+
+| Spécialité | Ce qu''on écrit |
+| --- | --- |
+| **Pages de vente** | Longues pages pour des formations, logiciels, services |
+| **Séquences d''e-mails** | Série d''e-mails d''accueil, de vente, de relance |
+| **Publicités** | Textes courts pour Facebook, Google, LinkedIn |
+| **Pages de site** | Accueil, services, à propos, qui transforment les visiteurs en clients |
+
+> [!definition] Séquence d''e-mails
+> Une série d''e-mails envoyés automatiquement dans un ordre précis après une action (inscription, téléchargement, achat). Exemple : 5 e-mails sur 10 jours pour accueillir un nouvel abonné et lui présenter une offre.
+
+## Choisir sa spécialité
+
+### Les 4 critères
+
+1. **Votre connaissance** : études, emploi, passion, expérience vécue.
+2. **La demande** : y a-t-il des offres régulières dans ce domaine ?
+3. **La valeur** : le contenu rapporte-t-il de l''argent au client (ventes, abonnés, rendez-vous) ?
+4. **Votre plaisir** : pourrez-vous écrire 50 articles sur ce sujet sans vous lasser ?
+
+> [!madagascar] Des spécialités où vous avez un vrai avantage
+> - **Tourisme à Madagascar et dans l''océan Indien** : vous connaissez les lieux, les saisons, les distances réelles, les usages.
+> - **Agriculture et produits d''exportation** (vanille, épices, cacao, huiles essentielles) : un sujet où peu de rédacteurs ont une connaissance réelle.
+> - **Mobile Money et services financiers en Afrique** : un sujet en croissance, que vous vivez au quotidien.
+> - **Développement et ONG** : rapports, articles, études de cas de projets.
+
+## Ce que Google attend d''un expert
+
+Google cherche à montrer en premier les contenus les plus utiles et les plus fiables. Ses guides pour les évaluateurs de qualité parlent de quatre notions, souvent résumées par l''abréviation **E-E-A-T** :
+
+| Lettre | Notion | Ce que ça veut dire pour vous |
+| --- | --- | --- |
+| **E** | **Expérience** | Le texte montre une expérience réelle du sujet (j''y suis allé, je l''ai utilisé, je l''ai vécu) |
+| **E** | **Expertise** | Le contenu est précis, exact, approfondi |
+| **A** | **Autorité** | L''auteur ou le site sont reconnus sur le sujet |
+| **T** | **Fiabilité** (*trust*) | Sources citées, informations vérifiables, auteur identifié |
+
+> [!definition] Sujets sensibles (YMYL)
+> Les sujets qui peuvent avoir un impact sur la santé, l''argent, la sécurité ou la vie des lecteurs (*Your Money or Your Life*). Google y est particulièrement exigeant. Pour ces sujets, les textes doivent être vérifiés, sourcés, et souvent relus par un expert (médecin, juriste, conseiller financier).
+
+## Prouver son expertise dans un texte
+
+| Méthode | Exemple |
+| --- | --- |
+| **Détails vécus** | « Sur la RN7, comptez au moins 5 heures entre Antsirabe et Ranomafana : la route est sinueuse après Ambositra. » |
+| **Chiffres sourcés** | Données officielles avec le lien vers la source |
+| **Exemples concrets** | Cas réels, captures, photos originales |
+| **Nuances** | Dire quand une solution ne convient pas : un expert connaît les limites |
+| **Mise à jour** | Date de mise à jour visible, informations récentes |
+| **Citations d''experts** | Interviews courtes de professionnels du secteur |
+
+> [!exemple] Texte générique contre texte d''expert
+> **Générique** : « Madagascar est une destination magnifique avec de nombreux parcs nationaux à découvrir. »
+> **Expert** : « À l''Isalo, partez avant 7 h pour la piscine naturelle : à partir de 10 h, la chaleur rend la montée difficile et le site se remplit. Prévoyez 2 litres d''eau par personne, il n''y a aucun point de vente sur le circuit. »
+
+C''est exactement ce que les outils d''IA ont du mal à produire : des **détails vrais, précis et vécus**.
+
+## L''offre de spécialiste
+
+> [!exemple] Offre « Contenus tourisme océan Indien »
+>
+> | | **Article** | **Guide complet** | **Plan de contenu mensuel** |
+> | --- | --- | --- | --- |
+> | Contenu | 1 article de 1 200 mots optimisé | 1 guide de 3 000 mots avec plan détaillé, sources, photos conseillées | 4 articles par mois + mise à jour de 2 anciens articles + rapport |
+> | Recherche de mots-clés | Oui | Oui | Stratégie trimestrielle |
+> | Délai | 5 jours | 10 jours | Calendrier mensuel |
+
+Fixez les prix à partir de votre temps réel et de votre prix horaire, puis ajoutez la **valeur de votre expertise** : un guide qui attire des voyageurs pendant des années vaut plus que le temps passé à l''écrire.
+
+> [!attention] Erreurs fréquentes
+> - Choisir une spécialité « parce qu''elle paie » sans rien y connaître.
+> - Écrire sur la santé ou la finance sans sources ni relecture par un expert.
+> - Des textes d''expert sans aucun détail concret.
+> - Garder un portfolio généraliste après avoir choisi une spécialité.
+
+> [!retenir]
+> - Spécialisez-vous en rédaction (secteur) ou en copywriting (type de texte), ou les deux.
+> - Choisissez avec 4 critères : connaissance, demande, valeur, plaisir.
+> - Expérience, expertise, autorité, fiabilité : ce que Google valorise.
+> - Des détails vrais et vécus : ce qui distingue un expert d''un texte générique.
+> - Une offre de spécialiste en 3 niveaux, dont un plan mensuel.
+
+## Exercice pratique : devenir spécialiste
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Notez 3 spécialités possibles sur les 4 critères et choisissez la vôtre.
+> 2. Analysez les 3 premiers résultats Google sur un mot-clé de votre spécialité : qu''est-ce qui montre (ou ne montre pas) l''expérience et l''expertise ?
+> 3. Écrivez un article de 800 mots dans votre spécialité avec au moins 5 détails vécus ou sourcés.
+> 4. Construisez votre offre de spécialiste en 3 niveaux.
+>
+> **À livrer** : votre tableau de choix, votre analyse, votre article et votre offre.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 0, 0, 'Que valorise Google sous l''abréviation E-E-A-T ?', '["Les couleurs du site","Expérience, expertise, autorité, fiabilité","Écrire, envoyer, attendre, tester","Le nombre de mots"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 0, 1, 'Qu''est-ce qu''un sujet YMYL ?', '["Un sujet amusant","Un sujet sans importance","Un type de publicité","Un sujet qui peut avoir un impact sur la santé, l''argent ou la sécurité"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 0, 2, 'Qu''est-ce qui distingue un texte d''expert ?', '["Des détails vrais, précis et vécus","Beaucoup d''adjectifs","Des phrases très longues","L''absence de sources"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-a', 1, 'Outils professionnels : Semrush, Search Console et correcteurs', 'Recherche et difficulté des mots-clés, longue traîne, analyse des concurrents, opportunités dans Search Console, Grammarly, Antidote et choix des abonnements.', 'Les agences et les clients qui misent sur le référencement attendent de leurs rédacteurs qu''ils sachent utiliser des outils professionnels. **Semrush** est l''un des plus utilisés pour les mots-clés et l''analyse de la concurrence ; **Grammarly Premium** sert à polir les textes en anglais, et **Antidote** est la référence de nombreux professionnels pour le français. Ce module vous apprend à les utiliser comme un spécialiste, avec les données de **Google Search Console** du client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Trouver des mots-clés et évaluer leur difficulté dans Semrush.
+> 2. Analyser les pages concurrentes avant d''écrire.
+> 3. Utiliser Google Search Console pour trouver des opportunités sur le site d''un client.
+> 4. Corriger et améliorer un texte avec un correcteur avancé.
+> 5. Décider quels abonnements prendre, et quand.
+
+## Semrush : les fonctions du rédacteur
+
+| Fonction | À quoi elle sert |
+| --- | --- |
+| **Recherche de mots-clés** (Keyword Magic Tool) | Trouver des centaines de variantes d''un mot-clé, avec leur volume et leur difficulté |
+| **Vue d''ensemble d''un mot-clé** | Volume, difficulté, intention, résultats actuels de Google |
+| **Analyse des concurrents** | Les mots-clés sur lesquels un site concurrent est bien placé |
+| **Recherche de sujets** | Questions et sous-thèmes autour d''un sujet |
+| **Assistant de rédaction** | Recommandations pendant l''écriture (longueur, mots-clés liés, lisibilité) |
+| **Suivi de position** | L''évolution du classement des pages du client |
+
+> [!definition] Difficulté d''un mot-clé
+> Une estimation (souvent sur 100) de l''effort nécessaire pour apparaître dans les premiers résultats. Un site récent a plus de chances sur des mots-clés **peu difficiles** et **précis**.
+
+### Choisir un mot-clé en 5 étapes
+
+1. **Partez d''un mot-clé général** : « safari Madagascar ».
+2. **Listez les variantes** avec l''outil de recherche de mots-clés.
+3. **Filtrez** : volume suffisant, difficulté adaptée au site, intention correspondant à ce que le client vend.
+4. **Regroupez** les variantes qui veulent dire la même chose : elles iront dans le même article.
+5. **Choisissez** un mot-clé principal par article, et 3 à 8 mots-clés liés.
+
+> [!definition] Mots-clés de longue traîne
+> Des expressions plus longues et plus précises (« circuit 10 jours Madagascar en famille »). Chacune a peu de recherches, mais elles sont plus faciles à atteindre et les personnes qui les tapent savent souvent ce qu''elles veulent.
+
+## Analyser les pages concurrentes avant d''écrire
+
+Avant chaque article important, analysez les **5 premiers résultats** de Google :
+
+| Question | Ce que vous en tirez |
+| --- | --- |
+| Quel type de contenu ? (guide, liste, comparatif) | Le format attendu |
+| Quelle longueur approximative ? | Un repère, pas un objectif absolu |
+| Quels sous-thèmes reviennent dans tous ? | Les parties indispensables de votre plan |
+| Que manque-t-il à tous ? | Votre angle unique (souvent : l''expérience réelle) |
+| Quelles questions sont dans « Autres questions posées » ? | Des intertitres et une FAQ |
+
+> [!astuce]
+> Ne copiez jamais la structure du premier résultat. Faites **mieux** : plus précis, plus à jour, plus concret, mieux organisé. C''est ainsi qu''un nouvel article peut dépasser des concurrents installés.
+
+## Google Search Console : les données du client
+
+> [!definition] Google Search Console
+> Un outil gratuit de Google, installé par le propriétaire du site, qui montre pour quelles recherches le site apparaît, combien de fois il est affiché, combien de clics il reçoit et à quelle position moyenne.
+
+Demandez au client un **accès en lecture** : c''est la mine d''or du rédacteur.
+
+### Trouver des opportunités en 4 étapes
+
+1. Ouvrez le rapport **Performances** sur les 3 derniers mois.
+2. Affichez les colonnes **impressions**, **clics**, **taux de clics** et **position moyenne**.
+3. Filtrez les requêtes en **position 5 à 20** avec beaucoup d''impressions : le site est presque visible, un meilleur contenu peut le faire monter.
+4. Pour chacune : améliorez la page existante (contenu, titre, intertitres) ou créez une nouvelle page dédiée.
+
+> [!exemple] Une opportunité
+> La requête « meilleure période Isalo » génère 2 400 impressions par mois, position moyenne 11, seulement 30 clics. La page actuelle mentionne la saison en une phrase. Action : ajouter une partie complète « Quand partir à l''Isalo ? » avec un tableau mois par mois, et améliorer la balise titre.
+
+## Corriger et améliorer avec un correcteur avancé
+
+| Outil | Points forts | Pour qui |
+| --- | --- | --- |
+| **Grammarly Premium** | Ton, clarté, concision, choix des mots, **en anglais** | Rédacteurs qui écrivent en anglais |
+| **Antidote** | Correction très complète du **français**, dictionnaires, guides de grammaire, statistiques de style | Rédacteurs francophones exigeants |
+| **LanguageTool** (offre payante) | Français et anglais, bonnes suggestions de style | Rédacteurs bilingues |
+
+### La méthode de correction avancée
+
+1. **Corrigez d''abord le fond** vous-même (plan, logique, réponse à l''intention).
+2. **Passez le correcteur** et lisez chaque suggestion : acceptez seulement celles qui améliorent vraiment le texte.
+3. **Regardez les statistiques** : phrases trop longues, mots répétés, voix passive.
+4. **Lisez à voix haute** la version finale.
+
+## Quels abonnements, et quand ?
+
+| Situation | Conseil |
+| --- | --- |
+| Vous débutez dans la spécialité | Outils gratuits + Search Console des clients |
+| Vous travaillez pour des agences de référencement | Demandez un accès à **leur** Semrush |
+| Vous vendez des plans de contenu mensuels à plusieurs clients | Un abonnement Semrush (ou un outil équivalent) devient rentable |
+| Vous écrivez en anglais | Grammarly Premium |
+| Vous écrivez beaucoup en français | Antidote (achat ou abonnement) |
+
+Les prix changent : vérifiez-les sur les sites officiels. Calculez le coût **par client et par mois** : si un outil vous permet de vendre un plan de contenu mensuel, il est remboursé dès le premier client.
+
+> [!madagascar]
+> Ces abonnements se paient par carte bancaire internationale, en devises. Commencez par les essais gratuits proposés par la plupart de ces outils pour voir si vous les utiliseriez vraiment chaque semaine, puis investissez quand vos revenus réguliers le permettent.
+
+> [!retenir]
+> - Semrush : variantes, volume, difficulté, intention, concurrents.
+> - Analysez les 5 premiers résultats pour trouver votre angle unique.
+> - Search Console du client : les requêtes en position 5 à 20 sont des opportunités.
+> - Un correcteur avancé propose, vous décidez.
+> - Abonnez-vous quand l''outil vous fait vendre plus, pas avant.
+
+## Exercice pratique : une recherche de professionnel
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Avec l''essai gratuit de Semrush (ou les outils gratuits si ce n''est pas possible), faites la recherche de mots-clés complète pour un sujet de votre spécialité : 20 variantes, regroupées en 4 articles.
+> 2. Analysez les 5 premiers résultats pour le mot-clé principal du premier article.
+> 3. Rédigez un brief avancé : mot-clé, mots-clés liés, intention, plan, angle unique, FAQ.
+> 4. Si un client ou un proche a un site avec Search Console, trouvez 3 opportunités en position 5 à 20 ; sinon, expliquez la méthode sur un exemple inventé.
+>
+> **À livrer** : votre tableau de mots-clés, votre analyse des concurrents, votre brief et vos 3 opportunités.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 1, 0, 'Qu''est-ce qu''un mot-clé de longue traîne ?', '["Un mot très court","Un mot interdit","Un mot en anglais","Une expression longue et précise, plus facile à atteindre"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 1, 1, 'Quelles requêtes de Search Console sont des opportunités ?', '["Celles en position 5 à 20 avec beaucoup d''impressions","Celles sans impressions","Celles en position 1","Celles en position 200"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 1, 2, 'Pour quels textes Grammarly Premium est-il surtout utile ?', '["Les images","Les vidéos","Les textes en anglais","Les textes en malagasy"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-a', 2, 'Qualité et rapidité : stratégie de contenu et production', 'Page pilier et groupe de contenus, maillage interne, mise à jour des anciens articles, processus en série, modèles et usage responsable de l''IA.', 'Au niveau avancé, on ne vous commande plus « un article » mais une **stratégie de contenu** : un ensemble de pages reliées qui font du site une référence sur un sujet. Il faut aussi produire plus, sans baisser la qualité, et mettre à jour les anciens contenus. Ce module vous donne ces méthodes, y compris un usage professionnel et honnête des outils d''IA.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un groupe de contenus autour d''une page pilier.
+> 2. Organiser le maillage interne entre les pages.
+> 3. Mettre à jour un ancien article pour le faire remonter.
+> 4. Produire plus vite avec des modèles et un processus.
+> 5. Intégrer les outils d''IA dans votre travail de façon responsable.
+
+## La page pilier et son groupe de contenus
+
+> [!definition] Page pilier
+> Une page complète qui couvre un grand sujet (« Voyager à Madagascar ») et renvoie vers des articles détaillés sur chaque sous-sujet (« Quand partir », « Budget », « Visa », « Circuit RN7 »). Ces articles renvoient à leur tour vers la page pilier. Ensemble, ils forment un **groupe de contenus** (*cluster*).
+
+> [!exemple] Un groupe de contenus pour une agence de voyage
+> ```
+> PAGE PILIER : Voyager à Madagascar : le guide complet
+> ├── Quand partir à Madagascar ? (mois par mois)
+> ├── Budget d''un voyage à Madagascar
+> ├── Visa et formalités pour Madagascar
+> ├── Circuit RN7 : itinéraire et étapes
+> ├── Nosy Be : que faire et où dormir
+> ├── Santé et vaccins avant de partir
+> └── Se déplacer à Madagascar : voiture, taxi-brousse, avion
+> ```
+
+### Construire un groupe en 5 étapes
+
+1. **Choisissez le grand sujet** lié à ce que le client vend.
+2. **Listez les sous-sujets** avec votre recherche de mots-clés (module 2) : chaque groupe de mots-clés proches = un article.
+3. **Vérifiez l''existant** : quelles pages le client a déjà ? Lesquelles améliorer ?
+4. **Planifiez l''ordre** : d''abord les articles les plus utiles aux ventes, puis la page pilier, puis les compléments.
+5. **Prévoyez les liens** entre toutes les pages.
+
+## Le maillage interne
+
+> [!definition] Maillage interne
+> Les liens d''une page du site vers d''autres pages du même site. Ils aident les lecteurs à trouver l''information suivante et aident Google à comprendre la structure et l''importance des pages.
+
+### Les 5 règles
+
+1. Chaque article du groupe renvoie vers la **page pilier**.
+2. La page pilier renvoie vers **chaque article** du groupe.
+3. Les articles proches se renvoient entre eux quand c''est **utile** au lecteur.
+4. Le **texte du lien** décrit la page de destination (« notre guide du circuit RN7 », pas « cliquez ici »).
+5. Les pages qui vendent (offres, contact) reçoivent des liens depuis les articles qui attirent du trafic.
+
+## Mettre à jour un ancien article
+
+Améliorer un article existant rapporte souvent plus vite que d''en écrire un nouveau.
+
+### Choisir les articles à mettre à jour
+
+1. Ceux en **position 5 à 20** dans Search Console (module 2).
+2. Ceux dont le **trafic baisse** depuis quelques mois.
+3. Ceux qui contiennent des **informations dépassées** (prix, règles, dates).
+
+### La mise à jour en 7 points
+
+| N° | Action |
+| --- | --- |
+| 1 | Vérifier l''intention de recherche actuelle (les premiers résultats ont-ils changé ?) |
+| 2 | Corriger toutes les informations dépassées |
+| 3 | Ajouter les sous-thèmes manquants et les questions des internautes |
+| 4 | Ajouter des détails d''expérience, des exemples, un tableau |
+| 5 | Améliorer la balise titre et la méta-description |
+| 6 | Ajouter des liens internes vers les nouveaux articles |
+| 7 | Indiquer la date de mise à jour |
+
+## Produire plus vite sans baisser la qualité
+
+### Le processus en série
+
+| Jour | Tâche (exemple pour 4 articles par semaine) |
+| --- | --- |
+| Lundi | Recherche et briefs des 4 articles |
+| Mardi | Rédaction des articles 1 et 2 |
+| Mercredi | Rédaction des articles 3 et 4 |
+| Jeudi | Relecture, optimisation, liens internes des 4 articles |
+| Vendredi | Livraison, corrections, mises à jour d''anciens articles |
+
+Regrouper les tâches de même nature (toute la recherche, puis toute la rédaction) fait gagner beaucoup de temps.
+
+### Les modèles à préparer
+
+1. **Modèle de brief** avancé.
+2. **Modèles de plans** par type de contenu : guide, liste, comparatif, fiche produit, page de vente.
+3. **Bibliothèque d''accroches** et d''appels à l''action qui ont bien marché.
+4. **Grille de vérification** (Fondamentaux, module 4), complétée par la spécialité.
+5. **Fiche client** : ton, vocabulaire à utiliser ou éviter, liens importants, concurrents.
+
+## Les outils d''IA : un usage professionnel
+
+Les assistants d''IA peuvent aider un rédacteur avancé, à condition de garder la responsabilité du texte.
+
+| Usage utile | Usage à éviter |
+| --- | --- |
+| Proposer des idées de titres et d''angles | Produire l''article entier et le livrer tel quel |
+| Suggérer un premier plan à compléter | Inventer des chiffres, des sources ou des témoignages |
+| Résumer un long document de référence (non confidentiel) | Mettre les documents confidentiels du client dans un outil sans son accord |
+| Reformuler une phrase lourde | Écrire sur la santé ou la finance sans vérification par une source fiable |
+| Vérifier la cohérence d''un plan | Cacher l''usage d''IA quand le client l''interdit |
+
+### Les 4 règles
+
+1. **Respectez la politique du client** : demandez-la par écrit.
+2. **Vérifiez chaque fait** avec une source fiable : les IA peuvent inventer.
+3. **Apportez ce que l''IA n''a pas** : expérience, détails du terrain, connaissance du client, style.
+4. **Relisez et réécrivez** : un texte générique ne se classe pas bien et ne convainc personne.
+
+> [!madagascar]
+> Les outils d''IA connaissent souvent mal les réalités malgaches : distances, prix locaux, saisons, noms de lieux. C''est précisément là que votre valeur est la plus forte. Vérifiez systématiquement ces informations et enrichissez-les de votre expérience.
+
+> [!retenir]
+> - Une page pilier et ses articles forment un groupe de contenus.
+> - Un maillage interne utile, avec des textes de liens descriptifs.
+> - Mettre à jour les articles en position 5 à 20 rapporte souvent vite.
+> - Un processus en série et des modèles pour produire plus.
+> - L''IA peut aider, mais vous restez responsable de chaque fait et de chaque phrase.
+
+## Exercice pratique : une stratégie de contenu
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Construisez un groupe de contenus complet (page pilier + 6 articles) pour un client de votre spécialité.
+> 2. Dessinez le maillage interne entre les 7 pages.
+> 3. Choisissez un de vos anciens articles et mettez-le à jour avec les 7 points.
+> 4. Créez 3 modèles de plans (guide, liste, comparatif) et votre fiche client type.
+> 5. Rédigez votre politique d''usage de l''IA à présenter à vos clients (5 à 8 lignes).
+>
+> **À livrer** : le groupe de contenus, le schéma de maillage, l''article avant/après, vos modèles et votre politique.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 2, 0, 'Qu''est-ce qu''une page pilier ?', '["Une publicité","Une page vide","Une page complète qui renvoie vers des articles détaillés sur chaque sous-sujet","La page de contact"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 2, 1, 'Quel texte de lien est le meilleur ?', '["« lien »","« cliquez ici »","« ici »","« notre guide du circuit RN7 »"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 2, 2, 'Que faire de chaque fait proposé par un outil d''IA ?', '["Le supprimer toujours","Le doubler","Le publier tel quel","Le vérifier avec une source fiable"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-a', 3, 'Clients internationaux : publics francophones, style et contrats', 'Écrire pour la France, la Belgique, la Suisse et le Québec, le guide de style, l''écriture en anglais, l''écriture fantôme et les contrats internationaux.', 'Le marché francophone ne s''arrête pas à la France : la Belgique, la Suisse, le Canada, l''Afrique de l''Ouest et les entreprises internationales qui veulent toucher ces publics cherchent des rédacteurs. Certains clients demandent aussi des textes en anglais. Ce module vous prépare à écrire pour des publics différents, à respecter des guides de style, et à négocier des contrats internationaux.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Adapter un texte aux différents publics francophones.
+> 2. Appliquer le guide de style d''une marque.
+> 3. Évaluer si vous pouvez écrire en anglais pour des clients.
+> 4. Comprendre l''écriture « fantôme » et ses règles.
+> 5. Négocier un contrat et des tarifs internationaux.
+
+## Écrire pour différents publics francophones
+
+| Élément | France | Belgique | Suisse | Québec |
+| --- | --- | --- | --- | --- |
+| Nombres | soixante-dix, quatre-vingt-dix | septante, nonante | septante, huitante (selon les cantons), nonante | soixante-dix, quatre-vingt-dix |
+| Repas | déjeuner (midi), dîner (soir) | dîner (midi), souper (soir) | dîner (midi), souper (soir) | dîner (midi), souper (soir) |
+| Monnaie | euro | euro | franc suisse | dollar canadien |
+| Anglicismes | assez fréquents (« week-end », « e-mail ») | proches de la France | proches de la France | souvent évités (« fin de semaine », « courriel ») |
+
+> [!astuce]
+> Demandez toujours au client **quel public** il vise, et lisez son site actuel et ceux de 2 concurrents locaux. En cas de doute, choisissez un **français neutre**, compris partout, et évitez les expressions trop locales.
+
+> [!exemple] Même phrase, deux publics
+> France : « Réservez votre week-end et recevez la confirmation par e-mail. »
+> Québec : « Réservez votre fin de semaine et recevez la confirmation par courriel. »
+
+## Le guide de style
+
+> [!definition] Guide de style (charte éditoriale)
+> Le document qui fixe les règles d''écriture d''une marque : ton, tutoiement ou vouvoiement, mots à utiliser ou à éviter, règles de typographie, format des titres, longueur des phrases. Les grandes marques et les agences en ont presque toujours un.
+
+### Ce que contient un guide de style
+
+1. **La voix de la marque** en 3 adjectifs (exemple : chaleureuse, experte, directe).
+2. **Le rapport au lecteur** : tu ou vous, « nous » ou nom de la marque.
+3. **Le vocabulaire** : mots préférés, mots interdits, noms de produits écrits exactement.
+4. **La typographie** : majuscules dans les titres, guillemets, nombres en chiffres ou en lettres.
+5. **Les formats** : longueur des paragraphes, listes, encadrés, appels à l''action.
+6. **Des exemples** avant/après.
+
+Si le client n''en a pas, **proposez-lui d''en rédiger un** : c''est un service à part entière, qui vous rend aussi plus rapide pour tous ses textes.
+
+## Écrire en anglais pour des clients ?
+
+Écrire en anglais ouvre un marché immense, mais la concurrence des rédacteurs anglophones de naissance est très forte.
+
+### Évaluer votre niveau honnêtement
+
+| Situation | Conseil |
+| --- | --- |
+| Anglais scolaire | N''écrivez pas pour des clients en anglais ; continuez à progresser |
+| Anglais courant, quelques maladresses | Textes simples (fiches produits, descriptions) avec relecture systématique (Grammarly Premium) |
+| Anglais excellent, à l''écrit comme à l''oral | Articles et pages pour des marques, dans votre spécialité |
+| Bilingue français-anglais | **Création bilingue** : écrire la même campagne dans les deux langues, souvent bien payé |
+
+> [!definition] Transcréation
+> Adapter un texte publicitaire ou marketing d''une langue à une autre en recréant l''effet voulu, plutôt qu''en traduisant mot à mot. Un slogan qui joue sur les mots en français doit souvent être réinventé en anglais.
+
+## L''écriture fantôme
+
+> [!definition] Écriture fantôme (ghostwriting)
+> Écrire des textes qui seront publiés sous le nom d''une autre personne : articles d''un dirigeant, publications LinkedIn, livres, discours. Le rédacteur n''est pas cité.
+
+### Les règles de l''écriture fantôme
+
+1. **Les idées et l''expérience** sont celles de la personne : vous les recueillez en entretien et vous les mettez en forme. Vous n''inventez pas sa vie ni ses opinions.
+2. **La validation** de chaque texte par la personne avant publication.
+3. **La confidentialité** : vous ne dites pas que vous avez écrit ces textes, sauf accord.
+4. **Le prix** tient compte de la confidentialité : vous ne pourrez pas toujours montrer ce travail dans votre portfolio.
+
+### L''entretien de recueil (30 à 45 minutes)
+
+1. Quelle est **votre conviction** sur ce sujet ?
+2. Racontez **une histoire vécue** qui l''illustre.
+3. Quelle **erreur** voyez-vous souvent chez les autres ?
+4. Quel **conseil** donneriez-vous à quelqu''un qui débute ?
+5. Quel **chiffre** ou **exemple** concret pouvez-vous partager ?
+
+## Contrats et tarifs internationaux
+
+### Les clauses à vérifier
+
+1. **Le livrable** : nombre de textes, longueur, mots-clés, éléments inclus (balises, images proposées).
+2. **Le nombre de tours de corrections**.
+3. **Les droits** : le texte appartient au client **après paiement complet** ; précisez si vous pouvez le montrer dans votre portfolio.
+4. **La confidentialité**, surtout pour l''écriture fantôme.
+5. **La politique d''usage de l''IA**.
+6. **Le prix, la devise et l''échéance** de paiement.
+7. **Les retards** : de votre côté (délai) et du côté du client (paiement).
+
+### Fixer ses tarifs en devises
+
+1. Renseignez-vous sur les tarifs des rédacteurs **spécialisés** de votre niveau dans le pays du client (forums, plateformes, enquêtes de tarifs publiées par des associations de rédacteurs).
+2. Choisissez le **mode** adapté : au mot pour le volume, à l''article ou au projet pour les contenus d''expert, au mois pour les plans de contenu.
+3. Fixez un **prix minimum** par commande.
+4. Gardez vos tarifs **en devises** et suivez le montant réellement reçu en ariary.
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : indiquez dès le premier échange les moyens de paiement que vous pouvez recevoir (virement international, Payoneer, plateforme). Gardez chaque facture et chaque relevé pour votre comptabilité.
+
+> [!retenir]
+> - Adaptez vocabulaire, nombres et expressions au public francophone visé.
+> - Appliquez le guide de style du client, ou proposez-lui d''en écrire un.
+> - N''écrivez en anglais pour des clients qu''avec un niveau réellement solide.
+> - Écriture fantôme : les idées de la personne, sa validation, votre discrétion.
+> - Un contrat clair et des tarifs en devises adaptés au marché du client.
+
+## Exercice pratique : un client à l''étranger
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Réécrivez une page de 300 mots pour un public québécois, puis pour un public belge.
+> 2. Rédigez le guide de style d''une marque de votre spécialité (les 6 parties, avec exemples).
+> 3. Faites un entretien de recueil de 20 minutes avec un proche qui a une expérience professionnelle, puis écrivez 2 publications LinkedIn à son nom, et faites-les valider.
+> 4. Rédigez votre contrat type en 7 clauses et votre grille de tarifs en euros.
+>
+> **À livrer** : vos 2 versions, le guide de style, les 2 publications validées, le contrat et la grille de tarifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 3, 0, 'Comment dit-on « e-mail » au Québec ?', '["Courriel","Message vocal","Mél","Lettre"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 3, 1, 'Qu''est-ce que l''écriture fantôme ?', '["Copier un texte","Écrire sans relire","Écrire la nuit","Écrire des textes publiés sous le nom d''une autre personne"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 3, 2, 'Qu''est-ce que la transcréation ?', '["Traduire mot à mot","Recréer l''effet d''un texte marketing dans une autre langue","Transcrire un audio","Corriger l''orthographe"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-a', 4, 'Développer son activité : conversion, plans mensuels et équipe', 'Séquence d''e-mails en 5 messages, page de vente en 9 parties, plans de contenu mensuels, rapport, prix à la valeur et équipe de rédacteurs.', 'Pour faire grandir une activité de rédaction, il y a trois leviers : vendre des contenus à plus forte valeur (copywriting de conversion, séquences d''e-mails, plans de contenu), créer des revenus mensuels réguliers, et s''entourer d''autres rédacteurs. Ce dernier module vous montre comment utiliser ces trois leviers.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire une séquence d''e-mails de vente en 5 messages.
+> 2. Structurer une page de vente longue.
+> 3. Vendre des plans de contenu mensuels.
+> 4. Fixer un prix selon la valeur et mesurer vos résultats.
+> 5. Construire une petite équipe de rédacteurs.
+
+## Le copywriting de conversion
+
+Les textes qui font **directement** vendre sont parmi les mieux payés du métier.
+
+### La séquence d''e-mails de vente en 5 messages
+
+> [!exemple] Séquence pour une formation en ligne d''anglais professionnel
+>
+> | Jour | E-mail | Objectif | Contenu |
+> | --- | --- | --- | --- |
+> | 0 | **Accueil** | Créer la confiance | Merci, présentation, cadeau promis (guide), ce qui va suivre |
+> | 2 | **Problème** | Faire ressentir le besoin | Une histoire : la réunion où l''on n''ose pas parler |
+> | 4 | **Méthode** | Montrer la solution | Les 3 erreurs qui bloquent à l''oral, et comment les corriger |
+> | 6 | **Preuve** | Rassurer | Témoignages réels, résultats d''élèves, réponses aux objections |
+> | 8 | **Offre** | Faire agir | Présentation de la formation, prix, garantie, date limite |
+
+### Les règles d''un e-mail qui se lit
+
+1. **Un objet** court et intrigant, sans promesse mensongère.
+2. **Une seule idée** et **un seul appel à l''action** par e-mail.
+3. **Des paragraphes très courts** (1 à 3 lignes).
+4. **Un ton personnel**, comme un message à une personne.
+5. **Un « P.-S. »** qui rappelle l''essentiel : il est souvent très lu.
+
+### La structure d''une page de vente longue
+
+1. **Titre** : la promesse principale, vraie et précise.
+2. **Le problème** du lecteur, avec ses mots.
+3. **L''histoire** : pourquoi cette solution existe.
+4. **La solution** : ce que c''est, comment ça marche.
+5. **Les bénéfices** : ce qui change pour le lecteur (et non une liste de caractéristiques).
+6. **Les preuves** : témoignages, chiffres, études de cas **réels**.
+7. **L''offre** : contenu exact, prix, bonus.
+8. **La garantie** et les réponses aux objections (FAQ).
+9. **L''appel à l''action**, répété plusieurs fois sur la page.
+
+> [!attention]
+> Ne rédigez **jamais** de faux témoignages, de fausses promesses de revenus ou de fausses urgences (« plus que 2 places » quand c''est faux). C''est malhonnête, souvent illégal, et cela détruit la confiance des lecteurs et la réputation de votre client.
+
+## Vendre des plans de contenu mensuels
+
+Un plan mensuel stabilise vos revenus et vous permet de produire de vrais résultats sur la durée.
+
+> [!exemple] Plan « Croissance » pour une agence de voyage
+> - Stratégie trimestrielle : groupe de contenus et calendrier.
+> - 4 nouveaux articles par mois.
+> - 2 mises à jour d''anciens articles par mois.
+> - 1 newsletter mensuelle.
+> - Rapport mensuel : positions, clics, pages qui progressent, actions du mois suivant.
+> - Engagement initial de 6 mois (le référencement prend du temps).
+
+### Le rapport mensuel qui garde les clients
+
+| Partie | Contenu |
+| --- | --- |
+| **Résultats** | Clics et impressions depuis Google (Search Console), comparés au mois précédent et au début de la collaboration |
+| **Pages qui progressent** | Les 5 pages dont la position s''améliore |
+| **Contenus publiés** | Liste des articles et mises à jour du mois |
+| **Prochaines actions** | Les contenus du mois suivant et pourquoi |
+
+> [!astuce]
+> Prévenez le client dès le départ : un nouvel article met souvent **plusieurs semaines à plusieurs mois** à atteindre sa position. Montrez les **progrès** (impressions qui augmentent, positions qui montent) pour garder sa confiance pendant cette période.
+
+## Le prix selon la valeur
+
+### Les questions à poser
+
+1. Combien vous rapporte **un client** (une réservation, une vente, un rendez-vous) ?
+2. Combien de **visiteurs** ou d''**abonnés** recevez-vous aujourd''hui ?
+3. Quel est votre **objectif** pour les 6 prochains mois ?
+
+> [!exemple] Raisonner en valeur
+> Une réservation de circuit rapporte en moyenne 1 500 € de marge à l''agence. Si un groupe de 7 contenus en apporte seulement 2 par mois, il vaut 3 000 € par mois pour l''agence. Un plan de contenu à quelques centaines d''euros par mois est alors un investissement très raisonnable pour elle.
+> *(Chiffres donnés en exemple.)*
+
+Votre prix horaire reste votre **plancher**. La valeur pour le client vous aide à **justifier** un prix plus élevé et à choisir les clients pour qui votre travail compte vraiment.
+
+## Construire une petite équipe de rédacteurs
+
+### Quand s''entourer ?
+
+1. Vous refusez régulièrement des commandes.
+2. Vos clients demandent plus de volume.
+3. Vous voulez vous concentrer sur la stratégie, le copywriting et la relation client.
+
+### Les étapes
+
+1. **Écrivez vos processus** : briefs, modèles, grille de vérification, guides de style des clients.
+2. **Recrutez** avec un test payé : un article court sur un brief réel.
+3. **Commencez par des textes simples** (fiches produits, articles de base).
+4. **Relisez tout** au début, puis par échantillon.
+5. **Payez correctement et à l''heure**, et faites un retour précis sur chaque texte.
+6. **Gardez la relation client** : vous êtes responsable de la qualité livrée.
+
+### Votre rôle évolue
+
+| Avant | Après |
+| --- | --- |
+| Rédiger tous les textes | Stratégie, briefs, copywriting à forte valeur |
+| Un client = vos heures | Un client = un plan de contenu produit en équipe |
+| Revenu limité par votre temps | Revenu lié au nombre et à la valeur des plans |
+
+> [!madagascar]
+> De nombreux jeunes Malgaches écrivent très bien le français. Une petite équipe de rédacteurs formés, avec des processus solides et une relecture rigoureuse, peut servir des agences et des marques de tout l''espace francophone. Commencez avec une ou deux personnes de confiance.
+
+> [!retenir]
+> - Séquence d''e-mails en 5 messages et page de vente en 9 parties, toujours honnêtes.
+> - Les plans de contenu mensuels stabilisent vos revenus et produisent des résultats.
+> - Un rapport mensuel qui montre les progrès garde les clients.
+> - Le prix horaire est un plancher ; la valeur justifie plus.
+> - Une équipe se construit avec des processus écrits, un test payé et une relecture.
+
+## Exercice pratique : votre offre à forte valeur
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Écrivez une séquence de 5 e-mails pour un produit ou service réel de votre spécialité.
+> 2. Rédigez le plan détaillé d''une page de vente en 9 parties pour ce produit.
+> 3. Construisez un plan de contenu mensuel avec contenu, engagement et prix.
+> 4. Rédigez un modèle de rapport mensuel.
+> 5. Écrivez la description de mission et le test payé d''un rédacteur pour votre future équipe.
+>
+> **À livrer** : la séquence, le plan de la page de vente, votre plan mensuel, le modèle de rapport et la description de mission.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 4, 0, 'Combien d''appels à l''action par e-mail de vente ?', '["Aucun","Un seul","Dix","Un par ligne"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 4, 1, 'Peut-on écrire de faux témoignages pour une page de vente ?', '["Oui, avec des prénoms inventés","Oui, une seule fois","Non, jamais","Oui, si le produit est bon"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-a', 4, 2, 'Pourquoi un engagement initial de 6 mois pour un plan de contenu ?', '["Pour bloquer le client","C''est obligatoire","Le référencement prend du temps","Pour payer moins d''impôts"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quelle spécialité de copywriting consiste à écrire une série d''e-mails automatiques ?', '["La séquence d''e-mails","La traduction","Le communiqué","La fiche produit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quels sont les 4 critères pour choisir sa spécialité ?', '["Matin, midi, soir, nuit","Prix, couleur, police, longueur","Connaissance, demande, valeur, plaisir","Âge, ville, sexe, religion"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quelle spécialité donne un vrai avantage à un rédacteur malgache ?', '["Le tourisme à Madagascar et dans l''océan Indien","Les métros européens","Le ski alpin","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que doit-on faire sur un sujet de santé ?', '["Donner des conseils médicaux personnels","Copier un forum","Sourcer et faire relire par un expert","Écrire sans sources"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Qu''est-ce que la difficulté d''un mot-clé ?', '["Le nombre de lettres","L''effort estimé pour apparaître dans les premiers résultats","Le prix du mot","La langue du mot"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Combien de mots-clés principaux par article ?', '["Aucun","Un","Cinquante","Dix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que chercher en analysant les 5 premiers résultats ?', '["Les couleurs","Un texte à copier","Ce qui manque à tous : votre angle unique","Le nom des auteurs uniquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quel accès demander au client pour Search Console ?', '["Aucun","Un accès propriétaire","Un accès en lecture","Son mot de passe Google"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que fait un correcteur avancé ?', '["Il publie le texte","Il propose, vous décidez","Il décide à votre place","Il écrit l''article"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quand prendre un abonnement Semrush ?', '["Jamais","Quand il vous fait vendre plus, par exemple des plans mensuels","Dès le premier jour, avant tout client","Pour chaque article"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Qu''est-ce qu''un groupe de contenus (cluster) ?', '["Un dossier d''images","Un groupe Facebook","Une page pilier et ses articles reliés","Une liste de clients"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Qu''est-ce que le maillage interne ?', '["Les liens entre les pages d''un même site","Le réseau Wi-Fi","Le menu du restaurant","Les liens vers d''autres sites"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quel article mettre à jour en priorité ?', '["Celui en position 5 à 20 ou dont le trafic baisse","Un article au hasard","Le plus court","Celui en position 1 qui progresse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que faut-il ajouter lors d''une mise à jour ?', '["Rien","La date de mise à jour","Des fautes","Des liens cassés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Pourquoi regrouper les tâches de même nature ?', '["C''est obligatoire","Pour gagner beaucoup de temps","Pour travailler moins bien","Pour le client uniquement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quel usage de l''IA est à éviter ?', '["Inventer des chiffres ou des témoignages","Proposer des idées de titres","Reformuler une phrase lourde","Vérifier la cohérence d''un plan"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Comment dit-on 90 en Belgique ?', '["Nonante","Huitante","Quatre-vingt-dix","Neuf-dix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que contient un guide de style ?', '["Voix de la marque, tu ou vous, vocabulaire, typographie, formats, exemples","La liste des salaires","Le contrat de travail","Le menu du site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quand écrire en anglais pour des clients ?', '["Toujours, sans relecture","Avec un anglais scolaire","Avec un niveau écrit réellement solide","Jamais, c''est interdit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'En écriture fantôme, d''où viennent les idées ?', '["D''un concurrent","De la personne qui signe, recueillies en entretien","D''un outil d''IA uniquement","De l''imagination du rédacteur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Quand le texte appartient-il au client ?', '["Après la première correction","Après le paiement complet","Jamais","Avant de commencer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que contient le dernier e-mail d''une séquence de vente ?', '["Une demande de mot de passe","L''offre avec prix, garantie et date limite réelle","Rien","Un faux témoignage"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Qu''est-ce qu''un « P.-S. » dans un e-mail de vente ?', '["Une signature légale","Un rappel de l''essentiel, souvent très lu","Une pièce jointe","Un lien caché"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Que montre un bon rapport mensuel de contenu ?', '["Les résultats, les pages qui progressent et les prochaines actions","Seulement la facture","La liste des fautes","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-a', 'Comment recruter un rédacteur pour son équipe ?', '["Avec un test gratuit de 10 articles","Sans test","Au hasard","Avec un test payé sur un brief réel"]'::jsonb, 3);
 
 -- lang-0-f
 delete from public.exam_questions where course_id = 'lang-0-f';
