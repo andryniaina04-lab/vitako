@@ -53,7 +53,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 15, false),
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
-  ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 10, false),
+  ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 14, false),
   ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 11, false),
   ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 15, false),
@@ -2776,6 +2776,716 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures ?', '["Pour travailler moins","Parce que c''est obligatoire","Les clients préfèrent un forfait mensuel payé d''avance","Pour éviter de suivre son temps"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Qu''elles sont interdites","Rien","Qu''elles sont facturées en plus, au même tarif","Qu''elles sont gratuites"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel moyen de paiement utiliser avec un client local à Madagascar ?', '["Uniquement des espèces par la poste","Uniquement PayPal","Mobile Money ou virement bancaire","Un chèque étranger"]'::jsonb, 2);
+
+-- lang-0-f
+delete from public.exam_questions where course_id = 'lang-0-f';
+delete from public.module_questions where course_id = 'lang-0-f';
+delete from public.lessons where course_id = 'lang-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-f', 0, 'Le métier de rédacteur web et copywriter depuis Madagascar', 'Rédacteur web et copywriter, les 7 textes les plus commandés, vos clients, le français écrit et la place de l''IA.', 'Chaque site internet, chaque fiche produit, chaque e-mail de promotion a été écrit par quelqu''un. Le rédacteur web écrit des textes pour Internet : articles de blog, pages de site, fiches produits, newsletters. Le copywriter écrit des textes qui font **agir** : acheter, s''inscrire, appeler. Les deux métiers se pratiquent très bien depuis Madagascar, pour des clients du monde francophone. Ce premier module vous montre ces métiers tels qu''ils sont vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer la différence entre rédacteur web et copywriter.
+> 2. Citer les 7 types de textes les plus commandés.
+> 3. Repérer vos premiers clients possibles.
+> 4. Évaluer votre niveau de français écrit et le travailler.
+> 5. Comprendre la place des outils d''intelligence artificielle dans le métier.
+
+## Rédacteur web et copywriter
+
+| | **Rédacteur web** | **Copywriter** |
+| --- | --- | --- |
+| But principal | Informer et être trouvé sur Google | Convaincre et faire agir |
+| Textes typiques | Articles de blog, guides, pages d''information | Pages de vente, publicités, e-mails promotionnels, slogans |
+| Mesure du succès | Visites venues de Google, temps de lecture | Ventes, inscriptions, clics |
+| Compétence clé | Clarté, structure, référencement | Psychologie du client, persuasion |
+
+Dans la pratique, beaucoup de freelances font **les deux** : un article qui informe peut se terminer par une invitation à acheter.
+
+> [!definition] Référencement naturel (SEO)
+> L''ensemble des techniques qui aident une page à apparaître dans les premiers résultats de Google, sans payer de publicité. SEO vient de l''anglais *Search Engine Optimization*. Le rédacteur web écrit des textes qui répondent aux questions que les gens tapent dans Google.
+
+## Les 7 types de textes les plus commandés
+
+| N° | Type | Longueur habituelle | Exemple de client |
+| --- | --- | --- | --- |
+| 1 | Article de blog | 800 à 2 000 mots | Agence de voyage, coach, boutique en ligne |
+| 2 | Fiche produit | 100 à 300 mots | Boutique de cosmétiques, d''artisanat |
+| 3 | Pages de site (accueil, à propos, services) | 300 à 800 mots par page | Hôtel, cabinet, PME |
+| 4 | Newsletter et e-mail | 150 à 500 mots | Boutique, formateur |
+| 5 | Page de vente | 800 à 3 000 mots | Formation en ligne, logiciel |
+| 6 | Publications pour réseaux sociaux | 30 à 200 mots | Toute entreprise |
+| 7 | Textes publicitaires courts | Quelques mots à quelques lignes | Annonce Facebook ou Google |
+
+Commencez par les types **1, 2 et 6** : ils sont très demandés et faciles à montrer dans un portfolio.
+
+## Qui sont vos clients ?
+
+### Clients à l''étranger (la majorité)
+
+1. **Petites entreprises francophones** (France, Belgique, Suisse, Canada) qui ont un site mais pas le temps d''écrire.
+2. **Agences de marketing et de référencement** qui sous-traitent des dizaines d''articles par mois.
+3. **Boutiques en ligne** qui ont des centaines de fiches produits à rédiger.
+4. **Créateurs de formations et coachs** qui ont besoin de pages de vente et d''e-mails.
+
+### Clients à Madagascar
+
+1. **Tourisme** : hôtels, agences, guides qui veulent attirer des voyageurs francophones (textes de site, articles sur les destinations).
+2. **Entreprises et ONG** : site internet, rapports, communiqués.
+3. **Boutiques en ligne malgaches** : fiches produits, textes publicitaires.
+
+> [!madagascar] Votre avantage
+> Un bon français écrit et une connaissance réelle de Madagascar. Un article sur « Que voir à Isalo en 3 jours » écrit par quelqu''un qui connaît le pays a plus de valeur que le même article écrit à partir de recherches sur Internet.
+
+## Votre outil principal : le français écrit
+
+Les clients francophones sont **très exigeants** sur l''orthographe et le style. Un texte avec 3 fautes peut faire perdre un client.
+
+### Les 6 erreurs à traquer
+
+1. Les **accords** du participe passé (« les articles que j''ai écrit**s** »).
+2. Les **homophones** : a / à, ou / où, ce / se, ces / ses, leur / leurs.
+3. Les **majuscules** et la **ponctuation** (espace avant « : ; ! ? » en français).
+4. Les **anglicismes** inutiles (« faire un call » → « faire un appel »).
+5. Les **phrases trop longues** : plus de 25 mots, la phrase se perd.
+6. Les **répétitions** du même mot dans deux phrases qui se suivent.
+
+> [!astuce] Progresser chaque jour
+> Lisez 20 minutes par jour un journal ou un blog francophone de qualité. Copiez à la main un paragraphe que vous trouvez bien écrit. Faites une dictée par semaine (on en trouve gratuitement en ligne). En 3 mois, la différence est nette.
+
+## Les outils d''IA : un outil, pas un remplaçant
+
+Les outils d''intelligence artificielle (assistants conversationnels) savent produire du texte en quelques secondes. Ils changent le métier, mais ne le suppriment pas.
+
+| Ce que l''IA fait bien | Ce que le rédacteur apporte |
+| --- | --- |
+| Proposer un plan, des idées de titres | La connaissance réelle du sujet et du client |
+| Reformuler une phrase | Un style, une voix propre à la marque |
+| Résumer un document | La vérification des faits (l''IA peut inventer) |
+| Corriger certaines fautes | Des exemples vécus, des témoignages, des chiffres vérifiés |
+
+### Les 3 règles d''un usage honnête
+
+1. **Respectez la consigne du client** : certains interdisent l''IA, d''autres l''acceptent. Demandez.
+2. **Vérifiez tout** : chiffres, noms, dates, citations.
+3. **Réécrivez** : un texte simplement copié d''une IA est souvent plat, répétitif et facile à reconnaître.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Envoyer un texte sans l''avoir relu à voix haute.
+> - Copier des passages d''autres sites : c''est du **plagiat**, interdit et détecté par des outils.
+> - Livrer un texte généré par IA sans vérification ni accord du client.
+> - Accepter un tarif ridiculement bas « pour commencer » pendant des mois.
+
+> [!retenir]
+> - Le rédacteur web informe et fait trouver ; le copywriter convainc et fait agir.
+> - Premiers textes à proposer : articles, fiches produits, publications.
+> - La plupart des clients sont francophones et exigeants sur l''orthographe.
+> - L''IA est un outil : vérification, réécriture et accord du client.
+
+## Exercice pratique : votre diagnostic d''écriture
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Écrivez un texte de 300 mots : « Pourquoi visiter Antsirabe ? ».
+> 2. Passez-le dans un correcteur gratuit (LanguageTool ou BonPatron) et notez chaque type d''erreur trouvée.
+> 3. Classez vos erreurs selon les 6 erreurs à traquer : laquelle revient le plus ?
+> 4. Réécrivez le texte en corrigeant tout et en coupant chaque phrase de plus de 25 mots.
+> 5. Lisez la version finale à voix haute.
+>
+> **À livrer** : votre premier texte, la liste de vos erreurs classées, et la version corrigée.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 0, 0, 'Quel est le but principal d''un copywriter ?', '["Convaincre et faire agir","Traduire des documents","Créer des logos","Corriger les livres"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 0, 1, 'Que signifie SEO ?', '["Un logiciel de traitement de texte","Une méthode de copywriting","Les techniques pour apparaître dans les premiers résultats de Google sans payer","Un format d''image"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 0, 2, 'Comment utiliser un outil d''IA honnêtement ?', '["Pour copier les textes des concurrents","Sans jamais le dire, même si le client l''interdit","Avec l''accord du client, en vérifiant et en réécrivant","En copiant le texte tel quel"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-f', 1, 'Les bases : écrire pour le web, référencer, convaincre', 'La pyramide inversée, les 8 règles de lisibilité, mot-clé et intention de recherche, balises, AIDA, PAS et avantages.', 'On ne lit pas sur un écran comme on lit un livre : on **survole**, on cherche une information, on part au bout de quelques secondes si on ne la trouve pas. Ce module vous donne les règles de l''écriture web, les bases du référencement et deux méthodes de copywriting utilisées partout dans le monde.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire avec la pyramide inversée.
+> 2. Structurer un texte pour qu''il se lise en survol.
+> 3. Choisir un mot-clé et comprendre l''intention de recherche.
+> 4. Rédiger une balise titre et une méta-description.
+> 5. Écrire un texte persuasif avec les méthodes AIDA et PAS.
+
+## La pyramide inversée
+
+Dans un texte web, on donne **l''essentiel d''abord**, puis les détails. Si le lecteur s''arrête après le premier paragraphe, il a déjà la réponse.
+
+| Ordre | Contenu | Exemple : « Quand partir à Nosy Be ? » |
+| --- | --- | --- |
+| 1 | La réponse directe | « La meilleure période est d''avril à novembre, pendant la saison sèche. » |
+| 2 | Les explications importantes | Climat mois par mois, températures, pluies |
+| 3 | Les détails | Fêtes locales, observation des baleines, prix selon la saison |
+
+## Écrire pour être lu en survol
+
+### Les 8 règles de lisibilité
+
+1. **Un titre** qui dit exactement ce que le lecteur va trouver.
+2. **Des intertitres** (H2, H3) tous les 200 à 300 mots, qui résument chaque partie.
+3. **Des paragraphes courts** : 2 à 4 phrases.
+4. **Des phrases courtes** : 15 à 20 mots en moyenne.
+5. **Des listes** à puces ou numérotées pour les énumérations et les étapes.
+6. **Du gras** sur 1 ou 2 idées clés par paragraphe, pas plus.
+7. **Des mots simples** : « utiliser » plutôt que « procéder à l''utilisation ».
+8. **Le lecteur au centre** : « vous » plutôt que « nous ».
+
+> [!definition] H1, H2, H3
+> Les niveaux de titres d''une page web. **H1** est le titre principal (un seul par page), **H2** les grandes parties, **H3** les sous-parties. Google les utilise pour comprendre la structure du texte.
+
+> [!exemple] Avant / après
+> **Avant** : « Notre établissement hôtelier, situé dans un cadre exceptionnel, propose à sa clientèle un ensemble de prestations de grande qualité visant à garantir un séjour des plus agréables. »
+> **Après** : « Face à la mer, à 10 minutes de l''aéroport, nos 12 bungalows vous offrent calme, petit-déjeuner local et plongée sur réservation. »
+
+## Les bases du référencement
+
+### Le mot-clé et l''intention de recherche
+
+> [!definition] Mot-clé
+> L''expression que les internautes tapent dans Google, par exemple « visiter Madagascar en juillet ». Chaque article vise **un mot-clé principal** et quelques mots-clés proches.
+
+> [!definition] Intention de recherche
+> Ce que la personne veut vraiment en tapant sa recherche. Pour écrire le bon texte, il faut la deviner.
+
+| Intention | Ce que veut l''internaute | Exemple de recherche | Texte à écrire |
+| --- | --- | --- | --- |
+| **Informationnelle** | Apprendre, comprendre | « comment cuisiner le romazava » | Guide, recette, article |
+| **Commerciale** | Comparer avant d''acheter | « meilleur hôtel Nosy Be famille » | Comparatif, sélection |
+| **Transactionnelle** | Acheter ou réserver | « réserver hôtel Nosy Be » | Page de vente, page de réservation |
+| **Navigationnelle** | Trouver un site précis | « Madagascar Airlines réservation » | Page officielle |
+
+> [!astuce] Trouver l''intention en 1 minute
+> Tapez le mot-clé dans Google et regardez les 5 premiers résultats. Ce sont des guides ? des pages de vente ? des listes ? Google vous montre ce que les gens attendent : écrivez le même type de texte, en mieux.
+
+### Où placer le mot-clé
+
+1. Dans le **titre H1**, de préférence au début.
+2. Dans le **premier paragraphe**.
+3. Dans **un ou deux intertitres**, si c''est naturel.
+4. Dans l''**adresse de la page** (URL), si vous la choisissez.
+5. Dans la **balise titre** et la **méta-description**.
+
+Ne le répétez pas à chaque phrase : Google sanctionne le « bourrage de mots-clés », et le lecteur part.
+
+### La balise titre et la méta-description
+
+Ce sont les textes qui apparaissent dans les résultats de Google.
+
+| Élément | Longueur conseillée | Exemple |
+| --- | --- | --- |
+| **Balise titre** (*title*) | Environ 50 à 60 caractères | « Quand partir à Nosy Be ? Le guide mois par mois » |
+| **Méta-description** | Environ 140 à 160 caractères | « Saison sèche, baleines, budget : découvrez la meilleure période pour votre voyage à Nosy Be, avec nos conseils mois par mois. » |
+
+## Le copywriting : deux méthodes à connaître
+
+### La méthode AIDA
+
+| Lettre | Étape | Exemple pour une formation en ligne d''anglais |
+| --- | --- | --- |
+| **A** | **Attention** : une accroche qui arrête | « Vous comprenez l''anglais écrit, mais vous bloquez à l''oral ? » |
+| **I** | **Intérêt** : montrer qu''on comprend le problème | « Vous n''êtes pas seul : à l''école, on lit beaucoup et on parle peu. » |
+| **D** | **Désir** : décrire le résultat et les avantages | « En 8 semaines, 20 minutes par jour, vous tenez une conversation de travail. » |
+| **A** | **Action** : dire quoi faire | « Inscrivez-vous avant dimanche et recevez le premier mois offert. » |
+
+### La méthode PAS
+
+| Lettre | Étape | Exemple pour un service de livraison à Antananarivo |
+| --- | --- | --- |
+| **P** | **Problème** | « Encore 2 heures d''embouteillages pour aller faire vos courses ? » |
+| **A** | **Agitation** : rendre le problème plus présent | « Pendant ce temps, le travail attend et la soirée passe. » |
+| **S** | **Solution** | « Commandez avant midi, recevez vos courses le soir même. » |
+
+### Avantage plutôt que caractéristique
+
+| Caractéristique (ce que c''est) | Avantage (ce que ça change pour le client) |
+| --- | --- |
+| Batterie de 5 000 mAh | Une journée entière sans recharger, même pendant les coupures |
+| Formation de 12 modules | Un métier appris pas à pas, à votre rythme |
+| Hôtel à 50 m de la plage | Vous êtes dans l''eau 2 minutes après le petit-déjeuner |
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer un article par une longue introduction générale (« Depuis la nuit des temps… »).
+> - Écrire des blocs de texte sans intertitres.
+> - Répéter le mot-clé de façon artificielle.
+> - Lister des caractéristiques sans dire ce qu''elles apportent.
+> - Promettre des résultats impossibles ou mensongers.
+
+> [!retenir]
+> - L''essentiel d''abord : la pyramide inversée.
+> - Intertitres, paragraphes courts, listes : un texte qui se survole.
+> - Un mot-clé principal, une intention de recherche, un texte qui y répond.
+> - Balise titre (50 à 60 caractères) et méta-description (140 à 160).
+> - AIDA et PAS pour convaincre ; toujours l''avantage pour le client.
+
+## Exercice pratique : écrire pour le web
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez un mot-clé, par exemple « que faire à Toamasina ». Tapez-le dans Google et notez l''intention de recherche et le type des 5 premiers résultats.
+> 2. Écrivez le plan de l''article : H1, 4 à 6 H2, avec la réponse directe dans l''introduction.
+> 3. Rédigez la balise titre et la méta-description.
+> 4. Réécrivez le texte « Avant » de l''hôtel en version « Après », pour un hôtel imaginaire de votre région.
+> 5. Écrivez un court texte publicitaire avec la méthode AIDA et un autre avec PAS, pour un produit ou service malgache.
+>
+> **À livrer** : votre analyse de l''intention, le plan, les deux balises, le texte réécrit et vos 2 textes publicitaires.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 1, 0, 'Que dit la pyramide inversée ?', '["Commencer par l''histoire du sujet","Écrire le plus long possible","Donner l''essentiel d''abord, puis les détails","Garder la réponse pour la fin"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 1, 1, 'Combien de titres H1 par page ?', '["Au moins cinq","Aucun","Un par paragraphe","Un seul"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 1, 2, 'Quelle phrase est un avantage et non une caractéristique ?', '["« Batterie de 5 000 mAh »","« Écran de 6,5 pouces »","« Poids : 180 g »","« Une journée entière sans recharger, même pendant les coupures »"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-f', 2, 'Les outils : Google Docs, correcteurs, mots-clés, et les outils payants', 'Google Docs professionnel, correction en 4 passages, recherche de mots-clés, brief, originalité, puis Semrush et correcteurs payants.', 'Un rédacteur web utilise peu d''outils, mais il doit bien les maîtriser : un traitement de texte collaboratif, des correcteurs, des outils pour trouver les bons mots-clés et vérifier l''originalité de ses textes. Ce module vous les fait prendre en main, puis vous présente les outils payants utilisés par les professionnels.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser Google Docs comme un professionnel : styles, mode suggestion, historique.
+> 2. Corriger un texte avec deux correcteurs gratuits.
+> 3. Trouver des mots-clés et des questions d''internautes avec des outils gratuits.
+> 4. Vérifier qu''un texte est original.
+> 5. Savoir quand passer à Semrush et à un correcteur payant.
+
+## Les outils gratuits indispensables
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Google Docs** | Écrire, partager avec le client, recevoir ses corrections |
+| 2 | **LanguageTool** (offre gratuite) | Correcteur d''orthographe, de grammaire et de style, en français et en anglais |
+| 3 | **BonPatron** | Correcteur gratuit en ligne, avec explications des règles du français |
+| 4 | **Google** (suggestions et « Autres questions posées ») | Trouver ce que les gens cherchent vraiment |
+| 5 | **Google Trends** | Comparer la popularité des recherches dans le temps et par pays |
+| 6 | **Ubersuggest** (offre gratuite limitée) | Volume de recherche approximatif et idées de mots-clés |
+
+## Google Docs comme un professionnel
+
+### Les styles de titres
+
+1. Sélectionnez le titre de l''article et choisissez **Titre 1** dans le menu des styles.
+2. Pour chaque grande partie, choisissez **Titre 2** ; pour les sous-parties, **Titre 3**.
+3. Le **plan du document** (icône à gauche) se remplit tout seul : vous voyez la structure d''un coup d''œil.
+
+Le client pourra copier votre texte dans son site (WordPress, Shopify…) en gardant les niveaux de titres.
+
+### Le mode suggestion
+
+Quand le client relit votre texte, il passe en mode **Suggestion** (en haut à droite) : ses modifications apparaissent en couleur, et vous les **acceptez** ou les **refusez** une par une. C''est le moyen le plus clair de travailler les corrections ensemble.
+
+### L''historique des versions
+
+**Fichier → Historique des versions** : vous retrouvez toutes les versions du texte. Donnez un nom aux versions importantes (« V1 envoyée au client », « V2 après corrections »).
+
+### Partager avec les bons droits
+
+1. **Commentateur** pour une relecture : le client peut commenter et suggérer.
+2. **Éditeur** seulement si le client doit modifier directement.
+3. Une fois le texte validé, envoyez aussi une version **PDF** ou **Word** si le client le demande.
+
+## Corriger un texte : la méthode en 4 passages
+
+| N° | Passage | Comment |
+| --- | --- | --- |
+| 1 | **Fond** | Relisez le texte entier : le plan est-il logique ? La réponse est-elle au début ? |
+| 2 | **Correcteurs** | Passez le texte dans LanguageTool, puis dans BonPatron : chacun trouve des erreurs que l''autre ne voit pas |
+| 3 | **Voix haute** | Lisez à voix haute : les phrases trop longues et les répétitions s''entendent |
+| 4 | **Dernière vérification** | Noms propres, chiffres, liens, majuscules, espaces avant « : ; ! ? » |
+
+> [!attention]
+> Un correcteur automatique **propose**, il ne décide pas. Lisez chaque suggestion et vérifiez la règle avant d''accepter : les outils se trompent parfois, surtout sur les noms propres et les mots malgaches.
+
+## Trouver des mots-clés et des questions
+
+### La méthode en 5 étapes
+
+1. **Partez du sujet** du client : « hôtel à Ifaty ».
+2. **Tapez-le dans Google** et notez les **suggestions** qui apparaissent pendant que vous tapez.
+3. **Regardez « Autres questions posées »** dans les résultats : ce sont des questions réelles, parfaites pour des intertitres.
+4. **Comparez** 2 ou 3 formulations dans **Google Trends** (par pays : France, Belgique, Canada…).
+5. **Vérifiez le volume** approximatif dans **Ubersuggest** pour choisir le mot-clé principal.
+
+> [!exemple] Résultat pour « hôtel à Ifaty »
+> - Mot-clé principal : « hôtel Ifaty ».
+> - Mots-clés proches : « Ifaty plage », « Ifaty que faire », « Ifaty Tuléar distance ».
+> - Questions (futurs H2) : « Comment aller à Ifaty depuis Tuléar ? », « Quelle est la meilleure saison pour Ifaty ? », « Peut-on faire de la plongée à Ifaty ? ».
+
+### Le brief de rédaction
+
+Avant d''écrire un article, beaucoup d''agences envoient un **brief**. Si le client n''en a pas, faites-le vous-même et faites-le valider :
+
+1. Le **sujet** et le **mot-clé principal**.
+2. Le **lecteur visé** et l''**intention de recherche**.
+3. La **longueur** demandée.
+4. Le **plan** (H1, H2).
+5. Les **sources** à utiliser et les **liens** à placer.
+6. L''**appel à l''action** de la fin.
+
+## Vérifier l''originalité
+
+Un texte livré doit être **original** : jamais copié, même partiellement.
+
+1. Écrivez toujours **avec vos propres mots**, même à partir de plusieurs sources.
+2. Citez entre guillemets et avec la source quand vous reprenez une phrase exacte.
+3. Vérifiez avec un **outil de détection de plagiat** (plusieurs existent en version gratuite limitée) avant de livrer les textes importants.
+4. Gardez la liste de vos **sources** : le client peut vous la demander.
+
+## Quand passer aux outils payants ?
+
+| Outil payant | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Semrush** | Volumes de recherche précis, mots-clés des concurrents, idées de sujets, audit de contenu | Quand vous travaillez régulièrement pour des clients qui misent sur le référencement ; souvent fourni par l''agence |
+| **Grammarly Premium** | Correction avancée du style et du ton, **surtout pour les textes en anglais** | Si vous écrivez en anglais |
+| **Antidote** (alternative pour le français) | Correcteur et dictionnaires de référence pour le français | Quand vous écrivez beaucoup en français : c''est l''outil de nombreux professionnels francophones |
+
+Les prix changent souvent : consultez le site officiel de chaque outil. Beaucoup d''agences de référencement ont déjà un abonnement Semrush : demandez un accès avant d''en acheter un.
+
+> [!madagascar]
+> Ces abonnements se paient par carte bancaire internationale. Commencez avec les outils gratuits, et investissez quand vos revenus sont réguliers. Un bon correcteur est souvent le premier achat rentable : il réduit les allers-retours avec les clients.
+
+> [!retenir]
+> - Google Docs : styles de titres, mode suggestion, historique des versions.
+> - 4 passages de correction : fond, correcteurs, voix haute, dernière vérification.
+> - Suggestions Google, « Autres questions posées », Trends et Ubersuggest pour les mots-clés.
+> - Un brief validé avant d''écrire ; un texte toujours original.
+> - Semrush et un correcteur payant quand l''activité devient régulière.
+
+## Exercice pratique : préparer un article
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez un sujet pour un client imaginaire (un hôtel, une boutique, une école de langues à Madagascar).
+> 2. Appliquez la méthode en 5 étapes et notez : mot-clé principal, 3 mots-clés proches, 5 questions d''internautes.
+> 3. Rédigez le brief complet (les 6 points).
+> 4. Dans Google Docs, créez le document de l''article avec le H1 et les H2 en styles de titres.
+> 5. Écrivez l''introduction (pyramide inversée) et faites les 4 passages de correction.
+>
+> **À livrer** : votre recherche de mots-clés, le brief, et le lien du Google Docs en mode commentateur.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 2, 0, 'À quoi sert le mode suggestion de Google Docs ?', '["Proposer des modifications que l''auteur accepte ou refuse","Traduire le texte","Écrire le texte automatiquement","Supprimer le document"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 2, 1, 'Où trouver des questions réelles d''internautes pour vos intertitres ?', '["Nulle part","Dans « Autres questions posées » sur Google","Dans les paramètres de Google Docs","Dans le dictionnaire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 2, 2, 'Pour quels textes Grammarly Premium est-il surtout utile ?', '["Les images","Les textes en anglais","Les textes en malagasy","Les vidéos"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-f', 3, 'Premier projet : un article optimisé et un e-mail de promotion', 'La commande en 8 étapes, plan validé, rédaction, optimisation, grille de 12 points, e-mail AIDA, livraison et corrections.', 'Place à un vrai projet. Une agence de voyage vous commande un article de blog optimisé pour Google et un e-mail de promotion. Vous suivez toutes les étapes d''une commande professionnelle : brief, recherche, plan, rédaction, optimisation, relecture, livraison et corrections. Les deux textes rejoindront votre portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener une commande en 8 étapes.
+> 2. Rédiger un article de 1 200 mots bien structuré et optimisé.
+> 3. Vérifier votre article avec une grille de 12 points.
+> 4. Écrire un e-mail de promotion avec la méthode AIDA.
+> 5. Gérer les corrections du client sans conflit.
+
+## Le cas pratique : « Mora Mora Voyages »
+
+> [!exemple] Votre commande
+> **Mora Mora Voyages** est une petite agence basée à Antananarivo qui organise des circuits pour des voyageurs français et belges. Elle vous commande :
+> 1. Un **article de blog** de 1 200 mots environ sur le mot-clé « circuit RN7 Madagascar », pour attirer des voyageurs qui préparent leur séjour.
+> 2. Un **e-mail de promotion** pour ses abonnés : 10 % de réduction sur le circuit RN7 pour les réservations faites avant la fin du mois.
+
+## La commande en 8 étapes
+
+| N° | Étape | Résultat |
+| --- | --- | --- |
+| 1 | **Brief** | Les 6 points validés par le client (module 3) |
+| 2 | **Recherche** | Mots-clés, questions, intention, sources fiables |
+| 3 | **Plan** | H1, H2, H3 et idées principales, validés par le client |
+| 4 | **Rédaction** | Un premier jet complet, sans s''arrêter pour corriger |
+| 5 | **Optimisation** | Mot-clé, balises, liens, appel à l''action |
+| 6 | **Relecture** | Les 4 passages de correction |
+| 7 | **Livraison** | Google Docs + balises + message d''accompagnement |
+| 8 | **Corrections** | Le nombre de tours de corrections prévu |
+
+> [!astuce] Faites valider le plan
+> Envoyez le plan **avant** de rédiger. Corriger un plan prend 5 minutes ; réécrire 1 200 mots parce que le client attendait autre chose prend des heures.
+
+## Étapes 2 et 3 : recherche et plan
+
+### Les questions à couvrir
+
+En appliquant la méthode du module 3, vous trouvez les questions que se posent les voyageurs :
+
+1. Quel est l''itinéraire de la RN7 ?
+2. Combien de jours faut-il ?
+3. Quelles sont les étapes incontournables ?
+4. Quand partir ?
+5. Faut-il un chauffeur ?
+6. Quel budget prévoir ?
+
+### Le plan
+
+> [!exemple] Plan de l''article
+> **H1** : Circuit RN7 à Madagascar : itinéraire, étapes et conseils
+> *Introduction* : la réponse directe (de Tana à Tuléar, environ 900 km, 10 à 15 jours conseillés).
+> **H2** : L''itinéraire de la RN7, étape par étape
+> - H3 : Antananarivo – Antsirabe
+> - H3 : Ranomafana
+> - H3 : Fianarantsoa et Ambalavao
+> - H3 : Parc national de l''Isalo
+> - H3 : Tuléar, Ifaty et Anakao
+> **H2** : Combien de jours prévoir ?
+> **H2** : Quand partir sur la RN7 ?
+> **H2** : Avec chauffeur ou en autonomie ?
+> **H2** : Quel budget prévoir ?
+> *Conclusion et appel à l''action* : « Découvrez notre circuit RN7 de 12 jours avec chauffeur-guide. »
+
+### Les sources fiables
+
+1. Les sites **officiels** (office du tourisme, parcs nationaux).
+2. Les **informations du client** : il connaît ses circuits, ses prix, ses conseils.
+3. Votre **expérience** et celle de personnes qui ont fait le voyage.
+
+Vérifiez chaque **chiffre** (distances, prix, horaires) et notez la source. N''inventez jamais un prix : demandez-le au client.
+
+## Étape 4 : rédiger le premier jet
+
+1. Écrivez **d''une traite**, partie par partie, sans vous arrêter sur chaque mot.
+2. Commencez chaque partie par la **phrase qui résume** la réponse.
+3. Ajoutez des **détails concrets** : distances, durées, ce qu''on voit, une anecdote.
+4. Gardez le **lecteur** en tête : un voyageur français qui ne connaît pas Madagascar.
+5. Laissez reposer le texte au moins **une heure** avant de le relire.
+
+## Étape 5 : optimiser
+
+1. Mot-clé dans le **H1**, l''**introduction** et un ou deux **H2**.
+2. **Balise titre** et **méta-description** rédigées (longueurs du module 2).
+3. **Liens internes** : vers 2 ou 3 autres pages du site du client (page du circuit, page de contact).
+4. **Liens externes** : vers 1 ou 2 sources officielles.
+5. **Images** proposées, avec un texte alternatif qui les décrit (« Allée des baobabs au coucher du soleil »).
+6. **Appel à l''action** clair à la fin.
+
+## Étape 6 : la grille de vérification en 12 points
+
+| N° | Point à vérifier | Oui / Non |
+| --- | --- | --- |
+| 1 | La réponse principale est dans l''introduction | |
+| 2 | Un seul H1, des H2 et H3 logiques | |
+| 3 | Paragraphes de 4 phrases maximum | |
+| 4 | Phrases de 20 mots en moyenne | |
+| 5 | Mot-clé placé naturellement aux bons endroits | |
+| 6 | Balise titre et méta-description aux bonnes longueurs | |
+| 7 | Chaque chiffre vérifié, avec sa source | |
+| 8 | Liens internes et externes ajoutés | |
+| 9 | Appel à l''action à la fin | |
+| 10 | Aucune faute (correcteurs + voix haute) | |
+| 11 | Texte 100 % original | |
+| 12 | Longueur conforme à la commande (environ 1 200 mots) | |
+
+## L''e-mail de promotion avec AIDA
+
+> [!exemple] E-mail pour Mora Mora Voyages
+> **Objet** : -10 % sur la RN7, jusqu''au 31 mars
+>
+> **A** · Et si votre prochain voyage commençait sur la route la plus belle de Madagascar ?
+>
+> **I** · De Tana à Tuléar, la RN7 traverse les hautes terres, les forêts de Ranomafana et les canyons de l''Isalo. En 12 jours, vous voyez les mille visages de l''île.
+>
+> **D** · Avec votre chauffeur-guide, pas de souci d''itinéraire : vous profitez, il s''occupe du reste. Et jusqu''au 31 mars, le circuit est **10 % moins cher**.
+>
+> **A** · [Je réserve mon circuit RN7]
+>
+> L''équipe Mora Mora Voyages
+
+### Les 5 règles d''un e-mail qui marche
+
+1. Un **objet court** (environ 40 caractères) qui donne envie d''ouvrir.
+2. **Un seul message** et **un seul bouton**.
+3. L''**offre** visible dès le début.
+4. Une **date limite** claire.
+5. Un texte **court** : il se lit sur téléphone.
+
+## Étapes 7 et 8 : livraison et corrections
+
+### Le message de livraison
+
+« Bonjour Madame Rasoa, voici l''article "Circuit RN7 à Madagascar" (1 230 mots) et l''e-mail de promotion : [lien Google Docs]. Vous y trouverez aussi la balise titre, la méta-description et mes propositions d''images. Les prix des circuits sont à confirmer (surlignés en jaune). Vous pouvez faire vos remarques directement en mode suggestion. »
+
+### Recevoir les corrections sans conflit
+
+1. **Remerciez** pour le retour.
+2. **Acceptez** les corrections justes sans discuter.
+3. **Expliquez** calmement celles qui posent problème (« Cette phrase répète le mot-clé 3 fois, ce qui peut être pénalisé par Google. Je vous propose plutôt… »).
+4. Respectez le **nombre de tours** prévu (souvent 1 ou 2) ; au-delà, c''est une nouvelle prestation.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Rédiger sans plan validé.
+> - Inventer un chiffre ou un prix.
+> - Livrer le texte sans balises ni appel à l''action.
+> - Prendre les corrections du client comme une critique personnelle.
+
+> [!retenir]
+> - 8 étapes : brief, recherche, plan, rédaction, optimisation, relecture, livraison, corrections.
+> - Faites valider le plan avant d''écrire.
+> - Vérifiez tout avec la grille de 12 points.
+> - Un e-mail : un objet court, une offre, un bouton, une date limite.
+> - Corrections : remercier, accepter, expliquer, respecter les tours prévus.
+
+## Exercice pratique : la commande Mora Mora Voyages
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Rédigez le brief et faites votre recherche de mots-clés pour « circuit RN7 Madagascar ».
+> 2. Rédigez l''article complet (environ 1 200 mots) d''après le plan, avec balise titre, méta-description et propositions d''images.
+> 3. Passez l''article dans la grille de 12 points et corrigez.
+> 4. Rédigez l''e-mail de promotion avec la méthode AIDA.
+> 5. Demandez à un proche de jouer le client et de faire 3 corrections en mode suggestion ; traitez-les.
+>
+> **À livrer** : le brief, l''article final, la grille remplie et l''e-mail. Ce sont vos premières pièces de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 3, 0, 'Pourquoi faire valider le plan avant de rédiger ?', '["Parce que Google l''exige","Corriger un plan est bien plus rapide que réécrire un article","Pour être payé plus","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 3, 1, 'Que faire si vous ne connaissez pas le prix d''un circuit ?', '["Ne rien écrire et ne pas le signaler","L''inventer","Prendre le prix d''un concurrent","Le demander au client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 3, 2, 'Combien de boutons dans un e-mail de promotion efficace ?', '["Au moins cinq","Un seul","Un par paragraphe","Aucun"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-0-f', 4, 'Trouver des clients et se faire payer', 'Portfolio de 5 textes, 5 canaux de prospection, prix au mot, à l''article et au forfait, devis, paiements et spécialité.', 'Un rédacteur web qui écrit bien, livre à l''heure et comprend le référencement trouve des clients fidèles, souvent pour des commandes régulières. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix (au mot, à l''article ou au forfait) et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de rédacteur avec 5 textes variés.
+> 2. Trouver des clients grâce à 5 canaux, avec un message de prospection prêt à l''emploi.
+> 3. Calculer un prix au mot, à l''article et au forfait mensuel.
+> 4. Rédiger un devis et des conditions claires.
+> 5. Vous faire payer en local et depuis l''étranger.
+> 6. Développer une spécialité.
+
+## Le portfolio du rédacteur
+
+Le client veut voir **comment vous écrivez**, sur des sujets proches du sien.
+
+### Les 5 textes à présenter
+
+1. **Un article de blog optimisé** : l''article Mora Mora Voyages (module 4).
+2. **Une page de site** : page d''accueil ou « À propos » pour une entreprise imaginaire ou réelle.
+3. **3 fiches produits** : par exemple pour des produits d''artisanat malgache (raphia, vanille, pierres).
+4. **Un e-mail ou une page de vente courte** avec la méthode AIDA ou PAS.
+5. **Un texte dans votre spécialité** (voir plus bas).
+
+### Où le présenter
+
+1. Un **Google Drive** en lecture seule, bien rangé, avec un document d''accueil qui présente chaque texte.
+2. Un **blog personnel** gratuit (sur WordPress.com ou une plateforme similaire) : il montre aussi que vous savez publier.
+3. Un **profil LinkedIn** avec vos textes en « Sélection ».
+
+Pour chaque texte, indiquez : le client (ou « projet d''étude »), l''objectif, le mot-clé et, si vous l''avez, un résultat.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Agences de contenu et de référencement** | Commandes régulières d''articles | Proposez un article test sur un sujet de leur choix |
+| 2 | **Plateformes de rédaction et de freelance** (Upwork, Malt, plateformes de rédaction francophones) | Clients francophones de toutes tailles | Vérifiez que la plateforme accepte les freelances basés à Madagascar ; profil soigné et offre précise |
+| 3 | **LinkedIn** | PME, responsables marketing, consultants | Publiez des conseils d''écriture, contactez directement |
+| 4 | **Entreprises du tourisme malgache** | Hôtels, agences, guides | Proposez de réécrire une page de leur site |
+| 5 | **Boutiques en ligne** | Fiches produits en nombre | Montrez une fiche avant/après |
+
+### Le message de prospection, prêt à l''emploi
+
+> [!exemple] Message à un hôtel
+> « Bonjour Monsieur Rakoto, je suis rédacteur web spécialisé dans le tourisme à Madagascar. En visitant votre site, j''ai vu que votre page "Nos bungalows" fait seulement 3 lignes : les voyageurs qui cherchent "hôtel Mahambo plage" sur Google ont peu de chances de la trouver. Je vous propose de la réécrire pour qu''elle donne envie et qu''elle soit mieux trouvée. Voici un exemple de mon travail : [lien]. Puis-je vous envoyer une proposition gratuite pour le premier paragraphe ? »
+
+Personnalisé, court, un problème précis, une preuve, une proposition. Envoyez **5 messages soignés par jour**.
+
+## Calculer ses prix
+
+### Les 3 façons de facturer
+
+| Mode | Comment | Pour quoi |
+| --- | --- | --- |
+| **Au mot** | Un prix par mot livré | Articles et fiches en volume, surtout avec les agences |
+| **À l''article ou à la page** | Un prix fixe par texte | Pages de site, articles longs, pages de vente |
+| **Forfait mensuel** | Un nombre de textes par mois, payé d''avance | Clients réguliers |
+
+### Calculer à partir de votre prix horaire
+
+1. **Revenu mensuel visé** (exemple : 1 500 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **15 000 Ar de l''heure**.
+2. **Mesurez votre vitesse réelle**, recherche et correction comprises (exemple : un article de 1 000 mots vous prend 4 heures).
+3. **Prix de l''article** : 4 × 15 000 = 60 000 Ar, soit **60 Ar le mot**.
+
+| Texte | Temps estimé | Exemple de prix (15 000 Ar/h) |
+| --- | --- | --- |
+| Fiche produit de 150 mots | 30 min | 7 500 Ar |
+| Article de blog de 1 000 mots | 4 h | 60 000 Ar |
+| Page de vente de 1 500 mots | 8 h | 120 000 Ar |
+| Forfait : 4 articles de 1 000 mots par mois | 16 h | 240 000 Ar par mois |
+
+Ces prix sont des **exemples**, à adapter à votre niveau, à la difficulté du sujet et au client. Pour les clients étrangers, fixez vos prix en euros ou en dollars, adaptés à leur marché. Avec l''expérience, vous écrirez plus vite : votre revenu horaire augmentera.
+
+> [!astuce]
+> Un texte **technique** (santé, finance, droit, informatique) demande plus de recherche : facturez-le plus cher. Une **page de vente** influence directement le chiffre d''affaires du client : c''est un des textes les mieux payés.
+
+## Le devis et les conditions
+
+### Ce que contient un devis
+
+1. Les textes commandés, leur **longueur** et leur **mot-clé**.
+2. Ce qui est **inclus** : recherche, balise titre, méta-description, propositions d''images.
+3. Ce qui n''est **pas inclus** : mise en ligne sur le site, photos, traduction.
+4. Le **délai** de livraison.
+5. Le **nombre de tours de corrections** (souvent 1 ou 2).
+6. Le **prix** et les conditions de paiement : **50 % à la commande, 50 % à la livraison**, ou paiement d''avance pour un forfait.
+
+### Les droits sur le texte
+
+Une fois payé, le texte appartient en général au client : il peut le publier sous son nom. Précisez si vous souhaitez pouvoir le montrer dans votre portfolio. Certains clients exigent la **confidentialité** (vous ne pouvez pas dire que vous avez écrit pour eux) : respectez-la.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Développer une spécialité
+
+Un rédacteur « qui écrit sur tout » est en concurrence avec des milliers d''autres. Un rédacteur **spécialisé** est recherché et mieux payé.
+
+| Spécialité | Pourquoi depuis Madagascar |
+| --- | --- |
+| **Tourisme et voyage** | Connaissance réelle du pays, de l''océan Indien et de l''Afrique |
+| **Agriculture, environnement** | Vanille, épices, biodiversité, développement durable |
+| **Santé, éducation** | Si vous avez fait des études dans ces domaines |
+| **Technologie, numérique** | Si vous connaissez les outils et les logiciels |
+| **Finance, Mobile Money** | Sujet en pleine croissance en Afrique |
+
+Choisissez **une** spécialité liée à vos études, votre expérience ou votre passion, et écrivez 3 textes de portfolio dans ce domaine.
+
+> [!retenir]
+> - Un portfolio de 5 textes variés, avec objectif et mot-clé.
+> - Prospection : personnalisée, courte, un problème précis, une proposition.
+> - Prix = temps réel × prix horaire ; au mot, à l''article ou au forfait.
+> - Un devis clair : longueur, inclus, délai, corrections, 50 % d''acompte.
+> - Une spécialité vous rend plus visible et mieux payé.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rassemblez vos 5 textes de portfolio dans un Google Drive avec un document d''accueil.
+> 2. Choisissez votre spécialité et écrivez une phrase de présentation : « Rédacteur web spécialisé en… ».
+> 3. Mesurez votre vitesse réelle sur un article et calculez vos prix (au mot, à l''article, forfait).
+> 4. Rédigez votre modèle de devis.
+> 5. Écrivez 5 messages de prospection personnalisés et envoyez-en au moins 2 pour de vrai.
+>
+> **À livrer** : le lien de votre portfolio, votre présentation, vos calculs, votre devis et vos 5 messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 4, 0, 'Un article de 1 000 mots vous prend 4 heures à 15 000 Ar de l''heure. Quel est son prix ?', '["4 000 Ar","150 000 Ar","15 000 Ar","60 000 Ar"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 4, 1, 'Pourquoi choisir une spécialité ?', '["Pour éviter les clients","Pour être plus visible et mieux payé","Pour écrire moins","Parce que c''est obligatoire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-0-f', 4, 2, 'Quelles conditions de paiement proposer pour une commande ponctuelle ?', '["50 % à la commande, 50 % à la livraison","Paiement quand le client y pense","Aucun acompte, jamais","100 % après publication sur le site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel est le but principal d''un rédacteur web ?', '["Dessiner des illustrations","Monter des vidéos","Informer et être trouvé sur Google","Gérer la comptabilité"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quels textes proposer en premier quand on débute ?', '["Thèses universitaires","Contrats juridiques","Romans et poésie","Articles, fiches produits et publications pour réseaux sociaux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quelle phrase contient une erreur d''accord ?', '["« J''ai écrit les articles »","« Les articles que j''ai écrits »","« Les articles que j''ai écrit »","« Les articles sont écrits »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Qu''est-ce que le plagiat ?', '["Citer une source entre guillemets","Réécrire avec ses propres mots","Corriger ses fautes","Copier le texte de quelqu''un d''autre sans le dire"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Combien de mots en moyenne par phrase sur le web ?', '["Plus de 80","50 à 60","15 à 20","3 à 4"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Tous les combien de mots placer un intertitre ?', '["Jamais","Tous les 2 000 mots","À chaque phrase","Tous les 200 à 300 mots"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Qu''est-ce que l''intention de recherche ?', '["Le nom du site","Le prix d''un mot-clé","Ce que l''internaute veut vraiment en tapant sa recherche","Le nombre de mots d''un article"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', '« réserver hôtel Nosy Be » est une recherche…', '["Navigationnelle","Sans intention","Informationnelle","Transactionnelle"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Comment trouver rapidement l''intention de recherche ?', '["Regarder le type des premiers résultats de Google","Compter les lettres du mot-clé","Demander à un ami","Deviner"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quelle longueur pour une balise titre ?', '["Environ 50 à 60 caractères","Environ 500 caractères","Un seul mot","Plus de 300 caractères"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que se passe-t-il si on répète le mot-clé à chaque phrase ?', '["La page devient première","Le texte est traduit","Rien","Google peut pénaliser la page et le lecteur part"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que signifient les lettres AIDA ?', '["Accueil, Information, Départ, Arrivée","Article, Image, Document, Annexe","Attention, Intérêt, Désir, Action","Analyse, Idée, Débat, Avis"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que signifient les lettres PAS ?', '["Page, Accueil, Site","Prix, Avantage, Service","Problème, Agitation, Solution","Plan, Article, Signature"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quelle est la première étape de correction ?', '["Le fond : plan logique et réponse au début","La virgule","La mise en page","L''envoi au client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Pourquoi lire son texte à voix haute ?', '["Pour le mémoriser","C''est inutile","Pour le traduire","Les phrases trop longues et les répétitions s''entendent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'À quoi sert Google Trends ?', '["Comparer la popularité des recherches dans le temps et par pays","Envoyer des e-mails","Corriger l''orthographe","Héberger un site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que contient un brief de rédaction ?', '["La biographie du rédacteur","Seulement le prix","Sujet, mot-clé, lecteur, longueur, plan, sources et appel à l''action","Le mot de passe du site"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel outil payant donne des volumes de recherche précis et les mots-clés des concurrents ?', '["Canva","BonPatron","Google Docs","Semrush"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quelle est la dernière étape d''une commande ?', '["La recherche","Le plan","Le brief","Les corrections demandées par le client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que décrit le texte alternatif d''une image ?', '["La taille du fichier","Le prix de l''image","Ce que montre l''image","Le nom du photographe uniquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Que faire face à une correction du client qui poserait problème ?', '["Ignorer la correction","Expliquer calmement et proposer une alternative","Supprimer le texte","Refuser sans explication"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel est un bon objet d''e-mail de promotion ?', '["« -10 % sur la RN7, jusqu''au 31 mars »","« (sans objet) »","« Lisez ce message très long et important s''il vous plaît »","« Bonjour »"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?', '["1 500 Ar","100 000 Ar","150 000 Ar","15 000 Ar"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel texte est en général parmi les mieux payés ?', '["La relecture d''une ligne","La fiche produit très courte","La page de vente","La publication de 30 mots"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'À qui appartient en général le texte une fois payé ?', '["Au rédacteur, pour toujours","À la plateforme de paiement","Au client","À Google"]'::jsonb, 2);
 
 -- mkt-0-f
 delete from public.exam_questions where course_id = 'mkt-0-f';

@@ -1,0 +1,97 @@
+{
+  "id": "lang-0-f",
+  "hours": 15,
+  "description": "Le rédacteur web écrit les textes d'Internet : articles de blog, pages de site, fiches produits, e-mails. Le copywriter écrit des textes qui font agir. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à écrire pour des clients francophones et malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer les métiers de rédacteur web et de copywriter",
+    "Écrire des textes lisibles en survol avec la pyramide inversée",
+    "Choisir un mot-clé et optimiser un texte pour Google",
+    "Convaincre avec les méthodes AIDA et PAS",
+    "Mener une commande complète, du brief aux corrections",
+    "Fixer ses prix, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de rédacteur web et copywriter depuis Madagascar",
+      "summary": "Rédacteur web et copywriter, les 7 textes les plus commandés, vos clients, le français écrit et la place de l'IA.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le but principal d'un copywriter ?", "options": ["Convaincre et faire agir", "Corriger les livres", "Traduire des documents", "Créer des logos"], "correct": 0 },
+        { "q": "Que signifie SEO ?", "options": ["Les techniques pour apparaître dans les premiers résultats de Google sans payer", "Un logiciel de traitement de texte", "Une méthode de copywriting", "Un format d'image"], "correct": 0 },
+        { "q": "Comment utiliser un outil d'IA honnêtement ?", "options": ["Avec l'accord du client, en vérifiant et en réécrivant", "En copiant le texte tel quel", "Sans jamais le dire, même si le client l'interdit", "Pour copier les textes des concurrents"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : écrire pour le web, référencer, convaincre",
+      "summary": "La pyramide inversée, les 8 règles de lisibilité, mot-clé et intention de recherche, balises, AIDA, PAS et avantages.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que dit la pyramide inversée ?", "options": ["Donner l'essentiel d'abord, puis les détails", "Garder la réponse pour la fin", "Commencer par l'histoire du sujet", "Écrire le plus long possible"], "correct": 0 },
+        { "q": "Combien de titres H1 par page ?", "options": ["Un seul", "Un par paragraphe", "Aucun", "Au moins cinq"], "correct": 0 },
+        { "q": "Quelle phrase est un avantage et non une caractéristique ?", "options": ["« Une journée entière sans recharger, même pendant les coupures »", "« Batterie de 5 000 mAh »", "« Poids : 180 g »", "« Écran de 6,5 pouces »"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Docs, correcteurs, mots-clés, et les outils payants",
+      "summary": "Google Docs professionnel, correction en 4 passages, recherche de mots-clés, brief, originalité, puis Semrush et correcteurs payants.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert le mode suggestion de Google Docs ?", "options": ["Proposer des modifications que l'auteur accepte ou refuse", "Écrire le texte automatiquement", "Traduire le texte", "Supprimer le document"], "correct": 0 },
+        { "q": "Où trouver des questions réelles d'internautes pour vos intertitres ?", "options": ["Dans « Autres questions posées » sur Google", "Dans le dictionnaire", "Dans les paramètres de Google Docs", "Nulle part"], "correct": 0 },
+        { "q": "Pour quels textes Grammarly Premium est-il surtout utile ?", "options": ["Les textes en anglais", "Les textes en malagasy", "Les images", "Les vidéos"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un article optimisé et un e-mail de promotion",
+      "summary": "La commande en 8 étapes, plan validé, rédaction, optimisation, grille de 12 points, e-mail AIDA, livraison et corrections.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi faire valider le plan avant de rédiger ?", "options": ["Corriger un plan est bien plus rapide que réécrire un article", "Parce que Google l'exige", "Pour être payé plus", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que faire si vous ne connaissez pas le prix d'un circuit ?", "options": ["Le demander au client", "L'inventer", "Prendre le prix d'un concurrent", "Ne rien écrire et ne pas le signaler"], "correct": 0 },
+        { "q": "Combien de boutons dans un e-mail de promotion efficace ?", "options": ["Un seul", "Au moins cinq", "Aucun", "Un par paragraphe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio de 5 textes, 5 canaux de prospection, prix au mot, à l'article et au forfait, devis, paiements et spécialité.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Un article de 1 000 mots vous prend 4 heures à 15 000 Ar de l'heure. Quel est son prix ?", "options": ["60 000 Ar", "15 000 Ar", "4 000 Ar", "150 000 Ar"], "correct": 0 },
+        { "q": "Pourquoi choisir une spécialité ?", "options": ["Pour être plus visible et mieux payé", "Pour écrire moins", "Parce que c'est obligatoire", "Pour éviter les clients"], "correct": 0 },
+        { "q": "Quelles conditions de paiement proposer pour une commande ponctuelle ?", "options": ["50 % à la commande, 50 % à la livraison", "100 % après publication sur le site", "Paiement quand le client y pense", "Aucun acompte, jamais"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le but principal d'un rédacteur web ?", "options": ["Informer et être trouvé sur Google", "Dessiner des illustrations", "Monter des vidéos", "Gérer la comptabilité"], "correct": 0 },
+    { "q": "Quels textes proposer en premier quand on débute ?", "options": ["Articles, fiches produits et publications pour réseaux sociaux", "Romans et poésie", "Contrats juridiques", "Thèses universitaires"], "correct": 0 },
+    { "q": "Quelle phrase contient une erreur d'accord ?", "options": ["« Les articles que j'ai écrit »", "« Les articles que j'ai écrits »", "« J'ai écrit les articles »", "« Les articles sont écrits »"], "correct": 0 },
+    { "q": "Qu'est-ce que le plagiat ?", "options": ["Copier le texte de quelqu'un d'autre sans le dire", "Réécrire avec ses propres mots", "Citer une source entre guillemets", "Corriger ses fautes"], "correct": 0 },
+    { "q": "Combien de mots en moyenne par phrase sur le web ?", "options": ["15 à 20", "50 à 60", "3 à 4", "Plus de 80"], "correct": 0 },
+    { "q": "Tous les combien de mots placer un intertitre ?", "options": ["Tous les 200 à 300 mots", "Tous les 2 000 mots", "Jamais", "À chaque phrase"], "correct": 0 },
+    { "q": "Qu'est-ce que l'intention de recherche ?", "options": ["Ce que l'internaute veut vraiment en tapant sa recherche", "Le nombre de mots d'un article", "Le prix d'un mot-clé", "Le nom du site"], "correct": 0 },
+    { "q": "« réserver hôtel Nosy Be » est une recherche…", "options": ["Transactionnelle", "Informationnelle", "Navigationnelle", "Sans intention"], "correct": 0 },
+    { "q": "Comment trouver rapidement l'intention de recherche ?", "options": ["Regarder le type des premiers résultats de Google", "Deviner", "Demander à un ami", "Compter les lettres du mot-clé"], "correct": 0 },
+    { "q": "Quelle longueur pour une balise titre ?", "options": ["Environ 50 à 60 caractères", "Environ 500 caractères", "Un seul mot", "Plus de 300 caractères"], "correct": 0 },
+    { "q": "Que se passe-t-il si on répète le mot-clé à chaque phrase ?", "options": ["Google peut pénaliser la page et le lecteur part", "La page devient première", "Rien", "Le texte est traduit"], "correct": 0 },
+    { "q": "Que signifient les lettres AIDA ?", "options": ["Attention, Intérêt, Désir, Action", "Article, Image, Document, Annexe", "Analyse, Idée, Débat, Avis", "Accueil, Information, Départ, Arrivée"], "correct": 0 },
+    { "q": "Que signifient les lettres PAS ?", "options": ["Problème, Agitation, Solution", "Prix, Avantage, Service", "Plan, Article, Signature", "Page, Accueil, Site"], "correct": 0 },
+    { "q": "Quelle est la première étape de correction ?", "options": ["Le fond : plan logique et réponse au début", "La virgule", "La mise en page", "L'envoi au client"], "correct": 0 },
+    { "q": "Pourquoi lire son texte à voix haute ?", "options": ["Les phrases trop longues et les répétitions s'entendent", "Pour le mémoriser", "Pour le traduire", "C'est inutile"], "correct": 0 },
+    { "q": "À quoi sert Google Trends ?", "options": ["Comparer la popularité des recherches dans le temps et par pays", "Corriger l'orthographe", "Héberger un site", "Envoyer des e-mails"], "correct": 0 },
+    { "q": "Que contient un brief de rédaction ?", "options": ["Sujet, mot-clé, lecteur, longueur, plan, sources et appel à l'action", "Seulement le prix", "Le mot de passe du site", "La biographie du rédacteur"], "correct": 0 },
+    { "q": "Quel outil payant donne des volumes de recherche précis et les mots-clés des concurrents ?", "options": ["Semrush", "Google Docs", "BonPatron", "Canva"], "correct": 0 },
+    { "q": "Quelle est la dernière étape d'une commande ?", "options": ["Les corrections demandées par le client", "Le brief", "La recherche", "Le plan"], "correct": 0 },
+    { "q": "Que décrit le texte alternatif d'une image ?", "options": ["Ce que montre l'image", "Le prix de l'image", "Le nom du photographe uniquement", "La taille du fichier"], "correct": 0 },
+    { "q": "Que faire face à une correction du client qui poserait problème ?", "options": ["Expliquer calmement et proposer une alternative", "Refuser sans explication", "Supprimer le texte", "Ignorer la correction"], "correct": 0 },
+    { "q": "Quel est un bon objet d'e-mail de promotion ?", "options": ["« -10 % sur la RN7, jusqu'au 31 mars »", "« Bonjour »", "« Lisez ce message très long et important s'il vous plaît »", "« (sans objet) »"], "correct": 0 },
+    { "q": "Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?", "options": ["15 000 Ar", "1 500 Ar", "150 000 Ar", "100 000 Ar"], "correct": 0 },
+    { "q": "Quel texte est en général parmi les mieux payés ?", "options": ["La page de vente", "La fiche produit très courte", "La publication de 30 mots", "La relecture d'une ligne"], "correct": 0 },
+    { "q": "À qui appartient en général le texte une fois payé ?", "options": ["Au client", "Au rédacteur, pour toujours", "À Google", "À la plateforme de paiement"], "correct": 0 }
+  ]
+}

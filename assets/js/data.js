@@ -695,6 +695,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-0-f": {
+  "hours": 15,
+  "description": "Le rédacteur web écrit les textes d'Internet : articles de blog, pages de site, fiches produits, e-mails. Le copywriter écrit des textes qui font agir. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à écrire pour des clients francophones et malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer les métiers de rédacteur web et de copywriter",
+   "Écrire des textes lisibles en survol avec la pyramide inversée",
+   "Choisir un mot-clé et optimiser un texte pour Google",
+   "Convaincre avec les méthodes AIDA et PAS",
+   "Mener une commande complète, du brief aux corrections",
+   "Fixer ses prix, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de rédacteur web et copywriter depuis Madagascar",
+    "summary": "Rédacteur web et copywriter, les 7 textes les plus commandés, vos clients, le français écrit et la place de l'IA.",
+    "sections": [
+     "Rédacteur web et copywriter",
+     "Les 7 types de textes les plus commandés",
+     "Qui sont vos clients ?",
+     "Votre outil principal : le français écrit",
+     "Les outils d'IA : un outil, pas un remplaçant",
+     "Exercice pratique : votre diagnostic d'écriture"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : écrire pour le web, référencer, convaincre",
+    "summary": "La pyramide inversée, les 8 règles de lisibilité, mot-clé et intention de recherche, balises, AIDA, PAS et avantages.",
+    "sections": [
+     "La pyramide inversée",
+     "Écrire pour être lu en survol",
+     "Les bases du référencement",
+     "Le copywriting : deux méthodes à connaître",
+     "Exercice pratique : écrire pour le web"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : Google Docs, correcteurs, mots-clés, et les outils payants",
+    "summary": "Google Docs professionnel, correction en 4 passages, recherche de mots-clés, brief, originalité, puis Semrush et correcteurs payants.",
+    "sections": [
+     "Les outils gratuits indispensables",
+     "Google Docs comme un professionnel",
+     "Corriger un texte : la méthode en 4 passages",
+     "Trouver des mots-clés et des questions",
+     "Vérifier l'originalité",
+     "Quand passer aux outils payants ?",
+     "Exercice pratique : préparer un article"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : un article optimisé et un e-mail de promotion",
+    "summary": "La commande en 8 étapes, plan validé, rédaction, optimisation, grille de 12 points, e-mail AIDA, livraison et corrections.",
+    "sections": [
+     "Le cas pratique : « Mora Mora Voyages »",
+     "La commande en 8 étapes",
+     "Étapes 2 et 3 : recherche et plan",
+     "Étape 4 : rédiger le premier jet",
+     "Étape 5 : optimiser",
+     "Étape 6 : la grille de vérification en 12 points",
+     "L'e-mail de promotion avec AIDA",
+     "Étapes 7 et 8 : livraison et corrections",
+     "Exercice pratique : la commande Mora Mora Voyages"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio de 5 textes, 5 canaux de prospection, prix au mot, à l'article et au forfait, devis, paiements et spécialité.",
+    "sections": [
+     "Le portfolio du rédacteur",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis et les conditions",
+     "Se faire payer depuis Madagascar",
+     "Développer une spécialité",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "mkt-0-f": {
   "hours": 14,
   "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
