@@ -4684,5 +4684,87 @@ export const PUBLISHED = {
     "minutes": 6
    }
   ]
+ },
+ "tech-1-f": {
+  "hours": 16,
+  "description": "Le testeur logiciel vérifie qu'une application fonctionne de façon fiable sur les appareils des utilisateurs, et signale clairement les problèmes pour qu'ils soient corrigés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des éditeurs, à Madagascar et à l'étranger, avec Jira, Postman et Playwright : cas de test, valeurs limites, rapports de bugs, tests d'API, premiers tests automatisés et campagne complète. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les principaux types de tests",
+   "Analyser une exigence et écrire des cas de test avec les bonnes données",
+   "Rédiger des rapports de bugs reproductibles et classés par gravité",
+   "Utiliser Jira, les outils du navigateur, Postman et Playwright",
+   "Mener une campagne complète jusqu'au bilan de recette",
+   "Présenter son travail, réussir un test de recrutement et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de testeur logiciel (QA) depuis Madagascar",
+    "summary": "QA et bugs, les types de tests, manuel et automatisé, la place du test dans un projet, les qualités, les clients et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les principaux types de tests",
+     "La place du test dans un projet",
+     "Les qualités du testeur",
+     "Qui sont vos clients ?",
+     "Votre poste de travail et votre plan d'apprentissage",
+     "Exercice pratique : votre premier regard de testeur"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : exigences, cas de test, données, rapports de bugs et campagnes",
+    "summary": "Questionner une exigence, écrire un cas de test, classes d'équivalence et valeurs limites, rapport de bug, gravité et organisation d'une campagne.",
+    "sections": [
+     "Analyser une exigence",
+     "Écrire un cas de test",
+     "Choisir les données de test",
+     "Le rapport de bug",
+     "Organiser une campagne de tests",
+     "Exercice pratique : vos premiers cas et rapports"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Jira, outils du navigateur, Postman, Playwright et outils payants",
+    "summary": "Tickets et cycle de vie des bugs, enquête avec la Console et le Réseau, tests d'API dans Postman, premiers tests Playwright, BrowserStack et Jira payant.",
+    "sections": [
+     "Jira : suivre les bugs",
+     "Les outils de développement du navigateur",
+     "Postman : tester une API",
+     "Playwright : un premier test automatisé",
+     "Les outils payants",
+     "Exercice pratique : votre boîte à outils"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la campagne de tests de Taxi-be Réservation",
+    "summary": "Plan de test et critères de sortie, matrice de couverture, exécution sur plusieurs appareils, sessions exploratoires, gestion des bugs et bilan de recette.",
+    "sections": [
+     "Le cas pratique : « Taxi-be Réservation »",
+     "Étape 1 : le plan de test",
+     "Étape 2 : la matrice de couverture",
+     "Étape 3 : exécuter la campagne",
+     "Étape 4 : gérer les bugs jusqu'à leur fermeture",
+     "Étape 5 : le bilan de recette",
+     "Exercice pratique : la campagne Taxi-be Réservation"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver un poste ou des missions et se faire payer",
+    "summary": "Portfolio de testeur, 5 canaux, tests de recrutement, chiffrage d'une mission avec marge pour les retests, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver un poste ou des missions : 5 canaux",
+     "Réussir un test de recrutement",
+     "Chiffrer une mission de tests",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre carrière"
+    ],
+    "minutes": 6
+   }
+  ]
  }
 };

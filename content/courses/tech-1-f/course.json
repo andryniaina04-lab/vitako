@@ -1,0 +1,97 @@
+{
+  "id": "tech-1-f",
+  "hours": 16,
+  "description": "Le testeur logiciel vérifie qu'une application fonctionne de façon fiable sur les appareils des utilisateurs, et signale clairement les problèmes pour qu'ils soient corrigés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des éditeurs, à Madagascar et à l'étranger, avec Jira, Postman et Playwright : cas de test, valeurs limites, rapports de bugs, tests d'API, premiers tests automatisés et campagne complète. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les principaux types de tests",
+    "Analyser une exigence et écrire des cas de test avec les bonnes données",
+    "Rédiger des rapports de bugs reproductibles et classés par gravité",
+    "Utiliser Jira, les outils du navigateur, Postman et Playwright",
+    "Mener une campagne complète jusqu'au bilan de recette",
+    "Présenter son travail, réussir un test de recrutement et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de testeur logiciel (QA) depuis Madagascar",
+      "summary": "QA et bugs, les types de tests, manuel et automatisé, la place du test dans un projet, les qualités, les clients et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vérifie un test de régression ?", "options": ["Que ce qui marchait marche encore après une modification", "La couleur des boutons", "Le prix de l'application", "Le nombre d'utilisateurs"], "correct": 0 },
+        { "q": "Quand un bug coûte-t-il le moins cher à corriger ?", "options": ["Quand il est trouvé tôt", "Après la mise en ligne", "Jamais", "Quand un client le signale"], "correct": 0 },
+        { "q": "Pour quels tests l'automatisation est-elle idéale ?", "options": ["Les tests de régression répétés", "L'exploration d'une nouvelle fonction", "Les tests d'une seule fois", "Aucun"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : exigences, cas de test, données, rapports de bugs et campagnes",
+      "summary": "Questionner une exigence, écrire un cas de test, classes d'équivalence et valeurs limites, rapport de bug, gravité et organisation d'une campagne.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pour une limite à 50 000 Ar, quelles valeurs tester ?", "options": ["49 999, 50 000 et 50 001", "Seulement 50 000", "1 et 1 000 000", "Aucune"], "correct": 0 },
+        { "q": "Que doit contenir un rapport de bug ?", "options": ["Étapes, résultat obtenu, résultat attendu, environnement", "Une critique du développeur", "Seulement « ça ne marche pas »", "Le salaire de l'équipe"], "correct": 0 },
+        { "q": "Quelle gravité pour « impossible de payer » ?", "options": ["Bloquante", "Cosmétique", "Mineure", "Aucune"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Jira, outils du navigateur, Postman, Playwright et outils payants",
+      "summary": "Tickets et cycle de vie des bugs, enquête avec la Console et le Réseau, tests d'API dans Postman, premiers tests Playwright, BrowserStack et Jira payant.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de créer un bug dans Jira ?", "options": ["Chercher s'il existe déjà", "Rien", "Supprimer les autres bugs", "Changer de projet"], "correct": 0 },
+        { "q": "Quel onglet du navigateur montre une requête en erreur 500 ?", "options": ["Réseau", "Éléments", "Application", "Aucun"], "correct": 0 },
+        { "q": "Que permet BrowserStack ?", "options": ["Tester sur de vrais téléphones et navigateurs à distance", "Rédiger des articles", "Payer en Mobile Money", "Monter des vidéos"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la campagne de tests de Taxi-be Réservation",
+      "summary": "Plan de test et critères de sortie, matrice de couverture, exécution sur plusieurs appareils, sessions exploratoires, gestion des bugs et bilan de recette.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert la matrice de couverture ?", "options": ["Relier chaque exigence aux cas de test qui la vérifient", "Calculer le salaire", "Dessiner l'interface", "Rien"], "correct": 0 },
+        { "q": "Que sont les critères de sortie ?", "options": ["Les conditions pour recommander la mise en ligne", "L'heure de fin de journée", "Le nombre de testeurs", "La sortie du bureau"], "correct": 0 },
+        { "q": "Que faire après la correction d'un bug ?", "options": ["Le retester et lancer la régression des fonctions voisines", "Le fermer sans vérifier", "Rien", "Supprimer le ticket"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver un poste ou des missions et se faire payer",
+      "summary": "Portfolio de testeur, 5 canaux, tests de recrutement, chiffrage d'une mission avec marge pour les retests, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Peut-on publier les bugs trouvés chez un client dans son portfolio ?", "options": ["Non, sans son accord", "Oui, toujours", "Oui, en anglais", "Oui, s'ils sont mineurs"], "correct": 0 },
+        { "q": "35 heures plus 20 % de marge font…", "options": ["42 heures", "35 heures", "55 heures", "40 heures"], "correct": 0 },
+        { "q": "Quelle évolution demande Playwright et l'intégration continue ?", "options": ["Automaticien de tests", "Graphiste", "Comptable", "Traducteur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce qu'un bug ?", "options": ["Un écart entre ce que fait l'application et ce qu'elle devrait faire", "Un insecte dans l'ordinateur uniquement", "Une nouvelle fonction", "Un mot de passe"], "correct": 0 },
+    { "q": "Quel test vérifie l'application sur plusieurs appareils ?", "options": ["Compatibilité", "Régression", "API", "Performance"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un test exploratoire ?", "options": ["Utiliser l'application de façon inattendue pour trouver des problèmes", "Lire la documentation", "Tester une seule fois le même cas", "Payer l'application"], "correct": 0 },
+    { "q": "Quel appareil inclure dans les tests pour Madagascar ?", "options": ["Un Android d'entrée de gamme", "Seulement le dernier iPhone", "Aucun téléphone", "Une télévision"], "correct": 0 },
+    { "q": "Que faire d'une exigence ambiguë ?", "options": ["Poser des questions avant de tester", "Deviner", "L'ignorer", "La supprimer"], "correct": 0 },
+    { "q": "Combien d'objectifs par cas de test ?", "options": ["Un seul", "Dix", "Aucun", "Tous les objectifs"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un cas négatif ?", "options": ["Un cas qui vérifie que ce qui doit être refusé l'est", "Un cas inutile", "Un cas qui échoue toujours", "Un cas sans étapes"], "correct": 0 },
+    { "q": "À quoi servent les classes d'équivalence ?", "options": ["Tester une valeur par groupe de comportement identique", "Tester toutes les valeurs possibles", "Classer les testeurs", "Calculer les prix"], "correct": 0 },
+    { "q": "Pour une quantité maximale de 10, quelles valeurs tester ?", "options": ["9, 10 et 11", "Seulement 10", "1 et 1000", "Aucune"], "correct": 0 },
+    { "q": "Quel ton pour un rapport de bug ?", "options": ["Factuel, sans jugement", "Accusateur", "Humoristique", "Vague"], "correct": 0 },
+    { "q": "Pourquoi un bug non reproductible est-il un problème ?", "options": ["Il ne pourra pas être corrigé", "Il est plus grave", "Il est interdit", "Il coûte moins cher"], "correct": 0 },
+    { "q": "Quel statut suit « À tester » si le bug persiste ?", "options": ["Réouvert", "Fermé", "Nouveau", "Supprimé"], "correct": 0 },
+    { "q": "Que montre la Console du navigateur ?", "options": ["Les erreurs JavaScript", "Les factures", "Les e-mails", "Les mots de passe"], "correct": 0 },
+    { "q": "Quel code HTTP indique une ressource introuvable ?", "options": ["404", "200", "201", "302"], "correct": 0 },
+    { "q": "Que vérifie pm.test(\"Code 200\", …) dans Postman ?", "options": ["Que la réponse a le code 200", "Que le site est joli", "Le prix", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce que Playwright ?", "options": ["Un outil qui pilote de vrais navigateurs pour automatiser des tests", "Un logiciel de comptabilité", "Un jeu", "Un éditeur d'images"], "correct": 0 },
+    { "q": "Quelle commande lance les tests Playwright ?", "options": ["npx playwright test", "npm start", "git push", "pm.test"], "correct": 0 },
+    { "q": "Peut-on tester n'importe quel site sans autorisation ?", "options": ["Non", "Oui", "Oui, la nuit", "Oui, s'il est lent"], "correct": 0 },
+    { "q": "Que contient un plan de test ?", "options": ["Objectif, périmètre, appareils, critères de sortie, planning", "Seulement les bugs", "Le prix des téléphones", "Rien"], "correct": 0 },
+    { "q": "Quel cas tester pour une réservation de la dernière place ?", "options": ["Deux utilisateurs en même temps", "Un seul utilisateur toujours", "Aucun", "Le changement de couleur"], "correct": 0 },
+    { "q": "Combien de temps dure une session exploratoire en général ?", "options": ["60 à 90 minutes avec une mission précise", "5 secondes", "Une semaine", "Sans limite ni mission"], "correct": 0 },
+    { "q": "Que contient le bilan de recette ?", "options": ["Indicateurs chiffrés et une recommandation", "Seulement des félicitations", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Quelle situation de paiement mobile tester à Madagascar ?", "options": ["Solde insuffisant et confirmation en retard", "Uniquement le cas parfait", "Aucune", "Le changement de logo"], "correct": 0 },
+    { "q": "Quelle certification reconnue existe pour les testeurs ?", "options": ["ISTQB niveau Fondation", "DELF", "IELTS", "PCG 2005"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

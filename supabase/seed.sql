@@ -35,7 +35,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 17, false),
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
-  ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 14, false),
+  ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 16, false),
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 10, false),
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, false),
@@ -33861,4 +33861,620 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que préciser dans le devis sur les corrections techniques ?', '["Rien","Qu''elles peuvent dépendre du développeur","Qu''elles sont toujours gratuites","Qu''elles sont interdites"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Faut-il accepter d''être payé uniquement à la position ?', '["Oui, si le client insiste","Oui, pour la première place","Non, engagez-vous sur le travail et des indicateurs transparents","Oui, toujours"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle évolution vise les sites multilingues ?', '["Graphiste","SEO international","Comptable","Monteur vidéo"]'::jsonb, 1);
+
+-- tech-1-f
+delete from public.exam_questions where course_id = 'tech-1-f';
+delete from public.module_questions where course_id = 'tech-1-f';
+delete from public.lessons where course_id = 'tech-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-f', 0, 'Le métier de testeur logiciel (QA) depuis Madagascar', 'QA et bugs, les types de tests, manuel et automatisé, la place du test dans un projet, les qualités, les clients et le plan d''apprentissage.', 'Une application qui plante au moment du paiement, un bouton qui ne marche pas sur certains téléphones, un calcul faux sur une facture : ces erreurs coûtent cher aux entreprises. Le testeur logiciel les trouve **avant** les utilisateurs. C''est un métier rigoureux, très demandé, qui se fait entièrement à distance et qui est une excellente porte d''entrée dans l''informatique. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un testeur logiciel (QA).
+> 2. Distinguer les principaux types de tests.
+> 3. Comprendre la place du test dans un projet.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un testeur logiciel **vérifie qu''une application fait ce qu''elle doit faire, de façon fiable, sur les appareils des utilisateurs, et signale clairement les problèmes pour qu''ils soient corrigés**.
+
+> [!definition] QA (Quality Assurance)
+> L''assurance qualité : l''ensemble des actions qui garantissent la qualité d''un logiciel. Le mot « QA » désigne souvent aussi le testeur lui-même.
+
+> [!definition] Bug (anomalie)
+> Un écart entre ce que fait l''application et ce qu''elle devrait faire : une erreur, un plantage, un affichage cassé, un calcul faux.
+
+## Les principaux types de tests
+
+| Type | Question posée | Exemple |
+| --- | --- | --- |
+| **Fonctionnel** | La fonction fait-elle ce qui est prévu ? | Le panier calcule-t-il le bon total ? |
+| **Régression** | Ce qui marchait marche-t-il encore après une modification ? | Le paiement fonctionne-t-il toujours après la mise à jour du panier ? |
+| **Exploratoire** | Que se passe-t-il si j''utilise l''application de façon inattendue ? | Double-cliquer sur « Payer », revenir en arrière pendant le paiement |
+| **Compatibilité** | L''application marche-t-elle sur tous les appareils et navigateurs ? | Android ancien, iPhone, Firefox, petit écran |
+| **API** | Le serveur répond-il correctement ? | La route de création de commande renvoie-t-elle les bonnes données ? |
+| **Utilisabilité** | Est-ce facile à utiliser ? | Un nouvel utilisateur trouve-t-il le bouton d''inscription ? |
+| **Performance** (bases) | Est-ce assez rapide ? | La page se charge-t-elle en moins de 3 secondes ? |
+
+### Manuel et automatisé
+
+| Tests manuels | Tests automatisés |
+| --- | --- |
+| Réalisés par une personne qui suit des étapes | Réalisés par un programme qui rejoue les étapes |
+| Idéals pour l''exploration et les nouvelles fonctions | Idéals pour les tests de régression répétés |
+| Point de départ du métier | Évolution vers le métier d''automaticien (avec Playwright, par exemple) |
+
+## La place du test dans un projet
+
+```
+Besoin → Conception → Développement → Tests → Correction → Nouveaux tests → Mise en ligne
+                         ↑_____________________________________________|
+```
+
+1. Le testeur lit les **spécifications** (ce que l''application doit faire).
+2. Il prépare des **cas de test**.
+3. Il **exécute** les tests sur la version à tester.
+4. Il **signale** les bugs avec précision.
+5. Il **vérifie** les corrections et relance les tests de régression.
+
+> [!astuce]
+> Plus un bug est trouvé tôt, moins il coûte cher à corriger. Un bon testeur pose des questions dès la lecture des spécifications, avant même le développement.
+
+## Les qualités du testeur
+
+1. **Rigueur** : suivre les étapes, noter précisément.
+2. **Curiosité** : essayer ce que personne n''a prévu.
+3. **Communication écrite** : des rapports de bugs clairs et sans jugement.
+4. **Patience** : refaire les mêmes vérifications plusieurs fois.
+5. **Esprit utilisateur** : se mettre à la place de la personne qui utilise l''application.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Entreprises de services numériques** d''Antananarivo qui développent pour l''Europe et ont des équipes de test.
+2. **Start-up** (paiement mobile, e-commerce, éducation).
+3. **Agences web** qui veulent vérifier leurs sites avant la livraison.
+
+### À l''étranger
+
+1. **Éditeurs de logiciels et start-up** qui recrutent des testeurs à distance.
+2. **Plateformes de test participatif** qui paient pour trouver des bugs sur de vrais appareils.
+3. **Agences** qui sous-traitent les tests de leurs projets.
+
+> [!madagascar] Votre avantage
+> Les entreprises de services numériques malgaches recrutent régulièrement des testeurs, souvent en français, pour des clients européens. Votre connaissance des **téléphones d''entrée de gamme** et des **connexions lentes** est aussi précieuse : beaucoup d''applications sont testées seulement sur des appareils récents et une connexion rapide.
+
+## Votre poste de travail et votre plan d''apprentissage
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, deux navigateurs (Chrome, Firefox) |
+| **Téléphones** | Au moins un Android ; un iPhone si possible (ou outils de test en ligne) |
+| **Logiciels** | Outils de capture d''écran et de vidéo, Postman, éditeur de code |
+| **Comptes** | Jira (offre gratuite), GitHub |
+
+1. **Les bases du test** (3 semaines) : cas de test, rapports de bugs.
+2. **Le web** (2 semaines) : outils de développement du navigateur, notions de HTML.
+3. **Les API** (2 semaines) : HTTP, Postman.
+4. **L''automatisation** (4 à 6 semaines) : JavaScript de base, Playwright.
+5. **Les projets** : un dossier de tests complet pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - Le testeur vérifie que l''application fonctionne et signale clairement les problèmes.
+> - Fonctionnel, régression, exploratoire, compatibilité, API, utilisabilité, performance.
+> - Tests manuels pour explorer, tests automatisés pour répéter.
+> - Plus un bug est trouvé tôt, moins il coûte.
+> - Clients : entreprises de services numériques, start-up, éditeurs, agences, plateformes.
+
+## Exercice pratique : votre premier regard de testeur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez une application ou un site que vous utilisez.
+> 2. Testez le parcours principal (inscription, achat ou réservation) sur ordinateur et sur téléphone.
+> 3. Essayez 10 actions inattendues (champs vides, retour arrière, double clic, connexion coupée).
+> 4. Notez chaque problème trouvé avec une capture.
+> 5. Écrivez votre plan d''apprentissage sur 3 mois.
+>
+> **À livrer** : votre liste de problèmes avec captures et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 0, 0, 'Que vérifie un test de régression ?', '["Le prix de l''application","La couleur des boutons","Que ce qui marchait marche encore après une modification","Le nombre d''utilisateurs"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 0, 1, 'Quand un bug coûte-t-il le moins cher à corriger ?', '["Après la mise en ligne","Quand un client le signale","Jamais","Quand il est trouvé tôt"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 0, 2, 'Pour quels tests l''automatisation est-elle idéale ?', '["Les tests de régression répétés","Aucun","L''exploration d''une nouvelle fonction","Les tests d''une seule fois"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-f', 1, 'Les bases : exigences, cas de test, données, rapports de bugs et campagnes', 'Questionner une exigence, écrire un cas de test, classes d''équivalence et valeurs limites, rapport de bug, gravité et organisation d''une campagne.', 'Ce module vous donne les bases du métier de testeur : analyser une exigence, écrire des cas de test, choisir les bonnes données de test, rédiger un rapport de bug parfait et organiser une campagne de tests.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une exigence et trouver ce qu''il faut tester.
+> 2. Écrire des cas de test clairs.
+> 3. Choisir les données de test avec des techniques reconnues.
+> 4. Rédiger un rapport de bug complet.
+> 5. Organiser une campagne de tests.
+
+## Analyser une exigence
+
+> [!exemple] Une exigence
+> « Le client peut commander de 1 à 10 exemplaires d''un produit. La livraison est offerte à partir de 50 000 Ar d''achat. Le code promo BIENVENUE donne 10 % de remise sur la première commande. »
+
+### Les questions du testeur
+
+1. Que se passe-t-il avec 0 ou 11 exemplaires ?
+2. La livraison est-elle offerte à **exactement** 50 000 Ar ?
+3. La remise est-elle calculée avant ou après la livraison ?
+4. Le code promo fonctionne-t-il en minuscules ?
+5. Que se passe-t-il si le client essaie le code une deuxième fois ?
+
+> [!astuce]
+> Envoyez vos questions **avant** de tester. Beaucoup de bugs viennent d''exigences ambiguës, et une question bien posée évite des heures de développement inutile.
+
+## Écrire un cas de test
+
+| Champ | Exemple |
+| --- | --- |
+| **Identifiant** | CT-012 |
+| **Titre** | Livraison offerte à partir de 50 000 Ar |
+| **Préconditions** | Client connecté, panier vide |
+| **Étapes** | 1. Ajouter un produit à 50 000 Ar. 2. Ouvrir le panier. |
+| **Données** | Produit « Panier de fruits », 50 000 Ar |
+| **Résultat attendu** | Frais de livraison : 0 Ar ; total : 50 000 Ar |
+| **Priorité** | Haute |
+
+### Les règles
+
+1. **Un cas = un objectif** de vérification.
+2. **Des étapes précises**, qu''une autre personne peut suivre sans aide.
+3. **Un résultat attendu vérifiable** (un chiffre, un message exact).
+4. **Des cas positifs** (ce qui doit marcher) **et négatifs** (ce qui doit être refusé).
+
+## Choisir les données de test
+
+### Les classes d''équivalence
+
+> [!definition] Classes d''équivalence
+> On regroupe les valeurs qui doivent donner le même comportement, et on teste une valeur de chaque groupe au lieu de toutes.
+
+| Classe | Exemples de quantité | Résultat attendu |
+| --- | --- | --- |
+| Valide | 1 à 10 (on teste 5) | Accepté |
+| Trop petit | 0 ou négatif (on teste 0) | Refusé avec message |
+| Trop grand | 11 et plus (on teste 15) | Refusé avec message |
+
+### Les valeurs limites
+
+> [!definition] Valeurs limites
+> Les erreurs se cachent souvent aux frontières. On teste juste avant, sur et juste après chaque limite.
+
+| Limite | Valeurs à tester |
+| --- | --- |
+| Quantité minimale (1) | 0, 1, 2 |
+| Quantité maximale (10) | 9, 10, 11 |
+| Livraison offerte (50 000 Ar) | 49 999, 50 000, 50 001 |
+
+## Le rapport de bug
+
+| Champ | Exemple |
+| --- | --- |
+| **Titre** | Livraison facturée à 3 000 Ar pour un panier d''exactement 50 000 Ar |
+| **Environnement** | Version 2.4.1, Chrome 129, Windows 11 ; aussi sur Android 12 (Chrome) |
+| **Préconditions** | Client connecté, panier vide |
+| **Étapes pour reproduire** | 1. Ajouter « Panier de fruits » (50 000 Ar). 2. Ouvrir le panier. |
+| **Résultat obtenu** | Frais de livraison : 3 000 Ar, total 53 000 Ar |
+| **Résultat attendu** | Frais de livraison : 0 Ar (exigence : offerte à partir de 50 000 Ar) |
+| **Fréquence** | Systématique |
+| **Gravité** | Majeure |
+| **Pièces jointes** | Capture du panier, vidéo de 15 secondes |
+
+### Gravité et priorité
+
+| Gravité | Définition | Exemple |
+| --- | --- | --- |
+| **Bloquante** | Empêche une fonction essentielle | Impossible de payer |
+| **Majeure** | Fonction importante incorrecte | Mauvais calcul de livraison |
+| **Mineure** | Gêne sans conséquence importante | Texte mal aligné |
+| **Cosmétique** | Détail visuel | Faute d''orthographe dans une infobulle |
+
+> [!attention]
+> Un rapport de bug décrit des **faits**, sans jugement (« le développeur a mal fait… »). Un bug que le développeur ne peut pas reproduire ne sera pas corrigé : les étapes doivent être précises.
+
+## Organiser une campagne de tests
+
+1. **Périmètre** : quelles fonctions, quels appareils, quelle version.
+2. **Cas de test** préparés et priorisés.
+3. **Exécution** : chaque cas marqué réussi, échoué ou bloqué.
+4. **Rapports de bugs** pour chaque échec.
+5. **Retests** des corrections et **régression** des fonctions voisines.
+6. **Bilan** : nombre de cas, réussis, échoués, bugs ouverts par gravité, recommandation.
+
+> [!madagascar]
+> Incluez toujours dans vos campagnes un **téléphone Android d''entrée de gamme** et une **connexion lente** (simulée dans les outils du navigateur). Ce sont les conditions réelles de nombreux utilisateurs, et une source fréquente de bugs que les équipes ne voient pas.
+
+> [!retenir]
+> - Questionnez les exigences avant de tester.
+> - Des cas de test précis, positifs et négatifs, avec un résultat attendu vérifiable.
+> - Classes d''équivalence et valeurs limites pour choisir les données.
+> - Des rapports de bugs factuels, reproductibles, avec gravité.
+> - Une campagne : périmètre, cas, exécution, bugs, retests, bilan.
+
+## Exercice pratique : vos premiers cas et rapports
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Écrivez 8 questions sur l''exigence de l''exemple.
+> 2. Écrivez 12 cas de test (positifs et négatifs) avec les classes d''équivalence et les valeurs limites.
+> 3. Testez un vrai site de commerce en ligne avec 6 de ces cas (adaptés).
+> 4. Rédigez au moins 3 rapports de bugs complets (ou de « suspicions » si vous ne trouvez pas de bug).
+> 5. Rédigez le bilan de votre campagne.
+>
+> **À livrer** : vos questions, vos cas de test, vos rapports et votre bilan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 1, 0, 'Pour une limite à 50 000 Ar, quelles valeurs tester ?', '["49 999, 50 000 et 50 001","Aucune","Seulement 50 000","1 et 1 000 000"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 1, 1, 'Que doit contenir un rapport de bug ?', '["Le salaire de l''équipe","Étapes, résultat obtenu, résultat attendu, environnement","Une critique du développeur","Seulement « ça ne marche pas »"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 1, 2, 'Quelle gravité pour « impossible de payer » ?', '["Cosmétique","Aucune","Bloquante","Mineure"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-f', 2, 'Les outils : Jira, outils du navigateur, Postman, Playwright et outils payants', 'Tickets et cycle de vie des bugs, enquête avec la Console et le Réseau, tests d''API dans Postman, premiers tests Playwright, BrowserStack et Jira payant.', 'Ce module vous fait prendre en main les outils du testeur : **Jira** pour suivre les bugs et les tâches, les **outils de développement du navigateur**, **Postman** pour tester les API, et **Playwright** pour automatiser vos premiers tests. Vous découvrirez aussi les outils payants : **BrowserStack** et les **offres payantes de Jira**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer et suivre des bugs dans Jira.
+> 2. Utiliser les outils de développement du navigateur pour enquêter.
+> 3. Tester une API avec Postman.
+> 4. Écrire un premier test automatisé avec Playwright.
+> 5. Comprendre ce qu''apportent BrowserStack et Jira payant.
+
+## Jira : suivre les bugs
+
+| Élément | Rôle |
+| --- | --- |
+| **Projet** | L''espace d''une application ou d''une équipe |
+| **Ticket (issue)** | Un bug, une tâche, une histoire d''utilisateur |
+| **Champs** | Titre, description, gravité, priorité, version, environnement, pièces jointes |
+| **Statuts (workflow)** | À faire → En cours → À tester → Terminé (ou Réouvert) |
+| **Filtres et tableaux** | Bugs ouverts par gravité, bugs à retester |
+
+### Le cycle de vie d''un bug
+
+```
+Nouveau → Confirmé → En correction → À tester → Fermé
+                                         ↘ Réouvert (si le bug persiste)
+```
+
+> [!astuce]
+> Avant de créer un bug, **cherchez** s''il existe déjà. Un doublon fait perdre du temps à toute l''équipe.
+
+## Les outils de développement du navigateur
+
+Ouvrez-les avec **F12** ou clic droit → **Inspecter**.
+
+| Onglet | Ce que le testeur y cherche |
+| --- | --- |
+| **Console** | Erreurs JavaScript (en rouge) au moment du bug |
+| **Réseau** | Requêtes en erreur (codes 400, 500), réponses lentes, données envoyées |
+| **Éléments** | Le texte ou le bouton exact concerné |
+| **Mode appareil** | Simuler un téléphone et une connexion lente |
+| **Application** | Données enregistrées (cookies, stockage local) |
+
+> [!exemple] Une enquête rapide
+> En cliquant sur « Payer », rien ne se passe. Dans l''onglet Réseau, la requête `POST /api/paiements` renvoie **500**. Dans la Console, une erreur apparaît. Vous joignez au rapport de bug une capture de la requête et de l''erreur : le développeur sait immédiatement où chercher.
+
+## Postman : tester une API
+
+1. Créez une **collection** « API Boutique ».
+2. Ajoutez une requête `GET https://api.exemple.com/produits`.
+3. Envoyez-la et vérifiez le **code** (200), le **temps** et les **données**.
+4. Ajoutez des **tests** automatiques dans l''onglet Tests :
+
+```js
+pm.test("Code 200", () => pm.response.to.have.status(200));
+pm.test("Liste non vide", () => {
+  const produits = pm.response.json();
+  pm.expect(produits.length).to.be.above(0);
+});
+pm.test("Chaque produit a un prix positif", () => {
+  pm.response.json().forEach(p => pm.expect(p.prix).to.be.above(0));
+});
+```
+
+5. Testez aussi les **cas d''erreur** : produit inexistant (404), données invalides (400), sans connexion (401).
+
+## Playwright : un premier test automatisé
+
+> [!definition] Playwright
+> Un outil gratuit et libre qui pilote de vrais navigateurs (Chromium, Firefox, WebKit) pour rejouer automatiquement un parcours et vérifier les résultats.
+
+```bash
+npm init playwright@latest
+```
+
+```js
+// tests/panier.spec.js
+import { test, expect } from ''@playwright/test'';
+
+test(''livraison offerte à partir de 50 000 Ar'', async ({ page }) => {
+  await page.goto(''https://boutique-demo.exemple.com'');
+  await page.getByRole(''link'', { name: ''Panier de fruits'' }).click();
+  await page.getByRole(''button'', { name: ''Ajouter au panier'' }).click();
+  await page.getByRole(''link'', { name: ''Panier'' }).click();
+  await expect(page.getByTestId(''frais-livraison'')).toHaveText(''0 Ar'');
+});
+```
+
+```bash
+npx playwright test          # lancer les tests
+npx playwright show-report   # voir le rapport
+```
+
+> [!attention]
+> N''automatisez que des tests **stables** et **répétés souvent** (régression). Un test automatisé mal écrit qui échoue au hasard fait perdre plus de temps qu''il n''en fait gagner. Testez seulement des sites dont vous avez l''autorisation (vos projets, des sites de démonstration prévus pour cela).
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **BrowserStack** | Tester sur des milliers de vrais téléphones et navigateurs à distance, sans les acheter ; lancer les tests Playwright sur ces appareils |
+| **Jira (offres payantes)** | Plus d''utilisateurs, droits avancés, automatisations, extensions de gestion des tests (cas de test, campagnes, rapports) |
+
+> [!madagascar]
+> Ces outils sont facturés en dollars et généralement **payés par l''entreprise**, qui vous donne un accès. Pour apprendre, utilisez l''offre gratuite de Jira, les essais de BrowserStack, et vos propres téléphones. Vérifiez les prix à jour sur les sites officiels.
+
+> [!retenir]
+> - Jira : tickets, statuts, filtres ; chercher les doublons avant de créer un bug.
+> - Les outils du navigateur pour enquêter : Console et Réseau.
+> - Postman pour tester les API, avec des tests automatiques.
+> - Playwright pour automatiser les tests de régression stables.
+> - BrowserStack et Jira payant, fournis par l''entreprise.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez un projet Jira gratuit et saisissez vos rapports de bugs du module 2.
+> 2. Enquêtez sur un problème d''un site (Console et Réseau) et faites des captures.
+> 3. Testez une API publique de démonstration avec Postman : 5 requêtes et 6 tests.
+> 4. Installez Playwright et écrivez 3 tests sur un site de démonstration prévu pour l''entraînement.
+>
+> **À livrer** : captures de Jira, votre enquête, votre collection Postman exportée et votre dépôt Playwright.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 2, 0, 'Que faire avant de créer un bug dans Jira ?', '["Changer de projet","Supprimer les autres bugs","Chercher s''il existe déjà","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 2, 1, 'Quel onglet du navigateur montre une requête en erreur 500 ?', '["Application","Éléments","Aucun","Réseau"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 2, 2, 'Que permet BrowserStack ?', '["Payer en Mobile Money","Monter des vidéos","Tester sur de vrais téléphones et navigateurs à distance","Rédiger des articles"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-f', 3, 'Premier projet : la campagne de tests de Taxi-be Réservation', 'Plan de test et critères de sortie, matrice de couverture, exécution sur plusieurs appareils, sessions exploratoires, gestion des bugs et bilan de recette.', 'Dans ce module, vous menez une campagne de tests complète sur une application de réservation, comme le ferait un testeur dans une équipe : analyse, plan de test, cas de test, exécution sur plusieurs appareils, rapports de bugs, retests et bilan. C''est le type de projet qui deviendra votre portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger un plan de test.
+> 2. Construire une matrice de couverture.
+> 3. Exécuter une campagne sur plusieurs appareils.
+> 4. Gérer les bugs jusqu''à leur fermeture.
+> 5. Rédiger un bilan de recette avec une recommandation.
+
+## Le cas pratique : « Taxi-be Réservation »
+
+> [!exemple] Votre mission
+> Une start-up d''Antananarivo lance une application web de **réservation de places de taxi-brousse** : recherche de trajet, choix de la date et du nombre de places, paiement par Mobile Money, billet avec un code. La version 1.0 sort dans 2 semaines. Vous êtes le testeur de l''équipe.
+
+## Étape 1 : le plan de test
+
+| Rubrique | Contenu |
+| --- | --- |
+| **Objectif** | Vérifier que la version 1.0 peut être mise en ligne |
+| **Périmètre** | Recherche, réservation, paiement, billet, compte utilisateur |
+| **Hors périmètre** | Espace administrateur, statistiques |
+| **Types de tests** | Fonctionnels, exploratoires, compatibilité, API, régression |
+| **Appareils** | Android d''entrée de gamme, Android récent, iPhone, ordinateur (Chrome, Firefox) |
+| **Conditions** | Connexion normale et connexion lente |
+| **Critères de sortie** | Aucun bug bloquant ou majeur ouvert ; 95 % des cas de test réussis |
+| **Planning** | Semaine 1 : tests ; semaine 2 : retests et régression |
+
+## Étape 2 : la matrice de couverture
+
+> [!definition] Matrice de couverture
+> Un tableau qui relie chaque exigence aux cas de test qui la vérifient. Elle montre qu''aucune exigence n''a été oubliée.
+
+| Exigence | Cas de test | Statut |
+| --- | --- | --- |
+| E1 – Rechercher un trajet par ville de départ, d''arrivée et date | CT-01 à CT-05 | À exécuter |
+| E2 – Réserver de 1 à 4 places | CT-06 à CT-10 | À exécuter |
+| E3 – Payer par Mobile Money | CT-11 à CT-16 | À exécuter |
+| E4 – Recevoir un billet avec code | CT-17 à CT-19 | À exécuter |
+| E5 – Annuler jusqu''à 24 heures avant le départ | CT-20 à CT-23 | À exécuter |
+
+### Des cas importants à ne pas oublier
+
+| Cas | Pourquoi |
+| --- | --- |
+| Réserver la dernière place disponible en même temps qu''un autre utilisateur | Risque de double réservation |
+| Fermer l''application pendant le paiement | Paiement fait mais billet absent ? |
+| Paiement refusé (solde insuffisant) | Message clair, place libérée |
+| Annuler à 23 h 59 avant le départ, puis à 24 h 01 | Valeurs limites |
+| Connexion coupée après le clic sur « Payer » | Pas de double paiement |
+
+## Étape 3 : exécuter la campagne
+
+### Le suivi d''exécution
+
+| Cas | Android entrée de gamme | Android récent | iPhone | Chrome PC | Firefox PC |
+| --- | --- | --- | --- | --- | --- |
+| CT-01 | Réussi | Réussi | Réussi | Réussi | Réussi |
+| CT-11 | Échoué (BUG-07) | Réussi | Réussi | Réussi | Réussi |
+| CT-14 | Bloqué (BUG-07) | Réussi | Réussi | Réussi | Réussi |
+
+> [!astuce]
+> Réservez du temps pour des **sessions exploratoires** de 60 à 90 minutes, avec une mission précise (« explorer le paiement avec une connexion lente »). Elles trouvent souvent les bugs que les cas de test écrits n''avaient pas prévus.
+
+## Étape 4 : gérer les bugs jusqu''à leur fermeture
+
+1. **Créez** chaque bug dans Jira avec toutes les informations.
+2. **Participez** au point quotidien des bugs avec le chef de projet et les développeurs.
+3. **Retestez** chaque correction dès qu''elle est disponible.
+4. **Lancez la régression** sur les fonctions voisines.
+5. **Fermez** ou **réouvrez** avec un commentaire précis.
+
+## Étape 5 : le bilan de recette
+
+| Indicateur | Résultat (exemple) |
+| --- | --- |
+| Cas de test exécutés | 46 sur 46 |
+| Cas réussis | 44 (96 %) |
+| Bugs trouvés | 19 (2 bloquants, 5 majeurs, 8 mineurs, 4 cosmétiques) |
+| Bugs corrigés et vérifiés | 17 |
+| Bugs ouverts | 2 mineurs |
+
+> [!exemple] Recommandation
+> « Les 2 bugs bloquants (double réservation de la dernière place, billet absent après fermeture de l''application pendant le paiement) sont corrigés et vérifiés sur tous les appareils. Restent 2 bugs mineurs d''affichage sur Android d''entrée de gamme, sans effet sur la réservation. Les critères de sortie sont atteints : **mise en ligne recommandée**, avec correction des 2 bugs mineurs dans la version 1.0.1. »
+
+> [!madagascar]
+> Pour une application de paiement mobile à Madagascar, testez les **cas réels** : solde insuffisant, délai de confirmation du paiement, message reçu par SMS en retard, numéro saisi avec ou sans indicatif +261. Ce sont les situations que vivront les utilisateurs.
+
+> [!retenir]
+> - Un plan de test avec périmètre, appareils, critères de sortie et planning.
+> - Une matrice de couverture qui relie exigences et cas de test.
+> - Une exécution sur plusieurs appareils, avec des sessions exploratoires.
+> - Un suivi des bugs jusqu''à leur fermeture, avec régression.
+> - Un bilan chiffré et une recommandation claire.
+
+## Exercice pratique : la campagne Taxi-be Réservation
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Choisissez une application web réelle de réservation ou de commerce (ou un site de démonstration prévu pour l''entraînement).
+> 2. Rédigez le plan de test et la matrice de couverture (au moins 25 cas).
+> 3. Exécutez la campagne sur au moins 3 appareils ou navigateurs, dont un téléphone.
+> 4. Faites 2 sessions exploratoires et notez vos découvertes.
+> 5. Rédigez les rapports de bugs dans Jira et le bilan de recette.
+>
+> **À livrer** : votre plan, votre matrice, votre suivi d''exécution, vos bugs et votre bilan. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 3, 0, 'À quoi sert la matrice de couverture ?', '["Relier chaque exigence aux cas de test qui la vérifient","Calculer le salaire","Dessiner l''interface","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 3, 1, 'Que sont les critères de sortie ?', '["Les conditions pour recommander la mise en ligne","L''heure de fin de journée","Le nombre de testeurs","La sortie du bureau"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 3, 2, 'Que faire après la correction d''un bug ?', '["Le fermer sans vérifier","Le retester et lancer la régression des fonctions voisines","Rien","Supprimer le ticket"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-f', 4, 'Trouver un poste ou des missions et se faire payer', 'Portfolio de testeur, 5 canaux, tests de recrutement, chiffrage d''une mission avec marge pour les retests, paiements et évolution.', 'Les entreprises qui développent des logiciels ont toutes besoin de testeurs, mais elles les choisissent sur leur rigueur et la qualité de leurs rapports. Ce dernier module vous montre comment présenter votre travail, trouver un poste ou des missions, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de testeur.
+> 2. Trouver un poste ou des missions grâce à 5 canaux.
+> 3. Réussir un test de recrutement de testeur.
+> 4. Chiffrer une mission de tests.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Votre campagne** du module 4 : plan, matrice, bilan.
+2. **Des rapports de bugs exemplaires** (sur des sites de démonstration ou des applications que vous avez le droit de tester).
+3. **Votre collection Postman** et votre **dépôt Playwright** sur GitHub, avec un README.
+4. **Une certification** reconnue si possible (par exemple le niveau Fondation de l''ISTQB ; vérifiez les modalités et les prix auprès de l''organisme).
+
+> [!attention]
+> Ne publiez jamais de bug trouvé sur l''application d''un client sans son accord : c''est confidentiel. Pour votre portfolio, utilisez des sites de démonstration conçus pour l''entraînement, ou vos propres projets.
+
+## Où trouver un poste ou des missions : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Entreprises de services numériques** à Madagascar | Candidatez avec votre portfolio ; elles recrutent des testeurs pour l''Europe |
+| 2 | **Start-up et agences web** | Proposez une recette avant chaque mise en ligne |
+| 3 | **Éditeurs étrangers** | Postes de testeur à distance, souvent en français ou en anglais |
+| 4 | **Plateformes de test participatif** | Missions payées par bug trouvé ou par session ; vérifiez qu''elles acceptent Madagascar |
+| 5 | **Plateformes de freelance** | Missions de recette et de tests d''API |
+
+> [!exemple] Message à une agence web
+> « Bonjour, je suis testeuse logicielle à Antananarivo. Avant chaque mise en ligne, je vérifie vos sites et applications sur ordinateur, Android et iPhone, avec une connexion lente, et je vous livre des rapports de bugs précis dans votre outil (Jira, Trello…) et un bilan clair. Voici un exemple de bilan de recette : [lien]. Puis-je tester gratuitement une page de votre prochain projet ? »
+
+## Réussir un test de recrutement
+
+| Exercice courant | Conseil |
+| --- | --- |
+| **Écrire des cas de test** pour une fonction (connexion, panier) | Pensez aux cas négatifs et aux valeurs limites |
+| **Trouver des bugs** sur une page en temps limité | Commencez par le parcours principal, puis explorez |
+| **Rédiger un rapport de bug** | Titre précis, étapes, attendu, obtenu, environnement, gravité |
+| **Questions sur les types de tests** | Expliquez avec des exemples |
+| **Tester une API** | Codes, données, cas d''erreur |
+
+## Chiffrer une mission de tests
+
+1. **Tarif horaire** : revenu mensuel visé ÷ heures facturables (exemple : 1 400 000 Ar ÷ 100 h = 14 000 Ar de l''heure).
+2. **Estimez** : analyse, cas de test, exécution par appareil, rapports, retests, bilan.
+3. **Ajoutez** 20 % pour les retests imprévus.
+
+| Tâche | Heures |
+| --- | --- |
+| Analyse et plan de test | 4 |
+| Rédaction de 40 cas de test | 8 |
+| Exécution sur 4 appareils | 12 |
+| Sessions exploratoires | 3 |
+| Rapports de bugs et retests | 6 |
+| Bilan | 2 |
+| **Sous-total** | **35** |
+| Marge 20 % | 7 |
+| **Total** | **42 h × 14 000 Ar = 588 000 Ar** |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Testeur confirmé** | Stratégie de test, tests d''API avancés, gestion de campagnes |
+| **Automaticien de tests** | JavaScript ou Python, Playwright, intégration continue |
+| **Testeur de performance** | Outils de charge, analyse des temps de réponse |
+| **Testeur de sécurité** | Bases de la sécurité (voir la formation Analyste en cybersécurité) |
+| **Responsable qualité** | Organisation de la qualité dans une équipe |
+| **Développeur** | Vos connaissances du test sont un grand atout (voir les formations développeur) |
+
+> [!retenir]
+> - Un portfolio : campagne, rapports, Postman, Playwright, certification éventuelle.
+> - Entreprises de services numériques, start-up, éditeurs, plateformes.
+> - Des tests de recrutement préparés : cas négatifs, limites, rapports précis.
+> - Un chiffrage par tâche avec une marge pour les retests.
+> - Évoluez vers l''automatisation, la performance, la sécurité ou le développement.
+
+## Exercice pratique : lancer votre carrière
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Publiez votre portfolio (dossier en ligne et dépôts GitHub).
+> 2. Faites un test d''entraînement : 15 cas de test pour une page de connexion en 45 minutes.
+> 3. Chiffrez une mission de tests pour un site de 10 pages.
+> 4. Listez 10 entreprises ou agences et envoyez au moins 2 candidatures ou messages.
+>
+> **À livrer** : vos liens, votre test d''entraînement, votre chiffrage et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 4, 0, 'Peut-on publier les bugs trouvés chez un client dans son portfolio ?', '["Oui, s''ils sont mineurs","Oui, toujours","Oui, en anglais","Non, sans son accord"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 4, 1, '35 heures plus 20 % de marge font…', '["55 heures","35 heures","42 heures","40 heures"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-f', 4, 2, 'Quelle évolution demande Playwright et l''intégration continue ?', '["Traducteur","Comptable","Graphiste","Automaticien de tests"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Qu''est-ce qu''un bug ?', '["Un insecte dans l''ordinateur uniquement","Un écart entre ce que fait l''application et ce qu''elle devrait faire","Une nouvelle fonction","Un mot de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel test vérifie l''application sur plusieurs appareils ?', '["Performance","Régression","API","Compatibilité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Qu''est-ce qu''un test exploratoire ?', '["Lire la documentation","Tester une seule fois le même cas","Payer l''application","Utiliser l''application de façon inattendue pour trouver des problèmes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel appareil inclure dans les tests pour Madagascar ?', '["Un Android d''entrée de gamme","Une télévision","Seulement le dernier iPhone","Aucun téléphone"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Que faire d''une exigence ambiguë ?', '["Deviner","La supprimer","Poser des questions avant de tester","L''ignorer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Combien d''objectifs par cas de test ?', '["Un seul","Tous les objectifs","Dix","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Qu''est-ce qu''un cas négatif ?', '["Un cas sans étapes","Un cas qui vérifie que ce qui doit être refusé l''est","Un cas inutile","Un cas qui échoue toujours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'À quoi servent les classes d''équivalence ?', '["Tester une valeur par groupe de comportement identique","Tester toutes les valeurs possibles","Classer les testeurs","Calculer les prix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Pour une quantité maximale de 10, quelles valeurs tester ?', '["9, 10 et 11","Seulement 10","1 et 1000","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel ton pour un rapport de bug ?', '["Vague","Accusateur","Factuel, sans jugement","Humoristique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Pourquoi un bug non reproductible est-il un problème ?', '["Il coûte moins cher","Il ne pourra pas être corrigé","Il est plus grave","Il est interdit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel statut suit « À tester » si le bug persiste ?', '["Nouveau","Supprimé","Réouvert","Fermé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Que montre la Console du navigateur ?', '["Les e-mails","Les factures","Les mots de passe","Les erreurs JavaScript"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel code HTTP indique une ressource introuvable ?', '["201","200","404","302"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Que vérifie pm.test("Code 200", …) dans Postman ?', '["Rien","Que le site est joli","Le prix","Que la réponse a le code 200"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Qu''est-ce que Playwright ?', '["Un jeu","Un logiciel de comptabilité","Un éditeur d''images","Un outil qui pilote de vrais navigateurs pour automatiser des tests"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle commande lance les tests Playwright ?', '["git push","pm.test","npm start","npx playwright test"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Peut-on tester n''importe quel site sans autorisation ?', '["Oui","Non","Oui, la nuit","Oui, s''il est lent"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Que contient un plan de test ?', '["Seulement les bugs","Le prix des téléphones","Rien","Objectif, périmètre, appareils, critères de sortie, planning"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel cas tester pour une réservation de la dernière place ?', '["Le changement de couleur","Un seul utilisateur toujours","Deux utilisateurs en même temps","Aucun"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Combien de temps dure une session exploratoire en général ?', '["Une semaine","60 à 90 minutes avec une mission précise","Sans limite ni mission","5 secondes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Que contient le bilan de recette ?', '["Indicateurs chiffrés et une recommandation","Les mots de passe","Rien","Seulement des félicitations"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle situation de paiement mobile tester à Madagascar ?', '["Aucune","Solde insuffisant et confirmation en retard","Uniquement le cas parfait","Le changement de logo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle certification reconnue existe pour les testeurs ?', '["ISTQB niveau Fondation","PCG 2005","IELTS","DELF"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal","Aucun"]'::jsonb, 0);
 commit;
