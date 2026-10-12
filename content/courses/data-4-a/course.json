@@ -1,0 +1,97 @@
+{
+  "id": "data-4-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du spécialiste automatisation et IA un partenaire qui transforme des processus de façon fiable : spécialité (commercial, e-commerce, documents, assistants internes, intégrations, administration), audit de processus et retour sur investissement, offres payantes de Make et Zapier et API d'IA (itérateurs, HTTP, erreurs, sorties structurées, coûts, bases de connaissances), jeux de test et contrôle humain, protection des données et règles sur l'IA, puis offres produit, contrats mensuels et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer des processus et calculer le retour sur investissement",
+    "Construire des scénarios robustes avec itérateurs, HTTP et gestion des erreurs",
+    "Utiliser les API d'IA avec sorties structurées, coûts maîtrisés et bases de connaissances",
+    "Évaluer l'IA avec des jeux de test et placer le contrôle humain",
+    "Protéger les données et tenir compte des règles sur l'IA à l'international",
+    "Vendre des offres produit et des contrats mensuels, organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer les processus et calculer le retour sur investissement",
+      "summary": "Les 6 spécialités avancées, l'audit de processus en 5 étapes, le calcul du retour sur investissement, quand l'IA est utile ou risquée, et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment présenter le retour sur investissement à un dirigeant ?", "options": ["En nombre de mois pour rembourser le projet", "En nombre de modules", "En jetons d'IA", "Sans chiffre"], "correct": 0 },
+        { "q": "Pour quelle décision garder un contrôle humain ?", "options": ["Une décision d'embauche", "Classer un message interne", "Résumer un texte pour un humain", "Extraire une date"], "correct": 0 },
+        { "q": "Quelle spécialité lit et recopie automatiquement factures et bons de commande ?", "options": ["Traitement de documents par l'IA", "Automatisation commerciale", "Opérations e-commerce", "Formation"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Make et Zapier avancés, API d'IA et bases de connaissances",
+      "summary": "Fonctions avancées des offres payantes, itérateurs et agrégateurs, module HTTP et webhooks, stratégies d'erreur, sorties structurées et coûts de l'IA, génération augmentée par la recherche.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un agrégateur dans Make ?", "options": ["Il regroupe plusieurs éléments en un seul", "Il supprime les erreurs", "Il paie l'abonnement", "Il traduit"], "correct": 0 },
+        { "q": "Quelle température choisir pour une extraction de données ?", "options": ["Basse, pour des réponses stables", "La plus haute possible", "Au hasard", "Elle n'a aucun effet"], "correct": 0 },
+        { "q": "Que fait un assistant en génération augmentée par la recherche ?", "options": ["Il répond à partir de passages de documents validés, en citant la source", "Il invente librement", "Il cherche sur les réseaux sociaux", "Il ne répond jamais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : jeux de test, contrôle humain, versions et surveillance",
+      "summary": "Jeu de test et mesures, amélioration des consignes, humain dans la boucle selon le risque, versions et documentation, tableau de bord d'exploitation et livraison en 4 étapes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand relancer le jeu de test ?", "options": ["À chaque modification de la consigne ou du modèle", "Jamais", "Une fois par an", "Seulement si le client se plaint"], "correct": 0 },
+        { "q": "Que faire d'un cas à confiance basse ?", "options": ["L'envoyer à un humain", "Le valider automatiquement", "Le supprimer", "L'ignorer"], "correct": 0 },
+        { "q": "Quelle est la première étape d'une livraison progressive ?", "options": ["Le mode observation", "Le mode automatique complet", "La facturation", "La suppression de l'ancien processus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : données, sous-traitants, règles sur l'IA et anglais",
+      "summary": "Cartographie des flux de données, minimisation avant l'IA, vérification des services utilisés, règles applicables à l'IA, documentation en anglais et travail asynchrone.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que retirer avant d'envoyer un message à l'IA pour le classer ?", "options": ["Les données inutiles comme le nom et le téléphone", "Le texte du message", "La catégorie", "Rien"], "correct": 0 },
+        { "q": "Que signifie DPA ?", "options": ["Accord de traitement des données", "Un type d'API", "Un langage", "Une plateforme"], "correct": 0 },
+        { "q": "Qui valide les choix juridiques sur les services utilisés ?", "options": ["Le client et ses conseillers", "Le freelance seul", "Le fournisseur d'IA", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres produit, contrats mensuels, équipe et veille",
+      "summary": "Offres produit reproductibles, prix par la valeur, formules de contrat mensuel, études de cas chiffrées, équipe et veille appuyée sur les jeux de test.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une offre produit ?", "options": ["Une solution standard au contenu et au prix fixes", "Un projet entièrement différent à chaque fois", "Un abonnement à Make", "Un logiciel à vendre"], "correct": 0 },
+        { "q": "6 clients à 250 000 Ar par mois font…", "options": ["1 500 000 Ar par mois", "250 000 Ar par mois", "600 000 Ar par mois", "15 000 000 Ar par mois"], "correct": 0 },
+        { "q": "Que faire avant d'adopter un nouveau modèle d'IA en production ?", "options": ["Le passer sur le jeu de test", "L'adopter tout de suite", "Supprimer l'ancien sans tester", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité règle les prospects perdus et les relances oubliées ?", "options": ["Automatisation commerciale", "Traitement de documents", "Assistants internes", "Administration"], "correct": 0 },
+    { "q": "Quelle est la deuxième étape de l'audit de processus ?", "options": ["Mesurer volume, temps, erreurs et délais", "Facturer", "Construire le scénario", "Former l'équipe"], "correct": 0 },
+    { "q": "Que soustraire du gain mensuel dans le calcul du retour sur investissement ?", "options": ["Les abonnements mensuels", "Rien", "Le salaire du client", "Le prix des concurrents"], "correct": 0 },
+    { "q": "L'IA peut-elle envoyer des messages aux clients sans relecture dans un cas à risque ?", "options": ["Non", "Oui", "Oui, la nuit", "Oui, si elle est récente"], "correct": 0 },
+    { "q": "Pourquoi filtrer avant d'itérer ?", "options": ["Chaque élément traité consomme des opérations", "Pour ralentir le scénario", "Ce n'est pas utile", "Pour payer plus"], "correct": 0 },
+    { "q": "Où stocker une clé d'API dans Make ou Zapier ?", "options": ["Dans une connexion sécurisée", "Dans un champ visible", "Dans un e-mail", "Dans le nom du scénario"], "correct": 0 },
+    { "q": "Que faire en cas d'erreur temporaire d'un service ?", "options": ["Une nouvelle tentative automatique", "Supprimer le scénario", "Ignorer pour toujours", "Changer de client"], "correct": 0 },
+    { "q": "À quoi sert la table des erreurs ?", "options": ["Transformer les pannes silencieuses en tâches visibles", "Décorer", "Facturer", "Rien"], "correct": 0 },
+    { "q": "Que permet une sortie structurée ?", "options": ["Une réponse conforme à un schéma JSON lisible par l'étape suivante", "Une réponse plus longue", "Une image", "Une traduction"], "correct": 0 },
+    { "q": "De quoi dépend le coût d'une API d'IA ?", "options": ["De la quantité de texte traitée et du modèle", "De la couleur du scénario", "Du nombre d'employés", "De rien"], "correct": 0 },
+    { "q": "Qui fixe le plafond de dépenses de l'API d'IA ?", "options": ["Le client, dans son compte", "Le freelance sur sa carte", "Personne", "La plateforme de freelance"], "correct": 0 },
+    { "q": "Que doit dire un assistant à base de connaissances s'il ne trouve pas la réponse ?", "options": ["Qu'il ne sait pas", "Inventer une réponse", "Répondre au hasard", "Rien"], "correct": 0 },
+    { "q": "Combien d'exemples dans un jeu de test ?", "options": ["50 à 100", "2", "1 seul", "Aucun"], "correct": 0 },
+    { "q": "Que mesurer en plus de l'exactitude ?", "options": ["Les erreurs graves et le format valide", "La couleur", "Le nombre de modules", "Rien"], "correct": 0 },
+    { "q": "Comment réduire les inventions de l'IA ?", "options": ["Les interdire et exiger null si absent", "Augmenter la température", "Envoyer moins d'exemples", "Rien"], "correct": 0 },
+    { "q": "Quel contrôle pour un brouillon de réponse client ?", "options": ["Validation humaine avant envoi", "Aucun", "Envoi automatique immédiat", "Suppression"], "correct": 0 },
+    { "q": "Pourquoi vérifier chaque scénario chaque mois ?", "options": ["Les services externes changent", "Pour facturer plus", "Ce n'est pas utile", "Pour changer de couleur"], "correct": 0 },
+    { "q": "Qui impliquer pendant le mode observation ?", "options": ["Les personnes qui faisaient le travail à la main", "Personne", "Les concurrents", "Uniquement le comptable"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un sous-traitant au sens de la protection des données ?", "options": ["Un service qui traite des données pour le client", "Un employé", "Un concurrent", "Un client final"], "correct": 0 },
+    { "q": "De quoi dépend l'usage des données par un fournisseur d'IA ?", "options": ["De l'offre souscrite et de ses conditions", "De la météo", "Du nom du scénario", "De rien"], "correct": 0 },
+    { "q": "Que faut-il faire quand une personne échange avec un assistant automatique ?", "options": ["L'en informer", "Le cacher", "Lui demander de payer", "Rien"], "correct": 0 },
+    { "q": "Comment dit-on « humain dans la boucle » en anglais ?", "options": ["Human in the loop", "Trigger", "Prompt", "Workflow"], "correct": 0 },
+    { "q": "Quel outil aide un client étranger à comprendre une livraison sans réunion ?", "options": ["Une courte vidéo de démonstration", "Un long appel imprévu", "Rien", "Un fichier sans explication"], "correct": 0 },
+    { "q": "Quand proposer le contrat mensuel ?", "options": ["Dans le devis initial", "Jamais", "Un an après", "Seulement en cas de panne"], "correct": 0 },
+    { "q": "Quelle évolution demande Python ou JavaScript et l'évaluation des modèles ?", "options": ["Ingénieur IA appliquée", "Graphiste", "Professeur", "Comptable"], "correct": 0 }
+  ]
+}

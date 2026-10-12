@@ -72,7 +72,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true),
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 18, true),
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 16, true),
-  ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
+  ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 17, true),
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
@@ -8286,6 +8286,609 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel type de données publiques peut attirer les ONG ?', '["Des données volées","Des mots de passe","Des données sur Madagascar : scolarisation, tourisme, agriculture","Des données inventées présentées comme réelles"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Comment traiter les données d''enquêtes sensibles ?', '["Les copier partout","Anonymiser et limiter les accès selon les règles du projet","Les publier","Les partager librement"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle évolution demande Python et l''apprentissage automatique ?', '["Graphiste","Data scientist","Agent support","Opérateur de saisie"]'::jsonb, 1);
+
+-- data-4-a
+delete from public.exam_questions where course_id = 'data-4-a';
+delete from public.module_questions where course_id = 'data-4-a';
+delete from public.lessons where course_id = 'data-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-4-a', 0, 'Se spécialiser, auditer les processus et calculer le retour sur investissement', 'Les 6 spécialités avancées, l''audit de processus en 5 étapes, le calcul du retour sur investissement, quand l''IA est utile ou risquée, et les offres à forte valeur.', 'Relier un formulaire à un tableau ouvre les premières missions. Les spécialistes les mieux payés construisent des **systèmes d''automatisation complets et fiables**, intègrent l''IA de façon **mesurée et contrôlée**, et transforment des processus entiers d''une entreprise. Ce module vous aide à choisir votre spécialité et à vendre une transformation plutôt que des scénarios.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''automatisation et de l''IA.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit de processus et calculer le retour sur investissement.
+> 4. Évaluer quand l''IA est utile et quand elle est risquée.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Automatisation commerciale** | Prospects perdus, CRM mal tenu, relances oubliées | CRM, formulaires, séquences, attribution des prospects |
+| 2 | **Opérations e-commerce** | Commandes, stocks et service client gérés à la main | Shopify ou WooCommerce, logistique, helpdesk |
+| 3 | **Traitement de documents par l''IA** | Factures, bons de commande, CV à lire et recopier | Extraction structurée, vérification, intégration |
+| 4 | **Assistants d''IA internes** | Équipes qui cherchent sans cesse les mêmes informations | Bases de connaissances, consignes, garde-fous |
+| 5 | **Intégrations sur mesure** | Outils sans connecteur prêt à l''emploi | API, webhooks, authentification, un peu de code |
+| 6 | **Automatisation administrative et financière** | Facturation, relances, rapprochements, RH | Outils comptables et RH, contrôles, validations |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Traitement de documents en français** pour des entreprises francophones qui reçoivent beaucoup de pièces.
+> - **Automatisation pour les entreprises de services numériques** d''Antananarivo, qui traitent de gros volumes pour leurs clients.
+> - **Solutions adaptées au contexte local** : Mobile Money, SMS, WhatsApp, connexions instables.
+
+## L''audit de processus
+
+### Les 5 étapes
+
+1. **Lister** les processus de l''équipe (ventes, commandes, facturation, recrutement, support).
+2. **Mesurer** pour chacun : volume, temps par occurrence, taux d''erreur, délai.
+3. **Évaluer** l''automatisabilité : règles claires, données numériques, décisions humaines nécessaires.
+4. **Calculer** le gain et le coût.
+5. **Prioriser** et proposer une feuille de route.
+
+### Le calcul du retour sur investissement
+
+| Élément | Exemple |
+| --- | --- |
+| Temps gagné par mois | 40 heures |
+| Coût d''une heure de travail pour l''entreprise | 8 000 Ar |
+| Gain mensuel | 320 000 Ar |
+| Erreurs évitées (estimation) | 100 000 Ar par mois |
+| Coût du projet | 1 200 000 Ar |
+| Abonnements mensuels (Make, IA) | 90 000 Ar |
+| **Retour sur investissement** | 1 200 000 ÷ (320 000 + 100 000 − 90 000) ≈ **3,6 mois** |
+
+*(Montants donnés en exemple : utilisez les chiffres réels du client.)*
+
+> [!astuce]
+> Présentez le **délai de retour sur investissement** en mois : c''est le chiffre que retiennent les dirigeants. Un projet remboursé en moins de 6 mois est généralement facile à faire accepter.
+
+## Quand l''IA est utile, quand elle est risquée
+
+| L''IA est adaptée | L''IA est risquée ou à encadrer fortement |
+| --- | --- |
+| Classer des messages en catégories | Décider seule d''un remboursement important |
+| Extraire des champs d''un document, avec vérification | Donner des conseils médicaux, juridiques ou financiers sans contrôle |
+| Résumer pour un humain qui décide | Envoyer des messages aux clients sans relecture |
+| Proposer un brouillon | Prendre des décisions sur des personnes (recrutement, crédit) sans contrôle humain |
+| Répondre à partir d''une base de connaissances validée | Répondre sans source sur des sujets où l''erreur coûte cher |
+
+> [!attention]
+> Pour les décisions qui touchent des personnes (embauche, crédit, accès à un service), gardez toujours un **contrôle humain**, documentez le rôle de l''IA, et vérifiez les règles applicables avec le client : plusieurs pays, notamment dans l''Union européenne, encadrent ces usages.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit de processus** | Cartographie, mesures, retour sur investissement, feuille de route |
+| **Projet d''automatisation** | Plusieurs scénarios reliés, tests, formation |
+| **Traitement de documents** | Extraction par l''IA, vérification, intégration aux outils |
+| **Assistant interne** | Base de connaissances, consignes, garde-fous, mesure de qualité |
+| **Maintenance et amélioration** | Surveillance, corrections, nouvelles automatisations chaque mois |
+| **Formation des équipes** | Bonnes pratiques d''usage de l''IA et des automatisations |
+
+> [!retenir]
+> - Spécialisez-vous : commercial, e-commerce, documents, assistants internes, intégrations ou administration.
+> - Un audit de processus en 5 étapes avec un retour sur investissement en mois.
+> - L''IA pour classer, extraire, résumer et proposer ; un humain pour décider de ce qui compte.
+> - Vendez une transformation mesurable, pas des scénarios.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Menez l''audit de 6 processus d''une organisation (réelle avec accord, ou fictive).
+> 3. Calculez le retour sur investissement des 2 meilleurs projets.
+> 4. Pour chaque projet, indiquez où l''IA est utile et où un humain doit décider.
+> 5. Rédigez une feuille de route sur 3 mois.
+>
+> **À livrer** : votre choix, votre audit, vos calculs, votre analyse et votre feuille de route.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 0, 0, 'Comment présenter le retour sur investissement à un dirigeant ?', '["En jetons d''IA","En nombre de mois pour rembourser le projet","Sans chiffre","En nombre de modules"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 0, 1, 'Pour quelle décision garder un contrôle humain ?', '["Résumer un texte pour un humain","Classer un message interne","Une décision d''embauche","Extraire une date"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 0, 2, 'Quelle spécialité lit et recopie automatiquement factures et bons de commande ?', '["Formation","Traitement de documents par l''IA","Opérations e-commerce","Automatisation commerciale"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-4-a', 1, 'Outils professionnels : Make et Zapier avancés, API d''IA et bases de connaissances', 'Fonctions avancées des offres payantes, itérateurs et agrégateurs, module HTTP et webhooks, stratégies d''erreur, sorties structurées et coûts de l''IA, génération augmentée par la recherche.', 'Au niveau Avancé, vous utilisez les fonctions professionnelles des **offres payantes de Make et de Zapier** et des **abonnements et API d''IA** : traitement de listes, stockage de données, gestion des erreurs, appels d''API sur mesure, sorties structurées et bases de connaissances. Ce module vous apprend à construire des systèmes robustes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Traiter des listes avec itérateurs et agrégateurs.
+> 2. Appeler n''importe quelle API avec le module HTTP et les webhooks.
+> 3. Gérer les erreurs de façon professionnelle.
+> 4. Utiliser une API d''IA avec des sorties structurées et maîtriser les coûts.
+> 5. Construire un assistant qui répond à partir d''une base de connaissances.
+
+## Make et Zapier : les fonctions avancées
+
+| Besoin | Make | Zapier |
+| --- | --- | --- |
+| Traiter chaque élément d''une liste | Itérateur | Boucle (Looping) |
+| Regrouper des éléments en un seul | Agrégateur | Fonctions de transformation |
+| Conditions multiples | Routeur et filtres | Chemins (Paths) |
+| Transformer des données | Fonctions intégrées | Formatter |
+| Stocker des données entre exécutions | Data stores | Tables |
+| Appeler une API sans connecteur | Module HTTP | Requêtes webhooks ou API |
+| Petit code sur mesure | Selon l''offre | Étape Code (JavaScript ou Python) |
+| Gestion des erreurs | Gestionnaires d''erreurs par module | Chemins d''erreur, nouvelles tentatives |
+
+*(Les noms, fonctions et limites des offres changent : vérifiez sur les sites officiels.)*
+
+## Itérateurs et agrégateurs
+
+> [!exemple] Une facture avec plusieurs lignes
+> 1. Une commande arrive avec 6 produits (une liste).
+> 2. L''**itérateur** traite chaque produit : vérifier le stock, calculer la ligne.
+> 3. L''**agrégateur** regroupe les 6 lignes calculées en un seul tableau.
+> 4. Le module suivant crée **une** facture avec ses 6 lignes.
+
+> [!attention]
+> Chaque élément traité par un itérateur consomme des **opérations**. Une liste de 500 éléments traitée chaque heure peut épuiser un abonnement en quelques jours. Filtrez avant d''itérer, et estimez la consommation avant la mise en service.
+
+## Le module HTTP et les webhooks
+
+```
+Requête HTTP vers une API de livraison
+Méthode : POST
+URL : https://api.exemple-livraison.com/v1/expeditions
+En-têtes :
+  Authorization: Bearer {{cle_api}}   (stockée dans une connexion sécurisée)
+  Content-Type: application/json
+Corps :
+{
+  "reference": "{{commande.id}}",
+  "destinataire": "{{commande.client.nom}}",
+  "telephone": "{{commande.client.telephone}}",
+  "adresse": "{{commande.adresse}}"
+}
+```
+
+### Les règles
+
+1. **Lisez la documentation** de l''API : authentification, limites de débit, codes d''erreur.
+2. **Testez** d''abord dans l''environnement de test du fournisseur.
+3. **Stockez les clés** dans les connexions sécurisées, jamais dans un champ visible.
+4. **Vérifiez** les webhooks reçus (signature ou secret partagé).
+5. **Gérez** les limites de débit (pauses, files).
+
+## La gestion des erreurs
+
+| Stratégie | Quand l''utiliser |
+| --- | --- |
+| **Nouvelle tentative** automatique | Erreur temporaire (service indisponible, délai dépassé) |
+| **Ignorer** l''élément et continuer | Un élément invalide parmi beaucoup d''autres, avec enregistrement |
+| **Arrêter** et alerter | Erreur grave (paiement, données incohérentes) |
+| **Mettre de côté** pour un humain | Cas incertain, à traiter à la main |
+
+> [!astuce]
+> Créez une **table des erreurs** (data store ou tableau) : date, scénario, élément, message, statut. Chaque matin, une personne la consulte. Vous transformez les pannes silencieuses en tâches visibles.
+
+## Les API d''IA : sorties structurées et coûts
+
+### Les sorties structurées
+
+Les principales API d''IA permettent d''exiger une réponse conforme à un **schéma JSON**. L''étape suivante peut la lire sans erreur.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "fournisseur": { "type": "string" },
+    "numero_facture": { "type": "string" },
+    "date": { "type": "string", "description": "Format AAAA-MM-JJ" },
+    "montant_ttc": { "type": "number" },
+    "devise": { "type": "string", "enum": ["MGA", "EUR", "USD"] },
+    "confiance": { "type": "string", "enum": ["haute", "moyenne", "basse"] }
+  },
+  "required": ["fournisseur", "montant_ttc", "devise", "confiance"]
+}
+```
+
+### Les réglages et les coûts
+
+| Élément | Conseil |
+| --- | --- |
+| **Choix du modèle** | Un modèle plus petit et moins cher suffit souvent pour classer ; un modèle plus puissant pour les textes complexes |
+| **Température** | Basse pour les tâches de classement et d''extraction (réponses plus stables) |
+| **Longueur du texte envoyé** | Envoyer seulement ce qui est utile : le coût dépend de la quantité de texte (jetons) |
+| **Volume** | Estimer : nombre d''appels par mois × coût moyen par appel |
+| **Limites de dépenses** | Plafond mensuel configuré dans le compte du fournisseur |
+
+> [!madagascar]
+> Les API d''IA sont facturées à l''usage, en dollars, souvent par carte bancaire internationale. Le **client** ouvre le compte, enregistre son moyen de paiement et fixe un **plafond de dépenses** ; vous recevez une clé ou un accès. Présentez-lui une estimation mensuelle avant la mise en service.
+
+## L''assistant à partir d''une base de connaissances
+
+> [!definition] Génération augmentée par la recherche (RAG)
+> Une méthode où l''on cherche d''abord les passages utiles dans une base de documents validés (procédures, fiches produits, règlement), puis on demande à l''IA de répondre **uniquement à partir de ces passages**, en citant la source.
+
+### Les étapes
+
+1. **Rassembler** les documents à jour et validés.
+2. **Découper** en passages courts et clairs.
+3. **Rechercher** les passages pertinents pour chaque question.
+4. **Répondre** avec une consigne stricte : seulement à partir des passages, citer la source, dire « je ne sais pas » sinon.
+5. **Mesurer** la qualité sur un jeu de questions de test.
+
+> [!retenir]
+> - Itérateurs et agrégateurs pour les listes, en surveillant la consommation.
+> - Le module HTTP pour toute API, avec documentation, tests et clés protégées.
+> - 4 stratégies d''erreur et une table des erreurs consultée chaque jour.
+> - Sorties structurées, température basse, coûts estimés et plafonnés.
+> - Un assistant qui répond à partir de documents validés et cite ses sources.
+
+## Exercice pratique : un système robuste
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Construisez un scénario avec itérateur et agrégateur (commande à plusieurs lignes vers un document récapitulatif).
+> 2. Appelez une API publique de test avec le module HTTP et gérez au moins 2 types d''erreurs.
+> 3. Créez une table des erreurs et un chemin « à traiter à la main ».
+> 4. Extrayez les champs de 10 factures fictives avec une API d''IA et un schéma JSON, et comparez avec les vraies valeurs.
+> 5. Estimez le coût mensuel pour 2 000 factures.
+>
+> **À livrer** : captures de vos scénarios, votre table des erreurs, vos résultats d''extraction et votre estimation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 1, 0, 'Que fait un agrégateur dans Make ?', '["Il paie l''abonnement","Il regroupe plusieurs éléments en un seul","Il traduit","Il supprime les erreurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 1, 1, 'Quelle température choisir pour une extraction de données ?', '["La plus haute possible","Elle n''a aucun effet","Au hasard","Basse, pour des réponses stables"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 1, 2, 'Que fait un assistant en génération augmentée par la recherche ?', '["Il invente librement","Il ne répond jamais","Il cherche sur les réseaux sociaux","Il répond à partir de passages de documents validés, en citant la source"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-4-a', 2, 'Qualité et rapidité : jeux de test, contrôle humain, versions et surveillance', 'Jeu de test et mesures, amélioration des consignes, humain dans la boucle selon le risque, versions et documentation, tableau de bord d''exploitation et livraison en 4 étapes.', 'Une automatisation qui marche lors de la démonstration mais échoue un mois plus tard détruit la confiance du client. Ce module vous donne les méthodes professionnelles : tester l''IA avec des jeux de données, garder un humain là où il faut, versionner, surveiller et maîtriser les coûts dans la durée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Évaluer la qualité d''une étape d''IA avec un jeu de test.
+> 2. Placer le contrôle humain aux bons endroits.
+> 3. Versionner et documenter scénarios et consignes.
+> 4. Surveiller la santé et les coûts d''un système.
+> 5. Livrer de façon progressive et sûre.
+
+## Évaluer une étape d''IA
+
+### Le jeu de test
+
+1. **Rassemblez** 50 à 100 exemples réels (anonymisés si besoin), avec la **bonne réponse** attendue.
+2. **Incluez** des cas difficiles : textes ambigus, fautes, langues mélangées, documents de mauvaise qualité.
+3. **Lancez** la consigne sur tout le jeu.
+4. **Mesurez** les résultats.
+
+| Mesure | Définition | Exemple |
+| --- | --- | --- |
+| **Exactitude** | Réponses correctes ÷ total | 92 % |
+| **Taux de « je ne sais pas »** | Cas renvoyés à un humain | 6 % |
+| **Erreurs graves** | Erreurs avec un coût réel (mauvais montant, mauvais client) | 1 cas sur 100 |
+| **Format valide** | Réponses lisibles par l''étape suivante | 100 % |
+
+> [!astuce]
+> Gardez ce jeu de test et relancez-le **à chaque modification** de la consigne ou de modèle. Une amélioration sur un cas peut créer une erreur ailleurs : seul le jeu complet le montre.
+
+### Améliorer une consigne
+
+| Problème observé | Amélioration |
+| --- | --- |
+| Erreurs sur les dates | Préciser le format et donner 2 exemples |
+| Catégories confondues | Définir chaque catégorie avec un exemple et un contre-exemple |
+| Invention d''informations | Interdire explicitement, exiger « null » si absent |
+| Réponses trop longues | Imposer un schéma JSON strict |
+
+## Placer le contrôle humain
+
+> [!definition] Humain dans la boucle
+> Une organisation où l''IA ou l''automatisation prépare le travail, et un humain valide les cas importants ou incertains avant l''action.
+
+| Niveau de risque | Organisation |
+| --- | --- |
+| **Faible** (classement interne) | Automatique, contrôle par échantillon chaque semaine |
+| **Moyen** (brouillon de réponse client) | Validation humaine avant envoi |
+| **Élevé** (montant financier, décision sur une personne) | Validation humaine obligatoire, double contrôle au-delà d''un seuil |
+| **Incertain** (confiance basse) | Toujours vers un humain |
+
+> [!exemple] Seuils pour des factures
+> - Confiance « haute » et montant inférieur à 500 000 Ar : saisie automatique, contrôle par échantillon.
+> - Confiance « moyenne » ou montant supérieur : validation par l''aide-comptable.
+> - Confiance « basse » ou fournisseur inconnu : traitement manuel.
+
+## Versionner et documenter
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Scénarios** | Export régulier (Make et Zapier permettent d''exporter ou de copier les scénarios), nommé avec la version |
+| **Consignes d''IA** | Fichier texte versionné avec date, modèle et résultats du jeu de test |
+| **Environnement de test** | Scénario copié sur des données de test avant de modifier la production |
+| **Journal des modifications** | Date, changement, raison, auteur, résultat |
+| **Fiche de chaque scénario** | Objet, déclencheur, étapes, données, contacts, procédure de panne |
+
+## Surveiller la santé et les coûts
+
+### Le tableau de bord d''exploitation
+
+| Indicateur | Seuil d''alerte (exemple) |
+| --- | --- |
+| Exécutions en erreur | Plus de 2 % sur une journée |
+| Éléments en attente de traitement humain | Plus de 20 depuis plus de 24 heures |
+| Consommation d''opérations ou de tâches | Plus de 80 % du forfait avant le 20 du mois |
+| Coût de l''IA | Plus de 80 % du plafond mensuel |
+| Dernière exécution réussie | Plus de 2 heures pour un scénario horaire |
+
+> [!attention]
+> Les services externes changent : une API modifie un champ, un connecteur est mis à jour, une connexion expire. Prévoyez une **vérification mensuelle** de chaque scénario, même quand aucune alerte n''est remontée.
+
+## Livrer de façon progressive
+
+1. **Mode observation** : le scénario tourne, mais n''agit pas ; on compare ses décisions à celles des humains.
+2. **Mode assisté** : il prépare, un humain valide tout.
+3. **Mode automatique partiel** : les cas simples sont automatiques, les autres validés.
+4. **Mesure** après un mois, puis ajustement des seuils.
+
+> [!madagascar]
+> Pendant le mode observation, impliquez les personnes qui faisaient le travail à la main : elles repèrent les erreurs que vous ne verriez pas (noms de fournisseurs locaux, abréviations, habitudes). Leur adhésion est la clé du succès.
+
+> [!retenir]
+> - Un jeu de test de 50 à 100 exemples, relancé à chaque modification.
+> - Le contrôle humain placé selon le risque et la confiance.
+> - Scénarios et consignes versionnés, testés, documentés.
+> - Un tableau de bord d''exploitation et une vérification mensuelle.
+> - Une livraison en 4 étapes, avec les équipes.
+
+## Exercice pratique : fiabiliser un système
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Construisez un jeu de test de 50 exemples pour votre extraction de factures ou votre classement de messages.
+> 2. Mesurez l''exactitude, améliorez la consigne 2 fois et mesurez à nouveau.
+> 3. Définissez les seuils de contrôle humain.
+> 4. Rédigez la fiche, le journal des modifications et le tableau de bord d''exploitation.
+> 5. Rédigez le plan de livraison en 4 étapes.
+>
+> **À livrer** : votre jeu de test, vos mesures, vos seuils, vos documents et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 2, 0, 'Quand relancer le jeu de test ?', '["Seulement si le client se plaint","Une fois par an","À chaque modification de la consigne ou du modèle","Jamais"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 2, 1, 'Que faire d''un cas à confiance basse ?', '["L''envoyer à un humain","Le valider automatiquement","Le supprimer","L''ignorer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 2, 2, 'Quelle est la première étape d''une livraison progressive ?', '["Le mode automatique complet","La facturation","La suppression de l''ancien processus","Le mode observation"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-4-a', 3, 'Clients internationaux : données, sous-traitants, règles sur l''IA et anglais', 'Cartographie des flux de données, minimisation avant l''IA, vérification des services utilisés, règles applicables à l''IA, documentation en anglais et travail asynchrone.', 'Les entreprises européennes et nord-américaines recherchent des spécialistes de l''automatisation et de l''IA, mais elles sont très attentives à la protection des données, à la sécurité et aux règles sur l''IA. Ce module vous prépare à travailler avec elles de façon professionnelle et rassurante.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Identifier les données personnelles qui circulent dans une automatisation.
+> 2. Choisir et documenter les services utilisés (sous-traitants).
+> 3. Tenir compte des règles applicables à l''IA.
+> 4. Documenter et communiquer en anglais.
+> 5. Travailler en équipe asynchrone avec un client étranger.
+
+## Les données personnelles dans une automatisation
+
+### La cartographie des flux
+
+| Étape | Données | Service | Localisation |
+| --- | --- | --- | --- |
+| Formulaire | Nom, e-mail, téléphone, message | Outil de formulaire | Selon le fournisseur |
+| Automatisation | Toutes les données du formulaire | Make ou Zapier | Selon l''offre et la région du compte |
+| Classement par l''IA | Message (sans nom ni téléphone) | Fournisseur d''IA | Selon le fournisseur |
+| CRM | Nom, e-mail, téléphone, catégorie | CRM du client | Selon le fournisseur |
+
+> [!astuce]
+> Retirez les données inutiles **avant** l''étape d''IA : pour classer un message, l''IA n''a pas besoin du nom ni du téléphone. Vous réduisez les risques et souvent les coûts.
+
+### Les principes à appliquer
+
+1. **Minimisation** : seulement les données nécessaires à chaque étape.
+2. **Durée de conservation** : les historiques d''exécution et les tables ne gardent pas les données plus longtemps que nécessaire.
+3. **Accès** : comptes au nom du client, accès personnels, double authentification.
+4. **Sécurité** : connexions sécurisées, pas de données sensibles dans les journaux visibles.
+5. **Droits des personnes** : pouvoir retrouver et supprimer les données d''une personne dans tous les outils.
+
+## Les services utilisés (sous-traitants)
+
+> [!definition] Sous-traitant (au sens de la protection des données)
+> Un service qui traite des données personnelles pour le compte du client : plateforme d''automatisation, fournisseur d''IA, CRM, service d''e-mail. Le client doit savoir lesquels sont utilisés, et souvent signer leurs conditions de traitement des données.
+
+| À vérifier pour chaque service | Exemple de question |
+| --- | --- |
+| **Conditions de traitement des données** | Existe-t-il un accord de traitement des données (DPA) ? |
+| **Localisation** | Où sont hébergées les données ? Peut-on choisir une région ? |
+| **Usage des données par le fournisseur** | Les données envoyées à l''IA servent-elles à entraîner les modèles ? Selon quelle offre ? |
+| **Sécurité** | Certifications, chiffrement, double authentification |
+
+> [!attention]
+> Les réponses dépendent de l''**offre** souscrite (gratuite, professionnelle, entreprise) et changent avec le temps. Vérifiez la documentation officielle de chaque fournisseur, et laissez le client et ses conseillers valider les choix juridiques.
+
+## Les règles applicables à l''IA
+
+1. **Transparence** : informer les personnes quand elles échangent avec un assistant automatique.
+2. **Contrôle humain** pour les décisions importantes concernant des personnes.
+3. **Règles sectorielles** : santé, finance, emploi, éducation sont souvent plus encadrés.
+4. **Règles européennes sur l''IA** : l''Union européenne a adopté un règlement sur l''IA qui classe les usages selon leur niveau de risque. Si votre client est concerné, il doit vérifier ses obligations avec ses conseillers.
+
+## Documenter et communiquer en anglais
+
+### Le vocabulaire
+
+| Français | Anglais |
+| --- | --- |
+| Scénario d''automatisation | Workflow / scenario / Zap |
+| Déclencheur | Trigger |
+| Gestion des erreurs | Error handling |
+| Consigne | Prompt |
+| Sortie structurée | Structured output |
+| Jeu de test | Evaluation set / test set |
+| Humain dans la boucle | Human in the loop |
+| Accord de traitement des données | Data processing agreement (DPA) |
+
+> [!exemple] Note de livraison en anglais
+> "The invoice workflow is now live in assisted mode. High-confidence invoices under EUR 1,000 are pre-filled; all others go to the ''To review'' queue. On our 80-invoice test set, field accuracy is 94% and no amount errors were found. Personal data is removed before the AI step. Monthly AI cost is estimated at USD 35, with a USD 60 cap. Next review: May 15."
+
+## Travailler en équipe asynchrone
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Vidéo courte** de démonstration de chaque livraison | Le client comprend sans réunion |
+| **Fiche** de chaque scénario dans un espace partagé | Tout le monde retrouve l''information |
+| **Point hebdomadaire écrit** | Avancement, risques, décisions attendues |
+| **Heures de chevauchement** fixées | Pour les échanges en direct |
+| **Procédure d''incident** connue | Qui fait quoi en cas de panne, avec les heures en UTC |
+
+> [!madagascar]
+> Avec des clients en Europe, le faible décalage horaire permet de travailler presque aux mêmes heures. Avec l''Amérique du Nord, privilégiez l''écrit et les vidéos, et convenez d''une plage commune en fin de journée à Antananarivo.
+
+> [!retenir]
+> - Une cartographie des flux de données et la minimisation avant l''IA.
+> - Chaque service vérifié : accord de traitement, localisation, usage des données.
+> - Transparence, contrôle humain et vérification des règles sur l''IA par le client.
+> - Une documentation et des notes de livraison en anglais.
+> - Le travail asynchrone repose sur l''écrit, les vidéos et des procédures claires.
+
+## Exercice pratique : un projet international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Cartographiez les flux de données d''un de vos scénarios.
+> 2. Pour 3 services utilisés, cherchez dans leur documentation officielle : accord de traitement des données, localisation, usage des données envoyées.
+> 3. Modifiez le scénario pour retirer les données inutiles avant l''étape d''IA.
+> 4. Rédigez une note de livraison en anglais et enregistrez une vidéo de démonstration de 2 minutes.
+>
+> **À livrer** : votre cartographie, vos recherches, votre scénario modifié, votre note et votre vidéo.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 3, 0, 'Que retirer avant d''envoyer un message à l''IA pour le classer ?', '["Rien","Les données inutiles comme le nom et le téléphone","Le texte du message","La catégorie"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 3, 1, 'Que signifie DPA ?', '["Un type d''API","Une plateforme","Un langage","Accord de traitement des données"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 3, 2, 'Qui valide les choix juridiques sur les services utilisés ?', '["Personne","Le freelance seul","Le client et ses conseillers","Le fournisseur d''IA"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-4-a', 4, 'Développer son activité : offres produit, contrats mensuels, équipe et veille', 'Offres produit reproductibles, prix par la valeur, formules de contrat mensuel, études de cas chiffrées, équipe et veille appuyée sur les jeux de test.', 'L''automatisation et l''IA évoluent vite, et les entreprises ont besoin d''un **partenaire durable** qui fait fonctionner leurs systèmes et en propose de nouveaux. Ce dernier module vous aide à transformer vos projets en revenus réguliers, à fixer des prix par la valeur, à organiser une petite équipe et à rester à jour.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire des offres « produit » reproductibles.
+> 2. Fixer des prix par la valeur et vendre des contrats mensuels.
+> 3. Construire des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Rester à jour dans un domaine qui change vite.
+
+## Les offres « produit »
+
+> [!definition] Offre produit
+> Une solution standard, au contenu et au prix fixes, que vous adaptez légèrement à chaque client. Elle se vend plus vite et se livre plus sûrement qu''un projet sur mesure.
+
+| Offre produit | Contenu | Pour qui |
+| --- | --- | --- |
+| **Prospects sans perte** | Formulaires → CRM → attribution → relances → rapport hebdomadaire | Agences, centres de formation, cabinets |
+| **Factures automatiques** | Réception → extraction par l''IA → validation → logiciel comptable | PME, cabinets comptables |
+| **Service client assisté** | Classement → réponses de la base de connaissances → brouillons validés | Boutiques en ligne |
+| **Rapport de direction automatique** | Données de plusieurs outils → tableau → envoi chaque lundi | PME |
+
+## Les prix par la valeur et les contrats mensuels
+
+### Le prix d''un projet
+
+1. **Calculez** la valeur pour le client (temps gagné, erreurs évitées, ventes en plus).
+2. **Visez** un retour sur investissement de quelques mois pour le client.
+3. **Vérifiez** que le prix couvre votre temps avec une marge.
+
+### Les contrats mensuels
+
+| Formule | Contenu (exemple) |
+| --- | --- |
+| **Surveillance** | Tableau de bord d''exploitation, corrections, vérification mensuelle |
+| **Amélioration** | Surveillance + amélioration des consignes, une petite automatisation par mois |
+| **Partenaire IA et automatisation** | Amélioration + feuille de route trimestrielle, formation des équipes, veille |
+
+> [!astuce]
+> Chaque projet livré crée un besoin de **surveillance** (les services changent) et d''**amélioration** (les équipes ont de nouvelles idées). Proposez le contrat mensuel dans le devis initial, pas après la livraison.
+
+> [!exemple] Calcul
+> Projet « Factures automatiques » : 1 500 000 Ar. Contrat d''amélioration : 250 000 Ar par mois. Avec 6 clients en contrat mensuel, le revenu régulier est de 1 500 000 Ar par mois, avant les nouveaux projets.
+> *(Montants donnés en exemple. Les abonnements des outils sont payés par le client, en plus.)*
+
+## Les études de cas chiffrées
+
+1. **Le client** (avec accord ou anonymisé).
+2. **Le processus avant** : volume, temps, erreurs.
+3. **La solution** : schéma simple, rôle de l''IA, contrôle humain.
+4. **Les résultats** : heures gagnées, délais, erreurs, retour sur investissement.
+5. **La vidéo** de démonstration avec des données fictives.
+
+> [!exemple] Étude de cas courte
+> « Cabinet comptable de 8 personnes. Avant : 1 200 factures par mois saisies à la main, environ 60 heures. Solution : extraction par l''IA avec schéma JSON, validation des cas incertains, import dans le logiciel comptable. Après 2 mois : 85 % des factures préremplies, 18 heures par mois de validation, aucune erreur de montant relevée sur l''échantillon contrôlé. Retour sur investissement : 3 mois. »
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Vous** | Audit, conception, relation client, qualité |
+| **Constructeurs d''automatisations** | Scénarios, tests, documentation |
+| **Développeur partenaire** | Intégrations sur mesure, code |
+| **Assistant d''exploitation** | Surveillance quotidienne, table des erreurs |
+
+### Les règles
+
+1. **Des modèles** de fiches, de jeux de test et de notes de livraison.
+2. **Une revue** de chaque scénario avant mise en service.
+3. **Des accès** personnels aux comptes des clients.
+4. **L''accord des clients** et des accords de confidentialité.
+5. **Des contrats** et un paiement juste ; déclaration de l''activité (NIF et carte statistique) et conseil d''un comptable avant d''embaucher.
+
+> [!madagascar]
+> Pour les clients étrangers, comparez Payoneer et le virement international, et gardez une trace de chaque paiement ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Rester à jour
+
+| Source | Usage |
+| --- | --- |
+| **Documentation officielle** des plateformes et des fournisseurs d''IA | Nouveautés, limites, prix, conditions |
+| **Communautés** Make, Zapier et IA | Solutions, retours d''expérience |
+| **Vos jeux de test** | Comparer un nouveau modèle à l''ancien sur vos cas réels |
+| **Veille mensuelle** | Une heure par mois pour tester une nouveauté |
+
+> [!attention]
+> Ne changez pas de modèle d''IA ou d''outil en production parce qu''il est « nouveau » : passez-le d''abord sur votre **jeu de test**. Gardez ce qui fonctionne mieux, mesures à l''appui.
+
+## Évoluer dans le métier
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur IA appliquée** | Code (Python ou JavaScript), API d''IA, évaluation |
+| **Consultant en transformation** | Analyse de processus, conduite du changement |
+| **Développeur d''intégrations** | API, back-end (voir la formation Développeur back-end) |
+| **Responsable des opérations** | Pilotage d''équipes et de processus |
+
+> [!retenir]
+> - Des offres produit reproductibles qui se vendent et se livrent vite.
+> - Des prix par la valeur et des contrats mensuels proposés dès le départ.
+> - Des études de cas chiffrées avec démonstration.
+> - Une équipe avec modèles, revues et accès personnels.
+> - Une veille appuyée sur vos jeux de test.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez 2 offres produit complètes (contenu, durée, prix, résultat attendu).
+> 2. Rédigez vos 3 formules de contrat mensuel.
+> 3. Rédigez une étude de cas (réelle ou issue de vos exercices) avec la vidéo.
+> 4. Rédigez les règles de votre future équipe.
+> 5. Fixez vos objectifs à 12 mois : clients en contrat mensuel, revenu, équipe.
+>
+> **À livrer** : vos offres, vos formules, votre étude de cas, vos règles et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 4, 0, 'Qu''est-ce qu''une offre produit ?', '["Une solution standard au contenu et au prix fixes","Un abonnement à Make","Un projet entièrement différent à chaque fois","Un logiciel à vendre"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 4, 1, '6 clients à 250 000 Ar par mois font…', '["250 000 Ar par mois","1 500 000 Ar par mois","15 000 000 Ar par mois","600 000 Ar par mois"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-4-a', 4, 2, 'Que faire avant d''adopter un nouveau modèle d''IA en production ?', '["Rien","L''adopter tout de suite","Le passer sur le jeu de test","Supprimer l''ancien sans tester"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quelle spécialité règle les prospects perdus et les relances oubliées ?', '["Assistants internes","Automatisation commerciale","Traitement de documents","Administration"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quelle est la deuxième étape de l''audit de processus ?', '["Mesurer volume, temps, erreurs et délais","Former l''équipe","Facturer","Construire le scénario"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que soustraire du gain mensuel dans le calcul du retour sur investissement ?', '["Les abonnements mensuels","Rien","Le prix des concurrents","Le salaire du client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'L''IA peut-elle envoyer des messages aux clients sans relecture dans un cas à risque ?', '["Non","Oui","Oui, la nuit","Oui, si elle est récente"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Pourquoi filtrer avant d''itérer ?', '["Pour ralentir le scénario","Chaque élément traité consomme des opérations","Pour payer plus","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Où stocker une clé d''API dans Make ou Zapier ?', '["Dans un e-mail","Dans le nom du scénario","Dans un champ visible","Dans une connexion sécurisée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que faire en cas d''erreur temporaire d''un service ?', '["Une nouvelle tentative automatique","Ignorer pour toujours","Supprimer le scénario","Changer de client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'À quoi sert la table des erreurs ?', '["Décorer","Facturer","Rien","Transformer les pannes silencieuses en tâches visibles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que permet une sortie structurée ?', '["Une réponse conforme à un schéma JSON lisible par l''étape suivante","Une image","Une traduction","Une réponse plus longue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'De quoi dépend le coût d''une API d''IA ?', '["De rien","De la quantité de texte traitée et du modèle","Du nombre d''employés","De la couleur du scénario"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Qui fixe le plafond de dépenses de l''API d''IA ?', '["Le client, dans son compte","Personne","La plateforme de freelance","Le freelance sur sa carte"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que doit dire un assistant à base de connaissances s''il ne trouve pas la réponse ?', '["Répondre au hasard","Inventer une réponse","Rien","Qu''il ne sait pas"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Combien d''exemples dans un jeu de test ?', '["Aucun","50 à 100","1 seul","2"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que mesurer en plus de l''exactitude ?', '["La couleur","Les erreurs graves et le format valide","Le nombre de modules","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Comment réduire les inventions de l''IA ?', '["Rien","Envoyer moins d''exemples","Augmenter la température","Les interdire et exiger null si absent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quel contrôle pour un brouillon de réponse client ?', '["Validation humaine avant envoi","Suppression","Aucun","Envoi automatique immédiat"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Pourquoi vérifier chaque scénario chaque mois ?', '["Pour changer de couleur","Ce n''est pas utile","Les services externes changent","Pour facturer plus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Qui impliquer pendant le mode observation ?', '["Personne","Uniquement le comptable","Les concurrents","Les personnes qui faisaient le travail à la main"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Qu''est-ce qu''un sous-traitant au sens de la protection des données ?', '["Un concurrent","Un service qui traite des données pour le client","Un client final","Un employé"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'De quoi dépend l''usage des données par un fournisseur d''IA ?', '["Du nom du scénario","De l''offre souscrite et de ses conditions","De rien","De la météo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Que faut-il faire quand une personne échange avec un assistant automatique ?', '["Le cacher","L''en informer","Lui demander de payer","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Comment dit-on « humain dans la boucle » en anglais ?', '["Trigger","Prompt","Human in the loop","Workflow"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quel outil aide un client étranger à comprendre une livraison sans réunion ?', '["Une courte vidéo de démonstration","Un long appel imprévu","Un fichier sans explication","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quand proposer le contrat mensuel ?', '["Dans le devis initial","Seulement en cas de panne","Jamais","Un an après"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-4-a', 'Quelle évolution demande Python ou JavaScript et l''évaluation des modèles ?', '["Ingénieur IA appliquée","Professeur","Comptable","Graphiste"]'::jsonb, 0);
 
 -- data-4-f
 delete from public.exam_questions where course_id = 'data-4-f';

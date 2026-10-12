@@ -1425,6 +1425,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-4-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du spécialiste automatisation et IA un partenaire qui transforme des processus de façon fiable : spécialité (commercial, e-commerce, documents, assistants internes, intégrations, administration), audit de processus et retour sur investissement, offres payantes de Make et Zapier et API d'IA (itérateurs, HTTP, erreurs, sorties structurées, coûts, bases de connaissances), jeux de test et contrôle humain, protection des données et règles sur l'IA, puis offres produit, contrats mensuels et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer des processus et calculer le retour sur investissement",
+   "Construire des scénarios robustes avec itérateurs, HTTP et gestion des erreurs",
+   "Utiliser les API d'IA avec sorties structurées, coûts maîtrisés et bases de connaissances",
+   "Évaluer l'IA avec des jeux de test et placer le contrôle humain",
+   "Protéger les données et tenir compte des règles sur l'IA à l'international",
+   "Vendre des offres produit et des contrats mensuels, organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer les processus et calculer le retour sur investissement",
+    "summary": "Les 6 spécialités avancées, l'audit de processus en 5 étapes, le calcul du retour sur investissement, quand l'IA est utile ou risquée, et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit de processus",
+     "Quand l'IA est utile, quand elle est risquée",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Make et Zapier avancés, API d'IA et bases de connaissances",
+    "summary": "Fonctions avancées des offres payantes, itérateurs et agrégateurs, module HTTP et webhooks, stratégies d'erreur, sorties structurées et coûts de l'IA, génération augmentée par la recherche.",
+    "sections": [
+     "Make et Zapier : les fonctions avancées",
+     "Itérateurs et agrégateurs",
+     "Le module HTTP et les webhooks",
+     "La gestion des erreurs",
+     "Les API d'IA : sorties structurées et coûts",
+     "L'assistant à partir d'une base de connaissances",
+     "Exercice pratique : un système robuste"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : jeux de test, contrôle humain, versions et surveillance",
+    "summary": "Jeu de test et mesures, amélioration des consignes, humain dans la boucle selon le risque, versions et documentation, tableau de bord d'exploitation et livraison en 4 étapes.",
+    "sections": [
+     "Évaluer une étape d'IA",
+     "Placer le contrôle humain",
+     "Versionner et documenter",
+     "Surveiller la santé et les coûts",
+     "Livrer de façon progressive",
+     "Exercice pratique : fiabiliser un système"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : données, sous-traitants, règles sur l'IA et anglais",
+    "summary": "Cartographie des flux de données, minimisation avant l'IA, vérification des services utilisés, règles applicables à l'IA, documentation en anglais et travail asynchrone.",
+    "sections": [
+     "Les données personnelles dans une automatisation",
+     "Les services utilisés (sous-traitants)",
+     "Les règles applicables à l'IA",
+     "Documenter et communiquer en anglais",
+     "Travailler en équipe asynchrone",
+     "Exercice pratique : un projet international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres produit, contrats mensuels, équipe et veille",
+    "summary": "Offres produit reproductibles, prix par la valeur, formules de contrat mensuel, études de cas chiffrées, équipe et veille appuyée sur les jeux de test.",
+    "sections": [
+     "Les offres « produit »",
+     "Les prix par la valeur et les contrats mensuels",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Rester à jour",
+     "Évoluer dans le métier",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "data-4-f": {
   "hours": 16,
   "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise et y ajoute l'intelligence artificielle pour supprimer les tâches répétitives et réduire les erreurs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des centres de formation, des agences et des boutiques en ligne, avec Make, Zapier et des assistants d'IA : processus, données propres, consignes d'IA, scénarios, tests, documentation et mesure du temps gagné. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
