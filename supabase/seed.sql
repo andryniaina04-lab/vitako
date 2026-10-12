@@ -30,7 +30,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
-  ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 16, false),
+  ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 11, false),
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 17, false),
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
@@ -4709,6 +4709,673 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- dev-3-a
+delete from public.exam_questions where course_id = 'dev-3-a';
+delete from public.module_questions where course_id = 'dev-3-a';
+delete from public.lessons where course_id = 'dev-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-a', 0, 'Se spécialiser, auditer et vendre une expertise', 'Les 6 spécialités avancées, l''audit en 5 domaines, les signaux web essentiels, le cahier des charges et les offres produit à prix fixe.', 'Créer un site WordPress simple est devenu accessible à beaucoup de monde. Les développeurs bien payés sont ceux qui règlent des problèmes **difficiles** ou **importants pour le chiffre d''affaires** : boutiques qui doivent vendre, sites lents, sites multilingues, migrations délicates, sécurité. Ce module vous aide à choisir votre spécialité et à vendre une expertise plutôt que des pages.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du développement WordPress et Shopify.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit de site en 5 domaines.
+> 4. Rédiger un cahier des charges avec le client.
+> 5. Construire des offres « produit » à prix fixe.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Expert Shopify** | Une boutique qui ne vend pas assez, ou qui doit grandir | Thèmes, applications, conversion, Liquid de base |
+| 2 | **Expert WooCommerce** | Une boutique WordPress lente, complexe ou à faire évoluer | Extensions, performance, paiements, hébergement |
+| 3 | **Performance et référencement technique** | Un site lent, mal classé sur Google | Mesures de vitesse, cache, images, structure |
+| 4 | **Sites multilingues et internationaux** | Vendre ou communiquer dans plusieurs pays | Extensions de traduction, devises, réglementation |
+| 5 | **Sécurité, maintenance et dépannage** | Sites piratés, en panne, jamais mis à jour | Sauvegardes, sécurité, diagnostic |
+| 6 | **Migrations et refontes** | Passer d''un vieux site ou d''une autre plateforme à WordPress ou Shopify | Exports, redirections, reprise des contenus |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Sites de tourisme avec réservation** pour les hôtels, lodges et agences de Madagascar et de l''océan Indien.
+> - **Boutiques des marques malgaches** qui exportent (vanille, épices, artisanat, cosmétiques), avec des sites en français et en anglais.
+> - **Maintenance pour les agences web francophones** : un travail régulier, que votre décalage horaire permet de faire pendant la nuit européenne.
+
+## Choisir sa spécialité
+
+1. **Vos projets réussis** : sur quels projets étiez-vous le plus efficace et le plus content ?
+2. **La valeur pour le client** : une boutique qui vend plus ou un site qui ne tombe plus en panne justifient des budgets plus élevés qu''un site vitrine.
+3. **La demande** : regardez les offres sur les plateformes (« Shopify expert », « WordPress speed », « WooCommerce developer », « site piraté »).
+4. **Votre goût** : la performance demande de la patience et des mesures ; Shopify demande un sens du commerce ; la sécurité demande de la rigueur.
+
+## L''audit de site : votre porte d''entrée
+
+Un audit est souvent le **premier service** vendu à un nouveau client : il montre votre expertise et mène naturellement à des travaux.
+
+### Les 5 domaines de l''audit
+
+| Domaine | Ce que vous vérifiez | Outils |
+| --- | --- | --- |
+| **1. Vitesse** | Temps de chargement, poids des pages, indicateurs de Google | PageSpeed Insights, outils de développement du navigateur |
+| **2. Référencement technique** | Balises, structure des titres, pages indexées, erreurs, plan du site | Google Search Console, extension de référencement |
+| **3. Sécurité** | Mises à jour, comptes administrateurs, sauvegardes, HTTPS, extensions abandonnées | Tableau de bord, extension de sécurité |
+| **4. Expérience sur téléphone** | Lisibilité, boutons, menus, formulaires | Test sur plusieurs téléphones |
+| **5. Conversion** | Clarté de l''offre, appels à l''action, parcours d''achat ou de contact | Parcours testé comme un client |
+
+> [!definition] Signaux web essentiels (Core Web Vitals)
+> Des indicateurs de Google qui mesurent l''expérience de chargement d''une page : vitesse d''affichage du contenu principal, réactivité aux clics, stabilité de la mise en page (les éléments ne doivent pas « sauter »). Ils sont affichés dans PageSpeed Insights et Search Console.
+
+### Le rapport d''audit
+
+1. **Résumé** : les 3 problèmes les plus importants, en langage simple.
+2. **Constats** par domaine, avec des captures et des mesures.
+3. **Priorités** : ce qu''il faut corriger d''abord (impact fort, effort faible).
+4. **Proposition** de travaux, avec prix et délai.
+
+> [!exemple] Extrait de résumé d''audit
+> « Votre boutique met environ 7 secondes à s''afficher sur téléphone, principalement à cause de 14 images de plus de 2 Mo sur la page d''accueil et de 3 applications inutilisées. Sur téléphone, le bouton "Ajouter au panier" est caché sous la description. Ces deux points freinent probablement vos ventes. Nous proposons de les corriger en priorité (3 jours de travail). »
+
+## Le cahier des charges
+
+Pour les projets importants, un **cahier des charges** écrit évite les malentendus et les dépassements.
+
+### Les 8 rubriques
+
+1. **Le contexte** et les **objectifs** mesurables (exemple : « recevoir les réservations en ligne », « vendre en euros et en dollars »).
+2. **Les publics** et les **langues**.
+3. **L''arborescence** et la liste des pages.
+4. **Les fonctions** détaillées (réservation, paiement, multilingue, espace client).
+5. **Les contenus** : qui fournit quoi, et quand.
+6. **Les contraintes** : budget, délai, hébergement, outils imposés.
+7. **Ce qui n''est pas inclus**.
+8. **La recette** : comment le client vérifie et valide le site (module 3).
+
+## Les offres « produit » à prix fixe
+
+Un **service produit** est une offre standardisée, avec un contenu, un délai et un prix fixes. Le client comprend tout de suite ce qu''il achète, et vous devenez de plus en plus rapide.
+
+| Offre | Contenu | Délai |
+| --- | --- | --- |
+| **Audit complet** | 5 domaines, rapport, appel de présentation | 3 jours |
+| **Site plus rapide** | Optimisation des images, cache, nettoyage, mesures avant/après | 3 à 5 jours |
+| **Remise en sécurité** | Nettoyage d''un site piraté, mises à jour, sauvegardes, protections | 2 à 4 jours |
+| **Lancement Shopify** | Boutique configurée, thème personnalisé, 30 produits, paiements, formation | 3 semaines |
+| **Site bilingue** | Ajout d''une langue avec extension, traduction fournie par le client, sélecteur de langue | 1 à 2 semaines |
+
+Fixez chaque prix à partir de votre temps réel et de votre prix horaire, puis ajoutez la **valeur** pour le client : un site piraté qui ne vend plus depuis 3 jours représente une perte bien plus grande que vos heures de travail.
+
+> [!attention] Erreurs fréquentes
+> - Accepter de « tout faire » sans spécialité ni cahier des charges.
+> - Livrer un audit technique incompréhensible pour le client.
+> - Promettre une première place sur Google : personne ne peut le garantir.
+> - Commencer une migration sans sauvegarde complète et sans plan de redirections.
+
+> [!retenir]
+> - 6 spécialités : Shopify, WooCommerce, performance, multilingue, sécurité, migrations.
+> - L''audit en 5 domaines est la meilleure porte d''entrée chez un client.
+> - Un cahier des charges en 8 rubriques pour les projets importants.
+> - Des offres produit à prix fixe : claires pour le client, rentables pour vous.
+
+## Exercice pratique : votre premier audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la.
+> 2. Faites l''audit complet d''un vrai site d''entreprise malgache (5 domaines, avec mesures et captures).
+> 3. Rédigez le rapport d''audit avec résumé, priorités et proposition de travaux.
+> 4. Créez 2 offres produit à prix fixe dans votre spécialité.
+>
+> **À livrer** : votre justification, le rapport d''audit et vos 2 offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 0, 0, 'Quel service est souvent la meilleure porte d''entrée chez un nouveau client ?', '["Une publicité","Un logo","La refonte complète gratuite","L''audit du site"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 0, 1, 'Que mesurent les signaux web essentiels ?', '["Le prix du site","L''expérience de chargement : vitesse, réactivité, stabilité","Le nombre de pages","La couleur du logo"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 0, 2, 'Peut-on promettre une première place sur Google ?', '["Oui, avec un bon thème","Oui, toujours","Non, personne ne peut le garantir","Oui, en payant Google"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-a', 1, 'Outils professionnels : Elementor Pro, thèmes premium et Shopify avancé', 'Theme Builder et contenu dynamique, choix d''un thème premium, thème enfant, métachamps, marchés et accès collaborateur, un peu de Liquid et de PHP.', 'Les clients et les agences utilisent souvent les outils payants de l''écosystème : **Elementor Pro** pour concevoir des sites WordPress sur mesure sans tout coder, des **thèmes premium** pour WordPress et Shopify, et les **abonnements Shopify** avec leurs fonctions avancées. Ce module vous apprend à les maîtriser, et à aller un peu plus loin avec le code quand les outils ne suffisent pas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire les modèles d''un site avec le Theme Builder d''Elementor Pro.
+> 2. Afficher du contenu dynamique et créer des formulaires et des fenêtres surgissantes.
+> 3. Choisir un thème premium fiable et le personnaliser proprement.
+> 4. Utiliser les fonctions avancées de Shopify : métachamps, marchés, accès collaborateur.
+> 5. Lire et modifier du code Liquid et PHP simple, sans casser le site.
+
+## Elementor Pro : concevoir tout le site
+
+> [!definition] Theme Builder
+> L''outil d''Elementor Pro qui permet de créer les **modèles** du site : en-tête, pied de page, modèle d''article, modèle de page produit, page d''archive, page 404. Chaque modèle s''applique automatiquement à toutes les pages concernées.
+
+### Construire les modèles en 6 étapes
+
+1. **En-tête** : logo, menu, bouton d''action ; version adaptée au téléphone.
+2. **Pied de page** : coordonnées, liens légaux, réseaux sociaux.
+3. **Modèle d''article** : titre, image, contenu, auteur, articles liés.
+4. **Modèle d''archive** : liste des articles d''une catégorie.
+5. **Modèle de produit** (avec WooCommerce) : galerie, prix, variantes, bouton d''achat bien visible sur téléphone.
+6. **Conditions d''affichage** : à quelles pages chaque modèle s''applique.
+
+### Les fonctions avancées
+
+| Fonction | Usage |
+| --- | --- |
+| **Contenu dynamique** | Afficher automatiquement des informations (titre, prix, champ personnalisé) au lieu de les taper sur chaque page |
+| **Formulaires** | Contact, devis, inscription, avec envoi vers l''e-mail ou un outil de newsletter |
+| **Fenêtres surgissantes** (*popups*) | Offre, inscription à la newsletter, annonce, avec des règles d''affichage |
+| **Kit global** | Couleurs et typographies du site définies une fois, utilisées partout |
+
+> [!astuce]
+> Définissez **toujours** les couleurs et les polices dans le kit global avant de construire les pages. Si le client change sa couleur principale, une seule modification met à jour tout le site.
+
+### Les limites à connaître
+
+1. Un constructeur ajoute du **poids** aux pages : surveillez la vitesse.
+2. **Un seul constructeur** par site.
+3. La **licence** est par site (selon l''offre) et doit être **au nom du client**.
+
+## Les thèmes premium
+
+### Choisir un thème fiable : 7 critères
+
+1. **Mises à jour régulières** (date de la dernière mise à jour).
+2. **Nombre de ventes** et **avis** des utilisateurs.
+3. **Assistance** réactive (forum, tickets).
+4. **Compatibilité** avec les extensions importantes (WooCommerce, traduction, constructeur).
+5. **Vitesse** de la démonstration (testée dans PageSpeed Insights).
+6. **Documentation** claire.
+7. **Source officielle** : la boutique de l''éditeur ou une place de marché reconnue, **jamais** un site de téléchargement non officiel.
+
+### Personnaliser proprement : le thème enfant (WordPress)
+
+> [!definition] Thème enfant
+> Un petit thème qui hérite de tout le thème principal (le « parent ») et contient seulement vos modifications. Quand le thème parent se met à jour, vos modifications ne sont pas effacées.
+
+Règle : **ne modifiez jamais directement les fichiers du thème parent**. Utilisez le personnalisateur, les réglages du thème, un thème enfant, ou une extension d''extraits de code.
+
+## Shopify : les fonctions avancées
+
+### Les abonnements
+
+Les formules Shopify diffèrent par leurs fonctions, le nombre de comptes d''équipe, les rapports et les frais. Le choix dépend du chiffre d''affaires et des besoins du client : comparez sur le site officiel, et conseillez **la formule adaptée à aujourd''hui**, pas la plus chère.
+
+### Les fonctions à maîtriser
+
+| Fonction | Usage |
+| --- | --- |
+| **Éditeur de thème et sections** | Construire les pages avec des blocs, sans code |
+| **Métachamps** (*metafields*) | Ajouter des informations personnalisées aux produits (origine, mode d''emploi, composition) et les afficher dans le thème |
+| **Marchés** (*Markets*) | Vendre dans plusieurs pays : langues, devises, domaines (selon la formule et les pays) |
+| **Comptes d''équipe et accès collaborateur** | Travailler sur la boutique d''un client avec votre propre accès, depuis votre compte partenaire |
+| **Applications** | Ajouter des fonctions ; en choisir peu, bien notées, et supprimer celles qui ne servent plus |
+
+> [!exemple] Les métachamps pour une marque de vanille
+> Champs ajoutés à chaque produit : « Région d''origine » (Sava), « Grade » (A, gourmet), « Longueur des gousses » (16-18 cm), « Conseils de conservation ». Le thème les affiche automatiquement dans un tableau sur chaque fiche produit.
+
+### L''accès collaborateur
+
+Depuis votre compte **Shopify Partners**, vous demandez un **accès collaborateur** à la boutique du client, avec les droits nécessaires. Le client garde le contrôle complet et peut retirer l''accès à tout moment. C''est la méthode professionnelle : pas de partage de mot de passe.
+
+## Aller un peu plus loin avec le code
+
+### Liquid (Shopify)
+
+> [!definition] Liquid
+> Le langage des thèmes Shopify. Il insère des données de la boutique dans les pages.
+
+> [!exemple] Afficher un métachamp dans une fiche produit
+> ```
+> {% if product.metafields.custom.origine %}
+>   <p>Origine : {{ product.metafields.custom.origine }}</p>
+> {% endif %}
+> ```
+> Si le produit a une origine renseignée, elle s''affiche ; sinon, rien n''apparaît.
+
+### PHP (WordPress)
+
+> [!exemple] Un petit extrait dans le thème enfant ou une extension d''extraits
+> ```
+> // Changer le texte du bouton d''ajout au panier
+> add_filter( ''woocommerce_product_single_add_to_cart_text'', function () {
+>     return ''Commander maintenant'';
+> } );
+> ```
+
+### Les règles de sécurité du code
+
+1. **Jamais de modification directe** sur le site en ligne : testez d''abord sur une copie (module 3).
+2. **Sauvegarde** avant toute modification.
+3. **Duplication du thème** Shopify avant de modifier son code.
+4. **Commentez** votre code : expliquez ce qu''il fait, pour vous et pour le développeur suivant.
+
+> [!madagascar]
+> Les licences et abonnements se paient en devises, au nom du client. Pour un client malgache sans carte bancaire internationale, préparez avec lui une solution de paiement **avant** de choisir des outils payants, ou privilégiez des solutions gratuites solides.
+
+> [!retenir]
+> - Elementor Pro : Theme Builder, contenu dynamique, formulaires, popups, kit global.
+> - Un thème premium se choisit sur 7 critères, et se personnalise par un thème enfant.
+> - Shopify : sections, métachamps, marchés, accès collaborateur, peu d''applications.
+> - Un peu de Liquid et de PHP, toujours testés sur une copie après sauvegarde.
+
+## Exercice pratique : un site sur mesure
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec Elementor (version d''essai de Pro si possible, sinon la version gratuite), construisez en-tête, pied de page, modèle d''article et une popup d''inscription, avec un kit global.
+> 2. Créez un thème enfant et ajoutez l''extrait PHP du bouton d''achat sur votre site local WooCommerce.
+> 3. Dans votre boutique de développement Shopify, créez 3 métachamps pour des produits malgaches et affichez-les dans la fiche produit.
+> 4. Évaluez 2 thèmes premium avec les 7 critères.
+>
+> **À livrer** : des captures de chaque étape, votre code commenté et votre tableau d''évaluation des thèmes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 1, 0, 'À quoi sert le Theme Builder d''Elementor Pro ?', '["Héberger le site","Traduire le site","Payer les licences","Créer les modèles du site : en-tête, pied de page, modèles de pages"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 1, 1, 'Pourquoi utiliser un thème enfant ?', '["Pour changer d''hébergeur","C''est obligatoire pour Shopify","Pour ralentir le site","Vos modifications ne sont pas effacées par les mises à jour du thème parent"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 1, 2, 'Comment accéder professionnellement à la boutique Shopify d''un client ?', '["En créant une autre boutique","Avec son mot de passe","Par un accès collaborateur depuis Shopify Partners","Par e-mail"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-a', 2, 'Qualité et rapidité : environnements, Git, vitesse, sécurité et recette', 'Local, préproduction et production, Git, la vitesse en 6 étapes, 10 mesures de sécurité, la recette et la maintenance de nombreux sites.', 'Un développeur avancé ne casse jamais un site en ligne. Il travaille sur une copie, garde un historique de ses modifications, mesure la vitesse, sécurise et vérifie avant chaque mise en production. Ce module vous donne la méthode professionnelle pour livrer vite et sans risque, et pour entretenir de nombreux sites efficacement.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler avec 3 environnements : local, préproduction, production.
+> 2. Garder un historique de vos modifications avec Git.
+> 3. Optimiser la vitesse d''un site avec une méthode en 6 étapes.
+> 4. Sécuriser un site WordPress avec 10 mesures.
+> 5. Faire valider un site par le client avec une recette.
+> 6. Entretenir plusieurs sites depuis un seul tableau de bord.
+
+## Les 3 environnements
+
+| Environnement | Où | À quoi il sert |
+| --- | --- | --- |
+| **Local** | Votre ordinateur (LocalWP) | Développer et tester sans risque |
+| **Préproduction** (*staging*) | Une copie du site en ligne, non visible du public | Faire valider par le client, tester avec de vraies conditions |
+| **Production** | Le vrai site | Ce que voient les visiteurs |
+
+> [!definition] Préproduction
+> Une copie exacte du site, sur le même type d''hébergement, protégée (mot de passe, non indexée par Google). Beaucoup d''hébergeurs proposent une préproduction en un clic. Sur Shopify, on travaille sur un **thème dupliqué non publié**, que l''on prévisualise avant de le publier.
+
+### Le circuit d''une modification
+
+1. **Sauvegarde** de la production.
+2. **Développement** en local ou en préproduction.
+3. **Tests** (grille de recette).
+4. **Validation** du client sur la préproduction.
+5. **Mise en production**, à un moment de faible trafic.
+6. **Vérification** immédiate du site en ligne.
+
+## Git : l''historique de vos modifications
+
+> [!definition] Git
+> Un logiciel de gestion de versions : il enregistre chaque modification de vos fichiers de code (thème enfant, extensions maison, thème Shopify) avec un message. On peut revenir à n''importe quelle version précédente. On le combine souvent avec un service en ligne comme GitHub.
+
+### Les commandes de base
+
+```
+git init                         # créer l''historique dans le dossier du thème
+git add .                        # préparer les fichiers modifiés
+git commit -m "Bouton d''achat"   # enregistrer une version avec un message
+git log                          # voir l''historique
+```
+
+Shopify propose une **intégration avec GitHub** pour les thèmes : chaque modification du thème est enregistrée, et l''on peut revenir en arrière facilement.
+
+> [!astuce]
+> Écrivez des messages de version **clairs** : « Ajout du tableau d''origine sur la fiche produit » plutôt que « modif ». Dans 6 mois, quand le client vous demandera ce qui a changé, vous trouverez la réponse en quelques secondes.
+
+## Optimiser la vitesse : la méthode en 6 étapes
+
+| N° | Étape | Actions |
+| --- | --- | --- |
+| 1 | **Mesurer** | PageSpeed Insights sur 3 pages types (accueil, produit, article), sur téléphone ; notez les chiffres |
+| 2 | **Images** | Compresser, redimensionner, format moderne (WebP), chargement différé des images sous l''écran |
+| 3 | **Extensions et applications** | Supprimer celles qui ne servent pas ; remplacer les plus lourdes |
+| 4 | **Cache et compression** | Extension de cache (WordPress), compression du code, réseau de diffusion de contenu si utile |
+| 5 | **Polices et scripts** | Limiter le nombre de polices, retarder les scripts non essentiels (chat, statistiques) |
+| 6 | **Hébergement** | Si tout le reste est fait et que le serveur reste lent, conseiller un hébergement plus performant |
+
+Mesurez **après chaque étape** pour savoir ce qui a réellement amélioré la vitesse. Présentez au client un tableau **avant / après**.
+
+> [!definition] Réseau de diffusion de contenu (CDN)
+> Un réseau de serveurs répartis dans le monde qui gardent une copie des fichiers du site (images, scripts) et les envoient depuis le serveur le plus proche du visiteur. Utile pour un site qui a des visiteurs dans plusieurs pays.
+
+## Sécuriser un site WordPress : 10 mesures
+
+| N° | Mesure |
+| --- | --- |
+| 1 | Mises à jour régulières de WordPress, du thème et des extensions |
+| 2 | Suppression des extensions et thèmes inutilisés |
+| 3 | Comptes administrateurs limités, identifiants uniques, mots de passe longs |
+| 4 | Double authentification pour les administrateurs |
+| 5 | Limitation des tentatives de connexion |
+| 6 | Sauvegardes automatiques, stockées hors du serveur, **testées** |
+| 7 | HTTPS sur tout le site |
+| 8 | Extension de sécurité (pare-feu, analyse des fichiers) |
+| 9 | Droits des fichiers et accès au serveur limités |
+| 10 | Surveillance : alerte si le site tombe ou si des fichiers changent |
+
+> [!attention]
+> Une sauvegarde **jamais testée** n''est pas une sauvegarde. Une fois par trimestre, restaurez la sauvegarde d''un site sur une copie locale pour vérifier qu''elle fonctionne.
+
+## La recette : faire valider le site
+
+> [!definition] Recette
+> La phase où le client vérifie que le site correspond au cahier des charges, avant la mise en ligne ou le paiement final. On utilise une liste de tests, et chaque problème est noté et corrigé.
+
+### Le cahier de recette
+
+| N° | Test | Résultat attendu | Résultat | Commentaire |
+| --- | --- | --- | --- | --- |
+| 1 | Réserver une chambre pour 2 personnes | E-mail de confirmation reçu par le client et l''hôtel | OK | |
+| 2 | Changer de langue sur la page Chambres | La page s''affiche en anglais | KO | Le menu reste en français |
+| 3 | Payer une commande de test | Commande enregistrée, stock mis à jour | OK | |
+
+Fixez une **durée de recette** (par exemple 5 jours ouvrés) et précisez que, sans retour dans ce délai, le site est considéré comme validé. Après la validation, les nouvelles demandes sont des **évolutions**, à chiffrer séparément.
+
+## Entretenir plusieurs sites efficacement
+
+Avec 10 ou 20 sites en maintenance, il faut un système.
+
+1. **Un tableau de bord central** (outils comme MainWP ou ManageWP pour WordPress) : mises à jour, sauvegardes et surveillance de tous les sites depuis un seul endroit.
+2. **Un jour fixe** par mois pour les mises à jour, toujours après une sauvegarde, en commençant par une préproduction pour les sites importants.
+3. **Une surveillance** de disponibilité qui vous alerte si un site tombe.
+4. **Un rapport mensuel automatique**, complété par vos commentaires.
+5. **Une fiche par site** : accès, extensions, particularités, historique des interventions.
+
+> [!madagascar]
+> Les mises à jour et interventions lourdes se font idéalement quand les visiteurs du site sont peu nombreux. Pour un site européen, votre matinée correspond à la fin de nuit ou au petit matin en Europe : c''est un bon moment pour travailler sans gêner les visiteurs.
+
+> [!retenir]
+> - Local, préproduction, production : jamais de modification directe en ligne.
+> - Git garde l''historique de chaque modification de code.
+> - Vitesse : mesurer, images, extensions, cache, polices et scripts, hébergement.
+> - 10 mesures de sécurité, dont des sauvegardes testées.
+> - Une recette écrite avec un délai, et un système pour entretenir plusieurs sites.
+
+## Exercice pratique : un circuit professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez une copie de préproduction de votre site local (ou utilisez un clonage dans LocalWP).
+> 2. Initialisez Git dans votre thème enfant et enregistrez 3 versions avec des messages clairs.
+> 3. Optimisez la vitesse de votre site d''exercice avec les 6 étapes et présentez un tableau avant / après.
+> 4. Appliquez les 10 mesures de sécurité et testez la restauration d''une sauvegarde.
+> 5. Rédigez un cahier de recette de 15 tests pour votre site « Chez Lalao » (niveau Fondamentaux).
+>
+> **À livrer** : des captures de la préproduction et de l''historique Git, le tableau de vitesse, votre liste de sécurité cochée et le cahier de recette.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 2, 0, 'Où tester une modification avant la mise en ligne ?', '["Nulle part","En local ou en préproduction","Sur le téléphone du client","Directement sur le site en ligne"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 2, 1, 'À quoi sert Git ?', '["Compresser les images","Garder l''historique des modifications du code","Héberger les vidéos","Envoyer des e-mails"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 2, 2, 'Qu''est-ce qu''une sauvegarde jamais testée ?', '["La meilleure sauvegarde","Une obligation légale","Ce n''est pas une vraie sauvegarde","Une sauvegarde rapide"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-a', 3, 'Clients internationaux : conformité, multilingue, multidevise et marque blanche', 'Cookies et données personnelles, sites multilingues, vente dans plusieurs pays, travail en marque blanche, vocabulaire anglais et contrat.', 'Les clients étrangers et les agences web internationales représentent une grande partie des missions bien payées. Ils attendent des sites conformes à leurs règles (données personnelles, mentions légales), souvent multilingues et multidevises, et une communication professionnelle. Ce module vous prépare à ces exigences.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rendre un site conforme aux règles européennes de base sur les données et les cookies.
+> 2. Construire un site multilingue avec WordPress ou Shopify.
+> 3. Vendre en plusieurs devises et pays.
+> 4. Travailler en marque blanche pour une agence.
+> 5. Communiquer, contractualiser et facturer avec des clients étrangers.
+
+## Les règles sur les données et les cookies
+
+Pour un client européen, le site doit respecter le **RGPD** et les règles sur les cookies. Le client est responsable de son site, mais il attend de vous les bonnes pratiques techniques.
+
+### Les 6 éléments à mettre en place
+
+1. **Bannière de consentement** aux cookies : les cookies non essentiels (statistiques, publicité) ne se déposent **qu''après accord** du visiteur, qui peut refuser aussi facilement qu''accepter.
+2. **Politique de confidentialité** : quelles données sont collectées, pourquoi, combien de temps, quels droits (le texte est fourni ou validé par le client).
+3. **Mentions légales** : identité de l''entreprise, hébergeur, contact (obligatoires dans plusieurs pays).
+4. **Formulaires** : seulement les champs nécessaires, case de consentement pour la newsletter (non cochée par défaut).
+5. **Conditions générales de vente** pour les boutiques (fournies par le client ou son juriste).
+6. **Sécurité** : HTTPS, accès limités, sauvegardes (module 3).
+
+> [!attention]
+> Vous n''êtes pas juriste : ne rédigez pas vous-même les textes légaux d''un client. Installez les outils techniques, et demandez au client de fournir ou faire valider ses textes. Indiquez-le clairement dans votre devis.
+
+## Les sites multilingues
+
+### Avec WordPress
+
+| Solution | Principe | Points d''attention |
+| --- | --- | --- |
+| **Extensions de traduction** (comme WPML, Polylang ou TranslatePress) | Chaque page existe dans chaque langue, liée aux autres | Compatibilité avec le thème, le constructeur et WooCommerce |
+| **Un site par langue** (multisite) | Des sites séparés et reliés | Plus lourd à gérer, pour les gros projets |
+
+### Avec Shopify
+
+Shopify gère plusieurs langues et peut s''appuyer sur des applications de traduction (dont une application officielle de Shopify) pour traduire le contenu de la boutique. Les langues proposées dépendent des **marchés** configurés.
+
+### Les 6 règles d''un bon site multilingue
+
+1. **Une adresse par langue** : `site.com/fr/`, `site.com/en/` (ou des sous-domaines).
+2. **Un sélecteur de langue** visible, avec le nom de chaque langue écrit dans cette langue (« English », « Français », « Malagasy »).
+3. **Des traductions humaines** ou post-éditées pour les pages importantes ; pas de traduction automatique brute sur un site professionnel.
+4. **Les balises de langue** (*hreflang*) installées par l''extension, pour que Google montre la bonne version à chaque visiteur.
+5. **Les médias** adaptés : images avec texte, vidéos, documents PDF.
+6. **Les e-mails automatiques** (confirmation de commande, réservation) traduits aussi.
+
+## Vendre dans plusieurs pays
+
+| Élément | Ce qu''il faut configurer |
+| --- | --- |
+| **Devises** | Affichage des prix dans la devise du visiteur, arrondis lisibles |
+| **Livraison** | Zones, tarifs et délais par pays |
+| **Taxes** | Règles de taxes selon les pays : à définir **avec le comptable du client** |
+| **Paiements** | Moyens de paiement disponibles dans chaque pays et pour le pays du commerçant |
+| **Mentions** | Conditions de vente et de retour adaptées |
+
+> [!exemple] Une marque de vanille malgache qui vend en Europe
+> - Boutique Shopify en français et en anglais.
+> - Prix en euros pour l''Europe, en dollars pour le reste du monde.
+> - Livraison par transporteur international, avec délai annoncé honnêtement (exemple : 7 à 12 jours ouvrés).
+> - Métachamps « origine » et « grade » traduits.
+> - Moyens de paiement vérifiés selon le pays où l''entreprise est enregistrée : un point à étudier **avant** de construire la boutique.
+
+## Travailler en marque blanche pour une agence
+
+> [!definition] Marque blanche
+> Vous réalisez le travail pour une agence, qui le livre à son client sous son propre nom. Vous ne contactez jamais directement le client final, et vous ne mentionnez pas votre nom sur le site.
+
+### Ce que les agences attendent
+
+1. **Le respect strict** de leurs maquettes et de leurs méthodes.
+2. **La discrétion** : pas de signature, pas de mention dans votre portfolio sans accord.
+3. **La disponibilité** aux heures convenues, et une communication par leurs outils (Slack, outil de tickets).
+4. **Des délais tenus** et des estimations fiables.
+5. **Une documentation** claire de ce que vous avez fait.
+
+C''est souvent une source de **travail régulier**, qui vous fait gagner en expérience sur de nombreux projets.
+
+## Communiquer, contractualiser et facturer
+
+### Le vocabulaire anglais utile
+
+| Anglais | Français |
+| --- | --- |
+| requirements / specs | cahier des charges |
+| staging site | préproduction |
+| go-live / launch | mise en ligne |
+| bug / issue / ticket | bogue / problème / demande |
+| change request | demande d''évolution |
+| acceptance testing (UAT) | recette |
+| hourly rate / fixed price | tarif horaire / prix fixe |
+| retainer | forfait mensuel |
+| white label | marque blanche |
+
+### Le contrat
+
+1. **Le périmètre** (cahier des charges) et ce qui est exclu.
+2. **Les étapes** et paiements : par exemple 40 % au démarrage, 30 % à la maquette ou la préproduction, 30 % à la mise en ligne.
+3. **La recette** : durée, procédure, validation.
+4. **Les évolutions** après validation : facturées à part.
+5. **Les licences** et abonnements : au nom du client.
+6. **La propriété** du code et du site : transférée au client après paiement complet.
+7. **La garantie** : correction des bogues pendant une durée définie (par exemple 30 jours).
+8. **La maintenance** : proposée dans un contrat séparé.
+
+> [!madagascar]
+> Facturez vos clients étrangers en euros ou en dollars, et vérifiez avant le premier projet qu''un moyen de paiement fonctionne depuis Madagascar (virement international, Payoneer, plateforme). Les possibilités de PayPal sont limitées pour Madagascar. Gardez chaque facture et chaque relevé.
+
+> [!retenir]
+> - Bannière de consentement, textes légaux fournis par le client, formulaires sobres.
+> - Multilingue : une adresse par langue, traductions de qualité, balises de langue, e-mails traduits.
+> - Multipays : devises, livraison, taxes avec le comptable, paiements vérifiés.
+> - La marque blanche apporte du travail régulier, avec discrétion et respect des méthodes.
+> - Un contrat par étapes, avec recette, évolutions et garantie.
+
+## Exercice pratique : un site international
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Sur votre site local, installez une bannière de consentement aux cookies et vérifiez qu''aucun cookie de statistiques n''est déposé avant l''accord.
+> 2. Rendez votre site bilingue (français et anglais) avec une extension de traduction, sélecteur de langue compris.
+> 3. Dans votre boutique de développement Shopify, configurez 2 marchés avec 2 devises.
+> 4. Rédigez votre contrat type en 8 clauses (en français, avec les termes anglais clés).
+> 5. Rédigez en anglais un message de mise en ligne à une agence (ce qui a été fait, ce qu''il faut vérifier, ce qui reste à faire).
+>
+> **À livrer** : des captures de chaque étape, le contrat et le message.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 3, 0, 'Quand déposer les cookies de statistiques sur un site européen ?', '["Jamais","Toujours, sans demander","Seulement la nuit","Après l''accord du visiteur"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 3, 1, 'Qui rédige les textes légaux du site du client ?', '["Google","Personne","Le développeur seul","Le client ou son juriste ; vous installez les outils"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 3, 2, 'Qu''est-ce que la marque blanche ?', '["Travailler pour une agence qui livre sous son propre nom","Une licence gratuite","Un site sans couleur","Un thème blanc"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-a', 4, 'Développer son activité : revenus récurrents et équipe', 'Le portefeuille de maintenance, l''amélioration continue des boutiques, le prix à la valeur, la petite équipe et les 6 indicateurs de pilotage.', 'Un développeur indépendant qui ne vend que des sites doit en trouver de nouveaux chaque mois. Pour construire une activité stable, il faut des **revenus récurrents**, des offres qui valent plus que le temps passé, et parfois une petite équipe. Ce dernier module vous montre comment faire grandir votre activité de développeur WordPress et Shopify.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portefeuille de contrats de maintenance rentable.
+> 2. Proposer des offres d''amélioration continue pour les boutiques.
+> 3. Fixer vos prix selon la valeur apportée.
+> 4. Constituer une petite équipe et lui confier des tâches.
+> 5. Piloter votre activité avec quelques indicateurs.
+
+## Les revenus récurrents : la maintenance
+
+La maintenance (Fondamentaux, module 5) devient le **cœur** de votre activité au niveau avancé.
+
+### Un portefeuille de maintenance
+
+> [!exemple] Objectif à 12 mois
+>
+> | Formule | Contenu | Prix mensuel (exemple) | Clients visés | Revenu mensuel |
+> | --- | --- | --- | --- | --- |
+> | Essentiel | Mises à jour, sauvegardes, surveillance | 30 € | 15 | 450 € |
+> | Standard | Essentiel + 1 h d''évolutions + rapport | 70 € | 8 | 560 € |
+> | Boutique | Standard + suivi de vitesse et des ventes + 3 h d''évolutions | 180 € | 4 | 720 € |
+> | **Total** | | | **27 sites** | **1 730 € par mois** |
+>
+> *(Prix donnés en exemple : à adapter à votre marché, à vos clients et à votre niveau.)*
+
+### Rendre la maintenance rentable
+
+1. **Standardisez** : les mêmes outils, la même procédure, le même rapport pour tous.
+2. **Centralisez** dans un tableau de bord (module 3).
+3. **Limitez les extensions** sur les sites que vous créez : moins d''extensions, moins de mises à jour et de problèmes.
+4. **Vendez la maintenance à la mise en ligne**, pas après la première panne.
+5. **Révisez les prix** chaque année.
+
+## L''amélioration continue pour les boutiques
+
+Une boutique en ligne n''est jamais « finie ». Les marchands qui vendent bien ont besoin d''améliorations régulières.
+
+> [!definition] Taux de conversion
+> La part des visiteurs qui achètent. Exemple : 1 000 visiteurs et 15 commandes = 1,5 %. Passer de 1,5 % à 2 % avec le même nombre de visiteurs, c''est un tiers de ventes en plus.
+
+### L''offre « Croissance boutique »
+
+1. **Chaque mois**, analysez les chiffres de la boutique : visiteurs, conversion, paniers abandonnés, pages les plus vues.
+2. **Choisissez 1 ou 2 améliorations** : page produit plus claire, avis clients, livraison mieux expliquée, vitesse, parcours de paiement plus court.
+3. **Réalisez-les** et **mesurez** l''effet le mois suivant.
+4. **Présentez un rapport** : ce qui a été fait, ce qui a changé, ce qui vient ensuite.
+
+> [!exemple] Une amélioration mesurée
+> La page produit d''une marque de vanille n''expliquait pas les délais de livraison. Ajout d''un bloc « Livraison en Europe : 7 à 12 jours ouvrés, suivi inclus » sous le bouton d''achat. Le mois suivant, le taux d''ajout au panier passe de 4,1 % à 5,0 %.
+> *(Chiffres donnés en exemple. Pour être sûr de l''effet, on compare des périodes comparables et on tient compte des autres changements.)*
+
+## Fixer ses prix selon la valeur
+
+| Situation | Raisonnement |
+| --- | --- |
+| Site piraté, boutique arrêtée | La perte de ventes par jour justifie une intervention rapide et bien payée |
+| Boutique qui réalise un chiffre d''affaires important | Un petit gain de conversion vaut beaucoup d''argent pour le marchand |
+| Site vitrine d''une petite entreprise locale | La valeur est plus faible : une offre produit simple, à prix maîtrisé |
+| Agence en marque blanche | Volume régulier : un tarif horaire ou forfaitaire stable |
+
+Votre prix horaire reste le **plancher**. Pour les projets à forte valeur, calculez aussi ce que votre travail **rapporte** ou **évite de perdre** au client, et placez votre prix entre les deux.
+
+## Constituer une petite équipe
+
+### Les rôles possibles
+
+| Rôle | Tâches |
+| --- | --- |
+| **Intégrateur junior** | Mise en page à partir de maquettes, saisie de produits, tâches de maintenance simples |
+| **Designer** | Maquettes, identité visuelle (en partenariat) |
+| **Rédacteur web** | Textes des pages et fiches produits (en partenariat) |
+| **Chef de projet** (vous, au début) | Relation client, cahier des charges, planning, contrôle qualité |
+
+### Les conditions de réussite
+
+1. **Des procédures écrites** : création d''un site type, maintenance mensuelle, recette, mise en ligne.
+2. **Un kit de démarrage** : thème de base, extensions validées, réglages, modèles de pages.
+3. **Un test payé** pour chaque recrutement.
+4. **Des accès séparés** pour chaque personne (jamais de partage de comptes), retirés à la fin de la collaboration.
+5. **Un contrôle** de tout le travail au début, puis par échantillon.
+6. **Une rémunération** correcte et payée à l''heure.
+
+> [!madagascar]
+> Former de jeunes intégrateurs malgaches à vos méthodes permet de servir plus de clients, ici et à l''étranger, et crée des emplois qualifiés à distance. Commencez par une personne sur la maintenance et la saisie de produits, puis élargissez ses missions au fil de ses progrès.
+
+## Piloter son activité
+
+Chaque mois, suivez 6 indicateurs :
+
+| N° | Indicateur | Pourquoi |
+| --- | --- | --- |
+| 1 | **Revenus récurrents** (maintenance, croissance) | La base sûre de chaque mois |
+| 2 | **Revenus de projets** | Les créations et refontes |
+| 3 | **Revenu horaire réel** par type de travail | Savoir ce qui est rentable |
+| 4 | **Part du plus gros client** | Risque de dépendance |
+| 5 | **Taux d''acceptation des devis** | Plus de 80 % : vos prix sont peut-être trop bas |
+| 6 | **Incidents** sur les sites en maintenance | La qualité de votre maintenance |
+
+> [!retenir]
+> - La maintenance standardisée construit des revenus récurrents.
+> - L''amélioration continue des boutiques se mesure et se vend au mois.
+> - Le prix horaire est un plancher ; la valeur pour le client guide les projets importants.
+> - Une équipe repose sur des procédures, un kit de démarrage, des accès séparés et un contrôle.
+> - 6 indicateurs chaque mois pour piloter l''activité.
+
+## Exercice pratique : votre plan de croissance
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Construisez votre portefeuille de maintenance cible à 12 mois (formules, prix, nombre de clients).
+> 2. Rédigez l''offre « Croissance boutique » avec son rapport mensuel type.
+> 3. Rédigez 2 procédures : « maintenance mensuelle » et « mise en ligne d''un site ».
+> 4. Préparez votre kit de démarrage : liste du thème, des extensions et des réglages de base.
+> 5. Créez votre tableau des 6 indicateurs et remplissez-le avec des chiffres réels ou d''exemple.
+>
+> **À livrer** : votre portefeuille, votre offre, vos 2 procédures, votre kit et votre tableau.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 4, 0, '1 000 visiteurs et 15 commandes : quel est le taux de conversion ?', '["15 %","1,5 %","10 %","0,15 %"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 4, 1, 'Quand vendre la maintenance ?', '["À la mise en ligne","Avant même le devis","Jamais","Après la première panne"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-a', 4, 2, 'Comment donner accès aux sites à un membre de l''équipe ?', '["Avec le mot de passe du client","Avec des accès séparés, retirés à la fin","Sans accès","En partageant votre compte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quelle spécialité règle les sites piratés ou jamais mis à jour ?', '["Shopify","Sécurité, maintenance et dépannage","Multilingue","Migrations"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quels sont les 5 domaines de l''audit ?', '["Facebook, Instagram, TikTok, LinkedIn, X","Vitesse, référencement technique, sécurité, téléphone, conversion","Logo, couleurs, polices, images, vidéos","Prix, devis, facture, relance, paiement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Que met le résumé d''un audit en avant ?', '["Les 3 problèmes les plus importants, en langage simple","La liste complète des extensions","Votre CV","Tout le code du site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Qu''est-ce qu''un service produit ?', '["Un service gratuit","Un produit physique","Une offre standard avec contenu, délai et prix fixes","Une extension WordPress"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'À quoi sert le kit global d''Elementor ?', '["Définir une fois couleurs et polices pour tout le site","Héberger le site","Traduire le site","Créer des sauvegardes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Combien de constructeurs de pages par site ?', '["Aucun n''est autorisé","Deux","Un seul","Autant que possible"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Où télécharger un thème premium ?', '["Par WhatsApp","Sur la boutique officielle ou une place de marché reconnue","N''importe où","Sur un site de téléchargement gratuit non officiel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'À quoi servent les métachamps Shopify ?', '["Créer des comptes clients","Ajouter des informations personnalisées aux produits","Envoyer des e-mails","Payer l''abonnement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Que faire avant de modifier le code d''un thème Shopify ?', '["Dupliquer le thème","Rien","Supprimer le thème","Publier directement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Qu''est-ce que la préproduction ?', '["Une maquette papier","Un hébergement gratuit","Une copie protégée du site pour tester et faire valider","Le site en ligne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quel message de version Git est le meilleur ?', '["« Ajout du tableau d''origine sur la fiche produit »","« test »","« modif »","« ok »"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quelle est la première étape de l''optimisation de vitesse ?', '["Mesurer","Supprimer toutes les images","Installer 10 extensions de cache","Changer d''hébergeur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Qu''est-ce qu''un CDN ?', '["Un réseau de serveurs qui envoie les fichiers depuis le plus proche du visiteur","Un constructeur de pages","Un type de thème","Une base de données"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Où stocker les sauvegardes ?', '["Nulle part","Dans un e-mail public","Hors du serveur du site","Uniquement sur le même serveur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Qu''est-ce que la recette d''un site ?', '["Le menu du restaurant","Le paiement final","La phase où le client vérifie le site avec une liste de tests","La mise en ligne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Que deviennent les nouvelles demandes après la validation ?', '["Des corrections gratuites","Des bogues","Rien","Des évolutions à chiffrer séparément"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quel outil aide à entretenir de nombreux sites WordPress ?', '["Paint","Un cahier","Un tableau de bord central comme MainWP ou ManageWP","Canva"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Comment la bannière de cookies doit-elle proposer le refus ?', '["Caché en bas de page","Aussi facilement que l''acceptation","Jamais","Seulement en anglais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Comment écrire les langues dans un sélecteur ?', '["Toutes en français","En codes secrets","Avec des drapeaux seulement","Dans leur propre langue : English, Français, Malagasy"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'À quoi servent les balises hreflang ?', '["Changer la devise","Bloquer les robots","Montrer à Google la bonne version linguistique à chaque visiteur","Compresser les images"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Avec qui définir les règles de taxes d''une boutique internationale ?', '["Le comptable du client","Le développeur seul","Les visiteurs","Personne"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Que veut dire « change request » ?', '["Change de devise","Sauvegarde","Mise en ligne","Demande d''évolution"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quand la propriété du site passe-t-elle au client ?', '["Après le paiement complet","Après le premier acompte","Avant le début","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Que suivre chaque mois dans une offre « Croissance boutique » ?', '["Visiteurs, conversion, paniers abandonnés et effet des améliorations","Seulement le nombre d''extensions","La météo","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-a', 'Quel indicateur montre la base sûre de chaque mois ?', '["Les revenus récurrents","Le nombre de devis refusés","Les revenus de projets ponctuels","Le nombre d''extensions"]'::jsonb, 0);
 
 -- dev-3-f
 delete from public.exam_questions where course_id = 'dev-3-f';

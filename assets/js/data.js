@@ -941,6 +941,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-3-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du développeur WordPress et Shopify un spécialiste recherché : audit, cahier des charges et offres à prix fixe, outils professionnels (Elementor Pro, thèmes premium, fonctions avancées de Shopify, un peu de Liquid et de PHP), méthode de travail sans risque (préproduction, Git, vitesse, sécurité, recette), sites conformes, multilingues et multidevises pour l'international, puis revenus récurrents et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un site et rédiger un cahier des charges",
+   "Concevoir des sites avec Elementor Pro, des thèmes premium et Shopify avancé",
+   "Travailler sans risque avec préproduction, Git, sauvegardes et recette",
+   "Optimiser la vitesse et sécuriser des sites WordPress",
+   "Livrer des sites conformes, multilingues et multidevises pour l'international",
+   "Construire des revenus récurrents et une petite équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et vendre une expertise",
+    "summary": "Les 6 spécialités avancées, l'audit en 5 domaines, les signaux web essentiels, le cahier des charges et les offres produit à prix fixe.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Choisir sa spécialité",
+     "L'audit de site : votre porte d'entrée",
+     "Le cahier des charges",
+     "Les offres « produit » à prix fixe",
+     "Exercice pratique : votre premier audit"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils professionnels : Elementor Pro, thèmes premium et Shopify avancé",
+    "summary": "Theme Builder et contenu dynamique, choix d'un thème premium, thème enfant, métachamps, marchés et accès collaborateur, un peu de Liquid et de PHP.",
+    "sections": [
+     "Elementor Pro : concevoir tout le site",
+     "Les thèmes premium",
+     "Shopify : les fonctions avancées",
+     "Aller un peu plus loin avec le code",
+     "Exercice pratique : un site sur mesure"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : environnements, Git, vitesse, sécurité et recette",
+    "summary": "Local, préproduction et production, Git, la vitesse en 6 étapes, 10 mesures de sécurité, la recette et la maintenance de nombreux sites.",
+    "sections": [
+     "Les 3 environnements",
+     "Git : l'historique de vos modifications",
+     "Optimiser la vitesse : la méthode en 6 étapes",
+     "Sécuriser un site WordPress : 10 mesures",
+     "La recette : faire valider le site",
+     "Entretenir plusieurs sites efficacement",
+     "Exercice pratique : un circuit professionnel"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux : conformité, multilingue, multidevise et marque blanche",
+    "summary": "Cookies et données personnelles, sites multilingues, vente dans plusieurs pays, travail en marque blanche, vocabulaire anglais et contrat.",
+    "sections": [
+     "Les règles sur les données et les cookies",
+     "Les sites multilingues",
+     "Vendre dans plusieurs pays",
+     "Travailler en marque blanche pour une agence",
+     "Communiquer, contractualiser et facturer",
+     "Exercice pratique : un site international"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité : revenus récurrents et équipe",
+    "summary": "Le portefeuille de maintenance, l'amélioration continue des boutiques, le prix à la valeur, la petite équipe et les 6 indicateurs de pilotage.",
+    "sections": [
+     "Les revenus récurrents : la maintenance",
+     "L'amélioration continue pour les boutiques",
+     "Fixer ses prix selon la valeur",
+     "Constituer une petite équipe",
+     "Piloter son activité",
+     "Exercice pratique : votre plan de croissance"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "dev-3-f": {
   "hours": 16,
   "description": "Le développeur WordPress et Shopify crée, personnalise et entretient des sites internet et des boutiques en ligne que les clients peuvent gérer eux-mêmes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à construire des sites pour des entreprises malgaches et des clients francophones, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

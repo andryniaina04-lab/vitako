@@ -1,0 +1,97 @@
+{
+  "id": "dev-3-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du développeur WordPress et Shopify un spécialiste recherché : audit, cahier des charges et offres à prix fixe, outils professionnels (Elementor Pro, thèmes premium, fonctions avancées de Shopify, un peu de Liquid et de PHP), méthode de travail sans risque (préproduction, Git, vitesse, sécurité, recette), sites conformes, multilingues et multidevises pour l'international, puis revenus récurrents et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer un site et rédiger un cahier des charges",
+    "Concevoir des sites avec Elementor Pro, des thèmes premium et Shopify avancé",
+    "Travailler sans risque avec préproduction, Git, sauvegardes et recette",
+    "Optimiser la vitesse et sécuriser des sites WordPress",
+    "Livrer des sites conformes, multilingues et multidevises pour l'international",
+    "Construire des revenus récurrents et une petite équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et vendre une expertise",
+      "summary": "Les 6 spécialités avancées, l'audit en 5 domaines, les signaux web essentiels, le cahier des charges et les offres produit à prix fixe.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel service est souvent la meilleure porte d'entrée chez un nouveau client ?", "options": ["L'audit du site", "La refonte complète gratuite", "Un logo", "Une publicité"], "correct": 0 },
+        { "q": "Que mesurent les signaux web essentiels ?", "options": ["L'expérience de chargement : vitesse, réactivité, stabilité", "Le nombre de pages", "Le prix du site", "La couleur du logo"], "correct": 0 },
+        { "q": "Peut-on promettre une première place sur Google ?", "options": ["Non, personne ne peut le garantir", "Oui, toujours", "Oui, avec un bon thème", "Oui, en payant Google"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Elementor Pro, thèmes premium et Shopify avancé",
+      "summary": "Theme Builder et contenu dynamique, choix d'un thème premium, thème enfant, métachamps, marchés et accès collaborateur, un peu de Liquid et de PHP.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert le Theme Builder d'Elementor Pro ?", "options": ["Créer les modèles du site : en-tête, pied de page, modèles de pages", "Héberger le site", "Payer les licences", "Traduire le site"], "correct": 0 },
+        { "q": "Pourquoi utiliser un thème enfant ?", "options": ["Vos modifications ne sont pas effacées par les mises à jour du thème parent", "Pour ralentir le site", "Pour changer d'hébergeur", "C'est obligatoire pour Shopify"], "correct": 0 },
+        { "q": "Comment accéder professionnellement à la boutique Shopify d'un client ?", "options": ["Par un accès collaborateur depuis Shopify Partners", "Avec son mot de passe", "En créant une autre boutique", "Par e-mail"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : environnements, Git, vitesse, sécurité et recette",
+      "summary": "Local, préproduction et production, Git, la vitesse en 6 étapes, 10 mesures de sécurité, la recette et la maintenance de nombreux sites.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où tester une modification avant la mise en ligne ?", "options": ["En local ou en préproduction", "Directement sur le site en ligne", "Nulle part", "Sur le téléphone du client"], "correct": 0 },
+        { "q": "À quoi sert Git ?", "options": ["Garder l'historique des modifications du code", "Compresser les images", "Envoyer des e-mails", "Héberger les vidéos"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une sauvegarde jamais testée ?", "options": ["Ce n'est pas une vraie sauvegarde", "La meilleure sauvegarde", "Une sauvegarde rapide", "Une obligation légale"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : conformité, multilingue, multidevise et marque blanche",
+      "summary": "Cookies et données personnelles, sites multilingues, vente dans plusieurs pays, travail en marque blanche, vocabulaire anglais et contrat.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand déposer les cookies de statistiques sur un site européen ?", "options": ["Après l'accord du visiteur", "Toujours, sans demander", "Jamais", "Seulement la nuit"], "correct": 0 },
+        { "q": "Qui rédige les textes légaux du site du client ?", "options": ["Le client ou son juriste ; vous installez les outils", "Le développeur seul", "Personne", "Google"], "correct": 0 },
+        { "q": "Qu'est-ce que la marque blanche ?", "options": ["Travailler pour une agence qui livre sous son propre nom", "Un thème blanc", "Un site sans couleur", "Une licence gratuite"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : revenus récurrents et équipe",
+      "summary": "Le portefeuille de maintenance, l'amélioration continue des boutiques, le prix à la valeur, la petite équipe et les 6 indicateurs de pilotage.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "1 000 visiteurs et 15 commandes : quel est le taux de conversion ?", "options": ["1,5 %", "15 %", "0,15 %", "10 %"], "correct": 0 },
+        { "q": "Quand vendre la maintenance ?", "options": ["À la mise en ligne", "Après la première panne", "Jamais", "Avant même le devis"], "correct": 0 },
+        { "q": "Comment donner accès aux sites à un membre de l'équipe ?", "options": ["Avec des accès séparés, retirés à la fin", "En partageant votre compte", "Avec le mot de passe du client", "Sans accès"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité règle les sites piratés ou jamais mis à jour ?", "options": ["Sécurité, maintenance et dépannage", "Multilingue", "Shopify", "Migrations"], "correct": 0 },
+    { "q": "Quels sont les 5 domaines de l'audit ?", "options": ["Vitesse, référencement technique, sécurité, téléphone, conversion", "Logo, couleurs, polices, images, vidéos", "Prix, devis, facture, relance, paiement", "Facebook, Instagram, TikTok, LinkedIn, X"], "correct": 0 },
+    { "q": "Que met le résumé d'un audit en avant ?", "options": ["Les 3 problèmes les plus importants, en langage simple", "Tout le code du site", "La liste complète des extensions", "Votre CV"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un service produit ?", "options": ["Une offre standard avec contenu, délai et prix fixes", "Un produit physique", "Un service gratuit", "Une extension WordPress"], "correct": 0 },
+    { "q": "À quoi sert le kit global d'Elementor ?", "options": ["Définir une fois couleurs et polices pour tout le site", "Héberger le site", "Traduire le site", "Créer des sauvegardes"], "correct": 0 },
+    { "q": "Combien de constructeurs de pages par site ?", "options": ["Un seul", "Deux", "Autant que possible", "Aucun n'est autorisé"], "correct": 0 },
+    { "q": "Où télécharger un thème premium ?", "options": ["Sur la boutique officielle ou une place de marché reconnue", "Sur un site de téléchargement gratuit non officiel", "Par WhatsApp", "N'importe où"], "correct": 0 },
+    { "q": "À quoi servent les métachamps Shopify ?", "options": ["Ajouter des informations personnalisées aux produits", "Payer l'abonnement", "Envoyer des e-mails", "Créer des comptes clients"], "correct": 0 },
+    { "q": "Que faire avant de modifier le code d'un thème Shopify ?", "options": ["Dupliquer le thème", "Rien", "Supprimer le thème", "Publier directement"], "correct": 0 },
+    { "q": "Qu'est-ce que la préproduction ?", "options": ["Une copie protégée du site pour tester et faire valider", "Le site en ligne", "Une maquette papier", "Un hébergement gratuit"], "correct": 0 },
+    { "q": "Quel message de version Git est le meilleur ?", "options": ["« Ajout du tableau d'origine sur la fiche produit »", "« modif »", "« test »", "« ok »"], "correct": 0 },
+    { "q": "Quelle est la première étape de l'optimisation de vitesse ?", "options": ["Mesurer", "Changer d'hébergeur", "Supprimer toutes les images", "Installer 10 extensions de cache"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un CDN ?", "options": ["Un réseau de serveurs qui envoie les fichiers depuis le plus proche du visiteur", "Un constructeur de pages", "Un type de thème", "Une base de données"], "correct": 0 },
+    { "q": "Où stocker les sauvegardes ?", "options": ["Hors du serveur du site", "Uniquement sur le même serveur", "Nulle part", "Dans un e-mail public"], "correct": 0 },
+    { "q": "Qu'est-ce que la recette d'un site ?", "options": ["La phase où le client vérifie le site avec une liste de tests", "Le menu du restaurant", "Le paiement final", "La mise en ligne"], "correct": 0 },
+    { "q": "Que deviennent les nouvelles demandes après la validation ?", "options": ["Des évolutions à chiffrer séparément", "Des corrections gratuites", "Rien", "Des bogues"], "correct": 0 },
+    { "q": "Quel outil aide à entretenir de nombreux sites WordPress ?", "options": ["Un tableau de bord central comme MainWP ou ManageWP", "Paint", "Un cahier", "Canva"], "correct": 0 },
+    { "q": "Comment la bannière de cookies doit-elle proposer le refus ?", "options": ["Aussi facilement que l'acceptation", "Jamais", "Caché en bas de page", "Seulement en anglais"], "correct": 0 },
+    { "q": "Comment écrire les langues dans un sélecteur ?", "options": ["Dans leur propre langue : English, Français, Malagasy", "Toutes en français", "Avec des drapeaux seulement", "En codes secrets"], "correct": 0 },
+    { "q": "À quoi servent les balises hreflang ?", "options": ["Montrer à Google la bonne version linguistique à chaque visiteur", "Compresser les images", "Bloquer les robots", "Changer la devise"], "correct": 0 },
+    { "q": "Avec qui définir les règles de taxes d'une boutique internationale ?", "options": ["Le comptable du client", "Personne", "Le développeur seul", "Les visiteurs"], "correct": 0 },
+    { "q": "Que veut dire « change request » ?", "options": ["Demande d'évolution", "Change de devise", "Mise en ligne", "Sauvegarde"], "correct": 0 },
+    { "q": "Quand la propriété du site passe-t-elle au client ?", "options": ["Après le paiement complet", "Avant le début", "Jamais", "Après le premier acompte"], "correct": 0 },
+    { "q": "Que suivre chaque mois dans une offre « Croissance boutique » ?", "options": ["Visiteurs, conversion, paniers abandonnés et effet des améliorations", "Seulement le nombre d'extensions", "La météo", "Rien"], "correct": 0 },
+    { "q": "Quel indicateur montre la base sûre de chaque mois ?", "options": ["Les revenus récurrents", "Les revenus de projets ponctuels", "Le nombre de devis refusés", "Le nombre d'extensions"], "correct": 0 }
+  ]
+}
