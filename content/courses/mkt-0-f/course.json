@@ -1,0 +1,97 @@
+{
+  "id": "mkt-0-f",
+  "hours": 14,
+  "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer ce que fait un community manager et qui le paie",
+    "Rédiger une fiche client type et une ligne éditoriale",
+    "Écrire des publications avec accroche et appel à l'action",
+    "Programmer, répondre et mesurer avec Meta Business Suite et Canva",
+    "Gérer une page pendant un mois et rédiger un rapport",
+    "Vendre des forfaits mensuels et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de community manager depuis Madagascar",
+      "summary": "Ce que fait un community manager, la semaine type, vos clients, les réseaux qui comptent et l'organisation à distance.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un community manager ?", "options": ["Transformer des abonnés en clients fidèles", "Publier le plus de photos possible", "Créer le logo de la marque", "Supprimer les commentaires négatifs"], "correct": 0 },
+        { "q": "Pour la plupart des commerces à Madagascar, quel réseau vient en premier ?", "options": ["Facebook et Messenger", "LinkedIn", "Pinterest", "X (Twitter)"], "correct": 0 },
+        { "q": "Comment éviter qu'une coupure d'électricité empêche une publication ?", "options": ["Programmer les publications à l'avance", "Publier uniquement le soir", "Publier depuis un cybercafé", "Ne publier que des stories"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : cible, ligne éditoriale et écriture",
+      "summary": "La fiche client type, la ligne éditoriale en 5 points, les 4 types de publications et la structure d'un bon texte.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quels sont les 4 types de publications à alterner ?", "options": ["Informer, divertir, prouver, vendre", "Vendre, vendre, vendre, informer", "Photos, vidéos, textes, liens", "Matin, midi, soir, nuit"], "correct": 0 },
+        { "q": "Quelle partie d'une publication doit donner envie de cliquer sur « Voir plus » ?", "options": ["L'accroche, la première ligne", "Les hashtags", "Le numéro de téléphone", "La signature"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un appel à l'action ?", "options": ["La phrase qui dit au lecteur quoi faire maintenant", "Une publicité payée", "Un appel téléphonique au client", "Un emoji en fin de texte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Meta Business Suite, Canva, et les outils payants",
+      "summary": "Accès professionnel à la page, programmation, boîte de réception, visuels Canva, statistiques, puis Canva Pro, Metricool et Hootsuite.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment obtenir l'accès à la page d'un client ?", "options": ["Le client vous ajoute dans les accès de sa page avec votre propre compte", "Le client vous donne son mot de passe Facebook", "Vous créez une nouvelle page à son nom", "Vous utilisez le compte d'un ami"], "correct": 0 },
+        { "q": "Une publication touche 2 000 personnes et reçoit 80 interactions. Quel est le taux d'interaction ?", "options": ["4 %", "40 %", "0,4 %", "25 %"], "correct": 0 },
+        { "q": "Quelle est la première étape face à un commentaire négatif ?", "options": ["Remercier pour le retour", "Supprimer le commentaire", "Bloquer la personne", "Répondre que c'est faux"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : gérer une page pendant un mois",
+      "summary": "Audit en 8 points, objectifs chiffrés, calendrier éditorial, jeu-concours, suivi quotidien et rapport mensuel.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi faire un audit chiffré avant de commencer ?", "options": ["Pour pouvoir prouver ensuite les progrès", "Pour critiquer l'ancien gestionnaire", "Parce que Facebook l'exige", "Pour fixer le prix des produits"], "correct": 0 },
+        { "q": "Lequel est un bon objectif ?", "options": ["Passer de 40 à 60 messages reçus dans le mois", "Avoir plus de visibilité", "Devenir la page la plus connue de Madagascar", "Doubler les ventes à coup sûr"], "correct": 0 },
+        { "q": "Quel lot choisir pour un jeu-concours ?", "options": ["Un lot lié à la marque, comme un bon d'achat", "Le lot le plus cher possible, même sans lien avec la marque", "De l'argent liquide", "Aucun lot"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio et étude de cas, 5 canaux de prospection, forfaits mensuels, accord de collaboration et paiements.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment calculer un forfait mensuel ?", "options": ["Heures par mois × prix horaire", "Prendre le prix d'un concurrent", "Nombre d'abonnés × 100 Ar", "Demander au client ce qu'il veut payer"], "correct": 0 },
+        { "q": "Le budget de publicité payée est-il compris dans votre forfait ?", "options": ["Non, le client le paie directement à Meta", "Oui, toujours", "Oui, si le client le demande", "Seulement le premier mois"], "correct": 0 },
+        { "q": "Quand se faire payer un forfait mensuel ?", "options": ["Au début du mois", "À la fin de l'année", "Seulement si les résultats sont bons", "Quand le client y pense"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle principal d'un community manager ?", "options": ["Transformer des abonnés en clients fidèles", "Publier le plus de photos possible", "Créer le site web de la marque", "Gérer la comptabilité du client"], "correct": 0 },
+    { "q": "Pour un débutant, combien de petites pages est-il réaliste de gérer en même temps ?", "options": ["3 à 5", "20 à 30", "Une seule, toute l'année", "Plus de 50"], "correct": 0 },
+    { "q": "Que regroupe la boîte de réception de Meta Business Suite ?", "options": ["Messenger, commentaires Facebook et messages Instagram", "Seulement les e-mails", "Seulement WhatsApp", "Les appels téléphoniques"], "correct": 0 },
+    { "q": "Pourquoi activer la double authentification sur votre compte Facebook ?", "options": ["Pour protéger les pages de vos clients si votre compte est attaqué", "Pour publier plus vite", "Pour avoir plus d'abonnés", "C'est inutile"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une fiche client type (persona) ?", "options": ["La description réaliste d'un client typique de la marque", "La liste des clients qui ont payé", "Le contrat avec le client", "Une fiche de paie"], "correct": 0 },
+    { "q": "Que fixe la ligne éditoriale ?", "options": ["Les thèmes, le ton, la langue et les interdits de la page", "Le prix des produits", "Le nombre d'abonnés à atteindre", "Les horaires d'ouverture du magasin"], "correct": 0 },
+    { "q": "Pour commencer, quelle part des publications devrait servir à vendre ?", "options": ["Environ 1 sur 3 ou 4", "Toutes", "Aucune", "9 sur 10"], "correct": 0 },
+    { "q": "Quelle information est la question n° 1 en commentaire et ne doit pas être oubliée ?", "options": ["Le prix", "La date de création de la boutique", "Le nom du community manager", "La météo"], "correct": 0 },
+    { "q": "Quelles dimensions pour une story ou un Reel ?", "options": ["1080 × 1920 pixels", "1080 × 1080 pixels", "500 × 500 pixels", "1920 × 1080 pixels"], "correct": 0 },
+    { "q": "Quelles dimensions pour une publication carrée ?", "options": ["1080 × 1080 pixels", "1080 × 1920 pixels", "300 × 600 pixels", "4000 × 1000 pixels"], "correct": 0 },
+    { "q": "Que mesure la couverture ?", "options": ["Le nombre de personnes différentes qui ont vu le contenu", "Le nombre de ventes", "Le nombre de commentaires", "La taille de la photo de couverture"], "correct": 0 },
+    { "q": "Quelle statistique est la plus proche d'une vente ?", "options": ["Les messages reçus", "Le nombre de « J'aime » sur la page", "La couverture", "Le nombre de publications"], "correct": 0 },
+    { "q": "Quand peut-on supprimer un commentaire ?", "options": ["S'il contient des insultes, des données personnelles ou une arnaque", "Dès qu'il est négatif", "Jamais, dans aucun cas", "S'il pose une question sur le prix"], "correct": 0 },
+    { "q": "Quel outil payant aide à programmer sur plusieurs réseaux, dont TikTok et LinkedIn, avec des rapports automatiques ?", "options": ["Metricool", "Canva gratuit", "WhatsApp Business", "Google Sheets"], "correct": 0 },
+    { "q": "Qu'apporte surtout Canva Pro à un community manager ?", "options": ["Le kit de marque et le redimensionnement en un clic", "La programmation des publications Facebook", "Des abonnés gratuits", "La gestion de Messenger"], "correct": 0 },
+    { "q": "Que faut-il faire avant de modifier la page d'un nouveau client ?", "options": ["Un audit chiffré de départ", "Supprimer les anciennes publications", "Changer le nom de la page", "Lancer une publicité"], "correct": 0 },
+    { "q": "Pourquoi ne pas promettre un nombre de ventes au client ?", "options": ["Vous ne contrôlez ni les prix, ni le stock, ni la livraison", "Parce que les ventes n'intéressent pas le client", "Parce que c'est interdit par Meta", "Parce que les ventes ne se mesurent pas"], "correct": 0 },
+    { "q": "Quand envoyer le calendrier éditorial au client ?", "options": ["Avant le début du mois, pour validation", "Après la fin du mois", "Jamais, il n'a pas besoin de le voir", "Seulement s'il se plaint"], "correct": 0 },
+    { "q": "Que ne faut-il pas exiger dans un jeu-concours sur une page Facebook ?", "options": ["Partager sur son propre profil comme condition obligatoire", "Commenter la publication", "Respecter une date de fin", "Habiter dans la zone de livraison"], "correct": 0 },
+    { "q": "Que doit contenir un bon rapport mensuel ?", "options": ["Résultats comparés, explications et propositions", "Uniquement des captures d'écran", "La liste de toutes les publications sans chiffres", "Seulement les bons résultats"], "correct": 0 },
+    { "q": "Quel élément rend un portfolio de community manager convaincant ?", "options": ["Une étude de cas avec des chiffres", "Le plus grand nombre de visuels possible", "Une liste de logiciels connus", "Votre CV scolaire"], "correct": 0 },
+    { "q": "Quelle durée d'engagement proposer pour commencer ?", "options": ["3 mois", "1 jour", "2 semaines", "10 ans"], "correct": 0 },
+    { "q": "Qui paie le budget de publicité payée sur Facebook ?", "options": ["Le client, directement à Meta", "Le community manager, sur son forfait", "Vitako", "Personne, c'est gratuit"], "correct": 0 },
+    { "q": "Avec un revenu visé de 1 200 000 Ar et 80 heures facturables, quel est le prix horaire ?", "options": ["15 000 Ar", "1 500 Ar", "150 000 Ar", "96 000 Ar"], "correct": 0 },
+    { "q": "Que faire pour garder un client longtemps ?", "options": ["Envoyer le rapport à date fixe et proposer une idée nouvelle chaque mois", "Baisser son prix chaque mois", "Publier sans lui demander son avis", "Ne lui écrire qu'en cas de problème"], "correct": 0 }
+  ]
+}

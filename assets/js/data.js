@@ -442,5 +442,89 @@ export const PUBLISHED = {
     "minutes": 8
    }
   ]
+ },
+ "mkt-0-f": {
+  "hours": 14,
+  "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer ce que fait un community manager et qui le paie",
+   "Rédiger une fiche client type et une ligne éditoriale",
+   "Écrire des publications avec accroche et appel à l'action",
+   "Programmer, répondre et mesurer avec Meta Business Suite et Canva",
+   "Gérer une page pendant un mois et rédiger un rapport",
+   "Vendre des forfaits mensuels et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de community manager depuis Madagascar",
+    "summary": "Ce que fait un community manager, la semaine type, vos clients, les réseaux qui comptent et l'organisation à distance.",
+    "sections": [
+     "Le métier de community manager en une phrase",
+     "Une semaine type : les 6 tâches du métier",
+     "Qui sont vos clients ?",
+     "Quels réseaux pour quels clients ?",
+     "Travailler à distance depuis Madagascar",
+     "Exercice pratique : analyser 3 pages"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : cible, ligne éditoriale et écriture",
+    "summary": "La fiche client type, la ligne éditoriale en 5 points, les 4 types de publications et la structure d'un bon texte.",
+    "sections": [
+     "Connaître la cible",
+     "La ligne éditoriale",
+     "La règle des 4 types de publications",
+     "Écrire pour les réseaux sociaux",
+     "Formats et moments de publication",
+     "Exercice pratique : la base d'une page"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Meta Business Suite, Canva, et les outils payants",
+    "summary": "Accès professionnel à la page, programmation, boîte de réception, visuels Canva, statistiques, puis Canva Pro, Metricool et Hootsuite.",
+    "sections": [
+     "Les outils gratuits indispensables",
+     "Obtenir un accès professionnel à la page",
+     "Programmer une semaine dans Meta Business Suite",
+     "Répondre aux messages et aux commentaires",
+     "Créer des visuels avec Canva",
+     "Les 4 statistiques essentielles",
+     "Quand passer aux outils payants ?",
+     "Exercice pratique : une semaine programmée"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : gérer une page pendant un mois",
+    "summary": "Audit en 8 points, objectifs chiffrés, calendrier éditorial, jeu-concours, suivi quotidien et rapport mensuel.",
+    "sections": [
+     "Le cas pratique : « Lamba Soa »",
+     "L'audit de départ en 8 points",
+     "Fixer des objectifs chiffrés",
+     "Le calendrier éditorial du mois",
+     "Animer : le jeu-concours",
+     "Pendant le mois : le suivi quotidien",
+     "Le rapport mensuel",
+     "Exercice pratique : le mois de Lamba Soa"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio et étude de cas, 5 canaux de prospection, forfaits mensuels, accord de collaboration et paiements.",
+    "sections": [
+     "Le portfolio : prouver par des résultats",
+     "Où trouver des clients : 5 canaux",
+     "Calculer son forfait mensuel",
+     "L'accord de collaboration",
+     "Se faire payer depuis Madagascar",
+     "Garder ses clients longtemps",
+     "Exercice pratique : votre offre"
+    ],
+    "minutes": 8
+   }
+  ]
  }
 };
