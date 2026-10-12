@@ -1345,6 +1345,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-0-a": {
+  "hours": 20,
+  "description": "Ce niveau Avancé fait du développeur front-end un professionnel confirmé : spécialité (applications React et Next.js, performance, accessibilité, design system, e-commerce, tests), audit technique et signaux web essentiels, outils payants (WebStorm et GitHub Copilot) avec TypeScript et Next.js, tests, intégration continue, performance et accessibilité, travail international en anglais et internationalisation, puis tarif, maintenance, portfolio et petite équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et mener un audit technique en 6 domaines",
+   "Travailler avec WebStorm, GitHub Copilot, TypeScript et Next.js",
+   "Tester, automatiser les vérifications et relire le code",
+   "Améliorer la performance et l'accessibilité de façon mesurable",
+   "Travailler avec des équipes internationales et internationaliser une application",
+   "Fixer un tarif, vendre la maintenance et préparer son évolution"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et auditer une application",
+    "summary": "Les 6 spécialités avancées, l'audit technique en 6 domaines, les signaux web essentiels et leurs seuils, les offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit technique",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : WebStorm, GitHub Copilot, TypeScript et Next.js",
+    "summary": "Refactorisation, inspections et débogueur de WebStorm, bons usages et règles de Copilot, composants typés, composants serveur et client de Next.js, types d'état.",
+    "sections": [
+     "WebStorm",
+     "GitHub Copilot",
+     "TypeScript",
+     "Les bases de Next.js",
+     "Les données et l'état",
+     "Exercice pratique : passer au niveau professionnel"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : tests, intégration continue, performance et accessibilité",
+    "summary": "Tests unitaires, de composants et de bout en bout, workflow GitHub Actions, optimisation mesurée, corrections d'accessibilité et relecture par pull requests.",
+    "sections": [
+     "Les 3 niveaux de tests",
+     "L'intégration continue",
+     ".github/workflows/ci.yml",
+     "La performance d'une application React",
+     "L'accessibilité : les corrections les plus fréquentes",
+     "La relecture de code",
+     "Exercice pratique : un projet professionnel"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : anglais, internationalisation, sécurité et entretiens",
+    "summary": "Messages et pull requests en anglais, internationalisation avec l'API Intl, 7 règles de confidentialité et de propriété du code, travail asynchrone et entretiens techniques.",
+    "sections": [
+     "Communiquer en anglais",
+     "What",
+     "Why",
+     "How to test",
+     "Screenshots",
+     "L'internationalisation",
+     "Confidentialité, sécurité et propriété du code",
+     "Travailler en asynchrone",
+     "Réussir un entretien technique",
+     "Exercice pratique : prêt pour l'international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer sa carrière : tarif, maintenance, portfolio et équipe",
+    "summary": "Salarié à distance, freelance ou équipe, tarif journalier et chiffrage en fourchette, formules de maintenance, portfolio confirmé et évolutions techniques.",
+    "sections": [
+     "Les trois voies",
+     "Fixer son tarif et chiffrer un projet",
+     "Les revenus réguliers : la maintenance",
+     "Le portfolio du développeur confirmé",
+     "Organiser une petite équipe",
+     "Préparer votre évolution technique",
+     "Exercice pratique : votre plan de carrière"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-0-f": {
   "hours": 20,
   "description": "Le développeur front-end construit la partie visible et interactive des sites et des applications : pages adaptatives, composants, formulaires, affichage de données. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences web, des entreprises de services numériques et des PME, en télétravail, avec HTML, CSS, JavaScript et React. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",

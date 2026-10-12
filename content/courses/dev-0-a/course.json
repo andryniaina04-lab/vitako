@@ -1,0 +1,97 @@
+{
+  "id": "dev-0-a",
+  "hours": 20,
+  "description": "Ce niveau Avancé fait du développeur front-end un professionnel confirmé : spécialité (applications React et Next.js, performance, accessibilité, design system, e-commerce, tests), audit technique et signaux web essentiels, outils payants (WebStorm et GitHub Copilot) avec TypeScript et Next.js, tests, intégration continue, performance et accessibilité, travail international en anglais et internationalisation, puis tarif, maintenance, portfolio et petite équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et mener un audit technique en 6 domaines",
+    "Travailler avec WebStorm, GitHub Copilot, TypeScript et Next.js",
+    "Tester, automatiser les vérifications et relire le code",
+    "Améliorer la performance et l'accessibilité de façon mesurable",
+    "Travailler avec des équipes internationales et internationaliser une application",
+    "Fixer un tarif, vendre la maintenance et préparer son évolution"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et auditer une application",
+      "summary": "Les 6 spécialités avancées, l'audit technique en 6 domaines, les signaux web essentiels et leurs seuils, les offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que mesure le LCP ?", "options": ["Le temps d'affichage du plus grand élément visible", "Le nombre de pages", "Le poids des polices", "Le nombre de visiteurs"], "correct": 0 },
+        { "q": "Quel CLS est considéré comme bon ?", "options": ["0,1 ou moins", "1 ou plus", "Exactement 0,5", "Plus de 0,25"], "correct": 0 },
+        { "q": "Quelle commande repère des dépendances vulnérables ?", "options": ["npm audit", "npm start", "git commit", "npm init"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : WebStorm, GitHub Copilot, TypeScript et Next.js",
+      "summary": "Refactorisation, inspections et débogueur de WebStorm, bons usages et règles de Copilot, composants typés, composants serveur et client de Next.js, types d'état.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'une proposition de GitHub Copilot ?", "options": ["La comprendre et la tester avant de l'accepter", "L'accepter sans lire", "La publier directement", "La copier dans tous les projets"], "correct": 0 },
+        { "q": "Qu'apporte TypeScript ?", "options": ["Des types qui détectent des erreurs avant l'exécution", "Des images plus légères", "Un hébergement gratuit", "Une base de données"], "correct": 0 },
+        { "q": "Où mettre les filtres d'une liste pour pouvoir partager le lien ?", "options": ["Dans l'URL", "Dans une variable globale", "Dans un commentaire", "Nulle part"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : tests, intégration continue, performance et accessibilité",
+      "summary": "Tests unitaires, de composants et de bout en bout, workflow GitHub Actions, optimisation mesurée, corrections d'accessibilité et relecture par pull requests.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel type de test doit être le plus nombreux ?", "options": ["Les tests unitaires", "Les tests de bout en bout", "Les tests manuels", "Aucun"], "correct": 0 },
+        { "q": "Que faire avant une optimisation de performance ?", "options": ["Mesurer", "Réécrire tout le projet", "Ajouter des bibliothèques", "Rien"], "correct": 0 },
+        { "q": "Comment corriger une div cliquable ?", "options": ["Utiliser un vrai élément button", "Ajouter une couleur", "La cacher", "Ajouter un commentaire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, internationalisation, sécurité et entretiens",
+      "summary": "Messages et pull requests en anglais, internationalisation avec l'API Intl, 7 règles de confidentialité et de propriété du code, travail asynchrone et entretiens techniques.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle API du navigateur formate les dates et devises selon la langue ?", "options": ["Intl", "fetch", "localStorage", "console"], "correct": 0 },
+        { "q": "Une clé d'API a été publiée sur GitHub : que faire ?", "options": ["Prévenir le client et faire révoquer la clé", "La supprimer du fichier et ne rien dire", "Attendre", "La changer de nom"], "correct": 0 },
+        { "q": "En été, 10 h à Paris correspond à quelle heure à Antananarivo ?", "options": ["11 h", "10 h", "9 h", "13 h"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer sa carrière : tarif, maintenance, portfolio et équipe",
+      "summary": "Salarié à distance, freelance ou équipe, tarif journalier et chiffrage en fourchette, formules de maintenance, portfolio confirmé et évolutions techniques.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "36 000 000 Ar visés pour 180 jours facturables donnent quel tarif journalier ?", "options": ["200 000 Ar", "180 000 Ar", "36 000 Ar", "2 000 000 Ar"], "correct": 0 },
+        { "q": "Pourquoi chiffrer avec une fourchette ?", "options": ["Pour tenir compte des incertitudes et des risques", "Pour tromper le client", "Ce n'est pas utile", "Pour éviter d'écrire le périmètre"], "correct": 0 },
+        { "q": "Quand proposer la maintenance ?", "options": ["Dès le devis du projet", "Jamais", "Un an après la livraison", "Seulement si le site tombe en panne"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité règle les sites lents ?", "options": ["Performance web", "Design system", "Accessibilité", "Internationalisation"], "correct": 0 },
+    { "q": "Que mesure l'INP ?", "options": ["La réactivité aux interactions", "Le poids des images", "Le nombre de pages", "La couleur"], "correct": 0 },
+    { "q": "Quel LCP est considéré comme bon ?", "options": ["2,5 s ou moins", "10 s", "6 s", "Plus de 4 s"], "correct": 0 },
+    { "q": "Quel outil aide à repérer les problèmes d'accessibilité ?", "options": ["axe DevTools ou Lighthouse", "Excel", "Photoshop", "Zendesk"], "correct": 0 },
+    { "q": "Quelle fonction de WebStorm renomme un composant partout ?", "options": ["La refactorisation", "Le thème sombre", "Le correcteur orthographique", "L'impression"], "correct": 0 },
+    { "q": "Que ne faut-il jamais coller dans la discussion de Copilot ?", "options": ["Des secrets comme des clés ou mots de passe", "Une question sur un hook", "Un exemple de JSON fictif", "Un message d'erreur"], "correct": 0 },
+    { "q": "Que signifie 'use client' dans Next.js ?", "options": ["Le composant est interactif et s'exécute dans le navigateur", "Le composant est supprimé", "Le composant est un test", "Le composant est en anglais"], "correct": 0 },
+    { "q": "Quel fichier crée la page /chambres dans Next.js ?", "options": ["app/chambres/page.tsx", "chambres.css", "index.html", "package.json"], "correct": 0 },
+    { "q": "Quel outil d'état pour un menu ouvert ou fermé ?", "options": ["useState", "Une base de données", "Un cookie", "Un fichier JSON"], "correct": 0 },
+    { "q": "Quels trois états afficher pour une connexion lente ?", "options": ["Chargement, erreur avec réessayer, résultat", "Seulement le résultat", "Rien", "Une page blanche"], "correct": 0 },
+    { "q": "Quel outil lance des tests de bout en bout dans un vrai navigateur ?", "options": ["Playwright", "Vitest seul", "ESLint", "Prettier"], "correct": 0 },
+    { "q": "Que tester dans un composant ?", "options": ["Ce que voit et fait l'utilisateur", "Les noms des variables internes", "La couleur exacte du code", "Rien"], "correct": 0 },
+    { "q": "totalSejour(180000, 3, 0.1) renvoie…", "options": ["486000", "540000", "180000", "54000"], "correct": 0 },
+    { "q": "Que fait l'intégration continue ?", "options": ["Lancer automatiquement les vérifications à chaque modification", "Héberger les images", "Traduire le site", "Payer les développeurs"], "correct": 0 },
+    { "q": "Comment réduire un bundle JavaScript trop gros ?", "options": ["Chargement à la demande et suppression des bibliothèques inutiles", "Ajouter des bibliothèques", "Tout mettre dans un seul fichier", "Supprimer les tests"], "correct": 0 },
+    { "q": "Quel contraste minimum pour le texte normal au niveau AA ?", "options": ["4,5:1", "1:1", "2:1", "10:1 obligatoire"], "correct": 0 },
+    { "q": "Que doit faire une fenêtre de dialogue accessible ?", "options": ["Piéger le focus et se fermer avec Échap", "S'ouvrir sans focus", "Bloquer le clavier", "Être invisible"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une bonne pull request ?", "options": ["Petite, bien décrite, vérifications au vert", "Énorme et sans description", "Avec du code commenté", "Sans tests"], "correct": 0 },
+    { "q": "Que contient la description d'une pull request ?", "options": ["Quoi, pourquoi et comment tester", "Seulement « fix »", "Rien", "Le salaire du développeur"], "correct": 0 },
+    { "q": "Pourquoi déclarer la langue dans <html lang> ?", "options": ["Pour l'accessibilité et le référencement", "Pour la couleur", "Pour la vitesse du serveur", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Où mettre les clés d'API ?", "options": ["Dans des variables d'environnement, hors du dépôt", "Dans le code", "Dans le README", "Dans un commentaire"], "correct": 0 },
+    { "q": "À qui appartient généralement le code après paiement ?", "options": ["Au client, selon le contrat", "Au développeur pour toujours", "À GitHub", "À personne"], "correct": 0 },
+    { "q": "Que faire pendant un exercice de code en direct ?", "options": ["Expliquer son raisonnement à voix haute", "Rester silencieux", "Quitter l'appel", "Copier une solution sans comprendre"], "correct": 0 },
+    { "q": "Combien de jours facturables environ par an pour un freelance ?", "options": ["180 à 200", "365", "50", "300 à 350"], "correct": 0 },
+    { "q": "Quelle évolution demande Node.js et des bases de données ?", "options": ["Développeur full-stack", "Ingénieur design system", "Spécialiste accessibilité", "Développeur mobile"], "correct": 0 }
+  ]
+}

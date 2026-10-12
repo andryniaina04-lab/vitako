@@ -24,7 +24,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
   ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true),
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
-  ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 18, false),
+  ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true),
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 13, false),
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 14, false),
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
@@ -7812,6 +7812,674 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- dev-0-a
+delete from public.exam_questions where course_id = 'dev-0-a';
+delete from public.module_questions where course_id = 'dev-0-a';
+delete from public.lessons where course_id = 'dev-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-a', 0, 'Se spécialiser et auditer une application', 'Les 6 spécialités avancées, l''audit technique en 6 domaines, les signaux web essentiels et leurs seuils, les offres à plus forte valeur.', 'Savoir intégrer une maquette en HTML, CSS et React vous ouvre les premières missions. Les développeurs front-end les mieux payés vont plus loin : ils construisent des **applications fiables et rapides**, **accessibles à tous**, **testées**, et ils savent **expliquer leurs choix techniques**. Ce module vous aide à choisir votre spécialité et à vendre cette expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du front-end.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit technique d''une application front-end.
+> 4. Présenter les indicateurs de performance et d''accessibilité.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Applications React et Next.js** | Des applications complexes, avec comptes, données et nombreuses pages | TypeScript, gestion d''état, rendu côté serveur, appels d''API |
+| 2 | **Performance web** | Des sites lents qui perdent des visiteurs et des ventes | Signaux web essentiels, images, chargement du code, mise en cache |
+| 3 | **Accessibilité** | Des sites inutilisables pour certaines personnes, et des obligations légales dans plusieurs pays | Normes WCAG, lecteurs d''écran, navigation au clavier |
+| 4 | **Design system et composants** | Des interfaces incohérentes, longues à faire évoluer | Bibliothèque de composants, documentation, collaboration avec les designers |
+| 5 | **E-commerce et front-end découplé** | Des boutiques qui veulent une interface sur mesure | API de Shopify ou d''autres plateformes, paiement, performance |
+| 6 | **Qualité et tests** | Des régressions à chaque mise à jour | Tests unitaires, tests de composants, tests de bout en bout, intégration continue |
+
+> [!madagascar] Votre avantage
+> Les entreprises de services numériques d''Antananarivo travaillent déjà pour des clients européens et cherchent des développeurs front-end confirmés. Avec un bon niveau en React, TypeScript et tests, vous pouvez aussi viser des missions directes pour des start-up et des agences francophones. Le décalage horaire réduit (1 à 2 heures avec Paris) facilite les réunions quotidiennes.
+
+## L''audit technique
+
+L''audit est souvent un bon **premier service** chez un nouveau client : il montre votre niveau et mène à des travaux.
+
+### Les 6 domaines de l''audit
+
+| Domaine | Ce que vous vérifiez | Outils |
+| --- | --- | --- |
+| **1. Performance** | Signaux web essentiels, poids des pages, code inutilisé | PageSpeed Insights, Lighthouse, onglet Performance |
+| **2. Accessibilité** | Contrastes, textes alternatifs, navigation clavier, structure des titres | Lighthouse, axe DevTools, test au clavier, lecteur d''écran |
+| **3. Qualité du code** | Organisation, duplication, typage, erreurs détectées par ESLint | ESLint, TypeScript, relecture |
+| **4. Tests** | Présence et couverture des tests, intégration continue | Rapports de tests, GitHub Actions |
+| **5. Dépendances et sécurité** | Bibliothèques obsolètes ou vulnérables, secrets dans le code | `npm outdated`, `npm audit` |
+| **6. Expérience utilisateur** | Formulaires, messages d''erreur, états de chargement, téléphone | Parcours testés à la main |
+
+> [!definition] Signaux web essentiels (Core Web Vitals)
+> Trois indicateurs de Google : **LCP** (temps d''affichage du plus grand élément visible), **INP** (réactivité aux interactions) et **CLS** (stabilité de la mise en page). Ils sont mesurés sur de vrais visiteurs et affichés dans PageSpeed Insights.
+
+### Les seuils de référence
+
+| Indicateur | Bon | À améliorer | Mauvais |
+| --- | --- | --- | --- |
+| **LCP** | 2,5 s ou moins | Jusqu''à 4 s | Plus de 4 s |
+| **INP** | 200 ms ou moins | Jusqu''à 500 ms | Plus de 500 ms |
+| **CLS** | 0,1 ou moins | Jusqu''à 0,25 | Plus de 0,25 |
+
+*(Seuils publiés par Google au moment de la rédaction : vérifiez-les sur web.dev.)*
+
+> [!exemple] Extrait de résumé d''audit
+> « Sur téléphone, le LCP de la page d''accueil est de 5,8 s : l''image principale pèse 2,4 Mo et n''est pas prioritaire au chargement. Le bundle JavaScript fait 1,1 Mo, dont 40 % pour une bibliothèque de graphiques utilisée sur une seule page. 23 boutons n''ont pas de nom accessible. Aucun test automatique. Nous proposons 8 jours de corrections, en commençant par la performance. »
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit technique** | Rapport en 6 domaines et plan priorisé |
+| **Optimisation de performance** | Corrections et mesures avant et après |
+| **Mise en conformité accessibilité** | Corrections et rapport selon les normes WCAG |
+| **Développement d''une application** | Conception, développement, tests, mise en ligne |
+| **Design system** | Bibliothèque de composants documentée |
+| **Maintenance mensuelle** | Mises à jour, corrections, petites évolutions |
+
+> [!retenir]
+> - Spécialisez-vous : applications React et Next.js, performance, accessibilité, design system, e-commerce ou tests.
+> - L''audit en 6 domaines est votre porte d''entrée.
+> - Mesurez la performance avec les signaux web essentiels.
+> - Vendez des résultats mesurables : plus rapide, accessible, testé.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez un site public (ou votre projet Villa Ravinala) sur les 6 domaines.
+> 3. Notez les signaux web essentiels sur téléphone et sur ordinateur.
+> 4. Rédigez le résumé de l''audit et une proposition de travaux chiffrée en jours.
+>
+> **À livrer** : votre choix, votre rapport d''audit et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 0, 0, 'Que mesure le LCP ?', '["Le nombre de pages","Le nombre de visiteurs","Le poids des polices","Le temps d''affichage du plus grand élément visible"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 0, 1, 'Quel CLS est considéré comme bon ?', '["1 ou plus","0,1 ou moins","Exactement 0,5","Plus de 0,25"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 0, 2, 'Quelle commande repère des dépendances vulnérables ?', '["npm init","npm start","npm audit","git commit"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-a', 1, 'Outils professionnels : WebStorm, GitHub Copilot, TypeScript et Next.js', 'Refactorisation, inspections et débogueur de WebStorm, bons usages et règles de Copilot, composants typés, composants serveur et client de Next.js, types d''état.', 'Au niveau Avancé, vous travaillez avec des outils qui accélèrent les professionnels : **WebStorm**, un éditeur complet, et **GitHub Copilot**, un assistant d''IA dans l''éditeur. Vous passez aussi à **TypeScript** et à **Next.js**, très demandés dans les offres. Ce module vous apprend à utiliser ces outils sans perdre la maîtrise de votre code.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées de WebStorm : refactorisation, débogage, inspections.
+> 2. Utiliser GitHub Copilot de façon sûre et efficace.
+> 3. Écrire des composants React en TypeScript.
+> 4. Comprendre les bases de Next.js.
+> 5. Gérer les données et l''état d''une application.
+
+## WebStorm
+
+> [!definition] WebStorm
+> Un éditeur payant de JetBrains, spécialisé pour JavaScript et TypeScript. Il comprend la structure de votre projet et propose des outils intégrés de refactorisation, de débogage et de tests. Des licences gratuites existent pour les étudiants et certains projets libres : vérifiez les conditions sur le site officiel.
+
+| Fonction | Utilité |
+| --- | --- |
+| **Refactorisation** | Renommer un composant ou extraire une fonction partout dans le projet, sans erreur |
+| **Inspections** | Signale le code inutilisé, les erreurs de type, les mauvaises pratiques |
+| **Débogueur** | Arrêter le code à une ligne, voir les valeurs des variables |
+| **Lancement des tests** | Exécuter et relancer les tests depuis l''éditeur |
+| **Intégration Git** | Voir les différences, résoudre les conflits visuellement |
+
+> [!astuce]
+> Apprenez 5 raccourcis par semaine. Dans WebStorm, « Rechercher partout » (deux fois Maj) et « Actions contextuelles » (Alt + Entrée) font gagner un temps considérable.
+
+## GitHub Copilot
+
+> [!definition] GitHub Copilot
+> Un assistant d''IA payant (avec des offres gratuites limitées et des offres pour étudiants) qui propose du code pendant que vous écrivez, répond à des questions sur votre code dans une fenêtre de discussion, et peut aider à relire des modifications.
+
+### Les bons usages
+
+| Usage | Exemple |
+| --- | --- |
+| Code répétitif | Types TypeScript à partir d''un exemple de JSON, données de test |
+| Tests | Proposer des cas de test pour une fonction existante |
+| Explication | « Explique ce que fait ce hook » sur un code hérité |
+| Documentation | Commentaires et README à partir du code |
+
+### Les règles
+
+1. **Comprenez chaque ligne** avant de l''accepter.
+2. **Testez** le code proposé : il peut être faux, dépassé ou peu sûr.
+3. **Ne collez jamais** de secrets (clés, mots de passe) dans la discussion.
+4. **Vérifiez** que votre client autorise l''outil sur son code.
+5. **Vérifiez les licences** si une proposition ressemble à un code existant connu.
+
+> [!attention]
+> Un développeur qui accepte sans comprendre devient incapable de corriger ses propres bugs. Les entretiens techniques testent votre compréhension, souvent sans assistant. Gardez l''habitude d''écrire vous-même les parties importantes.
+
+## TypeScript
+
+TypeScript ajoute des **types** à JavaScript : l''éditeur détecte beaucoup d''erreurs avant l''exécution.
+
+```tsx
+type Chambre = {
+  id: number;
+  nom: string;
+  prix: number;
+  capacite: number;
+  vueMer: boolean;
+};
+
+type Props = {
+  chambre: Chambre;
+  onReserver: (id: number) => void;
+};
+
+export function CarteChambre({ chambre, onReserver }: Props) {
+  return (
+    <article className="carte">
+      <h3>{chambre.nom}</h3>
+      <p>{chambre.prix.toLocaleString(''fr-FR'')} Ar par nuit</p>
+      <button onClick={() => onReserver(chambre.id)}>Réserver</button>
+    </article>
+  );
+}
+```
+
+Si vous écrivez `chambre.pix` au lieu de `chambre.prix`, l''éditeur le signale immédiatement.
+
+## Les bases de Next.js
+
+> [!definition] Next.js
+> Un framework construit sur React qui ajoute le routage par fichiers, le rendu côté serveur, la génération de pages statiques et l''optimisation des images. Il est très utilisé pour les sites qui doivent être rapides et bien référencés.
+
+| Notion | Ce que c''est |
+| --- | --- |
+| **Routage par fichiers** | Un fichier `app/chambres/page.tsx` crée la page `/chambres` |
+| **Composants serveur** | Des composants rendus sur le serveur, qui peuvent lire des données sans envoyer leur code au navigateur |
+| **Composants client** | Des composants interactifs, marqués `''use client''` |
+| **Images optimisées** | Le composant `Image` redimensionne et charge les images au bon moment |
+
+```tsx
+// app/chambres/page.tsx (composant serveur)
+import { CarteChambreClient } from ''./CarteChambreClient'';
+
+export default async function PageChambres() {
+  const res = await fetch(''https://api.exemple.com/chambres'', { next: { revalidate: 3600 } });
+  const chambres = await res.json();
+  return (
+    <main>
+      <h1>Nos chambres</h1>
+      {chambres.map((c: any) => <CarteChambreClient key={c.id} chambre={c} />)}
+    </main>
+  );
+}
+```
+
+## Les données et l''état
+
+| Type d''état | Exemple | Outil courant |
+| --- | --- | --- |
+| **Local** | Un menu ouvert ou fermé | `useState` |
+| **Partagé** | Le panier, l''utilisateur connecté | Contexte React ou une bibliothèque légère de gestion d''état |
+| **Données du serveur** | Liste des produits, commandes | Une bibliothèque de requêtes avec cache (par exemple TanStack Query) |
+| **Formulaires** | Champs, erreurs, envoi | Une bibliothèque de formulaires ou l''état local |
+| **URL** | Filtres, page courante | Paramètres de l''adresse |
+
+> [!astuce]
+> Mettez les filtres et la pagination dans l''**URL** : l''utilisateur peut partager le lien, utiliser le bouton « retour » et retrouver exactement la même page.
+
+> [!madagascar]
+> Pour les utilisateurs avec une connexion lente ou instable, prévoyez toujours trois états visibles : **chargement**, **erreur avec bouton « Réessayer »**, et **résultat**. Mettez aussi les données en cache quand c''est possible : une page déjà visitée doit se réafficher sans attendre le réseau.
+
+> [!retenir]
+> - WebStorm : refactorisation, inspections, débogueur, tests et Git intégrés.
+> - Copilot : utile pour le répétitif et les tests, à condition de comprendre et tester chaque ligne.
+> - TypeScript détecte les erreurs avant l''exécution.
+> - Next.js : routage par fichiers, composants serveur et client, images optimisées.
+> - Choisissez l''outil d''état selon le type de données.
+
+## Exercice pratique : passer au niveau professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Installez WebStorm (version d''essai ou licence étudiante) et apprenez 10 raccourcis.
+> 2. Convertissez votre projet Villa Ravinala en TypeScript.
+> 3. Recréez la liste des chambres dans un projet Next.js avec un composant serveur et un composant client.
+> 4. Mettez le filtre « vue sur la mer » dans l''URL.
+> 5. Utilisez Copilot (ou un autre assistant autorisé) pour proposer des tests, et notez ce que vous avez dû corriger.
+>
+> **À livrer** : le lien du dépôt, une capture du débogueur et votre note sur les corrections apportées aux propositions de l''IA.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 1, 0, 'Que faire d''une proposition de GitHub Copilot ?', '["L''accepter sans lire","La comprendre et la tester avant de l''accepter","La publier directement","La copier dans tous les projets"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 1, 1, 'Qu''apporte TypeScript ?', '["Une base de données","Un hébergement gratuit","Des images plus légères","Des types qui détectent des erreurs avant l''exécution"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 1, 2, 'Où mettre les filtres d''une liste pour pouvoir partager le lien ?', '["Dans un commentaire","Dans une variable globale","Nulle part","Dans l''URL"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-a', 2, 'Qualité et rapidité : tests, intégration continue, performance et accessibilité', 'Tests unitaires, de composants et de bout en bout, workflow GitHub Actions, optimisation mesurée, corrections d''accessibilité et relecture par pull requests.', 'Les équipes professionnelles ne livrent pas du code « qui marche sur ma machine ». Elles **testent**, **vérifient automatiquement** chaque modification, **mesurent** la performance et l''accessibilité, et **relisent** le code. Ce module vous donne ces méthodes pour livrer vite sans casser ce qui existe.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des tests unitaires, de composants et de bout en bout.
+> 2. Mettre en place une intégration continue avec GitHub Actions.
+> 3. Améliorer la performance d''une application React.
+> 4. Corriger les problèmes d''accessibilité les plus fréquents.
+> 5. Relire et faire relire du code avec des pull requests.
+
+## Les 3 niveaux de tests
+
+| Niveau | Ce qu''il vérifie | Outils courants | Quantité |
+| --- | --- | --- | --- |
+| **Unitaire** | Une fonction seule | Vitest ou Jest | Beaucoup |
+| **Composant** | Un composant affiché et utilisé comme par un utilisateur | Testing Library | Assez |
+| **Bout en bout** | Un parcours complet dans un vrai navigateur | Playwright | Quelques-uns, sur les parcours importants |
+
+### Un test unitaire
+
+```ts
+// prix.ts
+export function totalSejour(prixNuit: number, nuits: number, remise = 0) {
+  if (nuits <= 0) throw new Error(''Nombre de nuits invalide'');
+  return Math.round(prixNuit * nuits * (1 - remise));
+}
+
+// prix.test.ts
+import { describe, it, expect } from ''vitest'';
+import { totalSejour } from ''./prix'';
+
+describe(''totalSejour'', () => {
+  it(''calcule le total sans remise'', () => {
+    expect(totalSejour(180000, 3)).toBe(540000);
+  });
+  it(''applique une remise de 10 %'', () => {
+    expect(totalSejour(180000, 3, 0.1)).toBe(486000);
+  });
+  it(''refuse 0 nuit'', () => {
+    expect(() => totalSejour(180000, 0)).toThrow();
+  });
+});
+```
+
+### Un test de composant
+
+```tsx
+import { it, expect, vi } from ''vitest'';
+import { render, screen } from ''@testing-library/react'';
+import userEvent from ''@testing-library/user-event'';
+import { CarteChambre } from ''./CarteChambre'';
+
+it(''appelle onReserver avec l\''identifiant de la chambre'', async () => {
+  const onReserver = vi.fn();
+  render(<CarteChambre chambre={{ id: 7, nom: ''Baobab'', prix: 180000, capacite: 2, vueMer: true }} onReserver={onReserver} />);
+  await userEvent.click(screen.getByRole(''button'', { name: ''Réserver'' }));
+  expect(onReserver).toHaveBeenCalledWith(7);
+});
+```
+
+> [!astuce]
+> Testez **ce que voit et fait l''utilisateur** (un bouton nommé « Réserver », un message d''erreur), pas les détails internes du composant. Vos tests résisteront mieux aux réorganisations du code.
+
+## L''intégration continue
+
+> [!definition] Intégration continue (CI)
+> Un service qui lance automatiquement les vérifications (types, lint, tests, build) à chaque envoi de code ou pull request. Une modification qui casse quelque chose est détectée avant d''arriver en production.
+
+```yaml
+# .github/workflows/ci.yml
+name: CI
+on: [push, pull_request]
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm test -- --run
+      - run: npm run build
+```
+
+## La performance d''une application React
+
+| Problème | Solution |
+| --- | --- |
+| Images lourdes | Formats modernes (WebP, AVIF), bonnes dimensions, chargement différé hors de l''écran |
+| Bundle JavaScript trop gros | Chargement à la demande (`import()` dynamique, `React.lazy`), suppression des bibliothèques inutiles |
+| Rendus inutiles | Découper les composants, éviter de recréer des objets à chaque rendu, mesurer avant d''optimiser |
+| Longues listes | Pagination ou affichage virtualisé |
+| Décalages de mise en page (CLS) | Réserver la place des images et des blocs qui se chargent |
+| Polices | Charger seulement les graisses utilisées, `font-display: swap` |
+
+> [!attention]
+> Mesurez **avant** et **après** chaque optimisation (Lighthouse, onglet Performance, React DevTools Profiler). Une optimisation qui ne change pas les chiffres ajoute de la complexité pour rien.
+
+## L''accessibilité : les corrections les plus fréquentes
+
+| Problème | Correction |
+| --- | --- |
+| Bouton sans nom (icône seule) | `aria-label="Fermer"` ou texte masqué visuellement |
+| `div` cliquable | Utiliser un vrai `button` |
+| Champ sans étiquette | `label` relié au champ |
+| Contraste insuffisant | Couleurs au moins 4,5:1 pour le texte normal (WCAG niveau AA) |
+| Focus invisible | Style `:focus-visible` clair |
+| Fenêtre de dialogue | Focus piégé dans la fenêtre, fermeture avec Échap, retour du focus au bouton d''origine |
+| Messages d''erreur | Liés au champ et annoncés aux lecteurs d''écran |
+
+> [!definition] WCAG
+> Les règles internationales pour l''accessibilité des contenus web. Le niveau **AA** est celui demandé le plus souvent par les clients et par les lois de plusieurs pays.
+
+## La relecture de code
+
+### Une bonne pull request
+
+1. **Petite** : une seule fonction ou correction.
+2. **Un titre clair** et une description : quoi, pourquoi, comment tester, captures si visuel.
+3. **Les vérifications automatiques** au vert.
+4. **Aucun code commenté** ou fichier de test oublié.
+
+### Relire le code des autres
+
+| À vérifier | Exemple de commentaire constructif |
+| --- | --- |
+| Exactitude | « Que se passe-t-il si la liste est vide ? » |
+| Lisibilité | « Je propose de renommer `d` en `dateArrivee` pour la clarté. » |
+| Tests | « Peux-tu ajouter un test pour le cas d''erreur réseau ? » |
+| Accessibilité | « Ce bouton icône n''a pas de nom accessible. » |
+
+> [!madagascar]
+> Les pull requests et l''intégration continue permettent de travailler **en asynchrone** avec une équipe à l''étranger : votre code est vérifié automatiquement et relu même pendant une coupure de courant chez vous. Rédigez des descriptions complètes pour que le relecteur n''ait pas besoin de vous joindre.
+
+> [!retenir]
+> - Beaucoup de tests unitaires, assez de tests de composants, quelques tests de bout en bout.
+> - L''intégration continue vérifie chaque modification : lint, types, tests, build.
+> - Mesurez avant d''optimiser la performance.
+> - Corrigez les problèmes d''accessibilité fréquents, visez le niveau AA des WCAG.
+> - De petites pull requests bien décrites et des relectures constructives.
+
+## Exercice pratique : un projet professionnel
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Ajoutez 6 tests unitaires, 3 tests de composants et 1 test Playwright à votre projet.
+> 2. Mettez en place le workflow GitHub Actions et obtenez une exécution verte.
+> 3. Mesurez la performance, faites 3 optimisations, mesurez à nouveau.
+> 4. Corrigez au moins 5 problèmes d''accessibilité repérés avec Lighthouse et un test au clavier.
+> 5. Faites toutes ces modifications par des pull requests décrites.
+>
+> **À livrer** : le lien du dépôt, la capture du workflow vert et votre tableau avant et après.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 2, 0, 'Quel type de test doit être le plus nombreux ?', '["Aucun","Les tests unitaires","Les tests de bout en bout","Les tests manuels"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 2, 1, 'Que faire avant une optimisation de performance ?', '["Mesurer","Rien","Réécrire tout le projet","Ajouter des bibliothèques"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 2, 2, 'Comment corriger une div cliquable ?', '["Ajouter un commentaire","Utiliser un vrai élément button","Ajouter une couleur","La cacher"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-a', 3, 'Clients internationaux : anglais, internationalisation, sécurité et entretiens', 'Messages et pull requests en anglais, internationalisation avec l''API Intl, 7 règles de confidentialité et de propriété du code, travail asynchrone et entretiens techniques.', 'Les start-up, agences et entreprises étrangères offrent les missions front-end les mieux payées, mais elles attendent une communication professionnelle en anglais, des applications multilingues, un respect strict de la confidentialité et de la propriété du code, et la réussite d''entretiens techniques exigeants. Ce module vous prépare à travailler avec elles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Communiquer par écrit en anglais dans une équipe de développement.
+> 2. Rendre une application multilingue et adaptée à chaque pays.
+> 3. Respecter la confidentialité, la sécurité et la propriété du code.
+> 4. Travailler en asynchrone avec une équipe dans d''autres fuseaux horaires.
+> 5. Réussir un entretien technique front-end.
+
+## Communiquer en anglais
+
+### Les messages du quotidien
+
+| Situation | Anglais |
+| --- | --- |
+| Point quotidien | "Yesterday: finished the booking form. Today: adding validation tests. Blocker: I need the API endpoint for availability." |
+| Poser une question | "Quick question about the design: should the filter stay open on mobile after selection?" |
+| Signaler un problème | "I found a bug in production: the date picker crashes on Safari 17. I''m on it, fix expected today." |
+| Demander une relecture | "PR ready for review: adds keyboard navigation to the room gallery." |
+| Prévenir d''une absence | "Heads-up: planned power outage tomorrow 9–11 a.m. my time (UTC+3). I''ll catch up in the afternoon." |
+
+### La description d''une pull request
+
+```
+## What
+Adds keyboard navigation to the room gallery (arrow keys, Escape to close).
+
+## Why
+Accessibility audit (issue #42): the gallery was not usable without a mouse.
+
+## How to test
+1. Open /rooms
+2. Tab to the first photo and press Enter
+3. Use arrow keys to navigate, Escape to close
+
+## Screenshots
+(before / after)
+```
+
+## L''internationalisation
+
+> [!definition] Internationalisation (i18n)
+> Préparer une application pour plusieurs langues et pays : textes traduits, formats de dates, de nombres et de devises, sens de lecture, longueurs de texte différentes.
+
+### Les règles
+
+1. **Aucun texte écrit en dur** dans les composants : tous dans des fichiers de traduction.
+2. **Formats** de dates, nombres et devises avec l''API `Intl` du navigateur.
+3. **Mises en page souples** : l''allemand peut être bien plus long que l''anglais.
+4. **Langue déclarée** dans `<html lang="…">` pour l''accessibilité et le référencement.
+
+```ts
+const prix = 180000;
+new Intl.NumberFormat(''fr-FR'', { style: ''currency'', currency: ''MGA'' }).format(prix);
+// « 180 000 MGA » (le format exact dépend du navigateur)
+
+new Intl.NumberFormat(''en-GB'', { style: ''currency'', currency: ''EUR'' }).format(42.5);
+// « €42.50 »
+
+new Intl.DateTimeFormat(''fr-FR'', { dateStyle: ''long'' }).format(new Date(''2026-07-14''));
+// « 14 juillet 2026 »
+```
+
+> [!madagascar]
+> Pour les sites malgaches qui visent aussi les touristes et les clients étrangers, prévoyez au moins le **français** et l''**anglais**, et le **malgache** pour le public local. Faites relire chaque langue par un locuteur natif, et testez l''affichage avec les textes les plus longs.
+
+## Confidentialité, sécurité et propriété du code
+
+### Les 7 règles
+
+1. **Respectez** l''accord de confidentialité : pas de capture du projet client dans votre portfolio sans accord.
+2. **Ne mettez jamais** de secrets (clés d''API, mots de passe) dans le code ou le dépôt ; utilisez des variables d''environnement.
+3. **Utilisez** les comptes et dépôts du client, avec la double authentification.
+4. **N''installez** pas de bibliothèque inconnue sans vérifier sa popularité, sa maintenance et sa licence.
+5. **Vérifiez** les licences des bibliothèques (MIT, Apache… compatibles avec l''usage du client).
+6. **Respectez** la propriété du code : en général, le code appartient au client après paiement, selon le contrat.
+7. **Retirez** vos accès et supprimez les copies locales à la fin de la mission si le contrat le demande.
+
+> [!attention]
+> Une clé d''API publiée par erreur sur GitHub peut être utilisée en quelques minutes par des robots. Si cela arrive, **prévenez immédiatement** le client et faites révoquer la clé : la supprimer du dépôt ne suffit pas, elle reste dans l''historique.
+
+## Travailler en asynchrone
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Heures de chevauchement** fixées avec l''équipe | Pour les réunions et les questions urgentes |
+| **Messages complets** | Le lecteur peut agir sans vous répondre |
+| **Tickets à jour** | Tout le monde sait où en sont les tâches |
+| **Décisions écrites** | Pas de décision perdue dans un appel |
+| **Démonstrations enregistrées** | Une courte vidéo remplace parfois une réunion |
+
+| Équipe | Heure de Madagascar (UTC+3) |
+| --- | --- |
+| Paris (été, UTC+2) | 10 h à Paris = 11 h à Antananarivo |
+| Londres (hiver, UTC+0) | 10 h à Londres = 13 h à Antananarivo |
+| New York (été, UTC−4) | 10 h à New York = 17 h à Antananarivo |
+
+## Réussir un entretien technique
+
+| Étape | Contenu | Préparation |
+| --- | --- | --- |
+| **Questions de base** | JavaScript (portée, promesses, `this`), CSS (mise en page, spécificité), React (état, effets, clés) | Révisez et expliquez à voix haute |
+| **Exercice en direct** | Construire un petit composant (liste filtrable, formulaire) | Parlez de votre raisonnement en codant |
+| **Devoir à la maison** | Petite application en quelques heures | README clair, tests, code propre |
+| **Revue de code** | Lire un code et proposer des améliorations | Pratiquez la relecture |
+| **Entretien en anglais** | Expériences, travail en équipe | Préparez 5 exemples concrets |
+
+> [!astuce]
+> Pendant un exercice en direct, dites ce que vous faites et pourquoi, même si vous hésitez. Les recruteurs évaluent autant votre **raisonnement** et votre **communication** que le résultat.
+
+> [!retenir]
+> - Des messages en anglais complets : points quotidiens, questions, pull requests.
+> - L''internationalisation : traductions, API `Intl`, mises en page souples, langue déclarée.
+> - 7 règles de confidentialité, de sécurité et de propriété du code.
+> - Le travail asynchrone repose sur l''écrit, les tickets et des heures de chevauchement.
+> - Préparez chaque étape de l''entretien technique.
+
+## Exercice pratique : prêt pour l''international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rendez votre projet disponible en français et en anglais, avec les prix et les dates formatés par `Intl`.
+> 2. Rédigez en anglais 3 descriptions de pull requests et 5 messages de point quotidien.
+> 3. Vérifiez votre dépôt : aucun secret, licences des dépendances listées.
+> 4. Entraînez-vous à 3 exercices en direct (liste filtrable, formulaire, compteur avec minuterie) en expliquant à voix haute, et enregistrez-vous.
+>
+> **À livrer** : le lien du projet bilingue, vos textes en anglais, votre liste de licences et vos enregistrements.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 3, 0, 'Quelle API du navigateur formate les dates et devises selon la langue ?', '["fetch","console","Intl","localStorage"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 3, 1, 'Une clé d''API a été publiée sur GitHub : que faire ?', '["Prévenir le client et faire révoquer la clé","La supprimer du fichier et ne rien dire","Attendre","La changer de nom"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 3, 2, 'En été, 10 h à Paris correspond à quelle heure à Antananarivo ?', '["10 h","9 h","13 h","11 h"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-a', 4, 'Développer sa carrière : tarif, maintenance, portfolio et équipe', 'Salarié à distance, freelance ou équipe, tarif journalier et chiffrage en fourchette, formules de maintenance, portfolio confirmé et évolutions techniques.', 'Un développeur front-end confirmé peut construire une carrière solide depuis Madagascar : poste à distance dans une entreprise étrangère, missions en freelance mieux payées, contrats de maintenance réguliers, ou petite équipe de développement. Ce dernier module vous aide à choisir votre voie et à la construire.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste salarié à distance, freelance et équipe.
+> 2. Fixer votre tarif journalier et chiffrer un projet avec ses risques.
+> 3. Créer des revenus réguliers avec la maintenance.
+> 4. Construire un portfolio et une présence de développeur confirmé.
+> 5. Préparer votre évolution technique.
+
+## Les trois voies
+
+| Voie | Avantages | Points de vigilance |
+| --- | --- | --- |
+| **Salarié à distance** (entreprise étrangère ou locale) | Revenu stable, équipe, apprentissage | Contrat et paiement adaptés à Madagascar, horaires |
+| **Freelance** | Tarif plus élevé, choix des projets | Revenus irréguliers, prospection, administration |
+| **Petite équipe** | Projets plus gros, revenus multipliés | Gestion, qualité, responsabilité |
+
+> [!madagascar]
+> Pour un poste à distance dans une entreprise étrangère, vérifiez **la forme du contrat** (contrat de prestation, employeur de référence, filiale locale) et **le moyen de paiement**. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville si vous facturez en indépendant, et gardez une trace de chaque paiement. Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer.
+
+## Fixer son tarif et chiffrer un projet
+
+### Le tarif journalier
+
+1. **Revenu annuel visé**.
+2. **Jours facturables** : environ 180 à 200 par an (congés, prospection, formation et administration ne sont pas facturés).
+3. **Tarif journalier** = revenu visé ÷ jours facturables, puis comparé au marché du client.
+
+> [!exemple] Calcul
+> Revenu visé : 36 000 000 Ar par an. Jours facturables : 180. Tarif journalier : 200 000 Ar. Pour un client européen, vous comparez aussi avec les tarifs des développeurs front-end de son marché et de votre niveau, puis vous fixez votre prix en euros.
+> *(Montants donnés en exemple.)*
+
+### Chiffrer un projet avec ses risques
+
+| Tâche | Estimation basse | Estimation haute |
+| --- | --- | --- |
+| Mise en place (Next.js, TypeScript, CI) | 1 j | 1,5 j |
+| 6 pages et composants | 6 j | 9 j |
+| Réservation avec API | 3 j | 5 j |
+| Internationalisation (2 langues) | 1 j | 2 j |
+| Tests et accessibilité | 2 j | 3 j |
+| Mise en ligne et documentation | 1 j | 1 j |
+| **Total** | **14 j** | **21,5 j** |
+
+Proposez un prix basé sur une estimation **entre les deux**, selon votre niveau de confiance, et écrivez dans le devis ce qui fait varier le prix (API non disponible, changements de maquette).
+
+> [!attention]
+> Les projets au forfait dépassent souvent à cause de **changements de demande**. Décrivez précisément le périmètre, le nombre de corrections incluses, et le tarif des demandes supplémentaires.
+
+## Les revenus réguliers : la maintenance
+
+| Formule | Contenu (exemple) |
+| --- | --- |
+| **Essentielle** | Mises à jour mensuelles des dépendances, surveillance des erreurs, corrections urgentes |
+| **Évolution** | Essentielle + 2 à 4 jours de petites évolutions par mois |
+| **Partenaire** | Évolution + participation aux décisions techniques, audits trimestriels |
+
+> [!astuce]
+> Proposez la maintenance **dès le devis** du projet. Un client satisfait par la livraison accepte plus facilement un contrat mensuel, et vos revenus deviennent plus réguliers.
+
+## Le portfolio du développeur confirmé
+
+1. **2 ou 3 projets solides** plutôt que 10 petits : TypeScript, tests, CI, accessibilité, performance mesurée.
+2. **Des études de cas** : problème, choix techniques, résultats (« LCP passé de 5,8 s à 1,9 s »).
+3. **Un profil GitHub** actif, avec des README soignés.
+4. **Des contributions** à des projets libres (documentation, corrections), même petites.
+5. **Des articles ou des vidéos** courtes où vous expliquez une solution : ils prouvent votre capacité à communiquer.
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Développeurs juniors** | Composants, intégration, tests, sous votre relecture |
+| **Designer** (partenaire) | Maquettes et design system |
+| **Vous** | Architecture, relecture de code, relation client, devis |
+
+### Les règles
+
+1. **Des conventions écrites** : structure du projet, nommage, règles de pull request.
+2. **La relecture** obligatoire de chaque pull request.
+3. **L''intégration continue** sur tous les projets.
+4. **L''accord écrit du client** pour la sous-traitance, et des accords de confidentialité.
+5. **Un paiement juste et à temps**, avec un contrat ; renseignez-vous auprès d''un comptable sur les obligations d''employeur.
+
+## Préparer votre évolution technique
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur full-stack** | Node.js, bases de données, API, authentification |
+| **Développeur mobile** | React Native, publication sur les magasins d''applications |
+| **Spécialiste performance ou accessibilité** | Expertise approfondie, audits, certifications |
+| **Lead front-end** | Architecture, accompagnement des juniors, décisions techniques |
+| **Ingénieur design system** | Composants à grande échelle, documentation, outils |
+
+> [!retenir]
+> - Choisissez votre voie : salarié à distance, freelance ou équipe.
+> - Tarif journalier = revenu visé ÷ jours facturables, comparé au marché.
+> - Chiffrez avec une fourchette et un périmètre écrit.
+> - La maintenance apporte des revenus réguliers.
+> - Un portfolio de projets solides et d''études de cas chiffrées.
+
+## Exercice pratique : votre plan de carrière
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre voie et justifiez-la en 5 lignes.
+> 2. Calculez votre tarif journalier en ariary et en euros.
+> 3. Chiffrez un projet avec une fourchette et rédigez le périmètre.
+> 4. Rédigez vos 3 formules de maintenance.
+> 5. Rédigez une étude de cas technique d''un de vos projets.
+> 6. Fixez vos objectifs techniques et professionnels à 12 mois.
+>
+> **À livrer** : votre choix, vos calculs, votre devis, vos formules, votre étude de cas et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 4, 0, '36 000 000 Ar visés pour 180 jours facturables donnent quel tarif journalier ?', '["36 000 Ar","200 000 Ar","2 000 000 Ar","180 000 Ar"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 4, 1, 'Pourquoi chiffrer avec une fourchette ?', '["Pour tenir compte des incertitudes et des risques","Pour éviter d''écrire le périmètre","Ce n''est pas utile","Pour tromper le client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-a', 4, 2, 'Quand proposer la maintenance ?', '["Seulement si le site tombe en panne","Dès le devis du projet","Un an après la livraison","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quelle spécialité règle les sites lents ?', '["Performance web","Internationalisation","Accessibilité","Design system"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que mesure l''INP ?', '["La couleur","Le poids des images","Le nombre de pages","La réactivité aux interactions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel LCP est considéré comme bon ?', '["Plus de 4 s","6 s","10 s","2,5 s ou moins"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel outil aide à repérer les problèmes d''accessibilité ?', '["axe DevTools ou Lighthouse","Excel","Photoshop","Zendesk"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quelle fonction de WebStorm renomme un composant partout ?', '["La refactorisation","Le thème sombre","L''impression","Le correcteur orthographique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que ne faut-il jamais coller dans la discussion de Copilot ?', '["Un exemple de JSON fictif","Un message d''erreur","Une question sur un hook","Des secrets comme des clés ou mots de passe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que signifie ''use client'' dans Next.js ?', '["Le composant est en anglais","Le composant est un test","Le composant est supprimé","Le composant est interactif et s''exécute dans le navigateur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel fichier crée la page /chambres dans Next.js ?', '["app/chambres/page.tsx","package.json","chambres.css","index.html"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel outil d''état pour un menu ouvert ou fermé ?', '["useState","Une base de données","Un fichier JSON","Un cookie"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quels trois états afficher pour une connexion lente ?', '["Rien","Chargement, erreur avec réessayer, résultat","Seulement le résultat","Une page blanche"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel outil lance des tests de bout en bout dans un vrai navigateur ?', '["Prettier","Playwright","ESLint","Vitest seul"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que tester dans un composant ?', '["Ce que voit et fait l''utilisateur","Rien","La couleur exacte du code","Les noms des variables internes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'totalSejour(180000, 3, 0.1) renvoie…', '["54000","540000","180000","486000"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que fait l''intégration continue ?', '["Lancer automatiquement les vérifications à chaque modification","Payer les développeurs","Héberger les images","Traduire le site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Comment réduire un bundle JavaScript trop gros ?', '["Tout mettre dans un seul fichier","Ajouter des bibliothèques","Chargement à la demande et suppression des bibliothèques inutiles","Supprimer les tests"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quel contraste minimum pour le texte normal au niveau AA ?', '["1:1","10:1 obligatoire","4,5:1","2:1"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que doit faire une fenêtre de dialogue accessible ?', '["Bloquer le clavier","S''ouvrir sans focus","Être invisible","Piéger le focus et se fermer avec Échap"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Qu''est-ce qu''une bonne pull request ?', '["Sans tests","Énorme et sans description","Avec du code commenté","Petite, bien décrite, vérifications au vert"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que contient la description d''une pull request ?', '["Rien","Quoi, pourquoi et comment tester","Le salaire du développeur","Seulement « fix »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Pourquoi déclarer la langue dans <html lang> ?', '["Pour l''accessibilité et le référencement","Ce n''est pas utile","Pour la vitesse du serveur","Pour la couleur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Où mettre les clés d''API ?', '["Dans un commentaire","Dans des variables d''environnement, hors du dépôt","Dans le code","Dans le README"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'À qui appartient généralement le code après paiement ?', '["Au développeur pour toujours","À GitHub","Au client, selon le contrat","À personne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Que faire pendant un exercice de code en direct ?', '["Expliquer son raisonnement à voix haute","Quitter l''appel","Copier une solution sans comprendre","Rester silencieux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Combien de jours facturables environ par an pour un freelance ?', '["300 à 350","365","50","180 à 200"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-a', 'Quelle évolution demande Node.js et des bases de données ?', '["Développeur full-stack","Spécialiste accessibilité","Développeur mobile","Ingénieur design system"]'::jsonb, 0);
 
 -- dev-0-f
 delete from public.exam_questions where course_id = 'dev-0-f';
