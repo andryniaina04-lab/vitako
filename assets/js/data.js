@@ -2497,6 +2497,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-4-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du sous-titreur un professionnel aux normes des diffuseurs : spécialité (traduction, sous-titres pour sourds et malentendants, streaming, réseaux sociaux, formation, contrôle qualité), audit de sous-titres, outils payants (Descript et offres de sous-titrage automatique) combinés à Subtitle Edit, normes techniques et liste de contrôle, guides de style et confidentialité des agences, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et auditer des sous-titres existants",
+   "Utiliser Descript et les services de sous-titrage automatique dans un flux professionnel",
+   "Appliquer les normes de vitesse, de longueur, de durée et de synchronisation",
+   "Rédiger des sous-titres pour sourds et malentendants",
+   "Travailler pour des agences : guides de style, outils en ligne, confidentialité",
+   "Fixer des prix par minute, vendre des packs et organiser une petite équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et vendre la qualité",
+    "summary": "Les 6 spécialités avancées, sous-titres, SME et légendes incrustées, sous-titres fermés et ouverts, l'audit en 6 domaines et les offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Trois produits différents",
+     "Auditer des sous-titres existants",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : Descript, sous-titrage automatique et Subtitle Edit",
+    "summary": "Évaluer un service automatique en 5 critères, légendes stylisées et incrustées avec Descript, révision en 4 étapes, traduction à partir d'un modèle et formats professionnels.",
+    "sections": [
+     "Les services de sous-titrage automatique",
+     "Descript pour les sous-titres",
+     "Réviser un premier jet dans Subtitle Edit",
+     "Traduire à partir d'un fichier modèle",
+     "Les formats professionnels",
+     "Exercice pratique : votre flux de travail avancé"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : normes, synchronisation, SME et contrôle qualité",
+    "summary": "Lignes, caractères, vitesse de lecture et durées, synchronisation sur la voix et les changements de plan, règles des SME, typographie française et liste de contrôle en 10 points.",
+    "sections": [
+     "Les normes techniques",
+     "La synchronisation",
+     "Les sous-titres pour sourds et malentendants (SME)",
+     "La typographie française",
+     "La liste de contrôle qualité",
+     "Exercice pratique : un fichier conforme"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : guides de style, agences, confidentialité et langues",
+    "summary": "Fiche de synthèse du guide, outils en ligne des agences, 7 règles de confidentialité, anglais vers français, malgache vers français ou anglais, tests d'entrée.",
+    "sections": [
+     "Le guide de style du client",
+     "Les outils en ligne des agences",
+     "La confidentialité des contenus non publiés",
+     "Les combinaisons de langues",
+     "Réussir les tests d'entrée",
+     "Exercice pratique : un projet d'agence"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : prix, packs, clients et équipe",
+    "summary": "Prix par minute de vidéo selon le service, suppléments, packs festival, ONG, créateur, formation et agence, clients réguliers, équipe avec contrôle qualité et stratégie face à l'IA.",
+    "sections": [
+     "Fixer ses prix",
+     "Les packs",
+     "Trouver des clients réguliers",
+     "Organiser une petite équipe",
+     "Préparer l'avenir face à l'IA",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "media-4-f": {
   "hours": 13,
   "description": "Le sous-titreur transforme ce qui est dit dans une vidéo en textes courts, lisibles et synchronisés, dans la même langue ou traduits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à sous-titrer pour des créateurs, des ONG, des réalisateurs et des entreprises, en malagasy, en français et en anglais, avec Subtitle Edit et Aegisub gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

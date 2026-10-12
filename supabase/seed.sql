@@ -22,7 +22,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 14, false),
   ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
   ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
-  ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, false),
+  ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true),
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 18, false),
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 13, false),
@@ -17426,6 +17426,565 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-4-a
+delete from public.exam_questions where course_id = 'media-4-a';
+delete from public.module_questions where course_id = 'media-4-a';
+delete from public.lessons where course_id = 'media-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-a', 0, 'Se spécialiser et vendre la qualité', 'Les 6 spécialités avancées, sous-titres, SME et légendes incrustées, sous-titres fermés et ouverts, l''audit en 6 domaines et les offres à plus forte valeur.', 'Le sous-titrage automatique produit maintenant un premier jet en quelques minutes. Les sous-titreurs recherchés sont ceux qui livrent des sous-titres **conformes aux normes des diffuseurs**, **lisibles**, **bien traduits** et **accessibles aux personnes sourdes et malentendantes**. Ce module vous aide à choisir votre spécialité et à vendre cette qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du sous-titrage.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Distinguer sous-titres, sous-titres pour sourds et malentendants, et légendes intégrées.
+> 4. Auditer des sous-titres existants.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Clients | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Sous-titres de traduction** | Distributeurs, festivals, ONG, entreprises | Traduction condensée, adaptation culturelle |
+| 2 | **Sous-titres pour sourds et malentendants (SME)** | Chaînes, plateformes, institutions | Intervenants, sons, musique, normes d''accessibilité |
+| 3 | **Normes des plateformes de streaming** | Prestataires des plateformes | Guides de style stricts, contrôle qualité, formats techniques |
+| 4 | **Réseaux sociaux** | Créateurs, marques, médias | Légendes incrustées et animées, formats verticaux |
+| 5 | **Formation en ligne et entreprise** | Organismes de formation, entreprises | Vocabulaire technique, cohérence, accessibilité |
+| 6 | **Contrôle qualité (QC)** | Agences de sous-titrage | Vérification technique et linguistique des fichiers des autres |
+
+> [!madagascar] Votre avantage
+> Les films, documentaires et vidéos d''ONG tournés à Madagascar contiennent souvent du **malgache** qui doit être sous-titré en français ou en anglais. Les festivals, les chaînes et les organisations internationales cherchent des sous-titreurs capables de comprendre l''original et d''écrire des sous-titres naturels. Le marché francophone (France, Belgique, Canada, Afrique) a aussi besoin de traductions de l''anglais vers le français.
+
+## Trois produits différents
+
+| Produit | Pour qui | Contenu |
+| --- | --- | --- |
+| **Sous-titres** (langue étrangère) | Spectateurs qui entendent mais ne comprennent pas la langue | Dialogues traduits, textes à l''écran importants |
+| **Sous-titres pour sourds et malentendants (SME)** | Personnes qui n''entendent pas ou mal | Dialogues, identification des intervenants, sons, musique |
+| **Légendes incrustées** (réseaux sociaux) | Personnes qui regardent sans le son | Texte gravé dans l''image, souvent animé, mots clés mis en valeur |
+
+> [!definition] Sous-titres fermés et ouverts
+> Les sous-titres **fermés** sont un fichier séparé que le spectateur active ou désactive (SRT, VTT…). Les sous-titres **ouverts** (ou incrustés) sont gravés dans l''image et toujours visibles.
+
+## Auditer des sous-titres existants
+
+Un audit est une bonne porte d''entrée chez un client : il montre votre expertise.
+
+### Les 6 domaines de l''audit
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Exactitude** | Sens fidèle, pas d''oubli, pas de contresens |
+| **2. Lisibilité** | Vitesse de lecture, longueur des lignes, nombre de lignes |
+| **3. Synchronisation** | Entrées et sorties sur la voix, respect des changements de plan |
+| **4. Découpage** | Coupures logiques entre les lignes et entre les sous-titres |
+| **5. Langue** | Orthographe, ponctuation, typographie française |
+| **6. Technique** | Format, encodage, cadence d''images, positionnement |
+
+> [!exemple] Extrait de rapport d''audit
+> « Sur les 10 premières minutes, 38 sous-titres sur 160 dépassent 20 caractères par seconde : ils sont trop rapides à lire. 12 sous-titres chevauchent un changement de plan, ce qui fatigue l''œil. Les sous-titres générés automatiquement contiennent 9 erreurs de noms propres (dont "Antananarivo" écrit "Antanana rivo"). Nous proposons une révision complète en 3 jours. »
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Révision de sous-titres automatiques** | Correction, découpage, synchronisation, mise aux normes |
+| **Sous-titres de traduction** | Traduction depuis l''original ou depuis un fichier modèle |
+| **SME** | Sous-titres complets pour l''accessibilité |
+| **Pack multilingue** | Français, anglais et malgache pour une même vidéo |
+| **Pack réseaux sociaux** | Légendes incrustées animées, formats 9:16 et 1:1 |
+| **Contrôle qualité** | Vérification des fichiers d''autres sous-titreurs |
+
+> [!retenir]
+> - Spécialisez-vous : traduction, SME, streaming, réseaux sociaux, formation ou contrôle qualité.
+> - Sous-titres, SME et légendes incrustées sont trois produits différents.
+> - L''audit en 6 domaines est votre porte d''entrée.
+> - Vendez la conformité, la lisibilité et l''accessibilité, pas seulement du texte.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Choisissez une vidéo en ligne avec des sous-titres automatiques et auditez 5 minutes avec les 6 domaines.
+> 3. Rédigez le résumé de l''audit et votre proposition de prix.
+> 4. Rédigez la présentation de 2 offres à forte valeur.
+>
+> **À livrer** : votre choix, votre rapport d''audit et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 0, 0, 'Pour qui sont les sous-titres SME ?', '["Les monteurs","Les personnes sourdes et malentendantes","Les annonceurs","Les traducteurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 0, 1, 'Qu''est-ce qu''un sous-titre ouvert ?', '["Un texte gravé dans l''image, toujours visible","Un sous-titre en anglais","Un sous-titre vide","Un fichier SRT séparé"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 0, 2, 'Quel domaine de l''audit vérifie la vitesse de lecture ?', '["L''exactitude","La lisibilité","La langue","La technique"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-a', 1, 'Outils professionnels : Descript, sous-titrage automatique et Subtitle Edit', 'Évaluer un service automatique en 5 critères, légendes stylisées et incrustées avec Descript, révision en 4 étapes, traduction à partir d''un modèle et formats professionnels.', 'Au niveau Avancé, vous combinez les outils gratuits (Subtitle Edit, Aegisub) avec des outils payants : **Descript** pour corriger vite et incruster des légendes, et les **offres payantes de sous-titrage automatique** qui produisent un premier jet de qualité. Ce module vous montre comment les intégrer à un flux de travail professionnel.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir un service de sous-titrage automatique et en évaluer la qualité.
+> 2. Utiliser Descript pour corriger, styliser et incruster des légendes.
+> 3. Réviser un premier jet automatique dans Subtitle Edit.
+> 4. Travailler à partir d''un fichier modèle (template) pour la traduction.
+> 5. Exporter dans les formats professionnels.
+
+## Les services de sous-titrage automatique
+
+> [!definition] Sous-titrage automatique
+> Un service qui reconnaît la parole, la transcrit et la découpe en sous-titres horodatés. Certains proposent aussi une traduction automatique. Les offres payantes donnent généralement plus de minutes, de meilleurs modèles, des glossaires et des exports professionnels.
+
+### Évaluer un service en 5 critères
+
+| Critère | Question |
+| --- | --- |
+| **Langues** | Reconnaît-il bien le français, l''anglais, le malgache ? |
+| **Exactitude** | Combien d''erreurs sur 5 minutes de test ? |
+| **Découpage** | Les sous-titres respectent-ils les longueurs et la vitesse de lecture ? |
+| **Exports** | SRT, VTT, et formats professionnels ? |
+| **Confidentialité** | Où vont les vidéos ? Le client l''autorise-t-il ? |
+
+Il existe des services en ligne (payants ou avec offre gratuite) et des modèles de reconnaissance qu''on peut utiliser directement dans Subtitle Edit. Les offres et les prix changent souvent : testez sur un extrait et vérifiez sur les sites officiels.
+
+> [!attention]
+> Une vidéo non publiée (film avant sa sortie, formation interne) est **confidentielle**. N''utilisez un service en ligne que si le contrat ou le client l''autorise par écrit.
+
+## Descript pour les sous-titres
+
+| Fonction | Utilité |
+| --- | --- |
+| **Transcription automatique** | Premier jet en quelques minutes |
+| **Correction dans le texte** | Corriger un mot corrige le sous-titre |
+| **Légendes stylisées** | Police, couleur, mot actif mis en valeur, position |
+| **Formats d''image** | Passer de 16:9 à 9:16 ou 1:1 pour les réseaux |
+| **Exports** | SRT, VTT, ou vidéo avec légendes incrustées |
+
+### Le flux pour les réseaux sociaux
+
+1. **Importez** la vidéo et lancez la transcription.
+2. **Corrigez** le texte et les noms propres.
+3. **Choisissez** un style de légende (2 à 5 mots à la fois, mot actif en couleur).
+4. **Placez** les légendes hors des zones couvertes par l''interface (boutons, description).
+5. **Exportez** la vidéo incrustée et le fichier SRT.
+
+> [!astuce]
+> Sur les formats verticaux, gardez les légendes au **centre** ou dans le **tiers inférieur sans toucher le bas** : les boutons et la description de l''application couvrent souvent le bas et le côté droit de l''écran.
+
+## Réviser un premier jet dans Subtitle Edit
+
+### La méthode en 4 étapes
+
+1. **Ouvrez** la vidéo et le fichier automatique ; affichez la forme d''onde et les changements de plan.
+2. **Corrigez** le texte : mots, noms propres, ponctuation.
+3. **Re-découpez** : fusionnez ou divisez les sous-titres trop courts ou trop longs.
+4. **Lancez les vérifications** (menu de correction des erreurs courantes) : durées, vitesse de lecture, chevauchements, lignes trop longues.
+
+> [!definition] Changement de plan
+> Le moment où l''image change brusquement (coupe du montage). Un sous-titre qui « déborde » de quelques images sur le plan suivant est désagréable : les normes demandent de le caler sur la coupe ou de s''en écarter nettement.
+
+## Traduire à partir d''un fichier modèle
+
+> [!definition] Fichier modèle (template)
+> Un fichier de sous-titres dans la langue d''origine (souvent l''anglais), déjà découpé et synchronisé. Le traducteur remplace le texte en gardant les horodatages, ce qui assure la même synchronisation dans toutes les langues.
+
+### Les règles
+
+1. **Gardez** les horodatages, sauf autorisation de les modifier.
+2. **Condensez** si la traduction est plus longue (le français l''est souvent de 15 à 20 % par rapport à l''anglais).
+3. **Regardez** la vidéo : le modèle ne montre ni les images ni le ton.
+4. **Signalez** les erreurs du modèle au client plutôt que de les reproduire.
+
+> [!exemple] Condensation
+> Anglais : "I don''t think we''re going to make it to the village before it gets dark." (73 caractères)
+> Traduction littérale : « Je ne pense pas que nous allons arriver au village avant qu''il fasse nuit. » (74 caractères)
+> Sous-titre condensé : « On n''atteindra pas le village avant la nuit. » (44 caractères)
+
+## Les formats professionnels
+
+| Format | Usage |
+| --- | --- |
+| **SRT** | Le plus courant : YouTube, réseaux, lecteurs vidéo |
+| **WebVTT (VTT)** | Web, avec positionnement et styles simples |
+| **TTML ou DFXP** | Plateformes de streaming et diffuseurs |
+| **EBU STL** | Télévision en Europe |
+| **SCC** | Télévision en Amérique du Nord (sous-titres codés) |
+| **ASS** | Styles avancés (Aegisub), karaoké, animations |
+
+> [!attention]
+> Vérifiez la **cadence d''images** de la vidéo (24, 25, 29,97 images par seconde…) avant d''exporter dans un format basé sur les images : une mauvaise cadence décale progressivement tous les sous-titres.
+
+> [!retenir]
+> - Testez un service automatique sur 5 critères, dont la confidentialité.
+> - Descript pour corriger vite et produire des légendes incrustées.
+> - Subtitle Edit pour réviser en 4 étapes, avec forme d''onde et changements de plan.
+> - Traduisez à partir d''un modèle en gardant les horodatages et en condensant.
+> - Livrez dans le format et la cadence demandés.
+
+## Exercice pratique : votre flux de travail avancé
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Testez 2 services de sous-titrage automatique sur le même extrait de 3 minutes et comparez-les avec les 5 critères.
+> 2. Révisez le meilleur premier jet dans Subtitle Edit en 4 étapes.
+> 3. Créez une version verticale avec légendes incrustées dans Descript (offre gratuite) ou un autre outil.
+> 4. Traduisez un extrait de 2 minutes à partir d''un modèle anglais, en condensant.
+> 5. Exportez en SRT et en VTT.
+>
+> **À livrer** : votre comparaison, vos fichiers, la vidéo verticale et votre traduction.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 1, 0, 'Que vérifier avant d''envoyer une vidéo non publiée dans un service en ligne ?', '["La couleur des sous-titres","La taille de l''écran","Que le client l''autorise par écrit","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 1, 1, 'Que garder quand on traduit à partir d''un fichier modèle ?', '["Les fautes du modèle","Rien","Les horodatages","Le texte anglais"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 1, 2, 'Que provoque une mauvaise cadence d''images à l''export ?', '["Un décalage progressif des sous-titres","Une meilleure qualité","Rien","Une traduction automatique"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-a', 2, 'Qualité et rapidité : normes, synchronisation, SME et contrôle qualité', 'Lignes, caractères, vitesse de lecture et durées, synchronisation sur la voix et les changements de plan, règles des SME, typographie française et liste de contrôle en 10 points.', 'Les diffuseurs et les plateformes rejettent des fichiers entiers pour quelques sous-titres trop rapides ou mal synchronisés. Ce module vous donne les **normes techniques** des professionnels, les règles des **sous-titres pour sourds et malentendants**, et une **liste de contrôle qualité** pour livrer du premier coup.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les normes de durée, de vitesse et de longueur.
+> 2. Synchroniser avec la voix et les changements de plan.
+> 3. Rédiger des sous-titres pour sourds et malentendants.
+> 4. Respecter la typographie française dans les sous-titres.
+> 5. Contrôler un fichier complet avant livraison.
+
+## Les normes techniques
+
+| Paramètre | Valeur courante | Pourquoi |
+| --- | --- | --- |
+| **Lignes par sous-titre** | 2 au maximum | Laisser voir l''image |
+| **Caractères par ligne** | 37 à 42 selon les guides | Lire d''un seul coup d''œil |
+| **Vitesse de lecture** | Souvent 15 à 20 caractères par seconde selon le public et le guide | Laisser le temps de lire |
+| **Durée minimale** | Environ 1 seconde (souvent 5/6 de seconde) | Éviter les clignotements |
+| **Durée maximale** | Environ 6 à 7 secondes | Ne pas laisser un texte trop longtemps |
+| **Écart entre deux sous-titres** | Quelques images (souvent 2) | Que l''œil voie le changement |
+
+*(Valeurs données en exemple : chaque client ou plateforme a son guide de style, qui passe avant ces repères.)*
+
+> [!definition] Caractères par seconde (CPS)
+> Le nombre de caractères du sous-titre (espaces compris) divisé par sa durée en secondes. Un sous-titre de 60 caractères affiché 3 secondes a une vitesse de 20 CPS.
+
+## La synchronisation
+
+### Les règles
+
+1. **Entrée** : au début de la voix (ou très légèrement avant).
+2. **Sortie** : à la fin de la voix, prolongée si nécessaire pour la lecture, sans dépasser les normes.
+3. **Changements de plan** : caler l''entrée ou la sortie sur la coupe, ou s''en écarter d''au moins une demi-seconde environ.
+4. **Dialogues rapides** : regrouper deux répliques courtes dans un même sous-titre, avec un tiret par intervenant.
+
+```
+00:04:12,320 --> 00:04:14,100
+- Tu viens au marché ?
+- Pas aujourd''hui.
+```
+
+> [!astuce]
+> Affichez la **forme d''onde** et les **changements de plan** dans Subtitle Edit : vous voyez où commence la voix et où coupe l''image, et vous synchronisez beaucoup plus vite qu''à l''oreille.
+
+## Les sous-titres pour sourds et malentendants (SME)
+
+### Ce qu''il faut ajouter
+
+| Élément | Exemple |
+| --- | --- |
+| **Intervenant hors champ ou non identifiable** | `RAKOTO : On part demain.` |
+| **Sons importants** | `[pluie battante]`, `[coup de feu]`, `[téléphone vibre]` |
+| **Musique** | `[musique douce]` ou `♪ paroles de la chanson ♪` |
+| **Ton de la voix** | `[en chuchotant] Ne dis rien.` |
+| **Langue étrangère** | `[en malgache]` puis la traduction, si le spectateur doit la comprendre |
+
+### Les règles
+
+1. Décrivez les sons **utiles à la compréhension**, pas tous les bruits.
+2. Utilisez une **forme cohérente** (crochets, majuscules ou couleurs selon le guide).
+3. Ne décrivez pas ce que l''image montre déjà clairement.
+4. Suivez la **convention du pays** : en France, certaines chaînes utilisent des couleurs pour les intervenants et les sons ; d''autres guides utilisent des crochets.
+
+> [!madagascar]
+> Pour un documentaire tourné à Madagascar, prévoyez dans le glossaire les noms de lieux, d''espèces (lémuriens, baobabs), de fêtes (famadihana) et d''objets, avec leur orthographe et, si nécessaire, une courte explication validée par le client. Un sous-titre n''est pas une note de bas de page : l''explication doit rester très courte ou passer par une autre solution choisie avec le client.
+
+## La typographie française
+
+| Règle | Exemple |
+| --- | --- |
+| Espace avant `? ! : ;` (souvent insécable, ou selon le guide) | « Tu viens ? » |
+| Guillemets français | « Bonjour » |
+| Points de suspension en un seul caractère ou trois points, selon le guide | « Je pensais… » |
+| Majuscules accentuées | « À demain », « État » |
+| Pas de point en fin de sous-titre si la phrase continue | Ligne suivante sans majuscule |
+| Nombres | Suivre le guide (souvent en lettres de un à dix) |
+
+## La liste de contrôle qualité
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Tout le texte relu en regardant la vidéo |
+| 2 | Aucun sous-titre au-dessus de la vitesse maximale |
+| 3 | Aucune ligne trop longue, pas plus de 2 lignes |
+| 4 | Durées minimales et maximales respectées |
+| 5 | Aucun chevauchement entre sous-titres |
+| 6 | Changements de plan respectés |
+| 7 | Noms propres conformes au glossaire |
+| 8 | Typographie et ponctuation conformes |
+| 9 | Textes à l''écran importants traduits (panneaux, titres) si demandé |
+| 10 | Bon format, bon encodage (UTF-8), bonne cadence d''images |
+
+> [!attention]
+> Les vérifications automatiques de Subtitle Edit ne remplacent pas un **visionnage complet**. Elles trouvent les problèmes techniques, pas les contresens ni les sous-titres mal placés sur une incrustation à l''écran.
+
+> [!retenir]
+> - 2 lignes, longueur et vitesse limitées, durées minimales et maximales.
+> - Synchronisation sur la voix et sur les changements de plan.
+> - SME : intervenants, sons utiles, musique, ton, langues.
+> - Typographie française soignée, selon le guide du client.
+> - Une liste de contrôle en 10 points et un visionnage complet avant livraison.
+
+## Exercice pratique : un fichier conforme
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Sous-titrez 5 minutes d''un film ou d''un documentaire libre de droits en respectant les normes du tableau.
+> 2. Créez une version SME de ces 5 minutes.
+> 3. Calculez la vitesse de lecture de 5 sous-titres à la main et vérifiez avec Subtitle Edit.
+> 4. Appliquez la liste de contrôle en 10 points et corrigez.
+>
+> **À livrer** : vos deux fichiers, vos calculs et votre liste de contrôle remplie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 2, 0, '60 caractères affichés 3 secondes donnent quelle vitesse ?', '["180 caractères par seconde","20 caractères par seconde","60 caractères par seconde","3 caractères par seconde"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 2, 1, 'Combien de lignes au maximum par sous-titre ?', '["5","Illimité","2","1 seulement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 2, 2, 'Quels sons décrire dans des SME ?', '["Les sons utiles à la compréhension","Tous les bruits, même inutiles","Seulement la musique","Aucun"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-a', 3, 'Clients internationaux : guides de style, agences, confidentialité et langues', 'Fiche de synthèse du guide, outils en ligne des agences, 7 règles de confidentialité, anglais vers français, malgache vers français ou anglais, tests d''entrée.', 'Les agences de sous-titrage, les festivals, les distributeurs et les organisations internationales proposent des projets réguliers et mieux payés. En échange, ils attendent le respect strict de leurs guides, une confidentialité absolue et une communication professionnelle. Ce module vous prépare à travailler avec eux.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire et appliquer le guide de style d''un client.
+> 2. Travailler dans les outils en ligne des agences.
+> 3. Respecter les règles de confidentialité des contenus non publiés.
+> 4. Sous-titrer de l''anglais vers le français et du malgache vers le français ou l''anglais.
+> 5. Réussir les tests d''entrée des agences.
+
+## Le guide de style du client
+
+Chaque agence et chaque plateforme a son guide. Avant de commencer, faites une **fiche de synthèse** :
+
+| Point | Votre fiche |
+| --- | --- |
+| Caractères par ligne | … |
+| Vitesse de lecture maximale | … |
+| Durées minimale et maximale | … |
+| Règles des changements de plan | … |
+| Dialogues (tirets, espaces) | … |
+| Italiques (voix hors champ, chansons, titres) | … |
+| Nombres et unités | … |
+| SME : forme des sons et des intervenants | … |
+| Textes à l''écran | … |
+| Format et cadence de livraison | … |
+
+> [!astuce]
+> Gardez une fiche de synthèse **par client**. Quand vous passez d''un projet à l''autre dans la même journée, relisez la fiche avant de commencer : les erreurs de « mauvais guide » sont parmi les plus fréquentes.
+
+## Les outils en ligne des agences
+
+De nombreuses agences travaillent dans leurs propres outils en ligne (ou des éditeurs du marché) : vous ne téléchargez pas la vidéo, vous travaillez dans le navigateur.
+
+1. **Prenez le temps** d''apprendre les raccourcis de l''outil.
+2. **Utilisez** une connexion stable et un navigateur à jour.
+3. **Enregistrez** souvent si l''outil ne le fait pas automatiquement.
+4. **Lisez** les commentaires du contrôle qualité : ils vous font progresser et améliorent vos notes.
+
+> [!madagascar]
+> Les outils en ligne demandent une **connexion stable** pendant toute la session. Gardez une connexion de secours (forfait mobile) et prévenez le chef de projet à l''avance en cas de délestage annoncé. Une livraison en retard sur un projet de diffusion peut retarder une sortie entière.
+
+## La confidentialité des contenus non publiés
+
+### Les 7 règles
+
+1. **Signez** l''accord de confidentialité et respectez-le à la lettre.
+2. **Ne parlez jamais** du contenu, même du titre, sans autorisation.
+3. **Ne publiez rien** : pas de capture, pas d''extrait, pas de mention dans votre portfolio.
+4. **Travaillez** seul, dans un lieu privé, avec un casque.
+5. **Utilisez** uniquement les outils autorisés (pas de service automatique en ligne sans accord).
+6. **Supprimez** les fichiers à la fin si le contrat le demande.
+7. **Signalez** immédiatement toute fuite ou perte.
+
+> [!attention]
+> Une fuite d''un film ou d''une série avant sa sortie peut coûter très cher à un distributeur. Les agences suppriment immédiatement l''accès d''un sous-titreur qui ne respecte pas la confidentialité, et peuvent engager des poursuites selon le contrat.
+
+## Les combinaisons de langues
+
+### De l''anglais vers le français
+
+| Difficulté | Conseil |
+| --- | --- |
+| Le français est plus long | Condensez : gardez le sens, enlevez le superflu |
+| Le tutoiement ou le vouvoiement | Décidez selon la relation entre les personnages, et restez cohérent |
+| Les jeux de mots et les références culturelles | Cherchez un équivalent ; signalez au client si c''est impossible |
+| Les insultes | Suivez le guide : certaines plateformes demandent de garder le niveau de langue |
+
+### Du malgache vers le français ou l''anglais
+
+1. **Transcrivez d''abord** si l''audio est difficile (voir la formation Transcripteur).
+2. **Traduisez le sens** et le registre, pas mot à mot.
+3. **Gardez les mots culturels** importants s''ils sont compris par le contexte, ou trouvez un équivalent court.
+4. **Faites relire** par un locuteur natif de la langue d''arrivée pour les projets importants.
+
+> [!exemple] Du malgache au français
+> Original : « Mandrosoa e, tongasoa eto an-tanànanay. »
+> Sous-titre : « Entrez, soyez les bienvenus dans notre village. »
+
+## Réussir les tests d''entrée
+
+| Étape | Contenu | Conseil |
+| --- | --- | --- |
+| **Test de langue** | Traduction ou grammaire | Relisez deux fois |
+| **Test de sous-titrage** | 2 à 5 minutes à sous-titrer avec le guide de l''agence | Lisez tout le guide, appliquez la liste de contrôle |
+| **Test SME** | Sons, intervenants, musique | Décrivez l''utile, restez cohérent |
+| **Période d''essai** | Premiers projets notés | Peu de projets au début, qualité maximale |
+
+> [!retenir]
+> - Une fiche de synthèse par guide de style, relue avant chaque projet.
+> - Apprenez les outils en ligne des agences et sécurisez votre connexion.
+> - 7 règles de confidentialité, sans exception.
+> - Anglais vers français : condensez ; malgache vers français : le sens et le registre.
+> - Les tests se réussissent avec le guide et la liste de contrôle.
+
+## Exercice pratique : un projet d''agence
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez une fiche de synthèse à partir d''un guide de style public d''une plateforme ou d''une agence.
+> 2. Sous-titrez 5 minutes d''une vidéo anglaise en français en appliquant ce guide.
+> 3. Sous-titrez 2 minutes d''une vidéo en malgache en français ou en anglais.
+> 4. Rédigez votre engagement de confidentialité personnel en 7 points.
+>
+> **À livrer** : votre fiche, vos deux fichiers de sous-titres et votre engagement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 3, 0, 'Que relire avant chaque nouveau projet ?', '["La fiche de synthèse du guide du client","Le guide d''un autre client","Ses messages personnels","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 3, 1, 'Peut-on mettre un extrait de film non sorti dans son portfolio ?', '["Oui, après une semaine","Oui","Oui, en petit","Non"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 3, 2, 'Comment traduire du malgache vers le français ?', '["Traduire le sens et le registre, pas mot à mot","Sans regarder la vidéo","Avec la traduction automatique sans relecture","Mot à mot"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-a', 4, 'Développer son activité : prix, packs, clients et équipe', 'Prix par minute de vidéo selon le service, suppléments, packs festival, ONG, créateur, formation et agence, clients réguliers, équipe avec contrôle qualité et stratégie face à l''IA.', 'Le sous-titrage simple est de plus en plus automatisé. Pour vivre durablement du métier, il faut des **prix adaptés au travail réel**, des **clients réguliers** (agences, festivals, ONG, créateurs), des **services complets** et, à terme, une **petite équipe**. Ce dernier module vous montre comment construire cette activité depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Fixer vos prix par minute de vidéo selon le service.
+> 2. Créer des packs pour chaque type de client.
+> 3. Trouver des clients réguliers.
+> 4. Organiser une petite équipe avec un contrôle qualité.
+> 5. Préparer l''avenir du métier face à l''IA.
+
+## Fixer ses prix
+
+### Le prix par minute de vidéo
+
+Prix par minute = **tarif horaire × temps de travail par minute de vidéo**.
+
+| Service | Temps de travail par minute de vidéo (exemple) | Prix par minute (tarif 15 000 Ar/h) |
+| --- | --- | --- |
+| Révision d''un premier jet automatique | 5 minutes | 1 250 Ar |
+| Sous-titres dans la même langue, depuis zéro | 8 minutes | 2 000 Ar |
+| SME complets | 10 minutes | 2 500 Ar |
+| Traduction à partir d''un modèle | 8 minutes | 2 000 Ar |
+| Traduction depuis le malgache sans modèle | 15 minutes | 3 750 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les suppléments
+
+1. **Urgence** (moins de 48 heures) : +25 à +50 %.
+2. **Son difficile** ou nombreux intervenants.
+3. **Format spécial** ou exigences de diffuseur.
+4. **Légendes animées** pour les réseaux (style, incrustation, plusieurs formats).
+
+## Les packs
+
+| Pack | Contenu | Clients |
+| --- | --- | --- |
+| **Festival** | Sous-titres français et anglais conformes, fichier et version incrustée | Réalisateurs malgaches et africains |
+| **ONG** | Sous-titres en français, anglais et malgache, version réseaux sociaux | ONG et organisations internationales |
+| **Créateur** | Légendes animées verticales pour 8 à 12 vidéos par mois | YouTubeurs, marques |
+| **Formation** | Sous-titres SME, glossaire, cohérence sur toute une série | Organismes de formation |
+| **Agence** | Disponibilité régulière, guides respectés, délais garantis | Agences de sous-titrage |
+
+## Trouver des clients réguliers
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences de sous-titrage** | Passez leurs tests, visez la langue malgache et le français |
+| 2 | **Réalisateurs et festivals** | Rencontres du film court de Madagascar, festivals africains et francophones |
+| 3 | **ONG et institutions** | Proposez le pack multilingue pour leurs vidéos de projets |
+| 4 | **Créateurs et marques** | Montrez un avant et après d''une vidéo verticale |
+| 5 | **Organismes de formation** | Proposez l''accessibilité (SME) pour leurs cours |
+
+> [!exemple] Message à un réalisateur
+> « Bonjour, j''ai vu la bande-annonce de votre documentaire sur les pêcheurs vezo. Je suis sous-titreur professionnel malgache-français-anglais. Pour une sélection en festival, je peux livrer des sous-titres conformes aux normes de diffusion (vitesse de lecture, changements de plan, typographie), en fichier séparé et en version incrustée. Je peux vous sous-titrer gratuitement les 3 premières minutes pour que vous jugiez la qualité. »
+
+> [!madagascar]
+> Les réalisateurs malgaches qui envoient leurs films à l''étranger ont presque toujours besoin de sous-titres français et anglais. Suivez les appels à films des festivals : les dates limites sont l''occasion de proposer vos services quelques semaines à l''avance.
+
+## Organiser une petite équipe
+
+### Les rôles
+
+| Rôle | Tâche |
+| --- | --- |
+| **Sous-titreurs** | Premier fichier |
+| **Contrôleur qualité** | Vérification avec la liste en 10 points et visionnage complet |
+| **Chef de projet** (vous) | Devis, guide, planning, glossaire, livraison, relation client |
+
+### Les règles
+
+1. **Un test d''entrée** pour chaque sous-titreur.
+2. **Une fiche de synthèse** du guide et un glossaire par projet.
+3. **Un contrôle qualité** de chaque fichier avant livraison.
+4. **Des accords de confidentialité** signés par chacun, et l''accord du client pour la sous-traitance.
+5. **Un paiement juste et à temps**.
+
+> [!attention]
+> Beaucoup de contrats d''agences et de distributeurs **interdisent la sous-traitance** sans accord écrit. Vérifiez avant de confier un projet à quelqu''un d''autre. Et avant d''embaucher, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable sur les obligations d''employeur.
+
+## Préparer l''avenir face à l''IA
+
+1. **Maîtrisez la révision** de sous-titres automatiques : c''est une grande partie du travail.
+2. **Spécialisez-vous** là où l''IA est faible : malgache, son difficile, SME de qualité, normes des diffuseurs, création artistique.
+3. **Ajoutez de la valeur** : légendes animées, versions multilingues, accessibilité.
+4. **Restez à jour** : nouveaux outils, nouveaux guides des plateformes.
+
+> [!retenir]
+> - Prix par minute = tarif horaire × temps de travail par minute, plus les suppléments.
+> - Des packs adaptés : festival, ONG, créateur, formation, agence.
+> - Agences, réalisateurs, ONG, créateurs et organismes de formation sont vos clients réguliers.
+> - Une équipe avec contrôle qualité, confidentialité et accord pour la sous-traitance.
+> - Face à l''IA : révision, spécialisation et services à valeur ajoutée.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Calculez votre grille de prix pour les 5 services et vos suppléments.
+> 2. Rédigez la présentation de 2 packs.
+> 3. Listez 10 clients possibles (agences, réalisateurs, ONG) et envoyez au moins 2 messages.
+> 4. Rédigez le test d''entrée d''un futur sous-titreur de votre équipe.
+> 5. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : votre grille, vos packs, votre liste avec vos messages, votre test et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 4, 0, 'À 15 000 Ar de l''heure, 10 minutes de travail par minute de vidéo font…', '["15 000 Ar par minute","10 000 Ar par minute","2 500 Ar par minute","150 Ar par minute"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 4, 1, 'Que vérifier avant de confier un projet d''agence à un autre sous-titreur ?', '["Que le contrat autorise la sous-traitance","Rien","Son âge","Sa ville"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-a', 4, 2, 'Quel pack convient à un réalisateur qui envoie son film à l''étranger ?', '["Aucun","Le pack festival","Le pack formation","Le pack créateur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quelle spécialité vérifie les fichiers des autres sous-titreurs ?', '["Le contrôle qualité (QC)","La formation","La traduction","Les réseaux sociaux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Qu''est-ce qu''une légende incrustée ?', '["Un texte gravé dans la vidéo","Un fichier séparé","Une traduction orale","Un titre de film"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quelle est une bonne porte d''entrée chez un nouveau client ?', '["Un logo","Un travail gratuit illimité","Un audit de ses sous-titres","Une publicité"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quel critère d''un service automatique concerne les vidéos non publiées ?', '["Le prix de l''abonnement seul","La confidentialité","La couleur","La police"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Où placer les légendes d''une vidéo verticale ?', '["Sur le visage","Dans l''angle droit","Au centre ou dans le tiers inférieur, sans toucher le bas","Tout en bas, sous les boutons"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Qu''est-ce qu''un changement de plan ?', '["Un nouveau fichier","Une erreur de traduction","Une coupe du montage où l''image change","Un changement de langue"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quel affichage aide à synchroniser dans Subtitle Edit ?', '["La météo","Le dictionnaire","Le calendrier","La forme d''onde et les changements de plan"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Le français est souvent plus long que l''anglais de…', '["0 %","15 à 20 %","200 %","1 %"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quel format est le plus courant ?', '["TTML","SCC","SRT","EBU STL"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quel format permet des styles avancés et le karaoké ?', '["ASS","CSV","TXT","SRT"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Combien de caractères par ligne selon la plupart des guides ?', '["Illimité","10","100","37 à 42"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Qu''est-ce que le CPS ?', '["Le format de fichier","Le prix par sous-titre","Le nombre de caractères par seconde","Le nombre de plans"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quelle est la durée maximale habituelle d''un sous-titre ?', '["30 secondes","Environ 6 à 7 secondes","1 minute","Une demi-seconde"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Comment présenter deux répliques dans un même sous-titre ?', '["En majuscules","Avec un tiret par intervenant","Sans séparation","Sur 4 lignes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Comment noter un ton chuchoté dans des SME ?', '["Avec trois points d''exclamation","On ne le note jamais","En gras","[en chuchotant]"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quelle ponctuation demande une espace avant en français ?', '["L''apostrophe","La virgule","Le point d''interrogation","Le point final"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Les vérifications automatiques suffisent-elles ?', '["Oui, toujours","Non, il faut un visionnage complet","Oui, pour les films","Oui, pour les SME"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Que faire d''une erreur dans le fichier modèle ?', '["Supprimer le fichier","La signaler au client","La reproduire","L''ignorer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Que faire en cas de délestage annoncé pendant un projet d''agence ?', '["Prévenir le chef de projet à l''avance et avoir une connexion de secours","Livrer en retard sans prévenir","Ne rien dire","Abandonner le projet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Que risque un sous-titreur qui fait fuiter un film ?', '["Une prime","Rien","Une promotion","La perte de ses accès et des poursuites selon le contrat"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Comment choisir entre tutoiement et vouvoiement ?', '["Au hasard","Toujours tutoyer","Selon la relation entre les personnages, de façon cohérente","Changer à chaque réplique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Que faire avant de sous-titrer un audio malgache difficile ?', '["Le supprimer","Le transcrire d''abord","Le résumer","Le traduire directement sans écouter"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quel supplément pour une livraison en moins de 48 heures ?', '["+25 à +50 % (exemple)","Aucun","−50 %","+1 000 %"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Quand proposer ses services aux réalisateurs qui visent un festival ?', '["Quelques semaines avant les dates limites","Jamais","Après la fin du festival","Le jour de la projection"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-a', 'Où l''IA reste-t-elle faible en sous-titrage ?', '["Les fichiers parfaits en anglais","Nulle part","Le texte déjà écrit","Le malgache, le son difficile et les SME de qualité"]'::jsonb, 3);
 
 -- media-4-f
 delete from public.exam_questions where course_id = 'media-4-f';

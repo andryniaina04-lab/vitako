@@ -1,0 +1,97 @@
+{
+  "id": "media-4-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du sous-titreur un professionnel aux normes des diffuseurs : spécialité (traduction, sous-titres pour sourds et malentendants, streaming, réseaux sociaux, formation, contrôle qualité), audit de sous-titres, outils payants (Descript et offres de sous-titrage automatique) combinés à Subtitle Edit, normes techniques et liste de contrôle, guides de style et confidentialité des agences, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et auditer des sous-titres existants",
+    "Utiliser Descript et les services de sous-titrage automatique dans un flux professionnel",
+    "Appliquer les normes de vitesse, de longueur, de durée et de synchronisation",
+    "Rédiger des sous-titres pour sourds et malentendants",
+    "Travailler pour des agences : guides de style, outils en ligne, confidentialité",
+    "Fixer des prix par minute, vendre des packs et organiser une petite équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et vendre la qualité",
+      "summary": "Les 6 spécialités avancées, sous-titres, SME et légendes incrustées, sous-titres fermés et ouverts, l'audit en 6 domaines et les offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pour qui sont les sous-titres SME ?", "options": ["Les personnes sourdes et malentendantes", "Les monteurs", "Les traducteurs", "Les annonceurs"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un sous-titre ouvert ?", "options": ["Un texte gravé dans l'image, toujours visible", "Un fichier SRT séparé", "Un sous-titre vide", "Un sous-titre en anglais"], "correct": 0 },
+        { "q": "Quel domaine de l'audit vérifie la vitesse de lecture ?", "options": ["La lisibilité", "La technique", "La langue", "L'exactitude"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Descript, sous-titrage automatique et Subtitle Edit",
+      "summary": "Évaluer un service automatique en 5 critères, légendes stylisées et incrustées avec Descript, révision en 4 étapes, traduction à partir d'un modèle et formats professionnels.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vérifier avant d'envoyer une vidéo non publiée dans un service en ligne ?", "options": ["Que le client l'autorise par écrit", "Rien", "La taille de l'écran", "La couleur des sous-titres"], "correct": 0 },
+        { "q": "Que garder quand on traduit à partir d'un fichier modèle ?", "options": ["Les horodatages", "Le texte anglais", "Les fautes du modèle", "Rien"], "correct": 0 },
+        { "q": "Que provoque une mauvaise cadence d'images à l'export ?", "options": ["Un décalage progressif des sous-titres", "Une meilleure qualité", "Rien", "Une traduction automatique"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : normes, synchronisation, SME et contrôle qualité",
+      "summary": "Lignes, caractères, vitesse de lecture et durées, synchronisation sur la voix et les changements de plan, règles des SME, typographie française et liste de contrôle en 10 points.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "60 caractères affichés 3 secondes donnent quelle vitesse ?", "options": ["20 caractères par seconde", "3 caractères par seconde", "180 caractères par seconde", "60 caractères par seconde"], "correct": 0 },
+        { "q": "Combien de lignes au maximum par sous-titre ?", "options": ["2", "5", "1 seulement", "Illimité"], "correct": 0 },
+        { "q": "Quels sons décrire dans des SME ?", "options": ["Les sons utiles à la compréhension", "Tous les bruits, même inutiles", "Aucun", "Seulement la musique"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : guides de style, agences, confidentialité et langues",
+      "summary": "Fiche de synthèse du guide, outils en ligne des agences, 7 règles de confidentialité, anglais vers français, malgache vers français ou anglais, tests d'entrée.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que relire avant chaque nouveau projet ?", "options": ["La fiche de synthèse du guide du client", "Ses messages personnels", "Rien", "Le guide d'un autre client"], "correct": 0 },
+        { "q": "Peut-on mettre un extrait de film non sorti dans son portfolio ?", "options": ["Non", "Oui", "Oui, en petit", "Oui, après une semaine"], "correct": 0 },
+        { "q": "Comment traduire du malgache vers le français ?", "options": ["Traduire le sens et le registre, pas mot à mot", "Mot à mot", "Sans regarder la vidéo", "Avec la traduction automatique sans relecture"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, packs, clients et équipe",
+      "summary": "Prix par minute de vidéo selon le service, suppléments, packs festival, ONG, créateur, formation et agence, clients réguliers, équipe avec contrôle qualité et stratégie face à l'IA.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 15 000 Ar de l'heure, 10 minutes de travail par minute de vidéo font…", "options": ["2 500 Ar par minute", "15 000 Ar par minute", "150 Ar par minute", "10 000 Ar par minute"], "correct": 0 },
+        { "q": "Que vérifier avant de confier un projet d'agence à un autre sous-titreur ?", "options": ["Que le contrat autorise la sous-traitance", "Rien", "Son âge", "Sa ville"], "correct": 0 },
+        { "q": "Quel pack convient à un réalisateur qui envoie son film à l'étranger ?", "options": ["Le pack festival", "Le pack créateur", "Aucun", "Le pack formation"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité vérifie les fichiers des autres sous-titreurs ?", "options": ["Le contrôle qualité (QC)", "Les réseaux sociaux", "La traduction", "La formation"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une légende incrustée ?", "options": ["Un texte gravé dans la vidéo", "Un fichier séparé", "Une traduction orale", "Un titre de film"], "correct": 0 },
+    { "q": "Quelle est une bonne porte d'entrée chez un nouveau client ?", "options": ["Un audit de ses sous-titres", "Un travail gratuit illimité", "Une publicité", "Un logo"], "correct": 0 },
+    { "q": "Quel critère d'un service automatique concerne les vidéos non publiées ?", "options": ["La confidentialité", "La couleur", "Le prix de l'abonnement seul", "La police"], "correct": 0 },
+    { "q": "Où placer les légendes d'une vidéo verticale ?", "options": ["Au centre ou dans le tiers inférieur, sans toucher le bas", "Tout en bas, sous les boutons", "Sur le visage", "Dans l'angle droit"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un changement de plan ?", "options": ["Une coupe du montage où l'image change", "Un changement de langue", "Un nouveau fichier", "Une erreur de traduction"], "correct": 0 },
+    { "q": "Quel affichage aide à synchroniser dans Subtitle Edit ?", "options": ["La forme d'onde et les changements de plan", "Le calendrier", "La météo", "Le dictionnaire"], "correct": 0 },
+    { "q": "Le français est souvent plus long que l'anglais de…", "options": ["15 à 20 %", "200 %", "0 %", "1 %"], "correct": 0 },
+    { "q": "Quel format est le plus courant ?", "options": ["SRT", "SCC", "EBU STL", "TTML"], "correct": 0 },
+    { "q": "Quel format permet des styles avancés et le karaoké ?", "options": ["ASS", "SRT", "TXT", "CSV"], "correct": 0 },
+    { "q": "Combien de caractères par ligne selon la plupart des guides ?", "options": ["37 à 42", "10", "100", "Illimité"], "correct": 0 },
+    { "q": "Qu'est-ce que le CPS ?", "options": ["Le nombre de caractères par seconde", "Le nombre de plans", "Le prix par sous-titre", "Le format de fichier"], "correct": 0 },
+    { "q": "Quelle est la durée maximale habituelle d'un sous-titre ?", "options": ["Environ 6 à 7 secondes", "30 secondes", "1 minute", "Une demi-seconde"], "correct": 0 },
+    { "q": "Comment présenter deux répliques dans un même sous-titre ?", "options": ["Avec un tiret par intervenant", "Sans séparation", "Sur 4 lignes", "En majuscules"], "correct": 0 },
+    { "q": "Comment noter un ton chuchoté dans des SME ?", "options": ["[en chuchotant]", "En gras", "Avec trois points d'exclamation", "On ne le note jamais"], "correct": 0 },
+    { "q": "Quelle ponctuation demande une espace avant en français ?", "options": ["Le point d'interrogation", "La virgule", "Le point final", "L'apostrophe"], "correct": 0 },
+    { "q": "Les vérifications automatiques suffisent-elles ?", "options": ["Non, il faut un visionnage complet", "Oui, toujours", "Oui, pour les films", "Oui, pour les SME"], "correct": 0 },
+    { "q": "Que faire d'une erreur dans le fichier modèle ?", "options": ["La signaler au client", "La reproduire", "L'ignorer", "Supprimer le fichier"], "correct": 0 },
+    { "q": "Que faire en cas de délestage annoncé pendant un projet d'agence ?", "options": ["Prévenir le chef de projet à l'avance et avoir une connexion de secours", "Ne rien dire", "Livrer en retard sans prévenir", "Abandonner le projet"], "correct": 0 },
+    { "q": "Que risque un sous-titreur qui fait fuiter un film ?", "options": ["La perte de ses accès et des poursuites selon le contrat", "Une prime", "Rien", "Une promotion"], "correct": 0 },
+    { "q": "Comment choisir entre tutoiement et vouvoiement ?", "options": ["Selon la relation entre les personnages, de façon cohérente", "Au hasard", "Toujours tutoyer", "Changer à chaque réplique"], "correct": 0 },
+    { "q": "Que faire avant de sous-titrer un audio malgache difficile ?", "options": ["Le transcrire d'abord", "Le traduire directement sans écouter", "Le supprimer", "Le résumer"], "correct": 0 },
+    { "q": "Quel supplément pour une livraison en moins de 48 heures ?", "options": ["+25 à +50 % (exemple)", "−50 %", "Aucun", "+1 000 %"], "correct": 0 },
+    { "q": "Quand proposer ses services aux réalisateurs qui visent un festival ?", "options": ["Quelques semaines avant les dates limites", "Après la fin du festival", "Jamais", "Le jour de la projection"], "correct": 0 },
+    { "q": "Où l'IA reste-t-elle faible en sous-titrage ?", "options": ["Le malgache, le son difficile et les SME de qualité", "Les fichiers parfaits en anglais", "Le texte déjà écrit", "Nulle part"], "correct": 0 }
+  ]
+}
