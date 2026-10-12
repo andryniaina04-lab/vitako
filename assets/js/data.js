@@ -1593,6 +1593,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-1-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du designer UI/UX un professionnel qui améliore des produits de façon mesurable : spécialité (produit, design system, recherche, mobile, accessibilité, conversion), audit UX et indicateurs, outils payants (offre payante de Figma avec variables, modes, bibliothèques et mode développeur, Framer), méthode par hypothèses, tests rapides, UX writing et accessibilité WCAG, travail international, puis tarif, forfaits et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, mener un audit UX et relier le design à des indicateurs",
+   "Utiliser variables, modes, composants avancés et bibliothèques de Figma",
+   "Livrer avec le mode développeur et publier des sites avec Framer",
+   "Travailler par hypothèses, tester vite, écrire les textes et vérifier l'accessibilité",
+   "Présenter ses choix et concevoir pour plusieurs langues et pays",
+   "Fixer un tarif, vendre des forfaits et organiser un petit studio"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et mesurer",
+    "summary": "Les 6 spécialités avancées, l'audit UX en 6 domaines, la gravité des problèmes, les indicateurs de design et les offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit UX",
+     "Relier le design à des indicateurs",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Figma payant, variables, bibliothèques et Framer",
+    "summary": "Fonctions de l'offre payante, variables primitives et sémantiques avec modes, composants avec propriétés, bibliothèque versionnée, mode développeur et publication avec Framer.",
+    "sections": [
+     "Ce qu'apporte l'offre payante de Figma",
+     "Les variables et les modes",
+     "Les composants avancés",
+     "Publier et maintenir une bibliothèque",
+     "Le mode développeur et la livraison",
+     "Framer : publier un vrai site",
+     "Exercice pratique : votre bibliothèque professionnelle"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : hypothèses, tests rapides, textes et accessibilité",
+    "summary": "Hypothèse mesurable et cycle, tests modérés à distance et méthodes rapides, règles d'UX writing, exigences WCAG AA et cycles courts avec les développeurs.",
+    "sections": [
+     "Cadrer avec une hypothèse",
+     "Les tests utilisateurs rapides à distance",
+     "Les textes d'interface (UX writing)",
+     "L'accessibilité selon les WCAG",
+     "Travailler en cycles courts avec les développeurs",
+     "Exercice pratique : un cycle complet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : présentation, multilingue, confidentialité et entretiens",
+    "summary": "Présenter et défendre ses choix, concevoir pour plusieurs langues et pays, confidentialité et licences, rituels d'équipe et vocabulaire anglais, entretiens de designer.",
+    "sections": [
+     "Présenter et défendre ses choix",
+     "Concevoir pour plusieurs langues et pays",
+     "Confidentialité et propriété",
+     "Travailler à distance avec une équipe produit",
+     "Réussir un entretien de designer",
+     "Exercice pratique : prêt pour l'international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer sa carrière : tarif, forfaits, portfolio et studio",
+    "summary": "Équipe à distance, freelance ou studio, tarif journalier, forfaits d'accompagnement, chiffrage en fourchette, portfolio avec résultats et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Fixer son tarif",
+     "Le portfolio du designer confirmé",
+     "Organiser un petit studio",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan de carrière"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "design-1-f": {
   "hours": 16,
   "description": "Le designer UI/UX conçoit des écrans d'applications et de sites simples à utiliser et agréables à regarder. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des start-up, des agences et des entreprises, à Madagascar et à l'étranger, avec Figma et FigJam : recherche utilisateur, parcours, wireframes, maquettes, prototypes et tests. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

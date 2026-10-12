@@ -6,7 +6,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 14, true),
   ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
   ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
-  ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 15, false),
+  ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 13, false),
@@ -9651,6 +9651,599 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- design-1-a
+delete from public.exam_questions where course_id = 'design-1-a';
+delete from public.module_questions where course_id = 'design-1-a';
+delete from public.lessons where course_id = 'design-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-a', 0, 'Se spécialiser, auditer et mesurer', 'Les 6 spécialités avancées, l''audit UX en 6 domaines, la gravité des problèmes, les indicateurs de design et les offres à plus forte valeur.', 'Savoir dessiner des écrans propres dans Figma ouvre les premières missions. Les designers UI/UX les mieux payés vont plus loin : ils **améliorent des produits qui existent déjà**, mesurent l''effet de leurs choix, construisent des **design systems** et travaillent main dans la main avec les équipes produit et les développeurs. Ce module vous aide à choisir votre spécialité et à vendre une expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du design d''interface.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit UX en 6 domaines.
+> 4. Relier le design à des indicateurs mesurables.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Product designer** | Un produit numérique qui doit évoluer chaque semaine avec une équipe | Méthodes produit, indicateurs, priorités, collaboration |
+| 2 | **Design system** | Des interfaces incohérentes et longues à produire | Composants, variables, documentation, gouvernance |
+| 3 | **Recherche utilisateur** | Des décisions prises sans connaître les utilisateurs | Entretiens, tests, enquêtes, synthèse |
+| 4 | **Design mobile** | Des applications difficiles à utiliser sur téléphone | Règles iOS et Android, gestes, performances perçues |
+| 5 | **Accessibilité** | Des interfaces inutilisables par certaines personnes, obligations légales | Normes WCAG, tests avec technologies d''assistance |
+| 6 | **Sites et pages de conversion** | Des pages qui ne transforment pas les visiteurs en clients | Messages, hiérarchie, tests, Framer ou Webflow |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Applications pour les marchés émergents** : paiement mobile, connexions faibles, téléphones d''entrée de gamme, langues multiples. Votre expérience quotidienne est une expertise recherchée.
+> - **Design system en sous-traitance** pour des agences francophones, un travail long et régulier.
+> - **Recherche utilisateur à Madagascar** pour les ONG et les entreprises qui lancent des services locaux.
+
+## L''audit UX
+
+L''audit est souvent le **premier service** vendu à un nouveau client : il montre votre méthode et mène à une mission de refonte ou d''accompagnement.
+
+### Les 6 domaines
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Parcours clés** | Inscription, achat, réservation : nombre d''étapes, points de blocage |
+| **2. Clarté** | Textes, libellés des boutons, hiérarchie, compréhension en 5 secondes |
+| **3. Cohérence** | Composants, couleurs, typographie, comportements identiques |
+| **4. Accessibilité** | Contrastes, tailles, zones tactiles, navigation au clavier |
+| **5. États et erreurs** | Chargement, vide, erreur, succès, messages compréhensibles |
+| **6. Données** | Taux d''abandon, avis des utilisateurs, demandes au support |
+
+### La gravité des problèmes
+
+| Gravité | Définition | Exemple |
+| --- | --- | --- |
+| **Bloquant** | L''utilisateur ne peut pas finir sa tâche | Le bouton de paiement est caché par le clavier |
+| **Majeur** | Il finit avec difficulté ou erreur | Les frais apparaissent seulement à la fin |
+| **Mineur** | Gêne légère | Icônes de styles différents |
+
+> [!exemple] Extrait de résumé d''audit
+> « Sur 6 étapes d''inscription, 2 demandent des informations inutiles à ce stade (adresse et date de naissance). Sur téléphone, le bouton "Continuer" est caché par le clavier sur les écrans de petite taille : c''est un problème bloquant. 11 couleurs de gris différentes sont utilisées. Le support reçoit 40 % de ses demandes sur le mot de passe oublié, dont le lien est presque invisible. Nous proposons de corriger les 5 problèmes bloquants et majeurs en 2 semaines. »
+
+## Relier le design à des indicateurs
+
+| Indicateur | Ce qu''il mesure | Exemple d''objectif |
+| --- | --- | --- |
+| **Taux de conversion** | Visiteurs qui achètent ou s''inscrivent | Passer de 2 % à 3 % |
+| **Taux d''achèvement d''une tâche** | Utilisateurs qui terminent un parcours | 95 % terminent l''inscription |
+| **Temps pour une tâche** | Rapidité | Réserver en moins de 2 minutes |
+| **Taux d''erreur** | Erreurs dans un formulaire | Diviser par 2 les erreurs de saisie |
+| **Demandes au support** | Problèmes de compréhension | −30 % de demandes sur le mot de passe |
+| **Satisfaction** | Avis des utilisateurs | Note de l''application de 3,6 à 4,3 |
+
+> [!astuce]
+> Avant de commencer un projet, demandez au client **un ou deux chiffres de départ**. Même imparfaits, ils vous permettront de montrer l''effet de votre travail et de construire une étude de cas convaincante.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit UX** | Rapport en 6 domaines, problèmes classés par gravité, recommandations |
+| **Refonte d''un parcours** | Recherche, conception, prototype, tests, livraison |
+| **Design system** | Bibliothèque de composants, variables, documentation |
+| **Accompagnement produit** | Designer intégré à l''équipe quelques jours par semaine |
+| **Tests utilisateurs** | Recrutement, tests, rapport et vidéos |
+| **Site de conversion** | Design et publication avec Framer |
+
+> [!retenir]
+> - Spécialisez-vous : produit, design system, recherche, mobile, accessibilité ou conversion.
+> - L''audit en 6 domaines, avec des problèmes classés par gravité.
+> - Reliez votre travail à des indicateurs mesurables.
+> - Vendez des résultats, pas des écrans.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Choisissez une application malgache ou africaine que vous utilisez et auditez-la sur les 6 domaines.
+> 3. Classez au moins 12 problèmes par gravité, avec une capture pour chacun.
+> 4. Rédigez le résumé de l''audit et proposez 2 indicateurs à suivre.
+>
+> **À livrer** : votre choix, votre rapport d''audit et vos indicateurs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 0, 0, 'Qu''est-ce qu''un problème « bloquant » ?', '["Une couleur que le client n''aime pas","L''utilisateur ne peut pas finir sa tâche","Un texte un peu long","Une icône d''un autre style"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 0, 1, 'Que demander au client avant un projet ?', '["Le salaire de ses développeurs","Rien","Un ou deux chiffres de départ","Son mot de passe"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 0, 2, 'Quelle spécialité construit des bibliothèques de composants ?', '["Conversion","Recherche utilisateur","Mobile","Design system"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-a', 1, 'Outils professionnels : Figma payant, variables, bibliothèques et Framer', 'Fonctions de l''offre payante, variables primitives et sémantiques avec modes, composants avec propriétés, bibliothèque versionnée, mode développeur et publication avec Framer.', 'Au niveau Avancé, vous travaillez avec les fonctions professionnelles de **Figma (offre payante)** : bibliothèques partagées, variables, modes, mode développeur, et avec **Framer** pour publier de vrais sites. Ce module vous apprend à construire des fichiers qui tiennent dans le temps et dans une équipe.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les variables et les modes de Figma.
+> 2. Construire des composants avancés avec propriétés.
+> 3. Publier et maintenir une bibliothèque d''équipe.
+> 4. Préparer la livraison avec le mode développeur.
+> 5. Publier un site avec Framer.
+
+## Ce qu''apporte l''offre payante de Figma
+
+| Fonction | Utilité |
+| --- | --- |
+| **Bibliothèques d''équipe** | Partager composants, styles et variables entre fichiers |
+| **Projets et fichiers illimités** | Organiser le travail de plusieurs clients |
+| **Historique des versions plus long** | Revenir à une version validée |
+| **Mode développeur** (selon l''offre) | Les développeurs inspectent les mesures, le code et les ressources |
+| **Modes de variables plus nombreux** | Thèmes, langues, marques |
+
+*(Les offres et les fonctions incluses changent : vérifiez sur le site officiel de Figma.)*
+
+## Les variables et les modes
+
+> [!definition] Variables
+> Des valeurs enregistrées et réutilisables : couleurs, espacements, tailles, textes. Elles peuvent avoir plusieurs **modes** (par exemple clair et sombre) : on change de mode, et tout l''écran s''adapte.
+
+### L''organisation en 2 niveaux
+
+| Niveau | Exemple | Rôle |
+| --- | --- | --- |
+| **Primitives** | `vert/600 = #1F6F50`, `gris/100 = #F3F4F6` | Toutes les valeurs disponibles |
+| **Sémantiques** | `fond/principal`, `texte/secondaire`, `action/principale` | Le sens d''usage, relié à une primitive |
+
+| Variable sémantique | Mode clair | Mode sombre |
+| --- | --- | --- |
+| `fond/principal` | gris/50 | gris/900 |
+| `texte/principal` | gris/900 | gris/50 |
+| `action/principale` | vert/600 | vert/400 |
+
+> [!astuce]
+> Les composants utilisent **seulement les variables sémantiques**. Si la marque change de vert, vous modifiez une primitive, et tout le produit suit sans toucher aux écrans.
+
+> [!madagascar]
+> Utilisez aussi les modes pour les **langues** : un mode français et un mode malgache pour les textes courts (boutons, titres). Vous voyez immédiatement si un libellé malgache, souvent plus long, casse la mise en page.
+
+## Les composants avancés
+
+| Propriété de composant | Exemple |
+| --- | --- |
+| **Variante** | Type : principal, secondaire, danger |
+| **Booléenne** | Afficher une icône : oui ou non |
+| **Texte** | Libellé du bouton modifiable sans détacher |
+| **Échange d''instance** | Choisir l''icône dans la bibliothèque |
+
+### Les règles
+
+1. **Un composant = un usage clair**, avec une description.
+2. **Auto-layout partout**, pour que le composant s''adapte au contenu.
+3. **Tous les états** : normal, survol, focus, désactivé, chargement, erreur.
+4. **Pas de détachement** : si une instance doit être détachée, le composant est incomplet.
+
+## Publier et maintenir une bibliothèque
+
+1. **Créez** un fichier dédié « Bibliothèque » séparé des projets.
+2. **Publiez** les composants, styles et variables.
+3. **Rédigez** un journal des modifications à chaque publication (« v1.4 : ajout du champ de recherche, correction du contraste du bouton secondaire »).
+4. **Prévenez** l''équipe des changements importants.
+5. **Vérifiez** l''utilisation : les composants peu utilisés ou souvent détachés doivent être améliorés.
+
+## Le mode développeur et la livraison
+
+| Élément à préparer | Pourquoi |
+| --- | --- |
+| **Sections prêtes pour le développement** | Le développeur sait quels écrans sont validés |
+| **Noms de calques et composants clairs** | Il retrouve les éléments dans le code |
+| **Annotations** des comportements | Clic, chargement, erreur, animations |
+| **Variables nommées comme dans le code** | `action/principale` correspond à une variable CSS |
+| **Ressources exportables** | Icônes en SVG, images optimisées |
+
+> [!attention]
+> Le code proposé par le mode développeur est une **aide**, pas un code à copier tel quel. Le développeur choisit la meilleure façon de l''écrire dans son projet. Votre rôle est d''être clair sur l''intention.
+
+## Framer : publier un vrai site
+
+> [!definition] Framer
+> Un outil payant (avec une offre gratuite limitée) qui permet de concevoir et publier des sites web réactifs, animés, avec un gestionnaire de contenu, sans coder. On peut y coller des éléments copiés depuis Figma.
+
+### Le flux de travail
+
+1. **Concevez** la page (dans Figma ou directement dans Framer).
+2. **Construisez** les sections avec des piles (équivalent de l''auto-layout).
+3. **Réglez** les points de rupture : ordinateur, tablette, téléphone.
+4. **Ajoutez** les animations avec modération.
+5. **Configurez** le référencement : titre, description, image de partage.
+6. **Publiez** sur un domaine personnalisé (offre payante du client).
+
+> [!madagascar]
+> Les abonnements Figma et Framer sont facturés en dollars. La pratique courante : le client paie son espace et son site, et vous invite comme collaborateur. Vérifiez les prix à jour sur les sites officiels, et les offres pour étudiants si vous êtes encore en formation.
+
+> [!retenir]
+> - Variables primitives et sémantiques, avec des modes (thèmes, langues).
+> - Des composants avec propriétés, auto-layout et tous les états.
+> - Une bibliothèque publiée, versionnée et suivie.
+> - Une livraison claire avec le mode développeur, sans imposer le code.
+> - Framer pour publier des sites sans coder.
+
+## Exercice pratique : votre bibliothèque professionnelle
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez les variables primitives et sémantiques d''une marque, avec un mode clair et un mode sombre.
+> 2. Créez 6 composants avec propriétés et tous leurs états : bouton, champ, case à cocher, carte, onglets, alerte.
+> 3. Publiez la bibliothèque (ou simulez-la dans un fichier dédié) avec un journal des modifications.
+> 4. Construisez 3 écrans avec cette bibliothèque, en clair et en sombre.
+> 5. Publiez une page de présentation simple avec Framer (offre gratuite).
+>
+> **À livrer** : le lien de votre bibliothèque, vos 3 écrans et le lien de votre page Framer.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 1, 0, 'Quelles variables les composants doivent-ils utiliser ?', '["Des couleurs écrites à la main","Les variables sémantiques","Les primitives directement partout","Aucune"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 1, 1, 'À quoi peut servir un mode de variables ?', '["Passer en thème sombre ou changer de langue","Exporter en PDF","Supprimer des calques","Payer l''abonnement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 1, 2, 'Comment considérer le code du mode développeur ?', '["Comme le code final obligatoire","Comme une aide, pas un code à copier tel quel","Comme un mot de passe","Comme inutile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-a', 2, 'Qualité et rapidité : hypothèses, tests rapides, textes et accessibilité', 'Hypothèse mesurable et cycle, tests modérés à distance et méthodes rapides, règles d''UX writing, exigences WCAG AA et cycles courts avec les développeurs.', 'Un designer avancé ne travaille pas « à l''inspiration » : il suit une **méthode** qui donne des résultats fiables, vite. Ce module vous donne les méthodes des équipes produit : cadrer avec des hypothèses, tester rapidement, rédiger les textes d''interface, vérifier l''accessibilité et collaborer efficacement avec les développeurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Cadrer un problème avec une hypothèse mesurable.
+> 2. Mener des tests utilisateurs rapides à distance.
+> 3. Rédiger les textes d''interface (UX writing).
+> 4. Vérifier l''accessibilité selon les normes WCAG.
+> 5. Travailler en cycles courts avec les développeurs.
+
+## Cadrer avec une hypothèse
+
+> [!definition] Hypothèse de design
+> Une phrase qui relie un changement à un effet mesurable : « Nous pensons que [changement] pour [utilisateurs] produira [effet], ce que nous mesurerons avec [indicateur]. »
+
+> [!exemple] Hypothèse
+> « Nous pensons qu''afficher les frais de livraison dès la fiche produit, pour les clients sur téléphone, réduira les abandons de panier, ce que nous mesurerons avec le taux de passage du panier au paiement, actuellement de 38 %. »
+
+### Le cycle
+
+1. **Comprendre** : données, entretiens, audit.
+2. **Formuler** l''hypothèse.
+3. **Concevoir** la solution la plus simple qui la teste.
+4. **Tester** avec des utilisateurs (prototype) puis en vrai (indicateur).
+5. **Décider** : garder, améliorer ou abandonner.
+
+## Les tests utilisateurs rapides à distance
+
+### Le test modéré en visioconférence
+
+| Étape | Conseil |
+| --- | --- |
+| **Recrutement** | 5 personnes proches du profil, avec un petit dédommagement (crédit téléphonique, bon d''achat) |
+| **Préparation** | 3 à 5 tâches réalistes, un prototype prêt sur téléphone |
+| **Pendant le test** | La personne partage son écran et pense à voix haute ; vous observez sans aider |
+| **Questions** | Ouvertes, à la fin : « Qu''est-ce qui a été le plus difficile ? » |
+| **Synthèse** | Problèmes, fréquence, gravité, recommandations, extraits vidéo |
+
+> [!attention]
+> Demandez toujours l''**accord écrit** de la personne avant d''enregistrer, expliquez à quoi servira l''enregistrement, et ne le partagez qu''avec l''équipe du projet.
+
+### Les autres méthodes rapides
+
+| Méthode | Usage |
+| --- | --- |
+| **Test des 5 secondes** | La personne voit l''écran 5 secondes : que retient-elle ? |
+| **Tri de cartes** | Organiser les rubriques d''un menu selon la logique des utilisateurs |
+| **Test de première impression** | Comparer 2 propositions visuelles |
+| **Analyse des enregistrements de sessions** | Observer les vrais parcours (avec un outil adapté et le consentement prévu par le client) |
+
+## Les textes d''interface (UX writing)
+
+| Règle | À éviter | À préférer |
+| --- | --- | --- |
+| **Dire l''action** | « OK » | « Confirmer le paiement » |
+| **Parler comme l''utilisateur** | « Échec de l''authentification » | « Le mot de passe est incorrect » |
+| **Expliquer comment corriger** | « Erreur de saisie » | « Entrez un numéro à 10 chiffres, par exemple 034 12 345 67 » |
+| **Être bref** | « Veuillez cliquer sur ce bouton afin de pouvoir continuer » | « Continuer » |
+| **Rester cohérent** | « Panier », « Sac », « Commande » pour la même chose | Un seul mot partout |
+
+> [!astuce]
+> Écrivez les **vrais textes** dès les wireframes. Un design testé avec des textes factices cache souvent les vrais problèmes de compréhension.
+
+## L''accessibilité selon les WCAG
+
+> [!definition] WCAG
+> Les règles internationales pour l''accessibilité des contenus web. Le niveau **AA** est celui demandé le plus souvent par les clients et par les lois de plusieurs pays.
+
+| Point | Exigence courante (niveau AA) |
+| --- | --- |
+| **Contraste du texte** | Au moins 4,5:1 pour le texte normal, 3:1 pour le grand texte |
+| **Contraste des éléments d''interface** | Au moins 3:1 (bordures de champs, icônes utiles) |
+| **Focus visible** | Un indicateur clair pour la navigation au clavier |
+| **Taille des cibles** | Zones tactiles suffisamment grandes et espacées |
+| **Pas seulement la couleur** | Erreurs signalées aussi par un texte ou une icône |
+| **Ordre logique** | L''ordre de lecture et de tabulation suit l''ordre visuel |
+
+### La liste de contrôle du designer
+
+1. Vérifier les contrastes avec une extension Figma.
+2. Dessiner les états de **focus**.
+3. Annoter l''**ordre de lecture** et les **textes alternatifs** des images.
+4. Prévoir l''**agrandissement du texte** (200 %) sans perte de contenu.
+5. Tester avec un **lecteur d''écran** sur une version développée.
+
+## Travailler en cycles courts avec les développeurs
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Revue technique** avant de finaliser | Le développeur signale ce qui est coûteux ou risqué |
+| **Livraisons par petites parties** | Un parcours à la fois, pas 60 écrans d''un coup |
+| **Revue de design** sur la version développée | Repérer les écarts avant la mise en ligne |
+| **Liste des écarts** classés par gravité | Corriger l''essentiel, accepter les détails |
+| **Disponibilité** pendant le développement | Répondre vite aux questions |
+
+> [!madagascar]
+> Avec une équipe en Europe, fixez **2 à 3 heures de chevauchement** par jour pour les échanges, et documentez vos décisions par écrit dans le fichier Figma ou l''outil de tickets. Un développeur qui travaille pendant votre délestage doit trouver ses réponses sans vous joindre.
+
+> [!retenir]
+> - Une hypothèse mesurable avant chaque projet.
+> - 5 tests modérés, avec consentement, suffisent à trouver l''essentiel.
+> - Des textes d''interface clairs, brefs, cohérents.
+> - L''accessibilité au niveau AA des WCAG.
+> - Des cycles courts et une revue de design de la version développée.
+
+## Exercice pratique : un cycle complet
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Choisissez un problème de votre audit du module 1 et rédigez l''hypothèse.
+> 2. Concevez 2 propositions et un prototype.
+> 3. Faites 5 tests à distance (avec consentement) et un test des 5 secondes.
+> 4. Réécrivez tous les textes de l''écran avec les règles d''UX writing.
+> 5. Appliquez la liste de contrôle d''accessibilité et corrigez.
+>
+> **À livrer** : votre hypothèse, vos propositions, la synthèse des tests, vos textes et votre liste de contrôle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 2, 0, 'Quel texte de bouton est le meilleur ?', '["Valider l''opération de transaction","OK","Cliquez ici","Confirmer le paiement"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 2, 1, 'Quel contraste minimum pour le texte normal au niveau AA ?', '["2:1","4,5:1","1,5:1","10:1"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 2, 2, 'Que faut-il avant d''enregistrer un test utilisateur ?', '["L''accord écrit de la personne","L''accord du concurrent","Rien","Un paiement de sa part"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-a', 3, 'Clients internationaux : présentation, multilingue, confidentialité et entretiens', 'Présenter et défendre ses choix, concevoir pour plusieurs langues et pays, confidentialité et licences, rituels d''équipe et vocabulaire anglais, entretiens de designer.', 'Les entreprises et agences étrangères offrent des missions de design plus longues et mieux payées. Elles attendent une communication professionnelle en anglais, des produits pensés pour plusieurs pays et langues, le respect de la confidentialité, et des présentations claires de vos choix. Ce module vous prépare à travailler avec elles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Présenter et défendre vos choix de design, en français et en anglais.
+> 2. Concevoir pour plusieurs langues, pays et cultures.
+> 3. Respecter la confidentialité et la propriété des fichiers.
+> 4. Travailler à distance avec une équipe produit étrangère.
+> 5. Réussir un entretien de designer et un exercice de conception.
+
+## Présenter et défendre ses choix
+
+### La structure en 4 parties
+
+1. **Le problème** : ce que nous avons observé, avec des preuves.
+2. **L''objectif** : l''hypothèse et l''indicateur.
+3. **La solution** : ce qui change et pourquoi, en lien avec les principes et les tests.
+4. **La suite** : ce qu''on mesurera, les questions ouvertes.
+
+> [!exemple] Présentation en anglais
+> "During testing, 4 out of 5 users didn''t notice the delivery fee until the last step, and 2 abandoned the order. Our goal is to reduce cart abandonment, currently 62%. We now show the estimated fee on the product page and in the cart. We''ll track the cart-to-checkout rate for two weeks after release."
+
+### Recevoir une critique
+
+| Situation | Réponse professionnelle |
+| --- | --- |
+| « Je n''aime pas cette couleur. » | « Merci. Qu''est-ce qui vous gêne : la lisibilité, l''image de marque ? » |
+| « Ajoutez plus d''éléments sur l''accueil. » | « Quel objectif voulez-vous atteindre ? Les tests montrent que les utilisateurs cherchent d''abord la recherche. » |
+| Une critique juste | « Vous avez raison, je corrige et je vous montre une nouvelle version demain. » |
+
+## Concevoir pour plusieurs langues et pays
+
+| Point | À prévoir |
+| --- | --- |
+| **Longueur des textes** | L''allemand ou le malgache peuvent être nettement plus longs que l''anglais : prévoir des zones souples |
+| **Sens de lecture** | Arabe et hébreu se lisent de droite à gauche : l''interface s''inverse |
+| **Formats** | Dates, heures, nombres, devises, adresses, numéros de téléphone |
+| **Noms** | Prénom et nom ne sont pas organisés de la même façon partout ; prévoir des champs souples |
+| **Images et symboles** | Gestes, couleurs et icônes n''ont pas le même sens partout |
+| **Moyens de paiement** | Cartes, Mobile Money, virements selon les pays |
+
+> [!madagascar]
+> Pour un produit pensé pour l''Afrique et l''océan Indien, intégrez dès le départ : le **paiement mobile**, les **connexions lentes** (états de chargement, mode hors ligne quand c''est possible), les **données mobiles coûteuses** (images légères) et les **téléphones à petit écran**. Ce savoir est rare chez les designers européens et très apprécié.
+
+## Confidentialité et propriété
+
+### Les 6 règles
+
+1. **Respectez** l''accord de confidentialité : pas d''écran d''un produit non publié sur Behance ou Dribbble.
+2. **Travaillez** dans l''espace Figma du client, pas dans votre compte personnel.
+3. **Demandez** l''autorisation écrite avant de montrer un projet dans votre portfolio, ou présentez-le de façon anonymisée.
+4. **Protégez** les données réelles d''utilisateurs : utilisez des données fictives dans les maquettes.
+5. **Vérifiez** les licences des polices, icônes et images.
+6. **Transférez** les fichiers et retirez vos accès à la fin de la mission.
+
+> [!attention]
+> Les polices et les images ont des **licences**. Une police gratuite pour un usage personnel peut être interdite dans une application commerciale. Vérifiez toujours, et notez la source et la licence de chaque ressource.
+
+## Travailler à distance avec une équipe produit
+
+| Rituel | Votre rôle |
+| --- | --- |
+| **Planification** du cycle | Estimer le travail de design, signaler les dépendances |
+| **Point quotidien** | « Hier, aujourd''hui, blocages » en 1 minute |
+| **Revue** de fin de cycle | Montrer le travail terminé |
+| **Rétrospective** | Proposer des améliorations de méthode |
+
+### Le vocabulaire en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Parcours utilisateur | User flow / user journey |
+| Maquette fil de fer | Wireframe |
+| Maquette haute fidélité | High-fidelity mockup |
+| Test utilisateur | Usability test |
+| Bibliothèque de composants | Component library |
+| Retour, critique | Feedback |
+| Livraison aux développeurs | Developer handoff |
+
+## Réussir un entretien de designer
+
+| Étape | Ce qui est évalué | Préparation |
+| --- | --- | --- |
+| **Présentation du portfolio** | Votre raisonnement sur 2 projets | 10 minutes par projet, structure en 4 parties |
+| **Exercice de conception** | Méthode, questions, priorités | Poser des questions avant de dessiner |
+| **Devoir à la maison** | Qualité et clarté | Respecter le temps demandé, expliquer vos choix |
+| **Entretien d''équipe** | Collaboration, communication | Exemples concrets de travail avec des développeurs |
+
+> [!astuce]
+> Pendant un exercice de conception en direct, passez les premières minutes à **poser des questions** : qui sont les utilisateurs, quel est l''objectif, quelles contraintes ? Les recruteurs évaluent votre méthode plus que la beauté du résultat.
+
+> [!retenir]
+> - Présentez vos choix avec problème, objectif, solution et suite.
+> - Concevez pour plusieurs langues, formats, cultures et moyens de paiement.
+> - Confidentialité, licences, données fictives et accès retirés.
+> - Participez aux rituels d''équipe avec un vocabulaire anglais maîtrisé.
+> - En entretien, montrez votre raisonnement.
+
+## Exercice pratique : prêt pour l''international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Préparez la présentation d''un de vos projets en 4 parties, en français et en anglais, et enregistrez-vous.
+> 2. Adaptez 3 écrans pour une version en malgache ou en allemand (textes plus longs) et une version en arabe (droite à gauche).
+> 3. Faites la liste des licences de toutes les ressources de votre portfolio.
+> 4. Entraînez-vous à un exercice de conception en 45 minutes (par exemple : « une application pour réserver un taxi-brousse »).
+>
+> **À livrer** : votre enregistrement, vos écrans adaptés, votre liste de licences et votre exercice.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 3, 0, 'Peut-on publier sur Dribbble l''écran d''un produit non publié ?', '["Oui, le week-end","Oui, toujours","Oui, en petit","Non, sans autorisation écrite"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 3, 1, 'Que prévoir pour une interface en arabe ?', '["Des textes plus courts","Rien de particulier","Une lecture de droite à gauche","Uniquement des images"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 3, 2, 'Que faire au début d''un exercice de conception en direct ?', '["Choisir les couleurs","Rester silencieux","Poser des questions sur les utilisateurs, l''objectif et les contraintes","Dessiner immédiatement"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-a', 4, 'Développer sa carrière : tarif, forfaits, portfolio et studio', 'Équipe à distance, freelance ou studio, tarif journalier, forfaits d''accompagnement, chiffrage en fourchette, portfolio avec résultats et évolution.', 'Un designer UI/UX confirmé peut construire une carrière solide depuis Madagascar : poste à distance dans une équipe produit, missions en freelance mieux payées, accompagnement régulier de start-up, ou petit studio de design. Ce dernier module vous aide à choisir votre voie et à la construire.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste à distance, freelance et studio.
+> 2. Fixer un tarif journalier et proposer des forfaits d''accompagnement.
+> 3. Construire un portfolio de designer confirmé.
+> 4. Organiser un petit studio avec des partenaires.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Avantages | Points de vigilance |
+| --- | --- | --- |
+| **Designer à distance** dans une équipe produit | Revenu stable, apprentissage, projets longs | Contrat et paiement adaptés à Madagascar, horaires communs |
+| **Freelance** | Tarif plus élevé, choix des projets | Prospection, revenus irréguliers |
+| **Petit studio** | Projets plus gros, partenaires complémentaires | Gestion, qualité, responsabilité |
+
+## Fixer son tarif
+
+### Le tarif journalier
+
+1. **Revenu annuel visé** ÷ **jours facturables** (environ 180 à 200 par an).
+2. **Comparez** avec le marché du client et votre niveau.
+
+> [!exemple] Calcul
+> Revenu visé : 30 000 000 Ar par an. Jours facturables : 180. Tarif journalier : environ 167 000 Ar. Pour un client européen, vous comparez avec les tarifs de designers confirmés de son marché et fixez votre prix en euros.
+> *(Montants donnés en exemple.)*
+
+### Les forfaits d''accompagnement
+
+| Formule | Contenu (exemple) |
+| --- | --- |
+| **Essentiel** | 4 jours par mois : améliorations continues, revue de design |
+| **Produit** | 8 jours par mois : nouvelles fonctions, tests mensuels, bibliothèque |
+| **Partenaire** | 12 jours par mois : participation aux rituels, stratégie de design, design system |
+
+> [!astuce]
+> Les forfaits mensuels transforment des projets ponctuels en **revenus réguliers**. Proposez-les à la fin de chaque projet réussi : le client connaît déjà la qualité de votre travail.
+
+### Chiffrer un projet avec une fourchette
+
+| Étape | Estimation basse | Estimation haute |
+| --- | --- | --- |
+| Audit et recherche | 3 j | 4 j |
+| Parcours et wireframes | 3 j | 5 j |
+| Design system de base | 3 j | 5 j |
+| Maquettes (15 écrans et états) | 5 j | 8 j |
+| Tests et itérations | 2 j | 3 j |
+| Livraison et suivi du développement | 2 j | 3 j |
+| **Total** | **18 j** | **28 j** |
+
+Écrivez dans le devis ce qui fait varier le prix : nombre d''écrans, nombre de tours de corrections, disponibilité des utilisateurs pour les tests.
+
+## Le portfolio du designer confirmé
+
+1. **3 études de cas** approfondies, avec des **résultats mesurés**.
+2. **Votre processus** visible : recherche, hypothèses, tests, décisions.
+3. **Un design system** que vous avez construit (même pour un projet personnel).
+4. **Des recommandations** de clients ou de collègues.
+5. **Des publications** : articles courts ou vidéos où vous expliquez une décision de design.
+
+> [!exemple] Ligne de résultat dans une étude de cas
+> « Refonte du parcours d''inscription d''une application de microfinance : 6 étapes réduites à 4, taux d''achèvement passé de 58 % à 81 % en 6 semaines, demandes au support sur l''inscription divisées par 2. »
+
+## Organiser un petit studio
+
+| Rôle | Qui |
+| --- | --- |
+| **Direction de design** | Vous : stratégie, relation client, qualité |
+| **Designers juniors** | Maquettes, composants, sous votre relecture |
+| **Partenaire développement** | Développeur front-end ou no-code |
+| **Partenaire rédaction** | Rédacteur pour les textes et le contenu |
+
+### Les règles
+
+1. **Une bibliothèque et des conventions** communes.
+2. **Une revue de design** de chaque livraison.
+3. **Des accords de confidentialité** et l''accord du client pour la sous-traitance.
+4. **Des contrats** et un paiement juste et à temps.
+
+> [!madagascar]
+> Avant d''embaucher ou de sous-traiter, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable sur les obligations d''employeur. Pour les paiements de l''étranger, comparez Payoneer et le virement international, et gardez une trace de chaque paiement. Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Lead designer** | Accompagnement des designers, revue, organisation |
+| **Head of design** | Stratégie, recrutement, budget, culture de design |
+| **Spécialiste design system** | Gouvernance, collaboration avec les développeurs, outils |
+| **Chercheur UX** | Méthodes de recherche avancées, statistiques |
+| **Designer et développeur** | Front-end (voir la formation Développeur front-end) ou no-code |
+
+> [!retenir]
+> - Choisissez votre voie : équipe à distance, freelance ou studio.
+> - Tarif journalier et forfaits d''accompagnement mensuels.
+> - Chiffrage en fourchette avec ce qui fait varier le prix.
+> - Un portfolio avec des résultats mesurés et un processus visible.
+> - Un studio avec des règles, des partenaires et des contrats.
+
+## Exercice pratique : votre plan de carrière
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la en 5 lignes.
+> 2. Calculez votre tarif journalier en ariary et en euros.
+> 3. Rédigez vos 3 forfaits d''accompagnement.
+> 4. Chiffrez un projet avec une fourchette et rédigez le devis.
+> 5. Ajoutez des résultats mesurés (réels ou issus de vos exercices) à une étude de cas.
+> 6. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : votre choix, vos calculs, vos forfaits, votre devis, votre étude de cas et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 4, 0, '30 000 000 Ar pour 180 jours facturables donnent un tarif journalier d''environ…', '["30 000 Ar","180 000 Ar exactement","167 000 Ar","300 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 4, 1, 'Quel est l''intérêt des forfaits d''accompagnement ?', '["Travailler gratuitement","Ne plus faire de tests","Éviter tout client","Des revenus réguliers"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-a', 4, 2, 'Que doit contenir une étude de cas confirmée ?', '["Seulement de belles images","Des résultats mesurés et le processus","Les mots de passe du client","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Quelle spécialité améliore un produit avec l''équipe chaque semaine ?', '["Monteur vidéo","Illustrateur","Graphiste","Product designer"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Quel domaine de l''audit regarde les messages d''erreur ?', '["États et erreurs","Données","Cohérence","Parcours clés"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que mesure le taux d''achèvement d''une tâche ?', '["Le nombre d''écrans","La vitesse du serveur","Le prix","La part d''utilisateurs qui terminent un parcours"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Pourquoi la connaissance des marchés émergents est-elle un atout ?', '["Paiement mobile, connexions faibles et téléphones d''entrée de gamme sont mal connus ailleurs","Elle évite les tests","Elle remplace la méthode","Elle n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Qu''est-ce qu''une variable primitive ?', '["Un usage, comme action/principale","Une page","Un composant","Une valeur disponible, comme vert/600"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que faire si une instance doit souvent être détachée ?', '["Rien","Supprimer la bibliothèque","Améliorer le composant","Détacher partout"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que contient le journal des modifications d''une bibliothèque ?', '["Les mots de passe","Les changements de chaque version","Les salaires","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que permet Framer ?', '["Gérer la paie","Publier des sites réactifs sans coder","Faire la comptabilité","Monter un podcast"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Qui paie généralement l''espace Figma et le site Framer ?', '["Le designer obligatoirement","La plateforme de freelance","Personne","Le client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que relie une hypothèse de design ?', '["Un prix et une police","Deux clients","Deux couleurs","Un changement à un effet mesurable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Quelle est la dernière étape du cycle ?', '["Choisir la police","Recommencer sans mesurer","Facturer","Décider : garder, améliorer ou abandonner"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que fait le test des 5 secondes ?', '["Mesurer la vitesse du serveur","Rien","Compter les clics","Vérifier ce que la personne retient d''un écran"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Quel message d''erreur est le meilleur ?', '["Code 400","Entrez un numéro à 10 chiffres, par exemple 034 12 345 67","Erreur de saisie","Échec"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que faut-il dessiner pour la navigation au clavier ?', '["Rien","Les états de focus","Des ombres décoratives","Des animations"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Pourquoi livrer par petites parties ?', '["Pour avancer en cycles courts et corriger tôt","Ce n''est pas utile","Pour cacher le travail","Pour facturer plus"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Comment répondre à « Je n''aime pas cette couleur » ?', '["Demander ce qui gêne précisément","Tout recommencer sans question","Ignorer","Se vexer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que prévoir pour les textes en malgache ou en allemand ?', '["Des zones souples, car les textes peuvent être plus longs","Des images à la place","Rien","Des zones fixes très petites"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Pourquoi utiliser des données fictives dans les maquettes ?', '["Pour aller plus vite sans raison","Pour décorer","Pour protéger les données réelles des utilisateurs","C''est interdit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Une police gratuite pour un usage personnel est-elle toujours utilisable dans une application commerciale ?', '["Oui, si elle est jolie","Non, il faut vérifier la licence","Oui, toujours","Oui, sur téléphone"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Comment dit-on « livraison aux développeurs » en anglais ?', '["Developer handoff","Wireframe","User flow","Feedback"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Qu''évaluent surtout les recruteurs dans un exercice de conception ?', '["La méthode et le raisonnement","Le nombre d''écrans","La vitesse de dessin","Seulement la beauté"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Combien de jours facturables par an environ ?', '["300","365","180 à 200","50"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que préciser dans un devis en fourchette ?', '["Rien","Un prix unique sans explication","Le salaire du client","Ce qui fait varier le prix"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Que faut-il avant de sous-traiter une partie d''un projet ?', '["Une pédale","L''accord du client et des accords de confidentialité","Un nouveau logo","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-a', 'Quelle évolution demande gouvernance et collaboration avec les développeurs ?', '["Professeur de langue","Comptable","Transcripteur","Spécialiste design system"]'::jsonb, 3);
 
 -- design-1-f
 delete from public.exam_questions where course_id = 'design-1-f';

@@ -1,0 +1,97 @@
+{
+  "id": "design-1-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du designer UI/UX un professionnel qui améliore des produits de façon mesurable : spécialité (produit, design system, recherche, mobile, accessibilité, conversion), audit UX et indicateurs, outils payants (offre payante de Figma avec variables, modes, bibliothèques et mode développeur, Framer), méthode par hypothèses, tests rapides, UX writing et accessibilité WCAG, travail international, puis tarif, forfaits et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, mener un audit UX et relier le design à des indicateurs",
+    "Utiliser variables, modes, composants avancés et bibliothèques de Figma",
+    "Livrer avec le mode développeur et publier des sites avec Framer",
+    "Travailler par hypothèses, tester vite, écrire les textes et vérifier l'accessibilité",
+    "Présenter ses choix et concevoir pour plusieurs langues et pays",
+    "Fixer un tarif, vendre des forfaits et organiser un petit studio"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et mesurer",
+      "summary": "Les 6 spécialités avancées, l'audit UX en 6 domaines, la gravité des problèmes, les indicateurs de design et les offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un problème « bloquant » ?", "options": ["L'utilisateur ne peut pas finir sa tâche", "Une icône d'un autre style", "Une couleur que le client n'aime pas", "Un texte un peu long"], "correct": 0 },
+        { "q": "Que demander au client avant un projet ?", "options": ["Un ou deux chiffres de départ", "Son mot de passe", "Rien", "Le salaire de ses développeurs"], "correct": 0 },
+        { "q": "Quelle spécialité construit des bibliothèques de composants ?", "options": ["Design system", "Recherche utilisateur", "Conversion", "Mobile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Figma payant, variables, bibliothèques et Framer",
+      "summary": "Fonctions de l'offre payante, variables primitives et sémantiques avec modes, composants avec propriétés, bibliothèque versionnée, mode développeur et publication avec Framer.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelles variables les composants doivent-ils utiliser ?", "options": ["Les variables sémantiques", "Des couleurs écrites à la main", "Les primitives directement partout", "Aucune"], "correct": 0 },
+        { "q": "À quoi peut servir un mode de variables ?", "options": ["Passer en thème sombre ou changer de langue", "Payer l'abonnement", "Exporter en PDF", "Supprimer des calques"], "correct": 0 },
+        { "q": "Comment considérer le code du mode développeur ?", "options": ["Comme une aide, pas un code à copier tel quel", "Comme le code final obligatoire", "Comme inutile", "Comme un mot de passe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : hypothèses, tests rapides, textes et accessibilité",
+      "summary": "Hypothèse mesurable et cycle, tests modérés à distance et méthodes rapides, règles d'UX writing, exigences WCAG AA et cycles courts avec les développeurs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel texte de bouton est le meilleur ?", "options": ["Confirmer le paiement", "OK", "Cliquez ici", "Valider l'opération de transaction"], "correct": 0 },
+        { "q": "Quel contraste minimum pour le texte normal au niveau AA ?", "options": ["4,5:1", "1,5:1", "2:1", "10:1"], "correct": 0 },
+        { "q": "Que faut-il avant d'enregistrer un test utilisateur ?", "options": ["L'accord écrit de la personne", "Rien", "Un paiement de sa part", "L'accord du concurrent"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : présentation, multilingue, confidentialité et entretiens",
+      "summary": "Présenter et défendre ses choix, concevoir pour plusieurs langues et pays, confidentialité et licences, rituels d'équipe et vocabulaire anglais, entretiens de designer.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Peut-on publier sur Dribbble l'écran d'un produit non publié ?", "options": ["Non, sans autorisation écrite", "Oui, toujours", "Oui, en petit", "Oui, le week-end"], "correct": 0 },
+        { "q": "Que prévoir pour une interface en arabe ?", "options": ["Une lecture de droite à gauche", "Rien de particulier", "Des textes plus courts", "Uniquement des images"], "correct": 0 },
+        { "q": "Que faire au début d'un exercice de conception en direct ?", "options": ["Poser des questions sur les utilisateurs, l'objectif et les contraintes", "Dessiner immédiatement", "Choisir les couleurs", "Rester silencieux"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer sa carrière : tarif, forfaits, portfolio et studio",
+      "summary": "Équipe à distance, freelance ou studio, tarif journalier, forfaits d'accompagnement, chiffrage en fourchette, portfolio avec résultats et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "30 000 000 Ar pour 180 jours facturables donnent un tarif journalier d'environ…", "options": ["167 000 Ar", "30 000 Ar", "180 000 Ar exactement", "300 000 Ar"], "correct": 0 },
+        { "q": "Quel est l'intérêt des forfaits d'accompagnement ?", "options": ["Des revenus réguliers", "Travailler gratuitement", "Éviter tout client", "Ne plus faire de tests"], "correct": 0 },
+        { "q": "Que doit contenir une étude de cas confirmée ?", "options": ["Des résultats mesurés et le processus", "Seulement de belles images", "Les mots de passe du client", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité améliore un produit avec l'équipe chaque semaine ?", "options": ["Product designer", "Graphiste", "Illustrateur", "Monteur vidéo"], "correct": 0 },
+    { "q": "Quel domaine de l'audit regarde les messages d'erreur ?", "options": ["États et erreurs", "Cohérence", "Données", "Parcours clés"], "correct": 0 },
+    { "q": "Que mesure le taux d'achèvement d'une tâche ?", "options": ["La part d'utilisateurs qui terminent un parcours", "Le nombre d'écrans", "Le prix", "La vitesse du serveur"], "correct": 0 },
+    { "q": "Pourquoi la connaissance des marchés émergents est-elle un atout ?", "options": ["Paiement mobile, connexions faibles et téléphones d'entrée de gamme sont mal connus ailleurs", "Elle n'est pas utile", "Elle remplace la méthode", "Elle évite les tests"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une variable primitive ?", "options": ["Une valeur disponible, comme vert/600", "Un usage, comme action/principale", "Un composant", "Une page"], "correct": 0 },
+    { "q": "Que faire si une instance doit souvent être détachée ?", "options": ["Améliorer le composant", "Détacher partout", "Supprimer la bibliothèque", "Rien"], "correct": 0 },
+    { "q": "Que contient le journal des modifications d'une bibliothèque ?", "options": ["Les changements de chaque version", "Les salaires", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Que permet Framer ?", "options": ["Publier des sites réactifs sans coder", "Faire la comptabilité", "Monter un podcast", "Gérer la paie"], "correct": 0 },
+    { "q": "Qui paie généralement l'espace Figma et le site Framer ?", "options": ["Le client", "Le designer obligatoirement", "Personne", "La plateforme de freelance"], "correct": 0 },
+    { "q": "Que relie une hypothèse de design ?", "options": ["Un changement à un effet mesurable", "Deux couleurs", "Deux clients", "Un prix et une police"], "correct": 0 },
+    { "q": "Quelle est la dernière étape du cycle ?", "options": ["Décider : garder, améliorer ou abandonner", "Choisir la police", "Facturer", "Recommencer sans mesurer"], "correct": 0 },
+    { "q": "Que fait le test des 5 secondes ?", "options": ["Vérifier ce que la personne retient d'un écran", "Mesurer la vitesse du serveur", "Compter les clics", "Rien"], "correct": 0 },
+    { "q": "Quel message d'erreur est le meilleur ?", "options": ["Entrez un numéro à 10 chiffres, par exemple 034 12 345 67", "Erreur de saisie", "Échec", "Code 400"], "correct": 0 },
+    { "q": "Que faut-il dessiner pour la navigation au clavier ?", "options": ["Les états de focus", "Des ombres décoratives", "Rien", "Des animations"], "correct": 0 },
+    { "q": "Pourquoi livrer par petites parties ?", "options": ["Pour avancer en cycles courts et corriger tôt", "Pour cacher le travail", "Pour facturer plus", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Comment répondre à « Je n'aime pas cette couleur » ?", "options": ["Demander ce qui gêne précisément", "Se vexer", "Ignorer", "Tout recommencer sans question"], "correct": 0 },
+    { "q": "Que prévoir pour les textes en malgache ou en allemand ?", "options": ["Des zones souples, car les textes peuvent être plus longs", "Des zones fixes très petites", "Rien", "Des images à la place"], "correct": 0 },
+    { "q": "Pourquoi utiliser des données fictives dans les maquettes ?", "options": ["Pour protéger les données réelles des utilisateurs", "Pour décorer", "Pour aller plus vite sans raison", "C'est interdit"], "correct": 0 },
+    { "q": "Une police gratuite pour un usage personnel est-elle toujours utilisable dans une application commerciale ?", "options": ["Non, il faut vérifier la licence", "Oui, toujours", "Oui, si elle est jolie", "Oui, sur téléphone"], "correct": 0 },
+    { "q": "Comment dit-on « livraison aux développeurs » en anglais ?", "options": ["Developer handoff", "Wireframe", "Feedback", "User flow"], "correct": 0 },
+    { "q": "Qu'évaluent surtout les recruteurs dans un exercice de conception ?", "options": ["La méthode et le raisonnement", "Seulement la beauté", "La vitesse de dessin", "Le nombre d'écrans"], "correct": 0 },
+    { "q": "Combien de jours facturables par an environ ?", "options": ["180 à 200", "365", "50", "300"], "correct": 0 },
+    { "q": "Que préciser dans un devis en fourchette ?", "options": ["Ce qui fait varier le prix", "Rien", "Un prix unique sans explication", "Le salaire du client"], "correct": 0 },
+    { "q": "Que faut-il avant de sous-traiter une partie d'un projet ?", "options": ["L'accord du client et des accords de confidentialité", "Rien", "Un nouveau logo", "Une pédale"], "correct": 0 },
+    { "q": "Quelle évolution demande gouvernance et collaboration avec les développeurs ?", "options": ["Spécialiste design system", "Professeur de langue", "Comptable", "Transcripteur"], "correct": 0 }
+  ]
+}
