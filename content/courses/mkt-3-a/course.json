@@ -1,0 +1,97 @@
+{
+  "id": "mkt-3-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'email marketeur un professionnel qui construit des systèmes qui vendent : spécialité (e-commerce, B2B, créateurs, délivrabilité, design, cycle de vie), audit chiffré et mesure en revenus, offres payantes de Mailchimp, Brevo ou ActiveCampaign, automatisations à branches, notation des contacts, intégrations, SPF, DKIM, DMARC et exigences des grandes messageries, modèles, contrôle, tests A/B et hygiène de liste, clients internationaux et règles par région, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer un programme email et mesurer en revenus",
+    "Choisir entre Mailchimp, Brevo et ActiveCampaign et construire des automatisations à branches",
+    "Noter les contacts, relier l'outil à une boutique ou un CRM et protéger la délivrabilité",
+    "Produire des campagnes contrôlées, testées et planifiées avec une liste propre",
+    "Travailler en anglais en respectant les règles de chaque région",
+    "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et mesurer en revenus",
+      "summary": "Les 6 spécialités avancées, le nurturing, l'audit en 6 domaines et son rapport, les limites du taux d'ouverture, le revenu par e-mail et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le nurturing ?", "options": ["Envoyer des contenus adaptés jusqu'à ce que le prospect soit prêt", "Acheter une liste", "Supprimer des contacts", "Envoyer un seul e-mail"], "correct": 0 },
+        { "q": "Pourquoi le taux d'ouverture est-il seulement indicatif ?", "options": ["Certaines messageries gonflent les ouvertures", "Il est toujours exact", "Il mesure les ventes", "Il n'existe pas"], "correct": 0 },
+        { "q": "Quel est le meilleur indicateur pour comparer des campagnes ?", "options": ["Le revenu par e-mail envoyé", "La couleur du bouton", "Le nombre d'images", "La longueur de l'objet"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Mailchimp, Brevo, ActiveCampaign et délivrabilité",
+      "summary": "Choix de l'outil, automatisations à plusieurs branches avec conditions de sortie, automatisations clés, notation des contacts, intégrations, SPF, DKIM, DMARC et exigences de Gmail et Yahoo.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi une condition de sortie après chaque attente ?", "options": ["Pour ne pas relancer un client qui vient d'acheter", "Pour envoyer plus d'e-mails", "Pour décorer le scénario", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Qu'est-ce que le lead scoring ?", "options": ["Attribuer des points aux contacts selon leur profil et leurs actions", "Noter le design", "Compter les images", "Payer les contacts"], "correct": 0 },
+        { "q": "Que fait DKIM ?", "options": ["Il signe les e-mails pour prouver qu'ils n'ont pas été modifiés", "Il compresse les images", "Il traduit les e-mails", "Il supprime les contacts"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : modèles, contrôle, tests A/B, calendrier et liste propre",
+      "summary": "Système de modèles, liste de contrôle en 10 points, tests d'affichage, tests A/B rigoureux et groupe témoin, calendrier et hygiène de la liste.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de variables changer dans un test A/B ?", "options": ["Une seule", "Toutes", "Trois", "Aucune"], "correct": 0 },
+        { "q": "À quoi sert un groupe témoin ?", "options": ["Mesurer ce qu'une automatisation rapporte vraiment", "Envoyer plus d'e-mails", "Tester les couleurs", "Supprimer la liste"], "correct": 0 },
+        { "q": "Faut-il acheter des listes de contacts ?", "options": ["Jamais", "Oui, souvent", "Oui, pour démarrer", "Oui, si elles sont bon marché"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, règles par région, fuseaux et langues",
+      "summary": "E-mails en anglais et différences de style, RGPD, CAN-SPAM et CASL, envoi selon les fuseaux horaires, listes multilingues et travail avec une agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel style adopter en anglais ?", "options": ["Phrases courtes et directes", "Phrases très longues", "Formules très cérémonieuses", "Aucun bouton"], "correct": 0 },
+        { "q": "Quelle loi encadre l'e-mail commercial aux États-Unis ?", "options": ["CAN-SPAM", "RGPD", "CASL", "ISTQB"], "correct": 0 },
+        { "q": "Comment organiser une liste en plusieurs langues ?", "options": ["Un champ langue et des segments", "Envoyer toutes les langues à tous", "Ne pas tenir compte de la langue", "Créer un compte par contact"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres, rapports, études de cas et équipe",
+      "summary": "Trois voies, mise en place et abonnements, prudence sur la part variable, rapport mensuel en revenus, études de cas chiffrées, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi garder un fixe avant toute part variable ?", "options": ["Les revenus dépendent aussi des produits et du site du client", "Le variable est interdit", "Pour payer moins d'impôts", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que met en avant un bon rapport mensuel ?", "options": ["Les revenus générés et le plan suivant", "Seulement le nombre d'e-mails", "Les couleurs utilisées", "Rien"], "correct": 0 },
+        { "q": "Quelle règle de qualité dans une équipe ?", "options": ["Celui qui monte n'est pas celui qui valide", "Un seul mot de passe partagé", "Pas de liste de contrôle", "Aucune documentation"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité organise tous les messages de l'inscription à la fidélité ?", "options": ["Le cycle de vie client", "La retouche photo", "Le test logiciel", "La traduction"], "correct": 0 },
+    { "q": "Pourquoi l'audit email est-il une bonne offre d'entrée ?", "options": ["Le client voit ce qu'il perd et confie les corrections", "Il est toujours gratuit", "Il remplace l'outil", "Il évite tout travail"], "correct": 0 },
+    { "q": "Quelle perte apparaît souvent dans un audit e-commerce ?", "options": ["L'absence de séquence de panier abandonné", "Un logo trop grand", "Une police trop fine", "Trop de clients"], "correct": 0 },
+    { "q": "Quel outil est réputé pour ses automatisations puissantes et la notation des contacts ?", "options": ["ActiveCampaign", "Audacity", "Photopea", "Trello"], "correct": 0 },
+    { "q": "Quel outil propose e-mail, SMS et WhatsApp avec une interface en français ?", "options": ["Brevo", "Playwright", "Reaper", "GIMP"], "correct": 0 },
+    { "q": "Que vérifier avant de recommander un outil ?", "options": ["Les offres et prix actuels pour la taille réelle de la liste", "Rien", "La couleur du logo", "Le nombre de modèles uniquement"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un déclencheur ?", "options": ["Ce qui lance un scénario", "Un bouton de design", "Une facture", "Un contact supprimé"], "correct": 0 },
+    { "q": "Quel scénario rappelle un produit qui s'épuise ?", "options": ["Le réachat", "La bienvenue", "Le panier abandonné", "L'anniversaire"], "correct": 0 },
+    { "q": "Que faire quand un contact dépasse le seuil de points ?", "options": ["Le transmettre aux commerciaux ou lui proposer un rendez-vous", "Le supprimer", "L'ignorer", "Le désinscrire"], "correct": 0 },
+    { "q": "Que permet l'intégration avec la boutique ?", "options": ["Utiliser achats, paniers et revenus par e-mail", "Changer le logo", "Imprimer les commandes", "Rien"], "correct": 0 },
+    { "q": "Qu'exigent Gmail et Yahoo des gros expéditeurs ?", "options": ["Authentification, désinscription en un clic, plaintes très basses", "Des images en couleur", "Un envoi par jour", "Rien"], "correct": 0 },
+    { "q": "Où se configurent SPF, DKIM et DMARC ?", "options": ["Chez l'hébergeur du nom de domaine", "Dans le contenu de l'e-mail", "Sur les réseaux sociaux", "Dans un tableur"], "correct": 0 },
+    { "q": "Pourquoi un système de modèles ?", "options": ["Aller plus vite et rester cohérent", "Rendre chaque e-mail différent", "Éviter les tests", "Payer moins d'abonnement"], "correct": 0 },
+    { "q": "Que faire avant chaque envoi réel ?", "options": ["Un envoi test à soi et à une seconde personne", "Rien", "Supprimer la liste", "Changer d'outil"], "correct": 0 },
+    { "q": "Pourquoi tester le mode sombre ?", "options": ["Logos et textes peuvent devenir illisibles", "Pour économiser l'énergie", "Ce n'est pas utile", "Pour changer la marque"], "correct": 0 },
+    { "q": "Quel indicateur choisir pour un test A/B ?", "options": ["Clics ou conversions, décidés à l'avance", "Celui qui donne le meilleur résultat après coup", "Le nombre d'images", "Aucun"], "correct": 0 },
+    { "q": "Que faire des contacts inactifs depuis longtemps ?", "options": ["Les réactiver, puis retirer ceux qui ne réagissent pas", "Leur envoyer plus d'e-mails sans fin", "Les vendre", "Rien"], "correct": 0 },
+    { "q": "Pourquoi préparer les campagnes à l'avance ?", "options": ["Une coupure le jour J n'a alors aucun effet", "Pour envoyer plus tard sans raison", "Ce n'est pas utile", "Pour éviter les tests"], "correct": 0 },
+    { "q": "Quel bouton est typique en anglais ?", "options": ["Shop now", "Veuillez cliquer ici s'il vous plaît", "Découvrir la collection", "Aucun"], "correct": 0 },
+    { "q": "Quelle est la règle générale de l'UE pour les particuliers ?", "options": ["Consentement préalable, preuve et désinscription simple", "Aucune règle", "Envoi libre sans consentement", "Interdiction totale de l'e-mail"], "correct": 0 },
+    { "q": "Quelle loi canadienne encadre les messages électroniques commerciaux ?", "options": ["LCAP (CASL)", "CAN-SPAM", "RGPD", "Aucune"], "correct": 0 },
+    { "q": "Comment envoyer à une liste nord-américaine ?", "options": ["Selon le fuseau horaire de chaque contact si possible", "À 3 h du matin pour tous", "À l'heure de Madagascar", "Au hasard"], "correct": 0 },
+    { "q": "Que faire des listes de contacts d'un client ?", "options": ["Ne pas les exporter sur son ordinateur sans nécessité", "Les copier chez soi", "Les partager", "Les vendre"], "correct": 0 },
+    { "q": "Quelle formule apporte un revenu régulier ?", "options": ["La gestion mensuelle", "Un audit unique", "Un e-mail gratuit", "Rien"], "correct": 0 },
+    { "q": "Que doit contenir une étude de cas ?", "options": ["Des chiffres avant et après sur une période précise", "Des résultats inventés", "Les adresses des clients", "Rien"], "correct": 0 }
+  ]
+}

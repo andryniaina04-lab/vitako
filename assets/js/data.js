@@ -5096,6 +5096,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-3-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'email marketeur un professionnel qui construit des systèmes qui vendent : spécialité (e-commerce, B2B, créateurs, délivrabilité, design, cycle de vie), audit chiffré et mesure en revenus, offres payantes de Mailchimp, Brevo ou ActiveCampaign, automatisations à branches, notation des contacts, intégrations, SPF, DKIM, DMARC et exigences des grandes messageries, modèles, contrôle, tests A/B et hygiène de liste, clients internationaux et règles par région, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un programme email et mesurer en revenus",
+   "Choisir entre Mailchimp, Brevo et ActiveCampaign et construire des automatisations à branches",
+   "Noter les contacts, relier l'outil à une boutique ou un CRM et protéger la délivrabilité",
+   "Produire des campagnes contrôlées, testées et planifiées avec une liste propre",
+   "Travailler en anglais en respectant les règles de chaque région",
+   "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et mesurer en revenus",
+    "summary": "Les 6 spécialités avancées, le nurturing, l'audit en 6 domaines et son rapport, les limites du taux d'ouverture, le revenu par e-mail et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit email",
+     "Mesurer en revenus",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Mailchimp, Brevo, ActiveCampaign et délivrabilité",
+    "summary": "Choix de l'outil, automatisations à plusieurs branches avec conditions de sortie, automatisations clés, notation des contacts, intégrations, SPF, DKIM, DMARC et exigences de Gmail et Yahoo.",
+    "sections": [
+     "Choisir l'outil",
+     "Les automatisations à plusieurs branches",
+     "La notation des contacts",
+     "Les intégrations",
+     "La délivrabilité professionnelle",
+     "Exercice pratique : un système automatisé"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : modèles, contrôle, tests A/B, calendrier et liste propre",
+    "summary": "Système de modèles, liste de contrôle en 10 points, tests d'affichage, tests A/B rigoureux et groupe témoin, calendrier et hygiène de la liste.",
+    "sections": [
+     "Un système de modèles",
+     "La liste de contrôle avant envoi",
+     "Les tests d'affichage",
+     "Des tests A/B fiables",
+     "Le calendrier",
+     "L'hygiène de la liste",
+     "Exercice pratique : la méthode professionnelle"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, règles par région, fuseaux et langues",
+    "summary": "E-mails en anglais et différences de style, RGPD, CAN-SPAM et CASL, envoi selon les fuseaux horaires, listes multilingues et travail avec une agence.",
+    "sections": [
+     "Écrire en anglais",
+     "Les règles selon les régions",
+     "Les fuseaux horaires",
+     "Les listes en plusieurs langues",
+     "Travailler avec une agence ou une équipe étrangère",
+     "Exercice pratique : une campagne internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : offres, rapports, études de cas et équipe",
+    "summary": "Trois voies, mise en place et abonnements, prudence sur la part variable, rapport mensuel en revenus, études de cas chiffrées, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "mkt-3-f": {
   "hours": 14,
   "description": "L'email marketeur construit une relation avec les abonnés d'une entreprise grâce à des e-mails utiles et bien ciblés, qui informent, fidélisent et font vendre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des boutiques en ligne, des hôtels, des formateurs et des agences, à Madagascar et à l'étranger, avec Brevo et MailerLite : consentement, liste, segments, rédaction, mise en page, automatisations, indicateurs et délivrabilité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

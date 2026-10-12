@@ -50,7 +50,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true),
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true),
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true),
-  ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 15, false),
+  ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 16, true),
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
@@ -36753,6 +36753,565 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que préciser dans le devis sur les corrections techniques ?', '["Rien","Qu''elles peuvent dépendre du développeur","Qu''elles sont toujours gratuites","Qu''elles sont interdites"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Faut-il accepter d''être payé uniquement à la position ?', '["Oui, si le client insiste","Oui, pour la première place","Non, engagez-vous sur le travail et des indicateurs transparents","Oui, toujours"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle évolution vise les sites multilingues ?', '["Graphiste","SEO international","Comptable","Monteur vidéo"]'::jsonb, 1);
+
+-- mkt-3-a
+delete from public.exam_questions where course_id = 'mkt-3-a';
+delete from public.module_questions where course_id = 'mkt-3-a';
+delete from public.lessons where course_id = 'mkt-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-a', 0, 'Se spécialiser, auditer et mesurer en revenus', 'Les 6 spécialités avancées, le nurturing, l''audit en 6 domaines et son rapport, les limites du taux d''ouverture, le revenu par e-mail et les offres à forte valeur.', 'Envoyer une newsletter régulière ouvre les premières missions. Les email marketeurs les mieux payés construisent des **systèmes qui vendent** : des séquences automatiques déclenchées par le comportement des clients, des segments précis, une délivrabilité solide et des résultats mesurés en chiffre d''affaires. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''email marketing.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit email complet.
+> 4. Mesurer les résultats en revenus, pas seulement en ouvertures.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Email e-commerce** | Séquences de vente : panier abandonné, après achat, relance | Intégration avec la boutique, segments par achat, revenus |
+| 2 | **Email B2B et nurturing** | Faire mûrir des prospects jusqu''à la demande de rendez-vous | Notation des contacts, CRM, contenus experts |
+| 3 | **Newsletters de créateurs** | Faire grandir et monétiser une newsletter | Croissance de liste, sponsoring, abonnements payants |
+| 4 | **Délivrabilité** | Faire arriver les e-mails en boîte de réception | Authentification, réputation, nettoyage |
+| 5 | **Design et intégration d''e-mails** | Modèles beaux et compatibles avec toutes les messageries | HTML pour e-mail, tests d''affichage |
+| 6 | **Cycle de vie client** (lifecycle) | Organiser tous les messages de l''inscription à la fidélité | Stratégie, données, plusieurs canaux |
+
+> [!definition] Nurturing
+> Envoyer à un prospect, dans le temps, des contenus utiles et adaptés à son intérêt, jusqu''à ce qu''il soit prêt à acheter ou à parler à un commercial.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Email e-commerce francophone** pour des boutiques en France, en Belgique, au Canada et en Afrique.
+> - **Newsletters de créateurs francophones**, un marché qui grandit.
+> - **Rédaction et intégration en français**, avec un faible décalage horaire avec l''Europe.
+
+## L''audit email
+
+Un audit est une excellente **offre d''entrée** : le client voit combien il perd, et vous confie les corrections.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Liste** | Croissance, origine des contacts, consentement, contacts inactifs |
+| **Délivrabilité** | Authentification du domaine, taux de plaintes, taux de rebond |
+| **Automatisations** | Bienvenue, panier abandonné, après achat, réactivation : existent-elles ? |
+| **Segmentation** | Tous les contacts reçoivent-ils tous les e-mails ? |
+| **Contenu et design** | Objets, appels à l''action, affichage sur téléphone |
+| **Mesure** | Revenus attribués aux e-mails, suivi des liens |
+
+### Le rapport d''audit
+
+```
+Boutique : Vanille & Épices (Shopify + Mailchimp)
+Liste : 8 400 contacts, dont 3 900 inactifs depuis plus de 12 mois.
+
+Pertes principales
+1. Aucune séquence de panier abandonné : environ 120 paniers abandonnés par mois.
+2. Domaine d''envoi non authentifié (DMARC absent).
+3. Même newsletter envoyée aux clients et aux simples abonnés.
+
+Plan proposé
+- Semaine 1 : authentification et nettoyage de la liste.
+- Semaines 2 et 3 : panier abandonné, après achat, bienvenue en 3 e-mails.
+- Ensuite : 4 campagnes segmentées par mois et rapport mensuel.
+```
+
+## Mesurer en revenus
+
+| Indicateur | Ce qu''il dit vraiment |
+| --- | --- |
+| **Taux d''ouverture** | Indicatif seulement : certaines messageries (comme Apple Mail) gonflent les ouvertures pour protéger la vie privée |
+| **Taux de clic** | L''intérêt réel pour le contenu |
+| **Taux de conversion** | Les clics qui deviennent des achats ou des demandes |
+| **Revenu par e-mail envoyé** | Le meilleur indicateur pour comparer les campagnes |
+| **Revenu des automatisations** | Ce que rapporte le système chaque mois, sans effort |
+| **Taux de désinscription et de plaintes** | La santé de la liste |
+
+> [!attention]
+> Ne présentez plus le taux d''ouverture comme le résultat principal. Depuis les protections de la vie privée de certaines messageries, il peut être **très surestimé**. Parlez de clics, de conversions et de revenus.
+
+> [!exemple] Calcul simple
+> Une séquence de panier abandonné envoyée à 120 paniers par mois récupère 9 commandes à 80 000 Ar en moyenne : **720 000 Ar par mois**. C''est un argument bien plus fort qu''un « bon taux d''ouverture ». *(Chiffres donnés en exemple.)*
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit email** | Rapport chiffré et plan | 350 000 Ar |
+| **Pack automatisations e-commerce** | Bienvenue, panier abandonné, après achat, réactivation | 1 800 000 Ar |
+| **Gestion mensuelle** | 4 campagnes segmentées, optimisation, rapport | 900 000 Ar par mois |
+| **Programme nurturing B2B** | Séquences, notation des contacts, lien avec le CRM | 2 500 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : e-commerce, B2B, créateurs, délivrabilité, design, cycle de vie.
+> - L''audit chiffre les pertes et ouvre une mission.
+> - Mesurer en clics, conversions et revenus, pas en ouvertures.
+> - Des automatisations qui rapportent chaque mois.
+> - Des offres à valeur : pack automatisations, gestion mensuelle, nurturing.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Inscrivez-vous à la newsletter de 3 boutiques en ligne, ajoutez un produit au panier sans acheter, et notez tous les e-mails reçus pendant une semaine.
+> 3. Rédigez un rapport d''audit pour l''une d''elles, avec 3 pertes et un plan.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, vos observations, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 0, 0, 'Qu''est-ce que le nurturing ?', '["Acheter une liste","Envoyer un seul e-mail","Envoyer des contenus adaptés jusqu''à ce que le prospect soit prêt","Supprimer des contacts"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 0, 1, 'Pourquoi le taux d''ouverture est-il seulement indicatif ?', '["Certaines messageries gonflent les ouvertures","Il mesure les ventes","Il n''existe pas","Il est toujours exact"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 0, 2, 'Quel est le meilleur indicateur pour comparer des campagnes ?', '["Le revenu par e-mail envoyé","La couleur du bouton","La longueur de l''objet","Le nombre d''images"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-a', 1, 'Outils professionnels : Mailchimp, Brevo, ActiveCampaign et délivrabilité', 'Choix de l''outil, automatisations à plusieurs branches avec conditions de sortie, automatisations clés, notation des contacts, intégrations, SPF, DKIM, DMARC et exigences de Gmail et Yahoo.', 'Les clients professionnels utilisent les **offres payantes** de Mailchimp, Brevo ou ActiveCampaign pour leurs automatisations avancées, leur segmentation et leurs intégrations. Ce module vous apprend à choisir l''outil adapté, à construire des scénarios complexes, à noter les contacts et à protéger la délivrabilité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre Mailchimp, Brevo et ActiveCampaign selon le client.
+> 2. Construire des automatisations à plusieurs branches.
+> 3. Mettre en place une notation des contacts.
+> 4. Relier l''outil à une boutique ou à un CRM.
+> 5. Configurer l''authentification et respecter les règles des grandes messageries.
+
+## Choisir l''outil
+
+| Outil | Points forts | Client type |
+| --- | --- | --- |
+| **Mailchimp** (offres payantes) | Interface simple, intégrations e-commerce, parcours clients, nombreux modèles | Petites et moyennes boutiques |
+| **Brevo** (offres payantes) | Prix souvent basé sur le volume d''envoi, e-mail, SMS et WhatsApp, e-mails transactionnels, interface en français | Entreprises francophones, envois fréquents |
+| **ActiveCampaign** | Automatisations très puissantes, notation des contacts, CRM de vente intégré selon l''offre | B2B, formations en ligne, cycles de vente longs |
+
+> [!attention]
+> Les offres, les limites et les prix changent souvent. Vérifiez-les sur les sites officiels avant chaque recommandation, et comparez le coût **pour la taille réelle** de la liste du client.
+
+## Les automatisations à plusieurs branches
+
+> [!definition] Déclencheur, condition, action
+> Un **déclencheur** lance le scénario (inscription, achat, visite d''une page). Une **condition** sépare les contacts en branches (a acheté ou non). Une **action** envoie un e-mail, ajoute une étiquette ou met à jour un champ.
+
+### Exemple : panier abandonné
+
+```
+Déclencheur : panier abandonné depuis 1 heure
+├─ E-mail 1 : « Vous avez oublié quelque chose ? » (produits du panier)
+├─ Attendre 24 h
+├─ Condition : a acheté ?
+│   ├─ Oui → sortir du scénario
+│   └─ Non → E-mail 2 : avis clients sur les produits
+├─ Attendre 48 h
+└─ Condition : panier supérieur à 150 000 Ar ?
+    ├─ Oui → E-mail 3 : livraison offerte (24 h)
+    └─ Non → E-mail 3 : rappel simple
+```
+
+> [!astuce]
+> Placez toujours une **condition de sortie** après chaque attente : un client qui vient d''acheter ne doit plus recevoir de relance. Rien n''énerve plus un client que de recevoir « Vous avez oublié votre panier » après avoir payé.
+
+### Les automatisations clés
+
+| Scénario | Objectif |
+| --- | --- |
+| Bienvenue | Présenter la marque, première vente |
+| Panier abandonné | Récupérer les ventes perdues |
+| Navigation abandonnée | Relancer après la visite d''un produit |
+| Après achat | Remercier, conseiller, demander un avis, vendre un complément |
+| Réachat | Rappeler un produit qui s''épuise (thé, cosmétiques) |
+| Réactivation | Relancer les inactifs, puis les retirer |
+| Anniversaire ou date clé | Fidéliser |
+
+## La notation des contacts
+
+> [!definition] Lead scoring
+> Attribuer des points à chaque contact selon son profil et ses actions, pour repérer ceux qui sont prêts à acheter.
+
+| Action ou profil | Points |
+| --- | --- |
+| Ouvre un e-mail | +1 (indicatif) |
+| Clique sur un lien | +3 |
+| Visite la page des tarifs | +10 |
+| Télécharge un guide | +5 |
+| Poste de direction dans une entreprise cible | +15 |
+| Inactif depuis 30 jours | −10 |
+
+Au-delà d''un **seuil** (par exemple 50 points), le contact est transmis à l''équipe commerciale ou reçoit une offre de rendez-vous.
+
+## Les intégrations
+
+| Intégration | Ce qu''elle permet |
+| --- | --- |
+| **Boutique en ligne** (Shopify, WooCommerce) | Achats, paniers, produits vus, revenus par e-mail |
+| **CRM** | Synchroniser contacts, étapes de vente, notes |
+| **Formulaires et pages** | Inscriptions avec étiquettes et champs |
+| **Outils d''automatisation** (Make, Zapier) | Relier des outils sans intégration directe |
+
+## La délivrabilité professionnelle
+
+### L''authentification du domaine
+
+| Enregistrement | Rôle |
+| --- | --- |
+| **SPF** | Indique quels serveurs peuvent envoyer pour le domaine |
+| **DKIM** | Signe les e-mails pour prouver qu''ils n''ont pas été modifiés |
+| **DMARC** | Indique quoi faire des e-mails qui échouent et envoie des rapports |
+
+### Les exigences des grandes messageries
+
+Depuis 2024, Gmail et Yahoo imposent aux expéditeurs de gros volumes :
+1. L''**authentification** SPF, DKIM et un enregistrement DMARC.
+2. La **désinscription en un clic**, traitée rapidement.
+3. Un **taux de plaintes pour spam** très bas (ils indiquent de rester sous 0,3 %, et visent idéalement beaucoup moins).
+
+> [!madagascar]
+> Les enregistrements SPF, DKIM et DMARC se configurent chez l''hébergeur du **nom de domaine du client**. Demandez un accès ou envoyez-lui les instructions précises : vous n''avez pas besoin de son mot de passe principal.
+
+> [!retenir]
+> - Choisir l''outil selon le client, en vérifiant les offres actuelles.
+> - Déclencheur, conditions, actions, et toujours une condition de sortie.
+> - Les automatisations clés de la bienvenue à la réactivation.
+> - Noter les contacts et transmettre au-delà d''un seuil.
+> - SPF, DKIM, DMARC, désinscription en un clic, plaintes très basses.
+
+## Exercice pratique : un système automatisé
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Comparez les 3 outils pour une boutique de 10 000 contacts et un cabinet B2B de 2 000 contacts.
+> 2. Construisez (dans un essai ou en schéma détaillé) un scénario de panier abandonné avec conditions de sortie.
+> 3. Créez une grille de notation des contacts pour un cabinet B2B.
+> 4. Rédigez les instructions SPF, DKIM et DMARC à envoyer à un client.
+>
+> **À livrer** : votre comparatif, votre scénario, votre grille et vos instructions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 1, 0, 'Pourquoi une condition de sortie après chaque attente ?', '["Ce n''est pas utile","Pour ne pas relancer un client qui vient d''acheter","Pour envoyer plus d''e-mails","Pour décorer le scénario"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 1, 1, 'Qu''est-ce que le lead scoring ?', '["Noter le design","Payer les contacts","Attribuer des points aux contacts selon leur profil et leurs actions","Compter les images"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 1, 2, 'Que fait DKIM ?', '["Il supprime les contacts","Il compresse les images","Il traduit les e-mails","Il signe les e-mails pour prouver qu''ils n''ont pas été modifiés"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-a', 2, 'Qualité et rapidité : modèles, contrôle, tests A/B, calendrier et liste propre', 'Système de modèles, liste de contrôle en 10 points, tests d''affichage, tests A/B rigoureux et groupe témoin, calendrier et hygiène de la liste.', 'Un programme email professionnel produit des campagnes **sans erreur, testées et régulières**, et s''améliore chaque mois. Ce module vous donne les méthodes des meilleures équipes : système de modèles, liste de contrôle, tests d''affichage, tests A/B rigoureux, calendrier et hygiène de la liste.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un système de modèles réutilisables.
+> 2. Contrôler chaque campagne avant l''envoi.
+> 3. Mener des tests A/B fiables.
+> 4. Planifier un calendrier éditorial et commercial.
+> 5. Garder une liste propre et engagée.
+
+## Un système de modèles
+
+| Élément | Exemple |
+| --- | --- |
+| **Blocs réutilisables** | En-tête, produit, témoignage, bouton, pied de page |
+| **Styles fixés** | Polices, couleurs, tailles, espacements |
+| **Modèles types** | Newsletter, promotion, lancement, e-mail texte simple |
+| **Textes types** | Mentions légales, phrase de désinscription, signature |
+
+> [!astuce]
+> Avec un bon système de modèles, une campagne se monte en **30 minutes** au lieu de 2 heures, et le client garde une image cohérente.
+
+## La liste de contrôle avant envoi
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Bon segment et exclusions (clients récents, désinscrits) |
+| 2 | Objet et texte d''aperçu, sans faute |
+| 3 | Nom d''expéditeur et adresse de réponse |
+| 4 | Variables de personnalisation avec valeur par défaut |
+| 5 | Tous les liens testés, avec suivi |
+| 6 | Images avec texte alternatif, poids raisonnable |
+| 7 | Affichage sur téléphone et en mode sombre |
+| 8 | Lien de désinscription présent et fonctionnel |
+| 9 | Code promo valide et date d''expiration correcte |
+| 10 | Heure d''envoi selon le fuseau du public |
+
+> [!attention]
+> Un prénom manquant (« Bonjour , ») ou un code promo qui ne marche pas coûte plus cher qu''un e-mail non envoyé. Envoyez toujours un **test** à vous-même et à une seconde personne avant l''envoi réel.
+
+## Les tests d''affichage
+
+| Point | Pourquoi |
+| --- | --- |
+| **Messageries différentes** | Gmail, Outlook, Apple Mail affichent le HTML différemment |
+| **Téléphone** | La majorité des e-mails sont lus sur téléphone |
+| **Mode sombre** | Logos et textes peuvent devenir illisibles |
+| **Images bloquées** | Le message doit rester compréhensible sans images |
+
+Des outils payants (comme Litmus ou Email on Acid) montrent l''affichage dans de nombreuses messageries ; à défaut, testez sur plusieurs comptes et appareils.
+
+## Des tests A/B fiables
+
+| Règle | Explication |
+| --- | --- |
+| **Une seule variable** | Objet, ou bouton, ou image, pas tout à la fois |
+| **Une hypothèse écrite** | « Un objet avec un chiffre augmentera les clics » |
+| **Un indicateur décidé à l''avance** | Clics ou conversions plutôt qu''ouvertures |
+| **Assez de contacts** | Sur une petite liste, les écarts peuvent être dus au hasard |
+| **Un registre des tests** | Garder les résultats pour apprendre |
+
+> [!definition] Groupe témoin
+> Une petite partie des contacts qui ne reçoit pas une automatisation. On compare ses achats à ceux des autres pour mesurer ce que l''automatisation rapporte vraiment.
+
+## Le calendrier
+
+| Élément | Exemple pour une boutique |
+| --- | --- |
+| **Rythme régulier** | Newsletter chaque mardi |
+| **Temps forts commerciaux** | Fête des mères, rentrée, fin d''année, Black Friday |
+| **Temps forts locaux** | Fête nationale du 26 juin, Nouvel An, fêtes propres au marché du client |
+| **Lancements** | Nouvelle collection : teasing, lancement, relance |
+| **Pression maximale** | Pas plus de X e-mails par contact et par semaine |
+
+## L''hygiène de la liste
+
+1. **Double opt-in** pour les nouvelles inscriptions quand c''est possible.
+2. **Suppression** automatique des adresses en erreur permanente.
+3. **Réactivation** des inactifs (par exemple 6 mois sans clic), puis retrait de ceux qui ne réagissent pas.
+4. **Aucun achat de liste**, jamais.
+5. **Centre de préférences** : laisser choisir la fréquence ou les sujets plutôt que perdre le contact.
+
+> [!madagascar]
+> Les clients étrangers apprécient un prestataire qui travaille **en avance** : préparez les campagnes la semaine précédente et programmez-les à l''heure du public. Une coupure d''électricité ou de connexion le jour J n''aura alors aucun effet.
+
+> [!retenir]
+> - Un système de modèles pour aller vite et rester cohérent.
+> - Une liste de contrôle en 10 points et un envoi test.
+> - Tester l''affichage sur messageries, téléphone et mode sombre.
+> - Tests A/B rigoureux et groupe témoin.
+> - Un calendrier préparé à l''avance et une liste propre.
+
+## Exercice pratique : la méthode professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez 5 blocs et 3 modèles réutilisables dans un outil d''e-mailing.
+> 2. Montez une campagne et passez la liste de contrôle en 10 points.
+> 3. Rédigez le plan de 2 tests A/B avec hypothèse et indicateur.
+> 4. Construisez le calendrier de 3 mois d''une boutique.
+>
+> **À livrer** : des captures de vos modèles, votre liste remplie, vos plans de test et votre calendrier.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 2, 0, 'Combien de variables changer dans un test A/B ?', '["Aucune","Toutes","Trois","Une seule"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 2, 1, 'À quoi sert un groupe témoin ?', '["Envoyer plus d''e-mails","Tester les couleurs","Mesurer ce qu''une automatisation rapporte vraiment","Supprimer la liste"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 2, 2, 'Faut-il acheter des listes de contacts ?', '["Oui, souvent","Oui, si elles sont bon marché","Jamais","Oui, pour démarrer"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-a', 3, 'Clients internationaux : anglais, règles par région, fuseaux et langues', 'E-mails en anglais et différences de style, RGPD, CAN-SPAM et CASL, envoi selon les fuseaux horaires, listes multilingues et travail avec une agence.', 'Les boutiques, créateurs et entreprises d''Europe, d''Amérique du Nord et d''Afrique recrutent des email marketeurs à distance. Ce module vous prépare à travailler avec eux : écrire en anglais, respecter les règles de chaque région, gérer les fuseaux horaires et les listes en plusieurs langues, et travailler avec une agence.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des e-mails marketing efficaces en anglais.
+> 2. Respecter les grandes règles de l''e-mail marketing selon les régions.
+> 3. Envoyer au bon moment selon les fuseaux horaires.
+> 4. Gérer une liste en plusieurs langues.
+> 5. Travailler avec une agence ou une équipe étrangère.
+
+## Écrire en anglais
+
+> [!exemple] E-mail de bienvenue en anglais
+> **Subject**: Welcome to Raphia & Co — here''s 10% off your first order
+> **Preview text**: Handwoven in Madagascar, made to last.
+> Hi Sarah,
+> Thanks for joining us! Every bag we sell is handwoven by artisans in Madagascar using natural raffia.
+> As a welcome gift, here''s 10% off your first order: **WELCOME10** (valid for 7 days).
+> [Shop the collection]
+> Have a question? Just reply to this email — a real person will answer.
+
+### Les différences de style
+
+| Français | Anglais |
+| --- | --- |
+| Phrases souvent plus longues | Phrases courtes, directes |
+| Vouvoiement | « You », ton souvent plus familier |
+| Formules de politesse développées | « Thanks », « Cheers », « Best » |
+| Bouton : « Découvrir la collection » | Bouton : « Shop now », « Get the guide » |
+
+> [!astuce]
+> Faites relire vos premiers textes en anglais par un locuteur natif ou un rédacteur expérimenté, et constituez une **banque de formules** validées pour les objets, boutons et transitions.
+
+## Les règles selon les régions
+
+| Région | Principe à connaître |
+| --- | --- |
+| **Union européenne** (RGPD et règles sur la prospection électronique) | Consentement préalable en règle générale pour les particuliers, preuve du consentement, désinscription simple |
+| **États-Unis** (CAN-SPAM) | Pas d''objet trompeur, adresse postale de l''expéditeur, désinscription traitée rapidement |
+| **Canada** (LCAP / CASL) | Consentement exprès ou tacite selon les cas, règles strictes et sanctions élevées |
+| **Madagascar et autres pays** | Lois sur les données personnelles à vérifier pour chaque marché |
+
+> [!attention]
+> Ces règles ont des exceptions et évoluent. Vous n''êtes pas juriste : appliquez les **bonnes pratiques** (consentement clair, preuve, désinscription en un clic, identité de l''expéditeur), et demandez au client de faire valider sa situation juridique par un conseil si besoin.
+
+## Les fuseaux horaires
+
+| Public | Bon réflexe |
+| --- | --- |
+| Europe | Faible décalage avec Madagascar : envoyez dans la matinée locale du public |
+| Amérique du Nord | Plusieurs fuseaux : programmez selon le fuseau du contact si l''outil le permet |
+| Liste mondiale | Envoi par fuseau horaire ou heure optimisée par l''outil |
+
+## Les listes en plusieurs langues
+
+| Méthode | Avantage | Limite |
+| --- | --- | --- |
+| **Une liste, champ « langue »** et segments | Une seule base, rapports globaux | Demande de bien remplir le champ |
+| **Contenu conditionnel** dans un même e-mail | Un seul envoi | Plus complexe à contrôler |
+| **Campagnes séparées par langue** | Simple à contrôler | Plus de travail |
+
+> [!madagascar]
+> Pour une marque malgache qui vend à la fois aux Malagasy, à la diaspora en France et à des clients anglophones, proposez **trois segments** : malgache ou français pour le local, français pour la diaspora (avec livraison internationale), anglais pour l''international. Adaptez aussi les devises et les moyens de paiement mentionnés.
+
+## Travailler avec une agence ou une équipe étrangère
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Brief** | Objectif, segment, offre, ton, dates, éléments fournis |
+| **Validation** | Un circuit clair : qui valide le texte, le design, l''envoi |
+| **Accès** | Compte utilisateur personnel dans l''outil, avec des droits limités |
+| **Rapports** | Format convenu, chaque semaine ou chaque mois |
+| **Confidentialité** | Ne jamais exporter les listes de contacts sur votre ordinateur sans nécessité |
+
+> [!retenir]
+> - Des e-mails en anglais courts, directs, relus.
+> - RGPD, CAN-SPAM, CASL : appliquer les bonnes pratiques et faire valider le juridique.
+> - Envoyer à l''heure du public.
+> - Listes multilingues avec segments ou contenu conditionnel.
+> - Brief, validation, accès personnels et confidentialité avec les agences.
+
+## Exercice pratique : une campagne internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais une séquence de bienvenue de 3 e-mails pour une marque artisanale.
+> 2. Rédigez la version française de l''e-mail 1 en adaptant le style.
+> 3. Proposez l''organisation d''une liste en 3 langues avec segments et heures d''envoi.
+> 4. Listez les bonnes pratiques de consentement à appliquer pour l''Europe et l''Amérique du Nord.
+>
+> **À livrer** : vos e-mails, votre organisation de liste et votre liste de bonnes pratiques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 3, 0, 'Quel style adopter en anglais ?', '["Phrases courtes et directes","Formules très cérémonieuses","Phrases très longues","Aucun bouton"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 3, 1, 'Quelle loi encadre l''e-mail commercial aux États-Unis ?', '["ISTQB","RGPD","CASL","CAN-SPAM"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 3, 2, 'Comment organiser une liste en plusieurs langues ?', '["Ne pas tenir compte de la langue","Un champ langue et des segments","Envoyer toutes les langues à tous","Créer un compte par contact"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-a', 4, 'Développer son activité : offres, rapports, études de cas et équipe', 'Trois voies, mise en place et abonnements, prudence sur la part variable, rapport mensuel en revenus, études de cas chiffrées, équipe et évolution.', 'Après quelques clients satisfaits, vous pouvez construire une **activité stable** d''email marketeur : abonnements mensuels, offres claires, études de cas chiffrées en revenus, et peut-être une petite équipe. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Indépendant spécialisé** | E-commerce, B2B ou créateurs | Abonnements mensuels et projets |
+| **Petite agence email** | Ceux qui aiment vendre et coordonner | Plusieurs clients, marge sur l''équipe |
+| **Newsletter propre** | Ceux qui aiment écrire sur un sujet | Sponsoring, abonnements payants, produits |
+
+## Des offres et des prix durables
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Mise en place** | Audit, authentification, 4 automatisations, modèles | 2 000 000 Ar une fois |
+| **Gestion essentielle** | 2 campagnes par mois, rapport | 500 000 Ar par mois |
+| **Gestion complète** | 4 campagnes, optimisation des automatisations, tests A/B, rapport | 1 000 000 Ar par mois |
+| **Part variable** (avec prudence) | Pourcentage des revenus attribués, en plus d''un fixe | Selon accord |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Une rémunération uniquement variable est risquée : les revenus dépendent aussi des produits, des prix et du site du client. Gardez toujours un **fixe**, et définissez par écrit comment les revenus sont mesurés.
+
+### Le rapport mensuel qui fidélise
+
+| Rubrique | Exemple |
+| --- | --- |
+| Revenus des e-mails | 4,2 millions Ar (dont 2,6 millions par les automatisations) |
+| Évolution | +18 % par rapport au mois précédent |
+| Meilleure campagne | Fête des mères : 1,1 million Ar |
+| Santé de la liste | +420 inscrits, plaintes 0,04 % |
+| Tests et enseignements | Les objets avec un bénéfice concret génèrent plus de clics |
+| Plan du mois suivant | Lancement de la collection, réactivation des inactifs |
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : boutique en ligne de cosmétiques naturels, 6 000 contacts.
+> **Problème** : une seule newsletter mensuelle, aucune automatisation, domaine non authentifié.
+> **Solution** : authentification complète, 4 automatisations, 3 segments selon les achats, calendrier de 4 campagnes par mois.
+> **Résultats en 4 mois** : part des ventes venant des e-mails passée de 6 % à 21 % ; la séquence de panier abandonné récupère environ 10 % des paniers.
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Donnez** des chiffres avant et après, sur une période précise.
+3. **Expliquez** la méthode en quelques lignes.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Rédacteur** | Quand vous écrivez plus de 10 e-mails par semaine |
+| **Intégrateur ou designer d''e-mails** | Quand les clients veulent des modèles sur mesure |
+| **Assistant de montage des campagnes** | Quand le montage prend la majorité de votre temps |
+
+### Les règles de qualité
+
+1. **Liste de contrôle** obligatoire pour chaque envoi.
+2. **Double validation** : celui qui monte n''est pas celui qui valide.
+3. **Accès personnels** à chaque outil, jamais de mot de passe partagé.
+4. **Documentation** de chaque client : ton, segments, automatisations, calendrier.
+
+> [!madagascar]
+> Plusieurs outils d''e-mailing proposent des **programmes de partenaires ou annuaires d''experts**. Un profil avec des études de cas peut vous apporter des clients étrangers. Vérifiez les conditions de chaque programme et les pays acceptés.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Spécialiste CRM et cycle de vie** | SMS, notifications, données clients, plusieurs canaux |
+| **Responsable marketing** | Stratégie globale, budget, équipe |
+| **Spécialiste automatisation** | Voir la formation Spécialiste automatisation et IA |
+| **Rédacteur conversion** | Voir la formation Rédacteur web et copywriter |
+
+> [!retenir]
+> - Indépendant, agence ou newsletter propre : choisissez votre voie.
+> - Mise en place puis abonnement mensuel ; un fixe avant toute part variable.
+> - Un rapport mensuel en revenus qui fidélise.
+> - Des études de cas chiffrées et datées.
+> - Une équipe avec liste de contrôle, double validation et accès personnels.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez vos 3 offres avec leurs prix.
+> 3. Rédigez un modèle de rapport mensuel et une étude de cas à partir de votre projet de formation.
+> 4. Listez 10 prospects et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, vos offres, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 4, 0, 'Pourquoi garder un fixe avant toute part variable ?', '["Les revenus dépendent aussi des produits et du site du client","Le variable est interdit","Ce n''est pas utile","Pour payer moins d''impôts"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 4, 1, 'Que met en avant un bon rapport mensuel ?', '["Seulement le nombre d''e-mails","Les revenus générés et le plan suivant","Rien","Les couleurs utilisées"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-a', 4, 2, 'Quelle règle de qualité dans une équipe ?', '["Pas de liste de contrôle","Aucune documentation","Un seul mot de passe partagé","Celui qui monte n''est pas celui qui valide"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quelle spécialité organise tous les messages de l''inscription à la fidélité ?', '["La retouche photo","Le cycle de vie client","Le test logiciel","La traduction"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Pourquoi l''audit email est-il une bonne offre d''entrée ?', '["Le client voit ce qu''il perd et confie les corrections","Il est toujours gratuit","Il évite tout travail","Il remplace l''outil"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quelle perte apparaît souvent dans un audit e-commerce ?', '["Une police trop fine","Trop de clients","Un logo trop grand","L''absence de séquence de panier abandonné"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quel outil est réputé pour ses automatisations puissantes et la notation des contacts ?', '["Photopea","Audacity","ActiveCampaign","Trello"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quel outil propose e-mail, SMS et WhatsApp avec une interface en français ?', '["Brevo","Playwright","GIMP","Reaper"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que vérifier avant de recommander un outil ?', '["Les offres et prix actuels pour la taille réelle de la liste","La couleur du logo","Le nombre de modèles uniquement","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Qu''est-ce qu''un déclencheur ?', '["Ce qui lance un scénario","Un contact supprimé","Une facture","Un bouton de design"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quel scénario rappelle un produit qui s''épuise ?', '["Le réachat","Le panier abandonné","L''anniversaire","La bienvenue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que faire quand un contact dépasse le seuil de points ?', '["Le supprimer","L''ignorer","Le transmettre aux commerciaux ou lui proposer un rendez-vous","Le désinscrire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que permet l''intégration avec la boutique ?', '["Imprimer les commandes","Changer le logo","Utiliser achats, paniers et revenus par e-mail","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Qu''exigent Gmail et Yahoo des gros expéditeurs ?', '["Rien","Des images en couleur","Un envoi par jour","Authentification, désinscription en un clic, plaintes très basses"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Où se configurent SPF, DKIM et DMARC ?', '["Sur les réseaux sociaux","Dans un tableur","Dans le contenu de l''e-mail","Chez l''hébergeur du nom de domaine"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Pourquoi un système de modèles ?', '["Payer moins d''abonnement","Éviter les tests","Rendre chaque e-mail différent","Aller plus vite et rester cohérent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que faire avant chaque envoi réel ?', '["Rien","Un envoi test à soi et à une seconde personne","Changer d''outil","Supprimer la liste"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Pourquoi tester le mode sombre ?', '["Logos et textes peuvent devenir illisibles","Pour économiser l''énergie","Ce n''est pas utile","Pour changer la marque"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quel indicateur choisir pour un test A/B ?', '["Celui qui donne le meilleur résultat après coup","Clics ou conversions, décidés à l''avance","Le nombre d''images","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que faire des contacts inactifs depuis longtemps ?', '["Les vendre","Les réactiver, puis retirer ceux qui ne réagissent pas","Rien","Leur envoyer plus d''e-mails sans fin"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Pourquoi préparer les campagnes à l''avance ?', '["Pour éviter les tests","Une coupure le jour J n''a alors aucun effet","Ce n''est pas utile","Pour envoyer plus tard sans raison"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quel bouton est typique en anglais ?', '["Découvrir la collection","Aucun","Veuillez cliquer ici s''il vous plaît","Shop now"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quelle est la règle générale de l''UE pour les particuliers ?', '["Interdiction totale de l''e-mail","Envoi libre sans consentement","Aucune règle","Consentement préalable, preuve et désinscription simple"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quelle loi canadienne encadre les messages électroniques commerciaux ?', '["RGPD","LCAP (CASL)","Aucune","CAN-SPAM"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Comment envoyer à une liste nord-américaine ?', '["À l''heure de Madagascar","Selon le fuseau horaire de chaque contact si possible","Au hasard","À 3 h du matin pour tous"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que faire des listes de contacts d''un client ?', '["Les vendre","Les partager","Ne pas les exporter sur son ordinateur sans nécessité","Les copier chez soi"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Quelle formule apporte un revenu régulier ?', '["Un audit unique","Rien","La gestion mensuelle","Un e-mail gratuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-a', 'Que doit contenir une étude de cas ?', '["Des chiffres avant et après sur une période précise","Les adresses des clients","Rien","Des résultats inventés"]'::jsonb, 0);
 
 -- mkt-3-f
 delete from public.exam_questions where course_id = 'mkt-3-f';
