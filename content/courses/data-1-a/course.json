@@ -1,0 +1,97 @@
+{
+  "id": "data-1-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé prépare l'évaluateur de réponses d'IA aux projets spécialisés et mieux payés : spécialité (expert d'un domaine, réponses de référence, tests de sécurité, langue, révision, multimodal), travail dans les interfaces des plateformes (aucun achat d'outil), justifications vérifiables et vérification des faits, des calculs et du code, étalonnage et qualité, projets internationaux en anglais et en malgache, puis progression de carrière et gestion de revenus irréguliers. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et construire un profil d'expert honnête",
+    "Travailler dans les interfaces de comparaison, de notation et de réécriture",
+    "Justifier précisément et vérifier faits, calculs et code",
+    "Rester cohérent, rédiger des réponses de référence et mener des tests de sécurité encadrés",
+    "Travailler en anglais et évaluer en français et en malgache, dans le respect des règles",
+    "Progresser vers les rôles mieux payés et gérer des revenus irréguliers"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et accéder aux projets avancés",
+      "summary": "Les 6 spécialités avancées, les types de tâches avancées, la réponse de référence, le profil d'expert et les arnaques à éviter.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une réponse de référence ?", "options": ["Une réponse humaine considérée comme la meilleure possible", "La première réponse de l'IA", "Une réponse au hasard", "Un résumé des consignes"], "correct": 0 },
+        { "q": "Que risque-t-on en mentant sur ses diplômes ?", "options": ["Un bannissement définitif", "Une promotion", "Rien", "Un meilleur salaire"], "correct": 0 },
+        { "q": "Une plateforme demande de payer pour accéder aux tâches : que faire ?", "options": ["Refuser", "Payer", "Payer la moitié", "Prêter son compte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : interfaces des plateformes et vérifications",
+      "summary": "Interfaces de comparaison, de notation, de réécriture et de code, échelle de préférence, justification en 4 parties, vérification des faits, des calculs et du code, outils autorisés.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Faut-il acheter des outils pour ce métier ?", "options": ["Non, les plateformes fournissent leurs interfaces", "Oui, beaucoup", "Oui, un abonnement obligatoire", "Oui, une pédale"], "correct": 0 },
+        { "q": "Quelle est la première partie d'une justification ?", "options": ["Le verdict", "Les points secondaires", "Une citation au hasard", "Un remerciement"], "correct": 0 },
+        { "q": "Peut-on utiliser un assistant d'IA pour faire les évaluations ?", "options": ["Non, sauf consigne contraire", "Oui, toujours", "Oui, si on est pressé", "Oui, pour la moitié des tâches"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : étalonnage, réponses de référence, sécurité et temps",
+      "summary": "Étalonnage et accord entre évaluateurs, 6 qualités d'une réponse de référence, cadre du red teaming, gestion du temps et retours des réviseurs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que l'étalonnage ?", "options": ["Donner les mêmes notes que les experts pour les mêmes réponses", "Travailler plus vite", "Changer de plateforme", "Écrire plus long"], "correct": 0 },
+        { "q": "Où se fait le red teaming ?", "options": ["Strictement dans le cadre défini par le projet", "Partout, librement", "Sur les réseaux sociaux", "Dans un groupe de discussion public"], "correct": 0 },
+        { "q": "Une tâche finie beaucoup trop vite : que faire ?", "options": ["Relire et vérifier faits et calculs", "L'envoyer immédiatement", "En faire 10 autres", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : consignes en anglais, langues et règles des plateformes",
+      "summary": "Vocabulaire des consignes, justifications en anglais, critères de langue en français et en malgache, 7 règles de conduite et tests de qualification.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « hallucination » dans les consignes ?", "options": ["Une information inventée par l'IA", "Une image floue", "Un bug de la plateforme", "Une réponse trop courte"], "correct": 0 },
+        { "q": "Peut-on partager son compte d'évaluateur ?", "options": ["Non, un compte pour une personne", "Oui, en famille", "Oui, contre paiement", "Oui, le week-end"], "correct": 0 },
+        { "q": "Que vérifier avant de passer un test de qualification ?", "options": ["Que la plateforme accepte Madagascar et paie d'une façon accessible", "La couleur du site", "Rien", "Le nombre d'évaluateurs"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer sa carrière : rôles, diversification et revenus",
+      "summary": "Expert, réviseur, coordinateur, diversification des plateformes et des compétences, gestion des revenus irréguliers, CV confidentiel et métiers voisins.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qui mène le plus souvent aux rôles de réviseur ?", "options": ["Une qualité régulière sur plusieurs mois", "Le plus grand nombre de tâches bâclées", "Le hasard", "Payer la plateforme"], "correct": 0 },
+        { "q": "Sur quelle base calculer son revenu ?", "options": ["La moyenne de 3 à 6 mois", "Le meilleur mois", "Le pire jour", "Le revenu promis"], "correct": 0 },
+        { "q": "Comment présenter son expérience sur un CV ?", "options": ["Décrire les types de tâches sans détails confidentiels", "Mettre des captures des tâches", "Publier les consignes", "Citer les clients confidentiels"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité demande un diplôme ou une expérience solide ?", "options": ["Expert d'un domaine", "Toutes les tâches simples", "Aucune", "La lecture des consignes"], "correct": 0 },
+    { "q": "Pourquoi le malgache est-il un atout ?", "options": ["Les évaluateurs de langue maternelle malgache sont rares", "Il est interdit sur les plateformes", "Personne ne l'utilise", "Il remplace l'anglais"], "correct": 0 },
+    { "q": "Que fait-on dans une tâche de réécriture ?", "options": ["Corriger la réponse de l'IA pour la rendre idéale", "Copier la réponse", "Supprimer la question", "Noter la longueur"], "correct": 0 },
+    { "q": "Que faire si on vous propose de louer un compte ?", "options": ["Refuser", "Accepter", "Négocier le prix", "Prêter le vôtre"], "correct": 0 },
+    { "q": "À quoi sert l'échelle de préférence ?", "options": ["Indiquer à quel point une réponse est meilleure", "Choisir la couleur", "Mesurer la vitesse", "Payer les évaluateurs"], "correct": 0 },
+    { "q": "Quelle justification est correcte ?", "options": ["B se trompe : elle dit que la capitale est Toamasina, c'est Antananarivo", "B est moins bien", "J'aime mieux A", "A est plus jolie"], "correct": 0 },
+    { "q": "Comment vérifier un fait douteux ?", "options": ["Croiser au moins deux sources fiables", "Faire confiance à l'IA", "Demander à un ami", "Deviner"], "correct": 0 },
+    { "q": "Quelle source pour des statistiques sur Madagascar ?", "options": ["L'INSTAT ou une source officielle", "Un commentaire anonyme", "Une publicité", "Une rumeur"], "correct": 0 },
+    { "q": "Que tester en plus des exemples normaux pour du code ?", "options": ["Les cas limites", "La couleur de l'éditeur", "Rien", "Le nom des variables uniquement"], "correct": 0 },
+    { "q": "Que fait moyenne([]) dans l'exemple du cours ?", "options": ["Une erreur de division par zéro", "0", "12", "Rien"], "correct": 0 },
+    { "q": "Peut-on copier une tâche hors de la plateforme ?", "options": ["Non", "Oui", "Oui, en capture", "Oui, pour un ami"], "correct": 0 },
+    { "q": "Que mesure l'accord entre évaluateurs ?", "options": ["La fréquence à laquelle plusieurs évaluateurs donnent la même réponse", "Le salaire", "La vitesse de frappe", "Le nombre de plateformes"], "correct": 0 },
+    { "q": "Que tenir à jour pour rester cohérent ?", "options": ["Une fiche mémo des cas difficiles", "Une liste de films", "Un mot de passe", "Rien"], "correct": 0 },
+    { "q": "Quelle qualité d'une réponse de référence signale les limites ?", "options": ["Honnête", "Longue", "Drôle", "Rapide"], "correct": 0 },
+    { "q": "Coût de 27 000 Ar et prix de 45 000 Ar : quelle marge en pourcentage ?", "options": ["40 %", "60 %", "18 %", "27 %"], "correct": 0 },
+    { "q": "Que documenter lors d'un test de sécurité ?", "options": ["Le message, la réponse, le problème et sa gravité", "Rien", "Seulement la date", "Ses impressions personnelles"], "correct": 0 },
+    { "q": "Que faire face à des contenus difficiles dans un projet de sécurité ?", "options": ["Faire des pauses et utiliser le soutien proposé", "Continuer sans pause", "Publier ce qu'on a vu", "En parler sur les réseaux"], "correct": 0 },
+    { "q": "Comment contester un retour de réviseur ?", "options": ["Poliment, par le canal officiel, avec ses preuves", "Sur les réseaux sociaux", "En insultant le réviseur", "En arrêtant de travailler"], "correct": 0 },
+    { "q": "Que signifie « rubric » ?", "options": ["Grille d'évaluation", "Réponse", "Paiement", "Pause"], "correct": 0 },
+    { "q": "Comment dire « A est bien meilleure » en anglais ?", "options": ["Response A is much better", "Response A is a little worse", "Response A is equal", "Response A is wrong"], "correct": 0 },
+    { "q": "Quel critère de langue vérifie l'usage de la bonne devise ?", "options": ["La culture", "L'orthographe", "La ponctuation", "La longueur"], "correct": 0 },
+    { "q": "Peut-on utiliser un VPN pour cacher son pays ?", "options": ["Non, sauf si la plateforme l'autorise", "Oui, toujours", "Oui, pour gagner plus", "Oui, le soir"], "correct": 0 },
+    { "q": "Que faire avant de faire de grosses dépenses avec ces revenus ?", "options": ["Constituer une réserve de 3 mois de dépenses", "Rien", "Emprunter", "Tout dépenser"], "correct": 0 },
+    { "q": "Pourquoi diversifier les plateformes ?", "options": ["Les projets vont et viennent", "Pour partager son compte", "C'est interdit", "Pour payer moins d'impôts"], "correct": 0 },
+    { "q": "Vers quel métier voisin l'évaluation d'IA peut-elle mener ?", "options": ["Responsable qualité des données d'IA", "Chauffeur", "Cuisinier", "Aucun"], "correct": 0 }
+  ]
+}

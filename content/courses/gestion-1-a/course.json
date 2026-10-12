@@ -74,7 +74,7 @@
     { "q": "Qu'est-ce que la valeur vie client (LTV) ?", "options": ["Ce qu'un client rapporte sur toute sa relation avec la boutique", "Le prix d'un produit", "Le coût de la livraison", "Le nombre de visiteurs"], "correct": 0 },
     { "q": "Un taux de conversion bien plus faible sur téléphone indique…", "options": ["Un problème de parcours sur mobile", "Un succès", "Rien", "Un problème de fournisseur"], "correct": 0 },
     { "q": "Où vérifier les prix et fonctions des offres Shopify ?", "options": ["Sur la page officielle des tarifs", "Sur un vieux forum", "Dans un e-mail inconnu", "Nulle part"], "correct": 0 },
-    { "q": "Quelle automatisation Flow éviter en dernier ?", "options": ["Celles qui évitent des erreurs coûteuses viennent en premier", "Toutes se valent", "Aucune n'est utile", "Seulement les décoratives"], "correct": 0 },
+    { "q": "Quelles automatisations Flow mettre en place en premier ?", "options": ["Celles qui évitent des erreurs coûteuses", "Les plus décoratives", "Aucune", "Celles qui envoient le plus d'e-mails"], "correct": 0 },
     { "q": "Quelle question poser avant d'installer une application ?", "options": ["Une fonction de Shopify fait-elle déjà la même chose ?", "Quelle est sa couleur ?", "Combien a-t-elle d'abonnés Instagram ?", "Aucune"], "correct": 0 },
     { "q": "Quand envoyer un e-mail de réachat ?", "options": ["Au moment où le produit est normalement fini", "Le jour même de l'achat", "Jamais", "Une fois par heure"], "correct": 0 },
     { "q": "Que doit contenir chaque e-mail marketing ?", "options": ["Un lien de désinscription", "Le mot de passe du client", "Une facture", "Rien de particulier"], "correct": 0 },

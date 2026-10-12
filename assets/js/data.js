@@ -853,6 +853,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-1-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé prépare l'évaluateur de réponses d'IA aux projets spécialisés et mieux payés : spécialité (expert d'un domaine, réponses de référence, tests de sécurité, langue, révision, multimodal), travail dans les interfaces des plateformes (aucun achat d'outil), justifications vérifiables et vérification des faits, des calculs et du code, étalonnage et qualité, projets internationaux en anglais et en malgache, puis progression de carrière et gestion de revenus irréguliers. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et construire un profil d'expert honnête",
+   "Travailler dans les interfaces de comparaison, de notation et de réécriture",
+   "Justifier précisément et vérifier faits, calculs et code",
+   "Rester cohérent, rédiger des réponses de référence et mener des tests de sécurité encadrés",
+   "Travailler en anglais et évaluer en français et en malgache, dans le respect des règles",
+   "Progresser vers les rôles mieux payés et gérer des revenus irréguliers"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et accéder aux projets avancés",
+    "summary": "Les 6 spécialités avancées, les types de tâches avancées, la réponse de référence, le profil d'expert et les arnaques à éviter.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les types de tâches avancées",
+     "Construire un profil d'expert",
+     "Éviter les arnaques",
+     "Exercice pratique : votre spécialité et votre profil"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : interfaces des plateformes et vérifications",
+    "summary": "Interfaces de comparaison, de notation, de réécriture et de code, échelle de préférence, justification en 4 parties, vérification des faits, des calculs et du code, outils autorisés.",
+    "sections": [
+     "Les interfaces des tâches avancées",
+     "Les justifications précises",
+     "Vérifier les faits",
+     "Vérifier les calculs et le code",
+     "Les règles d'utilisation des outils",
+     "Exercice pratique : les vérifications avancées"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : étalonnage, réponses de référence, sécurité et temps",
+    "summary": "Étalonnage et accord entre évaluateurs, 6 qualités d'une réponse de référence, cadre du red teaming, gestion du temps et retours des réviseurs.",
+    "sections": [
+     "La cohérence et l'étalonnage",
+     "Rédiger une réponse de référence",
+     "Le test de sécurité (red teaming)",
+     "Gérer son temps par tâche",
+     "Utiliser les retours des réviseurs",
+     "Exercice pratique : qualité de haut niveau"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : consignes en anglais, langues et règles des plateformes",
+    "summary": "Vocabulaire des consignes, justifications en anglais, critères de langue en français et en malgache, 7 règles de conduite et tests de qualification.",
+    "sections": [
+     "Les consignes en anglais",
+     "Rédiger des justifications en anglais",
+     "Évaluer en français et en malgache",
+     "Confidentialité et règles des plateformes",
+     "Les tests de qualification",
+     "Exercice pratique : un projet international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer sa carrière : rôles, diversification et revenus",
+    "summary": "Expert, réviseur, coordinateur, diversification des plateformes et des compétences, gestion des revenus irréguliers, CV confidentiel et métiers voisins.",
+    "sections": [
+     "Progresser vers des rôles mieux payés",
+     "Diversifier",
+     "Gérer des revenus irréguliers",
+     "Présenter votre expérience sans briser la confidentialité",
+     "Préparer la suite",
+     "Exercice pratique : votre plan de carrière"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "data-1-f": {
   "hours": 13,
   "description": "L'évaluateur de réponses d'IA lit, compare et note les réponses des assistants d'intelligence artificielle, et explique précisément ce qui ne va pas, pour les rendre plus utiles, plus exacts et plus sûrs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler en français et en malagasy pour des plateformes et des entreprises de données, avec des méthodes rigoureuses et sans aucun achat. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
