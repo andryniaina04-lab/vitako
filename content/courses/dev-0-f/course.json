@@ -1,0 +1,97 @@
+{
+  "id": "dev-0-f",
+  "hours": 20,
+  "description": "Le développeur front-end construit la partie visible et interactive des sites et des applications : pages adaptatives, composants, formulaires, affichage de données. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences web, des entreprises de services numériques et des PME, en télétravail, avec HTML, CSS, JavaScript et React. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et le rôle de HTML, CSS et JavaScript",
+    "Construire des pages accessibles et adaptatives avec Flexbox, Grid et les media queries",
+    "Ajouter de l'interactivité et vérifier un formulaire avec JavaScript",
+    "Utiliser VS Code, les outils du navigateur, Git, GitHub et React",
+    "Intégrer une maquette, charger des données, contrôler la qualité et déployer",
+    "Construire un portfolio, chiffrer un projet et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de développeur front-end depuis Madagascar",
+      "summary": "Ce que fait le métier, front-end et back-end, les 3 langages du web, les tâches courantes, les clients, le poste de travail et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel langage décrit la structure et le contenu d'une page ?", "options": ["HTML", "CSS", "JavaScript", "SQL"], "correct": 0 },
+        { "q": "Où s'exécute le front-end ?", "options": ["Dans le navigateur de l'utilisateur", "Sur le serveur de base de données", "Dans l'imprimante", "Nulle part"], "correct": 0 },
+        { "q": "Quand apprendre React ?", "options": ["Après HTML, CSS et JavaScript", "Avant HTML", "Jamais", "À la place de JavaScript"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : HTML, CSS, mise en page adaptative et JavaScript",
+      "summary": "Les balises et l'accessibilité, les règles CSS et le modèle des boîtes, Flexbox et Grid, le mobile d'abord avec les media queries, les événements et la vérification de formulaire.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi ajouter un texte alt à une image ?", "options": ["Pour l'accessibilité et si l'image ne se charge pas", "Pour changer sa couleur", "Pour l'agrandir", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Quel outil CSS convient le mieux pour une galerie en lignes et colonnes ?", "options": ["Grid", "La balise h1", "Une boucle JavaScript", "Le texte alt"], "correct": 0 },
+        { "q": "La vérification d'un formulaire en JavaScript suffit-elle à protéger le serveur ?", "options": ["Non, le back-end doit aussi vérifier", "Oui, toujours", "Oui, si le site est en React", "Oui, sur téléphone"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : VS Code, outils du navigateur, Git, GitHub et React",
+      "summary": "Extensions et raccourcis, onglets des outils de développement, cycle Git et bonnes pratiques, création d'un projet React, composants, props et state, WebStorm et GitHub Copilot.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où regarder d'abord quand du JavaScript ne marche pas ?", "options": ["Dans la console du navigateur", "Dans la corbeille", "Dans le fichier CSS", "Nulle part"], "correct": 0 },
+        { "q": "Que ne faut-il jamais mettre dans un dépôt Git ?", "options": ["Des mots de passe ou des clés secrètes", "Un README", "Le code HTML", "Les fichiers CSS"], "correct": 0 },
+        { "q": "Dans React, qu'est-ce que le state ?", "options": ["Une valeur qui change et met à jour l'affichage", "Une couleur CSS", "Une balise HTML", "Un serveur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le site d'une maison d'hôtes en React",
+      "summary": "Analyse de la maquette et découpage en composants, variables CSS, chargement et filtre des données, formulaire avec vérification et 4 états, contrôle qualité, déploiement et livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de coder une maquette ?", "options": ["L'analyser et la découper en composants", "Supprimer la maquette", "Coder sans la regarder", "Demander le paiement complet"], "correct": 0 },
+        { "q": "Que faire des données saisies si l'envoi échoue ?", "options": ["Les garder et proposer de réessayer", "Tout effacer", "Fermer la page", "Recharger le site"], "correct": 0 },
+        { "q": "À quoi sert Lighthouse ?", "options": ["Noter la performance, l'accessibilité et les bonnes pratiques d'une page", "Dessiner une maquette", "Envoyer des e-mails", "Héberger un site"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio et profil GitHub, 5 canaux, tarif journalier et forfait avec marge, devis en 8 points, travail en équipe à distance, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de projets mettre dans un portfolio de débutant ?", "options": ["3 à 5 projets en ligne", "Aucun", "50 projets", "Seulement un CV"], "correct": 0 },
+        { "q": "28 heures plus 25 % de marge font…", "options": ["35 heures", "28 heures", "30 heures", "53 heures"], "correct": 0 },
+        { "q": "Quand la propriété du code passe-t-elle au client ?", "options": ["Après le paiement complet", "Avant de commencer", "Jamais", "Au premier commit"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un développeur front-end ?", "options": ["Il construit la partie visible et interactive d'un site", "Il gère uniquement la base de données", "Il imprime les maquettes", "Il répare les ordinateurs"], "correct": 0 },
+    { "q": "Quel langage gère l'apparence d'une page ?", "options": ["CSS", "HTML", "SQL", "Python"], "correct": 0 },
+    { "q": "Quel langage rend une page interactive ?", "options": ["JavaScript", "CSS", "HTML", "Markdown"], "correct": 0 },
+    { "q": "Qui prépare généralement la maquette Figma ?", "options": ["Le designer UI/UX", "Le développeur back-end", "Le client final seul", "Le comptable"], "correct": 0 },
+    { "q": "Combien de h1 par page ?", "options": ["Un seul", "Dix", "Aucun", "Autant que de paragraphes"], "correct": 0 },
+    { "q": "À quoi sert la balise label dans un formulaire ?", "options": ["Associer un texte lisible à un champ", "Changer la couleur", "Envoyer le formulaire", "Ajouter une image"], "correct": 0 },
+    { "q": "Dans le modèle des boîtes, qu'est-ce que le padding ?", "options": ["L'espace intérieur", "L'espace extérieur", "La bordure", "Le texte"], "correct": 0 },
+    { "q": "Que fait box-sizing: border-box ?", "options": ["Inclut padding et bordure dans la largeur", "Supprime les bordures", "Cache l'élément", "Centre le texte"], "correct": 0 },
+    { "q": "Quel outil pour aligner des éléments sur une ligne ?", "options": ["Flexbox", "Le texte alt", "Git", "Lighthouse"], "correct": 0 },
+    { "q": "Que signifie « mobile d'abord » ?", "options": ["Écrire d'abord le CSS du téléphone, puis élargir", "Ne faire que des applications mobiles", "Interdire les ordinateurs", "Tester seulement sur ordinateur"], "correct": 0 },
+    { "q": "Pourquoi compresser les images ?", "options": ["Pour charger plus vite et consommer moins de données", "Pour les rendre floues", "Pour les cacher", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle méthode réagit à un clic en JavaScript ?", "options": ["addEventListener", "console.log", "git push", "npm install"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un commit ?", "options": ["Une étape enregistrée dans l'historique Git", "Une couleur", "Une balise HTML", "Un paiement"], "correct": 0 },
+    { "q": "Quel service publie gratuitement un site depuis un dépôt ?", "options": ["GitHub Pages", "Excel", "Mobile Money", "Figma"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un composant React ?", "options": ["Un morceau d'interface réutilisable", "Un serveur", "Une base de données", "Un mot de passe"], "correct": 0 },
+    { "q": "Que sont les props ?", "options": ["Les informations transmises à un composant", "Les erreurs de la console", "Les images", "Les commits"], "correct": 0 },
+    { "q": "Quel outil sert à créer rapidement un projet React ?", "options": ["Vite", "Word", "Lighthouse", "Payoneer"], "correct": 0 },
+    { "q": "Que faire avec le code proposé par GitHub Copilot ?", "options": ["Le comprendre et le vérifier avant de l'accepter", "L'accepter sans lire", "L'envoyer directement au client", "Le supprimer toujours"], "correct": 0 },
+    { "q": "Pourquoi utiliser des variables CSS pour les couleurs ?", "options": ["Pour les modifier à un seul endroit", "Pour ralentir le site", "Pour cacher le texte", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Que sert à faire fetch ?", "options": ["Charger des données depuis une adresse", "Dessiner un bouton", "Faire un commit", "Compresser une image"], "correct": 0 },
+    { "q": "Quelles largeurs tester au minimum ?", "options": ["Téléphone, tablette et ordinateur (par exemple 360, 768 et 1280 px)", "Une seule", "Seulement 4 000 px", "Aucune"], "correct": 0 },
+    { "q": "Quel mode simuler pour les visiteurs à connexion faible ?", "options": ["Une connexion lente dans le mode appareil", "Le mode avion permanent", "Le mode sombre", "Aucun"], "correct": 0 },
+    { "q": "Pourquoi ajouter une marge au forfait ?", "options": ["Pour les imprévus et les échanges", "Pour tromper le client", "Ce n'est pas utile", "Pour payer moins d'impôts"], "correct": 0 },
+    { "q": "À quoi servent les pull requests en équipe ?", "options": ["Faire relire le code avant de le fusionner", "Payer les développeurs", "Dessiner la maquette", "Supprimer le dépôt"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

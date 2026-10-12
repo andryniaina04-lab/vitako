@@ -53,9 +53,9 @@ Règles : des critères **liés au poste**, sans discrimination (âge, sexe, rel
 | Tableur | 1 | 1 | 1 | 1 |
 | Expérience de contact client | 2 | 2 | 1 | 2 |
 | Expérience tourisme (bonus) | 1 | 0 | 1 | 1 |
-| **Total (sur 9 × note max)** | | **Calculé** | **Calculé** | **Calculé** |
+| **Total pondéré (sur 27)** | | **18** | **14** | **17** |
 
-*(Exemple : chaque critère est noté de 0 à 3, puis multiplié par son poids.)*
+*(Exemple : chaque critère est noté de 0 à 3, puis multiplié par son poids. Candidat A : 3×3 + 2×2 + 1×1 + 2×2 + 1×0 = 18.)*
 
 ### Les règles d'un tri juste
 

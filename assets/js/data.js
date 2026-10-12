@@ -1190,6 +1190,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-0-f": {
+  "hours": 20,
+  "description": "Le développeur front-end construit la partie visible et interactive des sites et des applications : pages adaptatives, composants, formulaires, affichage de données. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences web, des entreprises de services numériques et des PME, en télétravail, avec HTML, CSS, JavaScript et React. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et le rôle de HTML, CSS et JavaScript",
+   "Construire des pages accessibles et adaptatives avec Flexbox, Grid et les media queries",
+   "Ajouter de l'interactivité et vérifier un formulaire avec JavaScript",
+   "Utiliser VS Code, les outils du navigateur, Git, GitHub et React",
+   "Intégrer une maquette, charger des données, contrôler la qualité et déployer",
+   "Construire un portfolio, chiffrer un projet et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de développeur front-end depuis Madagascar",
+    "summary": "Ce que fait le métier, front-end et back-end, les 3 langages du web, les tâches courantes, les clients, le poste de travail et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Qui fait quoi dans un projet web ?",
+     "Les 3 langages de base",
+     "Les tâches les plus courantes",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : votre point de départ"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : HTML, CSS, mise en page adaptative et JavaScript",
+    "summary": "Les balises et l'accessibilité, les règles CSS et le modèle des boîtes, Flexbox et Grid, le mobile d'abord avec les media queries, les événements et la vérification de formulaire.",
+    "sections": [
+     "HTML : la structure",
+     "CSS : l'apparence",
+     "Flexbox et Grid : la mise en page",
+     "Le site adaptatif",
+     "JavaScript : l'interactivité",
+     "Exercice pratique : la page de Soa Café"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : VS Code, outils du navigateur, Git, GitHub et React",
+    "summary": "Extensions et raccourcis, onglets des outils de développement, cycle Git et bonnes pratiques, création d'un projet React, composants, props et state, WebStorm et GitHub Copilot.",
+    "sections": [
+     "Les outils gratuits",
+     "Visual Studio Code",
+     "Les outils de développement du navigateur",
+     "Git et GitHub",
+     "React : construire en composants",
+     "Les outils payants",
+     "Exercice pratique : votre première application React"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : le site d'une maison d'hôtes en React",
+    "summary": "Analyse de la maquette et découpage en composants, variables CSS, chargement et filtre des données, formulaire avec vérification et 4 états, contrôle qualité, déploiement et livraison.",
+    "sections": [
+     "Le cas pratique : « Villa Ravinala »",
+     "Étape 1 : analyser la maquette",
+     "Étape 2 : les données des chambres",
+     "Étape 3 : le formulaire de réservation",
+     "Étape 4 : contrôler la qualité",
+     "Étape 5 : mettre en ligne et livrer",
+     "Exercice pratique : le site de Villa Ravinala"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio et profil GitHub, 5 canaux, tarif journalier et forfait avec marge, devis en 8 points, travail en équipe à distance, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis et le contrat",
+     "Travailler en équipe à distance",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "dev-3-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur WordPress et Shopify un spécialiste recherché : audit, cahier des charges et offres à prix fixe, outils professionnels (Elementor Pro, thèmes premium, fonctions avancées de Shopify, un peu de Liquid et de PHP), méthode de travail sans risque (préproduction, Git, vitesse, sécurité, recette), sites conformes, multilingues et multidevises pour l'international, puis revenus récurrents et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

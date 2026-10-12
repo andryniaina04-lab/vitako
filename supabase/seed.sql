@@ -23,7 +23,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
   ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
   ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, false),
-  ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 12, false),
+  ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 18, false),
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 13, false),
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 14, false),
@@ -6653,6 +6653,831 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
 
+-- dev-0-f
+delete from public.exam_questions where course_id = 'dev-0-f';
+delete from public.module_questions where course_id = 'dev-0-f';
+delete from public.lessons where course_id = 'dev-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-f', 0, 'Le métier de développeur front-end depuis Madagascar', 'Ce que fait le métier, front-end et back-end, les 3 langages du web, les tâches courantes, les clients, le poste de travail et le plan d''apprentissage.', 'Chaque site web et chaque application que vous utilisez a une partie visible : les boutons, les menus, les formulaires, les pages qui s''adaptent à votre téléphone. Le développeur front-end construit cette partie. C''est un métier très demandé dans le monde entier, qui se fait entièrement à distance avec un ordinateur et une connexion. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un développeur front-end.
+> 2. Distinguer front-end, back-end et design.
+> 3. Citer les 3 langages de base du web et le rôle de chacun.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un développeur front-end **transforme une maquette en pages web qui fonctionnent, s''affichent bien sur tous les écrans et sont faciles à utiliser**.
+
+> [!definition] Front-end et back-end
+> Le **front-end** est la partie d''un site qui s''exécute dans le navigateur de l''utilisateur : ce qu''il voit et ce avec quoi il interagit. Le **back-end** est la partie qui s''exécute sur un serveur : la base de données, les comptes, les paiements. Les deux communiquent par Internet.
+
+## Qui fait quoi dans un projet web ?
+
+| Rôle | Ce qu''il fait | Exemple de livrable |
+| --- | --- | --- |
+| **Designer UI/UX** | Imagine l''apparence et le parcours de l''utilisateur | Maquette Figma |
+| **Développeur front-end** | Construit les pages à partir de la maquette | Code HTML, CSS, JavaScript ou React |
+| **Développeur back-end** | Construit le serveur, la base de données et les règles | API, base de données |
+| **Développeur full-stack** | Fait le front-end et le back-end | Une application complète |
+
+## Les 3 langages de base
+
+| Langage | Rôle | Comparaison avec une maison |
+| --- | --- | --- |
+| **HTML** | La structure et le contenu : titres, textes, images, liens, formulaires | Les murs et les pièces |
+| **CSS** | L''apparence : couleurs, polices, espacements, mise en page, adaptation au téléphone | La peinture et la décoration |
+| **JavaScript** | Le comportement : réagir aux clics, vérifier un formulaire, charger des données | L''électricité et la plomberie |
+
+Ensuite viennent les **bibliothèques** et les **frameworks**, comme **React**, qui aident à construire des interfaces plus grandes. On les apprend **après** les 3 langages de base, jamais avant.
+
+## Les tâches les plus courantes
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Intégrer une maquette** | Reproduire fidèlement une page dessinée dans Figma |
+| 2 | **Rendre un site adaptatif** | Le même site lisible sur téléphone, tablette et ordinateur |
+| 3 | **Créer des composants** | Bouton, carte produit, menu, fenêtre de dialogue réutilisables |
+| 4 | **Gérer des formulaires** | Vérifier les champs, afficher les erreurs, envoyer les données |
+| 5 | **Afficher des données** | Charger une liste de produits depuis une API et l''afficher |
+| 6 | **Corriger et améliorer** | Réparer un affichage cassé, accélérer une page lente |
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Commerces et PME** qui veulent un site vitrine moderne.
+2. **Agences de voyage et hôtels** : pages de circuits, formulaires de réservation.
+3. **Agences web et entreprises de services numériques** d''Antananarivo, qui travaillent souvent pour des clients étrangers.
+4. **ONG et écoles** : sites d''information, formulaires d''inscription.
+
+### À l''étranger
+
+1. **Agences web francophones** qui sous-traitent l''intégration de maquettes.
+2. **Start-up** qui cherchent des développeurs React à distance.
+3. **Entrepreneurs** qui ont besoin d''une page de vente ou d''un petit outil.
+
+> [!madagascar] Votre avantage
+> Antananarivo compte de nombreuses entreprises de services numériques qui travaillent pour la France, la Belgique ou le Canada, et elles recrutent régulièrement des intégrateurs et des développeurs front-end. Votre français et le fuseau horaire proche de l''Europe (1 à 2 heures d''écart selon la saison) sont de vrais atouts pour travailler avec des agences européennes.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, un processeur récent ; Windows, macOS ou Linux |
+| **Navigateurs** | Chrome ou Firefox (avec les outils de développement), plus un deuxième pour tester |
+| **Éditeur de code** | Visual Studio Code (gratuit) |
+| **Connexion** | Suffisante pour les visioconférences ; prévoyez une solution de secours (forfait mobile) |
+| **Énergie** | Onduleur ou batterie pour les coupures de courant |
+
+## Votre plan d''apprentissage
+
+1. **HTML et CSS** (4 à 6 semaines) : construire des pages statiques adaptatives.
+2. **JavaScript** (6 à 8 semaines) : rendre les pages interactives.
+3. **Git et GitHub** (en parallèle) : sauvegarder et partager votre code.
+4. **React** (6 à 8 semaines) : construire des interfaces plus grandes.
+5. **Projets** : 3 à 5 projets complets pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!astuce]
+> Apprenez en **construisant**. Une heure à coder vaut mieux que trois heures à regarder des vidéos. Après chaque leçon, refaites l''exemple vous-même, sans copier.
+
+> [!retenir]
+> - Le développeur front-end construit la partie visible et interactive d''un site.
+> - HTML pour la structure, CSS pour l''apparence, JavaScript pour le comportement.
+> - React vient après les bases.
+> - Clients : PME, agences web locales et étrangères, start-up.
+> - Apprenez en construisant, avec un plan réaliste.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Installez Visual Studio Code et deux navigateurs.
+> 2. Ouvrez un site que vous utilisez souvent, faites un clic droit puis « Inspecter », et repérez un titre HTML et une règle CSS.
+> 3. Choisissez 3 sites malgaches (commerce, hôtel, ONG) et notez pour chacun 3 problèmes visibles sur téléphone.
+> 4. Écrivez votre plan d''apprentissage sur 6 mois avec vos heures de pratique par jour.
+>
+> **À livrer** : une capture des outils de développement, vos 9 problèmes repérés et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 0, 0, 'Quel langage décrit la structure et le contenu d''une page ?', '["JavaScript","CSS","HTML","SQL"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 0, 1, 'Où s''exécute le front-end ?', '["Dans le navigateur de l''utilisateur","Dans l''imprimante","Sur le serveur de base de données","Nulle part"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 0, 2, 'Quand apprendre React ?', '["À la place de JavaScript","Avant HTML","Jamais","Après HTML, CSS et JavaScript"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-f', 1, 'Les bases : HTML, CSS, mise en page adaptative et JavaScript', 'Les balises et l''accessibilité, les règles CSS et le modèle des boîtes, Flexbox et Grid, le mobile d''abord avec les media queries, les événements et la vérification de formulaire.', 'Ce module vous donne les bases du front-end : écrire du HTML clair et accessible, mettre en forme avec CSS, construire des mises en page avec Flexbox et Grid, adapter le site au téléphone, puis ajouter de l''interactivité avec JavaScript.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire une page HTML structurée avec les bonnes balises.
+> 2. Mettre en forme une page avec CSS et le modèle des boîtes.
+> 3. Construire une mise en page avec Flexbox et Grid.
+> 4. Rendre une page adaptative avec les media queries.
+> 5. Réagir à un clic et vérifier un formulaire avec JavaScript.
+
+## HTML : la structure
+
+Une page HTML est faite de **balises** qui décrivent le rôle de chaque contenu.
+
+```html
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soa Café – Antsirabe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Soa Café</h1>
+    <nav><a href="#menu">Menu</a> <a href="#contact">Contact</a></nav>
+  </header>
+  <main>
+    <section id="menu">
+      <h2>Notre menu</h2>
+      <img src="cafe.jpg" alt="Tasse de café sur une table en bois">
+    </section>
+  </main>
+  <footer>© 2026 Soa Café</footer>
+</body>
+</html>
+```
+
+### Les balises à connaître
+
+| Balise | Rôle |
+| --- | --- |
+| `header`, `nav`, `main`, `section`, `footer` | Les grandes zones de la page |
+| `h1` à `h6` | Les titres, dans l''ordre (un seul `h1` par page) |
+| `p`, `ul`, `ol`, `li` | Paragraphes et listes |
+| `a` | Lien |
+| `img` | Image, toujours avec un texte `alt` |
+| `button` | Bouton d''action |
+| `form`, `label`, `input` | Formulaire et champs |
+
+> [!definition] Accessibilité
+> Le fait qu''un site soit utilisable par tous, y compris les personnes malvoyantes qui utilisent un lecteur d''écran ou celles qui naviguent au clavier. Les bonnes balises, les textes `alt` et les `label` de formulaire en sont la base.
+
+## CSS : l''apparence
+
+```css
+body {
+  font-family: system-ui, sans-serif;
+  color: #1f2937;
+  margin: 0;
+}
+h1 {
+  color: #7c2d12;
+  font-size: 2rem;
+}
+.bouton {
+  background: #7c2d12;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+```
+
+Une règle CSS = un **sélecteur** (`h1`, `.bouton`) + des **propriétés** et leurs **valeurs**.
+
+### Le modèle des boîtes
+
+Chaque élément est une boîte composée de 4 couches, de l''intérieur vers l''extérieur :
+
+1. **content** : le contenu.
+2. **padding** : l''espace intérieur.
+3. **border** : la bordure.
+4. **margin** : l''espace extérieur.
+
+> [!astuce]
+> Ajoutez `* { box-sizing: border-box; }` au début de votre CSS : la largeur d''un élément inclut alors son padding et sa bordure, ce qui rend les calculs beaucoup plus simples.
+
+## Flexbox et Grid : la mise en page
+
+| Outil | Pour quoi | Exemple |
+| --- | --- | --- |
+| **Flexbox** | Aligner des éléments sur une ligne ou une colonne | Un menu horizontal, un bouton centré |
+| **Grid** | Organiser une grille en lignes et colonnes | Une galerie de produits |
+
+```css
+nav {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+.produits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+```
+
+La grille `.produits` crée automatiquement autant de colonnes que l''écran le permet, chacune d''au moins 220 pixels.
+
+## Le site adaptatif
+
+> [!definition] Site adaptatif (responsive)
+> Un site dont la mise en page s''adapte à la taille de l''écran : une colonne sur téléphone, plusieurs sur ordinateur.
+
+### La méthode « mobile d''abord »
+
+1. Écrivez d''abord le CSS pour le **téléphone** (une colonne).
+2. Ajoutez des **media queries** pour les écrans plus larges.
+
+```css
+.contenu { padding: 16px; }
+
+@media (min-width: 768px) {
+  .contenu {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+```
+
+> [!madagascar]
+> Une grande partie des internautes malgaches se connectent depuis un **téléphone**, souvent avec une connexion mobile limitée. Pensez « mobile d''abord », compressez vos images et évitez les fichiers inutiles : un site léger se charge plus vite et coûte moins de données à vos visiteurs.
+
+## JavaScript : l''interactivité
+
+### Réagir à un clic
+
+```html
+<button id="btn-menu">Afficher le menu</button>
+<ul id="menu" hidden>
+  <li>Café – 3 000 Ar</li>
+  <li>Thé – 2 000 Ar</li>
+</ul>
+```
+
+```js
+const bouton = document.querySelector(''#btn-menu'');
+const menu = document.querySelector(''#menu'');
+
+bouton.addEventListener(''click'', () => {
+  menu.hidden = !menu.hidden;
+});
+```
+
+### Les notions de base
+
+| Notion | Exemple | Rôle |
+| --- | --- | --- |
+| Variable | `const prix = 3000;` | Garder une valeur |
+| Fonction | `function total(a, b) { return a + b; }` | Regrouper des instructions |
+| Condition | `if (age >= 18) { ... }` | Choisir selon une situation |
+| Tableau | `const cafes = [''Café'', ''Thé''];` | Une liste de valeurs |
+| Boucle | `cafes.forEach(c => console.log(c));` | Répéter pour chaque élément |
+| Événement | `addEventListener(''click'', ...)` | Réagir à l''utilisateur |
+
+### Vérifier un formulaire
+
+```js
+const form = document.querySelector(''#contact'');
+form.addEventListener(''submit'', (e) => {
+  const email = form.querySelector(''#email'').value;
+  if (!email.includes(''@'')) {
+    e.preventDefault();
+    alert(''Adresse e-mail invalide'');
+  }
+});
+```
+
+> [!attention]
+> La vérification en JavaScript aide l''utilisateur, mais **ne protège pas** le serveur : un utilisateur peut la contourner. Le back-end doit toujours vérifier les données à nouveau.
+
+> [!retenir]
+> - HTML : des balises qui décrivent le rôle du contenu, avec `alt` et `label`.
+> - CSS : sélecteurs, propriétés, modèle des boîtes, `box-sizing: border-box`.
+> - Flexbox pour aligner, Grid pour les grilles.
+> - Mobile d''abord, puis media queries.
+> - JavaScript : variables, fonctions, conditions, tableaux, événements.
+
+## Exercice pratique : la page de Soa Café
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez la page HTML de Soa Café : en-tête, menu de navigation, section menu, section contact, pied de page.
+> 2. Mettez-la en forme avec CSS : couleurs, polices, boutons.
+> 3. Affichez 6 produits dans une grille adaptative.
+> 4. Ajoutez un bouton qui affiche ou masque les horaires d''ouverture.
+> 5. Ajoutez un formulaire de contact qui vérifie l''e-mail.
+> 6. Testez la page sur votre téléphone ou avec le mode appareil mobile du navigateur.
+>
+> **À livrer** : vos fichiers HTML, CSS et JavaScript, et deux captures (téléphone et ordinateur).', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 1, 0, 'Pourquoi ajouter un texte alt à une image ?', '["Pour changer sa couleur","Pour l''agrandir","Pour l''accessibilité et si l''image ne se charge pas","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 1, 1, 'Quel outil CSS convient le mieux pour une galerie en lignes et colonnes ?', '["Le texte alt","La balise h1","Grid","Une boucle JavaScript"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 1, 2, 'La vérification d''un formulaire en JavaScript suffit-elle à protéger le serveur ?', '["Oui, si le site est en React","Oui, sur téléphone","Oui, toujours","Non, le back-end doit aussi vérifier"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-f', 2, 'Les outils : VS Code, outils du navigateur, Git, GitHub et React', 'Extensions et raccourcis, onglets des outils de développement, cycle Git et bonnes pratiques, création d''un projet React, composants, props et state, WebStorm et GitHub Copilot.', 'Ce module vous fait prendre en main les outils du développeur front-end : **Visual Studio Code**, les **outils de développement** du navigateur, **Git et GitHub** pour sauvegarder et partager votre code, puis **React** pour construire des interfaces en composants. Vous découvrirez aussi les outils payants : **WebStorm** et **GitHub Copilot**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler efficacement dans Visual Studio Code.
+> 2. Déboguer une page avec les outils de développement.
+> 3. Sauvegarder votre code avec Git et le publier sur GitHub.
+> 4. Créer un projet React et vos premiers composants.
+> 5. Comprendre ce qu''apportent WebStorm et GitHub Copilot.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Visual Studio Code** | Éditeur de code, avec extensions |
+| 2 | **Outils de développement** (Chrome, Firefox) | Inspecter le HTML et le CSS, lire les erreurs, tester sur mobile |
+| 3 | **Git** | Garder l''historique de votre code |
+| 4 | **GitHub** | Héberger votre code en ligne, collaborer, publier un site (GitHub Pages) |
+| 5 | **Node.js** et **npm** | Installer des outils et des bibliothèques, lancer un projet React |
+| 6 | **Vite** | Créer et lancer rapidement un projet React |
+
+## Visual Studio Code
+
+### Les extensions utiles
+
+1. **Prettier** : met en forme votre code automatiquement.
+2. **ESLint** : signale les erreurs probables en JavaScript.
+3. **Live Server** : recharge la page à chaque enregistrement.
+
+### Les raccourcis à connaître
+
+| Action | Windows / Linux | macOS |
+| --- | --- | --- |
+| Ouvrir un fichier par son nom | Ctrl + P | Cmd + P |
+| Palette de commandes | Ctrl + Maj + P | Cmd + Maj + P |
+| Commenter une ligne | Ctrl + / | Cmd + / |
+| Sélectionner l''occurrence suivante | Ctrl + D | Cmd + D |
+| Ouvrir le terminal intégré | Menu Affichage → Terminal | Menu Affichage → Terminal |
+
+## Les outils de développement du navigateur
+
+Ouvrez-les avec **F12** ou clic droit → **Inspecter**.
+
+| Onglet | Ce que vous y faites |
+| --- | --- |
+| **Éléments** | Voir le HTML, modifier le CSS en direct, visualiser le modèle des boîtes |
+| **Console** | Lire les erreurs JavaScript, tester une ligne de code |
+| **Réseau** | Voir les fichiers chargés, leur poids et leur durée |
+| **Mode appareil** | Simuler un téléphone et une connexion lente |
+
+> [!astuce]
+> Quand quelque chose ne marche pas, ouvrez **d''abord la console** : le message d''erreur indique souvent le fichier et la ligne du problème.
+
+## Git et GitHub
+
+> [!definition] Git
+> Un logiciel qui enregistre l''historique de votre code par étapes appelées **commits**. Vous pouvez revenir à une version précédente, travailler à plusieurs et voir qui a changé quoi.
+
+### Le cycle de base
+
+```bash
+git init                         # créer un dépôt dans le dossier
+git add .                        # préparer tous les fichiers modifiés
+git commit -m "Page d''accueil"   # enregistrer une étape
+git remote add origin https://github.com/votre-nom/soa-cafe.git
+git push -u origin main          # envoyer sur GitHub
+```
+
+### Les bonnes pratiques
+
+1. Un commit = **une étape claire**, avec un message qui dit ce qui a changé.
+2. Faites des commits **souvent** (plusieurs fois par jour).
+3. Ne mettez **jamais** de mots de passe ou de clés secrètes dans le dépôt.
+4. Ajoutez un fichier **README** qui explique le projet et comment le lancer.
+
+> [!madagascar]
+> Avec une connexion instable, Git est votre assurance : votre travail est enregistré localement à chaque commit, et il suffit de faire `git push` quand la connexion revient. Pensez aussi à **GitHub Pages** pour publier gratuitement vos projets de portfolio.
+
+## React : construire en composants
+
+> [!definition] Composant
+> Un morceau d''interface réutilisable (un bouton, une carte produit, un menu) écrit comme une fonction JavaScript qui renvoie ce qu''il faut afficher.
+
+### Créer un projet
+
+```bash
+npm create vite@latest soa-cafe -- --template react
+cd soa-cafe
+npm install
+npm run dev
+```
+
+### Un premier composant
+
+```jsx
+function CarteProduit({ nom, prix }) {
+  return (
+    <div className="carte">
+      <h3>{nom}</h3>
+      <p>{prix.toLocaleString(''fr-FR'')} Ar</p>
+    </div>
+  );
+}
+
+export default function App() {
+  const produits = [
+    { id: 1, nom: ''Café'', prix: 3000 },
+    { id: 2, nom: ''Thé'', prix: 2000 },
+    { id: 3, nom: ''Mofo gasy'', prix: 500 },
+  ];
+  return (
+    <main>
+      <h1>Soa Café</h1>
+      {produits.map(p => <CarteProduit key={p.id} nom={p.nom} prix={p.prix} />)}
+    </main>
+  );
+}
+```
+
+### Les 3 notions clés
+
+| Notion | Ce que c''est | Exemple |
+| --- | --- | --- |
+| **JSX** | Une écriture proche du HTML dans JavaScript | `<h3>{nom}</h3>` |
+| **Props** | Les informations transmises à un composant | `nom` et `prix` |
+| **State** (état) | Une valeur qui change et met à jour l''affichage | Le contenu d''un panier |
+
+```jsx
+import { useState } from ''react'';
+
+function Compteur() {
+  const [quantite, setQuantite] = useState(0);
+  return (
+    <button onClick={() => setQuantite(quantite + 1)}>
+      Ajouter au panier ({quantite})
+    </button>
+  );
+}
+```
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand l''utiliser |
+| --- | --- | --- |
+| **WebStorm** | Éditeur complet de JetBrains : refactorisation avancée, débogage intégré, aide très précise pour JavaScript, TypeScript et React | Quand vous travaillez sur de gros projets ; certaines agences le fournissent |
+| **GitHub Copilot** | Assistant d''IA dans l''éditeur : propose des lignes ou des fonctions entières, explique du code | Pour gagner du temps sur le code répétitif, une fois les bases solides |
+
+> [!attention]
+> N''utilisez pas un assistant d''IA pour apprendre les bases à votre place. Il propose parfois du code faux, dépassé ou peu sûr : vous devez **comprendre** chaque ligne avant de l''accepter. Vérifiez aussi que votre client accepte l''utilisation de ces outils sur son code. Les prix et les offres (dont les offres gratuites pour étudiants) changent : vérifiez-les sur les sites officiels.
+
+> [!retenir]
+> - Visual Studio Code avec Prettier, ESLint et Live Server.
+> - La console du navigateur d''abord quand quelque chose ne marche pas.
+> - Git pour l''historique, GitHub pour partager et publier ; jamais de secrets dans le dépôt.
+> - React : composants, JSX, props et state.
+> - WebStorm et Copilot accélèrent, mais ne remplacent pas la compréhension.
+
+## Exercice pratique : votre première application React
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez Node.js, Git et les 3 extensions de Visual Studio Code.
+> 2. Mettez la page Soa Café du module 2 dans un dépôt Git et publiez-la sur GitHub Pages.
+> 3. Créez un projet React avec Vite.
+> 4. Créez un composant `CarteProduit` et affichez 6 produits à partir d''un tableau.
+> 5. Ajoutez un bouton « Ajouter au panier » qui compte les articles avec `useState`.
+> 6. Faites au moins 5 commits avec des messages clairs et publiez le dépôt.
+>
+> **À livrer** : le lien de votre page GitHub Pages et le lien de votre dépôt React.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 2, 0, 'Où regarder d''abord quand du JavaScript ne marche pas ?', '["Dans le fichier CSS","Nulle part","Dans la console du navigateur","Dans la corbeille"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 2, 1, 'Que ne faut-il jamais mettre dans un dépôt Git ?', '["Un README","Le code HTML","Les fichiers CSS","Des mots de passe ou des clés secrètes"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 2, 2, 'Dans React, qu''est-ce que le state ?', '["Un serveur","Une valeur qui change et met à jour l''affichage","Une couleur CSS","Une balise HTML"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-f', 3, 'Premier projet : le site d''une maison d''hôtes en React', 'Analyse de la maquette et découpage en composants, variables CSS, chargement et filtre des données, formulaire avec vérification et 4 états, contrôle qualité, déploiement et livraison.', 'Dans ce module, vous réalisez un projet complet de développeur front-end : intégrer la maquette du site d''une maison d''hôtes, le rendre adaptatif, afficher les chambres depuis un fichier de données, ajouter un formulaire de réservation, vérifier la qualité et le mettre en ligne.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une maquette et la découper en composants.
+> 2. Construire les composants avec React.
+> 3. Charger et afficher des données.
+> 4. Gérer un formulaire avec vérification des champs.
+> 5. Contrôler la qualité et mettre le site en ligne.
+
+## Le cas pratique : « Villa Ravinala »
+
+> [!exemple] Votre client
+> **Villa Ravinala** est une maison d''hôtes de 6 chambres à Nosy Be. La designer de l''agence a préparé une maquette Figma (version téléphone et version ordinateur). On vous demande de développer le site : page d''accueil, liste des chambres avec filtre, formulaire de demande de réservation. Le formulaire envoie les demandes à un service déjà en place, développé par l''équipe back-end.
+
+## Étape 1 : analyser la maquette
+
+1. **Relevez les styles** : couleurs, polices, tailles de texte, espacements, arrondis.
+2. **Repérez les éléments répétés** : ce seront vos composants.
+3. **Comparez** la version téléphone et la version ordinateur : qu''est-ce qui change ?
+4. **Listez vos questions** pour la designer (états au survol, messages d''erreur, page vide).
+
+### Le découpage en composants
+
+| Composant | Où il apparaît | Props |
+| --- | --- | --- |
+| `EnTete` | Toutes les pages | — |
+| `Hero` | Accueil | `titre`, `image` |
+| `CarteChambre` | Liste des chambres | `nom`, `prix`, `capacite`, `photo` |
+| `FiltreChambres` | Liste des chambres | `valeur`, `onChange` |
+| `FormulaireReservation` | Page réservation | — |
+| `PiedDePage` | Toutes les pages | — |
+
+> [!astuce]
+> Placez les couleurs et les espacements de la maquette dans des **variables CSS** au début de votre feuille de style. Si la designer change une couleur, vous ne la modifiez qu''à un seul endroit.
+
+```css
+:root {
+  --vert: #1f6f50;
+  --sable: #f5ead7;
+  --texte: #1f2937;
+  --arrondi: 12px;
+  --espace: 16px;
+}
+```
+
+## Étape 2 : les données des chambres
+
+```json
+[
+  { "id": 1, "nom": "Chambre Baobab", "prix": 180000, "capacite": 2, "vueMer": true, "photo": "baobab.jpg" },
+  { "id": 2, "nom": "Chambre Ylang", "prix": 150000, "capacite": 2, "vueMer": false, "photo": "ylang.jpg" },
+  { "id": 3, "nom": "Suite Lémurien", "prix": 260000, "capacite": 4, "vueMer": true, "photo": "lemurien.jpg" }
+]
+```
+
+### Afficher et filtrer
+
+```jsx
+import { useEffect, useState } from ''react'';
+
+export default function ListeChambres() {
+  const [chambres, setChambres] = useState([]);
+  const [vueMerSeulement, setVueMerSeulement] = useState(false);
+  const [erreur, setErreur] = useState('''');
+
+  useEffect(() => {
+    fetch(''/chambres.json'')
+      .then(r => r.json())
+      .then(setChambres)
+      .catch(() => setErreur(''Impossible de charger les chambres.''));
+  }, []);
+
+  const visibles = vueMerSeulement ? chambres.filter(c => c.vueMer) : chambres;
+
+  if (erreur) return <p role="alert">{erreur}</p>;
+  return (
+    <section>
+      <label>
+        <input type="checkbox" checked={vueMerSeulement}
+               onChange={e => setVueMerSeulement(e.target.checked)} />
+        Vue sur la mer uniquement
+      </label>
+      <div className="grille">
+        {visibles.map(c => <CarteChambre key={c.id} {...c} />)}
+      </div>
+    </section>
+  );
+}
+```
+
+> [!definition] API
+> Une adresse qu''un programme appelle pour obtenir ou envoyer des données. Ici, le fichier `chambres.json` joue le rôle d''une API simple ; dans un vrai projet, l''équipe back-end vous donne l''adresse et le format des données.
+
+## Étape 3 : le formulaire de réservation
+
+### Les champs
+
+Nom, e-mail, téléphone, chambre, date d''arrivée, date de départ, nombre de personnes, message.
+
+### Les règles de vérification
+
+| Champ | Règle | Message d''erreur |
+| --- | --- | --- |
+| Nom | Obligatoire | « Indiquez votre nom. » |
+| E-mail | Format valide | « Adresse e-mail invalide. » |
+| Dates | Départ après l''arrivée | « La date de départ doit être après la date d''arrivée. » |
+| Personnes | Pas plus que la capacité de la chambre | « Cette chambre accueille 2 personnes au maximum. » |
+
+### Les 4 états d''un envoi
+
+1. **Saisie** : l''utilisateur remplit le formulaire.
+2. **Envoi en cours** : le bouton est désactivé et affiche « Envoi… ».
+3. **Succès** : message de confirmation clair.
+4. **Erreur** : message compréhensible, données conservées, possibilité de réessayer.
+
+> [!attention]
+> Un formulaire qui efface tout en cas d''erreur réseau fait fuir les clients. Gardez toujours les données saisies et proposez de réessayer, surtout pour des visiteurs qui ont une connexion instable.
+
+## Étape 4 : contrôler la qualité
+
+### La liste de contrôle
+
+| Domaine | Vérification |
+| --- | --- |
+| **Fidélité** | Couleurs, polices, espacements conformes à la maquette |
+| **Adaptatif** | Affichage correct à 360 px, 768 px et 1280 px de large |
+| **Navigateurs** | Testé sur Chrome et Firefox (et Safari si possible) |
+| **Accessibilité** | Textes `alt`, `label` sur les champs, navigation au clavier, contraste suffisant |
+| **Performance** | Images compressées et redimensionnées, page testée avec Lighthouse |
+| **Erreurs** | Aucune erreur dans la console |
+| **Contenu** | Pas de faute, liens qui fonctionnent |
+
+> [!definition] Lighthouse
+> Un outil intégré à Chrome (onglet Lighthouse des outils de développement) qui note une page sur la performance, l''accessibilité, les bonnes pratiques et le référencement, et donne des conseils pour l''améliorer.
+
+## Étape 5 : mettre en ligne et livrer
+
+1. **Construisez** la version de production : `npm run build`.
+2. **Déployez** sur un hébergeur gratuit pour la démonstration (Vercel, Netlify ou GitHub Pages).
+3. **Envoyez** au client le lien de démonstration et la liste des points à valider.
+4. **Corrigez** selon les retours (le nombre d''allers-retours est fixé dans le devis).
+5. **Livrez** : dépôt Git à jour, README avec les instructions, accès transférés.
+
+> [!madagascar]
+> Testez votre site avec le **mode appareil** du navigateur réglé sur une connexion lente (« 3G lente »). C''est ce que vivront de nombreux visiteurs à Madagascar, et beaucoup de touristes qui consultent le site depuis leur téléphone en voyage.
+
+> [!retenir]
+> - Analysez la maquette et découpez-la en composants avant de coder.
+> - Variables CSS pour les couleurs et espacements de la maquette.
+> - Chargez les données avec `fetch`, gérez le chargement et les erreurs.
+> - Un formulaire vérifie les champs et gère 4 états.
+> - Contrôle qualité, déploiement, puis livraison documentée.
+
+## Exercice pratique : le site de Villa Ravinala
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Dessinez (ou trouvez une maquette gratuite) les pages accueil, chambres et réservation, en version téléphone et ordinateur.
+> 2. Découpez-les en composants et créez le projet React.
+> 3. Affichez 6 chambres depuis un fichier JSON, avec un filtre.
+> 4. Construisez le formulaire avec les 4 règles de vérification et les 4 états (simulez l''envoi avec un délai).
+> 5. Passez la liste de contrôle qualité et faites un rapport Lighthouse.
+> 6. Déployez le site et écrivez le README.
+>
+> **À livrer** : le lien du site, le lien du dépôt et votre rapport Lighthouse. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 3, 0, 'Que faire avant de coder une maquette ?', '["Coder sans la regarder","Supprimer la maquette","Demander le paiement complet","L''analyser et la découper en composants"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 3, 1, 'Que faire des données saisies si l''envoi échoue ?', '["Fermer la page","Tout effacer","Les garder et proposer de réessayer","Recharger le site"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 3, 2, 'À quoi sert Lighthouse ?', '["Noter la performance, l''accessibilité et les bonnes pratiques d''une page","Héberger un site","Dessiner une maquette","Envoyer des e-mails"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-0-f', 4, 'Trouver des clients et se faire payer', 'Portfolio et profil GitHub, 5 canaux, tarif journalier et forfait avec marge, devis en 8 points, travail en équipe à distance, paiements et évolution.', 'Les agences web et les entreprises du monde entier cherchent des développeurs front-end fiables, et elles jugent sur ce que vous avez construit, pas sur vos diplômes. Ce dernier module vous montre comment présenter votre travail, trouver des clients, fixer vos prix, travailler en équipe à distance et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de développeur et un profil GitHub convaincants.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Chiffrer un projet au forfait et proposer un tarif journalier.
+> 4. Travailler avec une équipe à distance.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+### Ce qu''il contient
+
+1. **3 à 5 projets** en ligne, chacun avec : le lien du site, le lien du code, une capture, le problème résolu, les technologies.
+2. **Votre projet Villa Ravinala** (module 4) comme projet principal.
+3. **Une page « À propos »** : qui vous êtes, ce que vous faites, comment vous contacter.
+4. **Votre site de portfolio lui-même**, rapide, adaptatif et sans erreur : c''est votre premier exemple.
+
+### Le profil GitHub
+
+1. Une **photo** et une **présentation** courte.
+2. Des **dépôts épinglés** : vos meilleurs projets.
+3. Un **README** clair dans chaque projet.
+4. Des **commits réguliers** : ils montrent que vous pratiquez.
+
+> [!astuce]
+> Un recruteur passe souvent moins d''une minute sur un portfolio. Mettez votre meilleur projet en premier, et assurez-vous que chaque lien fonctionne sur téléphone.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Entreprises de services numériques à Antananarivo** | Postes d''intégrateur ou de développeur, souvent en télétravail partiel | Candidatez avec votre portfolio, préparez un test technique |
+| 2 | **Agences web francophones** | Intégration de maquettes en sous-traitance | Envoyez une proposition avec un projet comparable |
+| 3 | **Plateformes de freelance** | Missions courtes : intégration, corrections, pages | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+| 4 | **PME malgaches** | Sites vitrines, formulaires, petites applications | Montrez des exemples, proposez un forfait clair |
+| 5 | **LinkedIn et communautés de développeurs** | Start-up, recruteurs, autres freelances | Publiez vos projets, aidez les autres, restez actif |
+
+### Le message à une agence
+
+> [!exemple] Message à une agence web
+> « Bonjour, je suis développeur front-end basé à Madagascar (1 à 2 heures d''écart avec Paris selon la saison). J''intègre des maquettes Figma en HTML, CSS et React, adaptatives et accessibles. Voici un projet récent comparable à vos réalisations : [lien du site] et le code : [lien GitHub]. Je peux prendre en charge vos intégrations en sous-traitance, avec des livraisons régulières et un suivi par Git. Seriez-vous ouvert à un premier petit projet test ? »
+
+## Calculer ses prix
+
+### Le tarif journalier
+
+1. **Revenu mensuel visé** ÷ **jours facturables** (exemple : 2 000 000 Ar ÷ 16 jours = 125 000 Ar par jour).
+2. Pour les clients étrangers, comparez avec les tarifs de leur marché et fixez votre prix en euros ou en dollars.
+
+### Le forfait
+
+1. **Découpez** le projet en tâches (une page, un composant, le formulaire, les tests, le déploiement).
+2. **Estimez** chaque tâche en heures.
+3. **Ajoutez** une marge de 20 à 30 % pour les imprévus et les échanges.
+4. **Multipliez** par votre tarif horaire (exemple : 125 000 Ar ÷ 8 h ≈ 15 000 Ar de l''heure, arrondi).
+
+| Tâche | Estimation |
+| --- | --- |
+| Mise en place du projet et styles de base | 4 h |
+| Accueil (3 sections) | 6 h |
+| Liste des chambres avec filtre | 6 h |
+| Formulaire avec vérification et états | 6 h |
+| Tests, corrections, accessibilité | 4 h |
+| Déploiement et README | 2 h |
+| **Sous-total** | **28 h** |
+| Marge (25 %) | 7 h |
+| **Total** | **35 h**, soit 35 × 15 000 Ar = **525 000 Ar** |
+
+*(Montants donnés en exemple.)*
+
+## Le devis et le contrat
+
+### Les 8 points à préciser
+
+1. **Le périmètre** : pages, fonctions, ce qui n''est pas compris (back-end, hébergement payant, contenus).
+2. **Ce que le client fournit** : maquette, textes, images, accès.
+3. **Les navigateurs et tailles d''écran** testés.
+4. **Le nombre d''allers-retours** de corrections.
+5. **Le calendrier** et les étapes de livraison.
+6. **Le prix** et les échéances : par exemple 40 % au début, 60 % à la livraison.
+7. **La propriété du code** : transférée au client après paiement complet.
+8. **La garantie** : correction des défauts pendant une durée fixée (exemple : 30 jours).
+
+## Travailler en équipe à distance
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Branches et pull requests** | Chaque fonction est développée à part et relue avant d''être fusionnée |
+| **Messages de commit clairs** | L''équipe comprend ce qui a changé |
+| **Point quotidien écrit** | « Hier, aujourd''hui, blocages » : l''équipe sait où vous en êtes |
+| **Tickets** (Jira, Trello, GitHub Issues) | Chaque tâche est suivie |
+| **Questions précises** | Une capture, le lien, ce que vous avez essayé |
+
+> [!madagascar]
+> Prévenez votre équipe à l''avance en cas de coupure de courant ou de connexion prévue (délestage), et ayez une solution de secours : batterie, forfait mobile, lieu de travail partagé. La **fiabilité** est ce qui fait qu''une agence étrangère vous confie un deuxième projet.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur front-end confirmé** | TypeScript, tests automatisés, gestion d''état, performance |
+| **Développeur full-stack** | Node.js, bases de données, API (voir les formations back-end et full-stack) |
+| **Développeur mobile** | React Native pour les applications iPhone et Android |
+| **Spécialiste accessibilité ou performance** | Normes d''accessibilité, optimisation avancée |
+| **Lead front-end** | Architecture, relecture de code, accompagnement des débutants |
+
+> [!retenir]
+> - Un portfolio de 3 à 5 projets en ligne, avec le code et un README.
+> - Agences locales et étrangères, plateformes, PME, LinkedIn.
+> - Tarif journalier ou forfait avec marge pour les imprévus.
+> - Un devis précis : périmètre, corrections, calendrier, paiement, propriété du code.
+> - En équipe : branches, pull requests, points écrits et fiabilité.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Publiez votre site de portfolio avec au moins 2 projets (Soa Café et Villa Ravinala).
+> 2. Mettez à jour votre profil GitHub : photo, présentation, dépôts épinglés, README.
+> 3. Chiffrez un projet de site vitrine de 4 pages avec le tableau d''estimation.
+> 4. Rédigez votre modèle de devis avec les 8 points.
+> 5. Listez 10 agences ou entreprises à contacter et envoyez au moins 2 messages.
+>
+> **À livrer** : le lien de votre portfolio, votre profil GitHub, votre devis et votre liste avec vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 4, 0, 'Combien de projets mettre dans un portfolio de débutant ?', '["Seulement un CV","50 projets","3 à 5 projets en ligne","Aucun"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 4, 1, '28 heures plus 25 % de marge font…', '["53 heures","35 heures","28 heures","30 heures"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-0-f', 4, 2, 'Quand la propriété du code passe-t-elle au client ?', '["Au premier commit","Après le paiement complet","Avant de commencer","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que fait un développeur front-end ?', '["Il répare les ordinateurs","Il construit la partie visible et interactive d''un site","Il gère uniquement la base de données","Il imprime les maquettes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel langage gère l''apparence d''une page ?', '["SQL","Python","HTML","CSS"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel langage rend une page interactive ?', '["JavaScript","CSS","HTML","Markdown"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Qui prépare généralement la maquette Figma ?', '["Le designer UI/UX","Le développeur back-end","Le client final seul","Le comptable"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Combien de h1 par page ?', '["Autant que de paragraphes","Aucun","Un seul","Dix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'À quoi sert la balise label dans un formulaire ?', '["Ajouter une image","Envoyer le formulaire","Changer la couleur","Associer un texte lisible à un champ"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Dans le modèle des boîtes, qu''est-ce que le padding ?', '["L''espace extérieur","Le texte","L''espace intérieur","La bordure"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que fait box-sizing: border-box ?', '["Cache l''élément","Inclut padding et bordure dans la largeur","Supprime les bordures","Centre le texte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel outil pour aligner des éléments sur une ligne ?', '["Lighthouse","Flexbox","Git","Le texte alt"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que signifie « mobile d''abord » ?', '["Ne faire que des applications mobiles","Tester seulement sur ordinateur","Écrire d''abord le CSS du téléphone, puis élargir","Interdire les ordinateurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Pourquoi compresser les images ?', '["Pour les rendre floues","Ce n''est pas utile","Pour les cacher","Pour charger plus vite et consommer moins de données"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quelle méthode réagit à un clic en JavaScript ?', '["git push","addEventListener","console.log","npm install"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Qu''est-ce qu''un commit ?', '["Une couleur","Une étape enregistrée dans l''historique Git","Un paiement","Une balise HTML"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel service publie gratuitement un site depuis un dépôt ?', '["Excel","Mobile Money","Figma","GitHub Pages"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Qu''est-ce qu''un composant React ?', '["Un morceau d''interface réutilisable","Un serveur","Un mot de passe","Une base de données"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que sont les props ?', '["Les commits","Les images","Les erreurs de la console","Les informations transmises à un composant"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel outil sert à créer rapidement un projet React ?', '["Payoneer","Word","Lighthouse","Vite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que faire avec le code proposé par GitHub Copilot ?', '["Le comprendre et le vérifier avant de l''accepter","Le supprimer toujours","L''accepter sans lire","L''envoyer directement au client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Pourquoi utiliser des variables CSS pour les couleurs ?', '["Pour ralentir le site","Ce n''est pas possible","Pour les modifier à un seul endroit","Pour cacher le texte"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Que sert à faire fetch ?', '["Dessiner un bouton","Faire un commit","Charger des données depuis une adresse","Compresser une image"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quelles largeurs tester au minimum ?', '["Aucune","Seulement 4 000 px","Une seule","Téléphone, tablette et ordinateur (par exemple 360, 768 et 1280 px)"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel mode simuler pour les visiteurs à connexion faible ?', '["Le mode sombre","Le mode avion permanent","Une connexion lente dans le mode appareil","Aucun"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Pourquoi ajouter une marge au forfait ?', '["Pour payer moins d''impôts","Pour les imprévus et les échanges","Ce n''est pas utile","Pour tromper le client"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'À quoi servent les pull requests en équipe ?', '["Faire relire le code avant de le fusionner","Dessiner la maquette","Supprimer le dépôt","Payer les développeurs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Mobile Money ou virement","Uniquement des chèques étrangers","Aucun"]'::jsonb, 1);
+
 -- dev-3-a
 delete from public.exam_questions where course_id = 'dev-3-a';
 delete from public.module_questions where course_id = 'dev-3-a';
@@ -8468,9 +9293,9 @@ Règles : des critères **liés au poste**, sans discrimination (âge, sexe, rel
 | Tableur | 1 | 1 | 1 | 1 |
 | Expérience de contact client | 2 | 2 | 1 | 2 |
 | Expérience tourisme (bonus) | 1 | 0 | 1 | 1 |
-| **Total (sur 9 × note max)** | | **Calculé** | **Calculé** | **Calculé** |
+| **Total pondéré (sur 27)** | | **18** | **14** | **17** |
 
-*(Exemple : chaque critère est noté de 0 à 3, puis multiplié par son poids.)*
+*(Exemple : chaque critère est noté de 0 à 3, puis multiplié par son poids. Candidat A : 3×3 + 2×2 + 1×1 + 2×2 + 1×0 = 18.)*
 
 ### Les règles d''un tri juste
 
