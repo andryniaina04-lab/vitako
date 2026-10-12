@@ -1349,6 +1349,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-1-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé prépare le traducteur à travailler avec les agences internationales et les clients directs exigeants : spécialité, services à forte valeur (révision, post-édition, transcréation, localisation), outils professionnels (Trados Studio, memoQ, DeepL Pro), gestion de la terminologie et de la qualité, négociation des grilles et des contrats, puis développement d'une clientèle directe et coordination de projets multilingues. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et distinguer les services de traduction",
+   "Traiter des projets d'agence dans Trados Studio et memoQ",
+   "Utiliser DeepL Pro et la post-édition dans le respect de la confidentialité",
+   "Gérer la terminologie, réviser et évaluer la qualité avec une grille",
+   "Négocier grilles, bons de commande et contrats d'agence",
+   "Développer une clientèle directe et coordonner des projets multilingues"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et choisir ses services",
+    "summary": "Les 7 spécialités, les 5 services, la post-édition légère ou complète, le choix de la spécialité, les textes parallèles et la présentation de son expertise.",
+    "sections": [
+     "Les 7 spécialités",
+     "Les 5 types de services",
+     "Choisir sa spécialité",
+     "Construire son expertise",
+     "Présenter son expertise",
+     "Exercice pratique : votre spécialité"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Trados Studio, memoQ et DeepL Pro",
+    "summary": "Le format XLIFF, le circuit d'un paquet de projet, l'analyse des correspondances, les contrôles qualité intégrés et DeepL Pro avec glossaires.",
+    "sections": [
+     "Trados Studio et memoQ : le panorama",
+     "Le paquet de projet : du début à la fin",
+     "Lire une analyse de projet",
+     "Les contrôles qualité intégrés",
+     "DeepL Pro : un usage professionnel",
+     "Quels outils acheter, et quand ?",
+     "Exercice pratique : un projet d'agence"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : terminologie, révision et productivité",
+    "summary": "La fiche terminologique, la révision en 4 passes, la grille d'erreurs par type et gravité, la mesure de la productivité et la liste de contrôle en 12 points.",
+    "sections": [
+     "Gérer la terminologie d'un client",
+     "Réviser la traduction d'un autre traducteur",
+     "La grille de qualité",
+     "Mesurer et améliorer sa productivité",
+     "La liste de contrôle finale en 12 points",
+     "Exercice pratique : traduire, réviser, mesurer"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Agences internationales et clients directs",
+    "summary": "Le recrutement en agence, la grille de pondération, le bon de commande et le contrat cadre, la fiabilité de paiement et le service complet au client direct.",
+    "sections": [
+     "Le recrutement dans une agence internationale",
+     "La grille de pondération",
+     "Le bon de commande et le contrat d'agence",
+     "Vérifier la fiabilité de paiement d'une agence",
+     "Servir un client direct étranger",
+     "Exercice pratique : prêt pour les agences"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité",
+    "summary": "Tableau de bord et tarifs, clientèle directe, services à forte valeur, coordination de projets multilingues et choix du modèle d'activité.",
+    "sections": [
+     "Augmenter ses tarifs et choisir ses clients",
+     "Développer une clientèle directe",
+     "Les services à forte valeur ajoutée",
+     "Coordonner un projet multilingue",
+     "Choisir son modèle d'activité",
+     "Exercice pratique : votre plan de développement"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "lang-1-f": {
   "hours": 15,
   "description": "Le traducteur fait passer un texte d'une langue à une autre en gardant le sens, le ton et la précision. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à traduire entre l'anglais, le français et le malagasy pour des agences, des entreprises et des ONG, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

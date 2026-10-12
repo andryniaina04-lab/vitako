@@ -56,7 +56,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
   ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
-  ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 15, false),
+  ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 16, true),
   ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 12, false),
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 16, false),
   ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 13, false),
@@ -8132,6 +8132,681 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?', '["1 500 Ar","100 000 Ar","150 000 Ar","15 000 Ar"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel texte est en général parmi les mieux payés ?', '["La relecture d''une ligne","La fiche produit très courte","La page de vente","La publication de 30 mots"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'À qui appartient en général le texte une fois payé ?', '["Au rédacteur, pour toujours","À la plateforme de paiement","Au client","À Google"]'::jsonb, 2);
+
+-- lang-1-a
+delete from public.exam_questions where course_id = 'lang-1-a';
+delete from public.module_questions where course_id = 'lang-1-a';
+delete from public.lessons where course_id = 'lang-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-a', 0, 'Se spécialiser et choisir ses services', 'Les 7 spécialités, les 5 services, la post-édition légère ou complète, le choix de la spécialité, les textes parallèles et la présentation de son expertise.', 'La traduction générale est de plus en plus faite par les machines, puis corrigée. Les traducteurs qui vivent bien de leur métier sont ceux qui maîtrisent un **domaine spécialisé**, un **type de service** à forte valeur (révision, transcréation, localisation) ou une **combinaison rare**. Ce module vous aide à choisir votre spécialité et à construire votre expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 7 spécialités de la traduction professionnelle.
+> 2. Distinguer les services : traduction, révision, post-édition, transcréation, localisation.
+> 3. Choisir votre spécialité selon votre profil et le marché.
+> 4. Construire un glossaire de spécialité et un plan de formation.
+> 5. Présenter votre expertise aux clients.
+
+## Les 7 spécialités
+
+| N° | Spécialité | Exemples de documents | Ce qu''il faut |
+| --- | --- | --- | --- |
+| 1 | **Juridique** | Contrats, statuts, jugements, conditions générales | Connaissance des systèmes juridiques, précision absolue |
+| 2 | **Médicale et pharmaceutique** | Notices, protocoles, brochures de santé | Terminologie médicale, rigueur, sources officielles |
+| 3 | **Technique** | Modes d''emploi, fiches techniques, normes | Compréhension technique, cohérence terminologique |
+| 4 | **Marketing et transcréation** | Sites, publicités, slogans, catalogues | Talent d''écriture, créativité |
+| 5 | **Localisation** | Logiciels, applications, jeux vidéo, sites | Contraintes d''espace, variables, culture du public |
+| 6 | **Audiovisuel** | Sous-titres, doublage, voix off | Synchronisation, concision, oreille |
+| 7 | **Institutionnelle et développement** | Rapports d''ONG, documents d''organisations internationales, projets | Clarté, vocabulaire du développement, rigueur |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Développement et ONG** : nombreux projets à Madagascar, besoin de traduction anglais ↔ français ↔ malagasy.
+> - **Santé publique en malagasy** : brochures, campagnes, formulaires, où la clarté sauve des vies.
+> - **Localisation vers le malagasy** : applications de Mobile Money, de services, de téléphonie, où peu de traducteurs sont formés.
+
+## Les 5 types de services
+
+| Service | Ce que c''est | Pour qui |
+| --- | --- | --- |
+| **Traduction** | Traduire un texte de la langue source vers la langue cible | Le service de base |
+| **Révision** | Comparer une traduction faite par un autre traducteur avec l''original et la corriger | Agences : principe des « quatre yeux » |
+| **Post-édition** | Corriger une traduction automatique (légère ou complète selon le niveau demandé) | Gros volumes, délais courts |
+| **Transcréation** | Recréer un texte marketing dans une autre langue pour produire le même effet | Marques, publicité |
+| **Localisation** | Adapter un produit (logiciel, site, jeu) à une langue et une culture | Entreprises du numérique |
+
+> [!definition] Principe des quatre yeux
+> Une traduction professionnelle est relue par un **second traducteur qualifié** (le réviseur), qui compare avec l''original. La norme internationale ISO 17100 pour les services de traduction prévoit cette révision. De nombreuses agences l''appliquent et recrutent des réviseurs expérimentés.
+
+### La post-édition : deux niveaux
+
+| Niveau | Objectif | Ce qu''on corrige |
+| --- | --- | --- |
+| **Post-édition légère** | Un texte compréhensible et exact | Erreurs de sens, omissions, terminologie ; on accepte un style moins naturel |
+| **Post-édition complète** | Un texte de la qualité d''une traduction humaine | Tout : sens, terminologie, style, naturel, typographie |
+
+Demandez **toujours** le niveau attendu : la différence de temps est importante, et donc le prix aussi.
+
+## Choisir sa spécialité
+
+### Les 4 sources de spécialité
+
+1. **Vos études** : droit, médecine, sciences, économie, informatique, agronomie.
+2. **Votre expérience professionnelle** : banque, santé, commerce, ONG, administration.
+3. **Votre passion** : jeux vidéo, sport, cuisine, environnement.
+4. **La demande** : regardez les offres des agences et des plateformes pour votre combinaison.
+
+> [!astuce]
+> Une bonne spécialité est un domaine où vous **comprenez parfaitement** le texte source. Si vous devez chercher le sens de chaque phrase (et pas seulement les termes), ce n''est pas encore votre spécialité.
+
+## Construire son expertise
+
+### Le glossaire de spécialité
+
+1. **Rassemblez des textes parallèles** : documents authentiques du domaine dans les deux langues (sites officiels, rapports bilingues, normes).
+2. **Extrayez les termes** clés et leur équivalent, avec la source.
+3. **Notez le contexte** : définition, exemple d''emploi, termes à éviter.
+4. **Organisez** par sous-domaines.
+5. **Mettez à jour** à chaque projet.
+
+> [!definition] Textes parallèles
+> Des documents rédigés directement dans chaque langue sur le même sujet (et non des traductions). Ils montrent comment les professionnels du domaine écrivent vraiment dans la langue cible.
+
+### Le plan de formation
+
+| Moyen | Exemple |
+| --- | --- |
+| **Lecture régulière** | Revues, sites spécialisés, rapports dans les deux langues |
+| **Cours en ligne** | Introduction au droit des contrats, terminologie médicale, notions de logiciel |
+| **Bases terminologiques officielles** | IATE (Union européenne), Termium Plus (Canada), bases des organisations internationales |
+| **Échanges avec des experts** | Médecins, juristes, ingénieurs de votre entourage |
+| **Associations de traducteurs** | Webinaires, groupes de spécialité |
+
+## Présenter son expertise
+
+1. **Votre titre** précise la spécialité : « Traductrice anglais → français, spécialisée en santé publique et développement ».
+2. **Votre CV** liste les **types de documents** traduits et le **volume** (« 120 000 mots de rapports d''ONG »).
+3. **Vos formations** de spécialité et votre glossaire (sans données de clients).
+4. **Des échantillons** traduits à partir de documents publics.
+5. **Vos services** : traduction, révision, post-édition, et ce que vous **ne faites pas**.
+
+> [!attention] Erreurs fréquentes
+> - Annoncer 10 spécialités : aucun client n''y croit.
+> - Accepter un document juridique ou médical complexe sans formation dans le domaine.
+> - Confondre traduction et **traduction assermentée** (officielle), qui exige un agrément.
+> - Ne pas demander le niveau de post-édition attendu.
+
+> [!retenir]
+> - 7 spécialités ; choisissez-en 1 ou 2 que vous comprenez parfaitement.
+> - 5 services : traduction, révision, post-édition, transcréation, localisation.
+> - Post-édition légère ou complète : toujours demander le niveau.
+> - Textes parallèles, glossaire de spécialité, formation continue.
+> - Présentez une expertise précise et prouvée.
+
+## Exercice pratique : votre spécialité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité avec les 4 sources et justifiez-la.
+> 2. Rassemblez 5 textes parallèles du domaine (2 langues) et construisez un glossaire de 30 termes avec sources.
+> 3. Traduisez un document public de 400 mots de votre spécialité.
+> 4. Post-éditez un autre texte de 300 mots traduit par DeepL, une fois en post-édition légère et une fois en complète, et notez le temps de chaque version.
+> 5. Rédigez votre présentation de spécialiste (titre, services, formation).
+>
+> **À livrer** : votre justification, votre glossaire, votre traduction, vos 2 post-éditions avec les temps, et votre présentation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 0, 0, 'Qu''est-ce que le principe des quatre yeux ?', '["Traduire avec des lunettes","Deux traducteurs traduisent le même texte en même temps","Une traduction est révisée par un second traducteur qualifié","Lire le texte quatre fois"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 0, 1, 'Que corrige une post-édition légère ?', '["Le sens, les omissions et la terminologie, sans viser un style parfait","Rien","Tout, jusqu''au style parfait","Uniquement la mise en page"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 0, 2, 'Que sont les textes parallèles ?', '["Deux copies d''un même fichier","Des documents rédigés directement dans chaque langue sur le même sujet","Des traductions mot à mot","Des textes sans rapport"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-a', 1, 'Outils professionnels : Trados Studio, memoQ et DeepL Pro', 'Le format XLIFF, le circuit d''un paquet de projet, l''analyse des correspondances, les contrôles qualité intégrés et DeepL Pro avec glossaires.', 'Les agences de traduction travaillent presque toutes avec des outils de TAO professionnels, surtout **Trados Studio** et **memoQ**. Elles vous enverront des **paquets de projet** à ouvrir, traduire et renvoyer. Ce module vous apprend à les utiliser, à lire une analyse de projet, et à utiliser **DeepL Pro** de façon professionnelle.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Ouvrir, traduire et renvoyer un paquet de projet d''agence.
+> 2. Utiliser mémoires de traduction et bases terminologiques dans Trados Studio et memoQ.
+> 3. Lire une analyse de projet et comprendre les correspondances.
+> 4. Lancer les contrôles qualité intégrés.
+> 5. Utiliser DeepL Pro avec des glossaires, dans le respect de la confidentialité.
+
+## Trados Studio et memoQ : le panorama
+
+| Point | **Trados Studio** | **memoQ** |
+| --- | --- | --- |
+| Usage | Très répandu dans les agences, notamment en Europe | Très répandu aussi, apprécié pour sa terminologie et sa flexibilité |
+| Paquets de projet | Paquets propres à Trados (envoi et retour) | Paquets propres à memoQ, et projets en ligne |
+| Terminologie | Bases terminologiques (MultiTerm) | Bases terminologiques intégrées |
+| Format d''échange | XLIFF (format standard), compatible avec d''autres outils dans une certaine mesure | XLIFF également |
+
+> [!definition] XLIFF
+> Un format de fichier standard pour les textes à traduire : chaque segment source y est stocké avec sa traduction. La plupart des outils de TAO savent l''ouvrir, ce qui permet de travailler avec des clients qui n''utilisent pas le même logiciel.
+
+Les licences de ces logiciels sont payantes (achat ou abonnement selon les offres) : vérifiez les conditions sur les sites officiels. Les deux éditeurs proposent des **versions d''essai**, et certaines agences vous donnent un accès à leur outil en ligne.
+
+## Le paquet de projet : du début à la fin
+
+### Le circuit
+
+1. **L''agence prépare** le projet : documents, mémoire de traduction, base terminologique, consignes.
+2. **Elle vous envoie un paquet** (un seul fichier).
+3. **Vous l''ouvrez** dans votre logiciel : tout est configuré automatiquement.
+4. **Vous traduisez** en utilisant la mémoire et la terminologie.
+5. **Vous lancez les contrôles qualité** et corrigez.
+6. **Vous créez le paquet de retour** et l''envoyez à l''agence.
+
+> [!attention]
+> Ne modifiez **pas** les réglages du projet (langues, mémoires, filtres) sans l''accord de l''agence, et renvoyez **toujours** un paquet de retour, pas seulement le document traduit : l''agence doit mettre à jour sa mémoire.
+
+### Les bons réflexes pendant la traduction
+
+1. **Regardez le pourcentage de correspondance** de chaque proposition de la mémoire.
+2. **Vérifiez les correspondances à 100 %** dans leur contexte : une phrase identique peut demander une traduction différente selon le document (sauf consigne contraire de l''agence).
+3. **Utilisez la terminologie** proposée : l''outil signale les termes de la base dans chaque segment.
+4. **Confirmez** chaque segment pour qu''il entre dans la mémoire.
+5. **Respectez les balises** (mise en forme, variables, liens).
+
+## Lire une analyse de projet
+
+L''agence vous envoie souvent une **analyse** avec la commande. Elle montre combien de mots sont déjà dans la mémoire, et à quel point.
+
+| Catégorie | Signification | Mots (exemple) |
+| --- | --- | --- |
+| **Contexte / 101 %** | Phrase identique, dans le même contexte | 400 |
+| **100 %** | Phrase identique déjà traduite | 1 200 |
+| **Répétitions** | Phrases qui se répètent dans le document | 600 |
+| **95 – 99 %** | Presque identique (ponctuation, un chiffre) | 300 |
+| **85 – 94 %** | Assez proche | 500 |
+| **75 – 84 %** | Partiellement proche | 400 |
+| **Pas de correspondance** | Nouveau texte | 4 600 |
+| **Total** | | **8 000** |
+
+> [!definition] Correspondance partielle (fuzzy match)
+> Une phrase de la mémoire qui ressemble à la nouvelle phrase, sans être identique. Plus le pourcentage est élevé, moins il y a à modifier.
+
+Beaucoup d''agences paient les répétitions et les correspondances **moins cher** que les mots nouveaux, selon une **grille de pondération**. Le module 4 vous apprend à négocier cette grille.
+
+## Les contrôles qualité intégrés
+
+Avant chaque livraison, lancez les vérifications automatiques de l''outil.
+
+| Contrôle | Ce qu''il détecte |
+| --- | --- |
+| **Segments non traduits** | Segments vides ou non confirmés |
+| **Chiffres** | Nombres différents entre source et cible |
+| **Balises** | Balises manquantes ou déplacées |
+| **Terminologie** | Termes de la base non respectés |
+| **Ponctuation et espaces** | Doubles espaces, ponctuation finale différente, espaces avant les signes doubles en français |
+| **Cohérence** | Même segment source traduit de deux façons différentes |
+| **Longueur** | Traduction beaucoup plus longue que la source (important en localisation) |
+
+Lisez chaque alerte : certaines sont de **fausses alertes** (un chiffre écrit en lettres volontairement, par exemple). Corrigez les vraies, ignorez les fausses en connaissance de cause.
+
+> [!astuce]
+> Des outils de contrôle qualité spécialisés (comme Xbench) vérifient en plus la cohérence sur plusieurs fichiers et toute la mémoire. Très utiles sur les gros projets.
+
+## DeepL Pro : un usage professionnel
+
+### Ce qu''apporte la version professionnelle
+
+1. **Des conditions de confidentialité** adaptées aux professionnels (les offres professionnelles prévoient en général que les textes ne sont pas conservés : vérifiez les conditions de l''offre que vous choisissez).
+2. **Des glossaires** : vous imposez la traduction de certains termes.
+3. **La traduction de documents entiers** en gardant la mise en forme.
+4. **Une connexion avec les outils de TAO** (selon les outils et les offres).
+
+### Les règles
+
+1. **Accord du client** : la traduction automatique doit être autorisée par écrit.
+2. **Glossaire chargé** avant de commencer.
+3. **Post-édition au niveau demandé** (module 1).
+4. **Jamais de texte confidentiel** dans une version gratuite.
+
+## Quels outils acheter, et quand ?
+
+| Situation | Conseil |
+| --- | --- |
+| Vous débutez avec les agences | Versions d''essai, Matecat, outils en ligne fournis par les agences |
+| Des agences vous envoient régulièrement des paquets Trados | Une licence Trados Studio devient rentable |
+| Vos clients utilisent memoQ | Une licence memoQ |
+| Vous faites beaucoup de post-édition autorisée | DeepL Pro |
+
+> [!madagascar]
+> Ces licences coûtent cher et se paient en devises. Avant d''acheter, calculez combien de projets réguliers l''exigent. Surveillez les offres promotionnelles des éditeurs, et vérifiez si votre agence principale peut vous fournir un accès.
+
+> [!retenir]
+> - Trados Studio et memoQ : les outils des agences, avec des paquets de projet.
+> - Toujours renvoyer un paquet de retour, sans modifier les réglages.
+> - L''analyse de projet classe les mots par correspondance ; les agences paient selon une grille.
+> - Les contrôles qualité intégrés avant chaque livraison, alertes lues une par une.
+> - DeepL Pro avec glossaires, accord du client et niveau de post-édition clair.
+
+## Exercice pratique : un projet d''agence
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez la version d''essai de Trados Studio ou de memoQ.
+> 2. Créez un projet avec un document Word de 800 mots, une mémoire de traduction et une base terminologique de 20 termes (votre glossaire du module 1).
+> 3. Traduisez la moitié du document, puis importez une version légèrement modifiée du document et observez les correspondances.
+> 4. Générez l''analyse du projet et commentez-la.
+> 5. Lancez les contrôles qualité, corrigez et créez un paquet ou un fichier de retour.
+>
+> **À livrer** : des captures du projet, l''analyse commentée, le rapport de contrôle qualité et le document final.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 1, 0, 'Que renvoyer à l''agence à la fin d''un projet ?', '["Un paquet de retour","Le document source","Rien","Seulement un e-mail"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 1, 1, 'Qu''est-ce qu''une correspondance partielle (fuzzy match) ?', '["Un terme interdit","Une faute de frappe","Une phrase identique","Une phrase de la mémoire proche de la nouvelle, sans être identique"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 1, 2, 'Que faire d''une alerte de contrôle qualité ?', '["Toutes les accepter sans lire","Toutes les ignorer","Supprimer le segment","La lire et corriger seulement les vraies erreurs"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-a', 2, 'Qualité et rapidité : terminologie, révision et productivité', 'La fiche terminologique, la révision en 4 passes, la grille d''erreurs par type et gravité, la mesure de la productivité et la liste de contrôle en 12 points.', 'Les agences sérieuses choisissent leurs traducteurs sur leur **qualité constante** et leur **fiabilité**, puis leur confient des projets de plus en plus importants. Ce module vous donne les méthodes des professionnels : gestion de la terminologie, révision d''un autre traducteur, classement des erreurs, productivité mesurée et liste de contrôle finale.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Gérer la terminologie d''un client sur la durée.
+> 2. Réviser la traduction d''un autre traducteur.
+> 3. Classer les erreurs avec une grille de qualité.
+> 4. Mesurer et améliorer votre productivité.
+> 5. Livrer avec une liste de contrôle en 12 points.
+
+## Gérer la terminologie d''un client
+
+### La fiche terminologique
+
+| Champ | Exemple |
+| --- | --- |
+| Terme source | *mobile money transfer* |
+| Terme cible | transfert d''argent mobile |
+| Terme à éviter | transfert mobile money |
+| Définition | Envoi d''argent d''un portefeuille électronique à un autre via le téléphone |
+| Contexte | « Fees apply to all mobile money transfers. » → « Des frais s''appliquent à tous les transferts d''argent mobile. » |
+| Source | Glossaire du client, version de mars 2026 |
+| Statut | Validé par le client |
+
+### Les 5 règles
+
+1. **Une base par client** (ou par domaine pour vos propres textes).
+2. **Le choix du client prime**, même si vous préférez un autre terme : notez-le et appliquez-le.
+3. **Proposez** les nouveaux termes au client et attendez sa validation pour les termes importants.
+4. **Datez** les mises à jour.
+5. **Livrez** les nouveaux termes avec la traduction, pour que le client mette à jour sa base.
+
+## Réviser la traduction d''un autre traducteur
+
+La révision est un service bien rémunéré, qui demande méthode et diplomatie.
+
+### La méthode en 4 passes
+
+| Passe | Ce que vous faites |
+| --- | --- |
+| **1. Comparaison** | Segment par segment, source et cible : sens, omissions, ajouts, chiffres |
+| **2. Terminologie** | Respect du glossaire et cohérence dans tout le document |
+| **3. Lecture de la cible seule** | Naturel, style, fluidité, comme un lecteur |
+| **4. Forme** | Typographie, mise en page, balises, contrôles automatiques |
+
+### Les règles du réviseur
+
+1. **Corrigez les erreurs**, pas les préférences : si la traduction est juste et naturelle, ne la réécrivez pas à votre goût.
+2. **Utilisez le suivi des modifications** pour que chaque correction soit visible.
+3. **Justifiez** les corrections importantes par un commentaire.
+4. **Restez respectueux** dans vos commentaires : ils seront lus par un collègue.
+
+> [!exemple] Commentaire de révision
+> Bon : « Segment 45 : "eventually" traduit par "éventuellement" (faux sens). Corrigé en "finalement". »
+> À éviter : « Traduction mauvaise, beaucoup d''erreurs. »
+
+## La grille de qualité
+
+Beaucoup d''agences évaluent les traductions avec une grille qui classe les erreurs par **type** et par **gravité**.
+
+| Type d''erreur | Exemples |
+| --- | --- |
+| **Exactitude** | Contresens, faux sens, omission, ajout, chiffre erroné |
+| **Terminologie** | Terme du glossaire non respecté, incohérence |
+| **Langue** | Grammaire, orthographe, ponctuation |
+| **Style** | Calque, registre inadapté, texte peu naturel |
+| **Localisation** | Formats de date, de nombre, de monnaie non adaptés |
+| **Consignes** | Instruction du client non suivie |
+
+| Gravité | Définition | Exemple |
+| --- | --- | --- |
+| **Critique** | Peut causer un danger, un problème légal ou une perte grave | Dose de médicament erronée, négation oubliée dans un contrat |
+| **Majeure** | Change le sens ou gêne fortement la compréhension | Contresens dans une phrase importante |
+| **Mineure** | Ne change pas le sens | Faute de ponctuation, petite maladresse |
+
+> [!definition] Score de qualité
+> Certaines agences attribuent des points de pénalité à chaque erreur (selon sa gravité) et les rapportent au nombre de mots. Au-delà d''un seuil, la traduction est refusée. Une seule erreur critique peut suffire.
+
+## Mesurer et améliorer sa productivité
+
+### Ce qu''il faut mesurer
+
+| Indicateur | Comment |
+| --- | --- |
+| **Mots par heure** en traduction | Par spécialité : un texte technique répétitif et un texte marketing n''ont pas le même rythme |
+| **Mots par heure** en révision | Souvent plusieurs fois plus rapide que la traduction |
+| **Mots par heure** en post-édition | Selon le niveau et la qualité de la machine |
+| **Temps de recherche** | La part du temps passée à chercher des termes |
+
+Notez vos chiffres pendant un mois : ils vous serviront à **fixer vos prix** et à **accepter ou refuser** des délais.
+
+### Les 6 leviers de productivité
+
+1. **Mémoires et glossaires** bien entretenus : vous ne cherchez jamais deux fois le même terme.
+2. **Raccourcis clavier** de votre outil de TAO.
+3. **Saisie semi-automatique** proposée par l''outil à partir de la mémoire et de la terminologie.
+4. **Dictée vocale** pour certains traducteurs (si elle est disponible et fiable dans votre langue cible).
+5. **Blocs de concentration** de 50 minutes, sans messages ni réseaux sociaux.
+6. **Une spécialité** : plus vous traduisez dans un domaine, plus vous allez vite.
+
+## La liste de contrôle finale en 12 points
+
+| N° | Point | Oui / Non |
+| --- | --- | --- |
+| 1 | Tous les segments traduits et confirmés | |
+| 2 | Révision bilingue faite (comparaison avec la source) | |
+| 3 | Lecture de la cible seule faite | |
+| 4 | Chiffres, dates, noms propres, unités vérifiés | |
+| 5 | Terminologie du client respectée | |
+| 6 | Consignes du client relues et respectées | |
+| 7 | Contrôles qualité automatiques lancés, alertes traitées | |
+| 8 | Balises et mise en forme correctes | |
+| 9 | Typographie de la langue cible | |
+| 10 | Questions au client posées et réponses intégrées | |
+| 11 | Fichier final ouvert et vérifié dans son format d''origine | |
+| 12 | Paquet de retour et nouveaux termes livrés | |
+
+> [!madagascar]
+> Pour les textes en malagasy destinés au grand public (santé, consignes, formulaires), ajoutez un 13e point : **faire lire** la traduction à une ou deux personnes du public visé, si le délai le permet. C''est le meilleur test de compréhension.
+
+> [!retenir]
+> - Une base terminologique par client ; le choix du client prime.
+> - Révision en 4 passes : corriger les erreurs, pas les préférences.
+> - Erreurs classées par type et gravité ; une erreur critique peut suffire à refuser.
+> - Mesurez vos mots par heure pour fixer vos prix et vos délais.
+> - Une liste de contrôle en 12 points avant chaque livraison.
+
+## Exercice pratique : traduire, réviser, mesurer
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez 10 fiches terminologiques complètes pour votre spécialité.
+> 2. Échangez une traduction de 500 mots avec un autre traducteur (ou utilisez une traduction automatique non post-éditée) et révisez-la en 4 passes, avec suivi des modifications et commentaires.
+> 3. Classez chaque erreur trouvée par type et par gravité.
+> 4. Mesurez votre rythme sur 3 tâches : traduction, révision, post-édition complète.
+> 5. Appliquez la liste de contrôle en 12 points à votre dernière traduction.
+>
+> **À livrer** : les fiches, la révision commentée, le tableau des erreurs, vos mesures et la liste remplie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 2, 0, 'Si le client préfère un terme différent du vôtre…', '["Vous gardez le vôtre","Vous supprimez le terme","Le choix du client prime","Vous alternez les deux"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 2, 1, 'Que doit corriger un réviseur ?', '["Les erreurs, pas ses préférences de style","Tout ce qu''il aurait écrit autrement","Rien","Uniquement la ponctuation"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 2, 2, 'Une dose de médicament erronée est une erreur…', '["Mineure","Critique","Sans importance","De style"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-a', 3, 'Agences internationales et clients directs', 'Le recrutement en agence, la grille de pondération, le bon de commande et le contrat cadre, la fiabilité de paiement et le service complet au client direct.', 'Les agences de traduction internationales sont la principale source de travail régulier pour un traducteur freelance. Elles ont leurs procédures de recrutement, leurs grilles de prix, leurs délais de paiement. Les clients directs étrangers, eux, attendent un service complet. Ce module vous apprend à travailler avec les deux, et à négocier vos conditions.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Passer le processus de recrutement d''une agence internationale.
+> 2. Négocier une grille de pondération des correspondances.
+> 3. Lire et négocier un bon de commande et un contrat d''agence.
+> 4. Vérifier la fiabilité de paiement d''une agence.
+> 5. Servir un client direct étranger de bout en bout.
+
+## Le recrutement dans une agence internationale
+
+### Les étapes habituelles
+
+1. **Candidature** sur la page « freelance » ou « vendor » de l''agence : CV, combinaisons, spécialités, outils, tarifs.
+2. **Test de traduction** (souvent 200 à 400 mots), évalué avec une grille de qualité.
+3. **Documents administratifs** : accord de confidentialité, contrat cadre, coordonnées de paiement, parfois justificatifs de diplômes ou d''expérience.
+4. **Inscription** dans la base de l''agence : vos combinaisons, spécialités, tarifs et disponibilités.
+5. **Premiers petits projets**, puis des volumes plus importants si la qualité est au rendez-vous.
+
+> [!definition] Vendor manager
+> La personne de l''agence qui recrute et gère les traducteurs freelances (*vendors*). Le **chef de projet** (*project manager*) vous envoie ensuite les commandes. Soyez irréprochable avec les deux : réactivité, qualité, respect des délais.
+
+### Ce qui fait la différence
+
+1. **Une spécialité claire**, prouvée par votre CV et votre test.
+2. **La maîtrise d''un outil de TAO** professionnel.
+3. **La réactivité** : répondre aux propositions de projet rapidement, même pour refuser.
+4. **La fiabilité** : respecter chaque délai, prévenir tôt en cas de problème.
+5. **Les questions bien posées** : regroupées, précises, avec une proposition.
+
+## La grille de pondération
+
+Les agences paient souvent les mots selon leur correspondance avec la mémoire (module 2). Voici un **exemple** de grille :
+
+| Catégorie | Part du tarif payée (exemple) |
+| --- | --- |
+| Pas de correspondance | 100 % |
+| 75 – 84 % | 60 % à 100 % |
+| 85 – 94 % | 40 % à 60 % |
+| 95 – 99 % | 25 % à 40 % |
+| 100 % et répétitions | 10 % à 30 % |
+| Contexte (101 %) | 0 % à 20 % |
+
+*(Pourcentages donnés en exemple : chaque agence a sa propre grille.)*
+
+> [!exemple] Calcul d''un projet
+> Projet de 8 000 mots (analyse du module 2) à un tarif de base de 0,08 € le mot, avec une grille où les 100 % et répétitions sont payés 30 % et les 75 – 99 % payés 60 %.
+> - Mots nouveaux : 4 600 × 0,08 = 368 €
+> - 75 – 99 % : 1 200 × 0,08 × 0,60 = 57,60 €
+> - 100 % et répétitions : 1 800 × 0,08 × 0,30 = 43,20 €
+> - Contexte (101 %), payé 0 % : 400 mots, 0 €
+> - **Total : 468,80 €** pour 8 000 mots
+> *(Chiffres donnés en exemple.)*
+
+### Négocier la grille
+
+1. **Les correspondances de 75 à 84 %** demandent souvent presque autant de travail qu''un mot nouveau : demandez qu''elles soient payées à 100 %.
+2. **Les 100 %** doivent être vérifiés dans leur contexte : un paiement à 0 % n''est pas raisonnable si l''agence vous demande de les relire.
+3. **Fixez un minimum de facturation** par commande pour les très petits projets.
+
+## Le bon de commande et le contrat d''agence
+
+> [!definition] Bon de commande (PO)
+> Le document que l''agence envoie pour chaque projet : numéro, description, nombre de mots, tarif, montant, délai. En anglais : *purchase order*. Votre facture doit en reprendre le numéro.
+
+### Les points à vérifier avant d''accepter
+
+1. **Le montant** correspond à l''analyse et à votre tarif.
+2. **Le délai** est dans **votre** fuseau horaire (vérifiez l''heure exacte et le fuseau indiqué).
+3. **Les consignes**, références, mémoire et glossaire sont fournis.
+4. **Le service** est clair : traduction seule, ou traduction et autorévision ?
+
+### Les clauses du contrat cadre à lire attentivement
+
+| Clause | Ce qu''il faut vérifier |
+| --- | --- |
+| **Délai de paiement** | Souvent 30, 45 ou 60 jours après la facture ; plus court, c''est mieux |
+| **Réclamations qualité** | Comment l''agence signale un problème, et votre droit de répondre avant toute réduction de paiement |
+| **Pénalités de retard** | Raisonnables et proportionnées |
+| **Confidentialité** | Durée, données concernées |
+| **Non-sollicitation** | Interdiction de travailler directement avec les clients de l''agence (habituel, à respecter) |
+| **Responsabilité** | Limitée à un montant raisonnable |
+
+## Vérifier la fiabilité de paiement d''une agence
+
+1. **Consultez les registres de réputation** des agences sur les sites pour traducteurs (par exemple le Blue Board de ProZ.com) et les forums professionnels.
+2. **Commencez par un petit projet** avant d''accepter un gros volume.
+3. **Envoyez vos factures** dès la livraison, avec le numéro de bon de commande.
+4. **Suivez vos paiements** dans un tableau : agence, facture, montant, échéance, date de paiement.
+5. **Relancez poliment** dès le lendemain de l''échéance, puis fermement après une semaine.
+6. **Ne dépendez pas d''une seule agence** : au-delà de 40 à 50 % de votre chiffre d''affaires, c''est risqué.
+
+## Servir un client direct étranger
+
+Un client direct (entreprise, ONG, institution) paie souvent plus qu''une agence, mais attend un **service complet**.
+
+### Ce que vous gérez en plus
+
+1. **L''analyse du besoin** : public, usage, ton, formats, délais.
+2. **Le devis** clair et la validation écrite.
+3. **La gestion des fichiers** : formats variés (Word, PDF, Excel, PowerPoint, fichiers de site).
+4. **La révision** par un second traducteur pour les documents importants (que vous organisez et payez).
+5. **La mise en page** ou la vérification du rendu final.
+6. **La facturation** et le suivi du paiement.
+
+> [!astuce]
+> Pour un client direct, proposez une **traduction avec révision** pour les documents publiés ou sensibles : vous travaillez avec un collègue réviseur de confiance, vous gardez la relation client, et la qualité est garantie par deux professionnels.
+
+> [!madagascar]
+> Indiquez à chaque agence et client, dès l''inscription, les moyens de paiement qui fonctionnent pour vous depuis Madagascar (virement international, Payoneer, autre service). Les possibilités de PayPal sont limitées pour Madagascar. Suivez les frais et le taux de change pour connaître votre revenu réel, et gardez chaque facture.
+
+> [!retenir]
+> - Recrutement d''agence : candidature, test, documents, premiers petits projets.
+> - Négociez la grille : les correspondances de 75 à 84 % valent presque un mot nouveau.
+> - Vérifiez chaque bon de commande : montant, délai et fuseau, consignes, service.
+> - Vérifiez la réputation de paiement et suivez chaque facture.
+> - Un client direct attend un service complet, souvent avec révision.
+
+## Exercice pratique : prêt pour les agences
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Mettez à jour votre CV pour les agences internationales (en anglais), avec spécialités, outils et volumes.
+> 2. Choisissez 5 agences, vérifiez leur réputation et préparez une candidature adaptée pour chacune.
+> 3. Calculez le prix d''un projet à partir de l''analyse du module 2 avec votre tarif et une grille négociée.
+> 4. Rédigez votre liste de vérification d''un bon de commande et votre tableau de suivi des paiements.
+> 5. Rédigez un devis complet pour un client direct (traduction et révision d''un rapport de 6 000 mots).
+>
+> **À livrer** : votre CV, vos 5 candidatures, votre calcul, votre liste, votre tableau et votre devis.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 3, 0, 'Qu''est-ce qu''un bon de commande (PO) ?', '["Le document de l''agence qui décrit un projet, son montant et son délai","Un test de traduction","Une mémoire de traduction","Une facture du traducteur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 3, 1, 'Que négocier pour les correspondances de 75 à 84 % ?', '["Un paiement à 0 %","Un paiement proche de 100 %, car elles demandent presque autant de travail","Rien","Un paiement en nature"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 3, 2, 'Que dit une clause de non-sollicitation ?', '["Ne pas poser de questions","Ne pas utiliser de TAO","Ne pas facturer","Ne pas travailler directement avec les clients de l''agence"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-a', 4, 'Développer son activité', 'Tableau de bord et tarifs, clientèle directe, services à forte valeur, coordination de projets multilingues et choix du modèle d''activité.', 'Après quelques années, un traducteur peut augmenter ses revenus de plusieurs façons : travailler davantage en direct avec les clients, se positionner sur des services à forte valeur, coordonner des projets multilingues, ou construire une petite équipe. Ce dernier module vous montre ces chemins et comment les emprunter sans perdre en qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Augmenter vos tarifs et sélectionner vos clients.
+> 2. Développer une clientèle directe.
+> 3. Proposer des services à forte valeur ajoutée.
+> 4. Coordonner un projet multilingue avec d''autres traducteurs.
+> 5. Choisir votre modèle d''activité pour les années à venir.
+
+## Augmenter ses tarifs et choisir ses clients
+
+### Le tableau de bord du traducteur
+
+Chaque trimestre, pour chaque client :
+
+| Client | Mots livrés | Revenu | Heures | Revenu horaire | Délai de paiement réel |
+| --- | --- | --- | --- | --- | --- |
+| Agence A | 60 000 | 3 600 € | 150 h | 24 € | 35 jours |
+| Agence B | 40 000 | 2 000 € | 125 h | 16 € | 70 jours |
+| ONG C (direct) | 15 000 | 1 500 € | 50 h | 30 € | 15 jours |
+
+*(Chiffres donnés en exemple.)*
+
+L''agence B rapporte le moins par heure et paie tard. Actions possibles : négocier son tarif ou sa grille, réduire le volume accepté, ou chercher un client pour la remplacer.
+
+### Les règles pour augmenter
+
+1. **Nouveaux clients** au nouveau tarif.
+2. **Clients actuels** prévenus 1 à 2 mois avant, avec un message professionnel.
+3. **Augmentation raisonnable** (par exemple 5 à 15 %), justifiée par votre spécialité, vos outils, votre fiabilité.
+4. **Acceptez de perdre** les clients les moins rentables : votre temps libéré servira aux meilleurs.
+
+## Développer une clientèle directe
+
+### Les clients directs naturels
+
+1. **ONG et organisations internationales** présentes à Madagascar et dans la région.
+2. **Entreprises** qui exportent ou s''implantent (tourisme, agriculture, mines, télécoms).
+3. **Éditeurs de logiciels et d''applications** qui lancent leur produit en français ou en malagasy.
+4. **Institutions et centres de recherche** qui publient en plusieurs langues.
+
+### Comment les atteindre
+
+1. **Un site ou une page professionnelle** présentant votre spécialité, vos services et vos références.
+2. **LinkedIn** : profil soigné, publications sur votre spécialité, contacts avec les responsables communication.
+3. **Les appels d''offres** des organisations internationales et des ONG (souvent publiés en ligne).
+4. **Le réseau** : événements professionnels, associations, anciens collègues.
+5. **Les recommandations** de clients satisfaits.
+
+> [!attention]
+> Respectez **toujours** la clause de non-sollicitation de vos contrats d''agence : ne contactez jamais directement un client final rencontré via une agence. C''est une faute professionnelle grave.
+
+## Les services à forte valeur ajoutée
+
+| Service | Pourquoi il est mieux payé |
+| --- | --- |
+| **Transcréation** | Créativité, impact direct sur l''image de marque ; souvent facturée à l''heure ou au projet |
+| **Révision experte** | Expertise et responsabilité sur la qualité finale |
+| **Localisation complète** | Gestion de fichiers techniques, tests dans l''application, coordination avec les développeurs |
+| **Conseil terminologique** | Création et gestion des glossaires et guides de style d''un client |
+| **Traduction urgente ou de nuit** | Votre fuseau horaire permet de livrer avant le réveil des clients américains ; majoration habituelle |
+| **Assurance qualité linguistique** | Vérifier un site ou une application traduite, dans son contexte réel |
+
+> [!madagascar] Le malagasy comme atout
+> Peu de traducteurs professionnels proposent des services complets vers le malagasy (localisation, révision, conseil terminologique). Si c''est votre langue, construisez une offre spécialisée : guides de style en malagasy, glossaires de référence pour la santé ou les services financiers, tests de compréhension avec le public. C''est une niche où la valeur est forte.
+
+## Coordonner un projet multilingue
+
+Un client direct peut vous demander un document en **plusieurs langues** : français, anglais, malagasy, et parfois d''autres. Vous pouvez devenir **coordinateur** du projet.
+
+### Les étapes
+
+1. **Analysez le projet** : langues, volume, délais, formats, public.
+2. **Constituez l''équipe** : un traducteur et un réviseur de confiance par langue, chacun traduisant vers sa langue maternelle.
+3. **Préparez le kit** : glossaire commun, guide de style, références, mémoire de traduction partagée.
+4. **Fixez le calendrier** : traduction, révision, questions au client, mise en page, contrôle final.
+5. **Centralisez les questions** et envoyez-les au client en une fois.
+6. **Contrôlez** la cohérence entre les langues (chiffres, noms, mise en page).
+7. **Livrez** et facturez le client ; payez vos collègues selon l''accord écrit.
+
+### Le prix d''un projet coordonné
+
+Le prix au client inclut : les traductions et révisions de chaque langue, **votre temps de coordination** (souvent 10 à 20 % du projet) et une marge pour les imprévus. Vous êtes responsable de la qualité de tout le projet devant le client.
+
+## Choisir son modèle d''activité
+
+| Modèle | Pour qui | Points d''attention |
+| --- | --- | --- |
+| **Traducteur spécialisé indépendant** | Ceux qui aiment traduire avant tout | Revenu lié à vos heures ; spécialité et tarifs élevés |
+| **Traducteur et réviseur expert** | Ceux qui ont beaucoup d''expérience dans un domaine | Responsabilité sur la qualité finale |
+| **Coordinateur de projets** | Ceux qui aiment organiser et ont un réseau fiable | Moins de traduction, plus de gestion |
+| **Petite agence spécialisée** | Ceux qui veulent construire une structure (par exemple autour du malagasy et du français) | Gestion, recrutement, administratif, responsabilité |
+
+> [!astuce]
+> Quel que soit votre modèle, gardez **au moins une partie de traduction** dans votre semaine : c''est ce qui maintient votre niveau et votre crédibilité auprès des traducteurs avec qui vous travaillez.
+
+> [!retenir]
+> - Un tableau de bord trimestriel : revenu horaire et délai de paiement par client.
+> - Clients directs : ONG, entreprises, éditeurs de logiciels, institutions, sans jamais contourner une agence.
+> - Services à forte valeur : transcréation, révision experte, localisation, conseil, urgence, assurance qualité.
+> - La coordination de projets multilingues demande un kit commun et un contrôle de cohérence.
+> - Choisissez votre modèle et gardez une part de traduction.
+
+## Exercice pratique : votre plan de développement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Remplissez votre tableau de bord trimestriel (avec vos chiffres réels ou d''exemple) et proposez une action pour le client le moins rentable.
+> 2. Listez 10 clients directs possibles dans votre spécialité et rédigez un message de présentation.
+> 3. Rédigez l''offre d''un service à forte valeur ajoutée (contenu, méthode, prix).
+> 4. Planifiez un projet trilingue de 10 000 mots (français, anglais, malagasy) : équipe, kit, calendrier et prix.
+> 5. Choisissez votre modèle d''activité et fixez 3 objectifs pour l''année.
+>
+> **À livrer** : votre tableau, votre liste et votre message, votre offre, votre plan de projet et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 4, 0, 'Quels clients directs sont naturels pour un traducteur à Madagascar ?', '["ONG, organisations internationales, entreprises qui exportent","Les clients finaux des agences","Uniquement les particuliers","Personne"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 4, 1, 'Que comprend le prix d''un projet multilingue coordonné ?', '["Rien de plus qu''un projet simple","Seulement votre traduction","Traductions, révisions, coordination et marge","Uniquement la mise en page"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-a', 4, 2, 'Pourquoi garder une part de traduction quand on coordonne ?', '["Pour maintenir son niveau et sa crédibilité","Pour travailler plus","Ce n''est pas utile","C''est obligatoire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quelle spécialité demande la connaissance des systèmes juridiques ?', '["La traduction juridique","La localisation de jeux","La traduction marketing","L''audiovisuel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quelle est une niche forte pour un traducteur malgache ?', '["La localisation et la santé publique en malagasy","La poésie islandaise","Aucune","Les brevets japonais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Qu''est-ce que la transcréation ?', '["Recréer un texte marketing pour produire le même effet","Transcrire un audio","Traduire mot à mot","Corriger l''orthographe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Que faut-il toujours demander pour une post-édition ?', '["Rien","Le niveau attendu : légère ou complète","La couleur du texte","Le prénom du traducteur précédent"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quel est le signe qu''un domaine n''est pas encore votre spécialité ?', '["Vous connaissez les termes","Vous avez un glossaire","Vous devez chercher le sens de chaque phrase","Vous lisez des revues du domaine"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Qu''est-ce que le format XLIFF ?', '["Un moyen de paiement","Un format standard de fichiers à traduire","Une police","Un format d''image"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Faut-il modifier les réglages d''un projet d''agence ?', '["Oui, pour aller plus vite","Oui, à la fin","Non, sauf accord de l''agence","Oui, toujours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Pourquoi vérifier les correspondances à 100 % dans leur contexte ?', '["Une phrase identique peut demander une autre traduction selon le document","Pour être payé plus","Elles sont toujours fausses","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Que détecte le contrôle des chiffres ?', '["Les mots trop longs","Les images floues","Des nombres différents entre source et cible","Les fautes de goût"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quelle condition pour utiliser DeepL Pro sur un projet ?', '["Aucune","Que le client soit pressé","L''accord écrit du client","Que le texte soit long"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Que contient une fiche terminologique ?', '["Terme source, terme cible, terme à éviter, définition, contexte, source, statut","Rien","Seulement le prix","Le nom du client et son adresse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quelle est la première passe de révision ?', '["La lecture du titre","La comparaison segment par segment avec la source","La mise en page","La facturation"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Comment rédiger un commentaire de révision ?', '["Précis, justifié et respectueux","En majuscules","Sans exemple","Vague et sévère"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Une faute de ponctuation sans effet sur le sens est une erreur…', '["Juridique","Critique","Majeure","Mineure"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Pourquoi mesurer ses mots par heure ?', '["Pour travailler moins","Pour fixer ses prix et accepter ou refuser des délais","Pour le plaisir","Parce que l''agence l''interdit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Quel point ajouter pour un texte grand public en malagasy ?', '["Le traduire en anglais","Rien","Le raccourcir de moitié","Le faire lire par des personnes du public visé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Qui gère le recrutement des traducteurs dans une agence ?', '["Le traducteur lui-même","Le comptable","Le vendor manager","Le client final"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Qu''est-ce qui fait la différence auprès d''une agence ?', '["Le nombre de langues annoncées","Spécialité, outil de TAO, réactivité, fiabilité","Les excuses","Le prix le plus bas"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', '4 600 mots nouveaux à 0,08 € coûtent…', '["46 €","3 680 €","368 €","36,80 €"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Que vérifier sur le délai d''un bon de commande ?', '["La météo","Rien","Le jour seulement","L''heure exacte et le fuseau horaire"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Où vérifier la réputation de paiement d''une agence ?', '["Nulle part","Sur la publicité de l''agence","Dans les registres comme le Blue Board de ProZ.com","En demandant à l''agence"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Au-delà de quelle part du chiffre d''affaires une seule agence devient-elle un risque ?', '["Aucune","5 %","Environ 40 à 50 %","1 %"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Que proposer à un client direct pour un document publié ?', '["Une traduction avec révision par un second traducteur","Une traduction automatique brute","Un résumé","Aucune relecture"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Comment augmenter ses tarifs ?', '["Sans prévenir personne","D''abord pour les nouveaux clients, puis prévenir les anciens 1 à 2 mois avant","En baissant la qualité","En doublant d''un coup"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-a', 'Dans un projet multilingue, vers quelle langue chaque traducteur travaille-t-il ?', '["La langue du coordinateur","Sa langue maternelle","Toujours l''anglais","N''importe laquelle"]'::jsonb, 1);
 
 -- lang-1-f
 delete from public.exam_questions where course_id = 'lang-1-f';
