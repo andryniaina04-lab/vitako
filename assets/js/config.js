@@ -10,10 +10,10 @@ window.VITAKO_CONFIG = {
   price: 25000,
   accessDays: 30,
 
-  // Numéros qui reçoivent les paiements.
+  // Numéros qui reçoivent les paiements, avec le nom du titulaire affiché aux étudiants.
   operators: [
-    { id: 'mvola', name: 'MVola', number: '038 28 753 61', prefixes: ['034', '038'] },
-    { id: 'orange', name: 'Orange Money', number: '032 62 291 65', prefixes: ['032', '037'] },
+    { id: 'mvola', name: 'MVola', number: '038 28 753 61', holder: 'Andrianiaina Philibert', prefixes: ['034', '038'] },
+    { id: 'orange', name: 'Orange Money', number: '032 62 291 65', holder: 'ANDRIANIAINA PHILIBERT RANDRIAMIHANTA', prefixes: ['032', '037'] },
   ],
 
   // Délai de validation annoncé aux étudiants.

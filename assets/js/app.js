@@ -557,7 +557,8 @@ function subscribePage() {
       <ol class="steps">
         <li><span>Envoyez <b class="mono">${ar(S.price)}</b> à ce numéro ${esc(op.name)} :</span>
           <div class="paynum"><span class="mono">${esc(op.number)}</span><button type="button" class="btn ghost sm" data-act="copy" data-v="${op.number.replace(/ /g, '')}">Copier</button></div>
-          <small class="muted">Gardez le SMS de confirmation : il contient la référence de la transaction.</small></li>
+          <div class="holder">Au nom de <b>${esc(op.holder)}</b></div>
+          <small class="muted">Vérifiez ce nom avant de confirmer le transfert, puis gardez le SMS de confirmation : il contient la référence de la transaction.</small></li>
         <li>Entrez les informations du paiement :</li>
       </ol>
       <div class="f"><label class="l" for="p-ref">Référence de la transaction</label><input class="in mono" id="p-ref" autocomplete="off" required placeholder="Copiez-la depuis le SMS de confirmation"></div>

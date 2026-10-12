@@ -212,3 +212,5 @@ a.back{display:inline-block}
 @media (prefers-reduced-motion:reduce){.spinner{animation:none}}
 .video.empty{aspect-ratio:auto;min-height:0;padding:22px}
 @media (max-width:560px){.themebtn span{display:none}.nav{gap:2px}.top .wrap{gap:6px}}
+.holder{margin:0 0 6px;font-size:.95rem}
+.holder b{font-weight:700;overflow-wrap:anywhere}
