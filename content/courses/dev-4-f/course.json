@@ -1,0 +1,97 @@
+{
+  "id": "dev-4-f",
+  "hours": 16,
+  "description": "Le développeur no-code construit des sites, des applications et des outils fonctionnels avec des plateformes visuelles, sans écrire de code. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs, des PME et des agences, à Madagascar et à l'étranger, avec Webflow, Bubble et Glide : histoires d'utilisateur, données, mise en page, logique, droits d'accès, tests, livraison et maintenance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le no-code et savoir quand il convient",
+    "Transformer un besoin en histoires d'utilisateur, données et écrans",
+    "Décrire une logique et configurer des droits d'accès",
+    "Construire avec Webflow, Glide et Bubble",
+    "Mener un projet complet : cadrage, construction, tests, formation, documentation",
+    "Chiffrer un projet, expliquer les abonnements et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de développeur no-code depuis Madagascar",
+      "summary": "No-code et low-code, Webflow, Bubble et Glide, les tâches du métier, quand le no-code convient ou non, les clients et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel outil convient le mieux à une application web avec comptes et règles ?", "options": ["Bubble", "Un tableur seul", "Un logiciel de dessin", "Un traitement de texte"], "correct": 0 },
+        { "q": "Quel est un risque du no-code à expliquer au client ?", "options": ["La dépendance à la plateforme", "Il est illégal", "Il ne fonctionne pas sur Internet", "Il n'a pas de données"], "correct": 0 },
+        { "q": "Pour quel besoin le no-code convient-il bien ?", "options": ["Tester une idée rapidement", "Un système pour des millions d'utilisateurs avec de gros calculs", "Une exigence de sécurité extrême", "Contrôler tout le code"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : besoins, données, mise en page, logique et droits",
+      "summary": "Histoires d'utilisateur et priorités, tables reliées et types de champs, boîtes et points de rupture, règles quand, si, alors, et droits d'accès au niveau des données.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment éviter de recopier le nom du client dans chaque commande ?", "options": ["Utiliser un lien vers la table Clients", "Le recopier quand même", "Ne pas enregistrer de client", "Créer une table par commande"], "correct": 0 },
+        { "q": "Que faut-il pour vraiment protéger des données ?", "options": ["Des règles au niveau des données, pas seulement cacher un bouton", "Cacher le bouton suffit", "Changer la couleur", "Rien"], "correct": 0 },
+        { "q": "Par quel écran commencer la conception ?", "options": ["Le téléphone", "La télévision", "L'imprimante", "Aucun"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Webflow, Glide, Bubble et offres payantes",
+      "summary": "Structure, classes, points de rupture et collections de Webflow, application Glide à partir d'un tableur, design, workflows et confidentialité dans Bubble, choix de l'outil et offres payantes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi servent les collections CMS de Webflow ?", "options": ["Gérer des contenus répétés comme des articles ou des circuits", "Payer l'abonnement", "Envoyer des SMS", "Créer des comptes"], "correct": 0 },
+        { "q": "Comment vérifier qu'un utilisateur ne voit que ses données ?", "options": ["Tester avec plusieurs comptes", "Tester avec un seul compte", "Ne pas tester", "Demander au client de deviner"], "correct": 0 },
+        { "q": "Qui paie l'abonnement Bubble d'une application cliente ?", "options": ["Le client, à son nom", "Le freelance pour toujours", "Personne", "La plateforme de freelance"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'application de Mofo Gasy Express",
+      "summary": "Cadrage, construction en 4 semaines, règles de commande, liste de contrôle en 8 tests, formation, guide et documentation, garantie et maintenance.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui calcule le total d'une commande ?", "options": ["L'application, à partir des prix enregistrés", "Le client", "La gérante à la main", "Personne"], "correct": 0 },
+        { "q": "Pourquoi montrer une version chaque semaine ?", "options": ["Pour corriger tôt les malentendus", "Pour facturer plus", "C'est obligatoire", "Pour aller plus lentement"], "correct": 0 },
+        { "q": "Que contient la documentation technique ?", "options": ["Comptes, données, workflows, limites et sauvegardes", "Seulement le prix", "Les mots de passe des clients finaux", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avec vidéos, 5 canaux, chiffrage avec marge, devis en 8 points avec les abonnements, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "48 heures plus 25 % de marge font…", "options": ["60 heures", "48 heures", "73 heures", "50 heures"], "correct": 0 },
+        { "q": "Que préciser sur les abonnements dans le devis ?", "options": ["Qu'ils sont payés par le client et peuvent changer de prix", "Qu'ils sont inclus à vie", "Rien", "Qu'ils sont gratuits"], "correct": 0 },
+        { "q": "Qu'est-ce qui convainc le plus dans un portfolio no-code ?", "options": ["Une vidéo où l'on utilise l'application", "Une liste de logiciels", "Un long texte", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que signifie low-code ?", "options": ["Approche visuelle avec un peu de code possible", "Beaucoup de code", "Aucun ordinateur", "Code secret"], "correct": 0 },
+    { "q": "Quel outil convient pour un site vitrine soigné ?", "options": ["Webflow", "Glide", "Un tableur", "Zoom"], "correct": 0 },
+    { "q": "Quel outil crée une application à partir d'un tableur ?", "options": ["Glide", "Webflow", "Photoshop", "Canva"], "correct": 0 },
+    { "q": "Quel client local peut avoir besoin d'une petite application ?", "options": ["Une PME qui gère tout sur un cahier", "Personne", "Uniquement une banque", "Uniquement l'État"], "correct": 0 },
+    { "q": "Que faut-il vérifier sur les données d'une plateforme no-code ?", "options": ["Que le client peut les exporter", "Leur couleur", "Rien", "Leur prix en ariary"], "correct": 0 },
+    { "q": "Comment s'écrit une histoire d'utilisateur ?", "options": ["En tant que… je veux… afin de…", "Je veux tout", "Un titre seul", "Un code"], "correct": 0 },
+    { "q": "Quelles fonctions construire en premier ?", "options": ["Les indispensables", "Les plus décoratives", "Toutes en même temps", "Aucune"], "correct": 0 },
+    { "q": "Quel type de champ pour un statut ?", "options": ["Liste de choix", "Image", "Nombre", "Date"], "correct": 0 },
+    { "q": "À quoi servent les points de rupture ?", "options": ["Adapter la mise en page aux tailles d'écran", "Casser l'application", "Payer moins", "Supprimer des pages"], "correct": 0 },
+    { "q": "Que décrit une règle de logique ?", "options": ["Quand un événement se produit, si une condition est vraie, alors faire des actions", "Une couleur", "Un prix", "Un nom de domaine"], "correct": 0 },
+    { "q": "Où configurer la confidentialité des données dans Bubble ?", "options": ["Dans les règles de confidentialité de l'onglet Data", "Dans les couleurs", "Dans le nom de la page", "Nulle part"], "correct": 0 },
+    { "q": "Pourquoi nommer les classes Webflow de façon cohérente ?", "options": ["Pour reprendre facilement le site", "Pour ralentir le site", "C'est obligatoire légalement", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que fait une page modèle de collection dans Webflow ?", "options": ["Elle crée automatiquement une page par élément", "Elle supprime les éléments", "Elle envoie des e-mails", "Rien"], "correct": 0 },
+    { "q": "Quel onglet de Bubble sert à créer la logique ?", "options": ["Workflow", "Design", "Data", "Settings"], "correct": 0 },
+    { "q": "Quel outil choisir pour un outil interne simple sur téléphone ?", "options": ["Glide", "Webflow", "Tableau", "Lemlist"], "correct": 0 },
+    { "q": "Que demander à la cliente de faire en semaine 1 ?", "options": ["Ajouter ses produits elle-même", "Payer tout", "Rien", "Coder"], "correct": 0 },
+    { "q": "Que doit faire l'application si l'heure de retrait est hors des horaires ?", "options": ["Refuser avec un message clair", "Accepter quand même", "Fermer l'application", "Rien"], "correct": 0 },
+    { "q": "Pourquoi tester sur un téléphone d'entrée de gamme ?", "options": ["C'est celui de beaucoup d'utilisateurs", "Pour décorer", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 },
+    { "q": "Que prévoir en cas de coupure d'Internet chez la cliente ?", "options": ["Un plan B, comme l'export des commandes du jour", "Rien", "Fermer la boulangerie", "Changer d'outil"], "correct": 0 },
+    { "q": "Que comprend la garantie de 30 jours ?", "options": ["La correction des bugs", "De nouvelles fonctions illimitées", "L'abonnement à vie", "Rien"], "correct": 0 },
+    { "q": "Combien de projets en ligne pour un portfolio no-code de départ ?", "options": ["3", "30", "0", "1 seul sans vidéo"], "correct": 0 },
+    { "q": "Quel canal permet la sous-traitance de sites Webflow ?", "options": ["Les agences web et no-code", "Les concurrents directs uniquement", "Personne", "Les banques"], "correct": 0 },
+    { "q": "À qui appartiennent l'application et les données après paiement ?", "options": ["Au client", "Au freelance", "À la plateforme", "À personne"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 },
+    { "q": "Quelle évolution permet de couvrir ce que le no-code ne fait pas ?", "options": ["Développeur front-end ou back-end", "Monteur vidéo", "Correcteur", "Traducteur"], "correct": 0 }
+  ]
+}

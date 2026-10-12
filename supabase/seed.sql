@@ -31,7 +31,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
-  ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 11, false),
+  ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 17, false),
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
@@ -16909,6 +16909,580 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- dev-4-f
+delete from public.exam_questions where course_id = 'dev-4-f';
+delete from public.module_questions where course_id = 'dev-4-f';
+delete from public.lessons where course_id = 'dev-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-f', 0, 'Le métier de développeur no-code depuis Madagascar', 'No-code et low-code, Webflow, Bubble et Glide, les tâches du métier, quand le no-code convient ou non, les clients et le plan d''apprentissage.', 'Beaucoup d''entrepreneurs ont besoin d''un site, d''une petite application ou d''un outil interne, mais n''ont ni le budget ni le temps pour un développement sur mesure. Le développeur no-code les construit avec des outils visuels, sans écrire de code (ou presque), en quelques jours au lieu de plusieurs mois. C''est un métier récent, très demandé, qui se fait entièrement à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un développeur no-code.
+> 2. Citer les principaux outils : Webflow, Bubble, Glide.
+> 3. Savoir quand le no-code convient et quand il ne convient pas.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un développeur no-code **construit des sites, des applications et des outils fonctionnels avec des plateformes visuelles, en assemblant des blocs, des données et des règles plutôt qu''en écrivant du code**.
+
+> [!definition] No-code et low-code
+> **No-code** : construire sans écrire de code, par glisser-déposer et réglages. **Low-code** : la même approche, avec la possibilité d''ajouter un peu de code pour les cas particuliers.
+
+## Les principaux outils
+
+| Outil | Ce qu''on construit | Exemple |
+| --- | --- | --- |
+| **Webflow** | Sites web professionnels, avec gestionnaire de contenu | Site d''une agence de voyage avec ses circuits et son blog |
+| **Bubble** | Applications web complètes : comptes, base de données, règles | Plateforme de réservation de cours particuliers |
+| **Glide** | Applications mobiles et internes à partir de données (tableur ou base) | Application de suivi des livraisons pour les livreurs |
+| **Outils complémentaires** | Formulaires, automatisations, bases de données | Make, Zapier, Airtable, Google Sheets |
+
+## Ce que fait un développeur no-code
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Comprendre le besoin** | Quelles actions l''utilisateur doit-il faire ? |
+| 2 | **Concevoir les données** | Tables clients, commandes, produits |
+| 3 | **Construire les écrans** | Pages, formulaires, listes |
+| 4 | **Créer la logique** | « Quand le client valide, créer la commande et envoyer un e-mail » |
+| 5 | **Gérer les droits** | Qui voit et modifie quoi |
+| 6 | **Tester et publier** | Vérifier, mettre en ligne, former l''utilisateur |
+
+## Quand le no-code convient… et quand il ne convient pas
+
+| Le no-code convient bien | Le no-code convient mal |
+| --- | --- |
+| Tester une idée rapidement (premier produit) | Applications avec des millions d''utilisateurs et de gros calculs |
+| Sites vitrines, blogs, pages de vente | Besoins très spécifiques que la plateforme ne permet pas |
+| Outils internes (suivi, demandes, stocks) | Exigences de sécurité ou de réglementation très fortes |
+| Petites applications métier | Besoin de contrôler entièrement le code et l''hébergement |
+
+> [!attention]
+> Une application no-code **dépend de sa plateforme** : prix, fonctions, conditions peuvent changer. Expliquez-le toujours au client, et vérifiez qu''il peut exporter ses données.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Entrepreneurs et start-up** qui veulent tester une idée sans gros budget.
+2. **PME** qui gèrent tout sur des cahiers ou des tableurs et veulent un outil simple.
+3. **ONG** qui ont besoin d''outils de collecte et de suivi.
+4. **Écoles et centres de formation** : inscriptions, suivi des élèves.
+
+### À l''étranger
+
+1. **Entrepreneurs francophones** qui veulent un premier produit.
+2. **Agences** qui sous-traitent des sites Webflow ou des applications Bubble.
+3. **Petites entreprises** qui veulent des outils internes.
+
+> [!madagascar] Votre avantage
+> Les agences et entrepreneurs francophones cherchent des développeurs no-code fiables, et la demande pour Webflow et Bubble est internationale. À Madagascar, de nombreuses PME pourraient remplacer leurs cahiers et fichiers Excel par une petite application Glide, simple et peu coûteuse.
+
+## Votre poste de travail et votre plan d''apprentissage
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, navigateur récent |
+| **Connexion** | Stable : tous ces outils fonctionnent en ligne |
+| **Comptes** | Webflow, Bubble et Glide (offres gratuites pour apprendre) |
+
+1. **Les bases du web** (2 semaines) : pages, mise en page, notions de HTML et CSS.
+2. **Les données** (2 semaines) : tables, champs, relations.
+3. **Webflow** (3 semaines), puis **Glide** (2 semaines), puis **Bubble** (4 semaines).
+4. **Les projets** : 3 réalisations pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - Le développeur no-code construit sites, applications et outils avec des plateformes visuelles.
+> - Webflow pour les sites, Bubble pour les applications web, Glide pour les applications à partir de données.
+> - Le no-code est idéal pour tester vite et pour les outils internes, moins pour les très gros systèmes.
+> - Une application dépend de sa plateforme : à expliquer au client.
+
+## Exercice pratique : penser no-code
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Créez des comptes gratuits Webflow, Bubble et Glide.
+> 2. Choisissez une petite activité que vous connaissez (épicerie, transport, école) et listez 5 problèmes de gestion.
+> 3. Pour chaque problème, indiquez si le no-code convient et quel outil vous choisiriez.
+> 4. Décrivez les données nécessaires pour l''un d''eux (tables et champs).
+> 5. Écrivez votre plan d''apprentissage sur 3 mois.
+>
+> **À livrer** : votre analyse, vos tables et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 0, 0, 'Quel outil convient le mieux à une application web avec comptes et règles ?', '["Bubble","Un tableur seul","Un traitement de texte","Un logiciel de dessin"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 0, 1, 'Quel est un risque du no-code à expliquer au client ?', '["Il ne fonctionne pas sur Internet","Il n''a pas de données","La dépendance à la plateforme","Il est illégal"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 0, 2, 'Pour quel besoin le no-code convient-il bien ?', '["Tester une idée rapidement","Un système pour des millions d''utilisateurs avec de gros calculs","Une exigence de sécurité extrême","Contrôler tout le code"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-f', 1, 'Les bases : besoins, données, mise en page, logique et droits', 'Histoires d''utilisateur et priorités, tables reliées et types de champs, boîtes et points de rupture, règles quand, si, alors, et droits d''accès au niveau des données.', 'Ce module vous donne les bases communes à tous les outils no-code : décrire un besoin, concevoir une base de données, comprendre la mise en page web, écrire la logique d''une application et gérer les droits des utilisateurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Transformer un besoin en liste de fonctions et d''écrans.
+> 2. Concevoir des tables reliées entre elles.
+> 3. Comprendre la mise en page web (boîtes, Flexbox, adaptation au téléphone).
+> 4. Décrire la logique : événements, conditions, actions.
+> 5. Définir les droits d''accès.
+
+## Du besoin aux fonctions
+
+### Les histoires d''utilisateur
+
+> [!definition] Histoire d''utilisateur
+> Une phrase simple qui décrit un besoin : « En tant que [type d''utilisateur], je veux [action] afin de [bénéfice]. »
+
+| N° | Histoire d''utilisateur | Priorité |
+| --- | --- | --- |
+| 1 | En tant que client, je veux voir les produits disponibles afin de choisir ma commande | Indispensable |
+| 2 | En tant que client, je veux commander et choisir l''heure de retrait | Indispensable |
+| 3 | En tant que gérant, je veux voir les commandes du jour afin de les préparer | Indispensable |
+| 4 | En tant que client, je veux recevoir un SMS quand ma commande est prête | Plus tard |
+
+> [!astuce]
+> Construisez d''abord les fonctions **indispensables**. Une première version simple et fiable vaut mieux qu''une application complète qui n''est jamais terminée.
+
+## Concevoir les données
+
+| Table | Champs | Relation |
+| --- | --- | --- |
+| **Produits** | Nom, prix, photo, disponible (oui ou non), catégorie | — |
+| **Clients** | Nom, téléphone, e-mail | — |
+| **Commandes** | Client, date, heure de retrait, statut, total | Liée à un client |
+| **Lignes de commande** | Commande, produit, quantité, prix | Liée à une commande et à un produit |
+
+### Les types de champs
+
+| Type | Exemple |
+| --- | --- |
+| Texte | Nom |
+| Nombre | Prix, quantité |
+| Date et heure | Heure de retrait |
+| Oui ou non | Disponible |
+| Liste de choix | Statut : en attente, prête, retirée |
+| Image | Photo du produit |
+| Lien vers une autre table | Client de la commande |
+
+> [!attention]
+> Ne stockez pas la même information à deux endroits (par exemple le nom du client recopié dans chaque commande). Utilisez un **lien** vers la table Clients : si le nom change, il change partout.
+
+## La mise en page web
+
+| Notion | Ce que c''est |
+| --- | --- |
+| **Boîtes** | Chaque élément est une boîte avec des marges intérieures et extérieures |
+| **Flexbox** | Aligner des éléments en ligne ou en colonne |
+| **Grille** | Organiser en lignes et colonnes |
+| **Points de rupture** | Adapter la mise en page à l''ordinateur, la tablette et le téléphone |
+| **Classes** (Webflow) | Styles réutilisables appliqués à plusieurs éléments |
+
+> [!madagascar]
+> Concevez toujours pour le **téléphone** d''abord : la majorité des utilisateurs malgaches se connectent depuis un smartphone, souvent avec une connexion limitée. Des images légères et des pages simples font une vraie différence.
+
+## La logique : événements, conditions, actions
+
+> [!definition] Workflow (logique)
+> Une règle qui dit : **quand** un événement se produit, **si** une condition est vraie, **alors** faire des actions. Bubble les appelle « workflows », Glide « actions ».
+
+| Quand | Si | Alors |
+| --- | --- | --- |
+| Le client clique sur « Commander » | Le panier n''est pas vide | Créer la commande, créer les lignes, vider le panier, afficher la confirmation |
+| Le gérant clique sur « Prête » | La commande est « en attente » | Changer le statut, envoyer un e-mail au client |
+| Une page s''ouvre | L''utilisateur n''est pas connecté | Rediriger vers la page de connexion |
+
+## Les droits d''accès
+
+| Utilisateur | Peut voir | Peut modifier |
+| --- | --- | --- |
+| **Visiteur** | Produits disponibles | Rien |
+| **Client** | Ses propres commandes | Ses commandes en attente, son profil |
+| **Gérant** | Toutes les commandes | Statuts, produits |
+
+> [!attention]
+> Cacher un bouton ne suffit pas à protéger des données. Dans Bubble, configurez les **règles de confidentialité** (privacy rules) de chaque table ; dans Glide, les règles de visibilité des lignes. Sinon, un utilisateur averti peut parfois accéder aux données des autres.
+
+> [!retenir]
+> - Des histoires d''utilisateur, et d''abord les fonctions indispensables.
+> - Des tables reliées, sans information recopiée.
+> - Une mise en page en boîtes, Flexbox et points de rupture, téléphone d''abord.
+> - Une logique : quand, si, alors.
+> - Des droits d''accès configurés au niveau des données, pas seulement des boutons.
+
+## Exercice pratique : concevoir une application
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez 10 histoires d''utilisateur pour une application de commande de repas d''une gargote, et classez-les par priorité.
+> 2. Concevez les tables, les champs et les liens.
+> 3. Dessinez sur papier les 5 écrans principaux, version téléphone.
+> 4. Écrivez 6 règles de logique (quand, si, alors).
+> 5. Remplissez le tableau des droits d''accès.
+>
+> **À livrer** : vos histoires, vos tables, vos écrans, vos règles et vos droits.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 1, 0, 'Comment éviter de recopier le nom du client dans chaque commande ?', '["Ne pas enregistrer de client","Le recopier quand même","Créer une table par commande","Utiliser un lien vers la table Clients"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 1, 1, 'Que faut-il pour vraiment protéger des données ?', '["Des règles au niveau des données, pas seulement cacher un bouton","Rien","Changer la couleur","Cacher le bouton suffit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 1, 2, 'Par quel écran commencer la conception ?', '["Le téléphone","L''imprimante","Aucun","La télévision"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-f', 2, 'Les outils : Webflow, Glide, Bubble et offres payantes', 'Structure, classes, points de rupture et collections de Webflow, application Glide à partir d''un tableur, design, workflows et confidentialité dans Bubble, choix de l''outil et offres payantes.', 'Ce module vous fait prendre en main les trois outils principaux du développeur no-code : **Webflow** pour les sites, **Glide** pour les applications à partir de données, et **Bubble** pour les applications web complètes. Vous découvrirez aussi ce qu''apportent les **offres payantes** de Webflow et de Bubble.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une page responsive et un gestionnaire de contenu dans Webflow.
+> 2. Créer une application à partir d''un tableur avec Glide.
+> 3. Créer une petite application avec base de données et workflows dans Bubble.
+> 4. Choisir le bon outil pour un projet.
+> 5. Comprendre ce qu''apportent les offres payantes.
+
+## Webflow : des sites professionnels
+
+### Les éléments essentiels
+
+| Élément | Rôle |
+| --- | --- |
+| **Navigateur d''éléments** | La structure de la page (sections, conteneurs, textes) |
+| **Panneau de style** | Mise en page, couleurs, typographie, avec des classes |
+| **Points de rupture** | Réglages pour tablette et téléphone |
+| **CMS (collections)** | Contenus répétés : articles, circuits, produits |
+| **Interactions** | Animations au défilement ou au survol |
+
+### Créer une collection
+
+1. Créez une collection « Circuits » avec les champs : nom, prix, durée, photo, description.
+2. Ajoutez 6 circuits.
+3. Créez une **liste dynamique** sur la page d''accueil qui affiche les circuits.
+4. Configurez la **page modèle** de circuit : chaque circuit a automatiquement sa page.
+
+> [!astuce]
+> Nommez vos classes de façon cohérente (par exemple `carte-circuit`, `carte-circuit-titre`) : un site bien nommé est facile à reprendre par vous ou par un autre développeur.
+
+## Glide : une application à partir de données
+
+### Créer une application de suivi des livraisons
+
+1. Préparez un tableur (Google Sheets) : livraisons (client, adresse, livreur, statut, heure).
+2. Créez une application Glide à partir de ce tableur.
+3. Ajoutez un écran **liste** des livraisons, filtré par livreur connecté.
+4. Ajoutez un écran **détail** avec un bouton « Livrée » qui change le statut.
+5. Testez sur votre téléphone.
+
+| Fonction de Glide | Usage |
+| --- | --- |
+| **Composants** | Listes, formulaires, boutons, cartes |
+| **Actions** | Modifier une ligne, envoyer une notification, ouvrir un lien |
+| **Visibilité** | Afficher un élément selon le rôle ou une condition |
+| **Colonnes calculées** | Totaux, conditions, dates |
+
+## Bubble : une application web complète
+
+### Les 3 onglets principaux
+
+| Onglet | Rôle |
+| --- | --- |
+| **Design** | Construire les pages et les éléments |
+| **Workflow** | Créer la logique (quand, si, alors) |
+| **Data** | Créer les types de données, les champs, les règles de confidentialité |
+
+### Une première application : prise de rendez-vous
+
+1. **Data** : créez les types « Service » et « Rendez-vous » (service, date, client, statut).
+2. **Design** : page d''accueil avec la liste des services, formulaire de réservation.
+3. **Workflow** : au clic sur « Réserver », créer un rendez-vous lié à l''utilisateur connecté.
+4. **Data → Privacy** : un utilisateur ne voit que ses propres rendez-vous.
+5. **Prévisualisez** et testez avec 2 comptes différents.
+
+> [!attention]
+> Testez toujours avec **plusieurs comptes** (un client, un autre client, un administrateur) pour vérifier que chacun ne voit que ce qu''il doit voir.
+
+## Choisir le bon outil
+
+| Besoin | Outil conseillé |
+| --- | --- |
+| Site vitrine, blog, pages de vente soignées | Webflow |
+| Outil interne simple pour une équipe, sur téléphone | Glide |
+| Application avec comptes, paiements, règles complexes | Bubble |
+| Formulaire et automatisation simple | Outils de formulaire + Make ou Zapier |
+
+## Les offres payantes
+
+| Outil | Ce qu''apporte l''offre payante |
+| --- | --- |
+| **Webflow** | Nom de domaine personnalisé, plus de pages et d''éléments de CMS, formulaires, hébergement professionnel (offres « site ») ; fonctions d''équipe (offres « espace de travail ») |
+| **Bubble** | Nom de domaine personnalisé, plus de capacité de calcul et d''utilisation, versions de développement et de production, collaborateurs |
+| **Glide** | Plus d''utilisateurs, de lignes de données et de fonctions selon l''offre |
+
+> [!madagascar]
+> Ces abonnements sont facturés en dollars. La bonne pratique : le **client** paie l''abonnement de son site ou de son application, à son nom, et vous ajoute comme collaborateur. Apprenez avec les offres gratuites, et vérifiez les prix et les limites à jour sur les sites officiels avant chaque devis.
+
+> [!retenir]
+> - Webflow : structure, classes, points de rupture, collections CMS.
+> - Glide : applications à partir d''un tableur, avec actions et visibilité.
+> - Bubble : design, workflows, données et règles de confidentialité.
+> - Testez avec plusieurs comptes.
+> - Le client paie les abonnements de ses projets.
+
+## Exercice pratique : vos trois premiers projets
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Construisez dans Webflow une page d''accueil responsive avec une collection de 6 éléments.
+> 2. Construisez dans Glide l''application de suivi des livraisons.
+> 3. Construisez dans Bubble l''application de prise de rendez-vous avec règles de confidentialité.
+> 4. Testez chaque projet sur téléphone et avec plusieurs comptes.
+>
+> **À livrer** : les liens de vos 3 projets et une capture de vos règles de confidentialité Bubble.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 2, 0, 'À quoi servent les collections CMS de Webflow ?', '["Payer l''abonnement","Créer des comptes","Gérer des contenus répétés comme des articles ou des circuits","Envoyer des SMS"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 2, 1, 'Comment vérifier qu''un utilisateur ne voit que ses données ?', '["Tester avec plusieurs comptes","Demander au client de deviner","Ne pas tester","Tester avec un seul compte"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 2, 2, 'Qui paie l''abonnement Bubble d''une application cliente ?', '["Le freelance pour toujours","Personne","La plateforme de freelance","Le client, à son nom"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-f', 3, 'Premier projet : l''application de Mofo Gasy Express', 'Cadrage, construction en 4 semaines, règles de commande, liste de contrôle en 8 tests, formation, guide et documentation, garantie et maintenance.', 'Dans ce module, vous réalisez un projet complet pour un client : une application de commandes et de suivi pour une petite entreprise, construite avec Bubble, avec un site vitrine Webflow. C''est le type de projet qui deviendra votre première étude de cas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Cadrer un projet no-code avec un client.
+> 2. Construire une application complète par étapes.
+> 3. Tester avec une liste de contrôle.
+> 4. Livrer, former et documenter.
+> 5. Prévoir la maintenance.
+
+## Le cas pratique : « Mofo Gasy Express »
+
+> [!exemple] Votre client
+> **Mofo Gasy Express** est une petite boulangerie d''Antsirabe qui reçoit ses commandes par téléphone et Messenger, et les note sur un cahier. La gérante, Mme Voahirana, veut : un site simple qui présente ses produits, une application où les clients commandent pour un retrait à une heure choisie, et un écran pour voir et préparer les commandes du jour. Les clients paient au retrait ou par Mobile Money (vérifié par la gérante).
+
+## Étape 1 : cadrer
+
+| Élément | Décision |
+| --- | --- |
+| **Fonctions indispensables** | Catalogue, commande avec heure de retrait, écran des commandes du jour, statuts |
+| **Plus tard** | Programme de fidélité, notifications SMS, paiement en ligne automatisé |
+| **Outils** | Webflow pour le site vitrine, Bubble pour l''application |
+| **Comptes** | Au nom de la cliente, qui paie les abonnements |
+| **Délai** | 4 semaines |
+| **Langues** | Français et malgache pour les textes principaux |
+
+## Étape 2 : construire par étapes
+
+| Semaine | Livrable | Validation |
+| --- | --- | --- |
+| 1 | Données, catalogue, comptes | La gérante ajoute ses produits elle-même |
+| 2 | Commande et heure de retrait | Test d''une commande complète |
+| 3 | Écran gérant, statuts, e-mails | Test sur une journée réelle |
+| 4 | Site Webflow, finitions, formation | Mise en ligne |
+
+### Les règles de la commande
+
+1. Les produits non disponibles n''apparaissent pas.
+2. L''heure de retrait doit être dans les horaires d''ouverture et au moins 2 heures après la commande.
+3. Le total est calculé à partir des prix enregistrés, pas modifiable par le client.
+4. Un client ne voit que ses propres commandes.
+5. La gérante peut passer une commande de « en attente » à « prête » puis « retirée ».
+
+> [!astuce]
+> Montrez chaque semaine une version qui **fonctionne**, même incomplète. La cliente voit l''avancement, et vous corrigez tôt les malentendus.
+
+## Étape 3 : tester
+
+### La liste de contrôle
+
+| N° | Test |
+| --- | --- |
+| 1 | Une commande complète du début à la fin, sur téléphone |
+| 2 | Heure de retrait en dehors des horaires : refusée avec un message clair |
+| 3 | Un client ne peut pas voir les commandes d''un autre (test avec 2 comptes) |
+| 4 | Un produit marqué indisponible disparaît du catalogue |
+| 5 | Les e-mails partent et arrivent (vérifier les spams) |
+| 6 | L''écran gérant affiche les commandes du jour dans l''ordre des heures |
+| 7 | Les pages sont lisibles et rapides sur un téléphone d''entrée de gamme |
+| 8 | Les textes en malgache et en français sont relus |
+
+## Étape 4 : livrer, former, documenter
+
+### La formation de la cliente (1 heure)
+
+1. Ajouter, modifier ou masquer un produit.
+2. Voir et préparer les commandes du jour.
+3. Changer les horaires d''ouverture.
+4. Que faire si un client appelle pour modifier une commande.
+
+### Le guide d''utilisation (2 à 3 pages)
+
+Des captures d''écran et des étapes numérotées pour chaque tâche courante.
+
+### La documentation technique
+
+| Élément | Contenu |
+| --- | --- |
+| **Comptes** | Plateformes utilisées, propriétaire, abonnements |
+| **Données** | Types, champs, règles de confidentialité |
+| **Workflows** | Liste des règles importantes |
+| **Limites** | Ce que l''application ne fait pas |
+| **Sauvegardes** | Comment exporter les données |
+
+> [!madagascar]
+> Pour une petite entreprise malgache, prévoyez un **plan B** en cas de coupure d''Internet : par exemple, la gérante exporte chaque matin la liste des commandes du jour (ou la consulte sur son téléphone avec les données mobiles). Les clients doivent toujours pouvoir appeler.
+
+## Étape 5 : prévoir la maintenance
+
+| Formule (exemple) | Contenu |
+| --- | --- |
+| **Garantie** (30 jours inclus) | Correction des bugs |
+| **Maintenance mensuelle** | Vérifications, petites modifications, assistance |
+| **Évolutions** | Nouvelles fonctions sur devis |
+
+> [!retenir]
+> - Un cadrage écrit : indispensable, plus tard, outils, comptes, délai.
+> - Une construction par semaines, validée à chaque étape.
+> - Une liste de contrôle de 8 tests, dont la confidentialité.
+> - Formation, guide d''utilisation et documentation technique.
+> - Une garantie et une maintenance proposées.
+
+## Exercice pratique : le projet Mofo Gasy Express
+
+> [!exercice] Exercice pratique · 12 heures (sur plusieurs semaines)
+> 1. Rédigez le cadrage du projet.
+> 2. Construisez l''application Bubble avec les 5 règles de commande.
+> 3. Construisez le site vitrine Webflow avec le catalogue.
+> 4. Passez la liste de contrôle en 8 tests.
+> 5. Rédigez le guide d''utilisation et la documentation technique.
+>
+> **À livrer** : les liens du site et de l''application, la liste de contrôle remplie et vos documents. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 3, 0, 'Qui calcule le total d''une commande ?', '["La gérante à la main","Personne","Le client","L''application, à partir des prix enregistrés"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 3, 1, 'Pourquoi montrer une version chaque semaine ?', '["Pour corriger tôt les malentendus","Pour aller plus lentement","Pour facturer plus","C''est obligatoire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 3, 2, 'Que contient la documentation technique ?', '["Seulement le prix","Rien","Les mots de passe des clients finaux","Comptes, données, workflows, limites et sauvegardes"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avec vidéos, 5 canaux, chiffrage avec marge, devis en 8 points avec les abonnements, paiements et évolution.', 'Les entrepreneurs et les petites entreprises cherchent des développeurs no-code capables de livrer vite et proprement. Ce dernier module vous montre comment présenter vos réalisations, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio no-code convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Chiffrer un projet et proposer une maintenance.
+> 4. Rédiger un devis clair, y compris sur les abonnements.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **3 projets en ligne** : un site Webflow, une application Glide, une application Bubble.
+2. **Pour chacun** : le problème, la solution, les outils, une vidéo de démonstration de 1 à 2 minutes.
+3. **Votre projet Mofo Gasy Express** comme étude de cas principale.
+4. **Des modèles** (templates) que vous avez créés, si possible publiés sur les places de marché des outils.
+
+> [!astuce]
+> Une vidéo courte où vous **utilisez** l''application (passer une commande, la préparer côté gérant) convainc beaucoup plus que des captures d''écran.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **PME malgaches** | Proposez de remplacer un cahier ou un fichier Excel par une petite application |
+| 2 | **Entrepreneurs et start-up** | Proposez un premier produit en 4 à 6 semaines pour tester leur idée |
+| 3 | **Agences web et no-code** | Sous-traitance de sites Webflow et d''applications Bubble |
+| 4 | **Plateformes de freelance** | Petits projets Webflow, Glide, Bubble ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+| 5 | **Communautés des outils** | Forums Webflow et Bubble, annuaires d''experts, réseaux sociaux |
+
+> [!exemple] Message à une PME
+> « Bonjour Monsieur, beaucoup d''entreprises de livraison notent encore leurs courses dans un cahier, ce qui crée des oublis et des erreurs de paiement. Je construis de petites applications sur téléphone, simples et peu coûteuses : vos livreurs voient leurs courses du jour, les marquent comme livrées, et vous suivez tout en temps réel. Je peux vous montrer une démonstration de 5 minutes. »
+
+## Chiffrer un projet
+
+1. **Tarif horaire** : revenu mensuel visé ÷ heures facturables (exemple : 1 600 000 Ar ÷ 100 h = 16 000 Ar de l''heure).
+2. **Découpez** le projet en écrans, données, logique, tests, formation.
+3. **Ajoutez** 25 % de marge pour les échanges et les imprévus.
+
+| Tâche (projet Mofo Gasy Express) | Heures |
+| --- | --- |
+| Cadrage et conception des données | 4 |
+| Application Bubble (catalogue, commande, écran gérant) | 24 |
+| Site Webflow | 10 |
+| Tests et corrections | 6 |
+| Formation et documentation | 4 |
+| **Sous-total** | **48** |
+| Marge 25 % | 12 |
+| **Total** | **60 h × 16 000 Ar = 960 000 Ar** |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Le devis
+
+### Les 8 points
+
+1. **Les fonctions incluses** et celles prévues pour plus tard.
+2. **Les outils** et les **abonnements**, au nom et à la charge du client, avec une estimation de leur coût mensuel.
+3. **Ce que le client fournit** : textes, photos, accès, validation rapide.
+4. **Le nombre de corrections** incluses.
+5. **Le calendrier** par semaine.
+6. **Le prix** et les échéances (par exemple 40 % au début, 60 % à la livraison).
+7. **La propriété** : application et données au client après paiement complet.
+8. **La garantie** et la maintenance proposée.
+
+> [!attention]
+> Indiquez clairement que les **abonnements des plateformes** (Webflow, Bubble, Glide) sont payés par le client et peuvent changer de prix. Beaucoup de malentendus viennent de clients qui pensaient que le prix du projet incluait l''hébergement à vie.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur no-code confirmé** | Bubble avancé, API, performance, sécurité des données |
+| **Spécialiste Webflow** | Interactions avancées, CMS complexe, référencement |
+| **Automatisation** | Make, Zapier (voir la formation Spécialiste automatisation et IA) |
+| **Développeur front-end ou back-end** | Code (voir les formations développeur) pour les besoins que le no-code ne couvre pas |
+| **Chef de projet digital** | Pilotage de projets (voir la formation Chef de projet digital) |
+
+> [!retenir]
+> - 3 projets en ligne avec des vidéos de démonstration.
+> - PME, entrepreneurs, agences, plateformes et communautés.
+> - Prix = heures estimées + marge, avec une maintenance proposée.
+> - Les abonnements des plateformes sont payés par le client, et c''est écrit.
+> - Payoneer, virement ou Mobile Money selon le client.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Enregistrez une vidéo de démonstration de 2 minutes pour chacun de vos 3 projets.
+> 2. Chiffrez un projet d''application de suivi de stock avec le tableau d''estimation.
+> 3. Rédigez votre modèle de devis en 8 points.
+> 4. Listez 10 PME ou entrepreneurs à contacter et envoyez au moins 2 messages.
+>
+> **À livrer** : vos vidéos, votre chiffrage, votre devis et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 4, 0, '48 heures plus 25 % de marge font…', '["60 heures","50 heures","73 heures","48 heures"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 4, 1, 'Que préciser sur les abonnements dans le devis ?', '["Qu''ils sont inclus à vie","Qu''ils sont payés par le client et peuvent changer de prix","Qu''ils sont gratuits","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-f', 4, 2, 'Qu''est-ce qui convainc le plus dans un portfolio no-code ?', '["Une liste de logiciels","Un long texte","Rien","Une vidéo où l''on utilise l''application"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que signifie low-code ?', '["Approche visuelle avec un peu de code possible","Beaucoup de code","Aucun ordinateur","Code secret"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel outil convient pour un site vitrine soigné ?', '["Webflow","Glide","Un tableur","Zoom"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel outil crée une application à partir d''un tableur ?', '["Photoshop","Webflow","Canva","Glide"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel client local peut avoir besoin d''une petite application ?', '["Uniquement l''État","Personne","Une PME qui gère tout sur un cahier","Uniquement une banque"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que faut-il vérifier sur les données d''une plateforme no-code ?', '["Leur couleur","Que le client peut les exporter","Leur prix en ariary","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Comment s''écrit une histoire d''utilisateur ?', '["Je veux tout","Un code","En tant que… je veux… afin de…","Un titre seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quelles fonctions construire en premier ?', '["Toutes en même temps","Aucune","Les plus décoratives","Les indispensables"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel type de champ pour un statut ?', '["Nombre","Liste de choix","Date","Image"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'À quoi servent les points de rupture ?', '["Payer moins","Adapter la mise en page aux tailles d''écran","Casser l''application","Supprimer des pages"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que décrit une règle de logique ?', '["Une couleur","Quand un événement se produit, si une condition est vraie, alors faire des actions","Un prix","Un nom de domaine"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Où configurer la confidentialité des données dans Bubble ?', '["Dans le nom de la page","Nulle part","Dans les règles de confidentialité de l''onglet Data","Dans les couleurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Pourquoi nommer les classes Webflow de façon cohérente ?', '["Pour ralentir le site","C''est obligatoire légalement","Ce n''est pas utile","Pour reprendre facilement le site"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que fait une page modèle de collection dans Webflow ?', '["Elle supprime les éléments","Rien","Elle crée automatiquement une page par élément","Elle envoie des e-mails"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel onglet de Bubble sert à créer la logique ?', '["Data","Design","Settings","Workflow"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel outil choisir pour un outil interne simple sur téléphone ?', '["Webflow","Glide","Tableau","Lemlist"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que demander à la cliente de faire en semaine 1 ?', '["Rien","Coder","Payer tout","Ajouter ses produits elle-même"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que doit faire l''application si l''heure de retrait est hors des horaires ?', '["Fermer l''application","Refuser avec un message clair","Accepter quand même","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Pourquoi tester sur un téléphone d''entrée de gamme ?', '["Pour décorer","C''est celui de beaucoup d''utilisateurs","Pour payer moins","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que prévoir en cas de coupure d''Internet chez la cliente ?', '["Rien","Changer d''outil","Un plan B, comme l''export des commandes du jour","Fermer la boulangerie"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Que comprend la garantie de 30 jours ?', '["De nouvelles fonctions illimitées","L''abonnement à vie","Rien","La correction des bugs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Combien de projets en ligne pour un portfolio no-code de départ ?', '["3","1 seul sans vidéo","0","30"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel canal permet la sous-traitance de sites Webflow ?', '["Personne","Les concurrents directs uniquement","Les banques","Les agences web et no-code"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'À qui appartiennent l''application et les données après paiement ?', '["Au freelance","À personne","Au client","À la plateforme"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Uniquement des chèques étrangers","Aucun","Mobile Money ou virement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-f', 'Quelle évolution permet de couvrir ce que le no-code ne fait pas ?', '["Développeur front-end ou back-end","Traducteur","Correcteur","Monteur vidéo"]'::jsonb, 0);
 
 -- edu-0-a
 delete from public.exam_questions where course_id = 'edu-0-a';

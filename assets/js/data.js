@@ -2493,6 +2493,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-4-f": {
+  "hours": 16,
+  "description": "Le développeur no-code construit des sites, des applications et des outils fonctionnels avec des plateformes visuelles, sans écrire de code. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs, des PME et des agences, à Madagascar et à l'étranger, avec Webflow, Bubble et Glide : histoires d'utilisateur, données, mise en page, logique, droits d'accès, tests, livraison et maintenance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le no-code et savoir quand il convient",
+   "Transformer un besoin en histoires d'utilisateur, données et écrans",
+   "Décrire une logique et configurer des droits d'accès",
+   "Construire avec Webflow, Glide et Bubble",
+   "Mener un projet complet : cadrage, construction, tests, formation, documentation",
+   "Chiffrer un projet, expliquer les abonnements et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de développeur no-code depuis Madagascar",
+    "summary": "No-code et low-code, Webflow, Bubble et Glide, les tâches du métier, quand le no-code convient ou non, les clients et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les principaux outils",
+     "Ce que fait un développeur no-code",
+     "Quand le no-code convient… et quand il ne convient pas",
+     "Qui sont vos clients ?",
+     "Votre poste de travail et votre plan d'apprentissage",
+     "Exercice pratique : penser no-code"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : besoins, données, mise en page, logique et droits",
+    "summary": "Histoires d'utilisateur et priorités, tables reliées et types de champs, boîtes et points de rupture, règles quand, si, alors, et droits d'accès au niveau des données.",
+    "sections": [
+     "Du besoin aux fonctions",
+     "Concevoir les données",
+     "La mise en page web",
+     "La logique : événements, conditions, actions",
+     "Les droits d'accès",
+     "Exercice pratique : concevoir une application"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Webflow, Glide, Bubble et offres payantes",
+    "summary": "Structure, classes, points de rupture et collections de Webflow, application Glide à partir d'un tableur, design, workflows et confidentialité dans Bubble, choix de l'outil et offres payantes.",
+    "sections": [
+     "Webflow : des sites professionnels",
+     "Glide : une application à partir de données",
+     "Bubble : une application web complète",
+     "Choisir le bon outil",
+     "Les offres payantes",
+     "Exercice pratique : vos trois premiers projets"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : l'application de Mofo Gasy Express",
+    "summary": "Cadrage, construction en 4 semaines, règles de commande, liste de contrôle en 8 tests, formation, guide et documentation, garantie et maintenance.",
+    "sections": [
+     "Le cas pratique : « Mofo Gasy Express »",
+     "Étape 1 : cadrer",
+     "Étape 2 : construire par étapes",
+     "Étape 3 : tester",
+     "Étape 4 : livrer, former, documenter",
+     "Étape 5 : prévoir la maintenance",
+     "Exercice pratique : le projet Mofo Gasy Express"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avec vidéos, 5 canaux, chiffrage avec marge, devis en 8 points avec les abonnements, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Chiffrer un projet",
+     "Le devis",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-0-a": {
   "hours": 16,
   "description": "Ce niveau Avancé fait du professeur de langue en ligne un professionnel qui vend des résultats : spécialité (examens, langue professionnelle, enfants, groupes, entreprises, malgache), bilan sur 5 compétences et objectifs SMART, Zoom Pro et outils de suivi, programmes, grilles d'évaluation, correction écrite et préparation d'examens, enseignement international avec protection des enfants et des données, puis groupes, entreprises, ressources et petite école en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
