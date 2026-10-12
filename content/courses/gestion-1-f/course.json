@@ -1,0 +1,97 @@
+{
+  "id": "gestion-1-f",
+  "hours": 14,
+  "description": "Le gestionnaire de boutique en ligne fait fonctionner une boutique au quotidien : catalogue, stocks, commandes, livraisons, retours, promotions et chiffres. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer des boutiques Shopify et WooCommerce pour des marques francophones et des commerces malgaches, en télétravail. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les 8 tâches d'une semaine type",
+    "Construire des fiches produits complètes et suivre le cycle d'une commande",
+    "Gérer les stocks, les promotions rentables et les retours",
+    "Administrer une boutique Shopify ou WooCommerce et importer des produits en CSV",
+    "Mener une semaine de gestion complète et rédiger un rapport utile",
+    "Vendre des forfaits mensuels et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de gestionnaire de boutique en ligne depuis Madagascar",
+      "summary": "Ce que fait le métier, gestionnaire ou développeur, les 8 tâches d'une semaine, les clients, les plateformes, les qualités et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un gestionnaire de boutique en ligne ?", "options": ["Faire fonctionner la boutique au quotidien", "Construire le thème de la boutique", "Fabriquer les produits", "Livrer les colis"], "correct": 0 },
+        { "q": "Pourquoi vérifier la boutique sur un téléphone ?", "options": ["La majorité des achats se font sur téléphone", "Pour jouer", "Ce n'est pas utile", "Pour changer les prix"], "correct": 0 },
+        { "q": "Que faut-il prévoir pour chaque code de réduction ?", "options": ["Une date de fin", "Aucune limite", "Un prix à zéro", "Un mot de passe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : fiches produits, commandes, stocks, promotions et chiffres",
+      "summary": "La fiche produit complète et le SKU, le cycle d'une commande, le seuil de réapprovisionnement, les promotions rentables, les retours et les 6 indicateurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "4 ventes par jour, 10 jours de délai, 8 de sécurité : quel seuil de réapprovisionnement ?", "options": ["48", "40", "22", "14"], "correct": 0 },
+        { "q": "2 640 € pour 48 commandes : quel panier moyen ?", "options": ["55 €", "48 €", "2 640 €", "126 €"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un SKU ?", "options": ["Une référence unique pour chaque variante", "Un code de réduction", "Un transporteur", "Un type de photo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Shopify, WooCommerce, imports CSV et applications",
+      "summary": "Accès d'équipe, produits, commandes, clients, réductions et statistiques dans Shopify et WooCommerce, imports CSV, et choix des applications payantes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel rôle donner dans WooCommerce au gestionnaire ?", "options": ["Gestionnaire de la boutique (Shop manager)", "Administrateur", "Aucun compte", "Le compte du propriétaire"], "correct": 0 },
+        { "q": "Que faire avant un import CSV qui modifie des produits ?", "options": ["Un export de sauvegarde", "Rien", "Supprimer tous les produits", "Changer de plateforme"], "correct": 0 },
+        { "q": "Que se passe-t-il quand on traite une commande Shopify avec un numéro de suivi ?", "options": ["Le client reçoit un e-mail automatiquement", "La commande est supprimée", "Le client est remboursé", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une semaine de gestion de boutique",
+      "summary": "Semaine organisée, mise en ligne d'une collection, procédures de commandes et de retours, promotion de la fête des mères et rapport hebdomadaire.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de produits importer d'abord pour tester ?", "options": ["Environ 3", "Tous", "Aucun", "100"], "correct": 0 },
+        { "q": "Que faire avant de lancer une promotion ?", "options": ["La tester avec une commande de test", "Rien", "Supprimer les autres produits", "Doubler les prix"], "correct": 0 },
+        { "q": "Beaucoup de retours pour « taille plus petite qu'attendu ». Que proposer ?", "options": ["Améliorer la fiche : dimensions et photo en situation", "Supprimer le produit", "Refuser les retours", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio, 5 canaux, forfaits mensuels et prestations ponctuelles, contrat en 8 points, paiements et fidélisation.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "40 heures à 12 000 Ar de l'heure font…", "options": ["480 000 Ar", "48 000 Ar", "120 000 Ar", "4 800 000 Ar"], "correct": 0 },
+        { "q": "Qui décide des prix et des gros remboursements ?", "options": ["Le commerçant, selon le contrat", "Le gestionnaire seul", "Le client final", "Le transporteur"], "correct": 0 },
+        { "q": "Quel avantage pour une marque de produits malgaches ?", "options": ["Vous connaissez les produits et leur histoire", "Vous ne parlez pas français", "Vous ne connaissez pas Shopify", "Aucun"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle différence entre gestionnaire et développeur de boutique ?", "options": ["Le gestionnaire fait vivre la boutique chaque jour, le développeur la construit", "Il n'y en a aucune", "Le gestionnaire écrit le code", "Le développeur prépare les colis"], "correct": 0 },
+    { "q": "Combien de photos prévoir par produit ?", "options": ["4 à 6, dans le même format", "Une seule floue", "Aucune", "50"], "correct": 0 },
+    { "q": "Quand afficher un prix barré ?", "options": ["Seulement si la réduction est réelle", "Toujours", "Pour tromper le client", "Jamais"], "correct": 0 },
+    { "q": "Que faire d'une commande suspecte ?", "options": ["Prévenir le commerçant avant d'expédier", "L'expédier immédiatement", "La supprimer sans rien dire", "La rembourser deux fois"], "correct": 0 },
+    { "q": "À quelle étape ajoute-t-on le numéro de suivi ?", "options": ["À l'expédition", "À la commande", "Au retour", "Jamais"], "correct": 0 },
+    { "q": "À quoi sert le stock de sécurité ?", "options": ["Éviter la rupture si les ventes ou le délai dépassent les prévisions", "Augmenter les prix", "Décorer la boutique", "Rien"], "correct": 0 },
+    { "q": "Un savon à 8 € coûte 3 €. Quelle marge avec −20 % ?", "options": ["3,40 €", "5 €", "1 €", "6,40 €"], "correct": 0 },
+    { "q": "Quelle promotion augmente le panier moyen ?", "options": ["La livraison offerte dès un montant", "Un prix barré faux", "Supprimer la livraison", "Fermer la boutique"], "correct": 0 },
+    { "q": "Pourquoi noter le motif de chaque retour ?", "options": ["Pour corriger les fiches si un motif revient souvent", "Pour punir le client", "Ce n'est pas utile", "Pour le transporteur"], "correct": 0 },
+    { "q": "Comment calcule-t-on le taux de conversion ?", "options": ["Commandes ÷ visites × 100", "Visites ÷ commandes", "Chiffre d'affaires ÷ visites", "Retours ÷ commandes"], "correct": 0 },
+    { "q": "160 paniers créés et 48 commandes : quel taux d'abandon ?", "options": ["70 %", "30 %", "48 %", "112 %"], "correct": 0 },
+    { "q": "Comment obtenir l'accès à une boutique Shopify ?", "options": ["Comme membre de l'équipe avec des droits limités", "Avec le mot de passe du propriétaire", "En créant une autre boutique", "Par SMS"], "correct": 0 },
+    { "q": "À quoi sert le « coût par article » dans Shopify ?", "options": ["Calculer la marge", "Changer la devise", "Créer un code promo", "Exporter les clients"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une collection automatique ?", "options": ["Une collection remplie selon des règles", "Une collection vide", "Un code de réduction", "Un type de livraison"], "correct": 0 },
+    { "q": "Que signifie souvent le statut WooCommerce « En cours » ?", "options": ["Paiement reçu, commande à préparer", "Commande livrée", "Commande annulée", "Commande remboursée"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un fichier CSV ?", "options": ["Un fichier texte en colonnes pour importer ou exporter des données", "Une image", "Une vidéo", "Un contrat"], "correct": 0 },
+    { "q": "Combien d'applications conseiller ?", "options": ["Peu, choisies avec soin", "Le plus possible", "Toutes les applications payantes", "Aucune, jamais"], "correct": 0 },
+    { "q": "Quand traiter les commandes pour un commerçant en France ?", "options": ["Tôt le matin, heure de France, pour un départ dans la journée", "Une fois par semaine", "Le soir très tard seulement", "Jamais"], "correct": 0 },
+    { "q": "Que préparer pour Élodie chaque jour ?", "options": ["La liste de préparation des commandes", "Un nouveau logo", "Une facture", "Un contrat"], "correct": 0 },
+    { "q": "Quelle est la première étape de la promotion de la fête des mères ?", "options": ["Choisir l'offre avec le commerçant en vérifiant la marge", "Créer la bannière", "Envoyer l'e-mail", "Lancer sans réfléchir"], "correct": 0 },
+    { "q": "Que contient le rapport hebdomadaire ?", "options": ["Chiffres, actions, produits, problèmes, propositions", "Seulement la facture", "Des photos de vacances", "Rien"], "correct": 0 },
+    { "q": "Quelle formule inclut les promotions et un rapport hebdomadaire ?", "options": ["Croissance", "Essentiel", "Aucune", "Une formule gratuite"], "correct": 0 },
+    { "q": "Que doit préciser le contrat sur les décisions ?", "options": ["Qui décide des prix, promotions et remboursements", "Rien", "Le salaire du client", "La couleur de la boutique"], "correct": 0 },
+    { "q": "Que préparer à l'avance pour garder un client ?", "options": ["Les saisons : soldes, fêtes, Black Friday, Noël", "Rien", "Les excuses", "Une augmentation surprise"], "correct": 0 },
+    { "q": "Quel contenu valorise les produits d'artisans malgaches ?", "options": ["Les artisans et le savoir-faire, avec leur accord", "Des photos volées", "Des avis inventés", "Rien"], "correct": 0 }
+  ]
+}

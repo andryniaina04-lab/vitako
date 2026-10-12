@@ -85,7 +85,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
-  ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, false),
+  ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, false),
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
@@ -8761,6 +8761,671 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures ?', '["Pour travailler moins","Parce que c''est obligatoire","Les clients préfèrent un forfait mensuel payé d''avance","Pour éviter de suivre son temps"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Qu''elles sont interdites","Rien","Qu''elles sont facturées en plus, au même tarif","Qu''elles sont gratuites"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel moyen de paiement utiliser avec un client local à Madagascar ?', '["Uniquement des espèces par la poste","Uniquement PayPal","Mobile Money ou virement bancaire","Un chèque étranger"]'::jsonb, 2);
+
+-- gestion-1-f
+delete from public.exam_questions where course_id = 'gestion-1-f';
+delete from public.module_questions where course_id = 'gestion-1-f';
+delete from public.lessons where course_id = 'gestion-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-f', 0, 'Le métier de gestionnaire de boutique en ligne depuis Madagascar', 'Ce que fait le métier, gestionnaire ou développeur, les 8 tâches d''une semaine, les clients, les plateformes, les qualités et le poste de travail.', 'Une boutique en ligne ne tourne pas toute seule. Chaque jour, il faut ajouter des produits, mettre à jour les prix et les stocks, traiter les commandes, suivre les livraisons, gérer les retours, lancer des promotions et regarder les chiffres. Le gestionnaire de boutique en ligne s''occupe de tout cela, souvent à distance, pour un ou plusieurs commerçants. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un gestionnaire de boutique en ligne.
+> 2. Décrire les 8 tâches d''une semaine type.
+> 3. Distinguer ce métier de celui de développeur de boutique.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre organisation.
+
+## Le métier en une phrase
+
+Un gestionnaire de boutique en ligne **fait fonctionner une boutique au quotidien pour qu''elle vende plus, sans erreur de prix, de stock ou de commande**.
+
+Le commerçant se concentre sur ses produits, ses fournisseurs et sa marque ; vous vous occupez de la boutique en ligne : catalogue, commandes, clients, promotions et chiffres.
+
+> [!definition] E-commerce
+> Le commerce en ligne : la vente de produits ou de services sur Internet, avec un catalogue, un panier, un paiement et une livraison.
+
+## Gestionnaire ou développeur ?
+
+| | **Développeur de boutique** | **Gestionnaire de boutique** |
+| --- | --- | --- |
+| Rôle | Construit la boutique : thème, fonctions, réglages techniques | Fait vivre la boutique chaque jour |
+| Fréquence | Surtout au lancement, puis ponctuellement | Chaque jour ou chaque semaine |
+| Compétences | Technique, code, intégration | Organisation, rigueur, sens du commerce |
+| Exemple de tâche | Créer le modèle de page produit | Ajouter 30 nouveaux produits et corriger les prix |
+
+Les deux métiers se complètent. Pour la construction d''une boutique, voir la formation « Développeur WordPress et Shopify ».
+
+## Une semaine type : les 8 tâches
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Catalogue** | Ajouter les nouveautés : photos, descriptions, prix, variantes |
+| 2 | **Stocks** | Mettre à jour les quantités, signaler les ruptures |
+| 3 | **Commandes** | Vérifier les nouvelles commandes, les transmettre à la préparation, suivre les expéditions |
+| 4 | **Livraisons et retours** | Répondre aux questions de suivi, traiter les retours et remboursements |
+| 5 | **Service client** | Répondre aux e-mails et messages des clients |
+| 6 | **Promotions** | Créer les codes de réduction, préparer les soldes et les fêtes |
+| 7 | **Qualité de la boutique** | Vérifier les liens, les images, les prix barrés, les pages |
+| 8 | **Chiffres** | Suivre les ventes, le panier moyen, les produits qui marchent, rédiger un rapport |
+
+## Qui sont vos clients ?
+
+### À l''étranger
+
+1. **Petites marques en ligne** (France, Belgique, Canada) : cosmétiques, mode, décoration, épicerie fine.
+2. **Boutiques en dropshipping ou en impression à la demande** : beaucoup de produits à gérer.
+3. **Marques qui vendent des produits de Madagascar** (vanille, épices, huiles, artisanat) et ont besoin de quelqu''un qui connaît les produits.
+
+### À Madagascar
+
+1. **Boutiques qui passent de Facebook à un vrai site** : elles ont besoin d''aide pour organiser le catalogue et les commandes.
+2. **Marques malgaches qui exportent** et vendent en ligne à l''étranger.
+3. **Commerces qui ouvrent une boutique en ligne** avec livraison à Antananarivo.
+
+> [!madagascar] Votre avantage
+> Les produits malgaches (vanille, raphia, pierres, épices, cosmétiques naturels) se vendent bien en ligne à l''étranger. Un gestionnaire qui connaît ces produits, leur histoire et leur vocabulaire rédige de meilleures fiches et répond mieux aux questions des clients. Et votre décalage horaire permet de traiter les commandes de la nuit européenne avant le réveil du commerçant.
+
+## Les plateformes de boutique
+
+| Plateforme | Principe | Points à retenir |
+| --- | --- | --- |
+| **Shopify** | Boutique en ligne avec abonnement, hébergement inclus | Très répandu, simple à gérer au quotidien |
+| **WooCommerce** | Extension de boutique pour WordPress | Gratuit, très flexible, demande un hébergement |
+| **Autres** | Plateformes de vente, places de marché | Selon les clients |
+
+Ce cours s''appuie surtout sur **Shopify** et **WooCommerce** : les principes sont les mêmes ailleurs.
+
+## Les qualités demandées
+
+1. **Rigueur** : une erreur de prix ou de stock coûte de l''argent.
+2. **Organisation** : beaucoup de petites tâches chaque jour.
+3. **Sens du commerce** : comprendre ce qui fait acheter.
+4. **Écrit soigné** : fiches produits et réponses aux clients.
+5. **Aisance avec les tableurs** : imports, exports, suivis.
+6. **Discrétion** : vous voyez les chiffres et les données des clients.
+
+## Le poste de travail
+
+1. Un **ordinateur** et une **connexion stable**.
+2. Un **téléphone** pour vérifier la boutique comme un client (la majorité des achats se font sur téléphone).
+3. Un **tableur** (Google Sheets) pour les imports, suivis et rapports.
+4. Un **outil de retouche simple** pour les photos (Canva, Photopea).
+5. Un **gestionnaire de mots de passe** pour les accès des boutiques.
+
+> [!astuce]
+> Commandez de temps en temps sur la boutique de votre client (avec un produit test ou un code à 100 % prévu pour les tests) : vous verrez exactement ce que vit un client, du panier à l''e-mail de confirmation.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Modifier un prix sans vérifier la marge avec le commerçant.
+> - Oublier de mettre à jour le stock : des clients achètent un produit épuisé.
+> - Créer un code de réduction sans date de fin.
+> - Ne jamais regarder la boutique sur un téléphone.
+
+> [!retenir]
+> - Le gestionnaire fait vivre la boutique au quotidien.
+> - 8 tâches : catalogue, stocks, commandes, livraisons et retours, service client, promotions, qualité, chiffres.
+> - Shopify et WooCommerce sont les deux plateformes principales.
+> - Rigueur, organisation et sens du commerce sont vos premières qualités.
+
+## Exercice pratique : analyser 3 boutiques
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez 3 boutiques en ligne de produits malgaches ou de petites marques francophones.
+> 2. Pour chacune, notez sur téléphone : clarté des fiches produits, qualité des photos, informations de livraison et de retour, facilité du panier.
+> 3. Repérez 3 erreurs ou manques par boutique (prix incohérents, produit épuisé encore en vente, description vide…).
+> 4. Pour chaque boutique, proposez 3 améliorations que vous pourriez faire en tant que gestionnaire.
+>
+> **À livrer** : votre tableau d''analyse des 3 boutiques avec 9 erreurs et 9 améliorations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 0, 0, 'Quel est le rôle principal d''un gestionnaire de boutique en ligne ?', '["Faire fonctionner la boutique au quotidien","Construire le thème de la boutique","Livrer les colis","Fabriquer les produits"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 0, 1, 'Pourquoi vérifier la boutique sur un téléphone ?', '["Pour changer les prix","Pour jouer","La majorité des achats se font sur téléphone","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 0, 2, 'Que faut-il prévoir pour chaque code de réduction ?', '["Un mot de passe","Un prix à zéro","Une date de fin","Aucune limite"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-f', 1, 'Les bases : fiches produits, commandes, stocks, promotions et chiffres', 'La fiche produit complète et le SKU, le cycle d''une commande, le seuil de réapprovisionnement, les promotions rentables, les retours et les 6 indicateurs.', 'Une boutique en ligne repose sur quelques notions de base : la fiche produit, le cycle d''une commande, la gestion des stocks, les promotions, les retours et les chiffres qui disent si la boutique se porte bien. Ce module vous donne ces bases, avec des exemples et des calculs simples.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une fiche produit complète.
+> 2. Suivre le cycle d''une commande, du paiement à la livraison.
+> 3. Gérer les stocks avec un seuil de réapprovisionnement.
+> 4. Créer des promotions rentables.
+> 5. Calculer les 6 indicateurs essentiels d''une boutique.
+
+## La fiche produit complète
+
+| Élément | Règle | Exemple |
+| --- | --- | --- |
+| **Titre** | Clair, avec le mot que le client cherche | « Gousses de vanille Bourbon de Madagascar – 10 gousses » |
+| **Photos** | 4 à 6, fond uni, détails, produit en situation, même format | Gousses, gousse ouverte, emballage, en cuisine |
+| **Prix** | Correct, avec le prix barré seulement si la réduction est réelle | 24,90 € |
+| **Description** | Bénéfices, caractéristiques, conseils d''utilisation, origine | Arôme, longueur, conservation, région de la SAVA |
+| **Variantes** | Taille, couleur, quantité, chacune avec son stock | 5, 10 ou 25 gousses |
+| **Référence (SKU)** | Un code unique par variante | VAN-BOU-10 |
+| **Poids** | Pour calculer la livraison | 60 g |
+| **Catégorie et collections** | Pour que le client trouve le produit | Épices > Vanille ; Collection « Idées cadeaux » |
+| **Informations légales** | Selon le produit : ingrédients, précautions | Cosmétiques : liste des ingrédients |
+
+> [!definition] SKU (référence)
+> *Stock Keeping Unit* : un code unique qui identifie chaque variante d''un produit dans le stock. Il évite les confusions entre des produits qui se ressemblent.
+
+> [!astuce] Une convention de SKU
+> Choisissez une règle simple et appliquez-la partout : CATÉGORIE-PRODUIT-VARIANTE. Exemple : RAP-PAN-M (raphia, panier, taille M). Tout le monde comprend la référence sans regarder la fiche.
+
+## Le cycle d''une commande
+
+| Étape | Ce qui se passe | Votre rôle |
+| --- | --- | --- |
+| **1. Commande passée** | Le client paie, il reçoit un e-mail de confirmation | Vérifier qu''il n''y a pas d''anomalie (adresse incomplète, commande suspecte) |
+| **2. Préparation** | Le produit est préparé et emballé (par le commerçant, un entrepôt ou un fournisseur) | Transmettre la commande, vérifier le stock |
+| **3. Expédition** | Le colis part, un numéro de suivi est créé | Marquer la commande comme expédiée avec le numéro de suivi : le client est prévenu |
+| **4. Livraison** | Le client reçoit le colis | Suivre les colis en retard |
+| **5. Après-vente** | Questions, retours, avis | Répondre, traiter les retours, demander un avis |
+
+> [!definition] Commande suspecte
+> Une commande qui présente des signes de fraude : adresse de livraison très éloignée de l''adresse de facturation, plusieurs tentatives de paiement échouées, montant inhabituel. Les plateformes signalent souvent un niveau de risque : en cas de doute, prévenez le commerçant **avant** d''expédier.
+
+## Gérer les stocks
+
+### Le seuil de réapprovisionnement
+
+> [!definition] Seuil de réapprovisionnement
+> La quantité en stock à partir de laquelle il faut recommander, pour ne pas tomber en rupture pendant le délai du fournisseur.
+
+> [!exemple] Calcul
+> Une boutique vend en moyenne **4 paniers en raphia par jour**. Le fournisseur d''Antananarivo met **10 jours** à produire et expédier une nouvelle commande. On garde **8 paniers** de sécurité.
+> Seuil = 4 × 10 + 8 = **48 paniers**. Quand le stock descend à 48, on recommande.
+
+### Les bonnes pratiques
+
+1. **Mettez à jour** le stock à chaque réception de marchandise.
+2. **Activez** le suivi des stocks sur chaque variante.
+3. **Décidez** avec le commerçant : un produit épuisé est-il masqué, affiché « épuisé », ou en précommande ?
+4. **Faites un inventaire** régulier : le stock réel correspond-il au stock affiché ?
+
+## Les promotions
+
+### Les types de promotions
+
+| Type | Exemple | Pour quoi |
+| --- | --- | --- |
+| **Code de réduction** | BIENVENUE10 : −10 % sur la première commande | Faire acheter les nouveaux visiteurs |
+| **Réduction automatique** | −15 % sur la collection « Été » | Écouler un stock, soldes |
+| **Livraison offerte** | Dès 50 € d''achat | Augmenter le panier moyen |
+| **Lot** | 2 savons achetés, le 3e offert | Faire acheter plus d''articles |
+| **Cadeau** | Un échantillon offert dès 40 € | Faire découvrir un produit |
+
+### Vérifier qu''une promotion est rentable
+
+> [!exemple] Rentable ou pas ?
+> Un savon est vendu 8 €. Il coûte 3 € au commerçant (achat, transport). Sa marge est de 5 €.
+> - Avec −20 % : prix 6,40 €, marge 3,40 €. **Rentable** si la promotion fait vendre plus.
+> - Avec −50 % : prix 4 €, marge 1 €. Rentable seulement si le volume augmente beaucoup, ou pour écouler un stock.
+
+Chaque promotion a une **date de début**, une **date de fin** et des **conditions** claires.
+
+## Les retours et remboursements
+
+1. **La politique de retour** est écrite sur la boutique : délai, état du produit, qui paie le retour.
+2. **Vérifiez** la demande : commande, délai, motif.
+3. **Donnez** les instructions de retour.
+4. **À la réception**, vérifiez l''état du produit, remettez-le en stock s''il est revendable.
+5. **Remboursez** selon la politique, et prévenez le client.
+6. **Notez le motif** : si beaucoup de retours ont le même motif (taille trop petite, couleur différente de la photo), il faut corriger la fiche produit.
+
+## Les 6 indicateurs essentiels
+
+| Indicateur | Calcul | Ce qu''il dit |
+| --- | --- | --- |
+| **Chiffre d''affaires** | Somme des ventes | Combien la boutique vend |
+| **Nombre de commandes** | — | L''activité |
+| **Panier moyen** | Chiffre d''affaires ÷ nombre de commandes | Combien dépense un client en moyenne |
+| **Taux de conversion** | Commandes ÷ visites × 100 | La part des visiteurs qui achètent |
+| **Taux d''abandon de panier** | Paniers abandonnés ÷ paniers créés × 100 | La part des clients qui partent avant de payer |
+| **Taux de retour** | Commandes retournées ÷ commandes × 100 | La satisfaction et la qualité des fiches |
+
+> [!exemple] Une semaine de boutique
+> 3 200 visites, 48 commandes, 2 640 € de chiffre d''affaires, 160 paniers créés.
+> - Panier moyen : 2 640 ÷ 48 = **55 €**
+> - Taux de conversion : 48 ÷ 3 200 × 100 = **1,5 %**
+> - Paniers abandonnés : 160 − 48 = 112 → taux d''abandon : 112 ÷ 160 × 100 = **70 %**
+>
+> *(Chiffres donnés en exemple.)*
+
+> [!madagascar]
+> Pour une boutique qui livre à Antananarivo avec paiement à la livraison ou par Mobile Money, les étapes changent un peu : confirmation de la commande par téléphone ou message, paiement à la réception ou vérification de la référence Mobile Money avant l''envoi. Notez ces étapes dans une procédure claire.
+
+> [!retenir]
+> - Une fiche produit complète : titre, photos, prix, description, variantes, SKU, poids, catégorie.
+> - Commande : passée, préparée, expédiée avec suivi, livrée, après-vente.
+> - Seuil de réapprovisionnement = ventes par jour × délai + stock de sécurité.
+> - Une promotion doit rester rentable et avoir des dates.
+> - Chiffre d''affaires, commandes, panier moyen, conversion, abandon, retours.
+
+## Exercice pratique : les bases d''une boutique
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez 3 fiches produits complètes pour des produits malgaches (raphia, épices, cosmétiques), avec SKU selon une convention.
+> 2. Calculez le seuil de réapprovisionnement pour 2 produits (ventes, délai, sécurité au choix).
+> 3. Imaginez 3 promotions et vérifiez leur rentabilité avec une marge que vous fixez.
+> 4. Calculez les 6 indicateurs pour une boutique avec : 5 000 visites, 90 commandes, 4 950 € de chiffre d''affaires, 300 paniers créés, 6 retours.
+>
+> **À livrer** : vos 3 fiches, vos calculs de seuils, vos 3 promotions vérifiées et vos 6 indicateurs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 1, 0, '4 ventes par jour, 10 jours de délai, 8 de sécurité : quel seuil de réapprovisionnement ?', '["14","22","40","48"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 1, 1, '2 640 € pour 48 commandes : quel panier moyen ?', '["55 €","48 €","126 €","2 640 €"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 1, 2, 'Qu''est-ce qu''un SKU ?', '["Un code de réduction","Un type de photo","Une référence unique pour chaque variante","Un transporteur"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-f', 2, 'Les outils : Shopify, WooCommerce, imports CSV et applications', 'Accès d''équipe, produits, commandes, clients, réductions et statistiques dans Shopify et WooCommerce, imports CSV, et choix des applications payantes.', 'Ce module vous fait prendre en main l''administration d''une boutique **Shopify** et d''une boutique **WooCommerce** : produits, commandes, clients, réductions, statistiques, et l''import de nombreux produits avec un tableur. Vous découvrez aussi les abonnements et applications payants, et quand ils valent la peine.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Obtenir un accès d''équipe à la boutique d''un client.
+> 2. Gérer produits, commandes, clients et réductions dans Shopify.
+> 3. Faire les mêmes opérations dans WooCommerce.
+> 4. Importer et modifier des dizaines de produits avec un fichier CSV.
+> 5. Lire les statistiques de la boutique.
+> 6. Savoir quand une application payante est utile.
+
+## Les outils
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Administration Shopify** | Gérer produits, stocks, commandes, clients, réductions, statistiques |
+| 2 | **Administration WooCommerce** (tableau de bord WordPress) | Les mêmes fonctions pour une boutique WordPress |
+| 3 | **Application mobile** de la plateforme | Suivre les commandes en déplacement |
+| 4 | **Google Sheets** | Imports, exports, suivis, rapports |
+| 5 | **Canva** ou **Photopea** | Recadrer et uniformiser les photos produits |
+
+Pour vous entraîner sur Shopify, créez une **boutique de développement** gratuite avec le programme Shopify Partners. Pour WooCommerce, utilisez **LocalWP** sur votre ordinateur.
+
+## L''accès d''équipe
+
+1. **Shopify** : le commerçant vous ajoute comme **membre de l''équipe** (ou comme collaborateur depuis un compte partenaire), avec **seulement les droits nécessaires** : produits, commandes, clients, réductions. Pas d''accès aux paiements ni aux réglages sensibles si ce n''est pas utile.
+2. **WooCommerce** : le commerçant crée un compte avec le rôle **Gestionnaire de la boutique** (*Shop manager*), et non administrateur.
+
+> [!attention]
+> Ne demandez jamais le mot de passe du propriétaire. Un compte personnel avec des droits limités protège le commerçant… et vous.
+
+## Shopify : les opérations du quotidien
+
+### Les produits
+
+1. **Produits → Ajouter un produit** : titre, description, médias, prix, prix barré (« prix avant réduction »), coût par article, stock, SKU, poids, variantes.
+2. **Coût par article** : indiquez le coût d''achat ; Shopify calcule alors la **marge**.
+3. **Statut** : brouillon tant que la fiche n''est pas complète, puis actif.
+4. **Collections** : manuelles (vous choisissez les produits) ou automatiques (selon des règles : « tous les produits avec l''étiquette raphia »).
+5. **Modification en masse** : sélectionnez plusieurs produits pour changer en une fois le stock, le prix ou les étiquettes.
+
+### Les commandes
+
+1. **Commandes** : la liste avec le statut de paiement et de traitement.
+2. Ouvrez une commande pour voir : articles, client, adresse, notes, niveau de risque de fraude.
+3. **Traiter** la commande (*fulfill*) : ajoutez le transporteur et le **numéro de suivi** ; le client reçoit automatiquement un e-mail.
+4. **Rembourser** : bouton de remboursement, partiel ou total, avec remise en stock si l''article revient.
+5. **Brouillons de commande** : créer une commande pour un client qui a commandé par téléphone ou message.
+
+### Les clients
+
+La fiche client montre l''historique des commandes, le total dépensé et les notes. Respectez la **confidentialité** : ces données ne servent qu''à la gestion de la boutique.
+
+### Les réductions
+
+**Réductions → Créer une réduction** : code ou automatique ; pourcentage, montant fixe, livraison offerte, « achetez X, obtenez Y » ; conditions (montant minimum, produits concernés, nombre d''utilisations) ; **dates de début et de fin**.
+
+### Les statistiques
+
+Le tableau de bord **Statistiques** (*Analytics*) montre : ventes, sessions, taux de conversion, panier moyen, produits les plus vendus, sources de trafic. Des rapports plus détaillés sont disponibles selon l''abonnement.
+
+## WooCommerce : les mêmes opérations
+
+| Opération | Où |
+| --- | --- |
+| Produits, variantes, stocks | **Produits → Ajouter** ; onglet « Inventaire » pour le SKU et le stock ; type « Produit variable » pour les variantes |
+| Commandes | **WooCommerce → Commandes** ; changer le statut (en attente, en cours, terminée, remboursée) ; ajouter une note au client |
+| Clients | **WooCommerce → Clients** |
+| Codes de réduction | **Marketing → Codes promo** |
+| Statistiques | **Analytics** (ou **Rapports** selon la version) |
+
+> [!astuce]
+> Dans WooCommerce, une commande « En cours » signifie en général que le paiement est reçu et qu''elle doit être préparée. Passez-la à « Terminée » une fois expédiée. Ajoutez le numéro de suivi en **note au client** si aucune extension de suivi n''est installée.
+
+## Importer des produits avec un fichier CSV
+
+Ajouter 100 produits un par un prend des heures. Avec un **fichier CSV**, on les importe en quelques minutes.
+
+### La méthode en 6 étapes
+
+1. **Exportez** quelques produits existants : vous obtenez un fichier avec les **bonnes colonnes** (le format attendu par la plateforme).
+2. **Ouvrez-le** dans Google Sheets.
+3. **Remplissez** une ligne par produit (et par variante), en respectant exactement les colonnes : titre, description, prix, SKU, stock, poids, images (liens), etc.
+4. **Vérifiez** : pas de cellule vide obligatoire, prix avec un point ou une virgule selon le format attendu, SKU uniques.
+5. **Importez d''abord 3 produits** pour tester, puis vérifiez-les sur la boutique.
+6. **Importez le reste**, puis vérifiez un échantillon de fiches.
+
+> [!definition] CSV
+> Un fichier texte où chaque ligne est un enregistrement et où les colonnes sont séparées par une virgule ou un point-virgule. Les plateformes l''utilisent pour importer et exporter des produits, des clients ou des commandes.
+
+> [!attention]
+> Un import peut **remplacer** des informations existantes. Faites toujours un **export de sauvegarde** avant un import qui modifie des produits existants.
+
+## Les abonnements et applications payants
+
+| Élément payant | Ce qu''il apporte | Qui décide et paie |
+| --- | --- | --- |
+| **Abonnement Shopify** | La boutique elle-même, avec des fonctions qui varient selon la formule (comptes d''équipe, rapports) | Le commerçant |
+| **Applications Shopify payantes** | Avis clients, e-mails automatiques, programme de fidélité, traduction, imports avancés | Le commerçant, sur vos conseils |
+| **Extensions WooCommerce payantes** | Suivi des colis, abonnements, réservations, fonctions avancées | Le commerçant |
+
+### Conseiller une application : 5 questions
+
+1. Quel **problème** règle-t-elle, et combien ce problème coûte-t-il aujourd''hui ?
+2. Existe-t-il une **solution gratuite** ou intégrée ?
+3. L''application est-elle **bien notée** et **mise à jour** ?
+4. Ralentit-elle la boutique ?
+5. Quel est son **coût mensuel**, comparé au gain espéré ?
+
+Les prix changent : vérifiez-les sur les sites officiels. Trop d''applications ralentissent la boutique et coûtent cher : conseillez-en **peu**, et supprimez celles qui ne servent plus.
+
+> [!madagascar]
+> L''abonnement Shopify et les applications se paient en devises par carte bancaire internationale. Pour un commerçant malgache sans carte, WooCommerce avec un hébergement local ou des solutions gratuites peut être plus adapté : vérifiez avec lui avant de recommander une plateforme.
+
+> [!retenir]
+> - Un accès d''équipe avec des droits limités, jamais le mot de passe du propriétaire.
+> - Shopify : produits et coûts, collections, commandes et suivi, remboursements, réductions datées, statistiques.
+> - WooCommerce : les mêmes opérations, avec les statuts de commande.
+> - Les imports CSV pour les gros volumes, toujours après sauvegarde et test.
+> - Peu d''applications, choisies avec 5 questions.
+
+## Exercice pratique : votre boutique d''entraînement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez une boutique de développement Shopify (ou une boutique WooCommerce locale).
+> 2. Ajoutez 5 produits complets à la main, dont 2 avec variantes, avec SKU et coût par article.
+> 3. Exportez-les, ajoutez 15 produits dans le fichier CSV, puis importez-les (3 d''abord, puis le reste).
+> 4. Créez 2 collections (une manuelle, une automatique) et 2 réductions datées.
+> 5. Passez 3 commandes de test, traitez-en une avec un numéro de suivi, remboursez-en une.
+>
+> **À livrer** : des captures de vos produits, du fichier CSV, des collections, des réductions et des commandes traitées.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 2, 0, 'Quel rôle donner dans WooCommerce au gestionnaire ?', '["Aucun compte","Gestionnaire de la boutique (Shop manager)","Le compte du propriétaire","Administrateur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 2, 1, 'Que faire avant un import CSV qui modifie des produits ?', '["Un export de sauvegarde","Supprimer tous les produits","Changer de plateforme","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 2, 2, 'Que se passe-t-il quand on traite une commande Shopify avec un numéro de suivi ?', '["Le client est remboursé","Le client reçoit un e-mail automatiquement","Rien","La commande est supprimée"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-f', 3, 'Premier projet : une semaine de gestion de boutique', 'Semaine organisée, mise en ligne d''une collection, procédures de commandes et de retours, promotion de la fête des mères et rapport hebdomadaire.', 'Dans ce module, vous gérez une boutique en ligne pendant une semaine, comme pour un vrai client : arrivée d''une nouvelle collection, commandes, stocks, retours, préparation d''une promotion pour la fête des mères, et rapport hebdomadaire. C''est le projet qui deviendra la pièce maîtresse de votre portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une semaine de gestion de boutique.
+> 2. Mettre en ligne une nouvelle collection sans erreur.
+> 3. Traiter les commandes et les retours avec une procédure.
+> 4. Préparer une promotion de A à Z.
+> 5. Rédiger un rapport hebdomadaire utile au commerçant.
+
+## Le cas pratique : « Raphia & Co »
+
+> [!exemple] Votre client
+> **Raphia & Co** est une petite marque basée en France qui vend des sacs, paniers et objets de décoration en raphia fabriqués par des artisans de Madagascar. Boutique Shopify, environ 60 produits, 15 à 25 commandes par semaine. Le stock est dans un petit entrepôt en France, géré par la fondatrice, Élodie. Elle vous confie la gestion de la boutique **10 heures par semaine**.
+> Cette semaine : arrivée de **20 nouveaux produits**, et préparation de la **fête des mères** dans 3 semaines.
+
+## La semaine organisée
+
+| Jour | Tâches principales |
+| --- | --- |
+| **Lundi** | Point avec Élodie (15 min) ; commandes du week-end ; préparation des 20 fiches dans le tableur |
+| **Mardi** | Import et vérification de la nouvelle collection ; mise à jour des stocks reçus |
+| **Mercredi** | Commandes ; retours ; réponses aux clients ; vérification de la boutique sur téléphone |
+| **Jeudi** | Préparation de la promotion fête des mères (réduction, collection, bannière, e-mail) |
+| **Vendredi** | Commandes ; inventaire rapide des 10 meilleures ventes ; rapport hebdomadaire |
+
+Chaque jour : **30 minutes** pour les commandes et les messages, idéalement tôt le matin (heure de France) pour que les colis partent dans la journée.
+
+## Mettre en ligne la nouvelle collection
+
+### Préparer les fiches dans le tableur
+
+Élodie envoie un tableau avec : nom, dimensions, matière, prix, coût, quantité, et un dossier de photos.
+
+1. **Rédigez** les titres et descriptions (bénéfices, dimensions, entretien, origine et artisans).
+2. **Créez** les SKU selon la convention de la boutique.
+3. **Préparez** les photos : même format (carré ou portrait), fond uni, nommées avec le SKU.
+4. **Ajoutez** les variantes (tailles, couleurs) et leurs stocks.
+5. **Remplissez** le fichier CSV d''import.
+
+> [!exemple] Une description de produit
+> **Panier en raphia naturel – Taille M**
+> Tressé à la main par des artisanes de la région d''Antsirabe, ce panier en raphia naturel accompagne vos courses au marché comme vos journées à la plage.
+> - Dimensions : 40 × 30 × 20 cm
+> - Anses en cuir végétal
+> - Fibre naturelle, souple et résistante
+> - Entretien : brosser à sec ; éviter l''eau
+> Chaque pièce est unique : de légères variations de couleur sont normales.
+
+### Importer et vérifier
+
+1. **Export de sauvegarde** de tous les produits.
+2. **Import test** de 3 produits, vérification sur ordinateur et téléphone.
+3. **Import** du reste.
+4. **Vérification** de chaque fiche : photos, prix, stock, variantes, collection.
+5. **Mise en avant** : ajout à la collection « Nouveautés » et à la page d''accueil.
+
+## Les commandes et les retours
+
+### La procédure quotidienne des commandes
+
+1. Filtrez les commandes **non traitées**.
+2. Vérifiez chaque commande : adresse complète, **niveau de risque**, notes du client.
+3. Préparez la **liste de préparation** pour Élodie (produits, quantités, emplacements).
+4. Dès qu''Élodie a expédié : **traitez** la commande avec le numéro de suivi.
+5. Vérifiez les commandes **anciennes non livrées** : relancez le transporteur si besoin, prévenez le client.
+
+### La procédure de retour
+
+| Étape | Action |
+| --- | --- |
+| 1 | Vérifier la demande : délai de retour, état, motif |
+| 2 | Envoyer les instructions de retour |
+| 3 | À la réception (Élodie), vérifier l''état |
+| 4 | Remettre en stock si revendable |
+| 5 | Rembourser selon la politique et prévenir le client |
+| 6 | Noter le motif dans le tableau des retours |
+
+## Préparer la promotion de la fête des mères
+
+### Le plan en 7 étapes
+
+1. **Choisir l''offre** avec Élodie, en vérifiant la marge : par exemple **−15 % sur la collection « Cadeaux »** et un **emballage cadeau offert**.
+2. **Créer la collection** « Fête des mères » (12 produits sélectionnés).
+3. **Créer la réduction** automatique, avec date de début et de fin, sur cette collection.
+4. **Vérifier les stocks** des produits de la collection ; prévenir Élodie des quantités à prévoir.
+5. **Préparer la bannière** de la page d''accueil (Canva) et le texte.
+6. **Rédiger l''e-mail** aux clients (si la boutique a une liste de clients inscrits à la newsletter) et les publications pour les réseaux sociaux.
+7. **Fixer la date limite de commande** pour une livraison à temps, et l''afficher clairement.
+
+> [!astuce]
+> Testez la promotion **avant** son lancement : commande de test avec la réduction, vérification du prix affiché, de l''emballage cadeau et de l''e-mail de confirmation. Une promotion qui ne s''applique pas le premier jour fait perdre des ventes et la confiance des clients.
+
+## Le rapport hebdomadaire
+
+### Les 5 parties
+
+1. **Chiffres de la semaine**, comparés à la semaine précédente.
+2. **Ce qui a été fait** : produits ajoutés, commandes traitées, retours, promotions préparées.
+3. **Produits** : meilleures ventes, ruptures, produits sous le seuil de réapprovisionnement.
+4. **Problèmes** et remarques des clients.
+5. **Propositions** pour la semaine suivante.
+
+> [!exemple] Chiffres de la semaine
+>
+> | Indicateur | Semaine précédente | Cette semaine |
+> | --- | --- | --- |
+> | Chiffre d''affaires | 1 120 € | 1 480 € |
+> | Commandes | 19 | 24 |
+> | Panier moyen | 59 € | 62 € |
+> | Taux de conversion | 1,3 % | 1,6 % |
+> | Retours | 1 | 2 (motif : taille plus petite qu''attendu) |
+>
+> **Proposition** : ajouter les dimensions en photo (panier tenu à la main) sur les fiches des paniers, pour réduire les retours liés à la taille.
+> *(Chiffres donnés en exemple.)*
+
+> [!madagascar]
+> Pour une marque qui travaille avec des artisans malgaches, vous pouvez proposer de mettre en avant **les artisans et le savoir-faire** (avec leur accord) : photos d''atelier, histoire du raphia, région de fabrication. Ce contenu donne de la valeur aux produits et justifie leur prix auprès des clients étrangers.
+
+> [!retenir]
+> - Une semaine organisée, avec 30 minutes par jour pour les commandes et les messages.
+> - Nouvelle collection : tableur, sauvegarde, test, import, vérification, mise en avant.
+> - Procédures écrites pour les commandes et les retours.
+> - Une promotion préparée en 7 étapes et testée avant le lancement.
+> - Un rapport hebdomadaire avec chiffres, actions, produits, problèmes et propositions.
+
+## Exercice pratique : la semaine Raphia & Co
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans votre boutique d''entraînement, importez 20 nouveaux produits (fiches complètes, photos uniformes, SKU) en suivant la méthode.
+> 2. Passez 8 commandes de test et traitez-les avec la procédure quotidienne ; traitez 2 retours.
+> 3. Préparez la promotion de la fête des mères en 7 étapes et testez-la.
+> 4. Rédigez le rapport hebdomadaire avec des chiffres d''exemple et 3 propositions.
+>
+> **À livrer** : des captures de la collection importée, des commandes et retours traités, de la promotion testée, et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 3, 0, 'Combien de produits importer d''abord pour tester ?', '["100","Aucun","Environ 3","Tous"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 3, 1, 'Que faire avant de lancer une promotion ?', '["La tester avec une commande de test","Supprimer les autres produits","Rien","Doubler les prix"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 3, 2, 'Beaucoup de retours pour « taille plus petite qu''attendu ». Que proposer ?', '["Rien","Supprimer le produit","Améliorer la fiche : dimensions et photo en situation","Refuser les retours"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-f', 4, 'Trouver des clients et se faire payer', 'Portfolio, 5 canaux, forfaits mensuels et prestations ponctuelles, contrat en 8 points, paiements et fidélisation.', 'Les commerçants en ligne ont besoin d''aide régulière, souvent quelques heures par semaine : c''est idéal pour un travail à distance au forfait mensuel. Ce dernier module vous montre comment présenter votre travail, trouver des clients, fixer vos prix, rédiger un contrat et vous faire payer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de gestionnaire de boutique.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Calculer un forfait mensuel et proposer 3 formules.
+> 4. Rédiger un contrat adapté.
+> 5. Vous faire payer et garder vos clients longtemps.
+
+## Le portfolio
+
+1. **Votre projet Raphia & Co** (module 4) : captures de la collection, procédures, promotion, rapport.
+2. **Un avant / après** de fiches produits : une fiche pauvre, puis votre version complète.
+3. **Vos procédures** : commandes, retours, import, promotion (sans données de client).
+4. **Vos compétences** : Shopify, WooCommerce, imports CSV, Google Sheets, retouche de photos simple.
+5. **Une vidéo de 2 minutes** où vous présentez votre boutique d''entraînement en partageant votre écran.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Marques qui vendent des produits malgaches** | Épicerie fine, cosmétiques, artisanat | Proposez de mieux présenter leurs produits : vous les connaissez |
+| 2 | **Groupes d''e-commerçants** francophones (Facebook, forums) | Petites boutiques Shopify et WooCommerce | Répondez aux questions, partagez des conseils |
+| 3 | **Plateformes de freelance** | E-commerçants de nombreux pays | Offre précise : « Gestion de votre boutique Shopify, 10 h par semaine » ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 4 | **Développeurs et agences de boutiques** | Leurs clients ont besoin de gestion après le lancement | Proposez un partenariat |
+| 5 | **Boutiques malgaches** qui passent en ligne | Commerces d''Antananarivo | Proposez d''organiser leur catalogue et leurs commandes |
+
+### Le message de prospection
+
+> [!exemple] Message à une marque d''épicerie fine
+> « Bonjour, j''ai découvert votre boutique de vanille et d''épices de Madagascar : vos produits sont superbes. En la parcourant sur téléphone, j''ai remarqué que plusieurs fiches n''indiquent pas le poids ni la conservation, et que deux produits épuisés sont encore proposés à l''achat. Je suis gestionnaire de boutiques en ligne, basé à Antananarivo, et je connais bien ces produits. Je vous propose de réécrire gratuitement une fiche produit pour vous montrer ce que je peux faire. Intéressé(e) ? »
+
+## Calculer ses prix
+
+### Le forfait mensuel
+
+1. **Prix horaire** : revenu mensuel visé ÷ heures facturables (exemple : 1 200 000 Ar ÷ 100 h = 12 000 Ar de l''heure).
+2. **Heures par mois** selon la taille de la boutique et les tâches.
+3. **Forfait** = heures × prix horaire.
+
+| Formule | Contenu | Heures par mois | Exemple de prix (12 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Essentiel** | Commandes, stocks, réponses aux clients en semaine | 20 h | 240 000 Ar |
+| **Croissance** | Essentiel + nouveaux produits, promotions, rapport hebdomadaire | 40 h | 480 000 Ar |
+| **Complète** | Croissance + inventaires, fiches améliorées, propositions d''amélioration, suivi des fournisseurs | 70 h | 840 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les prestations ponctuelles
+
+| Prestation | Exemple de calcul |
+| --- | --- |
+| **Import d''une collection** | Par lot de produits (exemple : temps pour 20 produits × prix horaire) |
+| **Réécriture des fiches** | Par fiche |
+| **Mise en place d''une promotion saisonnière** | Forfait |
+| **Audit de boutique** | Forfait, avec rapport et propositions |
+
+## Le contrat
+
+### Les 8 points
+
+1. **La plateforme** et les **accès** (compte d''équipe, droits).
+2. **Les tâches** comprises, et celles qui ne le sont pas (développement, publicité, photos professionnelles).
+3. **Le volume** : heures par mois, ou nombre de produits et de commandes inclus.
+4. **Les horaires** de travail et les délais de traitement des commandes et des messages.
+5. **Ce que le client fournit** : informations produits, photos, stock, préparation des colis.
+6. **Les décisions réservées au client** : prix, promotions, remboursements au-delà d''un montant.
+7. **Le prix**, payé en début de mois, et les heures supplémentaires.
+8. **La confidentialité**, la **durée** et le **préavis**.
+
+> [!attention]
+> Écrivez clairement qui décide des **prix** et des **remboursements**. Une baisse de prix ou un remboursement décidé sans l''accord du commerçant peut créer un conflit. En cas de doute, demandez par écrit.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Garder ses clients longtemps
+
+1. **Le rapport** à date fixe, avec des chiffres et des propositions.
+2. **Les saisons** préparées à l''avance : soldes, fêtes, rentrée, Black Friday, Noël.
+3. **Une amélioration par mois** : fiches, photos, collections, parcours d''achat.
+4. **De la fiabilité** : aucune commande oubliée, aucun stock faux.
+5. **Une demande d''avis** et de recommandation après 2 ou 3 mois réussis.
+
+> [!retenir]
+> - Un portfolio avec une semaine de gestion complète et un avant / après.
+> - Marques de produits malgaches, groupes d''e-commerçants, plateformes, agences, commerces locaux.
+> - Des forfaits mensuels en 3 formules, plus des prestations ponctuelles.
+> - Un contrat qui précise qui décide des prix et des remboursements.
+> - Rapports, saisons préparées et fiabilité gardent les clients.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez votre portfolio (projet Raphia & Co, avant / après, procédures, vidéo).
+> 2. Calculez votre prix horaire, vos 3 formules et 2 prestations ponctuelles.
+> 3. Rédigez votre contrat type en 8 points.
+> 4. Trouvez 5 boutiques qui vendent des produits malgaches, notez pour chacune 3 améliorations, et envoyez au moins 2 messages de prospection.
+>
+> **À livrer** : votre portfolio, vos prix, votre contrat et votre tableau des 5 boutiques avec vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 4, 0, '40 heures à 12 000 Ar de l''heure font…', '["120 000 Ar","48 000 Ar","4 800 000 Ar","480 000 Ar"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 4, 1, 'Qui décide des prix et des gros remboursements ?', '["Le client final","Le transporteur","Le gestionnaire seul","Le commerçant, selon le contrat"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-f', 4, 2, 'Quel avantage pour une marque de produits malgaches ?', '["Aucun","Vous ne parlez pas français","Vous connaissez les produits et leur histoire","Vous ne connaissez pas Shopify"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quelle différence entre gestionnaire et développeur de boutique ?', '["Il n''y en a aucune","Le gestionnaire fait vivre la boutique chaque jour, le développeur la construit","Le développeur prépare les colis","Le gestionnaire écrit le code"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Combien de photos prévoir par produit ?', '["Une seule floue","Aucune","50","4 à 6, dans le même format"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quand afficher un prix barré ?', '["Toujours","Seulement si la réduction est réelle","Pour tromper le client","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que faire d''une commande suspecte ?', '["La rembourser deux fois","Prévenir le commerçant avant d''expédier","L''expédier immédiatement","La supprimer sans rien dire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'À quelle étape ajoute-t-on le numéro de suivi ?', '["À la commande","Jamais","Au retour","À l''expédition"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'À quoi sert le stock de sécurité ?', '["Rien","Éviter la rupture si les ventes ou le délai dépassent les prévisions","Décorer la boutique","Augmenter les prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Un savon à 8 € coûte 3 €. Quelle marge avec −20 % ?', '["5 €","3,40 €","1 €","6,40 €"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quelle promotion augmente le panier moyen ?', '["Supprimer la livraison","Un prix barré faux","La livraison offerte dès un montant","Fermer la boutique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Pourquoi noter le motif de chaque retour ?', '["Pour corriger les fiches si un motif revient souvent","Pour punir le client","Ce n''est pas utile","Pour le transporteur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Comment calcule-t-on le taux de conversion ?', '["Chiffre d''affaires ÷ visites","Retours ÷ commandes","Commandes ÷ visites × 100","Visites ÷ commandes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', '160 paniers créés et 48 commandes : quel taux d''abandon ?', '["48 %","112 %","30 %","70 %"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Comment obtenir l''accès à une boutique Shopify ?', '["Avec le mot de passe du propriétaire","Par SMS","Comme membre de l''équipe avec des droits limités","En créant une autre boutique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'À quoi sert le « coût par article » dans Shopify ?', '["Changer la devise","Exporter les clients","Calculer la marge","Créer un code promo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Qu''est-ce qu''une collection automatique ?', '["Un code de réduction","Une collection remplie selon des règles","Un type de livraison","Une collection vide"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que signifie souvent le statut WooCommerce « En cours » ?', '["Commande annulée","Commande livrée","Paiement reçu, commande à préparer","Commande remboursée"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Qu''est-ce qu''un fichier CSV ?', '["Une vidéo","Un fichier texte en colonnes pour importer ou exporter des données","Un contrat","Une image"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Combien d''applications conseiller ?', '["Aucune, jamais","Peu, choisies avec soin","Le plus possible","Toutes les applications payantes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quand traiter les commandes pour un commerçant en France ?', '["Une fois par semaine","Le soir très tard seulement","Jamais","Tôt le matin, heure de France, pour un départ dans la journée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer pour Élodie chaque jour ?', '["Une facture","La liste de préparation des commandes","Un nouveau logo","Un contrat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quelle est la première étape de la promotion de la fête des mères ?', '["Envoyer l''e-mail","Créer la bannière","Lancer sans réfléchir","Choisir l''offre avec le commerçant en vérifiant la marge"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que contient le rapport hebdomadaire ?', '["Rien","Seulement la facture","Chiffres, actions, produits, problèmes, propositions","Des photos de vacances"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quelle formule inclut les promotions et un rapport hebdomadaire ?', '["Essentiel","Une formule gratuite","Aucune","Croissance"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que doit préciser le contrat sur les décisions ?', '["Qui décide des prix, promotions et remboursements","Rien","Le salaire du client","La couleur de la boutique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
 
 -- lang-0-a
 delete from public.exam_questions where course_id = 'lang-0-a';

@@ -1433,6 +1433,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-1-f": {
+  "hours": 14,
+  "description": "Le gestionnaire de boutique en ligne fait fonctionner une boutique au quotidien : catalogue, stocks, commandes, livraisons, retours, promotions et chiffres. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer des boutiques Shopify et WooCommerce pour des marques francophones et des commerces malgaches, en télétravail. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les 8 tâches d'une semaine type",
+   "Construire des fiches produits complètes et suivre le cycle d'une commande",
+   "Gérer les stocks, les promotions rentables et les retours",
+   "Administrer une boutique Shopify ou WooCommerce et importer des produits en CSV",
+   "Mener une semaine de gestion complète et rédiger un rapport utile",
+   "Vendre des forfaits mensuels et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de gestionnaire de boutique en ligne depuis Madagascar",
+    "summary": "Ce que fait le métier, gestionnaire ou développeur, les 8 tâches d'une semaine, les clients, les plateformes, les qualités et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Gestionnaire ou développeur ?",
+     "Une semaine type : les 8 tâches",
+     "Qui sont vos clients ?",
+     "Les plateformes de boutique",
+     "Les qualités demandées",
+     "Le poste de travail",
+     "Exercice pratique : analyser 3 boutiques"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : fiches produits, commandes, stocks, promotions et chiffres",
+    "summary": "La fiche produit complète et le SKU, le cycle d'une commande, le seuil de réapprovisionnement, les promotions rentables, les retours et les 6 indicateurs.",
+    "sections": [
+     "La fiche produit complète",
+     "Le cycle d'une commande",
+     "Gérer les stocks",
+     "Les promotions",
+     "Les retours et remboursements",
+     "Les 6 indicateurs essentiels",
+     "Exercice pratique : les bases d'une boutique"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Les outils : Shopify, WooCommerce, imports CSV et applications",
+    "summary": "Accès d'équipe, produits, commandes, clients, réductions et statistiques dans Shopify et WooCommerce, imports CSV, et choix des applications payantes.",
+    "sections": [
+     "Les outils",
+     "L'accès d'équipe",
+     "Shopify : les opérations du quotidien",
+     "WooCommerce : les mêmes opérations",
+     "Importer des produits avec un fichier CSV",
+     "Les abonnements et applications payants",
+     "Exercice pratique : votre boutique d'entraînement"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : une semaine de gestion de boutique",
+    "summary": "Semaine organisée, mise en ligne d'une collection, procédures de commandes et de retours, promotion de la fête des mères et rapport hebdomadaire.",
+    "sections": [
+     "Le cas pratique : « Raphia & Co »",
+     "La semaine organisée",
+     "Mettre en ligne la nouvelle collection",
+     "Les commandes et les retours",
+     "Préparer la promotion de la fête des mères",
+     "Le rapport hebdomadaire",
+     "Exercice pratique : la semaine Raphia & Co"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio, 5 canaux, forfaits mensuels et prestations ponctuelles, contrat en 8 points, paiements et fidélisation.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le contrat",
+     "Se faire payer",
+     "Garder ses clients longtemps",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "lang-0-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait du rédacteur un spécialiste : choix d'un secteur, expertise visible dans les textes, outils professionnels (Semrush, Search Console, correcteurs avancés), stratégies de contenu avec pages piliers, écriture pour différents publics francophones et en écriture fantôme, puis copywriting de conversion et plans de contenu mensuels. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
