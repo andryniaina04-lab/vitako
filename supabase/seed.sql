@@ -46,7 +46,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
-  ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 18, false),
+  ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 11, false),
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 14, false),
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 12, false),
@@ -18220,6 +18220,572 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Qui paie le budget de publicité payée sur Facebook ?', '["Personne, c''est gratuit","Le client, directement à Meta","Le community manager, sur son forfait","Vitako"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Avec un revenu visé de 1 200 000 Ar et 80 heures facturables, quel est le prix horaire ?', '["150 000 Ar","15 000 Ar","1 500 Ar","96 000 Ar"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-f', 'Que faire pour garder un client longtemps ?', '["Baisser son prix chaque mois","Publier sans lui demander son avis","Envoyer le rapport à date fixe et proposer une idée nouvelle chaque mois","Ne lui écrire qu''en cas de problème"]'::jsonb, 2);
+
+-- mkt-1-a
+delete from public.exam_questions where course_id = 'mkt-1-a';
+delete from public.module_questions where course_id = 'mkt-1-a';
+delete from public.lessons where course_id = 'mkt-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-a', 0, 'Se spécialiser, auditer et vendre des résultats', 'Les 6 spécialités avancées, ROAS, CPA, marge et ROAS d''équilibre, l''audit de compte en 6 domaines et les offres à forte valeur.', 'Lancer une campagne Facebook ou Google est à la portée de beaucoup de monde. Les gestionnaires de publicités bien payés sont ceux qui **font gagner de l''argent** à leurs clients de façon mesurable : plus de ventes, des prospects moins chers, un budget mieux utilisé. Ce module vous aide à choisir votre spécialité et à vendre des résultats plutôt que des campagnes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la publicité en ligne.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit de compte publicitaire en 6 domaines.
+> 4. Calculer la rentabilité d''une campagne (ROAS, coût par acquisition maximal).
+> 5. Construire des offres à forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **E-commerce (Meta et Google Shopping)** | Une boutique qui doit vendre plus, de façon rentable | Catalogue, pixel, campagnes Advantage+, Performance Max, ROAS |
+| 2 | **Génération de prospects** | Une entreprise de services qui a besoin de contacts qualifiés | Formulaires, pages d''atterrissage, suivi des prospects jusqu''à la vente |
+| 3 | **Recherche Google (Search)** | Être visible quand le client cherche | Mots clés, correspondances, annonces, enchères |
+| 4 | **Applications mobiles** | Obtenir des installations et des utilisateurs actifs | Campagnes d''applications, événements dans l''application |
+| 5 | **Tourisme et hôtellerie** | Remplir des chambres et vendre des circuits | Saisonnalité, ciblage international, réservations |
+| 6 | **Création publicitaire** | Des publicités qui ne retiennent pas l''attention | Accroches, vidéos courtes, tests de visuels |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Tourisme** : hôtels, lodges et agences de Madagascar et de l''océan Indien qui ciblent les voyageurs français, italiens ou allemands.
+> - **Marques malgaches qui exportent** (vanille, épices, artisanat, cosmétiques) et qui vendent en ligne en Europe.
+> - **Sous-traitance pour les agences francophones** : le suivi quotidien des comptes se fait facilement depuis Antananarivo, avec 1 à 2 heures d''écart avec Paris.
+
+## Choisir sa spécialité
+
+1. **Vos résultats** : sur quelles campagnes avez-vous obtenu les meilleurs chiffres ?
+2. **La valeur pour le client** : une boutique qui vend 10 millions d''ariary par mois paie plus volontiers qu''une page qui veut des mentions « J''aime ».
+3. **La demande** : regardez les offres (« Meta Ads expert », « Google Ads specialist », « Shopify ads »).
+4. **Votre goût** : l''e-commerce demande l''amour des chiffres ; la création demande du sens visuel ; la recherche Google demande de la rigueur sur les mots clés.
+
+## Les chiffres de la rentabilité
+
+| Indicateur | Formule | Exemple |
+| --- | --- | --- |
+| **ROAS** (retour sur dépenses publicitaires) | Chiffre d''affaires publicitaire ÷ dépense | 4 000 € de ventes ÷ 1 000 € = ROAS de 4 |
+| **CPA** (coût par acquisition) | Dépense ÷ nombre de ventes ou de prospects | 1 000 € ÷ 50 ventes = 20 € |
+| **Marge brute** | Prix de vente − coût du produit | 60 € − 24 € = 36 € |
+| **CPA maximal** | Marge brute par vente (avant publicité) | Au-delà de 36 € par vente, chaque vente fait perdre de l''argent |
+| **ROAS d''équilibre** | Prix de vente ÷ marge brute | 60 ÷ 36 ≈ 1,7 |
+
+> [!definition] ROAS d''équilibre
+> Le ROAS en dessous duquel la publicité fait perdre de l''argent. Si la marge est de 60 % du prix, le ROAS d''équilibre est 1 ÷ 0,6 ≈ 1,7. Une campagne à ROAS 2 est donc rentable, mais faiblement.
+
+> [!attention]
+> Un ROAS élevé ne suffit pas : il faut le comparer à la **marge** du client. Demandez toujours au client ses marges (ou une estimation) avant de fixer les objectifs. Sinon, vous risquez de « réussir » une campagne qui lui fait perdre de l''argent.
+
+## L''audit de compte publicitaire
+
+L''audit est souvent le **premier service** vendu à un nouveau client : il montre votre expertise et mène naturellement à la gestion du compte.
+
+### Les 6 domaines de l''audit
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Suivi** | Pixel et API de conversions installés, événements corrects, conversions Google Ads fiables, pas de doublons |
+| **2. Structure** | Nombre de campagnes et d''ensembles, budgets trop dispersés, campagnes qui se concurrencent |
+| **3. Audiences et mots clés** | Ciblages, exclusions, termes de recherche réellement déclenchés, mots clés négatifs |
+| **4. Créations** | Nombre de visuels testés, fatigue publicitaire (fréquence), formats adaptés à chaque emplacement |
+| **5. Page d''arrivée** | Vitesse, cohérence avec l''annonce, clarté de l''offre, parcours sur téléphone |
+| **6. Résultats** | ROAS, CPA, évolution sur 90 jours, comparaison avec le ROAS d''équilibre |
+
+### Le rapport d''audit
+
+1. **Résumé** : les 3 problèmes qui coûtent le plus, en langage simple.
+2. **Constats** par domaine, avec captures et chiffres.
+3. **Priorités** : impact fort et effort faible d''abord.
+4. **Proposition** : gestion mensuelle ou plan de correction, avec prix et délai.
+
+> [!exemple] Extrait de résumé d''audit
+> « Votre compte Meta compte 14 ensembles de publicités avec 5 € par jour chacun : aucun ne sort de la phase d''apprentissage. Les achats sont comptés deux fois (pixel installé deux fois), ce qui fait croire à un ROAS de 3,8 alors qu''il est proche de 1,9, à peine au-dessus de votre ROAS d''équilibre. Nous proposons de corriger le suivi, puis de regrouper le budget dans 2 campagnes. »
+
+## Les offres à forte valeur
+
+| Offre | Contenu | Pour qui |
+| --- | --- | --- |
+| **Audit** | Rapport en 6 domaines et plan d''action | Tout nouveau client |
+| **Mise en place du suivi** | Pixel, API de conversions, conversions Google Ads, tableau de bord | Boutiques et entreprises de services |
+| **Gestion mensuelle** | Optimisation, tests, rapport mensuel, appel de suivi | Clients avec un budget régulier |
+| **Lancement** | Stratégie, structure, créations, 30 jours de suivi | Nouveau produit ou nouveau marché |
+| **Créations publicitaires** | Lots de visuels et vidéos courtes à tester | Comptes qui manquent de nouveautés |
+
+> [!retenir]
+> - Spécialisez-vous : e-commerce, prospects, recherche Google, applications, tourisme ou création.
+> - Comparez toujours le ROAS au ROAS d''équilibre calculé avec la marge.
+> - L''audit en 6 domaines est votre porte d''entrée.
+> - Vendez des résultats et des offres claires, pas des « publications sponsorisées ».
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Calculez le ROAS d''équilibre et le CPA maximal de 3 produits fictifs (prix et coût donnés par vous).
+> 3. Réalisez l''audit en 6 domaines d''un compte publicitaire (le vôtre, celui d''un proche ou un compte de démonstration).
+> 4. Rédigez le résumé de l''audit et votre proposition.
+>
+> **À livrer** : votre choix, vos calculs, votre rapport d''audit et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 0, 0, 'Avec une marge de 60 % du prix, quel est le ROAS d''équilibre ?', '["0,6","Environ 1,7","60","6"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 0, 1, 'Que comparer au ROAS pour juger une campagne ?', '["Le nombre d''abonnés","Le nombre de mentions J''aime","Le ROAS d''équilibre calculé avec la marge","La couleur du logo"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 0, 2, 'Quel service est souvent la porte d''entrée chez un nouveau client ?', '["L''audit du compte publicitaire","Une page Facebook","Une campagne gratuite illimitée","Un logo"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-a', 1, 'Outils professionnels : budgets, suivi, campagnes automatisées, Canva Pro et AdEspresso', 'Accès par Business Manager et MCC, budgets écrits, pixel et API de conversions, UTM, Advantage+ et Performance Max, phase d''apprentissage, créations en série et tableau de bord.', 'Au niveau Avancé, vous travaillez avec les outils que les clients sérieux attendent : un **budget publicitaire** important à piloter, des fonctions avancées de Meta et de Google, **Canva Pro** pour produire des créations en série, et des outils de suivi et de test comme **AdEspresso**. Ce module vous montre comment les utiliser de façon professionnelle.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Gérer les accès et les budgets d''un client de façon professionnelle.
+> 2. Mettre en place un suivi fiable : API de conversions, UTM, conversions importées.
+> 3. Utiliser les campagnes automatisées de Meta et de Google.
+> 4. Produire des créations en série avec Canva Pro.
+> 5. Tester et analyser avec AdEspresso et un tableau de bord.
+
+## Les accès et les budgets
+
+### Les règles professionnelles
+
+1. **Le compte publicitaire et le moyen de paiement appartiennent au client.** Vous recevez un accès par le **Business Manager** de Meta (portefeuille business) ou par votre **compte administrateur Google Ads** (MCC).
+2. **Vous ne payez jamais la publicité avec votre argent** : la carte du client est enregistrée dans son compte.
+3. **Le budget est écrit** : budget mensuel maximal, répartition, règles de dépassement.
+4. **Vos honoraires sont séparés** du budget publicitaire.
+
+> [!definition] Compte administrateur Google Ads (MCC)
+> Un compte qui permet de gérer plusieurs comptes Google Ads clients depuis un seul accès, sans connaître leurs mots de passe. Le client accepte votre demande d''association et peut la retirer à tout moment.
+
+> [!madagascar]
+> Les clients malgaches paient souvent leurs publicités avec une carte internationale (Visa, Mastercard) ou une carte prépayée en devises. Vérifiez avec eux que la carte est acceptée et approvisionnée avant chaque lancement : une campagne arrêtée par un paiement refusé perd sa phase d''apprentissage.
+
+## Un suivi fiable
+
+| Outil | Rôle |
+| --- | --- |
+| **Pixel Meta** | Mesure les actions sur le site depuis le navigateur |
+| **API de conversions Meta** | Envoie les mêmes événements depuis le serveur : plus fiable quand les navigateurs bloquent les traceurs |
+| **Balise Google et conversions Google Ads** | Mesurent les achats et prospects issus de Google |
+| **Conversions améliorées** | Utilisent des données hachées (e-mail) pour mieux attribuer les conversions, avec le consentement de l''utilisateur |
+| **UTM** | Étiquettes dans les liens pour retrouver chaque campagne dans Google Analytics |
+| **Conversions hors ligne importées** | Remontent les ventes conclues par téléphone ou en boutique |
+
+### Le modèle d''UTM
+
+```
+https://exemple.com/vanille?utm_source=facebook&utm_medium=paid_social&utm_campaign=vanille_fr_2026_06&utm_content=video_recette
+```
+
+Règle : toujours en minuscules, sans espaces, avec la même convention pour toutes les campagnes.
+
+> [!attention]
+> Le consentement des visiteurs (bannière de cookies, en Europe le RGPD) est obligatoire pour certains traceurs. C''est au client de le mettre en place avec son développeur ; vous devez le lui rappeler par écrit.
+
+## Les campagnes automatisées
+
+| Plateforme | Campagne | Quand l''utiliser | Point de vigilance |
+| --- | --- | --- | --- |
+| **Meta** | Advantage+ achats (shopping) | Boutique avec catalogue et assez de ventes | Exclure ou limiter les clients existants si l''objectif est d''en trouver de nouveaux |
+| **Meta** | Campagne prospects avec formulaire instantané | Services, écoles, immobilier | Ajouter une question de qualification pour éviter les faux contacts |
+| **Google** | Performance Max | Boutique avec flux produits, ou objectif de prospects | Bien fournir les signaux d''audience et exclure les marques si besoin |
+| **Google** | Recherche avec enchères intelligentes | Demande déjà existante | Surveiller les termes de recherche et ajouter des mots clés négatifs |
+
+> [!definition] Phase d''apprentissage
+> La période pendant laquelle l''algorithme découvre qui convertit. Elle demande un nombre suffisant de conversions (sur Meta, on parle souvent d''environ 50 par semaine et par ensemble). Modifier trop souvent une campagne la relance.
+
+### Règles de gestion
+
+1. **Peu de campagnes, des budgets suffisants** plutôt que beaucoup de petites campagnes.
+2. **Attendre** avant de juger : 3 à 7 jours selon le volume.
+3. **Changer peu à la fois** : budget de 20 % maximum par modification, par exemple.
+4. **Documenter** chaque changement dans un journal (date, changement, raison).
+
+## Canva Pro : des créations en série
+
+| Fonction | Usage en publicité |
+| --- | --- |
+| **Kit de marque** | Couleurs, polices et logos du client toujours disponibles |
+| **Redimensionnement magique** | Passer d''un format carré 1:1 à vertical 9:16 et 4:5 en un clic |
+| **Suppression d''arrière-plan** | Produits détourés sur fond uni |
+| **Modèles d''équipe** | Gabarits validés pour produire vite des variantes |
+| **Création en lot (Bulk Create)** | 20 visuels à partir d''un tableau de titres et de prix |
+
+> [!astuce]
+> Pour chaque campagne, préparez au moins **3 angles** (bénéfice, preuve, offre) × **2 formats** (image et vidéo courte). Vous obtenez 6 créations à tester, et l''algorithme trouve plus vite ce qui marche.
+
+## AdEspresso et le tableau de bord
+
+> [!definition] AdEspresso
+> Un outil payant (de l''éditeur Hootsuite) qui aide à créer et tester de nombreuses variantes de publicités Meta et Google, à automatiser certaines règles et à produire des rapports. Il existe d''autres outils similaires ; vérifiez les prix et les fonctions sur les sites officiels.
+
+### Ce que vous en faites
+
+1. **Tests multivariés** : combiner titres, visuels et textes.
+2. **Règles automatiques** : arrêter une publicité dont le CPA dépasse un seuil.
+3. **Rapports** envoyés automatiquement au client.
+
+### Le tableau de bord
+
+Avec **Looker Studio** (gratuit), réunissez les chiffres de Meta, Google Ads et Google Analytics dans un tableau unique : dépense, ventes, ROAS, CPA, par semaine et par campagne. Le client voit tout au même endroit.
+
+> [!retenir]
+> - Le compte et le moyen de paiement appartiennent au client ; vous avez un accès.
+> - Pixel + API de conversions + UTM = un suivi fiable.
+> - Les campagnes automatisées demandent peu de structures, des budgets suffisants et de la patience.
+> - Canva Pro pour produire des créations en série ; AdEspresso et Looker Studio pour tester et rendre compte.
+
+## Exercice pratique : votre boîte à outils avancée
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez la procédure d''accès (Business Manager et MCC) que vous enverrez à vos clients.
+> 2. Créez votre convention UTM et 5 liens de campagnes.
+> 3. Concevez la structure d''une campagne Advantage+ et d''une campagne Performance Max pour une boutique de vanille.
+> 4. Produisez 6 créations dans Canva (3 angles × 2 formats).
+> 5. Construisez un tableau de bord Looker Studio avec des données d''exemple.
+>
+> **À livrer** : votre procédure, vos liens, vos structures, vos créations et une capture du tableau de bord.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 1, 0, 'Qui doit posséder le compte publicitaire et le moyen de paiement ?', '["Le gestionnaire","Le client","La plateforme de freelance","Personne"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 1, 1, 'À quoi sert l''API de conversions de Meta ?', '["Traduire les annonces","Envoyer les événements depuis le serveur pour un suivi plus fiable","Payer les publicités","Créer des visuels"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 1, 2, 'Que provoque une modification trop fréquente d''une campagne ?', '["Rien","Elle baisse toujours le CPA","Elle double le budget","Elle relance la phase d''apprentissage"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-a', 2, 'Qualité et rapidité : tests, optimisation, mise à l''échelle et gestion de plusieurs comptes', 'Plan de tests avec hypothèses, routine quotidienne, hebdomadaire et mensuelle, signaux à surveiller, 3 méthodes de mise à l''échelle, liste de contrôle et journal des modifications.', 'Un compte publicitaire bien géré ne dépend pas de l''inspiration : il suit une **méthode**. Ce module vous donne la méthode des professionnels : tester proprement, optimiser chaque semaine, faire grandir un budget sans casser les résultats, et gérer plusieurs comptes sans erreur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un plan de tests avec des hypothèses.
+> 2. Lire les résultats d''un test sans se tromper.
+> 3. Suivre une routine d''optimisation quotidienne, hebdomadaire et mensuelle.
+> 4. Augmenter un budget sans perdre la rentabilité.
+> 5. Gérer plusieurs comptes avec des listes de contrôle.
+
+## Tester avec méthode
+
+### Le plan de tests
+
+| N° | Hypothèse | Variable testée | Mesure | Durée |
+| --- | --- | --- | --- | --- |
+| 1 | Une vidéo de recette convertit mieux qu''une photo produit | Création | CPA | 7 jours |
+| 2 | L''accroche « livraison offerte » attire plus que « 100 % naturel » | Texte | Taux de clics, CPA | 7 jours |
+| 3 | Une page produit dédiée convertit mieux que la page d''accueil | Page d''arrivée | Taux de conversion | 14 jours |
+
+### Les règles d''un bon test
+
+1. **Une seule variable** à la fois.
+2. **Un objectif** fixé avant le test (souvent le CPA ou le ROAS).
+3. **Assez de données** : au moins plusieurs dizaines de conversions par variante si possible.
+4. **Une durée minimale** d''une semaine, pour couvrir tous les jours.
+5. **Les outils de test officiels** : test A/B de Meta, expériences de Google Ads.
+
+> [!attention]
+> Après 2 jours et 3 ventes, une publicité « gagnante » peut n''être que le fruit du hasard. Avec peu de données, ne concluez pas : prolongez le test ou testez des différences plus marquées.
+
+## La routine d''optimisation
+
+| Fréquence | Actions |
+| --- | --- |
+| **Chaque jour (10 minutes)** | Dépense normale ? Publicités refusées ? Paiement accepté ? Chute brutale des conversions ? |
+| **Chaque semaine** | Résultats par campagne et par création ; arrêt des créations faibles ; ajout de nouvelles créations ; termes de recherche et mots clés négatifs (Google) ; fréquence et fatigue (Meta) |
+| **Chaque mois** | Bilan avec le client ; comparaison avec les objectifs ; plan de tests du mois suivant ; ajustement des budgets |
+
+### Les signaux à surveiller
+
+| Signal | Cause probable | Action |
+| --- | --- | --- |
+| La fréquence dépasse 3 à 4 en prospection | Fatigue publicitaire | Nouvelles créations, audience plus large |
+| Taux de clics correct, mais peu de ventes | Problème de page ou d''offre | Vérifier la page, la vitesse, le prix, la livraison |
+| CPA en hausse sur tout le compte | Saison, concurrence, suivi cassé | Vérifier le suivi d''abord, puis la saison |
+| Beaucoup de clics sur des recherches hors sujet | Correspondances trop larges | Mots clés négatifs |
+
+## Faire grandir un budget
+
+> [!definition] Mise à l''échelle (scaling)
+> Augmenter les dépenses d''une campagne rentable pour obtenir plus de ventes, en gardant un CPA acceptable.
+
+### Les 3 méthodes
+
+1. **Verticale** : augmenter le budget progressivement (par exemple 20 % tous les 3 à 4 jours).
+2. **Horizontale** : nouvelles audiences, nouveaux pays, nouveaux produits, nouvelles créations.
+3. **Nouvelles plateformes** : ajouter Google si le client est seulement sur Meta, ou l''inverse.
+
+> [!exemple] Mise à l''échelle d''une boutique de vanille
+> Budget : 30 € par jour, ROAS 3,2 (ROAS d''équilibre 1,7). Plan : +20 % tous les 4 jours tant que le ROAS reste au-dessus de 2,5. Au bout de 3 semaines, 60 € par jour, ROAS 2,8 : le chiffre d''affaires publicitaire a presque doublé, la rentabilité reste bonne. On ouvre ensuite la Belgique et la Suisse avec une campagne séparée.
+
+## Gérer plusieurs comptes sans erreur
+
+### La liste de contrôle de lancement
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Bon compte publicitaire et bonne page sélectionnés |
+| 2 | Objectif de campagne et événement de conversion corrects |
+| 3 | Budget et dates conformes au plan écrit |
+| 4 | Pays, langues et exclusions corrects |
+| 5 | Liens avec UTM qui fonctionnent sur téléphone |
+| 6 | Textes relus, sans faute, prix et offres exacts |
+| 7 | Créations dans tous les formats |
+| 8 | Règles des plateformes respectées (santé, finance, emploi : règles spéciales) |
+
+### Le journal des modifications
+
+| Date | Compte | Changement | Raison | Résultat après 7 jours |
+| --- | --- | --- | --- | --- |
+| 03/06 | Vanille Soa | Budget 30 → 36 € | ROAS 3,2 stable | ROAS 3,0 |
+| 05/06 | Vanille Soa | Arrêt de 2 visuels | CPA 2 fois l''objectif | CPA moyen −12 % |
+
+> [!madagascar]
+> Planifiez vos vérifications quotidiennes à des heures où votre connexion est la plus stable, et gardez une **solution de secours** (forfait mobile, batterie) : une campagne dont le budget s''emballe un vendredi soir doit pouvoir être arrêtée en quelques minutes, même pendant un délestage.
+
+> [!retenir]
+> - Une hypothèse, une variable, un objectif, assez de données.
+> - Une routine quotidienne, hebdomadaire et mensuelle.
+> - Faire grandir le budget progressivement, en surveillant le ROAS d''équilibre.
+> - Liste de contrôle de lancement et journal des modifications pour chaque compte.
+
+## Exercice pratique : votre méthode de gestion
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez un plan de 4 tests pour une boutique ou une école.
+> 2. Analysez un jeu de résultats fictif (que vous inventez) et dites ce que vous décidez, et pourquoi.
+> 3. Écrivez votre routine d''optimisation sous forme de liste de contrôle.
+> 4. Rédigez un plan de mise à l''échelle sur 4 semaines.
+>
+> **À livrer** : votre plan de tests, votre analyse, votre routine et votre plan de mise à l''échelle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 2, 0, 'Combien de variables tester à la fois ?', '["Toutes","Une seule","Trois au minimum","Aucune"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 2, 1, 'Taux de clics correct mais peu de ventes : que vérifier ?', '["Seulement la couleur du bouton Facebook","La page, l''offre, le prix et la livraison","Rien","Le nombre d''abonnés"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 2, 2, 'Comment augmenter un budget sans casser les résultats ?', '["Arrêter puis relancer","Le changer chaque heure","Le multiplier par 10 d''un coup","Progressivement, par exemple +20 % tous les 3 à 4 jours"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-a', 3, 'Clients internationaux : règles, données, multipays et marque blanche', 'Catégories spéciales et suspension de compte, consentement et listes de clients, 6 décisions multipays, rapport mensuel en 6 parties, vocabulaire anglais et marque blanche.', 'Les clients internationaux, surtout en Europe et en Amérique du Nord, ont des budgets plus élevés, mais aussi des attentes plus fortes : règles des plateformes, protection des données, rapports en anglais, réunions régulières. Ce module vous prépare à travailler avec eux et avec des agences étrangères.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Respecter les règles des plateformes et les catégories spéciales.
+> 2. Appliquer les bases de la protection des données en publicité.
+> 3. Lancer des campagnes multipays et multilingues.
+> 4. Rédiger un rapport mensuel professionnel, en français ou en anglais.
+> 5. Travailler en marque blanche pour une agence.
+
+## Les règles des plateformes
+
+### Les catégories spéciales
+
+| Catégorie | Exemples | Conséquence |
+| --- | --- | --- |
+| **Emploi, logement, crédit** | Offres d''emploi, location, prêts | Ciblage limité (âge, sexe, code postal) dans plusieurs pays |
+| **Questions sociales et politiques** | Élections, causes | Autorisation préalable et mention « Payé par » |
+| **Santé et produits réglementés** | Compléments alimentaires, médicaments, alcool | Règles strictes, parfois interdiction |
+| **Finance et cryptomonnaies** | Investissements | Autorisation préalable souvent obligatoire |
+
+> [!attention]
+> Des publicités refusées à répétition peuvent entraîner la **suspension du compte**, parfois du Business Manager entier. Lisez les règles publicitaires de Meta et de Google avant chaque nouveau secteur, et refusez les promesses interdites (« perdez 10 kg en 7 jours »).
+
+## La protection des données
+
+1. **Consentement** : en Europe, le RGPD impose le consentement pour de nombreux traceurs. Le client doit avoir une bannière conforme.
+2. **Listes de clients** : n''importez une liste d''e-mails dans Meta ou Google que si les clients ont donné leur accord et si la liste appartient au client.
+3. **Données hachées** : les plateformes transforment les e-mails importés ; ne partagez jamais les listes en clair par messagerie.
+4. **Accès** : retirez vos accès à la fin de la mission.
+
+## Les campagnes multipays et multilingues
+
+### Les 6 décisions
+
+| Décision | Question |
+| --- | --- |
+| **1. Pays** | Où le client peut-il livrer et vendre ? |
+| **2. Langue** | Une campagne par langue, avec des textes écrits (ou relus) par un locuteur natif |
+| **3. Devise et prix** | La page affiche-t-elle les prix dans la devise locale ? |
+| **4. Budget** | Répartition par pays selon le potentiel et le coût |
+| **5. Horaires** | Les fuseaux horaires des pays visés |
+| **6. Saisonnalité** | Fêtes, vacances, soldes de chaque pays |
+
+> [!exemple] Une agence de voyage de Nosy Be
+> - **France** : campagne en français, de septembre à février, pour des voyages entre avril et novembre.
+> - **Italie** : campagne en italien (textes relus par un locuteur natif), Nosy Be est déjà connue des voyageurs italiens.
+> - **Réunion et Maurice** : courts séjours, prix en euros ou en roupies, ciblage des week-ends prolongés.
+> Chaque marché a sa campagne, ses créations et sa page d''arrivée.
+
+> [!madagascar]
+> Pour le tourisme, les recherches commencent souvent plusieurs mois avant le voyage. Planifiez les campagnes selon la **haute saison** de Madagascar (de juillet à novembre environ) et les vacances des pays visés, pas selon la date du départ.
+
+## Le rapport mensuel
+
+### Les 6 parties
+
+1. **Résumé** en 5 lignes : résultats, comparaison avec l''objectif, décision clé.
+2. **Chiffres clés** : dépense, ventes ou prospects, ROAS ou CPA, évolution.
+3. **Ce qui a marché** : meilleures créations, audiences, mots clés.
+4. **Ce qui n''a pas marché** et ce que vous avez arrêté.
+5. **Tests** menés et conclusions.
+6. **Plan du mois suivant** : tests, budgets, besoins (nouvelles photos, nouvelle offre).
+
+### Le vocabulaire en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Dépense publicitaire | Ad spend |
+| Retour sur dépenses publicitaires | Return on ad spend (ROAS) |
+| Coût par acquisition | Cost per acquisition (CPA) |
+| Taux de clics | Click-through rate (CTR) |
+| Phase d''apprentissage | Learning phase |
+| Fatigue publicitaire | Ad fatigue |
+| Mots clés négatifs | Negative keywords |
+
+> [!exemple] Résumé en anglais
+> "In May, we spent €1,820 and generated €6,370 in tracked sales (ROAS 3.5, target 3.0). The new recipe videos lowered our cost per purchase by 18%. In June, we plan to increase the budget by 20% and launch a separate campaign for Belgium."
+
+## Travailler en marque blanche
+
+> [!definition] Marque blanche
+> Vous travaillez pour une agence qui présente votre travail sous son propre nom. Vous ne contactez pas directement ses clients.
+
+### Les règles
+
+1. **Confidentialité** : aucun contact direct avec les clients de l''agence, aucune mention dans votre portfolio sans accord.
+2. **Les modèles de l''agence** : rapports, conventions de nommage, procédures.
+3. **Disponibilité** : des créneaux fixes communs avec le fuseau horaire de l''agence.
+4. **Des délais écrits** pour chaque tâche.
+
+> [!retenir]
+> - Lisez les règles des plateformes, surtout pour les catégories spéciales.
+> - Consentement, listes autorisées, données protégées, accès retirés en fin de mission.
+> - Une campagne par marché et par langue, adaptée aux saisons.
+> - Un rapport mensuel en 6 parties, en français ou en anglais.
+> - En marque blanche : confidentialité et procédures de l''agence.
+
+## Exercice pratique : un client international
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez un client fictif (hôtel, marque de vanille, école en ligne) et listez les règles qui s''appliquent à son secteur.
+> 2. Concevez son plan multipays (au moins 3 marchés) avec les 6 décisions.
+> 3. Rédigez un rapport mensuel complet avec des chiffres fictifs, puis son résumé en anglais.
+> 4. Rédigez votre charte de travail en marque blanche (1 page).
+>
+> **À livrer** : vos règles, votre plan multipays, votre rapport et votre charte.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 3, 0, 'Quel risque en cas de publicités refusées à répétition ?', '["Rien","Plus de portée gratuite","La suspension du compte","Une réduction de prix"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 3, 1, 'Comment organiser des campagnes en plusieurs langues ?', '["Avec une traduction automatique sans relecture","Uniquement en français","Une campagne par langue, avec des textes relus par un locuteur natif","Toutes les langues dans une seule annonce"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 3, 2, 'En marque blanche, peut-on contacter les clients de l''agence ?', '["Non","Oui, pour leur proposer ses services","Oui, toujours","Seulement le week-end"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-1-a', 4, 'Développer son activité : prix, études de cas et équipe', 'Forfait, pourcentage du budget et part variable, études de cas en 5 parties, accueil des clients, délégation et fidélisation.', 'Gérer quelques comptes à l''heure permet de vivre. Pour aller plus loin, il faut des **revenus réguliers**, des **prix liés à la valeur** et, à terme, une **petite équipe**. Ce dernier module vous aide à construire une activité durable de gestionnaire de publicités depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir un modèle de prix adapté : forfait, pourcentage du budget, part variable.
+> 2. Construire des études de cas qui attirent des clients.
+> 3. Organiser votre accueil des nouveaux clients.
+> 4. Déléguer à un assistant ou à un créatif.
+> 5. Fidéliser vos clients sur plusieurs années.
+
+## Les modèles de prix
+
+| Modèle | Fonctionnement | Avantages | Risques |
+| --- | --- | --- | --- |
+| **Forfait mensuel** | Prix fixe selon le nombre de campagnes et de plateformes | Simple, revenu stable | Peut devenir trop bas si le budget grandit |
+| **Pourcentage du budget** | Par exemple 10 à 20 % de la dépense publicitaire, avec un minimum | Suit la croissance du client | Peut encourager à dépenser plus, à expliquer clairement |
+| **Forfait + part variable** | Forfait de base + prime si un objectif est atteint (ROAS, nombre de prospects) | Aligne vos intérêts avec le client | Exige un suivi très fiable |
+
+*(Pourcentages donnés en exemple : ils varient selon les marchés et la taille des budgets.)*
+
+> [!exemple] Calcul pour un client
+> Budget publicitaire : 2 000 € par mois. Forfait minimum : 300 €. Pourcentage : 15 % = 300 €. Vous facturez donc 300 € par mois. Si le budget passe à 4 000 €, vous facturez 600 €, et le client accepte, car ses ventes ont aussi augmenté.
+
+## Les études de cas
+
+Une étude de cas vaut plus que dix promesses.
+
+### Les 5 parties
+
+1. **Le client** (avec son accord, ou anonymisé) : secteur, pays, taille.
+2. **Le problème** : chiffres de départ.
+3. **Ce que vous avez fait** : 3 à 5 actions précises.
+4. **Les résultats** : chiffres avant et après, sur une durée claire.
+5. **La citation** du client, si possible.
+
+> [!exemple] Étude de cas courte
+> « Lodge à Andasibe. Départ : 2 réservations par mois venant des publicités, CPA de 85 €. Actions : suivi corrigé, campagne séparée France et Italie, vidéos de lémuriens filmées par le personnel, page de réservation simplifiée. Résultat après 3 mois : 9 réservations par mois, CPA de 31 €. »
+
+## L''accueil d''un nouveau client
+
+| Étape | Contenu |
+| --- | --- |
+| **1. Questionnaire** | Produits, marges, clients idéaux, concurrents, budget, objectifs |
+| **2. Accès** | Business Manager, MCC, Analytics, site, Canva |
+| **3. Audit et plan** | Audit en 6 domaines, plan des 90 premiers jours |
+| **4. Lancement** | Liste de contrôle de lancement, journal |
+| **5. Premier bilan** | Après 30 jours, appel et rapport |
+
+> [!astuce]
+> Créez un **dossier modèle** pour chaque nouveau client (questionnaire, procédures d''accès, plan, rapport, journal) : vous gagnez des heures, et chaque client reçoit le même niveau de qualité.
+
+## Déléguer et former une petite équipe
+
+### Ce que vous pouvez déléguer
+
+| Tâche | À qui |
+| --- | --- |
+| Vérifications quotidiennes et journal | Assistant formé |
+| Création des visuels en série | Graphiste (voir la formation Graphiste) |
+| Montage des vidéos courtes | Monteur (voir la formation Monteur vidéo) |
+| Rapports mensuels (mise en forme) | Assistant |
+| Stratégie, décisions de budget, relation client | Vous |
+
+### Les règles
+
+1. **Des procédures écrites** pour chaque tâche déléguée.
+2. **Des accès limités** : un assistant n''a pas besoin des droits d''administrateur.
+3. **Un contrôle** avant ce qui est envoyé au client.
+4. **Un paiement juste et à temps**, avec un contrat.
+
+> [!madagascar]
+> De nombreux jeunes formés à Madagascar cherchent leur première expérience. Former un ou deux assistants vous permet de prendre plus de clients, et leur donne un vrai métier. Déclarez votre activité (NIF et carte statistique) avant d''embaucher, et renseignez-vous sur les obligations d''employeur (CNaPS, contrat de travail) auprès d''un comptable.
+
+## Fidéliser vos clients
+
+1. **Des résultats mesurés** et expliqués chaque mois.
+2. **Des idées proactives** : nouveau marché, nouveau produit, saison à préparer.
+3. **Une réactivité** fixée par écrit (réponse sous 24 heures ouvrées, par exemple).
+4. **Un bilan annuel** avec le plan de l''année suivante.
+5. **De l''honnêteté** : quand le problème vient du produit ou du site, dites-le.
+
+> [!retenir]
+> - Forfait, pourcentage du budget ou part variable, selon le client.
+> - Des études de cas chiffrées pour attirer les clients.
+> - Un accueil des clients en 5 étapes avec un dossier modèle.
+> - Déléguez les tâches répétitives, gardez la stratégie et la relation client.
+> - La fidélité vient des résultats, des idées et de l''honnêteté.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre modèle de prix et calculez-le pour 3 budgets différents.
+> 2. Rédigez une étude de cas (réelle ou issue de vos exercices) en 5 parties.
+> 3. Créez votre dossier modèle d''accueil d''un client.
+> 4. Écrivez la procédure d''une tâche que vous délégueriez.
+> 5. Fixez vos objectifs à 12 mois : nombre de clients, revenu, équipe.
+>
+> **À livrer** : vos prix, votre étude de cas, votre dossier modèle, votre procédure et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 4, 0, '15 % d''un budget de 4 000 € font…', '["150 €","4 015 €","600 €","400 €"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 4, 1, 'Que garder pour vous quand vous déléguez ?', '["La mise en forme des rapports","La stratégie, les décisions de budget et la relation client","Uniquement les vérifications quotidiennes","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-1-a', 4, 2, 'Que contient une bonne étude de cas ?', '["Seulement des compliments","Une promesse de résultat garanti","Des chiffres avant et après sur une durée claire","Le mot de passe du client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Que signifie ROAS ?', '["Réseau d''annonces sponsorisées","Retour sur dépenses publicitaires","Revenu annuel","Rapport d''audience sociale"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', '1 000 € dépensés pour 50 ventes : quel est le CPA ?', '["20 €","1 050 €","50 €","5 €"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Que représente le CPA maximal ?', '["Le coût par vente au-delà duquel on perd de l''argent","Le budget annuel","Le nombre de clics","Le prix du produit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Pourquoi demander ses marges au client ?', '["Pour fixer des objectifs vraiment rentables","Ce n''est pas utile","Pour les publier","Par curiosité"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quel domaine vérifier en premier dans un audit ?', '["La police du site","La photo de profil","Le nombre d''abonnés","Le suivi des conversions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Que permet le compte administrateur Google Ads (MCC) ?', '["Payer moins cher","Créer des vidéos","Gérer plusieurs comptes clients sans leurs mots de passe","Supprimer la concurrence"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Qui paie la publicité ?', '["Le client, avec son moyen de paiement","Meta","Google","Le gestionnaire avec son argent"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'À quoi servent les UTM ?', '["Créer des visuels","Accélérer le site","Retrouver chaque campagne dans Google Analytics","Bloquer les robots"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quelle règle pour écrire les UTM ?', '["Changer à chaque fois","Minuscules, sans espaces, convention unique","Pas de règle","Majuscules et espaces"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quelle campagne Google utilise un flux produits sur plusieurs réseaux ?', '["Performance Max","Une publication organique","Une story","Un e-mail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quelle fonction de Canva Pro passe d''un format carré à vertical ?', '["Le redimensionnement magique","Le correcteur","Le kit de marque","La corbeille"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'À quoi sert AdEspresso ?', '["Héberger un site","Payer en Mobile Money","Traduire","Tester de nombreuses variantes et automatiser des règles et rapports"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quel outil gratuit réunit les chiffres de plusieurs plateformes ?', '["Paint","Photopea","Bloc-notes","Looker Studio"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Combien de temps minimum pour un test ?', '["Une heure","Environ une semaine","Une journée","Un an"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Une fréquence élevée en prospection signale…', '["Un compte suspendu","Un succès garanti","Une fatigue publicitaire","Une erreur de paiement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Que faire contre les recherches hors sujet sur Google ?', '["Changer de logo","Ajouter des mots clés négatifs","Supprimer le site","Augmenter le budget"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Qu''est-ce que la mise à l''échelle horizontale ?', '["Changer de mot de passe","Arrêter les campagnes","Doubler le budget d''un coup","Nouvelles audiences, pays, produits ou créations"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'À quoi sert le journal des modifications ?', '["Publier sur Facebook","Garder la trace des changements, de leurs raisons et de leurs résultats","Rien","Facturer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quelles publicités ont un ciblage limité dans plusieurs pays ?', '["Restaurants","Vêtements","Emploi, logement et crédit","Livres"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quand importer une liste d''e-mails dans Meta ?', '["Avec les contacts de votre téléphone","Avec une liste achetée","Toujours","Si les clients ont donné leur accord et que la liste appartient au client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quand lancer les campagnes touristiques pour Madagascar ?', '["Le jour du départ","Uniquement en janvier","Plusieurs mois avant la haute saison","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Comment dit-on « coût par acquisition » en anglais ?', '["Return on ad spend","Cost per acquisition","Cost per click","Ad fatigue"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Que contient le résumé d''un rapport mensuel ?', '["Uniquement des captures","Le mot de passe","Résultats, comparaison avec l''objectif et décision clé","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quel modèle de prix aligne vos intérêts avec les résultats du client ?', '["Forfait + part variable liée à un objectif","Paiement à la publication","Prix fixe sans suivi","Gratuit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-a', 'Quelle démarche avant d''embaucher un assistant à Madagascar ?', '["Aucune","Lui demander de payer","Déclarer son activité et se renseigner sur les obligations d''employeur","Ouvrir un compte PayPal"]'::jsonb, 2);
 
 -- mkt-1-f
 delete from public.exam_questions where course_id = 'mkt-1-f';

@@ -1,0 +1,97 @@
+{
+  "id": "mkt-1-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de publicités en ligne un spécialiste qui vend des résultats : spécialité, audit de compte et calcul de rentabilité (ROAS d'équilibre, CPA maximal), outils professionnels (budget publicitaire piloté, API de conversions, campagnes Advantage+ et Performance Max, Canva Pro, AdEspresso), méthode de tests et de mise à l'échelle, clients internationaux et marque blanche, puis revenus réguliers et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer un compte et calculer la rentabilité réelle",
+    "Gérer accès, budgets et suivi fiable avec les outils professionnels",
+    "Utiliser les campagnes automatisées, Canva Pro et AdEspresso",
+    "Tester, optimiser et faire grandir un budget avec méthode",
+    "Respecter les règles des plateformes et servir des clients internationaux",
+    "Fixer des prix liés à la valeur, déléguer et fidéliser"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et vendre des résultats",
+      "summary": "Les 6 spécialités avancées, ROAS, CPA, marge et ROAS d'équilibre, l'audit de compte en 6 domaines et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Avec une marge de 60 % du prix, quel est le ROAS d'équilibre ?", "options": ["Environ 1,7", "0,6", "6", "60"], "correct": 0 },
+        { "q": "Que comparer au ROAS pour juger une campagne ?", "options": ["Le ROAS d'équilibre calculé avec la marge", "Le nombre de mentions J'aime", "La couleur du logo", "Le nombre d'abonnés"], "correct": 0 },
+        { "q": "Quel service est souvent la porte d'entrée chez un nouveau client ?", "options": ["L'audit du compte publicitaire", "Une campagne gratuite illimitée", "Un logo", "Une page Facebook"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : budgets, suivi, campagnes automatisées, Canva Pro et AdEspresso",
+      "summary": "Accès par Business Manager et MCC, budgets écrits, pixel et API de conversions, UTM, Advantage+ et Performance Max, phase d'apprentissage, créations en série et tableau de bord.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui doit posséder le compte publicitaire et le moyen de paiement ?", "options": ["Le client", "Le gestionnaire", "La plateforme de freelance", "Personne"], "correct": 0 },
+        { "q": "À quoi sert l'API de conversions de Meta ?", "options": ["Envoyer les événements depuis le serveur pour un suivi plus fiable", "Créer des visuels", "Payer les publicités", "Traduire les annonces"], "correct": 0 },
+        { "q": "Que provoque une modification trop fréquente d'une campagne ?", "options": ["Elle relance la phase d'apprentissage", "Elle baisse toujours le CPA", "Rien", "Elle double le budget"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : tests, optimisation, mise à l'échelle et gestion de plusieurs comptes",
+      "summary": "Plan de tests avec hypothèses, routine quotidienne, hebdomadaire et mensuelle, signaux à surveiller, 3 méthodes de mise à l'échelle, liste de contrôle et journal des modifications.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de variables tester à la fois ?", "options": ["Une seule", "Toutes", "Trois au minimum", "Aucune"], "correct": 0 },
+        { "q": "Taux de clics correct mais peu de ventes : que vérifier ?", "options": ["La page, l'offre, le prix et la livraison", "Seulement la couleur du bouton Facebook", "Rien", "Le nombre d'abonnés"], "correct": 0 },
+        { "q": "Comment augmenter un budget sans casser les résultats ?", "options": ["Progressivement, par exemple +20 % tous les 3 à 4 jours", "Le multiplier par 10 d'un coup", "Le changer chaque heure", "Arrêter puis relancer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : règles, données, multipays et marque blanche",
+      "summary": "Catégories spéciales et suspension de compte, consentement et listes de clients, 6 décisions multipays, rapport mensuel en 6 parties, vocabulaire anglais et marque blanche.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel risque en cas de publicités refusées à répétition ?", "options": ["La suspension du compte", "Une réduction de prix", "Rien", "Plus de portée gratuite"], "correct": 0 },
+        { "q": "Comment organiser des campagnes en plusieurs langues ?", "options": ["Une campagne par langue, avec des textes relus par un locuteur natif", "Toutes les langues dans une seule annonce", "Uniquement en français", "Avec une traduction automatique sans relecture"], "correct": 0 },
+        { "q": "En marque blanche, peut-on contacter les clients de l'agence ?", "options": ["Non", "Oui, toujours", "Oui, pour leur proposer ses services", "Seulement le week-end"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, études de cas et équipe",
+      "summary": "Forfait, pourcentage du budget et part variable, études de cas en 5 parties, accueil des clients, délégation et fidélisation.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "15 % d'un budget de 4 000 € font…", "options": ["600 €", "400 €", "150 €", "4 015 €"], "correct": 0 },
+        { "q": "Que garder pour vous quand vous déléguez ?", "options": ["La stratégie, les décisions de budget et la relation client", "Uniquement les vérifications quotidiennes", "Rien", "La mise en forme des rapports"], "correct": 0 },
+        { "q": "Que contient une bonne étude de cas ?", "options": ["Des chiffres avant et après sur une durée claire", "Seulement des compliments", "Le mot de passe du client", "Une promesse de résultat garanti"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que signifie ROAS ?", "options": ["Retour sur dépenses publicitaires", "Rapport d'audience sociale", "Réseau d'annonces sponsorisées", "Revenu annuel"], "correct": 0 },
+    { "q": "1 000 € dépensés pour 50 ventes : quel est le CPA ?", "options": ["20 €", "50 €", "1 050 €", "5 €"], "correct": 0 },
+    { "q": "Que représente le CPA maximal ?", "options": ["Le coût par vente au-delà duquel on perd de l'argent", "Le budget annuel", "Le prix du produit", "Le nombre de clics"], "correct": 0 },
+    { "q": "Pourquoi demander ses marges au client ?", "options": ["Pour fixer des objectifs vraiment rentables", "Par curiosité", "Pour les publier", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quel domaine vérifier en premier dans un audit ?", "options": ["Le suivi des conversions", "La photo de profil", "Le nombre d'abonnés", "La police du site"], "correct": 0 },
+    { "q": "Que permet le compte administrateur Google Ads (MCC) ?", "options": ["Gérer plusieurs comptes clients sans leurs mots de passe", "Payer moins cher", "Créer des vidéos", "Supprimer la concurrence"], "correct": 0 },
+    { "q": "Qui paie la publicité ?", "options": ["Le client, avec son moyen de paiement", "Le gestionnaire avec son argent", "Meta", "Google"], "correct": 0 },
+    { "q": "À quoi servent les UTM ?", "options": ["Retrouver chaque campagne dans Google Analytics", "Accélérer le site", "Créer des visuels", "Bloquer les robots"], "correct": 0 },
+    { "q": "Quelle règle pour écrire les UTM ?", "options": ["Minuscules, sans espaces, convention unique", "Majuscules et espaces", "Changer à chaque fois", "Pas de règle"], "correct": 0 },
+    { "q": "Quelle campagne Google utilise un flux produits sur plusieurs réseaux ?", "options": ["Performance Max", "Une publication organique", "Un e-mail", "Une story"], "correct": 0 },
+    { "q": "Quelle fonction de Canva Pro passe d'un format carré à vertical ?", "options": ["Le redimensionnement magique", "Le kit de marque", "La corbeille", "Le correcteur"], "correct": 0 },
+    { "q": "À quoi sert AdEspresso ?", "options": ["Tester de nombreuses variantes et automatiser des règles et rapports", "Héberger un site", "Payer en Mobile Money", "Traduire"], "correct": 0 },
+    { "q": "Quel outil gratuit réunit les chiffres de plusieurs plateformes ?", "options": ["Looker Studio", "Paint", "Bloc-notes", "Photopea"], "correct": 0 },
+    { "q": "Combien de temps minimum pour un test ?", "options": ["Environ une semaine", "Une heure", "Une journée", "Un an"], "correct": 0 },
+    { "q": "Une fréquence élevée en prospection signale…", "options": ["Une fatigue publicitaire", "Un succès garanti", "Un compte suspendu", "Une erreur de paiement"], "correct": 0 },
+    { "q": "Que faire contre les recherches hors sujet sur Google ?", "options": ["Ajouter des mots clés négatifs", "Augmenter le budget", "Supprimer le site", "Changer de logo"], "correct": 0 },
+    { "q": "Qu'est-ce que la mise à l'échelle horizontale ?", "options": ["Nouvelles audiences, pays, produits ou créations", "Doubler le budget d'un coup", "Arrêter les campagnes", "Changer de mot de passe"], "correct": 0 },
+    { "q": "À quoi sert le journal des modifications ?", "options": ["Garder la trace des changements, de leurs raisons et de leurs résultats", "Publier sur Facebook", "Facturer", "Rien"], "correct": 0 },
+    { "q": "Quelles publicités ont un ciblage limité dans plusieurs pays ?", "options": ["Emploi, logement et crédit", "Vêtements", "Restaurants", "Livres"], "correct": 0 },
+    { "q": "Quand importer une liste d'e-mails dans Meta ?", "options": ["Si les clients ont donné leur accord et que la liste appartient au client", "Toujours", "Avec une liste achetée", "Avec les contacts de votre téléphone"], "correct": 0 },
+    { "q": "Quand lancer les campagnes touristiques pour Madagascar ?", "options": ["Plusieurs mois avant la haute saison", "Le jour du départ", "Uniquement en janvier", "Jamais"], "correct": 0 },
+    { "q": "Comment dit-on « coût par acquisition » en anglais ?", "options": ["Cost per acquisition", "Cost per click", "Return on ad spend", "Ad fatigue"], "correct": 0 },
+    { "q": "Que contient le résumé d'un rapport mensuel ?", "options": ["Résultats, comparaison avec l'objectif et décision clé", "Uniquement des captures", "Le mot de passe", "Rien"], "correct": 0 },
+    { "q": "Quel modèle de prix aligne vos intérêts avec les résultats du client ?", "options": ["Forfait + part variable liée à un objectif", "Prix fixe sans suivi", "Gratuit", "Paiement à la publication"], "correct": 0 },
+    { "q": "Quelle démarche avant d'embaucher un assistant à Madagascar ?", "options": ["Déclarer son activité et se renseigner sur les obligations d'employeur", "Aucune", "Lui demander de payer", "Ouvrir un compte PayPal"], "correct": 0 }
+  ]
+}

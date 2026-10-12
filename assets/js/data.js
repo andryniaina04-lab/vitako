@@ -2589,6 +2589,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-1-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de publicités en ligne un spécialiste qui vend des résultats : spécialité, audit de compte et calcul de rentabilité (ROAS d'équilibre, CPA maximal), outils professionnels (budget publicitaire piloté, API de conversions, campagnes Advantage+ et Performance Max, Canva Pro, AdEspresso), méthode de tests et de mise à l'échelle, clients internationaux et marque blanche, puis revenus réguliers et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un compte et calculer la rentabilité réelle",
+   "Gérer accès, budgets et suivi fiable avec les outils professionnels",
+   "Utiliser les campagnes automatisées, Canva Pro et AdEspresso",
+   "Tester, optimiser et faire grandir un budget avec méthode",
+   "Respecter les règles des plateformes et servir des clients internationaux",
+   "Fixer des prix liés à la valeur, déléguer et fidéliser"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et vendre des résultats",
+    "summary": "Les 6 spécialités avancées, ROAS, CPA, marge et ROAS d'équilibre, l'audit de compte en 6 domaines et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Choisir sa spécialité",
+     "Les chiffres de la rentabilité",
+     "L'audit de compte publicitaire",
+     "Les offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils professionnels : budgets, suivi, campagnes automatisées, Canva Pro et AdEspresso",
+    "summary": "Accès par Business Manager et MCC, budgets écrits, pixel et API de conversions, UTM, Advantage+ et Performance Max, phase d'apprentissage, créations en série et tableau de bord.",
+    "sections": [
+     "Les accès et les budgets",
+     "Un suivi fiable",
+     "Les campagnes automatisées",
+     "Canva Pro : des créations en série",
+     "AdEspresso et le tableau de bord",
+     "Exercice pratique : votre boîte à outils avancée"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : tests, optimisation, mise à l'échelle et gestion de plusieurs comptes",
+    "summary": "Plan de tests avec hypothèses, routine quotidienne, hebdomadaire et mensuelle, signaux à surveiller, 3 méthodes de mise à l'échelle, liste de contrôle et journal des modifications.",
+    "sections": [
+     "Tester avec méthode",
+     "La routine d'optimisation",
+     "Faire grandir un budget",
+     "Gérer plusieurs comptes sans erreur",
+     "Exercice pratique : votre méthode de gestion"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : règles, données, multipays et marque blanche",
+    "summary": "Catégories spéciales et suspension de compte, consentement et listes de clients, 6 décisions multipays, rapport mensuel en 6 parties, vocabulaire anglais et marque blanche.",
+    "sections": [
+     "Les règles des plateformes",
+     "La protection des données",
+     "Les campagnes multipays et multilingues",
+     "Le rapport mensuel",
+     "Travailler en marque blanche",
+     "Exercice pratique : un client international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : prix, études de cas et équipe",
+    "summary": "Forfait, pourcentage du budget et part variable, études de cas en 5 parties, accueil des clients, délégation et fidélisation.",
+    "sections": [
+     "Les modèles de prix",
+     "Les études de cas",
+     "L'accueil d'un nouveau client",
+     "Déléguer et former une petite équipe",
+     "Fidéliser vos clients",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "mkt-1-f": {
   "hours": 14,
   "description": "Le gestionnaire de publicités en ligne transforme un budget publicitaire en clients, sur Facebook, Instagram et Google. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à préparer, lancer, suivre et optimiser des campagnes pour des commerces malgaches et des clients étrangers, avec méthode et des chiffres clairs. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
