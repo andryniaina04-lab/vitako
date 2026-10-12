@@ -26,7 +26,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true),
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true),
-  ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 14, false),
+  ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 20, true),
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
@@ -12972,6 +12972,634 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Pourquoi ajouter une marge au forfait ?', '["Pour payer moins d''impôts","Pour les imprévus et les échanges","Ce n''est pas utile","Pour tromper le client"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'À quoi servent les pull requests en équipe ?', '["Faire relire le code avant de le fusionner","Dessiner la maquette","Supprimer le dépôt","Payer les développeurs"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-0-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Mobile Money ou virement","Uniquement des chèques étrangers","Aucun"]'::jsonb, 1);
+
+-- dev-1-a
+delete from public.exam_questions where course_id = 'dev-1-a';
+delete from public.module_questions where course_id = 'dev-1-a';
+delete from public.lessons where course_id = 'dev-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-a', 0, 'Se spécialiser, auditer et mesurer la fiabilité', 'Les 6 spécialités avancées, l''audit en 7 domaines, les priorités du critique au faible, la disponibilité, le temps de réponse p95 et les offres à forte valeur.', 'Écrire une API qui fonctionne ouvre les premières missions. Les développeurs back-end les mieux payés construisent des systèmes **fiables, rapides et sûrs** qui tiennent quand le nombre d''utilisateurs augmente, savent **reprendre du code existant** sans tout casser, et expliquent leurs choix techniques. Ce module vous aide à choisir votre spécialité et à vendre cette expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du back-end.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit technique d''une application back-end.
+> 4. Mesurer la fiabilité et la performance d''un service.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Frameworks et applications métier** | Applications complètes à développer vite et proprement | Laravel ou Symfony (PHP), NestJS ou Express (Node.js), architecture |
+| 2 | **Intégrations et paiements** | Relier l''application à des services externes | API de paiement (dont Mobile Money), webhooks, idempotence, e-mails, SMS |
+| 3 | **Bases de données et performance** | Applications lentes quand les données grossissent | Index, plans d''exécution, cache, files de traitement |
+| 4 | **Sécurité applicative** | Failles, fuites de données | OWASP Top 10, authentification, droits, journaux |
+| 5 | **Reprise de code existant** | Vieilles applications PHP difficiles à faire évoluer | Lecture de code, tests de caractérisation, refactorisation progressive |
+| 6 | **Déploiement et exploitation** | Mises en ligne risquées, pannes non détectées | Linux, Docker, intégration continue, surveillance, sauvegardes |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Intégrations de paiement mobile** et de SMS pour les services destinés à Madagascar et à l''Afrique : peu de développeurs étrangers les connaissent.
+> - **Maintenance d''applications PHP** pour des agences et entreprises francophones, un travail régulier très demandé.
+> - **Applications métier** pour les entreprises de services numériques d''Antananarivo et leurs clients européens.
+
+## L''audit technique d''une application back-end
+
+### Les 7 domaines
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Architecture** | Organisation du code, séparation des responsabilités, dépendances |
+| **2. Sécurité** | Authentification, droits, validation, secrets, dépendances vulnérables |
+| **3. Base de données** | Schéma, contraintes, index, requêtes lentes, sauvegardes |
+| **4. Performance** | Temps de réponse, requêtes répétées, mise en cache |
+| **5. Fiabilité** | Gestion des erreurs, transactions, reprises, journaux |
+| **6. Tests et déploiement** | Tests automatiques, intégration continue, procédure de mise en ligne |
+| **7. Exploitation** | Surveillance, alertes, documentation, restauration testée |
+
+> [!exemple] Extrait de résumé d''audit
+> « Les mots de passe sont hachés en MD5, un algorithme qui n''est plus sûr. Les requêtes de la page "commandes" sont construites par concaténation de texte : risque d''injection SQL. La table des commandes (1,2 million de lignes) n''a pas d''index sur la colonne client, ce qui explique les 6 secondes de chargement. Aucune sauvegarde n''a été testée. Priorités : sécurité cette semaine, index et sauvegardes ensuite. »
+
+### Prioriser
+
+| Priorité | Exemple |
+| --- | --- |
+| **Critique** (immédiat) | Faille de sécurité exploitable, absence de sauvegarde |
+| **Élevée** | Lenteurs qui font perdre des clients, erreurs fréquentes |
+| **Moyenne** | Dette technique qui ralentit les évolutions |
+| **Faible** | Améliorations de confort |
+
+## Mesurer la fiabilité et la performance
+
+| Indicateur | Ce qu''il mesure | Exemple d''objectif |
+| --- | --- | --- |
+| **Disponibilité** | Part du temps où le service répond | 99,5 % par mois |
+| **Temps de réponse** (médiane et 95e centile) | Rapidité pour la plupart et pour les plus lents | 95 % des requêtes en moins de 500 ms |
+| **Taux d''erreur** | Réponses en erreur serveur | Moins de 0,5 % |
+| **Délai de rétablissement** | Temps pour réparer une panne | Moins d''une heure |
+| **Fréquence des mises en ligne** | Capacité à livrer souvent sans risque | Plusieurs fois par semaine |
+
+> [!definition] 95e centile (p95)
+> La valeur sous laquelle se trouvent 95 % des mesures. Un temps de réponse p95 de 800 ms signifie que 5 % des utilisateurs attendent plus de 800 ms. La moyenne cache souvent ces utilisateurs mécontents.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit technique** | 7 domaines, priorités, plan d''action |
+| **Correction de sécurité** | Failles critiques corrigées et vérifiées |
+| **Optimisation de performance** | Mesures avant et après, index, cache |
+| **Intégration de paiement** | Paiement, webhooks, réconciliation, tests |
+| **Maintenance mensuelle** | Mises à jour, surveillance, corrections, petites évolutions |
+| **Reprise d''une application** | Documentation, tests, modernisation progressive |
+
+> [!retenir]
+> - Spécialisez-vous : frameworks, intégrations, performance, sécurité, reprise de code ou exploitation.
+> - Un audit en 7 domaines, avec des priorités du critique au faible.
+> - Mesurez disponibilité, temps de réponse p95, erreurs et délai de rétablissement.
+> - Vendez de la fiabilité et de la sécurité, pas des lignes de code.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez une application back-end open source ou votre projet Mofo Express sur les 7 domaines.
+> 3. Classez au moins 10 constats par priorité.
+> 4. Rédigez le résumé de l''audit et un plan d''action chiffré en jours.
+>
+> **À livrer** : votre choix, votre audit, vos priorités et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 0, 0, 'Que signifie un temps de réponse p95 de 800 ms ?', '["95 % des requêtes répondent en moins de 800 ms","Toutes les requêtes durent 800 ms","La moyenne est de 800 ms","Le serveur a 95 utilisateurs"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 0, 1, 'Quelle priorité donner à une faille de sécurité exploitable ?', '["Moyenne","Faible","À voir l''an prochain","Critique, immédiate"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 0, 2, 'Pourquoi MD5 pour les mots de passe est-il un problème ?', '["Ce n''est pas un problème","Ce n''est plus un algorithme sûr","Il est interdit en PHP","Il est trop lent"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-a', 1, 'Outils professionnels : PhpStorm, Copilot, framework, Docker et VPS', 'Fonctions de PhpStorm, bons usages de Copilot, structure d''une application avec un framework, conteneurs Docker et liste de contrôle en 10 points pour un VPS.', 'Au niveau Avancé, vous travaillez avec des outils qui accélèrent les professionnels : **PhpStorm**, **GitHub Copilot**, et un **hébergement VPS** que vous savez configurer et sécuriser vous-même. Vous adoptez aussi un **framework** et **Docker**, très demandés dans les offres. Ce module vous apprend à les utiliser sans perdre la maîtrise de votre système.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées de PhpStorm.
+> 2. Utiliser GitHub Copilot de façon sûre.
+> 3. Structurer une application avec un framework (exemple : Laravel).
+> 4. Conteneuriser une application avec Docker.
+> 5. Préparer et sécuriser un VPS de production.
+
+## PhpStorm
+
+> [!definition] PhpStorm
+> Un éditeur payant de JetBrains spécialisé pour PHP, qui comprend les frameworks (Laravel, Symfony), les bases de données et les outils de test. Des licences gratuites existent pour les étudiants et certains projets libres : vérifiez sur le site officiel.
+
+| Fonction | Utilité |
+| --- | --- |
+| **Refactorisation sûre** | Renommer une classe ou une méthode dans tout le projet |
+| **Inspections** | Erreurs de type, code mort, failles probables |
+| **Débogueur (Xdebug)** | Arrêter le code, inspecter les variables d''une requête réelle |
+| **Base de données intégrée** | Écrire et tester des requêtes, voir les tables |
+| **Client HTTP** | Fichiers de requêtes versionnés avec le projet |
+| **Tests** | Lancer PHPUnit ou Pest et voir les résultats |
+
+## GitHub Copilot : les bons usages
+
+| Bon usage | Mauvais usage |
+| --- | --- |
+| Générer des données et des tests à partir d''un exemple | Accepter du code de sécurité (authentification, droits) sans le comprendre |
+| Expliquer un vieux code PHP | Coller des secrets ou des données de clients dans la discussion |
+| Écrire du code répétitif (migrations, validations) | Remplacer la lecture de la documentation officielle |
+| Proposer des cas de test oubliés | Ignorer les licences de code proposé ressemblant à un projet connu |
+
+> [!attention]
+> Vérifiez que votre client **autorise** l''usage d''un assistant d''IA sur son code. Certains contrats l''interdisent ou l''encadrent. Et relisez chaque ligne : une requête SQL ou une vérification de droits générée peut contenir une faille.
+
+## Structurer avec un framework
+
+> [!exemple] Une route Laravel avec validation et autorisation
+> ```php
+> // routes/api.php
+> Route::middleware(''auth:sanctum'')->post(''/commandes'', [CommandeController::class, ''store'']);
+>
+> // app/Http/Controllers/CommandeController.php
+> public function store(StoreCommandeRequest $request)
+> {
+>     $commande = DB::transaction(function () use ($request) {
+>         $commande = $request->user()->commandes()->create([''statut'' => ''en_attente_paiement'']);
+>         foreach ($request->validated(''lignes'') as $ligne) {
+>             $produit = Produit::where(''disponible'', true)->findOrFail($ligne[''produit_id'']);
+>             $commande->lignes()->create([
+>                 ''produit_id'' => $produit->id,
+>                 ''quantite'' => $ligne[''quantite''],
+>                 ''prix_unitaire'' => $produit->prix,
+>             ]);
+>         }
+>         $commande->update([''total'' => $commande->lignes->sum(fn ($l) => $l->quantite * $l->prix_unitaire)]);
+>         return $commande;
+>     });
+>     return response()->json($commande, 201);
+> }
+> ```
+
+| Élément du framework | Rôle |
+| --- | --- |
+| **Routes et middlewares** | Adresses, authentification, limites |
+| **Requêtes de formulaire** (validation) | Règles de validation en un seul endroit |
+| **Modèles et relations** (ORM) | Accès aux données, protégé contre l''injection |
+| **Migrations** | Évolution du schéma de la base, versionnée |
+| **Files d''attente** | Traitements longs en arrière-plan (e-mails, PDF) |
+| **Tests** | Tests de fonctionnalités intégrés |
+
+> [!astuce]
+> Que vous choisissiez Laravel, Symfony ou NestJS, apprenez **un** framework à fond : sa documentation officielle, ses conventions et ses outils de test. Les principes se transposent ensuite facilement.
+
+## Docker : la même application partout
+
+> [!definition] Docker
+> Un outil qui emballe l''application et tout ce dont elle a besoin (langage, bibliothèques, configuration) dans un **conteneur**. Elle fonctionne de la même façon sur votre ordinateur, sur le serveur de test et en production.
+
+```yaml
+# compose.yaml (développement)
+services:
+  api:
+    build: .
+    ports: ["3000:3000"]
+    env_file: .env
+    depends_on: [db]
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+volumes:
+  pgdata:
+```
+
+## Préparer et sécuriser un VPS
+
+### La liste de contrôle
+
+| N° | Action |
+| --- | --- |
+| 1 | Mises à jour du système, et mises à jour de sécurité automatiques |
+| 2 | Utilisateur personnel avec sudo ; connexion root directe désactivée |
+| 3 | Connexion SSH par clé uniquement (mot de passe désactivé) |
+| 4 | Pare-feu : seulement les ports nécessaires (22, 80, 443) |
+| 5 | Protection contre les tentatives répétées (par exemple Fail2ban) |
+| 6 | Base de données non exposée sur Internet |
+| 7 | HTTPS avec renouvellement automatique du certificat |
+| 8 | Secrets dans des variables d''environnement, fichiers protégés |
+| 9 | Sauvegardes automatiques **hors du serveur**, restauration testée |
+| 10 | Surveillance : disponibilité, disque, mémoire, erreurs |
+
+> [!madagascar]
+> Choisissez un hébergeur avec des serveurs proches de vos utilisateurs (Europe, Afrique du Sud, océan Indien selon les offres) et un moyen de paiement que vous pouvez utiliser. Pour un client, **le serveur est à son nom** et à ses frais ; vous recevez un accès personnel. Vérifiez les prix sur les sites officiels.
+
+> [!retenir]
+> - PhpStorm : refactorisation, débogage, base de données et tests intégrés.
+> - Copilot : utile pour le répétitif, jamais sans relecture, avec l''accord du client.
+> - Un framework maîtrisé à fond : routes, validation, ORM, migrations, files, tests.
+> - Docker pour une application identique partout.
+> - Un VPS sécurisé en 10 points, avec sauvegardes hors serveur testées.
+
+## Exercice pratique : un environnement professionnel
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Réécrivez 3 routes de votre API Mofo Express avec un framework (Laravel, Symfony ou NestJS), avec validation et autorisation.
+> 2. Ajoutez une migration et un test de fonctionnalité par route.
+> 3. Conteneurisez l''application et sa base avec Docker Compose.
+> 4. Préparez un VPS (ou une machine virtuelle locale) avec la liste de contrôle en 10 points.
+> 5. Déployez l''application et testez une restauration de sauvegarde.
+>
+> **À livrer** : le lien du dépôt, votre fichier compose et votre liste de contrôle remplie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 1, 0, 'Comment se connecter en SSH à un VPS de production ?', '["Par e-mail","En root avec un mot de passe simple","Sans authentification","Par clé, avec la connexion par mot de passe désactivée"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 1, 1, 'Où garder les sauvegardes ?', '["Hors du serveur, avec une restauration testée","Sur le même disque seulement","Nulle part","Dans le dépôt Git public"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 1, 2, 'Qu''apporte Docker ?', '["Un design plus joli","Une base de données gratuite à vie","La même application identique partout","Un nom de domaine"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-a', 2, 'Qualité et rapidité : tests, index, cache, idempotence et surveillance', 'Niveaux de tests et intégration continue, EXPLAIN et index, requêtes N+1, cache et files d''attente, idempotence des webhooks de paiement, journaux et alertes.', 'Une application professionnelle doit rester rapide quand les données grossissent, ne pas perdre de données en cas de panne, et pouvoir évoluer chaque semaine sans régression. Ce module vous donne les méthodes des équipes back-end : tests à plusieurs niveaux, intégration continue, performance des bases de données, traitements en arrière-plan, journaux et surveillance.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une stratégie de tests et l''intégration continue.
+> 2. Diagnostiquer une requête lente et créer les bons index.
+> 3. Utiliser le cache et les files d''attente.
+> 4. Rendre les traitements fiables face aux doublons et aux pannes.
+> 5. Mettre en place journaux, surveillance et alertes.
+
+## Les tests et l''intégration continue
+
+| Niveau | Ce qu''il vérifie | Exemple |
+| --- | --- | --- |
+| **Unitaire** | Une fonction ou une classe seule | Calcul du total d''une commande |
+| **Intégration** | Le code avec la vraie base de données | Création d''une commande et de ses lignes |
+| **Fonctionnel (API)** | Une route complète, avec authentification | POST /api/commandes renvoie 201 et le bon total |
+| **Contrat** | Le format échangé avec un autre service | Le webhook de paiement est bien compris |
+
+```yaml
+# .github/workflows/ci.yml
+name: CI
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_PASSWORD: test }
+        ports: ["5432:5432"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+        env: { DATABASE_URL: postgres://postgres:test@localhost:5432/postgres }
+```
+
+> [!astuce]
+> Quand vous corrigez un bug, écrivez d''abord le **test qui le reproduit**, puis la correction. Le bug ne reviendra pas sans que l''intégration continue le signale.
+
+## La performance des bases de données
+
+### Diagnostiquer une requête lente
+
+```sql
+EXPLAIN ANALYZE
+SELECT * FROM commandes WHERE utilisateur_id = 4821 ORDER BY cree_le DESC LIMIT 20;
+-- Résultat : "Seq Scan on commandes" sur 1 200 000 lignes, 2 400 ms
+
+CREATE INDEX idx_commandes_utilisateur_date ON commandes (utilisateur_id, cree_le DESC);
+-- Nouveau résultat : "Index Scan", 3 ms
+```
+
+> [!definition] Index
+> Une structure qui permet à la base de trouver rapidement les lignes, comme l''index d''un livre. Il accélère les lectures, mais ralentit un peu les écritures et prend de la place : on crée les index utiles, pas tous les index possibles.
+
+### Les problèmes fréquents
+
+| Problème | Symptôme | Solution |
+| --- | --- | --- |
+| **Requêtes N+1** | 1 requête pour la liste + 1 requête par élément | Chargement groupé (eager loading, jointure) |
+| **Absence d''index** | Parcours complet de la table | Index sur les colonnes de filtre et de tri |
+| `SELECT *` sur de grosses tables | Données inutiles transférées | Sélectionner seulement les colonnes utiles |
+| **Pagination par OFFSET** sur de très grandes tables | Pages lointaines lentes | Pagination par curseur |
+
+## Le cache et les files d''attente
+
+| Outil | Usage | Exemple |
+| --- | --- | --- |
+| **Cache** (Redis, mémoire) | Garder un résultat coûteux pendant un temps | Liste des produits mise en cache 5 minutes |
+| **File d''attente** | Faire un traitement long en arrière-plan | Envoi d''e-mails, génération de PDF, appels à un service lent |
+
+> [!attention]
+> Le cache crée un risque de **données périmées**. Définissez pour chaque cache une **durée** et un moyen de l''**invalider** (par exemple quand un produit est modifié).
+
+## La fiabilité : doublons et pannes
+
+> [!definition] Idempotence
+> Une opération est idempotente si l''exécuter plusieurs fois donne le même résultat qu''une seule fois. C''est indispensable pour les paiements et les webhooks, qui peuvent être envoyés plusieurs fois.
+
+### Les règles pour les paiements et les webhooks
+
+1. **Vérifier la signature** de chaque webhook reçu.
+2. **Enregistrer l''identifiant** de l''événement avec une contrainte d''unicité : un événement déjà traité est ignoré.
+3. **Utiliser une transaction** pour mettre à jour paiement et commande ensemble.
+4. **Répondre vite** au webhook et faire le travail long dans une file d''attente.
+5. **Réconcilier** chaque jour : comparer les paiements reçus par le fournisseur et ceux enregistrés.
+
+> [!madagascar]
+> Avec les API de paiement mobile, les confirmations peuvent arriver **en retard** ou **plusieurs fois**, et les connexions des utilisateurs peuvent se couper pendant le paiement. Prévoyez des statuts intermédiaires (« en attente de confirmation »), une vérification de statut auprès du fournisseur, et une réconciliation quotidienne.
+
+## Journaux, surveillance et alertes
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Journaux structurés** | Format JSON avec date, niveau, identifiant de requête, message |
+| **Pas de données sensibles** dans les journaux | Pas de mots de passe, jetons, numéros complets |
+| **Surveillance de disponibilité** | Un service externe appelle une route de santé chaque minute |
+| **Indicateurs** | Temps de réponse, erreurs, utilisation du disque et de la mémoire |
+| **Alertes** | Seulement sur ce qui demande une action, envoyées à la bonne personne |
+| **Procédures d''incident** | Que faire, qui prévenir, comment revenir à la version précédente |
+
+> [!retenir]
+> - Des tests à plusieurs niveaux, un test pour chaque bug corrigé, l''intégration continue.
+> - EXPLAIN pour diagnostiquer, des index utiles, pas de N+1.
+> - Cache avec durée et invalidation, files d''attente pour les traitements longs.
+> - Idempotence, signatures, transactions et réconciliation pour les paiements.
+> - Journaux sans données sensibles, surveillance et alertes utiles.
+
+## Exercice pratique : un service fiable
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Ajoutez des tests d''intégration et un workflow d''intégration continue à votre projet.
+> 2. Générez 1 million de lignes de commandes de test, trouvez une requête lente avec EXPLAIN et corrigez-la.
+> 3. Ajoutez un cache avec invalidation sur la liste des produits.
+> 4. Simulez un webhook de paiement envoyé 3 fois et prouvez par un test qu''il n''est traité qu''une fois.
+> 5. Ajoutez des journaux structurés et une route de santé surveillée.
+>
+> **À livrer** : le lien du dépôt, le résultat d''EXPLAIN avant et après, et vos tests.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 2, 0, 'Que révèle EXPLAIN ANALYZE ?', '["Le mot de passe de la base","Comment la base exécute une requête et combien de temps elle prend","Le nombre d''utilisateurs","La couleur des tables"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 2, 1, 'Qu''est-ce qu''une opération idempotente ?', '["Une opération très rapide","Exécutée plusieurs fois, elle donne le même résultat qu''une seule fois","Une opération interdite","Une opération sans base de données"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 2, 2, 'Que ne faut-il jamais écrire dans les journaux ?', '["Le niveau d''erreur","La date","Mots de passe et jetons","L''identifiant de requête"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-a', 3, 'Clients internationaux : OWASP, protection des données, documentation et conception', 'Risques de l''OWASP Top 10, protection des données dès la conception, documentation OpenAPI et ADR, communication en anglais avec les heures en UTC, entretien de conception de système.', 'Les entreprises étrangères et les entreprises de services numériques qui travaillent pour l''Europe offrent les missions back-end les mieux payées. Elles attendent des standards de sécurité reconnus, le respect de la protection des données, une communication technique claire en anglais et la capacité à concevoir un système, pas seulement du code. Ce module vous y prépare.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les risques de l''OWASP Top 10 à votre code.
+> 2. Concevoir une application conforme aux principes de protection des données.
+> 3. Rédiger une documentation d''API et une décision d''architecture.
+> 4. Communiquer en anglais dans une équipe asynchrone.
+> 5. Réussir un entretien de conception de système.
+
+## Les risques de sécurité les plus courants
+
+> [!definition] OWASP Top 10
+> Une liste de référence, publiée par la fondation OWASP, des risques de sécurité les plus critiques des applications web. Elle est mise à jour régulièrement et sert de base à beaucoup d''exigences de clients.
+
+| Risque (exemples de la liste) | Exemple | Protection |
+| --- | --- | --- |
+| **Contrôle d''accès défaillant** | Un client lit la commande d''un autre en changeant l''identifiant dans l''URL | Vérifier les droits sur chaque ressource, côté serveur |
+| **Défaillances cryptographiques** | Mots de passe en MD5, données sensibles en clair | Algorithmes adaptés, HTTPS, chiffrement des données sensibles |
+| **Injection** | Injection SQL | Requêtes préparées, ORM, validation |
+| **Mauvaise configuration** | Mode débogage actif en production | Configuration de production revue |
+| **Composants vulnérables** | Bibliothèque non mise à jour | Mises à jour régulières, audit des dépendances |
+| **Authentification défaillante** | Pas de limite de tentatives | Limitation, double authentification, sessions sûres |
+| **Journalisation insuffisante** | Attaque non détectée | Journaux de sécurité et alertes |
+
+> [!attention]
+> Ne testez jamais la sécurité d''un système **sans autorisation écrite** de son propriétaire. Pour vous entraîner, utilisez vos propres applications ou des environnements d''entraînement prévus pour cela.
+
+## La protection des données dès la conception
+
+| Principe | Application |
+| --- | --- |
+| **Minimisation** | Ne collecter que les champs nécessaires |
+| **Limitation de la conservation** | Supprimer ou anonymiser les données après une durée définie |
+| **Sécurité** | Chiffrement, accès limités, journaux d''accès |
+| **Droits des personnes** | Pouvoir exporter, corriger et supprimer les données d''un utilisateur |
+| **Sous-traitants** | Savoir où sont hébergées les données et par qui (hébergeur, e-mails, SMS) |
+
+Le RGPD s''applique dès qu''une application traite les données de personnes en Europe ; Madagascar a sa propre loi sur la protection des données personnelles. Les choix juridiques reviennent au client et à ses conseillers ; votre rôle est de rendre la conformité **techniquement possible**.
+
+## La documentation professionnelle
+
+### La documentation d''API (OpenAPI)
+
+```yaml
+paths:
+  /api/commandes:
+    post:
+      summary: Créer une commande
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lignes]
+              properties:
+                lignes:
+                  type: array
+                  items: { type: object, properties: { produit_id: { type: integer }, quantite: { type: integer, minimum: 1 } } }
+      responses:
+        "201": { description: Commande créée }
+        "401": { description: Connexion requise }
+        "422": { description: Données invalides }
+```
+
+### La décision d''architecture
+
+> [!definition] ADR (Architecture Decision Record)
+> Une courte note qui garde la trace d''une décision technique : le contexte, la décision, les options écartées et les conséquences. Elle évite de refaire les mêmes débats et aide les nouveaux arrivants.
+
+```
+ADR 007 – Utiliser une file d''attente pour les webhooks de paiement
+Contexte : les webhooks arrivent en double et certains traitements prennent 5 secondes.
+Décision : répondre immédiatement au webhook, enregistrer l''événement (identifiant unique), traiter dans une file.
+Options écartées : traitement direct (lent, risque d''expiration).
+Conséquences : besoin de Redis en production ; surveillance de la file à ajouter.
+```
+
+## Communiquer en anglais
+
+| Situation | Anglais |
+| --- | --- |
+| Point quotidien | "Yesterday I added idempotency to the payment webhook. Today I''m adding the daily reconciliation job. No blockers." |
+| Description de pull request | "This PR fixes an N+1 query on /orders (from 41 queries to 2). Tested with 10k orders." |
+| Incident | "Heads-up: the API returned 500 errors from 10:12 to 10:19 UTC due to a full disk. Logs rotated, disk alert added. Post-mortem to follow." |
+| Question | "Should orders be soft-deleted or hard-deleted when a user deletes their account?" |
+
+> [!madagascar]
+> Indiquez les heures d''incident en **UTC** dans vos messages à une équipe internationale : chacun les convertit dans son fuseau, et il n''y a pas de confusion entre l''heure d''Antananarivo, de Paris ou de Montréal.
+
+## L''entretien de conception de système
+
+### La méthode en 6 étapes
+
+1. **Clarifier les besoins** : fonctions, nombre d''utilisateurs, volumes, contraintes.
+2. **Estimer** les ordres de grandeur : requêtes par seconde, taille des données.
+3. **Proposer une architecture simple** : API, base de données, cache, file d''attente.
+4. **Détailler** le modèle de données et les routes principales.
+5. **Discuter des points difficiles** : pics de charge, pannes, sécurité, cohérence.
+6. **Expliquer les compromis** : pourquoi ce choix plutôt qu''un autre.
+
+> [!astuce]
+> Commencez **simple** et faites évoluer la conception quand l''interlocuteur ajoute des contraintes. Les recruteurs évaluent votre raisonnement et vos compromis, pas une architecture compliquée dès la première minute.
+
+> [!retenir]
+> - L''OWASP Top 10 comme liste de contrôle, et jamais de test sans autorisation.
+> - Une application qui rend la protection des données techniquement possible.
+> - Une documentation OpenAPI et des ADR pour les décisions.
+> - Des messages en anglais clairs, avec les heures en UTC.
+> - La conception de système en 6 étapes, simple puis détaillée.
+
+## Exercice pratique : prêt pour l''international
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Vérifiez votre projet avec les 7 risques du tableau et corrigez ce qui doit l''être.
+> 2. Ajoutez l''export et la suppression des données d''un utilisateur.
+> 3. Rédigez la documentation OpenAPI de 5 routes et 2 ADR.
+> 4. Rédigez en anglais 3 descriptions de pull request et un message d''incident.
+> 5. Entraînez-vous à concevoir à voix haute « un service de réservation de taxi-brousse » en 45 minutes.
+>
+> **À livrer** : vos corrections, votre documentation, vos ADR, vos textes en anglais et votre schéma de conception.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 3, 0, 'Comment protéger contre le contrôle d''accès défaillant ?', '["Rien","Utiliser des couleurs différentes","Cacher l''identifiant dans l''URL","Vérifier les droits sur chaque ressource côté serveur"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 3, 1, 'Qu''est-ce qu''un ADR ?', '["Un mot de passe","Un serveur","Un type de base de données","Une note qui garde la trace d''une décision technique"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 3, 2, 'Par quoi commencer un entretien de conception de système ?', '["Dessiner une architecture très complexe","Clarifier les besoins","Choisir le langage","Écrire du code"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-1-a', 4, 'Développer sa carrière : tarif, maintenance, équipe et évolution', 'Trois voies, tarif journalier, chiffrage avec les risques, formules de maintenance et clauses du contrat, astreinte réaliste, équipe et évolutions.', 'Un développeur back-end confirmé peut construire une carrière solide depuis Madagascar : poste à distance dans une équipe étrangère, missions en freelance, contrats de maintenance réguliers, ou petite équipe de développement. Ce dernier module vous aide à choisir votre voie, à chiffrer avec les risques et à construire des revenus réguliers.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste à distance, freelance et équipe.
+> 2. Fixer un tarif journalier et chiffrer un projet avec ses risques.
+> 3. Vendre des contrats de maintenance et d''exploitation.
+> 4. Organiser une petite équipe avec des règles de qualité.
+> 5. Préparer votre évolution technique.
+
+## Les trois voies
+
+| Voie | Avantages | Points de vigilance |
+| --- | --- | --- |
+| **Salarié à distance** | Revenu stable, équipe, systèmes à grande échelle | Forme du contrat, paiement adapté à Madagascar, horaires communs |
+| **Freelance** | Tarif plus élevé, choix des projets | Prospection, responsabilité sur la production |
+| **Petite équipe** | Projets plus gros, revenus multipliés | Gestion, qualité, recrutement |
+
+## Fixer son tarif et chiffrer
+
+### Le tarif journalier
+
+> [!exemple] Calcul
+> Revenu visé : 40 000 000 Ar par an, 180 jours facturables : environ 222 000 Ar par jour. Pour un client européen, comparez avec les tarifs des développeurs back-end de son marché et de votre niveau, puis fixez votre prix en euros.
+> *(Montants donnés en exemple.)*
+
+### Chiffrer avec les risques
+
+| Tâche | Basse | Haute | Risque principal |
+| --- | --- | --- | --- |
+| Conception et modèle de données | 2 j | 3 j | Besoins encore flous |
+| API principale (12 routes) | 6 j | 9 j | Règles métier découvertes en cours |
+| Intégration de paiement | 3 j | 7 j | Documentation et environnement de test du fournisseur |
+| Tests et intégration continue | 3 j | 4 j | — |
+| Déploiement, surveillance, sauvegardes | 2 j | 3 j | Accès au serveur du client |
+| Documentation | 1 j | 2 j | — |
+| **Total** | **17 j** | **28 j** | |
+
+> [!attention]
+> Les **intégrations externes** (paiement, services publics, anciens systèmes) sont souvent les plus risquées : documentation incomplète, environnement de test indisponible, délais d''accès. Prévoyez une fourchette large et écrivez dans le devis ce qui dépend du fournisseur ou du client.
+
+## La maintenance et l''exploitation
+
+| Formule | Contenu (exemple) |
+| --- | --- |
+| **Sécurité** | Mises à jour mensuelles, surveillance, sauvegardes vérifiées, correction des incidents critiques |
+| **Évolution** | Sécurité + 2 à 4 jours de petites évolutions par mois |
+| **Partenaire technique** | Évolution + revues d''architecture, audit trimestriel, astreinte définie |
+
+### Ce qu''il faut écrire dans le contrat
+
+1. **Le périmètre** : applications, serveurs, services concernés.
+2. **Les délais de réaction** par niveau de gravité (heures ouvrées ou non).
+3. **Les heures de disponibilité**, dans le fuseau du client et le vôtre.
+4. **Ce qui n''est pas couvert** : pannes de l''hébergeur, services tiers.
+5. **Les accès** et la responsabilité des comptes (au nom du client).
+
+> [!madagascar]
+> Si vous proposez une **astreinte** (intervention hors des heures normales), soyez réaliste : délestages, connexion, sommeil. Prévoyez une connexion de secours, une batterie pour l''ordinateur et le routeur, et, à plusieurs, un planning d''astreinte partagé. Ne promettez que ce que vous pouvez tenir.
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Vous** | Architecture, revue de code, relation client, devis |
+| **Développeurs** | Routes, tests, corrections |
+| **Partenaire front-end** | Interfaces (voir la formation Développeur front-end) |
+| **Partenaire DevOps** (si besoin) | Infrastructure avancée |
+
+### Les règles
+
+1. **Conventions écrites** : structure, nommage, règles de pull request, ADR.
+2. **Revue de code** obligatoire et intégration continue sur tous les projets.
+3. **Accès personnels** et limités aux systèmes des clients.
+4. **Accord des clients** pour la sous-traitance, accords de confidentialité.
+5. **Contrats** et paiement juste et à temps ; déclaration de l''activité (NIF et carte statistique) et conseil d''un comptable avant d''embaucher.
+
+> [!astuce]
+> Les possibilités de PayPal sont limitées pour Madagascar : comparez Payoneer et le virement international pour vos clients étrangers, et gardez une trace de chaque paiement.
+
+## Préparer votre évolution technique
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur back-end senior** | Architecture, performance à grande échelle, accompagnement des juniors |
+| **Ingénieur DevOps ou plateforme** | Kubernetes, infrastructure en code, observabilité (voir la formation Administrateur systèmes et DevOps) |
+| **Ingénieur sécurité applicative** | Tests de sécurité, revue de code orientée sécurité (voir la formation Analyste en cybersécurité) |
+| **Ingénieur de données** | Pipelines, entrepôts de données |
+| **Architecte ou lead technique** | Conception de systèmes, décisions techniques, communication avec la direction |
+
+> [!retenir]
+> - Choisissez votre voie : salarié à distance, freelance ou équipe.
+> - Chiffrez en fourchette, avec une attention particulière aux intégrations externes.
+> - Des contrats de maintenance avec délais, disponibilités et limites écrits.
+> - Une équipe avec conventions, revues, intégration continue et accès limités.
+> - Évoluez vers le senior, le DevOps, la sécurité, les données ou l''architecture.
+
+## Exercice pratique : votre plan de carrière
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la en 5 lignes.
+> 2. Calculez votre tarif journalier en ariary et en euros.
+> 3. Chiffrez un projet avec une fourchette et ses risques, et rédigez le devis.
+> 4. Rédigez votre contrat de maintenance type.
+> 5. Rédigez les conventions de votre future équipe.
+> 6. Fixez vos objectifs techniques et professionnels à 12 mois.
+>
+> **À livrer** : votre choix, vos calculs, votre devis, votre contrat, vos conventions et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 4, 0, 'Quelle partie d''un projet est souvent la plus risquée ?', '["Les intégrations externes","La couleur du logo","Le choix du nom des variables","Le README"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 4, 1, 'Que préciser dans un contrat de maintenance ?', '["Délais de réaction, disponibilités et ce qui n''est pas couvert","Un engagement sans limite","Le salaire du client","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-1-a', 4, 2, '40 000 000 Ar pour 180 jours donnent un tarif d''environ…', '["180 000 Ar par jour","400 000 Ar par jour","40 000 Ar par jour","222 000 Ar par jour"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quelle spécialité relie l''application aux services de paiement ?', '["SEO","Intégrations et paiements","Reprise de code","Design"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quel domaine d''audit vérifie la restauration testée ?', '["Architecture","Exploitation","Tests","Performance"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Pourquoi la moyenne du temps de réponse ne suffit-elle pas ?', '["Elle est toujours fausse","Elle cache les utilisateurs qui attendent longtemps","Elle est interdite","Elle est trop précise"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que faut-il vérifier avant d''utiliser Copilot sur le code d''un client ?', '["Que le client l''autorise","Le prix du VPS","Rien","La couleur de l''éditeur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'À quoi servent les migrations d''un framework ?', '["Faire évoluer le schéma de la base de façon versionnée","Déménager le serveur","Envoyer des e-mails","Traduire le site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'À quoi servent les files d''attente ?', '["Ranger les fichiers","Faire les traitements longs en arrière-plan","Calculer la TVA","Afficher des pages"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quels ports ouvrir sur un serveur web en général ?', '["Seulement le port de la base de données","Aucun","22, 80 et 443","Tous"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'La base de données doit-elle être exposée sur Internet ?', '["Oui, sans mot de passe","Oui, toujours","Non","Oui, le week-end"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que faire d''abord quand on corrige un bug ?', '["Supprimer les tests","Publier directement","Changer de framework","Écrire le test qui le reproduit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Qu''est-ce qu''une requête N+1 ?', '["Une requête sans résultat","Une requête interdite","Une requête pour la liste puis une par élément","Une requête très rapide"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quel est l''inconvénient d''un index ?', '["Il supprime des données","Il rend la base illisible","Aucun","Il ralentit un peu les écritures et prend de la place"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que définir pour chaque cache ?', '["Un mot de passe public","Une couleur","Rien","Une durée et un moyen d''invalidation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que vérifier sur chaque webhook reçu ?', '["Rien","Sa longueur","Sa couleur","Sa signature"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que faire chaque jour pour les paiements ?', '["Supprimer les paiements","Une réconciliation avec le fournisseur","Changer de fournisseur","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quand déclencher une alerte ?', '["Pour chaque requête","Quand une action est nécessaire","Jamais","Chaque minute sans raison"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Qu''est-ce que l''OWASP Top 10 ?', '["Un classement de frameworks","Une liste de référence des risques de sécurité des applications web","Un hébergeur","Un langage"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Peut-on tester la sécurité d''un site sans autorisation ?', '["Non","Oui, la nuit","Oui","Oui, si le site est petit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Qu''est-ce que la minimisation des données ?', '["Supprimer les sauvegardes","Ne collecter que les champs nécessaires","Compresser la base","Réduire la police"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quel format sert à documenter une API ?', '["JPEG","MP3","DOCX","OpenAPI"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Dans quel fuseau indiquer les heures d''incident à une équipe internationale ?', '["Au hasard","Seulement Antananarivo","Aucun","UTC"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Comment aborder la conception de système ?', '["Parler seulement du langage","Refuser de répondre","Commencer simple et faire évoluer selon les contraintes","Commencer par l''architecture la plus complexe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que préciser sur les intégrations dans le devis ?', '["Ce qui dépend du fournisseur ou du client","Qu''elles sont toujours faciles","Rien","Un prix fixe sans condition"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Que faut-il pour proposer une astreinte depuis Madagascar ?', '["Promettre 24 h sur 24 seul","Un seul téléphone","Connexion de secours, batterie et planning réaliste","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quelle règle d''équipe est obligatoire ?', '["Publier sans relire","Travailler sans conventions","La revue de code et l''intégration continue","Partager les mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-a', 'Quelle évolution demande Kubernetes et l''infrastructure en code ?', '["Professeur de langue","Ingénieur DevOps ou plateforme","Graphiste","Prospecteur"]'::jsonb, 1);
 
 -- dev-1-f
 delete from public.exam_questions where course_id = 'dev-1-f';

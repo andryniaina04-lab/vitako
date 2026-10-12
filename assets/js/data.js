@@ -2005,6 +2005,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-1-a": {
+  "hours": 20,
+  "description": "Ce niveau Avancé fait du développeur back-end un professionnel qui construit des systèmes fiables, rapides et sûrs : spécialité (frameworks, intégrations et paiements, performance, sécurité, reprise de code, exploitation), audit technique en 7 domaines, outils payants (PhpStorm, GitHub Copilot, VPS) avec framework et Docker, tests, intégration continue, index, cache, idempotence et surveillance, OWASP Top 10, protection des données, documentation et conception de système, puis tarif, maintenance et équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer une application et mesurer sa fiabilité",
+   "Utiliser PhpStorm, Copilot, un framework et Docker de façon professionnelle",
+   "Préparer et sécuriser un VPS de production",
+   "Tester, optimiser la base de données et fiabiliser paiements et webhooks",
+   "Appliquer l'OWASP Top 10, documenter et concevoir un système",
+   "Chiffrer avec les risques, vendre la maintenance et organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et mesurer la fiabilité",
+    "summary": "Les 6 spécialités avancées, l'audit en 7 domaines, les priorités du critique au faible, la disponibilité, le temps de réponse p95 et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit technique d'une application back-end",
+     "Mesurer la fiabilité et la performance",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : PhpStorm, Copilot, framework, Docker et VPS",
+    "summary": "Fonctions de PhpStorm, bons usages de Copilot, structure d'une application avec un framework, conteneurs Docker et liste de contrôle en 10 points pour un VPS.",
+    "sections": [
+     "PhpStorm",
+     "GitHub Copilot : les bons usages",
+     "Structurer avec un framework",
+     "Docker : la même application partout",
+     "compose.yaml (développement)",
+     "Préparer et sécuriser un VPS",
+     "Exercice pratique : un environnement professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : tests, index, cache, idempotence et surveillance",
+    "summary": "Niveaux de tests et intégration continue, EXPLAIN et index, requêtes N+1, cache et files d'attente, idempotence des webhooks de paiement, journaux et alertes.",
+    "sections": [
+     "Les tests et l'intégration continue",
+     ".github/workflows/ci.yml",
+     "La performance des bases de données",
+     "Le cache et les files d'attente",
+     "La fiabilité : doublons et pannes",
+     "Journaux, surveillance et alertes",
+     "Exercice pratique : un service fiable"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : OWASP, protection des données, documentation et conception",
+    "summary": "Risques de l'OWASP Top 10, protection des données dès la conception, documentation OpenAPI et ADR, communication en anglais avec les heures en UTC, entretien de conception de système.",
+    "sections": [
+     "Les risques de sécurité les plus courants",
+     "La protection des données dès la conception",
+     "La documentation professionnelle",
+     "Communiquer en anglais",
+     "L'entretien de conception de système",
+     "Exercice pratique : prêt pour l'international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer sa carrière : tarif, maintenance, équipe et évolution",
+    "summary": "Trois voies, tarif journalier, chiffrage avec les risques, formules de maintenance et clauses du contrat, astreinte réaliste, équipe et évolutions.",
+    "sections": [
+     "Les trois voies",
+     "Fixer son tarif et chiffrer",
+     "La maintenance et l'exploitation",
+     "Organiser une petite équipe",
+     "Préparer votre évolution technique",
+     "Exercice pratique : votre plan de carrière"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-1-f": {
   "hours": 20,
   "description": "Le développeur back-end construit la partie serveur des applications : données, règles, sécurité et API. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des agences, à Madagascar et à l'étranger, avec PHP, Node.js et SQL : HTTP et API REST, bases de données, sécurité, comptes et droits, paiements, tests et déploiement. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",

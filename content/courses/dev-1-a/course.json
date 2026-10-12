@@ -1,0 +1,97 @@
+{
+  "id": "dev-1-a",
+  "hours": 20,
+  "description": "Ce niveau Avancé fait du développeur back-end un professionnel qui construit des systèmes fiables, rapides et sûrs : spécialité (frameworks, intégrations et paiements, performance, sécurité, reprise de code, exploitation), audit technique en 7 domaines, outils payants (PhpStorm, GitHub Copilot, VPS) avec framework et Docker, tests, intégration continue, index, cache, idempotence et surveillance, OWASP Top 10, protection des données, documentation et conception de système, puis tarif, maintenance et équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer une application et mesurer sa fiabilité",
+    "Utiliser PhpStorm, Copilot, un framework et Docker de façon professionnelle",
+    "Préparer et sécuriser un VPS de production",
+    "Tester, optimiser la base de données et fiabiliser paiements et webhooks",
+    "Appliquer l'OWASP Top 10, documenter et concevoir un système",
+    "Chiffrer avec les risques, vendre la maintenance et organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et mesurer la fiabilité",
+      "summary": "Les 6 spécialités avancées, l'audit en 7 domaines, les priorités du critique au faible, la disponibilité, le temps de réponse p95 et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie un temps de réponse p95 de 800 ms ?", "options": ["95 % des requêtes répondent en moins de 800 ms", "La moyenne est de 800 ms", "Toutes les requêtes durent 800 ms", "Le serveur a 95 utilisateurs"], "correct": 0 },
+        { "q": "Quelle priorité donner à une faille de sécurité exploitable ?", "options": ["Critique, immédiate", "Faible", "Moyenne", "À voir l'an prochain"], "correct": 0 },
+        { "q": "Pourquoi MD5 pour les mots de passe est-il un problème ?", "options": ["Ce n'est plus un algorithme sûr", "Il est trop lent", "Il est interdit en PHP", "Ce n'est pas un problème"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : PhpStorm, Copilot, framework, Docker et VPS",
+      "summary": "Fonctions de PhpStorm, bons usages de Copilot, structure d'une application avec un framework, conteneurs Docker et liste de contrôle en 10 points pour un VPS.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment se connecter en SSH à un VPS de production ?", "options": ["Par clé, avec la connexion par mot de passe désactivée", "En root avec un mot de passe simple", "Sans authentification", "Par e-mail"], "correct": 0 },
+        { "q": "Où garder les sauvegardes ?", "options": ["Hors du serveur, avec une restauration testée", "Sur le même disque seulement", "Nulle part", "Dans le dépôt Git public"], "correct": 0 },
+        { "q": "Qu'apporte Docker ?", "options": ["La même application identique partout", "Un design plus joli", "Une base de données gratuite à vie", "Un nom de domaine"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : tests, index, cache, idempotence et surveillance",
+      "summary": "Niveaux de tests et intégration continue, EXPLAIN et index, requêtes N+1, cache et files d'attente, idempotence des webhooks de paiement, journaux et alertes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que révèle EXPLAIN ANALYZE ?", "options": ["Comment la base exécute une requête et combien de temps elle prend", "Le mot de passe de la base", "Le nombre d'utilisateurs", "La couleur des tables"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une opération idempotente ?", "options": ["Exécutée plusieurs fois, elle donne le même résultat qu'une seule fois", "Une opération très rapide", "Une opération interdite", "Une opération sans base de données"], "correct": 0 },
+        { "q": "Que ne faut-il jamais écrire dans les journaux ?", "options": ["Mots de passe et jetons", "La date", "Le niveau d'erreur", "L'identifiant de requête"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : OWASP, protection des données, documentation et conception",
+      "summary": "Risques de l'OWASP Top 10, protection des données dès la conception, documentation OpenAPI et ADR, communication en anglais avec les heures en UTC, entretien de conception de système.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment protéger contre le contrôle d'accès défaillant ?", "options": ["Vérifier les droits sur chaque ressource côté serveur", "Cacher l'identifiant dans l'URL", "Utiliser des couleurs différentes", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un ADR ?", "options": ["Une note qui garde la trace d'une décision technique", "Un type de base de données", "Un mot de passe", "Un serveur"], "correct": 0 },
+        { "q": "Par quoi commencer un entretien de conception de système ?", "options": ["Clarifier les besoins", "Dessiner une architecture très complexe", "Choisir le langage", "Écrire du code"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer sa carrière : tarif, maintenance, équipe et évolution",
+      "summary": "Trois voies, tarif journalier, chiffrage avec les risques, formules de maintenance et clauses du contrat, astreinte réaliste, équipe et évolutions.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle partie d'un projet est souvent la plus risquée ?", "options": ["Les intégrations externes", "Le choix du nom des variables", "Le README", "La couleur du logo"], "correct": 0 },
+        { "q": "Que préciser dans un contrat de maintenance ?", "options": ["Délais de réaction, disponibilités et ce qui n'est pas couvert", "Rien", "Un engagement sans limite", "Le salaire du client"], "correct": 0 },
+        { "q": "40 000 000 Ar pour 180 jours donnent un tarif d'environ…", "options": ["222 000 Ar par jour", "40 000 Ar par jour", "180 000 Ar par jour", "400 000 Ar par jour"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité relie l'application aux services de paiement ?", "options": ["Intégrations et paiements", "Reprise de code", "Design", "SEO"], "correct": 0 },
+    { "q": "Quel domaine d'audit vérifie la restauration testée ?", "options": ["Exploitation", "Architecture", "Performance", "Tests"], "correct": 0 },
+    { "q": "Pourquoi la moyenne du temps de réponse ne suffit-elle pas ?", "options": ["Elle cache les utilisateurs qui attendent longtemps", "Elle est toujours fausse", "Elle est interdite", "Elle est trop précise"], "correct": 0 },
+    { "q": "Que faut-il vérifier avant d'utiliser Copilot sur le code d'un client ?", "options": ["Que le client l'autorise", "La couleur de l'éditeur", "Rien", "Le prix du VPS"], "correct": 0 },
+    { "q": "À quoi servent les migrations d'un framework ?", "options": ["Faire évoluer le schéma de la base de façon versionnée", "Déménager le serveur", "Traduire le site", "Envoyer des e-mails"], "correct": 0 },
+    { "q": "À quoi servent les files d'attente ?", "options": ["Faire les traitements longs en arrière-plan", "Ranger les fichiers", "Afficher des pages", "Calculer la TVA"], "correct": 0 },
+    { "q": "Quels ports ouvrir sur un serveur web en général ?", "options": ["22, 80 et 443", "Tous", "Aucun", "Seulement le port de la base de données"], "correct": 0 },
+    { "q": "La base de données doit-elle être exposée sur Internet ?", "options": ["Non", "Oui, toujours", "Oui, sans mot de passe", "Oui, le week-end"], "correct": 0 },
+    { "q": "Que faire d'abord quand on corrige un bug ?", "options": ["Écrire le test qui le reproduit", "Supprimer les tests", "Publier directement", "Changer de framework"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une requête N+1 ?", "options": ["Une requête pour la liste puis une par élément", "Une requête très rapide", "Une requête interdite", "Une requête sans résultat"], "correct": 0 },
+    { "q": "Quel est l'inconvénient d'un index ?", "options": ["Il ralentit un peu les écritures et prend de la place", "Il rend la base illisible", "Il supprime des données", "Aucun"], "correct": 0 },
+    { "q": "Que définir pour chaque cache ?", "options": ["Une durée et un moyen d'invalidation", "Une couleur", "Rien", "Un mot de passe public"], "correct": 0 },
+    { "q": "Que vérifier sur chaque webhook reçu ?", "options": ["Sa signature", "Sa couleur", "Sa longueur", "Rien"], "correct": 0 },
+    { "q": "Que faire chaque jour pour les paiements ?", "options": ["Une réconciliation avec le fournisseur", "Rien", "Supprimer les paiements", "Changer de fournisseur"], "correct": 0 },
+    { "q": "Quand déclencher une alerte ?", "options": ["Quand une action est nécessaire", "Pour chaque requête", "Jamais", "Chaque minute sans raison"], "correct": 0 },
+    { "q": "Qu'est-ce que l'OWASP Top 10 ?", "options": ["Une liste de référence des risques de sécurité des applications web", "Un classement de frameworks", "Un hébergeur", "Un langage"], "correct": 0 },
+    { "q": "Peut-on tester la sécurité d'un site sans autorisation ?", "options": ["Non", "Oui", "Oui, la nuit", "Oui, si le site est petit"], "correct": 0 },
+    { "q": "Qu'est-ce que la minimisation des données ?", "options": ["Ne collecter que les champs nécessaires", "Compresser la base", "Supprimer les sauvegardes", "Réduire la police"], "correct": 0 },
+    { "q": "Quel format sert à documenter une API ?", "options": ["OpenAPI", "MP3", "JPEG", "DOCX"], "correct": 0 },
+    { "q": "Dans quel fuseau indiquer les heures d'incident à une équipe internationale ?", "options": ["UTC", "Seulement Antananarivo", "Aucun", "Au hasard"], "correct": 0 },
+    { "q": "Comment aborder la conception de système ?", "options": ["Commencer simple et faire évoluer selon les contraintes", "Commencer par l'architecture la plus complexe", "Refuser de répondre", "Parler seulement du langage"], "correct": 0 },
+    { "q": "Que préciser sur les intégrations dans le devis ?", "options": ["Ce qui dépend du fournisseur ou du client", "Rien", "Qu'elles sont toujours faciles", "Un prix fixe sans condition"], "correct": 0 },
+    { "q": "Que faut-il pour proposer une astreinte depuis Madagascar ?", "options": ["Connexion de secours, batterie et planning réaliste", "Rien", "Promettre 24 h sur 24 seul", "Un seul téléphone"], "correct": 0 },
+    { "q": "Quelle règle d'équipe est obligatoire ?", "options": ["La revue de code et l'intégration continue", "Publier sans relire", "Partager les mots de passe", "Travailler sans conventions"], "correct": 0 },
+    { "q": "Quelle évolution demande Kubernetes et l'infrastructure en code ?", "options": ["Ingénieur DevOps ou plateforme", "Professeur de langue", "Graphiste", "Prospecteur"], "correct": 0 }
+  ]
+}
