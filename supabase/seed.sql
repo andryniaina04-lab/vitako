@@ -63,7 +63,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 17, false),
   ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, false),
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
-  ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 11, false),
+  ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
   ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, false),
   ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 12, false),
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 17, false),
@@ -780,6 +780,653 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faut-il pour commencer une mission ?', '["Une promesse orale suffit","Payer des frais d''inscription","Un contrat ou un accord écrit","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["10 000 Ar","5 000 Ar","100 000 Ar","1 000 Ar"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment protéger sa voix pendant une journée d''appels ?', '["Boire de l''eau et prendre ses pauses","Enchaîner sans pause","Boire très froid toute la journée","Parler plus fort"]'::jsonb, 0);
+
+-- data-0-f
+delete from public.exam_questions where course_id = 'data-0-f';
+delete from public.module_questions where course_id = 'data-0-f';
+delete from public.lessons where course_id = 'data-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-f', 0, 'Le métier d''annotateur de données IA depuis Madagascar', 'Pourquoi l''IA a besoin d''annotateurs, les 6 types de tâches, qui donne du travail, les réalités du métier et le poste de travail.', 'Les intelligences artificielles (IA) qui reconnaissent un visage, lisent un texte ou conduisent une voiture ont toutes appris à partir d''exemples **annotés par des humains**. L''annotateur de données est la personne qui prépare ces exemples : il entoure des objets sur des images, classe des textes, transcrit des sons. C''est un métier accessible depuis Madagascar, qui demande surtout de la rigueur et de la concentration. Ce premier module vous montre ce métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer avec des mots simples pourquoi une IA a besoin de données annotées.
+> 2. Citer les 6 grands types de tâches d''annotation.
+> 3. Repérer qui donne du travail aux annotateurs.
+> 4. Connaître les qualités demandées et les réalités du métier.
+> 5. Préparer votre poste de travail.
+
+## Pourquoi une IA a besoin d''annotateurs
+
+Une IA n''apprend pas comme un enfant qui regarde le monde. Elle apprend à partir de **milliers d''exemples** dont on lui donne la bonne réponse.
+
+> [!exemple] Apprendre à reconnaître un zébu
+> Pour qu''une IA reconnaisse les zébus sur des photos, on lui montre 10 000 photos. Sur chacune, un annotateur a dessiné un cadre autour de chaque zébu et écrit « zébu ». L''IA compare ses propres réponses à ces annotations, corrige ses erreurs, et finit par reconnaître des zébus sur des photos qu''elle n''a jamais vues.
+
+Si les annotations sont fausses ou imprécises, l''IA apprend des erreurs. C''est pour ça que les entreprises paient des annotateurs **rigoureux**.
+
+> [!definition] Données annotées
+> Des données (images, textes, sons, vidéos) auxquelles on a ajouté une information : une étiquette, un cadre, une catégorie, une transcription. On dit aussi données **étiquetées** ou **labellisées** (de l''anglais *label*, étiquette).
+
+## Les 6 grands types de tâches
+
+| N° | Type | Ce qu''on fait | Exemple |
+| --- | --- | --- | --- |
+| 1 | **Classification d''images** | Choisir une catégorie pour toute l''image | « Cette photo montre : un chat / un chien / autre » |
+| 2 | **Cadres de délimitation** | Dessiner un rectangle autour de chaque objet | Entourer chaque voiture et chaque piéton sur une photo de rue |
+| 3 | **Segmentation** | Suivre le contour exact d''un objet, au pixel près | Délimiter une route ou une rizière vue du ciel |
+| 4 | **Annotation de texte** | Classer un texte ou marquer des mots | « Cet avis est positif » ; surligner les noms de villes |
+| 5 | **Transcription audio** | Écrire ce qui est dit dans un enregistrement | Transcrire un appel au service client |
+| 6 | **Évaluation de réponses d''IA** | Juger la qualité d''une réponse écrite par une IA | Noter si la réponse est exacte, utile et sans danger |
+
+Les tâches **1, 2 et 4** sont les plus accessibles pour commencer.
+
+## Qui donne du travail aux annotateurs ?
+
+1. **Plateformes d''annotation en ligne** : elles reçoivent des projets d''entreprises du monde entier et les découpent en petites tâches pour des milliers d''annotateurs.
+2. **Entreprises d''annotation et centres d''externalisation**, y compris à Madagascar : elles recrutent des annotateurs, souvent avec une formation sur le projet, sur place ou à distance.
+3. **Laboratoires et startups d''IA** qui recrutent directement des annotateurs pour des projets précis.
+4. **Projets en langues rares** : le malagasy est une langue peu présente dans les données des IA, ce qui peut créer des besoins spécifiques (transcription, traduction, évaluation).
+
+> [!madagascar] Votre avantage
+> Le français, parfois l''anglais, et le **malagasy** : des projets cherchent justement des locuteurs de langues moins représentées. Madagascar compte aussi des entreprises d''externalisation habituées aux projets de données.
+
+## Les réalités du métier
+
+| Avantages | Difficultés |
+| --- | --- |
+| Accessible sans diplôme spécialisé | Tâches répétitives, qui demandent une grande concentration |
+| Travail depuis chez soi, horaires souvent flexibles | Travail parfois irrégulier sur les plateformes (des projets s''arrêtent sans prévenir) |
+| On apprend comment fonctionne l''IA | Paiement à la tâche : il faut être rapide **et** précis |
+| Possibilité d''évoluer (contrôle qualité, gestion de projet) | Tests d''entrée exigeants |
+
+### Les qualités demandées
+
+1. **Rigueur** : appliquer les consignes à la lettre, même sur la 500e image.
+2. **Concentration** : repérer le petit détail qui change tout.
+3. **Lecture attentive** : les consignes font souvent 10 à 30 pages.
+4. **Régularité** : la qualité doit rester la même du début à la fin.
+5. **Honnêteté** : ne pas cliquer au hasard pour aller plus vite (c''est détecté).
+
+## Préparer son poste de travail
+
+1. Un **ordinateur** (la plupart des tâches ne se font pas bien sur téléphone).
+2. Une **souris** : indispensable pour dessiner des cadres précis.
+3. Un **écran** le plus grand possible (un second écran pour les consignes, c''est l''idéal).
+4. Une **connexion stable** et un forfait mobile de secours.
+5. Un **casque** pour les tâches audio.
+6. Un endroit **calme** pour rester concentré.
+
+> [!astuce]
+> Travaillez par blocs de 45 à 50 minutes avec 10 minutes de pause. Après 2 heures sans pause, la précision baisse nettement, et c''est elle qui fait votre réputation.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer à annoter sans avoir lu toutes les consignes.
+> - Cliquer vite pour gagner plus : le contrôle qualité le détecte et peut exclure du projet.
+> - Croire les annonces qui promettent de gros revenus sans effort.
+> - Payer pour accéder à une plateforme ou à une « formation obligatoire » : les vraies plateformes ne font pas payer pour travailler.
+
+> [!retenir]
+> - Une IA apprend à partir d''exemples annotés par des humains.
+> - 6 types de tâches : classification, cadres, segmentation, texte, audio, évaluation de réponses.
+> - Plateformes, entreprises d''annotation et projets en langues rares donnent du travail.
+> - Rigueur, concentration et honnêteté comptent plus que la vitesse.
+
+## Exercice pratique : annoter à la main
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez 10 photos de votre téléphone (rue, marché, maison).
+> 2. Pour chacune, notez une **catégorie** (rue, intérieur, nature, nourriture, autre).
+> 3. Sur 3 photos, listez **tous les objets** que vous entoureriez (personnes, véhicules, animaux) et comptez-les.
+> 4. Écrivez 10 courts avis imaginaires sur un restaurant et classez-les : positif, négatif, neutre.
+> 5. Notez les cas où vous avez hésité, et pourquoi.
+>
+> **À livrer** : votre tableau des 10 photos, vos comptages, vos 10 avis classés et votre liste d''hésitations. Ces hésitations sont exactement ce que les consignes d''un projet doivent régler (module 2).', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 0, 0, 'Pourquoi une IA a-t-elle besoin de données annotées ?', '["Elle n''en a pas besoin","Elle apprend à partir d''exemples dont on lui donne la bonne réponse","Pour réduire la taille des fichiers","Pour décorer les images"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 0, 1, 'Que fait-on dans une tâche de « cadres de délimitation » ?', '["On dessine un rectangle autour de chaque objet","On classe un texte","On transcrit un son","On traduit une phrase"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 0, 2, 'Quelle qualité compte le plus pour un annotateur ?', '["La vitesse à tout prix","L''humour","La rigueur","La créativité"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-f', 1, 'Les bases : consignes, cadres, texte et qualité', 'Lire des consignes en 5 étapes, les 6 règles des cadres, la segmentation, le texte et les entités nommées, les cas limites et la mesure de la qualité.', 'Un annotateur est jugé sur une seule chose : la **qualité** de ses annotations. Elle dépend de trois savoir-faire : lire et appliquer des consignes, maîtriser les règles de chaque type d''annotation, et gérer les cas difficiles. Ce module vous les enseigne avec des règles précises et des exemples.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire des consignes d''annotation avec une méthode en 5 étapes.
+> 2. Dessiner des cadres de délimitation selon les 6 règles de base.
+> 3. Classer des textes et marquer des entités nommées.
+> 4. Traiter les cas limites sans deviner.
+> 5. Comprendre comment votre qualité est mesurée.
+
+## Lire les consignes : la méthode en 5 étapes
+
+Chaque projet a ses **consignes** (en anglais *guidelines*). Elles disent exactement quoi annoter, comment, et que faire dans les cas difficiles. Deux projets qui se ressemblent peuvent avoir des règles opposées.
+
+1. **Lisez tout une première fois**, sans rien annoter, pour comprendre le but du projet.
+2. **Faites la liste des catégories** (les étiquettes possibles) avec leur définition.
+3. **Étudiez les exemples** : ceux marqués « correct » et surtout ceux marqués « incorrect ».
+4. **Notez les cas limites** : ce qu''il faut faire quand on hésite.
+5. **Relisez les consignes** après vos 20 premières annotations : vous comprendrez des détails qui vous avaient échappé.
+
+> [!astuce]
+> Gardez une **fiche mémo** d''une page par projet, à côté de votre écran : les catégories, les 5 règles les plus importantes et les cas limites. Vous gagnerez du temps sans perdre en qualité.
+
+## Les cadres de délimitation : 6 règles de base
+
+> [!definition] Cadre de délimitation
+> Un rectangle dessiné autour d''un objet sur une image. En anglais : *bounding box*. Le cadre doit contenir l''objet entier, le plus serré possible.
+
+| N° | Règle | Pourquoi |
+| --- | --- | --- |
+| 1 | **Serré** : les bords du cadre touchent les bords de l''objet | Un cadre trop large apprend à l''IA que le fond fait partie de l''objet |
+| 2 | **Complet** : tout l''objet visible est dans le cadre (rétroviseurs, bras, queue…) | Un cadre coupé apprend une forme fausse |
+| 3 | **Un cadre par objet** : 5 personnes = 5 cadres | L''IA doit apprendre à compter et séparer |
+| 4 | **Objets partiellement cachés** : on encadre la partie **visible** seulement, sauf consigne contraire | On n''invente pas ce qu''on ne voit pas |
+| 5 | **Objets coupés par le bord de l''image** : on encadre jusqu''au bord | Même logique |
+| 6 | **Bonne étiquette** pour chaque cadre | Un piéton étiqueté « voiture » est une grave erreur |
+
+> [!exemple] Une photo de l''avenue de l''Indépendance
+> Sur la photo, on voit 3 voitures, dont une à moitié cachée par un bus, 1 bus, 6 piétons dont 2 coupés par le bord de l''image, et un vélo. Annotation correcte : **11 cadres**, chacun serré autour de la partie visible, avec l''étiquette exacte (voiture, bus, piéton, vélo). Le cycliste est-il un « piéton » ? Ce sont les consignes qui le disent, pas vous.
+
+## La segmentation
+
+Pour la segmentation, on suit le contour de l''objet point par point (polygone) ou on « colorie » les pixels.
+
+1. **Zoomez** pour placer les points sur le bord exact.
+2. Placez **plus de points dans les courbes**, moins dans les lignes droites.
+3. Ne laissez **ni trou ni débordement** entre deux objets voisins.
+
+## L''annotation de texte
+
+### Classer un texte
+
+On choisit une catégorie pour un texte entier : sentiment (positif, négatif, neutre), sujet (livraison, prix, qualité), intention (question, plainte, remerciement).
+
+| Texte | Sentiment | Pourquoi |
+| --- | --- | --- |
+| « Livraison rapide, produit conforme, merci ! » | Positif | Satisfaction claire |
+| « Le colis est arrivé. » | Neutre | Simple constat |
+| « Deuxième fois que la commande est en retard… » | Négatif | Plainte, même polie |
+| « Super, encore une panne. Bravo. » | Négatif | **Ironie** : les mots sont positifs, le sens est négatif |
+
+### Marquer des entités nommées
+
+> [!definition] Entité nommée
+> Un mot ou groupe de mots qui désigne une chose précise : une personne, un lieu, une organisation, une date, un montant. En anglais : *named entity*.
+
+> [!exemple]
+> « **Rasoa** [PERSONNE] a envoyé **50 000 Ar** [MONTANT] à **Toamasina** [LIEU] le **3 mars** [DATE] par **MVola** [ORGANISATION]. »
+
+Règles habituelles : surligner le groupe de mots **entier** (« Banque centrale de Madagascar », pas seulement « Banque »), sans espace ni ponctuation en trop.
+
+## Les cas limites : ne jamais deviner
+
+Un **cas limite** est un exemple où les consignes ne disent pas clairement quoi faire. Ce sont eux qui font la différence entre un bon et un mauvais annotateur.
+
+### Que faire face à un cas limite
+
+1. **Relisez** les consignes et les exemples : la réponse y est souvent.
+2. Cherchez dans la **foire aux questions** ou le forum du projet.
+3. Si la plateforme le permet, utilisez l''option **« Je ne sais pas » / « Signaler »** plutôt que de deviner.
+4. **Posez la question** au responsable du projet, avec l''exemple précis.
+5. **Notez la réponse** dans votre fiche mémo, pour la prochaine fois.
+
+> [!attention]
+> Une réponse au hasard est **pire** qu''un signalement. Le signalement aide le projet à améliorer ses consignes ; l''erreur, elle, est apprise par l''IA.
+
+## Comment votre qualité est mesurée
+
+| Méthode | Comment ça marche |
+| --- | --- |
+| **Questions de contrôle** | Des exemples dont la bonne réponse est connue sont glissés parmi vos tâches, sans que vous le sachiez |
+| **Consensus** | Plusieurs annotateurs font la même tâche ; on compare leurs réponses |
+| **Relecture** | Un contrôleur qualité vérifie un échantillon de votre travail |
+| **Mesure de recouvrement** (pour les cadres) | On compare la surface de votre cadre à celle du cadre de référence |
+
+> [!definition] Taux de précision
+> La part de vos annotations jugées correctes. Exemple : 188 bonnes réponses sur 200 contrôlées = 188 ÷ 200 × 100 = **94 %**. Beaucoup de projets exigent un taux élevé (souvent 90 % ou plus) pour rester sur le projet.
+
+> [!madagascar]
+> Pour les projets en malagasy, notez les variantes régionales (mots différents entre Antananarivo, Toamasina ou le Sud) et demandez aux consignes quelle forme utiliser. C''est souvent un vrai cas limite, et votre connaissance est précieuse.
+
+> [!retenir]
+> - Lisez toutes les consignes avant d''annoter, et relisez-les après 20 tâches.
+> - Cadres : serrés, complets, un par objet, bonne étiquette.
+> - Texte : attention à l''ironie ; entités surlignées en entier.
+> - Face à un cas limite : chercher, signaler, demander, jamais deviner.
+> - Votre qualité est contrôlée en permanence, souvent sans que vous le sachiez.
+
+## Exercice pratique : appliquer des consignes
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Rédigez des consignes d''une page pour un projet fictif : « Repérer les véhicules sur des photos de rues malgaches » (catégories : voiture, taxi-be, moto, vélo, charrette à zébus, autre). Ajoutez 3 cas limites et leur règle.
+> 2. Imprimez ou affichez 5 photos de rue et dessinez les cadres à la main (ou dans un logiciel de dessin), en suivant **vos** consignes.
+> 3. Marquez les entités nommées dans 5 phrases d''un article de presse malgache.
+> 4. Classez 10 commentaires Facebook réels (sentiment), en signalant ceux qui sont ironiques.
+>
+> **À livrer** : vos consignes, vos 5 photos annotées, vos 5 phrases et votre tableau de 10 commentaires.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 1, 0, 'Comment doit être un cadre de délimitation ?', '["Un cadre pour tous les objets","Seulement autour de la moitié de l''objet","Large, avec beaucoup de fond","Serré autour de l''objet et complet"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 1, 1, 'Que faire face à un cas limite ?', '["Sauter la tâche sans rien dire","Relire les consignes, signaler ou demander, mais ne jamais deviner","Choisir toujours la première catégorie","Choisir au hasard"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 1, 2, '« Super, encore une panne. Bravo. » est un avis…', '["Impossible à classer","Neutre","Négatif, à cause de l''ironie","Positif"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-f', 2, 'Les outils : CVAT, Label Studio, et pourquoi rien n''est à acheter', 'Annoter des images dans CVAT, du texte dans Label Studio, les raccourcis, les formats d''export, vitesse et précision.', 'Chaque plateforme d''annotation a son propre outil, mais ils fonctionnent tous de la même façon. En apprenant deux outils gratuits très utilisés, **CVAT** pour les images et **Label Studio** pour le texte et les images, vous serez à l''aise sur n''importe quel projet. Ce module vous montre comment les prendre en main et comment travailler vite sans perdre en précision.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer une tâche et annoter des images avec des cadres dans CVAT.
+> 2. Créer un projet de classification de texte dans Label Studio.
+> 3. Utiliser les raccourcis clavier pour gagner du temps.
+> 4. Exporter vos annotations.
+> 5. Savoir pourquoi, dans ce métier, vous n''avez rien à acheter.
+
+## Les outils de l''annotateur
+
+| N° | Outil | Pour quoi | Accès |
+| --- | --- | --- | --- |
+| 1 | **CVAT** | Images et vidéos : cadres, polygones, points | Version en ligne (cvat.ai) avec offre gratuite, ou installation sur ordinateur |
+| 2 | **Label Studio** | Texte, images, audio : classification, entités, transcription | Logiciel libre à installer, ou version en ligne |
+| 3 | **Tableur** (Google Sheets) | Suivre votre temps, votre production et vos cas limites | Gratuit |
+| 4 | **Fiche mémo** (document) | Règles du projet, cas limites | Gratuit |
+
+> [!definition] Logiciel libre (open source)
+> Un logiciel dont le code est public et qui peut être utilisé gratuitement. CVAT et Label Studio sont tous deux libres : ce sont des références que beaucoup d''entreprises utilisent ou imitent.
+
+## CVAT : annoter des images
+
+### Créer votre première tâche
+
+1. Créez un compte gratuit sur la version en ligne de CVAT.
+2. Cliquez sur **Projects → Create a new project** (ou directement **Tasks → Create a new task**).
+3. Donnez un nom : « Véhicules Tana ».
+4. Ajoutez les **étiquettes** (*labels*) : voiture, taxi-be, moto, vélo, charrette, autre. Choisissez une couleur pour chacune.
+5. Importez 10 à 20 photos.
+6. Cliquez sur **Submit** : la tâche est créée. Ouvrez-la puis cliquez sur le **Job** pour commencer.
+
+### Dessiner un cadre
+
+1. Dans la barre de gauche, choisissez l''outil **rectangle**.
+2. Sélectionnez l''étiquette (par exemple « voiture »).
+3. Cliquez sur **Shape** (forme), puis cliquez sur un coin de l''objet et sur le coin opposé.
+4. Ajustez les bords en tirant sur les poignées, en **zoomant** (molette de la souris).
+5. Passez à l''objet suivant.
+6. Enregistrez régulièrement (**Ctrl + S**).
+
+### Les raccourcis utiles dans CVAT
+
+| Touche | Action |
+| --- | --- |
+| **N** | Dessiner une nouvelle forme avec le dernier outil utilisé |
+| **F** | Image suivante |
+| **D** | Image précédente |
+| **Ctrl + S** | Enregistrer |
+| **Molette** | Zoom avant / arrière |
+| **Suppr** | Supprimer la forme sélectionnée |
+
+Les raccourcis peuvent changer selon les versions : la liste complète est dans le menu d''aide de l''outil (souvent touche **F1**).
+
+## Label Studio : annoter du texte
+
+### Installer et démarrer
+
+Sur un ordinateur avec Python installé, ouvrez un terminal et tapez :
+
+```
+pip install label-studio
+label-studio start
+```
+
+Label Studio s''ouvre dans votre navigateur. Créez un compte local (il reste sur votre ordinateur).
+
+### Créer un projet de classification
+
+1. Cliquez sur **Create Project**, nommez-le « Avis clients ».
+2. Dans **Data Import**, importez un fichier CSV ou texte avec une phrase par ligne.
+3. Dans **Labeling Setup**, choisissez le modèle **Text Classification**.
+4. Remplacez les choix proposés par : Positif, Négatif, Neutre.
+5. Enregistrez, puis cliquez sur **Label All Tasks**.
+6. Pour chaque texte, choisissez la catégorie et cliquez sur **Submit**.
+
+### Marquer des entités nommées
+
+1. Créez un autre projet avec le modèle **Named Entity Recognition**.
+2. Définissez les étiquettes : PERSONNE, LIEU, ORGANISATION, DATE, MONTANT.
+3. Sélectionnez l''étiquette, puis surlignez le groupe de mots avec la souris.
+
+> [!astuce] Travailler au clavier
+> Dans Label Studio, les étiquettes reçoivent souvent un **numéro** (1, 2, 3…) : appuyez sur le chiffre au lieu de cliquer. **Ctrl + Entrée** valide la tâche. Sur des centaines de textes, vous gagnez beaucoup de temps.
+
+## Exporter les annotations
+
+Une fois le travail fini, on **exporte** les annotations dans un format que les ingénieurs de l''IA sauront lire.
+
+| Format | Utilisé pour |
+| --- | --- |
+| **COCO** (JSON) | Cadres et segmentation d''images |
+| **YOLO** | Cadres d''images, très utilisé pour la détection d''objets |
+| **Pascal VOC** (XML) | Cadres d''images |
+| **CSV / JSON** | Classification de textes |
+
+Sur une plateforme, l''export est fait par l''équipe du projet : vous n''aurez souvent qu''à **valider** vos tâches. Mais savoir que ces formats existent montre que vous comprenez la suite du travail.
+
+## Vitesse et précision
+
+Dans ce métier, il faut être **rapide et précis** à la fois. Voici comment progresser sans sacrifier la qualité.
+
+1. **Apprenez les raccourcis** dès le premier jour.
+2. **Gardez la même routine** pour chaque image : d''abord les gros objets, puis les petits, de gauche à droite.
+3. **Mesurez-vous** : notez chaque jour le nombre de tâches et votre taux de précision, s''il est affiché.
+4. **Ralentissez** dès que votre précision baisse.
+5. **Pauses régulières** : la fatigue est la première cause d''erreurs.
+
+## Rien à acheter : les plateformes fournissent les outils
+
+| Situation | Outils |
+| --- | --- |
+| Plateforme d''annotation | Son propre outil, dans le navigateur, fourni gratuitement |
+| Entreprise d''annotation | Ses outils (souvent CVAT, Label Studio ou un outil maison) et parfois un ordinateur |
+| Projet direct avec un client | Le client choisit l''outil et vous donne un accès |
+
+Dans ce métier, vous **n''avez pas d''abonnement à payer**. Votre investissement, c''est votre équipement : ordinateur, souris, écran, connexion. Méfiez-vous de quiconque vous demande d''acheter un logiciel ou un « accès » pour pouvoir travailler.
+
+> [!madagascar]
+> Les outils en ligne consomment des données, surtout avec des images en haute définition. Pour vous entraîner, utilisez des images légères, et préférez une connexion fixe pour les vrais projets.
+
+> [!retenir]
+> - CVAT pour les images, Label Studio pour le texte : deux références gratuites.
+> - Les raccourcis clavier font gagner un temps précieux.
+> - Les annotations s''exportent en formats standard (COCO, YOLO, CSV).
+> - Vitesse **et** précision : mesurez-vous et ralentissez si la qualité baisse.
+> - Pas d''abonnement à payer : les outils sont fournis.
+
+## Exercice pratique : vos deux premiers projets
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Dans CVAT, créez la tâche « Véhicules Tana » avec 15 photos de rues et annotez tous les véhicules avec des cadres, en suivant vos consignes du module 2.
+> 2. Dans Label Studio, créez le projet « Avis clients » avec 30 avis (écrivez-les ou reprenez des commentaires publics) et classez-les.
+> 3. Créez un projet d''entités nommées avec 10 phrases d''actualité malgache.
+> 4. Notez le temps passé et le nombre de tâches pour chaque projet.
+> 5. Exportez les annotations des cadres au format COCO ou YOLO.
+>
+> **À livrer** : des captures de chaque projet, vos fichiers d''export et votre tableau de temps.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 2, 0, 'Quel outil gratuit est surtout utilisé pour annoter des images et des vidéos ?', '["Zoom","Canva","CVAT","Excel"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 2, 1, 'Quel format sert à exporter des cadres d''images ?', '["COCO ou YOLO","PSD","DOCX","MP3"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 2, 2, 'Faut-il payer un abonnement pour travailler sur une plateforme d''annotation ?', '["Non, les outils sont fournis","Oui, toujours","Seulement le premier mois","Oui, pour être prioritaire"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-f', 3, 'Premier projet : un projet d''annotation complet', 'Les 5 phases d''un projet, la calibration, la production, le journal des cas limites, le contrôle qualité et le rapport.', 'Dans ce module, vous menez un projet d''annotation complet, comme dans une vraie entreprise : lecture des consignes, phase de test, production, contrôle qualité de votre propre travail et rapport final. Vous apprenez aussi à jouer le rôle de **contrôleur qualité**, première étape pour évoluer dans le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Suivre les 5 phases d''un projet d''annotation.
+> 2. Réussir une phase de test (calibration).
+> 3. Tenir un journal des cas limites.
+> 4. Contrôler la qualité d''un lot d''annotations.
+> 5. Rédiger un rapport de projet.
+
+## Le cas pratique : « Marché propre »
+
+> [!exemple] Votre projet
+> Une startup développe une application qui repère les déchets sur les photos des marchés pour aider les communes à organiser le ramassage. Elle vous confie **200 photos** de marchés malgaches à annoter avec des cadres, selon 4 catégories : **plastique**, **organique** (restes de fruits, légumes), **papier-carton**, **autre déchet**. Elle vous confie aussi **150 messages** d''habitants à classer : *signalement*, *question*, *remerciement*, *hors sujet*.
+
+## Les 5 phases d''un projet d''annotation
+
+| N° | Phase | Ce que vous faites | Résultat |
+| --- | --- | --- | --- |
+| 1 | **Consignes** | Lire, faire sa fiche mémo, poser ses questions | Fiche mémo d''une page |
+| 2 | **Calibration** (test) | Annoter un petit lot que le client vérifie | Votre taux de précision de départ |
+| 3 | **Production** | Annoter l''ensemble du lot | Annotations terminées |
+| 4 | **Contrôle qualité** | Relire un échantillon, corriger | Taux d''erreurs mesuré |
+| 5 | **Livraison** | Exporter, rédiger le rapport | Fichiers + rapport |
+
+## Phase 1 : les consignes du projet « Marché propre »
+
+Voici un extrait des consignes du client :
+
+1. Encadrer chaque déchet **visible au sol ou sur les étals**, pas ceux dans une poubelle fermée.
+2. Un **tas de déchets mélangés** reçoit un seul cadre « autre déchet » s''il est impossible de séparer les objets.
+3. Les **sacs plastiques encore utilisés** (par un vendeur ou un client) ne sont **pas** des déchets.
+4. Les objets de moins de 10 pixels de côté ne sont pas annotés.
+5. En cas de doute entre deux catégories, choisir celle qui couvre **la plus grande partie** de l''objet.
+
+> [!astuce]
+> Transformez chaque règle en **question** pour votre fiche mémo : « Est-ce dans une poubelle fermée ? → ne pas annoter. » « Le sac est-il tenu par quelqu''un ? → ne pas annoter. » Vous décidez plus vite.
+
+## Phase 2 : la calibration
+
+> [!definition] Calibration
+> Un petit lot de test (souvent 20 à 50 exemples) que tous les annotateurs font avant la production. Le client compare les réponses aux siennes et explique les erreurs. Sur les plateformes, on parle souvent de **test de qualification**.
+
+### Réussir sa calibration en 4 points
+
+1. Prenez **tout votre temps** : la vitesse ne compte pas encore.
+2. Appliquez les consignes **à la lettre**, même si une règle vous semble étrange.
+3. Signalez chaque hésitation.
+4. Lisez **attentivement** les retours, et ajoutez chaque correction à votre fiche mémo.
+
+## Phase 3 : la production
+
+### Organiser son travail
+
+1. Découpez le lot : 200 photos = **8 sessions de 25 photos**.
+2. Après chaque session : pause de 10 minutes.
+3. Notez dans votre **tableau de suivi** : date, nombre de tâches, temps passé, cas limites.
+
+| Session | Photos | Temps | Cas limites rencontrés |
+| --- | --- | --- | --- |
+| 1 | 1 à 25 | 1 h 10 | 3 (sacs pendus à un étal) |
+| 2 | 26 à 50 | 55 min | 1 (déchet dans l''eau) |
+| … | … | … | … |
+
+### Le journal des cas limites
+
+Pour chaque cas limite, notez : le numéro de l''exemple, la description, ce que vous avez décidé, la règle utilisée, et la réponse du client s''il y en a une.
+
+> [!exemple] Une ligne du journal
+> **Photo 37** · Sac plastique accroché à un étal, personne ne le tient · Décision : non annoté (règle 3 : encore utilisé par le vendeur) · Question envoyée au client · Réponse : « Correct, un sac accroché à un étal est en usage. »
+
+## Phase 4 : le contrôle qualité
+
+Avant de livrer, contrôlez vous-même votre travail comme le ferait un contrôleur.
+
+### La méthode
+
+1. Tirez **au hasard 10 %** des tâches (20 photos et 15 messages).
+2. Vérifiez chaque annotation avec la **grille de contrôle** ci-dessous.
+3. Comptez les erreurs et calculez votre **taux de précision**.
+4. Si vous trouvez une **erreur répétée** (la même règle mal appliquée), corrigez-la **dans tout le lot**, pas seulement dans l''échantillon.
+
+### La grille de contrôle des cadres
+
+| N° | Question | Oui / Non |
+| --- | --- | --- |
+| 1 | Tous les déchets visibles sont-ils encadrés ? | |
+| 2 | Chaque cadre est-il serré ? | |
+| 3 | Chaque cadre contient-il tout l''objet visible ? | |
+| 4 | L''étiquette est-elle la bonne ? | |
+| 5 | Les règles 1 à 5 du client sont-elles respectées ? | |
+
+> [!exemple] Calcul du taux de précision
+> Sur 20 photos contrôlées, vous comptez 160 cadres, dont 8 erreurs (oubli, cadre trop large, mauvaise étiquette). Précision : (160 − 8) ÷ 160 × 100 = **95 %**.
+
+## Phase 5 : la livraison et le rapport
+
+Le rapport tient sur une page :
+
+1. **Volume** : nombre de photos et de messages annotés, nombre total de cadres.
+2. **Temps passé** et temps moyen par tâche.
+3. **Qualité** : votre taux de précision sur l''échantillon contrôlé, les erreurs corrigées.
+4. **Cas limites** : les 3 à 5 plus fréquents, avec la décision prise.
+5. **Propositions** pour améliorer les consignes.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Sauter la relecture des consignes après la calibration.
+> - Corriger seulement l''échantillon contrôlé et pas les mêmes erreurs dans le reste du lot.
+> - Ne pas noter les cas limites, puis prendre des décisions différentes pour des cas identiques.
+> - Travailler 4 heures d''affilée et livrer une fin de lot bâclée.
+
+> [!retenir]
+> - 5 phases : consignes, calibration, production, contrôle qualité, livraison.
+> - La calibration se fait lentement, à la lettre, et ses retours vont dans la fiche mémo.
+> - Un journal des cas limites garantit des décisions identiques pour des cas identiques.
+> - Contrôlez 10 % de votre travail et corrigez les erreurs répétées partout.
+> - Un rapport court : volume, temps, qualité, cas limites, propositions.
+
+## Exercice pratique : le projet « Marché propre »
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rassemblez 50 photos de marchés ou de rues (vos photos, ou des images libres de droits).
+> 2. Rédigez votre fiche mémo à partir des 5 consignes du client.
+> 3. Annotez les 10 premières photos lentement (calibration), puis relisez-les avec la grille.
+> 4. Annotez les 40 photos suivantes dans CVAT, avec votre tableau de suivi et votre journal des cas limites.
+> 5. Écrivez 50 messages d''habitants et classez-les dans Label Studio.
+> 6. Contrôlez 10 % de votre travail, calculez votre taux de précision et rédigez le rapport.
+>
+> **À livrer** : la fiche mémo, les exports, le tableau de suivi, le journal des cas limites et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 3, 0, 'Qu''est-ce que la calibration ?', '["Le paiement final","Un petit lot de test vérifié avant la production","L''export des fichiers","Le réglage de l''écran"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 3, 1, 'Quelle part de votre travail contrôler vous-même avant de livrer ?', '["Seulement les images faciles","Seulement la première image","Aucune","Environ 10 %, tiré au hasard"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 3, 2, 'Vous trouvez une erreur répétée dans l''échantillon. Que faire ?', '["La corriger seulement dans l''échantillon","L''ignorer","Recommencer tout le projet à zéro","La corriger dans tout le lot"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-f', 4, 'Trouver des projets et se faire payer', 'Les 4 sources de travail, vérifier une offre, CV, tests de qualification, modes de rémunération, revenu réel, paiements et évolution.', 'Trouver du travail d''annotation, c''est surtout savoir **où chercher**, **réussir les tests d''entrée** et **éviter les arnaques**, qui sont nombreuses dans ce domaine. Ce dernier module vous donne une méthode complète pour décrocher vos premiers projets, être payé depuis Madagascar et évoluer vers des postes mieux rémunérés.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Identifier les 4 sources de travail et vérifier qu''elles sont sérieuses.
+> 2. Préparer un profil et un CV d''annotateur.
+> 3. Réussir les tests de qualification.
+> 4. Comprendre les modes de rémunération et calculer votre revenu réel.
+> 5. Vous faire payer depuis Madagascar.
+> 6. Évoluer vers le contrôle qualité et l''évaluation d''IA.
+
+## Les 4 sources de travail
+
+| N° | Source | Comment ça marche | Points d''attention |
+| --- | --- | --- | --- |
+| 1 | **Plateformes d''annotation en ligne** | Inscription, tests, puis tâches disponibles selon les projets | Le travail peut être irrégulier ; vérifiez que la plateforme accepte les personnes résidant à Madagascar |
+| 2 | **Entreprises d''annotation et d''externalisation** (à Madagascar et à l''étranger) | Recrutement classique : candidature, tests, formation, contrat | Revenu plus régulier ; horaires souvent fixés |
+| 3 | **Plateformes de freelance** (Upwork et autres) | Des laboratoires et startups publient des missions d''annotation | Il faut un profil convaincant et des preuves |
+| 4 | **Projets de langues** (malagasy, français) | Transcription, traduction, évaluation de réponses d''IA en malagasy | Missions plus rares mais où vous avez peu de concurrence |
+
+### Vérifier qu''une offre est sérieuse : 6 questions
+
+1. L''entreprise a-t-elle un **site officiel**, une adresse et des avis d''anciens travailleurs ?
+2. Le recrutement passe-t-il par un **test** et une **formation**, plutôt que par une simple conversation WhatsApp ?
+3. Les **modes de paiement** sont-ils clairs et écrits ?
+4. Vous demande-t-on de **payer** quelque chose ? (Si oui : arnaque.)
+5. Vous demande-t-on vos **codes** Mobile Money ou bancaires ? (Si oui : arnaque.)
+6. Le revenu promis est-il **raisonnable** par rapport aux autres offres ?
+
+> [!attention]
+> Les arnaques les plus fréquentes : « frais d''inscription » pour accéder à une plateforme, « achat de compte » d''une plateforme au nom de quelqu''un d''autre, « tâches » qui consistent à aimer des vidéos contre de l''argent après avoir déposé un « dépôt ». **Ne louez et n''achetez jamais un compte** : c''est interdit par les plateformes et vous risquez de travailler sans jamais être payé.
+
+## Le profil et le CV d''annotateur
+
+### Ce que le recruteur cherche
+
+1. **Rigueur** : un CV sans aucune faute, bien présenté.
+2. **Langues** : niveau honnête en français, anglais, malagasy.
+3. **Outils** : CVAT, Label Studio, tableur, raccourcis clavier.
+4. **Preuves** : votre projet « Marché propre » avec vos chiffres (volume, temps, taux de précision).
+5. **Disponibilité** : heures par semaine, horaires possibles.
+6. **Équipement** : ordinateur, souris, connexion, connexion de secours.
+
+> [!exemple] Phrase de présentation
+> « Annotateur de données rigoureux, formé à l''annotation d''images (cadres, polygones) et de textes (classification, entités nommées) avec CVAT et Label Studio. Projet d''étude : 200 images annotées avec 95 % de précision au contrôle qualité. Français, malagasy, anglais intermédiaire. Disponible 30 heures par semaine. »
+
+## Réussir les tests de qualification
+
+1. **Choisissez le bon moment** : reposé, au calme, avec une bonne connexion.
+2. **Lisez toutes les consignes**, même si le test semble simple.
+3. **Prenez des notes** pendant la lecture (fiche mémo).
+4. **Ne vous précipitez pas** : le test mesure surtout la précision.
+5. **Vérifiez chaque réponse** avant de valider.
+6. En cas d''échec, lisez les explications si elles sont données : beaucoup de plateformes permettent de repasser plus tard, ou de passer d''autres tests.
+
+## Les modes de rémunération
+
+| Mode | Comment | Avantages et risques |
+| --- | --- | --- |
+| **À la tâche** | Un montant par image, par texte ou par minute d''audio | Gagner plus si on est rapide ; mais revenu faible au début |
+| **À l''heure** | Un montant par heure de travail suivie | Plus prévisible ; un minimum de productivité est exigé |
+| **Salaire** | Montant mensuel fixe (entreprise) | Stable ; horaires et objectifs imposés |
+
+### Calculer votre revenu réel à la tâche
+
+Quand on est payé à la tâche, il faut toujours convertir en **revenu à l''heure** pour savoir si le projet vaut le coup.
+
+> [!exemple] Calcul
+> Une tâche est payée l''équivalent de 150 Ar. Vous en faites 40 par heure, mais vous passez aussi 1 heure non payée à lire les consignes pour chaque tranche de 10 heures de travail.
+> - Revenu brut par heure de production : 40 × 150 = 6 000 Ar.
+> - Sur 11 heures (10 de production + 1 de consignes) : 10 × 6 000 = 60 000 Ar, soit 60 000 ÷ 11 ≈ **5 450 Ar de l''heure réelle**.
+>
+> *(Montants donnés en exemple.)*
+
+Comparez ce revenu réel entre projets, et privilégiez ceux où vous êtes à la fois précis et efficace.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Entreprise à Madagascar | Salaire par virement bancaire ou Mobile Money |
+| Plateforme internationale | Selon la plateforme : souvent Payoneer, parfois virement bancaire ou autres services ; vérifiez **avant** de travailler que l''un d''eux fonctionne depuis Madagascar |
+| Client direct à l''étranger | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : ne travaillez pas pour une plateforme qui ne propose que PayPal sans avoir vérifié que vous pourrez retirer votre argent. Gardez une trace de chaque paiement et renseignez-vous sur vos obligations fiscales auprès du centre fiscal de votre ville.
+
+## Évoluer dans le métier
+
+| Étape | Ce qui change |
+| --- | --- |
+| **Annotateur confirmé** | Accès à des projets mieux payés (segmentation, vidéo, données médicales ou techniques) |
+| **Contrôleur qualité** (*reviewer*) | Vous vérifiez le travail des autres annotateurs |
+| **Évaluateur de réponses d''IA** | Vous jugez et comparez des réponses d''IA, souvent mieux rémunéré, exige un excellent niveau de langue |
+| **Chef d''équipe d''annotation** | Vous formez et encadrez des annotateurs, rédigez les consignes |
+| **Spécialiste par domaine** | Vos études (santé, droit, agriculture, informatique) donnent accès à des projets d''experts |
+
+Votre **niveau de langue écrite** (français, anglais) et votre **taux de précision** sont les deux clés de la progression.
+
+> [!retenir]
+> - 4 sources : plateformes, entreprises, freelance, projets de langues.
+> - Jamais de frais, jamais d''achat ou de location de compte.
+> - Un CV avec des preuves chiffrées : volume, temps, précision.
+> - Calculez toujours votre revenu réel à l''heure.
+> - Vérifiez les moyens de paiement avant de commencer.
+
+## Exercice pratique : votre plan de recherche
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez votre CV d''annotateur et votre phrase de présentation.
+> 2. Trouvez 5 sources de travail (plateformes, entreprises à Madagascar, offres freelance) et vérifiez chacune avec les 6 questions.
+> 3. Pour chaque source sérieuse, notez : le mode de paiement, le moyen de retrait depuis Madagascar, les tests demandés.
+> 4. Faites le calcul du revenu réel pour 2 exemples de tarifs à la tâche.
+> 5. Inscrivez-vous sur au moins une source sérieuse et passez le premier test.
+>
+> **À livrer** : votre CV, votre tableau des 5 sources avec la vérification, vos 2 calculs et la preuve de votre inscription.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 4, 0, 'On vous propose d''acheter le compte d''une plateforme au nom de quelqu''un d''autre. Que faire ?', '["Demander une réduction","Accepter si le prix est bas","Refuser : c''est interdit et risqué","Accepter et partager les gains"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 4, 1, 'Pourquoi calculer son revenu réel à l''heure ?', '["Pour payer moins d''impôts","Pour comparer les projets payés à la tâche","Ce n''est pas utile","Pour travailler moins"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-f', 4, 2, 'Que vérifier avant de travailler pour une plateforme internationale ?', '["Le nombre d''employés","Qu''un moyen de retrait fonctionne depuis Madagascar","Rien","La couleur de son logo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que fait un annotateur de données ?', '["Il vend des ordinateurs","Il répare les serveurs","Il ajoute des informations à des données pour entraîner une IA","Il écrit le code de l''IA"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que se passe-t-il si les annotations sont fausses ?', '["L''IA les corrige toute seule","Les images sont supprimées","L''IA apprend des erreurs","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel type de tâche consiste à suivre le contour exact d''un objet ?', '["La segmentation","La transcription","La classification","Le cadre de délimitation"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel outil est indispensable pour dessiner des cadres précis ?', '["Un micro","Une imprimante","Une webcam","Une souris"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Pourquoi le malagasy peut-il être un avantage ?', '["Toutes les IA parlent déjà malagasy","C''est une langue peu présente dans les données des IA","Il n''est pas utile","Il remplace l''anglais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quand relire les consignes d''un projet ?', '["Seulement à la fin du projet","Jamais","Seulement si on est payé pour","Après les 20 premières annotations"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Un objet est en partie caché. Sauf consigne contraire, que faut-il encadrer ?', '["Rien","La partie visible","Tout le fond autour","L''objet entier imaginé"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', '5 personnes sur une photo : combien de cadres ?', '["5","1","10","2"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Qu''est-ce qu''une entité nommée ?', '["Un signe de ponctuation","Un mot qui désigne une chose précise : personne, lieu, organisation, date, montant","Un verbe","Un mot mal orthographié"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Comment surligner « Banque centrale de Madagascar » ?', '["Seulement « Madagascar »","Chaque mot séparément","Seulement « Banque »","Le groupe de mots entier"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que sont les questions de contrôle ?', '["Des questions sur votre vie privée","Un examen scolaire","Des questions posées par le client au téléphone","Des exemples à la réponse connue glissés parmi vos tâches"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', '188 bonnes réponses sur 200 contrôlées : quel est le taux de précision ?', '["88 %","94 %","98 %","12 %"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Pourquoi signaler plutôt que deviner ?', '["Signaler rapporte plus d''argent","Deviner est plus lent","Le signalement améliore les consignes, l''erreur est apprise par l''IA","Il n''y a aucune différence"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel outil gratuit est adapté à la classification de textes ?', '["CapCut","Label Studio","Zoom","Photoshop"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Dans CVAT, que fait généralement la touche F ?', '["Exporter","Fermer le programme","Supprimer la forme","Passer à l''image suivante"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que faire quand votre précision baisse ?', '["Ralentir et faire une pause","Accélérer","Changer de catégorie au hasard","Arrêter de contrôler"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelle routine de travail est conseillée ?', '["Travailler seulement la nuit","Des blocs de 45 à 50 minutes avec 10 minutes de pause","Une pause par jour","4 heures sans pause"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelles sont les 5 phases d''un projet d''annotation ?', '["Consignes, calibration, production, contrôle qualité, livraison","Appel, devis, facture, relance, fin","Photo, retouche, impression, vente, livraison","Inscription, paiement, attente, remboursement, fin"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Comment réussir une calibration ?', '["Copier les réponses d''un autre","Prendre son temps et appliquer les consignes à la lettre","Ignorer les règles étranges","Aller le plus vite possible"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'À quoi sert le journal des cas limites ?', '["Noter ses heures de sommeil","Écrire au client chaque jour","Remplacer les consignes","Prendre les mêmes décisions pour des cas identiques"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Sur 160 cadres contrôlés, 8 sont faux. Quel est le taux de précision ?', '["8 %","80 %","95 %","92 %"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel est un signe d''arnaque ?', '["On vous fait passer un test","On vous donne des consignes écrites","On vous forme au projet","On vous demande des frais d''inscription"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que mettre en avant dans un CV d''annotateur ?', '["Un projet avec volume, temps et taux de précision","Le nombre d''amis sur Facebook","Une photo de profil retouchée","Ses loisirs uniquement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel mode de rémunération est le plus prévisible ?', '["Le salaire ou le paiement à l''heure","Le paiement à la tâche","Les pourboires","Le paiement au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelle évolution consiste à vérifier le travail des autres annotateurs ?', '["Comptable","Contrôleur qualité","Graphiste","Commercial"]'::jsonb, 1);
 
 -- design-0-f
 delete from public.exam_questions where course_id = 'design-0-f';

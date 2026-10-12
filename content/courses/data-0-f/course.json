@@ -1,0 +1,97 @@
+{
+  "id": "data-0-f",
+  "hours": 14,
+  "description": "L'annotateur de données prépare les exemples qui servent à entraîner les intelligences artificielles : il entoure des objets sur des images, classe des textes, transcrit des sons. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des plateformes et des entreprises d'annotation depuis Madagascar, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer pourquoi une IA a besoin de données annotées",
+    "Appliquer des consignes d'annotation et traiter les cas limites",
+    "Annoter des images avec CVAT et des textes avec Label Studio",
+    "Mener un projet complet avec calibration et contrôle qualité",
+    "Reconnaître les arnaques et calculer son revenu réel",
+    "Trouver des projets sérieux et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'annotateur de données IA depuis Madagascar",
+      "summary": "Pourquoi l'IA a besoin d'annotateurs, les 6 types de tâches, qui donne du travail, les réalités du métier et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi une IA a-t-elle besoin de données annotées ?", "options": ["Elle apprend à partir d'exemples dont on lui donne la bonne réponse", "Pour décorer les images", "Pour réduire la taille des fichiers", "Elle n'en a pas besoin"], "correct": 0 },
+        { "q": "Que fait-on dans une tâche de « cadres de délimitation » ?", "options": ["On dessine un rectangle autour de chaque objet", "On classe un texte", "On transcrit un son", "On traduit une phrase"], "correct": 0 },
+        { "q": "Quelle qualité compte le plus pour un annotateur ?", "options": ["La rigueur", "La vitesse à tout prix", "La créativité", "L'humour"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : consignes, cadres, texte et qualité",
+      "summary": "Lire des consignes en 5 étapes, les 6 règles des cadres, la segmentation, le texte et les entités nommées, les cas limites et la mesure de la qualité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment doit être un cadre de délimitation ?", "options": ["Serré autour de l'objet et complet", "Large, avec beaucoup de fond", "Seulement autour de la moitié de l'objet", "Un cadre pour tous les objets"], "correct": 0 },
+        { "q": "Que faire face à un cas limite ?", "options": ["Relire les consignes, signaler ou demander, mais ne jamais deviner", "Choisir au hasard", "Sauter la tâche sans rien dire", "Choisir toujours la première catégorie"], "correct": 0 },
+        { "q": "« Super, encore une panne. Bravo. » est un avis…", "options": ["Négatif, à cause de l'ironie", "Positif", "Neutre", "Impossible à classer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : CVAT, Label Studio, et pourquoi rien n'est à acheter",
+      "summary": "Annoter des images dans CVAT, du texte dans Label Studio, les raccourcis, les formats d'export, vitesse et précision.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel outil gratuit est surtout utilisé pour annoter des images et des vidéos ?", "options": ["CVAT", "Canva", "Excel", "Zoom"], "correct": 0 },
+        { "q": "Quel format sert à exporter des cadres d'images ?", "options": ["COCO ou YOLO", "MP3", "DOCX", "PSD"], "correct": 0 },
+        { "q": "Faut-il payer un abonnement pour travailler sur une plateforme d'annotation ?", "options": ["Non, les outils sont fournis", "Oui, toujours", "Oui, pour être prioritaire", "Seulement le premier mois"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un projet d'annotation complet",
+      "summary": "Les 5 phases d'un projet, la calibration, la production, le journal des cas limites, le contrôle qualité et le rapport.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la calibration ?", "options": ["Un petit lot de test vérifié avant la production", "Le réglage de l'écran", "Le paiement final", "L'export des fichiers"], "correct": 0 },
+        { "q": "Quelle part de votre travail contrôler vous-même avant de livrer ?", "options": ["Environ 10 %, tiré au hasard", "Aucune", "Seulement la première image", "Seulement les images faciles"], "correct": 0 },
+        { "q": "Vous trouvez une erreur répétée dans l'échantillon. Que faire ?", "options": ["La corriger dans tout le lot", "La corriger seulement dans l'échantillon", "L'ignorer", "Recommencer tout le projet à zéro"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des projets et se faire payer",
+      "summary": "Les 4 sources de travail, vérifier une offre, CV, tests de qualification, modes de rémunération, revenu réel, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "On vous propose d'acheter le compte d'une plateforme au nom de quelqu'un d'autre. Que faire ?", "options": ["Refuser : c'est interdit et risqué", "Accepter si le prix est bas", "Accepter et partager les gains", "Demander une réduction"], "correct": 0 },
+        { "q": "Pourquoi calculer son revenu réel à l'heure ?", "options": ["Pour comparer les projets payés à la tâche", "Pour payer moins d'impôts", "Pour travailler moins", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que vérifier avant de travailler pour une plateforme internationale ?", "options": ["Qu'un moyen de retrait fonctionne depuis Madagascar", "La couleur de son logo", "Le nombre d'employés", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un annotateur de données ?", "options": ["Il ajoute des informations à des données pour entraîner une IA", "Il écrit le code de l'IA", "Il vend des ordinateurs", "Il répare les serveurs"], "correct": 0 },
+    { "q": "Que se passe-t-il si les annotations sont fausses ?", "options": ["L'IA apprend des erreurs", "L'IA les corrige toute seule", "Rien", "Les images sont supprimées"], "correct": 0 },
+    { "q": "Quel type de tâche consiste à suivre le contour exact d'un objet ?", "options": ["La segmentation", "La classification", "La transcription", "Le cadre de délimitation"], "correct": 0 },
+    { "q": "Quel outil est indispensable pour dessiner des cadres précis ?", "options": ["Une souris", "Une imprimante", "Un micro", "Une webcam"], "correct": 0 },
+    { "q": "Pourquoi le malagasy peut-il être un avantage ?", "options": ["C'est une langue peu présente dans les données des IA", "Toutes les IA parlent déjà malagasy", "Il n'est pas utile", "Il remplace l'anglais"], "correct": 0 },
+    { "q": "Quand relire les consignes d'un projet ?", "options": ["Après les 20 premières annotations", "Jamais", "Seulement à la fin du projet", "Seulement si on est payé pour"], "correct": 0 },
+    { "q": "Un objet est en partie caché. Sauf consigne contraire, que faut-il encadrer ?", "options": ["La partie visible", "L'objet entier imaginé", "Rien", "Tout le fond autour"], "correct": 0 },
+    { "q": "5 personnes sur une photo : combien de cadres ?", "options": ["5", "1", "2", "10"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une entité nommée ?", "options": ["Un mot qui désigne une chose précise : personne, lieu, organisation, date, montant", "Un mot mal orthographié", "Un verbe", "Un signe de ponctuation"], "correct": 0 },
+    { "q": "Comment surligner « Banque centrale de Madagascar » ?", "options": ["Le groupe de mots entier", "Seulement « Banque »", "Seulement « Madagascar »", "Chaque mot séparément"], "correct": 0 },
+    { "q": "Que sont les questions de contrôle ?", "options": ["Des exemples à la réponse connue glissés parmi vos tâches", "Des questions posées par le client au téléphone", "Un examen scolaire", "Des questions sur votre vie privée"], "correct": 0 },
+    { "q": "188 bonnes réponses sur 200 contrôlées : quel est le taux de précision ?", "options": ["94 %", "88 %", "98 %", "12 %"], "correct": 0 },
+    { "q": "Pourquoi signaler plutôt que deviner ?", "options": ["Le signalement améliore les consignes, l'erreur est apprise par l'IA", "Deviner est plus lent", "Signaler rapporte plus d'argent", "Il n'y a aucune différence"], "correct": 0 },
+    { "q": "Quel outil gratuit est adapté à la classification de textes ?", "options": ["Label Studio", "Photoshop", "CapCut", "Zoom"], "correct": 0 },
+    { "q": "Dans CVAT, que fait généralement la touche F ?", "options": ["Passer à l'image suivante", "Fermer le programme", "Supprimer la forme", "Exporter"], "correct": 0 },
+    { "q": "Que faire quand votre précision baisse ?", "options": ["Ralentir et faire une pause", "Accélérer", "Changer de catégorie au hasard", "Arrêter de contrôler"], "correct": 0 },
+    { "q": "Quelle routine de travail est conseillée ?", "options": ["Des blocs de 45 à 50 minutes avec 10 minutes de pause", "4 heures sans pause", "Travailler seulement la nuit", "Une pause par jour"], "correct": 0 },
+    { "q": "Quelles sont les 5 phases d'un projet d'annotation ?", "options": ["Consignes, calibration, production, contrôle qualité, livraison", "Inscription, paiement, attente, remboursement, fin", "Photo, retouche, impression, vente, livraison", "Appel, devis, facture, relance, fin"], "correct": 0 },
+    { "q": "Comment réussir une calibration ?", "options": ["Prendre son temps et appliquer les consignes à la lettre", "Aller le plus vite possible", "Ignorer les règles étranges", "Copier les réponses d'un autre"], "correct": 0 },
+    { "q": "À quoi sert le journal des cas limites ?", "options": ["Prendre les mêmes décisions pour des cas identiques", "Noter ses heures de sommeil", "Écrire au client chaque jour", "Remplacer les consignes"], "correct": 0 },
+    { "q": "Sur 160 cadres contrôlés, 8 sont faux. Quel est le taux de précision ?", "options": ["95 %", "92 %", "80 %", "8 %"], "correct": 0 },
+    { "q": "Quel est un signe d'arnaque ?", "options": ["On vous demande des frais d'inscription", "On vous fait passer un test", "On vous forme au projet", "On vous donne des consignes écrites"], "correct": 0 },
+    { "q": "Que mettre en avant dans un CV d'annotateur ?", "options": ["Un projet avec volume, temps et taux de précision", "Ses loisirs uniquement", "Une photo de profil retouchée", "Le nombre d'amis sur Facebook"], "correct": 0 },
+    { "q": "Quel mode de rémunération est le plus prévisible ?", "options": ["Le salaire ou le paiement à l'heure", "Le paiement à la tâche", "Les pourboires", "Le paiement au hasard"], "correct": 0 },
+    { "q": "Quelle évolution consiste à vérifier le travail des autres annotateurs ?", "options": ["Contrôleur qualité", "Comptable", "Graphiste", "Commercial"], "correct": 0 }
+  ]
+}

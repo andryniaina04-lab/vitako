@@ -447,6 +447,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-0-f": {
+  "hours": 14,
+  "description": "L'annotateur de données prépare les exemples qui servent à entraîner les intelligences artificielles : il entoure des objets sur des images, classe des textes, transcrit des sons. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des plateformes et des entreprises d'annotation depuis Madagascar, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer pourquoi une IA a besoin de données annotées",
+   "Appliquer des consignes d'annotation et traiter les cas limites",
+   "Annoter des images avec CVAT et des textes avec Label Studio",
+   "Mener un projet complet avec calibration et contrôle qualité",
+   "Reconnaître les arnaques et calculer son revenu réel",
+   "Trouver des projets sérieux et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'annotateur de données IA depuis Madagascar",
+    "summary": "Pourquoi l'IA a besoin d'annotateurs, les 6 types de tâches, qui donne du travail, les réalités du métier et le poste de travail.",
+    "sections": [
+     "Pourquoi une IA a besoin d'annotateurs",
+     "Les 6 grands types de tâches",
+     "Qui donne du travail aux annotateurs ?",
+     "Les réalités du métier",
+     "Préparer son poste de travail",
+     "Exercice pratique : annoter à la main"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : consignes, cadres, texte et qualité",
+    "summary": "Lire des consignes en 5 étapes, les 6 règles des cadres, la segmentation, le texte et les entités nommées, les cas limites et la mesure de la qualité.",
+    "sections": [
+     "Lire les consignes : la méthode en 5 étapes",
+     "Les cadres de délimitation : 6 règles de base",
+     "La segmentation",
+     "L'annotation de texte",
+     "Les cas limites : ne jamais deviner",
+     "Comment votre qualité est mesurée",
+     "Exercice pratique : appliquer des consignes"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : CVAT, Label Studio, et pourquoi rien n'est à acheter",
+    "summary": "Annoter des images dans CVAT, du texte dans Label Studio, les raccourcis, les formats d'export, vitesse et précision.",
+    "sections": [
+     "Les outils de l'annotateur",
+     "CVAT : annoter des images",
+     "Label Studio : annoter du texte",
+     "Exporter les annotations",
+     "Vitesse et précision",
+     "Rien à acheter : les plateformes fournissent les outils",
+     "Exercice pratique : vos deux premiers projets"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : un projet d'annotation complet",
+    "summary": "Les 5 phases d'un projet, la calibration, la production, le journal des cas limites, le contrôle qualité et le rapport.",
+    "sections": [
+     "Le cas pratique : « Marché propre »",
+     "Les 5 phases d'un projet d'annotation",
+     "Phase 1 : les consignes du projet « Marché propre »",
+     "Phase 2 : la calibration",
+     "Phase 3 : la production",
+     "Phase 4 : le contrôle qualité",
+     "Phase 5 : la livraison et le rapport",
+     "Exercice pratique : le projet « Marché propre »"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des projets et se faire payer",
+    "summary": "Les 4 sources de travail, vérifier une offre, CV, tests de qualification, modes de rémunération, revenu réel, paiements et évolution.",
+    "sections": [
+     "Les 4 sources de travail",
+     "Le profil et le CV d'annotateur",
+     "Réussir les tests de qualification",
+     "Les modes de rémunération",
+     "Se faire payer depuis Madagascar",
+     "Évoluer dans le métier",
+     "Exercice pratique : votre plan de recherche"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "design-0-f": {
   "hours": 14,
   "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
