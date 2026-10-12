@@ -1,0 +1,97 @@
+{
+  "id": "client-1-f",
+  "hours": 13,
+  "description": "L'agent support chat et e-mail résout par écrit les demandes des clients : commandes, retours, paiements, comptes, réclamations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des éditeurs de logiciels et des centres de contacts, avec Zendesk et Freshdesk. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les différences entre chat, e-mail et messageries",
+    "Écrire une réponse en 5 parties avec le ton juste",
+    "Gérer plusieurs chats et apaiser un client mécontent par écrit",
+    "Utiliser un helpdesk : tickets, statuts, macros, vues, base de connaissances",
+    "Traiter une journée complète de support et en rendre compte",
+    "Décrocher un poste ou des missions et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'agent support chat et e-mail depuis Madagascar",
+      "summary": "Ce que fait un agent support, chat, e-mail et messageries, les 8 demandes fréquentes, qui recrute, les qualités et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel canal demande les réponses les plus rapides ?", "options": ["Le chat", "L'e-mail", "Le courrier postal", "Le fax"], "correct": 0 },
+        { "q": "Que faut-il faire avec une réponse type ?", "options": ["L'adapter à chaque client", "La copier sans changement", "Ne jamais l'utiliser", "L'envoyer deux fois"], "correct": 0 },
+        { "q": "Peut-on promettre un remboursement sans en avoir le droit ?", "options": ["Non", "Oui, toujours", "Oui, si le client crie", "Oui, le vendredi"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : réponse en 5 parties, ton, chat et escalade",
+      "summary": "La réponse en 5 parties, le ton de la marque, les règles du chat, le client mécontent par écrit et l'escalade.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où doit se trouver la réponse à la question du client ?", "options": ["Dans les 2 premières phrases", "À la fin du message", "Dans une pièce jointe", "Nulle part"], "correct": 0 },
+        { "q": "En chat, combien de temps maximum sans nouvelle pour le client ?", "options": ["1 à 2 minutes", "30 minutes", "Une heure", "Une journée"], "correct": 0 },
+        { "q": "Qu'est-ce que l'escalade ?", "options": ["Transmettre une demande à un collègue ou un service plus compétent", "Monter un escalier", "Fermer un ticket", "Insulter le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : helpdesk, Zendesk et Freshdesk",
+      "summary": "Le ticket et son cycle de vie, les priorités et les vues, macros, notes internes et étiquettes, base de connaissances et délais promis.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie le statut « En attente » ?", "options": ["Vous attendez la réponse du client", "Le ticket est fermé", "Le ticket est nouveau", "Le client est satisfait"], "correct": 0 },
+        { "q": "Qui voit une note interne ?", "options": ["Seulement l'équipe", "Le client", "Tout le monde sur Internet", "Personne"], "correct": 0 },
+        { "q": "Qui paie l'abonnement Zendesk ou Freshdesk ?", "options": ["L'entreprise", "L'agent", "Le client final", "Vitako"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une journée de support pour une boutique en ligne",
+      "summary": "Préparer sa journée, ordre de traitement, réponses adaptées aux règles, sessions de chat, indicateurs et rapport de fin de journée.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quels tickets traiter en premier ?", "options": ["Les urgents et ceux dont le délai promis expire bientôt", "Les plus récents", "Les remerciements", "Les plus courts"], "correct": 0 },
+        { "q": "Un client demande si un savon convient à une maladie de peau. Que faire ?", "options": ["Donner les informations de la fiche produit et conseiller un professionnel de santé", "Donner un avis médical", "Refuser de répondre", "Inventer une réponse"], "correct": 0 },
+        { "q": "À quoi sert la partie « problèmes fréquents » du rapport ?", "options": ["Aider l'entreprise à éviter les demandes", "Accuser des collègues", "Remplir la page", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver un poste ou des missions et se faire payer",
+      "summary": "Salarié ou freelance, CV, tests et entretien, offre freelance et prix, contrat, fausses offres, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est votre premier test d'écriture ?", "options": ["Votre message de candidature", "L'entretien oral", "Le contrat", "La facture"], "correct": 0 },
+        { "q": "40 heures à 10 000 Ar de l'heure font…", "options": ["400 000 Ar", "40 000 Ar", "4 000 000 Ar", "10 000 Ar"], "correct": 0 },
+        { "q": "On vous demande de payer une formation obligatoire pour être embauché. Que faire ?", "options": ["Refuser : c'est un signal d'arnaque", "Payer", "Payer la moitié", "Envoyer vos codes"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle d'un agent support chat et e-mail ?", "options": ["Résoudre par écrit les demandes des clients", "Vendre au téléphone", "Créer des sites", "Gérer la comptabilité"], "correct": 0 },
+    { "q": "Quel style pour un e-mail de support ?", "options": ["Complet et structuré", "Un seul mot", "Uniquement des emojis", "En majuscules"], "correct": 0 },
+    { "q": "Quelle qualité est la plus importante à l'écrit ?", "options": ["Un français impeccable", "Une belle police", "De longues phrases", "Beaucoup de points d'exclamation"], "correct": 0 },
+    { "q": "Quelle est la deuxième partie d'une réponse ?", "options": ["La reconnaissance de la demande et de l'émotion", "La facture", "La signature", "La publicité"], "correct": 0 },
+    { "q": "Quelle formulation est la meilleure ?", "options": ["« Voici ce que je peux faire pour vous »", "« Ce n'est pas possible »", "« Vous auriez dû lire »", "« Malheureusement, non »"], "correct": 0 },
+    { "q": "Que faire quand vous cherchez une information pendant un chat ?", "options": ["Prévenir le client", "Ne rien dire pendant 10 minutes", "Fermer le chat", "Ouvrir un autre chat"], "correct": 0 },
+    { "q": "Quelle est l'erreur la plus grave en chat ?", "options": ["Envoyer une information au mauvais client", "Dire bonjour", "Utiliser une macro personnalisée", "Vérifier la commande"], "correct": 0 },
+    { "q": "Face à un client furieux par écrit, que faire d'abord ?", "options": ["Relire calmement avant de répondre", "Répondre tout de suite en colère", "Fermer le ticket", "L'ignorer"], "correct": 0 },
+    { "q": "Quand transmettre une demande ?", "options": ["Quand elle dépasse vos droits ou vos compétences", "Jamais", "Toujours", "Quand on a faim"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un ticket ?", "options": ["Une demande enregistrée avec tout son historique", "Un billet de bus", "Une facture", "Une publicité"], "correct": 0 },
+    { "q": "Quel statut quand vous attendez un autre service ?", "options": ["En pause", "Résolu", "Fermé", "Nouveau"], "correct": 0 },
+    { "q": "Quelle priorité pour un paiement débité deux fois ?", "options": ["Urgente", "Basse", "Normale", "Aucune"], "correct": 0 },
+    { "q": "À quoi servent les étiquettes ?", "options": ["Classer le motif du ticket", "Décorer le ticket", "Payer le client", "Fermer le ticket"], "correct": 0 },
+    { "q": "Que faire avant de répondre à un client qui a déjà écrit ?", "options": ["Lire son historique", "Rien", "Lui demander de tout réécrire", "Fermer ses anciens tickets"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un SLA ?", "options": ["Un délai de réponse promis par l'entreprise", "Un type de chat", "Une macro", "Un logiciel"], "correct": 0 },
+    { "q": "Que mesure la résolution au premier contact ?", "options": ["La part des demandes réglées en une seule réponse", "Le nombre de clients", "Le prix des produits", "La vitesse de frappe"], "correct": 0 },
+    { "q": "Que veut dire CSAT ?", "options": ["La satisfaction client", "Le délai de résolution", "Le nombre de tickets", "Le salaire"], "correct": 0 },
+    { "q": "Quelle est la première étape de la préparation de la journée ?", "options": ["Lire les messages de l'équipe", "Se mettre disponible sans rien lire", "Fermer tous les tickets", "Envoyer le rapport"], "correct": 0 },
+    { "q": "Quel geste commercial un agent de Soa Beauté peut-il accorder seul ?", "options": ["Un code de 10 % maximum", "Un remboursement de 500 €", "Un produit gratuit à vie", "Aucun"], "correct": 0 },
+    { "q": "Que faire d'une demande de chat qui demande une longue vérification ?", "options": ["La transformer en ticket avec un délai de réponse", "Laisser le client attendre une heure", "Fermer le chat", "Inventer une réponse"], "correct": 0 },
+    { "q": "Qu'est-ce qui compte le plus dans les indicateurs ?", "options": ["La qualité des résolutions", "Le nombre de réponses, même mauvaises", "La longueur des messages", "Le nombre d'emojis"], "correct": 0 },
+    { "q": "Que mettre sur un CV d'agent support ?", "options": ["Langues, frappe, outils, expérience client, projet chiffré", "Uniquement ses loisirs", "Ses mots de passe", "Rien de précis"], "correct": 0 },
+    { "q": "Quel avantage proposer à une boutique européenne ?", "options": ["Répondre tôt le matin, heure de Paris", "Ne jamais répondre le matin", "Répondre une fois par semaine", "Répondre seulement en malagasy"], "correct": 0 },
+    { "q": "Que doit préciser un contrat freelance de support ?", "options": ["Canaux, horaires, délais, droits de l'agent, prix, confidentialité, durée", "Seulement le prix", "Rien", "Le salaire du client"], "correct": 0 },
+    { "q": "Quelle évolution consiste à écrire les articles d'aide ?", "options": ["Rédacteur de base de connaissances", "Comptable", "Graphiste", "Livreur"], "correct": 0 }
+  ]
+}

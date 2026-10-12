@@ -526,6 +526,92 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-1-f": {
+  "hours": 13,
+  "description": "L'agent support chat et e-mail résout par écrit les demandes des clients : commandes, retours, paiements, comptes, réclamations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des éditeurs de logiciels et des centres de contacts, avec Zendesk et Freshdesk. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les différences entre chat, e-mail et messageries",
+   "Écrire une réponse en 5 parties avec le ton juste",
+   "Gérer plusieurs chats et apaiser un client mécontent par écrit",
+   "Utiliser un helpdesk : tickets, statuts, macros, vues, base de connaissances",
+   "Traiter une journée complète de support et en rendre compte",
+   "Décrocher un poste ou des missions et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'agent support chat et e-mail depuis Madagascar",
+    "summary": "Ce que fait un agent support, chat, e-mail et messageries, les 8 demandes fréquentes, qui recrute, les qualités et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Chat, e-mail, messageries : quelles différences ?",
+     "Les 8 demandes les plus fréquentes",
+     "Qui recrute des agents à distance ?",
+     "Les qualités demandées",
+     "Préparer son poste de travail",
+     "Exercice pratique : vos premières réponses"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : réponse en 5 parties, ton, chat et escalade",
+    "summary": "La réponse en 5 parties, le ton de la marque, les règles du chat, le client mécontent par écrit et l'escalade.",
+    "sections": [
+     "La réponse en 5 parties",
+     "Le ton juste",
+     "Le chat : les règles du temps réel",
+     "Répondre à un client mécontent par écrit",
+     "Savoir transmettre (l'escalade)",
+     "Exercice pratique : répondre comme un professionnel"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : helpdesk, Zendesk et Freshdesk",
+    "summary": "Le ticket et son cycle de vie, les priorités et les vues, macros, notes internes et étiquettes, base de connaissances et délais promis.",
+    "sections": [
+     "Le helpdesk et le ticket",
+     "Trier et prioriser",
+     "Les fonctions essentielles",
+     "La base de connaissances",
+     "Les délais promis (SLA)",
+     "Zendesk et Freshdesk : pour s'entraîner",
+     "Les outils payants",
+     "Exercice pratique : votre helpdesk d'entraînement"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : une journée de support pour une boutique en ligne",
+    "summary": "Préparer sa journée, ordre de traitement, réponses adaptées aux règles, sessions de chat, indicateurs et rapport de fin de journée.",
+    "sections": [
+     "Le cas pratique : « Soa Beauté »",
+     "Préparer sa journée en 6 points",
+     "La file de tickets : l'ordre de traitement",
+     "Rédiger des réponses adaptées",
+     "Les sessions de chat",
+     "Mesurer sa journée",
+     "Le rapport de fin de journée",
+     "Exercice pratique : la journée Soa Beauté"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver un poste ou des missions et se faire payer",
+    "summary": "Salarié ou freelance, CV, tests et entretien, offre freelance et prix, contrat, fausses offres, paiements et évolution.",
+    "sections": [
+     "Salarié ou freelance ?",
+     "Le CV et la candidature",
+     "Réussir les tests et l'entretien",
+     "L'offre freelance",
+     "Reconnaître les fausses offres",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : votre candidature"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "data-0-a": {
   "hours": 16,
   "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

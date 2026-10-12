@@ -75,7 +75,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
-  ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, false),
+  ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 14, false),
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, false),
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, false),
@@ -1394,6 +1394,648 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faut-il pour commencer une mission ?', '["Une promesse orale suffit","Payer des frais d''inscription","Un contrat ou un accord écrit","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["10 000 Ar","5 000 Ar","100 000 Ar","1 000 Ar"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment protéger sa voix pendant une journée d''appels ?', '["Boire de l''eau et prendre ses pauses","Enchaîner sans pause","Boire très froid toute la journée","Parler plus fort"]'::jsonb, 0);
+
+-- client-1-f
+delete from public.exam_questions where course_id = 'client-1-f';
+delete from public.module_questions where course_id = 'client-1-f';
+delete from public.lessons where course_id = 'client-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-f', 0, 'Le métier d''agent support chat et e-mail depuis Madagascar', 'Ce que fait un agent support, chat, e-mail et messageries, les 8 demandes fréquentes, qui recrute, les qualités et le poste de travail.', 'De plus en plus de clients préfèrent écrire plutôt que téléphoner : par chat sur un site, par e-mail, par messagerie. Les entreprises ont donc besoin d''agents qui répondent **par écrit**, vite et bien. C''est un métier très adapté au télétravail depuis Madagascar, surtout pour ceux qui écrivent un bon français. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un agent support chat et e-mail.
+> 2. Distinguer le chat, l''e-mail et les messageries.
+> 3. Citer les 8 demandes les plus fréquentes.
+> 4. Repérer qui recrute des agents à distance.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un agent support **résout par écrit les demandes des clients d''une entreprise, avec rapidité, exactitude et courtoisie**.
+
+Le client ne voit pas votre visage et n''entend pas votre voix : tout passe par **vos mots**. Une réponse claire et chaleureuse fait aimer la marque ; une réponse sèche ou confuse fait fuir le client.
+
+> [!definition] Support client
+> Le service qui aide les clients après (et parfois avant) l''achat : questions, problèmes, réclamations, retours. On parle aussi de **service client** ou de **relation client**.
+
+## Chat, e-mail, messageries : quelles différences ?
+
+| Canal | Rythme | Style | Ce qu''on attend de vous |
+| --- | --- | --- | --- |
+| **Chat** (sur le site ou l''application) | Temps réel, le client attend à l''écran | Phrases courtes, plusieurs messages | Répondre en quelques dizaines de secondes, gérer souvent 2 ou 3 conversations à la fois |
+| **E-mail** | Différé : quelques heures | Réponse complète et structurée | Tout régler en un seul message si possible |
+| **Messageries** (WhatsApp, Messenger, Instagram) | Entre les deux | Ton plus détendu, mais toujours professionnel | Répondre vite, avec photos ou liens si utile |
+
+> [!exemple] La même demande, deux canaux
+> **Chat** : « Bonjour Sophie ! Je regarde votre commande tout de suite. » … « Elle est partie hier, elle arrive jeudi. Voici le suivi : [lien]. Autre chose pour vous ? »
+> **E-mail** : « Bonjour Sophie, merci pour votre message. Votre commande n° 4521 a été expédiée hier par Colissimo et devrait arriver jeudi 14 mars. Vous pouvez la suivre ici : [lien]. Si elle n''est pas arrivée vendredi, répondez simplement à cet e-mail et nous ferons le nécessaire. Bonne journée, Hanta, service client. »
+
+## Les 8 demandes les plus fréquentes
+
+| N° | Demande | Exemple |
+| --- | --- | --- |
+| 1 | Suivi de commande | « Où est mon colis ? » |
+| 2 | Retour et remboursement | « La taille ne va pas, comment je fais ? » |
+| 3 | Problème de paiement | « Ma carte a été débitée deux fois » |
+| 4 | Compte et connexion | « Je n''arrive pas à me connecter » |
+| 5 | Question sur un produit | « Ce produit convient-il aux peaux sensibles ? » |
+| 6 | Abonnement | « Comment résilier mon abonnement ? » |
+| 7 | Problème technique | « L''application plante quand j''ouvre mon panier » |
+| 8 | Réclamation | « Produit reçu cassé, c''est inadmissible » |
+
+Pour chacune, l''entreprise a en général une **procédure** et des **réponses types** : votre rôle est de les appliquer avec intelligence, en les adaptant à chaque client.
+
+## Qui recrute des agents à distance ?
+
+1. **Boutiques en ligne** (France, Belgique, Canada…) : commandes, livraisons, retours.
+2. **Entreprises de logiciels et d''applications** : comptes, abonnements, problèmes techniques simples.
+3. **Centres de contacts** à Madagascar et à l''étranger, qui proposent de plus en plus de postes « écrit » en télétravail.
+4. **Startups** qui n''ont pas encore d''équipe de support.
+5. **Plateformes de services** (réservation, transport, livraison).
+
+> [!madagascar] Votre avantage
+> Un français écrit soigné, un faible décalage horaire avec l''Europe, et la possibilité de couvrir les heures où les équipes européennes ne travaillent pas encore (tôt le matin, heure de Paris). Les entreprises qui vendent en ligne ont besoin de répondre **vite**, à toute heure : c''est une vraie opportunité.
+
+## Les qualités demandées
+
+| Qualité | Pourquoi |
+| --- | --- |
+| **Français écrit impeccable** | Chaque faute abîme l''image de la marque |
+| **Rapidité de frappe** | Surtout en chat, où le client attend |
+| **Compréhension rapide** | Saisir le vrai problème dans un message parfois confus |
+| **Empathie** | Le client est souvent agacé ; il doit se sentir compris |
+| **Rigueur** | Vérifier chaque information avant de la donner |
+| **Organisation** | Gérer plusieurs conversations et des dizaines de tickets |
+
+## Préparer son poste de travail
+
+1. **Un ordinateur** fiable et un **grand écran** (ou deux) : la conversation d''un côté, les outils de l''autre.
+2. **Une connexion stable** et un forfait mobile de secours, surtout pour le chat en temps réel.
+3. **Un correcteur** d''orthographe installé dans le navigateur (LanguageTool, par exemple).
+4. **Un endroit calme** pour rester concentré.
+5. **Une alimentation de secours** (batterie, onduleur) : en chat, une coupure laisse un client sans réponse.
+
+> [!astuce]
+> Entraînez votre vitesse de frappe 15 minutes par jour. En chat, la différence entre 30 et 50 mots par minute, c''est une conversation de plus traitée à la fois.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Répondre vite sans avoir bien compris la question.
+> - Copier-coller une réponse type sans l''adapter (le client le sent tout de suite).
+> - Laisser des fautes d''orthographe.
+> - Promettre un remboursement ou un geste sans en avoir le droit.
+
+> [!retenir]
+> - L''agent support résout par écrit les demandes des clients.
+> - Chat : rapide et court ; e-mail : complet et structuré ; messageries : entre les deux.
+> - 8 demandes fréquentes, chacune avec une procédure.
+> - Français écrit, rapidité, empathie et rigueur sont vos premiers atouts.
+
+## Exercice pratique : vos premières réponses
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Faites un test de vitesse de frappe et notez votre résultat.
+> 2. Pour chacune des 8 demandes fréquentes, imaginez le message d''un client.
+> 3. Rédigez la réponse à 4 d''entre elles en version **chat** (plusieurs messages courts) et en version **e-mail** (un message complet).
+> 4. Passez vos réponses dans un correcteur et corrigez chaque faute.
+>
+> **À livrer** : votre résultat de frappe, les 8 messages clients et vos 8 réponses (4 chats, 4 e-mails).', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 0, 0, 'Quel canal demande les réponses les plus rapides ?', '["L''e-mail","Le fax","Le chat","Le courrier postal"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 0, 1, 'Que faut-il faire avec une réponse type ?', '["La copier sans changement","L''adapter à chaque client","Ne jamais l''utiliser","L''envoyer deux fois"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 0, 2, 'Peut-on promettre un remboursement sans en avoir le droit ?', '["Non","Oui, le vendredi","Oui, si le client crie","Oui, toujours"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-f', 1, 'Les bases : réponse en 5 parties, ton, chat et escalade', 'La réponse en 5 parties, le ton de la marque, les règles du chat, le client mécontent par écrit et l''escalade.', 'Une bonne réponse écrite suit une structure, utilise un ton juste et règle le problème du premier coup. Ce module vous donne les bases que toutes les équipes de support enseignent : la structure d''une réponse, le ton, les règles propres au chat, la gestion d''un client mécontent et les limites de ce que vous pouvez promettre.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire une réponse en 5 parties.
+> 2. Adapter votre ton à la marque et au client.
+> 3. Gérer plusieurs conversations de chat à la fois.
+> 4. Répondre à un client mécontent par écrit.
+> 5. Savoir quand transmettre une demande à un autre service.
+
+## La réponse en 5 parties
+
+| N° | Partie | Rôle | Exemple |
+| --- | --- | --- | --- |
+| 1 | **Salutation personnalisée** | Montrer que vous parlez à une personne | « Bonjour Marc, » |
+| 2 | **Reconnaissance** | Montrer que vous avez compris, et l''émotion | « Je comprends votre inquiétude : votre colis devait arriver hier. » |
+| 3 | **Réponse ou solution** | L''information exacte, ou l''action faite | « J''ai vérifié : il est bloqué au centre de tri de Lyon. J''ai ouvert une enquête auprès du transporteur. » |
+| 4 | **Prochaine étape** | Ce qui va se passer, et quand | « Vous aurez une réponse sous 48 h. Si le colis est perdu, nous vous en renvoyons un immédiatement. » |
+| 5 | **Clôture** | Laisser la porte ouverte | « N''hésitez pas à répondre à cet e-mail si vous avez une question. Belle journée, Hanta. » |
+
+> [!astuce] La règle de la première phrase
+> Le client doit trouver **la réponse à sa question** dans les 2 premières phrases. Les explications viennent après.
+
+## Le ton juste
+
+### Le guide de ton de la marque
+
+Chaque entreprise a son ton : tutoiement ou vouvoiement, emojis ou non, formel ou chaleureux. Lisez son **guide de ton** et des anciennes réponses avant de commencer.
+
+| Marque | Ton probable |
+| --- | --- |
+| Banque, assurance | Vouvoiement, formel, précis |
+| Boutique de mode pour jeunes | Tutoiement possible, chaleureux, quelques emojis |
+| Logiciel pour entreprises | Vouvoiement, clair, technique mais simple |
+
+### Les mots qui aident et ceux qui fâchent
+
+| À éviter | À écrire plutôt |
+| --- | --- |
+| « Ce n''est pas possible. » | « Voici ce que je peux faire pour vous. » |
+| « Vous auriez dû… » | « Pour la prochaine fois, vous pouvez… » |
+| « Comme indiqué dans nos conditions… » | « Nos conditions prévoient… et je vais voir ce que je peux faire. » |
+| « Malheureusement, … » en début de phrase | Commencer par la solution ou ce qui est possible |
+| MAJUSCULES ou « !!! » | Phrases calmes et simples |
+| Jargon interne (« ticket N2 », « SLA ») | Des mots que le client comprend |
+
+## Le chat : les règles du temps réel
+
+### Les 6 règles
+
+1. **Saluez en quelques secondes**, même si vous avez besoin de temps pour vérifier : « Bonjour Sophie ! Je regarde ça tout de suite. »
+2. **Écrivez des messages courts**, une idée par message.
+3. **Prévenez quand vous cherchez** : « Je vérifie votre commande, une minute s''il vous plaît. »
+4. **Ne laissez jamais plus de 1 à 2 minutes** sans nouvelle.
+5. **Vérifiez à la fin** : « Ai-je bien répondu à votre question ? »
+6. **Clôturez poliment** quand le client ne répond plus, avec un message qui laisse la porte ouverte.
+
+### Gérer plusieurs conversations
+
+Avec l''expérience, un agent gère souvent 2 à 3 chats en même temps.
+
+1. **Un onglet ou une fenêtre par conversation**, toujours dans le même ordre.
+2. **Le nom du client** en tête de chaque message : vous évitez d''envoyer une réponse dans la mauvaise conversation.
+3. **Des réponses types** (macros) pour les questions fréquentes, à **adapter**.
+4. **Une conversation compliquée à la fois** : si l''une demande beaucoup d''attention, ne prenez pas de nouveau chat.
+
+> [!attention]
+> L''erreur la plus grave en chat : envoyer une information (adresse, commande, données personnelles) **au mauvais client**. Relisez le nom et le numéro de commande avant chaque envoi.
+
+## Répondre à un client mécontent par écrit
+
+> [!exemple] Message reçu
+> « TROISIÈME FOIS que je vous écris !!! Toujours pas remboursé de mon retour envoyé il y a 3 semaines. Vous êtes des voleurs. »
+
+### La méthode en 5 étapes
+
+1. **Ne répondez pas sous le coup de l''émotion** : relisez calmement.
+2. **Reconnaissez** l''émotion et l''attente, sans vous justifier longuement.
+3. **Agissez** : vérifiez le dossier et faites l''action possible tout de suite.
+4. **Donnez un délai précis** et tenez-le.
+5. **Remerciez** pour sa patience.
+
+> [!exemple] Réponse
+> « Bonjour Monsieur Lefèvre, je comprends votre agacement : vous attendez ce remboursement depuis 3 semaines et vous avez dû nous écrire plusieurs fois. Je vous présente nos excuses. J''ai retrouvé votre retour : il a bien été reçu le 2 mars, mais le remboursement n''avait pas été lancé. Je viens de le valider : 89 € seront de retour sur votre carte sous 3 à 5 jours ouvrés. Je reste votre interlocutrice pour ce dossier : répondez directement à ce message si besoin. Merci pour votre patience, Hanta. »
+
+Si un client insulte de façon répétée ou menace, suivez la procédure de l''entreprise (souvent : transmettre à un responsable).
+
+## Savoir transmettre (l''escalade)
+
+> [!definition] Escalade
+> Transmettre une demande à un collègue plus expérimenté ou à un autre service (technique, comptabilité, responsable), quand vous ne pouvez pas la régler vous-même.
+
+### Quand transmettre
+
+1. **Au-delà de vos droits** : remboursement important, geste commercial non prévu.
+2. **Problème technique** que vous ne savez pas résoudre.
+3. **Menace juridique**, journaliste, influenceur, situation sensible.
+4. **Bogue qui touche plusieurs clients**.
+
+### Comment transmettre
+
+1. **Résumez** le problème en 3 lignes dans une note interne.
+2. **Indiquez** ce qui a déjà été vérifié ou tenté.
+3. **Prévenez le client** : qui va le recontacter et dans quel délai.
+
+> [!madagascar]
+> Pour un client européen, indiquez les délais en jours ouvrés **de son pays** et faites attention aux jours fériés différents (en France, le 14 juillet ou le 15 août ; à Madagascar, le 26 juin). Une promesse « demain » un jour férié chez le client crée une déception.
+
+> [!retenir]
+> - Salutation, reconnaissance, solution, prochaine étape, clôture.
+> - La réponse dans les 2 premières phrases.
+> - Le ton de la marque, des mots positifs, pas de jargon.
+> - Chat : saluer vite, messages courts, jamais 2 minutes sans nouvelle, vérifier le destinataire.
+> - Client mécontent : reconnaître, agir, délai précis ; et savoir transmettre.
+
+## Exercice pratique : répondre comme un professionnel
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez la réponse en 5 parties à 5 e-mails clients (suivi, retour, double paiement, connexion, réclamation).
+> 2. Réécrivez 5 phrases négatives en phrases positives.
+> 3. Simulez avec un proche 2 conversations de chat en même temps, pendant 15 minutes, et notez vos temps de réponse.
+> 4. Répondez au client mécontent de l''exemple, mais pour un retour **non reçu** par l''entrepôt.
+> 5. Rédigez une note d''escalade pour un problème de paiement que vous ne pouvez pas régler.
+>
+> **À livrer** : vos 5 réponses, vos 5 reformulations, les captures des chats avec vos temps, votre réponse et la note d''escalade.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 1, 0, 'Où doit se trouver la réponse à la question du client ?', '["À la fin du message","Nulle part","Dans une pièce jointe","Dans les 2 premières phrases"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 1, 1, 'En chat, combien de temps maximum sans nouvelle pour le client ?', '["Une heure","1 à 2 minutes","Une journée","30 minutes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 1, 2, 'Qu''est-ce que l''escalade ?', '["Transmettre une demande à un collègue ou un service plus compétent","Fermer un ticket","Monter un escalier","Insulter le client"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-f', 2, 'Les outils : helpdesk, Zendesk et Freshdesk', 'Le ticket et son cycle de vie, les priorités et les vues, macros, notes internes et étiquettes, base de connaissances et délais promis.', 'Les équipes de support travaillent dans un **logiciel de gestion des demandes** (helpdesk) : tous les e-mails, chats et messages arrivent au même endroit, sous forme de **tickets**. Ce module vous fait prendre en main les deux outils les plus répandus, **Zendesk** et **Freshdesk**, avec leurs fonctions essentielles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce qu''est un ticket et son cycle de vie.
+> 2. Trier les tickets par priorité et utiliser les vues.
+> 3. Utiliser les macros, les notes internes et les étiquettes.
+> 4. Chercher une réponse dans la base de connaissances.
+> 5. Comprendre les délais de réponse promis (SLA).
+
+## Le helpdesk et le ticket
+
+> [!definition] Ticket
+> Une demande de client enregistrée dans le helpdesk, avec tout son historique : messages, réponses, notes internes, statut. Chaque ticket a un **numéro** unique.
+
+> [!definition] Helpdesk
+> Le logiciel qui reçoit et organise toutes les demandes, quel que soit le canal (e-mail, chat, formulaire, réseaux sociaux). Exemples : Zendesk, Freshdesk, Gorgias, Help Scout.
+
+### Le cycle de vie d''un ticket
+
+| Statut | Signification |
+| --- | --- |
+| **Nouveau** | Le ticket vient d''arriver, personne ne l''a encore pris |
+| **Ouvert** | Un agent travaille dessus |
+| **En attente** (du client) | Vous avez posé une question au client, vous attendez sa réponse |
+| **En pause** (interne) | Vous attendez un autre service (technique, entrepôt) |
+| **Résolu** | La demande est réglée ; le client peut encore répondre |
+| **Fermé** | Le ticket est clos définitivement (souvent automatiquement après quelques jours) |
+
+**Règle** : mettez toujours à jour le statut. Un ticket « ouvert » oublié, c''est un client sans réponse.
+
+## Trier et prioriser
+
+### Les niveaux de priorité
+
+| Priorité | Exemples |
+| --- | --- |
+| **Urgente** | Paiement débité plusieurs fois, compte piraté, service totalement en panne |
+| **Haute** | Commande non reçue après la date prévue, client bloqué dans son travail |
+| **Normale** | Question sur un produit, demande de retour |
+| **Basse** | Suggestion, remerciement |
+
+### Les vues
+
+Une **vue** est une liste filtrée de tickets : « Mes tickets ouverts », « Tickets non assignés », « Tickets en retard sur le délai promis ». Commencez chaque session par les vues qui comptent : **les plus urgents et les plus anciens d''abord**.
+
+## Les fonctions essentielles
+
+| Fonction | À quoi elle sert | Conseil |
+| --- | --- | --- |
+| **Macros** (réponses enregistrées) | Insérer une réponse type et appliquer des actions (statut, étiquette) en un clic | Toujours personnaliser : prénom, détails de la commande |
+| **Notes internes** | Écrire un message visible seulement par l''équipe | Résumer ce qui a été fait, pour le collègue suivant |
+| **Étiquettes** (*tags*) | Classer le motif du ticket (retour, livraison, paiement) | Permet à l''entreprise de voir les problèmes fréquents |
+| **Champs du ticket** | Numéro de commande, type de demande, produit | Remplir avec soin |
+| **Fusion** | Réunir deux tickets du même client sur le même sujet | Évite de répondre deux fois |
+| **Historique client** | Voir les anciennes demandes du client | Lire avant de répondre |
+
+> [!exemple] Une macro personnalisée
+> **Macro « Retour – instructions »** : « Bonjour {{prénom}}, merci pour votre message. Pour retourner votre article, … ». Avant d''envoyer, vous ajoutez une phrase adaptée : « Je vois que vous avez commandé la robe en taille M : vous pouvez directement demander la taille L dans le formulaire. »
+
+## La base de connaissances
+
+La base de connaissances contient les **articles d''aide** de l''entreprise (pour les clients) et les **procédures internes** (pour les agents).
+
+1. **Gardez-la ouverte** dans un onglet.
+2. **Cherchez par mots-clés** : « remboursement délai », « changer adresse ».
+3. **Envoyez le lien** d''un article d''aide au client quand il répond bien à sa question, avec une phrase personnelle.
+4. **Signalez** à votre responsable un article faux ou manquant.
+
+## Les délais promis (SLA)
+
+> [!definition] SLA (accord sur le niveau de service)
+> Les délais que l''entreprise s''engage à respecter : par exemple, une première réponse aux e-mails en moins de 4 heures ouvrées, en moins d''une minute pour le chat. Le helpdesk affiche le temps restant sur chaque ticket.
+
+| Indicateur | Ce qu''il mesure |
+| --- | --- |
+| **Délai de première réponse** | Temps entre la demande et votre première réponse |
+| **Délai de résolution** | Temps jusqu''à la résolution complète |
+| **Résolution au premier contact** | Part des demandes réglées en une seule réponse |
+| **Satisfaction client (CSAT)** | Note donnée par le client après la résolution |
+
+## Zendesk et Freshdesk : pour s''entraîner
+
+| Outil | Pour s''entraîner | Points communs |
+| --- | --- | --- |
+| **Freshdesk** | Une offre gratuite existe pour de petites équipes (à vérifier sur le site officiel) | Tickets, statuts, macros (appelées « réponses prédéfinies »), base de connaissances, vues |
+| **Zendesk** | Une version d''essai gratuite est en général proposée | Tickets, statuts, macros, base de connaissances, vues |
+
+Les deux fonctionnent selon les mêmes principes : celui qui maîtrise l''un s''adapte vite à l''autre.
+
+## Les outils payants
+
+Zendesk, Freshdesk et les autres helpdesks sont des **abonnements payés par l''entreprise**, par agent et par mois. En tant qu''agent, vous recevez un compte : **vous n''achetez rien**. Votre valeur, c''est de savoir les utiliser vite. Montrez-le sur votre CV : « Maîtrise de Zendesk et Freshdesk (tickets, macros, vues, base de connaissances) ».
+
+> [!madagascar]
+> Les helpdesks fonctionnent dans le navigateur et demandent une connexion stable. En cas de coupure, prévenez immédiatement votre responsable par téléphone ou par la messagerie de l''équipe : les tickets doivent être réattribués pour respecter les délais promis.
+
+> [!retenir]
+> - Un ticket = une demande avec tout son historique et un statut à jour.
+> - Urgents et plus anciens d''abord, grâce aux vues.
+> - Macros toujours personnalisées, notes internes claires, étiquettes remplies.
+> - La base de connaissances ouverte en permanence.
+> - Les délais promis (SLA) s''affichent sur chaque ticket : respectez-les.
+
+## Exercice pratique : votre helpdesk d''entraînement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Créez un compte gratuit ou d''essai sur Freshdesk ou Zendesk.
+> 2. Créez 10 tickets fictifs d''une boutique en ligne (envoyez-vous des e-mails depuis une autre adresse).
+> 3. Attribuez à chacun une priorité et une étiquette, puis créez une vue « Urgents non résolus ».
+> 4. Créez 5 macros pour les demandes les plus fréquentes.
+> 5. Traitez les 10 tickets : réponse personnalisée, note interne quand c''est utile, statut mis à jour.
+> 6. Rédigez 3 articles courts pour la base de connaissances.
+>
+> **À livrer** : des captures de vos tickets, de votre vue, de vos macros et de vos 3 articles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 2, 0, 'Que signifie le statut « En attente » ?', '["Le ticket est fermé","Le ticket est nouveau","Le client est satisfait","Vous attendez la réponse du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 2, 1, 'Qui voit une note interne ?', '["Seulement l''équipe","Personne","Tout le monde sur Internet","Le client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 2, 2, 'Qui paie l''abonnement Zendesk ou Freshdesk ?', '["L''entreprise","Vitako","L''agent","Le client final"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-f', 3, 'Premier projet : une journée de support pour une boutique en ligne', 'Préparer sa journée, ordre de traitement, réponses adaptées aux règles, sessions de chat, indicateurs et rapport de fin de journée.', 'Dans ce module, vous vivez une journée complète d''agent support pour une boutique en ligne : préparation, traitement d''une file de tickets variés, sessions de chat, transmission des cas difficiles et rapport de fin de journée. C''est l''entraînement le plus proche du vrai travail, et il deviendra une pièce de votre portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer votre journée en 6 points.
+> 2. Traiter une file de 20 tickets variés dans le bon ordre.
+> 3. Rédiger des réponses adaptées à chaque situation.
+> 4. Mesurer vos indicateurs de la journée.
+> 5. Rédiger un rapport de fin de journée qui aide l''entreprise.
+
+## Le cas pratique : « Soa Beauté »
+
+> [!exemple] Votre entreprise
+> **Soa Beauté** est une boutique en ligne française qui vend des cosmétiques naturels, dont des huiles et savons fabriqués à Madagascar. Elle reçoit des demandes par e-mail et par chat sur son site. Ses règles :
+> - Livraison en France en 3 à 5 jours ouvrés.
+> - Retours acceptés sous 30 jours, produits non ouverts.
+> - Remboursement sous 5 jours ouvrés après réception du retour.
+> - Geste commercial autorisé pour l''agent : code de réduction de 10 % maximum. Au-delà : responsable.
+> - Délais promis : première réponse e-mail en 4 heures ouvrées, chat en 1 minute.
+
+## Préparer sa journée en 6 points
+
+1. **Lire les messages de l''équipe** : nouveautés, problèmes en cours (retard d''un transporteur, rupture de stock).
+2. **Ouvrir les outils** : helpdesk, base de connaissances, back-office de la boutique (pour voir les commandes).
+3. **Vérifier la file** : nombre de tickets, urgents, tickets proches du délai promis.
+4. **Relire les procédures** du jour si quelque chose a changé.
+5. **Préparer ses macros** les plus utiles.
+6. **Se mettre « disponible »** pour le chat à l''heure prévue.
+
+## La file de tickets : l''ordre de traitement
+
+| Ordre | Tickets |
+| --- | --- |
+| 1 | Urgents : paiement en double, compte piraté |
+| 2 | Tickets dont le délai promis expire bientôt |
+| 3 | Réclamations et clients qui ont déjà relancé |
+| 4 | Le reste, du plus ancien au plus récent |
+
+### Un extrait de la file
+
+| N° | Message du client | Priorité | Action |
+| --- | --- | --- | --- |
+| 1 | « On m''a débité deux fois 45 €. » | Urgente | Vérifier les paiements ; si doublon confirmé, procédure de remboursement immédiate |
+| 2 | « Colis annoncé lundi, toujours rien jeudi. » | Haute | Vérifier le suivi ; enquête transporteur si nécessaire |
+| 3 | « Le flacon d''huile est arrivé cassé. » | Haute | Demander une photo, proposer renvoi ou remboursement selon la procédure |
+| 4 | « Votre savon convient-il aux peaux atopiques ? » | Normale | Réponse à partir de la fiche produit et de la base de connaissances, sans conseil médical |
+| 5 | « Je veux changer l''adresse de livraison. » | Haute si la commande n''est pas encore expédiée | Vérifier le statut ; modifier si possible, sinon expliquer |
+| 6 | « Merci, j''adore vos produits ! » | Basse | Remercier chaleureusement ; transmettre au service marketing si la procédure le prévoit |
+
+> [!attention]
+> Pour les questions de santé (allergies, peaux atopiques, grossesse), donnez uniquement les informations de la fiche produit (ingrédients, précautions) et invitez le client à demander l''avis d''un professionnel de santé. Ne donnez jamais de conseil médical.
+
+## Rédiger des réponses adaptées
+
+> [!exemple] Ticket 3 : produit cassé
+> « Bonjour Claire, je suis désolée que votre flacon d''huile de coco soit arrivé cassé : ce n''est vraiment pas l''expérience que nous voulons vous offrir. Pourriez-vous m''envoyer une photo du flacon et du colis, en réponse à ce message ? Dès réception, je vous renvoie un flacon neuf sans frais (ou je vous rembourse, si vous préférez). Merci et belle journée, Hanta, Soa Beauté. »
+
+> [!exemple] Ticket 5 : adresse, commande déjà expédiée
+> « Bonjour Paul, merci pour votre message. Votre commande est malheureusement déjà partie ce matin, je ne peux donc plus modifier l''adresse dans notre système. Voici ce que je vous propose : je contacte le transporteur pour demander une modification (ce n''est pas toujours possible), et je vous tiens informé avant 17 h (heure de Paris). Si la livraison ne peut pas être modifiée, le colis nous reviendra et je vous le renverrai à la bonne adresse sans frais. Bonne journée, Hanta. »
+
+## Les sessions de chat
+
+Pendant les créneaux de chat :
+
+1. **Fermez** les tickets e-mail en cours ou notez où vous en êtes.
+2. **Saluez** chaque nouveau client en quelques secondes.
+3. **Commencez par une conversation à la fois**, puis passez à 2 quand vous êtes à l''aise.
+4. **Transformez en ticket** les demandes qui demandent une vérification longue : « Je crée un dossier et je vous réponds par e-mail avant 16 h. »
+
+## Mesurer sa journée
+
+| Indicateur | Votre résultat (exemple) | Objectif de l''équipe (exemple) |
+| --- | --- | --- |
+| Tickets traités | 42 | 40 |
+| Délai moyen de première réponse (e-mail) | 2 h 10 | Moins de 4 h |
+| Chats traités | 18 | 15 |
+| Délai moyen de première réponse (chat) | 35 s | Moins de 1 min |
+| Résolution au premier contact | 71 % | 70 % |
+| Satisfaction client | 4,6 / 5 | 4,5 / 5 |
+
+*(Chiffres donnés en exemple.)*
+
+> [!astuce]
+> La **qualité** compte plus que le nombre. 30 tickets bien résolus valent mieux que 50 réponses rapides qui obligent les clients à réécrire.
+
+## Le rapport de fin de journée
+
+Un bon agent ne fait pas que répondre : il aide l''entreprise à **éviter** les demandes.
+
+### Les 4 parties du rapport
+
+1. **Chiffres de la journée** (tableau ci-dessus).
+2. **Tickets en cours** : liste, statut, prochaine action.
+3. **Problèmes fréquents** observés : « 9 tickets sur des colis en retard, tous avec le même transporteur, zone Lyon. »
+4. **Propositions** : « Ajouter un message sur le site pour prévenir des retards » ; « Préciser sur la fiche produit que l''huile se solidifie sous 24 °C (4 questions aujourd''hui). »
+
+> [!madagascar]
+> Pour Soa Beauté, une partie des produits vient de Madagascar : vous êtes bien placé pour répondre aux questions sur l''origine (vanille, huiles, savons) et proposer des textes plus clairs pour les fiches produits. C''est une vraie valeur ajoutée à mettre en avant.
+
+> [!retenir]
+> - Préparer sa journée en 6 points.
+> - Urgents, délais proches, relances, puis le plus ancien d''abord.
+> - Des réponses adaptées à la procédure et à la situation, jamais de conseil médical.
+> - Mesurer ses indicateurs, avec la qualité avant le nombre.
+> - Un rapport qui signale les problèmes fréquents et propose des solutions.
+
+## Exercice pratique : la journée Soa Beauté
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez dans votre helpdesk d''entraînement 20 tickets variés pour Soa Beauté (suivi, retour, casse, paiement, questions produit, remerciements, réclamations).
+> 2. Classez-les par ordre de traitement et justifiez l''ordre.
+> 3. Traitez les 20 tickets avec les règles de la boutique, macros personnalisées, notes internes et statuts.
+> 4. Simulez 3 chats avec un proche.
+> 5. Remplissez le tableau des indicateurs et rédigez le rapport de fin de journée.
+>
+> **À livrer** : l''ordre de traitement, vos 20 réponses, les captures de chat, le tableau et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 3, 0, 'Quels tickets traiter en premier ?', '["Les remerciements","Les urgents et ceux dont le délai promis expire bientôt","Les plus courts","Les plus récents"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 3, 1, 'Un client demande si un savon convient à une maladie de peau. Que faire ?', '["Inventer une réponse","Refuser de répondre","Donner les informations de la fiche produit et conseiller un professionnel de santé","Donner un avis médical"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 3, 2, 'À quoi sert la partie « problèmes fréquents » du rapport ?', '["Aider l''entreprise à éviter les demandes","Rien","Remplir la page","Accuser des collègues"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-f', 4, 'Trouver un poste ou des missions et se faire payer', 'Salarié ou freelance, CV, tests et entretien, offre freelance et prix, contrat, fausses offres, paiements et évolution.', 'Agent support chat et e-mail est l''un des métiers à distance les plus accessibles, en emploi salarié comme en freelance. Ce dernier module vous prépare à décrocher un poste ou des missions : CV, tests d''écriture, entretien, offre freelance, prix, contrat, paiement et évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre emploi salarié à distance et freelance.
+> 2. Rédiger un CV et une candidature d''agent support.
+> 3. Réussir les tests d''écriture et l''entretien.
+> 4. Construire une offre freelance et calculer vos prix.
+> 5. Reconnaître les fausses offres et vous faire payer.
+> 6. Préparer votre évolution.
+
+## Salarié ou freelance ?
+
+| | **Salarié à distance** | **Freelance** |
+| --- | --- | --- |
+| Employeur | Centre de contacts, boutique, éditeur de logiciel | Plusieurs petites entreprises |
+| Revenu | Salaire fixe | Forfait mensuel ou à l''heure |
+| Outils | Fournis | Ceux du client (helpdesk) |
+| Horaires | Fixés, parfois en équipes | Négociés avec chaque client |
+| Pour qui | Débutants, recherche de stabilité | Personnes autonomes avec de l''expérience |
+
+## Le CV et la candidature
+
+### Les 6 rubriques qui comptent
+
+1. **Langues** : niveau de français écrit (et anglais si vous l''avez), avec honnêteté.
+2. **Vitesse de frappe** et précision : « 50 mots par minute, 98 % de précision ».
+3. **Outils** : Zendesk, Freshdesk, base de connaissances, Google Workspace.
+4. **Expérience de contact client** : vente, accueil, community management, associations.
+5. **Projet de portfolio** : la journée Soa Beauté (module 4), avec vos indicateurs.
+6. **Installation et disponibilités** : connexion, secours, horaires possibles (dont tôt le matin heure de Paris).
+
+> [!exemple] Message de candidature
+> « Bonjour, je souhaite postuler au poste d''agent support chat et e-mail en télétravail. J''écris un français soigné, je tape à 50 mots par minute, et je maîtrise Freshdesk et Zendesk (tickets, macros, base de connaissances). Lors d''une simulation complète de journée de support pour une boutique de cosmétiques, j''ai traité 42 tickets avec un délai moyen de première réponse de 2 heures. Je suis disponible dès le [date], y compris tôt le matin (heure de Paris). Vous trouverez mon CV et des exemples de réponses en pièce jointe. Bien cordialement, [Nom]. »
+
+**Votre candidature est votre premier test d''écriture** : une seule faute peut vous éliminer.
+
+## Réussir les tests et l''entretien
+
+### Les tests habituels
+
+| Test | Ce qu''il mesure | Préparation |
+| --- | --- | --- |
+| **Frappe** | Vitesse et précision | Entraînement quotidien |
+| **Orthographe et grammaire** | Qualité de l''écrit | Dictées, exercices, correcteur pour apprendre ses erreurs |
+| **Rédaction de réponses** | Structure, ton, solution | Les réponses en 5 parties du module 2 |
+| **Simulation de chat** | Rapidité, clarté, multitâche | Simulations avec un proche |
+| **Compréhension** | Lire des procédures et les appliquer | Exercices du module 4 |
+
+### L''entretien
+
+1. Préparez **3 exemples** : un client difficile apaisé, une erreur corrigée, une amélioration proposée.
+2. Expliquez **votre méthode** : comprendre, vérifier, répondre en 5 parties, mettre à jour le statut.
+3. Montrez votre **intérêt pour le produit** de l''entreprise.
+4. Posez une question : « Comment se passe la formation aux produits et aux procédures ? »
+
+## L''offre freelance
+
+Les petites boutiques en ligne et les startups ont souvent besoin d''un support **quelques heures par jour**, sans recruter un salarié.
+
+> [!exemple] Offre « Support boutique en ligne »
+>
+> | | **Essentiel** | **Standard** | **Étendu** |
+> | --- | --- | --- | --- |
+> | E-mails traités | Du lundi au vendredi | Du lundi au samedi | 7 jours sur 7 |
+> | Délai de première réponse | 8 h ouvrées | 4 h ouvrées | 2 h |
+> | Chat en direct | — | 2 h par jour | 4 h par jour |
+> | Rapport | Mensuel | Hebdomadaire | Hebdomadaire + propositions d''amélioration |
+> | Heures estimées par mois | 20 h | 40 h | 70 h |
+
+### Calculer ses prix
+
+1. **Revenu mensuel visé** (exemple : 1 000 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **10 000 Ar de l''heure**.
+2. **Prix de chaque formule** = heures estimées × prix horaire (exemple : Standard = 40 × 10 000 = 400 000 Ar par mois).
+3. **Pour un client étranger**, fixez vos prix en euros ou en dollars, adaptés à son marché.
+
+*(Montants donnés en exemple.)*
+
+### Le contrat freelance
+
+1. Les **canaux** gérés, les **horaires** et les **délais** de réponse.
+2. Les **droits** que vous avez (remboursements, gestes commerciaux) et ce qui doit être transmis au client.
+3. Les **procédures** et informations que le client fournit.
+4. Le **prix** mensuel, payé d''avance.
+5. La **confidentialité** des données des clients.
+6. La **durée** et le **préavis**.
+
+## Reconnaître les fausses offres
+
+1. On vous demande de **payer** pour obtenir le poste ou une formation obligatoire.
+2. Le salaire est **très au-dessus** des offres comparables.
+3. Aucune **entreprise vérifiable**.
+4. On vous demande vos **codes** bancaires ou Mobile Money.
+5. On vous propose de recevoir de l''argent pour le **renvoyer** à d''autres.
+
+Une vraie entreprise ne vous fait **jamais payer** pour travailler.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Employeur à Madagascar | Salaire par virement ou Mobile Money |
+| Client local en freelance | Mobile Money (MVola, Orange Money, Airtel Money) ou virement |
+| Plateforme ou client étranger | Virement international, Payoneer, ou système de la plateforme |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. En freelance, renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qui change |
+| --- | --- |
+| **Agent confirmé** | Demandes plus complexes, plusieurs canaux |
+| **Agent bilingue** | Support en français et en anglais, souvent mieux payé |
+| **Support technique** | Problèmes de logiciels et d''applications |
+| **Référent qualité ou formateur** | Relecture des réponses, formation des nouveaux |
+| **Responsable support** | Organisation de l''équipe, outils, indicateurs |
+| **Rédacteur de base de connaissances** | Écriture des articles d''aide et des procédures |
+
+> [!retenir]
+> - Salarié pour la stabilité, freelance pour la liberté.
+> - Un CV centré sur l''écrit, la frappe, les outils et un projet chiffré.
+> - La candidature est votre premier test d''écriture.
+> - Une offre freelance en 3 formules, avec heures, délais et prix.
+> - On ne paie jamais pour travailler.
+
+## Exercice pratique : votre candidature
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez votre CV d''agent support avec les 6 rubriques.
+> 2. Rédigez votre message de candidature, sans aucune faute.
+> 3. Préparez vos 3 exemples pour l''entretien.
+> 4. Construisez votre offre freelance en 3 formules avec vos prix.
+> 5. Trouvez 3 offres réelles et vérifiez-les avec les 5 signaux d''alerte ; envoyez au moins une candidature.
+>
+> **À livrer** : votre CV, votre message, vos exemples, votre offre et l''analyse des 3 offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 4, 0, 'Quel est votre premier test d''écriture ?', '["Votre message de candidature","La facture","Le contrat","L''entretien oral"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 4, 1, '40 heures à 10 000 Ar de l''heure font…', '["400 000 Ar","10 000 Ar","4 000 000 Ar","40 000 Ar"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-f', 4, 2, 'On vous demande de payer une formation obligatoire pour être embauché. Que faire ?', '["Payer la moitié","Refuser : c''est un signal d''arnaque","Envoyer vos codes","Payer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel est le rôle d''un agent support chat et e-mail ?', '["Gérer la comptabilité","Créer des sites","Résoudre par écrit les demandes des clients","Vendre au téléphone"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel style pour un e-mail de support ?', '["Uniquement des emojis","Complet et structuré","En majuscules","Un seul mot"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle qualité est la plus importante à l''écrit ?', '["Beaucoup de points d''exclamation","Un français impeccable","De longues phrases","Une belle police"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle est la deuxième partie d''une réponse ?', '["La reconnaissance de la demande et de l''émotion","La facture","La signature","La publicité"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle formulation est la meilleure ?', '["« Vous auriez dû lire »","« Malheureusement, non »","« Ce n''est pas possible »","« Voici ce que je peux faire pour vous »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que faire quand vous cherchez une information pendant un chat ?', '["Ouvrir un autre chat","Fermer le chat","Ne rien dire pendant 10 minutes","Prévenir le client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle est l''erreur la plus grave en chat ?', '["Envoyer une information au mauvais client","Utiliser une macro personnalisée","Dire bonjour","Vérifier la commande"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Face à un client furieux par écrit, que faire d''abord ?', '["Fermer le ticket","Relire calmement avant de répondre","L''ignorer","Répondre tout de suite en colère"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quand transmettre une demande ?', '["Quand elle dépasse vos droits ou vos compétences","Jamais","Toujours","Quand on a faim"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Qu''est-ce qu''un ticket ?', '["Un billet de bus","Une publicité","Une demande enregistrée avec tout son historique","Une facture"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel statut quand vous attendez un autre service ?', '["Nouveau","Résolu","En pause","Fermé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle priorité pour un paiement débité deux fois ?', '["Normale","Urgente","Basse","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'À quoi servent les étiquettes ?', '["Décorer le ticket","Fermer le ticket","Classer le motif du ticket","Payer le client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que faire avant de répondre à un client qui a déjà écrit ?', '["Rien","Fermer ses anciens tickets","Lire son historique","Lui demander de tout réécrire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Qu''est-ce qu''un SLA ?', '["Un délai de réponse promis par l''entreprise","Un logiciel","Un type de chat","Une macro"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que mesure la résolution au premier contact ?', '["Le prix des produits","La part des demandes réglées en une seule réponse","Le nombre de clients","La vitesse de frappe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que veut dire CSAT ?', '["La satisfaction client","Le nombre de tickets","Le salaire","Le délai de résolution"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle est la première étape de la préparation de la journée ?', '["Envoyer le rapport","Lire les messages de l''équipe","Fermer tous les tickets","Se mettre disponible sans rien lire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel geste commercial un agent de Soa Beauté peut-il accorder seul ?', '["Un produit gratuit à vie","Un remboursement de 500 €","Aucun","Un code de 10 % maximum"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que faire d''une demande de chat qui demande une longue vérification ?', '["La transformer en ticket avec un délai de réponse","Fermer le chat","Laisser le client attendre une heure","Inventer une réponse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Qu''est-ce qui compte le plus dans les indicateurs ?', '["La qualité des résolutions","Le nombre d''emojis","Le nombre de réponses, même mauvaises","La longueur des messages"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que mettre sur un CV d''agent support ?', '["Uniquement ses loisirs","Langues, frappe, outils, expérience client, projet chiffré","Ses mots de passe","Rien de précis"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel avantage proposer à une boutique européenne ?', '["Répondre seulement en malagasy","Ne jamais répondre le matin","Répondre tôt le matin, heure de Paris","Répondre une fois par semaine"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que doit préciser un contrat freelance de support ?', '["Seulement le prix","Canaux, horaires, délais, droits de l''agent, prix, confidentialité, durée","Le salaire du client","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle évolution consiste à écrire les articles d''aide ?', '["Graphiste","Comptable","Rédacteur de base de connaissances","Livreur"]'::jsonb, 2);
 
 -- data-0-a
 delete from public.exam_questions where course_id = 'data-0-a';
