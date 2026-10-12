@@ -1,0 +1,97 @@
+{
+  "id": "gestion-4-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'aide-comptable un professionnel qui livre des dossiers fiables, prêts à être révisés : spécialité (tenue pour cabinets, fournisseurs, clients, projets d'ONG, paramétrage, trésorerie), diagnostic de dossier, logiciels payants (Sage, QuickBooks, Odoo) avec paramétrage, règles bancaires, lecture automatique et analytique, clôture mensuelle et dossier de révision, travail pour des cabinets étrangers et des bailleurs, puis forfaits, sous-traitance et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, diagnostiquer un dossier et mesurer sa qualité",
+    "Paramétrer et automatiser un dossier dans Sage, QuickBooks ou Odoo",
+    "Tenir une comptabilité analytique par projet",
+    "Organiser une clôture mensuelle et préparer un dossier de révision",
+    "Travailler pour des cabinets étrangers et des bailleurs en toute confidentialité",
+    "Construire des forfaits, proposer la sous-traitance et organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, diagnostiquer et mesurer la qualité",
+      "summary": "Les 6 spécialités avancées, le diagnostic d'un dossier en 6 domaines, les indicateurs de qualité et de productivité, le journal des corrections et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'un risque fiscal découvert pendant le diagnostic ?", "options": ["Le signaler au comptable responsable", "Le corriger seul sans rien dire", "L'ignorer", "En parler au client du client"], "correct": 0 },
+        { "q": "À quoi sert le journal des corrections ?", "options": ["Repérer et éliminer ses erreurs fréquentes", "Facturer plus", "Cacher les erreurs", "Rien"], "correct": 0 },
+        { "q": "Quelle spécialité suit les dépenses par projet et par bailleur ?", "options": ["Comptabilité de projets et d'ONG", "Trésorerie", "Comptabilité clients", "Paramétrage"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Sage, QuickBooks, Odoo, automatisation et analytique",
+      "summary": "Paramétrage d'un dossier, forces des trois logiciels, règles bancaires, lecture automatique des factures, comptabilité analytique par projet, imports et états de contrôle.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui valide le paramétrage des taxes et du plan de comptes ?", "options": ["Le comptable ou l'expert-comptable responsable", "L'aide-comptable seul", "Le fournisseur", "Personne"], "correct": 0 },
+        { "q": "Pour quelles opérations ne pas créer de règle bancaire ?", "options": ["Celles qui demandent une décision", "Les frais bancaires", "Les factures d'électricité", "Les abonnements téléphoniques"], "correct": 0 },
+        { "q": "Qui fixe la clé de répartition des charges communes entre projets ?", "options": ["La direction financière, avec l'accord des bailleurs", "L'aide-comptable au hasard", "Le fournisseur", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : clôture, cohérence, séparation des périodes et révision",
+      "summary": "Calendrier et liste de contrôle de clôture, contrôles de cohérence, séparation des périodes, dossier de révision et pilotage de plusieurs dossiers.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la séparation des périodes ?", "options": ["Enregistrer charges et produits dans la période à laquelle ils se rapportent", "Séparer les dossiers par client", "Changer d'exercice chaque mois", "Classer les pièces par couleur"], "correct": 0 },
+        { "q": "Qui décide des écritures de séparation des périodes ?", "options": ["Le comptable ou l'expert-comptable", "L'aide-comptable seul", "Le client final", "La banque"], "correct": 0 },
+        { "q": "Que doit avoir chaque écart important entre deux mois ?", "options": ["Une explication", "Une suppression", "Une nouvelle couleur", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : plans comptables, cabinets, confidentialité et bailleurs",
+      "summary": "Dossiers de plusieurs pays, répartition des responsabilités en cabinet, 7 règles de confidentialité et fraude au changement de RIB, vocabulaire anglais, rapports financiers de projets.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'une demande de changement de coordonnées bancaires d'un fournisseur ?", "options": ["La vérifier par un autre moyen et la signaler", "L'appliquer tout de suite", "L'ignorer", "La transférer à tous"], "correct": 0 },
+        { "q": "Comment dit-on « balance » en anglais comptable ?", "options": ["Trial balance", "General ledger", "Accounts payable", "Prepaid expense"], "correct": 0 },
+        { "q": "Quelle méthode de conversion utiliser dans un rapport de projet ?", "options": ["Celle prévue par le contrat de financement", "La plus avantageuse", "Au hasard", "Aucune"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, sous-traitance, équipe et évolution",
+      "summary": "Critères de prix et grille de forfaits, engagements pour les cabinets, équipe avec contrôle qualité, fidélisation et évolutions.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le principal facteur de prix d'un dossier ?", "options": ["Le nombre de pièces par mois", "La couleur du logiciel", "La ville du client", "Le nom du dossier"], "correct": 0 },
+        { "q": "Que préciser dans le contrat si l'activité grandit ?", "options": ["Le volume inclus et le prix par pièce supplémentaire", "Rien", "Que tout reste gratuit", "Le salaire du client"], "correct": 0 },
+        { "q": "Que faire avant d'envoyer un dossier préparé par un membre de l'équipe ?", "options": ["Le faire contrôler par une deuxième personne", "L'envoyer directement", "Le supprimer", "Le publier"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité prend en charge les factures, validations et paiements des fournisseurs ?", "options": ["Comptabilité fournisseurs", "Trésorerie", "Paramétrage", "Comptabilité clients"], "correct": 0 },
+    { "q": "Quel domaine du diagnostic vérifie les opérations non identifiées ?", "options": ["Comptes d'attente", "Pièces", "Processus", "Tiers"], "correct": 0 },
+    { "q": "Quel objectif de taux d'erreurs relevées est raisonnable ?", "options": ["Moins de 2 % des écritures", "50 %", "Aucun objectif", "100 %"], "correct": 0 },
+    { "q": "Quel journal créer pour un compte Mobile Money ?", "options": ["Un journal de trésorerie dédié", "Aucun", "Le journal des ventes", "Le journal des salaires"], "correct": 0 },
+    { "q": "Quel logiciel intègre comptabilité, ventes, achats et stocks ?", "options": ["Odoo", "Canva", "Zoom", "Figma"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une règle bancaire ?", "options": ["Une règle qui propose le bon compte selon le libellé", "Un règlement de la banque centrale", "Un taux d'intérêt", "Un mot de passe"], "correct": 0 },
+    { "q": "Que faire après la lecture automatique d'une facture ?", "options": ["Vérifier fournisseur, date, montants, taxes et compte", "Valider sans regarder", "Supprimer la pièce", "Rien"], "correct": 0 },
+    { "q": "Quel état montre les factures non réglées par ancienneté ?", "options": ["La balance âgée", "Le grand livre", "Le bilan", "Le journal des ventes"], "correct": 0 },
+    { "q": "Quand terminer les contrôles de cohérence dans le calendrier ?", "options": ["Avant l'envoi au comptable", "Après l'envoi", "Jamais", "Un an plus tard"], "correct": 0 },
+    { "q": "Un compte fournisseur avec un solde débiteur signale…", "options": ["Une avance ou une erreur à vérifier", "Une situation normale toujours", "Un bénéfice", "Rien"], "correct": 0 },
+    { "q": "L'électricité de décembre facturée en janvier est…", "options": ["Une charge à payer", "Un produit perçu d'avance", "Une immobilisation", "Un produit à recevoir"], "correct": 0 },
+    { "q": "Une assurance payée en octobre pour 12 mois donne lieu à…", "options": ["Une charge payée d'avance pour la part de l'exercice suivant", "Rien", "Un produit", "Une dette fournisseur"], "correct": 0 },
+    { "q": "Que contient la synthèse du dossier de révision ?", "options": ["Période, travaux faits, points en suspens, questions", "Seulement le prix", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Comment gérer plusieurs dossiers ?", "options": ["Avec un tableau de pilotage et un calendrier par dossier", "De mémoire", "Au hasard", "Un dossier par an"], "correct": 0 },
+    { "q": "Pourquoi finir les dossiers 1 ou 2 jours avant la date limite ?", "options": ["Pour absorber coupures et imprévus", "Pour facturer plus", "Ce n'est pas utile", "Pour changer de client"], "correct": 0 },
+    { "q": "Les plans comptables malgache et français sont-ils identiques ?", "options": ["Non, ils se ressemblent mais diffèrent", "Oui, totalement", "Ils n'existent pas", "Seulement en anglais"], "correct": 0 },
+    { "q": "Qui signe les comptes annuels ?", "options": ["L'expert-comptable selon les règles", "L'aide-comptable", "Le stagiaire", "Le fournisseur"], "correct": 0 },
+    { "q": "Comment poser les questions au cabinet ?", "options": ["Par écrit, regroupées, avec les références des pièces", "Une par une à toute heure par téléphone", "Jamais", "Sur les réseaux sociaux"], "correct": 0 },
+    { "q": "Peut-on copier les pièces d'un client sur son téléphone personnel ?", "options": ["Non", "Oui", "Oui, pour aller plus vite", "Oui, si c'est un petit dossier"], "correct": 0 },
+    { "q": "Comment dit-on « fournisseurs » en anglais comptable ?", "options": ["Accounts payable", "Accounts receivable", "Trial balance", "Journal entry"], "correct": 0 },
+    { "q": "Que comparer dans un rapport financier de projet ?", "options": ["Le budget et le réalisé, avec les écarts expliqués", "Les couleurs des lignes", "Le nombre de pages", "Rien"], "correct": 0 },
+    { "q": "Que faire quand les pièces arrivent en retard ?", "options": ["Décaler le délai de livraison selon le contrat", "Livrer à temps sans les pièces", "Inventer les pièces", "Rien"], "correct": 0 },
+    { "q": "Quel engagement de délai proposer à un cabinet ?", "options": ["Dossier prêt 5 jours ouvrés après réception complète des pièces", "Aucun délai", "Un an", "Le jour même sans pièces"], "correct": 0 },
+    { "q": "Quelle alerte utile envoyer au client ?", "options": ["Une trésorerie tendue ou des retards de paiement de ses clients", "Rien", "La météo", "Le prix des concurrents"], "correct": 0 },
+    { "q": "Quelle évolution mène au paramétrage avancé d'Odoo ou de Sage ?", "options": ["Consultant en logiciels de gestion", "Graphiste", "Professeur de langue", "Monteur vidéo"], "correct": 0 }
+  ]
+}

@@ -92,7 +92,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 11, false),
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 18, false),
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
-  ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 14, false),
+  ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 17, false),
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 10, false),
@@ -19510,6 +19510,588 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que doit préciser le contrat sur les décisions ?', '["Qui décide des prix, promotions et remboursements","Rien","Le salaire du client","La couleur de la boutique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
+
+-- gestion-4-a
+delete from public.exam_questions where course_id = 'gestion-4-a';
+delete from public.module_questions where course_id = 'gestion-4-a';
+delete from public.lessons where course_id = 'gestion-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-a', 0, 'Se spécialiser, diagnostiquer et mesurer la qualité', 'Les 6 spécialités avancées, le diagnostic d''un dossier en 6 domaines, les indicateurs de qualité et de productivité, le journal des corrections et les offres à forte valeur.', 'Saisir des factures et rapprocher une banque ouvre les premières missions. Les aides-comptables les plus recherchés vont plus loin : ils **préparent des dossiers complets prêts à être révisés**, **maîtrisent les logiciels** jusqu''au paramétrage, **automatisent** la saisie et prennent en charge des domaines entiers (fournisseurs, clients, trésorerie, comptabilité de projets). Ce module vous aide à choisir votre spécialité et à vendre cette fiabilité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du métier.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic comptable d''un dossier.
+> 4. Mesurer la qualité et la productivité de votre travail.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Tenue de dossiers pour cabinets** | Dossiers complets jusqu''à la préparation de la révision | Plusieurs logiciels, procédures de cabinet, rapidité |
+| 2 | **Comptabilité fournisseurs** | Factures, validations, échéances, paiements | Circuits d''approbation, échéanciers, relations fournisseurs |
+| 3 | **Comptabilité clients et recouvrement** | Facturation, encaissements, relances, litiges | Échéanciers, relances graduées, suivi des retards |
+| 4 | **Comptabilité de projets et d''ONG** | Suivi des dépenses par projet et par bailleur | Comptabilité analytique, justificatifs, règles des bailleurs |
+| 5 | **Paramétrage et automatisation** | Mettre en place un logiciel et ses automatismes | Plans de comptes, règles bancaires, imports, lecture automatique des factures |
+| 6 | **Trésorerie** | Suivre et prévoir les entrées et sorties d''argent | Plan de trésorerie, rapprochements quotidiens |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Comptabilité de projets** pour les ONG et les projets de développement présents à Madagascar, qui doivent justifier chaque dépense auprès de plusieurs bailleurs.
+> - **Tenue de dossiers en sous-traitance** pour des cabinets d''expertise comptable français, qui externalisent déjà vers des pays francophones.
+> - **Mise en place d''Odoo ou de Sage** pour les PME malgaches en croissance.
+
+## Le diagnostic comptable d''un dossier
+
+Le diagnostic est souvent votre **premier service** : il montre votre rigueur et mène à une mission régulière.
+
+### Les 6 domaines
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Pièces** | Toutes les pièces sont-elles reçues, lisibles, classées, jointes ? |
+| **2. Banques et Mobile Money** | Rapprochements à jour, écarts expliqués |
+| **3. Tiers** | Comptes clients et fournisseurs lettrés, soldes anciens expliqués |
+| **4. Comptes d''attente** | Vides ou justifiés |
+| **5. Cohérence** | Charges et produits cohérents d''un mois à l''autre, taxes cohérentes avec les ventes et achats |
+| **6. Processus** | Délais, circuits de validation, outils, automatismes possibles |
+
+> [!exemple] Extrait de résumé de diagnostic
+> « Les rapprochements bancaires ne sont pas faits depuis 4 mois ; le compte d''attente contient 47 opérations pour 3 800 000 Ar. 28 factures fournisseurs de plus de 6 mois ne sont pas lettrées : elles ont probablement été payées. Les reçus Mobile Money ne sont pas conservés. Nous proposons une remise à jour en 2 semaines, puis un traitement mensuel avec des règles bancaires automatiques. »
+
+> [!attention]
+> Le diagnostic constate des **faits** et des **écarts**. S''il révèle un risque fiscal ou une erreur importante dans les comptes, signalez-le au comptable ou à l''expert-comptable responsable : c''est à lui de décider des corrections et des conséquences.
+
+## Mesurer la qualité et la productivité
+
+| Indicateur | Ce qu''il mesure | Exemple d''objectif |
+| --- | --- | --- |
+| **Délai de traitement** | Du jour de réception des pièces au dossier complet | Avant le 10 du mois |
+| **Taux d''erreurs relevées** | Corrections demandées par le réviseur | Moins de 2 % des écritures |
+| **Pièces par heure** | Productivité de saisie | Selon la complexité, avec la lecture automatique |
+| **Comptes d''attente** | Opérations non identifiées en fin de mois | Zéro ou expliquées |
+| **Dossiers livrés à temps** | Fiabilité | 100 % |
+
+> [!astuce]
+> Tenez un **journal des corrections** demandées par le comptable ou le réviseur. En 2 ou 3 mois, vous voyez vos erreurs fréquentes et vous les éliminez. C''est ce qui fait passer d''aide-comptable « correct » à « indispensable ».
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Diagnostic et remise à jour** | Diagnostic en 6 domaines, rattrapage des retards |
+| **Tenue mensuelle complète** | Saisie, rapprochements, lettrage, contrôles, dossier prêt pour la révision |
+| **Comptabilité fournisseurs ou clients** | Circuit complet et suivi des échéances |
+| **Comptabilité de projets** | Suivi par projet et bailleur, préparation des rapports financiers |
+| **Mise en place d''un logiciel** | Paramétrage, reprise des données, règles, formation |
+| **Plan de trésorerie** | Prévisions sur 3 à 12 mois, mises à jour |
+
+> [!retenir]
+> - Spécialisez-vous : cabinets, fournisseurs, clients, projets, paramétrage ou trésorerie.
+> - Le diagnostic en 6 domaines constate les faits et les écarts.
+> - Les risques importants sont signalés au comptable responsable.
+> - Mesurez vos délais, vos erreurs et votre fiabilité.
+> - Vendez des dossiers fiables et des domaines entiers, pas des heures de saisie.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Réalisez le diagnostic en 6 domaines d''un dossier fictif (ou de votre dossier Taxi Be Express du niveau Fondamentaux).
+> 3. Rédigez le résumé du diagnostic et un plan de remise à jour.
+> 4. Créez votre modèle de journal des corrections.
+>
+> **À livrer** : votre choix, votre diagnostic, votre plan et votre journal.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 0, 0, 'Que faire d''un risque fiscal découvert pendant le diagnostic ?', '["L''ignorer","En parler au client du client","Le corriger seul sans rien dire","Le signaler au comptable responsable"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 0, 1, 'À quoi sert le journal des corrections ?', '["Rien","Cacher les erreurs","Repérer et éliminer ses erreurs fréquentes","Facturer plus"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 0, 2, 'Quelle spécialité suit les dépenses par projet et par bailleur ?', '["Comptabilité de projets et d''ONG","Trésorerie","Comptabilité clients","Paramétrage"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-a', 1, 'Outils professionnels : Sage, QuickBooks, Odoo, automatisation et analytique', 'Paramétrage d''un dossier, forces des trois logiciels, règles bancaires, lecture automatique des factures, comptabilité analytique par projet, imports et états de contrôle.', 'Au niveau Avancé, vous maîtrisez les logiciels comptables payants que les cabinets et les entreprises utilisent : **Sage**, **QuickBooks** et **Odoo**, jusqu''à leurs fonctions d''automatisation et de paramétrage. Ces logiciels sont achetés par l''entreprise ou le cabinet ; votre valeur est de les utiliser à fond.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Paramétrer un dossier : plan de comptes, journaux, taxes, tiers.
+> 2. Automatiser la saisie bancaire avec des règles.
+> 3. Utiliser la lecture automatique des factures.
+> 4. Tenir une comptabilité analytique par projet.
+> 5. Importer des données et éditer les états de contrôle.
+
+## Paramétrer un dossier
+
+| Élément | Ce qu''il faut décider (avec le comptable responsable) |
+| --- | --- |
+| **Plan de comptes** | Plan du pays (PCG 2005 à Madagascar, plan comptable français…) adapté à l''activité |
+| **Journaux** | Achats, ventes, banque (un par compte), caisse, Mobile Money, opérations diverses |
+| **Taxes** | Taux, comptes de taxes collectées et déductibles, selon les règles du pays |
+| **Tiers** | Fiches clients et fournisseurs, conditions de paiement |
+| **Exercice** | Dates de début et de fin, périodes |
+| **Analytique** | Axes : projet, bailleur, activité, site |
+
+> [!attention]
+> Le paramétrage des **taxes** et du **plan de comptes** a des conséquences fiscales. Faites-le valider par le comptable ou l''expert-comptable responsable avant de saisir la première écriture.
+
+## Les trois logiciels
+
+| Logiciel | Points forts pour l''aide-comptable |
+| --- | --- |
+| **Sage** (différentes gammes selon les pays) | Saisie rapide par journal, lettrage automatique, rapprochement, analytique, imports ; très présent chez les cabinets francophones et en Afrique |
+| **QuickBooks Online** | Flux bancaires, règles bancaires, catégorisation rapide, factures et paiements en ligne ; très utilisé en Amérique du Nord et par de petites entreprises |
+| **Odoo** | Comptabilité intégrée aux ventes, achats et stocks ; rapprochement bancaire, lecture automatique des factures (selon l''offre), analytique |
+
+*(Les gammes, fonctions et prix changent selon les pays et les versions : vérifiez sur les sites officiels.)*
+
+## Les règles bancaires
+
+> [!definition] Règle bancaire
+> Une règle qui propose ou applique automatiquement le bon compte à une opération bancaire selon son libellé ou son montant. Exemple : tout libellé contenant « JIRAMA » va dans le compte « Électricité et eau ».
+
+| Libellé contient | Compte proposé | Tiers |
+| --- | --- | --- |
+| JIRAMA | Électricité et eau | JIRAMA |
+| FRAIS TENUE COMPTE | Frais bancaires | Banque |
+| TELMA ou ORANGE (abonnement) | Télécommunications | Opérateur |
+| VIR SALAIRE | Rémunérations dues (selon la procédure du dossier) | — |
+
+### Les règles d''or
+
+1. **Une règle = un cas sans ambiguïté**.
+2. **Vérifier** les propositions chaque semaine au début.
+3. **Ne jamais** créer de règle pour des opérations qui demandent une décision (gros montants, opérations exceptionnelles).
+4. **Documenter** les règles du dossier.
+
+## La lecture automatique des factures
+
+> [!definition] Lecture automatique (OCR)
+> Le logiciel lit la facture numérisée et propose le fournisseur, la date, les montants et les taxes. L''aide-comptable vérifie et valide.
+
+### Le circuit
+
+1. Le client envoie les factures à une **adresse e-mail dédiée** ou les dépose dans le logiciel.
+2. Le logiciel **lit** et propose l''écriture.
+3. Vous **vérifiez** : fournisseur, date, montants, taxes, compte.
+4. Vous **validez** et joignez la pièce.
+
+> [!madagascar]
+> Les factures manuscrites, les reçus froissés et les photos de travers sont encore fréquents à Madagascar : la lecture automatique y fait plus d''erreurs. Fixez avec le client une règle de **qualité des pièces** (photo nette, à plat, complète), et vérifiez systématiquement les montants lus.
+
+## La comptabilité analytique par projet
+
+> [!definition] Comptabilité analytique
+> Une ventilation des charges et produits selon des axes (projet, bailleur, activité, site), en plus des comptes généraux. Elle permet de savoir combien coûte et rapporte chaque projet.
+
+| Charge | Compte général | Projet | Bailleur | Ligne budgétaire |
+| --- | --- | --- | --- | --- |
+| Carburant mission Ihosy | Carburants | Eau potable Sud | Bailleur A | Transport |
+| Formation des agents | Formation | Santé communautaire | Bailleur B | Renforcement des capacités |
+| Loyer du bureau (partagé) | Locations | Réparti 60 / 40 | A et B | Frais de structure |
+
+> [!attention]
+> La **répartition des charges communes** (loyer, électricité, salaires partagés) entre projets doit suivre une **clé validée** par la direction financière et acceptée par les bailleurs. Ne l''inventez pas.
+
+## Imports et états de contrôle
+
+### Les imports
+
+1. **Préparez** le fichier dans le format attendu (colonnes, dates, séparateur décimal).
+2. **Testez** sur quelques lignes.
+3. **Importez**, puis **contrôlez** les totaux.
+
+### Les états de contrôle
+
+| État | Ce qu''il montre |
+| --- | --- |
+| **Balance** | Soldes de tous les comptes ; équilibre débit et crédit |
+| **Grand livre** | Détail des écritures de chaque compte |
+| **Balance âgée** | Factures clients ou fournisseurs non réglées, par ancienneté |
+| **État de rapprochement** | Écarts entre banque et comptabilité |
+| **Analytique par projet** | Dépenses par projet comparées au budget |
+
+> [!retenir]
+> - Un paramétrage validé par le comptable responsable.
+> - Sage, QuickBooks et Odoo : apprenez à fond celui de vos clients.
+> - Des règles bancaires simples, vérifiées et documentées.
+> - La lecture automatique accélère, mais chaque montant est vérifié.
+> - L''analytique par projet avec des clés de répartition validées.
+
+## Exercice pratique : un dossier automatisé
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans un essai de QuickBooks, Sage ou Odoo, paramétrez un dossier d''ONG fictive : plan de comptes, journaux (dont Mobile Money), 2 axes analytiques.
+> 2. Créez 6 règles bancaires et importez un relevé fictif de 40 lignes.
+> 3. Saisissez 15 factures (avec lecture automatique si l''offre le permet).
+> 4. Ventilez les charges par projet et éditez l''état analytique comparé à un budget.
+> 5. Éditez la balance et la balance âgée.
+>
+> **À livrer** : des captures du paramétrage, vos règles, vos états et l''analytique par projet.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 1, 0, 'Qui valide le paramétrage des taxes et du plan de comptes ?', '["Le fournisseur","Personne","L''aide-comptable seul","Le comptable ou l''expert-comptable responsable"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 1, 1, 'Pour quelles opérations ne pas créer de règle bancaire ?', '["Les frais bancaires","Celles qui demandent une décision","Les abonnements téléphoniques","Les factures d''électricité"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 1, 2, 'Qui fixe la clé de répartition des charges communes entre projets ?', '["La direction financière, avec l''accord des bailleurs","Personne","Le fournisseur","L''aide-comptable au hasard"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-a', 2, 'Qualité et rapidité : clôture, cohérence, séparation des périodes et révision', 'Calendrier et liste de contrôle de clôture, contrôles de cohérence, séparation des périodes, dossier de révision et pilotage de plusieurs dossiers.', 'Un dossier comptable de qualité se reconnaît à ce que le réviseur n''a presque rien à corriger. Ce module vous donne les méthodes des professionnels : une clôture mensuelle organisée, des contrôles de cohérence, la séparation des périodes, un dossier de révision bien préparé et une organisation qui vous permet de gérer plusieurs dossiers sans retard.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une clôture mensuelle avec une liste de contrôle.
+> 2. Appliquer les contrôles de cohérence des comptes.
+> 3. Comprendre la séparation des périodes.
+> 4. Préparer un dossier de révision.
+> 5. Organiser le travail sur plusieurs dossiers.
+
+## La clôture mensuelle
+
+### Le calendrier (exemple)
+
+| Jour | Tâche |
+| --- | --- |
+| **J+1 à J+3** | Réception et relance des pièces manquantes |
+| **J+3 à J+6** | Saisie des achats, ventes, caisse ; import et rapprochement des banques et Mobile Money |
+| **J+6 à J+8** | Lettrage, comptes d''attente, contrôles de cohérence |
+| **J+8 à J+10** | Écritures préparées pour validation, dossier de synthèse, envoi au comptable |
+
+### La liste de contrôle de clôture
+
+| N° | Contrôle |
+| --- | --- |
+| 1 | Toutes les pièces reçues ou réclamées par écrit |
+| 2 | Banques et Mobile Money rapprochés, écarts expliqués |
+| 3 | Caisse sans solde négatif, cohérente avec le comptage physique si disponible |
+| 4 | Comptes clients et fournisseurs lettrés ; soldes anciens listés |
+| 5 | Comptes d''attente vides ou expliqués |
+| 6 | Taxes cohérentes avec les ventes et les achats |
+| 7 | Charges récurrentes présentes (loyer, électricité, abonnements) |
+| 8 | Salaires et charges sociales cohérents avec les éléments du service paie |
+| 9 | Balance équilibrée, comparée au mois précédent |
+| 10 | Questions et propositions d''écritures envoyées au comptable |
+
+## Les contrôles de cohérence
+
+| Contrôle | Exemple d''alerte |
+| --- | --- |
+| **Évolution d''un mois à l''autre** | L''électricité passe de 450 000 Ar à 1 350 000 Ar |
+| **Charges récurrentes manquantes** | Pas de loyer ce mois-ci |
+| **Sens des soldes** | Un compte fournisseur avec un solde débiteur (avance ou erreur) |
+| **Taxes** | Taxe collectée incohérente avec le montant des ventes |
+| **Doublons** | Deux factures du même fournisseur, même montant, même date |
+| **Banque** | Solde comptable différent du relevé |
+
+> [!astuce]
+> Créez un tableau de **comparaison mensuelle** des principaux comptes de charges et de produits, avec une colonne « explication ». Chaque écart important doit avoir une explication avant l''envoi au comptable.
+
+## La séparation des périodes
+
+> [!definition] Séparation des périodes (cut-off)
+> Chaque charge et chaque produit doit être enregistré dans la **période à laquelle il se rapporte**, et pas seulement à la date de la facture ou du paiement.
+
+| Situation | Exemple | Ce que prépare l''aide-comptable |
+| --- | --- | --- |
+| **Charge à payer** | L''électricité de décembre sera facturée en janvier | Liste pour le comptable avec une estimation |
+| **Charge payée d''avance** | Assurance annuelle payée en octobre pour 12 mois | Calcul de la part qui concerne l''exercice suivant |
+| **Produit à recevoir** | Prestation réalisée en décembre, facturée en janvier | Liste des prestations réalisées non facturées |
+| **Produit perçu d''avance** | Acompte reçu pour une formation de février | Liste des acomptes |
+
+> [!attention]
+> Les écritures de séparation des périodes, surtout en fin d''exercice, sont **décidées et validées** par le comptable ou l''expert-comptable. Votre rôle est de **repérer** les cas, de **préparer** les calculs et les justificatifs.
+
+## Le dossier de révision
+
+| Partie | Contenu |
+| --- | --- |
+| **Synthèse** | Période, travaux faits, points en suspens, questions |
+| **Rapprochements** | États de rapprochement de chaque banque et Mobile Money, avec relevés |
+| **Tiers** | Balances âgées clients et fournisseurs, explication des soldes anciens |
+| **Comptes d''attente** | Liste et explications |
+| **Contrôles** | Tableau de comparaison mensuelle avec explications |
+| **Propositions** | Écritures proposées (séparation des périodes, corrections) avec justificatifs |
+
+> [!exemple] Synthèse d''envoi
+> « Dossier Taxi Be Express, mars 2026. Toutes les pièces sont saisies sauf 2 factures de pièces détachées réclamées le 4 avril. Banque et MVola rapprochés ; écart Orange Money de 12 500 Ar correspondant à des frais de retrait, saisis. Compte d''attente : 1 virement reçu de 450 000 Ar sans référence, client interrogé. Proposition : charge à payer pour l''électricité de mars (estimation 380 000 Ar, moyenne des 3 derniers mois). 3 questions jointes. »
+
+## Gérer plusieurs dossiers
+
+### Le tableau de pilotage
+
+| Dossier | Pièces reçues | Saisie | Rapprochement | Contrôles | Envoyé | Retards |
+| --- | --- | --- | --- | --- | --- | --- |
+| Taxi Be Express | 05/04 | ✓ | ✓ | En cours | — | 2 pièces |
+| ONG Rano | 03/04 | ✓ | ✓ | ✓ | 08/04 | — |
+| Épicerie Mirana | En attente | — | — | — | — | Relance le 06/04 |
+
+### Les règles
+
+1. **Un calendrier** par dossier avec ses dates limites.
+2. **Des procédures** et une fiche de particularités par dossier (règles, interlocuteurs, logiciels).
+3. **Des blocs de temps** : saisie le matin, contrôles l''après-midi, pour rester concentré.
+4. **Une alerte au comptable** dès qu''un retard de pièces menace le délai.
+
+> [!madagascar]
+> Prévoyez les **coupures d''électricité et d''Internet** dans votre calendrier : terminez les dossiers 1 ou 2 jours avant la date limite, et gardez une connexion de secours. Un cabinet étranger juge votre fiabilité sur les délais tenus.
+
+> [!retenir]
+> - Une clôture mensuelle en 10 contrôles, avec un calendrier.
+> - Des contrôles de cohérence et une explication pour chaque écart.
+> - La séparation des périodes : vous repérez et préparez, le comptable décide.
+> - Un dossier de révision complet avec une synthèse claire.
+> - Un tableau de pilotage pour plusieurs dossiers.
+
+## Exercice pratique : une clôture professionnelle
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Appliquez la liste de contrôle de clôture à votre dossier du module 2.
+> 2. Construisez le tableau de comparaison mensuelle sur 3 mois fictifs et expliquez 5 écarts.
+> 3. Repérez 4 cas de séparation des périodes et préparez leurs calculs.
+> 4. Constituez le dossier de révision complet avec la synthèse.
+> 5. Créez votre tableau de pilotage pour 3 dossiers fictifs.
+>
+> **À livrer** : votre liste remplie, votre comparaison, vos calculs, votre dossier de révision et votre tableau de pilotage.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 2, 0, 'Qu''est-ce que la séparation des périodes ?', '["Classer les pièces par couleur","Changer d''exercice chaque mois","Enregistrer charges et produits dans la période à laquelle ils se rapportent","Séparer les dossiers par client"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 2, 1, 'Qui décide des écritures de séparation des périodes ?', '["Le client final","La banque","Le comptable ou l''expert-comptable","L''aide-comptable seul"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 2, 2, 'Que doit avoir chaque écart important entre deux mois ?', '["Une explication","Une nouvelle couleur","Une suppression","Rien"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-a', 3, 'Clients internationaux : plans comptables, cabinets, confidentialité et bailleurs', 'Dossiers de plusieurs pays, répartition des responsabilités en cabinet, 7 règles de confidentialité et fraude au changement de RIB, vocabulaire anglais, rapports financiers de projets.', 'Les cabinets comptables étrangers et les organisations internationales offrent des missions régulières et mieux payées. Ils attendent la maîtrise de leur plan comptable et de leurs procédures, une confidentialité stricte, et parfois une communication en anglais. Ce module vous prépare à travailler avec eux.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler sur des dossiers de plusieurs pays et plans comptables.
+> 2. Respecter les procédures d''un cabinet et la répartition des responsabilités.
+> 3. Appliquer les règles de confidentialité et de sécurité des données financières.
+> 4. Utiliser le vocabulaire comptable en anglais.
+> 5. Préparer les rapports financiers d''un projet pour un bailleur.
+
+## Travailler sur des dossiers de plusieurs pays
+
+| Pays ou cadre | Points à connaître pour l''aide-comptable |
+| --- | --- |
+| **Madagascar** | PCG 2005, taxes et déclarations malgaches, Mobile Money très présent |
+| **France** | Plan comptable général français, TVA française, logiciels de cabinets |
+| **Belgique, Suisse, Canada (Québec)** | Plans et taxes propres à chaque pays, vocabulaire légèrement différent |
+| **Organisations internationales et bailleurs** | Règles de justification propres à chaque bailleur, souvent en plus de la comptabilité générale |
+
+> [!attention]
+> Les plans comptables malgache et français se ressemblent, mais ne sont **pas identiques** (numéros et intitulés de certains comptes, règles fiscales). Utilisez toujours **le plan de comptes du dossier** et la **documentation du cabinet**, et posez la question en cas de doute.
+
+## Les procédures d''un cabinet
+
+### La répartition des responsabilités
+
+| Tâche | Aide-comptable (vous) | Collaborateur ou chef de mission | Expert-comptable |
+| --- | --- | --- | --- |
+| Saisie, rapprochements, lettrage | Réalise | Contrôle | — |
+| Contrôles de cohérence | Réalise et explique | Vérifie | — |
+| Écritures d''inventaire | Prépare | Valide | Supervise |
+| Déclarations fiscales | Peut préparer les données | Établit | Supervise et signe selon les règles |
+| Comptes annuels | — | Prépare | Signe et engage sa responsabilité |
+| Conseil au client | Transmet les questions | Répond | Conseille |
+
+### Les bonnes pratiques
+
+1. **Lisez** le manuel de procédures du cabinet et la fiche de chaque dossier.
+2. **Utilisez** les modèles du cabinet (synthèse, questions, nommage).
+3. **Posez les questions par écrit**, regroupées, avec les références des pièces.
+4. **Respectez** les délais annoncés, et prévenez tôt en cas de retard.
+
+## Confidentialité et sécurité
+
+### Les 7 règles
+
+1. **Secret professionnel** : vous ne parlez jamais d''un dossier en dehors de la mission.
+2. **Accès personnels** aux logiciels du cabinet, avec double authentification.
+3. **Aucune copie** des pièces sur vos appareils personnels ou des messageries personnelles.
+4. **Postes protégés** : mot de passe, chiffrement si demandé, mises à jour, antivirus.
+5. **Lieu de travail** privé : personne ne voit votre écran.
+6. **Données personnelles** (salaires, coordonnées bancaires) traitées selon les lois applicables (RGPD pour les personnes en Europe, loi malgache sur les données personnelles).
+7. **Incident** signalé immédiatement : perte, vol, erreur d''envoi.
+
+> [!attention]
+> Méfiez-vous des **e-mails frauduleux** qui demandent de modifier les coordonnées bancaires d''un fournisseur ou d''effectuer un virement urgent. Toute demande de changement de RIB doit être vérifiée par un autre moyen (appel au numéro connu) et signalée au responsable.
+
+## Le vocabulaire comptable en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Grand livre | General ledger |
+| Balance | Trial balance |
+| Écriture | Journal entry |
+| Fournisseurs | Accounts payable |
+| Clients | Accounts receivable |
+| Rapprochement bancaire | Bank reconciliation |
+| Lettrage | Matching / reconciliation of open items |
+| Clôture mensuelle | Month-end close |
+| Charge à payer | Accrued expense |
+| Charge constatée d''avance | Prepaid expense |
+| Pièce justificative | Supporting document |
+
+> [!exemple] Message en anglais
+> "Hi Sarah, the March bank reconciliation for the Rano project is complete. One open item: a transfer of MGA 450,000 received on March 18 with no reference. I''ve asked the client for details. All supporting documents are attached in the shared folder. Best regards, Hery"
+
+## Les rapports financiers d''un projet
+
+| Étape | Contenu |
+| --- | --- |
+| **Budget** | Lignes budgétaires approuvées par le bailleur |
+| **Suivi** | Dépenses par ligne, par période, avec l''analytique |
+| **Écarts** | Comparaison budget et réalisé, explication des écarts importants |
+| **Justificatifs** | Pièces classées par ligne, selon les règles du bailleur |
+| **Taux de change** | Méthode de conversion fixée par le bailleur (taux du transfert, taux moyen…) |
+| **Rapport** | Format du bailleur, validé par le responsable financier |
+
+> [!madagascar]
+> Pour les projets financés en euros ou en dollars et dépensés en ariary, la **méthode de conversion** change les montants du rapport. Appliquez exactement celle du contrat de financement, et documentez les taux utilisés.
+
+> [!retenir]
+> - Le plan de comptes et les procédures du dossier, toujours.
+> - Une répartition claire : vous préparez, le chef de mission valide, l''expert-comptable signe.
+> - 7 règles de confidentialité et la vigilance face aux fraudes au changement de RIB.
+> - Le vocabulaire comptable en anglais.
+> - Des rapports de projets conformes aux règles du bailleur.
+
+## Exercice pratique : un dossier international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Comparez 10 comptes courants dans le PCG 2005 malgache et le plan comptable français (avec les documents officiels).
+> 2. Rédigez votre fiche personnelle des 7 règles de confidentialité et une procédure de vérification des changements de coordonnées bancaires.
+> 3. Rédigez 3 messages en anglais à un chef de mission.
+> 4. Préparez le rapport financier d''un projet fictif : budget, réalisé, écarts, taux de change.
+>
+> **À livrer** : votre comparaison, votre fiche, vos messages et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 3, 0, 'Que faire d''une demande de changement de coordonnées bancaires d''un fournisseur ?', '["La vérifier par un autre moyen et la signaler","L''ignorer","La transférer à tous","L''appliquer tout de suite"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 3, 1, 'Comment dit-on « balance » en anglais comptable ?', '["Trial balance","General ledger","Accounts payable","Prepaid expense"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 3, 2, 'Quelle méthode de conversion utiliser dans un rapport de projet ?', '["Au hasard","Aucune","La plus avantageuse","Celle prévue par le contrat de financement"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-a', 4, 'Développer son activité : forfaits, sous-traitance, équipe et évolution', 'Critères de prix et grille de forfaits, engagements pour les cabinets, équipe avec contrôle qualité, fidélisation et évolutions.', 'Un aide-comptable confirmé peut construire une activité stable depuis Madagascar : sous-traitance régulière pour des cabinets, tenue de dossiers pour plusieurs PME, comptabilité de projets pour des ONG, ou petite équipe de saisie et de tenue. Ce dernier module vous aide à fixer vos prix, à organiser une équipe et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire des forfaits par dossier selon le volume et la complexité.
+> 2. Proposer la sous-traitance à des cabinets avec des engagements clairs.
+> 3. Organiser une petite équipe avec un contrôle qualité.
+> 4. Fidéliser vos clients.
+> 5. Préparer votre évolution vers la comptabilité ou le conseil.
+
+## Les forfaits par dossier
+
+### Les critères de prix
+
+| Critère | Effet sur le prix |
+| --- | --- |
+| **Nombre de pièces** par mois | Principal facteur |
+| **Nombre de comptes** bancaires et Mobile Money | Plus de rapprochements |
+| **Qualité des pièces** | Pièces illisibles = plus de temps |
+| **Analytique** et rapports de projets | Travail supplémentaire important |
+| **Délais** | Urgence = supplément |
+| **Logiciel** | Automatisations disponibles ou non |
+
+> [!exemple] Grille de forfaits mensuels
+> | Formule | Volume | Contenu | Exemple de prix |
+> | --- | --- | --- | --- |
+> | Petit dossier | Jusqu''à 80 pièces, 1 banque | Saisie, rapprochement, lettrage, synthèse | 180 000 Ar |
+> | Dossier moyen | Jusqu''à 250 pièces, 3 comptes | Petit dossier + contrôles de cohérence, balance âgée | 420 000 Ar |
+> | Dossier projet | Jusqu''à 250 pièces + analytique | Dossier moyen + suivi par projet et bailleur | 600 000 Ar |
+>
+> *(Montants donnés en exemple. Pour les cabinets étrangers, fixez vos prix en euros selon leur marché.)*
+
+> [!astuce]
+> Écrivez dans le contrat le **volume inclus** et le **prix par pièce supplémentaire**, ainsi que ce qui se passe quand les pièces arrivent en retard (délai de livraison décalé d''autant). Vous évitez les malentendus quand l''activité du client grandit.
+
+## La sous-traitance pour les cabinets
+
+### Les engagements à proposer
+
+| Engagement | Exemple |
+| --- | --- |
+| **Délai** | Dossier prêt 5 jours ouvrés après réception complète des pièces |
+| **Qualité** | Moins de 2 % d''écritures corrigées, journal des corrections partagé |
+| **Disponibilité** | Plages horaires communes avec le cabinet |
+| **Confidentialité** | Accord signé, accès personnels, pas de copie locale |
+| **Continuité** | Solution de secours en cas de coupure (connexion, énergie, collègue formé) |
+
+> [!exemple] Message à un cabinet français
+> « Bonjour Madame, je dirige une petite équipe d''aides-comptables à Antananarivo, formée à Sage et à vos procédures de tenue. Nous prenons en charge la saisie, les rapprochements et le lettrage de dossiers de TPE et de PME, avec un dossier de synthèse prêt pour la révision sous 5 jours ouvrés. Nous pouvons commencer par 2 dossiers tests sur un mois, aux conditions que vous fixez. »
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Aides-comptables** | Saisie, rapprochements, lettrage |
+| **Contrôleur** (vous ou un confirmé) | Contrôles de cohérence, dossier de synthèse, relation avec le cabinet |
+| **Assistant** | Collecte et classement des pièces, relances |
+
+### Les règles
+
+1. **Des procédures** et une fiche de particularités par dossier.
+2. **Un contrôle** de chaque dossier par une deuxième personne avant l''envoi.
+3. **Des accès** personnels et limités aux dossiers de chacun.
+4. **Un journal des corrections** par personne, pour la progression.
+5. **L''accord des cabinets** pour la sous-traitance et des accords de confidentialité.
+6. **Des contrats** de travail ou de prestation et un paiement juste et à temps.
+
+> [!madagascar]
+> Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et faites-vous accompagner par un expert-comptable pour vos propres obligations (contrats, CNaPS, impôts). Tenez une comptabilité exemplaire de votre propre activité : c''est la meilleure preuve de votre sérieux. Pour les paiements de l''étranger, comparez Payoneer et le virement international ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Fidéliser vos clients
+
+1. **Des délais tenus**, toujours.
+2. **Une synthèse claire** à chaque envoi.
+3. **Des alertes utiles** : retards de paiement des clients, dépenses inhabituelles, trésorerie tendue.
+4. **Des propositions d''amélioration** : règles bancaires, lecture automatique, circuit de pièces.
+5. **Un bilan annuel** avec le cabinet ou le client.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Comptable confirmé** | Écritures d''inventaire, clôture annuelle, déclarations (formation et expérience) |
+| **Chef de mission en cabinet** | Révision, relation client, encadrement |
+| **Responsable administratif et financier** | Budgets, trésorerie, contrôle de gestion |
+| **Expert-comptable** | Diplôme et inscription à l''ordre professionnel du pays |
+| **Consultant en logiciels de gestion** | Paramétrage avancé d''Odoo ou de Sage, projets de mise en place |
+| **Contrôleur de gestion** | Analyse des coûts, tableaux de bord (voir la formation Analyste de données) |
+
+> [!retenir]
+> - Des forfaits selon le volume, la qualité des pièces et la complexité.
+> - Des engagements clairs pour les cabinets : délai, qualité, confidentialité, continuité.
+> - Une équipe avec contrôle par une deuxième personne et journal des corrections.
+> - La fidélité vient des délais tenus et des alertes utiles.
+> - Évoluez vers la comptabilité, la révision, la finance ou le conseil logiciel.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Construisez votre grille de 3 forfaits avec le volume inclus et le prix par pièce supplémentaire.
+> 2. Rédigez vos 5 engagements pour les cabinets et votre message de proposition.
+> 3. Rédigez la fiche de particularités d''un dossier et la procédure de contrôle avant envoi.
+> 4. Listez 10 cabinets à contacter (Madagascar et étranger) et envoyez au moins 2 messages.
+> 5. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : votre grille, vos engagements, vos documents, vos messages et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 4, 0, 'Quel est le principal facteur de prix d''un dossier ?', '["Le nombre de pièces par mois","Le nom du dossier","La couleur du logiciel","La ville du client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 4, 1, 'Que préciser dans le contrat si l''activité grandit ?', '["Le salaire du client","Le volume inclus et le prix par pièce supplémentaire","Que tout reste gratuit","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-a', 4, 2, 'Que faire avant d''envoyer un dossier préparé par un membre de l''équipe ?', '["Le supprimer","Le faire contrôler par une deuxième personne","Le publier","L''envoyer directement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quelle spécialité prend en charge les factures, validations et paiements des fournisseurs ?', '["Trésorerie","Comptabilité fournisseurs","Comptabilité clients","Paramétrage"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel domaine du diagnostic vérifie les opérations non identifiées ?', '["Pièces","Tiers","Comptes d''attente","Processus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel objectif de taux d''erreurs relevées est raisonnable ?', '["Moins de 2 % des écritures","Aucun objectif","100 %","50 %"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel journal créer pour un compte Mobile Money ?', '["Un journal de trésorerie dédié","Le journal des ventes","Le journal des salaires","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel logiciel intègre comptabilité, ventes, achats et stocks ?', '["Canva","Odoo","Figma","Zoom"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Qu''est-ce qu''une règle bancaire ?', '["Un taux d''intérêt","Un règlement de la banque centrale","Une règle qui propose le bon compte selon le libellé","Un mot de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Que faire après la lecture automatique d''une facture ?', '["Supprimer la pièce","Rien","Valider sans regarder","Vérifier fournisseur, date, montants, taxes et compte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel état montre les factures non réglées par ancienneté ?', '["Le grand livre","La balance âgée","Le bilan","Le journal des ventes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quand terminer les contrôles de cohérence dans le calendrier ?', '["Un an plus tard","Jamais","Après l''envoi","Avant l''envoi au comptable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Un compte fournisseur avec un solde débiteur signale…', '["Rien","Une situation normale toujours","Une avance ou une erreur à vérifier","Un bénéfice"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'L''électricité de décembre facturée en janvier est…', '["Un produit à recevoir","Une immobilisation","Une charge à payer","Un produit perçu d''avance"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Une assurance payée en octobre pour 12 mois donne lieu à…', '["Une charge payée d''avance pour la part de l''exercice suivant","Un produit","Une dette fournisseur","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Que contient la synthèse du dossier de révision ?', '["Période, travaux faits, points en suspens, questions","Les mots de passe","Seulement le prix","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Comment gérer plusieurs dossiers ?', '["Un dossier par an","Avec un tableau de pilotage et un calendrier par dossier","Au hasard","De mémoire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Pourquoi finir les dossiers 1 ou 2 jours avant la date limite ?', '["Pour changer de client","Ce n''est pas utile","Pour absorber coupures et imprévus","Pour facturer plus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Les plans comptables malgache et français sont-ils identiques ?', '["Seulement en anglais","Non, ils se ressemblent mais diffèrent","Oui, totalement","Ils n''existent pas"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Qui signe les comptes annuels ?', '["Le stagiaire","Le fournisseur","L''aide-comptable","L''expert-comptable selon les règles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Comment poser les questions au cabinet ?', '["Jamais","Une par une à toute heure par téléphone","Par écrit, regroupées, avec les références des pièces","Sur les réseaux sociaux"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Peut-on copier les pièces d''un client sur son téléphone personnel ?', '["Oui","Oui, pour aller plus vite","Oui, si c''est un petit dossier","Non"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Comment dit-on « fournisseurs » en anglais comptable ?', '["Accounts payable","Accounts receivable","Journal entry","Trial balance"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Que comparer dans un rapport financier de projet ?', '["Le budget et le réalisé, avec les écarts expliqués","Les couleurs des lignes","Rien","Le nombre de pages"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Que faire quand les pièces arrivent en retard ?', '["Inventer les pièces","Décaler le délai de livraison selon le contrat","Rien","Livrer à temps sans les pièces"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quel engagement de délai proposer à un cabinet ?', '["Le jour même sans pièces","Un an","Aucun délai","Dossier prêt 5 jours ouvrés après réception complète des pièces"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quelle alerte utile envoyer au client ?', '["Une trésorerie tendue ou des retards de paiement de ses clients","La météo","Le prix des concurrents","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-a', 'Quelle évolution mène au paramétrage avancé d''Odoo ou de Sage ?', '["Professeur de langue","Graphiste","Consultant en logiciels de gestion","Monteur vidéo"]'::jsonb, 2);
 
 -- gestion-4-f
 delete from public.exam_questions where course_id = 'gestion-4-f';

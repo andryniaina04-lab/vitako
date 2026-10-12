@@ -2826,6 +2826,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-4-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'aide-comptable un professionnel qui livre des dossiers fiables, prêts à être révisés : spécialité (tenue pour cabinets, fournisseurs, clients, projets d'ONG, paramétrage, trésorerie), diagnostic de dossier, logiciels payants (Sage, QuickBooks, Odoo) avec paramétrage, règles bancaires, lecture automatique et analytique, clôture mensuelle et dossier de révision, travail pour des cabinets étrangers et des bailleurs, puis forfaits, sous-traitance et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, diagnostiquer un dossier et mesurer sa qualité",
+   "Paramétrer et automatiser un dossier dans Sage, QuickBooks ou Odoo",
+   "Tenir une comptabilité analytique par projet",
+   "Organiser une clôture mensuelle et préparer un dossier de révision",
+   "Travailler pour des cabinets étrangers et des bailleurs en toute confidentialité",
+   "Construire des forfaits, proposer la sous-traitance et organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer et mesurer la qualité",
+    "summary": "Les 6 spécialités avancées, le diagnostic d'un dossier en 6 domaines, les indicateurs de qualité et de productivité, le journal des corrections et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic comptable d'un dossier",
+     "Mesurer la qualité et la productivité",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Sage, QuickBooks, Odoo, automatisation et analytique",
+    "summary": "Paramétrage d'un dossier, forces des trois logiciels, règles bancaires, lecture automatique des factures, comptabilité analytique par projet, imports et états de contrôle.",
+    "sections": [
+     "Paramétrer un dossier",
+     "Les trois logiciels",
+     "Les règles bancaires",
+     "La lecture automatique des factures",
+     "La comptabilité analytique par projet",
+     "Imports et états de contrôle",
+     "Exercice pratique : un dossier automatisé"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : clôture, cohérence, séparation des périodes et révision",
+    "summary": "Calendrier et liste de contrôle de clôture, contrôles de cohérence, séparation des périodes, dossier de révision et pilotage de plusieurs dossiers.",
+    "sections": [
+     "La clôture mensuelle",
+     "Les contrôles de cohérence",
+     "La séparation des périodes",
+     "Le dossier de révision",
+     "Gérer plusieurs dossiers",
+     "Exercice pratique : une clôture professionnelle"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : plans comptables, cabinets, confidentialité et bailleurs",
+    "summary": "Dossiers de plusieurs pays, répartition des responsabilités en cabinet, 7 règles de confidentialité et fraude au changement de RIB, vocabulaire anglais, rapports financiers de projets.",
+    "sections": [
+     "Travailler sur des dossiers de plusieurs pays",
+     "Les procédures d'un cabinet",
+     "Confidentialité et sécurité",
+     "Le vocabulaire comptable en anglais",
+     "Les rapports financiers d'un projet",
+     "Exercice pratique : un dossier international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : forfaits, sous-traitance, équipe et évolution",
+    "summary": "Critères de prix et grille de forfaits, engagements pour les cabinets, équipe avec contrôle qualité, fidélisation et évolutions.",
+    "sections": [
+     "Les forfaits par dossier",
+     "La sous-traitance pour les cabinets",
+     "Organiser une petite équipe",
+     "Fidéliser vos clients",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-4-f": {
   "hours": 16,
   "description": "L'aide-comptable enregistre et organise les opérations financières d'une entreprise pour que le comptable puisse produire les comptes et les déclarations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des cabinets comptables, des PME et des ONG, à Madagascar et à l'étranger, avec Excel et des logiciels comptables : partie double, TVA, saisie, lettrage, rapprochement bancaire et Mobile Money, dossier mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
