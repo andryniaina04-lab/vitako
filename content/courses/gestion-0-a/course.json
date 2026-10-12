@@ -1,0 +1,97 @@
+{
+  "id": "gestion-0-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait de l'assistant virtuel un spécialiste recherché : spécialité et offre en forfaits, outils professionnels (Google Workspace, Notion, Calendly, automatisations), méthodes d'assistant de direction, clients étrangers et anglais, puis développement d'une activité ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et vendre des forfaits orientés résultats",
+    "Configurer Google Workspace, Notion et Calendly pour un client",
+    "Automatiser les tâches répétitives et écrire des procédures",
+    "Gérer une boîte, un agenda et des réunions comme un assistant de direction",
+    "Travailler pour des clients étrangers : fuseaux, anglais, contrat, confidentialité",
+    "Augmenter ses tarifs et construire une petite équipe d'assistants"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et construire une offre",
+      "summary": "Les 6 spécialités, le choix de la vôtre, l'offre en forfaits, la page de présentation et l'accueil d'un nouveau client en 10 étapes.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un assistant de direction ?", "options": ["Il gère le temps d'un dirigeant et suit ses décisions", "Il dirige l'entreprise", "Il fait seulement de la saisie", "Il répare les ordinateurs"], "correct": 0 },
+        { "q": "Que doit décrire une offre spécialisée ?", "options": ["Le résultat pour le client", "Seulement votre âge", "La marque de votre ordinateur", "Votre prix le plus bas"], "correct": 0 },
+        { "q": "Quand commencer à travailler pour un nouveau client ?", "options": ["Après le contrat et le premier paiement", "Avant de parler du prix", "Sans contrat", "Après un an"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Google Workspace, Notion, Calendly et automatisations",
+      "summary": "Compte d'entreprise et drives partagés, bases Notion reliées et portail client, configuration de Calendly, automatisations et conseil sur les abonnements.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi utiliser des drives partagés ?", "options": ["Les fichiers appartiennent à l'entreprise et ne sont pas perdus si quelqu'un part", "Pour avoir moins d'espace", "Pour cacher les fichiers au client", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Dans quel fuseau Calendly affiche-t-il les créneaux ?", "options": ["Celui de la personne qui réserve", "Toujours celui de Madagascar", "Toujours celui de Londres", "Aucun"], "correct": 0 },
+        { "q": "Que faut-il automatiser ?", "options": ["Les tâches stables et répétitives, après test", "Tout, sans tester", "Uniquement les décisions importantes", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : les méthodes de l'assistant de direction",
+      "summary": "Procédures écrites, boîte de réception en 3 passages, revue hebdomadaire, réunions et suivi des actions, déplacements et rapport de valeur.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand écrire une procédure ?", "options": ["Pendant que vous faites la tâche pour la troisième fois", "Jamais", "Seulement si le client le demande", "Avant d'avoir fait la tâche une seule fois"], "correct": 0 },
+        { "q": "Quelles sont les 3 parties d'un compte rendu de réunion ?", "options": ["Décisions, actions, points ouverts", "Bonjour, texte, merci", "Date, heure, lieu", "Prix, remise, total"], "correct": 0 },
+        { "q": "Que montre le rapport mensuel de valeur ?", "options": ["Le temps et l'argent que vous faites gagner au client", "Vos loisirs", "Vos dépenses personnelles", "Uniquement vos heures"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : fuseaux, anglais, contrat et confidentialité",
+      "summary": "Agenda à plusieurs fuseaux, e-mails en anglais, accord de confidentialité et sécurité, contrat en 9 clauses et facturation en devises.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il toujours écrire dans une proposition de rendez-vous international ?", "options": ["Le fuseau horaire", "Votre adresse", "Votre âge", "La météo"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un NDA ?", "options": ["Un accord de confidentialité", "Un type de facture", "Un logiciel", "Un fuseau horaire"], "correct": 0 },
+        { "q": "Quel est votre statut dans le contrat de prestation ?", "options": ["Prestataire indépendant", "Salarié du client", "Associé du client", "Stagiaire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité",
+      "summary": "Évolution tarifaire, projets à prix fixe, équipe d'assistants, marges et choix du modèle d'activité.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la condition pour construire une équipe ?", "options": ["Avoir écrit ses procédures", "Avoir un bureau", "Avoir 100 clients", "Ne plus travailler"], "correct": 0 },
+        { "q": "Un forfait de 800 € coûte 300 € de sous-traitance et vous prend 10 heures. Quel est votre revenu horaire réel ?", "options": ["50 €", "80 €", "30 €", "20 €"], "correct": 0 },
+        { "q": "Qui reste responsable devant le client du travail sous-traité ?", "options": ["Vous", "L'assistant sous-traitant", "Le client", "Personne"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité consiste à gérer commandes, retours et service client d'une boutique ?", "options": ["Assistant e-commerce", "Assistant immobilier", "Assistant de direction", "Assistant de créateurs"], "correct": 0 },
+    { "q": "Quel avantage d'un assistant malgache pour une boutique européenne ?", "options": ["Traiter les commandes de la nuit européenne avant le réveil du client", "Travailler sans Internet", "Ne pas répondre aux e-mails", "Travailler seulement le week-end"], "correct": 0 },
+    { "q": "Quel est le premier élément d'une page de présentation ?", "options": ["Un titre avec la spécialité et le résultat", "Votre date de naissance", "La liste de vos loisirs", "Votre prix seul"], "correct": 0 },
+    { "q": "Pourquoi un modèle Notion d'accueil client ?", "options": ["Ne rien oublier et paraître professionnel dès le premier jour", "Pour remplacer le contrat", "Pour facturer plus", "Pour éviter de parler au client"], "correct": 0 },
+    { "q": "Avec Google Workspace, comment l'assistant se connecte-t-il ?", "options": ["Avec un compte à son nom dans l'entreprise", "Avec le mot de passe du dirigeant", "Avec son Gmail personnel", "Sans compte"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une base relationnelle dans Notion ?", "options": ["Des tableaux reliés : tâches, projets, contacts", "Une seule liste de courses", "Un fichier PDF", "Une vidéo"], "correct": 0 },
+    { "q": "À quoi sert un portail client dans Notion ?", "options": ["Montrer au client seulement ses tâches, rapports et documents", "Donner au client tous vos fichiers", "Vendre des produits", "Remplacer l'agenda"], "correct": 0 },
+    { "q": "Quelle règle Calendly évite un rendez-vous réservé une heure avant ?", "options": ["Un délai minimum avant réservation", "Un rappel par e-mail", "Une question à la réservation", "Un lien de visioconférence"], "correct": 0 },
+    { "q": "Qui paie les abonnements Calendly ou Google Workspace du client ?", "options": ["Le client, à son nom", "L'assistant", "Vitako", "Personne"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une SOP ?", "options": ["Une procédure écrite étape par étape", "Un type de facture", "Un logiciel de montage", "Un fuseau horaire"], "correct": 0 },
+    { "q": "Combien de passages par jour dans la boîte d'un dirigeant très sollicité ?", "options": ["3 passages à heures fixes", "Un toutes les 2 minutes", "Un par semaine", "Aucun"], "correct": 0 },
+    { "q": "Que contient le résumé quotidien d'un assistant de direction ?", "options": ["Les décisions à prendre, ce qui est fait, ce qui est en attente, demain", "Votre humeur", "La liste de tous les e-mails reçus en entier", "Vos heures de pause"], "correct": 0 },
+    { "q": "Combien de temps pour la revue hebdomadaire ?", "options": ["Environ 30 minutes", "5 heures", "2 minutes", "Une journée entière"], "correct": 0 },
+    { "q": "Quand envoyer l'ordre du jour d'une réunion ?", "options": ["24 heures avant", "Après la réunion", "Jamais", "Une minute avant"], "correct": 0 },
+    { "q": "Quand envoyer le compte rendu ?", "options": ["Dans les 24 heures", "Un mois après", "Jamais", "Avant la réunion"], "correct": 0 },
+    { "q": "Que doit contenir le programme d'un déplacement ?", "options": ["Vols, transferts, hôtel, rendez-vous, adresses et fuseaux horaires", "Seulement le prix du billet", "Les loisirs de l'assistant", "Rien"], "correct": 0 },
+    { "q": "Pourquoi vérifier deux fois les rendez-vous au printemps et à l'automne ?", "options": ["Les changements d'heure ne tombent pas aux mêmes dates partout", "Les clients sont en vacances", "Les ordinateurs ralentissent", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle formule anglaise pour relancer ?", "options": ["« Just following up on my email from Monday »", "« Goodbye forever »", "« Please ignore this email »", "« I don't know »"], "correct": 0 },
+    { "q": "Comment partager des mots de passe avec le client ?", "options": ["Par un gestionnaire de mots de passe", "Par WhatsApp", "Par e-mail", "Sur un post-it"], "correct": 0 },
+    { "q": "Que faire à la fin d'une mission ?", "options": ["Rendre les accès, supprimer les fichiers et le confirmer par écrit", "Garder tous les accès", "Copier les fichiers sur une clé USB", "Rien"], "correct": 0 },
+    { "q": "Que faut-il joindre à une facture mensuelle ?", "options": ["Le rapport d'heures ou le rapport mensuel", "Votre CV", "Vos mots de passe", "Une photo"], "correct": 0 },
+    { "q": "Sur quoi s'appuyer pour augmenter ses tarifs ?", "options": ["Le rapport de valeur : temps et argent gagnés", "Vos dépenses personnelles", "Le prix d'un concurrent au hasard", "Rien"], "correct": 0 },
+    { "q": "Quel projet se vend bien à prix fixe ?", "options": ["La remise à zéro d'une boîte e-mail", "Une présence de 10 ans", "Une tâche impossible à définir", "Le salaire d'un employé"], "correct": 0 },
+    { "q": "Comment recruter un assistant pour son équipe ?", "options": ["Avec un test payé, sur des tâches simples d'abord", "Sans test, sur le client le plus important", "Avec un test gratuit de 3 mois", "En lui donnant tout de suite tous les clients"], "correct": 0 },
+    { "q": "Quel modèle d'activité ne dépend plus seulement de vos heures ?", "options": ["La petite agence d'assistants", "L'assistant seul payé à l'heure", "Le travail gratuit", "Aucun"], "correct": 0 }
+  ]
+}

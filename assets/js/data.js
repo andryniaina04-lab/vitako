@@ -867,6 +867,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-0-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait de l'assistant virtuel un spécialiste recherché : spécialité et offre en forfaits, outils professionnels (Google Workspace, Notion, Calendly, automatisations), méthodes d'assistant de direction, clients étrangers et anglais, puis développement d'une activité ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et vendre des forfaits orientés résultats",
+   "Configurer Google Workspace, Notion et Calendly pour un client",
+   "Automatiser les tâches répétitives et écrire des procédures",
+   "Gérer une boîte, un agenda et des réunions comme un assistant de direction",
+   "Travailler pour des clients étrangers : fuseaux, anglais, contrat, confidentialité",
+   "Augmenter ses tarifs et construire une petite équipe d'assistants"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et construire une offre",
+    "summary": "Les 6 spécialités, le choix de la vôtre, l'offre en forfaits, la page de présentation et l'accueil d'un nouveau client en 10 étapes.",
+    "sections": [
+     "Les 6 spécialités les plus demandées",
+     "Choisir sa spécialité",
+     "L'offre spécialisée en forfaits",
+     "La page de présentation orientée résultats",
+     "Le processus d'accueil d'un nouveau client",
+     "Exercice pratique : votre offre spécialisée"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Google Workspace, Notion, Calendly et automatisations",
+    "summary": "Compte d'entreprise et drives partagés, bases Notion reliées et portail client, configuration de Calendly, automatisations et conseil sur les abonnements.",
+    "sections": [
+     "Google Workspace : l'espace de l'entreprise",
+     "Notion : un espace de travail relié",
+     "Calendly : la prise de rendez-vous automatique",
+     "Automatiser les tâches répétitives",
+     "Conseiller le client sur ses abonnements",
+     "Exercice pratique : un système complet"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : les méthodes de l'assistant de direction",
+    "summary": "Procédures écrites, boîte de réception en 3 passages, revue hebdomadaire, réunions et suivi des actions, déplacements et rapport de valeur.",
+    "sections": [
+     "Les procédures écrites",
+     "La boîte de réception : le système en 3 passages",
+     "La revue hebdomadaire",
+     "Préparer une réunion et assurer le suivi",
+     "Organiser un déplacement sans erreur",
+     "Montrer sa valeur : le rapport mensuel",
+     "Exercice pratique : votre système d'assistant"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux : fuseaux, anglais, contrat et confidentialité",
+    "summary": "Agenda à plusieurs fuseaux, e-mails en anglais, accord de confidentialité et sécurité, contrat en 9 clauses et facturation en devises.",
+    "sections": [
+     "Gérer plusieurs fuseaux horaires",
+     "Les e-mails professionnels en anglais",
+     "Confidentialité et données personnelles",
+     "Le contrat de prestation",
+     "Facturer en devises et se faire payer",
+     "Exercice pratique : un client à l'étranger"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité",
+    "summary": "Évolution tarifaire, projets à prix fixe, équipe d'assistants, marges et choix du modèle d'activité.",
+    "sections": [
+     "Augmenter ses tarifs",
+     "Les offres de projet à prix fixe",
+     "Construire une équipe d'assistants",
+     "Choisir son modèle d'activité",
+     "Exercice pratique : votre plan de développement"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "gestion-0-f": {
   "hours": 14,
   "description": "L'assistant virtuel gère à distance les e-mails, l'agenda, les documents et le suivi administratif de ses clients. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs francophones et des dirigeants malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

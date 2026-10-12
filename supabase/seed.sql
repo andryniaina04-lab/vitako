@@ -84,7 +84,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 11, false),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
-  ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, false),
+  ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, false),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, false),
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
@@ -4176,6 +4176,662 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- gestion-0-a
+delete from public.exam_questions where course_id = 'gestion-0-a';
+delete from public.module_questions where course_id = 'gestion-0-a';
+delete from public.lessons where course_id = 'gestion-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-a', 0, 'Se spécialiser et construire une offre', 'Les 6 spécialités, le choix de la vôtre, l''offre en forfaits, la page de présentation et l''accueil d''un nouveau client en 10 étapes.', 'Un assistant virtuel généraliste est payé pour ses heures. Un assistant **spécialisé** est payé pour son expertise : il connaît les outils, le vocabulaire et les problèmes d''un type de client, et il les règle sans qu''on ait besoin de tout lui expliquer. Ce module vous aide à choisir une spécialité et à construire une offre qui se vend plus cher.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités les plus demandées.
+> 2. Choisir la vôtre selon vos forces et la demande.
+> 3. Construire une offre spécialisée en forfaits.
+> 4. Rédiger une page de présentation orientée résultats.
+> 5. Préparer un processus d''accueil de nouveau client.
+
+## Les 6 spécialités les plus demandées
+
+| N° | Spécialité | Tâches typiques | Clients |
+| --- | --- | --- | --- |
+| 1 | **Assistant e-commerce** | Commandes, service client par e-mail, mise à jour des produits, suivi des livraisons, retours | Boutiques Shopify et WooCommerce |
+| 2 | **Assistant de coachs et formateurs** | Agenda, inscriptions, e-mails aux élèves, plateforme de cours, lancement de formations | Coachs, formateurs, créateurs de formations en ligne |
+| 3 | **Assistant de direction** | Agenda complexe, déplacements, préparation des réunions, comptes rendus, suivi des décisions | Dirigeants de PME, consultants |
+| 4 | **Assistant administratif et facturation** | Devis, factures, relances, classement, préparation pour le comptable | Artisans, professions libérales, petites entreprises |
+| 5 | **Assistant de créateurs de contenu** | Calendrier de publication, partenariats, e-mails, mise en ligne des vidéos | YouTubeurs, podcasteurs |
+| 6 | **Assistant immobilier** | Prise de rendez-vous de visites, mise à jour des annonces, relances des prospects | Agents et agences immobilières |
+
+> [!definition] Assistant de direction
+> Un assistant qui travaille au plus près d''un dirigeant : il gère son temps, prépare ses décisions et suit leur exécution. En anglais : *executive assistant*. C''est une des spécialités les mieux payées, qui demande une grande discrétion et un excellent niveau écrit.
+
+## Choisir sa spécialité
+
+### La méthode en 4 étapes
+
+1. **Vos forces** : reprenez votre bilan du niveau Fondamentaux. Quelles tâches faites-vous le mieux et avec plaisir ?
+2. **Votre expérience** : études, emplois précédents (une formation en comptabilité oriente vers la facturation, une expérience en vente vers l''e-commerce).
+3. **La demande** : cherchez des offres d''assistants dans chaque spécialité sur les plateformes et LinkedIn. Lesquelles reviennent souvent ?
+4. **Le test** : proposez votre spécialité pendant 2 à 3 mois et regardez les réponses.
+
+> [!madagascar] Votre avantage
+> L''assistance de **direction** et de **coachs francophones** profite particulièrement de votre français écrit et de votre disponibilité pendant les heures de bureau européennes. L''**e-commerce** profite de votre capacité à traiter les commandes de la nuit européenne avant le réveil du client.
+
+## L''offre spécialisée en forfaits
+
+Une offre spécialisée décrit **le résultat**, pas seulement les heures.
+
+> [!exemple] Offre « Assistante de coachs »
+>
+> | | **Organisation** | **Croissance** | **Lancement** |
+> | --- | --- | --- | --- |
+> | Heures par mois | 20 h | 40 h | 60 h |
+> | Agenda et rendez-vous | Oui | Oui | Oui |
+> | E-mails et messages des clients | Oui | Oui | Oui |
+> | Gestion de la plateforme de cours (inscriptions, accès) | — | Oui | Oui |
+> | Newsletter hebdomadaire | — | Oui | Oui |
+> | Organisation d''un lancement (pages, e-mails, calendrier, webinaire) | — | — | Oui |
+> | Point de suivi | Toutes les 2 semaines | Chaque semaine | 2 fois par semaine |
+
+Calculez le prix de chaque forfait à partir de votre prix horaire (Fondamentaux, module 5), puis **ajoutez la valeur de votre spécialité** : un assistant qui sait déjà gérer une plateforme de cours fait gagner des semaines au client.
+
+## La page de présentation orientée résultats
+
+### Les 7 éléments
+
+1. **Le titre** : votre spécialité et le résultat. « Assistante des coachs francophones : vous coachez, je gère le reste. »
+2. **Le problème** du client, avec ses mots : « Vous passez vos soirées dans les e-mails et les inscriptions. »
+3. **Le résultat** : « Vous retrouvez 10 à 15 heures par semaine. »
+4. **Ce que vous faites**, en liste concrète.
+5. **Comment vous travaillez** : outils, horaires, rapports, confidentialité.
+6. **Les preuves** : témoignages, étude de cas, chiffres.
+7. **L''appel à l''action** : « Réservez un appel de découverte de 20 minutes. » avec un lien de prise de rendez-vous.
+
+## Le processus d''accueil d''un nouveau client
+
+Un accueil professionnel rassure dès le premier jour et évite les oublis.
+
+### Les 10 étapes de l''accueil
+
+1. **Contrat** et fiche de mission signés.
+2. **Paiement** du premier mois reçu.
+3. **Questionnaire d''accueil** envoyé : outils, préférences, contacts importants, règles.
+4. **Accès** reçus et testés (délégation, partage, comptes d''équipe).
+5. **Espace de travail** créé : tableau Notion, dossiers Drive, procédures.
+6. **Appel de démarrage** : priorités du premier mois.
+7. **Liste des « choses à ne jamais faire »** notée (exemple : « ne jamais accepter de rendez-vous le mercredi »).
+8. **Premier résumé quotidien** dès le premier jour.
+9. **Bilan de la première semaine**.
+10. **Bilan du premier mois** et ajustement du forfait.
+
+> [!astuce]
+> Transformez ces 10 étapes en **modèle Notion** que vous dupliquez pour chaque nouveau client. Rien n''est oublié, et le client voit une organisation professionnelle dès le premier contact.
+
+> [!attention] Erreurs fréquentes
+> - Annoncer une spécialité sans maîtriser ses outils.
+> - Une page de présentation qui parle de vous au lieu du problème du client.
+> - Commencer à travailler avant d''avoir reçu le contrat et le premier paiement.
+> - Oublier de noter les règles particulières du client.
+
+> [!retenir]
+> - 6 spécialités : e-commerce, coachs, direction, facturation, créateurs, immobilier.
+> - Choisissez avec vos forces, votre expérience et la demande.
+> - Une offre en forfaits qui décrit des résultats.
+> - Une page en 7 éléments, centrée sur le problème du client.
+> - Un accueil en 10 étapes, sous forme de modèle réutilisable.
+
+## Exercice pratique : votre offre spécialisée
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité avec la méthode en 4 étapes.
+> 2. Construisez 3 forfaits avec contenu, heures et prix.
+> 3. Rédigez votre page de présentation en 7 éléments (Notion public, Canva ou Google Docs).
+> 4. Créez votre modèle d''accueil en 10 étapes dans Notion, avec le questionnaire d''accueil.
+>
+> **À livrer** : votre analyse de spécialité, vos forfaits, le lien de votre page et le lien de votre modèle Notion.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 0, 0, 'Que fait un assistant de direction ?', '["Il répare les ordinateurs","Il fait seulement de la saisie","Il gère le temps d''un dirigeant et suit ses décisions","Il dirige l''entreprise"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 0, 1, 'Que doit décrire une offre spécialisée ?', '["La marque de votre ordinateur","Le résultat pour le client","Seulement votre âge","Votre prix le plus bas"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 0, 2, 'Quand commencer à travailler pour un nouveau client ?', '["Sans contrat","Avant de parler du prix","Après le contrat et le premier paiement","Après un an"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-a', 1, 'Outils professionnels : Google Workspace, Notion, Calendly et automatisations', 'Compte d''entreprise et drives partagés, bases Notion reliées et portail client, configuration de Calendly, automatisations et conseil sur les abonnements.', 'Au niveau avancé, vos clients utilisent souvent les versions professionnelles des outils : **Google Workspace** pour la messagerie et les fichiers de l''entreprise, **Notion** en version payante pour l''organisation de l''équipe, **Calendly** pour la prise de rendez-vous. Ce module vous apprend à les configurer et à les utiliser comme un spécialiste, et à automatiser les tâches répétitives.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler dans un espace Google Workspace d''entreprise : comptes, drives partagés, groupes, délégation.
+> 2. Construire dans Notion un espace de travail relié : tâches, clients, procédures, portail client.
+> 3. Configurer Calendly pour un client : types de rendez-vous, règles, rappels, questions.
+> 4. Automatiser 3 tâches répétitives.
+> 5. Conseiller un client sur les abonnements utiles.
+
+## Google Workspace : l''espace de l''entreprise
+
+> [!definition] Google Workspace
+> La version professionnelle des outils Google (Gmail, Agenda, Drive, Docs, Meet) pour les entreprises : adresses e-mail au nom de l''entreprise, comptes gérés par un administrateur, stockage partagé, sécurité renforcée.
+
+### Ce qui change par rapport à un compte gratuit
+
+| Fonction | À quoi elle sert pour l''assistant |
+| --- | --- |
+| **Compte à votre nom dans l''entreprise** (exemple : `assistante@entreprise.com`) | Le client vous crée un compte : vous n''utilisez ni votre Gmail personnel ni son mot de passe |
+| **Drives partagés** | Les fichiers appartiennent à l''entreprise, pas à une personne : rien n''est perdu si quelqu''un part |
+| **Groupes et adresses partagées** (exemple : `contact@`, `factures@`) | Plusieurs personnes reçoivent les e-mails d''une adresse commune |
+| **Délégation de messagerie et d''agenda** | Vous gérez la boîte et l''agenda du dirigeant avec vos propres accès |
+| **Agendas de ressources** | Réserver une salle, un véhicule, du matériel |
+
+### Les bonnes pratiques
+
+1. **Un drive partagé par grand domaine** : Administratif, Clients, Communication, Finance.
+2. **Des droits limités** : chacun n''accède qu''à ce dont il a besoin.
+3. **Des adresses partagées** pour les flux importants (factures, contact), avec des libellés et des filtres.
+4. **La double authentification** activée sur votre compte.
+5. Quand vous quittez une mission : le client **désactive votre compte**, les fichiers restent dans ses drives partagés.
+
+## Notion : un espace de travail relié
+
+Au niveau Fondamentaux, vous avez créé un tableau de tâches. Au niveau avancé, vous construisez un **système** où les informations sont reliées.
+
+> [!definition] Base de données relationnelle (dans Notion)
+> Plusieurs tableaux reliés entre eux : une tâche est liée à un client, un client à ses projets, un projet à ses documents. Depuis la fiche d''un client, on voit toutes ses tâches et tous ses projets.
+
+### Les 4 bases d''un espace d''assistant
+
+| Base | Propriétés principales | Reliée à |
+| --- | --- | --- |
+| **Tâches** | Statut, priorité, échéance, temps passé, responsable | Projets, Contacts |
+| **Projets** | Objectif, date de début et de fin, avancement | Tâches |
+| **Contacts** | Nom, entreprise, rôle, coordonnées, dernière interaction | Tâches |
+| **Procédures** | Étapes, outil, fréquence, dernière mise à jour | — |
+
+### Les fonctions avancées
+
+1. **Vues** : la même base affichée en tableau, en kanban (colonnes de statut), en calendrier ou en liste filtrée (« mes tâches de la semaine »).
+2. **Modèles de pages** : un modèle « Compte rendu de réunion », « Nouvelle facture », « Préparation de déplacement ».
+3. **Tâches récurrentes** : « Relancer les factures impayées chaque lundi ».
+4. **Formules** : calcul automatique (jours de retard, total des heures du mois).
+5. **Portail client** : une page partagée avec le client, qui affiche seulement ses tâches, son rapport et ses documents.
+
+L''offre payante (Notion Plus) apporte notamment plus de possibilités de partage, d''historique et de travail en équipe. Vérifiez sur le site officiel ce qu''elle inclut et si elle est utile pour votre client.
+
+## Calendly : la prise de rendez-vous automatique
+
+Calendly permet aux personnes de réserver directement un créneau dans l''agenda du client, sans échange d''e-mails.
+
+### Configurer Calendly pour un client en 8 étapes
+
+1. **Connectez l''agenda** du client (Google ou Outlook) : Calendly ne propose que les créneaux libres.
+2. **Créez les types de rendez-vous** : « Appel découverte – 20 min », « Séance de coaching – 60 min », « Suivi – 30 min ».
+3. **Fixez les disponibilités** de chaque type : jours, heures, fuseau horaire du client.
+4. **Ajoutez des règles** : délai minimum avant réservation (exemple : 24 h), pause entre deux rendez-vous, nombre maximum par jour.
+5. **Posez des questions** à la réservation : objet du rendez-vous, téléphone, entreprise.
+6. **Ajoutez le lien de visioconférence** automatique (Zoom, Google Meet, Teams).
+7. **Programmez les rappels** par e-mail (la veille et une heure avant).
+8. **Testez** en réservant vous-même un rendez-vous.
+
+> [!astuce]
+> Calendly affiche les créneaux **dans le fuseau horaire de la personne qui réserve**. C''est idéal pour un client qui reçoit des personnes de plusieurs pays : plus d''erreurs de conversion.
+
+Certaines fonctions (plusieurs types de rendez-vous, rappels avancés, paiement à la réservation, intégrations) dépendent de l''offre payante : vérifiez sur le site officiel.
+
+## Automatiser les tâches répétitives
+
+Les outils d''automatisation (Zapier, Make) relient les applications entre elles : « quand il se passe ceci dans un outil, fais cela dans un autre ».
+
+> [!exemple] 3 automatisations utiles
+> 1. **Nouveau rendez-vous Calendly** → création d''une fiche dans la base Contacts de Notion.
+> 2. **Nouveau formulaire de contact** (Google Forms) → e-mail de réponse automatique + ligne dans Google Sheets.
+> 3. **Facture marquée « payée »** → déplacement du PDF dans le dossier « Factures payées » du drive.
+
+### Les règles de l''automatisation
+
+1. **Automatisez seulement ce qui est stable** et répétitif (au moins chaque semaine).
+2. **Testez** avec de fausses données avant de l''activer.
+3. **Documentez** chaque automatisation dans les procédures (ce qu''elle fait, où la modifier).
+4. **Vérifiez chaque semaine** qu''elle fonctionne encore.
+
+## Conseiller le client sur ses abonnements
+
+| Besoin du client | Outil conseillé |
+| --- | --- |
+| Une adresse e-mail professionnelle et des fichiers d''équipe | Google Workspace |
+| Une organisation partagée avec son équipe et un portail client | Notion (offre payante si l''équipe grandit) |
+| Beaucoup de rendez-vous avec des inconnus, plusieurs types de séances | Calendly (offre payante) |
+| Des tâches répétitives entre plusieurs outils | Zapier ou Make |
+
+Dans tous les cas : l''abonnement est **au nom et à la charge du client**. Vous lui expliquez le gain de temps, il décide.
+
+> [!madagascar]
+> Pour un client à Madagascar, vérifiez avec lui comment il peut payer les abonnements (carte bancaire internationale). Pour un client sans carte, des solutions gratuites (Gmail, Google Agenda, Notion gratuit, page de réservation de Google Agenda) couvrent déjà beaucoup de besoins.
+
+> [!retenir]
+> - Google Workspace : un compte à votre nom, des drives partagés, des droits limités.
+> - Notion : des bases reliées, des vues, des modèles, un portail client.
+> - Calendly : types de rendez-vous, règles, questions, rappels, fuseaux automatiques.
+> - Automatisez ce qui est stable, testé et documenté.
+> - Les abonnements sont toujours au nom du client.
+
+## Exercice pratique : un système complet
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Dans Notion, créez les 4 bases reliées (Tâches, Projets, Contacts, Procédures) avec 3 vues et 2 modèles de pages.
+> 2. Créez une page « Portail client » qui affiche seulement les tâches d''un client.
+> 3. Créez un compte Calendly gratuit et configurez un type de rendez-vous complet (règles, questions, rappels).
+> 4. Créez une automatisation simple avec Zapier ou Make (offre gratuite) et documentez-la.
+>
+> **À livrer** : les liens de votre espace Notion et de votre page Calendly, et la fiche de procédure de votre automatisation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 1, 0, 'Pourquoi utiliser des drives partagés ?', '["Pour cacher les fichiers au client","Ce n''est pas utile","Les fichiers appartiennent à l''entreprise et ne sont pas perdus si quelqu''un part","Pour avoir moins d''espace"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 1, 1, 'Dans quel fuseau Calendly affiche-t-il les créneaux ?', '["Toujours celui de Londres","Celui de la personne qui réserve","Toujours celui de Madagascar","Aucun"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 1, 2, 'Que faut-il automatiser ?', '["Tout, sans tester","Rien","Les tâches stables et répétitives, après test","Uniquement les décisions importantes"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-a', 2, 'Qualité et rapidité : les méthodes de l''assistant de direction', 'Procédures écrites, boîte de réception en 3 passages, revue hebdomadaire, réunions et suivi des actions, déplacements et rapport de valeur.', 'Un assistant avancé gère plusieurs clients, ou un dirigeant très occupé, sans rien oublier. Son secret : des **systèmes** qui fonctionnent même les jours chargés. Ce module vous donne les méthodes des assistants de direction : procédures écrites, gestion de la boîte de réception par système, revue hebdomadaire, préparation des réunions et rapports de valeur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des procédures que n''importe qui peut suivre.
+> 2. Gérer une boîte de réception chargée avec un système en 3 passages.
+> 3. Mener une revue hebdomadaire en 30 minutes.
+> 4. Préparer une réunion et en assurer le suivi.
+> 5. Montrer votre valeur avec un rapport mensuel.
+
+## Les procédures écrites
+
+> [!definition] Procédure (ou SOP)
+> La description étape par étape d''une tâche répétitive. En anglais : *Standard Operating Procedure*. Une bonne procédure permet à une autre personne de faire la tâche exactement de la même façon.
+
+### Le modèle d''une procédure
+
+1. **Titre** : « Envoyer une facture à un client ».
+2. **Fréquence** : à chaque fin de prestation.
+3. **Outils** : Google Docs (modèle de facture), Gmail, Drive.
+4. **Étapes numérotées**, avec une capture d''écran pour les étapes délicates.
+5. **Contrôle** : ce qu''il faut vérifier avant de terminer.
+6. **Exceptions** : « Si le client est à l''étranger, ajouter la mention de la devise. »
+7. **Date de mise à jour**.
+
+> [!astuce]
+> Écrivez la procédure **pendant** que vous faites la tâche pour la troisième fois. Vous la connaissez bien, et vous n''avez pas encore oublié les petits détails.
+
+### Les 10 procédures à écrire en premier
+
+Accueil d''un nouveau client · tri de la boîte de réception · prise de rendez-vous · préparation d''un déplacement · envoi d''une facture · relance d''une facture impayée · compte rendu de réunion · revue hebdomadaire · rapport mensuel · fin de mission (rendre les accès).
+
+## La boîte de réception : le système en 3 passages
+
+Pour un dirigeant qui reçoit 100 à 200 e-mails par jour, il faut un **système**, pas seulement la méthode des 4 D.
+
+| Passage | Heure (exemple, fuseau du client) | Ce que vous faites |
+| --- | --- | --- |
+| **1. Matin** | Avant 9 h | Trier la nuit : archiver, traiter les demandes simples, préparer la liste des décisions du jour |
+| **2. Midi** | 12 h – 13 h | Traiter les nouvelles demandes, mettre à jour l''agenda |
+| **3. Fin de journée** | 17 h – 18 h | Boîte remise à zéro, résumé quotidien envoyé |
+
+### Le résumé quotidien d''un assistant de direction
+
+> [!exemple] Résumé du jour
+> **À décider (3)** : 1. Devis de l''imprimeur (450 €) : accepter ? 2. Invitation au salon de Lyon le 12 : présence ? 3. Demande de rendez-vous de M. Dubois : jeudi 10 h ou vendredi 15 h ?
+> **Fait aujourd''hui** : 41 e-mails traités, 4 rendez-vous fixés, déplacement à Lyon réservé (détails dans Notion).
+> **En attente** : contrat signé du client Bertin (relance envoyée).
+> **Demain** : réunion d''équipe à 9 h, ordre du jour envoyé.
+
+Le dirigeant répond en 2 minutes : « 1 oui, 2 non, 3 jeudi. » Et vous agissez.
+
+## La revue hebdomadaire
+
+Chaque vendredi, 30 minutes pour vérifier que rien n''est oublié.
+
+1. **Videz les boîtes** : e-mail, messages, notes.
+2. **Revoyez les tâches** : terminées, en retard, à reporter.
+3. **Regardez l''agenda** des 2 semaines à venir : préparations nécessaires, conflits, déplacements.
+4. **Vérifiez les « en attente »** : relances à faire.
+5. **Mettez à jour les procédures** qui ont changé.
+6. **Préparez la semaine suivante** : 3 priorités pour vous, 3 pour le client.
+
+## Préparer une réunion et assurer le suivi
+
+### Avant la réunion
+
+1. **L''ordre du jour** envoyé 24 h avant : sujets, durée de chacun, décision attendue.
+2. **Les documents** rassemblés et partagés dans un seul dossier.
+3. **Le lien** de visioconférence testé, ou la salle réservée.
+4. **Une fiche de préparation** pour le dirigeant : qui sont les participants, derniers échanges, points sensibles.
+
+### Le compte rendu en 3 parties
+
+| Partie | Contenu |
+| --- | --- |
+| **Décisions** | Ce qui a été décidé, en une phrase chacune |
+| **Actions** | Qui fait quoi, pour quand |
+| **Points ouverts** | Ce qui reste à discuter |
+
+Envoyez le compte rendu **dans les 24 heures**, puis suivez chaque action dans Notion et relancez avant l''échéance.
+
+> [!definition] Suivi des actions
+> Vérifier que chaque action décidée en réunion est réellement faite à temps. C''est une des tâches les plus appréciées d''un assistant de direction : les décisions ne restent plus sur le papier.
+
+## Organiser un déplacement sans erreur
+
+1. **Les préférences** du client sont notées une fois pour toutes : horaires, siège, hôtels, budget.
+2. **2 ou 3 options** proposées avec prix, horaires et durée.
+3. **La réservation** après validation, avec confirmation enregistrée dans un dossier.
+4. **Le programme** d''une page : vols, transferts, hôtel, rendez-vous, adresses, numéros utiles, **fuseaux horaires**.
+5. **Les vérifications** : passeport, visa, assurance, documents de réunion.
+6. **Le suivi le jour J** : changements de vol, retards.
+
+## Montrer sa valeur : le rapport mensuel
+
+Le client voit vos factures. Il doit aussi voir ce qu''elles lui apportent.
+
+| Partie | Exemple |
+| --- | --- |
+| **Volume** | 1 240 e-mails traités, 58 rendez-vous fixés, 3 déplacements organisés |
+| **Temps gagné** (estimation) | Environ 45 heures de travail administratif prises en charge |
+| **Argent** | 6 factures impayées relancées, 4 encaissées |
+| **Améliorations** | Nouvelle procédure de facturation, automatisation des confirmations de rendez-vous |
+| **Propositions** | Créer une page de questions fréquentes pour réduire les e-mails répétitifs |
+
+> [!madagascar]
+> Pour un client à Paris, le passage du matin « avant 9 h » se fait à 10 h ou 11 h à Antananarivo, selon la saison : c''est un horaire confortable. Organisez vos passages dans le fuseau du client et notez-les dans votre agenda avec le fuseau secondaire.
+
+> [!attention] Erreurs fréquentes
+> - Garder les procédures « dans sa tête ».
+> - Rester dans la boîte de réception toute la journée au lieu de passages fixes.
+> - Un compte rendu de réunion long, sans décisions ni actions claires.
+> - Oublier les fuseaux horaires dans un programme de déplacement.
+
+> [!retenir]
+> - Des procédures écrites pour chaque tâche répétitive.
+> - La boîte de réception en 3 passages, avec un résumé et une liste de décisions.
+> - Une revue hebdomadaire de 30 minutes.
+> - Ordre du jour avant, compte rendu en 3 parties et suivi des actions après.
+> - Un rapport mensuel qui montre le temps et l''argent gagnés.
+
+## Exercice pratique : votre système d''assistant
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Écrivez 3 procédures complètes avec le modèle en 7 parties.
+> 2. Rédigez un résumé quotidien type avec une liste de décisions.
+> 3. Préparez une réunion fictive : ordre du jour, fiche de préparation, puis compte rendu en 3 parties.
+> 4. Préparez le programme d''un déplacement Antananarivo – Paris – Lyon de 4 jours, avec fuseaux horaires.
+> 5. Rédigez un rapport mensuel avec des chiffres d''exemple.
+>
+> **À livrer** : les 3 procédures, le résumé, les documents de réunion, le programme de déplacement et le rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 2, 0, 'Quand écrire une procédure ?', '["Jamais","Seulement si le client le demande","Pendant que vous faites la tâche pour la troisième fois","Avant d''avoir fait la tâche une seule fois"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 2, 1, 'Quelles sont les 3 parties d''un compte rendu de réunion ?', '["Prix, remise, total","Décisions, actions, points ouverts","Bonjour, texte, merci","Date, heure, lieu"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 2, 2, 'Que montre le rapport mensuel de valeur ?', '["Vos dépenses personnelles","Vos loisirs","Le temps et l''argent que vous faites gagner au client","Uniquement vos heures"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-a', 3, 'Clients internationaux : fuseaux, anglais, contrat et confidentialité', 'Agenda à plusieurs fuseaux, e-mails en anglais, accord de confidentialité et sécurité, contrat en 9 clauses et facturation en devises.', 'La plupart des clients d''un assistant virtuel avancé sont à l''étranger : en France, en Belgique, en Suisse, au Canada, parfois dans des pays anglophones. Ce module vous prépare à travailler avec eux : plusieurs fuseaux horaires, communication en anglais, contrats et confidentialité, facturation en devises.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Gérer un agenda à plusieurs fuseaux horaires sans erreur.
+> 2. Écrire des e-mails professionnels simples en anglais.
+> 3. Respecter la confidentialité et les règles sur les données.
+> 4. Rédiger un contrat de prestation pour un client étranger.
+> 5. Facturer en devises et vous faire payer.
+
+## Gérer plusieurs fuseaux horaires
+
+Un client à Montréal qui travaille avec des partenaires à Paris et à Dakar : c''est fréquent pour un assistant avancé.
+
+| Ville | Décalage avec Antananarivo (hiver européen, environ) | Décalage (été européen, environ) |
+| --- | --- | --- |
+| Paris, Bruxelles, Genève | − 2 h | − 1 h |
+| Londres | − 3 h | − 2 h |
+| Dakar | − 3 h | − 3 h |
+| Montréal | − 8 h | − 7 h |
+| Dubaï | + 1 h | + 1 h |
+
+Les dates de changement d''heure ne sont pas les mêmes en Europe et en Amérique du Nord : pendant quelques semaines au printemps et à l''automne, les décalages changent. Vérifiez toujours avec un outil de conversion.
+
+### Les 5 règles
+
+1. **Ajoutez les fuseaux** des clients dans votre agenda (fuseaux secondaires).
+2. **Écrivez toujours le fuseau** : « 14 h (heure de Montréal) / 20 h (heure de Paris) ».
+3. **Utilisez Calendly ou l''agenda** pour les invitations : ils convertissent automatiquement.
+4. **Trouvez le créneau commun** avec un outil de comparaison des fuseaux horaires.
+5. **Vérifiez deux fois** les rendez-vous autour des changements d''heure.
+
+> [!exemple] Trouver un créneau Paris – Montréal
+> Les heures de bureau se recouvrent entre 9 h et 12 h à Montréal, soit 15 h à 18 h à Paris (hors périodes de décalage particulier). Proposez donc : « mardi 10 h (Montréal) / 16 h (Paris) ».
+
+## Les e-mails professionnels en anglais
+
+### Les formules utiles
+
+| Situation | Formule |
+| --- | --- |
+| Commencer | « Hi John, » (courant) ou « Dear Mr. Smith, » (formel) |
+| Se présenter pour le client | « I''m writing on behalf of Claire Laurent. » |
+| Proposer des créneaux | « Would Tuesday at 10 a.m. (EST) or Wednesday at 2 p.m. (EST) work for you? » |
+| Relancer | « Just following up on my email from Monday regarding… » |
+| Joindre | « Please find attached the invoice for March. » |
+| Finir | « Best regards, » / « Kind regards, » |
+
+> [!exemple] E-mail en anglais au nom d''un client
+> Subject: Meeting request – Claire Laurent / Next steps
+>
+> Hi Sarah,
+>
+> I''m writing on behalf of Claire Laurent to schedule a follow-up call about the partnership. Would one of these times work for you?
+> 1. Tuesday, March 18 at 10:00 a.m. (EST)
+> 2. Wednesday, March 19 at 2:00 p.m. (EST)
+>
+> The call will take about 30 minutes. I''ll send a calendar invite with the video link once you confirm.
+>
+> Kind regards,
+> Hanta Rakoto, Assistant to Claire Laurent
+
+### Améliorer son anglais écrit
+
+1. Gardez un **document de phrases types** que vous enrichissez.
+2. Passez chaque e-mail important dans un **correcteur** (LanguageTool, Grammarly).
+3. Lisez les e-mails reçus en anglais et **notez les tournures** utiles.
+4. Préférez des **phrases courtes** et simples : c''est plus professionnel qu''un anglais compliqué avec des fautes.
+
+## Confidentialité et données personnelles
+
+Un assistant voit tout : contrats, salaires, santé, conflits, informations bancaires. Les clients étrangers demandent souvent un **accord de confidentialité**.
+
+> [!definition] Accord de confidentialité (NDA)
+> Un contrat par lequel vous vous engagez à ne divulguer aucune information du client. En anglais : *Non-Disclosure Agreement*. Lisez-le avant de signer : durée, informations concernées, conséquences en cas de manquement.
+
+### Les 7 règles de sécurité
+
+1. **Gestionnaire de mots de passe** partagé par le client (jamais de mots de passe par e-mail ou WhatsApp).
+2. **Double authentification** partout.
+3. **Ordinateur personnel protégé** : session avec mot de passe, mises à jour, antivirus.
+4. **Pas de réseau Wi-Fi public** pour travailler sur les données du client.
+5. **Pas de copies** des documents du client sur des clés USB ou des services personnels.
+6. **Données personnelles** des clients de votre client utilisées uniquement pour la mission (en Europe, le RGPD encadre leur utilisation).
+7. **Fin de mission** : accès rendus, fichiers supprimés de votre ordinateur, confirmation écrite.
+
+## Le contrat de prestation
+
+### Les 9 clauses essentielles
+
+1. **Les parties** et leur pays.
+2. **Les services** : tâches, forfait d''heures, ce qui n''est pas inclus.
+3. **Les horaires de disponibilité** et délais de réponse, avec le fuseau.
+4. **Le prix** en devise, le mode et la date de paiement (d''avance, en début de mois).
+5. **Les heures supplémentaires** : tarif et accord préalable.
+6. **La confidentialité** (ou un accord séparé).
+7. **Le statut** : vous êtes un **prestataire indépendant**, pas un salarié.
+8. **La durée** et le **préavis** de fin (exemple : 30 jours).
+9. **La fin de mission** : restitution des accès et des documents.
+
+Pour les contrats importants, faites relire par un professionnel du droit.
+
+## Facturer en devises et se faire payer
+
+1. **Facturez en euros ou en dollars**, selon le client, avec la devise clairement indiquée.
+2. **Numérotez** vos factures et mentionnez : vos coordonnées, celles du client, la période, le forfait, le montant, les coordonnées de paiement.
+3. **Joignez le rapport** d''heures ou le rapport mensuel.
+4. **Précisez qui paie les frais** de transfert.
+5. **Moyens de réception** depuis Madagascar : virement international, Payoneer, ou la plateforme utilisée. Vérifiez avant le premier mois.
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : annoncez dès le premier échange les moyens de paiement que vous pouvez recevoir. Suivez le montant reçu en ariary après frais, et gardez chaque relevé pour votre comptabilité et vos déclarations.
+
+> [!retenir]
+> - Fuseaux horaires toujours écrits, et vérifiés autour des changements d''heure.
+> - Un anglais simple, clair et relu.
+> - Confidentialité : accord écrit, mots de passe protégés, fin de mission propre.
+> - Un contrat de prestataire indépendant en 9 clauses.
+> - Factures en devises, payées d''avance, moyens de paiement vérifiés.
+
+## Exercice pratique : un client à l''étranger
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Ajoutez 3 fuseaux horaires dans votre agenda et trouvez un créneau commun Paris – Montréal – Antananarivo pour une réunion de 30 minutes.
+> 2. Rédigez en anglais 3 e-mails au nom d''un client : demande de rendez-vous, relance, envoi de document.
+> 3. Rédigez votre contrat de prestation en 9 clauses.
+> 4. Créez un modèle de facture en euros.
+> 5. Rédigez votre liste de sécurité personnelle (les 7 règles appliquées à votre poste).
+>
+> **À livrer** : votre créneau avec les 3 heures, les 3 e-mails, le contrat, le modèle de facture et votre liste de sécurité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 3, 0, 'Que faut-il toujours écrire dans une proposition de rendez-vous international ?', '["Le fuseau horaire","Votre âge","Votre adresse","La météo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 3, 1, 'Qu''est-ce qu''un NDA ?', '["Un fuseau horaire","Un type de facture","Un logiciel","Un accord de confidentialité"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 3, 2, 'Quel est votre statut dans le contrat de prestation ?', '["Stagiaire","Salarié du client","Associé du client","Prestataire indépendant"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-a', 4, 'Développer son activité', 'Évolution tarifaire, projets à prix fixe, équipe d''assistants, marges et choix du modèle d''activité.', 'Un assistant virtuel seul plafonne vite : il ne vend que ses propres heures. Pour aller plus loin, il peut augmenter la valeur de chaque heure, créer des offres qui ne dépendent pas seulement du temps, ou construire une petite équipe d''assistants. Ce dernier module vous montre ces trois chemins.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Augmenter vos tarifs en vous appuyant sur votre rapport de valeur.
+> 2. Créer des offres de projet à prix fixe.
+> 3. Construire une équipe d''assistants et la piloter.
+> 4. Fixer vos marges quand vous revendez le travail d''un autre assistant.
+> 5. Choisir le modèle d''activité qui vous convient.
+
+## Augmenter ses tarifs
+
+### S''appuyer sur la valeur
+
+Votre rapport mensuel (module 3) montre le temps et l''argent que vous faites gagner. C''est votre meilleur argument.
+
+> [!exemple] Message d''évolution tarifaire
+> « Bonjour Claire, depuis un an, nous avons ensemble mis en place 14 procédures, automatisé vos confirmations de rendez-vous et réduit vos factures impayées de moitié. À partir du 1er avril, mon tarif évolue de 15 % pour les nouvelles périodes. Je vous propose un appel pour faire le point sur les priorités de l''année. »
+
+### Les règles
+
+1. **Nouveaux clients** au nouveau tarif tout de suite.
+2. **Clients actuels** prévenus 1 à 2 mois à l''avance.
+3. **Paliers raisonnables** (10 à 20 %).
+4. **Spécialité et outils** mis en avant : un assistant qui maîtrise Notion, Calendly, les automatisations et l''anglais vaut plus qu''un assistant généraliste.
+
+## Les offres de projet à prix fixe
+
+Certaines missions se vendent mieux **au projet** qu''à l''heure. Le client sait ce qu''il paie, et vous êtes récompensé si vous travaillez vite grâce à vos modèles.
+
+| Projet | Contenu | Pour qui |
+| --- | --- | --- |
+| **Remise à zéro de la boîte e-mail** | Tri, archivage, libellés, filtres, modèles de réponse, guide | Dirigeant débordé |
+| **Mise en place de Notion** | Espace complet (tâches, projets, contacts, procédures), formation | Petite équipe |
+| **Système de rendez-vous** | Calendly, rappels, formulaires, intégration à l''agenda | Coach, consultant, cabinet |
+| **Organisation d''un événement en ligne** | Inscriptions, e-mails, rappels, lien, suivi après l''événement | Formateur, association |
+| **Rédaction des procédures** | 10 procédures écrites et testées | Entreprise qui veut déléguer |
+
+Calculez le prix à partir du temps estimé et de votre tarif horaire, puis **arrondissez vers le haut** pour tenir compte de la valeur et des imprévus.
+
+## Construire une équipe d''assistants
+
+Quand la demande dépasse vos heures, vous pouvez confier une partie des missions à d''autres assistants, et devenir **responsable d''une petite agence**.
+
+### Les étapes
+
+1. **Écrivez toutes vos procédures** (module 3) : c''est la condition pour que quelqu''un d''autre travaille comme vous.
+2. **Recrutez** avec un test payé : un tri de boîte e-mail fictive, 3 e-mails à rédiger, une prise de rendez-vous.
+3. **Commencez par des tâches simples** : saisie, tri, relances, sur un client que vous connaissez bien.
+4. **Restez l''interlocuteur** du client au début, puis présentez l''assistant quand la confiance est installée.
+5. **Contrôlez la qualité** : relisez le travail pendant les premières semaines, puis par échantillon.
+6. **Réunion hebdomadaire d''équipe** de 30 minutes : clients, problèmes, améliorations.
+
+> [!definition] Sous-traitance
+> Confier une partie de son travail à un autre professionnel indépendant, qui travaille pour vous. Vous restez responsable devant le client. Un accord écrit fixe les tâches, la rémunération, les délais et la confidentialité.
+
+### Fixer ses marges
+
+> [!exemple] Calcul d''une marge
+> Le client paie un forfait de 40 heures à 20 € de l''heure, soit 800 € par mois. Vous confiez 30 de ces heures à une assistante payée 10 € de l''heure (300 €), et vous gardez 10 heures pour la relation client, le contrôle et la gestion.
+> Votre revenu : 800 − 300 = 500 € pour 10 heures de travail, soit **50 € de l''heure réelle**.
+> *(Chiffres donnés en exemple.)*
+
+Payez **correctement et à l''heure** vos assistants : leur fidélité et leur qualité font votre réputation. Une marge raisonnable couvre votre gestion, votre contrôle qualité et votre prospection.
+
+### Les outils d''une petite agence
+
+| Besoin | Outil |
+| --- | --- |
+| Tâches et procédures | Notion (offre d''équipe) |
+| Communication interne | Slack, Google Chat ou WhatsApp, avec un canal par client |
+| Mots de passe | Gestionnaire de mots de passe d''équipe |
+| Suivi du temps | Clockify ou Toggl Track, par client et par personne |
+| Factures | Modèles et tableau de suivi, ou logiciel de facturation |
+
+## Choisir son modèle d''activité
+
+| Modèle | Avantages | Limites |
+| --- | --- | --- |
+| **Assistant indépendant haut de gamme** | Peu de gestion, relation forte avec 3 à 5 clients | Revenu limité par vos heures |
+| **Spécialiste au projet** | Prix fixes bien payés, travail varié | Il faut vendre en continu |
+| **Petite agence d''assistants** | Revenu qui ne dépend plus seulement de vos heures | Gestion, recrutement, responsabilité de la qualité |
+
+Beaucoup commencent par le premier modèle, ajoutent des projets, puis construisent une équipe quand la demande est régulière.
+
+> [!madagascar]
+> Une agence d''assistants virtuels basée à Madagascar, avec une équipe francophone fiable et des procédures solides, peut servir des clients en Europe, au Canada et en Afrique de l''Ouest. Commencez petit, avec 1 ou 2 assistants que vous formez vous-même, et grandissez avec la demande.
+
+> [!attention] Erreurs fréquentes
+> - Recruter avant d''avoir écrit ses procédures.
+> - Présenter un nouvel assistant au client sans contrôle préalable de son travail.
+> - Payer les assistants en retard quand un client paie en retard.
+> - Prendre trop de clients d''un coup et perdre en qualité.
+
+> [!retenir]
+> - Augmentez vos tarifs en vous appuyant sur votre rapport de valeur.
+> - Des projets à prix fixe pour les missions bien définies.
+> - Procédures, test payé, contrôle qualité : la base d''une équipe.
+> - Une marge raisonnable et des assistants payés à l''heure.
+> - Choisissez le modèle qui vous convient, et grandissez par étapes.
+
+## Exercice pratique : votre plan de développement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez votre message d''évolution tarifaire en vous appuyant sur un rapport de valeur.
+> 2. Créez 2 offres de projet à prix fixe avec contenu, délai et prix.
+> 3. Rédigez la description de mission et le test payé d''un assistant.
+> 4. Faites le calcul de marge pour un client de 40 heures par mois.
+> 5. Choisissez votre modèle d''activité pour l''année et écrivez 3 objectifs chiffrés.
+>
+> **À livrer** : le message, les 2 offres, la description et le test, le calcul de marge et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 4, 0, 'Quelle est la condition pour construire une équipe ?', '["Avoir écrit ses procédures","Avoir 100 clients","Ne plus travailler","Avoir un bureau"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 4, 1, 'Un forfait de 800 € coûte 300 € de sous-traitance et vous prend 10 heures. Quel est votre revenu horaire réel ?', '["80 €","50 €","20 €","30 €"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-a', 4, 2, 'Qui reste responsable devant le client du travail sous-traité ?', '["L''assistant sous-traitant","Le client","Personne","Vous"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quelle spécialité consiste à gérer commandes, retours et service client d''une boutique ?', '["Assistant immobilier","Assistant de créateurs","Assistant e-commerce","Assistant de direction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quel avantage d''un assistant malgache pour une boutique européenne ?', '["Travailler sans Internet","Travailler seulement le week-end","Traiter les commandes de la nuit européenne avant le réveil du client","Ne pas répondre aux e-mails"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quel est le premier élément d''une page de présentation ?', '["Un titre avec la spécialité et le résultat","Votre date de naissance","Votre prix seul","La liste de vos loisirs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Pourquoi un modèle Notion d''accueil client ?', '["Ne rien oublier et paraître professionnel dès le premier jour","Pour facturer plus","Pour remplacer le contrat","Pour éviter de parler au client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Avec Google Workspace, comment l''assistant se connecte-t-il ?', '["Avec le mot de passe du dirigeant","Sans compte","Avec un compte à son nom dans l''entreprise","Avec son Gmail personnel"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Qu''est-ce qu''une base relationnelle dans Notion ?', '["Des tableaux reliés : tâches, projets, contacts","Une seule liste de courses","Une vidéo","Un fichier PDF"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'À quoi sert un portail client dans Notion ?', '["Montrer au client seulement ses tâches, rapports et documents","Vendre des produits","Remplacer l''agenda","Donner au client tous vos fichiers"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quelle règle Calendly évite un rendez-vous réservé une heure avant ?', '["Un délai minimum avant réservation","Un lien de visioconférence","Une question à la réservation","Un rappel par e-mail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Qui paie les abonnements Calendly ou Google Workspace du client ?', '["Vitako","Le client, à son nom","Personne","L''assistant"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Qu''est-ce qu''une SOP ?', '["Un logiciel de montage","Un type de facture","Un fuseau horaire","Une procédure écrite étape par étape"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Combien de passages par jour dans la boîte d''un dirigeant très sollicité ?', '["Un toutes les 2 minutes","Aucun","3 passages à heures fixes","Un par semaine"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Que contient le résumé quotidien d''un assistant de direction ?', '["La liste de tous les e-mails reçus en entier","Vos heures de pause","Les décisions à prendre, ce qui est fait, ce qui est en attente, demain","Votre humeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Combien de temps pour la revue hebdomadaire ?', '["5 heures","2 minutes","Une journée entière","Environ 30 minutes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quand envoyer l''ordre du jour d''une réunion ?', '["Jamais","24 heures avant","Une minute avant","Après la réunion"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quand envoyer le compte rendu ?', '["Avant la réunion","Un mois après","Jamais","Dans les 24 heures"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Que doit contenir le programme d''un déplacement ?', '["Vols, transferts, hôtel, rendez-vous, adresses et fuseaux horaires","Les loisirs de l''assistant","Seulement le prix du billet","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Pourquoi vérifier deux fois les rendez-vous au printemps et à l''automne ?', '["Les clients sont en vacances","Les changements d''heure ne tombent pas aux mêmes dates partout","Les ordinateurs ralentissent","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quelle formule anglaise pour relancer ?', '["« I don''t know »","« Please ignore this email »","« Just following up on my email from Monday »","« Goodbye forever »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Comment partager des mots de passe avec le client ?', '["Par WhatsApp","Par un gestionnaire de mots de passe","Sur un post-it","Par e-mail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Que faire à la fin d''une mission ?', '["Copier les fichiers sur une clé USB","Rien","Garder tous les accès","Rendre les accès, supprimer les fichiers et le confirmer par écrit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Que faut-il joindre à une facture mensuelle ?', '["Votre CV","Le rapport d''heures ou le rapport mensuel","Une photo","Vos mots de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Sur quoi s''appuyer pour augmenter ses tarifs ?', '["Vos dépenses personnelles","Rien","Le prix d''un concurrent au hasard","Le rapport de valeur : temps et argent gagnés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quel projet se vend bien à prix fixe ?', '["La remise à zéro d''une boîte e-mail","Le salaire d''un employé","Une tâche impossible à définir","Une présence de 10 ans"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Comment recruter un assistant pour son équipe ?', '["En lui donnant tout de suite tous les clients","Sans test, sur le client le plus important","Avec un test gratuit de 3 mois","Avec un test payé, sur des tâches simples d''abord"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-a', 'Quel modèle d''activité ne dépend plus seulement de vos heures ?', '["Aucun","L''assistant seul payé à l''heure","La petite agence d''assistants","Le travail gratuit"]'::jsonb, 2);
 
 -- gestion-0-f
 delete from public.exam_questions where course_id = 'gestion-0-f';
