@@ -17,11 +17,6 @@ const CREAM = [252, 249, 240];
 const INK = [24, 36, 30];
 const MUTED = [96, 108, 100];
 
-// Opacité (filigrane). Ignorée si la version de jsPDF ne la gère pas.
-function opacity(d, value) {
-  try { d.setGState(new d.GState({ opacity: value })); } catch (e) { /* sans effet */ }
-}
-
 // Polygone fermé et rempli à partir d'une liste de points absolus.
 function polygon(d, pts, style = 'F') {
   const [x0, y0] = pts[0];
@@ -133,12 +128,10 @@ export function certificatePdf(c) {
   d.setLineWidth(0.3); d.rect(left + 2.6, 12.6, W - 15.2 - left, H - 25.2);
   [[left + 2.6, 12.6], [W - 12.6, 12.6], [left + 2.6, H - 12.6], [W - 12.6, H - 12.6]].forEach(([x, y]) => diamond(d, x, y, 2.4, GOLD));
 
-  // Filigrane : grande coche très claire derrière le texte
-  opacity(d, 0.035);
-  d.setFillColor(...GREEN); d.circle(cx, 104, 52, 'F');
-  opacity(d, 0.06);
-  check(d, cx - 26, 104, 52, GREEN, 9);
-  opacity(d, 1);
+  // Filigrane : grand cercle et grande coche très pâles derrière le texte.
+  // Couleurs déjà mélangées avec le fond crème (pas de transparence : tous les lecteurs PDF ne la gèrent pas pareil).
+  d.setFillColor(244, 245, 235); d.circle(cx, 104, 52, 'F');
+  check(d, cx - 26, 104, 52, [231, 238, 226], 9);
 
   // En-tête : logo
   d.setFillColor(...GREEN); d.roundedRect(cx - 17.5, 20, 7.5, 7.5, 1.6, 1.6, 'F');
