@@ -180,3 +180,35 @@ select.in.sm{width:auto;padding:7px 10px;font-size:.9rem}
 .tbl th{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 .tbl tr:last-child td{border-bottom:0}
 @media (min-width:960px){.cert{aspect-ratio:1.414;justify-content:center}}
+
+/* ---- Site réel : compléments ---- */
+a.lnk,a.lv,a.back,a.btn,a.logo{text-decoration:none}
+a.lnk,a.lv{color:inherit}
+a.lnk{color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+a.lnk:hover,a.lnk.on{color:var(--ink)}
+a.back{display:inline-block}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.foot-links a{color:var(--muted)}
+.btn[disabled]{opacity:.6;cursor:progress}
+.loading{display:flex;align-items:center;gap:10px;color:var(--muted);padding-block:40px;justify-content:center}
+.spinner{width:18px;height:18px;border-radius:50%;border:2.5px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lesson-wrap{max-width:760px}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:var(--accent-soft);margin-bottom:22px}
+.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video.empty{display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);font-weight:600}
+.md{max-width:68ch}
+.md h2{font-size:1.25rem;margin:26px 0 10px}
+.md h3{font-size:1.05rem;margin:22px 0 8px}
+.md p{margin:0 0 14px}
+.md ul,.md ol{padding-left:22px;margin:0 0 14px;display:flex;flex-direction:column;gap:6px}
+.md code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:1px 6px;border-radius:6px;overflow-wrap:anywhere}
+.md a{color:var(--accent)}
+.md-table{overflow-x:auto;margin:0 0 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.md-table table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+.md-table th,.md-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.md-table th{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.md-table tr:last-child td{border-bottom:0}
+@media (prefers-reduced-motion:reduce){.spinner{animation:none}}
+.video.empty{aspect-ratio:auto;min-height:0;padding:22px}
+@media (max-width:560px){.themebtn span{display:none}.nav{gap:2px}.top .wrap{gap:6px}}

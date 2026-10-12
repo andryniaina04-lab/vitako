@@ -25,7 +25,7 @@ export function md(src) {
 
     const h = line.match(/^(#{1,3})\s+(.*)$/);
     if (h) {
-      const level = Math.min(h[1].length + 1, 4); // # -> h2 : le h1 est le titre de la page
+      const level = Math.max(2, h[1].length); // # et ## -> h2 (le h1 est le titre de la page), ### -> h3
       out.push(`<h${level}>${inline(h[2])}</h${level}>`);
       i++; continue;
     }

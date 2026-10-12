@@ -1,0 +1,939 @@
+// Vitako : pages du site (routeur, vues, actions).
+import * as api from './api.js';
+import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel } from './catalog.js';
+import { md, esc } from './markdown.js';
+import { certificatePdf, slug } from './pdf.js';
+
+const CFG = window.VITAKO_CONFIG;
+const DAY = 864e5;
+
+// ---------------------------------------------------------------------------
+// État de la session
+// ---------------------------------------------------------------------------
+const S = {
+  session: null,
+  profile: null,
+  progress: new Map(),   // course_id -> Set(module_index)
+  certs: [],
+  attempts: [],
+  payments: [],
+  admin: { pending: 0, active: 0 },
+  price: CFG.price,
+  days: CFG.accessDays,
+  lessons: new Map(),    // course_id -> leçons (cache)
+  exam: null,            // passage en cours
+  examResult: null,      // dernier résultat
+  filter: { q: '', dom: 'all' },
+  payOp: CFG.operators[0].id,
+  booting: true,
+};
+
+const uid = () => S.session?.user?.id;
+const isAdmin = () => !!S.profile?.is_admin;
+const hasAccess = () => !!S.profile && (S.profile.is_admin || (S.profile.sub_end && new Date(S.profile.sub_end) > new Date()));
+const daysLeft = () => Math.max(0, Math.ceil((new Date(S.profile.sub_end) - Date.now()) / DAY));
+const doneSet = (cid) => S.progress.get(cid) || new Set();
+const courseCert = (cid) => S.certs.find((c) => c.kind === 'course' && c.course_id === cid);
+const jobCert = (key) => S.certs.find((c) => c.kind === 'job' && c.job_key === key);
+const attemptsOf = (cid) => S.attempts.filter((a) => a.course_id === cid);
+const bestOf = (cid) => attemptsOf(cid).reduce((m, a) => Math.max(m, a.score ?? 0), 0);
+const pendingPayment = () => S.payments.find((p) => p.status === 'pending');
+
+const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmtDT = (t) => new Date(t).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const ar = (n) => Number(n).toLocaleString('fr-FR').replace(/ | /g, ' ') + ' Ar';
+const fmtTel = (t) => String(t || '').replace(/(\d{3})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4');
+const opById = (id) => CFG.operators.find((o) => o.id === id) || CFG.operators[0];
+const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pad2 = (n) => String(n).padStart(2, '0');
+const verifyUrl = (id) => `${location.origin}${location.pathname}#/attestation/${id}`;
+
+async function loadUser() {
+  const id = uid();
+  if (!id) {
+    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [] });
+    return;
+  }
+  let profile = await api.getProfile(id);
+  if (!profile) { await new Promise((r) => setTimeout(r, 800)); profile = await api.getProfile(id); }
+  const [progress, certs, attempts, payments] = await Promise.all([
+    api.getProgress(id), api.getCertificates(id), api.getAttempts(id), api.getMyPayments(id),
+  ]);
+  S.profile = profile;
+  S.progress = new Map();
+  for (const p of progress) {
+    if (!S.progress.has(p.course_id)) S.progress.set(p.course_id, new Set());
+    S.progress.get(p.course_id).add(p.module_index);
+  }
+  S.certs = certs; S.attempts = attempts; S.payments = payments;
+  if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
+}
+
+// ---------------------------------------------------------------------------
+// Icônes
+// ---------------------------------------------------------------------------
+const I = {
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+  seal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/><path d="M9.5 9l2 2 3-3.5"/></svg>',
+  eye: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  eyeOff: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.2M6.6 6.6C3.9 8.3 2 12 2 12s3.6 7 10 7a9.8 9.8 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>',
+  sun: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+};
+const smallCheck = I.check.replace('<svg', '<svg width="14" height="14"');
+
+// ---------------------------------------------------------------------------
+// Thème clair / sombre
+// ---------------------------------------------------------------------------
+let THEME = null;
+try { THEME = localStorage.getItem('vitako_theme'); } catch (e) { /* stockage indisponible */ }
+const isDark = () => (THEME ? THEME === 'dark' : !!window.matchMedia?.('(prefers-color-scheme: dark)').matches);
+function applyTheme() {
+  if (THEME) document.documentElement.setAttribute('data-theme', THEME);
+  else document.documentElement.removeAttribute('data-theme');
+}
+
+// ---------------------------------------------------------------------------
+// Petits composants
+// ---------------------------------------------------------------------------
+const app = document.getElementById('app');
+const topEl = document.getElementById('topbar');
+
+function toast(text) {
+  const el = document.getElementById('toast');
+  el.textContent = text; el.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => { el.hidden = true; }, 3200);
+}
+const go = (hash) => { if (location.hash === hash) render(); else location.hash = hash; };
+const back = (href, label) => `<a class="back" href="${href}">← ${esc(label)}</a>`;
+const notice = (kind, html) => `<div class="notice ${kind}">${html}</div>`;
+const pageHead = (eyebrow, title, sub = '') =>
+  `<div class="stack" style="gap:6px;margin-bottom:22px"><span class="eyebrow">${esc(eyebrow)}</span><h1>${esc(title)}</h1>${sub}</div>`;
+const loadingView = () => '<div class="loading" role="status"><span class="spinner"></span>Chargement…</div>';
+
+function needConfig() {
+  return `<div class="narrow panel stack">
+    <h2>Site en cours de configuration</h2>
+    <p class="muted">La base de données n'est pas encore reliée. Renseignez l'adresse et la clé Supabase dans <span class="mono">assets/js/config.js</span> (voir le guide README).</p>
+    <a class="btn ghost" href="#/">Voir les formations</a></div>`;
+}
+function needLogin(next) {
+  return `<div class="narrow panel stack" style="gap:14px">
+    <h2>Connectez-vous pour continuer</h2>
+    <p class="muted">Créez un compte gratuit pour suivre votre progression, puis abonnez-vous pour accéder aux cours.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="#/inscription?suite=${encodeURIComponent(next)}">Créer un compte</a>
+      <a class="btn ghost" href="#/connexion?suite=${encodeURIComponent(next)}">J'ai déjà un compte</a></div></div>`;
+}
+function needSub() {
+  const expired = S.profile?.sub_end && new Date(S.profile.sub_end) <= new Date();
+  return `<div class="narrow panel stack" style="gap:14px">
+    <h2>${expired ? 'Votre abonnement est terminé' : 'Abonnement nécessaire'}</h2>
+    <p class="muted">${expired ? `Votre accès aux cours s'est arrêté le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Les cours, les tests et les examens sont réservés aux abonnés.'}</p>
+    <a class="btn" href="#/abonnement">${expired ? 'Renouveler' : "S'abonner"} · ${ar(S.price)} / ${S.days} jours</a></div>`;
+}
+// Renvoie un écran de blocage si l'étudiant ne peut pas suivre les cours, sinon null.
+function gate(next) {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin(next);
+  if (!S.profile) return loadingView();
+  if (!hasAccess()) return needSub();
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Barre du haut
+// ---------------------------------------------------------------------------
+function topbar() {
+  const r = route();
+  const on = (p) => (r.path === p ? ' on' : '');
+  let right;
+  if (S.session && isAdmin()) {
+    right = `<a class="lnk${on('/admin')}" href="#/admin">Administration${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
+      <a class="lnk${on('/mon-espace')}" href="#/mon-espace">Mon espace</a>
+      <button class="lnk" data-act="logout">Déconnexion</button>`;
+  } else if (S.session) {
+    right = `<a class="lnk${on('/mon-espace')}" href="#/mon-espace">Mon espace</a>` +
+      (S.profile && hasAccess() ? `<span class="pill">Abonné · ${daysLeft()} j</span>` : '<a class="btn sm" href="#/abonnement">S\'abonner</a>') +
+      '<button class="lnk" data-act="logout">Déconnexion</button>';
+  } else {
+    right = `<a class="lnk${on('/connexion')}" href="#/connexion">Connexion</a><a class="btn sm" href="#/inscription">Créer un compte</a>`;
+  }
+  const dark = isDark();
+  topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil"><i>${I.check.replace('currentColor', 'var(--accent-ink)')}</i>vitako</a>
+    <nav class="nav"><a class="lnk${on('/')}" href="#/">Métiers et formations</a>${right}
+      <button class="lnk themebtn" data-act="theme" aria-label="${dark ? 'Passer au thème clair' : 'Passer au thème sombre'}">${dark ? I.sun : I.moon}<span>${dark ? 'Clair' : 'Sombre'}</span></button></nav>`;
+}
+
+// ---------------------------------------------------------------------------
+// Catalogue
+// ---------------------------------------------------------------------------
+function levelStatus(c) {
+  if (!c.published) return '<span class="pill grey">Bientôt</span>';
+  if (courseCert(c.id)) return '<span class="pill gold">Réussi</span>';
+  const n = doneSet(c.id).size;
+  return n ? `<span class="pill">${n}/${c.modules.length}</span>` : '';
+}
+function catalogGrid() {
+  const q = S.filter.q.trim().toLowerCase();
+  const list = JOBS.filter((j) => (S.filter.dom === 'all' || j.dom.id === S.filter.dom) &&
+    (!q || `${j.name} ${j.blurb} ${j.dom.name} ${j.tools} ${j.paid}`.toLowerCase().includes(q)));
+  const locked = !hasAccess();
+  const cards = list.map((j) => `<div class="card job">
+      <div class="row"><span class="eyebrow">${esc(j.dom.name)}</span>${jobCert(j.key) ? '<span class="pill gold">Parcours complet</span>' : ''}</div>
+      <h3>${esc(j.name)}</h3>
+      <p class="b">${esc(j.blurb.charAt(0).toUpperCase() + j.blurb.slice(1))}.</p>
+      <div class="lvls">${j.courses.map((c) => `<a class="lv" href="#/formation/${c.id}"><span>${c.levelName} <small>· ${c.hours} h</small></span>
+        <span class="r">${levelStatus(c)}${locked && c.published ? `<span class="lock" title="Abonnement requis">${I.lock}</span>` : ''}</span></a>`).join('')}</div>
+    </div>`).join('');
+  return { count: `${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations`, html: cards || '<p class="muted">Aucun métier ne correspond à cette recherche.</p>' };
+}
+function catalog() {
+  const published = COURSES.filter((c) => c.published).length;
+  const g = catalogGrid();
+  let banner = '';
+  if (!S.session) banner = notice('info', 'Tout le monde peut consulter les formations, leurs descriptions et leurs objectifs. Pour suivre les cours, <a href="#/inscription">créez un compte</a> puis prenez un abonnement mensuel.');
+  else if (S.profile && !hasAccess()) banner = notice(pendingPayment() ? 'info' : 'warn', pendingPayment()
+    ? `Votre paiement est en attente de validation (en général sous ${esc(CFG.validationDelay)}).`
+    : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${ar(S.price)} / ${S.days} jours)</a>.`);
+  return `
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Métiers du freelance et du télétravail</div>
+      <h1 style="margin-top:10px">Apprends un métier à distance depuis Madagascar. <em>Termine-le.</em></h1>
+      <p class="lead">${JOBS.length} métiers, chacun en deux formations : Fondamentaux pour décrocher vos premiers clients, Avancé pour viser des missions mieux payées. Chaque formation réussie donne une attestation.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>${COURSES.length}</b><span>formations</span></div>
+      <div class="fact"><b>${published}</b><span>disponible${published > 1 ? 's' : ''} aujourd'hui</span></div>
+      <div class="fact"><b>50/100</b><span>pour réussir un examen</span></div>
+    </div>
+  </section>
+  ${banner ? `<div style="margin-bottom:18px">${banner}</div>` : ''}
+  <div class="filters">
+    <input id="search" class="search" type="search" placeholder="Rechercher un métier ou un logiciel (ex. graphiste, Photoshop, Excel)" value="${esc(S.filter.q)}" aria-label="Rechercher un métier">
+    <div class="chips" id="chips">${chips()}</div>
+  </div>
+  <div class="count" id="count">${g.count}</div>
+  <div class="grid" id="grid">${g.html}</div>`;
+}
+const chips = () => `<button class="chip${S.filter.dom === 'all' ? ' on' : ''}" data-dom="all">Tous les domaines</button>` +
+  DOMAINS_LIST.map((d) => `<button class="chip${S.filter.dom === d.id ? ' on' : ''}" data-dom="${d.id}">${esc(d.name)}</button>`).join('');
+function refreshGrid() {
+  const g = catalogGrid();
+  document.getElementById('grid').innerHTML = g.html;
+  document.getElementById('count').textContent = g.count;
+  document.getElementById('chips').innerHTML = chips();
+}
+
+// ---------------------------------------------------------------------------
+// Fiche formation
+// ---------------------------------------------------------------------------
+function coursePage(id) {
+  const c = courseById(id);
+  if (!c) return notFound();
+  const other = otherLevel(c);
+  const done = doneSet(c.id);
+  const n = c.modules.length;
+  const allDone = done.size >= n;
+  const cert = courseCert(c.id);
+  const ok = hasAccess();
+
+  let cta;
+  if (!c.published) cta = `<p class="muted">Cette formation est en préparation. Elle sera bientôt disponible pour les abonnés.</p>${other.published ? `<a class="btn ghost" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>` : ''}`;
+  else if (!api.configured) cta = '<p class="muted">Inscriptions bientôt ouvertes.</p>';
+  else if (!S.session) cta = `<p class="muted">Créez un compte gratuit pour suivre votre progression, puis abonnez-vous pour suivre les cours.</p>
+      <a class="btn" href="#/inscription?suite=${encodeURIComponent('/formation/' + c.id)}">Créer un compte</a>
+      <a class="btn ghost" href="#/connexion?suite=${encodeURIComponent('/formation/' + c.id)}">J'ai déjà un compte</a>`;
+  else if (!S.profile) cta = loadingView();
+  else if (!ok) cta = `<p class="muted">${S.profile.sub_end ? `Votre abonnement s'est terminé le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Un abonnement est nécessaire pour suivre cette formation.'}</p>
+      <a class="btn" href="#/abonnement">${S.profile.sub_end ? 'Renouveler' : "S'abonner"} · ${ar(S.price)} / ${S.days} jours</a>`;
+  else {
+    const next = [...Array(n).keys()].find((i) => !done.has(i));
+    cta = next !== undefined
+      ? `<a class="btn" href="#/formation/${c.id}/module/${next + 1}">${done.size ? 'Continuer' : 'Commencer'} : module ${next + 1}</a>`
+      : cert ? `<a class="btn" href="#/attestation/${cert.id}">Voir mon attestation</a>`
+        : `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>`;
+  }
+  const pct = Math.round((done.size / n) * 100);
+  const tries = attemptsOf(c.id).length;
+  const fondCert = c.level === 'a' && courseCert(other.id);
+
+  return `${back('#/', 'Tous les métiers')}
+  <div class="cols">
+    <div class="stack" style="gap:26px;min-width:0">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">${esc(c.dom.name)} · Métier : ${esc(c.job.name)}</span>
+        <h1>${esc(c.title)}</h1>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill ${c.level === 'a' ? 'gold' : ''}">${c.levelName}</span><span class="pill grey">${c.hours} heures</span><span class="pill grey">${n} modules + examen</span>${c.published ? '' : '<span class="pill grey">Bientôt disponible</span>'}</div>
+      </div>
+      ${c.level === 'a' && !fondCert ? notice('info', `Niveau Fondamentaux recommandé avant celui-ci, mais pas obligatoire. <a href="#/formation/${other.id}">Voir les Fondamentaux</a>`) : ''}
+      <p style="max-width:65ch">${esc(c.description)}</p>
+      <div class="stack" style="gap:12px"><h2>Objectifs</h2><ul class="obj">${c.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>
+      <div class="stack" style="gap:12px"><h2>Outils du métier</h2>
+        <div class="tools"><div class="panel"><span class="pill">Gratuits</span><p style="margin-top:8px">${esc(c.job.tools)}</p></div>
+        <div class="panel"><span class="pill gold">Payants (professionnels)</span><p style="margin-top:8px">${esc(c.job.paid)}</p></div></div>
+        <p class="muted" style="font-size:.88rem">${c.level === 'f' ? 'Ce niveau se fait avec les outils gratuits ; les outils payants sont présentés pour savoir quand ils deviennent rentables.' : 'Ce niveau utilise les outils payants demandés par les clients. Essais gratuits possibles.'} Les prix changent souvent : vérifiez-les sur le site officiel. Pas de logiciels piratés : virus et vol de fichiers clients.</p></div>
+      <div class="stack" style="gap:12px"><h2>Programme</h2>
+        <div class="mods">
+          ${c.modules.map((m, i) => {
+            const d = done.has(i);
+            const action = c.published && ok
+              ? `<a class="btn ghost sm" href="#/formation/${c.id}/module/${i + 1}">${d ? 'Revoir' : 'Ouvrir'}</a>`
+              : c.published ? `<span class="lock">${I.lock}</span>` : '';
+            return `<div class="mod${d ? ' done' : ''}"><span class="n">${d ? smallCheck : pad2(i + 1)}</span>
+              <div class="t"><b>${esc(m.title)}</b><small>${esc(m.summary)}${c.published ? ' · leçon + petit test' : ''}</small></div>${action}</div>`;
+          }).join('')}
+          <div class="mod${cert ? ' done' : ''}"><span class="n">${cert ? smallCheck : 'EX'}</span>
+            <div class="t"><b>Examen final</b><small>10 questions · 50/100 pour réussir · essais illimités</small></div>
+            ${c.published && ok && allDone ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published ? `<span class="lock">${I.lock}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><span class="eyebrow">Même métier</span><div style="font-weight:700">${esc(other.title)}</div></div>
+        <a class="btn ghost sm" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>
+      </div>
+    </div>
+    <aside class="panel side stack">
+      ${S.session && c.published ? `<div class="stack" style="gap:8px"><div style="display:flex;justify-content:space-between"><b>Ma progression</b><span class="mono">${pct} %</span></div><div class="bar"><i style="width:${pct}%"></i></div>
+        ${tries ? `<span class="muted" style="font-size:.9rem">Examen : ${tries} essai${tries > 1 ? 's' : ''}, meilleur score <b class="mono">${bestOf(c.id)}/100</b></span>` : ''}</div>` : ''}
+      ${cert ? notice('warn', `Attestation obtenue le ${fmtDate(cert.issued_at)}.`) : ''}
+      ${cta}
+    </aside>
+  </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Leçon + petit test
+// ---------------------------------------------------------------------------
+function videoBlock(url) {
+  const u = String(url || '').trim();
+  let m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  if (m) return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Vidéo de la leçon" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>`;
+  m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (m) return `<div class="video"><iframe src="https://player.vimeo.com/video/${m[1]}" title="Vidéo de la leçon" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  if (/^https:\/\/\S+\.(mp4|webm)(\?\S*)?$/i.test(u)) return `<div class="video"><video controls preload="metadata" src="${esc(u)}"></video></div>`;
+  return '<div class="video empty">Vidéo de la leçon bientôt disponible. Le texte ci-dessous contient tout ce qu\'il faut pour réussir le test.</div>';
+}
+
+async function lessonPage(id, num) {
+  const c = courseById(id);
+  if (!c || !c.published) return notFound();
+  const blocked = gate(`/formation/${id}/module/${num}`);
+  if (blocked) return blocked;
+  const mi = Number(num) - 1;
+  if (!S.lessons.has(id)) S.lessons.set(id, await api.getLessons(id));
+  const lessons = S.lessons.get(id);
+  const L = lessons.find((l) => l.module_index === mi);
+  if (!L) return notFound();
+  const questions = await api.getModuleQuestions(id, mi);
+  S.mquiz = {
+    courseId: id, mi, answered: false,
+    qs: questions.map((q) => ({ ...q, order: shuffle(q.options.map((_, k) => k)) })),
+  };
+  const n = lessons.length;
+  return `${back(`#/formation/${id}`, c.title)}
+  <div class="stack" style="gap:6px;margin-bottom:22px"><span class="eyebrow">Module ${mi + 1} sur ${n}</span><h1>${esc(L.title)}</h1></div>
+  <div class="lesson-wrap">
+    ${videoBlock(L.video_url)}
+    <article class="lesson md">${md(L.body_md)}</article>
+  </div>
+  <section class="stack" style="gap:14px;margin-top:30px;max-width:720px" id="mquiz-wrap">
+    <h2>Test du module</h2>
+    <p class="muted">${S.mquiz.qs.length} questions pour vérifier vos acquis. Le module est validé dès que vous rendez le test ; vous pouvez le refaire autant de fois que vous voulez.</p>
+    <div id="mquiz">${moduleQuizHtml()}</div>
+  </section>`;
+}
+function moduleQuizHtml() {
+  const Q = S.mquiz;
+  const c = courseById(Q.courseId);
+  const n = c.modules.length;
+  const qsHtml = Q.qs.map((q, qi) => `<div class="q"><fieldset><legend><span>${pad2(qi + 1)}</span>${esc(q.question)}</legend>
+    ${q.order.map((oi) => {
+      let cls = '';
+      if (Q.answered) { if (oi === q.correct) cls = ' ok'; else if (Q.answers[qi] === oi) cls = ' ko'; }
+      return `<label class="opt${cls}"><input type="radio" name="mq${qi}" value="${oi}" ${Q.answers?.[qi] === oi ? 'checked' : ''} ${Q.answered ? 'disabled' : ''}><span>${esc(q.options[oi])}</span></label>`;
+    }).join('')}</fieldset></div>`).join('');
+  const footer = Q.answered
+    ? `<div class="panel stack" style="gap:10px"><b>Résultat : <span class="mono">${Q.score}/${Q.qs.length}</span> bonnes réponses</b><p class="muted">Module ${Q.mi + 1} terminé.</p>
+       <div style="display:flex;gap:10px;flex-wrap:wrap">${Q.mi < n - 1
+         ? `<a class="btn" href="#/formation/${c.id}/module/${Q.mi + 2}">Module suivant</a>`
+         : doneSet(c.id).size >= n ? `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>` : `<a class="btn" href="#/formation/${c.id}">Voir les modules restants</a>`}
+       <button type="button" class="btn ghost" data-act="mquiz-retry">Refaire le test</button></div></div>`
+    : '<p id="mqerr" class="notice err" hidden>Répondez à toutes les questions avant de valider.</p><div><button class="btn" type="submit">Valider mes réponses</button></div>';
+  return `<form id="mquiz-form" class="stack">${qsHtml}${footer}</form>`;
+}
+
+// ---------------------------------------------------------------------------
+// Examen final
+// ---------------------------------------------------------------------------
+function examPage(id) {
+  const c = courseById(id);
+  if (!c || !c.published) return notFound();
+  const blocked = gate(`/formation/${id}/examen`);
+  if (blocked) return blocked;
+  const n = c.modules.length;
+  if (doneSet(id).size < n) {
+    return `${back(`#/formation/${id}`, c.title)}<div class="narrow panel stack"><h2>Terminez d'abord les modules</h2>
+      <p class="muted">Vous avez terminé ${doneSet(id).size} module${doneSet(id).size > 1 ? 's' : ''} sur ${n}. L'examen s'ouvre quand tous les tests de module sont rendus.</p>
+      <a class="btn" href="#/formation/${id}">Voir le programme</a></div>`;
+  }
+  if (S.examResult?.courseId === id) return examResult(c);
+  if (S.exam?.courseId === id) return examForm(c);
+  const tries = attemptsOf(id).length;
+  return `${back(`#/formation/${id}`, c.title)}
+  ${pageHead('Examen final', c.title)}
+  <div class="narrow panel stack" style="max-width:620px;gap:14px">
+    <ul class="obj"><li>10 questions tirées au hasard, 10 points chacune</li><li>50/100 pour réussir et obtenir l'attestation</li><li>Essais illimités : votre meilleur score est conservé</li><li>Vous avez 3 heures pour rendre vos réponses</li></ul>
+    ${tries ? `<p class="muted">Déjà ${tries} essai${tries > 1 ? 's' : ''} · meilleur score <b class="mono">${bestOf(id)}/100</b></p>` : ''}
+    <p id="exerr" class="notice err" hidden></p>
+    <div><button class="btn" data-act="exam-start" data-id="${id}">Commencer l'examen</button></div>
+  </div>`;
+}
+function examForm(c) {
+  const E = S.exam;
+  return `${back(`#/formation/${c.id}`, c.title)}
+  ${pageHead('Examen final', 'Examen : ' + c.title, `<p class="muted">${E.questions.length} questions · 50/100 pour réussir · essais illimités</p>`)}
+  <form id="exam-form" class="stack" style="max-width:720px">
+    ${E.questions.map((q, qi) => `<div class="q"><fieldset><legend><span>${pad2(qi + 1)}</span>${esc(q.question)}</legend>
+      ${q.order.map((oi) => `<label class="opt"><input type="radio" name="ex${qi}" value="${oi}"><span>${esc(q.options[oi])}</span></label>`).join('')}
+    </fieldset></div>`).join('')}
+    <p id="exerr" class="notice err" hidden></p>
+    <div><button class="btn" type="submit">Valider l'examen</button></div>
+  </form>`;
+}
+function examResult(c) {
+  const R = S.examResult;
+  const pass = R.passed;
+  const other = otherLevel(c);
+  return `<div class="narrow stack" style="max-width:560px;text-align:center;align-items:center;gap:18px">
+    <span class="pill ${pass ? '' : 'red'}">${pass ? 'Examen réussi' : 'Examen non réussi'}</span>
+    <div class="score mono">${R.score}<small>/100</small></div>
+    <div class="bar" style="width:100%"><i style="width:${R.score}%;background:${pass ? 'var(--accent)' : 'var(--danger)'}"></i></div>
+    <p class="muted">${R.good} bonne${R.good > 1 ? 's' : ''} réponse${R.good > 1 ? 's' : ''} sur ${R.total} · Seuil : 50/100 · Essai n° ${R.attempts} · Meilleur score : <span class="mono">${R.best}/100</span></p>
+    ${pass
+      ? `<p>Bravo ${esc((S.profile.full_name || '').split(' ')[0])} ! Vous avez terminé « ${esc(c.title)} ». Votre attestation est prête.${R.job_certificate_id ? ' Vous avez réussi les deux niveaux : votre attestation de parcours complet est aussi disponible.' : ''}</p>
+         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+           <a class="btn" href="#/attestation/${R.certificate_id}">Voir mon attestation</a>
+           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>`}</div>`
+      : `<p>Il manque ${50 - R.score} point${50 - R.score > 1 ? 's' : ''}. Relisez les modules si besoin, puis recommencez : le nombre d'essais n'est pas limité.</p>
+         <p id="exerr" class="notice err" hidden></p>
+         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+           <button class="btn" data-act="exam-start" data-id="${c.id}">Recommencer l'examen</button>
+           <a class="btn ghost" href="#/formation/${c.id}">Revoir les modules</a></div>`}
+  </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Attestations
+// ---------------------------------------------------------------------------
+function certText(cert) {
+  return cert.kind === 'job'
+    ? {
+        heading: 'Attestation de parcours complet',
+        text: `a réussi les formations Fondamentaux et Avancé du métier ${cert.title}${cert.hours ? ` (${cert.hours} heures au total)` : ''} et peut proposer ses services en freelance ou en télétravail.`,
+        rows: [['Métier', cert.title], ['Délivrée le', fmtDate(cert.issued_at)], ['N° de vérification', cert.id]],
+      }
+    : {
+        heading: 'Attestation de réussite',
+        text: `a suivi l'intégralité de la formation « ${cert.title} »${cert.hours ? ` (${cert.hours} heures)` : ''} et réussi l'examen final.`,
+        rows: [['Score', `${cert.score}/100`], ['Délivrée le', fmtDate(cert.issued_at)], ['N° de vérification', cert.id]],
+      };
+}
+async function certificatePage(id) {
+  if (!api.configured) return needConfig();
+  const cert = await api.verifyCertificate(id);
+  if (!cert) {
+    return `${back('#/verifier', 'Vérifier une autre attestation')}<div class="narrow panel stack"><h2>Attestation introuvable</h2>
+      <p class="muted">Aucune attestation ne porte le numéro <span class="mono">${esc(id)}</span>. Vérifiez le numéro, par exemple VTK-2026-4F9A2C.</p></div>`;
+  }
+  S.certView = cert;
+  const t = certText(cert);
+  const mine = S.certs.some((c) => c.id === cert.id);
+  return `${mine ? back('#/mon-espace', 'Mon espace') : ''}
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+    <button class="btn" data-act="pdf">Télécharger en PDF (A4 paysage)</button>
+    <button class="btn ghost" data-act="copy" data-v="${esc(verifyUrl(cert.id))}">Copier le lien de vérification</button>
+  </div>
+  <div class="cert" style="max-width:860px;margin:0 auto">
+    <div class="seal">${I.seal}</div>
+    <span class="eyebrow">Vitako · Formations aux métiers du freelance</span>
+    <h1 style="font-size:clamp(1.4rem,4vw,2rem)">${esc(t.heading)}</h1>
+    <p class="muted">Nous attestons que</p>
+    <div class="who">${esc(cert.full_name)}</div>
+    <p style="max-width:52ch">${esc(t.text)}</p>
+    <div class="foot">${t.rows.map(([k, v]) => `<div><span class="muted">${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div>
+  </div>
+  <p class="muted" style="text-align:center;margin-top:14px;font-size:.88rem">Attestation authentique délivrée par Vitako. Elle reste valable après la fin de l'abonnement.</p>`;
+}
+function verifyPage() {
+  return `${pageHead('Vérification', 'Vérifier une attestation')}
+  <form id="verify-form" class="narrow panel stack" style="gap:14px">
+    <p class="muted">Saisissez le numéro inscrit sur l'attestation pour vérifier qu'elle a bien été délivrée par Vitako.</p>
+    <div class="f"><label class="l" for="v-id">Numéro de vérification</label><input class="in mono" id="v-id" placeholder="VTK-2026-4F9A2C" autocomplete="off" required></div>
+    <button class="btn" type="submit">Vérifier</button>
+  </form>`;
+}
+
+// ---------------------------------------------------------------------------
+// Comptes
+// ---------------------------------------------------------------------------
+function passwordField(id, autocomplete, label = 'Mot de passe') {
+  return `<div class="f"><label class="l" for="${id}">${label}</label>
+    <div class="pw"><input class="in" id="${id}" type="password" required minlength="8" autocomplete="${autocomplete}" placeholder="8 caractères minimum">
+    <button type="button" class="eye" data-act="eye" data-for="${id}" aria-pressed="false" aria-label="Afficher le mot de passe">${I.eye}<span>Afficher</span></button></div></div>`;
+}
+function authPage(mode) {
+  if (!api.configured) return needConfig();
+  const r = route();
+  const next = r.query.get('suite') || '';
+  if (mode === 'forgot') {
+    return `<div class="narrow panel stack" style="gap:18px">
+      <div class="stack" style="gap:6px"><h2>Mot de passe oublié</h2><p class="muted">Saisissez votre e-mail : vous recevrez un lien pour choisir un nouveau mot de passe.</p></div>
+      <form id="forgot-form" class="stack" style="gap:14px" novalidate>
+        <div class="f"><label class="l" for="f-email">E-mail</label><input class="in" id="f-email" type="email" autocomplete="email" required placeholder="vous@exemple.mg"></div>
+        <p id="ferr" class="notice err" hidden></p><p id="fok" class="notice info" hidden></p>
+        <button class="btn" type="submit">Envoyer le lien</button>
+      </form>
+      <p class="muted" style="font-size:.92rem"><a href="#/connexion">Retour à la connexion</a></p></div>`;
+  }
+  if (mode === 'reset') {
+    if (!S.session) return `<div class="narrow panel stack"><h2>Lien expiré</h2><p class="muted">Ouvrez le lien reçu par e-mail, ou demandez-en un nouveau.</p><a class="btn" href="#/mot-de-passe-oublie">Demander un nouveau lien</a></div>`;
+    return `<div class="narrow panel stack" style="gap:18px"><h2>Nouveau mot de passe</h2>
+      <form id="reset-form" class="stack" style="gap:14px" novalidate>${passwordField('r-pass', 'new-password', 'Nouveau mot de passe')}
+        <p id="rerr" class="notice err" hidden></p><button class="btn" type="submit">Enregistrer</button></form></div>`;
+  }
+  if (S.session) return `<div class="narrow panel stack"><h2>Vous êtes connecté</h2><a class="btn" href="#/mon-espace">Aller à mon espace</a></div>`;
+  const signup = mode === 'signup';
+  return `<div class="narrow panel stack" style="gap:18px">
+    <div class="stack" style="gap:6px"><h2>${signup ? 'Créer un compte' : 'Connexion'}</h2>
+      <p class="muted">${signup ? 'Gratuit. Vous pourrez voir toutes les formations ; l\'abonnement débloque les cours.' : 'Heureux de vous revoir.'}</p></div>
+    <form id="auth-form" class="stack" style="gap:14px" novalidate data-mode="${signup ? 'signup' : 'login'}" data-next="${esc(next)}">
+      ${signup ? '<div class="f"><label class="l" for="a-name">Nom complet</label><input class="in" id="a-name" autocomplete="name" required placeholder="Ex. Hery Randria"><small class="muted">Il figurera sur vos attestations.</small></div>' : ''}
+      <div class="f"><label class="l" for="a-email">E-mail</label><input class="in" id="a-email" type="email" autocomplete="email" required placeholder="vous@exemple.mg"></div>
+      ${passwordField('a-pass', signup ? 'new-password' : 'current-password')}
+      <p id="aerr" class="notice err" hidden></p><p id="aok" class="notice info" hidden></p>
+      <button class="btn" type="submit">${signup ? 'Créer mon compte' : 'Se connecter'}</button>
+    </form>
+    <p class="muted" style="font-size:.92rem">${signup
+      ? `Déjà inscrit ? <a href="#/connexion${next ? '?suite=' + encodeURIComponent(next) : ''}">Se connecter</a>`
+      : `Pas encore de compte ? <a href="#/inscription${next ? '?suite=' + encodeURIComponent(next) : ''}">Créer un compte</a> · <a href="#/mot-de-passe-oublie">Mot de passe oublié ?</a>`}</p>
+  </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Abonnement (paiement Mobile Money)
+// ---------------------------------------------------------------------------
+function subscribePage() {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin('/abonnement');
+  if (!S.profile) return loadingView();
+  const act = hasAccess() && !isAdmin();
+  const op = opById(S.payOp);
+  const pending = pendingPayment();
+  const last = S.payments[0];
+  const showKo = last && last.status === 'rejected';
+  const start = act ? new Date(S.profile.sub_end) : new Date();
+  return `<div class="narrow stack" style="gap:18px">
+    <div class="panel stack" style="gap:12px">
+      <span class="eyebrow">Abonnement mensuel</span>
+      <div class="price">${ar(S.price)} <small>/ ${S.days} jours</small></div>
+      <ul class="obj"><li>Accès à toutes les formations disponibles</li><li>Tests et examens illimités</li><li>Une attestation par formation réussie, plus l'attestation de parcours complet</li><li>Désactivation automatique au bout de ${S.days} jours, sans prélèvement</li></ul>
+      ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
+    </div>
+    ${pending ? `<div class="panel stack" style="gap:10px">
+      <div><span class="pill gold">En attente de validation</span></div>
+      <p>Paiement ${esc(opById(pending.operator).name)} de <b class="mono">${ar(pending.amount)}</b>${pending.sender ? ` depuis le <span class="mono">${fmtTel(pending.sender)}</span>` : ''}, référence <span class="mono">${esc(pending.reference)}</span>, envoyé le ${fmtDT(pending.created_at)}.</p>
+      <p class="muted">Nous vérifions la réception puis activons votre accès pour ${S.days} jours, en général sous ${esc(CFG.validationDelay)}.</p>
+    </div>` : `
+    ${showKo ? notice('err', `Votre paiement du ${fmtDT(last.created_at)} (référence ${esc(last.reference)}) n'a pas été validé : ${esc(last.reason || 'paiement introuvable')}. Vérifiez la référence dans votre SMS de confirmation et renvoyez-la.`) : ''}
+    <form id="pay-form" class="panel stack" style="gap:16px" novalidate>
+      <b>Payer par Mobile Money</b>
+      <div class="ops two" role="radiogroup" aria-label="Opérateur">
+        ${CFG.operators.map((o) => `<button type="button" class="op${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}<small>${o.prefixes.join(' / ')}</small></button>`).join('')}
+      </div>
+      <ol class="steps">
+        <li><span>Envoyez <b class="mono">${ar(S.price)}</b> à ce numéro ${esc(op.name)} :</span>
+          <div class="paynum"><span class="mono">${esc(op.number)}</span><button type="button" class="btn ghost sm" data-act="copy" data-v="${op.number.replace(/ /g, '')}">Copier</button></div>
+          <small class="muted">Gardez le SMS de confirmation : il contient la référence de la transaction.</small></li>
+        <li>Entrez les informations du paiement :</li>
+      </ol>
+      <div class="f"><label class="l" for="p-ref">Référence de la transaction</label><input class="in mono" id="p-ref" autocomplete="off" required placeholder="Copiez-la depuis le SMS de confirmation"></div>
+      <div class="f"><label class="l" for="p-tel">Votre numéro ${esc(op.name)} (facultatif)</label><input class="in mono" id="p-tel" inputmode="tel" autocomplete="tel" placeholder="${op.prefixes[0]} 12 345 67"><small class="muted">Le numéro qui a envoyé l'argent. Il nous aide à retrouver votre paiement plus vite.</small></div>
+      <p id="perr" class="notice err" hidden></p>
+      <button class="btn" type="submit">Envoyer ma référence</button>
+      <p class="muted" style="font-size:.85rem">Nous vérifions le paiement puis activons votre accès pour ${S.days} jours, en général sous ${esc(CFG.validationDelay)}. Accès prévu du ${fmtDate(start)} au ${fmtDate(start.getTime() + S.days * DAY)}.</p>
+    </form>`}
+  </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Mon espace
+// ---------------------------------------------------------------------------
+function accountPage() {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin('/mon-espace');
+  if (!S.profile) return loadingView();
+  const P = S.profile;
+  const act = hasAccess();
+  const ongoing = COURSES.filter((c) => c.published && doneSet(c.id).size && !courseCert(c.id));
+  const jobCerts = S.certs.filter((c) => c.kind === 'job');
+  const courseCerts = S.certs.filter((c) => c.kind === 'course');
+  const pending = pendingPayment();
+  let subHtml;
+  if (P.is_admin) subHtml = '<p class="muted">Compte administrateur : accès à tous les cours.</p><a class="btn" href="#/admin">Valider les paiements</a>';
+  else if (act) {
+    const left = daysLeft();
+    subHtml = `<div class="mono" style="font-size:1.6rem">${left} jour${left > 1 ? 's' : ''} restant${left > 1 ? 's' : ''}</div>
+      <div class="bar"><i style="width:${Math.min(100, (left / S.days) * 100)}%"></i></div>
+      <p class="muted">Se désactive automatiquement le ${fmtDate(P.sub_end)}.</p>
+      ${pending ? notice('warn', `Paiement en attente de validation (envoyé le ${fmtDT(pending.created_at)}).`) : ''}
+      <a class="btn" href="#/abonnement">Prolonger de ${S.days} jours</a>`;
+  } else {
+    subHtml = `<p class="muted">${P.sub_end ? `Votre accès aux cours s'est arrêté le ${fmtDate(P.sub_end)}. Vos attestations restent consultables.` : 'Abonnez-vous pour suivre les cours.'}</p>
+      ${pending ? notice('warn', `Paiement en attente de validation (envoyé le ${fmtDT(pending.created_at)}).`) : ''}
+      <a class="btn" href="#/abonnement">${P.sub_end ? 'Renouveler' : "S'abonner"}</a>`;
+  }
+  return `${pageHead('Mon espace', `Salama, ${(P.full_name || '').split(' ')[0]}`)}
+  <div class="dash">
+    <section class="panel stack" style="gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Abonnement</b>${P.is_admin ? '<span class="pill">Admin</span>' : act ? '<span class="pill">Actif</span>' : `<span class="pill red">${P.sub_end ? 'Expiré' : 'Aucun'}</span>`}</div>
+      ${subHtml}
+    </section>
+    <section class="panel stack" style="gap:4px">
+      <b>Formations en cours</b>
+      <div class="list">${ongoing.length ? ongoing.map((c) => `<div class="item"><div class="t"><div>${esc(c.title)}</div><small class="muted">${doneSet(c.id).size}/${c.modules.length} modules${attemptsOf(c.id).length ? ` · examen ${bestOf(c.id)}/100` : ''}</small></div><a class="btn ghost sm" href="#/formation/${c.id}">Continuer</a></div>`).join('')
+        : '<p class="muted" style="padding-top:8px">Aucune formation en cours. <a href="#/">Parcourir les métiers</a></p>'}</div>
+    </section>
+    <section class="panel stack" style="gap:4px">
+      <b>Mes attestations</b>
+      <div class="list">
+        ${jobCerts.map((c) => `<div class="item"><div class="t"><div>Parcours complet : ${esc(c.title)}</div><small class="muted mono">${esc(c.id)}</small></div><a class="btn sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')}
+        ${courseCerts.length ? courseCerts.map((c) => `<div class="item"><div class="t"><div>${esc(c.title)}</div><small class="muted mono">${esc(c.id)} · ${c.score}/100</small></div><a class="btn ghost sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')
+          : '<p class="muted" style="padding-top:8px">Terminez une formation et réussissez l\'examen pour obtenir votre première attestation.</p>'}
+      </div>
+    </section>
+  </div>
+  <form id="name-form" class="panel stack" style="gap:12px;margin-top:22px;max-width:520px">
+    <b>Nom sur les attestations</b>
+    <div class="f"><label class="l" for="n-name">Nom complet</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
+    <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
+    <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
+  </form>`;
+}
+
+// ---------------------------------------------------------------------------
+// Administration
+// ---------------------------------------------------------------------------
+async function adminPage() {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin('/admin');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const [pending, done, counts] = await Promise.all([api.adminPayments('pending'), api.adminPayments('done'), api.adminCounts()]);
+  S.admin = counts;
+  topbar();
+  const ops = CFG.operators.map((o) => `${esc(o.name)} ${esc(o.number)}`).join(' · ');
+  return `${pageHead('Administration', 'Paiements à valider', `<p class="muted">${counts.pending} en attente · ${counts.active} abonné${counts.active > 1 ? 's' : ''} actif${counts.active > 1 ? 's' : ''} · ${ops}</p>`)}
+  <div style="margin-bottom:18px">${notice('warn', `Avant de valider, ouvrez votre application MVola ou Orange Money et vérifiez : la référence existe, le montant est de ${ar(S.price)} et, s'il est indiqué, le numéro de l'expéditeur correspond. Ne validez jamais à partir d'une capture d'écran.`)}</div>
+  ${pending.length ? `<div class="paylist">${pending.map((p) => `<div class="panel">
+      <div class="payhead"><div><b>${esc(p.profile?.full_name || 'Étudiant')}</b><small class="muted">${esc(p.profile?.email || '')}</small></div><span class="pill grey">Reçu le ${fmtDT(p.created_at)}</span></div>
+      <dl class="paydl">
+        <div><dt>Opérateur</dt><dd>${esc(opById(p.operator).name)} → ${esc(opById(p.operator).number)}</dd></div>
+        <div><dt>Expéditeur</dt><dd class="${p.sender ? 'mono' : 'muted'}">${p.sender ? fmtTel(p.sender) : 'Non indiqué'}</dd></div>
+        <div><dt>Référence</dt><dd class="mono">${esc(p.reference)}</dd></div>
+        <div><dt>Montant attendu</dt><dd class="mono">${ar(p.amount)}</dd></div>
+      </dl>
+      <div class="payact">
+        <button class="btn sm" data-act="pay-ok" data-id="${p.id}">Valider : ${S.days} jours d'accès</button>
+        <select class="in sm" id="r-${p.id}" aria-label="Motif du refus"><option>Référence introuvable</option><option>Montant incorrect</option><option>Numéro d'expéditeur différent</option><option>Référence déjà utilisée</option></select>
+        <button class="btn ghost sm" data-act="pay-ko" data-id="${p.id}">Refuser</button>
+      </div></div>`).join('')}</div>`
+    : '<div class="panel"><p class="muted">Aucun paiement en attente. Les nouvelles références apparaîtront ici.</p></div>'}
+  <h2 style="margin:30px 0 12px">Derniers paiements traités</h2>
+  ${done.length ? `<div class="tbl"><table><thead><tr><th>Traité le</th><th>Étudiant</th><th>Opérateur</th><th>Référence</th><th>Résultat</th></tr></thead><tbody>
+    ${done.map((p) => `<tr><td>${fmtDT(p.decided_at || p.created_at)}</td><td>${esc(p.profile?.full_name || '')}<br><small class="muted">${esc(p.profile?.email || '')}</small></td><td>${esc(opById(p.operator).name)}</td><td class="mono">${esc(p.reference)}</td>
+      <td>${p.status === 'approved' ? `<span class="pill">Validé</span>${p.access_until ? ` <small class="muted">jusqu'au ${fmtDate(p.access_until)}</small>` : ''}` : `<span class="pill red">Refusé</span> <small class="muted">${esc(p.reason || '')}</small>`}</td></tr>`).join('')}
+  </tbody></table></div>` : '<p class="muted">Aucun paiement traité pour l\'instant.</p>'}`;
+}
+
+function notFound() {
+  return '<div class="narrow panel stack"><h2>Page introuvable</h2><p class="muted">Cette page n\'existe pas ou n\'est plus disponible.</p><a class="btn" href="#/">Voir les formations</a></div>';
+}
+
+// ---------------------------------------------------------------------------
+// Routeur
+// ---------------------------------------------------------------------------
+function route() {
+  const raw = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
+  const [path, qs] = raw.split('?');
+  return { path: path || '/', query: new URLSearchParams(qs || '') };
+}
+const ROUTES = [
+  [/^\/$/, catalog],
+  [/^\/formation\/([\w-]+)$/, coursePage],
+  [/^\/formation\/([\w-]+)\/module\/(\d+)$/, lessonPage],
+  [/^\/formation\/([\w-]+)\/examen$/, examPage],
+  [/^\/connexion$/, () => authPage('login')],
+  [/^\/inscription$/, () => authPage('signup')],
+  [/^\/mot-de-passe-oublie$/, () => authPage('forgot')],
+  [/^\/nouveau-mot-de-passe$/, () => authPage('reset')],
+  [/^\/abonnement$/, subscribePage],
+  [/^\/mon-espace$/, accountPage],
+  [/^\/attestation\/([\w-]+)$/, certificatePage],
+  [/^\/verifier$/, verifyPage],
+  [/^\/admin$/, adminPage],
+];
+let renderToken = 0;
+async function render() {
+  const token = ++renderToken;
+  topbar();
+  const { path } = route();
+  const hit = ROUTES.map(([re, fn]) => [path.match(re), fn]).find(([m]) => m);
+  if (!hit) { app.innerHTML = notFound(); return; }
+  const [m, fn] = hit;
+  let html;
+  try {
+    const out = fn(...m.slice(1));
+    if (out instanceof Promise) { app.innerHTML = loadingView(); html = await out; } else html = out;
+  } catch (e) {
+    console.error(e);
+    html = `<div class="narrow panel stack"><h2>Impossible d'afficher la page</h2><p class="muted">${esc(e instanceof api.ApiError ? e.message : 'Vérifiez votre connexion Internet puis réessayez.')}</p><button class="btn" data-act="reload">Réessayer</button></div>`;
+  }
+  if (token !== renderToken) return;
+  app.innerHTML = html;
+  document.title = path === '/' ? 'Vitako · Formations aux métiers du freelance' : `${document.querySelector('#app h1, #app h2')?.textContent || 'Vitako'} · Vitako`;
+}
+
+// ---------------------------------------------------------------------------
+// Actions
+// ---------------------------------------------------------------------------
+const showErr = (id, msg) => { const el = document.getElementById(id); if (el) { el.textContent = msg; el.hidden = false; } };
+const busy = (btn, on, label) => { if (!btn) return; btn.disabled = on; if (label) btn.textContent = label; };
+
+document.addEventListener('click', async (e) => {
+  const t = e.target.closest('[data-act],[data-dom],[data-op]');
+  if (!t) return;
+  if (t.dataset.dom) { S.filter.dom = t.dataset.dom; refreshGrid(); return; }
+  if (t.dataset.op) { S.payOp = t.dataset.op; render(); return; }
+  const a = t.dataset.act;
+
+  if (a === 'theme') {
+    THEME = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('vitako_theme', THEME); } catch (err) { /* ignoré */ }
+    applyTheme(); topbar(); return;
+  }
+  if (a === 'eye') {
+    const inp = document.getElementById(t.dataset.for); if (!inp) return;
+    const show = inp.type === 'password'; inp.type = show ? 'text' : 'password';
+    t.setAttribute('aria-pressed', String(show));
+    t.setAttribute('aria-label', show ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
+    t.innerHTML = (show ? I.eyeOff : I.eye) + `<span>${show ? 'Masquer' : 'Afficher'}</span>`;
+    inp.focus(); return;
+  }
+  if (a === 'copy') {
+    const v = t.dataset.v;
+    try { await navigator.clipboard.writeText(v); toast('Copié.'); } catch (err) { toast(v); }
+    return;
+  }
+  if (a === 'reload') { render(); return; }
+  if (a === 'logout') { await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
+
+  if (a === 'mquiz-retry') {
+    S.mquiz.answered = false; S.mquiz.answers = null;
+    S.mquiz.qs = S.mquiz.qs.map((q) => ({ ...q, order: shuffle(q.order) }));
+    document.getElementById('mquiz').innerHTML = moduleQuizHtml(); return;
+  }
+  if (a === 'exam-start') {
+    busy(t, true, 'Préparation…');
+    try {
+      const r = await api.startExam(t.dataset.id);
+      S.examResult = null;
+      S.exam = { courseId: t.dataset.id, attemptId: r.attempt_id, questions: r.questions.map((q) => ({ ...q, order: shuffle(q.options.map((_, k) => k)) })) };
+      render(); window.scrollTo(0, 0);
+    } catch (err) { showErr('exerr', err.message); busy(t, false, 'Commencer l\'examen'); }
+    return;
+  }
+  if (a === 'pdf') {
+    const cert = S.certView; if (!cert || !window.jspdf) { toast('Le PDF n\'est pas disponible. Vérifiez votre connexion puis réessayez.'); return; }
+    const tx = certText(cert);
+    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id) })
+      .save(`attestation-vitako-${slug(cert.full_name)}-${cert.id.toLowerCase()}.pdf`);
+    return;
+  }
+  if (a === 'pay-ok' || a === 'pay-ko') {
+    const approve = a === 'pay-ok';
+    const reason = approve ? null : document.getElementById('r-' + t.dataset.id)?.value;
+    busy(t, true);
+    try {
+      const p = await api.adminDecide(t.dataset.id, approve, reason);
+      toast(approve ? `Accès activé jusqu'au ${fmtDate(p.access_until)}.` : 'Paiement refusé. L\'étudiant verra le motif.');
+      render();
+    } catch (err) { toast(err.message); busy(t, false); }
+  }
+});
+
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'search') { S.filter.q = e.target.value; refreshGrid(); }
+});
+
+document.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const btn = f.querySelector('button[type=submit]');
+
+  if (f.id === 'auth-form') {
+    const signup = f.dataset.mode === 'signup';
+    const email = f.querySelector('#a-email').value.trim().toLowerCase();
+    const pass = f.querySelector('#a-pass').value;
+    const name = signup ? f.querySelector('#a-name').value.trim().replace(/\s+/g, ' ') : '';
+    document.getElementById('aerr').hidden = true;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('aerr', 'Saisissez une adresse e-mail valide, par exemple vous@exemple.mg.');
+    if (signup && name.length < 2) return showErr('aerr', 'Indiquez votre nom complet : il figurera sur vos attestations.');
+    if (pass.length < 8) return showErr('aerr', 'Le mot de passe doit contenir au moins 8 caractères.');
+    busy(btn, true);
+    // Où aller une fois connecté (lu par onAuthChange, qui peut se déclencher pendant l'appel).
+    S.afterLogin = f.dataset.next || (signup ? '/abonnement' : '');
+    try {
+      if (signup) {
+        const r = await api.signUp(email, pass, name);
+        if (!r.session) {
+          f.querySelectorAll('input,button').forEach((el) => { el.disabled = true; });
+          const ok = document.getElementById('aok');
+          ok.textContent = `Compte créé. Ouvrez l'e-mail envoyé à ${email} et cliquez sur le lien pour confirmer votre adresse, puis connectez-vous.`;
+          ok.hidden = false;
+          return;
+        }
+      } else {
+        await api.signIn(email, pass);
+      }
+      // La suite (chargement du profil, redirection) est gérée par onAuthChange.
+    } catch (err) { S.afterLogin = null; showErr('aerr', err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'forgot-form') {
+    const email = f.querySelector('#f-email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('ferr', 'Saisissez une adresse e-mail valide.');
+    busy(btn, true);
+    try {
+      await api.sendPasswordReset(email);
+      document.getElementById('ferr').hidden = true;
+      const ok = document.getElementById('fok'); ok.textContent = `Si un compte existe pour ${email}, un lien vient d'être envoyé. Pensez à regarder dans les spams.`; ok.hidden = false;
+    } catch (err) { showErr('ferr', err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'reset-form') {
+    const pass = f.querySelector('#r-pass').value;
+    if (pass.length < 8) return showErr('rerr', 'Le mot de passe doit contenir au moins 8 caractères.');
+    busy(btn, true);
+    try { await api.updatePassword(pass); toast('Mot de passe enregistré.'); go('#/mon-espace'); } catch (err) { showErr('rerr', err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'pay-form') {
+    const op = opById(S.payOp);
+    const ref = f.querySelector('#p-ref').value.trim().replace(/\s+/g, '').toUpperCase();
+    const tel = f.querySelector('#p-tel').value.replace(/\D/g, '');
+    document.getElementById('perr').hidden = true;
+    if (!/^[A-Z0-9][A-Z0-9.-]{4,39}$/.test(ref)) return showErr('perr', 'Saisissez la référence exactement comme dans le SMS de confirmation (lettres, chiffres et points).');
+    if (tel && !/^03\d{8}$/.test(tel)) return showErr('perr', `Le numéro doit avoir 10 chiffres, par exemple ${op.prefixes[0]} 12 345 67. Vous pouvez aussi laisser ce champ vide.`);
+    if (tel && !op.prefixes.includes(tel.slice(0, 3))) return showErr('perr', `Ce numéro ne correspond pas à ${op.name} (préfixes ${op.prefixes.join(', ')}). Choisissez le bon opérateur ou laissez le champ vide.`);
+    busy(btn, true);
+    try {
+      await api.submitPayment(op.id, ref, tel);
+      S.payments = await api.getMyPayments(uid());
+      toast('Référence envoyée. Votre accès sera activé après vérification.');
+      render(); window.scrollTo(0, 0);
+    } catch (err) { showErr('perr', err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'name-form') {
+    const name = f.querySelector('#n-name').value.trim().replace(/\s+/g, ' ');
+    if (name.length < 2) { toast('Indiquez votre nom complet.'); return; }
+    busy(btn, true);
+    try { await api.updateName(uid(), name); S.profile.full_name = name; toast('Nom enregistré.'); render(); } catch (err) { toast(err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'verify-form') {
+    const id = f.querySelector('#v-id').value.trim().toUpperCase();
+    if (id) go(`#/attestation/${encodeURIComponent(id)}`);
+    return;
+  }
+  if (f.id === 'mquiz-form') {
+    const Q = S.mquiz;
+    const answers = {};
+    for (let i = 0; i < Q.qs.length; i++) {
+      const sel = f.querySelector(`input[name="mq${i}"]:checked`);
+      if (!sel) { document.getElementById('mqerr').hidden = false; return; }
+      answers[i] = Number(sel.value);
+    }
+    busy(btn, true);
+    try {
+      await api.markModuleDone(uid(), Q.courseId, Q.mi);
+      if (!S.progress.has(Q.courseId)) S.progress.set(Q.courseId, new Set());
+      S.progress.get(Q.courseId).add(Q.mi);
+      Q.answers = answers; Q.answered = true;
+      Q.score = Q.qs.filter((q, i) => answers[i] === q.correct).length;
+      document.getElementById('mquiz').innerHTML = moduleQuizHtml();
+      document.getElementById('mquiz-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) { toast(err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'exam-form') {
+    const E = S.exam;
+    const answers = {};
+    for (let i = 0; i < E.questions.length; i++) {
+      const sel = f.querySelector(`input[name="ex${i}"]:checked`);
+      if (!sel) return showErr('exerr', 'Répondez à toutes les questions avant de valider.');
+      answers[E.questions[i].id] = Number(sel.value);
+    }
+    busy(btn, true, 'Correction…');
+    try {
+      const r = await api.submitExam(E.attemptId, answers);
+      S.exam = null;
+      S.examResult = { ...r, courseId: E.courseId };
+      const id = uid();
+      [S.certs, S.attempts] = await Promise.all([api.getCertificates(id), api.getAttempts(id)]);
+      render(); window.scrollTo(0, 0);
+    } catch (err) { showErr('exerr', err.message); busy(btn, false, 'Valider l\'examen'); }
+  }
+});
+
+window.addEventListener('hashchange', () => {
+  const { path } = route();
+  if (!/\/examen$/.test(path)) { S.examResult = null; }
+  render();
+  window.scrollTo(0, 0);
+});
+
+// ---------------------------------------------------------------------------
+// Démarrage
+// ---------------------------------------------------------------------------
+applyTheme();
+render();
+(async () => {
+  if (!api.configured) return;
+  try {
+    const settings = await api.getSettings();
+    if (settings.price_ar) S.price = Number(settings.price_ar);
+    if (settings.access_days) S.days = Number(settings.access_days);
+    S.session = await api.getSession();
+    await loadUser();
+  } catch (e) { console.error(e); }
+  S.booting = false;
+  render();
+  api.onAuthChange(async (event, session) => {
+    if (event === 'INITIAL_SESSION' || event === 'TOKEN_REFRESHED') return;
+    const changed = session?.user?.id !== S.session?.user?.id;
+    S.session = session;
+    if (event === 'PASSWORD_RECOVERY') { await loadUser(); go('#/nouveau-mot-de-passe'); return; }
+    if (!changed) return;
+    await loadUser().catch((e) => console.error(e));
+    if (event === 'SIGNED_IN') {
+      const next = S.afterLogin; S.afterLogin = null;
+      if (next !== undefined && next !== null) { toast('Connexion réussie.'); go('#' + (next || (isAdmin() ? '/admin' : '/mon-espace'))); return; }
+    }
+    render();
+  });
+})();

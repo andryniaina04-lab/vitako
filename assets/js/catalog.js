@@ -43,6 +43,7 @@ function defaultObjectives(job, level) {
   ];
 }
 
+export const DOMAINS_LIST = DOMAINS;
 export const LEVELS = { f: 'Fondamentaux', a: 'Avancé' };
 export const JOBS = [];
 export const COURSES = [];
