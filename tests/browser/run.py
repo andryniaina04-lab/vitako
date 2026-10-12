@@ -66,7 +66,8 @@ with sync_playwright() as p:
 
     # --- Catalogue
     check('catalogue : 50 métiers', page.locator('.card.job').count() == 50)
-    check('catalogue : 1 formation disponible', '1' in page.locator('.fact b').nth(1).inner_text())
+    nb_pub = sum(1 for c in page.evaluate("window.__VITAKO_FIXTURE__").get('courses', []) if c.get('published'))
+    check(f'catalogue : {nb_pub} formations disponibles', page.locator('.fact b').nth(1).inner_text().strip() == str(nb_pub))
     page.fill('#search', 'photoshop'); page.wait_for_timeout(150)
     n = page.locator('.card.job').count()
     check(f'recherche "photoshop" filtre ({n} métiers)', 0 < n < 50)
@@ -96,7 +97,7 @@ with sync_playwright() as p:
     check('fiche : objectifs numérotés et sections 1.1…', page.locator('.obj-num li').count() >= 5 and '1.1' in page.locator('.mod-secs').first.inner_text())
     page.screenshot(path=f'{SHOTS}/02z-fiche.png', full_page=True)
     check('fiche : invite à créer un compte', page.locator('aside a:has-text("Créer un compte")').count() == 1)
-    goto(page, '#/formation/design-0-a')
+    goto(page, '#/formation/tech-4-a')
     check('fiche non publiée : « Bientôt disponible »', 'Bientôt disponible' in page.content())
     goto(page, '#/formation/design-0-f/module/1')
     check('leçon bloquée pour un visiteur', 'Connectez-vous pour continuer' in page.content())

@@ -20,7 +20,7 @@ En Europe, le **RGPD** encadre strictement l'utilisation des données personnell
 1. **Utilisez les données uniquement** pour la mission confiée.
 2. **Ne copiez jamais** les données sur un support personnel non autorisé (clé USB, Drive personnel, téléphone).
 3. **Travaillez sur un ordinateur protégé** : mot de passe, verrouillage automatique, disque chiffré si possible.
-4. **Utilisez les outils de partage du client** (module plus bas), pas les vôtres.
+4. **Utilisez les outils de partage du client** (voir plus bas), pas les vôtres.
 5. **Ne partagez rien** par WhatsApp, e-mail non chiffré ou réseaux sociaux.
 6. **Pas de cybercafé** ni de Wi-Fi public.
 7. **Accès personnels** : jamais de partage de compte.

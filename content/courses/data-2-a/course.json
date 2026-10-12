@@ -51,7 +51,7 @@
       "video_url": "",
       "questions": [
         { "q": "Qu'est-ce que la pseudonymisation ?", "options": ["Remplacer les noms par des codes, avec une table de correspondance protégée", "Supprimer toutes les données", "Traduire les noms", "Publier les données"], "correct": 0 },
-        { "q": "Quel format de date éviter les confusions entre pays ?", "options": ["AAAA-MM-JJ", "JJ/MM", "MM/JJ", "Le jour en lettres seulement"], "correct": 0 },
+        { "q": "Quel format de date évite les confusions entre pays ?", "options": ["AAAA-MM-JJ", "JJ/MM", "MM/JJ", "Le jour en lettres seulement"], "correct": 0 },
         { "q": "Comment éviter « AntsirabÃ© » dans un fichier CSV ?", "options": ["Enregistrer et importer en UTF-8", "Supprimer les accents à la main", "Imprimer le fichier", "Changer de police"], "correct": 0 }
       ]
     },

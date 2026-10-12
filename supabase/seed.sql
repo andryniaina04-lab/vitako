@@ -3098,7 +3098,7 @@ En Europe, le **RGPD** encadre strictement l''utilisation des données personnel
 1. **Utilisez les données uniquement** pour la mission confiée.
 2. **Ne copiez jamais** les données sur un support personnel non autorisé (clé USB, Drive personnel, téléphone).
 3. **Travaillez sur un ordinateur protégé** : mot de passe, verrouillage automatique, disque chiffré si possible.
-4. **Utilisez les outils de partage du client** (module plus bas), pas les vôtres.
+4. **Utilisez les outils de partage du client** (voir plus bas), pas les vôtres.
 5. **Ne partagez rien** par WhatsApp, e-mail non chiffré ou réseaux sociaux.
 6. **Pas de cybercafé** ni de Wi-Fi public.
 7. **Accès personnels** : jamais de partage de compte.
@@ -3207,7 +3207,7 @@ Un fichier CSV anglais ouvert avec un Excel en français peut tout mettre dans *
 > **À livrer** : le fichier importé, le fichier pseudonymisé (sans la table), votre liste, votre message et votre devis.', null)
   on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 0, 'Qu''est-ce que la pseudonymisation ?', '["Publier les données","Remplacer les noms par des codes, avec une table de correspondance protégée","Traduire les noms","Supprimer toutes les données"]'::jsonb, 1);
-insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 1, 'Quel format de date éviter les confusions entre pays ?', '["MM/JJ","Le jour en lettres seulement","AAAA-MM-JJ","JJ/MM"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 1, 'Quel format de date évite les confusions entre pays ?', '["MM/JJ","JJ/MM","Le jour en lettres seulement","AAAA-MM-JJ"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 2, 'Comment éviter « AntsirabÃ© » dans un fichier CSV ?', '["Imprimer le fichier","Supprimer les accents à la main","Enregistrer et importer en UTF-8","Changer de police"]'::jsonb, 2);
 insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 4, 'Évoluer et développer son activité', 'Les chemins d''évolution, le nettoyage et la migration de données, les tableaux de bord, l''organisation d''une équipe et le plan de compétences.', 'La saisie de données est une porte d''entrée vers des métiers mieux payés : gestionnaire de bases de données, responsable de la qualité des données, analyste. Vous pouvez aussi proposer des services de données complets, ou organiser une petite équipe de traitement. Ce dernier module vous montre ces chemins.
 
