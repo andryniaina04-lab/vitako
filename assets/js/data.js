@@ -1846,6 +1846,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-0-f": {
+  "hours": 14,
+  "description": "Le professeur de langue en ligne aide des élèves du monde entier à progresser en français, en anglais ou en malgache grâce à des cours en visioconférence. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à enseigner depuis Madagascar avec Google Meet et Zoom : évaluation, objectifs, cours en 5 étapes, correction, suivi des progrès, programme de 10 cours, profil, prix et paiements. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir la langue à enseigner et comprendre les niveaux A1 à C2",
+   "Évaluer un élève et fixer des objectifs précis",
+   "Construire un cours en 5 étapes et corriger avec la bonne méthode",
+   "Utiliser Meet, Zoom, un document partagé et des outils interactifs",
+   "Construire et évaluer un programme de 10 cours",
+   "Créer son profil, fixer ses prix et ses règles, et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de professeur de langue en ligne depuis Madagascar",
+    "summary": "Ce que fait le professeur, le choix de la langue et la niche du malgache, les niveaux du CECRL, les types de cours, les élèves et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Quelle langue enseigner ?",
+     "Les niveaux du Cadre européen (CECRL)",
+     "Les types de cours",
+     "Le rôle du professeur",
+     "Qui sont vos élèves ?",
+     "Votre poste de travail",
+     "Exercice pratique : votre profil de professeur"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : évaluation, objectifs, cours, correction et suivi",
+    "summary": "Le cours d'évaluation en 4 parties, des objectifs précis, le cours en 5 étapes, les 4 techniques de correction et la fiche de suivi.",
+    "sections": [
+     "Le premier cours : l'évaluation",
+     "Fixer des objectifs précis",
+     "Construire un cours en 5 étapes",
+     "Corriger les erreurs",
+     "Suivre les progrès",
+     "Exercice pratique : vos premiers cours"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Google Meet, Zoom, documents partagés et Zoom Pro",
+    "summary": "Cours sur Meet et Zoom, bonnes pratiques, document partagé par élève, outils interactifs, droits d'auteur, organisation des dossiers et Zoom Pro.",
+    "sections": [
+     "Les outils gratuits",
+     "Google Meet et Zoom",
+     "Le document partagé du cours",
+     "Rendre le cours interactif",
+     "Organiser vos documents",
+     "L'outil payant : Zoom Pro",
+     "Exercice pratique : votre salle de classe en ligne"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : un programme de 10 cours",
+    "summary": "Programme construit à partir des situations réelles, préparation d'un cours complet, liste de contrôle, mini-test, bilan écrit et avis d'élève.",
+    "sections": [
+     "Le cas pratique : Claire, volontaire à Fianarantsoa",
+     "Étape 1 : le programme de 10 cours",
+     "Étape 2 : préparer un cours complet",
+     "Étape 3 : donner le cours",
+     "Étape 4 : évaluer les progrès",
+     "Étape 5 : recueillir un avis",
+     "Exercice pratique : votre premier programme"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des élèves et se faire payer",
+    "summary": "Profil et vidéo de présentation, 5 canaux, prix et forfaits, règles d'annulation et de paiement, moyens de paiement et évolution.",
+    "sections": [
+     "Le profil et la vidéo de présentation",
+     "Où trouver des élèves : 5 canaux",
+     "Fixer ses prix",
+     "Les règles d'annulation et de paiement",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "edu-4-a": {
   "hours": 16,
   "description": "Ce niveau Avancé fait de l'assistant administratif et RH un partenaire qui structure l'entreprise : spécialité (paie, recrutement, SIRH, direction, office management, données RH), diagnostic et indicateurs RH, outils payants (Microsoft 365 avancé, Power Automate, logiciels de paie et SIRH), procédures, calendrier social et contrôles, équipes dans plusieurs pays et protection des données, puis forfaits, partenariats avec les cabinets comptables et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

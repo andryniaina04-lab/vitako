@@ -1,0 +1,97 @@
+{
+  "id": "edu-0-f",
+  "hours": 14,
+  "description": "Le professeur de langue en ligne aide des élèves du monde entier à progresser en français, en anglais ou en malgache grâce à des cours en visioconférence. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à enseigner depuis Madagascar avec Google Meet et Zoom : évaluation, objectifs, cours en 5 étapes, correction, suivi des progrès, programme de 10 cours, profil, prix et paiements. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir la langue à enseigner et comprendre les niveaux A1 à C2",
+    "Évaluer un élève et fixer des objectifs précis",
+    "Construire un cours en 5 étapes et corriger avec la bonne méthode",
+    "Utiliser Meet, Zoom, un document partagé et des outils interactifs",
+    "Construire et évaluer un programme de 10 cours",
+    "Créer son profil, fixer ses prix et ses règles, et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de professeur de langue en ligne depuis Madagascar",
+      "summary": "Ce que fait le professeur, le choix de la langue et la niche du malgache, les niveaux du CECRL, les types de cours, les élèves et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel niveau du CECRL correspond à un débutant ?", "options": ["A1", "B2", "C1", "C2"], "correct": 0 },
+        { "q": "Pourquoi le malgache est-il une niche intéressante ?", "options": ["Peu de professeurs le proposent en ligne", "Personne ne veut l'apprendre", "Il est interdit sur les plateformes", "Il n'a pas de grammaire"], "correct": 0 },
+        { "q": "Quel équipement est indispensable pour un son clair ?", "options": ["Un casque avec micro", "Une imprimante", "Un deuxième téléphone", "Une télévision"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : évaluation, objectifs, cours, correction et suivi",
+      "summary": "Le cours d'évaluation en 4 parties, des objectifs précis, le cours en 5 étapes, les 4 techniques de correction et la fiche de suivi.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle part du temps de parole viser pour l'élève ?", "options": ["Au moins 60 à 70 %", "10 %", "0 %", "Exactement 50 % du professeur"], "correct": 0 },
+        { "q": "Faut-il corriger toutes les erreurs ?", "options": ["Non, choisir les erreurs fréquentes ou importantes", "Oui, toujours", "Oui, en interrompant", "Jamais aucune"], "correct": 0 },
+        { "q": "Quel objectif est le plus précis ?", "options": ["Réussir le DELF B2 en juin, surtout l'écrit", "Je veux améliorer mon français", "Je veux parler", "Je veux être bon"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Meet, Zoom, documents partagés et Zoom Pro",
+      "summary": "Cours sur Meet et Zoom, bonnes pratiques, document partagé par élève, outils interactifs, droits d'auteur, organisation des dossiers et Zoom Pro.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire 10 minutes avant chaque cours ?", "options": ["Tester le lien, le son et le partage d'écran", "Éteindre l'ordinateur", "Rien", "Changer de mot de passe"], "correct": 0 },
+        { "q": "Que contient le document partagé d'un élève ?", "options": ["Vocabulaire, corrections et devoirs", "Les mots de passe", "Les avis des autres élèves", "Rien"], "correct": 0 },
+        { "q": "Quand passer à Zoom Pro ?", "options": ["Quand les cours deviennent longs ou en groupe avec assez d'élèves", "Dès le premier jour obligatoirement", "Jamais", "Pour les cours de 10 minutes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un programme de 10 cours",
+      "summary": "Programme construit à partir des situations réelles, préparation d'un cours complet, liste de contrôle, mini-test, bilan écrit et avis d'élève.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À partir de quoi construire le programme ?", "options": ["Des situations réelles de l'élève", "D'une liste de grammaire au hasard", "Du programme d'un autre élève", "De rien"], "correct": 0 },
+        { "q": "Que vérifier avant d'enseigner un mot ?", "options": ["Son orthographe et sa prononciation", "Sa couleur", "Son prix", "Rien"], "correct": 0 },
+        { "q": "À quoi relier le bilan final ?", "options": ["Aux objectifs fixés au début", "Au temps qu'il fait", "Au prix du forfait", "À rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des élèves et se faire payer",
+      "summary": "Profil et vidéo de présentation, 5 canaux, prix et forfaits, règles d'annulation et de paiement, moyens de paiement et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel titre de profil est le meilleur ?", "options": ["Professeur de malgache pour expatriés et volontaires", "Professeur de langues", "Bonjour", "Cours pas chers"], "correct": 0 },
+        { "q": "Comment se démarquer en anglais, très concurrentiel ?", "options": ["Choisir une spécialité précise", "Baisser les prix à zéro", "Copier le profil d'un autre", "Ne rien changer"], "correct": 0 },
+        { "q": "Que se passe-t-il en cas de coupure technique de votre côté ?", "options": ["Le temps perdu est rattrapé ou remboursé", "L'élève paie quand même sans rien", "Rien", "Le cours est doublé en prix"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un professeur de langue en ligne ?", "options": ["Il fait progresser des élèves par des cours en visioconférence", "Il traduit des documents", "Il vend des livres", "Il répare des ordinateurs"], "correct": 0 },
+    { "q": "Peut-on enseigner une langue qu'on maîtrise à un niveau intermédiaire ?", "options": ["Non, il faut la maîtriser vraiment", "Oui, sans problème", "Oui, en l'apprenant pendant le cours", "Oui, si on est rapide"], "correct": 0 },
+    { "q": "Quel test prouve un niveau de français ?", "options": ["DELF ou DALF", "IELTS", "Permis de conduire", "Baccalauréat sportif"], "correct": 0 },
+    { "q": "Quel niveau permet de travailler dans la langue ?", "options": ["B2", "A1", "A2", "Aucun"], "correct": 0 },
+    { "q": "Quels élèves cherchent des cours de malgache ?", "options": ["Expatriés, volontaires et enfants de la diaspora", "Personne", "Uniquement des Malgaches de Madagascar", "Uniquement des enfants de 3 ans"], "correct": 0 },
+    { "q": "Combien de temps dure un premier cours d'évaluation environ ?", "options": ["30 minutes", "5 minutes", "4 heures", "Une journée"], "correct": 0 },
+    { "q": "Quelle est la première étape d'un cours ?", "options": ["L'échauffement", "Le bilan", "Les devoirs", "Le paiement"], "correct": 0 },
+    { "q": "Quelle technique laisse l'élève se corriger lui-même ?", "options": ["Le signal", "La correction directe", "L'ignorance", "Le silence total"], "correct": 0 },
+    { "q": "Quand utiliser la correction différée ?", "options": ["Pendant un jeu de rôle ou une présentation", "Jamais", "À chaque mot", "Avant le cours"], "correct": 0 },
+    { "q": "Comment montrer les progrès à l'élève ?", "options": ["L'enregistrer au début et après 2 mois, avec son accord", "Lui dire qu'il est bon sans preuve", "Ne rien montrer", "Changer de professeur"], "correct": 0 },
+    { "q": "Que préciser pour le malgache enseigné ?", "options": ["La variante enseignée", "La couleur du manuel", "Le prix du taxi", "Rien"], "correct": 0 },
+    { "q": "Quelle limite a souvent l'offre gratuite de Zoom ?", "options": ["La durée des réunions", "Le nombre de couleurs", "La langue", "Aucune"], "correct": 0 },
+    { "q": "Quel outil sert à réviser le vocabulaire entre les cours ?", "options": ["Quizlet ou Anki", "Excel uniquement", "Un scanner", "Un micro"], "correct": 0 },
+    { "q": "Peut-on envoyer des copies complètes d'un manuel payant ?", "options": ["Non, il faut respecter les droits d'auteur", "Oui, toujours", "Oui, si l'élève est pressé", "Oui, en PDF"], "correct": 0 },
+    { "q": "Quel plan B prévoir en cas de connexion faible ?", "options": ["Couper la vidéo, garder le son et le document partagé", "Arrêter le cours sans prévenir", "Changer d'élève", "Rien"], "correct": 0 },
+    { "q": "Que doit contenir le programme de 10 cours ?", "options": ["Un thème et un objectif de communication par cours", "Uniquement des listes de grammaire", "Rien de précis", "Des devoirs sans cours"], "correct": 0 },
+    { "q": "Quel est l'objectif du cours « Au marché » ?", "options": ["Acheter des produits en demandant les prix", "Écrire un roman", "Conjuguer tous les verbes", "Parler de politique"], "correct": 0 },
+    { "q": "Que faire après chaque cours ?", "options": ["Mettre à jour le document, envoyer les devoirs, remplir la fiche", "Rien", "Supprimer le document", "Changer de programme"], "correct": 0 },
+    { "q": "Pourquoi demander un avis à l'élève ?", "options": ["Pour aider d'autres élèves à vous trouver", "Pour le faire payer plus", "C'est obligatoire par la loi", "Pour rien"], "correct": 0 },
+    { "q": "Que donner aux élèves qui partent vivre à Madagascar ?", "options": ["Une fiche de survie avec phrases utiles et repères culturels", "Rien", "Un livre de 500 pages", "Une facture"], "correct": 0 },
+    { "q": "Quelle durée pour une vidéo de présentation ?", "options": ["1 à 2 minutes", "30 minutes", "5 secondes", "1 heure"], "correct": 0 },
+    { "q": "Que vérifier avant de rejoindre une plateforme de cours ?", "options": ["Qu'elle accepte les professeurs basés à Madagascar et vos moyens de retrait", "Sa couleur", "Le nombre de ses employés", "Rien"], "correct": 0 },
+    { "q": "Quel avantage offre un forfait de 10 cours payé d'avance ?", "options": ["Des revenus plus réguliers et un élève engagé", "Aucun", "Des cours plus courts", "Moins de préparation"], "correct": 0 },
+    { "q": "Quelle règle d'annulation est raisonnable ?", "options": ["Gratuite jusqu'à 24 heures avant", "Jamais d'annulation possible", "Annulation possible après le cours", "Pas de règle écrite"], "correct": 0 },
+    { "q": "Quelle évolution permet de vendre des cours vidéo ?", "options": ["Créateur de cours", "Comptable", "Monteur audio", "Développeur back-end"], "correct": 0 }
+  ]
+}

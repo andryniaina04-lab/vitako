@@ -93,7 +93,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 18, false),
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 14, false),
-  ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, false),
+  ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 17, false),
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 10, false),
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
@@ -11925,6 +11925,587 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- edu-0-f
+delete from public.exam_questions where course_id = 'edu-0-f';
+delete from public.module_questions where course_id = 'edu-0-f';
+delete from public.lessons where course_id = 'edu-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-f', 0, 'Le métier de professeur de langue en ligne depuis Madagascar', 'Ce que fait le professeur, le choix de la langue et la niche du malgache, les niveaux du CECRL, les types de cours, les élèves et le poste de travail.', 'Des millions de personnes apprennent une langue en ligne, avec un professeur en visioconférence. Si vous parlez très bien le français, l''anglais ou le malgache, vous pouvez enseigner depuis Madagascar à des élèves du monde entier. Ce premier module vous présente le métier de professeur de langue en ligne tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un professeur de langue en ligne.
+> 2. Choisir la ou les langues que vous pouvez enseigner.
+> 3. Comprendre les niveaux du Cadre européen (A1 à C2).
+> 4. Repérer vos élèves possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un professeur de langue en ligne **aide des élèves à progresser dans une langue grâce à des cours en visioconférence, adaptés à leur niveau et à leurs objectifs**.
+
+## Quelle langue enseigner ?
+
+| Langue | Élèves possibles | Votre atout |
+| --- | --- | --- |
+| **Français** | Adultes étrangers (expatriés, futurs étudiants en France ou au Canada), élèves d''autres pays d''Afrique et d''Asie, enfants de familles francophones à l''étranger | Langue de travail et d''études maîtrisée |
+| **Anglais** | Élèves malgaches, francophones qui préparent un examen ou un entretien | Si votre niveau est très élevé (C1 à C2) et vérifiable |
+| **Malgache** | Expatriés et volontaires à Madagascar, Malgaches de la diaspora et leurs enfants, chercheurs | Langue maternelle, rare chez les professeurs en ligne |
+
+> [!madagascar] Une niche pour le malgache
+> Peu de professeurs proposent des cours de **malgache** en ligne, alors que les volontaires, les employés d''ONG, les chercheurs, les conjoints étrangers et les enfants de la diaspora en France ou au Canada en cherchent régulièrement. Une langue rare peut justifier un tarif plus élevé que l''anglais, très concurrentiel.
+
+> [!attention]
+> Enseignez seulement une langue que vous maîtrisez vraiment. Un niveau « intermédiaire » ne suffit pas pour corriger les erreurs et expliquer la grammaire. Si nécessaire, passez un test reconnu (DELF ou DALF pour le français, IELTS, TOEFL ou Cambridge pour l''anglais) pour prouver votre niveau.
+
+## Les niveaux du Cadre européen (CECRL)
+
+> [!definition] CECRL
+> Le Cadre européen commun de référence pour les langues : une échelle en 6 niveaux, utilisée dans le monde entier pour décrire ce qu''une personne sait faire dans une langue.
+
+| Niveau | Description simple | Exemple |
+| --- | --- | --- |
+| **A1** | Débutant | Se présenter, commander un café |
+| **A2** | Élémentaire | Parler de sa journée, faire des achats |
+| **B1** | Seuil | Raconter une expérience, se débrouiller en voyage |
+| **B2** | Avancé | Discuter d''un sujet d''actualité, travailler dans la langue |
+| **C1** | Autonome | S''exprimer avec aisance dans un contexte professionnel ou universitaire |
+| **C2** | Maîtrise | Comprendre presque tout, nuancer finement |
+
+## Les types de cours
+
+| Type | Pour qui | Exemple |
+| --- | --- | --- |
+| **Conversation** | Élèves qui veulent pratiquer l''oral | 30 minutes de discussion sur des sujets choisis |
+| **Cours général** | Élèves qui progressent pas à pas | Programme du niveau A1 au B1 |
+| **Préparation d''examen** | Candidats au DELF, au TCF, à l''IELTS | Entraînement aux épreuves, méthode |
+| **Langue professionnelle** | Employés, chercheurs, volontaires | Français des affaires, malgache pour le terrain |
+| **Cours pour enfants** | Enfants de 6 à 14 ans | Jeux, chansons, histoires |
+
+## Le rôle du professeur
+
+1. **Évaluer** le niveau et comprendre les objectifs de l''élève.
+2. **Préparer** des cours adaptés.
+3. **Faire parler** l''élève (il doit parler plus que vous).
+4. **Corriger** avec bienveillance.
+5. **Donner** des devoirs et des ressources.
+6. **Suivre** les progrès et les montrer à l''élève.
+
+## Qui sont vos élèves ?
+
+| N° | Élèves | Où les trouver |
+| --- | --- | --- |
+| 1 | Adultes étrangers qui apprennent le français | Plateformes de cours de langues, réseaux sociaux |
+| 2 | Expatriés et volontaires qui apprennent le malgache | ONG, ambassades, groupes d''expatriés |
+| 3 | Enfants de la diaspora malgache | Associations malgaches en France, au Canada |
+| 4 | Élèves et étudiants malgaches | Écoles, bouche-à-oreille |
+| 5 | Professionnels qui préparent un examen | Plateformes, LinkedIn |
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Avec une webcam correcte (le téléphone suffit pour commencer, mais l''ordinateur est préférable) |
+| **Casque avec micro** | Indispensable pour un son clair et sans écho |
+| **Connexion** | Stable, avec une solution de secours (forfait mobile) |
+| **Lieu** | Calme, bien éclairé, fond neutre |
+| **Énergie** | Onduleur ou batterie : un cours coupé par un délestage fait perdre un élève |
+| **Logiciels** | Google Meet, Zoom (offre gratuite) |
+
+> [!retenir]
+> - Enseignez une langue que vous maîtrisez vraiment : français, anglais ou malgache.
+> - Le malgache est une niche peu concurrencée.
+> - Les niveaux A1 à C2 du CECRL servent à décrire et suivre les progrès.
+> - Conversation, cours général, examen, langue professionnelle ou enfants.
+> - Casque, connexion stable, lieu calme et énergie de secours.
+
+## Exercice pratique : votre profil de professeur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez la ou les langues que vous enseignerez et estimez honnêtement votre niveau.
+> 2. Choisissez 2 types de cours et 2 types d''élèves.
+> 3. Enregistrez une vidéo de 1 minute où vous vous présentez dans la langue enseignée.
+> 4. Faites un test de votre poste : son, image, lumière, connexion.
+>
+> **À livrer** : votre choix argumenté, votre vidéo et la liste des améliorations de votre poste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 0, 0, 'Quel niveau du CECRL correspond à un débutant ?', '["B2","C2","C1","A1"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 0, 1, 'Pourquoi le malgache est-il une niche intéressante ?', '["Il n''a pas de grammaire","Personne ne veut l''apprendre","Peu de professeurs le proposent en ligne","Il est interdit sur les plateformes"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 0, 2, 'Quel équipement est indispensable pour un son clair ?', '["Un casque avec micro","Un deuxième téléphone","Une télévision","Une imprimante"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-f', 1, 'Les bases : évaluation, objectifs, cours, correction et suivi', 'Le cours d''évaluation en 4 parties, des objectifs précis, le cours en 5 étapes, les 4 techniques de correction et la fiche de suivi.', 'Ce module vous donne les bases pédagogiques d''un professeur de langue : évaluer un élève, fixer des objectifs, construire un cours, faire parler l''élève, corriger les erreurs et suivre ses progrès.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un premier cours d''évaluation.
+> 2. Fixer des objectifs précis avec l''élève.
+> 3. Construire un cours en 5 étapes.
+> 4. Corriger les erreurs avec la bonne méthode.
+> 5. Suivre et montrer les progrès.
+
+## Le premier cours : l''évaluation
+
+### Les 4 parties (environ 30 minutes)
+
+| Partie | Durée | Ce que vous faites |
+| --- | --- | --- |
+| **Accueil** | 5 min | Présentations, mise en confiance |
+| **Objectifs** | 5 min | Pourquoi apprendre ? Pour quand ? Combien de temps par semaine ? |
+| **Évaluation orale** | 15 min | Questions de plus en plus difficiles pour situer le niveau |
+| **Proposition** | 5 min | Niveau estimé, programme proposé, rythme, prix |
+
+> [!exemple] Questions progressives (français)
+> - A1 : « Comment vous appelez-vous ? Où habitez-vous ? »
+> - A2 : « Qu''est-ce que vous avez fait le week-end dernier ? »
+> - B1 : « Racontez-moi un voyage qui vous a marqué. »
+> - B2 : « Que pensez-vous du télétravail ? Quels sont ses avantages et ses inconvénients ? »
+> - C1 : « Si vous pouviez changer une chose dans votre ville, laquelle et pourquoi ? »
+
+## Fixer des objectifs précis
+
+| Objectif vague | Objectif précis |
+| --- | --- |
+| « Je veux parler malgache. » | « Dans 3 mois, je veux pouvoir faire mes courses au marché et discuter 5 minutes avec mes voisins à Fianarantsoa. » |
+| « Je veux améliorer mon français. » | « Réussir le DELF B2 en juin, en particulier l''expression écrite. » |
+| « Je veux être bon en anglais. » | « Mener un entretien d''embauche de 30 minutes en anglais dans 8 semaines. » |
+
+## Construire un cours en 5 étapes
+
+| Étape | Durée (cours de 45 min) | Contenu |
+| --- | --- | --- |
+| **1. Échauffement** | 5 min | Petite conversation, révision du cours précédent |
+| **2. Découverte** | 10 min | Document ou situation : dialogue, texte, vidéo courte, image |
+| **3. Explication** | 10 min | Vocabulaire et grammaire du jour, avec des exemples |
+| **4. Pratique** | 15 min | L''élève utilise ce qu''il a appris : jeu de rôle, questions, description |
+| **5. Bilan** | 5 min | Ce qu''on a appris, corrections importantes, devoirs |
+
+> [!exemple] Cours de malgache niveau A1 : « Au marché »
+> 1. **Échauffement** : salutations (« Manao ahoana ? »).
+> 2. **Découverte** : un court dialogue entre un client et une vendeuse de légumes.
+> 3. **Explication** : les nombres, « Ohatrinona ? » (Combien ?), les noms de quelques légumes et fruits.
+> 4. **Pratique** : jeu de rôle, l''élève achète 3 produits.
+> 5. **Bilan** : liste de 15 mots, enregistrement audio à réécouter.
+
+> [!astuce]
+> Visez un temps de parole d''au moins **60 à 70 %** pour l''élève. Si vous parlez plus que lui, c''est vous qui progressez.
+
+## Corriger les erreurs
+
+### Les 4 techniques
+
+| Technique | Exemple | Quand l''utiliser |
+| --- | --- | --- |
+| **Reformulation** | Élève : « Hier, j''ai allé au marché. » Vous : « Ah, vous êtes allé au marché ! Qu''est-ce que vous avez acheté ? » (sans interrompre) | En conversation, pour garder le rythme |
+| **Signal** | « Hier, je… ? » (l''élève se corrige lui-même) | Pour une erreur qu''il peut corriger seul |
+| **Correction directe** | « On dit "je suis allé", pas "j''ai allé". » | Pour une erreur importante et nouvelle |
+| **Correction différée** | Vous notez les erreurs et les reprenez en fin de cours | Pendant un jeu de rôle ou une présentation |
+
+> [!attention]
+> Ne corrigez pas **toutes** les erreurs : l''élève se décourage et n''ose plus parler. Choisissez les erreurs **fréquentes**, **importantes pour le sens** ou **liées à l''objectif du cours**.
+
+## Suivre les progrès
+
+### La fiche de suivi
+
+| Date | Thème | Vocabulaire et grammaire | Erreurs fréquentes | Devoirs | Remarques |
+| --- | --- | --- | --- | --- | --- |
+| 03/03 | Au marché | Nombres, « Ohatrinona ? » | Prononciation de « ohatrinona » | Écouter l''audio, 10 phrases | Très motivé |
+| 10/03 | La famille | Membres de la famille, possessifs | Ordre des mots | Présenter sa famille à l''écrit | Progrès à l''oral |
+
+### Montrer les progrès
+
+1. **Enregistrez** l''élève au premier cours et après 2 mois (avec son accord) : il entend la différence.
+2. **Faites un mini-test** tous les 8 à 10 cours.
+3. **Reliez** les progrès aux objectifs : « Vous pouvez maintenant faire vos courses seul. »
+
+> [!madagascar]
+> Pour enseigner le malgache, soyez clair sur la **variante** enseignée (malgache officiel, et éventuellement des expressions de la région où l''élève va vivre). Préparez aussi quelques **repères culturels** : salutations, politesse avec les aînés, fady (interdits), qui comptent autant que la grammaire pour un expatrié.
+
+> [!retenir]
+> - Un premier cours d''évaluation en 4 parties.
+> - Des objectifs précis, mesurables et datés.
+> - Un cours en 5 étapes, avec l''élève qui parle le plus.
+> - 4 techniques de correction, sans tout corriger.
+> - Une fiche de suivi et des preuves de progrès.
+
+## Exercice pratique : vos premiers cours
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Préparez votre liste de questions d''évaluation progressives pour votre langue.
+> 2. Préparez 2 cours complets de 45 minutes en 5 étapes, pour deux niveaux différents.
+> 3. Donnez un cours d''essai gratuit à un ami ou un proche, enregistrez-le (avec son accord).
+> 4. Réécoutez et calculez votre temps de parole et celui de l''élève.
+> 5. Remplissez la fiche de suivi.
+>
+> **À livrer** : vos questions, vos 2 plans de cours, votre analyse du temps de parole et la fiche de suivi.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 1, 0, 'Quelle part du temps de parole viser pour l''élève ?', '["0 %","Au moins 60 à 70 %","10 %","Exactement 50 % du professeur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 1, 1, 'Faut-il corriger toutes les erreurs ?', '["Oui, en interrompant","Jamais aucune","Non, choisir les erreurs fréquentes ou importantes","Oui, toujours"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 1, 2, 'Quel objectif est le plus précis ?', '["Réussir le DELF B2 en juin, surtout l''écrit","Je veux être bon","Je veux parler","Je veux améliorer mon français"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-f', 2, 'Les outils : Google Meet, Zoom, documents partagés et Zoom Pro', 'Cours sur Meet et Zoom, bonnes pratiques, document partagé par élève, outils interactifs, droits d''auteur, organisation des dossiers et Zoom Pro.', 'Ce module vous fait prendre en main les outils du professeur en ligne : **Google Meet** et **Zoom** pour les cours, des outils gratuits pour rendre vos cours vivants (tableau, documents partagés, cartes mémoire, quiz), et l''outil payant le plus utile : **Zoom Pro**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un cours sur Google Meet et sur Zoom.
+> 2. Partager un écran, un document ou un tableau.
+> 3. Utiliser des outils pour rendre le cours interactif.
+> 4. Organiser vos documents et vos devoirs.
+> 5. Comprendre ce qu''apporte Zoom Pro.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Google Meet** | Cours en visioconférence depuis un lien Google Agenda |
+| 2 | **Zoom** (offre gratuite) | Cours en visioconférence, tableau blanc, salles de groupe |
+| 3 | **Google Docs** | Document partagé du cours : vocabulaire, corrections, devoirs |
+| 4 | **Google Agenda** | Planification des cours et rappels |
+| 5 | **Quizlet** ou **Anki** | Cartes mémoire pour le vocabulaire |
+| 6 | **Wordwall** ou **Kahoot** | Jeux et quiz (surtout pour les enfants) |
+
+## Google Meet et Zoom
+
+| Fonction | Google Meet | Zoom |
+| --- | --- | --- |
+| Lien de cours | Créé dans Google Agenda | Créé dans l''application ou le site |
+| Partage d''écran | Oui | Oui, avec partage du son de l''ordinateur |
+| Tableau blanc | Selon les outils disponibles | Oui |
+| Durée en offre gratuite | Limites selon le nombre de participants | Réunions limitées dans le temps (souvent 40 minutes) |
+| Enregistrement | Selon le compte | Selon l''offre |
+
+*(Les limites des offres gratuites changent : vérifiez-les sur les sites officiels.)*
+
+### Les bonnes pratiques
+
+1. **Testez** le lien, le son et le partage d''écran 10 minutes avant le cours.
+2. **Ouvrez** à l''avance les documents dont vous aurez besoin.
+3. **Coupez** les notifications de votre ordinateur et de votre téléphone.
+4. **Regardez** la caméra quand vous parlez, pas seulement l''écran.
+5. **Prévoyez** un plan B : numéro WhatsApp de l''élève pour le prévenir en cas de coupure.
+
+## Le document partagé du cours
+
+> [!astuce]
+> Créez **un Google Docs par élève**, partagé avec lui. À chaque cours, ajoutez la date, le vocabulaire, les corrections et les devoirs. L''élève retrouve tout au même endroit, et vous avez votre suivi.
+
+### La structure du document
+
+```
+Cours du 10 mars 2026 – La famille
+Vocabulaire :
+  - ray (père), reny (mère), zoky (aîné), zandry (cadet)
+Corrections :
+  - ✗ … → ✓ …
+Devoirs :
+  - Présenter sa famille en 6 phrases
+  - Réviser les cartes Quizlet « Famille »
+```
+
+## Rendre le cours interactif
+
+| Outil | Usage |
+| --- | --- |
+| **Partage d''écran** | Montrer une image, une courte vidéo, un article |
+| **Tableau blanc** | Écrire une conjugaison, dessiner un schéma |
+| **Cartes mémoire** (Quizlet, Anki) | Réviser le vocabulaire entre les cours |
+| **Quiz** (Wordwall, Kahoot) | Vérifier la compréhension de façon ludique |
+| **Enregistrements audio** | L''élève s''enregistre et vous envoie l''audio pour correction |
+
+> [!attention]
+> Respectez les **droits d''auteur** : n''envoyez pas de copies complètes de manuels payants. Utilisez des documents que vous créez, des ressources gratuites et autorisées, ou demandez à l''élève d''acheter le manuel choisi.
+
+## Organiser vos documents
+
+| Dossier | Contenu |
+| --- | --- |
+| **Plans de cours** | Par niveau et par thème : A1-01 Se présenter, A1-02 Au marché… |
+| **Documents** | Dialogues, textes, images, audios |
+| **Évaluations** | Tests d''entrée, mini-tests, grilles |
+| **Élèves** | Un document partagé par élève |
+| **Administration** | Planning, paiements, factures |
+
+> [!madagascar]
+> Préparez vos documents **à l''avance et hors ligne** : si la connexion faiblit pendant le cours, vous pouvez couper la vidéo, garder le son et continuer avec le document partagé déjà ouvert. Prévenez l''élève dès le premier cours de ce plan B.
+
+## L''outil payant : Zoom Pro
+
+| Ce que Zoom Pro apporte | Pourquoi c''est utile |
+| --- | --- |
+| Réunions beaucoup plus longues | Cours de 60 à 90 minutes sans coupure |
+| Enregistrement dans le cloud (selon l''offre) | Envoyer l''enregistrement à l''élève |
+| Plus de participants | Cours en petits groupes |
+| Salles de groupe et sondages | Ateliers de conversation à plusieurs |
+
+> [!madagascar]
+> Zoom Pro est facturé en dollars, par mois ou par an. Si vous donnez surtout des cours individuels de moins de 40 minutes ou utilisez Google Meet, l''offre gratuite peut suffire au début. Passez à Zoom Pro quand vous avez assez d''élèves réguliers. Vérifiez le prix à jour sur le site officiel.
+
+> [!retenir]
+> - Google Meet et Zoom, testés avant chaque cours, avec un plan B.
+> - Un document partagé par élève : vocabulaire, corrections, devoirs.
+> - Partage d''écran, tableau, cartes mémoire, quiz et audios pour un cours vivant.
+> - Des dossiers organisés par niveau et par thème.
+> - Zoom Pro quand les cours deviennent longs ou en groupe.
+
+## Exercice pratique : votre salle de classe en ligne
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un cours fictif dans Google Agenda avec un lien Meet, et un autre sur Zoom.
+> 2. Testez le partage d''écran avec une image et une courte vidéo (avec le son).
+> 3. Créez le modèle de document partagé d''un élève.
+> 4. Créez un jeu de 20 cartes Quizlet ou Anki et un quiz Wordwall.
+> 5. Organisez vos dossiers de cours.
+>
+> **À livrer** : des captures de vos tests, votre modèle de document, les liens de vos cartes et de votre quiz.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 2, 0, 'Que faire 10 minutes avant chaque cours ?', '["Éteindre l''ordinateur","Rien","Changer de mot de passe","Tester le lien, le son et le partage d''écran"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 2, 1, 'Que contient le document partagé d''un élève ?', '["Les mots de passe","Vocabulaire, corrections et devoirs","Rien","Les avis des autres élèves"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 2, 2, 'Quand passer à Zoom Pro ?', '["Jamais","Quand les cours deviennent longs ou en groupe avec assez d''élèves","Pour les cours de 10 minutes","Dès le premier jour obligatoirement"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-f', 3, 'Premier projet : un programme de 10 cours', 'Programme construit à partir des situations réelles, préparation d''un cours complet, liste de contrôle, mini-test, bilan écrit et avis d''élève.', 'Dans ce module, vous construisez un **programme complet de 10 cours** pour un élève réel ou fictif, vous donnez les premiers cours et vous faites le bilan. C''est le type de projet qui montre à vos futurs élèves que vous savez les faire progresser.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un programme de 10 cours à partir d''un objectif.
+> 2. Préparer un cours complet avec ses documents.
+> 3. Donner un cours en ligne fluide et vivant.
+> 4. Évaluer les progrès à la fin du programme.
+> 5. Recueillir un avis d''élève.
+
+## Le cas pratique : Claire, volontaire à Fianarantsoa
+
+> [!exemple] Votre élève
+> **Claire**, 26 ans, française, part dans 3 mois comme volontaire dans une ONG d''éducation à Fianarantsoa. Elle ne parle pas malgache. Elle veut pouvoir saluer, se présenter, faire ses courses, prendre un taxi-brousse et avoir de petites conversations avec ses collègues. Elle a 2 cours de 45 minutes par semaine.
+
+*(Si vous enseignez le français ou l''anglais, adaptez le cas : par exemple un ingénieur malgache qui prépare un entretien en anglais, ou une étudiante chinoise qui part étudier en France.)*
+
+## Étape 1 : le programme de 10 cours
+
+| N° | Thème | Objectif de communication | Langue |
+| --- | --- | --- | --- |
+| 1 | Évaluation et premiers mots | Saluer, dire son nom | Salutations, « Iza no anaranao ? » |
+| 2 | Se présenter | Dire son pays, son métier, son âge | Nombres 1 à 20 |
+| 3 | Au marché | Acheter des fruits et légumes | « Ohatrinona ? », nombres jusqu''à 1 000 |
+| 4 | Se déplacer | Prendre un taxi-brousse, demander son chemin | Directions, lieux |
+| 5 | La famille | Parler de sa famille | Membres de la famille |
+| 6 | Le temps et la journée | Dire l''heure, parler de sa journée | Heures, verbes du quotidien |
+| 7 | Au travail | Parler de ses tâches avec des collègues | Vocabulaire de l''école et de l''ONG |
+| 8 | Politesse et culture | Remercier, s''excuser, respecter les aînés | Formules de politesse, repères culturels |
+| 9 | Révision par jeux de rôle | Enchaîner plusieurs situations | Révision |
+| 10 | Bilan | Mini-test oral, plan pour continuer | Révision |
+
+> [!astuce]
+> Construisez le programme à partir des **situations réelles** de l''élève, pas d''une table des matières de grammaire. La grammaire vient au service de la communication.
+
+## Étape 2 : préparer un cours complet
+
+### Le cours 3 : « Au marché »
+
+| Étape | Contenu | Support |
+| --- | --- | --- |
+| Échauffement (5 min) | Salutations et révision de la présentation | Conversation |
+| Découverte (10 min) | Dialogue enregistré au marché | Audio et texte dans le document partagé |
+| Explication (10 min) | « Ohatrinona ? », nombres, noms de produits | Tableau, images |
+| Pratique (15 min) | Jeu de rôle : Claire achète 3 produits, vous êtes la vendeuse | Images de produits avec prix |
+| Bilan (5 min) | 15 mots clés, devoir : enregistrer le dialogue | Cartes Quizlet |
+
+> [!attention]
+> Vérifiez soigneusement l''orthographe et la prononciation de chaque mot avant de l''enseigner, surtout pour une langue dont il existe peu de ressources écrites. Un élève qui apprend une erreur la répétera longtemps.
+
+## Étape 3 : donner le cours
+
+### La liste de contrôle
+
+| Avant | Pendant | Après |
+| --- | --- | --- |
+| Lien testé | Accueil chaleureux | Mise à jour du document partagé |
+| Documents ouverts | Objectif du cours annoncé | Devoirs envoyés |
+| Casque et lumière vérifiés | Élève qui parle le plus | Fiche de suivi remplie |
+| Plan B prévu | Corrections choisies | Préparation du cours suivant |
+| Batterie chargée | Bilan des 5 dernières minutes | Paiement vérifié |
+
+## Étape 4 : évaluer les progrès
+
+### Le mini-test du cours 10
+
+| Épreuve | Exemple | Critère |
+| --- | --- | --- |
+| **Se présenter** | 1 minute sans aide | Compréhensible, 5 informations |
+| **Jeu de rôle au marché** | Acheter 3 produits | Demande le prix, comprend la réponse, remercie |
+| **Comprendre une consigne** | « Le taxi-brousse part à 7 heures demain matin. » | Comprend l''heure et le moment |
+| **Politesse** | Saluer un aîné, s''excuser | Formules adaptées |
+
+### Le bilan écrit
+
+1. **Ce que l''élève sait faire maintenant** (relié aux objectifs).
+2. **Les points à travailler**.
+3. **Le niveau estimé** (par exemple « début A1 atteint »).
+4. **La proposition pour la suite** : 10 cours de plus, ou cours de conversation.
+
+## Étape 5 : recueillir un avis
+
+> [!exemple] Message de demande d''avis
+> « Bonjour Claire, merci pour ces 10 cours ! Vous avez fait de beaux progrès : vous savez maintenant vous présenter, acheter au marché et saluer vos collègues avec les bonnes formules. Si vous êtes satisfaite, pourriez-vous laisser un court avis sur mon profil ? Cela aide beaucoup d''autres élèves à me trouver. Bon départ pour Fianarantsoa ! »
+
+> [!madagascar]
+> Pour les élèves qui partent vivre à Madagascar, ajoutez à la fin du programme une **fiche de survie** : 30 phrases utiles, les règles de politesse essentielles et quelques fady courants à respecter, avec un conseil : demander aux personnes de la région, car les fady varient d''un endroit à l''autre.
+
+> [!retenir]
+> - Un programme de 10 cours construit à partir des situations réelles.
+> - Chaque cours en 5 étapes, avec des documents vérifiés.
+> - Une liste de contrôle avant, pendant et après.
+> - Un mini-test et un bilan écrit reliés aux objectifs.
+> - Un avis d''élève pour construire votre réputation.
+
+## Exercice pratique : votre premier programme
+
+> [!exercice] Exercice pratique · 6 heures (sur plusieurs semaines)
+> 1. Trouvez un élève volontaire (ami, collègue, membre de la diaspora) et fixez ses objectifs.
+> 2. Construisez le programme de 10 cours.
+> 3. Préparez complètement 3 cours avec leurs documents.
+> 4. Donnez au moins 3 cours et remplissez la fiche de suivi.
+> 5. Rédigez le mini-test et le bilan, et demandez un avis écrit.
+>
+> **À livrer** : le programme, les 3 cours préparés, la fiche de suivi, le bilan et l''avis. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 3, 0, 'À partir de quoi construire le programme ?', '["De rien","Des situations réelles de l''élève","D''une liste de grammaire au hasard","Du programme d''un autre élève"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 3, 1, 'Que vérifier avant d''enseigner un mot ?', '["Rien","Son prix","Sa couleur","Son orthographe et sa prononciation"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 3, 2, 'À quoi relier le bilan final ?', '["À rien","Aux objectifs fixés au début","Au temps qu''il fait","Au prix du forfait"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-f', 4, 'Trouver des élèves et se faire payer', 'Profil et vidéo de présentation, 5 canaux, prix et forfaits, règles d''annulation et de paiement, moyens de paiement et évolution.', 'Les élèves choisissent un professeur en ligne d''après son profil, sa vidéo de présentation et les avis des autres élèves. Ce dernier module vous montre comment construire votre présence, trouver vos premiers élèves, fixer vos prix, gérer les annulations et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer un profil et une vidéo de présentation convaincants.
+> 2. Trouver des élèves grâce à 5 canaux.
+> 3. Fixer vos prix et proposer des forfaits.
+> 4. Écrire vos règles d''annulation et de paiement.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le profil et la vidéo de présentation
+
+### Le profil
+
+1. **Une photo** souriante, nette, sur fond neutre.
+2. **Un titre** précis : « Professeur de malgache pour expatriés et volontaires » plutôt que « Professeur de langues ».
+3. **Votre expérience** et vos diplômes ou certifications.
+4. **Votre méthode** en 3 phrases.
+5. **Pour qui** sont vos cours.
+6. **Les avis** des élèves.
+
+### La vidéo (1 à 2 minutes)
+
+1. **Bonjour** et présentation en 15 secondes.
+2. **Pour qui** et **pour quoi** sont vos cours.
+3. **Comment** se passe un cours.
+4. **Une phrase** dans la langue enseignée, avec une traduction.
+5. **Invitation** à réserver un cours d''essai.
+
+> [!astuce]
+> Tournez la vidéo avec une **bonne lumière** (face à une fenêtre), un **son clair** (casque ou micro) et un **fond rangé**. Les élèves jugent votre professionnalisme en quelques secondes.
+
+## Où trouver des élèves : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Plateformes de cours de langues** (italki, Preply, autres) | Créez un profil complet ; vérifiez qu''elles acceptent les professeurs basés à Madagascar et vos moyens de retrait |
+| 2 | **ONG, ambassades, organisations de volontariat** | Proposez des cours de malgache aux nouveaux arrivants |
+| 3 | **Associations de la diaspora malgache** | Cours de malgache pour enfants et adultes, en France, au Canada, à La Réunion |
+| 4 | **Réseaux sociaux** | Publiez de courtes vidéos utiles (« 5 phrases pour le marché en malgache », « 3 erreurs fréquentes en français ») |
+| 5 | **Bouche-à-oreille** | Demandez à chaque élève satisfait de vous recommander |
+
+> [!exemple] Message à une ONG
+> « Bonjour, je suis professeure de malgache en ligne et je prépare les volontaires et les employés étrangers à leur arrivée : salutations, marché, transports, politesse et repères culturels, en 10 cours de 45 minutes. Je peux proposer un cours d''essai gratuit à vos prochains arrivants. »
+
+## Fixer ses prix
+
+| Formule | Exemple de prix |
+| --- | --- |
+| **Cours d''essai** (30 min) | Gratuit ou prix réduit |
+| **Cours de 45 à 60 min** | 25 000 Ar pour un élève local ; 12 à 20 € pour un élève étranger |
+| **Forfait de 10 cours** | Remise de 10 % environ, payé d''avance |
+| **Cours en petit groupe** (3 à 5 élèves) | Prix par élève plus bas, revenu par heure plus élevé |
+
+*(Montants donnés en exemple. Les prix varient beaucoup selon la langue, le pays de l''élève et votre expérience. Les plateformes prennent une commission : vérifiez-la avant de fixer vos tarifs.)*
+
+> [!attention]
+> L''anglais est très concurrentiel sur les plateformes, avec beaucoup de professeurs natifs. Pour vous démarquer, choisissez une **spécialité** : préparation d''entretiens, anglais pour francophones, malgache, français pour un examen précis.
+
+## Les règles d''annulation et de paiement
+
+| Règle | Exemple |
+| --- | --- |
+| **Annulation par l''élève** | Gratuite jusqu''à 24 heures avant ; ensuite le cours est dû |
+| **Retard de l''élève** | Le cours se termine à l''heure prévue |
+| **Annulation par vous** | Cours reporté ou remboursé |
+| **Coupure technique de votre côté** | Temps perdu rattrapé ou remboursé |
+| **Paiement** | Avant le cours, ou forfait payé d''avance |
+
+Écrivez ces règles sur votre profil ou dans un message envoyé avant le premier cours.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Élève local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme de cours | Retrait selon la plateforme : souvent Payoneer ou virement ; vérifiez les options pour Madagascar |
+| Élève étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Professeur certifié** | Formation de professeur de langue (par exemple pour enseigner le français langue étrangère, ou une certification d''enseignement de l''anglais) |
+| **Spécialiste d''examen** | Maîtrise des épreuves du DELF, du TCF, de l''IELTS |
+| **Cours en groupe** | Animation de groupes, Zoom Pro |
+| **Créateur de cours** | Cours vidéo à vendre (voir la formation Créateur de cours en ligne) |
+| **Formateur en entreprise** | Cours pour les employés d''une organisation (voir la formation Formateur en ligne) |
+
+> [!retenir]
+> - Un profil précis, une vidéo soignée et des avis d''élèves.
+> - Plateformes, ONG, diaspora, réseaux sociaux et bouche-à-oreille.
+> - Des prix adaptés, des forfaits et une spécialité qui vous démarque.
+> - Des règles d''annulation et de paiement écrites.
+> - Évoluez vers la certification, les examens, les groupes ou la création de cours.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez votre profil complet.
+> 2. Tournez votre vidéo de présentation de 1 à 2 minutes.
+> 3. Fixez vos prix et votre forfait de 10 cours.
+> 4. Rédigez vos règles d''annulation et de paiement.
+> 5. Contactez au moins 2 organisations ou associations, ou publiez 2 vidéos utiles sur un réseau social.
+>
+> **À livrer** : votre profil, votre vidéo, vos prix, vos règles et vos messages ou publications.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 4, 0, 'Quel titre de profil est le meilleur ?', '["Bonjour","Professeur de langues","Professeur de malgache pour expatriés et volontaires","Cours pas chers"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 4, 1, 'Comment se démarquer en anglais, très concurrentiel ?', '["Baisser les prix à zéro","Ne rien changer","Copier le profil d''un autre","Choisir une spécialité précise"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-f', 4, 2, 'Que se passe-t-il en cas de coupure technique de votre côté ?', '["L''élève paie quand même sans rien","Le cours est doublé en prix","Le temps perdu est rattrapé ou remboursé","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que fait un professeur de langue en ligne ?', '["Il vend des livres","Il traduit des documents","Il fait progresser des élèves par des cours en visioconférence","Il répare des ordinateurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Peut-on enseigner une langue qu''on maîtrise à un niveau intermédiaire ?', '["Oui, en l''apprenant pendant le cours","Oui, si on est rapide","Oui, sans problème","Non, il faut la maîtriser vraiment"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel test prouve un niveau de français ?', '["DELF ou DALF","Baccalauréat sportif","Permis de conduire","IELTS"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel niveau permet de travailler dans la langue ?', '["A1","A2","Aucun","B2"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quels élèves cherchent des cours de malgache ?', '["Personne","Uniquement des Malgaches de Madagascar","Expatriés, volontaires et enfants de la diaspora","Uniquement des enfants de 3 ans"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Combien de temps dure un premier cours d''évaluation environ ?', '["4 heures","Une journée","30 minutes","5 minutes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle est la première étape d''un cours ?', '["Le paiement","L''échauffement","Les devoirs","Le bilan"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle technique laisse l''élève se corriger lui-même ?', '["La correction directe","Le signal","Le silence total","L''ignorance"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quand utiliser la correction différée ?', '["Avant le cours","Pendant un jeu de rôle ou une présentation","Jamais","À chaque mot"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Comment montrer les progrès à l''élève ?', '["Changer de professeur","Ne rien montrer","L''enregistrer au début et après 2 mois, avec son accord","Lui dire qu''il est bon sans preuve"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que préciser pour le malgache enseigné ?', '["La variante enseignée","La couleur du manuel","Le prix du taxi","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle limite a souvent l''offre gratuite de Zoom ?', '["La langue","La durée des réunions","Le nombre de couleurs","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel outil sert à réviser le vocabulaire entre les cours ?', '["Quizlet ou Anki","Excel uniquement","Un scanner","Un micro"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Peut-on envoyer des copies complètes d''un manuel payant ?', '["Oui, si l''élève est pressé","Oui, toujours","Non, il faut respecter les droits d''auteur","Oui, en PDF"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel plan B prévoir en cas de connexion faible ?', '["Couper la vidéo, garder le son et le document partagé","Changer d''élève","Rien","Arrêter le cours sans prévenir"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que doit contenir le programme de 10 cours ?', '["Des devoirs sans cours","Un thème et un objectif de communication par cours","Rien de précis","Uniquement des listes de grammaire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel est l''objectif du cours « Au marché » ?', '["Conjuguer tous les verbes","Parler de politique","Acheter des produits en demandant les prix","Écrire un roman"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que faire après chaque cours ?', '["Supprimer le document","Mettre à jour le document, envoyer les devoirs, remplir la fiche","Changer de programme","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Pourquoi demander un avis à l''élève ?', '["Pour rien","Pour le faire payer plus","C''est obligatoire par la loi","Pour aider d''autres élèves à vous trouver"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que donner aux élèves qui partent vivre à Madagascar ?', '["Une fiche de survie avec phrases utiles et repères culturels","Une facture","Un livre de 500 pages","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle durée pour une vidéo de présentation ?', '["30 minutes","1 heure","5 secondes","1 à 2 minutes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Que vérifier avant de rejoindre une plateforme de cours ?', '["Sa couleur","Le nombre de ses employés","Rien","Qu''elle accepte les professeurs basés à Madagascar et vos moyens de retrait"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel avantage offre un forfait de 10 cours payé d''avance ?', '["Moins de préparation","Des revenus plus réguliers et un élève engagé","Des cours plus courts","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle règle d''annulation est raisonnable ?', '["Jamais d''annulation possible","Gratuite jusqu''à 24 heures avant","Annulation possible après le cours","Pas de règle écrite"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle évolution permet de vendre des cours vidéo ?', '["Développeur back-end","Monteur audio","Créateur de cours","Comptable"]'::jsonb, 2);
 
 -- edu-4-a
 delete from public.exam_questions where course_id = 'edu-4-a';
