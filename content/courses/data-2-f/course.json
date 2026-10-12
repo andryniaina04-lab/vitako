@@ -1,0 +1,97 @@
+{
+  "id": "data-2-f",
+  "hours": 14,
+  "description": "L'opérateur de saisie transforme des documents, formulaires et questionnaires en données exactes et bien rangées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de traitement de données, des PME et des ONG, en télétravail, avec Google Sheets, Excel et des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier d'opérateur de saisie et reconnaître les fausses offres",
+    "Taper vite et juste avec les 10 doigts et le pavé numérique",
+    "Appliquer des règles de saisie et organiser un tableau propre",
+    "Empêcher, nettoyer et contrôler les erreurs dans un tableur",
+    "Saisir et livrer un lot de documents avec un taux d'erreur mesuré",
+    "Trouver du travail sérieux, fixer ses prix et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'opérateur de saisie depuis Madagascar",
+      "summary": "Ce que fait un opérateur de saisie, les 6 types de missions, qui donne du travail, les fausses offres, les qualités et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qui compte le plus pour un opérateur de saisie ?", "options": ["La précision", "La vitesse à tout prix", "La créativité", "Le nombre d'écrans"], "correct": 0 },
+        { "q": "On vous propose de recevoir de l'argent sur votre compte pour le renvoyer à quelqu'un. Que faire ?", "options": ["Refuser : c'est souvent du blanchiment, illégal", "Accepter si on vous paie une commission", "Accepter une seule fois", "Demander plus d'argent"], "correct": 0 },
+        { "q": "Pourquoi un clavier avec pavé numérique est-il utile ?", "options": ["Pour saisir vite les montants et les chiffres", "Pour jouer", "Il n'est pas utile", "Pour écrire en majuscules"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : frappe, règles de saisie et contrôles",
+      "summary": "La frappe à 10 doigts, le pavé numérique, les 8 règles de saisie, le tableau propre, les 6 erreurs fréquentes et 4 méthodes de contrôle.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'un champ illisible ?", "options": ["Mettre le code convenu, comme [ILLISIBLE], sans deviner", "Deviner la valeur la plus probable", "Laisser un zéro", "Supprimer toute la ligne"], "correct": 0 },
+        { "q": "Dans un tableau propre, que représente une ligne ?", "options": ["Un élément, par exemple une facture", "Une information, par exemple la date", "Un titre", "Une couleur"], "correct": 0 },
+        { "q": "3 erreurs sur 1 000 champs contrôlés : quel est le taux d'erreur ?", "options": ["0,3 %", "3 %", "30 %", "0,03 %"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Sheets, Excel, OCR, et les outils payants",
+      "summary": "Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert la validation des données ?", "options": ["Refuser les saisies qui ne respectent pas une règle", "Colorer les cellules", "Imprimer le tableau", "Envoyer le fichier"], "correct": 0 },
+        { "q": "Quelle fonction supprime les espaces en trop ?", "options": ["SUPPRESPACE", "SOMME", "NB.SI", "MAJUSCULE"], "correct": 0 },
+        { "q": "Que faire avant de supprimer des doublons ?", "options": ["Faire une copie de la feuille", "Fermer le fichier", "Trier une seule colonne", "Supprimer la ligne de titres"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : saisir et contrôler un lot de questionnaires",
+      "summary": "Analyse de la consigne, préparation du tableau et des documents, sessions de saisie, cas difficiles, 5 contrôles et rapport de livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Dans quel ordre placer les colonnes du tableau ?", "options": ["Dans l'ordre du questionnaire papier", "Par ordre alphabétique", "Au hasard", "Les plus faciles d'abord"], "correct": 0 },
+        { "q": "Une réponse semble incohérente. Que faire ?", "options": ["Saisir ce qui est écrit et le signaler en remarque", "La corriger selon votre idée", "La laisser vide sans rien dire", "Supprimer le questionnaire"], "correct": 0 },
+        { "q": "Comment éviter les décalages de lignes ?", "options": ["Vérifier le numéro du questionnaire au début de chaque ligne", "Saisir plus vite", "Ne pas utiliser de numéros", "Fusionner les cellules"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver du travail et se faire payer",
+      "summary": "Sources sérieuses, CV chiffré, tests de recrutement, prix à l'heure et au document, devis, confidentialité, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 7 500 Ar de l'heure et 12 questionnaires par heure, quel est le prix par questionnaire ?", "options": ["Environ 625 Ar", "7 500 Ar", "90 000 Ar", "12 Ar"], "correct": 0 },
+        { "q": "Que faire avant de donner un prix au document ?", "options": ["Tester sur de vrais documents du client", "Donner le prix le plus bas possible", "Copier le prix d'une annonce", "Rien"], "correct": 0 },
+        { "q": "Que mettre sur un CV d'opérateur de saisie ?", "options": ["Sa vitesse, sa précision et un projet chiffré", "Uniquement ses loisirs", "Ses mots de passe", "Rien de chiffré"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un opérateur de saisie ?", "options": ["Il transforme des informations en données exactes et bien rangées", "Il répare les claviers", "Il vend des ordinateurs", "Il écrit des articles"], "correct": 0 },
+    { "q": "Quel est un signal d'alerte d'une fausse offre de saisie ?", "options": ["On vous demande de payer un kit de démarrage", "On vous fait passer un test", "On vous donne un contrat écrit", "L'entreprise a un site et une adresse"], "correct": 0 },
+    { "q": "Pourquoi utiliser deux écrans ?", "options": ["Le document d'un côté, le tableau de l'autre", "Pour regarder des vidéos", "C'est obligatoire", "Pour taper plus fort"], "correct": 0 },
+    { "q": "Tous les combien faire une pause ?", "options": ["Toutes les 45 à 50 minutes", "Toutes les 5 heures", "Une fois par semaine", "Jamais"], "correct": 0 },
+    { "q": "Sur un clavier AZERTY, où se posent les index ?", "options": ["Sur F et J", "Sur A et Z", "Sur la barre d'espace", "Sur Entrée"], "correct": 0 },
+    { "q": "Quel doigt utilise le 0 du pavé numérique ?", "options": ["Le pouce", "L'auriculaire", "L'index de la main gauche", "Le majeur"], "correct": 0 },
+    { "q": "Comment saisir un montant dans une colonne de montants ?", "options": ["Un nombre seul, comme 125000", "125 000 Ar", "cent vingt-cinq mille", "125 000 ariary environ"], "correct": 0 },
+    { "q": "Que faut-il pour un champ vide ?", "options": ["Le laisser vide ou mettre le code convenu", "Mettre 0", "Inventer une valeur", "Supprimer la colonne"], "correct": 0 },
+    { "q": "Dans un tableau propre, combien d'informations par colonne ?", "options": ["Une seule", "Toutes", "Deux", "Trois"], "correct": 0 },
+    { "q": "Pourquoi éviter qu'une couleur porte une information ?", "options": ["On ne peut ni la trier ni la compter facilement : mieux vaut une colonne Statut", "Les couleurs sont interdites", "Les couleurs coûtent cher", "Ce n'est pas un problème"], "correct": 0 },
+    { "q": "1 524 saisi 1 254 est une erreur…", "options": ["D'inversion", "De colonne", "De doublon", "De date"], "correct": 0 },
+    { "q": "Qu'est-ce que le total de contrôle ?", "options": ["Comparer la somme des montants saisis au total attendu", "Le salaire du mois", "Le nombre de pauses", "La note du client"], "correct": 0 },
+    { "q": "Qu'est-ce que la double saisie ?", "options": ["Deux personnes saisissent les mêmes documents et on compare", "Saisir deux fois plus vite", "Saisir sur deux ordinateurs à la fois", "Copier-coller deux fois"], "correct": 0 },
+    { "q": "Quelle touche valide et passe à la cellule de droite ?", "options": ["Tab", "Échap", "Suppr", "Maj"], "correct": 0 },
+    { "q": "À quoi sert de figer la ligne de titres ?", "options": ["Garder les titres visibles en descendant dans le tableau", "Empêcher toute modification", "Imprimer plus vite", "Supprimer les doublons"], "correct": 0 },
+    { "q": "Que fait NOMPROPRE sur « jean RAKOTO » ?", "options": ["« Jean Rakoto »", "« JEAN RAKOTO »", "« jean rakoto »", "« J. R. »"], "correct": 0 },
+    { "q": "Quelle fonction compte combien de fois une valeur apparaît ?", "options": ["NB.SI", "SOMME", "SUPPRESPACE", "NOMPROPRE"], "correct": 0 },
+    { "q": "Pourquoi ne jamais trier une seule colonne ?", "options": ["Les lignes seraient mélangées", "C'est trop lent", "Le fichier se fermerait", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Que veut dire OCR ?", "options": ["Reconnaissance optique de caractères", "Ordinateur central rapide", "Outil de calcul rapide", "Organisation des comptes"], "correct": 0 },
+    { "q": "Comment utiliser l'OCR gratuit de Google Drive ?", "options": ["Clic droit sur le fichier, Ouvrir avec, Google Docs", "Imprimer le fichier", "Envoyer le fichier par SMS", "Renommer le fichier"], "correct": 0 },
+    { "q": "Que doit-on toujours faire après une reconnaissance de texte ?", "options": ["Vérifier chaque chiffre", "Livrer directement", "Supprimer l'original", "Changer la police"], "correct": 0 },
+    { "q": "Quelle fonction d'Excel avancé permet de nettoyer de gros fichiers automatiquement ?", "options": ["Power Query", "Paint", "WordArt", "Le correcteur d'orthographe"], "correct": 0 },
+    { "q": "150 champs contrôlés, 1 erreur : le taux d'erreur est d'environ…", "options": ["0,67 %", "1,5 %", "15 %", "0,01 %"], "correct": 0 },
+    { "q": "Que contient le rapport de livraison ?", "options": ["Volume, temps, qualité, problèmes et description du fichier", "Seulement le prix", "Vos mots de passe", "Rien, le fichier suffit"], "correct": 0 },
+    { "q": "Que faire des données personnelles à la fin d'une mission, si le client le demande ?", "options": ["Les supprimer et le confirmer par écrit", "Les garder pour un autre client", "Les publier", "Les vendre"], "correct": 0 }
+  ]
+}

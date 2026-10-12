@@ -158,6 +158,12 @@ with sync_playwright() as p:
         check(f'module {i} validé', 'terminé' in page.locator('#mquiz').inner_text())
     goto(page, '#/formation/design-0-f')
     check('progression 100 %', '100 %' in page.content())
+    # Autre formation : blocs de code (arborescence, HTML, CSS)
+    goto(page, '#/formation/dev-3-f/module/2'); page.wait_for_timeout(300)
+    check('leçon avec blocs de code (dev-3-f module 2)', page.locator('.md pre.md-code').count() >= 3)
+    check('bloc de code : HTML affiché comme texte', '<h1>Bienvenue' in page.locator('.md pre.md-code').nth(1).inner_text())
+    page.locator('.md pre.md-code').first.scroll_into_view_if_needed()
+    page.screenshot(path=f'{SHOTS}/04c-lecon-code.png', full_page=False)
 
     # --- Examen : échec puis réussite
     goto(page, '#/formation/design-0-f/examen')

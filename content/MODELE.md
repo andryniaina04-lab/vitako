@@ -44,7 +44,10 @@ d'une formation à l'autre. La formation de référence est `courses/design-0-f`
 > [!definition] Mot à définir
 ```
 
-Chaque ligne de l'encadré commence par `>`. On peut y mettre des listes et du gras.
+Chaque ligne de l'encadré commence par `>`. On peut y mettre des listes, des tableaux et du gras.
+
+Pour une arborescence de dossiers, une commande ou du code HTML/CSS, utilisez un bloc de code
+entre deux lignes ```. Ne numérotez pas les titres `##` à la main : la numérotation est automatique.
 
 ## 4. Style
 

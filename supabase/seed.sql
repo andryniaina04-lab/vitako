@@ -67,7 +67,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, false),
   ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 12, false),
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 17, false),
-  ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 13, false),
+  ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
   ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, false),
   ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 14, false),
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 14, false),
@@ -1427,6 +1427,687 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que mettre en avant dans un CV d''annotateur ?', '["Un projet avec volume, temps et taux de précision","Le nombre d''amis sur Facebook","Une photo de profil retouchée","Ses loisirs uniquement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel mode de rémunération est le plus prévisible ?', '["Le salaire ou le paiement à l''heure","Le paiement à la tâche","Les pourboires","Le paiement au hasard"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelle évolution consiste à vérifier le travail des autres annotateurs ?', '["Comptable","Contrôleur qualité","Graphiste","Commercial"]'::jsonb, 1);
+
+-- data-2-f
+delete from public.exam_questions where course_id = 'data-2-f';
+delete from public.module_questions where course_id = 'data-2-f';
+delete from public.lessons where course_id = 'data-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 0, 'Le métier d''opérateur de saisie depuis Madagascar', 'Ce que fait un opérateur de saisie, les 6 types de missions, qui donne du travail, les fausses offres, les qualités et le poste de travail.', 'Factures, bons de commande, formulaires, questionnaires, fiches clients : chaque jour, des entreprises ont des milliers de documents à transformer en données propres dans un tableau. L''opérateur de saisie fait ce travail avec **rapidité** et surtout **précision**. Madagascar compte de nombreuses entreprises de traitement de données, et une partie du travail se fait aujourd''hui à distance. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un opérateur de saisie et pourquoi la précision est essentielle.
+> 2. Citer les 6 types de missions les plus courants.
+> 3. Repérer qui donne du travail de saisie.
+> 4. Reconnaître les fausses offres de « saisie à domicile ».
+> 5. Préparer un poste de travail confortable et efficace.
+
+## Le métier d''opérateur de saisie en une phrase
+
+Un opérateur de saisie **transforme des informations (papier, images, PDF, enregistrements) en données exactes, complètes et bien rangées dans un fichier ou un logiciel**.
+
+Une seule erreur peut coûter cher : un montant mal saisi sur une facture, un numéro de téléphone faux dans un fichier clients, une date inversée dans un dossier. C''est pour ça que les entreprises paient des personnes **fiables**.
+
+> [!definition] Donnée
+> Une information enregistrée de façon à pouvoir être triée, comptée ou recherchée : un nom, une date, un montant, un numéro. Dans un tableau, chaque **ligne** est en général un élément (un client, une facture) et chaque **colonne** une information (nom, date, montant).
+
+## Les 6 types de missions les plus courants
+
+| N° | Mission | Exemple |
+| --- | --- | --- |
+| 1 | **Saisie de documents** | Recopier 500 factures scannées dans un tableau : numéro, date, fournisseur, montant |
+| 2 | **Saisie de formulaires et questionnaires** | Enregistrer les réponses de 1 000 questionnaires papier d''une enquête d''ONG |
+| 3 | **Mise à jour de fichiers** | Corriger les adresses et téléphones d''un fichier clients |
+| 4 | **Nettoyage de données** | Supprimer les doublons, harmoniser les formats (dates, majuscules) |
+| 5 | **Recherche et collecte** | Trouver sur Internet les coordonnées de 200 entreprises |
+| 6 | **Saisie dans un logiciel** | Entrer les commandes dans un logiciel de gestion ou un site e-commerce |
+
+> [!madagascar] Votre avantage
+> Madagascar a une longue expérience des centres de traitement de données, surtout en français. Les entreprises connaissent la qualité de ce travail, et beaucoup de missions se font en **français**, un vrai atout face à d''autres pays.
+
+## Qui donne du travail de saisie ?
+
+1. **Entreprises de traitement de données et d''externalisation** à Madagascar : recrutement de salariés, parfois en télétravail après une période sur place.
+2. **PME et cabinets** (comptables, médicaux, immobiliers) qui externalisent leur saisie.
+3. **ONG et bureaux d''études** : saisie d''enquêtes et de questionnaires.
+4. **Boutiques en ligne** : saisie de produits, de commandes, de stocks.
+5. **Plateformes de freelance** : petites missions de saisie, de recherche et de nettoyage de fichiers.
+
+## Reconnaître les fausses offres
+
+Les annonces de « saisie à domicile » sont parmi les plus utilisées par les escrocs.
+
+### Les 6 signaux d''alerte
+
+1. On vous demande de **payer** : frais d''inscription, « kit de démarrage », logiciel obligatoire, formation.
+2. Le revenu promis est **très élevé** pour un travail présenté comme facile.
+3. On vous envoie un « travail test » puis on refuse de vous payer pour « trop d''erreurs », sans preuve.
+4. Le contact se fait **uniquement par WhatsApp**, sans nom d''entreprise vérifiable.
+5. On vous demande vos **codes** Mobile Money ou bancaires.
+6. On vous propose de recevoir de l''argent sur votre compte pour le **renvoyer** à quelqu''un d''autre : c''est souvent du blanchiment, et c''est **illégal**.
+
+> [!attention]
+> Une vraie entreprise ne vous fait **jamais payer** pour travailler pour elle, et ne vous demande jamais de faire transiter de l''argent par votre compte.
+
+## Les qualités demandées
+
+| Qualité | Pourquoi |
+| --- | --- |
+| **Précision** | Une erreur peut coûter cher à l''entreprise |
+| **Vitesse de frappe** | Plus vous êtes rapide (sans erreur), plus vous traitez de documents |
+| **Concentration** | Garder la même qualité sur des centaines de lignes |
+| **Respect des consignes** | Chaque client a ses règles de saisie |
+| **Confidentialité** | Vous voyez des données personnelles et financières |
+| **Régularité** | Les clients attendent des volumes constants |
+
+## Le poste de travail
+
+1. Un **ordinateur** avec un **clavier complet** (avec pavé numérique : très utile pour les montants).
+2. Une **souris**.
+3. Un **grand écran**, ou deux écrans : le document d''un côté, le tableau de l''autre. C''est un vrai gain de vitesse.
+4. Une **chaise** réglable, l''écran à hauteur des yeux, les avant-bras à l''horizontale.
+5. Une **bonne lumière**, sans reflet sur l''écran.
+6. Une **connexion stable** pour les outils en ligne.
+
+> [!astuce] Protéger son corps
+> Toutes les 45 à 50 minutes : levez-vous, étirez les poignets et les épaules, regardez au loin pendant 20 secondes. Après des mois de saisie, les douleurs aux poignets et au dos sont fréquentes si l''on ne fait pas attention.
+
+> [!retenir]
+> - Un opérateur de saisie transforme des informations en données exactes et bien rangées.
+> - La précision passe avant la vitesse.
+> - Entreprises de traitement de données, PME, ONG, boutiques en ligne et plateformes donnent du travail.
+> - On ne paie jamais pour travailler, et on ne fait jamais transiter d''argent pour quelqu''un.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Faites un test de vitesse de frappe gratuit en ligne en français (3 essais) et notez votre vitesse (mots par minute) et votre précision (%).
+> 2. Faites un test de saisie de chiffres (pavé numérique) et notez le résultat.
+> 3. Installez votre poste selon les 6 points et prenez une photo.
+> 4. Trouvez une annonce de « saisie à domicile » et vérifiez-la avec les 6 signaux d''alerte.
+>
+> **À livrer** : vos résultats de tests, la photo de votre poste et votre analyse de l''annonce. Vous referez ces tests au module 5 pour mesurer vos progrès.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 0, 0, 'Qu''est-ce qui compte le plus pour un opérateur de saisie ?', '["La précision","La vitesse à tout prix","La créativité","Le nombre d''écrans"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 0, 1, 'On vous propose de recevoir de l''argent sur votre compte pour le renvoyer à quelqu''un. Que faire ?', '["Demander plus d''argent","Refuser : c''est souvent du blanchiment, illégal","Accepter si on vous paie une commission","Accepter une seule fois"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 0, 2, 'Pourquoi un clavier avec pavé numérique est-il utile ?', '["Pour écrire en majuscules","Pour saisir vite les montants et les chiffres","Pour jouer","Il n''est pas utile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 1, 'Les bases : frappe, règles de saisie et contrôles', 'La frappe à 10 doigts, le pavé numérique, les 8 règles de saisie, le tableau propre, les 6 erreurs fréquentes et 4 méthodes de contrôle.', 'Une saisie de qualité repose sur trois choses : une **frappe** rapide et sûre, des **règles de saisie** appliquées sans exception, et des **contrôles** qui attrapent les erreurs avant le client. Ce module vous donne ces bases, avec des règles précises et des exemples.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Taper avec les 10 doigts et utiliser le pavé numérique sans regarder.
+> 2. Appliquer les 8 règles de saisie les plus courantes.
+> 3. Organiser un tableau de données propre.
+> 4. Repérer et éviter les 6 erreurs de saisie les plus fréquentes.
+> 5. Contrôler votre travail avec 4 méthodes.
+
+## La frappe : vitesse et précision
+
+### La position des 10 doigts
+
+1. Les index se posent sur les touches **F** et **J** (elles ont un petit relief).
+2. Chaque doigt reste sur sa rangée de départ et revient à sa place après chaque touche.
+3. Les pouces sont pour la barre d''espace.
+4. **Ne regardez pas le clavier** : regardez le document et l''écran.
+
+Sur un clavier français (AZERTY), la rangée de départ est : **Q S D F** pour la main gauche et **J K L M** pour la main droite.
+
+### Le pavé numérique
+
+1. Activez-le avec la touche **Verr Num**.
+2. L''index de la main droite se pose sur le **4**, le majeur sur le **5** (petit relief), l''annulaire sur le **6**.
+3. Le pouce est pour le **0**, l''auriculaire pour **Entrée**.
+
+> [!definition] Frappes par heure
+> La mesure habituelle de la vitesse en saisie de données : le nombre de touches tapées en une heure. On parle aussi de **mots par minute** pour le texte. Les deux ne valent rien sans la **précision** : 99 % de frappes justes est un minimum courant dans les entreprises.
+
+### Progresser chaque jour
+
+1. **15 minutes par jour** d''exercices gratuits de dactylographie en ligne.
+2. Commencez **lentement, sans erreur**, puis accélérez.
+3. Notez vos résultats chaque semaine.
+4. En 4 à 8 semaines d''entraînement régulier, la progression est nette.
+
+## Les 8 règles de saisie les plus courantes
+
+Chaque client a ses consignes. Mais ces règles reviennent presque toujours, et il faut les appliquer **à chaque ligne**.
+
+| N° | Règle | Correct | Incorrect |
+| --- | --- | --- | --- |
+| 1 | **Saisir exactement ce qui est écrit**, sans abréger, corriger ni deviner | Document : « Rakotomalala » → saisi « Rakotomalala » | « Rakoto » (abrégé) ; « Rakotomalal » (lettre oubliée) |
+| 2 | **Un format de date unique**, celui du client | 14/03/2026 | 14-3-26 ; 14 mars 2026 ; 3/14/2026 |
+| 3 | **Les nombres sans texte** dans les colonnes de montants | 125000 | 125 000 Ar ; cent vingt-cinq mille |
+| 4 | **Majuscules** selon la consigne | RAKOTO Jean (nom en majuscules si demandé) | rakoto jean |
+| 5 | **Pas d''espaces** au début ou à la fin | « Toamasina » | « Toamasina  » |
+| 6 | **Numéros de téléphone** dans un format unique | 034 12 345 67 | 0341234567 dans une ligne, +261 34… dans la suivante |
+| 7 | **Champ illisible** : un code convenu, jamais une invention | [ILLISIBLE] | Un chiffre deviné |
+| 8 | **Champ vide** : laisser vide ou mettre le code convenu | (vide) ou [VIDE] | 0 (qui veut dire autre chose) |
+
+> [!attention]
+> La règle 7 est la plus importante : **ne devinez jamais**. Un champ marqué [ILLISIBLE] sera vérifié par le client. Un chiffre deviné sera pris pour vrai, et l''erreur ne sera découverte que bien plus tard, quand elle aura coûté cher.
+
+## Un tableau de données propre
+
+### Les 6 règles d''un bon tableau
+
+1. **Une ligne = un élément** (une facture, un client, un questionnaire).
+2. **Une colonne = une seule information** : séparez « Nom » et « Prénom », « Code postal » et « Ville ».
+3. **Une seule ligne de titres**, en haut, sans cellules fusionnées.
+4. **Pas de lignes vides** au milieu des données.
+5. **Pas de mise en forme qui porte une information** (une couleur pour dire « payé ») : créez plutôt une colonne « Statut ».
+6. **Un identifiant unique** par ligne quand c''est possible (numéro de facture, numéro de questionnaire).
+
+> [!exemple] Avant / après
+> **Avant** (une seule colonne) : « Facture 125 du 14/3 - Épicerie Soa Tana - 125.000 Ar payé »
+> **Après** (5 colonnes) :
+>
+> | N° facture | Date | Client | Ville | Montant | Statut |
+> | --- | --- | --- | --- | --- | --- |
+> | 125 | 14/03/2026 | Épicerie Soa | Antananarivo | 125000 | Payé |
+
+## Les 6 erreurs de saisie les plus fréquentes
+
+| N° | Erreur | Exemple | Comment l''éviter |
+| --- | --- | --- | --- |
+| 1 | **Inversion** de chiffres | 1 254 au lieu de 1 524 | Relire les montants par groupes de 2 ou 3 chiffres |
+| 2 | **Oubli** ou **ajout** d''un zéro | 12 500 au lieu de 125 000 | Contrôler les totaux |
+| 3 | **Confusion** de caractères | O et 0, l et 1, S et 5 | Zoomer sur le document, connaître le contexte (un code postal ne contient pas de lettres) |
+| 4 | **Décalage de ligne** | Les données d''une facture saisies sur la ligne de la suivante | Vérifier l''identifiant au début de chaque ligne |
+| 5 | **Mauvaise colonne** | Le téléphone dans la colonne « Adresse » | Garder toujours le même ordre de saisie |
+| 6 | **Saut de document** | Une facture oubliée | Numéroter les documents et compter |
+
+## Contrôler son travail : 4 méthodes
+
+1. **Le comptage** : le nombre de lignes du tableau = le nombre de documents.
+2. **Le total de contrôle** : la somme des montants saisis = le total indiqué par le client (ou calculé sur les documents).
+3. **L''échantillon** : relisez au hasard 5 à 10 % des lignes en les comparant aux documents.
+4. **La double saisie** (pour les données très importantes) : deux personnes saisissent les mêmes documents, et on compare les deux tableaux ; chaque différence révèle une erreur.
+
+> [!definition] Taux d''erreur
+> Le nombre d''erreurs trouvées divisé par le nombre de champs contrôlés. Exemple : 3 erreurs sur 1 000 champs contrôlés = 3 ÷ 1 000 × 100 = **0,3 %** d''erreur, soit **99,7 %** de précision.
+
+> [!madagascar]
+> Les noms malgaches sont longs et les fautes de frappe y passent facilement inaperçues (« Andrianarivelo », « Razafindrakoto »). Relisez-les **syllabe par syllabe** dans votre échantillon de contrôle : c''est là que se cachent beaucoup d''erreurs.
+
+> [!retenir]
+> - 10 doigts, pavé numérique, et les yeux sur le document.
+> - Saisir exactement ce qui est écrit ; jamais deviner : [ILLISIBLE].
+> - Une ligne = un élément, une colonne = une information.
+> - Inversions, zéros, confusions, décalages : les erreurs à traquer.
+> - Comptage, total de contrôle, échantillon, double saisie.
+
+## Exercice pratique : vos premières saisies
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Faites 15 minutes d''exercice de dactylographie à 10 doigts, puis 10 minutes de pavé numérique.
+> 2. Rassemblez 20 tickets de caisse, factures ou reçus (les vôtres ou ceux de votre famille).
+> 3. Créez un tableau avec les colonnes : N°, Date, Commerçant, Ville, Montant, Moyen de paiement.
+> 4. Saisissez les 20 documents en respectant les 8 règles.
+> 5. Contrôlez : comptage, total de contrôle (calculez la somme à la main ou à la calculatrice), et relecture de 4 lignes au hasard.
+>
+> **À livrer** : votre tableau, votre contrôle et votre taux d''erreur.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 0, 'Que faire d''un champ illisible ?', '["Supprimer toute la ligne","Deviner la valeur la plus probable","Laisser un zéro","Mettre le code convenu, comme [ILLISIBLE], sans deviner"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 1, 'Dans un tableau propre, que représente une ligne ?', '["Une information, par exemple la date","Un élément, par exemple une facture","Un titre","Une couleur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 2, '3 erreurs sur 1 000 champs contrôlés : quel est le taux d''erreur ?', '["0,3 %","3 %","30 %","0,03 %"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 2, 'Les outils : Google Sheets, Excel, OCR, et les outils payants', 'Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader.', 'Le tableur est l''outil principal de l''opérateur de saisie. Bien utilisé, il **empêche** les erreurs avant qu''elles arrivent, **nettoie** les données en quelques secondes et **contrôle** le travail automatiquement. Ce module vous fait prendre en main Google Sheets et Excel, la reconnaissance de texte gratuite, puis les outils payants que demandent certains clients.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Saisir vite au clavier dans un tableur avec les bons raccourcis.
+> 2. Empêcher les erreurs avec la validation des données et les listes déroulantes.
+> 3. Nettoyer des données avec 6 fonctions et la suppression des doublons.
+> 4. Trier, filtrer et contrôler un tableau.
+> 5. Transformer une image ou un PDF en texte avec un outil gratuit.
+> 6. Savoir quand passer à Microsoft 365 et ABBYY FineReader.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Google Sheets** | Tableur en ligne, partage avec le client, historique des versions |
+| 2 | **Excel** (selon la version disponible) | Le tableur le plus utilisé en entreprise |
+| 3 | **Google Forms** | Créer un formulaire de saisie qui remplit un tableau automatiquement |
+| 4 | **Google Drive** (reconnaissance de texte) | Transformer une image ou un PDF scanné en texte modifiable |
+| 5 | **Site d''exercices de dactylographie** | S''entraîner chaque jour |
+
+Les menus et fonctions ci-dessous sont donnés en français. Ils sont presque identiques dans Google Sheets et Excel.
+
+## Saisir vite dans un tableur
+
+| Touche | Action |
+| --- | --- |
+| **Tab** | Valider et passer à la cellule de droite |
+| **Entrée** | Valider et passer à la ligne suivante (en revenant à la première colonne saisie après une série de Tab, dans Excel) |
+| **Ctrl + flèche** | Aller au bout des données dans une direction |
+| **Ctrl + D** | Recopier la cellule du dessus |
+| **Ctrl + Z** | Annuler |
+| **F2** | Modifier la cellule sans effacer son contenu (Excel) |
+
+> [!astuce] Figer la ligne de titres
+> **Affichage → Figer** (Google Sheets) ou **Affichage → Figer les volets** (Excel) : la ligne de titres reste visible quand vous descendez dans le tableau. Vous ne vous trompez plus de colonne.
+
+## Empêcher les erreurs : la validation des données
+
+La validation des données refuse (ou signale) une saisie qui ne respecte pas la règle. C''est le meilleur moyen d''éviter les erreurs.
+
+### Créer une liste déroulante
+
+1. Sélectionnez la colonne (par exemple « Moyen de paiement »).
+2. **Données → Validation des données**.
+3. Choisissez **Liste** (ou « Menu déroulant ») et entrez les choix : Espèces, MVola, Orange Money, Airtel Money, Virement.
+4. Choisissez de **refuser** les saisies hors liste.
+
+### Les autres règles utiles
+
+| Colonne | Règle |
+| --- | --- |
+| Date | Doit être une date valide |
+| Montant | Doit être un nombre supérieur à 0 |
+| Quantité | Nombre entier entre 1 et 1 000 |
+| Téléphone | Longueur exacte du texte (selon le format choisi) |
+
+## Nettoyer des données : 6 fonctions
+
+Dans les fonctions en français, on sépare les éléments par un **point-virgule** ( ; ).
+
+| Fonction | Ce qu''elle fait | Exemple | Résultat |
+| --- | --- | --- | --- |
+| **SUPPRESPACE** | Supprime les espaces en trop | `=SUPPRESPACE(A2)` sur « Toamasina  » | « Toamasina » |
+| **MAJUSCULE** | Met tout en majuscules | `=MAJUSCULE(A2)` sur « rakoto » | « RAKOTO » |
+| **NOMPROPRE** | Met une majuscule à chaque mot | `=NOMPROPRE(A2)` sur « jean RAKOTO » | « Jean Rakoto » |
+| **NB.SI** | Compte combien de fois une valeur apparaît | `=NB.SI(A:A;A2)` | 2 si la valeur est en double |
+| **SOMME** | Additionne | `=SOMME(E2:E101)` | Le total de contrôle |
+| **RECHERCHEV** | Cherche une valeur dans un autre tableau | `=RECHERCHEV(B2;Clients!A:C;3;FAUX)` | La ville du client dont le code est en B2 |
+
+> [!exemple] Nettoyer une colonne de noms en 4 étapes
+> 1. Insérez une colonne vide à côté de la colonne « Nom ».
+> 2. Tapez `=NOMPROPRE(SUPPRESPACE(A2))` dans la première cellule, puis recopiez vers le bas.
+> 3. Copiez la nouvelle colonne, puis **Collage spécial → Valeurs uniquement** à la place de l''ancienne.
+> 4. Supprimez la colonne de travail.
+
+### Supprimer les doublons
+
+- **Google Sheets** : **Données → Nettoyage des données → Supprimer les doublons**.
+- **Excel** : **Données → Supprimer les doublons**.
+
+**Attention** : faites toujours une **copie** de la feuille avant, et choisissez bien les colonnes qui définissent un doublon (par exemple le numéro de facture, pas le nom du client, qui peut revenir plusieurs fois normalement).
+
+## Trier, filtrer, contrôler
+
+1. **Trier** : sélectionnez tout le tableau, puis trier par une colonne (date, montant). Ne triez **jamais** une seule colonne : les lignes seraient mélangées.
+2. **Filtrer** : **Données → Créer un filtre** (Sheets) ou **Données → Filtrer** (Excel). Vous affichez par exemple seulement les montants supérieurs à 1 000 000 Ar, ou les cellules vides.
+3. **Contrôler** avec des formules :
+   - `=NBVAL(A2:A1000)` compte les lignes remplies (comparez au nombre de documents).
+   - `=SOMME(E2:E1000)` donne le total de contrôle.
+   - `=NB.SI(A:A;A2)>1` repère les identifiants en double.
+4. **Mise en forme conditionnelle** : colorez automatiquement les cellules vides ou les montants anormaux pour les voir d''un coup d''œil.
+
+> [!attention]
+> Gardez **toujours** une copie de la version d''origine avant de nettoyer, trier ou supprimer. Dans Google Sheets, l''**historique des versions** (Fichier → Historique des versions) permet aussi de revenir en arrière.
+
+## Formulaires de saisie avec Google Forms
+
+Pour saisir beaucoup de questionnaires identiques, un formulaire est souvent plus rapide et plus sûr qu''un tableau.
+
+1. Créez un **Google Forms** avec une question par champ du questionnaire papier, dans le **même ordre**.
+2. Utilisez des **choix multiples** et des **listes** dès que possible : moins de frappe, moins d''erreurs.
+3. Rendez les champs importants **obligatoires**.
+4. Reliez le formulaire à une **feuille Google Sheets** : chaque envoi crée une ligne.
+
+## La reconnaissance de texte (OCR)
+
+> [!definition] OCR
+> *Optical Character Recognition*, ou reconnaissance optique de caractères : un logiciel qui « lit » le texte d''une image ou d''un PDF scanné et le transforme en texte que l''on peut copier.
+
+### L''OCR gratuit de Google Drive
+
+1. Importez l''image ou le PDF dans Google Drive.
+2. **Clic droit → Ouvrir avec → Google Docs**.
+3. Le document s''ouvre avec l''image en haut et le **texte reconnu** en dessous.
+4. Copiez le texte dans votre tableau, puis **vérifiez chaque chiffre** : l''OCR confond souvent 0 et O, 1 et l, 5 et S, surtout sur des documents de mauvaise qualité.
+
+L''OCR fait gagner du temps sur les documents **imprimés** et nets. Sur l''écriture manuscrite ou les documents abîmés, la saisie manuelle reste souvent plus sûre.
+
+## Quand passer aux outils payants ?
+
+| Outil payant | Ce qu''il apporte | Qui le paie en général |
+| --- | --- | --- |
+| **Microsoft Excel** (Microsoft 365) | Toutes les fonctions d''Excel, dont **Power Query** pour nettoyer et transformer de gros fichiers automatiquement ; compatibilité totale avec les fichiers des entreprises | Vous, si vos clients exigent Excel ; ou l''entreprise qui vous emploie |
+| **ABBYY FineReader** | OCR professionnel très précis, conversion de PDF en Excel en gardant les tableaux, traitement de nombreux documents à la fois | Vous, si vous traitez de gros volumes de documents scannés ; ou le client |
+
+Les prix changent : vérifiez-les sur les sites officiels. Dans les entreprises de traitement de données, les logiciels sont **fournis**. En freelance, commencez avec Google Sheets et l''OCR de Google Drive, et investissez quand un client régulier l''exige.
+
+> [!madagascar]
+> Google Sheets fonctionne en ligne, mais il peut aussi être utilisé **hors connexion** dans le navigateur Chrome si vous activez ce mode à l''avance dans Google Drive. Utile pendant les coupures de connexion : vos saisies sont synchronisées au retour d''Internet.
+
+> [!retenir]
+> - Tab, Entrée, Ctrl + D et une ligne de titres figée pour saisir vite.
+> - Validation des données et listes déroulantes : les erreurs sont bloquées à la source.
+> - SUPPRESPACE, NOMPROPRE, MAJUSCULE, NB.SI, SOMME, RECHERCHEV pour nettoyer et contrôler.
+> - Toujours une copie avant de nettoyer ou de supprimer des doublons.
+> - OCR pour gagner du temps, mais chaque chiffre est vérifié.
+
+## Exercice pratique : un tableau qui se protège
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Reprenez votre tableau de 20 reçus du module 2 dans Google Sheets.
+> 2. Ajoutez une liste déroulante pour « Moyen de paiement » et des règles pour « Date » et « Montant ».
+> 3. Ajoutez volontairement 5 erreurs (espaces, minuscules, doublon), puis nettoyez-les avec les fonctions et la suppression des doublons.
+> 4. Ajoutez les formules de contrôle (NBVAL, SOMME, NB.SI) et une mise en forme conditionnelle pour les cellules vides.
+> 5. Prenez en photo un document imprimé (facture, page de livre), passez-le dans l''OCR de Google Drive et comptez les erreurs de reconnaissance.
+> 6. Créez un Google Forms de 6 questions relié à une feuille.
+>
+> **À livrer** : le lien de votre tableau (en lecture seule), le lien du formulaire et votre compte rendu sur l''OCR.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 2, 0, 'À quoi sert la validation des données ?', '["Envoyer le fichier","Imprimer le tableau","Refuser les saisies qui ne respectent pas une règle","Colorer les cellules"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 2, 1, 'Quelle fonction supprime les espaces en trop ?', '["SOMME","SUPPRESPACE","NB.SI","MAJUSCULE"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 2, 2, 'Que faire avant de supprimer des doublons ?', '["Fermer le fichier","Trier une seule colonne","Supprimer la ligne de titres","Faire une copie de la feuille"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 3, 'Premier projet : saisir et contrôler un lot de questionnaires', 'Analyse de la consigne, préparation du tableau et des documents, sessions de saisie, cas difficiles, 5 contrôles et rapport de livraison.', 'Dans ce module, vous traitez un vrai lot de saisie, comme ceux que confient les entreprises et les ONG : 100 questionnaires d''enquête à saisir, nettoyer, contrôler et livrer. Vous suivez la méthode d''un professionnel, du bon de commande au rapport de livraison.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une consigne de saisie et préparer le tableau.
+> 2. Organiser un lot de documents pour ne rien perdre.
+> 3. Saisir un lot avec un rythme régulier et un suivi.
+> 4. Contrôler la qualité avec un échantillon et des totaux.
+> 5. Livrer avec un rapport clair.
+
+## Le cas pratique : l''enquête « Rano sy Fahasalamana »
+
+> [!exemple] Votre mission
+> Une ONG a mené une enquête sur l''accès à l''eau dans 4 communes de la région Analamanga. Elle vous confie **100 questionnaires** scannés (PDF), remplis à la main par les enquêteurs. Chaque questionnaire contient 15 questions : commune, date, nombre de personnes dans le foyer, source d''eau principale, distance jusqu''à la source, prix payé par mois, etc. Elle veut un tableau propre sous **5 jours**, avec un **taux d''erreur inférieur à 0,5 %**.
+
+## Étape 1 : analyser la consigne
+
+Avant de saisir la première ligne, lisez toute la consigne et posez vos questions **en une seule fois**.
+
+### Les 8 questions à se poser
+
+1. Quelles sont les **colonnes** attendues, dans quel **ordre** ?
+2. Quel **format** pour les dates, les nombres, les noms ?
+3. Les réponses à choix sont-elles à saisir en **texte** (« Puits ») ou en **code** (« 2 ») ?
+4. Que faire d''une réponse **illisible** ? D''une réponse **vide** ? D''une **réponse incohérente** (12 personnes dans le foyer, mais 0 adulte) ?
+5. Faut-il saisir les **commentaires** écrits en marge ?
+6. Quel **format de fichier** livrer (Excel, Google Sheets, CSV) ?
+7. Quel **taux d''erreur** est accepté, et comment sera-t-il contrôlé ?
+8. Les données sont-elles **confidentielles** (noms, téléphones) ?
+
+> [!exemple] Extrait du tableau de codes fourni par l''ONG
+>
+> | Question | Réponse | Code à saisir |
+> | --- | --- | --- |
+> | Source d''eau principale | Robinet dans la maison | 1 |
+> | | Borne-fontaine | 2 |
+> | | Puits | 3 |
+> | | Rivière ou source | 4 |
+> | | Autre | 9 |
+> | Réponse illisible | — | 98 |
+> | Pas de réponse | — | 99 |
+
+## Étape 2 : préparer le tableau et les documents
+
+### Le tableau
+
+1. Une colonne **N° questionnaire** en premier (l''identifiant unique).
+2. Les 15 colonnes dans **l''ordre du questionnaire papier** : vos yeux suivent le document de haut en bas, vos doigts suivent le tableau de gauche à droite.
+3. Une colonne **Remarques** à la fin, pour signaler un problème.
+4. La **ligne de titres figée**.
+5. Les **validations** : listes de codes, dates valides, nombres entre des limites raisonnables (exemple : nombre de personnes entre 1 et 30).
+
+### Les documents
+
+1. Vérifiez que vous avez bien **100 fichiers**, et qu''ils s''ouvrent tous.
+2. **Renommez**-les si besoin dans un ordre clair : `Q001.pdf`, `Q002.pdf`… `Q100.pdf`.
+3. Créez une **liste de suivi** : numéro, saisi (oui / non), problème.
+
+## Étape 3 : saisir le lot
+
+### Organiser les sessions
+
+| Session | Questionnaires | Temps | Problèmes notés |
+| --- | --- | --- | --- |
+| 1 | Q001 à Q020 | 1 h 40 | Q007 : âge illisible (98) ; Q015 : 2 sources cochées |
+| 2 | Q021 à Q040 | 1 h 25 | Q033 : page 2 manquante |
+| … | … | … | … |
+
+1. Sessions de **20 questionnaires** environ, puis une pause.
+2. Le document à **gauche** (ou sur le premier écran), le tableau à **droite**.
+3. Toujours le **même ordre** de saisie, colonne par colonne.
+4. Vérifiez le **N° questionnaire** au début de chaque ligne : c''est la protection contre les décalages.
+5. Notez chaque problème dans la colonne **Remarques** et dans la liste de suivi.
+
+> [!astuce] Le rythme
+> Les premiers questionnaires sont lents : vous découvrez l''écriture des enquêteurs et les cas difficiles. Ne vous inquiétez pas : votre vitesse augmente nettement après une vingtaine de documents. Ne sacrifiez jamais la précision pour rattraper le temps.
+
+### Les cas difficiles
+
+| Cas | Ce qu''on fait |
+| --- | --- |
+| Réponse illisible | Code 98 et remarque, **jamais** une supposition |
+| Deux réponses cochées pour une question à choix unique | Suivre la consigne ; si rien n''est prévu, saisir la première et le signaler en remarque |
+| Réponse incohérente (prix de l''eau de 2 000 000 Ar par mois) | Saisir ce qui est écrit, et le signaler en remarque |
+| Page manquante | Saisir ce qui existe, codes 99 pour le reste, et signaler |
+
+## Étape 4 : contrôler la qualité
+
+### Les 5 contrôles
+
+1. **Comptage** : 100 lignes, 100 numéros différents (vérifiez avec NB.SI qu''il n''y a pas de doublon).
+2. **Cellules vides** : la mise en forme conditionnelle les fait ressortir ; chaque vide doit être un 99 ou être justifié.
+3. **Valeurs anormales** : triez chaque colonne de nombres et regardez les plus petites et les plus grandes valeurs.
+4. **Échantillon** : tirez **10 questionnaires au hasard** et comparez **chaque champ** avec le document.
+5. **Calcul du taux d''erreur** sur l''échantillon.
+
+> [!exemple] Calcul du taux d''erreur
+> 10 questionnaires × 15 champs = 150 champs contrôlés. Vous trouvez 1 erreur.
+> Taux d''erreur : 1 ÷ 150 × 100 ≈ **0,67 %**. C''est **au-dessus** de l''objectif de 0,5 %.
+> Que faire ? Corrigez l''erreur, cherchez si elle se répète (même type d''erreur sur d''autres lignes), puis contrôlez **10 autres questionnaires**. Si le nouvel échantillon est sans erreur : 1 erreur sur 300 champs ≈ 0,33 %, l''objectif est atteint.
+
+## Étape 5 : livrer avec un rapport
+
+Le rapport tient sur une page :
+
+1. **Volume** : 100 questionnaires saisis, 1 500 champs.
+2. **Temps** total et temps moyen par questionnaire.
+3. **Qualité** : taille de l''échantillon contrôlé, erreurs trouvées et corrigées, taux d''erreur final.
+4. **Problèmes** : la liste des questionnaires avec remarques (illisibles, pages manquantes, incohérences).
+5. **Fichier livré** : nom, format, nombre de lignes et de colonnes.
+
+> [!madagascar]
+> Les questionnaires remplis par différents enquêteurs ont des écritures très différentes. Si un enquêteur a une écriture difficile, signalez-le à l''ONG dans le rapport, avec les numéros concernés : elle pourra vérifier auprès de lui. C''est une information précieuse pour elle.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer à saisir avant d''avoir posé ses questions.
+> - Un ordre de colonnes différent de l''ordre du questionnaire.
+> - Deviner une réponse illisible.
+> - Contrôler seulement quelques champs au lieu de questionnaires complets.
+> - Livrer sans rapport ni liste des problèmes.
+
+> [!retenir]
+> - Lire toute la consigne et poser ses questions en une fois.
+> - Un tableau dans l''ordre du document, avec validations et colonne Remarques.
+> - Des sessions régulières, un suivi, et le numéro vérifié à chaque ligne.
+> - 5 contrôles, dont un échantillon complet et le calcul du taux d''erreur.
+> - Un rapport d''une page avec la liste des problèmes.
+
+## Exercice pratique : votre lot de saisie
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez un questionnaire papier de 10 questions (sur un sujet simple : habitudes de transport, usage du téléphone) et faites-le remplir à la main par 30 personnes de votre entourage, ou remplissez-en vous-même 30 en variant les écritures.
+> 2. Rédigez la consigne de saisie et le tableau de codes.
+> 3. Préparez le tableau avec validations, puis saisissez les 30 questionnaires en notant votre temps et les problèmes.
+> 4. Faites les 5 contrôles, avec un échantillon de 5 questionnaires, et calculez votre taux d''erreur.
+> 5. Rédigez le rapport de livraison.
+>
+> **À livrer** : la consigne, le tableau final, la liste de suivi, votre calcul du taux d''erreur et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 3, 0, 'Dans quel ordre placer les colonnes du tableau ?', '["Au hasard","Les plus faciles d''abord","Dans l''ordre du questionnaire papier","Par ordre alphabétique"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 3, 1, 'Une réponse semble incohérente. Que faire ?', '["Supprimer le questionnaire","Saisir ce qui est écrit et le signaler en remarque","La corriger selon votre idée","La laisser vide sans rien dire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 3, 2, 'Comment éviter les décalages de lignes ?', '["Vérifier le numéro du questionnaire au début de chaque ligne","Ne pas utiliser de numéros","Fusionner les cellules","Saisir plus vite"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 4, 'Trouver du travail et se faire payer', 'Sources sérieuses, CV chiffré, tests de recrutement, prix à l''heure et au document, devis, confidentialité, paiements et évolution.', 'La saisie de données est un des métiers à distance les plus accessibles, mais aussi un de ceux où les arnaques sont les plus nombreuses. Ce dernier module vous montre où trouver du vrai travail, comment vous présenter, comment fixer vos prix et vous faire payer, et comment évoluer vers des postes mieux rémunérés.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Identifier les sources de travail sérieuses.
+> 2. Rédiger un CV d''opérateur de saisie avec des preuves chiffrées.
+> 3. Réussir les tests de recrutement.
+> 4. Fixer vos prix à l''heure, à la ligne ou au document.
+> 5. Vous faire payer depuis Madagascar.
+> 6. Évoluer vers le contrôle qualité, l''administration de données ou l''analyse.
+
+## Où trouver du travail
+
+| N° | Source | Comment ça marche | Points d''attention |
+| --- | --- | --- | --- |
+| 1 | **Entreprises de traitement de données à Madagascar** | Candidature, tests, formation, contrat ; télétravail parfois possible après une période sur place | Revenu régulier ; horaires et objectifs fixés |
+| 2 | **PME et cabinets** (comptables, médicaux, immobiliers) | Missions directes de saisie et de mise à jour | Il faut aller les chercher : réseau, LinkedIn |
+| 3 | **ONG et bureaux d''études** | Saisie d''enquêtes, souvent par lots | Missions ponctuelles mais régulières pendant les enquêtes |
+| 4 | **Boutiques en ligne** | Saisie de produits, de commandes, mise à jour de catalogues | Apprenez aussi Shopify ou WooCommerce |
+| 5 | **Plateformes de freelance** | Petites missions de saisie, de recherche et de nettoyage de fichiers | Beaucoup de concurrence ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+
+### Vérifier une offre : rappel des règles
+
+1. **Jamais de paiement** pour obtenir un travail (inscription, kit, logiciel, formation obligatoire).
+2. **Jamais vos codes** Mobile Money ou bancaires.
+3. **Jamais d''argent qui transite** par votre compte pour quelqu''un d''autre.
+4. Une **entreprise vérifiable** : nom, adresse, site, avis.
+5. Des **conditions écrites** : tâche, volume, prix, délai de paiement.
+
+## Le CV d''opérateur de saisie
+
+### Ce que le recruteur cherche
+
+1. Votre **vitesse** et votre **précision**, chiffrées : « 45 mots par minute, 98 % de précision ; pavé numérique : 9 000 frappes par heure » (refaites les tests du module 1 pour avoir vos vrais chiffres).
+2. Vos **outils** : Google Sheets, Excel, validation des données, fonctions de nettoyage, OCR, Google Forms.
+3. Vos **langues** : français, malagasy, anglais (niveau honnête).
+4. Vos **preuves** : le projet du module 4 (« 30 questionnaires, 300 champs, 0,3 % d''erreur après contrôle »).
+5. Votre **disponibilité** et votre **équipement** (ordinateur, deuxième écran, connexion de secours).
+
+> [!exemple] Phrase de présentation
+> « Opératrice de saisie rigoureuse : 45 mots par minute avec 98 % de précision, maîtrise de Google Sheets et Excel (validation, nettoyage, contrôles), OCR et formulaires. Projet d''étude : 30 questionnaires d''enquête saisis et contrôlés avec un taux d''erreur de 0,3 %. Disponible 35 heures par semaine. »
+
+## Réussir les tests de recrutement
+
+Les entreprises font presque toujours passer des tests :
+
+| Test | Ce qu''il mesure | Comment le préparer |
+| --- | --- | --- |
+| **Vitesse de frappe** | Mots par minute et précision | 15 minutes d''entraînement par jour pendant plusieurs semaines |
+| **Saisie de chiffres** | Frappes par heure sur le pavé numérique | Exercices de pavé numérique |
+| **Saisie de documents** | Respect des consignes et précision | Refaire l''exercice du module 4 avec un chronomètre |
+| **Orthographe** | Français écrit | Dictées, exercices de grammaire |
+| **Tableur** | Fonctions, tri, filtres | Refaire l''exercice du module 3 |
+
+Le jour du test : reposé, au calme, et **la précision d''abord**. Une saisie rapide avec des erreurs est presque toujours éliminée.
+
+## Fixer ses prix
+
+### Les modes de paiement
+
+| Mode | Pour quoi | Attention |
+| --- | --- | --- |
+| **Salaire** | Emploi en entreprise | Vérifiez le contrat, les horaires et les objectifs |
+| **À l''heure** | Missions variées, nettoyage, recherche | Suivez précisément votre temps |
+| **À la ligne ou au document** | Lots de documents identiques | Faites un test sur 10 documents avant de donner un prix |
+
+### Calculer un prix au document
+
+1. **Revenu mensuel visé** (exemple : 900 000 Ar) ÷ **heures facturables** (exemple : 120 h) = **7 500 Ar de l''heure**.
+2. **Mesurez votre rythme** sur 10 documents du client, contrôle compris (exemple : 12 questionnaires par heure).
+3. **Prix par document** : 7 500 ÷ 12 ≈ **625 Ar par questionnaire**.
+4. Pour 100 questionnaires : 62 500 Ar, plus le temps de préparation et de rapport (exemple : 2 h, soit 15 000 Ar) = **77 500 Ar**.
+
+Ces prix sont des **exemples**, à adapter à votre niveau, à la difficulté des documents et au client. Pour les clients étrangers, fixez vos prix en euros ou en dollars. Ne donnez **jamais** un prix au document sans avoir vu des exemples réels : un document facile et un document manuscrit difficile ne demandent pas le même temps.
+
+### Le devis
+
+1. Le **volume** (nombre de documents ou de lignes) et le **type** de documents.
+2. Les **règles** de saisie convenues.
+3. Le **taux d''erreur** garanti et la méthode de contrôle.
+4. Le **délai**.
+5. Le **prix** et les conditions : pour un client direct, **50 % au début**, 50 % à la livraison.
+6. La **confidentialité** des données.
+
+## La confidentialité des données
+
+Vous saisissez souvent des **données personnelles** : noms, adresses, téléphones, revenus, santé.
+
+1. Ne copiez **jamais** ces données ailleurs que dans le fichier du client.
+2. Ne les envoyez **jamais** par WhatsApp ou par e-mail non demandé.
+3. Travaillez sur un ordinateur **protégé par un mot de passe**, pas dans un cybercafé.
+4. **Supprimez** les documents et fichiers à la fin de la mission si le client le demande, et confirmez-le par écrit.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Entreprise à Madagascar | Salaire par virement bancaire ou Mobile Money |
+| Client local (PME, ONG) | Mobile Money (MVola, Orange Money, Airtel Money) ou virement |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville si vous travaillez en indépendant.
+
+## Évoluer dans le métier
+
+| Étape | Ce qui change | Ce qu''il faut apprendre |
+| --- | --- | --- |
+| **Contrôleur qualité** | Vous vérifiez le travail des autres opérateurs | Méthodes d''échantillonnage, rigueur |
+| **Chef d''équipe** | Vous organisez les lots et formez les nouveaux | Organisation, communication |
+| **Administrateur de données** | Vous gérez des bases de données clients ou produits | Excel avancé, Power Query, bases de données |
+| **Assistant comptable** | Vous saisissez et contrôlez la comptabilité | Bases de la comptabilité, logiciels comptables |
+| **Analyste de données** | Vous transformez les données en tableaux de bord et en conclusions | Tableaux croisés dynamiques, graphiques, Power BI, SQL |
+
+Le tableur est la porte d''entrée : chaque fonction apprise vous rapproche d''un métier mieux payé.
+
+> [!retenir]
+> - Sources sérieuses : entreprises de traitement de données, PME, ONG, boutiques en ligne, plateformes.
+> - Un CV avec vitesse, précision et un projet chiffré.
+> - La précision d''abord, aux tests comme au travail.
+> - Prix au document = prix horaire ÷ documents par heure, après un test sur de vrais documents.
+> - Confidentialité absolue des données personnelles.
+
+## Exercice pratique : lancer votre recherche
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Refaites les tests de vitesse du module 1 et comparez avec vos premiers résultats.
+> 2. Rédigez votre CV d''opérateur de saisie avec vos chiffres réels.
+> 3. Trouvez 5 sources de travail (entreprises à Madagascar, ONG, offres en ligne) et vérifiez-les avec les 5 règles.
+> 4. Calculez votre prix horaire et un prix au document à partir de votre exercice du module 4.
+> 5. Envoyez au moins 2 candidatures ou propositions.
+>
+> **À livrer** : la comparaison de vos tests, votre CV, votre tableau des 5 sources, vos calculs et la preuve de vos 2 envois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 4, 0, 'À 7 500 Ar de l''heure et 12 questionnaires par heure, quel est le prix par questionnaire ?', '["Environ 625 Ar","12 Ar","90 000 Ar","7 500 Ar"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 4, 1, 'Que faire avant de donner un prix au document ?', '["Tester sur de vrais documents du client","Donner le prix le plus bas possible","Copier le prix d''une annonce","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 4, 2, 'Que mettre sur un CV d''opérateur de saisie ?', '["Ses mots de passe","Sa vitesse, sa précision et un projet chiffré","Rien de chiffré","Uniquement ses loisirs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que fait un opérateur de saisie ?', '["Il écrit des articles","Il répare les claviers","Il vend des ordinateurs","Il transforme des informations en données exactes et bien rangées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Quel est un signal d''alerte d''une fausse offre de saisie ?', '["L''entreprise a un site et une adresse","On vous donne un contrat écrit","On vous demande de payer un kit de démarrage","On vous fait passer un test"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Pourquoi utiliser deux écrans ?', '["Pour taper plus fort","C''est obligatoire","Pour regarder des vidéos","Le document d''un côté, le tableau de l''autre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Tous les combien faire une pause ?', '["Jamais","Toutes les 5 heures","Une fois par semaine","Toutes les 45 à 50 minutes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Sur un clavier AZERTY, où se posent les index ?', '["Sur Entrée","Sur la barre d''espace","Sur F et J","Sur A et Z"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Quel doigt utilise le 0 du pavé numérique ?', '["L''index de la main gauche","L''auriculaire","Le pouce","Le majeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Comment saisir un montant dans une colonne de montants ?', '["125 000 ariary environ","125 000 Ar","cent vingt-cinq mille","Un nombre seul, comme 125000"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faut-il pour un champ vide ?', '["Le laisser vide ou mettre le code convenu","Supprimer la colonne","Inventer une valeur","Mettre 0"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Dans un tableau propre, combien d''informations par colonne ?', '["Une seule","Trois","Toutes","Deux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Pourquoi éviter qu''une couleur porte une information ?', '["Ce n''est pas un problème","Les couleurs coûtent cher","On ne peut ni la trier ni la compter facilement : mieux vaut une colonne Statut","Les couleurs sont interdites"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '1 524 saisi 1 254 est une erreur…', '["De date","De colonne","D''inversion","De doublon"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Qu''est-ce que le total de contrôle ?', '["Comparer la somme des montants saisis au total attendu","Le nombre de pauses","La note du client","Le salaire du mois"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Qu''est-ce que la double saisie ?', '["Saisir sur deux ordinateurs à la fois","Saisir deux fois plus vite","Copier-coller deux fois","Deux personnes saisissent les mêmes documents et on compare"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Quelle touche valide et passe à la cellule de droite ?', '["Tab","Maj","Suppr","Échap"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'À quoi sert de figer la ligne de titres ?', '["Garder les titres visibles en descendant dans le tableau","Supprimer les doublons","Imprimer plus vite","Empêcher toute modification"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que fait NOMPROPRE sur « jean RAKOTO » ?', '["« JEAN RAKOTO »","« Jean Rakoto »","« J. R. »","« jean rakoto »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Quelle fonction compte combien de fois une valeur apparaît ?', '["NB.SI","SOMME","SUPPRESPACE","NOMPROPRE"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Pourquoi ne jamais trier une seule colonne ?', '["Les lignes seraient mélangées","C''est trop lent","Le fichier se fermerait","Ce n''est pas possible"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que veut dire OCR ?', '["Ordinateur central rapide","Reconnaissance optique de caractères","Outil de calcul rapide","Organisation des comptes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Comment utiliser l''OCR gratuit de Google Drive ?', '["Renommer le fichier","Envoyer le fichier par SMS","Clic droit sur le fichier, Ouvrir avec, Google Docs","Imprimer le fichier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que doit-on toujours faire après une reconnaissance de texte ?', '["Livrer directement","Changer la police","Vérifier chaque chiffre","Supprimer l''original"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Quelle fonction d''Excel avancé permet de nettoyer de gros fichiers automatiquement ?', '["Power Query","WordArt","Paint","Le correcteur d''orthographe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '150 champs contrôlés, 1 erreur : le taux d''erreur est d''environ…', '["0,67 %","15 %","0,01 %","1,5 %"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que contient le rapport de livraison ?', '["Seulement le prix","Rien, le fichier suffit","Vos mots de passe","Volume, temps, qualité, problèmes et description du fichier"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faire des données personnelles à la fin d''une mission, si le client le demande ?', '["Les supprimer et le confirmer par écrit","Les vendre","Les publier","Les garder pour un autre client"]'::jsonb, 0);
 
 -- design-0-f
 delete from public.exam_questions where course_id = 'design-0-f';

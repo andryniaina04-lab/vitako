@@ -531,6 +531,92 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-2-f": {
+  "hours": 14,
+  "description": "L'opérateur de saisie transforme des documents, formulaires et questionnaires en données exactes et bien rangées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de traitement de données, des PME et des ONG, en télétravail, avec Google Sheets, Excel et des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier d'opérateur de saisie et reconnaître les fausses offres",
+   "Taper vite et juste avec les 10 doigts et le pavé numérique",
+   "Appliquer des règles de saisie et organiser un tableau propre",
+   "Empêcher, nettoyer et contrôler les erreurs dans un tableur",
+   "Saisir et livrer un lot de documents avec un taux d'erreur mesuré",
+   "Trouver du travail sérieux, fixer ses prix et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'opérateur de saisie depuis Madagascar",
+    "summary": "Ce que fait un opérateur de saisie, les 6 types de missions, qui donne du travail, les fausses offres, les qualités et le poste de travail.",
+    "sections": [
+     "Le métier d'opérateur de saisie en une phrase",
+     "Les 6 types de missions les plus courants",
+     "Qui donne du travail de saisie ?",
+     "Reconnaître les fausses offres",
+     "Les qualités demandées",
+     "Le poste de travail",
+     "Exercice pratique : votre point de départ"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : frappe, règles de saisie et contrôles",
+    "summary": "La frappe à 10 doigts, le pavé numérique, les 8 règles de saisie, le tableau propre, les 6 erreurs fréquentes et 4 méthodes de contrôle.",
+    "sections": [
+     "La frappe : vitesse et précision",
+     "Les 8 règles de saisie les plus courantes",
+     "Un tableau de données propre",
+     "Les 6 erreurs de saisie les plus fréquentes",
+     "Contrôler son travail : 4 méthodes",
+     "Exercice pratique : vos premières saisies"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : Google Sheets, Excel, OCR, et les outils payants",
+    "summary": "Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader.",
+    "sections": [
+     "Les outils gratuits",
+     "Saisir vite dans un tableur",
+     "Empêcher les erreurs : la validation des données",
+     "Nettoyer des données : 6 fonctions",
+     "Trier, filtrer, contrôler",
+     "Formulaires de saisie avec Google Forms",
+     "La reconnaissance de texte (OCR)",
+     "Quand passer aux outils payants ?",
+     "Exercice pratique : un tableau qui se protège"
+    ],
+    "minutes": 10
+   },
+   {
+    "title": "Premier projet : saisir et contrôler un lot de questionnaires",
+    "summary": "Analyse de la consigne, préparation du tableau et des documents, sessions de saisie, cas difficiles, 5 contrôles et rapport de livraison.",
+    "sections": [
+     "Le cas pratique : l'enquête « Rano sy Fahasalamana »",
+     "Étape 1 : analyser la consigne",
+     "Étape 2 : préparer le tableau et les documents",
+     "Étape 3 : saisir le lot",
+     "Étape 4 : contrôler la qualité",
+     "Étape 5 : livrer avec un rapport",
+     "Exercice pratique : votre lot de saisie"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver du travail et se faire payer",
+    "summary": "Sources sérieuses, CV chiffré, tests de recrutement, prix à l'heure et au document, devis, confidentialité, paiements et évolution.",
+    "sections": [
+     "Où trouver du travail",
+     "Le CV d'opérateur de saisie",
+     "Réussir les tests de recrutement",
+     "Fixer ses prix",
+     "La confidentialité des données",
+     "Se faire payer depuis Madagascar",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre recherche"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "design-0-f": {
   "hours": 14,
   "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
