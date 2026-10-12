@@ -1,0 +1,97 @@
+{
+  "id": "data-3-f",
+  "hours": 18,
+  "description": "L'analyste de données transforme des données brutes en informations claires qui aident à décider. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des ONG et des entreprises francophones, en télétravail, avec Excel, Power BI et SQL : nettoyage, indicateurs, graphiques, requêtes, tableaux de bord et recommandations. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les 6 étapes d'une analyse",
+    "Organiser et nettoyer des données avec méthode",
+    "Calculer les indicateurs de base et choisir le bon graphique",
+    "Utiliser Excel, Power Query, SQL et Power BI",
+    "Mener une analyse complète et présenter des recommandations",
+    "Vendre ses services, protéger les données des clients et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'analyste de données depuis Madagascar",
+      "summary": "Ce que fait l'analyste, les 6 étapes d'une analyse, la différence avec le data scientist et l'opérateur de saisie, les compétences, les clients et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle étape prend souvent le plus de temps ?", "options": ["Le nettoyage des données", "Le choix des couleurs", "La facturation", "L'envoi du rapport"], "correct": 0 },
+        { "q": "Qui construit des modèles de prévision avancés ?", "options": ["Le data scientist", "L'opérateur de saisie", "Le graphiste", "Le comptable"], "correct": 0 },
+        { "q": "Que faut-il en général pour partager un tableau Power BI en ligne ?", "options": ["Une licence payante comme Power BI Pro", "Rien", "Un compte Facebook", "Une imprimante"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : données propres, nettoyage, indicateurs et graphiques",
+      "summary": "Données tabulaires, nettoyage en 7 points, somme, moyenne, médiane et évolution, choix du graphique et erreurs d'interprétation.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Ventes de 10, 12, 11, 13 et 54 : quelle est la médiane ?", "options": ["12", "20", "54", "100"], "correct": 0 },
+        { "q": "Quel graphique pour une évolution dans le temps ?", "options": ["Une courbe", "Un camembert à 12 parts", "Un nuage de mots", "Aucun"], "correct": 0 },
+        { "q": "Deux chiffres qui augmentent ensemble prouvent-ils une cause ?", "options": ["Non, corrélation n'est pas cause", "Oui, toujours", "Oui, en saison des pluies", "Oui, si le graphique est beau"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Excel, Power Query, SQL, Power BI et outils payants",
+      "summary": "Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle clause SQL regroupe les lignes ?", "options": ["GROUP BY", "WHERE", "FROM", "DELETE"], "correct": 0 },
+        { "q": "Quel avantage offre Power Query ?", "options": ["Rejouer le nettoyage chaque mois en actualisant", "Dessiner des logos", "Envoyer des e-mails", "Payer les factures"], "correct": 0 },
+        { "q": "Quelles requêtes utiliser sur la base d'un client ?", "options": ["Des requêtes de lecture (SELECT)", "Des DELETE au hasard", "Des UPDATE sans vérifier", "Aucune règle"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'analyse de l'Épicerie Mirana",
+      "summary": "Préciser la question, préparer et vérifier les données, analyser du général au détail, construire le tableau de bord, présenter et recommander.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vérifier avant de présenter un résultat ?", "options": ["Les totaux avec une source que le client connaît", "La couleur du tableau", "Rien", "Le nombre de diapositives"], "correct": 0 },
+        { "q": "Par quoi commence une présentation ?", "options": ["Le message principal en une phrase", "Les détails techniques", "La liste des formules", "Les remerciements"], "correct": 0 },
+        { "q": "Pourquoi montrer une première version du tableau de bord tôt ?", "options": ["Pour savoir ce qui est vraiment utile au client", "Pour faire payer plus", "Pour finir plus vite sans écouter", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avec données publiques, 5 canaux, 4 offres et leurs prix, 7 règles de protection des données, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelles données mettre dans un portfolio ?", "options": ["Des données publiques ou fictives", "Les données réelles d'un client sans accord", "Les mots de passe", "Les salaires d'une entreprise"], "correct": 0 },
+        { "q": "25 heures à 16 000 Ar de l'heure font…", "options": ["400 000 Ar", "160 000 Ar", "250 000 Ar", "4 000 000 Ar"], "correct": 0 },
+        { "q": "Que faire des noms des clients finaux si l'analyse n'en a pas besoin ?", "options": ["Les retirer", "Les publier", "Les vendre", "Les garder sur une clé USB partagée"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un analyste de données ?", "options": ["Il transforme des données brutes en informations pour décider", "Il répare les ordinateurs", "Il crée des logos", "Il saisit seulement des factures"], "correct": 0 },
+    { "q": "Quelle est la première étape d'une analyse ?", "options": ["Comprendre la question", "Créer les graphiques", "Facturer", "Nettoyer sans savoir pourquoi"], "correct": 0 },
+    { "q": "Quel client a souvent des données d'enquêtes à analyser ?", "options": ["Une ONG", "Un coiffeur", "Un taxi", "Personne"], "correct": 0 },
+    { "q": "Dans un bon tableau, que représente une ligne ?", "options": ["Une observation", "Un titre", "Un total", "Plusieurs ventes mélangées"], "correct": 0 },
+    { "q": "Que faire avant de corriger une valeur aberrante ?", "options": ["Vérifier avec la source", "La supprimer sans réfléchir", "La multiplier par 10", "L'ignorer toujours"], "correct": 0 },
+    { "q": "Pourquoi tenir un journal de nettoyage ?", "options": ["Pour expliquer chaque correction", "Pour décorer", "Pour facturer plus", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "De 10 à 12, quelle est l'évolution ?", "options": ["+20 %", "+2 %", "+12 %", "−20 %"], "correct": 0 },
+    { "q": "Quel titre de graphique est le meilleur ?", "options": ["Les ventes d'Analakely baissent depuis mars", "Ventes", "Graphique 1", "Données"], "correct": 0 },
+    { "q": "Où doit commencer l'axe vertical d'un graphique en barres ?", "options": ["À zéro", "Au hasard", "À la valeur maximale", "À 50"], "correct": 0 },
+    { "q": "Avec quoi comparer les ventes de décembre ?", "options": ["Le décembre de l'année précédente", "Le mois de février", "Un autre magasin au hasard", "Rien"], "correct": 0 },
+    { "q": "Quelle formule retrouve un prix dans une autre table ?", "options": ["RECHERCHEX", "SOMME", "MAJUSCULE", "MOYENNE"], "correct": 0 },
+    { "q": "À quoi sert un tableau croisé dynamique ?", "options": ["Résumer un grand tableau en quelques clics", "Envoyer un e-mail", "Dessiner", "Supprimer les données"], "correct": 0 },
+    { "q": "Que signifie WHERE en SQL ?", "options": ["Le filtre sur les lignes", "Le tri", "La table", "Le regroupement"], "correct": 0 },
+    { "q": "À quoi sert JOIN ?", "options": ["Relier deux tables", "Supprimer une table", "Trier", "Compter"], "correct": 0 },
+    { "q": "Quel langage sert aux mesures de Power BI ?", "options": ["DAX", "HTML", "CSS", "PHP"], "correct": 0 },
+    { "q": "Quel outil gratuit permet de publier des visualisations publiques ?", "options": ["Tableau Public", "Power BI Pro", "Semrush", "Zendesk"], "correct": 0 },
+    { "q": "Qui fournit souvent la licence Power BI Pro ?", "options": ["Le client", "Le freelance obligatoirement", "Personne", "La banque"], "correct": 0 },
+    { "q": "Quelle question poser au client au début ?", "options": ["Que voulez-vous décider après cette analyse ?", "Quelle est votre couleur préférée ?", "Combien gagnez-vous ?", "Aucune"], "correct": 0 },
+    { "q": "Que faire de produits sans prix d'achat ?", "options": ["Envoyer la liste au client", "Inventer un prix", "Les supprimer sans le dire", "Rien"], "correct": 0 },
+    { "q": "Dans quel ordre analyser ?", "options": ["Du général au détail", "Du détail au hasard", "Seulement le détail", "Aucun ordre"], "correct": 0 },
+    { "q": "Que mettre en haut d'un tableau de bord ?", "options": ["Les chiffres clés avec leur évolution", "Les données brutes", "Les formules", "Une longue explication"], "correct": 0 },
+    { "q": "Que doit contenir la présentation finale ?", "options": ["Message, preuves, impact, recommandations et limites", "Seulement des tableaux", "Les données brutes", "Rien"], "correct": 0 },
+    { "q": "Quel type de données publiques peut attirer les ONG ?", "options": ["Des données sur Madagascar : scolarisation, tourisme, agriculture", "Des mots de passe", "Des données volées", "Des données inventées présentées comme réelles"], "correct": 0 },
+    { "q": "Comment traiter les données d'enquêtes sensibles ?", "options": ["Anonymiser et limiter les accès selon les règles du projet", "Les publier", "Les partager librement", "Les copier partout"], "correct": 0 },
+    { "q": "Quelle évolution demande Python et l'apprentissage automatique ?", "options": ["Data scientist", "Opérateur de saisie", "Graphiste", "Agent support"], "correct": 0 }
+  ]
+}

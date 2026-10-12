@@ -1180,6 +1180,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-3-f": {
+  "hours": 18,
+  "description": "L'analyste de données transforme des données brutes en informations claires qui aident à décider. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des ONG et des entreprises francophones, en télétravail, avec Excel, Power BI et SQL : nettoyage, indicateurs, graphiques, requêtes, tableaux de bord et recommandations. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les 6 étapes d'une analyse",
+   "Organiser et nettoyer des données avec méthode",
+   "Calculer les indicateurs de base et choisir le bon graphique",
+   "Utiliser Excel, Power Query, SQL et Power BI",
+   "Mener une analyse complète et présenter des recommandations",
+   "Vendre ses services, protéger les données des clients et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'analyste de données depuis Madagascar",
+    "summary": "Ce que fait l'analyste, les 6 étapes d'une analyse, la différence avec le data scientist et l'opérateur de saisie, les compétences, les clients et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les 6 étapes d'une analyse",
+     "Analyste, data scientist ou opérateur de saisie ?",
+     "Les compétences de base",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : penser comme un analyste"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : données propres, nettoyage, indicateurs et graphiques",
+    "summary": "Données tabulaires, nettoyage en 7 points, somme, moyenne, médiane et évolution, choix du graphique et erreurs d'interprétation.",
+    "sections": [
+     "Des données bien organisées",
+     "Nettoyer : la méthode en 7 points",
+     "Les indicateurs de base",
+     "Choisir le bon graphique",
+     "Les erreurs d'interprétation",
+     "Exercice pratique : nettoyer et résumer"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Excel, Power Query, SQL, Power BI et outils payants",
+    "summary": "Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau.",
+    "sections": [
+     "Excel pour l'analyste",
+     "Power Query : nettoyer une fois, réutiliser chaque mois",
+     "SQL : interroger une base de données",
+     "Power BI : le premier tableau de bord",
+     "Les outils payants",
+     "Exercice pratique : votre boîte à outils"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : l'analyse de l'Épicerie Mirana",
+    "summary": "Préciser la question, préparer et vérifier les données, analyser du général au détail, construire le tableau de bord, présenter et recommander.",
+    "sections": [
+     "Le cas pratique : « Épicerie Mirana »",
+     "Étape 1 : préciser la question",
+     "Étape 2 : préparer et vérifier les données",
+     "Étape 3 : analyser",
+     "Étape 4 : le tableau de bord",
+     "Étape 5 : présenter et recommander",
+     "Exercice pratique : l'analyse Mirana"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avec données publiques, 5 canaux, 4 offres et leurs prix, 7 règles de protection des données, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Protéger les données de vos clients",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "design-0-a": {
   "hours": 15,
   "description": "Ce niveau Avancé aide le graphiste à passer de l'exécution de petites commandes à des projets mieux payés : spécialité, offre haut de gamme, logiciels professionnels d'Adobe, méthodes de studio, clients internationaux et développement de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

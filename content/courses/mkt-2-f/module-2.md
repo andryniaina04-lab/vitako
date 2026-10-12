@@ -40,7 +40,7 @@ Ce module vous donne les bases du travail SEO : trouver les bons mots clés, com
 
 | Élément | Règle | Exemple |
 | --- | --- | --- |
-| **Balise titre** | Mot clé principal au début, environ 50 à 60 caractères | « Lodge à Andasibe : nature et lémuriens | Lodge Ravinala » |
+| **Balise titre** | Mot clé principal au début, environ 50 à 60 caractères | « Lodge à Andasibe : nature et lémuriens – Lodge Ravinala » |
 | **Méta-description** | Résumé qui donne envie de cliquer, environ 150 à 160 caractères | « Séjournez au cœur de la forêt d'Andasibe, à 5 minutes du parc. Bungalows, guides et repas inclus. Réservez en ligne. » |
 | **Adresse (URL)** | Courte et lisible | `/lodge-andasibe` |
 | **Titre principal (H1)** | Un seul, clair, avec le mot clé | « Notre lodge au cœur de la forêt d'Andasibe » |

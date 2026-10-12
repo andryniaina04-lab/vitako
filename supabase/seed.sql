@@ -69,7 +69,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 15, true),
   ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
   ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
-  ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 14, false),
+  ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true),
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 14, false),
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 10, false),
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
@@ -6464,6 +6464,608 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '150 champs contrôlés, 1 erreur : le taux d''erreur est d''environ…', '["0,67 %","15 %","0,01 %","1,5 %"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que contient le rapport de livraison ?', '["Seulement le prix","Rien, le fichier suffit","Vos mots de passe","Volume, temps, qualité, problèmes et description du fichier"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faire des données personnelles à la fin d''une mission, si le client le demande ?', '["Les supprimer et le confirmer par écrit","Les vendre","Les publier","Les garder pour un autre client"]'::jsonb, 0);
+
+-- data-3-f
+delete from public.exam_questions where course_id = 'data-3-f';
+delete from public.module_questions where course_id = 'data-3-f';
+delete from public.lessons where course_id = 'data-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 0, 'Le métier d''analyste de données depuis Madagascar', 'Ce que fait l''analyste, les 6 étapes d''une analyse, la différence avec le data scientist et l''opérateur de saisie, les compétences, les clients et le plan d''apprentissage.', 'Les entreprises accumulent des données : ventes, clients, stocks, visites du site, appels au service client. Mais peu savent les transformer en décisions. L''analyste de données nettoie ces données, les analyse et les présente sous forme de tableaux de bord clairs. C''est un métier très demandé, qui se fait entièrement à distance. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un analyste de données.
+> 2. Décrire les 6 étapes d''une analyse.
+> 3. Distinguer analyste, data scientist et opérateur de saisie.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un analyste de données **transforme des données brutes en informations claires qui aident une organisation à prendre de meilleures décisions**.
+
+> [!exemple] Une question, une analyse, une décision
+> Une chaîne de 4 épiceries à Antananarivo se demande pourquoi ses bénéfices baissent. L''analyste rassemble les ventes de 12 mois, découvre que 3 produits vendus à perte représentent 18 % du chiffre d''affaires du magasin d''Analakely, et le montre dans un graphique simple. La direction décide de revoir leurs prix.
+
+## Les 6 étapes d''une analyse
+
+| N° | Étape | Ce que fait l''analyste | Outil courant |
+| --- | --- | --- | --- |
+| 1 | **Comprendre la question** | Préciser ce que le client veut savoir et pourquoi | Entretien, notes |
+| 2 | **Collecter les données** | Rassembler les fichiers, exports, bases de données | Excel, SQL |
+| 3 | **Nettoyer** | Corriger les erreurs, doublons, formats, valeurs manquantes | Excel, Power Query |
+| 4 | **Analyser** | Calculer, comparer, chercher les tendances et les causes | Excel, tableaux croisés, SQL |
+| 5 | **Visualiser** | Créer des graphiques et des tableaux de bord | Excel, Power BI |
+| 6 | **Présenter et recommander** | Expliquer les résultats et proposer des actions | Rapport, présentation |
+
+> [!astuce]
+> Dans la plupart des projets, le **nettoyage** prend la plus grande partie du temps. Un analyste rigoureux sur cette étape fait des analyses fiables.
+
+## Analyste, data scientist ou opérateur de saisie ?
+
+| Métier | Ce qu''il fait | Exemple |
+| --- | --- | --- |
+| **Opérateur de saisie** | Saisit et vérifie les données | Encoder 500 factures dans un tableau |
+| **Analyste de données** | Analyse et présente les données pour aider à décider | Tableau de bord des ventes par magasin et par produit |
+| **Data scientist** | Construit des modèles statistiques et de prévision avancés | Prévoir les ventes du mois prochain avec un modèle |
+
+Beaucoup d''opérateurs de saisie deviennent analystes en apprenant Excel avancé, SQL et Power BI.
+
+## Les compétences de base
+
+1. **Excel** : formules, tableaux croisés dynamiques, graphiques.
+2. **SQL** : interroger une base de données.
+3. **Power BI** (ou un outil similaire) : tableaux de bord interactifs.
+4. **Statistiques simples** : moyenne, médiane, pourcentages, évolution.
+5. **Communication** : expliquer clairement à des personnes qui ne sont pas spécialistes.
+6. **Curiosité et esprit critique** : vérifier que les chiffres ont du sens.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Commerces et PME** qui veulent suivre leurs ventes, marges et stocks.
+2. **ONG et projets de développement** qui doivent analyser des enquêtes et produire des rapports pour leurs bailleurs.
+3. **Entreprises de services numériques et centres d''appels** qui suivent leurs indicateurs de production.
+4. **Microfinance et coopératives** qui suivent leurs membres, prêts et remboursements.
+
+### À l''étranger
+
+1. **Petites entreprises** qui veulent un tableau de bord simple.
+2. **Agences et cabinets de conseil** qui sous-traitent le nettoyage et les tableaux de bord.
+3. **Organisations internationales** qui analysent des données d''enquêtes.
+
+> [!madagascar] Votre avantage
+> Les ONG et projets internationaux à Madagascar collectent beaucoup de données (enquêtes de terrain, suivi de bénéficiaires) et ont besoin d''analystes qui comprennent le contexte local, les noms de lieux et le français. Pour les clients étrangers, votre rigueur et votre français sont des atouts.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive ; Windows de préférence pour Power BI Desktop |
+| **Logiciels** | Excel (ou Google Sheets pour commencer), Power BI Desktop (gratuit), une base SQL d''entraînement |
+| **Écran** | Un écran assez grand, ou un second écran, aide beaucoup |
+| **Connexion** | Stable pour télécharger les données et partager les rapports |
+
+> [!definition] Power BI Desktop
+> Le logiciel gratuit de Microsoft pour créer des tableaux de bord sur ordinateur Windows. Le partage en ligne avec d''autres personnes demande en général une licence payante (Power BI Pro).
+
+## Votre plan d''apprentissage
+
+1. **Excel** (3 à 4 semaines) : formules, nettoyage, tableaux croisés, graphiques.
+2. **Statistiques simples** (1 à 2 semaines).
+3. **SQL** (3 à 4 semaines) : requêtes, filtres, regroupements, jointures.
+4. **Power BI** (3 à 4 semaines) : import, modèle, mesures, tableaux de bord.
+5. **Projets** : 3 analyses complètes pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - L''analyste transforme des données brutes en décisions.
+> - 6 étapes : question, collecte, nettoyage, analyse, visualisation, recommandation.
+> - Le nettoyage prend souvent le plus de temps.
+> - Excel, SQL, Power BI, statistiques simples et communication.
+> - Clients : PME, ONG, entreprises de services, microfinance, agences étrangères.
+
+## Exercice pratique : penser comme un analyste
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez une petite activité que vous connaissez (épicerie, transport, école).
+> 2. Écrivez 5 questions utiles que son responsable pourrait se poser.
+> 3. Pour chaque question, indiquez les données nécessaires et où les trouver.
+> 4. Installez Power BI Desktop (si vous avez Windows) ou ouvrez Google Sheets.
+> 5. Écrivez votre plan d''apprentissage sur 3 mois.
+>
+> **À livrer** : vos 5 questions avec les données nécessaires et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 0, 0, 'Quelle étape prend souvent le plus de temps ?', '["La facturation","Le nettoyage des données","L''envoi du rapport","Le choix des couleurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 0, 1, 'Qui construit des modèles de prévision avancés ?', '["Le comptable","Le graphiste","Le data scientist","L''opérateur de saisie"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 0, 2, 'Que faut-il en général pour partager un tableau Power BI en ligne ?', '["Rien","Une licence payante comme Power BI Pro","Un compte Facebook","Une imprimante"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 1, 'Les bases : données propres, nettoyage, indicateurs et graphiques', 'Données tabulaires, nettoyage en 7 points, somme, moyenne, médiane et évolution, choix du graphique et erreurs d''interprétation.', 'Ce module vous donne les bases de l''analyse de données : organiser des données propres, les nettoyer, calculer les indicateurs essentiels, choisir le bon graphique et éviter les erreurs d''interprétation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser des données en tableau propre.
+> 2. Nettoyer des données avec une méthode en 7 points.
+> 3. Calculer les indicateurs statistiques de base.
+> 4. Choisir le bon graphique selon la question.
+> 5. Éviter les erreurs d''interprétation courantes.
+
+## Des données bien organisées
+
+> [!definition] Données « tabulaires »
+> Un tableau où **chaque ligne est une observation** (une vente, un client, une réponse à une enquête) et **chaque colonne est une variable** (date, produit, quantité, prix). Une seule information par cellule.
+
+| Bon tableau | Mauvais tableau |
+| --- | --- |
+| Une ligne par vente | Plusieurs ventes dans une même cellule |
+| Une colonne « Date » avec de vraies dates | Des dates écrites de façons différentes |
+| Une colonne « Magasin » | Un onglet par magasin avec des formats différents |
+| Pas de cellules fusionnées | Titres fusionnés au milieu des données |
+| Pas de totaux au milieu des données | Lignes « Total » mélangées aux ventes |
+
+## Nettoyer : la méthode en 7 points
+
+| N° | Problème | Exemple | Correction |
+| --- | --- | --- | --- |
+| 1 | **Doublons** | La même vente enregistrée deux fois | Supprimer les doublons sur un identifiant |
+| 2 | **Formats de dates** | 03/04/2026, 2026-04-03, 3 avril | Convertir en vraies dates, un seul format |
+| 3 | **Nombres stockés en texte** | « 12 500 Ar » | Retirer « Ar » et les espaces, convertir en nombre |
+| 4 | **Orthographes différentes** | Antananarivo, Tana, Antanarivo | Une seule valeur de référence |
+| 5 | **Espaces en trop** | « Analakely » et « Analakely » suivi d''une espace | Fonction SUPPRESPACE |
+| 6 | **Valeurs manquantes** | Prix vide | Chercher la valeur, ou décider d''exclure, et le noter |
+| 7 | **Valeurs aberrantes** | Quantité de 10 000 au lieu de 10 | Vérifier avec la source avant de corriger |
+
+> [!attention]
+> Gardez toujours une **copie des données d''origine**, et notez chaque correction dans un **journal de nettoyage**. Si un résultat surprend le client, vous devez pouvoir expliquer exactement ce que vous avez modifié.
+
+## Les indicateurs de base
+
+| Indicateur | Définition | Exemple (ventes de 5 jours : 10, 12, 11, 13, 54) |
+| --- | --- | --- |
+| **Somme** | Total | 100 |
+| **Moyenne** | Somme ÷ nombre de valeurs | 20 |
+| **Médiane** | Valeur du milieu quand on les range | 12 |
+| **Minimum et maximum** | Plus petite et plus grande valeur | 10 et 54 |
+| **Pourcentage** | Part d''un total | 54 ÷ 100 = 54 % des ventes le dernier jour |
+| **Évolution** | (Nouveau − ancien) ÷ ancien | De 10 à 12 : +20 % |
+
+> [!definition] Moyenne et médiane
+> La **moyenne** est sensible aux valeurs extrêmes : un seul jour exceptionnel (54) la fait monter à 20. La **médiane** (12) montre mieux une journée « normale ». Pour les salaires, les prix ou les revenus, regardez toujours les deux.
+
+## Choisir le bon graphique
+
+| Question | Graphique adapté |
+| --- | --- |
+| Comment cela évolue-t-il dans le temps ? | Courbe |
+| Quelles catégories sont les plus grandes ? | Barres horizontales, triées |
+| Quelle part de l''ensemble ? (2 à 4 parts) | Barres empilées à 100 %, ou anneau avec peu de parts |
+| Deux variables sont-elles liées ? | Nuage de points |
+| Comment les valeurs sont-elles réparties ? | Histogramme |
+| Un chiffre clé | Grand nombre avec sa comparaison |
+
+### Les règles d''un graphique clair
+
+1. **Un titre qui dit le message** : « Les ventes d''Analakely baissent depuis mars », pas « Ventes ».
+2. **Des axes lisibles** avec les unités (Ar, kg, %).
+3. **Un axe vertical qui commence à zéro** pour les barres.
+4. **Peu de couleurs** : une couleur pour mettre en valeur, du gris pour le reste.
+5. **Pas d''effets 3D** ni de décorations inutiles.
+
+## Les erreurs d''interprétation
+
+| Erreur | Exemple | Bonne attitude |
+| --- | --- | --- |
+| **Corrélation et cause** | « Les ventes de parapluies et de rhumes augmentent ensemble, donc les parapluies rendent malade » | La saison des pluies explique les deux |
+| **Petits nombres** | « +100 % de ventes ! » (de 2 à 4) | Donner aussi les chiffres absolus |
+| **Comparaison injuste** | Comparer décembre à février | Comparer à la même période de l''année précédente |
+| **Données incomplètes** | Un magasin n''a envoyé que 2 semaines | Signaler la limite |
+
+> [!madagascar]
+> Pensez aux **saisons et aux événements** propres à Madagascar quand vous analysez des chiffres : saison des pluies et cyclones, rentrée scolaire, fêtes de fin d''année, fête nationale du 26 juin, campagnes de vanille ou de litchis. Ils expliquent souvent des hausses ou des baisses.
+
+> [!retenir]
+> - Une ligne par observation, une colonne par variable, une information par cellule.
+> - Nettoyage en 7 points, avec copie d''origine et journal.
+> - Somme, moyenne, médiane, min et max, pourcentage, évolution.
+> - Le graphique choisi selon la question, avec un titre qui dit le message.
+> - Corrélation n''est pas cause ; attention aux petits nombres et aux comparaisons injustes.
+
+## Exercice pratique : nettoyer et résumer
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez (ou téléchargez) un tableau de 100 ventes avec des erreurs volontaires : doublons, dates mélangées, nombres en texte, orthographes différentes.
+> 2. Nettoyez-le avec la méthode en 7 points et tenez un journal.
+> 3. Calculez les 6 indicateurs par magasin.
+> 4. Créez 3 graphiques adaptés, chacun avec un titre qui dit le message.
+>
+> **À livrer** : vos fichiers avant et après, votre journal, vos indicateurs et vos graphiques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 0, 'Ventes de 10, 12, 11, 13 et 54 : quelle est la médiane ?', '["100","12","20","54"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 1, 'Quel graphique pour une évolution dans le temps ?', '["Une courbe","Un nuage de mots","Aucun","Un camembert à 12 parts"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 2, 'Deux chiffres qui augmentent ensemble prouvent-ils une cause ?', '["Non, corrélation n''est pas cause","Oui, toujours","Oui, en saison des pluies","Oui, si le graphique est beau"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 2, 'Les outils : Excel, Power Query, SQL, Power BI et outils payants', 'Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau.', 'Ce module vous fait prendre en main les trois outils de base de l''analyste : **Excel** (formules, Power Query, tableaux croisés dynamiques), **SQL** pour interroger une base de données, et **Power BI** pour les tableaux de bord. Vous découvrirez aussi les outils payants : **Microsoft 365**, **Power BI Pro** et **Tableau**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les formules et les tableaux croisés dynamiques d''Excel.
+> 2. Nettoyer des données avec Power Query.
+> 3. Écrire des requêtes SQL simples.
+> 4. Créer un premier tableau de bord dans Power BI.
+> 5. Comprendre ce qu''apportent les outils payants.
+
+## Excel pour l''analyste
+
+### Les formules essentielles
+
+| Formule (en français) | Usage |
+| --- | --- |
+| `SOMME.SI.ENS` | Total des ventes d''un magasin pour un mois |
+| `NB.SI.ENS` | Nombre de ventes d''un produit |
+| `MOYENNE.SI.ENS` | Panier moyen par magasin |
+| `RECHERCHEX` | Retrouver le prix d''achat d''un produit dans une autre table |
+| `SI` | Classer : « Rentable » ou « À perte » |
+| `SUPPRESPACE`, `MAJUSCULE` | Nettoyer les textes |
+
+### Le tableau croisé dynamique
+
+> [!definition] Tableau croisé dynamique
+> Un outil qui résume un grand tableau en quelques clics : par exemple, le total des ventes par magasin (en lignes) et par mois (en colonnes), sans écrire de formule.
+
+1. Transformez les données en **tableau** (Insertion → Tableau).
+2. **Insertion → Tableau croisé dynamique**.
+3. Glissez « Magasin » en lignes, « Mois » en colonnes, « Montant » en valeurs.
+4. Ajoutez un **graphique croisé dynamique** si besoin.
+
+## Power Query : nettoyer une fois, réutiliser chaque mois
+
+1. **Données → Obtenir des données** depuis le fichier d''export.
+2. Dans l''éditeur Power Query : supprimer les colonnes inutiles, changer les types (date, nombre), remplacer les valeurs, supprimer les doublons.
+3. **Fermer et charger** dans Excel.
+4. Le mois suivant, remplacez le fichier source et cliquez sur **Actualiser** : toutes les étapes se rejouent.
+
+> [!astuce]
+> Power Query existe aussi dans Power BI, avec la même logique. Ce que vous apprenez dans Excel vous servira directement dans Power BI.
+
+## SQL : interroger une base de données
+
+> [!definition] SQL
+> Le langage standard pour interroger les bases de données. Il permet de sélectionner, filtrer, regrouper et relier des tables, même avec des millions de lignes.
+
+### Les requêtes de base
+
+```sql
+-- Les 10 dernières ventes
+SELECT date_vente, magasin, produit, montant
+FROM ventes
+ORDER BY date_vente DESC
+LIMIT 10;
+
+-- Le total des ventes par magasin en 2026
+SELECT magasin, SUM(montant) AS total
+FROM ventes
+WHERE date_vente >= ''2026-01-01''
+GROUP BY magasin
+ORDER BY total DESC;
+
+-- Relier les ventes aux produits pour calculer la marge
+SELECT v.produit, SUM(v.montant - v.quantite * p.prix_achat) AS marge
+FROM ventes v
+JOIN produits p ON p.nom = v.produit
+GROUP BY v.produit
+ORDER BY marge;
+```
+
+| Mot clé | Rôle |
+| --- | --- |
+| `SELECT` | Les colonnes à afficher |
+| `FROM` | La table |
+| `WHERE` | Le filtre sur les lignes |
+| `GROUP BY` | Le regroupement |
+| `SUM`, `COUNT`, `AVG` | Les calculs |
+| `JOIN` | La liaison entre deux tables |
+| `ORDER BY` | Le tri |
+
+> [!attention]
+> Sur la base de données d''un client, n''utilisez que des requêtes de **lecture** (`SELECT`) et un compte en lecture seule si possible. Une commande comme `DELETE` ou `UPDATE` mal écrite peut détruire des données.
+
+## Power BI : le premier tableau de bord
+
+1. **Obtenir les données** (Excel, CSV, base SQL).
+2. **Transformer** dans Power Query.
+3. **Modéliser** : relier la table des ventes à la table des produits et à une table des dates.
+4. **Créer des mesures** simples :
+
+```
+Total ventes = SUM(Ventes[Montant])
+Nombre de ventes = COUNTROWS(Ventes)
+Panier moyen = DIVIDE([Total ventes], [Nombre de ventes])
+```
+
+5. **Créer les visuels** : chiffres clés en haut, évolution au milieu, détail en bas.
+6. **Ajouter des filtres** (segments) : magasin, mois, catégorie.
+
+> [!definition] DAX
+> Le langage de formules de Power BI (les « mesures » ci-dessus). Les bases ressemblent aux formules d''Excel.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Microsoft 365 (Excel)** | La version complète et à jour d''Excel, Power Query, nouvelles fonctions, partage dans OneDrive et Teams |
+| **Power BI Pro** | Publier et partager des tableaux de bord en ligne, actualisation planifiée, travail en équipe |
+| **Tableau** | Autre outil de visualisation très utilisé, surtout dans les grandes entreprises ; version gratuite publique (Tableau Public) pour s''entraîner |
+
+> [!madagascar]
+> Les licences sont payantes et facturées en dollars ou en euros. Souvent, **le client fournit la licence** (Microsoft 365 ou Power BI Pro) et vous invite dans son espace. Pour apprendre, utilisez Power BI Desktop (gratuit), Google Sheets et Tableau Public, et vérifiez les prix et conditions sur les sites officiels.
+
+> [!retenir]
+> - Excel : SOMME.SI.ENS, RECHERCHEX, SI et tableaux croisés dynamiques.
+> - Power Query : nettoyer une fois, actualiser chaque mois.
+> - SQL : SELECT, WHERE, GROUP BY, JOIN, en lecture seule chez le client.
+> - Power BI : données, transformation, modèle, mesures, visuels, filtres.
+> - Microsoft 365, Power BI Pro et Tableau souvent fournis par le client.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec votre tableau nettoyé du module 2, créez un tableau croisé par magasin et par mois.
+> 2. Refaites le nettoyage avec Power Query.
+> 3. Entraînez-vous au SQL sur un site d''exercices gratuit ou une base locale : écrivez 10 requêtes (filtres, regroupements, une jointure).
+> 4. Créez dans Power BI Desktop (ou Tableau Public) un tableau de bord d''une page avec 3 chiffres clés, une courbe, un classement et 2 filtres.
+>
+> **À livrer** : votre fichier Excel, vos 10 requêtes et une capture de votre tableau de bord.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 2, 0, 'Quelle clause SQL regroupe les lignes ?', '["GROUP BY","WHERE","DELETE","FROM"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 2, 1, 'Quel avantage offre Power Query ?', '["Envoyer des e-mails","Payer les factures","Dessiner des logos","Rejouer le nettoyage chaque mois en actualisant"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 2, 2, 'Quelles requêtes utiliser sur la base d''un client ?', '["Aucune règle","Des UPDATE sans vérifier","Des requêtes de lecture (SELECT)","Des DELETE au hasard"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 3, 'Premier projet : l''analyse de l''Épicerie Mirana', 'Préciser la question, préparer et vérifier les données, analyser du général au détail, construire le tableau de bord, présenter et recommander.', 'Dans ce module, vous réalisez une analyse complète pour une petite chaîne de magasins, de la question du client jusqu''aux recommandations. C''est le type de projet qui deviendra votre première étude de cas de portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Transformer une demande vague en questions précises.
+> 2. Préparer et vérifier les données.
+> 3. Mener l''analyse et trouver les causes.
+> 4. Construire un tableau de bord utile.
+> 5. Présenter des résultats et des recommandations.
+
+## Le cas pratique : « Épicerie Mirana »
+
+> [!exemple] Votre client
+> **Épicerie Mirana** a 3 magasins à Antananarivo (Analakely, Ankorondrano, Ivandry). Le gérant, M. Hery, vous envoie les exports de caisse de 12 mois (environ 85 000 lignes) et une liste des produits avec leurs prix d''achat. Sa demande : « Mon chiffre d''affaires augmente, mais il me reste moins d''argent. Je ne comprends pas pourquoi. »
+
+## Étape 1 : préciser la question
+
+### Les questions à poser au client
+
+1. Que voulez-vous décider après cette analyse ?
+2. Quelle période et quels magasins ?
+3. Les prix d''achat ont-ils changé pendant l''année ?
+4. Y a-t-il eu des événements particuliers (travaux, promotions, nouveau magasin) ?
+5. Qui regardera le tableau de bord, et à quelle fréquence ?
+
+### Les questions d''analyse
+
+| N° | Question |
+| --- | --- |
+| 1 | Comment évoluent le chiffre d''affaires et la marge par mois et par magasin ? |
+| 2 | Quels produits rapportent le plus de marge ? Lesquels sont vendus à perte ? |
+| 3 | Le panier moyen et le nombre de clients évoluent-ils ? |
+| 4 | Les promotions ont-elles augmenté les ventes assez pour compenser les remises ? |
+
+## Étape 2 : préparer et vérifier les données
+
+1. **Importez** les exports dans Power Query.
+2. **Nettoyez** avec la méthode en 7 points.
+3. **Reliez** les ventes aux prix d''achat.
+4. **Vérifiez** : le total annuel correspond-il au chiffre que connaît le gérant ? Chaque produit vendu a-t-il un prix d''achat ?
+
+| Contrôle | Résultat | Action |
+| --- | --- | --- |
+| Total des ventes vs comptabilité | Écart de 0,4 % | Acceptable, noté |
+| Produits sans prix d''achat | 37 produits sur 620 | Liste envoyée au gérant |
+| Doublons | 212 lignes | Supprimées, notées dans le journal |
+| Mois de juillet du magasin d''Ivandry | Manquant | Demandé au client |
+
+> [!attention]
+> Ne présentez jamais un résultat avant d''avoir **vérifié les totaux** avec une source que le client connaît (comptabilité, chiffre annoncé). Une erreur de données découverte pendant la présentation détruit la confiance.
+
+## Étape 3 : analyser
+
+> [!exemple] Ce que révèle l''analyse
+> - Le chiffre d''affaires a augmenté de 12 %, mais la marge brute a baissé de 4 %.
+> - 8 produits de grande consommation (huile, sucre, riz importé) ont vu leur prix d''achat augmenter de 15 à 25 % sans que le prix de vente suive : ils sont maintenant vendus à perte ou presque.
+> - Ces 8 produits représentent 22 % du chiffre d''affaires.
+> - Les promotions du samedi augmentent les ventes de 30 %, mais la remise coûte plus que la marge gagnée sur 5 des 8 produits concernés.
+
+### La méthode
+
+1. **Commencez large** : évolution globale.
+2. **Découpez** : par magasin, par catégorie, par produit, par mois.
+3. **Cherchez les écarts** : ce qui a le plus changé.
+4. **Vérifiez une cause** avec d''autres données (prix d''achat, promotions).
+5. **Chiffrez l''impact** : combien d''ariary cela représente.
+
+## Étape 4 : le tableau de bord
+
+| Zone | Contenu |
+| --- | --- |
+| **En haut** | Chiffre d''affaires, marge brute, taux de marge, nombre de clients, panier moyen, avec évolution |
+| **Au milieu** | Courbe du chiffre d''affaires et de la marge par mois |
+| **En bas à gauche** | Classement des produits par marge (les 10 meilleurs et les 10 pires) |
+| **En bas à droite** | Comparaison des 3 magasins |
+| **Filtres** | Magasin, catégorie, période |
+
+> [!astuce]
+> Montrez une **première version** au client après quelques jours. Il vous dira ce qui lui est vraiment utile, et vous éviterez de construire des pages que personne ne regardera.
+
+## Étape 5 : présenter et recommander
+
+### La structure de la présentation
+
+1. **Le message principal** en une phrase : « Votre marge baisse parce que 8 produits importants sont vendus presque à perte depuis la hausse des prix d''achat. »
+2. **Les preuves** : 2 ou 3 graphiques clairs.
+3. **L''impact chiffré** : « environ X millions d''ariary de marge perdue sur 6 mois ».
+4. **Les recommandations** : revoir les prix de 8 produits, arrêter 5 promotions non rentables, surveiller les prix d''achat chaque mois.
+5. **Les limites** : données manquantes, hypothèses.
+6. **La suite** : tableau de bord mis à jour chaque mois.
+
+> [!madagascar]
+> Présentez les montants en **ariary** avec des séparateurs de milliers clairs (12 500 000 Ar), et adaptez le vocabulaire au client : un gérant d''épicerie comprend « argent gagné sur chaque produit » mieux que « marge brute unitaire ».
+
+> [!retenir]
+> - Transformez une demande vague en 3 à 5 questions précises.
+> - Vérifiez les totaux avant toute analyse.
+> - Du général au détail, puis cherchez et chiffrez les causes.
+> - Un tableau de bord simple, validé tôt avec le client.
+> - Un message principal, des preuves, des recommandations et les limites.
+
+## Exercice pratique : l''analyse Mirana
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Créez un jeu de données réaliste (ventes de 3 magasins sur 12 mois et prix d''achat) ou utilisez un jeu de données public de ventes.
+> 2. Rédigez les questions d''analyse.
+> 3. Nettoyez, reliez et vérifiez les données avec un journal.
+> 4. Menez l''analyse et chiffrez au moins 2 causes.
+> 5. Construisez le tableau de bord.
+> 6. Rédigez une présentation de 6 diapositives ou une note de 2 pages.
+>
+> **À livrer** : vos fichiers, votre tableau de bord, votre présentation et une étude de cas d''une page. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 3, 0, 'Que vérifier avant de présenter un résultat ?', '["Le nombre de diapositives","Les totaux avec une source que le client connaît","La couleur du tableau","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 3, 1, 'Par quoi commence une présentation ?', '["Les remerciements","La liste des formules","Le message principal en une phrase","Les détails techniques"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 3, 2, 'Pourquoi montrer une première version du tableau de bord tôt ?', '["Pour finir plus vite sans écouter","Pour savoir ce qui est vraiment utile au client","Ce n''est pas utile","Pour faire payer plus"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avec données publiques, 5 canaux, 4 offres et leurs prix, 7 règles de protection des données, paiements et évolution.', 'Les entreprises qui ont des données mais pas d''analyste sont nombreuses, à Madagascar comme à l''étranger. Ce dernier module vous montre comment présenter vos compétences, trouver vos premiers clients, fixer vos prix, protéger les données de vos clients et vous faire payer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''analyste.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer le prix d''une analyse et d''un tableau de bord mensuel.
+> 4. Protéger les données de vos clients.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **3 projets complets** : la question, les données, le nettoyage, l''analyse, le tableau de bord, les recommandations.
+2. **Des données publiques ou fictives** : jamais les données réelles d''un client sans son accord.
+3. **Des tableaux de bord publiés** : Tableau Public (gratuit) ou captures et vidéos de Power BI.
+4. **Vos requêtes SQL** sur GitHub, bien commentées.
+5. **Une page de présentation** (LinkedIn ou site) qui résume vos compétences.
+
+> [!astuce]
+> Utilisez des données publiques sur Madagascar ou l''Afrique (données ouvertes d''organisations internationales, statistiques nationales) : un tableau de bord sur la scolarisation, le tourisme ou l''agriculture à Madagascar attire l''attention des ONG et des organisations locales.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **PME malgaches** | Proposez un tableau de bord des ventes à partir de leurs exports de caisse |
+| 2 | **ONG et projets** | Analyse d''enquêtes, tableaux de suivi des indicateurs pour les bailleurs |
+| 3 | **Entreprises de services et centres d''appels** | Tableaux de bord de production et de qualité |
+| 4 | **Cabinets de conseil et agences étrangers** | Sous-traitance du nettoyage, des analyses et des tableaux de bord |
+| 5 | **Plateformes de freelance** | Petites missions Excel, Power BI, SQL ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une PME
+> « Bonjour Monsieur, votre logiciel de caisse enregistre toutes vos ventes, mais il est difficile d''y voir clair : quels produits rapportent vraiment, quel magasin progresse, quelles promotions sont rentables. Je suis analyste de données : à partir de vos exports, je peux vous construire un tableau de bord simple, mis à jour chaque mois, et vous présenter les 3 constats les plus utiles. Puis-je vous montrer un exemple ? »
+
+## Fixer ses prix
+
+### Le tarif horaire
+
+Revenu mensuel visé ÷ heures facturables (exemple : 1 600 000 Ar ÷ 100 h = 16 000 Ar de l''heure).
+
+### Les offres
+
+| Offre | Contenu | Heures (exemple) | Prix (16 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Nettoyage de données** | Fichier propre, journal de nettoyage | Selon le volume, 5 à 15 h | 80 000 à 240 000 Ar |
+| **Analyse ponctuelle** | Questions, analyse, présentation | 20 h | 320 000 Ar |
+| **Tableau de bord** | Création, connexion aux données, formation | 25 h | 400 000 Ar |
+| **Suivi mensuel** | Actualisation, contrôle, commentaire des chiffres | 6 h par mois | 96 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Protéger les données de vos clients
+
+### Les 7 règles
+
+1. **Signez** un accord de confidentialité si le client le demande, et respectez-le toujours.
+2. **Demandez** seulement les données nécessaires ; retirez les noms et téléphones des clients finaux si l''analyse n''en a pas besoin.
+3. **Stockez** les fichiers dans un espace protégé, jamais sur une clé USB partagée.
+4. **Utilisez** un accès en lecture seule aux bases de données.
+5. **Ne publiez** jamais les données d''un client dans votre portfolio sans accord écrit.
+6. **Supprimez** ou rendez les fichiers à la fin de la mission si le contrat le demande.
+7. **Vérifiez** les règles de protection des données qui s''appliquent (loi malgache sur les données personnelles, RGPD pour les données de personnes en Europe).
+
+> [!attention]
+> Les données d''enquêtes d''ONG (santé, revenus, situation familiale) sont souvent très sensibles. Appliquez strictement les règles du projet : anonymisation, accès limité, pas de copie hors des outils prévus.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Analyste confirmé** | SQL avancé, modélisation Power BI, DAX, automatisation des actualisations |
+| **Analyste BI** | Entrepôts de données, flux de données, gouvernance |
+| **Data scientist** | Python, statistiques, apprentissage automatique |
+| **Analyste spécialisé** | Marketing, finance, RH, santé, développement (suivi-évaluation) |
+| **Spécialiste automatisation** | Make, Zapier, scripts (voir la formation Spécialiste automatisation et IA) |
+
+> [!retenir]
+> - Un portfolio de 3 projets avec des données publiques ou fictives.
+> - PME, ONG, entreprises de services, cabinets étrangers, plateformes.
+> - Nettoyage, analyse ponctuelle, tableau de bord et suivi mensuel.
+> - 7 règles pour protéger les données des clients.
+> - Évoluez vers la BI, la data science ou une spécialité métier.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Publiez votre projet Mirana et un tableau de bord sur des données publiques de Madagascar.
+> 2. Calculez vos 4 offres avec vos prix.
+> 3. Rédigez votre fiche personnelle des 7 règles de protection des données.
+> 4. Listez 10 PME ou ONG à contacter et envoyez au moins 2 messages.
+>
+> **À livrer** : vos liens de portfolio, vos offres, votre fiche et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 4, 0, 'Quelles données mettre dans un portfolio ?', '["Les données réelles d''un client sans accord","Les salaires d''une entreprise","Les mots de passe","Des données publiques ou fictives"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 4, 1, '25 heures à 16 000 Ar de l''heure font…', '["160 000 Ar","250 000 Ar","400 000 Ar","4 000 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 4, 2, 'Que faire des noms des clients finaux si l''analyse n''en a pas besoin ?', '["Les publier","Les retirer","Les vendre","Les garder sur une clé USB partagée"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que fait un analyste de données ?', '["Il répare les ordinateurs","Il transforme des données brutes en informations pour décider","Il crée des logos","Il saisit seulement des factures"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle est la première étape d''une analyse ?', '["Créer les graphiques","Comprendre la question","Facturer","Nettoyer sans savoir pourquoi"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel client a souvent des données d''enquêtes à analyser ?', '["Personne","Une ONG","Un taxi","Un coiffeur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Dans un bon tableau, que représente une ligne ?', '["Un total","Plusieurs ventes mélangées","Une observation","Un titre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que faire avant de corriger une valeur aberrante ?', '["L''ignorer toujours","La multiplier par 10","Vérifier avec la source","La supprimer sans réfléchir"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Pourquoi tenir un journal de nettoyage ?', '["Pour facturer plus","Pour décorer","Pour expliquer chaque correction","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'De 10 à 12, quelle est l''évolution ?', '["+2 %","−20 %","+20 %","+12 %"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel titre de graphique est le meilleur ?', '["Graphique 1","Données","Les ventes d''Analakely baissent depuis mars","Ventes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Où doit commencer l''axe vertical d''un graphique en barres ?', '["À zéro","À 50","Au hasard","À la valeur maximale"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Avec quoi comparer les ventes de décembre ?', '["Le mois de février","Le décembre de l''année précédente","Rien","Un autre magasin au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle formule retrouve un prix dans une autre table ?', '["MOYENNE","SOMME","RECHERCHEX","MAJUSCULE"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'À quoi sert un tableau croisé dynamique ?', '["Résumer un grand tableau en quelques clics","Envoyer un e-mail","Supprimer les données","Dessiner"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que signifie WHERE en SQL ?', '["Le filtre sur les lignes","Le tri","Le regroupement","La table"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'À quoi sert JOIN ?', '["Compter","Trier","Supprimer une table","Relier deux tables"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel langage sert aux mesures de Power BI ?', '["PHP","HTML","DAX","CSS"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel outil gratuit permet de publier des visualisations publiques ?', '["Power BI Pro","Semrush","Zendesk","Tableau Public"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Qui fournit souvent la licence Power BI Pro ?', '["Le freelance obligatoirement","Le client","La banque","Personne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle question poser au client au début ?', '["Combien gagnez-vous ?","Aucune","Que voulez-vous décider après cette analyse ?","Quelle est votre couleur préférée ?"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que faire de produits sans prix d''achat ?', '["Envoyer la liste au client","Inventer un prix","Les supprimer sans le dire","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Dans quel ordre analyser ?', '["Du détail au hasard","Aucun ordre","Du général au détail","Seulement le détail"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que mettre en haut d''un tableau de bord ?', '["Les formules","Les données brutes","Les chiffres clés avec leur évolution","Une longue explication"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Que doit contenir la présentation finale ?', '["Les données brutes","Seulement des tableaux","Message, preuves, impact, recommandations et limites","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel type de données publiques peut attirer les ONG ?', '["Des données volées","Des mots de passe","Des données sur Madagascar : scolarisation, tourisme, agriculture","Des données inventées présentées comme réelles"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Comment traiter les données d''enquêtes sensibles ?', '["Les copier partout","Anonymiser et limiter les accès selon les règles du projet","Les publier","Les partager librement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle évolution demande Python et l''apprentissage automatique ?', '["Graphiste","Data scientist","Agent support","Opérateur de saisie"]'::jsonb, 1);
 
 -- design-0-a
 delete from public.exam_questions where course_id = 'design-0-a';
@@ -24343,7 +24945,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Élément | Règle | Exemple |
 | --- | --- | --- |
-| **Balise titre** | Mot clé principal au début, environ 50 à 60 caractères | « Lodge à Andasibe : nature et lémuriens | Lodge Ravinala » |
+| **Balise titre** | Mot clé principal au début, environ 50 à 60 caractères | « Lodge à Andasibe : nature et lémuriens – Lodge Ravinala » |
 | **Méta-description** | Résumé qui donne envie de cliquer, environ 150 à 160 caractères | « Séjournez au cœur de la forêt d''Andasibe, à 5 minutes du parc. Bungalows, guides et repas inclus. Réservez en ligne. » |
 | **Adresse (URL)** | Courte et lisible | `/lodge-andasibe` |
 | **Titre principal (H1)** | Un seul, clair, avec le mot clé | « Notre lodge au cœur de la forêt d''Andasibe » |
