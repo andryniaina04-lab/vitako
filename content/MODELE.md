@@ -65,7 +65,7 @@ Chaque ligne de l'encadré commence par `>`. On peut y mettre des listes et du g
 
 ## 6. Publier
 
-1. `node tools/build.mjs`
-2. Exécuter `supabase/seed.sql` dans Supabase → SQL Editor.
-3. `node tools/stamp.mjs`, puis envoyer sur GitHub.
+1. `node tools/build.mjs`, puis `node tools/stamp.mjs`.
+2. Envoyer sur GitHub : le site se met à jour (Vercel) et `supabase/seed.sql`
+   est exécuté automatiquement dans Supabase (GitHub Actions).
 4. Faire relire la formation par un professionnel du métier avant de l'annoncer.
