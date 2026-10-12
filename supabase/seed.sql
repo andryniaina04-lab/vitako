@@ -91,7 +91,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 11, false),
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 18, false),
-  ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 12, false),
+  ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 14, false),
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, false),
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 17, false),
@@ -15738,6 +15738,599 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que doit préciser le contrat sur les décisions ?', '["Qui décide des prix, promotions et remboursements","Rien","Le salaire du client","La couleur de la boutique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
+
+-- gestion-4-f
+delete from public.exam_questions where course_id = 'gestion-4-f';
+delete from public.module_questions where course_id = 'gestion-4-f';
+delete from public.lessons where course_id = 'gestion-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 0, 'Le métier d''aide-comptable en ligne depuis Madagascar', 'Les pièces comptables, le rôle de l''aide-comptable et du comptable, les 8 tâches courantes, les qualités, les clients et la confidentialité.', 'Chaque entreprise doit enregistrer ses achats, ses ventes, ses paiements et ses dépenses. Ce travail régulier, précis et souvent répétitif est celui de l''aide-comptable. Avec les logiciels comptables en ligne, il se fait de plus en plus à distance, pour des cabinets comptables et des PME de Madagascar et d''ailleurs. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un aide-comptable.
+> 2. Distinguer le rôle de l''aide-comptable et celui du comptable.
+> 3. Citer les tâches les plus courantes.
+> 4. Repérer vos premiers clients possibles.
+> 5. Comprendre l''importance de la rigueur et de la confidentialité.
+
+## Le métier en une phrase
+
+Un aide-comptable **enregistre et organise les opérations financières d''une entreprise (factures, paiements, relevés bancaires) avec exactitude, pour que le comptable puisse produire les comptes et les déclarations**.
+
+> [!definition] Pièce comptable
+> Tout document qui prouve une opération : facture d''achat, facture de vente, ticket de caisse, relevé bancaire, reçu Mobile Money, note de frais. **Pas de pièce, pas d''écriture** : chaque enregistrement doit pouvoir être justifié.
+
+## L''aide-comptable et le comptable
+
+| L''aide-comptable | Le comptable ou l''expert-comptable |
+| --- | --- |
+| Collecte et classe les pièces | Organise la comptabilité et choisit les méthodes |
+| Saisit les factures et les paiements | Contrôle et corrige les écritures |
+| Rapproche la banque avec la comptabilité | Prépare les déclarations fiscales et sociales |
+| Suit les factures non payées et prépare les relances | Établit les comptes annuels (bilan, compte de résultat) |
+| Signale les anomalies | Conseille la direction et engage sa responsabilité |
+
+> [!attention]
+> Un aide-comptable ne signe pas les comptes et ne donne pas de conseil fiscal. En cas de doute sur une écriture ou une règle, il **demande** au comptable responsable plutôt que de deviner.
+
+## Les tâches les plus courantes
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Collecte et classement des pièces** | Ranger les factures du mois par type et par date, numérisées et nommées |
+| 2 | **Saisie des achats** | Enregistrer une facture de fournisseur de carton d''emballage |
+| 3 | **Saisie des ventes** | Enregistrer les factures envoyées aux clients |
+| 4 | **Saisie de la banque et de la caisse** | Enregistrer les paiements reçus et effectués |
+| 5 | **Rapprochement bancaire** | Vérifier que la comptabilité et le relevé de banque correspondent |
+| 6 | **Suivi des clients et des fournisseurs** | Qui doit de l''argent ? À qui l''entreprise doit-elle payer ? |
+| 7 | **Préparation des relances** | Liste des factures en retard et messages de relance |
+| 8 | **Préparation des éléments pour le comptable** | Dossier mensuel complet et contrôlé |
+
+## Les qualités indispensables
+
+1. **Rigueur** : une erreur de chiffre peut fausser tout un compte.
+2. **Organisation** : des centaines de pièces chaque mois.
+3. **Respect des délais** : les déclarations ont des dates limites.
+4. **Discrétion** : vous voyez les chiffres, les salaires et les difficultés de l''entreprise.
+5. **Curiosité** : comprendre pourquoi un montant ne correspond pas.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Cabinets comptables** qui ont beaucoup de dossiers et manquent de bras pour la saisie.
+2. **PME** (commerces, transport, services) qui n''ont pas de comptable à plein temps.
+3. **ONG et associations** qui doivent justifier chaque dépense auprès de leurs bailleurs.
+4. **Entrepreneurs** qui veulent mettre de l''ordre dans leurs papiers.
+
+### À l''étranger
+
+1. **Cabinets comptables francophones** (France, Belgique, Canada, Afrique de l''Ouest) qui externalisent la saisie et la préparation des dossiers.
+2. **Petites entreprises** qui cherchent une aide administrative et comptable à distance.
+
+> [!madagascar] Votre avantage
+> Plusieurs cabinets d''expertise comptable en France externalisent déjà une partie de leur saisie vers Madagascar et d''autres pays francophones. Votre maîtrise du français, le faible décalage horaire et la proximité des plans comptables malgache et français (Madagascar utilise le **Plan comptable général 2005**, inspiré du modèle français) sont de vrais atouts.
+
+## La confidentialité
+
+Vous aurez accès à des informations sensibles : chiffre d''affaires, dettes, salaires, comptes bancaires.
+
+1. **Ne parlez jamais** des chiffres d''un client à quelqu''un d''autre.
+2. **Utilisez** les accès fournis par le client ou le cabinet, jamais un partage de mot de passe.
+3. **Protégez** votre ordinateur : mot de passe, écran verrouillé, double authentification.
+4. **Ne gardez pas** de copies personnelles des documents.
+5. **Signalez** immédiatement toute erreur d''envoi ou perte de document.
+
+> [!retenir]
+> - L''aide-comptable enregistre et organise ; le comptable contrôle, déclare et conseille.
+> - Pas de pièce, pas d''écriture.
+> - 8 tâches courantes, de la collecte des pièces au dossier mensuel.
+> - Rigueur, organisation, délais, discrétion.
+> - Clients : cabinets comptables, PME, ONG, entrepreneurs, cabinets étrangers.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rassemblez 10 pièces de votre vie quotidienne ou d''une petite activité (reçus, tickets, reçus Mobile Money) et classez-les par type.
+> 2. Pour chacune, notez : date, montant, qui paie, qui reçoit, objet.
+> 3. Listez 10 tâches comptables qu''une petite épicerie devrait faire chaque mois.
+> 4. Rédigez vos 5 règles personnelles de confidentialité.
+>
+> **À livrer** : votre tableau de 10 pièces, votre liste de tâches et vos règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 0, 0, 'Que signifie « pas de pièce, pas d''écriture » ?', '["Les pièces sont facultatives","Il faut écrire à la main","Chaque enregistrement doit être justifié par un document","On peut tout inventer"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 0, 1, 'Qui prépare les déclarations fiscales ?', '["La banque","Le client du client","Le comptable ou l''expert-comptable","L''aide-comptable seul"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 0, 2, 'Quel plan comptable utilise Madagascar ?', '["Le plan américain","Aucun","Un plan différent pour chaque entreprise sans règle","Le Plan comptable général 2005"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 1, 'Les bases : partie double, comptes, TVA, saisie et rapprochement', 'Débit et crédit, classes de comptes, calculs HT, TVA et TTC, écritures d''achat, de vente et de paiement, lettrage et rapprochement bancaire.', 'Ce module vous donne les bases de la comptabilité dont un aide-comptable a besoin chaque jour : le principe de la partie double, les comptes principaux, la TVA, la saisie des achats, des ventes et de la banque, et le rapprochement bancaire.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer la partie double : débit et crédit.
+> 2. Reconnaître les classes de comptes principales.
+> 3. Calculer des montants hors taxe, de TVA et toutes taxes comprises.
+> 4. Saisir une facture d''achat, une facture de vente et un paiement.
+> 5. Faire un rapprochement bancaire simple.
+
+## La partie double
+
+> [!definition] Partie double
+> Chaque opération est enregistrée dans **au moins deux comptes** : un compte est **débité**, un autre est **crédité**, pour le même montant total. Le total des débits est toujours égal au total des crédits.
+
+> [!exemple] Un exemple simple
+> L''entreprise paie 200 000 Ar de loyer par virement.
+> - Le compte **Locations** (charge) est **débité** de 200 000 Ar : la dépense augmente.
+> - Le compte **Banque** est **crédité** de 200 000 Ar : l''argent en banque diminue.
+
+| Type de compte | Augmente au… | Diminue au… |
+| --- | --- | --- |
+| Charges (dépenses) | Débit | Crédit |
+| Produits (ventes) | Crédit | Débit |
+| Banque, caisse, clients (ce que l''entreprise possède ou doit recevoir) | Débit | Crédit |
+| Fournisseurs, dettes (ce que l''entreprise doit) | Crédit | Débit |
+
+## Les classes de comptes
+
+Les plans comptables malgache (PCG 2005) et français sont organisés en classes numérotées. Les numéros exacts des comptes sont fixés par le plan comptable utilisé et par le cabinet : suivez toujours **le plan de comptes du dossier**.
+
+| Classe | Contenu | Exemples |
+| --- | --- | --- |
+| **1** | Capitaux | Capital, emprunts |
+| **2** | Immobilisations | Véhicules, ordinateurs, bâtiments |
+| **3** | Stocks | Marchandises |
+| **4** | Tiers | Fournisseurs, clients, État (TVA), personnel |
+| **5** | Trésorerie | Banque, caisse |
+| **6** | Charges | Achats, loyers, salaires, électricité |
+| **7** | Produits | Ventes, prestations |
+
+## La TVA
+
+> [!definition] TVA (taxe sur la valeur ajoutée)
+> Un impôt payé par le client final, collecté par l''entreprise sur ses ventes et reversé à l''État, après déduction de la TVA payée sur ses achats (selon les règles du pays).
+
+### Les calculs
+
+| Montant | Formule | Exemple avec un taux de 20 % |
+| --- | --- | --- |
+| **HT** (hors taxe) | Montant de départ | 100 000 Ar |
+| **TVA** | HT × taux | 100 000 × 20 % = 20 000 Ar |
+| **TTC** (toutes taxes comprises) | HT + TVA | 120 000 Ar |
+| **HT à partir du TTC** | TTC ÷ (1 + taux) | 120 000 ÷ 1,20 = 100 000 Ar |
+
+*(Le taux et les règles de TVA dépendent du pays, du produit et du régime de l''entreprise ; toutes les entreprises ne sont pas assujetties. Vérifiez auprès du comptable responsable et des textes officiels en vigueur.)*
+
+> [!attention]
+> Erreur fréquente : calculer le HT en retirant 20 % du TTC (120 000 − 24 000 = 96 000). C''est faux : il faut **diviser** par 1,20.
+
+## Saisir les opérations courantes
+
+### Une facture d''achat (avec TVA déductible)
+
+| Compte | Débit | Crédit |
+| --- | --- | --- |
+| Achats (classe 6) | 100 000 | |
+| TVA déductible (classe 4) | 20 000 | |
+| Fournisseur Imprimerie Soa (classe 4) | | 120 000 |
+
+### Une facture de vente
+
+| Compte | Débit | Crédit |
+| --- | --- | --- |
+| Client Hôtel Ravinala (classe 4) | 240 000 | |
+| Ventes (classe 7) | | 200 000 |
+| TVA collectée (classe 4) | | 40 000 |
+
+### Le paiement du fournisseur par virement
+
+| Compte | Débit | Crédit |
+| --- | --- | --- |
+| Fournisseur Imprimerie Soa | 120 000 | |
+| Banque (classe 5) | | 120 000 |
+
+> [!astuce]
+> Après chaque écriture, vérifiez que **total débit = total crédit**. Les logiciels refusent d''enregistrer une écriture déséquilibrée, mais vérifier vous-même vous aide à comprendre.
+
+## Le lettrage
+
+> [!definition] Lettrage
+> Relier une facture et le paiement qui la règle, dans le compte d''un client ou d''un fournisseur. Les factures non lettrées sont celles qui restent à payer ou à encaisser.
+
+## Le rapprochement bancaire
+
+> [!definition] Rapprochement bancaire
+> Comparer, ligne par ligne, le relevé de la banque et le compte banque de la comptabilité, pour vérifier que toutes les opérations sont enregistrées et expliquer les différences.
+
+### La méthode
+
+1. **Pointez** les opérations présentes des deux côtés.
+2. **Listez** les opérations présentes seulement sur le relevé (frais bancaires, virement reçu non saisi) : saisissez-les avec leurs pièces.
+3. **Listez** les opérations présentes seulement en comptabilité (chèque émis pas encore encaissé) : elles expliquent l''écart.
+4. **Vérifiez** que le solde rapproché est égal.
+
+| Élément | Montant |
+| --- | --- |
+| Solde de la banque au 31/03 | 4 850 000 Ar |
+| − Chèque émis non encore encaissé | − 300 000 Ar |
+| = Solde rapproché | 4 550 000 Ar |
+| Solde du compte banque en comptabilité | 4 550 000 Ar |
+
+> [!madagascar]
+> Pour beaucoup d''entreprises malgaches, les paiements par **Mobile Money** sont fréquents. Traitez chaque compte Mobile Money de l''entreprise comme un compte de trésorerie, avec ses relevés et son propre rapprochement. Les frais de transfert sont des charges à enregistrer.
+
+> [!retenir]
+> - Partie double : total débit = total crédit.
+> - Classes 1 à 7 ; suivez le plan de comptes du dossier.
+> - HT × taux = TVA ; TTC ÷ (1 + taux) = HT.
+> - Achats, ventes, paiements, lettrage.
+> - Rapprochement bancaire et Mobile Money chaque mois.
+
+## Exercice pratique : vos premières écritures
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Calculez HT, TVA et TTC pour 5 montants, dont 3 à partir du TTC.
+> 2. Passez les écritures de 10 opérations fictives (achats, ventes, paiements, loyer, frais bancaires).
+> 3. Lettrez les comptes clients et fournisseurs.
+> 4. Faites le rapprochement bancaire du mois avec un relevé fictif de 15 lignes.
+>
+> **À livrer** : vos calculs, votre journal d''écritures, vos lettrages et votre rapprochement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 0, 'Avec un taux de 20 %, quel est le HT de 120 000 Ar TTC ?', '["144 000 Ar","100 000 Ar","96 000 Ar","24 000 Ar"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 1, 'Quand l''entreprise paie un loyer par banque, le compte banque est…', '["Débité","Crédité","Supprimé","Inchangé"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 2, 'Qu''est-ce que le lettrage ?', '["Numériser une pièce","Écrire une lettre au client","Calculer la TVA","Relier une facture au paiement qui la règle"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 2, 'Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo', 'Formules de contrôle, fonctionnement d''un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants.', 'Ce module vous fait prendre en main les outils de l''aide-comptable : **Excel** pour les contrôles et les tableaux de suivi, les **logiciels comptables** (avec des solutions gratuites pour apprendre), la **numérisation des pièces**, puis les logiciels payants les plus utilisés : **Sage**, **QuickBooks** et **Odoo**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser Excel pour suivre, contrôler et préparer les données.
+> 2. Comprendre le fonctionnement d''un logiciel comptable.
+> 3. Organiser la numérisation et le classement des pièces.
+> 4. Importer un relevé bancaire et le rapprocher.
+> 5. Connaître les forces de Sage, QuickBooks et Odoo.
+
+## Excel pour l''aide-comptable
+
+| Usage | Exemple de formule (en français) |
+| --- | --- |
+| Total des factures d''un fournisseur | `=SOMME.SI.ENS(Montant;Fournisseur;"Imprimerie Soa")` |
+| Calcul du HT à partir du TTC | `=ARRONDI(TTC/(1+Taux);0)` |
+| Retard de paiement en jours | `=AUJOURDHUI()-DateEchéance` |
+| Contrôle d''équilibre d''une écriture | `=SI(SOMME(Débit)=SOMME(Crédit);"OK";"ÉCART")` |
+| Repérer les doublons de factures | `=NB.SI.ENS(NumFacture;[@NumFacture];Fournisseur;[@Fournisseur])>1` |
+
+> [!astuce]
+> Créez un **tableau de contrôle mensuel** : nombre de pièces reçues, saisies, en attente, montant total des achats et des ventes. Il vous permet de vérifier que rien n''est oublié avant d''envoyer le dossier au comptable.
+
+## Comment fonctionne un logiciel comptable
+
+| Élément | Rôle |
+| --- | --- |
+| **Plan de comptes** | La liste des comptes du dossier |
+| **Journaux** | Achats, ventes, banque, caisse, opérations diverses |
+| **Tiers** | Fiches clients et fournisseurs |
+| **Saisie** | Enregistrement des écritures, souvent avec la pièce jointe |
+| **Lettrage** | Rapprochement des factures et des paiements |
+| **Rapprochement bancaire** | Import du relevé et association automatique ou manuelle |
+| **États** | Grand livre, balance, échéancier, déclarations préparatoires |
+
+> [!definition] Balance
+> Un tableau qui liste tous les comptes avec leur total débit, total crédit et solde. Le total des débits doit égaler le total des crédits. C''est un outil de contrôle essentiel avant la clôture du mois.
+
+### Pour apprendre gratuitement
+
+1. **Versions d''essai** des logiciels (souvent 15 à 30 jours).
+2. **Odoo** : version communautaire gratuite et libre, à installer, ou essai en ligne.
+3. **Excel** : tenir un journal, un grand livre et une balance à la main pour bien comprendre.
+
+## La numérisation et le classement des pièces
+
+### Les règles
+
+1. **Numérisez** chaque pièce lisiblement (scanner ou application de numérisation sur téléphone).
+2. **Nommez** les fichiers de façon uniforme : `2026-03-12_Achat_ImprimerieSoa_F2026-118_120000.pdf`.
+3. **Classez** par mois et par journal : `2026-03/Achats`, `2026-03/Ventes`, `2026-03/Banque`.
+4. **Joignez** la pièce à l''écriture dans le logiciel si c''est possible.
+5. **Conservez** les originaux selon les règles du pays et les consignes du comptable.
+
+> [!madagascar]
+> Beaucoup de pièces arrivent sous forme de **photos prises au téléphone**, de **reçus manuscrits** ou de **captures de reçus Mobile Money**. Demandez des photos nettes, à plat et complètes, et indiquez au client ce qu''une pièce valable doit contenir (date, montant, nom du fournisseur, objet). Une pièce illisible doit être redemandée, pas devinée.
+
+## Importer et rapprocher un relevé bancaire
+
+1. **Téléchargez** le relevé au format proposé par la banque (CSV, Excel ou format bancaire).
+2. **Importez-le** dans le logiciel (ou préparez-le dans Excel au bon format).
+3. **Laissez** le logiciel proposer les correspondances.
+4. **Vérifiez** chaque proposition : montant, date, tiers.
+5. **Saisissez** les opérations manquantes avec leur pièce.
+6. **Contrôlez** que le solde du logiciel est égal à celui du relevé.
+
+> [!attention]
+> Ne validez jamais les propositions automatiques sans les vérifier : deux factures du même montant chez le même fournisseur peuvent être confondues.
+
+## Les logiciels payants
+
+| Logiciel | Points forts | Où on le rencontre |
+| --- | --- | --- |
+| **Sage** | Très répandu chez les cabinets et les entreprises francophones, solide pour la comptabilité générale et la paie | Cabinets, PME et grandes entreprises, en France, en Afrique et à Madagascar |
+| **QuickBooks** | Simple, en ligne, connexion bancaire, très utilisé par les petites entreprises | Amérique du Nord, Royaume-Uni et de nombreuses petites entreprises dans le monde |
+| **Odoo** | Logiciel de gestion complet (ventes, achats, stocks, comptabilité) qui relie toutes les opérations | PME qui veulent un outil unique ; version libre gratuite et versions payantes |
+
+> [!madagascar]
+> Les licences sont achetées par l''entreprise ou le cabinet, qui vous crée un accès. Vérifiez quels logiciels utilisent les cabinets que vous visez : apprendre celui de vos futurs clients est le meilleur investissement. Les prix et versions changent : consultez les sites officiels.
+
+> [!retenir]
+> - Excel pour les contrôles, le suivi et la préparation des données.
+> - Un logiciel comptable : plan de comptes, journaux, tiers, saisie, lettrage, rapprochement, états.
+> - La balance est équilibrée : total débit = total crédit.
+> - Des pièces numérisées, nommées, classées et jointes aux écritures.
+> - Sage, QuickBooks et Odoo : apprenez celui de vos clients.
+
+## Exercice pratique : votre dossier dans un logiciel
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Ouvrez un essai d''un logiciel comptable ou installez Odoo (version libre ou essai en ligne).
+> 2. Créez un dossier fictif : 5 fournisseurs, 5 clients, les comptes nécessaires.
+> 3. Saisissez 20 opérations avec leurs pièces numérisées (créées par vous).
+> 4. Importez un relevé bancaire fictif et rapprochez-le.
+> 5. Éditez la balance et vérifiez son équilibre.
+> 6. Construisez votre tableau de contrôle mensuel dans Excel.
+>
+> **À livrer** : des captures du logiciel, la balance et votre tableau de contrôle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 2, 0, 'Que doit montrer une balance correcte ?', '["Les mots de passe","Total débit égal au total crédit","Uniquement les ventes","Un écart important"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 2, 1, 'Que faire d''une pièce illisible ?', '["La redemander","Deviner le montant","La supprimer","L''ignorer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 2, 2, 'Quel logiciel relie ventes, achats, stocks et comptabilité ?', '["Figma","Canva","Zoom","Odoo"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 3, 'Premier projet : un mois de comptabilité pour Taxi Be Express', 'Réception des pièces, saisie du mois, rapprochements banque et Mobile Money, échéancier et relances, liste de contrôle et message au comptable.', 'Dans ce module, vous traitez un mois complet de comptabilité pour une petite entreprise, comme le ferait un aide-comptable à distance pour un cabinet : réception des pièces, saisie, rapprochement, suivi des clients et des fournisseurs, contrôles et envoi du dossier au comptable.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser la réception des pièces d''un client.
+> 2. Saisir un mois complet d''opérations.
+> 3. Rapprocher la banque et le Mobile Money.
+> 4. Suivre les impayés et préparer les relances.
+> 5. Contrôler et transmettre un dossier mensuel.
+
+## Le cas pratique : « Taxi Be Express »
+
+> [!exemple] Votre client
+> **Taxi Be Express** est une petite entreprise de transport de marchandises à Toamasina, avec 4 camionnettes et 6 salariés. Elle travaille avec un cabinet comptable d''Antananarivo, qui vous confie la saisie mensuelle. Le gérant, M. Fidy, envoie ses pièces par photos et ses relevés bancaires et Mobile Money chaque début de mois. Le cabinet attend le dossier contrôlé avant le 15.
+
+## Étape 1 : organiser la réception des pièces
+
+### La liste des pièces attendues chaque mois
+
+| Type | Exemples |
+| --- | --- |
+| Factures de vente | Transport pour des clients (entreprises du port, commerces) |
+| Factures d''achat | Carburant, pièces détachées, entretien, assurance |
+| Relevés | Banque, comptes Mobile Money |
+| Caisse | Brouillard de caisse (entrées et sorties en espèces) |
+| Divers | Loyer, électricité, téléphone, frais bancaires |
+
+### Les règles avec le client
+
+1. **Un dossier partagé** par mois, avec des sous-dossiers par type.
+2. **Une date limite** d''envoi (par exemple le 5 du mois suivant).
+3. **Une liste de contrôle** que le client coche.
+4. **Un message de rappel** automatique ou manuel le 3 du mois.
+
+## Étape 2 : saisir le mois
+
+1. **Ventes** : saisissez toutes les factures de vente, en vérifiant la numérotation (pas de trou ni de doublon).
+2. **Achats** : saisissez les factures fournisseurs ; signalez celles qui ne sont pas au nom de l''entreprise.
+3. **Caisse** : saisissez le brouillard de caisse et vérifiez que le solde ne devient jamais négatif.
+4. **Banque et Mobile Money** : saisissez ou importez les relevés.
+
+> [!attention]
+> Un **solde de caisse négatif** est impossible dans la réalité : il signale un oubli d''entrée, une erreur de date ou une dépense mal enregistrée. Signalez-le au comptable et au client.
+
+## Étape 3 : rapprocher
+
+| Compte | Solde du relevé | Solde comptable | Écart | Explication |
+| --- | --- | --- | --- | --- |
+| Banque | 8 420 000 Ar | 8 120 000 Ar | 300 000 Ar | Chèque n° 4127 émis le 30/03, pas encore encaissé |
+| MVola | 1 245 000 Ar | 1 245 000 Ar | 0 | — |
+| Orange Money | 380 000 Ar | 392 500 Ar | −12 500 Ar | Frais de retrait non saisis : à enregistrer |
+
+## Étape 4 : suivre les impayés et préparer les relances
+
+### L''échéancier des clients
+
+| Client | Facture | Montant | Échéance | Retard | Action |
+| --- | --- | --- | --- | --- | --- |
+| Soa Distribution | F2026-031 | 1 800 000 Ar | 28/02 | 32 jours | 2e relance |
+| Port Logistique | F2026-044 | 650 000 Ar | 15/03 | 17 jours | 1re relance |
+| Épicerie Mirana | F2026-052 | 220 000 Ar | 10/04 | — | À surveiller |
+
+> [!exemple] Message de première relance (à valider par le client)
+> « Bonjour, sauf erreur de notre part, la facture F2026-044 du 15 février, d''un montant de 650 000 Ar, arrivée à échéance le 15 mars, reste impayée. Pourriez-vous nous indiquer la date de règlement prévue ? Si le paiement a déjà été effectué, merci de ne pas tenir compte de ce message et de nous transmettre la référence. Cordialement. »
+
+> [!astuce]
+> Préparez les relances, mais faites-les **valider** par le client ou le cabinet avant l''envoi : la relation avec un client important peut demander une approche particulière.
+
+## Étape 5 : contrôler et transmettre
+
+### La liste de contrôle du dossier mensuel
+
+| N° | Contrôle |
+| --- | --- |
+| 1 | Toutes les pièces de la liste reçues ou réclamées |
+| 2 | Toutes les pièces saisies et jointes aux écritures |
+| 3 | Banque et Mobile Money rapprochés, écarts expliqués |
+| 4 | Caisse sans solde négatif |
+| 5 | Numérotation des ventes continue |
+| 6 | Comptes d''attente vides ou expliqués |
+| 7 | Balance équilibrée |
+| 8 | Échéancier clients et fournisseurs à jour |
+| 9 | Liste des questions pour le comptable |
+
+> [!definition] Compte d''attente
+> Un compte temporaire où l''on place une opération dont on ne connaît pas encore la nature (un virement reçu sans explication, par exemple). Il doit être vidé dès que l''information arrive.
+
+### Le message d''envoi au comptable
+
+1. **Ce qui est fait** : périodes, journaux, rapprochements.
+2. **Les anomalies** et ce que vous avez fait.
+3. **Les questions** qui demandent sa décision.
+4. **Les pièces manquantes** et la date de relance du client.
+
+> [!madagascar]
+> Pour une entreprise de transport, les achats de **carburant** sont nombreux et souvent payés en espèces. Demandez au client de garder chaque ticket de station et de noter le véhicule concerné : cela facilite la saisie et permet au gérant de suivre la consommation de chaque camionnette.
+
+> [!retenir]
+> - Une liste de pièces, un dossier partagé et une date limite chaque mois.
+> - Saisie des ventes, achats, caisse, banque et Mobile Money.
+> - Rapprochements avec écarts expliqués.
+> - Échéancier et relances validées par le client.
+> - Liste de contrôle en 9 points et message clair au comptable.
+
+## Exercice pratique : un mois de Taxi Be Express
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Créez un jeu de 40 pièces fictives pour un mois (ventes, carburant, entretien, loyer, salaires déjà calculés par le cabinet, frais bancaires et Mobile Money).
+> 2. Saisissez-les dans un logiciel d''essai ou dans Excel.
+> 3. Rapprochez la banque et un compte Mobile Money.
+> 4. Construisez l''échéancier clients et rédigez 2 relances.
+> 5. Appliquez la liste de contrôle et rédigez le message au comptable.
+>
+> **À livrer** : votre saisie, vos rapprochements, votre échéancier, vos relances et votre message. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 3, 0, 'Que signale un solde de caisse négatif ?', '["Un bénéfice","Une bonne gestion","Un oubli ou une erreur à signaler","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 3, 1, 'Que faire d''une relance avant de l''envoyer ?', '["La publier","La faire valider par le client ou le cabinet","La supprimer","L''envoyer à tous les clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 3, 2, 'Qu''est-ce qu''un compte d''attente ?', '["Un compte de salaire","Un compte Mobile Money","Un compte temporaire pour une opération à identifier","Un compte d''épargne"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio sans données confidentielles, 5 canaux, prix à l''heure, à la pièce ou au forfait, contrat en 8 clauses, paiements et évolution.', 'Les cabinets comptables et les PME cherchent des aides-comptables fiables, capables de travailler à distance avec rigueur et discrétion. Ce dernier module vous montre comment présenter vos services, trouver vos premiers clients, fixer vos prix, sécuriser votre travail et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''aide-comptable sans données confidentielles.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer des prix à l''heure, à la pièce ou au forfait mensuel.
+> 4. Rédiger un contrat qui précise les responsabilités.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Votre dossier Taxi Be Express** (module 4), avec des données fictives.
+2. **Vos modèles** : liste de pièces, tableau de contrôle mensuel, échéancier, relances.
+3. **Vos compétences logicielles** : captures de vos exercices dans Sage, QuickBooks ou Odoo (essai).
+4. **Vos formations** : diplômes en comptabilité ou gestion, certifications des éditeurs si vous en avez.
+
+> [!astuce]
+> Les cabinets testent souvent les candidats avec une **saisie d''essai** de quelques pièces. Entraînez-vous à saisir vite et juste, et à expliquer chaque choix de compte.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Cabinets comptables malgaches** | Proposez de prendre en charge la saisie de leurs dossiers en période chargée |
+| 2 | **Cabinets comptables étrangers** (France, Belgique, Canada) | Proposez la saisie et la préparation des dossiers à distance, sur leurs logiciels |
+| 3 | **PME locales** | Proposez la tenue mensuelle des pièces et la préparation pour leur comptable |
+| 4 | **ONG et associations** | Suivi des dépenses par projet et préparation des justificatifs pour les bailleurs |
+| 5 | **Plateformes de freelance** | Missions de saisie, de rapprochement, de mise à jour d''Excel ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un cabinet comptable
+> « Bonjour Madame, les périodes de clôture sont souvent très chargées pour les cabinets. Je suis aide-comptable à distance, basée à Antananarivo, formée à la saisie, au lettrage et au rapprochement bancaire sur Sage et Odoo. Je peux prendre en charge la saisie mensuelle de certains de vos dossiers selon vos procédures, avec une liste de contrôle et un message de synthèse pour chaque dossier. Je peux faire un essai sur un dossier test. »
+
+## Fixer ses prix
+
+| Modèle | Fonctionnement | Exemple |
+| --- | --- | --- |
+| **À l''heure** | Tarif horaire × heures | 12 000 Ar de l''heure |
+| **À la pièce** | Prix par pièce saisie | 500 à 1 500 Ar selon la complexité |
+| **Forfait mensuel** | Selon le volume de pièces et les tâches | 30 à 100 pièces par mois : 150 000 Ar |
+
+*(Montants donnés en exemple. Pour les cabinets étrangers, fixez vos prix en euros selon leur marché.)*
+
+### Calculer un forfait
+
+1. **Estimez** le nombre de pièces par mois et le temps moyen par pièce (par exemple 3 minutes).
+2. **Ajoutez** le temps des rapprochements, de l''échéancier, des contrôles et des échanges.
+3. **Multipliez** par votre tarif horaire.
+4. **Fixez** un volume maximal inclus et le prix des pièces supplémentaires.
+
+> [!exemple] Calcul
+> 80 pièces × 3 minutes = 240 minutes, soit 4 heures. Rapprochements, échéancier, contrôles et échanges : 6 heures. Total : 10 heures × 15 000 Ar = 150 000 Ar par mois, pour 100 pièces au maximum.
+
+## Le contrat
+
+### Les 8 clauses
+
+1. **Les parties**.
+2. **Les tâches** : saisie, lettrage, rapprochement, échéancier, préparation des relances.
+3. **Ce qui n''est pas compris** : déclarations, comptes annuels, conseil fiscal, signature.
+4. **Les obligations du client** : pièces complètes et lisibles avant une date fixée.
+5. **Les délais** de livraison du dossier.
+6. **La confidentialité** et la sécurité des accès.
+7. **Le prix**, le volume inclus et le paiement.
+8. **La durée** et le préavis.
+
+> [!attention]
+> Indiquez clairement que la **responsabilité des comptes et des déclarations** reste au comptable ou à l''expert-comptable du client. Vous êtes responsable de la qualité de votre saisie, pas des choix fiscaux.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Cabinet étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et tenez vous-même une comptabilité propre de votre activité : c''est votre meilleure carte de visite.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Comptable** | Formation comptable complète, clôtures, déclarations |
+| **Gestionnaire de paie** | Droit du travail et paie du pays (voir la formation Assistant administratif et RH) |
+| **Assistant de gestion** | Tableaux de bord, budgets, suivi de trésorerie |
+| **Expert-comptable** | Diplôme et inscription à l''ordre professionnel du pays |
+| **Consultant logiciel** | Paramétrage de Sage, Odoo ou QuickBooks pour les entreprises |
+
+> [!retenir]
+> - Un portfolio avec des données fictives et vos modèles.
+> - Cabinets locaux et étrangers, PME, ONG, plateformes.
+> - Prix à l''heure, à la pièce ou au forfait avec un volume maximal.
+> - Un contrat qui laisse les déclarations et les comptes au comptable responsable.
+> - Évoluez vers la comptabilité, la paie, la gestion ou le conseil logiciel.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez votre portfolio avec le dossier Taxi Be Express et vos modèles.
+> 2. Calculez un forfait pour 50, 100 et 200 pièces par mois.
+> 3. Rédigez votre contrat type en 8 clauses.
+> 4. Listez 10 cabinets comptables (Madagascar et étranger) et envoyez au moins 2 messages.
+>
+> **À livrer** : votre portfolio, vos forfaits, votre contrat et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 4, 0, '10 heures à 15 000 Ar de l''heure font…', '["25 000 Ar","15 000 Ar","150 000 Ar","1 500 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 4, 1, 'Qui reste responsable des comptes et des déclarations ?', '["L''aide-comptable","Personne","Le comptable ou l''expert-comptable du client","La plateforme"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 4, 2, 'Que fixer dans un forfait mensuel ?', '["Un volume maximal de pièces inclus","Rien","Le salaire du client","Un nombre illimité de pièces"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quel document est une pièce comptable ?', '["Un message d''amitié","Une photo de vacances","Une publicité","Un reçu Mobile Money"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que fait l''aide-comptable en cas de doute sur une règle ?', '["Il ignore l''opération","Il demande au comptable responsable","Il devine","Il supprime la pièce"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quel client a besoin de justifier chaque dépense auprès de bailleurs ?', '["Une ONG","Une banque centrale","Personne","Un particulier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Pourquoi les cabinets français peuvent-ils travailler avec Madagascar ?', '["Parce que la comptabilité n''existe pas","Aucune raison","Français, faible décalage horaire et plans comptables proches","Parce que c''est obligatoire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Dans la partie double, que vaut le total des débits ?', '["Rien de particulier","Le double des crédits","Le total des crédits","Zéro"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quelle classe de comptes regroupe les charges ?', '["Classe 7","Classe 6","Classe 1","Classe 5"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quelle classe regroupe la banque et la caisse ?', '["Classe 6","Classe 2","Classe 5","Classe 7"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', '100 000 Ar HT avec 20 % de TVA donnent quel TTC ?', '["200 000 Ar","120 000 Ar","80 000 Ar","100 020 Ar"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Comment retrouver le HT à partir du TTC ?', '["Multiplier par le taux","Diviser par (1 + taux)","Retirer le taux du TTC en pourcentage","Ajouter le taux"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Dans une facture d''achat, le fournisseur est…', '["Crédité","Oublié","Supprimé","Débité"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Dans une facture de vente, la TVA collectée est…', '["Payée par l''aide-comptable","Créditée","Débitée","Ignorée"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Qu''explique souvent un écart de rapprochement bancaire ?', '["Le logo de la banque","Rien","Un chèque émis pas encore encaissé","Une erreur de la météo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Comment traiter un compte Mobile Money de l''entreprise ?', '["Comme une dépense personnelle","On ne l''enregistre pas","Comme un compte de trésorerie avec rapprochement","Comme un client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quelle formule contrôle l''équilibre d''une écriture ?', '["AUJOURDHUI()","MAJUSCULE(Débit)","SI(SOMME(Débit)=SOMME(Crédit);\"OK\";\"ÉCART\")","CONCAT(Crédit)"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quel nom de fichier est le meilleur pour une pièce ?', '["document final.pdf","2026-03-12_Achat_ImprimerieSoa_F2026-118_120000.pdf","photo1.jpg","scan.pdf"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que faire des propositions automatiques de rapprochement ?', '["Les valider sans regarder","Les vérifier une par une","Les ignorer","Les supprimer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quel logiciel est très répandu chez les cabinets francophones ?', '["Canva","Figma","Sage","CapCut"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Qui achète en général la licence du logiciel comptable ?', '["L''aide-comptable obligatoirement","Personne","L''entreprise ou le cabinet","La banque"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que vérifier dans la numérotation des factures de vente ?', '["Qu''elles sont toutes paires","Qu''il n''y a ni trou ni doublon","Rien","Qu''elles commencent par zéro"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que contient l''échéancier des clients ?', '["Les photos des véhicules","Les mots de passe","Les salaires","Factures, montants, échéances, retards et actions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que contient le message d''envoi au comptable ?', '["Une facture","Seulement « c''est fait »","Rien","Ce qui est fait, les anomalies, les questions, les pièces manquantes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Que demander pour les achats de carburant ?', '["Rien","Payer sans reçu","Garder chaque ticket et noter le véhicule","Jeter les tickets"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Comment les cabinets testent-ils souvent les candidats ?', '["Par un test de dessin","Ils ne testent pas","Par un examen de chant","Par une saisie d''essai"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', '80 pièces à 3 minutes chacune demandent…', '["4 heures","3 heures","24 heures","80 heures"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quelle évolution demande un diplôme et une inscription à l''ordre ?', '["Assistant de gestion","Aide-comptable","Consultant logiciel","Expert-comptable"]'::jsonb, 3);
 
 -- lang-0-a
 delete from public.exam_questions where course_id = 'lang-0-a';

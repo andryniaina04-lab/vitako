@@ -2333,6 +2333,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-4-f": {
+  "hours": 16,
+  "description": "L'aide-comptable enregistre et organise les opérations financières d'une entreprise pour que le comptable puisse produire les comptes et les déclarations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des cabinets comptables, des PME et des ONG, à Madagascar et à l'étranger, avec Excel et des logiciels comptables : partie double, TVA, saisie, lettrage, rapprochement bancaire et Mobile Money, dossier mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et distinguer l'aide-comptable du comptable",
+   "Appliquer la partie double et calculer HT, TVA et TTC",
+   "Saisir achats, ventes, paiements et faire le lettrage",
+   "Rapprocher la banque et les comptes Mobile Money",
+   "Utiliser Excel et un logiciel comptable pour traiter un mois complet",
+   "Vendre ses services, préciser les responsabilités et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'aide-comptable en ligne depuis Madagascar",
+    "summary": "Les pièces comptables, le rôle de l'aide-comptable et du comptable, les 8 tâches courantes, les qualités, les clients et la confidentialité.",
+    "sections": [
+     "Le métier en une phrase",
+     "L'aide-comptable et le comptable",
+     "Les tâches les plus courantes",
+     "Les qualités indispensables",
+     "Qui sont vos clients ?",
+     "La confidentialité",
+     "Exercice pratique : votre point de départ"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : partie double, comptes, TVA, saisie et rapprochement",
+    "summary": "Débit et crédit, classes de comptes, calculs HT, TVA et TTC, écritures d'achat, de vente et de paiement, lettrage et rapprochement bancaire.",
+    "sections": [
+     "La partie double",
+     "Les classes de comptes",
+     "La TVA",
+     "Saisir les opérations courantes",
+     "Le lettrage",
+     "Le rapprochement bancaire",
+     "Exercice pratique : vos premières écritures"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo",
+    "summary": "Formules de contrôle, fonctionnement d'un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants.",
+    "sections": [
+     "Excel pour l'aide-comptable",
+     "Comment fonctionne un logiciel comptable",
+     "La numérisation et le classement des pièces",
+     "Importer et rapprocher un relevé bancaire",
+     "Les logiciels payants",
+     "Exercice pratique : votre dossier dans un logiciel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : un mois de comptabilité pour Taxi Be Express",
+    "summary": "Réception des pièces, saisie du mois, rapprochements banque et Mobile Money, échéancier et relances, liste de contrôle et message au comptable.",
+    "sections": [
+     "Le cas pratique : « Taxi Be Express »",
+     "Étape 1 : organiser la réception des pièces",
+     "Étape 2 : saisir le mois",
+     "Étape 3 : rapprocher",
+     "Étape 4 : suivre les impayés et préparer les relances",
+     "Étape 5 : contrôler et transmettre",
+     "Exercice pratique : un mois de Taxi Be Express"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio sans données confidentielles, 5 canaux, prix à l'heure, à la pièce ou au forfait, contrat en 8 clauses, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Le contrat",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "lang-0-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait du rédacteur un spécialiste : choix d'un secteur, expertise visible dans les textes, outils professionnels (Semrush, Search Console, correcteurs avancés), stratégies de contenu avec pages piliers, écriture pour différents publics francophones et en écriture fantôme, puis copywriting de conversion et plans de contenu mensuels. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

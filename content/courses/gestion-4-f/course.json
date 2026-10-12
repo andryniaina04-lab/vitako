@@ -1,0 +1,97 @@
+{
+  "id": "gestion-4-f",
+  "hours": 16,
+  "description": "L'aide-comptable enregistre et organise les opérations financières d'une entreprise pour que le comptable puisse produire les comptes et les déclarations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des cabinets comptables, des PME et des ONG, à Madagascar et à l'étranger, avec Excel et des logiciels comptables : partie double, TVA, saisie, lettrage, rapprochement bancaire et Mobile Money, dossier mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et distinguer l'aide-comptable du comptable",
+    "Appliquer la partie double et calculer HT, TVA et TTC",
+    "Saisir achats, ventes, paiements et faire le lettrage",
+    "Rapprocher la banque et les comptes Mobile Money",
+    "Utiliser Excel et un logiciel comptable pour traiter un mois complet",
+    "Vendre ses services, préciser les responsabilités et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'aide-comptable en ligne depuis Madagascar",
+      "summary": "Les pièces comptables, le rôle de l'aide-comptable et du comptable, les 8 tâches courantes, les qualités, les clients et la confidentialité.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « pas de pièce, pas d'écriture » ?", "options": ["Chaque enregistrement doit être justifié par un document", "On peut tout inventer", "Les pièces sont facultatives", "Il faut écrire à la main"], "correct": 0 },
+        { "q": "Qui prépare les déclarations fiscales ?", "options": ["Le comptable ou l'expert-comptable", "L'aide-comptable seul", "Le client du client", "La banque"], "correct": 0 },
+        { "q": "Quel plan comptable utilise Madagascar ?", "options": ["Le Plan comptable général 2005", "Aucun", "Le plan américain", "Un plan différent pour chaque entreprise sans règle"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : partie double, comptes, TVA, saisie et rapprochement",
+      "summary": "Débit et crédit, classes de comptes, calculs HT, TVA et TTC, écritures d'achat, de vente et de paiement, lettrage et rapprochement bancaire.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Avec un taux de 20 %, quel est le HT de 120 000 Ar TTC ?", "options": ["100 000 Ar", "96 000 Ar", "144 000 Ar", "24 000 Ar"], "correct": 0 },
+        { "q": "Quand l'entreprise paie un loyer par banque, le compte banque est…", "options": ["Crédité", "Débité", "Supprimé", "Inchangé"], "correct": 0 },
+        { "q": "Qu'est-ce que le lettrage ?", "options": ["Relier une facture au paiement qui la règle", "Écrire une lettre au client", "Calculer la TVA", "Numériser une pièce"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo",
+      "summary": "Formules de contrôle, fonctionnement d'un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que doit montrer une balance correcte ?", "options": ["Total débit égal au total crédit", "Un écart important", "Uniquement les ventes", "Les mots de passe"], "correct": 0 },
+        { "q": "Que faire d'une pièce illisible ?", "options": ["La redemander", "Deviner le montant", "L'ignorer", "La supprimer"], "correct": 0 },
+        { "q": "Quel logiciel relie ventes, achats, stocks et comptabilité ?", "options": ["Odoo", "Canva", "Zoom", "Figma"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un mois de comptabilité pour Taxi Be Express",
+      "summary": "Réception des pièces, saisie du mois, rapprochements banque et Mobile Money, échéancier et relances, liste de contrôle et message au comptable.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signale un solde de caisse négatif ?", "options": ["Un oubli ou une erreur à signaler", "Une bonne gestion", "Un bénéfice", "Rien"], "correct": 0 },
+        { "q": "Que faire d'une relance avant de l'envoyer ?", "options": ["La faire valider par le client ou le cabinet", "L'envoyer à tous les clients", "La publier", "La supprimer"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un compte d'attente ?", "options": ["Un compte temporaire pour une opération à identifier", "Un compte d'épargne", "Un compte de salaire", "Un compte Mobile Money"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio sans données confidentielles, 5 canaux, prix à l'heure, à la pièce ou au forfait, contrat en 8 clauses, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "10 heures à 15 000 Ar de l'heure font…", "options": ["150 000 Ar", "15 000 Ar", "1 500 000 Ar", "25 000 Ar"], "correct": 0 },
+        { "q": "Qui reste responsable des comptes et des déclarations ?", "options": ["Le comptable ou l'expert-comptable du client", "L'aide-comptable", "La plateforme", "Personne"], "correct": 0 },
+        { "q": "Que fixer dans un forfait mensuel ?", "options": ["Un volume maximal de pièces inclus", "Rien", "Un nombre illimité de pièces", "Le salaire du client"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel document est une pièce comptable ?", "options": ["Un reçu Mobile Money", "Une photo de vacances", "Un message d'amitié", "Une publicité"], "correct": 0 },
+    { "q": "Que fait l'aide-comptable en cas de doute sur une règle ?", "options": ["Il demande au comptable responsable", "Il devine", "Il ignore l'opération", "Il supprime la pièce"], "correct": 0 },
+    { "q": "Quel client a besoin de justifier chaque dépense auprès de bailleurs ?", "options": ["Une ONG", "Un particulier", "Personne", "Une banque centrale"], "correct": 0 },
+    { "q": "Pourquoi les cabinets français peuvent-ils travailler avec Madagascar ?", "options": ["Français, faible décalage horaire et plans comptables proches", "Parce que c'est obligatoire", "Parce que la comptabilité n'existe pas", "Aucune raison"], "correct": 0 },
+    { "q": "Dans la partie double, que vaut le total des débits ?", "options": ["Le total des crédits", "Zéro", "Le double des crédits", "Rien de particulier"], "correct": 0 },
+    { "q": "Quelle classe de comptes regroupe les charges ?", "options": ["Classe 6", "Classe 7", "Classe 5", "Classe 1"], "correct": 0 },
+    { "q": "Quelle classe regroupe la banque et la caisse ?", "options": ["Classe 5", "Classe 6", "Classe 2", "Classe 7"], "correct": 0 },
+    { "q": "100 000 Ar HT avec 20 % de TVA donnent quel TTC ?", "options": ["120 000 Ar", "100 020 Ar", "80 000 Ar", "200 000 Ar"], "correct": 0 },
+    { "q": "Comment retrouver le HT à partir du TTC ?", "options": ["Diviser par (1 + taux)", "Retirer le taux du TTC en pourcentage", "Multiplier par le taux", "Ajouter le taux"], "correct": 0 },
+    { "q": "Dans une facture d'achat, le fournisseur est…", "options": ["Crédité", "Débité", "Oublié", "Supprimé"], "correct": 0 },
+    { "q": "Dans une facture de vente, la TVA collectée est…", "options": ["Créditée", "Débitée", "Ignorée", "Payée par l'aide-comptable"], "correct": 0 },
+    { "q": "Qu'explique souvent un écart de rapprochement bancaire ?", "options": ["Un chèque émis pas encore encaissé", "Une erreur de la météo", "Le logo de la banque", "Rien"], "correct": 0 },
+    { "q": "Comment traiter un compte Mobile Money de l'entreprise ?", "options": ["Comme un compte de trésorerie avec rapprochement", "Comme une dépense personnelle", "On ne l'enregistre pas", "Comme un client"], "correct": 0 },
+    { "q": "Quelle formule contrôle l'équilibre d'une écriture ?", "options": ["SI(SOMME(Débit)=SOMME(Crédit);\"OK\";\"ÉCART\")", "MAJUSCULE(Débit)", "AUJOURDHUI()", "CONCAT(Crédit)"], "correct": 0 },
+    { "q": "Quel nom de fichier est le meilleur pour une pièce ?", "options": ["2026-03-12_Achat_ImprimerieSoa_F2026-118_120000.pdf", "scan.pdf", "photo1.jpg", "document final.pdf"], "correct": 0 },
+    { "q": "Que faire des propositions automatiques de rapprochement ?", "options": ["Les vérifier une par une", "Les valider sans regarder", "Les supprimer", "Les ignorer"], "correct": 0 },
+    { "q": "Quel logiciel est très répandu chez les cabinets francophones ?", "options": ["Sage", "CapCut", "Figma", "Canva"], "correct": 0 },
+    { "q": "Qui achète en général la licence du logiciel comptable ?", "options": ["L'entreprise ou le cabinet", "L'aide-comptable obligatoirement", "Personne", "La banque"], "correct": 0 },
+    { "q": "Que vérifier dans la numérotation des factures de vente ?", "options": ["Qu'il n'y a ni trou ni doublon", "Qu'elles sont toutes paires", "Rien", "Qu'elles commencent par zéro"], "correct": 0 },
+    { "q": "Que contient l'échéancier des clients ?", "options": ["Factures, montants, échéances, retards et actions", "Les salaires", "Les mots de passe", "Les photos des véhicules"], "correct": 0 },
+    { "q": "Que contient le message d'envoi au comptable ?", "options": ["Ce qui est fait, les anomalies, les questions, les pièces manquantes", "Seulement « c'est fait »", "Rien", "Une facture"], "correct": 0 },
+    { "q": "Que demander pour les achats de carburant ?", "options": ["Garder chaque ticket et noter le véhicule", "Rien", "Jeter les tickets", "Payer sans reçu"], "correct": 0 },
+    { "q": "Comment les cabinets testent-ils souvent les candidats ?", "options": ["Par une saisie d'essai", "Par un test de dessin", "Par un examen de chant", "Ils ne testent pas"], "correct": 0 },
+    { "q": "80 pièces à 3 minutes chacune demandent…", "options": ["4 heures", "80 heures", "3 heures", "24 heures"], "correct": 0 },
+    { "q": "Quelle évolution demande un diplôme et une inscription à l'ordre ?", "options": ["Expert-comptable", "Aide-comptable", "Assistant de gestion", "Consultant logiciel"], "correct": 0 }
+  ]
+}
