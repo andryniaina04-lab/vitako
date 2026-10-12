@@ -65,7 +65,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
   ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
   ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true),
-  ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 12, false),
+  ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 13, true),
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 17, false),
   ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
   ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
@@ -3322,6 +3322,621 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que mettre en avant dans un CV d''annotateur ?', '["Un projet avec volume, temps et taux de précision","Le nombre d''amis sur Facebook","Une photo de profil retouchée","Ses loisirs uniquement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel mode de rémunération est le plus prévisible ?', '["Le salaire ou le paiement à l''heure","Le paiement à la tâche","Les pourboires","Le paiement au hasard"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelle évolution consiste à vérifier le travail des autres annotateurs ?', '["Comptable","Contrôleur qualité","Graphiste","Commercial"]'::jsonb, 1);
+
+-- data-1-f
+delete from public.exam_questions where course_id = 'data-1-f';
+delete from public.module_questions where course_id = 'data-1-f';
+delete from public.lessons where course_id = 'data-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-1-f', 0, 'Le métier d''évaluateur de réponses d''IA depuis Madagascar', 'Pourquoi les IA ont besoin d''évaluateurs, les 6 types de tâches, le profil recherché, les règles absolues, les réalités du métier et la routine de travail.', 'Les assistants d''intelligence artificielle (IA) répondent à des millions de questions chaque jour. Pour qu''ils deviennent plus utiles, plus exacts et plus sûrs, les entreprises qui les développent ont besoin d''**humains** qui lisent leurs réponses, les comparent, les notent et expliquent ce qui ne va pas. C''est le métier d''évaluateur de réponses d''IA. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer pourquoi les IA ont besoin d''évaluateurs humains.
+> 2. Citer les 6 types de tâches d''évaluation.
+> 3. Décrire le profil recherché.
+> 4. Connaître les règles absolues du métier.
+> 5. Préparer votre poste de travail et votre routine.
+
+## Pourquoi les IA ont besoin d''évaluateurs
+
+Un assistant d''IA apprend d''abord à partir d''énormes quantités de textes. Ensuite, pour qu''il donne des réponses **utiles**, **vraies** et **sans danger**, on l''entraîne avec le **jugement d''humains** : des évaluateurs comparent ses réponses et disent lesquelles sont meilleures, et pourquoi.
+
+> [!definition] Apprentissage par retour humain
+> Une méthode d''entraînement où des humains notent ou comparent des réponses d''IA. Leurs jugements servent à apprendre au modèle à préférer les bonnes réponses. On parle aussi de **RLHF** (*reinforcement learning from human feedback*).
+
+> [!exemple] Un jugement simple
+> **Question** : « Combien de temps faut-il pour aller d''Antananarivo à Antsirabe en voiture ? »
+> **Réponse A** : « Environ 30 minutes. »
+> **Réponse B** : « Comptez en général 3 à 4 heures par la RN7, selon la circulation et l''état de la route. »
+> **Jugement** : B est bien meilleure. A est fausse (la distance est d''environ 170 km). B est exacte, prudente sur les conditions, et utile.
+
+Votre travail ne consiste pas seulement à dire « B est meilleure », mais à **expliquer précisément pourquoi**. Ces explications aident les équipes à améliorer le modèle.
+
+## Les 6 types de tâches
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Noter une réponse** | Donner une note de 1 à 7 sur plusieurs critères |
+| 2 | **Comparer deux réponses** | Choisir la meilleure et dire de combien elle est meilleure |
+| 3 | **Corriger ou réécrire** | Transformer une réponse moyenne en réponse parfaite |
+| 4 | **Écrire des demandes et des réponses modèles** | Rédiger une question difficile et la réponse idéale |
+| 5 | **Vérifier les faits** | Contrôler chaque affirmation d''une réponse avec des sources fiables |
+| 6 | **Tester la sécurité** | Vérifier que l''IA refuse ce qu''elle doit refuser et aide pour le reste, selon des consignes précises |
+
+> [!definition] Prompt (demande)
+> Le message que l''utilisateur envoie à l''IA : une question, une consigne, une tâche. Les évaluateurs lisent le prompt avec attention, car une bonne réponse est d''abord une réponse qui **respecte la demande**.
+
+## Le profil recherché
+
+| Compétence | Pourquoi |
+| --- | --- |
+| **Excellent niveau écrit** dans la langue évaluée | Repérer les erreurs de langue, juger le style, écrire des justifications claires |
+| **Esprit critique** | Ne pas se laisser impressionner par une réponse bien écrite mais fausse |
+| **Culture générale et curiosité** | Repérer les erreurs, savoir où vérifier |
+| **Rigueur** | Appliquer des consignes longues et précises |
+| **Domaine d''expertise** (un plus) | Santé, droit, mathématiques, informatique, finance, sciences : projets mieux payés |
+| **Honnêteté** | Juger soi-même, sans tricher ni utiliser d''IA à sa place |
+
+> [!madagascar] Votre avantage
+> Les IA sont moins bonnes dans les langues moins présentes sur Internet. Des projets cherchent des évaluateurs capables de juger des réponses en **malagasy** : orthographe, naturel, exactitude des informations sur Madagascar. Le **français** soigné est aussi très demandé.
+
+## Les règles absolues du métier
+
+1. **Ne jamais utiliser d''IA pour faire les tâches** à votre place (écrire les justifications, choisir la meilleure réponse) quand le projet l''interdit, ce qui est presque toujours le cas. C''est détecté, et c''est le premier motif d''exclusion.
+2. **Respecter la confidentialité** : pas de captures d''écran, pas de partage des consignes ni des tâches.
+3. **Un compte = une personne** : ne jamais partager, louer ou acheter un compte.
+4. **Vérifier, ne pas deviner** : un fait non vérifié peut fausser votre jugement.
+5. **Suivre les consignes du projet**, même quand votre avis personnel est différent.
+
+## Les réalités du métier
+
+| Avantages | Difficultés |
+| --- | --- |
+| Travail intellectuel, varié, qui fait apprendre | Consignes longues, qui changent souvent |
+| Souvent payé à l''heure | Travail parfois irrégulier, projets qui s''arrêtent |
+| Valorise un bon niveau de langue et une expertise | Tests d''entrée exigeants |
+| Horaires souvent flexibles | Contenus parfois désagréables (tests de sécurité) |
+
+## Le poste de travail et la routine
+
+1. Un **ordinateur** avec un grand écran (ou deux : la tâche d''un côté, les sources de l''autre).
+2. Une **connexion stable**.
+3. Un **document de notes** pour votre fiche mémo des consignes.
+4. Des **sources fiables** en favoris (module 3).
+5. Un **endroit calme** : la concentration est essentielle.
+
+> [!astuce] La routine de travail
+> Travaillez par blocs de 45 à 50 minutes, avec une pause de 10 minutes. Relisez votre fiche mémo au début de chaque session. La qualité de vos jugements baisse nettement quand vous êtes fatigué : mieux vaut 4 heures de bon travail que 8 heures de travail moyen.
+
+> [!retenir]
+> - Les IA s''améliorent grâce au jugement d''humains qui comparent et expliquent.
+> - 6 tâches : noter, comparer, réécrire, écrire, vérifier les faits, tester la sécurité.
+> - Écrit excellent, esprit critique, rigueur, honnêteté.
+> - Jamais d''IA à votre place, confidentialité, un compte par personne.
+
+## Exercice pratique : vos premiers jugements
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Posez 4 questions à un assistant d''IA : une sur Madagascar, une de calcul, une demande de rédaction (un e-mail), une demande de conseil pratique.
+> 2. Pour chaque question, demandez une deuxième réponse (bouton « régénérer » ou nouvelle conversation).
+> 3. Comparez les deux réponses : laquelle est meilleure ? Écrivez 3 à 5 lignes d''explication précise.
+> 4. Vérifiez au moins 2 faits dans les réponses avec des sources fiables.
+>
+> **À livrer** : vos 4 questions, les 8 réponses, vos 4 comparaisons et vos vérifications avec les sources.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 0, 0, 'Qu''est-ce qu''un prompt ?', '["Un logiciel","La réponse de l''IA","Le message que l''utilisateur envoie à l''IA","Un paiement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 0, 1, 'Quel est le premier motif d''exclusion des projets ?', '["Lire les consignes","Utiliser une IA pour faire les tâches à sa place","Vérifier les faits","Faire des pauses"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 0, 2, 'Peut-on partager son compte avec un proche ?', '["Non : un compte = une personne","Oui, en famille","Oui, le week-end","Oui, contre de l''argent"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-1-f', 1, 'Les bases : critères, gravité, notation et justification', 'Les 6 critères, les hallucinations, la gravité des problèmes, l''échelle de notation, la comparaison en 5 étapes, les pièges et la justification en 4 parties.', 'Évaluer une réponse d''IA, ce n''est pas donner son impression. C''est appliquer des **critères** précis, juger la **gravité** des problèmes et écrire une **justification** que quelqu''un d''autre peut vérifier. Ce module vous donne la méthode utilisée dans la plupart des projets.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les 6 critères d''évaluation.
+> 2. Classer les problèmes par gravité.
+> 3. Utiliser une échelle de notation de façon cohérente.
+> 4. Comparer deux réponses et dire de combien l''une est meilleure.
+> 5. Écrire une justification précise et vérifiable.
+
+## Les 6 critères
+
+Les noms changent selon les projets, mais on retrouve presque toujours ces critères.
+
+| N° | Critère | Question à se poser |
+| --- | --- | --- |
+| 1 | **Respect de la demande** | La réponse fait-elle exactement ce qui est demandé (sujet, longueur, format, langue, ton) ? |
+| 2 | **Exactitude** | Les faits, chiffres, calculs et raisonnements sont-ils justes ? |
+| 3 | **Utilité** | La réponse aide-t-elle vraiment la personne ? Est-elle complète sans être trop longue ? |
+| 4 | **Sécurité** | La réponse évite-t-elle les contenus dangereux, illégaux ou blessants, sans refuser à tort ce qui est légitime ? |
+| 5 | **Clarté et style** | Est-elle bien organisée, bien écrite, dans un ton adapté ? |
+| 6 | **Honnêteté** | Reconnaît-elle ses limites et ses incertitudes, sans inventer ? |
+
+> [!exemple] Respect de la demande
+> **Demande** : « Donne-moi 3 idées de noms pour une boutique de vanille, en une ligne chacune, sans explication. »
+> Une réponse qui donne 5 noms avec un paragraphe d''explication chacun ne respecte pas la demande, même si les noms sont bons.
+
+> [!definition] Hallucination
+> Une information inventée par l''IA et présentée comme vraie : un faux chiffre, une citation qui n''existe pas, un livre imaginaire, une loi inventée. C''est une des erreurs les plus graves, car elle est souvent écrite avec assurance.
+
+## La gravité des problèmes
+
+Tous les problèmes ne se valent pas.
+
+| Gravité | Définition | Exemples |
+| --- | --- | --- |
+| **Critique** | Rend la réponse dangereuse ou complètement fausse | Dosage de médicament faux, information dangereuse, calcul final faux dans un problème de calcul |
+| **Majeure** | Rend la réponse nettement moins utile ou trompeuse sur un point important | Fait important inventé, consigne principale non respectée |
+| **Mineure** | Gêne peu la personne | Faute d''orthographe, phrase un peu lourde, petite répétition |
+
+**Règle** : une seule erreur critique fait en général d''une réponse une mauvaise réponse, même si le reste est excellent.
+
+## L''échelle de notation
+
+Beaucoup de projets utilisent une échelle de 1 à 5 ou de 1 à 7. Pour être **cohérent**, ancrez chaque note sur une définition.
+
+> [!exemple] Une échelle de 1 à 7 (exemple)
+> - **7** : parfaite, rien à améliorer.
+> - **6** : excellente, problèmes mineurs seulement.
+> - **5** : bonne, un problème majeur léger ou plusieurs mineurs.
+> - **4** : acceptable, mais avec un problème majeur.
+> - **3** : faible, plusieurs problèmes majeurs.
+> - **2** : mauvaise, un problème critique ou presque inutile.
+> - **1** : inacceptable, dangereuse ou complètement fausse.
+
+Les projets donnent leur propre échelle : **suivez-la à la lettre** et relisez-la souvent.
+
+## Comparer deux réponses
+
+### La méthode en 5 étapes
+
+1. **Lisez la demande** deux fois : qu''attend vraiment la personne ?
+2. **Évaluez A** sur les 6 critères et notez ses problèmes avec leur gravité.
+3. **Évaluez B** de la même façon.
+4. **Comparez** : la réponse avec le moins de problèmes graves gagne ; en cas d''égalité sur les problèmes, regardez l''utilité et la clarté.
+5. **Indiquez l''écart** : « A est bien meilleure », « A est légèrement meilleure », « équivalentes »…
+
+> [!attention] Les pièges
+> - **La longueur** : une réponse plus longue n''est pas meilleure si elle contient des erreurs ou ne respecte pas la demande.
+> - **Le style** : une réponse très bien écrite peut être fausse.
+> - **L''assurance** : une réponse qui affirme avec force n''est pas plus vraie.
+> - **Votre opinion** : jugez selon les critères et les consignes, pas selon vos goûts personnels.
+
+## Écrire une justification
+
+Une bonne justification est **précise**, **factuelle** et **vérifiable**. Quelqu''un qui la lit doit pouvoir retrouver chaque problème.
+
+### La structure en 4 parties
+
+1. **Le verdict** : « B est nettement meilleure. »
+2. **Le problème principal** de la moins bonne réponse, avec l''endroit exact : « A indique que la capitale de Madagascar est Toamasina (2e phrase), ce qui est faux : c''est Antananarivo. »
+3. **Les autres problèmes**, par ordre de gravité.
+4. **Les points forts** de la meilleure réponse, et ses éventuels défauts.
+
+> [!exemple] Justification faible et justification forte
+> **Faible** : « B est mieux, A n''est pas bonne. »
+> **Forte** : « B est nettement meilleure. A contient une erreur critique : elle affirme que le trajet Antananarivo – Antsirabe prend 30 minutes (1re phrase), alors que la distance est d''environ 170 km par la RN7, soit plusieurs heures de route. A ne donne aucune information utile sur la route. B donne une durée réaliste, précise la route et signale que la durée varie selon la circulation. B pourrait mentionner les taxis-brousse, mais ce n''est pas demandé. »
+
+> [!astuce]
+> Citez **l''endroit exact** (« 2e paragraphe », « dans la liste, point 3 ») et **la correction** quand c''est une erreur de fait. Les justifications précises sont celles qui font progresser votre score de qualité sur les projets.
+
+> [!madagascar]
+> Pour les réponses qui parlent de Madagascar, votre connaissance réelle est précieuse : distances, saisons, prix, institutions, usages, langue. Signalez les erreurs que des évaluateurs étrangers ne verraient pas, en vérifiant avec une source fiable.
+
+> [!retenir]
+> - 6 critères : demande, exactitude, utilité, sécurité, clarté, honnêteté.
+> - Gravité : critique, majeure, mineure ; une erreur critique suffit souvent.
+> - Une échelle de notation ancrée sur des définitions, appliquée de façon cohérente.
+> - Comparer en 5 étapes, sans se laisser piéger par la longueur ou le style.
+> - Justifier en 4 parties, avec l''endroit exact et la correction.
+
+## Exercice pratique : évaluer avec méthode
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Reprenez vos 4 paires de réponses du module 1.
+> 2. Pour chaque réponse, notez les problèmes selon les 6 critères, avec leur gravité, et donnez une note de 1 à 7.
+> 3. Réécrivez vos 4 justifications avec la structure en 4 parties.
+> 4. Trouvez (ou provoquez en posant une question piège) une hallucination d''un assistant d''IA et documentez-la avec la source qui prouve l''erreur.
+>
+> **À livrer** : vos grilles de notation, vos 4 justifications et votre exemple d''hallucination documenté.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 1, 0, 'Qu''est-ce qu''une hallucination ?', '["Un refus poli","Une information inventée présentée comme vraie","Une faute d''orthographe","Une réponse trop courte"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 1, 1, 'Une réponse plus longue est-elle forcément meilleure ?', '["Oui, si elle a des titres","Non","Oui, en français","Oui, toujours"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 1, 2, 'Que doit contenir une bonne justification ?', '["Le verdict, l''endroit exact des problèmes et la correction","Votre goût personnel","« B est mieux »","Un emoji"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-1-f', 2, 'Les outils : grille, fiche mémo et vérification des faits', 'Rien à acheter, la grille d''évaluation, la fiche mémo datée, la lecture latérale, les sources fiables, la vérification des calculs et le suivi de sa qualité.', 'Dans ce métier, vous n''avez **rien à acheter** : les plateformes fournissent leurs interfaces. Vos vrais outils sont des **méthodes** : une grille d''évaluation, une fiche mémo des consignes, une méthode de vérification des faits et un suivi de votre propre qualité. Ce module vous les donne.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire votre grille d''évaluation dans un tableur.
+> 2. Faire une fiche mémo de consignes efficace.
+> 3. Vérifier un fait avec la méthode de la lecture latérale.
+> 4. Vérifier un calcul et un raisonnement.
+> 5. Suivre votre temps et votre qualité.
+
+## Rien à acheter : les outils sont fournis
+
+| Situation | Outil |
+| --- | --- |
+| Plateformes d''évaluation | Leur interface, dans le navigateur, avec les consignes et les tâches |
+| Entreprises qui recrutent directement | Leur outil interne |
+| Vos outils personnels | Tableur, document de notes, navigateur, calculatrice : gratuits |
+
+Votre investissement, c''est votre **équipement** (ordinateur, écran, connexion) et votre **temps de formation**. Méfiez-vous de toute personne qui vous demande de payer un « accès », un « logiciel obligatoire » ou une « formation obligatoire » pour travailler.
+
+## La grille d''évaluation dans un tableur
+
+Pour vous entraîner et garder la même méthode, construisez votre propre grille dans Google Sheets.
+
+| Colonne | Contenu |
+| --- | --- |
+| N° de tâche | Identifiant |
+| Demande (résumé) | En une ligne |
+| Respect de la demande | Problèmes et gravité |
+| Exactitude | Problèmes et gravité |
+| Utilité | Problèmes et gravité |
+| Sécurité | Problèmes et gravité |
+| Clarté | Problèmes et gravité |
+| Honnêteté | Problèmes et gravité |
+| Note finale | Selon l''échelle |
+| Justification | En 4 parties |
+| Sources vérifiées | Liens |
+| Temps passé | En minutes |
+
+Sur une vraie plateforme, vous remplissez **son** interface ; votre grille sert à **vous entraîner** et à garder vos réflexes.
+
+## La fiche mémo des consignes
+
+Les consignes d''un projet font souvent **20 à 60 pages**. Personne ne les retient toutes. La fiche mémo résume l''essentiel sur **1 ou 2 pages**.
+
+### Ce qu''elle contient
+
+1. **Le but** du projet en 2 lignes.
+2. **Les critères** et leur ordre d''importance.
+3. **L''échelle** de notation avec ses définitions.
+4. **Les règles particulières** (exemple : « une réponse qui refuse sans raison une demande légitime est un problème majeur »).
+5. **Les exemples** clés des consignes (un bon, un mauvais).
+6. **Les cas limites** et leur décision.
+7. **La date** de la dernière mise à jour des consignes.
+
+> [!astuce]
+> Les consignes changent souvent. Notez la **date** de la version que vous avez résumée, et vérifiez au début de chaque session s''il y a une mise à jour.
+
+## Vérifier un fait : la lecture latérale
+
+> [!definition] Lecture latérale
+> Une méthode de vérification utilisée par les professionnels : au lieu de lire longtemps une seule page, on ouvre **plusieurs onglets** pour voir ce que disent **d''autres sources fiables** sur la même information, et ce qu''on sait de la source elle-même.
+
+### La méthode en 5 étapes
+
+1. **Isolez l''affirmation** précise : « La RN7 relie Antananarivo à Toliara. »
+2. **Cherchez** avec des mots-clés précis.
+3. **Comparez au moins 2 sources fiables** et indépendantes.
+4. **Privilégiez les sources primaires** : site officiel, institution, publication scientifique, texte de loi, donnée statistique officielle.
+5. **Notez** la source et la conclusion : vrai, faux, partiellement vrai, impossible à vérifier.
+
+### Les sources selon le sujet
+
+| Sujet | Sources à privilégier |
+| --- | --- |
+| Chiffres d''un pays | Instituts statistiques officiels, organisations internationales |
+| Santé | Organisations de santé reconnues, autorités sanitaires |
+| Lois et règles | Textes officiels, sites gouvernementaux |
+| Sciences | Publications scientifiques, universités |
+| Géographie, histoire | Encyclopédies reconnues, institutions, ouvrages de référence |
+| Entreprises et produits | Site officiel de l''entreprise |
+
+> [!attention]
+> Une encyclopédie collaborative en ligne est un bon **point de départ**, mais vérifiez ses informations importantes dans les sources qu''elle cite. Et ne demandez jamais à un assistant d''IA de vérifier une réponse d''IA : il peut se tromper de la même façon.
+
+## Vérifier un calcul et un raisonnement
+
+### Les calculs
+
+1. **Refaites** chaque calcul vous-même, avec une calculatrice.
+2. **Vérifiez les unités** : kilomètres et miles, ariary et euros, heures et minutes.
+3. **Vérifiez l''ordre de grandeur** : un résultat absurde (un trajet de 2 minutes pour 170 km) est un signal d''alerte.
+4. **Vérifiez chaque étape**, pas seulement le résultat final : une bonne réponse finale avec un raisonnement faux reste un problème.
+
+> [!exemple] Vérification d''un calcul
+> **Demande** : « J''épargne 15 000 Ar par semaine. Combien aurai-je après un an ? »
+> **Réponse de l''IA** : « 15 000 × 12 = 180 000 Ar. »
+> **Problème** : l''IA a compté 12 semaines au lieu de 52. Le bon calcul : 15 000 × 52 = **780 000 Ar**. Erreur **critique** (le résultat final est faux).
+
+### Les raisonnements
+
+1. Les **prémisses** sont-elles vraies ?
+2. Chaque **étape** découle-t-elle de la précédente ?
+3. La **conclusion** répond-elle à la question posée ?
+
+## Suivre son temps et sa qualité
+
+| Indicateur | Pourquoi |
+| --- | --- |
+| **Temps moyen par tâche** | Repérer les tâches qui vous prennent trop de temps |
+| **Retours des contrôleurs** | Savoir où vous vous trompez |
+| **Score de qualité** (s''il est affiché) | Votre accès aux projets mieux payés en dépend souvent |
+| **Types d''erreurs** que vous faites | Les corriger un par un |
+
+> [!madagascar]
+> Pour vérifier des informations sur Madagascar, gardez en favoris quelques sources officielles (institutions, ministères, institut national de la statistique) et des médias reconnus. Votre connaissance du terrain vous permet de repérer une erreur ; la source vous permet de la **prouver**.
+
+> [!retenir]
+> - Rien à acheter : les plateformes fournissent leurs outils ; vos outils sont des méthodes.
+> - Une grille d''entraînement et une fiche mémo datée des consignes.
+> - Vérifier par la lecture latérale, avec au moins 2 sources fiables.
+> - Refaire chaque calcul, vérifier les unités et chaque étape.
+> - Suivre son temps, ses retours et son score de qualité.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Construisez votre grille d''évaluation dans Google Sheets.
+> 2. Trouvez des consignes publiques d''évaluation ou de qualité (de nombreuses organisations publient leurs principes) et faites-en une fiche mémo d''une page.
+> 3. Vérifiez 5 affirmations factuelles d''une réponse d''IA avec la lecture latérale, en notant 2 sources pour chacune.
+> 4. Demandez à une IA 3 problèmes de calcul de la vie courante et vérifiez chaque étape.
+>
+> **À livrer** : votre grille, votre fiche mémo, vos 5 vérifications avec sources et vos 3 vérifications de calcul.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 2, 0, 'Qu''est-ce que la lecture latérale ?', '["Lire une seule page très longtemps","Lire de gauche à droite","Vérifier une information en comparant plusieurs sources fiables","Demander à une IA"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 2, 1, 'Une IA calcule 15 000 × 12 pour une épargne d''un an par semaine. Quelle erreur ?', '["Elle se trompe de devise","Elle compte 12 semaines au lieu de 52","Elle oublie les centimes","Aucune"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 2, 2, 'Faut-il payer un logiciel pour travailler sur une plateforme d''évaluation ?', '["Non, les outils sont fournis","Oui, pour être prioritaire","Oui, la première année","Oui, toujours"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-1-f', 3, 'Premier projet : un projet d''évaluation complet', 'La calibration, l''évaluation dans 4 domaines, les conseils sensibles, la réécriture, la rédaction de demandes et de réponses modèles, et le contrôle de cohérence.', 'Dans ce module, vous réalisez un projet d''évaluation complet, comme sur une vraie plateforme : lecture des consignes, calibration, comparaison de réponses dans plusieurs domaines, réécriture d''une réponse, rédaction de demandes et de réponses modèles, puis auto-contrôle de votre qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Réussir une phase de calibration.
+> 2. Évaluer des réponses dans 4 domaines différents.
+> 3. Réécrire une réponse pour la rendre excellente.
+> 4. Rédiger des demandes difficiles et leurs réponses modèles.
+> 5. Contrôler la cohérence de vos propres jugements.
+
+## Le projet « Assistant francophone »
+
+> [!exemple] Votre mission (projet d''entraînement)
+> Une entreprise améliore un assistant d''IA pour les utilisateurs francophones d''Afrique et de l''océan Indien. Vous devez :
+> 1. Comparer **20 paires de réponses** dans 4 domaines : culture générale (dont Madagascar), calcul, rédaction, conseils pratiques.
+> 2. **Réécrire** 3 réponses moyennes pour les rendre excellentes.
+> 3. **Rédiger** 5 demandes difficiles avec leur réponse idéale, dont 2 en malagasy si vous maîtrisez la langue.
+>
+> Consignes : les 6 critères du module 2, échelle de 1 à 7, justification en 4 parties.
+
+## Étape 1 : la calibration
+
+> [!definition] Calibration
+> Une série de tâches d''essai dont les bonnes réponses sont connues. Elle vérifie que vous appliquez les consignes comme l''équipe du projet. Sur les plateformes, c''est souvent la condition pour accéder aux vraies tâches.
+
+### Réussir sa calibration
+
+1. **Lisez toutes les consignes** avant la première tâche, et faites votre fiche mémo.
+2. **Prenez votre temps** : la précision compte plus que la vitesse.
+3. **Vérifiez chaque fait** avant de juger.
+4. **Comparez** vos réponses avec les réponses de référence quand elles sont données, et **notez chaque écart** dans votre fiche mémo.
+5. **Relisez les consignes** après la calibration : vous comprendrez des détails nouveaux.
+
+## Étape 2 : évaluer dans 4 domaines
+
+### Ce qu''il faut surveiller dans chaque domaine
+
+| Domaine | Points d''attention |
+| --- | --- |
+| **Culture générale et Madagascar** | Faits exacts (dates, lieux, chiffres), pas d''invention, prudence sur ce qui change (prix, responsables) |
+| **Calcul** | Chaque étape vérifiée, unités, résultat final, explication compréhensible |
+| **Rédaction** | Respect du format, du ton, de la longueur ; qualité de la langue ; adaptation au destinataire |
+| **Conseils pratiques** | Utilité réelle, prudence (santé, argent, droit), orientation vers un professionnel quand c''est nécessaire |
+
+> [!exemple] Une paire en rédaction
+> **Demande** : « Écris un SMS court et poli pour rappeler à mon propriétaire que la fuite d''eau n''est toujours pas réparée. »
+> **A** : un SMS de 2 phrases, poli, précis, avec une demande de date d''intervention.
+> **B** : une lettre formelle de 15 lignes avec objet et formule de politesse longue.
+> **Jugement** : A est nettement meilleure. B ne respecte pas le format demandé (SMS court), même si son français est correct.
+
+> [!attention] Les conseils sensibles
+> Pour une question de santé, d''argent ou de droit, une bonne réponse donne des informations générales exactes, reste prudente et conseille de consulter un professionnel quand c''est nécessaire. Une réponse qui donne un diagnostic ou un conseil risqué avec assurance a un problème grave. À l''inverse, une réponse qui refuse d''aider pour une question simple et légitime n''est pas utile.
+
+## Étape 3 : réécrire une réponse
+
+### La méthode
+
+1. **Gardez ce qui est juste** dans la réponse d''origine.
+2. **Corrigez** chaque erreur, avec vérification.
+3. **Ajoutez** ce qui manque pour bien répondre, sans allonger inutilement.
+4. **Respectez** exactement la demande (format, longueur, ton).
+5. **Relisez** : orthographe, clarté, organisation.
+
+> [!exemple] Réécriture
+> **Demande** : « Quels documents faut-il en général pour ouvrir un compte Mobile Money à Madagascar ? »
+> **Réponse d''origine** : « Il faut un passeport et une facture d''électricité. »
+> **Réécriture** : « En général, il faut une **pièce d''identité valide** (souvent la carte d''identité nationale) et un **numéro de téléphone** de l''opérateur choisi. Les exigences exactes peuvent varier selon l''opérateur et le type de compte : renseignez-vous dans une agence ou auprès du service client de l''opérateur avant de vous déplacer. »
+> La réécriture évite d''affirmer des règles précises qui peuvent changer, et oriente vers la source officielle.
+
+## Étape 4 : rédiger des demandes et des réponses modèles
+
+### Une bonne demande d''entraînement
+
+1. **Réaliste** : une vraie personne pourrait la poser.
+2. **Difficile** : elle teste une compétence précise (raisonnement, connaissance locale, respect de contraintes).
+3. **Claire** : une seule interprétation raisonnable.
+4. **Vérifiable** : on peut juger si la réponse est bonne.
+
+> [!exemple] Demande avec contraintes
+> « Je vends des beignets à Mahajanga. Un beignet me coûte 150 Ar à fabriquer et je le vends 300 Ar. Combien dois-je en vendre par jour pour gagner 60 000 Ar par semaine si je travaille 6 jours ? Explique le calcul en 3 étapes maximum. »
+> **Réponse modèle** :
+> 1. Bénéfice par beignet : 300 − 150 = 150 Ar.
+> 2. Bénéfice nécessaire par jour : 60 000 ÷ 6 = 10 000 Ar.
+> 3. Beignets à vendre par jour : 10 000 ÷ 150 ≈ 66,7, donc **67 beignets** (on arrondit au-dessus pour atteindre l''objectif).
+
+## Étape 5 : contrôler sa cohérence
+
+Un bon évaluateur juge **de la même façon** des cas semblables.
+
+1. **Reprenez 5 de vos évaluations** le lendemain, sans regarder vos notes, et refaites-les.
+2. **Comparez** : vos notes sont-elles proches ? Vos verdicts identiques ?
+3. **Analysez les écarts** : fatigue, consigne mal comprise, fait non vérifié ?
+4. **Mettez à jour** votre fiche mémo.
+
+> [!madagascar]
+> Les demandes en malagasy que vous rédigez doivent être **naturelles** : comme les poserait vraiment une personne à Antananarivo, Fianarantsoa ou Toliara, avec le vocabulaire courant. Évitez les phrases traduites mot à mot du français.
+
+> [!retenir]
+> - La calibration se réussit avec lecture complète, lenteur et vérification.
+> - Chaque domaine a ses points d''attention ; les conseils sensibles exigent prudence et utilité.
+> - Réécrire : garder le juste, corriger, compléter, respecter la demande.
+> - Une bonne demande est réaliste, difficile, claire et vérifiable.
+> - Contrôlez la cohérence de vos jugements en refaisant des évaluations.
+
+## Exercice pratique : le projet complet
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez 20 paires de réponses avec un assistant d''IA (5 par domaine) et comparez-les avec votre grille et des justifications en 4 parties.
+> 2. Réécrivez 3 réponses moyennes.
+> 3. Rédigez 5 demandes difficiles avec leur réponse modèle (2 en malagasy si possible).
+> 4. Le lendemain, refaites 5 évaluations et analysez les écarts.
+> 5. Rédigez un rapport d''une page : temps moyen par tâche, types d''erreurs de l''IA les plus fréquents, vos propres écarts.
+>
+> **À livrer** : votre grille remplie, vos réécritures, vos demandes et réponses modèles, votre analyse de cohérence et votre rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 3, 0, 'Un SMS court est demandé, la réponse B est une lettre de 15 lignes. Quel problème ?', '["Aucun","La réponse est trop courte","Le format demandé n''est pas respecté","Un problème de sécurité"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 3, 1, 'Comment contrôler la cohérence de ses jugements ?', '["Ne jamais relire","Demander à une IA","Changer de projet","Refaire des évaluations plus tard et comparer"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 3, 2, 'Qu''est-ce qu''une bonne demande d''entraînement ?', '["Très facile","Floue et impossible","Réaliste, difficile, claire et vérifiable","Sans réponse possible"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-1-f', 4, 'Trouver des projets et se faire payer', 'Sources de travail et vérification des offres, profil, tests d''entrée, rémunération et revenus, sécurité et confidentialité, évolution vers l''expertise.', 'Les missions d''évaluation de réponses d''IA passent surtout par des **plateformes** spécialisées et des **entreprises** de données. Le secteur évolue vite, et les arnaques sont nombreuses. Ce dernier module vous montre comment trouver du travail sérieux, réussir les tests, organiser vos revenus et évoluer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Trouver des sources de travail sérieuses et les vérifier.
+> 2. Présenter votre profil d''évaluateur.
+> 3. Réussir les tests d''entrée.
+> 4. Comprendre les modes de rémunération et organiser vos revenus.
+> 5. Évoluer vers des missions d''expert.
+
+## Où trouver du travail
+
+| Source | Comment ça marche | Points d''attention |
+| --- | --- | --- |
+| **Plateformes d''évaluation et d''annotation** | Inscription, tests, puis projets selon votre profil (langues, domaines) | Vérifiez que la plateforme accepte les personnes résidant à Madagascar et peut vous payer |
+| **Entreprises de données et d''externalisation** | Recrutement classique, parfois sur place puis à distance | Contrat, horaires, formation |
+| **Projets en langues** | Évaluation et écriture en malagasy ou en français | Moins de concurrence pour le malagasy |
+| **Recrutement d''experts** | Projets pour spécialistes (santé, droit, mathématiques, informatique) | Diplômes ou expérience demandés, mieux payés |
+
+### Vérifier une offre : 6 questions
+
+1. L''entreprise est-elle **identifiable** (site, adresse, avis d''autres travailleurs) ?
+2. Le recrutement passe-t-il par des **tests** et des **consignes** écrites ?
+3. Les **conditions de paiement** sont-elles écrites et claires ?
+4. Vous demande-t-on de **payer** quoi que ce soit ? (Si oui : arnaque.)
+5. Vous demande-t-on vos **codes** bancaires ou Mobile Money ? (Si oui : arnaque.)
+6. Vous propose-t-on d''**acheter**, de **louer** ou d''**utiliser le compte de quelqu''un d''autre** ? (Si oui : refusez, c''est interdit.)
+
+> [!attention]
+> Les fausses offres « Travaillez pour l''IA depuis chez vous, 50 $ de l''heure, sans expérience » sont fréquentes sur les réseaux sociaux. Elles servent souvent à voler des données personnelles ou de l''argent. Inscrivez-vous uniquement sur les **sites officiels** des plateformes, jamais par un lien reçu sur WhatsApp.
+
+## Votre profil d''évaluateur
+
+### Les éléments à mettre en avant
+
+1. **Langues** : niveau réel à l''écrit (exemple : « Malagasy : langue maternelle, écrit soigné ; français : niveau professionnel ; anglais : intermédiaire »).
+2. **Domaines** : études, expérience, connaissances (santé, droit, agriculture, informatique, enseignement…).
+3. **Compétences** : vérification des faits, rédaction, raisonnement mathématique.
+4. **Disponibilité** : heures par semaine.
+5. **Projet de portfolio** : votre projet du module 4 (sans le publier en ligne si vous l''avez fait avec des consignes confidentielles).
+
+> [!exemple] Présentation
+> « Évaluatrice de réponses d''IA en français et en malagasy. Titulaire d''une licence en sciences de l''éducation. Méthode rigoureuse : critères, gravité, justifications précises, vérification par sources fiables. Projet d''entraînement : 20 comparaisons, 3 réécritures et 5 réponses modèles. Disponible 25 heures par semaine. »
+
+## Réussir les tests d''entrée
+
+1. **Choisissez un bon moment** : reposé, au calme, avec une bonne connexion.
+2. **Lisez toutes les consignes**, même longues, et faites votre fiche mémo.
+3. **Vérifiez les faits** avant de juger.
+4. **Écrivez des justifications précises** : endroit exact, correction, gravité.
+5. **Soignez l''orthographe** : une justification avec des fautes fait mauvaise impression.
+6. **N''utilisez aucune IA** : les tests le détectent.
+7. En cas d''échec, **lisez les retours** s''il y en a, et retravaillez avant de repasser (si c''est possible).
+
+## Rémunération et organisation des revenus
+
+### Les modes de rémunération
+
+| Mode | Comment |
+| --- | --- |
+| **À l''heure** | Le plus courant en évaluation ; un minimum de qualité et de productivité est exigé |
+| **À la tâche** | Un montant par évaluation ; calculez toujours votre revenu réel à l''heure |
+| **Salaire** | Dans une entreprise |
+
+Les tarifs dépendent beaucoup de la **langue**, du **domaine** et du **projet**. Les projets d''experts sont en général mieux payés.
+
+### Organiser ses revenus
+
+1. **Ne dépendez pas d''un seul projet** : les projets s''arrêtent souvent sans préavis.
+2. **Qualifiez-vous** sur plusieurs plateformes sérieuses.
+3. **Gardez une épargne** de 2 à 3 mois de dépenses.
+4. **Suivez** vos heures, vos paiements et vos frais dans un tableau.
+5. **Vérifiez avant de commencer** qu''un moyen de paiement fonctionne depuis Madagascar.
+
+> [!madagascar]
+> Les plateformes paient souvent par Payoneer, par virement ou par d''autres services ; PayPal a des possibilités limitées pour Madagascar. Notez les frais de change et de retrait pour connaître votre revenu réel. Renseignez-vous sur vos obligations fiscales auprès du centre fiscal de votre ville.
+
+## La sécurité et la confidentialité
+
+1. **Pas de capture d''écran** des tâches, sauf demande du projet.
+2. **Pas de partage** des consignes ou des tâches, ni sur les réseaux sociaux, ni dans des groupes.
+3. **Un ordinateur personnel protégé**, pas de cybercafé.
+4. **Un compte = une personne**.
+5. **Signalez** à la plateforme tout contenu choquant si les consignes le prévoient, et faites des pauses : certains projets de sécurité exposent à des contenus difficiles.
+
+## Évoluer
+
+| Étape | Ce qui change |
+| --- | --- |
+| **Évaluateur confirmé** | Accès à des projets plus complexes et mieux payés |
+| **Contrôleur qualité** | Vous vérifiez les évaluations des autres |
+| **Rédacteur de données** | Vous écrivez des demandes et des réponses modèles de haute qualité |
+| **Évaluateur expert** | Votre domaine (santé, droit, mathématiques, code) devient votre valeur principale |
+| **Spécialiste de la langue malagasy pour l''IA** | Évaluation, écriture de données, conseil sur la qualité des réponses en malagasy |
+
+> [!retenir]
+> - Plateformes, entreprises, projets en langues, recrutement d''experts.
+> - 6 questions pour vérifier une offre ; jamais de paiement, jamais de compte loué.
+> - Un profil centré sur les langues, les domaines et la méthode.
+> - Tests : lecture complète, vérification, justifications précises, aucune IA.
+> - Plusieurs sources de revenus, une épargne, une confidentialité stricte.
+
+## Exercice pratique : lancer votre recherche
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez votre présentation d''évaluateur.
+> 2. Trouvez 4 sources de travail et vérifiez-les avec les 6 questions ; notez pour chacune les moyens de paiement depuis Madagascar.
+> 3. Inscrivez-vous sur au moins une source sérieuse, depuis son site officiel.
+> 4. Préparez votre tableau de suivi des heures, paiements et frais.
+> 5. Choisissez votre domaine d''expertise à développer et 3 actions pour progresser dans les 3 mois.
+>
+> **À livrer** : votre présentation, votre tableau des 4 sources, la preuve d''inscription, votre tableau de suivi et votre plan de 3 mois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 4, 0, 'Comment s''inscrire sur une plateforme ?', '["En payant un intermédiaire","Uniquement depuis son site officiel","Par un lien reçu sur WhatsApp","En achetant un compte"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 4, 1, 'Pourquoi ne pas dépendre d''un seul projet ?', '["Les projets s''arrêtent souvent sans préavis","Pour payer moins d''impôts","Ce n''est pas utile","C''est interdit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-1-f', 4, 2, 'Quel profil donne accès aux projets mieux payés ?', '["Un compte acheté","Un domaine d''expertise reconnu","Aucune compétence","La vitesse seule"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Pourquoi les IA ont-elles besoin d''évaluateurs humains ?', '["Pour taper plus vite","Elles n''en ont pas besoin","Pour apprendre à préférer les réponses utiles, vraies et sûres","Pour vendre des ordinateurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quelle tâche consiste à transformer une réponse moyenne en réponse parfaite ?', '["Noter","Comparer","Réécrire","Tester la sécurité"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quelle qualité évite d''être impressionné par une réponse bien écrite mais fausse ?', '["L''esprit critique","La gentillesse","La vitesse","La patience seule"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quel avantage pour un évaluateur malgache ?', '["Ne pas lire les consignes","Juger des réponses en malagasy et sur Madagascar","Aucun","Utiliser l''IA à sa place"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quel critère vérifie le format, la longueur et la langue demandés ?', '["Le respect de la demande","L''exactitude","La sécurité","L''honnêteté"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quel critère vérifie que la réponse reconnaît ses incertitudes ?', '["L''honnêteté","Le style","L''utilité","La clarté"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Un dosage de médicament faux est un problème…', '["De style","Mineur","Sans importance","Critique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Une faute d''orthographe isolée est un problème…', '["Majeur","Dangereux","Mineur","Critique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Pourquoi ancrer chaque note sur une définition ?', '["Pour noter de façon cohérente","Pour faire plaisir","Ce n''est pas utile","Pour aller plus vite"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quelle est la première étape pour comparer deux réponses ?', '["Lire seulement la fin","Choisir la plus longue","Lire la demande deux fois","Choisir la mieux écrite"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Que faire de votre opinion personnelle ?', '["Elle passe avant tout","La cacher dans la justification","Rien","Juger selon les critères et les consignes, pas selon ses goûts"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Pourquoi dater sa fiche mémo ?', '["Pour le paiement","Pour décorer","C''est obligatoire par la loi","Les consignes changent souvent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Combien de sources fiables comparer au minimum pour un fait ?', '["1, n''importe laquelle","2","0","20"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quelle source privilégier pour un chiffre officiel d''un pays ?', '["Une publicité","Un forum","Une IA","L''institut statistique officiel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Peut-on demander à une IA de vérifier une réponse d''IA ?', '["Oui, toujours","Oui, si elle est récente","Non, elle peut se tromper de la même façon","Oui, en anglais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Que vérifier dans un calcul en plus du résultat ?', '["Rien","Chaque étape et les unités","La police","La longueur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Qu''est-ce que la calibration ?', '["Une pause","Le réglage de l''écran","Le paiement","Des tâches d''essai à réponse connue qui vérifient votre application des consignes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Une réponse de santé donne un diagnostic avec assurance. Quel problème ?', '["Un problème grave de prudence","Aucun","Un problème mineur","Un problème de format"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Une réponse refuse d''aider pour une question simple et légitime. Elle est…', '["Sans défaut","Parfaite","Peu utile","Toujours la meilleure"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Pourquoi la réécriture sur le Mobile Money oriente-t-elle vers l''opérateur ?', '["Pour faire de la publicité","Pour allonger la réponse","Les exigences exactes peuvent varier et changer","Par habitude"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', '67 beignets par jour : pourquoi arrondir 66,7 au-dessus ?', '["Ce n''est pas utile","Pour faire joli","Par erreur","Pour atteindre l''objectif"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Que penser d''une offre « 50 $ de l''heure sans expérience » reçue sur WhatsApp ?', '["Un projet d''expert","Probablement une arnaque","Une excellente offre","Une offre officielle"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Que faire des consignes d''un projet ?', '["Les envoyer à des amis","Ne pas les partager","Les vendre","Les publier sur Facebook"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quel mode de rémunération est le plus courant en évaluation ?', '["En nature","À l''heure","Au pourboire","Au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-1-f', 'Quelle évolution consiste à écrire des demandes et réponses de haute qualité ?', '["Comptable","Monteur vidéo","Rédacteur de données","Livreur"]'::jsonb, 2);
 
 -- data-2-a
 delete from public.exam_questions where course_id = 'data-2-a';

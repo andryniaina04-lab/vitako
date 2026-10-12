@@ -776,6 +776,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-1-f": {
+  "hours": 13,
+  "description": "L'évaluateur de réponses d'IA lit, compare et note les réponses des assistants d'intelligence artificielle, et explique précisément ce qui ne va pas, pour les rendre plus utiles, plus exacts et plus sûrs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler en français et en malagasy pour des plateformes et des entreprises de données, avec des méthodes rigoureuses et sans aucun achat. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer pourquoi les IA ont besoin d'évaluateurs humains et les règles du métier",
+   "Appliquer 6 critères et juger la gravité des problèmes",
+   "Comparer deux réponses et écrire une justification précise et vérifiable",
+   "Vérifier des faits par la lecture latérale et contrôler des calculs",
+   "Mener un projet complet : calibration, évaluations, réécritures, réponses modèles",
+   "Trouver des projets sérieux, éviter les arnaques et organiser ses revenus"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'évaluateur de réponses d'IA depuis Madagascar",
+    "summary": "Pourquoi les IA ont besoin d'évaluateurs, les 6 types de tâches, le profil recherché, les règles absolues, les réalités du métier et la routine de travail.",
+    "sections": [
+     "Pourquoi les IA ont besoin d'évaluateurs",
+     "Les 6 types de tâches",
+     "Le profil recherché",
+     "Les règles absolues du métier",
+     "Les réalités du métier",
+     "Le poste de travail et la routine",
+     "Exercice pratique : vos premiers jugements"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : critères, gravité, notation et justification",
+    "summary": "Les 6 critères, les hallucinations, la gravité des problèmes, l'échelle de notation, la comparaison en 5 étapes, les pièges et la justification en 4 parties.",
+    "sections": [
+     "Les 6 critères",
+     "La gravité des problèmes",
+     "L'échelle de notation",
+     "Comparer deux réponses",
+     "Écrire une justification",
+     "Exercice pratique : évaluer avec méthode"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : grille, fiche mémo et vérification des faits",
+    "summary": "Rien à acheter, la grille d'évaluation, la fiche mémo datée, la lecture latérale, les sources fiables, la vérification des calculs et le suivi de sa qualité.",
+    "sections": [
+     "Rien à acheter : les outils sont fournis",
+     "La grille d'évaluation dans un tableur",
+     "La fiche mémo des consignes",
+     "Vérifier un fait : la lecture latérale",
+     "Vérifier un calcul et un raisonnement",
+     "Suivre son temps et sa qualité",
+     "Exercice pratique : votre boîte à outils"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : un projet d'évaluation complet",
+    "summary": "La calibration, l'évaluation dans 4 domaines, les conseils sensibles, la réécriture, la rédaction de demandes et de réponses modèles, et le contrôle de cohérence.",
+    "sections": [
+     "Le projet « Assistant francophone »",
+     "Étape 1 : la calibration",
+     "Étape 2 : évaluer dans 4 domaines",
+     "Étape 3 : réécrire une réponse",
+     "Étape 4 : rédiger des demandes et des réponses modèles",
+     "Étape 5 : contrôler sa cohérence",
+     "Exercice pratique : le projet complet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des projets et se faire payer",
+    "summary": "Sources de travail et vérification des offres, profil, tests d'entrée, rémunération et revenus, sécurité et confidentialité, évolution vers l'expertise.",
+    "sections": [
+     "Où trouver du travail",
+     "Votre profil d'évaluateur",
+     "Réussir les tests d'entrée",
+     "Rémunération et organisation des revenus",
+     "La sécurité et la confidentialité",
+     "Évoluer",
+     "Exercice pratique : lancer votre recherche"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "data-2-a": {
   "hours": 18,
   "description": "Ce niveau Avancé fait évoluer l'opérateur de saisie vers la gestion de données : spécialités (comptabilité, santé, e-commerce, enquêtes), collecte numérique, Excel avancé avec Power Query et tableaux croisés, reconnaissance professionnelle avec ABBYY FineReader, systèmes de contrôle et journal des corrections, protection des données et formats internationaux, puis services de nettoyage, migration et tableaux de bord. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

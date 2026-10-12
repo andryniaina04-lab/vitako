@@ -1,0 +1,97 @@
+{
+  "id": "data-1-f",
+  "hours": 13,
+  "description": "L'évaluateur de réponses d'IA lit, compare et note les réponses des assistants d'intelligence artificielle, et explique précisément ce qui ne va pas, pour les rendre plus utiles, plus exacts et plus sûrs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler en français et en malagasy pour des plateformes et des entreprises de données, avec des méthodes rigoureuses et sans aucun achat. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer pourquoi les IA ont besoin d'évaluateurs humains et les règles du métier",
+    "Appliquer 6 critères et juger la gravité des problèmes",
+    "Comparer deux réponses et écrire une justification précise et vérifiable",
+    "Vérifier des faits par la lecture latérale et contrôler des calculs",
+    "Mener un projet complet : calibration, évaluations, réécritures, réponses modèles",
+    "Trouver des projets sérieux, éviter les arnaques et organiser ses revenus"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'évaluateur de réponses d'IA depuis Madagascar",
+      "summary": "Pourquoi les IA ont besoin d'évaluateurs, les 6 types de tâches, le profil recherché, les règles absolues, les réalités du métier et la routine de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un prompt ?", "options": ["Le message que l'utilisateur envoie à l'IA", "La réponse de l'IA", "Un logiciel", "Un paiement"], "correct": 0 },
+        { "q": "Quel est le premier motif d'exclusion des projets ?", "options": ["Utiliser une IA pour faire les tâches à sa place", "Faire des pauses", "Vérifier les faits", "Lire les consignes"], "correct": 0 },
+        { "q": "Peut-on partager son compte avec un proche ?", "options": ["Non : un compte = une personne", "Oui, en famille", "Oui, le week-end", "Oui, contre de l'argent"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : critères, gravité, notation et justification",
+      "summary": "Les 6 critères, les hallucinations, la gravité des problèmes, l'échelle de notation, la comparaison en 5 étapes, les pièges et la justification en 4 parties.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une hallucination ?", "options": ["Une information inventée présentée comme vraie", "Une réponse trop courte", "Une faute d'orthographe", "Un refus poli"], "correct": 0 },
+        { "q": "Une réponse plus longue est-elle forcément meilleure ?", "options": ["Non", "Oui, toujours", "Oui, si elle a des titres", "Oui, en français"], "correct": 0 },
+        { "q": "Que doit contenir une bonne justification ?", "options": ["Le verdict, l'endroit exact des problèmes et la correction", "« B est mieux »", "Votre goût personnel", "Un emoji"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : grille, fiche mémo et vérification des faits",
+      "summary": "Rien à acheter, la grille d'évaluation, la fiche mémo datée, la lecture latérale, les sources fiables, la vérification des calculs et le suivi de sa qualité.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la lecture latérale ?", "options": ["Vérifier une information en comparant plusieurs sources fiables", "Lire de gauche à droite", "Lire une seule page très longtemps", "Demander à une IA"], "correct": 0 },
+        { "q": "Une IA calcule 15 000 × 12 pour une épargne d'un an par semaine. Quelle erreur ?", "options": ["Elle compte 12 semaines au lieu de 52", "Aucune", "Elle oublie les centimes", "Elle se trompe de devise"], "correct": 0 },
+        { "q": "Faut-il payer un logiciel pour travailler sur une plateforme d'évaluation ?", "options": ["Non, les outils sont fournis", "Oui, toujours", "Oui, la première année", "Oui, pour être prioritaire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un projet d'évaluation complet",
+      "summary": "La calibration, l'évaluation dans 4 domaines, les conseils sensibles, la réécriture, la rédaction de demandes et de réponses modèles, et le contrôle de cohérence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Un SMS court est demandé, la réponse B est une lettre de 15 lignes. Quel problème ?", "options": ["Le format demandé n'est pas respecté", "Aucun", "La réponse est trop courte", "Un problème de sécurité"], "correct": 0 },
+        { "q": "Comment contrôler la cohérence de ses jugements ?", "options": ["Refaire des évaluations plus tard et comparer", "Ne jamais relire", "Demander à une IA", "Changer de projet"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une bonne demande d'entraînement ?", "options": ["Réaliste, difficile, claire et vérifiable", "Floue et impossible", "Très facile", "Sans réponse possible"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des projets et se faire payer",
+      "summary": "Sources de travail et vérification des offres, profil, tests d'entrée, rémunération et revenus, sécurité et confidentialité, évolution vers l'expertise.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment s'inscrire sur une plateforme ?", "options": ["Uniquement depuis son site officiel", "Par un lien reçu sur WhatsApp", "En achetant un compte", "En payant un intermédiaire"], "correct": 0 },
+        { "q": "Pourquoi ne pas dépendre d'un seul projet ?", "options": ["Les projets s'arrêtent souvent sans préavis", "Pour payer moins d'impôts", "C'est interdit", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Quel profil donne accès aux projets mieux payés ?", "options": ["Un domaine d'expertise reconnu", "Aucune compétence", "La vitesse seule", "Un compte acheté"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Pourquoi les IA ont-elles besoin d'évaluateurs humains ?", "options": ["Pour apprendre à préférer les réponses utiles, vraies et sûres", "Pour taper plus vite", "Pour vendre des ordinateurs", "Elles n'en ont pas besoin"], "correct": 0 },
+    { "q": "Quelle tâche consiste à transformer une réponse moyenne en réponse parfaite ?", "options": ["Réécrire", "Noter", "Comparer", "Tester la sécurité"], "correct": 0 },
+    { "q": "Quelle qualité évite d'être impressionné par une réponse bien écrite mais fausse ?", "options": ["L'esprit critique", "La vitesse", "La gentillesse", "La patience seule"], "correct": 0 },
+    { "q": "Quel avantage pour un évaluateur malgache ?", "options": ["Juger des réponses en malagasy et sur Madagascar", "Ne pas lire les consignes", "Utiliser l'IA à sa place", "Aucun"], "correct": 0 },
+    { "q": "Quel critère vérifie le format, la longueur et la langue demandés ?", "options": ["Le respect de la demande", "L'exactitude", "La sécurité", "L'honnêteté"], "correct": 0 },
+    { "q": "Quel critère vérifie que la réponse reconnaît ses incertitudes ?", "options": ["L'honnêteté", "La clarté", "L'utilité", "Le style"], "correct": 0 },
+    { "q": "Un dosage de médicament faux est un problème…", "options": ["Critique", "Mineur", "De style", "Sans importance"], "correct": 0 },
+    { "q": "Une faute d'orthographe isolée est un problème…", "options": ["Mineur", "Critique", "Majeur", "Dangereux"], "correct": 0 },
+    { "q": "Pourquoi ancrer chaque note sur une définition ?", "options": ["Pour noter de façon cohérente", "Pour aller plus vite", "Pour faire plaisir", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle est la première étape pour comparer deux réponses ?", "options": ["Lire la demande deux fois", "Choisir la plus longue", "Choisir la mieux écrite", "Lire seulement la fin"], "correct": 0 },
+    { "q": "Que faire de votre opinion personnelle ?", "options": ["Juger selon les critères et les consignes, pas selon ses goûts", "Elle passe avant tout", "La cacher dans la justification", "Rien"], "correct": 0 },
+    { "q": "Pourquoi dater sa fiche mémo ?", "options": ["Les consignes changent souvent", "Pour décorer", "C'est obligatoire par la loi", "Pour le paiement"], "correct": 0 },
+    { "q": "Combien de sources fiables comparer au minimum pour un fait ?", "options": ["2", "0", "1, n'importe laquelle", "20"], "correct": 0 },
+    { "q": "Quelle source privilégier pour un chiffre officiel d'un pays ?", "options": ["L'institut statistique officiel", "Un forum", "Une publicité", "Une IA"], "correct": 0 },
+    { "q": "Peut-on demander à une IA de vérifier une réponse d'IA ?", "options": ["Non, elle peut se tromper de la même façon", "Oui, toujours", "Oui, si elle est récente", "Oui, en anglais"], "correct": 0 },
+    { "q": "Que vérifier dans un calcul en plus du résultat ?", "options": ["Chaque étape et les unités", "Rien", "La police", "La longueur"], "correct": 0 },
+    { "q": "Qu'est-ce que la calibration ?", "options": ["Des tâches d'essai à réponse connue qui vérifient votre application des consignes", "Le réglage de l'écran", "Le paiement", "Une pause"], "correct": 0 },
+    { "q": "Une réponse de santé donne un diagnostic avec assurance. Quel problème ?", "options": ["Un problème grave de prudence", "Aucun", "Un problème de format", "Un problème mineur"], "correct": 0 },
+    { "q": "Une réponse refuse d'aider pour une question simple et légitime. Elle est…", "options": ["Peu utile", "Parfaite", "Toujours la meilleure", "Sans défaut"], "correct": 0 },
+    { "q": "Pourquoi la réécriture sur le Mobile Money oriente-t-elle vers l'opérateur ?", "options": ["Les exigences exactes peuvent varier et changer", "Pour faire de la publicité", "Pour allonger la réponse", "Par habitude"], "correct": 0 },
+    { "q": "67 beignets par jour : pourquoi arrondir 66,7 au-dessus ?", "options": ["Pour atteindre l'objectif", "Par erreur", "Pour faire joli", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que penser d'une offre « 50 $ de l'heure sans expérience » reçue sur WhatsApp ?", "options": ["Probablement une arnaque", "Une excellente offre", "Une offre officielle", "Un projet d'expert"], "correct": 0 },
+    { "q": "Que faire des consignes d'un projet ?", "options": ["Ne pas les partager", "Les publier sur Facebook", "Les vendre", "Les envoyer à des amis"], "correct": 0 },
+    { "q": "Quel mode de rémunération est le plus courant en évaluation ?", "options": ["À l'heure", "Au pourboire", "En nature", "Au hasard"], "correct": 0 },
+    { "q": "Quelle évolution consiste à écrire des demandes et réponses de haute qualité ?", "options": ["Rédacteur de données", "Comptable", "Monteur vidéo", "Livreur"], "correct": 0 }
+  ]
+}
