@@ -61,7 +61,10 @@ export async function getSession() {
 }
 export function onAuthChange(cb) {
   if (!sb) return;
-  sb.auth.onAuthStateChange((event, session) => cb(event, session));
+  // Important : ne jamais appeler Supabase directement dans ce rappel (blocage connu de supabase-js :
+  // la connexion attend la fin du rappel, et le rappel attend la connexion). On remet donc
+  // le travail à juste après, avec setTimeout.
+  sb.auth.onAuthStateChange((event, session) => { setTimeout(() => cb(event, session), 0); });
 }
 const homeUrl = () => location.origin + location.pathname;
 

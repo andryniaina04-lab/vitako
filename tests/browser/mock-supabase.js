@@ -19,7 +19,14 @@
   const isAdmin = () => !!profile()?.is_admin;
   const hasAccess = () => { const p = profile(); return !!p && (p.is_admin || (p.sub_end && new Date(p.sub_end) > new Date())); };
   const listeners = [];
-  const emit = (ev) => listeners.forEach((cb) => setTimeout(() => cb(ev, db.session), 0));
+  // Comme supabase-js : la connexion attend la fin des rappels, et les appels à la base
+  // attendent la fin de la connexion. Un rappel qui appelle la base bloquerait tout.
+  let authLock = null;
+  const emit = async (ev) => {
+    let release; authLock = new Promise((r) => { release = r; });
+    try { await Promise.all(listeners.map((cb) => cb(ev, db.session))); } finally { authLock = null; release(); }
+  };
+  const waitAuth = () => authLock || Promise.resolve();
 
   function table(name) {
     switch (name) {
@@ -49,7 +56,7 @@
     maybeSingle() { this.single = true; return this; }
     update(vals) { this.op = 'update'; this.vals = vals; return this; }
     upsert(row) { this.op = 'upsert'; this.row = row; return this; }
-    then(res, rej) { return Promise.resolve(this.exec()).then(res, rej); }
+    then(res, rej) { return waitAuth().then(() => this.exec()).then(res, rej); }
     exec() {
       if (this.op === 'upsert') {
         if (this.name !== 'progress') return err('permission denied');
@@ -154,16 +161,16 @@
       const user = { id: uuid(), email, password };
       db.users.push(user);
       db.profiles.push({ id: user.id, full_name: options?.data?.full_name || email.split('@')[0], email, is_admin: email.startsWith('admin@'), sub_end: null, created_at: now() });
-      db.session = { user: { id: user.id, email } }; save(); emit('SIGNED_IN');
+      db.session = { user: { id: user.id, email } }; save(); await emit('SIGNED_IN');
       return { data: { user: db.session.user, session: db.session }, error: null };
     },
     async signInWithPassword({ email, password }) {
       const u = db.users.find((x) => x.email === email && x.password === password);
       if (!u) return err('Invalid login credentials');
-      db.session = { user: { id: u.id, email } }; save(); emit('SIGNED_IN');
+      db.session = { user: { id: u.id, email } }; save(); await emit('SIGNED_IN');
       return { data: { session: db.session }, error: null };
     },
-    async signOut() { db.session = null; save(); emit('SIGNED_OUT'); return { error: null }; },
+    async signOut() { db.session = null; save(); await emit('SIGNED_OUT'); return { error: null }; },
     async resetPasswordForEmail() { return { data: {}, error: null }; },
     async updateUser({ password }) { const u = db.users.find((x) => x.id === me()); if (u) u.password = password; save(); return { data: {}, error: null }; },
   };
