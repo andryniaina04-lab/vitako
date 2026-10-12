@@ -4,7 +4,7 @@
 begin;
 insert into public.courses (id, job_key, job_name, level, title, hours, published) values
   ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 14, true),
-  ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 14, false),
+  ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
   ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 11, false),
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 15, false),
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
@@ -2108,6 +2108,686 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '150 champs contrôlés, 1 erreur : le taux d''erreur est d''environ…', '["0,67 %","15 %","0,01 %","1,5 %"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que contient le rapport de livraison ?', '["Seulement le prix","Rien, le fichier suffit","Vos mots de passe","Volume, temps, qualité, problèmes et description du fichier"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faire des données personnelles à la fin d''une mission, si le client le demande ?', '["Les supprimer et le confirmer par écrit","Les vendre","Les publier","Les garder pour un autre client"]'::jsonb, 0);
+
+-- design-0-a
+delete from public.exam_questions where course_id = 'design-0-a';
+delete from public.module_questions where course_id = 'design-0-a';
+delete from public.lessons where course_id = 'design-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-a', 0, 'Se spécialiser et construire une offre haut de gamme', 'Les 6 spécialités, la méthode des 3 cercles, la phrase de positionnement, l''offre en 3 niveaux et l''étude de cas.', 'Un graphiste « qui fait de tout » est en concurrence avec des milliers d''autres, et il est souvent choisi pour son prix. Un graphiste **spécialisé** est choisi pour son expertise, et il peut demander plus. Ce module vous aide à choisir une spécialité rentable, à la présenter clairement et à construire une offre haut de gamme.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 grandes spécialités du graphisme freelance.
+> 2. Choisir la vôtre avec la méthode des 3 cercles.
+> 3. Rédiger votre phrase de positionnement.
+> 4. Construire une offre haut de gamme en 3 niveaux.
+> 5. Présenter une étude de cas qui prouve votre expertise.
+
+## Pourquoi se spécialiser
+
+| Généraliste | Spécialiste |
+| --- | --- |
+| « Je fais des logos, des flyers, des sites, des vidéos… » | « Je crée l''identité visuelle des hôtels et lodges de l''océan Indien » |
+| Comparé sur le prix | Choisi pour son expertise |
+| Chaque projet est nouveau : il faut tout réapprendre | Les projets se ressemblent : on va plus vite et mieux |
+| Difficile à recommander (« il fait un peu de tout ») | Facile à recommander (« c''est LE graphiste des hôtels ») |
+
+Se spécialiser ne veut pas dire refuser tout le reste. Cela veut dire **mettre en avant** une spécialité dans votre portfolio et votre communication.
+
+> [!definition] Niche
+> Un petit segment précis du marché : un type de client (restaurants, ONG, coachs), un type de travail (packaging, présentations) ou les deux. Une niche a moins de clients, mais beaucoup moins de concurrents.
+
+## Les 6 grandes spécialités
+
+| N° | Spécialité | Ce qu''on fait | Clients typiques | Niveau de prix |
+| --- | --- | --- | --- | --- |
+| 1 | **Identité de marque** | Logo, charte graphique complète, déclinaisons | Nouvelles entreprises, marques qui se modernisent | Élevé |
+| 2 | **Packaging** | Étiquettes, boîtes, emballages | Marques de vanille, épices, cosmétiques, boissons | Élevé |
+| 3 | **Design pour réseaux sociaux** | Modèles, campagnes, carrousels | Marques, agences, créateurs | Moyen, mais régulier |
+| 4 | **Édition et mise en page** | Rapports, magazines, catalogues, livres | ONG, institutions, éditeurs | Moyen à élevé |
+| 5 | **Présentations** | Présentations commerciales, dossiers investisseurs | Startups, consultants, entreprises | Moyen à élevé |
+| 6 | **Illustration et visuels sur mesure** | Illustrations, infographies, icônes | Médias, éducation, applications | Variable |
+
+> [!madagascar] Des niches où vous avez un avantage
+> - **Packaging des produits malgaches** exportés (vanille, girofle, cacao, huiles essentielles, artisanat) : vous connaissez les produits et leur histoire.
+> - **Tourisme de l''océan Indien** : hôtels, lodges, agences, guides.
+> - **Rapports d''ONG** en français : de nombreux projets à Madagascar et en Afrique francophone.
+
+## Choisir sa spécialité : la méthode des 3 cercles
+
+Votre spécialité se trouve au croisement de 3 cercles :
+
+1. **Ce que vous faites bien** : regardez votre portfolio, quels projets sont les meilleurs ?
+2. **Ce que vous aimez faire** : sur quels projets le temps passe vite ?
+3. **Ce que les clients paient bien** : où y a-t-il de la demande et des budgets ?
+
+### La méthode en 5 étapes
+
+1. Listez vos **10 derniers projets** (ou exercices) et notez chacun de 1 à 5 sur les 3 cercles.
+2. Repérez les **2 ou 3 types de projets** qui ont les meilleures notes.
+3. **Vérifiez la demande** : cherchez ce type de projet sur les plateformes de freelance et dans les groupes d''entrepreneurs. Y a-t-il des offres régulières ?
+4. **Regardez 5 concurrents** spécialisés : leurs prix, leur portfolio, ce qui manque.
+5. **Choisissez une spécialité** pour les 6 prochains mois. Vous pourrez l''ajuster ensuite.
+
+## La phrase de positionnement
+
+> [!definition] Positionnement
+> La place que vous voulez occuper dans l''esprit de vos clients : pour qui vous travaillez, quel problème vous résolvez, et en quoi vous êtes différent.
+
+### Le modèle
+
+« J''aide **[type de clients]** à **[résultat]** grâce à **[votre spécialité]**. »
+
+> [!exemple] Trois phrases de positionnement
+> - « J''aide les producteurs de vanille et d''épices de Madagascar à vendre à l''export grâce à des emballages qui racontent leur origine. »
+> - « J''aide les lodges et petits hôtels de l''océan Indien à remplir leurs chambres grâce à une identité visuelle qui donne envie de voyager. »
+> - « J''aide les ONG francophones à rendre leurs rapports clairs et lisibles grâce à une mise en page professionnelle. »
+
+Cette phrase va partout : profil LinkedIn, Behance, page d''accueil de votre portfolio, signature d''e-mail.
+
+## L''offre haut de gamme en 3 niveaux
+
+Un client qui vient pour une spécialité est prêt à payer plus, à condition de comprendre ce qu''il achète.
+
+> [!exemple] Offre « Identité de lodge »
+>
+> | | **Essentiel** | **Signature** | **Complète** |
+> | --- | --- | --- | --- |
+> | Atelier de découverte (visioconférence) | 1 h | 1 h 30 | 2 h |
+> | Pistes de logo proposées | 2 | 3 | 3 |
+> | Charte graphique | 2 pages | 8 pages | 15 pages |
+> | Déclinaisons | Carte de visite | Carte de visite, signature e-mail, 5 modèles réseaux sociaux | Tout Signature + menu, plaquette, panneaux d''accueil |
+> | Tours de retouches | 2 | 3 | 3 |
+> | Délai | 2 semaines | 3 semaines | 5 semaines |
+
+Le niveau du milieu est souvent le plus choisi. Le niveau le plus élevé rend le niveau du milieu raisonnable par comparaison.
+
+## L''étude de cas qui prouve votre expertise
+
+Un client haut de gamme ne veut pas seulement voir de belles images : il veut comprendre **votre façon de réfléchir**.
+
+### Les 6 parties d''une étude de cas
+
+1. **Le client** et son contexte (2 à 3 lignes).
+2. **Le problème** : ce qui n''allait pas, ce qu''il voulait.
+3. **La recherche** : concurrents analysés, planche d''inspiration, mots-clés de la marque.
+4. **Les choix** : pourquoi cette typographie, ces couleurs, ce symbole.
+5. **Le résultat** : le logo et ses déclinaisons **en situation** (enseigne, site, emballage).
+6. **L''effet** : ce qui a changé pour le client (avis, retours, chiffres si vous en avez).
+
+> [!astuce]
+> 3 études de cas solides dans votre spécialité valent mieux que 30 images sans explication. Publiez-les sur Behance et dans un PDF de présentation.
+
+> [!attention] Erreurs fréquentes
+> - Choisir une spécialité uniquement parce qu''elle « paie bien », sans l''aimer : vous abandonnerez vite.
+> - Changer de spécialité tous les mois.
+> - Garder un portfolio généraliste après avoir choisi une spécialité.
+> - Proposer une offre haut de gamme sans processus clair (atelier, étapes, livrables).
+
+> [!retenir]
+> - Un spécialiste est choisi pour son expertise, un généraliste pour son prix.
+> - Choisissez avec les 3 cercles : talent, plaisir, demande.
+> - Une phrase de positionnement claire, partout.
+> - Une offre en 3 niveaux, avec un processus et des livrables précis.
+> - Des études de cas qui montrent votre réflexion.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Notez vos 10 derniers projets sur les 3 cercles et choisissez votre spécialité.
+> 2. Analysez 5 concurrents spécialisés (portfolio, prix, présentation).
+> 3. Rédigez votre phrase de positionnement.
+> 4. Construisez votre offre en 3 niveaux, avec contenu, délai et prix.
+> 5. Transformez votre meilleur projet en étude de cas en 6 parties.
+>
+> **À livrer** : votre tableau des 3 cercles, votre analyse des concurrents, votre phrase, votre offre et votre étude de cas.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 0, 0, 'Pourquoi se spécialiser ?', '["Pour refuser tous les autres projets","Pour travailler moins","Pour être choisi pour son expertise plutôt que pour son prix","Parce que c''est obligatoire"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 0, 1, 'Quels sont les 3 cercles pour choisir sa spécialité ?', '["Le prix, la couleur, la police","Ce qu''on fait bien, ce qu''on aime, ce que les clients paient bien","Facebook, Instagram, TikTok","Le matin, le midi, le soir"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 0, 2, 'Que doit montrer une étude de cas ?', '["Le prix payé par le client","Votre réflexion : problème, recherche, choix et résultat","Votre CV","Seulement l''image finale"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-a', 1, 'Les outils professionnels : Illustrator, Photoshop, InDesign, Canva Pro', 'Le bon logiciel pour chaque travail, plans de travail et couleurs globales, travail non destructif et mockups, documents longs et impression, kits Canva pour les clients.', 'Les agences et les clients internationaux travaillent presque tous avec les logiciels d''Adobe : **Illustrator**, **Photoshop** et **InDesign**. Ils vous enverront leurs fichiers et attendront les vôtres dans ces formats. Ce module vous apprend les fonctions professionnelles de chacun, ainsi que **Canva Pro** pour les clients qui veulent modifier eux-mêmes leurs visuels.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir le bon logiciel pour chaque type de travail.
+> 2. Utiliser les fonctions clés d''Illustrator : plans de travail, couleurs globales, Pathfinder.
+> 3. Utiliser les fonctions clés de Photoshop : calques, masques, objets dynamiques, mockups.
+> 4. Mettre en page un document long avec InDesign : gabarits, styles, contrôle en amont.
+> 5. Créer un kit de marque et des modèles modifiables dans Canva Pro.
+> 6. Décider quand et comment acheter ces logiciels.
+
+## Quel logiciel pour quel travail ?
+
+| Travail | Logiciel principal | Pourquoi |
+| --- | --- | --- |
+| Logo, icônes, illustrations vectorielles | **Illustrator** | Vectoriel : agrandissable sans perte |
+| Retouche photo, montages, mockups | **Photoshop** | Travail sur les pixels |
+| Rapports, catalogues, magazines, menus de plusieurs pages | **InDesign** | Mise en page de documents longs, préparation pour l''impression |
+| Modèles que le client modifie lui-même | **Canva Pro** | Simple pour un client non graphiste |
+
+> [!definition] Vectoriel et matriciel
+> Une image **vectorielle** (Illustrator, SVG, PDF vectoriel) est faite de formes calculées : on peut l''agrandir à l''infini. Une image **matricielle** (Photoshop, JPG, PNG) est faite de pixels : agrandie, elle devient floue.
+
+## Illustrator : les fonctions professionnelles
+
+### 1. Les plans de travail
+
+Un seul fichier peut contenir **plusieurs plans de travail** (pages) : logo en couleur, en noir, en blanc, version horizontale, icône seule. Vous les exportez tous en une fois (**Fichier → Exporter → Exporter pour les écrans**).
+
+### 2. Les couleurs globales
+
+1. Créez les couleurs de la marque dans le panneau **Nuancier**.
+2. Cochez **Global** dans les options de chaque nuance.
+3. Si le client change sa couleur principale, modifiez la nuance : **tous** les éléments qui l''utilisent changent en même temps.
+
+### 3. Le Pathfinder
+
+Le panneau **Pathfinder** combine des formes : unir, soustraire, intersecter. C''est l''outil principal pour construire un logo à partir de formes simples.
+
+### 4. Vectoriser le texte
+
+Avant d''envoyer un logo, transformez le texte en formes (**Texte → Vectoriser**), après avoir gardé une copie modifiable. Ainsi, le logo s''affiche correctement même chez quelqu''un qui n''a pas la police.
+
+> [!astuce] Les raccourcis à connaître
+> **V** sélection · **A** sélection directe · **P** plume · **M** rectangle · **Ctrl + G** grouper · **Ctrl + Maj + O** vectoriser le texte · **Ctrl + Alt + 3** (selon la version) afficher les éléments masqués.
+
+## Photoshop : les fonctions professionnelles
+
+| Fonction | À quoi elle sert | Règle professionnelle |
+| --- | --- | --- |
+| **Calques** | Séparer chaque élément | Nommez chaque calque, rangez-les dans des groupes |
+| **Masques de fusion** | Cacher une partie d''un calque sans l''effacer | Ne jamais utiliser la gomme sur une photo originale |
+| **Calques de réglage** | Corriger lumière et couleurs (niveaux, courbes, teinte) | Toujours en calque de réglage, jamais directement sur la photo |
+| **Objets dynamiques** | Garder la qualité d''une image qu''on redimensionne | Convertir chaque image importée en objet dynamique |
+| **Sélection du sujet** et outils d''IA | Détourer rapidement une personne ou un produit | Vérifier et affiner les contours à la main |
+
+> [!definition] Travail non destructif
+> Une façon de travailler où l''image originale n''est jamais abîmée : masques au lieu de gomme, calques de réglage au lieu de modifications directes. On peut toujours revenir en arrière, même des semaines plus tard, quand le client demande un changement.
+
+### Les mockups
+
+Un **mockup** montre votre création en situation : un logo sur une enseigne, une étiquette sur un pot de vanille, une affiche dans une rue.
+
+1. Utilisez un mockup Photoshop avec un **objet dynamique** prévu pour la création.
+2. Double-cliquez sur l''objet dynamique, collez votre création, enregistrez.
+3. Le mockup se met à jour avec la perspective et les ombres.
+
+Utilisez uniquement des mockups dont la **licence** permet l''usage commercial.
+
+## InDesign : les documents longs
+
+InDesign est le logiciel des rapports, catalogues et magazines. Ses 4 outils clés :
+
+1. **Les gabarits** (pages types) : en-tête, numéro de page et grille, appliqués à toutes les pages.
+2. **Les styles de paragraphe et de caractère** : titre 1, titre 2, texte courant, légende. Changez un style, et tout le document change.
+3. **Les blocs liés** : le texte coule automatiquement d''une page à l''autre.
+4. **Le contrôle en amont** (*Preflight*) : il signale les images en basse résolution, les polices manquantes et le texte en excès.
+
+### Exporter pour l''imprimeur
+
+1. **Fichier → Exporter → PDF Adobe (Impression)**.
+2. Choisissez le profil demandé par l''imprimeur (souvent un PDF/X).
+3. Ajoutez **les traits de coupe** et le **fond perdu** (souvent 3 mm, à vérifier avec l''imprimeur).
+4. Vérifiez le PDF final page par page.
+
+> [!definition] Fond perdu
+> Une marge de quelques millimètres où l''on prolonge les images et couleurs au-delà du format final. Elle est coupée à l''impression et évite un liseré blanc sur les bords.
+
+## Canva Pro : les modèles pour le client
+
+Beaucoup de clients veulent modifier eux-mêmes leurs publications. Avec Canva Pro, vous leur livrez un système qu''ils ne peuvent pas « casser ».
+
+1. Créez le **kit de marque** : logos, couleurs, polices.
+2. Créez **10 à 20 modèles** : promotion, nouveauté, citation, événement, story.
+3. **Verrouillez** les éléments qui ne doivent pas bouger (logo, position des titres).
+4. Partagez les modèles avec le client par un **lien de modèle** : il obtient une copie modifiable, l''original reste intact.
+5. Ajoutez un **guide d''une page** : quel modèle pour quel message.
+
+> [!exemple] Une offre qui se vend bien
+> « Kit réseaux sociaux » : 15 modèles Canva aux couleurs de la marque, verrouillés, avec guide d''utilisation et formation de 30 minutes. Le client gagne en autonomie, et vous vendez une prestation à forte valeur sans travail répété chaque semaine.
+
+## Acheter les logiciels : comment décider
+
+| Option | Pour qui | Points à vérifier |
+| --- | --- | --- |
+| **Abonnement Adobe à une seule application** | Spécialité centrée sur un logiciel (Illustrator pour l''identité) | Prix mensuel en devises |
+| **Abonnement Adobe à toutes les applications** | Graphiste qui utilise Illustrator, Photoshop et InDesign chaque semaine | Prix plus élevé ; vérifiez les offres annuelles |
+| **Canva Pro** | Graphistes réseaux sociaux, kits pour clients | Abonnement mensuel ou annuel |
+| **Logiciels payés par le client ou l''agence** | Missions longues en agence | Licence au nom de l''agence |
+
+Les prix et les offres changent : vérifiez-les sur les sites officiels. N''utilisez jamais de version piratée : en plus d''être illégal, c''est risqué (virus, comptes bloqués) et les agences peuvent le détecter.
+
+> [!madagascar]
+> Ces abonnements se paient par carte bancaire internationale, en euros ou en dollars. Calculez le coût **par mois et par client** : si l''abonnement vous permet de travailler avec une agence européenne, il est rentabilisé dès le premier projet. Commencez par l''application dont vous avez le plus besoin.
+
+> [!retenir]
+> - Illustrator pour le vectoriel, Photoshop pour l''image, InDesign pour les documents longs, Canva Pro pour l''autonomie du client.
+> - Couleurs globales, plans de travail et texte vectorisé dans Illustrator.
+> - Travail non destructif dans Photoshop : masques, calques de réglage, objets dynamiques.
+> - Gabarits, styles et contrôle en amont dans InDesign.
+> - Des modèles Canva verrouillés et un guide : une offre à forte valeur.
+
+## Exercice pratique : un logo décliné dans 3 logiciels
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Dans Illustrator (version d''essai si besoin), reconstruisez votre logo d''étude avec des formes et le Pathfinder, sur 5 plans de travail (couleur, noir, blanc, horizontal, icône), avec des couleurs globales.
+> 2. Dans Photoshop, placez le logo dans 2 mockups (enseigne et emballage).
+> 3. Dans InDesign, mettez en page une charte graphique de 4 pages avec gabarit et styles, puis exportez en PDF pour l''impression.
+> 4. Dans Canva, créez un kit de marque et 3 modèles verrouillés.
+>
+> **À livrer** : le fichier Illustrator, les 2 mockups, le PDF de la charte et les liens des modèles Canva.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 1, 0, 'Quel logiciel pour un rapport de 40 pages ?', '["Canva gratuit","Paint","Photoshop","InDesign"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 1, 1, 'À quoi servent les couleurs globales dans Illustrator ?', '["Exporter en JPG","Imprimer en noir et blanc","Changer une couleur partout en une seule fois","Ajouter des ombres"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 1, 2, 'Qu''est-ce que le fond perdu ?', '["Une couleur de fond transparente","Un fond d''écran perdu","Une erreur d''impression","Une marge prolongée au-delà du format final, coupée à l''impression"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-a', 2, 'Qualité et rapidité : les méthodes de studio', 'Le processus en 6 phases, la bibliothèque de ressources, la charte complète en 10 sections, la maîtrise des retours et la grille de 15 points.', 'Un graphiste avancé ne se distingue pas seulement par la beauté de son travail, mais par sa **fiabilité** : des projets livrés à l''heure, sans erreur, avec des retours maîtrisés. Ce module vous donne les méthodes des studios professionnels pour travailler plus vite sans baisser la qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Suivre un processus de projet en 6 phases avec des validations.
+> 2. Construire une bibliothèque de ressources réutilisables.
+> 3. Rédiger une charte graphique complète.
+> 4. Maîtriser les retours du client et limiter les allers-retours.
+> 5. Contrôler chaque livraison avec une grille de 15 points.
+
+## Le processus en 6 phases
+
+| N° | Phase | Ce que vous faites | Validation du client |
+| --- | --- | --- | --- |
+| 1 | **Découverte** | Atelier ou questionnaire, analyse des concurrents | Le brief écrit |
+| 2 | **Direction** | Planche d''inspiration (*moodboard*), mots-clés, palette | La direction choisie |
+| 3 | **Création** | 2 ou 3 pistes, présentées en situation | Une piste |
+| 4 | **Affinage** | Retouches sur la piste choisie | La version finale |
+| 5 | **Déclinaisons** | Charte, supports, modèles | Les supports |
+| 6 | **Livraison** | Fichiers rangés, guide, mot de passation | — |
+
+**La règle d''or** : on ne passe à la phase suivante **qu''après validation écrite**. Si le client change d''avis sur la direction pendant l''affinage, c''est un changement de projet, à facturer.
+
+> [!definition] Planche d''inspiration (moodboard)
+> Une page qui rassemble des images, couleurs, textures et typographies pour montrer l''**ambiance** visée, avant de dessiner quoi que ce soit. Elle évite de travailler des jours dans une direction que le client n''aime pas.
+
+## Une bibliothèque de ressources
+
+Ne repartez jamais de zéro. Construisez votre propre bibliothèque, rangée et réutilisable :
+
+| Ressource | Contenu |
+| --- | --- |
+| **Modèles de présentation** | Présentation des pistes de logo, de la charte, du devis |
+| **Gabarits de supports** | Carte de visite, flyer A5, affiche A3, publications réseaux sociaux, aux bonnes dimensions avec fond perdu |
+| **Mockups** | 20 à 30 mockups sous licence commerciale, classés par usage |
+| **Polices** | Polices sous licence, avec la licence enregistrée |
+| **Éléments** | Grilles, icônes, textures |
+| **Textes types** | Brief, devis, e-mails de présentation, de relance, de livraison |
+
+> [!astuce] Le gain réel
+> Préparer un gabarit de présentation prend 3 heures une fois. Il en fait gagner une à chaque projet. Après 10 projets, vous avez gagné 7 heures, et vos présentations sont toutes cohérentes et professionnelles.
+
+## La charte graphique complète
+
+Une charte complète permet à n''importe qui (imprimeur, développeur, community manager) d''utiliser la marque sans erreur. C''est un livrable haut de gamme.
+
+### Les 10 sections
+
+1. **L''histoire et les valeurs** de la marque, en quelques lignes.
+2. **Le logo** : versions (principale, secondaire, icône), construction.
+3. **La zone de protection** : l''espace vide minimum autour du logo.
+4. **La taille minimale** du logo, à l''écran et à l''impression.
+5. **Les interdits** : déformer, changer les couleurs, ajouter des effets, poser sur un fond chargé.
+6. **Les couleurs** : codes RVB et hexadécimal (écran), CMJN (impression), et Pantone si besoin.
+7. **La typographie** : polices de titres et de texte, tailles, interlignage.
+8. **Les éléments graphiques** : motifs, icônes, style photo.
+9. **Les applications** : carte de visite, papier à en-tête, réseaux sociaux, enseigne.
+10. **Les fichiers** : liste et usage de chaque fichier livré.
+
+> [!definition] CMJN et RVB
+> **RVB** (rouge, vert, bleu) est le mode des écrans. **CMJN** (cyan, magenta, jaune, noir) est le mode de l''impression. Une même couleur n''a pas les mêmes valeurs dans les deux : la charte doit donner les deux.
+
+## Maîtriser les retours du client
+
+Les allers-retours sans fin sont la première cause de perte d''argent en graphisme.
+
+### Avant les retours
+
+1. **Limitez le nombre de tours** dans le devis (souvent 2 ou 3).
+2. **Présentez vos choix** : un client qui comprend pourquoi vous avez choisi une couleur la remet moins en question.
+3. **Montrez en situation** : un logo seul sur fond blanc paraît vide ; sur une enseigne, il prend vie.
+
+### Recevoir les retours
+
+1. Demandez des retours **regroupés**, en une seule fois, idéalement sous forme de liste numérotée.
+2. Demandez des **problèmes**, pas des solutions : « Qu''est-ce qui vous gêne dans cette couleur ? » plutôt que d''appliquer « mettez du rouge ».
+3. **Reformulez** et proposez une solution de professionnel.
+
+> [!exemple] Transformer un retour flou
+> Client : « Je ne sais pas, ça ne me parle pas trop. »
+> Vous : « Merci. Pour bien comprendre, est-ce plutôt les couleurs, la forme du symbole ou la police qui ne vous correspondent pas ? Et quelle impression aimeriez-vous que le logo donne en premier : sérieux, chaleureux, moderne ? »
+
+### Le tableau de suivi des retours
+
+| N° | Retour | Décision | Statut |
+| --- | --- | --- | --- |
+| 1 | Le vert est trop sombre | Éclairci de 15 % | Fait |
+| 2 | Ajouter « depuis 1998 » | Ajouté sous le nom, en petit | Fait |
+| 3 | Mettre une étoile | Proposé en variante ; déconseillé (charge le logo) | À valider |
+
+## Travailler plus vite
+
+1. **Raccourcis clavier** : apprenez-en 5 nouveaux par semaine.
+2. **Actions et scripts** : dans Photoshop, une **action** enregistre une suite d''opérations (redimensionner, exporter) et la répète sur des dizaines d''images.
+3. **Exports en lot** : exportez tous les plans de travail ou toutes les pages d''un coup.
+4. **Blocs de travail** : 90 minutes sans téléphone ni messages, pour la création.
+5. **Moments fixes pour les échanges** : répondez aux messages 2 ou 3 fois par jour, pas en continu.
+
+## La grille de contrôle en 15 points
+
+| N° | Point à vérifier | Oui / Non |
+| --- | --- | --- |
+| 1 | Orthographe et noms propres vérifiés | |
+| 2 | Coordonnées (téléphone, adresse, site) vérifiées une par une | |
+| 3 | Couleurs conformes à la charte | |
+| 4 | Polices conformes et licences en règle | |
+| 5 | Logo dans la bonne version et à la bonne taille | |
+| 6 | Alignements et marges réguliers | |
+| 7 | Images en résolution suffisante (300 ppp à taille réelle pour l''impression) | |
+| 8 | Mode colorimétrique correct (RVB écran, CMJN impression) | |
+| 9 | Fond perdu et traits de coupe pour l''impression | |
+| 10 | Texte vectorisé ou polices incorporées dans le PDF | |
+| 11 | Formats et dimensions demandés | |
+| 12 | Fichiers nommés clairement | |
+| 13 | Dossier de livraison rangé | |
+| 14 | Retours du client tous traités | |
+| 15 | Vérification sur téléphone pour les visuels numériques | |
+
+> [!madagascar]
+> Pour les impressions faites à Madagascar, demandez à l''**imprimeur** ses exigences avant de commencer (fond perdu, profil de couleur, format de fichier). Un bon rapport avec 2 ou 3 imprimeurs fiables à Antananarivo est un vrai atout : vous pouvez proposer à vos clients un service complet.
+
+> [!retenir]
+> - 6 phases, et jamais de phase suivante sans validation écrite.
+> - Une bibliothèque de gabarits, mockups et textes types.
+> - Une charte complète en 10 sections, avec RVB et CMJN.
+> - Des retours regroupés, compris, et suivis dans un tableau.
+> - Une grille de 15 points avant chaque livraison.
+
+## Exercice pratique : votre système de travail
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez votre gabarit de présentation de pistes de logo (5 à 8 pages).
+> 2. Créez 5 gabarits de supports aux bonnes dimensions, avec fond perdu.
+> 3. Rédigez la charte graphique complète (10 sections) de votre projet de spécialité.
+> 4. Enregistrez une action Photoshop qui redimensionne et exporte une image pour 3 réseaux sociaux.
+> 5. Préparez vos textes types : brief, présentation, relance, livraison.
+>
+> **À livrer** : vos gabarits, la charte en PDF, une capture de votre action et vos textes types.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 2, 0, 'Quand passer à la phase suivante d''un projet ?', '["Après une validation écrite du client","Après le paiement final seulement","Dès qu''on en a envie","Jamais"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 2, 1, 'À quoi sert une planche d''inspiration (moodboard) ?', '["Valider l''ambiance avant de dessiner","Remplacer la charte","Facturer le client","Imprimer le logo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 2, 2, 'Quel mode de couleur pour l''impression ?', '["Niveaux de gris uniquement","Hexadécimal","RVB","CMJN"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-a', 3, 'Clients internationaux : canaux, anglais, contrat et formats', 'Où trouver des clients étrangers, vocabulaire anglais, contrat et cession de droits, formats selon les pays, communication et prix en devises.', 'Les clients internationaux, en Europe, au Canada ou ailleurs, paient souvent mieux que le marché local. Mais ils ont leurs habitudes : la langue, les contrats, les droits d''auteur, les formats de fichiers, la façon de communiquer. Ce module vous prépare à travailler avec eux de façon professionnelle, en français comme en anglais.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir les bons canaux pour trouver des clients internationaux.
+> 2. Comprendre un brief en anglais et répondre avec le bon vocabulaire.
+> 3. Rédiger un contrat avec une cession de droits claire.
+> 4. Respecter les formats et normes des différents pays.
+> 5. Fixer un prix en devises et vous faire payer.
+
+## Où trouver des clients internationaux
+
+| Canal | Pour qui | Conseil |
+| --- | --- | --- |
+| **Behance** | Agences et entreprises qui cherchent des graphistes | Publiez vos études de cas complètes, avec des titres clairs en français et en anglais |
+| **Dribbble** | Clients du numérique (startups, applications) | Montrez des extraits soignés de vos projets |
+| **LinkedIn** | Directeurs marketing, fondateurs, agences | Positionnement clair, publications sur votre spécialité |
+| **Plateformes de freelance** (Upwork, Malt et autres) | PME de nombreux pays | Vérifiez qu''elles acceptent les freelances basés à Madagascar ; profil centré sur votre spécialité |
+| **Agences francophones** | Sous-traitance régulière | Candidature directe avec 3 études de cas |
+
+> [!attention] Les concours de design
+> Certaines plateformes organisent des « concours » : des dizaines de graphistes travaillent, un seul est payé. Pour un graphiste avancé, c''est rarement rentable : préférez les missions où vous êtes choisi **avant** de travailler.
+
+## Le vocabulaire anglais du graphiste
+
+| Anglais | Français |
+| --- | --- |
+| brief | cahier des charges, brief |
+| brand identity | identité de marque |
+| brand guidelines | charte graphique |
+| deliverables | livrables |
+| draft / concept | piste, proposition |
+| revision / round of revisions | retouche / tour de retouches |
+| mockup | maquette en situation |
+| bleed | fond perdu |
+| final files / source files | fichiers finaux / fichiers sources |
+| deadline | date limite |
+| invoice | facture |
+| deposit / upfront payment | acompte |
+| scope | périmètre (ce qui est inclus) |
+
+> [!exemple] Répondre à une demande en anglais
+> « Hi Sarah, thank you for reaching out! Based on your brief, I suggest my **Signature** package: a discovery call, 3 logo concepts, 3 rounds of revisions, an 8-page brand guidelines document and social media templates. Timeline: 3 weeks. Price: [montant] EUR, with a 50% deposit to start. Here are two similar projects: [lien]. Would you be available for a 20-minute call this week? »
+
+Des phrases simples et claires suffisent. Faites relire vos messages importants par un correcteur (LanguageTool, par exemple).
+
+## Le contrat et les droits d''auteur
+
+En tant que créateur, vous êtes **auteur** de vos créations. Le client a besoin d''un droit d''utilisation. Ce point doit être **écrit**.
+
+> [!definition] Cession de droits
+> Le document (ou la clause du contrat) par lequel vous autorisez le client à utiliser votre création : pour quels usages (impression, web, publicité), dans quels pays, pour combien de temps. Pour un logo, le client attend en général une cession large et définitive, **après paiement complet**.
+
+### Les 8 clauses essentielles du contrat
+
+1. **Les parties** : vos coordonnées et celles du client.
+2. **Le périmètre** (*scope*) : livrables précis, nombre de pistes et de retouches.
+3. **Le calendrier** : étapes et dates.
+4. **Le prix et les paiements** : acompte, échéances, devise.
+5. **Les droits** : quels droits sont cédés, et **à partir du paiement complet**.
+6. **Les fichiers sources** : inclus ou non (on peut les facturer en plus).
+7. **Le portfolio** : votre droit de montrer le projet (sauf accord de confidentialité).
+8. **L''annulation** : ce qui est dû si le client arrête en cours de route (l''acompte reste acquis).
+
+Le droit d''auteur varie selon les pays : pour les gros contrats, faites relire par un professionnel du droit.
+
+## Les formats et normes selon les pays
+
+| Élément | Europe et Madagascar | États-Unis et Canada |
+| --- | --- | --- |
+| Format de papier | A4 (210 × 297 mm), A5, A3 | Letter (8,5 × 11 pouces), Tabloid |
+| Unités | Millimètres | Pouces (inches) |
+| Carte de visite | Souvent 85 × 55 mm | Souvent 3,5 × 2 pouces |
+| Dates sur les supports | 14/03/2026 | 03/14/2026 (États-Unis) |
+
+Demandez toujours **le format exact** et, pour l''impression, les **exigences de l''imprimeur** du client. Pour les couleurs, certaines marques internationales utilisent un **nuancier Pantone** : la charte doit alors indiquer les références Pantone.
+
+## Communiquer à distance avec des clients étrangers
+
+1. **Fixez les heures d''échange** dans le fuseau du client : pour l''Europe, votre après-midi correspond à leur matinée ou midi ; pour le Canada, votre soirée correspond à leur matinée.
+2. **Résumez chaque appel par écrit** : décisions, prochaines étapes, dates.
+3. **Envoyez des nouvelles régulières**, même courtes : un client étranger s''inquiète vite s''il n''a pas de nouvelles.
+4. **Présentez en visioconférence** les étapes importantes (pistes, charte) : vous expliquez vos choix et le client valide plus facilement.
+
+## Prix en devises et paiement
+
+1. Fixez vos prix **en euros ou en dollars** pour les clients étrangers, adaptés à leur marché et à votre niveau. Renseignez-vous sur les prix de graphistes spécialisés de niveau comparable sur les plateformes.
+2. Demandez **50 % d''acompte** au démarrage pour un nouveau client.
+3. Précisez **qui paie les frais** de transfert.
+4. Utilisez un moyen de paiement qui fonctionne depuis Madagascar : virement international, Payoneer, ou le système de la plateforme.
+
+> [!madagascar]
+> Le taux de change varie. Gardez vos prix en devises sans les convertir à chaque projet, et suivez le montant réellement reçu en ariary après frais pour connaître votre revenu réel. Gardez une trace de chaque paiement pour votre comptabilité.
+
+> [!retenir]
+> - Behance, LinkedIn, plateformes et agences ; prudence avec les concours.
+> - Un vocabulaire anglais de base suffit pour des échanges clairs.
+> - Un contrat écrit, avec une cession de droits après paiement complet.
+> - Les formats changent selon les pays : A4 ou Letter, mm ou pouces.
+> - Prix en devises, acompte, frais de transfert précisés.
+
+## Exercice pratique : prêt pour l''international
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Publiez une de vos études de cas sur Behance, avec un titre et une description en français et en anglais.
+> 2. Rédigez votre contrat type avec les 8 clauses.
+> 3. Écrivez en anglais une réponse à cette demande : « We are opening a small eco-lodge in Madagascar and need a logo and brand guidelines. »
+> 4. Déclinez une carte de visite de votre projet au format européen et au format américain.
+> 5. Fixez les prix en euros de vos 3 niveaux d''offre.
+>
+> **À livrer** : le lien Behance, le contrat, votre réponse en anglais, les 2 cartes de visite et votre grille de prix.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 3, 0, 'Quand céder les droits d''un logo au client ?', '["Après le paiement complet","Jamais","Avant de commencer","Après l''acompte seulement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 3, 1, 'Quel format de papier est courant aux États-Unis ?', '["A5","A4","Letter","B2"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 3, 2, 'Que veut dire « deliverables » ?', '["Les factures","Les délais","Les livrables","Les retouches"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-a', 4, 'Développer son activité', 'Augmenter ses prix, prix à la valeur, offres mensuelles, collaboration avec d''autres freelances et pilotage par les chiffres.', 'Arrivé à un certain niveau, un graphiste freelance se heurte à une limite : le nombre d''heures dans une journée. Pour gagner plus, il faut **augmenter la valeur** de chaque heure, créer des revenus réguliers et, parfois, s''entourer. Ce dernier module vous montre comment développer votre activité de façon durable.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Augmenter vos prix sans perdre vos bons clients.
+> 2. Fixer un prix selon la valeur apportée au client.
+> 3. Créer des revenus réguliers avec des contrats mensuels.
+> 4. Collaborer avec d''autres freelances pour proposer des projets complets.
+> 5. Suivre vos chiffres et piloter votre activité.
+
+## Augmenter ses prix
+
+### Les signes qu''il est temps
+
+1. Vous êtes **complet** plusieurs semaines à l''avance.
+2. Presque **tous** vos devis sont acceptés sans discussion.
+3. Vos clients vous **recommandent** régulièrement.
+4. Votre portfolio est nettement meilleur qu''il y a un an.
+
+### Augmenter en 4 étapes
+
+1. **Nouveaux clients d''abord** : appliquez le nouveau tarif à toutes les nouvelles demandes.
+2. **Clients actuels ensuite** : prévenez-les **1 à 2 mois à l''avance**.
+3. **Expliquez la valeur**, pas vos besoins : nouveaux services, meilleure qualité, délais tenus.
+4. **Augmentez par paliers** raisonnables (par exemple 10 à 20 %), plutôt que de doubler d''un coup.
+
+> [!exemple] Message à un client régulier
+> « Bonjour Monsieur Rabe, merci pour votre confiance depuis deux ans. À partir du 1er mars, mes tarifs évoluent de 15 % pour refléter l''élargissement de mes services (modèles Canva, charte complète, mockups). Pour les projets confirmés avant cette date, l''ancien tarif reste appliqué. Je reste à votre disposition pour en parler. »
+
+## Fixer un prix selon la valeur
+
+Le prix à l''heure (Fondamentaux, module 5) reste votre **plancher**. Mais pour certains projets, la valeur pour le client est bien plus grande que le temps passé.
+
+> [!definition] Prix à la valeur
+> Un prix fixé selon ce que le travail **rapporte ou fait gagner** au client, et non seulement selon votre temps. Un emballage qui permet à un producteur de vanille de vendre en Europe a une grande valeur, même s''il vous a pris 25 heures.
+
+### Les 4 questions pour estimer la valeur
+
+1. Combien le client espère-t-il **vendre** ou **gagner** grâce à ce projet ?
+2. Combien de **temps** le visuel sera-t-il utilisé (un logo : des années ; un flyer : une semaine) ?
+3. Sur combien de **supports** et dans combien de **pays** ?
+4. Que lui coûterait une **erreur** (emballage refusé, image de marque abîmée) ?
+
+Plus la valeur, la durée d''utilisation et le risque sont grands, plus le prix peut monter au-dessus de votre plancher horaire.
+
+## Créer des revenus réguliers
+
+Les projets ponctuels donnent des mois irréguliers. Les **contrats mensuels** stabilisent vos revenus.
+
+| Offre mensuelle | Contenu | Pour qui |
+| --- | --- | --- |
+| **Abonnement visuels** | 12 à 20 visuels par mois, délai de 48 h | Marques actives sur les réseaux sociaux |
+| **Graphiste à temps partagé** | 10 à 20 heures par mois, toutes demandes | PME sans graphiste interne |
+| **Suivi de marque** | Contrôle de la cohérence, nouveaux supports, mise à jour des modèles | Entreprises en croissance |
+| **Partenariat d''agence** | Volume réservé chaque mois pour une agence | Agences de communication |
+
+> [!astuce]
+> Proposez l''offre mensuelle **à la fin d''un projet réussi** : le client vient de voir la qualité de votre travail, et il aura besoin de nouveaux supports. « Pour que votre nouvelle identité reste cohérente sur tous vos supports, je vous propose un suivi mensuel… »
+
+## Collaborer avec d''autres freelances
+
+Beaucoup de clients veulent un **projet complet** : identité, site internet, textes, photos, réseaux sociaux. Seul, vous ne pouvez pas tout faire. En réseau, si.
+
+### Les partenaires naturels du graphiste
+
+1. **Développeur web** (WordPress, Shopify) : site aux couleurs de la marque.
+2. **Rédacteur** : textes du site, slogan, plaquette.
+3. **Photographe** ou **vidéaste** : images de la marque.
+4. **Community manager** : utilisation des visuels au quotidien.
+5. **Imprimeur** : supports physiques.
+
+### Les 4 règles d''une bonne collaboration
+
+1. **Un seul interlocuteur** pour le client (souvent celui qui a apporté le projet).
+2. **Des rôles écrits** : qui fait quoi, quand, pour quel prix.
+3. **Une commission** claire pour celui qui gère le projet (souvent 10 à 20 %, à convenir).
+4. **Une qualité vérifiée** : ne recommandez que des personnes dont vous connaissez le travail.
+
+> [!madagascar]
+> Un petit collectif de freelances malgaches (graphiste, développeur, rédacteur, community manager) peut répondre à des projets que chacun ne pourrait pas prendre seul, pour des clients locaux comme étrangers. Commencez par un projet test entre vous avant de vous présenter ensemble.
+
+## Piloter son activité avec des chiffres
+
+Chaque mois, suivez 6 chiffres dans un tableau simple :
+
+| N° | Indicateur | Pourquoi |
+| --- | --- | --- |
+| 1 | **Chiffre d''affaires** du mois | Savoir si vous atteignez votre objectif |
+| 2 | **Revenu horaire réel** (chiffre d''affaires ÷ heures travaillées, prospection comprise) | Voir si vos prix sont assez élevés |
+| 3 | **Part des 2 plus gros clients** | Plus de 50 % : danger si l''un part |
+| 4 | **Taux d''acceptation des devis** | Plus de 80 % : vos prix sont peut-être trop bas |
+| 5 | **Revenus mensuels réguliers** | La base sûre de votre mois |
+| 6 | **Dépenses** (logiciels, matériel, connexion) | Connaître votre bénéfice réel |
+
+> [!exemple] Lecture des chiffres
+> Ce mois-ci : 2 400 000 Ar de chiffre d''affaires pour 160 heures travaillées, soit **15 000 Ar de l''heure réelle**. Un seul client représente 60 % du total. Action : prospecter 2 nouveaux clients réguliers dans votre spécialité pour réduire ce risque.
+
+## Prendre soin de soi et de son activité
+
+1. **Une épargne de précaution** : l''équivalent de 3 mois de dépenses, pour les mois creux.
+2. **Du temps de formation** chaque semaine : nouvelles fonctions, tendances, anglais.
+3. **Des congés prévus**, annoncés aux clients à l''avance.
+4. **Votre propre communication** : publiez régulièrement votre travail, même quand vous êtes complet.
+5. **Une situation administrative en règle** : NIF, carte statistique, déclarations, selon votre situation (renseignez-vous auprès du centre fiscal de votre ville).
+
+> [!retenir]
+> - Augmentez vos prix par paliers, d''abord pour les nouveaux clients.
+> - Le prix horaire est un plancher ; la valeur pour le client peut justifier plus.
+> - Les contrats mensuels stabilisent vos revenus.
+> - Un réseau de freelances permet de proposer des projets complets.
+> - 6 chiffres à suivre chaque mois pour piloter votre activité.
+
+## Exercice pratique : votre plan de développement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Faites le bilan de vos 3 derniers mois avec les 6 indicateurs.
+> 2. Rédigez votre nouvelle grille de prix et le message d''annonce à vos clients actuels.
+> 3. Créez une offre mensuelle adaptée à votre spécialité, avec contenu et prix.
+> 4. Identifiez 3 freelances partenaires possibles et proposez à l''un d''eux un projet test.
+> 5. Fixez 3 objectifs chiffrés pour les 6 prochains mois.
+>
+> **À livrer** : votre tableau d''indicateurs, votre grille de prix, votre message, votre offre mensuelle, votre liste de partenaires et vos 3 objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 4, 0, 'Comment augmenter ses prix sans perdre ses bons clients ?', '["En doublant sans prévenir","Par paliers, en prévenant 1 à 2 mois à l''avance","En baissant la qualité","En ne répondant plus"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 4, 1, 'Qu''est-ce que le prix à la valeur ?', '["Le prix le plus bas du marché","Le prix d''un logiciel","Un prix fixé selon ce que le travail rapporte au client","Un prix tiré au hasard"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-a', 4, 2, 'Pourquoi suivre la part des 2 plus gros clients ?', '["Pour leur envoyer un cadeau","Ce n''est pas utile","Au-delà de 50 %, le départ de l''un est un danger","Pour payer moins d''impôts"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Qu''est-ce qu''une niche ?', '["Un segment précis du marché, avec moins de concurrents","Un format de fichier","Un type de police","Un logiciel de dessin"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Quelle niche donne un avantage à un graphiste malgache ?', '["Les jeux vidéo japonais","Les logos de banques suisses uniquement","Le packaging des produits malgaches exportés","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Quel est le modèle de phrase de positionnement ?', '["Je suis le moins cher","J''aide [clients] à [résultat] grâce à [spécialité]","J''ai un ordinateur","Je fais tout pour tout le monde"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Dans une offre en 3 niveaux, quel niveau est souvent le plus choisi ?', '["Le moins cher","Celui du milieu","Le plus cher","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Une image vectorielle…', '["Est toujours une photo","Ne s''imprime pas","Peut être agrandie sans perte","Devient floue quand on l''agrandit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que sert le Pathfinder d''Illustrator ?', '["Exporter une vidéo","Mettre en page un livre","Retoucher les photos","Combiner des formes : unir, soustraire, intersecter"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Pourquoi vectoriser le texte d''un logo avant l''envoi ?', '["Pour qu''il s''affiche même sans la police","Pour le traduire","Pour le rendre plus lourd","Pour changer sa couleur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Qu''est-ce que le travail non destructif dans Photoshop ?', '["Fusionner tous les calques","Utiliser la gomme","Supprimer les calques inutiles","Travailler sans jamais abîmer l''image originale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'À quoi sert un objet dynamique ?', '["Garder la qualité d''une image redimensionnée","Supprimer un fond","Animer une image","Changer la langue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que vérifie le contrôle en amont d''InDesign ?', '["L''orthographe en anglais","La météo","Le prix de l''impression","Images en basse résolution, polices manquantes, texte en excès"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Pourquoi verrouiller des éléments dans un modèle Canva pour le client ?', '["Pour qu''il ne déplace pas le logo et les titres","Ce n''est pas possible","Pour l''empêcher d''utiliser le modèle","Pour le faire payer plus"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que faire avant d''utiliser un mockup pour un client ?', '["Vérifier que sa licence permet l''usage commercial","Le vendre","Le modifier au hasard","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Si le client change de direction pendant l''affinage…', '["On recommence gratuitement","C''est un changement de projet, à facturer","On ignore sa demande","On abandonne le projet"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que contient la zone de protection d''un logo ?', '["Le mot de passe du fichier","La signature du graphiste","L''espace vide minimum autour du logo","Une bordure noire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que faire face à un retour flou comme « ça ne me parle pas » ?', '["Poser des questions précises sur ce qui gêne","Changer toutes les couleurs au hasard","Tout recommencer sans question","Refuser le retour"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que permet une action dans Photoshop ?', '["Imprimer en couleur","Répéter une suite d''opérations sur de nombreuses images","Créer un contrat","Envoyer un e-mail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Quelle résolution pour une image imprimée à taille réelle ?', '["1 000 000 ppp","10 ppp","300 ppp","72 ppp"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Pourquoi les concours de design sont-ils rarement rentables ?', '["Ils sont trop bien payés","Ils sont interdits","Ils durent un an","Beaucoup travaillent, un seul est payé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que veut dire « deposit » ?', '["Facture finale","Retouche","Acompte","Fichier source"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Qu''est-ce que la cession de droits ?', '["La vente de votre ordinateur","L''autorisation donnée au client d''utiliser la création","Un type de police","Le droit de refuser un projet"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que dit la clause d''annulation habituelle ?', '["Le projet continue quand même","L''acompte reste acquis si le client arrête","Le graphiste rembourse tout","Le client ne paie rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Que faire après chaque appel avec un client étranger ?', '["Envoyer un résumé écrit des décisions","Envoyer une facture","Rien","Changer de client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Quel est le premier signe qu''il est temps d''augmenter ses prix ?', '["Vos devis sont tous refusés","Vous avez changé d''ordinateur","Vous êtes complet plusieurs semaines à l''avance","Vous n''avez aucun client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Qu''est-ce qu''une offre « graphiste à temps partagé » ?', '["Un logiciel gratuit","Un graphiste qui partage son ordinateur","Un concours","Un nombre d''heures fixes chaque mois pour une PME"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-a', 'Combien d''épargne de précaution est conseillée ?', '["10 ans","1 jour","Environ 3 mois de dépenses","Aucune"]'::jsonb, 2);
 
 -- design-0-f
 delete from public.exam_questions where course_id = 'design-0-f';

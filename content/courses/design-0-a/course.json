@@ -1,0 +1,97 @@
+{
+  "id": "design-0-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé aide le graphiste à passer de l'exécution de petites commandes à des projets mieux payés : spécialité, offre haut de gamme, logiciels professionnels d'Adobe, méthodes de studio, clients internationaux et développement de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité rentable et construire une offre haut de gamme",
+    "Travailler avec Illustrator, Photoshop, InDesign et Canva Pro comme un professionnel",
+    "Suivre un processus de studio et livrer une charte graphique complète",
+    "Maîtriser les retours du client et contrôler chaque livraison",
+    "Travailler avec des clients internationaux : contrat, droits, formats, devises",
+    "Augmenter ses prix, créer des revenus réguliers et piloter son activité"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et construire une offre haut de gamme",
+      "summary": "Les 6 spécialités, la méthode des 3 cercles, la phrase de positionnement, l'offre en 3 niveaux et l'étude de cas.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi se spécialiser ?", "options": ["Pour être choisi pour son expertise plutôt que pour son prix", "Pour travailler moins", "Pour refuser tous les autres projets", "Parce que c'est obligatoire"], "correct": 0 },
+        { "q": "Quels sont les 3 cercles pour choisir sa spécialité ?", "options": ["Ce qu'on fait bien, ce qu'on aime, ce que les clients paient bien", "Le prix, la couleur, la police", "Facebook, Instagram, TikTok", "Le matin, le midi, le soir"], "correct": 0 },
+        { "q": "Que doit montrer une étude de cas ?", "options": ["Votre réflexion : problème, recherche, choix et résultat", "Seulement l'image finale", "Votre CV", "Le prix payé par le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils professionnels : Illustrator, Photoshop, InDesign, Canva Pro",
+      "summary": "Le bon logiciel pour chaque travail, plans de travail et couleurs globales, travail non destructif et mockups, documents longs et impression, kits Canva pour les clients.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel logiciel pour un rapport de 40 pages ?", "options": ["InDesign", "Photoshop", "Canva gratuit", "Paint"], "correct": 0 },
+        { "q": "À quoi servent les couleurs globales dans Illustrator ?", "options": ["Changer une couleur partout en une seule fois", "Imprimer en noir et blanc", "Exporter en JPG", "Ajouter des ombres"], "correct": 0 },
+        { "q": "Qu'est-ce que le fond perdu ?", "options": ["Une marge prolongée au-delà du format final, coupée à l'impression", "Un fond d'écran perdu", "Une erreur d'impression", "Une couleur de fond transparente"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : les méthodes de studio",
+      "summary": "Le processus en 6 phases, la bibliothèque de ressources, la charte complète en 10 sections, la maîtrise des retours et la grille de 15 points.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand passer à la phase suivante d'un projet ?", "options": ["Après une validation écrite du client", "Dès qu'on en a envie", "Après le paiement final seulement", "Jamais"], "correct": 0 },
+        { "q": "À quoi sert une planche d'inspiration (moodboard) ?", "options": ["Valider l'ambiance avant de dessiner", "Facturer le client", "Imprimer le logo", "Remplacer la charte"], "correct": 0 },
+        { "q": "Quel mode de couleur pour l'impression ?", "options": ["CMJN", "RVB", "Hexadécimal", "Niveaux de gris uniquement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : canaux, anglais, contrat et formats",
+      "summary": "Où trouver des clients étrangers, vocabulaire anglais, contrat et cession de droits, formats selon les pays, communication et prix en devises.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand céder les droits d'un logo au client ?", "options": ["Après le paiement complet", "Avant de commencer", "Jamais", "Après l'acompte seulement"], "correct": 0 },
+        { "q": "Quel format de papier est courant aux États-Unis ?", "options": ["Letter", "A4", "A5", "B2"], "correct": 0 },
+        { "q": "Que veut dire « deliverables » ?", "options": ["Les livrables", "Les délais", "Les factures", "Les retouches"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité",
+      "summary": "Augmenter ses prix, prix à la valeur, offres mensuelles, collaboration avec d'autres freelances et pilotage par les chiffres.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment augmenter ses prix sans perdre ses bons clients ?", "options": ["Par paliers, en prévenant 1 à 2 mois à l'avance", "En doublant sans prévenir", "En baissant la qualité", "En ne répondant plus"], "correct": 0 },
+        { "q": "Qu'est-ce que le prix à la valeur ?", "options": ["Un prix fixé selon ce que le travail rapporte au client", "Le prix le plus bas du marché", "Un prix tiré au hasard", "Le prix d'un logiciel"], "correct": 0 },
+        { "q": "Pourquoi suivre la part des 2 plus gros clients ?", "options": ["Au-delà de 50 %, le départ de l'un est un danger", "Pour leur envoyer un cadeau", "Pour payer moins d'impôts", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce qu'une niche ?", "options": ["Un segment précis du marché, avec moins de concurrents", "Un logiciel de dessin", "Un format de fichier", "Un type de police"], "correct": 0 },
+    { "q": "Quelle niche donne un avantage à un graphiste malgache ?", "options": ["Le packaging des produits malgaches exportés", "Les logos de banques suisses uniquement", "Les jeux vidéo japonais", "Aucune"], "correct": 0 },
+    { "q": "Quel est le modèle de phrase de positionnement ?", "options": ["J'aide [clients] à [résultat] grâce à [spécialité]", "Je fais tout pour tout le monde", "Je suis le moins cher", "J'ai un ordinateur"], "correct": 0 },
+    { "q": "Dans une offre en 3 niveaux, quel niveau est souvent le plus choisi ?", "options": ["Celui du milieu", "Le moins cher", "Le plus cher", "Aucun"], "correct": 0 },
+    { "q": "Une image vectorielle…", "options": ["Peut être agrandie sans perte", "Devient floue quand on l'agrandit", "Est toujours une photo", "Ne s'imprime pas"], "correct": 0 },
+    { "q": "Que sert le Pathfinder d'Illustrator ?", "options": ["Combiner des formes : unir, soustraire, intersecter", "Retoucher les photos", "Mettre en page un livre", "Exporter une vidéo"], "correct": 0 },
+    { "q": "Pourquoi vectoriser le texte d'un logo avant l'envoi ?", "options": ["Pour qu'il s'affiche même sans la police", "Pour le rendre plus lourd", "Pour changer sa couleur", "Pour le traduire"], "correct": 0 },
+    { "q": "Qu'est-ce que le travail non destructif dans Photoshop ?", "options": ["Travailler sans jamais abîmer l'image originale", "Supprimer les calques inutiles", "Utiliser la gomme", "Fusionner tous les calques"], "correct": 0 },
+    { "q": "À quoi sert un objet dynamique ?", "options": ["Garder la qualité d'une image redimensionnée", "Animer une image", "Supprimer un fond", "Changer la langue"], "correct": 0 },
+    { "q": "Que vérifie le contrôle en amont d'InDesign ?", "options": ["Images en basse résolution, polices manquantes, texte en excès", "L'orthographe en anglais", "Le prix de l'impression", "La météo"], "correct": 0 },
+    { "q": "Pourquoi verrouiller des éléments dans un modèle Canva pour le client ?", "options": ["Pour qu'il ne déplace pas le logo et les titres", "Pour l'empêcher d'utiliser le modèle", "Pour le faire payer plus", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Que faire avant d'utiliser un mockup pour un client ?", "options": ["Vérifier que sa licence permet l'usage commercial", "Rien", "Le modifier au hasard", "Le vendre"], "correct": 0 },
+    { "q": "Si le client change de direction pendant l'affinage…", "options": ["C'est un changement de projet, à facturer", "On recommence gratuitement", "On abandonne le projet", "On ignore sa demande"], "correct": 0 },
+    { "q": "Que contient la zone de protection d'un logo ?", "options": ["L'espace vide minimum autour du logo", "Le mot de passe du fichier", "Une bordure noire", "La signature du graphiste"], "correct": 0 },
+    { "q": "Que faire face à un retour flou comme « ça ne me parle pas » ?", "options": ["Poser des questions précises sur ce qui gêne", "Tout recommencer sans question", "Refuser le retour", "Changer toutes les couleurs au hasard"], "correct": 0 },
+    { "q": "Que permet une action dans Photoshop ?", "options": ["Répéter une suite d'opérations sur de nombreuses images", "Envoyer un e-mail", "Créer un contrat", "Imprimer en couleur"], "correct": 0 },
+    { "q": "Quelle résolution pour une image imprimée à taille réelle ?", "options": ["300 ppp", "72 ppp", "10 ppp", "1 000 000 ppp"], "correct": 0 },
+    { "q": "Pourquoi les concours de design sont-ils rarement rentables ?", "options": ["Beaucoup travaillent, un seul est payé", "Ils sont trop bien payés", "Ils sont interdits", "Ils durent un an"], "correct": 0 },
+    { "q": "Que veut dire « deposit » ?", "options": ["Acompte", "Facture finale", "Retouche", "Fichier source"], "correct": 0 },
+    { "q": "Qu'est-ce que la cession de droits ?", "options": ["L'autorisation donnée au client d'utiliser la création", "La vente de votre ordinateur", "Un type de police", "Le droit de refuser un projet"], "correct": 0 },
+    { "q": "Que dit la clause d'annulation habituelle ?", "options": ["L'acompte reste acquis si le client arrête", "Le client ne paie rien", "Le graphiste rembourse tout", "Le projet continue quand même"], "correct": 0 },
+    { "q": "Que faire après chaque appel avec un client étranger ?", "options": ["Envoyer un résumé écrit des décisions", "Rien", "Envoyer une facture", "Changer de client"], "correct": 0 },
+    { "q": "Quel est le premier signe qu'il est temps d'augmenter ses prix ?", "options": ["Vous êtes complet plusieurs semaines à l'avance", "Vous n'avez aucun client", "Vos devis sont tous refusés", "Vous avez changé d'ordinateur"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une offre « graphiste à temps partagé » ?", "options": ["Un nombre d'heures fixes chaque mois pour une PME", "Un graphiste qui partage son ordinateur", "Un logiciel gratuit", "Un concours"], "correct": 0 },
+    { "q": "Combien d'épargne de précaution est conseillée ?", "options": ["Environ 3 mois de dépenses", "1 jour", "10 ans", "Aucune"], "correct": 0 }
+  ]
+}

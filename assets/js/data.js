@@ -617,6 +617,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-0-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé aide le graphiste à passer de l'exécution de petites commandes à des projets mieux payés : spécialité, offre haut de gamme, logiciels professionnels d'Adobe, méthodes de studio, clients internationaux et développement de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité rentable et construire une offre haut de gamme",
+   "Travailler avec Illustrator, Photoshop, InDesign et Canva Pro comme un professionnel",
+   "Suivre un processus de studio et livrer une charte graphique complète",
+   "Maîtriser les retours du client et contrôler chaque livraison",
+   "Travailler avec des clients internationaux : contrat, droits, formats, devises",
+   "Augmenter ses prix, créer des revenus réguliers et piloter son activité"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et construire une offre haut de gamme",
+    "summary": "Les 6 spécialités, la méthode des 3 cercles, la phrase de positionnement, l'offre en 3 niveaux et l'étude de cas.",
+    "sections": [
+     "Pourquoi se spécialiser",
+     "Les 6 grandes spécialités",
+     "Choisir sa spécialité : la méthode des 3 cercles",
+     "La phrase de positionnement",
+     "L'offre haut de gamme en 3 niveaux",
+     "L'étude de cas qui prouve votre expertise",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils professionnels : Illustrator, Photoshop, InDesign, Canva Pro",
+    "summary": "Le bon logiciel pour chaque travail, plans de travail et couleurs globales, travail non destructif et mockups, documents longs et impression, kits Canva pour les clients.",
+    "sections": [
+     "Quel logiciel pour quel travail ?",
+     "Illustrator : les fonctions professionnelles",
+     "Photoshop : les fonctions professionnelles",
+     "InDesign : les documents longs",
+     "Canva Pro : les modèles pour le client",
+     "Acheter les logiciels : comment décider",
+     "Exercice pratique : un logo décliné dans 3 logiciels"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Qualité et rapidité : les méthodes de studio",
+    "summary": "Le processus en 6 phases, la bibliothèque de ressources, la charte complète en 10 sections, la maîtrise des retours et la grille de 15 points.",
+    "sections": [
+     "Le processus en 6 phases",
+     "Une bibliothèque de ressources",
+     "La charte graphique complète",
+     "Maîtriser les retours du client",
+     "Travailler plus vite",
+     "La grille de contrôle en 15 points",
+     "Exercice pratique : votre système de travail"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Clients internationaux : canaux, anglais, contrat et formats",
+    "summary": "Où trouver des clients étrangers, vocabulaire anglais, contrat et cession de droits, formats selon les pays, communication et prix en devises.",
+    "sections": [
+     "Où trouver des clients internationaux",
+     "Le vocabulaire anglais du graphiste",
+     "Le contrat et les droits d'auteur",
+     "Les formats et normes selon les pays",
+     "Communiquer à distance avec des clients étrangers",
+     "Prix en devises et paiement",
+     "Exercice pratique : prêt pour l'international"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité",
+    "summary": "Augmenter ses prix, prix à la valeur, offres mensuelles, collaboration avec d'autres freelances et pilotage par les chiffres.",
+    "sections": [
+     "Augmenter ses prix",
+     "Fixer un prix selon la valeur",
+     "Créer des revenus réguliers",
+     "Collaborer avec d'autres freelances",
+     "Piloter son activité avec des chiffres",
+     "Prendre soin de soi et de son activité",
+     "Exercice pratique : votre plan de développement"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "design-0-f": {
   "hours": 14,
   "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
