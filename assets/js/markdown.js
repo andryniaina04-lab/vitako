@@ -1,6 +1,6 @@
 // Petit convertisseur Markdown -> HTML pour les leçons.
 // Gère : titres (#, ##, ###), paragraphes, listes (- et 1.), sous-listes (2 espaces),
-// tableaux, **gras**, *italique*, `code`, liens, et des encadrés :
+// tableaux, blocs de code (```), **gras**, *italique*, `code`, liens, et des encadrés :
 //   > [!exemple] Titre facultatif
 //   > Texte de l'encadré (Markdown accepté)
 // Types d'encadrés : objectifs, exemple, astuce, attention, madagascar, retenir, exercice, definition.
@@ -69,6 +69,16 @@ export function md(src, opts = {}) {
     const line = lines[i];
     if (!line.trim()) { i++; continue; }
 
+    // Bloc de code : ``` … ```
+    if (/^\s*```/.test(line)) {
+      const code = [];
+      i++;
+      while (i < lines.length && !/^\s*```/.test(lines[i])) { code.push(lines[i]); i++; }
+      i++; // ligne de fermeture
+      out.push(`<pre class="md-code"><code>${esc(code.join('\n'))}</code></pre>`);
+      continue;
+    }
+
     // Encadré : > [!type] Titre
     const co = line.match(/^>\s*\[!(\w+)\]\s*(.*)$/);
     if (co) {
@@ -117,7 +127,7 @@ export function md(src, opts = {}) {
     }
 
     const para = [];
-    while (i < lines.length && lines[i].trim() && !/^(#{1,3}\s|>|\s*\|)/.test(lines[i]) && !LIST.test(lines[i])) { para.push(lines[i].trim()); i++; }
+    while (i < lines.length && lines[i].trim() && !/^(#{1,3}\s|>|\s*\||\s*```)/.test(lines[i]) && !LIST.test(lines[i])) { para.push(lines[i].trim()); i++; }
     if (para.length) out.push(`<p>${inline(para.join(' '))}</p>`);
     else { out.push(`<p>${inline(line)}</p>`); i++; }
   }

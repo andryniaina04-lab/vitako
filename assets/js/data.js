@@ -612,6 +612,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-3-f": {
+  "hours": 16,
+  "description": "Le développeur WordPress et Shopify crée, personnalise et entretient des sites internet et des boutiques en ligne que les clients peuvent gérer eux-mêmes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à construire des sites pour des entreprises malgaches et des clients francophones, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et choisir entre WordPress et Shopify",
+   "Comprendre domaine, hébergement, HTTPS et les bases du HTML et du CSS",
+   "Construire un site WordPress et une boutique WooCommerce ou Shopify",
+   "Optimiser la vitesse, le référencement et la sécurité d'un site",
+   "Mener un projet client complet, de la collecte des contenus à la formation",
+   "Fixer ses prix, vendre la maintenance et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de développeur WordPress et Shopify depuis Madagascar",
+    "summary": "Ce que fait ce développeur, les 6 types de missions, WordPress ou Shopify, vos clients, les compétences et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les 6 types de missions les plus demandés",
+     "WordPress ou Shopify ?",
+     "Qui sont vos clients ?",
+     "Les qualités et compétences du métier",
+     "Le poste de travail",
+     "Exercice pratique : analyser 5 sites"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : comment marche un site, WordPress, Shopify, HTML et CSS",
+    "summary": "Domaine, hébergement, DNS et HTTPS, l'organisation de WordPress et de Shopify, l'arborescence, et les bases du HTML et du CSS.",
+    "sections": [
+     "Comment un site arrive à l'écran",
+     "L'organisation de WordPress",
+     "L'organisation de Shopify",
+     "Construire l'arborescence d'un site",
+     "Les bases du HTML et du CSS",
+     "Exercice pratique : préparer un site"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : WordPress, WooCommerce, Shopify, et les outils payants",
+    "summary": "LocalWP, les 10 réglages essentiels, l'éditeur de blocs, WooCommerce, la boutique de développement Shopify, puis Elementor Pro, thèmes premium et abonnement Shopify.",
+    "sections": [
+     "Les outils gratuits",
+     "WordPress en local avec LocalWP",
+     "Les 10 réglages essentiels d'un nouveau site WordPress",
+     "Construire une page avec l'éditeur de blocs",
+     "Vendre avec WooCommerce",
+     "Shopify : la boutique de développement",
+     "Les outils payants",
+     "Exercice pratique : vos premiers sites"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Premier projet : le site d'un restaurant avec commande en ligne",
+    "summary": "Le projet en 8 étapes, la liste des contenus, la construction, vitesse, référencement et sécurité, la grille de 15 points, la mise en ligne et la formation.",
+    "sections": [
+     "Le cas pratique : « Chez Lalao »",
+     "Le projet en 8 étapes",
+     "Étape 2 : recueillir les contenus",
+     "Étape 4 : construire",
+     "Étape 5 : optimiser",
+     "Étape 6 : la grille de tests en 15 points",
+     "Étapes 7 et 8 : mise en ligne et formation",
+     "Exercice pratique : le site « Chez Lalao »"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio, 5 canaux de prospection, prix des sites et modifications, forfaits de maintenance, devis par étapes et paiements.",
+    "sections": [
+     "Le portfolio du développeur",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis par étapes",
+     "Se faire payer",
+     "Fidéliser : la maintenance et le suivi",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "gestion-0-f": {
   "hours": 14,
   "description": "L'assistant virtuel gère à distance les e-mails, l'agenda, les documents et le suivi administratif de ses clients. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs francophones et des dirigeants malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

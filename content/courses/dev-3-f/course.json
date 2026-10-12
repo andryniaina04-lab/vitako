@@ -1,0 +1,97 @@
+{
+  "id": "dev-3-f",
+  "hours": 16,
+  "description": "Le développeur WordPress et Shopify crée, personnalise et entretient des sites internet et des boutiques en ligne que les clients peuvent gérer eux-mêmes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à construire des sites pour des entreprises malgaches et des clients francophones, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et choisir entre WordPress et Shopify",
+    "Comprendre domaine, hébergement, HTTPS et les bases du HTML et du CSS",
+    "Construire un site WordPress et une boutique WooCommerce ou Shopify",
+    "Optimiser la vitesse, le référencement et la sécurité d'un site",
+    "Mener un projet client complet, de la collecte des contenus à la formation",
+    "Fixer ses prix, vendre la maintenance et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de développeur WordPress et Shopify depuis Madagascar",
+      "summary": "Ce que fait ce développeur, les 6 types de missions, WordPress ou Shopify, vos clients, les compétences et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un CMS ?", "options": ["Un logiciel pour créer et modifier un site sans programmer chaque page", "Un type d'ordinateur", "Un moyen de paiement", "Un réseau social"], "correct": 0 },
+        { "q": "Quelles missions sont idéales pour commencer ?", "options": ["Modifications, dépannage et maintenance", "Créer un réseau social complet", "Développer un système bancaire", "Créer un jeu vidéo 3D"], "correct": 0 },
+        { "q": "Pourquoi ne jamais installer de thèmes payants « piratés » ?", "options": ["Ils contiennent souvent des virus", "Ils sont trop jolis", "Ils sont trop lents à télécharger", "Ils ne s'affichent qu'en anglais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : comment marche un site, WordPress, Shopify, HTML et CSS",
+      "summary": "Domaine, hébergement, DNS et HTTPS, l'organisation de WordPress et de Shopify, l'arborescence, et les bases du HTML et du CSS.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Au nom de qui doit être enregistré le nom de domaine ?", "options": ["Du client", "Du développeur", "De l'hébergeur", "De Vitako"], "correct": 0 },
+        { "q": "Dans WordPress, qu'est-ce qu'une extension ?", "options": ["Une fonction ajoutée au site", "L'apparence du site", "Une page de contact", "Un nom de domaine"], "correct": 0 },
+        { "q": "Quelle balise HTML sert à créer un lien ?", "options": ["<a href=\"…\">", "<p>", "<h1>", "<img>"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : WordPress, WooCommerce, Shopify, et les outils payants",
+      "summary": "LocalWP, les 10 réglages essentiels, l'éditeur de blocs, WooCommerce, la boutique de développement Shopify, puis Elementor Pro, thèmes premium et abonnement Shopify.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert LocalWP ?", "options": ["Installer des sites WordPress sur son ordinateur, sans hébergement", "Héberger un site en ligne", "Payer un abonnement Shopify", "Compresser des vidéos"], "correct": 0 },
+        { "q": "Quel réglage donne des adresses lisibles comme /chambres/ ?", "options": ["Les permaliens", "Le titre du site", "Le fuseau horaire", "Les commentaires"], "correct": 0 },
+        { "q": "Qui paie l'abonnement Shopify d'une boutique ?", "options": ["Le client, sur son compte", "Le développeur", "Personne, c'est gratuit", "L'hébergeur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le site d'un restaurant avec commande en ligne",
+      "summary": "Le projet en 8 étapes, la liste des contenus, la construction, vitesse, référencement et sécurité, la grille de 15 points, la mise en ligne et la formation.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la première cause de lenteur d'un site ?", "options": ["Les images trop lourdes", "Le nombre de pages", "La couleur du fond", "La longueur des textes"], "correct": 0 },
+        { "q": "Où stocker les sauvegardes du site ?", "options": ["Hors du serveur, par exemple dans le Drive du client", "Uniquement sur le même serveur", "Nulle part", "Dans un e-mail au client"], "correct": 0 },
+        { "q": "Quel compte donner au client à la fin du projet ?", "options": ["Son propre compte avec le rôle adapté", "Le compte administrateur du développeur", "Aucun compte", "Un compte partagé avec d'autres clients"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio, 5 canaux de prospection, prix des sites et modifications, forfaits de maintenance, devis par étapes et paiements.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment découper le paiement d'un site ?", "options": ["40 % à la signature, 30 % à la maquette, 30 % à la mise en ligne", "100 % après un an", "Tout à la fin, si le client est content", "Aucun acompte"], "correct": 0 },
+        { "q": "Le nom de domaine et l'hébergement font-ils partie du prix du développeur ?", "options": ["Non, ce sont des coûts du client, indiqués à part", "Oui, toujours", "Oui, pour toujours", "Seulement pour Shopify"], "correct": 0 },
+        { "q": "Qu'apporte la maintenance mensuelle au développeur ?", "options": ["Un revenu régulier", "Aucun avantage", "Moins de clients", "Des impôts en moins"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un développeur WordPress et Shopify ?", "options": ["Il construit des sites fiables que le client peut gérer seul", "Il répare les ordinateurs", "Il écrit des livres", "Il gère la publicité télévisée"], "correct": 0 },
+    { "q": "Quel outil choisir pour un site vitrine d'hôtel ?", "options": ["WordPress", "Shopify obligatoirement", "Excel", "Canva"], "correct": 0 },
+    { "q": "Quel est un avantage de Shopify ?", "options": ["L'hébergement et la maintenance technique sont gérés par Shopify", "Il est gratuit pour toujours", "Il ne sert que pour les blogs", "Il ne demande aucun produit"], "correct": 0 },
+    { "q": "Que fait le DNS ?", "options": ["Il relie le nom de domaine au bon serveur", "Il compresse les images", "Il écrit les textes", "Il envoie les e-mails de commande"], "correct": 0 },
+    { "q": "Que se passe-t-il sans HTTPS ?", "options": ["Le navigateur affiche « non sécurisé »", "Le site est plus rapide", "Rien du tout", "Le site devient premier sur Google"], "correct": 0 },
+    { "q": "Dans WordPress, quelle est la différence entre une page et un article ?", "options": ["La page est un contenu fixe, l'article un contenu daté", "Il n'y a aucune différence", "L'article est payant", "La page n'a pas de texte"], "correct": 0 },
+    { "q": "Avant d'installer une extension, que vérifier ?", "options": ["Qu'elle est nécessaire, mise à jour récemment et bien notée", "Qu'elle a un joli logo", "Qu'elle est la plus lourde", "Rien"], "correct": 0 },
+    { "q": "Dans Shopify, qu'est-ce qu'une collection ?", "options": ["Un groupe de produits", "Un thème", "Un moyen de paiement", "Une facture"], "correct": 0 },
+    { "q": "Combien d'éléments maximum dans le menu principal ?", "options": ["6 à 7", "20", "1", "50"], "correct": 0 },
+    { "q": "Que décrit le CSS ?", "options": ["L'apparence de la page", "Le contenu de la page", "Le nom de domaine", "Les mots de passe"], "correct": 0 },
+    { "q": "À quoi sert l'outil « Inspecter » du navigateur ?", "options": ["Voir et essayer de modifier le HTML et le CSS d'une page", "Supprimer un site", "Pirater un site", "Acheter un domaine"], "correct": 0 },
+    { "q": "Quel programme gratuit permet de créer des boutiques Shopify de développement ?", "options": ["Shopify Partners", "LocalWP", "WooCommerce", "Elementor"], "correct": 0 },
+    { "q": "Une robe en 3 tailles et 2 couleurs a combien de variantes ?", "options": ["6", "5", "3", "2"], "correct": 0 },
+    { "q": "Combien de constructeurs de pages utiliser sur un site ?", "options": ["Un seul", "Le plus possible", "Trois au minimum", "Aucun n'est jamais autorisé"], "correct": 0 },
+    { "q": "Pour une boutique malgache, quels moyens de paiement sont courants ?", "options": ["Paiement à la livraison, virement et Mobile Money", "Uniquement les cartes américaines", "Uniquement les chèques", "Les bitcoins obligatoires"], "correct": 0 },
+    { "q": "Quel est le retard n° 1 des projets web ?", "options": ["Les contenus non envoyés par le client", "La vitesse de l'ordinateur", "Le choix des couleurs", "Le nom du développeur"], "correct": 0 },
+    { "q": "Quel outil gratuit de Google mesure la vitesse d'un site ?", "options": ["PageSpeed Insights", "Google Docs", "Google Agenda", "Google Traduction"], "correct": 0 },
+    { "q": "Quel identifiant administrateur éviter ?", "options": ["admin", "Un identifiant unique", "Un identifiant long", "Un identifiant avec double authentification"], "correct": 0 },
+    { "q": "Que tester absolument dans une boutique avant la mise en ligne ?", "options": ["Une commande complète, du panier à la confirmation", "Seulement la couleur du logo", "Seulement la page À propos", "Rien"], "correct": 0 },
+    { "q": "Quelle fiche gratuite aide un restaurant à apparaître sur Google Maps ?", "options": ["Google Business Profile", "Google Sheets", "Google Drive", "Google Meet"], "correct": 0 },
+    { "q": "Que remettre au client à la fin du projet ?", "options": ["Une formation, un guide et le document des accès", "Rien, il se débrouille", "Seulement la facture", "Le mot de passe du développeur"], "correct": 0 },
+    { "q": "Avec 1 800 000 Ar visés et 100 heures facturables, quel est le prix horaire ?", "options": ["18 000 Ar", "1 800 Ar", "180 000 Ar", "8 000 Ar"], "correct": 0 },
+    { "q": "Quelle marge ajouter au prix estimé d'un site ?", "options": ["Environ 20 % pour les imprévus", "Aucune", "200 %", "1 %"], "correct": 0 },
+    { "q": "Quand proposer la maintenance mensuelle ?", "options": ["Au moment de la mise en ligne", "Jamais", "Après la première panne seulement", "Avant même le devis du site"], "correct": 0 },
+    { "q": "Pourquoi rappeler au client le renouvellement de son domaine ?", "options": ["Un domaine non renouvelé, c'est un site qui disparaît", "Pour lui vendre un autre site", "C'est inutile", "Pour changer son nom"], "correct": 0 }
+  ]
+}

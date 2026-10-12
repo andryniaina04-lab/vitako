@@ -29,7 +29,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 14, false),
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
-  ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 10, false),
+  ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 16, false),
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 11, false),
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 17, false),
@@ -2095,6 +2095,726 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- dev-3-f
+delete from public.exam_questions where course_id = 'dev-3-f';
+delete from public.module_questions where course_id = 'dev-3-f';
+delete from public.lessons where course_id = 'dev-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-f', 0, 'Le métier de développeur WordPress et Shopify depuis Madagascar', 'Ce que fait ce développeur, les 6 types de missions, WordPress ou Shopify, vos clients, les compétences et le poste de travail.', 'Une grande partie des sites internet du monde sont construits avec **WordPress**, et des millions de boutiques en ligne utilisent **Shopify** ou **WooCommerce**. Le développeur WordPress et Shopify crée, personnalise et entretient ces sites pour des entreprises, sans forcément écrire beaucoup de code. C''est un métier très demandé, qui se pratique entièrement à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un développeur WordPress et Shopify.
+> 2. Citer les 6 types de missions les plus demandés.
+> 3. Choisir entre WordPress et Shopify selon le projet du client.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre organisation.
+
+## Le métier en une phrase
+
+Un développeur WordPress et Shopify **construit des sites internet et des boutiques en ligne fiables, faciles à gérer par le client, avec des outils prêts à l''emploi qu''il sait adapter**.
+
+Le client ne veut pas « du code » : il veut un site qui présente bien son activité, qui fonctionne sur téléphone, qui apparaît sur Google et qu''il peut mettre à jour lui-même.
+
+> [!definition] CMS
+> *Content Management System*, ou système de gestion de contenu. Un logiciel qui permet de créer et de modifier un site sans programmer chaque page. WordPress est le CMS le plus utilisé au monde. Shopify est une plateforme spécialisée dans les boutiques en ligne.
+
+## Les 6 types de missions les plus demandés
+
+| N° | Mission | Exemple | Durée habituelle |
+| --- | --- | --- | --- |
+| 1 | **Site vitrine** | Site de 5 pages pour un restaurant, un hôtel, un cabinet | 1 à 3 semaines |
+| 2 | **Boutique en ligne** | Boutique WooCommerce ou Shopify de 20 à 200 produits | 2 à 6 semaines |
+| 3 | **Refonte** | Moderniser un vieux site lent et pas adapté au téléphone | 2 à 4 semaines |
+| 4 | **Modifications ponctuelles** | Ajouter une page, un formulaire, changer un menu | Quelques heures |
+| 5 | **Dépannage** | Site en panne, page blanche, site piraté | Quelques heures à quelques jours |
+| 6 | **Maintenance mensuelle** | Mises à jour, sauvegardes, sécurité, petites modifications | Chaque mois |
+
+Les missions **4, 5 et 6** sont idéales pour commencer : courtes, très demandées, et la maintenance apporte un **revenu régulier**.
+
+## WordPress ou Shopify ?
+
+| Critère | **WordPress** (+ WooCommerce pour vendre) | **Shopify** |
+| --- | --- | --- |
+| Type de site | Tout type : vitrine, blog, boutique, site d''école… | Boutique en ligne avant tout |
+| Hébergement | À choisir et payer à part | Inclus dans l''abonnement |
+| Coût du logiciel | Gratuit (open source) ; extensions et thèmes parfois payants | Abonnement mensuel ; applications souvent payantes |
+| Liberté | Très grande | Plus encadrée, mais plus simple |
+| Maintenance technique | À faire (mises à jour, sécurité, sauvegardes) | Gérée par Shopify |
+| Pour qui | Sites vitrines, blogs, budgets serrés, besoins particuliers | Commerçants qui veulent vendre vite, sans gérer la technique |
+
+> [!exemple] Quel outil pour quel client ?
+> - Un hôtel à Nosy Be qui veut présenter ses chambres et recevoir des demandes de réservation : **WordPress**.
+> - Une marque française de cosmétiques qui veut vendre en ligne 80 produits, avec paiement par carte : **Shopify** (ou WooCommerce si le client veut éviter l''abonnement).
+> - Une ONG qui publie des actualités et des rapports : **WordPress**.
+
+## Qui sont vos clients ?
+
+### Clients à l''étranger
+
+1. **Petites entreprises francophones** (France, Belgique, Suisse, Canada) qui ont besoin d''un site ou d''une boutique.
+2. **Agences web** qui sous-traitent l''intégration, les modifications et la maintenance.
+3. **E-commerçants** qui ont besoin d''aide régulière sur leur boutique Shopify.
+
+### Clients à Madagascar
+
+1. **Hôtels, restaurants, agences de voyage**.
+2. **Écoles, centres de formation, ONG**.
+3. **Entreprises et marques** qui veulent un site professionnel.
+4. **Professions libérales** : avocats, cliniques, architectes.
+
+> [!madagascar] Votre avantage
+> Les agences web francophones cherchent des développeurs fiables qui comprennent parfaitement le français de leurs clients. Et à Madagascar, beaucoup d''entreprises n''ont qu''une page Facebook : un site professionnel bien référencé est un vrai plus pour elles.
+
+## Les qualités et compétences du métier
+
+| Compétence | Pourquoi |
+| --- | --- |
+| **Logique et méthode** | Chercher la cause d''une panne étape par étape |
+| **Sens du design** | Un site doit être beau **et** clair |
+| **Bases du HTML et du CSS** | Pour les petites retouches que les outils ne permettent pas (module 2) |
+| **Communication** | Comprendre le besoin du client, lui expliquer simplement |
+| **Rigueur** | Sauvegardes, mises à jour, sécurité : une erreur peut faire tomber un site |
+| **Curiosité** | Les outils évoluent sans cesse |
+
+## Le poste de travail
+
+1. Un **ordinateur** récent, même modeste (8 Go de mémoire vive sont confortables).
+2. Un **navigateur** à jour (Chrome ou Firefox) avec ses outils de développement.
+3. Un **téléphone** pour tester chaque site sur petit écran.
+4. Une **connexion stable** et un forfait mobile de secours.
+5. Un **gestionnaire de mots de passe** : vous aurez beaucoup d''accès clients.
+
+> [!astuce]
+> Travaillez d''abord **sur votre ordinateur**, sur un site local (module 3) : vous pouvez tout essayer sans connexion, sans risque et sans payer d''hébergement. Vous ne mettez en ligne qu''à la fin.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Modifier le site d''un client en ligne sans sauvegarde.
+> - Installer des dizaines d''extensions « pour voir ».
+> - Utiliser des thèmes ou extensions payants « piratés » (*nulled*) : ils contiennent souvent des virus.
+> - Promettre un site « en 3 jours » sans avoir reçu les textes et les photos du client.
+
+> [!retenir]
+> - Le développeur construit des sites fiables que le client peut gérer seul.
+> - Modifications, dépannage et maintenance sont les meilleures missions pour débuter.
+> - WordPress pour presque tout ; Shopify pour vendre vite sans gérer la technique.
+> - Rigueur : sauvegardes, sécurité, jamais de logiciels piratés.
+
+## Exercice pratique : analyser 5 sites
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez 5 sites d''entreprises malgaches (hôtels, restaurants, écoles, boutiques).
+> 2. Pour chacun, notez : s''il s''affiche bien sur téléphone, s''il se charge vite, si les informations essentielles (adresse, téléphone, prix) sont faciles à trouver.
+> 3. Essayez de deviner s''il est fait avec WordPress, Shopify ou autre chose (indice : regardez le bas de page, ou des adresses contenant « wp-content »).
+> 4. Pour chacun, écrivez 3 améliorations précises.
+>
+> **À livrer** : votre tableau des 5 sites avec vos observations et vos 15 améliorations. Ces entreprises sont peut-être vos futurs clients.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 0, 0, 'Qu''est-ce qu''un CMS ?', '["Un moyen de paiement","Un type d''ordinateur","Un logiciel pour créer et modifier un site sans programmer chaque page","Un réseau social"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 0, 1, 'Quelles missions sont idéales pour commencer ?', '["Créer un réseau social complet","Créer un jeu vidéo 3D","Modifications, dépannage et maintenance","Développer un système bancaire"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 0, 2, 'Pourquoi ne jamais installer de thèmes payants « piratés » ?', '["Ils contiennent souvent des virus","Ils sont trop jolis","Ils sont trop lents à télécharger","Ils ne s''affichent qu''en anglais"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-f', 1, 'Les bases : comment marche un site, WordPress, Shopify, HTML et CSS', 'Domaine, hébergement, DNS et HTTPS, l''organisation de WordPress et de Shopify, l''arborescence, et les bases du HTML et du CSS.', 'Avant de construire un site, il faut comprendre comment Internet l''affiche, et comment WordPress et Shopify sont organisés. Ce module vous donne ces bases : nom de domaine, hébergement, sécurité, structure d''un site, et les notions de HTML et de CSS qui vous serviront tous les jours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer le rôle du nom de domaine, de l''hébergement et du HTTPS.
+> 2. Décrire l''organisation de WordPress : thèmes, extensions, pages, articles, menus.
+> 3. Décrire l''organisation de Shopify : thèmes, applications, produits, collections.
+> 4. Construire l''arborescence d''un site.
+> 5. Lire et modifier du HTML et du CSS simples.
+
+## Comment un site arrive à l''écran
+
+| Élément | Comparaison | Rôle |
+| --- | --- | --- |
+| **Nom de domaine** | L''adresse de la maison | Le nom que l''on tape : `hotel-baobab.com` |
+| **Hébergement** | Le terrain où la maison est construite | L''ordinateur (serveur) qui garde les fichiers du site et les envoie aux visiteurs |
+| **DNS** | L''annuaire | Le système qui relie le nom de domaine au bon serveur |
+| **HTTPS** (certificat SSL) | Le cadenas de la porte | Chiffre les échanges ; le navigateur affiche « non sécurisé » sans lui |
+
+> [!definition] Serveur
+> Un ordinateur allumé en permanence, relié à Internet, qui envoie les pages du site à chaque visiteur.
+
+### Ce que le client doit posséder
+
+1. Le **nom de domaine** doit être **au nom du client**, sur son compte. Jamais sur le vôtre.
+2. L''**hébergement** aussi, de préférence. Vous recevez un accès.
+3. Vous gardez les **accès** dans un gestionnaire de mots de passe, et vous les rendez à la fin de la mission.
+
+> [!attention]
+> Si le domaine est à votre nom et que vous disparaissez (maladie, changement de métier), le client perd son site. C''est une source fréquente de conflits : faites toujours enregistrer le domaine au nom du client.
+
+## L''organisation de WordPress
+
+| Élément | Ce que c''est | Exemple |
+| --- | --- | --- |
+| **Tableau de bord** | L''espace d''administration (`/wp-admin`) | Là où tout se gère |
+| **Thème** | L''apparence générale du site | Astra, Kadence, GeneratePress (thèmes gratuits populaires) |
+| **Extensions** (*plugins*) | Des fonctions ajoutées | Formulaire de contact, référencement, sécurité, boutique (WooCommerce) |
+| **Pages** | Contenus fixes | Accueil, À propos, Services, Contact |
+| **Articles** | Contenus datés, classés par catégories | Actualités, blog |
+| **Médias** | Images, PDF, vidéos | Photos des chambres |
+| **Menus** | La navigation du site | Accueil · Chambres · Activités · Contact |
+| **Utilisateurs** | Les comptes, avec des rôles | Administrateur, Éditeur, Auteur |
+
+> [!astuce] La règle des extensions
+> Chaque extension ajoute du poids et un risque de sécurité. Avant d''en installer une : est-elle **vraiment nécessaire** ? Est-elle **mise à jour récemment** ? A-t-elle **beaucoup d''installations et de bons avis** ? Si une réponse est non, cherchez une autre solution.
+
+## L''organisation de Shopify
+
+| Élément | Ce que c''est |
+| --- | --- |
+| **Thème** | L''apparence de la boutique (Dawn est le thème gratuit de base) |
+| **Applications** | Des fonctions ajoutées (avis clients, traduction, e-mails) |
+| **Produits** | Chaque article vendu, avec photos, prix, variantes (taille, couleur), stock |
+| **Collections** | Des groupes de produits (« Robes », « Nouveautés », « Promotions ») |
+| **Pages** | Contenus fixes (À propos, Livraison, Contact) |
+| **Navigation** | Menus du haut et du bas de page |
+| **Paramètres** | Paiements, livraison, taxes, langues |
+
+## Construire l''arborescence d''un site
+
+> [!definition] Arborescence
+> Le plan du site : la liste des pages et la façon dont elles sont reliées. On la fait **avant** de construire, et on la fait valider par le client.
+
+> [!exemple] Arborescence du site d''un hôtel
+> ```
+> Accueil
+> ├── Chambres
+> │   ├── Bungalow vue mer
+> │   └── Chambre jardin
+> ├── Restaurant
+> ├── Activités
+> ├── Galerie
+> └── Contact et réservation
+> ```
+> En bas de chaque page : mentions légales, politique de confidentialité, réseaux sociaux.
+
+### Les 5 règles d''une bonne arborescence
+
+1. Chaque information importante est accessible en **3 clics maximum**.
+2. **6 à 7 éléments** maximum dans le menu principal.
+3. Des noms de pages **simples** : « Chambres » plutôt que « Nos espaces de repos ».
+4. Une page **Contact** visible partout.
+5. Sur téléphone, le bouton principal (« Réserver », « Commander », « Appeler ») toujours facile à toucher.
+
+## Les bases du HTML et du CSS
+
+Vous n''avez pas besoin d''être programmeur, mais savoir lire un peu de code vous sauvera souvent.
+
+> [!definition] HTML et CSS
+> Le **HTML** décrit le contenu d''une page (titres, paragraphes, images, liens). Le **CSS** décrit son apparence (couleurs, tailles, espacements).
+
+### Le HTML à connaître
+
+```
+<h1>Bienvenue au Baobab Lodge</h1>
+<h2>Nos chambres</h2>
+<p>Six bungalows face à la mer.</p>
+<a href="/contact">Réserver</a>
+<img src="bungalow.jpg" alt="Bungalow face à la mer">
+```
+
+| Balise | Rôle |
+| --- | --- |
+| `<h1>` à `<h3>` | Titres (un seul `h1` par page) |
+| `<p>` | Paragraphe |
+| `<a href="…">` | Lien |
+| `<img src="…" alt="…">` | Image, avec une description (`alt`) pour l''accessibilité et Google |
+
+### Le CSS à connaître
+
+```
+.bouton-reserver {
+  background-color: #0B7A55;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+```
+
+Cette règle donne un fond vert, un texte blanc, de l''espace intérieur et des coins arrondis à tous les éléments qui ont la classe `bouton-reserver`.
+
+> [!astuce] Les outils de développement du navigateur
+> Dans Chrome ou Firefox, faites un **clic droit → Inspecter** sur n''importe quel élément d''une page : vous voyez son HTML et son CSS, et vous pouvez les modifier pour essayer (les changements disparaissent quand vous rechargez). C''est le meilleur moyen d''apprendre.
+
+> [!madagascar]
+> Beaucoup de visiteurs malgaches naviguent sur téléphone avec une connexion mobile. Pensez **léger** dès le départ : peu d''extensions, images compressées, pas de vidéo qui démarre seule en arrière-plan.
+
+> [!retenir]
+> - Domaine, hébergement, DNS, HTTPS : le domaine toujours au nom du client.
+> - WordPress : thème, extensions, pages, articles, menus, utilisateurs.
+> - Shopify : thème, applications, produits, collections, paramètres.
+> - Une arborescence validée avant de construire.
+> - Un peu de HTML et de CSS, et l''outil « Inspecter » du navigateur.
+
+## Exercice pratique : préparer un site
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Choisissez un des 5 sites analysés au module 1 et dessinez la nouvelle arborescence que vous proposeriez.
+> 2. Sur une page de ce site, utilisez « Inspecter » pour trouver le `h1`, un lien et une image, et notez leur code.
+> 3. Toujours avec « Inspecter », changez la couleur d''un bouton et le texte d''un titre ; faites une capture d''écran.
+> 4. Écrivez une petite page HTML (un titre, deux paragraphes, une image, un lien) dans un fichier `test.html` et ouvrez-la dans votre navigateur.
+>
+> **À livrer** : votre arborescence, vos notes de code, la capture modifiée et votre fichier `test.html`.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 1, 0, 'Au nom de qui doit être enregistré le nom de domaine ?', '["Du développeur","De l''hébergeur","Du client","De Vitako"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 1, 1, 'Dans WordPress, qu''est-ce qu''une extension ?', '["Un nom de domaine","L''apparence du site","Une page de contact","Une fonction ajoutée au site"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 1, 2, 'Quelle balise HTML sert à créer un lien ?', '["<a href=\"…\">","<h1>","<img>","<p>"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-f', 2, 'Les outils : WordPress, WooCommerce, Shopify, et les outils payants', 'LocalWP, les 10 réglages essentiels, l''éditeur de blocs, WooCommerce, la boutique de développement Shopify, puis Elementor Pro, thèmes premium et abonnement Shopify.', 'Ce module vous fait prendre en main les trois outils du métier : **WordPress** pour les sites, **WooCommerce** pour vendre avec WordPress, et **Shopify** pour les boutiques clés en main. Vous apprenez à travailler en local sans payer d''hébergement, à créer une boutique de test gratuite, puis vous découvrez les outils payants que vos clients vous demanderont.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Installer WordPress sur votre ordinateur avec LocalWP.
+> 2. Configurer un site WordPress en 10 réglages essentiels.
+> 3. Construire des pages avec l''éditeur de blocs.
+> 4. Installer et configurer WooCommerce.
+> 5. Créer une boutique Shopify de développement et y ajouter des produits.
+> 6. Savoir quand utiliser Elementor Pro, un thème premium ou un abonnement Shopify.
+
+## Les outils gratuits
+
+| N° | Outil | Pour quoi |
+| --- | --- | --- |
+| 1 | **LocalWP** | Installer des sites WordPress sur votre ordinateur, sans hébergement ni connexion |
+| 2 | **WordPress** | Le CMS, gratuit et libre |
+| 3 | **Un thème gratuit léger** (Astra, Kadence, GeneratePress) | L''apparence du site |
+| 4 | **WooCommerce** | Extension gratuite pour vendre avec WordPress |
+| 5 | **Shopify Partners** | Programme gratuit pour les développeurs : il permet de créer des boutiques de développement pour s''entraîner et préparer les boutiques des clients |
+| 6 | **Squoosh** ou **TinyPNG** | Compresser les images avant de les mettre en ligne |
+
+## WordPress en local avec LocalWP
+
+1. Téléchargez et installez **LocalWP** (gratuit) sur votre ordinateur.
+2. Cliquez sur **Create a new site**, donnez un nom (« baobab-lodge »).
+3. Gardez l''environnement proposé (*Preferred*).
+4. Choisissez un identifiant et un mot de passe administrateur.
+5. Cliquez sur **WP Admin** : vous êtes dans le tableau de bord de votre site local.
+
+Tout fonctionne sur votre ordinateur. Quand le site est prêt, on le **met en ligne** chez l''hébergeur du client (avec une extension de migration ou l''outil de l''hébergeur).
+
+## Les 10 réglages essentiels d''un nouveau site WordPress
+
+| N° | Réglage | Où | Pourquoi |
+| --- | --- | --- | --- |
+| 1 | Titre et slogan du site | Réglages → Général | Affichés dans Google et l''onglet du navigateur |
+| 2 | Langue et fuseau horaire | Réglages → Général | Dates correctes, interface en français |
+| 3 | Permaliens « Titre de la publication » | Réglages → Permaliens | Adresses lisibles : `/chambres/` au lieu de `/?p=12` |
+| 4 | Page d''accueil statique | Réglages → Lecture | L''accueil est une vraie page, pas la liste des articles |
+| 5 | Supprimer le contenu d''exemple | Pages, Articles, Commentaires | Pas de « Bonjour tout le monde » en ligne |
+| 6 | Désactiver les commentaires si inutiles | Réglages → Discussion | Évite les messages indésirables |
+| 7 | Installer le thème | Apparence → Thèmes | L''apparence générale |
+| 8 | Extension de référencement | Extensions | Balise titre et méta-description de chaque page |
+| 9 | Extension de sécurité et de sauvegarde | Extensions | Protéger et pouvoir restaurer le site |
+| 10 | Logo, couleurs, polices | Apparence → Personnaliser (ou éditeur du thème) | L''identité du client |
+
+## Construire une page avec l''éditeur de blocs
+
+WordPress utilise un éditeur de **blocs** : chaque élément (titre, paragraphe, image, bouton, colonnes) est un bloc que l''on ajoute avec le bouton **+**.
+
+### Construire la page d''accueil d''un hôtel en 7 blocs
+
+1. **Couverture** : grande photo avec le titre « Baobab Lodge, Morondava » et un bouton « Réserver ».
+2. **Paragraphe** : 2 phrases de présentation.
+3. **Colonnes** (3) : « Chambres », « Restaurant », « Activités », chacune avec une image, un court texte et un lien.
+4. **Titre** + **Galerie** : 6 photos.
+5. **Citation** ou **Colonnes** : 2 avis de clients.
+6. **Bouton** : « Demander une réservation ».
+7. **Carte** ou adresse, et horaires.
+
+> [!astuce] Les modèles de blocs
+> La plupart des thèmes gratuits proposent des **compositions** toutes prêtes (sections d''accueil, tarifs, témoignages). Partez d''une composition et remplacez le contenu : vous gagnez beaucoup de temps.
+
+### Les constructeurs de pages
+
+Certains clients et agences utilisent **Elementor**, un constructeur visuel par glisser-déposer. Sa version gratuite suffit pour s''entraîner. Retenez la règle : **un seul constructeur par site**, et ne mélangez pas les outils.
+
+## Vendre avec WooCommerce
+
+1. **Extensions → Ajouter** : installez et activez **WooCommerce**.
+2. Suivez l''assistant : adresse de la boutique, monnaie, types de produits.
+3. **Produits → Ajouter** : nom, description, prix, images, catégorie, stock.
+4. **Réglages → Livraison** : zones (Antananarivo, provinces, étranger) et tarifs.
+5. **Réglages → Paiements** : activez les moyens de paiement adaptés au pays du client.
+6. Passez une **commande de test** du début à la fin.
+
+> [!madagascar] Les paiements à Madagascar
+> Beaucoup de solutions de paiement par carte en ligne ne sont pas disponibles pour un commerçant installé à Madagascar : vérifiez toujours selon le pays du client. Pour une boutique malgache, les solutions courantes sont le **paiement à la livraison**, le **virement**, et le **Mobile Money** : soit par une solution de paiement locale compatible, soit avec un paiement manuel (le client paie, envoie la référence, le commerçant valide la commande). Expliquez ces options au client **avant** de construire la boutique.
+
+## Shopify : la boutique de développement
+
+### Créer une boutique de test gratuite
+
+1. Inscrivez-vous gratuitement au programme **Shopify Partners**.
+2. Dans votre tableau de bord partenaire, créez une **boutique de développement** (*development store*).
+3. Elle fonctionne comme une vraie boutique, sans abonnement, mais ne peut pas encaisser de vraies ventes : parfaite pour apprendre et préparer la boutique d''un client.
+
+### Construire une boutique en 7 étapes
+
+1. **Paramètres** : nom, adresse, monnaie, langue.
+2. **Thème** : personnalisez le thème gratuit **Dawn** (logo, couleurs, polices, sections de la page d''accueil).
+3. **Produits** : titre, description, photos, prix, **variantes** (taille, couleur), stock.
+4. **Collections** : regroupez les produits (« Robes », « Nouveautés »).
+5. **Pages** : À propos, Livraison et retours, Contact.
+6. **Navigation** : menu principal et menu du bas de page.
+7. **Livraison et paiements** : zones, tarifs, moyens de paiement disponibles dans le pays du client.
+
+> [!definition] Variante
+> Une version d''un même produit : une robe en 3 tailles et 2 couleurs a 6 variantes, chacune avec son propre stock et parfois son propre prix.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Qui le paie |
+| --- | --- | --- |
+| **Elementor Pro** | Constructeur de pages avancé : modèles d''en-tête et pied de page, formulaires, pages de boutique personnalisées | Le client (licence sur son site), ou l''agence |
+| **Thèmes premium** (pour WordPress ou Shopify) | Designs plus complets, fonctions supplémentaires, assistance | Le client, sur son compte |
+| **Abonnement Shopify** | La boutique en ligne avec hébergement, sécurité et paiements selon les pays | Le client, toujours |
+| **Applications Shopify payantes** | Avis clients, traduction, abonnements, filtres avancés | Le client |
+
+Les prix changent : vérifiez-les sur les sites officiels. **Règle d''or** : les licences et abonnements sont achetés **au nom du client**, sur son compte. Vous lui expliquez ce qui est nécessaire et pourquoi, il paie, vous installez.
+
+> [!attention]
+> N''installez **jamais** de versions « gratuites » de thèmes ou d''extensions payants trouvées sur des sites non officiels (*nulled*). Elles contiennent souvent du code malveillant qui pirate le site du client.
+
+> [!retenir]
+> - LocalWP pour travailler en local, gratuitement et sans connexion.
+> - 10 réglages essentiels sur chaque nouveau site WordPress.
+> - Éditeur de blocs et compositions pour construire vite ; un seul constructeur par site.
+> - WooCommerce et Shopify : vérifier les moyens de paiement selon le pays du client.
+> - Licences et abonnements toujours au nom du client.
+
+## Exercice pratique : vos premiers sites
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez LocalWP et créez le site « Baobab Lodge ».
+> 2. Faites les 10 réglages essentiels.
+> 3. Construisez la page d''accueil en 7 blocs, plus les pages Chambres et Contact.
+> 4. Installez WooCommerce et ajoutez 3 produits (par exemple des excursions), avec une commande de test.
+> 5. Créez une boutique de développement Shopify et ajoutez 5 produits dont un avec variantes, une collection et une page.
+>
+> **À livrer** : des captures d''écran de chaque étape et le lien de prévisualisation de votre boutique Shopify.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 2, 0, 'À quoi sert LocalWP ?', '["Héberger un site en ligne","Payer un abonnement Shopify","Compresser des vidéos","Installer des sites WordPress sur son ordinateur, sans hébergement"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 2, 1, 'Quel réglage donne des adresses lisibles comme /chambres/ ?', '["Les commentaires","Les permaliens","Le fuseau horaire","Le titre du site"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 2, 2, 'Qui paie l''abonnement Shopify d''une boutique ?', '["Personne, c''est gratuit","Le développeur","Le client, sur son compte","L''hébergeur"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-f', 3, 'Premier projet : le site d''un restaurant avec commande en ligne', 'Le projet en 8 étapes, la liste des contenus, la construction, vitesse, référencement et sécurité, la grille de 15 points, la mise en ligne et la formation.', 'Place à un vrai projet de client : le site d''un restaurant avec commande en ligne, construit avec WordPress et WooCommerce. Vous suivez toutes les étapes d''un projet professionnel, de la collecte des contenus à la formation du client, avec les vérifications de sécurité, de vitesse et de référencement qui font la différence.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un projet de site en 8 étapes.
+> 2. Recueillir les contenus du client avec une liste précise.
+> 3. Optimiser la vitesse, le référencement et la sécurité.
+> 4. Tester un site avec une grille de 15 points.
+> 5. Mettre en ligne et former le client.
+
+## Le cas pratique : « Chez Lalao »
+
+> [!exemple] Votre client
+> **Chez Lalao** est un restaurant de cuisine malgache à Antananarivo (Isoraka). Il veut un site pour :
+> 1. présenter le restaurant, le menu et les horaires ;
+> 2. permettre de **commander des plats à emporter ou en livraison** à Tana, avec paiement à la livraison ou par Mobile Money ;
+> 3. apparaître sur Google quand on cherche « restaurant malgache Isoraka ».
+> La gérante, Mme Lalao, veut pouvoir modifier le menu elle-même.
+
+## Le projet en 8 étapes
+
+| N° | Étape | Résultat | Validé par le client ? |
+| --- | --- | --- | --- |
+| 1 | **Cadrage** | Objectifs, pages, fonctions, budget, délai | Oui |
+| 2 | **Contenus** | Textes, photos, menu, logo, informations pratiques | Oui (le client les fournit) |
+| 3 | **Arborescence et maquette** | Plan du site et croquis de la page d''accueil | Oui |
+| 4 | **Construction** | Site complet en local | — |
+| 5 | **Optimisation** | Vitesse, référencement, sécurité | — |
+| 6 | **Tests** | Grille de 15 points | — |
+| 7 | **Mise en ligne** | Site sur l''hébergement du client, HTTPS actif | Oui |
+| 8 | **Formation et remise** | Formation du client, guide, accès rendus | Oui |
+
+## Étape 2 : recueillir les contenus
+
+Le retard n° 1 des projets web, c''est le client qui n''envoie pas ses contenus. Envoyez une **liste précise** dès le début, avec une date limite.
+
+### La liste des contenus
+
+1. **Logo** en bonne qualité (PNG ou SVG).
+2. **Textes** : présentation du restaurant (5 à 10 lignes), histoire, spécialités.
+3. **Menu** : nom de chaque plat, description courte, prix, catégorie (entrées, plats, desserts, boissons).
+4. **Photos** : salle, plats, équipe (photos nettes, à la lumière du jour).
+5. **Informations pratiques** : adresse, horaires, téléphone, zones et frais de livraison.
+6. **Réseaux sociaux** : liens vers la page Facebook et Instagram.
+7. **Accès** : nom de domaine et hébergement (au nom du client).
+
+> [!astuce]
+> Créez un **dossier partagé** Google Drive avec un sous-dossier par type de contenu et une liste à cocher. Le client voit ce qui manque, et vous aussi.
+
+## Étape 4 : construire
+
+### Les pages du site
+
+1. **Accueil** : photo d''ambiance, phrase d''accroche, bouton « Commander », 3 plats vedettes, horaires.
+2. **Menu** : la boutique WooCommerce, avec les catégories de plats.
+3. **Le restaurant** : histoire, photos, équipe.
+4. **Contact et accès** : adresse, carte, horaires, téléphone, WhatsApp.
+5. **Pages légales** : mentions légales, conditions de vente, politique de confidentialité.
+
+### La commande en ligne avec WooCommerce
+
+1. Chaque plat est un **produit**, rangé dans sa **catégorie**.
+2. **Livraison** : une zone « Antananarivo » avec un tarif fixe, et l''option « Retrait sur place » gratuite.
+3. **Paiements** : « Paiement à la livraison » et « Mobile Money » (instructions : numéro, nom du titulaire, envoi de la référence ; le restaurant valide la commande après vérification).
+4. **E-mails** : vérifiez que le restaurant reçoit bien un e-mail à chaque commande, et que le client reçoit sa confirmation.
+5. **Horaires de commande** : indiquez clairement les heures où les commandes sont traitées.
+
+## Étape 5 : optimiser
+
+### La vitesse
+
+| N° | Action | Pourquoi |
+| --- | --- | --- |
+| 1 | Compresser les images (moins de 200 à 300 Ko pour une photo pleine largeur) | Les images sont la première cause de lenteur |
+| 2 | Redimensionner les images à la taille d''affichage | Inutile d''envoyer une photo de 4 000 px de large |
+| 3 | Limiter les extensions au strict nécessaire | Chaque extension ajoute du code |
+| 4 | Installer une extension de cache | Les pages se chargent plus vite |
+| 5 | Tester avec **PageSpeed Insights** (gratuit, de Google) | Mesurer et voir ce qui reste à améliorer |
+
+### Le référencement de base
+
+1. Une **balise titre** et une **méta-description** pour chaque page (« Restaurant malgache à Isoraka | Chez Lalao »).
+2. Un seul **titre H1** par page.
+3. Un **texte alternatif** pour chaque image.
+4. Des **adresses** lisibles (`/menu/`, `/contact/`).
+5. Créer la fiche **Google Business Profile** du restaurant (gratuite) avec un lien vers le site.
+
+### La sécurité
+
+1. **Identifiant administrateur** qui n''est pas « admin », et mot de passe long.
+2. **Double authentification** pour l''administrateur.
+3. **Mises à jour** de WordPress, du thème et des extensions.
+4. **Sauvegardes automatiques** régulières, stockées **hors** du serveur (par exemple dans le Google Drive du client).
+5. **HTTPS** actif sur tout le site.
+
+## Étape 6 : la grille de tests en 15 points
+
+| N° | Point à tester | Oui / Non |
+| --- | --- | --- |
+| 1 | Toutes les pages s''affichent correctement sur ordinateur | |
+| 2 | Toutes les pages s''affichent correctement sur téléphone | |
+| 3 | Le menu fonctionne sur téléphone | |
+| 4 | Tous les liens fonctionnent (aucune page introuvable) | |
+| 5 | Le formulaire de contact envoie bien un e-mail | |
+| 6 | Une commande de test passe du panier à la confirmation | |
+| 7 | Le restaurant reçoit l''e-mail de commande | |
+| 8 | Les frais de livraison sont corrects | |
+| 9 | Les instructions de paiement Mobile Money sont claires | |
+| 10 | Aucune faute dans les textes | |
+| 11 | Toutes les images sont compressées et ont un texte alternatif | |
+| 12 | Score PageSpeed correct sur mobile (et problèmes principaux corrigés) | |
+| 13 | Balises titre et méta-descriptions remplies | |
+| 14 | Sauvegarde automatique active et testée | |
+| 15 | HTTPS actif, aucun avertissement de sécurité | |
+
+## Étapes 7 et 8 : mise en ligne et formation
+
+### Mettre en ligne
+
+1. Faites une **sauvegarde complète** du site local.
+2. Transférez-le chez l''hébergeur du client (extension de migration ou outil de l''hébergeur).
+3. Vérifiez que le **nom de domaine** pointe vers l''hébergement.
+4. Activez le **HTTPS**.
+5. Refaites les tests **1 à 9** et **15** sur le site en ligne.
+
+### Former le client
+
+1. Une **séance de 45 minutes** en visioconférence (enregistrée, avec son accord) : modifier un plat et son prix, ajouter une photo, voir et traiter une commande.
+2. Un **guide écrit** de 2 à 3 pages avec captures d''écran.
+3. Un **compte** pour le client avec le rôle adapté (Gestionnaire de boutique ou Éditeur), et non votre propre compte.
+4. Le **document des accès** : domaine, hébergement, WordPress, e-mails, à conserver en lieu sûr.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer à construire sans contenus : le site reste vide des semaines.
+> - Mettre en ligne des photos de 5 Mo.
+> - Oublier de tester une vraie commande.
+> - Ne pas activer les sauvegardes.
+> - Laisser le client utiliser le compte administrateur du développeur.
+
+> [!retenir]
+> - 8 étapes, avec validation du client aux moments clés.
+> - Une liste de contenus précise, avec une date limite.
+> - Vitesse, référencement et sécurité font partie du travail, pas d''une option.
+> - Une grille de 15 points avant et après la mise en ligne.
+> - Un client formé, avec un guide et son propre compte.
+
+## Exercice pratique : le site « Chez Lalao »
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Rédigez le document de cadrage et la liste des contenus.
+> 2. Créez de faux contenus réalistes : 15 plats avec prix, textes, photos libres de droits.
+> 3. Construisez le site complet en local avec LocalWP et WooCommerce.
+> 4. Optimisez les images, réglez le référencement et la sécurité.
+> 5. Passez la grille de 15 points et corrigez.
+> 6. Rédigez le guide client de 2 pages.
+>
+> **À livrer** : le cadrage, une vidéo de 3 minutes qui présente le site (écran enregistré), la grille remplie et le guide client. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 3, 0, 'Quelle est la première cause de lenteur d''un site ?', '["La longueur des textes","Le nombre de pages","Les images trop lourdes","La couleur du fond"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 3, 1, 'Où stocker les sauvegardes du site ?', '["Dans un e-mail au client","Nulle part","Uniquement sur le même serveur","Hors du serveur, par exemple dans le Drive du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 3, 2, 'Quel compte donner au client à la fin du projet ?', '["Son propre compte avec le rôle adapté","Le compte administrateur du développeur","Un compte partagé avec d''autres clients","Aucun compte"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio, 5 canaux de prospection, prix des sites et modifications, forfaits de maintenance, devis par étapes et paiements.', 'Le métier de développeur WordPress et Shopify a un grand avantage : après la création d''un site, le client a besoin de **maintenance** chaque mois. Ce dernier module vous montre comment présenter votre travail, trouver des clients, fixer vos prix pour les sites, les modifications et la maintenance, et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de sites convaincant.
+> 2. Trouver des clients grâce à 5 canaux, avec un message de prospection prêt à l''emploi.
+> 3. Calculer le prix d''un site, d''une modification et d''un forfait de maintenance.
+> 4. Rédiger un devis par étapes avec des acomptes.
+> 5. Vous faire payer en local et depuis l''étranger.
+> 6. Construire un revenu régulier avec la maintenance.
+
+## Le portfolio du développeur
+
+### Les 4 éléments d''un bon portfolio
+
+1. **2 ou 3 sites complets** : le site « Chez Lalao » (module 4), le site « Baobab Lodge » (module 3), une boutique Shopify de démonstration.
+2. Pour chaque site : le **besoin** du client, les **fonctions** réalisées (commande en ligne, réservation, multilingue), des **captures sur ordinateur et téléphone**, et le **score de vitesse**.
+3. Une **vidéo de 2 à 3 minutes** par projet, où vous présentez le site en partageant votre écran.
+4. Votre **propre site**, fait avec WordPress : c''est votre première carte de visite.
+
+> [!astuce]
+> Les sites d''exercice ne sont pas en ligne ? Publiez-les sur un hébergement gratuit de démonstration ou montrez-les en vidéo. Indiquez honnêtement « projet de démonstration ».
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Entreprises malgaches** sans site ou avec un vieux site | Hôtels, restaurants, écoles, cliniques | Montrez une maquette de leur future page d''accueil (exercice du module 1) |
+| 2 | **Agences web francophones** | Sous-traitance d''intégration et de maintenance | Proposez votre aide pour les modifications et la maintenance de leurs clients |
+| 3 | **Plateformes de freelance** (Upwork, Fiverr, Malt et autres) | Petites entreprises, e-commerçants | Offre précise : « Correction de votre site WordPress en 24 h » ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 4 | **Communauté Shopify** et groupes d''e-commerçants | Boutiques Shopify | Répondez aux questions, proposez des améliorations |
+| 5 | **Bouche-à-oreille** | Clients satisfaits | Demandez systématiquement une recommandation |
+
+### Le message de prospection, prêt à l''emploi
+
+> [!exemple] Message à un hôtel malgache
+> « Bonjour Madame, je suis développeur web à Antananarivo. En cherchant "hôtel Ambositra" sur Google, je n''ai pas trouvé votre site, alors que vos avis sur Facebook sont excellents. Je crée des sites rapides, adaptés au téléphone, avec un formulaire de réservation. J''ai préparé une maquette de ce que pourrait être votre page d''accueil : [lien]. Seriez-vous disponible pour en parler 15 minutes cette semaine ? »
+
+Personnalisé, court, un problème précis, une preuve, une proposition. Envoyez **5 messages bien préparés par jour**.
+
+## Calculer ses prix
+
+### Étape 1 : votre prix horaire
+
+**Revenu mensuel visé** (exemple : 1 800 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **18 000 Ar de l''heure**.
+
+### Étape 2 : le temps par type de projet
+
+| Projet | Temps estimé (débutant) | Exemple de prix (18 000 Ar/h) |
+| --- | --- | --- |
+| Modification simple (ajouter une page, changer un menu) | 1 à 2 h | 18 000 à 36 000 Ar |
+| Dépannage (site en panne, erreur) | 2 à 4 h | 36 000 à 72 000 Ar |
+| Site vitrine de 5 pages | 25 à 35 h | 450 000 à 630 000 Ar |
+| Boutique WooCommerce ou Shopify de 30 produits | 40 à 60 h | 720 000 à 1 080 000 Ar |
+
+Ajoutez **20 % de marge** pour les imprévus et les échanges avec le client. Ces prix sont des **exemples** à adapter à votre niveau et à vos clients. Pour les clients étrangers, fixez vos prix en euros ou en dollars, adaptés à leur marché.
+
+> [!attention]
+> Les coûts **du client** ne font pas partie de votre prix : nom de domaine, hébergement, abonnement Shopify, licences de thèmes et d''extensions. Indiquez-les à part dans le devis, avec une estimation, et faites-les payer par le client sur **son** compte.
+
+### Étape 3 : le forfait de maintenance
+
+| Formule | Contenu | Temps par mois | Exemple de prix |
+| --- | --- | --- | --- |
+| **Essentiel** | Mises à jour, sauvegardes, surveillance de sécurité | 1 h | 18 000 Ar / mois |
+| **Standard** | Essentiel + 1 h de petites modifications + rapport mensuel | 2 h | 36 000 Ar / mois |
+| **Complet** | Standard + 3 h de modifications + optimisation de vitesse | 5 h | 90 000 Ar / mois |
+
+Avec 15 clients en maintenance, vous avez une base de revenu régulier chaque mois.
+
+## Le devis par étapes
+
+Pour un site, le paiement se fait en plusieurs fois, liées aux étapes du projet :
+
+| Étape | Paiement |
+| --- | --- |
+| Signature du devis | **40 %** d''acompte |
+| Validation de la maquette et de l''arborescence | **30 %** |
+| Mise en ligne | **30 %** restants |
+
+### Ce que contient le devis
+
+1. La liste des **pages** et des **fonctions** (formulaire, commande en ligne, langues).
+2. Ce que le client **fournit** (contenus, accès) et la date limite.
+3. Ce qui n''est **pas** inclus (rédaction des textes, photos, traduction, coûts du client).
+4. Le **nombre de tours de modifications** à chaque étape (souvent 2).
+5. Le **délai**, calculé à partir de la réception de tous les contenus.
+6. Le **prix** et l''échéancier de paiement.
+7. La **formation** et la **garantie** (exemple : correction gratuite des bugs pendant 30 jours après la mise en ligne).
+
+> [!madagascar]
+> Pour un client malgache, prévoyez une ligne claire pour le **nom de domaine** (`.mg` ou `.com`) et l''**hébergement** : beaucoup de clients découvrent ces coûts annuels après coup. Rappelez-leur la date de renouvellement : un domaine non renouvelé, c''est un site qui disparaît.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Agence ou client étranger en direct | Virement international ou Payoneer |
+
+Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Fidéliser : la maintenance et le suivi
+
+1. **Proposez la maintenance** au moment de la mise en ligne, pas après la première panne.
+2. **Envoyez un rapport mensuel** court : mises à jour faites, sauvegardes, temps de chargement, modifications.
+3. **Rappelez les renouvellements** (domaine, hébergement, licences) un mois à l''avance.
+4. **Proposez des améliorations** : une page de plus, une langue, un blog, une boutique.
+5. **Demandez un avis** et une recommandation après la mise en ligne.
+
+> [!retenir]
+> - Un portfolio avec 2 ou 3 sites, captures sur téléphone et vidéos.
+> - Prospection personnalisée, avec une maquette pour le client.
+> - Prix = temps estimé × prix horaire + 20 % ; coûts du client à part.
+> - Paiement en 3 fois : 40 %, 30 %, 30 %.
+> - La maintenance mensuelle construit un revenu régulier.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez votre propre site professionnel avec WordPress (en local ou en ligne) : accueil, services, portfolio, contact.
+> 2. Ajoutez vos 2 ou 3 projets avec captures et vidéos.
+> 3. Calculez votre prix horaire, vos prix types et vos 3 formules de maintenance.
+> 4. Rédigez votre modèle de devis avec échéancier.
+> 5. Préparez une maquette de page d''accueil pour 3 entreprises analysées au module 1 et envoyez au moins un message de prospection pour de vrai.
+>
+> **À livrer** : votre site, vos calculs, vos formules de maintenance, votre devis et vos 3 messages avec maquettes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 4, 0, 'Comment découper le paiement d''un site ?', '["100 % après un an","Aucun acompte","Tout à la fin, si le client est content","40 % à la signature, 30 % à la maquette, 30 % à la mise en ligne"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 4, 1, 'Le nom de domaine et l''hébergement font-ils partie du prix du développeur ?', '["Oui, toujours","Non, ce sont des coûts du client, indiqués à part","Oui, pour toujours","Seulement pour Shopify"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-3-f', 4, 2, 'Qu''apporte la maintenance mensuelle au développeur ?', '["Aucun avantage","Des impôts en moins","Un revenu régulier","Moins de clients"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que fait un développeur WordPress et Shopify ?', '["Il gère la publicité télévisée","Il construit des sites fiables que le client peut gérer seul","Il répare les ordinateurs","Il écrit des livres"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel outil choisir pour un site vitrine d''hôtel ?', '["WordPress","Shopify obligatoirement","Canva","Excel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel est un avantage de Shopify ?', '["L''hébergement et la maintenance technique sont gérés par Shopify","Il est gratuit pour toujours","Il ne demande aucun produit","Il ne sert que pour les blogs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que fait le DNS ?', '["Il écrit les textes","Il envoie les e-mails de commande","Il relie le nom de domaine au bon serveur","Il compresse les images"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que se passe-t-il sans HTTPS ?', '["Rien du tout","Le site est plus rapide","Le site devient premier sur Google","Le navigateur affiche « non sécurisé »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Dans WordPress, quelle est la différence entre une page et un article ?', '["Il n''y a aucune différence","La page est un contenu fixe, l''article un contenu daté","L''article est payant","La page n''a pas de texte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Avant d''installer une extension, que vérifier ?', '["Rien","Qu''elle est nécessaire, mise à jour récemment et bien notée","Qu''elle est la plus lourde","Qu''elle a un joli logo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Dans Shopify, qu''est-ce qu''une collection ?', '["Un groupe de produits","Un moyen de paiement","Un thème","Une facture"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Combien d''éléments maximum dans le menu principal ?', '["1","50","20","6 à 7"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que décrit le CSS ?', '["Le nom de domaine","Le contenu de la page","Les mots de passe","L''apparence de la page"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'À quoi sert l''outil « Inspecter » du navigateur ?', '["Supprimer un site","Voir et essayer de modifier le HTML et le CSS d''une page","Acheter un domaine","Pirater un site"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel programme gratuit permet de créer des boutiques Shopify de développement ?', '["LocalWP","WooCommerce","Elementor","Shopify Partners"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Une robe en 3 tailles et 2 couleurs a combien de variantes ?', '["2","6","3","5"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Combien de constructeurs de pages utiliser sur un site ?', '["Aucun n''est jamais autorisé","Trois au minimum","Le plus possible","Un seul"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pour une boutique malgache, quels moyens de paiement sont courants ?', '["Uniquement les cartes américaines","Les bitcoins obligatoires","Paiement à la livraison, virement et Mobile Money","Uniquement les chèques"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel est le retard n° 1 des projets web ?', '["Les contenus non envoyés par le client","Le choix des couleurs","La vitesse de l''ordinateur","Le nom du développeur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel outil gratuit de Google mesure la vitesse d''un site ?', '["Google Agenda","PageSpeed Insights","Google Docs","Google Traduction"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quel identifiant administrateur éviter ?', '["Un identifiant avec double authentification","admin","Un identifiant unique","Un identifiant long"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que tester absolument dans une boutique avant la mise en ligne ?', '["Seulement la page À propos","Seulement la couleur du logo","Une commande complète, du panier à la confirmation","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle fiche gratuite aide un restaurant à apparaître sur Google Maps ?', '["Google Sheets","Google Meet","Google Business Profile","Google Drive"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Que remettre au client à la fin du projet ?', '["Seulement la facture","Une formation, un guide et le document des accès","Le mot de passe du développeur","Rien, il se débrouille"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Avec 1 800 000 Ar visés et 100 heures facturables, quel est le prix horaire ?', '["18 000 Ar","180 000 Ar","8 000 Ar","1 800 Ar"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
 
 -- gestion-0-f
 delete from public.exam_questions where course_id = 'gestion-0-f';
