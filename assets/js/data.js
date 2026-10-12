@@ -2172,6 +2172,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-2-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du transcripteur un spécialiste de l'exactitude : spécialité (recherche, médias, entreprise, juridique, post-édition, langues rares dont le malgache), évaluation des fichiers et mesure de la précision, outils professionnels (Express Scribe Pro avec pédale, Descript, expansion de texte, traitement du son), méthode en 3 passes et anonymisation, clients internationaux et transcription en anglais, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, évaluer un fichier et mesurer sa précision",
+   "Travailler avec Express Scribe Pro, une pédale et Descript",
+   "Appliquer la méthode en 3 passes, un guide de style et l'anonymisation",
+   "Transcrire en anglais et livrer dans les formats des clients internationaux",
+   "Protéger la confidentialité des enregistrements",
+   "Fixer des prix selon la difficulté, vendre des packs et préparer l'avenir face à l'IA"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et vendre l'exactitude",
+    "summary": "Les 6 spécialités avancées, l'évaluation d'un fichier en 6 critères, le ratio de transcription, le taux d'erreur sur les mots et les offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Évaluer un fichier avant d'accepter",
+     "Mesurer la qualité",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre précision"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Express Scribe Pro, pédale, Descript et compléments",
+    "summary": "Configuration d'Express Scribe Pro et de la pédale, transcription et post-édition avec Descript, expansion de texte, traitement du son et choix entre manuel et post-édition.",
+    "sections": [
+     "Express Scribe Pro et la pédale",
+     "Descript",
+     "L'expansion de texte",
+     "Améliorer un son difficile",
+     "Manuel ou post-édition : comment choisir ?",
+     "Exercice pratique : votre poste professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : 3 passes, guide de style, fichiers difficiles et anonymisation",
+    "summary": "La méthode en 3 passes, la fiche de style par client, les groupes et les langues mélangées, l'anonymisation de recherche, la vitesse et la santé.",
+    "sections": [
+     "La méthode en 3 passes",
+     "Le guide de style",
+     "Les fichiers difficiles",
+     "Anonymiser une transcription de recherche",
+     "Vitesse et santé",
+     "Exercice pratique : un fichier difficile"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, formats, confidentialité et transcription bilingue",
+    "summary": "Clean et full verbatim en anglais, formats de livraison, 7 règles de confidentialité, tests des agences et transcription traduite en deux colonnes.",
+    "sections": [
+     "Transcrire en anglais",
+     "Les formats de livraison",
+     "Confidentialité et sécurité des données",
+     "Réussir les tests des agences",
+     "Transcription et traduction pour les organisations internationales",
+     "Exercice pratique : un projet international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : prix, packs, équipe et avenir face à l'IA",
+    "summary": "Prix par minute selon la difficulté et suppléments, packs complets, clients réguliers, petite équipe et stratégie face à la transcription automatique.",
+    "sections": [
+     "Fixer ses prix",
+     "Les offres complètes",
+     "Trouver des clients réguliers",
+     "Organiser une petite équipe",
+     "Préparer l'avenir face à l'IA",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "lang-2-f": {
   "hours": 13,
   "description": "Le transcripteur transforme des enregistrements audio et vidéo en texte exact : entretiens de recherche, réunions, podcasts, témoignages. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à transcrire en français et en malagasy pour des chercheurs, des ONG, des entreprises et des agences, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

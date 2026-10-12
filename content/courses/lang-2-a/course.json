@@ -1,0 +1,97 @@
+{
+  "id": "lang-2-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du transcripteur un spécialiste de l'exactitude : spécialité (recherche, médias, entreprise, juridique, post-édition, langues rares dont le malgache), évaluation des fichiers et mesure de la précision, outils professionnels (Express Scribe Pro avec pédale, Descript, expansion de texte, traitement du son), méthode en 3 passes et anonymisation, clients internationaux et transcription en anglais, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, évaluer un fichier et mesurer sa précision",
+    "Travailler avec Express Scribe Pro, une pédale et Descript",
+    "Appliquer la méthode en 3 passes, un guide de style et l'anonymisation",
+    "Transcrire en anglais et livrer dans les formats des clients internationaux",
+    "Protéger la confidentialité des enregistrements",
+    "Fixer des prix selon la difficulté, vendre des packs et préparer l'avenir face à l'IA"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et vendre l'exactitude",
+      "summary": "Les 6 spécialités avancées, l'évaluation d'un fichier en 6 critères, le ratio de transcription, le taux d'erreur sur les mots et les offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien d'extraits écouter avant de fixer un prix ?", "options": ["3 : début, milieu et fin", "Aucun", "Seulement le début", "Tout le fichier deux fois"], "correct": 0 },
+        { "q": "3 erreurs sur 300 mots donnent quelle précision ?", "options": ["99 %", "97 %", "90 %", "100 %"], "correct": 0 },
+        { "q": "Que faire d'un passage inaudible ?", "options": ["Le signaler avec l'horodatage", "Le deviner", "L'inventer", "Supprimer le fichier"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Express Scribe Pro, pédale, Descript et compléments",
+      "summary": "Configuration d'Express Scribe Pro et de la pédale, transcription et post-édition avec Descript, expansion de texte, traitement du son et choix entre manuel et post-édition.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert une pédale de transcription ?", "options": ["Contrôler l'audio au pied, les mains restant sur le clavier", "Augmenter le volume", "Traduire", "Envoyer les fichiers"], "correct": 0 },
+        { "q": "Que vérifier avant d'envoyer l'audio d'un client dans un outil en ligne ?", "options": ["Que le contrat le permet", "Rien", "La couleur de l'interface", "Le prix de la pédale"], "correct": 0 },
+        { "q": "Quelle méthode convient souvent à un mélange de malgache et de français ?", "options": ["La transcription manuelle", "La reconnaissance automatique sans relecture", "Aucune transcription", "Un résumé"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : 3 passes, guide de style, fichiers difficiles et anonymisation",
+      "summary": "La méthode en 3 passes, la fiche de style par client, les groupes et les langues mélangées, l'anonymisation de recherche, la vitesse et la santé.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait-on pendant la troisième passe ?", "options": ["Relire sans audio : orthographe, style, format, noms propres", "Transcrire depuis le début", "Rien", "Envoyer sans relire"], "correct": 0 },
+        { "q": "Que remplace l'anonymisation ?", "options": ["Les informations qui permettent d'identifier une personne", "Les verbes", "La ponctuation", "Les horodatages"], "correct": 0 },
+        { "q": "Combien de minutes de pause par heure pour protéger l'audition ?", "options": ["Environ 5 minutes", "Aucune", "1 seconde", "3 heures"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, formats, confidentialité et transcription bilingue",
+      "summary": "Clean et full verbatim en anglais, formats de livraison, 7 règles de confidentialité, tests des agences et transcription traduite en deux colonnes.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment dit-on « verbatim lisible » en anglais ?", "options": ["Clean verbatim", "True verbatim", "Full verbatim", "Crosstalk"], "correct": 0 },
+        { "q": "Quel format pour une analyse qualitative ?", "options": ["Un tableau : temps, intervenant, texte", "Une image", "Un fichier audio", "Un PDF scanné"], "correct": 0 },
+        { "q": "Une agence demande de payer pour passer son test : que faire ?", "options": ["S'en méfier", "Payer tout de suite", "Envoyer ses mots de passe", "Payer deux fois"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, packs, équipe et avenir face à l'IA",
+      "summary": "Prix par minute selon la difficulté et suppléments, packs complets, clients réguliers, petite équipe et stratégie face à la transcription automatique.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 15 000 Ar de l'heure et un ratio de 4, quel prix par minute d'audio ?", "options": ["1 000 Ar", "15 000 Ar", "250 Ar", "4 000 Ar"], "correct": 0 },
+        { "q": "Que vérifier avant de sous-traiter à d'autres transcripteurs ?", "options": ["Que le client accepte la sous-traitance", "Rien", "Leur signe astrologique", "Leur couleur préférée"], "correct": 0 },
+        { "q": "Où l'IA reste-t-elle faible ?", "options": ["Son difficile, langues rares et contenus sensibles", "Les fichiers parfaitement clairs en anglais", "Les textes déjà écrits", "Nulle part"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité demande anonymisation et verbatim ?", "options": ["La recherche et les sciences sociales", "La publicité", "Le graphisme", "La comptabilité"], "correct": 0 },
+    { "q": "Pourquoi le malgache est-il une niche ?", "options": ["Les logiciels et les transcripteurs étrangers le maîtrisent mal", "Personne ne parle malgache", "Il est interdit", "Il n'a pas d'orthographe"], "correct": 0 },
+    { "q": "Quel critère rend un fichier difficile ?", "options": ["Un groupe de 6 personnes qui se coupent", "Un micro proche", "Une seule voix", "Un débit lent"], "correct": 0 },
+    { "q": "Que mesure le taux d'erreur sur les mots ?", "options": ["Mots faux, oubliés ou ajoutés par rapport au total", "Le nombre de minutes", "Le prix", "Le volume du son"], "correct": 0 },
+    { "q": "Quelle erreur est particulièrement grave ?", "options": ["Une négation oubliée", "Une virgule en trop dans une liste", "Une majuscule de début de phrase", "Un espace double"], "correct": 0 },
+    { "q": "Que fait le retour automatique dans Express Scribe ?", "options": ["Revient de 1 à 2 secondes à chaque pause", "Supprime le fichier", "Traduit l'audio", "Envoie la transcription"], "correct": 0 },
+    { "q": "Que permet le glossaire de Descript ?", "options": ["Mieux reconnaître les noms propres et termes techniques", "Changer de langue d'interface", "Payer moins cher", "Couper la vidéo"], "correct": 0 },
+    { "q": "Qu'est-ce que l'expansion de texte ?", "options": ["Remplacer une abréviation par un texte plus long", "Agrandir la police", "Allonger l'audio", "Ajouter des pages"], "correct": 0 },
+    { "q": "Quel outil gratuit permet de réduire le bruit d'un audio ?", "options": ["Audacity", "Excel", "Canva", "Zendesk"], "correct": 0 },
+    { "q": "Sur quoi travailler pour traiter le son ?", "options": ["Sur une copie de l'audio", "Sur l'original du client", "Sur un fichier au hasard", "Sur rien"], "correct": 0 },
+    { "q": "Comment marquer un doute pendant la première passe ?", "options": ["Avec un code facile à rechercher, comme [??]", "En inventant un mot", "En laissant un blanc sans marque", "En supprimant la phrase"], "correct": 0 },
+    { "q": "Que contient une fiche de style ?", "options": ["Les règles du client : verbatim, intervenants, horodatage, sons, nombres", "Le prix de la pédale", "Le mot de passe du client", "Une publicité"], "correct": 0 },
+    { "q": "Que faire si l'intervenant est incertain ?", "options": ["Indiquer le doute, par exemple R3 (?)", "Choisir au hasard sans le dire", "Supprimer la phrase", "Inventer un nom"], "correct": 0 },
+    { "q": "Que faire pour un dialecte malgache mal maîtrisé ?", "options": ["Le signaler clairement au client", "Proposer une transcription approximative sans le dire", "Le supprimer", "Le traduire au hasard"], "correct": 0 },
+    { "q": "Où garder la table de correspondance des pseudonymes ?", "options": ["Séparée et protégée, si le client la demande", "Dans la transcription", "Sur les réseaux sociaux", "Dans un e-mail public"], "correct": 0 },
+    { "q": "Combien d'heures de transcription intensive par jour au maximum conseillé ?", "options": ["5 à 6 heures", "14 heures", "20 heures", "Aucune limite"], "correct": 0 },
+    { "q": "Comment note-t-on un chevauchement en anglais ?", "options": ["[crosstalk]", "[laughter]", "[pause]", "[inaudible]"], "correct": 0 },
+    { "q": "Que faut-il choisir avec le client pour l'anglais ?", "options": ["L'orthographe US ou UK", "La couleur du texte", "La pédale", "Le pays du transcripteur"], "correct": 0 },
+    { "q": "Quel format sert aux sous-titres ?", "options": ["SRT ou VTT", "Excel uniquement", "JPEG", "MP3"], "correct": 0 },
+    { "q": "Que faire à la fin d'une mission si le contrat le demande ?", "options": ["Supprimer les fichiers et le confirmer par écrit", "Les publier", "Les vendre", "Les garder pour toujours"], "correct": 0 },
+    { "q": "Comment présenter une transcription traduite ?", "options": ["En deux colonnes alignées par prise de parole", "Mélangée sans ordre", "Seulement la traduction", "En image"], "correct": 0 },
+    { "q": "Quel supplément pour un délai urgent ?", "options": ["Environ +25 à +50 % (exemple)", "−50 %", "Aucun", "+500 %"], "correct": 0 },
+    { "q": "Quand fixer le prix d'un fichier ?", "options": ["Après avoir écouté les 3 extraits", "Avant de recevoir le fichier", "Après la livraison", "Jamais"], "correct": 0 },
+    { "q": "Que contient le pack podcast ?", "options": ["Transcription, résumé, citations, chapitres et texte pour le site", "Seulement le fichier audio", "Une pédale", "Une traduction juridique"], "correct": 0 },
+    { "q": "Quelle compétence prendra de l'importance face à l'IA ?", "options": ["La post-édition", "La dactylographie sans relecture", "L'invention de passages", "Le travail sans guide de style"], "correct": 0 }
+  ]
+}
