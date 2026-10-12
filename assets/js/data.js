@@ -778,6 +778,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-1-f": {
+  "hours": 15,
+  "description": "Le traducteur fait passer un texte d'une langue à une autre en gardant le sens, le ton et la précision. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à traduire entre l'anglais, le français et le malagasy pour des agences, des entreprises et des ONG, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier de traducteur et choisir sa combinaison de langues",
+   "Traduire avec une méthode en 5 étapes en évitant les pièges classiques",
+   "Respecter le registre, la typographie et la localisation",
+   "Utiliser Matecat, un glossaire et la traduction automatique sans risque",
+   "Gérer une commande complète, des questions au client à la livraison",
+   "Fixer ses tarifs au mot, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de traducteur depuis Madagascar",
+    "summary": "Ce que fait un traducteur, les mots du métier, le sens de traduction, les 6 types de traduction, les clients et la place des outils automatiques.",
+    "sections": [
+     "Le métier de traducteur en une phrase",
+     "Les mots du métier",
+     "Les 6 types de traduction les plus demandés",
+     "Qui sont vos clients ?",
+     "Les outils automatiques : concurrents ou alliés ?",
+     "Exercice pratique : votre profil de traducteur"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les bases : méthode, pièges, registre et typographie",
+    "summary": "La méthode en 5 étapes, contresens, faux amis et calques, registre et ton, conventions typographiques et localisation.",
+    "sections": [
+     "La méthode en 5 étapes",
+     "Les erreurs à connaître",
+     "Le registre et le ton",
+     "Les conventions typographiques",
+     "Localiser",
+     "Exercice pratique : traduire et réviser"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : TAO, Matecat, glossaires, et les outils payants",
+    "summary": "Segments, mémoire de traduction, Matecat en 8 étapes, glossaire, traduction automatique et confidentialité, puis Trados, memoQ et DeepL Pro.",
+    "sections": [
+     "Les mots de la TAO",
+     "Les outils gratuits",
+     "Traduire dans Matecat en 8 étapes",
+     "Le glossaire",
+     "La traduction automatique sans risque",
+     "Quand passer aux outils payants ?",
+     "Exercice pratique : votre premier projet en TAO"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Premier projet : un site d'hôtel et une brochure d'ONG",
+    "summary": "Analyse de la demande, estimation du délai, projet en 7 étapes, tableau de questions, grille de 10 points et livraison.",
+    "sections": [
+     "Le cas pratique : deux commandes",
+     "Avant d'accepter : analyser la demande",
+     "Estimer le volume et le délai",
+     "Le projet en 7 étapes",
+     "Poser des questions au client",
+     "La grille de vérification en 10 points",
+     "La livraison",
+     "Exercice pratique : les deux commandes"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "CV de traducteur, 5 canaux, test de traduction, tarifs au mot, devis, confidentialité, paiements et spécialité.",
+    "sections": [
+     "Le CV et le profil de traducteur",
+     "Où trouver des clients : 5 canaux",
+     "Réussir un test de traduction",
+     "Fixer ses tarifs",
+     "Le devis et la confidentialité",
+     "Se faire payer depuis Madagascar",
+     "Développer une spécialité",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "media-0-f": {
   "hours": 16,
   "description": "Le monteur vidéo transforme des heures d'images brutes en vidéos qui retiennent l'attention : vidéos YouTube, formats courts pour TikTok et Reels, publicités, événements. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à monter pour des créateurs francophones et des entreprises malgaches, en télétravail, avec DaVinci Resolve et CapCut gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

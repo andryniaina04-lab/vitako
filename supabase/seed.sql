@@ -55,7 +55,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 14, false),
-  ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 11, false),
+  ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
   ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 15, false),
   ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 12, false),
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 16, false),
@@ -3486,6 +3486,665 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?', '["1 500 Ar","100 000 Ar","150 000 Ar","15 000 Ar"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel texte est en général parmi les mieux payés ?', '["La relecture d''une ligne","La fiche produit très courte","La page de vente","La publication de 30 mots"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'À qui appartient en général le texte une fois payé ?', '["Au rédacteur, pour toujours","À la plateforme de paiement","Au client","À Google"]'::jsonb, 2);
+
+-- lang-1-f
+delete from public.exam_questions where course_id = 'lang-1-f';
+delete from public.module_questions where course_id = 'lang-1-f';
+delete from public.lessons where course_id = 'lang-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-f', 0, 'Le métier de traducteur depuis Madagascar', 'Ce que fait un traducteur, les mots du métier, le sens de traduction, les 6 types de traduction, les clients et la place des outils automatiques.', 'Sites internet, applications, documents d''entreprise, rapports d''ONG, sous-titres : chaque jour, des millions de mots doivent passer d''une langue à une autre. Le traducteur fait ce passage en gardant le **sens**, le **ton** et la **précision** du texte d''origine. À Madagascar, où l''on grandit souvent avec le malagasy et le français, et où l''anglais progresse, ce métier est une vraie possibilité de travail à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un traducteur et ce qui le distingue d''un outil automatique.
+> 2. Définir votre combinaison de langues et votre sens de traduction.
+> 3. Citer les 6 types de traduction les plus demandés.
+> 4. Repérer vos premiers clients possibles.
+> 5. Évaluer honnêtement votre niveau et savoir comment progresser.
+
+## Le métier de traducteur en une phrase
+
+Un traducteur **fait passer un texte d''une langue à une autre, de façon que le lecteur ne sente pas qu''il s''agit d''une traduction**.
+
+Traduire, ce n''est pas remplacer chaque mot par un autre. C''est comprendre parfaitement le texte de départ, puis l''écrire comme l''aurait écrit un auteur dont c''est la langue maternelle.
+
+> [!exemple] Mot à mot ou sens ?
+> Anglais : « It''s raining cats and dogs. »
+> Mot à mot : « Il pleut des chats et des chiens. » (incompréhensible)
+> Traduction : « Il pleut des cordes. »
+
+## Les mots du métier
+
+| Terme | Définition |
+| --- | --- |
+| **Langue source** | La langue du texte de départ |
+| **Langue cible** | La langue dans laquelle on traduit |
+| **Combinaison de langues** | Les paires que vous traduisez, par exemple anglais → français |
+| **Traduction** | Passer un texte écrit d''une langue à une autre |
+| **Interprétation** | Passer un discours **oral** d''une langue à une autre (un autre métier) |
+| **Post-édition** | Corriger et améliorer un texte traduit par une machine |
+| **Localisation** | Adapter un texte à un pays : monnaie, dates, références, culture |
+
+### Le sens de traduction
+
+La règle professionnelle : **on traduit vers sa langue la plus forte**, souvent sa langue maternelle. Un francophone traduit de l''anglais **vers** le français, car c''est dans la langue cible que les fautes et maladresses se voient.
+
+| Combinaison | Pour qui depuis Madagascar | Demande |
+| --- | --- | --- |
+| Anglais → français | Ceux qui écrivent un français excellent | Très forte : énormément de contenus anglais à traduire |
+| Français → malagasy | Ceux qui écrivent un malagasy soigné | ONG, santé, institutions, entreprises locales, applications |
+| Malagasy → français | Bon niveau dans les deux langues | Documents, recherches, médias |
+| Français → anglais | Seulement avec un anglais écrit de très haut niveau | Forte, mais beaucoup de concurrence de traducteurs anglophones |
+
+> [!madagascar] Votre avantage
+> Peu de traducteurs professionnels travaillent avec le **malagasy**. Pour les ONG, les organisations internationales, les applications et les entreprises qui s''adressent aux Malgaches, un traducteur fiable vers le malagasy est précieux.
+
+## Les 6 types de traduction les plus demandés
+
+| N° | Type | Exemple | Ce qu''il faut |
+| --- | --- | --- | --- |
+| 1 | **Générale** | Articles, e-mails, présentations | Bonne culture générale |
+| 2 | **Marketing et sites web** | Site d''hôtel, fiches produits, publicités | Écrire de façon vivante et convaincante |
+| 3 | **Technique** | Modes d''emploi, fiches techniques | Précision, recherche de vocabulaire |
+| 4 | **Institutionnelle** (ONG, santé, éducation) | Rapports, brochures de prévention | Clarté pour un large public |
+| 5 | **Localisation** (applications, logiciels, jeux) | Boutons, messages d''erreur | Phrases courtes, respect des contraintes d''espace |
+| 6 | **Post-édition** de traduction automatique | Corriger un texte traduit par DeepL | Œil très attentif, rapidité |
+
+> [!definition] Traduction assermentée
+> Une traduction officielle de documents (actes de naissance, diplômes, jugements) qui a une valeur légale. Elle est réservée aux traducteurs **agréés** par les autorités. Ce n''est pas l''objet de cette formation : ne proposez jamais une « traduction certifiée » sans cet agrément.
+
+## Qui sont vos clients ?
+
+1. **Agences de traduction** (en France, au Canada, en Belgique, à Maurice et ailleurs) : elles reçoivent les commandes et les confient à des traducteurs freelances.
+2. **Entreprises** qui traduisent leur site, leurs documents ou leur application.
+3. **ONG et organisations internationales** présentes à Madagascar : rapports, brochures, formulaires, en français et en malagasy.
+4. **Créateurs de contenu et formateurs** qui veulent toucher un public dans une autre langue.
+5. **Plateformes de freelance** où des particuliers et des PME publient des petites missions.
+
+## Les outils automatiques : concurrents ou alliés ?
+
+Les outils de traduction automatique (DeepL, Google Traduction) et les assistants d''IA produisent des traductions correctes en quelques secondes. Ils ont changé le métier :
+
+| Ce que la machine fait bien | Ce que le traducteur apporte |
+| --- | --- |
+| Textes simples et répétitifs | Le sens exact quand une phrase est ambiguë |
+| Vitesse | Le ton juste (marketing, humour, émotion) |
+| Premier jet | La terminologie précise du client |
+| | La vérification : la machine peut inverser un sens, oublier une négation, inventer |
+| | La confidentialité et la responsabilité |
+
+Les clients demandent de plus en plus de **post-édition** : le traducteur qui sait corriger rapidement une traduction automatique a donc un avantage. Mais il doit **savoir traduire** d''abord, sinon il ne voit pas les erreurs.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Traduire vers une langue qu''on n''écrit pas parfaitement.
+> - Traduire mot à mot.
+> - Copier une traduction automatique sans la vérifier.
+> - Mettre un texte confidentiel du client dans un outil gratuit en ligne (module 3).
+> - Proposer des « traductions certifiées » sans agrément.
+
+> [!retenir]
+> - Traduire, c''est rendre le sens et le ton, pas les mots.
+> - On traduit vers sa langue la plus forte.
+> - Anglais → français et français → malagasy sont deux combinaisons porteuses depuis Madagascar.
+> - La post-édition est très demandée, mais exige de savoir traduire.
+
+## Exercice pratique : votre profil de traducteur
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Écrivez votre combinaison de langues et votre sens de traduction, en expliquant pourquoi.
+> 2. Traduisez ce court texte vers votre langue cible, sans outil automatique :
+>    « Our eco-lodge sits on a quiet beach, a short boat ride from the village. Wake up to the sound of the waves, enjoy a breakfast of fresh tropical fruit, and spend your day snorkeling with turtles. »
+> 3. Comparez ensuite avec une traduction de DeepL : notez 3 différences, et dites quelle version est la meilleure pour chacune.
+> 4. Faites la liste de 3 sujets que vous connaissez bien (études, travail, passions) : ce seront vos domaines de départ.
+>
+> **À livrer** : votre profil (combinaison, sens, domaines), votre traduction et votre comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 0, 0, 'Vers quelle langue un traducteur doit-il traduire ?', '["Toujours l''anglais","N''importe quelle langue qu''il a étudiée","La langue la mieux payée","Sa langue la plus forte, souvent sa langue maternelle"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 0, 1, 'Quelle est la différence entre traduction et interprétation ?', '["L''interprétation concerne l''écrit","La traduction concerne l''écrit, l''interprétation l''oral","Il n''y a aucune différence","La traduction est toujours automatique"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 0, 2, 'Peut-on proposer une « traduction certifiée » sans agrément ?', '["Oui, avec un tampon personnel","Oui, si on est bon","Oui, pour les clients étrangers","Non, elle est réservée aux traducteurs agréés"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-f', 1, 'Les bases : méthode, pièges, registre et typographie', 'La méthode en 5 étapes, contresens, faux amis et calques, registre et ton, conventions typographiques et localisation.', 'Une bonne traduction ne doit rien au hasard. Les traducteurs professionnels suivent une méthode, connaissent les pièges classiques entre les langues et respectent des règles d''écriture précises. Ce module vous les enseigne, avec des exemples entre l''anglais, le français et le malagasy.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Traduire avec une méthode en 5 étapes.
+> 2. Éviter les faux amis et le calque.
+> 3. Adapter le registre et le ton au public.
+> 4. Respecter les conventions typographiques de la langue cible.
+> 5. Localiser dates, nombres, monnaies et références culturelles.
+
+## La méthode en 5 étapes
+
+| N° | Étape | Ce que vous faites |
+| --- | --- | --- |
+| 1 | **Lire** | Lisez tout le texte avant de traduire : sujet, public, ton, mots difficiles |
+| 2 | **Rechercher** | Cherchez les termes inconnus ; consultez les documents du client et ses traductions précédentes |
+| 3 | **Traduire** | Phrase par phrase, en pensant au **sens**, pas aux mots |
+| 4 | **Réviser** | Comparez la traduction avec l''original, phrase par phrase : rien d''oublié, rien d''ajouté, aucun contresens |
+| 5 | **Relire** | Lisez la traduction **seule**, comme un lecteur : est-elle naturelle et sans faute ? |
+
+> [!astuce]
+> Laissez passer quelques heures (ou une nuit) entre la traduction et la relecture. Avec un regard neuf, vous voyez immédiatement les phrases qui « sentent la traduction ».
+
+## Les erreurs à connaître
+
+| Erreur | Définition | Exemple |
+| --- | --- | --- |
+| **Contresens** | Le sens est faux | « He was not unhappy » traduit par « Il était malheureux » |
+| **Faux sens** | Le sens est proche mais inexact | « Eventually » traduit par « éventuellement » au lieu de « finalement » |
+| **Omission** | Une information a disparu | Une négation ou un chiffre oublié |
+| **Ajout** | Une information a été inventée | Ajouter « gratuitement » qui n''était pas dans l''original |
+| **Calque** | La structure de la langue source est copiée | « Il est facile de voir pourquoi » pour « It''s easy to see why » au lieu de « On comprend aisément pourquoi » |
+
+### Les faux amis anglais / français les plus courants
+
+| Mot anglais | Ne veut **pas** dire | Veut dire |
+| --- | --- | --- |
+| actually | actuellement | en fait |
+| eventually | éventuellement | finalement |
+| library | librairie | bibliothèque |
+| sensible | sensible | raisonnable |
+| to realize | réaliser | se rendre compte |
+| to attend | attendre | assister à |
+| currently | couramment | actuellement |
+| achievement | achèvement | réussite, accomplissement |
+
+> [!definition] Faux ami
+> Un mot qui ressemble à un mot de l''autre langue mais n''a pas le même sens. C''est la cause la plus fréquente de faux sens chez les débutants.
+
+## Le registre et le ton
+
+> [!definition] Registre
+> Le niveau de langue : **soutenu** (documents officiels), **courant** (la plupart des textes), **familier** (conversations, certaines publicités).
+
+### Les 4 questions à se poser
+
+1. **Qui lit ?** Un expert, le grand public, des jeunes, des enfants ?
+2. **Tutoiement ou vouvoiement ?** L''anglais « you » peut devenir « tu » ou « vous » : demandez au client ou suivez ses textes existants.
+3. **Quel ton ?** Sérieux, chaleureux, enthousiaste, technique ?
+4. **Quel effet** le texte doit-il produire ? Informer, rassurer, faire acheter, faire rire ?
+
+> [!exemple] Même phrase, deux publics
+> Anglais : « Don''t miss out — grab yours today! »
+> Pour une marque de vêtements pour jeunes : « Ne la rate pas : fonce, c''est aujourd''hui ! »
+> Pour une banque : « Profitez de cette offre dès aujourd''hui. »
+
+### Traduire vers le malagasy
+
+1. Choisissez le **malagasy officiel** (*ofisialy*) sauf demande contraire : c''est la forme comprise dans tout le pays.
+2. Pour les termes techniques récents (numérique, santé), vérifiez s''il existe un terme établi ; sinon, demandez au client s''il préfère un emprunt au français ou une explication.
+3. Gardez des phrases **claires et courtes** pour les textes destinés au grand public (prévention, santé, consignes).
+4. Faites relire par un **locuteur d''une autre région** les textes importants : il repérera les mots moins bien compris ailleurs.
+
+## Les conventions typographiques
+
+Chaque langue a ses règles d''écriture. Les ignorer trahit une traduction amateur.
+
+| Élément | Anglais | Français |
+| --- | --- | --- |
+| Guillemets | "quote" | « citation » (avec espaces) |
+| Ponctuation double (: ; ! ?) | Pas d''espace avant | Espace (insécable) avant |
+| Nombres décimaux | 3.5 | 3,5 |
+| Milliers | 25,000 | 25 000 |
+| Dates | 03/14/2026 (États-Unis), 14/03/2026 (Royaume-Uni) | 14/03/2026 ou 14 mars 2026 |
+| Heures | 3:30 PM | 15 h 30 |
+| Majuscules dans les titres | Souvent sur chaque mot important (« How To Save Money ») | Seulement le premier mot et les noms propres (« Comment économiser ») |
+| Jours et mois | Avec majuscule (Monday, March) | Sans majuscule (lundi, mars) |
+
+> [!attention]
+> La date « 03/04/2026 » veut dire **4 mars** pour un Américain et **3 avril** pour un Français. Dans un texte important, vérifiez le pays d''origine et écrivez le mois en lettres si nécessaire.
+
+## Localiser
+
+Localiser, c''est adapter le texte au **pays** du lecteur, pas seulement à sa langue.
+
+| Élément | Exemple de localisation pour Madagascar |
+| --- | --- |
+| Monnaie | « $10 » → montant en ariary si le client le demande, ou conservé en dollars avec mention |
+| Unités | Miles → kilomètres ; °F → °C ; pieds → mètres |
+| Références culturelles | « Thanksgiving » → expliquer, ou remplacer par une fête connue si le client l''accepte |
+| Exemples | Un exemple avec une carte de crédit → un exemple avec le Mobile Money |
+| Formats | Numéros de téléphone, adresses |
+
+Ne localisez **jamais** sans l''accord du client : certains veulent une traduction fidèle, d''autres une adaptation complète. Demandez-le dans le brief.
+
+> [!madagascar]
+> Un texte destiné au grand public à Madagascar gagne souvent à remplacer des références étrangères par des références locales (marché, taxi-be, Mobile Money). Proposez-le au client avec des exemples : c''est une vraie valeur ajoutée.
+
+> [!retenir]
+> - Lire, rechercher, traduire, réviser, relire.
+> - Traquez contresens, faux sens, omissions, ajouts et calques.
+> - Méfiez-vous des faux amis.
+> - Adaptez le registre et le ton au lecteur.
+> - Respectez la typographie de la langue cible ; localisez seulement avec l''accord du client.
+
+## Exercice pratique : traduire et réviser
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Trouvez un texte de 300 mots en anglais (page « About us » d''une entreprise, article de blog) et traduisez-le vers votre langue cible avec la méthode en 5 étapes.
+> 2. Faites une liste de tous les faux amis et termes difficiles rencontrés, avec votre solution.
+> 3. Corrigez toutes les conventions typographiques (guillemets, espaces, nombres, dates).
+> 4. Traduisez la même phrase publicitaire pour deux publics différents (jeunes / entreprise).
+> 5. Si vous traduisez vers le malagasy, faites relire votre texte par une personne d''une autre région et notez ses remarques.
+>
+> **À livrer** : le texte source, votre traduction, votre liste de termes et vos deux versions de la phrase publicitaire.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 1, 0, 'Que veut dire « actually » en français ?', '["Actuellement","En fait","Exactement","Activement"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 1, 1, 'Comment écrit-on 25,000 (anglais) en français ?', '["25.000,00","25 000","25,000","25000,0"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 1, 2, 'Quand localiser un texte (monnaie, références) ?', '["Seulement les titres","Jamais","Toujours, sans demander","Seulement avec l''accord du client"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-f', 2, 'Les outils : TAO, Matecat, glossaires, et les outils payants', 'Segments, mémoire de traduction, Matecat en 8 étapes, glossaire, traduction automatique et confidentialité, puis Trados, memoQ et DeepL Pro.', 'Les traducteurs professionnels ne travaillent pas dans un simple traitement de texte. Ils utilisent des **outils de traduction assistée par ordinateur** (TAO) qui découpent le texte en segments, mémorisent chaque traduction et vérifient la cohérence de la terminologie. Ce module vous fait prendre en main un outil gratuit, Matecat, vous apprend à utiliser la traduction automatique sans risque, puis vous présente les logiciels payants demandés par les agences.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que sont la TAO, une mémoire de traduction et un glossaire.
+> 2. Traduire un document dans Matecat, de l''import à l''export.
+> 3. Créer et utiliser un glossaire.
+> 4. Utiliser la traduction automatique en respectant la confidentialité.
+> 5. Trouver la bonne terminologie avec des ressources gratuites.
+> 6. Savoir quand passer à Trados Studio, memoQ et DeepL Pro.
+
+## Les mots de la TAO
+
+| Terme | Définition |
+| --- | --- |
+| **TAO** (en anglais *CAT tool*) | Logiciel de traduction assistée par ordinateur |
+| **Segment** | Un morceau de texte, en général une phrase, que l''on traduit l''un après l''autre |
+| **Mémoire de traduction** (*TM*) | Base qui enregistre chaque segment source avec sa traduction ; elle propose la traduction quand une phrase identique ou proche revient |
+| **Correspondance** (*match*) | Le pourcentage de ressemblance entre une nouvelle phrase et une phrase de la mémoire (100 % = identique) |
+| **Glossaire** (ou base terminologique) | Liste des termes à traduire toujours de la même façon |
+| **Contrôle qualité** (*QA*) | Vérification automatique : chiffres, ponctuation, termes du glossaire, segments vides |
+
+> [!exemple] Pourquoi la mémoire de traduction fait gagner du temps
+> Un mode d''emploi contient 30 fois la phrase « Débranchez l''appareil avant de le nettoyer. » Vous la traduisez une fois : la mémoire la propose automatiquement les 29 autres fois. Et si la version 2 du mode d''emploi arrive, seules les phrases **nouvelles** sont à traduire.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Matecat** | Outil de TAO gratuit, en ligne : segments, mémoire, glossaire, contrôle qualité |
+| 2 | **DeepL** (version gratuite) | Traduction automatique pour des textes **non confidentiels** |
+| 3 | **IATE** | Base terminologique officielle de l''Union européenne, gratuite, multilingue |
+| 4 | **Linguee** | Exemples de traductions réelles en contexte |
+| 5 | **Dictionnaires de référence** | Le Robert ou Larousse en ligne pour le français ; Tenymalagasy pour le malagasy |
+| 6 | **Tableur** (Google Sheets) | Construire et partager vos glossaires |
+
+## Traduire dans Matecat en 8 étapes
+
+1. Créez un compte gratuit sur Matecat.
+2. Choisissez la **langue source** et la **langue cible**.
+3. Dans les réglages de mémoire, créez une **clé de mémoire privée** : vos traductions ne seront alors pas partagées publiquement.
+4. **Importez** le document (Word, Excel, PowerPoint, HTML et de nombreux autres formats).
+5. Traduisez **segment par segment** : la traduction se tape dans la case de droite. Les propositions de la mémoire et de la traduction automatique apparaissent en dessous.
+6. Validez chaque segment (**Ctrl + Entrée** : le segment passe au statut « traduit » et vous passez au suivant).
+7. Lancez le **contrôle qualité** et corrigez les alertes.
+8. **Téléchargez** le document traduit : il garde la mise en forme de l''original.
+
+> [!astuce] Les balises
+> Dans les segments, des petits symboles représentent la mise en forme (gras, liens, sauts de ligne). On les appelle **balises** (*tags*). Placez-les au bon endroit dans votre traduction, sinon le document final aura une mise en forme cassée.
+
+## Le glossaire
+
+### Créer un glossaire en 4 étapes
+
+1. Lisez le texte et les documents du client, et relevez les **termes importants** : noms de produits, termes techniques, expressions de la marque.
+2. Pour chacun, choisissez la traduction (recherche dans IATE, Linguee, le site du client).
+3. Notez-les dans un tableau : **terme source**, **terme cible**, **remarque** (contexte, terme à ne pas utiliser).
+4. Importez le glossaire dans Matecat (ou ajoutez les termes au fil du travail) : l''outil les signale dans chaque segment où ils apparaissent.
+
+| Terme source | Terme cible | Remarque |
+| --- | --- | --- |
+| booking | réservation | Ne pas laisser « booking » |
+| eco-lodge | écolodge | Terme utilisé par le client sur son site |
+| snorkeling | randonnée palmée | Le client préfère ce terme à « snorkeling » |
+| check-in | arrivée | Dans les textes pour clients ; « check-in » accepté sur les panneaux |
+
+> [!definition] Cohérence terminologique
+> Le même terme source doit être traduit **toujours de la même façon** dans un document et entre les documents d''un même client. Le glossaire sert à ça.
+
+## La traduction automatique sans risque
+
+### La confidentialité d''abord
+
+Quand vous collez un texte dans un outil gratuit en ligne, il peut être **conservé** et utilisé par le service. Or beaucoup de clients interdisent de mettre leurs documents dans ces outils (contrats, données personnelles, documents médicaux, projets non publiés).
+
+1. **Lisez votre contrat** ou demandez au client : la traduction automatique est-elle autorisée ?
+2. **Jamais de texte confidentiel** dans un outil gratuit.
+3. Pour les clients qui l''autorisent, utilisez une **version professionnelle** (comme DeepL Pro), dont les conditions prévoient en général que les textes ne sont pas conservés : vérifiez-le dans les conditions de l''offre.
+
+### Bien post-éditer
+
+> [!definition] Post-édition
+> Corriger une traduction automatique pour qu''elle atteigne la qualité demandée par le client.
+
+1. **Lisez l''original d''abord**, puis la proposition de la machine.
+2. Vérifiez le **sens** : négations, chiffres, noms, sujets inversés.
+3. Vérifiez la **terminologie** du glossaire : la machine ne la connaît pas.
+4. Corrigez le **naturel** : la machine fait souvent des calques.
+5. Si la proposition est trop mauvaise, **effacez-la et traduisez** : c''est plus rapide.
+
+> [!attention]
+> La traduction automatique fait des erreurs **graves et invisibles** : une phrase fluide peut dire le contraire de l''original. Ne validez jamais un segment sans l''avoir comparé avec la source.
+
+## Quand passer aux outils payants ?
+
+| Outil payant | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Trados Studio** | L''outil de TAO le plus utilisé par les agences ; compatibilité totale avec leurs fichiers de projet | Quand des agences vous envoient régulièrement des projets Trados |
+| **memoQ** | Outil de TAO très complet, apprécié pour sa gestion de la terminologie et des projets | Quand vos clients l''utilisent, ou comme alternative à Trados |
+| **DeepL Pro** | Traduction automatique avec des conditions de confidentialité professionnelles, glossaires, traduction de documents entiers | Quand vos clients autorisent la traduction automatique et que vous traduisez beaucoup |
+
+Les prix et les formules changent souvent : vérifiez sur les sites officiels. Plusieurs agences fournissent un **accès en ligne** à leur propre outil, ou acceptent un travail fait dans Matecat : demandez avant d''acheter une licence.
+
+> [!madagascar]
+> Ces licences coûtent cher et se paient en devises. Commencez avec Matecat et les ressources gratuites ; investissez quand une agence vous donne du travail régulier qui l''exige. Une licence s''amortit vite avec des commandes régulières.
+
+> [!retenir]
+> - La TAO découpe en segments et mémorise : vous ne traduisez jamais deux fois la même phrase.
+> - Un glossaire garantit la cohérence des termes.
+> - Clé de mémoire privée dans Matecat, et jamais de texte confidentiel dans un outil gratuit.
+> - Post-éditer : comparer avec la source, vérifier le sens, la terminologie et le naturel.
+> - Trados, memoQ et DeepL Pro quand vos clients les exigent ou que votre volume le justifie.
+
+## Exercice pratique : votre premier projet en TAO
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Créez un compte Matecat et une clé de mémoire privée.
+> 2. Prenez un document Word de 500 mots environ (un texte non confidentiel : page d''information d''une ONG, article, présentation d''entreprise).
+> 3. Créez un glossaire de 10 termes avec IATE, Linguee et des dictionnaires.
+> 4. Traduisez le document dans Matecat en appliquant la méthode en 5 étapes du module 2.
+> 5. Lancez le contrôle qualité, corrigez, et téléchargez le document traduit.
+> 6. Comparez 5 segments avec la proposition de traduction automatique : notez les erreurs de la machine.
+>
+> **À livrer** : le document traduit, votre glossaire et votre tableau de comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 2, 0, 'À quoi sert une mémoire de traduction ?', '["Proposer automatiquement les phrases déjà traduites","Compter les heures de travail","Traduire sans traducteur","Retenir le mot de passe du client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 2, 1, 'Peut-on mettre un contrat confidentiel dans un outil de traduction gratuit en ligne ?', '["Oui, si on le supprime après","Non, jamais","Oui, toujours","Oui, la nuit"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 2, 2, 'Quel outil de TAO est le plus utilisé par les agences ?', '["Canva","Trados Studio","Google Agenda","CapCut"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-f', 3, 'Premier projet : un site d''hôtel et une brochure d''ONG', 'Analyse de la demande, estimation du délai, projet en 7 étapes, tableau de questions, grille de 10 points et livraison.', 'Dans ce module, vous traitez une commande complète, comme celles qu''envoient les agences et les clients directs : la traduction d''un site d''hôtel et d''une brochure d''ONG. Vous suivez toutes les étapes d''un traducteur professionnel, du devis au contrôle final, et vous apprenez à gérer les questions au client et les délais.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une demande et poser les bonnes questions avant d''accepter.
+> 2. Estimer le volume et le délai d''une traduction.
+> 3. Gérer un projet de traduction en 7 étapes.
+> 4. Envoyer des questions claires au client pendant le travail.
+> 5. Vérifier une traduction avec une grille de 10 points avant livraison.
+
+## Le cas pratique : deux commandes
+
+> [!exemple] Commande 1 : l''hôtel « Baobab Lodge »
+> Un hôtel de Morondava veut traduire son site de l''anglais vers le français : page d''accueil, chambres, activités, conditions de réservation. **1 800 mots** au total, fournis dans un fichier Word. Le client veut un texte « chaleureux, qui donne envie », et le vouvoiement.
+
+> [!exemple] Commande 2 : l''ONG « Rano Madio »
+> Une ONG qui travaille sur l''accès à l''eau potable veut traduire une brochure de prévention du français vers le malagasy : **600 mots**, pour des familles en milieu rural. Phrases simples, consignes claires, illustrations déjà prêtes.
+
+## Avant d''accepter : analyser la demande
+
+### Les 8 questions à se poser (ou à poser au client)
+
+1. Quelle est la **combinaison** et le **sens** ? Est-ce bien vers ma langue la plus forte ?
+2. Le **sujet** est-il dans mes compétences ?
+3. Quel est le **volume** exact (nombre de mots) ?
+4. Quel est le **délai** ?
+5. Quel est le **format** du fichier (Word, Excel, site web) et du fichier à livrer ?
+6. Qui est le **public** ? Quel **ton** ?
+7. Y a-t-il des **documents de référence** : anciennes traductions, glossaire, site du client ?
+8. La **traduction automatique** est-elle autorisée ?
+
+> [!attention]
+> Refuser une commande hors de vos compétences (un contrat juridique complexe, un rapport médical spécialisé) est un signe de **professionnalisme**. Une mauvaise traduction livrée peut faire perdre un client pour toujours, et parfois avoir des conséquences graves.
+
+## Estimer le volume et le délai
+
+### Le comptage
+
+Le prix et le délai se calculent sur le **nombre de mots du texte source**. Matecat et les traitements de texte comptent les mots automatiquement. Les outils de TAO indiquent aussi les **répétitions** et les correspondances avec la mémoire, que les agences paient souvent moins cher.
+
+### Le rythme de travail
+
+Un traducteur traduit en général **plusieurs centaines à quelques milliers de mots par jour**, selon le sujet, son expérience et la qualité demandée. Mesurez **votre** rythme réel sur vos exercices.
+
+> [!exemple] Calcul du délai pour l''hôtel
+> - Votre rythme mesuré : environ 1 500 mots par jour de traduction, plus du temps pour réviser.
+> - 1 800 mots → environ 1,5 jour de traduction + 0,5 jour de révision et relecture = **2 jours de travail**.
+> - Avec une marge pour les coupures et les questions au client : proposer **3 jours ouvrés**.
+
+## Le projet en 7 étapes
+
+| N° | Étape | Commande 1 (hôtel) | Commande 2 (ONG) |
+| --- | --- | --- | --- |
+| 1 | **Préparation** | Lire tout le site, regarder le site actuel et les sites d''hôtels francophones similaires | Lire la brochure, comprendre chaque consigne de santé |
+| 2 | **Glossaire** | « lodge », « check-in », « pirogue trip », « Avenue of the Baobabs » (Allée des Baobabs) | « eau potable », « filtre », « diarrhée », « se laver les mains » : termes simples et compréhensibles en milieu rural |
+| 3 | **Questions** | Garder « lodge » ou dire « écolodge » ? Prix en euros ou en ariary ? | Faut-il des termes de dialecte régional ? Qui relira ? |
+| 4 | **Traduction** | Dans Matecat, segment par segment | Dans Matecat ou Word, avec des phrases courtes |
+| 5 | **Révision** | Comparer avec la source, phrase par phrase | Idem, en vérifiant chaque chiffre et chaque consigne |
+| 6 | **Relecture** | Lire comme un voyageur français : est-ce que ça donne envie ? | Faire lire à une personne qui ressemble au public visé |
+| 7 | **Livraison** | Fichier Word au même format + glossaire + notes | Fichier + remarques sur les termes choisis |
+
+## Poser des questions au client
+
+Pendant la traduction, des questions vont apparaître. Regroupez-les dans **un seul message**, le plus tôt possible, pour ne pas retarder la livraison.
+
+### Le tableau de questions
+
+| N° | Segment / page | Texte source | Question | Ma proposition |
+| --- | --- | --- | --- | --- |
+| 1 | Accueil, ligne 3 | « Our lodge » | Garder « lodge » ou traduire ? | « Notre écolodge » (terme compris par les voyageurs français) |
+| 2 | Tarifs | « $85 per night » | Prix en dollars, en euros ou en ariary ? | Garder les dollars, comme sur la page de réservation |
+| 3 | Activités | « Kirindy day trip » | Le nom officiel est-il « forêt de Kirindy » ? | « Excursion d''une journée dans la forêt de Kirindy » |
+
+Proposez **toujours** une solution avec chaque question : le client répond plus vite, et voit que vous avez réfléchi.
+
+## La grille de vérification en 10 points
+
+| N° | Point à vérifier | Oui / Non |
+| --- | --- | --- |
+| 1 | Aucun segment oublié ni laissé dans la langue source | |
+| 2 | Aucun contresens, faux sens, ajout ni omission | |
+| 3 | Chiffres, prix, dates, noms propres identiques ou correctement convertis | |
+| 4 | Termes du glossaire respectés partout | |
+| 5 | Registre et tutoiement / vouvoiement cohérents | |
+| 6 | Typographie de la langue cible respectée | |
+| 7 | Mise en forme identique à l''original (titres, gras, listes, liens) | |
+| 8 | Contrôle qualité automatique lancé et alertes traitées | |
+| 9 | Relecture de la traduction seule : texte naturel, sans faute | |
+| 10 | Réponses du client intégrées | |
+
+## La livraison
+
+> [!exemple] Message de livraison
+> « Bonjour Madame Andriamasy, vous trouverez ci-joint la traduction française de votre site (1 800 mots), au même format que le fichier d''origine. J''ai suivi vos réponses du 12 mars (écolodge, prix en dollars). Je joins aussi le glossaire des 15 termes utilisés, pour vos prochaines traductions. Une remarque : la page "Conditions" mentionne une politique d''annulation de 7 jours, et la page "Réservation" de 10 jours : je l''ai traduit tel quel, mais vous voudrez peut-être vérifier. Bonne journée ! »
+
+Signaler une **incohérence dans le texte d''origine** est un vrai service rendu au client : il voit que vous lisez avec attention.
+
+> [!madagascar]
+> Pour la brochure en malagasy, proposez au client de **tester** la traduction auprès de quelques familles ou d''agents de terrain avant l''impression. Une consigne de santé mal comprise peut avoir des conséquences réelles.
+
+> [!retenir]
+> - Analysez chaque demande avec 8 questions ; refusez ce qui dépasse vos compétences.
+> - Estimez le délai à partir de votre rythme réel, avec une marge.
+> - 7 étapes : préparation, glossaire, questions, traduction, révision, relecture, livraison.
+> - Regroupez vos questions et proposez toujours une solution.
+> - Vérifiez avec la grille de 10 points et signalez les incohérences de l''original.
+
+## Exercice pratique : les deux commandes
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Trouvez la page d''un site d''hôtel ou d''agence en anglais (environ 800 mots) et traduisez-la vers votre langue cible, comme pour la commande 1.
+> 2. Rédigez une courte brochure de prévention en français (300 mots, sur l''hygiène ou l''eau potable) et traduisez-la vers le malagasy, ou choisissez un autre texte grand public si vous ne traduisez pas vers le malagasy.
+> 3. Pour chaque commande : faites le glossaire, le tableau de questions avec vos propositions, la traduction dans Matecat et la grille de 10 points.
+> 4. Rédigez les deux messages de livraison.
+>
+> **À livrer** : les deux traductions, les glossaires, les tableaux de questions, les grilles et les messages. Ce sont vos premières pièces de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 3, 0, 'Sur quoi se calculent en général le prix et le délai d''une traduction ?', '["Le nombre d''images","Le nombre de mots du texte source","Le poids du fichier","Le nombre de pages imprimées"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 3, 1, 'Comment poser vos questions au client ?', '["Jamais, il faut deviner","Après la livraison","Une par une, toutes les heures","Regroupées dans un seul message, avec une proposition pour chacune"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 3, 2, 'Que faire si le texte d''origine contient une incohérence ?', '["La signaler au client","Ne pas la traduire","Refuser toute la commande","La corriger sans rien dire"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-1-f', 4, 'Trouver des clients et se faire payer', 'CV de traducteur, 5 canaux, test de traduction, tarifs au mot, devis, confidentialité, paiements et spécialité.', 'Les traducteurs freelances travaillent surtout avec des **agences** qui leur envoient des projets réguliers, et avec quelques **clients directs**. Ce dernier module vous montre comment vous présenter, réussir les tests de traduction, fixer vos prix au mot, protéger la confidentialité de vos clients et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger un CV de traducteur et un profil en ligne.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Réussir un test de traduction.
+> 4. Calculer vos tarifs au mot, à l''heure et le forfait minimum.
+> 5. Rédiger un devis et respecter la confidentialité.
+> 6. Vous faire payer et développer une spécialité.
+
+## Le CV et le profil de traducteur
+
+Les agences reçoivent beaucoup de candidatures. Le vôtre doit montrer en 30 secondes ce que vous traduisez, dans quels domaines et avec quels outils.
+
+### Les 7 rubriques du CV
+
+1. **Combinaisons de langues et sens** : « Anglais → français ; français → malagasy ».
+2. **Langue maternelle** (ou langue la plus forte).
+3. **Domaines** : tourisme, ONG et développement, santé grand public, marketing…
+4. **Services** : traduction, révision, post-édition, localisation.
+5. **Outils** : Matecat, et les autres outils maîtrisés (Trados, memoQ si vous les avez appris).
+6. **Expérience et projets** : vos projets du module 4, avec le volume (« 2 400 mots traduits pour un site d''hôtel »).
+7. **Formation et capacité** : études, cette formation, nombre de mots par jour, disponibilité.
+
+> [!exemple] Phrase de présentation
+> « Traductrice anglais → français et français → malagasy, spécialisée dans le tourisme et les projets de développement. Traductions naturelles, terminologie vérifiée, délais respectés. Outils : Matecat, glossaires clients, post-édition. »
+
+**Une règle importante** : votre CV doit être **sans aucune faute**. Une agence de traduction élimine immédiatement un CV de traducteur avec des fautes.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Agences de traduction** | Projets réguliers | Candidature spontanée sur leur page « Devenir traducteur », souvent avec un test |
+| 2 | **Sites spécialisés pour traducteurs** (ProZ.com, TranslatorsCafé) | Agences et clients du monde entier | Profil complet, réponse aux offres, participation aux forums |
+| 3 | **Plateformes de freelance** (Upwork et autres) | Entreprises, créateurs | Offre précise ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 4 | **ONG et organisations internationales à Madagascar** | Traductions français ↔ malagasy | Contactez les responsables de communication ; répondez aux appels d''offres |
+| 5 | **Entreprises du tourisme et du commerce** | Sites, brochures, menus | Proposez de traduire une page de leur site en anglais ou en français |
+
+> [!astuce] Vérifier une agence
+> Avant de travailler pour une agence, regardez son site, ses coordonnées et les avis d''autres traducteurs (par exemple sur les forums de ProZ, qui recensent la réputation de paiement des agences). Une agence sérieuse ne vous demande **jamais de payer** pour être inscrite.
+
+## Réussir un test de traduction
+
+Les agences demandent souvent de traduire **gratuitement un court texte** (en général 200 à 300 mots) pour évaluer votre niveau. C''est normal, tant que le test reste court.
+
+1. Traitez le test **comme une vraie commande** : méthode en 5 étapes, glossaire, grille de 10 points.
+2. Respectez **exactement** les consignes (format, délai, typographie).
+3. Ne laissez **aucune faute** : un test est souvent éliminé pour une seule erreur.
+4. N''utilisez **pas** de traduction automatique, sauf si c''est un test de post-édition.
+5. Ajoutez une courte **note** si vous avez fait un choix délicat (« J''ai traduit "lodge" par "écolodge" car… »).
+
+> [!attention]
+> Un « test » de plusieurs milliers de mots n''est pas un test : c''est du travail gratuit. Refusez poliment au-delà de 300 à 500 mots.
+
+## Fixer ses tarifs
+
+### Les modes de facturation
+
+| Mode | Pour quoi |
+| --- | --- |
+| **Au mot** (du texte source) | La grande majorité des traductions |
+| **À l''heure** | Révision, relecture, post-édition légère, tâches difficiles à compter |
+| **Forfait minimum** | Les très petites commandes (une phrase, un slogan) : un prix minimum par commande |
+
+### Calculer votre tarif au mot
+
+1. **Revenu mensuel visé** (exemple : 1 500 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **15 000 Ar de l''heure**.
+2. **Votre rythme réel**, révision comprise (exemple : 300 mots par heure).
+3. **Tarif au mot** : 15 000 ÷ 300 = **50 Ar le mot**.
+
+| Commande | Calcul | Exemple de prix |
+| --- | --- | --- |
+| Site d''hôtel de 1 800 mots | 1 800 × 50 Ar | 90 000 Ar |
+| Brochure de 600 mots | 600 × 50 Ar | 30 000 Ar |
+| Slogan de 8 mots | Forfait minimum | 15 000 Ar |
+
+Ces prix sont des **exemples**. Les tarifs varient beaucoup selon la combinaison, le domaine et le client : un texte technique ou une combinaison rare se facture plus cher. Pour les agences et clients étrangers, fixez vos tarifs **en euros ou en dollars**, en vous renseignant sur les tarifs pratiqués pour votre combinaison (forums et enquêtes de tarifs sur les sites pour traducteurs). Les agences paient souvent moins cher les **répétitions** et les correspondances de la mémoire : renseignez-vous sur leur grille.
+
+## Le devis et la confidentialité
+
+### Ce que contient un devis
+
+1. Le **document** à traduire, la combinaison et le nombre de mots.
+2. Le **service** : traduction, révision, post-édition.
+3. Le **tarif** et le **total**.
+4. Le **délai** de livraison et le format du fichier livré.
+5. Les **conditions de paiement** : pour un client direct, 50 % à la commande ; pour une agence, paiement à 30 jours fin de mois est fréquent.
+6. Ce qui n''est **pas** inclus : mise en page complexe, saisie de textes en image, traduction assermentée.
+
+### La confidentialité
+
+1. Ne parlez **jamais** des documents de vos clients.
+2. Ne les mettez **jamais** dans un outil gratuit en ligne (module 3).
+3. Stockez-les sur un ordinateur protégé par un mot de passe, et supprimez-les quand le client le demande.
+4. Signez l''**accord de confidentialité** quand une agence le propose, après l''avoir lu.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local, ONG | Virement bancaire ou Mobile Money (MVola, Orange Money, Airtel Money) |
+| Agence étrangère | Virement international, Payoneer ou autre service proposé par l''agence |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : indiquez à l''agence les moyens que vous pouvez recevoir **avant** le premier projet. Envoyez une **facture** pour chaque commande, gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Développer une spécialité
+
+| Spécialité | Pourquoi depuis Madagascar |
+| --- | --- |
+| **Tourisme** | Forte demande, connaissance du terrain |
+| **Développement et ONG** | Nombreux projets à Madagascar, besoin de malagasy |
+| **Santé grand public** | Brochures, campagnes de prévention |
+| **Agriculture et environnement** | Vanille, girofle, biodiversité, climat |
+| **Localisation d''applications** | Applications de Mobile Money, de services, de jeux |
+
+Choisissez **un ou deux** domaines, construisez un glossaire pour chacun et traduisez des textes de portfolio dans ces domaines.
+
+> [!retenir]
+> - Un CV sans faute : combinaisons, domaines, services, outils, projets.
+> - Agences, sites pour traducteurs, plateformes, ONG et entreprises locales.
+> - Un test court se traite comme une vraie commande ; refusez les tests trop longs.
+> - Tarif au mot = prix horaire ÷ mots par heure ; un forfait minimum pour les petites commandes.
+> - Confidentialité absolue et moyens de paiement vérifiés avant de commencer.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez votre CV de traducteur avec les 7 rubriques, et faites-le relire.
+> 2. Créez votre profil sur un site pour traducteurs.
+> 3. Mesurez votre rythme réel et calculez votre tarif au mot et votre forfait minimum.
+> 4. Rédigez votre modèle de devis.
+> 5. Trouvez 5 agences ou organisations qui travaillent avec votre combinaison, vérifiez leur sérieux et envoyez au moins 2 candidatures.
+>
+> **À livrer** : votre CV, le lien de votre profil, vos calculs, votre devis et la liste des 5 clients possibles avec vos candidatures.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 4, 0, 'À 15 000 Ar de l''heure et 300 mots par heure, quel est le tarif au mot ?', '["50 Ar","5 000 Ar","300 Ar","15 Ar"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 4, 1, 'Une agence demande un « test » gratuit de 5 000 mots. Que faire ?', '["Le faire avec une traduction automatique","Refuser poliment : c''est du travail gratuit","Le faire en 1 heure","Accepter sans discuter"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-1-f', 4, 2, 'Quel est le premier critère d''un CV de traducteur ?', '["Une police originale","Une photo en couleur","Aucune faute","Une longueur de 5 pages"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce que traduire ?', '["Rendre le sens et le ton d''un texte dans une autre langue","Remplacer chaque mot par un autre","Résumer un texte","Corriger les fautes d''un texte"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce que la langue cible ?', '["Une langue étrangère au hasard","La langue du texte de départ","La langue du client","La langue dans laquelle on traduit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce que la post-édition ?', '["Traduire après la date limite","Envoyer la traduction par la poste","Écrire un article","Corriger et améliorer une traduction automatique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle combinaison est rare et recherchée depuis Madagascar ?', '["Allemand → italien","Anglais → espagnol","Français → malagasy","Chinois → russe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle est la première étape de la méthode de traduction ?', '["Traduire la première phrase","Envoyer la facture","Lire tout le texte","Relire la traduction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce qu''un contresens ?', '["Un mot ajouté","Une traduction dont le sens est faux","Une faute de frappe","Une traduction très fidèle"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', '« Library » se traduit par…', '["Bibliothèque","Liberté","Librairie","Livret"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce qu''un calque ?', '["Un dessin","Copier la structure de la langue source","Une traduction parfaite","Une mémoire de traduction"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'En français, que met-on avant « : ; ! ? » ?', '["Rien","Un tiret","Une espace","Une virgule"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', '« 3:30 PM » s''écrit en français…', '["3 h 30","3:30 PM","15 h 30","15:30 PM"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Pourquoi écrire le mois en lettres dans une date importante ?', '["03/04 peut être le 4 mars ou le 3 avril selon le pays","C''est plus joli","Pour allonger le texte","C''est obligatoire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Pour un texte grand public en malagasy, que privilégier ?', '["Des phrases très longues","Un dialecte rare","Le malagasy officiel et des phrases courtes","Le français"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Que signifie TAO ?', '["Traduction assistée par ordinateur","Texte à ordonner","Traduction automatique obligatoire","Tarif au octet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Qu''est-ce qu''un segment ?', '["Un morceau de texte, souvent une phrase, traduit l''un après l''autre","Une facture","Un fichier audio","Un glossaire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'À quoi sert un glossaire ?', '["Compter les mots","Corriger l''orthographe","Traduire toujours les mêmes termes de la même façon","Envoyer les fichiers"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Que créer dans Matecat pour ne pas partager vos traductions ?', '["Rien","Un mot de passe Wi-Fi","Un deuxième compte","Une clé de mémoire privée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Que sont les balises dans un segment ?', '["Des publicités","Des fautes de frappe","Des mots à ne pas traduire","Des symboles qui représentent la mise en forme"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle ressource gratuite donne la terminologie officielle de l''Union européenne ?', '["Canva","Trello","Zoom","IATE"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Que faire si la proposition de la traduction automatique est très mauvaise ?', '["La valider quand même","L''effacer et traduire soi-même","La corriger mot par mot pendant une heure","La signaler au client comme sa traduction"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quand refuser une commande ?', '["Quand le texte est court","Jamais","Quand le client est poli","Quand elle dépasse vos compétences ou votre sens de traduction"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Votre rythme est de 1 500 mots par jour. Combien de jours de traduction pour 1 800 mots, sans la révision ?', '["10 jours","5 jours","Environ 1,2 jour","Une demi-heure"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Que vérifier en premier dans la grille avant livraison ?', '["La date de naissance du client","Qu''aucun segment n''est oublié","Le nom du fichier uniquement","La couleur du texte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle longueur est raisonnable pour un test de traduction gratuit ?', '["50 pages","5 000 mots","200 à 300 mots","Un livre entier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'À quoi sert un forfait minimum ?', '["Payer moins d''impôts","Réduire le prix des gros projets","Remplacer le devis","Facturer correctement les très petites commandes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Où vérifier la réputation de paiement d''une agence ?', '["Sur les forums de sites pour traducteurs comme ProZ","Sur sa propre publicité uniquement","En lui demandant si elle paie","Nulle part"]'::jsonb, 0);
 
 -- media-0-f
 delete from public.exam_questions where course_id = 'media-0-f';

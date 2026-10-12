@@ -1,0 +1,97 @@
+{
+  "id": "lang-1-f",
+  "hours": 15,
+  "description": "Le traducteur fait passer un texte d'une langue à une autre en gardant le sens, le ton et la précision. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à traduire entre l'anglais, le français et le malagasy pour des agences, des entreprises et des ONG, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier de traducteur et choisir sa combinaison de langues",
+    "Traduire avec une méthode en 5 étapes en évitant les pièges classiques",
+    "Respecter le registre, la typographie et la localisation",
+    "Utiliser Matecat, un glossaire et la traduction automatique sans risque",
+    "Gérer une commande complète, des questions au client à la livraison",
+    "Fixer ses tarifs au mot, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de traducteur depuis Madagascar",
+      "summary": "Ce que fait un traducteur, les mots du métier, le sens de traduction, les 6 types de traduction, les clients et la place des outils automatiques.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Vers quelle langue un traducteur doit-il traduire ?", "options": ["Sa langue la plus forte, souvent sa langue maternelle", "N'importe quelle langue qu'il a étudiée", "Toujours l'anglais", "La langue la mieux payée"], "correct": 0 },
+        { "q": "Quelle est la différence entre traduction et interprétation ?", "options": ["La traduction concerne l'écrit, l'interprétation l'oral", "Il n'y a aucune différence", "L'interprétation concerne l'écrit", "La traduction est toujours automatique"], "correct": 0 },
+        { "q": "Peut-on proposer une « traduction certifiée » sans agrément ?", "options": ["Non, elle est réservée aux traducteurs agréés", "Oui, si on est bon", "Oui, avec un tampon personnel", "Oui, pour les clients étrangers"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : méthode, pièges, registre et typographie",
+      "summary": "La méthode en 5 étapes, contresens, faux amis et calques, registre et ton, conventions typographiques et localisation.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que veut dire « actually » en français ?", "options": ["En fait", "Actuellement", "Activement", "Exactement"], "correct": 0 },
+        { "q": "Comment écrit-on 25,000 (anglais) en français ?", "options": ["25 000", "25,000", "25.000,00", "25000,0"], "correct": 0 },
+        { "q": "Quand localiser un texte (monnaie, références) ?", "options": ["Seulement avec l'accord du client", "Toujours, sans demander", "Jamais", "Seulement les titres"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : TAO, Matecat, glossaires, et les outils payants",
+      "summary": "Segments, mémoire de traduction, Matecat en 8 étapes, glossaire, traduction automatique et confidentialité, puis Trados, memoQ et DeepL Pro.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert une mémoire de traduction ?", "options": ["Proposer automatiquement les phrases déjà traduites", "Retenir le mot de passe du client", "Traduire sans traducteur", "Compter les heures de travail"], "correct": 0 },
+        { "q": "Peut-on mettre un contrat confidentiel dans un outil de traduction gratuit en ligne ?", "options": ["Non, jamais", "Oui, toujours", "Oui, si on le supprime après", "Oui, la nuit"], "correct": 0 },
+        { "q": "Quel outil de TAO est le plus utilisé par les agences ?", "options": ["Trados Studio", "Canva", "CapCut", "Google Agenda"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un site d'hôtel et une brochure d'ONG",
+      "summary": "Analyse de la demande, estimation du délai, projet en 7 étapes, tableau de questions, grille de 10 points et livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur quoi se calculent en général le prix et le délai d'une traduction ?", "options": ["Le nombre de mots du texte source", "Le nombre de pages imprimées", "Le poids du fichier", "Le nombre d'images"], "correct": 0 },
+        { "q": "Comment poser vos questions au client ?", "options": ["Regroupées dans un seul message, avec une proposition pour chacune", "Une par une, toutes les heures", "Jamais, il faut deviner", "Après la livraison"], "correct": 0 },
+        { "q": "Que faire si le texte d'origine contient une incohérence ?", "options": ["La signaler au client", "La corriger sans rien dire", "Ne pas la traduire", "Refuser toute la commande"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "CV de traducteur, 5 canaux, test de traduction, tarifs au mot, devis, confidentialité, paiements et spécialité.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 15 000 Ar de l'heure et 300 mots par heure, quel est le tarif au mot ?", "options": ["50 Ar", "15 Ar", "300 Ar", "5 000 Ar"], "correct": 0 },
+        { "q": "Une agence demande un « test » gratuit de 5 000 mots. Que faire ?", "options": ["Refuser poliment : c'est du travail gratuit", "Accepter sans discuter", "Le faire avec une traduction automatique", "Le faire en 1 heure"], "correct": 0 },
+        { "q": "Quel est le premier critère d'un CV de traducteur ?", "options": ["Aucune faute", "Une photo en couleur", "Une longueur de 5 pages", "Une police originale"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce que traduire ?", "options": ["Rendre le sens et le ton d'un texte dans une autre langue", "Remplacer chaque mot par un autre", "Résumer un texte", "Corriger les fautes d'un texte"], "correct": 0 },
+    { "q": "Qu'est-ce que la langue cible ?", "options": ["La langue dans laquelle on traduit", "La langue du texte de départ", "La langue du client", "Une langue étrangère au hasard"], "correct": 0 },
+    { "q": "Qu'est-ce que la post-édition ?", "options": ["Corriger et améliorer une traduction automatique", "Envoyer la traduction par la poste", "Traduire après la date limite", "Écrire un article"], "correct": 0 },
+    { "q": "Quelle combinaison est rare et recherchée depuis Madagascar ?", "options": ["Français → malagasy", "Anglais → espagnol", "Allemand → italien", "Chinois → russe"], "correct": 0 },
+    { "q": "Quelle est la première étape de la méthode de traduction ?", "options": ["Lire tout le texte", "Traduire la première phrase", "Envoyer la facture", "Relire la traduction"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un contresens ?", "options": ["Une traduction dont le sens est faux", "Une traduction très fidèle", "Un mot ajouté", "Une faute de frappe"], "correct": 0 },
+    { "q": "« Library » se traduit par…", "options": ["Bibliothèque", "Librairie", "Liberté", "Livret"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un calque ?", "options": ["Copier la structure de la langue source", "Une traduction parfaite", "Un dessin", "Une mémoire de traduction"], "correct": 0 },
+    { "q": "En français, que met-on avant « : ; ! ? » ?", "options": ["Une espace", "Rien", "Un tiret", "Une virgule"], "correct": 0 },
+    { "q": "« 3:30 PM » s'écrit en français…", "options": ["15 h 30", "3 h 30", "3:30 PM", "15:30 PM"], "correct": 0 },
+    { "q": "Pourquoi écrire le mois en lettres dans une date importante ?", "options": ["03/04 peut être le 4 mars ou le 3 avril selon le pays", "C'est plus joli", "C'est obligatoire", "Pour allonger le texte"], "correct": 0 },
+    { "q": "Pour un texte grand public en malagasy, que privilégier ?", "options": ["Le malagasy officiel et des phrases courtes", "Des phrases très longues", "Un dialecte rare", "Le français"], "correct": 0 },
+    { "q": "Que signifie TAO ?", "options": ["Traduction assistée par ordinateur", "Traduction automatique obligatoire", "Texte à ordonner", "Tarif au octet"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un segment ?", "options": ["Un morceau de texte, souvent une phrase, traduit l'un après l'autre", "Un fichier audio", "Une facture", "Un glossaire"], "correct": 0 },
+    { "q": "À quoi sert un glossaire ?", "options": ["Traduire toujours les mêmes termes de la même façon", "Compter les mots", "Envoyer les fichiers", "Corriger l'orthographe"], "correct": 0 },
+    { "q": "Que créer dans Matecat pour ne pas partager vos traductions ?", "options": ["Une clé de mémoire privée", "Un deuxième compte", "Un mot de passe Wi-Fi", "Rien"], "correct": 0 },
+    { "q": "Que sont les balises dans un segment ?", "options": ["Des symboles qui représentent la mise en forme", "Des fautes de frappe", "Des mots à ne pas traduire", "Des publicités"], "correct": 0 },
+    { "q": "Quelle ressource gratuite donne la terminologie officielle de l'Union européenne ?", "options": ["IATE", "Canva", "Trello", "Zoom"], "correct": 0 },
+    { "q": "Que faire si la proposition de la traduction automatique est très mauvaise ?", "options": ["L'effacer et traduire soi-même", "La valider quand même", "La corriger mot par mot pendant une heure", "La signaler au client comme sa traduction"], "correct": 0 },
+    { "q": "Quand refuser une commande ?", "options": ["Quand elle dépasse vos compétences ou votre sens de traduction", "Jamais", "Quand le texte est court", "Quand le client est poli"], "correct": 0 },
+    { "q": "Votre rythme est de 1 500 mots par jour. Combien de jours de traduction pour 1 800 mots, sans la révision ?", "options": ["Environ 1,2 jour", "10 jours", "Une demi-heure", "5 jours"], "correct": 0 },
+    { "q": "Que vérifier en premier dans la grille avant livraison ?", "options": ["Qu'aucun segment n'est oublié", "La couleur du texte", "Le nom du fichier uniquement", "La date de naissance du client"], "correct": 0 },
+    { "q": "Quelle longueur est raisonnable pour un test de traduction gratuit ?", "options": ["200 à 300 mots", "5 000 mots", "Un livre entier", "50 pages"], "correct": 0 },
+    { "q": "À quoi sert un forfait minimum ?", "options": ["Facturer correctement les très petites commandes", "Réduire le prix des gros projets", "Payer moins d'impôts", "Remplacer le devis"], "correct": 0 },
+    { "q": "Où vérifier la réputation de paiement d'une agence ?", "options": ["Sur les forums de sites pour traducteurs comme ProZ", "Sur sa propre publicité uniquement", "Nulle part", "En lui demandant si elle paie"], "correct": 0 }
+  ]
+}
