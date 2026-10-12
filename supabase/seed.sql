@@ -86,7 +86,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
-  ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, false),
+  ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 11, false),
@@ -11455,6 +11455,578 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures ?', '["Pour travailler moins","Parce que c''est obligatoire","Les clients préfèrent un forfait mensuel payé d''avance","Pour éviter de suivre son temps"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Qu''elles sont interdites","Rien","Qu''elles sont facturées en plus, au même tarif","Qu''elles sont gratuites"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel moyen de paiement utiliser avec un client local à Madagascar ?', '["Uniquement des espèces par la poste","Uniquement PayPal","Mobile Money ou virement bancaire","Un chèque étranger"]'::jsonb, 2);
+
+-- gestion-1-a
+delete from public.exam_questions where course_id = 'gestion-1-a';
+delete from public.module_questions where course_id = 'gestion-1-a';
+delete from public.lessons where course_id = 'gestion-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-a', 0, 'Se spécialiser et vendre de la croissance', 'Les 6 spécialités avancées, la formule de croissance, les 7 indicateurs clés, l''audit de boutique en 6 domaines et les offres à forte valeur.', 'Mettre des produits en ligne et traiter les commandes, beaucoup savent le faire. Les gestionnaires de boutique les mieux payés **font grandir le chiffre d''affaires** : plus de visiteurs qui achètent, des paniers plus gros, des clients qui reviennent, des opérations sans erreur. Ce module vous aide à choisir votre spécialité et à vendre de la croissance plutôt que des heures.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la gestion de boutique.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Calculer les indicateurs clés d''une boutique.
+> 4. Mener un audit de boutique en 6 domaines.
+> 5. Construire des offres à forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Optimisation de la conversion** | Des visiteurs qui n''achètent pas | Fiches produits, panier, paiement, tests A/B |
+| 2 | **E-mail et fidélisation** | Des clients qui n''achètent qu''une fois | Klaviyo ou Shopify Email, séquences automatiques, segmentation |
+| 3 | **Opérations et stock** | Ruptures, surstocks, erreurs d''expédition | Prévisions, fournisseurs, logistique, procédures |
+| 4 | **Marketplaces** | Vendre aussi sur Amazon, Etsy ou d''autres places de marché | Règles de chaque plateforme, synchronisation des stocks |
+| 5 | **Vente internationale** | Vendre dans plusieurs pays et devises | Shopify Markets, traductions, livraison, taxes |
+| 6 | **Analyse et pilotage** | Des décisions prises sans chiffres | Rapports Shopify, Google Analytics, tableaux de bord |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Marques malgaches qui exportent** (vanille, épices, huiles essentielles, artisanat en raphia, cosmétiques) : elles ont besoin de quelqu''un qui connaît leurs produits et leurs clients européens.
+> - **Boutiques francophones** (France, Belgique, Canada) qui cherchent un gestionnaire fiable à distance, avec 1 à 2 heures d''écart avec Paris.
+> - **E-commerce local** en croissance à Antananarivo, avec paiement Mobile Money et livraison en ville.
+
+## Les indicateurs clés
+
+| Indicateur | Formule | Exemple |
+| --- | --- | --- |
+| **Chiffre d''affaires** | Visiteurs × taux de conversion × panier moyen | 20 000 × 2 % × 45 € = 18 000 € |
+| **Taux de conversion** | Commandes ÷ sessions | 400 ÷ 20 000 = 2 % |
+| **Panier moyen** | Chiffre d''affaires ÷ commandes | 18 000 € ÷ 400 = 45 € |
+| **Taux de réachat** | Clients ayant acheté 2 fois ou plus ÷ clients | 300 ÷ 1 200 = 25 % |
+| **Valeur vie client (LTV)** | Panier moyen × nombre moyen de commandes par client | 45 € × 1,6 = 72 € |
+| **Taux d''abandon de panier** | Paniers non payés ÷ paniers créés | 70 % |
+| **Marge brute** | (Prix − coût du produit) ÷ prix | (45 − 18) ÷ 45 = 60 % |
+
+> [!definition] La formule de croissance
+> Chiffre d''affaires = visiteurs × taux de conversion × panier moyen. Pour faire grandir une boutique, on agit sur l''un de ces trois leviers, puis sur le réachat. Augmenter chacun de 10 % fait croître le chiffre d''affaires d''environ 33 % (1,1 × 1,1 × 1,1 ≈ 1,33).
+
+## L''audit de boutique
+
+L''audit est souvent le **premier service** vendu à un nouveau client : il montre votre expertise et mène à une mission régulière.
+
+### Les 6 domaines de l''audit
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Chiffres** | Indicateurs clés sur 3 à 12 mois, évolution, comparaison par source de trafic |
+| **2. Fiches produits** | Photos, titres, descriptions, avis, prix, informations de livraison |
+| **3. Parcours d''achat** | Vitesse sur téléphone, panier, paiement, moyens de paiement, frais surprises |
+| **4. Fidélisation** | E-mails automatiques, programme de fidélité, segmentation |
+| **5. Opérations** | Ruptures, délais d''expédition, retours, erreurs de commande |
+| **6. Applications et coûts** | Applications installées, utiles ou non, coût mensuel total |
+
+> [!exemple] Extrait de résumé d''audit
+> « Votre taux de conversion sur téléphone est de 0,9 % contre 2,4 % sur ordinateur, alors que 78 % de vos visiteurs viennent du téléphone. Les frais de livraison n''apparaissent qu''à la dernière étape, et 4 de vos 10 produits les plus vus n''ont aucun avis. Vous payez aussi 11 applications, dont 4 inutilisées (environ 60 € par mois). Nous proposons de corriger ces points en priorité. »
+
+## Les offres à forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit** | Rapport en 6 domaines et plan d''action priorisé |
+| **Gestion mensuelle** | Opérations, catalogue, promotions, rapport mensuel |
+| **Programme conversion** | Améliorations et tests sur 3 mois |
+| **Programme fidélisation** | Séquences e-mail, segmentation, programme de fidélité |
+| **Lancement international** | Marchés, traductions, prix, livraison |
+| **Préparation des temps forts** | Soldes, fêtes de fin d''année, Black Friday, Fête des mères |
+
+> [!retenir]
+> - Spécialisez-vous : conversion, fidélisation, opérations, marketplaces, international ou analyse.
+> - Chiffre d''affaires = visiteurs × taux de conversion × panier moyen, puis réachat.
+> - L''audit en 6 domaines est votre porte d''entrée.
+> - Vendez de la croissance mesurable, pas seulement des heures.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Calculez les 7 indicateurs d''une boutique fictive à partir de chiffres que vous inventez.
+> 3. Réalisez l''audit en 6 domaines d''une vraie boutique en ligne (vue de l''extérieur : fiches, parcours, e-mails reçus après inscription).
+> 4. Rédigez le résumé de l''audit et votre proposition.
+>
+> **À livrer** : votre choix, vos calculs, votre audit et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 0, 0, 'Quelle est la formule du chiffre d''affaires ?', '["Visiteurs + commandes","Visiteurs × taux de conversion × panier moyen","Commandes ÷ visiteurs","Prix − coût"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 0, 1, '400 commandes pour 20 000 sessions donnent quel taux de conversion ?', '["50 %","2 %","20 %","0,2 %"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 0, 2, 'Que vérifier dans le domaine « Applications et coûts » ?', '["Les applications utiles ou non et leur coût mensuel","Le nom du propriétaire","La couleur du logo","Le nombre d''abonnés Facebook"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-a', 1, 'Outils professionnels : offres Shopify, Flow, applications et e-mails', 'Choisir une offre Shopify selon le coût total, automatisations Flow, 6 questions avant une application, 5 séquences e-mail et tableau du coût des applications.', 'Au niveau Avancé, vous travaillez avec les outils payants des boutiques sérieuses : les **offres d''abonnement Shopify** et leurs fonctions avancées, l''**automatisation** des tâches, et des **applications payantes** pour les e-mails, les avis, la fidélité et le stock. Ce module vous apprend à choisir, configurer et maîtriser le coût de ces outils.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Conseiller une offre d''abonnement Shopify adaptée.
+> 2. Automatiser des tâches avec Shopify Flow.
+> 3. Choisir des applications payantes avec une méthode.
+> 4. Construire des séquences e-mail automatiques.
+> 5. Maîtriser le coût total des applications.
+
+## Les offres d''abonnement Shopify
+
+| Élément | Ce qui change d''une offre à l''autre |
+| --- | --- |
+| **Prix mensuel** | Augmente avec l''offre |
+| **Frais de transaction** | Diminuent avec les offres supérieures (selon le moyen de paiement) |
+| **Comptes d''équipe** | Plus de comptes pour le personnel |
+| **Rapports** | Rapports plus détaillés |
+| **Fonctions internationales** | Plus de possibilités de marchés, de devises et de domaines |
+| **Shopify Plus** | Offre pour les grandes marques : automatisations, personnalisation du paiement, B2B |
+
+> [!attention]
+> Les noms des offres, les prix et les fonctions incluses changent régulièrement. Vérifiez toujours sur la page officielle des tarifs de Shopify avant de conseiller un client, et comparez le **coût total** (abonnement + frais + applications), pas seulement l''abonnement.
+
+### Comment conseiller
+
+1. **Calculez** le chiffre d''affaires mensuel et le nombre de commandes.
+2. **Comparez** les frais de transaction de chaque offre sur ce chiffre.
+3. **Ajoutez** les besoins : comptes d''équipe, rapports, international.
+4. **Conseillez** l''offre la moins chère qui couvre les besoins réels.
+
+> [!exemple] Calcul
+> Une boutique fait 12 000 € par mois avec un moyen de paiement externe. Si l''offre de base prélève 2 % de frais de transaction supplémentaires et l''offre suivante 1 %, la différence est de 120 € par mois. Si l''offre suivante coûte 60 € de plus, elle fait économiser 60 € par mois. *(Pourcentages donnés en exemple.)*
+
+## Automatiser avec Shopify Flow
+
+> [!definition] Shopify Flow
+> L''outil d''automatisation de Shopify : **quand** un événement arrive (déclencheur), **si** une condition est vraie, **alors** une action est faite. Sa disponibilité dépend de l''offre : vérifiez-la.
+
+| Déclencheur | Condition | Action |
+| --- | --- | --- |
+| Commande créée | Montant supérieur à 300 € | Étiquette « VIP » et e-mail à l''équipe |
+| Stock modifié | Stock inférieur à 10 | E-mail au responsable des achats |
+| Commande créée | Risque de fraude élevé | Suspendre l''expédition et alerter |
+| Client créé | Pays = Canada | Étiquette « marché Canada » |
+
+> [!astuce]
+> Commencez par les automatisations qui **évitent des erreurs coûteuses** (fraude, ruptures, commandes VIP oubliées), puis celles qui font gagner du temps.
+
+## Choisir des applications avec méthode
+
+### Les 6 questions avant d''installer
+
+1. **Quel problème** l''application règle-t-elle, chiffré si possible ?
+2. **Une fonction de Shopify** fait-elle déjà la même chose ?
+3. **Quel coût** mensuel, et comment évolue-t-il avec le nombre de commandes ?
+4. **Quel effet** sur la vitesse de la boutique ?
+5. **Quels avis** et quel support ?
+6. **Comment la désinstaller** proprement (code laissé dans le thème) ?
+
+### Les familles d''applications
+
+| Famille | Exemples d''usage |
+| --- | --- |
+| **E-mail et SMS** | Séquences automatiques, segmentation (Klaviyo, Shopify Email, autres) |
+| **Avis clients** | Demande d''avis après livraison, photos, affichage sur les fiches |
+| **Fidélité et parrainage** | Points, récompenses, codes de parrainage |
+| **Stock et achats** | Prévisions, bons de commande fournisseurs |
+| **Abonnements** | Produits livrés chaque mois (thé, café, cosmétiques) |
+| **Traduction** | Boutique en plusieurs langues |
+
+## Les séquences e-mail automatiques
+
+| Séquence | Déclencheur | Contenu |
+| --- | --- | --- |
+| **Bienvenue** | Inscription | Histoire de la marque, produits phares, éventuelle offre de bienvenue |
+| **Panier abandonné** | Panier non payé | Rappel, réponses aux doutes (livraison, retours), avis clients |
+| **Après achat** | Commande livrée | Conseils d''utilisation, demande d''avis |
+| **Réachat** | Délai normal de réachat | Rappel au bon moment (par exemple 45 jours pour un pot de 100 g) |
+| **Reconquête** | Pas d''achat depuis 6 mois | Nouveautés, offre ciblée |
+
+> [!exemple] Séquence panier abandonné pour une marque de vanille
+> - **1 heure après** : « Vous avez oublié quelque chose ? » avec la photo des gousses.
+> - **24 heures après** : « D''où vient notre vanille ? » : le producteur de la région Sava, la récolte, la préparation.
+> - **72 heures après** : avis clients et rappel de la livraison suivie.
+
+> [!attention]
+> N''envoyez des e-mails marketing qu''aux clients qui l''ont **accepté**, avec un lien de désinscription dans chaque message (obligation en Europe et dans de nombreux pays).
+
+## Maîtriser le coût des applications
+
+| Application | Coût mensuel | Utilisée ? | Effet mesuré | Décision |
+| --- | --- | --- | --- | --- |
+| E-mail | 45 € | Oui | 18 % du chiffre d''affaires | Garder |
+| Avis | 15 € | Oui | Conversion des fiches avec avis +20 % | Garder |
+| Fenêtre surgissante | 20 € | Oui | Fonction déjà dans l''outil e-mail | Supprimer |
+| Compte à rebours | 10 € | Non | — | Supprimer |
+
+> [!madagascar]
+> Pour une boutique malgache qui vend en ariary, chaque abonnement en dollars ou en euros pèse lourd. Faites ce tableau chaque trimestre : supprimer 2 ou 3 applications inutiles peut payer une partie de vos honoraires.
+
+> [!retenir]
+> - Conseillez l''offre Shopify la moins chère qui couvre les besoins réels.
+> - Shopify Flow : déclencheur, condition, action.
+> - 6 questions avant d''installer une application.
+> - 5 séquences e-mail automatiques, avec le consentement des clients.
+> - Un tableau trimestriel du coût des applications.
+
+## Exercice pratique : la boîte à outils avancée
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Comparez 2 offres Shopify pour une boutique de 8 000 € par mois (avec les tarifs officiels actuels).
+> 2. Concevez 5 automatisations Flow (déclencheur, condition, action).
+> 3. Rédigez les e-mails d''une séquence de bienvenue (3 messages) et d''une séquence panier abandonné (3 messages).
+> 4. Faites le tableau des applications d''une boutique fictive de 10 applications et prenez vos décisions.
+>
+> **À livrer** : votre comparaison, vos automatisations, vos 6 e-mails et votre tableau.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 1, 0, 'Que comparer pour conseiller une offre Shopify ?', '["Le nombre de produits du concurrent","La couleur du thème","Seulement le prix de l''abonnement","Le coût total : abonnement, frais et applications"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 1, 1, 'Comment fonctionne Shopify Flow ?', '["Par une pédale","Déclencheur, condition, action","Par téléphone","Uniquement par e-mail"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 1, 2, 'À qui envoyer des e-mails marketing ?', '["À une liste achetée","À personne","Aux clients qui l''ont accepté","À toutes les adresses trouvées"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-a', 2, 'Qualité et rapidité : conversion, stock, temps forts et procédures', 'Leviers de conversion et tests A/B, point de commande et stock de sécurité, rétroplanning d''un temps fort, procédures écrites et tableau de bord hebdomadaire.', 'Une boutique qui grandit multiplie les risques d''erreurs : ruptures, mauvais prix, colis en retard, promotions mal configurées. Ce module vous donne les méthodes professionnelles pour **améliorer la conversion avec des tests**, **gérer le stock avec des prévisions**, **préparer les temps forts** et **travailler avec des procédures écrites**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Améliorer la conversion avec une méthode de tests.
+> 2. Prévoir le stock et passer les commandes fournisseurs au bon moment.
+> 3. Préparer un temps fort commercial avec un rétroplanning.
+> 4. Écrire des procédures pour les tâches répétitives.
+> 5. Suivre un tableau de bord hebdomadaire.
+
+## Améliorer la conversion
+
+### Les leviers par étape
+
+| Étape | Leviers |
+| --- | --- |
+| **Fiche produit** | Photos sur fond neutre et en situation, bénéfices avant caractéristiques, avis, réponses aux questions fréquentes, délai de livraison visible |
+| **Panier** | Frais de livraison annoncés tôt, seuil de livraison offerte, produits complémentaires |
+| **Paiement** | Moyens de paiement adaptés au pays, paiement accéléré, pas de création de compte obligatoire |
+| **Confiance** | Politique de retour claire, contact visible, paiement sécurisé |
+
+### Le test A/B
+
+> [!definition] Test A/B
+> Comparer deux versions d''une page (A et B), montrées chacune à une partie des visiteurs, pour voir laquelle convertit le mieux.
+
+1. **Hypothèse** : « Afficher le délai de livraison sous le bouton augmentera la conversion. »
+2. **Une seule différence** entre A et B.
+3. **Assez de trafic** : au moins plusieurs centaines de commandes au total, ou une durée de 2 à 4 semaines.
+4. **Décision** écrite à la fin, gardée dans un journal des tests.
+
+> [!attention]
+> Avec peu de visiteurs, un test A/B ne donne pas de résultat fiable. Pour les petites boutiques, appliquez plutôt les **bonnes pratiques reconnues** et comparez les chiffres mois par mois, en tenant compte des saisons.
+
+## Prévoir le stock
+
+### Le point de commande
+
+| Élément | Exemple |
+| --- | --- |
+| Ventes moyennes par jour | 6 pots |
+| Délai fournisseur (commande → réception) | 30 jours |
+| Stock de sécurité | 60 pots |
+| **Point de commande** | 6 × 30 + 60 = **240 pots** |
+
+Quand le stock descend à 240 pots, on passe la commande.
+
+> [!definition] Stock de sécurité
+> Une réserve pour absorber les imprévus : retard du fournisseur, pic de ventes. Plus le délai est long et incertain, plus le stock de sécurité doit être élevé.
+
+> [!madagascar]
+> Pour une marque qui exporte depuis Madagascar, le délai entre la commande au producteur et la disponibilité en Europe comprend la préparation, le transport (aérien ou maritime) et les formalités. Prévoyez un **stock de sécurité plus élevé** et anticipez la saison de la vanille et les périodes de forte demande (fêtes de fin d''année) plusieurs mois à l''avance.
+
+## Préparer un temps fort
+
+### Le rétroplanning du Black Friday (exemple)
+
+| Quand | Action |
+| --- | --- |
+| **J−60** | Choix des produits et des offres avec le client, vérification de la marge |
+| **J−45** | Commande du stock supplémentaire |
+| **J−30** | Création des visuels et des e-mails, préparation des codes promo |
+| **J−14** | Configuration des promotions en mode brouillon, tests de commande |
+| **J−7** | Annonce aux abonnés, préparation de l''équipe service client |
+| **Jour J** | Vérifications toutes les heures : prix, stock, paiements, vitesse |
+| **J+3** | Bilan : chiffre d''affaires, marge, problèmes, leçons |
+
+> [!attention]
+> Calculez la marge **après remise** avant d''accepter une promotion : une remise de 30 % sur un produit à 40 % de marge laisse seulement 10 points de marge, avant publicité et livraison.
+
+## Les procédures écrites
+
+Chaque tâche répétée plus de 2 fois par mois mérite une procédure.
+
+```
+Procédure : traiter un retour produit
+1. Vérifier la date de commande (retour accepté sous 30 jours).
+2. Vérifier le motif et les photos si le produit est abîmé.
+3. Créer l''étiquette de retour dans Shopify.
+4. Envoyer le message type « Retour accepté » avec l''étiquette.
+5. À réception : contrôler le produit, remettre en stock si vendable.
+6. Rembourser par le moyen de paiement d''origine.
+7. Noter le motif dans le tableau des retours.
+```
+
+| Procédure | Fréquence |
+| --- | --- |
+| Ajouter un nouveau produit | À chaque nouveauté |
+| Traiter un retour | Chaque jour |
+| Commande fournisseur | Selon le point de commande |
+| Vérification avant promotion | Avant chaque promotion |
+| Rapport hebdomadaire | Chaque lundi |
+
+## Le tableau de bord hebdomadaire
+
+| Indicateur | Semaine | Semaine précédente | Variation | Commentaire |
+| --- | --- | --- | --- | --- |
+| Chiffre d''affaires | 4 200 € | 3 800 € | +11 % | E-mail du jeudi |
+| Commandes | 92 | 85 | +8 % | — |
+| Taux de conversion | 2,1 % | 1,9 % | +0,2 point | Nouvelle fiche produit |
+| Panier moyen | 45,7 € | 44,7 € | +2 % | — |
+| Ruptures | 1 produit | 3 produits | — | Commande passée |
+| Retours | 3 | 2 | — | Motif : taille |
+
+> [!retenir]
+> - Améliorez chaque étape du parcours ; testez seulement avec assez de trafic.
+> - Point de commande = ventes par jour × délai + stock de sécurité.
+> - Un rétroplanning pour chaque temps fort, et la marge calculée après remise.
+> - Une procédure écrite pour chaque tâche répétée.
+> - Un tableau de bord chaque semaine avec des commentaires.
+
+## Exercice pratique : la méthode d''une boutique qui grandit
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Listez 10 améliorations de conversion pour une boutique réelle et classez-les par impact et effort.
+> 2. Calculez le point de commande de 3 produits avec des délais différents.
+> 3. Rédigez le rétroplanning d''un temps fort (Fête des mères ou fin d''année).
+> 4. Écrivez 3 procédures.
+> 5. Remplissez un tableau de bord hebdomadaire avec des chiffres fictifs et commentez.
+>
+> **À livrer** : votre liste, vos calculs, votre rétroplanning, vos procédures et votre tableau de bord.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 2, 0, '6 ventes par jour, délai de 30 jours et 60 de sécurité donnent quel point de commande ?', '["96","240","180","36"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 2, 1, 'Un test A/B est-il fiable avec très peu de visiteurs ?', '["Oui, en une journée","Oui, toujours","Non","Oui, avec 3 commandes"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 2, 2, 'Que calculer avant d''accepter une promotion ?', '["La taille des photos","Le nombre de couleurs","Rien","La marge après remise"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-a', 3, 'Clients internationaux : marchés, livraison, obligations et marketplaces', 'Shopify Markets et 6 décisions par marché, livraison, douanes et retours, obligations à vérifier avec les spécialistes, marketplaces et rapport en anglais.', 'Vendre à l''international multiplie les possibilités, mais aussi les questions : quelles langues, quelles devises, quels frais de livraison, quelles taxes, quelles règles de protection des clients ? Ce module vous prépare à gérer des boutiques qui vendent dans plusieurs pays et à travailler pour des marques étrangères.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Configurer des marchés, des langues et des devises.
+> 2. Organiser la livraison et les retours internationaux.
+> 3. Connaître les obligations à vérifier avec les spécialistes (taxes, douanes, droit des consommateurs).
+> 4. Gérer les marketplaces en plus de la boutique.
+> 5. Travailler avec une marque étrangère et rendre compte en anglais.
+
+## Les marchés, les langues et les devises
+
+> [!definition] Shopify Markets
+> Les réglages de Shopify qui permettent de définir des **marchés** (un pays ou un groupe de pays) avec leur langue, leur devise, leurs prix et leurs règles de livraison. Les possibilités dépendent de l''offre d''abonnement.
+
+### Les 6 décisions par marché
+
+| Décision | Exemple pour la Belgique et la Suisse |
+| --- | --- |
+| **Langue** | Français (et allemand pour la Suisse alémanique si le volume le justifie) |
+| **Devise** | Euro pour la Belgique, franc suisse pour la Suisse |
+| **Prix** | Arrondis psychologiques par devise (19,90 €, 22.90 CHF) |
+| **Livraison** | Transporteur, délais, prix, seuil de livraison offerte |
+| **Moyens de paiement** | Cartes, et moyens locaux populaires (par exemple TWINT en Suisse, Bancontact en Belgique) |
+| **Textes légaux** | Conditions de vente, politique de retour adaptées |
+
+> [!attention]
+> Une traduction automatique non relue fait perdre la confiance des clients. Faites relire les fiches produits et les pages importantes par un locuteur natif (voir la formation Traducteur).
+
+## Livraison et retours internationaux
+
+| Point | À vérifier |
+| --- | --- |
+| **Zones et tarifs** | Prix par zone, poids, seuil de livraison offerte |
+| **Délais** | Affichés sur la fiche produit et au paiement |
+| **Suivi** | Numéro de suivi envoyé automatiquement |
+| **Douanes** | Documents, codes douaniers des produits, qui paie les droits |
+| **Produits réglementés** | Alimentaire, cosmétiques, huiles essentielles : règles d''importation |
+| **Retours** | Adresse de retour dans le pays ou la région, coût, délai |
+
+> [!madagascar]
+> Les produits naturels de Madagascar (vanille, épices, huiles essentielles, cosmétiques) sont souvent soumis à des **règles d''importation** dans les pays de destination (étiquetage, sécurité alimentaire, composition des cosmétiques). Ce n''est pas votre rôle de les interpréter : demandez au client la confirmation écrite de son transitaire ou de son conseiller, et notez les règles dans la fiche de chaque marché.
+
+## Les obligations à vérifier avec les spécialistes
+
+| Domaine | Question à poser au client | Spécialiste |
+| --- | --- | --- |
+| **Taxes** (TVA ou équivalent) | Les prix sont-ils affichés TTC ? Les taxes sont-elles déclarées dans chaque pays ? | Comptable |
+| **Douanes** | Qui paie les droits ? Les documents sont-ils prêts ? | Transitaire |
+| **Droit des consommateurs** | Délai de rétractation, garanties, mentions obligatoires | Juriste |
+| **Données personnelles** | Bannière de cookies, politique de confidentialité, consentement aux e-mails | Juriste ou prestataire spécialisé |
+
+> [!attention]
+> Vous **configurez** la boutique selon les décisions du client et de ses spécialistes ; vous ne donnez pas d''avis fiscal ou juridique. Gardez une trace écrite de chaque décision.
+
+## Les marketplaces
+
+| Marketplace | Particularités |
+| --- | --- |
+| **Amazon** | Très grand trafic, règles strictes, concurrence sur le prix, logistique possible par Amazon |
+| **Etsy** | Artisanat, produits faits main, histoire de la marque |
+| **Marketplaces nationales** | Selon les pays (par exemple de grandes enseignes en France) |
+
+### Les règles de gestion
+
+1. **Synchronisez** le stock entre la boutique et les marketplaces (application de connexion).
+2. **Adaptez** les fiches aux règles de chaque plateforme (titres, photos, catégories).
+3. **Surveillez** les indicateurs de performance du vendeur (retards, annulations, avis).
+4. **Calculez** la marge après commissions de chaque plateforme.
+5. **Vérifiez** que le client peut ouvrir un compte vendeur dans les pays visés.
+
+## Travailler avec une marque étrangère
+
+### Le rapport mensuel en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Chiffre d''affaires | Revenue |
+| Panier moyen | Average order value (AOV) |
+| Taux de conversion | Conversion rate |
+| Taux de réachat | Repeat purchase rate |
+| Rupture de stock | Stockout |
+| Point de commande | Reorder point |
+| Remboursement | Refund |
+
+> [!exemple] Résumé en anglais
+> "Revenue reached €18,400 in March (+12% vs February). Conversion rate improved from 1.9% to 2.2% after we added delivery times on product pages. Two products are below their reorder point; I sent the purchase order to the supplier on March 28. Next month, we will launch the Mother''s Day campaign and test free shipping from €50."
+
+> [!retenir]
+> - Un marché = langue, devise, prix, livraison, paiements, textes légaux.
+> - Livraison, douanes, produits réglementés et retours se préparent par pays.
+> - Taxes, douanes, droit et données : vous configurez, les spécialistes décident.
+> - Marketplaces : stock synchronisé, fiches adaptées, marge après commissions.
+> - Un rapport mensuel clair, en français ou en anglais.
+
+## Exercice pratique : ouvrir un nouveau marché
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez une marque malgache réelle ou fictive et un nouveau marché (Belgique, Suisse, Canada).
+> 2. Remplissez les 6 décisions et le tableau livraison et retours.
+> 3. Rédigez la liste des questions à poser au comptable, au transitaire et au juriste.
+> 4. Calculez la marge d''un produit vendu sur Etsy ou Amazon après commissions (avec les tarifs officiels actuels).
+> 5. Rédigez un rapport mensuel en anglais avec des chiffres fictifs.
+>
+> **À livrer** : votre fiche marché, vos questions, votre calcul et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 3, 0, 'Qui décide des questions fiscales d''un nouveau marché ?', '["Le client avec son comptable","Les clients finaux","Le gestionnaire seul","Le transporteur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 3, 1, 'Que faire d''une traduction automatique des fiches produits ?', '["La publier sans relire","La supprimer","La faire relire par un locuteur natif","La traduire une deuxième fois"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 3, 2, 'Comment calculer la marge sur une marketplace ?', '["On ne peut pas","Avec le prix d''achat seulement","Après les commissions de la plateforme","Sans tenir compte des commissions"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-1-a', 4, 'Développer son activité : prix, études de cas, équipe et fidélisation', 'Forfait, pourcentage et prime, études de cas en 5 parties, arrivée d''un client en 6 étapes, délégation et fidélisation.', 'Gérer une boutique à l''heure permet de démarrer. Pour construire une activité durable, il faut des **missions mensuelles** bien définies, des **prix liés aux résultats**, des **études de cas** qui attirent les clients et, à terme, une **petite équipe**. Ce dernier module vous montre comment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir un modèle de prix : forfait, part du chiffre d''affaires, prime.
+> 2. Construire des études de cas chiffrées.
+> 3. Organiser l''arrivée d''un nouveau client.
+> 4. Déléguer à une petite équipe.
+> 5. Fidéliser vos clients sur plusieurs années.
+
+## Les modèles de prix
+
+| Modèle | Fonctionnement | Avantages | Risques |
+| --- | --- | --- | --- |
+| **Forfait mensuel** | Prix fixe pour un ensemble de tâches | Simple, revenu stable | Les tâches peuvent augmenter sans que le prix suive |
+| **Forfait + pourcentage** | Forfait de base + petit pourcentage du chiffre d''affaires | Vous profitez de la croissance que vous créez | Définir précisément le chiffre d''affaires pris en compte |
+| **Forfait + prime** | Prime si un objectif est atteint (conversion, réachat) | Aligne vos intérêts avec le client | Exige des chiffres fiables |
+
+> [!exemple] Calcul
+> Forfait : 400 € par mois pour la gestion courante. Prime : 3 % du chiffre d''affaires **au-delà** de 15 000 € par mois. Le mois où la boutique fait 19 000 €, la prime est de 3 % × 4 000 € = 120 €, soit 520 € au total.
+> *(Montants donnés en exemple. Pour les clients malgaches, calculez en ariary selon le marché local.)*
+
+## Les études de cas
+
+### Les 5 parties
+
+1. **Le client** (avec son accord, ou anonymisé) : secteur, pays, taille.
+2. **Le point de départ** : chiffres clés.
+3. **Les actions** : 3 à 5 actions précises.
+4. **Les résultats** : avant et après, sur une durée claire.
+5. **La citation** du client.
+
+> [!exemple] Étude de cas courte
+> « Marque d''huiles essentielles de Madagascar vendant en France. Départ : 7 500 € par mois, taux de réachat de 12 %. Actions : séquences e-mail de réachat selon la durée d''un flacon, programme de fidélité, avis clients sur toutes les fiches, offre de coffrets pour Noël. Résultat après 6 mois : 11 200 € par mois, taux de réachat de 23 %. »
+
+## L''arrivée d''un nouveau client
+
+| Étape | Contenu |
+| --- | --- |
+| **1. Questionnaire** | Produits, marges, clients, fournisseurs, objectifs, contraintes |
+| **2. Accès** | Compte collaborateur ou compte d''équipe Shopify, outil e-mail, Analytics, marketplaces |
+| **3. Audit** | Audit en 6 domaines |
+| **4. Plan de 90 jours** | Priorités, objectifs chiffrés, calendrier |
+| **5. Procédures** | Rédaction ou reprise des procédures existantes |
+| **6. Premier bilan** | Après 30 jours |
+
+> [!astuce]
+> Demandez toujours un **compte personnel** (compte d''équipe ou collaborateur), jamais le mot de passe du propriétaire. Vous protégez le client et vous-même, et l''accès se retire facilement à la fin de la mission.
+
+## Déléguer à une petite équipe
+
+| Tâche | À qui |
+| --- | --- |
+| Ajout de produits, mise à jour des stocks | Assistant formé |
+| Service client de premier niveau | Agent support (voir la formation Agent support chat et e-mail) |
+| Photos et visuels | Graphiste ou retoucheur photo |
+| Traductions | Traducteur |
+| Stratégie, analyse, relation client | Vous |
+
+### Les règles
+
+1. **Des procédures écrites** pour chaque tâche.
+2. **Des accès limités** à ce dont chacun a besoin.
+3. **Un contrôle** des tâches sensibles (prix, promotions, remboursements).
+4. **Un paiement juste et à temps**, avec un contrat.
+
+> [!madagascar]
+> Une petite équipe à Madagascar peut gérer plusieurs boutiques étrangères avec une couverture horaire étendue. Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable sur les obligations d''employeur. Vérifiez aussi avec vos clients que la sous-traitance est autorisée.
+
+## Fidéliser vos clients
+
+1. **Un rapport mensuel** avec des chiffres et des explications.
+2. **Un calendrier commercial** de l''année préparé avec le client.
+3. **Des idées proactives** : nouveaux produits, nouveaux marchés, coffrets.
+4. **Une réactivité** écrite dans le contrat.
+5. **De l''honnêteté** : quand un produit ne se vend pas, dites-le avec les chiffres.
+
+> [!retenir]
+> - Forfait, forfait + pourcentage ou forfait + prime, selon le client.
+> - Des études de cas chiffrées pour attirer de nouveaux clients.
+> - Une arrivée en 6 étapes, avec un compte personnel.
+> - Déléguez l''exécution, gardez la stratégie et la relation client.
+> - La fidélité vient des chiffres, des idées et de l''honnêteté.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre modèle de prix et calculez-le pour 3 boutiques de tailles différentes.
+> 2. Rédigez une étude de cas (réelle ou issue de vos exercices).
+> 3. Créez votre questionnaire d''arrivée d''un client.
+> 4. Rédigez le plan de 90 jours d''une boutique fictive.
+> 5. Fixez vos objectifs à 12 mois : clients, revenu, équipe.
+>
+> **À livrer** : vos prix, votre étude de cas, votre questionnaire, votre plan et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 4, 0, 'Prime de 3 % au-delà de 15 000 € : combien pour un mois à 19 000 € ?', '["120 €","570 €","450 €","30 €"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 4, 1, 'Quel accès demander à un nouveau client ?', '["Un compte personnel d''équipe ou collaborateur","Aucun","Le mot de passe du propriétaire","Sa carte bancaire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-1-a', 4, 2, 'Que garder pour vous quand vous déléguez ?', '["L''ajout de produits uniquement","Rien","Les photos","La stratégie, l''analyse et la relation client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quelle spécialité s''occupe des clients qui n''achètent qu''une fois ?', '["E-mail et fidélisation","International","Opérations","Marketplaces"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Comment calcule-t-on le panier moyen ?', '["Visiteurs × commandes","Commandes ÷ visiteurs","Chiffre d''affaires ÷ commandes","Prix − coût"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Augmenter visiteurs, conversion et panier de 10 % chacun augmente le chiffre d''affaires d''environ…', '["30 % exactement","10 %","3 %","33 %"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Qu''est-ce que la valeur vie client (LTV) ?', '["Le prix d''un produit","Ce qu''un client rapporte sur toute sa relation avec la boutique","Le coût de la livraison","Le nombre de visiteurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Un taux de conversion bien plus faible sur téléphone indique…', '["Un problème de parcours sur mobile","Rien","Un problème de fournisseur","Un succès"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Où vérifier les prix et fonctions des offres Shopify ?', '["Sur un vieux forum","Nulle part","Dans un e-mail inconnu","Sur la page officielle des tarifs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quelle automatisation Flow éviter en dernier ?', '["Celles qui évitent des erreurs coûteuses viennent en premier","Seulement les décoratives","Aucune n''est utile","Toutes se valent"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quelle question poser avant d''installer une application ?', '["Aucune","Combien a-t-elle d''abonnés Instagram ?","Une fonction de Shopify fait-elle déjà la même chose ?","Quelle est sa couleur ?"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quand envoyer un e-mail de réachat ?', '["Le jour même de l''achat","Au moment où le produit est normalement fini","Jamais","Une fois par heure"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que doit contenir chaque e-mail marketing ?', '["Une facture","Le mot de passe du client","Un lien de désinscription","Rien de particulier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que faire d''une application payante inutilisée ?', '["En installer une deuxième","La garder par habitude","La supprimer","Augmenter l''abonnement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quand annoncer les frais de livraison ?', '["Seulement à la dernière étape","Tôt dans le parcours","Jamais","Après le paiement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'À quoi sert le stock de sécurité ?', '["Décorer l''entrepôt","Absorber les retards et les pics de ventes","Rien","Payer moins d''impôts"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Pourquoi prévoir plus de stock de sécurité pour une marque qui exporte depuis Madagascar ?', '["Les délais de transport et de formalités sont longs et incertains","Parce que les clients achètent moins","Pour gaspiller","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Une remise de 30 % sur un produit à 40 % de marge laisse…', '["70 points de marge","Aucune remise possible","40 points de marge","10 points de marge"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quand écrire une procédure ?', '["Pour chaque tâche répétée plus de 2 fois par mois","Jamais","Uniquement pour le patron","Seulement une fois par an"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que contient le tableau de bord hebdomadaire ?', '["Indicateurs, variations et commentaires","Rien","Les mots de passe","Seulement des photos"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que définit un marché dans Shopify Markets ?', '["Un fournisseur","Une application","Un thème","Langue, devise, prix et règles de livraison d''un pays ou groupe de pays"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quel moyen de paiement local est populaire en Suisse ?', '["Airtel Money","TWINT","MVola","Orange Money"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Qui confirme les règles d''importation d''un produit naturel ?', '["Le transitaire ou le conseiller du client","Un forum","Personne","Le gestionnaire seul"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que faut-il synchroniser avec les marketplaces ?', '["Le stock","La couleur du logo","Rien","Le mot de passe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Comment dit-on « panier moyen » en anglais ?', '["Conversion rate","Refund","Average order value","Stockout"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Quel modèle de prix vous fait profiter de la croissance créée ?', '["Forfait + pourcentage du chiffre d''affaires","Paiement à la ligne","Prix fixe sans révision","Travail gratuit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Combien d''étapes pour l''arrivée d''un client dans ce cours ?', '["10","2","6","1"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-a', 'Que faire quand un produit ne se vend pas ?', '["Le cacher","Changer les chiffres","Le dire au client avec les chiffres","Ne rien dire"]'::jsonb, 2);
 
 -- gestion-1-f
 delete from public.exam_questions where course_id = 'gestion-1-f';

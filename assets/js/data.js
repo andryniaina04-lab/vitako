@@ -1762,6 +1762,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-1-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de boutique en ligne un professionnel qui fait grandir le chiffre d'affaires : spécialité, indicateurs et audit de boutique, outils payants (offres d'abonnement Shopify, Shopify Flow, applications d'e-mail, d'avis, de fidélité et de stock), méthode de conversion, prévisions de stock et temps forts, vente internationale et marketplaces, puis prix liés aux résultats et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, calculer les indicateurs et auditer une boutique",
+   "Conseiller une offre Shopify, automatiser avec Flow et choisir les applications payantes",
+   "Améliorer la conversion, prévoir le stock et préparer les temps forts",
+   "Vendre dans plusieurs pays et sur les marketplaces",
+   "Rendre compte en français et en anglais",
+   "Fixer des prix liés aux résultats, déléguer et fidéliser"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et vendre de la croissance",
+    "summary": "Les 6 spécialités avancées, la formule de croissance, les 7 indicateurs clés, l'audit de boutique en 6 domaines et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les indicateurs clés",
+     "L'audit de boutique",
+     "Les offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : offres Shopify, Flow, applications et e-mails",
+    "summary": "Choisir une offre Shopify selon le coût total, automatisations Flow, 6 questions avant une application, 5 séquences e-mail et tableau du coût des applications.",
+    "sections": [
+     "Les offres d'abonnement Shopify",
+     "Automatiser avec Shopify Flow",
+     "Choisir des applications avec méthode",
+     "Les séquences e-mail automatiques",
+     "Maîtriser le coût des applications",
+     "Exercice pratique : la boîte à outils avancée"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : conversion, stock, temps forts et procédures",
+    "summary": "Leviers de conversion et tests A/B, point de commande et stock de sécurité, rétroplanning d'un temps fort, procédures écrites et tableau de bord hebdomadaire.",
+    "sections": [
+     "Améliorer la conversion",
+     "Prévoir le stock",
+     "Préparer un temps fort",
+     "Les procédures écrites",
+     "Le tableau de bord hebdomadaire",
+     "Exercice pratique : la méthode d'une boutique qui grandit"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : marchés, livraison, obligations et marketplaces",
+    "summary": "Shopify Markets et 6 décisions par marché, livraison, douanes et retours, obligations à vérifier avec les spécialistes, marketplaces et rapport en anglais.",
+    "sections": [
+     "Les marchés, les langues et les devises",
+     "Livraison et retours internationaux",
+     "Les obligations à vérifier avec les spécialistes",
+     "Les marketplaces",
+     "Travailler avec une marque étrangère",
+     "Exercice pratique : ouvrir un nouveau marché"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : prix, études de cas, équipe et fidélisation",
+    "summary": "Forfait, pourcentage et prime, études de cas en 5 parties, arrivée d'un client en 6 étapes, délégation et fidélisation.",
+    "sections": [
+     "Les modèles de prix",
+     "Les études de cas",
+     "L'arrivée d'un nouveau client",
+     "Déléguer à une petite équipe",
+     "Fidéliser vos clients",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-1-f": {
   "hours": 14,
   "description": "Le gestionnaire de boutique en ligne fait fonctionner une boutique au quotidien : catalogue, stocks, commandes, livraisons, retours, promotions et chiffres. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer des boutiques Shopify et WooCommerce pour des marques francophones et des commerces malgaches, en télétravail. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "gestion-1-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de boutique en ligne un professionnel qui fait grandir le chiffre d'affaires : spécialité, indicateurs et audit de boutique, outils payants (offres d'abonnement Shopify, Shopify Flow, applications d'e-mail, d'avis, de fidélité et de stock), méthode de conversion, prévisions de stock et temps forts, vente internationale et marketplaces, puis prix liés aux résultats et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, calculer les indicateurs et auditer une boutique",
+    "Conseiller une offre Shopify, automatiser avec Flow et choisir les applications payantes",
+    "Améliorer la conversion, prévoir le stock et préparer les temps forts",
+    "Vendre dans plusieurs pays et sur les marketplaces",
+    "Rendre compte en français et en anglais",
+    "Fixer des prix liés aux résultats, déléguer et fidéliser"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et vendre de la croissance",
+      "summary": "Les 6 spécialités avancées, la formule de croissance, les 7 indicateurs clés, l'audit de boutique en 6 domaines et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la formule du chiffre d'affaires ?", "options": ["Visiteurs × taux de conversion × panier moyen", "Visiteurs + commandes", "Prix − coût", "Commandes ÷ visiteurs"], "correct": 0 },
+        { "q": "400 commandes pour 20 000 sessions donnent quel taux de conversion ?", "options": ["2 %", "20 %", "0,2 %", "50 %"], "correct": 0 },
+        { "q": "Que vérifier dans le domaine « Applications et coûts » ?", "options": ["Les applications utiles ou non et leur coût mensuel", "La couleur du logo", "Le nom du propriétaire", "Le nombre d'abonnés Facebook"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : offres Shopify, Flow, applications et e-mails",
+      "summary": "Choisir une offre Shopify selon le coût total, automatisations Flow, 6 questions avant une application, 5 séquences e-mail et tableau du coût des applications.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que comparer pour conseiller une offre Shopify ?", "options": ["Le coût total : abonnement, frais et applications", "Seulement le prix de l'abonnement", "La couleur du thème", "Le nombre de produits du concurrent"], "correct": 0 },
+        { "q": "Comment fonctionne Shopify Flow ?", "options": ["Déclencheur, condition, action", "Uniquement par e-mail", "Par téléphone", "Par une pédale"], "correct": 0 },
+        { "q": "À qui envoyer des e-mails marketing ?", "options": ["Aux clients qui l'ont accepté", "À toutes les adresses trouvées", "À une liste achetée", "À personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : conversion, stock, temps forts et procédures",
+      "summary": "Leviers de conversion et tests A/B, point de commande et stock de sécurité, rétroplanning d'un temps fort, procédures écrites et tableau de bord hebdomadaire.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "6 ventes par jour, délai de 30 jours et 60 de sécurité donnent quel point de commande ?", "options": ["240", "96", "180", "36"], "correct": 0 },
+        { "q": "Un test A/B est-il fiable avec très peu de visiteurs ?", "options": ["Non", "Oui, toujours", "Oui, en une journée", "Oui, avec 3 commandes"], "correct": 0 },
+        { "q": "Que calculer avant d'accepter une promotion ?", "options": ["La marge après remise", "Le nombre de couleurs", "La taille des photos", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : marchés, livraison, obligations et marketplaces",
+      "summary": "Shopify Markets et 6 décisions par marché, livraison, douanes et retours, obligations à vérifier avec les spécialistes, marketplaces et rapport en anglais.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui décide des questions fiscales d'un nouveau marché ?", "options": ["Le client avec son comptable", "Le gestionnaire seul", "Le transporteur", "Les clients finaux"], "correct": 0 },
+        { "q": "Que faire d'une traduction automatique des fiches produits ?", "options": ["La faire relire par un locuteur natif", "La publier sans relire", "La supprimer", "La traduire une deuxième fois"], "correct": 0 },
+        { "q": "Comment calculer la marge sur une marketplace ?", "options": ["Après les commissions de la plateforme", "Sans tenir compte des commissions", "Avec le prix d'achat seulement", "On ne peut pas"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, études de cas, équipe et fidélisation",
+      "summary": "Forfait, pourcentage et prime, études de cas en 5 parties, arrivée d'un client en 6 étapes, délégation et fidélisation.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Prime de 3 % au-delà de 15 000 € : combien pour un mois à 19 000 € ?", "options": ["120 €", "570 €", "450 €", "30 €"], "correct": 0 },
+        { "q": "Quel accès demander à un nouveau client ?", "options": ["Un compte personnel d'équipe ou collaborateur", "Le mot de passe du propriétaire", "Sa carte bancaire", "Aucun"], "correct": 0 },
+        { "q": "Que garder pour vous quand vous déléguez ?", "options": ["La stratégie, l'analyse et la relation client", "L'ajout de produits uniquement", "Rien", "Les photos"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité s'occupe des clients qui n'achètent qu'une fois ?", "options": ["E-mail et fidélisation", "Marketplaces", "Opérations", "International"], "correct": 0 },
+    { "q": "Comment calcule-t-on le panier moyen ?", "options": ["Chiffre d'affaires ÷ commandes", "Commandes ÷ visiteurs", "Prix − coût", "Visiteurs × commandes"], "correct": 0 },
+    { "q": "Augmenter visiteurs, conversion et panier de 10 % chacun augmente le chiffre d'affaires d'environ…", "options": ["33 %", "10 %", "30 % exactement", "3 %"], "correct": 0 },
+    { "q": "Qu'est-ce que la valeur vie client (LTV) ?", "options": ["Ce qu'un client rapporte sur toute sa relation avec la boutique", "Le prix d'un produit", "Le coût de la livraison", "Le nombre de visiteurs"], "correct": 0 },
+    { "q": "Un taux de conversion bien plus faible sur téléphone indique…", "options": ["Un problème de parcours sur mobile", "Un succès", "Rien", "Un problème de fournisseur"], "correct": 0 },
+    { "q": "Où vérifier les prix et fonctions des offres Shopify ?", "options": ["Sur la page officielle des tarifs", "Sur un vieux forum", "Dans un e-mail inconnu", "Nulle part"], "correct": 0 },
+    { "q": "Quelle automatisation Flow éviter en dernier ?", "options": ["Celles qui évitent des erreurs coûteuses viennent en premier", "Toutes se valent", "Aucune n'est utile", "Seulement les décoratives"], "correct": 0 },
+    { "q": "Quelle question poser avant d'installer une application ?", "options": ["Une fonction de Shopify fait-elle déjà la même chose ?", "Quelle est sa couleur ?", "Combien a-t-elle d'abonnés Instagram ?", "Aucune"], "correct": 0 },
+    { "q": "Quand envoyer un e-mail de réachat ?", "options": ["Au moment où le produit est normalement fini", "Le jour même de l'achat", "Jamais", "Une fois par heure"], "correct": 0 },
+    { "q": "Que doit contenir chaque e-mail marketing ?", "options": ["Un lien de désinscription", "Le mot de passe du client", "Une facture", "Rien de particulier"], "correct": 0 },
+    { "q": "Que faire d'une application payante inutilisée ?", "options": ["La supprimer", "La garder par habitude", "En installer une deuxième", "Augmenter l'abonnement"], "correct": 0 },
+    { "q": "Quand annoncer les frais de livraison ?", "options": ["Tôt dans le parcours", "Seulement à la dernière étape", "Jamais", "Après le paiement"], "correct": 0 },
+    { "q": "À quoi sert le stock de sécurité ?", "options": ["Absorber les retards et les pics de ventes", "Décorer l'entrepôt", "Payer moins d'impôts", "Rien"], "correct": 0 },
+    { "q": "Pourquoi prévoir plus de stock de sécurité pour une marque qui exporte depuis Madagascar ?", "options": ["Les délais de transport et de formalités sont longs et incertains", "Pour gaspiller", "Ce n'est pas utile", "Parce que les clients achètent moins"], "correct": 0 },
+    { "q": "Une remise de 30 % sur un produit à 40 % de marge laisse…", "options": ["10 points de marge", "70 points de marge", "40 points de marge", "Aucune remise possible"], "correct": 0 },
+    { "q": "Quand écrire une procédure ?", "options": ["Pour chaque tâche répétée plus de 2 fois par mois", "Jamais", "Seulement une fois par an", "Uniquement pour le patron"], "correct": 0 },
+    { "q": "Que contient le tableau de bord hebdomadaire ?", "options": ["Indicateurs, variations et commentaires", "Seulement des photos", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Que définit un marché dans Shopify Markets ?", "options": ["Langue, devise, prix et règles de livraison d'un pays ou groupe de pays", "Un fournisseur", "Un thème", "Une application"], "correct": 0 },
+    { "q": "Quel moyen de paiement local est populaire en Suisse ?", "options": ["TWINT", "MVola", "Orange Money", "Airtel Money"], "correct": 0 },
+    { "q": "Qui confirme les règles d'importation d'un produit naturel ?", "options": ["Le transitaire ou le conseiller du client", "Le gestionnaire seul", "Un forum", "Personne"], "correct": 0 },
+    { "q": "Que faut-il synchroniser avec les marketplaces ?", "options": ["Le stock", "La couleur du logo", "Le mot de passe", "Rien"], "correct": 0 },
+    { "q": "Comment dit-on « panier moyen » en anglais ?", "options": ["Average order value", "Conversion rate", "Stockout", "Refund"], "correct": 0 },
+    { "q": "Quel modèle de prix vous fait profiter de la croissance créée ?", "options": ["Forfait + pourcentage du chiffre d'affaires", "Prix fixe sans révision", "Travail gratuit", "Paiement à la ligne"], "correct": 0 },
+    { "q": "Combien d'étapes pour l'arrivée d'un client dans ce cours ?", "options": ["6", "2", "10", "1"], "correct": 0 },
+    { "q": "Que faire quand un produit ne se vend pas ?", "options": ["Le dire au client avec les chiffres", "Le cacher", "Changer les chiffres", "Ne rien dire"], "correct": 0 }
+  ]
+}
