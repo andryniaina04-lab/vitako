@@ -1,0 +1,97 @@
+{
+  "id": "data-4-f",
+  "hours": 16,
+  "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise et y ajoute l'intelligence artificielle pour supprimer les tâches répétitives et réduire les erreurs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des centres de formation, des agences et des boutiques en ligne, avec Make, Zapier et des assistants d'IA : processus, données propres, consignes d'IA, scénarios, tests, documentation et mesure du temps gagné. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et le vocabulaire de l'automatisation",
+    "Repérer les tâches à automatiser et mesurer le temps perdu",
+    "Préparer des données propres, lire un JSON et écrire des consignes d'IA strictes",
+    "Construire, tester et documenter des scénarios dans Make et Zapier",
+    "Mener une mission complète avec l'équipe du client et mesurer les résultats",
+    "Vendre par la valeur, protéger les données et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de spécialiste automatisation et IA depuis Madagascar",
+      "summary": "Ce que fait le métier, déclencheurs, actions, filtres, routeurs et webhooks, les 4 critères d'une tâche à automatiser, ce que l'IA peut et ne peut pas faire, les clients.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un déclencheur ?", "options": ["L'événement qui lance le scénario", "Le prix de l'abonnement", "Une erreur", "Un mot de passe"], "correct": 0 },
+        { "q": "Quelle tâche mérite d'être automatisée ?", "options": ["Une tâche répétitive avec des règles claires", "Une décision unique et difficile", "Un entretien d'embauche", "Une négociation"], "correct": 0 },
+        { "q": "Peut-on envoyer automatiquement un message important écrit par l'IA sans relecture ?", "options": ["Non, pas sans tests longs et validation du client", "Oui, toujours", "Oui, à 500 clients", "Oui, la nuit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : processus, données propres, JSON, consignes d'IA et erreurs",
+      "summary": "Cartographie de processus, règles de données propres, lecture d'un JSON, consigne d'IA en 6 éléments avec format strict, prévision des erreurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant d'automatiser ?", "options": ["Dessiner le processus actuel", "Acheter l'offre la plus chère", "Supprimer le tableau", "Rien"], "correct": 0 },
+        { "q": "Pourquoi demander un format de sortie strict à l'IA ?", "options": ["Pour que l'étape suivante puisse le lire sans erreur", "Pour décorer", "Pour payer moins", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que représente [ ] en JSON ?", "options": ["Une liste", "Un nombre", "Un commentaire", "Une erreur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Make, Zapier, étapes d'IA et offres payantes",
+      "summary": "Comparaison de Make et Zapier, premier scénario avec filtre et routeur, premier Zap, étape d'IA avec routage, tests, surveillance, documentation et coûts.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi mettre la colonne « Statut » à « Traité » à la fin d'un Zap ?", "options": ["Pour ne pas traiter deux fois la même ligne", "Pour changer la couleur", "Pour payer moins", "Pour supprimer la ligne"], "correct": 0 },
+        { "q": "Que faire d'un brouillon de réponse proposé par l'IA ?", "options": ["L'enregistrer comme brouillon pour relecture", "L'envoyer directement à tous", "Le supprimer toujours", "Le publier"], "correct": 0 },
+        { "q": "Au nom de qui créer les comptes Make et Zapier ?", "options": ["Au nom du client", "Au nom du freelance", "Au nom d'un ami", "Sans nom"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'automatisation de Formation Mendrika",
+      "summary": "Diagnostic chiffré, 4 scénarios reliés, IA limitée à une fiche d'informations officielle, construction progressive avec l'équipe, guide, remise technique et mesure des résultats.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur quoi l'IA doit-elle s'appuyer pour répondre aux questions fréquentes ?", "options": ["Une fiche d'informations officielle", "Son imagination", "Les sites des concurrents", "Rien"], "correct": 0 },
+        { "q": "Comment mettre les scénarios en service ?", "options": ["Progressivement, un à la fois", "Tous le même jour sans test", "Jamais", "Seulement le week-end"], "correct": 0 },
+        { "q": "Qui impliquer dès le début ?", "options": ["La personne dont le travail est automatisé", "Personne", "Uniquement les concurrents", "Uniquement le comptable"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Études de cas chiffrées et démonstrations, 5 canaux, prix par la valeur, devis en 8 points, 6 règles de protection des données, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "20 heures gagnées par mois à 6 000 Ar l'heure valent…", "options": ["120 000 Ar par mois", "20 000 Ar par mois", "6 000 Ar par mois", "1 200 000 Ar par mois"], "correct": 0 },
+        { "q": "Qui paie les abonnements Make, Zapier et IA ?", "options": ["Le client", "Le freelance", "Personne", "La plateforme de freelance"], "correct": 0 },
+        { "q": "Quelles données ne jamais mettre dans une consigne d'IA ?", "options": ["Des données sensibles comme les mots de passe", "Une catégorie", "Un format de sortie", "Le nom de l'entreprise"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un spécialiste automatisation et IA ?", "options": ["Il relie les outils et ajoute l'IA pour supprimer les tâches répétitives", "Il répare les imprimantes", "Il dessine des logos", "Il fait la comptabilité"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un filtre dans un scénario ?", "options": ["Une condition pour continuer ou non", "Un mot de passe", "Un abonnement", "Une image"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un routeur ?", "options": ["Plusieurs chemins selon les cas", "Un câble Internet obligatoire", "Une facture", "Un formulaire"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un webhook ?", "options": ["Une adresse qui reçoit des données envoyées par un autre outil", "Un crochet en métal", "Un logiciel de dessin", "Une police"], "correct": 0 },
+    { "q": "10 minutes × 20 fois par semaine font environ…", "options": ["3 heures 20 par semaine", "20 minutes", "10 heures", "30 minutes"], "correct": 0 },
+    { "q": "Quelle tâche l'IA fait-elle bien dans un processus ?", "options": ["Classer des messages", "Prendre seule une décision de licenciement", "Garantir qu'elle ne se trompe jamais", "Remplacer toute vérification"], "correct": 0 },
+    { "q": "Quelle limite a l'IA ?", "options": ["Elle peut se tromper ou inventer", "Elle ne se trompe jamais", "Elle ne lit pas le texte", "Elle ne parle qu'anglais"], "correct": 0 },
+    { "q": "Pourquoi utiliser des listes déroulantes dans un formulaire ?", "options": ["Pour que les valeurs soient toujours écrites de la même façon", "Pour décorer", "Pour ralentir l'utilisateur", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "À quoi sert une colonne de statut ?", "options": ["Savoir où en est chaque élément", "Afficher une image", "Calculer la TVA", "Rien"], "correct": 0 },
+    { "q": "Que faire si l'IA n'est pas sûre de la catégorie ?", "options": ["Utiliser la catégorie « autre » et envoyer à un humain", "Inventer une catégorie", "Arrêter l'entreprise", "Supprimer le message"], "correct": 0 },
+    { "q": "Pourquoi normaliser les numéros de téléphone malgaches ?", "options": ["Ils sont écrits de nombreuses façons", "Pour les cacher", "Pour les vendre", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que compte Make dans son offre ?", "options": ["Des opérations", "Des pages", "Des images", "Des minutes de vidéo"], "correct": 0 },
+    { "q": "Comment tester un module dans Make ?", "options": ["Avec Run once et une vraie réponse de test", "En publiant directement", "Sans données", "En le supprimant"], "correct": 0 },
+    { "q": "Où garder une clé d'API ?", "options": ["Dans la connexion sécurisée de la plateforme", "Dans un e-mail", "Dans un document partagé", "Sur un réseau social"], "correct": 0 },
+    { "q": "Quel cas tester avant la mise en service ?", "options": ["Un doublon d'inscription", "La couleur du formulaire", "Le nom du formateur", "Aucun"], "correct": 0 },
+    { "q": "Que contient la fiche de documentation d'un scénario ?", "options": ["Déclencheur, étapes, données, procédure de panne, responsable", "Seulement le prix", "Rien", "Les mots de passe"], "correct": 0 },
+    { "q": "Que surveiller la première semaine ?", "options": ["L'historique des exécutions chaque jour", "Rien", "Le prix des concurrents", "La météo"], "correct": 0 },
+    { "q": "Combien de temps perdait l'assistante dans l'exemple Mendrika ?", "options": ["Environ 30 heures par mois", "5 minutes", "300 heures par mois", "Aucun"], "correct": 0 },
+    { "q": "Qui valide la liste des élèves qui reçoivent une attestation ?", "options": ["La directrice", "L'IA seule", "Le scénario sans contrôle", "Personne"], "correct": 0 },
+    { "q": "Que faire pour les demandes reçues sur Facebook ou WhatsApp ?", "options": ["Un formulaire rapide rempli par l'assistante qui déclenche le scénario", "Les ignorer", "Copier les mots de passe", "Supprimer les messages"], "correct": 0 },
+    { "q": "Que contient le guide pour l'équipe ?", "options": ["Ce qui est automatique, où voir, que faire en cas de problème", "Le code source complet", "Les factures", "Rien"], "correct": 0 },
+    { "q": "Comment justifier son prix ?", "options": ["Par le temps gagné et les erreurs évitées", "Par le nombre de clics", "Par le prix d'un concurrent au hasard", "On ne le justifie pas"], "correct": 0 },
+    { "q": "Quelle protection prévoir contre une automatisation qui s'emballe ?", "options": ["Des limites d'exécution et des alertes", "Aucune", "Un abonnement plus cher", "Plus de messages"], "correct": 0 },
+    { "q": "Que faire de vos accès à la fin de la mission sans maintenance ?", "options": ["Les retirer", "Les garder pour toujours", "Les donner à un ami", "Les publier"], "correct": 0 },
+    { "q": "Quelle évolution demande JavaScript ou Python ?", "options": ["Développeur d'automatisations", "Professeur de langue", "Comptable", "Monteur audio"], "correct": 0 }
+  ]
+}

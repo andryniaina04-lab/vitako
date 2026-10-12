@@ -1263,6 +1263,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-4-f": {
+  "hours": 16,
+  "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise et y ajoute l'intelligence artificielle pour supprimer les tâches répétitives et réduire les erreurs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des centres de formation, des agences et des boutiques en ligne, avec Make, Zapier et des assistants d'IA : processus, données propres, consignes d'IA, scénarios, tests, documentation et mesure du temps gagné. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et le vocabulaire de l'automatisation",
+   "Repérer les tâches à automatiser et mesurer le temps perdu",
+   "Préparer des données propres, lire un JSON et écrire des consignes d'IA strictes",
+   "Construire, tester et documenter des scénarios dans Make et Zapier",
+   "Mener une mission complète avec l'équipe du client et mesurer les résultats",
+   "Vendre par la valeur, protéger les données et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de spécialiste automatisation et IA depuis Madagascar",
+    "summary": "Ce que fait le métier, déclencheurs, actions, filtres, routeurs et webhooks, les 4 critères d'une tâche à automatiser, ce que l'IA peut et ne peut pas faire, les clients.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le vocabulaire de base",
+     "Quelles tâches automatiser ?",
+     "Ce que l'IA peut faire dans un processus",
+     "Qui sont vos clients ?",
+     "Exercice pratique : repérer les automatisations"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : processus, données propres, JSON, consignes d'IA et erreurs",
+    "summary": "Cartographie de processus, règles de données propres, lecture d'un JSON, consigne d'IA en 6 éléments avec format strict, prévision des erreurs.",
+    "sections": [
+     "Dessiner le processus d'abord",
+     "Des données propres",
+     "Lire un JSON simple",
+     "Écrire une bonne consigne d'IA",
+     "Prévoir les erreurs",
+     "Exercice pratique : préparer une automatisation"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Make, Zapier, étapes d'IA et offres payantes",
+    "summary": "Comparaison de Make et Zapier, premier scénario avec filtre et routeur, premier Zap, étape d'IA avec routage, tests, surveillance, documentation et coûts.",
+    "sections": [
+     "Make et Zapier",
+     "Votre premier scénario dans Make",
+     "Votre premier Zap dans Zapier",
+     "Ajouter une étape d'IA",
+     "Tester, surveiller, documenter",
+     "Les offres payantes et les abonnements d'IA",
+     "Exercice pratique : vos premiers scénarios"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : l'automatisation de Formation Mendrika",
+    "summary": "Diagnostic chiffré, 4 scénarios reliés, IA limitée à une fiche d'informations officielle, construction progressive avec l'équipe, guide, remise technique et mesure des résultats.",
+    "sections": [
+     "Le cas pratique : « Formation Mendrika »",
+     "Étape 1 : le diagnostic",
+     "Étape 2 : la conception",
+     "Étape 3 : construire et tester avec le client",
+     "Étape 4 : former et documenter",
+     "Étape 5 : mesurer les résultats",
+     "Exercice pratique : la mission Formation Mendrika"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Études de cas chiffrées et démonstrations, 5 canaux, prix par la valeur, devis en 8 points, 6 règles de protection des données, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Le devis et la protection des données",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "design-0-a": {
   "hours": 15,
   "description": "Ce niveau Avancé aide le graphiste à passer de l'exécution de petites commandes à des projets mieux payés : spécialité, offre haut de gamme, logiciels professionnels d'Adobe, méthodes de studio, clients internationaux et développement de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
