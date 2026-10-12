@@ -88,7 +88,9 @@ Pour publier :
 1. Créez ou modifiez le dossier de la formation.
 2. Lancez `node tools/build.mjs` (il met à jour `assets/js/data.js` et `supabase/seed.sql`).
 3. Exécutez `supabase/seed.sql` dans Supabase → SQL Editor. Les comptes, paiements et attestations ne sont pas touchés.
-4. Enregistrez les changements sur GitHub : le site se met à jour.
+4. Lancez `node tools/stamp.mjs` (numéro de version, pour que les navigateurs chargent la nouvelle version), puis enregistrez les changements sur GitHub : le site se met à jour.
+
+Le numéro de version affiché en bas du site permet de vérifier que la dernière mise en ligne est bien visible.
 
 **Vidéos** : mettez le lien dans `video_url` du module (YouTube, Vimeo ou fichier `.mp4`).
 Sans lien, la leçon affiche « Vidéo bientôt disponible » et le texte suffit pour réussir le test.

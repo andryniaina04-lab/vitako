@@ -293,3 +293,4 @@ a.back{display:inline-block}
 .menu-item.danger{color:var(--danger);border-top:1px solid var(--line);border-radius:0 0 10px 10px;margin-top:4px}
 .menu-cta{display:flex;flex-direction:column;gap:8px;padding:10px 4px 4px;border-top:1px solid var(--line);margin-top:4px}
 @media (max-width:480px){.tb-pill{display:none}}
+.version{color:var(--muted);font-size:.78rem;font-family:var(--mono)}
