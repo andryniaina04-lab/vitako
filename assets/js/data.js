@@ -1995,6 +1995,87 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-3-f": {
+  "hours": 15,
+  "description": "Le retoucheur photo prépare et améliore des photos pour les boutiques en ligne, l'immobilier, les photographes et les particuliers, sans tromper sur la réalité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance avec Photopea et GIMP : image numérique, histogramme, couleurs, calques et masques, détourage, fond blanc, nettoyage, redressement, traitement par lots, missions complètes et prix à l'image. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, ses spécialités et l'éthique de la retouche",
+   "Corriger l'exposition et les couleurs avec l'histogramme et des calques de réglage",
+   "Détourer un produit et le placer sur fond blanc selon les règles des plateformes",
+   "Nettoyer, redresser et traiter des séries par lots",
+   "Suivre un brief, livrer une série cohérente et contrôler la qualité",
+   "Construire un portfolio avant et après, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de retoucheur photo depuis Madagascar",
+    "summary": "Les types de retouche et leurs clients, le détourage, les tâches les plus demandées, l'éthique de la retouche et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les grands types de retouche",
+     "Les tâches les plus demandées",
+     "L'éthique de la retouche",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : observer comme un retoucheur"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : image numérique, histogramme, couleurs, calques et export",
+    "summary": "Pixels, profils et formats, lecture de l'histogramme, niveaux et courbes, balance des blancs, couleurs fidèles, calques de réglage et masques, export adapté.",
+    "sections": [
+     "L'image numérique",
+     "L'histogramme et l'exposition",
+     "La balance des blancs et les couleurs",
+     "Calques et masques : travailler sans abîmer",
+     "Exporter correctement",
+     "Exercice pratique : corriger 5 photos"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Photopea, GIMP, détourage, nettoyage, lots et outils payants",
+    "summary": "Photopea et GIMP, détourage à la plume et contours difficiles, fond blanc, outils de nettoyage, redressement, traitement par lots, Photoshop et Lightroom.",
+    "sections": [
+     "Photopea et GIMP",
+     "Le détourage",
+     "Le nettoyage",
+     "Le redressement",
+     "Le traitement par lots",
+     "Les outils payants",
+     "Exercice pratique : votre première série e-commerce"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : une série de produits et les photos d'un hôtel",
+    "summary": "Brief et questions, échantillon validé, cohérence de la série, intérieurs fidèles, liste de contrôle qualité, livraison et retours.",
+    "sections": [
+     "Mission 1 : la boutique « Raphia & Co »",
+     "Mission 2 : l'hôtel « Lodge Ravinala »",
+     "Contrôler la qualité avant livraison",
+     "Livrer et gérer les retours",
+     "Exercice pratique : vos deux missions"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avant et après, 5 canaux, prix à l'image selon la difficulté, conditions de travail en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Les conditions de travail",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-0-a": {
   "hours": 20,
   "description": "Ce niveau Avancé fait du développeur front-end un professionnel confirmé : spécialité (applications React et Next.js, performance, accessibilité, design system, e-commerce, tests), audit technique et signaux web essentiels, outils payants (WebStorm et GitHub Copilot) avec TypeScript et Next.js, tests, intégration continue, performance et accessibilité, travail international en anglais et internationalisation, puis tarif, maintenance, portfolio et petite équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",

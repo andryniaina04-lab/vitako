@@ -1,0 +1,97 @@
+{
+  "id": "design-3-f",
+  "hours": 15,
+  "description": "Le retoucheur photo prépare et améliore des photos pour les boutiques en ligne, l'immobilier, les photographes et les particuliers, sans tromper sur la réalité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance avec Photopea et GIMP : image numérique, histogramme, couleurs, calques et masques, détourage, fond blanc, nettoyage, redressement, traitement par lots, missions complètes et prix à l'image. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, ses spécialités et l'éthique de la retouche",
+    "Corriger l'exposition et les couleurs avec l'histogramme et des calques de réglage",
+    "Détourer un produit et le placer sur fond blanc selon les règles des plateformes",
+    "Nettoyer, redresser et traiter des séries par lots",
+    "Suivre un brief, livrer une série cohérente et contrôler la qualité",
+    "Construire un portfolio avant et après, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de retoucheur photo depuis Madagascar",
+      "summary": "Les types de retouche et leurs clients, le détourage, les tâches les plus demandées, l'éthique de la retouche et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le détourage ?", "options": ["Séparer précisément un sujet de son arrière-plan", "Agrandir une photo", "Imprimer une photo", "Changer le nom du fichier"], "correct": 0 },
+        { "q": "Quelle retouche est trompeuse ?", "options": ["Cacher une fissure réelle d'un mur dans une annonce", "Corriger la balance des blancs", "Retirer une poussière", "Redresser un mur penché"], "correct": 0 },
+        { "q": "Pourquoi un écran de bonne qualité est-il important ?", "options": ["Pour voir des couleurs justes", "Pour jouer", "Pour la décoration", "Ce n'est pas important"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : image numérique, histogramme, couleurs, calques et export",
+      "summary": "Pixels, profils et formats, lecture de l'histogramme, niveaux et courbes, balance des blancs, couleurs fidèles, calques de réglage et masques, export adapté.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Un histogramme tassé à gauche indique…", "options": ["Une photo sous-exposée", "Une photo surexposée", "Une photo parfaite", "Une photo en noir et blanc"], "correct": 0 },
+        { "q": "Sur un masque, que signifie le blanc ?", "options": ["La zone est visible", "La zone est cachée", "La zone est supprimée", "Rien"], "correct": 0 },
+        { "q": "Quel format garde la transparence d'un produit détouré ?", "options": ["PNG", "JPEG", "TXT", "MP3"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Photopea, GIMP, détourage, nettoyage, lots et outils payants",
+      "summary": "Photopea et GIMP, détourage à la plume et contours difficiles, fond blanc, outils de nettoyage, redressement, traitement par lots, Photoshop et Lightroom.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel outil convient à un produit aux formes nettes ?", "options": ["La plume", "La gomme", "Le pot de peinture", "Le texte"], "correct": 0 },
+        { "q": "Comment vérifier un détourage ?", "options": ["Placer un calque de couleur vive dessous", "Imprimer l'image", "Fermer le logiciel", "Ne pas vérifier"], "correct": 0 },
+        { "q": "À quoi sert surtout Lightroom ?", "options": ["Développer les RAW et retoucher des séries entières", "Créer des sites web", "Faire de la comptabilité", "Monter des vidéos"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une série de produits et les photos d'un hôtel",
+      "summary": "Brief et questions, échantillon validé, cohérence de la série, intérieurs fidèles, liste de contrôle qualité, livraison et retours.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de traiter une série de 40 photos ?", "options": ["Envoyer un échantillon de 2 ou 3 images à valider", "Tout traiter directement", "Facturer sans commencer", "Rien"], "correct": 0 },
+        { "q": "Que doivent être les murs verticaux d'une photo d'intérieur ?", "options": ["Verticaux", "Penchés", "Supprimés", "Courbés"], "correct": 0 },
+        { "q": "Comment envoyer de gros fichiers ?", "options": ["Par un lien de transfert ou de stockage en ligne", "En 40 pièces jointes", "Par SMS", "Par la poste"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avant et après, 5 canaux, prix à l'image selon la difficulté, conditions de travail en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelles images mettre dans votre portfolio ?", "options": ["Les vôtres, des images libres de droits ou des travaux de clients avec accord", "N'importe quelle photo trouvée sur Internet", "Les photos d'autres photographes", "Aucune"], "correct": 0 },
+        { "q": "Comment fixer des prix justes ?", "options": ["Chronométrer ses retouches pour connaître son temps réel", "Copier le prix le plus bas", "Deviner", "Travailler gratuitement"], "correct": 0 },
+        { "q": "Quelle évolution concerne la retouche de peau haut de gamme ?", "options": ["Spécialiste beauté ou mode", "Comptable", "Développeur", "Traducteur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle tâche est la plus demandée par les boutiques en ligne ?", "options": ["Détourage et fond blanc", "Montage vidéo", "Traduction", "Comptabilité"], "correct": 0 },
+    { "q": "Que doit être la couleur d'un produit vendu ?", "options": ["Fidèle au produit réel", "Plus vive que la réalité", "Différente pour plaire", "En noir et blanc"], "correct": 0 },
+    { "q": "Quel client sous-traite souvent des séries de centaines de photos ?", "options": ["Un photographe de mariage", "Un comptable", "Un développeur", "Un professeur"], "correct": 0 },
+    { "q": "Quel profil de couleur utiliser pour le web ?", "options": ["sRGB", "CMJN obligatoire", "Aucun", "Niveaux de gris"], "correct": 0 },
+    { "q": "Que garder intact pendant la retouche ?", "options": ["L'original", "Seulement l'export", "Rien", "Le nom du client"], "correct": 0 },
+    { "q": "Un histogramme collé au bord droit indique…", "options": ["Des blancs brûlés", "Une photo trop sombre", "Une photo parfaite", "Un fichier vide"], "correct": 0 },
+    { "q": "Une photo prise sous une ampoule est souvent…", "options": ["Trop jaune", "Trop bleue", "Trop verte", "Parfaite"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un calque de réglage ?", "options": ["Une correction appliquée sans modifier les pixels d'origine", "Une image supprimée", "Un filtre définitif", "Un nom de fichier"], "correct": 0 },
+    { "q": "Pourquoi exporter des images légères pour les sites malgaches ?", "options": ["Les visiteurs utilisent souvent des données mobiles", "Pour baisser la qualité volontairement", "Ce n'est pas utile", "Pour payer moins le logiciel"], "correct": 0 },
+    { "q": "Quel outil fonctionne dans le navigateur ?", "options": ["Photopea", "GIMP", "Lightroom Classic", "Aucun"], "correct": 0 },
+    { "q": "Où rester en traçant à la plume ?", "options": ["Légèrement à l'intérieur du bord", "Très à l'extérieur", "Au hasard", "Au centre du produit"], "correct": 0 },
+    { "q": "Que faut-il lire avant de préparer la photo principale pour une place de marché ?", "options": ["Les consignes de la plateforme", "Rien", "Un roman", "Les avis des concurrents"], "correct": 0 },
+    { "q": "Quel outil retire une petite poussière en un clic ?", "options": ["Le correcteur localisé", "La plume", "Le texte", "Le recadrage"], "correct": 0 },
+    { "q": "Que faut-il garder en nettoyant un produit ?", "options": ["Sa texture réelle et ses caractéristiques", "Les étiquettes de prix", "Les poussières", "Les reflets gênants"], "correct": 0 },
+    { "q": "Qu'est-ce que le traitement par lots ?", "options": ["Appliquer les mêmes opérations à de nombreuses images", "Retoucher une seule image", "Imprimer des photos", "Supprimer des photos"], "correct": 0 },
+    { "q": "Que faire après un traitement par lots ?", "options": ["Vérifier chaque image et corriger les exceptions", "Livrer sans regarder", "Tout supprimer", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un brief ?", "options": ["Le document qui décrit précisément ce que le client attend", "Une facture", "Un logiciel", "Un format d'image"], "correct": 0 },
+    { "q": "Comment garder la cohérence d'une série ?", "options": ["Mêmes réglages et même cadrage, comparaison côte à côte", "Un style différent par photo", "Au hasard", "Sans échantillon"], "correct": 0 },
+    { "q": "Que ne faut-il pas faire sur une photo de chambre d'hôtel ?", "options": ["Agrandir la pièce", "Redresser les verticales", "Équilibrer la lumière", "Retirer un câble"], "correct": 0 },
+    { "q": "Quelle vérification fait partie de la liste de contrôle ?", "options": ["Les noms de fichiers conformes", "La couleur préférée du retoucheur", "Le prix du logiciel", "Rien"], "correct": 0 },
+    { "q": "Comment recevoir les retours du client ?", "options": ["Par écrit, avec le nom des fichiers concernés", "Oralement sans trace", "Jamais", "Par devinette"], "correct": 0 },
+    { "q": "Quel premier contact proposer à une boutique ?", "options": ["Retoucher gratuitement 2 de ses photos pour montrer l'avant et après", "Un prix sans exemple", "Une critique", "Rien"], "correct": 0 },
+    { "q": "Quel niveau de prix pour un détourage de cheveux ?", "options": ["Complexe, sur devis", "Simple", "Gratuit", "Le même qu'un fond uni"], "correct": 0 },
+    { "q": "Que prévoir pour les grosses séries ?", "options": ["Un acompte", "Aucun paiement", "Le paiement un an après", "Le paiement en photos"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

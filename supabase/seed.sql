@@ -9,7 +9,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
-  ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 13, false),
+  ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, false),
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 14, false),
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
@@ -12644,6 +12644,568 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Où publier une étude de cas visible par les recruteurs ?', '["Nulle part","Un SMS","Un groupe privé","Behance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel partenaire peut vous apporter des projets de design ?', '["Un concurrent direct","Personne","Un client mécontent","Un développeur freelance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quand les fichiers sont-ils transférés au client ?', '["Au premier appel","Avant de commencer","Après le paiement complet","Jamais"]'::jsonb, 2);
+
+-- design-3-f
+delete from public.exam_questions where course_id = 'design-3-f';
+delete from public.module_questions where course_id = 'design-3-f';
+delete from public.lessons where course_id = 'design-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-f', 0, 'Le métier de retoucheur photo depuis Madagascar', 'Les types de retouche et leurs clients, le détourage, les tâches les plus demandées, l''éthique de la retouche et le poste de travail.', 'Chaque jour, des milliers de boutiques en ligne, d''agences immobilières et de photographes ont besoin de photos propres : produits détourés sur fond blanc, couleurs corrigées, pièces lumineuses, portraits naturels. Le retoucheur photo fait ce travail, souvent en grandes quantités, entièrement à distance. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un retoucheur photo.
+> 2. Citer les grands types de retouche et leurs clients.
+> 3. Connaître les règles éthiques de la retouche.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un retoucheur photo **améliore et prépare des photos pour leur usage (boutique en ligne, annonce immobilière, album, publicité) en corrigeant la lumière, les couleurs et les défauts, sans tromper sur la réalité**.
+
+## Les grands types de retouche
+
+| Type | Ce qu''on fait | Clients |
+| --- | --- | --- |
+| **Photos de produits (e-commerce)** | Détourage, fond blanc, ombres, couleurs fidèles, recadrage aux formats des plateformes | Boutiques en ligne, marques, places de marché |
+| **Immobilier** | Lumière, perspectives redressées, fenêtres équilibrées, ciel | Agences immobilières, photographes, locations de vacances |
+| **Portrait** | Peau naturelle, yeux, lumière, arrière-plan | Photographes, entreprises (photos d''équipe), particuliers |
+| **Mariage et événements** | Correction de séries de centaines de photos, style homogène | Photographes de mariage |
+| **Restauration** | Réparer de vieilles photos abîmées, les recolorer | Particuliers, archives, familles |
+| **Composition** | Assembler plusieurs images | Publicité, réseaux sociaux |
+
+> [!definition] Détourage
+> Séparer précisément un sujet (un produit, une personne) de son arrière-plan, pour le placer sur un fond blanc, transparent ou nouveau.
+
+## Les tâches les plus demandées
+
+1. **Détourage** et fond blanc pour les boutiques en ligne.
+2. **Correction de l''exposition et de la balance des blancs**.
+3. **Suppression de défauts** : poussières, taches, fils, étiquettes.
+4. **Redressement** des lignes et des perspectives.
+5. **Recadrage et redimensionnement** aux formats demandés.
+6. **Traitement par lots** de dizaines ou de centaines de photos.
+
+## L''éthique de la retouche
+
+| Acceptable | Trompeur (à refuser ou à signaler) |
+| --- | --- |
+| Corriger la lumière et les couleurs pour qu''elles soient fidèles | Changer la couleur d''un produit vendu |
+| Retirer une poussière ou une étiquette de prix | Cacher un défaut réel d''un produit ou d''un logement |
+| Remplacer un ciel gris par un ciel bleu sur une photo immobilière, si les règles du client et de la plateforme le permettent | Supprimer une ligne électrique, un mur fissuré ou un bâtiment voisin pour tromper l''acheteur |
+| Lisser légèrement une peau | Modifier la forme du corps sans l''accord de la personne |
+
+> [!attention]
+> Certaines plateformes et certains pays ont des règles sur les photos d''annonces et de publicité (par exemple, interdire les modifications qui trompent sur l''état d''un bien, ou signaler les photos de personnes retouchées). Suivez toujours les **consignes du client** et les **règles des plateformes**, et refusez les retouches qui trompent les acheteurs.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Boutiques en ligne et marques** (artisanat, vanille, vêtements) qui photographient leurs produits au téléphone.
+2. **Hôtels et agences de voyage** qui veulent de belles photos de chambres.
+3. **Photographes** de mariage et d''événements qui sous-traitent le tri et la retouche.
+4. **Particuliers** qui veulent restaurer des photos de famille.
+
+### À l''étranger
+
+1. **Boutiques en ligne** qui ont des centaines de produits à détourer.
+2. **Photographes immobiliers et de mariage** qui sous-traitent la retouche.
+3. **Agences de retouche** qui cherchent des retoucheurs réguliers.
+
+> [!madagascar] Votre avantage
+> Les photographes européens envoient leurs photos le soir et veulent les récupérer le matin. Avec le décalage horaire, vous pouvez travailler pendant leur nuit… ou simplement livrer en début de matinée à Paris grâce à l''avance d''une ou deux heures. Ce rythme de livraison rapide est très apprécié des agences de retouche.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive (16 Go conseillés pour les grosses photos) |
+| **Écran** | Un écran de bonne qualité, si possible calibré : les couleurs doivent être justes |
+| **Souris ou tablette graphique** | Une tablette aide beaucoup pour le détourage et la retouche de peau |
+| **Logiciels gratuits** | Photopea (dans le navigateur), GIMP |
+| **Connexion** | Suffisante pour envoyer et recevoir des fichiers lourds |
+| **Stockage** | Disque externe ou espace en ligne pour les fichiers des clients |
+
+> [!retenir]
+> - Le retoucheur prépare les photos pour leur usage, sans tromper.
+> - E-commerce, immobilier, portrait, mariage, restauration, composition.
+> - Le détourage et le traitement par lots sont les tâches les plus demandées.
+> - Corriger oui, tromper non.
+> - Clients : boutiques, hôtels, photographes, agences, particuliers.
+
+## Exercice pratique : observer comme un retoucheur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Ouvrez Photopea dans votre navigateur et explorez ses menus.
+> 2. Choisissez 5 photos de produits sur des boutiques en ligne malgaches et notez pour chacune 3 améliorations possibles.
+> 3. Choisissez 3 annonces immobilières ou d''hôtels et notez ce qui pourrait être corrigé de façon honnête.
+> 4. Classez 6 retouches en « acceptable » ou « trompeuse » et justifiez.
+>
+> **À livrer** : vos observations et votre classement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 0, 0, 'Qu''est-ce que le détourage ?', '["Séparer précisément un sujet de son arrière-plan","Changer le nom du fichier","Imprimer une photo","Agrandir une photo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 0, 1, 'Quelle retouche est trompeuse ?', '["Corriger la balance des blancs","Cacher une fissure réelle d''un mur dans une annonce","Redresser un mur penché","Retirer une poussière"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 0, 2, 'Pourquoi un écran de bonne qualité est-il important ?', '["Pour la décoration","Ce n''est pas important","Pour voir des couleurs justes","Pour jouer"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-f', 1, 'Les bases : image numérique, histogramme, couleurs, calques et export', 'Pixels, profils et formats, lecture de l''histogramme, niveaux et courbes, balance des blancs, couleurs fidèles, calques de réglage et masques, export adapté.', 'Ce module vous donne les bases techniques de la retouche : comprendre une image numérique, lire un histogramme, corriger l''exposition et les couleurs, travailler avec des calques et des masques sans abîmer l''original, et exporter dans le bon format.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre les pixels, la résolution et les formats d''image.
+> 2. Lire un histogramme et corriger l''exposition.
+> 3. Corriger la balance des blancs et les couleurs.
+> 4. Travailler de façon non destructive avec calques et masques.
+> 5. Exporter dans le bon format et la bonne taille.
+
+## L''image numérique
+
+| Notion | Ce que c''est | Exemple |
+| --- | --- | --- |
+| **Pixel** | Le plus petit point de l''image | Une photo de 4 000 × 3 000 pixels |
+| **Résolution** | Nombre de pixels | 12 mégapixels |
+| **Profil de couleur** | La façon de décrire les couleurs | sRGB pour le web |
+| **Profondeur** | Nombre de nuances par couleur | 8 bits (JPEG), 16 bits (TIFF, RAW) |
+
+### Les formats
+
+| Format | Usage | Point clé |
+| --- | --- | --- |
+| **JPEG** | Web, envoi aux clients | Compressé, léger, perd un peu de qualité à chaque enregistrement |
+| **PNG** | Images avec transparence (produit détouré) | Sans perte, plus lourd |
+| **WebP** | Web moderne | Léger, avec transparence possible |
+| **TIFF** | Archives, impression | Sans perte, très lourd |
+| **PSD** | Fichier de travail Photoshop ou Photopea avec calques | Garde toutes les modifications |
+| **RAW** | Fichier brut de l''appareil photo | Beaucoup d''informations, à « développer » |
+
+> [!astuce]
+> Gardez toujours l''**original** intact et un **fichier de travail** avec les calques (PSD). Exportez ensuite les versions finales (JPEG, PNG) pour le client.
+
+## L''histogramme et l''exposition
+
+> [!definition] Histogramme
+> Un graphique qui montre la répartition des tons de l''image, des ombres (à gauche) aux hautes lumières (à droite). Il aide à voir si une photo est trop sombre, trop claire ou manque de contraste.
+
+| Histogramme | Signification | Correction |
+| --- | --- | --- |
+| Tassé à gauche | Photo sous-exposée (sombre) | Augmenter l''exposition ou les tons moyens |
+| Tassé à droite, collé au bord | Photo surexposée, blancs « brûlés » | Baisser les hautes lumières |
+| Étroit, au milieu | Manque de contraste | Courbes ou niveaux pour étirer les tons |
+
+### Les outils de correction
+
+1. **Niveaux** : régler le point noir, le point blanc et les tons moyens.
+2. **Courbes** : ajuster finement la luminosité et le contraste.
+3. **Ombres et hautes lumières** : récupérer des détails dans les zones sombres et claires.
+
+## La balance des blancs et les couleurs
+
+> [!definition] Balance des blancs
+> Le réglage qui rend les blancs vraiment blancs. Une photo prise sous une ampoule est souvent trop jaune ; à l''ombre, trop bleue.
+
+| Problème | Correction |
+| --- | --- |
+| Photo trop jaune ou orange | Refroidir (vers le bleu) |
+| Photo trop bleue | Réchauffer (vers le jaune) |
+| Dominante verte ou magenta | Corriger la teinte |
+| Couleurs ternes | Augmenter légèrement la vibrance |
+
+> [!attention]
+> Pour les photos de produits, la couleur doit être **fidèle au produit réel**. Si le client vend un sac en raphia naturel, ne le rendez pas plus doré qu''il n''est : les retours de clients déçus coûtent cher à la boutique. Demandez un échantillon de couleur ou une photo de référence si besoin.
+
+## Calques et masques : travailler sans abîmer
+
+| Outil | Rôle |
+| --- | --- |
+| **Calque** | Une couche de l''image ; on peut le masquer, le modifier, le supprimer |
+| **Calque de réglage** | Une correction (courbes, couleurs) appliquée sans modifier les pixels d''origine |
+| **Masque** | Une zone noire et blanche qui montre ou cache une partie d''un calque (blanc = visible, noir = caché) |
+| **Duplication du calque** | Travailler sur une copie, garder l''original |
+
+> [!exemple] Éclaircir seulement le produit
+> 1. Ajoutez un calque de réglage **Courbes** et éclaircissez.
+> 2. Remplissez son masque en **noir** (la correction disparaît).
+> 3. Peignez en **blanc** sur le produit : la correction n''apparaît que sur lui.
+
+## Exporter correctement
+
+| Usage | Format | Taille | Profil |
+| --- | --- | --- | --- |
+| Boutique en ligne | JPEG ou WebP | Selon la plateforme (souvent 1 000 à 2 000 px de côté) | sRGB |
+| Produit sur fond transparent | PNG ou WebP | Selon l''usage | sRGB |
+| Réseaux sociaux | JPEG | Formats carrés ou verticaux selon le réseau | sRGB |
+| Impression | TIFF ou JPEG haute qualité | Selon la taille d''impression | Selon l''imprimeur |
+
+> [!madagascar]
+> Pour les sites de clients malgaches, exportez des images **légères** (par exemple moins de 300 Ko pour une photo de produit, selon la qualité visée) : les visiteurs utilisent souvent des données mobiles. Une image lourde ralentit le site et fait fuir les acheteurs.
+
+> [!retenir]
+> - Pixels, résolution, sRGB pour le web ; JPEG, PNG, WebP, TIFF, PSD, RAW.
+> - L''histogramme guide la correction de l''exposition.
+> - Des blancs vraiment blancs et des couleurs fidèles au produit.
+> - Calques de réglage et masques pour ne jamais abîmer l''original.
+> - Un export adapté à l''usage, léger pour le web.
+
+## Exercice pratique : corriger 5 photos
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Prenez 5 photos de produits avec votre téléphone, dans des lumières différentes (ampoule, fenêtre, ombre).
+> 2. Pour chacune, regardez l''histogramme et corrigez l''exposition avec niveaux ou courbes.
+> 3. Corrigez la balance des blancs pour obtenir des couleurs fidèles.
+> 4. Éclaircissez seulement le produit avec un calque de réglage et un masque.
+> 5. Exportez une version web légère et gardez le fichier de travail.
+>
+> **À livrer** : les photos avant et après, et une capture de vos calques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 1, 0, 'Un histogramme tassé à gauche indique…', '["Une photo sous-exposée","Une photo surexposée","Une photo en noir et blanc","Une photo parfaite"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 1, 1, 'Sur un masque, que signifie le blanc ?', '["La zone est visible","La zone est cachée","La zone est supprimée","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 1, 2, 'Quel format garde la transparence d''un produit détouré ?', '["TXT","PNG","MP3","JPEG"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-f', 2, 'Les outils : Photopea, GIMP, détourage, nettoyage, lots et outils payants', 'Photopea et GIMP, détourage à la plume et contours difficiles, fond blanc, outils de nettoyage, redressement, traitement par lots, Photoshop et Lightroom.', 'Ce module vous fait prendre en main les outils gratuits du retoucheur : **Photopea**, qui fonctionne dans le navigateur et ressemble beaucoup à Photoshop, et **GIMP**, un logiciel libre complet. Vous apprendrez les techniques les plus demandées : détourage, fond blanc, nettoyage, redressement et traitement par lots. Vous découvrirez enfin les outils payants : **Adobe Photoshop** et **Lightroom**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Détourer un produit et le placer sur un fond blanc.
+> 2. Nettoyer une image (poussières, taches, objets gênants).
+> 3. Redresser une photo et ses perspectives.
+> 4. Traiter plusieurs photos de la même façon.
+> 5. Comprendre ce qu''apportent Photoshop et Lightroom.
+
+## Photopea et GIMP
+
+| Point | Photopea | GIMP |
+| --- | --- | --- |
+| **Installation** | Aucune, dans le navigateur | Logiciel à installer |
+| **Ressemblance avec Photoshop** | Très forte (menus, raccourcis, fichiers PSD) | Plus différente |
+| **Points forts** | Pratique, ouvre les PSD, gratuit (avec publicités) | Libre, complet, sans connexion |
+| **Limites** | Dépend du navigateur et de la connexion | Prise en main plus longue |
+
+## Le détourage
+
+### Les outils selon le sujet
+
+| Sujet | Outil conseillé |
+| --- | --- |
+| Formes simples et nettes (boîte, bouteille) | Plume (tracé) : contour précis et propre |
+| Fond uni et contrasté | Sélection d''objet ou baguette magique, puis affinage |
+| Cheveux, fourrure, raphia effiloché | Sélection automatique + « affiner le contour » + masque peint à la main |
+
+### Le détourage à la plume (pour un produit net)
+
+1. Zoomez à 200 % au moins.
+2. Placez des points le long du contour, en tirant pour les courbes.
+3. Restez **légèrement à l''intérieur** du bord pour éviter le liseré de l''ancien fond.
+4. Fermez le tracé, transformez-le en sélection.
+5. Créez un **masque de calque** (ne supprimez pas les pixels).
+
+> [!astuce]
+> Vérifiez votre détourage en plaçant un calque de **couleur vive** (rouge, vert) sous le produit : les défauts du contour sautent aux yeux.
+
+### Le fond blanc pour la boutique en ligne
+
+1. Créez un calque **blanc pur** sous le produit détouré.
+2. Ajoutez une **ombre portée** légère et réaliste (ou gardez l''ombre d''origine si elle est belle).
+3. **Centrez** le produit avec une marge régulière.
+4. Exportez au format et à la taille demandés.
+
+> [!attention]
+> Certaines places de marché imposent des règles précises pour la photo principale (fond blanc pur, part de l''image occupée par le produit, pas de texte ni de logo ajouté). Lisez les **consignes de la plateforme** du client avant de commencer.
+
+## Le nettoyage
+
+| Outil | Usage |
+| --- | --- |
+| **Correcteur localisé** | Retirer une petite tache ou une poussière en un clic |
+| **Correcteur** | Remplacer une zone en mélangeant avec la texture voisine |
+| **Tampon de duplication** | Copier une zone précise sur une autre (textures, bords nets) |
+| **Remplissage selon le contenu** (selon l''outil) | Remplir une zone sélectionnée automatiquement |
+
+> [!exemple] Nettoyer une photo de produit
+> Retirer : la poussière sur le flacon, l''étiquette de prix, le reflet de la fenêtre, les fils qui dépassent. Garder : la texture réelle du produit et ses caractéristiques.
+
+## Le redressement
+
+1. **Horizon** : faites pivoter pour que les lignes horizontales soient droites.
+2. **Perspective** : pour l''immobilier, les murs verticaux doivent être **verticaux** (outil de correction de perspective ou transformation).
+3. **Recadrage** : aux proportions demandées (1:1, 4:5, 3:2).
+
+## Le traitement par lots
+
+> [!definition] Traitement par lots
+> Appliquer automatiquement les mêmes opérations (redimensionner, renommer, appliquer une correction, exporter) à de nombreuses images.
+
+### La méthode
+
+1. **Retouchez** une première photo de la série et notez les réglages.
+2. **Enregistrez** les étapes répétitives (actions ou scripts selon l''outil).
+3. **Appliquez** à la série.
+4. **Vérifiez** chaque image et corrigez les exceptions à la main.
+5. **Nommez** les fichiers selon la convention du client (par exemple `REF-1234_face.jpg`).
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Adobe Photoshop** | La référence professionnelle : sélections avancées, remplissage génératif et outils d''IA selon les versions, actions et traitements par lots puissants, compatibilité avec tous les clients |
+| **Adobe Lightroom** | Développement des fichiers RAW, retouche de séries entières avec des préréglages, gestion de catalogues de milliers de photos (idéal mariage et immobilier) |
+
+> [!madagascar]
+> Photoshop et Lightroom sont disponibles par abonnement (par exemple l''offre Photographie d''Adobe), facturé en dollars ou en euros. Commencez avec Photopea et GIMP ; passez à l''abonnement quand vos clients réguliers le justifient, ou quand une agence l''exige. Vérifiez les prix et les offres pour étudiants sur le site officiel d''Adobe.
+
+> [!retenir]
+> - Photopea dans le navigateur, GIMP en logiciel libre.
+> - Plume pour les produits nets, sélection affinée et masque pour les contours difficiles.
+> - Fond blanc, ombre légère, produit centré, selon les règles de la plateforme.
+> - Nettoyer les défauts, garder la réalité du produit.
+> - Le traitement par lots pour les séries, avec vérification image par image.
+
+## Exercice pratique : votre première série e-commerce
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Photographiez 10 produits (objets de la maison, artisanat) sur un fond simple.
+> 2. Détourez 3 produits à la plume et 2 produits aux contours difficiles avec sélection et masque.
+> 3. Placez-les sur fond blanc avec une ombre légère, centrés, au format carré.
+> 4. Nettoyez les défauts.
+> 5. Appliquez un traitement par lots pour redimensionner et renommer les 10 images.
+>
+> **À livrer** : vos 10 images finales, 3 fichiers de travail et des captures avant et après.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 2, 0, 'Quel outil convient à un produit aux formes nettes ?', '["La gomme","La plume","Le pot de peinture","Le texte"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 2, 1, 'Comment vérifier un détourage ?', '["Imprimer l''image","Placer un calque de couleur vive dessous","Ne pas vérifier","Fermer le logiciel"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 2, 2, 'À quoi sert surtout Lightroom ?', '["Créer des sites web","Monter des vidéos","Faire de la comptabilité","Développer les RAW et retoucher des séries entières"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-f', 3, 'Premier projet : une série de produits et les photos d''un hôtel', 'Brief et questions, échantillon validé, cohérence de la série, intérieurs fidèles, liste de contrôle qualité, livraison et retours.', 'Dans ce module, vous réalisez deux missions réelles de retoucheur : une série de photos de produits pour une boutique en ligne, puis une série de photos d''un hôtel. Vous apprendrez à suivre un brief, à garder une cohérence sur toute la série, à contrôler la qualité et à livrer dans les délais.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire et suivre un brief de retouche.
+> 2. Retoucher une série de produits de façon cohérente.
+> 3. Retoucher des photos d''intérieur honnêtement.
+> 4. Contrôler la qualité avant livraison.
+> 5. Livrer et gérer les retours du client.
+
+## Mission 1 : la boutique « Raphia & Co »
+
+### Le brief
+
+| Élément | Consigne |
+| --- | --- |
+| **Images** | 40 photos de sacs et chapeaux en raphia, prises au téléphone |
+| **Fond** | Blanc pur |
+| **Format** | Carré, 2 000 × 2 000 px, JPEG qualité élevée, sRGB |
+| **Cadrage** | Produit centré, environ 85 % de la hauteur de l''image |
+| **Ombre** | Ombre naturelle légère sous le produit |
+| **Couleurs** | Fidèles au raphia naturel (échantillon de référence fourni) |
+| **Nommage** | `RC-[référence]-[vue].jpg` (exemple : `RC-0123-face.jpg`) |
+| **Délai** | 3 jours |
+
+> [!definition] Brief
+> Le document qui décrit précisément ce que le client attend. Lisez-le entièrement, et posez vos questions **avant** de commencer.
+
+### Les questions à poser
+
+1. Faut-il retirer les fils de raphia qui dépassent, ou les garder pour montrer le côté artisanal ?
+2. L''anse doit-elle être relevée ou posée ?
+3. Faut-il une version sur fond transparent en plus ?
+
+### Garder la cohérence de la série
+
+1. **Retouchez 3 photos** d''essai et faites-les **valider** par la cliente.
+2. **Utilisez** les mêmes réglages de couleur et le même cadrage pour toutes les photos.
+3. **Comparez** les images côte à côte (planche contact) avant de livrer.
+
+> [!astuce]
+> Envoyez toujours un **échantillon** de 2 ou 3 images avant de traiter toute la série. Si la cliente veut un autre style, vous ne refaites que 3 images au lieu de 40.
+
+## Mission 2 : l''hôtel « Lodge Ravinala »
+
+### Le brief
+
+| Élément | Consigne |
+| --- | --- |
+| **Images** | 25 photos de chambres, salle de restaurant et piscine |
+| **Corrections** | Lumière, verticales redressées, fenêtres équilibrées (vue extérieure visible), couleurs naturelles |
+| **Autorisé** | Retirer un câble, un sac oublié, une tache sur un mur ; raviver un ciel si la cliente le demande et que les règles de la plateforme le permettent |
+| **Interdit** | Agrandir les pièces, changer la vue, cacher un défaut réel |
+| **Formats** | 3:2, 2 400 px de large pour le site ; versions adaptées aux plateformes de réservation |
+
+### La méthode pour les intérieurs
+
+1. **Redressez** les verticales (murs, portes, cadres).
+2. **Équilibrez** la lumière : intérieur assez clair, fenêtre pas complètement blanche.
+3. **Corrigez** les couleurs : murs blancs vraiment blancs, bois naturel.
+4. **Nettoyez** les détails gênants autorisés.
+5. **Vérifiez** que la photo représente **fidèlement** la pièce.
+
+> [!attention]
+> Une photo d''hôtel ou de logement trop retouchée crée des **clients déçus** et des avis négatifs. Votre travail doit donner envie **et** rester fidèle à la réalité.
+
+## Contrôler la qualité avant livraison
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Toutes les images demandées sont présentes |
+| 2 | Formats, tailles et profils de couleur respectés |
+| 3 | Détourages propres (vérifiés sur fond de couleur vive) |
+| 4 | Pas de traces de retouche (répétitions de texture, bords flous) |
+| 5 | Couleurs fidèles et homogènes sur toute la série |
+| 6 | Noms de fichiers conformes |
+| 7 | Poids des fichiers adapté à l''usage |
+
+## Livrer et gérer les retours
+
+1. **Livrez** dans un dossier partagé organisé (par exemple `Livraison_2026-05-12/`), avec une courte note.
+2. **Précisez** le nombre de corrections incluses (par exemple une série de retours).
+3. **Recevez** les retours par écrit, avec le nom des fichiers concernés.
+4. **Corrigez** et relivrez dans le délai annoncé.
+
+> [!madagascar]
+> Pour les gros envois de fichiers, utilisez un **service de transfert ou de stockage en ligne** et envoyez le lien, plutôt que des pièces jointes. Lancez les envois aux heures où votre connexion est la plus stable, et gardez une copie locale jusqu''à la validation du client.
+
+> [!retenir]
+> - Un brief lu entièrement, des questions avant de commencer.
+> - Un échantillon validé, puis une série cohérente.
+> - Des intérieurs redressés, équilibrés et fidèles.
+> - Une liste de contrôle en 7 points avant chaque livraison.
+> - Des retours écrits et un nombre de corrections précisé.
+
+## Exercice pratique : vos deux missions
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Réalisez la mission 1 avec 15 photos de produits (vos propres photos ou des photos libres de droits), en suivant le brief.
+> 2. Réalisez la mission 2 avec 8 photos d''intérieur (votre maison ou des photos libres de droits).
+> 3. Envoyez un échantillon à une personne qui joue le client et intégrez ses retours.
+> 4. Passez la liste de contrôle et livrez dans un dossier organisé.
+>
+> **À livrer** : vos images avant et après, vos échantillons, les retours et votre liste de contrôle. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 3, 0, 'Que faire avant de traiter une série de 40 photos ?', '["Rien","Envoyer un échantillon de 2 ou 3 images à valider","Tout traiter directement","Facturer sans commencer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 3, 1, 'Que doivent être les murs verticaux d''une photo d''intérieur ?', '["Penchés","Courbés","Verticaux","Supprimés"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 3, 2, 'Comment envoyer de gros fichiers ?', '["Par la poste","Par un lien de transfert ou de stockage en ligne","Par SMS","En 40 pièces jointes"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avant et après, 5 canaux, prix à l''image selon la difficulté, conditions de travail en 7 points, paiements et évolution.', 'Les boutiques en ligne, les photographes et les agences de retouche ont un besoin régulier de retoucheurs fiables et rapides. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix à l''image et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio avant et après.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix à l''image selon la difficulté.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Des comparaisons avant et après** pour chaque spécialité (produits, intérieurs, portraits, restauration).
+2. **Une série cohérente** de 10 à 20 produits sur fond blanc.
+3. **Des images libres de droits ou à vous**, ou celles de clients **avec leur accord**.
+4. **Une présentation simple** : Behance, site personnel ou dossier en ligne.
+
+> [!attention]
+> N''utilisez jamais des photos d''autres photographes ou de marques dans votre portfolio sans autorisation. Utilisez vos propres photos, des banques d''images libres de droits (en respectant leurs conditions), ou des travaux de clients avec leur accord écrit.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Boutiques en ligne malgaches** | Retouchez gratuitement 2 de leurs photos et montrez l''avant et après |
+| 2 | **Photographes** (mariage, immobilier) | Proposez de retoucher leurs séries pour qu''ils gagnent du temps |
+| 3 | **Agences de retouche** | Passez leurs tests ; elles envoient du travail régulier |
+| 4 | **Plateformes de freelance** | Détourage, fond blanc, retouche par lots ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+| 5 | **Hôtels et agences de voyage** | Proposez de retoucher leurs photos de chambres pour leur site |
+
+> [!exemple] Message à une boutique en ligne
+> « Bonjour, j''aime beaucoup vos sacs en raphia. J''ai remarqué que les photos de votre boutique ont des fonds et des lumières différents, ce qui rend la page moins homogène. Je suis retoucheuse photo : voici 2 de vos photos retouchées gratuitement sur fond blanc, avec des couleurs fidèles. Je peux traiter toute votre collection en quelques jours. »
+
+## Fixer ses prix
+
+### Le prix à l''image selon la difficulté
+
+| Niveau | Exemple de travail | Temps moyen | Exemple de prix |
+| --- | --- | --- | --- |
+| **Simple** | Fond blanc d''un produit net, correction de lumière | 5 à 10 min | 2 000 à 4 000 Ar |
+| **Moyen** | Détourage avec contours complexes, nettoyage | 15 à 25 min | 5 000 à 8 000 Ar |
+| **Complexe** | Cheveux, raphia effiloché, restauration, composition | 30 min et plus | Sur devis |
+| **Série de mariage** | Correction homogène de centaines de photos | Variable | Forfait par série |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché ; les agences paient souvent à l''image.)*
+
+> [!astuce]
+> Chronométrez vos retouches pendant un mois. Vous saurez combien d''images vous traitez à l''heure pour chaque niveau, et vous pourrez fixer des prix justes et rentables.
+
+## Les conditions de travail
+
+### Les 7 points
+
+1. **Le brief** et l''échantillon validé avant la série.
+2. **Le prix** par image ou par série, et les **suppléments** (urgence, complexité).
+3. **Le délai** de livraison.
+4. **Le nombre de corrections** incluses.
+5. **Le format de livraison** et la durée de conservation des fichiers.
+6. **La confidentialité** des photos du client.
+7. **Le paiement** : acompte pour les grosses séries, solde à la livraison.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Retoucheur confirmé** | Photoshop et Lightroom, vitesse, traitement par lots avancé |
+| **Spécialiste beauté ou mode** | Retouche haut de gamme de la peau, séparation des fréquences |
+| **Spécialiste immobilier** | Fusion d''expositions, perspectives, séries rapides |
+| **Photographe de produits** | Prise de vue (lumière, fond) en plus de la retouche |
+| **Graphiste** | Création de visuels (voir la formation Graphiste) |
+
+> [!retenir]
+> - Un portfolio avant et après, avec des images à vous ou autorisées.
+> - Boutiques, photographes, agences de retouche, plateformes, hôtels.
+> - Des prix à l''image selon la difficulté, calculés à partir de votre temps réel.
+> - Des conditions claires : brief, échantillon, corrections, délai, paiement.
+> - Payoneer, virement ou Mobile Money selon le client.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Publiez votre portfolio avant et après (au moins 12 comparaisons).
+> 2. Chronométrez 10 retouches et calculez votre grille de prix.
+> 3. Rédigez vos conditions de travail en 7 points.
+> 4. Choisissez 5 boutiques en ligne, retouchez 2 de leurs photos et envoyez au moins 2 messages.
+>
+> **À livrer** : le lien de votre portfolio, votre grille, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 4, 0, 'Quelles images mettre dans votre portfolio ?', '["Les vôtres, des images libres de droits ou des travaux de clients avec accord","N''importe quelle photo trouvée sur Internet","Les photos d''autres photographes","Aucune"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 4, 1, 'Comment fixer des prix justes ?', '["Travailler gratuitement","Chronométrer ses retouches pour connaître son temps réel","Copier le prix le plus bas","Deviner"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-f', 4, 2, 'Quelle évolution concerne la retouche de peau haut de gamme ?', '["Développeur","Spécialiste beauté ou mode","Comptable","Traducteur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quelle tâche est la plus demandée par les boutiques en ligne ?', '["Montage vidéo","Traduction","Comptabilité","Détourage et fond blanc"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que doit être la couleur d''un produit vendu ?', '["Plus vive que la réalité","En noir et blanc","Fidèle au produit réel","Différente pour plaire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel client sous-traite souvent des séries de centaines de photos ?', '["Un développeur","Un professeur","Un photographe de mariage","Un comptable"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel profil de couleur utiliser pour le web ?', '["Aucun","CMJN obligatoire","sRGB","Niveaux de gris"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que garder intact pendant la retouche ?', '["Le nom du client","Seulement l''export","Rien","L''original"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Un histogramme collé au bord droit indique…', '["Une photo parfaite","Une photo trop sombre","Un fichier vide","Des blancs brûlés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Une photo prise sous une ampoule est souvent…', '["Trop bleue","Parfaite","Trop verte","Trop jaune"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Qu''est-ce qu''un calque de réglage ?', '["Un nom de fichier","Une image supprimée","Un filtre définitif","Une correction appliquée sans modifier les pixels d''origine"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Pourquoi exporter des images légères pour les sites malgaches ?', '["Les visiteurs utilisent souvent des données mobiles","Ce n''est pas utile","Pour payer moins le logiciel","Pour baisser la qualité volontairement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel outil fonctionne dans le navigateur ?', '["Aucun","Photopea","Lightroom Classic","GIMP"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Où rester en traçant à la plume ?', '["Au centre du produit","Au hasard","Très à l''extérieur","Légèrement à l''intérieur du bord"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que faut-il lire avant de préparer la photo principale pour une place de marché ?', '["Les consignes de la plateforme","Un roman","Rien","Les avis des concurrents"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel outil retire une petite poussière en un clic ?', '["Le correcteur localisé","Le texte","La plume","Le recadrage"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que faut-il garder en nettoyant un produit ?', '["Les reflets gênants","Les poussières","Les étiquettes de prix","Sa texture réelle et ses caractéristiques"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Qu''est-ce que le traitement par lots ?', '["Retoucher une seule image","Imprimer des photos","Appliquer les mêmes opérations à de nombreuses images","Supprimer des photos"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que faire après un traitement par lots ?', '["Livrer sans regarder","Tout supprimer","Vérifier chaque image et corriger les exceptions","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Qu''est-ce qu''un brief ?', '["Un format d''image","Un logiciel","Une facture","Le document qui décrit précisément ce que le client attend"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Comment garder la cohérence d''une série ?', '["Sans échantillon","Mêmes réglages et même cadrage, comparaison côte à côte","Un style différent par photo","Au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que ne faut-il pas faire sur une photo de chambre d''hôtel ?', '["Agrandir la pièce","Retirer un câble","Équilibrer la lumière","Redresser les verticales"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quelle vérification fait partie de la liste de contrôle ?', '["Les noms de fichiers conformes","Rien","La couleur préférée du retoucheur","Le prix du logiciel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Comment recevoir les retours du client ?', '["Oralement sans trace","Jamais","Par écrit, avec le nom des fichiers concernés","Par devinette"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel premier contact proposer à une boutique ?', '["Retoucher gratuitement 2 de ses photos pour montrer l''avant et après","Rien","Un prix sans exemple","Une critique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel niveau de prix pour un détourage de cheveux ?', '["Simple","Gratuit","Complexe, sur devis","Le même qu''un fond uni"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que prévoir pour les grosses séries ?', '["Un acompte","Aucun paiement","Le paiement un an après","Le paiement en photos"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
 
 -- dev-0-a
 delete from public.exam_questions where course_id = 'dev-0-a';
