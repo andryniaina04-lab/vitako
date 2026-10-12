@@ -1,0 +1,97 @@
+{
+  "id": "client-1-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'agent support chat et e-mail un professionnel recherché : spécialité (technique N2, e-commerce, multilingue, qualité, base de connaissances, administration de l'outil), configuration avancée de Zendesk et Freshdesk (vues, macros, déclencheurs, automatisations, SLA, bots, intégrations), qualité et situations difficiles, support en anglais et protection des données, puis évolution vers l'encadrement ou une agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, escalader correctement et réduire le nombre de demandes",
+    "Configurer Zendesk ou Freshdesk : vues, macros, règles, SLA et base de connaissances",
+    "Contrôler la qualité, gérer plusieurs chats et les situations difficiles",
+    "Répondre en anglais, protéger les données et travailler selon les fuseaux horaires",
+    "Proposer et chiffrer des offres de support",
+    "Encadrer une petite équipe et construire un dossier de réalisations"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et devenir indispensable",
+      "summary": "Les 6 spécialités avancées, les niveaux N1, N2 et N3, le rapport de bug, l'analyse des motifs de contact et la valeur en chiffres.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait le niveau N2 ?", "options": ["Il diagnostique les problèmes complexes et les cas particuliers", "Il corrige le code du produit", "Il ne répond qu'aux questions fréquentes", "Il fait la publicité"], "correct": 0 },
+        { "q": "Que doit contenir un rapport de bug ?", "options": ["Les étapes pour reproduire, le résultat attendu et obtenu, la fréquence et des exemples", "Seulement « ça ne marche pas »", "Le mot de passe du client", "Une publicité"], "correct": 0 },
+        { "q": "Pourquoi analyser les motifs des tickets ?", "options": ["Pour trouver les causes et réduire le nombre de demandes", "Pour punir les clients", "Pour ralentir l'équipe", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : configurer Zendesk et Freshdesk",
+      "summary": "Vues, groupes et champs, macros avancées avec champs dynamiques, déclencheurs et automatisations, SLA, base de connaissances, bots et intégrations.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la différence entre un déclencheur et une automatisation dans Zendesk ?", "options": ["Le déclencheur agit sur un événement, l'automatisation après un délai", "Aucune", "Le déclencheur envoie des factures", "L'automatisation crée des comptes clients"], "correct": 0 },
+        { "q": "Comment éviter qu'une règle automatique tourne en boucle ?", "options": ["Ajouter une condition d'arrêt, comme une étiquette", "Supprimer tous les tickets", "Désactiver les SLA", "Ce n'est pas possible"], "correct": 0 },
+        { "q": "Que fixe une politique SLA ?", "options": ["Les délais de réponse et de résolution par priorité", "Le salaire des agents", "Les couleurs du centre d'aide", "Le prix des produits"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : grille, chats simultanés et situations difficiles",
+      "summary": "Grille qualité sur 100 et erreurs critiques, 6 règles de simultanéité, méthode RECAP, rétrofacturations, signaux de fraude et amélioration des indicateurs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle erreur donne 0 à une réponse ?", "options": ["Donner des informations personnelles à une personne non vérifiée", "Une virgule oubliée", "Une réponse un peu longue", "Utiliser une macro"], "correct": 0 },
+        { "q": "Que signifie le A de RECAP ?", "options": ["Agir", "Attendre", "Accuser", "Annuler"], "correct": 0 },
+        { "q": "Un client demande un remboursement sur une autre carte : que faire ?", "options": ["Suivre la procédure et escalader à l'équipe fraude ou au responsable", "Accepter tout de suite", "Lui donner le numéro de carte de l'entreprise", "Fermer le ticket sans réponse"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, cultures, données et fuseaux horaires",
+      "summary": "Phrases de support en anglais et erreurs des francophones, adaptation culturelle, 6 règles de protection des données, fuseaux horaires et tests de recrutement.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle formule anglaise est correcte ?", "options": ["I'll get back to you", "I will revert you", "I'm agree", "Can you precise?"], "correct": 0 },
+        { "q": "Que ne faut-il jamais demander à un client ?", "options": ["Son mot de passe", "Son numéro de commande", "Son prénom", "La date de sa commande"], "correct": 0 },
+        { "q": "En été, 9 h à Paris correspond à quelle heure à Antananarivo ?", "options": ["10 h", "9 h", "8 h", "12 h"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer sa carrière : évolution, offres et équipe",
+      "summary": "Voies d'évolution, offres de support, calcul du prix à partir du volume, encadrement en 6 piliers et dossier de réalisations.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "1 200 tickets à 8 tickets par heure demandent…", "options": ["150 heures", "1 208 heures", "96 heures", "15 heures"], "correct": 0 },
+        { "q": "Quel poste configure l'outil, les règles et les rapports ?", "options": ["Administrateur Zendesk ou Freshdesk", "Agent N1", "Comptable", "Graphiste"], "correct": 0 },
+        { "q": "Que contient un retour constructif ?", "options": ["Un point positif précis et un point à améliorer avec une action", "Seulement des reproches", "Rien de précis", "Une sanction"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité évalue les réponses des agents ?", "options": ["Analyste qualité", "Support e-commerce", "Graphiste", "Développeur"], "correct": 0 },
+    { "q": "Qui corrige un bug dans le produit ?", "options": ["Le niveau N3 ou l'équipe technique", "Le client", "L'agent N1", "Personne"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une bonne escalade ?", "options": ["Transmettre avec toutes les informations utiles", "Transférer sans rien dire", "Fermer le ticket", "Demander au client de recommencer"], "correct": 0 },
+    { "q": "Que mesure le taux de contacts ?", "options": ["Le nombre de demandes par commande ou par utilisateur", "Le nombre d'agents", "Le prix des produits", "La vitesse de frappe"], "correct": 0 },
+    { "q": "Que mesure le CSAT ?", "options": ["La satisfaction des clients", "Le nombre de tickets", "Le temps de connexion", "Le chiffre d'affaires"], "correct": 0 },
+    { "q": "À quoi servent les vues dans un helpdesk ?", "options": ["Afficher des listes de tickets à traiter", "Changer le logo", "Facturer les clients", "Envoyer des publicités"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un champ dynamique dans une macro ?", "options": ["Un code remplacé automatiquement par une information", "Une faute de frappe", "Une pièce jointe", "Un mot de passe"], "correct": 0 },
+    { "q": "Où tester une nouvelle règle automatique ?", "options": ["Sur un compte d'essai ou un environnement de test", "Directement sur tous les clients", "Nulle part", "Sur le compte personnel d'un client"], "correct": 0 },
+    { "q": "Que fait une automatisation après 7 jours sans réponse du client ?", "options": ["Elle peut résoudre le ticket avec un message poli", "Elle supprime le client", "Elle envoie une facture", "Rien"], "correct": 0 },
+    { "q": "Quel est le premier élément d'un bon article d'aide ?", "options": ["Un titre avec les mots du client", "Une longue introduction", "Le logo", "Une publicité"], "correct": 0 },
+    { "q": "Que faire des brouillons proposés par l'IA du helpdesk ?", "options": ["Les relire avant d'envoyer", "Les envoyer sans lire", "Les ignorer toujours", "Les publier sur les réseaux"], "correct": 0 },
+    { "q": "Quelle intégration relie un ticket à un rapport de bug ?", "options": ["Jira", "Canva", "Mobile Money", "Excel"], "correct": 0 },
+    { "q": "Combien de points pour l'exactitude dans la grille qualité ?", "options": ["25", "5", "100", "0"], "correct": 0 },
+    { "q": "Combien de chats simultanés en général ?", "options": ["2 à 4 selon la complexité", "20", "1 seul toujours", "50"], "correct": 0 },
+    { "q": "Que dire quand une vérification prend du temps en chat ?", "options": ["Annoncer la durée approximative", "Ne rien dire", "Fermer le chat", "Changer de client"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une rétrofacturation ?", "options": ["Une contestation de paiement auprès de la banque", "Une réduction de prix", "Un nouveau produit", "Un type de macro"], "correct": 0 },
+    { "q": "Que rassembler pour un litige ?", "options": ["Preuves de commande, de livraison et échanges", "Des photos de vacances", "Rien", "Le mot de passe du client"], "correct": 0 },
+    { "q": "Une résolution au premier contact faible : quelle action ?", "options": ["Répondre aussi à la question suivante probable", "Répondre plus court", "Fermer plus vite", "Ignorer"], "correct": 0 },
+    { "q": "Comment dire « actuellement » en anglais ?", "options": ["Currently", "Actually", "Eventually", "Lately"], "correct": 0 },
+    { "q": "Quel ton apprécient souvent les clients américains ?", "options": ["Chaleureux, avec le prénom, orienté solution", "Très froid", "Uniquement en français", "Avec de longues formules"], "correct": 0 },
+    { "q": "Le RGPD s'applique-t-il si l'agent est à Madagascar ?", "options": ["Oui, s'il traite les données de personnes en Europe", "Non, jamais", "Seulement le dimanche", "Seulement pour le chat"], "correct": 0 },
+    { "q": "Que faire en cas d'envoi d'un e-mail au mauvais client ?", "options": ["Le signaler immédiatement", "Le cacher", "Attendre", "Supprimer le ticket"], "correct": 0 },
+    { "q": "En hiver, 9 h à Paris correspond à quelle heure à Antananarivo ?", "options": ["11 h", "9 h", "10 h", "7 h"], "correct": 0 },
+    { "q": "Quel modèle de prix exige de fixer un volume maximum inclus ?", "options": ["Le forfait mensuel", "Le paiement à l'heure", "Le paiement au ticket", "Aucun"], "correct": 0 },
+    { "q": "Quel est le premier pilier pour encadrer une équipe ?", "options": ["Recruter avec un test écrit et une mise en situation", "Supprimer les plannings", "Ne jamais évaluer", "Ignorer les SLA"], "correct": 0 }
+  ]
+}

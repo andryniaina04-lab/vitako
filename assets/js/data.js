@@ -526,6 +526,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-1-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'agent support chat et e-mail un professionnel recherché : spécialité (technique N2, e-commerce, multilingue, qualité, base de connaissances, administration de l'outil), configuration avancée de Zendesk et Freshdesk (vues, macros, déclencheurs, automatisations, SLA, bots, intégrations), qualité et situations difficiles, support en anglais et protection des données, puis évolution vers l'encadrement ou une agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, escalader correctement et réduire le nombre de demandes",
+   "Configurer Zendesk ou Freshdesk : vues, macros, règles, SLA et base de connaissances",
+   "Contrôler la qualité, gérer plusieurs chats et les situations difficiles",
+   "Répondre en anglais, protéger les données et travailler selon les fuseaux horaires",
+   "Proposer et chiffrer des offres de support",
+   "Encadrer une petite équipe et construire un dossier de réalisations"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et devenir indispensable",
+    "summary": "Les 6 spécialités avancées, les niveaux N1, N2 et N3, le rapport de bug, l'analyse des motifs de contact et la valeur en chiffres.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les niveaux de support",
+     "Analyser les demandes pour trouver leurs causes",
+     "Présenter votre valeur avec des chiffres",
+     "Exercice pratique : votre spécialité et votre analyse"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : configurer Zendesk et Freshdesk",
+    "summary": "Vues, groupes et champs, macros avancées avec champs dynamiques, déclencheurs et automatisations, SLA, base de connaissances, bots et intégrations.",
+    "sections": [
+     "Les éléments de configuration",
+     "Les macros avancées",
+     "Les règles automatiques",
+     "Les délais de service (SLA)",
+     "La base de connaissances, le bot et les intégrations",
+     "Exercice pratique : configurer un helpdesk"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : grille, chats simultanés et situations difficiles",
+    "summary": "Grille qualité sur 100 et erreurs critiques, 6 règles de simultanéité, méthode RECAP, rétrofacturations, signaux de fraude et amélioration des indicateurs.",
+    "sections": [
+     "La grille qualité",
+     "Gérer plusieurs chats en même temps",
+     "Les situations difficiles",
+     "Lire et améliorer vos indicateurs",
+     "Exercice pratique : qualité et situations difficiles"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, cultures, données et fuseaux horaires",
+    "summary": "Phrases de support en anglais et erreurs des francophones, adaptation culturelle, 6 règles de protection des données, fuseaux horaires et tests de recrutement.",
+    "sections": [
+     "Le support en anglais",
+     "S'adapter aux cultures",
+     "La protection des données",
+     "Fuseaux horaires et plannings",
+     "Réussir les tests de recrutement",
+     "Exercice pratique : candidater à l'international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Développer sa carrière : évolution, offres et équipe",
+    "summary": "Voies d'évolution, offres de support, calcul du prix à partir du volume, encadrement en 6 piliers et dossier de réalisations.",
+    "sections": [
+     "Les voies d'évolution",
+     "Les offres en freelance ou en agence",
+     "Calculer le prix d'un service de support",
+     "Encadrer une petite équipe",
+     "Le dossier de réalisations",
+     "Exercice pratique : votre plan d'évolution"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "client-1-f": {
   "hours": 13,
   "description": "L'agent support chat et e-mail résout par écrit les demandes des clients : commandes, retours, paiements, comptes, réclamations. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des éditeurs de logiciels et des centres de contacts, avec Zendesk et Freshdesk. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

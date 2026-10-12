@@ -76,7 +76,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
-  ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 14, false),
+  ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true),
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, false),
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, false),
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 10, false),
@@ -1394,6 +1394,611 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faut-il pour commencer une mission ?', '["Une promesse orale suffit","Payer des frais d''inscription","Un contrat ou un accord écrit","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["10 000 Ar","5 000 Ar","100 000 Ar","1 000 Ar"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment protéger sa voix pendant une journée d''appels ?', '["Boire de l''eau et prendre ses pauses","Enchaîner sans pause","Boire très froid toute la journée","Parler plus fort"]'::jsonb, 0);
+
+-- client-1-a
+delete from public.exam_questions where course_id = 'client-1-a';
+delete from public.module_questions where course_id = 'client-1-a';
+delete from public.lessons where course_id = 'client-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-a', 0, 'Se spécialiser et devenir indispensable', 'Les 6 spécialités avancées, les niveaux N1, N2 et N3, le rapport de bug, l''analyse des motifs de contact et la valeur en chiffres.', 'Répondre poliment aux clients, beaucoup de personnes savent le faire. Les agents de support les mieux payés savent **résoudre des problèmes difficiles**, **travailler en anglais**, **améliorer les outils et les procédures** et **faire baisser le nombre de demandes**. Ce module vous aide à choisir votre spécialité et à devenir l''agent que les entreprises veulent garder.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du support écrit.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Comprendre les niveaux de support (N1, N2, N3).
+> 4. Analyser les demandes d''une entreprise pour trouver leurs causes.
+> 5. Présenter votre valeur avec des chiffres.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Support technique (N2)** | Diagnostiquer les problèmes d''un logiciel ou d''une application | Reproduire un bug, lire des messages d''erreur, rédiger un rapport pour les développeurs |
+| 2 | **Support e-commerce** | Commandes, livraisons, retours, remboursements, litiges | Shopify, transporteurs, règles de retour, prévention de la fraude |
+| 3 | **Support multilingue** | Répondre en français et en anglais (voire une 3e langue) | Écriture professionnelle dans chaque langue |
+| 4 | **Analyste qualité (QA)** | Évaluer les réponses des agents et les faire progresser | Grilles de qualité, retours constructifs |
+| 5 | **Gestion de la base de connaissances** | Écrire et tenir à jour les articles d''aide | Rédaction claire, structure, analyse des recherches |
+| 6 | **Administration de l''outil de support** | Configurer Zendesk ou Freshdesk : règles, macros, vues, rapports | Logique des automatisations, rapports |
+
+> [!madagascar] Votre avantage
+> Les entreprises francophones (France, Belgique, Suisse, Canada) cherchent des agents qui écrivent un **français impeccable**, disponibles sur des plages horaires étendues. Avec 1 à 2 heures d''écart avec Paris, vous couvrez la journée européenne ; avec un bon anglais, vous pouvez aussi couvrir le début de journée des clients canadiens et américains, grâce au décalage horaire.
+
+## Les niveaux de support
+
+| Niveau | Rôle | Exemple |
+| --- | --- | --- |
+| **N1 (niveau 1)** | Questions fréquentes, réponses avec macros et articles | « Où est ma commande ? » |
+| **N2 (niveau 2)** | Problèmes plus complexes, diagnostic, cas particuliers | « Le paiement est débité mais la commande n''apparaît pas. » |
+| **N3 (niveau 3)** | Équipe technique ou spécialistes : corrections dans le produit | Correction d''un bug par les développeurs |
+
+> [!definition] Escalade
+> Transmettre une demande au niveau supérieur avec **toutes les informations utiles** pour qu''il n''ait pas à les redemander au client.
+
+### Le rapport de bug pour le niveau 3
+
+```
+Titre : Paiement Orange Money débité, commande non créée (Android)
+Étapes pour reproduire :
+1. Ajouter un produit au panier depuis l''application Android 4.2.1
+2. Choisir Orange Money et valider le paiement
+3. Revenir dans l''application
+Résultat attendu : commande visible dans « Mes commandes »
+Résultat obtenu : écran blanc, aucune commande, montant débité
+Fréquence : 6 tickets depuis le 3 juin, tous sur Android
+Exemples : tickets 48211, 48230, 48307
+Pièces jointes : captures, référence de transaction
+```
+
+## Analyser les demandes pour trouver leurs causes
+
+Un agent avancé ne se contente pas de répondre : il cherche **pourquoi** les clients écrivent.
+
+### La méthode en 4 étapes
+
+1. **Étiqueter** chaque ticket avec un motif (livraison, paiement, compte, produit…).
+2. **Compter** chaque semaine les motifs les plus fréquents.
+3. **Trouver la cause** : page peu claire, bug, délai de livraison, e-mail de confirmation manquant.
+4. **Proposer une solution** : nouvel article d''aide, correction, changement de procédure.
+
+> [!exemple] Analyse d''une semaine
+> Sur 420 tickets, 130 (31 %) demandent « Où est ma commande ? ». Cause : l''e-mail d''expédition ne contient pas le lien de suivi. Proposition : ajouter le lien dans l''e-mail automatique et un article d''aide sur les délais. Résultat attendu : environ 80 tickets en moins par semaine.
+
+> [!definition] Taux de contacts
+> Le nombre de demandes de support divisé par le nombre de commandes ou d''utilisateurs. Le faire baisser, c''est rendre le produit plus simple et faire économiser de l''argent à l''entreprise.
+
+## Présenter votre valeur avec des chiffres
+
+| Indicateur | Ce qu''il mesure |
+| --- | --- |
+| **CSAT** (satisfaction client) | Le pourcentage de clients satisfaits après une réponse |
+| **Délai de première réponse** | Le temps avant la première réponse |
+| **Délai de résolution** | Le temps avant la solution complète |
+| **Résolution au premier contact** | Le pourcentage de demandes réglées en une seule réponse |
+| **Note qualité** | La note de vos réponses dans les évaluations internes |
+| **Tickets traités** | Votre volume, à lire avec la qualité |
+
+> [!exemple] Une ligne de CV qui convainc
+> « Agent support N2 français et anglais pour une boutique en ligne (2 800 commandes par mois) : CSAT moyen de 94 %, résolution au premier contact de 78 %, création de 15 articles d''aide qui ont réduit de 20 % les demandes sur les retours. »
+
+> [!retenir]
+> - Spécialisez-vous : technique, e-commerce, multilingue, qualité, base de connaissances ou administration de l''outil.
+> - N1 répond, N2 diagnostique, N3 corrige le produit.
+> - Une escalade complète évite au client de tout répéter.
+> - Analysez les motifs pour réduire le nombre de demandes.
+> - Présentez votre valeur avec des chiffres.
+
+## Exercice pratique : votre spécialité et votre analyse
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Rédigez un rapport de bug complet à partir d''un problème réel que vous avez rencontré dans une application.
+> 3. Inventez 50 tickets courts (une ligne chacun), étiquetez-les par motif et faites le classement.
+> 4. Pour les 2 motifs les plus fréquents, proposez une cause et une solution.
+> 5. Rédigez 3 lignes de CV avec des chiffres (réels ou objectifs).
+>
+> **À livrer** : votre choix, votre rapport de bug, votre analyse et vos lignes de CV.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 0, 0, 'Que fait le niveau N2 ?', '["Il diagnostique les problèmes complexes et les cas particuliers","Il corrige le code du produit","Il fait la publicité","Il ne répond qu''aux questions fréquentes"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 0, 1, 'Que doit contenir un rapport de bug ?', '["Une publicité","Seulement « ça ne marche pas »","Les étapes pour reproduire, le résultat attendu et obtenu, la fréquence et des exemples","Le mot de passe du client"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 0, 2, 'Pourquoi analyser les motifs des tickets ?', '["Ce n''est pas utile","Pour punir les clients","Pour trouver les causes et réduire le nombre de demandes","Pour ralentir l''équipe"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-a', 1, 'Outils professionnels : configurer Zendesk et Freshdesk', 'Vues, groupes et champs, macros avancées avec champs dynamiques, déclencheurs et automatisations, SLA, base de connaissances, bots et intégrations.', 'Au niveau Fondamentaux, vous utilisiez Zendesk ou Freshdesk pour répondre. Au niveau Avancé, vous savez **les configurer** : vues, macros, règles automatiques, délais de service, base de connaissances, bots et intégrations. Ces outils sont payants et presque toujours **fournis par l''entreprise** ; ce module vous apprend à en tirer le meilleur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser le travail avec des vues et des groupes.
+> 2. Écrire des macros avancées avec des champs dynamiques.
+> 3. Créer des règles automatiques (déclencheurs et automatisations).
+> 4. Configurer des délais de service (SLA).
+> 5. Gérer une base de connaissances, un bot et les intégrations.
+
+## Les éléments de configuration
+
+| Élément | Zendesk | Freshdesk | À quoi il sert |
+| --- | --- | --- | --- |
+| **Vues** | Vues | Vues (filtres enregistrés) | Listes de tickets à traiter : urgents, en attente, par langue |
+| **Groupes** | Groupes | Groupes | Équipes : N1, N2, facturation, anglais |
+| **Champs** | Champs de ticket | Champs de ticket | Motif, produit, pays, numéro de commande |
+| **Macros** | Macros | Réponses prédéfinies et scénarios | Réponses et actions en un clic |
+| **Règles sur événement** | Déclencheurs | Automatisations à la création ou à la mise à jour | Agir quand un ticket est créé ou modifié |
+| **Règles dans le temps** | Automatisations | Automatisations basées sur le temps | Agir après un délai |
+| **Délais de service** | Politiques SLA | Politiques SLA | Délais de réponse et de résolution |
+| **Base de connaissances** | Guide (centre d''aide) | Solutions | Articles d''aide pour les clients et les agents |
+
+> [!attention]
+> Les noms des menus changent avec les mises à jour. Travaillez toujours sur un **compte d''essai** ou un **environnement de test** (sandbox) avant de modifier les règles d''un vrai compte, et demandez l''accord écrit du responsable.
+
+## Les macros avancées
+
+Une macro peut **écrire la réponse** et **modifier le ticket** en même temps.
+
+```
+Nom : Livraison – retard transporteur
+Actions :
+- Réponse : (texte ci-dessous)
+- Motif : Livraison / Retard
+- Statut : En attente
+- Ajouter l''étiquette : retard_transporteur
+
+Bonjour {{ticket.requester.first_name}},
+
+Merci pour votre message. Votre commande {{ticket.ticket_field_numero_commande}}
+a bien été expédiée, mais le transporteur nous signale un retard.
+Vous pouvez suivre le colis ici : [lien de suivi].
+
+Nous surveillons votre colis et revenons vers vous sous 48 heures
+si la situation n''avance pas.
+
+Bien cordialement,
+{{current_user.first_name}}
+```
+
+> [!definition] Champ dynamique (placeholder)
+> Un code entre accolades remplacé automatiquement par une information : le prénom du client, le numéro de commande, le nom de l''agent. La syntaxe exacte dépend de l''outil : vérifiez-la dans sa documentation.
+
+> [!astuce]
+> Relisez toujours une réponse générée par macro avant de l''envoyer : une macro mal choisie envoyée trop vite fait plus de dégâts qu''une réponse écrite à la main.
+
+## Les règles automatiques
+
+### Les déclencheurs (sur événement)
+
+| Condition | Action |
+| --- | --- |
+| Ticket créé ET langue = anglais | Groupe = Support anglais |
+| Ticket créé ET sujet contient « remboursement » | Motif = Remboursement, priorité = Haute |
+| Ticket créé ET client = VIP | Groupe = N2, notification au responsable |
+
+### Les automatisations (dans le temps)
+
+| Condition | Action |
+| --- | --- |
+| Statut = En attente depuis 72 heures | Relance automatique au client |
+| Statut = En attente depuis 7 jours sans réponse | Statut = Résolu, avec un message poli |
+| Statut = Résolu depuis 4 jours | Statut = Fermé |
+
+> [!attention] Les boucles
+> Une règle qui modifie un ticket peut déclencher une autre règle, qui le modifie à nouveau. Ajoutez toujours une **condition d''arrêt** (par exemple une étiquette « relance_envoyee ») pour qu''une règle ne s''exécute qu''une fois.
+
+## Les délais de service (SLA)
+
+> [!definition] SLA (Service Level Agreement)
+> Un engagement de délai : par exemple, première réponse en moins de 4 heures ouvrées pour les tickets urgents. L''outil affiche le temps restant et signale les dépassements.
+
+| Priorité | Première réponse | Résolution |
+| --- | --- | --- |
+| Urgente | 1 h | 8 h |
+| Haute | 4 h | 24 h |
+| Normale | 8 h | 48 h |
+| Basse | 24 h | 5 jours |
+
+*(Délais donnés en exemple : chaque entreprise fixe les siens, en heures ouvrées.)*
+
+## La base de connaissances, le bot et les intégrations
+
+### Un bon article d''aide
+
+1. **Un titre** qui reprend les mots du client (« Comment suivre ma commande ? »).
+2. **La réponse** dès la première phrase.
+3. **Des étapes numérotées** avec captures.
+4. **Une date** de mise à jour.
+5. **Des liens** vers les articles proches.
+
+### Le bot et l''IA
+
+Zendesk et Freshdesk proposent des bots et des fonctions d''IA (payantes) qui suggèrent des articles, résument des tickets ou proposent des brouillons de réponse. Votre rôle :
+
+1. **Alimenter** le bot avec de bons articles.
+2. **Relire** les brouillons proposés par l''IA.
+3. **Analyser** les conversations où le bot a échoué, pour améliorer les articles.
+
+### Les intégrations
+
+| Intégration | Ce qu''elle apporte |
+| --- | --- |
+| **Shopify** | Voir les commandes du client dans le ticket, parfois rembourser depuis l''outil |
+| **Jira** | Créer un rapport de bug relié au ticket |
+| **Slack** | Prévenir l''équipe d''un ticket urgent |
+| **Messageries** (WhatsApp, Messenger) | Recevoir les messages dans le même outil |
+
+> [!retenir]
+> - Vues, groupes et champs organisent le travail.
+> - Les macros répondent et modifient le ticket ; relisez avant d''envoyer.
+> - Déclencheurs sur événement, automatisations dans le temps, toujours avec une condition d''arrêt.
+> - Les SLA fixent des délais par priorité.
+> - Base de connaissances, bot et intégrations réduisent le travail répétitif.
+
+## Exercice pratique : configurer un helpdesk
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Ouvrez un compte d''essai Zendesk ou Freshdesk.
+> 2. Créez 2 groupes, 3 champs (motif, numéro de commande, pays) et 4 vues.
+> 3. Écrivez 5 macros avancées avec champs dynamiques.
+> 4. Créez 3 déclencheurs et 2 automatisations avec conditions d''arrêt.
+> 5. Configurez une politique SLA à 4 priorités.
+> 6. Rédigez 3 articles d''aide.
+>
+> **À livrer** : des captures de votre configuration, vos macros et vos articles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 1, 0, 'Quelle est la différence entre un déclencheur et une automatisation dans Zendesk ?', '["Le déclencheur agit sur un événement, l''automatisation après un délai","Le déclencheur envoie des factures","L''automatisation crée des comptes clients","Aucune"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 1, 1, 'Comment éviter qu''une règle automatique tourne en boucle ?', '["Supprimer tous les tickets","Ce n''est pas possible","Ajouter une condition d''arrêt, comme une étiquette","Désactiver les SLA"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 1, 2, 'Que fixe une politique SLA ?', '["Les délais de réponse et de résolution par priorité","Le prix des produits","Le salaire des agents","Les couleurs du centre d''aide"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-a', 2, 'Qualité et rapidité : grille, chats simultanés et situations difficiles', 'Grille qualité sur 100 et erreurs critiques, 6 règles de simultanéité, méthode RECAP, rétrofacturations, signaux de fraude et amélioration des indicateurs.', 'Un agent avancé est à la fois **rapide** et **juste**. Ce module vous donne les méthodes pour contrôler la qualité de vos réponses, gérer plusieurs chats en même temps, traiter les situations difficiles et suivre vos indicateurs sans sacrifier le client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser une grille qualité pour évaluer une réponse.
+> 2. Gérer plusieurs conversations de chat en même temps.
+> 3. Traiter les clients en colère, les litiges et les tentatives de fraude.
+> 4. Lire vos indicateurs et les améliorer.
+> 5. Travailler vite sans perdre en qualité.
+
+## La grille qualité
+
+| Critère | Points | Ce qui est vérifié |
+| --- | --- | --- |
+| **Compréhension** | 20 | La vraie question a été comprise ; toutes les questions ont une réponse |
+| **Exactitude** | 25 | Informations et procédures correctes |
+| **Résolution** | 20 | Le problème est réglé ou la prochaine étape est claire |
+| **Ton et empathie** | 15 | Ton adapté, personnalisé, sans phrases toutes faites inutiles |
+| **Rédaction** | 10 | Orthographe, clarté, mise en forme |
+| **Procédures et outil** | 10 | Champs remplis, étiquettes, statut, escalade correcte |
+| **Total** | **100** | |
+
+### Les erreurs critiques
+
+Certaines erreurs donnent **0** à la réponse, quel que soit le reste :
+
+1. Donner des informations personnelles à une personne non vérifiée.
+2. Promettre un remboursement ou un geste non autorisé.
+3. Une information fausse sur la sécurité, la santé ou l''argent.
+4. Un ton insultant ou moqueur.
+
+> [!astuce]
+> Notez vous-même 5 de vos réponses chaque semaine avec la grille. Vous repérez vos erreurs avant votre responsable, et vous progressez plus vite.
+
+## Gérer plusieurs chats en même temps
+
+> [!definition] Simultanéité (concurrency)
+> Le nombre de conversations de chat qu''un agent gère en même temps. Souvent 2 à 4 selon la complexité.
+
+### Les 6 règles
+
+1. **Accueillez** chaque client en moins de 30 secondes.
+2. **Annoncez** les attentes : « Je vérifie votre commande, cela prend environ 2 minutes. »
+3. **Utilisez les macros** pour les parties répétitives, personnalisez le reste.
+4. **Notez** l''essentiel de chaque conversation dans les champs du ticket.
+5. **Ne mélangez pas** les clients : vérifiez le nom et le numéro avant d''envoyer.
+6. **Refusez** une conversation de plus si vous êtes déjà en difficulté : prévenez le responsable.
+
+## Les situations difficiles
+
+### Le client en colère : la méthode RECAP
+
+| Étape | Exemple |
+| --- | --- |
+| **R**econnaître l''émotion | « Je comprends que ce retard soit très frustrant, surtout pour un cadeau. » |
+| **E**xcuser, si l''entreprise est en tort | « Nous sommes désolés : le colis aurait dû arriver lundi. » |
+| **C**larifier la situation | « Le transporteur l''a bloqué au centre de tri de Lyon. » |
+| **A**gir | « J''ai ouvert une enquête et je vous propose un renvoi express. » |
+| **P**rochaine étape | « Je vous écris demain avant 12 h avec le nouveau suivi. » |
+
+### Les litiges et les rétrofacturations
+
+> [!definition] Rétrofacturation (chargeback)
+> Le client conteste un paiement auprès de sa banque. L''entreprise doit fournir des preuves (commande, livraison, échanges) dans un délai fixé, sinon elle perd l''argent.
+
+Votre rôle : **rassembler les preuves** (suivi de livraison, conversations, conditions de vente) et les transmettre à la personne responsable dans les délais.
+
+### Repérer une tentative de fraude
+
+| Signal | Exemple |
+| --- | --- |
+| Changement d''adresse après la commande vers un autre pays | « Envoyez plutôt à cette adresse… » |
+| Pression extrême et urgence | « Remboursez-moi dans l''heure ou je porte plainte. » |
+| Demande de remboursement sur un autre moyen de paiement | « Remboursez sur cette autre carte. » |
+| Identité qui ne correspond pas au compte | E-mail différent, nom différent |
+
+> [!attention]
+> Ne contournez jamais une procédure de vérification, même face à un client pressant. Suivez la procédure de l''entreprise et escaladez au responsable ou à l''équipe fraude.
+
+## Lire et améliorer vos indicateurs
+
+| Indicateur bas | Causes possibles | Actions |
+| --- | --- | --- |
+| **CSAT** | Réponses incomplètes, ton froid, problème non résolu | Grille qualité, relecture, personnaliser davantage |
+| **Résolution au premier contact** | Questions non anticipées | Répondre aussi à la question suivante probable |
+| **Délai de première réponse** | Mauvaise organisation des vues | Traiter par priorité et par SLA |
+| **Tickets traités** | Recherches trop longues | Fiche mémo, macros, raccourcis clavier |
+
+> [!madagascar]
+> Pour travailler vite, il faut une connexion stable. Gardez une **connexion de secours** (forfait mobile), un onduleur et prévenez votre responsable à l''avance des délestages annoncés. Un agent qui disparaît en plein chat laisse un client sans réponse et fait baisser les indicateurs de toute l''équipe.
+
+> [!retenir]
+> - Une grille qualité sur 100, avec des erreurs critiques éliminatoires.
+> - En chat : accueillir vite, annoncer les attentes, ne pas mélanger les clients.
+> - RECAP pour les clients en colère ; des preuves pour les litiges ; la procédure face à la fraude.
+> - Chaque indicateur bas a des causes et des actions.
+
+## Exercice pratique : qualité et situations difficiles
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Évaluez 5 réponses (vos anciennes réponses ou des exemples inventés) avec la grille sur 100.
+> 2. Rédigez une réponse RECAP à un client en colère dont le colis est perdu.
+> 3. Préparez le dossier de preuves d''une rétrofacturation fictive.
+> 4. Rédigez votre réponse à une tentative de changement d''adresse suspecte.
+> 5. Écrivez votre plan d''amélioration pour 2 indicateurs.
+>
+> **À livrer** : vos 5 évaluations, vos réponses, votre dossier de preuves et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 2, 0, 'Quelle erreur donne 0 à une réponse ?', '["Donner des informations personnelles à une personne non vérifiée","Utiliser une macro","Une virgule oubliée","Une réponse un peu longue"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 2, 1, 'Que signifie le A de RECAP ?', '["Accuser","Annuler","Attendre","Agir"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 2, 2, 'Un client demande un remboursement sur une autre carte : que faire ?', '["Suivre la procédure et escalader à l''équipe fraude ou au responsable","Fermer le ticket sans réponse","Accepter tout de suite","Lui donner le numéro de carte de l''entreprise"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-a', 3, 'Clients internationaux : anglais, cultures, données et fuseaux horaires', 'Phrases de support en anglais et erreurs des francophones, adaptation culturelle, 6 règles de protection des données, fuseaux horaires et tests de recrutement.', 'Les entreprises internationales offrent les postes de support les mieux payés, mais elles attendent un anglais professionnel, le respect des règles de protection des données et une grande fiabilité sur des horaires définis. Ce module vous prépare à travailler pour elles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des réponses de support professionnelles en anglais.
+> 2. Adapter votre style aux différentes cultures de clients.
+> 3. Appliquer les règles de protection des données.
+> 4. Organiser votre travail selon les fuseaux horaires et les plannings.
+> 5. Réussir les tests de recrutement des entreprises internationales.
+
+## Le support en anglais
+
+### Les phrases utiles
+
+| Situation | Anglais |
+| --- | --- |
+| Remercier | "Thanks for reaching out." |
+| Montrer de l''empathie | "I''m sorry for the trouble this has caused." |
+| Annoncer une vérification | "Let me look into this for you." |
+| Demander une information | "Could you please share your order number?" |
+| Donner une solution | "I''ve issued a refund of $24.90 to your original payment method." |
+| Fixer une attente | "You''ll see it in your account within 5 to 10 business days." |
+| Escalader | "I''ve passed this to our technical team, and they''ll get back to you within 24 hours." |
+| Conclure | "Is there anything else I can help you with?" |
+
+> [!exemple] Réponse complète en anglais
+> Hi Sarah,
+>
+> Thanks for reaching out, and I''m sorry your order arrived damaged.
+>
+> I''ve sent a replacement today at no extra cost. Here is the tracking link: [link]. You don''t need to return the damaged item.
+>
+> If anything else comes up, just reply to this email.
+>
+> Best regards,
+> Hery
+
+### Les erreurs fréquentes des francophones
+
+| Erreur | Correct |
+| --- | --- |
+| "I''m agree" | "I agree" |
+| "Can you precise?" | "Could you clarify?" |
+| "Actually, your order is in transit" (au sens de « actuellement ») | "Currently, your order is in transit" |
+| "I will revert you" | "I''ll get back to you" |
+| "Dear Sir" pour tout le monde | "Hi [prénom]" ou "Hello" |
+
+## S''adapter aux cultures
+
+| Clients | Ce qui est apprécié |
+| --- | --- |
+| **France** | Vouvoiement, formules de politesse, réponse précise et argumentée |
+| **États-Unis** | Ton chaleureux, prénom, réponse rapide et orientée vers la solution |
+| **Royaume-Uni** | Politesse indirecte, retenue |
+| **Allemagne** | Précision, faits, délais exacts |
+| **Canada (Québec)** | Français, ton cordial, sensibilité à l''usage du français |
+
+> [!astuce]
+> Suivez toujours le **guide de ton** de l''entreprise (tone of voice) : il passe avant vos habitudes. S''il n''existe pas, proposez d''en rédiger un : c''est une compétence avancée appréciée.
+
+## La protection des données
+
+### Les 6 règles
+
+1. **Vérifiez l''identité** avant de donner une information sur un compte (e-mail du compte, numéro de commande, question de sécurité).
+2. **Ne demandez jamais** un mot de passe ou un numéro complet de carte bancaire.
+3. **Ne copiez pas** les données des clients hors des outils de l''entreprise.
+4. **Masquez** les données sensibles dans les captures et les rapports.
+5. **Transmettez** les demandes d''accès ou de suppression de données à l''équipe responsable (en Europe, droits prévus par le RGPD), en respectant les délais.
+6. **Signalez** immédiatement toute fuite ou erreur d''envoi.
+
+> [!definition] RGPD
+> Le règlement européen sur la protection des données personnelles. Il s''applique dès qu''une entreprise traite les données de personnes en Europe, même si l''agent travaille depuis Madagascar.
+
+## Fuseaux horaires et plannings
+
+> [!definition] Couverture « follow the sun »
+> Une organisation où des équipes de différents pays se relaient pour assurer un support presque 24 heures sur 24.
+
+| Clients | Heure de Madagascar (UTC+3) |
+| --- | --- |
+| France (été, UTC+2) | 9 h à Paris = 10 h à Antananarivo |
+| France (hiver, UTC+1) | 9 h à Paris = 11 h à Antananarivo |
+| Québec (été, UTC−4) | 9 h à Montréal = 16 h à Antananarivo |
+| Californie (été, UTC−7) | 9 h à San Francisco = 19 h à Antananarivo |
+
+> [!madagascar]
+> Les postes avec des horaires décalés (soir et nuit pour l''Amérique du Nord) sont souvent mieux payés. Avant d''accepter, vérifiez votre **sécurité** (trajets si vous travaillez en centre d''affaires), votre **énergie** (onduleur, batterie) et votre **santé** (rythme de sommeil régulier).
+
+## Réussir les tests de recrutement
+
+| Test | Ce qui est évalué | Préparation |
+| --- | --- | --- |
+| **Rédaction** | 3 à 5 réponses à des tickets en temps limité | Méthode en 5 parties, relecture |
+| **Anglais** | Test écrit, parfois oral | Lecture et écriture quotidiennes |
+| **Dactylographie** | Vitesse et précision (souvent 40 à 60 mots par minute ou plus) | Entraînement quotidien |
+| **Mise en situation chat** | 2 à 3 conversations simultanées | Exercices de simultanéité |
+| **Entretien** | Motivation, fiabilité, situations difficiles | Exemples concrets avec la méthode situation, action, résultat |
+
+> [!retenir]
+> - Un anglais simple, poli et précis, sans les faux amis des francophones.
+> - Adaptez le ton à la culture et au guide de l''entreprise.
+> - Vérifiez l''identité, protégez les données, signalez les erreurs.
+> - Maîtrisez les fuseaux horaires et protégez votre rythme de vie.
+> - Préparez chaque type de test de recrutement.
+
+## Exercice pratique : candidater à l''international
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez 5 réponses en anglais à des tickets variés (retard, remboursement, bug, question de compte, client en colère).
+> 2. Réécrivez une de ces réponses pour un client français et un client allemand.
+> 3. Rédigez votre procédure de vérification d''identité en 5 étapes.
+> 4. Calculez vos horaires de travail pour couvrir 9 h à 18 h à Paris en été et en hiver.
+> 5. Faites 3 tests de vitesse de frappe et notez vos résultats.
+>
+> **À livrer** : vos réponses, votre procédure, vos calculs d''horaires et vos résultats.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 3, 0, 'Quelle formule anglaise est correcte ?', '["I''ll get back to you","I''m agree","I will revert you","Can you precise?"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 3, 1, 'Que ne faut-il jamais demander à un client ?', '["La date de sa commande","Son mot de passe","Son numéro de commande","Son prénom"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 3, 2, 'En été, 9 h à Paris correspond à quelle heure à Antananarivo ?', '["9 h","8 h","10 h","12 h"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-1-a', 4, 'Développer sa carrière : évolution, offres et équipe', 'Voies d''évolution, offres de support, calcul du prix à partir du volume, encadrement en 6 piliers et dossier de réalisations.', 'Un bon agent de support peut évoluer vers des postes mieux payés et plus stables : analyste qualité, responsable d''équipe, administrateur de l''outil, responsable de la base de connaissances, ou fondateur de sa propre petite agence de support. Ce dernier module vous aide à construire cette évolution depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir votre voie d''évolution.
+> 2. Proposer des offres de support en freelance ou en agence.
+> 3. Calculer le prix d''un service de support.
+> 4. Encadrer une petite équipe d''agents.
+> 5. Construire un dossier de réalisations.
+
+## Les voies d''évolution
+
+| Poste | Ce qu''il fait | Ce qu''il faut ajouter |
+| --- | --- | --- |
+| **Analyste qualité (QA)** | Évalue les réponses, forme les agents | Grilles, retours constructifs, statistiques simples |
+| **Responsable d''équipe (team lead)** | Planning, suivi des indicateurs, accompagnement | Organisation, communication, gestion des conflits |
+| **Administrateur Zendesk ou Freshdesk** | Configure l''outil, les règles et les rapports | Logique des automatisations, certifications de l''éditeur |
+| **Responsable de la base de connaissances** | Écrit et organise l''aide en ligne | Rédaction, structure, analyse des recherches |
+| **Responsable support (support manager)** | Stratégie, budget, recrutement | Expérience, gestion, finances |
+
+> [!astuce]
+> Les éditeurs (Zendesk, Freshworks) proposent des formations en ligne et des **certifications**, parfois gratuites. Elles renforcent votre profil pour les postes d''administrateur. Vérifiez les offres et les prix sur leurs sites officiels.
+
+## Les offres en freelance ou en agence
+
+| Offre | Contenu | Pour qui |
+| --- | --- | --- |
+| **Support externalisé** | Réponses e-mail et chat sur des horaires définis | Boutiques en ligne, applications |
+| **Couverture des soirs et week-ends** | Prise en charge quand l''équipe principale est absente | Entreprises européennes |
+| **Mise en place d''un helpdesk** | Configuration de Zendesk ou Freshdesk, macros, règles, SLA | Petites entreprises qui démarrent |
+| **Audit qualité** | Évaluation de 100 tickets, rapport et plan d''amélioration | Équipes qui veulent progresser |
+| **Base de connaissances** | Rédaction de 20 à 50 articles d''aide | Entreprises avec beaucoup de questions répétées |
+
+## Calculer le prix d''un service de support
+
+### Le support externalisé
+
+1. **Estimez le volume** : nombre de tickets par mois.
+2. **Estimez la productivité** : tickets traités par heure (exemple : 8 en moyenne).
+3. **Calculez les heures** : volume ÷ productivité.
+4. **Ajoutez** 15 % pour la formation, les réunions et l''analyse.
+5. **Multipliez** par votre tarif horaire.
+
+> [!exemple] Calcul
+> 1 200 tickets par mois ÷ 8 tickets par heure = 150 heures. +15 % = 172,5 heures, arrondies à 173. À 8 € de l''heure, cela fait 1 384 € par mois.
+> *(Montants donnés en exemple. Pour les clients malgaches, calculez en ariary selon le marché local.)*
+
+### Les modèles de prix
+
+| Modèle | Avantage | Point de vigilance |
+| --- | --- | --- |
+| **À l''heure** | Simple | Le client ne voit pas la valeur |
+| **Au ticket** | Lié au volume | Ne pas sacrifier la qualité pour la vitesse |
+| **Forfait mensuel** | Revenu stable | Fixer un volume maximum inclus |
+
+## Encadrer une petite équipe
+
+### Les 6 piliers
+
+1. **Recruter** avec un test écrit et une mise en situation.
+2. **Former** avec un manuel : produits, procédures, macros, ton.
+3. **Planifier** les horaires pour respecter les SLA.
+4. **Évaluer** chaque semaine avec la grille qualité.
+5. **Accompagner** par des entretiens individuels réguliers.
+6. **Reconnaître** les progrès et les bons résultats.
+
+> [!exemple] Un retour constructif
+> « Ta réponse au ticket 48230 était très claire et le client a mis 5 étoiles. Un point à améliorer : tu n''as pas rempli le champ "motif", ce qui fausse nos statistiques. Pour les prochains tickets, pense à le remplir avant de passer au statut "résolu". »
+
+> [!madagascar]
+> Une petite agence de support à Antananarivo, Mahajanga ou Fianarantsoa peut servir plusieurs clients étrangers, avec des agents formés localement. Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable sur les obligations d''employeur (contrat de travail, CNaPS). Prévoyez aussi les **coupures d''électricité et d''Internet** dans votre plan : un groupe électrogène ou des batteries, et deux fournisseurs d''accès.
+
+## Le dossier de réalisations
+
+1. **Vos indicateurs** : CSAT, résolution au premier contact, notes qualité (avec l''accord de l''employeur ou en pourcentages généraux).
+2. **Vos améliorations** : analyses des motifs, articles d''aide, règles automatiques, avec leurs résultats.
+3. **Vos certifications**.
+4. **Des recommandations** de responsables ou de clients.
+5. **Des exemples anonymisés** de réponses et de configurations.
+
+> [!retenir]
+> - Évoluez vers la qualité, l''encadrement, l''administration de l''outil ou la base de connaissances.
+> - Proposez des offres claires : support externalisé, soirs et week-ends, mise en place, audit, articles.
+> - Calculez le prix à partir du volume et de la productivité.
+> - Encadrez avec recrutement, formation, planning, évaluation, accompagnement et reconnaissance.
+> - Montrez vos résultats dans un dossier de réalisations.
+
+## Exercice pratique : votre plan d''évolution
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre voie d''évolution et listez les 5 compétences à acquérir sur 12 mois.
+> 2. Rédigez la présentation de 2 offres (contenu, horaires, prix).
+> 3. Calculez le prix d''un support externalisé pour 800 et 2 000 tickets par mois.
+> 4. Rédigez le sommaire du manuel de formation d''un nouvel agent.
+> 5. Préparez votre dossier de réalisations.
+>
+> **À livrer** : votre plan, vos offres, vos calculs, le sommaire et votre dossier.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 4, 0, '1 200 tickets à 8 tickets par heure demandent…', '["15 heures","96 heures","1 208 heures","150 heures"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 4, 1, 'Quel poste configure l''outil, les règles et les rapports ?', '["Administrateur Zendesk ou Freshdesk","Graphiste","Agent N1","Comptable"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-1-a', 4, 2, 'Que contient un retour constructif ?', '["Seulement des reproches","Un point positif précis et un point à améliorer avec une action","Une sanction","Rien de précis"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quelle spécialité évalue les réponses des agents ?', '["Graphiste","Support e-commerce","Analyste qualité","Développeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Qui corrige un bug dans le produit ?', '["Le client","Le niveau N3 ou l''équipe technique","Personne","L''agent N1"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Qu''est-ce qu''une bonne escalade ?', '["Transférer sans rien dire","Demander au client de recommencer","Fermer le ticket","Transmettre avec toutes les informations utiles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que mesure le taux de contacts ?', '["Le prix des produits","Le nombre d''agents","La vitesse de frappe","Le nombre de demandes par commande ou par utilisateur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que mesure le CSAT ?', '["Le chiffre d''affaires","Le nombre de tickets","La satisfaction des clients","Le temps de connexion"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'À quoi servent les vues dans un helpdesk ?', '["Afficher des listes de tickets à traiter","Changer le logo","Facturer les clients","Envoyer des publicités"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Qu''est-ce qu''un champ dynamique dans une macro ?', '["Une faute de frappe","Une pièce jointe","Un mot de passe","Un code remplacé automatiquement par une information"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Où tester une nouvelle règle automatique ?', '["Sur un compte d''essai ou un environnement de test","Sur le compte personnel d''un client","Nulle part","Directement sur tous les clients"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que fait une automatisation après 7 jours sans réponse du client ?', '["Rien","Elle envoie une facture","Elle peut résoudre le ticket avec un message poli","Elle supprime le client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quel est le premier élément d''un bon article d''aide ?', '["Une longue introduction","Une publicité","Le logo","Un titre avec les mots du client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que faire des brouillons proposés par l''IA du helpdesk ?', '["Les publier sur les réseaux","Les envoyer sans lire","Les relire avant d''envoyer","Les ignorer toujours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quelle intégration relie un ticket à un rapport de bug ?', '["Excel","Mobile Money","Jira","Canva"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Combien de points pour l''exactitude dans la grille qualité ?', '["100","0","5","25"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Combien de chats simultanés en général ?', '["2 à 4 selon la complexité","1 seul toujours","50","20"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que dire quand une vérification prend du temps en chat ?', '["Annoncer la durée approximative","Ne rien dire","Fermer le chat","Changer de client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Qu''est-ce qu''une rétrofacturation ?', '["Une réduction de prix","Une contestation de paiement auprès de la banque","Un type de macro","Un nouveau produit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que rassembler pour un litige ?', '["Preuves de commande, de livraison et échanges","Des photos de vacances","Le mot de passe du client","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Une résolution au premier contact faible : quelle action ?', '["Répondre aussi à la question suivante probable","Répondre plus court","Ignorer","Fermer plus vite"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Comment dire « actuellement » en anglais ?', '["Actually","Currently","Lately","Eventually"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quel ton apprécient souvent les clients américains ?', '["Chaleureux, avec le prénom, orienté solution","Très froid","Uniquement en français","Avec de longues formules"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Le RGPD s''applique-t-il si l''agent est à Madagascar ?', '["Non, jamais","Oui, s''il traite les données de personnes en Europe","Seulement le dimanche","Seulement pour le chat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Que faire en cas d''envoi d''un e-mail au mauvais client ?', '["Attendre","Le cacher","Le signaler immédiatement","Supprimer le ticket"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'En hiver, 9 h à Paris correspond à quelle heure à Antananarivo ?', '["9 h","10 h","7 h","11 h"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quel modèle de prix exige de fixer un volume maximum inclus ?', '["Le paiement à l''heure","Le forfait mensuel","Le paiement au ticket","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-1-a', 'Quel est le premier pilier pour encadrer une équipe ?', '["Ignorer les SLA","Supprimer les plannings","Recruter avec un test écrit et une mise en situation","Ne jamais évaluer"]'::jsonb, 2);
 
 -- client-1-f
 delete from public.exam_questions where course_id = 'client-1-f';
