@@ -5,7 +5,7 @@ begin;
 insert into public.courses (id, job_key, job_name, level, title, hours, published) values
   ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 14, true),
   ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
-  ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 11, false),
+  ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 15, false),
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
@@ -7812,6 +7812,637 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- design-1-f
+delete from public.exam_questions where course_id = 'design-1-f';
+delete from public.module_questions where course_id = 'design-1-f';
+delete from public.lessons where course_id = 'design-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-f', 0, 'Le métier de designer UI/UX depuis Madagascar', 'UX et UI, les 7 étapes d''un projet, la différence avec le graphiste et le développeur, les 6 principes d''une bonne interface, les clients et le plan d''apprentissage.', 'Chaque application que vous ouvrez sur votre téléphone a été pensée par quelqu''un : où placer le bouton, quel texte écrire, comment éviter que l''utilisateur se perde. Ce travail, c''est celui du designer UI/UX. Il se fait entièrement à distance, avec un ordinateur et Figma, et les entreprises du monde entier en ont besoin. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que font le designer UI et le designer UX.
+> 2. Décrire les étapes d''un projet de design d''interface.
+> 3. Distinguer le travail du designer, du graphiste et du développeur.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un designer UI/UX **conçoit des écrans d''applications et de sites qui sont simples à utiliser, agréables à regarder et utiles pour les personnes qui s''en servent**.
+
+> [!definition] UX et UI
+> **UX** (expérience utilisateur) : le parcours de la personne. Trouve-t-elle ce qu''elle cherche ? Comprend-elle quoi faire ? Réussit-elle sa tâche sans frustration ?
+> **UI** (interface utilisateur) : ce qu''elle voit. Couleurs, typographie, boutons, icônes, espacements, cohérence visuelle.
+
+> [!exemple] La différence en pratique
+> Dans une application de transfert Mobile Money, l''**UX** décide qu''il faut 3 étapes (destinataire, montant, confirmation) au lieu de 6, et qu''on affiche les frais avant de confirmer. L''**UI** décide de la couleur du bouton « Envoyer », de la taille du montant et de la façon d''afficher le message de succès.
+
+## Les étapes d''un projet
+
+| N° | Étape | Ce que fait le designer | Livrable |
+| --- | --- | --- | --- |
+| 1 | **Comprendre** | Interroger le client et les utilisateurs, étudier les concurrents | Notes, objectifs, profils d''utilisateurs |
+| 2 | **Organiser** | Définir les pages et les parcours | Arborescence, parcours utilisateur |
+| 3 | **Esquisser** | Dessiner la structure des écrans, sans couleurs | Wireframes (maquettes fil de fer) |
+| 4 | **Concevoir** | Créer les écrans finaux avec le style visuel | Maquettes haute fidélité |
+| 5 | **Prototyper** | Relier les écrans pour simuler l''application | Prototype cliquable |
+| 6 | **Tester** | Observer de vrais utilisateurs essayer le prototype | Résultats et corrections |
+| 7 | **Livrer** | Préparer les écrans pour les développeurs | Fichier Figma organisé, composants, annotations |
+
+## Designer, graphiste ou développeur ?
+
+| Métier | Ce qu''il produit | Exemple |
+| --- | --- | --- |
+| **Graphiste** | Des visuels : logos, affiches, publications | L''affiche d''un concert |
+| **Designer UI/UX** | Des écrans et des parcours interactifs | L''application de réservation du concert |
+| **Développeur front-end** | Le code qui fait fonctionner les écrans | Le site de réservation en ligne qui marche vraiment |
+
+Le designer UI/UX ne code pas forcément, mais il doit **comprendre** ce qui est possible et facile à développer.
+
+## Les principes de base d''une bonne interface
+
+1. **Clarté** : l''utilisateur comprend en quelques secondes ce que fait l''écran.
+2. **Cohérence** : les mêmes éléments ont toujours la même apparence et le même comportement.
+3. **Hiérarchie** : le plus important se voit en premier.
+4. **Retour** : chaque action donne une réponse visible (chargement, succès, erreur).
+5. **Prévention des erreurs** : on évite les erreurs plutôt que de les signaler après.
+6. **Accessibilité** : utilisable par tous, y compris les personnes malvoyantes.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Start-up et entreprises de services numériques** d''Antananarivo qui créent des applications.
+2. **Banques, opérateurs et microfinance** qui développent leurs applications mobiles.
+3. **Agences web** qui ont besoin de maquettes avant le développement.
+4. **ONG** qui créent des outils de collecte de données ou d''information.
+
+### À l''étranger
+
+1. **Start-up francophones** qui ont besoin de maquettes rapidement.
+2. **Agences web et studios** qui sous-traitent le design.
+3. **Entrepreneurs** qui veulent tester une idée d''application avant de la faire développer.
+
+> [!madagascar] Votre avantage
+> Vous connaissez les usages réels des utilisateurs malgaches : téléphones d''entrée de gamme, connexion limitée, habitudes de paiement par Mobile Money, langues mélangées. Ces connaissances sont précieuses pour les entreprises qui veulent toucher le public local. Pour les clients étrangers, votre français et le faible décalage horaire avec l''Europe sont des atouts.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, écran de 14 pouces au moins |
+| **Logiciel** | Figma (offre gratuite) dans le navigateur ou l''application |
+| **Téléphone** | Pour tester vos prototypes avec l''application Figma |
+| **Connexion** | Stable : Figma travaille en ligne |
+| **Énergie** | Onduleur ou batterie pour les coupures |
+
+## Votre plan d''apprentissage
+
+1. **Les bases de Figma** (2 semaines) : cadres, formes, texte, alignements.
+2. **Les principes visuels** (2 à 3 semaines) : typographie, couleurs, grilles, espacements.
+3. **L''UX** (3 à 4 semaines) : parcours, wireframes, tests utilisateurs.
+4. **Les composants** (2 semaines) : bibliothèques réutilisables.
+5. **Les projets** : 3 études de cas complètes pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - UX : le parcours et la facilité d''usage ; UI : l''apparence de l''interface.
+> - Un projet suit 7 étapes, de la compréhension à la livraison aux développeurs.
+> - Clarté, cohérence, hiérarchie, retour, prévention des erreurs, accessibilité.
+> - Clients : start-up, banques, agences, ONG, entrepreneurs.
+
+## Exercice pratique : observer comme un designer
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Créez un compte Figma gratuit.
+> 2. Choisissez 2 applications que vous utilisez souvent (Mobile Money, réseau social, transport).
+> 3. Pour chacune, notez 3 points UX réussis et 3 points à améliorer, avec une capture.
+> 4. Classez chaque point selon les 6 principes.
+> 5. Écrivez votre plan d''apprentissage sur 3 mois.
+>
+> **À livrer** : vos 12 observations avec captures et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 0, 0, 'Que concerne l''UX ?', '["Le parcours et la facilité d''usage","Uniquement la couleur des boutons","Le logo","Le code du site"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 0, 1, 'Que produit un designer UI/UX ?', '["Le code du serveur","Des affiches de concert","Des écrans et des parcours interactifs","Des factures"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 0, 2, 'Quel principe demande que les mêmes éléments aient toujours la même apparence ?', '["La publicité","La vitesse","La cohérence","La décoration"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-f', 1, 'Les bases : utilisateurs, parcours, wireframes et règles visuelles', 'Entretiens et personas, parcours utilisateur et arborescence, wireframes, typographie, couleurs, système de 8 points et accessibilité.', 'Ce module vous donne les bases du design d''interface : comprendre les utilisateurs, organiser les parcours, dessiner des wireframes, puis appliquer les règles visuelles qui rendent une interface claire : typographie, couleurs, grilles et espacements.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un entretien utilisateur simple et créer un profil d''utilisateur.
+> 2. Dessiner un parcours utilisateur et une arborescence.
+> 3. Réaliser des wireframes.
+> 4. Appliquer les règles de typographie, de couleurs et d''espacement.
+> 5. Respecter les bases de l''accessibilité.
+
+## Comprendre les utilisateurs
+
+### L''entretien utilisateur
+
+1. **Préparez 6 à 8 questions** ouvertes sur les habitudes, pas sur les opinions.
+2. **Interrogez 4 à 5 personnes** qui ressemblent aux futurs utilisateurs.
+3. **Écoutez** plus que vous ne parlez.
+4. **Notez** les faits, les difficultés, les mots qu''ils utilisent.
+
+| Bonne question | Mauvaise question |
+| --- | --- |
+| « Racontez-moi la dernière fois que vous avez acheté un billet de taxi-brousse. » | « Aimeriez-vous une application pour acheter des billets ? » |
+| « Qu''est-ce qui a été difficile ? » | « Est-ce que ce serait pratique ? » |
+
+> [!definition] Persona (profil d''utilisateur)
+> Une fiche qui décrit un utilisateur type à partir des entretiens : objectifs, difficultés, habitudes, contexte d''usage. Elle aide l''équipe à prendre des décisions pour de vraies personnes.
+
+> [!exemple] Persona
+> **Hanta, 27 ans, commerçante à Mahajanga.** Vend des vêtements sur Facebook. Utilise un téléphone Android d''entrée de gamme avec un forfait limité. **Objectif** : suivre ses commandes et ses paiements MVola sans tout noter dans un cahier. **Difficultés** : messages perdus, oublis de livraison, connexion lente. **Ce qu''elle attend** : une application légère, en français et en malgache, qui fonctionne même avec une mauvaise connexion.
+
+## Organiser les parcours
+
+### Le parcours utilisateur
+
+Il décrit les étapes qu''une personne suit pour atteindre son objectif.
+
+```
+Objectif : réserver une place de taxi-brousse
+1. Ouvrir l''application
+2. Choisir le départ et l''arrivée (Antananarivo → Antsirabe)
+3. Choisir la date et l''horaire
+4. Choisir le nombre de places
+5. Voir le prix total
+6. Payer par Mobile Money
+7. Recevoir le billet (écran + SMS)
+```
+
+### L''arborescence
+
+Elle montre toutes les pages et leur organisation.
+
+```
+Accueil
+├── Rechercher un trajet
+│   └── Résultats → Détail du trajet → Paiement → Confirmation
+├── Mes billets
+├── Compte
+│   ├── Profil
+│   └── Moyens de paiement
+└── Aide
+```
+
+> [!astuce]
+> Comptez les étapes du parcours principal. Chaque étape supprimée réduit le nombre d''utilisateurs qui abandonnent. Demandez-vous toujours : « Cette étape est-elle vraiment nécessaire ? »
+
+## Les wireframes
+
+> [!definition] Wireframe
+> Une maquette simplifiée, en noir et blanc, qui montre la structure d''un écran : où sont les titres, les boutons, les listes, les champs. Pas de couleurs ni d''images : on se concentre sur l''organisation.
+
+### Les règles
+
+1. **Commencez par le téléphone** : l''écran le plus petit oblige à choisir l''essentiel.
+2. **Utilisez des blocs gris** pour les images et des lignes pour les textes.
+3. **Écrivez les vrais textes** des boutons (« Payer 35 000 Ar », pas « Bouton »).
+4. **Faites plusieurs versions** rapides avant d''en choisir une.
+
+## Les règles visuelles
+
+### La typographie
+
+| Règle | Exemple |
+| --- | --- |
+| 1 ou 2 polices au maximum | Une police sans empattement lisible (Inter, Roboto…) |
+| Une échelle de tailles | 12, 14, 16, 20, 24, 32 px |
+| Texte courant d''au moins 14 à 16 px sur téléphone | Lisible sans zoomer |
+| Interligne d''environ 1,4 à 1,6 fois la taille | Lecture confortable |
+
+### Les couleurs
+
+1. **Une couleur principale** pour les actions importantes (boutons principaux).
+2. **Des couleurs neutres** (gris) pour les textes et les fonds.
+3. **Des couleurs de signal** : vert pour le succès, rouge pour l''erreur, orange pour l''alerte.
+4. **Ne jamais transmettre une information uniquement par la couleur** : ajoutez une icône ou un texte.
+
+### La grille et les espacements
+
+> [!definition] Système d''espacement de 8 points
+> Utiliser des espacements multiples de 8 (8, 16, 24, 32, 48 px). Les écrans paraissent ordonnés et les développeurs reproduisent facilement les maquettes.
+
+| Élément | Espacement courant |
+| --- | --- |
+| Marges latérales sur téléphone | 16 ou 24 px |
+| Entre deux éléments liés | 8 px |
+| Entre deux groupes | 24 ou 32 px |
+| Zone tactile minimale d''un bouton | Environ 44 à 48 px de haut |
+
+## Les bases de l''accessibilité
+
+1. **Contraste** suffisant entre le texte et le fond (outil de vérification de contraste dans Figma).
+2. **Zones tactiles** assez grandes pour les doigts.
+3. **Textes clairs** sur les boutons : « Confirmer le paiement » plutôt que « OK ».
+4. **Messages d''erreur** qui expliquent comment corriger.
+5. **Pas d''information** donnée seulement par la couleur.
+
+> [!madagascar]
+> Beaucoup d''utilisateurs malgaches utilisent leur téléphone **en plein soleil**, avec une **luminosité réduite** pour économiser la batterie. Un bon contraste et des textes assez grands ne sont pas un luxe : c''est la condition pour que l''application soit utilisable.
+
+> [!retenir]
+> - Interrogez les utilisateurs sur leurs habitudes réelles et créez des personas.
+> - Parcours et arborescence avant les écrans.
+> - Wireframes en noir et blanc, téléphone d''abord, vrais textes.
+> - 1 ou 2 polices, une couleur principale, des espacements multiples de 8.
+> - Contraste, zones tactiles et textes clairs pour l''accessibilité.
+
+## Exercice pratique : de l''entretien au wireframe
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Interrogez 3 personnes sur la façon dont elles paient leurs factures (Jirama, eau, téléphone).
+> 2. Créez un persona à partir des entretiens.
+> 3. Dessinez le parcours « payer une facture » et l''arborescence d''une application.
+> 4. Réalisez les wireframes des 5 écrans principaux sur papier, puis dans Figma.
+>
+> **À livrer** : vos notes d''entretien, votre persona, votre parcours, votre arborescence et vos wireframes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 1, 0, 'Quelle question d''entretien est la meilleure ?', '["Est-ce que ce serait pratique ?","Notre idée est géniale, non ?","Aimeriez-vous notre application ?","Racontez-moi la dernière fois que vous avez acheté un billet"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 1, 1, 'Qu''est-ce qu''un wireframe ?', '["Un logo","Une maquette simplifiée en noir et blanc qui montre la structure","Une vidéo","Le code final"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 1, 2, 'Quels espacements utilise le système de 8 points ?', '["8, 16, 24, 32 px","100 px partout","5, 7, 11 px","Au hasard"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-f', 2, 'Les outils : Figma, FigJam et les outils payants', 'Organisation d''un fichier, auto-layout, composants, variantes et styles, prototype cliquable, FigJam, offre payante de Figma et Framer.', 'Ce module vous fait prendre en main **Figma**, l''outil standard des designers d''interface, et **FigJam**, son tableau blanc collaboratif. Vous apprendrez les fonctions qui font gagner du temps : auto-layout, composants, styles et prototypes. Vous découvrirez enfin les outils payants : **l''offre payante de Figma** et **Framer**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un fichier Figma avec des pages et des cadres.
+> 2. Utiliser l''auto-layout pour des éléments qui s''adaptent.
+> 3. Créer des composants, des variantes et des styles.
+> 4. Construire un prototype cliquable.
+> 5. Utiliser FigJam et comprendre ce qu''apportent les outils payants.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Figma** (offre gratuite) | Maquettes, composants, prototypes |
+| 2 | **FigJam** | Ateliers, parcours, idées en équipe |
+| 3 | **Application Figma** sur téléphone | Tester les prototypes sur un vrai écran |
+| 4 | **Ressources de la communauté Figma** | Kits d''interface, icônes, modèles |
+| 5 | **Google Fonts** | Polices gratuites |
+
+## Organiser un fichier Figma
+
+| Page | Contenu |
+| --- | --- |
+| **Couverture** | Nom du projet, version, date |
+| **Recherche** | Notes, personas, parcours (ou lien vers FigJam) |
+| **Wireframes** | Écrans en noir et blanc |
+| **Maquettes** | Écrans finaux |
+| **Composants** | Bibliothèque de boutons, champs, cartes |
+| **Archives** | Anciennes versions |
+
+> [!astuce]
+> Nommez vos cadres clairement : `01 Accueil`, `02 Recherche`, `03 Résultats`. Les clients et les développeurs retrouvent les écrans sans vous demander.
+
+## L''auto-layout
+
+> [!definition] Auto-layout
+> Une fonction de Figma qui place automatiquement les éléments en ligne ou en colonne, avec des espacements fixes. Si le texte d''un bouton s''allonge, le bouton s''agrandit tout seul.
+
+### Créer un bouton avec auto-layout
+
+1. Écrivez le texte « Payer ».
+2. Sélectionnez-le et appuyez sur **Maj + A** (auto-layout).
+3. Réglez les marges intérieures : 12 px en haut et en bas, 24 px à gauche et à droite.
+4. Ajoutez une couleur de fond et un arrondi de 8 px.
+5. Changez le texte en « Payer 35 000 Ar » : le bouton s''adapte.
+
+## Les composants, variantes et styles
+
+> [!definition] Composant
+> Un élément réutilisable (bouton, champ, carte). Vous modifiez le composant principal, et toutes ses copies (instances) se mettent à jour.
+
+> [!definition] Variantes
+> Les différentes versions d''un même composant, regroupées : bouton principal ou secondaire, normal, désactivé ou en chargement.
+
+| Composant | Variantes utiles |
+| --- | --- |
+| Bouton | Principal / secondaire ; normal / désactivé / chargement |
+| Champ de texte | Vide / rempli / erreur / désactivé |
+| Carte de trajet | Disponible / complet |
+
+### Les styles
+
+Enregistrez vos **couleurs**, **styles de texte** et **effets** (ombres) comme styles. Changer une couleur de marque se fait alors en un seul clic dans tout le fichier.
+
+## Le prototype cliquable
+
+1. Passez dans l''onglet **Prototype**.
+2. Sélectionnez un bouton et tirez la flèche vers l''écran suivant.
+3. Choisissez l''interaction (au clic) et l''animation (glissement, fondu).
+4. Définissez l''écran de départ.
+5. Lancez la présentation et testez sur votre téléphone avec l''application Figma.
+
+> [!attention]
+> Un prototype n''est pas une application : il ne garde pas les données saisies et ne se connecte à rien. Dites-le clairement au client pour éviter les malentendus.
+
+## FigJam : travailler en équipe
+
+| Usage | Exemple |
+| --- | --- |
+| Atelier avec le client | Objectifs, utilisateurs, idées sur des post-it |
+| Parcours utilisateur | Étapes et difficultés |
+| Analyse des tests | Regrouper les observations par thème |
+| Arborescence | Organisation des pages |
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand l''utiliser |
+| --- | --- | --- |
+| **Figma (offre payante)** | Projets et fichiers illimités, bibliothèques d''équipe partagées, historique des versions plus long, mode développeur pour les développeurs (selon l''offre) | Quand vous travaillez régulièrement pour des clients ou en équipe |
+| **Framer** | Transformer un design en site web réel, publié en ligne, avec animations, sans coder | Sites vitrines et pages de présentation pour les clients qui veulent un site rapidement |
+
+> [!madagascar]
+> L''offre payante de Figma est facturée en dollars par éditeur et par mois. Commencez avec l''offre gratuite ; beaucoup de clients vous invitent dans **leur propre espace Figma payant**. Vérifiez aussi les offres pour étudiants et enseignants, et les prix à jour sur les sites officiels.
+
+> [!retenir]
+> - Un fichier organisé en pages et des cadres bien nommés.
+> - L''auto-layout pour des éléments qui s''adaptent.
+> - Composants, variantes et styles pour la cohérence et la vitesse.
+> - Un prototype cliquable pour tester, sans le confondre avec une application.
+> - FigJam pour les ateliers ; l''offre payante de Figma et Framer quand l''activité grandit.
+
+## Exercice pratique : votre première bibliothèque
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un fichier Figma organisé en 6 pages.
+> 2. Créez les styles : 5 couleurs et 6 styles de texte.
+> 3. Créez les composants avec variantes : bouton, champ de texte, carte.
+> 4. Transformez vos wireframes du module 2 en 5 maquettes avec ces composants.
+> 5. Reliez-les en prototype et testez-le sur votre téléphone.
+>
+> **À livrer** : le lien de votre fichier Figma et une courte vidéo du prototype.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 2, 0, 'Que fait l''auto-layout ?', '["Il traduit les textes","Il supprime les calques","Il place les éléments automatiquement et les adapte au contenu","Il publie l''application"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 2, 1, 'Que se passe-t-il quand on modifie un composant principal ?', '["Seule une copie change","Toutes ses instances se mettent à jour","Rien","Le fichier est supprimé"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 2, 2, 'À quoi sert Framer ?', '["Transformer un design en site web publié sans coder","Monter des vidéos","Envoyer des SMS","Faire la comptabilité"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-f', 3, 'Premier projet : l''application Tsena', 'Cadrage et première version, recherche, parcours et wireframes, maquettes avec états, test avec 5 utilisateurs et livraison aux développeurs.', 'Dans ce module, vous réalisez un projet complet de designer UI/UX pour une petite application, de la compréhension du besoin jusqu''à la livraison aux développeurs. C''est le type de projet qui deviendra votre première **étude de cas** de portfolio.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Cadrer un projet avec un client.
+> 2. Concevoir les parcours et les écrans d''une application.
+> 3. Tester un prototype avec de vrais utilisateurs.
+> 4. Améliorer le design à partir des résultats.
+> 5. Livrer un fichier propre aux développeurs.
+
+## Le cas pratique : « Tsena »
+
+> [!exemple] Votre client
+> **Tsena** est une jeune entreprise d''Antananarivo qui veut lancer une application de **commande de légumes frais** auprès de producteurs de la région d''Analamanga, avec livraison à domicile et paiement par Mobile Money ou à la livraison. Le fondateur, M. Andry, a besoin de maquettes et d''un prototype pour convaincre des investisseurs et briefer son développeur.
+
+## Étape 1 : cadrer le projet
+
+### Les questions au client
+
+| Thème | Question |
+| --- | --- |
+| **Objectif** | Que doit permettre la première version ? |
+| **Utilisateurs** | Qui va commander ? Avec quel téléphone ? |
+| **Contraintes** | Délai, budget, développeur prévu, langues |
+| **Concurrence** | Qui fait déjà quelque chose de proche ? |
+| **Succès** | Comment saura-t-on que l''application marche ? |
+
+### Le périmètre de la première version
+
+1. Parcourir les légumes par catégorie.
+2. Ajouter au panier.
+3. Choisir un créneau de livraison.
+4. Payer (Mobile Money ou à la livraison).
+5. Suivre la commande.
+
+Tout le reste (programme de fidélité, avis, abonnements) est noté pour **plus tard**.
+
+## Étape 2 : comprendre les utilisateurs
+
+1. **Interrogez 5 personnes** qui achètent des légumes chaque semaine.
+2. **Créez 2 personas** : par exemple une mère de famille qui travaille et un jeune couple.
+3. **Notez leurs difficultés** : temps de trajet au marché, fraîcheur, prix changeants.
+
+## Étape 3 : parcours et wireframes
+
+1. **Dessinez le parcours principal** : de l''ouverture à la confirmation.
+2. **Faites l''arborescence**.
+3. **Réalisez les wireframes** des écrans principaux.
+
+| Écran | Contenu essentiel |
+| --- | --- |
+| Accueil | Recherche, catégories, produits de saison |
+| Catégorie | Liste des produits avec prix au kilo et bouton d''ajout |
+| Produit | Photo, origine du producteur, prix, quantité |
+| Panier | Produits, total, frais de livraison |
+| Livraison | Adresse, créneau |
+| Paiement | Mobile Money ou à la livraison, récapitulatif |
+| Confirmation et suivi | Numéro de commande, étapes de livraison |
+
+## Étape 4 : maquettes et prototype
+
+1. **Définissez le style** avec le client : couleurs (par exemple un vert frais), police, ton des textes.
+2. **Créez les composants** : bouton, carte produit, sélecteur de quantité, étapes de suivi.
+3. **Réalisez les maquettes** de tous les écrans, y compris les **états** : panier vide, chargement, erreur de paiement, produit épuisé.
+4. **Reliez-les en prototype**.
+
+> [!attention]
+> Les débutants oublient souvent les **états vides et d''erreur**. Que voit l''utilisateur si son panier est vide ? Si le paiement échoue ? Si aucun créneau n''est disponible ? Un développeur qui ne reçoit pas ces écrans devra les inventer.
+
+## Étape 5 : tester le prototype
+
+### Le test en 5 étapes
+
+1. **Recrutez 5 personnes** proches des personas.
+2. **Donnez une tâche** : « Commandez 2 kg de tomates et 1 botte de brèdes pour demain matin. »
+3. **Observez sans aider** : notez où elles hésitent ou se trompent.
+4. **Demandez à la fin** ce qui a été difficile.
+5. **Regroupez les observations** par problème et par gravité.
+
+| Problème observé | Nombre de personnes | Gravité | Correction |
+| --- | --- | --- | --- |
+| Ne trouvent pas comment changer la quantité | 3 sur 5 | Forte | Sélecteur + et − plus visible |
+| Ne comprennent pas « créneau » | 2 sur 5 | Moyenne | Remplacer par « Heure de livraison » |
+| Frais de livraison vus trop tard | 4 sur 5 | Forte | Afficher les frais dès le panier |
+
+> [!madagascar]
+> Testez le prototype sur des **téléphones d''entrée de gamme**, et pas seulement sur votre ordinateur. Vérifiez aussi que les textes restent compréhensibles pour des utilisateurs qui préfèrent le malgache : le client voudra peut-être une version bilingue.
+
+## Étape 6 : livrer aux développeurs
+
+1. **Organisez** le fichier : pages claires, écrans nommés et dans l''ordre.
+2. **Annotez** les comportements : que se passe-t-il au clic, au chargement, en cas d''erreur ?
+3. **Vérifiez** que tous les éléments utilisent les composants et les styles.
+4. **Exportez** les icônes et images nécessaires.
+5. **Présentez** le fichier au développeur lors d''un appel et répondez à ses questions.
+
+> [!retenir]
+> - Cadrez la première version et notez le reste pour plus tard.
+> - Entretiens, personas, parcours et wireframes avant les maquettes.
+> - N''oubliez pas les états vides, de chargement et d''erreur.
+> - Testez avec 5 personnes, regroupez et corrigez par gravité.
+> - Livrez un fichier organisé et annoté.
+
+## Exercice pratique : le projet Tsena
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Rédigez la fiche de cadrage du projet.
+> 2. Interrogez 5 personnes et créez 2 personas.
+> 3. Réalisez parcours, arborescence et wireframes.
+> 4. Créez les maquettes de 7 écrans et leurs états, puis le prototype.
+> 5. Testez avec 5 personnes et corrigez.
+> 6. Préparez le fichier pour un développeur.
+>
+> **À livrer** : votre fichier Figma, le prototype, le tableau des tests et une étude de cas de 1 page. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 3, 0, 'Quels écrans les débutants oublient-ils souvent ?', '["Les états vides, de chargement et d''erreur","L''écran d''accueil","Le panier","Le logo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 3, 1, 'Pendant un test utilisateur, que doit faire le designer ?', '["Observer sans aider","Donner les réponses","Quitter la pièce","Faire la tâche à sa place"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 3, 2, 'Combien de personnes pour un test simple ?', '["Environ 5","1 seule","500","Aucune"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-1-f', 4, 'Trouver des clients et se faire payer', 'Étude de cas en 6 parties, plateformes de portfolio, 5 canaux, calcul du prix d''un projet, devis en 8 points, paiements et évolution.', 'Les clients choisissent un designer UI/UX en regardant **comment il réfléchit**, pas seulement de jolis écrans. Ce dernier module vous montre comment construire un portfolio d''études de cas, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio avec des études de cas.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Calculer le prix d''un projet de design.
+> 4. Rédiger un devis clair avec le nombre de corrections.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+### L''étude de cas en 6 parties
+
+1. **Le contexte** : le client (ou le projet fictif), le problème.
+2. **Votre rôle** et la durée.
+3. **La recherche** : entretiens, personas, ce que vous avez appris.
+4. **La conception** : parcours, wireframes, choix et pourquoi.
+5. **Les tests** : problèmes trouvés et corrections.
+6. **Le résultat** : maquettes finales, prototype, et si possible des chiffres.
+
+> [!astuce]
+> Trois études de cas complètes valent mieux que vingt écrans sans explication. Les projets fictifs sont acceptés au début, à condition d''être réalistes et de le dire clairement.
+
+### Où publier
+
+| Plateforme | Usage |
+| --- | --- |
+| **Behance** | Études de cas visuelles, visibles par les recruteurs |
+| **Dribbble** | Écrans et petites animations |
+| **Site personnel** (Framer, Notion…) | Votre vitrine principale |
+| **LinkedIn** | Publications sur vos projets et votre méthode |
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Start-up et entreprises numériques** à Madagascar | Proposez une amélioration de leur application avec une analyse de 3 problèmes |
+| 2 | **Agences web** | Proposez de faire leurs maquettes avant développement |
+| 3 | **Plateformes de freelance** | Petits projets (une page, une application simple) ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+| 4 | **Développeurs freelances** | Partenariat : vous faites le design, ils développent |
+| 5 | **LinkedIn et communautés de designers** | Publiez vos études de cas et vos analyses |
+
+> [!exemple] Message à une start-up
+> « Bonjour, j''utilise votre application de livraison et j''ai remarqué que les frais apparaissent seulement à la dernière étape, ce qui peut faire abandonner des commandes. Je suis designer UI/UX : j''ai préparé une courte analyse de 3 points d''amélioration avec des propositions d''écrans. Puis-je vous l''envoyer ? »
+
+## Calculer ses prix
+
+1. **Tarif horaire** : revenu mensuel visé ÷ heures facturables (exemple : 1 500 000 Ar ÷ 100 h = 15 000 Ar de l''heure).
+2. **Estimez** chaque étape du projet.
+3. **Ajoutez** une marge de 20 % pour les échanges et les imprévus.
+
+| Étape | Heures (application simple de 7 écrans) |
+| --- | --- |
+| Cadrage et recherche | 6 h |
+| Parcours et wireframes | 8 h |
+| Composants et maquettes | 16 h |
+| Prototype | 3 h |
+| Tests et corrections | 6 h |
+| Livraison | 2 h |
+| **Sous-total** | **41 h** |
+| Marge 20 % | 8 h |
+| **Total** | **49 h × 15 000 Ar = 735 000 Ar** |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Le devis
+
+### Les 8 points
+
+1. **Le périmètre** : nombre d''écrans, plateformes (téléphone, ordinateur).
+2. **Ce qui est inclus** : recherche, wireframes, maquettes, prototype, tests.
+3. **Ce qui n''est pas inclus** : développement, logo, rédaction des textes.
+4. **Le nombre d''allers-retours** de corrections (par exemple 2 par étape).
+5. **Le calendrier** par étape.
+6. **Le prix** et les échéances (par exemple 40 % au début, 60 % à la livraison).
+7. **La propriété** : fichiers transférés au client après paiement complet.
+8. **L''usage dans votre portfolio** : avec ou sans l''accord du client.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Designer UI/UX confirmé** | Design systems, recherche utilisateur avancée, accessibilité |
+| **Product designer** | Indicateurs, travail avec les équipes produit, décisions basées sur les données |
+| **Spécialiste recherche utilisateur** | Méthodes d''entretien et de test approfondies |
+| **Designer et développeur no-code** | Framer, Webflow (voir la formation Développeur no-code) |
+
+> [!retenir]
+> - 3 études de cas complètes en 6 parties.
+> - Start-up, agences, plateformes, développeurs partenaires, LinkedIn.
+> - Prix = heures estimées par étape + marge, multipliées par votre tarif.
+> - Un devis en 8 points, avec le nombre de corrections.
+> - Payoneer, virement ou Mobile Money selon le client.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez l''étude de cas du projet Tsena en 6 parties et publiez-la sur Behance ou votre site.
+> 2. Calculez le prix d''une application de 10 écrans.
+> 3. Rédigez votre modèle de devis en 8 points.
+> 4. Choisissez 5 applications ou sites malgaches, préparez une analyse de 3 points pour l''un d''eux et envoyez-la.
+>
+> **À livrer** : le lien de votre étude de cas, votre calcul, votre devis et votre message envoyé.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 4, 0, 'Que montre surtout une étude de cas ?', '["Comment vous réfléchissez et décidez","Seulement de jolis écrans","Votre salaire","Vos mots de passe"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 4, 1, '41 heures plus 20 % de marge font environ…', '["41 heures","49 heures","20 heures","61 heures"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-1-f', 4, 2, 'Que préciser dans le devis pour éviter les corrections sans fin ?', '["Le nombre d''allers-retours de corrections","La couleur préférée du client","Rien","Le nom du développeur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que concerne l''UI ?', '["La comptabilité","Ce que l''utilisateur voit : couleurs, typographie, boutons","Le parcours seulement","Le serveur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quelle est la première étape d''un projet ?', '["Prototyper","Choisir les couleurs","Livrer aux développeurs","Comprendre le client et les utilisateurs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Qui écrit le code qui fait fonctionner les écrans ?', '["Le développeur","Le graphiste","Le designer UI/UX","Le client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel principe impose une réponse visible après chaque action ?', '["La décoration","La cohérence","La hiérarchie","Le retour"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel est l''avantage d''un designer malgache pour le public local ?', '["Il ne connaît rien","Aucun","Il connaît les usages réels : téléphones, connexion, Mobile Money","Il ne parle pas français"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Qu''est-ce qu''un persona ?', '["Une fiche qui décrit un utilisateur type à partir des entretiens","Un logo","Un écran","Une police"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que montre l''arborescence ?', '["Toutes les pages et leur organisation","Le code","Le prix","Les couleurs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Par quel écran commencer les wireframes ?', '["L''imprimante","Le téléphone","La télévision","Le grand écran"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel texte de bouton est le meilleur ?', '["Bouton","OK","Payer 35 000 Ar","Cliquer ici"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Combien de polices au maximum conseillées ?', '["Autant que possible","1 ou 2","10","6"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Peut-on donner une information seulement par la couleur ?', '["Non, il faut ajouter une icône ou un texte","Oui, toujours","Oui, sur téléphone","Oui, en rouge"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quelle hauteur minimale environ pour une zone tactile ?', '["200 px","44 à 48 px","5 px","10 px"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Pourquoi un bon contraste est-il important à Madagascar ?', '["Ce n''est pas important","Pour décorer","Pour économiser de l''argent","Usage en plein soleil et luminosité réduite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel raccourci ajoute l''auto-layout dans Figma ?', '["Ctrl + P","Alt + F4","F12","Maj + A"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que sont les variantes ?', '["Des clients","Les différentes versions d''un même composant","Des polices","Des pages"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'À quoi servent les styles dans Figma ?', '["Enregistrer couleurs et textes pour les changer partout en un clic","Coder","Envoyer des factures","Traduire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Un prototype Figma garde-t-il les données saisies ?', '["Non, ce n''est pas une application","Oui, sur Internet","Oui, dans une base","Oui, toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'À quoi sert FigJam ?', '["Monter une vidéo","Ateliers, parcours et idées en équipe","Faire la paie","Héberger un site"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que faire des fonctions demandées hors de la première version ?', '["Les oublier sans le dire","Les noter pour plus tard","Les faire toutes immédiatement","Annuler le projet"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que donner aux personnes pendant un test ?', '["Rien à faire","Un questionnaire de 100 questions","Les réponses","Une tâche précise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Comment trier les problèmes trouvés en test ?', '["Par ordre alphabétique","Par nombre de personnes touchées et par gravité","Au hasard","On ne les trie pas"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Que faut-il annoter pour les développeurs ?', '["Les comportements : clic, chargement, erreur","Le prix","La couleur préférée du designer","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Où publier une étude de cas visible par les recruteurs ?', '["Nulle part","Un SMS","Un groupe privé","Behance"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel partenaire peut vous apporter des projets de design ?', '["Un concurrent direct","Personne","Un client mécontent","Un développeur freelance"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quand les fichiers sont-ils transférés au client ?', '["Au premier appel","Avant de commencer","Après le paiement complet","Jamais"]'::jsonb, 2);
 
 -- dev-0-a
 delete from public.exam_questions where course_id = 'dev-0-a';

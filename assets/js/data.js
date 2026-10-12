@@ -1345,6 +1345,92 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-1-f": {
+  "hours": 16,
+  "description": "Le designer UI/UX conçoit des écrans d'applications et de sites simples à utiliser et agréables à regarder. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des start-up, des agences et des entreprises, à Madagascar et à l'étranger, avec Figma et FigJam : recherche utilisateur, parcours, wireframes, maquettes, prototypes et tests. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer la différence entre UX et UI et les étapes d'un projet",
+   "Interroger des utilisateurs, créer des personas et des parcours",
+   "Dessiner des wireframes et appliquer les règles visuelles et d'accessibilité",
+   "Utiliser Figma : auto-layout, composants, variantes, styles et prototypes",
+   "Mener un projet complet avec tests utilisateurs et livraison aux développeurs",
+   "Construire un portfolio d'études de cas, chiffrer un projet et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de designer UI/UX depuis Madagascar",
+    "summary": "UX et UI, les 7 étapes d'un projet, la différence avec le graphiste et le développeur, les 6 principes d'une bonne interface, les clients et le plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les étapes d'un projet",
+     "Designer, graphiste ou développeur ?",
+     "Les principes de base d'une bonne interface",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : observer comme un designer"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : utilisateurs, parcours, wireframes et règles visuelles",
+    "summary": "Entretiens et personas, parcours utilisateur et arborescence, wireframes, typographie, couleurs, système de 8 points et accessibilité.",
+    "sections": [
+     "Comprendre les utilisateurs",
+     "Organiser les parcours",
+     "Les wireframes",
+     "Les règles visuelles",
+     "Les bases de l'accessibilité",
+     "Exercice pratique : de l'entretien au wireframe"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Figma, FigJam et les outils payants",
+    "summary": "Organisation d'un fichier, auto-layout, composants, variantes et styles, prototype cliquable, FigJam, offre payante de Figma et Framer.",
+    "sections": [
+     "Les outils gratuits",
+     "Organiser un fichier Figma",
+     "L'auto-layout",
+     "Les composants, variantes et styles",
+     "Le prototype cliquable",
+     "FigJam : travailler en équipe",
+     "Les outils payants",
+     "Exercice pratique : votre première bibliothèque"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : l'application Tsena",
+    "summary": "Cadrage et première version, recherche, parcours et wireframes, maquettes avec états, test avec 5 utilisateurs et livraison aux développeurs.",
+    "sections": [
+     "Le cas pratique : « Tsena »",
+     "Étape 1 : cadrer le projet",
+     "Étape 2 : comprendre les utilisateurs",
+     "Étape 3 : parcours et wireframes",
+     "Étape 4 : maquettes et prototype",
+     "Étape 5 : tester le prototype",
+     "Étape 6 : livrer aux développeurs",
+     "Exercice pratique : le projet Tsena"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Étude de cas en 6 parties, plateformes de portfolio, 5 canaux, calcul du prix d'un projet, devis en 8 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-0-a": {
   "hours": 20,
   "description": "Ce niveau Avancé fait du développeur front-end un professionnel confirmé : spécialité (applications React et Next.js, performance, accessibilité, design system, e-commerce, tests), audit technique et signaux web essentiels, outils payants (WebStorm et GitHub Copilot) avec TypeScript et Next.js, tests, intégration continue, performance et accessibilité, travail international en anglais et internationalisation, puis tarif, maintenance, portfolio et petite équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",

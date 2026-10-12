@@ -1,0 +1,97 @@
+{
+  "id": "design-1-f",
+  "hours": 16,
+  "description": "Le designer UI/UX conçoit des écrans d'applications et de sites simples à utiliser et agréables à regarder. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des start-up, des agences et des entreprises, à Madagascar et à l'étranger, avec Figma et FigJam : recherche utilisateur, parcours, wireframes, maquettes, prototypes et tests. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer la différence entre UX et UI et les étapes d'un projet",
+    "Interroger des utilisateurs, créer des personas et des parcours",
+    "Dessiner des wireframes et appliquer les règles visuelles et d'accessibilité",
+    "Utiliser Figma : auto-layout, composants, variantes, styles et prototypes",
+    "Mener un projet complet avec tests utilisateurs et livraison aux développeurs",
+    "Construire un portfolio d'études de cas, chiffrer un projet et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de designer UI/UX depuis Madagascar",
+      "summary": "UX et UI, les 7 étapes d'un projet, la différence avec le graphiste et le développeur, les 6 principes d'une bonne interface, les clients et le plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que concerne l'UX ?", "options": ["Le parcours et la facilité d'usage", "Uniquement la couleur des boutons", "Le code du site", "Le logo"], "correct": 0 },
+        { "q": "Que produit un designer UI/UX ?", "options": ["Des écrans et des parcours interactifs", "Des affiches de concert", "Le code du serveur", "Des factures"], "correct": 0 },
+        { "q": "Quel principe demande que les mêmes éléments aient toujours la même apparence ?", "options": ["La cohérence", "La vitesse", "La décoration", "La publicité"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : utilisateurs, parcours, wireframes et règles visuelles",
+      "summary": "Entretiens et personas, parcours utilisateur et arborescence, wireframes, typographie, couleurs, système de 8 points et accessibilité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle question d'entretien est la meilleure ?", "options": ["Racontez-moi la dernière fois que vous avez acheté un billet", "Aimeriez-vous notre application ?", "Est-ce que ce serait pratique ?", "Notre idée est géniale, non ?"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un wireframe ?", "options": ["Une maquette simplifiée en noir et blanc qui montre la structure", "Un logo", "Une vidéo", "Le code final"], "correct": 0 },
+        { "q": "Quels espacements utilise le système de 8 points ?", "options": ["8, 16, 24, 32 px", "5, 7, 11 px", "Au hasard", "100 px partout"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Figma, FigJam et les outils payants",
+      "summary": "Organisation d'un fichier, auto-layout, composants, variantes et styles, prototype cliquable, FigJam, offre payante de Figma et Framer.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait l'auto-layout ?", "options": ["Il place les éléments automatiquement et les adapte au contenu", "Il traduit les textes", "Il publie l'application", "Il supprime les calques"], "correct": 0 },
+        { "q": "Que se passe-t-il quand on modifie un composant principal ?", "options": ["Toutes ses instances se mettent à jour", "Rien", "Le fichier est supprimé", "Seule une copie change"], "correct": 0 },
+        { "q": "À quoi sert Framer ?", "options": ["Transformer un design en site web publié sans coder", "Faire la comptabilité", "Monter des vidéos", "Envoyer des SMS"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'application Tsena",
+      "summary": "Cadrage et première version, recherche, parcours et wireframes, maquettes avec états, test avec 5 utilisateurs et livraison aux développeurs.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quels écrans les débutants oublient-ils souvent ?", "options": ["Les états vides, de chargement et d'erreur", "L'écran d'accueil", "Le panier", "Le logo"], "correct": 0 },
+        { "q": "Pendant un test utilisateur, que doit faire le designer ?", "options": ["Observer sans aider", "Donner les réponses", "Faire la tâche à sa place", "Quitter la pièce"], "correct": 0 },
+        { "q": "Combien de personnes pour un test simple ?", "options": ["Environ 5", "1 seule", "500", "Aucune"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Étude de cas en 6 parties, plateformes de portfolio, 5 canaux, calcul du prix d'un projet, devis en 8 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que montre surtout une étude de cas ?", "options": ["Comment vous réfléchissez et décidez", "Seulement de jolis écrans", "Votre salaire", "Vos mots de passe"], "correct": 0 },
+        { "q": "41 heures plus 20 % de marge font environ…", "options": ["49 heures", "41 heures", "61 heures", "20 heures"], "correct": 0 },
+        { "q": "Que préciser dans le devis pour éviter les corrections sans fin ?", "options": ["Le nombre d'allers-retours de corrections", "La couleur préférée du client", "Rien", "Le nom du développeur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que concerne l'UI ?", "options": ["Ce que l'utilisateur voit : couleurs, typographie, boutons", "Le serveur", "La comptabilité", "Le parcours seulement"], "correct": 0 },
+    { "q": "Quelle est la première étape d'un projet ?", "options": ["Comprendre le client et les utilisateurs", "Choisir les couleurs", "Livrer aux développeurs", "Prototyper"], "correct": 0 },
+    { "q": "Qui écrit le code qui fait fonctionner les écrans ?", "options": ["Le développeur", "Le designer UI/UX", "Le graphiste", "Le client"], "correct": 0 },
+    { "q": "Quel principe impose une réponse visible après chaque action ?", "options": ["Le retour", "La cohérence", "La hiérarchie", "La décoration"], "correct": 0 },
+    { "q": "Quel est l'avantage d'un designer malgache pour le public local ?", "options": ["Il connaît les usages réels : téléphones, connexion, Mobile Money", "Il ne connaît rien", "Il ne parle pas français", "Aucun"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un persona ?", "options": ["Une fiche qui décrit un utilisateur type à partir des entretiens", "Un logo", "Une police", "Un écran"], "correct": 0 },
+    { "q": "Que montre l'arborescence ?", "options": ["Toutes les pages et leur organisation", "Les couleurs", "Le prix", "Le code"], "correct": 0 },
+    { "q": "Par quel écran commencer les wireframes ?", "options": ["Le téléphone", "La télévision", "Le grand écran", "L'imprimante"], "correct": 0 },
+    { "q": "Quel texte de bouton est le meilleur ?", "options": ["Payer 35 000 Ar", "Bouton", "OK", "Cliquer ici"], "correct": 0 },
+    { "q": "Combien de polices au maximum conseillées ?", "options": ["1 ou 2", "6", "10", "Autant que possible"], "correct": 0 },
+    { "q": "Peut-on donner une information seulement par la couleur ?", "options": ["Non, il faut ajouter une icône ou un texte", "Oui, toujours", "Oui, en rouge", "Oui, sur téléphone"], "correct": 0 },
+    { "q": "Quelle hauteur minimale environ pour une zone tactile ?", "options": ["44 à 48 px", "5 px", "10 px", "200 px"], "correct": 0 },
+    { "q": "Pourquoi un bon contraste est-il important à Madagascar ?", "options": ["Usage en plein soleil et luminosité réduite", "Pour décorer", "Ce n'est pas important", "Pour économiser de l'argent"], "correct": 0 },
+    { "q": "Quel raccourci ajoute l'auto-layout dans Figma ?", "options": ["Maj + A", "Ctrl + P", "Alt + F4", "F12"], "correct": 0 },
+    { "q": "Que sont les variantes ?", "options": ["Les différentes versions d'un même composant", "Des polices", "Des pages", "Des clients"], "correct": 0 },
+    { "q": "À quoi servent les styles dans Figma ?", "options": ["Enregistrer couleurs et textes pour les changer partout en un clic", "Envoyer des factures", "Traduire", "Coder"], "correct": 0 },
+    { "q": "Un prototype Figma garde-t-il les données saisies ?", "options": ["Non, ce n'est pas une application", "Oui, toujours", "Oui, dans une base", "Oui, sur Internet"], "correct": 0 },
+    { "q": "À quoi sert FigJam ?", "options": ["Ateliers, parcours et idées en équipe", "Héberger un site", "Faire la paie", "Monter une vidéo"], "correct": 0 },
+    { "q": "Que faire des fonctions demandées hors de la première version ?", "options": ["Les noter pour plus tard", "Les faire toutes immédiatement", "Les oublier sans le dire", "Annuler le projet"], "correct": 0 },
+    { "q": "Que donner aux personnes pendant un test ?", "options": ["Une tâche précise", "Les réponses", "Rien à faire", "Un questionnaire de 100 questions"], "correct": 0 },
+    { "q": "Comment trier les problèmes trouvés en test ?", "options": ["Par nombre de personnes touchées et par gravité", "Au hasard", "Par ordre alphabétique", "On ne les trie pas"], "correct": 0 },
+    { "q": "Que faut-il annoter pour les développeurs ?", "options": ["Les comportements : clic, chargement, erreur", "La couleur préférée du designer", "Rien", "Le prix"], "correct": 0 },
+    { "q": "Où publier une étude de cas visible par les recruteurs ?", "options": ["Behance", "Un groupe privé", "Un SMS", "Nulle part"], "correct": 0 },
+    { "q": "Quel partenaire peut vous apporter des projets de design ?", "options": ["Un développeur freelance", "Un concurrent direct", "Personne", "Un client mécontent"], "correct": 0 },
+    { "q": "Quand les fichiers sont-ils transférés au client ?", "options": ["Après le paiement complet", "Avant de commencer", "Jamais", "Au premier appel"], "correct": 0 }
+  ]
+}
