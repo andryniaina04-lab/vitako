@@ -689,6 +689,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-2-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du prospecteur un professionnel qui génère des rendez-vous réguliers qui deviennent des ventes : spécialité (SaaS, comptes ciblés, téléphone, international, opérations, réactivation), audit de prospection et entonnoir complet, outils payants (HubSpot Sales et Lemlist) et délivrabilité (SPF, DKIM, DMARC, domaine secondaire), tests de messages, qualification BANT et transmission, prospection internationale en anglais et règles par pays, puis offres, primes et agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer une prospection et suivre l'entonnoir jusqu'aux ventes",
+   "Organiser un CRM et des séquences avec HubSpot Sales et Lemlist",
+   "Protéger la délivrabilité des e-mails",
+   "Tester les messages, qualifier et transmettre des rendez-vous complets",
+   "Prospecter en anglais en respectant les règles et cultures de chaque pays",
+   "Construire des offres durables et organiser une équipe de prospection"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer la prospection et suivre l'entonnoir",
+    "summary": "Les 6 spécialités avancées, le rôle de SDR, l'audit en 6 domaines dont la délivrabilité, l'entonnoir du contact à la vente et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit de la prospection d'une entreprise",
+     "Suivre l'entonnoir complet",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : HubSpot Sales, Lemlist et délivrabilité",
+    "summary": "CRM professionnel, séquences et modèles HubSpot, campagnes multicanales Lemlist, SPF, DKIM, DMARC, domaine d'envoi secondaire, préchauffage et rapports.",
+    "sections": [
+     "Un CRM professionnel avec HubSpot",
+     "HubSpot Sales : séquences et modèles",
+     "Lemlist : campagnes multicanales",
+     "La délivrabilité",
+     "Les rapports de prospection",
+     "Exercice pratique : votre système de prospection professionnel"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : tests, qualification, organisation et transmission",
+    "summary": "Tests de messages avec une seule différence, grille BANT et critères écrits, journée en blocs selon le fuseau des contacts, CRM propre, fiche de transmission, confirmation et rappel.",
+    "sections": [
+     "Tester les messages",
+     "Qualifier avec une grille",
+     "Organiser une journée de prospection",
+     "Garder un CRM propre",
+     "Transmettre un rendez-vous",
+     "Exercice pratique : la méthode des meilleures équipes"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, règles par pays, cultures et équipes",
+    "summary": "E-mails et appels en anglais, erreurs des francophones, repères juridiques par zone à faire valider, cultures d'affaires et travail avec une équipe commerciale étrangère.",
+    "sections": [
+     "Les messages en anglais",
+     "L'appel en anglais",
+     "Les grandes règles selon les pays",
+     "S'adapter aux cultures d'affaires",
+     "Travailler avec une équipe commerciale étrangère",
+     "Exercice pratique : une campagne internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres, primes, études de cas et agence",
+    "summary": "SDR à distance, freelance ou agence, offres et modèles de prix durables, études de cas avec l'entonnoir, équipe avec règles de qualité et évolutions.",
+    "sections": [
+     "Les trois voies",
+     "Construire des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "client-2-f": {
   "hours": 14,
   "description": "Le prospecteur trouve des entreprises qui ont besoin d'une offre, entre en contact avec les bonnes personnes et obtient des rendez-vous qualifiés pour l'équipe commerciale. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des éditeurs de logiciels et des entreprises de services, à Madagascar et à l'étranger, avec un CRM et Google Agenda : client idéal, listes, messages, appels, objections, qualification, suivi et rapports, dans le respect des règles. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

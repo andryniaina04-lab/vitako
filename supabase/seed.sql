@@ -78,7 +78,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true),
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true),
-  ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, false),
+  ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true),
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 10, false),
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 11, false),
@@ -2641,6 +2641,568 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel avantage proposer à une boutique européenne ?', '["Répondre seulement en malagasy","Ne jamais répondre le matin","Répondre tôt le matin, heure de Paris","Répondre une fois par semaine"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que doit préciser un contrat freelance de support ?', '["Seulement le prix","Canaux, horaires, délais, droits de l''agent, prix, confidentialité, durée","Le salaire du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle évolution consiste à écrire les articles d''aide ?', '["Graphiste","Comptable","Rédacteur de base de connaissances","Livreur"]'::jsonb, 2);
+
+-- client-2-a
+delete from public.exam_questions where course_id = 'client-2-a';
+delete from public.module_questions where course_id = 'client-2-a';
+delete from public.lessons where course_id = 'client-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-a', 0, 'Se spécialiser, auditer la prospection et suivre l''entonnoir', 'Les 6 spécialités avancées, le rôle de SDR, l''audit en 6 domaines dont la délivrabilité, l''entonnoir du contact à la vente et les offres à forte valeur.', 'Obtenir quelques rendez-vous ouvre les premières missions. Les prospecteurs les mieux payés génèrent des rendez-vous **réguliers et de qualité**, qui se transforment en ventes, maîtrisent les outils de prospection à grande échelle sans abîmer la réputation de leurs clients, et savent prospecter en anglais sur des marchés exigeants. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la prospection.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit de la prospection d''une entreprise.
+> 4. Suivre l''entonnoir complet, du contact à la vente.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Prospection pour éditeurs de logiciels (SaaS)** | Rendez-vous de démonstration pour une équipe commerciale | Cycle de vente des logiciels, qualification, outils de vente |
+| 2 | **Prospection par comptes ciblés (ABM)** | Approche personnalisée de 20 à 100 grandes entreprises | Recherche approfondie, plusieurs contacts par entreprise |
+| 3 | **Prospection téléphonique** | Appels de qualification et de prise de rendez-vous | Aisance orale, objections, rythme |
+| 4 | **Prospection internationale** | Campagnes en anglais vers l''Europe, l''Amérique du Nord, l''Afrique | Anglais écrit et oral, règles par pays |
+| 5 | **Opérations de prospection** | Outils, listes, délivrabilité, séquences pour une équipe | HubSpot, Lemlist, données, réglages d''envoi |
+| 6 | **Réactivation** | Relancer d''anciens clients et prospects | Segmentation, messages adaptés, CRM |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Prospection francophone** pour des entreprises françaises, belges, suisses et canadiennes, avec le faible décalage horaire européen.
+> - **Prospection bilingue** français et anglais pour des entreprises qui visent l''Afrique et l''océan Indien.
+> - **Équipes de prospection externalisées** : les entreprises de services numériques d''Antananarivo en proposent déjà à des clients européens.
+
+> [!definition] SDR (Sales Development Representative)
+> Le nom anglais courant du poste de prospecteur chargé de générer des rendez-vous qualifiés pour les commerciaux qui concluent les ventes (les « account executives »).
+
+## L''audit de la prospection d''une entreprise
+
+### Les 6 domaines
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Cible** | Le profil du client idéal est-il écrit, précis, validé par les ventes réelles ? |
+| **2. Données** | Les listes sont-elles à jour, vérifiées, d''origine légale ? |
+| **3. Messages** | Personnalisation, clarté, preuves, longueur |
+| **4. Séquences** | Canaux, nombre d''étapes, délais |
+| **5. Délivrabilité** | Réglages techniques du domaine, taux de rebond, signalements en spam |
+| **6. Résultats** | Taux de réponse, rendez-vous, rendez-vous transformés en ventes |
+
+> [!exemple] Extrait de résumé d''audit
+> « Les e-mails partent du domaine principal de l''entreprise, sans réglage d''authentification complet, à raison de 400 par jour depuis une seule adresse : 30 % arrivent probablement en spam. La liste a été achetée il y a 2 ans (12 % d''adresses en erreur). Le message parle de l''entreprise pendant 3 paragraphes avant d''évoquer le problème du client. Taux de réponse : 0,8 %. Nous proposons de reconstruire la liste, de configurer un domaine d''envoi secondaire et de réécrire la séquence. »
+
+## Suivre l''entonnoir complet
+
+| Étape | Indicateur | Exemple |
+| --- | --- | --- |
+| **Contacts touchés** | Nombre | 1 000 par mois |
+| **Réponses** | Taux de réponse | 8 % (80) |
+| **Réponses positives** | Taux | 3 % (30) |
+| **Rendez-vous fixés** | Nombre | 18 |
+| **Rendez-vous réalisés** | Taux de présence | 85 % (15) |
+| **Opportunités qualifiées par le commercial** | Taux | 60 % (9) |
+| **Ventes conclues** | Taux et montant | 3 ventes |
+
+*(Chiffres donnés en exemple : ils varient beaucoup selon le secteur et l''offre.)*
+
+> [!astuce]
+> Demandez au client l''accès aux **résultats des rendez-vous** (qualifié, non qualifié, vendu). Sans ce retour, vous ne pouvez pas améliorer la cible ni les messages, et vous ne pouvez pas prouver votre valeur.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit de prospection** | 6 domaines, recommandations, plan |
+| **Mise en place** | Cible, listes, domaine d''envoi, séquences, CRM |
+| **Prospection externalisée** | Campagnes continues, rendez-vous qualifiés, rapport |
+| **Prospection par comptes ciblés** | Recherche, approche personnalisée de comptes importants |
+| **Formation d''une équipe interne** | Méthode, messages, outils, suivi |
+| **Réactivation** | Campagne vers les anciens clients et prospects |
+
+> [!retenir]
+> - Spécialisez-vous : SaaS, comptes ciblés, téléphone, international, opérations ou réactivation.
+> - Un audit en 6 domaines, délivrabilité comprise.
+> - Suivez l''entonnoir jusqu''aux ventes, avec le retour des commerciaux.
+> - Vendez des rendez-vous qui deviennent des ventes, pas des volumes d''e-mails.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez la prospection d''une entreprise (réelle avec accord, ou votre campagne Soa Consulting) sur les 6 domaines.
+> 3. Construisez son entonnoir avec des chiffres réels ou estimés et repérez l''étape la plus faible.
+> 4. Rédigez le résumé de l''audit et votre proposition.
+>
+> **À livrer** : votre choix, votre audit, votre entonnoir et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 0, 0, 'Que fait un SDR ?', '["Il fait la comptabilité","Il génère des rendez-vous qualifiés pour les commerciaux","Il signe les contrats","Il développe le logiciel"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 0, 1, 'Pourquoi demander le résultat des rendez-vous au client ?', '["Pour améliorer la cible et prouver sa valeur","Ce n''est pas utile","Pour changer de client","Pour facturer plus"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 0, 2, 'Quel domaine d''audit concerne les e-mails qui arrivent en spam ?', '["Les résultats","La délivrabilité","Les messages","La cible"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-a', 1, 'Outils professionnels : HubSpot Sales, Lemlist et délivrabilité', 'CRM professionnel, séquences et modèles HubSpot, campagnes multicanales Lemlist, SPF, DKIM, DMARC, domaine d''envoi secondaire, préchauffage et rapports.', 'Au niveau Avancé, vous travaillez avec les outils payants des équipes de prospection : **HubSpot Sales** pour les séquences, les tâches et le suivi dans le CRM, et **Lemlist** pour les campagnes multicanales personnalisées. Vous maîtrisez aussi la **délivrabilité**, sans laquelle les meilleurs messages arrivent en spam.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un CRM professionnel avec HubSpot.
+> 2. Créer des séquences et des modèles dans HubSpot Sales.
+> 3. Construire une campagne multicanale dans Lemlist.
+> 4. Configurer et protéger la délivrabilité.
+> 5. Produire des rapports de prospection.
+
+## Un CRM professionnel avec HubSpot
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Propriétés** | Champs utiles et normalisés : secteur, taille, source, raison du contact, statut de prospection |
+| **Statuts du prospect** | Nouveau, en cours, connecté, rendez-vous fixé, non qualifié, ne plus contacter |
+| **Associations** | Contacts reliés à leur entreprise, rendez-vous reliés aux deux |
+| **Tâches** | Chaque appel ou relance manuelle est une tâche datée |
+| **Vues enregistrées** | « Mes prospects à appeler aujourd''hui », « Rendez-vous de la semaine » |
+
+> [!attention]
+> Un contact qui demande à ne plus être contacté doit être marqué **immédiatement** dans le CRM et exclu de toutes les séquences, dans tous les outils. C''est une obligation légale dans de nombreux pays et une question de respect.
+
+## HubSpot Sales : séquences et modèles
+
+> [!definition] Séquence
+> Une suite programmée d''e-mails et de tâches (appel, message LinkedIn) envoyés au nom d''un prospecteur, qui s''arrête automatiquement quand le contact répond ou prend rendez-vous.
+
+### Une séquence type
+
+| Étape | Jour | Type | Contenu |
+| --- | --- | --- | --- |
+| 1 | J1 | E-mail automatique | Premier message personnalisé |
+| 2 | J2 | Tâche LinkedIn | Invitation avec message court |
+| 3 | J4 | E-mail automatique | Relance avec une preuve |
+| 4 | J6 | Tâche appel | Appel de qualification |
+| 5 | J10 | E-mail automatique | Autre angle (témoignage, question) |
+| 6 | J17 | E-mail automatique | Message de clôture |
+
+### Les champs de personnalisation
+
+```
+Bonjour {{ contact.firstname }},
+
+J''ai vu que {{ company.name }} {{ contact.raison_du_contact }}.
+...
+```
+
+> [!astuce]
+> Les champs automatiques ne suffisent pas : la **première phrase** doit être écrite (ou vérifiée) pour chaque prospect important. Un e-mail personnalisé seulement avec le prénom et le nom de l''entreprise se reconnaît tout de suite.
+
+## Lemlist : campagnes multicanales
+
+| Fonction | Usage |
+| --- | --- |
+| **Campagnes multicanales** | E-mail, LinkedIn (dans le respect de ses règles), appels, dans une même séquence |
+| **Personnalisation avancée** | Variables, paragraphes conditionnels, images personnalisées |
+| **Conditions** | Si le prospect a ouvert ou cliqué, ou s''il a accepté l''invitation, passer à telle étape |
+| **Gestion des adresses d''envoi** | Plusieurs adresses, limites quotidiennes, préchauffage |
+| **Statistiques** | Réponses, intérêts, rendez-vous par campagne et par étape |
+
+*(Les fonctions et les prix des offres changent : vérifiez sur les sites officiels de HubSpot et de Lemlist. L''abonnement est en général payé par le client.)*
+
+## La délivrabilité
+
+> [!definition] Délivrabilité
+> La capacité de vos e-mails à arriver dans la boîte de réception, et non dans les spams. Elle dépend des réglages techniques du domaine, de la réputation de l''adresse d''envoi, de la qualité de la liste et du comportement des destinataires.
+
+### Les réglages techniques
+
+| Réglage | Rôle |
+| --- | --- |
+| **SPF** | Indique quels serveurs ont le droit d''envoyer pour le domaine |
+| **DKIM** | Signe les e-mails pour prouver qu''ils n''ont pas été modifiés |
+| **DMARC** | Indique quoi faire des e-mails qui échouent aux contrôles, et envoie des rapports |
+| **Domaine d''envoi secondaire** | Un domaine proche du principal (par exemple « soa-consulting.co » à côté de « soa-consulting.com ») pour protéger la réputation du domaine principal |
+
+Ces réglages se font dans la **zone DNS** du domaine, par le client ou son prestataire technique, en suivant la documentation de son fournisseur de messagerie.
+
+### Les bonnes pratiques d''envoi
+
+1. **Préchauffer** une nouvelle adresse : augmenter le volume progressivement sur plusieurs semaines.
+2. **Limiter** le volume par adresse et par jour (souvent quelques dizaines d''e-mails de prospection).
+3. **Vérifier** les adresses avant l''envoi : peu d''erreurs (rebonds).
+4. **Éviter** les pièces jointes, les liens nombreux et les images lourdes au premier contact.
+5. **Surveiller** le taux de rebond, les signalements en spam et les réponses négatives.
+
+> [!attention]
+> Les grands fournisseurs de messagerie (comme Google et Yahoo) ont renforcé leurs exigences pour les expéditeurs : authentification, désinscription facile, faible taux de signalement en spam. Vérifiez leurs règles à jour avant chaque nouvelle campagne.
+
+## Les rapports de prospection
+
+| Rapport | Contenu |
+| --- | --- |
+| **Hebdomadaire** | Contacts touchés, réponses, rendez-vous fixés, problèmes |
+| **Mensuel** | Entonnoir complet, comparaison des messages et des cibles, recommandations |
+| **Par campagne** | Résultats par étape et par canal |
+
+> [!madagascar]
+> Pour un client européen, envoyez le rapport hebdomadaire **le lundi matin heure de Paris** : c''est souvent le moment où l''équipe commerciale planifie sa semaine. Avec 1 à 2 heures d''avance à Antananarivo, vous pouvez le préparer tôt.
+
+> [!retenir]
+> - Un CRM propre : propriétés, statuts, associations, tâches, vues.
+> - Des séquences HubSpot qui s''arrêtent à la réponse, avec une première phrase personnelle.
+> - Des campagnes Lemlist multicanales avec conditions.
+> - SPF, DKIM, DMARC, domaine secondaire, préchauffage et volumes limités.
+> - Des rapports hebdomadaires et mensuels.
+
+## Exercice pratique : votre système de prospection professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans HubSpot (offre gratuite ou essai), créez les propriétés, statuts et vues d''une campagne.
+> 2. Rédigez une séquence de 6 étapes avec ses modèles.
+> 3. Concevez la même campagne dans Lemlist (essai) avec au moins 2 conditions.
+> 4. Rédigez la liste de contrôle de délivrabilité d''un nouveau domaine d''envoi.
+> 5. Créez le modèle de rapport hebdomadaire.
+>
+> **À livrer** : vos captures, votre séquence, votre campagne, votre liste de contrôle et votre modèle de rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 1, 0, 'Quand une séquence HubSpot s''arrête-t-elle ?', '["Jamais","Quand le contact répond ou prend rendez-vous","Quand le prospecteur part en vacances","Au bout d''un an"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 1, 1, 'À quoi sert DKIM ?', '["Compter les clics","Créer un CRM","Signer les e-mails pour prouver qu''ils n''ont pas été modifiés","Traduire les e-mails"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 1, 2, 'Pourquoi utiliser un domaine d''envoi secondaire ?', '["Protéger la réputation du domaine principal","Pour envoyer plus de spam","C''est obligatoire partout","Pour cacher l''entreprise"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-a', 2, 'Qualité et rapidité : tests, qualification, organisation et transmission', 'Tests de messages avec une seule différence, grille BANT et critères écrits, journée en blocs selon le fuseau des contacts, CRM propre, fiche de transmission, confirmation et rappel.', 'La prospection avancée repose sur une **méthode** : tester les messages, qualifier rigoureusement, organiser ses journées, garder un CRM propre et transmettre des rendez-vous parfaitement préparés. Ce module vous donne les méthodes des meilleures équipes de prospection.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Tester et améliorer les messages avec méthode.
+> 2. Qualifier avec une grille structurée.
+> 3. Organiser une journée de prospection productive.
+> 4. Garder un CRM propre.
+> 5. Transmettre un rendez-vous aux commerciaux sans perte d''information.
+
+## Tester les messages
+
+### Les règles d''un bon test
+
+1. **Une seule différence** entre les deux versions (objet, accroche ou appel à l''action).
+2. **Des groupes comparables** (même cible, même période).
+3. **Assez de contacts** : au moins 100 à 200 par version pour un premier signal.
+4. **Le bon indicateur** : le taux de **réponses positives**, pas le taux d''ouverture (souvent faussé).
+
+| Élément testé | Version A | Version B |
+| --- | --- | --- |
+| Objet | « Réservations directes pour l''Hôtel Les Palmiers » | « Question sur vos réservations du soir » |
+| Accroche | Ouverture de nouvelles chambres | Avis client sur la réservation |
+| Appel à l''action | « Un échange de 15 minutes ? » | « Voulez-vous que je vous envoie l''exemple d''un hôtel similaire ? » |
+
+> [!astuce]
+> Un appel à l''action **à faible engagement** (« Voulez-vous voir un exemple ? ») obtient souvent plus de réponses positives qu''une demande de rendez-vous directe. Testez-le dans votre secteur.
+
+## Qualifier avec une grille
+
+### La grille BANT
+
+| Critère | Question | Ce que vous cherchez |
+| --- | --- | --- |
+| **B**udget | « Avez-vous prévu un budget pour ce type de projet ? » | Capacité à acheter |
+| **A**utorité | « Qui participe à la décision ? » | Le bon interlocuteur ou l''accès au décideur |
+| **N**eed (besoin) | « Qu''est-ce qui vous pose problème aujourd''hui ? » | Un besoin réel et important |
+| **T**iming (moment) | « Est-ce un sujet pour les prochains mois ? » | Une échéance |
+
+> [!definition] Critères de qualification
+> Les conditions convenues avec le client pour qu''un rendez-vous soit considéré comme qualifié. Elles doivent être **écrites**, **simples** et **vérifiables** pendant l''échange.
+
+> [!attention]
+> Ne forcez pas un rendez-vous qui ne remplit pas les critères pour atteindre un objectif chiffré. Un commercial qui rencontre des prospects non qualifiés perd confiance dans vos rendez-vous, et le client finit par arrêter la mission.
+
+## Organiser une journée de prospection
+
+| Créneau (heure du contact) | Activité |
+| --- | --- |
+| **Début de matinée** | Préparation : recherche sur les comptes du jour, premières phrases personnalisées |
+| **Milieu de matinée** | Bloc d''appels (souvent un bon moment pour joindre les décideurs) |
+| **Début d''après-midi** | E-mails personnalisés, messages LinkedIn |
+| **Milieu d''après-midi** | Deuxième bloc d''appels |
+| **Fin de journée** | Mise à jour du CRM, préparation du lendemain, rapport |
+
+### Les indicateurs d''activité
+
+| Indicateur | Exemple d''objectif quotidien |
+| --- | --- |
+| Comptes recherchés | 20 |
+| E-mails personnalisés | 30 à 50 |
+| Appels | 40 à 60 |
+| Conversations réelles | 8 à 12 |
+| Rendez-vous fixés | 1 à 2 |
+
+*(Objectifs donnés en exemple : ils dépendent du secteur et du type de campagne.)*
+
+> [!madagascar]
+> Calez vos **blocs d''appels** sur les heures de bureau du pays du contact. Pour la France, le matin à Paris correspond à la fin de matinée à Antananarivo ; pour le Québec, la matinée là-bas tombe en fin d''après-midi et en soirée à Madagascar. Construisez votre journée autour de ces créneaux.
+
+## Garder un CRM propre
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Saisie immédiate** après chaque action | Pas d''oubli, pas d''erreur de mémoire |
+| **Une prochaine étape datée** pour chaque prospect actif | Rien ne se perd |
+| **Doublons fusionnés** chaque semaine | Pas de double contact gênant |
+| **Statuts à jour**, dont « ne plus contacter » | Respect et conformité |
+| **Notes utiles** : besoin, objection, interlocuteur, date de recontact | Le commercial et vous-même retrouvez le contexte |
+
+## Transmettre un rendez-vous
+
+### La fiche de transmission
+
+| Rubrique | Contenu |
+| --- | --- |
+| **Entreprise et contact** | Nom, poste, taille, site, profil LinkedIn |
+| **Rendez-vous** | Date, heure dans les deux fuseaux, lien |
+| **Comment il a été obtenu** | Canal, message qui a fonctionné |
+| **Situation et besoin** | Ce que le contact a dit, avec ses mots |
+| **Critères de qualification** | Budget, décideur, besoin, moment |
+| **Objections entendues** | Et vos réponses |
+| **Points d''attention** | Concurrents évoqués, sensibilités |
+
+> [!astuce]
+> Envoyez au contact un **e-mail de confirmation** avec l''objet du rendez-vous et le nom du commercial, et un **rappel** la veille : le taux de présence augmente nettement.
+
+> [!retenir]
+> - Des tests avec une seule différence, mesurés sur les réponses positives.
+> - Une qualification structurée (BANT) avec des critères écrits.
+> - Une journée organisée en blocs selon le fuseau des contacts.
+> - Un CRM propre, mis à jour immédiatement.
+> - Une fiche de transmission complète, une confirmation et un rappel.
+
+## Exercice pratique : la méthode des meilleures équipes
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez 2 versions d''un premier e-mail pour tester un seul élément, et le plan du test.
+> 2. Rédigez vos critères de qualification et vos questions BANT adaptées à une offre.
+> 3. Construisez votre emploi du temps type pour des contacts en France, puis au Québec.
+> 4. Rédigez 2 fiches de transmission complètes (à partir de vos simulations d''appels).
+> 5. Rédigez les modèles de confirmation et de rappel de rendez-vous.
+>
+> **À livrer** : vos versions et votre plan de test, vos critères, vos emplois du temps, vos fiches et vos modèles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 2, 0, 'Quel indicateur utiliser pour comparer deux messages ?', '["La couleur","Le nombre de mots","Le taux d''ouverture seul","Le taux de réponses positives"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 2, 1, 'Que signifie le N de BANT ?', '["Le nom","La nationalité","Le besoin (need)","Le nombre de salariés"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 2, 2, 'Que faire d''un rendez-vous qui ne remplit pas les critères ?', '["Le cacher","Le facturer double","Ne pas le forcer","Le forcer pour atteindre l''objectif"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-a', 3, 'Clients internationaux : anglais, règles par pays, cultures et équipes', 'E-mails et appels en anglais, erreurs des francophones, repères juridiques par zone à faire valider, cultures d''affaires et travail avec une équipe commerciale étrangère.', 'La prospection internationale ouvre de grands marchés, mais chaque pays a ses règles et ses habitudes. Ce module vous prépare à prospecter en anglais, à respecter les principales règles de prospection par pays, à adapter votre approche aux cultures et à travailler avec des équipes commerciales étrangères.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des messages de prospection efficaces en anglais.
+> 2. Mener un appel de prospection en anglais.
+> 3. Connaître les grandes règles de prospection selon les pays.
+> 4. Adapter votre approche aux cultures d''affaires.
+> 5. Travailler avec une équipe commerciale étrangère.
+
+## Les messages en anglais
+
+> [!exemple] Premier e-mail en anglais
+> **Subject**: Direct bookings at Seaview Lodge
+> Hi Emma,
+> I noticed Seaview Lodge added 6 new rooms this year — congratulations. Right now, guests can only book by phone or email, and many travelers book late in the evening, when they can confirm instantly elsewhere.
+> Ravinala Web builds booking websites for small hotels in the Indian Ocean, connected to the platforms you already use.
+> Would it be worth a quick 15-minute call next week?
+> Best,
+> Fara
+> *Not the right person? Just let me know and I won''t follow up.*
+
+### Les erreurs fréquentes des francophones
+
+| À éviter | À préférer |
+| --- | --- |
+| "I take the liberty to contact you" | "I''m reaching out because…" |
+| "Our society offers…" | "Our company offers…" |
+| "Are you available for a meeting to present our solution?" | "Would a quick 15-minute call make sense?" |
+| "I remain at your disposal" | "Happy to share more if helpful." |
+| Messages longs et formels | Messages courts, directs, chaleureux |
+
+## L''appel en anglais
+
+| Étape | Exemple |
+| --- | --- |
+| **Ouverture** | "Hi Emma, this is Fara from Ravinala Web. I know I''m calling out of the blue — do you have 30 seconds?" |
+| **Raison** | "We help small hotels get more direct bookings online." |
+| **Question** | "How do most of your guests book today?" |
+| **Proposition** | "Would it make sense to look at how a similar lodge doubled its direct bookings?" |
+| **Rendez-vous** | "Does Tuesday at 10 or Thursday at 2, your time, work better?" |
+| **Objection** | "Totally understand. When would be a better time to reconnect?" |
+
+> [!astuce]
+> Entraînez-vous à voix haute avec des enregistrements, et préparez des **phrases de secours** : "Sorry, could you repeat that?", "Just to make sure I understood…". Un accent n''est pas un problème ; la clarté et l''écoute comptent davantage.
+
+## Les grandes règles selon les pays
+
+| Zone | Points principaux (à vérifier avec le client) |
+| --- | --- |
+| **Union européenne** | RGPD : base légale pour utiliser les données, information des personnes, droit d''opposition ; règles nationales en plus pour le téléphone et l''e-mail (par exemple listes d''opposition au démarchage téléphonique) |
+| **Royaume-Uni** | Règles proches, avec des textes propres au Royaume-Uni sur les communications électroniques |
+| **États-Unis** | Loi CAN-SPAM pour les e-mails commerciaux (identification, adresse postale, désinscription) ; règles strictes pour les appels et SMS automatisés |
+| **Canada** | Loi canadienne anti-pourriel (LCAP, ou CASL en anglais), plus stricte sur le consentement ; règles spécifiques selon les cas |
+| **Madagascar** | Loi sur la protection des données à caractère personnel |
+
+> [!attention]
+> Ce tableau donne des repères, pas un avis juridique. Les règles changent et dépendent des cas (entreprise ou particulier, e-mail ou téléphone). Le **client** doit valider le cadre légal de chaque campagne avec ses conseillers, **par écrit**, avant le lancement.
+
+## S''adapter aux cultures d''affaires
+
+| Marché | Habitudes souvent observées |
+| --- | --- |
+| **France** | Politesse, vouvoiement, argumentation précise ; méfiance envers les messages trop commerciaux |
+| **États-Unis** | Messages courts, directs, orientés résultats ; prénom dès le premier échange |
+| **Royaume-Uni** | Ton poli et mesuré, humour léger, peu d''insistance |
+| **Allemagne** | Précision, faits, chiffres, sérieux ; titre et nom de famille au début |
+| **Canada (Québec)** | Français apprécié, ton cordial, sensibilité à la qualité de la langue |
+| **Afrique francophone** | Importance de la relation, du téléphone et parfois de WhatsApp, selon les secteurs |
+
+## Travailler avec une équipe commerciale étrangère
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Réunion hebdomadaire** courte avec les commerciaux | Retours sur les rendez-vous, ajustement des critères |
+| **Accès au CRM partagé** | Une seule source d''information |
+| **Calendriers partagés** | Fixer les rendez-vous sans échanges inutiles |
+| **Glossaire de l''offre** | Les bons mots, les preuves, les réponses aux objections |
+| **Retour systématique** sur chaque rendez-vous | Qualité mesurée, amélioration continue |
+
+> [!madagascar]
+> Pour l''Amérique du Nord, une partie des appels se fait le soir à Madagascar. Organisez des **plages fixes** (par exemple 3 soirs par semaine) plutôt que des soirées entières tous les jours, prévoyez une connexion de secours, et protégez votre rythme de sommeil.
+
+> [!retenir]
+> - En anglais : court, direct, chaleureux, avec un appel à l''action simple.
+> - Des phrases d''appel préparées et des phrases de secours.
+> - Des règles différentes par pays, validées par écrit par le client.
+> - Une approche adaptée à la culture d''affaires de chaque marché.
+> - Un travail régulier avec les commerciaux et un retour sur chaque rendez-vous.
+
+## Exercice pratique : une campagne internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez une séquence de 4 e-mails en anglais pour une offre de votre choix.
+> 2. Rédigez votre script d''appel en anglais et enregistrez 3 simulations.
+> 3. Préparez, pour le client, la liste des questions juridiques à valider pour une campagne en France, au Canada et aux États-Unis.
+> 4. Adaptez votre premier e-mail pour un contact allemand et un contact québécois.
+>
+> **À livrer** : votre séquence, votre script, vos enregistrements, votre liste de questions et vos adaptations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 3, 0, 'Quelle formule anglaise est la plus naturelle ?', '["I remain at your disposal","Our society offers…","I take the liberty to contact you","I''m reaching out because…"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 3, 1, 'Quelle loi canadienne encadre les messages commerciaux électroniques ?', '["La loi canadienne anti-pourriel (LCAP ou CASL)","Le PCG 2005","Le RGPD uniquement","Aucune"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 3, 2, 'Qui valide le cadre légal d''une campagne internationale ?', '["Le prospecteur seul","Les contacts","Le client avec ses conseillers, par écrit","Personne"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-a', 4, 'Développer son activité : offres, primes, études de cas et agence', 'SDR à distance, freelance ou agence, offres et modèles de prix durables, études de cas avec l''entonnoir, équipe avec règles de qualité et évolutions.', 'Un prospecteur confirmé peut construire une activité stable depuis Madagascar : poste à distance de SDR dans une entreprise étrangère, prospection externalisée pour plusieurs clients, ou petite agence de génération de rendez-vous. Ce dernier module vous aide à fixer vos prix, à protéger la qualité et à organiser une équipe.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste à distance, freelance et agence.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de prospecteurs.
+> 5. Préparer votre évolution vers la vente ou la gestion d''équipe.
+
+## Les trois voies
+
+| Voie | Avantages | Points de vigilance |
+| --- | --- | --- |
+| **SDR à distance** dans une entreprise | Revenu stable avec part variable, formation, outils fournis | Forme du contrat, horaires du pays, objectifs |
+| **Freelance** | Plusieurs clients, tarif plus élevé | Prospection pour soi-même, résultats exigés |
+| **Agence** | Revenus multipliés, campagnes plus grandes | Qualité, recrutement, gestion |
+
+## Construire des offres et des prix durables
+
+| Formule | Contenu | Modèle de prix (exemple) |
+| --- | --- | --- |
+| **Mise en place** | Audit, cible, listes, domaine d''envoi, séquences | Prix fixe |
+| **Campagne mensuelle** | Prospection continue, rapport, réunion hebdomadaire | Forfait + prime par rendez-vous qualifié réalisé |
+| **Comptes ciblés** | 30 à 50 comptes, recherche approfondie, plusieurs contacts | Forfait plus élevé |
+| **Formation d''équipe** | Méthode, messages, outils | Prix par session ou programme |
+
+> [!exemple] Calcul d''une campagne mensuelle
+> Forfait : 900 000 Ar par mois (ou l''équivalent en euros pour un client étranger), pour environ 1 000 contacts touchés et un rapport hebdomadaire. Prime : 50 000 Ar par rendez-vous qualifié réalisé. Avec 15 rendez-vous : 900 000 + 750 000 = 1 650 000 Ar.
+> *(Montants donnés en exemple. Les abonnements HubSpot, Lemlist et les domaines d''envoi sont payés par le client.)*
+
+> [!attention]
+> Évitez les contrats **uniquement au rendez-vous** pour les nouvelles offres ou les marchés inconnus : vous portez tout le risque. Un forfait de base couvre votre travail de préparation et de test.
+
+## Les études de cas chiffrées
+
+1. **Le client** (avec accord ou anonymisé) : secteur, offre, marché.
+2. **Le point de départ** : résultats, problèmes (délivrabilité, cible, messages).
+3. **Les actions** : cible revue, domaine d''envoi, séquences, appels.
+4. **Les résultats** : entonnoir avant et après, ventes générées si connues.
+5. **La citation** du client.
+
+> [!exemple] Étude de cas courte
+> « Éditeur de logiciel de gestion pour les cliniques en France. Avant : 4 rendez-vous par mois, 1,1 % de réponses. Actions : cible limitée aux cliniques de 20 à 100 salariés, domaine d''envoi secondaire configuré, séquence e-mail et appel, accroche sur les délais de facturation. Après 3 mois : 17 rendez-vous par mois, 6 % de réponses, 5 contrats signés. »
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Vous** | Stratégie, relation client, messages, qualité |
+| **Chercheurs de données** | Listes, vérification des contacts, raisons de contact |
+| **Prospecteurs** | E-mails personnalisés, appels, rendez-vous |
+| **Responsable des opérations** | Outils, délivrabilité, rapports |
+
+### Les règles de qualité
+
+1. **Des modèles** : fiche de campagne, critères de qualification, fiche de transmission.
+2. **Une écoute** régulière des appels (avec l''accord des personnes) et des retours constructifs.
+3. **Un contrôle** des listes et des premiers messages de chaque campagne.
+4. **Le respect absolu** des demandes de désinscription et des règles validées.
+5. **Des accès** personnels aux outils des clients.
+6. **Des contrats** et un paiement juste ; déclaration de l''activité (NIF et carte statistique) et conseil d''un comptable avant d''embaucher.
+
+> [!madagascar]
+> Les centres d''appels et entreprises de services d''Antananarivo forment de nombreux jeunes à la relation client : c''est un vivier de futurs prospecteurs. Formez-les à **votre méthode** et à la qualification, pas seulement au volume d''appels. Pour les paiements de l''étranger, comparez Payoneer et le virement international ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Commercial (account executive)** | Mener des démonstrations, négocier, conclure |
+| **Responsable d''équipe de prospection** | Recrutement, formation, pilotage des indicateurs |
+| **Responsable des opérations commerciales** | Outils, données, processus, rapports (RevOps) |
+| **Spécialiste automatisation commerciale** | Make, Zapier, CRM (voir la formation Spécialiste automatisation et IA) |
+| **Directeur du développement commercial** | Stratégie, marchés, partenariats |
+
+> [!retenir]
+> - Choisissez votre voie : SDR à distance, freelance ou agence.
+> - Un forfait de base plus une prime par rendez-vous qualifié réalisé.
+> - Des études de cas avec l''entonnoir avant et après.
+> - Une équipe avec des modèles, de l''écoute, des contrôles et le respect des règles.
+> - Évoluez vers la vente, l''encadrement ou les opérations commerciales.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la en 5 lignes.
+> 2. Rédigez vos 4 offres avec leurs modèles de prix.
+> 3. Rédigez une étude de cas (réelle ou issue de vos exercices).
+> 4. Rédigez les règles de qualité de votre future équipe et la grille d''écoute d''un appel.
+> 5. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : votre choix, vos offres, votre étude de cas, vos règles, votre grille et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 4, 0, '900 000 Ar de forfait et 15 rendez-vous à 50 000 Ar font…', '["750 000 Ar","950 000 Ar","1 650 000 Ar","13 500 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 4, 1, 'Pourquoi éviter le paiement uniquement au rendez-vous sur une nouvelle offre ?', '["Ce n''est pas un problème","Le prospecteur porterait tout le risque","C''est interdit","Le client paierait trop"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-a', 4, 2, 'Quelle évolution consiste à mener des démonstrations et conclure ?', '["Graphiste","Comptable","Chercheur de données","Commercial (account executive)"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Qu''est-ce que la prospection par comptes ciblés (ABM) ?', '["Une publicité télévisée","Un logiciel","Une approche personnalisée d''un petit nombre de grandes entreprises","Envoyer le même e-mail à 10 000 contacts"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quelle spécialité relance anciens clients et prospects ?', '["Réactivation","Téléphone","Opérations","SaaS"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quel taux de réponse révèle souvent un problème dans l''audit ?', '["Un taux très faible, autour de 1 %","Aucun","15 %","Un taux de 100 %"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quelle étape suit les rendez-vous réalisés dans l''entonnoir ?', '["Les contacts touchés","Les opportunités qualifiées par le commercial","Les réponses","La liste"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que faire d''un contact qui demande à ne plus être contacté ?', '["Le relancer une dernière fois","Le transférer à un collègue","L''ignorer","Le marquer immédiatement et l''exclure de toutes les séquences"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Pourquoi écrire la première phrase pour chaque prospect important ?', '["Pour perdre du temps","Les champs automatiques seuls se reconnaissent tout de suite","C''est obligatoire par la loi","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que permettent les conditions dans Lemlist ?', '["Traduire les e-mails","Passer à une étape selon le comportement du prospect","Supprimer les contacts","Payer moins"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'À quoi sert SPF ?', '["Créer des séquences","Indiquer quels serveurs peuvent envoyer pour le domaine","Compter les ouvertures","Signer les e-mails"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Qu''est-ce que le préchauffage d''une adresse ?', '["Changer d''adresse chaque jour","Augmenter progressivement le volume d''envoi","Envoyer 1 000 e-mails le premier jour","Chauffer l''ordinateur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Où configurer SPF, DKIM et DMARC ?', '["Dans la zone DNS du domaine","Dans un document Word","Dans le CRM","Dans un e-mail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quand envoyer le rapport hebdomadaire à un client européen ?', '["Jamais","Le samedi soir","Une fois par an","Le lundi matin heure de Paris"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Combien de différences entre deux versions d''un test ?', '["Trois","Une seule","Aucune","Toutes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quel appel à l''action est à faible engagement ?', '["Voulez-vous voir un exemple ?","Signez le contrat aujourd''hui","Payez maintenant","Réservez 2 heures"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que vérifie le A de BANT ?', '["L''autorité : qui décide","L''adresse","L''âge","L''argent seulement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quand mettre à jour le CRM ?', '["Une fois par mois","Immédiatement après chaque action","Jamais","Le soir de mémoire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que contient la fiche de transmission ?', '["Seulement le nom","Rien","Un prix","Contact, besoin avec ses mots, critères, objections, points d''attention"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Qu''est-ce qui augmente le taux de présence aux rendez-vous ?', '["Envoyer 10 rappels","Une confirmation et un rappel la veille","Changer l''heure sans prévenir","Ne rien envoyer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Comment écrire en anglais à un prospect américain ?', '["Avec une pièce jointe lourde","Très long et formel","Court, direct, chaleureux, avec le prénom","Sans appel à l''action"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que faut-il préparer pour un appel en anglais ?', '["Une seule question","Des phrases de secours pour faire répéter ou reformuler","Un texte à lire sans écouter","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quelle loi américaine encadre les e-mails commerciaux ?', '["LCAP","CAN-SPAM","PCG","RGPD"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quel marché apprécie souvent précision, faits et chiffres ?', '["Aucun","Uniquement Madagascar","Uniquement les États-Unis","L''Allemagne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Comment organiser les appels vers l''Amérique du Nord depuis Madagascar ?', '["Des plages fixes certains soirs, en protégeant son sommeil","Le matin à Madagascar","Toutes les nuits sans pause","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Qui paie en général les abonnements HubSpot et Lemlist ?', '["La plateforme de freelance","Personne","Le prospecteur","Le client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Que contient une étude de cas de prospection ?', '["Rien","L''entonnoir avant et après, et les actions menées","Une liste de contacts","Les mots de passe du client"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-a', 'Quelle règle de qualité est absolue dans l''équipe ?', '["Le volume avant tout","Partager les accès","Le respect des demandes de désinscription","Les messages identiques pour tous"]'::jsonb, 2);
 
 -- client-2-f
 delete from public.exam_questions where course_id = 'client-2-f';

@@ -1,0 +1,97 @@
+{
+  "id": "client-2-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du prospecteur un professionnel qui génère des rendez-vous réguliers qui deviennent des ventes : spécialité (SaaS, comptes ciblés, téléphone, international, opérations, réactivation), audit de prospection et entonnoir complet, outils payants (HubSpot Sales et Lemlist) et délivrabilité (SPF, DKIM, DMARC, domaine secondaire), tests de messages, qualification BANT et transmission, prospection internationale en anglais et règles par pays, puis offres, primes et agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer une prospection et suivre l'entonnoir jusqu'aux ventes",
+    "Organiser un CRM et des séquences avec HubSpot Sales et Lemlist",
+    "Protéger la délivrabilité des e-mails",
+    "Tester les messages, qualifier et transmettre des rendez-vous complets",
+    "Prospecter en anglais en respectant les règles et cultures de chaque pays",
+    "Construire des offres durables et organiser une équipe de prospection"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer la prospection et suivre l'entonnoir",
+      "summary": "Les 6 spécialités avancées, le rôle de SDR, l'audit en 6 domaines dont la délivrabilité, l'entonnoir du contact à la vente et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un SDR ?", "options": ["Il génère des rendez-vous qualifiés pour les commerciaux", "Il signe les contrats", "Il développe le logiciel", "Il fait la comptabilité"], "correct": 0 },
+        { "q": "Pourquoi demander le résultat des rendez-vous au client ?", "options": ["Pour améliorer la cible et prouver sa valeur", "Pour facturer plus", "Ce n'est pas utile", "Pour changer de client"], "correct": 0 },
+        { "q": "Quel domaine d'audit concerne les e-mails qui arrivent en spam ?", "options": ["La délivrabilité", "La cible", "Les messages", "Les résultats"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : HubSpot Sales, Lemlist et délivrabilité",
+      "summary": "CRM professionnel, séquences et modèles HubSpot, campagnes multicanales Lemlist, SPF, DKIM, DMARC, domaine d'envoi secondaire, préchauffage et rapports.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand une séquence HubSpot s'arrête-t-elle ?", "options": ["Quand le contact répond ou prend rendez-vous", "Jamais", "Au bout d'un an", "Quand le prospecteur part en vacances"], "correct": 0 },
+        { "q": "À quoi sert DKIM ?", "options": ["Signer les e-mails pour prouver qu'ils n'ont pas été modifiés", "Traduire les e-mails", "Compter les clics", "Créer un CRM"], "correct": 0 },
+        { "q": "Pourquoi utiliser un domaine d'envoi secondaire ?", "options": ["Protéger la réputation du domaine principal", "Pour cacher l'entreprise", "Pour envoyer plus de spam", "C'est obligatoire partout"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : tests, qualification, organisation et transmission",
+      "summary": "Tests de messages avec une seule différence, grille BANT et critères écrits, journée en blocs selon le fuseau des contacts, CRM propre, fiche de transmission, confirmation et rappel.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel indicateur utiliser pour comparer deux messages ?", "options": ["Le taux de réponses positives", "Le taux d'ouverture seul", "Le nombre de mots", "La couleur"], "correct": 0 },
+        { "q": "Que signifie le N de BANT ?", "options": ["Le besoin (need)", "Le nom", "Le nombre de salariés", "La nationalité"], "correct": 0 },
+        { "q": "Que faire d'un rendez-vous qui ne remplit pas les critères ?", "options": ["Ne pas le forcer", "Le forcer pour atteindre l'objectif", "Le cacher", "Le facturer double"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, règles par pays, cultures et équipes",
+      "summary": "E-mails et appels en anglais, erreurs des francophones, repères juridiques par zone à faire valider, cultures d'affaires et travail avec une équipe commerciale étrangère.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle formule anglaise est la plus naturelle ?", "options": ["I'm reaching out because…", "I take the liberty to contact you", "Our society offers…", "I remain at your disposal"], "correct": 0 },
+        { "q": "Quelle loi canadienne encadre les messages commerciaux électroniques ?", "options": ["La loi canadienne anti-pourriel (LCAP ou CASL)", "Le RGPD uniquement", "Aucune", "Le PCG 2005"], "correct": 0 },
+        { "q": "Qui valide le cadre légal d'une campagne internationale ?", "options": ["Le client avec ses conseillers, par écrit", "Le prospecteur seul", "Les contacts", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres, primes, études de cas et agence",
+      "summary": "SDR à distance, freelance ou agence, offres et modèles de prix durables, études de cas avec l'entonnoir, équipe avec règles de qualité et évolutions.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "900 000 Ar de forfait et 15 rendez-vous à 50 000 Ar font…", "options": ["1 650 000 Ar", "950 000 Ar", "750 000 Ar", "13 500 000 Ar"], "correct": 0 },
+        { "q": "Pourquoi éviter le paiement uniquement au rendez-vous sur une nouvelle offre ?", "options": ["Le prospecteur porterait tout le risque", "C'est interdit", "Le client paierait trop", "Ce n'est pas un problème"], "correct": 0 },
+        { "q": "Quelle évolution consiste à mener des démonstrations et conclure ?", "options": ["Commercial (account executive)", "Chercheur de données", "Comptable", "Graphiste"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce que la prospection par comptes ciblés (ABM) ?", "options": ["Une approche personnalisée d'un petit nombre de grandes entreprises", "Envoyer le même e-mail à 10 000 contacts", "Une publicité télévisée", "Un logiciel"], "correct": 0 },
+    { "q": "Quelle spécialité relance anciens clients et prospects ?", "options": ["Réactivation", "Opérations", "Téléphone", "SaaS"], "correct": 0 },
+    { "q": "Quel taux de réponse révèle souvent un problème dans l'audit ?", "options": ["Un taux très faible, autour de 1 %", "15 %", "Un taux de 100 %", "Aucun"], "correct": 0 },
+    { "q": "Quelle étape suit les rendez-vous réalisés dans l'entonnoir ?", "options": ["Les opportunités qualifiées par le commercial", "Les contacts touchés", "Les réponses", "La liste"], "correct": 0 },
+    { "q": "Que faire d'un contact qui demande à ne plus être contacté ?", "options": ["Le marquer immédiatement et l'exclure de toutes les séquences", "Le relancer une dernière fois", "L'ignorer", "Le transférer à un collègue"], "correct": 0 },
+    { "q": "Pourquoi écrire la première phrase pour chaque prospect important ?", "options": ["Les champs automatiques seuls se reconnaissent tout de suite", "Pour perdre du temps", "C'est obligatoire par la loi", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que permettent les conditions dans Lemlist ?", "options": ["Passer à une étape selon le comportement du prospect", "Payer moins", "Supprimer les contacts", "Traduire les e-mails"], "correct": 0 },
+    { "q": "À quoi sert SPF ?", "options": ["Indiquer quels serveurs peuvent envoyer pour le domaine", "Signer les e-mails", "Compter les ouvertures", "Créer des séquences"], "correct": 0 },
+    { "q": "Qu'est-ce que le préchauffage d'une adresse ?", "options": ["Augmenter progressivement le volume d'envoi", "Envoyer 1 000 e-mails le premier jour", "Changer d'adresse chaque jour", "Chauffer l'ordinateur"], "correct": 0 },
+    { "q": "Où configurer SPF, DKIM et DMARC ?", "options": ["Dans la zone DNS du domaine", "Dans un document Word", "Dans le CRM", "Dans un e-mail"], "correct": 0 },
+    { "q": "Quand envoyer le rapport hebdomadaire à un client européen ?", "options": ["Le lundi matin heure de Paris", "Le samedi soir", "Une fois par an", "Jamais"], "correct": 0 },
+    { "q": "Combien de différences entre deux versions d'un test ?", "options": ["Une seule", "Toutes", "Trois", "Aucune"], "correct": 0 },
+    { "q": "Quel appel à l'action est à faible engagement ?", "options": ["Voulez-vous voir un exemple ?", "Signez le contrat aujourd'hui", "Payez maintenant", "Réservez 2 heures"], "correct": 0 },
+    { "q": "Que vérifie le A de BANT ?", "options": ["L'autorité : qui décide", "L'adresse", "L'âge", "L'argent seulement"], "correct": 0 },
+    { "q": "Quand mettre à jour le CRM ?", "options": ["Immédiatement après chaque action", "Une fois par mois", "Jamais", "Le soir de mémoire"], "correct": 0 },
+    { "q": "Que contient la fiche de transmission ?", "options": ["Contact, besoin avec ses mots, critères, objections, points d'attention", "Seulement le nom", "Un prix", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qui augmente le taux de présence aux rendez-vous ?", "options": ["Une confirmation et un rappel la veille", "Ne rien envoyer", "Changer l'heure sans prévenir", "Envoyer 10 rappels"], "correct": 0 },
+    { "q": "Comment écrire en anglais à un prospect américain ?", "options": ["Court, direct, chaleureux, avec le prénom", "Très long et formel", "Avec une pièce jointe lourde", "Sans appel à l'action"], "correct": 0 },
+    { "q": "Que faut-il préparer pour un appel en anglais ?", "options": ["Des phrases de secours pour faire répéter ou reformuler", "Rien", "Un texte à lire sans écouter", "Une seule question"], "correct": 0 },
+    { "q": "Quelle loi américaine encadre les e-mails commerciaux ?", "options": ["CAN-SPAM", "RGPD", "LCAP", "PCG"], "correct": 0 },
+    { "q": "Quel marché apprécie souvent précision, faits et chiffres ?", "options": ["L'Allemagne", "Aucun", "Uniquement Madagascar", "Uniquement les États-Unis"], "correct": 0 },
+    { "q": "Comment organiser les appels vers l'Amérique du Nord depuis Madagascar ?", "options": ["Des plages fixes certains soirs, en protégeant son sommeil", "Toutes les nuits sans pause", "Jamais", "Le matin à Madagascar"], "correct": 0 },
+    { "q": "Qui paie en général les abonnements HubSpot et Lemlist ?", "options": ["Le client", "Le prospecteur", "Personne", "La plateforme de freelance"], "correct": 0 },
+    { "q": "Que contient une étude de cas de prospection ?", "options": ["L'entonnoir avant et après, et les actions menées", "Les mots de passe du client", "Une liste de contacts", "Rien"], "correct": 0 },
+    { "q": "Quelle règle de qualité est absolue dans l'équipe ?", "options": ["Le respect des demandes de désinscription", "Le volume avant tout", "Les messages identiques pour tous", "Partager les accès"], "correct": 0 }
+  ]
+}
