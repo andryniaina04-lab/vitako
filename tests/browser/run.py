@@ -165,11 +165,12 @@ with sync_playwright() as p:
     # --- Attestation
     page.click('a:has-text("Voir mon attestation")'); page.wait_for_timeout(500)
     check('attestation : nom et formation', 'Fanja Rakoto' in page.content() and 'Graphiste – Fondamentaux' in page.content())
-    cert_id = page.locator('.cert .foot b').nth(2).inner_text()
+    cert_id = page.locator('.dip-rows b').nth(2).inner_text()
+    check('attestation : tampon affiché', page.locator('.dip-seal').count() == 1)
     page.click('[data-act=pdf]'); page.wait_for_timeout(200)
     saved = page.evaluate('window.__pdfSaved')
     check(f'PDF : téléchargement lancé ({saved})', bool(saved) and saved.endswith('.pdf'))
-    page.screenshot(path=f'{SHOTS}/06-attestation.png')
+    page.screenshot(path=f'{SHOTS}/06-attestation.png', full_page=True)
     goto(page, '#/mon-espace')
     check('mon espace : attestation listée', cert_id in page.content())
 
@@ -192,6 +193,11 @@ with sync_playwright() as p:
     check('vérification publique d\'une attestation', 'Fanja Rakoto' in page.content())
     goto(page, '#/attestation/VTK-0000-XXXX'); page.wait_for_timeout(300)
     check('numéro inconnu : introuvable', 'Attestation introuvable' in page.content())
+    page.set_viewport_size({'width': 390, 'height': 844})
+    goto(page, '#/attestation/' + cert_id); page.wait_for_timeout(500)
+    check('attestation sur téléphone : pas de défilement horizontal', not page.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
+    page.screenshot(path=f'{SHOTS}/10-mobile-attestation.png', full_page=True)
+    page.set_viewport_size({'width': 1280, 'height': 900})
     goto(page, '#/admin'); page.wait_for_timeout(300)
     check('admin inaccessible sans compte', 'Connectez-vous' in page.content())
 
@@ -202,7 +208,7 @@ with sync_playwright() as p:
         mp.goto(BASE + h); mp.wait_for_timeout(500)
         overflow = mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1')
         check(f'{name} : pas de défilement horizontal', not overflow)
-        mp.screenshot(path=f'{SHOTS}/{name}.png')
+        mp.screenshot(path=f'{SHOTS}/{name}.png', full_page=name.endswith('attestation'))
     browser.close()
 httpd.shutdown()
 

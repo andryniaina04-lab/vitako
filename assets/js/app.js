@@ -457,17 +457,63 @@ async function certificatePage(id) {
     <button class="btn" data-act="pdf">Télécharger en PDF (A4 paysage)</button>
     <button class="btn ghost" data-act="copy" data-v="${esc(verifyUrl(cert.id))}">Copier le lien de vérification</button>
   </div>
-  <div class="cert" style="max-width:860px;margin:0 auto">
-    <div class="seal">${I.seal}</div>
-    <span class="eyebrow">Vitako · Formations aux métiers du freelance</span>
-    <h1 style="font-size:clamp(1.4rem,4vw,2rem)">${esc(t.heading)}</h1>
-    <p class="muted">Nous attestons que</p>
-    <div class="who">${esc(cert.full_name)}</div>
-    <p style="max-width:52ch">${esc(t.text)}</p>
-    <div class="foot">${t.rows.map(([k, v]) => `<div><span class="muted">${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div>
-  </div>
+  ${diplomaHtml(cert, t)}
   <p class="muted" style="text-align:center;margin-top:14px;font-size:.88rem">Attestation authentique délivrée par Vitako. Elle reste valable après la fin de l'abonnement.</p>`;
 }
+// Tampon en SVG (même dessin que dans le PDF).
+function sealSvg(year) {
+  const scallops = Array.from({ length: 32 }, (_, i) => {
+    const a = (i / 32) * Math.PI * 2;
+    return `<circle cx="${(60 + 48 * Math.cos(a)).toFixed(2)}" cy="${(60 + 48 * Math.sin(a)).toFixed(2)}" r="5.1"/>`;
+  }).join('');
+  return `<svg class="dip-seal" viewBox="0 0 120 136" role="img" aria-label="Tampon officiel Vitako">
+    <defs><path id="sealTop" d="M 26.7 60 A 33.3 33.3 0 0 1 93.3 60"/><path id="sealBot" d="M 21.1 60 A 38.9 38.9 0 0 0 98.9 60"/></defs>
+    <polygon points="36,76 54.7,84 42.7,132 34.4,122.4 24.3,127.2" fill="#084A34"/>
+    <polygon points="84,76 65.3,84 77.3,132 85.6,122.4 95.7,127.2" fill="#0B7A55"/>
+    <g fill="#B0801E">${scallops}<circle cx="60" cy="60" r="48"/></g>
+    <circle cx="60" cy="60" r="43.7" fill="none" stroke="#FCF9F0" stroke-width="0.9"/>
+    <circle cx="60" cy="60" r="30.4" fill="none" stroke="#FCF9F0" stroke-width="0.9"/>
+    <g fill="#FCF9F0" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="6">
+      <text><textPath href="#sealTop" startOffset="50%" text-anchor="middle">ATTESTATION OFFICIELLE</textPath></text>
+      <text><textPath href="#sealBot" startOffset="50%" text-anchor="middle">VITAKO</textPath></text>
+      <circle cx="${(60 - 37.9 * Math.sin(1.25)).toFixed(2)}" cy="${(60 + 37.9 * Math.cos(1.25)).toFixed(2)}" r="1.4"/>
+      <circle cx="${(60 + 37.9 * Math.sin(1.25)).toFixed(2)}" cy="${(60 + 37.9 * Math.cos(1.25)).toFixed(2)}" r="1.4"/>
+    </g>
+    <circle cx="60" cy="60" r="28.3" fill="#0B7A55"/>
+    <circle cx="60" cy="60" r="25.9" fill="none" stroke="#D6B05C" stroke-width="0.8"/>
+    <path d="M 50.4 58.4 L 56.8 64.8 L 69.2 50.8" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="60" y="76" text-anchor="middle" fill="#D6B05C" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="5.4">${year}</text>
+  </svg>`;
+}
+
+// Attestation à l'écran, sur le même modèle que le PDF.
+function diplomaHtml(cert, t) {
+  const [main, ...rest] = t.heading.split(' ');
+  const url = verifyUrl(cert.id).replace(/^https?:\/\//, '');
+  const cut = url.indexOf('#/');
+  return `<div class="dip-wrap"><div class="diploma">
+    <div class="dip-band" aria-hidden="true"><span>VITAKO · FORMATIONS FREELANCE ET TÉLÉTRAVAIL · MADAGASCAR</span></div>
+    <div class="dip-body"><div class="dip-frame">
+      <i class="dip-corner tl"></i><i class="dip-corner tr"></i><i class="dip-corner bl"></i><i class="dip-corner br"></i>
+      <div class="dip-mark" aria-hidden="true">${I.check}</div>
+      <div class="dip-logo"><i>${I.check.replace('currentColor', '#fff')}</i>vitako</div>
+      <div class="dip-tag">Formations aux métiers du freelance et du télétravail</div>
+      <div class="dip-title">${esc(main)}</div>
+      <div class="dip-sub">${esc(rest.join(' '))}</div>
+      <div class="dip-rule"><span></span></div>
+      <p class="dip-intro">Nous attestons que</p>
+      <div class="dip-name">${esc(cert.full_name)}</div>
+      <p class="dip-text">${esc(t.text)}</p>
+      <div class="dip-rows">${t.rows.map(([k, v]) => `<div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div>
+      <div class="dip-foot">
+        <div class="dip-sign"><b>Vitako</b><span>La direction pédagogique</span></div>
+        ${sealSvg(new Date(cert.issued_at).getFullYear())}
+        <div class="dip-verify"><span>Vérification en ligne</span><b>${esc(cut > 0 ? url.slice(0, cut) : url)}<br>${esc(cut > 0 ? url.slice(cut) : '')}</b></div>
+      </div>
+    </div></div>
+  </div></div>`;
+}
+
 function verifyPage() {
   return `${pageHead('Vérification', 'Vérifier une attestation')}
   <form id="verify-form" class="narrow panel stack" style="gap:14px">
@@ -760,7 +806,7 @@ document.addEventListener('click', async (e) => {
   if (a === 'pdf') {
     const cert = S.certView; if (!cert || !window.jspdf) { toast('Le PDF n\'est pas disponible. Vérifiez votre connexion puis réessayez.'); return; }
     const tx = certText(cert);
-    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id) })
+    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id), year: new Date(cert.issued_at).getFullYear() })
       .save(`attestation-vitako-${slug(cert.full_name)}-${cert.id.toLowerCase()}.pdf`);
     return;
   }
