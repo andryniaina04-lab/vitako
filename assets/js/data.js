@@ -1200,6 +1200,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-0-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du community manager le stratège des réseaux sociaux d'une marque : spécialité, stratégie de contenu, outils professionnels (Metricool, Hootsuite, Canva Pro), publicité simple, vidéo courte, gestion de crise, clients étrangers et LinkedIn, puis croissance de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et construire une stratégie de contenu avec des piliers",
+   "Piloter plusieurs clients avec Metricool ou Hootsuite et Canva Pro",
+   "Lancer une publicité simple avec le budget du client",
+   "Produire des vidéos courtes efficaces et gérer une crise",
+   "Travailler pour des clients étrangers, y compris sur LinkedIn",
+   "Faire grandir son activité : nouvelles offres, assistant, rentabilité"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et construire une stratégie",
+    "summary": "Spécialité par secteur ou par réseau, piliers de contenu, objectifs liés aux ventes, liens suivis, veille et stratégie en 8 parties.",
+    "sections": [
+     "Choisir sa spécialité",
+     "La stratégie de contenu",
+     "Des objectifs liés aux résultats de l'entreprise",
+     "La veille et l'écoute sociale",
+     "Présenter une stratégie au client",
+     "Exercice pratique : une stratégie de 3 mois"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils professionnels : Metricool, Hootsuite, Canva Pro et publicité",
+    "summary": "Choisir son outil, programmer sur plusieurs réseaux, boîte unifiée, rapports automatiques, concurrents, production par lots et première campagne publicitaire.",
+    "sections": [
+     "Metricool ou Hootsuite ?",
+     "Programmer sur plusieurs réseaux",
+     "Rapports automatiques et analyse des concurrents",
+     "Produire plus vite avec Canva Pro",
+     "Lancer une publicité simple",
+     "Exercice pratique : votre poste de pilotage"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : organisation, vidéo courte et crise",
+    "summary": "Semaine à plusieurs clients, vidéo courte en 4 temps, recyclage en 5 formats, circuit de validation et gestion de crise en 6 étapes.",
+    "sections": [
+     "Organiser une semaine à plusieurs clients",
+     "La vidéo courte : le format qui domine",
+     "Recycler un contenu en 5 formats",
+     "Le circuit de validation rapide",
+     "La gestion de crise",
+     "Exercice pratique : votre organisation"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Clients internationaux et LinkedIn",
+    "summary": "Adapter le travail au pays du client, LinkedIn pour entreprises et dirigeants, données personnelles et jeux-concours, anglais professionnel, offre et contrat.",
+    "sections": [
+     "Adapter son travail à un public étranger",
+     "LinkedIn : le réseau des entreprises",
+     "Les règles sur les données et les jeux-concours",
+     "L'anglais professionnel du community manager",
+     "L'offre et le contrat pour les clients étrangers",
+     "Exercice pratique : un client étranger"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Développer son activité",
+    "summary": "Formules et prix avancés, services complémentaires, recruter un assistant, procédures d'équipe et rentabilité par client.",
+    "sections": [
+     "Faire évoluer ses formules et ses prix",
+     "Les services complémentaires à forte valeur",
+     "Recruter et former un assistant",
+     "Organiser une petite équipe",
+     "Piloter la rentabilité de chaque client",
+     "Exercice pratique : votre plan de croissance"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "mkt-0-f": {
   "hours": 14,
   "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "mkt-0-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du community manager le stratège des réseaux sociaux d'une marque : spécialité, stratégie de contenu, outils professionnels (Metricool, Hootsuite, Canva Pro), publicité simple, vidéo courte, gestion de crise, clients étrangers et LinkedIn, puis croissance de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et construire une stratégie de contenu avec des piliers",
+    "Piloter plusieurs clients avec Metricool ou Hootsuite et Canva Pro",
+    "Lancer une publicité simple avec le budget du client",
+    "Produire des vidéos courtes efficaces et gérer une crise",
+    "Travailler pour des clients étrangers, y compris sur LinkedIn",
+    "Faire grandir son activité : nouvelles offres, assistant, rentabilité"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et construire une stratégie",
+      "summary": "Spécialité par secteur ou par réseau, piliers de contenu, objectifs liés aux ventes, liens suivis, veille et stratégie en 8 parties.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que sont les piliers de contenu ?", "options": ["Les 3 à 5 grands thèmes sur lesquels la marque publie", "Les colonnes d'un tableau", "Les mots de passe des comptes", "Les heures de publication"], "correct": 0 },
+        { "q": "Comment prouver simplement l'impact des réseaux sur un commerce sans site ?", "options": ["Un code promo propre aux réseaux sociaux", "Le nombre de « J'aime »", "Une capture d'écran", "Demander aux employés"], "correct": 0 },
+        { "q": "Qu'est-ce que l'écoute sociale ?", "options": ["Surveiller ce qui se dit sur la marque, ses concurrents et son secteur", "Écouter de la musique en travaillant", "Appeler les clients", "Lire les messages privés des abonnés"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Metricool, Hootsuite, Canva Pro et publicité",
+      "summary": "Choisir son outil, programmer sur plusieurs réseaux, boîte unifiée, rapports automatiques, concurrents, production par lots et première campagne publicitaire.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel outil convient souvent le mieux à un freelance qui gère 3 à 10 clients ?", "options": ["Metricool", "Un simple carnet", "Paint", "Aucun outil"], "correct": 0 },
+        { "q": "Que faut-il ajouter à un rapport automatique ?", "options": ["Votre analyse et vos propositions", "Rien, il suffit", "Des emojis", "Votre CV"], "correct": 0 },
+        { "q": "Qui paie le budget publicitaire ?", "options": ["Le client, avec sa carte, dans son compte publicitaire", "Le community manager, pour le refacturer", "Meta, gratuitement", "Vitako"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : organisation, vidéo courte et crise",
+      "summary": "Semaine à plusieurs clients, vidéo courte en 4 temps, recyclage en 5 formats, circuit de validation et gestion de crise en 6 étapes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la structure d'une vidéo courte efficace ?", "options": ["Accroche, promesse, contenu, appel à l'action", "Générique, silence, logo, fin", "Prix, prix, prix, prix", "Musique seule"], "correct": 0 },
+        { "q": "Comment accélérer les validations du client ?", "options": ["Envoyer par lot avec un délai écrit de 48 h", "Envoyer chaque publication une par une", "Ne jamais lui demander", "Attendre qu'il pense à répondre"], "correct": 0 },
+        { "q": "Pendant une crise, que faire des publications programmées ?", "options": ["Les mettre en pause", "Les publier comme prévu", "Les doubler", "Les supprimer toutes définitivement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux et LinkedIn",
+      "summary": "Adapter le travail au pays du client, LinkedIn pour entreprises et dirigeants, données personnelles et jeux-concours, anglais professionnel, offre et contrat.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur LinkedIn, qu'est-ce qui a souvent la plus forte portée ?", "options": ["Le profil du dirigeant", "La page d'entreprise", "Les publicités imprimées", "Les messages privés"], "correct": 0 },
+        { "q": "Que faut-il avant de publier le témoignage d'un client ?", "options": ["Son accord", "Rien", "Un paiement", "Son mot de passe"], "correct": 0 },
+        { "q": "Que veut dire « engagement rate » ?", "options": ["Taux d'interaction", "Taux de change", "Taux d'abonnés perdus", "Budget publicitaire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité",
+      "summary": "Formules et prix avancés, services complémentaires, recruter un assistant, procédures d'équipe et rentabilité par client.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle tâche garder plutôt que déléguer ?", "options": ["La gestion des crises et la relation client", "La programmation", "La création de visuels à partir de modèles", "La recherche de tendances"], "correct": 0 },
+        { "q": "Un forfait de 330 000 Ar demande 30 heures. Quel est le revenu par heure ?", "options": ["11 000 Ar", "33 000 Ar", "3 300 Ar", "110 000 Ar"], "correct": 0 },
+        { "q": "Pourquoi écrire des procédures ?", "options": ["Pour qu'un assistant fasse le travail sans erreur", "Pour remplir le Drive", "Pour le client uniquement", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelles sont les deux façons de se spécialiser ?", "options": ["Par secteur ou par réseau", "Par couleur ou par police", "Par âge ou par ville", "Par prix ou par heure"], "correct": 0 },
+    { "q": "Combien de piliers de contenu prévoir ?", "options": ["3 à 5", "1", "20", "Aucun"], "correct": 0 },
+    { "q": "Quel indicateur est lié à l'objectif « plus de réservations » ?", "options": ["Les demandes de réservation par message", "Le nombre de « J'aime » sur la photo de profil", "La couleur du logo", "Le nombre de hashtags"], "correct": 0 },
+    { "q": "À quoi servent les paramètres UTM ?", "options": ["Savoir combien de visites et de ventes viennent de chaque publication", "Changer la langue du site", "Protéger un mot de passe", "Compresser une vidéo"], "correct": 0 },
+    { "q": "Combien de temps par semaine pour la veille ?", "options": ["Environ 30 minutes", "10 heures", "Aucun", "Une minute par mois"], "correct": 0 },
+    { "q": "Que contient le diagnostic d'une stratégie ?", "options": ["L'audit de la page et des concurrents avec les chiffres de départ", "La facture", "La biographie du community manager", "La liste des abonnés"], "correct": 0 },
+    { "q": "Pourquoi adapter le format à chaque réseau ?", "options": ["Une vidéo horizontale avec un long texte ne marche pas sur TikTok", "Pour gagner moins de temps", "Ce n'est pas utile", "Parce que la loi l'exige"], "correct": 0 },
+    { "q": "Quelle fonction de Canva Pro transforme une publication carrée en story ?", "options": ["Le redimensionnement magique", "La suppression d'arrière-plan", "Le kit de marque", "Le dossier client"], "correct": 0 },
+    { "q": "Qu'est-ce que le batching ?", "options": ["Produire tous les contenus de la semaine en une fois", "Publier au hasard", "Supprimer les anciens contenus", "Répondre aux messages la nuit"], "correct": 0 },
+    { "q": "Quelle différence entre booster et créer une publicité ?", "options": ["Créer une publicité offre plus d'objectifs et de ciblage", "Il n'y en a aucune", "Booster est gratuit", "Créer une publicité est interdit"], "correct": 0 },
+    { "q": "Que regarder après 3 jours de campagne « messages » ?", "options": ["Le coût par message reçu", "La couleur du bouton", "Le nombre d'employés", "La météo"], "correct": 0 },
+    { "q": "Combien d'avance garder sur les publications programmées ?", "options": ["Au moins une semaine", "Aucune", "Une heure", "Un an"], "correct": 0 },
+    { "q": "Pourquoi des sous-titres sur les vidéos courtes ?", "options": ["Beaucoup regardent sans le son", "Pour allonger la vidéo", "C'est obligatoire", "Pour cacher l'image"], "correct": 0 },
+    { "q": "Que donner au client qui filme lui-même ?", "options": ["Une liste de plans précise", "Rien", "Un contrat de travail", "Une caméra de cinéma"], "correct": 0 },
+    { "q": "Que ne pas faire pendant une crise ?", "options": ["Supprimer les commentaires négatifs", "Prévenir le client", "Comprendre les faits", "Publier une réponse validée"], "correct": 0 },
+    { "q": "Quand préparer le document de crise ?", "options": ["Dès le début de la collaboration", "Pendant la crise", "Après la crise", "Jamais"], "correct": 0 },
+    { "q": "Que faire pour comprendre les codes d'un public étranger ?", "options": ["Observer pendant 2 semaines 10 marques de ce pays", "Deviner", "Copier une marque malgache", "Publier sans regarder"], "correct": 0 },
+    { "q": "Combien de hashtags au maximum sur une publication LinkedIn ?", "options": ["Environ 3", "30", "100", "Aucun n'est jamais autorisé"], "correct": 0 },
+    { "q": "Qu'est-ce que le RGPD ?", "options": ["Le règlement européen sur la protection des données personnelles", "Un réseau social", "Un logiciel de montage", "Une plateforme de paiement"], "correct": 0 },
+    { "q": "Quand écrire pour le profil d'un dirigeant…", "options": ["Le texte reflète ses idées et expériences, validées par lui", "On invente sa vie", "On copie un autre dirigeant", "On ne lui montre rien"], "correct": 0 },
+    { "q": "Quel atout mettre en avant auprès d'un client européen ?", "options": ["Les messages du matin traités avant 9 h, heure de Paris", "Ne pas répondre le matin", "Travailler seulement le dimanche", "Ne jamais envoyer de rapport"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une formule avancée ?", "options": ["Une offre qui vend une stratégie et des résultats", "12 publications sans stratégie", "Une offre gratuite", "Un prix plus bas"], "correct": 0 },
+    { "q": "Comment recruter un assistant ?", "options": ["Avec un test payé et un début sur 5 à 10 heures par semaine", "Sans test, à plein temps immédiatement", "Avec un test gratuit de 3 mois", "En lui donnant tous vos mots de passe"], "correct": 0 },
+    { "q": "Qui reste responsable devant le client du travail de l'assistant ?", "options": ["Vous", "L'assistant seul", "Le client", "Personne"], "correct": 0 },
+    { "q": "Que faire d'un client deux fois moins rentable par heure que les autres ?", "options": ["Comprendre pourquoi et ajuster formule, prix ou règles", "Ne rien faire", "L'ignorer", "Doubler son travail gratuitement"], "correct": 0 }
+  ]
+}

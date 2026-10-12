@@ -44,7 +44,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 12, false),
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
-  ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, false),
+  ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 10, false),
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 18, false),
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 11, false),
@@ -6931,6 +6931,680 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- mkt-0-a
+delete from public.exam_questions where course_id = 'mkt-0-a';
+delete from public.module_questions where course_id = 'mkt-0-a';
+delete from public.lessons where course_id = 'mkt-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-0-a', 0, 'Se spécialiser et construire une stratégie', 'Spécialité par secteur ou par réseau, piliers de contenu, objectifs liés aux ventes, liens suivis, veille et stratégie en 8 parties.', 'Au niveau Fondamentaux, vous avez appris à faire vivre une page. Au niveau Avancé, vous devenez le **stratège** des réseaux sociaux d''une marque : vous choisissez un secteur où vous excellez, vous construisez une stratégie de contenu complète et vous vendez des résultats plutôt que des publications. Ce module vous aide à choisir votre spécialité et à bâtir une stratégie solide.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir une spécialité par secteur ou par réseau.
+> 2. Construire une stratégie de contenu avec des piliers.
+> 3. Fixer des objectifs liés aux résultats de l''entreprise.
+> 4. Organiser une veille et une écoute des réseaux sociaux.
+> 5. Présenter une stratégie au client en 8 parties.
+
+## Choisir sa spécialité
+
+### Deux façons de se spécialiser
+
+| Spécialisation | Exemples | Avantage |
+| --- | --- | --- |
+| **Par secteur** | Restauration, tourisme, beauté, immobilier, écoles, ONG | Vous connaissez les clients, le vocabulaire, les saisons fortes |
+| **Par réseau** | TikTok et vidéo courte, LinkedIn pour les entreprises, Instagram pour la mode | Vous maîtrisez les formats et les tendances d''un réseau mieux que personne |
+
+> [!exemple] Des spécialités qui se vendent bien
+> - « Community manager des restaurants et snacks d''Antananarivo » : menus, plats du jour, livraisons, avis.
+> - « Community manager LinkedIn pour dirigeants et cabinets de conseil francophones » : publications professionnelles, image de dirigeant.
+> - « Community manager tourisme océan Indien » : hôtels, lodges, guides, saisons touristiques.
+
+### Vérifier qu''une spécialité est viable : 4 questions
+
+1. Y a-t-il **assez de clients** possibles (au moins une centaine que vous pourriez contacter) ?
+2. Ont-ils un **budget** pour un community manager ?
+3. Les réseaux sociaux ont-ils un **impact direct** sur leurs ventes ?
+4. Avez-vous déjà **un projet** ou une expérience dans ce secteur ?
+
+## La stratégie de contenu
+
+Au niveau avancé, on ne remplit plus un calendrier « au jour le jour ». On construit une **stratégie** qui guide toutes les publications pendant 3 à 6 mois.
+
+> [!definition] Piliers de contenu
+> Les 3 à 5 grands thèmes sur lesquels la marque publie régulièrement. Chaque publication appartient à un pilier. Ils donnent une identité claire à la page et facilitent la création.
+
+> [!exemple] Les piliers d''un hôtel à Nosy Be
+>
+> | Pilier | Objectif | Exemples de contenus | Part |
+> | --- | --- | --- | --- |
+> | **L''expérience** | Faire rêver | Couchers de soleil, chambres, plage, Reels d''ambiance | 35 % |
+> | **La destination** | Aider à préparer le voyage | Que faire à Nosy Be, saisons, excursions | 25 % |
+> | **Les gens** | Créer un lien humain | Portraits de l''équipe, savoir-faire local | 15 % |
+> | **La preuve** | Rassurer | Avis de clients, photos partagées par les voyageurs | 15 % |
+> | **L''offre** | Faire réserver | Promotions, forfaits, dates disponibles | 10 % |
+
+### Construire les piliers en 5 étapes
+
+1. **Relisez la fiche client type** et ses questions (Fondamentaux, module 2).
+2. **Analysez** les 20 publications les plus réussies de la page et de 3 concurrents : de quoi parlent-elles ?
+3. **Regroupez** ces sujets en 3 à 5 thèmes.
+4. **Donnez un objectif** à chaque pilier : faire connaître, créer la confiance, faire vendre.
+5. **Fixez la répartition** en pourcentage.
+
+## Des objectifs liés aux résultats de l''entreprise
+
+Un client avancé ne veut pas seulement « plus de mentions J''aime ». Il veut savoir ce que les réseaux sociaux **rapportent**.
+
+| Objectif de l''entreprise | Indicateur sur les réseaux sociaux |
+| --- | --- |
+| Plus de réservations | Messages de demande de réservation, clics vers la page de réservation |
+| Plus de clients en boutique | Demandes d''itinéraire, utilisation d''un code promo « vu sur Facebook » |
+| Plus de ventes en ligne | Clics vers le site, ventes avec lien suivi |
+| Recrutement | Candidatures reçues après une publication |
+| Image de marque | Taux d''interaction, commentaires positifs, partages |
+
+> [!definition] Lien suivi (paramètres UTM)
+> Un lien vers le site du client auquel on ajoute des informations (source, campagne) pour que les outils de statistiques du site indiquent combien de visites et de ventes viennent de chaque publication. Exemple : `site.com/offre?utm_source=facebook&utm_campaign=paques`.
+
+> [!astuce] Le code promo
+> Pour un commerce sans site, créez un code promo propre aux réseaux sociaux (« FB10 ») : chaque client qui l''utilise en boutique est un client venu par les réseaux. C''est la preuve la plus simple de votre impact.
+
+## La veille et l''écoute sociale
+
+> [!definition] Écoute sociale
+> Surveiller ce qui se dit sur la marque, ses concurrents et son secteur, en dehors de sa propre page : commentaires, groupes, avis, mentions.
+
+### La routine hebdomadaire de veille (30 minutes)
+
+1. **La marque** : recherchez son nom sur Facebook, Instagram, TikTok et Google (avis).
+2. **Les concurrents** : nouvelles offres, publications qui marchent, plaintes de leurs clients.
+3. **Le secteur** : tendances, nouveaux formats, sons à la mode, événements à venir.
+4. **Notez** 3 idées de contenus ou d''actions dans un document partagé.
+
+## Présenter une stratégie au client
+
+Une stratégie se présente dans un document de 8 à 15 pages, en visioconférence.
+
+### Les 8 parties
+
+1. **Le diagnostic** : audit de la page et des concurrents (chiffres de départ).
+2. **Les objectifs** : 3 objectifs liés à l''entreprise, chiffrés, sur 3 mois.
+3. **La cible** : 1 à 3 fiches client type.
+4. **Les réseaux choisis** et le rôle de chacun.
+5. **Les piliers de contenu** et leur répartition.
+6. **Les formats et le rythme** : nombre de publications, Reels, stories, directs par semaine.
+7. **Les indicateurs** et le rapport mensuel.
+8. **Le budget** : votre forfait, le budget publicitaire conseillé, les outils.
+
+> [!madagascar]
+> Pour les clients malgaches, prévoyez dans la stratégie les **moments forts locaux** : rentrée scolaire, fête de l''Indépendance (26 juin), fêtes de fin d''année, période des vacances des expatriés et de la diaspora, saisons touristiques. Ce sont souvent les meilleurs moments pour les offres.
+
+> [!attention] Erreurs fréquentes
+> - Choisir une spécialité où les clients n''ont pas de budget.
+> - Présenter une stratégie sans chiffres de départ.
+> - Des objectifs qui ne parlent qu''aux spécialistes (« portée organique ») au lieu des résultats de l''entreprise.
+> - Une stratégie trop ambitieuse que vous ne pourrez pas produire chaque semaine.
+
+> [!retenir]
+> - Spécialisez-vous par secteur ou par réseau, après avoir vérifié la demande.
+> - 3 à 5 piliers de contenu, avec un objectif et une répartition.
+> - Des objectifs liés aux ventes, réservations ou clients du commerce.
+> - Liens suivis et codes promo pour prouver votre impact.
+> - Une stratégie en 8 parties, présentée en visioconférence.
+
+## Exercice pratique : une stratégie de 3 mois
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et vérifiez-la avec les 4 questions.
+> 2. Choisissez un vrai commerce de cette spécialité et faites son diagnostic.
+> 3. Construisez ses piliers de contenu avec la méthode en 5 étapes.
+> 4. Fixez 3 objectifs liés à l''entreprise et la façon de les mesurer (lien suivi ou code promo).
+> 5. Rédigez la stratégie complète en 8 parties dans Canva ou Google Slides.
+>
+> **À livrer** : la stratégie de 8 à 15 pages. Elle deviendra une pièce maîtresse de votre portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 0, 0, 'Que sont les piliers de contenu ?', '["Les colonnes d''un tableau","Les mots de passe des comptes","Les 3 à 5 grands thèmes sur lesquels la marque publie","Les heures de publication"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 0, 1, 'Comment prouver simplement l''impact des réseaux sur un commerce sans site ?', '["Un code promo propre aux réseaux sociaux","Une capture d''écran","Demander aux employés","Le nombre de « J''aime »"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 0, 2, 'Qu''est-ce que l''écoute sociale ?', '["Écouter de la musique en travaillant","Surveiller ce qui se dit sur la marque, ses concurrents et son secteur","Appeler les clients","Lire les messages privés des abonnés"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-0-a', 1, 'Outils professionnels : Metricool, Hootsuite, Canva Pro et publicité', 'Choisir son outil, programmer sur plusieurs réseaux, boîte unifiée, rapports automatiques, concurrents, production par lots et première campagne publicitaire.', 'Quand vous gérez plusieurs clients sur plusieurs réseaux, Meta Business Suite ne suffit plus. Les community managers professionnels utilisent des outils qui centralisent la programmation, les messages, les statistiques et les rapports : **Metricool** ou **Hootsuite**, avec **Canva Pro** pour produire vite. Ils savent aussi piloter un petit budget de **publicité** pour amplifier les meilleures publications. Ce module vous apprend à les utiliser comme un professionnel.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre Metricool et Hootsuite selon vos clients.
+> 2. Programmer sur plusieurs réseaux et gérer les messages depuis un seul outil.
+> 3. Générer un rapport automatique et analyser les concurrents.
+> 4. Produire plus vite avec Canva Pro : kits de marque, redimensionnement, planificateur.
+> 5. Lancer une publicité simple avec le budget du client.
+
+## Metricool ou Hootsuite ?
+
+| Critère | **Metricool** | **Hootsuite** |
+| --- | --- | --- |
+| Pour qui | Freelances et petites agences | Agences et grandes équipes |
+| Points forts | Programmation multi-réseaux, statistiques claires, rapports automatiques, analyse des concurrents | Gestion de nombreux comptes, travail en équipe, circuits de validation, écoute sociale avancée |
+| Prise en main | Simple | Plus complète, donc plus longue |
+| Prix | Offre gratuite limitée, puis abonnements | Abonnements, généralement plus chers |
+
+Les offres et les prix changent : vérifiez sur les sites officiels. Pour un freelance qui gère 3 à 10 clients, **Metricool** est souvent le meilleur point de départ. Certaines agences vous donneront un accès à **leur** Hootsuite.
+
+## Programmer sur plusieurs réseaux
+
+### La méthode en 6 étapes (Metricool)
+
+1. Créez une **marque** par client et connectez ses réseaux (Facebook, Instagram, TikTok, LinkedIn…). Le client vous donne l''accès depuis ses comptes, sans vous confier ses mots de passe quand c''est possible.
+2. Ouvrez le **planificateur** : la vue calendrier montre tous les réseaux.
+3. Créez une publication, cochez les réseaux visés.
+4. **Adaptez le texte** à chaque réseau : plus court sur X, plus professionnel sur LinkedIn, avec hashtags sur Instagram et TikTok.
+5. Utilisez les **meilleurs horaires** proposés par l''outil d''après l''activité réelle des abonnés.
+6. Programmez et vérifiez la vue calendrier de la semaine.
+
+> [!attention]
+> Ne publiez jamais exactement le même texte et le même format partout. Une vidéo horizontale avec un long texte marche sur Facebook, mais pas sur TikTok. Adaptez le format, pas seulement le texte.
+
+### La boîte de réception unifiée
+
+Les outils professionnels regroupent les messages et commentaires de tous les réseaux et de tous les clients. Règles de travail :
+
+1. **2 à 3 passages par jour** à heures fixes, plus les urgences.
+2. **Étiquettes** : question, réclamation, commande, partenariat.
+3. **Réponses enregistrées** par client.
+4. **Transfert** au client des messages qu''il doit traiter lui-même.
+
+## Rapports automatiques et analyse des concurrents
+
+### Le rapport automatique
+
+1. Créez un **modèle de rapport** : logo du client, période, indicateurs choisis.
+2. Choisissez les indicateurs **liés aux objectifs** (module 1), pas tous ceux que l''outil propose.
+3. Programmez l''envoi automatique **chaque début de mois**.
+4. **Ajoutez toujours votre analyse** : 5 lignes sur ce qui a marché, ce qui n''a pas marché, et vos propositions. Un rapport sans analyse n''a presque pas de valeur pour le client.
+
+### L''analyse des concurrents
+
+Ajoutez 3 concurrents du client dans l''outil. Comparez chaque mois :
+
+| Indicateur | Client | Concurrent A | Concurrent B |
+| --- | --- | --- | --- |
+| Abonnés gagnés | +320 | +150 | +600 |
+| Publications | 14 | 8 | 22 |
+| Taux d''interaction moyen | 3,8 % | 2,1 % | 2,9 % |
+| Format le plus performant | Reels | Photos | Carrousels |
+
+*(Chiffres donnés en exemple.)*
+
+## Produire plus vite avec Canva Pro
+
+| Fonction | Gain |
+| --- | --- |
+| **Kits de marque** (un par client) | Couleurs, polices et logos en un clic, sans erreur |
+| **Redimensionnement magique** | Une publication carrée devient story, Reel ou bannière en quelques secondes |
+| **Suppression d''arrière-plan** | Photos de produits détourées instantanément |
+| **Modèles d''équipe** | Vos gabarits par client, réutilisables chaque semaine |
+| **Planificateur de contenu** | Programmation directe depuis Canva vers certains réseaux |
+| **Dossiers par client** | Tout est rangé et partageable |
+
+> [!astuce] La production par lots
+> Une demi-journée par semaine et par client suffit souvent : le lundi matin, vous créez dans Canva **tous** les visuels de la semaine à partir de vos modèles, vous les redimensionnez pour chaque réseau, puis vous programmez tout dans Metricool. C''est la méthode du **batching** (travail par lots).
+
+## Lancer une publicité simple
+
+Les publications gratuites touchent une partie limitée des abonnés. Un petit budget publicitaire permet de toucher **plus de personnes ciblées**.
+
+> [!definition] Publicité ciblée
+> Une publication payante montrée à un public choisi : âge, ville, centres d''intérêt. Sur Facebook et Instagram, elle se gère dans le **Gestionnaire de publicités** de Meta.
+
+### Booster ou créer une publicité ?
+
+| Option | Pour quoi | Limite |
+| --- | --- | --- |
+| **Booster une publication** | Mettre en avant une publication qui marche déjà, en quelques clics | Peu d''options de ciblage et d''objectif |
+| **Créer une publicité** dans le Gestionnaire de publicités | Choisir un objectif précis (messages, trafic, ventes), un public et un budget | Demande plus de méthode |
+
+### Une première campagne en 7 étapes
+
+1. **Objectif** : par exemple « messages » pour un restaurant qui prend les commandes sur Messenger.
+2. **Public** : ville (Antananarivo, rayon de quelques kilomètres), âge, centres d''intérêt.
+3. **Budget** : un petit budget quotidien pour tester, sur 5 à 7 jours.
+4. **Visuel** : la publication qui a le mieux marché naturellement ce mois-ci.
+5. **Texte** : court, avec l''offre et l''appel à l''action.
+6. **Suivi** : après 3 jours, regardez le coût par message reçu.
+7. **Bilan** : gardez ce qui marche, arrêtez ce qui ne marche pas.
+
+> [!attention]
+> Le budget publicitaire est **payé par le client**, avec **sa** carte, dans **son** compte publicitaire, auquel il vous donne accès. Ne payez jamais une publicité de votre poche pour la refacturer ensuite : en cas de litige, vous perdez l''argent. Pour aller plus loin, la formation « Gestionnaire de publicités en ligne » est entièrement consacrée à ce sujet.
+
+> [!madagascar]
+> Les paiements de publicités Meta se font en général par carte bancaire internationale. Vérifiez avec le client quel moyen de paiement il peut utiliser avant de lui proposer une campagne.
+
+> [!retenir]
+> - Metricool pour les freelances, Hootsuite pour les grandes équipes.
+> - Un texte et un format adaptés à chaque réseau.
+> - Des rapports automatiques, toujours complétés par votre analyse.
+> - Canva Pro et la production par lots pour gagner des heures chaque semaine.
+> - Une publicité simple, avec le budget et le compte du client.
+
+## Exercice pratique : votre poste de pilotage
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un compte Metricool (offre gratuite) et connectez votre page d''essai.
+> 2. Programmez une semaine de 5 publications adaptées à 2 réseaux.
+> 3. Ajoutez 3 concurrents et remplissez le tableau de comparaison.
+> 4. Créez dans Canva un kit de marque et 5 modèles, puis redimensionnez une publication en 3 formats.
+> 5. Rédigez le plan d''une première campagne publicitaire en 7 étapes pour un restaurant (sans la lancer).
+>
+> **À livrer** : captures du planificateur et du tableau des concurrents, vos modèles Canva et votre plan de campagne.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 1, 0, 'Quel outil convient souvent le mieux à un freelance qui gère 3 à 10 clients ?', '["Paint","Aucun outil","Metricool","Un simple carnet"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 1, 1, 'Que faut-il ajouter à un rapport automatique ?', '["Des emojis","Votre analyse et vos propositions","Rien, il suffit","Votre CV"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 1, 2, 'Qui paie le budget publicitaire ?', '["Meta, gratuitement","Le client, avec sa carte, dans son compte publicitaire","Le community manager, pour le refacturer","Vitako"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-0-a', 2, 'Qualité et rapidité : organisation, vidéo courte et crise', 'Semaine à plusieurs clients, vidéo courte en 4 temps, recyclage en 5 formats, circuit de validation et gestion de crise en 6 étapes.', 'Gérer 5 ou 10 clients exige une organisation de professionnel : des contenus produits en série sans perdre en qualité, une vidéo courte maîtrisée, des validations rapides et une gestion de crise prête à l''emploi. Ce module vous donne ces méthodes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser votre semaine pour gérer plusieurs clients.
+> 2. Produire des vidéos courtes efficaces avec une structure en 4 temps.
+> 3. Recycler un contenu en 5 formats.
+> 4. Mettre en place un circuit de validation rapide.
+> 5. Gérer une crise sur les réseaux sociaux en 6 étapes.
+
+## Organiser une semaine à plusieurs clients
+
+> [!exemple] Semaine type pour 5 clients
+>
+> | Jour | Matin | Après-midi |
+> | --- | --- | --- |
+> | Lundi | Production par lots : clients A et B | Production : client C |
+> | Mardi | Production : clients D et E | Programmation de toute la semaine |
+> | Mercredi | Tournage de vidéos courtes (ou montage des vidéos reçues) | Messages et commentaires |
+> | Jeudi | Veille, idées, publicités | Messages, ajustements |
+> | Vendredi | Rapports (en début de mois), stratégie | Prospection et formation |
+>
+> Chaque jour : 2 à 3 passages de 30 minutes dans la boîte de réception unifiée.
+
+### Les règles d''organisation
+
+1. **Un dossier par client** (Drive et Canva) avec la même structure.
+2. **Un tableau de suivi** général : clients, publications prévues, validations en attente, rapports.
+3. **Des créneaux fixes** pour chaque tâche, plutôt que de passer d''un client à l''autre toute la journée.
+4. **Une avance de 1 semaine** minimum sur les publications programmées : une coupure ou une maladie ne crée pas de trou.
+
+## La vidéo courte : le format qui domine
+
+Sur la plupart des réseaux, les vidéos courtes verticales (Reels, TikTok, Shorts) touchent beaucoup plus de personnes que les photos.
+
+### La structure en 4 temps (30 à 45 secondes)
+
+| Temps | Durée | Contenu | Exemple pour un restaurant |
+| --- | --- | --- | --- |
+| **1. Accroche** | 0 à 3 s | Une image forte ou une phrase qui arrête le défilement | « Le romazava le plus généreux d''Isoraka ? » |
+| **2. Promesse** | 3 à 8 s | Ce que la personne va voir ou apprendre | « On vous montre comment on le prépare chaque matin. » |
+| **3. Contenu** | 8 à 35 s | Les images, rapides, avec du texte à l''écran | Brèdes, viande, cuisson, service |
+| **4. Appel à l''action** | Dernières secondes | Ce qu''il faut faire | « Commandez par message avant 11 h. » |
+
+### Les 6 règles de la vidéo courte
+
+1. **Sous-titres** toujours : beaucoup regardent sans le son.
+2. **Format vertical** 9:16, personne ou produit au centre.
+3. **Un changement d''image** toutes les 1 à 3 secondes.
+4. **Un son tendance** quand c''est adapté à la marque (et autorisé pour un compte d''entreprise).
+5. **Des personnes réelles** : l''équipe, le patron, les clients (avec leur accord) font plus de vues que des produits seuls.
+6. **Une série** : « Le plat de la semaine », « Un jour au lodge » : les abonnés attendent l''épisode suivant.
+
+> [!astuce] Quand le client filme lui-même
+> Envoyez-lui une **liste de plans** précise : « Filmez à la verticale, 5 secondes chacun : 1. la marmite de face, 2. la main qui coupe les brèdes, 3. le service à table, 4. un client qui goûte. » Vous montez ensuite avec CapCut. Vous obtenez des vidéos authentiques sans vous déplacer.
+
+## Recycler un contenu en 5 formats
+
+Un bon contenu ne doit pas servir une seule fois.
+
+> [!exemple] Une interview du chef de 2 minutes devient…
+> 1. **Un Reel** de 30 secondes avec la meilleure phrase.
+> 2. **Un carrousel** « 5 secrets du chef » avec les points clés.
+> 3. **Une citation** en visuel avec sa photo.
+> 4. **Des stories** avec un sondage (« Vous préférez le romazava ou le ravitoto ? »).
+> 5. **Une publication LinkedIn** sur l''histoire du restaurant, si le client y est présent.
+
+## Le circuit de validation rapide
+
+Les validations lentes du client sont la première cause de retard.
+
+1. **Validez le calendrier mensuel** en une fois (thèmes et dates), avant le début du mois.
+2. **Envoyez les contenus par lot**, une fois par semaine, dans un seul message ou un seul lien (aperçu Metricool, dossier Canva, document partagé).
+3. **Fixez un délai** : « Sans retour de votre part sous 48 h, les publications partent comme prévu. » Écrivez cette règle dans votre contrat.
+4. **Distinguez** ce qui doit être validé (prix, promotions, annonces importantes) de ce qui ne doit pas l''être (contenus d''ambiance, conseils).
+
+## La gestion de crise
+
+> [!definition] Crise sur les réseaux sociaux
+> Une situation où de nombreux messages négatifs arrivent en peu de temps : plainte qui devient virale, erreur dans une publication, problème de qualité, rumeur.
+
+### Les 6 étapes
+
+1. **Ne supprimez rien** et ne répondez pas sous le coup de l''émotion.
+2. **Prévenez le client immédiatement**, par téléphone.
+3. **Comprenez les faits** : que s''est-il passé exactement ? Qui est concerné ?
+4. **Mettez en pause** les publications programmées (une promotion joyeuse en pleine crise aggrave la situation).
+5. **Publiez une réponse validée par le client** : reconnaître, expliquer, dire ce qui est fait pour corriger.
+6. **Répondez individuellement** aux messages avec un texte commun, puis faites un bilan après la crise.
+
+> [!exemple] Message de crise d''un restaurant
+> « Plusieurs clients nous ont signalé hier soir des retards de livraison de plus d''une heure. Nous vous présentons nos excuses. Un de nos livreurs était absent et nous n''avons pas réduit les commandes à temps. À partir d''aujourd''hui, nous limitons les commandes du soir à notre capacité réelle. Les clients concernés seront contactés pour un geste commercial. »
+
+Préparez dès le début de la collaboration un **document de crise** : numéros à appeler, qui valide les messages, modèles de réponse.
+
+> [!madagascar]
+> Les rumeurs circulent très vite dans les groupes Facebook malgaches. Surveillez les groupes de votre ville ou de votre secteur pendant une crise : une réponse calme et factuelle dans ces groupes peut arrêter une rumeur.
+
+> [!attention] Erreurs fréquentes
+> - Passer d''un client à l''autre toute la journée sans organisation.
+> - Publier la même vidéo horizontale sur tous les réseaux.
+> - Attendre la validation du client pour chaque publication, une par une.
+> - Supprimer des commentaires négatifs pendant une crise.
+
+> [!retenir]
+> - Des journées organisées par lots, avec une semaine d''avance.
+> - Vidéo courte : accroche, promesse, contenu, appel à l''action.
+> - Un contenu recyclé en 5 formats.
+> - Des validations par lot avec un délai écrit.
+> - Un document de crise prêt avant la crise.
+
+## Exercice pratique : votre organisation
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Construisez votre semaine type pour 4 clients.
+> 2. Rédigez une liste de plans pour un client qui filme lui-même, puis montez un Reel de 30 secondes en 4 temps avec CapCut.
+> 3. Recyclez ce contenu en 4 autres formats.
+> 4. Rédigez votre règle de validation pour votre contrat.
+> 5. Rédigez le document de crise d''un restaurant : contacts, circuit de validation et 3 modèles de messages.
+>
+> **À livrer** : votre semaine type, le Reel, les 4 formats recyclés, votre règle de validation et le document de crise.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 2, 0, 'Quelle est la structure d''une vidéo courte efficace ?', '["Prix, prix, prix, prix","Musique seule","Accroche, promesse, contenu, appel à l''action","Générique, silence, logo, fin"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 2, 1, 'Comment accélérer les validations du client ?', '["Envoyer chaque publication une par une","Envoyer par lot avec un délai écrit de 48 h","Ne jamais lui demander","Attendre qu''il pense à répondre"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 2, 2, 'Pendant une crise, que faire des publications programmées ?', '["Les publier comme prévu","Les supprimer toutes définitivement","Les mettre en pause","Les doubler"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-0-a', 3, 'Clients internationaux et LinkedIn', 'Adapter le travail au pays du client, LinkedIn pour entreprises et dirigeants, données personnelles et jeux-concours, anglais professionnel, offre et contrat.', 'Les entreprises francophones d''Europe, du Canada ou d''Afrique de l''Ouest cherchent des community managers fiables, et paient souvent mieux que le marché local. Mais leurs abonnés, leurs habitudes et leurs règles sont différents. Ce module vous prépare à gérer les réseaux sociaux de clients étrangers, en français et en anglais.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Adapter votre travail à un public étranger : culture, horaires, ton.
+> 2. Gérer LinkedIn pour des entreprises et des dirigeants.
+> 3. Respecter les règles sur les données personnelles et les jeux-concours.
+> 4. Communiquer et rédiger en anglais professionnel simple.
+> 5. Présenter une offre et un contrat adaptés aux clients étrangers.
+
+## Adapter son travail à un public étranger
+
+| Élément | Ce qui change | Exemple pour un client français |
+| --- | --- | --- |
+| **Horaires** | Programmer à l''heure des abonnés | 12 h 30 à Paris = 13 h 30 ou 14 h 30 à Antananarivo selon la saison |
+| **Calendrier** | Fêtes et moments forts du pays | Soldes de janvier et de juillet, rentrée de septembre, Black Friday, Noël |
+| **Références** | Culture, humour, actualité | Éviter les références que le public ne comprend pas |
+| **Ton** | Tutoiement ou vouvoiement, emojis | Souvent vouvoiement pour les marques « sérieuses », tutoiement pour les marques jeunes |
+| **Orthographe** | Exigence très élevée | Une faute dans une publication de marque est vite remarquée |
+
+> [!astuce]
+> Abonnez-vous aux pages de 10 marques du pays de votre client. Regardez pendant 2 semaines ce qu''elles publient, à quelle heure, sur quel ton : vous comprendrez vite les codes de ce public.
+
+## LinkedIn : le réseau des entreprises
+
+Beaucoup de clients étrangers (cabinets, consultants, entreprises de services, recruteurs) veulent être présents sur LinkedIn. C''est une compétence bien payée et encore peu maîtrisée.
+
+### Page d''entreprise et profil de dirigeant
+
+| | **Page d''entreprise** | **Profil du dirigeant** |
+| --- | --- | --- |
+| Rôle | Présenter l''entreprise, recruter, annoncer | Construire la confiance, partager une expertise |
+| Portée | Souvent plus faible | Souvent beaucoup plus forte |
+| Contenus | Actualités, offres d''emploi, réalisations | Avis, conseils, histoires, coulisses |
+
+### La publication LinkedIn qui marche
+
+1. **Une accroche** de 1 à 2 lignes avant le « voir plus ».
+2. **Des paragraphes très courts**, une idée par ligne.
+3. **Une histoire ou une leçon** concrète.
+4. **Une question** à la fin pour inviter à commenter.
+5. **Peu de hashtags** (3 au maximum) et pas de lien dans le texte principal si la portée baisse (on peut le mettre en commentaire, selon ce qui marche pour le compte).
+
+> [!exemple] Publication pour une consultante
+> « J''ai perdu mon plus gros client il y a 3 ans.
+>
+> Ce jour-là, j''ai compris une chose : 70 % de mon chiffre dépendait d''une seule entreprise.
+>
+> Depuis, je m''impose une règle simple : aucun client ne dépasse 30 % de mon activité.
+>
+> Et vous, comment répartissez-vous vos risques ? »
+
+**Important** : quand vous écrivez pour le profil d''un dirigeant, le texte doit refléter **ses** idées et **ses** expériences, validées par lui. Vous l''aidez à les formuler, vous n''inventez pas sa vie.
+
+## Les règles sur les données et les jeux-concours
+
+### Les données personnelles
+
+En Europe, le **RGPD** (Règlement général sur la protection des données) encadre l''utilisation des données personnelles. Pour un community manager, cela veut dire notamment :
+
+1. Ne pas **copier** les coordonnées des abonnés dans un fichier sans leur accord.
+2. **Demander l''accord** avant de publier la photo ou le témoignage d''un client.
+3. **Protéger** les accès aux comptes (double authentification, pas de partage de mots de passe).
+4. **Supprimer** les données d''un jeu-concours (adresse du gagnant) une fois le lot envoyé.
+
+Ce résumé ne remplace pas un avis juridique : le client reste responsable de ses obligations, mais il attend de vous des pratiques sérieuses.
+
+### Les jeux-concours
+
+1. Un **règlement** écrit, accessible depuis la publication.
+2. Le respect des **règles de chaque réseau** (Meta, TikTok, LinkedIn ont leurs propres conditions).
+3. Les **règles du pays** : certains pays encadrent strictement les jeux et loteries. Demandez au client de les vérifier.
+
+## L''anglais professionnel du community manager
+
+| Anglais | Français |
+| --- | --- |
+| content calendar | calendrier éditorial |
+| post / caption | publication / texte de la publication |
+| reach / impressions | couverture / impressions |
+| engagement rate | taux d''interaction |
+| followers | abonnés |
+| scheduling | programmation |
+| approval | validation |
+| brand voice | ton de la marque |
+| monthly report | rapport mensuel |
+| ad spend | budget publicitaire |
+
+> [!exemple] Message de rapport en anglais
+> « Hi Mark, please find attached the October report. Key results: reach +42 %, 63 direct messages (+18), and our best post was the behind-the-scenes Reel (12,400 views). For November, I suggest two changes: more Reels featuring your team, and a small ad budget to promote the Black Friday offer. Happy to discuss on our call on Thursday. »
+
+## L''offre et le contrat pour les clients étrangers
+
+1. **Prix en euros ou en dollars**, adaptés au marché du client et à votre spécialité. Renseignez-vous sur les tarifs de community managers freelances de votre niveau dans son pays et sur les plateformes.
+2. **Paiement mensuel d''avance**, par virement international, Payoneer ou la plateforme.
+3. **Horaires de réponse** exprimés dans le fuseau du client.
+4. **Délai de validation** (48 h) et ce qui se passe sans réponse.
+5. **Budget publicitaire** à part, payé par le client.
+6. **Durée** : 3 mois d''engagement initial, puis renouvellement mensuel avec préavis.
+7. **Confidentialité** et propriété des contenus (les contenus créés appartiennent au client après paiement).
+
+> [!madagascar]
+> Pour un client européen, votre décalage horaire est un atout : vous pouvez programmer et répondre tôt le matin (heure de Paris), avant que l''équipe du client commence sa journée. Mettez-le en avant dans votre offre : « Vos messages du matin traités avant 9 h, heure de Paris. »
+
+> [!retenir]
+> - Adaptez horaires, calendrier, références et ton au pays du client.
+> - LinkedIn : page d''entreprise et profil de dirigeant, avec ses vraies idées.
+> - Données personnelles et jeux-concours : accord, protection, règlement.
+> - Un anglais simple et clair suffit pour les échanges et les rapports.
+> - Prix en devises, paiement d''avance, délai de validation écrit.
+
+## Exercice pratique : un client étranger
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez une marque d''un pays francophone (France, Belgique, Canada) dans votre spécialité et analysez 10 de ses publications.
+> 2. Construisez son calendrier de moments forts sur 3 mois.
+> 3. Rédigez 3 publications LinkedIn pour son dirigeant (fictif) à partir d''idées que vous inventez pour l''exercice.
+> 4. Rédigez en anglais un rapport mensuel court avec des chiffres d''exemple.
+> 5. Rédigez votre offre en euros et votre contrat type avec les 7 points.
+>
+> **À livrer** : l''analyse, le calendrier, les 3 publications, le rapport en anglais, l''offre et le contrat.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 3, 0, 'Sur LinkedIn, qu''est-ce qui a souvent la plus forte portée ?', '["La page d''entreprise","Les publicités imprimées","Les messages privés","Le profil du dirigeant"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 3, 1, 'Que faut-il avant de publier le témoignage d''un client ?', '["Un paiement","Rien","Son accord","Son mot de passe"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 3, 2, 'Que veut dire « engagement rate » ?', '["Taux de change","Taux d''interaction","Taux d''abonnés perdus","Budget publicitaire"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-0-a', 4, 'Développer son activité', 'Formules et prix avancés, services complémentaires, recruter un assistant, procédures d''équipe et rentabilité par client.', 'Un community manager seul peut gérer environ 5 à 10 clients selon les formules. Au-delà, il faut changer de modèle : mieux vendre, déléguer une partie du travail, ou créer une petite agence. Ce dernier module vous montre comment faire grandir votre activité sans vous épuiser.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire évoluer vos formules et vos prix.
+> 2. Vendre des services complémentaires à forte valeur.
+> 3. Recruter et former un assistant community manager.
+> 4. Organiser une petite équipe avec des procédures claires.
+> 5. Piloter la rentabilité de chaque client.
+
+## Faire évoluer ses formules et ses prix
+
+### Passer du « nombre de publications » aux résultats
+
+Au début, on vend « 12 publications par mois ». Au niveau avancé, on vend un **résultat** et une **stratégie** :
+
+| Formule débutant | Formule avancée |
+| --- | --- |
+| « 12 publications et réponses aux messages » | « Gestion complète de votre présence : stratégie trimestrielle, contenus, vidéos courtes, réponses 7 jours sur 7, rapport avec recommandations » |
+| Prix calculé sur les heures | Prix calculé sur les heures, **plus** la valeur de la stratégie et de l''expertise sectorielle |
+
+### Augmenter ses prix
+
+1. Appliquez le nouveau tarif **aux nouveaux clients** d''abord.
+2. Pour les clients actuels, prévenez **1 à 2 mois** à l''avance, en rappelant les résultats obtenus ensemble.
+3. Augmentez **par paliers** (par exemple 10 à 20 %).
+4. Proposez une **formule plus légère** au client qui ne peut pas suivre, plutôt que de le perdre sans solution.
+
+## Les services complémentaires à forte valeur
+
+| Service | Ce que c''est | Pourquoi c''est rentable |
+| --- | --- | --- |
+| **Audit et stratégie** | Diagnostic complet et stratégie de 3 mois, livrés en une fois | Bien payé, pas de travail quotidien ensuite |
+| **Formation** | Former l''équipe du client à gérer ses réseaux | Une demi-journée, valeur élevée |
+| **Lancement** | Ouverture ou relance d''une page : identité, 30 premiers contenus, campagne | Projet ponctuel bien défini |
+| **Gestion des publicités** | Campagnes avec le budget du client | Forte valeur, résultats mesurables |
+| **Création de vidéos** | Tournage et montage de vidéos courtes | Le format le plus demandé |
+| **Animation de communauté privée** | Groupe Facebook, WhatsApp ou Telegram de clients | Fidélise les clients de la marque |
+
+## Recruter et former un assistant
+
+Quand vous êtes complet, déléguer les tâches répétitives vous libère pour la stratégie et la prospection.
+
+### Quelles tâches déléguer ?
+
+| Déléguer | Garder |
+| --- | --- |
+| Création de visuels à partir de modèles | Stratégie et relation avec le client |
+| Programmation | Validation finale avant publication |
+| Premier niveau de réponse aux messages (avec réponses enregistrées) | Gestion des crises et des réclamations sensibles |
+| Recherche de tendances | Rapports et recommandations |
+
+### Recruter en 5 étapes
+
+1. **Décrivez la mission** : tâches, heures par semaine, outils, rémunération.
+2. **Cherchez** parmi les personnes formées (par exemple les diplômés du niveau Fondamentaux), dans votre réseau ou les groupes de freelances.
+3. **Faites un test payé** : 3 visuels et 5 réponses à des messages, sur un client fictif.
+4. **Commencez petit** : 5 à 10 heures par semaine, sur un ou deux clients.
+5. **Formalisez** : accord écrit, confidentialité, paiement à date fixe.
+
+> [!madagascar]
+> Former un jeune community manager malgache est aussi une façon de créer des emplois à distance. Payez-le correctement et à l''heure : un assistant fiable et motivé est l''atout le plus précieux d''une petite agence.
+
+## Organiser une petite équipe
+
+### Les procédures écrites
+
+Tout ce qui se répète doit être écrit, étape par étape, dans un document partagé (Notion, Google Docs) :
+
+1. **Accueillir un nouveau client** : accès, kit de marque, dossiers, réponses enregistrées.
+2. **Créer et programmer** la semaine.
+3. **Répondre aux messages** : ton, délais, ce qu''on transmet au client.
+4. **Préparer le rapport** mensuel.
+5. **Gérer une crise**.
+
+### Les outils de l''équipe
+
+| Besoin | Outil |
+| --- | --- |
+| Suivi des tâches | Trello, Notion ou Asana |
+| Communication interne | WhatsApp, Slack ou Google Chat, avec un groupe par client |
+| Fichiers | Google Drive, dossiers Canva d''équipe |
+| Programmation et messages | Metricool ou Hootsuite avec plusieurs utilisateurs |
+| Accès sécurisés | Gestionnaire de mots de passe partagé |
+
+### Le contrôle qualité
+
+Même avec un assistant, **vous** restez responsable devant le client. Relisez tout ce qui est programmé pendant les premières semaines, puis par échantillon. Une erreur de prix ou une faute dans une publication, c''est votre réputation.
+
+## Piloter la rentabilité de chaque client
+
+Tous les clients ne se valent pas : certains demandent beaucoup de temps pour un petit forfait.
+
+> [!exemple] Tableau de rentabilité mensuel
+>
+> | Client | Forfait | Heures réelles | Revenu par heure |
+> | --- | --- | --- | --- |
+> | Hôtel A | 600 000 Ar | 28 h | 21 400 Ar |
+> | Restaurant B | 330 000 Ar | 30 h | 11 000 Ar |
+> | Boutique C | 450 000 Ar | 20 h | 22 500 Ar |
+>
+> *(Chiffres donnés en exemple.)* Le restaurant B rapporte deux fois moins par heure. Que faire ? Comprendre pourquoi (beaucoup de messages, validations lentes, demandes hors forfait), puis ajuster : nouvelle formule, prix, règles de validation, ou délégation des réponses.
+
+### Les 5 chiffres à suivre chaque mois
+
+1. **Revenus réguliers** (somme des forfaits).
+2. **Revenu par heure** de chaque client.
+3. **Part du plus gros client** dans le total.
+4. **Nombre de clients perdus et gagnés**.
+5. **Dépenses** : outils, assistant, connexion.
+
+> [!retenir]
+> - Vendez une stratégie et des résultats, pas seulement des publications.
+> - Ajoutez des services à forte valeur : audit, formation, lancement, publicité, vidéo.
+> - Déléguez les tâches répétitives, gardez la stratégie et la relation client.
+> - Des procédures écrites et un contrôle qualité permanent.
+> - Suivez la rentabilité de chaque client et ajustez.
+
+## Exercice pratique : votre plan de croissance
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Réécrivez vos formules en version « résultats et stratégie », avec de nouveaux prix.
+> 2. Créez une offre de service complémentaire (audit, formation ou lancement) avec contenu et prix.
+> 3. Rédigez la description de mission d''un assistant et son test payé.
+> 4. Écrivez 2 procédures : « accueillir un nouveau client » et « créer et programmer la semaine ».
+> 5. Remplissez un tableau de rentabilité (avec vos clients ou des chiffres d''exemple) et proposez une action pour le client le moins rentable.
+>
+> **À livrer** : vos formules, votre offre complémentaire, la description de mission, les 2 procédures et le tableau de rentabilité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 4, 0, 'Quelle tâche garder plutôt que déléguer ?', '["La création de visuels à partir de modèles","La programmation","La gestion des crises et la relation client","La recherche de tendances"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 4, 1, 'Un forfait de 330 000 Ar demande 30 heures. Quel est le revenu par heure ?', '["33 000 Ar","3 300 Ar","11 000 Ar","110 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-0-a', 4, 2, 'Pourquoi écrire des procédures ?', '["Pour qu''un assistant fasse le travail sans erreur","Pour remplir le Drive","Pour le client uniquement","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quelles sont les deux façons de se spécialiser ?', '["Par prix ou par heure","Par secteur ou par réseau","Par couleur ou par police","Par âge ou par ville"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Combien de piliers de contenu prévoir ?', '["Aucun","1","3 à 5","20"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quel indicateur est lié à l''objectif « plus de réservations » ?', '["Le nombre de « J''aime » sur la photo de profil","Le nombre de hashtags","La couleur du logo","Les demandes de réservation par message"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'À quoi servent les paramètres UTM ?', '["Changer la langue du site","Compresser une vidéo","Protéger un mot de passe","Savoir combien de visites et de ventes viennent de chaque publication"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Combien de temps par semaine pour la veille ?', '["Environ 30 minutes","10 heures","Une minute par mois","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que contient le diagnostic d''une stratégie ?', '["La liste des abonnés","L''audit de la page et des concurrents avec les chiffres de départ","La biographie du community manager","La facture"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Pourquoi adapter le format à chaque réseau ?', '["Ce n''est pas utile","Pour gagner moins de temps","Parce que la loi l''exige","Une vidéo horizontale avec un long texte ne marche pas sur TikTok"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quelle fonction de Canva Pro transforme une publication carrée en story ?', '["La suppression d''arrière-plan","Le kit de marque","Le dossier client","Le redimensionnement magique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Qu''est-ce que le batching ?', '["Supprimer les anciens contenus","Produire tous les contenus de la semaine en une fois","Répondre aux messages la nuit","Publier au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quelle différence entre booster et créer une publicité ?', '["Créer une publicité offre plus d''objectifs et de ciblage","Booster est gratuit","Il n''y en a aucune","Créer une publicité est interdit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que regarder après 3 jours de campagne « messages » ?', '["La couleur du bouton","Le coût par message reçu","La météo","Le nombre d''employés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Combien d''avance garder sur les publications programmées ?', '["Aucune","Un an","Au moins une semaine","Une heure"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Pourquoi des sous-titres sur les vidéos courtes ?', '["Pour allonger la vidéo","Beaucoup regardent sans le son","Pour cacher l''image","C''est obligatoire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que donner au client qui filme lui-même ?', '["Rien","Une caméra de cinéma","Un contrat de travail","Une liste de plans précise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que ne pas faire pendant une crise ?', '["Supprimer les commentaires négatifs","Comprendre les faits","Publier une réponse validée","Prévenir le client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quand préparer le document de crise ?', '["Dès le début de la collaboration","Après la crise","Pendant la crise","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que faire pour comprendre les codes d''un public étranger ?', '["Publier sans regarder","Deviner","Observer pendant 2 semaines 10 marques de ce pays","Copier une marque malgache"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Combien de hashtags au maximum sur une publication LinkedIn ?', '["100","Environ 3","Aucun n''est jamais autorisé","30"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Qu''est-ce que le RGPD ?', '["Un logiciel de montage","Le règlement européen sur la protection des données personnelles","Une plateforme de paiement","Un réseau social"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quand écrire pour le profil d''un dirigeant…', '["On copie un autre dirigeant","On ne lui montre rien","Le texte reflète ses idées et expériences, validées par lui","On invente sa vie"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Quel atout mettre en avant auprès d''un client européen ?', '["Ne pas répondre le matin","Ne jamais envoyer de rapport","Les messages du matin traités avant 9 h, heure de Paris","Travailler seulement le dimanche"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Qu''est-ce qu''une formule avancée ?', '["Une offre qui vend une stratégie et des résultats","Une offre gratuite","Un prix plus bas","12 publications sans stratégie"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Comment recruter un assistant ?', '["Avec un test gratuit de 3 mois","Avec un test payé et un début sur 5 à 10 heures par semaine","En lui donnant tous vos mots de passe","Sans test, à plein temps immédiatement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Qui reste responsable devant le client du travail de l''assistant ?', '["Vous","Le client","L''assistant seul","Personne"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-0-a', 'Que faire d''un client deux fois moins rentable par heure que les autres ?', '["Doubler son travail gratuitement","Ne rien faire","L''ignorer","Comprendre pourquoi et ajuster formule, prix ou règles"]'::jsonb, 3);
 
 -- mkt-0-f
 delete from public.exam_questions where course_id = 'mkt-0-f';
