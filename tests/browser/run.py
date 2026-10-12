@@ -25,7 +25,7 @@ FAKE_PDF = """window.jspdf={jsPDF:function(){var calls=[];var p=new Proxy({},{ge
  if(k==='save')return function(n){window.__pdfSaved=n;};
  if(k==='splitTextToSize')return function(s){return [s];};
  return function(){calls.push(k);return p;};}});window.__pdfCalls=calls;return p;}};"""
-CONFIG = read('assets/js/config.js').replace("supabaseUrl: ''", "supabaseUrl: 'https://test.supabase.co'").replace("supabaseAnonKey: ''", "supabaseAnonKey: 'test'")
+CONFIG = re.sub(r"supabaseAnonKey: '[^']*'", "supabaseAnonKey: 'test'", re.sub(r"supabaseUrl: '[^']*'", "supabaseUrl: 'https://test.supabase.co'", read('assets/js/config.js')))
 
 results, errors = [], []
 def check(name, cond):
