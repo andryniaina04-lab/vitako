@@ -2005,6 +2005,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-4-f": {
+  "hours": 13,
+  "description": "Le sous-titreur transforme ce qui est dit dans une vidéo en textes courts, lisibles et synchronisés, dans la même langue ou traduits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à sous-titrer pour des créateurs, des ONG, des réalisateurs et des entreprises, en malagasy, en français et en anglais, avec Subtitle Edit et Aegisub gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et distinguer les types et formats de sous-titres",
+   "Respecter les règles de longueur, de vitesse de lecture et de durée",
+   "Découper, synchroniser et condenser sans trahir le sens",
+   "Créer, vérifier et exporter des sous-titres avec Subtitle Edit et Aegisub",
+   "Mener une commande multilingue, avec une version incrustée pour les réseaux sociaux",
+   "Fixer un prix à la minute, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de sous-titreur depuis Madagascar",
+    "summary": "Ce que fait un sous-titreur, les 3 types de sous-titres, fichiers séparés ou incrustés, le format SRT, les clients, les qualités et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les 3 types de sous-titres",
+     "Sous-titres incrustés ou fichiers séparés ?",
+     "Qui sont vos clients ?",
+     "Les qualités demandées",
+     "Le poste de travail",
+     "Exercice pratique : observer et transcrire"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : lisibilité, découpage, synchronisation et condensation",
+    "summary": "Longueur des lignes, caractères par seconde, durées, découpage par groupes de sens, synchronisation et changements de plan, condensation et conventions pour sourds et malentendants.",
+    "sections": [
+     "Les règles de base",
+     "Le découpage : où couper ?",
+     "La synchronisation",
+     "La condensation",
+     "Les sous-titres pour sourds et malentendants (SME)",
+     "Exercice pratique : appliquer les règles"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : Subtitle Edit, Aegisub, formats et sous-titrage automatique",
+    "summary": "Synchroniser avec la forme d'onde, contrôles automatiques, styles dans Aegisub, formats SRT, VTT et ASS, YouTube Studio, incrustation et correction du sous-titrage automatique.",
+    "sections": [
+     "Les outils gratuits",
+     "Subtitle Edit : la prise en main",
+     "Aegisub : des sous-titres stylés",
+     "Les formats de fichiers",
+     "YouTube et l'incrustation",
+     "Le sous-titrage automatique",
+     "Les outils payants",
+     "Exercice pratique : vos premiers sous-titres complets"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : la vidéo d'une ONG en trois langues",
+    "summary": "Les 8 questions de la commande, les 6 étapes, le repérage, l'adaptation, le fichier modèle, la version courte incrustée, la grille de 12 points et la livraison.",
+    "sections": [
+     "Le cas pratique : « Rano Madio »",
+     "Étape 0 : analyser la commande",
+     "Le travail en 6 étapes",
+     "La version courte incrustée",
+     "La grille de contrôle en 12 points",
+     "La livraison",
+     "Exercice pratique : la vidéo de l'ONG"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Bande démo et avant / après, 5 canaux, prix à la minute de vidéo et suppléments, devis, paiements et évolution vers l'accessibilité.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis et les conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "mkt-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du community manager le stratège des réseaux sociaux d'une marque : spécialité, stratégie de contenu, outils professionnels (Metricool, Hootsuite, Canva Pro), publicité simple, vidéo courte, gestion de crise, clients étrangers et LinkedIn, puis croissance de l'activité. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -21,7 +21,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 18, false),
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 14, false),
   ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
-  ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 10, false),
+  ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
   ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, false),
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 12, false),
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 18, false),
@@ -11743,7 +11743,7 @@ Les raccourcis peuvent varier selon les versions : vérifiez-les dans le menu d'
 1. **Vitesse de lecture** : ralentissez à 60-80 % pour les passages rapides.
 2. **Retour automatique** : à chaque pause, l''audio recule de 1 à 2 secondes. Vous reprenez toujours avec un peu de contexte.
 3. **Touches de fonction globales** : contrôlez la lecture même quand vous tapez dans Word ou Google Docs.
-4. **Pédale** : Express Scribe reconnaît de nombreuses pédales USB (module plus bas).
+4. **Pédale** : Express Scribe reconnaît de nombreuses pédales USB (voir plus bas).
 
 > [!astuce] La méthode de frappe
 > Écoutez **un morceau de phrase** (3 à 5 secondes), mettez en pause, tapez, reprenez. Avec l''habitude, vous tapez **pendant** que l''audio continue lentement, et vous ne mettez en pause que pour les passages difficiles.
@@ -13481,6 +13481,660 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-4-f
+delete from public.exam_questions where course_id = 'media-4-f';
+delete from public.module_questions where course_id = 'media-4-f';
+delete from public.lessons where course_id = 'media-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-f', 0, 'Le métier de sous-titreur depuis Madagascar', 'Ce que fait un sous-titreur, les 3 types de sous-titres, fichiers séparés ou incrustés, le format SRT, les clients, les qualités et le poste de travail.', 'Une grande partie des vidéos en ligne sont regardées **sans le son**, et beaucoup de spectateurs ne parlent pas la langue de la vidéo ou sont sourds ou malentendants. Les sous-titres rendent la vidéo compréhensible par tous. Le sous-titreur découpe, synchronise et adapte le texte pour qu''il se lise facilement au bon moment. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un sous-titreur.
+> 2. Distinguer les 3 types de sous-titres.
+> 3. Distinguer sous-titres incrustés et fichiers de sous-titres.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un sous-titreur **transforme ce qui est dit dans une vidéo en textes courts, lisibles et parfaitement synchronisés avec l''image et le son**.
+
+Ce n''est pas une transcription mot à mot : un spectateur ne peut lire qu''un nombre limité de mots par seconde. Le sous-titreur **découpe**, **condense** quand il le faut, et **cale** chaque sous-titre au bon moment.
+
+> [!definition] Sous-titre
+> Un court texte (1 ou 2 lignes) affiché en bas de l''image pendant un temps précis, avec une heure d''entrée et une heure de sortie.
+
+## Les 3 types de sous-titres
+
+| Type | Ce que c''est | Pour qui |
+| --- | --- | --- |
+| **Sous-titres dans la même langue** (*captions*) | Le texte de ce qui est dit, dans la langue de la vidéo | Vidéos regardées sans le son, apprenants de la langue, référencement |
+| **Sous-titres traduits** | Le texte traduit dans une autre langue | Spectateurs étrangers (un documentaire malgache sous-titré en français) |
+| **Sous-titres pour sourds et malentendants** (SME) | Le texte, plus les informations sonores utiles : qui parle, bruits, musique | Personnes sourdes ou malentendantes |
+
+> [!exemple] Les mêmes secondes, 3 types
+> **Dans la même langue** : « On part demain à l''aube. »
+> **Traduit en anglais** : « We leave at dawn tomorrow. »
+> **SME** : « [Rado] On part demain à l''aube. » … « [orage au loin] »
+
+## Sous-titres incrustés ou fichiers séparés ?
+
+| | **Fichier séparé** (SRT, VTT…) | **Sous-titres incrustés** (« gravés » dans l''image) |
+| --- | --- | --- |
+| Activation | Le spectateur les active ou non | Toujours visibles |
+| Langues | Plusieurs fichiers, une langue chacun | Une seule langue par vidéo |
+| Modification | Facile : on modifie le fichier | Il faut ré-exporter la vidéo |
+| Usage courant | YouTube, plateformes de cours, télévision, streaming | Réseaux sociaux (TikTok, Reels), publicités |
+
+> [!definition] Fichier SRT
+> Le format de sous-titres le plus répandu : un fichier texte qui contient, pour chaque sous-titre, un numéro, l''heure d''entrée, l''heure de sortie et le texte. Presque tous les lecteurs et plateformes le lisent.
+
+> [!exemple] Extrait d''un fichier SRT
+> ```
+> 1
+> 00:00:01,200 --> 00:00:03,800
+> Bienvenue à Antsirabe,
+> la ville d''eau.
+>
+> 2
+> 00:00:04,100 --> 00:00:06,500
+> Ici, tout commence au marché.
+> ```
+
+## Qui sont vos clients ?
+
+1. **Créateurs YouTube** : sous-titres en français, et traduits en anglais pour toucher plus de monde.
+2. **Créateurs de vidéos courtes et marques** : sous-titres incrustés pour TikTok et Reels.
+3. **Plateformes de formation en ligne** : cours sous-titrés, souvent en plusieurs langues.
+4. **ONG et organisations internationales** : documentaires, témoignages, vidéos de sensibilisation (souvent en malagasy, sous-titrées en français ou en anglais).
+5. **Festivals et réalisateurs** : films et documentaires.
+6. **Agences de sous-titrage** : travaillent pour des chaînes et des plateformes, avec des règles strictes.
+
+> [!madagascar] Votre avantage
+> Les films, documentaires et vidéos en **malagasy** ont besoin de sous-titres en français et en anglais pour être vus à l''étranger (festivals, ONG, diaspora). Et les vidéos d''information en français peuvent être sous-titrées **en malagasy** pour toucher tout le pays. Peu de professionnels maîtrisent ces combinaisons.
+
+## Les qualités demandées
+
+1. **Une excellente orthographe** dans la langue des sous-titres.
+2. **Une bonne oreille** et la patience de réécouter.
+3. **Un esprit de synthèse** : dire l''essentiel en peu de mots.
+4. **De la précision** : au dixième de seconde près.
+5. **Le sens du rythme** : suivre les plans, les respirations, les changements de locuteur.
+6. Pour les sous-titres traduits : **la maîtrise de deux langues**.
+
+## Le poste de travail
+
+1. **Un ordinateur** capable de lire des vidéos en haute définition sans saccades.
+2. **Un casque** de bonne qualité.
+3. **Un logiciel de sous-titrage** gratuit : Subtitle Edit ou Aegisub (module 3).
+4. **Un grand écran**, ou deux : vidéo et texte côte à côte.
+5. **Une connexion** suffisante pour télécharger les vidéos des clients.
+
+> [!astuce]
+> Regardez chaque jour 15 minutes d''une vidéo professionnellement sous-titrée (film, documentaire) en observant les sous-titres : longueur, coupures, moment d''apparition. Vous apprendrez les règles du métier presque sans effort.
+
+> [!retenir]
+> - Le sous-titreur découpe, condense et synchronise le texte avec l''image.
+> - 3 types : même langue, traduits, pour sourds et malentendants.
+> - Fichier séparé (SRT) ou sous-titres incrustés selon la diffusion.
+> - Clients : créateurs, marques, formations, ONG, festivals, agences.
+> - Le malagasy, le français et l''anglais ouvrent des combinaisons rares.
+
+## Exercice pratique : observer et transcrire
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Regardez 5 minutes d''un film ou documentaire sous-titré professionnellement et notez : nombre de lignes par sous-titre, longueur des lignes, endroits où le texte est condensé par rapport à ce qui est dit.
+> 2. Regardez 2 vidéos courtes sur un réseau social avec sous-titres incrustés : qu''est-ce qui les rend lisibles (ou non) ?
+> 3. Ouvrez un éditeur de texte et écrivez à la main un fichier SRT de 5 sous-titres pour une vidéo de 20 secondes de votre choix.
+>
+> **À livrer** : vos observations et votre fichier SRT.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 0, 0, 'Que contiennent les sous-titres pour sourds et malentendants en plus des paroles ?', '["Des publicités","Rien de plus","Le script complet","Les informations sonores utiles : locuteurs, bruits, musique"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 0, 1, 'Quel est le format de sous-titres le plus répandu ?', '["MP3","DOCX","PDF","SRT"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 0, 2, 'Quand utiliser des sous-titres incrustés ?', '["Pour la radio","Jamais","Pour les réseaux sociaux, où la vidéo est souvent regardée sans le son","Pour plusieurs langues au choix"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-f', 1, 'Les bases : lisibilité, découpage, synchronisation et condensation', 'Longueur des lignes, caractères par seconde, durées, découpage par groupes de sens, synchronisation et changements de plan, condensation et conventions pour sourds et malentendants.', 'Un bon sous-titre se lit sans effort, apparaît au bon moment et disparaît avant d''être gênant. Ce module vous donne les règles professionnelles : longueur des lignes, vitesse de lecture, durées, découpage, synchronisation, condensation et conventions pour les sourds et malentendants.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Respecter les limites de longueur et de vitesse de lecture.
+> 2. Fixer des durées d''affichage correctes.
+> 3. Découper les phrases aux bons endroits.
+> 4. Synchroniser les sous-titres avec la voix et les plans.
+> 5. Condenser le texte sans trahir le sens.
+> 6. Appliquer les conventions des sous-titres pour sourds et malentendants.
+
+## Les règles de base
+
+Chaque client ou plateforme a son **guide de style**. Voici des repères courants ; en cas de différence, **le guide du client s''applique**.
+
+| Règle | Repère courant |
+| --- | --- |
+| **Nombre de lignes** | 2 lignes maximum |
+| **Longueur d''une ligne** | Souvent entre 37 et 42 caractères (espaces compris) |
+| **Vitesse de lecture** | Souvent autour de 15 à 17 caractères par seconde pour un public adulte, moins pour les enfants |
+| **Durée minimale** | Environ 1 seconde (souvent un peu plus) |
+| **Durée maximale** | Environ 6 à 7 secondes |
+| **Intervalle entre deux sous-titres** | Un court écart (quelques images) pour que l''œil voie le changement |
+
+> [!definition] Caractères par seconde (CPS)
+> Le nombre de caractères d''un sous-titre divisé par sa durée d''affichage. Exemple : un sous-titre de 48 caractères affiché 3 secondes = 16 CPS. Au-delà de la limite, le spectateur n''a pas le temps de lire.
+
+> [!exemple] Calcul
+> « Ici, tout commence au marché, très tôt le matin. » = 50 caractères.
+> Affiché 2,5 secondes : 50 ÷ 2,5 = **20 CPS**, trop rapide. Solutions : allonger la durée (si la voix le permet) ou condenser : « Ici, tout commence au marché, à l''aube. » (39 caractères ÷ 2,5 s ≈ 16 CPS).
+
+## Le découpage : où couper ?
+
+Un sous-titre doit former une **unité de sens**. On coupe **entre** les groupes de mots, jamais au milieu d''un groupe.
+
+### Les règles de découpage
+
+1. **Une phrase par sous-titre** quand c''est possible.
+2. Si la phrase est trop longue, coupez **après une ponctuation** ou **entre deux groupes de sens**.
+3. Ne séparez **pas** : un article et son nom (« le / marché »), un adjectif et son nom, un pronom et son verbe, une préposition et la suite.
+4. Sur 2 lignes, préférez une **première ligne plus courte** (forme de pyramide) quand le sens le permet.
+
+| Mauvais découpage | Bon découpage |
+| --- | --- |
+| « Nous avons vendu toute la / récolte de vanille cette année. » | « Nous avons vendu toute la récolte / de vanille cette année. » |
+| « Il m''a dit qu''il / viendrait demain. » | « Il m''a dit / qu''il viendrait demain. » |
+
+## La synchronisation
+
+### Les règles
+
+1. **Entrée** : le sous-titre apparaît **au moment où la personne commence à parler** (ou très légèrement avant).
+2. **Sortie** : il disparaît **peu après la fin de la phrase**, sans rester sur l''image suivante si possible.
+3. **Changement de plan** : évitez qu''un sous-titre « chevauche » un changement de plan (coupe dans la vidéo) ; avancez ou reculez légèrement l''entrée ou la sortie pour s''aligner sur la coupe quand c''est possible.
+4. **Deux personnes** dans le même sous-titre : chaque réplique sur sa ligne, précédée d''un tiret (selon les conventions du client).
+
+> [!exemple] Dialogue sur 2 lignes
+> \- Tu viens au marché ?
+> \- Oui, j''arrive.
+
+> [!definition] Forme d''onde
+> La représentation graphique du son dans les logiciels de sous-titrage. Les pics montrent quand quelqu''un parle. Elle permet de caler les entrées et sorties avec précision.
+
+## La condensation
+
+Quand la personne parle plus vite que le spectateur ne peut lire, il faut **réduire le texte** sans changer le sens.
+
+### Ce qu''on peut enlever ou raccourcir
+
+| Technique | Avant | Après |
+| --- | --- | --- |
+| Supprimer les hésitations et répétitions | « Alors euh, je pense, je pense que oui. » | « Je pense que oui. » |
+| Supprimer les mots de liaison inutiles | « Bon, en fait, du coup, on est partis. » | « On est partis. » |
+| Simplifier la structure | « Est-ce que tu pourrais venir demain ? » | « Tu peux venir demain ? » |
+| Utiliser des mots plus courts | « actuellement » | « en ce moment » / « aujourd''hui » |
+| Supprimer ce que l''image montre | « Regarde ce zébu là, devant nous » (le zébu est à l''écran) | « Regarde ce zébu. » |
+
+### Ce qu''on ne doit jamais enlever
+
+1. Les **informations importantes** : noms, chiffres, négations, dates.
+2. Le **ton** : une insulte reste forte, une plaisanterie reste drôle.
+3. Ce qui est nécessaire pour **comprendre la suite**.
+
+## Les sous-titres pour sourds et malentendants (SME)
+
+En plus des paroles, on indique les **informations sonores utiles à la compréhension**.
+
+| Élément | Convention courante |
+| --- | --- |
+| **Identification du locuteur** | Nom entre crochets quand on ne voit pas qui parle : [Rado] |
+| **Bruits importants** | [porte qui claque], [sirène], [pluie] |
+| **Musique** | [musique douce], ♪ paroles de la chanson ♪ |
+| **Ton de voix** | [en chuchotant], [en criant] |
+| **Langue étrangère** | [en malagasy] puis la traduction, ou [parle en malagasy] |
+| **Voix hors champ** | Selon le guide : italique ou indication [voix off] |
+
+Certains pays et chaînes utilisent aussi des **couleurs** pour identifier les locuteurs ou indiquer les sons. Suivez le guide du client.
+
+> [!madagascar]
+> Pour sous-titrer une vidéo en malagasy vers le français, gardez les **noms de lieux** et de personnes dans leur orthographe malgache, et n''ajoutez une explication que si elle est nécessaire à la compréhension (par exemple un plat ou une fête peu connus des spectateurs étrangers).
+
+> [!retenir]
+> - 2 lignes maximum, environ 37 à 42 caractères par ligne, vitesse de lecture limitée.
+> - Des durées entre environ 1 et 7 secondes.
+> - Découper entre les groupes de sens, jamais au milieu.
+> - Entrée au début de la parole, sortie peu après, en respectant les changements de plan.
+> - Condenser sans perdre les noms, chiffres, négations et le ton.
+> - SME : locuteurs, bruits, musique, ton de voix.
+
+## Exercice pratique : appliquer les règles
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Calculez les CPS de 5 sous-titres que vous inventez, et corrigez ceux qui dépassent 17 CPS.
+> 2. Redécoupez 5 phrases longues en sous-titres de 2 lignes, en respectant les groupes de sens.
+> 3. Condensez un extrait de dialogue rapide de 30 secondes (transcrivez-le d''abord), en gardant tout le sens.
+> 4. Rédigez la version SME de 10 sous-titres d''une scène de film ou de vidéo avec bruits et musique.
+>
+> **À livrer** : vos calculs, vos découpages, votre extrait condensé et vos sous-titres SME.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 1, 0, 'Un sous-titre de 48 caractères affiché 3 secondes a une vitesse de…', '["48 CPS","16 CPS","3 CPS","144 CPS"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 1, 1, 'Combien de lignes au maximum par sous-titre ?', '["2","1 seulement, toujours","Aucune limite","5"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 1, 2, 'Que ne faut-il jamais enlever en condensant ?', '["Les mots de liaison inutiles","Les hésitations","Les répétitions inutiles","Les noms, chiffres et négations"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-f', 2, 'Les outils : Subtitle Edit, Aegisub, formats et sous-titrage automatique', 'Synchroniser avec la forme d''onde, contrôles automatiques, styles dans Aegisub, formats SRT, VTT et ASS, YouTube Studio, incrustation et correction du sous-titrage automatique.', 'Les sous-titreurs professionnels travaillent avec des logiciels qui affichent la vidéo, la forme d''onde du son et la liste des sous-titres, et qui calculent automatiquement la vitesse de lecture. Ce module vous fait prendre en main les deux logiciels gratuits les plus utilisés, **Subtitle Edit** et **Aegisub**, les formats de fichiers, la mise en ligne sur YouTube et les outils payants de sous-titrage automatique.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer et synchroniser des sous-titres dans Subtitle Edit.
+> 2. Utiliser la forme d''onde et les alertes de lisibilité.
+> 3. Créer des sous-titres stylés dans Aegisub.
+> 4. Choisir le bon format de fichier et l''exporter.
+> 5. Mettre des sous-titres en ligne sur YouTube ou les incruster dans une vidéo.
+> 6. Utiliser et corriger le sous-titrage automatique.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Subtitle Edit** (Windows, gratuit) | Créer, synchroniser, vérifier et convertir des sous-titres ; très complet |
+| 2 | **Aegisub** (gratuit) | Sous-titres stylés (polices, couleurs, positions), très utilisé pour les vidéos créatives |
+| 3 | **YouTube Studio** | Ajouter et modifier les sous-titres d''une vidéo YouTube |
+| 4 | **HandBrake** ou un logiciel de montage | Incruster les sous-titres dans la vidéo |
+| 5 | **Correcteurs** (LanguageTool, BonPatron) | Orthographe |
+
+## Subtitle Edit : la prise en main
+
+### L''écran
+
+| Zone | Contenu |
+| --- | --- |
+| **Liste des sous-titres** | Numéro, entrée, sortie, durée, texte, alertes |
+| **Zone de texte** | Le sous-titre sélectionné, avec le nombre de caractères et les CPS |
+| **Vidéo** | La vidéo avec les sous-titres affichés |
+| **Forme d''onde** | Le son sous forme graphique, avec les sous-titres en blocs à caler |
+
+### Créer des sous-titres en 7 étapes
+
+1. **Ouvrez la vidéo** (Vidéo → Ouvrir un fichier vidéo).
+2. **Générez la forme d''onde** (cliquez dans la zone prévue).
+3. **Réglez les règles** dans les options : nombre maximal de caractères par ligne, CPS maximal, durées minimale et maximale, selon le guide du client.
+4. **Écoutez** une phrase, puis **sélectionnez** sur la forme d''onde la zone où elle est dite (glisser avec la souris) et ajoutez un sous-titre à cet endroit.
+5. **Tapez le texte**, découpé correctement.
+6. **Ajustez** l''entrée et la sortie en tirant les bords du bloc sur la forme d''onde.
+7. Répétez, puis **vérifiez** avec les outils de contrôle.
+
+> [!astuce] Le mode de synchronisation rapide
+> Si vous avez déjà le texte (transcription), importez-le, puis utilisez le mode de synchronisation où vous appuyez sur une touche au début et à la fin de chaque phrase pendant la lecture. C''est beaucoup plus rapide que de tout caler à la souris.
+
+### Les contrôles automatiques
+
+Subtitle Edit signale en couleur les sous-titres qui posent problème : trop longs, trop rapides (CPS), trop courts, qui se chevauchent. La fonction **Corriger les erreurs courantes** propose des corrections automatiques (espaces, chevauchements, durées) : **lisez chaque proposition** avant de l''accepter.
+
+Les versions récentes de Subtitle Edit proposent aussi des fonctions de **transcription automatique** (avec des modèles à télécharger) : vérifiez ce que propose votre version.
+
+## Aegisub : des sous-titres stylés
+
+Aegisub est apprécié pour les vidéos où l''apparence des sous-titres compte (clips, vidéos créatives, karaoké).
+
+1. **Styles** : créez des styles (police, taille, couleur, contour, position) et appliquez-les aux lignes.
+2. **Positionnement** : placez un sous-titre en haut de l''écran quand un texte important occupe le bas de l''image.
+3. **Effets** : animations simples, karaoké (avec modération).
+4. **Format** : Aegisub enregistre en **ASS**, un format qui garde les styles.
+
+## Les formats de fichiers
+
+| Format | Points forts | Usage |
+| --- | --- | --- |
+| **SRT** | Simple, lu partout ; pas de styles avancés | YouTube, plateformes, lecteurs vidéo |
+| **VTT** (WebVTT) | Proche du SRT, conçu pour le web, positionnement possible | Sites web, lecteurs en ligne, plateformes de cours |
+| **ASS / SSA** | Styles avancés (polices, couleurs, positions) | Incrustation stylée, vidéos créatives |
+| **Formats professionnels** (comme ceux demandés par la télévision et le streaming) | Exigences techniques précises | Agences et diffuseurs, selon leurs spécifications |
+
+Subtitle Edit **convertit** d''un format à l''autre (Fichier → Enregistrer sous → choisir le format). Vérifiez toujours le fichier converti.
+
+> [!definition] Encodage
+> Enregistrez les fichiers de sous-titres en **UTF-8** : les accents et les caractères spéciaux s''afficheront correctement partout.
+
+## YouTube et l''incrustation
+
+### Ajouter des sous-titres sur YouTube
+
+1. Ouvrez **YouTube Studio**, puis la vidéo, puis **Sous-titres**.
+2. Choisissez la **langue**.
+3. **Importez** le fichier SRT (avec horodatage).
+4. Vérifiez l''affichage sur la vidéo.
+5. Ajoutez d''autres langues de la même façon.
+
+### Incruster les sous-titres
+
+Pour les réseaux sociaux, le client veut souvent des sous-titres **dans l''image** :
+
+1. Dans un **logiciel de montage** (DaVinci Resolve, CapCut), importez le fichier SRT, choisissez le style, puis exportez.
+2. Ou avec **HandBrake** : ajoutez le fichier de sous-titres et choisissez l''option d''incrustation (*burn in*), puis exportez.
+3. Vérifiez la lisibilité **sur téléphone** : taille, contraste, position (pas sous les boutons de l''application).
+
+## Le sous-titrage automatique
+
+| Outil | Usage |
+| --- | --- |
+| **Sous-titres automatiques de YouTube** | Gratuits, à corriger dans YouTube Studio |
+| **CapCut** | Sous-titres automatiques pour vidéos courtes |
+| **Descript** et services payants de sous-titrage automatique | Transcription automatique, export SRT, correction dans l''outil |
+
+### Corriger un sous-titrage automatique
+
+1. **Écoutez tout** en lisant chaque sous-titre.
+2. **Corrigez les mots** faux, les noms propres, les chiffres, la ponctuation.
+3. **Redécoupez** : les outils automatiques coupent souvent au milieu d''un groupe de sens.
+4. **Vérifiez la vitesse de lecture** et condensez si besoin.
+5. **Ajustez la synchronisation**.
+
+Comme pour toute transcription automatique : **ne mettez pas de vidéo confidentielle** dans un outil en ligne sans l''accord du client.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Descript** | Transcription automatique, correction du texte avec la vidéo, export de sous-titres, montage par le texte | Quand vous travaillez souvent pour des créateurs et que le client accepte l''outil |
+| **Offres payantes de sous-titrage automatique** | Transcription automatique dans de nombreuses langues, export en plusieurs formats | Pour accélérer les gros volumes, toujours avec relecture humaine |
+| **Logiciels professionnels de sous-titrage** | Exigés par certaines agences de télévision ou de streaming | Seulement si une agence l''exige |
+
+Les prix changent : vérifiez-les sur les sites officiels.
+
+> [!madagascar]
+> La reconnaissance automatique du **malagasy** est encore limitée dans beaucoup d''outils. Pour les vidéos en malagasy, comptez sur une transcription humaine : c''est justement là que votre travail a le plus de valeur.
+
+> [!retenir]
+> - Subtitle Edit : forme d''onde, règles réglées selon le client, contrôles automatiques.
+> - Aegisub : styles et positionnement, format ASS.
+> - SRT pour presque tout, VTT pour le web, ASS pour les styles ; toujours en UTF-8.
+> - YouTube Studio pour les fichiers ; montage ou HandBrake pour l''incrustation.
+> - Le sous-titrage automatique se corrige en 5 étapes, sans vidéo confidentielle en ligne.
+
+## Exercice pratique : vos premiers sous-titres complets
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Installez Subtitle Edit, réglez les règles (42 caractères, 17 CPS, 1 à 7 secondes).
+> 2. Sous-titrez dans la même langue une vidéo publique de 3 minutes, en synchronisant avec la forme d''onde.
+> 3. Corrigez toutes les alertes et exportez en SRT et en VTT.
+> 4. Dans Aegisub, créez un style et appliquez-le à 10 sous-titres de la même vidéo ; exportez en ASS.
+> 5. Incrustez les sous-titres dans une version verticale de 30 secondes et vérifiez sur téléphone.
+>
+> **À livrer** : vos fichiers SRT, VTT et ASS, la vidéo incrustée et une capture de Subtitle Edit sans alerte.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 2, 0, 'À quoi sert la forme d''onde dans Subtitle Edit ?', '["Changer la couleur de la vidéo","Imprimer les sous-titres","Traduire automatiquement","Voir quand les personnes parlent pour caler les sous-titres"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 2, 1, 'Quel format garde les styles (polices, couleurs, positions) ?', '["SRT","ASS","TXT","CSV"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 2, 2, 'Dans quel encodage enregistrer les sous-titres ?', '["UTF-8","En majuscules","En image","Un encodage au hasard"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-f', 3, 'Premier projet : la vidéo d''une ONG en trois langues', 'Les 8 questions de la commande, les 6 étapes, le repérage, l''adaptation, le fichier modèle, la version courte incrustée, la grille de 12 points et la livraison.', 'Dans ce module, vous sous-titrez un vrai type de commande : la vidéo de sensibilisation d''une ONG, tournée en malagasy, à sous-titrer en français, puis en anglais pour les partenaires internationaux, avec une version incrustée pour les réseaux sociaux. Vous suivez toutes les étapes d''un sous-titreur professionnel.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une commande de sous-titrage.
+> 2. Mener le travail en 6 étapes, de la transcription à la livraison.
+> 3. Créer un fichier modèle pour décliner plusieurs langues.
+> 4. Contrôler la qualité avec une grille de 12 points.
+> 5. Livrer les bons fichiers aux bons formats.
+
+## Le cas pratique : « Rano Madio »
+
+> [!exemple] Votre commande
+> L''ONG **Rano Madio** a réalisé une vidéo de **8 minutes** sur le lavage des mains et l''eau potable, tournée dans un village de la région Vakinankaratra. Les personnes parlent **malagasy**. L''ONG demande :
+> 1. Des sous-titres **français** (fichier SRT) pour YouTube et les projections.
+> 2. Des sous-titres **anglais** (SRT) pour ses partenaires.
+> 3. Une **version courte de 60 secondes**, verticale, avec sous-titres français **incrustés**, pour Facebook et TikTok.
+> Délai : 7 jours.
+
+## Étape 0 : analyser la commande
+
+### Les 8 questions à poser
+
+1. Quelles **langues** de sous-titres et quel **type** (même langue, traduits, SME) ?
+2. Quel **guide de style** : caractères par ligne, CPS, durées ?
+3. Quels **formats** de livraison ?
+4. Faut-il **identifier** les personnes à l''écran ou ajouter des informations sonores ?
+5. Y a-t-il un **script** ou une **transcription** existante ?
+6. Comment écrire les **noms** des personnes et des lieux ?
+7. Faut-il sous-titrer les **textes à l''écran** (panneaux, titres) ?
+8. Quel **délai**, et qui **valide** ?
+
+> [!exemple] Réponses de l''ONG
+> Sous-titres traduits (pas SME) ; 42 caractères par ligne, 17 CPS maximum ; SRT en UTF-8 ; noms des intervenants affichés en bandeau dans la vidéo (pas dans les sous-titres) ; pas de script ; liste des noms fournie ; les panneaux en malagasy doivent être traduits entre crochets si utiles ; validation par la chargée de communication.
+
+## Le travail en 6 étapes
+
+| N° | Étape | Résultat |
+| --- | --- | --- |
+| 1 | **Transcription** en malagasy | Le texte exact de ce qui est dit |
+| 2 | **Repérage** (*spotting*) | Les entrées et sorties de chaque sous-titre, calées sur la voix et les plans |
+| 3 | **Traduction et adaptation** en français | Sous-titres français respectant les règles |
+| 4 | **Fichier modèle** | Le fichier français sert de base au timing de l''anglais |
+| 5 | **Traduction** en anglais | Sous-titres anglais, même timing, ajustés si nécessaire |
+| 6 | **Contrôle, export et livraison** | Fichiers vérifiés, version courte incrustée |
+
+> [!definition] Repérage (spotting)
+> L''étape où l''on fixe les heures d''entrée et de sortie de chaque sous-titre, indépendamment du texte final. Un bon repérage facilite la traduction dans plusieurs langues : on garde le même découpage pour toutes.
+
+### Étape 1 : la transcription
+
+Transcrivez d''abord en malagasy, en verbatim nettoyé. Ce texte ne sera pas livré, mais il évite les contresens à la traduction : on traduit ce qui est **vraiment** dit.
+
+### Étape 2 : le repérage
+
+1. Découpez selon les **phrases** et les **respirations** des personnes.
+2. Respectez les **changements de plan**.
+3. Prévoyez des durées qui permettront un texte lisible en français (une phrase rapide en malagasy peut demander de condenser en français).
+
+### Étape 3 : la traduction et l''adaptation en français
+
+1. **Traduisez le sens**, pas les mots (le français est souvent plus long : condensez).
+2. **Respectez les CPS** : si un sous-titre dépasse, condensez ou ajustez le timing.
+3. **Gardez la voix** des personnes : une mère de famille qui parle simplement ne doit pas parler comme un rapport technique.
+4. **Expliquez seulement si nécessaire** un terme culturel ([fokontany] peut devenir « quartier » ou « village » selon le contexte).
+
+> [!exemple] Adaptation
+> **Malagasy (sens littéral)** : « Avant, nous allions chercher l''eau à la rivière, c''était loin, et les enfants tombaient souvent malades à cause de cette eau. »
+> **Sous-titre français** (2 sous-titres) :
+> 1. « Avant, on allait chercher l''eau à la rivière, loin d''ici. »
+> 2. « Et les enfants tombaient souvent malades. »
+
+### Étapes 4 et 5 : le modèle et l''anglais
+
+1. **Dupliquez** le fichier français validé : c''est le **modèle** de timing.
+2. **Remplacez** chaque sous-titre par sa traduction anglaise.
+3. **Vérifiez les CPS** en anglais et ajustez si nécessaire.
+4. **Faites relire** l''anglais par une personne qui le maîtrise très bien si vous n''êtes pas vous-même excellent dans cette langue.
+
+## La version courte incrustée
+
+1. Avec la chargée de communication, choisissez les **60 secondes** les plus fortes.
+2. **Recadrez** en vertical (9:16) dans un logiciel de montage.
+3. Importez les sous-titres français de ces passages, **raccourcis** si besoin (sur téléphone, on lit moins de texte à la fois : souvent une seule ligne).
+4. Choisissez un **style lisible** : police épaisse, contour ou fond, position au tiers bas, hors de la zone des boutons.
+5. Exportez et **vérifiez sur un téléphone**.
+
+## La grille de contrôle en 12 points
+
+| N° | Point | Oui / Non |
+| --- | --- | --- |
+| 1 | Tout ce qui est dit est sous-titré (ou volontairement condensé) | |
+| 2 | Aucun contresens par rapport à la transcription | |
+| 3 | Orthographe et ponctuation vérifiées | |
+| 4 | Noms propres conformes à la liste du client | |
+| 5 | Aucune ligne au-delà de la limite de caractères | |
+| 6 | Aucun sous-titre au-delà de la limite de CPS | |
+| 7 | Durées entre le minimum et le maximum | |
+| 8 | Découpage entre les groupes de sens | |
+| 9 | Synchronisation : entrées et sorties calées, changements de plan respectés | |
+| 10 | Aucun chevauchement entre deux sous-titres | |
+| 11 | Format et encodage (SRT, UTF-8) corrects | |
+| 12 | Fichier testé dans un lecteur vidéo ou sur YouTube | |
+
+> [!astuce]
+> Faites un dernier visionnage **complet**, sans pause, comme un spectateur. Si vous devez relire un sous-titre, c''est qu''il est trop rapide, trop long ou mal découpé.
+
+## La livraison
+
+> [!exemple] Message de livraison
+> « Bonjour Madame Rakoto, voici les fichiers de la vidéo "Rano Madio" : sous-titres français et anglais (SRT, UTF-8, 112 sous-titres chacun), et la version courte de 60 secondes, verticale, avec sous-titres français incrustés. Les deux panneaux en malagasy (00:02:14 et 00:05:40) sont traduits entre crochets. Une remarque : à 00:06:12, une phrase est partiellement couverte par le bruit d''un moteur ; je l''ai sous-titrée selon le sens le plus probable confirmé par la phrase suivante, à vérifier par votre équipe. Bonne diffusion ! »
+
+> [!madagascar]
+> Les vidéos d''ONG tournées en milieu rural contiennent souvent des **variantes régionales** du malagasy. Si un mot vous est inconnu, demandez à l''équipe de l''ONG qui connaît la région plutôt que de deviner : un contresens dans un message de santé peut avoir des conséquences réelles.
+
+> [!retenir]
+> - 8 questions avant de commencer.
+> - 6 étapes : transcription, repérage, traduction, modèle, autres langues, contrôle.
+> - Un fichier modèle pour décliner plusieurs langues avec le même timing.
+> - Une version courte incrustée lisible sur téléphone.
+> - Une grille de 12 points et un visionnage complet avant de livrer.
+
+## Exercice pratique : la vidéo de l''ONG
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Choisissez une vidéo publique de 4 à 5 minutes (de préférence en malagasy, sinon en français) sur un sujet de société.
+> 2. Transcrivez-la, faites le repérage, puis créez les sous-titres en français (traduits ou dans la même langue).
+> 3. Créez un fichier modèle et déclinez au moins 2 minutes dans une autre langue.
+> 4. Faites une version verticale de 45 à 60 secondes avec sous-titres incrustés.
+> 5. Appliquez la grille de 12 points et rédigez le message de livraison.
+>
+> **À livrer** : la transcription, les fichiers SRT, la vidéo courte, la grille remplie et le message. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 3, 0, 'Qu''est-ce que le repérage (spotting) ?', '["Traduire le titre","Fixer les entrées et sorties de chaque sous-titre","Exporter la vidéo","Choisir la musique"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 3, 1, 'À quoi sert le fichier modèle ?', '["Garder le même timing pour toutes les langues","Remplacer la vidéo","Supprimer les sous-titres","Facturer le client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 3, 2, 'Que faire d''un mot régional inconnu dans un message de santé ?', '["L''inventer","Demander à l''équipe qui connaît la région","Deviner","Le supprimer"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-4-f', 4, 'Trouver des clients et se faire payer', 'Bande démo et avant / après, 5 canaux, prix à la minute de vidéo et suppléments, devis, paiements et évolution vers l''accessibilité.', 'Les sous-titreurs travaillent pour des créateurs, des entreprises, des ONG, des festivals et des agences. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix à la minute de vidéo, et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une bande démo et un portfolio de sous-titreur.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Calculer un prix à la minute de vidéo selon le type de travail.
+> 4. Rédiger un devis et des conditions claires.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Une bande démo** de 1 à 2 minutes : des extraits de vidéos publiques sous-titrées par vous, dans différentes combinaisons (français, malagasy vers français, français vers anglais).
+2. **Votre projet « Rano Madio »** (module 4) : fichiers, version courte, et explication de votre méthode.
+3. **Un avant / après** : sous-titrage automatique brut, puis votre version corrigée, redécoupée et synchronisée.
+4. **Vos règles** : vous connaissez les guides de style (caractères, CPS, durées) et les formats.
+
+Utilisez uniquement des vidéos **publiques** ou pour lesquelles vous avez l''**autorisation** : pas de films protégés sans droits.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Créateurs YouTube** francophones | Sous-titres français et traductions anglaises | Montrez le gain : vidéos regardées sans le son, nouveaux spectateurs étrangers |
+| 2 | **ONG et organisations** à Madagascar | Vidéos de sensibilisation, rapports vidéo, témoignages | Proposez la combinaison malagasy ↔ français ↔ anglais |
+| 3 | **Réalisateurs et festivals** | Films et documentaires malgaches pour les festivals étrangers | Contactez les associations de cinéma, les écoles de cinéma |
+| 4 | **Plateformes de formation et entreprises** | Cours et vidéos internes | Offre claire au volume |
+| 5 | **Agences de sous-titrage et plateformes de freelance** | Volume régulier | Tests à passer ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+
+### Le message de prospection
+
+> [!exemple] Message à un créateur YouTube
+> « Bonjour Julien, j''adore vos vidéos sur les voyages à petit budget. J''ai remarqué que vos vidéos n''ont que les sous-titres automatiques, avec plusieurs erreurs (par exemple "Nosy Be" devient "nos ibés"). Je suis sous-titreur : je propose des sous-titres français précis et une version anglaise pour toucher les voyageurs anglophones. Je vous ai préparé les sous-titres corrigés des 2 premières minutes de votre dernière vidéo : [lien]. Si ça vous plaît, je peux m''occuper de toutes vos vidéos. »
+
+## Calculer ses prix
+
+Le tarif le plus courant est **à la minute de vidéo**, qui varie selon le type de travail.
+
+### La méthode
+
+1. **Prix horaire visé** : revenu mensuel visé ÷ heures facturables (exemple : 1 200 000 Ar ÷ 100 h = 12 000 Ar de l''heure).
+2. **Temps de travail par minute de vidéo**, mesuré sur vos exercices.
+3. **Prix par minute** = prix horaire × temps par minute (en heures).
+
+| Type de travail | Temps par minute de vidéo (exemple, débutant) | Prix par minute (exemple, 12 000 Ar/h) |
+| --- | --- | --- |
+| Correction d''un sous-titrage automatique (même langue) | 6 min | 1 200 Ar |
+| Sous-titres dans la même langue (transcription, repérage) | 10 min | 2 000 Ar |
+| Sous-titres traduits (à partir d''un fichier modèle) | 8 min | 1 600 Ar |
+| Sous-titres traduits complets (transcription, repérage, traduction) | 15 min | 3 000 Ar |
+| Incrustation et version courte verticale | Forfait selon la durée | — |
+
+*(Temps et prix donnés en exemple. Mesurez les vôtres. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les suppléments
+
+1. **Audio difficile** (bruit, accents, chevauchements).
+2. **Sous-titres SME** (informations sonores, identification des locuteurs).
+3. **Délai urgent**.
+4. **Langue rare** ou combinaison peu courante.
+5. **Prix minimum** par commande pour les vidéos très courtes.
+
+## Le devis et les conditions
+
+1. **La vidéo** et sa **durée**.
+2. **Le type** de sous-titres et les **langues**.
+3. **Le guide de style** (le client fournit le sien, ou vous proposez des règles standard).
+4. **Les formats** livrés.
+5. **Le délai**.
+6. **Le nombre de corrections** compris (souvent 1 tour).
+7. **Le prix** et le paiement : 50 % à la commande pour un nouveau client.
+8. **La confidentialité** : vidéos non publiées, pas d''outils en ligne sans accord.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local (ONG, réalisateur) | Mobile Money (MVola, Orange Money, Airtel Money) ou virement |
+| Créateur ou entreprise à l''étranger | Virement international ou Payoneer |
+| Agence ou plateforme | Selon ses conditions (souvent virement ou Payoneer) |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Évoluer dans le métier
+
+| Étape | Ce qui change |
+| --- | --- |
+| **Sous-titreur multilingue** | Plusieurs combinaisons, tarifs plus élevés |
+| **Sous-titreur SME** | Spécialisation dans l''accessibilité pour les sourds et malentendants |
+| **Sous-titreur pour agences** | Travail pour la télévision ou le streaming, guides stricts, volume régulier |
+| **Relecteur qualité** | Contrôle du travail des autres sous-titreurs |
+| **Spécialiste de l''accessibilité** | Sous-titres, transcriptions, audiodescription (description des images pour les personnes aveugles), conseil aux organisations |
+
+> [!retenir]
+> - Une bande démo et un avant / après prouvent votre méthode.
+> - Créateurs, ONG, réalisateurs, formations, agences.
+> - Prix par minute de vidéo selon le type de travail, avec suppléments.
+> - Un devis avec guide de style, formats, délai, corrections et confidentialité.
+> - Les combinaisons avec le malagasy sont votre force.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Montez votre bande démo de 1 à 2 minutes.
+> 2. Préparez un avant / après d''une vidéo publique.
+> 3. Calculez votre grille de prix par minute pour 4 types de travail, avec vos suppléments.
+> 4. Rédigez votre modèle de devis.
+> 5. Préparez les sous-titres corrigés de 2 minutes de la vidéo d''un créateur et envoyez-lui un message de prospection.
+>
+> **À livrer** : votre bande démo, l''avant / après, votre grille, votre devis et votre message avec l''extrait.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 4, 0, 'À 12 000 Ar de l''heure et 10 minutes de travail par minute de vidéo, quel est le prix par minute ?', '["1 200 Ar","120 Ar","2 000 Ar","12 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 4, 1, 'Quelles vidéos utiliser pour sa bande démo ?', '["Des vidéos de clients confidentielles","Des vidéos publiques ou autorisées","Des films protégés sans droits","N''importe lesquelles"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-4-f', 4, 2, 'Qu''est-ce que l''audiodescription ?', '["Un sous-titre en couleur","Un format de fichier","Une musique de fond","La description des images pour les personnes aveugles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel est le rôle d''un sous-titreur ?', '["Filmer les vidéos","Écrire les scénarios","Composer la musique","Rendre ce qui est dit lisible, au bon moment, en textes courts"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Qu''est-ce qu''un sous-titre traduit ?', '["Le texte de la vidéo dans une autre langue","Le texte dans la même langue","Un titre de film","Une liste de bruits"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que contient chaque bloc d''un fichier SRT ?', '["Seulement le texte","Le nom du client","Un numéro, l''heure d''entrée, l''heure de sortie et le texte","Une image"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel est l''avantage d''un fichier séparé ?', '["Il remplace la vidéo","Il est toujours visible","Il ne contient pas de texte","Le spectateur l''active ou non, et on peut le modifier facilement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quelle combinaison est rare et recherchée depuis Madagascar ?', '["Malagasy ↔ français ↔ anglais","Japonais → coréen","Aucune","Islandais → grec"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quelle longueur de ligne est un repère courant ?', '["Environ 37 à 42 caractères","5 caractères","200 caractères","Aucune limite"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quelle durée maximale courante pour un sous-titre ?', '["30 secondes","Environ 6 à 7 secondes","0,2 seconde","1 minute"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel découpage est correct ?', '["« Il m''a / dit qu''il viendrait demain. »","« Il m''a dit / qu''il viendrait demain. »","« Il / m''a dit qu''il viendrait demain. »","« Il m''a dit qu''il / viendrait demain. »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quand un sous-titre doit-il apparaître ?', '["Quand la personne commence à parler","Au hasard","5 secondes après","À la fin de la vidéo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Comment présenter deux répliques dans un même sous-titre ?', '["Sur une seule ligne sans séparation","En majuscules","Une ligne par réplique, précédée d''un tiret","On ne peut pas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quelle condensation est correcte ?', '["Changer le chiffre","« Est-ce que tu pourrais venir demain ? » → « Tu peux venir demain ? »","Supprimer la négation","Supprimer le nom de la personne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Comment noter un bruit important en SME ?', '["Ne rien noter","Un emoji","[porte qui claque]","Le nom du bruiteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que faire avant d''accepter une correction automatique de Subtitle Edit ?', '["Lire chaque proposition","Fermer le logiciel","Tout accepter sans lire","Changer de langue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel format est conçu pour le web ?', '["MP4","DOCX","ASS","VTT"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Comment ajouter des sous-titres à une vidéo YouTube ?', '["C''est impossible","Les écrire dans le titre","Importer le fichier SRT dans YouTube Studio","Les mettre dans les commentaires"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que vérifier sur des sous-titres incrustés pour TikTok ?', '["La lisibilité sur téléphone, hors de la zone des boutons","Rien","Le nom du monteur","La taille du fichier SRT"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quelle erreur fait souvent le sous-titrage automatique ?', '["Refuser de fonctionner","Couper au milieu d''un groupe de sens","Traduire en malagasy","Respecter parfaitement les règles"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Pourquoi transcrire avant de traduire ?', '["Pour remplacer la vidéo","Pour traduire ce qui est vraiment dit et éviter les contresens","Ce n''est pas utile","Pour être payé plus"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Pourquoi le français demande-t-il souvent de condenser ?', '["Il se lit plus vite","Il est souvent plus long que la langue d''origine","Il est plus court","Il n''a pas de ponctuation"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Combien de lignes privilégier sur une vidéo verticale courte ?', '["Souvent une seule","Quatre","Aucune","Six"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que faire en dernier avant de livrer ?', '["Supprimer le fichier","Changer le timing au hasard","Rien","Un visionnage complet sans pause, comme un spectateur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que doit signaler le message de livraison ?', '["Les fichiers livrés et les points à vérifier","Uniquement le prix","Les fautes du client","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel type de travail est le plus rapide ?', '["Les sous-titres SME complets","La correction d''un sous-titrage automatique","Les sous-titres traduits complets","Le sous-titrage d''un audio très bruité"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Quel supplément est justifié ?', '["Audio difficile ou délai urgent","Le nom de la vidéo","Le jour de la semaine","La couleur du logo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-4-f', 'Que proposer à un créateur YouTube en prospection ?', '["Un prix sans exemple","Rien","Un faux témoignage","Un extrait de ses sous-titres corrigés"]'::jsonb, 3);
 
 -- mkt-0-a
 delete from public.exam_questions where course_id = 'mkt-0-a';

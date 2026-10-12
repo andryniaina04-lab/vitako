@@ -38,7 +38,7 @@ Les raccourcis peuvent varier selon les versions : vérifiez-les dans le menu d'
 1. **Vitesse de lecture** : ralentissez à 60-80 % pour les passages rapides.
 2. **Retour automatique** : à chaque pause, l'audio recule de 1 à 2 secondes. Vous reprenez toujours avec un peu de contexte.
 3. **Touches de fonction globales** : contrôlez la lecture même quand vous tapez dans Word ou Google Docs.
-4. **Pédale** : Express Scribe reconnaît de nombreuses pédales USB (module plus bas).
+4. **Pédale** : Express Scribe reconnaît de nombreuses pédales USB (voir plus bas).
 
 > [!astuce] La méthode de frappe
 > Écoutez **un morceau de phrase** (3 à 5 secondes), mettez en pause, tapez, reprenez. Avec l'habitude, vous tapez **pendant** que l'audio continue lentement, et vous ne mettez en pause que pour les passages difficiles.

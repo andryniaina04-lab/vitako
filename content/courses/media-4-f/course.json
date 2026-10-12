@@ -1,0 +1,97 @@
+{
+  "id": "media-4-f",
+  "hours": 13,
+  "description": "Le sous-titreur transforme ce qui est dit dans une vidéo en textes courts, lisibles et synchronisés, dans la même langue ou traduits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à sous-titrer pour des créateurs, des ONG, des réalisateurs et des entreprises, en malagasy, en français et en anglais, avec Subtitle Edit et Aegisub gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et distinguer les types et formats de sous-titres",
+    "Respecter les règles de longueur, de vitesse de lecture et de durée",
+    "Découper, synchroniser et condenser sans trahir le sens",
+    "Créer, vérifier et exporter des sous-titres avec Subtitle Edit et Aegisub",
+    "Mener une commande multilingue, avec une version incrustée pour les réseaux sociaux",
+    "Fixer un prix à la minute, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de sous-titreur depuis Madagascar",
+      "summary": "Ce que fait un sous-titreur, les 3 types de sous-titres, fichiers séparés ou incrustés, le format SRT, les clients, les qualités et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que contiennent les sous-titres pour sourds et malentendants en plus des paroles ?", "options": ["Les informations sonores utiles : locuteurs, bruits, musique", "Des publicités", "Le script complet", "Rien de plus"], "correct": 0 },
+        { "q": "Quel est le format de sous-titres le plus répandu ?", "options": ["SRT", "PDF", "DOCX", "MP3"], "correct": 0 },
+        { "q": "Quand utiliser des sous-titres incrustés ?", "options": ["Pour les réseaux sociaux, où la vidéo est souvent regardée sans le son", "Pour plusieurs langues au choix", "Jamais", "Pour la radio"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : lisibilité, découpage, synchronisation et condensation",
+      "summary": "Longueur des lignes, caractères par seconde, durées, découpage par groupes de sens, synchronisation et changements de plan, condensation et conventions pour sourds et malentendants.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Un sous-titre de 48 caractères affiché 3 secondes a une vitesse de…", "options": ["16 CPS", "48 CPS", "3 CPS", "144 CPS"], "correct": 0 },
+        { "q": "Combien de lignes au maximum par sous-titre ?", "options": ["2", "5", "1 seulement, toujours", "Aucune limite"], "correct": 0 },
+        { "q": "Que ne faut-il jamais enlever en condensant ?", "options": ["Les noms, chiffres et négations", "Les hésitations", "Les répétitions inutiles", "Les mots de liaison inutiles"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Subtitle Edit, Aegisub, formats et sous-titrage automatique",
+      "summary": "Synchroniser avec la forme d'onde, contrôles automatiques, styles dans Aegisub, formats SRT, VTT et ASS, YouTube Studio, incrustation et correction du sous-titrage automatique.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert la forme d'onde dans Subtitle Edit ?", "options": ["Voir quand les personnes parlent pour caler les sous-titres", "Changer la couleur de la vidéo", "Traduire automatiquement", "Imprimer les sous-titres"], "correct": 0 },
+        { "q": "Quel format garde les styles (polices, couleurs, positions) ?", "options": ["ASS", "SRT", "TXT", "CSV"], "correct": 0 },
+        { "q": "Dans quel encodage enregistrer les sous-titres ?", "options": ["UTF-8", "Un encodage au hasard", "En image", "En majuscules"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la vidéo d'une ONG en trois langues",
+      "summary": "Les 8 questions de la commande, les 6 étapes, le repérage, l'adaptation, le fichier modèle, la version courte incrustée, la grille de 12 points et la livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le repérage (spotting) ?", "options": ["Fixer les entrées et sorties de chaque sous-titre", "Choisir la musique", "Traduire le titre", "Exporter la vidéo"], "correct": 0 },
+        { "q": "À quoi sert le fichier modèle ?", "options": ["Garder le même timing pour toutes les langues", "Remplacer la vidéo", "Facturer le client", "Supprimer les sous-titres"], "correct": 0 },
+        { "q": "Que faire d'un mot régional inconnu dans un message de santé ?", "options": ["Demander à l'équipe qui connaît la région", "Deviner", "Le supprimer", "L'inventer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Bande démo et avant / après, 5 canaux, prix à la minute de vidéo et suppléments, devis, paiements et évolution vers l'accessibilité.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 12 000 Ar de l'heure et 10 minutes de travail par minute de vidéo, quel est le prix par minute ?", "options": ["2 000 Ar", "1 200 Ar", "12 000 Ar", "120 Ar"], "correct": 0 },
+        { "q": "Quelles vidéos utiliser pour sa bande démo ?", "options": ["Des vidéos publiques ou autorisées", "Des films protégés sans droits", "Des vidéos de clients confidentielles", "N'importe lesquelles"], "correct": 0 },
+        { "q": "Qu'est-ce que l'audiodescription ?", "options": ["La description des images pour les personnes aveugles", "Un sous-titre en couleur", "Un format de fichier", "Une musique de fond"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle d'un sous-titreur ?", "options": ["Rendre ce qui est dit lisible, au bon moment, en textes courts", "Filmer les vidéos", "Composer la musique", "Écrire les scénarios"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un sous-titre traduit ?", "options": ["Le texte de la vidéo dans une autre langue", "Le texte dans la même langue", "Une liste de bruits", "Un titre de film"], "correct": 0 },
+    { "q": "Que contient chaque bloc d'un fichier SRT ?", "options": ["Un numéro, l'heure d'entrée, l'heure de sortie et le texte", "Seulement le texte", "Une image", "Le nom du client"], "correct": 0 },
+    { "q": "Quel est l'avantage d'un fichier séparé ?", "options": ["Le spectateur l'active ou non, et on peut le modifier facilement", "Il est toujours visible", "Il ne contient pas de texte", "Il remplace la vidéo"], "correct": 0 },
+    { "q": "Quelle combinaison est rare et recherchée depuis Madagascar ?", "options": ["Malagasy ↔ français ↔ anglais", "Japonais → coréen", "Islandais → grec", "Aucune"], "correct": 0 },
+    { "q": "Quelle longueur de ligne est un repère courant ?", "options": ["Environ 37 à 42 caractères", "200 caractères", "5 caractères", "Aucune limite"], "correct": 0 },
+    { "q": "Quelle durée maximale courante pour un sous-titre ?", "options": ["Environ 6 à 7 secondes", "30 secondes", "0,2 seconde", "1 minute"], "correct": 0 },
+    { "q": "Quel découpage est correct ?", "options": ["« Il m'a dit / qu'il viendrait demain. »", "« Il m'a dit qu'il / viendrait demain. »", "« Il / m'a dit qu'il viendrait demain. »", "« Il m'a / dit qu'il viendrait demain. »"], "correct": 0 },
+    { "q": "Quand un sous-titre doit-il apparaître ?", "options": ["Quand la personne commence à parler", "5 secondes après", "À la fin de la vidéo", "Au hasard"], "correct": 0 },
+    { "q": "Comment présenter deux répliques dans un même sous-titre ?", "options": ["Une ligne par réplique, précédée d'un tiret", "Sur une seule ligne sans séparation", "En majuscules", "On ne peut pas"], "correct": 0 },
+    { "q": "Quelle condensation est correcte ?", "options": ["« Est-ce que tu pourrais venir demain ? » → « Tu peux venir demain ? »", "Supprimer la négation", "Changer le chiffre", "Supprimer le nom de la personne"], "correct": 0 },
+    { "q": "Comment noter un bruit important en SME ?", "options": ["[porte qui claque]", "Ne rien noter", "Le nom du bruiteur", "Un emoji"], "correct": 0 },
+    { "q": "Que faire avant d'accepter une correction automatique de Subtitle Edit ?", "options": ["Lire chaque proposition", "Tout accepter sans lire", "Fermer le logiciel", "Changer de langue"], "correct": 0 },
+    { "q": "Quel format est conçu pour le web ?", "options": ["VTT", "ASS", "DOCX", "MP4"], "correct": 0 },
+    { "q": "Comment ajouter des sous-titres à une vidéo YouTube ?", "options": ["Importer le fichier SRT dans YouTube Studio", "Les écrire dans le titre", "Les mettre dans les commentaires", "C'est impossible"], "correct": 0 },
+    { "q": "Que vérifier sur des sous-titres incrustés pour TikTok ?", "options": ["La lisibilité sur téléphone, hors de la zone des boutons", "La taille du fichier SRT", "Le nom du monteur", "Rien"], "correct": 0 },
+    { "q": "Quelle erreur fait souvent le sous-titrage automatique ?", "options": ["Couper au milieu d'un groupe de sens", "Respecter parfaitement les règles", "Refuser de fonctionner", "Traduire en malagasy"], "correct": 0 },
+    { "q": "Pourquoi transcrire avant de traduire ?", "options": ["Pour traduire ce qui est vraiment dit et éviter les contresens", "Pour être payé plus", "Ce n'est pas utile", "Pour remplacer la vidéo"], "correct": 0 },
+    { "q": "Pourquoi le français demande-t-il souvent de condenser ?", "options": ["Il est souvent plus long que la langue d'origine", "Il est plus court", "Il n'a pas de ponctuation", "Il se lit plus vite"], "correct": 0 },
+    { "q": "Combien de lignes privilégier sur une vidéo verticale courte ?", "options": ["Souvent une seule", "Quatre", "Six", "Aucune"], "correct": 0 },
+    { "q": "Que faire en dernier avant de livrer ?", "options": ["Un visionnage complet sans pause, comme un spectateur", "Supprimer le fichier", "Changer le timing au hasard", "Rien"], "correct": 0 },
+    { "q": "Que doit signaler le message de livraison ?", "options": ["Les fichiers livrés et les points à vérifier", "Uniquement le prix", "Rien", "Les fautes du client"], "correct": 0 },
+    { "q": "Quel type de travail est le plus rapide ?", "options": ["La correction d'un sous-titrage automatique", "Les sous-titres traduits complets", "Les sous-titres SME complets", "Le sous-titrage d'un audio très bruité"], "correct": 0 },
+    { "q": "Quel supplément est justifié ?", "options": ["Audio difficile ou délai urgent", "La couleur du logo", "Le jour de la semaine", "Le nom de la vidéo"], "correct": 0 },
+    { "q": "Que proposer à un créateur YouTube en prospection ?", "options": ["Un extrait de ses sous-titres corrigés", "Un faux témoignage", "Un prix sans exemple", "Rien"], "correct": 0 }
+  ]
+}
