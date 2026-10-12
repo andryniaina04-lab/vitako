@@ -362,6 +362,91 @@ export const DOMAINS = [
  }
 ];
 export const PUBLISHED = {
+ "client-0-f": {
+  "hours": 14,
+  "description": "Le téléconseiller répond aux clients d'une entreprise par téléphone, règle leurs demandes, prend des rendez-vous ou présente une offre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des centres d'appels et des entreprises francophones depuis Madagascar. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer ce que fait un téléconseiller et qui le recrute à distance",
+   "Préparer une installation de télétravail fiable",
+   "Conduire un appel en 6 étapes et calmer un client mécontent",
+   "Utiliser un softphone, un CRM et une base de connaissances",
+   "Mener une campagne de rendez-vous et comprendre ses indicateurs",
+   "Décrocher un poste ou des missions et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de téléconseiller à distance depuis Madagascar",
+    "summary": "Ce que fait un téléconseiller, appels entrants et sortants, les 6 missions, qui recrute, l'installation technique et les fausses offres.",
+    "sections": [
+     "Le métier de téléconseiller en une phrase",
+     "Appels entrants et appels sortants",
+     "Les 6 types de missions",
+     "Qui recrute des téléconseillers à distance ?",
+     "Les exigences techniques du travail à distance",
+     "Reconnaître les fausses offres d'emploi",
+     "Exercice pratique : tester votre installation"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : voix, structure de l'appel et écoute",
+    "summary": "La voix, l'appel en 6 étapes, l'écoute active, les formules positives et la méthode CRAC face à un client mécontent.",
+    "sections": [
+     "La voix : votre seul outil",
+     "Conduire un appel en 6 étapes",
+     "L'écoute active",
+     "Les mots qui aident et les mots qui fâchent",
+     "Le client mécontent : la méthode CRAC",
+     "Exercice pratique : vos premiers appels simulés"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : softphone, CRM, et les outils professionnels",
+    "summary": "Le softphone et ses fonctions, le CRM, la note d'appel en 5 lignes, la base de connaissances, puis Aircall et Salesforce.",
+    "sections": [
+     "Les outils du téléconseiller à distance",
+     "Le softphone",
+     "Le CRM : retrouver et noter",
+     "La base de connaissances",
+     "Le poste de travail à l'écran",
+     "Les outils professionnels (souvent fournis)",
+     "Exercice pratique : votre poste de travail"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : une journée d'appels sortants et entrants",
+    "summary": "Campagne de prise de rendez-vous, 5 objections, statuts d'appel, session de service client, 6 indicateurs et rythme de travail.",
+    "sections": [
+     "Le cas pratique : « Solaris Énergie »",
+     "Préparer une campagne d'appels sortants",
+     "Répondre aux 5 objections les plus fréquentes",
+     "Les résultats d'un appel sortant",
+     "L'après-midi : la session d'appels entrants",
+     "Les 6 indicateurs de performance",
+     "Tenir sur la durée",
+     "Exercice pratique : la journée Solaris"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver un poste ou des missions et se faire payer",
+    "summary": "Salarié ou freelance, CV, entretien et simulation, offre freelance, prix, contrat, paiements et évolution.",
+    "sections": [
+     "Salarié ou freelance ?",
+     "Le CV et la candidature",
+     "Le test vocal et l'entretien",
+     "L'offre freelance",
+     "Le contrat : les 7 points à vérifier",
+     "Se faire payer",
+     "Progresser dans le métier",
+     "Exercice pratique : votre candidature"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "design-0-f": {
   "hours": 14,
   "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

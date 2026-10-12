@@ -1,0 +1,97 @@
+{
+  "id": "client-0-f",
+  "hours": 14,
+  "description": "Le téléconseiller répond aux clients d'une entreprise par téléphone, règle leurs demandes, prend des rendez-vous ou présente une offre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des centres d'appels et des entreprises francophones depuis Madagascar. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer ce que fait un téléconseiller et qui le recrute à distance",
+    "Préparer une installation de télétravail fiable",
+    "Conduire un appel en 6 étapes et calmer un client mécontent",
+    "Utiliser un softphone, un CRM et une base de connaissances",
+    "Mener une campagne de rendez-vous et comprendre ses indicateurs",
+    "Décrocher un poste ou des missions et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de téléconseiller à distance depuis Madagascar",
+      "summary": "Ce que fait un téléconseiller, appels entrants et sortants, les 6 missions, qui recrute, l'installation technique et les fausses offres.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un appel entrant ?", "options": ["Un appel du client vers l'entreprise", "Un appel du téléconseiller vers un prospect", "Un appel entre deux collègues", "Un appel coupé"], "correct": 0 },
+        { "q": "Pourquoi brancher l'ordinateur à la box avec un câble réseau ?", "options": ["Pour une connexion plus stable", "Pour charger l'ordinateur", "Pour appeler gratuitement", "C'est obligatoire en France"], "correct": 0 },
+        { "q": "Une offre vous demande de payer des frais pour obtenir le poste. Que faire ?", "options": ["Refuser : une vraie entreprise ne fait jamais payer pour travailler", "Payer pour réserver sa place", "Payer la moitié", "Envoyer ses informations bancaires"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : voix, structure de l'appel et écoute",
+      "summary": "La voix, l'appel en 6 étapes, l'écoute active, les formules positives et la méthode CRAC face à un client mécontent.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle étape vient juste avant la proposition de solution ?", "options": ["La reformulation", "La conclusion", "L'accueil", "La mise en attente"], "correct": 0 },
+        { "q": "Quelle formule remplace « Ce n'est pas possible » ?", "options": ["« Voici ce que je peux faire pour vous »", "« Ce n'est pas mon problème »", "« Rappelez plus tard »", "« Vous vous êtes trompé »"], "correct": 0 },
+        { "q": "Que signifie le premier C de la méthode CRAC ?", "options": ["Calmer : laisser parler sans interrompre", "Couper l'appel", "Contredire le client", "Compter jusqu'à dix"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : softphone, CRM, et les outils professionnels",
+      "summary": "Le softphone et ses fonctions, le CRM, la note d'appel en 5 lignes, la base de connaissances, puis Aircall et Salesforce.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert un softphone ?", "options": ["Téléphoner depuis l'ordinateur avec un casque", "Écrire des e-mails", "Calculer les salaires", "Créer des visuels"], "correct": 0 },
+        { "q": "Que contient un CRM ?", "options": ["Les fiches clients et l'historique des échanges", "Les films de l'entreprise", "Les mots de passe des clients", "La liste des employés en congé"], "correct": 0 },
+        { "q": "Qui paie en général Aircall ou Salesforce ?", "options": ["L'entreprise, qui vous donne un accès", "Le téléconseiller", "Le client final", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une journée d'appels sortants et entrants",
+      "summary": "Campagne de prise de rendez-vous, 5 objections, statuts d'appel, session de service client, 6 indicateurs et rythme de travail.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « qualifier » un prospect ?", "options": ["Vérifier qu'il correspond bien à l'offre", "Lui donner une note sur 20", "Lui vendre tout de suite", "Lui envoyer un diplôme"], "correct": 0 },
+        { "q": "Vous avez joint 40 personnes et fixé 8 rendez-vous. Quel est le taux de transformation ?", "options": ["20 %", "8 %", "40 %", "5 %"], "correct": 0 },
+        { "q": "Que mesure la DMT ?", "options": ["Le temps moyen de traitement d'un appel", "Le nombre de clients mécontents", "Le débit de la connexion", "Le salaire moyen"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver un poste ou des missions et se faire payer",
+      "summary": "Salarié ou freelance, CV, entretien et simulation, offre freelance, prix, contrat, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle rubrique ajouter au CV d'un téléconseiller à distance ?", "options": ["Installation de télétravail", "Films préférés", "Taille et poids", "Numéro de compte bancaire"], "correct": 0 },
+        { "q": "Que demander si un client propose un paiement uniquement au rendez-vous fixé ?", "options": ["Un minimum horaire ou un essai rémunéré", "Rien, c'est toujours rentable", "Un paiement en nature", "Le mot de passe de son CRM"], "correct": 0 },
+        { "q": "Quel investissement est souvent le plus rentable pour progresser ?", "options": ["Améliorer son anglais oral", "Acheter un téléphone de luxe", "Changer de prénom", "Travailler sans pause"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle d'un téléconseiller ?", "options": ["Régler la demande du client par téléphone, au nom de l'entreprise", "Réparer les téléphones", "Vendre des cartes SIM dans la rue", "Installer des box internet"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un appel sortant ?", "options": ["Un appel du téléconseiller vers un client ou un prospect", "Un appel du client vers l'entreprise", "Un appel transféré", "Un appel en attente"], "correct": 0 },
+    { "q": "Que signifie BPO ?", "options": ["L'externalisation de services, comme les centres d'appels", "Un type de casque", "Une connexion internet", "Un logiciel de comptabilité"], "correct": 0 },
+    { "q": "Qu'est-ce que le ping ?", "options": ["Le temps d'aller-retour d'un signal, en millisecondes", "Le volume du casque", "Le nombre d'appels par jour", "Le prix d'un forfait"], "correct": 0 },
+    { "q": "Quel casque utiliser ?", "options": ["Un casque filaire USB avec micro antibruit", "Les écouteurs du téléphone", "Les haut-parleurs de l'ordinateur", "Aucun casque"], "correct": 0 },
+    { "q": "Quel est un signal d'alerte d'une fausse offre d'emploi ?", "options": ["Un salaire très au-dessus des autres offres et une demande de paiement", "Un entretien téléphonique", "Un test d'orthographe", "Une période de formation"], "correct": 0 },
+    { "q": "Pourquoi sourire au téléphone ?", "options": ["Le sourire s'entend dans la voix", "Le client vous voit", "C'est obligatoire par la loi", "Pour parler plus vite"], "correct": 0 },
+    { "q": "Comment dicter un numéro de téléphone ?", "options": ["En groupant les chiffres par deux, lentement", "Le plus vite possible", "Chiffre par chiffre sans pause", "En l'envoyant par SMS uniquement"], "correct": 0 },
+    { "q": "Combien de fois utiliser le nom du client pendant l'appel ?", "options": ["Au moins 2 fois", "Jamais", "À chaque phrase", "Seulement à la fin"], "correct": 0 },
+    { "q": "Par quel type de question commencer la découverte du besoin ?", "options": ["Une question ouverte", "Une question fermée", "Une question piège", "Aucune question"], "correct": 0 },
+    { "q": "Comment bien mettre un client en attente ?", "options": ["Demander son accord, annoncer la durée et revenir à temps", "Dire « ne quittez pas » et partir", "Couper l'appel et rappeler", "Le mettre en muet sans prévenir"], "correct": 0 },
+    { "q": "Que faire si un client insulte ?", "options": ["Le prévenir une fois poliment, puis suivre la procédure de l'entreprise", "L'insulter à son tour", "Raccrocher immédiatement sans rien dire", "Pleurer"], "correct": 0 },
+    { "q": "Que fait la touche muet ?", "options": ["Elle coupe votre micro", "Elle coupe l'appel", "Elle transfère l'appel", "Elle enregistre l'appel"], "correct": 0 },
+    { "q": "Quelles sont les 5 parties d'une note d'appel ?", "options": ["Motif, vérifications, solution, suite, engagement", "Bonjour, nom, prénom, âge, merci", "Date, heure, météo, humeur, durée", "Prix, remise, taxe, total, paiement"], "correct": 0 },
+    { "q": "Comment chercher dans une base de connaissances ?", "options": ["Avec des mots-clés courts", "En lisant tout depuis le début", "En demandant au client", "On ne cherche jamais"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un transfert annoncé ?", "options": ["Présenter la situation au collègue avant de lui passer le client", "Transférer sans rien dire", "Annoncer au client qu'on raccroche", "Envoyer un e-mail au client"], "correct": 0 },
+    { "q": "Quelle formation gratuite en ligne aide à apprendre Salesforce ?", "options": ["Trailhead", "Canva", "CapCut", "Duolingo"], "correct": 0 },
+    { "q": "Dans quel fuseau horaire respecter les horaires d'appel autorisés ?", "options": ["Celui du pays du client", "Celui de Madagascar", "Celui de Londres", "Peu importe"], "correct": 0 },
+    { "q": "Que répondre à « C'est trop cher » pour un rendez-vous gratuit ?", "options": ["Rappeler que le rendez-vous est gratuit et sans engagement", "Raccrocher", "Baisser le prix des panneaux", "Insister jusqu'à ce qu'il accepte"], "correct": 0 },
+    { "q": "Que faire après un refus clair ?", "options": ["Remercier, noter le refus et passer à l'appel suivant", "Rappeler 10 fois", "Insister plus fort", "Passer l'appel à un collègue pour réessayer"], "correct": 0 },
+    { "q": "Que mesure le taux de résolution au premier appel ?", "options": ["La part des demandes réglées sans que le client rappelle", "Le nombre d'appels par heure", "La durée des pauses", "Le nombre de transferts"], "correct": 0 },
+    { "q": "Une DMT très basse avec beaucoup de clients qui rappellent est…", "options": ["Un mauvais résultat", "Un excellent résultat", "Sans importance", "Impossible"], "correct": 0 },
+    { "q": "Que faut-il pour commencer une mission ?", "options": ["Un contrat ou un accord écrit", "Une promesse orale suffit", "Payer des frais d'inscription", "Rien"], "correct": 0 },
+    { "q": "Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?", "options": ["10 000 Ar", "1 000 Ar", "100 000 Ar", "5 000 Ar"], "correct": 0 },
+    { "q": "Comment protéger sa voix pendant une journée d'appels ?", "options": ["Boire de l'eau et prendre ses pauses", "Parler plus fort", "Enchaîner sans pause", "Boire très froid toute la journée"], "correct": 0 }
+  ]
+}

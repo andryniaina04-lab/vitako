@@ -73,7 +73,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 14, false),
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 10, false),
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
-  ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 12, false),
+  ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, false),
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, false),
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 14, false),
@@ -105,6 +105,681 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
+
+-- client-0-f
+delete from public.exam_questions where course_id = 'client-0-f';
+delete from public.module_questions where course_id = 'client-0-f';
+delete from public.lessons where course_id = 'client-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-f', 0, 'Le métier de téléconseiller à distance depuis Madagascar', 'Ce que fait un téléconseiller, appels entrants et sortants, les 6 missions, qui recrute, l''installation technique et les fausses offres.', 'Le téléconseiller est la voix d''une entreprise au téléphone : il répond aux clients, règle leurs problèmes, prend des rendez-vous ou présente une offre. Madagascar, et surtout Antananarivo, est déjà connu pour ses centres d''appels francophones, et de plus en plus de postes se font depuis chez soi. Ce premier module vous montre le métier tel qu''il est vraiment et ce qu''il faut pour l''exercer à distance.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer en une phrase ce que fait un téléconseiller.
+> 2. Distinguer les appels entrants et sortants, et les 6 types de missions.
+> 3. Repérer qui recrute des téléconseillers à distance.
+> 4. Vérifier que votre installation répond aux exigences techniques.
+> 5. Reconnaître les fausses offres d''emploi.
+
+## Le métier de téléconseiller en une phrase
+
+Un téléconseiller **règle la demande d''un client par téléphone, au nom d''une entreprise, avec courtoisie et efficacité**.
+
+Le client qui appelle ne vous voit pas : il juge l''entreprise entière sur votre voix, votre politesse et votre capacité à l''aider. C''est une grande responsabilité, et c''est pour ça que les bons téléconseillers sont recherchés.
+
+> [!definition] Centre d''appels (ou centre de contacts)
+> Une entreprise qui traite les appels, e-mails et messages des clients d''autres entreprises. On parle aussi d''**externalisation** ou de **BPO** (*Business Process Outsourcing*). Beaucoup de centres d''appels malgaches travaillent pour des entreprises françaises.
+
+## Appels entrants et appels sortants
+
+| | Appels **entrants** | Appels **sortants** |
+| --- | --- | --- |
+| Qui appelle ? | Le client appelle l''entreprise | Vous appelez le client ou le prospect |
+| Exemples | Service client, assistance technique, réservations | Prise de rendez-vous, enquêtes, relances, vente |
+| Difficulté | Clients parfois mécontents | Refus fréquents, il faut rester motivé |
+| Ce qu''on mesure | Rapidité, résolution du problème, satisfaction | Nombre de contacts, rendez-vous ou ventes obtenus |
+
+## Les 6 types de missions
+
+| N° | Mission | Exemple concret |
+| --- | --- | --- |
+| 1 | Service client | Un abonné internet demande pourquoi sa facture a augmenté |
+| 2 | Assistance technique de premier niveau | Aider un client à redémarrer sa box ou réinitialiser son mot de passe |
+| 3 | Prise de rendez-vous | Appeler des artisans pour fixer un rendez-vous avec un commercial |
+| 4 | Réservations | Hôtel, transport, restaurant |
+| 5 | Enquêtes de satisfaction | 5 questions après un achat |
+| 6 | Vente et relance | Proposer une offre, relancer un panier abandonné |
+
+Pour débuter à distance, les missions **1, 3 et 5** sont les plus accessibles.
+
+## Qui recrute des téléconseillers à distance ?
+
+1. **Centres d''appels malgaches** qui proposent des postes en télétravail (partiel ou complet), surtout après une période de formation sur place.
+2. **Centres d''appels étrangers** (France, Maurice, Maroc, Canada) qui recrutent des francophones à distance.
+3. **Petites entreprises francophones** qui cherchent quelqu''un pour la prise de rendez-vous ou la relance clients, en freelance.
+4. **Startups** qui ont besoin d''un service client par téléphone et par chat.
+
+> [!madagascar] Votre avantage
+> Un français oral clair, un faible décalage horaire avec l''Europe (1 ou 2 heures) et une solide tradition des centres d''appels à Madagascar : les recruteurs connaissent et apprécient les téléconseillers malgaches.
+
+## Les exigences techniques du travail à distance
+
+Les entreprises sont **exigeantes** : un appel coupé ou un bruit de fond, c''est un client perdu. Vérifiez ces 6 points avant de postuler.
+
+| N° | Exigence | Ce qu''on attend en général | Comment vérifier |
+| --- | --- | --- | --- |
+| 1 | Connexion | Fibre ou ADSL stable, souvent au moins quelques Mbit/s dans les deux sens | Faire un test de débit et de *ping* plusieurs fois par jour |
+| 2 | Connexion de secours | Forfait mobile 4G prêt à prendre le relais | Tester le partage de connexion |
+| 3 | Électricité | Onduleur ou batterie pour l''ordinateur et la box | Simuler une coupure |
+| 4 | Ordinateur | Récent, pas trop lent, souvent avec Windows | Vérifier qu''il ne rame pas avec 5 onglets ouverts |
+| 5 | Casque | Casque filaire USB avec micro antibruit | S''enregistrer et s''écouter |
+| 6 | Pièce | Calme, fermée, sans passage ni bruit de rue | Faire un appel test aux heures de travail |
+
+> [!definition] Ping (ou latence)
+> Le temps que met un signal pour faire l''aller-retour entre votre ordinateur et un serveur, en millisecondes (ms). Plus il est bas, mieux c''est. Un ping élevé crée des décalages et des coupures dans la voix.
+
+> [!astuce]
+> Branchez votre ordinateur à la box avec un **câble réseau** plutôt qu''en Wi-Fi : la connexion est plus stable et les coupures de voix diminuent nettement.
+
+## Reconnaître les fausses offres d''emploi
+
+Les annonces « téléconseiller à domicile, très bien payé, sans expérience » attirent aussi des escrocs.
+
+### Les 5 signaux d''alerte
+
+1. On vous demande de **payer** pour obtenir le poste (frais de formation, de dossier, de matériel).
+2. Le salaire promis est **très au-dessus** des autres offres.
+3. Aucun **nom d''entreprise** vérifiable, aucune adresse, seulement un numéro WhatsApp.
+4. On vous demande des **informations bancaires** ou une copie de pièce d''identité avant tout entretien.
+5. On vous presse : « Il ne reste qu''une place, décidez aujourd''hui. »
+
+Une vraie entreprise ne vous fait **jamais payer** pour travailler pour elle.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Postuler avec une connexion instable ou sans connexion de secours.
+> - Travailler avec les écouteurs du téléphone au lieu d''un casque.
+> - Accepter une offre sans vérifier l''entreprise.
+> - Sous-estimer la fatigue : plusieurs heures d''appels demandent des pauses régulières.
+
+> [!retenir]
+> - Un téléconseiller règle la demande du client par téléphone, au nom de l''entreprise.
+> - Appels entrants (le client appelle) et sortants (vous appelez).
+> - À distance, l''installation technique est aussi importante que la voix.
+> - On ne paie jamais pour obtenir un emploi.
+
+## Exercice pratique : tester votre installation
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Faites 3 tests de débit et de ping à 3 moments de la journée (matin, midi, soir) et notez les résultats.
+> 2. Testez votre partage de connexion mobile : combien de temps pour basculer ?
+> 3. Enregistrez-vous 1 minute avec votre casque (avec le dictaphone du téléphone ou l''ordinateur) en lisant un texte, puis écoutez : bruit de fond, souffle, clarté ?
+> 4. Faites la liste de ce qui manque à votre installation et de son coût approximatif.
+>
+> **À livrer** : votre tableau de tests, votre enregistrement et votre liste d''équipement à prévoir.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 0, 0, 'Qu''est-ce qu''un appel entrant ?', '["Un appel coupé","Un appel entre deux collègues","Un appel du client vers l''entreprise","Un appel du téléconseiller vers un prospect"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 0, 1, 'Pourquoi brancher l''ordinateur à la box avec un câble réseau ?', '["C''est obligatoire en France","Pour une connexion plus stable","Pour appeler gratuitement","Pour charger l''ordinateur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 0, 2, 'Une offre vous demande de payer des frais pour obtenir le poste. Que faire ?', '["Payer pour réserver sa place","Refuser : une vraie entreprise ne fait jamais payer pour travailler","Envoyer ses informations bancaires","Payer la moitié"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-f', 1, 'Les bases : voix, structure de l''appel et écoute', 'La voix, l''appel en 6 étapes, l''écoute active, les formules positives et la méthode CRAC face à un client mécontent.', 'Un bon appel ne doit rien au hasard : il suit une structure, utilise des mots choisis et s''appuie sur une vraie écoute. Ce module vous donne les bases que tous les centres d''appels enseignent : la voix, les 6 étapes d''un appel, l''écoute active, les formules à utiliser ou à éviter et la gestion d''un client mécontent.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler votre voix : sourire, rythme, articulation.
+> 2. Conduire un appel en 6 étapes.
+> 3. Pratiquer l''écoute active : questions, reformulation.
+> 4. Remplacer les formules négatives par des formules positives.
+> 5. Calmer un client mécontent avec la méthode CRAC.
+
+## La voix : votre seul outil
+
+Au téléphone, le client ne voit ni votre visage ni vos gestes. Tout passe par la voix.
+
+| N° | Élément | Ce qu''il faut faire |
+| --- | --- | --- |
+| 1 | **Le sourire** | Souriez vraiment en parlant : il s''entend dans la voix |
+| 2 | **Le rythme** | Parlez un peu plus lentement qu''en conversation, surtout pour les chiffres |
+| 3 | **L''articulation** | Prononcez la fin des mots ; épelez les noms et adresses |
+| 4 | **Le volume** | Ni trop fort ni trop bas ; micro à 2 ou 3 cm de la bouche, sur le côté |
+| 5 | **Les silences** | Une courte pause après une information importante |
+| 6 | **La posture** | Assis droit ou debout : la voix porte mieux |
+
+> [!astuce] Épeler sans erreur
+> Utilisez l''alphabet des prénoms : « R comme Robert, A comme Anatole, K comme Kléber… ». Pour les numéros, groupez par deux : « 06 – 12 – 34 – 56 – 78 ».
+
+## Conduire un appel en 6 étapes
+
+| N° | Étape | Exemple (appel entrant, service client) |
+| --- | --- | --- |
+| 1 | **Accueil** | « Société Connexia, bonjour, Hanta à votre écoute. » |
+| 2 | **Identification** | « Puis-je avoir votre nom et votre numéro client, s''il vous plaît ? » |
+| 3 | **Découverte du besoin** | « Que puis-je faire pour vous ? » puis questions |
+| 4 | **Reformulation** | « Si je comprends bien, votre connexion coupe depuis lundi soir, c''est bien ça ? » |
+| 5 | **Solution** | Expliquer clairement la solution, ou l''étape suivante et son délai |
+| 6 | **Conclusion** | « Puis-je faire autre chose pour vous ? … Merci de votre appel, Monsieur Dubois, bonne journée. » |
+
+Utilisez le **nom du client** au moins 2 fois dans l''appel : il se sent reconnu.
+
+> [!definition] Script
+> Un texte préparé par l''entreprise qui indique quoi dire à chaque étape. On le suit pour les passages obligatoires (accueil, informations légales, conclusion), mais on parle naturellement le reste du temps : un client sent tout de suite quand on lit.
+
+## L''écoute active
+
+Écouter activement, c''est montrer au client qu''on a compris, et vérifier qu''on a bien compris.
+
+### Les 3 types de questions
+
+| Type | But | Exemple |
+| --- | --- | --- |
+| **Ouverte** | Laisser le client expliquer | « Pouvez-vous me décrire ce qui se passe ? » |
+| **Fermée** | Obtenir une réponse précise (oui/non) | « Le voyant de la box est-il rouge ? » |
+| **Alternative** | Faire choisir | « Préférez-vous un rappel ce matin ou cet après-midi ? » |
+
+Commencez par une question **ouverte**, puis précisez avec des questions **fermées**.
+
+### Les signes d''écoute
+
+1. De petits mots pendant que le client parle : « d''accord », « je vois », « je comprends ».
+2. **Prendre des notes** pendant l''appel, dans l''outil de l''entreprise.
+3. **Ne jamais couper la parole**, même si vous avez déjà compris.
+4. **Reformuler** avant de proposer une solution.
+
+## Les mots qui aident et les mots qui fâchent
+
+| À éviter | À dire plutôt |
+| --- | --- |
+| « Ce n''est pas possible. » | « Voici ce que je peux faire pour vous. » |
+| « Je ne sais pas. » | « Je vérifie l''information et je reviens vers vous. » |
+| « Vous vous êtes trompé. » | « Je vois qu''il y a eu un malentendu, on va corriger ça. » |
+| « Ne quittez pas. » | « Je vous mets en attente une minute pour vérifier, d''accord ? » |
+| « C''est pas mon service. » | « Je vous mets en relation avec le service qui pourra vous aider. » |
+| « Problème » | « Situation », « question » |
+
+> [!exemple] Mise en attente bien faite
+> 1. Demander : « Je dois vérifier dans votre dossier, puis-je vous mettre en attente une minute ? »
+> 2. Attendre l''accord.
+> 3. Revenir avant le délai annoncé, même pour dire : « Merci de votre patience, j''ai encore besoin d''une minute. »
+> 4. Remercier : « Merci d''avoir patienté. »
+
+## Le client mécontent : la méthode CRAC
+
+Un client en colère n''est pas en colère contre vous, mais contre une situation. Votre calme fera retomber la tension.
+
+| Lettre | Étape | Ce qu''on dit |
+| --- | --- | --- |
+| **C** | **Calmer** : laisser parler sans interrompre | « Je vous écoute. » |
+| **R** | **Reformuler** le problème et reconnaître l''émotion | « Je comprends que ce soit agaçant de rester sans connexion depuis 3 jours. » |
+| **A** | **Agir** : proposer une solution concrète | « J''envoie un technicien ; le premier créneau est demain matin. » |
+| **C** | **Conclure** : vérifier la satisfaction | « Cette solution vous convient-elle ? » |
+
+### Les 3 règles face à un client agressif
+
+1. Ne **jamais** répondre sur le même ton ni le prendre personnellement.
+2. Si le client insulte, prévenez **une fois** poliment : « Je souhaite vous aider, mais je vous demande de rester courtois. »
+3. Si les insultes continuent, suivez la procédure de l''entreprise (souvent : transfert au superviseur ou fin d''appel annoncée).
+
+> [!madagascar]
+> Certains clients étrangers ont du mal avec un accent qu''ils ne connaissent pas. Parlez un peu plus lentement, articulez, et ne vous laissez pas déstabiliser : un français clair et une attitude calme comptent plus que l''accent.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Lire le script d''une voix monotone.
+> - Proposer une solution avant d''avoir compris le problème.
+> - Laisser un client en attente sans le prévenir.
+> - Se justifier longuement au lieu d''agir.
+> - Promettre ce qu''on ne peut pas tenir (« ce sera réglé dans une heure »).
+
+> [!retenir]
+> - Sourire, rythme posé, articulation : la voix fait l''image de l''entreprise.
+> - 6 étapes : accueil, identification, découverte, reformulation, solution, conclusion.
+> - Questions ouvertes puis fermées ; reformuler avant de proposer.
+> - Des formules positives, jamais « ce n''est pas possible ».
+> - Face à la colère : Calmer, Reformuler, Agir, Conclure.
+
+## Exercice pratique : vos premiers appels simulés
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Lisez à voix haute un texte de 1 minute en souriant, puis sans sourire ; enregistrez-vous et comparez.
+> 2. Avec un proche, simulez 3 appels entrants d''un fournisseur internet fictif « Connexia » : une question sur une facture, une panne, une demande de résiliation.
+> 3. Simulez un appel avec un client très mécontent et appliquez la méthode CRAC.
+> 4. Enregistrez les appels (avec l''accord de votre partenaire) et notez pour chacun : les 6 étapes ont-elles été respectées ? Combien de formules négatives ?
+>
+> **À livrer** : vos enregistrements et votre grille d''auto-évaluation pour chaque appel.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 1, 0, 'Quelle étape vient juste avant la proposition de solution ?', '["L''accueil","La mise en attente","La reformulation","La conclusion"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 1, 1, 'Quelle formule remplace « Ce n''est pas possible » ?', '["« Rappelez plus tard »","« Voici ce que je peux faire pour vous »","« Vous vous êtes trompé »","« Ce n''est pas mon problème »"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 1, 2, 'Que signifie le premier C de la méthode CRAC ?', '["Couper l''appel","Compter jusqu''à dix","Contredire le client","Calmer : laisser parler sans interrompre"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-f', 2, 'Les outils : softphone, CRM, et les outils professionnels', 'Le softphone et ses fonctions, le CRM, la note d''appel en 5 lignes, la base de connaissances, puis Aircall et Salesforce.', 'À distance, le téléconseiller travaille avec deux outils principaux : un **softphone** pour passer et recevoir les appels depuis l''ordinateur, et un **CRM** pour retrouver et noter les informations des clients. Ce module vous les fait découvrir avec des outils gratuits, puis vous présente les outils professionnels que les entreprises vous fourniront.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce qu''est un softphone et le configurer avec les informations fournies.
+> 2. Utiliser un CRM pour retrouver un client et noter un appel.
+> 3. Chercher rapidement une réponse dans une base de connaissances.
+> 4. Rédiger une note d''appel claire en 5 lignes.
+> 5. Connaître Aircall et Salesforce, souvent fournis par l''entreprise.
+
+## Les outils du téléconseiller à distance
+
+| N° | Outil | À quoi il sert | Exemples |
+| --- | --- | --- | --- |
+| 1 | **Softphone** | Téléphoner depuis l''ordinateur, avec le casque | MicroSIP, Zoiper (gratuits), ou le logiciel de l''entreprise |
+| 2 | **CRM** | Fiche de chaque client, historique des appels | HubSpot CRM (offre gratuite), Salesforce |
+| 3 | **Base de connaissances** | Les réponses aux questions fréquentes, les procédures | Pages internes de l''entreprise, Notion, Google Docs |
+| 4 | **Messagerie interne** | Poser une question au superviseur pendant un appel | Slack, Microsoft Teams, Google Chat |
+| 5 | **Outil de prise de rendez-vous** | Réserver un créneau pour un commercial | Google Agenda, Calendly |
+
+> [!definition] Softphone
+> Un logiciel qui transforme l''ordinateur en téléphone. On appelle et on reçoit les appels avec le casque, en passant par Internet (technologie **VoIP**, voix sur IP). C''est ce qui permet de travailler pour un centre d''appels depuis chez soi.
+
+> [!definition] CRM
+> *Customer Relationship Management* : gestion de la relation client. Un logiciel qui regroupe tout ce qu''on sait d''un client : coordonnées, achats, appels précédents, problèmes en cours.
+
+## Le softphone
+
+### Comment ça marche
+
+1. L''entreprise vous donne des **identifiants** : un nom d''utilisateur, un mot de passe et l''adresse de son serveur téléphonique.
+2. Vous les saisissez dans le softphone (ou vous vous connectez simplement à l''outil de l''entreprise dans le navigateur).
+3. Vous choisissez votre **casque** comme micro et haut-parleur dans les réglages audio.
+4. Vous passez un **appel de test** (souvent un numéro d''écho fourni par l''entreprise).
+5. Vous indiquez votre **statut** : disponible, en pause, en appel, en traitement après appel.
+
+### Les fonctions à connaître
+
+| Fonction | Usage |
+| --- | --- |
+| **Mise en attente** | Vérifier une information sans couper l''appel |
+| **Transfert** | Passer l''appel à un autre service ou au superviseur |
+| **Muet** (*mute*) | Couper votre micro (pour tousser, par exemple) |
+| **Statut** | Indiquer si vous pouvez recevoir un appel |
+
+> [!attention]
+> Ne mettez **jamais** un client en muet pour parler de lui à côté. Si le muet ne fonctionne pas, il entend tout. Prenez l''habitude de parler de chaque client comme s''il pouvait vous entendre.
+
+## Le CRM : retrouver et noter
+
+### Pendant un appel entrant
+
+1. Le CRM affiche souvent la fiche du client automatiquement (grâce à son numéro).
+2. Sinon, cherchez-le par **nom**, **numéro client** ou **e-mail**.
+3. Lisez l''**historique** : a-t-il déjà appelé pour le même sujet ?
+4. Traitez la demande.
+5. Rédigez la **note d''appel** et choisissez le **motif** dans la liste.
+
+### La note d''appel en 5 lignes
+
+Une bonne note permet au collègue suivant de tout comprendre sans rappeler le client.
+
+1. **Motif** : pourquoi le client a appelé.
+2. **Vérifications** : ce que vous avez contrôlé.
+3. **Solution** : ce que vous avez fait ou proposé.
+4. **Suite** : ce qui reste à faire, par qui, et quand.
+5. **Engagement** : ce que vous avez promis au client.
+
+> [!exemple] Note d''appel
+> **Motif** : connexion coupée depuis le 3/03.
+> **Vérifications** : pas de panne dans le quartier ; box redémarrée avec le client, voyant toujours rouge.
+> **Solution** : intervention technique créée (n° 45812).
+> **Suite** : technicien le 5/03 entre 8 h et 12 h.
+> **Engagement** : SMS de confirmation la veille.
+
+### Le temps de traitement après appel
+
+Après chaque appel, vous avez en général quelques dizaines de secondes pour finir la note. Prenez l''habitude d''écrire **pendant** l''appel, en mots-clés, puis de compléter juste après.
+
+## La base de connaissances
+
+Personne ne connaît toutes les réponses par cœur. Les bons téléconseillers savent **chercher vite**.
+
+1. Gardez la base de connaissances ouverte dans un onglet en permanence.
+2. Cherchez avec des **mots-clés courts** : « résiliation délai », « facture double ».
+3. Notez dans un document personnel les 20 réponses que vous utilisez le plus souvent.
+4. Si l''information n''existe pas, demandez au superviseur par la messagerie interne, puis proposez de l''ajouter à la base.
+
+## Le poste de travail à l''écran
+
+Organisez vos fenêtres toujours de la même façon pour ne rien chercher pendant un appel :
+
+| Zone de l''écran | Contenu |
+| --- | --- |
+| Gauche | CRM, fiche du client |
+| Droite | Base de connaissances |
+| En bas ou en petit | Softphone et messagerie interne |
+
+Un **deuxième écran**, même ancien, fait gagner beaucoup de temps.
+
+## Les outils professionnels (souvent fournis)
+
+| Outil | Ce qu''il apporte | Qui le paie |
+| --- | --- | --- |
+| **Aircall** | Téléphonie en ligne pour les équipes : numéros dans de nombreux pays, transferts, enregistrement des appels, statistiques | L''entreprise, qui vous crée un compte |
+| **Salesforce** | CRM très utilisé par les grandes entreprises : fiches clients, tickets, ventes, rapports | L''entreprise |
+| **HubSpot** (offres payantes) | CRM et outils de vente plus complets | L''entreprise, souvent |
+
+Dans ce métier, **vous n''achetez presque jamais ces outils vous-même** : l''entreprise vous donne un accès. Ce qui compte, c''est de savoir les utiliser vite. Beaucoup proposent des formations gratuites en ligne (par exemple Trailhead pour Salesforce) : les suivre est un vrai plus sur votre CV.
+
+> [!madagascar]
+> Certaines entreprises demandent d''utiliser un **VPN** fourni par elles pour se connecter à leurs outils. Il peut ralentir un peu la connexion : faites un appel de test avec le VPN activé avant votre première journée.
+
+> [!retenir]
+> - Softphone pour téléphoner, CRM pour connaître le client, base de connaissances pour répondre.
+> - Ne jamais parler d''un client en le croyant en muet.
+> - Une note d''appel en 5 lignes : motif, vérifications, solution, suite, engagement.
+> - Des fenêtres toujours au même endroit.
+> - Aircall et Salesforce sont fournis par l''entreprise : apprenez à les utiliser.
+
+## Exercice pratique : votre poste de travail
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Installez un softphone gratuit (MicroSIP ou Zoiper) et explorez ses réglages audio, la mise en attente et le transfert.
+> 2. Créez un compte HubSpot CRM gratuit et ajoutez 5 clients fictifs de « Connexia ».
+> 3. Pour chacun, ajoutez une note d''appel en 5 lignes correspondant à vos appels simulés du module 2.
+> 4. Rédigez une mini base de connaissances de 10 questions fréquentes pour Connexia (facture, panne, résiliation, déménagement…).
+> 5. Organisez votre écran comme proposé et faites une capture.
+>
+> **À livrer** : captures du softphone, de vos 5 fiches CRM, votre base de connaissances et la capture de votre écran.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 2, 0, 'À quoi sert un softphone ?', '["Écrire des e-mails","Créer des visuels","Calculer les salaires","Téléphoner depuis l''ordinateur avec un casque"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 2, 1, 'Que contient un CRM ?', '["Les mots de passe des clients","Les fiches clients et l''historique des échanges","Les films de l''entreprise","La liste des employés en congé"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 2, 2, 'Qui paie en général Aircall ou Salesforce ?', '["L''entreprise, qui vous donne un accès","Le client final","Personne","Le téléconseiller"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-f', 3, 'Premier projet : une journée d''appels sortants et entrants', 'Campagne de prise de rendez-vous, 5 objections, statuts d''appel, session de service client, 6 indicateurs et rythme de travail.', 'Dans ce module, vous vivez une vraie journée de téléconseiller : une campagne d''appels **sortants** pour prendre des rendez-vous, puis une session d''appels **entrants** au service client. Vous apprenez aussi à lire les indicateurs sur lesquels vous serez évalué, et à tenir le rythme sans vous épuiser.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer et mener une campagne de prise de rendez-vous.
+> 2. Répondre aux 5 objections les plus fréquentes.
+> 3. Traiter une session d''appels entrants de bout en bout.
+> 4. Comprendre les 6 indicateurs de performance d''un téléconseiller.
+> 5. Organiser votre journée pour tenir sur la durée.
+
+## Le cas pratique : « Solaris Énergie »
+
+> [!exemple] Votre mission
+> **Solaris Énergie** installe des panneaux solaires chez les particuliers, en France. L''entreprise vous confie deux missions :
+> 1. **Le matin** : appeler une liste de 60 personnes qui ont demandé des informations sur son site, pour leur fixer un rendez-vous gratuit avec un conseiller.
+> 2. **L''après-midi** : répondre aux appels du service client (questions sur les installations, factures, rendez-vous).
+
+## Préparer une campagne d''appels sortants
+
+### Avant le premier appel
+
+1. **Lisez le script** et la fiche produit : qu''est-ce que Solaris propose, pour qui, quel avantage ?
+2. **Vérifiez la liste** : nom, numéro, date de la demande, commentaire éventuel.
+3. **Préparez vos réponses** aux objections (voir plus bas).
+4. **Vérifiez les horaires autorisés** : en France, le démarchage téléphonique est encadré par la loi (jours, heures et consentement des personnes appelées). Ici, les personnes ont demandé à être rappelées, mais l''entreprise fixe les horaires : respectez-les strictement.
+5. **Ouvrez l''agenda** des conseillers.
+
+> [!madagascar]
+> Les horaires autorisés sont ceux du **pays du client**. Si l''entreprise autorise les appels de 10 h à 13 h heure de Paris, vous appelez de 12 h à 15 h à Antananarivo quand la France est à l''heure d''hiver, et de 11 h à 14 h quand elle est à l''heure d''été. Notez les deux heures sur un papier devant vous.
+
+### Le script de prise de rendez-vous
+
+| N° | Étape | Exemple |
+| --- | --- | --- |
+| 1 | Présentation | « Bonjour Madame Petit, Hanta de Solaris Énergie. » |
+| 2 | Raison de l''appel | « Vous avez demandé des informations sur les panneaux solaires sur notre site mardi, c''est bien ça ? » |
+| 3 | Permission | « Avez-vous deux minutes ? » |
+| 4 | Questions de qualification | « Êtes-vous propriétaire de votre maison ? Votre toit est-il orienté plutôt au sud ? » |
+| 5 | Proposition | « Un conseiller peut passer gratuitement étudier votre toit. Je vous propose jeudi à 10 h ou vendredi à 15 h : qu''est-ce qui vous arrange ? » |
+| 6 | Confirmation | Répéter la date, l''heure, l''adresse ; annoncer le SMS de confirmation |
+
+> [!definition] Qualification
+> Vérifier que la personne correspond bien à l''offre (ici : propriétaire d''une maison) avant de lui fixer un rendez-vous. Un rendez-vous avec quelqu''un qui ne peut pas acheter fait perdre du temps au conseiller.
+
+## Répondre aux 5 objections les plus fréquentes
+
+Une objection n''est pas un refus : c''est souvent une question ou une inquiétude.
+
+| N° | Objection | Réponse possible |
+| --- | --- | --- |
+| 1 | « Je n''ai pas le temps. » | « Je comprends. Quel serait le meilleur moment pour vous rappeler, demain matin ou en fin d''après-midi ? » |
+| 2 | « C''est trop cher. » | « Le rendez-vous est justement gratuit et sans engagement : le conseiller vous donnera le prix exact pour votre maison. » |
+| 3 | « Envoyez-moi plutôt un e-mail. » | « Bien sûr. Pour vous envoyer les bonnes informations, puis-je vous poser deux questions sur votre maison ? » |
+| 4 | « Je dois en parler à mon conjoint. » | « C''est normal. Le conseiller peut passer quand vous êtes tous les deux là : le samedi matin, ça vous irait ? » |
+| 5 | « Ça ne m''intéresse plus. » | « D''accord, merci de me l''avoir dit. Puis-je vous demander ce qui vous a fait changer d''avis ? » Puis remercier et noter. |
+
+Si la personne refuse clairement, **n''insistez pas** : remerciez, notez le refus dans le CRM et passez à l''appel suivant.
+
+## Les résultats d''un appel sortant
+
+Chaque appel reçoit un **statut** dans le CRM :
+
+1. **Rendez-vous fixé** (avec date et heure).
+2. **À rappeler** (avec date et heure demandées).
+3. **Pas de réponse** (on réessaie selon les règles de la campagne, souvent 3 essais à des heures différentes).
+4. **Refus** (avec la raison si elle est donnée).
+5. **Faux numéro** ou **hors cible**.
+
+## L''après-midi : la session d''appels entrants
+
+Appliquez les 6 étapes du module 2 à chaque appel :
+
+1. Passez au statut **Disponible**.
+2. Décrochez avec la phrase d''accueil, en souriant.
+3. Identifiez le client dans le CRM.
+4. Découvrez, reformulez, résolvez (base de connaissances si besoin).
+5. Concluez et rédigez la note en 5 lignes.
+6. Repassez **Disponible** dès que la note est terminée.
+
+> [!astuce] Le transfert annoncé
+> Si vous devez transférer l''appel, présentez la situation au collègue **avant** de lui passer le client (« transfert annoncé ») : le client n''aura pas à tout répéter.
+
+## Les 6 indicateurs de performance
+
+| N° | Indicateur | Ce qu''il mesure | Comment l''améliorer |
+| --- | --- | --- | --- |
+| 1 | **DMT** (durée moyenne de traitement) | Temps moyen par appel, note comprise | Connaître la base de connaissances, écrire pendant l''appel |
+| 2 | **Taux de résolution au premier appel** | Part des demandes réglées sans que le client rappelle | Bien comprendre le problème, reformuler |
+| 3 | **Satisfaction client** | Note donnée par le client après l''appel | Politesse, écoute, solution claire |
+| 4 | **Taux d''occupation** | Part du temps passé en appel ou en traitement | Respecter les statuts, limiter les pauses non prévues |
+| 5 | **Taux de transformation** (sortant) | Rendez-vous fixés ÷ personnes jointes | Qualification, réponses aux objections |
+| 6 | **Qualité** | Note donnée par un superviseur qui écoute vos appels | Respect du script et des étapes |
+
+> [!exemple] Calcul du taux de transformation
+> Vous avez joint 40 personnes et fixé 8 rendez-vous. Taux de transformation : 8 ÷ 40 × 100 = **20 %**.
+
+Ne sacrifiez pas la qualité pour la vitesse : une DMT très basse avec des clients qui rappellent est un mauvais résultat.
+
+## Tenir sur la durée
+
+1. **Buvez de l''eau** régulièrement : la voix se fatigue vite.
+2. **Prenez vos pauses** prévues, loin de l''écran.
+3. **Après un appel difficile**, respirez profondément 3 fois avant le suivant.
+4. **Fixez-vous un objectif positif** : « aider 30 personnes aujourd''hui » plutôt que « tenir jusqu''à 17 h ».
+5. Parlez à votre superviseur si un appel vous a vraiment touché.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Appeler hors des horaires autorisés.
+> - Insister après un refus clair.
+> - Oublier de noter les rappels promis.
+> - Fixer un rendez-vous sans qualifier la personne.
+> - Enchaîner les heures sans pause et perdre sa voix.
+
+> [!retenir]
+> - Une campagne se prépare : script, liste, objections, horaires, agenda.
+> - Une objection est souvent une question : répondez, puis proposez.
+> - Chaque appel reçoit un statut et une note.
+> - Les 6 indicateurs : DMT, résolution au premier appel, satisfaction, occupation, transformation, qualité.
+> - Pauses, eau et respiration : la voix est votre outil de travail.
+
+## Exercice pratique : la journée Solaris
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez le script complet de prise de rendez-vous pour Solaris, avec vos réponses aux 5 objections.
+> 2. Créez une liste de 10 prospects fictifs dans votre CRM gratuit.
+> 3. Avec un ou deux proches qui jouent les prospects (chacun avec une objection différente), simulez les 10 appels et notez le statut de chacun.
+> 4. Calculez votre taux de transformation.
+> 5. Simulez 5 appels entrants du service client de Solaris, avec une note en 5 lignes pour chacun.
+> 6. Rédigez un bilan d''une demi-page : ce qui a bien marché, ce que vous améliorerez.
+>
+> **À livrer** : le script, la liste avec les statuts, votre taux de transformation, les 5 notes d''appel, vos enregistrements et votre bilan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 3, 0, 'Que signifie « qualifier » un prospect ?', '["Lui vendre tout de suite","Lui donner une note sur 20","Vérifier qu''il correspond bien à l''offre","Lui envoyer un diplôme"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 3, 1, 'Vous avez joint 40 personnes et fixé 8 rendez-vous. Quel est le taux de transformation ?', '["20 %","5 %","8 %","40 %"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 3, 2, 'Que mesure la DMT ?', '["Le temps moyen de traitement d''un appel","Le débit de la connexion","Le nombre de clients mécontents","Le salaire moyen"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-0-f', 4, 'Trouver un poste ou des missions et se faire payer', 'Salarié ou freelance, CV, entretien et simulation, offre freelance, prix, contrat, paiements et évolution.', 'Un téléconseiller à distance peut travailler de deux façons : comme **salarié** d''un centre d''appels qui accepte le télétravail, ou comme **freelance** pour des entreprises qui lui confient des missions. Ce dernier module vous prépare aux deux : CV, test vocal, entretien, offres freelance, prix, contrat et paiement.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre salariat à distance et freelance.
+> 2. Rédiger un CV et un message de candidature adaptés.
+> 3. Réussir le test vocal et l''entretien téléphonique.
+> 4. Construire une offre freelance et fixer un prix.
+> 5. Lire un contrat et vous faire payer.
+> 6. Progresser vers des postes mieux payés.
+
+## Salarié ou freelance ?
+
+| | **Salarié à distance** | **Freelance** |
+| --- | --- | --- |
+| Pour qui | Débutants qui veulent un revenu stable et une formation | Personnes autonomes, avec de l''expérience |
+| Employeur | Un centre d''appels ou une entreprise | Plusieurs clients, mission par mission |
+| Revenu | Salaire fixe, parfois primes | Prix à l''heure ou au résultat |
+| Outils | Fournis par l''employeur | Parfois fournis, parfois à votre charge |
+| Avantages | Stabilité, formation, protection sociale selon le contrat | Liberté, choix des clients, revenus parfois plus élevés |
+| Inconvénients | Horaires imposés, objectifs suivis de près | Revenus irréguliers, prospection à faire |
+
+**Conseil** : beaucoup de téléconseillers commencent salariés (souvent avec une formation sur place), puis passent au télétravail, puis au freelance quand ils ont de l''expérience et des références.
+
+## Le CV et la candidature
+
+### Ce que le recruteur cherche en 30 secondes
+
+1. Un **français** écrit sans faute (il imagine votre français oral).
+2. Une expérience de **contact avec le public** : vente, accueil, service, associations.
+3. Votre **disponibilité** : horaires, week-end, date de début.
+4. Votre **installation** : connexion, connexion de secours, casque, pièce calme.
+5. Les **langues** : français, malagasy, anglais (même niveau scolaire, indiquez-le honnêtement).
+
+> [!exemple] Rubrique « Installation de télétravail » sur le CV
+> Connexion fibre (testée : débit stable, faible ping) · Secours 4G · Onduleur · Casque USB antibruit · Pièce fermée et calme · Disponible du lundi au samedi, de 8 h à 20 h (heure de Madagascar).
+
+### Le message de candidature
+
+> [!exemple] Message de candidature
+> « Bonjour, je souhaite postuler au poste de téléconseiller en télétravail. J''ai suivi une formation complète au métier (accueil, écoute active, gestion des objections, CRM) et j''ai réalisé des simulations d''appels entrants et sortants que je peux vous faire écouter. Mon installation répond à vos exigences : fibre, secours 4G, onduleur et casque antibruit. Je suis disponible dès le [date]. Vous trouverez mon CV en pièce jointe. Bien cordialement, [Nom], [numéro]. »
+
+## Le test vocal et l''entretien
+
+Les recrutements se font souvent en 3 étapes : **test écrit** (orthographe, compréhension), **test vocal** ou entretien téléphonique, **simulation d''appel**.
+
+### Réussir l''entretien téléphonique en 7 points
+
+1. Faites l''entretien **avec votre casque**, dans votre pièce de travail.
+2. Testez votre connexion 15 minutes avant.
+3. Décrochez avec une phrase complète : « Bonjour, Hanta Rakoto à l''appareil. »
+4. **Souriez** et parlez à un rythme posé, comme dans un vrai appel.
+5. Préparez 3 exemples tirés de votre expérience : un client difficile, un objectif atteint, une erreur corrigée.
+6. Préparez une question pour le recruteur : « Comment se passe la formation au début ? »
+7. Concluez en remerciant et en redisant votre motivation.
+
+### La simulation d''appel
+
+Le recruteur joue un client (souvent mécontent). Il évalue surtout : la structure de l''appel (les 6 étapes), l''écoute, le calme et les formules positives. Appliquez exactement ce que vous avez appris aux modules 2 et 4.
+
+## L''offre freelance
+
+En freelance, vous pouvez proposer :
+
+| Offre | Exemple | Mode de prix courant |
+| --- | --- | --- |
+| Prise de rendez-vous | Appeler des prospects pour un commercial | À l''heure, au rendez-vous fixé, ou un mélange des deux |
+| Service client externalisé | Répondre aux appels d''une petite boutique en ligne | Forfait mensuel ou à l''heure |
+| Relances | Relancer des factures ou des paniers abandonnés | À l''heure |
+| Enquêtes | Appeler 200 clients pour 5 questions | Au questionnaire rempli |
+
+### Calculer son prix horaire
+
+1. Fixez votre **revenu mensuel visé** (exemple : 1 000 000 Ar).
+2. Estimez vos **heures facturables** par mois (exemple : 100 h).
+3. **Divisez** : 1 000 000 ÷ 100 = 10 000 Ar de l''heure.
+
+Pour un client étranger, fixez un prix en euros ou en dollars adapté à son marché. Si on vous propose d''être payé **uniquement au résultat** (au rendez-vous fixé), vérifiez d''abord la qualité de la liste d''appels : avec une mauvaise liste, vous pouvez travailler des heures pour presque rien. Demandez un **minimum horaire** ou un essai rémunéré.
+
+> [!astuce]
+> Proposez un **essai de 10 heures** au tarif normal. Le client voit vos résultats, et vous voyez si la mission est rentable avant de vous engager.
+
+## Le contrat : les 7 points à vérifier
+
+1. Le **statut** : salarié (contrat de travail) ou prestataire (contrat de prestation).
+2. La **rémunération** : montant, à l''heure ou au mois, primes, et comment elles sont calculées.
+3. Les **horaires** et le nombre d''heures garanties.
+4. Le **matériel** : qui fournit quoi (casque, logiciel, VPN).
+5. Les **objectifs** et la façon dont vous êtes évalué.
+6. La **confidentialité** : vous aurez accès à des données clients.
+7. La **fin du contrat** : période d''essai, préavis.
+
+Ne commencez **jamais** sans un écrit, et ne payez jamais pour être embauché.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Centre d''appels à Madagascar | Salaire par virement bancaire ou Mobile Money, selon l''employeur |
+| Client local en freelance | Mobile Money (MVola, Orange Money, Airtel Money) ou virement |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. En freelance, renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Progresser dans le métier
+
+| Étape | Ce qui change |
+| --- | --- |
+| Téléconseiller confirmé | Appels plus complexes, meilleurs indicateurs, primes |
+| Téléconseiller bilingue | Appels en anglais : postes souvent mieux payés |
+| Formateur ou référent | Vous formez les nouveaux |
+| Superviseur | Vous encadrez une équipe et suivez ses indicateurs |
+| Freelance spécialisé | Prise de rendez-vous pour un secteur précis (énergie, immobilier, logiciels) |
+
+Travailler votre **anglais oral** est l''investissement le plus rentable pour la suite.
+
+> [!retenir]
+> - Salarié pour apprendre et être stable, freelance pour plus de liberté.
+> - CV : français impeccable, contact client, disponibilités, installation technique.
+> - Entretien et simulation : casque, sourire, les 6 étapes, la méthode CRAC.
+> - Prix horaire = revenu visé ÷ heures facturables ; méfiance face au « 100 % au résultat ».
+> - Toujours un contrat écrit ; ne jamais payer pour être embauché.
+
+## Exercice pratique : votre candidature
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez votre CV de téléconseiller avec la rubrique « Installation de télétravail ».
+> 2. Rédigez votre message de candidature.
+> 3. Préparez vos 3 exemples d''expérience et votre question pour le recruteur.
+> 4. Faites un entretien simulé de 15 minutes avec un proche, enregistrez-le et notez 3 points à améliorer.
+> 5. Rédigez une offre freelance de prise de rendez-vous, avec votre prix horaire et un essai de 10 heures.
+> 6. Trouvez 3 offres réelles de téléconseiller à distance et vérifiez-les avec les 5 signaux d''alerte du module 1.
+>
+> **À livrer** : CV, message, enregistrement de l''entretien avec vos 3 points d''amélioration, offre freelance et analyse des 3 offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 4, 0, 'Quelle rubrique ajouter au CV d''un téléconseiller à distance ?', '["Films préférés","Numéro de compte bancaire","Installation de télétravail","Taille et poids"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 4, 1, 'Que demander si un client propose un paiement uniquement au rendez-vous fixé ?', '["Le mot de passe de son CRM","Un minimum horaire ou un essai rémunéré","Rien, c''est toujours rentable","Un paiement en nature"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-0-f', 4, 2, 'Quel investissement est souvent le plus rentable pour progresser ?', '["Changer de prénom","Acheter un téléphone de luxe","Travailler sans pause","Améliorer son anglais oral"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Quel est le rôle d''un téléconseiller ?', '["Vendre des cartes SIM dans la rue","Installer des box internet","Réparer les téléphones","Régler la demande du client par téléphone, au nom de l''entreprise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Qu''est-ce qu''un appel sortant ?', '["Un appel transféré","Un appel en attente","Un appel du client vers l''entreprise","Un appel du téléconseiller vers un client ou un prospect"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que signifie BPO ?', '["Un type de casque","Un logiciel de comptabilité","Une connexion internet","L''externalisation de services, comme les centres d''appels"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Qu''est-ce que le ping ?', '["Le prix d''un forfait","Le temps d''aller-retour d''un signal, en millisecondes","Le volume du casque","Le nombre d''appels par jour"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Quel casque utiliser ?', '["Un casque filaire USB avec micro antibruit","Aucun casque","Les écouteurs du téléphone","Les haut-parleurs de l''ordinateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Quel est un signal d''alerte d''une fausse offre d''emploi ?', '["Un test d''orthographe","Une période de formation","Un entretien téléphonique","Un salaire très au-dessus des autres offres et une demande de paiement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Pourquoi sourire au téléphone ?', '["Pour parler plus vite","Le sourire s''entend dans la voix","C''est obligatoire par la loi","Le client vous voit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment dicter un numéro de téléphone ?', '["En l''envoyant par SMS uniquement","En groupant les chiffres par deux, lentement","Le plus vite possible","Chiffre par chiffre sans pause"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Combien de fois utiliser le nom du client pendant l''appel ?', '["Jamais","À chaque phrase","Au moins 2 fois","Seulement à la fin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Par quel type de question commencer la découverte du besoin ?', '["Aucune question","Une question fermée","Une question piège","Une question ouverte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment bien mettre un client en attente ?', '["Couper l''appel et rappeler","Dire « ne quittez pas » et partir","Le mettre en muet sans prévenir","Demander son accord, annoncer la durée et revenir à temps"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faire si un client insulte ?', '["L''insulter à son tour","Pleurer","Le prévenir une fois poliment, puis suivre la procédure de l''entreprise","Raccrocher immédiatement sans rien dire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que fait la touche muet ?', '["Elle enregistre l''appel","Elle coupe l''appel","Elle coupe votre micro","Elle transfère l''appel"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Quelles sont les 5 parties d''une note d''appel ?', '["Bonjour, nom, prénom, âge, merci","Date, heure, météo, humeur, durée","Prix, remise, taxe, total, paiement","Motif, vérifications, solution, suite, engagement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment chercher dans une base de connaissances ?', '["Avec des mots-clés courts","On ne cherche jamais","En lisant tout depuis le début","En demandant au client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Qu''est-ce qu''un transfert annoncé ?', '["Transférer sans rien dire","Envoyer un e-mail au client","Présenter la situation au collègue avant de lui passer le client","Annoncer au client qu''on raccroche"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Quelle formation gratuite en ligne aide à apprendre Salesforce ?', '["Duolingo","Trailhead","CapCut","Canva"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Dans quel fuseau horaire respecter les horaires d''appel autorisés ?', '["Peu importe","Celui de Londres","Celui du pays du client","Celui de Madagascar"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que répondre à « C''est trop cher » pour un rendez-vous gratuit ?', '["Baisser le prix des panneaux","Insister jusqu''à ce qu''il accepte","Raccrocher","Rappeler que le rendez-vous est gratuit et sans engagement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faire après un refus clair ?', '["Passer l''appel à un collègue pour réessayer","Rappeler 10 fois","Insister plus fort","Remercier, noter le refus et passer à l''appel suivant"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que mesure le taux de résolution au premier appel ?', '["Le nombre de transferts","La part des demandes réglées sans que le client rappelle","Le nombre d''appels par heure","La durée des pauses"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Une DMT très basse avec beaucoup de clients qui rappellent est…', '["Impossible","Sans importance","Un excellent résultat","Un mauvais résultat"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faut-il pour commencer une mission ?', '["Une promesse orale suffit","Payer des frais d''inscription","Un contrat ou un accord écrit","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["10 000 Ar","5 000 Ar","100 000 Ar","1 000 Ar"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment protéger sa voix pendant une journée d''appels ?', '["Boire de l''eau et prendre ses pauses","Enchaîner sans pause","Boire très froid toute la journée","Parler plus fort"]'::jsonb, 0);
 
 -- design-0-f
 delete from public.exam_questions where course_id = 'design-0-f';
