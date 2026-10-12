@@ -2,7 +2,7 @@
 import * as api from './api.js';
 import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel } from './catalog.js';
 import { md, esc } from './markdown.js';
-import { certificatePdf, slug } from './pdf.js';
+import { certificatePdf, loadPdfFonts, slug } from './pdf.js';
 
 const CFG = window.VITAKO_CONFIG;
 const DAY = 864e5;
@@ -805,9 +805,13 @@ document.addEventListener('click', async (e) => {
   }
   if (a === 'pdf') {
     const cert = S.certView; if (!cert || !window.jspdf) { toast('Le PDF n\'est pas disponible. Vérifiez votre connexion puis réessayez.'); return; }
+    const label = t.textContent;
+    busy(t, true, 'Préparation du PDF…');
+    const fonts = await loadPdfFonts().catch(() => null);
     const tx = certText(cert);
-    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id), year: new Date(cert.issued_at).getFullYear() })
+    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id), year: new Date(cert.issued_at).getFullYear(), fonts })
       .save(`attestation-vitako-${slug(cert.full_name)}-${cert.id.toLowerCase()}.pdf`);
+    busy(t, false, label);
     return;
   }
   if (a === 'pay-ok' || a === 'pay-ko') {

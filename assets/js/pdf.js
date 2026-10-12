@@ -9,6 +9,44 @@ export function slug(s) {
   return clean(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+// Polices intégrées au PDF (Liberation, licence OFL). Sans elles, chaque lecteur PDF
+// remplace Helvetica/Times par ses propres polices : textes en italique, décalés…
+// Elles ne sont téléchargées qu'au premier clic sur « Télécharger en PDF ».
+const FONT_FILES = {
+  sans: { normal: 'LiberationSans-Regular.ttf', bold: 'LiberationSans-Bold.ttf' },
+  serif: { bold: 'LiberationSerif-Bold.ttf', italic: 'LiberationSerif-Italic.ttf', bolditalic: 'LiberationSerif-BoldItalic.ttf' },
+};
+let fontCache = null;
+function toBase64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+export async function loadPdfFonts() {
+  if (fontCache) return fontCache;
+  const base = new URL('../fonts/', import.meta.url);
+  const entries = [];
+  for (const [family, styles] of Object.entries(FONT_FILES)) {
+    for (const [style, file] of Object.entries(styles)) entries.push([family, style, file]);
+  }
+  const loaded = await Promise.all(entries.map(async ([family, style, file]) => {
+    const res = await fetch(new URL(file, base));
+    if (!res.ok) throw new Error('police ' + file);
+    return { family, style, file, data: toBase64(await res.arrayBuffer()) };
+  }));
+  fontCache = loaded;
+  return loaded;
+}
+const FAMILY = { helvetica: 'sans', times: 'serif' };
+let embedded = new Set();
+// Choisit la police intégrée si elle existe, sinon la police standard de jsPDF.
+function font(d, family, style) {
+  const key = `${FAMILY[family]}:${style}`;
+  if (embedded.has(key)) d.setFont(`vitako-${FAMILY[family]}`, style);
+  else d.setFont(family, style);
+}
+
 const GREEN = [11, 122, 85];
 const GREEN_DARK = [8, 74, 52];
 const GOLD = [176, 128, 30];
@@ -16,6 +54,13 @@ const GOLD_LIGHT = [214, 176, 92];
 const CREAM = [252, 249, 240];
 const INK = [24, 36, 30];
 const MUTED = [96, 108, 100];
+
+// Texte centré avec espacement des lettres. jsPDF ne compte pas l'espacement
+// quand il centre (align: 'center') : le texte partait vers la droite. On calcule nous-mêmes.
+function spacedCenter(d, text, x, y, space) {
+  const w = d.getTextWidth(text) + space * Math.max(0, [...text].length - 1);
+  d.text(text, x - w / 2, y, { charSpace: space });
+}
 
 // Polygone fermé et rempli à partir d'une liste de points absolus.
 function polygon(d, pts, style = 'F') {
@@ -82,7 +127,7 @@ function seal(d, cx, cy, R, year) {
   d.setDrawColor(...CREAM); d.setLineWidth(0.35);
   d.circle(cx, cy, R - 1.6, 'S');
   d.circle(cx, cy, R - 6.6, 'S');
-  d.setFont('helvetica', 'bold'); d.setFontSize(6); d.setTextColor(...CREAM);
+  font(d, 'helvetica', 'bold'); d.setFontSize(6); d.setTextColor(...CREAM);
   arcText(d, 'ATTESTATION OFFICIELLE', cx, cy, R - 5.5, 'top', 0.45);
   arcText(d, 'VITAKO', cx, cy, R - 3.4, 'bottom', 0.9);
   d.setFillColor(...CREAM);
@@ -95,17 +140,25 @@ function seal(d, cx, cy, R, year) {
   d.setFillColor(...GREEN); d.circle(cx, cy, R - 7.4, 'F');
   d.setDrawColor(...GOLD_LIGHT); d.setLineWidth(0.3); d.circle(cx, cy, R - 8.3, 'S');
   check(d, cx - 3.6, cy - 0.6, 7.5, [255, 255, 255], 1.5);
-  d.setFont('helvetica', 'bold'); d.setFontSize(5.2); d.setTextColor(...GOLD_LIGHT);
+  font(d, 'helvetica', 'bold'); d.setFontSize(5.2); d.setTextColor(...GOLD_LIGHT);
   d.text(String(year), cx, cy + 5.6, { align: 'center' });
 }
 
 /**
- * @param {{heading:string, name:string, text:string, rows:[string,string][], verifyUrl:string, year?:number}} c
+ * @param {{heading:string, name:string, text:string, rows:[string,string][], verifyUrl:string, year?:number, fonts?:object[]}} c
  * @returns {import('jspdf').jsPDF}
  */
 export function certificatePdf(c) {
   const { jsPDF } = window.jspdf;
   const d = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  embedded = new Set();
+  for (const f of c.fonts || []) {
+    try {
+      d.addFileToVFS(f.file, f.data);
+      d.addFont(f.file, `vitako-${f.family}`, f.style);
+      embedded.add(`${f.family}:${f.style}`);
+    } catch (e) { /* police standard en secours */ }
+  }
   const W = 297, H = 210;
   const left = 30;                   // début de la zone encadrée (après la bande verte)
   const cx = (left + W - 10) / 2;    // centre de la zone encadrée
@@ -118,7 +171,7 @@ export function certificatePdf(c) {
   d.setFillColor(...GOLD); d.rect(22, 0, 1.2, H, 'F');
   d.setDrawColor(...GREEN); d.setLineWidth(0.25);
   for (let y = -22; y < H; y += 6) d.line(0, y + 22, 22, y);
-  d.setFont('helvetica', 'bold'); d.setFontSize(8.5); d.setTextColor(...GOLD_LIGHT);
+  font(d, 'helvetica', 'bold'); d.setFontSize(8.5); d.setTextColor(...GOLD_LIGHT);
   const band = clean('VITAKO  ·  FORMATIONS FREELANCE ET TÉLÉTRAVAIL  ·  MADAGASCAR');
   const bandLen = d.getTextWidth(band) + 0.9 * band.length;
   d.text(band, 14, H / 2 + bandLen / 2, { angle: 90, charSpace: 0.9 });
@@ -136,29 +189,29 @@ export function certificatePdf(c) {
   // En-tête : logo
   d.setFillColor(...GREEN); d.roundedRect(cx - 17.5, 20, 7.5, 7.5, 1.6, 1.6, 'F');
   check(d, cx - 15.8, 24, 4.2, [255, 255, 255], 0.9);
-  d.setFont('helvetica', 'bold'); d.setFontSize(17); d.setTextColor(...INK);
+  font(d, 'helvetica', 'bold'); d.setFontSize(17); d.setTextColor(...INK);
   d.text('vitako', cx - 8, 26.4);
-  d.setFont('helvetica', 'normal'); d.setFontSize(7.6); d.setTextColor(...MUTED);
-  d.text(clean('FORMATIONS AUX MÉTIERS DU FREELANCE ET DU TÉLÉTRAVAIL'), cx, 34, { align: 'center', charSpace: 0.8 });
+  font(d, 'helvetica', 'normal'); d.setFontSize(7.6); d.setTextColor(...MUTED);
+  spacedCenter(d, clean('FORMATIONS AUX MÉTIERS DU FREELANCE ET DU TÉLÉTRAVAIL'), cx, 34, 0.8);
 
   // Titre
   const words = clean(c.heading).split(' ');
   const main = words.shift().toUpperCase();
   const sub = words.join(' ').toUpperCase();
-  d.setFont('times', 'bold'); d.setFontSize(34); d.setTextColor(...GREEN);
-  d.text(main, cx, 53, { align: 'center', charSpace: 2.2 });
-  d.setFont('helvetica', 'bold'); d.setFontSize(11); d.setTextColor(...GOLD);
-  d.text(sub, cx, 61.5, { align: 'center', charSpace: 2.6 });
+  font(d, 'times', 'bold'); d.setFontSize(34); d.setTextColor(...GREEN);
+  spacedCenter(d, main, cx, 53, 2.2);
+  font(d, 'helvetica', 'bold'); d.setFontSize(11); d.setTextColor(...GOLD);
+  spacedCenter(d, sub, cx, 61.5, 2.6);
   d.setDrawColor(...GOLD); d.setLineWidth(0.4);
   d.line(cx - 48, 67, cx - 4, 67); d.line(cx + 4, 67, cx + 48, 67);
   diamond(d, cx, 67, 1.6, GOLD);
 
   // Nom
-  d.setFont('times', 'italic'); d.setFontSize(13); d.setTextColor(...MUTED);
+  font(d, 'times', 'italic'); d.setFontSize(13); d.setTextColor(...MUTED);
   d.text('Nous attestons que', cx, 78, { align: 'center' });
   const name = clean(c.name);
   let size = 34;
-  d.setFont('times', 'bolditalic');
+  font(d, 'times', 'bolditalic');
   do { d.setFontSize(size); size -= 1; } while (d.getTextWidth(name) > 200 && size > 18);
   d.setTextColor(...INK);
   d.text(name, cx, 93, { align: 'center' });
@@ -166,15 +219,15 @@ export function certificatePdf(c) {
   d.setDrawColor(...GOLD); d.setLineWidth(0.5); d.line(cx - nw / 2, 98, cx + nw / 2, 98);
 
   // Texte
-  d.setFont('helvetica', 'normal'); d.setFontSize(12); d.setTextColor(...INK);
+  font(d, 'helvetica', 'normal'); d.setFontSize(12); d.setTextColor(...INK);
   d.text(d.splitTextToSize(clean(c.text), 195), cx, 108, { align: 'center', lineHeightFactor: 1.5 });
 
   // Informations : score (ou métier), date, numéro
   const xs = [cx - 76, cx, cx + 76];
   c.rows.forEach(([k, v], i) => {
-    d.setFont('helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
-    d.text(clean(k).toUpperCase(), xs[i], 129, { align: 'center', charSpace: 0.7 });
-    d.setFont('times', 'bold'); d.setFontSize(14); d.setTextColor(...INK);
+    font(d, 'helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
+    spacedCenter(d, clean(k).toUpperCase(), xs[i], 129, 0.7);
+    font(d, 'times', 'bold'); d.setFontSize(14); d.setTextColor(...INK);
     d.text(clean(v), xs[i], 136.5, { align: 'center' });
   });
   d.setDrawColor(...GOLD_LIGHT); d.setLineWidth(0.25);
@@ -182,10 +235,10 @@ export function certificatePdf(c) {
 
   // Signature (à gauche)
   const sx = cx - 76;
-  d.setFont('times', 'bolditalic'); d.setFontSize(20); d.setTextColor(...GREEN);
+  font(d, 'times', 'bolditalic'); d.setFontSize(20); d.setTextColor(...GREEN);
   d.text('Vitako', sx, 168, { align: 'center' });
   d.setDrawColor(...MUTED); d.setLineWidth(0.3); d.line(sx - 32, 172, sx + 32, 172);
-  d.setFont('helvetica', 'normal'); d.setFontSize(9); d.setTextColor(...MUTED);
+  font(d, 'helvetica', 'normal'); d.setFontSize(9); d.setTextColor(...MUTED);
   d.text(clean('La direction pédagogique'), sx, 177.5, { align: 'center' });
 
   // Tampon (au centre)
@@ -193,9 +246,9 @@ export function certificatePdf(c) {
 
   // Vérification (à droite)
   const vx = cx + 76;
-  d.setFont('helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
-  d.text(clean('VÉRIFICATION EN LIGNE'), vx, 163, { align: 'center', charSpace: 0.7 });
-  d.setFont('helvetica', 'normal'); d.setFontSize(8.4); d.setTextColor(...INK);
+  font(d, 'helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
+  spacedCenter(d, clean('VÉRIFICATION EN LIGNE'), vx, 163, 0.7);
+  font(d, 'helvetica', 'normal'); d.setFontSize(8.4); d.setTextColor(...INK);
   const url = clean(c.verifyUrl).replace(/^https?:\/\//, '');
   const cut = url.indexOf('#/');
   const lines = cut > 0 ? [url.slice(0, cut), url.slice(cut)] : [url];
