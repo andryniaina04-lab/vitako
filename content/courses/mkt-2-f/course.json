@@ -1,0 +1,97 @@
+{
+  "id": "mkt-2-f",
+  "hours": 15,
+  "description": "Le spécialiste SEO aide les sites à apparaître dans les résultats naturels de Google pour attirer des clients sans payer de publicité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des hôtels, des exportateurs, des agences web et des entreprises francophones, avec Google Search Console et Ubersuggest : mots clés, optimisation des pages, technique, référencement local, contenus et rapports. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le fonctionnement d'un moteur de recherche et les 3 piliers du SEO",
+    "Rechercher des mots clés et comprendre l'intention de recherche",
+    "Optimiser une page, vérifier la technique et la fiche d'établissement Google",
+    "Utiliser Search Console, Ubersuggest, PageSpeed Insights et Analytics",
+    "Mener une mission complète : audit, stratégie, contenus et rapport",
+    "Vendre des offres SEO avec des délais honnêtes et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de spécialiste SEO depuis Madagascar",
+      "summary": "Le SEO et le SEA, exploration, indexation et classement, les 3 piliers, les tâches, les clients et les pratiques à refuser.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie SEO ?", "options": ["Optimisation pour les moteurs de recherche", "Publicité payante", "Envoi d'e-mails", "Montage vidéo"], "correct": 0 },
+        { "q": "Quels sont les 3 piliers du SEO ?", "options": ["Technique, contenu, popularité", "Couleur, police, logo", "Prix, stock, livraison", "Facebook, TikTok, Instagram"], "correct": 0 },
+        { "q": "Peut-on garantir la première place sur Google ?", "options": ["Non", "Oui, toujours", "Oui, en achetant des liens", "Oui, en une semaine"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : mots clés, intention, optimisation, technique et local",
+      "summary": "Les 3 critères d'un mot clé, l'intention de recherche, l'optimisation d'une page, les bases techniques, la fiche Google et les liens honnêtes.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi commencer par les mots clés longs ?", "options": ["Ils attirent des visiteurs décidés et sont plus faciles à obtenir", "Ils ont toujours plus de volume", "Google les préfère toujours", "Ils sont interdits"], "correct": 0 },
+        { "q": "Quelle intention a la recherche « réserver hôtel Nosy Be » ?", "options": ["Achat ou réservation", "Information", "Navigation", "Aucune"], "correct": 0 },
+        { "q": "Combien de titres principaux H1 par page ?", "options": ["Un seul", "Cinq", "Aucun", "Autant que possible"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Search Console, Ubersuggest, PageSpeed, Analytics et outils payants",
+      "summary": "Les 4 rapports de Search Console, les opportunités rapides, la recherche de mots clés, la vitesse, les visites naturelles, Semrush et Ahrefs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment calcule-t-on le taux de clic (CTR) ?", "options": ["Clics ÷ impressions", "Impressions ÷ clics", "Clics × position", "Visites − clics"], "correct": 0 },
+        { "q": "Quelles requêtes sont des opportunités rapides ?", "options": ["Beaucoup d'impressions et une position entre 5 et 20", "Aucune impression", "Position 1 déjà atteinte", "Position 90"], "correct": 0 },
+        { "q": "Comment utiliser les volumes des outils de mots clés ?", "options": ["Pour comparer, car ce sont des estimations", "Comme des chiffres exacts", "Pour facturer", "On ne les utilise pas"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la mission SEO de Vanille Soa",
+      "summary": "Audit en 6 domaines, une page par mot clé principal, optimisation des pages, brief d'article, local et liens, rapport mensuel.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi associer un seul mot clé principal par page ?", "options": ["Pour éviter que deux pages se fassent concurrence", "Pour réduire le texte", "C'est une obligation légale", "Pour plaire au client"], "correct": 0 },
+        { "q": "À quoi sert un brief d'article ?", "options": ["Confier l'article à un rédacteur en gardant le contrôle du SEO", "Payer le rédacteur", "Supprimer l'article", "Traduire le site"], "correct": 0 },
+        { "q": "Que regarder dans Search Console pour un exportateur ?", "options": ["Les pays d'où viennent les recherches", "La couleur du site", "Le nom du développeur", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio et blog personnel, 5 canaux, 4 offres et leurs prix, devis en 7 points avec délais honnêtes, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel délai annoncer pour des résultats SEO nets ?", "options": ["Souvent 3 à 6 mois", "24 heures", "Une semaine garantie", "10 ans"], "correct": 0 },
+        { "q": "Pourquoi créer un blog personnel ?", "options": ["Il sert de laboratoire et prouve votre savoir-faire", "Pour vendre des liens", "C'est obligatoire", "Pour copier d'autres sites"], "correct": 0 },
+        { "q": "12 heures par mois à 15 000 Ar de l'heure font…", "options": ["180 000 Ar", "120 000 Ar", "15 012 Ar", "1 800 000 Ar"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle est la différence entre SEO et SEA ?", "options": ["Le SEO est naturel, le SEA est la publicité payante", "Aucune", "Le SEA est gratuit", "Le SEO concerne Facebook"], "correct": 0 },
+    { "q": "Quelle est la première étape du fonctionnement de Google ?", "options": ["L'exploration", "Le classement", "La facturation", "La traduction"], "correct": 0 },
+    { "q": "Qu'est-ce que l'indexation ?", "options": ["Google enregistre et comprend le contenu des pages", "Google supprime les pages", "Google affiche une publicité", "Google paie le site"], "correct": 0 },
+    { "q": "Quelle pratique est risquée ?", "options": ["Acheter des centaines de liens de mauvaise qualité", "Créer un contenu utile", "Améliorer la vitesse", "Obtenir des liens de partenaires"], "correct": 0 },
+    { "q": "Quel outil fait apparaître une entreprise sur Google Maps ?", "options": ["La fiche d'établissement Google", "Un logo", "Un e-mail", "Un fichier robots.txt"], "correct": 0 },
+    { "q": "Quels sont les 3 critères d'un bon mot clé ?", "options": ["Pertinence, volume, difficulté", "Couleur, longueur, prix", "Langue, police, image", "Aucun"], "correct": 0 },
+    { "q": "Quelle page convient à une recherche d'information ?", "options": ["Un article", "Une page de paiement", "Une page vide", "Une page d'erreur"], "correct": 0 },
+    { "q": "Quelle longueur environ pour une balise titre ?", "options": ["50 à 60 caractères", "5 caractères", "500 caractères", "Aucune limite"], "correct": 0 },
+    { "q": "Quelle adresse de page est la meilleure ?", "options": ["/lodge-andasibe", "/page?id=48291&x=2", "/sans-titre-3", "/aaaa"], "correct": 0 },
+    { "q": "Quelle version du site Google utilise surtout pour classer ?", "options": ["La version mobile", "La version imprimée", "La version télévision", "Aucune"], "correct": 0 },
+    { "q": "Que faire avec les avis de la fiche Google ?", "options": ["En demander aux clients satisfaits et répondre à tous", "Les ignorer", "Écrire de faux avis", "Supprimer les mauvais"], "correct": 0 },
+    { "q": "Que montre le rapport Performances de Search Console ?", "options": ["Requêtes, clics, impressions et positions", "Les salaires", "Les stocks", "Les factures"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une impression dans Search Console ?", "options": ["Une apparition du site dans les résultats", "Un document imprimé", "Un clic", "Une vente"], "correct": 0 },
+    { "q": "Où trouver des questions que posent les internautes ?", "options": ["Dans le bloc « Autres questions posées » de Google", "Dans le fichier robots.txt", "Dans la facture", "Nulle part"], "correct": 0 },
+    { "q": "Quel outil mesure la vitesse sur téléphone ?", "options": ["PageSpeed Insights", "Ubersuggest", "Canva", "Excel"], "correct": 0 },
+    { "q": "Quel outil payant est réputé pour l'analyse des liens ?", "options": ["Ahrefs", "Google Docs", "CapCut", "MVola"], "correct": 0 },
+    { "q": "Quand acheter un abonnement Semrush ou Ahrefs ?", "options": ["Quand vous avez des clients réguliers", "Dès le premier jour", "Jamais", "Avant d'apprendre les bases"], "correct": 0 },
+    { "q": "Que révèle souvent un audit d'un site lent ?", "options": ["Des images trop lourdes", "Trop de clients", "Un logo trop petit", "Rien"], "correct": 0 },
+    { "q": "Que contient un bon brief d'article ?", "options": ["Mot clé, intention, plan, liens internes, appel à l'action", "Seulement un titre", "Le prix du produit", "Rien"], "correct": 0 },
+    { "q": "Pourquoi relier les articles aux fiches produits ?", "options": ["Pour guider visiteurs et robots vers les pages importantes", "Pour ralentir le site", "Pour cacher les produits", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que comparer dans un rapport mensuel ?", "options": ["Les indicateurs avant et après", "Les couleurs du site", "Les salaires", "Rien"], "correct": 0 },
+    { "q": "Quel est le meilleur premier message à un hôtel ?", "options": ["Montrer un problème précis et proposer une analyse", "Promettre la première place", "Envoyer un prix sans explication", "Critiquer sans proposer"], "correct": 0 },
+    { "q": "Que préciser dans le devis sur les corrections techniques ?", "options": ["Qu'elles peuvent dépendre du développeur", "Rien", "Qu'elles sont toujours gratuites", "Qu'elles sont interdites"], "correct": 0 },
+    { "q": "Faut-il accepter d'être payé uniquement à la position ?", "options": ["Non, engagez-vous sur le travail et des indicateurs transparents", "Oui, toujours", "Oui, pour la première place", "Oui, si le client insiste"], "correct": 0 },
+    { "q": "Quelle évolution vise les sites multilingues ?", "options": ["SEO international", "Monteur vidéo", "Comptable", "Graphiste"], "correct": 0 }
+  ]
+}

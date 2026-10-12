@@ -3385,5 +3385,88 @@ export const PUBLISHED = {
     "minutes": 8
    }
   ]
+ },
+ "mkt-2-f": {
+  "hours": 15,
+  "description": "Le spécialiste SEO aide les sites à apparaître dans les résultats naturels de Google pour attirer des clients sans payer de publicité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des hôtels, des exportateurs, des agences web et des entreprises francophones, avec Google Search Console et Ubersuggest : mots clés, optimisation des pages, technique, référencement local, contenus et rapports. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le fonctionnement d'un moteur de recherche et les 3 piliers du SEO",
+   "Rechercher des mots clés et comprendre l'intention de recherche",
+   "Optimiser une page, vérifier la technique et la fiche d'établissement Google",
+   "Utiliser Search Console, Ubersuggest, PageSpeed Insights et Analytics",
+   "Mener une mission complète : audit, stratégie, contenus et rapport",
+   "Vendre des offres SEO avec des délais honnêtes et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de spécialiste SEO depuis Madagascar",
+    "summary": "Le SEO et le SEA, exploration, indexation et classement, les 3 piliers, les tâches, les clients et les pratiques à refuser.",
+    "sections": [
+     "Le métier en une phrase",
+     "Comment fonctionne un moteur de recherche",
+     "Les 3 piliers du SEO",
+     "Les tâches courantes",
+     "Qui sont vos clients ?",
+     "Le SEO honnête et les pratiques risquées",
+     "Exercice pratique : votre premier regard SEO"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : mots clés, intention, optimisation, technique et local",
+    "summary": "Les 3 critères d'un mot clé, l'intention de recherche, l'optimisation d'une page, les bases techniques, la fiche Google et les liens honnêtes.",
+    "sections": [
+     "La recherche de mots clés",
+     "Optimiser une page",
+     "Les bases techniques",
+     "Le référencement local",
+     "Obtenir des liens honnêtement",
+     "Exercice pratique : optimiser une page"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Search Console, Ubersuggest, PageSpeed, Analytics et outils payants",
+    "summary": "Les 4 rapports de Search Console, les opportunités rapides, la recherche de mots clés, la vitesse, les visites naturelles, Semrush et Ahrefs.",
+    "sections": [
+     "Les outils gratuits",
+     "Google Search Console",
+     "Trouver des mots clés",
+     "Mesurer la vitesse et suivre les visites",
+     "Les outils payants",
+     "Exercice pratique : votre boîte à outils SEO"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : la mission SEO de Vanille Soa",
+    "summary": "Audit en 6 domaines, une page par mot clé principal, optimisation des pages, brief d'article, local et liens, rapport mensuel.",
+    "sections": [
+     "Le cas pratique : « Vanille Soa »",
+     "Étape 1 : l'audit SEO",
+     "Étape 2 : la stratégie de mots clés",
+     "Étape 3 : optimiser les pages principales",
+     "Étape 4 : le plan de contenus",
+     "Étape 5 : le référencement local et les liens",
+     "Étape 6 : mesurer et présenter",
+     "Exercice pratique : la mission Vanille Soa"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio et blog personnel, 5 canaux, 4 offres et leurs prix, devis en 7 points avec délais honnêtes, paiements et évolution.",
+    "sections": [
+     "Le portfolio SEO",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Le devis : expliquer les délais honnêtement",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
  }
 };

@@ -47,7 +47,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
-  ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 11, false),
+  ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true),
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 14, false),
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 12, false),
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 15, false),
@@ -24200,4 +24200,581 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quel est un mode de rémunération courant ?', '["Aucun","Un pourcentage du salaire du client","Un paiement en nature uniquement","Un forfait mensuel ou un pourcentage du budget"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que doit dire le contrat sur les résultats ?', '["Les ventes sont garanties","Le client paie seulement s''il vend","Vous vous engagez sur une méthode, pas sur un nombre de ventes","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quelle bonne pratique fidélise un client ?', '["Des rapports réguliers et honnêtes, avec des propositions","Cacher les mauvais chiffres","Ne jamais envoyer de rapport","Augmenter le budget sans prévenir"]'::jsonb, 0);
+
+-- mkt-2-f
+delete from public.exam_questions where course_id = 'mkt-2-f';
+delete from public.module_questions where course_id = 'mkt-2-f';
+delete from public.lessons where course_id = 'mkt-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-f', 0, 'Le métier de spécialiste SEO depuis Madagascar', 'Le SEO et le SEA, exploration, indexation et classement, les 3 piliers, les tâches, les clients et les pratiques à refuser.', 'Quand quelqu''un cherche « hôtel Nosy Be » ou « livraison de vanille en France », il clique presque toujours sur un des premiers résultats de Google. Le spécialiste SEO aide les sites à apparaître dans ces résultats, sans payer de publicité. C''est un métier qui se fait entièrement à distance et que les entreprises paient pour des résultats durables. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un spécialiste SEO.
+> 2. Décrire comment fonctionne un moteur de recherche.
+> 3. Citer les 3 piliers du référencement naturel.
+> 4. Repérer vos premiers clients possibles.
+> 5. Distinguer le SEO honnête des pratiques risquées.
+
+## Le métier en une phrase
+
+Un spécialiste SEO **aide un site à apparaître plus haut dans les résultats des moteurs de recherche pour les recherches utiles à son activité, afin d''attirer des visiteurs qui deviennent clients**.
+
+> [!definition] SEO (Search Engine Optimization)
+> L''optimisation pour les moteurs de recherche, ou **référencement naturel**. On l''oppose au **SEA** (publicité payante sur les moteurs de recherche, comme Google Ads), où l''on paie pour chaque clic.
+
+## Comment fonctionne un moteur de recherche
+
+| Étape | Ce que fait Google | Ce que cela signifie pour vous |
+| --- | --- | --- |
+| **1. Exploration** | Des robots parcourent le web en suivant les liens | Les pages doivent être accessibles et reliées entre elles |
+| **2. Indexation** | Google enregistre et comprend le contenu des pages | Le contenu doit être lisible, clair, sans erreur technique |
+| **3. Classement** | Pour chaque recherche, Google classe les pages les plus utiles | La page doit répondre le mieux possible à la recherche |
+
+> [!madagascar]
+> Les recherches liées à Madagascar sont nombreuses : tourisme, vanille et épices, artisanat, immobilier, formation, emploi. Beaucoup de sites malgaches sont lents ou mal structurés, et apparaissent mal dans Google. C''est une vraie opportunité pour un spécialiste SEO qui connaît le pays.
+
+## Les 3 piliers du SEO
+
+| Pilier | Ce qu''il couvre | Exemples de tâches |
+| --- | --- | --- |
+| **1. Technique** | Le site peut-il être exploré et compris facilement ? | Vitesse, version mobile, erreurs, plan du site, HTTPS |
+| **2. Contenu** | Les pages répondent-elles aux recherches des gens ? | Recherche de mots clés, titres, textes utiles, structure |
+| **3. Popularité** | D''autres sites recommandent-ils celui-ci ? | Liens depuis des sites de qualité, mentions, fiches d''établissement |
+
+Un quatrième élément compte pour les entreprises locales : la **fiche d''établissement Google** (Google Business Profile), qui fait apparaître l''entreprise sur Google Maps.
+
+## Les tâches courantes
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Recherche de mots clés** | Trouver ce que les gens tapent pour chercher un lodge à Andasibe |
+| 2 | **Optimisation des pages** | Améliorer les titres, descriptions et textes des pages importantes |
+| 3 | **Audit technique** | Repérer les pages en erreur, lentes ou mal affichées sur téléphone |
+| 4 | **Rédaction ou brief de contenus** | Préparer des articles qui répondent aux questions des clients |
+| 5 | **Référencement local** | Créer et optimiser la fiche Google d''un hôtel ou d''un magasin |
+| 6 | **Suivi et rapports** | Mesurer les positions, les clics et les visites chaque mois |
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Hôtels, lodges et agences de voyage** qui veulent des réservations directes.
+2. **Exportateurs** de vanille, épices, huiles essentielles, artisanat.
+3. **Écoles, centres de formation, cliniques** qui veulent être trouvés localement.
+4. **Agences web** qui veulent proposer le SEO à leurs clients.
+
+### À l''étranger
+
+1. **Petites entreprises francophones** qui veulent plus de visites sans publicité.
+2. **Agences de marketing** qui sous-traitent les audits, les mots clés et l''optimisation.
+3. **Sites de contenu et blogs** qui vivent de leurs visites.
+
+## Le SEO honnête et les pratiques risquées
+
+| SEO honnête | Pratiques risquées (à refuser) |
+| --- | --- |
+| Créer des contenus utiles pour les visiteurs | Copier les textes d''autres sites |
+| Améliorer la technique du site | Cacher du texte ou des mots clés |
+| Obtenir des liens naturels (partenaires, presse, annuaires sérieux) | Acheter des centaines de liens de mauvaise qualité |
+| Être honnête sur les délais | Promettre la première place sur Google |
+
+> [!attention]
+> Personne ne peut **garantir** une première place sur Google. Les pratiques trompeuses peuvent entraîner une **chute du site** dans les résultats. Expliquez toujours à vos clients que le SEO demande souvent **3 à 6 mois** pour montrer des résultats nets.
+
+> [!retenir]
+> - Le SEO aide un site à apparaître dans les résultats naturels de Google.
+> - Exploration, indexation, classement.
+> - 3 piliers : technique, contenu, popularité, plus le référencement local.
+> - Clients : tourisme, exportateurs, écoles, agences, entreprises étrangères.
+> - Pas de promesse de première place, pas de pratiques trompeuses.
+
+## Exercice pratique : votre premier regard SEO
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Faites 5 recherches sur Google liées à Madagascar (exemple : « hôtel Ifaty », « vanille bourbon Madagascar achat »).
+> 2. Pour chaque recherche, notez les 3 premiers résultats naturels et les publicités éventuelles.
+> 3. Choisissez un site malgache et notez 3 points techniques, 3 points de contenu et 1 point de popularité à améliorer.
+> 4. Vérifiez si l''entreprise a une fiche Google sur Google Maps.
+>
+> **À livrer** : votre tableau de recherches et votre analyse du site.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 0, 0, 'Que signifie SEO ?', '["Montage vidéo","Optimisation pour les moteurs de recherche","Publicité payante","Envoi d''e-mails"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 0, 1, 'Quels sont les 3 piliers du SEO ?', '["Facebook, TikTok, Instagram","Technique, contenu, popularité","Prix, stock, livraison","Couleur, police, logo"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 0, 2, 'Peut-on garantir la première place sur Google ?', '["Oui, en une semaine","Non","Oui, toujours","Oui, en achetant des liens"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-f', 1, 'Les bases : mots clés, intention, optimisation, technique et local', 'Les 3 critères d''un mot clé, l''intention de recherche, l''optimisation d''une page, les bases techniques, la fiche Google et les liens honnêtes.', 'Ce module vous donne les bases du travail SEO : trouver les bons mots clés, comprendre l''intention de recherche, optimiser une page, vérifier la technique d''un site et obtenir des liens de façon honnête.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire une recherche de mots clés et comprendre l''intention de recherche.
+> 2. Optimiser les éléments d''une page : titre, description, titres, contenu.
+> 3. Vérifier les bases techniques d''un site.
+> 4. Optimiser une fiche d''établissement Google.
+> 5. Obtenir des liens de façon honnête.
+
+## La recherche de mots clés
+
+> [!definition] Mot clé
+> Les mots que les internautes tapent dans le moteur de recherche. Un mot clé peut être court (« vanille ») ou long (« acheter vanille de Madagascar bio en gousse »).
+
+### Les 3 critères d''un bon mot clé
+
+| Critère | Question |
+| --- | --- |
+| **Pertinence** | Les personnes qui cherchent ce mot sont-elles des clients possibles ? |
+| **Volume** | Combien de personnes le cherchent chaque mois ? |
+| **Difficulté** | Est-il possible de se classer face aux concurrents ? |
+
+> [!astuce]
+> Les mots clés **longs** (« lodge familial Andasibe avec guide ») ont moins de volume, mais attirent des visiteurs plus décidés et sont plus faciles à obtenir pour un petit site. Commencez par eux.
+
+### L''intention de recherche
+
+| Intention | Exemple | Page adaptée |
+| --- | --- | --- |
+| **Information** | « quand voir les baleines à Sainte-Marie » | Article de blog |
+| **Navigation** | « site Air Austral » | Page d''accueil de la marque |
+| **Comparaison** | « meilleur hôtel Nosy Be avis » | Page de comparaison, avis clients |
+| **Achat ou réservation** | « réserver hôtel Nosy Be » | Page de réservation |
+
+> [!attention]
+> Si la recherche est informative, Google affiche des articles ; si elle est transactionnelle, il affiche des pages de vente. Une page qui ne correspond pas à l''intention aura du mal à se classer, même bien optimisée.
+
+## Optimiser une page
+
+| Élément | Règle | Exemple |
+| --- | --- | --- |
+| **Balise titre** | Mot clé principal au début, environ 50 à 60 caractères | « Lodge à Andasibe : nature et lémuriens | Lodge Ravinala » |
+| **Méta-description** | Résumé qui donne envie de cliquer, environ 150 à 160 caractères | « Séjournez au cœur de la forêt d''Andasibe, à 5 minutes du parc. Bungalows, guides et repas inclus. Réservez en ligne. » |
+| **Adresse (URL)** | Courte et lisible | `/lodge-andasibe` |
+| **Titre principal (H1)** | Un seul, clair, avec le mot clé | « Notre lodge au cœur de la forêt d''Andasibe » |
+| **Sous-titres (H2, H3)** | Structurent le texte | « Nos bungalows », « Visiter le parc » |
+| **Contenu** | Répond complètement à la recherche, avec des détails utiles | Prix, accès, activités, questions fréquentes |
+| **Images** | Fichiers légers, nom clair, texte alternatif | `bungalow-andasibe.webp`, alt « Bungalow en bois au milieu de la forêt » |
+| **Liens internes** | Relient les pages proches | De l''article sur les lémuriens vers la page de réservation |
+
+## Les bases techniques
+
+| Vérification | Pourquoi |
+| --- | --- |
+| **HTTPS** | Sécurité et confiance |
+| **Version mobile** | Google utilise surtout la version mobile pour classer les pages |
+| **Vitesse** | Une page lente perd des visiteurs |
+| **Pages en erreur (404)** | Mauvaise expérience et liens perdus |
+| **Plan du site (sitemap)** | Aide Google à trouver les pages |
+| **Fichier robots.txt** | Indique ce que les robots peuvent explorer |
+| **Pages en double** | Plusieurs pages identiques se font concurrence |
+
+> [!madagascar]
+> Testez toujours la vitesse d''un site malgache **sur téléphone**, avec PageSpeed Insights. Les images trop lourdes sont la cause la plus fréquente de lenteur, et elles coûtent cher en données aux visiteurs locaux.
+
+## Le référencement local
+
+> [!definition] Fiche d''établissement Google (Google Business Profile)
+> Une fiche gratuite qui affiche une entreprise sur Google Maps et dans les résultats locaux : adresse, horaires, téléphone, photos, avis.
+
+### Les 7 points à optimiser
+
+1. **Nom exact** de l''entreprise (sans mots clés ajoutés artificiellement).
+2. **Catégorie** principale et catégories secondaires.
+3. **Adresse** ou zone desservie, et point sur la carte.
+4. **Horaires**, y compris les jours fériés.
+5. **Téléphone et site web**.
+6. **Photos** récentes et de qualité.
+7. **Avis** : demander aux clients satisfaits et répondre à tous les avis.
+
+## Obtenir des liens honnêtement
+
+| Source | Exemple |
+| --- | --- |
+| **Partenaires** | Une agence de voyage qui recommande un lodge |
+| **Annuaires sérieux** | Office du tourisme, chambres de commerce, associations professionnelles |
+| **Presse et blogs** | Article sur un producteur de vanille |
+| **Contenus utiles** | Un guide que d''autres sites ont envie de citer |
+
+> [!retenir]
+> - Mots clés pertinents, avec du volume et une difficulté raisonnable ; commencez par les mots clés longs.
+> - Adaptez la page à l''intention de recherche.
+> - Titre, description, URL, H1, sous-titres, contenu, images, liens internes.
+> - HTTPS, mobile, vitesse, erreurs, sitemap, robots.txt.
+> - Fiche Google complète et liens obtenus honnêtement.
+
+## Exercice pratique : optimiser une page
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez une entreprise malgache (hôtel, restaurant, école).
+> 2. Listez 15 mots clés possibles et classez-les par intention.
+> 3. Choisissez un mot clé principal pour sa page d''accueil et réécrivez : titre, méta-description, H1 et 3 sous-titres.
+> 4. Faites la liste de contrôle technique de son site.
+> 5. Proposez 5 améliorations de sa fiche Google.
+>
+> **À livrer** : votre liste de mots clés, votre page optimisée, votre contrôle technique et vos propositions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 1, 0, 'Pourquoi commencer par les mots clés longs ?', '["Ils ont toujours plus de volume","Google les préfère toujours","Ils attirent des visiteurs décidés et sont plus faciles à obtenir","Ils sont interdits"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 1, 1, 'Quelle intention a la recherche « réserver hôtel Nosy Be » ?', '["Navigation","Achat ou réservation","Aucune","Information"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 1, 2, 'Combien de titres principaux H1 par page ?', '["Un seul","Aucun","Cinq","Autant que possible"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-f', 2, 'Les outils : Search Console, Ubersuggest, PageSpeed, Analytics et outils payants', 'Les 4 rapports de Search Console, les opportunités rapides, la recherche de mots clés, la vitesse, les visites naturelles, Semrush et Ahrefs.', 'Ce module vous fait prendre en main les outils gratuits du spécialiste SEO : **Google Search Console**, **Ubersuggest** (dans sa version gratuite limitée), **PageSpeed Insights** et **Google Analytics**. Vous découvrirez ensuite les outils payants que les agences utilisent : **Semrush** et **Ahrefs**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire les rapports essentiels de Google Search Console.
+> 2. Trouver des idées de mots clés avec Ubersuggest et Google.
+> 3. Mesurer la vitesse et l''expérience mobile.
+> 4. Suivre les visites naturelles dans Google Analytics.
+> 5. Comprendre ce qu''apportent Semrush et Ahrefs.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Google Search Console** | Voir comment Google voit le site : recherches, clics, pages indexées, erreurs |
+| 2 | **Ubersuggest** (version gratuite limitée) | Idées de mots clés, volumes approximatifs, analyse rapide d''un site |
+| 3 | **Google** lui-même | Suggestions de recherche, « Autres questions posées », recherches associées |
+| 4 | **PageSpeed Insights** | Vitesse et expérience sur téléphone et ordinateur |
+| 5 | **Google Analytics** | Visites, provenance, comportement des visiteurs |
+| 6 | **Google Business Profile** | Gestion de la fiche d''établissement |
+
+## Google Search Console
+
+> [!definition] Google Search Console
+> Un outil gratuit de Google qui montre les recherches pour lesquelles un site apparaît, le nombre de clics et d''affichages, les pages indexées et les problèmes techniques détectés. Le propriétaire du site doit le valider.
+
+### Les 4 rapports essentiels
+
+| Rapport | Ce que vous y lisez |
+| --- | --- |
+| **Performances** | Requêtes, pages, clics, impressions, taux de clic, position moyenne |
+| **Pages (indexation)** | Pages indexées, pages exclues et pourquoi |
+| **Sitemaps** | Plan du site envoyé à Google et son état |
+| **Expérience** | Signaux web essentiels, ergonomie mobile, HTTPS |
+
+| Indicateur | Définition |
+| --- | --- |
+| **Impressions** | Nombre de fois où le site est apparu dans les résultats |
+| **Clics** | Nombre de clics vers le site |
+| **Taux de clic (CTR)** | Clics ÷ impressions |
+| **Position moyenne** | Rang moyen dans les résultats |
+
+> [!astuce]
+> Cherchez dans le rapport **Performances** les requêtes avec beaucoup d''impressions mais une position entre 5 et 20 : ce sont les **opportunités rapides**. Améliorer la page correspondante peut la faire monter en première page.
+
+> [!exemple] Une opportunité
+> La requête « lodge Andasibe » a 2 400 impressions par mois, position moyenne 11, 30 clics. La page apparaît mais en deuxième page. En améliorant le titre, le contenu et les liens internes de la page du lodge, on peut viser la première page et multiplier les clics.
+
+## Trouver des mots clés
+
+### Avec Google
+
+1. Tapez le début d''une recherche et notez les **suggestions**.
+2. Regardez le bloc **« Autres questions posées »**.
+3. Notez les **recherches associées** en bas de page.
+
+### Avec Ubersuggest
+
+1. Entrez un mot clé ou le site d''un concurrent.
+2. Notez les idées, le **volume** et la **difficulté** estimés.
+3. Exportez ou recopiez dans un tableau (la version gratuite limite le nombre de recherches par jour).
+
+| Mot clé | Volume (estim.) | Difficulté | Intention | Page cible |
+| --- | --- | --- | --- | --- |
+| lodge andasibe | Moyen | Faible | Réservation | Page du lodge |
+| que voir à andasibe | Moyen | Faible | Information | Article |
+| indri andasibe | Faible | Faible | Information | Article |
+
+> [!attention]
+> Les volumes des outils sont des **estimations**, souvent imprécises pour les petits pays et les petites niches. Utilisez-les pour **comparer** des mots clés entre eux, pas comme des chiffres exacts.
+
+## Mesurer la vitesse et suivre les visites
+
+1. **PageSpeed Insights** : testez la version mobile, notez les signaux web essentiels et les conseils principaux.
+2. **Google Analytics** : dans les rapports d''acquisition, regardez les visites venant de la **recherche naturelle** (« Organic Search ») et les pages d''arrivée.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Semrush** | Base de mots clés très large, suivi des positions, audit technique automatique, analyse des concurrents, outils de contenu |
+| **Ahrefs** | Analyse très complète des liens (qui renvoie vers un site), mots clés, audit, suivi des positions |
+
+| Usage | Gratuit | Payant |
+| --- | --- | --- |
+| Idées de mots clés | Google, Ubersuggest limité | Semrush, Ahrefs |
+| Données réelles du site | Search Console | — (Search Console reste la référence) |
+| Analyse des concurrents | Très limitée | Semrush, Ahrefs |
+| Liens entrants | Search Console (pour votre site) | Ahrefs, Semrush (pour tous les sites) |
+| Audit technique | Manuel ou limité | Automatique et complet |
+
+> [!madagascar]
+> Ces abonnements coûtent plus de 100 dollars par mois : n''achetez pas tant que vous n''avez pas de clients réguliers. Beaucoup d''agences donnent accès à **leur** compte à leurs freelances. Utilisez les essais gratuits pour apprendre, et vérifiez les prix et les conditions sur les sites officiels.
+
+> [!retenir]
+> - Search Console : la source de vérité sur la présence du site dans Google.
+> - Repérez les requêtes en position 5 à 20 : ce sont des opportunités rapides.
+> - Google, Ubersuggest et un tableau suffisent pour démarrer la recherche de mots clés.
+> - PageSpeed Insights pour la vitesse, Analytics pour les visites naturelles.
+> - Semrush et Ahrefs : utiles quand l''activité grandit, souvent fournis par les agences.
+
+## Exercice pratique : votre boîte à outils SEO
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un petit site gratuit (Google Sites, WordPress.com ou autre) ou utilisez un site dont vous avez l''accès, et validez-le dans Search Console.
+> 2. Construisez un tableau de 30 mots clés pour un lodge ou une marque de vanille, avec intention et page cible.
+> 3. Testez 3 sites malgaches avec PageSpeed Insights et notez les 3 conseils principaux de chacun.
+> 4. Faites un essai gratuit de Semrush ou Ahrefs (si possible) et comparez ses idées de mots clés avec votre tableau.
+>
+> **À livrer** : une capture de Search Console, votre tableau de mots clés, vos tests de vitesse et votre comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 2, 0, 'Comment calcule-t-on le taux de clic (CTR) ?', '["Clics × position","Clics ÷ impressions","Impressions ÷ clics","Visites − clics"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 2, 1, 'Quelles requêtes sont des opportunités rapides ?', '["Aucune impression","Position 90","Beaucoup d''impressions et une position entre 5 et 20","Position 1 déjà atteinte"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 2, 2, 'Comment utiliser les volumes des outils de mots clés ?', '["Pour comparer, car ce sont des estimations","On ne les utilise pas","Pour facturer","Comme des chiffres exacts"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-f', 3, 'Premier projet : la mission SEO de Vanille Soa', 'Audit en 6 domaines, une page par mot clé principal, optimisation des pages, brief d''article, local et liens, rapport mensuel.', 'Dans ce module, vous réalisez une mission SEO complète pour une petite entreprise : audit, stratégie de mots clés, optimisation des pages, plan de contenus, référencement local et premier rapport. C''est le type de projet qui deviendra votre première étude de cas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Réaliser un audit SEO simple.
+> 2. Construire une stratégie de mots clés reliée aux pages.
+> 3. Optimiser les pages principales.
+> 4. Créer un plan de contenus et un brief d''article.
+> 5. Mesurer et présenter les résultats.
+
+## Le cas pratique : « Vanille Soa »
+
+> [!exemple] Votre client
+> **Vanille Soa** est une petite entreprise de Sambava qui vend de la vanille, du poivre sauvage et des épices en ligne, à des particuliers en France et à La Réunion. Son site a 12 pages et 6 articles de blog. Les ventes viennent surtout de Facebook. La gérante, Mme Soa, voudrait plus de clients venant de Google, sans payer de publicité.
+
+## Étape 1 : l''audit SEO
+
+| Domaine | Vérifications |
+| --- | --- |
+| **Indexation** | Combien de pages sont indexées ? Y a-t-il des pages exclues par erreur ? |
+| **Technique** | HTTPS, mobile, vitesse, erreurs 404, sitemap |
+| **Pages** | Titres, descriptions, H1, contenus trop courts, pages en double |
+| **Mots clés actuels** | Requêtes, positions et clics dans Search Console |
+| **Concurrence** | Qui apparaît sur « acheter vanille Madagascar » ? Pourquoi ? |
+| **Popularité** | Liens existants, mentions, présence dans les annuaires |
+
+> [!exemple] Extrait du résumé de l''audit
+> « 9 pages sur 18 sont indexées : 6 fiches produits sont bloquées par une erreur de réglage. Les fiches produits n''ont que 2 lignes de description, alors que les concurrents expliquent l''origine, la qualité et l''usage. Les photos pèsent plus de 3 Mo chacune et la page d''accueil met 8 secondes à s''afficher sur téléphone. Le site apparaît déjà en position 14 sur "vanille bourbon Madagascar" : c''est une opportunité rapide. »
+
+## Étape 2 : la stratégie de mots clés
+
+### Associer chaque mot clé à une page
+
+| Page | Mot clé principal | Mots clés secondaires |
+| --- | --- | --- |
+| Accueil | vanille de Madagascar | épices de Madagascar, vanille Sambava |
+| Fiche vanille | vanille bourbon Madagascar | gousses de vanille, vanille noire |
+| Fiche poivre | poivre sauvage Madagascar | voatsiperifery |
+| Article 1 | comment conserver la vanille | conservation gousses de vanille |
+| Article 2 | différence vanille bourbon et tahiti | types de vanille |
+
+> [!attention]
+> Une page = un mot clé principal. Si deux pages visent le même mot clé, elles se font concurrence et Google ne sait pas laquelle montrer.
+
+## Étape 3 : optimiser les pages principales
+
+1. **Corrigez** les problèmes d''indexation (avec le développeur ou dans les réglages du site).
+2. **Réécrivez** titres et méta-descriptions des 10 pages principales.
+3. **Enrichissez** les fiches produits : origine, préparation, qualité, usage en cuisine, conservation, questions fréquentes.
+4. **Compressez** les images et ajoutez des textes alternatifs.
+5. **Reliez** les articles aux fiches produits avec des liens internes.
+
+## Étape 4 : le plan de contenus
+
+### Le brief d''article
+
+```
+Titre proposé : Comment conserver la vanille : 5 règles pour garder ses gousses parfumées
+Mot clé principal : comment conserver la vanille
+Intention : information
+Lecteur : particulier qui vient d''acheter des gousses
+Plan :
+  H2 Pourquoi la conservation est importante
+  H2 Les 5 règles (bocal hermétique, à l''abri de la lumière, température…)
+  H2 Les erreurs à éviter (réfrigérateur, sachet ouvert)
+  H2 Combien de temps se conserve une gousse ?
+  H2 Questions fréquentes
+Longueur indicative : 900 à 1 200 mots
+Liens internes : fiche vanille bourbon, article bourbon et tahiti
+Appel à l''action : découvrir nos gousses de Sambava
+```
+
+> [!astuce]
+> Le brief permet de confier l''article à un rédacteur (voir la formation Rédacteur web) tout en gardant le contrôle du SEO. Relisez toujours l''article final avant publication.
+
+## Étape 5 : le référencement local et les liens
+
+1. **Fiche Google** : si l''entreprise reçoit des clients à Sambava, créez ou complétez sa fiche.
+2. **Annuaires sérieux** : associations de producteurs, chambres de commerce, sites de produits du terroir.
+3. **Partenaires** : restaurants ou pâtissiers clients qui citent la marque.
+4. **Presse** : proposez l''histoire de la coopérative à des blogs culinaires.
+
+## Étape 6 : mesurer et présenter
+
+### Le rapport mensuel
+
+| Indicateur | Mois 0 | Mois 3 | Commentaire |
+| --- | --- | --- | --- |
+| Pages indexées | 9 | 18 | Erreur corrigée |
+| Clics depuis Google | 120 | 410 | Fiches enrichies |
+| Impressions | 6 000 | 15 500 | Nouveaux articles |
+| Position « vanille bourbon Madagascar » | 14 | 6 | Fiche réécrite |
+| Ventes venant de la recherche naturelle | 3 | 11 | Suivi dans Analytics |
+
+*(Chiffres donnés en exemple.)*
+
+> [!madagascar]
+> Pour une entreprise malgache qui vend à l''étranger, regardez dans Search Console **de quels pays** viennent les recherches. Vous découvrirez peut-être des marchés inattendus (Belgique, Canada, Suisse) qui méritent leurs propres contenus.
+
+> [!retenir]
+> - Audit en 6 domaines, avec les opportunités rapides en premier.
+> - Une page = un mot clé principal.
+> - Titres, descriptions, contenus enrichis, images légères, liens internes.
+> - Un brief clair pour chaque article.
+> - Un rapport mensuel avec les indicateurs avant et après.
+
+## Exercice pratique : la mission Vanille Soa
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Choisissez un vrai site d''une petite entreprise malgache et réalisez l''audit en 6 domaines (avec les outils gratuits).
+> 2. Construisez le tableau qui associe 10 mots clés à 10 pages.
+> 3. Réécrivez le titre, la méta-description et le H1 de 5 pages.
+> 4. Rédigez 2 briefs d''articles.
+> 5. Préparez le modèle du rapport mensuel.
+>
+> **À livrer** : votre audit, votre tableau, vos optimisations, vos briefs et votre modèle de rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 3, 0, 'Pourquoi associer un seul mot clé principal par page ?', '["Pour réduire le texte","C''est une obligation légale","Pour éviter que deux pages se fassent concurrence","Pour plaire au client"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 3, 1, 'À quoi sert un brief d''article ?', '["Payer le rédacteur","Traduire le site","Supprimer l''article","Confier l''article à un rédacteur en gardant le contrôle du SEO"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 3, 2, 'Que regarder dans Search Console pour un exportateur ?', '["Les pays d''où viennent les recherches","Le nom du développeur","La couleur du site","Rien"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio et blog personnel, 5 canaux, 4 offres et leurs prix, devis en 7 points avec délais honnêtes, paiements et évolution.', 'Beaucoup d''entreprises savent qu''elles devraient être mieux placées dans Google, mais ne savent pas par où commencer. Ce dernier module vous montre comment présenter vos services SEO, trouver vos premiers clients, fixer vos prix, expliquer les délais et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio SEO avec des résultats.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer le prix d''un audit et d''un suivi mensuel.
+> 4. Rédiger un devis qui explique les délais honnêtement.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio SEO
+
+1. **Votre audit** du module 4 (avec l''accord de l''entreprise, ou anonymisé).
+2. **Un site personnel** que vous faites grandir : un blog sur un sujet que vous connaissez (tourisme à Madagascar, cuisine malgache, études…). C''est votre laboratoire et votre preuve.
+3. **Des captures de Search Console** avant et après (sans données confidentielles).
+4. **Vos modèles** : brief d''article, rapport mensuel, liste de contrôle technique.
+
+> [!astuce]
+> Un petit blog que vous avez fait monter de 0 à 3 000 visites par mois prouve votre savoir-faire mieux que n''importe quel diplôme. Commencez-le dès aujourd''hui : le SEO demande du temps.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Hôtels, lodges et agences de voyage** | Montrez qu''ils sont absents sur une recherche importante et proposez un audit |
+| 2 | **Agences web malgaches** | Proposez le SEO en complément de leurs créations de sites |
+| 3 | **Exportateurs** | Proposez des contenus pour leurs marchés étrangers |
+| 4 | **Agences de marketing étrangères** | Sous-traitance d''audits, de recherches de mots clés et d''optimisation |
+| 5 | **Plateformes de freelance** | Audits, recherches de mots clés, fiches Google ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un hôtel
+> « Bonjour, quand je cherche "hôtel bord de mer Mahajanga" sur Google, votre hôtel n''apparaît pas en première page, alors que vos avis sont excellents. J''ai repéré 3 raisons simples : votre page d''accueil n''a pas de titre adapté, votre fiche Google n''a que 2 photos, et votre site met 9 secondes à s''afficher sur téléphone. Je suis spécialiste SEO et je peux vous envoyer une courte analyse gratuite. »
+
+## Fixer ses prix
+
+### Le tarif horaire
+
+Revenu mensuel visé ÷ heures facturables (exemple : 1 500 000 Ar ÷ 100 h = 15 000 Ar de l''heure).
+
+### Les offres
+
+| Offre | Contenu | Heures (exemple) | Prix (15 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Audit SEO** | Audit en 6 domaines, rapport, priorités | 10 h | 150 000 Ar |
+| **Fiche Google** | Création ou optimisation, conseils pour les avis | 3 h | 45 000 Ar |
+| **Optimisation de départ** | 10 pages optimisées, corrections techniques simples | 15 h | 225 000 Ar |
+| **Suivi mensuel** | Rapport, optimisations, 2 briefs d''articles, liens | 12 h par mois | 180 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Le devis : expliquer les délais honnêtement
+
+### Les 7 points
+
+1. **Les objectifs** : visites, demandes, ventes (pas « première place »).
+2. **Le périmètre** : pages, contenus, technique.
+3. **Ce que le client fournit** : accès au site, Search Console, Analytics, informations.
+4. **Ce qui dépend d''autres personnes** : développeur pour les corrections techniques, rédacteur pour les articles.
+5. **Le délai réaliste** : premiers signes en 1 à 3 mois, résultats plus nets en 3 à 6 mois, selon la concurrence.
+6. **Le prix** et la durée d''engagement (par exemple 6 mois pour le suivi).
+7. **Le rapport** mensuel et son contenu.
+
+> [!attention]
+> N''acceptez pas d''être payé **uniquement** si le site atteint une position précise : Google change ses algorithmes, et la concurrence aussi. Vous pouvez en revanche vous engager sur le **travail réalisé** et sur des indicateurs suivis de façon transparente.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Spécialiste SEO confirmé** | Semrush ou Ahrefs, SEO technique avancé, stratégie de contenus |
+| **SEO technique** | Bases du HTML, JavaScript et des serveurs, gros sites |
+| **SEO e-commerce** | Boutiques Shopify et WooCommerce, fiches produits à grande échelle |
+| **SEO international** | Sites multilingues, plusieurs pays |
+| **Responsable acquisition** | SEO + publicité + e-mail (voir les formations marketing) |
+
+> [!retenir]
+> - Un portfolio avec un audit, un site personnel qui grandit et vos modèles.
+> - Tourisme, agences web, exportateurs, agences étrangères, plateformes.
+> - Audit, fiche Google, optimisation de départ et suivi mensuel.
+> - Des délais honnêtes : 3 à 6 mois pour des résultats nets.
+> - Payoneer, virement ou Mobile Money selon le client.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez votre blog personnel et publiez un premier article optimisé.
+> 2. Calculez vos 4 offres avec vos prix.
+> 3. Rédigez votre modèle de devis en 7 points.
+> 4. Faites 10 recherches locales importantes (hôtels, écoles, restaurants), repérez 5 entreprises mal placées et envoyez au moins 2 messages.
+>
+> **À livrer** : le lien de votre blog, vos offres, votre devis et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 4, 0, 'Quel délai annoncer pour des résultats SEO nets ?', '["10 ans","Une semaine garantie","Souvent 3 à 6 mois","24 heures"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 4, 1, 'Pourquoi créer un blog personnel ?', '["Il sert de laboratoire et prouve votre savoir-faire","Pour copier d''autres sites","Pour vendre des liens","C''est obligatoire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-f', 4, 2, '12 heures par mois à 15 000 Ar de l''heure font…', '["1 800 000 Ar","180 000 Ar","120 000 Ar","15 012 Ar"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle est la différence entre SEO et SEA ?', '["Le SEO concerne Facebook","Le SEO est naturel, le SEA est la publicité payante","Le SEA est gratuit","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle est la première étape du fonctionnement de Google ?', '["L''exploration","La traduction","Le classement","La facturation"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Qu''est-ce que l''indexation ?', '["Google supprime les pages","Google paie le site","Google affiche une publicité","Google enregistre et comprend le contenu des pages"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle pratique est risquée ?', '["Obtenir des liens de partenaires","Créer un contenu utile","Améliorer la vitesse","Acheter des centaines de liens de mauvaise qualité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quel outil fait apparaître une entreprise sur Google Maps ?', '["Un fichier robots.txt","La fiche d''établissement Google","Un logo","Un e-mail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quels sont les 3 critères d''un bon mot clé ?', '["Pertinence, volume, difficulté","Couleur, longueur, prix","Aucun","Langue, police, image"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle page convient à une recherche d''information ?', '["Une page vide","Une page d''erreur","Un article","Une page de paiement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle longueur environ pour une balise titre ?', '["5 caractères","50 à 60 caractères","Aucune limite","500 caractères"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle adresse de page est la meilleure ?', '["/sans-titre-3","/page?id=48291&x=2","/aaaa","/lodge-andasibe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle version du site Google utilise surtout pour classer ?', '["Aucune","La version télévision","La version mobile","La version imprimée"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que faire avec les avis de la fiche Google ?', '["Les ignorer","Écrire de faux avis","En demander aux clients satisfaits et répondre à tous","Supprimer les mauvais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que montre le rapport Performances de Search Console ?', '["Les salaires","Les stocks","Les factures","Requêtes, clics, impressions et positions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Qu''est-ce qu''une impression dans Search Console ?', '["Un clic","Un document imprimé","Une apparition du site dans les résultats","Une vente"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Où trouver des questions que posent les internautes ?', '["Dans le bloc « Autres questions posées » de Google","Dans le fichier robots.txt","Nulle part","Dans la facture"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quel outil mesure la vitesse sur téléphone ?', '["Excel","Ubersuggest","Canva","PageSpeed Insights"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quel outil payant est réputé pour l''analyse des liens ?', '["Google Docs","Ahrefs","MVola","CapCut"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quand acheter un abonnement Semrush ou Ahrefs ?', '["Jamais","Quand vous avez des clients réguliers","Dès le premier jour","Avant d''apprendre les bases"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que révèle souvent un audit d''un site lent ?', '["Un logo trop petit","Rien","Des images trop lourdes","Trop de clients"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que contient un bon brief d''article ?', '["Mot clé, intention, plan, liens internes, appel à l''action","Rien","Seulement un titre","Le prix du produit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Pourquoi relier les articles aux fiches produits ?', '["Pour guider visiteurs et robots vers les pages importantes","Ce n''est pas utile","Pour cacher les produits","Pour ralentir le site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que comparer dans un rapport mensuel ?', '["Les indicateurs avant et après","Les couleurs du site","Les salaires","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quel est le meilleur premier message à un hôtel ?', '["Envoyer un prix sans explication","Critiquer sans proposer","Promettre la première place","Montrer un problème précis et proposer une analyse"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que préciser dans le devis sur les corrections techniques ?', '["Rien","Qu''elles peuvent dépendre du développeur","Qu''elles sont toujours gratuites","Qu''elles sont interdites"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Faut-il accepter d''être payé uniquement à la position ?', '["Oui, si le client insiste","Oui, pour la première place","Non, engagez-vous sur le travail et des indicateurs transparents","Oui, toujours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle évolution vise les sites multilingues ?', '["Graphiste","SEO international","Comptable","Monteur vidéo"]'::jsonb, 1);
 commit;
