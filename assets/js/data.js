@@ -2574,6 +2574,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-4-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du développeur no-code un professionnel qui livre des produits fiables, rapides et capables de grandir : spécialité (Webflow, Bubble, outils internes, MVP, intégrations, maintenance), audit d'un projet, offres payantes de Webflow et de Bubble (CMS, composants, unités de charge, workflows côté serveur, API, versions), sécurité des données, performance, tests et documentation, clients internationaux en anglais, paiements et données personnelles, puis offres, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un projet no-code et connaître ses limites",
+   "Utiliser les offres payantes de Webflow et de Bubble et leurs fonctions avancées",
+   "Protéger les données, optimiser la vitesse et tester chaque mise en ligne",
+   "Mener un projet à distance en anglais avec des clients étrangers",
+   "Intégrer des paiements internationaux en respectant les règles sur les données",
+   "Construire des offres durables, des études de cas et une petite équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer un projet et connaître les limites du no-code",
+    "summary": "Les 6 spécialités avancées, le MVP, l'audit en 6 domaines et son rapport, les limites du no-code et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit d'un projet no-code",
+     "Les limites du no-code",
+     "Construire des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre premier audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : offres payantes de Webflow et de Bubble",
+    "summary": "Offres de site et d'espace de travail Webflow, classes, variables, composants et CMS, unités de charge Bubble, workflows côté serveur, API Connector, versions et propriété des comptes.",
+    "sections": [
+     "Webflow : les offres payantes",
+     "Bubble : les offres payantes",
+     "La propriété des comptes",
+     "Exercice pratique : un projet professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : sécurité, performance, tests et documentation",
+    "summary": "Règles de confidentialité côté serveur, performance, liste de tests, environnements et versions, réutilisation et documentation en 6 parties.",
+    "sections": [
+     "La sécurité des données",
+     "La performance",
+     "Tester avant chaque mise en ligne",
+     "Environnements et versions",
+     "Réutiliser pour aller plus vite",
+     "La documentation",
+     "Exercice pratique : la méthode professionnelle"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, projets à distance, données et paiements",
+    "summary": "Formules en anglais et vidéos de démonstration, conduite de projet à distance, RGPD et rôle du développeur, paiements internationaux au nom du client et travail pour une agence.",
+    "sections": [
+     "Échanger en anglais",
+     "Mener un projet à distance",
+     "Les données personnelles",
+     "Paiements et services internationaux",
+     "Travailler pour une agence",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : offres, maintenance, études de cas et équipe",
+    "summary": "Trois voies, prix au projet avec marge, revenus récurrents, périmètre écrit, études de cas chiffrées, petite équipe, programmes de partenaires et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "dev-4-f": {
   "hours": 16,
   "description": "Le développeur no-code construit des sites, des applications et des outils fonctionnels avec des plateformes visuelles, sans écrire de code. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs, des PME et des agences, à Madagascar et à l'étranger, avec Webflow, Bubble et Glide : histoires d'utilisateur, données, mise en page, logique, droits d'accès, tests, livraison et maintenance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

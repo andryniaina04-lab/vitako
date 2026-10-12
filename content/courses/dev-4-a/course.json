@@ -1,0 +1,97 @@
+{
+  "id": "dev-4-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du développeur no-code un professionnel qui livre des produits fiables, rapides et capables de grandir : spécialité (Webflow, Bubble, outils internes, MVP, intégrations, maintenance), audit d'un projet, offres payantes de Webflow et de Bubble (CMS, composants, unités de charge, workflows côté serveur, API, versions), sécurité des données, performance, tests et documentation, clients internationaux en anglais, paiements et données personnelles, puis offres, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer un projet no-code et connaître ses limites",
+    "Utiliser les offres payantes de Webflow et de Bubble et leurs fonctions avancées",
+    "Protéger les données, optimiser la vitesse et tester chaque mise en ligne",
+    "Mener un projet à distance en anglais avec des clients étrangers",
+    "Intégrer des paiements internationaux en respectant les règles sur les données",
+    "Construire des offres durables, des études de cas et une petite équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer un projet et connaître les limites du no-code",
+      "summary": "Les 6 spécialités avancées, le MVP, l'audit en 6 domaines et son rapport, les limites du no-code et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un MVP ?", "options": ["La version la plus simple d'un produit pour tester un marché", "Un logiciel de comptabilité", "Un type de serveur", "Un contrat"], "correct": 0 },
+        { "q": "Quel accès demander pour auditer un projet ?", "options": ["Un accès collaborateur", "Le mot de passe du compte du client", "Aucun accès", "La carte bancaire du client"], "correct": 0 },
+        { "q": "Que faire quand un besoin dépasse le no-code ?", "options": ["Le dire et proposer une solution hybride", "Le cacher", "Refuser le client sans explication", "Promettre quand même"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : offres payantes de Webflow et de Bubble",
+      "summary": "Offres de site et d'espace de travail Webflow, classes, variables, composants et CMS, unités de charge Bubble, workflows côté serveur, API Connector, versions et propriété des comptes.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que mesurent les unités de charge de Bubble ?", "options": ["Le travail du serveur", "Le nombre de pages", "Le poids des images seulement", "Le nombre de couleurs"], "correct": 0 },
+        { "q": "À qui doivent appartenir le compte et le domaine ?", "options": ["Au client", "Au développeur", "À la plateforme", "À personne"], "correct": 0 },
+        { "q": "Comment réduire la consommation d'une page qui charge trop de données ?", "options": ["Filtrer dans la recherche et paginer", "Ajouter plus d'images", "Charger toutes les données deux fois", "Supprimer la base"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : sécurité, performance, tests et documentation",
+      "summary": "Règles de confidentialité côté serveur, performance, liste de tests, environnements et versions, réutilisation et documentation en 6 parties.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Cacher un élément dans la page suffit-il à protéger les données ?", "options": ["Non, il faut des règles côté serveur", "Oui, toujours", "Oui, sur téléphone", "Oui, si la page est jolie"], "correct": 0 },
+        { "q": "Comment tester la sécurité ?", "options": ["Avec un compte de test sans droits", "Seulement avec le compte administrateur", "En ne testant rien", "En demandant au client de deviner"], "correct": 0 },
+        { "q": "Pourquoi des données de test séparées ?", "options": ["Pour ne pas envoyer d'e-mails aux vrais clients par erreur", "Pour décorer", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, projets à distance, données et paiements",
+      "summary": "Formules en anglais et vidéos de démonstration, conduite de projet à distance, RGPD et rôle du développeur, paiements internationaux au nom du client et travail pour une agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Au nom de qui ouvrir le compte de paiement en ligne ?", "options": ["Du client", "Du développeur", "D'un ami", "De la plateforme no-code"], "correct": 0 },
+        { "q": "Que faire d'une nouvelle demande en cours de projet ?", "options": ["La chiffrer avant de la faire", "La faire gratuitement sans rien dire", "L'ignorer", "Arrêter le projet"], "correct": 0 },
+        { "q": "Que signifie travailler en marque blanche pour une agence ?", "options": ["Travailler sous le nom de l'agence sans contacter ses clients directement", "Peindre en blanc", "Travailler gratuitement", "Signer de son propre nom"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres, maintenance, études de cas et équipe",
+      "summary": "Trois voies, prix au projet avec marge, revenus récurrents, périmètre écrit, études de cas chiffrées, petite équipe, programmes de partenaires et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle marge ajouter à l'estimation d'un projet ?", "options": ["20 à 30 % pour les tests, échanges et imprévus", "Aucune", "300 %", "1 %"], "correct": 0 },
+        { "q": "Que faut-il avant de vendre un projet au forfait ?", "options": ["Un périmètre écrit", "Rien", "Un logo", "Une vidéo"], "correct": 0 },
+        { "q": "Quelle formule apporte des revenus réguliers ?", "options": ["La maintenance mensuelle", "Un projet unique", "Un audit gratuit", "Une réduction"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité consiste à créer des applications pour les équipes d'une entreprise ?", "options": ["Les outils internes", "Le SEO", "La retouche photo", "La traduction"], "correct": 0 },
+    { "q": "Pourquoi l'audit est-il une bonne offre d'entrée ?", "options": ["Le client paie un diagnostic puis confie souvent les corrections", "Il est toujours gratuit", "Il remplace le projet", "Il ne sert à rien"], "correct": 0 },
+    { "q": "Quel problème d'audit est le plus urgent ?", "options": ["Des réservations visibles par tous les utilisateurs", "Trop de styles de bouton", "Une couleur pâle", "Un titre long"], "correct": 0 },
+    { "q": "Quelle est une limite du no-code ?", "options": ["La dépendance à la plateforme", "L'impossibilité de faire un site", "L'absence de base de données", "Aucune"], "correct": 0 },
+    { "q": "Que distingue Webflow dans ses offres ?", "options": ["L'offre du site et l'offre de l'espace de travail", "Rien", "Les couleurs", "Les langues de l'interface"], "correct": 0 },
+    { "q": "Pourquoi des variables dans Webflow ?", "options": ["Définir couleurs, tailles et espacements une seule fois", "Pour calculer des prix", "Pour stocker des mots de passe", "Pour envoyer des e-mails"], "correct": 0 },
+    { "q": "Quel avantage de l'éditeur Webflow pour le client ?", "options": ["Modifier les textes et ajouter des articles sans toucher au design", "Changer de plateforme", "Ne rien payer", "Coder en Python"], "correct": 0 },
+    { "q": "À quoi servent les workflows côté serveur de Bubble ?", "options": ["Tâches planifiées, traitements de listes, webhooks reçus", "Changer les couleurs", "Écrire des articles", "Imprimer"], "correct": 0 },
+    { "q": "À quoi sert l'API Connector ?", "options": ["Appeler un service externe", "Dessiner des logos", "Traduire des pages", "Compresser des images"], "correct": 0 },
+    { "q": "Pourquoi expliquer le coût mensuel de la plateforme dès le devis ?", "options": ["Le client doit savoir qu'il paiera un abonnement, souvent en dollars", "Pour faire peur", "Ce n'est pas utile", "Pour l'éviter"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une règle de confidentialité ?", "options": ["Une règle côté serveur qui définit qui voit ou modifie chaque donnée", "Un texte en bas de page seulement", "Une couleur", "Un mot de passe"], "correct": 0 },
+    { "q": "Où ne jamais mettre une clé d'API ?", "options": ["Dans un champ visible ou le code de la page", "Dans les réglages privés", "Dans un gestionnaire sécurisé", "Nulle part du tout"], "correct": 0 },
+    { "q": "Comment accélérer une page avec des images lourdes ?", "options": ["Formats modernes, tailles adaptées, chargement différé", "Ajouter plus d'images", "Mettre des vidéos", "Rien"], "correct": 0 },
+    { "q": "Pourquoi tester avec une connexion lente ?", "options": ["Beaucoup d'utilisateurs se connectent ainsi", "Pour perdre du temps", "Ce n'est pas utile", "Pour l'esthétique"], "correct": 0 },
+    { "q": "Quand repasser la liste de tests ?", "options": ["Avant chaque mise en ligne", "Jamais", "Une fois par an", "Seulement au début"], "correct": 0 },
+    { "q": "Que contient une bonne documentation ?", "options": ["Rôles, données, règles, automatisations, comptes et procédures", "Seulement le logo", "Les mots de passe en clair", "Rien"], "correct": 0 },
+    { "q": "Pourquoi des vidéos courtes avec les clients étrangers ?", "options": ["Elles remplacent des réunions malgré le décalage horaire", "Elles sont obligatoires", "Pour éviter d'écrire", "Pour faire joli"], "correct": 0 },
+    { "q": "Que contient un point hebdomadaire ?", "options": ["Ce qui est fait, la suite, les blocages et une démonstration", "Seulement la facture", "Rien", "Une plainte"], "correct": 0 },
+    { "q": "Quel est le rôle du développeur face au RGPD ?", "options": ["Proposer les bonnes pratiques et protéger les données, sans jouer le juriste", "Garantir seul la conformité juridique", "Ignorer le sujet", "Rédiger seul les contrats"], "correct": 0 },
+    { "q": "Que prévoir dans un contrat avec une agence ?", "options": ["Confidentialité, propriété du travail, non-sollicitation", "Rien", "Seulement le prix", "Le logo de l'agence"], "correct": 0 },
+    { "q": "Comment calculer le prix d'un projet ?", "options": ["Jours estimés plus marge, multipliés par le tarif journalier", "Au hasard", "Selon la couleur du site", "Toujours le même prix"], "correct": 0 },
+    { "q": "Que publier dans une étude de cas ?", "options": ["Des chiffres vérifiables avec l'accord du client", "Des résultats inventés", "Les données privées du client", "Rien"], "correct": 0 },
+    { "q": "Quand ajouter un second développeur no-code ?", "options": ["Quand vous refusez des projets", "Dès le premier jour", "Jamais", "Quand vous n'avez aucun client"], "correct": 0 },
+    { "q": "Quelle règle de qualité appliquer dans une équipe ?", "options": ["Une revue de chaque livraison par une seconde personne", "Aucune revue", "Chacun ses normes", "Pas de documentation"], "correct": 0 },
+    { "q": "Que peuvent apporter les programmes de partenaires des plateformes ?", "options": ["De la visibilité et des clients étrangers", "Un salaire garanti", "Des abonnements gratuits à vie", "Rien"], "correct": 0 }
+  ]
+}

@@ -32,7 +32,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
-  ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 17, false),
+  ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 16, true),
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
@@ -17471,6 +17471,548 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- dev-4-a
+delete from public.exam_questions where course_id = 'dev-4-a';
+delete from public.module_questions where course_id = 'dev-4-a';
+delete from public.lessons where course_id = 'dev-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-a', 0, 'Se spécialiser, auditer un projet et connaître les limites du no-code', 'Les 6 spécialités avancées, le MVP, l''audit en 6 domaines et son rapport, les limites du no-code et les offres à forte valeur.', 'Construire un site ou une petite application sans coder ouvre les premières missions. Les développeurs no-code les mieux payés livrent des produits **fiables, rapides et capables de grandir** : des données bien conçues, des droits d''accès solides, des intégrations avec d''autres services et une documentation qui permet au client d''avancer. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du no-code.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit d''un site ou d''une application no-code.
+> 4. Reconnaître les limites du no-code et savoir quand passer au code.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Sites Webflow pour entreprises** | Sites vitrines riches, blogs, pages de vente avec CMS | Classes, composants, CMS, référencement, animations |
+| 2 | **Applications web Bubble** | Plateformes, places de marché, outils métier | Base de données, workflows, droits, API |
+| 3 | **Outils internes** | Applications pour les équipes : stocks, demandes, suivi | Glide ou Bubble, tableurs, automatisations |
+| 4 | **MVP pour start-up** | Première version d''un produit pour tester un marché | Cadrage rapide, priorités, paiement en ligne |
+| 5 | **Intégrations et automatisations** | Relier le site ou l''application à d''autres outils | API, webhooks, Make ou Zapier |
+| 6 | **Maintenance et évolution** | Suivre, corriger et améliorer des produits existants | Lecture d''un projet inconnu, documentation |
+
+> [!definition] MVP (produit minimum viable)
+> La version la plus simple d''un produit qui permet de vérifier que des clients en veulent vraiment, avant d''investir davantage.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Outils internes** pour les entreprises, ONG et coopératives malgaches qui gèrent encore tout sur papier ou dans des tableurs.
+> - **Sites Webflow en français** pour les agences et indépendants francophones, avec un faible décalage horaire avec l''Europe.
+> - **Maintenance mensuelle** : un revenu régulier avec des clients que vous connaissez déjà.
+
+## L''audit d''un projet no-code
+
+Un audit est une excellente **offre d''entrée** : le client paie pour un diagnostic clair, puis vous confie souvent les corrections.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Données** | Tables bien reliées, pas de doublons, types de champs adaptés |
+| **Sécurité** | Règles de confidentialité, pages protégées, données visibles par erreur |
+| **Performance** | Temps de chargement, requêtes lourdes, images trop grandes |
+| **Structure** | Classes ou styles réutilisables, composants, noms clairs |
+| **Référencement et accessibilité** (sites) | Titres, descriptions, textes alternatifs, contrastes |
+| **Coûts** | Offre utilisée, consommation, limites proches |
+
+### Le rapport d''audit
+
+```
+Projet : application de réservation – Lodge Ambatoloaka
+Note globale : 5/10
+
+Urgent (sécurité)
+- La liste des réservations est visible par tous les utilisateurs connectés : ajouter une règle de confidentialité.
+Important (performance)
+- La page d''accueil charge toutes les réservations : filtrer côté base.
+À améliorer (structure)
+- 14 styles de bouton différents : créer 3 styles réutilisables.
+
+Proposition : corrections en 5 jours, puis maintenance mensuelle.
+```
+
+> [!attention]
+> Pour auditer, demandez un **accès collaborateur** au projet, jamais le mot de passe du compte du client. Retirez votre accès ou faites-le retirer à la fin de la mission.
+
+## Les limites du no-code
+
+| Situation | Ce qu''il faut savoir |
+| --- | --- |
+| **Très gros volumes de données** | Les coûts et les temps de réponse peuvent augmenter fortement |
+| **Fonctions très spécifiques** | Un plugin ou du code personnalisé peut être nécessaire |
+| **Dépendance à la plateforme** | Le projet ne peut pas toujours être exporté ailleurs |
+| **Exigences légales fortes** | Lieu de stockage des données, audits de sécurité à vérifier |
+| **Application mobile native complexe** | Un développement mobile classique peut être plus adapté |
+
+> [!astuce]
+> Dire honnêtement « ce besoin dépasse le no-code » fait gagner la confiance du client. Vous pouvez proposer un **hybride** : interface en no-code et une petite partie en code confiée à un développeur.
+
+## Construire des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit** | Rapport priorisé et proposition | 300 000 Ar |
+| **MVP en 4 à 6 semaines** | Cadrage, construction, tests, mise en ligne | 3 500 000 Ar |
+| **Outil interne** | Application pour une équipe, formation, guide | 2 000 000 Ar |
+| **Maintenance mensuelle** | Suivi, corrections, petites évolutions | 300 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : Webflow, Bubble, outils internes, MVP, intégrations, maintenance.
+> - L''audit est une offre d''entrée qui mène aux corrections.
+> - Données, sécurité, performance, structure, référencement, coûts.
+> - Connaître les limites du no-code et le dire.
+> - Des offres à valeur : MVP, outil interne, maintenance.
+
+## Exercice pratique : votre spécialité et votre premier audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Auditez un de vos projets (ou un modèle public) dans les 6 domaines.
+> 3. Rédigez un rapport priorisé : urgent, important, à améliorer.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix argumenté, votre rapport d''audit et vos 3 offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 0, 0, 'Qu''est-ce qu''un MVP ?', '["Un logiciel de comptabilité","Un type de serveur","La version la plus simple d''un produit pour tester un marché","Un contrat"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 0, 1, 'Quel accès demander pour auditer un projet ?', '["Aucun accès","Un accès collaborateur","La carte bancaire du client","Le mot de passe du compte du client"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 0, 2, 'Que faire quand un besoin dépasse le no-code ?', '["Refuser le client sans explication","Promettre quand même","Le dire et proposer une solution hybride","Le cacher"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-a', 1, 'Outils professionnels : offres payantes de Webflow et de Bubble', 'Offres de site et d''espace de travail Webflow, classes, variables, composants et CMS, unités de charge Bubble, workflows côté serveur, API Connector, versions et propriété des comptes.', 'Les projets professionnels se construisent sur les **offres payantes** de Webflow et de Bubble : domaine personnalisé, CMS plus large, collaboration, environnement de test, tâches côté serveur et plus de capacité. Ce module vous apprend à choisir la bonne offre, à travailler en équipe sur un projet et à utiliser les fonctions avancées.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir une offre Webflow adaptée au projet du client.
+> 2. Organiser un site Webflow professionnel avec composants et CMS.
+> 3. Choisir une offre Bubble et suivre sa consommation.
+> 4. Utiliser les fonctions avancées de Bubble : workflows côté serveur, API, versions.
+> 5. Organiser la propriété des comptes et la facturation.
+
+## Webflow : les offres payantes
+
+> [!definition] Offre de site et offre d''espace de travail
+> Webflow distingue l''offre du **site** (domaine, CMS, trafic, formulaires) et l''offre de l''**espace de travail** (nombre de collaborateurs, nombre de projets). Les noms, limites et prix évoluent : vérifiez-les sur le site officiel avant chaque devis.
+
+| Besoin du client | Ce qu''il faut vérifier dans l''offre |
+| --- | --- |
+| Site vitrine simple | Domaine personnalisé, formulaires, nombre de pages |
+| Blog ou catalogue | Nombre d''éléments du CMS et de collections |
+| Site en plusieurs langues | Option de localisation et son coût |
+| Équipe qui modifie les textes | Nombre de places d''éditeurs |
+| Site à fort trafic | Bande passante et limites de trafic |
+
+### Organiser un site professionnel
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Classes** | Un système de noms clair (par exemple « btn-primary », « section-hero ») |
+| **Variables** | Couleurs, tailles de texte et espacements définis une fois |
+| **Composants** | En-tête, pied de page, cartes, appels à l''action réutilisables |
+| **CMS** | Collections reliées (articles et auteurs, produits et catégories) |
+| **Pages modèles** | Une page de collection bien conçue pour tous les éléments |
+| **Référencement** | Titres et descriptions dynamiques depuis le CMS |
+
+> [!astuce]
+> Préparez le site pour que le client puisse **modifier les textes et ajouter des articles seul** grâce à l''éditeur, sans toucher au design. C''est l''un des grands avantages de Webflow.
+
+## Bubble : les offres payantes
+
+> [!definition] Unités de charge (workload units)
+> Bubble mesure le travail du serveur (recherches, workflows, appels d''API) en unités de charge. Chaque offre inclut une quantité ; au-delà, des frais s''ajoutent ou l''application ralentit selon les réglages. Vérifiez le fonctionnement actuel sur le site officiel.
+
+| Besoin du client | Ce qu''il faut vérifier dans l''offre |
+| --- | --- |
+| Mise en ligne avec un domaine | Domaine personnalisé |
+| Tâches planifiées ou automatiques | Workflows côté serveur |
+| Plusieurs développeurs | Nombre de collaborateurs |
+| Projet qui évolue | Historique et branches de versions |
+| Beaucoup d''utilisateurs | Unités de charge incluses, journaux, capacité |
+
+### Les fonctions avancées
+
+| Fonction | Usage |
+| --- | --- |
+| **Workflows côté serveur** (backend workflows) | Tâches planifiées, traitements de listes, webhooks reçus |
+| **API Connector** | Appeler un service externe (paiement, e-mail, cartes) |
+| **API de l''application** | Permettre à d''autres outils de lire ou créer des données |
+| **Option sets** | Listes fixes (statuts, catégories) rapides et économes |
+| **Éléments réutilisables** | Composants partagés entre pages |
+| **Versions et branches** | Travailler sur une nouvelle fonction sans casser la version en ligne |
+| **Journaux et outil de suivi de la charge** | Repérer ce qui consomme le plus |
+
+> [!exemple] Réduire la consommation
+> Une page affichait toutes les réservations puis les filtrait dans la page : 3 000 réservations chargées à chaque visite. Le filtre a été déplacé **dans la recherche** et la liste paginée par 20. La consommation de la page a fortement baissé.
+
+## La propriété des comptes
+
+> [!attention]
+> Le compte, le domaine et l''abonnement doivent appartenir **au client**, qui vous invite comme collaborateur. Si c''est vous qui payez, le client dépend de vous et la fin de la relation devient compliquée. Si vous payez pour lui, refacturez-le clairement et prévoyez le transfert du projet.
+
+| Élément | Propriétaire conseillé |
+| --- | --- |
+| Compte Webflow ou Bubble et abonnement | Le client |
+| Nom de domaine | Le client |
+| Comptes des services reliés (paiement, e-mail) | Le client |
+| Votre accès | Collaborateur, retiré à la fin si plus de maintenance |
+
+> [!madagascar]
+> Les abonnements sont facturés en dollars par carte bancaire internationale. Beaucoup de clients malgaches n''en ont pas : expliquez dès le devis le **coût mensuel** de la plateforme et la façon de le payer (carte du client, carte prépayée internationale, ou refacturation avec accord écrit).
+
+> [!retenir]
+> - Webflow : offre de site et offre d''espace de travail, à vérifier avant chaque devis.
+> - Classes, variables, composants et CMS bien organisés.
+> - Bubble : unités de charge, workflows côté serveur, API, versions.
+> - Réduire la consommation avec des recherches filtrées.
+> - Comptes, domaine et abonnement au nom du client.
+
+## Exercice pratique : un projet professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Comparez les offres actuelles de Webflow et de Bubble pour deux projets fictifs (blog de 300 articles, application de réservation).
+> 2. Organisez un site Webflow avec variables, 4 composants et une collection CMS.
+> 3. Dans Bubble, créez un workflow côté serveur (sur un projet d''essai ou en le décrivant précisément) et un appel avec l''API Connector.
+> 4. Rédigez une note pour le client sur la propriété des comptes et les coûts mensuels.
+>
+> **À livrer** : votre comparatif, des captures et votre note au client.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 1, 0, 'Que mesurent les unités de charge de Bubble ?', '["Le poids des images seulement","Le nombre de couleurs","Le travail du serveur","Le nombre de pages"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 1, 1, 'À qui doivent appartenir le compte et le domaine ?', '["À la plateforme","À personne","Au client","Au développeur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 1, 2, 'Comment réduire la consommation d''une page qui charge trop de données ?', '["Ajouter plus d''images","Supprimer la base","Filtrer dans la recherche et paginer","Charger toutes les données deux fois"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-a', 2, 'Qualité et rapidité : sécurité, performance, tests et documentation', 'Règles de confidentialité côté serveur, performance, liste de tests, environnements et versions, réutilisation et documentation en 6 parties.', 'Un produit no-code professionnel doit être **sûr, rapide, testé et documenté**, et il doit être livré à temps. Ce module vous donne les méthodes des meilleurs développeurs no-code : sécurité des données, performance, tests, environnements, réutilisation et documentation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Protéger les données avec des règles de confidentialité solides.
+> 2. Optimiser la vitesse d''un site ou d''une application.
+> 3. Tester avant chaque mise en ligne.
+> 4. Travailler avec un environnement de test et des versions.
+> 5. Gagner du temps avec une bibliothèque de composants et une documentation.
+
+## La sécurité des données
+
+> [!definition] Règle de confidentialité
+> Une règle qui définit, **côté serveur**, qui peut voir ou modifier chaque type de donnée. Cacher un élément dans la page ne suffit pas : les données restent accessibles si la règle n''existe pas.
+
+| Vérification | Exemple |
+| --- | --- |
+| Chaque table a des règles | « Un client ne voit que ses propres commandes » |
+| Les champs sensibles sont protégés | Téléphone visible seulement par l''administrateur |
+| Les pages d''administration sont protégées | Redirection si l''utilisateur n''a pas le bon rôle |
+| Les workflows vérifient les droits | Seul l''auteur peut supprimer son annonce |
+| Les clés d''API sont privées | Jamais dans un champ visible ou dans le code de la page |
+
+> [!attention]
+> Testez la sécurité **avec un compte de test sans droits** : essayez d''ouvrir les pages et les données des autres. Beaucoup de fuites de données viennent d''applications no-code où seule l''interface était protégée.
+
+## La performance
+
+| Problème | Solution |
+| --- | --- |
+| Images lourdes | Formats modernes, tailles adaptées, chargement différé |
+| Trop de données chargées | Filtres dans la recherche, pagination |
+| Calculs répétés dans la page | Enregistrer le résultat dans un champ |
+| Trop d''éléments sur une page | Diviser en onglets ou en pages |
+| Scripts externes nombreux | Garder seulement les outils nécessaires |
+
+> [!madagascar]
+> Testez toujours vos projets avec une **connexion mobile lente**. Les outils du navigateur permettent de simuler un réseau lent : beaucoup de vos utilisateurs malgaches, et une partie des utilisateurs africains, se connectent ainsi.
+
+## Tester avant chaque mise en ligne
+
+| Type de test | Ce qu''on vérifie |
+| --- | --- |
+| **Parcours principaux** | Inscription, commande, paiement, réservation |
+| **Rôles** | Chaque rôle voit et fait seulement ce qu''il doit |
+| **Appareils** | Téléphone, tablette, ordinateur |
+| **Cas limites** | Champs vides, textes très longs, doubles clics |
+| **E-mails et notifications** | Envoyés, bien affichés, bons destinataires |
+| **Intégrations** | Paiement, API, automatisations |
+
+> [!astuce]
+> Gardez une **liste de tests écrite** pour chaque projet et repassez-la avant chaque mise en ligne. Elle évite de casser une fonction ancienne en ajoutant une nouvelle.
+
+## Environnements et versions
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Version de développement** séparée de la version en ligne | Tester sans déranger les utilisateurs |
+| **Données de test** distinctes des vraies données | Ne pas envoyer d''e-mails aux vrais clients par erreur |
+| **Points de sauvegarde** avant chaque gros changement | Revenir en arrière si besoin |
+| **Notes de version** | Le client sait ce qui a changé |
+
+## Réutiliser pour aller plus vite
+
+1. **Une bibliothèque de composants** : en-têtes, cartes, formulaires, tableaux.
+2. **Des modèles de projet** : structure de base de données, rôles, pages d''administration.
+3. **Des workflows types** : inscription, réinitialisation du mot de passe, notifications.
+4. **Une liste de tests** et un **modèle de documentation**.
+
+## La documentation
+
+```
+Application Stock-Kely – Documentation
+1. Rôles : administrateur, magasinier, lecteur
+2. Données : Produits, Mouvements, Fournisseurs (schéma joint)
+3. Règles : un magasinier ne peut pas supprimer un mouvement
+4. Automatisations : alerte e-mail si stock sous le seuil
+5. Comptes et abonnements : propriétaire, offre, coût mensuel
+6. Procédure : ajouter un utilisateur, changer un seuil
+```
+
+> [!retenir]
+> - Des règles de confidentialité côté serveur, testées avec un compte sans droits.
+> - Images légères, recherches filtrées, pages allégées.
+> - Une liste de tests repassée avant chaque mise en ligne.
+> - Version de développement, données de test, sauvegardes.
+> - Composants, modèles et documentation pour livrer plus vite.
+
+## Exercice pratique : la méthode professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Ajoutez des règles de confidentialité à un de vos projets et testez-les avec un compte sans droits.
+> 2. Mesurez la vitesse d''une page, appliquez 3 améliorations et mesurez à nouveau.
+> 3. Rédigez la liste de tests du projet.
+> 4. Rédigez sa documentation en 6 parties.
+>
+> **À livrer** : vos règles, vos mesures avant et après, votre liste de tests et votre documentation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 2, 0, 'Cacher un élément dans la page suffit-il à protéger les données ?', '["Oui, toujours","Oui, si la page est jolie","Non, il faut des règles côté serveur","Oui, sur téléphone"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 2, 1, 'Comment tester la sécurité ?', '["Seulement avec le compte administrateur","Avec un compte de test sans droits","En demandant au client de deviner","En ne testant rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 2, 2, 'Pourquoi des données de test séparées ?', '["Ce n''est pas utile","Pour décorer","Pour ne pas envoyer d''e-mails aux vrais clients par erreur","Pour payer moins"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-a', 3, 'Clients internationaux : anglais, projets à distance, données et paiements', 'Formules en anglais et vidéos de démonstration, conduite de projet à distance, RGPD et rôle du développeur, paiements internationaux au nom du client et travail pour une agence.', 'Les start-up, agences et entreprises d''Europe, d''Amérique du Nord et d''Afrique recrutent des développeurs no-code à distance. Ce module vous prépare à travailler avec eux : échanges en anglais, gestion de projet à distance, règles sur les données, paiements en ligne internationaux et collaboration avec une agence.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Échanger sur un projet en anglais.
+> 2. Mener un projet à distance avec des clients étrangers.
+> 3. Respecter les grandes règles sur les données personnelles.
+> 4. Intégrer des paiements et services internationaux.
+> 5. Travailler en sous-traitance pour une agence.
+
+## Échanger en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Clarifier un besoin | « Just to make sure I understand: users should be able to cancel a booking up to 24 hours before? » |
+| Annoncer un délai | « The booking flow will be ready for review on Thursday. » |
+| Signaler une limite | « This is possible, but it will increase the monthly workload on Bubble. Here are two options. » |
+| Livrer | « The new version is live. Here are the release notes and a short video walkthrough. » |
+
+> [!astuce]
+> Les **vidéos courtes** enregistrées avec un outil d''enregistrement d''écran remplacent beaucoup de réunions : vous montrez votre travail en 3 minutes, le client regarde quand il veut, malgré le décalage horaire.
+
+## Mener un projet à distance
+
+| Étape | Pratique |
+| --- | --- |
+| **Cadrage** | Appel vidéo, puis document écrit validé : fonctions, hors périmètre, délais |
+| **Découpage** | Étapes de 1 à 2 semaines avec un livrable visible |
+| **Suivi** | Point écrit chaque semaine, vidéo de démonstration |
+| **Changements** | Toute nouvelle demande est chiffrée avant d''être faite |
+| **Recette** | Le client teste avec une liste de tests |
+| **Mise en ligne** | Date convenue, plan de retour en arrière |
+
+> [!exemple] Point hebdomadaire
+> **Week 3 – Booking app**
+> Done: booking form, availability calendar, email confirmations.
+> Next week: Stripe payment, admin dashboard.
+> Blocker: we need the Stripe account access from your side.
+> Demo video: (lien)
+
+## Les données personnelles
+
+| Région | Ce qu''il faut savoir |
+| --- | --- |
+| **Union européenne** | Le RGPD impose une base légale, l''information des utilisateurs, la sécurité et des droits (accès, suppression) |
+| **Autres pays** | Règles variables ; le client doit les connaître pour son marché |
+| **Madagascar** | Une loi sur la protection des données personnelles existe ; vérifiez les obligations à jour pour vos clients locaux |
+
+### Votre rôle
+
+1. **Proposer** les bonnes pratiques : formulaire de consentement, page de confidentialité, suppression de compte.
+2. **Vérifier** où la plateforme stocke les données si le client le demande.
+3. **Protéger** les données avec des règles solides (module 3).
+4. **Laisser** au client la responsabilité juridique : il valide ses textes légaux, avec un conseil si besoin.
+
+> [!attention]
+> Vous n''êtes pas juriste. Ne rédigez pas seul des conditions générales ou une politique de confidentialité « garanties conformes » ; recommandez au client de les faire valider.
+
+## Paiements et services internationaux
+
+| Besoin | Outils courants |
+| --- | --- |
+| Paiement en ligne | Stripe, PayPal (selon les pays du client) |
+| Abonnements | Stripe Billing, outils intégrés aux plateformes |
+| E-mails automatiques | Services d''envoi d''e-mails transactionnels |
+| Cartes et adresses | Services de cartographie |
+| Fichiers | Stockage intégré ou service externe |
+
+> [!madagascar]
+> Le compte de paiement (par exemple Stripe) est ouvert **au nom du client**, dans un pays où le service est disponible. Vous l''intégrez avec un accès développeur ou des clés de test, sans jamais encaisser l''argent à sa place.
+
+## Travailler pour une agence
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Marque blanche** | Vous travaillez sous le nom de l''agence ; vous ne contactez pas ses clients directement |
+| **Normes** | Respectez ses conventions de noms, composants, documentation |
+| **Communication** | Un seul interlocuteur à l''agence |
+| **Contrat** | Confidentialité, propriété du travail, non-sollicitation des clients |
+| **Délais** | Annoncez tôt tout retard |
+
+> [!retenir]
+> - Formules claires en anglais et vidéos courtes de démonstration.
+> - Cadrage écrit, étapes courtes, point hebdomadaire, changements chiffrés.
+> - Bonnes pratiques sur les données, sans jouer le rôle de juriste.
+> - Comptes de paiement au nom du client.
+> - En agence : marque blanche, normes et confidentialité.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais le document de cadrage d''une application de réservation.
+> 2. Rédigez 2 points hebdomadaires en anglais.
+> 3. Intégrez un paiement en mode test (Stripe ou autre) dans un projet d''essai, ou décrivez précisément les étapes.
+> 4. Préparez la liste des bonnes pratiques sur les données à proposer au client.
+>
+> **À livrer** : votre cadrage, vos points, vos captures ou étapes, et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 3, 0, 'Au nom de qui ouvrir le compte de paiement en ligne ?', '["De la plateforme no-code","Du développeur","D''un ami","Du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 3, 1, 'Que faire d''une nouvelle demande en cours de projet ?', '["La chiffrer avant de la faire","Arrêter le projet","L''ignorer","La faire gratuitement sans rien dire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 3, 2, 'Que signifie travailler en marque blanche pour une agence ?', '["Travailler gratuitement","Travailler sous le nom de l''agence sans contacter ses clients directement","Peindre en blanc","Signer de son propre nom"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-4-a', 4, 'Développer son activité : offres, maintenance, études de cas et équipe', 'Trois voies, prix au projet avec marge, revenus récurrents, périmètre écrit, études de cas chiffrées, petite équipe, programmes de partenaires et évolution.', 'Après quelques projets réussis, vous pouvez passer d''un travail à la mission à une **activité stable** : offres claires, revenus récurrents, études de cas, partenaires et, peut-être, une petite équipe. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe ou des partenariats.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Indépendant spécialisé** | Ceux qui aiment construire eux-mêmes | Projets et maintenance |
+| **Petite agence no-code** | Ceux qui aiment vendre et coordonner | Projets plus gros, marge sur l''équipe |
+| **Produit propre** | Ceux qui ont une idée et de la patience | Abonnements, modèles vendus |
+
+## Des offres et des prix durables
+
+### Le prix au projet
+
+1. **Estimez** le temps par fonction (en jours).
+2. **Ajoutez** 20 à 30 % pour les tests, les échanges et l''imprévu.
+3. **Multipliez** par votre tarif journalier.
+4. **Ajoutez** les abonnements de la plateforme, payés par le client.
+
+> [!exemple] Calcul d''un MVP
+> Inscription et profils : 2 jours · Annonces et recherche : 4 jours · Réservation et paiement : 4 jours · Administration : 2 jours · Total : 12 jours + 25 % = 15 jours.
+> À 250 000 Ar par jour : **3 750 000 Ar**, plus l''abonnement Bubble payé par le client. *(Montants donnés en exemple.)*
+
+### Les revenus récurrents
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Maintenance essentielle** | Surveillance, corrections, sauvegardes | 250 000 Ar par mois |
+| **Maintenance et évolution** | Essentielle + 2 jours d''évolutions | 700 000 Ar par mois |
+| **Forfait agence** | Jours réservés chaque mois pour une agence | Selon le volume |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Ne vendez jamais un projet « au forfait » sans **périmètre écrit**. Sans liste précise des fonctions, chaque demande nouvelle devient un débat et votre marge disparaît.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : coopérative de vanille de la SAVA, 120 producteurs.
+> **Problème** : suivi des livraisons dans des cahiers, erreurs de paiement.
+> **Solution** : application Glide reliée à un tableur, puis migrée sur Bubble ; saisie sur téléphone, calcul automatique des paiements.
+> **Résultats** : saisie 3 fois plus rapide, aucune erreur de paiement sur la dernière campagne, rapport mensuel automatique.
+> **Durée** : 5 semaines.
+
+1. **Demandez** l''accord du client avant de publier.
+2. **Donnez** des chiffres vérifiables.
+3. **Montrez** des captures et une courte vidéo.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Designer UI** | Quand les clients demandent des maquettes soignées |
+| **Second développeur no-code** | Quand vous refusez des projets |
+| **Testeur** | Quand les projets deviennent gros |
+| **Développeur** (code) | Pour les fonctions hors du no-code |
+
+### Les règles de qualité
+
+1. **Mêmes normes** : modèles de projet, noms, composants.
+2. **Revue** de chaque livraison par une seconde personne.
+3. **Liste de tests** obligatoire avant mise en ligne.
+4. **Documentation** à jour pour chaque projet.
+
+> [!madagascar]
+> Plusieurs plateformes no-code proposent des **programmes de partenaires ou d''experts certifiés** et des annuaires. Un profil bien rempli, avec des études de cas, peut vous apporter des clients étrangers. Vérifiez les conditions d''entrée de chaque programme.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Expert d''une plateforme** | Certifications, contributions à la communauté, modèles publiés |
+| **Consultant produit** | Cadrage, priorités, tests auprès des utilisateurs |
+| **Développeur** | Bases de JavaScript et des API (voir la formation Développeur front-end) |
+| **Spécialiste automatisation** | Voir la formation Spécialiste automatisation et IA |
+
+> [!retenir]
+> - Indépendant, agence ou produit : choisissez votre voie.
+> - Un prix basé sur les jours, avec marge, et des revenus récurrents.
+> - Un périmètre écrit pour chaque forfait.
+> - Des études de cas chiffrées avec l''accord du client.
+> - Une équipe avec des normes communes et une revue systématique.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif de revenus à 12 mois.
+> 2. Calculez le prix de 2 projets types et de 2 formules de maintenance.
+> 3. Rédigez une étude de cas (réelle ou à partir de votre projet de formation).
+> 4. Listez les 3 actions des 30 prochains jours pour trouver vos clients.
+>
+> **À livrer** : votre plan, vos calculs, votre étude de cas et vos 3 actions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 4, 0, 'Quelle marge ajouter à l''estimation d''un projet ?', '["300 %","Aucune","1 %","20 à 30 % pour les tests, échanges et imprévus"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 4, 1, 'Que faut-il avant de vendre un projet au forfait ?', '["Une vidéo","Rien","Un logo","Un périmètre écrit"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-4-a', 4, 2, 'Quelle formule apporte des revenus réguliers ?', '["Un audit gratuit","La maintenance mensuelle","Un projet unique","Une réduction"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quelle spécialité consiste à créer des applications pour les équipes d''une entreprise ?', '["Les outils internes","Le SEO","La traduction","La retouche photo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Pourquoi l''audit est-il une bonne offre d''entrée ?', '["Le client paie un diagnostic puis confie souvent les corrections","Il ne sert à rien","Il est toujours gratuit","Il remplace le projet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quel problème d''audit est le plus urgent ?', '["Des réservations visibles par tous les utilisateurs","Une couleur pâle","Un titre long","Trop de styles de bouton"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quelle est une limite du no-code ?', '["La dépendance à la plateforme","L''impossibilité de faire un site","L''absence de base de données","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que distingue Webflow dans ses offres ?', '["Les couleurs","L''offre du site et l''offre de l''espace de travail","Rien","Les langues de l''interface"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Pourquoi des variables dans Webflow ?', '["Pour stocker des mots de passe","Pour calculer des prix","Pour envoyer des e-mails","Définir couleurs, tailles et espacements une seule fois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quel avantage de l''éditeur Webflow pour le client ?', '["Coder en Python","Changer de plateforme","Modifier les textes et ajouter des articles sans toucher au design","Ne rien payer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'À quoi servent les workflows côté serveur de Bubble ?', '["Écrire des articles","Changer les couleurs","Tâches planifiées, traitements de listes, webhooks reçus","Imprimer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'À quoi sert l''API Connector ?', '["Traduire des pages","Compresser des images","Dessiner des logos","Appeler un service externe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Pourquoi expliquer le coût mensuel de la plateforme dès le devis ?', '["Pour faire peur","Le client doit savoir qu''il paiera un abonnement, souvent en dollars","Ce n''est pas utile","Pour l''éviter"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Qu''est-ce qu''une règle de confidentialité ?', '["Une couleur","Un mot de passe","Un texte en bas de page seulement","Une règle côté serveur qui définit qui voit ou modifie chaque donnée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Où ne jamais mettre une clé d''API ?', '["Dans un gestionnaire sécurisé","Dans les réglages privés","Nulle part du tout","Dans un champ visible ou le code de la page"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Comment accélérer une page avec des images lourdes ?', '["Ajouter plus d''images","Formats modernes, tailles adaptées, chargement différé","Mettre des vidéos","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Pourquoi tester avec une connexion lente ?', '["Pour l''esthétique","Pour perdre du temps","Ce n''est pas utile","Beaucoup d''utilisateurs se connectent ainsi"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quand repasser la liste de tests ?', '["Jamais","Seulement au début","Une fois par an","Avant chaque mise en ligne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que contient une bonne documentation ?', '["Les mots de passe en clair","Seulement le logo","Rôles, données, règles, automatisations, comptes et procédures","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Pourquoi des vidéos courtes avec les clients étrangers ?', '["Elles sont obligatoires","Pour éviter d''écrire","Pour faire joli","Elles remplacent des réunions malgré le décalage horaire"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que contient un point hebdomadaire ?', '["Seulement la facture","Ce qui est fait, la suite, les blocages et une démonstration","Rien","Une plainte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quel est le rôle du développeur face au RGPD ?', '["Proposer les bonnes pratiques et protéger les données, sans jouer le juriste","Ignorer le sujet","Rédiger seul les contrats","Garantir seul la conformité juridique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que prévoir dans un contrat avec une agence ?', '["Seulement le prix","Confidentialité, propriété du travail, non-sollicitation","Rien","Le logo de l''agence"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Comment calculer le prix d''un projet ?', '["Jours estimés plus marge, multipliés par le tarif journalier","Toujours le même prix","Au hasard","Selon la couleur du site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que publier dans une étude de cas ?', '["Des résultats inventés","Rien","Les données privées du client","Des chiffres vérifiables avec l''accord du client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quand ajouter un second développeur no-code ?', '["Dès le premier jour","Quand vous n''avez aucun client","Quand vous refusez des projets","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Quelle règle de qualité appliquer dans une équipe ?', '["Chacun ses normes","Une revue de chaque livraison par une seconde personne","Aucune revue","Pas de documentation"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-4-a', 'Que peuvent apporter les programmes de partenaires des plateformes ?', '["Des abonnements gratuits à vie","Un salaire garanti","Rien","De la visibilité et des clients étrangers"]'::jsonb, 3);
 
 -- dev-4-f
 delete from public.exam_questions where course_id = 'dev-4-f';
