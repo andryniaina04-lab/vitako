@@ -1,0 +1,97 @@
+{
+  "id": "edu-3-f",
+  "hours": 15,
+  "description": "Le chef de projet digital organise et coordonne un projet numérique, de l'idée à la livraison, dans les délais, le budget et la qualité convenus. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des entreprises de services numériques et des ONG, à Madagascar et à l'étranger, avec Trello et Notion : cadrage, découpage, planning, risques, demandes de changement, rituels agiles, recette, mise en ligne et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le rôle du chef de projet, le cycle de vie et les méthodes cascade et agiles",
+    "Rédiger une note de cadrage, découper, estimer et planifier",
+    "Suivre l'avancement, gérer les risques et les demandes de changement",
+    "Organiser un projet dans Trello et Notion et animer les rituels agiles",
+    "Piloter un projet complet jusqu'à la recette, la mise en ligne et le bilan",
+    "Présenter son expérience, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de chef de projet digital depuis Madagascar",
+      "summary": "Les 3 contraintes, les 8 tâches, les 5 phases du cycle de vie, cascade et agile, Scrum et Kanban, les qualités et les clients.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelles sont les 3 contraintes d'un projet ?", "options": ["Périmètre, délai, budget", "Couleur, police, logo", "Client, ville, pays", "Matin, midi, soir"], "correct": 0 },
+        { "q": "Quand la méthode agile est-elle adaptée ?", "options": ["Quand le besoin évolue ou se précise en avançant", "Seulement pour les projets sans client", "Jamais", "Quand tout est connu au début"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un sprint ?", "options": ["Un cycle de travail de 1 à 4 semaines", "Une course à pied", "Un bug", "Un budget"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : cadrage, découpage, planning, suivi, risques et changements",
+      "summary": "Note de cadrage avec hors périmètre, découpage et estimation, jalons et dépendances, météo et compte rendu, tableau des risques, demandes de changement et communication.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi écrire le hors périmètre ?", "options": ["Pour éviter les malentendus", "Pour allonger le document", "C'est obligatoire légalement", "Pour augmenter le prix"], "correct": 0 },
+        { "q": "Qui doit estimer une tâche ?", "options": ["La personne qui la réalise", "Le client seul", "Personne", "Le comptable"], "correct": 0 },
+        { "q": "Que faire d'une demande de changement ?", "options": ["L'évaluer, proposer des options et faire valider par écrit", "La faire tout de suite gratuitement", "L'ignorer", "Arrêter le projet"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Trello, Notion, rituels agiles et outils payants",
+      "summary": "Tableau Kanban dans Trello, espace projet et base de tâches dans Notion, vues, rituels agiles à distance, choix de l'outil, Jira, Monday.com et Notion Plus.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que doit avoir chaque carte Trello ?", "options": ["Un responsable et une date", "Une image", "Un prix", "Rien"], "correct": 0 },
+        { "q": "Combien de temps dure un point quotidien ?", "options": ["Environ 15 minutes", "3 heures", "Une journée", "Aucune durée"], "correct": 0 },
+        { "q": "Quel outil est conçu pour les équipes logicielles en Scrum ?", "options": ["Jira", "Canva", "Excel", "Zoom"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le site de l'ONG Rano Madio",
+      "summary": "Réunion de lancement, pilotage semaine par semaine, compte rendu avec météo, gestion d'un retard et d'un conflit de priorités, recette, mise en ligne et bilan.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand envoyer le compte rendu de la réunion de lancement ?", "options": ["Le jour même", "Un mois plus tard", "Jamais", "À la fin du projet"], "correct": 0 },
+        { "q": "Que faire face à un retard des contenus du client ?", "options": ["Présenter des options, recommander et faire valider par écrit", "Décider seul", "Ne rien dire", "Abandonner le projet"], "correct": 0 },
+        { "q": "Que prévoir pour la mise en ligne ?", "options": ["Une sauvegarde et un plan de retour en arrière", "Rien", "Une mise en ligne sans test", "Supprimer l'ancien site d'abord"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver un poste ou des missions et se faire payer",
+      "summary": "Portfolio d'organisation, 5 canaux, entretiens avec la méthode STAR, tarif journalier et forfaits, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie STAR ?", "options": ["Situation, Tâche, Action, Résultat", "Sprint, Test, Agile, Recette", "Style, Texte, Art, Rythme", "Rien"], "correct": 0 },
+        { "q": "Que montre surtout le portfolio d'un chef de projet ?", "options": ["Sa façon d'organiser", "Des logos", "Du code", "Des photos de vacances"], "correct": 0 },
+        { "q": "Quel pourcentage du budget est cité comme exemple de forfait projet ?", "options": ["10 à 15 %", "90 %", "1 %", "50 %"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un chef de projet digital ?", "options": ["Il organise et coordonne un projet numérique", "Il code tout le site seul", "Il dessine tous les écrans", "Il fait la comptabilité"], "correct": 0 },
+    { "q": "Que se passe-t-il si on ajoute des fonctions sans changer le délai ni le budget ?", "options": ["Les contraintes ne sont plus tenables", "Rien", "Le projet devient plus rapide", "Le budget baisse"], "correct": 0 },
+    { "q": "Quelle est la première phase d'un projet ?", "options": ["L'initialisation", "La clôture", "La recette", "La réalisation"], "correct": 0 },
+    { "q": "Qu'est-ce que le backlog ?", "options": ["La liste priorisée des tâches", "Un bug", "Un budget", "Un logiciel"], "correct": 0 },
+    { "q": "Qu'est-ce que la rétrospective ?", "options": ["Un temps pour améliorer la façon de travailler", "Une fête", "Un test", "Une facture"], "correct": 0 },
+    { "q": "Quel principe caractérise le Kanban ?", "options": ["Limiter le nombre de tâches en cours", "Tout faire en même temps", "Ne jamais montrer le tableau", "Travailler sans colonnes"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un jalon ?", "options": ["Un moment clé du projet, souvent une validation", "Une tâche secondaire", "Un outil", "Un membre de l'équipe"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une dépendance ?", "options": ["Une tâche qui ne peut commencer qu'après une autre", "Un problème d'argent", "Une addiction", "Une réunion"], "correct": 0 },
+    { "q": "Quelle marge ajouter aux estimations ?", "options": ["Souvent 15 à 25 %", "200 %", "Aucune", "1 %"], "correct": 0 },
+    { "q": "Que contient la météo du projet ?", "options": ["Délai, budget, qualité en vert, orange ou rouge", "La température extérieure", "Le salaire", "Le nombre de pages"], "correct": 0 },
+    { "q": "Quelle action préventive contre le retard des contenus du client ?", "options": ["Date écrite, rappel et modèle de contenu fourni", "Rien", "Les écrire sans demander", "Annuler le projet"], "correct": 0 },
+    { "q": "Que contient le compte rendu hebdomadaire ?", "options": ["Fait, prévu, blocages, décisions attendues", "Seulement les félicitations", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Quand indiquer le fuseau horaire ?", "options": ["Toujours, avec les dates et heures pour une équipe répartie", "Jamais", "Seulement le dimanche", "Seulement au client local"], "correct": 0 },
+    { "q": "Quelle colonne Trello sert aux éléments qui attendent le client ?", "options": ["À valider", "Terminé", "Archives", "Corbeille"], "correct": 0 },
+    { "q": "Que signale une carte bloquée plusieurs jours dans la même colonne ?", "options": ["Un blocage probable", "Une réussite", "Rien", "Une erreur de Trello"], "correct": 0 },
+    { "q": "Que sont les vues dans Notion ?", "options": ["Plusieurs affichages des mêmes données", "Des copies des données", "Des images", "Des utilisateurs"], "correct": 0 },
+    { "q": "Pourquoi tenir un journal des décisions ?", "options": ["Garder la trace de qui a décidé quoi et quand", "Pour décorer", "Pour facturer", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Comment faire le point quotidien avec une équipe à distance ?", "options": ["Par écrit à heure fixe, si besoin", "Jamais", "Une fois par mois", "Seulement par téléphone la nuit"], "correct": 0 },
+    { "q": "Quel outil aide à suivre plusieurs projets avec des tableaux de bord pour la direction ?", "options": ["Monday.com", "Photoshop", "Audacity", "Postman"], "correct": 0 },
+    { "q": "Que faire en premier dans le projet Rano Madio dès la semaine 4 ?", "options": ["Tester la plateforme de dons", "Choisir les couleurs", "Facturer", "Rien"], "correct": 0 },
+    { "q": "Quelle règle pour un conflit de priorités ?", "options": ["Ce qui bloque l'objectif principal passe en premier", "Le plus facile d'abord", "Au hasard", "Ce que préfère le développeur"], "correct": 0 },
+    { "q": "Que vérifier dans la recette d'un site bilingue ?", "options": ["Toutes les pages dans les deux langues", "Seulement la page d'accueil", "Rien", "Seulement les couleurs"], "correct": 0 },
+    { "q": "Que contient le bilan du projet ?", "options": ["Objectifs, délai et budget, ce qui a marché, ce qui est à améliorer, suite", "Seulement le prix", "Rien", "Les mots de passe"], "correct": 0 },
+    { "q": "Que doit préciser le devis d'un chef de projet ?", "options": ["Ce qui est compris : réunions, comptes rendus, recette", "Rien", "Qu'il fait aussi le design gratuitement", "Le salaire du client"], "correct": 0 },
+    { "q": "Quelle évolution concerne la vision et les priorités d'un produit ?", "options": ["Product owner ou product manager", "Comptable", "Monteur audio", "Traducteur"], "correct": 0 }
+  ]
+}

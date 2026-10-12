@@ -99,7 +99,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 11, false),
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
-  ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 12, false),
+  ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 15, false),
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true)
@@ -18655,6 +18655,611 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel avantage offre un forfait de 10 cours payé d''avance ?', '["Moins de préparation","Des revenus plus réguliers et un élève engagé","Des cours plus courts","Aucun"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle règle d''annulation est raisonnable ?', '["Jamais d''annulation possible","Gratuite jusqu''à 24 heures avant","Annulation possible après le cours","Pas de règle écrite"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle évolution permet de vendre des cours vidéo ?', '["Développeur back-end","Monteur audio","Créateur de cours","Comptable"]'::jsonb, 2);
+
+-- edu-3-f
+delete from public.exam_questions where course_id = 'edu-3-f';
+delete from public.module_questions where course_id = 'edu-3-f';
+delete from public.lessons where course_id = 'edu-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-f', 0, 'Le métier de chef de projet digital depuis Madagascar', 'Les 3 contraintes, les 8 tâches, les 5 phases du cycle de vie, cascade et agile, Scrum et Kanban, les qualités et les clients.', 'Un site web, une application, une campagne marketing ou le lancement d''une boutique en ligne : tous ces projets réunissent plusieurs personnes (designer, développeurs, rédacteurs, client) qui doivent avancer ensemble, dans les délais et le budget. Le chef de projet digital organise ce travail. C''est un métier très demandé, qui se fait de plus en plus à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un chef de projet digital.
+> 2. Décrire le cycle de vie d''un projet.
+> 3. Distinguer les méthodes « en cascade » et agiles.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un chef de projet digital **organise et coordonne un projet numérique, de l''idée à la livraison, pour qu''il soit réalisé dans les délais, le budget et la qualité convenus, avec une équipe et un client satisfaits**.
+
+> [!definition] Les 3 contraintes d''un projet
+> Le **périmètre** (ce qu''on livre), le **délai** (quand) et le **budget** (combien). Changer l''un change les autres : ajouter des fonctions demande plus de temps ou d''argent.
+
+## Le rôle au quotidien
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Cadrer** le projet | Objectifs, périmètre, budget, délais, équipe |
+| 2 | **Planifier** | Découper en tâches, estimer, ordonner |
+| 3 | **Coordonner** l''équipe | Répartir les tâches, lever les blocages |
+| 4 | **Communiquer** avec le client | Points réguliers, validations, comptes rendus |
+| 5 | **Suivre** l''avancement | Tableau des tâches, délais, budget |
+| 6 | **Gérer les risques** | Anticiper ce qui peut mal tourner |
+| 7 | **Gérer les changements** | Évaluer chaque nouvelle demande |
+| 8 | **Livrer et clôturer** | Recette, mise en ligne, bilan |
+
+> [!attention]
+> Le chef de projet n''a pas besoin de savoir tout faire (coder, dessiner), mais il doit **comprendre** le travail de chacun pour estimer, poser les bonnes questions et repérer les problèmes.
+
+## Le cycle de vie d''un projet
+
+| Phase | Ce qui se passe | Livrable |
+| --- | --- | --- |
+| **1. Initialisation** | Comprendre le besoin, décider de lancer | Note de cadrage |
+| **2. Planification** | Découper, estimer, organiser | Planning, budget, équipe |
+| **3. Réalisation** | Design, développement, contenus | Versions intermédiaires |
+| **4. Suivi et contrôle** | Mesurer l''avancement, corriger | Tableaux de suivi, comptes rendus |
+| **5. Clôture** | Recette, livraison, bilan | Procès-verbal de livraison, bilan |
+
+## Cascade ou agile ?
+
+| Méthode « en cascade » | Méthode agile |
+| --- | --- |
+| Tout est défini au début, puis réalisé étape par étape | Le projet avance par cycles courts (souvent 1 à 2 semaines) |
+| Adaptée quand le besoin est très clair et stable | Adaptée quand le besoin évolue ou se précise en avançant |
+| Le client voit le résultat à la fin | Le client voit une version utilisable à chaque cycle |
+| Exemple : site vitrine simple au contenu connu | Exemple : application nouvelle dont on teste les fonctions |
+
+> [!definition] Scrum
+> La méthode agile la plus connue. Le travail est organisé en **sprints** (cycles de 1 à 4 semaines), avec une liste de tâches priorisée (le **backlog**), un point quotidien court, une démonstration en fin de sprint et un temps d''amélioration (la **rétrospective**).
+
+> [!definition] Kanban
+> Une méthode visuelle : les tâches avancent sur un tableau en colonnes (À faire, En cours, Terminé), en limitant le nombre de tâches en cours pour éviter l''embouteillage.
+
+## Les qualités du chef de projet
+
+1. **Organisation** : rien ne doit être oublié.
+2. **Communication** claire, écrite et orale.
+3. **Diplomatie** : négocier avec le client et l''équipe.
+4. **Sens des priorités** : savoir dire ce qui est essentiel.
+5. **Calme** face aux imprévus.
+6. **Rigueur** sur les délais et le budget.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Agences web et de communication** qui gèrent plusieurs projets en même temps.
+2. **Entreprises de services numériques** qui travaillent pour l''Europe.
+3. **ONG** : projets numériques (plateformes, applications de collecte).
+4. **Entreprises** qui lancent un site, une boutique ou une application.
+
+### À l''étranger
+
+1. **Agences et studios** qui recrutent des chefs de projet ou des assistants chefs de projet à distance.
+2. **Start-up** qui ont besoin d''organiser leur équipe.
+3. **Freelances** qui travaillent ensemble sur un gros projet.
+
+> [!madagascar] Votre avantage
+> De nombreuses équipes de développement et de production à Madagascar travaillent pour des clients européens : elles ont besoin de chefs de projet qui parlent bien français, comprennent les deux cultures et organisent le travail à distance. Le faible décalage horaire avec Paris facilite la coordination.
+
+## Votre plan d''apprentissage
+
+1. **Les bases de la gestion de projet** (3 semaines) : cadrage, planification, suivi.
+2. **L''agilité** (2 semaines) : Scrum, Kanban.
+3. **Les outils** (2 semaines) : Trello, Notion.
+4. **Les métiers du numérique** (en continu) : comprendre le travail du designer, du développeur, du rédacteur.
+5. **Le projet** : piloter un vrai petit projet pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - Le chef de projet organise un projet dans le respect du périmètre, du délai et du budget.
+> - 8 tâches, du cadrage à la clôture.
+> - 5 phases : initialisation, planification, réalisation, suivi, clôture.
+> - Cascade pour les besoins stables, agile (Scrum, Kanban) pour les besoins qui évoluent.
+> - Clients : agences, entreprises de services numériques, ONG, start-up.
+
+## Exercice pratique : votre regard de chef de projet
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez un projet numérique (refonte du site d''un hôtel, lancement d''une boutique en ligne).
+> 2. Listez les personnes impliquées et leur rôle.
+> 3. Décrivez les 5 phases de ce projet avec un livrable pour chacune.
+> 4. Dites si vous choisiriez une méthode en cascade ou agile, et pourquoi.
+> 5. Écrivez votre plan d''apprentissage sur 3 mois.
+>
+> **À livrer** : votre analyse et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 0, 0, 'Quelles sont les 3 contraintes d''un projet ?', '["Client, ville, pays","Couleur, police, logo","Matin, midi, soir","Périmètre, délai, budget"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 0, 1, 'Quand la méthode agile est-elle adaptée ?', '["Seulement pour les projets sans client","Jamais","Quand le besoin évolue ou se précise en avançant","Quand tout est connu au début"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 0, 2, 'Qu''est-ce qu''un sprint ?', '["Un cycle de travail de 1 à 4 semaines","Un budget","Une course à pied","Un bug"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-f', 1, 'Les bases : cadrage, découpage, planning, suivi, risques et changements', 'Note de cadrage avec hors périmètre, découpage et estimation, jalons et dépendances, météo et compte rendu, tableau des risques, demandes de changement et communication.', 'Ce module vous donne les bases de la gestion de projet : cadrer, découper le travail, estimer, planifier, suivre l''avancement, gérer les risques et les changements, et communiquer avec le client et l''équipe.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger une note de cadrage.
+> 2. Découper un projet en tâches et les estimer.
+> 3. Construire un planning avec des jalons.
+> 4. Suivre l''avancement et gérer les risques.
+> 5. Gérer les demandes de changement et communiquer.
+
+## La note de cadrage
+
+| Rubrique | Exemple (refonte du site d''un hôtel) |
+| --- | --- |
+| **Contexte** | Site ancien, pas de réservation en ligne, mauvais affichage sur téléphone |
+| **Objectifs** | Augmenter les réservations directes, site adapté au téléphone |
+| **Périmètre** | 8 pages, réservation en ligne connectée à l''outil existant, français et anglais |
+| **Hors périmètre** | Logo, photos professionnelles, application mobile |
+| **Livrables** | Maquettes, site en ligne, formation de l''équipe, guide |
+| **Délai** | 10 semaines |
+| **Budget** | Selon le devis validé |
+| **Équipe** | Chef de projet, designer, développeur, rédacteur, contact côté hôtel |
+| **Critères de succès** | Site en ligne à la date prévue, réservations en ligne fonctionnelles |
+
+> [!astuce]
+> La rubrique **hors périmètre** évite beaucoup de malentendus. Écrivez clairement ce que le projet **ne comprend pas**.
+
+## Découper et estimer
+
+> [!definition] Découpage du projet (WBS)
+> La décomposition du projet en lots, puis en tâches assez petites pour être estimées et confiées à une personne (souvent quelques heures à quelques jours).
+
+| Lot | Tâches | Responsable | Estimation |
+| --- | --- | --- | --- |
+| **Cadrage** | Atelier avec l''hôtel, arborescence | Chef de projet | 2 j |
+| **Design** | Maquettes accueil, chambres, réservation | Designer | 6 j |
+| **Contenus** | Textes en français et anglais | Rédacteur | 4 j |
+| **Développement** | Intégration, réservation, formulaires | Développeur | 12 j |
+| **Recette** | Tests, corrections | Chef de projet, développeur | 3 j |
+| **Mise en ligne et formation** | Mise en ligne, formation, guide | Développeur, chef de projet | 2 j |
+
+> [!attention]
+> Faites estimer chaque tâche par la **personne qui la réalise**. Ajoutez une marge (souvent 15 à 25 %) pour les imprévus et les allers-retours avec le client.
+
+## Planifier avec des jalons
+
+> [!definition] Jalon
+> Un moment clé du projet, souvent une validation : maquettes validées, contenus livrés, recette terminée, mise en ligne.
+
+| Semaine | Travaux | Jalon |
+| --- | --- | --- |
+| 1 | Cadrage, arborescence | Note de cadrage validée |
+| 2 à 3 | Maquettes | Maquettes validées |
+| 3 à 4 | Rédaction des contenus | Contenus livrés par l''hôtel et validés |
+| 4 à 8 | Développement | Version de test disponible |
+| 9 | Recette et corrections | Recette validée |
+| 10 | Mise en ligne, formation | Site en ligne |
+
+> [!definition] Dépendance
+> Une tâche qui ne peut commencer qu''après une autre. Le développement des pages a besoin des maquettes validées ; la mise en ligne a besoin de la recette.
+
+## Suivre l''avancement
+
+| Outil de suivi | Contenu |
+| --- | --- |
+| **Tableau des tâches** | Chaque tâche avec son statut, son responsable, sa date |
+| **Météo du projet** | Délai, budget, qualité : vert, orange ou rouge |
+| **Compte rendu hebdomadaire** | Fait cette semaine, prévu la semaine prochaine, points bloquants, décisions attendues |
+
+## Gérer les risques
+
+| Risque | Probabilité | Impact | Action préventive |
+| --- | --- | --- | --- |
+| Contenus livrés en retard par le client | Forte | Fort | Date de livraison écrite, rappel une semaine avant, modèle de contenu fourni |
+| Coupures d''électricité ou d''Internet | Moyenne | Moyen | Connexion de secours, travail en ligne sauvegardé |
+| Développeur malade | Faible | Fort | Documentation à jour, code partagé |
+| Outil de réservation difficile à connecter | Moyenne | Fort | Test technique dès la semaine 2 |
+
+## Gérer les demandes de changement
+
+1. **Notez** la demande par écrit.
+2. **Évaluez** l''impact : temps, coût, risques.
+3. **Proposez** au client : l''ajouter (avec un délai et un prix), la remplacer par une autre fonction, ou la prévoir pour plus tard.
+4. **Faites valider** par écrit avant de commencer.
+
+> [!exemple] Réponse à une demande de changement
+> « Merci pour cette idée de blog. Elle n''était pas prévue dans le périmètre. Nous l''estimons à 3 jours de travail supplémentaires, soit un décalage de la mise en ligne d''une semaine et un supplément selon le devis joint. Nous pouvons aussi la prévoir dans une deuxième phase après la mise en ligne. Que préférez-vous ? »
+
+## Communiquer
+
+| Avec qui | Comment | Fréquence |
+| --- | --- | --- |
+| **Client** | Point de suivi, compte rendu écrit | Chaque semaine |
+| **Équipe** | Point court, tableau des tâches | Chaque jour ou tous les 2 jours |
+| **Décideurs** | Résumé : météo, jalons, décisions | Aux jalons |
+
+> [!madagascar]
+> Avec une équipe répartie entre Madagascar et l''Europe, fixez les points d''équipe dans les **heures communes**, écrivez les comptes rendus le jour même, et indiquez toujours les dates et heures avec le **fuseau horaire**.
+
+> [!retenir]
+> - Une note de cadrage avec le hors périmètre.
+> - Un découpage en tâches estimées par ceux qui les réalisent, avec une marge.
+> - Un planning avec jalons et dépendances.
+> - Un suivi par tableau, météo et compte rendu hebdomadaire.
+> - Les risques anticipés et les changements évalués et validés par écrit.
+
+## Exercice pratique : planifier un projet
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez la note de cadrage d''un projet (lancement de la boutique en ligne d''une marque malgache).
+> 2. Découpez le projet en lots et en tâches, avec des estimations et une marge.
+> 3. Construisez un planning sur 8 semaines avec 5 jalons.
+> 4. Remplissez un tableau de 6 risques.
+> 5. Rédigez la réponse à une demande de changement.
+>
+> **À livrer** : votre note, votre découpage, votre planning, vos risques et votre réponse.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 1, 0, 'Pourquoi écrire le hors périmètre ?', '["Pour allonger le document","Pour augmenter le prix","Pour éviter les malentendus","C''est obligatoire légalement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 1, 1, 'Qui doit estimer une tâche ?', '["Le comptable","Le client seul","La personne qui la réalise","Personne"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 1, 2, 'Que faire d''une demande de changement ?', '["La faire tout de suite gratuitement","Arrêter le projet","L''ignorer","L''évaluer, proposer des options et faire valider par écrit"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-f', 2, 'Les outils : Trello, Notion, rituels agiles et outils payants', 'Tableau Kanban dans Trello, espace projet et base de tâches dans Notion, vues, rituels agiles à distance, choix de l''outil, Jira, Monday.com et Notion Plus.', 'Ce module vous fait prendre en main deux outils très utilisés pour gérer des projets à distance : **Trello**, simple et visuel, et **Notion**, qui réunit documents, bases de données et tâches. Vous découvrirez aussi les outils payants que les entreprises utilisent : **Jira**, **Monday.com** et **Notion Plus**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un projet en Kanban dans Trello.
+> 2. Construire un espace projet dans Notion.
+> 3. Animer les rituels agiles avec ces outils.
+> 4. Choisir l''outil adapté à un projet.
+> 5. Comprendre ce qu''apportent Jira, Monday.com et Notion Plus.
+
+## Trello : le Kanban simple
+
+| Élément | Rôle |
+| --- | --- |
+| **Tableau** | Le projet |
+| **Listes** | Les colonnes : À faire, En cours, À valider, Terminé |
+| **Cartes** | Les tâches, avec description, responsable, date, liste de contrôle, pièces jointes |
+| **Étiquettes** | Type ou priorité : design, développement, contenu, urgent |
+| **Automatisations** | Par exemple : déplacer une carte quand toutes les cases de sa liste de contrôle sont cochées |
+
+### Les règles d''un bon tableau
+
+1. **Une carte = une tâche** claire, avec un verbe : « Rédiger la page Chambres ».
+2. **Un responsable** et une **date** sur chaque carte.
+3. **Une limite** au nombre de cartes « En cours » par personne (par exemple 2).
+4. **Une colonne « À valider »** pour les éléments qui attendent le client.
+5. **Une mise à jour** quotidienne par chacun.
+
+> [!astuce]
+> Si une carte reste plus de quelques jours dans la même colonne, demandez pourquoi : c''est souvent le signe d''un blocage que personne n''a signalé.
+
+## Notion : l''espace projet complet
+
+| Page | Contenu |
+| --- | --- |
+| **Accueil du projet** | Objectifs, contacts, liens utiles, météo |
+| **Note de cadrage** | Document validé |
+| **Base de données des tâches** | Vue tableau Kanban, vue liste, vue calendrier |
+| **Comptes rendus** | Un modèle de compte rendu par réunion |
+| **Décisions** | Journal des décisions avec date et personne qui a décidé |
+| **Documentation** | Accès, procédures, guide pour le client |
+
+### La base de données des tâches
+
+| Propriété | Exemple |
+| --- | --- |
+| Nom | Intégrer la page Réservation |
+| Statut | À faire, En cours, À valider, Terminé |
+| Responsable | Développeur |
+| Échéance | 12 mai |
+| Lot | Développement |
+| Priorité | Haute |
+| Sprint | Sprint 3 |
+
+> [!definition] Vues
+> La même base de données peut s''afficher de plusieurs façons : en tableau Kanban pour l''équipe, en calendrier pour les échéances, en liste filtrée « Mes tâches ». Les données restent les mêmes.
+
+## Animer les rituels agiles
+
+| Rituel | Durée | Avec l''outil |
+| --- | --- | --- |
+| **Planification du sprint** | 1 à 2 h | Choisir dans le backlog les tâches du sprint, estimer |
+| **Point quotidien** | 15 min | Chacun : hier, aujourd''hui, blocages ; mise à jour du tableau |
+| **Démonstration** | 30 à 60 min | Montrer au client ce qui est terminé |
+| **Rétrospective** | 30 à 60 min | Ce qui a bien marché, ce qui est à améliorer, 1 à 3 actions |
+
+> [!madagascar]
+> Pour une équipe à distance, le point quotidien peut se faire **par écrit** dans un fil de discussion ou un document partagé, à heure fixe. C''est plus pratique avec les coupures de courant et les différences d''horaires, et chacun garde une trace.
+
+## Choisir l''outil adapté
+
+| Situation | Outil conseillé |
+| --- | --- |
+| Petit projet, équipe de 2 à 5 personnes | Trello |
+| Projet avec beaucoup de documents et de suivi | Notion |
+| Équipe de développement logiciel en Scrum | Jira |
+| Plusieurs projets et équipes, besoin de tableaux de bord pour la direction | Monday.com |
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Jira** | Conçu pour les équipes logicielles : backlog, sprints, suivi des bugs, rapports agiles (graphique d''avancement), intégration avec les outils de code |
+| **Monday.com** | Gestion de plusieurs projets et équipes, vues variées, automatisations, tableaux de bord pour la direction |
+| **Notion Plus** (et offres supérieures) | Plus de membres et d''invités, historique des pages, droits plus fins, fonctions d''équipe |
+
+> [!madagascar]
+> Ces abonnements sont facturés en dollars, par utilisateur et par mois. Ils sont en général **payés par l''entreprise ou le client**, qui vous invite dans son espace. Apprenez avec les offres gratuites de Trello, Notion et Jira, et vérifiez les prix à jour sur les sites officiels.
+
+> [!retenir]
+> - Trello : tableau Kanban, cartes avec responsable et date, limite des tâches en cours.
+> - Notion : espace projet avec documents, base de tâches et vues.
+> - Les 4 rituels agiles, en direct ou par écrit pour une équipe à distance.
+> - L''outil choisi selon la taille et le type de projet.
+> - Jira, Monday.com et Notion Plus, souvent fournis par l''entreprise.
+
+## Exercice pratique : votre espace projet
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez dans Trello le tableau de votre projet du module 2, avec au moins 20 cartes.
+> 2. Créez dans Notion l''espace projet complet : accueil, cadrage, base de tâches avec 3 vues, modèle de compte rendu, journal des décisions.
+> 3. Simulez un sprint d''une semaine : planification, 3 points quotidiens écrits, démonstration et rétrospective.
+> 4. Ouvrez un compte Jira gratuit et créez un backlog de 10 éléments.
+>
+> **À livrer** : les liens ou captures de vos espaces et vos comptes rendus de rituels.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 2, 0, 'Que doit avoir chaque carte Trello ?', '["Rien","Une image","Un responsable et une date","Un prix"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 2, 1, 'Combien de temps dure un point quotidien ?', '["Aucune durée","3 heures","Environ 15 minutes","Une journée"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 2, 2, 'Quel outil est conçu pour les équipes logicielles en Scrum ?', '["Excel","Jira","Zoom","Canva"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-f', 3, 'Premier projet : le site de l''ONG Rano Madio', 'Réunion de lancement, pilotage semaine par semaine, compte rendu avec météo, gestion d''un retard et d''un conflit de priorités, recette, mise en ligne et bilan.', 'Dans ce module, vous pilotez un projet numérique complet, de la première réunion avec le client jusqu''au bilan : la création du site d''une ONG, avec une petite équipe de freelances. C''est le type de projet qui deviendra votre première étude de cas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener la réunion de lancement.
+> 2. Piloter la réalisation semaine par semaine.
+> 3. Gérer un retard et un conflit de priorités.
+> 4. Organiser la recette et la mise en ligne.
+> 5. Clôturer le projet avec un bilan.
+
+## Le cas pratique : « Rano Madio »
+
+> [!exemple] Votre mission
+> **Rano Madio** est une ONG qui installe des points d''eau potable dans la région Androy. Elle veut un nouveau site en français et en anglais pour présenter ses projets, publier des nouvelles et recevoir des dons en ligne via une plateforme de dons existante. Budget fixé, mise en ligne souhaitée dans 8 semaines, avant une réunion avec un bailleur. Votre équipe : une designer, un développeur WordPress, une rédactrice-traductrice, tous freelances à Madagascar. Côté ONG : la chargée de communication, Mme Lalaina.
+
+## Étape 1 : la réunion de lancement
+
+### L''ordre du jour (1 heure 30)
+
+1. Présentations et rôles.
+2. Objectifs et critères de succès.
+3. Périmètre et hors périmètre.
+4. Planning et jalons.
+5. Ce que l''ONG doit fournir (textes, photos, logos, accès) et à quelles dates.
+6. Façon de travailler : outils, réunions, validations.
+7. Questions.
+
+> [!astuce]
+> Envoyez le **compte rendu** de la réunion de lancement le jour même, avec la liste des actions, les responsables et les dates. C''est la référence de tout le projet.
+
+## Étape 2 : piloter la réalisation
+
+| Semaine | Travaux | Jalon | Point de vigilance |
+| --- | --- | --- | --- |
+| 1 | Lancement, arborescence | Cadrage validé | Liste des contenus à fournir envoyée |
+| 2 | Maquettes accueil et projet | Maquettes validées | Une seule personne valide côté ONG |
+| 3 | Maquettes restantes, textes | Textes français reçus | Rappel envoyé le lundi |
+| 4 à 5 | Développement, traduction | Version de test | Test de la plateforme de dons dès la semaine 4 |
+| 6 | Intégration des contenus | Contenus en ligne en test | Photos optimisées |
+| 7 | Recette, corrections | Recette validée | Tests sur téléphone |
+| 8 | Mise en ligne, formation | Site en ligne | Plan de retour en arrière prêt |
+
+### Le compte rendu hebdomadaire
+
+```
+Projet Rano Madio – Semaine 3 – Météo : délai 🟠, budget 🟢, qualité 🟢
+Fait : maquettes validées le 14/05 ; 6 pages de textes reçues sur 9.
+Prévu : début du développement ; traduction des 6 pages reçues.
+Points bloquants : 3 pages de textes (Projets, Équipe, Partenaires) attendues depuis le 12/05.
+Décision attendue : date de livraison des 3 pages, au plus tard le 21/05 pour tenir la mise en ligne.
+```
+
+## Étape 3 : gérer un retard et un conflit
+
+### Le retard des contenus
+
+| Option | Conséquence |
+| --- | --- |
+| Attendre les textes | Mise en ligne décalée après la réunion avec le bailleur |
+| Mettre en ligne sans les 3 pages, puis les ajouter | Objectif tenu, site complété ensuite |
+| La rédactrice propose une première version à partir des rapports de l''ONG | Coût supplémentaire, validation rapide nécessaire |
+
+> [!attention]
+> Ne choisissez pas seul : présentez les **options** et leurs conséquences au client, avec votre recommandation, et faites valider la décision **par écrit**.
+
+### Le conflit de priorités
+
+Le développeur doit à la fois corriger un problème de la plateforme de dons et intégrer les nouvelles pages. Vous tranchez avec la règle convenue : **ce qui bloque l''objectif principal passe en premier** (les dons), et vous informez la chargée de communication du nouvel ordre.
+
+## Étape 4 : la recette et la mise en ligne
+
+### La liste de recette
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Toutes les pages présentes en français et en anglais |
+| 2 | Le don de test fonctionne de bout en bout (avec la plateforme de dons) |
+| 3 | Le site s''affiche correctement sur téléphone et ordinateur |
+| 4 | Formulaires de contact reçus par la bonne personne |
+| 5 | Liens, menus, fautes vérifiés |
+| 6 | Vitesse acceptable sur téléphone |
+| 7 | Accès administrateur remis à l''ONG |
+
+### Le plan de mise en ligne
+
+1. **Date et heure** convenues, en dehors des moments importants pour l''ONG.
+2. **Sauvegarde** de l''ancien site.
+3. **Mise en ligne** et vérifications rapides.
+4. **Plan de retour en arrière** si un problème grave apparaît.
+5. **Annonce** aux partenaires une fois tout vérifié.
+
+## Étape 5 : clôturer
+
+### Le bilan du projet
+
+| Rubrique | Contenu |
+| --- | --- |
+| **Objectifs** | Atteints ou non, avec les preuves |
+| **Délai et budget** | Prévu et réel |
+| **Ce qui a bien marché** | Validations rapides des maquettes, test précoce des dons |
+| **Ce qui est à améliorer** | Livraison des contenus, à demander plus tôt avec un modèle |
+| **Suite** | Maintenance, nouvelles fonctions en phase 2 |
+
+> [!madagascar]
+> Pour une ONG qui travaille dans des zones éloignées comme l''Androy, les photos et informations de terrain arrivent souvent avec du retard (déplacements, réseau limité). Prévoyez dès le lancement une **date limite réaliste** et une solution de remplacement (photos existantes, textes courts provisoires).
+
+> [!retenir]
+> - Une réunion de lancement préparée et un compte rendu le jour même.
+> - Un pilotage semaine par semaine avec météo, blocages et décisions attendues.
+> - Des options présentées au client pour chaque retard, une décision écrite.
+> - Une recette avec une liste de contrôle et un plan de mise en ligne avec retour en arrière.
+> - Un bilan honnête et une suite proposée.
+
+## Exercice pratique : piloter le projet Rano Madio
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Préparez l''ordre du jour et rédigez le compte rendu fictif de la réunion de lancement.
+> 2. Construisez le planning de 8 semaines dans Trello ou Notion.
+> 3. Rédigez 3 comptes rendus hebdomadaires avec météo.
+> 4. Rédigez votre message au client pour le retard des contenus, avec 3 options et votre recommandation.
+> 5. Rédigez la liste de recette, le plan de mise en ligne et le bilan.
+>
+> **À livrer** : tous vos documents et l''espace projet. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 3, 0, 'Quand envoyer le compte rendu de la réunion de lancement ?', '["Le jour même","Un mois plus tard","Jamais","À la fin du projet"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 3, 1, 'Que faire face à un retard des contenus du client ?', '["Présenter des options, recommander et faire valider par écrit","Décider seul","Ne rien dire","Abandonner le projet"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 3, 2, 'Que prévoir pour la mise en ligne ?', '["Une sauvegarde et un plan de retour en arrière","Une mise en ligne sans test","Rien","Supprimer l''ancien site d''abord"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-f', 4, 'Trouver un poste ou des missions et se faire payer', 'Portfolio d''organisation, 5 canaux, entretiens avec la méthode STAR, tarif journalier et forfaits, paiements et évolution.', 'Les agences, les entreprises de services numériques et les équipes de freelances ont besoin de chefs de projet fiables. Ce dernier module vous montre comment présenter votre expérience, trouver un poste ou des missions, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de chef de projet.
+> 2. Trouver un poste ou des missions grâce à 5 canaux.
+> 3. Réussir un entretien de chef de projet.
+> 4. Fixer vos prix.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+Un chef de projet ne montre pas des écrans, mais **sa façon d''organiser** :
+
+1. **Une étude de cas** : contexte, équipe, planning, difficultés, décisions, résultat.
+2. **Vos modèles** : note de cadrage, compte rendu hebdomadaire, tableau des risques, liste de recette, bilan.
+3. **Votre espace projet** Notion ou Trello (avec des données fictives).
+4. **Des recommandations** de clients ou de membres d''équipe.
+5. **Une certification** si possible (par exemple une certification Scrum ; vérifiez les organismes reconnus et les prix).
+
+> [!astuce]
+> Commencez par piloter de **petits projets réels** : le site d''une association, l''organisation d''un événement en ligne, un projet entre freelances. Une expérience réelle, même modeste, vaut plus qu''une théorie.
+
+## Où trouver un poste ou des missions : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences web et de communication** | Proposez-vous comme chef de projet ou assistant chef de projet |
+| 2 | **Entreprises de services numériques** | Postes de coordination d''équipes travaillant pour l''Europe |
+| 3 | **Freelances** (designers, développeurs) | Coordonnez leurs projets à plusieurs, contre une part du budget |
+| 4 | **ONG et entreprises** | Pilotage de leurs projets numériques |
+| 5 | **Plateformes et LinkedIn** | Missions de gestion de projet à distance ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une agence
+> « Bonjour, votre agence gère plusieurs projets de sites en même temps. Je suis cheffe de projet digital à Antananarivo : je peux prendre en charge le suivi de vos projets (planning, coordination des freelances, comptes rendus clients, recette), avec des outils comme Notion, Trello ou Jira. Voici l''étude de cas d''un projet de site pour une ONG, livré dans les délais : [lien]. »
+
+## Réussir un entretien de chef de projet
+
+| Question fréquente | Ce que le recruteur cherche |
+| --- | --- |
+| « Racontez un projet que vous avez piloté. » | Une histoire structurée : contexte, actions, résultats |
+| « Comment gérez-vous un client qui ajoute des demandes ? » | La méthode des demandes de changement |
+| « Un membre de l''équipe est en retard. Que faites-vous ? » | Comprendre la cause, chercher une solution, informer |
+| « Cascade ou agile ? » | Savoir choisir selon le projet |
+| « Comment suivez-vous l''avancement ? » | Outils, rituels, indicateurs |
+
+> [!definition] Méthode STAR
+> Une façon de répondre aux questions sur votre expérience : **S**ituation, **T**âche, **A**ction, **R**ésultat. Elle rend vos réponses claires et concrètes.
+
+## Fixer ses prix
+
+| Modèle | Fonctionnement | Exemple |
+| --- | --- | --- |
+| **Tarif journalier** | Prix par jour de travail | 100 000 Ar par jour pour un client local |
+| **Forfait projet** | Pourcentage ou montant fixe du projet | 10 à 15 % du budget du projet |
+| **Forfait mensuel** | Suivi de plusieurs projets pour une agence | Selon le nombre de jours par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Précisez toujours ce qui est compris : nombre de réunions, comptes rendus, recette. Et rappelez que le chef de projet **coordonne** : si vous devez aussi rédiger ou designer, c''est une autre prestation.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Chef de projet confirmé** | Projets plus gros, budgets, plusieurs équipes |
+| **Scrum Master** | Accompagnement des équipes agiles, certification |
+| **Product owner ou product manager** | Vision du produit, priorités, indicateurs |
+| **Directeur de projets** | Portefeuille de projets, organisation |
+| **Consultant** | Organisation des méthodes de travail des entreprises |
+
+> [!retenir]
+> - Un portfolio qui montre votre organisation : étude de cas, modèles, espace projet.
+> - Agences, entreprises de services numériques, freelances, ONG, plateformes.
+> - Des réponses d''entretien structurées avec la méthode STAR.
+> - Tarif journalier, forfait projet ou mensuel, avec un périmètre clair.
+> - Évoluez vers Scrum Master, product owner ou directeur de projets.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez l''étude de cas du projet Rano Madio et rassemblez vos modèles.
+> 2. Préparez 5 réponses d''entretien avec la méthode STAR.
+> 3. Fixez vos prix (tarif journalier et forfait projet).
+> 4. Listez 10 agences, entreprises ou groupes de freelances et envoyez au moins 2 messages.
+>
+> **À livrer** : votre étude de cas, vos modèles, vos réponses, vos prix et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 4, 0, 'Que signifie STAR ?', '["Sprint, Test, Agile, Recette","Situation, Tâche, Action, Résultat","Style, Texte, Art, Rythme","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 4, 1, 'Que montre surtout le portfolio d''un chef de projet ?', '["Des photos de vacances","Du code","Sa façon d''organiser","Des logos"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-f', 4, 2, 'Quel pourcentage du budget est cité comme exemple de forfait projet ?', '["1 %","90 %","10 à 15 %","50 %"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que fait un chef de projet digital ?', '["Il fait la comptabilité","Il organise et coordonne un projet numérique","Il dessine tous les écrans","Il code tout le site seul"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que se passe-t-il si on ajoute des fonctions sans changer le délai ni le budget ?', '["Les contraintes ne sont plus tenables","Le projet devient plus rapide","Le budget baisse","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle est la première phase d''un projet ?', '["La recette","La clôture","La réalisation","L''initialisation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Qu''est-ce que le backlog ?', '["Un logiciel","La liste priorisée des tâches","Un bug","Un budget"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Qu''est-ce que la rétrospective ?', '["Une facture","Un test","Un temps pour améliorer la façon de travailler","Une fête"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quel principe caractérise le Kanban ?', '["Travailler sans colonnes","Ne jamais montrer le tableau","Tout faire en même temps","Limiter le nombre de tâches en cours"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Qu''est-ce qu''un jalon ?', '["Un outil","Un moment clé du projet, souvent une validation","Une tâche secondaire","Un membre de l''équipe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Qu''est-ce qu''une dépendance ?', '["Un problème d''argent","Une addiction","Une réunion","Une tâche qui ne peut commencer qu''après une autre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle marge ajouter aux estimations ?', '["Souvent 15 à 25 %","1 %","200 %","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que contient la météo du projet ?', '["Délai, budget, qualité en vert, orange ou rouge","Le nombre de pages","Le salaire","La température extérieure"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle action préventive contre le retard des contenus du client ?', '["Annuler le projet","Rien","Date écrite, rappel et modèle de contenu fourni","Les écrire sans demander"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que contient le compte rendu hebdomadaire ?', '["Fait, prévu, blocages, décisions attendues","Les mots de passe","Seulement les félicitations","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quand indiquer le fuseau horaire ?', '["Jamais","Seulement le dimanche","Seulement au client local","Toujours, avec les dates et heures pour une équipe répartie"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle colonne Trello sert aux éléments qui attendent le client ?', '["Terminé","Corbeille","Archives","À valider"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que signale une carte bloquée plusieurs jours dans la même colonne ?', '["Une réussite","Une erreur de Trello","Un blocage probable","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que sont les vues dans Notion ?', '["Des images","Plusieurs affichages des mêmes données","Des copies des données","Des utilisateurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Pourquoi tenir un journal des décisions ?', '["Pour décorer","Pour facturer","Ce n''est pas utile","Garder la trace de qui a décidé quoi et quand"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Comment faire le point quotidien avec une équipe à distance ?', '["Une fois par mois","Jamais","Par écrit à heure fixe, si besoin","Seulement par téléphone la nuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quel outil aide à suivre plusieurs projets avec des tableaux de bord pour la direction ?', '["Monday.com","Postman","Audacity","Photoshop"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que faire en premier dans le projet Rano Madio dès la semaine 4 ?', '["Facturer","Rien","Tester la plateforme de dons","Choisir les couleurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle règle pour un conflit de priorités ?', '["Ce que préfère le développeur","Au hasard","Ce qui bloque l''objectif principal passe en premier","Le plus facile d''abord"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que vérifier dans la recette d''un site bilingue ?', '["Seulement la page d''accueil","Toutes les pages dans les deux langues","Rien","Seulement les couleurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que contient le bilan du projet ?', '["Les mots de passe","Rien","Objectifs, délai et budget, ce qui a marché, ce qui est à améliorer, suite","Seulement le prix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Que doit préciser le devis d''un chef de projet ?', '["Le salaire du client","Rien","Ce qui est compris : réunions, comptes rendus, recette","Qu''il fait aussi le design gratuitement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-f', 'Quelle évolution concerne la vision et les priorités d''un produit ?', '["Monteur audio","Traducteur","Product owner ou product manager","Comptable"]'::jsonb, 2);
 
 -- edu-4-a
 delete from public.exam_questions where course_id = 'edu-4-a';

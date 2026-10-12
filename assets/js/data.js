@@ -2738,6 +2738,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-3-f": {
+  "hours": 15,
+  "description": "Le chef de projet digital organise et coordonne un projet numérique, de l'idée à la livraison, dans les délais, le budget et la qualité convenus. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des entreprises de services numériques et des ONG, à Madagascar et à l'étranger, avec Trello et Notion : cadrage, découpage, planning, risques, demandes de changement, rituels agiles, recette, mise en ligne et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le rôle du chef de projet, le cycle de vie et les méthodes cascade et agiles",
+   "Rédiger une note de cadrage, découper, estimer et planifier",
+   "Suivre l'avancement, gérer les risques et les demandes de changement",
+   "Organiser un projet dans Trello et Notion et animer les rituels agiles",
+   "Piloter un projet complet jusqu'à la recette, la mise en ligne et le bilan",
+   "Présenter son expérience, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de chef de projet digital depuis Madagascar",
+    "summary": "Les 3 contraintes, les 8 tâches, les 5 phases du cycle de vie, cascade et agile, Scrum et Kanban, les qualités et les clients.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le rôle au quotidien",
+     "Le cycle de vie d'un projet",
+     "Cascade ou agile ?",
+     "Les qualités du chef de projet",
+     "Qui sont vos clients ?",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : votre regard de chef de projet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : cadrage, découpage, planning, suivi, risques et changements",
+    "summary": "Note de cadrage avec hors périmètre, découpage et estimation, jalons et dépendances, météo et compte rendu, tableau des risques, demandes de changement et communication.",
+    "sections": [
+     "La note de cadrage",
+     "Découper et estimer",
+     "Planifier avec des jalons",
+     "Suivre l'avancement",
+     "Gérer les risques",
+     "Gérer les demandes de changement",
+     "Communiquer",
+     "Exercice pratique : planifier un projet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Trello, Notion, rituels agiles et outils payants",
+    "summary": "Tableau Kanban dans Trello, espace projet et base de tâches dans Notion, vues, rituels agiles à distance, choix de l'outil, Jira, Monday.com et Notion Plus.",
+    "sections": [
+     "Trello : le Kanban simple",
+     "Notion : l'espace projet complet",
+     "Animer les rituels agiles",
+     "Choisir l'outil adapté",
+     "Les outils payants",
+     "Exercice pratique : votre espace projet"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : le site de l'ONG Rano Madio",
+    "summary": "Réunion de lancement, pilotage semaine par semaine, compte rendu avec météo, gestion d'un retard et d'un conflit de priorités, recette, mise en ligne et bilan.",
+    "sections": [
+     "Le cas pratique : « Rano Madio »",
+     "Étape 1 : la réunion de lancement",
+     "Étape 2 : piloter la réalisation",
+     "Étape 3 : gérer un retard et un conflit",
+     "Étape 4 : la recette et la mise en ligne",
+     "Étape 5 : clôturer",
+     "Exercice pratique : piloter le projet Rano Madio"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver un poste ou des missions et se faire payer",
+    "summary": "Portfolio d'organisation, 5 canaux, entretiens avec la méthode STAR, tarif journalier et forfaits, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver un poste ou des missions : 5 canaux",
+     "Réussir un entretien de chef de projet",
+     "Fixer ses prix",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-4-a": {
   "hours": 16,
   "description": "Ce niveau Avancé fait de l'assistant administratif et RH un partenaire qui structure l'entreprise : spécialité (paie, recrutement, SIRH, direction, office management, données RH), diagnostic et indicateurs RH, outils payants (Microsoft 365 avancé, Power Automate, logiciels de paie et SIRH), procédures, calendrier social et contrôles, équipes dans plusieurs pays et protection des données, puis forfaits, partenariats avec les cabinets comptables et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
