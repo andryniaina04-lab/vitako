@@ -37,7 +37,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 16, false),
-  ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 10, false),
+  ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, false),
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 11, false),
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 18, false),
@@ -37421,4 +37421,595 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle situation de paiement mobile tester à Madagascar ?', '["Aucune","Solde insuffisant et confirmation en retard","Uniquement le cas parfait","Le changement de logo"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle certification reconnue existe pour les testeurs ?', '["ISTQB niveau Fondation","PCG 2005","IELTS","DELF"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal","Aucun"]'::jsonb, 0);
+
+-- tech-2-f
+delete from public.exam_questions where course_id = 'tech-2-f';
+delete from public.module_questions where course_id = 'tech-2-f';
+delete from public.lessons where course_id = 'tech-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-f', 0, 'Le métier de technicien support à distance depuis Madagascar', 'Les niveaux de support, le helpdesk, les demandes fréquentes, incident et demande, les qualités du technicien, les employeurs et le laboratoire de test.', 'Un ordinateur qui ne démarre plus, une imprimante introuvable, un mot de passe oublié, une messagerie qui ne reçoit plus rien : chaque entreprise a besoin de quelqu''un pour régler ces problèmes. Le technicien support à distance aide les utilisateurs par téléphone, chat ou e-mail, et prend la main sur leur ordinateur grâce à un logiciel de contrôle à distance. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un technicien support à distance.
+> 2. Distinguer les niveaux de support.
+> 3. Reconnaître les demandes les plus fréquentes.
+> 4. Repérer vos premiers employeurs et clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un technicien support à distance **aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer, en les guidant ou en prenant la main sur leur appareil, et en suivant chaque demande jusqu''à sa résolution**.
+
+## Les niveaux de support
+
+| Niveau | Rôle | Exemples |
+| --- | --- | --- |
+| **Niveau 1** | Premier contact : recevoir, diagnostiquer, résoudre les problèmes simples | Mot de passe, imprimante, messagerie, installation d''un logiciel |
+| **Niveau 2** | Problèmes plus techniques, transmis par le niveau 1 | Réseau, droits d''accès, panne logicielle complexe |
+| **Niveau 3** | Experts ou éditeurs du logiciel | Bug d''un logiciel, panne de serveur |
+
+> [!definition] Helpdesk (ou service desk)
+> Le service qui reçoit toutes les demandes d''assistance des utilisateurs et l''outil qui les enregistre sous forme de tickets.
+
+Ce cours vous prépare au **niveau 1**, la porte d''entrée du métier.
+
+## Les demandes les plus fréquentes
+
+| Catégorie | Exemples |
+| --- | --- |
+| **Comptes et mots de passe** | Mot de passe oublié, compte bloqué, double authentification |
+| **Messagerie** | Ne reçoit plus d''e-mails, configuration sur le téléphone |
+| **Logiciels** | Installation, mise à jour, message d''erreur |
+| **Matériel** | Imprimante, écran, clavier, ordinateur lent |
+| **Réseau** | Pas d''Internet, Wi-Fi, VPN |
+| **Sécurité** | E-mail suspect, virus, clic sur un lien douteux |
+| **Demandes de service** | Nouvel employé à équiper, accès à un dossier partagé |
+
+> [!definition] Incident et demande
+> Un **incident** est quelque chose qui ne fonctionne plus (l''imprimante ne marche pas). Une **demande** est un besoin nouveau (créer un compte pour un nouvel employé).
+
+## Les qualités du technicien
+
+1. **La patience** : beaucoup d''utilisateurs ne sont pas à l''aise avec l''informatique.
+2. **La pédagogie** : expliquer simplement, sans jargon.
+3. **La méthode** : diagnostiquer pas à pas.
+4. **La curiosité** : chercher, tester, apprendre en permanence.
+5. **La rigueur** : documenter chaque ticket.
+6. **La discrétion** : vous voyez l''écran et parfois les fichiers des utilisateurs.
+
+> [!attention]
+> Le contrôle à distance donne accès à l''ordinateur d''une autre personne. On ne s''y connecte **qu''avec son accord**, on ne regarde que ce qui est nécessaire, et on ne demande jamais son mot de passe en clair.
+
+## Qui sont vos employeurs et clients ?
+
+### À Madagascar
+
+1. **Entreprises et ONG** sans service informatique complet.
+2. **Prestataires informatiques** qui gèrent le parc de plusieurs clients.
+3. **Centres de relation client** qui proposent du support technique pour des sociétés étrangères.
+4. **Écoles et cabinets** (comptables, avocats, médecins).
+
+### À l''étranger
+
+1. **Prestataires de services informatiques gérés** qui recrutent des techniciens à distance.
+2. **Éditeurs de logiciels** qui ont un support client technique.
+3. **Petites entreprises** francophones sans informaticien.
+
+> [!madagascar] Votre avantage
+> Le support informatique en français se fait déjà depuis Madagascar dans plusieurs centres de relation client. Le décalage horaire avec l''Europe permet de couvrir les débuts de journée, et les compétences acquises au niveau 1 ouvrent ensuite vers l''administration systèmes, les réseaux ou la cybersécurité.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, Windows ou un système qui permet de tester Windows |
+| **Connexion** | Stable, avec une solution de secours (forfait mobile) |
+| **Électricité** | Batterie ou onduleur pour les coupures |
+| **Casque avec micro** | Indispensable pour les appels |
+| **Lieu calme** | Pour parler aux utilisateurs sans bruit de fond |
+| **Machine de test** | Une machine virtuelle pour s''entraîner sans risque |
+
+> [!retenir]
+> - Le technicien aide les utilisateurs à distance et suit chaque demande.
+> - Niveau 1 : premier contact et problèmes simples.
+> - Comptes, messagerie, logiciels, matériel, réseau, sécurité.
+> - Incident (panne) et demande (besoin nouveau).
+> - Accès à distance seulement avec l''accord de l''utilisateur.
+
+## Exercice pratique : votre laboratoire
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Installez un logiciel de virtualisation gratuit (VirtualBox, par exemple).
+> 2. Créez une machine virtuelle de test (avec une version d''évaluation de Windows ou un système Linux gratuit).
+> 3. Listez 10 problèmes informatiques que vous avez déjà vus autour de vous et classez-les par catégorie.
+> 4. Indiquez pour chacun s''il s''agit d''un incident ou d''une demande.
+>
+> **À livrer** : une capture de votre machine virtuelle et votre liste classée.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 0, 0, 'Que traite le niveau 1 ?', '["Les achats de matériel","Le premier contact et les problèmes simples","Les bugs des éditeurs","La conception des serveurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 0, 1, 'Quelle est la différence entre incident et demande ?', '["L''incident est une panne, la demande un besoin nouveau","L''incident est un achat","Il n''y en a aucune","La demande est toujours urgente"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 0, 2, 'Quand se connecter à l''ordinateur d''un utilisateur ?', '["Seulement avec son accord","Quand on veut","La nuit sans prévenir","Jamais"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-f', 1, 'Les bases : méthode de diagnostic, Windows et réseau', 'Les 6 étapes du diagnostic, les bonnes questions, le problème général, les outils de Windows, IP, passerelle, DNS, VPN, commandes ipconfig et ping, expliquer sans jargon.', 'Ce module vous donne les bases techniques et la méthode du support : diagnostiquer pas à pas, poser les bonnes questions, connaître les éléments essentiels de Windows et du réseau, et expliquer simplement à un utilisateur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer une méthode de diagnostic en 6 étapes.
+> 2. Poser les bonnes questions à un utilisateur.
+> 3. Utiliser les outils de base de Windows.
+> 4. Vérifier une connexion réseau.
+> 5. Expliquer une solution sans jargon.
+
+## La méthode de diagnostic en 6 étapes
+
+| N° | Étape | Exemple : « Je n''ai plus Internet » |
+| --- | --- | --- |
+| 1 | **Comprendre** le problème exact | Plus aucun site, ou un seul ? Depuis quand ? |
+| 2 | **Reproduire** ou constater | Prise en main : le navigateur affiche « Pas de connexion » |
+| 3 | **Isoler** la cause | Les collègues ont Internet ? Le Wi-Fi est-il connecté ? |
+| 4 | **Tester** une solution à la fois | Désactiver puis réactiver le Wi-Fi |
+| 5 | **Vérifier** avec l''utilisateur | Il ouvre ses sites habituels |
+| 6 | **Documenter** dans le ticket | Cause, solution, durée |
+
+> [!astuce]
+> Commencez toujours par **les causes simples** : câble débranché, appareil éteint, mode avion activé, mise à jour en attente, redémarrage jamais fait. Une grande partie des problèmes se règlent ainsi.
+
+## Les bonnes questions
+
+| Question | Ce qu''elle apprend |
+| --- | --- |
+| « Que se passe-t-il exactement ? Quel message voyez-vous ? » | Le symptôme précis |
+| « Depuis quand ? » | Ce qui a pu changer |
+| « Avez-vous fait quelque chose de nouveau avant ? » | Mise à jour, installation, clic |
+| « Est-ce que vos collègues ont le même problème ? » | Problème individuel ou général |
+| « Pouvez-vous me lire le message d''erreur ? » | Une piste de recherche |
+| « Avez-vous déjà redémarré l''ordinateur ? » | Écarter une cause simple |
+
+> [!definition] Problème général
+> Quand plusieurs utilisateurs ont le même problème en même temps (messagerie en panne pour tous), on parle d''incident majeur. On le signale tout de suite au responsable, au lieu de traiter chaque appel séparément.
+
+## Les outils de base de Windows
+
+| Outil | Usage |
+| --- | --- |
+| **Gestionnaire des tâches** (Ctrl + Maj + Échap) | Voir ce qui ralentit l''ordinateur, fermer un programme bloqué |
+| **Paramètres** | Wi-Fi, mises à jour, imprimantes, comptes |
+| **Panneau de configuration** | Programmes installés, options avancées |
+| **Gestionnaire de périphériques** | Pilotes de l''imprimante, de la carte réseau |
+| **Observateur d''événements** | Historique des erreurs du système |
+| **Invite de commandes** | Commandes de diagnostic réseau |
+
+> [!definition] Pilote
+> Le petit logiciel qui permet à Windows de faire fonctionner un matériel (imprimante, carte réseau, carte graphique).
+
+## Le réseau : l''essentiel
+
+| Notion | Explication simple |
+| --- | --- |
+| **Adresse IP** | L''adresse d''un appareil sur le réseau |
+| **Passerelle** | La « porte » vers Internet, souvent la box ou le routeur |
+| **DNS** | Le service qui transforme un nom de site en adresse IP |
+| **Wi-Fi et câble** | Deux façons de se connecter au réseau local |
+| **VPN** | Un tunnel sécurisé vers le réseau de l''entreprise |
+
+### Les commandes utiles
+
+```
+ipconfig                → voir l''adresse IP et la passerelle
+ping 8.8.8.8            → tester l''accès à Internet par une adresse IP
+ping google.com         → tester aussi la résolution des noms (DNS)
+ipconfig /flushdns      → vider le cache DNS
+```
+
+> [!exemple] Lire le résultat
+> Si `ping 8.8.8.8` répond mais `ping google.com` ne répond pas, Internet fonctionne mais la **résolution des noms (DNS)** pose problème.
+
+## Expliquer simplement
+
+| Au lieu de | Dites |
+| --- | --- |
+| « Votre cache DNS est corrompu » | « Votre ordinateur a gardé une mauvaise adresse en mémoire, je vais l''effacer » |
+| « Il faut mettre à jour le pilote » | « Je vais installer la dernière version du programme de l''imprimante » |
+| « Faites Windows + R puis tapez… » | « Appuyez sur la touche avec le logo Windows et, en même temps, sur la lettre R » |
+
+> [!madagascar]
+> Les coupures de courant et les connexions instables provoquent des problèmes fréquents : fichiers non enregistrés, mises à jour interrompues, box à redémarrer. Pensez-y dans vos diagnostics et conseillez aux utilisateurs l''enregistrement automatique et un onduleur.
+
+> [!retenir]
+> - Comprendre, reproduire, isoler, tester, vérifier, documenter.
+> - Les causes simples d''abord.
+> - Les bonnes questions donnent la moitié de la réponse.
+> - Gestionnaire des tâches, paramètres, pilotes, événements, commandes réseau.
+> - Expliquer sans jargon, étape par étape.
+
+## Exercice pratique : diagnostiquer
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Dans votre machine virtuelle, utilisez `ipconfig` et `ping` et notez les résultats.
+> 2. Coupez le réseau de la machine et refaites les tests : que voyez-vous ?
+> 3. Rédigez la liste de questions pour 3 problèmes : imprimante, messagerie, ordinateur lent.
+> 4. Réécrivez 5 explications techniques en langage simple.
+>
+> **À livrer** : vos résultats de tests, vos listes de questions et vos 5 explications.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 1, 0, 'Par quoi commencer un diagnostic ?', '["Réinstaller Windows","Les causes simples","Changer l''ordinateur","Appeler l''éditeur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 1, 1, 'Si ping 8.8.8.8 répond mais pas ping google.com, d''où vient le problème ?', '["De l''écran","De l''imprimante","De la résolution des noms (DNS)","Du clavier"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 1, 2, 'Que faire si plusieurs utilisateurs ont la même panne ?', '["Le signaler tout de suite au responsable","Traiter chaque appel séparément sans rien dire","Attendre","Raccrocher"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-f', 2, 'Les outils : AnyDesk, Zendesk et versions payantes', 'Ouvrir une session de contrôle à distance, se protéger des faux techniciens, fonctions utiles, cycle d''un ticket, ticket bien rempli, SLA, base de connaissances, TeamViewer et Zendesk payants.', 'Ce module vous fait prendre en main les deux outils principaux du technicien : un logiciel de **contrôle à distance** (AnyDesk, gratuit pour un usage personnel) et un **helpdesk** (Zendesk, avec une période d''essai). Vous découvrirez ensuite les versions professionnelles payantes : **TeamViewer** et **Zendesk**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Établir une session de contrôle à distance sécurisée.
+> 2. Guider un utilisateur pour qu''il vous donne l''accès.
+> 3. Traiter des tickets dans un helpdesk.
+> 4. Rédiger des articles de base de connaissances.
+> 5. Comprendre ce qu''apportent TeamViewer et Zendesk en version payante.
+
+## Le contrôle à distance avec AnyDesk
+
+> [!definition] Contrôle à distance
+> Un logiciel qui permet de voir l''écran d''un autre ordinateur et d''utiliser sa souris et son clavier, à travers Internet.
+
+### Ouvrir une session
+
+1. L''utilisateur **télécharge** AnyDesk depuis le site officiel.
+2. Il vous **communique** son identifiant AnyDesk (une suite de chiffres).
+3. Vous **demandez** la connexion depuis votre poste.
+4. L''utilisateur **accepte** et choisit les autorisations.
+5. Vous **expliquez** ce que vous faites pendant la session.
+6. À la fin, vous **fermez** la session et l''utilisateur vérifie qu''elle est bien fermée.
+
+> [!attention]
+> Des escrocs se font passer pour des techniciens et demandent un accès à distance pour voler de l''argent ou des données. Rappelez aux utilisateurs de **ne jamais** donner un accès à quelqu''un qu''ils n''ont pas contacté eux-mêmes par un canal officiel. Et vous, ne demandez jamais un accès sans un ticket ou un appel identifié.
+
+### Les fonctions utiles
+
+| Fonction | Usage |
+| --- | --- |
+| **Transfert de fichiers** | Envoyer un installateur ou récupérer un fichier journal |
+| **Discussion** | Échanger quand le téléphone n''est pas disponible |
+| **Accès sans surveillance** | Se connecter sans présence de l''utilisateur, seulement si l''entreprise l''a autorisé et configuré |
+| **Redémarrage à distance** | Redémarrer et se reconnecter automatiquement |
+| **Qualité d''affichage** | Réduire la qualité pour une connexion faible |
+
+> [!madagascar]
+> Avec une connexion instable, réglez l''affichage sur la **qualité réduite** et désactivez le fond d''écran pendant la session. La session sera beaucoup plus fluide.
+
+> [!astuce]
+> Vérifiez les conditions de la version gratuite : elle est généralement réservée à un **usage personnel**. Pour un usage professionnel régulier, l''employeur doit acheter une licence.
+
+## Le helpdesk avec Zendesk
+
+### Le cycle d''un ticket
+
+| Statut | Signification |
+| --- | --- |
+| **Nouveau** | Pas encore pris en charge |
+| **Ouvert** | En cours de traitement |
+| **En attente** | Attente d''une réponse de l''utilisateur |
+| **En pause** | Attente d''un tiers (fournisseur, niveau 2) |
+| **Résolu** | Solution apportée, en attente de confirmation |
+| **Fermé** | Clos définitivement |
+
+### Un ticket bien rempli
+
+```
+Demandeur : Mme Rasoa, comptabilité
+Catégorie : Matériel > Imprimante
+Priorité : Normale
+Description : l''imprimante du 2e étage n''imprime plus depuis ce matin ; message « imprimante hors ligne ».
+Actions :
+- Vérification : imprimante allumée, papier présent.
+- Les collègues impriment normalement → problème propre au poste.
+- Suppression puis réinstallation de l''imprimante sur le poste.
+- Page de test imprimée avec succès.
+Résolution : imprimante réinstallée. Durée : 15 min.
+```
+
+### Les autres fonctions
+
+| Fonction | Usage |
+| --- | --- |
+| **Macros** | Réponses et actions enregistrées |
+| **Vues** | Listes filtrées (mes tickets, urgents) |
+| **Niveaux de service (SLA)** | Délais à respecter selon la priorité |
+| **Base de connaissances** | Articles d''aide pour les utilisateurs |
+| **Rapports** | Volume, délais, satisfaction |
+
+> [!definition] SLA (accord de niveau de service)
+> Un engagement sur les délais : par exemple, première réponse en moins d''une heure pour une priorité haute.
+
+## La base de connaissances
+
+1. **Repérez** les problèmes qui reviennent souvent.
+2. **Rédigez** un article par problème : symptôme, étapes, captures d''écran.
+3. **Testez** l''article avec un utilisateur.
+4. **Envoyez** le lien au lieu de réexpliquer à chaque fois.
+
+## Les versions payantes
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **TeamViewer** (licence professionnelle) | Contrôle à distance très répandu en entreprise, gestion d''un parc d''appareils, accès sans surveillance sécurisé, journaux des sessions, intégration avec des helpdesks |
+| **Zendesk** (offres payantes) | Plusieurs canaux réunis, automatisations, SLA, rapports avancés, base de connaissances complète |
+
+> [!madagascar]
+> Ces licences sont payées **par l''employeur**. Pour vous former, utilisez les versions d''essai et les centres d''aide officiels. Sur votre profil, indiquez les outils que vous savez utiliser avec un exemple concret.
+
+> [!retenir]
+> - Contrôle à distance : identifiant, accord de l''utilisateur, explication, fermeture.
+> - Méfiance face aux faux techniciens.
+> - Le cycle d''un ticket et un ticket bien documenté.
+> - Macros, vues, SLA, base de connaissances, rapports.
+> - TeamViewer et Zendesk payants, fournis par l''employeur.
+
+## Exercice pratique : votre première session
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez AnyDesk sur votre ordinateur et dans votre machine virtuelle (ou chez un proche qui accepte).
+> 2. Faites une session : changez le fond d''écran, transférez un fichier, puis fermez la session.
+> 3. Ouvrez un essai d''un helpdesk et créez 5 tickets avec statuts et catégories.
+> 4. Rédigez 2 articles de base de connaissances avec captures d''écran.
+>
+> **À livrer** : des captures de la session et du helpdesk, et vos 2 articles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 2, 0, 'Que doit communiquer l''utilisateur pour une session AnyDesk ?', '["Rien","Son code bancaire","Son mot de passe de messagerie","Son identifiant AnyDesk"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 2, 1, 'Que signifie le statut « En attente » ?', '["On attend une réponse de l''utilisateur","Le ticket est fermé","Le ticket est supprimé","Le ticket est nouveau"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 2, 2, 'Qu''est-ce qu''un SLA ?', '["Un engagement sur les délais de traitement","Un logiciel de dessin","Un virus","Un type de câble"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-f', 3, 'Premier projet : une journée de support au cabinet Fanilo', 'Accueil d''un appel, 5 problèmes types (mot de passe, imprimante, lenteur, messagerie, installation), incident d''hameçonnage, escalade au niveau 2 et bilan de journée.', 'Dans ce module, vous assurez le support de niveau 1 d''une petite entreprise pendant une journée type, comme le ferait un technicien à distance. Vous apprendrez à accueillir l''appel, à résoudre les problèmes les plus fréquents, à escalader au niveau 2 et à documenter votre travail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Prendre en charge un appel de bout en bout.
+> 2. Résoudre 5 problèmes types de niveau 1.
+> 3. Repérer un incident de sécurité et réagir.
+> 4. Escalader un ticket au niveau 2.
+> 5. Rédiger un bilan de journée.
+
+## Le cas pratique : « Cabinet Fanilo »
+
+> [!exemple] Votre client
+> **Le cabinet Fanilo** est un cabinet comptable d''Antananarivo avec 18 employés. Il n''a pas d''informaticien. Un prestataire informatique vous confie le support de niveau 1 du cabinet, à distance, de 8 h à 17 h. Les employés appellent ou écrivent ; vous avez AnyDesk, un helpdesk et un contact au niveau 2 chez le prestataire.
+
+## L''accueil d''un appel
+
+| Étape | Exemple |
+| --- | --- |
+| **Saluer et s''identifier** | « Support informatique, bonjour, je suis Hery. » |
+| **Identifier l''utilisateur** | Nom, service, poste |
+| **Écouter le problème** | Laisser parler, puis reformuler |
+| **Créer ou retrouver le ticket** | Pendant l''appel |
+| **Annoncer la suite** | « Je vais me connecter à votre ordinateur avec votre accord. » |
+| **Conclure** | Vérifier que tout fonctionne, donner le numéro de ticket |
+
+## Les 5 problèmes types
+
+### 1. Mot de passe oublié ou compte bloqué
+
+1. **Vérifier l''identité** selon la procédure (question de sécurité, rappel sur un numéro connu).
+2. Réinitialiser ou débloquer dans l''outil d''administration, si vous en avez les droits.
+3. Donner un mot de passe temporaire par un canal sûr et demander de le changer.
+
+> [!attention]
+> Ne réinitialisez jamais un mot de passe sans **vérifier l''identité** de la personne. C''est une technique classique des pirates : appeler le support en se faisant passer pour un employé.
+
+### 2. Imprimante qui n''imprime plus
+
+1. Vérifier : allumée, papier, voyant d''erreur.
+2. Les autres impriment-ils ? Si oui, le problème vient du poste.
+3. Vider la file d''impression, puis supprimer et réinstaller l''imprimante si besoin.
+
+### 3. Ordinateur très lent
+
+1. Gestionnaire des tâches : quel programme utilise le processeur, la mémoire ou le disque ?
+2. Espace disque libre suffisant ?
+3. Mises à jour en cours ? Redémarrage depuis combien de temps ?
+4. Fermer ou désinstaller ce qui pose problème, avec l''accord de l''utilisateur.
+
+### 4. Messagerie qui ne reçoit plus
+
+1. Le webmail fonctionne-t-il ? Si oui, le problème vient du logiciel de messagerie sur le poste.
+2. Boîte pleine ? Connexion Internet ?
+3. Réparer le profil ou reconfigurer le compte.
+
+### 5. Installation d''un logiciel
+
+1. Le logiciel est-il **autorisé** par l''entreprise ?
+2. Télécharger uniquement depuis le site officiel ou le dépôt de l''entreprise.
+3. Installer, tester, informer l''utilisateur.
+
+## Un incident de sécurité
+
+> [!exemple] L''appel
+> « J''ai cliqué sur un lien dans un e-mail qui disait que mon compte allait être fermé, et j''ai tapé mon mot de passe. »
+
+| Réaction | Pourquoi |
+| --- | --- |
+| **Rassurer** et remercier d''avoir appelé vite | L''utilisateur doit oser signaler |
+| **Changer** le mot de passe immédiatement (ou faire changer) | Bloquer l''accès du pirate |
+| **Débrancher** le poste du réseau si un fichier a été ouvert | Limiter la propagation |
+| **Escalader** au niveau 2 ou au responsable sécurité | Analyse et vérifications |
+| **Documenter** : heure, e-mail reçu, actions | Pour l''enquête |
+
+## Escalader au niveau 2
+
+```
+Ticket #2214 – Priorité haute
+Utilisateur : M. Rakoto, direction
+Problème : le VPN refuse la connexion depuis ce matin (« échec d''authentification »).
+Déjà fait :
+- Identifiants vérifiés (connexion au webmail OK).
+- Redémarrage du poste et du logiciel VPN.
+- Même erreur sur le téléphone de l''utilisateur.
+- 2 autres utilisateurs signalent la même erreur → possible problème général.
+Demande : vérification du serveur VPN.
+```
+
+> [!astuce]
+> Une bonne escalade dit **ce qui a déjà été fait**. Le niveau 2 ne refait pas les mêmes tests, et le problème est réglé plus vite.
+
+## Le bilan de journée
+
+| Rubrique | Exemple |
+| --- | --- |
+| Tickets reçus et résolus | 23 reçus, 20 résolus, 3 escaladés |
+| Délai moyen de résolution | 22 minutes |
+| Problèmes principaux | Imprimantes (6), mots de passe (5) |
+| Incident de sécurité | 1 hameçonnage, mot de passe changé, escaladé |
+| Proposition | Rappel aux employés sur les e-mails suspects |
+
+> [!madagascar]
+> Dans beaucoup d''entreprises malgaches, les coupures de courant entraînent des pannes répétées (box, imprimantes, postes). Notez-les dans votre bilan : proposer des onduleurs pour les équipements clés est un conseil utile et apprécié.
+
+> [!retenir]
+> - Saluer, identifier, écouter, créer le ticket, annoncer, conclure.
+> - Mots de passe : vérifier l''identité avant tout.
+> - Imprimante, lenteur, messagerie, installation : une méthode pour chaque cas.
+> - Hameçonnage : changer le mot de passe, isoler, escalader, documenter.
+> - Une escalade complète et un bilan chiffré.
+
+## Exercice pratique : une journée au cabinet Fanilo
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Inventez 15 demandes variées des employés du cabinet.
+> 2. Traitez-les dans votre helpdesk avec des tickets complets ; résolvez réellement dans votre machine virtuelle ceux qui le permettent (imprimante, lenteur, installation).
+> 3. Rédigez 2 escalades au niveau 2 et la réaction à un incident d''hameçonnage.
+> 4. Rédigez le bilan de la journée.
+>
+> **À livrer** : vos 15 tickets, vos captures, vos escalades et votre bilan. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 3, 0, 'Que faire avant de réinitialiser un mot de passe ?', '["Envoyer le mot de passe à tout le service","Vérifier l''identité de la personne","Publier le nouveau mot de passe","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 3, 1, 'Un utilisateur a saisi son mot de passe sur un faux site : première action ?', '["Ne rien faire","Changer le mot de passe immédiatement","Le gronder","Attendre une semaine"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 3, 2, 'Que doit contenir une escalade ?', '["Ce qui a déjà été fait","Seulement le nom de l''utilisateur","Rien","Une plainte"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-f', 4, 'Trouver du travail et se faire payer', 'Dossier technique, 5 canaux, entretien technique, forfaits, conditions, paiements, certifications et évolution vers le niveau 2, les systèmes ou la cybersécurité.', 'Le support informatique est l''une des meilleures portes d''entrée dans les métiers de l''informatique. Ce dernier module vous montre comment vous présenter, trouver un poste ou des clients, fixer votre tarif, vous faire payer depuis Madagascar et construire votre progression.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer un dossier de présentation technique.
+> 2. Trouver des employeurs et des clients grâce à 5 canaux.
+> 3. Réussir un entretien technique de niveau 1.
+> 4. Fixer votre tarif et vos conditions.
+> 5. Vous faire payer et planifier votre évolution.
+
+## Votre dossier de présentation
+
+1. **Un CV ou profil** : outils maîtrisés (AnyDesk, helpdesk, Windows), langues, horaires.
+2. **Votre projet Cabinet Fanilo** : exemples de tickets, escalades, bilan.
+3. **Vos articles de base de connaissances** : ils montrent votre pédagogie.
+4. **Votre laboratoire** : machine virtuelle, tests réalisés.
+5. **Vos certifications** si vous en avez (voir plus bas).
+
+## Où trouver du travail : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Prestataires informatiques à Madagascar** | Proposez-vous pour le support de leurs clients |
+| 2 | **Centres de relation client** avec support technique | Postulez aux offres de « support technique » ou « helpdesk » |
+| 3 | **Prestataires étrangers de services informatiques gérés** | Recherchez les offres de technicien de niveau 1 à distance |
+| 4 | **Plateformes de freelance et sites d''emploi à distance** | Vérifiez qu''elles acceptent les profils basés à Madagascar |
+| 5 | **Petites structures locales** (cabinets, écoles, ONG) | Proposez un forfait mensuel de support à distance |
+
+> [!exemple] Message à un cabinet local
+> « Bonjour, je suis technicien support à distance. Beaucoup de cabinets perdent du temps avec des imprimantes, des mots de passe ou des ordinateurs lents. Je propose un forfait mensuel : vos employés m''appellent ou m''écrivent et je règle la plupart des problèmes à distance, dans la journée. Je vous offre un mois d''essai à demi-tarif. »
+
+## Réussir un entretien technique
+
+| Type de question | Exemple |
+| --- | --- |
+| **Méthode** | « Un utilisateur n''a plus Internet : que faites-vous ? » |
+| **Connaissances** | « À quoi sert le DNS ? » |
+| **Sécurité** | « Quelqu''un appelle pour réinitialiser un mot de passe : que vérifiez-vous ? » |
+| **Relation** | « Un utilisateur s''énerve au téléphone : comment réagissez-vous ? » |
+| **Mise en situation** | Résoudre un problème en partage d''écran |
+
+> [!astuce]
+> Répondez en suivant votre **méthode à voix haute** : comprendre, reproduire, isoler, tester, vérifier, documenter. Les recruteurs évaluent autant votre façon de raisonner que la bonne réponse.
+
+## Fixer son tarif
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Au tarif horaire** | Interventions ponctuelles | 15 000 Ar de l''heure |
+| **Forfait petite structure** | Jusqu''à 10 postes, support en journée | 400 000 Ar par mois |
+| **Forfait structure moyenne** | Jusqu''à 25 postes | 800 000 Ar par mois |
+| **Mise en place** | Inventaire du parc, comptes, documentation | 300 000 Ar une fois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions
+
+1. **Les horaires** couverts et le délai de prise en charge.
+2. **Ce qui est inclus** : support à distance, nombre de postes.
+3. **Ce qui ne l''est pas** : déplacements, réparations matérielles, achat de licences.
+4. **La confidentialité** des données consultées.
+5. **Les accès** : uniquement avec accord et selon la procédure.
+6. **Le paiement** : mensuel, payé d''avance pour un forfait.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client ou employeur local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville si vous travaillez comme indépendant, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Technicien de niveau 2** | Réseau, annuaire d''entreprise, messagerie professionnelle, scripts simples |
+| **Administrateur systèmes** | Serveurs, cloud, automatisation (voir la formation Administrateur systèmes et DevOps) |
+| **Analyste en cybersécurité** | Sécurité, surveillance, réponse aux incidents (voir la formation Analyste en cybersécurité) |
+| **Responsable du support** | Organisation, indicateurs, outils |
+
+> [!astuce]
+> Les certifications d''entrée de gamme en support informatique (par exemple des certifications reconnues d''éditeurs ou d''organismes du secteur) aident à se faire remarquer. Vérifiez les programmes, les coûts et les possibilités de passer l''examen en ligne avant de vous lancer.
+
+> [!retenir]
+> - Un dossier avec tickets, articles et laboratoire.
+> - Prestataires, centres de relation client, plateformes, structures locales.
+> - En entretien, raisonnez à voix haute avec votre méthode.
+> - Un forfait mensuel clair, avec ce qui est inclus ou non.
+> - Évoluez vers le niveau 2, les systèmes ou la cybersécurité.
+
+## Exercice pratique : décrocher votre premier contrat
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez votre profil et rassemblez votre dossier.
+> 2. Préparez vos réponses à 8 questions d''entretien.
+> 3. Calculez vos forfaits et rédigez vos conditions en 6 points.
+> 4. Envoyez au moins 3 candidatures ou propositions personnalisées.
+>
+> **À livrer** : votre profil, vos réponses, vos forfaits, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 4, 0, 'Comment répondre à une question de méthode en entretien ?', '["Parler d''autre chose","Raisonner à voix haute avec sa méthode","Donner une réponse au hasard","Refuser de répondre"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 4, 1, 'Que ne pas inclure dans un forfait de support à distance ?', '["Les tickets","Les déplacements et réparations matérielles","Le support à distance","La documentation"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-f', 4, 2, 'Vers quel métier un technicien peut-il évoluer ?', '["Photographe","Traducteur juridique","Cuisinier","Administrateur systèmes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que fait un technicien support à distance ?', '["Il fabrique des câbles","Il crée des sites de mode","Il aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer","Il vend des ordinateurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Qui traite les bugs d''un logiciel ?', '["Personne","Le niveau 1","Le niveau 3 ou l''éditeur","L''utilisateur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Créer un compte pour un nouvel employé est :', '["Un virus","Une demande","Un incident","Une panne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Pourquoi un laboratoire de test ?', '["C''est obligatoire par la loi","Pour s''entraîner sans risque","Pour jouer","Pour décorer son bureau"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quelle étape vient après « Tester une solution » ?', '["Comprendre","Reproduire","Vérifier avec l''utilisateur","Isoler"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quelle question aide à savoir si le problème est général ?', '["« Où habitez-vous ? »","« Quelle est votre couleur préférée ? »","« Quel âge avez-vous ? »","« Vos collègues ont-ils le même problème ? »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'À quoi sert le Gestionnaire des tâches ?', '["Dessiner","Imprimer","Voir ce qui ralentit l''ordinateur et fermer un programme bloqué","Écrire des e-mails"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Qu''est-ce qu''un pilote ?', '["Un utilisateur","Un câble","Un mot de passe","Le logiciel qui fait fonctionner un matériel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que fait le DNS ?', '["Il transforme un nom de site en adresse IP","Il refroidit l''ordinateur","Il imprime","Il chiffre les disques"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quelle commande affiche l''adresse IP sous Windows ?', '["print","ipconfig","format","delete"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Comment expliquer une solution à un utilisateur ?', '["Sans rien expliquer","En anglais seulement","Avec un maximum de termes techniques","Simplement, sans jargon"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que rappeler aux utilisateurs sur l''accès à distance ?', '["Rien","Ne jamais donner d''accès à quelqu''un qu''ils n''ont pas contacté par un canal officiel","Donner l''accès à tous ceux qui appellent","Partager leur identifiant en public"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que faire avec une connexion instable pendant une session ?', '["Ouvrir des vidéos","Augmenter la résolution","Abandonner","Réduire la qualité d''affichage"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'La version gratuite d''AnyDesk est généralement réservée à :', '["Un usage personnel","Toutes les grandes entreprises","Les administrations","Les banques"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que signifie le statut « En pause » ?', '["L''utilisateur est en vacances","Le ticket est supprimé","Le ticket est résolu","On attend un tiers comme un fournisseur ou le niveau 2"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que contient un ticket bien rempli ?', '["Seulement un titre","Rien","Demandeur, catégorie, description, actions, résolution","Le mot de passe de l''utilisateur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Qui paie les licences TeamViewer et Zendesk ?', '["L''employeur","L''utilisateur final","Le technicien","Personne"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que faire si une imprimante ne marche que pour un seul poste ?', '["Changer tout le réseau","Chercher la cause sur ce poste, par exemple réinstaller l''imprimante","Rien","Remplacer l''imprimante"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Si le webmail fonctionne mais pas le logiciel de messagerie :', '["Le serveur est en panne","Le problème vient du logiciel sur le poste","Internet est coupé","L''écran est cassé"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Avant d''installer un logiciel, que vérifier ?', '["Rien","Qu''il est autorisé par l''entreprise","Son nombre de téléchargements seulement","Sa couleur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que faire si un fichier malveillant a été ouvert ?', '["L''envoyer aux collègues","Continuer à travailler","Éteindre la lumière","Débrancher le poste du réseau et escalader"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que proposer face aux coupures de courant répétées ?', '["Rien","Des onduleurs pour les équipements clés","De changer de ville","D''éteindre tous les ordinateurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que contient un bilan de journée ?', '["Seulement vos heures","Des photos","Les mots de passe","Tickets, délais, problèmes principaux, incidents et propositions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel forfait proposer à une petite structure locale ?', '["Un ordinateur gratuit","Un abonnement à une salle de sport","Un forfait mensuel de support à distance","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
 commit;

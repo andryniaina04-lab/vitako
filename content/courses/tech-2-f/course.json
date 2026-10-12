@@ -1,0 +1,97 @@
+{
+  "id": "tech-2-f",
+  "hours": 16,
+  "description": "Le technicien support à distance aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant au support de niveau 1 à distance pour des entreprises, des prestataires informatiques et des centres de relation client, à Madagascar et à l'étranger, avec AnyDesk et Zendesk : niveaux de support, méthode de diagnostic, bases de Windows et du réseau, contrôle à distance sécurisé, tickets, base de connaissances, sécurité, escalade et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les niveaux de support et les demandes fréquentes",
+    "Appliquer une méthode de diagnostic en 6 étapes",
+    "Utiliser les outils de base de Windows et les commandes réseau",
+    "Mener une session de contrôle à distance sécurisée et gérer des tickets",
+    "Résoudre les problèmes types de niveau 1, réagir à un hameçonnage et escalader",
+    "Se présenter, réussir un entretien, fixer son tarif et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de technicien support à distance depuis Madagascar",
+      "summary": "Les niveaux de support, le helpdesk, les demandes fréquentes, incident et demande, les qualités du technicien, les employeurs et le laboratoire de test.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que traite le niveau 1 ?", "options": ["Le premier contact et les problèmes simples", "Les bugs des éditeurs", "La conception des serveurs", "Les achats de matériel"], "correct": 0 },
+        { "q": "Quelle est la différence entre incident et demande ?", "options": ["L'incident est une panne, la demande un besoin nouveau", "Il n'y en a aucune", "La demande est toujours urgente", "L'incident est un achat"], "correct": 0 },
+        { "q": "Quand se connecter à l'ordinateur d'un utilisateur ?", "options": ["Seulement avec son accord", "Quand on veut", "La nuit sans prévenir", "Jamais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : méthode de diagnostic, Windows et réseau",
+      "summary": "Les 6 étapes du diagnostic, les bonnes questions, le problème général, les outils de Windows, IP, passerelle, DNS, VPN, commandes ipconfig et ping, expliquer sans jargon.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quoi commencer un diagnostic ?", "options": ["Les causes simples", "Réinstaller Windows", "Changer l'ordinateur", "Appeler l'éditeur"], "correct": 0 },
+        { "q": "Si ping 8.8.8.8 répond mais pas ping google.com, d'où vient le problème ?", "options": ["De la résolution des noms (DNS)", "Du clavier", "De l'écran", "De l'imprimante"], "correct": 0 },
+        { "q": "Que faire si plusieurs utilisateurs ont la même panne ?", "options": ["Le signaler tout de suite au responsable", "Traiter chaque appel séparément sans rien dire", "Attendre", "Raccrocher"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : AnyDesk, Zendesk et versions payantes",
+      "summary": "Ouvrir une session de contrôle à distance, se protéger des faux techniciens, fonctions utiles, cycle d'un ticket, ticket bien rempli, SLA, base de connaissances, TeamViewer et Zendesk payants.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que doit communiquer l'utilisateur pour une session AnyDesk ?", "options": ["Son identifiant AnyDesk", "Son mot de passe de messagerie", "Son code bancaire", "Rien"], "correct": 0 },
+        { "q": "Que signifie le statut « En attente » ?", "options": ["On attend une réponse de l'utilisateur", "Le ticket est fermé", "Le ticket est nouveau", "Le ticket est supprimé"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un SLA ?", "options": ["Un engagement sur les délais de traitement", "Un logiciel de dessin", "Un type de câble", "Un virus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une journée de support au cabinet Fanilo",
+      "summary": "Accueil d'un appel, 5 problèmes types (mot de passe, imprimante, lenteur, messagerie, installation), incident d'hameçonnage, escalade au niveau 2 et bilan de journée.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de réinitialiser un mot de passe ?", "options": ["Vérifier l'identité de la personne", "Rien", "Publier le nouveau mot de passe", "Envoyer le mot de passe à tout le service"], "correct": 0 },
+        { "q": "Un utilisateur a saisi son mot de passe sur un faux site : première action ?", "options": ["Changer le mot de passe immédiatement", "Attendre une semaine", "Ne rien faire", "Le gronder"], "correct": 0 },
+        { "q": "Que doit contenir une escalade ?", "options": ["Ce qui a déjà été fait", "Seulement le nom de l'utilisateur", "Rien", "Une plainte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver du travail et se faire payer",
+      "summary": "Dossier technique, 5 canaux, entretien technique, forfaits, conditions, paiements, certifications et évolution vers le niveau 2, les systèmes ou la cybersécurité.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment répondre à une question de méthode en entretien ?", "options": ["Raisonner à voix haute avec sa méthode", "Donner une réponse au hasard", "Refuser de répondre", "Parler d'autre chose"], "correct": 0 },
+        { "q": "Que ne pas inclure dans un forfait de support à distance ?", "options": ["Les déplacements et réparations matérielles", "Le support à distance", "Les tickets", "La documentation"], "correct": 0 },
+        { "q": "Vers quel métier un technicien peut-il évoluer ?", "options": ["Administrateur systèmes", "Cuisinier", "Traducteur juridique", "Photographe"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un technicien support à distance ?", "options": ["Il aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer", "Il vend des ordinateurs", "Il fabrique des câbles", "Il crée des sites de mode"], "correct": 0 },
+    { "q": "Qui traite les bugs d'un logiciel ?", "options": ["Le niveau 3 ou l'éditeur", "Le niveau 1", "L'utilisateur", "Personne"], "correct": 0 },
+    { "q": "Créer un compte pour un nouvel employé est :", "options": ["Une demande", "Un incident", "Une panne", "Un virus"], "correct": 0 },
+    { "q": "Pourquoi un laboratoire de test ?", "options": ["Pour s'entraîner sans risque", "Pour décorer son bureau", "C'est obligatoire par la loi", "Pour jouer"], "correct": 0 },
+    { "q": "Quelle étape vient après « Tester une solution » ?", "options": ["Vérifier avec l'utilisateur", "Comprendre", "Reproduire", "Isoler"], "correct": 0 },
+    { "q": "Quelle question aide à savoir si le problème est général ?", "options": ["« Vos collègues ont-ils le même problème ? »", "« Quelle est votre couleur préférée ? »", "« Quel âge avez-vous ? »", "« Où habitez-vous ? »"], "correct": 0 },
+    { "q": "À quoi sert le Gestionnaire des tâches ?", "options": ["Voir ce qui ralentit l'ordinateur et fermer un programme bloqué", "Écrire des e-mails", "Imprimer", "Dessiner"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un pilote ?", "options": ["Le logiciel qui fait fonctionner un matériel", "Un utilisateur", "Un câble", "Un mot de passe"], "correct": 0 },
+    { "q": "Que fait le DNS ?", "options": ["Il transforme un nom de site en adresse IP", "Il imprime", "Il chiffre les disques", "Il refroidit l'ordinateur"], "correct": 0 },
+    { "q": "Quelle commande affiche l'adresse IP sous Windows ?", "options": ["ipconfig", "print", "format", "delete"], "correct": 0 },
+    { "q": "Comment expliquer une solution à un utilisateur ?", "options": ["Simplement, sans jargon", "Avec un maximum de termes techniques", "Sans rien expliquer", "En anglais seulement"], "correct": 0 },
+    { "q": "Que rappeler aux utilisateurs sur l'accès à distance ?", "options": ["Ne jamais donner d'accès à quelqu'un qu'ils n'ont pas contacté par un canal officiel", "Donner l'accès à tous ceux qui appellent", "Partager leur identifiant en public", "Rien"], "correct": 0 },
+    { "q": "Que faire avec une connexion instable pendant une session ?", "options": ["Réduire la qualité d'affichage", "Augmenter la résolution", "Ouvrir des vidéos", "Abandonner"], "correct": 0 },
+    { "q": "La version gratuite d'AnyDesk est généralement réservée à :", "options": ["Un usage personnel", "Toutes les grandes entreprises", "Les banques", "Les administrations"], "correct": 0 },
+    { "q": "Que signifie le statut « En pause » ?", "options": ["On attend un tiers comme un fournisseur ou le niveau 2", "Le ticket est résolu", "L'utilisateur est en vacances", "Le ticket est supprimé"], "correct": 0 },
+    { "q": "Que contient un ticket bien rempli ?", "options": ["Demandeur, catégorie, description, actions, résolution", "Seulement un titre", "Le mot de passe de l'utilisateur", "Rien"], "correct": 0 },
+    { "q": "Qui paie les licences TeamViewer et Zendesk ?", "options": ["L'employeur", "Le technicien", "L'utilisateur final", "Personne"], "correct": 0 },
+    { "q": "Que faire si une imprimante ne marche que pour un seul poste ?", "options": ["Chercher la cause sur ce poste, par exemple réinstaller l'imprimante", "Remplacer l'imprimante", "Changer tout le réseau", "Rien"], "correct": 0 },
+    { "q": "Si le webmail fonctionne mais pas le logiciel de messagerie :", "options": ["Le problème vient du logiciel sur le poste", "Le serveur est en panne", "Internet est coupé", "L'écran est cassé"], "correct": 0 },
+    { "q": "Avant d'installer un logiciel, que vérifier ?", "options": ["Qu'il est autorisé par l'entreprise", "Sa couleur", "Rien", "Son nombre de téléchargements seulement"], "correct": 0 },
+    { "q": "Que faire si un fichier malveillant a été ouvert ?", "options": ["Débrancher le poste du réseau et escalader", "Continuer à travailler", "L'envoyer aux collègues", "Éteindre la lumière"], "correct": 0 },
+    { "q": "Que proposer face aux coupures de courant répétées ?", "options": ["Des onduleurs pour les équipements clés", "Rien", "D'éteindre tous les ordinateurs", "De changer de ville"], "correct": 0 },
+    { "q": "Que contient un bilan de journée ?", "options": ["Tickets, délais, problèmes principaux, incidents et propositions", "Seulement vos heures", "Des photos", "Les mots de passe"], "correct": 0 },
+    { "q": "Quel forfait proposer à une petite structure locale ?", "options": ["Un forfait mensuel de support à distance", "Un abonnement à une salle de sport", "Un ordinateur gratuit", "Rien"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

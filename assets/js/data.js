@@ -5184,5 +5184,87 @@ export const PUBLISHED = {
     "minutes": 6
    }
   ]
+ },
+ "tech-2-f": {
+  "hours": 16,
+  "description": "Le technicien support à distance aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant au support de niveau 1 à distance pour des entreprises, des prestataires informatiques et des centres de relation client, à Madagascar et à l'étranger, avec AnyDesk et Zendesk : niveaux de support, méthode de diagnostic, bases de Windows et du réseau, contrôle à distance sécurisé, tickets, base de connaissances, sécurité, escalade et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les niveaux de support et les demandes fréquentes",
+   "Appliquer une méthode de diagnostic en 6 étapes",
+   "Utiliser les outils de base de Windows et les commandes réseau",
+   "Mener une session de contrôle à distance sécurisée et gérer des tickets",
+   "Résoudre les problèmes types de niveau 1, réagir à un hameçonnage et escalader",
+   "Se présenter, réussir un entretien, fixer son tarif et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de technicien support à distance depuis Madagascar",
+    "summary": "Les niveaux de support, le helpdesk, les demandes fréquentes, incident et demande, les qualités du technicien, les employeurs et le laboratoire de test.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les niveaux de support",
+     "Les demandes les plus fréquentes",
+     "Les qualités du technicien",
+     "Qui sont vos employeurs et clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : votre laboratoire"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les bases : méthode de diagnostic, Windows et réseau",
+    "summary": "Les 6 étapes du diagnostic, les bonnes questions, le problème général, les outils de Windows, IP, passerelle, DNS, VPN, commandes ipconfig et ping, expliquer sans jargon.",
+    "sections": [
+     "La méthode de diagnostic en 6 étapes",
+     "Les bonnes questions",
+     "Les outils de base de Windows",
+     "Le réseau : l'essentiel",
+     "Expliquer simplement",
+     "Exercice pratique : diagnostiquer"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : AnyDesk, Zendesk et versions payantes",
+    "summary": "Ouvrir une session de contrôle à distance, se protéger des faux techniciens, fonctions utiles, cycle d'un ticket, ticket bien rempli, SLA, base de connaissances, TeamViewer et Zendesk payants.",
+    "sections": [
+     "Le contrôle à distance avec AnyDesk",
+     "Le helpdesk avec Zendesk",
+     "La base de connaissances",
+     "Les versions payantes",
+     "Exercice pratique : votre première session"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : une journée de support au cabinet Fanilo",
+    "summary": "Accueil d'un appel, 5 problèmes types (mot de passe, imprimante, lenteur, messagerie, installation), incident d'hameçonnage, escalade au niveau 2 et bilan de journée.",
+    "sections": [
+     "Le cas pratique : « Cabinet Fanilo »",
+     "L'accueil d'un appel",
+     "Les 5 problèmes types",
+     "Un incident de sécurité",
+     "Escalader au niveau 2",
+     "Le bilan de journée",
+     "Exercice pratique : une journée au cabinet Fanilo"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver du travail et se faire payer",
+    "summary": "Dossier technique, 5 canaux, entretien technique, forfaits, conditions, paiements, certifications et évolution vers le niveau 2, les systèmes ou la cybersécurité.",
+    "sections": [
+     "Votre dossier de présentation",
+     "Où trouver du travail : 5 canaux",
+     "Réussir un entretien technique",
+     "Fixer son tarif",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : décrocher votre premier contrat"
+    ],
+    "minutes": 6
+   }
+  ]
  }
 };
