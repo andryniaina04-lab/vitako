@@ -1,0 +1,97 @@
+{
+  "id": "data-0-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité avancée, dont l'évaluation de réponses d'IA",
+    "Annoter des vidéos, corriger des pré-annotations et configurer des interfaces",
+    "Mesurer la qualité avec l'IoU et contrôler le travail des autres",
+    "Rédiger des retours et des consignes d'annotation claires",
+    "Travailler avec des équipes internationales en respectant la sécurité des données",
+    "Diversifier ses revenus et répondre à des projets en équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser : vidéo, 3D, langues et évaluation d'IA",
+      "summary": "Les 6 spécialités avancées, l'évaluation de réponses d'IA et ses critères, le choix de la spécialité, le portfolio et les tests avancés.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un nuage de points LiDAR ?", "options": ["Des millions de points en 3D mesurés par laser", "Une photo floue", "Un fichier audio", "Un type de texte"], "correct": 0 },
+        { "q": "Dans l'évaluation d'IA, qu'est-ce qui compte autant que le choix ?", "options": ["La justification écrite", "La vitesse", "La couleur de la réponse", "La longueur de la réponse"], "correct": 0 },
+        { "q": "Peut-on publier des captures d'un projet réel dans son portfolio ?", "options": ["Non, c'est presque toujours interdit", "Oui, toujours", "Oui, si elles sont belles", "Oui, après un mois"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils avancés : vidéo, pré-annotation et interfaces sur mesure",
+      "summary": "Pistes et interpolation, attributs, correction de pré-annotations en 4 passes, configuration de Label Studio, IoU et accord entre annotateurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que l'interpolation en vidéo ?", "options": ["L'outil calcule la position de l'objet entre deux images clés", "Une coupure de la vidéo", "Un changement de couleur", "Un export en MP4"], "correct": 0 },
+        { "q": "Quelle est la première passe de correction d'une pré-annotation ?", "options": ["Chercher les oublis", "Changer toutes les étiquettes", "Supprimer tous les cadres", "Exporter"], "correct": 0 },
+        { "q": "Deux cadres de 100 px² se recouvrent sur 80 px². Quelle est l'IoU ?", "options": ["Environ 0,67", "0,8", "1", "0,2"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : contrôle, retours et consignes",
+      "summary": "Le rôle de contrôleur, la grille des types d'erreurs, le retour en 4 parties, la rédaction de consignes et la vitesse sans perte de précision.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "400 cadres contrôlés, 28 erreurs : quelle précision ?", "options": ["93 %", "72 %", "97 %", "28 %"], "correct": 0 },
+        { "q": "Que doit contenir un bon retour à un annotateur ?", "options": ["Des exemples précis et une action", "Seulement « trop d'erreurs »", "Une note sans explication", "Des reproches personnels"], "correct": 0 },
+        { "q": "Quand augmenter sa vitesse ?", "options": ["Quand la précision est stable au-dessus de l'objectif", "Dès le premier jour", "Quand on est fatigué", "Jamais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Projets internationaux : anglais, équipes et sécurité des données",
+      "summary": "Lire des consignes en anglais, communiquer avec l'équipe, 8 règles de sécurité, projets en malagasy et en français, paiements internationaux.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que veut dire « edge case » ?", "options": ["Cas limite", "Bord de l'image", "Erreur grave", "Paiement"], "correct": 0 },
+        { "q": "Quel est le motif d'exclusion le plus fréquent en évaluation d'IA ?", "options": ["Utiliser une IA pour produire les réponses", "Poser une question à l'équipe", "Faire une pause", "Lire les consignes"], "correct": 0 },
+        { "q": "Peut-on partager son compte de plateforme avec un proche ?", "options": ["Non : un compte = une personne", "Oui, en famille", "Oui, le week-end", "Oui, si on partage les gains"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Évoluer et développer son activité",
+      "summary": "Les chemins d'évolution, les 3 piliers de revenus, la réponse à un projet en équipe, l'organisation d'une équipe et les compétences à apprendre.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de donner un prix définitif pour un projet ?", "options": ["Un test payé sur un petit lot", "Rien", "Copier le prix d'une autre équipe", "Demander au client de fixer le prix"], "correct": 0 },
+        { "q": "Pourquoi diversifier ses sources de revenus ?", "options": ["Les projets peuvent s'arrêter du jour au lendemain", "Pour payer moins d'impôts", "Pour travailler moins", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Quelle compétence aide à manipuler des fichiers d'annotation JSON ?", "options": ["Les bases de Python", "Le dessin", "Le chant", "La photographie"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité demande des études dans un domaine comme la santé ou le droit ?", "options": ["Les données spécialisées", "La vidéo", "La segmentation fine", "La classification simple"], "correct": 0 },
+    { "q": "Qu'est-ce que l'apprentissage par retour humain ?", "options": ["Des humains notent ou comparent des réponses pour entraîner l'IA", "Un cours de langue", "Une méthode de paiement", "Un logiciel de dessin"], "correct": 0 },
+    { "q": "Quel critère vérifie que les faits sont vrais ?", "options": ["L'exactitude", "Le ton", "La clarté", "La longueur"], "correct": 0 },
+    { "q": "Quelle justification est la meilleure ?", "options": ["« Le chiffre de la phrase 3 est faux : la source officielle indique… »", "« B est mieux »", "« Je préfère A »", "« Les deux sont nulles »"], "correct": 0 },
+    { "q": "Quel profil convient à l'évaluation de réponses d'IA ?", "options": ["Excellent niveau écrit et esprit critique", "Aucune maîtrise de la langue", "Uniquement la vitesse de frappe", "Uniquement le dessin"], "correct": 0 },
+    { "q": "Combien d'images dans une minute de vidéo à 30 images par seconde ?", "options": ["1 800", "30", "60", "300"], "correct": 0 },
+    { "q": "Quelle est l'erreur la plus fréquente en vidéo ?", "options": ["Changer d'identifiant quand deux objets se croisent", "Choisir une couleur", "Faire une pause", "Lire les consignes"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un attribut ?", "options": ["Une information ajoutée à une annotation", "Un type de souris", "Un format vidéo", "Un paiement"], "correct": 0 },
+    { "q": "Pourquoi ne pas faire confiance aveuglément à une pré-annotation ?", "options": ["Les IA se trompent régulièrement sur certains cas", "Elle est toujours parfaite", "Elle est interdite", "Elle est trop lente"], "correct": 0 },
+    { "q": "À quoi sert la configuration d'une interface Label Studio ?", "options": ["Adapter exactement l'interface aux besoins du projet", "Changer la langue de l'ordinateur", "Payer les annotateurs", "Exporter des vidéos"], "correct": 0 },
+    { "q": "Que révèle un accord faible entre annotateurs ?", "options": ["Des consignes floues ou mal comprises", "Une excellente qualité", "Une connexion lente", "Rien"], "correct": 0 },
+    { "q": "Quelle part d'un lot contrôler en général ?", "options": ["5 à 10 %, au hasard", "Seulement la première tâche", "Rien", "Seulement les tâches faciles"], "correct": 0 },
+    { "q": "Un objet caché annoté en entier contre la consigne est une erreur de…", "options": ["Règle non respectée", "Oubli", "Étiquette", "Vitesse"], "correct": 0 },
+    { "q": "Que doit contenir chaque catégorie dans de bonnes consignes ?", "options": ["Une définition et des exemples corrects et incorrects", "Seulement un nom", "Un prix", "Une couleur"], "correct": 0 },
+    { "q": "Pourquoi signaler les taxi-be ou les bajaj absents des consignes ?", "options": ["Votre connaissance du terrain améliore les données", "Pour faire perdre du temps", "Ce n'est pas utile", "Pour changer de projet"], "correct": 0 },
+    { "q": "Que veut dire « ground truth » ?", "options": ["La réponse de référence", "Le sol", "Une erreur", "Un paiement"], "correct": 0 },
+    { "q": "Avant de poser une question à l'équipe de projet…", "options": ["Chercher dans les consignes, la FAQ et les messages épinglés", "Envoyer 10 messages", "Appeler le client", "Abandonner"], "correct": 0 },
+    { "q": "Que faire des captures d'écran des tâches ?", "options": ["Ne pas en faire, sauf si le projet le demande", "Les publier sur Facebook", "Les envoyer à des amis", "Les vendre"], "correct": 0 },
+    { "q": "On vous propose d'ouvrir un compte dans un autre pays pour vous. Que faire ?", "options": ["Refuser : c'est interdit et risqué", "Accepter", "Payer pour aller plus vite", "Partager le compte"], "correct": 0 },
+    { "q": "Quel type de projet demande d'écrire des questions et réponses modèles en malagasy ?", "options": ["Écriture de données", "Segmentation", "Vidéo", "LiDAR"], "correct": 0 },
+    { "q": "Pourquoi suivre ses heures dans son propre tableau ?", "options": ["Pour vérifier chaque paiement", "Pour travailler moins", "Parce que la plateforme l'interdit", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quels sont les 3 piliers d'un revenu plus stable ?", "options": ["Un projet principal, des plateformes secondaires, des missions directes", "Un seul projet, sans épargne", "Uniquement des concours", "Uniquement des prêts"], "correct": 0 },
+    { "q": "Que comprend l'estimation d'un projet en équipe en plus de l'annotation ?", "options": ["Le contrôle qualité, la gestion de projet et une marge", "Rien d'autre", "Les loisirs de l'équipe", "Le prix de l'ordinateur du client"], "correct": 0 },
+    { "q": "Comment le client paie-t-il souvent un projet d'annotation ?", "options": ["Par lot livré et accepté", "Tout à l'avance sans contrôle", "Jamais", "En une fois après 5 ans"], "correct": 0 },
+    { "q": "Quel rôle organise les lots, suit la qualité et échange avec le client ?", "options": ["Responsable de projet d'annotation", "Annotateur débutant", "Comptable", "Graphiste"], "correct": 0 }
+  ]
+}

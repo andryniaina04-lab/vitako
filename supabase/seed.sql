@@ -64,7 +64,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, false),
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
   ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
-  ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, false),
+  ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true),
   ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 12, false),
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 17, false),
   ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
@@ -1394,6 +1394,645 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Que faut-il pour commencer une mission ?', '["Une promesse orale suffit","Payer des frais d''inscription","Un contrat ou un accord écrit","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Avec un revenu visé de 1 000 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["10 000 Ar","5 000 Ar","100 000 Ar","1 000 Ar"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-0-f', 'Comment protéger sa voix pendant une journée d''appels ?', '["Boire de l''eau et prendre ses pauses","Enchaîner sans pause","Boire très froid toute la journée","Parler plus fort"]'::jsonb, 0);
+
+-- data-0-a
+delete from public.exam_questions where course_id = 'data-0-a';
+delete from public.module_questions where course_id = 'data-0-a';
+delete from public.lessons where course_id = 'data-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-a', 0, 'Se spécialiser : vidéo, 3D, langues et évaluation d''IA', 'Les 6 spécialités avancées, l''évaluation de réponses d''IA et ses critères, le choix de la spécialité, le portfolio et les tests avancés.', 'Les tâches simples d''annotation (cadres, classification) sont de plus en plus faites avec l''aide de l''IA elle-même. Les besoins se déplacent vers des tâches **plus exigeantes** : vidéo, 3D, segmentation précise, données spécialisées, et surtout **évaluation des réponses des intelligences artificielles**. Ce module vous présente ces spécialités mieux payées et vous aide à choisir la vôtre.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Décrire les 6 spécialités avancées de l''annotation.
+> 2. Comprendre l''évaluation des réponses d''IA et ses critères.
+> 3. Choisir une spécialité selon votre profil.
+> 4. Construire un portfolio de spécialiste.
+> 5. Préparer les tests de qualification avancés.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce qu''on fait | Ce qu''il faut |
+| --- | --- | --- | --- |
+| 1 | **Vidéo et suivi d''objets** | Suivre chaque objet image par image dans une vidéo | Patience, précision, bonne machine |
+| 2 | **Segmentation fine** | Contours au pixel près, segmentation de scènes entières | Œil précis, maîtrise des outils |
+| 3 | **Données 3D (LiDAR)** | Annoter des nuages de points pour les véhicules autonomes | Vision dans l''espace, formation spécifique |
+| 4 | **Données spécialisées** | Images médicales, documents juridiques, données agricoles | Études ou expérience dans le domaine |
+| 5 | **Linguistique et audio** | Transcription précise, annotation de langues, en particulier le malagasy | Excellente maîtrise des langues |
+| 6 | **Évaluation de réponses d''IA** | Juger, comparer et corriger des réponses écrites par des IA | Excellent niveau écrit, esprit critique, culture générale |
+
+> [!definition] Nuage de points (LiDAR)
+> Un capteur LiDAR envoie des rayons laser et mesure leur retour : il produit des millions de points en 3 dimensions qui représentent une rue, des voitures, des piétons. Les annotateurs dessinent des boîtes en 3D autour de chaque objet.
+
+> [!madagascar] Votre avantage
+> Le **malagasy** est encore peu présent dans les données des IA. Les projets d''évaluation, de transcription et de traduction en malagasy cherchent des personnes qui écrivent parfaitement la langue. Le **français** soigné est aussi très demandé pour l''évaluation de réponses d''IA.
+
+## L''évaluation de réponses d''IA
+
+C''est aujourd''hui une des spécialités les plus demandées. Les entreprises d''IA ont besoin d''humains pour dire si les réponses de leurs modèles sont bonnes, et pourquoi.
+
+> [!definition] Apprentissage par retour humain
+> Une méthode d''entraînement où des humains comparent ou notent des réponses d''IA. Ces jugements servent à apprendre au modèle à préférer les réponses utiles, exactes et sûres. On parle aussi de *RLHF* (*reinforcement learning from human feedback*).
+
+### Les types de tâches
+
+| Tâche | Exemple |
+| --- | --- |
+| **Noter** une réponse | Donner une note de 1 à 7 selon des critères |
+| **Comparer** deux réponses | « La réponse A est-elle meilleure que la B ? Pourquoi ? » |
+| **Corriger** une réponse | Réécrire la réponse pour qu''elle soit parfaite |
+| **Écrire** des questions et des réponses modèles | Créer des exemples de très haute qualité |
+| **Vérifier les faits** | Contrôler chaque affirmation avec des sources fiables |
+
+### Les 6 critères habituels
+
+1. **Exactitude** : les faits sont-ils vrais ?
+2. **Utilité** : la réponse répond-elle vraiment à la demande ?
+3. **Respect des consignes** : longueur, format, langue demandés.
+4. **Clarté** : est-ce bien organisé et facile à lire ?
+5. **Sécurité** : la réponse évite-t-elle les contenus dangereux ou trompeurs ?
+6. **Ton** : est-il adapté à la personne et à la situation ?
+
+> [!exemple] Comparer deux réponses
+> **Question** : « Quelle est la capitale de Madagascar et combien d''habitants a-t-elle ? »
+> **Réponse A** : « Antananarivo. Elle compte environ 50 000 habitants. »
+> **Réponse B** : « La capitale est Antananarivo. Son agglomération compte plusieurs millions d''habitants ; les chiffres exacts varient selon les sources et les limites retenues. »
+> **Jugement** : B est meilleure. A contient une erreur grave sur la population. B est exacte et prudente sur un chiffre qui varie selon les sources.
+> **Justification écrite** : « A affirme 50 000 habitants, ce qui est très largement faux. B donne la bonne capitale et un ordre de grandeur correct en précisant l''incertitude. »
+
+La **justification écrite** compte autant que le choix : elle doit être précise, factuelle et vérifiable.
+
+## Choisir sa spécialité
+
+| Votre profil | Spécialités conseillées |
+| --- | --- |
+| Excellent en français ou en anglais écrit, curieux | Évaluation de réponses d''IA |
+| Malagasy écrit soigné | Linguistique, transcription, évaluation en malagasy |
+| Études en santé, droit, agriculture, informatique | Données spécialisées dans votre domaine |
+| Très précis, patient, bonne machine | Segmentation fine, vidéo |
+| Bonne vision dans l''espace | Données 3D |
+
+## Le portfolio du spécialiste
+
+Les projets réels sont confidentiels : vous ne pouvez pas les montrer. Votre portfolio repose donc sur des **projets d''entraînement** et sur des **chiffres**.
+
+1. **2 ou 3 projets d''entraînement** dans votre spécialité, avec des données publiques ou créées par vous (images libres de droits, textes que vous écrivez).
+2. **Vos chiffres** : volume, taux de précision, temps moyen.
+3. **Un exemple de justification** (pour l''évaluation d''IA) : 3 comparaisons détaillées.
+4. **Vos langues et domaines**, avec votre niveau réel.
+5. **Vos certificats** : formations suivies, tests de qualification réussis.
+
+> [!attention]
+> Ne publiez **jamais** de données, captures ou consignes d''un projet réel : c''est presque toujours interdit par l''accord de confidentialité et peut vous faire exclure de la plateforme.
+
+## Préparer les tests de qualification avancés
+
+1. **Lisez chaque consigne en entier**, même longue (30 à 60 pages pour certains projets).
+2. **Faites une fiche mémo** des critères et des cas limites.
+3. **Prenez votre temps** : les tests mesurent la précision, pas la vitesse.
+4. Pour l''évaluation d''IA : **vérifiez les faits** avec des sources fiables, et rédigez des justifications **concrètes** (« le chiffre de la phrase 3 est faux » plutôt que « la réponse n''est pas bonne »).
+5. **Relisez-vous** : une faute d''orthographe dans une justification peut suffire à échouer.
+
+> [!retenir]
+> - 6 spécialités avancées : vidéo, segmentation fine, 3D, données spécialisées, linguistique, évaluation d''IA.
+> - L''évaluation d''IA repose sur 6 critères et une justification précise.
+> - Choisissez selon vos langues, vos études et votre précision.
+> - Un portfolio avec des projets d''entraînement et des chiffres, jamais de données réelles.
+> - Tests : lecture complète, fiche mémo, précision, sources, relecture.
+
+## Exercice pratique : vos premières évaluations
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité avec le tableau des profils.
+> 2. Posez 5 questions à un assistant d''IA (sur Madagascar, la santé, l''histoire, les mathématiques, une recette).
+> 3. Pour chaque réponse, vérifiez les faits avec des sources fiables et notez-la de 1 à 7 sur les 6 critères.
+> 4. Pour 2 questions, demandez une deuxième réponse et comparez A et B avec une justification écrite.
+> 5. Réécrivez la moins bonne réponse pour qu''elle soit parfaite.
+>
+> **À livrer** : votre choix de spécialité, vos 5 grilles, vos 2 comparaisons justifiées et votre réponse réécrite.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 0, 0, 'Qu''est-ce qu''un nuage de points LiDAR ?', '["Des millions de points en 3D mesurés par laser","Un fichier audio","Un type de texte","Une photo floue"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 0, 1, 'Dans l''évaluation d''IA, qu''est-ce qui compte autant que le choix ?', '["La longueur de la réponse","La justification écrite","La vitesse","La couleur de la réponse"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 0, 2, 'Peut-on publier des captures d''un projet réel dans son portfolio ?', '["Oui, si elles sont belles","Oui, toujours","Oui, après un mois","Non, c''est presque toujours interdit"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-a', 1, 'Outils avancés : vidéo, pré-annotation et interfaces sur mesure', 'Pistes et interpolation, attributs, correction de pré-annotations en 4 passes, configuration de Label Studio, IoU et accord entre annotateurs.', 'Dans ce métier, vous n''avez pas d''abonnement à payer : les plateformes et les entreprises fournissent leurs outils. Mais les annotateurs avancés maîtrisent leurs **fonctions avancées** : annotation de vidéo par interpolation, attributs, pré-annotation par IA, configurations sur mesure. Ce module vous les enseigne avec CVAT et Label Studio, dont les principes se retrouvent dans tous les outils professionnels.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Annoter une vidéo avec des pistes et l''interpolation.
+> 2. Utiliser des attributs pour enrichir chaque annotation.
+> 3. Corriger efficacement une pré-annotation faite par l''IA.
+> 4. Configurer une interface Label Studio sur mesure.
+> 5. Mesurer la qualité avec l''IoU et l''accord entre annotateurs.
+
+## Rappel : rien à acheter
+
+| Situation | Outils |
+| --- | --- |
+| Plateformes d''annotation et d''évaluation d''IA | Outils propres à la plateforme, dans le navigateur |
+| Entreprises d''annotation | CVAT, Label Studio ou outils maison, fournis |
+| Projets directs | L''outil choisi par le client |
+
+Votre investissement est votre **équipement** : un ordinateur fluide, un grand écran (ou deux), une souris précise, une connexion stable. Pour la vidéo et la 3D, une machine plus puissante fait une vraie différence.
+
+## La vidéo : pistes et interpolation (CVAT)
+
+Annoter une vidéo image par image serait interminable : 1 minute à 30 images par seconde = 1 800 images. Les outils utilisent des **pistes** et l''**interpolation**.
+
+> [!definition] Interpolation
+> Vous dessinez le cadre d''un objet sur une image, puis sur une image plus loin. L''outil calcule automatiquement la position du cadre sur toutes les images entre les deux. Vous corrigez seulement là où l''objet change de direction ou de vitesse.
+
+### Annoter une vidéo en 7 étapes
+
+1. Créez une tâche avec la vidéo et les étiquettes (voiture, moto, piéton…).
+2. Choisissez le mode **piste** (*track*) au lieu de forme simple.
+3. Dessinez le cadre de l''objet à sa **première apparition**.
+4. Avancez de quelques images, **ajustez** le cadre : une **image clé** est créée.
+5. Vérifiez que l''interpolation suit bien l''objet entre les images clés ; ajoutez des images clés là où il dévie.
+6. Quand l''objet **sort du champ** ou est caché, marquez-le **hors champ** (*outside*) ou **caché** (*occluded*) selon les consignes.
+7. Gardez **le même identifiant** du début à la fin : c''est le même objet, même s''il disparaît quelques images.
+
+> [!attention]
+> L''erreur la plus fréquente en vidéo : **changer d''identifiant** quand deux objets se croisent. Ralentissez la lecture à ces moments et vérifiez image par image.
+
+## Les attributs
+
+Un attribut ajoute une information à une annotation.
+
+| Étiquette | Attributs possibles |
+| --- | --- |
+| Piéton | Âge apparent (adulte, enfant), action (marche, court, attend), porte un objet (oui / non) |
+| Véhicule | Type (voiture, taxi-be, camion), état (garé, en mouvement), feux allumés (oui / non) |
+| Déchet | Matière, taille, dans l''eau (oui / non) |
+
+Pour les pistes vidéo, certains attributs peuvent **changer** au fil du temps (le piéton qui attend puis qui marche) : on les modifie à l''image où le changement a lieu.
+
+## La pré-annotation par IA
+
+De plus en plus de projets commencent par une annotation **automatique** que l''humain corrige.
+
+### Les outils courants
+
+1. **Détection automatique** : un modèle propose les cadres de tous les objets connus.
+2. **Segmentation en un clic** : vous cliquez sur un objet, l''outil propose son contour (des modèles comme SAM, *Segment Anything*, sont intégrés dans certains outils).
+3. **Suivi automatique** : l''outil suit l''objet dans la vidéo à partir d''un premier cadre.
+
+### Corriger une pré-annotation : la méthode en 4 passes
+
+| Passe | Ce que vous cherchez |
+| --- | --- |
+| **1. Oublis** | Les objets que l''IA n''a pas détectés |
+| **2. Fausses détections** | Les cadres posés sur rien ou sur le mauvais objet |
+| **3. Étiquettes** | Les objets détectés mais mal nommés |
+| **4. Précision** | Les contours ou cadres trop larges, trop serrés, décalés |
+
+> [!astuce]
+> Ne faites **pas confiance** à la pré-annotation parce qu''elle « a l''air bonne ». Les IA se trompent de façon régulière sur certains cas (objets petits, sombres, partiellement cachés) : repérez ces cas dans les premières tâches et vérifiez-les en priorité ensuite.
+
+## Label Studio : une interface sur mesure
+
+Label Studio permet de configurer exactement l''interface dont un projet a besoin, avec un petit code de configuration.
+
+> [!exemple] Configuration pour comparer deux réponses d''IA
+> ```
+> <View>
+>   <Text name="question" value="$question"/>
+>   <Text name="reponse_a" value="$reponse_a"/>
+>   <Text name="reponse_b" value="$reponse_b"/>
+>   <Choices name="preference" toName="question" choice="single" required="true">
+>     <Choice value="A est meilleure"/>
+>     <Choice value="B est meilleure"/>
+>     <Choice value="Égalité"/>
+>   </Choices>
+>   <TextArea name="justification" toName="question" required="true"/>
+> </View>
+> ```
+> Chaque tâche affiche la question, les deux réponses, un choix obligatoire et une case de justification obligatoire.
+
+### Les autres fonctions utiles
+
+1. **Relations** : relier deux entités dans un texte (« Rasoa » *travaille pour* « Banque X »).
+2. **Pré-annotations** importées : le fichier de tâches contient déjà des propositions à vérifier.
+3. **Instructions** affichées dans l''interface, pour garder les consignes sous les yeux.
+
+## Mesurer la qualité
+
+### L''IoU pour les cadres
+
+> [!definition] IoU (intersection sur union)
+> Une mesure de la ressemblance entre deux cadres : la surface commune divisée par la surface totale couverte par les deux. 1 = identiques, 0 = aucun recouvrement. Beaucoup de projets exigent une IoU minimale avec le cadre de référence (souvent autour de 0,7 à 0,9 selon les projets).
+
+> [!exemple] Calcul simple
+> Votre cadre fait 100 pixels², celui de référence aussi. Ils se recouvrent sur 80 pixels². L''union vaut 100 + 100 − 80 = 120 pixels². IoU = 80 ÷ 120 ≈ **0,67**.
+
+### L''accord entre annotateurs
+
+Quand plusieurs personnes annotent les mêmes données, on mesure à quel point elles sont **d''accord**. Un accord faible révèle des consignes floues ou un annotateur qui les comprend mal. Si vous êtes souvent en désaccord avec les autres, relisez les consignes et votre fiche mémo.
+
+> [!madagascar]
+> La vidéo et la 3D demandent beaucoup de données à télécharger. Travaillez ces tâches avec une connexion fixe, et prévenez le responsable du projet si votre connexion limite votre rythme : il pourra vous confier d''autres types de tâches pendant les périodes difficiles.
+
+> [!retenir]
+> - Vidéo : pistes, images clés, interpolation, et un identifiant constant.
+> - Les attributs enrichissent chaque annotation.
+> - Pré-annotation : 4 passes de correction, sans faire confiance aveuglément.
+> - Label Studio se configure sur mesure pour chaque projet.
+> - IoU et accord entre annotateurs : les mesures de votre qualité.
+
+## Exercice pratique : vidéo et interface sur mesure
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Filmez 20 secondes d''une rue avec votre téléphone et annotez dans CVAT toutes les personnes et véhicules avec des pistes, l''interpolation et 2 attributs.
+> 2. Testez un outil de pré-annotation (si disponible dans votre version) et corrigez en 4 passes ; sinon, demandez à un proche d''annoter 5 images « vite » et corrigez son travail en 4 passes.
+> 3. Dans Label Studio, créez l''interface de comparaison de réponses d''IA et faites 10 comparaisons avec justification.
+> 4. Calculez l''IoU de 3 de vos cadres par rapport à des cadres refaits avec soin.
+>
+> **À livrer** : l''export de votre vidéo annotée, votre rapport de correction, l''export Label Studio et vos 3 calculs d''IoU.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 1, 0, 'Qu''est-ce que l''interpolation en vidéo ?', '["Un export en MP4","L''outil calcule la position de l''objet entre deux images clés","Une coupure de la vidéo","Un changement de couleur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 1, 1, 'Quelle est la première passe de correction d''une pré-annotation ?', '["Chercher les oublis","Exporter","Supprimer tous les cadres","Changer toutes les étiquettes"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 1, 2, 'Deux cadres de 100 px² se recouvrent sur 80 px². Quelle est l''IoU ?', '["Environ 0,67","0,2","1","0,8"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-a', 2, 'Qualité et rapidité : contrôle, retours et consignes', 'Le rôle de contrôleur, la grille des types d''erreurs, le retour en 4 parties, la rédaction de consignes et la vitesse sans perte de précision.', 'Un annotateur avancé est jugé sur sa **qualité constante** et sur sa capacité à **améliorer celle des autres**. C''est ce qui ouvre les postes de contrôleur qualité, de formateur et de responsable de projet. Ce module vous apprend à contrôler, à classer les erreurs, à écrire des consignes et à travailler plus vite sans dégrader la précision.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Contrôler le travail d''autres annotateurs avec une méthode d''échantillonnage.
+> 2. Classer les erreurs avec une grille de types d''erreurs.
+> 3. Rédiger un retour utile à un annotateur.
+> 4. Écrire ou améliorer des consignes d''annotation.
+> 5. Augmenter votre vitesse sans perdre en précision.
+
+## Le rôle de contrôleur qualité
+
+> [!definition] Contrôleur qualité (reviewer)
+> Un annotateur expérimenté qui vérifie le travail des autres, corrige les erreurs, mesure la qualité et fait remonter les problèmes de consignes. Ce rôle est en général mieux payé que l''annotation simple.
+
+### Contrôler un lot en 5 étapes
+
+1. **Tirez un échantillon au hasard** : souvent 5 à 10 % du lot, et au moins quelques dizaines de tâches.
+2. **Contrôlez chaque tâche entièrement**, avec la grille des types d''erreurs.
+3. **Calculez le taux de précision** de l''annotateur sur l''échantillon.
+4. **Décidez** : lot accepté, lot à corriger par l''annotateur, ou lot à refaire.
+5. **Rédigez un retour** individuel.
+
+> [!exemple] Décision sur un lot
+> Lot de 500 images. Échantillon de 50 images, 400 cadres contrôlés, 28 erreurs.
+> Précision : (400 − 28) ÷ 400 × 100 = **93 %**. Objectif du projet : 95 %.
+> Décision : lot renvoyé à l''annotateur avec la liste des types d''erreurs, puis nouveau contrôle sur un autre échantillon.
+
+## La grille des types d''erreurs
+
+Classer les erreurs permet de comprendre **pourquoi** elles arrivent, et donc de les corriger à la source.
+
+| Type | Exemple | Cause probable |
+| --- | --- | --- |
+| **Oubli** | Un piéton non annoté | Fatigue, objet petit, zoom insuffisant |
+| **Fausse annotation** | Un cadre sur une ombre | Mauvaise compréhension de la catégorie |
+| **Mauvaise étiquette** | Une moto étiquetée vélo | Catégories proches, consigne floue |
+| **Précision** | Cadre trop large | Travail trop rapide |
+| **Règle non respectée** | Objet caché annoté en entier | Consigne mal lue |
+| **Incohérence** | Même cas traité de deux façons | Pas de journal des cas limites |
+| **Justification faible** (évaluation d''IA) | « La réponse B est meilleure » sans raison | Méthode de justification non maîtrisée |
+
+## Rédiger un retour utile
+
+Un bon retour fait progresser l''annotateur sans le décourager.
+
+### La structure en 4 parties
+
+1. **Le résultat** : « Précision de 93 % sur l''échantillon, objectif 95 %. »
+2. **Ce qui va bien** : « Aucune erreur d''étiquette, très bon travail sur les objets cachés. »
+3. **Les 2 ou 3 types d''erreurs principaux**, avec **un exemple** précis pour chacun : « 12 oublis de piétons de petite taille (exemples : images 34, 112, 245). »
+4. **L''action** : « Zoomez à 200 % sur les zones éloignées avant de valider chaque image. »
+
+> [!attention]
+> Un retour sans exemple (« tu fais trop d''erreurs ») ne sert à rien. Un retour humiliant fait fuir les bons annotateurs. Restez **précis, factuel et bienveillant**.
+
+## Écrire ou améliorer des consignes
+
+Au niveau avancé, on vous demandera de **signaler** puis de **rédiger** des améliorations de consignes.
+
+### La structure de consignes claires
+
+1. **Le but du projet** en 3 lignes : à quoi serviront les données.
+2. **Les catégories**, avec une définition et **2 exemples corrects** et **2 exemples incorrects** pour chacune.
+3. **Les règles générales** (précision des cadres, objets cachés, objets coupés).
+4. **Les cas limites** connus et la décision pour chacun.
+5. **La foire aux questions**, enrichie au fil du projet.
+6. **L''historique des modifications**, daté.
+
+### Signaler un problème de consigne
+
+> [!exemple] Signalement au responsable du projet
+> « Bonjour, sur le lot 14, 3 annotateurs ont traité différemment les tricycles motorisés (bajaj) : 2 les ont étiquetés « moto », 1 « voiture ». La consigne ne mentionne pas ce cas. Proposition : ajouter une catégorie « tricycle motorisé », ou préciser qu''ils sont à étiqueter « moto ». Exemples : images 1203, 1210 et 1388. »
+
+## Augmenter sa vitesse sans perdre en précision
+
+| N° | Méthode | Gain |
+| --- | --- | --- |
+| 1 | **Raccourcis clavier** appris par cœur | Moins de clics, moins de fatigue |
+| 2 | **Routine fixe** pour chaque tâche (ordre de lecture de l''image, ordre des étiquettes) | Moins d''oublis, plus de rythme |
+| 3 | **Fiche mémo** des cas limites à portée de vue | Moins d''hésitations |
+| 4 | **Blocs de travail** de 45 à 50 minutes avec pause | Précision stable sur la journée |
+| 5 | **Mesure quotidienne** du nombre de tâches et de la précision | Vous voyez vos progrès et vos baisses |
+| 6 | **Deux écrans** : consignes d''un côté, outil de l''autre | Moins d''aller-retour |
+
+> [!astuce] La règle de la précision d''abord
+> Augmentez votre vitesse **seulement** quand votre précision est stable au-dessus de l''objectif pendant au moins une semaine. Si elle baisse, revenez au rythme précédent. Sur la plupart des projets, un annotateur rapide mais imprécis est exclu ; un annotateur précis qui accélère progressivement est promu.
+
+> [!madagascar]
+> Les catégories des consignes viennent souvent d''autres pays et ne prévoient pas les objets courants à Madagascar (taxi-be, charrettes à zébus, pousse-pousse, bajaj). Votre connaissance du terrain est précieuse : signalez ces cas avec des exemples, c''est exactement ce que cherchent les bons responsables de projet.
+
+> [!retenir]
+> - Contrôle : échantillon au hasard, contrôle complet, taux de précision, décision, retour.
+> - Classez les erreurs pour en comprendre les causes.
+> - Un retour en 4 parties, précis et bienveillant.
+> - Des consignes avec exemples corrects et incorrects, cas limites et historique.
+> - La vitesse vient après une précision stable.
+
+## Exercice pratique : contrôler et améliorer
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Demandez à 2 proches d''annoter rapidement 20 images (avec vos consignes « véhicules malgaches » du niveau Fondamentaux).
+> 2. Contrôlez leur travail avec la grille des types d''erreurs, calculez leur précision et prenez une décision.
+> 3. Rédigez un retour en 4 parties pour chacun.
+> 4. Réécrivez vos consignes avec la structure en 6 parties, en ajoutant les cas limites révélés par leurs erreurs.
+> 5. Rédigez un signalement de problème de consigne avec exemples.
+>
+> **À livrer** : vos 2 rapports de contrôle, vos 2 retours, les consignes réécrites et le signalement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 2, 0, '400 cadres contrôlés, 28 erreurs : quelle précision ?', '["28 %","72 %","93 %","97 %"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 2, 1, 'Que doit contenir un bon retour à un annotateur ?', '["Des reproches personnels","Des exemples précis et une action","Seulement « trop d''erreurs »","Une note sans explication"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 2, 2, 'Quand augmenter sa vitesse ?', '["Dès le premier jour","Jamais","Quand on est fatigué","Quand la précision est stable au-dessus de l''objectif"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-a', 3, 'Projets internationaux : anglais, équipes et sécurité des données', 'Lire des consignes en anglais, communiquer avec l''équipe, 8 règles de sécurité, projets en malagasy et en français, paiements internationaux.', 'La quasi-totalité des projets d''IA viennent d''entreprises étrangères : leurs consignes, leurs outils de communication et souvent leur langue de travail sont internationaux. Ce module vous prépare à travailler avec elles : consignes en anglais, communication avec les équipes de projet, sécurité des données, projets en langues, paiements et obligations.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire et appliquer des consignes en anglais.
+> 2. Communiquer avec une équipe de projet internationale.
+> 3. Respecter les exigences de sécurité des données.
+> 4. Vous positionner sur des projets en malagasy et en français.
+> 5. Gérer vos paiements internationaux et vos obligations.
+
+## Lire des consignes en anglais
+
+Beaucoup de consignes sont en anglais, même pour des projets en français ou en malagasy.
+
+### Le vocabulaire essentiel
+
+| Anglais | Français |
+| --- | --- |
+| guidelines | consignes |
+| label / tag | étiquette |
+| bounding box | cadre de délimitation |
+| polygon / mask | polygone / masque (segmentation) |
+| occluded / truncated | caché / coupé par le bord |
+| edge case | cas limite |
+| ground truth | réponse de référence |
+| accuracy | précision |
+| reviewer / QA | contrôleur qualité |
+| task / batch / queue | tâche / lot / file de tâches |
+| rubric | grille d''évaluation |
+| prompt / response | demande / réponse (évaluation d''IA) |
+| harmful / safe | dangereux / sûr |
+| fact-check | vérification des faits |
+
+### La méthode de lecture
+
+1. **Lisez une fois** en entier pour comprendre le but.
+2. **Traduisez** les passages difficiles (un outil de traduction est autorisé pour **lire** des consignes publiques ; jamais pour des données confidentielles si le projet l''interdit).
+3. **Faites votre fiche mémo en français**, avec les termes anglais entre parenthèses.
+4. **Relisez** les exemples « correct » et « incorrect » en priorité : ils sont souvent plus clairs que le texte.
+
+## Communiquer avec l''équipe de projet
+
+Les projets utilisent souvent **Slack**, **Discord**, **Microsoft Teams** ou un forum interne.
+
+### Les règles de communication
+
+1. **Lisez avant de demander** : la réponse est souvent déjà dans les consignes, la FAQ ou les messages épinglés.
+2. **Une question = un message**, avec **un exemple** (identifiant de la tâche).
+3. **Écrivez court** et dans la langue du canal (souvent l''anglais).
+4. **Respectez les horaires** et ne relancez pas toutes les heures.
+5. **Partagez les solutions** que vous avez trouvées : c''est ainsi qu''on est remarqué et promu.
+
+> [!exemple] Question bien posée en anglais
+> « Hi team, quick question on batch 27: task ID 88412 shows a person reflected in a shop window. Should reflections be labeled as "person" or ignored? I couldn''t find this case in the guidelines (section 4.2 covers mirrors but not windows). Thanks! »
+
+## La sécurité des données
+
+Les entreprises d''IA protègent leurs données avec beaucoup de rigueur. Un manquement peut entraîner une exclusion immédiate.
+
+### Les 8 règles
+
+1. **Lisez et respectez l''accord de confidentialité**.
+2. **Ne faites aucune capture d''écran** des tâches, sauf si le projet le demande.
+3. **Ne parlez pas** des projets, des clients ou des consignes sur les réseaux sociaux ou dans des groupes.
+4. **Ne partagez pas votre compte** : un compte = une personne. Le partage ou la location de compte est une cause d''exclusion.
+5. **Travaillez sur votre ordinateur personnel**, protégé par un mot de passe, jamais dans un cybercafé.
+6. **N''utilisez pas d''outils d''IA** pour faire les tâches à votre place quand le projet l''interdit : c''est détecté et sanctionné.
+7. **Utilisez le VPN ou l''outil de sécurité** si le projet le demande.
+8. **Respectez les règles de localisation** : certains projets exigent que vous travailliez depuis votre pays déclaré.
+
+> [!attention]
+> L''utilisation d''un assistant d''IA pour produire les réponses d''un projet d''**évaluation d''IA** est le motif d''exclusion le plus fréquent. Ces projets ont justement besoin d''un **jugement humain**.
+
+## Les projets en langues : votre avantage
+
+| Type de projet | Ce qu''on demande |
+| --- | --- |
+| **Évaluation en français** | Juger des réponses d''IA en français : exactitude, style, naturel |
+| **Évaluation en malagasy** | Juger si une réponse en malagasy est correcte, naturelle et compréhensible |
+| **Écriture de données** | Écrire des questions et des réponses modèles en malagasy ou en français |
+| **Transcription** | Transcrire des enregistrements en malagasy avec les conventions du projet |
+| **Traduction et vérification** | Traduire des phrases et vérifier des traductions automatiques |
+
+### Se préparer aux projets en malagasy
+
+1. **Révisez l''orthographe officielle** et notez vos doutes.
+2. **Connaissez les variantes régionales** et sachez les signaler.
+3. **Préparez des exemples** de textes que vous avez écrits ou corrigés.
+4. **Indiquez précisément** vos langues sur vos profils : « Malagasy (langue maternelle, écrit soigné), français (courant, écrit professionnel), anglais (intermédiaire) ».
+
+## Paiements internationaux et obligations
+
+1. **Vérifiez avant de commencer** que la plateforme peut vous payer à Madagascar (Payoneer, virement, autre service).
+2. **Suivez vos heures et vos tâches** dans votre propre tableau, pour vérifier chaque paiement.
+3. **Notez les frais** de change et de retrait pour connaître votre revenu réel.
+4. **Gardez chaque relevé** pour votre comptabilité.
+5. **Renseignez-vous** sur vos obligations fiscales de travailleur indépendant auprès du centre fiscal de votre ville.
+
+> [!madagascar]
+> Certaines plateformes limitent les pays acceptés, et leurs règles changent. Méfiez-vous de toute personne qui propose de vous « ouvrir un compte » dans un autre pays ou de vous « louer » un compte : c''est interdit, et vous risquez de ne jamais être payé.
+
+> [!retenir]
+> - Un vocabulaire anglais de base et une fiche mémo en français.
+> - Une question = un message, avec un exemple, après avoir cherché.
+> - 8 règles de sécurité, dont : pas de capture, pas de partage de compte, pas d''IA à votre place.
+> - Le malagasy et le français soigné ouvrent des projets spécialisés.
+> - Paiements vérifiés, heures suivies, relevés conservés.
+
+## Exercice pratique : prêt pour un projet international
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Trouvez des consignes d''annotation publiques en anglais (beaucoup de jeux de données ouverts publient les leurs) et faites-en une fiche mémo d''une page en français.
+> 2. Rédigez en anglais 3 questions bien posées sur des cas limites inventés.
+> 3. Écrivez en malagasy (ou dans votre meilleure langue) 3 questions et leurs réponses modèles sur des sujets de la vie quotidienne.
+> 4. Rédigez votre liste personnelle de sécurité (les 8 règles appliquées à votre poste).
+> 5. Créez votre tableau de suivi des heures et des paiements.
+>
+> **À livrer** : la fiche mémo, les 3 questions, les 3 paires question-réponse, votre liste de sécurité et votre tableau.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 3, 0, 'Que veut dire « edge case » ?', '["Cas limite","Bord de l''image","Erreur grave","Paiement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 3, 1, 'Quel est le motif d''exclusion le plus fréquent en évaluation d''IA ?', '["Utiliser une IA pour produire les réponses","Lire les consignes","Poser une question à l''équipe","Faire une pause"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 3, 2, 'Peut-on partager son compte de plateforme avec un proche ?', '["Oui, en famille","Oui, le week-end","Non : un compte = une personne","Oui, si on partage les gains"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-0-a', 4, 'Évoluer et développer son activité', 'Les chemins d''évolution, les 3 piliers de revenus, la réponse à un projet en équipe, l''organisation d''une équipe et les compétences à apprendre.', 'L''annotation est souvent une porte d''entrée vers les métiers de la donnée et de l''IA. Après quelques mois, vous pouvez devenir contrôleur, formateur, responsable de projet, ou créer une petite équipe qui répond à des projets d''entreprises. Ce dernier module vous montre ces chemins et comment construire un revenu plus stable.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir votre chemin d''évolution dans les métiers de la donnée.
+> 2. Diversifier vos sources de revenus pour réduire l''irrégularité.
+> 3. Répondre à une demande de projet d''annotation en équipe.
+> 4. Organiser et contrôler le travail d''une petite équipe.
+> 5. Préparer la suite : compétences à apprendre.
+
+## Les chemins d''évolution
+
+| Chemin | Rôle | Compétences à développer |
+| --- | --- | --- |
+| **Contrôleur qualité** | Vérifier, corriger, faire des retours | Méthode de contrôle, communication écrite |
+| **Formateur** | Former les nouveaux annotateurs sur un projet | Pédagogie, maîtrise des consignes |
+| **Responsable de projet d''annotation** | Organiser les lots, suivre la qualité et les délais, échanger avec le client | Organisation, tableur, anglais |
+| **Rédacteur de consignes** | Concevoir les consignes et les grilles d''évaluation | Rédaction, logique, compréhension des besoins de l''IA |
+| **Évaluateur expert** | Évaluer des réponses d''IA dans un domaine précis | Expertise (santé, droit, mathématiques, langues) |
+| **Vers l''analyse de données** | Préparer, nettoyer, analyser des données | Excel avancé, SQL, Python (voir la formation Analyste de données) |
+
+## Diversifier ses revenus
+
+Les projets d''annotation sur plateformes peuvent s''arrêter du jour au lendemain. Un annotateur avancé ne dépend pas d''une seule source.
+
+### Les 3 piliers d''un revenu plus stable
+
+1. **Un projet principal** régulier (entreprise, plateforme fiable, contrat).
+2. **Une ou deux plateformes secondaires** où vous êtes qualifié, pour les périodes creuses.
+3. **Des missions directes** : petits projets pour des startups, des chercheurs, des ONG, souvent mieux payés.
+
+> [!astuce]
+> Gardez une **épargne de précaution** de 2 à 3 mois de dépenses. Quand un projet s''arrête, vous avez le temps de passer des tests ailleurs sans accepter la première offre venue.
+
+## Répondre à une demande de projet en équipe
+
+Des startups, des laboratoires ou des entreprises cherchent parfois une petite équipe pour annoter un jeu de données précis.
+
+### Les questions à poser au client
+
+1. **Quel type de données** et quel volume (nombre d''images, d''heures de vidéo, de textes) ?
+2. **Quelles consignes** existent ? Faut-il les rédiger ?
+3. **Quel outil** : le leur ou le vôtre ?
+4. **Quelle qualité** attendue et comment sera-t-elle mesurée ?
+5. **Quel délai** ?
+6. **Quelles règles de sécurité** pour les données ?
+7. **Quel format** de livraison ?
+
+### Estimer le prix d''un projet
+
+> [!exemple] Projet de 10 000 images de produits à détourer (segmentation)
+> 1. **Test** : vous annotez 50 images, au rythme de 15 images par heure avec contrôle.
+> 2. **Temps d''annotation** : 10 000 ÷ 15 ≈ 667 heures.
+> 3. **Contrôle qualité** (10 %) : environ 67 heures.
+> 4. **Gestion de projet** (organisation, échanges, rapports) : environ 40 heures.
+> 5. **Total** : environ 774 heures.
+> 6. **Prix** : heures × tarif horaire de l''équipe, plus une marge pour les imprévus (10 à 20 %).
+> *(Chiffres donnés en exemple.)*
+
+**Faites toujours un test payé** sur un petit lot avant de donner un prix définitif : les données réelles réservent souvent des surprises.
+
+### La proposition
+
+1. **Votre compréhension** du besoin.
+2. **La méthode** : consignes, calibration, production, contrôle, livraison.
+3. **L''équipe** : nombre de personnes, rôles, expérience.
+4. **La qualité** garantie et sa mesure.
+5. **Le calendrier** avec les livraisons par lots.
+6. **La sécurité des données** : accord de confidentialité, postes protégés, accès limités.
+7. **Le prix** et les conditions de paiement (souvent par lot livré et accepté).
+
+## Organiser une petite équipe
+
+### Le cycle de travail
+
+| Étape | Qui | Quoi |
+| --- | --- | --- |
+| 1. Formation | Responsable | Consignes, calibration de chaque annotateur |
+| 2. Distribution | Responsable | Lots attribués selon le niveau de chacun |
+| 3. Annotation | Annotateurs | Production, journal des cas limites |
+| 4. Contrôle | Contrôleur | Échantillon de chaque lot, retours |
+| 5. Corrections | Annotateurs | Corrections des lots refusés |
+| 6. Livraison | Responsable | Export, rapport, échange avec le client |
+
+### Les outils de pilotage
+
+1. **Un tableau de suivi** : lots, annotateur, statut, précision, date.
+2. **Un canal de discussion** par projet.
+3. **Un document unique** de consignes et de cas limites, à jour.
+4. **Un rapport hebdomadaire** au client : volume, qualité, problèmes, questions.
+
+> [!madagascar]
+> Une petite équipe d''annotateurs à Madagascar, bien formée, avec des consignes rigoureuses et une sécurité des données sérieuse, peut répondre à des projets que des freelances isolés ne peuvent pas prendre. Commencez avec 2 ou 3 personnes de confiance, sur un petit projet, avant de grandir. Payez chacun correctement et à l''heure.
+
+## Préparer la suite : les compétences à apprendre
+
+| Compétence | Pourquoi |
+| --- | --- |
+| **Anglais écrit** | Accès aux projets mieux payés et aux échanges avec les équipes |
+| **Tableur avancé** | Suivi des projets, calcul de qualité, rapports |
+| **Bases de Python** | Manipuler des fichiers d''annotation (JSON, CSV), vérifier des exports |
+| **Notions d''apprentissage automatique** | Comprendre à quoi servent vos données et dialoguer avec les ingénieurs |
+| **Expertise d''un domaine** | Projets spécialisés (santé, droit, agriculture), mieux rémunérés |
+
+> [!retenir]
+> - 6 chemins : contrôle, formation, gestion de projet, consignes, expertise, analyse de données.
+> - Trois piliers de revenus et une épargne de précaution.
+> - Un projet en équipe se prépare avec 7 questions et un test payé.
+> - Une proposition claire : méthode, équipe, qualité, calendrier, sécurité, prix.
+> - Continuez d''apprendre : anglais, tableur, Python, domaine d''expertise.
+
+## Exercice pratique : votre plan d''évolution
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre chemin d''évolution et listez les 3 compétences à acquérir dans les 6 mois.
+> 2. Construisez votre plan de revenus en 3 piliers.
+> 3. Rédigez une proposition complète pour le projet de 10 000 images, avec votre propre estimation.
+> 4. Créez le tableau de suivi d''une équipe de 3 annotateurs (lots, statut, précision, dates).
+>
+> **À livrer** : votre plan d''évolution, votre plan de revenus, la proposition et le tableau de suivi.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 4, 0, 'Que faire avant de donner un prix définitif pour un projet ?', '["Demander au client de fixer le prix","Un test payé sur un petit lot","Copier le prix d''une autre équipe","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 4, 1, 'Pourquoi diversifier ses sources de revenus ?', '["Ce n''est pas utile","Pour payer moins d''impôts","Pour travailler moins","Les projets peuvent s''arrêter du jour au lendemain"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-0-a', 4, 2, 'Quelle compétence aide à manipuler des fichiers d''annotation JSON ?', '["Le dessin","Les bases de Python","La photographie","Le chant"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quelle spécialité demande des études dans un domaine comme la santé ou le droit ?', '["La segmentation fine","La vidéo","La classification simple","Les données spécialisées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Qu''est-ce que l''apprentissage par retour humain ?', '["Des humains notent ou comparent des réponses pour entraîner l''IA","Une méthode de paiement","Un cours de langue","Un logiciel de dessin"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quel critère vérifie que les faits sont vrais ?', '["La longueur","L''exactitude","Le ton","La clarté"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quelle justification est la meilleure ?', '["« B est mieux »","« Le chiffre de la phrase 3 est faux : la source officielle indique… »","« Les deux sont nulles »","« Je préfère A »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quel profil convient à l''évaluation de réponses d''IA ?', '["Uniquement le dessin","Aucune maîtrise de la langue","Excellent niveau écrit et esprit critique","Uniquement la vitesse de frappe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Combien d''images dans une minute de vidéo à 30 images par seconde ?', '["60","300","30","1 800"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quelle est l''erreur la plus fréquente en vidéo ?', '["Changer d''identifiant quand deux objets se croisent","Faire une pause","Choisir une couleur","Lire les consignes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Qu''est-ce qu''un attribut ?', '["Un paiement","Un type de souris","Un format vidéo","Une information ajoutée à une annotation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Pourquoi ne pas faire confiance aveuglément à une pré-annotation ?', '["Elle est toujours parfaite","Elle est trop lente","Les IA se trompent régulièrement sur certains cas","Elle est interdite"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'À quoi sert la configuration d''une interface Label Studio ?', '["Adapter exactement l''interface aux besoins du projet","Changer la langue de l''ordinateur","Payer les annotateurs","Exporter des vidéos"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Que révèle un accord faible entre annotateurs ?', '["Une excellente qualité","Rien","Des consignes floues ou mal comprises","Une connexion lente"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quelle part d''un lot contrôler en général ?', '["Rien","Seulement les tâches faciles","Seulement la première tâche","5 à 10 %, au hasard"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Un objet caché annoté en entier contre la consigne est une erreur de…', '["Règle non respectée","Vitesse","Oubli","Étiquette"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Que doit contenir chaque catégorie dans de bonnes consignes ?', '["Seulement un nom","Un prix","Une définition et des exemples corrects et incorrects","Une couleur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Pourquoi signaler les taxi-be ou les bajaj absents des consignes ?', '["Pour faire perdre du temps","Pour changer de projet","Votre connaissance du terrain améliore les données","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Que veut dire « ground truth » ?', '["Un paiement","Une erreur","Le sol","La réponse de référence"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Avant de poser une question à l''équipe de projet…', '["Chercher dans les consignes, la FAQ et les messages épinglés","Abandonner","Envoyer 10 messages","Appeler le client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Que faire des captures d''écran des tâches ?', '["Les envoyer à des amis","Les vendre","Les publier sur Facebook","Ne pas en faire, sauf si le projet le demande"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'On vous propose d''ouvrir un compte dans un autre pays pour vous. Que faire ?', '["Refuser : c''est interdit et risqué","Partager le compte","Payer pour aller plus vite","Accepter"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quel type de projet demande d''écrire des questions et réponses modèles en malagasy ?', '["Segmentation","Écriture de données","LiDAR","Vidéo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Pourquoi suivre ses heures dans son propre tableau ?', '["Ce n''est pas utile","Pour vérifier chaque paiement","Parce que la plateforme l''interdit","Pour travailler moins"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quels sont les 3 piliers d''un revenu plus stable ?', '["Uniquement des prêts","Un seul projet, sans épargne","Un projet principal, des plateformes secondaires, des missions directes","Uniquement des concours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Que comprend l''estimation d''un projet en équipe en plus de l''annotation ?', '["Le contrôle qualité, la gestion de projet et une marge","Le prix de l''ordinateur du client","Rien d''autre","Les loisirs de l''équipe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Comment le client paie-t-il souvent un projet d''annotation ?', '["En une fois après 5 ans","Par lot livré et accepté","Tout à l''avance sans contrôle","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-0-a', 'Quel rôle organise les lots, suit la qualité et échange avec le client ?', '["Annotateur débutant","Responsable de projet d''annotation","Graphiste","Comptable"]'::jsonb, 1);
 
 -- data-0-f
 delete from public.exam_questions where course_id = 'data-0-f';

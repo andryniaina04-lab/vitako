@@ -526,6 +526,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-0-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité avancée, dont l'évaluation de réponses d'IA",
+   "Annoter des vidéos, corriger des pré-annotations et configurer des interfaces",
+   "Mesurer la qualité avec l'IoU et contrôler le travail des autres",
+   "Rédiger des retours et des consignes d'annotation claires",
+   "Travailler avec des équipes internationales en respectant la sécurité des données",
+   "Diversifier ses revenus et répondre à des projets en équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser : vidéo, 3D, langues et évaluation d'IA",
+    "summary": "Les 6 spécialités avancées, l'évaluation de réponses d'IA et ses critères, le choix de la spécialité, le portfolio et les tests avancés.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'évaluation de réponses d'IA",
+     "Choisir sa spécialité",
+     "Le portfolio du spécialiste",
+     "Préparer les tests de qualification avancés",
+     "Exercice pratique : vos premières évaluations"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Outils avancés : vidéo, pré-annotation et interfaces sur mesure",
+    "summary": "Pistes et interpolation, attributs, correction de pré-annotations en 4 passes, configuration de Label Studio, IoU et accord entre annotateurs.",
+    "sections": [
+     "Rappel : rien à acheter",
+     "La vidéo : pistes et interpolation (CVAT)",
+     "Les attributs",
+     "La pré-annotation par IA",
+     "Label Studio : une interface sur mesure",
+     "Mesurer la qualité",
+     "Exercice pratique : vidéo et interface sur mesure"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : contrôle, retours et consignes",
+    "summary": "Le rôle de contrôleur, la grille des types d'erreurs, le retour en 4 parties, la rédaction de consignes et la vitesse sans perte de précision.",
+    "sections": [
+     "Le rôle de contrôleur qualité",
+     "La grille des types d'erreurs",
+     "Rédiger un retour utile",
+     "Écrire ou améliorer des consignes",
+     "Augmenter sa vitesse sans perdre en précision",
+     "Exercice pratique : contrôler et améliorer"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Projets internationaux : anglais, équipes et sécurité des données",
+    "summary": "Lire des consignes en anglais, communiquer avec l'équipe, 8 règles de sécurité, projets en malagasy et en français, paiements internationaux.",
+    "sections": [
+     "Lire des consignes en anglais",
+     "Communiquer avec l'équipe de projet",
+     "La sécurité des données",
+     "Les projets en langues : votre avantage",
+     "Paiements internationaux et obligations",
+     "Exercice pratique : prêt pour un projet international"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Évoluer et développer son activité",
+    "summary": "Les chemins d'évolution, les 3 piliers de revenus, la réponse à un projet en équipe, l'organisation d'une équipe et les compétences à apprendre.",
+    "sections": [
+     "Les chemins d'évolution",
+     "Diversifier ses revenus",
+     "Répondre à une demande de projet en équipe",
+     "Organiser une petite équipe",
+     "Préparer la suite : les compétences à apprendre",
+     "Exercice pratique : votre plan d'évolution"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "data-0-f": {
   "hours": 14,
   "description": "L'annotateur de données prépare les exemples qui servent à entraîner les intelligences artificielles : il entoure des objets sur des images, classe des textes, transcrit des sons. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des plateformes et des entreprises d'annotation depuis Madagascar, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
