@@ -1,0 +1,97 @@
+{
+  "id": "gestion-0-f",
+  "hours": 14,
+  "description": "L'assistant virtuel gère à distance les e-mails, l'agenda, les documents et le suivi administratif de ses clients. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs francophones et des dirigeants malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer ce que fait un assistant virtuel et qui le paie",
+    "Écrire des e-mails professionnels et trier une boîte de réception",
+    "Tenir un agenda sans erreur de fuseau horaire",
+    "Organiser le travail d'un client avec Google Workspace et Notion",
+    "Mener la première semaine d'une mission et rendre compte",
+    "Vendre des forfaits d'heures et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'assistant virtuel depuis Madagascar",
+      "summary": "Ce que fait un assistant virtuel, les 8 tâches les plus demandées, vos clients, les qualités attendues et votre poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un assistant virtuel ?", "options": ["Faire gagner du temps à son client en prenant en charge ses tâches administratives", "Vendre les produits du client", "Créer le site web du client", "Remplacer le client dans ses rendez-vous"], "correct": 0 },
+        { "q": "Quelle est la bonne façon de poser une question à un client ?", "options": ["Expliquer la situation et proposer une solution", "Demander « je fais quoi ? » sans détail", "Attendre qu'il pose lui-même la question", "Ne jamais poser de question"], "correct": 0 },
+        { "q": "Que faire si une coupure risque de retarder une tâche ?", "options": ["Prévenir le client tout de suite", "Attendre qu'il le remarque", "Ne rien dire et livrer en retard", "Annuler la mission"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : e-mails, agenda et organisation",
+      "summary": "L'e-mail professionnel en 5 parties, la méthode des 4 D, le rendez-vous sans erreur de fuseau, la matrice urgent / important et la confidentialité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'un e-mail qui se traite en moins de 2 minutes ?", "options": ["Le traiter tout de suite", "Le mettre de côté pour la semaine suivante", "Le supprimer", "Le transférer au client"], "correct": 0 },
+        { "q": "Que faut-il toujours indiquer en proposant un rendez-vous à un client étranger ?", "options": ["Le fuseau horaire", "La météo", "Votre adresse personnelle", "Le prix du rendez-vous"], "correct": 0 },
+        { "q": "Où ranger les mots de passe des clients ?", "options": ["Dans un gestionnaire de mots de passe", "Dans un carnet", "Dans un fichier Word sur le bureau", "Dans un message WhatsApp"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Workspace, Notion, et les outils payants",
+      "summary": "Gmail professionnel, agenda partagé, Drive bien rangé, tableau Notion, puis Google Workspace payant, Notion Plus et Calendly.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment accéder à la boîte e-mail d'un client sans son mot de passe ?", "options": ["Par la délégation de son compte", "En lui demandant son mot de passe", "En créant une fausse adresse", "C'est impossible"], "correct": 0 },
+        { "q": "Quel nom de fichier suit la bonne règle ?", "options": ["2026-03-14 - Devis - Hôtel Les Baobabs.pdf", "devis final final 2.pdf", "Document1.pdf", "scan.pdf"], "correct": 0 },
+        { "q": "Qui paie le plus souvent l'abonnement Google Workspace ?", "options": ["Le client, qui vous donne un compte", "Toujours l'assistant virtuel", "Vitako", "Personne, il est gratuit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la première semaine d'une mission",
+      "summary": "Appel de découverte en 10 questions, fiche de mission, plan de la semaine, boîte de réception remise à zéro, suivi du temps et bilan.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle question de l'appel de découverte donne les objectifs de la mission ?", "options": ["À quoi verrez-vous, dans un mois, que ma mission est réussie ?", "Quel âge avez-vous ?", "Combien gagnez-vous ?", "Quel est votre logiciel préféré ?"], "correct": 0 },
+        { "q": "Que faire des publicités dans une boîte de 1 200 e-mails ?", "options": ["Les archiver en masse", "Les supprimer définitivement", "Y répondre une par une", "Les transférer au client"], "correct": 0 },
+        { "q": "Pourquoi noter chaque bloc de travail ?", "options": ["Pour que le client puisse vérifier les heures qu'il paie", "Pour travailler plus lentement", "Parce que Gmail l'exige", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Offre de services, 5 canaux de prospection, appel de vente, forfaits d'heures, proposition, facture et paiements.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment se présenter à un client ?", "options": ["Par le problème que vous résolvez pour lui", "Par la liste de vos diplômes", "Par votre âge et votre ville", "Par le prix le plus bas du marché"], "correct": 0 },
+        { "q": "Avec un revenu visé de 1 400 000 Ar et 100 heures facturables, quel est le prix horaire ?", "options": ["14 000 Ar", "1 400 Ar", "140 000 Ar", "4 000 Ar"], "correct": 0 },
+        { "q": "Que faut-il joindre à la facture mensuelle ?", "options": ["Le suivi du temps", "Vos mots de passe", "Votre CV", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle principal d'un assistant virtuel ?", "options": ["Faire gagner du temps à son client en prenant en charge ses tâches administratives", "Vendre les produits du client", "Développer les logiciels du client", "Remplacer le client dans ses rendez-vous"], "correct": 0 },
+    { "q": "Quelles tâches maîtriser en premier ?", "options": ["E-mails, agenda, saisie et recherches", "Comptabilité complète et paie", "Développement web", "Montage vidéo"], "correct": 0 },
+    { "q": "Quel est un vrai avantage d'un assistant malgache pour un client en France ?", "options": ["Il est disponible pendant toute la journée de travail européenne", "Il travaille sans Internet", "Il n'a pas besoin de parler français", "Il ne prend jamais de congé"], "correct": 0 },
+    { "q": "Quelle qualité est essentielle parce que vous voyez des informations privées ?", "options": ["La discrétion", "La créativité", "La vitesse de frappe", "L'humour"], "correct": 0 },
+    { "q": "Que doit contenir l'objet d'un e-mail professionnel ?", "options": ["Un résumé précis de la demande", "Seulement « Bonjour »", "Le nom de l'expéditeur", "Rien, il peut rester vide"], "correct": 0 },
+    { "q": "Comment écrire une date dans un e-mail ?", "options": ["« jeudi 14 mars »", "« jeudi prochain »", "« bientôt »", "« dans quelques jours »"], "correct": 0 },
+    { "q": "Que signifie « différer » dans la méthode des 4 D ?", "options": ["Ajouter la tâche à la liste avec une date", "Supprimer l'e-mail", "Répondre tout de suite", "Transférer à quelqu'un d'autre"], "correct": 0 },
+    { "q": "Combien de créneaux proposer pour un rendez-vous ?", "options": ["2 ou 3 créneaux précis", "Un seul, à prendre ou à laisser", "Toute la semaine", "Aucun : demander à la personne de choisir"], "correct": 0 },
+    { "q": "Une tâche importante mais pas urgente doit être…", "options": ["Planifiée", "Faite tout de suite", "Éliminée", "Oubliée"], "correct": 0 },
+    { "q": "Où ne faut-il pas travailler pour un client ?", "options": ["Sur un ordinateur partagé ou dans un cybercafé", "Chez soi", "Sur son ordinateur personnel sécurisé", "Dans un espace de coworking avec écran verrouillé"], "correct": 0 },
+    { "q": "À quoi sert un filtre Gmail ?", "options": ["Ranger automatiquement certains e-mails", "Corriger les fautes", "Envoyer des e-mails plus vite", "Bloquer Internet"], "correct": 0 },
+    { "q": "Quel droit d'agenda faut-il pour gérer complètement les rendez-vous du client ?", "options": ["Modifier les événements", "Voir disponibilités seulement", "Voir tous les détails", "Aucun droit"], "correct": 0 },
+    { "q": "Quel droit Google Drive donner pour une simple relecture avec remarques ?", "options": ["Commentateur", "Éditeur", "Propriétaire", "Tous les utilisateurs disposant du lien"], "correct": 0 },
+    { "q": "À quoi sert la page « Procédures » dans Notion ?", "options": ["Permettre à quelqu'un de vous remplacer et gagner du temps", "Stocker des photos", "Envoyer des factures", "Publier sur les réseaux sociaux"], "correct": 0 },
+    { "q": "Qu'apporte Calendly dans ses offres payantes ?", "options": ["Une prise de rendez-vous en ligne avancée", "Un stockage de fichiers", "Une adresse e-mail professionnelle", "Un gestionnaire de mots de passe"], "correct": 0 },
+    { "q": "Qu'apporte Google Workspace payant à une entreprise ?", "options": ["Une adresse e-mail à son nom et plus de stockage", "Des clients gratuits", "Un logiciel de montage vidéo", "Un site e-commerce"], "correct": 0 },
+    { "q": "Que faut-il envoyer au client après l'appel de découverte ?", "options": ["Une fiche de mission écrite", "Une facture immédiate", "Votre mot de passe", "Rien"], "correct": 0 },
+    { "q": "Quelle décision un assistant ne doit-il pas prendre seul ?", "options": ["Répondre à une réclamation ou fixer un prix", "Fixer un rendez-vous dans les créneaux autorisés", "Archiver une publicité", "Ajouter un rappel dans l'agenda"], "correct": 0 },
+    { "q": "Pourquoi archiver plutôt que supprimer ?", "options": ["Un e-mail archivé reste retrouvable par la recherche", "L'archivage est plus rapide", "La suppression est payante", "Il n'y a aucune différence"], "correct": 0 },
+    { "q": "Quand envoyer le récapitulatif du temps de travail ?", "options": ["Chaque semaine", "Une fois par an", "Seulement si le client le réclame", "Jamais"], "correct": 0 },
+    { "q": "Quelle phrase présente bien une offre d'assistant virtuel ?", "options": ["« J'aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »", "« Je fais tout ce que vous voulez »", "« Je suis le moins cher »", "« J'ai un ordinateur et Internet »"], "correct": 0 },
+    { "q": "Pendant un appel de vente, quelle part du temps passer à écouter ?", "options": ["La majorité, environ 60 %", "Aucune", "10 %", "100 %, sans jamais parler"], "correct": 0 },
+    { "q": "Pourquoi proposer des forfaits d'heures ?", "options": ["Les clients préfèrent un forfait mensuel payé d'avance", "Pour travailler moins", "Parce que c'est obligatoire", "Pour éviter de suivre son temps"], "correct": 0 },
+    { "q": "Que doit préciser la proposition si le client demande plus d'heures que le forfait ?", "options": ["Qu'elles sont facturées en plus, au même tarif", "Qu'elles sont gratuites", "Qu'elles sont interdites", "Rien"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local à Madagascar ?", "options": ["Mobile Money ou virement bancaire", "Uniquement PayPal", "Uniquement des espèces par la poste", "Un chèque étranger"], "correct": 0 }
+  ]
+}

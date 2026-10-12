@@ -443,6 +443,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-0-f": {
+  "hours": 14,
+  "description": "L'assistant virtuel gère à distance les e-mails, l'agenda, les documents et le suivi administratif de ses clients. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entrepreneurs francophones et des dirigeants malgaches, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer ce que fait un assistant virtuel et qui le paie",
+   "Écrire des e-mails professionnels et trier une boîte de réception",
+   "Tenir un agenda sans erreur de fuseau horaire",
+   "Organiser le travail d'un client avec Google Workspace et Notion",
+   "Mener la première semaine d'une mission et rendre compte",
+   "Vendre des forfaits d'heures et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'assistant virtuel depuis Madagascar",
+    "summary": "Ce que fait un assistant virtuel, les 8 tâches les plus demandées, vos clients, les qualités attendues et votre poste de travail.",
+    "sections": [
+     "Le métier d'assistant virtuel en une phrase",
+     "Les 8 tâches les plus demandées",
+     "Qui sont vos clients ?",
+     "Les qualités d'un bon assistant virtuel",
+     "Préparer son poste de travail",
+     "Exercice pratique : votre bilan de départ"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : e-mails, agenda et organisation",
+    "summary": "L'e-mail professionnel en 5 parties, la méthode des 4 D, le rendez-vous sans erreur de fuseau, la matrice urgent / important et la confidentialité.",
+    "sections": [
+     "Écrire un e-mail professionnel",
+     "Trier une boîte de réception : la méthode des 4 D",
+     "Tenir un agenda sans erreur",
+     "Organiser les tâches : la matrice urgent / important",
+     "La confidentialité",
+     "Exercice pratique : trier et répondre"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Google Workspace, Notion, et les outils payants",
+    "summary": "Gmail professionnel, agenda partagé, Drive bien rangé, tableau Notion, puis Google Workspace payant, Notion Plus et Calendly.",
+    "sections": [
+     "Les outils gratuits indispensables",
+     "Gmail comme un professionnel",
+     "Google Agenda : partager et organiser",
+     "Ranger un Google Drive",
+     "Notion : le tableau de suivi des tâches",
+     "Quand passer aux outils payants ?",
+     "Exercice pratique : l'espace de travail d'un client"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Premier projet : la première semaine d'une mission",
+    "summary": "Appel de découverte en 10 questions, fiche de mission, plan de la semaine, boîte de réception remise à zéro, suivi du temps et bilan.",
+    "sections": [
+     "Le cas pratique : Mme Claire Laurent",
+     "L'appel de découverte",
+     "La fiche de mission",
+     "La première semaine, jour par jour",
+     "Suivre son temps de travail",
+     "Le bilan de première semaine",
+     "Exercice pratique : la semaine de Mme Laurent"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Offre de services, 5 canaux de prospection, appel de vente, forfaits d'heures, proposition, facture et paiements.",
+    "sections": [
+     "Votre offre de services",
+     "Où trouver des clients : 5 canaux",
+     "L'appel de vente en 5 étapes",
+     "Calculer son prix",
+     "La proposition de collaboration",
+     "Se faire payer depuis Madagascar",
+     "Garder ses clients longtemps",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "mkt-0-f": {
   "hours": 14,
   "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

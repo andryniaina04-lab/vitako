@@ -83,7 +83,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 11, false),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
-  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 13, false),
+  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, false),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, false),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, false),
@@ -773,6 +773,687 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+
+-- gestion-0-f
+delete from public.exam_questions where course_id = 'gestion-0-f';
+delete from public.module_questions where course_id = 'gestion-0-f';
+delete from public.lessons where course_id = 'gestion-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-f', 0, 'Le métier d''assistant virtuel depuis Madagascar', 'Ce que fait un assistant virtuel, les 8 tâches les plus demandées, vos clients, les qualités attendues et votre poste de travail.', 'Un assistant virtuel fait à distance ce que fait une assistante de direction dans un bureau : il gère les e-mails, l''agenda, les documents et les petites tâches qui font perdre du temps à son client. C''est un des métiers du télétravail les plus accessibles depuis Madagascar, car il demande surtout de l''organisation, un bon français écrit et de la fiabilité. Ce premier module vous montre le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer en une phrase ce que fait un assistant virtuel.
+> 2. Citer les 8 tâches les plus demandées à un débutant.
+> 3. Repérer vos premiers clients possibles, à Madagascar et à l''étranger.
+> 4. Évaluer vos qualités et ce qu''il vous reste à travailler.
+> 5. Préparer votre poste de travail malgré les coupures et la connexion.
+
+## Le métier d''assistant virtuel en une phrase
+
+Un assistant virtuel **fait gagner du temps à son client** en prenant en charge ses tâches administratives et organisationnelles, à distance.
+
+Le client est souvent un entrepreneur, un coach, un médecin ou le dirigeant d''une petite entreprise. Il est débordé : il passe ses soirées à répondre aux e-mails au lieu de travailler sur son vrai métier. Votre rôle : lui rendre ces heures.
+
+> [!definition] Assistant virtuel
+> Un assistant indépendant qui travaille à distance pour un ou plusieurs clients, avec des outils en ligne (e-mail, agenda partagé, documents, visioconférence). On utilise aussi l''abréviation anglaise **VA** (*virtual assistant*).
+
+## Les 8 tâches les plus demandées
+
+| N° | Tâche | Exemple concret |
+| --- | --- | --- |
+| 1 | Gestion des e-mails | Trier la boîte de réception, répondre aux demandes simples, signaler l''urgent |
+| 2 | Gestion de l''agenda | Fixer les rendez-vous, envoyer les rappels, éviter les doubles réservations |
+| 3 | Organisation de déplacements | Comparer vols et hôtels, préparer un programme |
+| 4 | Saisie et mise à jour de données | Fichier clients, tableau des commandes |
+| 5 | Rédaction de documents simples | Courriers, comptes rendus de réunion, modèles |
+| 6 | Suivi administratif | Relancer les factures impayées, classer les documents |
+| 7 | Service client de premier niveau | Répondre aux questions fréquentes par e-mail ou message |
+| 8 | Recherches sur Internet | Trouver 20 fournisseurs, comparer 5 logiciels |
+
+Pour commencer, concentrez-vous sur les tâches **1, 2, 4 et 8** : elles sont demandées par presque tous les clients et s''apprennent vite.
+
+## Qui sont vos clients ?
+
+### Clients à l''étranger (la majorité)
+
+1. **Entrepreneurs et indépendants francophones** (France, Belgique, Suisse, Canada) : coachs, consultants, thérapeutes, formateurs.
+2. **Petites entreprises** sans secrétariat : artisans, agences immobilières, cabinets.
+3. **Créateurs de formations en ligne** qui ont besoin d''aide pour leurs élèves et leurs e-mails.
+
+### Clients à Madagascar
+
+1. **Dirigeants de PME** et responsables d''ONG très sollicités.
+2. **Professions libérales** : médecins, avocats, architectes.
+3. **Entreprises de la diaspora** qui ont une activité à Madagascar et vivent à l''étranger.
+
+> [!madagascar] Votre avantage
+> Un français écrit soigné, un faible décalage horaire avec l''Europe (1 ou 2 heures) et la capacité de travailler aux heures de bureau européennes : pour un client en France, vous êtes disponible pendant **toute** sa journée de travail.
+
+## Les qualités d''un bon assistant virtuel
+
+| Qualité | Pourquoi c''est essentiel | Comment la montrer |
+| --- | --- | --- |
+| **Fiabilité** | Le client vous confie son agenda et ses clients | Respecter chaque délai, même petit |
+| **Discrétion** | Vous voyez des informations privées | Ne jamais parler d''un client à un autre |
+| **Organisation** | Vous gérez des dizaines de petites tâches | Listes, rappels, dossiers bien rangés |
+| **Français écrit** | Vous écrivez au nom du client | Zéro faute dans vos messages |
+| **Autonomie** | Le client n''a pas le temps de tout expliquer | Proposer une solution avec chaque question |
+
+> [!exemple] Autonomie : la bonne façon de poser une question
+> Mauvais : « Le client Dupont veut changer son rendez-vous, je fais quoi ? »
+> Bon : « M. Dupont demande à déplacer son rendez-vous de jeudi. Vous êtes libre vendredi à 10 h ou lundi à 14 h : je lui propose les deux ? »
+
+## Préparer son poste de travail
+
+### L''équipement minimum
+
+1. Un **ordinateur** (même ancien, s''il fait tourner un navigateur récent sans ramer).
+2. Une **connexion Internet** principale et un **forfait mobile de secours**.
+3. Un **casque avec micro** pour les appels.
+4. Un **endroit calme** pour les visioconférences.
+5. Une **batterie** ou un onduleur pour tenir pendant les coupures courtes.
+
+### S''organiser malgré les coupures
+
+1. Travaillez avec des outils en ligne qui enregistrent tout seuls (Google Docs, Notion), mais gardez une copie hors ligne des documents importants du jour.
+2. Prévenez le client **dès qu''une coupure** risque de retarder une tâche, par téléphone si besoin.
+3. Annoncez des délais avec une marge.
+
+### Le décalage horaire
+
+Madagascar est à UTC+3 toute l''année : 2 h d''avance sur Paris en hiver, 1 h en été, et 7 h d''avance sur Montréal en hiver. Indiquez toujours l''heure **dans le fuseau du client** quand vous fixez un rendez-vous.
+
+> [!astuce]
+> Ajoutez le fuseau horaire de chaque client dans votre agenda Google (Paramètres → Fuseau horaire secondaire). Vous voyez les deux heures côte à côte et évitez les erreurs de rendez-vous.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Dire « oui » à toutes les tâches, même celles qu''on ne sait pas faire.
+> - Disparaître pendant une coupure sans prévenir le client.
+> - Envoyer des messages avec des fautes au nom du client.
+> - Mélanger les fichiers de plusieurs clients dans le même dossier.
+
+> [!retenir]
+> - Un assistant virtuel fait gagner du temps à son client.
+> - Les premières tâches à maîtriser : e-mails, agenda, saisie, recherches.
+> - La plupart des clients sont des indépendants et petites entreprises francophones.
+> - Fiabilité, discrétion et français écrit sont vos premières qualités.
+
+## Exercice pratique : votre bilan de départ
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour chacune des 8 tâches, notez-vous de 1 à 5 (1 = jamais fait, 5 = je sais très bien faire).
+> 2. Pour chacune des 5 qualités, écrivez un exemple de votre vie (études, travail, famille) qui la prouve.
+> 3. Faites la liste de votre équipement et de ce qui vous manque.
+> 4. Notez 5 types de clients que vous aimeriez aider, et pourquoi.
+>
+> **À livrer** : votre bilan (tâches, qualités, équipement, clients visés). Il vous servira à rédiger votre offre au module 5.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 0, 0, 'Quel est le rôle principal d''un assistant virtuel ?', '["Remplacer le client dans ses rendez-vous","Vendre les produits du client","Créer le site web du client","Faire gagner du temps à son client en prenant en charge ses tâches administratives"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 0, 1, 'Quelle est la bonne façon de poser une question à un client ?', '["Ne jamais poser de question","Attendre qu''il pose lui-même la question","Demander « je fais quoi ? » sans détail","Expliquer la situation et proposer une solution"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 0, 2, 'Que faire si une coupure risque de retarder une tâche ?', '["Annuler la mission","Ne rien dire et livrer en retard","Attendre qu''il le remarque","Prévenir le client tout de suite"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-f', 1, 'Les bases : e-mails, agenda et organisation', 'L''e-mail professionnel en 5 parties, la méthode des 4 D, le rendez-vous sans erreur de fuseau, la matrice urgent / important et la confidentialité.', 'Le travail d''un assistant virtuel repose sur quatre savoir-faire : écrire des e-mails professionnels, trier une boîte de réception, tenir un agenda sans erreur et organiser les tâches. Ce module vous donne une méthode simple pour chacun, avec des modèles prêts à l''emploi.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire un e-mail professionnel clair en 5 parties.
+> 2. Trier une boîte de réception avec la méthode des 4 D.
+> 3. Fixer un rendez-vous sans erreur de fuseau horaire.
+> 4. Organiser les tâches avec la matrice urgent / important.
+> 5. Protéger les informations confidentielles de vos clients.
+
+## Écrire un e-mail professionnel
+
+Vous écrirez souvent **au nom de votre client**. Chaque e-mail doit être clair, poli et sans faute.
+
+### Les 5 parties d''un bon e-mail
+
+1. **L''objet** : précis, il résume la demande (« Rendez-vous du 14 mars : nouvelle date proposée »).
+2. **La formule d''appel** : « Bonjour Madame Rabe, » ou « Bonjour Paul, » selon le niveau de familiarité.
+3. **Le message** : l''essentiel dans la première phrase, puis les détails en phrases courtes.
+4. **L''action attendue** : ce que le destinataire doit faire, et avant quand.
+5. **La formule de politesse et la signature** : « Bien cordialement, » puis nom, fonction et coordonnées.
+
+> [!exemple] E-mail de changement de rendez-vous
+> **Objet** : Rendez-vous du jeudi 14 mars : nouvelle date
+>
+> Bonjour Monsieur Martin,
+>
+> Mme Laurent a un empêchement jeudi 14 mars et vous prie de l''excuser. Elle vous propose deux nouvelles dates :
+> 1. vendredi 15 mars à 10 h (heure de Paris) ;
+> 2. lundi 18 mars à 14 h (heure de Paris).
+>
+> Pourriez-vous me dire laquelle vous convient d''ici mercredi soir ?
+>
+> Bien cordialement,
+> Hanta Rakoto, assistante de Mme Laurent
+
+### Les règles de forme
+
+| Règle | Exemple |
+| --- | --- |
+| Vouvoiement par défaut | « Pourriez-vous… » |
+| Une idée par paragraphe | 2 à 3 lignes maximum |
+| Pas de majuscules pour crier | Écrire « important » et non « IMPORTANT !!! » |
+| Dates complètes | « jeudi 14 mars », pas « jeudi prochain » |
+| Toujours relire | Avec un correcteur (LanguageTool, BonPatron) avant d''envoyer |
+
+## Trier une boîte de réception : la méthode des 4 D
+
+Un client débordé peut avoir des centaines d''e-mails non lus. Chaque e-mail doit recevoir **une seule décision** parmi 4. La méthode vient de l''anglais, où les 4 mots commencent par D :
+
+| N° | Décision | Quand | Action |
+| --- | --- | --- | --- |
+| 1 | **Faire** (*Do*) | Moins de 2 minutes | Répondre ou traiter tout de suite |
+| 2 | **Déléguer** (*Delegate*) | Une autre personne doit s''en occuper | Transférer, avec un mot d''explication |
+| 3 | **Différer** (*Defer*) | Plus de 2 minutes | Ajouter à la liste des tâches avec une date |
+| 4 | **Supprimer ou archiver** (*Delete*) | Publicité, information sans action | Archiver ou se désinscrire |
+
+### Les libellés (ou dossiers) conseillés
+
+1. **À traiter par le client** : ce que lui seul peut décider.
+2. **En attente de réponse** : vous attendez quelqu''un.
+3. **Factures et paiements**.
+4. **À lire** : lettres d''information utiles.
+5. **Archivé** : tout le reste.
+
+> [!astuce] Le résumé quotidien
+> Chaque fin de journée, envoyez au client un court message : « Aujourd''hui : 34 e-mails traités, 3 rendez-vous fixés, 2 décisions vous attendent (dossier À traiter). » En 30 secondes, il sait tout.
+
+## Tenir un agenda sans erreur
+
+### Fixer un rendez-vous en 6 étapes
+
+1. Vérifiez les disponibilités du client **et** ses règles (pas de rendez-vous avant 9 h, 15 minutes de pause entre deux appels…).
+2. Proposez **2 ou 3 créneaux** précis à la personne.
+3. Indiquez toujours le **fuseau horaire** : « 14 h, heure de Paris ».
+4. Une fois la date acceptée, créez l''événement avec : titre clair, lieu ou lien de visioconférence, numéro de téléphone, objet du rendez-vous.
+5. Invitez la personne depuis l''agenda : elle reçoit l''invitation dans **son** fuseau horaire.
+6. Programmez un **rappel** la veille.
+
+> [!definition] Fuseau horaire
+> La zone de la Terre qui partage la même heure. Madagascar est à UTC+3, la France à UTC+1 en hiver et UTC+2 en été. Une erreur de fuseau, c''est un client qui attend seul en visioconférence.
+
+### Le titre d''un événement
+
+Écrivez des titres qui se comprennent sans ouvrir l''événement :
+« Appel découverte · Sophie Morel (prospect) · Zoom ».
+
+## Organiser les tâches : la matrice urgent / important
+
+| | **Urgent** | **Pas urgent** |
+| --- | --- | --- |
+| **Important** | 1. À faire tout de suite (facture à envoyer aujourd''hui) | 2. À planifier (préparer le rapport du mois) |
+| **Pas important** | 3. À faire vite ou à déléguer (répondre à une demande de devis standard) | 4. À éliminer ou faire plus tard (trier les anciens fichiers) |
+
+Commencez chaque journée en classant vos tâches dans ces 4 cases.
+
+## La confidentialité
+
+Vous aurez accès aux e-mails, aux clients et parfois aux comptes de votre client. Votre réputation dépend de votre discrétion.
+
+### Les 6 règles à respecter
+
+1. Ne jamais parler des affaires d''un client à quelqu''un d''autre, même à un autre client.
+2. Utiliser un **gestionnaire de mots de passe** (Bitwarden, par exemple) plutôt qu''un fichier ou un carnet.
+3. Activer la **double authentification** sur tous vos comptes.
+4. Ne pas travailler sur un ordinateur partagé ou dans un cybercafé.
+5. Verrouiller votre écran quand vous vous éloignez.
+6. Supprimer les accès et les fichiers à la fin d''une mission, si le client le demande.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Écrire « jeudi prochain » au lieu de la date complète.
+> - Oublier le fuseau horaire dans une proposition de rendez-vous.
+> - Supprimer des e-mails au lieu de les archiver.
+> - Répondre à une question délicate (prix, réclamation) sans l''accord du client.
+
+> [!retenir]
+> - Un e-mail : objet précis, message clair, action attendue, politesse.
+> - Chaque e-mail reçoit une décision : faire, déléguer, différer, supprimer.
+> - Un rendez-vous : 2 ou 3 créneaux, fuseau horaire, invitation, rappel.
+> - Classez vos tâches par urgence et importance.
+> - Discrétion totale et mots de passe protégés.
+
+## Exercice pratique : trier et répondre
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez une adresse Gmail d''exercice.
+> 2. Rédigez 3 e-mails professionnels : une proposition de rendez-vous, une relance de facture polie, une réponse à une demande d''information.
+> 3. Créez les 5 libellés conseillés dans Gmail.
+> 4. Prenez 10 e-mails de votre boîte personnelle (publicités comprises) et notez pour chacun la décision des 4 D.
+> 5. Classez 8 tâches de votre semaine dans la matrice urgent / important.
+>
+> **À livrer** : vos 3 e-mails, une capture de vos libellés, votre tableau des 4 D et votre matrice.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 1, 0, 'Que faire d''un e-mail qui se traite en moins de 2 minutes ?', '["Le traiter tout de suite","Le transférer au client","Le mettre de côté pour la semaine suivante","Le supprimer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 1, 1, 'Que faut-il toujours indiquer en proposant un rendez-vous à un client étranger ?', '["Le prix du rendez-vous","Le fuseau horaire","La météo","Votre adresse personnelle"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 1, 2, 'Où ranger les mots de passe des clients ?', '["Dans un fichier Word sur le bureau","Dans un gestionnaire de mots de passe","Dans un carnet","Dans un message WhatsApp"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-f', 2, 'Les outils : Google Workspace, Notion, et les outils payants', 'Gmail professionnel, agenda partagé, Drive bien rangé, tableau Notion, puis Google Workspace payant, Notion Plus et Calendly.', 'Un assistant virtuel passe sa journée dans quelques outils en ligne. Bien les maîtriser, c''est travailler deux fois plus vite et inspirer confiance. Ce module vous fait prendre en main la suite Google et Notion, puis vous présente les versions payantes et les outils que vos clients vous demanderont.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser Gmail comme un professionnel : libellés, filtres, modèles de réponse.
+> 2. Partager un agenda et des fichiers avec les bons droits.
+> 3. Ranger un Google Drive avec une arborescence claire.
+> 4. Construire un tableau de suivi des tâches dans Notion.
+> 5. Savoir quand passer à Google Workspace, Notion Plus et Calendly.
+
+## Les outils gratuits indispensables
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Gmail** | E-mails, libellés, filtres, modèles de réponse |
+| 2 | **Google Agenda** | Rendez-vous, rappels, agendas partagés |
+| 3 | **Google Drive, Docs et Sheets** | Documents, tableaux et partage de fichiers |
+| 4 | **Google Meet** | Visioconférences avec le client |
+| 5 | **Notion** (offre gratuite) | Liste des tâches, procédures, notes de réunion |
+| 6 | **Bitwarden** (offre gratuite) | Gestionnaire de mots de passe |
+
+## Gmail comme un professionnel
+
+### Les 3 réglages qui font gagner des heures
+
+1. **Les libellés** (module 2) : un par catégorie, avec une couleur.
+2. **Les filtres** : Gmail range tout seul certains e-mails.
+   - Ouvrez la barre de recherche, cliquez sur l''icône des options.
+   - Indiquez l''expéditeur (exemple : `factures@fournisseur.com`).
+   - Cliquez sur **Créer un filtre**, cochez **Appliquer le libellé** « Factures et paiements ».
+3. **Les modèles de réponse** : activez-les dans **Paramètres → Voir tous les paramètres → Paramètres avancés → Modèles**. Enregistrez vos réponses fréquentes (demande de devis, confirmation de rendez-vous) et insérez-les en deux clics.
+
+> [!astuce] Les raccourcis clavier
+> Activez les raccourcis dans les paramètres de Gmail. **e** archive un e-mail, **r** répond, **c** écrit un nouvel e-mail, **/** place le curseur dans la recherche. Sur 100 e-mails par jour, vous gagnez facilement 20 minutes.
+
+### Accéder à la boîte d''un client
+
+La bonne méthode est la **délégation** : le client vous autorise à lire et envoyer des e-mails depuis son compte, sans vous donner son mot de passe. Dans Gmail, elle se règle dans **Paramètres → Comptes et importation → Accorder l''accès à votre compte** (selon le type de compte, l''option peut être différente : votre client vérifie avec son administrateur).
+
+## Google Agenda : partager et organiser
+
+### Les 3 niveaux de partage
+
+| Droit | Ce que vous pouvez faire | Pour quoi |
+| --- | --- | --- |
+| Voir disponibilités seulement | Voir les créneaux occupés, sans détail | Proposer des créneaux libres |
+| Voir tous les détails | Lire les rendez-vous | Préparer la journée du client |
+| Modifier les événements | Créer, déplacer, supprimer | Gérer complètement l''agenda |
+
+Pour gérer l''agenda, demandez le droit **Modifier les événements**.
+
+### Les bonnes habitudes
+
+1. Une **couleur par type** d''événement : appels clients en vert, rendez-vous personnels en gris, tâches en orange.
+2. Le **lien de visioconférence** dans chaque événement à distance.
+3. Des **temps de pause** bloqués entre deux longs rendez-vous.
+4. Un **bloc de travail** pour le client : 2 heures sans réunion le matin, s''il le souhaite.
+
+## Ranger un Google Drive
+
+Un Drive en désordre fait perdre des heures. Proposez une arborescence numérotée, la même pour tous vos clients :
+
+```
+CLIENT - Mme Laurent
+├── 01 Administratif (contrats, attestations)
+├── 02 Clients (un dossier par client)
+├── 03 Factures et devis
+│   ├── 2026-01
+│   └── 2026-02
+├── 04 Communication (logos, photos, modèles)
+└── 05 Procédures (comment faire chaque tâche)
+```
+
+### Nommer les fichiers
+
+Utilisez toujours le même ordre : **date (AAAA-MM-JJ) – type – nom**.
+Exemple : `2026-03-14 - Devis - Hôtel Les Baobabs.pdf`. Les fichiers se classent alors tout seuls par date.
+
+### Partager avec les bons droits
+
+1. **Lecteur** : peut seulement voir (pour un document envoyé à un client final).
+2. **Commentateur** : peut ajouter des remarques (pour une relecture).
+3. **Éditeur** : peut modifier (pour l''équipe).
+
+Évitez « Tous les utilisateurs disposant du lien » pour les documents confidentiels.
+
+## Notion : le tableau de suivi des tâches
+
+Notion permet de créer une base de données de tâches, partagée avec le client. Il voit en temps réel ce qui est fait.
+
+### Construire le tableau en 6 étapes
+
+1. Créez une page **Tâches – Nom du client**.
+2. Ajoutez une **base de données** en vue **Tableau** (*Board*).
+3. Créez les colonnes de statut : **À faire**, **En cours**, **En attente du client**, **Terminé**.
+4. Ajoutez les propriétés : **Échéance** (date), **Priorité** (haute, moyenne, basse), **Temps passé** (nombre).
+5. Créez une carte par tâche, avec une description courte.
+6. Partagez la page avec le client.
+
+> [!exemple] Une carte de tâche
+> **Relancer les 3 factures impayées de février** · Échéance : 5 mars · Priorité : haute · Temps passé : 0,5 h · Note : « Factures n° 12, 15 et 17. Relance polie, puis appel si pas de réponse sous 7 jours. »
+
+### La page « Procédures »
+
+Pour chaque tâche répétitive, écrivez une procédure en étapes numérotées : « Comment envoyer une facture », « Comment préparer un déplacement ». Si vous êtes malade ou en congé, quelqu''un peut vous remplacer, et le client apprécie énormément.
+
+## Quand passer aux outils payants ?
+
+| Outil payant | Ce qu''il apporte | Qui le paie en général |
+| --- | --- | --- |
+| **Google Workspace** | Adresse e-mail au nom de l''entreprise, plus de stockage, gestion des comptes d''équipe | Le client (vous recevez un compte dans son espace) |
+| **Notion Plus** | Plus de fonctions de partage et d''historique, adapté au travail en équipe | Le client, ou vous si vous gérez plusieurs clients dans votre espace |
+| **Calendly** (offres payantes) | Prise de rendez-vous en ligne avancée : plusieurs types de rendez-vous, rappels, paiement à la réservation | Le client, souvent |
+
+Les prix changent souvent : consultez le site officiel de chaque outil. Dans la majorité des cas, **c''est le client qui a l''abonnement** et vous donne un accès. N''achetez un abonnement à votre nom que s''il vous sert pour plusieurs clients.
+
+> [!madagascar]
+> Une adresse e-mail professionnelle à votre nom (exemple : `contact@votreprenom-assistance.com`) inspire confiance aux clients étrangers. Elle demande un nom de domaine et un abonnement : c''est un bon investissement quand vous avez vos premiers revenus réguliers.
+
+> [!retenir]
+> - Filtres, libellés et modèles de réponse dans Gmail.
+> - Délégation et partage : jamais le mot de passe du client.
+> - Un Drive numéroté et des fichiers nommés « date – type – nom ».
+> - Un tableau Notion partagé : le client voit votre travail en temps réel.
+> - Les abonnements payants sont le plus souvent ceux du client.
+
+## Exercice pratique : l''espace de travail d''un client
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Dans votre Gmail d''exercice, créez 2 filtres et 3 modèles de réponse.
+> 2. Créez un agenda « Client test » avec 5 rendez-vous de la semaine, en couleurs, avec liens de visioconférence.
+> 3. Créez l''arborescence Drive proposée et nommez 3 fichiers d''exemple selon la règle.
+> 4. Dans Notion, construisez le tableau de suivi avec 8 tâches réparties dans les 4 colonnes.
+> 5. Rédigez une procédure de 6 étapes pour une tâche de votre choix.
+>
+> **À livrer** : des captures d''écran de chaque étape et le lien de votre page Notion en lecture seule.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 2, 0, 'Comment accéder à la boîte e-mail d''un client sans son mot de passe ?', '["Par la délégation de son compte","En lui demandant son mot de passe","En créant une fausse adresse","C''est impossible"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 2, 1, 'Quel nom de fichier suit la bonne règle ?', '["2026-03-14 - Devis - Hôtel Les Baobabs.pdf","devis final final 2.pdf","scan.pdf","Document1.pdf"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 2, 2, 'Qui paie le plus souvent l''abonnement Google Workspace ?', '["Vitako","Le client, qui vous donne un compte","Personne, il est gratuit","Toujours l''assistant virtuel"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-f', 3, 'Premier projet : la première semaine d''une mission', 'Appel de découverte en 10 questions, fiche de mission, plan de la semaine, boîte de réception remise à zéro, suivi du temps et bilan.', 'Place à la pratique. Dans ce module, vous vivez la première semaine avec un vrai type de client : de l''appel de découverte à la remise du premier bilan. Vous apprenez à poser les bonnes questions, à prendre en main un espace de travail en désordre et à prouver votre valeur dès les premiers jours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un appel de découverte avec 10 questions clés.
+> 2. Rédiger une fiche de mission claire.
+> 3. Remettre en ordre une boîte de réception et un agenda en une semaine.
+> 4. Suivre votre temps de travail précisément.
+> 5. Présenter un bilan de première semaine.
+
+## Le cas pratique : Mme Claire Laurent
+
+> [!exemple] Votre cliente
+> **Claire Laurent** est coach en reconversion professionnelle à Lyon. Elle travaille seule et reçoit ses clients en visioconférence. Sa boîte de réception compte 1 200 e-mails non lus, elle oublie des rendez-vous, et ses factures partent en retard. Elle vous engage pour **10 heures par semaine**, pendant un premier mois d''essai.
+
+## L''appel de découverte
+
+Avant de commencer, un appel de 30 à 45 minutes permet de comprendre exactement ce que veut le client. Préparez vos questions à l''avance et prenez des notes.
+
+### Les 10 questions clés
+
+1. Quelles sont les tâches qui vous prennent le plus de temps aujourd''hui ?
+2. Si vous ne deviez me confier qu''une seule tâche, laquelle ?
+3. Quels outils utilisez-vous (messagerie, agenda, stockage, facturation) ?
+4. Quelles décisions puis-je prendre seul, et lesquelles dois-je vous soumettre ?
+5. Comment préférez-vous communiquer avec moi (e-mail, WhatsApp, appel) ?
+6. À quelle fréquence voulez-vous un point de suivi ?
+7. Quelles sont vos règles d''agenda (horaires, pauses, jours sans rendez-vous) ?
+8. Y a-t-il des personnes ou des sujets sensibles à connaître ?
+9. Comment vous adressez-vous à vos propres clients (tutoiement, vouvoiement, ton) ?
+10. À quoi verrez-vous, dans un mois, que ma mission est réussie ?
+
+> [!astuce]
+> La question 10 est la plus importante : elle vous donne les **objectifs** de la mission. Notez la réponse mot pour mot et relisez-la chaque semaine.
+
+## La fiche de mission
+
+Après l''appel, envoyez une **fiche de mission** d''une page au client. Elle confirme ce que vous avez compris.
+
+| Rubrique | Exemple pour Mme Laurent |
+| --- | --- |
+| Objectifs du mois | Boîte de réception à jour chaque soir ; zéro rendez-vous oublié ; factures envoyées sous 48 h |
+| Tâches confiées | E-mails, agenda, facturation, relances, rappels de rendez-vous |
+| Décisions autonomes | Fixer un rendez-vous dans les créneaux autorisés, répondre aux questions fréquentes |
+| Décisions à soumettre | Prix, réclamations, tout message à un client mécontent |
+| Communication | WhatsApp pour l''urgent, résumé quotidien par e-mail, point vidéo le vendredi à 16 h (heure de Lyon) |
+| Volume | 10 h par semaine, rapport de temps chaque vendredi |
+
+## La première semaine, jour par jour
+
+| Jour | Objectif | Actions principales |
+| --- | --- | --- |
+| **Jour 1** | S''installer | Recevoir les accès (délégation Gmail, agenda, Drive) ; vérifier que tout fonctionne ; créer l''espace Notion |
+| **Jour 2** | Désengorger la boîte | Archiver en masse les publicités et notifications ; créer les libellés et filtres |
+| **Jour 3** | Trier le reste | Appliquer les 4 D aux e-mails restants ; lister les décisions pour la cliente |
+| **Jour 4** | Fiabiliser l''agenda | Vérifier les rendez-vous des 3 prochaines semaines ; ajouter liens et rappels ; mettre en place une page de réservation |
+| **Jour 5** | Rattraper le retard et faire le bilan | Envoyer les factures en retard, préparer les relances, présenter le bilan au point du vendredi |
+
+### Vider une boîte de 1 200 e-mails sans rien perdre
+
+1. Recherchez les expéditeurs de publicités et de lettres d''information : sélectionnez tout, **archivez** (ne supprimez pas).
+2. Recherchez les notifications automatiques (réseaux sociaux, outils) : archivez-les, puis créez un filtre pour qu''elles ne passent plus par la boîte de réception.
+3. Recherchez les mots « facture », « paiement », « devis » : appliquez le libellé correspondant.
+4. Triez le reste du plus récent au plus ancien, avec les 4 D.
+5. Les e-mails de plus de 3 mois sans réponse : regroupez-les dans un libellé « Ancien – à vérifier » et demandez au client s''il veut les traiter.
+
+> [!attention]
+> **Archivez, ne supprimez jamais en masse.** Un e-mail archivé reste retrouvable par la recherche. Un e-mail supprimé disparaît définitivement au bout de 30 jours.
+
+## Suivre son temps de travail
+
+Votre client paie des heures : il doit pouvoir vérifier ce qu''elles contiennent.
+
+### La méthode
+
+1. Notez **chaque bloc de travail** : date, heure de début et de fin, tâche.
+2. Utilisez un outil simple : un tableau Google Sheets, ou un outil de suivi gratuit comme Clockify ou Toggl Track.
+3. Arrondissez par quarts d''heure.
+4. Envoyez le récapitulatif chaque semaine.
+
+| Date | Tâche | Durée |
+| --- | --- | --- |
+| Lun 3 | Installation des accès, création de l''espace Notion | 1 h 30 |
+| Mar 4 | Archivage en masse, libellés et filtres | 2 h |
+| Mer 5 | Tri des 4 D, liste des décisions | 2 h 15 |
+| Jeu 6 | Agenda : vérification, liens, rappels | 2 h |
+| Ven 7 | Factures et relances, bilan | 2 h 15 |
+| **Total** | | **10 h** |
+
+## Le bilan de première semaine
+
+Au point du vendredi, présentez en 10 minutes :
+
+1. **Ce qui est fait** : « Boîte de réception passée de 1 200 à 0 e-mail non traité ; 14 rendez-vous vérifiés ; 6 factures envoyées. »
+2. **Ce qui vous attend** : la liste des décisions que seule la cliente peut prendre.
+3. **Ce qui est en place** : filtres, libellés, page de réservation, rappels automatiques.
+4. **Vos propositions** pour la semaine suivante.
+5. **Vos questions**.
+
+> [!madagascar]
+> Le point du vendredi à 16 h à Lyon, c''est 17 h ou 18 h à Antananarivo selon la saison. Vérifiez votre connexion 15 minutes avant, et gardez votre téléphone en partage de connexion prêt en cas de coupure.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer sans fiche de mission écrite.
+> - Supprimer des e-mails au lieu de les archiver.
+> - Oublier de noter son temps, puis le reconstituer de mémoire.
+> - Prendre une décision sensible (prix, réclamation) sans l''accord du client.
+
+> [!retenir]
+> - Un appel de découverte avec 10 questions, dont « à quoi verrez-vous que c''est réussi ? ».
+> - Une fiche de mission écrite, validée par le client.
+> - Semaine 1 : accès, boîte de réception, agenda, retards, bilan.
+> - Archiver plutôt que supprimer.
+> - Un suivi du temps précis, envoyé chaque semaine.
+
+## Exercice pratique : la semaine de Mme Laurent
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Faites un appel de découverte de 20 minutes avec un proche qui joue le rôle de Mme Laurent ; notez les réponses aux 10 questions.
+> 2. Rédigez la fiche de mission.
+> 3. Préparez dans Notion le plan de la semaine, jour par jour.
+> 4. Rédigez 3 e-mails : une relance de facture, une confirmation de rendez-vous, une réponse à une demande d''information sur le coaching.
+> 5. Remplissez un suivi du temps de 10 heures et rédigez le bilan de première semaine.
+>
+> **À livrer** : vos notes d''appel, la fiche de mission, le plan Notion, les 3 e-mails, le suivi du temps et le bilan. C''est votre étude de cas de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 3, 0, 'Quelle question de l''appel de découverte donne les objectifs de la mission ?', '["Quel âge avez-vous ?","Combien gagnez-vous ?","Quel est votre logiciel préféré ?","À quoi verrez-vous, dans un mois, que ma mission est réussie ?"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 3, 1, 'Que faire des publicités dans une boîte de 1 200 e-mails ?', '["Y répondre une par une","Les archiver en masse","Les supprimer définitivement","Les transférer au client"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 3, 2, 'Pourquoi noter chaque bloc de travail ?', '["Parce que Gmail l''exige","Pour que le client puisse vérifier les heures qu''il paie","Pour travailler plus lentement","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-0-f', 4, 'Trouver des clients et se faire payer', 'Offre de services, 5 canaux de prospection, appel de vente, forfaits d''heures, proposition, facture et paiements.', 'Un assistant virtuel fiable garde souvent ses clients pendant des années. Encore faut-il trouver le premier, fixer un prix juste et se faire payer sans difficulté depuis Madagascar. Ce dernier module vous donne une méthode complète, de votre profil en ligne jusqu''à la facture.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Présenter votre offre de services sur une page claire.
+> 2. Trouver des clients grâce à 5 canaux, avec un message de prospection prêt à l''emploi.
+> 3. Mener un appel de vente en 5 étapes.
+> 4. Calculer votre prix et proposer des forfaits d''heures.
+> 5. Rédiger une proposition de collaboration et facturer.
+> 6. Vous faire payer en local et depuis l''étranger.
+
+## Votre offre de services
+
+Le client ne cherche pas « un assistant virtuel » : il cherche quelqu''un qui règle **son** problème. Présentez-vous par ce que vous résolvez.
+
+### Les 5 parties d''une bonne présentation
+
+1. **Pour qui** : « J''aide les coachs et consultants indépendants… »
+2. **Quel problème** : « … qui n''ont plus le temps de gérer leurs e-mails et leur agenda… »
+3. **Quelles tâches** : la liste précise de ce que vous faites (et de ce que vous ne faites pas).
+4. **Comment** : vos horaires, vos outils, votre façon de rendre compte (résumé quotidien, suivi du temps).
+5. **Preuves** : votre étude de cas (module 4), les avis de vos premiers clients.
+
+> [!exemple] Phrase de présentation
+> « J''aide les coachs et consultants francophones à retrouver 10 heures par semaine en gérant leurs e-mails, leur agenda et leurs factures. Disponible pendant toute la journée de travail européenne. »
+
+Mettez cette présentation sur un **profil LinkedIn** complet, sur une page simple (Notion publique ou Canva site web) et dans un PDF d''une page à envoyer.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | LinkedIn | Coachs, consultants, dirigeants de PME | Profil soigné, publications utiles, messages personnalisés |
+| 2 | Plateformes de freelance (Upwork, Fiverr, plateformes francophones) | Clients internationaux | Offre précise : « Gestion de votre boîte e-mail et de votre agenda, 10 h par semaine » ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 3 | Groupes Facebook d''entrepreneurs francophones | Indépendants en France, Belgique, Canada | Répondez aux questions d''organisation, sans vendre directement |
+| 4 | Réseau à Madagascar | Dirigeants de PME, ONG, diaspora | Parlez de votre métier autour de vous ; proposez un essai de 5 heures |
+| 5 | Agences d''assistants virtuels | Missions régulières | Postulez pour sous-traiter et gagner en expérience |
+
+### Le message de prospection, prêt à l''emploi
+
+> [!exemple] Message LinkedIn à une coach
+> « Bonjour Claire, j''ai lu votre publication sur la difficulté de trouver du temps pour développer votre activité. Je suis assistante virtuelle et j''aide des coachs indépendants à reprendre le contrôle de leur boîte e-mail et de leur agenda, quelques heures par semaine. Voici l''exemple d''une première semaine de travail : [lien]. Seriez-vous ouverte à un échange de 15 minutes ? »
+
+Personnalisé, court, un problème précis, une preuve, une proposition. Envoyez **5 messages soignés par jour**.
+
+## L''appel de vente en 5 étapes
+
+1. **Écouter** (60 % du temps) : posez les questions 1, 2 et 10 de l''appel de découverte (module 4).
+2. **Reformuler** : « Si je comprends bien, vous perdez environ 2 heures par jour sur vos e-mails et vos rendez-vous. »
+3. **Proposer** : une solution précise, avec le nombre d''heures et les tâches.
+4. **Rassurer** : discrétion, outils sécurisés, suivi du temps, essai d''un mois.
+5. **Conclure** : « Voulez-vous que je vous envoie la proposition aujourd''hui ? »
+
+## Calculer son prix
+
+### Étape 1 : votre prix horaire
+
+1. Fixez votre **revenu mensuel visé** (exemple : 1 400 000 Ar).
+2. Estimez vos **heures facturables** par mois (exemple : 100 h ; le reste sert à la prospection, aux échanges et à la formation).
+3. **Divisez** : 1 400 000 ÷ 100 = 14 000 Ar de l''heure.
+
+Pour les clients étrangers, fixez un prix horaire en euros ou en dollars : regardez les profils d''assistants virtuels débutants francophones sur les plateformes, et placez-vous à un niveau raisonnable pour commencer. Vous l''augmenterez avec l''expérience et les avis.
+
+### Étape 2 : les forfaits d''heures
+
+Les clients préfèrent un forfait mensuel payé d''avance à un paiement à l''heure.
+
+| Forfait | Heures par mois | Pour qui | Exemple de prix (14 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Découverte** | 10 h | Essai, petites tâches | 140 000 Ar |
+| **Régulier** | 20 h | Gestion e-mails et agenda | 280 000 Ar |
+| **Intensif** | 40 h | Assistance complète | 560 000 Ar |
+
+Ces prix sont des **exemples** à adapter à votre niveau et à vos clients.
+
+> [!astuce]
+> Précisez ce qui se passe si les heures ne sont pas toutes utilisées (perdues ou reportées au mois suivant, dans une limite) et si le client en demande plus (facturées en plus, au même tarif). Écrivez-le dans la proposition.
+
+## La proposition de collaboration
+
+### Ce qu''elle contient
+
+1. Vos coordonnées et celles du client.
+2. Les **tâches confiées** (reprenez la fiche de mission du module 4).
+3. Le **forfait** : nombre d''heures, prix, ce qui se passe au-delà.
+4. Les **horaires de disponibilité** et les délais de réponse.
+5. La **confidentialité** : vous vous engagez à ne rien divulguer.
+6. Le **paiement** : forfait payé en début de mois.
+7. La **durée** (1 mois d''essai, puis renouvellement) et le **préavis** pour arrêter.
+
+### La facture
+
+Chaque mois, envoyez une facture avec : numéro, date, vos coordonnées (et votre NIF si vous en avez un), celles du client, la description (« Forfait Régulier, mars 2026, 20 heures »), le montant et le moyen de paiement. Joignez le suivi du temps.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Pour facturer officiellement, renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville. Gardez une trace de chaque paiement reçu.
+
+## Garder ses clients longtemps
+
+1. **Résumé quotidien et suivi du temps** chaque semaine, sans exception.
+2. **Proposez des améliorations** : un modèle de réponse, une procédure, un outil qui fait gagner du temps.
+3. **Prévenez à l''avance** de vos absences, et proposez une solution (procédures écrites, tâches avancées).
+4. **Demandez un avis** après un mois réussi, et une recommandation.
+
+> [!retenir]
+> - Présentez-vous par le problème que vous résolvez.
+> - Prospection : personnalisée, courte, avec une preuve et une proposition.
+> - Prix horaire = revenu visé ÷ heures facturables ; vendez des forfaits d''heures.
+> - Une proposition écrite et une facture mensuelle avec le suivi du temps.
+> - La fiabilité au quotidien fait les clients fidèles.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Écrivez votre phrase de présentation et votre offre en 5 parties.
+> 2. Créez ou complétez votre profil LinkedIn avec cette offre.
+> 3. Calculez votre prix horaire et vos 3 forfaits.
+> 4. Rédigez votre modèle de proposition de collaboration et un modèle de facture.
+> 5. Écrivez 5 messages de prospection personnalisés et envoyez-en au moins 2 pour de vrai.
+>
+> **À livrer** : votre offre, le lien de votre profil, votre calcul de prix, vos 2 modèles et vos 5 messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 4, 0, 'Comment se présenter à un client ?', '["Par la liste de vos diplômes","Par le problème que vous résolvez pour lui","Par votre âge et votre ville","Par le prix le plus bas du marché"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 4, 1, 'Avec un revenu visé de 1 400 000 Ar et 100 heures facturables, quel est le prix horaire ?', '["1 400 Ar","4 000 Ar","14 000 Ar","140 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-0-f', 4, 2, 'Que faut-il joindre à la facture mensuelle ?', '["Rien","Votre CV","Le suivi du temps","Vos mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel est le rôle principal d''un assistant virtuel ?', '["Remplacer le client dans ses rendez-vous","Développer les logiciels du client","Faire gagner du temps à son client en prenant en charge ses tâches administratives","Vendre les produits du client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quelles tâches maîtriser en premier ?', '["E-mails, agenda, saisie et recherches","Comptabilité complète et paie","Développement web","Montage vidéo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel est un vrai avantage d''un assistant malgache pour un client en France ?', '["Il est disponible pendant toute la journée de travail européenne","Il n''a pas besoin de parler français","Il ne prend jamais de congé","Il travaille sans Internet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quelle qualité est essentielle parce que vous voyez des informations privées ?', '["La discrétion","L''humour","La vitesse de frappe","La créativité"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit contenir l''objet d''un e-mail professionnel ?', '["Rien, il peut rester vide","Un résumé précis de la demande","Le nom de l''expéditeur","Seulement « Bonjour »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Comment écrire une date dans un e-mail ?', '["« bientôt »","« dans quelques jours »","« jeudi 14 mars »","« jeudi prochain »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que signifie « différer » dans la méthode des 4 D ?', '["Supprimer l''e-mail","Transférer à quelqu''un d''autre","Répondre tout de suite","Ajouter la tâche à la liste avec une date"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Combien de créneaux proposer pour un rendez-vous ?', '["Un seul, à prendre ou à laisser","2 ou 3 créneaux précis","Aucun : demander à la personne de choisir","Toute la semaine"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Une tâche importante mais pas urgente doit être…', '["Oubliée","Éliminée","Planifiée","Faite tout de suite"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Où ne faut-il pas travailler pour un client ?', '["Sur un ordinateur partagé ou dans un cybercafé","Chez soi","Sur son ordinateur personnel sécurisé","Dans un espace de coworking avec écran verrouillé"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'À quoi sert un filtre Gmail ?', '["Corriger les fautes","Envoyer des e-mails plus vite","Ranger automatiquement certains e-mails","Bloquer Internet"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel droit d''agenda faut-il pour gérer complètement les rendez-vous du client ?', '["Modifier les événements","Voir tous les détails","Voir disponibilités seulement","Aucun droit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel droit Google Drive donner pour une simple relecture avec remarques ?', '["Éditeur","Commentateur","Propriétaire","Tous les utilisateurs disposant du lien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'À quoi sert la page « Procédures » dans Notion ?', '["Envoyer des factures","Stocker des photos","Permettre à quelqu''un de vous remplacer et gagner du temps","Publier sur les réseaux sociaux"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Qu''apporte Calendly dans ses offres payantes ?', '["Une adresse e-mail professionnelle","Une prise de rendez-vous en ligne avancée","Un gestionnaire de mots de passe","Un stockage de fichiers"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Qu''apporte Google Workspace payant à une entreprise ?', '["Un site e-commerce","Une adresse e-mail à son nom et plus de stockage","Des clients gratuits","Un logiciel de montage vidéo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que faut-il envoyer au client après l''appel de découverte ?', '["Votre mot de passe","Rien","Une facture immédiate","Une fiche de mission écrite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quelle décision un assistant ne doit-il pas prendre seul ?', '["Archiver une publicité","Ajouter un rappel dans l''agenda","Fixer un rendez-vous dans les créneaux autorisés","Répondre à une réclamation ou fixer un prix"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi archiver plutôt que supprimer ?', '["La suppression est payante","L''archivage est plus rapide","Un e-mail archivé reste retrouvable par la recherche","Il n''y a aucune différence"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quand envoyer le récapitulatif du temps de travail ?', '["Seulement si le client le réclame","Jamais","Une fois par an","Chaque semaine"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quelle phrase présente bien une offre d''assistant virtuel ?', '["« Je suis le moins cher »","« Je fais tout ce que vous voulez »","« J''aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »","« J''ai un ordinateur et Internet »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pendant un appel de vente, quelle part du temps passer à écouter ?', '["Aucune","100 %, sans jamais parler","La majorité, environ 60 %","10 %"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures ?', '["Pour travailler moins","Parce que c''est obligatoire","Les clients préfèrent un forfait mensuel payé d''avance","Pour éviter de suivre son temps"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Qu''elles sont interdites","Rien","Qu''elles sont facturées en plus, au même tarif","Qu''elles sont gratuites"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-0-f', 'Quel moyen de paiement utiliser avec un client local à Madagascar ?', '["Uniquement des espèces par la poste","Uniquement PayPal","Mobile Money ou virement bancaire","Un chèque étranger"]'::jsonb, 2);
 
 -- mkt-0-f
 delete from public.exam_questions where course_id = 'mkt-0-f';
