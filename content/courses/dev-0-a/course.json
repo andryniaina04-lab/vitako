@@ -87,7 +87,7 @@
     { "q": "Que doit faire une fenêtre de dialogue accessible ?", "options": ["Piéger le focus et se fermer avec Échap", "S'ouvrir sans focus", "Bloquer le clavier", "Être invisible"], "correct": 0 },
     { "q": "Qu'est-ce qu'une bonne pull request ?", "options": ["Petite, bien décrite, vérifications au vert", "Énorme et sans description", "Avec du code commenté", "Sans tests"], "correct": 0 },
     { "q": "Que contient la description d'une pull request ?", "options": ["Quoi, pourquoi et comment tester", "Seulement « fix »", "Rien", "Le salaire du développeur"], "correct": 0 },
-    { "q": "Pourquoi déclarer la langue dans <html lang> ?", "options": ["Pour l'accessibilité et le référencement", "Pour la couleur", "Pour la vitesse du serveur", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Pourquoi déclarer la langue avec l'attribut lang de la balise html ?", "options": ["Pour l'accessibilité et le référencement", "Pour la couleur", "Pour la vitesse du serveur", "Ce n'est pas utile"], "correct": 0 },
     { "q": "Où mettre les clés d'API ?", "options": ["Dans des variables d'environnement, hors du dépôt", "Dans le code", "Dans le README", "Dans un commentaire"], "correct": 0 },
     { "q": "À qui appartient généralement le code après paiement ?", "options": ["Au client, selon le contrat", "Au développeur pour toujours", "À GitHub", "À personne"], "correct": 0 },
     { "q": "Que faire pendant un exercice de code en direct ?", "options": ["Expliquer son raisonnement à voix haute", "Rester silencieux", "Quitter l'appel", "Copier une solution sans comprendre"], "correct": 0 },
