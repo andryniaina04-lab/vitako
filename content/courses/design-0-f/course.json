@@ -1,7 +1,7 @@
 {
   "id": "design-0-f",
-  "hours": 12,
-  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits.",
+  "hours": 14,
+  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
   "objectives": [
     "Expliquer ce que fait un graphiste freelance et qui le paie",
     "Appliquer les règles de composition, couleur et typographie",
@@ -13,80 +13,445 @@
   "modules": [
     {
       "title": "Le métier de graphiste freelance depuis Madagascar",
-      "summary": "Clients, commandes fréquentes, coupures et décalage horaire.",
+      "summary": "Ce que fait un graphiste, les 6 commandes fréquentes, vos clients et l'organisation malgré coupures et décalage horaire.",
       "file": "module-1.md",
       "video_url": "",
       "questions": [
-        { "q": "Quel est le rôle principal d'un graphiste ?", "options": ["Traduire le message du client en image utile", "Dessiner ce qu'il trouve beau", "Imprimer des affiches", "Gérer la page Facebook du client"], "correct": 0 },
-        { "q": "Quel est un vrai avantage d'un graphiste malgache pour des clients en France ?", "options": ["Il travaille en français avec un faible décalage horaire", "Il n'a pas besoin d'Internet", "Il travaille gratuitement", "Il n'a pas de délais"], "correct": 0 },
-        { "q": "Que faire pour limiter l'effet des coupures d'électricité ?", "options": ["Enregistrer en local, avoir une batterie et prévoir une marge sur les délais", "Travailler en ligne sans sauvegarde", "Ne jamais annoncer de délai", "Refuser les clients étrangers"], "correct": 0 }
+        {
+          "q": "Quel est le rôle principal d'un graphiste ?",
+          "options": [
+            "Traduire le message du client en image utile",
+            "Dessiner ce qu'il trouve beau",
+            "Imprimer des affiches",
+            "Gérer la page Facebook du client"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Quel est un vrai avantage d'un graphiste malgache pour des clients en France ?",
+          "options": [
+            "Il travaille en français avec un faible décalage horaire",
+            "Il n'a pas besoin d'Internet",
+            "Il travaille gratuitement",
+            "Il n'a pas de délais"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Que faire pour limiter l'effet des coupures d'électricité ?",
+          "options": [
+            "Enregistrer en local, avoir une batterie et prévoir une marge sur les délais",
+            "Travailler en ligne sans sauvegarde",
+            "Ne jamais annoncer de délai",
+            "Refuser les clients étrangers"
+          ],
+          "correct": 0
+        }
       ]
     },
     {
       "title": "Les fondamentaux du design",
-      "summary": "Hiérarchie, composition, couleur et typographie.",
+      "summary": "Hiérarchie, composition, couleur (règle 60-30-10), typographie et liste de contrôle en 8 points.",
       "file": "module-2.md",
       "video_url": "",
       "questions": [
-        { "q": "Sur une affiche de concert, que doit-on lire en premier ?", "options": ["Le nom de l'artiste", "Le numéro de téléphone", "Le nom du graphiste", "Les conditions de vente"], "correct": 0 },
-        { "q": "Combien de polices utiliser au maximum sur un visuel simple ?", "options": ["Deux", "Une par ligne", "Cinq", "Autant que possible"], "correct": 0 },
-        { "q": "Quelle combinaison est la plus lisible ?", "options": ["Texte bleu foncé sur fond blanc", "Texte jaune sur fond blanc", "Texte gris clair sur fond blanc", "Texte rouge sur fond vert"], "correct": 0 }
+        {
+          "q": "Sur une affiche de concert, que doit-on lire en premier ?",
+          "options": [
+            "Le nom de l'artiste",
+            "Le numéro de téléphone",
+            "Le nom du graphiste",
+            "Les conditions de vente"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Combien de polices utiliser au maximum sur un visuel simple ?",
+          "options": [
+            "Deux",
+            "Une par ligne",
+            "Cinq",
+            "Autant que possible"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Que dit la règle 60-30-10 pour les couleurs ?",
+          "options": [
+            "60 % couleur principale, 30 % neutre, 10 % accent",
+            "60 % texte, 30 % image, 10 % vide",
+            "60 couleurs différentes au maximum",
+            "Utiliser 3 couleurs à parts égales"
+          ],
+          "correct": 0
+        }
       ]
     },
     {
       "title": "Les outils gratuits et payants, les formats",
-      "summary": "Canva, Figma, Photopea, Inkscape ; Illustrator, Photoshop, InDesign, Canva Pro ; tailles et exports.",
+      "summary": "Les outils gratuits et payants, les formats de fichiers, les tailles, l'impression et le rangement des fichiers.",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
-        { "q": "Quel format pour un logo sur fond transparent destiné au web ?", "options": ["PNG", "JPG", "DOCX", "MP4"], "correct": 0 },
-        { "q": "Quelle taille pour une story Instagram ?", "options": ["1080 × 1920 px", "1080 × 1080 px", "1280 × 720 px", "500 × 500 px"], "correct": 0 },
-        { "q": "Quand devient-il utile de payer Adobe Illustrator ?", "options": ["Quand des clients ou des imprimeurs exigent des fichiers .ai et que vos revenus couvrent l'abonnement", "Dès le premier jour, avant d'avoir un client", "Jamais, il est interdit à Madagascar", "Seulement pour retoucher des photos"], "correct": 0 }
+        {
+          "q": "Quel format pour un logo sur fond transparent destiné au web ?",
+          "options": [
+            "PNG",
+            "JPG",
+            "DOCX",
+            "MP4"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Quelle taille pour une story Instagram ?",
+          "options": [
+            "1080 × 1920 px",
+            "1080 × 1080 px",
+            "1280 × 720 px",
+            "500 × 500 px"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Combien de millimètres de fond perdu demande en général un imprimeur ?",
+          "options": [
+            "3 mm",
+            "0 mm",
+            "30 mm",
+            "1 cm sur un seul côté"
+          ],
+          "correct": 0
+        }
       ]
     },
     {
       "title": "Créer un logo et une identité visuelle",
-      "summary": "Brief, croquis, vectorisation, pack et mini-charte.",
+      "summary": "Le brief en 8 questions, les 7 étapes d'un logo, les 5 tests d'un logo solide, le pack et la mini-charte.",
       "file": "module-4.md",
       "video_url": "",
       "questions": [
-        { "q": "Que faut-il faire avant de dessiner un logo ?", "options": ["Un brief avec le client", "Choisir une police au hasard", "Télécharger une image sur Google", "Envoyer la facture finale"], "correct": 0 },
-        { "q": "Quel test un logo doit-il réussir ?", "options": ["Rester lisible en petit et en une couleur", "Contenir au moins 5 couleurs", "Avoir un dégradé", "Ressembler au logo du concurrent"], "correct": 0 },
-        { "q": "Quel format permet d'agrandir un logo sans perte de qualité ?", "options": ["SVG", "JPG", "PNG de 200 px", "GIF"], "correct": 0 }
+        {
+          "q": "Que faut-il faire avant de dessiner un logo ?",
+          "options": [
+            "Un brief avec le client",
+            "Choisir une police au hasard",
+            "Télécharger une image sur Google",
+            "Envoyer la facture finale"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Lequel de ces tests fait partie des 5 tests d'un logo solide ?",
+          "options": [
+            "Il reste lisible à 32 px et en une seule couleur",
+            "Il contient au moins 5 couleurs",
+            "Il utilise un dégradé",
+            "Il ressemble au logo d'une grande marque"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Quel format permet d'agrandir un logo sans perte de qualité ?",
+          "options": [
+            "SVG",
+            "JPG",
+            "PNG de 200 px",
+            "GIF"
+          ],
+          "correct": 0
+        }
       ]
     },
     {
       "title": "Trouver des clients et se faire payer",
-      "summary": "Portfolio, prix, devis, acompte, Mobile Money et Payoneer.",
+      "summary": "Portfolio, 5 canaux de prospection, calcul du prix, devis, acompte, paiement depuis Madagascar et livraison.",
       "file": "module-5.md",
       "video_url": "",
       "questions": [
-        { "q": "Quand demander l'acompte ?", "options": ["Avant de commencer le travail", "Après la livraison des fichiers finaux", "Jamais", "Seulement si le client est étranger"], "correct": 0 },
-        { "q": "Comment calculer son prix horaire ?", "options": ["Revenu mensuel visé divisé par les heures facturables", "Prendre le prix le plus bas de Fiverr", "Laisser le client fixer le prix", "Diviser par 2 le prix d'une agence"], "correct": 0 },
-        { "q": "Que contient un bon devis ?", "options": ["Prestation, nombre de retouches, délai et prix", "Uniquement le prix", "Le mot de passe du client", "Le logo final"], "correct": 0 }
+        {
+          "q": "Quand demander l'acompte ?",
+          "options": [
+            "Avant de commencer le travail",
+            "Après la livraison des fichiers finaux",
+            "Jamais",
+            "Seulement si le client est étranger"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Avec un prix horaire de 19 000 Ar, combien coûte environ un projet de 4 h, marge de 20 % comprise ?",
+          "options": [
+            "Environ 90 000 Ar",
+            "Environ 19 000 Ar",
+            "Environ 40 000 Ar",
+            "Environ 400 000 Ar"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Que contient un bon devis ?",
+          "options": [
+            "Prestation, nombre de retouches, délai et prix",
+            "Uniquement le prix",
+            "Le mot de passe du client",
+            "Le logo final"
+          ],
+          "correct": 0
+        }
       ]
     }
   ],
   "exam": [
-    { "q": "Quel est le rôle principal d'un graphiste ?", "options": ["Traduire le message du client en image utile", "Dessiner ce qu'il trouve beau", "Imprimer des affiches", "Gérer la page Facebook"], "correct": 0 },
-    { "q": "Quel fuseau horaire a Madagascar ?", "options": ["UTC+3", "UTC+1", "UTC−3", "UTC+8"], "correct": 0 },
-    { "q": "Sur une affiche, comment doit être l'élément le plus important ?", "options": ["Le plus grand ou le plus contrasté", "Le plus petit", "Placé dans un coin", "Écrit en italique"], "correct": 0 },
-    { "q": "Combien de polices au maximum sur un visuel simple ?", "options": ["Deux", "Une par ligne", "Cinq", "Sans limite"], "correct": 0 },
-    { "q": "Quelle combinaison est la plus lisible ?", "options": ["Texte foncé sur fond clair", "Jaune sur blanc", "Gris clair sur blanc", "Rouge sur vert"], "correct": 0 },
-    { "q": "À quoi sert l'espace vide sur un visuel ?", "options": ["Guider l'œil vers le message", "Rien, il faut le remplir", "Cacher des erreurs", "Économiser l'encre"], "correct": 0 },
-    { "q": "Quel outil gratuit fonctionne hors ligne pour les logos vectoriels ?", "options": ["Inkscape", "Canva", "Photopea", "Behance"], "correct": 0 },
-    { "q": "Quelle taille pour une publication Instagram carrée ?", "options": ["1080 × 1080 px", "1080 × 1920 px", "1280 × 720 px", "300 × 300 px"], "correct": 0 },
-    { "q": "Quel format pour un logo transparent sur le web ?", "options": ["PNG", "JPG", "DOCX", "MP3"], "correct": 0 },
-    { "q": "Quelle résolution demande en général un imprimeur ?", "options": ["300 dpi", "72 dpi", "30 dpi", "1 000 dpi"], "correct": 0 },
-    { "q": "Que signifie « fond perdu » ?", "options": ["Une marge de l'image qui dépasse la coupe", "Un fond supprimé", "Une erreur d'impression", "Un fichier égaré"], "correct": 0 },
-    { "q": "Quelle est la première étape d'un logo ?", "options": ["Le brief avec le client", "Les couleurs", "La facture", "La livraison"], "correct": 0 },
-    { "q": "Quel format agrandit un logo sans perte ?", "options": ["SVG", "JPG", "GIF", "PNG de 200 px"], "correct": 0 },
-    { "q": "Un logo solide doit rester lisible…", "options": ["en petit et en une seule couleur", "seulement en grand", "uniquement en couleur", "avec un dégradé"], "correct": 0 },
-    { "q": "Que contient une mini-charte graphique ?", "options": ["Couleurs, polices et règles d'usage du logo", "Le mot de passe du client", "Le devis", "Les factures"], "correct": 0 },
-    { "q": "Quel code de couleur sert à l'impression ?", "options": ["CMJN", "HEX", "RVB uniquement", "HTML"], "correct": 0 },
-    { "q": "Comment calculer son prix horaire ?", "options": ["Revenu visé divisé par les heures facturables", "Copier le prix le plus bas", "Laisser le client décider", "Un prix fixe pour tout"], "correct": 0 },
-    { "q": "Quand demander l'acompte ?", "options": ["Avant de commencer", "Après la livraison", "Jamais", "À la fin de l'année"], "correct": 0 },
-    { "q": "Quel moyen de paiement convient pour un client local à Madagascar ?", "options": ["Mobile Money", "Chèque étranger", "Cryptomonnaie obligatoire", "Paiement en nature"], "correct": 0 },
-    { "q": "Pourquoi éviter les logiciels piratés ?", "options": ["Ils contiennent souvent des virus qui volent mots de passe et fichiers clients", "Ils sont plus lents à installer", "Ils n'existent qu'en anglais", "Ils coûtent plus cher que les originaux"], "correct": 0 }
+    {
+      "q": "Quel est le rôle principal d'un graphiste ?",
+      "options": [
+        "Traduire le message du client en image utile",
+        "Dessiner ce qu'il trouve beau",
+        "Imprimer des affiches",
+        "Gérer la page Facebook"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel fuseau horaire a Madagascar ?",
+      "options": [
+        "UTC+3",
+        "UTC+1",
+        "UTC−3",
+        "UTC+8"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Sur une affiche, comment doit être l'élément le plus important ?",
+      "options": [
+        "Le plus grand ou le plus contrasté",
+        "Le plus petit",
+        "Placé dans un coin",
+        "Écrit en italique"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Combien de polices au maximum sur un visuel simple ?",
+      "options": [
+        "Deux",
+        "Une par ligne",
+        "Cinq",
+        "Sans limite"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quelle combinaison est la plus lisible ?",
+      "options": [
+        "Texte foncé sur fond clair",
+        "Jaune sur blanc",
+        "Gris clair sur blanc",
+        "Rouge sur vert"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "À quoi sert l'espace vide sur un visuel ?",
+      "options": [
+        "Guider l'œil vers le message",
+        "Rien, il faut le remplir",
+        "Cacher des erreurs",
+        "Économiser l'encre"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel outil gratuit fonctionne hors ligne pour les logos vectoriels ?",
+      "options": [
+        "Inkscape",
+        "Canva",
+        "Photopea",
+        "Behance"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quelle taille pour une publication Instagram carrée ?",
+      "options": [
+        "1080 × 1080 px",
+        "1080 × 1920 px",
+        "1280 × 720 px",
+        "300 × 300 px"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel format pour un logo transparent sur le web ?",
+      "options": [
+        "PNG",
+        "JPG",
+        "DOCX",
+        "MP3"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quelle résolution demande en général un imprimeur ?",
+      "options": [
+        "300 dpi",
+        "72 dpi",
+        "30 dpi",
+        "1 000 dpi"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Que signifie « fond perdu » ?",
+      "options": [
+        "Une marge de l'image qui dépasse la coupe",
+        "Un fond supprimé",
+        "Une erreur d'impression",
+        "Un fichier égaré"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quelle est la première étape d'un logo ?",
+      "options": [
+        "Le brief avec le client",
+        "Les couleurs",
+        "La facture",
+        "La livraison"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel format agrandit un logo sans perte ?",
+      "options": [
+        "SVG",
+        "JPG",
+        "GIF",
+        "PNG de 200 px"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Un logo solide doit rester lisible…",
+      "options": [
+        "en petit et en une seule couleur",
+        "seulement en grand",
+        "uniquement en couleur",
+        "avec un dégradé"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Que contient une mini-charte graphique ?",
+      "options": [
+        "Couleurs, polices et règles d'usage du logo",
+        "Le mot de passe du client",
+        "Le devis",
+        "Les factures"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel code de couleur sert à l'impression ?",
+      "options": [
+        "CMJN",
+        "HEX",
+        "RVB uniquement",
+        "HTML"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Comment calculer son prix horaire ?",
+      "options": [
+        "Revenu visé divisé par les heures facturables",
+        "Copier le prix le plus bas",
+        "Laisser le client décider",
+        "Un prix fixe pour tout"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quand demander l'acompte ?",
+      "options": [
+        "Avant de commencer",
+        "Après la livraison",
+        "Jamais",
+        "À la fin de l'année"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Quel moyen de paiement convient pour un client local à Madagascar ?",
+      "options": [
+        "Mobile Money",
+        "Chèque étranger",
+        "Cryptomonnaie obligatoire",
+        "Paiement en nature"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Pourquoi éviter les logiciels piratés ?",
+      "options": [
+        "Ils contiennent souvent des virus qui volent mots de passe et fichiers clients",
+        "Ils sont plus lents à installer",
+        "Ils n'existent qu'en anglais",
+        "Ils coûtent plus cher que les originaux"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Que dit la règle 60-30-10 pour les couleurs ?",
+      "options": [
+        "60 % couleur principale, 30 % neutre, 10 % accent",
+        "60 % texte, 30 % image, 10 % vide",
+        "Utiliser 60 couleurs au maximum",
+        "3 couleurs à parts égales"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "À quelle distance minimale du bord placer un texte important sur un document imprimé ?",
+      "options": [
+        "5 mm",
+        "0 mm",
+        "1 mm",
+        "Aucune règle"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?",
+      "options": [
+        "Pour que le client se projette et valide plus vite",
+        "Pour cacher les défauts",
+        "Parce que c'est obligatoire",
+        "Pour augmenter le prix sans raison"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Qu'est-ce qui rend un message de prospection efficace ?",
+      "options": [
+        "Il est personnalisé, court, avec un exemple et une proposition concrète",
+        "Il est envoyé à 50 personnes à l'identique",
+        "Il est très long et détaillé",
+        "Il demande directement de l'argent"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?",
+      "options": [
+        "Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu",
+        "Pour compliquer le choix",
+        "Parce que les plateformes l'exigent",
+        "Pour éviter de faire un devis"
+      ],
+      "correct": 0
+    }
   ]
 }

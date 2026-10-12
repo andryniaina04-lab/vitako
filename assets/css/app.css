@@ -294,3 +294,50 @@ a.back{display:inline-block}
 .menu-cta{display:flex;flex-direction:column;gap:8px;padding:10px 4px 4px;border-top:1px solid var(--line);margin-top:4px}
 @media (max-width:480px){.tb-pill{display:none}}
 .version{color:var(--muted);font-size:.78rem;font-family:var(--mono)}
+
+/* ---- Leçons : numérotation, sommaire, encadrés ---- */
+.lesson-head{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;max-width:900px}
+.lesson-head h1{display:flex;align-items:flex-start;gap:12px}
+.mod-num{flex:none;display:grid;place-items:center;width:1.5em;height:1.5em;border-radius:.4em;background:var(--accent);color:var(--accent-ink);font-size:.8em;margin-top:.05em}
+.lesson-progress{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.lesson-progress a{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--line);color:var(--muted);text-decoration:none;font-weight:700;font-size:.9rem;font-family:var(--mono)}
+.lesson-progress a.done{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.lesson-progress a.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.lesson-grid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 110px);overflow:auto}
+.toc b{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.toc button{display:flex;gap:8px;width:100%;text-align:left;background:none;border:0;padding:7px 8px;border-radius:8px;cursor:pointer;color:var(--ink);font-size:.9rem;line-height:1.35}
+.toc button:hover{background:var(--accent-soft)}
+.toc button span,.sec-num,.mod-secs span{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700}
+.toc button span{flex:none;min-width:2.2em}
+.md h2{display:flex;align-items:baseline;gap:10px;scroll-margin-top:90px;padding-top:6px;border-top:1px solid var(--line);margin-top:30px}
+.md h2:first-child{border-top:0;margin-top:0}
+.sec-num{font-size:.9em;flex:none}
+.md ol>li::marker{font-weight:700;color:var(--accent)}
+.md li>ul,.md li>ol{margin:6px 0 0}
+.md strong{font-weight:700}
+.callout{border-radius:12px;padding:14px 16px;margin:0 0 18px;border:1px solid var(--line);border-left-width:5px;background:var(--surface)}
+.callout-h{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:6px}
+.callout-i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.78rem;color:#fff;flex:none}
+.callout>*:last-child{margin-bottom:0}
+.callout p:last-child,.callout ul:last-child,.callout ol:last-child{margin-bottom:0}
+.callout.objectifs{border-left-color:var(--accent);background:var(--accent-soft)}.callout.objectifs .callout-i{background:var(--accent)}
+.callout.exemple{border-left-color:#2F6FB5}.callout.exemple .callout-i{background:#2F6FB5}
+.callout.astuce{border-left-color:var(--gold);background:var(--gold-soft)}.callout.astuce .callout-i{background:var(--gold)}
+.callout.attention{border-left-color:var(--danger);background:var(--danger-soft)}.callout.attention .callout-i{background:var(--danger)}
+.callout.madagascar{border-left-color:#0B7A55}.callout.madagascar .callout-i{background:#C8102E}
+.callout.retenir{border-left-color:var(--ink)}.callout.retenir .callout-i{background:var(--ink);color:var(--bg)}
+.callout.exercice{border-left-color:var(--accent);border-style:dashed;border-left-style:solid}.callout.exercice .callout-i{background:var(--accent)}
+.callout.definition{border-left-color:var(--muted)}.callout.definition .callout-i{background:var(--muted)}
+.md blockquote{margin:0 0 16px;padding:8px 14px;border-left:3px solid var(--line);color:var(--muted)}
+/* Fiche formation */
+.obj-num{margin:0;padding-left:0;list-style:none;counter-reset:o;display:flex;flex-direction:column;gap:10px}
+.obj-num li{counter-increment:o;display:flex;gap:12px;align-items:flex-start}
+.obj-num li::before{content:counter(o);flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center;font-size:.85rem;font-family:var(--mono)}
+.mod-secs{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:.88rem;color:var(--muted)}
+.mod-secs li{display:flex;gap:8px}
+.mod-secs span{flex:none;min-width:2.4em;font-size:.82rem}
+@media (max-width:900px){.lesson-grid{grid-template-columns:1fr}.toc{position:static;max-height:none}}
+.quiz-sec{gap:14px;margin-top:30px;max-width:68ch}
+.quiz-h{display:flex;align-items:baseline;gap:10px;padding-top:6px;border-top:1px solid var(--line)}

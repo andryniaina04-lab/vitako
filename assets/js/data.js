@@ -363,8 +363,8 @@ export const DOMAINS = [
 ];
 export const PUBLISHED = {
  "design-0-f": {
-  "hours": 12,
-  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits.",
+  "hours": 14,
+  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
   "objectives": [
    "Expliquer ce que fait un graphiste freelance et qui le paie",
    "Appliquer les règles de composition, couleur et typographie",
@@ -376,23 +376,70 @@ export const PUBLISHED = {
   "modules": [
    {
     "title": "Le métier de graphiste freelance depuis Madagascar",
-    "summary": "Clients, commandes fréquentes, coupures et décalage horaire."
+    "summary": "Ce que fait un graphiste, les 6 commandes fréquentes, vos clients et l'organisation malgré coupures et décalage horaire.",
+    "sections": [
+     "Le métier de graphiste en une phrase",
+     "Les 6 commandes les plus fréquentes pour un débutant",
+     "Qui sont vos clients ?",
+     "Travailler à distance depuis Madagascar",
+     "Travailler en règle",
+     "Exercice pratique : votre liste de 10 clients"
+    ],
+    "minutes": 8
    },
    {
     "title": "Les fondamentaux du design",
-    "summary": "Hiérarchie, composition, couleur et typographie."
+    "summary": "Hiérarchie, composition, couleur (règle 60-30-10), typographie et liste de contrôle en 8 points.",
+    "sections": [
+     "La hiérarchie : qu'est-ce qu'on lit en premier ?",
+     "La composition : aligner, espacer, regrouper",
+     "La couleur : 3 couleurs suffisent",
+     "La typographie : 2 polices, pas plus",
+     "La liste de contrôle en 8 points",
+     "Exercice pratique : refaire une affiche"
+    ],
+    "minutes": 7
    },
    {
     "title": "Les outils gratuits et payants, les formats",
-    "summary": "Canva, Figma, Photopea, Inkscape ; Illustrator, Photoshop, InDesign, Canva Pro ; tailles et exports."
+    "summary": "Les outils gratuits et payants, les formats de fichiers, les tailles, l'impression et le rangement des fichiers.",
+    "sections": [
+     "Les 4 outils gratuits",
+     "Les outils payants",
+     "Les 4 formats de fichiers à connaître",
+     "Les tailles à utiliser",
+     "Préparer un fichier pour l'imprimeur",
+     "Organiser ses fichiers",
+     "Exercice pratique : une promotion en 3 formats"
+    ],
+    "minutes": 9
    },
    {
     "title": "Créer un logo et une identité visuelle",
-    "summary": "Brief, croquis, vectorisation, pack et mini-charte."
+    "summary": "Le brief en 8 questions, les 7 étapes d'un logo, les 5 tests d'un logo solide, le pack et la mini-charte.",
+    "sections": [
+     "Le brief : les 8 questions à poser",
+     "Les 7 étapes d'un projet de logo",
+     "Les 3 types de logos",
+     "Les 5 tests d'un logo solide",
+     "Le pack à livrer",
+     "Exercice pratique : le logo de « Vanille d'Antalaha »"
+    ],
+    "minutes": 8
    },
    {
     "title": "Trouver des clients et se faire payer",
-    "summary": "Portfolio, prix, devis, acompte, Mobile Money et Payoneer."
+    "summary": "Portfolio, 5 canaux de prospection, calcul du prix, devis, acompte, paiement depuis Madagascar et livraison.",
+    "sections": [
+     "Le portfolio : votre vitrine",
+     "Où trouver des clients : 5 canaux",
+     "Calculer son prix",
+     "Le devis et l'acompte : vous protéger",
+     "Se faire payer depuis Madagascar",
+     "Livrer comme un professionnel",
+     "Exercice pratique : votre première offre"
+    ],
+    "minutes": 8
    }
   ]
  }

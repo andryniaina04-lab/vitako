@@ -1,7 +1,7 @@
 // Vitako : pages du site (routeur, vues, actions).
 import * as api from './api.js';
 import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel } from './catalog.js';
-import { md, esc } from './markdown.js';
+import { md, esc, sections, readingMinutes } from './markdown.js';
 import { certificatePdf, loadPdfFonts, slug } from './pdf.js';
 
 const CFG = window.VITAKO_CONFIG;
@@ -295,7 +295,8 @@ function coursePage(id) {
       </div>
       ${c.level === 'a' && !fondCert ? notice('info', `Niveau Fondamentaux recommandé avant celui-ci, mais pas obligatoire. <a href="#/formation/${other.id}">Voir les Fondamentaux</a>`) : ''}
       <p style="max-width:65ch">${esc(c.description)}</p>
-      <div class="stack" style="gap:12px"><h2>Objectifs</h2><ul class="obj">${c.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>
+      <div class="stack" style="gap:12px"><h2>Objectifs</h2><ol class="obj-num">${c.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ol>
+        <p class="muted" style="font-size:.9rem">À la fin de la formation, vous saurez faire ces ${c.objectives.length} choses.</p></div>
       <div class="stack" style="gap:12px"><h2>Outils du métier</h2>
         <div class="tools"><div class="panel"><span class="pill">Gratuits</span><p style="margin-top:8px">${esc(c.job.tools)}</p></div>
         <div class="panel"><span class="pill gold">Payants (professionnels)</span><p style="margin-top:8px">${esc(c.job.paid)}</p></div></div>
@@ -307,8 +308,9 @@ function coursePage(id) {
             const action = c.published && ok
               ? `<a class="btn ghost sm" href="#/formation/${c.id}/module/${i + 1}">${d ? 'Revoir' : 'Ouvrir'}</a>`
               : c.published ? `<span class="lock">${I.lock}</span>` : '';
+            const secs = m.sections?.length ? `<ol class="mod-secs">${m.sections.map((s2, k) => `<li><span>${i + 1}.${k + 1}</span>${esc(s2)}</li>`).join('')}<li><span>${i + 1}.${m.sections.length + 1}</span>Test du module (3 questions)</li></ol>` : '';
             return `<div class="mod${d ? ' done' : ''}"><span class="n">${d ? smallCheck : pad2(i + 1)}</span>
-              <div class="t"><b>${esc(m.title)}</b><small>${esc(m.summary)}${c.published ? ' · leçon + petit test' : ''}</small></div>${action}</div>`;
+              <div class="t"><b>Module ${i + 1} · ${esc(m.title)}</b><small>${esc(m.summary)}${m.minutes ? ` · environ ${m.minutes} min de lecture` : c.published ? ' · leçon + petit test' : ''}</small>${secs}</div>${action}</div>`;
           }).join('')}
           <div class="mod${cert ? ' done' : ''}"><span class="n">${cert ? smallCheck : 'EX'}</span>
             <div class="t"><b>Examen final</b><small>10 questions · 50/100 pour réussir · essais illimités</small></div>
@@ -359,17 +361,31 @@ async function lessonPage(id, num) {
     qs: questions.map((q) => ({ ...q, order: shuffle(q.options.map((_, k) => k)) })),
   };
   const n = lessons.length;
+  const secs = sections(L.body_md);
+  const modNo = mi + 1;
   return `${back(`#/formation/${id}`, c.title)}
-  <div class="stack" style="gap:6px;margin-bottom:22px"><span class="eyebrow">Module ${mi + 1} sur ${n}</span><h1>${esc(L.title)}</h1></div>
-  <div class="lesson-wrap">
-    ${videoBlock(L.video_url)}
-    <article class="lesson md">${md(L.body_md)}</article>
+  <div class="lesson-head">
+    <span class="eyebrow">Module ${modNo} sur ${n} · environ ${readingMinutes(L.body_md)} min de lecture</span>
+    <h1><span class="mod-num">${modNo}</span>${esc(L.title)}</h1>
+    ${L.summary ? `<p class="muted">${esc(L.summary)}</p>` : ''}
+    <div class="lesson-progress" aria-label="Progression dans la formation">${lessons.map((l) => `<a href="#/formation/${id}/module/${l.module_index + 1}" class="${l.module_index === mi ? 'on' : ''}${doneSet(id).has(l.module_index) ? ' done' : ''}" title="Module ${l.module_index + 1} : ${esc(l.title)}">${l.module_index + 1}</a>`).join('')}</div>
   </div>
-  <section class="stack" style="gap:14px;margin-top:30px;max-width:720px" id="mquiz-wrap">
-    <h2>Test du module</h2>
+  <div class="lesson-grid">
+    <nav class="toc" aria-label="Sommaire du module">
+      <b>Dans ce module</b>
+      <ol>${secs.map((t, k) => `<li><button type="button" data-act="toc" data-target="s-${modNo}-${k + 1}"><span>${modNo}.${k + 1}</span>${esc(t)}</button></li>`).join('')}
+        <li><button type="button" data-act="toc" data-target="mquiz-wrap"><span>${modNo}.${secs.length + 1}</span>Test du module</button></li></ol>
+    </nav>
+    <div class="lesson-wrap">
+      ${videoBlock(L.video_url)}
+      <article class="lesson md">${md(L.body_md, { number: modNo })}</article>
+  <section class="stack quiz-sec" id="mquiz-wrap">
+    <h2 class="quiz-h"><span class="sec-num">${modNo}.${secs.length + 1}</span>Test du module</h2>
     <p class="muted">${S.mquiz.qs.length} questions pour vérifier vos acquis. Le module est validé dès que vous rendez le test ; vous pouvez le refaire autant de fois que vous voulez.</p>
     <div id="mquiz">${moduleQuizHtml()}</div>
-  </section>`;
+  </section>
+    </div>
+  </div>`;
 }
 function moduleQuizHtml() {
   const Q = S.mquiz;
@@ -817,6 +833,7 @@ document.addEventListener('click', async (e) => {
     return;
   }
   if (a === 'reload') { render(); return; }
+  if (a === 'toc') { document.getElementById(t.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
   if (a === 'logout') { S.ui.menu = false; await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
 
   if (a === 'mquiz-retry') {

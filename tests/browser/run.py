@@ -93,6 +93,8 @@ with sync_playwright() as p:
     goto(page, '#/formation/design-0-f')
     check('fiche : titre', 'Graphiste – Fondamentaux' in page.locator('h1').inner_text())
     check('fiche : outils payants affichés', 'Adobe Illustrator' in page.content())
+    check('fiche : objectifs numérotés et sections 1.1…', page.locator('.obj-num li').count() >= 5 and '1.1' in page.locator('.mod-secs').first.inner_text())
+    page.screenshot(path=f'{SHOTS}/02z-fiche.png', full_page=True)
     check('fiche : invite à créer un compte', page.locator('aside a:has-text("Créer un compte")').count() == 1)
     goto(page, '#/formation/design-0-a')
     check('fiche non publiée : « Bientôt disponible »', 'Bientôt disponible' in page.content())
@@ -143,7 +145,11 @@ with sync_playwright() as p:
         goto(page, f'#/formation/design-0-f/module/{i}'); page.wait_for_timeout(300)
         if i == 3:
             check('leçon 3 : tableau des outils payants', page.locator('.md-table').count() >= 2)
+            check('leçon 3 : sections numérotées 3.1, 3.2…', page.locator('.md h2 .sec-num').first.inner_text() == '3.1')
+            check('leçon 3 : sommaire du module', page.locator('.toc li').count() >= 5)
+            check('leçon 3 : encadrés (objectifs, à retenir, exercice)', all(page.locator(f'.callout.{k}').count() >= 1 for k in ['objectifs', 'retenir', 'exercice']))
             page.screenshot(path=f'{SHOTS}/04-lecon.png', full_page=False)
+            page.screenshot(path=f'{SHOTS}/04b-lecon-complete.png', full_page=True)
         page.click('#mquiz-form button[type=submit]'); page.wait_for_timeout(150)
         if i == 1: check('test de module : réponses obligatoires', page.locator('#mqerr').is_visible())
         for q in range(3):

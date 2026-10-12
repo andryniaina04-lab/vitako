@@ -7,6 +7,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const { sections, readingMinutes } = await import(pathToFileURL(join(root, 'assets/js/markdown.js')).href);
 const read = (p) => readFileSync(join(root, p), 'utf8');
 
 const domains = JSON.parse(read('content/catalog.json'));
@@ -42,7 +43,7 @@ for (const [id, c] of Object.entries(full)) {
     hours: c.hours,
     description: c.description,
     objectives: c.objectives,
-    modules: c.modules.map((m) => ({ title: m.title, summary: m.summary })),
+    modules: c.modules.map((m) => ({ title: m.title, summary: m.summary, sections: sections(m.body), minutes: readingMinutes(m.body) })),
   };
 }
 writeFileSync(join(root, 'assets/js/data.js'),
