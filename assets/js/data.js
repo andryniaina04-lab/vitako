@@ -690,6 +690,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-2-a": {
+  "hours": 18,
+  "description": "Ce niveau Avancé fait évoluer l'opérateur de saisie vers la gestion de données : spécialités (comptabilité, santé, e-commerce, enquêtes), collecte numérique, Excel avancé avec Power Query et tableaux croisés, reconnaissance professionnelle avec ABBYY FineReader, systèmes de contrôle et journal des corrections, protection des données et formats internationaux, puis services de nettoyage, migration et tableaux de bord. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et gérer les données d'une enquête numérique",
+   "Utiliser Excel avancé : tableaux structurés, RECHERCHEX, Power Query, tableaux croisés",
+   "Extraire des données de documents scannés avec ABBYY FineReader",
+   "Construire des contrôles automatiques et mesurer la qualité des données",
+   "Protéger les données personnelles et maîtriser les formats internationaux",
+   "Proposer des services de nettoyage, de migration et de tableaux de bord"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser : de la saisie à la gestion de données",
+    "summary": "Les 6 spécialités avancées, les enquêtes numériques et leurs contrôles, saisie, vérification, nettoyage et gestion, qualité des données et offre de services.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les enquêtes numériques",
+     "Saisie, vérification, nettoyage, gestion",
+     "Choisir sa spécialité",
+     "L'offre de services de données",
+     "Exercice pratique : un formulaire d'enquête"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Excel avancé, Power Query et ABBYY FineReader",
+    "summary": "Tableaux structurés, RECHERCHEX et INDEX + EQUIV, conditions, Power Query pour nettoyer et combiner, tableaux croisés dynamiques et reconnaissance professionnelle.",
+    "sections": [
+     "Les tableaux structurés",
+     "Les fonctions avancées",
+     "Power Query : nettoyer et combiner automatiquement",
+     "Le tableau croisé dynamique",
+     "ABBYY FineReader : la reconnaissance professionnelle",
+     "Quels outils acheter ?",
+     "Exercice pratique : automatiser un nettoyage"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Qualité et rapidité : contrôles automatiques et gros volumes",
+    "summary": "Comparaison automatique d'une double saisie, feuille de contrôles de cohérence, journal des corrections, indicateurs et rapport de qualité, organisation par lots.",
+    "sections": [
+     "Comparer automatiquement une double saisie",
+     "La feuille de contrôles de cohérence",
+     "Le journal des corrections",
+     "Mesurer la qualité",
+     "Organiser le traitement de gros volumes",
+     "Exercice pratique : un système de contrôle"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : protection des données et formats",
+    "summary": "Données personnelles et 10 règles de protection, pseudonymisation, dates, nombres et encodage, vocabulaire anglais, outils de partage sécurisés, contrat et devis.",
+    "sections": [
+     "Protéger les données personnelles",
+     "Les pièges des formats internationaux",
+     "Le vocabulaire anglais des données",
+     "Les outils de partage sécurisés",
+     "Contrat et devis pour un client étranger",
+     "Exercice pratique : un client international"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Évoluer et développer son activité",
+    "summary": "Les chemins d'évolution, le nettoyage et la migration de données, les tableaux de bord, l'organisation d'une équipe et le plan de compétences.",
+    "sections": [
+     "Les chemins d'évolution",
+     "Les services de nettoyage et de migration",
+     "Des tableaux de bord simples",
+     "Organiser une petite équipe",
+     "Planifier ses prochaines compétences",
+     "Exercice pratique : votre plan de développement"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "data-2-f": {
   "hours": 14,
   "description": "L'opérateur de saisie transforme des documents, formulaires et questionnaires en données exactes et bien rangées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de traitement de données, des PME et des ONG, en télétravail, avec Google Sheets, Excel et des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

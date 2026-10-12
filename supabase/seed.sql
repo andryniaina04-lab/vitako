@@ -68,7 +68,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 12, false),
   ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 17, false),
   ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
-  ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, false),
+  ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
   ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 14, false),
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 14, false),
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 10, false),
@@ -2680,6 +2680,692 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Que mettre en avant dans un CV d''annotateur ?', '["Un projet avec volume, temps et taux de précision","Le nombre d''amis sur Facebook","Une photo de profil retouchée","Ses loisirs uniquement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quel mode de rémunération est le plus prévisible ?', '["Le salaire ou le paiement à l''heure","Le paiement à la tâche","Les pourboires","Le paiement au hasard"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-0-f', 'Quelle évolution consiste à vérifier le travail des autres annotateurs ?', '["Comptable","Contrôleur qualité","Graphiste","Commercial"]'::jsonb, 1);
+
+-- data-2-a
+delete from public.exam_questions where course_id = 'data-2-a';
+delete from public.module_questions where course_id = 'data-2-a';
+delete from public.lessons where course_id = 'data-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 0, 'Se spécialiser : de la saisie à la gestion de données', 'Les 6 spécialités avancées, les enquêtes numériques et leurs contrôles, saisie, vérification, nettoyage et gestion, qualité des données et offre de services.', 'La saisie simple de documents est de plus en plus automatisée par la reconnaissance de texte. Mais les entreprises ont toujours besoin de personnes qui **vérifient**, **nettoient**, **structurent** et **gèrent** les données, surtout dans des domaines exigeants. Ce module vous présente les spécialités avancées et vous aide à évoluer d''opérateur de saisie vers **gestionnaire de données**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du traitement de données.
+> 2. Comprendre les enquêtes numériques et leurs outils.
+> 3. Distinguer saisie, vérification, nettoyage et gestion de données.
+> 4. Choisir votre spécialité.
+> 5. Présenter une offre de services de données.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Exemples de travaux | Ce qu''il faut |
+| --- | --- | --- | --- |
+| 1 | **Saisie et vérification comptable** | Factures fournisseurs, notes de frais, rapprochements | Bases de comptabilité, rigueur sur les montants |
+| 2 | **Données de santé et d''assurance** | Dossiers, formulaires de remboursement, codification | Confidentialité absolue, vocabulaire du domaine |
+| 3 | **Catalogues e-commerce** | Fiches produits, attributs, prix, stocks, imports en masse | Tableur avancé, plateformes de boutique |
+| 4 | **Enquêtes et collecte de données** | Questionnaires numériques, contrôle des réponses, nettoyage | Outils d''enquête, logique, rigueur |
+| 5 | **Nettoyage et migration de données** | Fichiers clients à dédoublonner, passage d''un logiciel à un autre | Power Query, formules avancées, méthode |
+| 6 | **Gestion de bases clients (CRM)** | Mise à jour, enrichissement, segmentation | Outils CRM, qualité des données |
+
+> [!madagascar] Votre avantage
+> Madagascar accueille de nombreux projets d''ONG, de bureaux d''études et d''organisations internationales qui mènent des **enquêtes** (santé, agriculture, éducation, nutrition). Ils ont besoin de personnes capables de concevoir des formulaires numériques, de contrôler les données et de les nettoyer. C''est une spécialité très concrète, et utile.
+
+## Les enquêtes numériques
+
+> [!definition] Collecte numérique
+> Au lieu de questionnaires papier, les enquêteurs remplissent un formulaire sur tablette ou téléphone, même sans connexion. Les réponses sont envoyées au serveur dès qu''une connexion est disponible. Des outils comme **KoboToolbox** ou **ODK** sont très utilisés par les ONG et les organisations humanitaires.
+
+### Ce que fait le gestionnaire de données d''une enquête
+
+1. **Construire le formulaire** à partir du questionnaire : types de questions, choix, règles.
+2. **Ajouter des contrôles** : valeurs possibles (âge entre 0 et 120), questions qui n''apparaissent que si une réponse le justifie, champs obligatoires.
+3. **Tester** le formulaire avec de fausses réponses.
+4. **Suivre la collecte** chaque jour : nombre de questionnaires par enquêteur et par zone.
+5. **Contrôler** les données : valeurs aberrantes, doublons, réponses incohérentes.
+6. **Nettoyer et livrer** la base finale, avec un journal des corrections.
+
+> [!definition] Logique de saut
+> Une règle qui affiche ou cache une question selon une réponse précédente. Exemple : la question « Combien d''enfants vont à l''école ? » n''apparaît que si la famille a au moins un enfant. Elle évite les erreurs et fait gagner du temps aux enquêteurs.
+
+> [!exemple] Contrôles dans un formulaire d''enquête
+> - « Âge du chef de ménage » : nombre entier entre 15 et 110.
+> - « Nombre de personnes dans le ménage » ≥ « nombre d''enfants ».
+> - « Distance jusqu''au point d''eau » : alerte si plus de 20 km.
+> - Coordonnées GPS obligatoires.
+
+## Saisie, vérification, nettoyage, gestion
+
+| Niveau | Ce que vous faites | Valeur pour le client |
+| --- | --- | --- |
+| **Saisie** | Transformer des documents en données | Données disponibles |
+| **Vérification** | Contrôler des données saisies par d''autres ou par une machine (OCR) | Données fiables |
+| **Nettoyage** | Corriger les formats, supprimer les doublons, harmoniser, compléter | Données utilisables |
+| **Gestion** | Organiser une base, définir les règles, la tenir à jour, produire des tableaux | Données qui servent aux décisions |
+
+Plus vous montez dans ce tableau, plus votre travail a de valeur, et plus il est payé.
+
+> [!definition] Qualité des données
+> On l''évalue souvent selon plusieurs critères : **exactitude** (les valeurs sont justes), **complétude** (rien ne manque), **cohérence** (les mêmes règles partout), **unicité** (pas de doublons), **actualité** (les données sont à jour).
+
+## Choisir sa spécialité
+
+1. **Vos études ou votre expérience** : comptabilité, santé, commerce, statistiques, enquêtes de terrain.
+2. **Vos compétences actuelles** : tableur, langues, outils.
+3. **La demande locale et internationale** : entreprises de traitement de données, ONG, boutiques en ligne, cabinets comptables.
+4. **Votre intérêt** pour le domaine : vous allez y passer des centaines d''heures.
+
+## L''offre de services de données
+
+> [!exemple] Offre « Données d''enquête » pour une ONG
+>
+> | Service | Contenu |
+> | --- | --- |
+> | **Conception du formulaire** | Formulaire numérique à partir du questionnaire, contrôles, logique de saut, tests |
+> | **Suivi de collecte** | Tableau de suivi quotidien par enquêteur et par zone, alertes |
+> | **Nettoyage** | Contrôles de cohérence, doublons, valeurs aberrantes, journal des corrections |
+> | **Livraison** | Base propre (Excel et CSV), dictionnaire des variables, rapport de qualité |
+
+> [!definition] Dictionnaire des variables
+> Un document qui décrit chaque colonne de la base : son nom, sa signification, son type (nombre, texte, date), ses valeurs possibles et leurs codes. Sans lui, une base de données est difficile à utiliser par quelqu''un d''autre.
+
+> [!attention] Erreurs fréquentes
+> - Proposer des services de santé ou de comptabilité sans en connaître les règles de base et de confidentialité.
+> - Livrer une base sans dictionnaire des variables.
+> - Corriger des données d''enquête « à l''intuition », sans journal des corrections.
+> - Rester toute sa carrière au niveau de la saisie simple.
+
+> [!retenir]
+> - 6 spécialités : comptable, santé, e-commerce, enquêtes, nettoyage et migration, CRM.
+> - Les enquêtes numériques (KoboToolbox, ODK) demandent formulaires, contrôles et suivi.
+> - Saisie, vérification, nettoyage, gestion : plus on monte, plus on vaut cher.
+> - Qualité des données : exactitude, complétude, cohérence, unicité, actualité.
+> - Une offre de services complète, avec dictionnaire des variables.
+
+## Exercice pratique : un formulaire d''enquête
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un compte gratuit sur KoboToolbox (ou un outil équivalent).
+> 2. Construisez un formulaire de 15 questions sur l''accès à l''eau (reprenez l''enquête du niveau Fondamentaux), avec 5 contrôles et 2 logiques de saut.
+> 3. Testez-le sur votre téléphone, avec 10 réponses inventées dont 3 volontairement incohérentes.
+> 4. Exportez les données et repérez les 3 incohérences.
+> 5. Rédigez le dictionnaire des variables et choisissez votre spécialité.
+>
+> **À livrer** : le lien ou l''export du formulaire, les données exportées, votre liste d''incohérences, le dictionnaire et votre choix de spécialité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 0, 0, 'Qu''est-ce qu''une logique de saut ?', '["Une erreur de saisie","Un saut de ligne","Un type de graphique","Une règle qui affiche une question selon une réponse précédente"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 0, 1, 'Quel niveau de travail a le plus de valeur ?', '["La copie de fichiers","La gestion de données","L''impression","La saisie simple"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 0, 2, 'À quoi sert un dictionnaire des variables ?', '["Remplacer la base","Décrire chaque colonne : nom, sens, type, valeurs possibles","Corriger l''orthographe","Traduire les mots"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 1, 'Outils professionnels : Excel avancé, Power Query et ABBYY FineReader', 'Tableaux structurés, RECHERCHEX et INDEX + EQUIV, conditions, Power Query pour nettoyer et combiner, tableaux croisés dynamiques et reconnaissance professionnelle.', 'Les entreprises qui traitent beaucoup de données utilisent **Microsoft Excel** dans sa version complète (Microsoft 365), avec **Power Query** pour nettoyer et transformer automatiquement des fichiers, et des logiciels de reconnaissance de texte professionnels comme **ABBYY FineReader**. Ce module vous apprend leurs fonctions avancées.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser les données dans des tableaux structurés.
+> 2. Utiliser les fonctions de recherche et de condition avancées.
+> 3. Nettoyer et combiner des fichiers avec Power Query.
+> 4. Résumer des données avec un tableau croisé dynamique.
+> 5. Extraire des tableaux de PDF scannés avec ABBYY FineReader.
+
+## Les tableaux structurés
+
+> [!definition] Tableau structuré
+> Une plage de données transformée en **tableau** (Insertion → Tableau, ou Ctrl + T). Il s''agrandit automatiquement quand on ajoute des lignes, applique les formules à toute la colonne, et permet d''écrire des formules avec le nom des colonnes.
+
+### Les avantages
+
+1. **Formules lisibles** : `=[@Quantité]*[@Prix]` au lieu de `=C2*D2`.
+2. **Recopie automatique** des formules dans les nouvelles lignes.
+3. **Filtres et mise en forme** intégrés.
+4. **Source fiable** pour les tableaux croisés dynamiques et Power Query.
+
+Nommez chaque tableau clairement (exemple : `T_Clients`, `T_Factures`) dans l''onglet de création de tableau.
+
+## Les fonctions avancées
+
+### Rechercher une valeur
+
+| Fonction | Usage | Exemple |
+| --- | --- | --- |
+| **RECHERCHEX** (Microsoft 365) | Chercher une valeur dans une colonne et renvoyer celle d''une autre colonne, dans n''importe quel sens | `=RECHERCHEX([@Code];T_Clients[Code];T_Clients[Ville];"Introuvable")` |
+| **INDEX + EQUIV** | Même usage, compatible avec les anciennes versions | `=INDEX(T_Clients[Ville];EQUIV([@Code];T_Clients[Code];0))` |
+
+> [!astuce]
+> Le dernier argument de RECHERCHEX (« Introuvable ») remplace le message d''erreur. Filtrez ensuite la colonne sur « Introuvable » : vous voyez immédiatement les codes qui posent problème.
+
+### Tester des conditions
+
+| Fonction | Usage | Exemple |
+| --- | --- | --- |
+| **SI** | Une condition | `=SI([@Montant]>1000000;"Contrôle";"OK")` |
+| **SI.CONDITIONS** | Plusieurs conditions dans l''ordre | `=SI.CONDITIONS([@Âge]<18;"Mineur";[@Âge]<60;"Adulte";VRAI;"Senior")` |
+| **ET / OU** | Combiner des conditions | `=SI(ET([@Enfants]>[@Personnes]);"Incohérent";"OK")` |
+| **SIERREUR** | Remplacer une erreur par une valeur | `=SIERREUR(formule;"À vérifier")` |
+
+### Compter et additionner avec des critères
+
+| Fonction | Usage |
+| --- | --- |
+| **NB.SI.ENS** | Compter les lignes qui respectent plusieurs critères (exemple : questionnaires d''un enquêteur dans une commune) |
+| **SOMME.SI.ENS** | Additionner selon plusieurs critères (exemple : montant des factures d''un fournisseur sur un mois) |
+| **UNIQUE**, **FILTRE**, **TRIER** (Microsoft 365) | Extraire la liste des valeurs uniques, filtrer et trier par formule |
+
+## Power Query : nettoyer et combiner automatiquement
+
+> [!definition] Power Query
+> Un outil intégré à Excel (onglet Données → Obtenir des données) qui importe des données, les transforme par étapes enregistrées, et les charge dans un tableau. Quand de nouvelles données arrivent, on clique sur **Actualiser** : toutes les étapes se rejouent automatiquement.
+
+### Nettoyer un fichier en 8 étapes
+
+1. **Importez** le fichier (Excel, CSV, dossier entier).
+2. **Promouvez** la première ligne en en-têtes si besoin.
+3. **Définissez le type** de chaque colonne (texte, nombre entier, décimal, date).
+4. **Supprimez** les espaces en trop (Transformer → Format → Supprimer les espaces).
+5. **Mettez en forme** les noms (Majuscule à chaque mot).
+6. **Remplacez** les valeurs incorrectes (exemple : « Tana » → « Antananarivo »).
+7. **Supprimez les doublons** sur la colonne identifiant.
+8. **Chargez** le résultat dans un nouveau tableau.
+
+Chaque étape apparaît dans la liste **Étapes appliquées** : vous pouvez la modifier ou la supprimer à tout moment.
+
+### Combiner des fichiers
+
+| Opération | Usage | Exemple |
+| --- | --- | --- |
+| **Ajouter** (empiler) | Mettre bout à bout des fichiers de même structure | Les 12 fichiers mensuels de ventes en un seul tableau |
+| **Fusionner** (joindre) | Ajouter des colonnes d''un autre tableau grâce à une clé commune | Ajouter la ville du client à chaque facture grâce au code client |
+| **Importer un dossier** | Combiner automatiquement tous les fichiers d''un dossier | Chaque nouveau fichier déposé est intégré à l''actualisation |
+
+> [!exemple] Gain de temps réel
+> Un client envoie chaque semaine 5 fichiers d''enquêteurs à combiner et nettoyer. À la main : environ 2 heures par semaine. Avec Power Query : la première mise en place prend 3 heures, puis chaque semaine il suffit de déposer les fichiers dans le dossier et de cliquer sur Actualiser, soit quelques minutes.
+
+## Le tableau croisé dynamique
+
+> [!definition] Tableau croisé dynamique
+> Un outil qui résume un grand tableau en quelques clics : totaux, moyennes, comptages, par catégorie et par période.
+
+### Créer un tableau croisé en 5 étapes
+
+1. Cliquez dans votre tableau structuré, puis **Insertion → Tableau croisé dynamique**.
+2. Glissez une colonne en **Lignes** (exemple : Commune).
+3. Glissez une colonne en **Colonnes** si besoin (exemple : Source d''eau).
+4. Glissez une colonne en **Valeurs** (exemple : Nombre de ménages, en comptage).
+5. Ajoutez un **segment** (filtre cliquable) pour la date ou l''enquêteur.
+
+C''est l''outil idéal pour le **suivi de collecte** et les **rapports de qualité**.
+
+## ABBYY FineReader : la reconnaissance professionnelle
+
+| Fonction | Usage |
+| --- | --- |
+| **Reconnaissance de haute précision** | Documents imprimés, nombreuses langues |
+| **Conversion de PDF en Excel** | Extraire des tableaux en gardant les colonnes |
+| **Zones de reconnaissance** | Indiquer précisément où sont le texte, les tableaux, les images |
+| **Vérification** | Les caractères incertains sont signalés pour une vérification rapide |
+| **Traitement par lots** | Convertir automatiquement des dizaines de documents (selon la version) |
+| **Comparaison de documents** | Trouver les différences entre deux versions d''un document |
+
+### La méthode
+
+1. **Scannez** les documents en bonne qualité (souvent 300 ppp, nets, droits).
+2. **Réglez la langue** des documents.
+3. **Vérifiez les zones** détectées, surtout les tableaux.
+4. **Lancez la reconnaissance**, puis **vérifiez les caractères incertains** signalés.
+5. **Exportez** vers Excel et **contrôlez** les totaux et les chiffres (comptage, somme, échantillon).
+
+> [!attention]
+> Même un excellent logiciel de reconnaissance fait des erreurs. Le contrôle humain des chiffres reste **indispensable** : c''est justement là que vous apportez votre valeur.
+
+## Quels outils acheter ?
+
+| Situation | Conseil |
+| --- | --- |
+| Employé d''une entreprise de traitement de données | Outils fournis |
+| Freelance avec des clients qui exigent Excel complet | Abonnement Microsoft 365 |
+| Gros volumes de documents scannés | ABBYY FineReader (ou outil de reconnaissance équivalent) |
+| Petits volumes | Google Sheets, OCR de Google Drive, versions d''essai |
+
+> [!madagascar]
+> Les abonnements se paient en devises par carte bancaire internationale. Calculez le temps gagné : si Power Query vous fait gagner plusieurs heures par semaine sur un client régulier, l''abonnement est rentabilisé dès le premier mois.
+
+> [!retenir]
+> - Des tableaux structurés et nommés, source de toutes vos analyses.
+> - RECHERCHEX, INDEX + EQUIV, SI.CONDITIONS, NB.SI.ENS, SOMME.SI.ENS.
+> - Power Query : des étapes de nettoyage enregistrées et rejouées en un clic.
+> - Le tableau croisé dynamique pour résumer et suivre.
+> - ABBYY FineReader pour les gros volumes scannés, toujours avec un contrôle humain.
+
+## Exercice pratique : automatiser un nettoyage
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez 3 fichiers de 30 lignes chacun (même structure : code client, nom, ville, date, montant), avec des erreurs volontaires : espaces, minuscules, doublons, villes écrites de plusieurs façons.
+> 2. Dans Power Query, combinez-les, nettoyez-les en 8 étapes et chargez le résultat.
+> 3. Ajoutez un tableau de clients et fusionnez-le pour récupérer la ville par code client.
+> 4. Créez un tableau croisé dynamique des montants par ville et par mois.
+> 5. Si possible, testez la version d''essai d''ABBYY FineReader sur une facture scannée et comparez avec l''OCR de Google Drive.
+>
+> **À livrer** : le fichier Excel avec les requêtes, le tableau croisé et votre comparaison de reconnaissance.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 1, 0, 'Quel raccourci transforme une plage en tableau structuré ?', '["Ctrl + Z","Ctrl + T","F5","Ctrl + P"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 1, 1, 'Que fait le bouton Actualiser dans Power Query ?', '["Envoie un e-mail","Imprime le tableau","Rejoue toutes les étapes de nettoyage sur les nouvelles données","Supprime le fichier"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 1, 2, 'Que reste-t-il indispensable après une reconnaissance de texte professionnelle ?', '["Rien","Un deuxième scan","Le contrôle humain des chiffres","Une nouvelle impression"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 2, 'Qualité et rapidité : contrôles automatiques et gros volumes', 'Comparaison automatique d''une double saisie, feuille de contrôles de cohérence, journal des corrections, indicateurs et rapport de qualité, organisation par lots.', 'Un gestionnaire de données avancé ne se contente pas de contrôler à la main : il construit des **systèmes de contrôle** qui repèrent automatiquement les erreurs, mesure la qualité et documente chaque correction. Ce module vous donne ces méthodes, pour traiter de gros volumes avec une qualité garantie.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer automatiquement deux saisies d''un même lot.
+> 2. Créer une feuille de contrôles de cohérence.
+> 3. Tenir un journal des corrections.
+> 4. Mesurer la qualité avec des indicateurs.
+> 5. Organiser le traitement de gros volumes.
+
+## Comparer automatiquement une double saisie
+
+Au niveau Fondamentaux, vous avez vu le principe de la double saisie. Voici comment comparer les deux tableaux **automatiquement**.
+
+### La méthode
+
+1. Les deux saisies ont la **même structure** et le même **identifiant** sur chaque ligne.
+2. Dans une troisième feuille, pour chaque champ, comparez les deux valeurs :
+
+```
+=SI(RECHERCHEX([@ID];Saisie2[ID];Saisie2[Montant])=[@Montant];"";"DIFFÉRENT")
+```
+
+3. Ajoutez une colonne qui compte les différences par ligne.
+4. Filtrez les lignes avec au moins une différence.
+5. **Vérifiez chaque différence sur le document d''origine** et corrigez la bonne saisie.
+
+> [!exemple] Résultat d''une double saisie
+> 500 questionnaires × 15 champs = 7 500 champs comparés. 42 différences trouvées. Après vérification sur les documents : 23 erreurs dans la saisie A, 19 dans la saisie B. La base finale est corrigée, et on connaît le taux d''erreur de chaque opérateur (23 ÷ 7 500 ≈ 0,31 % et 19 ÷ 7 500 ≈ 0,25 %).
+
+## La feuille de contrôles de cohérence
+
+Les contrôles de cohérence repèrent les données **impossibles** ou **suspectes**, même quand la saisie respecte le document.
+
+### Les 6 types de contrôles
+
+| Type | Exemple de règle | Formule ou outil |
+| --- | --- | --- |
+| **Plage** | Âge entre 0 et 110 | `=OU([@Âge]<0;[@Âge]>110)` |
+| **Format** | Téléphone de 10 chiffres | `=NBCAR([@Téléphone])<>10` |
+| **Logique** | Enfants ≤ personnes du ménage | `=[@Enfants]>[@Personnes]` |
+| **Doublon** | Identifiant unique | `=NB.SI([ID];[@ID])>1` |
+| **Complétude** | Champs obligatoires remplis | `=NBVIDE(...)>0` |
+| **Valeur aberrante** | Montant 10 fois supérieur à la moyenne | Comparaison à la moyenne ou à la médiane |
+
+### Organiser les contrôles
+
+1. **Une colonne par contrôle**, qui affiche VRAI quand il y a un problème.
+2. **Une colonne « Nombre d''alertes »** qui additionne les problèmes de la ligne.
+3. **Une mise en forme conditionnelle** qui colore les lignes en alerte.
+4. **Un résumé** en haut de la feuille : nombre d''alertes par type.
+
+> [!astuce]
+> Construisez la feuille de contrôles **une fois** pour un type de projet, puis réutilisez-la. Avec Power Query, elle se met à jour toute seule à chaque nouveau lot.
+
+## Le journal des corrections
+
+Toute correction de données doit être **traçable** : on doit pouvoir savoir qui a changé quoi, quand et pourquoi.
+
+| Date | ID | Champ | Ancienne valeur | Nouvelle valeur | Raison | Par |
+| --- | --- | --- | --- | --- | --- | --- |
+| 14/03 | Q0127 | Âge | 250 | 25 | Erreur de saisie, vérifiée sur le document | HR |
+| 14/03 | Q0188 | Commune | Ambohidratrimo | Ambohidratrimo | Espace en trop supprimé | HR |
+| 15/03 | Q0213 | Enfants | 7 | — | Incohérent avec 4 personnes ; document illisible ; signalé au client | HR |
+
+> [!attention]
+> Ne corrigez **jamais** une donnée d''enquête ou une donnée comptable « parce qu''elle semble fausse » sans source. Si le document ne permet pas de trancher, **signalez** au client au lieu de deviner.
+
+## Mesurer la qualité
+
+### Les indicateurs à suivre
+
+| Indicateur | Calcul | Objectif courant (exemple) |
+| --- | --- | --- |
+| **Taux d''erreur de saisie** | Erreurs ÷ champs contrôlés | Moins de 0,5 % (souvent bien moins dans certains domaines) |
+| **Taux de complétude** | Champs remplis ÷ champs attendus | Plus de 98 % |
+| **Taux de doublons** | Doublons ÷ lignes | 0 % après nettoyage |
+| **Alertes de cohérence résolues** | Alertes traitées ÷ alertes totales | 100 % (corrigées ou signalées) |
+| **Productivité** | Lignes ou champs par heure | Selon le type de document |
+
+### Le rapport de qualité
+
+Livrez avec chaque base :
+
+1. **Le volume** traité.
+2. **Les indicateurs** de qualité.
+3. **Les contrôles** effectués et leur résultat.
+4. **Le journal** des corrections.
+5. **Les points ouverts** : données manquantes ou douteuses signalées.
+
+## Organiser le traitement de gros volumes
+
+### Le découpage en lots
+
+1. **Découpez** le travail en lots de taille égale (par exemple 200 documents).
+2. **Numérotez** les lots et suivez-les dans un tableau : statut, opérateur, date, taux d''erreur.
+3. **Contrôlez chaque lot** avant de l''intégrer à la base finale.
+4. **Livrez par lots** si le client le souhaite : il commence à utiliser les données plus tôt.
+
+### Les règles de gestion des fichiers
+
+1. **Ne travaillez jamais sur l''original** : gardez une copie intacte des données reçues.
+2. **Nommez les versions** : `2026-03-14_Enquete_Eau_Lot03_V2.xlsx`.
+3. **Une seule base de référence**, mise à jour selon une procédure claire.
+4. **Sauvegardez** chaque jour, sur un autre support ou en ligne.
+
+> [!madagascar]
+> Pour les gros volumes, organisez votre travail en fonction de votre connexion : téléchargez les lots la veille, travaillez hors connexion (Excel, Google Sheets en mode hors connexion), et envoyez les résultats quand la connexion est stable. Prévenez le client de votre organisation pour qu''il sache quand attendre les livraisons.
+
+> [!retenir]
+> - Une double saisie se compare automatiquement, chaque différence vérifiée sur le document.
+> - 6 types de contrôles de cohérence, organisés dans une feuille réutilisable.
+> - Un journal des corrections : qui, quoi, quand, pourquoi.
+> - Des indicateurs de qualité et un rapport livré avec chaque base.
+> - Des lots numérotés, des versions nommées, l''original toujours intact.
+
+## Exercice pratique : un système de contrôle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez deux saisies du même lot de 50 questionnaires, avec des différences volontaires (environ 10).
+> 2. Construisez la feuille de comparaison automatique et trouvez toutes les différences.
+> 3. Créez une feuille de contrôles avec au moins 5 types de contrôles et un résumé des alertes.
+> 4. Tenez le journal de vos corrections.
+> 5. Rédigez le rapport de qualité du lot.
+>
+> **À livrer** : le fichier Excel (comparaison, contrôles, journal) et le rapport de qualité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 2, 0, 'Que faire de chaque différence trouvée entre deux saisies ?', '["Supprimer la ligne","La vérifier sur le document d''origine","Garder la saisie B","Garder la saisie A"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 2, 1, 'Que contient un journal des corrections ?', '["Les heures de pause","Qui a changé quoi, quand et pourquoi","Les factures","Les mots de passe"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 2, 2, 'Sur quel fichier ne faut-il jamais travailler directement ?', '["Une copie","L''original reçu du client","Le fichier de contrôle","La version 2"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 3, 'Clients internationaux : protection des données et formats', 'Données personnelles et 10 règles de protection, pseudonymisation, dates, nombres et encodage, vocabulaire anglais, outils de partage sécurisés, contrat et devis.', 'Les clients étrangers (entreprises, organisations internationales, bureaux d''études) confient des données sensibles et des volumes importants. Ils attendent une protection stricte des données, des fichiers aux bons formats internationaux et une communication claire. Ce module vous prépare à ces exigences.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Protéger les données personnelles selon des règles strictes.
+> 2. Éviter les pièges des formats internationaux : dates, nombres, encodage.
+> 3. Échanger avec le vocabulaire anglais des données.
+> 4. Travailler avec les outils de partage sécurisés des clients.
+> 5. Rédiger un contrat et un devis pour un client étranger.
+
+## Protéger les données personnelles
+
+> [!definition] Donnée personnelle
+> Toute information qui permet d''identifier une personne, directement (nom, numéro d''identité, photo) ou indirectement (adresse, téléphone, combinaison d''âge, village et profession). Certaines données sont **sensibles** : santé, origine, religion, opinions, données financières.
+
+En Europe, le **RGPD** encadre strictement l''utilisation des données personnelles, y compris quand elles sont traitées par un prestataire à l''étranger. D''autres pays ont des règles comparables. Le client est responsable, mais il exige de vous des pratiques irréprochables, souvent écrites dans un **accord de traitement des données**.
+
+### Les 10 règles de protection
+
+1. **Utilisez les données uniquement** pour la mission confiée.
+2. **Ne copiez jamais** les données sur un support personnel non autorisé (clé USB, Drive personnel, téléphone).
+3. **Travaillez sur un ordinateur protégé** : mot de passe, verrouillage automatique, disque chiffré si possible.
+4. **Utilisez les outils de partage du client** (module plus bas), pas les vôtres.
+5. **Ne partagez rien** par WhatsApp, e-mail non chiffré ou réseaux sociaux.
+6. **Pas de cybercafé** ni de Wi-Fi public.
+7. **Accès personnels** : jamais de partage de compte.
+8. **Pseudonymisez** quand le client le demande (remplacer les noms par des codes).
+9. **Signalez immédiatement** toute perte ou fuite de données.
+10. **Supprimez** les données à la fin de la mission et confirmez-le par écrit.
+
+> [!definition] Pseudonymisation
+> Remplacer les informations qui identifient directement une personne (nom, téléphone) par un code (Q0127), en gardant la table de correspondance à part et protégée. Les données restent utilisables pour l''analyse, mais une personne qui voit le fichier ne sait pas à qui elles se rapportent.
+
+## Les pièges des formats internationaux
+
+### Dates
+
+| Écrit | Pour un Européen | Pour un Américain |
+| --- | --- | --- |
+| 03/04/2026 | 3 avril 2026 | 4 mars 2026 (March 4) |
+
+**Solution** : utilisez le format international **AAAA-MM-JJ** (2026-04-03) dans les fichiers d''échange, ou demandez le format au client. Vérifiez qu''Excel a bien reconnu les dates comme des dates (alignées à droite par défaut) et pas comme du texte.
+
+### Nombres
+
+| Élément | Français | Anglais |
+| --- | --- | --- |
+| Décimale | 3,5 | 3.5 |
+| Milliers | 25 000 | 25,000 |
+| Séparateur de colonnes d''un CSV | Souvent le point-virgule ( ; ) | Souvent la virgule ( , ) |
+
+Un fichier CSV anglais ouvert avec un Excel en français peut tout mettre dans **une seule colonne**, ou transformer 3.5 en date. **Solution** : importez les CSV avec **Données → À partir d''un fichier texte/CSV** (ou Power Query) en choisissant le séparateur et les paramètres régionaux.
+
+### Encodage des caractères
+
+> [!definition] Encodage UTF-8
+> La façon dont les lettres sont enregistrées dans un fichier texte. L''UTF-8 gère tous les alphabets et les accents. Un mauvais encodage transforme « Antsirabé » en « AntsirabÃ© ».
+
+**Solution** : enregistrez les fichiers CSV en **CSV UTF-8** et précisez l''encodage à l''importation.
+
+## Le vocabulaire anglais des données
+
+| Anglais | Français |
+| --- | --- |
+| data entry | saisie de données |
+| data cleaning | nettoyage de données |
+| dataset | jeu de données |
+| field / record | champ / enregistrement (ligne) |
+| duplicate | doublon |
+| missing value | valeur manquante |
+| outlier | valeur aberrante |
+| consistency check | contrôle de cohérence |
+| data dictionary | dictionnaire des variables |
+| error rate / accuracy | taux d''erreur / précision |
+| batch | lot |
+| turnaround time | délai de traitement |
+| data processing agreement | accord de traitement des données |
+
+> [!exemple] Message de livraison en anglais
+> « Hi Mark, please find batch 03 (200 records) in the shared folder. Quality summary: 0.21 % error rate on a 20 % sample, no duplicates, 4 missing values flagged in the "Remarks" column (illegible fields). The data dictionary has been updated with two new codes. Next batch expected on Thursday. »
+
+## Les outils de partage sécurisés
+
+| Outil fourni par le client | Bonnes pratiques |
+| --- | --- |
+| **Dossier partagé de l''entreprise** (SharePoint, OneDrive, Google Drive d''entreprise) | Travailler directement dedans, sans télécharger si possible |
+| **Serveur de transfert sécurisé** | Utiliser les identifiants personnels, ne pas les partager |
+| **Bureau à distance ou VPN** | Les données restent sur les serveurs du client ; vous travaillez à distance |
+| **Plateforme d''enquête** (KoboToolbox, ODK) | Comptes nominatifs avec les droits strictement nécessaires |
+
+## Contrat et devis pour un client étranger
+
+### Les clauses importantes
+
+1. **La description** du travail : volume, type de documents, règles de saisie.
+2. **La qualité** garantie et sa méthode de mesure.
+3. **Les délais** par lot.
+4. **La protection des données** : accord de traitement, règles de sécurité, suppression en fin de mission.
+5. **Le prix** : à l''heure, à la ligne, au document ou au lot, en devises.
+6. **Les conditions de paiement** : par lot livré et accepté, ou mensuel.
+7. **Les corrections** : les erreurs trouvées par le client dans un délai donné sont corrigées gratuitement.
+
+### Estimer un devis par lot
+
+1. **Testez** sur un échantillon réel (au moins 20 documents).
+2. **Mesurez** le temps de saisie **et** de contrôle.
+3. **Ajoutez** le temps de gestion (préparation, rapports, échanges) et une marge pour les imprévus.
+4. **Convertissez** en prix par document ou par lot.
+
+> [!madagascar]
+> Facturez en euros ou en dollars et vérifiez, avant le premier lot, qu''un moyen de paiement fonctionne depuis Madagascar (virement international, Payoneer, plateforme). Les possibilités de PayPal sont limitées pour Madagascar. Conservez chaque facture et chaque relevé.
+
+> [!retenir]
+> - 10 règles de protection des données, dont : pas de copie personnelle, pas de WhatsApp, suppression en fin de mission.
+> - Dates en AAAA-MM-JJ, séparateurs et décimales vérifiés, fichiers en UTF-8.
+> - Un vocabulaire anglais de base pour les échanges et les rapports.
+> - Les outils de partage du client, pas les vôtres.
+> - Un devis fondé sur un test réel, avec qualité, délais et protection des données écrits.
+
+## Exercice pratique : un client international
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un fichier CSV avec des dates américaines, des décimales avec un point et des noms accentués ; importez-le correctement dans Excel avec Power Query.
+> 2. Pseudonymisez un fichier de 30 personnes : remplacez noms et téléphones par des codes, et gardez la table de correspondance dans un fichier séparé protégé par mot de passe.
+> 3. Rédigez votre liste personnelle des 10 règles de protection appliquées à votre poste.
+> 4. Rédigez en anglais un message de livraison de lot avec résumé de qualité.
+> 5. Rédigez un devis pour 2 000 documents à partir d''un test sur 20 documents.
+>
+> **À livrer** : le fichier importé, le fichier pseudonymisé (sans la table), votre liste, votre message et votre devis.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 0, 'Qu''est-ce que la pseudonymisation ?', '["Publier les données","Remplacer les noms par des codes, avec une table de correspondance protégée","Traduire les noms","Supprimer toutes les données"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 1, 'Quel format de date éviter les confusions entre pays ?', '["MM/JJ","Le jour en lettres seulement","AAAA-MM-JJ","JJ/MM"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 3, 2, 'Comment éviter « AntsirabÃ© » dans un fichier CSV ?', '["Imprimer le fichier","Supprimer les accents à la main","Enregistrer et importer en UTF-8","Changer de police"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-a', 4, 'Évoluer et développer son activité', 'Les chemins d''évolution, le nettoyage et la migration de données, les tableaux de bord, l''organisation d''une équipe et le plan de compétences.', 'La saisie de données est une porte d''entrée vers des métiers mieux payés : gestionnaire de bases de données, responsable de la qualité des données, analyste. Vous pouvez aussi proposer des services de données complets, ou organiser une petite équipe de traitement. Ce dernier module vous montre ces chemins.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir votre chemin d''évolution dans les métiers de la donnée.
+> 2. Proposer des services de nettoyage et de migration de données.
+> 3. Créer des tableaux de bord simples pour vos clients.
+> 4. Organiser une petite équipe de traitement de données.
+> 5. Planifier vos prochaines compétences.
+
+## Les chemins d''évolution
+
+| Chemin | Rôle | Compétences à ajouter |
+| --- | --- | --- |
+| **Contrôleur qualité des données** | Vérifier, mesurer, améliorer la qualité | Méthodes de contrôle, rapports |
+| **Gestionnaire de données d''enquête** | Formulaires, suivi de collecte, nettoyage | KoboToolbox, ODK, logique d''enquête |
+| **Administrateur de bases de données clients** | Tenir à jour un CRM ou une base produits | Outils CRM, règles de gestion |
+| **Spécialiste de la migration de données** | Faire passer des données d''un logiciel à un autre | Power Query, formats d''import, méthode |
+| **Analyste de données** | Transformer les données en tableaux de bord et en conclusions | Tableaux croisés, graphiques, Power BI, SQL |
+| **Responsable d''équipe** | Organiser les lots, former, contrôler | Organisation, communication |
+
+> [!astuce]
+> Chaque nouvelle compétence (Power Query, tableaux croisés, un outil d''enquête, un CRM) augmente ce que vous pouvez facturer. Ajoutez-en une par trimestre, et mettez-la tout de suite en pratique sur un vrai projet.
+
+## Les services de nettoyage et de migration
+
+### Le nettoyage de données
+
+> [!exemple] Offre « Fichier clients propre »
+> **Pour qui** : une entreprise dont le fichier clients contient des doublons, des formats différents et des informations manquantes.
+> **Ce que vous faites** :
+> 1. Audit du fichier : nombre de lignes, doublons, champs vides, formats.
+> 2. Règles de nettoyage validées avec le client (format des téléphones, des noms, des villes).
+> 3. Nettoyage avec Power Query (les étapes restent réutilisables).
+> 4. Dédoublonnage, avec une liste des cas douteux à valider par le client.
+> 5. Livraison : fichier propre, rapport de qualité avant / après, procédure pour garder le fichier propre.
+
+| Indicateur | Avant | Après |
+| --- | --- | --- |
+| Lignes | 12 400 | 10 950 |
+| Doublons | 1 450 | 0 |
+| Téléphones au bon format | 61 % | 97 % |
+| E-mails manquants | 38 % | 38 % (non inventés : signalés) |
+
+*(Chiffres donnés en exemple.)*
+
+### La migration de données
+
+> [!definition] Migration de données
+> Le passage des données d''un ancien système (fichier Excel, vieux logiciel) vers un nouveau (CRM, boutique en ligne, logiciel de gestion), en respectant le format d''import du nouveau système.
+
+### Les 6 étapes d''une migration
+
+1. **Inventaire** des données de l''ancien système.
+2. **Correspondance** : quelle colonne ancienne va dans quel champ nouveau (tableau de correspondance).
+3. **Nettoyage** avant l''import.
+4. **Import test** d''un petit échantillon dans le nouveau système.
+5. **Import complet**, puis **contrôle** : nombre de lignes, totaux, échantillon vérifié.
+6. **Rapport** et conservation de l''ancien fichier en archive.
+
+## Des tableaux de bord simples
+
+Un client paie plus quand vous l''aidez à **comprendre** ses données, pas seulement à les saisir.
+
+### Construire un tableau de bord dans Excel
+
+1. **Une feuille de données** propre (tableau structuré, mis à jour par Power Query).
+2. **Une feuille de calculs** avec des tableaux croisés dynamiques.
+3. **Une feuille de tableau de bord** avec :
+   - 3 à 5 **chiffres clés** en haut (total, moyenne, évolution) ;
+   - 2 à 4 **graphiques** simples (barres, courbes) ;
+   - des **segments** pour filtrer par période, zone ou catégorie.
+4. **Une règle** : chaque graphique répond à une question précise du client.
+
+> [!exemple] Tableau de bord de suivi d''enquête
+> **Chiffres clés** : 1 240 questionnaires reçus sur 1 500 prévus (83 %) · 12 enquêteurs actifs · 2,1 % de questionnaires en alerte.
+> **Graphiques** : questionnaires par jour (courbe) ; questionnaires par commune par rapport à l''objectif (barres) ; alertes par enquêteur (barres).
+> **Filtres** : semaine, commune, enquêteur.
+
+## Organiser une petite équipe
+
+### Le fonctionnement
+
+| Rôle | Tâches |
+| --- | --- |
+| **Opérateurs** | Saisie, vérification de premier niveau |
+| **Contrôleur** | Échantillons, double saisie, retours |
+| **Responsable** (vous) | Relation client, préparation des lots, outils de contrôle, rapports |
+
+### Les conditions de réussite
+
+1. **Des consignes de saisie écrites** pour chaque projet, avec exemples et cas limites.
+2. **Une formation** et un lot de calibration pour chaque opérateur.
+3. **Des comptes et accès personnels** à chaque outil, retirés en fin de mission.
+4. **La protection des données** : règles signées par chaque membre, postes sécurisés.
+5. **Un suivi** par lot et par opérateur : volume, taux d''erreur.
+6. **Des retours individuels** précis et bienveillants.
+7. **Une rémunération** correcte et payée à temps.
+
+> [!madagascar]
+> Une petite équipe de traitement de données à Madagascar, avec des méthodes de contrôle solides et une vraie culture de la protection des données, peut répondre aux projets d''ONG, de bureaux d''études et d''entreprises étrangères. La confiance du client repose sur deux choses : la **qualité mesurée** et la **sécurité des données**. Ne transigez sur aucune des deux.
+
+## Planifier ses prochaines compétences
+
+| Trimestre | Compétence | Mise en pratique |
+| --- | --- | --- |
+| 1 | Power Query avancé | Automatiser le nettoyage d''un client régulier |
+| 2 | Tableaux de bord Excel | Proposer un tableau de bord à 2 clients |
+| 3 | Outil d''enquête (KoboToolbox ou ODK) | Gérer les données d''une petite enquête |
+| 4 | Introduction à Power BI ou SQL | Suivre la formation « Analyste de données » |
+
+> [!retenir]
+> - 6 chemins d''évolution, de la qualité à l''analyse.
+> - Le nettoyage et la migration sont des services complets, mesurés avant / après.
+> - Un tableau de bord simple répond aux questions du client.
+> - Une équipe repose sur des consignes, une calibration, la protection des données et un suivi par lot.
+> - Une compétence nouvelle par trimestre, appliquée tout de suite.
+
+## Exercice pratique : votre plan de développement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre chemin d''évolution et les 4 compétences de votre année.
+> 2. Rédigez une offre « Fichier clients propre » avec méthode, livrables et prix.
+> 3. Préparez le tableau de correspondance d''une migration (ancien fichier Excel de clients vers un CRM de votre choix).
+> 4. Construisez un tableau de bord Excel de suivi d''enquête (chiffres clés, 3 graphiques, segments) à partir de vos données d''exercice.
+> 5. Rédigez les règles de protection des données que signerait chaque membre de votre future équipe.
+>
+> **À livrer** : votre plan, votre offre, le tableau de correspondance, le fichier du tableau de bord et les règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 4, 0, 'Quelle est l''étape avant l''import complet d''une migration ?', '["Supprimer l''ancien fichier","Un import test d''un petit échantillon","Envoyer la facture","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 4, 1, 'À quoi doit répondre chaque graphique d''un tableau de bord ?', '["À rien de particulier","À montrer toutes les données","À décorer la page","À une question précise du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-a', 4, 2, 'Que faire des e-mails manquants dans un fichier clients ?', '["Les signaler, sans les inventer","Les inventer","Supprimer les clients","Les copier d''un autre client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quelle spécialité demande une confidentialité absolue et le vocabulaire médical ?', '["Saisie de reçus personnels","Gestion de CRM","Catalogues e-commerce","Données de santé et d''assurance"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quels outils sont très utilisés pour les enquêtes numériques des ONG ?', '["Zoom et Teams","KoboToolbox et ODK","Canva et CapCut","Photoshop et Premiere"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quel contrôle est logique dans une enquête ?', '["Nom en majuscules","Taille de la police","Couleur de la cellule","Nombre d''enfants ≤ nombre de personnes du ménage"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quel critère de qualité mesure l''absence de doublons ?', '["La complétude","L''actualité","L''exactitude","L''unicité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quel avantage d''un tableau structuré ?', '["Il supprime les données","Les formules se recopient automatiquement dans les nouvelles lignes","Il est plus lourd","Il empêche les filtres"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que renvoie RECHERCHEX si la valeur n''est pas trouvée et qu''on a indiqué « Introuvable » ?', '["« Introuvable »","La première ligne","Zéro","Une erreur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quelle fonction teste plusieurs conditions dans l''ordre ?', '["MAJUSCULE","SOMME","SI.CONDITIONS","NBCAR"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Dans Power Query, que fait l''opération « Ajouter » ?', '["Supprimer des lignes","Créer un graphique","Ajouter des colonnes avec une clé","Empiler des fichiers de même structure"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Dans Power Query, que fait l''opération « Fusionner » ?', '["Empiler des fichiers","Trier","Imprimer","Ajouter les colonnes d''un autre tableau grâce à une clé commune"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'À quoi sert un tableau croisé dynamique ?', '["Résumer un grand tableau par catégorie et par période","Reconnaître du texte","Envoyer des e-mails","Saisir des données"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quelle résolution de scan est souvent conseillée pour la reconnaissance ?', '["50 ppp","10 ppp","5 000 ppp","300 ppp"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', '500 questionnaires × 15 champs, 23 erreurs : quel taux d''erreur ?', '["23 %","Environ 0,31 %","3,1 %","0,03 %"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Quelle formule repère un identifiant en double ?', '["=NBCAR([ID])","=MAJUSCULE([ID])","=SOMME([ID])","=NB.SI([ID];[@ID])>1"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que faire si un document ne permet pas de corriger une donnée incohérente ?', '["Mettre zéro","Deviner la bonne valeur","Supprimer la ligne sans rien dire","Le signaler au client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que livrer avec chaque base de données ?', '["Une facture seulement","Un rapport de qualité et le journal des corrections","Vos mots de passe","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Pourquoi découper un gros travail en lots ?', '["Suivre, contrôler et livrer progressivement","Pour travailler moins bien","Pour cacher les erreurs","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Qu''est-ce qu''une donnée personnelle ?', '["Le prix d''un produit","Une information qui permet d''identifier une personne","Une information sur la météo","Le nom d''une ville seul"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Comment partager des données du client ?', '["Avec les outils de partage sécurisés du client","Sur une clé USB personnelle","Par WhatsApp","Par e-mail personnel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Pour un Américain, 03/04/2026 veut dire…', '["4 mars 2026","3 avril 2026","4 avril 2026","3 mars 2026"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Comment importer correctement un CSV anglais dans un Excel français ?', '["En double-cliquant dessus","En le copiant dans Word","En l''imprimant","Avec Données → À partir d''un fichier texte/CSV ou Power Query, en réglant séparateur et paramètres régionaux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que veut dire « outlier » ?', '["Champ","Lot","Valeur aberrante","Doublon"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Sur quoi fonder un devis par lot ?', '["Un test réel sur un échantillon, contrôle compris","Le prix d''un concurrent","Le nombre de pages au hasard","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que contient le tableau de correspondance d''une migration ?', '["Les mots de passe","Les factures","Les couleurs du logiciel","Quelle colonne ancienne va dans quel champ nouveau"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Que doit montrer le rapport d''un nettoyage ?', '["Seulement le nouveau fichier","Les erreurs du client","Rien","Les indicateurs avant et après"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-a', 'Sur quoi repose la confiance d''un client dans une équipe de traitement de données ?', '["Le prix le plus bas","Le nombre d''opérateurs","La vitesse sans contrôle","La qualité mesurée et la sécurité des données"]'::jsonb, 3);
 
 -- data-2-f
 delete from public.exam_questions where course_id = 'data-2-f';

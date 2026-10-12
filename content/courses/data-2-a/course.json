@@ -1,0 +1,97 @@
+{
+  "id": "data-2-a",
+  "hours": 18,
+  "description": "Ce niveau Avancé fait évoluer l'opérateur de saisie vers la gestion de données : spécialités (comptabilité, santé, e-commerce, enquêtes), collecte numérique, Excel avancé avec Power Query et tableaux croisés, reconnaissance professionnelle avec ABBYY FineReader, systèmes de contrôle et journal des corrections, protection des données et formats internationaux, puis services de nettoyage, migration et tableaux de bord. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et gérer les données d'une enquête numérique",
+    "Utiliser Excel avancé : tableaux structurés, RECHERCHEX, Power Query, tableaux croisés",
+    "Extraire des données de documents scannés avec ABBYY FineReader",
+    "Construire des contrôles automatiques et mesurer la qualité des données",
+    "Protéger les données personnelles et maîtriser les formats internationaux",
+    "Proposer des services de nettoyage, de migration et de tableaux de bord"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser : de la saisie à la gestion de données",
+      "summary": "Les 6 spécialités avancées, les enquêtes numériques et leurs contrôles, saisie, vérification, nettoyage et gestion, qualité des données et offre de services.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une logique de saut ?", "options": ["Une règle qui affiche une question selon une réponse précédente", "Une erreur de saisie", "Un saut de ligne", "Un type de graphique"], "correct": 0 },
+        { "q": "Quel niveau de travail a le plus de valeur ?", "options": ["La gestion de données", "La saisie simple", "La copie de fichiers", "L'impression"], "correct": 0 },
+        { "q": "À quoi sert un dictionnaire des variables ?", "options": ["Décrire chaque colonne : nom, sens, type, valeurs possibles", "Traduire les mots", "Corriger l'orthographe", "Remplacer la base"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Excel avancé, Power Query et ABBYY FineReader",
+      "summary": "Tableaux structurés, RECHERCHEX et INDEX + EQUIV, conditions, Power Query pour nettoyer et combiner, tableaux croisés dynamiques et reconnaissance professionnelle.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel raccourci transforme une plage en tableau structuré ?", "options": ["Ctrl + T", "Ctrl + P", "Ctrl + Z", "F5"], "correct": 0 },
+        { "q": "Que fait le bouton Actualiser dans Power Query ?", "options": ["Rejoue toutes les étapes de nettoyage sur les nouvelles données", "Supprime le fichier", "Imprime le tableau", "Envoie un e-mail"], "correct": 0 },
+        { "q": "Que reste-t-il indispensable après une reconnaissance de texte professionnelle ?", "options": ["Le contrôle humain des chiffres", "Rien", "Une nouvelle impression", "Un deuxième scan"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : contrôles automatiques et gros volumes",
+      "summary": "Comparaison automatique d'une double saisie, feuille de contrôles de cohérence, journal des corrections, indicateurs et rapport de qualité, organisation par lots.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire de chaque différence trouvée entre deux saisies ?", "options": ["La vérifier sur le document d'origine", "Garder la saisie A", "Garder la saisie B", "Supprimer la ligne"], "correct": 0 },
+        { "q": "Que contient un journal des corrections ?", "options": ["Qui a changé quoi, quand et pourquoi", "Les heures de pause", "Les mots de passe", "Les factures"], "correct": 0 },
+        { "q": "Sur quel fichier ne faut-il jamais travailler directement ?", "options": ["L'original reçu du client", "Une copie", "La version 2", "Le fichier de contrôle"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : protection des données et formats",
+      "summary": "Données personnelles et 10 règles de protection, pseudonymisation, dates, nombres et encodage, vocabulaire anglais, outils de partage sécurisés, contrat et devis.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la pseudonymisation ?", "options": ["Remplacer les noms par des codes, avec une table de correspondance protégée", "Supprimer toutes les données", "Traduire les noms", "Publier les données"], "correct": 0 },
+        { "q": "Quel format de date éviter les confusions entre pays ?", "options": ["AAAA-MM-JJ", "JJ/MM", "MM/JJ", "Le jour en lettres seulement"], "correct": 0 },
+        { "q": "Comment éviter « AntsirabÃ© » dans un fichier CSV ?", "options": ["Enregistrer et importer en UTF-8", "Supprimer les accents à la main", "Imprimer le fichier", "Changer de police"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Évoluer et développer son activité",
+      "summary": "Les chemins d'évolution, le nettoyage et la migration de données, les tableaux de bord, l'organisation d'une équipe et le plan de compétences.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est l'étape avant l'import complet d'une migration ?", "options": ["Un import test d'un petit échantillon", "Supprimer l'ancien fichier", "Envoyer la facture", "Rien"], "correct": 0 },
+        { "q": "À quoi doit répondre chaque graphique d'un tableau de bord ?", "options": ["À une question précise du client", "À rien de particulier", "À décorer la page", "À montrer toutes les données"], "correct": 0 },
+        { "q": "Que faire des e-mails manquants dans un fichier clients ?", "options": ["Les signaler, sans les inventer", "Les inventer", "Les copier d'un autre client", "Supprimer les clients"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité demande une confidentialité absolue et le vocabulaire médical ?", "options": ["Données de santé et d'assurance", "Catalogues e-commerce", "Gestion de CRM", "Saisie de reçus personnels"], "correct": 0 },
+    { "q": "Quels outils sont très utilisés pour les enquêtes numériques des ONG ?", "options": ["KoboToolbox et ODK", "Photoshop et Premiere", "Canva et CapCut", "Zoom et Teams"], "correct": 0 },
+    { "q": "Quel contrôle est logique dans une enquête ?", "options": ["Nombre d'enfants ≤ nombre de personnes du ménage", "Nom en majuscules", "Couleur de la cellule", "Taille de la police"], "correct": 0 },
+    { "q": "Quel critère de qualité mesure l'absence de doublons ?", "options": ["L'unicité", "L'actualité", "La complétude", "L'exactitude"], "correct": 0 },
+    { "q": "Quel avantage d'un tableau structuré ?", "options": ["Les formules se recopient automatiquement dans les nouvelles lignes", "Il supprime les données", "Il empêche les filtres", "Il est plus lourd"], "correct": 0 },
+    { "q": "Que renvoie RECHERCHEX si la valeur n'est pas trouvée et qu'on a indiqué « Introuvable » ?", "options": ["« Introuvable »", "Une erreur", "Zéro", "La première ligne"], "correct": 0 },
+    { "q": "Quelle fonction teste plusieurs conditions dans l'ordre ?", "options": ["SI.CONDITIONS", "SOMME", "NBCAR", "MAJUSCULE"], "correct": 0 },
+    { "q": "Dans Power Query, que fait l'opération « Ajouter » ?", "options": ["Empiler des fichiers de même structure", "Ajouter des colonnes avec une clé", "Supprimer des lignes", "Créer un graphique"], "correct": 0 },
+    { "q": "Dans Power Query, que fait l'opération « Fusionner » ?", "options": ["Ajouter les colonnes d'un autre tableau grâce à une clé commune", "Empiler des fichiers", "Imprimer", "Trier"], "correct": 0 },
+    { "q": "À quoi sert un tableau croisé dynamique ?", "options": ["Résumer un grand tableau par catégorie et par période", "Saisir des données", "Envoyer des e-mails", "Reconnaître du texte"], "correct": 0 },
+    { "q": "Quelle résolution de scan est souvent conseillée pour la reconnaissance ?", "options": ["300 ppp", "10 ppp", "50 ppp", "5 000 ppp"], "correct": 0 },
+    { "q": "500 questionnaires × 15 champs, 23 erreurs : quel taux d'erreur ?", "options": ["Environ 0,31 %", "23 %", "3,1 %", "0,03 %"], "correct": 0 },
+    { "q": "Quelle formule repère un identifiant en double ?", "options": ["=NB.SI([ID];[@ID])>1", "=SOMME([ID])", "=MAJUSCULE([ID])", "=NBCAR([ID])"], "correct": 0 },
+    { "q": "Que faire si un document ne permet pas de corriger une donnée incohérente ?", "options": ["Le signaler au client", "Deviner la bonne valeur", "Supprimer la ligne sans rien dire", "Mettre zéro"], "correct": 0 },
+    { "q": "Que livrer avec chaque base de données ?", "options": ["Un rapport de qualité et le journal des corrections", "Rien", "Vos mots de passe", "Une facture seulement"], "correct": 0 },
+    { "q": "Pourquoi découper un gros travail en lots ?", "options": ["Suivre, contrôler et livrer progressivement", "Pour travailler moins bien", "Pour cacher les erreurs", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une donnée personnelle ?", "options": ["Une information qui permet d'identifier une personne", "Une information sur la météo", "Le prix d'un produit", "Le nom d'une ville seul"], "correct": 0 },
+    { "q": "Comment partager des données du client ?", "options": ["Avec les outils de partage sécurisés du client", "Par WhatsApp", "Sur une clé USB personnelle", "Par e-mail personnel"], "correct": 0 },
+    { "q": "Pour un Américain, 03/04/2026 veut dire…", "options": ["4 mars 2026", "3 avril 2026", "4 avril 2026", "3 mars 2026"], "correct": 0 },
+    { "q": "Comment importer correctement un CSV anglais dans un Excel français ?", "options": ["Avec Données → À partir d'un fichier texte/CSV ou Power Query, en réglant séparateur et paramètres régionaux", "En double-cliquant dessus", "En le copiant dans Word", "En l'imprimant"], "correct": 0 },
+    { "q": "Que veut dire « outlier » ?", "options": ["Valeur aberrante", "Doublon", "Lot", "Champ"], "correct": 0 },
+    { "q": "Sur quoi fonder un devis par lot ?", "options": ["Un test réel sur un échantillon, contrôle compris", "Le prix d'un concurrent", "Le nombre de pages au hasard", "Rien"], "correct": 0 },
+    { "q": "Que contient le tableau de correspondance d'une migration ?", "options": ["Quelle colonne ancienne va dans quel champ nouveau", "Les mots de passe", "Les factures", "Les couleurs du logiciel"], "correct": 0 },
+    { "q": "Que doit montrer le rapport d'un nettoyage ?", "options": ["Les indicateurs avant et après", "Seulement le nouveau fichier", "Rien", "Les erreurs du client"], "correct": 0 },
+    { "q": "Sur quoi repose la confiance d'un client dans une équipe de traitement de données ?", "options": ["La qualité mesurée et la sécurité des données", "Le prix le plus bas", "La vitesse sans contrôle", "Le nombre d'opérateurs"], "correct": 0 }
+  ]
+}
