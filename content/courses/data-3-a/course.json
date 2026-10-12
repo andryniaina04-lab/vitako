@@ -1,0 +1,97 @@
+{
+  "id": "data-3-a",
+  "hours": 18,
+  "description": "Ce niveau Avancé fait de l'analyste de données un professionnel qui met en place des systèmes de décision fiables : spécialité (BI, finance, marketing, suivi-évaluation, opérations, données), diagnostic du reporting et fiches d'indicateurs, outils payants (Excel de Microsoft 365, Power BI Pro, Tableau) avec modèle en étoile, DAX avancé, publication et sécurité, contrôles de qualité et récit des analyses, protection des données et projets internationaux, puis tarif, reporting mensuel et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, diagnostiquer un reporting et définir des indicateurs solides",
+    "Construire un modèle en étoile et des mesures DAX avancées",
+    "Publier, actualiser et sécuriser des rapports dans le service Power BI",
+    "Contrôler la qualité, concevoir des tableaux orientés décision et raconter une analyse",
+    "Protéger les données et travailler sur des projets internationaux en anglais",
+    "Chiffrer un projet de BI, vendre un reporting mensuel et organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, diagnostiquer et définir les indicateurs",
+      "summary": "Les 6 spécialités avancées, le diagnostic du reporting en 6 domaines, la fiche d'indicateur, les qualités d'un tableau d'indicateurs et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "D'où viennent la plupart des disputes sur les chiffres ?", "options": ["De définitions différentes", "Des couleurs", "Des polices", "Du logiciel"], "correct": 0 },
+        { "q": "Combien d'indicateurs pour un tableau de direction ?", "options": ["5 à 10", "50", "1 seul", "Tous les possibles"], "correct": 0 },
+        { "q": "Que contient une fiche d'indicateur ?", "options": ["Définition, formule, source, fréquence, objectif, responsable", "Seulement le nom", "Un graphique", "Un mot de passe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : modèle en étoile, DAX, Power BI Pro, Excel 365 et Tableau",
+      "summary": "Table de faits et dimensions, CALCULATE et intelligence temporelle, service Power BI, sécurité au niveau des lignes, fonctions avancées d'Excel 365 et place de Tableau.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que contient une table de faits ?", "options": ["Les événements : ventes, appels, paiements", "Les descriptions des produits", "Les mots de passe", "Les couleurs"], "correct": 0 },
+        { "q": "Que faut-il pour que SAMEPERIODLASTYEAR fonctionne correctement ?", "options": ["Une table calendrier continue reliée aux faits", "Rien", "Un graphique en camembert", "Une connexion lente"], "correct": 0 },
+        { "q": "À quoi sert la sécurité au niveau des lignes ?", "options": ["Filtrer les données selon la personne connectée", "Accélérer le rapport", "Changer les couleurs", "Exporter en PDF"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : contrôles, conception, récit, documentation et performance",
+      "summary": "5 contrôles de qualité et page de contrôle, 3 niveaux de tableaux de bord, récit en 5 temps, documentation et versions, rapports rapides.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'un graphique qui ne mène à aucune décision ?", "options": ["Le retirer ou le déplacer en page d'analyse", "En ajouter d'autres", "Le mettre en haut", "Le colorer en rouge"], "correct": 0 },
+        { "q": "Que vérifier avant chaque présentation ?", "options": ["La page de contrôle", "La couleur du logo", "Le nombre de pages", "Rien"], "correct": 0 },
+        { "q": "Où faire les transformations lourdes ?", "options": ["En amont, dans Power Query ou SQL", "Dans chaque visuel", "À la main chaque mois", "Nulle part"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : protection des données, enquêtes, anglais et tests",
+      "summary": "7 règles de protection, collecte avec KoboToolbox ou ODK, cadre de suivi et données de référence, vocabulaire anglais, collaboration à distance et tests techniques.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi éviter les chiffres sur de très petits groupes ?", "options": ["Ils peuvent permettre d'identifier des personnes", "Ils sont trop jolis", "Ils sont interdits en Excel", "Ils ralentissent le rapport"], "correct": 0 },
+        { "q": "Qu'est-ce que la donnée de référence (baseline) ?", "options": ["La valeur d'un indicateur au début du projet", "La dernière valeur", "Un graphique", "Une moyenne inventée"], "correct": 0 },
+        { "q": "Comment dit-on « valeur aberrante » en anglais ?", "options": ["Outlier", "Trend", "Sample", "Dashboard"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : chiffrage, reporting mensuel, portfolio et équipe",
+      "summary": "Trois voies, chiffrage d'un projet de BI en fourchette, tarif journalier, formules de reporting mensuel, portfolio confirmé, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle étape d'un projet de BI est la plus incertaine ?", "options": ["La connexion et le nettoyage des sources", "Le choix des couleurs", "La signature du devis", "La formation"], "correct": 0 },
+        { "q": "Que demander avant de chiffrer ?", "options": ["Des échantillons de données", "Le mot de passe de la direction", "Rien", "Un paiement complet"], "correct": 0 },
+        { "q": "Comment créer des revenus réguliers après un projet de BI ?", "options": ["Proposer un reporting mensuel", "Arrêter de travailler avec le client", "Supprimer le rapport", "Ne rien proposer"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité répond aux obligations de rapport des ONG ?", "options": ["Suivi-évaluation", "Design", "SEO", "Montage"], "correct": 0 },
+    { "q": "Quel domaine du diagnostic demande quelles décisions sont prises ?", "options": ["Décisions", "Outils", "Qualité", "Sources"], "correct": 0 },
+    { "q": "Que doit avoir un bon KPI ?", "options": ["Une définition écrite unique", "Plusieurs définitions selon les personnes", "Aucune source", "Une couleur vive"], "correct": 0 },
+    { "q": "Avec quoi comparer chaque chiffre ?", "options": ["Objectif, période précédente ou même période l'année précédente", "Rien", "Le chiffre d'un autre secteur", "Un nombre au hasard"], "correct": 0 },
+    { "q": "Que contient une table de dimension ?", "options": ["Des descriptions : dates, produits, magasins", "Les ventes", "Les erreurs", "Les mots de passe"], "correct": 0 },
+    { "q": "Quelle fonction DAX modifie le contexte de filtre ?", "options": ["CALCULATE", "SUM", "COUNTROWS", "DIVIDE"], "correct": 0 },
+    { "q": "Quelle fonction calcule le cumul depuis le début de l'année ?", "options": ["TOTALYTD", "RANK", "FILTER seul", "CONCAT"], "correct": 0 },
+    { "q": "À quoi sert la passerelle Power BI ?", "options": ["Relier le service en ligne à des données locales", "Dessiner des graphiques", "Envoyer des SMS", "Traduire"], "correct": 0 },
+    { "q": "Qui a généralement besoin d'une licence Power BI Pro pour un rapport partagé ?", "options": ["Les personnes qui publient et celles qui consultent, selon l'offre", "Personne", "Seulement le directeur", "Seulement le freelance"], "correct": 0 },
+    { "q": "Quelle fonction DAX récupère l'identité de la personne connectée ?", "options": ["USERPRINCIPALNAME", "TODAY", "SUM", "RELATED"], "correct": 0 },
+    { "q": "Comment combiner tous les fichiers mensuels d'un dossier dans Excel ?", "options": ["Power Query : obtenir des données à partir d'un dossier", "Copier-coller chaque mois", "Imprimer", "Impossible"], "correct": 0 },
+    { "q": "Qu'est-ce que Tableau Public ?", "options": ["Une version gratuite où les travaux sont publics", "Un tableau en bois", "Une base de données privée", "Un logiciel de paie"], "correct": 0 },
+    { "q": "Quel contrôle compare les ventes à la comptabilité ?", "options": ["Le contrôle des totaux", "La fraîcheur", "La complétude", "La couleur"], "correct": 0 },
+    { "q": "Quel niveau de tableau de bord sert aux équipes opérationnelles ?", "options": ["Le détail", "La synthèse", "Aucun", "La couverture"], "correct": 0 },
+    { "q": "Que doit dire le constat principal ?", "options": ["Le message essentiel en une phrase", "Tous les détails", "Les formules", "Rien"], "correct": 0 },
+    { "q": "Que contient le journal des modifications ?", "options": ["Date, changement, raison, auteur", "Les ventes", "Les salaires", "Les mots de passe"], "correct": 0 },
+    { "q": "Que faire pour des responsables à connexion limitée ?", "options": ["Pages légères et abonnements par e-mail", "Plus de visuels par page", "Des vidéos lourdes", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce que la pseudonymisation ?", "options": ["Remplacer noms et numéros par des identifiants", "Publier les noms", "Supprimer toutes les données", "Traduire les données"], "correct": 0 },
+    { "q": "Quel outil de collecte fonctionne hors connexion et est très utilisé par les ONG ?", "options": ["KoboToolbox", "Photoshop", "Canva", "Zoom"], "correct": 0 },
+    { "q": "Que prévoir pour les unités locales comme le kapoaka ?", "options": ["Des conversions validées par l'équipe du projet", "Les ignorer", "Les deviner", "Les supprimer"], "correct": 0 },
+    { "q": "Que fait RANK() OVER (PARTITION BY magasin …) ?", "options": ["Classe les produits à l'intérieur de chaque magasin", "Supprime les magasins", "Additionne tout", "Trie au hasard"], "correct": 0 },
+    { "q": "Pourquoi faire relire les analyses importantes par un collègue ?", "options": ["Repérer les erreurs avant la direction", "Pour perdre du temps", "Pour copier", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que préciser dans le devis si les données sont mauvaises ?", "options": ["Ce qui se passe si elles sont en plus mauvais état que prévu", "Rien", "Que tout est gratuit", "Que le projet est annulé"], "correct": 0 },
+    { "q": "Que contient une ligne d'impact de portfolio ?", "options": ["Un résultat mesuré, comme le temps gagné", "Une liste de logiciels", "Un mot de passe", "Rien"], "correct": 0 },
+    { "q": "Quelle évolution demande pipelines, entrepôts et Python ?", "options": ["Ingénieur de données", "Graphiste", "Professeur", "Prospecteur"], "correct": 0 }
+  ]
+}

@@ -1263,6 +1263,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "data-3-a": {
+  "hours": 18,
+  "description": "Ce niveau Avancé fait de l'analyste de données un professionnel qui met en place des systèmes de décision fiables : spécialité (BI, finance, marketing, suivi-évaluation, opérations, données), diagnostic du reporting et fiches d'indicateurs, outils payants (Excel de Microsoft 365, Power BI Pro, Tableau) avec modèle en étoile, DAX avancé, publication et sécurité, contrôles de qualité et récit des analyses, protection des données et projets internationaux, puis tarif, reporting mensuel et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, diagnostiquer un reporting et définir des indicateurs solides",
+   "Construire un modèle en étoile et des mesures DAX avancées",
+   "Publier, actualiser et sécuriser des rapports dans le service Power BI",
+   "Contrôler la qualité, concevoir des tableaux orientés décision et raconter une analyse",
+   "Protéger les données et travailler sur des projets internationaux en anglais",
+   "Chiffrer un projet de BI, vendre un reporting mensuel et organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer et définir les indicateurs",
+    "summary": "Les 6 spécialités avancées, le diagnostic du reporting en 6 domaines, la fiche d'indicateur, les qualités d'un tableau d'indicateurs et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic du reporting",
+     "Définir des indicateurs solides",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : modèle en étoile, DAX, Power BI Pro, Excel 365 et Tableau",
+    "summary": "Table de faits et dimensions, CALCULATE et intelligence temporelle, service Power BI, sécurité au niveau des lignes, fonctions avancées d'Excel 365 et place de Tableau.",
+    "sections": [
+     "Le modèle en étoile",
+     "Le DAX avancé",
+     "Le service Power BI (Power BI Pro)",
+     "Restreindre l'accès aux données",
+     "Excel de Microsoft 365 avancé",
+     "Tableau",
+     "Exercice pratique : un système de BI"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : contrôles, conception, récit, documentation et performance",
+    "summary": "5 contrôles de qualité et page de contrôle, 3 niveaux de tableaux de bord, récit en 5 temps, documentation et versions, rapports rapides.",
+    "sections": [
+     "Les contrôles de qualité",
+     "Concevoir un tableau de bord orienté décision",
+     "Raconter une analyse",
+     "Documenter et versionner",
+     "Garder des rapports rapides",
+     "Exercice pratique : qualité et récit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : protection des données, enquêtes, anglais et tests",
+    "summary": "7 règles de protection, collecte avec KoboToolbox ou ODK, cadre de suivi et données de référence, vocabulaire anglais, collaboration à distance et tests techniques.",
+    "sections": [
+     "Protéger les données",
+     "Les données d'enquêtes et les indicateurs de projets",
+     "Présenter une analyse en anglais",
+     "Collaborer à distance",
+     "Réussir les tests techniques",
+     "Exercice pratique : un projet international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : chiffrage, reporting mensuel, portfolio et équipe",
+    "summary": "Trois voies, chiffrage d'un projet de BI en fourchette, tarif journalier, formules de reporting mensuel, portfolio confirmé, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Chiffrer un projet de BI",
+     "Le portfolio de l'analyste confirmé",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan de carrière"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "data-3-f": {
   "hours": 18,
   "description": "L'analyste de données transforme des données brutes en informations claires qui aident à décider. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des ONG et des entreprises francophones, en télétravail, avec Excel, Power BI et SQL : nettoyage, indicateurs, graphiques, requêtes, tableaux de bord et recommandations. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

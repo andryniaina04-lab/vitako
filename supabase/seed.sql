@@ -70,7 +70,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
   ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
   ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true),
-  ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 14, false),
+  ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 18, true),
   ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 16, true),
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 15, false),
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
@@ -7080,6 +7080,610 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '150 champs contrôlés, 1 erreur : le taux d''erreur est d''environ…', '["0,67 %","15 %","0,01 %","1,5 %"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que contient le rapport de livraison ?', '["Seulement le prix","Rien, le fichier suffit","Vos mots de passe","Volume, temps, qualité, problèmes et description du fichier"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faire des données personnelles à la fin d''une mission, si le client le demande ?', '["Les supprimer et le confirmer par écrit","Les vendre","Les publier","Les garder pour un autre client"]'::jsonb, 0);
+
+-- data-3-a
+delete from public.exam_questions where course_id = 'data-3-a';
+delete from public.module_questions where course_id = 'data-3-a';
+delete from public.lessons where course_id = 'data-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-a', 0, 'Se spécialiser, diagnostiquer et définir les indicateurs', 'Les 6 spécialités avancées, le diagnostic du reporting en 6 domaines, la fiche d''indicateur, les qualités d''un tableau d''indicateurs et les offres à forte valeur.', 'Savoir nettoyer des données et construire un tableau de bord ouvre les premières missions. Les analystes les mieux payés vont plus loin : ils **mettent en place des systèmes de reporting fiables** qui s''actualisent seuls, maîtrisent un domaine métier, et aident la direction à **prendre des décisions** chiffrées. Ce module vous aide à choisir votre spécialité et à vendre cette expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''analyse de données.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic du reporting d''une organisation.
+> 4. Définir des indicateurs clés solides.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Business intelligence (BI)** | Des rapports faits à la main chaque mois, avec des erreurs | Power BI ou Tableau, modélisation, actualisation automatique |
+| 2 | **Analyse financière** | Budget, marges, trésorerie difficiles à suivre | Excel avancé, logique comptable, prévisions simples |
+| 3 | **Analyse marketing et commerciale** | On ne sait pas quelles actions rapportent | Sources marketing, attribution, cohortes, entonnoirs |
+| 4 | **Suivi-évaluation de projets** | Les ONG doivent prouver leurs résultats aux bailleurs | Cadres logiques, indicateurs, enquêtes, rapports |
+| 5 | **Analyse des opérations** | Stocks, délais, productivité mal maîtrisés | Indicateurs opérationnels, prévisions, alertes |
+| 6 | **Ingénierie de données légère** | Les données sont éparpillées dans dix fichiers et outils | SQL avancé, Power Query, flux de données, bases de données |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Suivi-évaluation** pour les ONG, les projets de développement et les organisations internationales présentes à Madagascar, qui ont des obligations de rapport régulières.
+> - **BI pour les entreprises de services numériques et centres d''appels** d''Antananarivo, qui suivent de nombreux indicateurs de production.
+> - **Reporting en sous-traitance** pour des cabinets de conseil francophones.
+
+## Le diagnostic du reporting
+
+Le diagnostic est souvent le **premier service** vendu : il montre le temps perdu, les risques d''erreur, et mène à un projet de BI.
+
+### Les 6 domaines
+
+| Domaine | Questions |
+| --- | --- |
+| **1. Décisions** | Quelles décisions la direction prend-elle chaque mois ? Avec quels chiffres ? |
+| **2. Sources** | Où sont les données : logiciel de caisse, comptabilité, CRM, fichiers Excel, enquêtes ? |
+| **3. Processus** | Qui prépare les rapports ? Combien de temps ? Combien d''étapes manuelles ? |
+| **4. Qualité** | Les chiffres sont-ils cohérents entre les rapports ? Y a-t-il des erreurs connues ? |
+| **5. Outils et accès** | Excel, Power BI, Tableau ? Qui voit quoi ? |
+| **6. Usage** | Les rapports sont-ils lus ? Utiles ? Trop nombreux ? |
+
+> [!exemple] Extrait de résumé de diagnostic
+> « Chaque mois, 2 personnes passent 4 jours à assembler 9 fichiers Excel pour produire le rapport de direction. Le chiffre d''affaires du rapport diffère de 3 % de la comptabilité, car les avoirs ne sont pas déduits de la même façon. Sur 14 pages, la direction déclare en utiliser 3. Nous proposons un tableau de bord Power BI actualisé chaque jour, avec une définition unique de chaque indicateur. »
+
+## Définir des indicateurs solides
+
+> [!definition] Indicateur clé (KPI)
+> Un chiffre suivi régulièrement, lié à un objectif, qui aide à décider. Un bon KPI a **une définition écrite unique**, une **source**, une **fréquence** et un **responsable**.
+
+### La fiche d''indicateur
+
+| Élément | Exemple |
+| --- | --- |
+| **Nom** | Marge brute mensuelle |
+| **Définition** | Chiffre d''affaires net (après remises et avoirs) − coût d''achat des produits vendus |
+| **Formule** | SUM(Ventes nettes) − SUM(Quantité × Coût d''achat) |
+| **Source** | Logiciel de caisse + fichier des prix d''achat |
+| **Fréquence** | Quotidienne, présentée chaque mois |
+| **Objectif** | 28 % |
+| **Responsable** | Directeur commercial |
+
+> [!attention]
+> La plupart des disputes autour des chiffres viennent de **définitions différentes** (chiffre d''affaires avec ou sans taxes, avec ou sans avoirs, date de commande ou de livraison). Écrivez la définition et faites-la valider avant de construire.
+
+### Les qualités d''un bon tableau d''indicateurs
+
+1. **Peu d''indicateurs** : 5 à 10 pour la direction.
+2. **Des indicateurs qui mènent à une action**.
+3. **Un équilibre** : résultats (ventes) et leviers (nombre de visites, taux de conversion).
+4. **Des comparaisons** : objectif, période précédente, même période l''année précédente.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Diagnostic du reporting** | 6 domaines, fiches d''indicateurs, plan |
+| **Mise en place BI** | Connexion des sources, modèle, tableaux de bord, actualisation, formation |
+| **Analyse stratégique** | Une question importante, analyse approfondie, recommandations |
+| **Reporting mensuel externalisé** | Actualisation, contrôle, commentaire des chiffres |
+| **Suivi-évaluation** | Indicateurs de projet, collecte, rapports aux bailleurs |
+| **Formation des équipes** | Excel avancé ou Power BI pour les utilisateurs |
+
+> [!retenir]
+> - Spécialisez-vous : BI, finance, marketing, suivi-évaluation, opérations ou données.
+> - Le diagnostic en 6 domaines montre le temps perdu et les risques.
+> - Chaque indicateur a une fiche : définition, formule, source, fréquence, objectif, responsable.
+> - Peu d''indicateurs, liés à des actions et comparés.
+> - Vendez des systèmes de décision, pas des graphiques.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Menez le diagnostic du reporting d''une organisation réelle (avec accord) ou fictive, avec les 6 domaines.
+> 3. Rédigez 6 fiches d''indicateurs.
+> 4. Rédigez le résumé du diagnostic et votre proposition.
+>
+> **À livrer** : votre choix, votre diagnostic, vos fiches et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 0, 0, 'D''où viennent la plupart des disputes sur les chiffres ?', '["Des polices","De définitions différentes","Du logiciel","Des couleurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 0, 1, 'Combien d''indicateurs pour un tableau de direction ?', '["50","5 à 10","1 seul","Tous les possibles"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 0, 2, 'Que contient une fiche d''indicateur ?', '["Un mot de passe","Seulement le nom","Définition, formule, source, fréquence, objectif, responsable","Un graphique"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-a', 1, 'Outils professionnels : modèle en étoile, DAX, Power BI Pro, Excel 365 et Tableau', 'Table de faits et dimensions, CALCULATE et intelligence temporelle, service Power BI, sécurité au niveau des lignes, fonctions avancées d''Excel 365 et place de Tableau.', 'Au niveau Avancé, vous travaillez avec les outils que les organisations structurées utilisent : **Excel de Microsoft 365** dans ses fonctions avancées, **Power BI Pro** pour publier et partager, et **Tableau**. Ce module vous apprend à construire des modèles solides et des tableaux de bord qui s''actualisent seuls, en toute sécurité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un modèle de données en étoile.
+> 2. Écrire des mesures DAX avancées, dont l''intelligence temporelle.
+> 3. Publier, partager et actualiser dans le service Power BI.
+> 4. Restreindre l''accès aux données selon l''utilisateur.
+> 5. Utiliser les fonctions avancées d''Excel 365 et comprendre la place de Tableau.
+
+## Le modèle en étoile
+
+> [!definition] Modèle en étoile
+> Une organisation des données avec une **table de faits** au centre (les événements : ventes, appels, paiements) reliée à des **tables de dimensions** autour (les descriptions : dates, produits, magasins, clients). C''est la structure recommandée pour Power BI.
+
+| Table | Type | Colonnes |
+| --- | --- | --- |
+| **Ventes** | Faits | Date, IdProduit, IdMagasin, Quantité, Montant net, Coût |
+| **Calendrier** | Dimension | Date, Année, Mois, Trimestre, Jour de la semaine, Jour férié |
+| **Produits** | Dimension | IdProduit, Nom, Catégorie, Fournisseur |
+| **Magasins** | Dimension | IdMagasin, Nom, Ville, Région |
+
+### Les règles
+
+1. **Relations** d''une dimension (côté 1) vers les faits (côté plusieurs).
+2. **Une table calendrier** complète, marquée comme table de dates.
+3. **Pas de colonnes inutiles** : elles alourdissent le modèle.
+4. **Les calculs dans des mesures**, pas dans des colonnes, quand c''est possible.
+
+## Le DAX avancé
+
+### CALCULATE : la fonction clé
+
+```
+Ventes Antananarivo =
+CALCULATE ( [Ventes nettes], Magasins[Ville] = "Antananarivo" )
+
+Part des ventes =
+DIVIDE ( [Ventes nettes], CALCULATE ( [Ventes nettes], ALL ( Magasins ) ) )
+```
+
+> [!definition] Contexte de filtre
+> L''ensemble des filtres actifs au moment du calcul (un mois choisi, un magasin, une catégorie). CALCULATE permet de modifier ce contexte : ajouter, remplacer ou retirer des filtres.
+
+### L''intelligence temporelle
+
+```
+Ventes année précédente =
+CALCULATE ( [Ventes nettes], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+
+Évolution sur un an =
+DIVIDE ( [Ventes nettes] - [Ventes année précédente], [Ventes année précédente] )
+
+Ventes cumulées de l''année =
+TOTALYTD ( [Ventes nettes], Calendrier[Date] )
+```
+
+> [!attention]
+> Ces fonctions ne marchent correctement qu''avec une **table calendrier continue** (toutes les dates, sans trou) reliée aux faits. Sans elle, les comparaisons avec l''année précédente donnent des résultats faux sans message d''erreur.
+
+## Le service Power BI (Power BI Pro)
+
+| Fonction | Utilité |
+| --- | --- |
+| **Espaces de travail** | Organiser les rapports par client ou par équipe |
+| **Publication** | Envoyer le rapport de Power BI Desktop vers le service en ligne |
+| **Partage et applications** | Donner l''accès aux bonnes personnes |
+| **Actualisation planifiée** | Mettre à jour les données automatiquement (plusieurs fois par jour selon la licence) |
+| **Passerelle** | Relier le service en ligne à des données sur un ordinateur ou un serveur local |
+| **Abonnements et alertes** | Envoyer le rapport par e-mail, alerter quand un chiffre dépasse un seuil |
+
+> [!madagascar]
+> Power BI Pro est une licence **par utilisateur**, facturée en dollars ou en euros. En général, chaque personne qui publie **et** chaque personne qui consulte un rapport partagé a besoin d''une licence (sauf dans certaines offres de capacité). Le client achète les licences, et vous travaillez dans son espace. Vérifiez les conditions et les prix sur le site officiel de Microsoft.
+
+## Restreindre l''accès aux données
+
+> [!definition] Sécurité au niveau des lignes (RLS)
+> Une règle qui filtre automatiquement les données selon la personne connectée : le responsable du magasin de Toamasina ne voit que les ventes de Toamasina, la direction voit tout.
+
+```
+// Rôle « Responsable magasin », filtre sur la table Magasins
+[EmailResponsable] = USERPRINCIPALNAME()
+```
+
+1. Créez les **rôles** dans Power BI Desktop.
+2. **Testez** chaque rôle (« Afficher en tant que »).
+3. **Attribuez** les personnes aux rôles dans le service.
+
+## Excel de Microsoft 365 avancé
+
+| Fonction | Usage |
+| --- | --- |
+| `FILTRE`, `TRIER`, `UNIQUE` | Listes dynamiques qui se mettent à jour seules |
+| `LET` | Nommer des calculs intermédiaires dans une formule longue |
+| **Power Pivot** | Modèle de données et mesures DAX dans Excel |
+| **Power Query** | Combiner automatiquement tous les fichiers d''un dossier |
+| **Tableaux croisés reliés au modèle** | Analyse sur plusieurs tables sans RECHERCHEX |
+
+> [!astuce]
+> « Obtenir des données → À partir d''un dossier » dans Power Query combine automatiquement tous les fichiers mensuels d''un même format. Le mois suivant, il suffit d''ajouter le nouveau fichier dans le dossier et d''actualiser.
+
+## Tableau
+
+> [!definition] Tableau
+> Un logiciel de visualisation très utilisé, réputé pour la qualité et la souplesse de ses graphiques. Tableau Public est gratuit (les travaux sont publics) ; les versions professionnelles sont payantes.
+
+| Situation | Outil souvent choisi |
+| --- | --- |
+| Entreprise qui utilise Microsoft 365 | Power BI |
+| Grandes entreprises et certaines organisations internationales | Tableau ou Power BI selon leurs choix |
+| Portfolio public, visualisations soignées | Tableau Public |
+
+> [!retenir]
+> - Un modèle en étoile avec une table calendrier.
+> - CALCULATE modifie le contexte de filtre ; l''intelligence temporelle compare les périodes.
+> - Le service Power BI publie, partage, actualise et alerte.
+> - La sécurité au niveau des lignes protège les données.
+> - Excel 365 avancé et Tableau selon le contexte du client.
+
+## Exercice pratique : un système de BI
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Construisez dans Power BI Desktop un modèle en étoile (ventes, calendrier, produits, magasins) avec des données fictives sur 2 ans.
+> 2. Créez 8 mesures : ventes nettes, marge, taux de marge, ventes de l''année précédente, évolution, cumul annuel, part des ventes, panier moyen.
+> 3. Créez un rapport de 2 pages : vue direction et vue magasin.
+> 4. Créez un rôle de sécurité par magasin et testez-le.
+> 5. Si vous avez accès à une licence ou un essai, publiez et programmez une actualisation ; sinon, rédigez la procédure.
+>
+> **À livrer** : votre fichier, des captures et votre procédure.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 1, 0, 'Que contient une table de faits ?', '["Les descriptions des produits","Les événements : ventes, appels, paiements","Les mots de passe","Les couleurs"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 1, 1, 'Que faut-il pour que SAMEPERIODLASTYEAR fonctionne correctement ?', '["Une table calendrier continue reliée aux faits","Un graphique en camembert","Une connexion lente","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 1, 2, 'À quoi sert la sécurité au niveau des lignes ?', '["Changer les couleurs","Filtrer les données selon la personne connectée","Exporter en PDF","Accélérer le rapport"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-a', 2, 'Qualité et rapidité : contrôles, conception, récit, documentation et performance', '5 contrôles de qualité et page de contrôle, 3 niveaux de tableaux de bord, récit en 5 temps, documentation et versions, rapports rapides.', 'Un tableau de bord avec un chiffre faux perd la confiance de la direction pour longtemps. Ce module vous donne les méthodes des analystes professionnels : contrôler la qualité des données, concevoir des tableaux de bord vraiment utiles, documenter, versionner et garder des rapports rapides.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mettre en place des contrôles automatiques de qualité.
+> 2. Concevoir un tableau de bord orienté décision.
+> 3. Raconter une analyse avec des données.
+> 4. Documenter et versionner vos travaux.
+> 5. Garder des rapports rapides.
+
+## Les contrôles de qualité
+
+| Contrôle | Exemple | Comment |
+| --- | --- | --- |
+| **Totaux** | Les ventes du mois = le total de la comptabilité (à 0,5 % près) | Mesure de contrôle comparée chaque mois |
+| **Complétude** | Les 3 magasins ont envoyé leurs données pour tous les jours | Comptage des jours par magasin |
+| **Valeurs inattendues** | Montants négatifs, quantités énormes, dates futures | Mesures d''alerte |
+| **Correspondances** | Chaque produit vendu existe dans la table des produits | Comptage des lignes sans correspondance |
+| **Fraîcheur** | La dernière actualisation date de moins de 24 heures | Date de dernière actualisation affichée |
+
+> [!astuce]
+> Créez une **page de contrôle** cachée ou réservée aux analystes dans le rapport : totaux de contrôle, lignes sans correspondance, jours manquants, date d''actualisation. Consultez-la avant chaque présentation.
+
+## Concevoir un tableau de bord orienté décision
+
+### Les 3 niveaux
+
+| Niveau | Pour qui | Contenu |
+| --- | --- | --- |
+| **Synthèse** | Direction | 5 à 8 indicateurs, tendances, alertes |
+| **Analyse** | Responsables | Découpage par magasin, produit, période ; causes |
+| **Détail** | Équipes opérationnelles | Listes : commandes en retard, produits en rupture |
+
+### Les règles visuelles
+
+1. **En haut à gauche** : le plus important.
+2. **Chaque chiffre avec une comparaison** : objectif, période précédente.
+3. **Des couleurs de signal limitées** : rouge seulement pour ce qui demande une action.
+4. **Des titres qui disent le message** quand le rapport est commenté.
+5. **Une page = une question**.
+6. **Testé sur téléphone** si la direction le consulte sur mobile.
+
+> [!attention]
+> Un tableau de bord avec 30 graphiques n''aide personne. Si un graphique ne mène à **aucune décision ni action**, retirez-le ou déplacez-le dans une page d''analyse.
+
+## Raconter une analyse
+
+### La structure en 5 temps
+
+1. **Le contexte** : pourquoi cette analyse ?
+2. **Le constat principal** en une phrase.
+3. **Les preuves** : 2 à 3 graphiques, du général au détail.
+4. **La cause** et son impact chiffré.
+5. **La recommandation** et la prochaine étape.
+
+> [!exemple] Un constat principal bien écrit
+> « Le taux de remboursement des prêts de la coopérative a baissé de 96 % à 89 % en 6 mois, et 80 % de cette baisse vient de 2 agences de la région Atsimo-Andrefana, où la sécheresse a réduit les récoltes. »
+
+## Documenter et versionner
+
+### La documentation d''un projet
+
+| Document | Contenu |
+| --- | --- |
+| **Fiches d''indicateurs** | Définitions validées |
+| **Schéma des sources** | D''où viennent les données, à quelle fréquence |
+| **Description du modèle** | Tables, relations, mesures principales |
+| **Procédure d''actualisation** | Qui, quand, que faire en cas d''échec |
+| **Journal des modifications** | Date, changement, raison, auteur |
+
+### Les versions
+
+1. **Nommez** les fichiers avec une version (`Rapport_Direction_v2.3.pbix`) ou utilisez un dépôt Git pour les requêtes SQL et les scripts.
+2. **Testez** les changements dans une copie avant de publier.
+3. **Gardez** la version précédente publiée pour revenir en arrière.
+
+## Garder des rapports rapides
+
+| Problème | Solution |
+| --- | --- |
+| Modèle trop lourd | Supprimer les colonnes inutiles, réduire la précision des dates et heures |
+| Trop de visuels sur une page | Répartir sur plusieurs pages |
+| Mesures lentes | Simplifier, éviter les calculs ligne par ligne inutiles |
+| Données trop détaillées | Agréger (par jour plutôt que par seconde) si le détail n''est pas utilisé |
+| Transformations dans le rapport | Les faire en amont (Power Query, SQL) |
+
+> [!madagascar]
+> Si les responsables consultent les rapports avec une **connexion mobile limitée**, préférez des pages légères, peu de visuels par page, et des **abonnements par e-mail** (image ou PDF) qui ne demandent pas d''ouvrir le rapport en ligne.
+
+> [!retenir]
+> - 5 contrôles de qualité et une page de contrôle.
+> - 3 niveaux de tableaux de bord, chaque chiffre comparé, une page par question.
+> - Une analyse racontée en 5 temps, avec un constat en une phrase.
+> - Une documentation complète et des versions testées.
+> - Des rapports légers et rapides.
+
+## Exercice pratique : qualité et récit
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Ajoutez une page de contrôle à votre rapport du module 2 avec les 5 contrôles.
+> 2. Réorganisez le rapport en 3 niveaux et appliquez les règles visuelles.
+> 3. Rédigez une analyse en 5 temps sur une question tirée de vos données.
+> 4. Rédigez la documentation complète du projet.
+>
+> **À livrer** : votre rapport amélioré, votre analyse et votre documentation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 2, 0, 'Que faire d''un graphique qui ne mène à aucune décision ?', '["Le retirer ou le déplacer en page d''analyse","En ajouter d''autres","Le mettre en haut","Le colorer en rouge"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 2, 1, 'Que vérifier avant chaque présentation ?', '["Le nombre de pages","Rien","La page de contrôle","La couleur du logo"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 2, 2, 'Où faire les transformations lourdes ?', '["Nulle part","Dans chaque visuel","En amont, dans Power Query ou SQL","À la main chaque mois"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-a', 3, 'Clients internationaux : protection des données, enquêtes, anglais et tests', '7 règles de protection, collecte avec KoboToolbox ou ODK, cadre de suivi et données de référence, vocabulaire anglais, collaboration à distance et tests techniques.', 'Les organisations internationales, les cabinets de conseil et les entreprises étrangères offrent les missions d''analyse les mieux payées. Elles attendent des rapports en anglais, le respect strict de la protection des données, des méthodes reconnues et une collaboration à distance efficace. Ce module vous prépare à travailler avec elles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les règles de protection des données dans vos analyses.
+> 2. Travailler avec des données d''enquêtes et des indicateurs de projets.
+> 3. Présenter une analyse en anglais.
+> 4. Collaborer à distance sur des données partagées.
+> 5. Réussir les tests techniques des recruteurs.
+
+## Protéger les données
+
+### Les 7 règles
+
+1. **Minimisation** : ne travaillez qu''avec les données nécessaires à la question.
+2. **Pseudonymisation** : remplacez les noms et numéros par des identifiants quand c''est possible.
+3. **Agrégation** : présentez des résultats par groupe, jamais des données individuelles identifiables.
+4. **Petits effectifs** : ne publiez pas de chiffres sur des groupes de quelques personnes, qui permettraient de les reconnaître.
+5. **Accès limités** : chaque personne ne voit que ce dont elle a besoin (sécurité au niveau des lignes).
+6. **Stockage sûr** : outils de l''organisation, pas de copies sur des clés USB ou des messageries personnelles.
+7. **Lois applicables** : loi malgache sur les données personnelles, RGPD pour les personnes en Europe, règles du bailleur.
+
+> [!attention]
+> Dans une enquête auprès de 300 ménages d''une commune, un tableau qui croise village, sexe, âge et maladie peut permettre d''identifier une personne. Regroupez les catégories ou masquez les cases avec moins de 5 personnes, selon les règles du projet.
+
+## Les données d''enquêtes et les indicateurs de projets
+
+### Les outils de collecte courants
+
+| Outil | Usage |
+| --- | --- |
+| **KoboToolbox** | Formulaires d''enquête sur téléphone, même hors connexion, très utilisé par les ONG |
+| **ODK** | Collecte mobile, base de nombreux outils humanitaires |
+| **Formulaires en ligne** | Enquêtes simples |
+
+### Le cadre de suivi d''un projet
+
+| Niveau | Exemple d''indicateur | Source |
+| --- | --- | --- |
+| **Activités** | Nombre de formations agricoles organisées | Registre du projet |
+| **Produits** | Nombre d''agriculteurs formés (dont femmes) | Listes de présence |
+| **Résultats** | Part des agriculteurs qui appliquent la nouvelle technique | Enquête de suivi |
+| **Impact** | Évolution du rendement moyen de riz | Enquêtes de début et de fin |
+
+> [!definition] Données de référence (baseline)
+> La valeur d''un indicateur au début du projet. Sans elle, il est impossible de montrer une évolution.
+
+> [!madagascar]
+> Les données collectées sur le terrain à Madagascar contiennent souvent des noms de lieux écrits de plusieurs façons, des réponses en malgache et des unités locales (kapoaka, daba). Prévoyez des **listes de référence** (communes, fokontany), des **conversions d''unités** validées par l''équipe du projet, et une **traduction** des réponses ouvertes.
+
+## Présenter une analyse en anglais
+
+### Le vocabulaire
+
+| Français | Anglais |
+| --- | --- |
+| Tableau de bord | Dashboard |
+| Indicateur clé | Key performance indicator (KPI) |
+| Évolution sur un an | Year-over-year change |
+| Tendance | Trend |
+| Données manquantes | Missing data |
+| Valeur aberrante | Outlier |
+| Échantillon | Sample |
+| Constat principal | Key finding |
+
+> [!exemple] Résumé en anglais
+> "Key finding: loan repayment fell from 96% to 89% over six months. Two branches in the Atsimo-Andrefana region account for 80% of the decline, coinciding with a drought that reduced harvests. We recommend rescheduling options for affected borrowers and weekly monitoring of these branches. Note: data for July is incomplete for one branch."
+
+## Collaborer à distance
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Une seule source de vérité** | Tout le monde utilise le même jeu de données et les mêmes définitions |
+| **Requêtes et scripts versionnés** (Git) | On sait qui a changé quoi |
+| **Revue par un collègue** des analyses importantes | Repérer les erreurs avant la direction |
+| **Notes de méthode** jointes à chaque analyse | Hypothèses, filtres, limites |
+| **Communication écrite** claire | Les collègues dans d''autres fuseaux comprennent sans réunion |
+
+## Réussir les tests techniques
+
+| Test | Ce qui est évalué | Préparation |
+| --- | --- | --- |
+| **SQL** | Jointures, regroupements, fonctions de fenêtre | Entraînement régulier sur des exercices |
+| **Excel** | Formules, tableaux croisés, nettoyage | Exercices chronométrés |
+| **Étude de cas** | Analyser un jeu de données en temps limité et présenter | Méthode en 5 temps, structure claire |
+| **Power BI ou Tableau** | Modèle, mesures, visualisation | Projets de portfolio |
+| **Entretien** | Explication de vos projets | Présenter 2 projets en 5 minutes chacun |
+
+```sql
+-- Fonction de fenêtre : classement des produits par magasin
+SELECT magasin, produit, SUM(montant) AS ventes,
+       RANK() OVER (PARTITION BY magasin ORDER BY SUM(montant) DESC) AS rang
+FROM ventes
+GROUP BY magasin, produit;
+```
+
+> [!retenir]
+> - 7 règles de protection des données, dont l''agrégation et l''attention aux petits effectifs.
+> - Collecte avec KoboToolbox ou ODK, indicateurs par niveau et données de référence.
+> - Des analyses présentées en anglais avec un constat clair.
+> - Une source de vérité, des versions, des revues et des notes de méthode.
+> - Des tests techniques préparés : SQL, Excel, étude de cas, BI.
+
+## Exercice pratique : un projet international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Prenez un jeu de données d''enquête public (ou créez-en un) et appliquez les 7 règles de protection.
+> 2. Construisez le cadre de suivi d''un projet fictif avec 8 indicateurs sur 4 niveaux.
+> 3. Rédigez un résumé d''analyse en anglais.
+> 4. Faites 10 exercices SQL, dont 3 avec des fonctions de fenêtre.
+>
+> **À livrer** : votre jeu de données protégé, votre cadre, votre résumé et vos requêtes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 3, 0, 'Pourquoi éviter les chiffres sur de très petits groupes ?', '["Ils ralentissent le rapport","Ils peuvent permettre d''identifier des personnes","Ils sont trop jolis","Ils sont interdits en Excel"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 3, 1, 'Qu''est-ce que la donnée de référence (baseline) ?', '["Une moyenne inventée","La dernière valeur","Un graphique","La valeur d''un indicateur au début du projet"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 3, 2, 'Comment dit-on « valeur aberrante » en anglais ?', '["Trend","Dashboard","Sample","Outlier"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-a', 4, 'Développer son activité : chiffrage, reporting mensuel, portfolio et équipe', 'Trois voies, chiffrage d''un projet de BI en fourchette, tarif journalier, formules de reporting mensuel, portfolio confirmé, équipe et évolution.', 'Un analyste confirmé peut construire une activité solide depuis Madagascar : poste à distance dans une équipe data, missions de BI en freelance, reporting mensuel pour plusieurs clients, ou petite équipe d''analystes. Ce dernier module vous aide à choisir votre voie, à fixer vos prix et à construire des revenus réguliers.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste à distance, freelance et petite équipe.
+> 2. Chiffrer un projet de BI et un reporting mensuel.
+> 3. Construire un portfolio d''analyste confirmé.
+> 4. Organiser une petite équipe avec des règles de qualité.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Avantages | Points de vigilance |
+| --- | --- | --- |
+| **Analyste à distance** dans une organisation | Revenu stable, données riches, apprentissage | Contrat et paiement adaptés à Madagascar |
+| **Freelance BI** | Projets variés, tarif plus élevé | Prospection, revenus irréguliers |
+| **Petite équipe** | Reporting pour plusieurs clients, revenus récurrents | Qualité, confidentialité, gestion |
+
+## Chiffrer un projet de BI
+
+| Étape | Estimation basse | Estimation haute |
+| --- | --- | --- |
+| Diagnostic et fiches d''indicateurs | 2 j | 3 j |
+| Connexion et nettoyage des sources | 3 j | 6 j |
+| Modèle et mesures | 2 j | 4 j |
+| Tableaux de bord (3 niveaux) | 3 j | 5 j |
+| Sécurité, publication, actualisation | 1 j | 2 j |
+| Contrôles, documentation, formation | 2 j | 3 j |
+| **Total** | **13 j** | **23 j** |
+
+> [!attention]
+> L''étape la plus incertaine est presque toujours la **connexion et le nettoyage des sources**. Demandez des échantillons de données **avant** de chiffrer, et écrivez dans le devis ce qui se passe si les données sont en plus mauvais état que prévu.
+
+### Le tarif journalier
+
+Revenu annuel visé ÷ jours facturables (environ 180 à 200), puis comparaison avec le marché du client.
+
+> [!exemple] Calcul
+> Revenu visé : 32 000 000 Ar par an, 180 jours facturables : environ 178 000 Ar par jour. Pour un client européen, comparez avec les tarifs des consultants BI de son marché et fixez votre prix en euros.
+> *(Montants donnés en exemple.)*
+
+### Le reporting mensuel
+
+| Formule | Contenu (exemple) |
+| --- | --- |
+| **Actualisation** | Vérification de l''actualisation, page de contrôle, correction des erreurs |
+| **Commentaire** | Actualisation + note mensuelle des 5 constats principaux |
+| **Partenaire data** | Commentaire + petites évolutions + analyse approfondie chaque trimestre |
+
+> [!astuce]
+> Chaque projet de BI réussi peut devenir un **contrat mensuel** : les sources changent, les besoins évoluent, et la direction veut quelqu''un qui comprend ses chiffres. Proposez-le dès le devis initial.
+
+## Le portfolio de l''analyste confirmé
+
+1. **3 projets** complets avec le contexte, la méthode, le tableau de bord et l''impact.
+2. **Des tableaux de bord publics** (Tableau Public, vidéos Power BI) sur des données ouvertes.
+3. **Des requêtes SQL** sur GitHub, commentées.
+4. **Un article ou une analyse publiée** sur un sujet de Madagascar ou d''Afrique.
+5. **Des certifications** reconnues si vous visez certains employeurs (par exemple les certifications Microsoft sur Power BI ; vérifiez les programmes en vigueur).
+
+> [!exemple] Ligne d''impact
+> « Mise en place d''un tableau de bord Power BI pour une coopérative de microfinance de 12 agences : temps de préparation du rapport mensuel passé de 4 jours à 2 heures, détection des retards de remboursement en 1 semaine au lieu de 1 mois. »
+
+## Organiser une petite équipe
+
+| Rôle | Tâches |
+| --- | --- |
+| **Vous** | Relation client, conception, revue, analyses importantes |
+| **Analystes juniors** | Nettoyage, actualisation, contrôles, premiers visuels |
+| **Partenaire développeur ou ingénieur de données** | Connexions complexes, bases de données |
+
+### Les règles
+
+1. **Des modèles** de documentation, de fiches d''indicateurs et de rapports.
+2. **Une revue** de chaque livraison par une deuxième personne.
+3. **Des accès** limités aux données de chaque client.
+4. **Des accords de confidentialité** et l''accord des clients pour la sous-traitance.
+5. **Des contrats** et un paiement juste et à temps.
+
+> [!madagascar]
+> Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable. Pour les clients étrangers, comparez Payoneer et le virement international, et gardez une trace de chaque paiement ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Analyste BI senior** | Architecture de données, gouvernance, accompagnement |
+| **Ingénieur de données** | Entrepôts de données, pipelines, SQL avancé, Python |
+| **Data scientist** | Statistiques, Python, apprentissage automatique |
+| **Responsable data** | Stratégie, équipe, budget |
+| **Consultant suivi-évaluation** | Méthodes d''évaluation d''impact, enquêtes, relations avec les bailleurs |
+
+> [!retenir]
+> - Choisissez votre voie : poste à distance, freelance ou équipe.
+> - Chiffrez en fourchette, en vérifiant d''abord l''état des données.
+> - Transformez les projets en contrats de reporting mensuel.
+> - Un portfolio avec des impacts mesurés et des tableaux publics.
+> - Une équipe avec des modèles, des revues et des accès limités.
+
+## Exercice pratique : votre plan de carrière
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la en 5 lignes.
+> 2. Calculez votre tarif journalier en ariary et en euros.
+> 3. Chiffrez un projet de BI en fourchette et rédigez le devis.
+> 4. Rédigez vos 3 formules de reporting mensuel.
+> 5. Publiez un tableau de bord sur des données publiques de Madagascar.
+> 6. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : votre choix, vos calculs, votre devis, vos formules, votre tableau public et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 4, 0, 'Quelle étape d''un projet de BI est la plus incertaine ?', '["La signature du devis","Le choix des couleurs","La connexion et le nettoyage des sources","La formation"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 4, 1, 'Que demander avant de chiffrer ?', '["Un paiement complet","Rien","Des échantillons de données","Le mot de passe de la direction"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-a', 4, 2, 'Comment créer des revenus réguliers après un projet de BI ?', '["Arrêter de travailler avec le client","Proposer un reporting mensuel","Supprimer le rapport","Ne rien proposer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quelle spécialité répond aux obligations de rapport des ONG ?', '["Design","Suivi-évaluation","Montage","SEO"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quel domaine du diagnostic demande quelles décisions sont prises ?', '["Qualité","Décisions","Outils","Sources"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que doit avoir un bon KPI ?', '["Une couleur vive","Plusieurs définitions selon les personnes","Aucune source","Une définition écrite unique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Avec quoi comparer chaque chiffre ?', '["Un nombre au hasard","Le chiffre d''un autre secteur","Rien","Objectif, période précédente ou même période l''année précédente"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que contient une table de dimension ?', '["Les mots de passe","Les ventes","Des descriptions : dates, produits, magasins","Les erreurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quelle fonction DAX modifie le contexte de filtre ?', '["CALCULATE","SUM","COUNTROWS","DIVIDE"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quelle fonction calcule le cumul depuis le début de l''année ?', '["CONCAT","RANK","TOTALYTD","FILTER seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'À quoi sert la passerelle Power BI ?', '["Envoyer des SMS","Dessiner des graphiques","Traduire","Relier le service en ligne à des données locales"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Qui a généralement besoin d''une licence Power BI Pro pour un rapport partagé ?', '["Seulement le directeur","Seulement le freelance","Les personnes qui publient et celles qui consultent, selon l''offre","Personne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quelle fonction DAX récupère l''identité de la personne connectée ?', '["RELATED","SUM","TODAY","USERPRINCIPALNAME"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Comment combiner tous les fichiers mensuels d''un dossier dans Excel ?', '["Copier-coller chaque mois","Power Query : obtenir des données à partir d''un dossier","Imprimer","Impossible"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Qu''est-ce que Tableau Public ?', '["Un logiciel de paie","Un tableau en bois","Une version gratuite où les travaux sont publics","Une base de données privée"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quel contrôle compare les ventes à la comptabilité ?', '["La complétude","Le contrôle des totaux","La fraîcheur","La couleur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quel niveau de tableau de bord sert aux équipes opérationnelles ?', '["Le détail","Aucun","La couverture","La synthèse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que doit dire le constat principal ?', '["Les formules","Tous les détails","Le message essentiel en une phrase","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que contient le journal des modifications ?', '["Date, changement, raison, auteur","Les ventes","Les mots de passe","Les salaires"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que faire pour des responsables à connexion limitée ?', '["Rien","Des vidéos lourdes","Plus de visuels par page","Pages légères et abonnements par e-mail"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Qu''est-ce que la pseudonymisation ?', '["Remplacer noms et numéros par des identifiants","Traduire les données","Publier les noms","Supprimer toutes les données"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quel outil de collecte fonctionne hors connexion et est très utilisé par les ONG ?', '["KoboToolbox","Photoshop","Canva","Zoom"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que prévoir pour les unités locales comme le kapoaka ?', '["Les deviner","Les supprimer","Les ignorer","Des conversions validées par l''équipe du projet"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que fait RANK() OVER (PARTITION BY magasin …) ?', '["Additionne tout","Supprime les magasins","Classe les produits à l''intérieur de chaque magasin","Trie au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Pourquoi faire relire les analyses importantes par un collègue ?', '["Pour copier","Pour perdre du temps","Ce n''est pas utile","Repérer les erreurs avant la direction"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que préciser dans le devis si les données sont mauvaises ?', '["Rien","Que le projet est annulé","Ce qui se passe si elles sont en plus mauvais état que prévu","Que tout est gratuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Que contient une ligne d''impact de portfolio ?', '["Une liste de logiciels","Rien","Un résultat mesuré, comme le temps gagné","Un mot de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-a', 'Quelle évolution demande pipelines, entrepôts et Python ?', '["Graphiste","Prospecteur","Ingénieur de données","Professeur"]'::jsonb, 2);
 
 -- data-3-f
 delete from public.exam_questions where course_id = 'data-3-f';
