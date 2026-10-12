@@ -13650,8 +13650,10 @@ Un sous-titre doit former une **unité de sens**. On coupe **entre** les groupes
 4. **Deux personnes** dans le même sous-titre : chaque réplique sur sa ligne, précédée d''un tiret (selon les conventions du client).
 
 > [!exemple] Dialogue sur 2 lignes
-> \- Tu viens au marché ?
-> \- Oui, j''arrive.
+> ```
+> - Tu viens au marché ?
+> - Oui, j''arrive.
+> ```
 
 > [!definition] Forme d''onde
 > La représentation graphique du son dans les logiciels de sous-titrage. Les pics montrent quand quelqu''un parle. Elle permet de caler les entrées et sorties avec précision.
