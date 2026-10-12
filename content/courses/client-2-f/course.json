@@ -1,0 +1,97 @@
+{
+  "id": "client-2-f",
+  "hours": 14,
+  "description": "Le prospecteur trouve des entreprises qui ont besoin d'une offre, entre en contact avec les bonnes personnes et obtient des rendez-vous qualifiés pour l'équipe commerciale. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des éditeurs de logiciels et des entreprises de services, à Madagascar et à l'étranger, avec un CRM et Google Agenda : client idéal, listes, messages, appels, objections, qualification, suivi et rapports, dans le respect des règles. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les étapes et les canaux de la prospection",
+    "Définir le client idéal et construire une liste de qualité",
+    "Écrire des messages, mener des appels et répondre aux objections",
+    "Utiliser un CRM, Google Agenda et LinkedIn de façon professionnelle",
+    "Mener une campagne complète et en rendre compte",
+    "Choisir un modèle de prix, respecter les règles et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de prospecteur et preneur de rendez-vous depuis Madagascar",
+      "summary": "Le rendez-vous qualifié, les 8 étapes de la prospection, les 3 canaux, les qualités, les clients et les règles légales et éthiques.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un rendez-vous qualifié ?", "options": ["Un rendez-vous avec une personne du profil visé, qui a un besoin et sait de quoi il sera question", "N'importe quel rendez-vous", "Un rendez-vous obtenu en mentant", "Un rendez-vous sans date"], "correct": 0 },
+        { "q": "Que doit permettre chaque e-mail de prospection ?", "options": ["Se désinscrire facilement", "Télécharger un logiciel", "Payer tout de suite", "Rien"], "correct": 0 },
+        { "q": "Qui valide le cadre légal d'une campagne ?", "options": ["Le client", "Le prospecteur seul", "Les contacts", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : client idéal, liste, messages, appels, objections et qualification",
+      "summary": "Profil du client idéal, liste propre, message en 4 parties et relances, script d'appel en 5 étapes, réponses aux objections et questions de qualification.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la première partie d'un bon message ?", "options": ["Une accroche personnelle", "La liste des prix", "Une pièce jointe", "« J'espère que vous allez bien »"], "correct": 0 },
+        { "q": "Combien de mots viser pour un premier e-mail ?", "options": ["80 à 150", "1 000", "10", "500"], "correct": 0 },
+        { "q": "Que faire quand quelqu'un dit « Ça ne m'intéresse pas » ?", "options": ["Remercier et ne plus le contacter à ce sujet", "Insister tous les jours", "Le rappeler le soir", "Changer de nom et réessayer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : CRM, Google Agenda, LinkedIn, HubSpot Sales et Lemlist",
+      "summary": "Pipeline de prospection dans un CRM, pages de rendez-vous, LinkedIn professionnel, indicateurs, réputation d'envoi et outils payants.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand mettre à jour le CRM ?", "options": ["Tout de suite après chaque action", "Une fois par mois", "Jamais", "Le soir de mémoire"], "correct": 0 },
+        { "q": "Que risque-t-on avec des outils qui automatisent LinkedIn sans autorisation ?", "options": ["La suspension du compte", "Plus de rendez-vous garantis", "Rien", "Un abonnement gratuit"], "correct": 0 },
+        { "q": "18 réponses pour 200 contacts donnent quel taux de réponse ?", "options": ["9 %", "18 %", "20 %", "2 %"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la campagne de Soa Consulting",
+      "summary": "Brief validé par le client, liste de 150 contacts, séquence multicanale sur 4 semaines par petits lots, fiche de rendez-vous et rapport de campagne.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de lancer une campagne ?", "options": ["Obtenir la validation écrite du message, de la cible et du cadre légal", "Envoyer 1 000 e-mails pour tester", "Rien", "Acheter une liste au hasard"], "correct": 0 },
+        { "q": "Pourquoi envoyer les e-mails par petits lots ?", "options": ["Protéger la réputation d'envoi et ajuster le message", "Pour finir plus tard", "Pour payer moins", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Dans quels fuseaux indiquer l'heure du rendez-vous ?", "options": ["Celui du contact et celui d'Antananarivo", "Aucun", "Seulement celui de New York", "Seulement celui du prospecteur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio, 5 canaux, forfait, paiement au rendez-vous ou mixte, définition du rendez-vous qualifié, contrat en 8 clauses, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Forfait de 600 000 Ar et 10 rendez-vous à 40 000 Ar font…", "options": ["1 000 000 Ar", "640 000 Ar", "400 000 Ar", "6 400 000 Ar"], "correct": 0 },
+        { "q": "Que faut-il définir par écrit avec le client ?", "options": ["Ce qu'est un rendez-vous qualifié", "Sa couleur préférée", "Rien", "Le nom de vos amis"], "correct": 0 },
+        { "q": "Quelle mission faut-il refuser ?", "options": ["Une mission qui demande de mentir aux contacts", "Une mission de prospection d'agences", "Une mission avec un CRM", "Une mission de 4 semaines"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un prospecteur ?", "options": ["Il trouve, contacte, qualifie et obtient des rendez-vous", "Il crée des sites web", "Il fait la comptabilité", "Il monte des vidéos"], "correct": 0 },
+    { "q": "Quelle étape suit le premier contact ?", "options": ["Les relances", "La facturation", "La livraison", "Le recrutement"], "correct": 0 },
+    { "q": "Quel canal permet un contact direct avec les décideurs et un profil visible ?", "options": ["LinkedIn", "Un SMS au hasard", "Une affiche", "La radio"], "correct": 0 },
+    { "q": "Quel règlement encadre les données personnelles en Europe ?", "options": ["Le RGPD", "Le code de la route", "Le CECRL", "Le PCG 2005"], "correct": 0 },
+    { "q": "Quelle qualité est indispensable face aux nombreuses non-réponses ?", "options": ["La persévérance", "L'impatience", "L'agressivité", "L'indifférence"], "correct": 0 },
+    { "q": "Que décrit le profil du client idéal ?", "options": ["Les entreprises qui ont le plus besoin de l'offre", "Le salaire du commercial", "Les couleurs du logo", "Les concurrents"], "correct": 0 },
+    { "q": "Que vaut mieux pour une liste ?", "options": ["100 contacts bien choisis", "1 000 contacts au hasard", "Une liste achetée douteuse", "Aucune liste"], "correct": 0 },
+    { "q": "Pourquoi vérifier les adresses e-mail ?", "options": ["Les erreurs nuisent à la réputation d'envoi", "Pour les vendre", "Pour décorer", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "De qui doit parler la partie « problème » du message ?", "options": ["Du contact et de sa situation", "De vous uniquement", "De la météo", "Des concurrents"], "correct": 0 },
+    { "q": "Combien de relances au maximum dans la méthode du cours ?", "options": ["3", "10", "0", "20"], "correct": 0 },
+    { "q": "Comment utiliser le script d'appel ?", "options": ["Comme un guide, en écoutant", "En le lisant mot à mot sans écouter", "En ne parlant pas", "En raccrochant vite"], "correct": 0 },
+    { "q": "Quelle est la dernière étape du script d'appel ?", "options": ["Proposer deux créneaux de rendez-vous", "Raccrocher sans rien dire", "Envoyer une facture", "Demander un paiement"], "correct": 0 },
+    { "q": "Que vérifie la question « Qui d'autre participe à ce type de décision ? »", "options": ["Le décideur", "Le budget", "Le moment", "Le besoin"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un CRM ?", "options": ["Un logiciel qui centralise contacts, échanges et avancement", "Un logiciel de dessin", "Un tableau de paie", "Un antivirus"], "correct": 0 },
+    { "q": "Quelle étape suit « Intéressé » dans le pipeline ?", "options": ["Rendez-vous fixé", "À contacter", "Injoignable", "Pas intéressé"], "correct": 0 },
+    { "q": "Que doit contenir l'invitation de rendez-vous ?", "options": ["Objet, participants, lien de visioconférence et contexte", "Seulement l'heure", "Rien", "Un prix"], "correct": 0 },
+    { "q": "Que faut-il éviter dans une invitation LinkedIn ?", "options": ["Vendre directement", "Un message court", "La personnalisation", "La politesse"], "correct": 0 },
+    { "q": "Qu'est-ce que la réputation d'envoi ?", "options": ["La confiance des messageries envers une adresse d'envoi", "La note d'un restaurant", "Le nombre d'amis", "Le prix d'un abonnement"], "correct": 0 },
+    { "q": "Que permet Lemlist ?", "options": ["Des campagnes d'e-mails personnalisées avec relances automatiques", "La paie", "Le montage vidéo", "La comptabilité"], "correct": 0 },
+    { "q": "Depuis quel domaine partent en général les e-mails d'une campagne ?", "options": ["Celui du client", "Celui du prospecteur personnel", "Un domaine au hasard", "Aucun"], "correct": 0 },
+    { "q": "Que faire si beaucoup de réponses disent « pas le bon interlocuteur » ?", "options": ["Changer de poste ciblé", "Envoyer plus d'e-mails", "Arrêter la campagne sans rien dire", "Mentir sur l'objet"], "correct": 0 },
+    { "q": "Que contient la fiche de rendez-vous ?", "options": ["Entreprise, contact, situation, besoin, décision, points d'attention", "Seulement le nom", "Un mot de passe", "Rien"], "correct": 0 },
+    { "q": "Que faire des demandes de désinscription ?", "options": ["Les respecter", "Les ignorer", "Les rappeler", "Les vendre"], "correct": 0 },
+    { "q": "Quel modèle de prix équilibre les risques ?", "options": ["Le modèle mixte", "Le travail gratuit", "Le paiement au mot", "Aucun"], "correct": 0 },
+    { "q": "Quelle évolution consiste à mener les rendez-vous et conclure ?", "options": ["Commercial (business developer)", "Graphiste", "Comptable", "Transcripteur"], "correct": 0 }
+  ]
+}

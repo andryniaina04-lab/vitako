@@ -689,6 +689,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-2-f": {
+  "hours": 14,
+  "description": "Le prospecteur trouve des entreprises qui ont besoin d'une offre, entre en contact avec les bonnes personnes et obtient des rendez-vous qualifiés pour l'équipe commerciale. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des éditeurs de logiciels et des entreprises de services, à Madagascar et à l'étranger, avec un CRM et Google Agenda : client idéal, listes, messages, appels, objections, qualification, suivi et rapports, dans le respect des règles. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les étapes et les canaux de la prospection",
+   "Définir le client idéal et construire une liste de qualité",
+   "Écrire des messages, mener des appels et répondre aux objections",
+   "Utiliser un CRM, Google Agenda et LinkedIn de façon professionnelle",
+   "Mener une campagne complète et en rendre compte",
+   "Choisir un modèle de prix, respecter les règles et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de prospecteur et preneur de rendez-vous depuis Madagascar",
+    "summary": "Le rendez-vous qualifié, les 8 étapes de la prospection, les 3 canaux, les qualités, les clients et les règles légales et éthiques.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les étapes de la prospection",
+     "Les canaux",
+     "Les qualités du prospecteur",
+     "Qui sont vos clients ?",
+     "Les règles légales et éthiques",
+     "Exercice pratique : votre point de départ"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : client idéal, liste, messages, appels, objections et qualification",
+    "summary": "Profil du client idéal, liste propre, message en 4 parties et relances, script d'appel en 5 étapes, réponses aux objections et questions de qualification.",
+    "sections": [
+     "Le profil du client idéal",
+     "Construire une liste propre",
+     "Le premier message",
+     "L'appel de prospection",
+     "Répondre aux objections",
+     "Qualifier le besoin",
+     "Exercice pratique : votre première campagne sur papier"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Les outils : CRM, Google Agenda, LinkedIn, HubSpot Sales et Lemlist",
+    "summary": "Pipeline de prospection dans un CRM, pages de rendez-vous, LinkedIn professionnel, indicateurs, réputation d'envoi et outils payants.",
+    "sections": [
+     "Le CRM",
+     "Google Agenda : fixer les rendez-vous",
+     "LinkedIn de façon professionnelle",
+     "Les indicateurs de prospection",
+     "Les outils payants",
+     "Exercice pratique : votre système de prospection"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la campagne de Soa Consulting",
+    "summary": "Brief validé par le client, liste de 150 contacts, séquence multicanale sur 4 semaines par petits lots, fiche de rendez-vous et rapport de campagne.",
+    "sections": [
+     "Le cas pratique : « Soa Consulting »",
+     "Étape 1 : préparer la campagne",
+     "Étape 2 : construire la liste",
+     "Étape 3 : la séquence sur 4 semaines",
+     "Étape 4 : transmettre les rendez-vous",
+     "Étape 5 : le rapport de campagne",
+     "Exercice pratique : la campagne Soa Consulting"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio, 5 canaux, forfait, paiement au rendez-vous ou mixte, définition du rendez-vous qualifié, contrat en 8 clauses, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Choisir un modèle de prix",
+     "Le contrat",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "data-0-a": {
   "hours": 16,
   "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

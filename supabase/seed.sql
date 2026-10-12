@@ -77,7 +77,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
   ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true),
-  ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, false),
+  ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true),
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, false),
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 10, false),
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
@@ -2641,6 +2641,622 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quel avantage proposer à une boutique européenne ?', '["Répondre seulement en malagasy","Ne jamais répondre le matin","Répondre tôt le matin, heure de Paris","Répondre une fois par semaine"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Que doit préciser un contrat freelance de support ?', '["Seulement le prix","Canaux, horaires, délais, droits de l''agent, prix, confidentialité, durée","Le salaire du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-1-f', 'Quelle évolution consiste à écrire les articles d''aide ?', '["Graphiste","Comptable","Rédacteur de base de connaissances","Livreur"]'::jsonb, 2);
+
+-- client-2-f
+delete from public.exam_questions where course_id = 'client-2-f';
+delete from public.module_questions where course_id = 'client-2-f';
+delete from public.lessons where course_id = 'client-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-f', 0, 'Le métier de prospecteur et preneur de rendez-vous depuis Madagascar', 'Le rendez-vous qualifié, les 8 étapes de la prospection, les 3 canaux, les qualités, les clients et les règles légales et éthiques.', 'Une entreprise qui vend ses services à d''autres entreprises a besoin de nouveaux clients chaque mois. Mais ses commerciaux n''ont pas le temps de chercher les bons contacts, d''écrire les premiers messages et de relancer. Le prospecteur fait ce travail : il trouve les entreprises intéressantes, prend contact et obtient des rendez-vous pour l''équipe commerciale. C''est un métier très demandé, qui se fait entièrement à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un prospecteur et preneur de rendez-vous.
+> 2. Décrire les étapes de la prospection, du contact au rendez-vous.
+> 3. Citer les canaux de prospection : e-mail, LinkedIn, téléphone.
+> 4. Repérer vos premiers clients possibles.
+> 5. Comprendre les règles légales et éthiques de la prospection.
+
+## Le métier en une phrase
+
+Un prospecteur **trouve des entreprises susceptibles d''avoir besoin d''une offre, entre en contact avec les bonnes personnes et obtient des rendez-vous qualifiés pour l''équipe commerciale de son client**.
+
+> [!definition] Rendez-vous qualifié
+> Un rendez-vous avec une personne qui correspond au client idéal, qui a un vrai besoin, et qui a accepté en sachant de quoi il sera question. Un rendez-vous « forcé » avec quelqu''un qui n''est pas intéressé ne sert à rien et fait perdre du temps au commercial.
+
+## Les étapes de la prospection
+
+| N° | Étape | Ce que fait le prospecteur |
+| --- | --- | --- |
+| 1 | **Définir la cible** | Quel type d''entreprise ? Quel poste contacter ? |
+| 2 | **Construire la liste** | Trouver les entreprises et les contacts |
+| 3 | **Préparer les messages** | E-mails, messages LinkedIn, script d''appel |
+| 4 | **Prendre contact** | Premier message ou appel |
+| 5 | **Relancer** | 2 à 4 relances espacées et utiles |
+| 6 | **Qualifier** | Vérifier le besoin, le bon interlocuteur, le moment |
+| 7 | **Fixer le rendez-vous** | Date, heure, lien de visioconférence, objet |
+| 8 | **Suivre** | Mettre à jour le CRM, transmettre les informations au commercial |
+
+## Les canaux
+
+| Canal | Avantages | Points d''attention |
+| --- | --- | --- |
+| **E-mail** | Peut toucher beaucoup de personnes, facile à suivre | Doit être personnalisé, respecter les règles anti-spam |
+| **LinkedIn** | Contact direct avec les décideurs, profil visible | Limites d''invitations, ton professionnel |
+| **Téléphone** | Échange direct, qualification rapide | Demande de l''aisance, respect des horaires et des listes d''opposition |
+
+> [!madagascar] Votre avantage
+> Les entreprises françaises, belges et canadiennes cherchent des prospecteurs francophones à l''aise à l''écrit et au téléphone. Les centres d''appels d''Antananarivo font déjà ce travail pour l''Europe, et beaucoup de freelances malgaches travaillent pour des agences et des entreprises de services en France. Votre français, le faible décalage horaire avec Paris et votre coût compétitif sont des atouts.
+
+## Les qualités du prospecteur
+
+1. **Curiosité** : comprendre l''activité des entreprises contactées.
+2. **Écriture claire** et sans faute.
+3. **Aisance orale** et écoute.
+4. **Persévérance** : beaucoup de personnes ne répondent pas, et c''est normal.
+5. **Organisation** : des centaines de contacts à suivre dans un CRM.
+6. **Honnêteté** : ne jamais mentir pour obtenir un rendez-vous.
+
+## Qui sont vos clients ?
+
+| N° | Client | Ce qu''il vend |
+| --- | --- | --- |
+| 1 | **Agences web et marketing** | Sites, publicité, SEO à des PME |
+| 2 | **Éditeurs de logiciels** | Logiciels de gestion, de caisse, de paie |
+| 3 | **Cabinets de conseil et de formation** | Formations pour les entreprises |
+| 4 | **Entreprises de services numériques malgaches** | Externalisation (saisie, centre d''appels, développement) à des entreprises européennes |
+| 5 | **Freelances et consultants** | Leurs propres services, sans le temps de prospecter |
+
+## Les règles légales et éthiques
+
+| Règle | Ce qu''elle signifie |
+| --- | --- |
+| **Respect des lois du pays du contact** | En Europe, le RGPD encadre l''utilisation des données personnelles, y compris l''e-mail professionnel |
+| **Lien avec l''activité** | Le message doit concerner l''activité professionnelle de la personne |
+| **Désinscription facile** | Chaque e-mail doit permettre de ne plus être contacté |
+| **Listes d''opposition** | Ne pas appeler les numéros inscrits sur les listes d''opposition au démarchage du pays |
+| **Honnêteté** | Dire qui vous êtes et pour qui vous appelez |
+| **Pas d''achat de listes douteuses** | Une liste achetée sans garantie de légalité expose le client à des sanctions |
+
+> [!attention]
+> Les règles changent selon le pays du contact (France, Belgique, Canada, Madagascar…) et selon qu''il s''agit d''une entreprise ou d''un particulier. Le **client** doit valider le cadre légal de la campagne. En cas de doute, demandez-lui ou faites vérifier par un juriste avant de commencer.
+
+> [!retenir]
+> - Le prospecteur trouve, contacte, qualifie et obtient des rendez-vous qualifiés.
+> - 8 étapes, de la cible au suivi dans le CRM.
+> - E-mail, LinkedIn et téléphone, chacun avec ses règles.
+> - Clients : agences, éditeurs de logiciels, cabinets, entreprises de services, freelances.
+> - Respect des lois, désinscription, honnêteté.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez une entreprise de services (réelle ou fictive) qui vend à d''autres entreprises.
+> 2. Décrivez son offre en 3 phrases.
+> 3. Listez 3 types d''entreprises qui pourraient en avoir besoin et le poste à contacter dans chacune.
+> 4. Pour chaque canal (e-mail, LinkedIn, téléphone), notez 2 avantages et 2 risques pour cette offre.
+> 5. Rédigez vos 6 règles personnelles de prospection honnête.
+>
+> **À livrer** : votre analyse et vos règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 0, 0, 'Qu''est-ce qu''un rendez-vous qualifié ?', '["Un rendez-vous sans date","Un rendez-vous obtenu en mentant","Un rendez-vous avec une personne du profil visé, qui a un besoin et sait de quoi il sera question","N''importe quel rendez-vous"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 0, 1, 'Que doit permettre chaque e-mail de prospection ?', '["Payer tout de suite","Rien","Se désinscrire facilement","Télécharger un logiciel"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 0, 2, 'Qui valide le cadre légal d''une campagne ?', '["Les contacts","Le client","Le prospecteur seul","Personne"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-f', 1, 'Les bases : client idéal, liste, messages, appels, objections et qualification', 'Profil du client idéal, liste propre, message en 4 parties et relances, script d''appel en 5 étapes, réponses aux objections et questions de qualification.', 'Ce module vous donne les bases de la prospection : définir le client idéal, construire une liste de qualité, écrire des messages qui obtiennent des réponses, mener un appel, répondre aux objections et qualifier un besoin.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Définir le profil du client idéal et des personnes à contacter.
+> 2. Construire une liste de prospects propre.
+> 3. Écrire un premier message et des relances.
+> 4. Mener un appel de prospection avec un script.
+> 5. Répondre aux objections et qualifier un besoin.
+
+## Le profil du client idéal
+
+> [!definition] Profil du client idéal (ICP)
+> La description des entreprises qui ont le plus besoin de l''offre et le plus de chances d''acheter : secteur, taille, pays, situation, signes d''intérêt.
+
+| Élément | Exemple pour une agence qui crée des sites de réservation |
+| --- | --- |
+| **Secteur** | Hôtels, maisons d''hôtes, agences de voyage |
+| **Taille** | 5 à 50 salariés |
+| **Pays** | France, La Réunion, Madagascar |
+| **Situation** | Site ancien, pas de réservation en ligne, beaucoup de réservations par téléphone |
+| **Personne à contacter** | Gérant, directeur, responsable marketing |
+| **Signe d''intérêt** | Ouverture récente, recrutement d''un responsable marketing, mauvais avis sur la réservation |
+
+## Construire une liste propre
+
+### Les colonnes
+
+| Colonne | Exemple |
+| --- | --- |
+| Entreprise | Hôtel Les Palmiers |
+| Site | lespalmiers-exemple.com |
+| Secteur, taille, pays | Hôtel, 12 salariés, La Réunion |
+| Contact | Mme Hoarau, gérante |
+| E-mail professionnel | Vérifié |
+| Profil LinkedIn | Lien |
+| Raison du contact | Pas de réservation en ligne sur le site |
+| Statut | À contacter |
+
+### Les règles
+
+1. **La qualité avant la quantité** : 100 contacts bien choisis valent mieux que 1 000 au hasard.
+2. **Une raison de contact personnelle** pour chaque entreprise.
+3. **Des adresses vérifiées** : les e-mails qui reviennent en erreur nuisent à la réputation de l''adresse d''envoi.
+4. **Des sources légales** : sites des entreprises, annuaires professionnels, LinkedIn, salons.
+
+## Le premier message
+
+### La méthode en 4 parties
+
+| Partie | Rôle | Exemple |
+| --- | --- | --- |
+| **1. Accroche personnelle** | Montrer que le message n''est pas envoyé au hasard | « J''ai vu que l''Hôtel Les Palmiers a ouvert 4 nouvelles chambres cette année. » |
+| **2. Problème probable** | Parler de lui, pas de vous | « Aujourd''hui, la réservation se fait uniquement par téléphone et e-mail, ce qui fait souvent perdre des clients qui réservent le soir. » |
+| **3. Proposition de valeur** | Le résultat, en une phrase | « L''agence Ravinala Web crée des sites avec réservation en ligne pour les hôtels de l''océan Indien. » |
+| **4. Petite demande** | Facile à accepter | « Seriez-vous d''accord pour un échange de 15 minutes la semaine prochaine ? » |
+
+> [!exemple] E-mail complet
+> **Objet** : Réservations en ligne pour l''Hôtel Les Palmiers
+> Bonjour Madame Hoarau,
+> J''ai vu que l''Hôtel Les Palmiers a ouvert 4 nouvelles chambres cette année, félicitations ! Sur votre site, les réservations se font uniquement par téléphone et e-mail : beaucoup de voyageurs réservent le soir et choisissent alors l''hôtel où ils peuvent confirmer tout de suite.
+> L''agence Ravinala Web crée des sites avec réservation en ligne pour les hôtels de l''océan Indien, en lien avec les plateformes que vous utilisez déjà.
+> Seriez-vous d''accord pour un échange de 15 minutes la semaine prochaine ?
+> Bien cordialement,
+> Fara, pour l''agence Ravinala Web
+> *Si vous ne souhaitez plus recevoir de messages de notre part, répondez simplement « stop ».*
+
+> [!attention]
+> Évitez les messages trop longs, les pièces jointes, les liens nombreux, les promesses exagérées et les formules toutes faites (« J''espère que vous allez bien »). Visez **80 à 150 mots**.
+
+### Les relances
+
+| Relance | Délai | Contenu |
+| --- | --- | --- |
+| 1 | 3 à 4 jours après | Rappel court + une information utile (exemple de résultat, chiffre) |
+| 2 | 1 semaine après | Autre angle (un témoignage, une question) |
+| 3 | 2 semaines après | Message de clôture poli : « Je ne vous relancerai plus, je reste disponible si le sujet devient d''actualité. » |
+
+## L''appel de prospection
+
+### Le script en 5 étapes
+
+| Étape | Exemple |
+| --- | --- |
+| **1. Présentation** | « Bonjour Madame Hoarau, Fara de l''agence Ravinala Web. Je vous appelle au sujet des réservations en ligne. Avez-vous 2 minutes ? » |
+| **2. Raison de l''appel** | « Nous aidons les hôtels de La Réunion à recevoir plus de réservations directes. » |
+| **3. Questions** | « Comment vos clients réservent-ils aujourd''hui ? Qu''est-ce qui vous prend le plus de temps ? » |
+| **4. Proposition** | « Notre directeur peut vous montrer en 15 minutes comment cela fonctionne pour un hôtel comme le vôtre. » |
+| **5. Rendez-vous** | « Mardi à 10 h ou jeudi à 14 h, heure de La Réunion, qu''est-ce qui vous convient le mieux ? » |
+
+> [!astuce]
+> Le script est un **guide**, pas un texte à lire. Écoutez plus que vous ne parlez, et posez des questions ouvertes. Souriez : cela s''entend au téléphone.
+
+## Répondre aux objections
+
+| Objection | Réponse possible |
+| --- | --- |
+| « Je n''ai pas le temps. » | « Je comprends. Quel moment serait plus pratique cette semaine ou la prochaine ? » |
+| « Envoyez-moi un e-mail. » | « Volontiers. Pour vous envoyer quelque chose d''utile, puis-je vous poser une question sur votre façon de prendre les réservations ? » |
+| « Nous avons déjà un prestataire. » | « Très bien. Êtes-vous satisfaite sur la réservation en ligne, ou est-ce un point que vous aimeriez améliorer ? » |
+| « Ce n''est pas le moment. » | « D''accord. À quel moment serait-il judicieux de vous recontacter ? » |
+| « Ça ne m''intéresse pas. » | « Merci pour votre réponse claire. Je note de ne plus vous contacter à ce sujet. Bonne journée ! » |
+
+## Qualifier le besoin
+
+> [!definition] Qualification
+> Vérifier, avant de fixer le rendez-vous, que le contact a un vrai besoin, qu''il peut décider ou influencer la décision, et que le moment est adapté.
+
+| Question | Ce qu''elle vérifie |
+| --- | --- |
+| « Comment gérez-vous cela aujourd''hui ? » | La situation actuelle |
+| « Qu''est-ce qui vous pose problème ? » | Le besoin |
+| « Qui d''autre participe à ce type de décision ? » | Le décideur |
+| « Est-ce un sujet pour les prochains mois ? » | Le moment |
+| « Avez-vous déjà prévu un budget pour ce type de projet ? » | Le budget (si le client le demande) |
+
+> [!madagascar]
+> Quand vous appelez des entreprises en France, en Belgique ou au Canada, respectez **leurs horaires de bureau** et leurs jours fériés. Indiquez toujours les heures de rendez-vous **dans le fuseau horaire du contact** pour éviter les erreurs.
+
+> [!retenir]
+> - Un profil de client idéal précis et une liste propre, avec une raison de contact.
+> - Un message en 4 parties, court, et 3 relances maximum.
+> - Un appel en 5 étapes, avec des questions ouvertes.
+> - Des réponses calmes aux objections ; un « non » est respecté.
+> - Une qualification avant chaque rendez-vous.
+
+## Exercice pratique : votre première campagne sur papier
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Définissez le profil du client idéal d''une agence ou d''un freelance.
+> 2. Construisez une liste de 20 entreprises avec les colonnes et une raison de contact.
+> 3. Rédigez le premier e-mail et les 3 relances.
+> 4. Rédigez votre script d''appel et vos réponses à 5 objections.
+> 5. Entraînez-vous à l''appel avec une autre personne et enregistrez-vous (avec son accord).
+>
+> **À livrer** : votre profil, votre liste, vos messages, votre script et votre enregistrement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 1, 0, 'Quelle est la première partie d''un bon message ?', '["Une pièce jointe","Une accroche personnelle","« J''espère que vous allez bien »","La liste des prix"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 1, 1, 'Combien de mots viser pour un premier e-mail ?', '["500","10","1 000","80 à 150"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 1, 2, 'Que faire quand quelqu''un dit « Ça ne m''intéresse pas » ?', '["Le rappeler le soir","Insister tous les jours","Changer de nom et réessayer","Remercier et ne plus le contacter à ce sujet"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-f', 2, 'Les outils : CRM, Google Agenda, LinkedIn, HubSpot Sales et Lemlist', 'Pipeline de prospection dans un CRM, pages de rendez-vous, LinkedIn professionnel, indicateurs, réputation d''envoi et outils payants.', 'Ce module vous fait prendre en main les outils du prospecteur : un **CRM** pour suivre chaque contact, **Google Agenda** pour fixer les rendez-vous, **LinkedIn** pour trouver et contacter les décideurs, puis les outils payants : **HubSpot Sales** et **Lemlist**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un CRM : contacts, entreprises, étapes, activités.
+> 2. Proposer des créneaux de rendez-vous avec Google Agenda.
+> 3. Utiliser LinkedIn de façon professionnelle.
+> 4. Suivre vos indicateurs de prospection.
+> 5. Comprendre ce qu''apportent HubSpot Sales et Lemlist.
+
+## Le CRM
+
+> [!definition] CRM (gestion de la relation client)
+> Un logiciel qui centralise les contacts, les entreprises, les échanges (e-mails, appels, notes) et l''avancement de chaque prospect. Il évite de contacter deux fois la même personne ou d''oublier une relance.
+
+### Les CRM gratuits pour commencer
+
+| Outil | Ce qu''il permet |
+| --- | --- |
+| **HubSpot CRM** (offre gratuite) | Contacts, entreprises, transactions, notes, tâches, connexion à Gmail |
+| **Autres CRM** avec offre gratuite | Fonctions similaires selon les éditeurs |
+| **Google Sheets** | Suffisant pour une première petite campagne |
+
+### Les étapes du pipeline de prospection
+
+| Étape | Signification |
+| --- | --- |
+| **À contacter** | Le contact est dans la liste |
+| **Contacté** | Premier message envoyé ou appel passé |
+| **En relance** | Pas encore de réponse |
+| **Intéressé** | Réponse positive, en cours de qualification |
+| **Rendez-vous fixé** | Date confirmée |
+| **Rendez-vous réalisé** | Le commercial a vu le contact |
+| **Pas intéressé** | Réponse négative (ne plus contacter) |
+| **Injoignable** | Pas de réponse après toutes les relances |
+
+> [!astuce]
+> Après chaque action, notez **tout de suite** dans le CRM ce qui s''est passé et la prochaine étape avec sa date. Un CRM mis à jour le soir, de mémoire, contient toujours des erreurs.
+
+## Google Agenda : fixer les rendez-vous
+
+1. **Créez** une page de prise de rendez-vous (planning de réservation) avec les créneaux disponibles du commercial.
+2. **Réglez** le fuseau horaire et la durée (15 ou 30 minutes).
+3. **Envoyez** le lien au contact, ou proposez 2 créneaux précis.
+4. **Vérifiez** que l''invitation contient : objet, participants, lien de visioconférence, numéro de téléphone.
+5. **Envoyez** un rappel la veille.
+
+> [!exemple] Invitation de rendez-vous
+> **Objet** : Échange Hôtel Les Palmiers × Ravinala Web – réservations en ligne
+> **Participants** : Mme Hoarau (Hôtel Les Palmiers), M. Andry (Ravinala Web)
+> **Durée** : 20 minutes · **Lien** : Google Meet
+> **Contexte** : Hôtel de 12 chambres à Saint-Gilles, réservations par téléphone et e-mail, intéressée par la réservation directe le soir.
+
+## LinkedIn de façon professionnelle
+
+### Votre profil
+
+1. **Photo** professionnelle.
+2. **Titre** clair : « Chargée de développement commercial – Ravinala Web ».
+3. **Résumé** qui parle du problème que vous aidez à régler.
+
+### Les règles de contact
+
+1. **Une invitation** avec un message court et personnel.
+2. **Pas de vente** dans le message d''invitation.
+3. **Un premier échange** utile après l''acceptation.
+4. **Respect des limites** de LinkedIn sur le nombre d''invitations et de messages.
+
+> [!attention]
+> N''utilisez pas d''outils non autorisés qui automatisent les actions sur LinkedIn (visites, invitations, messages en masse) : ils sont contraires à ses règles et peuvent faire **suspendre le compte**, souvent celui de votre client.
+
+## Les indicateurs de prospection
+
+| Indicateur | Formule | Exemple |
+| --- | --- | --- |
+| **Taux d''ouverture** (e-mail) | Ouvertures ÷ e-mails envoyés | Indicatif seulement, souvent imprécis |
+| **Taux de réponse** | Réponses ÷ contacts | 18 ÷ 200 = 9 % |
+| **Taux de réponses positives** | Réponses positives ÷ contacts | 8 ÷ 200 = 4 % |
+| **Rendez-vous fixés** | Nombre | 6 |
+| **Taux de présence** | Rendez-vous réalisés ÷ fixés | 5 ÷ 6 ≈ 83 % |
+| **Appels pour un rendez-vous** | Appels ÷ rendez-vous | 60 ÷ 3 = 20 |
+
+*(Chiffres donnés en exemple : ils varient beaucoup selon le secteur, l''offre et la qualité de la liste.)*
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **HubSpot Sales** (offres payantes) | Séquences d''e-mails automatiques personnalisées, suivi des ouvertures et des clics, planificateur de rendez-vous avancé, appels depuis le CRM, rapports |
+| **Lemlist** | Campagnes d''e-mails de prospection avec personnalisation poussée (textes, images), relances automatiques, gestion de la réputation des adresses d''envoi, étapes multicanales |
+
+> [!definition] Réputation d''envoi
+> La confiance que les services de messagerie accordent à une adresse d''envoi. Trop d''e-mails en erreur, de signalements comme spam ou d''envois massifs d''un coup font arriver les messages dans les spams.
+
+> [!madagascar]
+> Ces outils sont facturés en dollars ou en euros, souvent par utilisateur et par mois. En général, **le client** paie l''abonnement et vous donne un accès, et les e-mails partent depuis **son domaine**. Vous apprenez avec les offres gratuites et les essais. Vérifiez les prix et les conditions sur les sites officiels.
+
+> [!retenir]
+> - Un CRM à jour, avec un pipeline clair et une prochaine étape datée.
+> - Des rendez-vous complets dans Google Agenda, dans le bon fuseau horaire.
+> - LinkedIn professionnel, sans outils d''automatisation interdits.
+> - Des indicateurs suivis chaque semaine.
+> - HubSpot Sales et Lemlist pour les campagnes plus importantes, payés par le client.
+
+## Exercice pratique : votre système de prospection
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un compte HubSpot CRM gratuit (ou un tableau Google Sheets structuré).
+> 2. Importez vos 20 contacts du module 2 et créez les étapes du pipeline.
+> 3. Créez une page de prise de rendez-vous dans Google Agenda.
+> 4. Améliorez votre profil LinkedIn.
+> 5. Préparez un tableau hebdomadaire des indicateurs.
+>
+> **À livrer** : des captures de votre CRM, votre lien de rendez-vous de test, votre profil et votre tableau.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 2, 0, 'Quand mettre à jour le CRM ?', '["Tout de suite après chaque action","Jamais","Le soir de mémoire","Une fois par mois"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 2, 1, 'Que risque-t-on avec des outils qui automatisent LinkedIn sans autorisation ?', '["Plus de rendez-vous garantis","Un abonnement gratuit","Rien","La suspension du compte"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 2, 2, '18 réponses pour 200 contacts donnent quel taux de réponse ?', '["18 %","9 %","20 %","2 %"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-f', 3, 'Premier projet : la campagne de Soa Consulting', 'Brief validé par le client, liste de 150 contacts, séquence multicanale sur 4 semaines par petits lots, fiche de rendez-vous et rapport de campagne.', 'Dans ce module, vous menez une campagne de prospection complète pour un client, sur 4 semaines : préparation, liste, messages, appels, rendez-vous et rapport. C''est le type de projet qui deviendra votre première étude de cas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer une campagne avec le client.
+> 2. Construire et vérifier une liste de 150 contacts.
+> 3. Mener une séquence multicanale sur 4 semaines.
+> 4. Transmettre des rendez-vous bien préparés au commercial.
+> 5. Rédiger un rapport de campagne et l''améliorer.
+
+## Le cas pratique : « Soa Consulting »
+
+> [!exemple] Votre client
+> **Soa Consulting** est une entreprise d''Antananarivo qui propose aux PME françaises d''externaliser leur **service client** (e-mail et chat) vers Madagascar. Son directeur, M. Tojo, veut 10 rendez-vous qualifiés par mois avec des boutiques en ligne françaises de 10 à 100 salariés. Il vous confie la prospection pendant 4 semaines.
+
+## Étape 1 : préparer la campagne
+
+### Le brief avec le client
+
+| Question | Réponse de M. Tojo |
+| --- | --- |
+| Client idéal | Boutiques en ligne françaises, 10 à 100 salariés, beaucoup de demandes clients |
+| Personnes à contacter | Fondateur, directeur des opérations, responsable service client |
+| Problème réglé | Service client débordé pendant les pics (soldes, fêtes), coûts élevés |
+| Preuves | 2 clients satisfaits, temps de réponse moyen de 2 heures |
+| Créneaux de rendez-vous | Mardi et jeudi, 10 h à 16 h heure de Paris |
+| Cadre légal | Prospection d''entreprises en France, désinscription dans chaque e-mail, validée par M. Tojo |
+| Objectif | 10 rendez-vous qualifiés en 4 semaines |
+
+> [!attention]
+> Ne commencez jamais une campagne sans **validation écrite** du message, de la cible et du cadre légal par le client. Vous parlez en son nom.
+
+## Étape 2 : construire la liste
+
+1. **Trouvez** 200 boutiques correspondant au profil (annuaires, LinkedIn, recherches sur Google).
+2. **Écartez** celles qui ne correspondent pas (trop petites, déjà clientes, concurrentes).
+3. **Trouvez** le bon contact et vérifiez son e-mail professionnel.
+4. **Ajoutez** une raison de contact pour chacune (pic de soldes, avis clients sur le service, recrutement d''agents).
+5. **Gardez** 150 contacts de qualité.
+
+## Étape 3 : la séquence sur 4 semaines
+
+| Jour | Canal | Action |
+| --- | --- | --- |
+| **J1** | LinkedIn | Visite du profil, invitation avec message court |
+| **J2** | E-mail | Premier e-mail en 4 parties |
+| **J5** | E-mail | Relance 1 avec un chiffre (temps de réponse moyen) |
+| **J8** | Téléphone | Appel au standard ou en direct, selon le cadre validé |
+| **J12** | LinkedIn | Message si l''invitation est acceptée |
+| **J15** | E-mail | Relance 2 avec un témoignage |
+| **J25** | E-mail | Message de clôture |
+
+> [!astuce]
+> Envoyez les e-mails **par petits lots** (par exemple 20 à 30 par jour au début) plutôt que 150 d''un coup : vous protégez la réputation d''envoi de l''adresse du client et vous pouvez corriger le message si les premiers résultats sont faibles.
+
+### Adapter en cours de route
+
+| Constat après la première semaine | Action |
+| --- | --- |
+| Taux de réponse très faible | Revoir l''objet et l''accroche, vérifier la liste |
+| Réponses « pas le bon interlocuteur » | Changer de poste ciblé |
+| Beaucoup de « pas maintenant » | Noter la date de recontact et proposer un contenu utile |
+| Objection fréquente sur la qualité | Ajouter une preuve (témoignage, chiffre, essai) |
+
+## Étape 4 : transmettre les rendez-vous
+
+### La fiche de rendez-vous pour le commercial
+
+```
+Entreprise : Boutique Vanille & Co (Lyon), 25 salariés, cosmétiques naturels
+Contact : Claire Martin, directrice des opérations
+Rendez-vous : jeudi 14 mai, 11 h heure de Paris (12 h à Antananarivo), Google Meet
+Source : e-mail + relance 1
+Situation : 2 agents de service client en interne, débordés pendant les soldes et Noël
+Besoin exprimé : renfort de 2 agents d''octobre à janvier
+Décision : avec le fondateur
+Points d''attention : souhaite des agents qui écrivent un français parfait
+```
+
+> [!madagascar]
+> Indiquez toujours l''heure du rendez-vous **dans les deux fuseaux** (Paris et Antananarivo) dans la fiche et l''invitation. L''écart change selon la saison (heure d''été et d''hiver en Europe) : vérifiez-le à chaque fois.
+
+## Étape 5 : le rapport de campagne
+
+| Indicateur | Résultat (exemple) |
+| --- | --- |
+| Contacts dans la liste | 150 |
+| Contacts touchés (e-mail, LinkedIn ou téléphone) | 142 |
+| Réponses | 21 (15 %) |
+| Réponses positives | 13 (9 %) |
+| Rendez-vous fixés | 11 |
+| Rendez-vous réalisés | 9 |
+| Demandes de désinscription | 4 (respectées) |
+
+### Les parties du rapport
+
+1. **Résultats** par rapport à l''objectif.
+2. **Ce qui a marché** : objet, accroche, canal, poste ciblé.
+3. **Ce qui n''a pas marché**.
+4. **Les retours du terrain** : objections, besoins entendus.
+5. **Les recommandations** pour le mois suivant.
+
+> [!retenir]
+> - Un brief écrit et validé par le client, y compris le cadre légal.
+> - Une liste de 150 contacts de qualité, chacun avec une raison de contact.
+> - Une séquence multicanale sur 4 semaines, envoyée par petits lots et ajustée.
+> - Une fiche de rendez-vous complète pour le commercial.
+> - Un rapport chiffré avec les leçons et les recommandations.
+
+## Exercice pratique : la campagne Soa Consulting
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Rédigez le brief complet de la campagne (pour Soa Consulting ou une vraie entreprise qui accepte de tester).
+> 2. Construisez une liste de 50 contacts de qualité.
+> 3. Rédigez toute la séquence : invitation LinkedIn, 3 e-mails, script d''appel, message de clôture.
+> 4. Si une vraie entreprise vous a donné son accord écrit, lancez la séquence sur 20 contacts ; sinon, simulez 5 appels avec des partenaires d''entraînement.
+> 5. Rédigez 2 fiches de rendez-vous et le rapport de campagne.
+>
+> **À livrer** : le brief, la liste, la séquence, les fiches et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 3, 0, 'Que faire avant de lancer une campagne ?', '["Obtenir la validation écrite du message, de la cible et du cadre légal","Envoyer 1 000 e-mails pour tester","Rien","Acheter une liste au hasard"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 3, 1, 'Pourquoi envoyer les e-mails par petits lots ?', '["Ce n''est pas utile","Pour finir plus tard","Pour payer moins","Protéger la réputation d''envoi et ajuster le message"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 3, 2, 'Dans quels fuseaux indiquer l''heure du rendez-vous ?', '["Aucun","Celui du contact et celui d''Antananarivo","Seulement celui du prospecteur","Seulement celui de New York"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio, 5 canaux, forfait, paiement au rendez-vous ou mixte, définition du rendez-vous qualifié, contrat en 8 clauses, paiements et évolution.', 'Les entreprises qui vendent à d''autres entreprises ont toujours besoin de nouveaux rendez-vous. Ce dernier module vous montre comment présenter vos services de prospection, trouver vos premiers clients, fixer vos prix (au forfait, au rendez-vous ou en mélange), protéger votre réputation et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de prospecteur.
+> 2. Trouver des clients grâce à 5 canaux, en appliquant votre propre méthode.
+> 3. Choisir un modèle de prix.
+> 4. Rédiger un contrat qui protège les deux parties.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Votre étude de cas** (module 4) : objectif, cible, séquence, résultats.
+2. **Des exemples de messages** (anonymisés) et votre script d''appel.
+3. **Un enregistrement d''appel d''entraînement** (avec l''accord de la personne) qui montre votre voix et votre écoute.
+4. **Vos résultats chiffrés** : taux de réponse, rendez-vous obtenus.
+5. **Des recommandations** de clients ou de responsables.
+
+> [!astuce]
+> Votre propre prospection est votre meilleure démonstration : si vous obtenez des rendez-vous avec des clients pour **vous-même**, vous prouvez que votre méthode fonctionne.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences web et marketing francophones** | Elles ont besoin de rendez-vous avec des PME et manquent de temps pour prospecter |
+| 2 | **Éditeurs de logiciels** | Prise de rendez-vous de démonstration |
+| 3 | **Entreprises de services numériques malgaches** | Prospection des entreprises européennes pour leurs offres d''externalisation |
+| 4 | **Consultants et formateurs indépendants** | Prospection à temps partiel |
+| 5 | **Plateformes de freelance et LinkedIn** | Missions de prise de rendez-vous ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une agence web
+> « Bonjour Monsieur, votre agence crée des sites pour les artisans et commerçants de la région de Bordeaux. Trouver de nouveaux clients prend du temps à vos équipes, alors que c''est leur expertise de créer les sites. Je suis prospectrice francophone : je construis la liste de vos clients idéaux, je les contacte par e-mail, LinkedIn et téléphone, et je vous transmets des rendez-vous qualifiés avec une fiche complète. Lors d''une dernière campagne, j''ai obtenu 11 rendez-vous en 4 semaines pour une entreprise de services. Seriez-vous ouvert à un échange de 15 minutes ? »
+
+## Choisir un modèle de prix
+
+| Modèle | Fonctionnement | Avantages | Risques |
+| --- | --- | --- | --- |
+| **Forfait mensuel** | Prix fixe pour un volume d''activité (contacts, appels, rapport) | Revenu stable | Le client attend quand même des résultats |
+| **Au rendez-vous** | Prix par rendez-vous qualifié réalisé | Le client paie les résultats | Revenu irrégulier ; définir précisément « qualifié » |
+| **Mixte** | Petit forfait + prime par rendez-vous | Équilibre les risques | Exige un suivi précis |
+
+> [!exemple] Exemple de prix mixte
+> Forfait de 600 000 Ar par mois (liste, messages, appels, rapport) + 40 000 Ar par rendez-vous qualifié réalisé. Avec 10 rendez-vous réalisés : 600 000 + 400 000 = 1 000 000 Ar.
+> *(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros selon leur marché.)*
+
+### Définir un rendez-vous qualifié par écrit
+
+1. La personne correspond au **profil** convenu (secteur, taille, poste).
+2. Elle a exprimé un **besoin** ou un intérêt réel.
+3. Elle a **accepté** le rendez-vous en connaissant son objet.
+4. Le rendez-vous a **eu lieu** (ou a été annulé par le contact moins de 24 heures avant, selon ce qui est convenu).
+
+## Le contrat
+
+### Les 8 clauses
+
+1. **La cible** et les canaux.
+2. **Le volume** d''activité ou l''objectif.
+3. **Ce que le client fournit** : offre, preuves, accès au CRM, adresse d''envoi, créneaux.
+4. **La validation** des messages et du cadre légal par le client.
+5. **La définition** d''un rendez-vous qualifié.
+6. **Le prix** et les modalités de paiement.
+7. **La confidentialité** des listes et des informations.
+8. **La durée** et le préavis.
+
+> [!attention]
+> Refusez les missions qui demandent de **mentir** (se faire passer pour quelqu''un d''autre, promettre ce que l''offre ne fait pas), d''utiliser des listes douteuses ou d''ignorer les demandes de désinscription. Votre réputation et celle du client en dépendent.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Prospecteur confirmé** | Séquences multicanales avancées, HubSpot Sales, Lemlist |
+| **Commercial** (business developer) | Mener les rendez-vous, faire des propositions, conclure |
+| **Responsable d''équipe de prospection** | Former et encadrer des prospecteurs |
+| **Spécialiste automatisation commerciale** | Outils et données de prospection (voir la formation Spécialiste automatisation et IA) |
+| **Email marketeur** | Campagnes auprès de clients qui ont donné leur accord (voir la formation Email marketeur) |
+
+> [!retenir]
+> - Un portfolio avec une étude de cas chiffrée, des messages et un enregistrement.
+> - Agences, éditeurs, entreprises de services, consultants, plateformes.
+> - Forfait, rendez-vous ou mixte, avec une définition écrite du rendez-vous qualifié.
+> - Un contrat en 8 clauses et le refus des pratiques malhonnêtes.
+> - Évoluez vers la vente, l''encadrement ou l''automatisation.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez votre portfolio avec votre étude de cas et un enregistrement d''entraînement.
+> 2. Choisissez votre modèle de prix et rédigez votre définition du rendez-vous qualifié.
+> 3. Rédigez votre contrat type en 8 clauses.
+> 4. Appliquez votre méthode à vous-même : liste de 20 agences ou éditeurs, et au moins 5 premiers messages.
+>
+> **À livrer** : votre portfolio, vos prix, votre contrat et le suivi de votre propre prospection.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 4, 0, 'Forfait de 600 000 Ar et 10 rendez-vous à 40 000 Ar font…', '["6 400 000 Ar","400 000 Ar","1 000 000 Ar","640 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 4, 1, 'Que faut-il définir par écrit avec le client ?', '["Sa couleur préférée","Rien","Le nom de vos amis","Ce qu''est un rendez-vous qualifié"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-2-f', 4, 2, 'Quelle mission faut-il refuser ?', '["Une mission avec un CRM","Une mission de prospection d''agences","Une mission qui demande de mentir aux contacts","Une mission de 4 semaines"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que fait un prospecteur ?', '["Il crée des sites web","Il monte des vidéos","Il trouve, contacte, qualifie et obtient des rendez-vous","Il fait la comptabilité"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle étape suit le premier contact ?', '["La livraison","Le recrutement","La facturation","Les relances"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quel canal permet un contact direct avec les décideurs et un profil visible ?', '["Une affiche","Un SMS au hasard","La radio","LinkedIn"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quel règlement encadre les données personnelles en Europe ?', '["Le CECRL","Le PCG 2005","Le RGPD","Le code de la route"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle qualité est indispensable face aux nombreuses non-réponses ?', '["L''agressivité","La persévérance","L''indifférence","L''impatience"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que décrit le profil du client idéal ?', '["Le salaire du commercial","Les couleurs du logo","Les concurrents","Les entreprises qui ont le plus besoin de l''offre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que vaut mieux pour une liste ?', '["1 000 contacts au hasard","Une liste achetée douteuse","100 contacts bien choisis","Aucune liste"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Pourquoi vérifier les adresses e-mail ?', '["Ce n''est pas utile","Pour décorer","Les erreurs nuisent à la réputation d''envoi","Pour les vendre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'De qui doit parler la partie « problème » du message ?', '["De vous uniquement","De la météo","Des concurrents","Du contact et de sa situation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Combien de relances au maximum dans la méthode du cours ?', '["20","3","10","0"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Comment utiliser le script d''appel ?', '["En raccrochant vite","En le lisant mot à mot sans écouter","Comme un guide, en écoutant","En ne parlant pas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle est la dernière étape du script d''appel ?', '["Envoyer une facture","Raccrocher sans rien dire","Proposer deux créneaux de rendez-vous","Demander un paiement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que vérifie la question « Qui d''autre participe à ce type de décision ? »', '["Le budget","Le moment","Le besoin","Le décideur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Qu''est-ce qu''un CRM ?', '["Un logiciel de dessin","Un tableau de paie","Un antivirus","Un logiciel qui centralise contacts, échanges et avancement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle étape suit « Intéressé » dans le pipeline ?', '["Pas intéressé","Rendez-vous fixé","Injoignable","À contacter"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que doit contenir l''invitation de rendez-vous ?', '["Objet, participants, lien de visioconférence et contexte","Un prix","Seulement l''heure","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que faut-il éviter dans une invitation LinkedIn ?', '["La personnalisation","Vendre directement","Un message court","La politesse"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Qu''est-ce que la réputation d''envoi ?', '["Le prix d''un abonnement","La confiance des messageries envers une adresse d''envoi","Le nombre d''amis","La note d''un restaurant"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que permet Lemlist ?', '["Le montage vidéo","La comptabilité","Des campagnes d''e-mails personnalisées avec relances automatiques","La paie"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Depuis quel domaine partent en général les e-mails d''une campagne ?', '["Un domaine au hasard","Celui du client","Aucun","Celui du prospecteur personnel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que faire si beaucoup de réponses disent « pas le bon interlocuteur » ?', '["Changer de poste ciblé","Envoyer plus d''e-mails","Mentir sur l''objet","Arrêter la campagne sans rien dire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que contient la fiche de rendez-vous ?', '["Un mot de passe","Seulement le nom","Entreprise, contact, situation, besoin, décision, points d''attention","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que faire des demandes de désinscription ?', '["Les respecter","Les rappeler","Les vendre","Les ignorer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quel modèle de prix équilibre les risques ?', '["Le paiement au mot","Le modèle mixte","Aucun","Le travail gratuit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle évolution consiste à mener les rendez-vous et conclure ?', '["Comptable","Transcripteur","Commercial (business developer)","Graphiste"]'::jsonb, 2);
 
 -- data-0-a
 delete from public.exam_questions where course_id = 'data-0-a';
