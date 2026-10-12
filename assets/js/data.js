@@ -1354,6 +1354,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-4-f": {
+  "hours": 14,
+  "description": "L'assistant administratif et RH organise les documents, les informations et les démarches d'une entreprise et de son personnel : courriers, classement, recrutement administratif, accueil des nouveaux, congés, éléments de paie. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME malgaches, des ONG et des entreprises francophones, en télétravail, avec Google Workspace et Excel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et distinguer ce que l'assistant prépare de ce que la direction décide",
+   "Rédiger les documents courants et organiser un plan de classement",
+   "Tenir les congés, les absences et les éléments variables de paie",
+   "Utiliser modèles, formulaires, formules et publipostage",
+   "Mener un recrutement administratif et préparer l'arrivée d'un salarié",
+   "Vendre des forfaits, protéger la confidentialité et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'assistant administratif et RH depuis Madagascar",
+    "summary": "Ce que fait le métier, les tâches administratives et RH, ce que l'assistant ne fait pas, les clients et les 6 règles de confidentialité.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les tâches les plus courantes",
+     "Ce que l'assistant fait… et ce qu'il ne fait pas",
+     "Qui sont vos clients ?",
+     "La confidentialité : la règle n° 1",
+     "Exercice pratique : votre bilan de départ"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : documents, classement, parcours du salarié, congés et paie",
+    "summary": "Les 5 documents courants, le plan de classement et le nommage, le parcours en 5 étapes, le dossier du personnel, le registre des congés et les éléments variables de paie.",
+    "sections": [
+     "Les 5 documents courants",
+     "Classer pour tout retrouver",
+     "Le parcours d'un salarié en 5 étapes",
+     "Les congés et les absences",
+     "Préparer les éléments variables de la paie",
+     "Exercice pratique : les bases d'un service administratif"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Les outils : Google Workspace, Excel, publipostage et outils payants",
+    "summary": "Modèles de documents, formulaire de congé, partage avec les bons droits, registre avec NB.JOURS.OUVRES, publipostage, Microsoft 365, logiciels de paie et SIRH.",
+    "sections": [
+     "Les outils gratuits",
+     "Les modèles de documents",
+     "Le formulaire de demande de congé",
+     "Partager avec les bons droits",
+     "Le registre des congés avec des formules",
+     "Le publipostage : des documents en série",
+     "Les outils payants",
+     "Exercice pratique : votre boîte à outils administrative"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : un recrutement et l'arrivée d'une salariée",
+    "summary": "Fiche de poste, annonce, grille de tri, entretiens et suivi des candidats, liste de contrôle d'arrivée et suivi du premier mois.",
+    "sections": [
+     "Le cas pratique : « Tsara Tour »",
+     "Étape 1 : la fiche de poste",
+     "Étape 2 : l'annonce",
+     "Étape 3 : trier les candidatures avec une grille",
+     "Étape 4 : organiser les entretiens",
+     "Étape 5 : préparer l'arrivée",
+     "Étape 6 : le suivi du premier mois",
+     "Exercice pratique : le recrutement Tsara Tour"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio d'exemples fictifs, 5 canaux, forfaits et prestations ponctuelles, contrat en 9 clauses, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le contrat",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "gestion-0-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait de l'assistant virtuel un spécialiste recherché : spécialité et offre en forfaits, outils professionnels (Google Workspace, Notion, Calendly, automatisations), méthodes d'assistant de direction, clients étrangers et anglais, puis développement d'une activité ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

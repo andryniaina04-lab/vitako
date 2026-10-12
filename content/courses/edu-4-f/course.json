@@ -1,0 +1,97 @@
+{
+  "id": "edu-4-f",
+  "hours": 14,
+  "description": "L'assistant administratif et RH organise les documents, les informations et les démarches d'une entreprise et de son personnel : courriers, classement, recrutement administratif, accueil des nouveaux, congés, éléments de paie. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME malgaches, des ONG et des entreprises francophones, en télétravail, avec Google Workspace et Excel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et distinguer ce que l'assistant prépare de ce que la direction décide",
+    "Rédiger les documents courants et organiser un plan de classement",
+    "Tenir les congés, les absences et les éléments variables de paie",
+    "Utiliser modèles, formulaires, formules et publipostage",
+    "Mener un recrutement administratif et préparer l'arrivée d'un salarié",
+    "Vendre des forfaits, protéger la confidentialité et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'assistant administratif et RH depuis Madagascar",
+      "summary": "Ce que fait le métier, les tâches administratives et RH, ce que l'assistant ne fait pas, les clients et les 6 règles de confidentialité.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui choisit la personne recrutée ?", "options": ["La direction ou le recruteur", "L'assistant", "Les autres candidats", "Le comptable"], "correct": 0 },
+        { "q": "Que faire face à une question juridique d'un salarié ?", "options": ["Orienter vers la direction, le comptable ou un juriste", "Donner son avis", "Chercher sur un forum et répondre", "Ignorer la question"], "correct": 0 },
+        { "q": "Quelle est la règle n° 1 du métier ?", "options": ["La confidentialité", "La vitesse", "La créativité", "La publicité"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : documents, classement, parcours du salarié, congés et paie",
+      "summary": "Les 5 documents courants, le plan de classement et le nommage, le parcours en 5 étapes, le dossier du personnel, le registre des congés et les éléments variables de paie.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que contient un compte rendu de réunion ?", "options": ["Décisions, actions et points ouverts", "Seulement la date", "Une publicité", "Les salaires"], "correct": 0 },
+        { "q": "Qui décide d'accepter un congé ?", "options": ["Le responsable", "L'assistant", "Le salarié lui-même", "Le comptable"], "correct": 0 },
+        { "q": "Que sont les éléments variables de paie ?", "options": ["Les informations qui changent chaque mois : absences, heures supplémentaires, primes", "Le logo de l'entreprise", "Le salaire de base fixe", "Les jours fériés"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Workspace, Excel, publipostage et outils payants",
+      "summary": "Modèles de documents, formulaire de congé, partage avec les bons droits, registre avec NB.JOURS.OUVRES, publipostage, Microsoft 365, logiciels de paie et SIRH.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment utiliser un modèle de document ?", "options": ["En créant une copie", "En modifiant l'original", "En le supprimant", "En l'imprimant seulement"], "correct": 0 },
+        { "q": "Que compte la fonction NB.JOURS.OUVRES ?", "options": ["Les jours travaillés entre deux dates, hors jours fériés", "Le nombre de salariés", "Les heures supplémentaires", "Les salaires"], "correct": 0 },
+        { "q": "Qu'est-ce que le publipostage ?", "options": ["Produire des documents personnalisés à partir d'un modèle et d'un tableau", "Envoyer du courrier par la poste", "Publier sur Facebook", "Calculer la paie"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un recrutement et l'arrivée d'une salariée",
+      "summary": "Fiche de poste, annonce, grille de tri, entretiens et suivi des candidats, liste de contrôle d'arrivée et suivi du premier mois.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand fixer la grille de tri ?", "options": ["Avant de lire les candidatures", "Après avoir choisi le candidat", "Jamais", "Pendant l'entretien"], "correct": 0 },
+        { "q": "Quel critère est interdit dans une annonce ?", "options": ["La religion ou la situation familiale", "La maîtrise du français", "La connaissance d'Excel", "Le sens du service"], "correct": 0 },
+        { "q": "À qui répondre après un recrutement ?", "options": ["À chaque candidat, même non retenu", "Seulement au candidat retenu", "À personne", "Seulement aux candidats connus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio d'exemples fictifs, 5 canaux, forfaits et prestations ponctuelles, contrat en 9 clauses, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que mettre dans un portfolio d'assistant RH ?", "options": ["Des exemples fictifs", "Les vrais dossiers des clients", "Les salaires d'une entreprise", "Les contrats signés de salariés"], "correct": 0 },
+        { "q": "35 heures à 12 000 Ar de l'heure font…", "options": ["420 000 Ar", "35 000 Ar", "120 000 Ar", "4 200 000 Ar"], "correct": 0 },
+        { "q": "Que doit préciser le contrat sur ce que vous ne faites pas ?", "options": ["Pas d'avis juridique ni de calcul de paie, sauf si prévu", "Rien", "Que vous faites tout", "Que vous décidez des recrutements"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que signifie RH ?", "options": ["Ressources humaines", "Rapport horaire", "Recherche hebdomadaire", "Réseau humain"], "correct": 0 },
+    { "q": "Qui rédige ou modifie un contrat de travail ?", "options": ["La direction avec un juriste", "L'assistant seul", "Le candidat", "Personne"], "correct": 0 },
+    { "q": "Quel client a souvent besoin d'aide RH quelques heures par semaine ?", "options": ["Une PME sans service RH", "Une multinationale avec 500 RH", "Personne", "Un particulier"], "correct": 0 },
+    { "q": "Comment envoyer des documents du personnel ?", "options": ["Par un canal sécurisé de l'entreprise", "Par messagerie personnelle", "Sur un réseau social", "Par SMS"], "correct": 0 },
+    { "q": "Que contient une note de service ?", "options": ["Émetteur, destinataires, date, objet, message, date d'application", "Seulement une signature", "Un contrat", "Une facture"], "correct": 0 },
+    { "q": "Quelle règle de nommage est correcte ?", "options": ["2026-03-03 - Note de service - Horaires.pdf", "doc final.pdf", "sans titre.pdf", "scan2.pdf"], "correct": 0 },
+    { "q": "Qui fixe la durée de conservation des documents ?", "options": ["La loi ou la direction, selon les documents", "L'assistant au hasard", "Les salariés", "Personne"], "correct": 0 },
+    { "q": "Quelle est la première étape du parcours d'un salarié ?", "options": ["Le recrutement", "Le départ", "La paie", "La retraite"], "correct": 0 },
+    { "q": "Qui accède aux dossiers du personnel ?", "options": ["Seulement les personnes autorisées", "Tout le monde", "Les clients", "Les candidats"], "correct": 0 },
+    { "q": "Que faire avant d'envoyer les éléments de paie ?", "options": ["Vérifier chaque ligne", "Rien", "Les publier", "Les modifier au hasard"], "correct": 0 },
+    { "q": "Que fait-on pour un modèle RH avant de l'utiliser ?", "options": ["Le faire valider par la direction", "Le prendre sur Internet tel quel", "Rien", "Le traduire"], "correct": 0 },
+    { "q": "Quel droit de partage éviter pour un document RH ?", "options": ["« Tous les utilisateurs disposant du lien »", "Accès restreint", "Lecteur pour la direction", "Éditeur pour l'assistant RH"], "correct": 0 },
+    { "q": "À quoi sert la feuille « Jours fériés » ?", "options": ["Être utilisée par NB.JOURS.OUVRES", "Décorer le tableau", "Calculer les salaires", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un SIRH ?", "options": ["Un logiciel de gestion des ressources humaines", "Un type de contrat", "Une note de service", "Un jour férié"], "correct": 0 },
+    { "q": "Que ne doit pas faire l'assistant dans un logiciel de paie ?", "options": ["Modifier les paramètres de calcul", "Saisir les éléments variables", "Classer les bulletins", "Vérifier les informations des salariés"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une fiche de poste ?", "options": ["Le document qui décrit la mission, les tâches et les compétences d'un poste", "Un bulletin de paie", "Une facture", "Un planning de congés"], "correct": 0 },
+    { "q": "Que noter dans la grille de tri ?", "options": ["Des faits", "Des impressions", "L'âge du candidat", "Sa religion"], "correct": 0 },
+    { "q": "Que contient une convocation à un entretien ?", "options": ["Date, heure, lieu ou lien, durée, personnes présentes, documents à apporter", "Seulement le prix", "Rien", "Le salaire de la directrice"], "correct": 0 },
+    { "q": "Que préparer avant l'arrivée d'un salarié ?", "options": ["Dossier, accès, poste de travail, programme et référent", "Rien", "Son départ", "Sa paie de l'année"], "correct": 0 },
+    { "q": "Qui fait l'inscription aux organismes obligatoires ?", "options": ["La personne compétente, selon la procédure de l'entreprise", "Le salarié seul sans aide", "Personne", "Un candidat"], "correct": 0 },
+    { "q": "Pourquoi répondre aux candidats non retenus ?", "options": ["Par respect et pour l'image de l'entreprise", "C'est inutile", "Pour les recruter quand même", "Pour leur demander de l'argent"], "correct": 0 },
+    { "q": "Quel partenaire peut apporter des clients PME ?", "options": ["Un cabinet comptable", "Un concurrent direct", "Un candidat", "Personne"], "correct": 0 },
+    { "q": "Combien de temps dure la confidentialité dans le contrat ?", "options": ["Y compris après la fin du contrat", "Seulement pendant une semaine", "Jamais", "Seulement le premier mois"], "correct": 0 },
+    { "q": "Quelle évolution demande une formation en droit du travail du pays ?", "options": ["Gestionnaire de paie", "Graphiste", "Monteur vidéo", "Traducteur"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

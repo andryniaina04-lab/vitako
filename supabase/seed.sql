@@ -101,7 +101,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 12, false),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 15, false),
-  ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 13, false),
+  ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
@@ -8039,6 +8039,655 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- edu-4-f
+delete from public.exam_questions where course_id = 'edu-4-f';
+delete from public.module_questions where course_id = 'edu-4-f';
+delete from public.lessons where course_id = 'edu-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-f', 0, 'Le métier d''assistant administratif et RH depuis Madagascar', 'Ce que fait le métier, les tâches administratives et RH, ce que l''assistant ne fait pas, les clients et les 6 règles de confidentialité.', 'Chaque entreprise, même petite, produit des courriers, des contrats, des factures, des dossiers du personnel, des demandes de congés et des tableaux à tenir à jour. L''assistant administratif et RH organise tout cela pour que la direction et les salariés puissent se concentrer sur leur travail. Une grande partie de ces tâches peut se faire à distance. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un assistant administratif et RH.
+> 2. Citer les tâches administratives et les tâches RH les plus courantes.
+> 3. Distinguer ce que l''assistant fait et ce qui relève de la direction ou d''un spécialiste.
+> 4. Repérer vos premiers clients possibles.
+> 5. Comprendre l''importance de la confidentialité.
+
+## Le métier en une phrase
+
+Un assistant administratif et RH **organise les documents, les informations et les démarches d''une entreprise et de son personnel, avec rigueur et discrétion**.
+
+> [!definition] RH (ressources humaines)
+> Tout ce qui concerne le personnel d''une entreprise : recrutement, contrats, accueil des nouveaux, congés, absences, formation, paie, départs, et respect des règles du travail.
+
+## Les tâches les plus courantes
+
+### Côté administratif
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Courriers et e-mails** | Rédiger une lettre à un fournisseur, répondre à une demande d''information |
+| 2 | **Documents** | Mettre en forme un rapport, préparer une attestation, un compte rendu |
+| 3 | **Classement** | Organiser les dossiers numériques, nommer les fichiers, archiver |
+| 4 | **Agenda et réunions** | Fixer les réunions, préparer l''ordre du jour, rédiger le compte rendu |
+| 5 | **Suivi administratif** | Tableau des contrats fournisseurs, échéances, renouvellements |
+| 6 | **Facturation simple** | Préparer les devis et factures, suivre les paiements et relances |
+
+### Côté RH
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Recrutement (partie administrative)** | Publier l''annonce, trier les candidatures avec une grille, organiser les entretiens |
+| 2 | **Accueil des nouveaux** | Préparer le dossier, la liste des documents, le programme de la première semaine |
+| 3 | **Dossiers du personnel** | Tenir à jour les informations et documents de chaque salarié |
+| 4 | **Congés et absences** | Enregistrer les demandes, tenir le tableau, informer les responsables |
+| 5 | **Préparation de la paie** | Rassembler les éléments variables (absences, heures supplémentaires, primes) pour le comptable ou le service paie |
+| 6 | **Attestations et courriers RH** | Attestation de travail, courrier de confirmation, convocation (sur modèle validé) |
+
+## Ce que l''assistant fait… et ce qu''il ne fait pas
+
+| L''assistant fait | La direction ou un spécialiste décide ou réalise |
+| --- | --- |
+| Préparer les documents à partir de modèles validés | Rédiger ou modifier un contrat de travail (juriste, direction) |
+| Rassembler les éléments variables de la paie | Calculer la paie et les cotisations (comptable, service paie) |
+| Trier les candidatures avec une grille fixée par le recruteur | Choisir la personne recrutée |
+| Tenir le tableau des congés | Accepter ou refuser un congé |
+| Organiser un entretien | Mener un entretien disciplinaire, décider d''une sanction ou d''un licenciement |
+| Informer des règles écrites de l''entreprise | Donner un avis juridique |
+
+> [!attention]
+> Les règles du travail (contrats, congés, cotisations, licenciements) dépendent du **pays** et changent. Ne donnez jamais un avis juridique : appuyez-vous sur les documents validés par l''entreprise, et orientez les questions vers la direction, le comptable ou un juriste.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **PME** sans service RH : commerces, entreprises de services, entreprises de construction.
+2. **ONG et associations** : gestion des équipes, des contrats de projets, des rapports.
+3. **Cabinets** (comptables, avocats, médecins) qui ont besoin d''aide administrative.
+4. **Écoles privées** : dossiers des enseignants et des élèves, plannings.
+
+### À l''étranger
+
+1. **Petites entreprises francophones** qui externalisent leur administration.
+2. **Cabinets de recrutement** qui ont besoin d''aide pour trier et organiser les candidatures.
+3. **Entreprises en croissance** qui recrutent beaucoup et ont besoin d''aide pour l''accueil des nouveaux.
+
+> [!madagascar] Votre avantage
+> Les PME malgaches qui grandissent ont souvent besoin d''organiser leurs dossiers du personnel, leurs congés et leurs documents, sans pouvoir recruter un responsable RH à plein temps. Un assistant à distance, quelques heures par semaine, est une solution adaptée. Pour les entreprises francophones, votre français écrit et votre fiabilité sont vos principaux atouts.
+
+## La confidentialité : la règle n° 1
+
+Vous aurez accès à des informations **très sensibles** : salaires, santé, situation familiale, évaluations, conflits, sanctions.
+
+### Les 6 règles
+
+1. **Ne parlez jamais** des informations du personnel à quelqu''un d''autre, même à un collègue qui n''en a pas besoin.
+2. **Limitez les accès** : chaque dossier n''est partagé qu''avec les personnes autorisées.
+3. **Protégez vos outils** : mot de passe, double authentification, écran verrouillé.
+4. **N''utilisez pas** de messagerie personnelle pour envoyer des documents du personnel.
+5. **Ne gardez pas** de copies personnelles.
+6. **Respectez** les règles de protection des données du pays de l''entreprise (en Europe, le RGPD).
+
+> [!retenir]
+> - L''assistant administratif et RH organise documents, informations et démarches.
+> - Tâches administratives : courriers, documents, classement, agenda, suivi, facturation simple.
+> - Tâches RH : recrutement administratif, accueil, dossiers, congés, préparation de la paie, attestations.
+> - L''assistant prépare ; la direction et les spécialistes décident.
+> - La confidentialité est la règle n° 1.
+
+## Exercice pratique : votre bilan de départ
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour chacune des 12 tâches (6 administratives, 6 RH), notez-vous de 1 à 5.
+> 2. Choisissez une PME que vous connaissez (commerce, école, association) et listez 10 tâches administratives ou RH que vous pourriez lui prendre en charge.
+> 3. Pour chacune, indiquez ce qui reste décidé par la direction.
+> 4. Rédigez vos 6 règles de confidentialité personnelles, adaptées à votre poste de travail.
+>
+> **À livrer** : votre bilan, votre liste de 10 tâches et vos règles de confidentialité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 0, 0, 'Qui choisit la personne recrutée ?', '["La direction ou le recruteur","L''assistant","Les autres candidats","Le comptable"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 0, 1, 'Que faire face à une question juridique d''un salarié ?', '["Donner son avis","Orienter vers la direction, le comptable ou un juriste","Chercher sur un forum et répondre","Ignorer la question"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 0, 2, 'Quelle est la règle n° 1 du métier ?', '["La confidentialité","La créativité","La publicité","La vitesse"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-f', 1, 'Les bases : documents, classement, parcours du salarié, congés et paie', 'Les 5 documents courants, le plan de classement et le nommage, le parcours en 5 étapes, le dossier du personnel, le registre des congés et les éléments variables de paie.', 'Ce module vous donne les bases du travail administratif et RH : rédiger les documents courants, classer pour tout retrouver, suivre le parcours d''un salarié de son arrivée à son départ, tenir les congés et absences, et préparer les éléments de paie. Ce sont les savoir-faire que toute entreprise attend.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger 5 documents administratifs courants.
+> 2. Construire un plan de classement et nommer les fichiers.
+> 3. Décrire le parcours d''un salarié en 5 étapes.
+> 4. Tenir un registre des congés et des absences.
+> 5. Préparer les éléments variables de la paie.
+
+## Les 5 documents courants
+
+| Document | À quoi il sert | Les parties essentielles |
+| --- | --- | --- |
+| **Courrier** | Écrire officiellement à une personne ou une organisation | Coordonnées, lieu et date, objet, formule d''appel, corps, formule de politesse, signature |
+| **Compte rendu de réunion** | Garder la trace des décisions | Date, participants, décisions, actions (qui, quoi, quand), points ouverts |
+| **Note de service** | Informer le personnel d''une règle ou d''un changement | Émetteur, destinataires, date, objet, message, date d''application |
+| **Attestation** | Certifier un fait (emploi, présence, formation) | Identité de l''entreprise, identité de la personne, fait attesté, date, signature autorisée |
+| **Tableau de suivi** | Suivre des échéances ou des dossiers | Une ligne par élément, colonnes claires, dates, statut |
+
+> [!exemple] Note de service
+> **De** : Direction · **À** : Tout le personnel · **Date** : 3 mars 2026
+> **Objet** : Nouveaux horaires pendant la saison des pluies
+> À partir du lundi 10 mars, les bureaux ouvriront de 7 h 30 à 16 h 30, du lundi au vendredi, pour permettre à chacun de rentrer avant les fortes pluies de fin de journée. La pause déjeuner reste fixée de 12 h à 13 h. Pour toute question, adressez-vous à votre responsable.
+
+> [!astuce]
+> Créez un **modèle** pour chaque document (en-tête de l''entreprise, mise en forme, parties). Vous gagnez du temps, et tous les documents de l''entreprise se ressemblent. Les modèles RH (attestations, courriers) doivent être **validés par la direction** avant d''être utilisés.
+
+## Classer pour tout retrouver
+
+### Le plan de classement
+
+> [!definition] Plan de classement
+> L''organisation des dossiers d''une entreprise : une arborescence numérotée, la même pour tous, qui dit où ranger chaque type de document.
+
+> [!exemple] Un plan de classement pour une PME
+> ```
+> 01 Direction (statuts, procès-verbaux, rapports)
+> 02 Administratif (assurances, contrats fournisseurs, locaux)
+> 03 Finances (devis, factures, relevés)
+> 04 Ressources humaines
+>    ├── 04.1 Recrutement
+>    ├── 04.2 Dossiers du personnel (accès restreint)
+>    ├── 04.3 Congés et absences
+>    └── 04.4 Paie (accès restreint)
+> 05 Commercial (clients, offres, contrats clients)
+> 06 Communication (logos, modèles, photos)
+> ```
+
+### Nommer les fichiers
+
+Règle : **AAAA-MM-JJ – type – nom – version**.
+Exemples : `2026-03-03 - Note de service - Horaires saison des pluies.pdf` ; `2026-03-10 - Contrat fournisseur - Imprimerie Soa - V2.pdf`.
+
+### Conserver et archiver
+
+1. Chaque type de document a une **durée de conservation** (fixée par la loi ou par l''entreprise). Demandez la règle à la direction ou au comptable.
+2. Archivez chaque année les dossiers terminés dans un dossier « Archives AAAA ».
+3. Ne supprimez rien sans l''accord de la direction.
+
+## Le parcours d''un salarié en 5 étapes
+
+| Étape | Ce qui se passe | Rôle de l''assistant |
+| --- | --- | --- |
+| **1. Recrutement** | Besoin, annonce, candidatures, entretiens, choix | Annonce, tri avec une grille, convocations, suivi des candidats |
+| **2. Arrivée** | Contrat, documents, accueil | Liste des documents à fournir, dossier, programme d''accueil, accès aux outils |
+| **3. Vie dans l''entreprise** | Congés, absences, formations, évaluations | Registre des congés, suivi des formations, organisation des entretiens |
+| **4. Évolutions** | Changement de poste, de salaire, d''horaires | Préparer les documents à partir de modèles validés, mettre à jour le dossier |
+| **5. Départ** | Démission, fin de contrat, retraite | Liste des démarches, documents de fin de contrat préparés pour la direction, restitution du matériel et des accès |
+
+### Le dossier du personnel
+
+Pour chaque salarié, un dossier (à **accès restreint**) contient en général : identité et coordonnées, contrat et avenants, diplômes et documents demandés, fiches de poste, demandes de congés, attestations, documents liés à la sécurité sociale et aux organismes de santé de l''entreprise.
+
+> [!madagascar]
+> À Madagascar, les entreprises ont des obligations liées au **Code du travail**, à la caisse de prévoyance sociale (**CNaPS**), aux organismes de santé au travail et à l''impôt sur les revenus salariaux. Les règles précises (taux, délais, documents) relèvent de la direction et du comptable : votre rôle est de **rassembler** et **classer** les documents, et de **suivre les échéances** qu''ils vous indiquent.
+
+## Les congés et les absences
+
+### Le registre des congés
+
+| Salarié | Droits acquis | Pris | Restant | Demande | Dates | Statut |
+| --- | --- | --- | --- | --- | --- | --- |
+| Rakoto Jean | 15 j | 5 j | 10 j | Congé annuel | 14 au 18 avril | Accepté |
+| Rasoa Marie | 12 j | 12 j | 0 j | Congé annuel | 2 au 6 juin | À valider (droits épuisés) |
+
+*(Exemple : les droits et règles de calcul dépendent du droit du travail et des accords de l''entreprise.)*
+
+### La procédure
+
+1. Le salarié fait une **demande écrite** (formulaire ou e-mail).
+2. Vous **vérifiez** les droits restants et le planning de l''équipe.
+3. Vous **transmettez** au responsable avec votre vérification.
+4. Le responsable **décide**.
+5. Vous **enregistrez** la décision et **informez** le salarié.
+
+## Préparer les éléments variables de la paie
+
+> [!definition] Éléments variables de paie
+> Les informations qui changent d''un mois à l''autre et modifient la paie : absences, congés, heures supplémentaires, primes, avances, arrivées et départs. Le comptable ou le service paie en a besoin chaque mois pour calculer les salaires.
+
+### Le tableau mensuel
+
+| Salarié | Absences | Congés pris | Heures supplémentaires | Primes | Avances | Remarques |
+| --- | --- | --- | --- | --- | --- | --- |
+| Rakoto Jean | 0 | 5 j | 6 h | — | — | — |
+| Rasoa Marie | 1 j (maladie, justificatif reçu) | 0 | 0 | Prime de résultat validée | 50 000 Ar | — |
+
+1. Remplissez le tableau à partir des **documents validés** (registre des congés, feuilles d''heures, décisions de la direction).
+2. **Vérifiez** chaque ligne.
+3. **Envoyez** au comptable à la date convenue, par un canal sécurisé.
+4. **Classez** le tableau dans le dossier Paie (accès restreint).
+
+> [!attention] Erreurs fréquentes
+> - Utiliser un modèle de contrat trouvé sur Internet sans validation.
+> - Laisser les dossiers du personnel accessibles à tous.
+> - Enregistrer un congé sans la décision du responsable.
+> - Envoyer les éléments de paie en retard ou sans vérification.
+
+> [!retenir]
+> - 5 documents courants, chacun avec un modèle validé.
+> - Un plan de classement numéroté et des fichiers nommés « date – type – nom – version ».
+> - Le parcours d''un salarié : recrutement, arrivée, vie dans l''entreprise, évolutions, départ.
+> - Congés : demande, vérification, décision du responsable, enregistrement.
+> - Éléments variables de paie : vérifiés, envoyés à temps, par un canal sécurisé.
+
+## Exercice pratique : les bases d''un service administratif
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez un courrier, une note de service et un compte rendu de réunion pour une PME imaginaire.
+> 2. Construisez le plan de classement de cette PME et nommez 5 fichiers selon la règle.
+> 3. Créez le registre des congés de 5 salariés fictifs, avec 3 demandes à traiter.
+> 4. Remplissez le tableau des éléments variables de paie du mois pour ces 5 salariés.
+>
+> **À livrer** : vos 3 documents, votre plan de classement, le registre et le tableau de paie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 1, 0, 'Que contient un compte rendu de réunion ?', '["Une publicité","Décisions, actions et points ouverts","Seulement la date","Les salaires"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 1, 1, 'Qui décide d''accepter un congé ?', '["Le comptable","Le responsable","L''assistant","Le salarié lui-même"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 1, 2, 'Que sont les éléments variables de paie ?', '["Les informations qui changent chaque mois : absences, heures supplémentaires, primes","Le logo de l''entreprise","Les jours fériés","Le salaire de base fixe"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-f', 2, 'Les outils : Google Workspace, Excel, publipostage et outils payants', 'Modèles de documents, formulaire de congé, partage avec les bons droits, registre avec NB.JOURS.OUVRES, publipostage, Microsoft 365, logiciels de paie et SIRH.', 'Ce module vous fait prendre en main les outils de l''assistant administratif et RH : **Google Workspace** et **Excel** pour les documents, les registres et les formulaires, le **publipostage** pour produire des dizaines de documents en une fois, puis les outils payants : **Microsoft 365** et les **logiciels de paie**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer des modèles de documents et un formulaire de demande de congé.
+> 2. Partager les dossiers avec les bons droits.
+> 3. Construire un registre des congés avec des formules.
+> 4. Produire des documents en série avec le publipostage.
+> 5. Comprendre ce qu''apportent Microsoft 365 et un logiciel de paie.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **Google Docs** | Modèles de documents, rédaction, commentaires |
+| 2 | **Google Sheets** ou **Excel** | Registres, tableaux de suivi, calculs |
+| 3 | **Google Forms** | Formulaires : demande de congé, candidature, inscription à une formation |
+| 4 | **Google Drive** | Classement, partage avec les bons droits |
+| 5 | **Google Agenda** et **Meet** | Réunions et entretiens |
+
+## Les modèles de documents
+
+1. Créez un document avec l''**en-tête** de l''entreprise (logo, nom, adresse).
+2. Utilisez des **styles** (Titre 1, Titre 2, Texte normal) pour une mise en forme cohérente.
+3. Marquez les zones à remplir de façon visible : **[NOM DU SALARIÉ]**, **[DATE]**.
+4. Rangez les modèles dans un dossier « Modèles » en **lecture seule** pour les autres.
+5. Pour utiliser un modèle : **Fichier → Créer une copie**, jamais en modifiant l''original.
+
+## Le formulaire de demande de congé
+
+1. Créez un **Google Forms** « Demande de congé ».
+2. Ajoutez les questions : nom, service, type de congé (liste), date de début, date de fin, remarque.
+3. Rendez les questions **obligatoires**.
+4. Reliez le formulaire à une **feuille Google Sheets** : chaque demande crée une ligne.
+5. Partagez le lien du formulaire avec le personnel.
+
+> [!astuce]
+> Ajoutez dans la feuille des réponses des colonnes pour **votre vérification** (droits restants) et la **décision** du responsable. Vous obtenez un suivi complet, sans e-mails perdus.
+
+## Partager avec les bons droits
+
+| Dossier | Qui y a accès | Droit |
+| --- | --- | --- |
+| Modèles | Tout le personnel administratif | Lecteur |
+| Notes de service | Tout le personnel | Lecteur |
+| Dossiers du personnel | Direction et assistant RH seulement | Éditeur pour l''assistant, lecteur ou éditeur pour la direction |
+| Paie | Direction, comptable, assistant RH | Selon les besoins |
+
+### Les règles
+
+1. **Jamais** « Tous les utilisateurs disposant du lien » pour un document RH.
+2. **Vérifiez les accès** chaque trimestre, et retirez ceux des personnes parties.
+3. **Utilisez des dossiers partagés** de l''entreprise, pas votre Drive personnel.
+
+## Le registre des congés avec des formules
+
+| Colonne | Formule (Google Sheets ou Excel en français) |
+| --- | --- |
+| Jours demandés (jours ouvrés) | `=NB.JOURS.OUVRES(Début;Fin;Fériés)` |
+| Jours restants | `=Droits-Pris` |
+| Alerte si droits dépassés | `=SI(JoursDemandés>Restants;"Droits insuffisants";"OK")` |
+
+> [!definition] Jours ouvrés
+> Les jours normalement travaillés dans l''entreprise (souvent du lundi au vendredi), hors jours fériés. La fonction **NB.JOURS.OUVRES** les compte entre deux dates, en excluant une liste de jours fériés que vous fournissez.
+
+> [!madagascar]
+> Créez dans le tableur une feuille « Jours fériés » avec les jours fériés de Madagascar de l''année (par exemple le 1er janvier, le 29 mars, le 1er mai, le 26 juin, le 15 août, le 1er novembre, le 25 décembre, ainsi que les fêtes mobiles comme le lundi de Pâques). Vérifiez la liste officielle chaque année, et utilisez-la dans la formule NB.JOURS.OUVRES.
+
+## Le publipostage : des documents en série
+
+> [!definition] Publipostage
+> Une méthode pour produire de nombreux documents personnalisés à partir d''un **modèle** et d''un **tableau** : chaque ligne du tableau (un salarié, un candidat) donne un document avec ses informations.
+
+### Exemple : 20 convocations à une formation
+
+1. Préparez le **tableau** : nom, prénom, service, date, heure, lieu.
+2. Préparez le **modèle** de convocation avec des champs (« Madame, Monsieur «Nom» »).
+3. Lancez le **publipostage** :
+   - **Word** (Microsoft 365) : onglet Publipostage, sélection de la liste, insertion des champs, fusion.
+   - **Google Docs** : avec une extension de publipostage, ou en recopiant le modèle selon une méthode adaptée.
+4. **Vérifiez** 3 documents au hasard.
+5. **Envoyez** ou imprimez.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Qui le paie |
+| --- | --- | --- |
+| **Microsoft 365** | Word (publipostage complet), Excel (fonctions avancées), Outlook, Teams, SharePoint et OneDrive (partage sécurisé d''entreprise) | L''entreprise, qui vous crée un compte |
+| **Logiciel de paie** | Calcul des salaires, cotisations, bulletins, déclarations, selon la législation du pays | L''entreprise ; utilisé par le comptable ou le service paie |
+| **Logiciel RH (SIRH)** | Dossiers du personnel, congés, entretiens, documents en ligne | L''entreprise |
+
+> [!definition] SIRH
+> Système d''information des ressources humaines : un logiciel qui regroupe les informations du personnel, les congés, les absences, les entretiens et souvent la paie.
+
+### Votre rôle avec un logiciel de paie
+
+1. **Saisir** ou transmettre les éléments variables (absences, heures, primes).
+2. **Vérifier** les informations des salariés (arrivées, départs, changements).
+3. **Classer** les bulletins et documents produits.
+4. **Ne pas modifier** les paramètres de calcul (taux, règles) : c''est le rôle du comptable ou du spécialiste paie.
+
+Les logiciels de paie doivent être **adaptés au pays** (règles de Madagascar, de France…). C''est l''entreprise qui les choisit et les paie.
+
+> [!retenir]
+> - Des modèles en lecture seule, utilisés par copie.
+> - Un formulaire de congé relié à un tableau de suivi.
+> - Des accès restreints pour tout ce qui est RH et paie.
+> - NB.JOURS.OUVRES avec la liste des jours fériés du pays.
+> - Le publipostage pour les documents en série ; Microsoft 365 et les logiciels de paie sont fournis par l''entreprise.
+
+## Exercice pratique : votre boîte à outils administrative
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez 3 modèles (attestation de travail, convocation, note de service) avec en-tête et zones à remplir.
+> 2. Créez le formulaire de demande de congé relié à une feuille, et faites 5 demandes de test.
+> 3. Construisez le registre des congés avec NB.JOURS.OUVRES, la feuille des jours fériés et l''alerte de droits insuffisants.
+> 4. Réalisez un publipostage de 10 convocations à partir d''un tableau.
+> 5. Organisez le partage d''un dossier RH fictif avec les bons droits et faites une capture.
+>
+> **À livrer** : vos modèles, le lien du formulaire, le registre, les 10 convocations et la capture des droits.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 2, 0, 'Comment utiliser un modèle de document ?', '["En modifiant l''original","En l''imprimant seulement","En le supprimant","En créant une copie"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 2, 1, 'Que compte la fonction NB.JOURS.OUVRES ?', '["Le nombre de salariés","Les salaires","Les jours travaillés entre deux dates, hors jours fériés","Les heures supplémentaires"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 2, 2, 'Qu''est-ce que le publipostage ?', '["Publier sur Facebook","Calculer la paie","Produire des documents personnalisés à partir d''un modèle et d''un tableau","Envoyer du courrier par la poste"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-f', 3, 'Premier projet : un recrutement et l''arrivée d''une salariée', 'Fiche de poste, annonce, grille de tri, entretiens et suivi des candidats, liste de contrôle d''arrivée et suivi du premier mois.', 'Dans ce module, vous accompagnez une PME dans un recrutement complet et l''arrivée de la nouvelle salariée, comme le ferait un assistant administratif et RH : fiche de poste, annonce, tri des candidatures, organisation des entretiens, préparation de l''arrivée, puis suivi du premier mois.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger une fiche de poste et une annonce.
+> 2. Trier des candidatures avec une grille objective.
+> 3. Organiser les entretiens et suivre les candidats.
+> 4. Préparer l''arrivée d''un nouveau salarié avec une liste de contrôle.
+> 5. Assurer le suivi administratif du premier mois.
+
+## Le cas pratique : « Tsara Tour »
+
+> [!exemple] Votre client
+> **Tsara Tour** est une agence de voyage d''Antananarivo de 12 salariés. Elle recrute une **assistante commerciale** pour répondre aux demandes des clients, préparer les devis et suivre les réservations. La directrice, Mme Ravao, vous confie la partie administrative du recrutement et de l''arrivée. C''est elle qui choisira la personne et signera le contrat (préparé avec son conseil juridique).
+
+## Étape 1 : la fiche de poste
+
+> [!definition] Fiche de poste
+> Le document qui décrit un poste : sa mission, ses tâches, les compétences demandées, les conditions de travail. Elle sert à rédiger l''annonce, à trier les candidatures et à accueillir la personne recrutée.
+
+### Les 7 rubriques
+
+1. **Intitulé** : Assistante commerciale (H/F).
+2. **Rattachement** : directrice commerciale.
+3. **Mission** : en une phrase.
+4. **Tâches principales** : 5 à 8.
+5. **Compétences** : indispensables et souhaitées.
+6. **Conditions** : lieu, horaires, type de contrat, date de début.
+7. **Indicateurs** de réussite : par exemple le délai de réponse aux demandes.
+
+Faites **valider** la fiche par la directrice avant de rédiger l''annonce.
+
+## Étape 2 : l''annonce
+
+> [!exemple] Annonce
+> **Tsara Tour recrute une assistante commerciale (H/F) – Antananarivo**
+> Agence de voyage depuis 2010, nous organisons des circuits à Madagascar pour des voyageurs du monde entier.
+> **Vos missions** : répondre aux demandes des clients par e-mail et téléphone, préparer les devis, suivre les réservations avec nos partenaires (hôtels, chauffeurs, guides).
+> **Votre profil** : excellent français écrit, anglais courant, maîtrise d''Excel ou Google Sheets, sens du service, rigueur. Une expérience dans le tourisme est un plus.
+> **Conditions** : contrat à durée indéterminée, bureaux à Ankorondrano, du lundi au vendredi.
+> **Pour postuler** : CV et lettre de motivation avant le 15 avril, par le formulaire : [lien].
+
+Règles : des critères **liés au poste**, sans discrimination (âge, sexe, religion, origine, situation familiale…), et une **date limite**.
+
+## Étape 3 : trier les candidatures avec une grille
+
+### La grille de tri
+
+| Critère | Poids | Candidat A | Candidat B | Candidat C |
+| --- | --- | --- | --- | --- |
+| Français écrit (lettre, CV) | 3 | 3 | 2 | 3 |
+| Anglais (mentionné et justifié) | 2 | 2 | 2 | 1 |
+| Tableur | 1 | 1 | 1 | 1 |
+| Expérience de contact client | 2 | 2 | 1 | 2 |
+| Expérience tourisme (bonus) | 1 | 0 | 1 | 1 |
+| **Total (sur 9 × note max)** | | **Calculé** | **Calculé** | **Calculé** |
+
+*(Exemple : chaque critère est noté de 0 à 3, puis multiplié par son poids.)*
+
+### Les règles d''un tri juste
+
+1. La grille est **fixée avant** de lire les candidatures, et **validée** par la direction.
+2. Chaque candidature est notée **avec la même grille**.
+3. Vous notez des **faits** (« anglais : stage de 6 mois à Maurice »), pas des impressions.
+4. Vous **proposez** une présélection ; la direction **décide** qui est convoqué.
+
+## Étape 4 : organiser les entretiens
+
+1. **Proposez des créneaux** aux candidats présélectionnés par la direction.
+2. **Envoyez la convocation** : date, heure, lieu ou lien de visioconférence, durée, personnes présentes, documents à apporter.
+3. **Préparez le dossier** de chaque candidat pour la directrice : CV, lettre, grille.
+4. **Préparez la grille d''entretien** (questions fixées par la directrice).
+5. **Tenez le tableau de suivi** des candidats.
+
+| Candidat | Statut | Date d''entretien | Décision | Réponse envoyée |
+| --- | --- | --- | --- | --- |
+| A | Entretien | 18 avril 9 h | Retenue | Oui, le 22 avril |
+| B | Entretien | 18 avril 10 h 30 | Non retenue | Oui, le 22 avril |
+| D | Non présélectionné | — | — | Oui, le 16 avril |
+
+> [!astuce]
+> Envoyez une **réponse à chaque candidat**, même non retenu, avec un message poli. C''est une question de respect, et cela protège l''image de l''entreprise.
+
+## Étape 5 : préparer l''arrivée
+
+### La liste de contrôle d''arrivée
+
+| Quand | Action |
+| --- | --- |
+| **Avant l''arrivée** | Liste des documents à fournir envoyée ; contrat préparé par la direction ; dossier du personnel créé ; poste de travail, adresse e-mail et accès aux outils demandés ; programme de la première semaine ; personne référente désignée |
+| **Le premier jour** | Accueil, visite, présentation de l''équipe, remise du matériel et des accès, règlement intérieur et notes de service, documents à signer selon la procédure de l''entreprise |
+| **La première semaine** | Formation aux outils et aux procédures, rencontres avec les partenaires principaux, point de fin de semaine avec la responsable |
+| **Le premier mois** | Point à mi-parcours, vérification que tous les documents sont au dossier, inscription aux organismes obligatoires faite par la personne compétente, bilan avec la directrice |
+
+## Étape 6 : le suivi du premier mois
+
+1. **Vérifiez le dossier** : tous les documents reçus et classés.
+2. **Vérifiez les accès** : outils, e-mail, dossiers partagés.
+3. **Organisez les points** prévus et préparez leurs comptes rendus.
+4. **Transmettez** au comptable les informations d''arrivée pour la paie (date d''entrée, éléments convenus).
+5. **Mettez à jour** l''organigramme et la liste du personnel.
+
+> [!madagascar]
+> Pour les démarches liées aux organismes sociaux (comme la CNaPS) et aux organismes de santé au travail, suivez la procédure et les délais indiqués par la direction ou le comptable. Notez les échéances dans le tableau de suivi pour qu''aucune démarche ne soit oubliée.
+
+> [!attention] Erreurs fréquentes
+> - Commencer le tri sans grille validée.
+> - Noter des impressions au lieu de faits.
+> - Oublier de répondre aux candidats non retenus.
+> - Préparer un contrat à partir d''un modèle non validé.
+> - Laisser un nouveau salarié sans accès ni programme le premier jour.
+
+> [!retenir]
+> - Une fiche de poste validée en 7 rubriques, puis une annonce claire et sans discrimination.
+> - Un tri avec une grille fixée à l''avance et des faits.
+> - Des convocations complètes, un dossier par candidat et une réponse à chacun.
+> - Une liste de contrôle d''arrivée, de la veille au premier mois.
+> - La direction décide ; l''assistant prépare, organise et suit.
+
+## Exercice pratique : le recrutement Tsara Tour
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez la fiche de poste et l''annonce.
+> 2. Créez 6 candidatures fictives (CV courts) et triez-les avec une grille pondérée.
+> 3. Rédigez la convocation, la grille d''entretien et le tableau de suivi.
+> 4. Rédigez les messages de réponse (retenu, non retenu après entretien, non présélectionné).
+> 5. Construisez la liste de contrôle d''arrivée complète et le programme de la première semaine.
+>
+> **À livrer** : tous les documents du recrutement et de l''arrivée. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 3, 0, 'Quand fixer la grille de tri ?', '["Après avoir choisi le candidat","Avant de lire les candidatures","Jamais","Pendant l''entretien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 3, 1, 'Quel critère est interdit dans une annonce ?', '["Le sens du service","La connaissance d''Excel","La maîtrise du français","La religion ou la situation familiale"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 3, 2, 'À qui répondre après un recrutement ?', '["Seulement aux candidats connus","Seulement au candidat retenu","À personne","À chaque candidat, même non retenu"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio d''exemples fictifs, 5 canaux, forfaits et prestations ponctuelles, contrat en 9 clauses, paiements et évolution.', 'De nombreuses PME, à Madagascar comme à l''étranger, ont besoin d''aide administrative et RH quelques heures par semaine, sans pouvoir recruter à plein temps. Ce dernier module vous montre comment présenter vos services, trouver des clients, fixer vos prix, protéger la confidentialité dans votre contrat et vous faire payer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''assistant administratif et RH.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Calculer des forfaits mensuels et des prestations ponctuelles.
+> 4. Rédiger un contrat avec des clauses de confidentialité solides.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+Les vrais documents de vos clients sont confidentiels. Votre portfolio contient donc des **exemples fictifs** :
+
+1. **Votre projet Tsara Tour** (module 4) : fiche de poste, annonce, grille, convocations, liste d''arrivée.
+2. **Vos modèles** : courrier, note de service, attestation, compte rendu.
+3. **Vos outils** : registre des congés avec formules, formulaire de demande, tableau des éléments de paie (avec données fictives).
+4. **Votre plan de classement** type.
+5. **Vos engagements de confidentialité**.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **PME malgaches** en croissance | Commerces, agences, entreprises de services | Proposez d''organiser leurs dossiers du personnel et leurs congés |
+| 2 | **ONG et associations** | Équipes de projets, contrats, rapports | Contactez les responsables administratifs et financiers |
+| 3 | **Cabinets comptables** | Leurs clients PME ont besoin d''aide administrative | Proposez un partenariat : vous préparez, ils calculent |
+| 4 | **Entreprises francophones à l''étranger** | Petites entreprises qui externalisent leur administration | LinkedIn, plateformes de freelance (vérifiez qu''elles acceptent les freelances basés à Madagascar) |
+| 5 | **Cabinets de recrutement** | Tri, organisation des entretiens, suivi des candidats | Montrez votre méthode de tri par grille |
+
+### Le message de prospection
+
+> [!exemple] Message à une PME
+> « Bonjour Madame, votre entreprise a beaucoup grandi ces derniers mois. Avec une équipe de plus de 10 personnes, le suivi des congés, des dossiers du personnel et des documents administratifs prend vite beaucoup de temps. Je suis assistante administrative et RH : je peux organiser vos dossiers, tenir le registre des congés, préparer les éléments de paie pour votre comptable et vos documents courants, quelques heures par semaine, dans la plus stricte confidentialité. Puis-je vous présenter mon offre en 15 minutes ? »
+
+## Calculer ses prix
+
+### Les forfaits mensuels
+
+1. **Prix horaire** : revenu mensuel visé ÷ heures facturables (exemple : 1 200 000 Ar ÷ 100 h = 12 000 Ar de l''heure).
+2. **Heures par mois** selon la taille de l''entreprise et les tâches.
+
+| Formule | Contenu | Heures par mois | Exemple de prix (12 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Administratif** | Courriers, classement, agenda, suivi des échéances | 15 h | 180 000 Ar |
+| **RH essentiel** | Registre des congés et absences, dossiers du personnel, éléments variables de paie | 15 h | 180 000 Ar |
+| **Complet** | Administratif + RH essentiel + attestations, notes de service, comptes rendus | 35 h | 420 000 Ar |
+
+### Les prestations ponctuelles
+
+| Prestation | Exemple de contenu |
+| --- | --- |
+| **Mise en ordre** | Plan de classement, tri et renommage des dossiers existants, modèles |
+| **Recrutement administratif** | Fiche de poste, annonce, tri, convocations, suivi, réponses |
+| **Kit d''accueil** | Liste de contrôle, programme, livret d''accueil |
+| **Mise en place des outils** | Formulaires, registres, partages, procédures |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Le contrat
+
+### Les 9 clauses
+
+1. **Les parties**.
+2. **Les tâches** comprises, et ce qui n''est **pas** compris (calcul de la paie, conseil juridique, décisions RH).
+3. **Le volume** d''heures et les **délais** (exemple : éléments de paie transmis au comptable le 25 de chaque mois).
+4. **Ce que l''entreprise fournit** : modèles validés, informations, accès.
+5. **Les décisions** réservées à la direction.
+6. **La confidentialité** : informations concernées, durée (y compris après la fin du contrat), interdiction de copie, restitution et suppression des données.
+7. **La sécurité** : outils de l''entreprise, accès personnels, double authentification.
+8. **Le prix**, payé en début de mois, et les heures supplémentaires.
+9. **La durée** et le **préavis**.
+
+> [!attention]
+> Indiquez clairement dans le contrat que vous **ne donnez pas d''avis juridique** et que vous **ne calculez pas la paie** (sauf si vous êtes formé et que c''est prévu). Vous protégez ainsi le client… et vous-même.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Assistant RH confirmé** | Recrutement, intégration, formation, relations avec les organismes |
+| **Gestionnaire de paie** | Formation en paie et en droit du travail du pays, maîtrise d''un logiciel de paie |
+| **Assistant de direction** | Gestion d''agenda complexe, préparation des décisions (voir la formation Assistant virtuel) |
+| **Responsable administratif** | Organisation complète des services, achats, contrats |
+| **Chargé de recrutement** | Sourcing, entretiens, relation avec les candidats |
+
+> [!retenir]
+> - Un portfolio d''exemples fictifs : recrutement, modèles, outils, classement.
+> - PME, ONG, cabinets comptables, entreprises étrangères, cabinets de recrutement.
+> - Forfaits mensuels et prestations ponctuelles, à partir de votre prix horaire.
+> - Un contrat qui protège la confidentialité et précise ce que vous ne faites pas.
+> - La paie et le recrutement sont des voies d''évolution naturelles.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez votre portfolio d''exemples fictifs.
+> 2. Calculez vos 3 forfaits et 2 prestations ponctuelles.
+> 3. Rédigez votre contrat type en 9 clauses.
+> 4. Listez 10 PME ou ONG que vous pourriez contacter, et envoyez au moins 2 messages de prospection.
+>
+> **À livrer** : votre portfolio, vos prix, votre contrat et votre liste avec vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 4, 0, 'Que mettre dans un portfolio d''assistant RH ?', '["Des exemples fictifs","Les salaires d''une entreprise","Les contrats signés de salariés","Les vrais dossiers des clients"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 4, 1, '35 heures à 12 000 Ar de l''heure font…', '["4 200 000 Ar","120 000 Ar","35 000 Ar","420 000 Ar"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-f', 4, 2, 'Que doit préciser le contrat sur ce que vous ne faites pas ?', '["Que vous faites tout","Pas d''avis juridique ni de calcul de paie, sauf si prévu","Rien","Que vous décidez des recrutements"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que signifie RH ?', '["Recherche hebdomadaire","Rapport horaire","Réseau humain","Ressources humaines"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qui rédige ou modifie un contrat de travail ?', '["Personne","Le candidat","La direction avec un juriste","L''assistant seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quel client a souvent besoin d''aide RH quelques heures par semaine ?', '["Une multinationale avec 500 RH","Une PME sans service RH","Un particulier","Personne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Comment envoyer des documents du personnel ?', '["Par messagerie personnelle","Par SMS","Sur un réseau social","Par un canal sécurisé de l''entreprise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que contient une note de service ?', '["Émetteur, destinataires, date, objet, message, date d''application","Une facture","Seulement une signature","Un contrat"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quelle règle de nommage est correcte ?', '["2026-03-03 - Note de service - Horaires.pdf","scan2.pdf","doc final.pdf","sans titre.pdf"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qui fixe la durée de conservation des documents ?', '["Les salariés","L''assistant au hasard","La loi ou la direction, selon les documents","Personne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quelle est la première étape du parcours d''un salarié ?', '["La retraite","Le recrutement","La paie","Le départ"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qui accède aux dossiers du personnel ?', '["Les candidats","Les clients","Seulement les personnes autorisées","Tout le monde"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que faire avant d''envoyer les éléments de paie ?', '["Vérifier chaque ligne","Les modifier au hasard","Rien","Les publier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que fait-on pour un modèle RH avant de l''utiliser ?', '["Le traduire","Rien","Le prendre sur Internet tel quel","Le faire valider par la direction"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quel droit de partage éviter pour un document RH ?', '["Accès restreint","Lecteur pour la direction","Éditeur pour l''assistant RH","« Tous les utilisateurs disposant du lien »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'À quoi sert la feuille « Jours fériés » ?', '["Rien","Décorer le tableau","Être utilisée par NB.JOURS.OUVRES","Calculer les salaires"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qu''est-ce qu''un SIRH ?', '["Une note de service","Un jour férié","Un type de contrat","Un logiciel de gestion des ressources humaines"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que ne doit pas faire l''assistant dans un logiciel de paie ?', '["Modifier les paramètres de calcul","Vérifier les informations des salariés","Saisir les éléments variables","Classer les bulletins"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qu''est-ce qu''une fiche de poste ?', '["Un bulletin de paie","Une facture","Un planning de congés","Le document qui décrit la mission, les tâches et les compétences d''un poste"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que noter dans la grille de tri ?', '["Des faits","Des impressions","L''âge du candidat","Sa religion"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que contient une convocation à un entretien ?', '["Seulement le prix","Rien","Date, heure, lieu ou lien, durée, personnes présentes, documents à apporter","Le salaire de la directrice"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Que préparer avant l''arrivée d''un salarié ?', '["Rien","Son départ","Dossier, accès, poste de travail, programme et référent","Sa paie de l''année"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Qui fait l''inscription aux organismes obligatoires ?', '["Un candidat","Le salarié seul sans aide","Personne","La personne compétente, selon la procédure de l''entreprise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Pourquoi répondre aux candidats non retenus ?', '["C''est inutile","Pour les recruter quand même","Par respect et pour l''image de l''entreprise","Pour leur demander de l''argent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quel partenaire peut apporter des clients PME ?', '["Personne","Un cabinet comptable","Un candidat","Un concurrent direct"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Combien de temps dure la confidentialité dans le contrat ?', '["Jamais","Seulement le premier mois","Y compris après la fin du contrat","Seulement pendant une semaine"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quelle évolution demande une formation en droit du travail du pays ?', '["Graphiste","Monteur vidéo","Traducteur","Gestionnaire de paie"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Uniquement des chèques étrangers","Mobile Money ou virement","Aucun"]'::jsonb, 2);
 
 -- gestion-0-a
 delete from public.exam_questions where course_id = 'gestion-0-a';
