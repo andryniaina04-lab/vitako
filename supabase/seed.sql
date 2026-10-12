@@ -102,7 +102,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 12, false),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 15, false),
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
-  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, false)
+  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
 
@@ -10024,6 +10024,596 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- edu-4-a
+delete from public.exam_questions where course_id = 'edu-4-a';
+delete from public.module_questions where course_id = 'edu-4-a';
+delete from public.lessons where course_id = 'edu-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-a', 0, 'Se spécialiser et structurer l''entreprise', 'Les 6 spécialités avancées, le diagnostic administratif et RH en 6 domaines, les indicateurs RH de base et les offres à plus forte valeur.', 'Tenir les dossiers et les congés, beaucoup d''assistants savent le faire. Les profils les mieux payés ont une **spécialité** : ils préparent la paie avec rigueur, mènent les recrutements, pilotent les outils RH, organisent l''administration de toute une entreprise ou produisent les chiffres qui aident la direction à décider. Ce module vous aide à choisir votre spécialité et à vendre cette expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du métier.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic administratif et RH d''une PME.
+> 4. Calculer et présenter les indicateurs RH de base.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Assistant paie** | Préparer et contrôler la paie avec le gestionnaire ou le comptable | Éléments de paie, logiciel de paie, règles du pays, contrôles |
+| 2 | **Chargé de recrutement** | Mener les recrutements de bout en bout (hors décision finale) | Sourcing, entretiens structurés, relation candidats |
+| 3 | **Administrateur SIRH** | Mettre en place et faire vivre le logiciel RH | Paramétrage, données, droits d''accès, formation des utilisateurs |
+| 4 | **Assistant de direction** | Organiser l''agenda, les réunions et les dossiers de la direction | Priorités, confidentialité, rédaction |
+| 5 | **Office manager** | Faire tourner toute l''administration : achats, fournisseurs, locaux, outils | Organisation, budgets, contrats fournisseurs |
+| 6 | **Données RH** | Produire les indicateurs et les tableaux de bord RH | Excel avancé, indicateurs, présentation |
+
+> [!madagascar] Votre avantage
+> Les entreprises malgaches en croissance, les ONG et les entreprises de services numériques d''Antananarivo ont besoin de personnes capables de **structurer** leurs RH : procédures, dossiers, paie bien préparée, tableaux de bord. Les entreprises francophones à l''étranger recherchent aussi des assistants RH et paie à distance, fiables et discrets.
+
+## Le diagnostic administratif et RH
+
+Le diagnostic est souvent votre **premier service** chez un nouveau client : il montre votre expertise et mène à une mission régulière.
+
+### Les 6 domaines du diagnostic
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Dossiers du personnel** | Complets, à jour, accès restreint |
+| **2. Contrats et documents** | Modèles validés, avenants signés, échéances suivies |
+| **3. Temps et absences** | Registre des congés, justificatifs, cohérence avec la paie |
+| **4. Paie** | Calendrier, éléments variables transmis à temps, contrôles, erreurs passées |
+| **5. Recrutement et arrivée** | Procédure, délais, liste d''arrivée, retours des nouveaux |
+| **6. Outils et données** | Classement, outils utilisés, sauvegardes, droits d''accès |
+
+> [!exemple] Extrait de résumé de diagnostic
+> « Sur 24 dossiers du personnel, 9 n''ont pas de contrat signé numérisé et 5 n''ont pas d''avenant après une augmentation. Les éléments variables de paie sont envoyés au comptable par message, sans tableau, et 3 erreurs de paie ont été corrigées le mois suivant en 2026. Les dossiers RH sont dans un Drive partagé accessible à 11 personnes. Nous proposons de corriger ces points en 6 semaines. »
+
+> [!attention]
+> Le diagnostic constate des **faits d''organisation**. Si vous repérez un risque juridique (contrat manquant, règle du travail peut-être non respectée), signalez-le à la direction et conseillez de consulter un juriste ou le comptable : ne tranchez pas vous-même.
+
+## Les indicateurs RH de base
+
+| Indicateur | Formule | Exemple |
+| --- | --- | --- |
+| **Effectif** | Nombre de salariés à une date | 48 au 31 mars |
+| **Taux de rotation (turnover)** | Départs sur l''année ÷ effectif moyen | 6 ÷ 45 ≈ 13 % |
+| **Taux d''absentéisme** | Jours d''absence ÷ jours travaillés prévus | 120 ÷ 4 800 = 2,5 % |
+| **Délai de recrutement** | Jours entre l''ouverture du poste et l''acceptation de l''offre | 38 jours |
+| **Taux de départ en période d''essai** | Départs pendant l''essai ÷ arrivées | 2 ÷ 10 = 20 % |
+| **Heures de formation** | Total des heures de formation ÷ effectif | 360 ÷ 48 = 7,5 h |
+
+> [!astuce]
+> Présentez chaque indicateur avec **son évolution** (mois précédent, année précédente) et **un commentaire** : un chiffre seul ne dit pas à la direction quoi faire.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Diagnostic** | Rapport en 6 domaines et plan d''action |
+| **Mise en ordre** | Dossiers complets, modèles validés, procédures, classement |
+| **Préparation de la paie** | Calendrier, éléments variables, contrôles, lien avec le comptable |
+| **Recrutement complet** | De la fiche de poste à l''arrivée, avec suivi des candidats |
+| **Mise en place d''un SIRH** | Choix, paramétrage, reprise des données, formation |
+| **Tableau de bord RH** | Indicateurs mensuels et commentaires pour la direction |
+
+> [!retenir]
+> - Spécialisez-vous : paie, recrutement, SIRH, direction, office management ou données RH.
+> - Le diagnostic en 6 domaines est votre porte d''entrée.
+> - Signalez les risques juridiques, ne les tranchez pas.
+> - Des indicateurs RH avec évolution et commentaire.
+> - Vendez des offres qui structurent l''entreprise.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Créez une grille de diagnostic de 30 questions (5 par domaine).
+> 3. Appliquez-la à une PME fictive ou réelle (avec son accord) et rédigez le résumé.
+> 4. Calculez les 6 indicateurs RH d''une entreprise fictive de 40 salariés.
+>
+> **À livrer** : votre choix, votre grille, votre résumé de diagnostic et vos indicateurs commentés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 0, 0, '6 départs pour un effectif moyen de 45 donnent un taux de rotation d''environ…', '["75 %","45 %","6 %","13 %"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 0, 1, 'Que faire d''un risque juridique repéré pendant le diagnostic ?', '["Le signaler et conseiller de consulter un juriste ou le comptable","L''ignorer","Le trancher soi-même","En parler aux salariés"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 0, 2, 'Comment présenter un indicateur RH ?', '["Seul, sans explication","Avec son évolution et un commentaire","En le cachant","Sans chiffre"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-a', 1, 'Outils professionnels : Microsoft 365, logiciels de paie et SIRH', 'Fonctions Excel avancées et Power Query, SharePoint et Teams, Forms et Power Automate, calendrier et contrôles de paie, mise en place d''un SIRH en 7 étapes.', 'Au niveau Avancé, vous travaillez avec les outils payants que les entreprises structurées utilisent : **Microsoft 365** dans ses fonctions avancées, et les **logiciels de paie** et **SIRH**. Ces outils sont presque toujours **fournis par l''entreprise** ; votre valeur est de savoir les utiliser à fond et de les faire travailler ensemble.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées d''Excel pour les données RH.
+> 2. Organiser les documents RH dans SharePoint et Teams avec les bons droits.
+> 3. Automatiser des circuits simples avec Forms et Power Automate.
+> 4. Travailler dans un logiciel de paie selon un circuit de contrôle.
+> 5. Participer à la mise en place d''un SIRH.
+
+## Excel avancé pour les RH
+
+### Les fonctions utiles
+
+| Fonction (en français) | Usage RH |
+| --- | --- |
+| `RECHERCHEX` | Retrouver le service ou le salaire de base d''un salarié à partir de son matricule |
+| `NB.SI.ENS` | Compter les absences d''un service sur un mois |
+| `SOMME.SI.ENS` | Additionner les heures supplémentaires par service |
+| `DATEDIF` | Calculer l''ancienneté |
+| `FILTRE` | Afficher les contrats qui finissent dans les 60 jours |
+| Tableau croisé dynamique | Effectif par service, par contrat, par ancienneté |
+
+```
+Ancienneté en années :      =DATEDIF(DateEntrée;AUJOURDHUI();"Y")
+Contrats à échéance proche : =FILTRE(Contrats;(Contrats[Fin]-AUJOURDHUI())<=60)
+Absences d''un service :     =NB.SI.ENS(Absences[Service];"Logistique";Absences[Mois];"2026-03")
+```
+
+> [!definition] Power Query
+> Un outil intégré à Excel qui importe et nettoie des données (par exemple l''export du logiciel de pointage) toujours de la même façon. Une fois la requête créée, il suffit de cliquer sur « Actualiser » chaque mois.
+
+> [!astuce]
+> Transformez chaque liste en **tableau Excel** (Insertion → Tableau) : les formules utilisent des noms clairs (`Contrats[Fin]`), les filtres sont automatiques et les tableaux croisés se mettent à jour avec les nouvelles lignes.
+
+## SharePoint et Teams : des documents RH bien protégés
+
+| Espace | Contenu | Accès |
+| --- | --- | --- |
+| **Site RH (SharePoint)** | Dossiers du personnel, paie, contrats | Direction et équipe RH seulement |
+| **Équipe Teams « Tout le personnel »** | Notes de service, règlement intérieur, formulaires | Tout le personnel, en lecture |
+| **Équipe Teams « Managers »** | Procédures pour les responsables, plannings | Responsables |
+
+### Les règles
+
+1. **Des groupes** plutôt que des accès individuels : on ajoute ou retire une personne du groupe.
+2. **Pas de partage par lien ouvert** pour les documents RH.
+3. **L''historique des versions** activé pour les modèles et les procédures.
+4. **Une revue des accès** chaque trimestre et à chaque départ.
+
+## Automatiser avec Forms et Power Automate
+
+> [!definition] Power Automate
+> L''outil d''automatisation de Microsoft 365 : **quand** quelque chose se produit (un formulaire est envoyé), **alors** des actions se lancent (créer une ligne, envoyer une demande d''approbation, notifier).
+
+### Exemple : la demande de congé avec approbation
+
+1. Le salarié remplit le **formulaire Forms**.
+2. Power Automate **ajoute une ligne** dans le registre (liste SharePoint ou Excel).
+3. Une **demande d''approbation** part au responsable dans Teams ou Outlook.
+4. La réponse est **enregistrée** dans le registre.
+5. Le salarié reçoit **un e-mail** avec la décision.
+
+> [!attention]
+> Testez chaque automatisation avec des données fictives avant de la mettre en service, et documentez-la (qui l''a créée, ce qu''elle fait, à qui demander en cas de panne). Une automatisation que personne ne comprend devient un risque.
+
+## Le logiciel de paie : un circuit de contrôle
+
+### Le calendrier mensuel (exemple)
+
+| Date | Étape | Responsable |
+| --- | --- | --- |
+| Du 1er au 20 | Collecte des éléments variables | Assistant RH |
+| Le 20 | Clôture des éléments, contrôle croisé avec le registre des congés | Assistant RH |
+| Le 21 | Saisie ou import dans le logiciel de paie | Assistant paie |
+| Le 23 | Calcul de la paie, contrôles | Gestionnaire de paie ou comptable |
+| Le 25 | Validation par la direction | Direction |
+| Fin du mois | Paiement des salaires, envoi des bulletins | Comptable, direction |
+| Selon les échéances légales | Déclarations sociales et fiscales | Comptable |
+
+### Les contrôles de paie
+
+| Contrôle | Exemple |
+| --- | --- |
+| **Effectif** | Nombre de bulletins = nombre de salariés payés (arrivées et départs compris) |
+| **Écarts d''un mois à l''autre** | Tout salaire net qui varie de plus de 10 % est expliqué |
+| **Éléments variables** | Chaque élément du tableau se retrouve sur le bon bulletin |
+| **Absences** | Les absences du registre sont toutes prises en compte |
+| **Totaux** | Le total des salaires correspond au virement prévu |
+
+> [!madagascar]
+> Les logiciels de paie utilisés à Madagascar doivent intégrer les règles locales (cotisations à la CNaPS et aux organismes de santé, impôt sur les revenus salariaux). Ces paramètres sont fixés par le comptable ou l''éditeur du logiciel et changent avec la loi : vous **contrôlez la cohérence** des résultats, vous ne modifiez pas les paramètres.
+
+## Participer à la mise en place d''un SIRH
+
+1. **Recenser les besoins** : dossiers, congés, entretiens, formation, paie.
+2. **Comparer** 2 ou 3 logiciels (fonctions, prix, langue, hébergement des données).
+3. **Préparer les données** : nettoyer le fichier du personnel (doublons, dates, formats).
+4. **Paramétrer** : services, types de congés, circuits d''approbation, droits.
+5. **Tester** avec quelques utilisateurs.
+6. **Former** les salariés et les responsables.
+7. **Suivre** les premiers mois et corriger.
+
+> [!retenir]
+> - Excel avancé : RECHERCHEX, NB.SI.ENS, FILTRE, tableaux croisés, Power Query.
+> - SharePoint et Teams avec des groupes et des accès restreints.
+> - Forms et Power Automate pour les circuits simples, testés et documentés.
+> - Un calendrier et des contrôles de paie ; les paramètres restent au spécialiste.
+> - Un SIRH se met en place en 7 étapes.
+
+## Exercice pratique : votre boîte à outils avancée
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un fichier du personnel fictif de 30 salariés sous forme de tableau Excel.
+> 2. Ajoutez l''ancienneté, la liste des contrats à échéance proche et un tableau croisé de l''effectif par service.
+> 3. Concevez sur papier (ou dans un compte d''essai) le circuit Forms + Power Automate de la demande de congé.
+> 4. Rédigez le calendrier de paie et la liste des 5 contrôles d''une entreprise fictive.
+> 5. Comparez 2 logiciels SIRH à partir de leurs sites officiels.
+>
+> **À livrer** : votre fichier Excel, votre circuit, votre calendrier et votre comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 1, 0, 'Quelle fonction calcule l''ancienneté en années ?', '["SOMME","DATEDIF","CONCAT","MAJUSCULE"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 1, 1, 'Qui modifie les paramètres de calcul du logiciel de paie ?', '["Les salariés","Personne, jamais","L''assistant RH","Le comptable ou l''éditeur du logiciel"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 1, 2, 'Que faire avant de mettre en service une automatisation ?', '["La lancer directement","La tester avec des données fictives et la documenter","La cacher","La copier sur une clé USB"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-a', 2, 'Qualité et rapidité : procédures, calendrier social, audit et entretiens', 'Procédures écrites, calendrier social partagé, audit des dossiers, entretiens structurés et questions comportementales, tableau de bord RH mensuel.', 'Une erreur de paie, un contrat oublié ou un dossier égaré coûtent cher à l''entreprise et à la confiance des salariés. Ce module vous donne les méthodes des professionnels : **procédures écrites**, **calendrier social**, **contrôles**, **audit des dossiers** et **tableau de bord RH**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger des procédures RH claires.
+> 2. Tenir un calendrier social complet.
+> 3. Auditer les dossiers du personnel.
+> 4. Mener des entretiens de recrutement structurés.
+> 5. Produire un tableau de bord RH mensuel.
+
+## Les procédures écrites
+
+Une procédure dit **qui fait quoi, quand et avec quel outil**.
+
+```
+Procédure : départ d''un salarié
+Déclencheur : démission reçue ou fin de contrat décidée par la direction
+1. Enregistrer la date de fin prévue (assistant RH, jour J).
+2. Informer le responsable et le comptable (assistant RH, J+1).
+3. Préparer la liste de sortie : matériel, accès, documents (assistant RH, J+2).
+4. Préparer les documents de fin de contrat à partir des modèles validés,
+   pour signature de la direction (assistant RH, avant la date de fin).
+5. Transmettre les éléments de fin de contrat au comptable pour le dernier salaire.
+6. Le dernier jour : récupérer le matériel, désactiver les accès.
+7. Archiver le dossier selon les règles de conservation.
+```
+
+### Les procédures prioritaires
+
+| Procédure | Pourquoi |
+| --- | --- |
+| Arrivée d''un salarié | Première impression, accès et documents |
+| Départ d''un salarié | Sécurité des accès, documents, dernier salaire |
+| Préparation de la paie | Éviter les erreurs |
+| Demande de congé | Équité et planning |
+| Recrutement | Délais et égalité de traitement |
+| Gestion des absences | Justificatifs et paie |
+
+## Le calendrier social
+
+> [!definition] Calendrier social
+> Le calendrier de toutes les échéances RH de l''année : paie, déclarations, fins de contrats et de périodes d''essai, entretiens annuels, visites médicales, formations, renouvellement de documents.
+
+| Mois | Échéances (exemple) |
+| --- | --- |
+| Chaque mois | Paie, éléments variables, déclarations (selon le comptable), contrats et périodes d''essai qui se terminent |
+| Janvier | Planification des congés de l''année, plan de formation |
+| Juin | Point à mi-année sur les congés pris |
+| Novembre et décembre | Entretiens annuels, préparation du budget RH de l''année suivante |
+| Selon les règles | Visites médicales, renouvellements de documents des salariés étrangers |
+
+> [!astuce]
+> Mettez chaque échéance dans un **agenda partagé** avec un rappel 30 jours et 7 jours avant, et dans un tableau avec une colonne « fait le ». Personne ne doit dépendre de votre mémoire.
+
+## Auditer les dossiers du personnel
+
+1. **Faites la liste** des documents attendus pour chaque dossier (validée par la direction).
+2. **Créez un tableau** : une ligne par salarié, une colonne par document.
+3. **Vérifiez** chaque dossier et marquez : présent, manquant, à mettre à jour.
+4. **Relancez** les salariés ou les responsables pour les documents manquants.
+5. **Recommencez** chaque année.
+
+| Salarié | Pièce d''identité | Contrat signé | Avenants | Diplômes | Fiche de poste | Statut |
+| --- | --- | --- | --- | --- | --- | --- |
+| Rakoto Jean | ✓ | ✓ | ✓ | ✓ | ✓ | Complet |
+| Rasoa Marie | ✓ | ✓ | Manquant | ✓ | ✓ | Relance le 12/03 |
+
+## Les entretiens de recrutement structurés
+
+> [!definition] Entretien structuré
+> Un entretien où toutes les personnes candidates reçoivent **les mêmes questions**, notées avec **la même grille**. Il est plus juste et prédit mieux la réussite dans le poste qu''une discussion libre.
+
+### Les questions comportementales
+
+| Compétence | Question | Ce qu''on attend |
+| --- | --- | --- |
+| Rigueur | « Racontez une fois où vous avez trouvé une erreur dans un document important. Qu''avez-vous fait ? » | Une situation précise, l''action, le résultat |
+| Service client | « Parlez-moi d''un client mécontent que vous avez aidé. » | Écoute, solution, suivi |
+| Organisation | « Comment avez-vous géré une semaine avec trop de tâches ? » | Priorités, communication |
+
+### La grille de notation
+
+| Note | Signification |
+| --- | --- |
+| 1 | Pas d''exemple ou exemple sans rapport |
+| 2 | Exemple vague |
+| 3 | Exemple précis avec action et résultat |
+| 4 | Exemple précis, résultat mesurable, réflexion sur ce qui a été appris |
+
+> [!attention]
+> Ne posez jamais de questions sur la vie privée qui n''ont pas de lien avec le poste (projets de mariage ou d''enfants, religion, appartenance politique, santé hors aptitude au poste). Elles sont discriminatoires et souvent interdites par la loi.
+
+## Le tableau de bord RH mensuel
+
+| Indicateur | Ce mois | Mois précédent | Commentaire |
+| --- | --- | --- | --- |
+| Effectif | 48 | 46 | 2 arrivées en logistique |
+| Départs | 1 | 0 | Démission (déménagement) |
+| Absentéisme | 2,8 % | 2,1 % | Épidémie de grippe en février |
+| Recrutements en cours | 3 | 4 | Délai moyen : 35 jours |
+| Dossiers complets | 92 % | 85 % | Relances efficaces |
+| Erreurs de paie | 0 | 1 | Nouveau contrôle des écarts |
+
+> [!madagascar]
+> Pour les entreprises de Madagascar, ajoutez si utile des indicateurs propres au contexte : absences liées aux transports (grèves, inondations pendant la saison des pluies), formation au numérique, ou rotation dans les métiers très demandés comme les centres d''appels et les services numériques.
+
+> [!retenir]
+> - Une procédure écrite pour chaque circuit important.
+> - Un calendrier social partagé avec des rappels.
+> - Un audit annuel des dossiers avec un tableau de suivi.
+> - Des entretiens structurés, des questions comportementales, aucune question discriminatoire.
+> - Un tableau de bord mensuel commenté.
+
+## Exercice pratique : une organisation RH solide
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez 3 procédures (arrivée, départ, absence).
+> 2. Construisez le calendrier social d''une année pour une entreprise fictive de 40 salariés.
+> 3. Créez le tableau d''audit des dossiers pour 10 salariés fictifs.
+> 4. Rédigez 6 questions comportementales et leur grille pour un poste d''assistant commercial.
+> 5. Remplissez un tableau de bord RH mensuel commenté.
+>
+> **À livrer** : vos procédures, votre calendrier, votre tableau d''audit, vos questions et votre tableau de bord.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 2, 0, 'Que dit une procédure ?', '["Les opinions de la direction","Qui fait quoi, quand et avec quel outil","Rien de précis","Le salaire de chacun"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 2, 1, 'Qu''est-ce qu''un entretien structuré ?', '["Un entretien sur la vie privée","Les mêmes questions et la même grille pour toutes les personnes candidates","Une discussion libre","Un entretien sans questions"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 2, 2, 'Quelle question est interdite en entretien ?', '["Racontez une erreur que vous avez corrigée","Comment gérez-vous les priorités ?","Parlez-moi d''un client mécontent","Avez-vous des projets d''enfants ?"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-a', 3, 'Clients internationaux : plusieurs pays, données et anglais RH', 'Filiale, employeur de référence et indépendants, coordination des prestataires, 7 règles de protection des données, vocabulaire RH en anglais et arrivée à distance.', 'Les entreprises étrangères qui travaillent avec Madagascar, les organisations internationales et les sociétés qui ont des salariés dans plusieurs pays ont besoin d''assistants RH capables de travailler en anglais, de respecter des règles de données strictes et de coordonner plusieurs prestataires. Ce module vous prépare à ces missions.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre les principaux modèles d''emploi à l''international.
+> 2. Coordonner les prestataires (comptables, cabinets de paie, juristes) de plusieurs pays.
+> 3. Appliquer des règles de protection des données RH.
+> 4. Travailler en anglais avec le vocabulaire RH.
+> 5. Accompagner l''arrivée de salariés à distance.
+
+## Les modèles d''emploi à l''international
+
+| Modèle | Fonctionnement | Votre rôle |
+| --- | --- | --- |
+| **Filiale locale** | L''entreprise crée une société dans le pays et y emploie les salariés | Administration RH locale, lien avec le siège |
+| **Employeur de référence (EOR)** | Un prestataire emploie légalement les salariés pour le compte de l''entreprise | Coordination avec le prestataire, suivi des dossiers |
+| **Prestataires indépendants** | Des freelances facturent leurs services | Contrats de prestation, suivi des factures |
+
+> [!definition] Employeur de référence (EOR, Employer of Record)
+> Une entreprise spécialisée qui devient l''employeur légal d''un salarié dans un pays, gère la paie et les obligations locales, pendant que l''entreprise cliente dirige le travail au quotidien.
+
+> [!attention]
+> Le choix entre salarié et prestataire indépendant a des **conséquences juridiques** importantes, différentes dans chaque pays. Ce choix appartient à la direction, avec l''avis d''un juriste. Vous appliquez la décision et gardez les documents.
+
+## Coordonner les prestataires de plusieurs pays
+
+### Le tableau de coordination
+
+| Pays | Effectif | Paie gérée par | Date limite des éléments variables | Contact | Langue |
+| --- | --- | --- | --- | --- | --- |
+| Madagascar | 32 | Cabinet comptable local | Le 20 | M. Rabe | Français |
+| France | 6 | Cabinet de paie | Le 18 | Mme Martin | Français |
+| Maurice | 4 | Prestataire EOR | Le 15 | Mr Ramdin | Anglais |
+
+### Les règles
+
+1. **Un calendrier unique** avec les dates limites de chaque pays.
+2. **Un modèle unique** de tableau des éléments variables, adapté si besoin.
+3. **Un canal sécurisé** d''échange avec chaque prestataire.
+4. **Un suivi** des questions ouvertes et des réponses.
+
+## La protection des données RH
+
+### Les 7 règles
+
+1. **Ne collectez** que les données utiles au travail et aux obligations légales.
+2. **Limitez** les accès aux personnes qui en ont besoin.
+3. **Transférez** les données entre pays seulement par les canaux prévus par l''entreprise.
+4. **Conservez** selon les durées fixées, puis supprimez ou archivez.
+5. **Informez** les salariés de l''usage de leurs données (selon la politique de l''entreprise).
+6. **Transmettez** les demandes d''accès ou de rectification des salariés à la personne responsable.
+7. **Signalez** immédiatement toute fuite ou erreur d''envoi.
+
+> [!madagascar]
+> Madagascar dispose d''une loi sur la protection des données à caractère personnel, et de nombreuses entreprises étrangères appliquent aussi le RGPD européen à tous leurs salariés. Suivez la **politique de l''entreprise**, et demandez au responsable ou au juriste en cas de doute sur un transfert de données entre pays.
+
+## Le vocabulaire RH en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Dossier du personnel | Employee file / personnel file |
+| Contrat de travail | Employment contract |
+| Période d''essai | Probation period |
+| Congés payés | Paid leave / annual leave |
+| Arrêt maladie | Sick leave |
+| Éléments variables de paie | Payroll inputs / variable pay items |
+| Bulletin de paie | Payslip |
+| Fiche de poste | Job description |
+| Intégration | Onboarding |
+| Départ | Offboarding |
+| Taux de rotation | Turnover rate |
+
+> [!exemple] E-mail en anglais à un prestataire
+> "Hi Mr Ramdin,
+> Please find attached the payroll inputs for March for our Mauritius team (4 employees). Two points to note: Priya Bhujun took 3 days of annual leave (March 10–12), and the new team member, Kevin Li, starts on March 17. Could you confirm receipt by Friday?
+> Best regards,
+> Fanja"
+
+## Accompagner l''arrivée de salariés à distance
+
+| Quand | Action |
+| --- | --- |
+| **Avant l''arrivée** | Matériel envoyé ou fourni, comptes créés, documents signés électroniquement, programme envoyé |
+| **Le premier jour** | Visioconférence d''accueil, présentation de l''équipe, vérification des accès |
+| **La première semaine** | Points quotidiens courts, personne référente, formation aux outils |
+| **Le premier mois** | Point d''étape, questionnaire d''intégration, ajustements |
+
+> [!astuce]
+> Préparez un **livret d''accueil numérique** (dans SharePoint ou un document partagé) : organisation, contacts, outils, procédures, fuseaux horaires. Les nouveaux à distance n''ont pas de collègue à côté pour poser les petites questions.
+
+> [!retenir]
+> - Filiale, employeur de référence ou indépendant : la direction choisit avec un juriste.
+> - Un tableau de coordination et un calendrier unique pour tous les pays.
+> - 7 règles de protection des données, et la politique de l''entreprise comme référence.
+> - Le vocabulaire RH en anglais pour échanger avec les prestataires.
+> - Une arrivée à distance préparée et suivie pendant un mois.
+
+## Exercice pratique : une équipe dans plusieurs pays
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Construisez le tableau de coordination d''une entreprise fictive présente dans 3 pays.
+> 2. Créez le calendrier mensuel unique des éléments variables.
+> 3. Rédigez un e-mail en anglais à un prestataire de paie avec 3 points à signaler.
+> 4. Rédigez le sommaire d''un livret d''accueil numérique.
+> 5. Rédigez votre fiche personnelle des 7 règles de protection des données.
+>
+> **À livrer** : votre tableau, votre calendrier, votre e-mail, votre sommaire et votre fiche.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 3, 0, 'Qu''est-ce qu''un employeur de référence (EOR) ?', '["Le directeur de l''entreprise","Un type de congé","Un prestataire qui emploie légalement les salariés pour une entreprise","Un logiciel de paie"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 3, 1, 'Comment dit-on « bulletin de paie » en anglais ?', '["Onboarding","Job description","Payslip","Probation period"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 3, 2, 'Qui choisit entre salarié et prestataire indépendant ?', '["L''assistant RH seul","La direction, avec l''avis d''un juriste","Le prestataire de paie","Le candidat seul"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-4-a', 4, 'Développer son activité : forfaits, partenariats et équipe', 'Forfaits par taille d''entreprise, prestations ponctuelles, partenariats avec les cabinets comptables, études de cas confidentielles, équipe et évolution.', 'Avec une spécialité et des méthodes solides, vous pouvez construire une activité durable : missions mensuelles auprès de plusieurs PME, partenariats avec des cabinets comptables, et à terme une petite équipe. Ce dernier module vous montre comment passer d''assistant à **partenaire administratif et RH** de vos clients.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire des forfaits par taille d''entreprise.
+> 2. Développer des partenariats avec des cabinets comptables.
+> 3. Rédiger des études de cas qui respectent la confidentialité.
+> 4. Organiser une petite équipe en protégeant les données.
+> 5. Préparer votre évolution professionnelle.
+
+## Les forfaits par taille d''entreprise
+
+| Formule | Taille | Contenu | Heures par mois | Exemple de prix (15 000 Ar/h) |
+| --- | --- | --- | --- | --- |
+| **Essentiel** | Moins de 15 salariés | Dossiers, congés, éléments de paie, documents courants | 12 h | 180 000 Ar |
+| **Croissance** | 15 à 50 salariés | Essentiel + recrutements, arrivées, calendrier social, tableau de bord | 30 h | 450 000 Ar |
+| **Structure** | Plus de 50 salariés | Croissance + SIRH, procédures, audit annuel, coordination des prestataires | 60 h | 900 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les prestations ponctuelles
+
+| Prestation | Contenu |
+| --- | --- |
+| **Diagnostic** | 6 domaines, rapport et plan |
+| **Recrutement complet** | Prix par poste |
+| **Mise en place d''un SIRH** | Projet en 7 étapes |
+| **Audit des dossiers** | Tableau, relances, mise à jour |
+
+> [!astuce]
+> Fixez dans le contrat un **volume maximal** d''heures ou de tâches par forfait, et le prix des heures supplémentaires. Une entreprise qui grandit vite peut doubler votre travail en quelques mois.
+
+## Les partenariats avec les cabinets comptables
+
+Les cabinets comptables calculent la paie et les déclarations, mais manquent souvent de temps pour collecter les éléments et organiser les dossiers de leurs clients.
+
+### Ce que vous proposez
+
+1. **Vous préparez** : éléments variables vérifiés, dossiers complets, documents classés.
+2. **Ils calculent** et déclarent.
+3. **Le client** gagne en fiabilité et en temps.
+
+> [!exemple] Message à un cabinet comptable
+> « Bonjour Monsieur, je suis assistante administrative et RH spécialisée dans la préparation de la paie. Beaucoup de vos clients PME vous envoient des éléments de paie incomplets ou en retard. Je peux prendre en charge, pour eux, la collecte et le contrôle des éléments variables, les dossiers du personnel et le calendrier social, pour que vous receviez chaque mois un tableau complet et vérifié avant le 20. Seriez-vous ouvert à un essai avec un ou deux de vos clients ? »
+
+## Les études de cas confidentielles
+
+| À ne pas faire | À faire |
+| --- | --- |
+| Citer le nom des salariés ou des montants de salaires | « PME de services de 35 salariés à Antananarivo » |
+| Montrer des documents réels | Montrer des modèles vides ou fictifs |
+| Révéler un conflit ou une situation personnelle | Décrire l''amélioration d''organisation |
+
+> [!exemple] Étude de cas
+> « ONG de 42 salariés. Départ : dossiers incomplets (60 %), 2 à 3 corrections de paie par mois, congés suivis par e-mail. Actions : audit des dossiers, formulaire de congé avec approbation, contrôle des écarts de paie, calendrier social. Résultat après 4 mois : 95 % de dossiers complets, aucune correction de paie depuis 3 mois. »
+
+## Organiser une petite équipe
+
+### Les rôles
+
+| Rôle | Tâches |
+| --- | --- |
+| **Assistant(e)** | Classement, relances, saisie, documents courants |
+| **Assistant(e) paie** | Collecte et contrôle des éléments variables |
+| **Vous** | Relation client, procédures, contrôles finaux, diagnostic |
+
+### Les règles de protection
+
+1. **Accord de confidentialité** signé par chaque membre de l''équipe.
+2. **Accès personnels** aux outils de chaque client, jamais de mot de passe partagé.
+3. **Accès limités** aux clients et aux dossiers de chacun.
+4. **Accord écrit des clients** pour la sous-traitance.
+5. **Contrôle** de tout ce qui touche à la paie avant l''envoi.
+
+> [!madagascar]
+> Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et faites-vous accompagner par un comptable pour vos propres obligations d''employeur (contrats, CNaPS, impôt sur les revenus salariaux). Un assistant RH qui respecte lui-même les règles inspire confiance à ses clients.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Gestionnaire de paie** | Formation en paie et en droit du travail du pays, pratique d''un logiciel |
+| **Responsable RH** | Droit du travail, relations sociales, gestion des compétences |
+| **Responsable administratif et financier** | Comptabilité, budgets, contrôle de gestion |
+| **Consultant SIRH** | Paramétrage avancé, gestion de projet, certifications d''éditeurs |
+| **Chargé de recrutement** | Sourcing avancé, marque employeur |
+
+> [!retenir]
+> - Des forfaits par taille d''entreprise, avec un volume maximal.
+> - Les cabinets comptables sont des partenaires naturels : vous préparez, ils calculent.
+> - Des études de cas qui ne révèlent rien de confidentiel.
+> - Une équipe avec confidentialité, accès personnels et contrôle de la paie.
+> - Choisissez votre prochaine étape : paie, RH, administration et finance, SIRH ou recrutement.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Construisez vos 3 forfaits et 2 prestations ponctuelles avec vos prix.
+> 2. Rédigez votre message à un cabinet comptable et listez 5 cabinets à contacter.
+> 3. Rédigez une étude de cas confidentielle (réelle anonymisée ou issue de vos exercices).
+> 4. Rédigez les 5 règles de protection de votre future équipe.
+> 5. Choisissez votre évolution à 2 ans et les formations nécessaires.
+>
+> **À livrer** : vos forfaits, votre message et votre liste, votre étude de cas, vos règles et votre plan d''évolution.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 4, 0, '30 heures à 15 000 Ar de l''heure font…', '["45 000 Ar","300 000 Ar","4 500 000 Ar","450 000 Ar"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 4, 1, 'Que proposer à un cabinet comptable ?', '["Rien","Préparer les éléments et dossiers de ses clients ; il calcule et déclare","Faire ses déclarations à sa place","Lui prendre ses clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-4-a', 4, 2, 'Que ne faut-il pas mettre dans une étude de cas ?', '["Le nom des salariés et leurs salaires","La taille de l''entreprise","Les résultats","Les actions menées"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quelle spécialité met en place le logiciel RH ?', '["Administrateur SIRH","Office manager","Chargé de recrutement","Assistant de direction"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Combien de domaines dans le diagnostic du cours ?', '["6","2","1","10"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Comment calcule-t-on le taux d''absentéisme ?', '["Départs ÷ effectif","Jours d''absence ÷ jours travaillés prévus","Effectif ÷ jours","Salaires ÷ effectif"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que mesure le délai de recrutement ?', '["Le temps de trajet","La durée du contrat","Les jours entre l''ouverture du poste et l''acceptation de l''offre","La durée d''un entretien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quelle fonction affiche les contrats qui finissent bientôt ?', '["MAJUSCULE","FILTRE","NBCAR","ARRONDI"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'À quoi sert Power Query ?', '["Dessiner un logo","Envoyer des e-mails","Calculer la paie","Importer et nettoyer des données toujours de la même façon"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Comment donner l''accès aux documents RH dans SharePoint ?', '["Par un lien ouvert à tous","Par des groupes, avec des accès restreints","En envoyant les fichiers par messagerie personnelle","Sans aucune règle"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que fait Power Automate dans le circuit de congé ?', '["Il calcule le salaire","Il décide à la place du responsable","Il supprime la demande","Il enregistre la demande et envoie une demande d''approbation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quel contrôle de paie vérifie les variations de salaire net ?', '["Le nombre de pages","Le logo","Les écarts d''un mois à l''autre","La couleur du bulletin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quelle est la première étape de mise en place d''un SIRH ?', '["Recenser les besoins","Former les salariés","Payer la licence la plus chère","Supprimer les anciens fichiers"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que préparer quand un salarié part ?', '["Une fête obligatoire","La liste de sortie : matériel, accès, documents","Rien","Son prochain contrat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Qu''est-ce que le calendrier social ?', '["Le calendrier des fêtes","Le calendrier de toutes les échéances RH de l''année","Le calendrier des réseaux sociaux","Le planning de la cantine"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quand mettre des rappels pour une échéance ?', '["Un an après","Le jour même seulement","Jamais","30 jours et 7 jours avant"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que fait-on après l''audit des dossiers ?', '["Relancer pour les documents manquants","Publier le tableau","Supprimer les dossiers","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que vaut la note 3 dans la grille d''entretien ?', '["Un exemple vague","Pas d''exemple","Un exemple précis avec action et résultat","Une réponse hors sujet"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Pourquoi commenter chaque ligne du tableau de bord ?', '["Ce n''est pas utile","Pour aider la direction à comprendre et décider","Pour cacher les chiffres","Pour remplir la page"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quel outil unique pour plusieurs pays ?', '["Un calendrier différent par personne","Un calendrier de fêtes","Aucun","Un calendrier unique des dates limites"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quelle donnée collecter sur les salariés ?', '["Toutes les données possibles","Leurs opinions politiques","Leurs mots de passe","Seulement les données utiles au travail et aux obligations"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Madagascar a-t-elle une loi sur la protection des données personnelles ?', '["Seulement pour les banques","Seulement pour les étrangers","Oui","Non"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Comment dit-on « intégration » d''un nouveau salarié en anglais ?', '["Payslip","Onboarding","Turnover","Offboarding"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que préparer pour un nouveau salarié à distance ?', '["Un livret d''accueil numérique","Un bureau vide","Un contrat sans signature","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que fixer dans le contrat d''un forfait mensuel ?', '["Un nombre de tâches illimité","Un volume maximal et le prix des heures supplémentaires","Rien","Le salaire des salariés du client"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Que faut-il obtenir avant de confier une mission à un membre de l''équipe ?', '["Une photo","Le mot de passe du client","L''accord écrit du client pour la sous-traitance","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Qui contrôle tout ce qui touche à la paie avant l''envoi ?', '["Personne","Le client final de l''entreprise","Vous, le responsable de la mission","Le stagiaire seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-a', 'Quelle évolution demande comptabilité et budgets ?', '["Graphiste","Responsable administratif et financier","Traducteur","Chargé de recrutement"]'::jsonb, 1);
 
 -- edu-4-f
 delete from public.exam_questions where course_id = 'edu-4-f';

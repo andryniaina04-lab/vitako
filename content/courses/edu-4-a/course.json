@@ -1,0 +1,97 @@
+{
+  "id": "edu-4-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'assistant administratif et RH un partenaire qui structure l'entreprise : spécialité (paie, recrutement, SIRH, direction, office management, données RH), diagnostic et indicateurs RH, outils payants (Microsoft 365 avancé, Power Automate, logiciels de paie et SIRH), procédures, calendrier social et contrôles, équipes dans plusieurs pays et protection des données, puis forfaits, partenariats avec les cabinets comptables et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, mener un diagnostic et calculer les indicateurs RH",
+    "Utiliser Excel avancé, SharePoint, Teams et Power Automate pour les RH",
+    "Travailler dans un logiciel de paie selon un circuit de contrôle et participer à un SIRH",
+    "Rédiger des procédures, tenir le calendrier social et mener des entretiens structurés",
+    "Coordonner des prestataires de plusieurs pays et protéger les données RH",
+    "Vendre des forfaits, travailler avec des cabinets comptables et organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et structurer l'entreprise",
+      "summary": "Les 6 spécialités avancées, le diagnostic administratif et RH en 6 domaines, les indicateurs RH de base et les offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "6 départs pour un effectif moyen de 45 donnent un taux de rotation d'environ…", "options": ["13 %", "6 %", "45 %", "75 %"], "correct": 0 },
+        { "q": "Que faire d'un risque juridique repéré pendant le diagnostic ?", "options": ["Le signaler et conseiller de consulter un juriste ou le comptable", "Le trancher soi-même", "L'ignorer", "En parler aux salariés"], "correct": 0 },
+        { "q": "Comment présenter un indicateur RH ?", "options": ["Avec son évolution et un commentaire", "Seul, sans explication", "Sans chiffre", "En le cachant"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Microsoft 365, logiciels de paie et SIRH",
+      "summary": "Fonctions Excel avancées et Power Query, SharePoint et Teams, Forms et Power Automate, calendrier et contrôles de paie, mise en place d'un SIRH en 7 étapes.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle fonction calcule l'ancienneté en années ?", "options": ["DATEDIF", "SOMME", "MAJUSCULE", "CONCAT"], "correct": 0 },
+        { "q": "Qui modifie les paramètres de calcul du logiciel de paie ?", "options": ["Le comptable ou l'éditeur du logiciel", "L'assistant RH", "Les salariés", "Personne, jamais"], "correct": 0 },
+        { "q": "Que faire avant de mettre en service une automatisation ?", "options": ["La tester avec des données fictives et la documenter", "La lancer directement", "La cacher", "La copier sur une clé USB"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : procédures, calendrier social, audit et entretiens",
+      "summary": "Procédures écrites, calendrier social partagé, audit des dossiers, entretiens structurés et questions comportementales, tableau de bord RH mensuel.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que dit une procédure ?", "options": ["Qui fait quoi, quand et avec quel outil", "Le salaire de chacun", "Les opinions de la direction", "Rien de précis"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un entretien structuré ?", "options": ["Les mêmes questions et la même grille pour toutes les personnes candidates", "Une discussion libre", "Un entretien sans questions", "Un entretien sur la vie privée"], "correct": 0 },
+        { "q": "Quelle question est interdite en entretien ?", "options": ["Avez-vous des projets d'enfants ?", "Racontez une erreur que vous avez corrigée", "Comment gérez-vous les priorités ?", "Parlez-moi d'un client mécontent"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : plusieurs pays, données et anglais RH",
+      "summary": "Filiale, employeur de référence et indépendants, coordination des prestataires, 7 règles de protection des données, vocabulaire RH en anglais et arrivée à distance.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un employeur de référence (EOR) ?", "options": ["Un prestataire qui emploie légalement les salariés pour une entreprise", "Le directeur de l'entreprise", "Un logiciel de paie", "Un type de congé"], "correct": 0 },
+        { "q": "Comment dit-on « bulletin de paie » en anglais ?", "options": ["Payslip", "Job description", "Probation period", "Onboarding"], "correct": 0 },
+        { "q": "Qui choisit entre salarié et prestataire indépendant ?", "options": ["La direction, avec l'avis d'un juriste", "L'assistant RH seul", "Le prestataire de paie", "Le candidat seul"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, partenariats et équipe",
+      "summary": "Forfaits par taille d'entreprise, prestations ponctuelles, partenariats avec les cabinets comptables, études de cas confidentielles, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "30 heures à 15 000 Ar de l'heure font…", "options": ["450 000 Ar", "45 000 Ar", "300 000 Ar", "4 500 000 Ar"], "correct": 0 },
+        { "q": "Que proposer à un cabinet comptable ?", "options": ["Préparer les éléments et dossiers de ses clients ; il calcule et déclare", "Faire ses déclarations à sa place", "Lui prendre ses clients", "Rien"], "correct": 0 },
+        { "q": "Que ne faut-il pas mettre dans une étude de cas ?", "options": ["Le nom des salariés et leurs salaires", "La taille de l'entreprise", "Les résultats", "Les actions menées"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité met en place le logiciel RH ?", "options": ["Administrateur SIRH", "Chargé de recrutement", "Office manager", "Assistant de direction"], "correct": 0 },
+    { "q": "Combien de domaines dans le diagnostic du cours ?", "options": ["6", "2", "10", "1"], "correct": 0 },
+    { "q": "Comment calcule-t-on le taux d'absentéisme ?", "options": ["Jours d'absence ÷ jours travaillés prévus", "Départs ÷ effectif", "Salaires ÷ effectif", "Effectif ÷ jours"], "correct": 0 },
+    { "q": "Que mesure le délai de recrutement ?", "options": ["Les jours entre l'ouverture du poste et l'acceptation de l'offre", "La durée d'un entretien", "La durée du contrat", "Le temps de trajet"], "correct": 0 },
+    { "q": "Quelle fonction affiche les contrats qui finissent bientôt ?", "options": ["FILTRE", "MAJUSCULE", "ARRONDI", "NBCAR"], "correct": 0 },
+    { "q": "À quoi sert Power Query ?", "options": ["Importer et nettoyer des données toujours de la même façon", "Envoyer des e-mails", "Calculer la paie", "Dessiner un logo"], "correct": 0 },
+    { "q": "Comment donner l'accès aux documents RH dans SharePoint ?", "options": ["Par des groupes, avec des accès restreints", "Par un lien ouvert à tous", "En envoyant les fichiers par messagerie personnelle", "Sans aucune règle"], "correct": 0 },
+    { "q": "Que fait Power Automate dans le circuit de congé ?", "options": ["Il enregistre la demande et envoie une demande d'approbation", "Il décide à la place du responsable", "Il calcule le salaire", "Il supprime la demande"], "correct": 0 },
+    { "q": "Quel contrôle de paie vérifie les variations de salaire net ?", "options": ["Les écarts d'un mois à l'autre", "La couleur du bulletin", "Le nombre de pages", "Le logo"], "correct": 0 },
+    { "q": "Quelle est la première étape de mise en place d'un SIRH ?", "options": ["Recenser les besoins", "Former les salariés", "Supprimer les anciens fichiers", "Payer la licence la plus chère"], "correct": 0 },
+    { "q": "Que préparer quand un salarié part ?", "options": ["La liste de sortie : matériel, accès, documents", "Rien", "Une fête obligatoire", "Son prochain contrat"], "correct": 0 },
+    { "q": "Qu'est-ce que le calendrier social ?", "options": ["Le calendrier de toutes les échéances RH de l'année", "Le calendrier des fêtes", "Le planning de la cantine", "Le calendrier des réseaux sociaux"], "correct": 0 },
+    { "q": "Quand mettre des rappels pour une échéance ?", "options": ["30 jours et 7 jours avant", "Le jour même seulement", "Jamais", "Un an après"], "correct": 0 },
+    { "q": "Que fait-on après l'audit des dossiers ?", "options": ["Relancer pour les documents manquants", "Supprimer les dossiers", "Rien", "Publier le tableau"], "correct": 0 },
+    { "q": "Que vaut la note 3 dans la grille d'entretien ?", "options": ["Un exemple précis avec action et résultat", "Pas d'exemple", "Un exemple vague", "Une réponse hors sujet"], "correct": 0 },
+    { "q": "Pourquoi commenter chaque ligne du tableau de bord ?", "options": ["Pour aider la direction à comprendre et décider", "Pour remplir la page", "Ce n'est pas utile", "Pour cacher les chiffres"], "correct": 0 },
+    { "q": "Quel outil unique pour plusieurs pays ?", "options": ["Un calendrier unique des dates limites", "Un calendrier différent par personne", "Aucun", "Un calendrier de fêtes"], "correct": 0 },
+    { "q": "Quelle donnée collecter sur les salariés ?", "options": ["Seulement les données utiles au travail et aux obligations", "Toutes les données possibles", "Leurs mots de passe", "Leurs opinions politiques"], "correct": 0 },
+    { "q": "Madagascar a-t-elle une loi sur la protection des données personnelles ?", "options": ["Oui", "Non", "Seulement pour les banques", "Seulement pour les étrangers"], "correct": 0 },
+    { "q": "Comment dit-on « intégration » d'un nouveau salarié en anglais ?", "options": ["Onboarding", "Offboarding", "Payslip", "Turnover"], "correct": 0 },
+    { "q": "Que préparer pour un nouveau salarié à distance ?", "options": ["Un livret d'accueil numérique", "Rien", "Un bureau vide", "Un contrat sans signature"], "correct": 0 },
+    { "q": "Que fixer dans le contrat d'un forfait mensuel ?", "options": ["Un volume maximal et le prix des heures supplémentaires", "Rien", "Un nombre de tâches illimité", "Le salaire des salariés du client"], "correct": 0 },
+    { "q": "Que faut-il obtenir avant de confier une mission à un membre de l'équipe ?", "options": ["L'accord écrit du client pour la sous-traitance", "Rien", "Le mot de passe du client", "Une photo"], "correct": 0 },
+    { "q": "Qui contrôle tout ce qui touche à la paie avant l'envoi ?", "options": ["Vous, le responsable de la mission", "Personne", "Le stagiaire seul", "Le client final de l'entreprise"], "correct": 0 },
+    { "q": "Quelle évolution demande comptabilité et budgets ?", "options": ["Responsable administratif et financier", "Chargé de recrutement", "Graphiste", "Traducteur"], "correct": 0 }
+  ]
+}

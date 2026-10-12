@@ -1594,6 +1594,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-4-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait de l'assistant administratif et RH un partenaire qui structure l'entreprise : spécialité (paie, recrutement, SIRH, direction, office management, données RH), diagnostic et indicateurs RH, outils payants (Microsoft 365 avancé, Power Automate, logiciels de paie et SIRH), procédures, calendrier social et contrôles, équipes dans plusieurs pays et protection des données, puis forfaits, partenariats avec les cabinets comptables et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, mener un diagnostic et calculer les indicateurs RH",
+   "Utiliser Excel avancé, SharePoint, Teams et Power Automate pour les RH",
+   "Travailler dans un logiciel de paie selon un circuit de contrôle et participer à un SIRH",
+   "Rédiger des procédures, tenir le calendrier social et mener des entretiens structurés",
+   "Coordonner des prestataires de plusieurs pays et protéger les données RH",
+   "Vendre des forfaits, travailler avec des cabinets comptables et organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et structurer l'entreprise",
+    "summary": "Les 6 spécialités avancées, le diagnostic administratif et RH en 6 domaines, les indicateurs RH de base et les offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic administratif et RH",
+     "Les indicateurs RH de base",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Microsoft 365, logiciels de paie et SIRH",
+    "summary": "Fonctions Excel avancées et Power Query, SharePoint et Teams, Forms et Power Automate, calendrier et contrôles de paie, mise en place d'un SIRH en 7 étapes.",
+    "sections": [
+     "Excel avancé pour les RH",
+     "SharePoint et Teams : des documents RH bien protégés",
+     "Automatiser avec Forms et Power Automate",
+     "Le logiciel de paie : un circuit de contrôle",
+     "Participer à la mise en place d'un SIRH",
+     "Exercice pratique : votre boîte à outils avancée"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : procédures, calendrier social, audit et entretiens",
+    "summary": "Procédures écrites, calendrier social partagé, audit des dossiers, entretiens structurés et questions comportementales, tableau de bord RH mensuel.",
+    "sections": [
+     "Les procédures écrites",
+     "Le calendrier social",
+     "Auditer les dossiers du personnel",
+     "Les entretiens de recrutement structurés",
+     "Le tableau de bord RH mensuel",
+     "Exercice pratique : une organisation RH solide"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : plusieurs pays, données et anglais RH",
+    "summary": "Filiale, employeur de référence et indépendants, coordination des prestataires, 7 règles de protection des données, vocabulaire RH en anglais et arrivée à distance.",
+    "sections": [
+     "Les modèles d'emploi à l'international",
+     "Coordonner les prestataires de plusieurs pays",
+     "La protection des données RH",
+     "Le vocabulaire RH en anglais",
+     "Accompagner l'arrivée de salariés à distance",
+     "Exercice pratique : une équipe dans plusieurs pays"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : forfaits, partenariats et équipe",
+    "summary": "Forfaits par taille d'entreprise, prestations ponctuelles, partenariats avec les cabinets comptables, études de cas confidentielles, équipe et évolution.",
+    "sections": [
+     "Les forfaits par taille d'entreprise",
+     "Les partenariats avec les cabinets comptables",
+     "Les études de cas confidentielles",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-4-f": {
   "hours": 14,
   "description": "L'assistant administratif et RH organise les documents, les informations et les démarches d'une entreprise et de son personnel : courriers, classement, recrutement administratif, accueil des nouveaux, congés, éléments de paie. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME malgaches, des ONG et des entreprises francophones, en télétravail, avec Google Workspace et Excel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
