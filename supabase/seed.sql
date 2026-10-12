@@ -17,7 +17,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 12, false),
   ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
-  ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 13, false),
+  ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
   ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 18, false),
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 14, false),
   ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
@@ -30116,6 +30116,585 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-2-f
+delete from public.exam_questions where course_id = 'media-2-f';
+delete from public.module_questions where course_id = 'media-2-f';
+delete from public.lessons where course_id = 'media-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 0, 'Le métier de monteur audio et podcast depuis Madagascar', 'Les étapes de la production, l''habillage sonore, les types de projets, les qualités du monteur, les clients et le poste d''écoute.', 'Les podcasts, les livres audio, les formations en ligne et les vidéos ont tous besoin d''un son clair et agréable. Le monteur audio nettoie les enregistrements, coupe les hésitations, équilibre les voix, ajoute la musique et prépare des fichiers prêts à publier. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un monteur audio et podcast.
+> 2. Décrire les étapes de la production d''un podcast.
+> 3. Distinguer les principaux types de projets audio.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste d''écoute et de travail.
+
+## Le métier en une phrase
+
+Un monteur audio et podcast **transforme des enregistrements bruts en épisodes clairs, agréables à écouter et prêts à publier, en nettoyant, coupant, équilibrant et habillant le son**.
+
+## Les étapes de la production d''un podcast
+
+| N° | Étape | Qui | Ce qui se passe |
+| --- | --- | --- | --- |
+| 1 | **Préparation** | Animateur | Sujet, invités, plan |
+| 2 | **Enregistrement** | Animateur, invités | En studio, à distance ou au téléphone |
+| 3 | **Montage** | Monteur | Couper les erreurs, les longs silences, les hésitations ; organiser |
+| 4 | **Nettoyage** | Monteur | Réduire bruits, souffle, écho, clics |
+| 5 | **Mixage** | Monteur | Équilibrer les voix, ajouter musique et habillage |
+| 6 | **Mastering** | Monteur | Volume final homogène, prêt pour les plateformes |
+| 7 | **Publication** | Monteur ou client | Mise en ligne, titre, description, notes d''épisode |
+
+> [!definition] Habillage sonore
+> Les éléments qui donnent une identité au podcast : générique de début et de fin, jingles, transitions musicales.
+
+## Les types de projets audio
+
+| Type | Ce que demande le client | Exemple |
+| --- | --- | --- |
+| **Podcast** | Montage, nettoyage, mixage, publication | Podcast hebdomadaire d''une entreprise |
+| **Livre audio** | Son très propre, régulier, selon des normes strictes | Roman lu par un comédien |
+| **Formation en ligne** | Voix claire, sans bruit, homogène entre les leçons | Cours vidéo d''un formateur |
+| **Vidéo YouTube** | Son de la vidéo nettoyé et équilibré | Interview filmée dans un café bruyant |
+| **Radio et publicité** | Montage précis, durée exacte | Spot publicitaire de 30 secondes |
+| **Restauration** | Récupérer un enregistrement abîmé | Interview ancienne pleine de souffle |
+
+## Les qualités du monteur audio
+
+1. **Une oreille attentive** : entendre les petits défauts (bruit, souffle, clic).
+2. **De la patience** : réécouter, ajuster, réécouter.
+3. **Du goût** : garder le naturel des voix, ne pas « trop » traiter.
+4. **De l''organisation** : beaucoup de fichiers, d''épisodes et de délais.
+5. **Le respect du contenu** : couper sans changer le sens des propos.
+
+> [!attention]
+> En montage, on ne coupe jamais une phrase de façon à **changer le sens** de ce qu''a dit une personne. Les coupes servent la clarté, pas la manipulation.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Créateurs de podcasts** et médias en ligne, en malgache et en français.
+2. **Radios** qui préparent des émissions et des spots.
+3. **ONG** qui produisent des messages de sensibilisation audio.
+4. **Formateurs** qui enregistrent des cours.
+
+### À l''étranger
+
+1. **Podcasteurs** francophones qui veulent se concentrer sur le contenu.
+2. **Entreprises** qui ont un podcast de marque.
+3. **Agences et studios de podcast** qui sous-traitent le montage.
+4. **Créateurs de formations** et de vidéos.
+
+> [!madagascar] Votre avantage
+> Le podcast francophone se développe et beaucoup de créateurs n''ont pas le temps de monter leurs épisodes. Le montage audio ne demande pas une connexion très rapide (les fichiers sont plus légers que la vidéo), ce qui convient bien au travail depuis Madagascar. Les contenus en malgache sont aussi un marché local à développer.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, assez de stockage |
+| **Casque fermé de qualité** | Indispensable : c''est votre outil principal |
+| **Enceintes ou second casque** (si possible) | Pour vérifier le rendu |
+| **Pièce calme** | Pour écouter sans être dérangé |
+| **Logiciels** | Audacity (gratuit) ; Reaper (période d''essai, puis licence peu coûteuse) |
+| **Stockage** | Disque externe ou stockage en ligne pour les fichiers des clients |
+
+> [!astuce]
+> Écoutez toujours le résultat final sur **plusieurs appareils** : casque, écouteurs de téléphone, haut-parleur de téléphone. La plupart des auditeurs écoutent les podcasts avec des écouteurs simples.
+
+> [!retenir]
+> - Le monteur transforme des enregistrements bruts en épisodes prêts à publier.
+> - Préparation, enregistrement, montage, nettoyage, mixage, mastering, publication.
+> - Podcasts, livres audio, formations, vidéos, radio, restauration.
+> - Couper pour la clarté, jamais pour changer le sens.
+> - Un bon casque fermé est votre outil principal.
+
+## Exercice pratique : écouter comme un monteur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Écoutez 3 podcasts différents (un professionnel, un amateur, un en malgache si possible).
+> 2. Pour chacun, notez : qualité des voix, bruits, volume, musique, défauts entendus.
+> 3. Installez Audacity et ouvrez un enregistrement fait avec votre téléphone.
+> 4. Repérez dans la forme d''onde les silences, les hésitations et les bruits.
+>
+> **À livrer** : vos notes d''écoute et une capture de votre enregistrement dans Audacity.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 0, 0, 'Qu''est-ce que l''habillage sonore ?', '["Générique, jingles et transitions qui donnent une identité","Le nom du fichier","Le micro","Le bruit de fond"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 0, 1, 'Peut-on couper une phrase pour changer son sens ?', '["Oui, pour les invités","Non","Oui","Oui, si c''est plus court"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 0, 2, 'Quel est l''outil principal du monteur audio ?', '["Un casque fermé de qualité","Une imprimante","Un appareil photo","Une tablette graphique"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 1, 'Les bases : niveaux, LUFS, formats, défauts et traitements', 'Forme d''onde et saturation, volume perçu en LUFS, formats WAV, MP3, M4A et FLAC, défauts courants, égaliseur, compresseur, dé-esseur, réduction de bruit et limiteur.', 'Ce module vous donne les bases techniques du son : comprendre une forme d''onde, les niveaux et le volume perçu, les formats audio, les principaux défauts d''un enregistrement et les traitements essentiels (égaliseur, compresseur, réduction de bruit).
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire une forme d''onde et éviter la saturation.
+> 2. Comprendre le volume perçu (LUFS) et les normes de diffusion.
+> 3. Choisir les bons formats audio.
+> 4. Reconnaître les défauts courants d''un enregistrement.
+> 5. Expliquer le rôle de l''égaliseur, du compresseur et de la réduction de bruit.
+
+## La forme d''onde et les niveaux
+
+> [!definition] Forme d''onde
+> La représentation visuelle du son : plus l''onde est haute, plus le son est fort. Les silences apparaissent comme des lignes plates.
+
+> [!definition] Saturation (clipping)
+> Quand le son dépasse le niveau maximal (0 dBFS), le haut de l''onde est « coupé ». Le son devient grésillant et ce défaut est très difficile à réparer.
+
+| Niveau | Signification |
+| --- | --- |
+| **0 dBFS** | Le maximum absolu ; à ne jamais dépasser |
+| **Crêtes autour de −6 à −3 dBFS** pendant l''enregistrement | Zone confortable, avec une marge de sécurité |
+| **Crête maximale (true peak) autour de −1 dBFS** au mastering | Marge pour éviter la distorsion lors de la compression par les plateformes |
+
+## Le volume perçu : les LUFS
+
+> [!definition] LUFS
+> Une unité qui mesure le **volume perçu** par l''oreille sur toute la durée d''un fichier. Deux épisodes au même niveau LUFS paraissent aussi forts l''un que l''autre.
+
+| Usage | Repère courant (à vérifier selon la plateforme ou le client) |
+| --- | --- |
+| Podcast | Environ −16 LUFS (stéréo) |
+| Livre audio | Normes précises imposées par la plateforme de distribution (niveau moyen, bruit de fond, crêtes) |
+| Vidéo en ligne | Souvent autour de −14 LUFS |
+
+> [!attention]
+> Les plateformes publient leurs propres recommandations et les mettent parfois à jour. Lisez les **spécifications techniques** de la plateforme ou du client avant de livrer, surtout pour les livres audio, qui sont refusés s''ils ne respectent pas les normes.
+
+## Les formats audio
+
+| Format | Usage | Point clé |
+| --- | --- | --- |
+| **WAV** | Travail, archives, livraison de qualité | Sans perte, lourd |
+| **MP3** | Publication de podcasts | Compressé ; souvent 128 kbit/s en mono ou 192 kbit/s en stéréo pour la parole |
+| **M4A (AAC)** | Publication, vidéo | Compressé, bonne qualité |
+| **FLAC** | Archives | Sans perte, plus léger que le WAV |
+
+> [!astuce]
+> Travaillez toujours à partir des fichiers **originaux en WAV** (ou dans le meilleur format disponible), et n''exportez en MP3 qu''à la fin. Ne retravaillez jamais un MP3 déjà compressé si vous avez l''original.
+
+## Les défauts courants
+
+| Défaut | Cause | Solution principale |
+| --- | --- | --- |
+| **Bruit de fond** (ventilateur, circulation) | Pièce bruyante | Réduction de bruit, avec modération |
+| **Souffle** | Micro de mauvaise qualité, gain trop fort | Réduction de bruit |
+| **Écho, réverbération** | Pièce vide aux murs durs | Réduction de réverbération (outils spécialisés) ; difficile à corriger |
+| **Plosives** (« p », « b » qui explosent) | Bouche trop près du micro | Filtre passe-haut ciblé, correction manuelle |
+| **Sifflantes** (« s » trop forts) | Voix, micro | Dé-esseur |
+| **Clics de bouche** | Bouche sèche | Suppression manuelle ou outil spécialisé |
+| **Volume inégal** | Voix fortes et faibles | Compresseur, ajustements de volume |
+| **Saturation** | Gain trop fort | Très difficile à réparer ; prévenir à l''enregistrement |
+
+## Les traitements essentiels
+
+| Traitement | Rôle | Exemple d''usage |
+| --- | --- | --- |
+| **Filtre passe-haut** | Supprimer les graves inutiles (bourdonnements, chocs) | Couper en dessous d''environ 80 Hz pour une voix |
+| **Égaliseur (EQ)** | Corriger le timbre | Retirer un son « nasillard », ajouter de la clarté |
+| **Compresseur** | Réduire l''écart entre les passages forts et faibles | Voix plus régulière et présente |
+| **Dé-esseur** | Adoucir les « s » trop forts | Voix aiguës ou micro brillant |
+| **Réduction de bruit** | Diminuer le bruit de fond constant | Ventilateur, souffle |
+| **Limiteur** | Empêcher les crêtes de dépasser un niveau | Dernier traitement du mastering |
+
+> [!definition] Chaîne de traitement
+> L''ordre dans lequel on applique les traitements. Un ordre courant pour la voix : réduction de bruit → filtre passe-haut → égaliseur → compresseur → dé-esseur → limiteur (au mastering).
+
+> [!madagascar]
+> Beaucoup d''enregistrements faits à Madagascar contiennent des bruits typiques : circulation, coqs, pluie sur un toit en tôle, groupe électrogène. La réduction de bruit aide, mais le meilleur conseil à donner aux clients reste d''**enregistrer dans une petite pièce meublée** (rideaux, tissus) et au moment le plus calme de la journée.
+
+> [!retenir]
+> - Ne jamais dépasser 0 dBFS ; garder une marge à l''enregistrement.
+> - Les LUFS mesurent le volume perçu ; respectez les normes de la plateforme.
+> - Travailler en WAV, publier en MP3 à la fin.
+> - Reconnaître bruit, souffle, écho, plosives, sifflantes, clics, volume inégal.
+> - Une chaîne de traitement dans l''ordre, sans excès.
+
+## Exercice pratique : diagnostiquer un enregistrement
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Enregistrez 3 minutes de voix dans 3 lieux différents (pièce vide, pièce meublée, extérieur).
+> 2. Pour chaque enregistrement, listez les défauts entendus avec leur moment précis.
+> 3. Mesurez les crêtes et le volume perçu (outils de mesure d''Audacity ou une extension gratuite).
+> 4. Proposez pour chacun une chaîne de traitement.
+>
+> **À livrer** : vos 3 enregistrements, vos diagnostics et vos chaînes de traitement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 0, 'Quel niveau ne faut-il jamais dépasser ?', '["Aucun","−16 LUFS","−20 dBFS","0 dBFS"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 1, 'Que mesurent les LUFS ?', '["Le volume perçu sur la durée","Le poids du fichier","La durée","La qualité du micro"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 2, 'À quoi sert un compresseur ?', '["Changer la langue","Compresser le fichier en ZIP","Supprimer la musique","Réduire l''écart entre passages forts et faibles"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 2, 'Les outils : Audacity, Reaper, mixage et outils payants', 'Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX.', 'Ce module vous fait prendre en main les outils du monteur audio : **Audacity**, gratuit et simple, et **Reaper**, un logiciel professionnel très complet à petit prix. Vous apprendrez à monter, nettoyer, mixer et exporter un épisode. Vous découvrirez aussi les outils payants : **Adobe Audition** et **iZotope RX**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Monter un épisode dans Audacity.
+> 2. Organiser un projet multipistes dans Reaper.
+> 3. Appliquer une chaîne de traitement à une voix.
+> 4. Ajouter musique et habillage, puis exporter.
+> 5. Comprendre ce qu''apportent Adobe Audition et iZotope RX.
+
+## Audacity : le montage simple
+
+### Les fonctions essentielles
+
+| Fonction | Usage |
+| --- | --- |
+| **Sélection et suppression** | Couper une erreur, un long silence |
+| **Effets** | Réduction de bruit, égaliseur, compresseur, normalisation, limiteur |
+| **Pistes** | Voix, musique, habillage sur des pistes séparées |
+| **Enveloppes de volume** | Baisser la musique sous la voix |
+| **Analyse** | Mesure des niveaux et du volume perçu |
+| **Export** | WAV, MP3 et autres formats |
+
+### Monter un épisode : la méthode
+
+1. **Importez** l''enregistrement (gardez une copie de l''original).
+2. **Écoutez** tout une première fois en notant les moments à couper.
+3. **Coupez** les erreurs, faux départs, longs silences et hésitations excessives.
+4. **Gardez** le naturel : quelques respirations et pauses rendent la voix vivante.
+5. **Traitez** la voix (module 2).
+6. **Ajoutez** générique et musique.
+7. **Masterisez** au niveau demandé et exportez.
+
+> [!astuce]
+> Coupez de préférence **juste avant une respiration** ou dans un silence, et vérifiez que la coupe est inaudible. Une coupe au milieu d''un mot ou d''un souffle s''entend tout de suite.
+
+## Reaper : le projet multipistes
+
+> [!definition] Reaper
+> Un logiciel professionnel de production audio (station audionumérique). Il propose une longue période d''essai, puis une licence peu chère pour un usage personnel ou les petites entreprises (vérifiez les conditions sur le site officiel).
+
+| Fonction | Avantage pour le podcast |
+| --- | --- |
+| **Montage non destructif** | Les coupes et effets se modifient à tout moment |
+| **Pistes et bus** | Une piste par voix, une piste musique, un bus pour toutes les voix |
+| **Effets par piste** | Chaîne de traitement différente pour chaque intervenant |
+| **Ripple editing** | Couper un passage décale automatiquement la suite sur toutes les pistes |
+| **Modèles de projet** | Un modèle par podcast, prêt à l''emploi |
+| **Rendu par lots** | Exporter plusieurs épisodes ou formats à la fois |
+
+### Un modèle de projet de podcast
+
+```
+Piste 1 – Animatrice  : passe-haut → EQ → compresseur → dé-esseur
+Piste 2 – Invité      : réduction de bruit → passe-haut → EQ → compresseur
+Piste 3 – Musique     : volume baissé automatiquement sous les voix
+Piste 4 – Habillage   : générique, jingles
+Bus maître            : limiteur réglé selon la norme demandée
+```
+
+> [!madagascar]
+> Pour un épisode enregistré à distance (appel en ligne), demandez à chaque intervenant d''**enregistrer sa propre voix en local** sur son téléphone ou son ordinateur, puis de vous envoyer le fichier. Le son est bien meilleur que celui de l''appel, souvent dégradé par une connexion instable.
+
+## Mixer avec la musique
+
+1. **Le générique** : musique seule quelques secondes, puis baisse sous la voix.
+2. **La voix doit toujours dominer** : la musique de fond doit être nettement plus basse.
+3. **Les transitions** entre les parties : courtes et cohérentes.
+4. **Les droits** : utilisez de la musique **libre de droits** avec une licence qui autorise l''usage commercial, ou fournie par le client.
+
+> [!attention]
+> Utiliser une chanson connue sans autorisation peut faire **retirer** l''épisode des plateformes et exposer le client à des poursuites. Gardez toujours la preuve de la licence de chaque musique utilisée.
+
+## Exporter et livrer
+
+| Livrable | Format courant |
+| --- | --- |
+| Épisode pour les plateformes | MP3, au niveau demandé par le client (souvent autour de −16 LUFS) |
+| Version de qualité pour archives | WAV |
+| Extraits pour les réseaux sociaux | Fichiers courts, parfois avec vidéo (forme d''onde animée) |
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Adobe Audition** | Logiciel complet de montage et de nettoyage, éditeur spectral, outils de correction et de normalisation, intégration avec Premiere Pro pour la vidéo |
+| **iZotope RX** | Référence de la réparation audio : réduction de bruit, de réverbération, de clics de bouche, de saturation, avec une grande précision |
+
+> [!definition] Éditeur spectral
+> Une vue qui montre les fréquences du son dans le temps. On y voit et on peut effacer précisément un bruit isolé (toux, sonnerie, chaise) sans toucher à la voix.
+
+> [!madagascar]
+> Audition (abonnement Adobe) et iZotope RX (licence ou abonnement selon les versions) sont facturés en dollars. Commencez avec Audacity et Reaper ; investissez dans un outil de réparation quand vos clients vous envoient régulièrement des enregistrements difficiles. Vérifiez les prix et les promotions sur les sites officiels.
+
+> [!retenir]
+> - Audacity pour monter simplement ; Reaper pour les projets multipistes professionnels.
+> - Coupes inaudibles, naturel préservé.
+> - Une chaîne de traitement par voix et un limiteur au mastering.
+> - Musique sous la voix, avec licence vérifiée.
+> - Audition et iZotope RX pour les réparations difficiles.
+
+## Exercice pratique : votre premier épisode
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Enregistrez une conversation de 15 minutes à deux voix (chacun sur son téléphone).
+> 2. Montez-la dans Audacity : coupes, silences, hésitations.
+> 3. Refaites le projet dans Reaper avec un modèle multipistes et une chaîne de traitement par voix.
+> 4. Ajoutez un générique avec une musique libre de droits (notez la licence).
+> 5. Exportez en MP3 au niveau d''environ −16 LUFS et en WAV.
+>
+> **À livrer** : l''enregistrement brut, l''épisode final, une capture du projet Reaper et la licence de la musique.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 2, 0, 'Comment obtenir le meilleur son pour un épisode à distance ?', '["Chaque intervenant enregistre sa voix en local","Ne pas enregistrer","Enregistrer dehors","Utiliser seulement l''enregistrement de l''appel"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 2, 1, 'Où placer la musique par rapport à la voix ?', '["Au même niveau","À la place de la voix","Nettement en dessous","Au-dessus"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 2, 2, 'Qu''est-ce que iZotope RX ?', '["Un éditeur de photos","Une plateforme de podcast","Un outil de réparation audio de référence","Un logiciel de comptabilité"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 3, 'Premier projet : les épisodes du podcast Mpanorina', 'Brief, guide d''enregistrement, flux de travail hebdomadaire et synchronisation, liste de contrôle en 8 points, notes d''épisode avec chapitres et extraits.', 'Dans ce module, vous produisez les premiers épisodes du podcast d''un client, du brief jusqu''à la publication, comme le ferait un monteur indépendant. Vous apprendrez à définir le son du podcast, à travailler vite avec un modèle, à contrôler la qualité et à livrer avec les notes d''épisode.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Recueillir les besoins d''un podcasteur.
+> 2. Conseiller le client sur l''enregistrement.
+> 3. Produire des épisodes réguliers avec un modèle.
+> 4. Contrôler la qualité avant livraison.
+> 5. Préparer la publication et les extraits.
+
+## Le cas pratique : « Mpanorina »
+
+> [!exemple] Votre cliente
+> **Mpanorina** est un podcast en français et en malgache qui donne la parole à des entrepreneurs de Madagascar. L''animatrice, Mme Tiana, enregistre un épisode de 30 à 40 minutes chaque semaine, souvent à distance avec ses invités. Elle veut un son professionnel, un générique, et une publication chaque mardi matin. Elle n''a aucune connaissance technique.
+
+## Étape 1 : le brief
+
+| Question | Réponse de la cliente |
+| --- | --- |
+| Durée et fréquence | 30 à 40 minutes, chaque semaine |
+| Style de montage | Naturel : garder les rires, couper les erreurs et les longs silences |
+| Langues | Français et malgache mêlés, sans traduction |
+| Habillage | Générique de 15 secondes, musique de transition |
+| Livraison | Lundi soir au plus tard, pour une publication le mardi matin |
+| Livrables | Épisode MP3, version WAV, 2 extraits de 60 secondes pour les réseaux |
+| Plateforme d''hébergement | Celle de la cliente, avec un accès pour vous |
+
+## Étape 2 : conseiller l''enregistrement
+
+### Le guide d''enregistrement (1 page pour la cliente et ses invités)
+
+1. **Lieu** : petite pièce avec des meubles, rideaux, lit ou canapé ; éviter les pièces vides et carrelées.
+2. **Moment** : le plus calme de la journée, loin des bruits de la rue.
+3. **Micro** : un micro-cravate ou un micro USB simple ; à défaut, le téléphone à 15 à 20 cm de la bouche.
+4. **Enregistrement local** : chaque personne enregistre sa propre voix.
+5. **Test** : 30 secondes d''essai envoyées avant l''enregistrement complet.
+6. **Silence** de 10 secondes au début : il aide à la réduction de bruit.
+
+> [!astuce]
+> Améliorer l''enregistrement fait gagner bien plus de temps et de qualité que n''importe quel traitement après coup. Un bon guide d''enregistrement est l''un vos meilleurs outils.
+
+## Étape 3 : produire avec un modèle
+
+### Le flux de travail hebdomadaire
+
+| Étape | Durée indicative (épisode de 35 min) |
+| --- | --- |
+| Import et synchronisation des voix | 15 min |
+| Première écoute et montage | 1 h 30 |
+| Traitement (modèle de projet) | 20 min |
+| Musique et habillage | 15 min |
+| Mastering et export | 15 min |
+| Écoute de contrôle | 40 min (accélérée sur certains passages) |
+| Extraits et notes d''épisode | 40 min |
+
+> [!definition] Synchronisation
+> Aligner les pistes enregistrées séparément par chaque personne, pour qu''elles parlent au bon moment. On utilise souvent un son commun au début (un claquement de mains) ou l''enregistrement de l''appel comme repère.
+
+## Étape 4 : contrôler la qualité
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Aucune coupe audible, aucun mot coupé |
+| 2 | Pas de saturation, crêtes sous le niveau prévu |
+| 3 | Volume perçu conforme à la norme convenue |
+| 4 | Voix équilibrées entre elles |
+| 5 | Musique toujours sous la voix |
+| 6 | Bruits gênants supprimés sans voix « robotique » |
+| 7 | Générique et transitions bien placés |
+| 8 | Écoute sur écouteurs de téléphone et sur haut-parleur |
+
+> [!attention]
+> Une réduction de bruit trop forte rend la voix **métallique** ou « sous l''eau ». Mieux vaut un léger bruit de fond qu''une voix abîmée.
+
+## Étape 5 : publication et extraits
+
+### Les notes d''épisode
+
+```
+Épisode 12 – Hery, fondateur d''une coopérative de miel à Ambositra
+Durée : 36 min
+
+Dans cet épisode, Hery raconte comment il a réuni 40 apiculteurs, trouvé ses premiers clients à Antananarivo et commencé à exporter.
+
+Chapitres :
+00:00 Introduction
+02:15 Les débuts de la coopérative
+14:40 Trouver des clients
+26:10 L''exportation
+33:30 Conseils aux jeunes entrepreneurs
+
+Musique : [titre, auteur, licence]
+```
+
+### Les extraits
+
+1. **Choisissez** 2 moments forts de 30 à 60 secondes (conseil, anecdote, phrase marquante).
+2. **Vérifiez** qu''ils se comprennent sans le reste de l''épisode.
+3. **Ajoutez** un sous-titre ou une forme d''onde animée si le client le demande (avec un outil vidéo).
+
+> [!madagascar]
+> Les épisodes qui mêlent **malgache et français** sont précieux pour le public local et la diaspora. Dans les notes d''épisode, pensez à un titre et un résumé dans les deux langues : ils aident les auditeurs à trouver le podcast dans les plateformes.
+
+> [!retenir]
+> - Un brief complet : durée, style, langues, habillage, livraison, livrables.
+> - Un guide d''enregistrement pour la cliente et ses invités.
+> - Un flux de travail hebdomadaire avec un modèle de projet.
+> - Une liste de contrôle en 8 points, sans excès de traitement.
+> - Des notes d''épisode avec chapitres et des extraits pour les réseaux.
+
+## Exercice pratique : les épisodes de Mpanorina
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Rédigez le guide d''enregistrement d''une page.
+> 2. Enregistrez (ou faites enregistrer) 2 épisodes de 15 à 20 minutes avec des voix séparées.
+> 3. Produisez-les avec votre modèle Reaper et chronométrez chaque étape.
+> 4. Passez la liste de contrôle et corrigez.
+> 5. Rédigez les notes d''épisode avec chapitres et créez 2 extraits par épisode.
+>
+> **À livrer** : votre guide, les épisodes finaux, vos temps, votre liste de contrôle, les notes et les extraits. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 3, 0, 'Quel lieu conseiller pour enregistrer ?', '["Une rue animée","Une pièce vide et carrelée","Une salle de sport","Une petite pièce meublée"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 3, 1, 'Que provoque une réduction de bruit trop forte ?', '["Une voix plus naturelle","Un fichier plus lourd","Une voix métallique","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 3, 2, 'Que contiennent les notes d''épisode ?', '["Seulement le prix","Titre, résumé, chapitres et crédits de la musique","Rien","Les mots de passe"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avant et après, 5 canaux, prix par épisode et forfaits, conditions de travail en 7 points, paiements et évolution.', 'De nombreux podcasteurs, formateurs et créateurs de vidéos cherchent un monteur audio fiable pour publier chaque semaine sans y passer leurs soirées. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio audio convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix par épisode ou par minute.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Des extraits avant et après** de 30 à 60 secondes : enregistrement brut puis version finale.
+2. **Un épisode complet** monté par vous.
+3. **Des exemples variés** : podcast à deux voix, voix seule de formation, réparation d''un enregistrement difficile.
+4. **Une page simple** (site, profil sur une plateforme, dossier en ligne) avec un lecteur audio.
+
+> [!attention]
+> N''utilisez les épisodes d''un client dans votre portfolio qu''**avec son accord**. Sinon, produisez vos propres enregistrements de démonstration avec des proches qui acceptent.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Podcasteurs francophones** | Écoutez leurs épisodes, proposez une version nettoyée d''un extrait |
+| 2 | **Créateurs malgaches** (podcasts, radios en ligne, ONG) | Proposez un forfait mensuel pour leurs épisodes |
+| 3 | **Formateurs et créateurs de cours** | Nettoyage et homogénéisation des voix de leurs leçons |
+| 4 | **Studios et agences de podcast** | Sous-traitance régulière ; passez leurs tests |
+| 5 | **Plateformes de freelance** | Montage de podcasts, nettoyage audio ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un podcasteur
+> « Bonjour, j''écoute votre podcast sur l''entrepreneuriat et j''aime beaucoup vos invités. Dans le dernier épisode, la voix de l''invité était plus faible que la vôtre et on entendait un ventilateur. Je suis monteur audio : voici les 2 premières minutes de l''épisode nettoyées et équilibrées, pour que vous entendiez la différence. Je peux monter vos épisodes chaque semaine. »
+
+## Fixer ses prix
+
+### Le prix par épisode
+
+1. **Chronométrez** votre temps pour un épisode type (souvent 2 à 4 fois la durée de l''épisode selon la qualité de l''enregistrement).
+2. **Multipliez** par votre tarif horaire.
+3. **Ajoutez** les options : extraits, notes d''épisode, publication.
+
+| Formule | Contenu | Exemple de prix (épisode de 30 à 40 min) |
+| --- | --- | --- |
+| **Essentiel** | Montage, nettoyage, mastering | 60 000 Ar |
+| **Complet** | Essentiel + habillage + notes d''épisode | 90 000 Ar |
+| **Premium** | Complet + 2 extraits + publication | 130 000 Ar |
+| **Forfait mensuel** | 4 épisodes Complet | 320 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Prévoyez un **supplément** pour les enregistrements de très mauvaise qualité, qui peuvent doubler le temps de travail. Le guide d''enregistrement est aussi un argument : de meilleurs enregistrements, c''est un prix stable pour le client.
+
+## Les conditions de travail
+
+### Les 7 points
+
+1. **Les livrables** : formats, niveau sonore, extraits, notes.
+2. **Le délai** de livraison après réception des fichiers.
+3. **La qualité minimale** des enregistrements reçus (sinon supplément).
+4. **Le nombre de corrections** incluses.
+5. **La musique** : fournie par le client ou libre de droits avec licence.
+6. **La confidentialité** des contenus avant publication.
+7. **Le paiement** : par épisode ou forfait mensuel payé d''avance.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Monteur audio confirmé** | Reaper avancé, iZotope RX, rapidité |
+| **Producteur de podcast** | Conception des épisodes, conseil éditorial, publication, statistiques |
+| **Ingénieur du son pour livres audio** | Normes des plateformes, travail avec des comédiens |
+| **Comédien voix off** | Votre propre voix (voir la formation Comédien voix off) |
+| **Monteur vidéo** | Montage d''images (voir la formation Monteur vidéo) |
+
+> [!retenir]
+> - Un portfolio avant et après, avec l''accord des clients.
+> - Podcasteurs, créateurs malgaches, formateurs, studios, plateformes.
+> - Un prix par épisode calculé sur votre temps réel, avec des formules.
+> - Des conditions claires, dont la qualité minimale des fichiers reçus.
+> - Évoluez vers la production de podcasts, les livres audio ou la vidéo.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez 3 extraits avant et après et publiez-les sur une page simple.
+> 2. Calculez vos formules à partir de votre temps chronométré au module 4.
+> 3. Rédigez vos conditions de travail en 7 points.
+> 4. Écoutez 10 podcasts francophones ou malgaches, choisissez-en 3 et envoyez au moins 2 messages avec un extrait nettoyé.
+>
+> **À livrer** : le lien de votre page, vos formules, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 4, 0, 'Combien de temps faut-il souvent pour monter un épisode ?', '["Exactement sa durée","Une semaine","2 à 4 fois sa durée selon l''enregistrement","5 minutes"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 4, 1, 'Que prévoir pour un enregistrement de très mauvaise qualité ?', '["Un supplément","Le même prix sans condition","Le publier tel quel","Le refuser toujours"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 4, 2, 'Quelle évolution concerne les normes des plateformes et le travail avec des comédiens ?', '["Graphiste","Développeur","Comptable","Ingénieur du son pour livres audio"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que fait un monteur audio ?', '["Il vend des micros","Il transforme des enregistrements bruts en épisodes prêts à publier","Il gère la comptabilité","Il écrit les scripts uniquement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quelle étape vient après le montage et le nettoyage ?', '["L''enregistrement","La préparation","Le choix des invités","Le mixage"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel type de projet demande des normes très strictes ?', '["Une note privée","Le livre audio","Aucun","Un message vocal personnel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Pourquoi écouter sur plusieurs appareils ?', '["Ce n''est pas utile","La plupart des auditeurs écoutent avec des écouteurs simples","Pour perdre du temps","Pour changer le volume au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Qu''est-ce que la saturation ?', '["Un format","Une musique","Un son coupé en haut car il dépasse le maximum","Un silence"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel repère courant de volume pour un podcast ?', '["0 LUFS","−60 LUFS","+10 LUFS","Environ −16 LUFS"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Dans quel format travailler ?', '["Un MP3 recompressé","Un fichier texte","Une image","WAV ou le meilleur format disponible"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que sont les plosives ?', '["Des sifflements de « s »","Des silences","Des « p » et « b » qui explosent dans le micro","Des musiques"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel outil adoucit les « s » trop forts ?', '["La normalisation","Le dé-esseur","Le limiteur","Le passe-haut"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel traitement vient en dernier au mastering ?', '["La réduction de bruit","Le montage","Le passe-haut","Le limiteur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que conseiller pour réduire les bruits de rue à Madagascar ?', '["Augmenter le volume","Enregistrer près d''un groupe électrogène","Enregistrer dans une petite pièce meublée au moment le plus calme","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Où couper de préférence ?', '["Au milieu d''un mot","Juste avant une respiration ou dans un silence","Au hasard","Au milieu d''un souffle"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que permet le ripple editing dans Reaper ?', '["Supprimer toutes les pistes","Décaler automatiquement la suite après une coupe sur toutes les pistes","Changer la langue","Payer la licence"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Pourquoi utiliser un modèle de projet ?', '["Pour décorer","Pour payer moins","Pour gagner du temps et garder le même son à chaque épisode","C''est obligatoire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que garder pour chaque musique utilisée ?', '["Rien","Le nom du chanteur seulement","Une photo","La preuve de la licence"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que montre un éditeur spectral ?', '["Les sous-titres","La vidéo","Les fréquences du son dans le temps","Le prix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que livrer en plus de l''épisode MP3 dans le cas Mpanorina ?', '["Rien","Une facture uniquement","Une vidéo de 2 heures","Une version WAV et 2 extraits"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Pourquoi garder 10 secondes de silence au début ?', '["Ce n''est pas utile","Pour aider la réduction de bruit","Pour la musique","Pour allonger l''épisode"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Comment synchroniser des pistes enregistrées séparément ?', '["Au hasard","En accélérant une voix","Avec un son repère commun comme un claquement de mains","On ne peut pas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Combien de temps dure un bon extrait pour les réseaux ?', '["1 seconde","10 minutes","Tout l''épisode","30 à 60 secondes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Pourquoi un titre et un résumé dans les deux langues ?', '["Ce n''est pas utile","Pour allonger le texte","C''est obligatoire","Pour aider les auditeurs à trouver le podcast"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Peut-on utiliser l''épisode d''un client dans son portfolio sans accord ?', '["Oui, s''il est ancien","Non","Oui, en partie","Oui"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel premier contact proposer à un podcasteur ?', '["Rien","Un prix sans exemple","Un extrait de son épisode nettoyé pour montrer la différence","Une critique sévère"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que préciser dans les conditions de travail ?', '["La couleur du casque","La qualité minimale des enregistrements reçus","Le nom du micro du client","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
 
 -- media-4-a
 delete from public.exam_questions where course_id = 'media-4-a';

@@ -4203,6 +4203,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-2-f": {
+  "hours": 15,
+  "description": "Le monteur audio et podcast transforme des enregistrements bruts en épisodes clairs, agréables et prêts à publier. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des podcasteurs, des formateurs, des studios et des créateurs, à Madagascar et à l'étranger, avec Audacity et Reaper : niveaux et LUFS, formats, défauts courants, chaîne de traitement, montage, mixage, mastering, publication et extraits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les étapes de la production d'un podcast",
+   "Comprendre niveaux, saturation, LUFS et formats audio",
+   "Reconnaître les défauts courants et construire une chaîne de traitement",
+   "Monter, mixer et exporter avec Audacity et Reaper",
+   "Produire des épisodes réguliers avec contrôle qualité, notes et extraits",
+   "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de monteur audio et podcast depuis Madagascar",
+    "summary": "Les étapes de la production, l'habillage sonore, les types de projets, les qualités du monteur, les clients et le poste d'écoute.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les étapes de la production d'un podcast",
+     "Les types de projets audio",
+     "Les qualités du monteur audio",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : écouter comme un monteur"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : niveaux, LUFS, formats, défauts et traitements",
+    "summary": "Forme d'onde et saturation, volume perçu en LUFS, formats WAV, MP3, M4A et FLAC, défauts courants, égaliseur, compresseur, dé-esseur, réduction de bruit et limiteur.",
+    "sections": [
+     "La forme d'onde et les niveaux",
+     "Le volume perçu : les LUFS",
+     "Les formats audio",
+     "Les défauts courants",
+     "Les traitements essentiels",
+     "Exercice pratique : diagnostiquer un enregistrement"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Audacity, Reaper, mixage et outils payants",
+    "summary": "Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX.",
+    "sections": [
+     "Audacity : le montage simple",
+     "Reaper : le projet multipistes",
+     "Mixer avec la musique",
+     "Exporter et livrer",
+     "Les outils payants",
+     "Exercice pratique : votre premier épisode"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : les épisodes du podcast Mpanorina",
+    "summary": "Brief, guide d'enregistrement, flux de travail hebdomadaire et synchronisation, liste de contrôle en 8 points, notes d'épisode avec chapitres et extraits.",
+    "sections": [
+     "Le cas pratique : « Mpanorina »",
+     "Étape 1 : le brief",
+     "Étape 2 : conseiller l'enregistrement",
+     "Étape 3 : produire avec un modèle",
+     "Étape 4 : contrôler la qualité",
+     "Étape 5 : publication et extraits",
+     "Exercice pratique : les épisodes de Mpanorina"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avant et après, 5 canaux, prix par épisode et forfaits, conditions de travail en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Les conditions de travail",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "media-4-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait du sous-titreur un professionnel aux normes des diffuseurs : spécialité (traduction, sous-titres pour sourds et malentendants, streaming, réseaux sociaux, formation, contrôle qualité), audit de sous-titres, outils payants (Descript et offres de sous-titrage automatique) combinés à Subtitle Edit, normes techniques et liste de contrôle, guides de style et confidentialité des agences, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

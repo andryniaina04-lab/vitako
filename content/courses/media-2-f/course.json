@@ -1,0 +1,97 @@
+{
+  "id": "media-2-f",
+  "hours": 15,
+  "description": "Le monteur audio et podcast transforme des enregistrements bruts en épisodes clairs, agréables et prêts à publier. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des podcasteurs, des formateurs, des studios et des créateurs, à Madagascar et à l'étranger, avec Audacity et Reaper : niveaux et LUFS, formats, défauts courants, chaîne de traitement, montage, mixage, mastering, publication et extraits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les étapes de la production d'un podcast",
+    "Comprendre niveaux, saturation, LUFS et formats audio",
+    "Reconnaître les défauts courants et construire une chaîne de traitement",
+    "Monter, mixer et exporter avec Audacity et Reaper",
+    "Produire des épisodes réguliers avec contrôle qualité, notes et extraits",
+    "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de monteur audio et podcast depuis Madagascar",
+      "summary": "Les étapes de la production, l'habillage sonore, les types de projets, les qualités du monteur, les clients et le poste d'écoute.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que l'habillage sonore ?", "options": ["Générique, jingles et transitions qui donnent une identité", "Le bruit de fond", "Le micro", "Le nom du fichier"], "correct": 0 },
+        { "q": "Peut-on couper une phrase pour changer son sens ?", "options": ["Non", "Oui", "Oui, si c'est plus court", "Oui, pour les invités"], "correct": 0 },
+        { "q": "Quel est l'outil principal du monteur audio ?", "options": ["Un casque fermé de qualité", "Une imprimante", "Un appareil photo", "Une tablette graphique"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : niveaux, LUFS, formats, défauts et traitements",
+      "summary": "Forme d'onde et saturation, volume perçu en LUFS, formats WAV, MP3, M4A et FLAC, défauts courants, égaliseur, compresseur, dé-esseur, réduction de bruit et limiteur.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel niveau ne faut-il jamais dépasser ?", "options": ["0 dBFS", "−16 LUFS", "−20 dBFS", "Aucun"], "correct": 0 },
+        { "q": "Que mesurent les LUFS ?", "options": ["Le volume perçu sur la durée", "La durée", "Le poids du fichier", "La qualité du micro"], "correct": 0 },
+        { "q": "À quoi sert un compresseur ?", "options": ["Réduire l'écart entre passages forts et faibles", "Compresser le fichier en ZIP", "Supprimer la musique", "Changer la langue"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Audacity, Reaper, mixage et outils payants",
+      "summary": "Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment obtenir le meilleur son pour un épisode à distance ?", "options": ["Chaque intervenant enregistre sa voix en local", "Utiliser seulement l'enregistrement de l'appel", "Enregistrer dehors", "Ne pas enregistrer"], "correct": 0 },
+        { "q": "Où placer la musique par rapport à la voix ?", "options": ["Nettement en dessous", "Au-dessus", "Au même niveau", "À la place de la voix"], "correct": 0 },
+        { "q": "Qu'est-ce que iZotope RX ?", "options": ["Un outil de réparation audio de référence", "Un logiciel de comptabilité", "Un éditeur de photos", "Une plateforme de podcast"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : les épisodes du podcast Mpanorina",
+      "summary": "Brief, guide d'enregistrement, flux de travail hebdomadaire et synchronisation, liste de contrôle en 8 points, notes d'épisode avec chapitres et extraits.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel lieu conseiller pour enregistrer ?", "options": ["Une petite pièce meublée", "Une pièce vide et carrelée", "Une rue animée", "Une salle de sport"], "correct": 0 },
+        { "q": "Que provoque une réduction de bruit trop forte ?", "options": ["Une voix métallique", "Une voix plus naturelle", "Rien", "Un fichier plus lourd"], "correct": 0 },
+        { "q": "Que contiennent les notes d'épisode ?", "options": ["Titre, résumé, chapitres et crédits de la musique", "Seulement le prix", "Les mots de passe", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avant et après, 5 canaux, prix par épisode et forfaits, conditions de travail en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de temps faut-il souvent pour monter un épisode ?", "options": ["2 à 4 fois sa durée selon l'enregistrement", "Exactement sa durée", "5 minutes", "Une semaine"], "correct": 0 },
+        { "q": "Que prévoir pour un enregistrement de très mauvaise qualité ?", "options": ["Un supplément", "Le même prix sans condition", "Le refuser toujours", "Le publier tel quel"], "correct": 0 },
+        { "q": "Quelle évolution concerne les normes des plateformes et le travail avec des comédiens ?", "options": ["Ingénieur du son pour livres audio", "Comptable", "Développeur", "Graphiste"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un monteur audio ?", "options": ["Il transforme des enregistrements bruts en épisodes prêts à publier", "Il écrit les scripts uniquement", "Il vend des micros", "Il gère la comptabilité"], "correct": 0 },
+    { "q": "Quelle étape vient après le montage et le nettoyage ?", "options": ["Le mixage", "La préparation", "L'enregistrement", "Le choix des invités"], "correct": 0 },
+    { "q": "Quel type de projet demande des normes très strictes ?", "options": ["Le livre audio", "Un message vocal personnel", "Une note privée", "Aucun"], "correct": 0 },
+    { "q": "Pourquoi écouter sur plusieurs appareils ?", "options": ["La plupart des auditeurs écoutent avec des écouteurs simples", "Pour perdre du temps", "Ce n'est pas utile", "Pour changer le volume au hasard"], "correct": 0 },
+    { "q": "Qu'est-ce que la saturation ?", "options": ["Un son coupé en haut car il dépasse le maximum", "Un silence", "Une musique", "Un format"], "correct": 0 },
+    { "q": "Quel repère courant de volume pour un podcast ?", "options": ["Environ −16 LUFS", "0 LUFS", "−60 LUFS", "+10 LUFS"], "correct": 0 },
+    { "q": "Dans quel format travailler ?", "options": ["WAV ou le meilleur format disponible", "Un MP3 recompressé", "Un fichier texte", "Une image"], "correct": 0 },
+    { "q": "Que sont les plosives ?", "options": ["Des « p » et « b » qui explosent dans le micro", "Des musiques", "Des silences", "Des sifflements de « s »"], "correct": 0 },
+    { "q": "Quel outil adoucit les « s » trop forts ?", "options": ["Le dé-esseur", "Le limiteur", "La normalisation", "Le passe-haut"], "correct": 0 },
+    { "q": "Quel traitement vient en dernier au mastering ?", "options": ["Le limiteur", "La réduction de bruit", "Le passe-haut", "Le montage"], "correct": 0 },
+    { "q": "Que conseiller pour réduire les bruits de rue à Madagascar ?", "options": ["Enregistrer dans une petite pièce meublée au moment le plus calme", "Enregistrer près d'un groupe électrogène", "Augmenter le volume", "Rien"], "correct": 0 },
+    { "q": "Où couper de préférence ?", "options": ["Juste avant une respiration ou dans un silence", "Au milieu d'un mot", "Au hasard", "Au milieu d'un souffle"], "correct": 0 },
+    { "q": "Que permet le ripple editing dans Reaper ?", "options": ["Décaler automatiquement la suite après une coupe sur toutes les pistes", "Supprimer toutes les pistes", "Changer la langue", "Payer la licence"], "correct": 0 },
+    { "q": "Pourquoi utiliser un modèle de projet ?", "options": ["Pour gagner du temps et garder le même son à chaque épisode", "Pour décorer", "C'est obligatoire", "Pour payer moins"], "correct": 0 },
+    { "q": "Que garder pour chaque musique utilisée ?", "options": ["La preuve de la licence", "Rien", "Le nom du chanteur seulement", "Une photo"], "correct": 0 },
+    { "q": "Que montre un éditeur spectral ?", "options": ["Les fréquences du son dans le temps", "Le prix", "Les sous-titres", "La vidéo"], "correct": 0 },
+    { "q": "Que livrer en plus de l'épisode MP3 dans le cas Mpanorina ?", "options": ["Une version WAV et 2 extraits", "Rien", "Une facture uniquement", "Une vidéo de 2 heures"], "correct": 0 },
+    { "q": "Pourquoi garder 10 secondes de silence au début ?", "options": ["Pour aider la réduction de bruit", "Pour allonger l'épisode", "Ce n'est pas utile", "Pour la musique"], "correct": 0 },
+    { "q": "Comment synchroniser des pistes enregistrées séparément ?", "options": ["Avec un son repère commun comme un claquement de mains", "Au hasard", "En accélérant une voix", "On ne peut pas"], "correct": 0 },
+    { "q": "Combien de temps dure un bon extrait pour les réseaux ?", "options": ["30 à 60 secondes", "10 minutes", "1 seconde", "Tout l'épisode"], "correct": 0 },
+    { "q": "Pourquoi un titre et un résumé dans les deux langues ?", "options": ["Pour aider les auditeurs à trouver le podcast", "Pour allonger le texte", "C'est obligatoire", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Peut-on utiliser l'épisode d'un client dans son portfolio sans accord ?", "options": ["Non", "Oui", "Oui, en partie", "Oui, s'il est ancien"], "correct": 0 },
+    { "q": "Quel premier contact proposer à un podcasteur ?", "options": ["Un extrait de son épisode nettoyé pour montrer la différence", "Une critique sévère", "Un prix sans exemple", "Rien"], "correct": 0 },
+    { "q": "Que préciser dans les conditions de travail ?", "options": ["La qualité minimale des enregistrements reçus", "La couleur du casque", "Rien", "Le nom du micro du client"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
