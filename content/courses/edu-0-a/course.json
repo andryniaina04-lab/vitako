@@ -1,0 +1,97 @@
+{
+  "id": "edu-0-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du professeur de langue en ligne un professionnel qui vend des résultats : spécialité (examens, langue professionnelle, enfants, groupes, entreprises, malgache), bilan sur 5 compétences et objectifs SMART, Zoom Pro et outils de suivi, programmes, grilles d'évaluation, correction écrite et préparation d'examens, enseignement international avec protection des enfants et des données, puis groupes, entreprises, ressources et petite école en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, faire un bilan sur 5 compétences et fixer des objectifs SMART",
+    "Utiliser Zoom Pro, les salles de groupe, la réservation et un espace de cours",
+    "Construire un programme, évaluer avec des grilles et corriger l'écrit",
+    "Préparer un candidat à un examen officiel",
+    "Enseigner à l'international en protégeant les enfants et les données",
+    "Développer groupes, formations d'entreprise, ressources et une petite école"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, faire un bilan complet et mesurer les progrès",
+      "summary": "Les 6 spécialités avancées, le bilan sur 5 compétences, le profil de compétences, les objectifs SMART, les mesures de progrès et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où vérifier le format actuel d'un examen comme le DELF ?", "options": ["Sur le site officiel de l'organisme", "Sur un vieux forum", "Dans un manuel ancien", "Nulle part"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un profil de compétences ?", "options": ["Des niveaux différents selon les compétences", "Un seul niveau pour tout", "Une photo de l'élève", "Un prix"], "correct": 0 },
+        { "q": "Que signifie le T de SMART ?", "options": ["Temporel : une date", "Total", "Technique", "Tranquille"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Zoom Pro, groupes, réservation et espace de cours",
+      "summary": "Fonctions de Zoom Pro, réglages de sécurité, structure d'un cours de groupe, salles de groupe, enregistrements avec accord, réservation, paiements et Google Classroom.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant d'ouvrir les salles de groupe ?", "options": ["Écrire la consigne dans le chat et annoncer la durée", "Rien", "Couper la connexion", "Quitter le cours"], "correct": 0 },
+        { "q": "Peut-on publier le lien d'un cours sur un réseau social public ?", "options": ["Non", "Oui", "Oui, pour plus d'élèves", "Oui, sans mot de passe"], "correct": 0 },
+        { "q": "Que faut-il pour enregistrer un cours avec des mineurs ?", "options": ["L'accord écrit des parents", "Rien", "L'accord de l'enfant seul", "Un abonnement payant"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : programmes, grilles, correction et examens",
+      "summary": "Programme sur 3 mois avec révisions, grilles d'évaluation, code de correction et autocorrection guidée, travail personnel et préparation d'examen en 5 étapes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait l'élève dans l'autocorrection guidée ?", "options": ["Il corrige ses erreurs à partir d'indices", "Il recopie la correction", "Il ne fait rien", "Il corrige les autres"], "correct": 0 },
+        { "q": "Que signifie le code C dans une correction ?", "options": ["Conjugaison", "Couleur", "Clarté", "Contrat"], "correct": 0 },
+        { "q": "Combien d'examens blancs avant la date de l'examen ?", "options": ["2 ou 3, avec correction détaillée", "Aucun", "Un seul la veille", "20"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : cultures, protection des enfants, données et entreprises",
+      "summary": "Adaptation culturelle, 8 règles de protection des enfants en ligne, protection des données des élèves, circuit et rapports des formations d'entreprise, fuseaux horaires et plateformes.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Avec qui communiquer pour organiser les cours d'un enfant ?", "options": ["Uniquement avec les parents", "Avec l'enfant en messagerie privée", "Sur les réseaux sociaux de l'enfant", "Avec personne"], "correct": 0 },
+        { "q": "Que transmettre à l'employeur dans une formation d'entreprise ?", "options": ["Ce qui a été convenu : présence, niveau, progrès", "Les confidences des participants", "Rien", "Tout ce qui a été dit"], "correct": 0 },
+        { "q": "À quelle heure environ à Antananarivo correspond 19 h à Tokyo ?", "options": ["13 h", "19 h", "1 h", "22 h"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : groupes, entreprises, ressources et école en ligne",
+      "summary": "Plusieurs sources de revenus, prix des groupes et des programmes, contenu pour attirer des élèves, petite école avec professeurs partenaires et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "5 élèves à 60 000 Ar par mois pour 10 heures font quel revenu horaire ?", "options": ["30 000 Ar", "60 000 Ar", "6 000 Ar", "300 000 Ar"], "correct": 0 },
+        { "q": "Que vendre de préférence ?", "options": ["Des programmes avec un résultat", "Des heures sans objectif", "Rien", "Des cours gratuits uniquement"], "correct": 0 },
+        { "q": "Que faire avant de publier un contenu en malgache ?", "options": ["Vérifier chaque mot et expression", "Le publier sans relire", "Le traduire automatiquement", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité prépare au TCF ou à l'IELTS ?", "options": ["Préparation d'examens", "Cours pour enfants", "Langue rare", "Groupes de conversation"], "correct": 0 },
+    { "q": "Qu'est-ce que le français sur objectif spécifique ?", "options": ["Le français d'un métier ou d'une situation précise", "Le français pour enfants", "Une grammaire ancienne", "Une traduction"], "correct": 0 },
+    { "q": "Combien de compétences évaluer dans un bilan complet ?", "options": ["5", "1", "10", "2"], "correct": 0 },
+    { "q": "Que faire si un élève comprend en B1 mais parle en A2 ?", "options": ["Construire le programme à partir de ce profil", "Lui donner un seul niveau", "L'ignorer", "Commencer au C1"], "correct": 0 },
+    { "q": "Quel objectif est mesurable ?", "options": ["Au moins 18 sur 25 à l'oral blanc", "Être meilleur", "Parler bien", "Aimer la langue"], "correct": 0 },
+    { "q": "Quelle fonction de Zoom vérifie la compréhension en quelques secondes ?", "options": ["Les sondages", "La salle d'attente", "Le mot de passe", "Le fond virtuel"], "correct": 0 },
+    { "q": "À quoi sert la salle d'attente ?", "options": ["Admettre seulement les élèves inscrits", "Accélérer la connexion", "Enregistrer", "Traduire"], "correct": 0 },
+    { "q": "Combien d'élèves par salle de groupe en général ?", "options": ["2 ou 3", "20", "1", "50"], "correct": 0 },
+    { "q": "Combien de temps garder les enregistrements ?", "options": ["Une durée annoncée, puis suppression", "Pour toujours", "Jamais d'enregistrement possible", "Jusqu'à leur publication"], "correct": 0 },
+    { "q": "Que doit afficher une page de réservation ?", "options": ["Les créneaux dans le fuseau de chaque élève", "Seulement l'heure de Madagascar", "Aucun horaire", "Le prix des concurrents"], "correct": 0 },
+    { "q": "Pourquoi prévoir une semaine de révision régulièrement ?", "options": ["Les élèves oublient ce qu'ils ne réutilisent pas", "Pour se reposer", "Pour facturer plus", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle grille utiliser pour préparer un examen ?", "options": ["La grille officielle de l'examen", "Une grille inventée", "Aucune", "La grille d'un autre examen"], "correct": 0 },
+    { "q": "Que contient le commentaire général d'une correction ?", "options": ["2 points forts et 2 priorités", "Seulement la note", "Rien", "Une critique de l'élève"], "correct": 0 },
+    { "q": "Combien de temps de révision du vocabulaire par jour ?", "options": ["Environ 10 minutes", "5 heures", "Aucun", "1 minute par semaine"], "correct": 0 },
+    { "q": "Que faire au début d'une préparation d'examen ?", "options": ["Un examen blanc pour situer le candidat", "Rien", "S'inscrire à l'examen le lendemain", "Corriger sans évaluer"], "correct": 0 },
+    { "q": "Que demander au premier cours pour éviter les malentendus culturels ?", "options": ["Comment l'élève aime apprendre", "Sa religion", "Son salaire", "Son adresse exacte"], "correct": 0 },
+    { "q": "Peut-on demander à un enfant son adresse et son école ?", "options": ["Non", "Oui", "Oui, pour mieux le connaître", "Oui, en privé"], "correct": 0 },
+    { "q": "Peut-on être ami avec un élève mineur sur les réseaux sociaux ?", "options": ["Non", "Oui", "Oui, s'il le demande", "Oui, après les cours"], "correct": 0 },
+    { "q": "Le RGPD s'applique-t-il à un professeur à Madagascar ?", "options": ["Oui, s'il traite des données de personnes en Europe", "Non, jamais", "Seulement le dimanche", "Seulement pour les enfants"], "correct": 0 },
+    { "q": "Quelle est la première étape d'une formation d'entreprise ?", "options": ["L'analyse des besoins", "Le rapport final", "La facturation", "Les cours"], "correct": 0 },
+    { "q": "Quelle région a des horaires pratiques pour Madagascar l'après-midi ?", "options": ["L'Asie de l'Est", "La côte ouest des États-Unis", "Hawaï", "L'Alaska"], "correct": 0 },
+    { "q": "Pourquoi garder des élèves en direct en plus des plateformes ?", "options": ["Pour ne pas dépendre d'une seule plateforme", "C'est interdit", "Pour payer plus de commission", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quel avantage offre un groupe par abonnement ?", "options": ["Un revenu régulier et un prix plus abordable par élève", "Moins de préparation", "Aucun", "Pas besoin d'animer"], "correct": 0 },
+    { "q": "Que doivent appliquer tous les professeurs d'une petite école ?", "options": ["Les règles de protection des enfants et des données", "Leurs propres règles chacun", "Aucune règle", "Les règles d'une autre école"], "correct": 0 },
+    { "q": "Quelle évolution demande une habilitation des organismes officiels ?", "options": ["Examinateur ou correcteur d'examens", "Créateur de vidéos", "Assistant", "Comptable"], "correct": 0 }
+  ]
+}

@@ -94,7 +94,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
-  ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 17, false),
+  ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true),
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 10, false),
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 11, false),
@@ -15116,6 +15116,597 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quelle marge ajouter au prix estimé d''un site ?', '["200 %","Environ 20 % pour les imprévus","1 %","Aucune"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Quand proposer la maintenance mensuelle ?', '["Au moment de la mise en ligne","Avant même le devis du site","Jamais","Après la première panne seulement"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-3-f', 'Pourquoi rappeler au client le renouvellement de son domaine ?', '["Un domaine non renouvelé, c''est un site qui disparaît","C''est inutile","Pour lui vendre un autre site","Pour changer son nom"]'::jsonb, 0);
+
+-- edu-0-a
+delete from public.exam_questions where course_id = 'edu-0-a';
+delete from public.module_questions where course_id = 'edu-0-a';
+delete from public.lessons where course_id = 'edu-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-a', 0, 'Se spécialiser, faire un bilan complet et mesurer les progrès', 'Les 6 spécialités avancées, le bilan sur 5 compétences, le profil de compétences, les objectifs SMART, les mesures de progrès et les offres à forte valeur.', 'Donner des cours de conversation ouvre les premières missions. Les professeurs de langue en ligne les mieux payés ont une **spécialité** : ils préparent à un examen précis, enseignent la langue d''un métier, animent des groupes, travaillent pour des entreprises, ou proposent une langue rare comme le malgache avec un programme solide. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''enseignement des langues en ligne.
+> 2. Choisir la vôtre selon vos forces et la demande.
+> 3. Mener un bilan de niveau complet relié au CECRL.
+> 4. Fixer des objectifs et mesurer les progrès.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Élèves | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Préparation d''examens** | Candidats au DELF, DALF, TCF, TEF, IELTS, TOEFL, TOEIC | Format des épreuves, grilles de correction, entraînement chronométré |
+| 2 | **Langue professionnelle** | Employés, médecins, ingénieurs, personnel du tourisme | Vocabulaire et situations d''un métier (français sur objectif spécifique, anglais des affaires) |
+| 3 | **Cours pour enfants** | Enfants de 5 à 14 ans | Jeux, rythme court, relation avec les parents, sécurité |
+| 4 | **Cours en groupe** | Petits groupes de 3 à 8 élèves | Animation, salles de groupe, gestion des niveaux |
+| 5 | **Formation en entreprise** | Équipes d''une organisation | Analyse des besoins, programme, rapports de progrès pour l''employeur |
+| 6 | **Langue rare et culture** | Expatriés, diaspora, chercheurs (malgache) | Programme structuré, ressources créées, repères culturels |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Malgache** pour les ONG, ambassades, entreprises et familles de la diaspora : peu de professeurs proposent un programme structuré.
+> - **Français professionnel** pour les employés étrangers des entreprises et organisations installées à Madagascar ou dans l''océan Indien.
+> - **Préparation au DELF, au TCF ou au TEF** pour les candidats à l''immigration ou aux études au Canada et en France, en Afrique et en Asie.
+
+> [!attention]
+> Pour préparer à un examen, maîtrisez **son format actuel** : épreuves, durées, barèmes. Ils changent parfois. Consultez toujours les sites officiels des organismes (France Éducation international pour le DELF, le DALF et le TCF, la CCI Paris Île-de-France pour le TEF, les organismes de l''IELTS et du TOEFL).
+
+## Le bilan de niveau complet
+
+### Les 5 compétences
+
+| Compétence | Exemple de tâche d''évaluation |
+| --- | --- |
+| **Compréhension orale** | Écouter un court enregistrement et répondre à des questions |
+| **Compréhension écrite** | Lire un texte adapté et répondre |
+| **Production orale en continu** | Parler 2 minutes sur un sujet |
+| **Interaction orale** | Jeu de rôle avec le professeur |
+| **Production écrite** | Écrire un message ou un court texte |
+
+### La grille de bilan
+
+| Compétence | Niveau estimé | Points forts | Points à travailler |
+| --- | --- | --- | --- |
+| Compréhension orale | B1 | Comprend l''essentiel des conversations lentes | Débit rapide, accents |
+| Production orale | A2+ | Vocabulaire quotidien | Passé composé, liaisons |
+| Production écrite | A2 | Messages courts corrects | Connecteurs, accords |
+
+> [!definition] Profil de compétences
+> Les niveaux ne sont pas les mêmes pour toutes les compétences : un élève peut comprendre au niveau B1 mais parler au niveau A2. Le programme se construit à partir de ce profil, pas d''un seul niveau global.
+
+## Fixer des objectifs et mesurer les progrès
+
+### La méthode SMART
+
+| Critère | Exemple |
+| --- | --- |
+| **Spécifique** | Réussir l''épreuve orale du DELF B2 |
+| **Mesurable** | Au moins 18 sur 25 à l''oral blanc |
+| **Atteignable** | Niveau actuel B1+, 3 mois de préparation |
+| **Réaliste** | 2 cours par semaine et 4 heures de travail personnel |
+| **Temporel** | Examen le 12 juin |
+
+### Les mesures de progrès
+
+1. **Examens blancs** réguliers pour les préparations d''examens.
+2. **Enregistrements** comparés (avec l''accord de l''élève).
+3. **Grilles d''évaluation** utilisées à intervalles fixes.
+4. **Objectifs de communication** atteints (« peut mener une réunion de 20 minutes en anglais »).
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Préparation d''examen** | Bilan, programme, examens blancs, corrections écrites détaillées |
+| **Programme professionnel** | Analyse des besoins, 20 à 30 cours sur les situations du métier |
+| **Groupe de conversation** | Abonnement mensuel, petits groupes par niveau |
+| **Formation d''équipe** | Pour une entreprise, avec rapports à l''employeur |
+| **Programme de malgache** | 3 niveaux, ressources audio, fiches culturelles |
+| **Accompagnement intensif** | Cours quotidiens courts avant un départ ou un entretien |
+
+> [!retenir]
+> - Spécialisez-vous : examens, langue professionnelle, enfants, groupes, entreprises ou langue rare.
+> - Un bilan sur 5 compétences, avec un profil par compétence.
+> - Des objectifs SMART et des mesures de progrès régulières.
+> - Vendez des résultats : un examen réussi, une situation professionnelle maîtrisée.
+
+## Exercice pratique : votre spécialité et votre bilan
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Créez un bilan de niveau complet sur les 5 compétences (tâches et grille).
+> 3. Faites passer le bilan à un élève volontaire et remplissez la grille.
+> 4. Rédigez son objectif SMART et les mesures de progrès prévues.
+>
+> **À livrer** : votre choix, votre bilan, la grille remplie et l''objectif.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 0, 0, 'Où vérifier le format actuel d''un examen comme le DELF ?', '["Dans un manuel ancien","Sur un vieux forum","Sur le site officiel de l''organisme","Nulle part"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 0, 1, 'Qu''est-ce qu''un profil de compétences ?', '["Des niveaux différents selon les compétences","Une photo de l''élève","Un seul niveau pour tout","Un prix"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 0, 2, 'Que signifie le T de SMART ?', '["Tranquille","Total","Technique","Temporel : une date"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-a', 1, 'Outils professionnels : Zoom Pro, groupes, réservation et espace de cours', 'Fonctions de Zoom Pro, réglages de sécurité, structure d''un cours de groupe, salles de groupe, enregistrements avec accord, réservation, paiements et Google Classroom.', 'Au niveau Avancé, vous donnez des cours plus longs, en groupe, avec des outils d''animation et de suivi professionnels. Ce module vous montre comment tirer le meilleur de **Zoom Pro**, et comment l''associer à des outils de réservation, de suivi des élèves et de création de ressources.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Configurer Zoom Pro pour des cours individuels et en groupe.
+> 2. Animer un groupe avec les salles de groupe, les sondages et le tableau blanc.
+> 3. Enregistrer et partager des cours dans le respect des élèves.
+> 4. Organiser la réservation et les paiements.
+> 5. Suivre vos élèves dans un espace de cours en ligne.
+
+## Zoom Pro : ce qu''il apporte
+
+| Fonction | Usage en cours de langue |
+| --- | --- |
+| **Réunions plus longues** | Cours de 60 à 90 minutes et ateliers sans coupure |
+| **Salles de groupe** | Faire travailler les élèves par deux ou trois sur un jeu de rôle |
+| **Sondages et quiz** | Vérifier la compréhension en quelques secondes |
+| **Tableau blanc** | Expliquer une règle, faire écrire les élèves |
+| **Enregistrement dans le cloud** (selon l''offre) | Envoyer le cours aux élèves absents ou pour révision |
+| **Salle d''attente et contrôles de l''hôte** | Sécuriser le cours, gérer les micros |
+| **Réunions récurrentes** | Un même lien pour un groupe toute l''année |
+
+*(Les fonctions incluses et les prix changent : vérifiez sur le site officiel de Zoom.)*
+
+## Configurer un cours en groupe
+
+| Réglage | Recommandation |
+| --- | --- |
+| **Salle d''attente** | Activée : vous admettez les élèves |
+| **Micros à l''entrée** | Coupés, puis ouverts pendant les activités |
+| **Partage d''écran** | Réservé à l''hôte, sauf pour les présentations d''élèves |
+| **Noms affichés** | Prénom réel demandé aux élèves |
+| **Réunion récurrente** | Un lien fixe par groupe |
+| **Mot de passe** | Activé |
+
+> [!attention]
+> Ne publiez jamais le lien d''un cours sur un réseau social public : des personnes extérieures pourraient perturber le cours. Envoyez-le seulement aux élèves inscrits.
+
+## Animer un groupe
+
+### La structure d''un cours de groupe de 75 minutes
+
+| Temps | Activité | Outil |
+| --- | --- | --- |
+| 10 min | Échauffement en grand groupe | Question ouverte, tour de parole |
+| 15 min | Découverte d''un document | Partage d''écran, sondage de compréhension |
+| 15 min | Explication | Tableau blanc |
+| 20 min | Pratique en petits groupes | Salles de groupe (2 ou 3 élèves), consigne écrite dans le chat |
+| 10 min | Retour en grand groupe | Chaque groupe présente |
+| 5 min | Bilan et devoirs | Document partagé |
+
+### Les règles des salles de groupe
+
+1. **Consigne écrite** dans le chat avant d''ouvrir les salles.
+2. **Durée annoncée** et minuteur.
+3. **Rôles** donnés (client, vendeur, observateur).
+4. **Passage** du professeur dans chaque salle.
+5. **Retour** systématique en grand groupe.
+
+> [!astuce]
+> Mélangez les niveaux avec prudence : un élève plus avancé peut aider un autre, mais il ne doit pas se sentir freiné. Pour les groupes réguliers, formez des groupes de **niveau proche**.
+
+## Enregistrer et partager dans le respect des élèves
+
+1. **Demandez l''accord** des élèves avant d''enregistrer, à chaque fois ou par écrit au début du programme.
+2. **Pour les mineurs**, demandez l''accord écrit des parents.
+3. **Partagez** l''enregistrement seulement avec le groupe concerné.
+4. **Supprimez** les enregistrements après une durée annoncée (par exemple 30 jours).
+5. **N''utilisez jamais** un enregistrement d''élève pour votre publicité sans un accord écrit spécifique.
+
+## Réservation et paiements
+
+| Outil | Usage |
+| --- | --- |
+| **Page de réservation** (Google Agenda, Calendly ou équivalent) | Les élèves choisissent un créneau dans vos disponibilités, dans leur fuseau horaire |
+| **Rappels automatiques** | E-mail la veille et une heure avant |
+| **Tableau de suivi des paiements** | Forfaits achetés, cours utilisés, cours restants |
+
+> [!madagascar]
+> Réglez votre page de réservation sur le **fuseau d''Antananarivo**, et vérifiez que l''outil affiche bien les horaires dans le fuseau de chaque élève. Indiquez aussi vos **jours fériés** malgaches et prévoyez un message en cas de délestage annoncé.
+
+## L''espace de cours en ligne
+
+> [!definition] Espace de cours (classe virtuelle)
+> Un espace en ligne où les élèves retrouvent les documents, les devoirs, les corrections et les annonces. Google Classroom (gratuit avec un compte Google) est une solution simple ; il existe aussi des plateformes de cours plus complètes.
+
+| Élément | Exemple |
+| --- | --- |
+| **Ressources par cours** | Document, audio, vocabulaire |
+| **Devoirs** | Production écrite à rendre avant le cours suivant |
+| **Corrections** | Commentaires sur chaque devoir |
+| **Annonces** | Changement d''horaire, examen blanc |
+| **Suivi** | Devoirs rendus, notes des examens blancs |
+
+### Créer vos propres ressources
+
+1. **Dialogues enregistrés** (avec des voix de proches, avec leur accord).
+2. **Fiches de vocabulaire** illustrées.
+3. **Exercices interactifs** (formulaires, quiz).
+4. **Fiches culturelles** (pour le malgache : salutations, politesse, fady à respecter selon les régions).
+
+> [!retenir]
+> - Zoom Pro pour les cours longs, les groupes, les sondages et les enregistrements.
+> - Des réglages de sécurité : salle d''attente, mot de passe, lien privé.
+> - Un cours de groupe structuré, avec des salles de groupe bien préparées.
+> - Enregistrements avec accord, partage limité, suppression programmée.
+> - Réservation automatique, suivi des paiements et espace de cours en ligne.
+
+## Exercice pratique : votre classe professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Configurez une réunion récurrente avec les réglages de sécurité (Zoom Pro en essai, ou l''offre gratuite pour tester).
+> 2. Préparez un cours de groupe de 75 minutes avec sondages et salles de groupe, et donnez-le à 3 volontaires.
+> 3. Créez une page de réservation avec rappels.
+> 4. Créez un espace Google Classroom avec 2 cours, un devoir et une correction.
+> 5. Rédigez votre politique d''enregistrement.
+>
+> **À livrer** : captures de vos réglages, plan de cours, lien de réservation de test, captures de l''espace et votre politique.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 1, 0, 'Que faire avant d''ouvrir les salles de groupe ?', '["Couper la connexion","Écrire la consigne dans le chat et annoncer la durée","Quitter le cours","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 1, 1, 'Peut-on publier le lien d''un cours sur un réseau social public ?', '["Oui","Oui, pour plus d''élèves","Oui, sans mot de passe","Non"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 1, 2, 'Que faut-il pour enregistrer un cours avec des mineurs ?', '["L''accord écrit des parents","Rien","Un abonnement payant","L''accord de l''enfant seul"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-a', 2, 'Qualité et rapidité : programmes, grilles, correction et examens', 'Programme sur 3 mois avec révisions, grilles d''évaluation, code de correction et autocorrection guidée, travail personnel et préparation d''examen en 5 étapes.', 'Les élèves restent avec un professeur qui les fait **progresser de façon visible**. Ce module vous donne les méthodes des professeurs expérimentés : construire un programme cohérent, évaluer avec des grilles, corriger l''écrit de façon utile, faire travailler l''élève entre les cours, et préparer efficacement un examen.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un programme progressif sur 3 mois.
+> 2. Évaluer avec des grilles inspirées du CECRL.
+> 3. Corriger une production écrite de façon utile.
+> 4. Organiser le travail personnel de l''élève.
+> 5. Préparer un candidat à un examen.
+
+## Construire un programme sur 3 mois
+
+### Les 4 étapes
+
+1. **Partir du bilan** et de l''objectif SMART.
+2. **Lister les situations** que l''élève doit maîtriser (pour un objectif professionnel ou de vie).
+3. **Associer** à chaque situation le vocabulaire, la grammaire et la culture nécessaires.
+4. **Répartir** en cours, avec des révisions régulières et des évaluations.
+
+> [!exemple] Programme « Anglais pour le tourisme » (extrait)
+> | Semaine | Situation | Langue |
+> | --- | --- | --- |
+> | 1 | Accueillir un client à la réception | Salutations, présentations, chiffres |
+> | 2 | Présenter les chambres et les services | Description, comparatifs |
+> | 3 | Répondre à une réclamation | Excuses, propositions, conditionnel |
+> | 4 | Révision et jeu de rôle évalué | — |
+> | 5 | Proposer une excursion | Futur, horaires, prix |
+
+> [!astuce]
+> Prévoyez une **semaine de révision** toutes les 3 ou 4 semaines. Les élèves oublient vite ce qu''ils ne réutilisent pas.
+
+## Évaluer avec des grilles
+
+### Une grille d''expression orale
+
+| Critère | 1 | 2 | 3 | 4 |
+| --- | --- | --- | --- | --- |
+| **Réalisation de la tâche** | Ne répond pas à la consigne | Répond en partie | Répond à la consigne | Répond complètement, avec des détails |
+| **Étendue du vocabulaire** | Très limité | Suffisant pour l''essentiel | Varié | Riche et précis |
+| **Correction grammaticale** | Erreurs gênant la compréhension | Erreurs fréquentes | Quelques erreurs | Rares erreurs |
+| **Prononciation et fluidité** | Difficile à comprendre | Pauses fréquentes | Compréhensible et assez fluide | Naturel |
+| **Interaction** | Ne réagit pas | Réagit avec difficulté | Réagit et relance | Gère la conversation |
+
+*(Pour la préparation d''un examen, utilisez la grille officielle de l''examen, disponible auprès de l''organisme.)*
+
+## Corriger une production écrite
+
+### Le code de correction
+
+| Code | Signification | Exemple |
+| --- | --- | --- |
+| **V** | Vocabulaire | « Je fais une décision » → V |
+| **G** | Grammaire | « Les fleurs est belles » → G |
+| **O** | Orthographe | « beaucoups » → O |
+| **C** | Conjugaison | « Hier, je vais » → C |
+| **S** | Structure ou ordre des mots | — |
+| **?** | Pas clair | — |
+
+### La méthode
+
+1. **Soulignez** l''erreur et indiquez le **code**, sans donner la correction.
+2. L''élève **corrige lui-même**.
+3. Vous **validez** et expliquez les erreurs qu''il n''a pas pu corriger.
+4. Vous **écrivez** un commentaire général : 2 points forts, 2 priorités.
+
+> [!definition] Autocorrection guidée
+> L''élève corrige ses propres erreurs à partir d''indices. Il retient mieux une erreur qu''il a corrigée lui-même qu''une correction donnée toute faite.
+
+## Le travail personnel de l''élève
+
+| Activité | Durée | Outil |
+| --- | --- | --- |
+| Révision du vocabulaire | 10 min par jour | Cartes mémoire (Anki, Quizlet) |
+| Écoute | 15 min, 3 fois par semaine | Podcasts, vidéos adaptées au niveau |
+| Production | 1 fois par semaine | Texte ou enregistrement envoyé au professeur |
+| Lecture | 2 fois par semaine | Articles adaptés, livres faciles |
+
+> [!astuce]
+> Envoyez un **plan de travail de la semaine** court et précis après chaque cours. Les élèves qui travaillent 20 minutes par jour entre les cours progressent beaucoup plus vite que ceux qui ne font que les cours.
+
+## Préparer un candidat à un examen
+
+### Les 5 étapes
+
+1. **Connaître** le format officiel actuel : épreuves, durées, barèmes.
+2. **Faire un examen blanc** au début pour situer le candidat.
+3. **Travailler** chaque épreuve : méthode, types de documents, pièges fréquents.
+4. **S''entraîner** en conditions réelles (temps, consignes).
+5. **Faire 2 ou 3 examens blancs** avant la date, avec correction détaillée.
+
+| Épreuve (exemple du DELF B2) | Méthode à enseigner |
+| --- | --- |
+| Compréhension orale | Lire les questions avant l''écoute, noter des mots clés |
+| Compréhension écrite | Repérer la structure du texte, justifier les réponses |
+| Production écrite | Plan, argumentation, connecteurs, relecture |
+| Production orale | Préparer l''exposé, défendre un point de vue, interagir |
+
+> [!madagascar]
+> Beaucoup de candidats malgaches passent leurs examens dans des **centres agréés** (comme l''Alliance française ou l''Institut français selon les examens). Vérifiez avec votre élève les dates d''inscription et de session : elles sont parfois éloignées, et une préparation doit s''organiser à partir de cette date.
+
+> [!retenir]
+> - Un programme construit à partir des situations, avec des révisions régulières.
+> - Des grilles d''évaluation, et les grilles officielles pour les examens.
+> - Une correction écrite par codes et autocorrection guidée.
+> - Un plan de travail personnel après chaque cours.
+> - Une préparation d''examen en 5 étapes avec des examens blancs.
+
+## Exercice pratique : un programme complet
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Construisez un programme de 12 semaines pour un objectif précis (examen, métier ou expatriation).
+> 2. Créez une grille d''expression orale et une grille d''expression écrite.
+> 3. Corrigez 3 productions écrites avec le code de correction et rédigez les commentaires.
+> 4. Rédigez un plan de travail personnel type pour une semaine.
+> 5. Préparez un examen blanc complet (ou une épreuve) pour votre spécialité.
+>
+> **À livrer** : votre programme, vos grilles, vos corrections, votre plan de travail et votre examen blanc.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 2, 0, 'Que fait l''élève dans l''autocorrection guidée ?', '["Il recopie la correction","Il ne fait rien","Il corrige ses erreurs à partir d''indices","Il corrige les autres"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 2, 1, 'Que signifie le code C dans une correction ?', '["Conjugaison","Clarté","Couleur","Contrat"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 2, 2, 'Combien d''examens blancs avant la date de l''examen ?', '["20","2 ou 3, avec correction détaillée","Un seul la veille","Aucun"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-a', 3, 'Clients internationaux : cultures, protection des enfants, données et entreprises', 'Adaptation culturelle, 8 règles de protection des enfants en ligne, protection des données des élèves, circuit et rapports des formations d''entreprise, fuseaux horaires et plateformes.', 'Vos élèves viennent de pays, de cultures et de fuseaux horaires différents. Certains sont des enfants, d''autres des employés d''entreprises étrangères. Ce module vous prépare à enseigner à un public international avec professionnalisme : adaptation culturelle, protection des enfants, protection des données, communication avec les entreprises et les parents.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Adapter votre enseignement à des élèves de cultures différentes.
+> 2. Appliquer les règles de protection des enfants en ligne.
+> 3. Protéger les données de vos élèves.
+> 4. Travailler avec des entreprises clientes et leur rendre compte.
+> 5. Gérer les fuseaux horaires et les plateformes internationales.
+
+## S''adapter aux cultures
+
+| Point | À observer et adapter |
+| --- | --- |
+| **Relation au professeur** | Certains élèves attendent un cours très structuré et magistral, d''autres un échange d''égal à égal |
+| **Correction** | Certains apprécient la correction directe, d''autres la vivent comme une gêne devant un groupe |
+| **Sujets sensibles** | Religion, politique, famille, argent : à éviter ou à aborder seulement si l''élève le propose |
+| **Ponctualité** | Les attentes varient : vos règles écrites s''appliquent à tous |
+| **Humour** | Il se traduit mal : prudence au début |
+
+> [!astuce]
+> Au premier cours, demandez à l''élève **comment il aime apprendre** : correction immédiate ou en fin de cours ? Beaucoup de grammaire ou surtout de la pratique ? Vous éviterez beaucoup de malentendus.
+
+## Protéger les enfants en ligne
+
+> [!attention]
+> Enseigner à des mineurs impose des règles strictes. Elles protègent les enfants, et elles vous protègent aussi.
+
+### Les 8 règles
+
+1. **Accord écrit des parents** avant le premier cours, avec les conditions (horaires, enregistrement, communication).
+2. **Communication uniquement avec les parents** pour l''organisation, jamais de messagerie privée avec l''enfant.
+3. **Cours dans un espace visible** de la maison côté enfant (pas dans une chambre fermée si possible), avec un parent joignable.
+4. **Pas d''enregistrement** sans accord écrit des parents ; stockage sûr et suppression programmée.
+5. **Pas de demande** d''informations personnelles à l''enfant (adresse, école, photos).
+6. **Un langage et des contenus** adaptés à l''âge.
+7. **Aucun contact** sur les réseaux sociaux avec l''enfant.
+8. **Signalement** aux parents, et si nécessaire aux autorités compétentes, de toute situation préoccupante.
+
+Les plateformes de cours pour enfants ont leurs propres règles de protection : lisez-les et respectez-les strictement.
+
+## Protéger les données des élèves
+
+| Donnée | Règle |
+| --- | --- |
+| **Coordonnées** | Utilisées seulement pour les cours, jamais partagées |
+| **Enregistrements** | Avec accord, partage limité, suppression programmée |
+| **Productions écrites** | Conservées dans l''espace de cours, pas publiées |
+| **Résultats et évaluations** | Communiqués à l''élève (et à l''employeur ou aux parents si convenu) |
+| **Avis et témoignages** | Publiés seulement avec l''accord écrit de l''élève |
+
+> [!definition] RGPD
+> Le règlement européen sur la protection des données personnelles. Il s''applique quand vous traitez les données de personnes en Europe, même depuis Madagascar. Madagascar a aussi sa propre loi sur la protection des données personnelles.
+
+## Travailler avec des entreprises clientes
+
+### Le circuit d''une formation d''équipe
+
+1. **Analyse des besoins** avec le responsable : situations de travail, niveaux, objectifs.
+2. **Bilan** de chaque participant.
+3. **Programme** et calendrier validés.
+4. **Cours** et suivi de présence.
+5. **Rapports** à l''employeur.
+6. **Bilan final** et proposition de suite.
+
+### Le rapport à l''employeur
+
+| Participant | Présence | Niveau de départ | Niveau actuel | Commentaire |
+| --- | --- | --- | --- | --- |
+| Participant A | 11 / 12 | A2 | B1 | Mène maintenant les appels clients simples |
+| Participant B | 7 / 12 | A2 | A2+ | Progrès freinés par les absences |
+
+> [!attention]
+> Convenez **dès le début** des informations transmises à l''employeur (présence, niveau, progrès) et informez-en les participants. Ne transmettez jamais d''informations personnelles confiées pendant les cours.
+
+## Les fuseaux horaires et les plateformes
+
+| Élèves | Heure de Madagascar (UTC+3) |
+| --- | --- |
+| France (hiver UTC+1, été UTC+2) | 18 h à Paris = 20 h (hiver) ou 19 h (été) à Antananarivo |
+| Canada, Québec (hiver UTC−5, été UTC−4) | 18 h à Montréal = 2 h (hiver) ou 1 h (été) le lendemain à Antananarivo |
+| Chine (UTC+8) | 19 h à Pékin = 14 h à Antananarivo |
+| Japon et Corée (UTC+9) | 19 h à Tokyo = 13 h à Antananarivo |
+
+> [!madagascar]
+> L''Asie de l''Est est sur des horaires pratiques pour Madagascar (l''après-midi), et la demande de français et d''anglais y est importante. Pour l''Amérique du Nord, les cours du soir côté élève tombent en pleine nuit à Madagascar : proposez plutôt les **matinées** côté élève (soir à Antananarivo) et protégez votre sommeil.
+
+### Les plateformes internationales
+
+1. **Vérifiez** qu''elles acceptent les professeurs basés à Madagascar.
+2. **Lisez** les règles (annulations, commission, conduite, protection des enfants).
+3. **Comparez** les moyens de retrait disponibles.
+4. **Gardez** une partie de vos élèves en direct pour ne pas dépendre d''une seule plateforme.
+
+> [!retenir]
+> - Demandez aux élèves comment ils aiment apprendre et respectez les différences culturelles.
+> - 8 règles de protection des enfants, sans exception.
+> - Les données des élèves sont protégées et utilisées seulement pour les cours.
+> - Un circuit et des rapports clairs pour les entreprises.
+> - Des horaires adaptés aux fuseaux et plusieurs sources d''élèves.
+
+## Exercice pratique : enseigner à l''international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez votre questionnaire « Comment aimez-vous apprendre ? ».
+> 2. Rédigez votre charte de protection des enfants et le formulaire d''accord des parents.
+> 3. Rédigez votre politique de protection des données des élèves.
+> 4. Construisez l''analyse des besoins et le modèle de rapport d''une formation d''entreprise.
+> 5. Calculez vos créneaux de cours pour des élèves en France, au Canada et au Japon, en été et en hiver.
+>
+> **À livrer** : votre questionnaire, votre charte, votre formulaire, votre politique, vos modèles et vos créneaux.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 3, 0, 'Avec qui communiquer pour organiser les cours d''un enfant ?', '["Uniquement avec les parents","Avec personne","Avec l''enfant en messagerie privée","Sur les réseaux sociaux de l''enfant"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 3, 1, 'Que transmettre à l''employeur dans une formation d''entreprise ?', '["Ce qui a été convenu : présence, niveau, progrès","Les confidences des participants","Tout ce qui a été dit","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 3, 2, 'À quelle heure environ à Antananarivo correspond 19 h à Tokyo ?', '["13 h","19 h","22 h","1 h"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-0-a', 4, 'Développer son activité : groupes, entreprises, ressources et école en ligne', 'Plusieurs sources de revenus, prix des groupes et des programmes, contenu pour attirer des élèves, petite école avec professeurs partenaires et évolution.', 'Un professeur de langue confirmé peut construire une activité stable depuis Madagascar : élèves réguliers en direct, groupes par abonnement, contrats avec des entreprises, ressources à vendre, ou petite école en ligne avec d''autres professeurs. Ce dernier module vous aide à construire ces sources de revenus et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une offre avec plusieurs sources de revenus.
+> 2. Fixer les prix des groupes, des programmes et des formations d''entreprise.
+> 3. Attirer des élèves grâce à du contenu utile.
+> 4. Organiser une petite école en ligne avec d''autres professeurs.
+> 5. Préparer votre évolution professionnelle.
+
+## Plusieurs sources de revenus
+
+| Source | Exemple | Avantage |
+| --- | --- | --- |
+| **Cours individuels** | Programmes de préparation d''examen | Tarif horaire élevé |
+| **Groupes par abonnement** | Club de conversation B1, 2 séances par semaine | Revenu par heure plus élevé, régularité |
+| **Formations d''entreprise** | 30 heures de français professionnel pour une équipe | Contrats importants |
+| **Ressources** | Cahier d''exercices de malgache, fiches de préparation au DELF | Revenus sans heures de cours supplémentaires |
+| **Programmes intensifs** | 2 semaines avant un départ ou un examen | Valeur perçue forte |
+
+## Fixer les prix
+
+### Les groupes
+
+> [!exemple] Calcul d''un groupe
+> Un groupe de 5 élèves, 8 séances de 75 minutes par mois. Prix par élève : 60 000 Ar par mois. Revenu : 300 000 Ar pour 10 heures de cours, soit 30 000 Ar de l''heure, contre 25 000 Ar en cours individuel, avec un prix plus abordable pour chaque élève.
+> *(Montants donnés en exemple.)*
+
+### Les programmes et les entreprises
+
+| Offre | Prix construit à partir de |
+| --- | --- |
+| **Programme d''examen** | Nombre de cours + examens blancs + corrections écrites |
+| **Formation d''entreprise** | Analyse des besoins + heures de cours + bilans + rapports + préparation |
+| **Intensif** | Nombre de cours + disponibilité renforcée |
+
+> [!astuce]
+> Vendez des **programmes** plutôt que des heures : « Préparation complète au DELF B2 en 12 semaines » se vend mieux, et plus cher, que « 24 heures de cours ».
+
+## Attirer des élèves grâce au contenu
+
+| Format | Exemple |
+| --- | --- |
+| **Vidéos courtes** | « 5 phrases pour saluer en malgache », « 3 erreurs fréquentes au DELF B2 » |
+| **Fiches gratuites** | Liste de vocabulaire, modèle de lettre |
+| **Lettre d''information** | Un conseil par semaine pour vos abonnés |
+| **Ateliers gratuits** | Un cours ouvert d''une heure chaque mois |
+| **Avis et témoignages** | Avec l''accord écrit des élèves |
+
+> [!madagascar]
+> Un contenu régulier sur la **langue et la culture malgaches** attire la diaspora, les futurs expatriés et les curieux du monde entier. Vérifiez soigneusement chaque mot et chaque expression avant de publier : votre crédibilité repose sur l''exactitude.
+
+## Organiser une petite école en ligne
+
+| Rôle | Tâches |
+| --- | --- |
+| **Vous** | Programmes, qualité, relation avec les entreprises |
+| **Professeurs partenaires** | Cours selon vos programmes et votre méthode |
+| **Assistant** | Réservations, paiements, communication |
+
+### Les règles
+
+1. **Un programme et des ressources** communs.
+2. **Une observation** régulière des cours (avec accord) et des retours constructifs.
+3. **Des contrats** clairs avec les professeurs, et un paiement juste et à temps.
+4. **Les règles de protection** des enfants et des données appliquées par tous.
+5. **Un suivi** de la satisfaction des élèves.
+
+> [!madagascar]
+> Avant d''embaucher ou de travailler avec des professeurs partenaires, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable sur les obligations. Pour les paiements de l''étranger, comparez Payoneer et le virement international ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Préparer votre évolution
+
+| Évolution | Ce qu''il faut ajouter |
+| --- | --- |
+| **Examinateur ou correcteur d''examens** | Habilitation auprès des organismes officiels, selon leurs conditions |
+| **Formateur de professeurs** | Expérience, didactique des langues |
+| **Concepteur de ressources** | Rédaction pédagogique, édition |
+| **Responsable pédagogique** | Programmes, équipe, qualité |
+| **Créateur de cours en ligne** | Cours vidéo à vendre (voir la formation Créateur de cours en ligne) |
+
+> [!retenir]
+> - Plusieurs sources : cours, groupes, entreprises, ressources, intensifs.
+> - Des programmes vendus pour leur résultat, pas des heures.
+> - Du contenu utile pour attirer les élèves, toujours vérifié.
+> - Une petite école avec programmes communs, observation et contrats.
+> - Évoluez vers l''examen, la formation de professeurs ou la création de ressources.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Définissez vos 3 principales sources de revenus et leurs prix.
+> 2. Rédigez la présentation de votre programme phare (titre, résultat, durée, contenu, prix).
+> 3. Publiez 3 contenus utiles (vidéos ou fiches).
+> 4. Rédigez le contrat type d''un professeur partenaire.
+> 5. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : vos sources et prix, votre programme phare, vos contenus, votre contrat et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 4, 0, '5 élèves à 60 000 Ar par mois pour 10 heures font quel revenu horaire ?', '["60 000 Ar","300 000 Ar","30 000 Ar","6 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 4, 1, 'Que vendre de préférence ?', '["Des cours gratuits uniquement","Des heures sans objectif","Des programmes avec un résultat","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-0-a', 4, 2, 'Que faire avant de publier un contenu en malgache ?', '["Le traduire automatiquement","Rien","Vérifier chaque mot et expression","Le publier sans relire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle spécialité prépare au TCF ou à l''IELTS ?', '["Préparation d''examens","Groupes de conversation","Langue rare","Cours pour enfants"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Qu''est-ce que le français sur objectif spécifique ?', '["Le français pour enfants","Une traduction","Une grammaire ancienne","Le français d''un métier ou d''une situation précise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Combien de compétences évaluer dans un bilan complet ?', '["10","5","1","2"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que faire si un élève comprend en B1 mais parle en A2 ?', '["Lui donner un seul niveau","L''ignorer","Construire le programme à partir de ce profil","Commencer au C1"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quel objectif est mesurable ?', '["Au moins 18 sur 25 à l''oral blanc","Parler bien","Être meilleur","Aimer la langue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle fonction de Zoom vérifie la compréhension en quelques secondes ?', '["Les sondages","La salle d''attente","Le mot de passe","Le fond virtuel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'À quoi sert la salle d''attente ?', '["Traduire","Enregistrer","Admettre seulement les élèves inscrits","Accélérer la connexion"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Combien d''élèves par salle de groupe en général ?', '["50","2 ou 3","1","20"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Combien de temps garder les enregistrements ?', '["Pour toujours","Jusqu''à leur publication","Une durée annoncée, puis suppression","Jamais d''enregistrement possible"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que doit afficher une page de réservation ?', '["Seulement l''heure de Madagascar","Le prix des concurrents","Les créneaux dans le fuseau de chaque élève","Aucun horaire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Pourquoi prévoir une semaine de révision régulièrement ?', '["Pour facturer plus","Pour se reposer","Les élèves oublient ce qu''ils ne réutilisent pas","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle grille utiliser pour préparer un examen ?', '["Aucune","Une grille inventée","La grille d''un autre examen","La grille officielle de l''examen"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que contient le commentaire général d''une correction ?', '["2 points forts et 2 priorités","Seulement la note","Une critique de l''élève","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Combien de temps de révision du vocabulaire par jour ?', '["Environ 10 minutes","5 heures","Aucun","1 minute par semaine"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que faire au début d''une préparation d''examen ?', '["S''inscrire à l''examen le lendemain","Corriger sans évaluer","Rien","Un examen blanc pour situer le candidat"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que demander au premier cours pour éviter les malentendus culturels ?', '["Sa religion","Comment l''élève aime apprendre","Son adresse exacte","Son salaire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Peut-on demander à un enfant son adresse et son école ?', '["Oui, pour mieux le connaître","Non","Oui, en privé","Oui"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Peut-on être ami avec un élève mineur sur les réseaux sociaux ?', '["Oui, s''il le demande","Non","Oui","Oui, après les cours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Le RGPD s''applique-t-il à un professeur à Madagascar ?', '["Oui, s''il traite des données de personnes en Europe","Seulement le dimanche","Seulement pour les enfants","Non, jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle est la première étape d''une formation d''entreprise ?', '["La facturation","L''analyse des besoins","Les cours","Le rapport final"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle région a des horaires pratiques pour Madagascar l''après-midi ?', '["Hawaï","L''Asie de l''Est","La côte ouest des États-Unis","L''Alaska"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Pourquoi garder des élèves en direct en plus des plateformes ?', '["Pour ne pas dépendre d''une seule plateforme","C''est interdit","Pour payer plus de commission","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quel avantage offre un groupe par abonnement ?', '["Aucun","Pas besoin d''animer","Un revenu régulier et un prix plus abordable par élève","Moins de préparation"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Que doivent appliquer tous les professeurs d''une petite école ?', '["Aucune règle","Leurs propres règles chacun","Les règles de protection des enfants et des données","Les règles d''une autre école"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-a', 'Quelle évolution demande une habilitation des organismes officiels ?', '["Créateur de vidéos","Examinateur ou correcteur d''examens","Assistant","Comptable"]'::jsonb, 1);
 
 -- edu-0-f
 delete from public.exam_questions where course_id = 'edu-0-f';

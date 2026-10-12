@@ -2255,6 +2255,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-0-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du professeur de langue en ligne un professionnel qui vend des résultats : spécialité (examens, langue professionnelle, enfants, groupes, entreprises, malgache), bilan sur 5 compétences et objectifs SMART, Zoom Pro et outils de suivi, programmes, grilles d'évaluation, correction écrite et préparation d'examens, enseignement international avec protection des enfants et des données, puis groupes, entreprises, ressources et petite école en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, faire un bilan sur 5 compétences et fixer des objectifs SMART",
+   "Utiliser Zoom Pro, les salles de groupe, la réservation et un espace de cours",
+   "Construire un programme, évaluer avec des grilles et corriger l'écrit",
+   "Préparer un candidat à un examen officiel",
+   "Enseigner à l'international en protégeant les enfants et les données",
+   "Développer groupes, formations d'entreprise, ressources et une petite école"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, faire un bilan complet et mesurer les progrès",
+    "summary": "Les 6 spécialités avancées, le bilan sur 5 compétences, le profil de compétences, les objectifs SMART, les mesures de progrès et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le bilan de niveau complet",
+     "Fixer des objectifs et mesurer les progrès",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre bilan"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Zoom Pro, groupes, réservation et espace de cours",
+    "summary": "Fonctions de Zoom Pro, réglages de sécurité, structure d'un cours de groupe, salles de groupe, enregistrements avec accord, réservation, paiements et Google Classroom.",
+    "sections": [
+     "Zoom Pro : ce qu'il apporte",
+     "Configurer un cours en groupe",
+     "Animer un groupe",
+     "Enregistrer et partager dans le respect des élèves",
+     "Réservation et paiements",
+     "L'espace de cours en ligne",
+     "Exercice pratique : votre classe professionnelle"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : programmes, grilles, correction et examens",
+    "summary": "Programme sur 3 mois avec révisions, grilles d'évaluation, code de correction et autocorrection guidée, travail personnel et préparation d'examen en 5 étapes.",
+    "sections": [
+     "Construire un programme sur 3 mois",
+     "Évaluer avec des grilles",
+     "Corriger une production écrite",
+     "Le travail personnel de l'élève",
+     "Préparer un candidat à un examen",
+     "Exercice pratique : un programme complet"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : cultures, protection des enfants, données et entreprises",
+    "summary": "Adaptation culturelle, 8 règles de protection des enfants en ligne, protection des données des élèves, circuit et rapports des formations d'entreprise, fuseaux horaires et plateformes.",
+    "sections": [
+     "S'adapter aux cultures",
+     "Protéger les enfants en ligne",
+     "Protéger les données des élèves",
+     "Travailler avec des entreprises clientes",
+     "Les fuseaux horaires et les plateformes",
+     "Exercice pratique : enseigner à l'international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : groupes, entreprises, ressources et école en ligne",
+    "summary": "Plusieurs sources de revenus, prix des groupes et des programmes, contenu pour attirer des élèves, petite école avec professeurs partenaires et évolution.",
+    "sections": [
+     "Plusieurs sources de revenus",
+     "Fixer les prix",
+     "Attirer des élèves grâce au contenu",
+     "Organiser une petite école en ligne",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-0-f": {
   "hours": 14,
   "description": "Le professeur de langue en ligne aide des élèves du monde entier à progresser en français, en anglais ou en malgache grâce à des cours en visioconférence. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à enseigner depuis Madagascar avec Google Meet et Zoom : évaluation, objectifs, cours en 5 étapes, correction, suivi des progrès, programme de 10 cours, profil, prix et paiements. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
