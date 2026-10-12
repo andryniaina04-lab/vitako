@@ -4,11 +4,29 @@ const CFG = window.VITAKO_CONFIG || {};
 
 export const configured = Boolean(CFG.supabaseUrl && CFG.supabaseAnonKey && window.supabase);
 
+// Verrou propre à chaque onglet. Par défaut, supabase-js partage un verrou entre tous les
+// onglets du site : un onglet resté bloqué (ancienne version, téléphone en veille…) pouvait
+// alors empêcher toute connexion dans les autres onglets.
+let lockChain = Promise.resolve();
+function tabLock(name, timeout, fn) {
+  const run = lockChain.then(() => fn());
+  lockChain = run.catch(() => {});
+  return run;
+}
+
 export const sb = configured
   ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, {
-      auth: { flowType: 'pkce', persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+      auth: { flowType: 'pkce', persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, lock: tabLock },
     })
   : null;
+
+// Limite de temps pour les appels de connexion : jamais de bouton bloqué indéfiniment.
+export function withTimeout(promise, ms = 20000) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new ApiError({ message: 'timeout' })), ms)),
+  ]);
+}
 
 // Messages d'erreur compréhensibles pour les étudiants.
 const MESSAGES = {
@@ -28,6 +46,7 @@ const MESSAGES = {
   no_questions: 'L\'examen de cette formation n\'est pas encore disponible.',
   already_submitted: 'Cet examen a déjà été corrigé. Recommencez un nouveau passage.',
   expired: 'Ce passage a expiré (plus de 3 heures). Recommencez l\'examen.',
+  timeout: 'La connexion prend trop de temps. Vérifiez votre connexion Internet, fermez les autres onglets Vitako, puis réessayez.',
   'Invalid login credentials': 'E-mail ou mot de passe incorrect.',
   'Email not confirmed': 'Confirmez d\'abord votre adresse : ouvrez le lien reçu par e-mail.',
   'User already registered': 'Un compte existe déjà avec cet e-mail. Connectez-vous plutôt.',
@@ -70,11 +89,11 @@ const homeUrl = () => location.origin + location.pathname;
 
 export async function signUp(email, password, fullName) {
   need();
-  return run(sb.auth.signUp({ email, password, options: { data: { full_name: fullName }, emailRedirectTo: homeUrl() } }));
+  return run(withTimeout(sb.auth.signUp({ email, password, options: { data: { full_name: fullName }, emailRedirectTo: homeUrl() } })));
 }
 export async function signIn(email, password) {
   need();
-  return run(sb.auth.signInWithPassword({ email, password }));
+  return run(withTimeout(sb.auth.signInWithPassword({ email, password })));
 }
 export async function signOut() {
   if (sb) await sb.auth.signOut();

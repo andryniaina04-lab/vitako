@@ -895,8 +895,9 @@ document.addEventListener('submit', async (e) => {
     // Où aller une fois connecté (lu par onAuthChange, qui peut se déclencher pendant l'appel).
     S.afterLogin = f.dataset.next || (signup ? '/abonnement' : '');
     try {
+      let r;
       if (signup) {
-        const r = await api.signUp(email, pass, name);
+        r = await api.signUp(email, pass, name);
         if (!r.session) {
           f.querySelectorAll('input,button').forEach((el) => { el.disabled = true; });
           const ok = document.getElementById('aok');
@@ -905,9 +906,16 @@ document.addEventListener('submit', async (e) => {
           return;
         }
       } else {
-        await api.signIn(email, pass);
+        r = await api.signIn(email, pass);
       }
-      // La suite (chargement du profil, redirection) est gérée par onAuthChange.
+      // On termine la connexion ici, sans dépendre uniquement de onAuthChange.
+      if (r?.session && S.afterLogin !== null && S.afterLogin !== undefined) {
+        const next = S.afterLogin; S.afterLogin = null;
+        S.session = r.session;
+        await loadUser().catch((e2) => console.error(e2));
+        toast('Connexion réussie.');
+        go('#' + (next || (isAdmin() ? '/admin' : '/mon-espace')));
+      }
     } catch (err) { S.afterLogin = null; showErr('aerr', err.message); busy(btn, false); }
     return;
   }
