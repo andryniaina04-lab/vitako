@@ -36,7 +36,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
-  ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 16, false),
+  ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, false),
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 11, false),
@@ -37347,6 +37347,617 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel message envoyer à une boutique sans automatisation ?', '["Une critique","Une liste de prix sans explication","Montrer le problème constaté et proposer les automatisations","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que faire si un client insiste pour écrire à une liste achetée ?', '["Refuser","Accepter","Doubler le prix","Accepter en secret"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle évolution concerne les programmes de fidélité et les SMS ?', '["Comptable","Spécialiste CRM et fidélisation","Développeur back-end","Monteur audio"]'::jsonb, 1);
+
+-- tech-1-a
+delete from public.exam_questions where course_id = 'tech-1-a';
+delete from public.module_questions where course_id = 'tech-1-a';
+delete from public.lessons where course_id = 'tech-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-a', 0, 'Se spécialiser, auditer la qualité et tester selon les risques', 'Les 6 spécialités avancées, la non-régression, l''audit qualité et son rapport, la priorité selon la probabilité et l''impact, la pyramide des tests et les offres à forte valeur.', 'Exécuter des cas de test et rédiger de bons rapports de bugs ouvre les premières missions. Les testeurs les mieux payés vont plus loin : ils **automatisent** les tests répétitifs, testent les API, la performance et l''accessibilité, et aident l''équipe à livrer plus vite **sans casser** ce qui marche. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du test logiciel.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit de la qualité d''un projet.
+> 4. Construire une stratégie de test fondée sur les risques.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Automatisation des tests web** | Écrire des tests qui s''exécutent seuls à chaque version | Playwright, JavaScript ou TypeScript, sélecteurs, intégration continue |
+| 2 | **Tests d''API** | Vérifier les échanges entre applications | Postman, HTTP, JSON, authentification |
+| 3 | **Tests mobiles** | Tester des applications sur de vrais téléphones | Android et iOS, fermes d''appareils, cas propres au mobile |
+| 4 | **Tests de performance** | Mesurer la tenue face à de nombreux utilisateurs | Outils de charge, lecture des temps de réponse |
+| 5 | **Tests d''accessibilité** | Vérifier l''usage par les personnes handicapées | Normes WCAG, lecteurs d''écran, navigation au clavier |
+| 6 | **Responsable qualité (QA lead)** | Organiser le test d''un projet ou d''une équipe | Stratégie, indicateurs, outils, encadrement |
+
+> [!definition] Test de non-régression
+> Un test qui vérifie que les fonctions existantes marchent toujours après une modification. C''est le premier candidat à l''automatisation, car on le répète à chaque version.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Automatisation et non-régression** pour des éditeurs francophones qui publient souvent.
+> - **Tests mobiles en conditions réelles** : réseaux lents, coupures, téléphones d''entrée de gamme, très répandus en Afrique.
+> - **Test en français et en anglais** pour des produits bilingues.
+
+## L''audit de la qualité d''un projet
+
+Un audit est une bonne **offre d''entrée** : vous montrez où l''équipe perd du temps et où se cachent les risques.
+
+| Domaine | Questions |
+| --- | --- |
+| **Processus** | Quand teste-t-on ? Qui décide qu''une version est prête ? |
+| **Couverture** | Quelles fonctions critiques sont testées ? Lesquelles jamais ? |
+| **Automatisation** | Existe-t-il des tests automatiques ? Sont-ils fiables ? |
+| **Bugs** | Combien sont trouvés par les clients après la mise en ligne ? |
+| **Environnements et données** | Existe-t-il un environnement de test stable et des données de test ? |
+| **Outils** | Tickets, gestion des cas de test, rapports |
+
+### Le rapport d''audit
+
+```
+Projet : application de livraison – Sakafo Express
+Constat principal : 60 % des bugs graves des 3 derniers mois ont été trouvés par les clients.
+
+Risques prioritaires
+1. Paiement Mobile Money : aucun test après les mises à jour.
+2. Application Android : testée sur un seul téléphone récent.
+3. Pas d''environnement de test : les tests se font en production.
+
+Proposition
+- Mois 1 : cas de test des parcours critiques, environnement de test.
+- Mois 2 : automatisation de 20 tests de non-régression.
+- Ensuite : campagne avant chaque version, rapport mensuel.
+```
+
+## La stratégie de test fondée sur les risques
+
+> [!definition] Risque
+> La combinaison de la **probabilité** qu''une fonction contienne un bug et de l''**impact** de ce bug pour les utilisateurs ou l''entreprise.
+
+| Fonction | Probabilité | Impact | Priorité |
+| --- | --- | --- | --- |
+| Paiement | Moyenne | Très fort | **Très haute** |
+| Inscription | Faible | Fort | Haute |
+| Recherche de restaurants | Moyenne | Moyen | Moyenne |
+| Page « À propos » | Faible | Faible | Basse |
+
+> [!astuce]
+> On ne peut jamais tout tester. Une stratégie fondée sur les risques permet d''expliquer au client **pourquoi** vous testez d''abord certaines fonctions, et ce qui reste un risque accepté.
+
+## La pyramide des tests
+
+| Niveau | Quantité | Qui |
+| --- | --- | --- |
+| **Tests unitaires** (base) | Nombreux, très rapides | Développeurs |
+| **Tests d''API et d''intégration** (milieu) | Assez nombreux | Testeurs et développeurs |
+| **Tests de bout en bout** dans l''interface (sommet) | Peu nombreux, plus lents | Testeurs |
+| **Tests exploratoires** | Sessions régulières | Testeurs |
+
+> [!attention]
+> Automatiser des centaines de tests dans l''interface est une erreur fréquente : ils sont lents et cassent souvent. Gardez au sommet les **parcours critiques**, et testez le reste par l''API quand c''est possible.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit qualité** | Rapport et plan d''action | 400 000 Ar |
+| **Mise en place de l''automatisation** | 20 à 30 tests automatisés, intégration continue | 2 500 000 Ar |
+| **Testeur dédié** | Campagnes avant chaque version | 1 500 000 Ar par mois |
+| **Campagne mobile** | Tests sur 10 appareils réels, rapport | 800 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : automatisation, API, mobile, performance, accessibilité, QA lead.
+> - L''audit qualité montre les risques et ouvre une mission.
+> - Prioriser selon la probabilité et l''impact.
+> - La pyramide des tests : peu de tests d''interface, plus de tests d''API.
+> - Des offres à valeur : automatisation, testeur dédié, campagnes mobiles.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Choisissez une application publique et listez 10 fonctions avec leur probabilité, leur impact et leur priorité.
+> 3. Rédigez un rapport d''audit fictif avec 3 risques et un plan sur 2 mois.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre tableau de risques, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 0, 0, 'Qu''est-ce qu''un test de non-régression ?', '["Un test de recrutement","Un test de vitesse de frappe","Un test de design","Un test qui vérifie que l''existant marche toujours après une modification"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 0, 1, 'Comment se calcule la priorité d''une fonction à tester ?', '["Couleur de la page","Probabilité d''un bug et impact","Ordre alphabétique","Au hasard"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 0, 2, 'Quels tests garder peu nombreux au sommet de la pyramide ?', '["Les tests unitaires","Aucun","Les tests de bout en bout dans l''interface","Les tests d''API"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-a', 1, 'Outils professionnels : BrowserStack et Jira payant', 'Fermes d''appareils, tests manuels, automatiques et visuels, choix des appareils, clés dans les secrets, gestion des tests dans Jira, traçabilité, automatisations et tableaux de bord.', 'Les équipes professionnelles testent sur de nombreux navigateurs et appareils réels, et suivent leurs campagnes de tests dans un outil central. Ce module vous apprend à utiliser **BrowserStack** pour tester sur des appareils réels et en automatique, et les **offres payantes de Jira** avec la gestion des cas de test, les automatisations et les tableaux de bord.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Tester manuellement sur des appareils réels avec BrowserStack.
+> 2. Exécuter des tests Playwright sur BrowserStack.
+> 3. Gérer des cas de test et des campagnes dans Jira.
+> 4. Créer des automatisations et des tableaux de bord dans Jira.
+> 5. Choisir les outils adaptés au budget du client.
+
+## BrowserStack : tester sur des appareils réels
+
+> [!definition] Ferme d''appareils
+> Un service en ligne qui donne accès à des centaines de vrais téléphones, tablettes et navigateurs, à distance, sans les acheter.
+
+| Produit (noms à vérifier sur le site officiel) | Usage |
+| --- | --- |
+| **Live** | Tests manuels d''un site sur un navigateur ou un téléphone réel |
+| **App Live** | Tests manuels d''une application mobile installée sur un appareil réel |
+| **Automate** | Exécution de tests automatiques web sur de nombreux navigateurs |
+| **App Automate** | Exécution de tests automatiques mobiles |
+| **Percy** | Comparaison visuelle des écrans d''une version à l''autre |
+| **Local testing** | Tester un site qui n''est pas encore public (environnement interne) |
+
+### Choisir les appareils
+
+1. **Demandez** les statistiques du client : navigateurs et téléphones les plus utilisés.
+2. **Couvrez** les plus fréquents, plus un ancien modèle et un petit écran.
+3. **Ajoutez** les cas propres au marché : téléphones Android d''entrée de gamme pour l''Afrique.
+
+> [!astuce]
+> Les outils de simulation de réseau lent (souvent proposés par ces services) permettent de tester l''application comme un utilisateur avec une **connexion faible**. Notez dans vos rapports le réseau utilisé.
+
+### Exécuter des tests Playwright à distance
+
+L''intégration de Playwright avec BrowserStack se fait généralement avec le SDK officiel et un fichier de configuration qui liste les navigateurs et appareils. Les identifiants sont fournis par des **variables d''environnement** :
+
+```
+BROWSERSTACK_USERNAME=…   (dans les secrets, jamais dans le code)
+BROWSERSTACK_ACCESS_KEY=…
+```
+
+> [!attention]
+> Ne publiez jamais vos clés d''accès dans un dépôt de code ou une capture d''écran. Utilisez les **secrets** de l''outil d''intégration continue ou un fichier local ignoré par Git.
+
+## Jira : les fonctions payantes utiles au test
+
+| Fonction | Usage pour le testeur |
+| --- | --- |
+| **Gestion des cas de test** (extensions comme Xray ou Zephyr) | Cas de test, campagnes d''exécution, lien entre exigences, tests et bugs |
+| **Automatisations** | Changer un statut, notifier, créer des sous-tâches automatiquement |
+| **Tableaux de bord** | Bugs ouverts par gravité, avancement d''une campagne |
+| **Permissions avancées** | Accès différents pour le client, l''équipe, les prestataires |
+| **Historique et audit** | Traçabilité des changements |
+
+> [!definition] Traçabilité
+> Le lien entre une exigence, les tests qui la vérifient et les bugs trouvés. Elle permet de répondre à la question : « Cette fonction a-t-elle été testée, et avec quel résultat ? »
+
+### Une campagne dans un outil de gestion des tests
+
+| Élément | Exemple |
+| --- | --- |
+| Plan de test | Version 2.4 – application de livraison |
+| Exécution | 86 cas : 74 réussis, 9 échoués, 3 bloqués |
+| Bugs liés | 9 bugs créés et liés aux cas échoués |
+| Couverture | 100 % des exigences critiques testées |
+
+### Exemples d''automatisations Jira
+
+1. Quand un bug passe à « Corrigé », il est **attribué** au testeur pour vérification.
+2. Quand un bug est créé avec la gravité « Bloquant », le **chef de projet est notifié**.
+3. Quand toutes les sous-tâches de test sont terminées, l''histoire passe à « Prête pour la mise en ligne ».
+
+## Choisir selon le budget
+
+| Budget du client | Proposition |
+| --- | --- |
+| Faible | Jira gratuit, cas de test dans un tableur ou une page, appareils physiques disponibles |
+| Moyen | Extension de gestion des tests, abonnement BrowserStack limité |
+| Élevé | Gestion des tests complète, fermes d''appareils et tests visuels automatiques |
+
+> [!madagascar]
+> Ces outils sont payés **par le client ou l''employeur**, en dollars. Pour vous former, utilisez les essais gratuits et les comptes gratuits proposés aux projets open source quand ils existent. Mentionnez sur votre profil ce que vous avez réellement fait avec chaque outil.
+
+> [!retenir]
+> - BrowserStack : appareils réels, tests manuels, automatiques et visuels.
+> - Choisir les appareils selon les statistiques du client.
+> - Clés d''accès dans les secrets, jamais dans le code.
+> - Jira : gestion des tests, traçabilité, automatisations, tableaux de bord.
+> - Adapter les outils au budget.
+
+## Exercice pratique : un environnement de test professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec un essai BrowserStack (ou un outil similaire), testez un site sur 5 appareils et notez les différences.
+> 2. Configurez un test Playwright pour qu''il lise ses identifiants dans des variables d''environnement.
+> 3. Dans Jira, créez 10 cas de test, une campagne et 3 bugs liés.
+> 4. Créez 2 automatisations et un tableau de bord.
+>
+> **À livrer** : votre rapport multi-appareils, votre configuration (sans clés), des captures de Jira.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 1, 0, 'Qu''est-ce qu''une ferme d''appareils ?', '["Un réseau social","Un magasin de téléphones","Un logiciel de comptabilité","Un service qui donne accès à distance à de vrais appareils"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 1, 1, 'Où mettre les clés d''accès BrowserStack ?', '["Dans le code publié","Dans le titre d''un bug","Dans les secrets ou des variables d''environnement","Dans une capture d''écran"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 1, 2, 'Qu''est-ce que la traçabilité ?', '["Le lien entre exigences, tests et bugs","La géolocalisation du testeur","Un type de bug","Un navigateur"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-a', 2, 'Qualité et rapidité : Page Object, sélecteurs, données, intégration continue', 'Organisation du code de test, sélecteurs robustes, données de test, workflow d''intégration continue, tests instables en quarantaine et indicateurs.', 'Des tests automatiques utiles doivent être **fiables, lisibles et rapides**, et s''exécuter seuls à chaque modification du code. Ce module vous donne les méthodes des meilleures équipes : organisation du code de test, sélecteurs robustes, données de test, intégration continue, tests instables et indicateurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser des tests Playwright avec le modèle Page Object.
+> 2. Choisir des sélecteurs robustes.
+> 3. Gérer les données de test.
+> 4. Exécuter les tests automatiquement dans l''intégration continue.
+> 5. Traiter les tests instables et suivre les bons indicateurs.
+
+## Organiser le code de test
+
+> [!definition] Page Object
+> Une façon d''organiser les tests : chaque page de l''application a un fichier qui décrit ses éléments et ses actions. Les tests appellent ces actions au lieu de répéter les sélecteurs.
+
+```javascript
+// pages/login-page.js
+export class LoginPage {
+  constructor(page) {
+    this.page = page;
+    this.email = page.getByLabel(''E-mail'');
+    this.password = page.getByLabel(''Mot de passe'');
+    this.submit = page.getByRole(''button'', { name: ''Se connecter'' });
+  }
+  async login(email, password) {
+    await this.email.fill(email);
+    await this.password.fill(password);
+    await this.submit.click();
+  }
+}
+```
+
+```javascript
+// tests/login.spec.js
+import { test, expect } from ''@playwright/test'';
+import { LoginPage } from ''../pages/login-page.js'';
+
+test(''un client se connecte'', async ({ page }) => {
+  await page.goto(''/connexion'');
+  await new LoginPage(page).login(''client@test.mg'', process.env.TEST_PASSWORD);
+  await expect(page.getByRole(''heading'', { name: ''Mes commandes'' })).toBeVisible();
+});
+```
+
+> [!astuce]
+> Si l''écran de connexion change, vous ne modifiez **qu''un seul fichier** : la page. Tous les tests qui l''utilisent continuent de fonctionner.
+
+## Des sélecteurs robustes
+
+| Sélecteur | Fiabilité |
+| --- | --- |
+| Rôle et nom visible (`getByRole`) | Très bonne, proche de l''utilisateur |
+| Libellé (`getByLabel`) | Très bonne pour les formulaires |
+| Attribut dédié aux tests (`data-testid`) | Très bonne, demandé aux développeurs |
+| Texte (`getByText`) | Bonne, sauf si le texte change souvent |
+| Classe CSS ou chemin long | Mauvaise : casse au moindre changement de design |
+
+## Les données de test
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Créer les données par l''API** avant le test | Plus rapide que par l''interface |
+| **Un jeu de données par test** | Les tests ne dépendent pas les uns des autres |
+| **Nettoyer** après le test | L''environnement reste propre |
+| **Jamais de données réelles de clients** | Confidentialité |
+| **Comptes de test** pour chaque rôle | Tester les droits |
+
+## L''intégration continue
+
+> [!definition] Intégration continue
+> L''exécution automatique des tests à chaque modification envoyée sur le dépôt de code, avant que la nouvelle version soit acceptée.
+
+```yaml
+# .github/workflows/tests.yml
+name: Tests de bout en bout
+on: [push, pull_request]
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test
+        env:
+          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rapport-playwright
+          path: playwright-report/
+```
+
+> [!madagascar]
+> L''intégration continue s''exécute **sur les serveurs** du service (ici GitHub Actions), pas sur votre ordinateur. Une connexion lente ou une coupure de courant à Madagascar n''empêche donc pas les tests de tourner.
+
+## Les tests instables
+
+> [!definition] Test instable (flaky)
+> Un test qui réussit ou échoue sans changement du code. Il fait perdre confiance dans toute la suite de tests.
+
+| Cause fréquente | Solution |
+| --- | --- |
+| Attentes fixes (« attendre 3 secondes ») | Assertions qui attendent automatiquement un état |
+| Tests qui dépendent les uns des autres | Données propres à chaque test |
+| Sélecteurs fragiles | Rôles, libellés, `data-testid` |
+| Environnement de test instable | Signaler, isoler, simuler les services externes |
+
+> [!attention]
+> Ne désactivez pas un test instable sans le dire. Mettez-le **en quarantaine**, créez un ticket et corrigez-le rapidement.
+
+## Les indicateurs
+
+| Indicateur | Ce qu''il montre |
+| --- | --- |
+| Bugs trouvés après la mise en ligne | L''efficacité réelle des tests |
+| Durée de la suite automatique | La rapidité du retour aux développeurs |
+| Taux de tests instables | La fiabilité de l''automatisation |
+| Couverture des parcours critiques | Ce qui est protégé |
+| Délai de vérification des corrections | La réactivité du testeur |
+
+> [!retenir]
+> - Page Object pour des tests lisibles et faciles à maintenir.
+> - Sélecteurs par rôle, libellé ou attribut de test.
+> - Données créées par l''API, propres à chaque test, jamais réelles.
+> - Tests exécutés automatiquement à chaque modification.
+> - Tests instables en quarantaine et corrigés vite.
+
+## Exercice pratique : une suite automatique professionnelle
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Sur une application de démonstration publique, écrivez 5 tests Playwright avec 2 Page Objects.
+> 2. Remplacez tous les sélecteurs fragiles.
+> 3. Ajoutez un workflow d''intégration continue qui exécute les tests et garde le rapport.
+> 4. Provoquez un test instable, puis corrigez-le en expliquant la cause.
+>
+> **À livrer** : le lien de votre dépôt, une capture d''une exécution réussie et votre explication.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 2, 0, 'Quel est l''avantage du modèle Page Object ?', '["Rendre les tests plus lents","Supprimer les assertions","Modifier un seul fichier quand une page change","Éviter tout test"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 2, 1, 'Quel sélecteur est le plus fragile ?', '["Le rôle et le nom visible","Le libellé","Un attribut data-testid","Une classe CSS ou un chemin long"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 2, 2, 'Que faire d''un test instable ?', '["L''ignorer pour toujours","Le relancer jusqu''à ce qu''il passe","Le supprimer sans rien dire","Le mettre en quarantaine, créer un ticket et le corriger"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-a', 3, 'Clients internationaux : anglais, agilité, certifications et localisation', 'Rapports de bugs en anglais, vocabulaire, rituels agiles et shift-left, ISTQB, plateformes de test participatif et tests de localisation et de marché.', 'Les éditeurs de logiciels du monde entier recrutent des testeurs à distance. Ce module vous prépare à travailler avec eux : rapports de bugs en anglais, rituels d''une équipe agile, certifications reconnues, plateformes de test participatif et tests spécifiques à chaque marché.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger des rapports de bugs et des bilans en anglais.
+> 2. Participer aux rituels d''une équipe agile internationale.
+> 3. Connaître les certifications reconnues du test.
+> 4. Utiliser les plateformes de test participatif.
+> 5. Tester la localisation et les spécificités de chaque marché.
+
+## Les rapports de bugs en anglais
+
+> [!exemple] Bug report
+> **Title**: Checkout – "Pay" button stays disabled after entering a valid card on iPhone 12 (Safari)
+> **Environment**: Staging v2.4.1, iOS 17, Safari
+> **Steps to reproduce**:
+> 1. Add any item to the cart.
+> 2. Go to checkout and enter a valid test card.
+> 3. Tap outside the card field.
+> **Expected result**: the "Pay" button becomes enabled.
+> **Actual result**: the button stays disabled; no error message.
+> **Severity**: Critical (blocks payment on iOS)
+> **Attachments**: video, console log
+
+### Le vocabulaire utile
+
+| Français | Anglais |
+| --- | --- |
+| Étapes pour reproduire | Steps to reproduce |
+| Résultat attendu, obtenu | Expected result, actual result |
+| Gravité, priorité | Severity, priority |
+| Bloquant | Blocker |
+| Contournement | Workaround |
+| Non reproductible | Cannot reproduce |
+| Test de non-régression | Regression test |
+| Critères d''acceptation | Acceptance criteria |
+
+> [!astuce]
+> Un titre qui dit **où, quoi et dans quelles conditions** permet aux développeurs de comprendre le bug sans ouvrir le ticket. Joignez toujours une vidéo courte pour les bugs d''interface.
+
+## Les rituels d''une équipe agile
+
+| Rituel | Rôle du testeur |
+| --- | --- |
+| **Planification du sprint** | Poser des questions sur les critères d''acceptation, estimer l''effort de test |
+| **Point quotidien** | Dire ce qui est testé, ce qui bloque |
+| **Affinage** (refinement) | Repérer tôt les cas limites et les risques |
+| **Démonstration** | Montrer ce qui est validé |
+| **Rétrospective** | Proposer des améliorations du processus qualité |
+
+> [!definition] Shift-left
+> Faire participer le test **le plus tôt possible** dans le projet : relire les exigences, préparer les cas de test pendant le développement, au lieu d''attendre la fin.
+
+> [!madagascar]
+> Madagascar a peu de décalage horaire avec l''Europe et l''Afrique de l''Est, ce qui facilite la participation aux rituels en direct. Avec l''Amérique du Nord, proposez des **mises à jour écrites** et un créneau commun court en fin de journée.
+
+## Les certifications reconnues
+
+| Certification | Intérêt |
+| --- | --- |
+| **ISTQB Foundation Level** | La référence internationale des bases du test ; demandée dans beaucoup d''offres |
+| **ISTQB niveaux avancés et spécialisés** | Automatisation, test agile, gestion des tests, performance |
+| **Certifications d''outils** | Montrent une compétence pratique sur un outil précis |
+
+> [!attention]
+> Vérifiez sur le site officiel de l''organisme les **modalités actuelles** : examen en ligne surveillé ou en centre, prix, langues disponibles. Méfiez-vous des sites qui vendent des « certifications garanties » ou des réponses d''examen.
+
+## Les plateformes de test participatif
+
+> [!definition] Test participatif (crowdtesting)
+> Des entreprises publient des campagnes de test ouvertes à des testeurs du monde entier, payés selon les bugs trouvés et validés ou selon les cas exécutés.
+
+| Avantage | Limite |
+| --- | --- |
+| Premières expériences rémunérées | Revenus irréguliers au début |
+| Grande variété de produits | Concurrence pour trouver les bugs en premier |
+| Note qui augmente avec la qualité | Règles strictes sur les rapports |
+
+Vérifiez que la plateforme accepte les testeurs basés à Madagascar et ses moyens de paiement avant de vous inscrire.
+
+## Tester la localisation et le marché
+
+| Point | Exemples de bugs |
+| --- | --- |
+| **Traductions** | Texte non traduit, mots coupés, phrases trop longues pour un bouton |
+| **Formats** | Dates (13/10/2026 ou 10/13/2026), séparateurs décimaux, devises |
+| **Adresses et téléphones** | Formulaire qui refuse un numéro malgache (+261) ou une adresse sans code postal |
+| **Paiements locaux** | Mobile Money absent ou mal géré |
+| **Réseau** | Application inutilisable en 3G |
+
+> [!exemple] Un bug de marché
+> Le formulaire d''inscription exige un code postal à 5 chiffres. Les utilisateurs malgaches (codes postaux à 3 chiffres) ne peuvent pas s''inscrire. Gravité : **critique** pour le lancement à Madagascar.
+
+> [!retenir]
+> - Rapports en anglais : où, quoi, conditions, étapes, attendu, obtenu, preuves.
+> - Participer aux rituels agiles et tester tôt.
+> - ISTQB comme référence, en vérifiant les modalités officielles.
+> - Le test participatif pour démarrer et se faire noter.
+> - Tester traductions, formats, adresses, paiements et réseau.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais 3 rapports de bugs trouvés sur une application publique.
+> 2. Préparez 10 questions sur les critères d''acceptation d''une fonction de paiement.
+> 3. Testez la localisation d''un site en 2 langues et listez les problèmes.
+> 4. Comparez 2 plateformes de test participatif (conditions, paiements).
+>
+> **À livrer** : vos rapports, vos questions, votre liste et votre comparatif.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 3, 0, 'Comment dit-on « étapes pour reproduire » en anglais ?', '["Severity","Workaround","Expected result","Steps to reproduce"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 3, 1, 'Que signifie shift-left ?', '["Tester à la fin seulement","Faire participer le test le plus tôt possible","Changer de clavier","Décaler l''écran"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 3, 2, 'Quelle certification est la référence des bases du test ?', '["Aucune","ISTQB Foundation Level","TOEFL","Permis de conduire"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-1-a', 4, 'Développer son activité : offres, contrats, études de cas et équipe', 'Trois voies, chiffrage avec marge de retests, contrats récurrents, promesse de méthode, études de cas chiffrées, petite équipe de test et évolution.', 'Après quelques missions réussies, vous pouvez construire une **activité stable** de testeur : contrats longs, offres claires, études de cas, et peut-être une petite équipe de test. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de test.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Testeur indépendant spécialisé** | Automatisation, mobile, accessibilité | Missions et contrats mensuels |
+| **Équipe de test externalisée** | Ceux qui aiment organiser et vendre | Contrats avec plusieurs éditeurs |
+| **Salarié à distance** | Ceux qui préfèrent la stabilité | Salaire, progression vers QA lead |
+
+## Des offres et des prix durables
+
+### Chiffrer une mission
+
+1. **Comptez** les cas de test à écrire et à exécuter.
+2. **Estimez** le temps (écriture, exécution, rapports, retests).
+3. **Ajoutez** 20 à 30 % pour les retests et les échanges.
+4. **Multipliez** par votre tarif journalier.
+
+> [!exemple] Calcul d''une mise en place de l''automatisation
+> Analyse et stratégie : 2 jours · Cadre de test et Page Objects : 3 jours · 25 tests : 6 jours · Intégration continue et documentation : 2 jours. Total : 13 jours + 20 % = environ 16 jours.
+> À 200 000 Ar par jour : **3 200 000 Ar**. *(Montants donnés en exemple.)*
+
+### Les contrats récurrents
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Campagne par version** | Non-régression et nouveautés avant chaque mise en ligne | 600 000 Ar par version |
+| **Testeur dédié à temps partiel** | 10 jours par mois dans l''équipe | 1 800 000 Ar par mois |
+| **Maintenance de l''automatisation** | Mise à jour des tests, correction des tests instables | 500 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Ne promettez jamais « zéro bug ». Le test réduit les risques, il ne les supprime pas. Promettez une **méthode**, une **couverture** des parcours critiques et des **rapports** clairs.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : éditeur d''un logiciel de gestion d''écoles, 40 établissements clients.
+> **Problème** : chaque mise à jour cassait une fonction ; 2 jours de tests manuels par version.
+> **Solution** : 35 tests automatisés des parcours critiques, exécutés à chaque modification ; campagne manuelle ciblée sur les nouveautés.
+> **Résultats** : tests de non-régression en 12 minutes au lieu de 2 jours ; bugs signalés par les clients divisés par 3 en 6 mois.
+
+1. **Demandez** l''accord du client avant de publier (ou anonymisez).
+2. **Donnez** des chiffres avant et après.
+3. **Montrez** un extrait de rapport ou un tableau de bord.
+
+## Organiser une petite équipe de test
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Testeur manuel** | Quand les campagnes dépassent votre temps |
+| **Testeur automaticien** | Quand plusieurs clients veulent de l''automatisation |
+| **Responsable qualité** (vous) | Quand vous coordonnez plus de 2 personnes |
+
+### Les règles de qualité
+
+1. **Modèles communs** : cas de test, rapport de bug, bilan de campagne.
+2. **Relecture** des rapports de bugs des nouveaux testeurs.
+3. **Formation** : bases, outils, règles de chaque client.
+4. **Confidentialité** : accords signés, accès personnels, aucune donnée réelle copiée.
+
+> [!madagascar]
+> Une petite équipe de test basée à Madagascar peut proposer une couverture **francophone et anglophone** et des tests sur les téléphones et réseaux réellement utilisés en Afrique. C''est un argument fort auprès des éditeurs qui visent ces marchés.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **QA lead** | Stratégie, encadrement, indicateurs |
+| **Ingénieur en automatisation (SDET)** | Programmation solide, architecture de tests, intégration continue |
+| **Spécialiste performance ou sécurité** | Outils de charge, bases de la sécurité (voir la formation Analyste en cybersécurité) |
+| **Développeur** | Voir les formations Développeur front-end ou back-end |
+
+> [!retenir]
+> - Indépendant, équipe externalisée ou salarié : choisissez votre voie.
+> - Chiffrer avec une marge pour les retests ; vendre des contrats récurrents.
+> - Promettre une méthode, jamais « zéro bug ».
+> - Des études de cas chiffrées, avec accord ou anonymisées.
+> - Une équipe avec des modèles communs et des relectures.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Chiffrez 2 missions types et 2 contrats récurrents.
+> 3. Rédigez une étude de cas à partir de votre projet de formation.
+> 4. Listez 10 éditeurs ou agences à contacter et envoyez 3 messages.
+>
+> **À livrer** : votre plan, vos calculs, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 4, 0, 'Que ne faut-il jamais promettre ?', '["Une méthode","Des rapports clairs","Zéro bug","Une couverture des parcours critiques"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 4, 1, 'Quelle formule apporte un revenu régulier ?', '["Rien","Un seul test","Un testeur dédié à temps partiel chaque mois","Un audit gratuit"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-1-a', 4, 2, 'Vers quel poste évoluer avec une programmation solide ?', '["Graphiste","Traducteur","Comptable","Ingénieur en automatisation (SDET)"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quelle spécialité vérifie l''usage par les personnes handicapées ?', '["Les tests unitaires","Les tests d''accessibilité","Les tests d''API","Les tests de performance"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel test automatiser en premier ?', '["Rien","La page « À propos »","Les couleurs","Les tests de non-régression des parcours critiques"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel constat montre un problème de qualité ?', '["Des tests réussis","Un rapport clair","Beaucoup de bugs graves trouvés par les clients","Des bugs trouvés en test"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Pourquoi une stratégie fondée sur les risques ?', '["Pour éviter les rapports","On ne peut pas tout tester ; on teste d''abord ce qui compte le plus","Ce n''est pas utile","Pour tester moins sans raison"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Qui écrit surtout les tests unitaires ?', '["Les développeurs","Les clients","Personne","Les commerciaux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Comment choisir les appareils à tester ?', '["Seulement le téléphone le plus récent","Au hasard","Seulement l''ordinateur du testeur","Selon les statistiques d''usage du client, plus un ancien modèle et un petit écran"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'À quoi sert Percy ?', '["Gérer la paie","Comparer visuellement les écrans d''une version à l''autre","Traduire","Envoyer des e-mails"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'À quoi servent Xray ou Zephyr dans Jira ?', '["Dessiner des logos","Envoyer des SMS","Héberger des vidéos","Gérer les cas de test et les campagnes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quelle automatisation Jira est utile ?', '["Attribuer au testeur un bug passé à « Corrigé »","Supprimer tous les bugs","Fermer tous les tickets la nuit","Changer les couleurs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Que proposer à un client au budget faible ?', '["Rien","Jira gratuit, cas dans un tableur, appareils disponibles","Toutes les licences les plus chères","Arrêter les tests"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Où écrire les sélecteurs dans le modèle Page Object ?', '["Nulle part","Dans le titre du bug","Dans le fichier de la page","Dans chaque test, répétés"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel sélecteur demander aux développeurs ?', '["Une classe de couleur","Aucun","Un chemin de 10 niveaux","Un attribut data-testid"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Comment créer les données de test rapidement ?', '["À la main chaque fois","On ne crée pas de données","Avec de vraies données de clients","Par l''API avant le test"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Qu''est-ce que l''intégration continue ?', '["L''exécution automatique des tests à chaque modification","Une facture mensuelle","Un type de bug","Une réunion quotidienne"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Pourquoi la coupure de courant n''empêche pas l''intégration continue ?', '["Elle l''empêche toujours","Il n''y a pas de tests","Les tests s''exécutent sur les serveurs du service","Les tests sont sur papier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quelle cause fréquente de test instable ?', '["Des données propres","Un rapport clair","Des attentes fixes au lieu d''assertions qui attendent un état","Un bon sélecteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel indicateur montre l''efficacité réelle des tests ?', '["Le nombre de réunions","Le nombre de couleurs","La taille de l''écran","Les bugs trouvés après la mise en ligne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Que doit dire le titre d''un bug ?', '["Où, quoi et dans quelles conditions","Seulement « Bug »","Le nom du testeur","Une blague"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Comment dit-on « contournement » en anglais ?', '["Workaround","Severity","Steps","Blocker"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel est le rôle du testeur lors de l''affinage ?', '["Rien","Repérer tôt les cas limites et les risques","Coder la fonction","Facturer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Que vérifier avant de passer une certification ?', '["Les réponses vendues en ligne","La couleur du certificat","Les modalités sur le site officiel de l''organisme","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Comment sont souvent payés les testeurs en test participatif ?', '["Selon les bugs validés ou les cas exécutés","Par un salaire fixe garanti","Jamais","En cadeaux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quel bug de marché bloque les utilisateurs malgaches ?', '["Un formulaire qui exige un code postal à 5 chiffres","Une police différente","Un logo petit","Une couleur trop vive"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quelle marge ajouter à une estimation de test ?', '["1 %","200 %","20 à 30 % pour les retests et échanges","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-a', 'Quelle règle de confidentialité dans une équipe de test ?', '["Accords signés, accès personnels, aucune donnée réelle copiée","Copier les données des clients","Partager les accès","Aucune règle"]'::jsonb, 0);
 
 -- tech-1-f
 delete from public.exam_questions where course_id = 'tech-1-f';

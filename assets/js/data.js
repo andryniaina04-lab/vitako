@@ -5180,6 +5180,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-1-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du testeur un professionnel qui aide les équipes à livrer vite sans casser ce qui marche : spécialité (automatisation, API, mobile, performance, accessibilité, QA lead), audit qualité, stratégie fondée sur les risques et pyramide des tests, outils payants (BrowserStack et Jira avec gestion des tests), Page Object, sélecteurs robustes, données de test, intégration continue et tests instables, rapports en anglais, rituels agiles, ISTQB, test participatif et localisation, puis offres, contrats récurrents, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer la qualité d'un projet et prioriser selon les risques",
+   "Tester sur des appareils réels avec BrowserStack et gérer les campagnes dans Jira",
+   "Écrire des tests Playwright fiables et les exécuter dans l'intégration continue",
+   "Traiter les tests instables et suivre les bons indicateurs",
+   "Travailler en anglais dans une équipe agile internationale et tester la localisation",
+   "Construire des offres durables, des études de cas et une petite équipe de test"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer la qualité et tester selon les risques",
+    "summary": "Les 6 spécialités avancées, la non-régression, l'audit qualité et son rapport, la priorité selon la probabilité et l'impact, la pyramide des tests et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit de la qualité d'un projet",
+     "La stratégie de test fondée sur les risques",
+     "La pyramide des tests",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : BrowserStack et Jira payant",
+    "summary": "Fermes d'appareils, tests manuels, automatiques et visuels, choix des appareils, clés dans les secrets, gestion des tests dans Jira, traçabilité, automatisations et tableaux de bord.",
+    "sections": [
+     "BrowserStack : tester sur des appareils réels",
+     "Jira : les fonctions payantes utiles au test",
+     "Choisir selon le budget",
+     "Exercice pratique : un environnement de test professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : Page Object, sélecteurs, données, intégration continue",
+    "summary": "Organisation du code de test, sélecteurs robustes, données de test, workflow d'intégration continue, tests instables en quarantaine et indicateurs.",
+    "sections": [
+     "Organiser le code de test",
+     "Des sélecteurs robustes",
+     "Les données de test",
+     "L'intégration continue",
+     ".github/workflows/tests.yml",
+     "Les tests instables",
+     "Les indicateurs",
+     "Exercice pratique : une suite automatique professionnelle"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, agilité, certifications et localisation",
+    "summary": "Rapports de bugs en anglais, vocabulaire, rituels agiles et shift-left, ISTQB, plateformes de test participatif et tests de localisation et de marché.",
+    "sections": [
+     "Les rapports de bugs en anglais",
+     "Les rituels d'une équipe agile",
+     "Les certifications reconnues",
+     "Les plateformes de test participatif",
+     "Tester la localisation et le marché",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres, contrats, études de cas et équipe",
+    "summary": "Trois voies, chiffrage avec marge de retests, contrats récurrents, promesse de méthode, études de cas chiffrées, petite équipe de test et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe de test",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "tech-1-f": {
   "hours": 16,
   "description": "Le testeur logiciel vérifie qu'une application fonctionne de façon fiable sur les appareils des utilisateurs, et signale clairement les problèmes pour qu'ils soient corrigés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des éditeurs, à Madagascar et à l'étranger, avec Jira, Postman et Playwright : cas de test, valeurs limites, rapports de bugs, tests d'API, premiers tests automatisés et campagne complète. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

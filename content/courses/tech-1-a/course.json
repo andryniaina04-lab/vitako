@@ -1,0 +1,97 @@
+{
+  "id": "tech-1-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du testeur un professionnel qui aide les équipes à livrer vite sans casser ce qui marche : spécialité (automatisation, API, mobile, performance, accessibilité, QA lead), audit qualité, stratégie fondée sur les risques et pyramide des tests, outils payants (BrowserStack et Jira avec gestion des tests), Page Object, sélecteurs robustes, données de test, intégration continue et tests instables, rapports en anglais, rituels agiles, ISTQB, test participatif et localisation, puis offres, contrats récurrents, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer la qualité d'un projet et prioriser selon les risques",
+    "Tester sur des appareils réels avec BrowserStack et gérer les campagnes dans Jira",
+    "Écrire des tests Playwright fiables et les exécuter dans l'intégration continue",
+    "Traiter les tests instables et suivre les bons indicateurs",
+    "Travailler en anglais dans une équipe agile internationale et tester la localisation",
+    "Construire des offres durables, des études de cas et une petite équipe de test"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer la qualité et tester selon les risques",
+      "summary": "Les 6 spécialités avancées, la non-régression, l'audit qualité et son rapport, la priorité selon la probabilité et l'impact, la pyramide des tests et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un test de non-régression ?", "options": ["Un test qui vérifie que l'existant marche toujours après une modification", "Un test de vitesse de frappe", "Un test de design", "Un test de recrutement"], "correct": 0 },
+        { "q": "Comment se calcule la priorité d'une fonction à tester ?", "options": ["Probabilité d'un bug et impact", "Couleur de la page", "Ordre alphabétique", "Au hasard"], "correct": 0 },
+        { "q": "Quels tests garder peu nombreux au sommet de la pyramide ?", "options": ["Les tests de bout en bout dans l'interface", "Les tests unitaires", "Les tests d'API", "Aucun"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : BrowserStack et Jira payant",
+      "summary": "Fermes d'appareils, tests manuels, automatiques et visuels, choix des appareils, clés dans les secrets, gestion des tests dans Jira, traçabilité, automatisations et tableaux de bord.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une ferme d'appareils ?", "options": ["Un service qui donne accès à distance à de vrais appareils", "Un magasin de téléphones", "Un logiciel de comptabilité", "Un réseau social"], "correct": 0 },
+        { "q": "Où mettre les clés d'accès BrowserStack ?", "options": ["Dans les secrets ou des variables d'environnement", "Dans le code publié", "Dans une capture d'écran", "Dans le titre d'un bug"], "correct": 0 },
+        { "q": "Qu'est-ce que la traçabilité ?", "options": ["Le lien entre exigences, tests et bugs", "La géolocalisation du testeur", "Un type de bug", "Un navigateur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : Page Object, sélecteurs, données, intégration continue",
+      "summary": "Organisation du code de test, sélecteurs robustes, données de test, workflow d'intégration continue, tests instables en quarantaine et indicateurs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est l'avantage du modèle Page Object ?", "options": ["Modifier un seul fichier quand une page change", "Rendre les tests plus lents", "Supprimer les assertions", "Éviter tout test"], "correct": 0 },
+        { "q": "Quel sélecteur est le plus fragile ?", "options": ["Une classe CSS ou un chemin long", "Le rôle et le nom visible", "Le libellé", "Un attribut data-testid"], "correct": 0 },
+        { "q": "Que faire d'un test instable ?", "options": ["Le mettre en quarantaine, créer un ticket et le corriger", "Le supprimer sans rien dire", "L'ignorer pour toujours", "Le relancer jusqu'à ce qu'il passe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, agilité, certifications et localisation",
+      "summary": "Rapports de bugs en anglais, vocabulaire, rituels agiles et shift-left, ISTQB, plateformes de test participatif et tests de localisation et de marché.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment dit-on « étapes pour reproduire » en anglais ?", "options": ["Steps to reproduce", "Expected result", "Workaround", "Severity"], "correct": 0 },
+        { "q": "Que signifie shift-left ?", "options": ["Faire participer le test le plus tôt possible", "Décaler l'écran", "Tester à la fin seulement", "Changer de clavier"], "correct": 0 },
+        { "q": "Quelle certification est la référence des bases du test ?", "options": ["ISTQB Foundation Level", "Permis de conduire", "TOEFL", "Aucune"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres, contrats, études de cas et équipe",
+      "summary": "Trois voies, chiffrage avec marge de retests, contrats récurrents, promesse de méthode, études de cas chiffrées, petite équipe de test et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que ne faut-il jamais promettre ?", "options": ["Zéro bug", "Une méthode", "Des rapports clairs", "Une couverture des parcours critiques"], "correct": 0 },
+        { "q": "Quelle formule apporte un revenu régulier ?", "options": ["Un testeur dédié à temps partiel chaque mois", "Un seul test", "Un audit gratuit", "Rien"], "correct": 0 },
+        { "q": "Vers quel poste évoluer avec une programmation solide ?", "options": ["Ingénieur en automatisation (SDET)", "Comptable", "Graphiste", "Traducteur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité vérifie l'usage par les personnes handicapées ?", "options": ["Les tests d'accessibilité", "Les tests de performance", "Les tests d'API", "Les tests unitaires"], "correct": 0 },
+    { "q": "Quel test automatiser en premier ?", "options": ["Les tests de non-régression des parcours critiques", "La page « À propos »", "Les couleurs", "Rien"], "correct": 0 },
+    { "q": "Quel constat montre un problème de qualité ?", "options": ["Beaucoup de bugs graves trouvés par les clients", "Des bugs trouvés en test", "Des tests réussis", "Un rapport clair"], "correct": 0 },
+    { "q": "Pourquoi une stratégie fondée sur les risques ?", "options": ["On ne peut pas tout tester ; on teste d'abord ce qui compte le plus", "Pour tester moins sans raison", "Pour éviter les rapports", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Qui écrit surtout les tests unitaires ?", "options": ["Les développeurs", "Les clients", "Les commerciaux", "Personne"], "correct": 0 },
+    { "q": "Comment choisir les appareils à tester ?", "options": ["Selon les statistiques d'usage du client, plus un ancien modèle et un petit écran", "Seulement le téléphone le plus récent", "Au hasard", "Seulement l'ordinateur du testeur"], "correct": 0 },
+    { "q": "À quoi sert Percy ?", "options": ["Comparer visuellement les écrans d'une version à l'autre", "Envoyer des e-mails", "Gérer la paie", "Traduire"], "correct": 0 },
+    { "q": "À quoi servent Xray ou Zephyr dans Jira ?", "options": ["Gérer les cas de test et les campagnes", "Dessiner des logos", "Héberger des vidéos", "Envoyer des SMS"], "correct": 0 },
+    { "q": "Quelle automatisation Jira est utile ?", "options": ["Attribuer au testeur un bug passé à « Corrigé »", "Supprimer tous les bugs", "Fermer tous les tickets la nuit", "Changer les couleurs"], "correct": 0 },
+    { "q": "Que proposer à un client au budget faible ?", "options": ["Jira gratuit, cas dans un tableur, appareils disponibles", "Toutes les licences les plus chères", "Rien", "Arrêter les tests"], "correct": 0 },
+    { "q": "Où écrire les sélecteurs dans le modèle Page Object ?", "options": ["Dans le fichier de la page", "Dans chaque test, répétés", "Dans le titre du bug", "Nulle part"], "correct": 0 },
+    { "q": "Quel sélecteur demander aux développeurs ?", "options": ["Un attribut data-testid", "Une classe de couleur", "Un chemin de 10 niveaux", "Aucun"], "correct": 0 },
+    { "q": "Comment créer les données de test rapidement ?", "options": ["Par l'API avant le test", "À la main chaque fois", "Avec de vraies données de clients", "On ne crée pas de données"], "correct": 0 },
+    { "q": "Qu'est-ce que l'intégration continue ?", "options": ["L'exécution automatique des tests à chaque modification", "Une réunion quotidienne", "Une facture mensuelle", "Un type de bug"], "correct": 0 },
+    { "q": "Pourquoi la coupure de courant n'empêche pas l'intégration continue ?", "options": ["Les tests s'exécutent sur les serveurs du service", "Elle l'empêche toujours", "Les tests sont sur papier", "Il n'y a pas de tests"], "correct": 0 },
+    { "q": "Quelle cause fréquente de test instable ?", "options": ["Des attentes fixes au lieu d'assertions qui attendent un état", "Un bon sélecteur", "Des données propres", "Un rapport clair"], "correct": 0 },
+    { "q": "Quel indicateur montre l'efficacité réelle des tests ?", "options": ["Les bugs trouvés après la mise en ligne", "Le nombre de couleurs", "Le nombre de réunions", "La taille de l'écran"], "correct": 0 },
+    { "q": "Que doit dire le titre d'un bug ?", "options": ["Où, quoi et dans quelles conditions", "Seulement « Bug »", "Le nom du testeur", "Une blague"], "correct": 0 },
+    { "q": "Comment dit-on « contournement » en anglais ?", "options": ["Workaround", "Blocker", "Severity", "Steps"], "correct": 0 },
+    { "q": "Quel est le rôle du testeur lors de l'affinage ?", "options": ["Repérer tôt les cas limites et les risques", "Rien", "Coder la fonction", "Facturer"], "correct": 0 },
+    { "q": "Que vérifier avant de passer une certification ?", "options": ["Les modalités sur le site officiel de l'organisme", "Les réponses vendues en ligne", "Rien", "La couleur du certificat"], "correct": 0 },
+    { "q": "Comment sont souvent payés les testeurs en test participatif ?", "options": ["Selon les bugs validés ou les cas exécutés", "Par un salaire fixe garanti", "Jamais", "En cadeaux"], "correct": 0 },
+    { "q": "Quel bug de marché bloque les utilisateurs malgaches ?", "options": ["Un formulaire qui exige un code postal à 5 chiffres", "Une couleur trop vive", "Une police différente", "Un logo petit"], "correct": 0 },
+    { "q": "Quelle marge ajouter à une estimation de test ?", "options": ["20 à 30 % pour les retests et échanges", "Aucune", "200 %", "1 %"], "correct": 0 },
+    { "q": "Quelle règle de confidentialité dans une équipe de test ?", "options": ["Accords signés, accès personnels, aucune donnée réelle copiée", "Partager les accès", "Copier les données des clients", "Aucune règle"], "correct": 0 }
+  ]
+}
