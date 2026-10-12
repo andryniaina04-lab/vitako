@@ -778,6 +778,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-0-f": {
+  "hours": 16,
+  "description": "Le monteur vidéo transforme des heures d'images brutes en vidéos qui retiennent l'attention : vidéos YouTube, formats courts pour TikTok et Reels, publicités, événements. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à monter pour des créateurs francophones et des entreprises malgaches, en télétravail, avec DaVinci Resolve et CapCut gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer ce que fait un monteur vidéo et qui le paie",
+   "Choisir les bons formats et appliquer les règles du rythme",
+   "Monter, étalonner et exporter avec DaVinci Resolve et CapCut",
+   "Mener une commande complète en 7 passes, retours compris",
+   "Créer des vidéos courtes verticales sous-titrées",
+   "Fixer ses prix, livrer de gros fichiers et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de monteur vidéo depuis Madagascar",
+    "summary": "Ce que fait un monteur, les 6 types de vidéos, vos clients, l'ordinateur nécessaire, gros fichiers et coupures.",
+    "sections": [
+     "Le métier de monteur vidéo en une phrase",
+     "Les 6 types de vidéos les plus commandés",
+     "Qui sont vos clients ?",
+     "L'ordinateur du monteur",
+     "Travailler à distance depuis Madagascar",
+     "Exercice pratique : analyser 3 vidéos"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : formats, rythme, coupes et son",
+    "summary": "Vocabulaire, résolution, orientation, cadence d'images, les 6 règles du rythme, les types de coupes, le son et les droits de la musique.",
+    "sections": [
+     "Le vocabulaire de base",
+     "Les formats : bien les choisir dès le début",
+     "Les 6 règles du rythme",
+     "Les principaux types de coupes",
+     "Le son : la moitié de la vidéo",
+     "Exercice pratique : découper au papier"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Les outils : DaVinci Resolve, CapCut, et les logiciels payants",
+    "summary": "Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio.",
+    "sections": [
+     "Les outils gratuits",
+     "Organiser les fichiers d'un projet",
+     "DaVinci Resolve : la prise en main",
+     "CapCut : les vidéos courtes",
+     "Exporter correctement",
+     "Quand passer aux logiciels payants ?",
+     "Exercice pratique : vos deux premiers montages"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Premier projet : une vidéo YouTube et 3 vidéos courtes",
+    "summary": "Brief en 10 questions, montage en 7 passes, introduction, extraits verticaux, retours avec repères de temps et grille de 12 points.",
+    "sections": [
+     "Le cas pratique : la chaîne « Vola Malina »",
+     "Le brief de montage",
+     "Le montage en 7 passes",
+     "Les vidéos courtes tirées de la vidéo longue",
+     "Recevoir et traiter les retours",
+     "La grille de vérification en 12 points",
+     "Exercice pratique : la commande « Vola Malina »"
+    ],
+    "minutes": 9
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Bande démo, portfolio avant / après, 5 canaux, prix et forfaits, devis, livraison de gros fichiers, paiements et fidélisation.",
+    "sections": [
+     "La bande démo et le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis et les conditions",
+     "Livrer de gros fichiers depuis Madagascar",
+     "Se faire payer",
+     "Fidéliser un créateur",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 9
+   }
+  ]
+ },
  "mkt-0-f": {
   "hours": 14,
   "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

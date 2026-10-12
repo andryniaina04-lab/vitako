@@ -13,7 +13,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, false),
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 14, false),
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
-  ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 11, false),
+  ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 16, false),
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 12, false),
   ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
@@ -3486,6 +3486,711 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?', '["1 500 Ar","100 000 Ar","150 000 Ar","15 000 Ar"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'Quel texte est en général parmi les mieux payés ?', '["La relecture d''une ligne","La fiche produit très courte","La page de vente","La publication de 30 mots"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-0-f', 'À qui appartient en général le texte une fois payé ?', '["Au rédacteur, pour toujours","À la plateforme de paiement","Au client","À Google"]'::jsonb, 2);
+
+-- media-0-f
+delete from public.exam_questions where course_id = 'media-0-f';
+delete from public.module_questions where course_id = 'media-0-f';
+delete from public.lessons where course_id = 'media-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 0, 'Le métier de monteur vidéo depuis Madagascar', 'Ce que fait un monteur, les 6 types de vidéos, vos clients, l''ordinateur nécessaire, gros fichiers et coupures.', 'YouTube, TikTok, Instagram, formations en ligne, publicités : jamais on n''a publié autant de vidéos. Derrière chacune, quelqu''un a choisi les meilleurs moments, coupé les hésitations, ajouté la musique et les sous-titres. C''est le monteur vidéo. Ce métier se pratique très bien à distance, et beaucoup de créateurs francophones cherchent un monteur fiable. Ce premier module vous montre le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer en une phrase ce que fait un monteur vidéo.
+> 2. Citer les 6 types de vidéos les plus commandés.
+> 3. Repérer vos premiers clients possibles.
+> 4. Vérifier que votre ordinateur peut faire du montage.
+> 5. Organiser votre travail malgré les coupures et une connexion limitée.
+
+## Le métier de monteur vidéo en une phrase
+
+Un monteur vidéo **transforme des heures d''images brutes en une vidéo qui retient l''attention jusqu''au bout**.
+
+Le client vous envoie ses **rushes** : tout ce qui a été filmé, avec les erreurs, les silences et les répétitions. Vous choisissez, coupez, assemblez, ajoutez le son, la musique, les textes et les effets. Le résultat doit raconter une histoire claire, au bon rythme.
+
+> [!definition] Rushes
+> Les images et sons bruts filmés, avant montage. Pour une vidéo YouTube de 10 minutes, il y a souvent 30 minutes à 2 heures de rushes.
+
+## Les 6 types de vidéos les plus commandés
+
+| N° | Type | Durée habituelle | Exemple de client |
+| --- | --- | --- | --- |
+| 1 | **Vidéo YouTube** (« face caméra », tutoriel, vlog) | 8 à 20 min | Créateur de contenu, coach, formateur |
+| 2 | **Vidéos courtes verticales** (Shorts, Reels, TikTok) | 15 à 60 s | Créateurs, marques, restaurants |
+| 3 | **Vidéo publicitaire** | 15 à 60 s | Boutique, entreprise, application |
+| 4 | **Cours en ligne** | 5 à 15 min par leçon | Formateur, école en ligne |
+| 5 | **Podcast vidéo** et interviews | 30 à 90 min | Podcasteur, média |
+| 6 | **Événements** (mariage, conférence, concert) | 3 à 30 min | Particuliers, associations, entreprises à Madagascar |
+
+Pour commencer en télétravail, les types **1 et 2** sont les plus demandés : les créateurs publient chaque semaine et ont besoin d''un monteur **régulier**.
+
+## Qui sont vos clients ?
+
+### Clients à l''étranger
+
+1. **Créateurs YouTube francophones** (France, Belgique, Canada, Afrique de l''Ouest) qui publient une ou plusieurs vidéos par semaine.
+2. **Coachs et formateurs** qui transforment leurs vidéos longues en dizaines de vidéos courtes.
+3. **Agences** de marketing qui sous-traitent le montage.
+4. **Podcasteurs** qui veulent une version vidéo et des extraits courts.
+
+### Clients à Madagascar
+
+1. **Entreprises et marques** qui font de la publicité sur Facebook et TikTok.
+2. **Hôtels et agences de tourisme** : vidéos de présentation.
+3. **ONG** : vidéos de projets, témoignages.
+4. **Événements** : mariages, concerts, conférences.
+5. **Artistes** : clips musicaux.
+
+> [!madagascar] Votre avantage
+> Les créateurs francophones veulent un monteur qui comprend parfaitement le français, l''humour et les références de leurs vidéos. Avec un faible décalage horaire avec l''Europe, vous pouvez livrer « pendant la nuit » du client s''il vous envoie les rushes le soir.
+
+## L''ordinateur du monteur
+
+Le montage demande plus de puissance que la plupart des métiers à distance.
+
+| Élément | Minimum pour commencer | Confortable |
+| --- | --- | --- |
+| Processeur | Processeur récent à 4 cœurs | 6 à 8 cœurs ou plus |
+| Mémoire vive (RAM) | 8 Go | 16 Go ou plus |
+| Carte graphique | Intégrée récente (pour CapCut et projets simples) | Carte graphique dédiée (pour DaVinci Resolve) |
+| Stockage | Disque SSD pour le système et les logiciels | SSD + disque externe pour les rushes |
+| Écran | Écran de l''ordinateur portable | Écran externe de 24 pouces |
+| Son | Casque | Casque fermé de bonne qualité |
+
+> [!astuce] Commencer avec un ordinateur modeste
+> Si votre ordinateur est lent, commencez par les **vidéos courtes** avec CapCut, travaillez avec des **fichiers de travail allégés** (module 3) et économisez pour améliorer votre matériel avec vos premiers revenus.
+
+## Travailler à distance depuis Madagascar
+
+### 1. Les gros fichiers
+
+Les rushes pèsent lourd : souvent plusieurs gigaoctets (Go) pour une seule vidéo.
+
+1. Demandez au client un **lien de téléchargement** (Google Drive, Dropbox, WeTransfer).
+2. Téléchargez la nuit ou pendant les heures où votre connexion est la meilleure.
+3. Pour la livraison, envoyez d''abord une **version de prévisualisation légère** pour validation, puis la version finale.
+
+### 2. Les coupures d''électricité
+
+1. Activez l''**enregistrement automatique** du logiciel (toutes les 5 minutes).
+2. Utilisez un **onduleur** : une coupure pendant un export peut corrompre un fichier.
+3. Gardez une **sauvegarde** des projets sur un disque externe.
+
+### 3. Les délais
+
+Une vidéo YouTube de 10 minutes demande souvent **4 à 10 heures** de travail au début. Annoncez des délais avec une marge : coupures, téléchargements lents et corrections du client prennent du temps.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Accepter une commande sans savoir si l''ordinateur pourra la traiter.
+> - Utiliser des musiques à succès sans droits : la vidéo du client peut être bloquée ou démonétisée.
+> - Promettre « livré demain » sans avoir téléchargé les rushes.
+> - Ne garder aucune sauvegarde du projet.
+
+> [!retenir]
+> - Un monteur transforme des rushes en une vidéo qui retient l''attention.
+> - Vidéos YouTube et vidéos courtes : les commandes les plus régulières.
+> - Clients : créateurs et formateurs francophones, marques et événements à Madagascar.
+> - Un ordinateur suffisant, un onduleur et des sauvegardes sont indispensables.
+
+## Exercice pratique : analyser 3 vidéos
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez 3 vidéos de créateurs francophones : une vidéo YouTube longue, un Short ou Reel, une publicité.
+> 2. Pour chacune, notez : la durée, le nombre de coupes dans la première minute (comptez !), les textes à l''écran, la musique, les effets sonores.
+> 3. Notez à quel moment vous avez eu envie d''arrêter de regarder, et pourquoi.
+> 4. Vérifiez la configuration de votre ordinateur (processeur, mémoire, carte graphique, stockage) et comparez-la au tableau du module.
+>
+> **À livrer** : votre tableau d''analyse des 3 vidéos et la fiche de votre ordinateur.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 0, 0, 'Que sont les rushes ?', '["Les sous-titres","Les vidéos déjà publiées","Les images et sons bruts filmés, avant montage","Les musiques libres de droits"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 0, 1, 'Quelles commandes sont les plus régulières en télétravail ?', '["Les vidéos de surveillance","Les dessins animés longs","Les vidéos YouTube et les vidéos courtes","Les films de cinéma"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 0, 2, 'Pourquoi utiliser un onduleur ?', '["Pour améliorer les couleurs","Une coupure pendant un export peut corrompre un fichier","Pour accélérer Internet","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 1, 'Les bases : formats, rythme, coupes et son', 'Vocabulaire, résolution, orientation, cadence d''images, les 6 règles du rythme, les types de coupes, le son et les droits de la musique.', 'Avant d''ouvrir un logiciel, il faut comprendre ce qui fait un bon montage : le rythme, les coupes, le son et les formats. Ce module vous donne le vocabulaire et les règles que tout monteur professionnel utilise, avec des exemples concrets.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser le vocabulaire de base du montage.
+> 2. Choisir le bon format : résolution, cadence d''images, orientation.
+> 3. Appliquer les 6 règles du rythme.
+> 4. Utiliser les principaux types de coupes.
+> 5. Traiter le son : voix, musique, effets, niveaux.
+
+## Le vocabulaire de base
+
+| Terme | Définition |
+| --- | --- |
+| **Plan** | Un morceau de vidéo filmé sans interruption |
+| **Coupe** | Le passage d''un plan à un autre |
+| **Timeline** (ligne de temps) | La zone du logiciel où l''on place les plans dans l''ordre |
+| **Piste** | Une ligne de la timeline : pistes vidéo (V1, V2…) et pistes audio (A1, A2…) |
+| **B-roll** (plans de coupe) | Images d''illustration placées par-dessus la personne qui parle |
+| **Transition** | Effet entre deux plans (fondu, glissement) |
+| **Export** (ou rendu) | La création du fichier vidéo final |
+
+## Les formats : bien les choisir dès le début
+
+### La résolution
+
+| Nom | Dimensions (pixels) | Usage |
+| --- | --- | --- |
+| **HD** (720p) | 1280 × 720 | Vidéos légères |
+| **Full HD** (1080p) | 1920 × 1080 | Le standard pour YouTube et la plupart des clients |
+| **4K** | 3840 × 2160 | Clients exigeants, gros ordinateur nécessaire |
+
+### L''orientation
+
+| Orientation | Rapport | Dimensions courantes | Usage |
+| --- | --- | --- | --- |
+| **Horizontale** | 16:9 | 1920 × 1080 | YouTube, cours en ligne, télévision |
+| **Verticale** | 9:16 | 1080 × 1920 | TikTok, Reels, Shorts, stories |
+| **Carrée** | 1:1 | 1080 × 1080 | Certaines publicités |
+
+### La cadence d''images
+
+> [!definition] Cadence d''images (images par seconde, i/s ou fps)
+> Le nombre d''images affichées chaque seconde. 24 ou 25 i/s donne un rendu « cinéma », 30 i/s est courant sur Internet, 50 ou 60 i/s donne un mouvement très fluide (sport, jeux vidéo).
+
+**Règle d''or** : réglez votre projet sur la **même cadence que les rushes**. Si les rushes sont à 30 i/s, le projet est à 30 i/s. Mélanger les cadences crée des saccades.
+
+## Les 6 règles du rythme
+
+Sur Internet, le spectateur peut partir à chaque seconde. Le rythme le retient.
+
+1. **Les 3 premières secondes décident de tout** : commencez par le moment le plus fort, une question ou une promesse.
+2. **Coupez les silences et les hésitations** (« euh », respirations longues, phrases recommencées).
+3. **Changez d''image souvent** : dans une vidéo face caméra, un changement (zoom, plan de coupe, texte) toutes les 5 à 10 secondes.
+4. **Adaptez au contenu** : rapide pour l''énergie et l''humour, plus lent pour l''émotion et les explications.
+5. **Ne coupez pas au milieu d''une idée** : laissez la phrase se terminer.
+6. **Regardez sans le son**, puis **écoutez sans l''image** : chaque version doit tenir seule.
+
+> [!exemple] La découpe d''une phrase
+> Rush : « Alors euh… aujourd''hui… non attendez. Aujourd''hui je vais vous montrer euh… trois astuces pour… pour économiser sur votre forfait. »
+> Après montage : « Aujourd''hui, je vais vous montrer trois astuces pour économiser sur votre forfait. »
+> Une coupe est placée à chaque hésitation. Pour la cacher, on alterne légèrement le cadrage (zoom de 10 à 15 %) ou on pose un plan de coupe par-dessus.
+
+## Les principaux types de coupes
+
+| Coupe | Comment | Quand l''utiliser |
+| --- | --- | --- |
+| **Coupe franche** | Un plan, puis l''autre, sans effet | Dans 90 % des cas |
+| **Jump cut** | Coupe dans le même plan, qui fait « sauter » l''image | Vidéos YouTube face caméra, pour enlever les hésitations |
+| **Coupe en L** (*L-cut*) | Le son du plan A continue sur l''image du plan B | Interviews, documentaires : fluide et naturel |
+| **Coupe en J** (*J-cut*) | Le son du plan B commence avant son image | Annoncer une nouvelle scène |
+| **Fondu** | Transition progressive | Passage du temps, fin de vidéo ; à utiliser rarement |
+
+> [!attention]
+> Les débutants mettent trop de **transitions** spectaculaires (étoiles, cubes qui tournent). Les professionnels utilisent surtout des coupes franches. Une transition doit avoir une raison.
+
+## Le son : la moitié de la vidéo
+
+Un spectateur supporte une image moyenne, mais il quitte une vidéo dont le son est mauvais.
+
+### Les 3 types de son
+
+1. **La voix** : la priorité, toujours claire et compréhensible.
+2. **La musique** : elle crée l''ambiance, mais reste **sous** la voix.
+3. **Les effets sonores** : « whoosh » sur une transition, « pop » sur un texte ; ils donnent du rythme.
+
+### Les niveaux de volume (repères)
+
+| Élément | Niveau habituel (repère) |
+| --- | --- |
+| Voix | Entre environ −12 et −6 dB sur l''indicateur du logiciel |
+| Musique sous la voix | Environ −25 à −20 dB |
+| Musique seule (introduction, fin) | Environ −15 à −10 dB |
+| Pics maximums | Ne jamais dépasser 0 dB (le son « sature ») |
+
+Ces valeurs sont des **repères** : écoutez toujours avec un casque **et** avec un haut-parleur de téléphone.
+
+> [!definition] Saturation
+> Un son trop fort qui dépasse le maximum : il grésille et devient désagréable. Une fois enregistré saturé, il est presque impossible à réparer.
+
+### Les droits de la musique
+
+1. N''utilisez **jamais** une chanson connue sans licence : la vidéo peut être bloquée ou rapporter l''argent à l''artiste.
+2. Utilisez des bibliothèques **libres de droits** : la Bibliothèque audio de YouTube (gratuite), ou les musiques fournies dans CapCut pour TikTok.
+3. Le client peut avoir un abonnement à une bibliothèque payante : demandez-lui.
+
+> [!madagascar]
+> Pour un clip ou une vidéo d''un artiste malgache, la musique appartient à l''artiste : vous montez avec **sa** musique et son accord. Pour une vidéo d''entreprise, ne prenez pas une chanson à la mode « parce que tout le monde le fait » : utilisez une musique libre de droits.
+
+> [!retenir]
+> - Projet réglé sur la résolution et la cadence des rushes.
+> - 16:9 pour YouTube, 9:16 pour TikTok, Reels et Shorts.
+> - 3 premières secondes fortes, silences coupés, changement d''image régulier.
+> - Coupes franches et jump cuts surtout ; transitions rares.
+> - Voix d''abord, musique dessous, jamais de saturation, jamais de musique sans droits.
+
+## Exercice pratique : découper au papier
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Filmez-vous 2 minutes avec votre téléphone en expliquant un sujet que vous connaissez, sans préparation.
+> 2. Regardez la vidéo et notez à quelle seconde se trouvent toutes les hésitations, silences et phrases recommencées.
+> 3. Écrivez le texte « propre » après montage, comme dans l''exemple.
+> 4. Notez où vous placeriez 4 plans de coupe et 3 textes à l''écran.
+> 5. Choisissez 2 musiques dans la Bibliothèque audio de YouTube qui conviendraient.
+>
+> **À livrer** : votre vidéo brute, votre liste de coupes avec les temps, le texte final et vos idées de plans de coupe, textes et musiques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 0, 'Quel format pour TikTok, Reels et Shorts ?', '["Carré 1:1, 500 × 500","Vertical 9:16, 1080 × 1920","Horizontal 16:9, 1920 × 1080","4:3, 640 × 480"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 1, 'Quelle cadence choisir pour le projet ?', '["Toujours 24 i/s","La même que celle des rushes","N''importe laquelle","Toujours 60 i/s"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 2, 'Peut-on utiliser une chanson connue sans licence ?', '["Oui, si elle est courte","Oui, sur TikTok uniquement","Oui, si on cite l''artiste","Non, la vidéo peut être bloquée ou démonétisée"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 2, 'Les outils : DaVinci Resolve, CapCut, et les logiciels payants', 'Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio.', 'Bonne nouvelle : vous pouvez devenir monteur professionnel avec des logiciels gratuits. **DaVinci Resolve** est utilisé jusque dans le cinéma, et **CapCut** est devenu l''outil de référence pour les vidéos courtes. Ce module vous les fait prendre en main, vous montre comment organiser vos fichiers et exporter correctement, puis vous présente les logiciels payants que demandent certains clients.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser les fichiers d''un projet avec une arborescence standard.
+> 2. Monter une vidéo dans DaVinci Resolve : importer, couper, ajouter son et textes.
+> 3. Utiliser les raccourcis de base du montage.
+> 4. Monter une vidéo verticale avec sous-titres dans CapCut.
+> 5. Exporter au bon format pour YouTube et les réseaux sociaux.
+> 6. Savoir quand passer à Premiere Pro, Final Cut Pro ou DaVinci Resolve Studio.
+
+## Les outils gratuits
+
+| N° | Outil | Pour quoi |
+| --- | --- | --- |
+| 1 | **DaVinci Resolve** (version gratuite) | Montage complet, étalonnage des couleurs, son, export : vidéos longues et projets clients |
+| 2 | **CapCut** (ordinateur et téléphone) | Vidéos courtes verticales, sous-titres, effets à la mode |
+| 3 | **Bibliothèque audio de YouTube** | Musiques et effets sonores libres de droits |
+| 4 | **Google Drive** ou **Dropbox** | Recevoir les rushes, livrer les vidéos |
+| 5 | **HandBrake** | Compresser une vidéo pour l''envoyer plus facilement |
+
+## Organiser les fichiers d''un projet
+
+Un projet mal rangé, c''est des fichiers « hors ligne » et des heures perdues. Créez cette arborescence pour **chaque** projet :
+
+```
+2026-03-14 - Client Dupont - Vidéo 12
+├── 01 Rushes (vidéos brutes du client)
+├── 02 Audio (voix, musiques, effets)
+├── 03 Images (logos, photos, captures)
+├── 04 Projet (fichier DaVinci ou CapCut)
+└── 05 Exports (versions envoyées au client)
+```
+
+> [!attention]
+> Ne déplacez **jamais** les rushes après les avoir importés dans le logiciel : le projet ne les retrouvera plus (fichiers « hors ligne »). Rangez tout **avant** de commencer.
+
+## DaVinci Resolve : la prise en main
+
+### Les pages du logiciel
+
+DaVinci Resolve est organisé en **pages**, accessibles en bas de l''écran :
+
+| Page | À quoi elle sert |
+| --- | --- |
+| **Media** | Importer et ranger les fichiers |
+| **Cut** | Montage rapide |
+| **Edit** | Montage complet et précis (la page principale) |
+| **Fusion** | Effets visuels et animations |
+| **Color** | Étalonnage : corriger et harmoniser les couleurs |
+| **Fairlight** | Travail du son |
+| **Deliver** | Exporter la vidéo |
+
+### Monter une vidéo en 8 étapes
+
+1. **Créez un projet** et réglez-le (**Paramètres du projet**) : résolution et cadence identiques à celles des rushes.
+2. Dans la page **Media**, importez les dossiers Rushes, Audio et Images.
+3. Passez dans la page **Edit** et glissez le rush principal dans la timeline.
+4. **Coupez** les hésitations et les silences (raccourcis ci-dessous), puis supprimez les morceaux inutiles.
+5. Ajoutez les **plans de coupe** sur la piste V2, au-dessus de la personne qui parle.
+6. Ajoutez la **musique** sur une piste audio séparée et baissez son volume sous la voix.
+7. Ajoutez les **textes** (titres, mots-clés à l''écran) depuis la bibliothèque d''effets (*Titles*).
+8. Regardez la vidéo **entière** du début à la fin avant d''exporter.
+
+### Les raccourcis de base
+
+| Touche | Action |
+| --- | --- |
+| **Espace** | Lecture / pause |
+| **J, K, L** | Reculer / pause / avancer (appuyer plusieurs fois accélère) |
+| **I** et **O** | Marquer le début et la fin d''un passage |
+| **B** | Outil lame, pour couper |
+| **A** | Outil de sélection |
+| **Ctrl + B** (ou **Ctrl + \** selon la version) | Couper le plan à la position du curseur |
+| **Maj + Suppr** | Supprimer et refermer le trou (*ripple delete*) |
+| **Ctrl + Z** | Annuler |
+
+Apprendre ces raccourcis, c''est diviser par deux le temps de montage. Les raccourcis peuvent varier selon les versions : vérifiez-les dans le menu des raccourcis clavier du logiciel.
+
+> [!astuce] Les fichiers de travail allégés
+> Si votre ordinateur rame, demandez à DaVinci Resolve de créer des **médias optimisés** ou des **proxys** (clic droit sur les rushes). Le logiciel travaille avec des copies légères, puis utilise les originaux pour l''export final.
+
+### L''étalonnage de base
+
+Dans la page **Color**, corrigez au minimum :
+
+1. L''**exposition** : ni trop sombre ni trop clair.
+2. La **balance des blancs** : un mur blanc doit paraître blanc, pas jaune ni bleu.
+3. L''**harmonie** entre les plans : tous doivent avoir des couleurs proches.
+
+## CapCut : les vidéos courtes
+
+### Monter un Short ou un Reel en 7 étapes
+
+1. Créez un projet au format **9:16**.
+2. Importez la vidéo (ou les extraits de la vidéo longue du client).
+3. Coupez pour ne garder que **15 à 60 secondes** fortes, avec une accroche dans les 2 premières secondes.
+4. Générez les **sous-titres automatiques**, puis **corrigez chaque mot** (les erreurs sont fréquentes, surtout sur les noms propres).
+5. Choisissez un style de sous-titres lisible : gros, contrasté, au centre ou au tiers bas de l''écran.
+6. Ajoutez musique et effets sonores.
+7. Exportez en **1080 × 1920**.
+
+> [!definition] Sous-titres incrustés
+> Des sous-titres qui font partie de l''image. Sur les réseaux sociaux, une grande partie des vidéos est regardée **sans le son** : les sous-titres sont indispensables.
+
+Selon les versions et les pays, certaines fonctions de CapCut passent en offre payante : vérifiez ce qui est inclus dans la version gratuite.
+
+## Exporter correctement
+
+| Destination | Format | Résolution | Codec habituel |
+| --- | --- | --- | --- |
+| YouTube | MP4 | 1920 × 1080 (ou 4K) | H.264 |
+| TikTok, Reels, Shorts | MP4 | 1080 × 1920 | H.264 |
+| Version de validation pour le client | MP4 léger | 1280 × 720 | H.264, débit réduit |
+
+Dans DaVinci Resolve, la page **Deliver** propose des réglages tout prêts (par exemple « YouTube ») : c''est un bon point de départ.
+
+> [!definition] Codec
+> La méthode de compression de la vidéo. **H.264** est le plus utilisé : bonne qualité, fichier raisonnable, lu partout.
+
+## Quand passer aux logiciels payants ?
+
+| Logiciel | Ce qu''il apporte | Points à connaître |
+| --- | --- | --- |
+| **Adobe Premiere Pro** | Logiciel standard dans beaucoup d''agences ; échange facile avec After Effects et Photoshop | Abonnement mensuel ou annuel ; Windows et Mac |
+| **Final Cut Pro** | Montage très rapide et fluide | Uniquement sur Mac ; achat en une fois |
+| **DaVinci Resolve Studio** | Toutes les fonctions de la version gratuite, plus des outils avancés (réduction de bruit, effets, accélération matérielle selon les configurations) | Achat en une fois |
+
+Les prix changent : vérifiez-les sur les sites officiels. **Ne payez que si un client l''exige** (certaines agences demandent de rendre un projet Premiere Pro) ou si une fonction vous fait vraiment gagner du temps. La version gratuite de DaVinci Resolve suffit pour la grande majorité des projets de débutant.
+
+> [!madagascar]
+> Ces logiciels se paient par carte bancaire internationale. DaVinci Resolve Studio et Final Cut Pro s''achètent **une seule fois**, ce qui évite un abonnement à payer chaque mois en devises.
+
+> [!retenir]
+> - Une arborescence de projet identique, rangée avant d''importer.
+> - DaVinci Resolve : pages Media, Edit, Color, Fairlight, Deliver ; les raccourcis J, K, L, I, O, B.
+> - CapCut pour les vidéos verticales, avec sous-titres corrigés à la main.
+> - Export MP4 en H.264, aux dimensions de la destination.
+> - Les logiciels payants seulement quand un client ou un vrai besoin l''exige.
+
+## Exercice pratique : vos deux premiers montages
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Installez DaVinci Resolve et CapCut sur votre ordinateur.
+> 2. Créez l''arborescence de projet pour votre vidéo de 2 minutes du module 2.
+> 3. Dans DaVinci Resolve, montez-la : coupez toutes les hésitations, ajoutez 3 plans de coupe, une musique libre de droits et 2 textes, puis corrigez les couleurs.
+> 4. Exportez en 1080p pour YouTube.
+> 5. Dans CapCut, faites-en une version verticale de 30 secondes avec sous-titres corrigés.
+>
+> **À livrer** : les deux vidéos exportées et une capture de votre timeline DaVinci Resolve.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 2, 0, 'Que se passe-t-il si on déplace les rushes après les avoir importés ?', '["La vidéo s''exporte plus vite","Rien","Les couleurs changent","Le projet ne les retrouve plus (fichiers hors ligne)"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 2, 1, 'Dans DaVinci Resolve, quelle page sert à exporter ?', '["Color","Media","Fusion","Deliver"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 2, 2, 'Quel logiciel payant fonctionne uniquement sur Mac ?', '["Adobe Premiere Pro","DaVinci Resolve Studio","CapCut","Final Cut Pro"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 3, 'Premier projet : une vidéo YouTube et 3 vidéos courtes', 'Brief en 10 questions, montage en 7 passes, introduction, extraits verticaux, retours avec repères de temps et grille de 12 points.', 'Dans ce module, vous traitez une vraie commande de créateur : une vidéo YouTube de 8 minutes et 3 vidéos courtes tirées de cette vidéo, à partir des rushes. Vous suivez toutes les étapes d''un monteur professionnel, du brief à la version finale, en passant par les retours du client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Recueillir un brief de montage complet.
+> 2. Mener un montage en 7 passes, de l''ours à l''export.
+> 3. Choisir les meilleurs extraits pour des vidéos courtes.
+> 4. Recevoir et traiter les retours du client avec des repères de temps.
+> 5. Vérifier une vidéo avec une grille de 12 points avant livraison.
+
+## Le cas pratique : la chaîne « Vola Malina »
+
+> [!exemple] Votre client
+> **Tiana** anime la chaîne YouTube « Vola Malina » : des conseils d''argent pour les jeunes francophones (épargne, budget, Mobile Money). Il publie une vidéo chaque mardi. Il vous envoie **45 minutes de rushes** filmés face caméra pour une vidéo intitulée « 5 erreurs qui vident votre compte chaque mois », plus 10 images d''illustration et son logo. Il veut aussi **3 vidéos courtes** pour TikTok et Reels.
+
+## Le brief de montage
+
+Avant de commencer, posez ces 10 questions (ou envoyez-les par écrit) :
+
+1. Quelle **durée** pour la vidéo finale ?
+2. Quel **style** ? Donnez-moi 1 ou 2 vidéos de référence que vous aimez.
+3. Quel **rythme** ? Très dynamique, ou posé ?
+4. Faut-il des **sous-titres** ? Incrustés ou en fichier séparé ?
+5. Quelles **couleurs et polices** pour les textes (charte de la chaîne) ?
+6. Avez-vous une **musique** ou une bibliothèque musicale ?
+7. Y a-t-il une **introduction** et une **fin** (générique, logo, appel à s''abonner) standard ?
+8. Quels passages sont **à garder absolument** ou **à couper** ?
+9. Quelle **date de livraison**, et combien de **tours de retours** ?
+10. Qui fait la **miniature** et le texte de description ?
+
+> [!astuce]
+> Les vidéos de référence valent mieux que de longues explications. Regardez-les avec attention : rythme des coupes, style des textes, effets sonores, musique. Votre premier montage sera beaucoup plus proche de ce que le client imagine.
+
+## Le montage en 7 passes
+
+Un monteur ne fait pas tout en une seule fois : il repasse plusieurs fois sur la vidéo, avec un objectif différent à chaque passe.
+
+| N° | Passe | Objectif | Durée de la vidéo après la passe (exemple) |
+| --- | --- | --- | --- |
+| 1 | **Dérushage** | Regarder les rushes, marquer les bonnes prises, noter les meilleurs passages | 45 min de rushes |
+| 2 | **Ours** (premier assemblage) | Mettre les bonnes prises dans l''ordre, couper les grosses erreurs | 15 min |
+| 3 | **Montage serré** | Couper tous les silences, hésitations, répétitions ; vérifier la logique | 8 min 30 |
+| 4 | **Habillage** | Plans de coupe, textes, zooms, effets sonores, logo | 8 min 30 |
+| 5 | **Son** | Niveaux de voix, réduction du bruit, musique, fondus | 8 min 30 |
+| 6 | **Couleur** | Exposition, balance des blancs, harmonie | 8 min 30 |
+| 7 | **Vérification et export** | Grille de 12 points, export de validation | 8 min 30 |
+
+> [!definition] Dérushage
+> Le visionnage complet des rushes pour repérer les bonnes prises, les erreurs et les moments forts. On note les repères de temps (« 12:35 – très bonne explication de l''erreur n° 3 »). C''est une étape souvent négligée, mais elle fait gagner beaucoup de temps.
+
+### L''introduction : les 30 premières secondes
+
+1. **0 à 5 secondes** : l''accroche, la phrase la plus forte (« Chaque mois, ces 5 erreurs vous coûtent plus que votre forfait internet. »).
+2. **5 à 20 secondes** : la promesse (« Dans cette vidéo, je vous montre comment les éviter, avec un exemple chiffré. »).
+3. **20 à 30 secondes** : le titre de la chaîne ou le générique court, puis directement la première erreur.
+
+N''y mettez pas de long générique : beaucoup de spectateurs partent avant qu''il soit fini.
+
+## Les vidéos courtes tirées de la vidéo longue
+
+### Choisir les bons extraits
+
+Un bon extrait de 30 à 60 secondes :
+
+1. **Se comprend seul**, sans avoir vu la vidéo longue.
+2. Commence par une **accroche** forte dans les 2 premières secondes.
+3. Contient **une seule idée** complète.
+4. Se termine sur une phrase qui donne envie d''en savoir plus.
+
+> [!exemple] 3 extraits pour « Vola Malina »
+> 1. **« L''erreur que tout le monde fait le jour de la paie »** (de 03:12 à 03:58 dans la vidéo longue).
+> 2. **« Le calcul qui fait peur : vos petits achats sur un an »** (de 05:40 à 06:25).
+> 3. **« La règle 50-30-20 en 40 secondes »** (de 07:05 à 07:45).
+
+### Adapter au format vertical
+
+1. **Recadrez** sur le visage : la personne doit rester au centre.
+2. Ajoutez des **sous-titres** gros et lisibles.
+3. Ajoutez un **titre** en haut les 2 ou 3 premières secondes.
+4. Laissez de la marge en bas et à droite : les boutons des applications cachent cette zone.
+
+## Recevoir et traiter les retours
+
+Envoyez une **version de validation** légère (720p) avec un message clair :
+
+« Bonjour Tiana, voici la V1 de "5 erreurs qui vident votre compte" (8 min 30) : [lien]. Pouvez-vous m''envoyer vos retours avec le **repère de temps** de chaque remarque, par exemple : "02:15 – couper cette phrase" ? Je les intègre sous 24 h. »
+
+### Un tableau de retours
+
+| Repère | Retour du client | Statut |
+| --- | --- | --- |
+| 00:04 | Accroche trop longue, commencer à « Chaque mois » | Fait |
+| 02:15 | Couper la phrase sur la banque | Fait |
+| 05:10 | Ajouter le texte « 365 × 2 000 Ar = 730 000 Ar » | Fait |
+| 07:50 | Musique trop forte | Fait |
+
+Traitez **chaque** retour, cochez-le, et renvoyez une V2 avec le tableau. Le client voit que rien n''a été oublié.
+
+## La grille de vérification en 12 points
+
+| N° | Point à vérifier | Oui / Non |
+| --- | --- | --- |
+| 1 | L''accroche est dans les 5 premières secondes | |
+| 2 | Plus aucun silence ni hésitation gênante | |
+| 3 | Aucun saut d''image involontaire (fin de phrase coupée, image noire) | |
+| 4 | Textes sans faute d''orthographe | |
+| 5 | Sous-titres corrigés mot par mot | |
+| 6 | Voix claire, jamais couverte par la musique | |
+| 7 | Aucune saturation du son | |
+| 8 | Couleurs harmonisées entre les plans | |
+| 9 | Musiques et images libres de droits ou fournies par le client | |
+| 10 | Logo et fin conformes à la charte | |
+| 11 | Format et résolution conformes (16:9 ou 9:16, 1080p) | |
+| 12 | Vidéo regardée entièrement, une fois avec casque et une fois sur téléphone | |
+
+> [!attention] Erreurs fréquentes des débutants
+> - Sauter le dérushage et chercher les bonnes prises pendant le montage.
+> - Envoyer une version finale lourde avant la validation.
+> - Laisser des fautes dans les textes à l''écran.
+> - Oublier un retour du client dans la V2.
+> - Ne regarder la vidéo que par morceaux avant de l''envoyer.
+
+> [!retenir]
+> - Un brief complet avec des vidéos de référence.
+> - 7 passes : dérushage, ours, montage serré, habillage, son, couleur, vérification.
+> - Les 30 premières secondes : accroche, promesse, entrée rapide dans le sujet.
+> - Des extraits courts qui se comprennent seuls, au format vertical.
+> - Des retours avec repères de temps, traités un par un.
+
+## Exercice pratique : la commande « Vola Malina »
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Filmez-vous (ou filmez un proche) 20 à 30 minutes en expliquant 5 conseils sur un sujet que vous connaissez : ce seront vos rushes.
+> 2. Rédigez le brief en répondant vous-même aux 10 questions.
+> 3. Faites le dérushage avec une liste de repères de temps.
+> 4. Montez la vidéo de 6 à 8 minutes en 7 passes, dans DaVinci Resolve.
+> 5. Créez 3 vidéos courtes verticales avec sous-titres dans CapCut.
+> 6. Demandez à un proche de faire 5 retours avec repères de temps, traitez-les et remplissez la grille de 12 points.
+>
+> **À livrer** : le brief, la liste de dérushage, la vidéo finale, les 3 vidéos courtes, le tableau des retours et la grille. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 3, 0, 'Qu''est-ce que le dérushage ?', '["Regarder tous les rushes et noter les bonnes prises","Exporter la vidéo","Supprimer tous les rushes","Ajouter la musique"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 3, 1, 'Où placer l''accroche d''une vidéo YouTube ?', '["À la fin","Dans les 5 premières secondes","Au milieu","Après le générique de 1 minute"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 3, 2, 'Comment le client doit-il envoyer ses retours ?', '["Il ne doit pas en envoyer","Avec le repère de temps de chaque remarque","Par appel sans notes","En une phrase générale"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 4, 'Trouver des clients et se faire payer', 'Bande démo, portfolio avant / après, 5 canaux, prix et forfaits, devis, livraison de gros fichiers, paiements et fidélisation.', 'Un créateur qui trouve un bon monteur le garde longtemps : il publie chaque semaine et n''a pas envie de tout réexpliquer à quelqu''un de nouveau. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et organiser les échanges de gros fichiers et les paiements depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une bande démo et un portfolio de monteur.
+> 2. Trouver des clients grâce à 5 canaux, avec un message de prospection prêt à l''emploi.
+> 3. Calculer le prix d''une vidéo et d''un forfait mensuel.
+> 4. Rédiger un devis avec les tours de retours et les conditions.
+> 5. Livrer de gros fichiers et vous faire payer depuis Madagascar.
+> 6. Fidéliser un créateur.
+
+## La bande démo et le portfolio
+
+### La bande démo
+
+> [!definition] Bande démo (ou *showreel*)
+> Une vidéo de 30 à 90 secondes qui montre vos meilleurs moments de montage, à la suite, sur une musique rythmée. C''est la première chose qu''un client regarde.
+
+1. Gardez **seulement les meilleurs passages** : 2 à 5 secondes chacun.
+2. Montrez de la **variété** : face caméra, vidéos courtes, publicité, événement.
+3. Commencez et finissez par **vos plans les plus forts**.
+4. Terminez par votre **nom**, votre métier et votre contact.
+
+### Le portfolio
+
+1. **3 à 5 vidéos complètes** : votre projet « Vola Malina » (module 4), une publicité, un clip ou une vidéo d''événement.
+2. Pour chaque vidéo : le **brief**, ce que vous avez fait, et le **résultat** si vous l''avez (vues, durée moyenne de visionnage).
+3. Une version **avant / après** : 20 secondes de rushes, puis le même passage monté. Rien ne montre mieux votre travail.
+
+Publiez-le sur une chaîne **YouTube** (vidéos non répertoriées si besoin) ou sur **Vimeo**, avec une page qui regroupe les liens.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Créateurs YouTube francophones** | Vidéos chaque semaine | Contactez des chaînes de 5 000 à 100 000 abonnés qui publient régulièrement ; proposez un extrait monté gratuitement |
+| 2 | **Plateformes de freelance** (Fiverr, Upwork, plateformes francophones) | Clients internationaux | Offre précise : « Montage de votre vidéo YouTube de 10 minutes, livré en 48 h » ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 3 | **Groupes de créateurs** (Facebook, Discord) | Créateurs qui cherchent un monteur | Participez, aidez, montrez votre travail |
+| 4 | **Entreprises et marques à Madagascar** | Publicités, vidéos de présentation | Montrez une publicité avant/après pour une marque locale |
+| 5 | **Agences de communication et de production** | Sous-traitance | Proposez de les aider sur les montages en période chargée |
+
+### Le message de prospection, prêt à l''emploi
+
+> [!exemple] Message à une créatrice YouTube
+> « Bonjour Laura, je regarde votre chaîne de cuisine depuis quelques mois, j''adore votre vidéo sur les sauces. Je suis monteur vidéo et j''ai remarqué que vous ne publiez pas encore de Shorts : votre vidéo sur la mayonnaise ratée contient au moins 3 passages parfaits pour ça. Je me suis permis d''en monter un pour vous montrer : [lien]. Si ça vous plaît, je peux vous proposer un forfait vidéo longue + 3 Shorts par semaine. Bonne journée ! »
+
+Un **exemple réel monté pour le client** convainc bien plus qu''un long message. Ne le faites que sur un court extrait (moins de 30 minutes de travail).
+
+## Calculer ses prix
+
+### Étape 1 : votre prix horaire
+
+1. **Revenu mensuel visé** (exemple : 1 500 000 Ar) ÷ **heures facturables** (exemple : 100 h) = **15 000 Ar de l''heure**.
+
+### Étape 2 : le temps par type de vidéo
+
+Mesurez votre temps réel sur vos exercices. Au début, voici des ordres de grandeur :
+
+| Vidéo | Temps estimé (débutant) | Exemple de prix (15 000 Ar/h) |
+| --- | --- | --- |
+| Vidéo courte de 30 à 60 s, avec sous-titres | 1 h | 15 000 Ar |
+| Vidéo YouTube de 8 à 10 min, face caméra | 6 h | 90 000 Ar |
+| Publicité de 30 s, avec habillage soigné | 5 h | 75 000 Ar |
+| Vidéo d''événement de 5 min | 8 h | 120 000 Ar |
+
+### Étape 3 : le forfait mensuel
+
+> [!exemple] Forfait « Créateur »
+> 4 vidéos YouTube + 12 vidéos courtes par mois = (4 × 6 h) + (12 × 1 h) = 36 h, soit **540 000 Ar par mois** (exemple), payé en début de mois.
+
+Ces prix sont des **exemples** à adapter à votre niveau et à vos clients. Pour les clients étrangers, fixez vos prix en euros ou en dollars, adaptés à leur marché. Avec l''expérience et des modèles (intros, styles de textes enregistrés), vous travaillerez plus vite.
+
+## Le devis et les conditions
+
+1. **Ce qui est livré** : nombre de vidéos, durée, format, sous-titres.
+2. **Ce qui n''est pas inclus** : tournage, miniature, achat de musique, traduction.
+3. **Le délai** à partir de la réception de **tous** les rushes.
+4. **Le nombre de tours de retours** (souvent 2) ; au-delà, facturé en plus.
+5. **Le prix** et les conditions : 50 % à la commande et 50 % à la livraison, ou forfait mensuel payé d''avance.
+6. **La livraison** : la version finale en haute qualité est envoyée **après le paiement** du solde ; avant, le client reçoit des versions de validation légères ou avec un filigrane.
+7. **Les fichiers de projet** (DaVinci, Premiere) : inclus ou non, à préciser.
+
+## Livrer de gros fichiers depuis Madagascar
+
+| Besoin | Solution |
+| --- | --- |
+| Envoyer une version de validation | MP4 720p léger, compressé avec HandBrake ; lien Google Drive |
+| Envoyer la version finale | Google Drive, Dropbox ou WeTransfer, envoi la nuit si votre connexion est meilleure |
+| Envoyer à une plateforme de freelance | Directement sur la plateforme, ou lien de téléchargement dans le message de livraison |
+| Recevoir les rushes | Demander un lien de dossier partagé, avec les fichiers d''origine |
+
+> [!astuce]
+> Prévenez le client du **temps d''envoi** quand il est long : « La version finale fait 3 Go, l''envoi prendra environ 2 heures, vous l''aurez avant 10 h (heure de Paris). »
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Gardez une trace de chaque paiement et renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Fidéliser un créateur
+
+1. **Livrez toujours à l''heure**, chaque semaine.
+2. Créez une **fiche de style** du client : polices, couleurs, effets sonores, intro, fin. Il n''a jamais à répéter ses préférences.
+3. **Regardez les statistiques** de ses vidéos avec lui (durée moyenne de visionnage) et proposez des améliorations.
+4. **Proposez des idées** : nouveaux formats courts, nouvelles intros.
+5. **Demandez un avis** et une recommandation après 2 ou 3 mois réussis.
+
+> [!retenir]
+> - Une bande démo courte et un portfolio avec un avant / après.
+> - Un extrait monté pour le client convainc mieux qu''un long message.
+> - Prix = temps réel × prix horaire ; un forfait mensuel pour les créateurs réguliers.
+> - Un devis avec délai, tours de retours, 50 % d''acompte et version finale après paiement.
+> - Des envois de gros fichiers organisés et annoncés.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Montez votre bande démo de 30 à 60 secondes.
+> 2. Créez votre page de portfolio avec 3 vidéos et un avant / après.
+> 3. Calculez vos prix et un forfait « Créateur ».
+> 4. Rédigez votre modèle de devis avec les 7 points.
+> 5. Choisissez 3 créateurs francophones, montez un court extrait de leur vidéo et envoyez au moins un message de prospection pour de vrai.
+>
+> **À livrer** : votre bande démo, le lien du portfolio, vos prix, votre devis et vos 3 messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 4, 0, 'Quelle durée pour une bande démo ?', '["1 heure","5 secondes","10 minutes","30 à 90 secondes"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 4, 1, 'Quand envoyer la version finale en haute qualité ?', '["Jamais","Avant tout paiement","Avant même le montage","Après le paiement du solde"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 4, 2, 'Un forfait de 36 heures à 15 000 Ar de l''heure coûte…', '["150 000 Ar","36 000 Ar","5 400 000 Ar","540 000 Ar"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quel est le rôle d''un monteur vidéo ?', '["Réparer les caméras","Filmer les vidéos","Écrire les scénarios uniquement","Transformer des rushes en une vidéo qui retient l''attention"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle mémoire vive minimum pour commencer le montage ?', '["512 Mo","1 Go","Aucune","8 Go"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Comment recevoir des rushes lourds ?', '["Par un lien de téléchargement (Drive, Dropbox, WeTransfer)","Par e-mail en pièce jointe de 10 Go","Par WhatsApp vocal","Par SMS"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce que le B-roll ?', '["La musique de fond","Un bug du logiciel","Des images d''illustration placées par-dessus la personne qui parle","La deuxième caméra"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle résolution est le standard pour YouTube ?', '["8K obligatoire","Full HD 1920 × 1080","640 × 480","320 × 240"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Dans une vidéo face caméra, tous les combien changer d''image ?', '["Toutes les 5 à 10 secondes","À chaque mot","Jamais","Toutes les 5 minutes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''un jump cut ?', '["Une transition en forme d''étoile","Un saut en parachute filmé","Un effet sonore","Une coupe dans le même plan qui fait sauter l''image"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Dans une coupe en L…', '["L''image devient noire","Le son du plan A continue sur l''image du plan B","Le son est coupé","On ajoute un fondu"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle coupe utilise-t-on dans la grande majorité des cas ?', '["La coupe franche","La transition en cube","Le volet","Le fondu enchaîné"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quel élément du son est prioritaire ?', '["Les effets sonores","Le bruit de fond","La voix","La musique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce que la saturation du son ?', '["Un son trop fort qui grésille","Un format de fichier","Une musique libre de droits","Un son trop faible"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Où trouver des musiques libres de droits gratuites ?', '["Les clips d''artistes connus","La Bibliothèque audio de YouTube","N''importe quel site","Les chansons du moment à la radio"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Dans DaVinci Resolve, quelle page sert à corriger les couleurs ?', '["Cut","Media","Deliver","Color"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Que font les touches J, K, L ?', '["Ouvrir, fermer, enregistrer","Couper, copier, coller","Reculer, pause, avancer","Zoomer, dézoomer, exporter"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Que faire si l''ordinateur rame pendant le montage ?', '["Utiliser des médias optimisés ou des proxys","Exporter en 8K","Supprimer les rushes","Ajouter plus d''effets"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Pourquoi les sous-titres sont-ils indispensables sur les réseaux sociaux ?', '["Ils sont obligatoires par la loi","Ils rendent la vidéo plus courte","Beaucoup de vidéos sont regardées sans le son","Ils remplacent la musique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Que faire après avoir généré des sous-titres automatiques ?', '["Les traduire en anglais","Les supprimer","Corriger chaque mot","Les publier sans relire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quel codec est le plus utilisé pour l''export web ?', '["MP3","JPEG","H.264","ZIP"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quand acheter un logiciel de montage payant ?', '["Quand un client l''exige ou qu''un vrai besoin le justifie","Chaque mois, pour chaque client","Jamais, sous aucun prétexte","Avant même d''apprendre"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce que l''ours en montage ?', '["Le premier assemblage des bonnes prises","Le logo du client","La version finale","Un effet spécial"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''un bon extrait pour une vidéo courte ?', '["Un passage pris au hasard","Un passage qui se comprend seul, avec une seule idée et une accroche","La fin de la vidéo sans contexte","Le générique de début"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Pourquoi laisser de la marge en bas et à droite d''une vidéo verticale ?', '["Ce n''est pas utile","Les boutons des applications cachent cette zone","Pour mettre une publicité","Pour économiser des données"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
 
 -- mkt-0-f
 delete from public.exam_questions where course_id = 'mkt-0-f';

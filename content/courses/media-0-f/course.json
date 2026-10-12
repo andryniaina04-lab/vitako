@@ -1,0 +1,97 @@
+{
+  "id": "media-0-f",
+  "hours": 16,
+  "description": "Le monteur vidéo transforme des heures d'images brutes en vidéos qui retiennent l'attention : vidéos YouTube, formats courts pour TikTok et Reels, publicités, événements. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à monter pour des créateurs francophones et des entreprises malgaches, en télétravail, avec DaVinci Resolve et CapCut gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer ce que fait un monteur vidéo et qui le paie",
+    "Choisir les bons formats et appliquer les règles du rythme",
+    "Monter, étalonner et exporter avec DaVinci Resolve et CapCut",
+    "Mener une commande complète en 7 passes, retours compris",
+    "Créer des vidéos courtes verticales sous-titrées",
+    "Fixer ses prix, livrer de gros fichiers et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de monteur vidéo depuis Madagascar",
+      "summary": "Ce que fait un monteur, les 6 types de vidéos, vos clients, l'ordinateur nécessaire, gros fichiers et coupures.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que sont les rushes ?", "options": ["Les images et sons bruts filmés, avant montage", "Les vidéos déjà publiées", "Les musiques libres de droits", "Les sous-titres"], "correct": 0 },
+        { "q": "Quelles commandes sont les plus régulières en télétravail ?", "options": ["Les vidéos YouTube et les vidéos courtes", "Les films de cinéma", "Les vidéos de surveillance", "Les dessins animés longs"], "correct": 0 },
+        { "q": "Pourquoi utiliser un onduleur ?", "options": ["Une coupure pendant un export peut corrompre un fichier", "Pour améliorer les couleurs", "Pour accélérer Internet", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : formats, rythme, coupes et son",
+      "summary": "Vocabulaire, résolution, orientation, cadence d'images, les 6 règles du rythme, les types de coupes, le son et les droits de la musique.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel format pour TikTok, Reels et Shorts ?", "options": ["Vertical 9:16, 1080 × 1920", "Horizontal 16:9, 1920 × 1080", "Carré 1:1, 500 × 500", "4:3, 640 × 480"], "correct": 0 },
+        { "q": "Quelle cadence choisir pour le projet ?", "options": ["La même que celle des rushes", "Toujours 60 i/s", "Toujours 24 i/s", "N'importe laquelle"], "correct": 0 },
+        { "q": "Peut-on utiliser une chanson connue sans licence ?", "options": ["Non, la vidéo peut être bloquée ou démonétisée", "Oui, si elle est courte", "Oui, si on cite l'artiste", "Oui, sur TikTok uniquement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : DaVinci Resolve, CapCut, et les logiciels payants",
+      "summary": "Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que se passe-t-il si on déplace les rushes après les avoir importés ?", "options": ["Le projet ne les retrouve plus (fichiers hors ligne)", "Rien", "La vidéo s'exporte plus vite", "Les couleurs changent"], "correct": 0 },
+        { "q": "Dans DaVinci Resolve, quelle page sert à exporter ?", "options": ["Deliver", "Color", "Fusion", "Media"], "correct": 0 },
+        { "q": "Quel logiciel payant fonctionne uniquement sur Mac ?", "options": ["Final Cut Pro", "Adobe Premiere Pro", "DaVinci Resolve Studio", "CapCut"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : une vidéo YouTube et 3 vidéos courtes",
+      "summary": "Brief en 10 questions, montage en 7 passes, introduction, extraits verticaux, retours avec repères de temps et grille de 12 points.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le dérushage ?", "options": ["Regarder tous les rushes et noter les bonnes prises", "Supprimer tous les rushes", "Exporter la vidéo", "Ajouter la musique"], "correct": 0 },
+        { "q": "Où placer l'accroche d'une vidéo YouTube ?", "options": ["Dans les 5 premières secondes", "Après le générique de 1 minute", "À la fin", "Au milieu"], "correct": 0 },
+        { "q": "Comment le client doit-il envoyer ses retours ?", "options": ["Avec le repère de temps de chaque remarque", "En une phrase générale", "Par appel sans notes", "Il ne doit pas en envoyer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Bande démo, portfolio avant / après, 5 canaux, prix et forfaits, devis, livraison de gros fichiers, paiements et fidélisation.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle durée pour une bande démo ?", "options": ["30 à 90 secondes", "10 minutes", "1 heure", "5 secondes"], "correct": 0 },
+        { "q": "Quand envoyer la version finale en haute qualité ?", "options": ["Après le paiement du solde", "Avant tout paiement", "Jamais", "Avant même le montage"], "correct": 0 },
+        { "q": "Un forfait de 36 heures à 15 000 Ar de l'heure coûte…", "options": ["540 000 Ar", "36 000 Ar", "150 000 Ar", "5 400 000 Ar"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est le rôle d'un monteur vidéo ?", "options": ["Transformer des rushes en une vidéo qui retient l'attention", "Filmer les vidéos", "Écrire les scénarios uniquement", "Réparer les caméras"], "correct": 0 },
+    { "q": "Quelle mémoire vive minimum pour commencer le montage ?", "options": ["8 Go", "512 Mo", "1 Go", "Aucune"], "correct": 0 },
+    { "q": "Comment recevoir des rushes lourds ?", "options": ["Par un lien de téléchargement (Drive, Dropbox, WeTransfer)", "Par SMS", "Par e-mail en pièce jointe de 10 Go", "Par WhatsApp vocal"], "correct": 0 },
+    { "q": "Qu'est-ce que le B-roll ?", "options": ["Des images d'illustration placées par-dessus la personne qui parle", "La deuxième caméra", "Un bug du logiciel", "La musique de fond"], "correct": 0 },
+    { "q": "Quelle résolution est le standard pour YouTube ?", "options": ["Full HD 1920 × 1080", "640 × 480", "320 × 240", "8K obligatoire"], "correct": 0 },
+    { "q": "Dans une vidéo face caméra, tous les combien changer d'image ?", "options": ["Toutes les 5 à 10 secondes", "Toutes les 5 minutes", "Jamais", "À chaque mot"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un jump cut ?", "options": ["Une coupe dans le même plan qui fait sauter l'image", "Une transition en forme d'étoile", "Un saut en parachute filmé", "Un effet sonore"], "correct": 0 },
+    { "q": "Dans une coupe en L…", "options": ["Le son du plan A continue sur l'image du plan B", "L'image devient noire", "Le son est coupé", "On ajoute un fondu"], "correct": 0 },
+    { "q": "Quelle coupe utilise-t-on dans la grande majorité des cas ?", "options": ["La coupe franche", "Le fondu enchaîné", "La transition en cube", "Le volet"], "correct": 0 },
+    { "q": "Quel élément du son est prioritaire ?", "options": ["La voix", "La musique", "Les effets sonores", "Le bruit de fond"], "correct": 0 },
+    { "q": "Qu'est-ce que la saturation du son ?", "options": ["Un son trop fort qui grésille", "Un son trop faible", "Une musique libre de droits", "Un format de fichier"], "correct": 0 },
+    { "q": "Où trouver des musiques libres de droits gratuites ?", "options": ["La Bibliothèque audio de YouTube", "Les chansons du moment à la radio", "Les clips d'artistes connus", "N'importe quel site"], "correct": 0 },
+    { "q": "Dans DaVinci Resolve, quelle page sert à corriger les couleurs ?", "options": ["Color", "Deliver", "Media", "Cut"], "correct": 0 },
+    { "q": "Que font les touches J, K, L ?", "options": ["Reculer, pause, avancer", "Couper, copier, coller", "Ouvrir, fermer, enregistrer", "Zoomer, dézoomer, exporter"], "correct": 0 },
+    { "q": "Que faire si l'ordinateur rame pendant le montage ?", "options": ["Utiliser des médias optimisés ou des proxys", "Exporter en 8K", "Ajouter plus d'effets", "Supprimer les rushes"], "correct": 0 },
+    { "q": "Pourquoi les sous-titres sont-ils indispensables sur les réseaux sociaux ?", "options": ["Beaucoup de vidéos sont regardées sans le son", "Ils remplacent la musique", "Ils sont obligatoires par la loi", "Ils rendent la vidéo plus courte"], "correct": 0 },
+    { "q": "Que faire après avoir généré des sous-titres automatiques ?", "options": ["Corriger chaque mot", "Les publier sans relire", "Les supprimer", "Les traduire en anglais"], "correct": 0 },
+    { "q": "Quel codec est le plus utilisé pour l'export web ?", "options": ["H.264", "MP3", "JPEG", "ZIP"], "correct": 0 },
+    { "q": "Quand acheter un logiciel de montage payant ?", "options": ["Quand un client l'exige ou qu'un vrai besoin le justifie", "Avant même d'apprendre", "Jamais, sous aucun prétexte", "Chaque mois, pour chaque client"], "correct": 0 },
+    { "q": "Qu'est-ce que l'ours en montage ?", "options": ["Le premier assemblage des bonnes prises", "La version finale", "Un effet spécial", "Le logo du client"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un bon extrait pour une vidéo courte ?", "options": ["Un passage qui se comprend seul, avec une seule idée et une accroche", "Le générique de début", "Un passage pris au hasard", "La fin de la vidéo sans contexte"], "correct": 0 },
+    { "q": "Pourquoi laisser de la marge en bas et à droite d'une vidéo verticale ?", "options": ["Les boutons des applications cachent cette zone", "Pour mettre une publicité", "Pour économiser des données", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle version envoyer pour la validation ?", "options": ["Une version légère en 720p", "Les rushes complets", "Le fichier de projet", "Une version 8K"], "correct": 0 },
+    { "q": "Combien de tours de retours prévoit-on souvent dans un devis ?", "options": ["2", "Illimités", "0", "20"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une fiche de style client ?", "options": ["Un document avec ses polices, couleurs, effets, intro et fin", "Sa fiche de paie", "Son contrat de travail", "Sa liste de vidéos préférées sur Netflix"], "correct": 0 }
+  ]
+}
