@@ -4685,6 +4685,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-3-f": {
+  "hours": 14,
+  "description": "L'email marketeur construit une relation avec les abonnés d'une entreprise grâce à des e-mails utiles et bien ciblés, qui informent, fidélisent et font vendre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des boutiques en ligne, des hôtels, des formateurs et des agences, à Madagascar et à l'étranger, avec Brevo et MailerLite : consentement, liste, segments, rédaction, mise en page, automatisations, indicateurs et délivrabilité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types d'e-mails et la règle du consentement",
+   "Faire grandir une liste et la segmenter",
+   "Rédiger des objets et des e-mails efficaces",
+   "Utiliser Brevo ou MailerLite : contacts, formulaires, modèles, campagnes, automatisations",
+   "Mener une mission complète avec stratégie, automatisations et rapport",
+   "Vendre ses services et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'email marketeur depuis Madagascar",
+    "summary": "Liste d'abonnés, newsletters, campagnes, e-mails automatiques et transactionnels, les 7 tâches, la règle du consentement et les clients.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types d'e-mails",
+     "Les tâches de l'email marketeur",
+     "La règle du consentement",
+     "Qui sont vos clients ?",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : observer comme un email marketeur"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : liste, segments, rédaction, indicateurs et délivrabilité",
+    "summary": "Aimant à prospects et double opt-in, segments, objet, texte d'aperçu et structure, indicateurs essentiels et bases de la délivrabilité.",
+    "sections": [
+     "Faire grandir la liste",
+     "Segmenter",
+     "Rédiger un e-mail efficace",
+     "Les indicateurs essentiels",
+     "La délivrabilité : les bases",
+     "Exercice pratique : vos premiers e-mails"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : Brevo, MailerLite et offres payantes",
+    "summary": "Import de contacts avec consentement, formulaire et double opt-in, modèle adapté au téléphone, campagne et test A/B, automatisation de bienvenue, Mailchimp, Brevo et ActiveCampaign payants.",
+    "sections": [
+     "Brevo et MailerLite",
+     "Importer et organiser les contacts",
+     "Le formulaire d'inscription",
+     "Le modèle d'e-mail",
+     "Envoyer une campagne",
+     "L'automatisation de bienvenue",
+     "Les offres payantes",
+     "Exercice pratique : votre boîte à outils"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la mission email de Raphia & Co",
+    "summary": "État des lieux et consentement, stratégie et calendrier, 3 automatisations essentielles, réengagement et nettoyage, rapport mensuel.",
+    "sections": [
+     "Le cas pratique : « Raphia & Co »",
+     "Étape 1 : l'état des lieux",
+     "Étape 2 : la stratégie",
+     "Étape 3 : les 3 automatisations essentielles",
+     "Étape 4 : le réengagement des inactifs",
+     "Étape 5 : le rapport mensuel",
+     "Exercice pratique : la mission Raphia & Co"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio et newsletter personnelle, 5 canaux, audit, mise en place, gestion mensuelle et séquences de vente, devis en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Le devis",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "tech-1-f": {
   "hours": 16,
   "description": "Le testeur logiciel vérifie qu'une application fonctionne de façon fiable sur les appareils des utilisateurs, et signale clairement les problèmes pour qu'ils soient corrigés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des entreprises de services numériques, des start-up et des éditeurs, à Madagascar et à l'étranger, avec Jira, Postman et Playwright : cas de test, valeurs limites, rapports de bugs, tests d'API, premiers tests automatisés et campagne complète. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

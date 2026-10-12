@@ -1,0 +1,97 @@
+{
+  "id": "mkt-3-f",
+  "hours": 14,
+  "description": "L'email marketeur construit une relation avec les abonnés d'une entreprise grâce à des e-mails utiles et bien ciblés, qui informent, fidélisent et font vendre. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des boutiques en ligne, des hôtels, des formateurs et des agences, à Madagascar et à l'étranger, avec Brevo et MailerLite : consentement, liste, segments, rédaction, mise en page, automatisations, indicateurs et délivrabilité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types d'e-mails et la règle du consentement",
+    "Faire grandir une liste et la segmenter",
+    "Rédiger des objets et des e-mails efficaces",
+    "Utiliser Brevo ou MailerLite : contacts, formulaires, modèles, campagnes, automatisations",
+    "Mener une mission complète avec stratégie, automatisations et rapport",
+    "Vendre ses services et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'email marketeur depuis Madagascar",
+      "summary": "Liste d'abonnés, newsletters, campagnes, e-mails automatiques et transactionnels, les 7 tâches, la règle du consentement et les clients.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Peut-on acheter une liste d'adresses ?", "options": ["Non", "Oui", "Oui, si elle est grande", "Oui, à l'étranger"], "correct": 0 },
+        { "q": "Quel type d'e-mail confirme une commande ?", "options": ["Transactionnel", "Newsletter", "Campagne promotionnelle", "Réengagement"], "correct": 0 },
+        { "q": "Que doit contenir chaque e-mail marketing ?", "options": ["Un lien de désinscription", "Une pièce jointe", "Dix images", "Un mot de passe"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : liste, segments, rédaction, indicateurs et délivrabilité",
+      "summary": "Aimant à prospects et double opt-in, segments, objet, texte d'aperçu et structure, indicateurs essentiels et bases de la délivrabilité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le double opt-in ?", "options": ["Une confirmation de l'inscription par e-mail", "Deux newsletters par jour", "Deux listes", "Un double prix"], "correct": 0 },
+        { "q": "Pourquoi le taux d'ouverture est-il moins fiable ?", "options": ["Certaines messageries ouvrent automatiquement les e-mails", "Il est toujours de 100 %", "Il n'existe plus", "Il compte les ventes"], "correct": 0 },
+        { "q": "70 clics pour 1 960 e-mails délivrés donnent un taux de clic d'environ…", "options": ["3,6 %", "70 %", "0,7 %", "36 %"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Brevo, MailerLite et offres payantes",
+      "summary": "Import de contacts avec consentement, formulaire et double opt-in, modèle adapté au téléphone, campagne et test A/B, automatisation de bienvenue, Mailchimp, Brevo et ActiveCampaign payants.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de colonnes pour un e-mail lisible sur téléphone ?", "options": ["Une", "Quatre", "Six", "Aucune règle"], "correct": 0 },
+        { "q": "Sur quel indicateur choisir le gagnant d'un test A/B ?", "options": ["Les clics", "La couleur", "Le nombre d'images", "Le poids du fichier"], "correct": 0 },
+        { "q": "Que faire avant chaque envoi ?", "options": ["S'envoyer un test sur ordinateur et téléphone", "Rien", "Supprimer la liste", "Changer d'outil"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la mission email de Raphia & Co",
+      "summary": "État des lieux et consentement, stratégie et calendrier, 3 automatisations essentielles, réengagement et nettoyage, rapport mensuel.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire des inscrits à un concours sans consentement clair ?", "options": ["Ne pas leur envoyer de promotions et faire vérifier la règle par la cliente", "Leur envoyer toutes les promotions", "Les vendre", "Les copier dans une autre liste"], "correct": 0 },
+        { "q": "Quelles sont les 3 automatisations essentielles ?", "options": ["Bienvenue, panier abandonné, après achat", "Anniversaire, Noël, soldes", "Facture, devis, relance", "Aucune"], "correct": 0 },
+        { "q": "Que faire des abonnés qui ne réagissent pas au réengagement ?", "options": ["Les retirer de la liste active", "Leur écrire tous les jours", "Les garder pour toujours", "Les signaler en spam"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio et newsletter personnelle, 5 canaux, audit, mise en place, gestion mensuelle et séquences de vente, devis en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la meilleure preuve de votre savoir-faire ?", "options": ["Votre propre newsletter", "Une liste achetée", "Un diplôme seul", "Rien"], "correct": 0 },
+        { "q": "25 heures à 15 000 Ar de l'heure font…", "options": ["375 000 Ar", "150 000 Ar", "250 000 Ar", "3 750 000 Ar"], "correct": 0 },
+        { "q": "Qui paie l'abonnement de l'outil d'e-mail ?", "options": ["Le client, à son nom", "L'email marketeur", "Personne", "La plateforme de freelance"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un email marketeur ?", "options": ["Il construit une relation avec des abonnés grâce à des e-mails utiles", "Il répare les serveurs", "Il crée des logos", "Il fait la comptabilité"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une liste d'abonnés ?", "options": ["Des personnes qui ont accepté de recevoir les e-mails", "Toutes les adresses trouvées sur Internet", "Une liste achetée", "Les employés"], "correct": 0 },
+    { "q": "Quel e-mail est envoyé seul selon une action ?", "options": ["Un e-mail automatique", "Une newsletter manuelle", "Une lettre papier", "Un SMS"], "correct": 0 },
+    { "q": "Quelle loi encadre les e-mails commerciaux aux États-Unis ?", "options": ["CAN-SPAM", "RGPD", "PCG", "CECRL"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un aimant à prospects ?", "options": ["Une ressource gratuite offerte en échange de l'inscription", "Un aimant de frigo", "Une liste achetée", "Un logiciel"], "correct": 0 },
+    { "q": "Combien de champs dans un formulaire d'inscription ?", "options": ["Peu : l'e-mail et éventuellement le prénom", "Vingt", "Aucun", "Tous les champs possibles"], "correct": 0 },
+    { "q": "Quels segments créer en premier ?", "options": ["Clients, prospects, inactifs", "Un segment par personne", "Aucun", "Seulement les inactifs"], "correct": 0 },
+    { "q": "Quelle longueur pour un objet d'e-mail ?", "options": ["Environ 30 à 50 caractères", "300 caractères", "1 mot", "Pas de limite"], "correct": 0 },
+    { "q": "Quel objet est à éviter ?", "options": ["PROMO !!! URGENT", "Vos 10 recettes à la vanille sont prêtes", "Nouvelle session : 3 mai", "La récolte 2026 est arrivée"], "correct": 0 },
+    { "q": "Qu'est-ce que le texte d'aperçu ?", "options": ["La ligne affichée après l'objet dans la boîte de réception", "Le pied de page", "Le titre du site", "Une pièce jointe"], "correct": 0 },
+    { "q": "Combien de messages principaux par e-mail ?", "options": ["Un seul", "Dix", "Aucun", "Autant que possible"], "correct": 0 },
+    { "q": "Quel taux de rebond viser ?", "options": ["Moins de 2 %", "20 %", "50 %", "Aucune importance"], "correct": 0 },
+    { "q": "Que vaut mieux qu'un signalement en spam ?", "options": ["Une désinscription facile", "Un e-mail de plus", "Une liste achetée", "Rien"], "correct": 0 },
+    { "q": "Que peut faire un outil d'e-mail en cas de trop de plaintes ?", "options": ["Suspendre le compte", "Offrir un abonnement", "Rien", "Doubler les envois"], "correct": 0 },
+    { "q": "Quelle largeur standard pour un e-mail ?", "options": ["Environ 600 px", "2 000 px", "100 px", "Aucune"], "correct": 0 },
+    { "q": "Pourquoi ajouter un texte alternatif aux images ?", "options": ["Pour comprendre l'e-mail si les images sont bloquées", "Pour décorer", "Pour payer moins", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que fait l'automatisation de bienvenue après la condition « a acheté » ?", "options": ["Ajoute l'étiquette client et s'arrête", "Envoie une offre de bienvenue quand même", "Supprime le contact", "Rien"], "correct": 0 },
+    { "q": "Quel outil est connu pour ses automatisations très puissantes et son CRM ?", "options": ["ActiveCampaign", "Canva", "Zoom", "Excel"], "correct": 0 },
+    { "q": "Quelle fréquence a été choisie pour Raphia & Co ?", "options": ["Une newsletter tous les 15 jours plus les automatisations", "Une par an", "Dix par jour", "Aucune"], "correct": 0 },
+    { "q": "Que déclenche l'automatisation de panier abandonné ?", "options": ["Un panier non payé", "Une inscription", "Un anniversaire", "Une désinscription"], "correct": 0 },
+    { "q": "Qu'est-ce que le nettoyage de liste ?", "options": ["Retirer les adresses en erreur et les inactifs", "Supprimer tous les clients", "Changer d'outil", "Ajouter des adresses achetées"], "correct": 0 },
+    { "q": "Quand envoyer à des abonnés en France depuis Madagascar ?", "options": ["Le matin, heure de Paris", "À 3 h du matin heure de Paris", "Au hasard", "Jamais"], "correct": 0 },
+    { "q": "Quel message envoyer à une boutique sans automatisation ?", "options": ["Montrer le problème constaté et proposer les automatisations", "Une liste de prix sans explication", "Une critique", "Rien"], "correct": 0 },
+    { "q": "Que faire si un client insiste pour écrire à une liste achetée ?", "options": ["Refuser", "Accepter", "Accepter en secret", "Doubler le prix"], "correct": 0 },
+    { "q": "Quelle évolution concerne les programmes de fidélité et les SMS ?", "options": ["Spécialiste CRM et fidélisation", "Développeur back-end", "Comptable", "Monteur audio"], "correct": 0 }
+  ]
+}

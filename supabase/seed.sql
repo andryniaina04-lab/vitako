@@ -49,7 +49,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true),
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true),
-  ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 12, false),
+  ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true),
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 15, false),
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
@@ -33861,6 +33861,600 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Que préciser dans le devis sur les corrections techniques ?', '["Rien","Qu''elles peuvent dépendre du développeur","Qu''elles sont toujours gratuites","Qu''elles sont interdites"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Faut-il accepter d''être payé uniquement à la position ?', '["Oui, si le client insiste","Oui, pour la première place","Non, engagez-vous sur le travail et des indicateurs transparents","Oui, toujours"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-f', 'Quelle évolution vise les sites multilingues ?', '["Graphiste","SEO international","Comptable","Monteur vidéo"]'::jsonb, 1);
+
+-- mkt-3-f
+delete from public.exam_questions where course_id = 'mkt-3-f';
+delete from public.module_questions where course_id = 'mkt-3-f';
+delete from public.lessons where course_id = 'mkt-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-f', 0, 'Le métier d''email marketeur depuis Madagascar', 'Liste d''abonnés, newsletters, campagnes, e-mails automatiques et transactionnels, les 7 tâches, la règle du consentement et les clients.', 'L''e-mail reste l''un des canaux qui rapportent le plus aux entreprises : une boutique, une école ou un hôtel qui écrit régulièrement à ses abonnés vend davantage et fidélise mieux ses clients. L''email marketeur conçoit ces e-mails, les automatise et mesure leurs résultats. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un email marketeur.
+> 2. Distinguer les types d''e-mails : newsletters, campagnes, e-mails automatiques.
+> 3. Comprendre la règle du consentement.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un email marketeur **construit une relation avec les abonnés d''une entreprise grâce à des e-mails utiles et bien ciblés, qui informent, fidélisent et font vendre, en respectant leur choix de les recevoir**.
+
+> [!definition] Liste d''abonnés
+> Les adresses e-mail des personnes qui ont **accepté** de recevoir les e-mails d''une entreprise : clients, visiteurs du site, participants à un événement.
+
+## Les types d''e-mails
+
+| Type | Rôle | Exemple |
+| --- | --- | --- |
+| **Newsletter** | Informer régulièrement, garder le lien | « Les nouveautés du mois chez Vanille Soa » |
+| **Campagne promotionnelle** | Annoncer une offre ou un événement | « -20 % sur les coffrets jusqu''à dimanche » |
+| **E-mail automatique** | Envoyé seul selon une action ou une date | E-mail de bienvenue, panier abandonné, anniversaire |
+| **E-mail transactionnel** | Confirmer une action | Confirmation de commande, mot de passe oublié |
+
+> [!exemple] Une séquence de bienvenue
+> - **Jour 0** : « Bienvenue ! Voici votre guide gratuit des recettes à la vanille. »
+> - **Jour 2** : l''histoire de la coopérative de Sambava.
+> - **Jour 5** : les 3 produits préférés des clients, avec leurs avis.
+> - **Jour 9** : une offre de bienvenue valable 7 jours.
+
+## Les tâches de l''email marketeur
+
+| N° | Tâche | Exemple |
+| --- | --- | --- |
+| 1 | **Faire grandir la liste** | Formulaire d''inscription avec un guide gratuit |
+| 2 | **Segmenter** | Séparer clients et prospects, pays, centres d''intérêt |
+| 3 | **Rédiger** | Objets, textes, appels à l''action |
+| 4 | **Mettre en page** | Modèles adaptés au téléphone |
+| 5 | **Automatiser** | Bienvenue, panier abandonné, relance |
+| 6 | **Mesurer** | Ouvertures, clics, ventes, désinscriptions |
+| 7 | **Protéger la délivrabilité** | Liste propre, bonnes pratiques d''envoi |
+
+## La règle du consentement
+
+> [!definition] Consentement
+> L''accord clair de la personne pour recevoir des e-mails marketing, par exemple en cochant une case ou en s''inscrivant elle-même à une newsletter.
+
+| À faire | À ne jamais faire |
+| --- | --- |
+| Formulaire d''inscription clair | Acheter une liste d''adresses |
+| Lien de désinscription dans chaque e-mail | Ajouter des contacts sans leur accord |
+| Respecter immédiatement les désinscriptions | Cacher le lien de désinscription |
+| Garder la preuve de l''inscription (date, source) | Copier les contacts d''un autre service |
+
+> [!attention]
+> Les lois de nombreux pays encadrent l''e-mail marketing (en Europe le RGPD et les règles sur les communications électroniques, au Canada la loi anti-pourriel, aux États-Unis la loi CAN-SPAM). Le client est responsable de sa liste ; votre rôle est de l''aider à respecter les règles et de refuser les pratiques douteuses.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Hôtels et agences de voyage** qui veulent garder le lien avec leurs anciens clients étrangers.
+2. **Exportateurs et boutiques en ligne** (vanille, épices, artisanat, cosmétiques).
+3. **Écoles et centres de formation** : inscriptions, rappels, nouvelles sessions.
+4. **ONG** : lettres d''information aux donateurs.
+
+### À l''étranger
+
+1. **Boutiques en ligne et marques** francophones.
+2. **Formateurs, coachs et créateurs de cours** qui vendent par e-mail.
+3. **Agences de marketing** qui sous-traitent la création et l''automatisation des e-mails.
+
+> [!madagascar] Votre avantage
+> Les marques et les indépendants francophones ont besoin de textes d''e-mails bien écrits et d''automatisations bien construites. Votre français écrit et votre capacité à rédiger des histoires (producteurs, artisans, voyages) sont des atouts, notamment pour les entreprises malgaches qui vendent à l''étranger.
+
+## Votre plan d''apprentissage
+
+1. **Les bases** (2 semaines) : consentement, types d''e-mails, indicateurs.
+2. **La rédaction** (2 à 3 semaines) : objets, structure, appels à l''action.
+3. **Les outils** (2 semaines) : Brevo, MailerLite.
+4. **L''automatisation** (2 semaines) : séquences et segments.
+5. **Les projets** : une séquence complète et des campagnes pour votre portfolio.
+
+*(Durées données en exemple pour 2 à 3 heures de pratique par jour.)*
+
+> [!retenir]
+> - L''email marketeur construit une relation utile avec des abonnés consentants.
+> - Newsletters, campagnes, e-mails automatiques et transactionnels.
+> - 7 tâches : liste, segments, rédaction, mise en page, automatisation, mesure, délivrabilité.
+> - Le consentement est la règle d''or ; jamais de liste achetée.
+
+## Exercice pratique : observer comme un email marketeur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Inscrivez-vous à 5 newsletters de marques ou de médias que vous aimez.
+> 2. Pendant une semaine, notez pour chaque e-mail reçu : type, objet, appel à l''action, lien de désinscription.
+> 3. Choisissez la meilleure et la moins bonne, et expliquez pourquoi.
+> 4. Imaginez la séquence de bienvenue (4 e-mails) d''une entreprise malgache de votre choix.
+>
+> **À livrer** : votre tableau d''observation, votre analyse et votre séquence.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 0, 0, 'Peut-on acheter une liste d''adresses ?', '["Non","Oui","Oui, si elle est grande","Oui, à l''étranger"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 0, 1, 'Quel type d''e-mail confirme une commande ?', '["Newsletter","Réengagement","Transactionnel","Campagne promotionnelle"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 0, 2, 'Que doit contenir chaque e-mail marketing ?', '["Un lien de désinscription","Une pièce jointe","Dix images","Un mot de passe"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-f', 1, 'Les bases : liste, segments, rédaction, indicateurs et délivrabilité', 'Aimant à prospects et double opt-in, segments, objet, texte d''aperçu et structure, indicateurs essentiels et bases de la délivrabilité.', 'Ce module vous donne les bases de l''email marketing : faire grandir une liste honnêtement, segmenter, rédiger des e-mails qui donnent envie d''être ouverts et lus, et comprendre les indicateurs et la délivrabilité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire grandir une liste avec un formulaire et une offre utile.
+> 2. Segmenter une liste.
+> 3. Rédiger un objet et un e-mail efficaces.
+> 4. Lire les indicateurs essentiels.
+> 5. Appliquer les bonnes pratiques de délivrabilité.
+
+## Faire grandir la liste
+
+> [!definition] Aimant à prospects (lead magnet)
+> Une ressource gratuite et utile offerte en échange de l''inscription : guide, liste de contrôle, recettes, code de réduction, mini-formation.
+
+| Entreprise | Aimant à prospects |
+| --- | --- |
+| Marque de vanille | « 10 recettes faciles à la vanille de Madagascar » |
+| Agence de voyage | « Le guide gratuit pour préparer son voyage à Madagascar » |
+| Centre de formation | « Le test gratuit pour connaître votre niveau d''anglais » |
+| Boutique de vêtements | « 10 % sur votre première commande » |
+
+### Le formulaire d''inscription
+
+1. **Peu de champs** : e-mail (et prénom si utile).
+2. **Une promesse claire** : ce que la personne va recevoir et à quelle fréquence.
+3. **Une case** ou une mention claire pour le consentement aux e-mails marketing.
+4. **Un lien** vers la politique de confidentialité.
+5. **Le double opt-in** si possible.
+
+> [!definition] Double opt-in (double confirmation)
+> Après l''inscription, la personne reçoit un e-mail pour confirmer son adresse. Cela évite les fausses adresses et prouve le consentement.
+
+## Segmenter
+
+| Segment | Critère | E-mail adapté |
+| --- | --- | --- |
+| Nouveaux abonnés | Inscrits depuis moins de 30 jours | Séquence de bienvenue |
+| Clients | Au moins un achat | Conseils d''utilisation, nouveautés |
+| Prospects | Jamais acheté | Avis clients, offre de première commande |
+| Clients fidèles | 3 achats ou plus | Accès en avant-première |
+| Inactifs | Aucune ouverture depuis 6 mois | Campagne de réengagement |
+| Pays | France, Canada, Madagascar… | Prix, devises, dates adaptés |
+
+> [!astuce]
+> Un e-mail envoyé à un segment bien choisi obtient presque toujours de meilleurs résultats qu''un même e-mail envoyé à toute la liste. Commencez par 3 segments simples : clients, prospects, inactifs.
+
+## Rédiger un e-mail efficace
+
+### L''objet
+
+| Règle | Exemple |
+| --- | --- |
+| **Court** (environ 30 à 50 caractères) | « Vos 10 recettes à la vanille sont prêtes » |
+| **Clair** sur le contenu | « Nouvelle session de formation Excel : 3 mai » |
+| **Pas trompeur** | Pas de « RE : » ou « Urgent » inventés |
+| **Pas de majuscules** ni de points d''exclamation en série | Éviter « PROMO !!! » |
+
+> [!definition] Texte d''aperçu (preheader)
+> La ligne qui s''affiche après l''objet dans la boîte de réception. Utilisez-la pour compléter l''objet : « 15 minutes de préparation, des desserts inoubliables. »
+
+### La structure du corps
+
+1. **Une accroche** qui parle au lecteur.
+2. **Un seul message principal**.
+3. **Des paragraphes courts**, lisibles sur téléphone.
+4. **Un appel à l''action** clair et visible : « Découvrir les coffrets ».
+5. **Une signature** humaine.
+6. **Le pied de page** : coordonnées de l''entreprise et lien de désinscription.
+
+> [!exemple] E-mail de newsletter
+> **Objet** : La récolte de vanille 2026 est arrivée
+> **Aperçu** : Des gousses plus charnues que jamais, et une surprise pour vous.
+> Bonjour Claire,
+> Cette année, la récolte de Sambava est exceptionnelle : des gousses longues et charnues, préparées pendant 8 mois par la coopérative de M. Rakoto.
+> Pour fêter cela, nous avons préparé un coffret « Récolte 2026 » avec 10 gousses et un livret de recettes.
+> **[Découvrir le coffret]**
+> À bientôt,
+> Soa, de Vanille Soa
+
+## Les indicateurs essentiels
+
+| Indicateur | Formule | Exemple |
+| --- | --- | --- |
+| **Taux d''ouverture** | Ouvertures ÷ e-mails délivrés | 35 % (indicatif, souvent imprécis) |
+| **Taux de clic** | Clics ÷ e-mails délivrés | 3 % |
+| **Taux de conversion** | Achats ÷ e-mails délivrés (ou ÷ clics) | 0,5 % |
+| **Taux de désinscription** | Désinscriptions ÷ e-mails délivrés | 0,2 % |
+| **Taux de rebond** | E-mails non délivrés ÷ envoyés | Moins de 2 % |
+| **Plaintes pour spam** | Signalements ÷ délivrés | Le plus bas possible |
+
+> [!attention]
+> Le taux d''ouverture est devenu **moins fiable** : certains services de messagerie ouvrent automatiquement les e-mails pour protéger la vie privée. Fiez-vous surtout aux **clics** et aux **ventes**.
+
+## La délivrabilité : les bases
+
+1. **Une liste propre** : supprimer les adresses en erreur et les inactifs de longue date.
+2. **Un domaine authentifié** (SPF, DKIM, DMARC) : l''outil d''e-mail guide la configuration.
+3. **Une fréquence régulière** : pas 6 mois de silence puis 5 e-mails en une semaine.
+4. **Un contenu utile** : des abonnés qui ouvrent et cliquent améliorent la réputation.
+5. **Une désinscription facile** : mieux vaut une désinscription qu''un signalement en spam.
+
+> [!madagascar]
+> Si vous écrivez à des abonnés à Madagascar, pensez au **poids des e-mails** (images légères) : beaucoup les lisent sur téléphone avec des données mobiles. Et adaptez le contenu : prix en ariary, paiement par Mobile Money, horaires locaux.
+
+> [!retenir]
+> - Un aimant à prospects utile, un formulaire clair, le double opt-in.
+> - 3 segments pour commencer : clients, prospects, inactifs.
+> - Un objet court et honnête, un message, un appel à l''action, un lien de désinscription.
+> - Clics et ventes comptent plus que les ouvertures.
+> - Liste propre, domaine authentifié, régularité.
+
+## Exercice pratique : vos premiers e-mails
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Imaginez un aimant à prospects et le texte du formulaire pour une entreprise malgache.
+> 2. Définissez 5 segments pour sa liste.
+> 3. Rédigez une newsletter et une campagne promotionnelle, avec 3 propositions d''objet chacune et le texte d''aperçu.
+> 4. Calculez les indicateurs d''une campagne fictive : 2 000 envois, 40 rebonds, 600 ouvertures, 70 clics, 12 achats, 5 désinscriptions.
+>
+> **À livrer** : votre aimant et votre formulaire, vos segments, vos 2 e-mails et vos calculs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 1, 0, 'Qu''est-ce que le double opt-in ?', '["Un double prix","Une confirmation de l''inscription par e-mail","Deux listes","Deux newsletters par jour"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 1, 1, 'Pourquoi le taux d''ouverture est-il moins fiable ?', '["Il compte les ventes","Il est toujours de 100 %","Certaines messageries ouvrent automatiquement les e-mails","Il n''existe plus"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 1, 2, '70 clics pour 1 960 e-mails délivrés donnent un taux de clic d''environ…', '["3,6 %","0,7 %","70 %","36 %"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-f', 2, 'Les outils : Brevo, MailerLite et offres payantes', 'Import de contacts avec consentement, formulaire et double opt-in, modèle adapté au téléphone, campagne et test A/B, automatisation de bienvenue, Mailchimp, Brevo et ActiveCampaign payants.', 'Ce module vous fait prendre en main deux outils d''email marketing avec offre gratuite : **Brevo** et **MailerLite**. Vous apprendrez à importer une liste, créer un formulaire, concevoir un modèle d''e-mail, envoyer une campagne et construire une automatisation. Vous découvrirez aussi les **offres payantes** de Mailchimp, Brevo et ActiveCampaign.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Importer et organiser des contacts.
+> 2. Créer un formulaire d''inscription.
+> 3. Concevoir un modèle d''e-mail adapté au téléphone.
+> 4. Envoyer une campagne et un test A/B.
+> 5. Construire une automatisation de bienvenue.
+
+## Brevo et MailerLite
+
+| Point | Brevo | MailerLite |
+| --- | --- | --- |
+| **Points forts** | E-mail, SMS, WhatsApp et CRM dans un même outil ; interface en français | Simple, éditeur clair, pages d''atterrissage |
+| **Offre gratuite** | Limitée en nombre d''e-mails par jour | Limitée en nombre d''abonnés et de fonctions |
+| **Automatisations** | Oui | Oui |
+
+*(Les limites des offres gratuites et les prix changent souvent : vérifiez sur les sites officiels.)*
+
+## Importer et organiser les contacts
+
+1. **Préparez** un fichier CSV propre : e-mail, prénom, pays, source, date d''inscription.
+2. **Vérifiez** que chaque contact a donné son **consentement**.
+3. **Importez** dans une liste et associez les champs.
+4. **Ajoutez** des **étiquettes** ou attributs (client, prospect, centre d''intérêt).
+5. **Supprimez** les doublons et les adresses invalides.
+
+> [!attention]
+> Les outils d''email marketing interdisent les listes achetées ou sans consentement, et peuvent **suspendre le compte** si les taux de rebond ou de plaintes sont trop élevés. Ne prenez jamais ce risque pour un client.
+
+## Le formulaire d''inscription
+
+1. **Créez** le formulaire dans l''outil (intégré, fenêtre surgissante ou page dédiée).
+2. **Rédigez** la promesse et la mention de consentement.
+3. **Activez** le double opt-in.
+4. **Personnalisez** l''e-mail de confirmation.
+5. **Intégrez** le formulaire sur le site (code à copier, extension WordPress ou Shopify).
+
+## Le modèle d''e-mail
+
+### Les règles de mise en page
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Une colonne** | Lisible sur téléphone |
+| **Largeur d''environ 600 px** | Standard des messageries |
+| **Texte de 14 à 16 px au moins** | Lisible sans zoomer |
+| **Bouton large** pour l''appel à l''action | Facile à toucher |
+| **Images légères** avec texte alternatif | Rapide à charger, compréhensible si les images sont bloquées |
+| **Plus de texte que d''images** | Meilleure délivrabilité |
+
+> [!astuce]
+> Créez un **modèle de marque** (logo, couleurs, polices, pied de page) une fois pour toutes, puis dupliquez-le pour chaque campagne. Vous gagnez du temps et la marque reste cohérente.
+
+## Envoyer une campagne
+
+1. **Choisissez** le segment.
+2. **Rédigez** l''objet, le texte d''aperçu et le contenu.
+3. **Ajoutez** la personnalisation : `{{ contact.PRENOM }}` (la syntaxe dépend de l''outil).
+4. **Envoyez-vous un test** sur un ordinateur et un téléphone : liens, images, fautes.
+5. **Programmez** l''envoi à une heure adaptée au fuseau des abonnés.
+6. **Analysez** les résultats après 48 heures.
+
+### Le test A/B
+
+| Élément testé | Version A | Version B |
+| --- | --- | --- |
+| Objet | « La récolte de vanille 2026 est arrivée » | « Claire, votre coffret Récolte 2026 vous attend » |
+
+1. Envoyez chaque version à une petite partie de la liste (par exemple 2 × 15 %).
+2. Choisissez le gagnant selon les **clics** (plus fiable que les ouvertures).
+3. Envoyez la version gagnante au reste de la liste.
+
+## L''automatisation de bienvenue
+
+```
+Déclencheur : inscription confirmée à la liste « Newsletter »
+→ E-mail 1 (immédiat) : bienvenue + guide gratuit
+→ Attendre 2 jours
+→ E-mail 2 : l''histoire de la marque
+→ Attendre 3 jours
+→ Condition : a acheté ?
+     oui → ajouter l''étiquette « client », fin
+     non → E-mail 3 : avis clients et produits préférés
+→ Attendre 4 jours
+→ E-mail 4 : offre de bienvenue valable 7 jours
+```
+
+## Les offres payantes
+
+| Outil | Ce qu''apportent les offres payantes |
+| --- | --- |
+| **Mailchimp** | Plus de contacts et d''envois, automatisations avancées, tests multiples, rapports détaillés |
+| **Brevo** | Plus d''e-mails, suppression du logo Brevo, automatisations et tests avancés, adresses IP dédiées pour les gros volumes |
+| **ActiveCampaign** | Automatisations très puissantes, CRM, notation des contacts, scénarios complexes |
+
+> [!madagascar]
+> Ces abonnements sont facturés en dollars ou en euros, souvent selon le nombre de contacts. La bonne pratique : le **client** ouvre et paie le compte, à son nom, et vous ajoute comme utilisateur. Vous restez libre de travailler avec plusieurs clients sans porter leurs factures. Vérifiez les prix à jour sur les sites officiels.
+
+> [!retenir]
+> - Des contacts importés avec consentement, étiquetés, sans doublon.
+> - Un formulaire avec promesse claire et double opt-in.
+> - Un modèle d''une colonne, lisible sur téléphone, avec un bouton visible.
+> - Un test sur ordinateur et téléphone avant chaque envoi ; des tests A/B sur les clics.
+> - Une automatisation de bienvenue avec condition.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un compte gratuit Brevo ou MailerLite.
+> 2. Importez une liste fictive de 20 contacts (vos propres adresses de test) avec des étiquettes.
+> 3. Créez un formulaire avec double opt-in et intégrez-le sur une page de test.
+> 4. Créez un modèle de marque et envoyez-vous une campagne de test.
+> 5. Construisez l''automatisation de bienvenue en 4 e-mails avec une condition.
+>
+> **À livrer** : captures de vos contacts, formulaire, modèle et automatisation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 2, 0, 'Combien de colonnes pour un e-mail lisible sur téléphone ?', '["Une","Aucune règle","Six","Quatre"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 2, 1, 'Sur quel indicateur choisir le gagnant d''un test A/B ?', '["Le poids du fichier","Les clics","La couleur","Le nombre d''images"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 2, 2, 'Que faire avant chaque envoi ?', '["S''envoyer un test sur ordinateur et téléphone","Rien","Changer d''outil","Supprimer la liste"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-f', 3, 'Premier projet : la mission email de Raphia & Co', 'État des lieux et consentement, stratégie et calendrier, 3 automatisations essentielles, réengagement et nettoyage, rapport mensuel.', 'Dans ce module, vous réalisez une mission complète d''email marketing pour une petite marque : audit de départ, stratégie, séquences automatiques, calendrier de campagnes et premier rapport. C''est le type de projet qui deviendra votre première étude de cas.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire l''état des lieux de l''email marketing d''une entreprise.
+> 2. Construire une stratégie et un calendrier éditorial.
+> 3. Mettre en place 3 automatisations essentielles.
+> 4. Organiser une campagne de réengagement.
+> 5. Rédiger un rapport mensuel.
+
+## Le cas pratique : « Raphia & Co »
+
+> [!exemple] Votre cliente
+> **Raphia & Co** est une marque d''Antananarivo qui vend en ligne des sacs et chapeaux en raphia fabriqués par des artisanes, surtout en France et en Belgique. Elle a 3 200 adresses : clients de la boutique Shopify, inscrits à un concours de l''an dernier et visiteurs de salons. Elle envoie une newsletter « quand elle a le temps », soit 3 ou 4 fois par an. La fondatrice, Mme Fara, veut des ventes plus régulières.
+
+## Étape 1 : l''état des lieux
+
+| Domaine | Constat (exemple) |
+| --- | --- |
+| **Liste** | 3 200 contacts, dont 900 inscrits au concours sans consentement clair aux e-mails marketing |
+| **Consentement** | Preuves disponibles pour les clients et les inscrits au formulaire du site |
+| **Délivrabilité** | Domaine non authentifié, 4 % de rebonds à la dernière campagne |
+| **Contenus** | Newsletters longues, beaucoup d''images, un seul appel à l''action peu visible |
+| **Automatisations** | Aucune |
+| **Résultats** | Ventes par e-mail : environ 3 % du chiffre d''affaires |
+
+> [!attention]
+> Les 900 inscrits au concours sans consentement clair aux e-mails marketing ne doivent **pas** recevoir de campagne promotionnelle. Conseillez à la cliente de vérifier avec son conseiller la règle applicable, et proposez, si c''est autorisé, un seul e-mail pour leur demander s''ils souhaitent s''abonner, puis la suppression de ceux qui ne confirment pas.
+
+## Étape 2 : la stratégie
+
+| Élément | Décision |
+| --- | --- |
+| **Objectif** | Passer de 3 % à 15 % du chiffre d''affaires venant des e-mails en 6 mois |
+| **Fréquence** | Une newsletter tous les 15 jours, plus les automatisations |
+| **Segments** | Clients, prospects, clients fidèles, inactifs, France, Belgique |
+| **Ton** | Chaleureux, centré sur les artisanes et le savoir-faire |
+| **Aimant à prospects** | « Le guide pour entretenir son sac en raphia » |
+
+### Le calendrier éditorial (exemple sur 2 mois)
+
+| Date | Type | Sujet | Segment |
+| --- | --- | --- | --- |
+| 3 mars | Newsletter | Portrait de Hanta, tisserande depuis 20 ans | Tous |
+| 17 mars | Newsletter | Nouvelle collection printemps | Tous |
+| 24 mars | Campagne | Avant-première de la collection | Clients fidèles |
+| 31 mars | Newsletter | Comment choisir son chapeau | Prospects |
+| 14 avril | Newsletter | Coulisses : du raphia brut au sac | Tous |
+| 28 avril | Campagne | Fête des mères (France) | France |
+
+## Étape 3 : les 3 automatisations essentielles
+
+| Automatisation | Déclencheur | Contenu |
+| --- | --- | --- |
+| **Bienvenue** | Inscription confirmée | 4 e-mails : guide, histoire, best-sellers, offre de bienvenue |
+| **Panier abandonné** | Panier non payé (connexion Shopify) | 2 à 3 e-mails : rappel, avis clients, réponses aux questions de livraison |
+| **Après achat** | Commande livrée | Conseils d''entretien, demande d''avis, suggestion de produit complémentaire |
+
+> [!astuce]
+> Les automatisations travaillent **tous les jours**, sans effort supplémentaire. Pour beaucoup de boutiques, elles rapportent une part importante des ventes par e-mail une fois bien réglées.
+
+## Étape 4 : le réengagement des inactifs
+
+1. **Définissez** les inactifs : aucun clic depuis 6 mois.
+2. **Envoyez** 2 e-mails : « Vous nous manquez » avec un contenu utile, puis « Voulez-vous continuer à recevoir nos e-mails ? ».
+3. **Retirez** de la liste active ceux qui ne réagissent pas.
+
+> [!definition] Nettoyage de liste
+> Retirer régulièrement les adresses en erreur et les abonnés inactifs. La liste devient plus petite, mais les résultats et la délivrabilité s''améliorent.
+
+## Étape 5 : le rapport mensuel
+
+| Indicateur | Mois 1 | Mois 2 | Commentaire |
+| --- | --- | --- | --- |
+| Abonnés actifs | 2 150 | 2 310 | Guide d''entretien en ligne |
+| Taux de clic moyen | 2,1 % | 3,4 % | Contenus plus courts, un seul bouton |
+| Ventes par e-mail | 9 % du CA | 13 % du CA | Automatisations en place |
+| Taux de désinscription | 0,4 % | 0,2 % | Fréquence régulière |
+| Rebonds | 1,1 % | 0,6 % | Liste nettoyée |
+
+*(Chiffres donnés en exemple.)*
+
+> [!madagascar]
+> Pour une marque malgache qui vend en Europe, programmez les envois **le matin, heure de Paris** (souvent en fin de matinée à Antananarivo), et tenez compte des fêtes françaises et belges (Fête des mères à des dates différentes selon les pays, soldes, Noël). Racontez aussi l''histoire des artisanes : c''est ce qui différencie la marque.
+
+> [!retenir]
+> - Un état des lieux en 6 domaines, consentement compris.
+> - Une stratégie : objectif, fréquence, segments, ton, calendrier.
+> - Bienvenue, panier abandonné et après achat : les 3 automatisations essentielles.
+> - Réengager puis retirer les inactifs.
+> - Un rapport mensuel centré sur les clics et les ventes.
+
+## Exercice pratique : la mission Raphia & Co
+
+> [!exercice] Exercice pratique · 6 heures (sur plusieurs jours)
+> 1. Rédigez l''état des lieux et la stratégie (pour Raphia & Co ou une vraie marque qui accepte de tester).
+> 2. Construisez un calendrier éditorial sur 2 mois.
+> 3. Rédigez les e-mails des 3 automatisations et construisez-en au moins une dans l''outil.
+> 4. Rédigez les 2 e-mails de réengagement.
+> 5. Préparez le modèle de rapport mensuel.
+>
+> **À livrer** : votre stratégie, votre calendrier, vos e-mails, des captures de l''automatisation et votre modèle de rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 3, 0, 'Que faire des inscrits à un concours sans consentement clair ?', '["Ne pas leur envoyer de promotions et faire vérifier la règle par la cliente","Les vendre","Leur envoyer toutes les promotions","Les copier dans une autre liste"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 3, 1, 'Quelles sont les 3 automatisations essentielles ?', '["Facture, devis, relance","Aucune","Anniversaire, Noël, soldes","Bienvenue, panier abandonné, après achat"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 3, 2, 'Que faire des abonnés qui ne réagissent pas au réengagement ?', '["Les garder pour toujours","Les signaler en spam","Les retirer de la liste active","Leur écrire tous les jours"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio et newsletter personnelle, 5 canaux, audit, mise en place, gestion mensuelle et séquences de vente, devis en 7 points, paiements et évolution.', 'Beaucoup d''entreprises ont une liste d''adresses mais ne l''utilisent pas, ou mal. Ce dernier module vous montre comment présenter vos services d''email marketing, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''email marketeur.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer le prix d''une mise en place et d''une gestion mensuelle.
+> 4. Rédiger un devis clair.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Des e-mails** que vous avez rédigés et mis en page (captures sur ordinateur et téléphone).
+2. **Une séquence automatique** complète, avec son schéma.
+3. **Votre étude de cas** Raphia & Co (ou réelle, avec accord).
+4. **Votre propre newsletter** : la meilleure preuve que vous savez faire.
+
+> [!astuce]
+> Lancez une petite newsletter personnelle sur un sujet que vous connaissez (le freelance à Madagascar, la cuisine malgache, le voyage). Vous apprenez en pratiquant, et vos prospects voient votre travail chaque semaine.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Boutiques en ligne** (Shopify, WooCommerce) | Proposez les 3 automatisations essentielles |
+| 2 | **Hôtels et agences de voyage** | Proposez une newsletter pour les anciens clients et les prospects |
+| 3 | **Formateurs, coachs et créateurs** | Séquences de vente de leurs formations |
+| 4 | **Agences de marketing** | Sous-traitance de la rédaction et de l''automatisation |
+| 5 | **Plateformes de freelance** | Rédaction d''e-mails, mise en place d''outils ; vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une boutique en ligne
+> « Bonjour, je me suis inscrite à votre newsletter et j''ai laissé un article dans mon panier : je n''ai reçu ni e-mail de bienvenue ni rappel de panier. Ce sont souvent les e-mails qui rapportent le plus à une boutique. Je suis email marketeuse : je peux mettre en place ces automatisations dans votre outil actuel, avec des textes à l''image de votre marque. Puis-je vous envoyer une proposition ? »
+
+## Fixer ses prix
+
+### Le tarif horaire
+
+Revenu mensuel visé ÷ heures facturables (exemple : 1 500 000 Ar ÷ 100 h = 15 000 Ar de l''heure).
+
+### Les offres
+
+| Offre | Contenu | Heures (exemple) | Prix (15 000 Ar/h) |
+| --- | --- | --- | --- |
+| **Audit** | État des lieux et recommandations | 6 h | 90 000 Ar |
+| **Mise en place** | Outil, formulaire, modèle, 3 automatisations | 25 h | 375 000 Ar |
+| **Gestion mensuelle** | 2 newsletters, 1 campagne, suivi, rapport | 12 h par mois | 180 000 Ar par mois |
+| **Séquence de vente** | 5 à 7 e-mails pour un lancement | 10 h | 150 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Le devis
+
+### Les 7 points
+
+1. **Le contenu** : nombre d''e-mails, automatisations, segments.
+2. **L''outil** et l''abonnement, au nom et à la charge du client.
+3. **Ce que le client fournit** : photos, informations, accès, validation des textes.
+4. **Le respect des règles** : liste avec consentement, désinscription, validation du cadre légal par le client.
+5. **Le calendrier** et le nombre de corrections.
+6. **Le prix** et les échéances.
+7. **Le rapport** fourni.
+
+> [!attention]
+> Refusez d''envoyer des e-mails à une liste achetée ou sans consentement, même si le client insiste. Vous risquez la suspension de son compte, et votre propre réputation.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Email marketeur confirmé** | Automatisations avancées, délivrabilité, tests |
+| **Spécialiste CRM et fidélisation** | Segmentation avancée, SMS, programmes de fidélité |
+| **Copywriter** | Rédaction persuasive (voir la formation Rédacteur web et copywriter) |
+| **Spécialiste automatisation** | Make, Zapier (voir la formation Spécialiste automatisation et IA) |
+| **Responsable marketing** | E-mail + réseaux sociaux + publicité |
+
+> [!retenir]
+> - Un portfolio d''e-mails, une séquence, une étude de cas et votre propre newsletter.
+> - Boutiques, tourisme, formateurs, agences et plateformes.
+> - Audit, mise en place, gestion mensuelle et séquences de vente.
+> - Un devis qui précise l''outil, les règles et le calendrier.
+> - Jamais de liste sans consentement.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Lancez votre newsletter personnelle et envoyez le premier numéro.
+> 2. Préparez votre portfolio.
+> 3. Calculez vos 4 offres et rédigez votre devis type.
+> 4. Inscrivez-vous à 10 boutiques ou entreprises, repérez celles qui n''ont pas d''automatisation, et envoyez au moins 2 messages.
+>
+> **À livrer** : le lien de votre newsletter, votre portfolio, vos offres, votre devis et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 4, 0, 'Quelle est la meilleure preuve de votre savoir-faire ?', '["Un diplôme seul","Rien","Une liste achetée","Votre propre newsletter"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 4, 1, '25 heures à 15 000 Ar de l''heure font…', '["150 000 Ar","3 750 000 Ar","375 000 Ar","250 000 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-3-f', 4, 2, 'Qui paie l''abonnement de l''outil d''e-mail ?', '["Le client, à son nom","Personne","L''email marketeur","La plateforme de freelance"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que fait un email marketeur ?', '["Il crée des logos","Il fait la comptabilité","Il construit une relation avec des abonnés grâce à des e-mails utiles","Il répare les serveurs"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Qu''est-ce qu''une liste d''abonnés ?', '["Des personnes qui ont accepté de recevoir les e-mails","Les employés","Une liste achetée","Toutes les adresses trouvées sur Internet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel e-mail est envoyé seul selon une action ?', '["Un e-mail automatique","Une newsletter manuelle","Un SMS","Une lettre papier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle loi encadre les e-mails commerciaux aux États-Unis ?', '["CECRL","RGPD","CAN-SPAM","PCG"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Qu''est-ce qu''un aimant à prospects ?', '["Un logiciel","Une ressource gratuite offerte en échange de l''inscription","Une liste achetée","Un aimant de frigo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Combien de champs dans un formulaire d''inscription ?', '["Aucun","Vingt","Peu : l''e-mail et éventuellement le prénom","Tous les champs possibles"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quels segments créer en premier ?', '["Aucun","Seulement les inactifs","Clients, prospects, inactifs","Un segment par personne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle longueur pour un objet d''e-mail ?', '["300 caractères","Environ 30 à 50 caractères","1 mot","Pas de limite"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel objet est à éviter ?', '["PROMO !!! URGENT","Vos 10 recettes à la vanille sont prêtes","Nouvelle session : 3 mai","La récolte 2026 est arrivée"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Qu''est-ce que le texte d''aperçu ?', '["Le titre du site","Le pied de page","Une pièce jointe","La ligne affichée après l''objet dans la boîte de réception"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Combien de messages principaux par e-mail ?', '["Un seul","Dix","Aucun","Autant que possible"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel taux de rebond viser ?', '["50 %","Aucune importance","20 %","Moins de 2 %"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que vaut mieux qu''un signalement en spam ?', '["Rien","Une désinscription facile","Une liste achetée","Un e-mail de plus"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que peut faire un outil d''e-mail en cas de trop de plaintes ?', '["Suspendre le compte","Rien","Offrir un abonnement","Doubler les envois"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle largeur standard pour un e-mail ?', '["2 000 px","Aucune","Environ 600 px","100 px"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Pourquoi ajouter un texte alternatif aux images ?', '["Pour comprendre l''e-mail si les images sont bloquées","Pour décorer","Ce n''est pas utile","Pour payer moins"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que fait l''automatisation de bienvenue après la condition « a acheté » ?', '["Supprime le contact","Envoie une offre de bienvenue quand même","Ajoute l''étiquette client et s''arrête","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel outil est connu pour ses automatisations très puissantes et son CRM ?', '["Canva","Excel","ActiveCampaign","Zoom"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle fréquence a été choisie pour Raphia & Co ?', '["Dix par jour","Une newsletter tous les 15 jours plus les automatisations","Aucune","Une par an"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que déclenche l''automatisation de panier abandonné ?', '["Un anniversaire","Une désinscription","Une inscription","Un panier non payé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Qu''est-ce que le nettoyage de liste ?', '["Ajouter des adresses achetées","Retirer les adresses en erreur et les inactifs","Changer d''outil","Supprimer tous les clients"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quand envoyer à des abonnés en France depuis Madagascar ?', '["Jamais","À 3 h du matin heure de Paris","Au hasard","Le matin, heure de Paris"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel message envoyer à une boutique sans automatisation ?', '["Une critique","Une liste de prix sans explication","Montrer le problème constaté et proposer les automatisations","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que faire si un client insiste pour écrire à une liste achetée ?', '["Refuser","Accepter","Doubler le prix","Accepter en secret"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle évolution concerne les programmes de fidélité et les SMS ?', '["Comptable","Spécialiste CRM et fidélisation","Développeur back-end","Monteur audio"]'::jsonb, 1);
 
 -- tech-1-f
 delete from public.exam_questions where course_id = 'tech-1-f';
