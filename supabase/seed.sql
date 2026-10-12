@@ -48,7 +48,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
   ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true),
-  ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 14, false),
+  ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true),
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 12, false),
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 15, false),
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
@@ -28563,6 +28563,583 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quel est un mode de rémunération courant ?', '["Aucun","Un pourcentage du salaire du client","Un paiement en nature uniquement","Un forfait mensuel ou un pourcentage du budget"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Que doit dire le contrat sur les résultats ?', '["Les ventes sont garanties","Le client paie seulement s''il vend","Vous vous engagez sur une méthode, pas sur un nombre de ventes","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-1-f', 'Quelle bonne pratique fidélise un client ?', '["Des rapports réguliers et honnêtes, avec des propositions","Cacher les mauvais chiffres","Ne jamais envoyer de rapport","Augmenter le budget sans prévenir"]'::jsonb, 0);
+
+-- mkt-2-a
+delete from public.exam_questions where course_id = 'mkt-2-a';
+delete from public.module_questions where course_id = 'mkt-2-a';
+delete from public.lessons where course_id = 'mkt-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-a', 0, 'Se spécialiser, auditer et relier le SEO aux ventes', 'Les 6 spécialités avancées, l''audit en 7 domaines, la cannibalisation, les priorités impact et effort, les niveaux de résultats et les offres à forte valeur.', 'Optimiser quelques pages et une fiche Google ouvre les premières missions. Les spécialistes SEO les mieux payés règlent des problèmes plus difficiles : sites de milliers de pages, migrations délicates, boutiques en ligne, sites internationaux, concurrence forte. Ils relient leur travail au **chiffre d''affaires**, pas seulement aux positions. Ce module vous aide à choisir votre spécialité et à vendre une expertise.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du SEO.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit SEO avancé avec des priorités chiffrées.
+> 4. Relier le SEO aux ventes et aux demandes.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Problème réglé | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **SEO technique** | Grands sites mal explorés, lents, mal indexés | Exploration, rendu JavaScript, vitesse, données structurées, journaux serveur |
+| 2 | **SEO e-commerce** | Boutiques dont les catégories et produits ne se classent pas | Architecture, filtres, fiches produits à grande échelle, pages en double |
+| 3 | **SEO de contenu** | Sites qui ne répondent pas aux questions des clients | Recherche de sujets, plans de contenus, briefs, mise à jour |
+| 4 | **SEO local** | Entreprises absentes des résultats locaux et de Google Maps | Fiches d''établissement, avis, pages locales, citations |
+| 5 | **SEO international** | Sites en plusieurs langues ou pays qui se concurrencent | Hreflang, structure des URL, contenus adaptés par marché |
+| 6 | **Migrations et refontes** | Sites qui perdent leurs visites après un changement | Plan de redirections, contrôles avant et après |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Tourisme de l''océan Indien** : hôtels, agences et guides de Madagascar, Maurice, La Réunion, en français, anglais, italien ou allemand.
+> - **Exportateurs malgaches** qui vendent en ligne en Europe et en Amérique du Nord.
+> - **Sous-traitance pour les agences SEO francophones** : audits, recherche de mots clés, briefs et suivi, un travail régulier.
+
+## L''audit SEO avancé
+
+### Les 7 domaines
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **1. Exploration et indexation** | Pages explorées, indexées, exclues ; budget d''exploration sur les grands sites |
+| **2. Architecture** | Profondeur des pages, liens internes, pages orphelines |
+| **3. Technique** | Vitesse, rendu JavaScript, données structurées, versions mobiles, erreurs |
+| **4. Contenu** | Pages faibles, doublons, cannibalisation, sujets manquants |
+| **5. Popularité** | Profil de liens, liens toxiques éventuels, comparaison aux concurrents |
+| **6. Concurrence** | Mots clés où les concurrents se classent et pas le site |
+| **7. Résultats** | Visites naturelles, conversions, évolution sur 12 à 16 mois |
+
+> [!definition] Cannibalisation
+> Plusieurs pages du même site visent la même recherche. Google hésite entre elles, et aucune ne se classe bien. La solution : fusionner, différencier ou relier clairement les pages.
+
+### Prioriser avec l''impact et l''effort
+
+| Recommandation | Impact | Effort | Priorité |
+| --- | --- | --- | --- |
+| Corriger le blocage de 600 fiches produits par une balise noindex | Fort | Faible | 1 |
+| Fusionner 3 articles qui visent « vanille bourbon » | Moyen | Faible | 2 |
+| Ajouter des données structurées Produit | Moyen | Moyen | 3 |
+| Refaire toute l''architecture du blog | Fort | Fort | 4 (planifier) |
+
+> [!exemple] Extrait de résumé d''audit
+> « 640 fiches produits sur 1 900 sont exclues de l''index par une balise noindex ajoutée lors de la dernière mise à jour du thème. Ces pages représentaient 22 % des visites naturelles il y a un an. 3 articles se concurrencent sur "vanille bourbon", aucun ne dépasse la position 9. Vos 2 principaux concurrents ont 4 fois plus de domaines qui les citent. Priorité : corriger l''indexation cette semaine. »
+
+## Relier le SEO aux résultats de l''entreprise
+
+| Niveau | Indicateur | Exemple |
+| --- | --- | --- |
+| **Visibilité** | Impressions, positions | « vanille bourbon » : position 9 → 3 |
+| **Trafic** | Clics, visites naturelles | +45 % de visites naturelles en 6 mois |
+| **Conversion** | Ventes, demandes, réservations venant de la recherche naturelle | 38 ventes par mois → 61 |
+| **Valeur** | Chiffre d''affaires attribué | +1 800 € par mois |
+
+> [!astuce]
+> Présentez toujours le **trafic non lié à la marque** (les recherches qui ne contiennent pas le nom de l''entreprise) séparément : c''est là que se voit vraiment le travail SEO, car les recherches sur le nom de la marque dépendent surtout de sa notoriété.
+
+## Les offres à plus forte valeur
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit SEO avancé** | 7 domaines, priorités impact et effort, plan sur 6 mois |
+| **Accompagnement mensuel** | Suivi, corrections, contenus, liens, rapport relié aux ventes |
+| **Migration sans perte** | Plan de redirections, contrôles, suivi pendant 3 mois |
+| **SEO e-commerce** | Architecture, catégories, fiches produits à grande échelle |
+| **SEO international** | Structure, hreflang, contenus par marché |
+| **Formation des équipes** | Rédacteurs et développeurs formés aux bonnes pratiques |
+
+> [!retenir]
+> - Spécialisez-vous : technique, e-commerce, contenu, local, international ou migrations.
+> - Un audit en 7 domaines, avec des priorités par impact et effort.
+> - Reliez le SEO aux ventes et séparez le trafic lié à la marque.
+> - Vendez des résultats d''entreprise, pas des positions.
+
+## Exercice pratique : votre spécialité et votre audit avancé
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Choisissez un site d''au moins 100 pages (boutique, média, agence de voyage) et réalisez l''audit en 7 domaines avec les outils disponibles.
+> 3. Classez au moins 10 recommandations par impact et effort.
+> 4. Rédigez le résumé de l''audit et un plan sur 6 mois.
+>
+> **À livrer** : votre choix, votre audit, votre tableau de priorités et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 0, 0, 'Qu''est-ce que la cannibalisation ?', '["Un lien acheté","Un virus","Plusieurs pages du même site visent la même recherche","Un concurrent copie le site"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 0, 1, 'Quelle recommandation traiter en premier ?', '["Au hasard","La plus chère","Impact faible et effort fort","Impact fort et effort faible"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 0, 2, 'Pourquoi séparer le trafic hors marque ?', '["Pour cacher les résultats","Pour gonfler les chiffres","Il montre vraiment l''effet du travail SEO","Il n''existe pas"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-a', 1, 'Outils professionnels : Semrush, Ahrefs, crawler et données structurées', 'Fonctions de Semrush et d''Ahrefs, écart de mots clés, analyse de liens, suivi de positions utile, exploration avec un crawler et données structurées vérifiées.', 'Au niveau Avancé, vous travaillez avec les outils payants que les agences et les entreprises utilisent : **Semrush** et **Ahrefs**. Vous les combinez avec un **logiciel d''exploration** (crawler) et avec Google Search Console, qui reste la source de vérité sur les données du site. Ce module vous apprend à en tirer des décisions, pas seulement des chiffres.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser les concurrents et trouver les écarts de mots clés.
+> 2. Analyser un profil de liens.
+> 3. Suivre les positions de façon utile.
+> 4. Explorer un site comme un robot avec un crawler.
+> 5. Ajouter et vérifier des données structurées.
+
+## Semrush et Ahrefs
+
+| Fonction | Semrush | Ahrefs | Usage |
+| --- | --- | --- | --- |
+| **Recherche de mots clés** | Base très large, regroupement de mots clés | Base très large, difficulté et potentiel de trafic | Construire une stratégie de contenu |
+| **Analyse de concurrents** | Mots clés et pages des concurrents | Pages et mots clés des concurrents | Trouver ce qui manque au site |
+| **Écart de mots clés** | Comparaison de plusieurs domaines | Comparaison de plusieurs domaines | Mots clés des concurrents absents du site |
+| **Liens entrants** | Profil de liens, domaines référents | Analyse de liens réputée très complète | Comprendre la popularité |
+| **Audit de site** | Exploration et problèmes techniques | Exploration et problèmes techniques | Repérer les erreurs |
+| **Suivi de positions** | Projets de suivi quotidien | Suivi de positions | Mesurer les progrès |
+
+*(Les fonctions, les limites et les prix changent : vérifiez sur les sites officiels. Beaucoup d''agences donnent accès à leur compte à leurs freelances.)*
+
+> [!attention]
+> Les chiffres de trafic et de volume de ces outils sont des **estimations**, souvent imprécises pour les petits pays et les petites niches. Utilisez-les pour **comparer** et **trouver des idées**, et Search Console pour les **données réelles** du site.
+
+## L''écart de mots clés
+
+1. **Choisissez** 3 concurrents réels (ceux qui apparaissent sur les recherches importantes, pas forcément les concurrents commerciaux).
+2. **Lancez** la comparaison des mots clés.
+3. **Filtrez** : mots clés où au moins 2 concurrents sont dans le top 10 et le site absent.
+4. **Classez** par intention et par pertinence pour l''entreprise.
+5. **Associez** chaque groupe de mots clés à une page existante ou à créer.
+
+| Mot clé | Concurrent A | Concurrent B | Site | Action |
+| --- | --- | --- | --- | --- |
+| circuit nord madagascar 10 jours | 4 | 7 | — | Créer une page circuit |
+| meilleure période madagascar | 2 | 5 | 38 | Améliorer l''article existant |
+| vol paris nosy be | 6 | — | — | Article d''information + lien vers les circuits |
+
+## Analyser un profil de liens
+
+| Élément | Question |
+| --- | --- |
+| **Domaines référents** | Combien de sites différents citent le site ? |
+| **Qualité et pertinence** | Les sites qui citent sont-ils sérieux et liés au sujet ? |
+| **Textes d''ancre** | Les liens utilisent-ils des textes naturels (nom de marque, adresse) ou trop de mots clés exacts ? |
+| **Pages les plus citées** | Quelles pages attirent les liens ? |
+| **Comparaison** | Quels sites citent les concurrents mais pas le client ? |
+
+> [!astuce]
+> La liste des sites qui citent **plusieurs concurrents mais pas votre client** est une excellente liste de partenaires à contacter : annuaires professionnels, offices du tourisme, blogs spécialisés, presse.
+
+> [!attention]
+> N''achetez pas de liens et n''utilisez pas de réseaux de sites créés pour vendre des liens : c''est contraire aux règles de Google et peut faire chuter le site. Les liens durables viennent de **contenus utiles**, de **partenariats** et de **relations presse**.
+
+## Suivre les positions de façon utile
+
+1. **Suivez 50 à 200 mots clés** importants, regroupés par thème et par page.
+2. **Séparez** les mots clés de marque et hors marque.
+3. **Suivez** par pays et par appareil (téléphone et ordinateur).
+4. **Regardez** les tendances sur plusieurs semaines, pas les variations d''un jour.
+5. **Reliez** aux clics réels de Search Console.
+
+## Le crawler : voir le site comme un robot
+
+> [!definition] Crawler (logiciel d''exploration)
+> Un logiciel qui parcourt toutes les pages d''un site en suivant les liens, comme le robot de Google, et liste les problèmes : erreurs, redirections, titres manquants ou en double, pages profondes, balises noindex. Screaming Frog (gratuit jusqu''à 500 adresses) est un des plus utilisés.
+
+| Contrôle | Problème typique |
+| --- | --- |
+| Codes de réponse | Pages 404, chaînes de redirections |
+| Titres et descriptions | Manquants, en double, trop longs |
+| Balises noindex et canonical | Pages importantes exclues par erreur |
+| Profondeur | Pages importantes à plus de 4 clics de l''accueil |
+| Liens internes | Pages orphelines (aucun lien vers elles) |
+| Images | Poids, textes alternatifs manquants |
+
+## Les données structurées
+
+> [!definition] Données structurées
+> Un code ajouté aux pages (souvent au format JSON-LD) qui décrit précisément leur contenu à Google : produit, prix, avis, entreprise locale, questions fréquentes, événement. Il peut permettre des **résultats enrichis** (étoiles, prix, disponibilité), sans garantie.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Gousses de vanille bourbon de Madagascar – 100 g",
+  "brand": { "@type": "Brand", "name": "Vanille Soa" },
+  "offers": {
+    "@type": "Offer",
+    "price": "24.90",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+}
+```
+
+Vérifiez toujours le code avec l''**outil de test des résultats enrichis** de Google, et ne décrivez que ce qui est **réellement visible** sur la page.
+
+> [!madagascar]
+> Pour les entreprises locales, les données structurées **LocalBusiness** (adresse, horaires, téléphone) et une fiche d''établissement Google cohérente renforcent la présence sur les recherches de type « restaurant Antsirabe » ou « hôtel Toliara ».
+
+> [!retenir]
+> - Semrush et Ahrefs pour comparer, trouver des idées et analyser les liens ; Search Console pour les données réelles.
+> - L''écart de mots clés transforme les concurrents en plan de contenu.
+> - Des liens obtenus par des contenus et des partenariats, jamais achetés.
+> - Un suivi de positions par thème, hors marque, par pays et appareil.
+> - Un crawler pour l''audit technique et des données structurées vérifiées.
+
+## Exercice pratique : vos outils avancés
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Avec un essai de Semrush ou d''Ahrefs (ou les versions gratuites limitées), faites l''écart de mots clés d''un site touristique malgache face à 3 concurrents.
+> 2. Listez 10 sites qui citent les concurrents mais pas ce site.
+> 3. Explorez le site avec Screaming Frog (500 adresses) et listez les 10 problèmes principaux.
+> 4. Rédigez les données structurées d''une page et vérifiez-les avec l''outil de Google.
+>
+> **À livrer** : votre tableau d''écart, votre liste de partenaires, votre rapport d''exploration et votre code vérifié.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 1, 0, 'Quelle est la source de vérité sur les données réelles du site ?', '["Les estimations de Semrush","Un forum","Google Search Console","Le client"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 1, 1, 'Que révèle l''écart de mots clés ?', '["Le prix des concurrents","Les salaires","Les mots de passe","Les mots clés des concurrents absents du site"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 1, 2, 'Que faut-il éviter pour obtenir des liens ?', '["Nouer des partenariats","Contacter la presse","Acheter des liens","Créer des contenus utiles"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-a', 2, 'Qualité et rapidité : clusters, mises à jour, migrations et baisses de trafic', 'Page pilier et satellites, calendrier éditorial, mise à jour et élagage, migration en 3 phases, analyse d''une baisse en 6 questions, liste de contrôle.', 'Le SEO avancé demande de la **méthode** : un plan de contenus solide, des mises à jour régulières, des migrations sans perte et une réaction calme aux changements de Google. Ce module vous donne les méthodes des professionnels pour livrer vite et sans erreur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un plan de contenus par thèmes (clusters).
+> 2. Mettre à jour et élaguer les contenus existants.
+> 3. Réussir une migration sans perte de visites.
+> 4. Analyser une baisse de trafic avec méthode.
+> 5. Organiser votre travail mensuel avec une liste de contrôle.
+
+## Le plan de contenus par thèmes
+
+> [!definition] Cluster thématique
+> Un groupe de pages sur un même sujet : une **page pilier** qui couvre le sujet de façon complète, et des **pages satellites** qui traitent chaque question en détail, toutes reliées entre elles. Google comprend mieux que le site est une référence sur ce sujet.
+
+> [!exemple] Cluster « Voyager à Madagascar »
+> - **Page pilier** : « Voyager à Madagascar : le guide complet »
+> - **Satellites** : meilleure période, visa et formalités, budget, itinéraire de 15 jours, sécurité, transports intérieurs, que mettre dans sa valise, santé et vaccins (avec renvoi vers les sources officielles)
+> - **Liens** : chaque satellite renvoie vers la page pilier et vers les circuits correspondants.
+
+### Le calendrier éditorial
+
+| Mois | Contenu | Mot clé principal | Type | Responsable |
+| --- | --- | --- | --- | --- |
+| Janvier | Guide complet (pilier) | voyager à madagascar | Nouveau | Rédacteur + vous |
+| Janvier | Meilleure période | meilleure période madagascar | Mise à jour | Vous |
+| Février | Itinéraire 15 jours | itinéraire madagascar 15 jours | Nouveau | Rédacteur |
+| Février | Budget | budget voyage madagascar | Nouveau | Rédacteur |
+
+> [!astuce]
+> Publiez les contenus de voyage **avant** la période de recherche : les voyageurs européens préparent souvent leur séjour plusieurs mois à l''avance. Un article publié en juillet pour la saison de juillet arrive trop tard.
+
+## Mettre à jour et élaguer
+
+| Situation de la page | Action |
+| --- | --- |
+| Bonne position mais informations anciennes | Mettre à jour (prix, dates, liens), indiquer la date de mise à jour |
+| Position 5 à 20 | Enrichir, mieux répondre à l''intention, ajouter des liens internes |
+| Plusieurs pages sur le même sujet | Fusionner et rediriger |
+| Page sans visite ni utilité depuis longtemps | Améliorer, fusionner, ou supprimer avec redirection si besoin |
+| Page utile pour les clients mais sans trafic | La garder (le SEO n''est pas le seul objectif) |
+
+> [!attention]
+> Ne supprimez jamais une page qui reçoit des **liens externes** ou des **visites** sans la **rediriger** (redirection 301) vers la page la plus proche. Vous perdriez sa popularité et ses visiteurs.
+
+## Réussir une migration
+
+> [!definition] Migration
+> Un changement important du site : nouvelle adresse (domaine), nouvelle plateforme (WordPress vers Shopify), nouvelle structure des URL, passage en HTTPS. C''est un des moments les plus risqués pour le SEO.
+
+### Les 3 phases
+
+| Phase | Actions |
+| --- | --- |
+| **Avant** | Exploration complète de l''ancien site ; liste des pages avec trafic et liens ; tableau de correspondance ancienne URL → nouvelle URL ; site de test non indexé ; vérification des titres, contenus, données structurées |
+| **Le jour J** | Redirections 301 actives ; nouveau sitemap envoyé ; retrait du blocage d''indexation ; contrôle des pages importantes une par une |
+| **Après** (3 mois) | Suivi quotidien puis hebdomadaire dans Search Console ; correction des erreurs 404 ; comparaison des positions et du trafic |
+
+> [!exemple] Tableau de correspondance
+> | Ancienne URL | Nouvelle URL |
+> | --- | --- |
+> | /produits/vanille-bourbon-100g.html | /products/vanille-bourbon-100g |
+> | /blog/conserver-vanille | /blogs/conseils/conserver-la-vanille |
+> | /contact.php | /pages/contact |
+
+## Analyser une baisse de trafic
+
+### La méthode en 6 questions
+
+1. **Est-ce réel ?** Vérifier le suivi (balise Analytics cassée, filtre modifié).
+2. **Quand ?** Date précise de la baisse.
+3. **Où ?** Quelles pages, quels pays, quels appareils, marque ou hors marque ?
+4. **Qu''est-ce qui a changé sur le site ?** Mise à jour, migration, nouveau thème, robots.txt, noindex.
+5. **Qu''est-ce qui a changé chez Google ?** Mise à jour annoncée, nouvelle présentation des résultats.
+6. **Qu''est-ce qui a changé chez les concurrents ou dans la demande ?** Saison, actualité, nouveau concurrent.
+
+> [!madagascar]
+> Pour les sites touristiques, une baisse peut venir de la **saison** (moins de recherches en dehors des périodes de préparation) ou de l''**actualité** (cyclone, changements de vols). Comparez toujours avec la **même période de l''année précédente** avant de conclure à un problème SEO.
+
+## La liste de contrôle mensuelle
+
+| Fréquence | Tâches |
+| --- | --- |
+| **Chaque semaine** | Search Console (erreurs, couverture), positions des mots clés principaux |
+| **Chaque mois** | Rapport, nouveaux contenus, mises à jour, liens obtenus, exploration rapide du site |
+| **Chaque trimestre** | Écart de mots clés, révision du plan de contenus, audit technique complet |
+| **À chaque changement du site** | Contrôle avant et après mise en ligne |
+
+> [!retenir]
+> - Des clusters thématiques et un calendrier éditorial en avance sur la demande.
+> - Mettre à jour, enrichir, fusionner et rediriger plutôt que supprimer.
+> - Une migration préparée en 3 phases avec un tableau de correspondance.
+> - 6 questions pour analyser une baisse, avec comparaison annuelle.
+> - Une liste de contrôle hebdomadaire, mensuelle et trimestrielle.
+
+## Exercice pratique : méthodes avancées
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Construisez un cluster thématique complet (1 pilier, 8 satellites) pour un site de votre choix, avec le calendrier sur 3 mois.
+> 2. Choisissez 10 pages existantes et décidez pour chacune : mettre à jour, enrichir, fusionner ou garder.
+> 3. Rédigez le plan de migration d''un petit site (20 pages) avec le tableau de correspondance.
+> 4. Analysez une baisse de trafic fictive avec les 6 questions.
+>
+> **À livrer** : votre cluster, vos décisions, votre plan de migration et votre analyse.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 2, 0, 'Que faire avant de supprimer une page qui reçoit des liens ?', '["Rien","La supprimer simplement","La rediriger en 301 vers la page la plus proche","La cacher"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 2, 1, 'Que contient le tableau de correspondance d''une migration ?', '["Les prix","Les salaires","Les mots clés concurrents","Les anciennes URL et les nouvelles"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 2, 2, 'Quelle est la première question face à une baisse de trafic ?', '["Est-ce réel ou le suivi est-il cassé ?","Combien facturer ?","Faut-il tout supprimer ?","Qui accuser ?"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-a', 3, 'Clients internationaux : structure, hreflang, contenus par marché et rapports', 'Domaines, sous-dossiers ou sous-domaines, règles des balises hreflang, adaptation des contenus, rapport en 6 parties et vocabulaire anglais, marque blanche.', 'Les sites qui visent plusieurs pays ou plusieurs langues ont des besoins SEO particuliers, et les clients étrangers attendent des rapports professionnels, souvent en anglais. Ce module vous prépare au SEO international et au travail avec des agences et des entreprises étrangères.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir une structure pour un site international.
+> 2. Mettre en place les balises hreflang.
+> 3. Adapter les contenus à chaque marché.
+> 4. Rédiger un rapport SEO en français ou en anglais.
+> 5. Travailler en marque blanche pour une agence.
+
+## La structure d''un site international
+
+| Structure | Exemple | Avantages | Inconvénients |
+| --- | --- | --- | --- |
+| **Domaine par pays** | exemple.fr, exemple.it | Signal fort pour chaque pays | Coûteux, popularité séparée |
+| **Sous-dossiers** | exemple.com/fr/, exemple.com/it/ | Popularité partagée, simple à gérer | Signal pays moins fort |
+| **Sous-domaines** | fr.exemple.com | Séparation technique | Popularité moins partagée |
+
+> [!astuce]
+> Pour la plupart des PME (hôtels, agences, exportateurs), les **sous-dossiers par langue** sont la solution la plus simple et la plus efficace.
+
+## Les balises hreflang
+
+> [!definition] Hreflang
+> Une indication qui dit à Google quelles pages sont des versions d''un même contenu dans d''autres langues ou pour d''autres pays, afin qu''il montre la bonne version à chaque internaute.
+
+```html
+<link rel="alternate" hreflang="fr" href="https://exemple.com/fr/circuits/nord-madagascar/" />
+<link rel="alternate" hreflang="en" href="https://exemple.com/en/tours/northern-madagascar/" />
+<link rel="alternate" hreflang="it" href="https://exemple.com/it/tour/nord-madagascar/" />
+<link rel="alternate" hreflang="x-default" href="https://exemple.com/en/tours/northern-madagascar/" />
+```
+
+### Les règles
+
+1. **Chaque version** liste toutes les versions, **y compris elle-même**.
+2. **Les liens sont réciproques** : si la page française cite l''italienne, l''italienne cite la française.
+3. **Les codes** sont corrects (langue, et pays si besoin : `fr`, `fr-CA`, `en-GB`).
+4. **x-default** indique la version par défaut.
+5. **Les URL** sont les adresses canoniques et renvoient un code 200.
+
+> [!attention]
+> Les erreurs de hreflang sont très fréquentes (liens non réciproques, codes faux, pages redirigées). Vérifiez-les avec un crawler et dans Search Console après chaque mise en ligne.
+
+## Adapter les contenus à chaque marché
+
+| Élément | À adapter |
+| --- | --- |
+| **Mots clés** | Les recherches ne sont pas la traduction littérale (recherchez dans chaque langue) |
+| **Exemples et références** | Vols depuis Paris, Milan ou Montréal ; saisons de vacances du pays |
+| **Prix et devises** | Euros, dollars canadiens, affichage local |
+| **Preuves** | Avis et témoignages de clients du même pays |
+| **Contact** | Horaires dans le fuseau du pays, langue parlée au téléphone |
+
+> [!madagascar]
+> Ne publiez pas une simple traduction automatique de vos pages françaises en italien ou en allemand : Google et les visiteurs la repèrent. Faites traduire et adapter par des traducteurs natifs (voir la formation Traducteur), puis faites votre propre recherche de mots clés dans chaque langue.
+
+## Le rapport SEO
+
+### Les 6 parties
+
+1. **Résumé** : résultats clés du mois, comparaison avec l''objectif.
+2. **Visibilité et trafic** : impressions, clics, visites naturelles hors marque.
+3. **Résultats d''entreprise** : demandes, ventes, réservations.
+4. **Travaux réalisés** : technique, contenus, liens.
+5. **Problèmes et risques** : erreurs, baisses, actions en attente du client.
+6. **Plan du mois suivant**.
+
+### Le vocabulaire en anglais
+
+| Français | Anglais |
+| --- | --- |
+| Référencement naturel | Organic search / SEO |
+| Trafic naturel hors marque | Non-branded organic traffic |
+| Liens entrants | Backlinks |
+| Domaines référents | Referring domains |
+| Exploration, indexation | Crawling, indexing |
+| Redirection permanente | 301 redirect |
+| Données structurées | Structured data / schema markup |
+
+> [!exemple] Résumé en anglais
+> "In March, non-branded organic clicks grew 23% month over month, mainly thanks to the updated ''best time to visit Madagascar'' guide, now ranking #3 in France. Organic enquiries rose from 14 to 21. We fixed 120 broken internal links and launched the Italian version with hreflang. Next month: publish the 15-day itinerary and start outreach to 10 travel blogs."
+
+## Travailler en marque blanche
+
+1. **Confidentialité** : aucun contact direct avec les clients de l''agence, pas de mention dans votre portfolio sans accord.
+2. **Les modèles de l''agence** : rapports, présentations, conventions.
+3. **Des délais écrits** et des livrables précis.
+4. **Des accès** donnés par l''agence, retirés en fin de mission.
+
+> [!retenir]
+> - Des sous-dossiers par langue pour la plupart des PME.
+> - Des balises hreflang complètes, réciproques et vérifiées.
+> - Des contenus adaptés à chaque marché, pas seulement traduits.
+> - Un rapport en 6 parties, en français ou en anglais.
+> - En marque blanche : confidentialité et procédures de l''agence.
+
+## Exercice pratique : un site international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Proposez la structure internationale d''un site touristique malgache en français, anglais et italien.
+> 2. Rédigez les balises hreflang de 3 pages dans les 3 langues.
+> 3. Faites une recherche de mots clés en anglais et en italien pour 2 pages, et comparez avec la traduction littérale.
+> 4. Rédigez un rapport mensuel complet avec des chiffres fictifs, et son résumé en anglais.
+>
+> **À livrer** : votre structure, vos balises, votre recherche et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 3, 0, 'Quelle structure est souvent la plus simple pour une PME ?', '["Un seul page pour toutes les langues","Un domaine par pays obligatoirement","Des sous-dossiers par langue","Aucune"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 3, 1, 'Les balises hreflang doivent-elles être réciproques ?', '["Seulement en anglais","Seulement le dimanche","Non","Oui"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 3, 2, 'Comment dit-on « liens entrants » en anglais ?', '["Redirect","Backlinks","Schema","Crawling"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-2-a', 4, 'Développer son activité : accompagnement, études de cas, équipe et IA', 'Formules d''accompagnement liées à la valeur, études de cas chiffrées, équipe de partenaires, fidélisation et évolution du SEO face aux réponses générées par l''IA.', 'Le SEO est un travail de long terme : c''est une chance pour construire des **revenus réguliers**. Ce dernier module vous aide à fixer des prix liés à la valeur, à construire des études de cas solides, à travailler avec des partenaires et à préparer l''avenir du métier, alors que les moteurs de recherche intègrent de plus en plus l''intelligence artificielle.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Fixer des prix d''accompagnement liés à la valeur.
+> 2. Construire des études de cas chiffrées.
+> 3. Organiser une petite équipe avec des rédacteurs et des développeurs partenaires.
+> 4. Fidéliser vos clients sur plusieurs années.
+> 5. Préparer l''évolution du SEO face aux réponses générées par l''IA.
+
+## Les prix d''accompagnement
+
+| Formule | Contenu (exemple) | Pour qui |
+| --- | --- | --- |
+| **Essentiel** | Suivi technique, 2 contenus optimisés, rapport | Petit site local |
+| **Croissance** | Essentiel + 4 contenus, liens par partenariats, appel mensuel | PME, boutiques |
+| **Expert** | Croissance + SEO technique avancé, international, accompagnement des équipes | Sites importants |
+
+### Fixer le prix
+
+1. **Estimez** le temps mensuel (exemple : 20 heures).
+2. **Multipliez** par votre tarif horaire.
+3. **Comparez** avec la valeur pour le client : combien rapportent les ventes venant de la recherche naturelle ?
+4. **Ajoutez** les coûts externes (rédaction, outils) ou faites-les payer directement par le client.
+
+> [!exemple] Calcul de valeur
+> Une boutique réalise 1 800 € par mois de ventes supplémentaires grâce à la recherche naturelle après 6 mois, avec une marge de 50 %, soit 900 € de marge en plus chaque mois. Un accompagnement à 400 € par mois est rentable pour elle.
+> *(Montants donnés en exemple.)*
+
+> [!attention]
+> Engagez-vous sur le **travail réalisé** et la **transparence** des résultats, pas sur une position garantie. Proposez un engagement de **6 mois** minimum : les effets du SEO demandent du temps.
+
+## Les études de cas chiffrées
+
+### Les 5 parties
+
+1. **Le client** (avec accord ou anonymisé) : secteur, pays, taille.
+2. **Le point de départ** : visites naturelles, ventes ou demandes, problèmes.
+3. **Les actions** : 3 à 5 actions principales.
+4. **Les résultats** sur une durée claire, avec des graphiques de Search Console.
+5. **La citation** du client.
+
+> [!exemple] Étude de cas courte
+> « Agence de voyage spécialisée sur Madagascar. Départ : 1 900 clics naturels par mois, 9 demandes de devis. Actions : correction de 300 pages en double, cluster "Voyager à Madagascar" de 12 pages, version italienne avec hreflang, 14 liens obtenus auprès de blogs de voyage. Résultat après 9 mois : 6 100 clics par mois, 31 demandes de devis. »
+
+## Organiser une petite équipe
+
+| Rôle | Qui |
+| --- | --- |
+| **Stratégie, audit, relation client** | Vous |
+| **Rédaction** | Rédacteurs web formés à vos briefs |
+| **Corrections techniques** | Développeur partenaire (WordPress, Shopify) |
+| **Relations presse et partenariats** | Assistant formé |
+| **Traduction** | Traducteurs natifs |
+
+### Les règles
+
+1. **Des briefs et des procédures** écrits.
+2. **Une relecture** de chaque contenu avant publication.
+3. **Des accès limités** aux sites des clients.
+4. **L''accord des clients** pour la sous-traitance et des accords de confidentialité.
+5. **Un paiement juste** et des contrats.
+
+> [!madagascar]
+> Une petite équipe à Madagascar (spécialiste SEO, rédacteurs, développeur) peut servir plusieurs clients francophones. Avant d''embaucher, déclarez votre activité (NIF et carte statistique) et renseignez-vous auprès d''un comptable. Pour les paiements de l''étranger, comparez Payoneer et le virement international ; les possibilités de PayPal sont limitées pour Madagascar.
+
+## Fidéliser vos clients
+
+1. **Un rapport mensuel** relié aux ventes et aux demandes.
+2. **Des idées proactives** : nouveaux contenus, nouveaux marchés, saisons.
+3. **Une alerte rapide** en cas de problème (indexation, baisse).
+4. **Un bilan annuel** avec le plan de l''année suivante.
+5. **De la pédagogie** : expliquer ce qui se passe et pourquoi.
+
+## Le SEO face aux réponses générées par l''IA
+
+Les moteurs de recherche affichent de plus en plus de **réponses générées par l''IA**, et des assistants d''IA répondent directement aux questions. Cela change la façon dont les sites reçoivent des visites.
+
+| Ce qui change | Ce que vous pouvez faire |
+| --- | --- |
+| Moins de clics sur les questions simples | Viser aussi les recherches à forte intention (réserver, acheter, comparer) |
+| Les réponses citent des sources | Produire des contenus fiables, précis, avec une expertise visible et à jour |
+| L''image de la marque compte davantage | Avis, mentions dans la presse, présence sur les plateformes du secteur |
+| Nouvelles façons de mesurer | Suivre aussi les demandes, ventes et recherches de la marque |
+
+> [!astuce]
+> Restez à jour : suivez les annonces officielles de Google (blog Search Central) et des sources reconnues du métier, et testez par vous-même avant de conclure. Le SEO évolue vite, mais les principes restent : être utile, fiable et techniquement solide.
+
+> [!retenir]
+> - Des formules d''accompagnement justifiées par la valeur, sur 6 mois au moins.
+> - Des études de cas chiffrées avec des preuves.
+> - Une équipe de rédacteurs, développeurs et traducteurs avec des procédures.
+> - La fidélité vient des résultats, des idées et de la pédagogie.
+> - Face à l''IA : intention forte, contenus fiables, marque visible et nouvelles mesures.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez vos 3 formules d''accompagnement avec leurs prix.
+> 2. Rédigez une étude de cas (réelle ou issue de vos exercices) en 5 parties.
+> 3. Écrivez la procédure de brief et de relecture pour vos rédacteurs.
+> 4. Rédigez une note d''une page pour un client sur l''effet des réponses générées par l''IA et ce que vous recommandez.
+> 5. Fixez vos objectifs à 12 mois.
+>
+> **À livrer** : vos formules, votre étude de cas, votre procédure, votre note et vos objectifs.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 4, 0, 'Quelle durée minimale d''engagement proposer ?', '["Une semaine","Dix ans","Un jour","Environ 6 mois"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 4, 1, 'Sur quoi s''engager auprès du client ?', '["Le travail réalisé et la transparence des résultats","Un nombre de ventes garanti","Rien","Une première place garantie"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-2-a', 4, 2, 'Que faire face aux réponses générées par l''IA ?', '["Copier les réponses de l''IA","Acheter des liens","Arrêter le SEO","Viser l''intention forte et produire des contenus fiables"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quelle spécialité gère les sites de milliers de pages mal explorés ?', '["Rédaction","Publicité","SEO local","SEO technique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quelle spécialité protège les visites lors d''un changement de plateforme ?', '["Migrations et refontes","Design","SEO local","E-mailing"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Qu''est-ce qu''une page orpheline ?', '["Une page sans aucun lien interne vers elle","Une page sans image","Une page en anglais","Une page supprimée"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quel est le plus haut niveau de résultat SEO ?', '["La valeur pour l''entreprise","Le nombre de pages","Le nombre de mots","Les impressions"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Comment utiliser les volumes estimés des outils ?', '["Comme des chiffres exacts","Jamais","Pour comparer et trouver des idées","Pour facturer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quels sites contacter en priorité pour des liens ?', '["Aucun","Ceux qui citent plusieurs concurrents mais pas le client","Des réseaux de liens payants","Des sites sans rapport"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Comment suivre les positions de façon utile ?', '["Seulement la marque","Par thème, hors marque, par pays et appareil, sur plusieurs semaines","Une fois par an","Chaque minute"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Que fait un crawler ?', '["Il paie Google","Il parcourt le site comme un robot et liste les problèmes","Il écrit les articles","Il achète des liens"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quel format est souvent utilisé pour les données structurées ?', '["MP4","DOCX","PDF","JSON-LD"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Les données structurées garantissent-elles des résultats enrichis ?', '["Oui, en payant","Oui, après une semaine","Oui, toujours","Non"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Qu''est-ce qu''une page pilier ?', '["Une page vide","Une page d''erreur","Une page de paiement","Une page complète sur un sujet, reliée à des pages détaillées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quand publier les contenus de voyage ?', '["Jamais","Après la saison","Le jour du départ","Avant la période où les voyageurs recherchent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Que faire de plusieurs pages sur le même sujet ?', '["Les cacher","Rien","En créer d''autres","Les fusionner et rediriger"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quand le site de test d''une migration doit-il être indexé ?', '["Toujours","Avant la mise en ligne","Le premier jour","Jamais, il doit rester non indexé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Combien de temps suivre après une migration ?', '["Aucun suivi","Une heure","Un jour","Environ 3 mois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Avec quoi comparer une baisse pour un site touristique ?', '["Le mois précédent seulement","La même période de l''année précédente","Rien","Un autre secteur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Quand faire un audit technique complet ?', '["Chaque trimestre","Une fois tous les 10 ans","Jamais","Chaque heure"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Que signifie x-default dans hreflang ?', '["Une page supprimée","Une erreur","Une langue inconnue","La version par défaut"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Chaque version hreflang doit-elle se citer elle-même ?', '["Seulement la française","Jamais","Oui","Non"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Que faire au lieu d''une simple traduction automatique ?', '["Publier sans relire","Faire traduire et adapter par des natifs, avec une recherche de mots clés par langue","Ne rien traduire","Copier un concurrent"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Comment dit-on « redirection permanente » en anglais ?', '["Crawling","Backlink","Schema","301 redirect"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'En marque blanche, peut-on contacter les clients de l''agence ?', '["Non","Seulement par SMS","Oui, pour leur vendre","Oui"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Comment justifier un accompagnement SEO ?', '["Par le prix des concurrents seulement","On ne le justifie pas","Par le nombre de mots écrits","Par la valeur des ventes et demandes générées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Que faut-il avant de sous-traiter la rédaction ?', '["L''accord du client et des accords de confidentialité","Un logo","Rien","Un VPN"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-2-a', 'Où suivre les annonces officielles de Google ?', '["Nulle part","Le blog Google Search Central","Un forum anonyme","Une publicité"]'::jsonb, 1);
 
 -- mkt-2-f
 delete from public.exam_questions where course_id = 'mkt-2-f';

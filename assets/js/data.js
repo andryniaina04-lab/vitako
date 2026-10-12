@@ -3966,6 +3966,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-2-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du spécialiste SEO un expert qui relie son travail aux ventes : spécialité (technique, e-commerce, contenu, local, international, migrations), audit avancé en 7 domaines avec priorités, outils payants (Semrush et Ahrefs) avec crawler et données structurées, clusters thématiques, migrations et analyse des baisses, SEO international et hreflang, puis accompagnement, équipe et évolution face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et mener un audit SEO avancé avec des priorités chiffrées",
+   "Utiliser Semrush, Ahrefs et un crawler pour décider",
+   "Construire des clusters thématiques et réussir une migration",
+   "Analyser une baisse de trafic avec méthode",
+   "Mettre en place un SEO international avec hreflang et rapporter en anglais",
+   "Vendre un accompagnement lié à la valeur et préparer le SEO face à l'IA"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer et relier le SEO aux ventes",
+    "summary": "Les 6 spécialités avancées, l'audit en 7 domaines, la cannibalisation, les priorités impact et effort, les niveaux de résultats et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit SEO avancé",
+     "Relier le SEO aux résultats de l'entreprise",
+     "Les offres à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre audit avancé"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Semrush, Ahrefs, crawler et données structurées",
+    "summary": "Fonctions de Semrush et d'Ahrefs, écart de mots clés, analyse de liens, suivi de positions utile, exploration avec un crawler et données structurées vérifiées.",
+    "sections": [
+     "Semrush et Ahrefs",
+     "L'écart de mots clés",
+     "Analyser un profil de liens",
+     "Suivre les positions de façon utile",
+     "Le crawler : voir le site comme un robot",
+     "Les données structurées",
+     "Exercice pratique : vos outils avancés"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Qualité et rapidité : clusters, mises à jour, migrations et baisses de trafic",
+    "summary": "Page pilier et satellites, calendrier éditorial, mise à jour et élagage, migration en 3 phases, analyse d'une baisse en 6 questions, liste de contrôle.",
+    "sections": [
+     "Le plan de contenus par thèmes",
+     "Mettre à jour et élaguer",
+     "Réussir une migration",
+     "Analyser une baisse de trafic",
+     "La liste de contrôle mensuelle",
+     "Exercice pratique : méthodes avancées"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Clients internationaux : structure, hreflang, contenus par marché et rapports",
+    "summary": "Domaines, sous-dossiers ou sous-domaines, règles des balises hreflang, adaptation des contenus, rapport en 6 parties et vocabulaire anglais, marque blanche.",
+    "sections": [
+     "La structure d'un site international",
+     "Les balises hreflang",
+     "Adapter les contenus à chaque marché",
+     "Le rapport SEO",
+     "Travailler en marque blanche",
+     "Exercice pratique : un site international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : accompagnement, études de cas, équipe et IA",
+    "summary": "Formules d'accompagnement liées à la valeur, études de cas chiffrées, équipe de partenaires, fidélisation et évolution du SEO face aux réponses générées par l'IA.",
+    "sections": [
+     "Les prix d'accompagnement",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Fidéliser vos clients",
+     "Le SEO face aux réponses générées par l'IA",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "mkt-2-f": {
   "hours": 15,
   "description": "Le spécialiste SEO aide les sites à apparaître dans les résultats naturels de Google pour attirer des clients sans payer de publicité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des hôtels, des exportateurs, des agences web et des entreprises francophones, avec Google Search Console et Ubersuggest : mots clés, optimisation des pages, technique, référencement local, contenus et rapports. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

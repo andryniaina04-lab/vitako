@@ -1,0 +1,97 @@
+{
+  "id": "mkt-2-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du spécialiste SEO un expert qui relie son travail aux ventes : spécialité (technique, e-commerce, contenu, local, international, migrations), audit avancé en 7 domaines avec priorités, outils payants (Semrush et Ahrefs) avec crawler et données structurées, clusters thématiques, migrations et analyse des baisses, SEO international et hreflang, puis accompagnement, équipe et évolution face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et mener un audit SEO avancé avec des priorités chiffrées",
+    "Utiliser Semrush, Ahrefs et un crawler pour décider",
+    "Construire des clusters thématiques et réussir une migration",
+    "Analyser une baisse de trafic avec méthode",
+    "Mettre en place un SEO international avec hreflang et rapporter en anglais",
+    "Vendre un accompagnement lié à la valeur et préparer le SEO face à l'IA"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer et relier le SEO aux ventes",
+      "summary": "Les 6 spécialités avancées, l'audit en 7 domaines, la cannibalisation, les priorités impact et effort, les niveaux de résultats et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la cannibalisation ?", "options": ["Plusieurs pages du même site visent la même recherche", "Un concurrent copie le site", "Un virus", "Un lien acheté"], "correct": 0 },
+        { "q": "Quelle recommandation traiter en premier ?", "options": ["Impact fort et effort faible", "Impact faible et effort fort", "La plus chère", "Au hasard"], "correct": 0 },
+        { "q": "Pourquoi séparer le trafic hors marque ?", "options": ["Il montre vraiment l'effet du travail SEO", "Pour gonfler les chiffres", "Il n'existe pas", "Pour cacher les résultats"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Semrush, Ahrefs, crawler et données structurées",
+      "summary": "Fonctions de Semrush et d'Ahrefs, écart de mots clés, analyse de liens, suivi de positions utile, exploration avec un crawler et données structurées vérifiées.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la source de vérité sur les données réelles du site ?", "options": ["Google Search Console", "Les estimations de Semrush", "Un forum", "Le client"], "correct": 0 },
+        { "q": "Que révèle l'écart de mots clés ?", "options": ["Les mots clés des concurrents absents du site", "Le prix des concurrents", "Les mots de passe", "Les salaires"], "correct": 0 },
+        { "q": "Que faut-il éviter pour obtenir des liens ?", "options": ["Acheter des liens", "Créer des contenus utiles", "Nouer des partenariats", "Contacter la presse"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : clusters, mises à jour, migrations et baisses de trafic",
+      "summary": "Page pilier et satellites, calendrier éditorial, mise à jour et élagage, migration en 3 phases, analyse d'une baisse en 6 questions, liste de contrôle.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de supprimer une page qui reçoit des liens ?", "options": ["La rediriger en 301 vers la page la plus proche", "La supprimer simplement", "La cacher", "Rien"], "correct": 0 },
+        { "q": "Que contient le tableau de correspondance d'une migration ?", "options": ["Les anciennes URL et les nouvelles", "Les prix", "Les salaires", "Les mots clés concurrents"], "correct": 0 },
+        { "q": "Quelle est la première question face à une baisse de trafic ?", "options": ["Est-ce réel ou le suivi est-il cassé ?", "Qui accuser ?", "Combien facturer ?", "Faut-il tout supprimer ?"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : structure, hreflang, contenus par marché et rapports",
+      "summary": "Domaines, sous-dossiers ou sous-domaines, règles des balises hreflang, adaptation des contenus, rapport en 6 parties et vocabulaire anglais, marque blanche.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle structure est souvent la plus simple pour une PME ?", "options": ["Des sous-dossiers par langue", "Un domaine par pays obligatoirement", "Un seul page pour toutes les langues", "Aucune"], "correct": 0 },
+        { "q": "Les balises hreflang doivent-elles être réciproques ?", "options": ["Oui", "Non", "Seulement en anglais", "Seulement le dimanche"], "correct": 0 },
+        { "q": "Comment dit-on « liens entrants » en anglais ?", "options": ["Backlinks", "Crawling", "Schema", "Redirect"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : accompagnement, études de cas, équipe et IA",
+      "summary": "Formules d'accompagnement liées à la valeur, études de cas chiffrées, équipe de partenaires, fidélisation et évolution du SEO face aux réponses générées par l'IA.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle durée minimale d'engagement proposer ?", "options": ["Environ 6 mois", "Une semaine", "Un jour", "Dix ans"], "correct": 0 },
+        { "q": "Sur quoi s'engager auprès du client ?", "options": ["Le travail réalisé et la transparence des résultats", "Une première place garantie", "Un nombre de ventes garanti", "Rien"], "correct": 0 },
+        { "q": "Que faire face aux réponses générées par l'IA ?", "options": ["Viser l'intention forte et produire des contenus fiables", "Arrêter le SEO", "Copier les réponses de l'IA", "Acheter des liens"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité gère les sites de milliers de pages mal explorés ?", "options": ["SEO technique", "SEO local", "Rédaction", "Publicité"], "correct": 0 },
+    { "q": "Quelle spécialité protège les visites lors d'un changement de plateforme ?", "options": ["Migrations et refontes", "SEO local", "Design", "E-mailing"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une page orpheline ?", "options": ["Une page sans aucun lien interne vers elle", "Une page sans image", "Une page en anglais", "Une page supprimée"], "correct": 0 },
+    { "q": "Quel est le plus haut niveau de résultat SEO ?", "options": ["La valeur pour l'entreprise", "Les impressions", "Le nombre de pages", "Le nombre de mots"], "correct": 0 },
+    { "q": "Comment utiliser les volumes estimés des outils ?", "options": ["Pour comparer et trouver des idées", "Comme des chiffres exacts", "Pour facturer", "Jamais"], "correct": 0 },
+    { "q": "Quels sites contacter en priorité pour des liens ?", "options": ["Ceux qui citent plusieurs concurrents mais pas le client", "Des réseaux de liens payants", "Des sites sans rapport", "Aucun"], "correct": 0 },
+    { "q": "Comment suivre les positions de façon utile ?", "options": ["Par thème, hors marque, par pays et appareil, sur plusieurs semaines", "Une fois par an", "Seulement la marque", "Chaque minute"], "correct": 0 },
+    { "q": "Que fait un crawler ?", "options": ["Il parcourt le site comme un robot et liste les problèmes", "Il écrit les articles", "Il achète des liens", "Il paie Google"], "correct": 0 },
+    { "q": "Quel format est souvent utilisé pour les données structurées ?", "options": ["JSON-LD", "MP4", "PDF", "DOCX"], "correct": 0 },
+    { "q": "Les données structurées garantissent-elles des résultats enrichis ?", "options": ["Non", "Oui, toujours", "Oui, en payant", "Oui, après une semaine"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une page pilier ?", "options": ["Une page complète sur un sujet, reliée à des pages détaillées", "Une page d'erreur", "Une page de paiement", "Une page vide"], "correct": 0 },
+    { "q": "Quand publier les contenus de voyage ?", "options": ["Avant la période où les voyageurs recherchent", "Le jour du départ", "Après la saison", "Jamais"], "correct": 0 },
+    { "q": "Que faire de plusieurs pages sur le même sujet ?", "options": ["Les fusionner et rediriger", "En créer d'autres", "Les cacher", "Rien"], "correct": 0 },
+    { "q": "Quand le site de test d'une migration doit-il être indexé ?", "options": ["Jamais, il doit rester non indexé", "Toujours", "Le premier jour", "Avant la mise en ligne"], "correct": 0 },
+    { "q": "Combien de temps suivre après une migration ?", "options": ["Environ 3 mois", "Une heure", "Un jour", "Aucun suivi"], "correct": 0 },
+    { "q": "Avec quoi comparer une baisse pour un site touristique ?", "options": ["La même période de l'année précédente", "Le mois précédent seulement", "Un autre secteur", "Rien"], "correct": 0 },
+    { "q": "Quand faire un audit technique complet ?", "options": ["Chaque trimestre", "Jamais", "Une fois tous les 10 ans", "Chaque heure"], "correct": 0 },
+    { "q": "Que signifie x-default dans hreflang ?", "options": ["La version par défaut", "Une erreur", "Une langue inconnue", "Une page supprimée"], "correct": 0 },
+    { "q": "Chaque version hreflang doit-elle se citer elle-même ?", "options": ["Oui", "Non", "Seulement la française", "Jamais"], "correct": 0 },
+    { "q": "Que faire au lieu d'une simple traduction automatique ?", "options": ["Faire traduire et adapter par des natifs, avec une recherche de mots clés par langue", "Publier sans relire", "Ne rien traduire", "Copier un concurrent"], "correct": 0 },
+    { "q": "Comment dit-on « redirection permanente » en anglais ?", "options": ["301 redirect", "Backlink", "Crawling", "Schema"], "correct": 0 },
+    { "q": "En marque blanche, peut-on contacter les clients de l'agence ?", "options": ["Non", "Oui", "Oui, pour leur vendre", "Seulement par SMS"], "correct": 0 },
+    { "q": "Comment justifier un accompagnement SEO ?", "options": ["Par la valeur des ventes et demandes générées", "Par le nombre de mots écrits", "Par le prix des concurrents seulement", "On ne le justifie pas"], "correct": 0 },
+    { "q": "Que faut-il avant de sous-traiter la rédaction ?", "options": ["L'accord du client et des accords de confidentialité", "Rien", "Un logo", "Un VPN"], "correct": 0 },
+    { "q": "Où suivre les annonces officielles de Google ?", "options": ["Le blog Google Search Central", "Un forum anonyme", "Une publicité", "Nulle part"], "correct": 0 }
+  ]
+}
