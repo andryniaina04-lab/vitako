@@ -1,0 +1,61 @@
+# Met à jour le contenu des formations dans Supabase (supabase/seed.sql)
+# à chaque envoi sur main qui modifie les formations. Peut aussi être lancé à la main
+# depuis l'onglet « Actions » de GitHub (bouton « Run workflow »).
+# Nécessite le secret SUPABASE_DB_URL (voir README, section « Mise à jour automatique »).
+name: Mettre à jour les formations dans Supabase
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/seed.sql'
+      - 'content/**'
+      - 'tools/build.mjs'
+  workflow_dispatch:
+
+concurrency:
+  group: supabase-seed
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Vérifier que seed.sql correspond au contenu
+        run: |
+          node tools/build.mjs
+          if ! git diff --quiet -- supabase/seed.sql assets/js/data.js; then
+            echo "::error::seed.sql ou data.js n'est pas à jour. Lancez 'node tools/build.mjs' puis renvoyez les fichiers."
+            exit 1
+          fi
+
+      - name: Vérifier le secret SUPABASE_DB_URL
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ]; then
+            echo "::error::Le secret SUPABASE_DB_URL est absent (GitHub > Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+
+      - name: Installer psql
+        run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+
+      - name: Exécuter seed.sql dans Supabase
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -q -f supabase/seed.sql
+
+      - name: Vérifier le résultat
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          psql "$SUPABASE_DB_URL" -tA -c "select count(*) || ' formations, dont ' || count(*) filter (where published) || ' publiées' from public.courses"
+          psql "$SUPABASE_DB_URL" -tA -c "select count(*) || ' leçons, ' || (select count(*) from public.exam_questions) || ' questions d''examen' from public.lessons"

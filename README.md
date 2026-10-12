@@ -87,13 +87,32 @@ Pour publier :
 
 1. Créez ou modifiez le dossier de la formation.
 2. Lancez `node tools/build.mjs` (il met à jour `assets/js/data.js` et `supabase/seed.sql`).
-3. Exécutez `supabase/seed.sql` dans Supabase → SQL Editor. Les comptes, paiements et attestations ne sont pas touchés.
+3. Envoyez sur GitHub : `supabase/seed.sql` est exécuté automatiquement dans Supabase (voir « Mise à jour automatique »). Sans ce réglage, exécutez-le à la main dans Supabase → SQL Editor. Les comptes, paiements et attestations ne sont pas touchés.
 4. Lancez `node tools/stamp.mjs` (numéro de version, pour que les navigateurs chargent la nouvelle version), puis enregistrez les changements sur GitHub : le site se met à jour.
 
 Le numéro de version affiché en bas du site permet de vérifier que la dernière mise en ligne est bien visible.
 
 **Vidéos** : mettez le lien dans `video_url` du module (YouTube, Vimeo ou fichier `.mp4`).
 Sans lien, la leçon affiche « Vidéo bientôt disponible » et le texte suffit pour réussir le test.
+
+## Mise à jour automatique des formations (GitHub Actions)
+
+À chaque envoi sur `main` qui modifie `content/`, `supabase/seed.sql` ou `tools/build.mjs`,
+GitHub exécute `supabase/seed.sql` dans Supabase (fichier `.github/workflows/supabase-seed.yml`).
+On peut aussi le lancer à la main : GitHub → **Actions** → « Mettre à jour les formations dans Supabase » → **Run workflow**.
+
+Réglage à faire une seule fois :
+
+1. Supabase → bouton **Connect** (en haut) → onglet de connexion directe → choisir **Session pooler**
+   (les serveurs de GitHub ne savent pas joindre l'adresse directe). Copier l'adresse qui commence par
+   `postgresql://postgres.` et remplacer `[YOUR-PASSWORD]` par le mot de passe de la base.
+   Mot de passe oublié : Project Settings → Database → **Reset database password**
+   (choisissez-le avec seulement des lettres et des chiffres, sinon il faut encoder les caractères spéciaux).
+2. GitHub → dépôt `vitako` → **Settings → Secrets and variables → Actions → New repository secret** :
+   nom `SUPABASE_DB_URL`, valeur : l'adresse complète.
+3. GitHub → **Actions** → lancer le workflow une fois avec **Run workflow** et vérifier qu'il est vert.
+
+Ce secret donne tous les droits sur la base : ne le mettez jamais dans un fichier du site ni dans un message.
 
 ## Vérifier une attestation
 
