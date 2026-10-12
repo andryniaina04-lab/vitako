@@ -2,66 +2,213 @@
 
 // Les polices de base de jsPDF ne gèrent pas certains caractères : on les remplace.
 const clean = (s) => String(s ?? '')
-  .replace(/[’‘]/g, "'").replace(/[“”«»]/g, '"')
+  .replace(/[’‘]/g, "'").replace(/[“”]/g, '"')
   .replace(/[–—]/g, '-').replace(/[  ]/g, ' ').replace(/…/g, '...');
 
 export function slug(s) {
   return clean(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+const GREEN = [11, 122, 85];
+const GREEN_DARK = [8, 74, 52];
+const GOLD = [176, 128, 30];
+const GOLD_LIGHT = [214, 176, 92];
+const CREAM = [252, 249, 240];
+const INK = [24, 36, 30];
+const MUTED = [96, 108, 100];
+
+// Opacité (filigrane). Ignorée si la version de jsPDF ne la gère pas.
+function opacity(d, value) {
+  try { d.setGState(new d.GState({ opacity: value })); } catch (e) { /* sans effet */ }
+}
+
+// Polygone fermé et rempli à partir d'une liste de points absolus.
+function polygon(d, pts, style = 'F') {
+  const [x0, y0] = pts[0];
+  const rel = [];
+  for (let i = 1; i < pts.length; i++) rel.push([pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]]);
+  d.lines(rel, x0, y0, [1, 1], style, true);
+}
+
+// Coche (logo Vitako).
+function check(d, x, y, size, color, width) {
+  d.setDrawColor(...color); d.setLineWidth(width); d.setLineCap?.('round'); d.setLineJoin?.('round');
+  d.lines([[size * 0.32, size * 0.32], [size * 0.62, -size * 0.7]], x, y);
+}
+
+// Texte en arc. En haut : lu de gauche à droite, lettres vers l'extérieur.
+// En bas : lu de gauche à droite, lettres vers le centre. r = rayon de la ligne de base.
+function arcText(d, text, cx, cy, r, where, tracking = 0.5) {
+  const chars = [...text];
+  const widths = chars.map((ch) => d.getTextWidth(ch) + tracking);
+  const total = widths.reduce((a, b) => a + b, 0) - tracking;
+  let pos = -total / 2;
+  chars.forEach((ch, i) => {
+    const mid = pos + (widths[i] - tracking) / 2;
+    const a = mid / r; // angle (radians) depuis le haut ou le bas
+    const w = widths[i] - tracking;
+    if (where === 'top') {
+      const bx = cx + r * Math.sin(a) - (w / 2) * Math.cos(a);
+      const by = cy - r * Math.cos(a) - (w / 2) * Math.sin(a);
+      d.text(ch, bx, by, { angle: (-a * 180) / Math.PI });
+    } else {
+      const bx = cx + r * Math.sin(a) - (w / 2) * Math.cos(a);
+      const by = cy + r * Math.cos(a) + (w / 2) * Math.sin(a);
+      d.text(ch, bx, by, { angle: (a * 180) / Math.PI });
+    }
+    pos += widths[i];
+  });
+}
+
+// Petit losange décoratif.
+function diamond(d, x, y, s, color) {
+  d.setFillColor(...color);
+  polygon(d, [[x, y - s], [x + s, y], [x, y + s], [x - s, y]]);
+}
+
+// Tampon officiel : rosette dorée, rubans verts, texte circulaire, coche au centre.
+function seal(d, cx, cy, R, year) {
+  // Rubans
+  d.setFillColor(...GREEN_DARK);
+  polygon(d, [[cx - 9, cy + 6], [cx - 2, cy + 9], [cx - 6.5, cy + 27], [cx - 9.6, cy + 23.4], [cx - 13.4, cy + 25.2]]);
+  d.setFillColor(...GREEN);
+  polygon(d, [[cx + 9, cy + 6], [cx + 2, cy + 9], [cx + 6.5, cy + 27], [cx + 9.6, cy + 23.4], [cx + 13.4, cy + 25.2]]);
+
+  // Bord dentelé
+  d.setFillColor(...GOLD);
+  const n = 32;
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2;
+    d.circle(cx + R * Math.cos(a), cy + R * Math.sin(a), 1.9, 'F');
+  }
+  d.circle(cx, cy, R, 'F');
+
+  // Anneaux et texte circulaire
+  d.setDrawColor(...CREAM); d.setLineWidth(0.35);
+  d.circle(cx, cy, R - 1.6, 'S');
+  d.circle(cx, cy, R - 6.6, 'S');
+  d.setFont('helvetica', 'bold'); d.setFontSize(6); d.setTextColor(...CREAM);
+  arcText(d, 'ATTESTATION OFFICIELLE', cx, cy, R - 5.5, 'top', 0.45);
+  arcText(d, 'VITAKO', cx, cy, R - 3.4, 'bottom', 0.9);
+  d.setFillColor(...CREAM);
+  [-1, 1].forEach((side) => {
+    const a = side * 1.25;
+    d.circle(cx + (R - 4.1) * Math.sin(a), cy + (R - 4.1) * Math.cos(a), 0.55, 'F');
+  });
+
+  // Disque central
+  d.setFillColor(...GREEN); d.circle(cx, cy, R - 7.4, 'F');
+  d.setDrawColor(...GOLD_LIGHT); d.setLineWidth(0.3); d.circle(cx, cy, R - 8.3, 'S');
+  check(d, cx - 3.6, cy - 0.6, 7.5, [255, 255, 255], 1.5);
+  d.setFont('helvetica', 'bold'); d.setFontSize(5.2); d.setTextColor(...GOLD_LIGHT);
+  d.text(String(year), cx, cy + 5.6, { align: 'center' });
+}
+
 /**
- * @param {{heading:string, name:string, text:string, rows:[string,string][], verifyUrl:string}} c
- * @returns {Blob}
+ * @param {{heading:string, name:string, text:string, rows:[string,string][], verifyUrl:string, year?:number}} c
+ * @returns {import('jspdf').jsPDF}
  */
 export function certificatePdf(c) {
   const { jsPDF } = window.jspdf;
   const d = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-  const W = 297, H = 210, cx = W / 2;
-  const green = [11, 122, 85], gold = [168, 111, 0], ink = [19, 36, 27], muted = [86, 102, 92];
+  const W = 297, H = 210;
+  const left = 30;                   // début de la zone encadrée (après la bande verte)
+  const cx = (left + W - 10) / 2;    // centre de la zone encadrée
 
-  // Cadre double
-  d.setDrawColor(...gold); d.setLineWidth(1.4); d.rect(8, 8, W - 16, H - 16);
-  d.setLineWidth(0.4); d.rect(12, 12, W - 24, H - 24);
+  // Fond crème
+  d.setFillColor(...CREAM); d.rect(0, 0, W, H, 'F');
 
-  // Logo
-  d.setFillColor(...green); d.roundedRect(cx - 26, 22, 7, 7, 1.2, 1.2, 'F');
-  d.setDrawColor(255, 255, 255); d.setLineWidth(0.9); d.lines([[1.4, 1.5], [2.6, -3.2]], cx - 24.4, 25.6);
-  d.setTextColor(...ink); d.setFont('helvetica', 'bold'); d.setFontSize(15); d.text('vitako', cx - 17, 27.8);
-  d.setFont('helvetica', 'normal'); d.setFontSize(9); d.setTextColor(...muted);
-  d.text(clean('FORMATIONS AUX MÉTIERS DU FREELANCE ET DU TÉLÉTRAVAIL'), cx, 37, { align: 'center', charSpace: 0.6 });
+  // Bande verte à gauche, avec liseré doré et texte vertical
+  d.setFillColor(...GREEN_DARK); d.rect(0, 0, 22, H, 'F');
+  d.setFillColor(...GOLD); d.rect(22, 0, 1.2, H, 'F');
+  d.setDrawColor(...GREEN); d.setLineWidth(0.25);
+  for (let y = -22; y < H; y += 6) d.line(0, y + 22, 22, y);
+  d.setFont('helvetica', 'bold'); d.setFontSize(8.5); d.setTextColor(...GOLD_LIGHT);
+  const band = clean('VITAKO  ·  FORMATIONS FREELANCE ET TÉLÉTRAVAIL  ·  MADAGASCAR');
+  const bandLen = d.getTextWidth(band) + 0.9 * band.length;
+  d.text(band, 14, H / 2 + bandLen / 2, { angle: 90, charSpace: 0.9 });
 
-  // Titre, nom, texte
-  d.setTextColor(...green); d.setFont('helvetica', 'bold'); d.setFontSize(28);
-  d.text(clean(c.heading.toUpperCase()), cx, 58, { align: 'center' });
-  d.setTextColor(...muted); d.setFont('helvetica', 'normal'); d.setFontSize(12);
-  d.text('Nous attestons que', cx, 73, { align: 'center' });
-  d.setTextColor(...ink); d.setFont('helvetica', 'bold'); d.setFontSize(30);
-  d.text(clean(c.name), cx, 90, { align: 'center' });
-  d.setDrawColor(...gold); d.setLineWidth(0.5); d.line(cx - 70, 95, cx + 70, 95);
-  d.setFont('helvetica', 'normal'); d.setFontSize(12.5); d.setTextColor(...ink);
-  d.text(d.splitTextToSize(clean(c.text), 190), cx, 106, { align: 'center', lineHeightFactor: 1.45 });
+  // Cadre doré double avec ornements d'angle
+  d.setDrawColor(...GOLD); d.setLineWidth(0.9); d.rect(left, 10, W - 10 - left, H - 20);
+  d.setLineWidth(0.3); d.rect(left + 2.6, 12.6, W - 15.2 - left, H - 25.2);
+  [[left + 2.6, 12.6], [W - 12.6, 12.6], [left + 2.6, H - 12.6], [W - 12.6, H - 12.6]].forEach(([x, y]) => diamond(d, x, y, 2.4, GOLD));
 
-  // Informations (score, date, numéro)
-  const xs = c.rows.length === 2 ? [cx - 50, cx + 50] : [cx - 85, cx, cx + 85];
+  // Filigrane : grande coche très claire derrière le texte
+  opacity(d, 0.035);
+  d.setFillColor(...GREEN); d.circle(cx, 104, 52, 'F');
+  opacity(d, 0.06);
+  check(d, cx - 26, 104, 52, GREEN, 9);
+  opacity(d, 1);
+
+  // En-tête : logo
+  d.setFillColor(...GREEN); d.roundedRect(cx - 17.5, 20, 7.5, 7.5, 1.6, 1.6, 'F');
+  check(d, cx - 15.8, 24, 4.2, [255, 255, 255], 0.9);
+  d.setFont('helvetica', 'bold'); d.setFontSize(17); d.setTextColor(...INK);
+  d.text('vitako', cx - 8, 26.4);
+  d.setFont('helvetica', 'normal'); d.setFontSize(7.6); d.setTextColor(...MUTED);
+  d.text(clean('FORMATIONS AUX MÉTIERS DU FREELANCE ET DU TÉLÉTRAVAIL'), cx, 34, { align: 'center', charSpace: 0.8 });
+
+  // Titre
+  const words = clean(c.heading).split(' ');
+  const main = words.shift().toUpperCase();
+  const sub = words.join(' ').toUpperCase();
+  d.setFont('times', 'bold'); d.setFontSize(34); d.setTextColor(...GREEN);
+  d.text(main, cx, 53, { align: 'center', charSpace: 2.2 });
+  d.setFont('helvetica', 'bold'); d.setFontSize(11); d.setTextColor(...GOLD);
+  d.text(sub, cx, 61.5, { align: 'center', charSpace: 2.6 });
+  d.setDrawColor(...GOLD); d.setLineWidth(0.4);
+  d.line(cx - 48, 67, cx - 4, 67); d.line(cx + 4, 67, cx + 48, 67);
+  diamond(d, cx, 67, 1.6, GOLD);
+
+  // Nom
+  d.setFont('times', 'italic'); d.setFontSize(13); d.setTextColor(...MUTED);
+  d.text('Nous attestons que', cx, 78, { align: 'center' });
+  const name = clean(c.name);
+  let size = 34;
+  d.setFont('times', 'bolditalic');
+  do { d.setFontSize(size); size -= 1; } while (d.getTextWidth(name) > 200 && size > 18);
+  d.setTextColor(...INK);
+  d.text(name, cx, 93, { align: 'center' });
+  const nw = Math.min(Math.max(d.getTextWidth(name) + 16, 90), 220);
+  d.setDrawColor(...GOLD); d.setLineWidth(0.5); d.line(cx - nw / 2, 98, cx + nw / 2, 98);
+
+  // Texte
+  d.setFont('helvetica', 'normal'); d.setFontSize(12); d.setTextColor(...INK);
+  d.text(d.splitTextToSize(clean(c.text), 195), cx, 108, { align: 'center', lineHeightFactor: 1.5 });
+
+  // Informations : score (ou métier), date, numéro
+  const xs = [cx - 76, cx, cx + 76];
   c.rows.forEach(([k, v], i) => {
-    d.setFont('helvetica', 'normal'); d.setFontSize(9.5); d.setTextColor(...muted);
-    d.text(clean(k).toUpperCase(), xs[i], 140, { align: 'center', charSpace: 0.4 });
-    d.setFont('courier', 'bold'); d.setFontSize(13); d.setTextColor(...ink);
-    d.text(clean(v), xs[i], 148, { align: 'center' });
+    d.setFont('helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
+    d.text(clean(k).toUpperCase(), xs[i], 129, { align: 'center', charSpace: 0.7 });
+    d.setFont('times', 'bold'); d.setFontSize(14); d.setTextColor(...INK);
+    d.text(clean(v), xs[i], 136.5, { align: 'center' });
   });
+  d.setDrawColor(...GOLD_LIGHT); d.setLineWidth(0.25);
+  d.line(cx - 38, 126, cx - 38, 139); d.line(cx + 38, 126, cx + 38, 139);
 
-  // Sceau
-  d.setDrawColor(...gold); d.setFillColor(251, 239, 208); d.setLineWidth(0.8); d.circle(42, 172, 13, 'FD');
-  d.setLineWidth(0.4); d.circle(42, 172, 10.5);
-  d.setLineWidth(1.4); d.lines([[3, 3], [6, -7]], 37, 172.5);
-  d.setFont('helvetica', 'bold'); d.setFontSize(6.5); d.setTextColor(...gold); d.text('VITAKO', 42, 182.2, { align: 'center' });
+  // Signature (à gauche)
+  const sx = cx - 76;
+  d.setFont('times', 'bolditalic'); d.setFontSize(20); d.setTextColor(...GREEN);
+  d.text('Vitako', sx, 168, { align: 'center' });
+  d.setDrawColor(...MUTED); d.setLineWidth(0.3); d.line(sx - 32, 172, sx + 32, 172);
+  d.setFont('helvetica', 'normal'); d.setFontSize(9); d.setTextColor(...MUTED);
+  d.text(clean('La direction pédagogique'), sx, 177.5, { align: 'center' });
 
-  // Signature
-  d.setDrawColor(...muted); d.setLineWidth(0.3); d.line(W - 100, 175, W - 40, 175);
-  d.setFont('helvetica', 'normal'); d.setFontSize(10); d.setTextColor(...muted);
-  d.text(clean('La direction pédagogique Vitako'), W - 70, 181, { align: 'center' });
+  // Tampon (au centre)
+  seal(d, cx, 161, 18, c.year || new Date().getFullYear());
 
-  d.setFontSize(8.5);
-  d.text(clean(`Vérifier cette attestation : ${c.verifyUrl}`), cx, 192, { align: 'center' });
+  // Vérification (à droite)
+  const vx = cx + 76;
+  d.setFont('helvetica', 'bold'); d.setFontSize(7.6); d.setTextColor(...GOLD);
+  d.text(clean('VÉRIFICATION EN LIGNE'), vx, 163, { align: 'center', charSpace: 0.7 });
+  d.setFont('helvetica', 'normal'); d.setFontSize(8.4); d.setTextColor(...INK);
+  const url = clean(c.verifyUrl).replace(/^https?:\/\//, '');
+  const cut = url.indexOf('#/');
+  const lines = cut > 0 ? [url.slice(0, cut), url.slice(cut)] : [url];
+  d.text(lines, vx, 169.5, { align: 'center', lineHeightFactor: 1.35 });
+  d.setFontSize(7.4); d.setTextColor(...MUTED);
+  d.text(clean('Saisissez ce lien pour confirmer l’authenticité.'), vx, 181, { align: 'center' });
+
   return d;
 }

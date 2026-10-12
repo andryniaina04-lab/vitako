@@ -21,10 +21,7 @@ BASE = f'http://127.0.0.1:{PORT}/index.html'
 
 read = lambda p: open(os.path.join(ROOT, p), encoding='utf-8').read()
 MOCK = read('tests/browser/.fixture.js') + read('tests/browser/mock-supabase.js')
-FAKE_PDF = """window.jspdf={jsPDF:function(){var calls=[];var p=new Proxy({},{get:function(t,k){
- if(k==='save')return function(n){window.__pdfSaved=n;};
- if(k==='splitTextToSize')return function(s){return [s];};
- return function(){calls.push(k);return p;};}});window.__pdfCalls=calls;return p;}};"""
+FAKE_PDF = read('tests/pdf-preview/jspdf-shim.js')
 CONFIG = re.sub(r"supabaseAnonKey: '[^']*'", "supabaseAnonKey: 'test'", re.sub(r"supabaseUrl: '[^']*'", "supabaseUrl: 'https://test.supabase.co'", read('assets/js/config.js')))
 
 results, errors = [], []
