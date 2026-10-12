@@ -1,0 +1,97 @@
+{
+  "id": "lang-2-f",
+  "hours": 13,
+  "description": "Le transcripteur transforme des enregistrements audio et vidéo en texte exact : entretiens de recherche, réunions, podcasts, témoignages. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à transcrire en français et en malagasy pour des chercheurs, des ONG, des entreprises et des agences, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et distinguer verbatim intégral, nettoyé et édité",
+    "Appliquer les conventions : locuteurs, horodatage, passages inaudibles, chiffres",
+    "Transcrire efficacement avec oTranscribe et Express Scribe",
+    "Corriger une transcription automatique en protégeant la confidentialité",
+    "Mener une commande complète : estimation, 3 passes, anonymisation, contrôle",
+    "Fixer un prix à la minute d'audio, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de transcripteur depuis Madagascar",
+      "summary": "Ce que fait un transcripteur, les 3 styles de transcription, les clients, la reconnaissance vocale automatique, les qualités et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel style supprime les hésitations mais garde tout le sens ?", "options": ["Le verbatim nettoyé", "Le verbatim intégral", "La traduction", "Le résumé"], "correct": 0 },
+        { "q": "Quelle est la première question d'une commande ?", "options": ["Quel style de transcription ?", "Quelle police ?", "Quelle couleur ?", "Quel âge a le client ?"], "correct": 0 },
+        { "q": "Peut-on mettre un entretien confidentiel dans un outil gratuit en ligne ?", "options": ["Non, sans accord écrit du client", "Oui, toujours", "Oui, s'il est court", "Oui, la nuit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : conventions de transcription",
+      "summary": "Locuteurs, horodatage, passages inaudibles et bruits, méthode pour les passages difficiles, règles du verbatim nettoyé, chiffres, noms propres et ponctuation.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le format d'horodatage courant ?", "options": ["[hh:mm:ss]", "(minutes)", "{secondes}", "jj/mm/aaaa"], "correct": 0 },
+        { "q": "Que faire d'un mot impossible à comprendre ?", "options": ["Noter [inaudible hh:mm:ss]", "Deviner", "Écrire un mot proche", "Supprimer la phrase"], "correct": 0 },
+        { "q": "En verbatim nettoyé, que fait-on du registre familier du locuteur ?", "options": ["On le garde", "On le corrige toujours", "On le supprime", "On le traduit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : oTranscribe, Express Scribe, correction automatique et outils payants",
+      "summary": "Contrôle de l'audio au clavier, vitesse et retour automatique, correction en 4 passes d'une transcription automatique, amélioration d'un audio, pédale, Express Scribe Pro et Descript.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert le retour automatique d'Express Scribe ?", "options": ["Reculer de 1 à 2 secondes à chaque pause", "Fermer le logiciel", "Traduire l'audio", "Supprimer le bruit"], "correct": 0 },
+        { "q": "Quelle erreur typique fait la reconnaissance vocale automatique ?", "options": ["Oublier une négation", "Ne jamais se tromper", "Refuser l'audio", "Changer de langue toute seule"], "correct": 0 },
+        { "q": "Que permet une pédale de transcription ?", "options": ["Contrôler la lecture au pied, les mains sur le clavier", "Taper plus fort", "Améliorer le son", "Traduire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la transcription d'entretiens de recherche",
+      "summary": "Les 10 questions de la commande, l'estimation du temps, les 3 passes, l'anonymisation, le contrôle en 10 points et la livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de donner un délai et un prix ?", "options": ["Écouter 2 ou 3 minutes de chaque fichier", "Rien", "Lire le titre du fichier", "Demander l'âge du client"], "correct": 0 },
+        { "q": "Quelle est la deuxième passe de transcription ?", "options": ["La révision à l'écoute de tout l'audio", "Le premier jet", "La facture", "La suppression des fichiers"], "correct": 0 },
+        { "q": "Que faire d'un indice indirect qui peut identifier un participant ?", "options": ["Le signaler au client ou l'anonymiser selon ses consignes", "Le laisser sans rien dire", "Le mettre en gras", "Le publier"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Échantillons et CV, 5 canaux, prix par minute d'audio et suppléments, devis et confidentialité, arnaques, paiements et services voisins.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À 10 000 Ar de l'heure et un rapport de 4,5, quel est le prix par minute d'audio ?", "options": ["750 Ar", "4 500 Ar", "45 Ar", "10 000 Ar"], "correct": 0 },
+        { "q": "Avec quoi construire ses échantillons ?", "options": ["Des enregistrements publics ou autorisés", "Les fichiers d'anciens clients", "Des enregistrements volés", "Rien"], "correct": 0 },
+        { "q": "Quelle durée raisonnable pour un test non payé ?", "options": ["Quelques minutes d'audio", "Plusieurs heures", "Une journée entière", "Un mois"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce que la transcription ?", "options": ["Le passage de la parole à l'écrit dans la même langue", "La traduction dans une autre langue", "Le montage vidéo", "Le résumé d'un livre"], "correct": 0 },
+    { "q": "Quel style pour une procédure juridique ?", "options": ["Le verbatim intégral", "La transcription éditée", "Le résumé", "Aucun"], "correct": 0 },
+    { "q": "Quel avantage pour un transcripteur malgache ?", "options": ["Transcrire et traduire le malagasy, une langue rare dans les outils", "Ne pas connaître le français", "Ne jamais écouter l'audio", "Aucun"], "correct": 0 },
+    { "q": "Quel équipement est indispensable ?", "options": ["Un casque fermé de bonne qualité", "Une imprimante couleur", "Un appareil photo", "Une tablette graphique"], "correct": 0 },
+    { "q": "Que faire à chaque changement de locuteur ?", "options": ["Commencer un nouveau paragraphe", "Continuer la même ligne", "Changer de couleur", "Supprimer le texte"], "correct": 0 },
+    { "q": "Comment noter un locuteur inconnu ?", "options": ["Locuteur 1, Locuteur 2…", "Un nom inventé", "Rien", "Son âge supposé"], "correct": 0 },
+    { "q": "Comment noter plusieurs personnes qui parlent en même temps ?", "options": ["[diaphonie hh:mm:ss]", "Choisir une phrase au hasard", "Ne rien noter", "[rires]"], "correct": 0 },
+    { "q": "Quelle est la faute la plus grave du métier ?", "options": ["Inventer un mot non compris", "Noter un passage inaudible", "Ralentir l'audio", "Faire une pause"], "correct": 0 },
+    { "q": "Que fait-on d'une répétition qui insiste volontairement en verbatim nettoyé ?", "options": ["On la garde", "On la supprime", "On la traduit", "On la met en majuscules"], "correct": 0 },
+    { "q": "Comment écrit-on un montant en règle habituelle ?", "options": ["En chiffres : 25 000 Ar", "En lettres seulement", "En chiffres romains", "On ne l'écrit pas"], "correct": 0 },
+    { "q": "Que faire en cas de doute sur l'orthographe d'un lieu ?", "options": ["Le vérifier sur des sources fiables", "Écrire au hasard", "Le supprimer", "L'écrire en majuscules"], "correct": 0 },
+    { "q": "Dans oTranscribe, à quoi sert Ctrl + J ?", "options": ["Insérer l'horodatage du moment", "Fermer l'outil", "Changer de fichier", "Imprimer"], "correct": 0 },
+    { "q": "Que faire régulièrement dans oTranscribe ?", "options": ["Exporter son travail", "Effacer le texte", "Fermer l'onglet", "Changer de navigateur"], "correct": 0 },
+    { "q": "Combien de l'audio écouter lors de la correction d'une transcription automatique ?", "options": ["Tout", "Le début seulement", "La fin seulement", "Rien"], "correct": 0 },
+    { "q": "À quoi sert Audacity pour un transcripteur ?", "options": ["Rendre un audio difficile plus facile à écouter", "Facturer le client", "Traduire automatiquement", "Créer des sous-titres"], "correct": 0 },
+    { "q": "Quel outil payant sert à corriger le texte en même temps que l'audio ?", "options": ["Descript", "Canva", "Excel", "Paint"], "correct": 0 },
+    { "q": "Combien de questions poser avant d'accepter une commande ?", "options": ["Environ 10", "Aucune", "Une seule", "50"], "correct": 0 },
+    { "q": "Combien de temps peut demander 1 minute d'audio clair pour un débutant ?", "options": ["Environ 4 à 5 minutes", "10 secondes", "1 minute", "2 heures"], "correct": 0 },
+    { "q": "Pourquoi laisser passer du temps entre la passe 1 et la passe 2 ?", "options": ["Une oreille reposée comprend mieux les passages difficiles", "Pour être payé plus", "Pour oublier le texte", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Comment vérifier qu'aucun nom n'est resté après anonymisation ?", "options": ["Faire une recherche finale dans le document", "Espérer", "Demander au participant", "Rien"], "correct": 0 },
+    { "q": "Que faire des fichiers audio après la livraison, si le client le demande ?", "options": ["Les supprimer et le confirmer", "Les garder pour toujours", "Les publier", "Les vendre"], "correct": 0 },
+    { "q": "Quel supplément est courant ?", "options": ["Plus de 2 locuteurs ou délai urgent", "La couleur de la police", "Le nom du client", "L'heure de la journée"], "correct": 0 },
+    { "q": "Comment recevoir des fichiers sensibles ?", "options": ["Par un lien sécurisé", "Par une messagerie grand public", "Sur un réseau social", "Par SMS"], "correct": 0 },
+    { "q": "Que demander à une université dès le départ ?", "options": ["Sa procédure de paiement et les documents nécessaires", "Son mot de passe", "Rien", "Un paiement en espèces"], "correct": 0 },
+    { "q": "Quel service voisin demande de découper et synchroniser le texte avec la vidéo ?", "options": ["Le sous-titrage", "La traduction", "Le compte rendu", "La saisie"], "correct": 0 }
+  ]
+}

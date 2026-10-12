@@ -57,7 +57,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
   ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
   ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 16, true),
-  ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 12, false),
+  ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 13, true),
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 16, false),
   ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 13, false),
   ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 17, false),
@@ -11461,6 +11461,655 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Quelle longueur est raisonnable pour un test de traduction gratuit ?', '["50 pages","5 000 mots","200 à 300 mots","Un livre entier"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'À quoi sert un forfait minimum ?', '["Payer moins d''impôts","Réduire le prix des gros projets","Remplacer le devis","Facturer correctement les très petites commandes"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-1-f', 'Où vérifier la réputation de paiement d''une agence ?', '["Sur les forums de sites pour traducteurs comme ProZ","Sur sa propre publicité uniquement","En lui demandant si elle paie","Nulle part"]'::jsonb, 0);
+
+-- lang-2-f
+delete from public.exam_questions where course_id = 'lang-2-f';
+delete from public.module_questions where course_id = 'lang-2-f';
+delete from public.lessons where course_id = 'lang-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-2-f', 0, 'Le métier de transcripteur depuis Madagascar', 'Ce que fait un transcripteur, les 3 styles de transcription, les clients, la reconnaissance vocale automatique, les qualités et le poste de travail.', 'Interviews de recherche, réunions, podcasts, conférences, témoignages, audiences : chaque jour, des milliers d''heures d''enregistrements doivent devenir du **texte**. Le transcripteur écoute et écrit, avec précision, ce qui a été dit. Malgré les outils automatiques, les transcriptions exactes et fiables restent demandées. Ce premier module vous présente le métier tel qu''il est vraiment.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un transcripteur.
+> 2. Distinguer les 3 styles de transcription.
+> 3. Repérer vos premiers clients possibles.
+> 4. Comprendre la place de la reconnaissance vocale automatique.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un transcripteur **transforme un enregistrement audio ou vidéo en texte exact, lisible et conforme aux consignes du client**.
+
+Ce n''est pas seulement « taper ce qu''on entend ». Il faut identifier qui parle, comprendre les mots difficiles, vérifier les noms propres, respecter un style précis et signaler ce qui est inaudible, sans jamais inventer.
+
+> [!definition] Transcription
+> Le passage de la parole à l''écrit, dans la **même langue**. À ne pas confondre avec la **traduction** (passer d''une langue à une autre) ni avec le **sous-titrage** (texte court synchronisé avec la vidéo).
+
+## Les 3 styles de transcription
+
+| Style | Ce qu''on écrit | Pour qui |
+| --- | --- | --- |
+| **Verbatim intégral** | Absolument tout : hésitations (« euh »), répétitions, faux départs, rires, bruits | Recherche en sciences sociales, procédures juridiques, analyse du discours |
+| **Verbatim nettoyé** (le plus demandé) | Tout le contenu, sans les hésitations, répétitions inutiles et faux départs | Interviews, podcasts, réunions, études de marché |
+| **Transcription éditée** | Texte reformulé légèrement pour être lisible, sans changer le sens | Articles, livres, comptes rendus |
+
+> [!exemple] La même phrase, 3 styles
+> **Audio** : « Alors euh… moi je… je pense que, enfin, le problème c''est surtout l''accès à l''eau, hein, l''accès à l''eau potable. »
+> **Verbatim intégral** : « Alors euh… moi je… je pense que, enfin, le problème c''est surtout l''accès à l''eau, hein, l''accès à l''eau potable. »
+> **Verbatim nettoyé** : « Je pense que le problème, c''est surtout l''accès à l''eau potable. »
+> **Transcription éditée** : « Selon moi, le principal problème est l''accès à l''eau potable. »
+
+**Demandez toujours le style au client** : c''est la première question d''une commande.
+
+## Qui sont vos clients ?
+
+| Client | Ce qu''il fait transcrire | Ce qu''il attend |
+| --- | --- | --- |
+| **Chercheurs et étudiants** | Entretiens qualitatifs, focus groups | Verbatim précis, identification des locuteurs, confidentialité |
+| **Podcasteurs et médias** | Épisodes, interviews | Texte lisible pour un article ou le référencement |
+| **Entreprises** | Réunions, formations, webinaires | Comptes rendus, documentation |
+| **ONG et bureaux d''études** | Entretiens de terrain, souvent en malagasy | Transcription fidèle, parfois avec traduction |
+| **Juristes et assurances** | Auditions, déclarations | Verbatim intégral, exactitude absolue |
+| **Projets d''IA** | Enregistrements de toutes sortes | Respect strict de conventions détaillées |
+
+> [!madagascar] Votre avantage
+> Les transcriptions en **malagasy** sont rares et demandées : ONG, chercheurs, projets de santé, projets d''IA pour la langue malagasy. Si vous écrivez parfaitement le malagasy **et** le français, vous pouvez aussi proposer la transcription suivie d''une traduction, un service très utile pour les chercheurs étrangers.
+
+## La reconnaissance vocale automatique
+
+Les outils automatiques produisent aujourd''hui une première transcription en quelques minutes. Ils ont changé le métier :
+
+| Ce que la machine fait bien | Ce que le transcripteur apporte |
+| --- | --- |
+| Audio clair, un seul locuteur, langue courante | Audio difficile : bruit, accents, plusieurs personnes qui parlent en même temps |
+| Vitesse | Identification exacte des locuteurs |
+| Premier jet | Noms propres, termes techniques, chiffres vérifiés |
+| | Respect des conventions du client |
+| | Langues peu présentes dans les outils (comme le malagasy) |
+| | Confidentialité et responsabilité |
+
+Beaucoup de clients demandent désormais de **corriger** une transcription automatique. Ce travail exige une écoute complète et attentive : une machine peut écrire une phrase fluide mais **fausse**.
+
+> [!attention]
+> Ne mettez **jamais** un enregistrement confidentiel (entretien de recherche, réunion d''entreprise, audition) dans un outil gratuit en ligne sans l''accord écrit du client.
+
+## Les qualités demandées
+
+1. **Une excellente orthographe** et une bonne connaissance de la grammaire.
+2. **Une oreille attentive** et de la patience.
+3. **Une bonne culture générale** pour reconnaître les noms et les termes.
+4. **De la rigueur** pour appliquer des conventions précises.
+5. **De la discrétion** : vous entendez des informations privées.
+6. **Une frappe rapide** à 10 doigts.
+
+## Le poste de travail
+
+| Équipement | Pourquoi |
+| --- | --- |
+| **Casque fermé** de bonne qualité | Entendre les détails, isoler le bruit de la pièce |
+| **Ordinateur** et **clavier** confortable | Des heures de frappe chaque jour |
+| **Logiciel de transcription** (module 3) | Contrôler l''audio au clavier sans quitter le texte |
+| **Pièce calme** | La concentration est essentielle |
+| **Pédale de transcription** (plus tard) | Contrôler la lecture avec le pied |
+
+> [!astuce] Le rapport temps audio / temps de travail
+> Au début, transcrire 1 minute d''audio clair peut prendre 4 à 6 minutes, et beaucoup plus pour un audio difficile. Avec l''entraînement et les bons outils, ce temps diminue nettement. Notez votre temps sur chaque fichier : vous en aurez besoin pour fixer vos prix.
+
+> [!retenir]
+> - Le transcripteur transforme la parole en texte exact et conforme aux consignes.
+> - Verbatim intégral, verbatim nettoyé, transcription éditée : toujours demander le style.
+> - Clients : chercheurs, médias, entreprises, ONG, juristes, projets d''IA.
+> - La machine fait un premier jet ; vous apportez l''exactitude, les locuteurs, les noms et la confidentialité.
+> - Un casque fermé, une pièce calme et un bon logiciel sont indispensables.
+
+## Exercice pratique : vos premières minutes
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Choisissez un enregistrement public de 3 minutes en français (interview, podcast) avec 2 personnes.
+> 2. Transcrivez-le en **verbatim intégral**, en notant votre temps.
+> 3. Transformez votre texte en **verbatim nettoyé**.
+> 4. Faites transcrire le même extrait par un outil automatique (sous-titres automatiques d''une vidéo publique, par exemple) et comptez les erreurs de la machine.
+>
+> **À livrer** : vos 2 transcriptions, votre temps de travail et votre liste des erreurs de la machine.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 0, 0, 'Quel style supprime les hésitations mais garde tout le sens ?', '["La traduction","Le verbatim nettoyé","Le verbatim intégral","Le résumé"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 0, 1, 'Quelle est la première question d''une commande ?', '["Quelle couleur ?","Quel âge a le client ?","Quel style de transcription ?","Quelle police ?"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 0, 2, 'Peut-on mettre un entretien confidentiel dans un outil gratuit en ligne ?', '["Oui, la nuit","Oui, s''il est court","Non, sans accord écrit du client","Oui, toujours"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-2-f', 1, 'Les bases : conventions de transcription', 'Locuteurs, horodatage, passages inaudibles et bruits, méthode pour les passages difficiles, règles du verbatim nettoyé, chiffres, noms propres et ponctuation.', 'Une transcription professionnelle se reconnaît à sa **cohérence** : les mêmes règles sont appliquées du début à la fin. Ce module vous donne les conventions les plus utilisées (locuteurs, horodatage, passages inaudibles, chiffres, ponctuation), les règles du verbatim nettoyé et une méthode pour ne jamais deviner.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Identifier et noter les locuteurs.
+> 2. Placer des horodatages au bon format.
+> 3. Noter les passages inaudibles, incertains et les bruits.
+> 4. Appliquer les règles du verbatim nettoyé.
+> 5. Écrire les chiffres, les noms propres et la ponctuation correctement.
+
+## Les consignes du client avant tout
+
+Chaque client peut avoir son **guide de style**. Les conventions ci-dessous sont les plus courantes ; si le client en donne d''autres, **ce sont les siennes qui s''appliquent**.
+
+## Les locuteurs
+
+| Situation | Convention courante |
+| --- | --- |
+| Noms connus | **Claire :** puis **Paul :** |
+| Rôles | **Enquêteur :** / **Participant :** ou **E :** / **P :** |
+| Noms inconnus | **Locuteur 1 :** / **Locuteur 2 :** |
+| Anonymisation demandée | **P1 :** / **P2 :** et aucun nom dans le texte (remplacé par [nom]) |
+
+**Règles** :
+1. Un **changement de locuteur = un nouveau paragraphe**.
+2. Le nom du locuteur est écrit **de la même façon** partout (pas « Claire » puis « Mme Martin »).
+3. Si vous ne savez pas qui parle, ne devinez pas : **[locuteur non identifié]**.
+
+## L''horodatage
+
+> [!definition] Horodatage
+> L''indication du moment de l''enregistrement, au format **[hh:mm:ss]**, par exemple [00:12:47]. Il permet au client de retrouver un passage dans l''audio.
+
+| Fréquence demandée | Exemple |
+| --- | --- |
+| À chaque changement de locuteur | [00:03:12] **Claire :** … |
+| À intervalles réguliers (toutes les 30 s, 1 min, 2 min) | Un repère inséré à chaque intervalle |
+| Seulement sur les passages incertains | [inaudible 00:05:31] |
+
+## Les passages difficiles : ne jamais deviner
+
+| Situation | Notation courante |
+| --- | --- |
+| Mot ou passage impossible à comprendre | [inaudible 00:05:31] |
+| Mot compris mais pas certain | [Ambositra ? 00:07:02] |
+| Plusieurs personnes parlent en même temps | [diaphonie 00:09:15] |
+| Bruit important | [rires], [toux], [bruit de moto], [téléphone qui sonne] |
+| Pause longue | [silence] ou [pause] |
+| Passage dans une autre langue | [en malagasy] puis le texte, ou [en malagasy, non transcrit], selon les consignes |
+
+> [!attention]
+> Inventer un mot que vous n''avez pas compris est la faute la plus grave du métier. Pour un chercheur ou un juriste, un mot inventé peut changer le sens d''un témoignage. Mieux vaut **5 [inaudible]** honnêtes qu''**un seul mot faux**.
+
+### La méthode pour un passage difficile
+
+1. **Réécoutez 3 fois**, de plus en plus lentement.
+2. **Écoutez le contexte** : la phrase d''avant et d''après.
+3. **Augmentez le volume** ou utilisez un réglage qui accentue les voix.
+4. **Cherchez** les noms propres possibles sur Internet (lieu, personne, organisation).
+5. Si le doute reste : **notation [mot ? hh:mm:ss]** ou **[inaudible hh:mm:ss]**.
+
+## Les règles du verbatim nettoyé
+
+| On supprime | On garde |
+| --- | --- |
+| Les hésitations : euh, hum, ben | Tout le contenu et le sens |
+| Les faux départs : « je… je pense » → « je pense » | Les mots d''argot ou familiers (on ne « corrige » pas le registre) |
+| Les répétitions sans intérêt | Les répétitions qui insistent volontairement (« jamais, jamais je n''accepterai ») |
+| Les tics de langage sans sens : « en fait », « du coup », « tu vois » (quand ils n''ajoutent rien) | Les erreurs de grammaire du locuteur, en général (sauf consigne de correction) |
+| Les petites approbations de l''interlocuteur (« mm », « oui oui ») quand elles coupent le discours | Les réponses réelles (« Oui, tout à fait. ») |
+
+> [!exemple] Verbatim nettoyé d''un échange
+> **Audio** :
+> E : « Et euh, donc, vous allez chercher l''eau où, du coup ? »
+> P : « Ben… à la… à la rivière. Mm. C''est loin, hein, c''est… c''est trente minutes à pied. »
+> **Verbatim nettoyé** :
+> **Enquêteur :** Vous allez chercher l''eau où ?
+> **Participant :** À la rivière. C''est loin : trente minutes à pied.
+
+## Chiffres, noms propres et ponctuation
+
+### Les chiffres (conventions courantes en français)
+
+| Cas | Règle habituelle | Exemple |
+| --- | --- | --- |
+| Nombres de un à neuf (ou à dix) | En lettres | « trois enfants » |
+| Nombres plus grands | En chiffres | « 45 ménages » |
+| Montants, pourcentages, dates, heures | En chiffres | « 25 000 Ar », « 12 % », « 14 mars 2026 », « 15 h 30 » |
+| Début de phrase | En lettres | « Trente minutes à pied. » |
+
+Ces règles varient selon les guides de style : suivez celles du client.
+
+### Les noms propres
+
+1. **Vérifiez l''orthographe** sur des sources fiables (site officiel, carte, annuaire).
+2. **Demandez au client** une liste des noms (participants, lieux, organisations) avant de commencer.
+3. **Gardez une liste** des noms vérifiés pendant la transcription.
+
+### La ponctuation
+
+1. Une phrase parlée est souvent longue : **coupez-la** en phrases lisibles, sans changer le sens.
+2. Les **questions** prennent un point d''interrogation, même si l''intonation est la seule marque.
+3. Les **citations** dans le discours vont entre guillemets : Il m''a dit : « Reviens demain. »
+4. En français : **espace** avant les signes doubles ( : ; ! ? ) et guillemets « ».
+
+> [!madagascar]
+> Pour les transcriptions en malagasy, suivez l''**orthographe officielle** sauf consigne contraire, et notez les mots régionaux tels qu''ils sont prononcés, avec une note si le client le souhaite. Quand un locuteur passe du malagasy au français (ce qui est fréquent), demandez au client comment le noter.
+
+> [!retenir]
+> - Les consignes du client passent avant toutes les conventions.
+> - Locuteurs cohérents, un paragraphe par changement de locuteur.
+> - Horodatage au format [hh:mm:ss].
+> - [inaudible], [mot ?], [diaphonie] : on ne devine jamais.
+> - Verbatim nettoyé : on enlève les hésitations, on garde tout le sens et le registre.
+
+## Exercice pratique : appliquer les conventions
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez un enregistrement public de 5 minutes avec 2 ou 3 personnes (débat, interview).
+> 2. Transcrivez-le en verbatim nettoyé avec : locuteurs nommés, horodatage à chaque changement de locuteur, notations des passages difficiles.
+> 3. Faites une liste des noms propres et vérifiez leur orthographe.
+> 4. Relisez en appliquant les règles des chiffres et de la ponctuation.
+>
+> **À livrer** : votre transcription, votre liste de noms vérifiés et une note de 5 lignes sur les passages les plus difficiles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 1, 0, 'Quel est le format d''horodatage courant ?', '["(minutes)","{secondes}","jj/mm/aaaa","[hh:mm:ss]"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 1, 1, 'Que faire d''un mot impossible à comprendre ?', '["Deviner","Noter [inaudible hh:mm:ss]","Écrire un mot proche","Supprimer la phrase"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 1, 2, 'En verbatim nettoyé, que fait-on du registre familier du locuteur ?', '["On le supprime","On le corrige toujours","On le garde","On le traduit"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-2-f', 2, 'Les outils : oTranscribe, Express Scribe, correction automatique et outils payants', 'Contrôle de l''audio au clavier, vitesse et retour automatique, correction en 4 passes d''une transcription automatique, amélioration d''un audio, pédale, Express Scribe Pro et Descript.', 'Un transcripteur professionnel ne passe jamais d''une fenêtre à l''autre pour mettre l''audio en pause : il contrôle la lecture **au clavier** (ou au pied) sans quitter son texte. Ce module vous fait prendre en main les outils gratuits, la correction d''une transcription automatique, puis les outils payants qui font gagner beaucoup de temps.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser oTranscribe et Express Scribe avec les raccourcis clavier.
+> 2. Ralentir l''audio et revenir en arrière automatiquement.
+> 3. Corriger efficacement une transcription automatique.
+> 4. Améliorer un audio difficile à écouter.
+> 5. Savoir quand passer à Express Scribe Pro, une pédale et Descript.
+
+## Les outils gratuits
+
+| N° | Outil | À quoi il sert |
+| --- | --- | --- |
+| 1 | **oTranscribe** | Outil en ligne gratuit : le lecteur audio et le texte sur la même page, contrôle au clavier, horodatage en un raccourci |
+| 2 | **Express Scribe** (version gratuite) | Logiciel de lecture pour transcripteurs : vitesse variable, touches de fonction, compatible avec une pédale |
+| 3 | **Traitement de texte** (Google Docs, Word) | Mise en forme finale et livraison |
+| 4 | **Audacity** | Améliorer un audio difficile (volume, bruit) |
+| 5 | **Correcteurs** (LanguageTool, BonPatron) | Vérification de l''orthographe |
+
+## oTranscribe : la prise en main
+
+1. Ouvrez oTranscribe dans votre navigateur et chargez le fichier audio (il reste sur votre ordinateur).
+2. Tapez directement dans la zone de texte, sous le lecteur.
+3. Utilisez les **raccourcis** :
+
+| Touche | Action |
+| --- | --- |
+| **Échap** | Lecture / pause |
+| **F1** / **F2** | Reculer / avancer de quelques secondes |
+| **F3** / **F4** | Ralentir / accélérer |
+| **Ctrl + J** | Insérer l''horodatage du moment |
+
+Les raccourcis peuvent varier selon les versions : vérifiez-les dans le menu d''aide de l''outil. oTranscribe enregistre le texte automatiquement dans le navigateur, mais **exportez régulièrement** votre travail (en texte ou en document) pour ne rien perdre.
+
+## Express Scribe : les réglages essentiels
+
+1. **Vitesse de lecture** : ralentissez à 60-80 % pour les passages rapides.
+2. **Retour automatique** : à chaque pause, l''audio recule de 1 à 2 secondes. Vous reprenez toujours avec un peu de contexte.
+3. **Touches de fonction globales** : contrôlez la lecture même quand vous tapez dans Word ou Google Docs.
+4. **Pédale** : Express Scribe reconnaît de nombreuses pédales USB (module plus bas).
+
+> [!astuce] La méthode de frappe
+> Écoutez **un morceau de phrase** (3 à 5 secondes), mettez en pause, tapez, reprenez. Avec l''habitude, vous tapez **pendant** que l''audio continue lentement, et vous ne mettez en pause que pour les passages difficiles.
+
+## Corriger une transcription automatique
+
+Beaucoup de clients fournissent (ou acceptent) une transcription automatique à corriger. Il faut une méthode.
+
+### Les 4 passes
+
+| Passe | Ce que vous faites |
+| --- | --- |
+| **1. Écoute complète** | Écoutez **tout** l''audio en suivant le texte, et corrigez chaque mot faux. Ne sautez aucun passage, même s''il « a l''air bon » |
+| **2. Locuteurs** | Vérifiez chaque changement de locuteur : les outils automatiques se trompent souvent |
+| **3. Noms, chiffres, termes** | Vérifiez chaque nom propre, chaque chiffre, chaque terme technique |
+| **4. Conventions** | Appliquez le style du client : verbatim, horodatage, ponctuation, notations |
+
+> [!attention] Les erreurs typiques de la machine
+> - Des mots **qui sonnent pareil** mais n''ont pas le même sens (« cent » / « sans », « verre » / « vert »).
+> - Des **négations oubliées** (« ne… pas » disparaît dans la parole rapide).
+> - Des **noms propres** malgaches ou étrangers transformés en mots français.
+> - Des **phrases inventées** sur un passage inaudible, qui paraissent fluides.
+> - Des **locuteurs mélangés** quand deux voix se ressemblent.
+
+### La confidentialité d''abord
+
+N''utilisez un outil de transcription automatique **que si le client l''accepte par écrit**, et de préférence un outil qui fonctionne **sur votre ordinateur** ou dont les conditions garantissent la confidentialité. Pour un entretien de recherche ou une réunion confidentielle, la règle par défaut est : **pas d''envoi en ligne**.
+
+## Améliorer un audio difficile
+
+Avec **Audacity** (gratuit), vous pouvez rendre un enregistrement plus facile à écouter, sur une **copie** du fichier :
+
+1. **Amplifier** ou **normaliser** un audio trop faible.
+2. **Réduire le bruit** de fond constant (ventilateur, souffle) : sélectionnez un passage de bruit seul, prenez le profil, puis appliquez la réduction avec modération.
+3. **Accentuer les voix** avec un égaliseur (réduire les graves).
+
+Ne livrez jamais l''audio modifié comme s''il était l''original : c''est seulement un outil d''écoute.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Express Scribe Pro** | Formats audio et vidéo supplémentaires, fonctions avancées, usage professionnel | Quand vous transcrivez régulièrement pour des clients |
+| **Pédale de transcription USB** | Lecture, pause et retour au pied : les deux mains restent sur le clavier | Dès que vous transcrivez plusieurs heures par semaine : gain de temps et de confort important |
+| **Descript** | Transcription automatique, correction du texte avec l''audio, export avec horodatage ; aussi montage audio et vidéo par le texte | Pour corriger des transcriptions automatiques et travailler avec des podcasteurs, si le client accepte l''outil |
+
+Les prix changent : vérifiez-les sur les sites officiels.
+
+> [!madagascar]
+> Une pédale de transcription s''achète en général à l''étranger. Vérifiez sa compatibilité avec votre logiciel avant l''achat. Si elle n''est pas disponible, les raccourcis clavier bien appris donnent déjà un bon rythme.
+
+> [!retenir]
+> - oTranscribe et Express Scribe : contrôler l''audio au clavier sans quitter le texte.
+> - Ralentir, reculer automatiquement, et taper par morceaux de phrase.
+> - Correction de transcription automatique : 4 passes, écoute de tout l''audio.
+> - Confidentialité : pas d''outil en ligne sans accord écrit.
+> - Pédale et outils payants quand votre volume de travail le justifie.
+
+## Exercice pratique : vos outils
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Transcrivez 5 minutes d''un audio public dans oTranscribe en utilisant uniquement les raccourcis, avec horodatage.
+> 2. Installez Express Scribe, réglez le retour automatique et la vitesse, et transcrivez 5 autres minutes.
+> 3. Comparez votre temps de travail avec les deux outils.
+> 4. Prenez la transcription automatique d''une vidéo publique (sous-titres automatiques) et corrigez 5 minutes en 4 passes ; classez les erreurs trouvées.
+> 5. Dans Audacity, améliorez un extrait bruité (sur une copie) et notez ce qui a changé.
+>
+> **À livrer** : vos 2 transcriptions avec les temps, la transcription corrigée et votre tableau d''erreurs, et votre note sur Audacity.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 2, 0, 'À quoi sert le retour automatique d''Express Scribe ?', '["Reculer de 1 à 2 secondes à chaque pause","Traduire l''audio","Supprimer le bruit","Fermer le logiciel"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 2, 1, 'Quelle erreur typique fait la reconnaissance vocale automatique ?', '["Ne jamais se tromper","Oublier une négation","Refuser l''audio","Changer de langue toute seule"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 2, 2, 'Que permet une pédale de transcription ?', '["Taper plus fort","Contrôler la lecture au pied, les mains sur le clavier","Améliorer le son","Traduire"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-2-f', 3, 'Premier projet : la transcription d''entretiens de recherche', 'Les 10 questions de la commande, l''estimation du temps, les 3 passes, l''anonymisation, le contrôle en 10 points et la livraison.', 'Dans ce module, vous traitez une vraie commande de chercheuse : la transcription de 3 entretiens de recherche, dont un en partie en malagasy. Vous suivez la méthode complète d''un transcripteur professionnel, du devis à la livraison, avec un contrôle qualité rigoureux et une confidentialité stricte.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une commande et poser les bonnes questions.
+> 2. Estimer le temps de travail d''après la qualité de l''audio.
+> 3. Transcrire en 3 passes.
+> 4. Contrôler la qualité avec une grille de 10 points.
+> 5. Livrer dans un format professionnel, en protégeant les données.
+
+## Le cas pratique : une enquête sur l''eau
+
+> [!exemple] Votre commande
+> **Dr Laura Benoît**, chercheuse dans une université française, a mené 3 entretiens dans la région Analamanga sur l''accès à l''eau potable :
+> - Entretien 1 : 32 minutes, en français, audio clair, 2 personnes.
+> - Entretien 2 : 41 minutes, en français, enregistré dehors (vent, motos), 2 personnes.
+> - Entretien 3 : 28 minutes, mélange de français et de malagasy, 3 personnes.
+> Elle demande un **verbatim nettoyé**, avec **anonymisation** des participants et un délai de **10 jours**.
+
+## Étape 1 : analyser la commande
+
+### Les 10 questions à poser
+
+1. Quel **style** : intégral, nettoyé, édité ?
+2. Comment noter les **locuteurs** ? Faut-il **anonymiser** ?
+3. Quelle fréquence d''**horodatage** ?
+4. Comment noter les passages **inaudibles** et les **autres langues** ?
+5. Faut-il **traduire** les passages en malagasy, ou seulement les transcrire ?
+6. Y a-t-il une **liste de noms** et de termes (lieux, organisations) ?
+7. Quel **format de livraison** (Word, texte, modèle fourni) ?
+8. Quel **délai** ?
+9. Quelles règles de **confidentialité** (accord à signer, outils autorisés, suppression des fichiers) ?
+10. Comment les fichiers seront-ils **transmis** (lien sécurisé) ?
+
+> [!exemple] Réponses de la chercheuse
+> Verbatim nettoyé ; locuteurs **E** (enquêtrice) et **P1, P2** ; horodatage à chaque changement de locuteur ; [inaudible hh:mm:ss] ; passages en malagasy transcrits en malagasy, **suivis de leur traduction en français entre crochets** ; tous les noms de personnes et de villages remplacés par [nom] et [village] ; modèle Word fourni ; aucun outil en ligne ; fichiers supprimés après livraison.
+
+## Étape 2 : estimer le temps de travail
+
+Le temps dépend surtout de la **qualité de l''audio** et du **nombre de locuteurs**.
+
+| Audio | Exemple de rapport (débutant) |
+| --- | --- |
+| Clair, 1 ou 2 locuteurs | Environ 4 à 5 minutes de travail par minute d''audio |
+| Bruits, accents, débit rapide | 6 à 8 minutes par minute |
+| Plusieurs langues, nombreux locuteurs, chevauchements | 8 à 10 minutes par minute, voire plus |
+
+*(Rapports donnés en exemple : mesurez les vôtres.)*
+
+> [!exemple] Estimation pour la commande
+> - Entretien 1 : 32 min × 4,5 = 144 min
+> - Entretien 2 : 41 min × 7 = 287 min
+> - Entretien 3 : 28 min × 9 = 252 min (avec traduction des passages en malagasy)
+> - Contrôle qualité et mise en forme : environ 20 % en plus
+> - **Total** : (144 + 287 + 252) × 1,2 ≈ 820 minutes, soit environ **14 heures**
+>
+> Sur 10 jours, c''est réaliste avec une marge pour les imprévus (coupures, passages difficiles).
+
+**Écoutez toujours 2 ou 3 minutes de chaque fichier avant de donner un délai et un prix.**
+
+## Étape 3 : transcrire en 3 passes
+
+| Passe | Objectif | Comment |
+| --- | --- | --- |
+| **1. Premier jet** | Tout écrire | Vitesse réduite, sans s''arrêter trop longtemps sur les passages difficiles : les marquer [??] |
+| **2. Révision à l''écoute** | Tout vérifier | Réécouter tout l''audio en suivant le texte ; résoudre les [??] avec la méthode du module 2 ; vérifier les locuteurs |
+| **3. Relecture du texte seul** | Rendre lisible | Ponctuation, orthographe, conventions, anonymisation, correcteur |
+
+> [!astuce]
+> Laissez passer quelques heures entre la passe 1 et la passe 2 : avec une oreille reposée, vous comprendrez souvent des passages qui semblaient inaudibles.
+
+### L''anonymisation
+
+1. Remplacez **chaque** nom de personne par [nom], chaque village par [village] (ou selon les codes du client).
+2. Attention aux **indices indirects** : « le maire de notre commune », « ma sœur qui tient l''épicerie près de l''église » peuvent identifier quelqu''un. Signalez-les au client s''il ne donne pas de consigne.
+3. Faites une **recherche** finale dans le document pour vérifier qu''aucun nom n''est resté.
+
+## Étape 4 : le contrôle qualité en 10 points
+
+| N° | Point | Oui / Non |
+| --- | --- | --- |
+| 1 | Tout l''audio est transcrit, du début à la fin | |
+| 2 | Le style demandé est respecté partout | |
+| 3 | Les locuteurs sont corrects et notés de façon identique | |
+| 4 | L''horodatage est au bon format et à la bonne fréquence | |
+| 5 | Les passages incertains sont notés, rien n''est inventé | |
+| 6 | Les noms propres et termes sont vérifiés (ou anonymisés) | |
+| 7 | Les chiffres suivent les règles du client | |
+| 8 | L''orthographe et la ponctuation sont vérifiées (correcteur + relecture) | |
+| 9 | Le modèle et le format de livraison sont respectés | |
+| 10 | Aucune donnée identifiante ne reste si l''anonymisation est demandée | |
+
+## Étape 5 : la livraison
+
+### Le document final
+
+> [!exemple] En-tête d''une transcription
+> **Projet** : Accès à l''eau – Analamanga · **Entretien** : 2 · **Durée** : 00:41:07 · **Style** : verbatim nettoyé · **Locuteurs** : E (enquêtrice), P1 (participante) · **Transcription** : 14/03/2026 · **Remarques** : bruit de vent entre 00:12:00 et 00:15:30 (4 passages inaudibles).
+
+### Le message de livraison
+
+« Bonjour Dr Benoît, vous trouverez dans le dossier partagé les 3 transcriptions (verbatim nettoyé, anonymisées, au format de votre modèle). Total : 101 minutes d''audio. Remarques : l''entretien 2 contient 4 passages inaudibles dus au vent, tous horodatés ; dans l''entretien 3, deux expressions régionales sont accompagnées d''une note de traduction. Comme convenu, je supprimerai les fichiers audio et mes copies dès votre confirmation de réception. Bonne journée. »
+
+> [!madagascar]
+> Pour l''entretien en malagasy, votre connaissance des expressions locales est précieuse. Quand une expression n''a pas d''équivalent exact en français, donnez une traduction **proche** et ajoutez une courte note : le chercheur comprendra mieux ce que le participant a voulu dire.
+
+> [!retenir]
+> - 10 questions avant d''accepter une commande.
+> - Estimer le temps d''après l''audio réel, avec une marge.
+> - 3 passes : premier jet, révision à l''écoute, relecture du texte.
+> - Une anonymisation complète, y compris les indices indirects.
+> - Un contrôle en 10 points, une livraison claire et la suppression des fichiers.
+
+## Exercice pratique : la commande de recherche
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Enregistrez (avec l''accord des personnes) ou choisissez 2 entretiens de 10 minutes : un clair, un bruyant ; si possible, un avec quelques passages en malagasy.
+> 2. Écoutez-en 2 minutes chacun et estimez votre temps de travail.
+> 3. Transcrivez-les en 3 passes, en verbatim nettoyé, avec anonymisation et horodatage.
+> 4. Appliquez la grille de 10 points.
+> 5. Rédigez l''en-tête de chaque transcription et votre message de livraison ; comparez le temps réel et votre estimation.
+>
+> **À livrer** : les 2 transcriptions, votre estimation et votre temps réel, la grille remplie et votre message. C''est votre projet de portfolio (avec des enregistrements autorisés ou publics uniquement).', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 3, 0, 'Que faire avant de donner un délai et un prix ?', '["Rien","Écouter 2 ou 3 minutes de chaque fichier","Demander l''âge du client","Lire le titre du fichier"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 3, 1, 'Quelle est la deuxième passe de transcription ?', '["La révision à l''écoute de tout l''audio","Le premier jet","La facture","La suppression des fichiers"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 3, 2, 'Que faire d''un indice indirect qui peut identifier un participant ?', '["Le publier","Le signaler au client ou l''anonymiser selon ses consignes","Le mettre en gras","Le laisser sans rien dire"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-2-f', 4, 'Trouver des clients et se faire payer', 'Échantillons et CV, 5 canaux, prix par minute d''audio et suppléments, devis et confidentialité, arnaques, paiements et services voisins.', 'Les transcripteurs trouvent du travail auprès de chercheurs, d''entreprises, de médias, d''agences de transcription et de plateformes. Ce dernier module vous montre comment présenter vos compétences, fixer vos prix à la minute d''audio, éviter les arnaques et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio et un CV de transcripteur.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Calculer un prix à la minute d''audio selon la difficulté.
+> 4. Rédiger un devis et des conditions de confidentialité.
+> 5. Vous faire payer et évoluer vers des services voisins.
+
+## Le portfolio et le CV
+
+### Les échantillons
+
+Les vraies transcriptions de clients sont confidentielles. Préparez donc **3 échantillons** à partir d''enregistrements **publics** (conférences, podcasts libres, discours) ou de vos propres entretiens réalisés avec accord :
+
+1. Un **verbatim nettoyé** d''une interview à 2 personnes.
+2. Un **verbatim intégral** court (2 à 3 minutes).
+3. Un extrait **en malagasy** avec traduction, si vous travaillez cette langue.
+
+### Le CV
+
+1. **Langues** de transcription, avec votre niveau réel.
+2. **Styles** maîtrisés : intégral, nettoyé, édité.
+3. **Outils** : oTranscribe, Express Scribe, correction de transcription automatique, Audacity.
+4. **Rapidité et précision** : votre temps moyen par minute d''audio clair, votre taux d''exactitude lors des tests.
+5. **Confidentialité** : votre engagement et vos pratiques (pas d''outil en ligne non autorisé, suppression des fichiers).
+6. **Domaines** que vous connaissez : santé, développement, éducation, agriculture, droit…
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | **Chercheurs et étudiants** | Universités françaises et francophones, doctorants travaillant sur Madagascar | Contactez les laboratoires et associations de chercheurs ; proposez la transcription et la traduction malagasy-français |
+| 2 | **ONG et bureaux d''études à Madagascar** | Entretiens de terrain | Proposez vos services aux responsables suivi-évaluation |
+| 3 | **Agences de transcription** | Volume régulier | Candidature avec test ; respectez leurs guides de style |
+| 4 | **Plateformes de freelance** | Podcasteurs, entreprises, auteurs | Offre précise et échantillon ; vérifiez que la plateforme accepte les freelances basés à Madagascar |
+| 5 | **Podcasteurs et créateurs** | Transcriptions pour leurs sites | Montrez l''intérêt pour le référencement et l''accessibilité |
+
+### Le message de prospection
+
+> [!exemple] Message à un laboratoire de recherche
+> « Bonjour, je suis transcripteur basé à Antananarivo, de langue maternelle malagasy et parfaitement francophone. Je transcris des entretiens de recherche en français et en malagasy (verbatim intégral ou nettoyé, avec anonymisation), et je peux traduire en français les passages en malagasy. Je travaille sans outil en ligne pour garantir la confidentialité des données. Vous trouverez un échantillon ci-joint. Je serais heureux d''aider les chercheurs de votre laboratoire qui travaillent sur Madagascar. »
+
+## Calculer ses prix
+
+### Le prix à la minute d''audio
+
+C''est le mode de tarification le plus courant : un prix par **minute d''audio**, qui varie selon la difficulté.
+
+1. **Prix horaire visé** : revenu mensuel visé ÷ heures facturables (exemple : 1 000 000 Ar ÷ 100 h = 10 000 Ar de l''heure).
+2. **Rapport temps de travail / audio** pour chaque niveau de difficulté (module 4).
+3. **Prix par minute d''audio** = prix horaire × rapport ÷ 60.
+
+| Niveau d''audio | Rapport (exemple) | Prix par minute d''audio (exemple, 10 000 Ar/h) |
+| --- | --- | --- |
+| Clair, 1 ou 2 locuteurs | 4,5 | 10 000 × 4,5 ÷ 60 = **750 Ar** |
+| Difficile (bruit, accents) | 7 | **≈ 1 170 Ar** |
+| Très difficile ou bilingue | 9 | **1 500 Ar** |
+
+### Les suppléments courants
+
+| Supplément | Pourquoi |
+| --- | --- |
+| **Verbatim intégral** | Plus long à écrire |
+| **Horodatage fréquent** | Travail supplémentaire |
+| **Plus de 2 locuteurs** | Identification plus difficile |
+| **Délai urgent** | Travail le soir ou le week-end |
+| **Traduction** des passages dans une autre langue | Un deuxième métier |
+| **Domaine technique** (médical, juridique) | Recherche de termes |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars, selon leur marché.)*
+
+## Le devis et la confidentialité
+
+### Le devis
+
+1. Les **fichiers** et leur **durée totale**.
+2. Le **style** et les **conventions** (locuteurs, horodatage, anonymisation).
+3. Le **prix par minute** et les suppléments, le **total**.
+4. Le **délai**, à partir de la réception de tous les fichiers.
+5. Le **paiement** : pour un nouveau client, 50 % à la commande ; pour une agence, selon ses conditions.
+6. Ce qui **n''est pas compris** (traduction complète, résumé, analyse).
+
+### La confidentialité
+
+1. **Signez** l''accord de confidentialité proposé, après l''avoir lu.
+2. **Recevez** les fichiers par un lien sécurisé, jamais par une messagerie grand public si les données sont sensibles.
+3. **Travaillez** sur un ordinateur protégé par un mot de passe.
+4. **N''utilisez aucun outil en ligne** sans accord écrit.
+5. **Supprimez** les fichiers à la fin de la mission et confirmez-le par écrit.
+
+## Éviter les arnaques
+
+1. Une « plateforme » qui demande des **frais d''inscription** ou l''achat d''un logiciel.
+2. Un « test » de **plusieurs heures d''audio** non payé.
+3. Des promesses de revenus **très élevés** pour un travail présenté comme facile.
+4. Une demande de vos **codes** bancaires ou Mobile Money.
+
+Une vraie entreprise ne vous fait **jamais payer** pour travailler, et un test reste **court** (quelques minutes d''audio).
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local (ONG, bureau d''études) | Virement bancaire ou Mobile Money |
+| Chercheur ou université à l''étranger | Virement international (souvent avec bon de commande et facture) |
+| Plateforme ou agence internationale | Payoneer, virement, ou le système de la plateforme |
+
+> [!madagascar]
+> Les universités paient souvent sur **facture**, avec des délais administratifs : demandez dès le départ la procédure et les documents nécessaires. Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville.
+
+## Évoluer vers des services voisins
+
+| Service | Ce qu''il faut ajouter |
+| --- | --- |
+| **Sous-titrage** | Découpage, synchronisation, règles de lisibilité (voir la formation Sous-titreur) |
+| **Traduction** | Maîtrise de deux langues écrites et méthode de traduction (voir la formation Traducteur) |
+| **Comptes rendus** | Synthèse, rédaction |
+| **Annotation audio pour l''IA** | Conventions des projets d''IA (voir la formation Annotateur de données IA) |
+
+> [!retenir]
+> - 3 échantillons publics ou autorisés, et un CV centré sur la précision et la confidentialité.
+> - Chercheurs, ONG, agences, plateformes, podcasteurs.
+> - Prix par minute d''audio = prix horaire × rapport de travail ÷ 60, plus suppléments.
+> - Un devis clair et une confidentialité stricte.
+> - Sous-titrage, traduction et comptes rendus prolongent naturellement le métier.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez vos 3 échantillons.
+> 2. Rédigez votre CV de transcripteur.
+> 3. Calculez votre grille de prix par minute d''audio pour 3 niveaux de difficulté, avec vos suppléments.
+> 4. Rédigez votre modèle de devis et vos engagements de confidentialité.
+> 5. Envoyez au moins 2 messages de prospection (laboratoire, ONG, agence).
+>
+> **À livrer** : vos échantillons, votre CV, votre grille, votre devis et la preuve de vos envois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 4, 0, 'À 10 000 Ar de l''heure et un rapport de 4,5, quel est le prix par minute d''audio ?', '["45 Ar","10 000 Ar","750 Ar","4 500 Ar"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 4, 1, 'Avec quoi construire ses échantillons ?', '["Rien","Des enregistrements publics ou autorisés","Les fichiers d''anciens clients","Des enregistrements volés"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-2-f', 4, 2, 'Quelle durée raisonnable pour un test non payé ?', '["Quelques minutes d''audio","Un mois","Une journée entière","Plusieurs heures"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Qu''est-ce que la transcription ?', '["La traduction dans une autre langue","Le montage vidéo","Le passage de la parole à l''écrit dans la même langue","Le résumé d''un livre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel style pour une procédure juridique ?', '["Le résumé","Aucun","Le verbatim intégral","La transcription éditée"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel avantage pour un transcripteur malgache ?', '["Transcrire et traduire le malagasy, une langue rare dans les outils","Ne pas connaître le français","Aucun","Ne jamais écouter l''audio"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel équipement est indispensable ?', '["Une imprimante couleur","Une tablette graphique","Un appareil photo","Un casque fermé de bonne qualité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que faire à chaque changement de locuteur ?', '["Supprimer le texte","Commencer un nouveau paragraphe","Changer de couleur","Continuer la même ligne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment noter un locuteur inconnu ?', '["Locuteur 1, Locuteur 2…","Rien","Son âge supposé","Un nom inventé"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment noter plusieurs personnes qui parlent en même temps ?', '["Choisir une phrase au hasard","Ne rien noter","[diaphonie hh:mm:ss]","[rires]"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quelle est la faute la plus grave du métier ?', '["Faire une pause","Noter un passage inaudible","Inventer un mot non compris","Ralentir l''audio"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que fait-on d''une répétition qui insiste volontairement en verbatim nettoyé ?', '["On la garde","On la supprime","On la traduit","On la met en majuscules"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment écrit-on un montant en règle habituelle ?', '["En lettres seulement","On ne l''écrit pas","En chiffres : 25 000 Ar","En chiffres romains"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que faire en cas de doute sur l''orthographe d''un lieu ?', '["Le vérifier sur des sources fiables","Écrire au hasard","L''écrire en majuscules","Le supprimer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Dans oTranscribe, à quoi sert Ctrl + J ?', '["Changer de fichier","Insérer l''horodatage du moment","Fermer l''outil","Imprimer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que faire régulièrement dans oTranscribe ?', '["Exporter son travail","Fermer l''onglet","Effacer le texte","Changer de navigateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Combien de l''audio écouter lors de la correction d''une transcription automatique ?', '["Rien","La fin seulement","Tout","Le début seulement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'À quoi sert Audacity pour un transcripteur ?', '["Traduire automatiquement","Facturer le client","Créer des sous-titres","Rendre un audio difficile plus facile à écouter"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel outil payant sert à corriger le texte en même temps que l''audio ?', '["Canva","Excel","Paint","Descript"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Combien de questions poser avant d''accepter une commande ?', '["Aucune","50","Environ 10","Une seule"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Combien de temps peut demander 1 minute d''audio clair pour un débutant ?', '["2 heures","Environ 4 à 5 minutes","1 minute","10 secondes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Pourquoi laisser passer du temps entre la passe 1 et la passe 2 ?', '["Pour être payé plus","Pour oublier le texte","Une oreille reposée comprend mieux les passages difficiles","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment vérifier qu''aucun nom n''est resté après anonymisation ?', '["Demander au participant","Espérer","Rien","Faire une recherche finale dans le document"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que faire des fichiers audio après la livraison, si le client le demande ?', '["Les supprimer et le confirmer","Les vendre","Les publier","Les garder pour toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel supplément est courant ?', '["Le nom du client","L''heure de la journée","Plus de 2 locuteurs ou délai urgent","La couleur de la police"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment recevoir des fichiers sensibles ?', '["Par une messagerie grand public","Par SMS","Sur un réseau social","Par un lien sécurisé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que demander à une université dès le départ ?', '["Son mot de passe","Sa procédure de paiement et les documents nécessaires","Un paiement en espèces","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel service voisin demande de découper et synchroniser le texte avec la vidéo ?', '["Le sous-titrage","Le compte rendu","La traduction","La saisie"]'::jsonb, 0);
 
 -- media-0-a
 delete from public.exam_questions where course_id = 'media-0-a';

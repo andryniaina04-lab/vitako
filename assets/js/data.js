@@ -1758,6 +1758,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-2-f": {
+  "hours": 13,
+  "description": "Le transcripteur transforme des enregistrements audio et vidéo en texte exact : entretiens de recherche, réunions, podcasts, témoignages. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à transcrire en français et en malagasy pour des chercheurs, des ONG, des entreprises et des agences, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et distinguer verbatim intégral, nettoyé et édité",
+   "Appliquer les conventions : locuteurs, horodatage, passages inaudibles, chiffres",
+   "Transcrire efficacement avec oTranscribe et Express Scribe",
+   "Corriger une transcription automatique en protégeant la confidentialité",
+   "Mener une commande complète : estimation, 3 passes, anonymisation, contrôle",
+   "Fixer un prix à la minute d'audio, trouver des clients et se faire payer depuis Madagascar"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de transcripteur depuis Madagascar",
+    "summary": "Ce que fait un transcripteur, les 3 styles de transcription, les clients, la reconnaissance vocale automatique, les qualités et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les 3 styles de transcription",
+     "Qui sont vos clients ?",
+     "La reconnaissance vocale automatique",
+     "Les qualités demandées",
+     "Le poste de travail",
+     "Exercice pratique : vos premières minutes"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : conventions de transcription",
+    "summary": "Locuteurs, horodatage, passages inaudibles et bruits, méthode pour les passages difficiles, règles du verbatim nettoyé, chiffres, noms propres et ponctuation.",
+    "sections": [
+     "Les consignes du client avant tout",
+     "Les locuteurs",
+     "L'horodatage",
+     "Les passages difficiles : ne jamais deviner",
+     "Les règles du verbatim nettoyé",
+     "Chiffres, noms propres et ponctuation",
+     "Exercice pratique : appliquer les conventions"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les outils : oTranscribe, Express Scribe, correction automatique et outils payants",
+    "summary": "Contrôle de l'audio au clavier, vitesse et retour automatique, correction en 4 passes d'une transcription automatique, amélioration d'un audio, pédale, Express Scribe Pro et Descript.",
+    "sections": [
+     "Les outils gratuits",
+     "oTranscribe : la prise en main",
+     "Express Scribe : les réglages essentiels",
+     "Corriger une transcription automatique",
+     "Améliorer un audio difficile",
+     "Les outils payants",
+     "Exercice pratique : vos outils"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Premier projet : la transcription d'entretiens de recherche",
+    "summary": "Les 10 questions de la commande, l'estimation du temps, les 3 passes, l'anonymisation, le contrôle en 10 points et la livraison.",
+    "sections": [
+     "Le cas pratique : une enquête sur l'eau",
+     "Étape 1 : analyser la commande",
+     "Étape 2 : estimer le temps de travail",
+     "Étape 3 : transcrire en 3 passes",
+     "Étape 4 : le contrôle qualité en 10 points",
+     "Étape 5 : la livraison",
+     "Exercice pratique : la commande de recherche"
+    ],
+    "minutes": 8
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Échantillons et CV, 5 canaux, prix par minute d'audio et suppléments, devis et confidentialité, arnaques, paiements et services voisins.",
+    "sections": [
+     "Le portfolio et le CV",
+     "Où trouver des clients : 5 canaux",
+     "Calculer ses prix",
+     "Le devis et la confidentialité",
+     "Éviter les arnaques",
+     "Se faire payer",
+     "Évoluer vers des services voisins",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 8
+   }
+  ]
+ },
  "media-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du monteur un professionnel orienté résultats : spécialité (YouTube, publicité, documentaire…), rétention d'audience, logiciels professionnels (Premiere Pro, Final Cut Pro, DaVinci Resolve Studio), étalonnage et mixage, spécifications de livraison et licences pour les clients étrangers, puis développement d'une activité de partenaire de contenu ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
