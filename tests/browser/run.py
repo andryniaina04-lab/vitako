@@ -243,6 +243,12 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/06-attestation.png', full_page=True)
     goto(page, '#/mon-espace')
     check('mon espace : attestation listée', cert_id in page.content())
+    goto(page, '#/formations'); page.wait_for_selector('.done-chk')
+    check('catalogue : coche sur la formation réussie', page.locator('.lv .done-chk').count() == 1 and page.locator('.lv .pill.gold').count() == 0)
+    page.hover('.done-chk'); page.wait_for_timeout(300)
+    check('catalogue : « Réussi » au survol de la coche', page.evaluate("getComputedStyle(document.querySelector('.done-chk'), '::after').opacity") == '1')
+    page.locator('.card.job').first.screenshot(path=f'{SHOTS}/06b-coche-reussi.png')
+    goto(page, '#/mon-espace')
 
     # --- Nom, thème, mot de passe
     page.fill('#n-name', 'Fanja Rakotomalala'); page.click('#name-form button[type=submit]'); page.wait_for_timeout(300)

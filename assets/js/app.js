@@ -265,7 +265,7 @@ function refreshSearch() {
 // ---------------------------------------------------------------------------
 function levelStatus(c) {
   if (!c.published) return '<span class="pill grey">Bientôt</span>';
-  if (courseCert(c.id)) return '<span class="pill gold">Réussi</span>';
+  if (courseCert(c.id)) return '<span class="done-chk" role="img" aria-label="Réussi" data-tip="Réussi"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>';
   const n = doneSet(c.id).size;
   return n ? `<span class="pill">${n}/${c.modules.length}</span>` : '';
 }

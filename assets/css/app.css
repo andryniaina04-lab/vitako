@@ -586,3 +586,8 @@ body{margin:0}
 @media (max-width:1000px){.feat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:720px){.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.feat-grid{grid-template-columns:1fr}}
+
+/* Formation réussie : coche, « Réussi » au survol */
+.done-chk{position:relative;flex:none;width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;background:var(--accent);color:var(--accent-ink);cursor:default}
+.done-chk::after{content:attr(data-tip);position:absolute;right:50%;bottom:calc(100% + 8px);transform:translate(50%,4px);background:var(--ink);color:var(--bg);font-size:.75rem;font-weight:700;padding:4px 9px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:5}
+.done-chk:hover::after{opacity:1;transform:translate(50%,0)}
