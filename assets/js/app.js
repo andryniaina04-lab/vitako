@@ -217,7 +217,7 @@ function topbar() {
 const norm = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const POPULAR_TERMS = ['Photoshop', 'Canva', 'Excel', 'WordPress', 'Figma', 'Anglais', 'Microsoft 365', 'Vidéo'];
 const POPULAR_JOBS = ['gestion-0', 'design-0', 'mkt-0', 'dev-0', 'data-0', 'lang-1'];
-const customTitle = (c) => c.title !== `${c.job.name} – ${c.levelName}`;
+const customTitle = (c) => !c.single && c.title !== `${c.job.name} – ${c.levelName}`;
 function searchJobs(q) {
   const words = norm(q).split(/\s+/).filter(Boolean);
   if (!words.length) return [];
@@ -292,7 +292,7 @@ function catalog() {
     <div>
       <div class="eyebrow">Métiers du freelance et du télétravail</div>
       <h1 style="margin-top:10px">Apprends un métier à distance depuis Madagascar. <em>Termine-le.</em></h1>
-      <p class="lead">${JOBS.length} métiers, chacun en deux formations : Fondamentaux pour décrocher vos premiers clients, Avancé pour viser des missions mieux payées. Chaque formation réussie donne une attestation.</p>
+      <p class="lead">${JOBS.filter((j) => !j.single).length} métiers, chacun en deux formations : Fondamentaux pour décrocher vos premiers clients, Avancé pour viser des missions mieux payées.${JOBS.some((j) => j.single) ? ` Plus ${JOBS.filter((j) => j.single).length} formations de développement personnel.` : ''} Chaque formation réussie donne une attestation.</p>
     </div>
     <div class="facts">
       <div class="fact"><b>${COURSES.length}</b><span>formations</span></div>
@@ -321,6 +321,7 @@ const DOM_ICONS = {
   data: svgI('<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>'),
   client: svgI('<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M19.5 19a3 3 0 0 1-3 3H13"/>'),
   gestion: svgI('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/>'),
+  perso: svgI('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M19 5l-5.5 5.5"/>'),
   edu: svgI('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/>'),
 };
 // ---------------------------------------------------------------------------
@@ -339,6 +340,7 @@ const COVER_COLORS = {
   client: ['#9F1239', '#FB7185'],  // rouge corail
   gestion: ['#78350F', '#F59E0B'], // ambre
   edu: ['#581C87', '#D946EF'],     // prune
+  perso: ['#1E293B', '#F59E0B'],   // nuit et soleil levant
 };
 function cover(j, opts = {}) {
   const [c1, c2] = COVER_COLORS[j.dom.id] || ['#13241B', '#0B7A55'];
@@ -379,7 +381,7 @@ function coursePage(id) {
   const ok = hasAccess();
 
   let cta;
-  if (!c.published) cta = `<p class="muted">Cette formation est en préparation. Elle sera bientôt disponible pour les abonnés.</p>${other.published ? `<a class="btn ghost" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>` : ''}`;
+  if (!c.published) cta = `<p class="muted">Cette formation est en préparation. Elle sera bientôt disponible pour les abonnés.</p>${other?.published ? `<a class="btn ghost" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>` : ''}`;
   else if (!api.configured) cta = '<p class="muted">Inscriptions bientôt ouvertes.</p>';
   else if (!S.session) cta = `<p class="muted">Créez un compte gratuit pour suivre votre progression, puis abonnez-vous pour suivre les cours.</p>
       <a class="btn" href="#/inscription?suite=${encodeURIComponent('/formation/' + c.id)}">Créer un compte</a>
@@ -402,7 +404,7 @@ function coursePage(id) {
   <div class="cols">
     <div class="stack" style="gap:26px;min-width:0">
       <div class="stack" style="gap:10px">
-        ${cover(c.job, { big: true, level: c.level, title: c.title.startsWith(c.job.name) ? c.job.name : c.title })}
+        ${cover(c.job, { big: true, level: c.single ? null : c.level, title: c.title.startsWith(c.job.name) ? c.job.name : c.title })}
         <h1>${esc(c.title)}</h1>
         <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill ${c.level === 'a' ? 'gold' : ''}">${c.levelName}</span><span class="pill grey">${c.hours} heures</span><span class="pill grey">${n} modules + examen</span>${c.published ? '' : '<span class="pill grey">Bientôt disponible</span>'}</div>
       </div>
@@ -410,7 +412,8 @@ function coursePage(id) {
       <p style="max-width:65ch">${esc(c.description)}</p>
       <div class="stack" style="gap:12px"><h2>Objectifs</h2><ol class="obj-num">${c.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ol>
         <p class="muted" style="font-size:.9rem">À la fin de la formation, vous saurez faire ces ${c.objectives.length} choses.</p></div>
-      <div class="stack" style="gap:12px"><h2>Outils du métier</h2>
+      ${c.job.paid ? '' : `<div class="stack" style="gap:12px"><h2>Outils utilisés</h2><div class="panel"><p>${esc(c.job.tools.charAt(0).toUpperCase() + c.job.tools.slice(1))}. Tout se fait avec des outils gratuits.</p></div></div>`}
+      <div class="stack" style="gap:12px"${c.job.paid ? '' : ' hidden'}><h2>Outils du métier</h2>
         <div class="tools"><div class="panel"><span class="pill">Gratuits</span><p style="margin-top:8px">${esc(c.job.tools)}</p></div>
         <div class="panel"><span class="pill gold">Payants (professionnels)</span><p style="margin-top:8px">${esc(c.job.paid)}</p></div></div>
         <p class="muted" style="font-size:.88rem">${c.level === 'f' ? 'Ce niveau se fait avec les outils gratuits ; les outils payants sont présentés pour savoir quand ils deviennent rentables.' : 'Ce niveau utilise les outils payants demandés par les clients. Essais gratuits possibles.'} Les prix changent souvent : vérifiez-les sur le site officiel. Pas de logiciels piratés : virus et vol de fichiers clients.</p></div>
@@ -435,10 +438,10 @@ function coursePage(id) {
           </div>
         </div>
       </div>
-      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      ${other ? `<div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
         <div><span class="eyebrow">Même métier</span><div style="font-weight:700">${esc(other.title)}</div></div>
         <a class="btn ghost sm" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>
-      </div>
+      </div>` : ''}
     </div>
     <aside class="panel side stack">
       ${S.session && c.published ? `<div class="stack" style="gap:8px"><div style="display:flex;justify-content:space-between"><b>Ma progression</b><span class="mono">${pct} %</span></div><div class="bar"><i style="width:${pct}%"></i></div>
@@ -575,7 +578,7 @@ function examResult(c) {
       ? `<p>Bravo ${esc((S.profile.full_name || '').split(' ')[0])} ! Vous avez terminé « ${esc(c.title)} ». Votre attestation est prête.${R.job_certificate_id ? ' Vous avez réussi les deux niveaux : votre attestation de parcours complet est aussi disponible.' : ''}</p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
            <a class="btn" href="#/attestation/${R.certificate_id}">Voir mon attestation</a>
-           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>`}</div>`
+           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : (other ? `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>` : '<a class="btn ghost" href="#/">Voir les autres formations</a>')}</div>`
       : `<p>Il manque ${50 - R.score} point${50 - R.score > 1 ? 's' : ''}. Relisez les modules si besoin, puis recommencez : le nombre d'essais n'est pas limité.</p>
          <p id="exerr" class="notice err" hidden></p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">

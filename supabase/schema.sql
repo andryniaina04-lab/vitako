@@ -367,8 +367,10 @@ begin
       update public.certificates set score = greatest(coalesce(score, 0), v_score) where id = v_cert;
     end if;
 
-    -- Attestation de parcours complet : tous les niveaux du métier réussis.
-    if (select count(*) from public.certificates c
+    -- Attestation de parcours complet : tous les niveaux du métier réussis
+    -- (seulement pour les métiers en deux niveaux, pas pour les formations à niveau unique).
+    if (select count(*) from public.courses where job_key = v_course.job_key) >= 2
+       and (select count(*) from public.certificates c
          where c.user_id = v_uid and c.kind = 'course' and c.job_key = v_course.job_key)
        >= (select count(*) from public.courses where job_key = v_course.job_key)
     then

@@ -358,5 +358,67 @@
     "paid": "Microsoft 365 et logiciels de paie"
    }
   ]
+ },
+ {
+  "id": "perso",
+  "name": "Développement personnel",
+  "jobs": [
+   {
+    "name": "Confiance en soi",
+    "blurb": "oser se présenter, demander un prix juste et avancer malgré la peur",
+    "tools": "un carnet de progrès et son téléphone",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Leadership personnel",
+    "blurb": "se fixer des objectifs, tenir ses engagements et construire de bonnes habitudes",
+    "tools": "un carnet, Google Agenda et un tableau d'objectifs",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gestion du temps et productivité",
+    "blurb": "organiser ses journées de télétravail et tenir ses délais malgré les imprévus",
+    "tools": "Google Agenda, Google Tasks et la méthode Pomodoro",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gérer ses projets et ses missions",
+    "blurb": "planifier une mission de freelance, suivre l'avancement et livrer à temps",
+    "tools": "Trello, Google Sheets et un modèle de plan de mission",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Communication professionnelle",
+    "blurb": "écrire des messages clairs et parler avec assurance à ses clients et collègues",
+    "tools": "Gmail, WhatsApp Business et des modèles de messages",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Réussir ses entretiens avec les clients",
+    "blurb": "comprendre le besoin, présenter son offre, négocier et conclure",
+    "tools": "Google Meet, une fiche de découverte et un modèle de devis",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Prise de parole et visioconférence",
+    "blurb": "présenter, animer une réunion et passer un entretien en visio sans stress",
+    "tools": "Google Meet, Zoom et son téléphone pour s'entraîner",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gestion du stress et équilibre de vie",
+    "blurb": "garder son énergie, gérer la pression et éviter l'épuisement en freelance",
+    "tools": "un carnet, des exercices de respiration et un planning équilibré",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ]

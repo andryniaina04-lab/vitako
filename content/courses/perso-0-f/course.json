@@ -1,0 +1,92 @@
+{
+  "id": "perso-0-f",
+  "hours": 8,
+  "description": "La confiance en soi se construit par l'action, pas à pas. Cette formation pratique, en 5 modules, aide les jeunes freelances et télétravailleurs à oser se présenter, annoncer leur prix, recevoir une critique et rebondir après un refus : confiance, estime et affirmation de soi, pensées qui freinent, dossier de preuves, dialogue intérieur, posture et voix, dire non avec respect, carnet de progrès, échelle des défis, cas pratique d'une graphiste qui se lance et plan de 30 jours. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Distinguer confiance, estime et affirmation de soi, et reconnaître les pensées qui freinent",
+    "Construire un dossier de preuves et un dialogue intérieur encourageant",
+    "Utiliser posture, voix et respiration pour gagner en assurance",
+    "Dire non et annoncer son prix avec respect et clarté",
+    "Progresser avec un carnet de progrès et une échelle des défis",
+    "Suivre un plan de confiance sur 30 jours et réagir aux rechutes"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre la confiance en soi",
+      "summary": "Confiance, estime et affirmation de soi, le cercle de la confiance, les pensées qui freinent, la discrétion et le freelance, auto-évaluation de départ.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "D'où vient la confiance en soi ?", "options": ["De petites actions réussies", "D'un don de naissance", "De l'absence de peur", "De la chance"], "correct": 0 },
+        { "q": "Qu'est-ce que le syndrome de l'imposteur ?", "options": ["Croire qu'on n'est pas assez bon et qu'on va être démasqué", "Mentir sur ses compétences", "Copier le travail des autres", "Avoir trop confiance"], "correct": 0 },
+        { "q": "Présenter ses compétences à un client, c'est :", "options": ["L'informer de ce que l'on peut faire pour lui", "De l'orgueil", "Interdit", "Inutile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : preuves, dialogue intérieur, posture et limites",
+      "summary": "Dossier de preuves, règle de l'ami et mot « encore », posture, regard, voix et respiration, dire non en trois étapes.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que contient le dossier de preuves ?", "options": ["Réalisations, retours positifs et difficultés surmontées", "Ses dettes", "Les erreurs des autres", "Rien"], "correct": 0 },
+        { "q": "Que dit la règle de l'ami ?", "options": ["Se parler comme on parlerait à un bon ami", "Demander à un ami de travailler à sa place", "Ne parler qu'à ses amis", "Critiquer ses amis"], "correct": 0 },
+        { "q": "Quelles sont les 3 étapes pour dire non ?", "options": ["Remercier, refuser clairement, proposer une solution", "Ignorer, bloquer, oublier", "Accepter puis annuler", "S'excuser longuement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : carnet de progrès, échelle des défis et refus",
+      "summary": "Carnet de progrès quotidien, échelle des défis et zone d'apprentissage, préparation d'une situation difficile, les 5 étapes pour tirer profit d'un refus.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que l'échelle des défis ?", "options": ["Des situations classées de la plus facile à la plus difficile", "Un logiciel", "Un concours", "Une liste de clients"], "correct": 0 },
+        { "q": "Qu'est-ce que la zone d'apprentissage ?", "options": ["L'espace entre le facile et le paralysant", "La zone de confort", "La zone de panique", "Une salle de classe"], "correct": 0 },
+        { "q": "Un refus est :", "options": ["Une information pour s'améliorer", "Un verdict sur sa valeur", "Une raison d'abandonner", "Une insulte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : Tiana se lance",
+      "summary": "Trois semaines de prospection d'une graphiste d'Antsirabe : premières marches, présentation en 4 parties, annonce du prix avec alternative, réaction à une critique.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelles sont les 4 parties d'une présentation ?", "options": ["Qui vous êtes, qui vous aidez, une preuve, une question", "Nom, âge, adresse, prix", "Excuses, prix, remise, fin", "Titre, logo, couleur, police"], "correct": 0 },
+        { "q": "Comment annoncer son prix ?", "options": ["Avec ce qui est inclus, sans s'excuser, avec une alternative", "En s'excusant", "En le baissant tout de suite", "Sans rien expliquer"], "correct": 0 },
+        { "q": "Que faire face à une critique ?", "options": ["Respirer, remercier, clarifier, ajuster", "Répondre en colère", "Abandonner le projet", "Ignorer le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : confiance durable",
+      "summary": "Plan sur 30 jours, mentor, binôme et communauté, réagir aux rechutes, quand demander de l'aide, mesurer ses progrès chaque mois.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi dater chaque action du plan ?", "options": ["Une action sans date reste une intention", "Pour décorer l'agenda", "Ce n'est pas utile", "Pour l'oublier"], "correct": 0 },
+        { "q": "Que faire en cas de rechute de confiance ?", "options": ["Revenir aux petites marches et relire ses preuves", "Tout arrêter", "Se comparer davantage", "Rester seul"], "correct": 0 },
+        { "q": "Que faire si une tristesse profonde dure ?", "options": ["En parler à une personne de confiance et consulter un professionnel de santé", "Attendre sans rien dire", "Travailler plus", "L'ignorer"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que signifie la confiance en soi ?", "options": ["Croire de façon réaliste qu'on peut faire face et apprendre", "Ne jamais avoir peur", "Être meilleur que les autres", "Tout savoir"], "correct": 0 },
+    { "q": "Quelle question correspond à l'estime de soi ?", "options": ["Est-ce que je vaux quelque chose ?", "Suis-je capable de le faire ?", "Est-ce que j'ose le dire ?", "Combien je gagne ?"], "correct": 0 },
+    { "q": "Faut-il attendre d'avoir confiance pour agir ?", "options": ["Non, la confiance vient après l'action", "Oui, toujours", "Oui, pendant un an", "Cela dépend de la météo"], "correct": 0 },
+    { "q": "Quelle est une réponse juste à la comparaison ?", "options": ["Se comparer à soi-même il y a trois mois", "Se comparer aux meilleurs du monde", "Ne jamais progresser", "Abandonner"], "correct": 0 },
+    { "q": "Quelle pensée est un « tout ou rien » ?", "options": ["Si ce n'est pas parfait, c'est nul", "J'apprends chaque jour", "J'ai réussi une partie", "Je vais demander de l'aide"], "correct": 0 },
+    { "q": "Pourquoi refaire l'auto-évaluation plus tard ?", "options": ["Pour mesurer ses progrès", "Pour se décourager", "Ce n'est pas utile", "Pour l'envoyer aux clients"], "correct": 0 },
+    { "q": "Quel mot ajouter à « je n'y arrive pas » ?", "options": ["Encore", "Jamais", "Toujours", "Plus"], "correct": 0 },
+    { "q": "Quelle posture donne de l'assurance ?", "options": ["Dos droit, épaules ouvertes, regard vers la personne", "Dos courbé, regard au sol", "Bras croisés et yeux fermés", "Parler très vite"], "correct": 0 },
+    { "q": "Que faire au lieu de dire « euh » ?", "options": ["Accepter une courte pause", "Parler plus vite", "Crier", "Raccrocher"], "correct": 0 },
+    { "q": "Pourquoi éviter de tout accepter ?", "options": ["Cela mène à l'épuisement et à des prix trop bas", "C'est toujours mieux", "Les clients préfèrent", "C'est obligatoire"], "correct": 0 },
+    { "q": "Combien de temps pour le carnet de progrès chaque soir ?", "options": ["Environ 5 minutes", "3 heures", "Une journée", "Jamais"], "correct": 0 },
+    { "q": "Comment monter l'échelle des défis ?", "options": ["Une marche à la fois", "Commencer par la plus difficile", "Sauter les marches", "Ne jamais commencer"], "correct": 0 },
+    { "q": "Que préparer avant une situation difficile ?", "options": ["Le pire scénario réaliste, sa réponse et ses phrases exactes", "Rien", "Une excuse pour ne pas y aller", "Un cadeau"], "correct": 0 },
+    { "q": "Que faire dans les 24 heures après un refus ?", "options": ["Envoyer une nouvelle proposition améliorée", "Arrêter le freelance", "Insulter le client", "Attendre un an"], "correct": 0 },
+    { "q": "Pourquoi terminer sa présentation par une question ?", "options": ["Pour inviter la personne à parler", "Pour la piéger", "Pour finir plus vite", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que fait Tiana quand le client trouve le prix cher ?", "options": ["Elle propose une version plus simple à un prix plus bas", "Elle baisse son prix complet de moitié", "Elle se fâche", "Elle abandonne"], "correct": 0 },
+    { "q": "Pourquoi Tiana attend-elle 10 minutes avant de répondre à une critique ?", "options": ["Pour se calmer et répondre posément", "Pour punir le client", "Par paresse", "Pour oublier"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un binôme ?", "options": ["Une personne qui se lance aussi et avec qui on s'encourage", "Un concurrent", "Un client", "Un logiciel"], "correct": 0 },
+    { "q": "Que faire face aux moqueries répétées ?", "options": ["S'en éloigner", "Les écouter tous les jours", "Abandonner son projet", "Se moquer à son tour"], "correct": 0 },
+    { "q": "À quelle fréquence mesurer ses progrès ?", "options": ["Chaque mois", "Jamais", "Une fois dans sa vie", "Chaque minute"], "correct": 0 }
+  ]
+}

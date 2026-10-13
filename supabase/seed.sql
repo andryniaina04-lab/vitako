@@ -102,7 +102,15 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true),
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
-  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true)
+  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true),
+  ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true),
+  ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 11, false),
+  ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 12, false),
+  ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 13, false),
+  ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 14, false),
+  ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 10, false),
+  ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 11, false),
+  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 12, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
 
@@ -54316,6 +54324,427 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi les droits publicitaires se paient-ils ?', '["Pour décorer le contrat","Ce n''est pas le cas","La vidéo peut faire vendre beaucoup pendant des mois","Ils sont gratuits"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel paiement proposer pour une commande ?', '["Rien","Seulement en cadeaux","Tout après 6 mois","50 % à la commande et 50 % à la livraison"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel moyen de paiement utiliser avec une marque locale ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
+
+-- perso-0-f
+delete from public.exam_questions where course_id = 'perso-0-f';
+delete from public.module_questions where course_id = 'perso-0-f';
+delete from public.lessons where course_id = 'perso-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-0-f', 0, 'Comprendre la confiance en soi', 'Confiance, estime et affirmation de soi, le cercle de la confiance, les pensées qui freinent, la discrétion et le freelance, auto-évaluation de départ.', 'Beaucoup de jeunes freelances savent faire le travail, mais n''osent pas se présenter, envoyer leur portfolio ou annoncer leur prix. La confiance en soi n''est pas un don : c''est une compétence qui se construit, pas à pas, par l''action. Ce premier module vous aide à comprendre ce qu''elle est vraiment et d''où viennent vos doutes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Distinguer confiance en soi, estime de soi et affirmation de soi.
+> 2. Comprendre le cercle de la confiance : agir, réussir, oser davantage.
+> 3. Reconnaître les pensées qui vous freinent.
+> 4. Faire le point sur votre niveau de confiance actuel.
+
+## Trois notions à ne pas confondre
+
+| Notion | Question | Exemple |
+| --- | --- | --- |
+| **Confiance en soi** | « Suis-je capable de le faire ? » | Oser répondre à une offre de mission |
+| **Estime de soi** | « Est-ce que je vaux quelque chose ? » | Se sentir digne d''être bien payé |
+| **Affirmation de soi** | « Est-ce que j''ose le dire ? » | Refuser poliment une demande abusive |
+
+> [!definition] Confiance en soi
+> La conviction réaliste que l''on peut faire face à une situation, apprendre ce qui manque et s''en sortir même en cas d''erreur. Elle ne signifie pas « ne jamais avoir peur » : c''est agir malgré la peur.
+
+## Le cercle de la confiance
+
+| Étape | Ce qui se passe |
+| --- | --- |
+| 1. **J''ose une petite action** | J''envoie un message à un client possible |
+| 2. **J''obtiens un résultat** | Une réponse, même négative, ou une première mission |
+| 3. **J''en tire une preuve** | « J''ai été capable de le faire » |
+| 4. **J''ose un peu plus** | Je contacte trois clients le lendemain |
+
+La confiance vient **après** l''action, pas avant. Attendre d''avoir confiance pour agir, c''est bloquer le cercle dès le départ.
+
+> [!astuce]
+> Choisissez des actions **petites et faisables**. Une victoire minuscule mais réelle vaut mieux qu''un grand projet jamais commencé.
+
+## Les pensées qui freinent
+
+| Pensée | Ce qu''elle dit | Une réponse plus juste |
+| --- | --- | --- |
+| **Le syndrome de l''imposteur** | « Je ne suis pas assez bon, on va s''en rendre compte » | « J''ai des compétences réelles, et je continue d''apprendre » |
+| **La comparaison** | « Les autres sont meilleurs que moi » | « Je me compare à moi-même il y a trois mois » |
+| **Le tout ou rien** | « Si ce n''est pas parfait, c''est nul » | « Bien fait et livré vaut mieux que parfait et en retard » |
+| **La lecture de pensées** | « Le client va me trouver ridicule » | « Je ne sais pas ce qu''il pense ; je peux lui demander son avis » |
+| **La généralisation** | « J''ai eu un refus, je n''y arriverai jamais » | « Un refus concerne une proposition, pas toute ma valeur » |
+
+> [!madagascar]
+> Dans beaucoup de familles malgaches, on apprend à rester discret et à ne pas se mettre en avant (« aza mieboebo »). C''est une belle valeur de respect. Mais dans le freelance, présenter ses compétences n''est pas de l''orgueil : c''est **informer** un client qui a besoin de vous. On peut rester humble et parler clairement de ce que l''on sait faire.
+
+## Faire le point
+
+Notez chaque affirmation de 1 (pas du tout) à 5 (tout à fait) :
+
+| N° | Affirmation |
+| --- | --- |
+| 1 | J''ose contacter une personne que je ne connais pas pour lui proposer mes services |
+| 2 | J''annonce mon prix sans m''excuser |
+| 3 | Je supporte un refus sans tout abandonner |
+| 4 | Je demande de l''aide quand je ne sais pas |
+| 5 | Je parle de mes réussites sans les minimiser |
+| 6 | J''ose dire non à une demande qui ne me convient pas |
+
+Gardez ce score : vous le refairez à la fin de la formation pour mesurer vos progrès.
+
+> [!retenir]
+> - Confiance (« je peux »), estime (« je vaux »), affirmation (« j''ose dire »).
+> - La confiance se construit par de petites actions réussies.
+> - Les pensées qui freinent peuvent être remplacées par des pensées plus justes.
+> - Se présenter n''est pas de l''orgueil : c''est informer.
+
+## Exercice pratique : votre point de départ
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Remplissez le tableau d''auto-évaluation et notez votre score sur 30.
+> 2. Écrivez les 3 pensées qui vous freinent le plus souvent.
+> 3. Pour chacune, écrivez une réponse plus juste.
+> 4. Choisissez une petite action à faire dans les 48 heures.
+>
+> **À livrer** : votre score, vos 3 pensées et leurs réponses, et votre action.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 0, 0, 'D''où vient la confiance en soi ?', '["De petites actions réussies","De l''absence de peur","D''un don de naissance","De la chance"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 0, 1, 'Qu''est-ce que le syndrome de l''imposteur ?', '["Copier le travail des autres","Croire qu''on n''est pas assez bon et qu''on va être démasqué","Mentir sur ses compétences","Avoir trop confiance"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 0, 2, 'Présenter ses compétences à un client, c''est :', '["De l''orgueil","L''informer de ce que l''on peut faire pour lui","Interdit","Inutile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-0-f', 1, 'Les bases : preuves, dialogue intérieur, posture et limites', 'Dossier de preuves, règle de l''ami et mot « encore », posture, regard, voix et respiration, dire non en trois étapes.', 'La confiance repose sur des preuves. Ce module vous apprend à les rassembler, à transformer votre façon de vous parler et à poser des limites avec respect. Ce sont les bases qui vous permettront d''oser davantage dans votre travail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire votre « dossier de preuves ».
+> 2. Remplacer l''autocritique par un dialogue intérieur encourageant.
+> 3. Utiliser la posture et la voix pour paraître et vous sentir plus sûr de vous.
+> 4. Dire non et poser des limites avec respect.
+
+## Le dossier de preuves
+
+| Type de preuve | Exemples |
+| --- | --- |
+| **Réalisations** | Un site créé, une traduction livrée, un examen réussi |
+| **Retours positifs** | Un message de remerciement, un avis d''un client |
+| **Difficultés surmontées** | Un projet terminé malgré une coupure de courant |
+| **Compétences acquises** | Une attestation Vitako, une nouvelle technique apprise |
+| **Qualités reconnues** | « Tu es très sérieux », « tu expliques bien » |
+
+> [!astuce]
+> Créez un dossier sur votre téléphone appelé « Mes preuves » et ajoutez-y une capture chaque fois que quelqu''un vous remercie. Relisez-le avant un entretien ou après un refus.
+
+## Le dialogue intérieur
+
+| Autocritique | Dialogue encourageant |
+| --- | --- |
+| « Je suis nul » | « Cette fois, ça n''a pas marché. Qu''est-ce que je peux améliorer ? » |
+| « Je n''y arriverai jamais » | « Je n''y arrive pas **encore** » |
+| « Je dois être parfait » | « Je fais de mon mieux et je m''améliore à chaque mission » |
+| « Ils vont se moquer de moi » | « Ceux qui m''aident à progresser ne se moquent pas » |
+
+> [!definition] La règle de l''ami
+> Parlez-vous comme vous parleriez à un bon ami dans la même situation. On ne dirait jamais à un ami « tu es nul » après un refus : on l''encouragerait et on l''aiderait à réessayer.
+
+## Le corps et la voix
+
+| Élément | Ce qui donne de l''assurance |
+| --- | --- |
+| **Posture** | Dos droit, épaules ouvertes, les deux pieds au sol |
+| **Regard** | Regarder la caméra ou la personne, pas le sol |
+| **Voix** | Parler un peu plus lentement, finir ses phrases sans baisser le ton |
+| **Respiration** | Une respiration lente avant de parler |
+| **Silences** | Accepter une courte pause au lieu de remplir avec « euh » |
+
+## Dire non avec respect
+
+| Étape | Exemple |
+| --- | --- |
+| 1. **Remercier** | « Merci pour votre confiance. » |
+| 2. **Dire non clairement** | « Je ne peux pas faire ce travail pour ce budget. » |
+| 3. **Proposer une solution** | « Je peux vous proposer une version plus simple pour ce prix, ou la version complète pour 150 000 Ar. » |
+
+> [!attention]
+> Accepter tout, tout le temps, par peur de perdre le client, mène à l''épuisement et à des prix trop bas. Un client qui respecte votre travail accepte une limite expliquée poliment.
+
+> [!retenir]
+> - Un dossier de preuves pour se rappeler ses réussites.
+> - Se parler comme à un ami, avec le mot « encore ».
+> - Posture, regard, voix lente et respiration.
+> - Dire non : remercier, refuser clairement, proposer une solution.
+
+## Exercice pratique : vos fondations
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez votre dossier de preuves avec au moins 10 éléments.
+> 2. Notez 3 phrases d''autocritique habituelles et réécrivez-les selon la règle de l''ami.
+> 3. Enregistrez-vous en vidéo 1 minute pour vous présenter, en appliquant les conseils de posture et de voix.
+> 4. Écrivez un message pour refuser poliment une demande avec une proposition alternative.
+>
+> **À livrer** : la liste de vos preuves, vos 3 phrases réécrites, la vidéo et le message.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 1, 0, 'Que contient le dossier de preuves ?', '["Rien","Réalisations, retours positifs et difficultés surmontées","Les erreurs des autres","Ses dettes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 1, 1, 'Que dit la règle de l''ami ?', '["Se parler comme on parlerait à un bon ami","Demander à un ami de travailler à sa place","Critiquer ses amis","Ne parler qu''à ses amis"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 1, 2, 'Quelles sont les 3 étapes pour dire non ?', '["Remercier, refuser clairement, proposer une solution","Ignorer, bloquer, oublier","Accepter puis annuler","S''excuser longuement"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-0-f', 2, 'Les outils : carnet de progrès, échelle des défis et refus', 'Carnet de progrès quotidien, échelle des défis et zone d''apprentissage, préparation d''une situation difficile, les 5 étapes pour tirer profit d''un refus.', 'Ce module vous donne des outils concrets et gratuits pour faire grandir votre confiance chaque semaine : le carnet de progrès, l''échelle des défis, la préparation des situations difficiles et la façon de tirer profit des refus.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Tenir un carnet de progrès quotidien.
+> 2. Construire votre échelle des défis.
+> 3. Préparer une situation qui vous fait peur.
+> 4. Transformer un refus en apprentissage.
+
+## Le carnet de progrès
+
+Chaque soir, en 5 minutes, notez dans un carnet ou sur votre téléphone :
+
+```
+Date : 12 mars
+1. Ce que j''ai osé aujourd''hui : j''ai envoyé mon portfolio à 2 agences.
+2. Ce qui s''est bien passé : une agence m''a répondu en 1 heure.
+3. Ce que j''ai appris : mon message était trop long, je vais le raccourcir.
+4. Ma prochaine petite action : relancer l''autre agence vendredi.
+```
+
+> [!astuce]
+> Le carnet entraîne votre cerveau à remarquer les progrès. Après un mois, relisez-le : vous serez surpris du chemin parcouru.
+
+## L''échelle des défis
+
+Classez les situations qui vous font peur, de la plus facile à la plus difficile, et montez une marche à la fois.
+
+| Marche | Défi (exemple d''un rédacteur débutant) | Niveau de peur (0 à 10) |
+| --- | --- | --- |
+| 1 | Publier une présentation sur Facebook | 2 |
+| 2 | Envoyer mon portfolio à 3 contacts que je connais | 3 |
+| 3 | Répondre à une annonce sur une plateforme | 5 |
+| 4 | Annoncer mon prix sans le baisser | 6 |
+| 5 | Faire un appel vidéo avec un client étranger | 8 |
+| 6 | Relancer un client qui ne paie pas | 9 |
+
+> [!definition] Zone d''apprentissage
+> L''espace entre ce qui est facile (zone de confort) et ce qui est paralysant (zone de panique). On progresse le plus vite avec des défis un peu difficiles, mais pas écrasants.
+
+## Préparer une situation difficile
+
+| Question | Exemple : annoncer son prix |
+| --- | --- |
+| **Qu''est-ce qui me fait peur ?** | Que le client trouve que c''est trop cher |
+| **Quel est le pire scénario réaliste ?** | Il refuse ou propose moins |
+| **Que ferais-je alors ?** | Expliquer ce qui est inclus ou proposer une version simplifiée |
+| **Que vais-je dire exactement ?** | « Pour ce projet, mon tarif est de 200 000 Ar, révisions comprises. » |
+| **Comment vais-je m''entraîner ?** | Le dire à voix haute 5 fois, puis devant un ami |
+
+## Tirer profit d''un refus
+
+| Étape | Action |
+| --- | --- |
+| 1. **Accueillir l''émotion** | « Je suis déçu, c''est normal. » |
+| 2. **Séparer le fait de la personne** | « Cette proposition a été refusée, pas moi. » |
+| 3. **Chercher une leçon** | Demander poliment au client ce qui a manqué |
+| 4. **Ajuster** | Améliorer le message, le portfolio ou le prix |
+| 5. **Recommencer** | Envoyer une nouvelle proposition dans les 24 heures |
+
+> [!madagascar]
+> Les premiers mois, il est normal de recevoir beaucoup de refus ou de messages sans réponse. Les freelances qui réussissent depuis Madagascar ne sont pas ceux qui n''ont jamais de refus, mais ceux qui **continuent d''envoyer des propositions** et améliorent leur méthode chaque semaine.
+
+> [!retenir]
+> - Un carnet de progrès de 5 minutes chaque soir.
+> - Une échelle des défis, une marche à la fois.
+> - Préparer les situations difficiles, phrases comprises.
+> - Un refus est une information, pas un verdict.
+
+## Exercice pratique : votre échelle
+
+> [!exercice] Exercice pratique · 1 heure, puis 7 jours
+> 1. Construisez votre échelle de 6 défis liés à votre métier.
+> 2. Préparez la marche 3 avec le tableau des 5 questions.
+> 3. Tenez votre carnet de progrès pendant 7 jours.
+> 4. Réalisez au moins les marches 1 et 2.
+>
+> **À livrer** : votre échelle, votre préparation et 7 jours de carnet.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 2, 0, 'Qu''est-ce que l''échelle des défis ?', '["Un logiciel","Des situations classées de la plus facile à la plus difficile","Un concours","Une liste de clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 2, 1, 'Qu''est-ce que la zone d''apprentissage ?', '["La zone de confort","Une salle de classe","La zone de panique","L''espace entre le facile et le paralysant"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 2, 2, 'Un refus est :', '["Une insulte","Un verdict sur sa valeur","Une information pour s''améliorer","Une raison d''abandonner"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-0-f', 3, 'Mise en situation : Tiana se lance', 'Trois semaines de prospection d''une graphiste d''Antsirabe : premières marches, présentation en 4 parties, annonce du prix avec alternative, réaction à une critique.', 'Dans ce module, vous suivez Tiana, une jeune graphiste d''Antsirabe, pendant ses trois premières semaines de prospection. Son histoire montre comment appliquer les méthodes de la formation dans une situation réelle.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer l''échelle des défis à votre lancement.
+> 2. Vous présenter avec assurance en quelques phrases.
+> 3. Annoncer et défendre votre prix.
+> 4. Réagir à une critique d''un client.
+
+## Le cas pratique : Tiana se lance
+
+> [!exemple] Point de départ
+> **Tiana**, 23 ans, a terminé la formation Graphiste – Fondamentaux. Elle a un bon portfolio de 6 projets, mais n''a encore envoyé aucune proposition. Elle pense : « Les autres graphistes sont meilleurs que moi » et « Je n''oserai jamais demander plus de 30 000 Ar pour un logo ». Son score d''auto-évaluation est de 13 sur 30.
+
+## Semaine 1 : les premières marches
+
+| Jour | Action | Résultat |
+| --- | --- | --- |
+| Lundi | Publie une présentation sur Facebook | 12 réactions, 1 message d''une amie |
+| Mardi | Envoie son portfolio à 3 commerçants qu''elle connaît | 1 réponse |
+| Jeudi | Ajoute 2 retours positifs à son dossier de preuves | Se sent plus légitime |
+| Samedi | Relit son carnet de progrès | « J''ai fait plus que je ne pensais » |
+
+## Semaine 2 : se présenter
+
+Tiana prépare une présentation de 30 secondes et la répète 10 fois :
+
+```
+Bonjour, je m''appelle Tiana, je suis graphiste à Antsirabe.
+J''aide les petits commerces à avoir un logo et des visuels qui donnent
+confiance à leurs clients. Par exemple, j''ai créé l''identité de la
+pâtisserie Mofo Tsara, qui a doublé ses abonnés en deux mois.
+Est-ce que vous avez des projets de visuels en ce moment ?
+```
+
+> [!astuce]
+> Une bonne présentation tient en 4 parties : **qui vous êtes**, **qui vous aidez**, **une preuve**, **une question**. Terminer par une question invite la personne à parler et vous enlève la pression.
+
+## Semaine 3 : le prix et la critique
+
+### Annoncer son prix
+
+Un restaurant lui demande un logo. Tiana a calculé son temps : 10 heures de travail. Elle prépare sa phrase et l''annonce sans s''excuser :
+
+> [!exemple] La conversation
+> **Client** : « C''est combien ? »
+> **Tiana** : « Pour le logo avec 3 propositions, 2 séries de modifications et les fichiers pour l''impression et les réseaux sociaux, c''est 80 000 Ar. »
+> **Client** : « C''est un peu cher. »
+> **Tiana** : « Je comprends. Je peux vous proposer une version avec une seule proposition pour 55 000 Ar. Qu''est-ce qui vous convient le mieux ? »
+> **Client** : « On prend la version complète. »
+
+### Recevoir une critique
+
+Le client trouve la première proposition « trop simple ». Avant, Tiana aurait pensé « je suis nulle ». Elle applique la méthode :
+
+| Étape | Ce que fait Tiana |
+| --- | --- |
+| **Respirer** | Elle attend 10 minutes avant de répondre |
+| **Remercier** | « Merci pour votre retour, c''est utile. » |
+| **Clarifier** | « Qu''aimeriez-vous voir en plus : des couleurs, un dessin, un style plus chic ? » |
+| **Ajuster** | Elle propose deux nouvelles pistes |
+| **Retenir la leçon** | Poser plus de questions sur le style dès le début |
+
+> [!retenir]
+> - Monter l''échelle des défis semaine après semaine.
+> - Se présenter en 4 parties : qui, pour qui, une preuve, une question.
+> - Annoncer son prix avec ce qui est inclus, sans s''excuser, avec une alternative.
+> - Une critique porte sur le travail : clarifier et ajuster.
+
+## Exercice pratique : vos trois semaines
+
+> [!exercice] Exercice pratique · 3 semaines
+> 1. Écrivez votre présentation de 30 secondes en 4 parties et enregistrez-la.
+> 2. Préparez votre phrase de prix avec ce qui est inclus et une alternative.
+> 3. Entraînez-vous à recevoir une critique avec un ami qui joue le client.
+> 4. Réalisez au moins 3 marches de votre échelle des défis.
+>
+> **À livrer** : votre présentation (texte et enregistrement), votre phrase de prix et le récit de vos 3 marches.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 3, 0, 'Quelles sont les 4 parties d''une présentation ?', '["Titre, logo, couleur, police","Excuses, prix, remise, fin","Qui vous êtes, qui vous aidez, une preuve, une question","Nom, âge, adresse, prix"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 3, 1, 'Comment annoncer son prix ?', '["Avec ce qui est inclus, sans s''excuser, avec une alternative","Sans rien expliquer","En s''excusant","En le baissant tout de suite"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 3, 2, 'Que faire face à une critique ?', '["Ignorer le client","Abandonner le projet","Répondre en colère","Respirer, remercier, clarifier, ajuster"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-0-f', 4, 'Mon plan d''action : confiance durable', 'Plan sur 30 jours, mentor, binôme et communauté, réagir aux rechutes, quand demander de l''aide, mesurer ses progrès chaque mois.', 'La confiance n''est jamais acquise une fois pour toutes. Après une période difficile, un refus important ou une longue pause, elle peut baisser. Ce dernier module vous aide à construire un plan d''action durable et à savoir quoi faire dans les moments de doute.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire votre plan de confiance sur 30 jours.
+> 2. Vous entourer des bonnes personnes.
+> 3. Réagir aux rechutes de confiance.
+> 4. Mesurer vos progrès.
+
+## Votre plan sur 30 jours
+
+| Semaine | Objectif | Actions |
+| --- | --- | --- |
+| **1** | Rassembler ses preuves | Dossier de preuves, présentation de 30 secondes |
+| **2** | Se rendre visible | Publier son portfolio, contacter 10 personnes |
+| **3** | Oser les conversations | 2 appels ou entretiens avec des clients possibles |
+| **4** | Affirmer sa valeur | Annoncer son prix complet, dire non à une demande abusive |
+
+> [!astuce]
+> Notez votre plan dans votre agenda, avec un jour et une heure pour chaque action. Une action sans date reste une intention.
+
+## Bien s''entourer
+
+| Type de personne | Ce qu''elle vous apporte |
+| --- | --- |
+| **Un mentor** | Un freelance plus expérimenté qui donne des conseils |
+| **Un binôme** | Une personne qui se lance aussi : vous vous encouragez mutuellement |
+| **Une communauté** | Un groupe de freelances malgaches pour partager les offres et les astuces |
+| **Des proches bienveillants** | Ils croient en vous les jours difficiles |
+
+> [!madagascar]
+> Les groupes de freelances et de télétravailleurs malgaches sur Facebook, WhatsApp ou LinkedIn sont une source précieuse de soutien et de conseils. Participez, posez des questions, et partagez aussi vos réussites : aider les autres renforce votre propre confiance.
+
+> [!attention]
+> Éloignez-vous des personnes qui se moquent systématiquement de vos projets. Une critique utile aide à progresser ; une moquerie répétée fait seulement baisser l''énergie.
+
+## Réagir aux rechutes
+
+| Signe | Que faire |
+| --- | --- |
+| Vous repoussez toutes les prises de contact | Revenir à la marche la plus facile de votre échelle |
+| Vous vous comparez sans arrêt | Relire votre carnet de progrès et votre dossier de preuves |
+| Un gros refus vous a découragé | Appliquer les 5 étapes du refus, en parler à votre binôme |
+| Vous doutez de tout depuis plusieurs semaines | Faire une pause, demander de l''aide à une personne de confiance |
+
+> [!attention]
+> Si le manque de confiance s''accompagne d''une tristesse profonde qui dure, d''une perte d''envie de tout ou de pensées très sombres, ce n''est plus seulement une question de confiance. Parlez-en à une personne de confiance et consultez un médecin ou un professionnel de santé.
+
+## Mesurer ses progrès
+
+Refaites l''auto-évaluation du module 1 tous les mois et comparez.
+
+```
+Mois 0 : 13 / 30   (point de départ)
+Mois 1 : 17 / 30   (portfolio publié, 15 messages envoyés, 2 clients)
+Mois 2 : 21 / 30   (prix annoncé sans hésiter, 1 refus bien vécu)
+```
+
+> [!retenir]
+> - Un plan de 30 jours, avec des actions datées.
+> - Un mentor, un binôme, une communauté et des proches bienveillants.
+> - En cas de rechute, revenir aux petites marches et aux preuves.
+> - Mesurer ses progrès chaque mois.
+
+## Exercice pratique : votre plan de confiance
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Écrivez votre plan de 30 jours avec des dates précises dans votre agenda.
+> 2. Trouvez un binôme et convenez d''un point chaque semaine.
+> 3. Rejoignez une communauté de freelances et présentez-vous.
+> 4. Refaites l''auto-évaluation et comparez avec votre score de départ.
+>
+> **À livrer** : votre plan, le nom de votre binôme (ou sa description), votre message de présentation et votre nouveau score.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 4, 0, 'Pourquoi dater chaque action du plan ?', '["Ce n''est pas utile","Pour l''oublier","Pour décorer l''agenda","Une action sans date reste une intention"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 4, 1, 'Que faire en cas de rechute de confiance ?', '["Tout arrêter","Revenir aux petites marches et relire ses preuves","Rester seul","Se comparer davantage"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-0-f', 4, 2, 'Que faire si une tristesse profonde dure ?', '["L''ignorer","Attendre sans rien dire","En parler à une personne de confiance et consulter un professionnel de santé","Travailler plus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que signifie la confiance en soi ?', '["Tout savoir","Croire de façon réaliste qu''on peut faire face et apprendre","Être meilleur que les autres","Ne jamais avoir peur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Quelle question correspond à l''estime de soi ?', '["Combien je gagne ?","Est-ce que j''ose le dire ?","Suis-je capable de le faire ?","Est-ce que je vaux quelque chose ?"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Faut-il attendre d''avoir confiance pour agir ?', '["Non, la confiance vient après l''action","Oui, toujours","Oui, pendant un an","Cela dépend de la météo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Quelle est une réponse juste à la comparaison ?', '["Ne jamais progresser","Se comparer aux meilleurs du monde","Abandonner","Se comparer à soi-même il y a trois mois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Quelle pensée est un « tout ou rien » ?', '["Si ce n''est pas parfait, c''est nul","J''apprends chaque jour","J''ai réussi une partie","Je vais demander de l''aide"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Pourquoi refaire l''auto-évaluation plus tard ?', '["Pour l''envoyer aux clients","Ce n''est pas utile","Pour se décourager","Pour mesurer ses progrès"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Quel mot ajouter à « je n''y arrive pas » ?', '["Toujours","Plus","Encore","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Quelle posture donne de l''assurance ?', '["Dos droit, épaules ouvertes, regard vers la personne","Dos courbé, regard au sol","Bras croisés et yeux fermés","Parler très vite"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que faire au lieu de dire « euh » ?', '["Raccrocher","Crier","Accepter une courte pause","Parler plus vite"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Pourquoi éviter de tout accepter ?', '["Les clients préfèrent","C''est obligatoire","Cela mène à l''épuisement et à des prix trop bas","C''est toujours mieux"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Combien de temps pour le carnet de progrès chaque soir ?', '["Une journée","Environ 5 minutes","3 heures","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Comment monter l''échelle des défis ?', '["Sauter les marches","Une marche à la fois","Ne jamais commencer","Commencer par la plus difficile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que préparer avant une situation difficile ?', '["Une excuse pour ne pas y aller","Le pire scénario réaliste, sa réponse et ses phrases exactes","Un cadeau","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que faire dans les 24 heures après un refus ?', '["Attendre un an","Arrêter le freelance","Envoyer une nouvelle proposition améliorée","Insulter le client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Pourquoi terminer sa présentation par une question ?', '["Pour inviter la personne à parler","Pour finir plus vite","Pour la piéger","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que fait Tiana quand le client trouve le prix cher ?', '["Elle baisse son prix complet de moitié","Elle abandonne","Elle se fâche","Elle propose une version plus simple à un prix plus bas"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Pourquoi Tiana attend-elle 10 minutes avant de répondre à une critique ?', '["Pour se calmer et répondre posément","Pour punir le client","Par paresse","Pour oublier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Qu''est-ce qu''un binôme ?', '["Un concurrent","Un logiciel","Une personne qui se lance aussi et avec qui on s''encourage","Un client"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que faire face aux moqueries répétées ?', '["S''en éloigner","Les écouter tous les jours","Se moquer à son tour","Abandonner son projet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'À quelle fréquence mesurer ses progrès ?', '["Une fois dans sa vie","Jamais","Chaque minute","Chaque mois"]'::jsonb, 3);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';

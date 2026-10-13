@@ -359,6 +359,68 @@ export const DOMAINS = [
     "paid": "Microsoft 365 et logiciels de paie"
    }
   ]
+ },
+ {
+  "id": "perso",
+  "name": "Développement personnel",
+  "jobs": [
+   {
+    "name": "Confiance en soi",
+    "blurb": "oser se présenter, demander un prix juste et avancer malgré la peur",
+    "tools": "un carnet de progrès et son téléphone",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Leadership personnel",
+    "blurb": "se fixer des objectifs, tenir ses engagements et construire de bonnes habitudes",
+    "tools": "un carnet, Google Agenda et un tableau d'objectifs",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gestion du temps et productivité",
+    "blurb": "organiser ses journées de télétravail et tenir ses délais malgré les imprévus",
+    "tools": "Google Agenda, Google Tasks et la méthode Pomodoro",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gérer ses projets et ses missions",
+    "blurb": "planifier une mission de freelance, suivre l'avancement et livrer à temps",
+    "tools": "Trello, Google Sheets et un modèle de plan de mission",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Communication professionnelle",
+    "blurb": "écrire des messages clairs et parler avec assurance à ses clients et collègues",
+    "tools": "Gmail, WhatsApp Business et des modèles de messages",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Réussir ses entretiens avec les clients",
+    "blurb": "comprendre le besoin, présenter son offre, négocier et conclure",
+    "tools": "Google Meet, une fiche de découverte et un modèle de devis",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Prise de parole et visioconférence",
+    "blurb": "présenter, animer une réunion et passer un entretien en visio sans stress",
+    "tools": "Google Meet, Zoom et son téléphone pour s'entraîner",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Gestion du stress et équilibre de vie",
+    "blurb": "garder son énergie, gérer la pression et éviter l'épuisement en freelance",
+    "tools": "un carnet, des exercices de respiration et un planning équilibré",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ];
 export const PUBLISHED = {
@@ -3419,6 +3481,40 @@ export const PUBLISHED = {
    {
     "title": "Trouver des marques et se faire payer",
     "minutes": 6
+   }
+  ]
+ },
+ "perso-0-f": {
+  "hours": 8,
+  "description": "La confiance en soi se construit par l'action, pas à pas. Cette formation pratique, en 5 modules, aide les jeunes freelances et télétravailleurs à oser se présenter, annoncer leur prix, recevoir une critique et rebondir après un refus : confiance, estime et affirmation de soi, pensées qui freinent, dossier de preuves, dialogue intérieur, posture et voix, dire non avec respect, carnet de progrès, échelle des défis, cas pratique d'une graphiste qui se lance et plan de 30 jours. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Distinguer confiance, estime et affirmation de soi, et reconnaître les pensées qui freinent",
+   "Construire un dossier de preuves et un dialogue intérieur encourageant",
+   "Utiliser posture, voix et respiration pour gagner en assurance",
+   "Dire non et annoncer son prix avec respect et clarté",
+   "Progresser avec un carnet de progrès et une échelle des défis",
+   "Suivre un plan de confiance sur 30 jours et réagir aux rechutes"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre la confiance en soi",
+    "minutes": 5
+   },
+   {
+    "title": "Les bases : preuves, dialogue intérieur, posture et limites",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : carnet de progrès, échelle des défis et refus",
+    "minutes": 4
+   },
+   {
+    "title": "Mise en situation : Tiana se lance",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : confiance durable",
+    "minutes": 4
    }
   ]
  },
