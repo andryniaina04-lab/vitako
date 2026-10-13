@@ -646,3 +646,15 @@ body{margin:0}
 @media (max-width:560px){.tb-l{display:none}.tb-s{display:inline}}
 @media (max-width:420px){.tb-actions{gap:6px}.tb-actions .iconbtn{width:38px;height:38px}.btn.tb-cta{padding:8px 10px}}
 @media (max-width:360px){.btn.tb-cta{display:inline-flex}.tb-actions [data-act=theme]{display:none}}
+
+/* Bandes vertes du bas : même dégradé que l'en-tête de l'accueil */
+.lp-band{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(900px 520px at 85% 15%,rgba(110,231,183,.35),transparent 60%),radial-gradient(700px 480px at 5% 110%,rgba(250,204,21,.18),transparent 60%),linear-gradient(135deg,#04281C 0%,#075C40 45%,#0B7A55 75%,#14A06F 100%)}
+.lp-band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(100deg,transparent 30%,#000 75%);mask-image:linear-gradient(100deg,transparent 30%,#000 75%);pointer-events:none}
+.lp-band>*{position:relative;z-index:1}
+.lp-band h2,.lp-band .tm-sub,.lp-final p{color:#fff}
+.lp-final .btn{background:#fff;color:#075C40;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.lp-final .btn:hover{background:#ECFDF5}
+.lp-final .btn.lp-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.lp-final .btn.lp-outline:hover{background:rgba(255,255,255,.1)}
+.tm.lp-band .tm-av{background:#0B7A55;color:#fff}
