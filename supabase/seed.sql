@@ -95,7 +95,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true),
-  ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 10, false),
+  ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true),
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 11, false),
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
@@ -21444,6 +21444,572 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel avantage offre un forfait de 10 cours payé d''avance ?', '["Moins de préparation","Des revenus plus réguliers et un élève engagé","Des cours plus courts","Aucun"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle règle d''annulation est raisonnable ?', '["Jamais d''annulation possible","Gratuite jusqu''à 24 heures avant","Annulation possible après le cours","Pas de règle écrite"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle évolution permet de vendre des cours vidéo ?', '["Développeur back-end","Monteur audio","Créateur de cours","Comptable"]'::jsonb, 2);
+
+-- edu-1-f
+delete from public.exam_questions where course_id = 'edu-1-f';
+delete from public.module_questions where course_id = 'edu-1-f';
+delete from public.lessons where course_id = 'edu-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-f', 0, 'Le métier de formateur en ligne depuis Madagascar', 'Formats de formation à distance, classe virtuelle, apprentissage des adultes, rôles du formateur, domaine d''expertise et poste d''animation.', 'Les entreprises, les ONG, les organismes de formation et les institutions forment de plus en plus leurs équipes à distance, en classe virtuelle. Le formateur en ligne prépare et anime ces sessions en direct pour des adultes : des employés, des agents de terrain, des entrepreneurs. Ce premier module vous présente le métier et ce qui le distingue de l''enseignement classique.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un formateur en ligne.
+> 2. Distinguer les formats de formation à distance.
+> 3. Comprendre comment apprennent les adultes.
+> 4. Choisir votre domaine d''expertise.
+> 5. Préparer votre poste d''animation.
+
+## Le métier en une phrase
+
+Un formateur en ligne **conçoit et anime des formations en direct, à distance, pour que des adultes acquièrent des compétences qu''ils utiliseront dans leur travail**.
+
+## Les formats de formation à distance
+
+| Format | Principe | Exemple |
+| --- | --- | --- |
+| **Classe virtuelle** (synchrone) | Session en direct, en visioconférence | Atelier de 2 heures sur Zoom |
+| **Webinaire** | Présentation en direct à un grand groupe, peu d''interaction | Conférence de 45 minutes pour 200 personnes |
+| **Formation en ligne à son rythme** (asynchrone) | Vidéos, lectures, quiz, sans horaire | Cours sur une plateforme (voir la formation Créateur de cours en ligne) |
+| **Formation mixte** (blended) | Sessions en direct + travail personnel en ligne | 4 classes virtuelles + exercices entre les sessions |
+| **Accompagnement individuel** | Séances en tête-à-tête | Coaching d''un entrepreneur |
+
+> [!definition] Classe virtuelle
+> Une session de formation en direct, en visioconférence, avec un petit groupe (souvent 6 à 20 personnes), où les participants parlent, travaillent en petits groupes et font des exercices.
+
+## Comment apprennent les adultes
+
+| Principe | Ce que cela veut dire pour vous |
+| --- | --- |
+| **Ils veulent savoir pourquoi** | Expliquez à quoi sert la formation dans leur travail |
+| **Ils ont de l''expérience** | Partez de ce qu''ils savent déjà, faites-les partager |
+| **Ils veulent du concret** | Des cas réels, des outils utilisables dès le lendemain |
+| **Ils apprennent en faisant** | Peu de présentation, beaucoup de pratique |
+| **Ils ont peu de temps** | Des sessions courtes, bien organisées |
+| **Ils ont besoin de respect** | Pas de ton scolaire, valoriser chaque contribution |
+
+> [!astuce]
+> Une règle simple pour les classes virtuelles : **pas plus de 10 minutes** de présentation sans faire participer le groupe (question, sondage, exercice, discussion).
+
+## Le rôle du formateur
+
+| Rôle | Exemples d''actions |
+| --- | --- |
+| **Concepteur** | Définir les objectifs, organiser le déroulé, préparer les supports |
+| **Animateur** | Faire participer, gérer le temps, créer une bonne ambiance |
+| **Expert** | Apporter des connaissances justes et des exemples |
+| **Facilitateur technique** | Aider les participants avec les outils |
+| **Évaluateur** | Vérifier les acquis et recueillir les avis |
+
+## Choisir votre domaine d''expertise
+
+On ne forme bien que dans un domaine que l''on **maîtrise réellement**.
+
+| Domaine | Exemples de formations | Public |
+| --- | --- | --- |
+| **Bureautique** | Excel, Word, Google Workspace | Employés, agents d''ONG |
+| **Compétences numériques** | Utiliser les outils en ligne, sécurité de base | Débutants, administrations |
+| **Communication** | Prise de parole, rédaction professionnelle | Employés, managers |
+| **Métier technique** | Comptabilité, marketing digital, gestion | Professionnels |
+| **Entrepreneuriat** | Plan d''affaires, gestion simple, vente | Jeunes entrepreneurs, coopératives |
+| **Langues** | Voir la formation Professeur de langue en ligne | Tous publics |
+
+> [!madagascar] Votre avantage
+> Les ONG, les programmes de développement, les institutions de microfinance et les entreprises malgaches forment régulièrement leurs équipes réparties dans tout le pays. La formation à distance évite des déplacements longs et coûteux. Un formateur qui connaît les réalités du terrain malgache (connexions faibles, téléphones, langues) est très recherché.
+
+## Votre poste d''animation
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Assez puissant pour la visioconférence et le partage d''écran |
+| **Connexion** | Stable, avec une connexion de secours (forfait mobile) |
+| **Électricité** | Onduleur ou batterie pour toute la durée de la session |
+| **Casque avec micro** | Son clair, sans écho |
+| **Webcam et lumière** | Visage bien éclairé, face à une fenêtre ou une lampe |
+| **Fond neutre** | Mur simple ou fond flouté |
+| **Second écran** (si possible) | Voir les participants et vos notes en même temps |
+
+> [!retenir]
+> - Le formateur en ligne conçoit et anime des formations en direct pour des adultes.
+> - Classe virtuelle, webinaire, à son rythme, mixte, individuel.
+> - Les adultes veulent du concret, de la pratique et du respect.
+> - Pas plus de 10 minutes sans faire participer.
+> - Former dans un domaine que l''on maîtrise réellement.
+
+## Exercice pratique : votre projet de formateur
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez votre domaine d''expertise et listez 3 formations que vous pourriez donner.
+> 2. Pour chacune, décrivez le public et ce qu''il saura faire à la fin.
+> 3. Participez à un webinaire gratuit et notez ce qui fonctionne et ce qui ne fonctionne pas.
+> 4. Faites une vidéo de test de 2 minutes avec votre poste : son, lumière, fond.
+>
+> **À livrer** : vos 3 idées de formations, vos notes sur le webinaire et votre vidéo de test.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 0, 0, 'Qu''est-ce qu''une classe virtuelle ?', '["Une vidéo enregistrée","Un cours sans horaire","Un livre numérique","Une session en direct en visioconférence avec un petit groupe"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 0, 1, 'Combien de minutes de présentation au maximum sans faire participer ?', '["60 minutes","2 heures","10 minutes","Aucune limite"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 0, 2, 'Que veulent les adultes en formation ?', '["Du concret, de la pratique et du respect","Un ton scolaire","De longues présentations","Aucun exercice"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-f', 1, 'Les bases : besoins, objectifs, déroulé, méthodes et évaluation', 'Analyse des besoins en 6 questions, objectifs avec verbes d''action, déroulé pédagogique minute par minute, méthodes d''animation et 4 niveaux d''évaluation.', 'Ce module vous donne les bases de la conception d''une formation : analyser les besoins, écrire des objectifs précis, construire un déroulé pédagogique, choisir les méthodes d''animation et prévoir l''évaluation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser les besoins de formation d''un client.
+> 2. Rédiger des objectifs pédagogiques précis.
+> 3. Construire un déroulé pédagogique minute par minute.
+> 4. Choisir des méthodes d''animation variées.
+> 5. Prévoir l''évaluation de la formation.
+
+## Analyser les besoins
+
+| Question | Exemple pour une formation Excel |
+| --- | --- |
+| **Quel problème** le client veut-il résoudre ? | Les rapports mensuels des agences arrivent en retard et avec des erreurs |
+| **Qui** sont les participants ? | 15 agents de crédit, niveau débutant à moyen |
+| **Que savent-ils** déjà ? | Saisir des données, faire une somme simple |
+| **Que doivent-ils savoir faire** après ? | Remplir le modèle de rapport, utiliser filtres et tableaux croisés |
+| **Quelles contraintes** ? | Connexion faible dans certaines agences, 2 heures maximum par session |
+| **Comment mesurer** la réussite ? | Rapports corrects et à l''heure le mois suivant |
+
+> [!astuce]
+> Demandez au client de vous montrer un **exemple concret** du problème (un rapport mal rempli, par exemple). Vous construirez des exercices à partir de situations réelles.
+
+## Rédiger des objectifs précis
+
+Un bon objectif décrit **ce que le participant saura faire**, avec un verbe d''action observable.
+
+| Objectif flou | Objectif précis |
+| --- | --- |
+| Comprendre Excel | Calculer le total et la moyenne d''une colonne avec les fonctions SOMME et MOYENNE |
+| Connaître les tableaux croisés | Créer un tableau croisé dynamique qui résume les prêts par agence |
+| Être à l''aise à l''oral | Présenter un projet en 3 minutes en suivant un plan en 3 parties |
+
+> [!definition] Verbe d''action
+> Un verbe qui décrit un comportement observable : calculer, créer, rédiger, identifier, présenter, comparer. On évite « savoir », « comprendre », « connaître », qui ne se vérifient pas directement.
+
+## Le déroulé pédagogique
+
+> [!definition] Déroulé pédagogique
+> Le plan détaillé d''une session : chaque séquence avec sa durée, son objectif, sa méthode, son matériel et le rôle du formateur et des participants.
+
+| Horaire | Séquence | Méthode | Matériel |
+| --- | --- | --- | --- |
+| 0:00 | Accueil, test du son, présentation rapide | Tour de table dans le chat | Diapositive d''accueil |
+| 0:10 | Pourquoi cette formation ? | Discussion : vos difficultés avec les rapports | Tableau blanc |
+| 0:20 | Les fonctions SOMME et MOYENNE | Démonstration courte | Partage d''écran |
+| 0:30 | Exercice 1 | Pratique individuelle sur un vrai fichier | Fichier d''exercice |
+| 0:50 | Correction et questions | Partage d''écran d''un participant | — |
+| 1:00 | Pause | — | — |
+| 1:05 | Les filtres | Démonstration + exercice en binômes | Salles de sous-groupes |
+| 1:35 | Synthèse | Chaque participant cite un apprentissage | Chat |
+| 1:50 | Évaluation rapide et suite | Quiz de 5 questions, sondage de satisfaction | Formulaire |
+
+## Les méthodes d''animation
+
+| Méthode | Usage | Outil en ligne |
+| --- | --- | --- |
+| **Démonstration** | Montrer une manipulation | Partage d''écran |
+| **Exercice pratique** | Faire soi-même | Fichier partagé |
+| **Travail en sous-groupes** | Résoudre un cas à plusieurs | Salles de sous-groupes |
+| **Sondage** | Vérifier une compréhension, lancer un débat | Sondage de la visioconférence |
+| **Remue-méninges** | Recueillir des idées | Tableau blanc collaboratif |
+| **Étude de cas** | Appliquer à une situation réelle | Document partagé |
+| **Questions-réponses** | Lever les doutes | Micro ou chat |
+
+> [!madagascar]
+> Quand certains participants ont une **connexion faible**, prévoyez des activités qui marchent sans vidéo : chat, sondage, fichier téléchargé à l''avance. Envoyez les supports **avant** la session pour qu''ils puissent suivre même si l''image se coupe.
+
+## Prévoir l''évaluation
+
+| Niveau | Question | Outil |
+| --- | --- | --- |
+| **Satisfaction** | Les participants ont-ils apprécié et trouvé la formation utile ? | Questionnaire de fin |
+| **Apprentissage** | Ont-ils acquis les compétences ? | Quiz, exercice final |
+| **Application** | Les utilisent-ils dans leur travail ? | Suivi après 1 mois, avec le responsable |
+| **Résultats** | Le problème du client est-il résolu ? | Indicateurs du client (rapports à l''heure) |
+
+> [!retenir]
+> - Analyser le problème, les participants, les contraintes et la mesure de réussite.
+> - Des objectifs avec des verbes d''action observables.
+> - Un déroulé minute par minute avec méthode et matériel.
+> - Des méthodes variées, adaptées aux connexions faibles.
+> - Évaluer la satisfaction, l''apprentissage, l''application et les résultats.
+
+## Exercice pratique : concevoir une session
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez une formation de votre domaine et rédigez l''analyse des besoins (6 questions).
+> 2. Rédigez 4 objectifs précis avec des verbes d''action.
+> 3. Construisez le déroulé d''une session de 2 heures.
+> 4. Rédigez le questionnaire de satisfaction et un quiz de 5 questions.
+>
+> **À livrer** : votre analyse, vos objectifs, votre déroulé, votre questionnaire et votre quiz.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 1, 0, 'Quel objectif est bien rédigé ?', '["Créer un tableau croisé qui résume les prêts par agence","Comprendre Excel","Savoir l''informatique","Connaître les tableaux"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 1, 1, 'Que contient un déroulé pédagogique ?', '["Séquences, durées, méthodes et matériel","La liste des participants","Seulement le titre","Les salaires"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 1, 2, 'Que faire pour les participants à connexion faible ?', '["Rien","Les exclure","Augmenter la vidéo","Envoyer les supports avant et prévoir des activités sans vidéo"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-f', 2, 'Les outils : Zoom, Miro et offres payantes', 'Paramètres de sécurité Zoom, partage, chat, sondages et sous-groupes, tableau Miro préparé, organisation de l''écran, liste de contrôle, Zoom Pro et Miro payant.', 'Ce module vous fait prendre en main les outils du formateur en ligne : **Zoom** pour animer la classe virtuelle et **Miro** pour faire travailler les participants sur un tableau blanc collaboratif. Vous découvrirez aussi ce qu''apportent les offres payantes : **Zoom Pro** et **Miro** en version payante.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Paramétrer et sécuriser une réunion Zoom.
+> 2. Utiliser le partage d''écran, le chat, les sondages et les salles de sous-groupes.
+> 3. Préparer un tableau Miro pour une session.
+> 4. Organiser votre écran et vos supports pendant l''animation.
+> 5. Comprendre les avantages des offres payantes.
+
+## Zoom : paramétrer la réunion
+
+| Paramètre | Recommandation |
+| --- | --- |
+| **Code secret** ou lien avec code intégré | Toujours, pour éviter les intrus |
+| **Salle d''attente** | Activée pour contrôler les entrées |
+| **Partage d''écran** | Réservé à l''hôte, sauf moment prévu |
+| **Arrivée avant l''hôte** | Désactivée |
+| **Enregistrement** | Seulement avec l''accord des participants et du client |
+| **Coanimateur** | Une personne pour gérer le chat et la technique si le groupe est grand |
+
+> [!attention]
+> Les limites de la version gratuite de Zoom (durée des réunions de groupe, nombre de participants, fonctions disponibles) changent régulièrement. Vérifiez-les sur le site officiel **avant** de planifier une session de 2 heures avec une version gratuite.
+
+## Zoom : les fonctions d''animation
+
+| Fonction | Usage en formation |
+| --- | --- |
+| **Partage d''écran** | Démonstration, diapositives ; partager une fenêtre précise plutôt que tout l''écran |
+| **Chat** | Questions, réponses rapides, liens vers les fichiers |
+| **Réactions** | Lever la main, approuver |
+| **Sondages** | Vérifier la compréhension, voter |
+| **Salles de sous-groupes** | Travail en petits groupes de 3 à 5 personnes |
+| **Annotation** | Les participants écrivent sur l''écran partagé |
+| **Tableau blanc intégré** | Petits schémas rapides |
+
+> [!astuce]
+> Avant d''envoyer les participants en sous-groupes, **écrivez la consigne dans le chat** (tâche, durée, qui présente au retour). Une fois dans les salles, ils ne voient plus votre écran.
+
+## Miro : le tableau blanc collaboratif
+
+> [!definition] Tableau blanc collaboratif
+> Un grand espace en ligne où tous les participants peuvent écrire, coller des notes, dessiner et déplacer des éléments en même temps.
+
+### Préparer un tableau pour une session
+
+| Zone du tableau | Contenu |
+| --- | --- |
+| **Accueil** | Titre, consignes d''utilisation, « Ajoutez votre prénom ici » |
+| **Activité 1** | Remue-méninges avec notes autocollantes |
+| **Activité 2** | Un cadre par sous-groupe avec la consigne |
+| **Synthèse** | Zone de regroupement des idées |
+| **Parking** | Questions à traiter plus tard |
+
+### Les bonnes pratiques
+
+1. **Préparez tout à l''avance** : cadres, consignes, couleurs.
+2. **Commencez par une activité facile** pour apprendre à utiliser l''outil (ajouter son prénom).
+3. **Verrouillez** les éléments qui ne doivent pas bouger (titres, consignes).
+4. **Limitez** le nombre d''éléments pour les connexions faibles.
+5. **Exportez** le tableau à la fin et envoyez-le aux participants.
+
+> [!madagascar]
+> Un tableau Miro peut être lourd sur un téléphone ou une connexion lente. Pour ces participants, prévoyez une **alternative** : répondre dans le chat ou dans un document partagé simple, que vous reportez vous-même sur le tableau.
+
+## Organiser votre écran
+
+| Écran | Contenu |
+| --- | --- |
+| **Écran 1** (partagé) | Diapositives, logiciel de démonstration, tableau Miro |
+| **Écran 2** (pour vous) | Fenêtre Zoom avec les participants, chat, déroulé, notes |
+
+Avec un seul écran : partagez une **fenêtre** précise, gardez le chat visible et imprimez votre déroulé.
+
+### La liste de contrôle avant la session
+
+1. Ordinateur et onduleur chargés, connexion de secours prête.
+2. Réunion paramétrée et lien envoyé avec le programme.
+3. Supports envoyés à l''avance aux participants.
+4. Tableau Miro prêt et testé.
+5. Sondages préparés dans Zoom.
+6. Notifications et applications inutiles fermées.
+7. Connexion 15 minutes avant le début.
+
+## Les offres payantes
+
+| Offre | Ce qu''elle apporte (à vérifier sur le site officiel) |
+| --- | --- |
+| **Zoom Pro** | Réunions plus longues, enregistrement dans le cloud, plus de fonctions de gestion |
+| **Miro payant** | Nombre de tableaux illimité, fonctions d''animation (minuteur, vote, mode présentation), modèles avancés, partage plus complet |
+
+> [!madagascar]
+> Souvent, c''est **le client** (ONG, entreprise, organisme de formation) qui fournit son propre compte Zoom ou Teams. Si vous animez beaucoup de sessions pour vos propres clients, un abonnement payant devient rentable : vérifiez les prix et les moyens de paiement sur les sites officiels.
+
+> [!retenir]
+> - Réunion sécurisée : code, salle d''attente, partage contrôlé.
+> - Vérifier les limites de la version gratuite avant de planifier.
+> - Chat, sondages, sous-groupes avec consigne écrite, annotation.
+> - Un tableau Miro préparé, verrouillé, avec une alternative pour les connexions faibles.
+> - Une liste de contrôle avant chaque session.
+
+## Exercice pratique : une session outillée
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Paramétrez une réunion Zoom sécurisée avec 2 sondages.
+> 2. Préparez un tableau Miro avec 4 zones pour votre session du module 2.
+> 3. Animez une session test de 30 minutes avec 3 proches : sondage, sous-groupes, activité Miro.
+> 4. Recueillez leurs remarques et notez 3 améliorations.
+>
+> **À livrer** : des captures de vos paramètres, de votre tableau, et vos améliorations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 2, 0, 'Pourquoi activer la salle d''attente ?', '["Pour faire attendre longtemps","Contrôler les entrées et éviter les intrus","Ce n''est pas utile","Pour enregistrer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 2, 1, 'Que faire avant d''ouvrir les sous-groupes ?', '["Écrire la consigne dans le chat","Fermer la réunion","Couper le son de tous","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 2, 2, 'Que vérifier avant une session de 2 heures avec Zoom gratuit ?', '["Le nombre d''émojis","Les limites actuelles de la version gratuite","La couleur du logo","Rien"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-f', 3, 'Premier projet : la formation Excel de Mivoatra Microfinance', 'Préparation des participants, ouverture de session, maintien de l''attention, situations difficiles, incidents techniques, enregistrement avec accord, évaluations et bilan.', 'Dans ce module, vous concevez et animez une formation complète pour un client, comme le ferait un formateur indépendant. Vous apprendrez à préparer les participants, à animer en gardant l''attention, à gérer les situations difficiles et les incidents techniques, et à faire le bilan avec le client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer les participants avant la formation.
+> 2. Ouvrir une session de façon engageante.
+> 3. Maintenir l''attention et la participation.
+> 4. Gérer les situations difficiles et les incidents techniques.
+> 5. Évaluer et rédiger le bilan pour le client.
+
+## Le cas pratique : « Mivoatra Microfinance »
+
+> [!exemple] Votre client
+> **Mivoatra** est une institution de microfinance présente dans 12 agences à Madagascar. Les rapports mensuels des agences arrivent souvent en retard et contiennent des erreurs. La responsable de la formation, Mme Fara, vous confie une formation Excel en 3 classes virtuelles de 2 heures, pour 15 agents de crédit. Certains se connectent depuis des agences rurales avec une connexion faible.
+
+## Étape 1 : préparer les participants
+
+| Quand | Action |
+| --- | --- |
+| **2 semaines avant** | Questionnaire de positionnement (niveau Excel, matériel, connexion) |
+| **1 semaine avant** | Invitation avec programme, lien, consignes techniques |
+| **3 jours avant** | Envoi des fichiers d''exercice et du guide de connexion |
+| **La veille** | Rappel par e-mail et message WhatsApp |
+| **Le jour même** | Salle ouverte 15 minutes avant pour les tests de son |
+
+> [!astuce]
+> Le **questionnaire de positionnement** vous évite de surprendre les débutants ou d''ennuyer les plus avancés. Il permet aussi de former des binômes équilibrés.
+
+## Étape 2 : ouvrir la session
+
+| Minute | Action |
+| --- | --- |
+| 0 | Accueil chaleureux de chaque participant par son prénom |
+| 2 | Règles de la classe virtuelle : micro coupé, chat ouvert, caméra si possible |
+| 4 | Objectifs de la session en 3 points |
+| 6 | Activité brise-glace : « Dans le chat, écrivez la tâche Excel qui vous prend le plus de temps » |
+| 10 | Lien avec leur travail : « Aujourd''hui, nous allons réduire ce temps » |
+
+## Étape 3 : maintenir l''attention
+
+| Technique | Exemple |
+| --- | --- |
+| **Interroger par le prénom**, avec bienveillance | « Rindra, comment feriez-vous dans votre agence ? » |
+| **Varier toutes les 10 minutes** | Démonstration, exercice, sondage, sous-groupes |
+| **Utiliser leurs vrais fichiers** | Le modèle de rapport de Mivoatra |
+| **Montrer les progrès** | « Il y a une heure, ce tableau vous prenait 30 minutes » |
+| **Pauses** | 5 minutes toutes les 50 à 60 minutes |
+
+## Étape 4 : les situations difficiles
+
+| Situation | Réaction |
+| --- | --- |
+| **Un participant ne parle jamais** | Le solliciter par le chat ou en sous-groupe, sans le mettre mal à l''aise |
+| **Un participant monopolise la parole** | Le remercier, puis donner la parole à d''autres ; proposer d''en parler après |
+| **Une question hors sujet** | La noter dans le « parking » et y revenir à la fin |
+| **Un participant en difficulté** | Proposer de l''aide en sous-groupe ou après la session |
+| **Une critique de la formation** | Remercier, comprendre, adapter si c''est justifié |
+
+## Les incidents techniques
+
+| Incident | Solution préparée |
+| --- | --- |
+| **Votre connexion coupe** | Coanimateur ou participant désigné comme hôte de secours ; reconnexion par forfait mobile |
+| **Coupure d''électricité** | Onduleur ; message prévu à envoyer par téléphone |
+| **Un participant n''a plus d''image** | Il suit avec le fichier reçu à l''avance et le son |
+| **Un logiciel ne marche pas chez un participant** | Exercice alternatif ou travail en binôme |
+| **Partage d''écran qui bloque** | Envoyer le fichier dans le chat |
+
+> [!madagascar]
+> Avec des participants en zone rurale, prévoyez un **plan B par téléphone** : un groupe WhatsApp de la formation pour les consignes et les fichiers, et un enregistrement de la session (avec accord) pour ceux qui ont été coupés.
+
+> [!attention]
+> N''enregistrez une session qu''avec l''**accord des participants et du client**, et ne partagez l''enregistrement qu''avec les personnes prévues. Les participants y apparaissent avec leur image et leur voix.
+
+## Étape 5 : évaluer et faire le bilan
+
+### Les évaluations
+
+1. **Fin de chaque session** : quiz court et question « Qu''allez-vous appliquer dès demain ? ».
+2. **Fin de formation** : questionnaire de satisfaction et exercice final.
+3. **Un mois après** : point avec Mme Fara sur les rapports des agences.
+
+### Le bilan au client
+
+```
+Bilan – Formation Excel, Mivoatra Microfinance
+Participants : 15 inscrits, 14 présents aux 3 sessions
+Satisfaction : 4,6 sur 5 ; 93 % jugent la formation utile pour leur travail
+Apprentissage : 12 participants sur 14 ont réussi l''exercice final
+Difficultés : 3 agences avec une connexion faible (sessions suivies en partie par l''enregistrement)
+Recommandations :
+- Une session de suivi d''une heure dans 1 mois.
+- Un tutoriel vidéo de 5 minutes sur le modèle de rapport.
+- Un référent Excel par région.
+```
+
+> [!retenir]
+> - Préparer les participants : positionnement, invitation, fichiers, rappels.
+> - Une ouverture chaleureuse avec objectifs et brise-glace.
+> - Varier toutes les 10 minutes et utiliser les vrais fichiers du client.
+> - Des réponses prêtes pour les situations difficiles et les incidents.
+> - Évaluer à plusieurs moments et rédiger un bilan utile.
+
+## Exercice pratique : la formation de Mivoatra
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Rédigez le questionnaire de positionnement et l''invitation.
+> 2. Construisez le déroulé des 3 sessions de 2 heures.
+> 3. Animez au moins une session complète avec 3 à 5 personnes (proches ou camarades).
+> 4. Faites l''évaluation et rédigez le bilan.
+>
+> **À livrer** : vos documents de préparation, vos déroulés, un extrait vidéo de votre animation (avec accord) et le bilan. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 3, 0, 'À quoi sert le questionnaire de positionnement ?', '["Connaître le niveau et le matériel des participants","Noter les participants","Rien","Facturer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 3, 1, 'Que faire d''une question hors sujet ?', '["Arrêter la session","La refuser sèchement","L''ignorer","La noter dans le « parking » et y revenir à la fin"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 3, 2, 'Quand enregistrer une session ?', '["Seulement pour la publier","Avec l''accord des participants et du client","Toujours, sans prévenir","Jamais"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-f', 4, 'Trouver des clients et se faire payer', 'Dossier de formateur, 5 canaux, proposition en 8 parties, prix à la session, à la journée ou au programme, conditions, factures et évolution.', 'Les organismes de formation, les entreprises, les ONG et les programmes de développement recherchent des formateurs capables d''animer à distance. Ce dernier module vous montre comment vous présenter, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un dossier de formateur convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Rédiger une proposition de formation.
+> 4. Fixer vos prix à la session, à la journée ou au programme.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Votre dossier de formateur
+
+1. **Une présentation** : domaine d''expertise, publics, formats.
+2. **Un extrait vidéo** de 3 à 5 minutes de votre animation (avec l''accord des participants).
+3. **Un catalogue** de 3 à 5 formations, chacune avec objectifs, durée et public.
+4. **Votre projet Mivoatra** : déroulé, supports, bilan.
+5. **Des témoignages** dès vos premières sessions (avec accord).
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **ONG et programmes de développement** | Répondez aux appels d''offres de formation ; proposez-vous comme formateur associé |
+| 2 | **Organismes de formation** | Proposez d''animer leurs classes virtuelles |
+| 3 | **Entreprises et institutions de microfinance** | Formations de leurs équipes réparties dans le pays |
+| 4 | **Incubateurs et associations d''entrepreneurs** | Ateliers pour jeunes entrepreneurs |
+| 5 | **Plateformes de freelance et réseaux professionnels** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une ONG
+> « Bonjour, votre programme accompagne des coopératives dans plusieurs régions. Je suis formateur en ligne en gestion simple et outils numériques. Je propose des classes virtuelles courtes, adaptées aux connexions faibles, avec des supports envoyés à l''avance et un suivi par WhatsApp. Je peux animer gratuitement une session découverte d''une heure pour une de vos coopératives. »
+
+## La proposition de formation
+
+| Partie | Contenu |
+| --- | --- |
+| **Contexte** | Le problème du client tel que vous l''avez compris |
+| **Objectifs** | Ce que les participants sauront faire |
+| **Public** | Nombre, niveau, prérequis |
+| **Programme** | Sessions, durées, contenus |
+| **Méthodes** | Classe virtuelle, exercices, suivi |
+| **Évaluation** | Quiz, exercice final, bilan |
+| **Moyens techniques** | Outil de visioconférence, supports, plan B |
+| **Prix et conditions** | Tarif, acompte, annulation |
+
+## Fixer ses prix
+
+| Base | Exemple de prix |
+| --- | --- |
+| **Session de 2 heures** (préparation incluse) | 150 000 Ar |
+| **Programme de 3 sessions** + supports + bilan | 400 000 Ar |
+| **Journée de formation** (2 sessions de 3 heures) | 350 000 Ar |
+| **Conception d''une nouvelle formation** | Selon le volume, en plus de l''animation |
+
+*(Montants donnés en exemple. Les ONG et organismes internationaux ont souvent leurs propres grilles de prix ; pour les clients étrangers, fixez vos prix en euros ou en dollars.)*
+
+> [!astuce]
+> Une heure de formation demande souvent **plusieurs heures** de préparation (conception, supports, exercices), surtout la première fois. Comptez ce temps dans votre prix : une formation déjà conçue devient ensuite plus rentable à chaque nouvelle session.
+
+## Vos conditions
+
+1. **Le nombre maximum** de participants par session.
+2. **Ce qui est fourni** : supports, enregistrement, bilan.
+3. **Qui fournit** l''outil de visioconférence.
+4. **L''acompte** (30 à 50 %) et le solde.
+5. **L''annulation** ou le report par le client.
+6. **La propriété** des supports : utilisation par le client, droits de reproduction.
+7. **La confidentialité** des informations du client.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| ONG ou organisme international | Virement bancaire, souvent après facture et pièces justificatives |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les ONG et programmes demandent souvent une **facture officielle**, un NIF et parfois une carte statistique. Renseignez-vous auprès du centre fiscal de votre ville. Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur pédagogique** | Concevoir des parcours complets, former d''autres formateurs |
+| **Créateur de cours en ligne** | Voir la formation Créateur de cours en ligne |
+| **Responsable de formation** | Plans de formation d''une organisation, budgets |
+| **Coach professionnel** | Accompagnement individuel (formation spécifique recommandée) |
+| **Formateur de formateurs** | Former les formateurs d''une ONG ou d''une entreprise |
+
+> [!retenir]
+> - Un dossier avec catalogue, extrait vidéo, projet et témoignages.
+> - ONG, organismes, entreprises, incubateurs, plateformes.
+> - Une proposition structurée en 8 parties.
+> - Un prix qui compte la préparation, plus rentable à chaque nouvelle session.
+> - Factures officielles et NIF pour les ONG.
+
+## Exercice pratique : décrocher votre première formation
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez votre catalogue de 3 formations.
+> 2. Montez votre extrait vidéo de 3 à 5 minutes.
+> 3. Rédigez une proposition complète pour un client réel ou fictif.
+> 4. Envoyez au moins 3 propositions de session découverte.
+>
+> **À livrer** : votre catalogue, le lien de votre vidéo, votre proposition et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 4, 0, 'Que compter dans le prix d''une session ?', '["Rien","La préparation en plus de l''animation","Seulement les heures en direct","Le prix de l''ordinateur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 4, 1, 'Que demandent souvent les ONG pour payer ?', '["Rien","Une facture officielle et un NIF","Un paiement en espèces","Un mot de passe"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-f', 4, 2, 'Vers quel métier évoluer pour concevoir des parcours complets ?', '["Testeur","Ingénieur pédagogique","Modérateur","Retoucheur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que fait un formateur en ligne ?', '["Il conçoit et anime des formations en direct pour des adultes","Il vend des ordinateurs","Il répare les connexions","Il écrit des romans"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel format mêle sessions en direct et travail personnel en ligne ?', '["L''accompagnement individuel","Le webinaire","La conférence","La formation mixte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi expliquer à quoi sert la formation ?', '["Ce n''est pas utile","Pour allonger la session","Les adultes veulent savoir pourquoi","Pour impressionner"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Dans quel domaine former ?', '["Un domaine que l''on maîtrise réellement","Le plus payé, même sans le connaître","N''importe lequel","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Où placer la lumière pour la webcam ?', '["Aucune lumière","Face au visage","Au plafond seulement","Derrière la tête"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que demander au client pendant l''analyse des besoins ?', '["Son mot de passe","Son chiffre d''affaires personnel","Rien","Un exemple concret du problème"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel verbe éviter dans un objectif ?', '["Calculer","Rédiger","Créer","Comprendre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quelle méthode utilise les salles de sous-groupes ?', '["Le webinaire","La lecture seule","Le travail en petits groupes","La démonstration"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel niveau d''évaluation vérifie l''usage au travail ?', '["L''application","Le prix","La satisfaction","L''accueil"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi partager une fenêtre plutôt que tout l''écran ?', '["Pour aller plus vite","Éviter de montrer notifications et autres fenêtres","Aucune raison","C''est obligatoire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Qu''est-ce qu''un tableau blanc collaboratif ?', '["Un espace en ligne où tous écrivent en même temps","Un tableau en bois","Une diapositive","Un tableur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi verrouiller certains éléments dans Miro ?', '["Pour empêcher toute participation","Aucune raison","Pour que titres et consignes ne bougent pas","Pour payer moins"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quand se connecter avant la session ?', '["15 minutes avant","Après le début","Juste à l''heure","Une heure après"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Qui fournit souvent le compte de visioconférence ?', '["Personne","Le client","Toujours le formateur","Les participants"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quand envoyer les fichiers d''exercice ?', '["Jamais","Quelques jours avant la session","Pendant la pause seulement","Après la formation"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel brise-glace convient à la formation Excel ?', '["Un quiz noté éliminatoire","Aucun","Écrire dans le chat la tâche qui prend le plus de temps","Raconter ses vacances 20 minutes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que faire d''un participant qui monopolise la parole ?', '["Le laisser parler toute la session","Le remercier puis donner la parole à d''autres","L''exclure","Le couper brutalement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que prévoir si votre connexion coupe ?', '["Attendre le lendemain","Annuler la formation","Rien","Un hôte de secours et une connexion mobile"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que proposer pour les participants en zone rurale ?', '["Rien","Un groupe WhatsApp et un enregistrement avec accord","Des fichiers très lourds","Les exclure"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quelle question poser en fin de session ?', '["« Qui veut partir ? »","Aucune","« Quel est votre salaire ? »","« Qu''allez-vous appliquer dès demain ? »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que contient le bilan au client ?', '["Les opinions personnelles des participants nommés","Seulement la facture","Rien","Présence, satisfaction, apprentissage, difficultés et recommandations"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que proposer à une ONG pour commencer ?', '["Un contrat de 5 ans","Une session découverte","Un prix sans programme","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que montre l''extrait vidéo du dossier ?', '["Vos vacances","Votre façon d''animer","Les données du client","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi une formation devient-elle plus rentable avec le temps ?', '["Elle demande plus de préparation","Elle ne l''est jamais","Elle est déjà conçue pour les sessions suivantes","Elle coûte plus cher aux clients"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Mobile Money ou virement","Uniquement PayPal","Aucun"]'::jsonb, 1);
 
 -- edu-3-a
 delete from public.exam_questions where course_id = 'edu-3-a';

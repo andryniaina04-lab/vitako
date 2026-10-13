@@ -3143,6 +3143,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-1-f": {
+  "hours": 15,
+  "description": "Le formateur en ligne conçoit et anime des formations en direct, à distance, pour des adultes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des ONG, des entreprises, des organismes de formation et des programmes de développement, à Madagascar et à l'étranger, avec Zoom et Miro : apprentissage des adultes, analyse des besoins, objectifs, déroulé pédagogique, méthodes d'animation, évaluation, classe virtuelle sécurisée, tableau collaboratif, situations difficiles, incidents techniques et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les formats à distance et l'apprentissage des adultes",
+   "Analyser des besoins et rédiger des objectifs avec des verbes d'action",
+   "Construire un déroulé pédagogique et prévoir l'évaluation",
+   "Animer une classe virtuelle avec Zoom et Miro",
+   "Gérer les situations difficiles, les incidents techniques et faire un bilan",
+   "Présenter son offre, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de formateur en ligne depuis Madagascar",
+    "summary": "Formats de formation à distance, classe virtuelle, apprentissage des adultes, rôles du formateur, domaine d'expertise et poste d'animation.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les formats de formation à distance",
+     "Comment apprennent les adultes",
+     "Le rôle du formateur",
+     "Choisir votre domaine d'expertise",
+     "Votre poste d'animation",
+     "Exercice pratique : votre projet de formateur"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : besoins, objectifs, déroulé, méthodes et évaluation",
+    "summary": "Analyse des besoins en 6 questions, objectifs avec verbes d'action, déroulé pédagogique minute par minute, méthodes d'animation et 4 niveaux d'évaluation.",
+    "sections": [
+     "Analyser les besoins",
+     "Rédiger des objectifs précis",
+     "Le déroulé pédagogique",
+     "Les méthodes d'animation",
+     "Prévoir l'évaluation",
+     "Exercice pratique : concevoir une session"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Zoom, Miro et offres payantes",
+    "summary": "Paramètres de sécurité Zoom, partage, chat, sondages et sous-groupes, tableau Miro préparé, organisation de l'écran, liste de contrôle, Zoom Pro et Miro payant.",
+    "sections": [
+     "Zoom : paramétrer la réunion",
+     "Zoom : les fonctions d'animation",
+     "Miro : le tableau blanc collaboratif",
+     "Organiser votre écran",
+     "Les offres payantes",
+     "Exercice pratique : une session outillée"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la formation Excel de Mivoatra Microfinance",
+    "summary": "Préparation des participants, ouverture de session, maintien de l'attention, situations difficiles, incidents techniques, enregistrement avec accord, évaluations et bilan.",
+    "sections": [
+     "Le cas pratique : « Mivoatra Microfinance »",
+     "Étape 1 : préparer les participants",
+     "Étape 2 : ouvrir la session",
+     "Étape 3 : maintenir l'attention",
+     "Étape 4 : les situations difficiles",
+     "Les incidents techniques",
+     "Étape 5 : évaluer et faire le bilan",
+     "Exercice pratique : la formation de Mivoatra"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Dossier de formateur, 5 canaux, proposition en 8 parties, prix à la session, à la journée ou au programme, conditions, factures et évolution.",
+    "sections": [
+     "Votre dossier de formateur",
+     "Où trouver des clients : 5 canaux",
+     "La proposition de formation",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : décrocher votre première formation"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-3-a": {
   "hours": 16,
   "description": "Ce niveau Avancé fait du chef de projet digital un professionnel qui pilote des projets plus gros et plus risqués : spécialité (Scrum Master, Product Owner, agence, e-commerce, projets financés, PMO), diagnostic et redressement d'un projet en difficulté, outils payants (Jira, Monday.com et Notion Plus), estimation en points et en fourchettes, suivi du budget, RACI, réunions et parties prenantes, équipes internationales en anglais, cultures de travail, certifications et projets de bailleurs, puis tarif journalier, études de cas et réseau de partenaires. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

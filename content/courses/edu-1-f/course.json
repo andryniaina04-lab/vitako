@@ -1,0 +1,97 @@
+{
+  "id": "edu-1-f",
+  "hours": 15,
+  "description": "Le formateur en ligne conçoit et anime des formations en direct, à distance, pour des adultes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des ONG, des entreprises, des organismes de formation et des programmes de développement, à Madagascar et à l'étranger, avec Zoom et Miro : apprentissage des adultes, analyse des besoins, objectifs, déroulé pédagogique, méthodes d'animation, évaluation, classe virtuelle sécurisée, tableau collaboratif, situations difficiles, incidents techniques et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les formats à distance et l'apprentissage des adultes",
+    "Analyser des besoins et rédiger des objectifs avec des verbes d'action",
+    "Construire un déroulé pédagogique et prévoir l'évaluation",
+    "Animer une classe virtuelle avec Zoom et Miro",
+    "Gérer les situations difficiles, les incidents techniques et faire un bilan",
+    "Présenter son offre, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de formateur en ligne depuis Madagascar",
+      "summary": "Formats de formation à distance, classe virtuelle, apprentissage des adultes, rôles du formateur, domaine d'expertise et poste d'animation.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une classe virtuelle ?", "options": ["Une session en direct en visioconférence avec un petit groupe", "Un cours sans horaire", "Une vidéo enregistrée", "Un livre numérique"], "correct": 0 },
+        { "q": "Combien de minutes de présentation au maximum sans faire participer ?", "options": ["10 minutes", "60 minutes", "2 heures", "Aucune limite"], "correct": 0 },
+        { "q": "Que veulent les adultes en formation ?", "options": ["Du concret, de la pratique et du respect", "Un ton scolaire", "De longues présentations", "Aucun exercice"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : besoins, objectifs, déroulé, méthodes et évaluation",
+      "summary": "Analyse des besoins en 6 questions, objectifs avec verbes d'action, déroulé pédagogique minute par minute, méthodes d'animation et 4 niveaux d'évaluation.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel objectif est bien rédigé ?", "options": ["Créer un tableau croisé qui résume les prêts par agence", "Comprendre Excel", "Connaître les tableaux", "Savoir l'informatique"], "correct": 0 },
+        { "q": "Que contient un déroulé pédagogique ?", "options": ["Séquences, durées, méthodes et matériel", "Seulement le titre", "Les salaires", "La liste des participants"], "correct": 0 },
+        { "q": "Que faire pour les participants à connexion faible ?", "options": ["Envoyer les supports avant et prévoir des activités sans vidéo", "Les exclure", "Rien", "Augmenter la vidéo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Zoom, Miro et offres payantes",
+      "summary": "Paramètres de sécurité Zoom, partage, chat, sondages et sous-groupes, tableau Miro préparé, organisation de l'écran, liste de contrôle, Zoom Pro et Miro payant.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi activer la salle d'attente ?", "options": ["Contrôler les entrées et éviter les intrus", "Pour faire attendre longtemps", "Pour enregistrer", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que faire avant d'ouvrir les sous-groupes ?", "options": ["Écrire la consigne dans le chat", "Couper le son de tous", "Fermer la réunion", "Rien"], "correct": 0 },
+        { "q": "Que vérifier avant une session de 2 heures avec Zoom gratuit ?", "options": ["Les limites actuelles de la version gratuite", "La couleur du logo", "Rien", "Le nombre d'émojis"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la formation Excel de Mivoatra Microfinance",
+      "summary": "Préparation des participants, ouverture de session, maintien de l'attention, situations difficiles, incidents techniques, enregistrement avec accord, évaluations et bilan.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert le questionnaire de positionnement ?", "options": ["Connaître le niveau et le matériel des participants", "Noter les participants", "Facturer", "Rien"], "correct": 0 },
+        { "q": "Que faire d'une question hors sujet ?", "options": ["La noter dans le « parking » et y revenir à la fin", "La refuser sèchement", "Arrêter la session", "L'ignorer"], "correct": 0 },
+        { "q": "Quand enregistrer une session ?", "options": ["Avec l'accord des participants et du client", "Toujours, sans prévenir", "Jamais", "Seulement pour la publier"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Dossier de formateur, 5 canaux, proposition en 8 parties, prix à la session, à la journée ou au programme, conditions, factures et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que compter dans le prix d'une session ?", "options": ["La préparation en plus de l'animation", "Seulement les heures en direct", "Rien", "Le prix de l'ordinateur"], "correct": 0 },
+        { "q": "Que demandent souvent les ONG pour payer ?", "options": ["Une facture officielle et un NIF", "Rien", "Un paiement en espèces", "Un mot de passe"], "correct": 0 },
+        { "q": "Vers quel métier évoluer pour concevoir des parcours complets ?", "options": ["Ingénieur pédagogique", "Modérateur", "Retoucheur", "Testeur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un formateur en ligne ?", "options": ["Il conçoit et anime des formations en direct pour des adultes", "Il vend des ordinateurs", "Il répare les connexions", "Il écrit des romans"], "correct": 0 },
+    { "q": "Quel format mêle sessions en direct et travail personnel en ligne ?", "options": ["La formation mixte", "Le webinaire", "L'accompagnement individuel", "La conférence"], "correct": 0 },
+    { "q": "Pourquoi expliquer à quoi sert la formation ?", "options": ["Les adultes veulent savoir pourquoi", "Pour allonger la session", "Ce n'est pas utile", "Pour impressionner"], "correct": 0 },
+    { "q": "Dans quel domaine former ?", "options": ["Un domaine que l'on maîtrise réellement", "N'importe lequel", "Le plus payé, même sans le connaître", "Aucun"], "correct": 0 },
+    { "q": "Où placer la lumière pour la webcam ?", "options": ["Face au visage", "Derrière la tête", "Au plafond seulement", "Aucune lumière"], "correct": 0 },
+    { "q": "Que demander au client pendant l'analyse des besoins ?", "options": ["Un exemple concret du problème", "Son mot de passe", "Rien", "Son chiffre d'affaires personnel"], "correct": 0 },
+    { "q": "Quel verbe éviter dans un objectif ?", "options": ["Comprendre", "Calculer", "Créer", "Rédiger"], "correct": 0 },
+    { "q": "Quelle méthode utilise les salles de sous-groupes ?", "options": ["Le travail en petits groupes", "La démonstration", "Le webinaire", "La lecture seule"], "correct": 0 },
+    { "q": "Quel niveau d'évaluation vérifie l'usage au travail ?", "options": ["L'application", "La satisfaction", "L'accueil", "Le prix"], "correct": 0 },
+    { "q": "Pourquoi partager une fenêtre plutôt que tout l'écran ?", "options": ["Éviter de montrer notifications et autres fenêtres", "Pour aller plus vite", "C'est obligatoire", "Aucune raison"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un tableau blanc collaboratif ?", "options": ["Un espace en ligne où tous écrivent en même temps", "Un tableau en bois", "Un tableur", "Une diapositive"], "correct": 0 },
+    { "q": "Pourquoi verrouiller certains éléments dans Miro ?", "options": ["Pour que titres et consignes ne bougent pas", "Pour empêcher toute participation", "Pour payer moins", "Aucune raison"], "correct": 0 },
+    { "q": "Quand se connecter avant la session ?", "options": ["15 minutes avant", "Juste à l'heure", "Après le début", "Une heure après"], "correct": 0 },
+    { "q": "Qui fournit souvent le compte de visioconférence ?", "options": ["Le client", "Toujours le formateur", "Les participants", "Personne"], "correct": 0 },
+    { "q": "Quand envoyer les fichiers d'exercice ?", "options": ["Quelques jours avant la session", "Jamais", "Après la formation", "Pendant la pause seulement"], "correct": 0 },
+    { "q": "Quel brise-glace convient à la formation Excel ?", "options": ["Écrire dans le chat la tâche qui prend le plus de temps", "Raconter ses vacances 20 minutes", "Aucun", "Un quiz noté éliminatoire"], "correct": 0 },
+    { "q": "Que faire d'un participant qui monopolise la parole ?", "options": ["Le remercier puis donner la parole à d'autres", "Le couper brutalement", "L'exclure", "Le laisser parler toute la session"], "correct": 0 },
+    { "q": "Que prévoir si votre connexion coupe ?", "options": ["Un hôte de secours et une connexion mobile", "Rien", "Annuler la formation", "Attendre le lendemain"], "correct": 0 },
+    { "q": "Que proposer pour les participants en zone rurale ?", "options": ["Un groupe WhatsApp et un enregistrement avec accord", "Rien", "Les exclure", "Des fichiers très lourds"], "correct": 0 },
+    { "q": "Quelle question poser en fin de session ?", "options": ["« Qu'allez-vous appliquer dès demain ? »", "« Quel est votre salaire ? »", "Aucune", "« Qui veut partir ? »"], "correct": 0 },
+    { "q": "Que contient le bilan au client ?", "options": ["Présence, satisfaction, apprentissage, difficultés et recommandations", "Seulement la facture", "Rien", "Les opinions personnelles des participants nommés"], "correct": 0 },
+    { "q": "Que proposer à une ONG pour commencer ?", "options": ["Une session découverte", "Un contrat de 5 ans", "Rien", "Un prix sans programme"], "correct": 0 },
+    { "q": "Que montre l'extrait vidéo du dossier ?", "options": ["Votre façon d'animer", "Vos vacances", "Les données du client", "Rien"], "correct": 0 },
+    { "q": "Pourquoi une formation devient-elle plus rentable avec le temps ?", "options": ["Elle est déjà conçue pour les sessions suivantes", "Elle coûte plus cher aux clients", "Elle demande plus de préparation", "Elle ne l'est jamais"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
