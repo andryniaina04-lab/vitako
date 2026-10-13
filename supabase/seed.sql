@@ -52,7 +52,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true),
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 16, true),
   ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, true),
-  ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
+  ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 14, true),
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
   ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
@@ -23747,7 +23747,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 > [!astuce]
 > Pour les tutoriels de logiciels, enregistrez en **plein écran** et en haute résolution, puis utilisez les **zooms** au montage. Le spectateur sur téléphone verra clairement chaque clic.
 
-## Premier Pro : les vidéos soignées
+## Premiere Pro : les vidéos soignées
 
 | Fonction | Usage |
 | --- | --- |
@@ -47833,6 +47833,553 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel message envoyer à une boutique sans automatisation ?', '["Une critique","Une liste de prix sans explication","Montrer le problème constaté et proposer les automatisations","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que faire si un client insiste pour écrire à une liste achetée ?', '["Refuser","Accepter","Doubler le prix","Accepter en secret"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle évolution concerne les programmes de fidélité et les SMS ?', '["Comptable","Spécialiste CRM et fidélisation","Développeur back-end","Monteur audio"]'::jsonb, 1);
+
+-- mkt-4-a
+delete from public.exam_questions where course_id = 'mkt-4-a';
+delete from public.module_questions where course_id = 'mkt-4-a';
+delete from public.lessons where course_id = 'mkt-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-a', 0, 'Se spécialiser, auditer les publicités et lire les indicateurs', 'Les 6 spécialités avancées, la publicité à la performance, l''audit créatif et la fatigue publicitaire, la bibliothèque publicitaire de Meta, les indicateurs et les offres à forte valeur.', 'Filmer des vidéos naturelles pour quelques marques ouvre les premières missions. Les créateurs UGC les mieux payés vont plus loin : leurs vidéos **font vendre dans les publicités**, ils proposent plusieurs accroches à tester, comprennent les résultats des campagnes et deviennent de véritables partenaires créatifs pour les marques. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du contenu UGC.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un audit créatif des publicités d''une marque.
+> 4. Comprendre les indicateurs publicitaires de vos vidéos.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **UGC pour la publicité à la performance** | Vidéos conçues pour vendre dans les publicités | Accroches, structures, tests, lecture des résultats |
+| 2 | **Spécialiste d''une niche** | Beauté, cuisine, maison, technologie, voyage | Crédibilité, vocabulaire, connaissance du public |
+| 3 | **UGC pour applications et services** | Montrer une application ou un service en ligne | Enregistrement d''écran, démonstration claire |
+| 4 | **Voix off et vidéos sans visage** | Mains, produit, voix, textes à l''écran | Voix, gros plans, montage dynamique |
+| 5 | **Stratège créatif** | Proposer des concepts et des scripts pour d''autres créateurs | Analyse des publicités, écriture, briefs |
+| 6 | **Photos UGC** | Photos naturelles de produits en situation | Lumière, mise en scène, retouche légère |
+
+> [!definition] Publicité à la performance
+> Une publicité dont le but est une action mesurable (achat, inscription, téléchargement). Chaque vidéo est jugée sur ses résultats : coût par achat, taux de clic, durée de visionnage.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **UGC pour applications et services en ligne** : aucun produit à recevoir, donc pas de frais de douane.
+> - **Niches liées à Madagascar** : vanille, épices, cosmétiques naturels, artisanat, voyage.
+> - **Contenus en français et en malgache** pour des marques qui visent Madagascar et la diaspora.
+
+## L''audit créatif
+
+Un audit créatif est une excellente **offre d''entrée** : la marque voit pourquoi ses publicités s''essoufflent et vous confie de nouvelles vidéos.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Accroches** | Les 3 premières secondes arrêtent-elles le défilement ? |
+| **Formats** | Variété : témoignage, démonstration, problème et solution |
+| **Message** | Un bénéfice clair ou trop d''informations ? |
+| **Authenticité** | Les vidéos semblent-elles naturelles ou trop publicitaires ? |
+| **Preuve** | Le produit est-il montré en action ? |
+| **Fatigue** | Les mêmes vidéos tournent-elles depuis trop longtemps ? |
+
+> [!definition] Fatigue publicitaire
+> La baisse des résultats d''une publicité quand le même public la voit trop souvent. Les marques ont donc besoin de **nouvelles vidéos régulièrement**.
+
+### Le rapport d''audit
+
+```
+Marque : Voary Cosmétiques – 6 publicités actives analysées (bibliothèque publicitaire)
+Constats
+- 5 vidéos sur 6 commencent par le logo : aucune accroche humaine.
+- Un seul format (présentation du produit sur fond blanc).
+- Aucune démonstration d''utilisation.
+- Les mêmes vidéos sont visibles depuis plus de 3 mois.
+
+Proposition
+- 4 nouvelles vidéos UGC (routine, problème et solution, déballage, trois raisons).
+- 3 accroches par vidéo, soit 12 versions à tester.
+- Puis un renouvellement mensuel de 4 vidéos.
+```
+
+> [!astuce]
+> La **bibliothèque publicitaire** de Meta permet de voir les publicités actives de n''importe quelle marque sur Facebook et Instagram. C''est l''outil idéal pour préparer un audit sans accès aux comptes de la marque.
+
+## Les indicateurs publicitaires
+
+| Indicateur | Ce qu''il dit de votre vidéo |
+| --- | --- |
+| **Taux d''arrêt** (les personnes qui regardent les premières secondes) | La force de l''accroche |
+| **Durée moyenne de visionnage** | Le rythme et l''intérêt |
+| **Taux de clic** | L''envie d''en savoir plus |
+| **Coût par achat** | L''efficacité commerciale (dépend aussi du produit, du prix, de la page) |
+| **Retour sur dépenses publicitaires** | Ce que rapporte la publicité par rapport à son coût |
+
+> [!attention]
+> Les résultats dépendent aussi du **produit, du prix, de la page de vente et du ciblage**. Ne promettez jamais un résultat publicitaire. Demandez plutôt à la marque de partager les indicateurs de vos vidéos pour améliorer les suivantes.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit créatif** | Analyse des publicités, recommandations, 10 idées d''accroches | 150 000 Ar |
+| **Pack test** | 4 vidéos, 3 accroches chacune, versions sans musique et sans sous-titres | 400 000 Ar |
+| **Abonnement mensuel** | 4 à 8 nouvelles vidéos par mois selon les résultats | 600 000 Ar et plus par mois |
+| **Scripts et concepts** | Briefs et scripts pour l''équipe ou d''autres créateurs | 200 000 Ar pour 10 scripts |
+
+*(Montants donnés en exemple, hors droits d''utilisation publicitaire. Pour les marques étrangères, fixez vos prix en euros ou en dollars.)*
+
+> [!retenir]
+> - Six spécialités : performance, niche, applications, sans visage, stratégie, photos.
+> - L''audit créatif repère accroches, formats, preuves et fatigue publicitaire.
+> - La bibliothèque publicitaire de Meta pour analyser sans accès aux comptes.
+> - Lire les indicateurs sans promettre de résultat.
+> - Des offres à valeur : pack test, abonnement, scripts.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Dans la bibliothèque publicitaire de Meta, analysez les publicités actives d''une marque.
+> 3. Rédigez un rapport d''audit et 10 idées d''accroches.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre rapport, vos accroches et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 0, 0, 'Qu''est-ce que la fatigue publicitaire ?', '["La fatigue du créateur","Une panne de la plateforme","Un manque de budget","La baisse des résultats quand le public voit trop souvent la même publicité"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 0, 1, 'Quel outil permet de voir les publicités actives d''une marque ?', '["Un tableur","Google Docs","CapCut","La bibliothèque publicitaire de Meta"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 0, 2, 'Que mesure le taux d''arrêt ?', '["Le prix du produit","Le nombre d''abonnés","La force de l''accroche","La durée du tournage"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-a', 1, 'Outils professionnels : micro-cravate, éclairage LED et CapCut Pro', 'Types et placement du micro-cravate, éclairage en trois points et température de couleur, mode manuel du smartphone, fonctions avancées de CapCut Pro et petit studio à domicile.', 'Avec des revenus réguliers, il devient rentable d''améliorer votre matériel et vos outils : **micro-cravate**, **éclairage LED** et **CapCut Pro**. Ce module vous apprend à les choisir, à les régler et à les utiliser pour une qualité professionnelle constante, tout en gardant le style naturel de l''UGC.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir et utiliser un micro-cravate.
+> 2. Éclairer une scène avec des LED.
+> 3. Utiliser le mode manuel de votre smartphone.
+> 4. Exploiter les fonctions avancées de CapCut Pro.
+> 5. Organiser un petit studio chez vous.
+
+## Le micro-cravate
+
+| Type | Avantages | Limites |
+| --- | --- | --- |
+| **Filaire** (branché au téléphone) | Peu cher, pas de batterie | Câble visible, mouvements limités |
+| **Sans fil** (émetteur et récepteur) | Liberté de mouvement, son propre | Plus cher, batteries à charger |
+
+### Les bonnes pratiques
+
+1. **Placez** le micro à environ une main sous le menton, sur le vêtement.
+2. **Cachez** le câble sous le vêtement si possible.
+3. **Évitez** les frottements (bijoux, tissus qui bougent).
+4. **Testez** le niveau : parlez fort, le son ne doit pas saturer.
+5. **Vérifiez** que le téléphone utilise bien le micro externe.
+
+> [!astuce]
+> Le son est souvent ce qui distingue une vidéo amateur d''une vidéo professionnelle. Un bon micro-cravate est généralement le **premier achat** le plus rentable pour un créateur UGC.
+
+## L''éclairage LED
+
+| Lumière | Rôle | Placement |
+| --- | --- | --- |
+| **Lumière principale** | Éclairer le visage ou le produit | À 45° devant vous, un peu au-dessus des yeux |
+| **Lumière d''appoint** (ou réflecteur, ou fenêtre) | Adoucir les ombres | De l''autre côté, plus faible |
+| **Lumière d''arrière-plan** (facultative) | Séparer du fond, créer une ambiance | Derrière, sur le mur ou un objet |
+
+| Réglage | Recommandation |
+| --- | --- |
+| **Température de couleur** | Identique pour toutes les lumières (lumière du jour ou lumière chaude, pas un mélange) |
+| **Diffusion** | Panneau avec diffuseur ou boîte à lumière : lumière douce, pas d''ombres dures |
+| **Intensité** | Visage bien éclairé sans brûler les zones claires |
+
+> [!attention]
+> Mélanger une lumière de fenêtre (bleutée) et une ampoule chaude (orangée) donne des couleurs étranges sur la peau et les produits. Choisissez **une seule température** de lumière.
+
+## Le mode manuel du smartphone
+
+| Réglage | Usage |
+| --- | --- |
+| **Mise au point verrouillée** | Le produit reste net quand vous bougez la main |
+| **Exposition verrouillée** | La luminosité ne change pas quand un objet clair passe |
+| **Balance des blancs fixe** | Couleurs stables pendant toute la prise |
+| **4K ou 1080p à 30 images par seconde** | Selon la demande ; 4K permet de recadrer au montage |
+| **Ralenti** (60 ou 120 images par seconde) | Versements, gestes, textures |
+
+## CapCut Pro : les fonctions avancées
+
+| Fonction (selon l''offre, à vérifier) | Usage |
+| --- | --- |
+| **Sous-titres automatiques avancés** et styles | Sous-titres dynamiques, faciles à corriger |
+| **Amélioration de la voix** et réduction du bruit | Son plus propre |
+| **Suppression ou remplacement de l''arrière-plan** | Démonstrations, fonds simples |
+| **Modèles et effets réservés** | Gagner du temps |
+| **Export de haute qualité** sans filigrane | Livrables professionnels |
+| **Stockage et projets synchronisés** | Travailler sur téléphone et ordinateur |
+
+> [!attention]
+> Vérifiez toujours les **conditions d''utilisation commerciale** des éléments de CapCut (musiques, modèles, effets) avant de les utiliser dans une publicité. Si vous avez un doute, livrez une version sans musique et laissez la marque ajouter la sienne.
+
+## Un petit studio chez vous
+
+| Zone | Équipement |
+| --- | --- |
+| **Coin face caméra** | Fond simple et propre, lumière principale, micro-cravate |
+| **Table de produit** | Fond uni, plantes ou accessoires simples, lumière douce |
+| **Vue de dessus** | Trépied avec bras, pour cuisine, déballage, démonstrations |
+| **Coin « vie réelle »** | Cuisine, salle de bain, salon rangés, pour les scènes naturelles |
+| **Rangement** | Produits des marques, accessoires, batteries chargées |
+
+> [!madagascar]
+> Le matériel acheté à l''étranger peut coûter cher avec la livraison et la douane. Comparez avec les boutiques d''Antananarivo, achetez progressivement (micro d''abord, puis lumière), et prévoyez des **batteries** ou une petite alimentation de secours pour filmer malgré les coupures.
+
+> [!retenir]
+> - Le micro-cravate, souvent le premier achat le plus rentable.
+> - Une lumière principale à 45°, une seule température, une lumière douce.
+> - Mise au point, exposition et balance des blancs verrouillées.
+> - CapCut Pro pour les sous-titres, la voix, l''arrière-plan et l''export, avec licences vérifiées.
+> - Un petit studio organisé en zones.
+
+## Exercice pratique : votre installation professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez votre coin face caméra et votre table de produit (avec le matériel que vous avez).
+> 2. Filmez la même phrase avec le micro du téléphone puis avec un micro-cravate (ou en vous rapprochant) et comparez.
+> 3. Filmez un produit avec la lumière principale à 45° et un réflecteur.
+> 4. Montez une vidéo de 30 secondes avec sous-titres stylisés et voix améliorée.
+>
+> **À livrer** : des photos de votre installation, vos comparaisons et votre vidéo.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 1, 0, 'Où placer la lumière principale ?', '["Sous le menton","Derrière vous","À 45° devant vous, un peu au-dessus des yeux","Au sol"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 1, 1, 'Pourquoi ne pas mélanger lumière du jour et ampoule chaude ?', '["C''est interdit","Cela coûte plus cher","Les couleurs deviennent étranges","Aucune raison"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 1, 2, 'Que verrouiller pour garder le produit net ?', '["La batterie","La mise au point","Le volume","Le Wi-Fi"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-a', 2, 'Qualité et rapidité : scripts, accroches, tournage et variantes', 'Six structures de scripts, banque d''accroches, journée de tournage organisée, variantes pour les tests créatifs, livraison et gestion des retours.', 'Un créateur UGC professionnel livre beaucoup de vidéos **de qualité constante**, vite, et sait proposer des variantes qui aident les marques à trouver la publicité la plus efficace. Ce module vous donne les méthodes des meilleurs : structures de scripts, banque d''accroches, journées de tournage, variantes à tester, livraison organisée et gestion des retours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser des structures de scripts éprouvées.
+> 2. Construire et enrichir une banque d''accroches.
+> 3. Organiser une journée de tournage pour plusieurs marques.
+> 4. Produire des variantes utiles aux tests publicitaires.
+> 5. Livrer et gérer les retours de façon professionnelle.
+
+## Les structures de scripts
+
+| Structure | Déroulé | Exemple |
+| --- | --- | --- |
+| **Problème, agitation, solution** | Problème, conséquence, produit | « Mes épices perdaient leur goût… je gâchais mes plats… depuis, j''utilise… » |
+| **Avant, après, pont** | Situation avant, situation après, ce qui a changé | « Avant, mes cheveux étaient secs ; maintenant ils sont doux ; ce qui a changé, c''est… » |
+| **Trois raisons** | Liste courte et rythmée | « 3 raisons pour lesquelles je garde ce sac » |
+| **Démonstration pas à pas** | Étapes visibles | « Ma routine du soir en 3 étapes » |
+| **Réaction et découverte** | Première impression réelle | « J''ouvre le colis… » |
+| **Objection et réponse** | Répondre au doute du client | « Je pensais que c''était trop cher, mais… » |
+
+> [!attention]
+> Une structure aide à écrire vite, mais le contenu doit rester **vrai**. N''inventez jamais un « avant » ou un « après » que vous n''avez pas vécu.
+
+## La banque d''accroches
+
+| Catégorie | Exemples (à adapter, toujours vrais) |
+| --- | --- |
+| **Question** | « Vous aussi, vous… ? » |
+| **Découverte** | « Je viens de trouver… » |
+| **Erreur** | « J''ai fait cette erreur pendant des années… » |
+| **Chiffre** | « 3 semaines que j''utilise… » |
+| **Contraste** | « Avant / maintenant » |
+| **Visuelle** | Un geste fort dès la première image |
+| **Local** | « Si vous êtes à Tana, il faut que vous connaissiez… » |
+
+> [!astuce]
+> Notez dans votre banque les accroches qui ont **le mieux marché** quand une marque vous partage ses résultats. Avec le temps, votre banque devient votre meilleur outil.
+
+## La journée de tournage
+
+| Moment | Tâche |
+| --- | --- |
+| **La veille** | Scripts validés, liste de plans, produits préparés, batteries chargées, tenues prêtes |
+| **Matin** (meilleure lumière) | Face caméra de toutes les marques, plusieurs accroches chacune |
+| **Midi** | Plans de produits et gros plans |
+| **Après-midi** | Scènes de vie, vues de dessus, démonstrations |
+| **Fin de journée** | Sauvegarde et tri des fichiers par marque |
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Un dossier par marque et par date** | Ne jamais mélanger les fichiers |
+| **Changer de tenue et de décor** entre les marques | Chaque marque a des vidéos qui lui sont propres |
+| **Vérifier les fichiers** avant de ranger | Éviter de devoir refilmer |
+
+## Les variantes pour les tests
+
+| Variante | Exemple |
+| --- | --- |
+| **Accroches différentes** | Même vidéo, 3 à 5 débuts |
+| **Appels à l''action différents** | « Lien en description » / « Essayez avec le code… » |
+| **Durées différentes** | 15 secondes et 30 secondes |
+| **Avec ou sans sous-titres, avec ou sans musique** | Pour la marque |
+| **Format** | Vertical 9:16 et, si demandé, carré 1:1 ou 4:5 |
+
+> [!definition] Test créatif
+> Diffuser plusieurs versions d''une même vidéo à des publics comparables, pour voir laquelle donne les meilleurs résultats. Plus vous fournissez de variantes utiles, plus la marque apprend vite.
+
+## Livrer et gérer les retours
+
+| Étape | Bonne pratique |
+| --- | --- |
+| **Livraison** | Dossier en ligne clair, fichiers bien nommés, liste des versions |
+| **Message** | Résumé de ce qui est livré, durée de l''usage autorisé, nombre de corrections incluses |
+| **Retours** | Regroupés par la marque en une seule liste |
+| **Corrections incluses** | Textes à l''écran, coupes, sous-titres |
+| **Hors contrat** | Nouveau tournage, nouveau concept : devis |
+| **Archive** | Garder les fichiers pendant la durée convenue |
+
+> [!madagascar]
+> Envoyez vos livraisons pendant les heures où votre connexion est la meilleure, et gardez **toujours une copie** sur un disque ou un stockage en ligne. Une coupure ou un téléphone perdu ne doit jamais faire perdre le travail d''une marque.
+
+> [!retenir]
+> - Six structures de scripts, toujours au service d''une expérience vraie.
+> - Une banque d''accroches enrichie par les résultats.
+> - Une journée de tournage organisée par marque et par moment de lumière.
+> - Des variantes utiles aux tests : accroches, appels à l''action, durées, versions, formats.
+> - Une livraison claire, des retours regroupés et des corrections encadrées.
+
+## Exercice pratique : une journée de production
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Choisissez 2 produits réels que vous utilisez et écrivez 2 scripts avec des structures différentes.
+> 2. Rédigez 5 accroches par vidéo et ajoutez-les à votre banque.
+> 3. Organisez et réalisez une journée de tournage pour les 2 produits.
+> 4. Livrez pour chaque vidéo 3 accroches, 2 durées et les versions sans musique et sans sous-titres.
+>
+> **À livrer** : vos scripts, votre banque d''accroches, votre planning et votre dossier de livraison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 2, 0, 'Que faut-il garder avec une structure de script ?', '["Un faux avant et après","Un contenu vrai","Des résultats inventés","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 2, 1, 'Qu''est-ce qu''un test créatif ?', '["Un tournage raté","Une critique","Comparer plusieurs versions d''une vidéo pour trouver la plus efficace","Un examen"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 2, 2, 'Que faire entre deux marques pendant une journée de tournage ?', '["Garder les mêmes plans pour tous","Mélanger les fichiers","Rien","Changer de tenue et de décor"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-a', 3, 'Clients internationaux : anglais, règles de publicité, contrats et droits', 'Création en anglais, règles de mention des partenariats aux États-Unis, en France et dans l''UE, vocabulaire du contrat, publicité depuis le compte du créateur, envois de produits et paiements.', 'Les marques d''Europe, d''Amérique du Nord et d''Afrique achètent des vidéos UGC à des créateurs du monde entier. Ce module vous prépare à travailler avec elles : créer en anglais, respecter les règles de publicité de chaque région, comprendre les contrats et les droits en anglais, gérer les envois de produits et l''usage de votre compte dans les publicités.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer des vidéos UGC en anglais.
+> 2. Respecter les grandes règles de publicité selon les régions.
+> 3. Comprendre un contrat UGC en anglais.
+> 4. Gérer l''usage de votre compte dans les publicités d''une marque.
+> 5. Organiser les envois de produits et les paiements internationaux.
+
+## Créer en anglais
+
+| Conseil | Pourquoi |
+| --- | --- |
+| **Parlez naturellement**, avec votre accent | L''authenticité compte plus qu''un accent parfait |
+| **Phrases courtes** et vocabulaire simple | Plus fluide, plus facile à sous-titrer |
+| **Script relu** par un anglophone au début | Éviter les tournures maladroites |
+| **Sous-titres soignés** | Beaucoup de vidéos sont regardées sans le son |
+
+> [!exemple] Script court en anglais
+> « I''ve been using this hair oil for three weeks — and my ends finally feel soft again. I just warm two drops in my hands and apply it before bed. It''s made in Madagascar with plant oils, and a little goes a long way. Link below if you want to try it. »
+
+## Les règles de publicité selon les régions
+
+| Région | Principe à connaître (à vérifier, les règles évoluent) |
+| --- | --- |
+| **États-Unis** | La FTC demande de signaler clairement tout lien matériel avec une marque (produit offert, paiement) quand le contenu est publié comme recommandation |
+| **France** | Une loi de 2023 encadre l''influence commerciale : mentions obligatoires comme « publicité » ou « collaboration commerciale », produits et promesses interdits |
+| **Union européenne** | Interdiction des pratiques commerciales trompeuses, règles sur les allégations de santé |
+| **Plateformes** | Outils de mention « partenariat payé » ou « contenu de marque » à utiliser quand c''est demandé |
+
+> [!attention]
+> Quand une vidéo est diffusée **comme publicité par la marque**, la plateforme l''affiche généralement comme « sponsorisée ». Quand vous la publiez **sur votre propre compte**, c''est à vous d''ajouter la mention de partenariat demandée par la loi et la plateforme. Dans tous les cas, l''avis doit être sincère et les allégations exactes.
+
+## Le contrat UGC en anglais
+
+| Terme | Signification |
+| --- | --- |
+| **Deliverables** | Ce que vous livrez (nombre de vidéos, accroches, formats) |
+| **Usage rights** | Droits d''utilisation : où, combien de temps |
+| **Paid usage, paid media** | Utilisation dans les publicités payantes |
+| **Organic usage** | Publication sur les comptes de la marque sans publicité payante |
+| **Perpetual** | Sans limite de durée (à éviter ou à faire payer cher) |
+| **Exclusivity** | Interdiction de travailler pour des concurrents pendant une durée (à faire payer) |
+| **Revisions** | Nombre de corrections incluses |
+| **Raw footage** | Fichiers bruts (souvent en supplément) |
+| **Whitelisting, Spark Ads** | Publicités diffusées depuis votre compte |
+
+> [!astuce]
+> Avant de signer, vérifiez toujours 4 points : **durée des droits, canaux, exclusivité, droit de modifier vos vidéos**. Ce sont eux qui déterminent la vraie valeur de votre travail.
+
+## L''usage de votre compte dans les publicités
+
+> [!definition] Whitelisting (ou publicité depuis le compte du créateur)
+> La marque diffuse une publicité qui apparaît comme publiée par **votre compte** (votre nom et votre photo). Sur TikTok, un mécanisme proche s''appelle Spark Ads ; sur Meta, on parle de publicités en partenariat.
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Prix** | Supplément spécifique, selon la durée |
+| **Durée** | Limitée et écrite (30, 60, 90 jours) |
+| **Contrôle** | Validation des textes publicitaires utilisés avec votre nom |
+| **Accès** | Par les outils officiels de la plateforme, jamais en donnant votre mot de passe |
+| **Fin** | Retrait des autorisations à la date prévue |
+
+## Envois de produits et paiements
+
+| Situation | Bonne pratique |
+| --- | --- |
+| **Produit physique de l''étranger** | Vérifier les délais, la douane et qui paie les frais avant l''envoi |
+| **Produit difficile à envoyer** | Proposer une vidéo d''application, un produit disponible localement, ou un autre format |
+| **Paiement** | Plateforme qui accepte les créateurs basés à Madagascar, virement international ou Payoneer |
+| **Acompte** | Demander un acompte aux nouvelles marques |
+| **Facture** | En anglais, avec les livrables et les droits accordés |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Pour les produits physiques, précisez dans votre profil que la **livraison vers Madagascar** peut prendre plusieurs semaines et entraîner des frais de douane, pour éviter les malentendus.
+
+> [!retenir]
+> - En anglais : naturel, phrases courtes, script relu, sous-titres soignés.
+> - Règles de publicité : signaler les partenariats, rester sincère, pas d''allégations trompeuses.
+> - Contrat : livrables, droits, exclusivité, corrections, fichiers bruts.
+> - Publicité depuis votre compte : supplément, durée, contrôle, accès officiel.
+> - Envois, douane et paiements clarifiés avant de commencer.
+
+## Exercice pratique : une collaboration internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Écrivez et filmez une vidéo UGC de 30 secondes en anglais, avec sous-titres.
+> 2. Résumez en 10 lignes les règles de mention des partenariats en France et aux États-Unis, à partir de sources officielles.
+> 3. Rédigez en anglais les clauses principales de votre contrat type.
+> 4. Rédigez votre politique pour les envois de produits vers Madagascar.
+>
+> **À livrer** : votre vidéo, votre résumé, vos clauses et votre politique d''envoi.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 3, 0, 'Que signifie « usage rights » ?', '["Fichiers bruts","Corrections","Droits d''utilisation","Exclusivité"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 3, 1, 'Comment donner accès à votre compte pour une publicité ?', '["Par e-mail","Par les outils officiels de la plateforme","En donnant votre mot de passe","Sans accord"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 3, 2, 'Que faire en publiant une vidéo sponsorisée sur votre propre compte ?', '["Cacher le partenariat","Ajouter la mention de partenariat demandée","Ne rien indiquer","Supprimer les sous-titres"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-a', 4, 'Développer son activité : tarifs, abonnements, études de cas et agence', 'Trois voies, grille de tarifs avec droits et options, abonnements contre la fatigue publicitaire, études de cas avec accord, agence de créateurs et évolution.', 'Après quelques marques satisfaites, vous pouvez construire une **activité stable** de créateur UGC : abonnements mensuels, grille de tarifs claire, études de cas, et peut-être une petite agence qui coordonne plusieurs créateurs. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire une grille de tarifs et des abonnements.
+> 3. Rédiger des études de cas convaincantes.
+> 4. Organiser une petite agence de créateurs.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Créateur UGC spécialisé** | Une niche, un style reconnaissable | Packs, abonnements, droits |
+| **Stratège et créateur** | Ceux qui aiment concevoir et analyser | Concepts, scripts, vidéos et accompagnement |
+| **Agence UGC** | Ceux qui aiment coordonner | Plusieurs créateurs, plusieurs marques, marge sur la production |
+
+## La grille de tarifs
+
+| Élément | Exemple de prix |
+| --- | --- |
+| **Vidéo de 15 à 45 secondes** | 80 000 Ar |
+| **Accroche supplémentaire** | 15 000 Ar |
+| **Durée ou format supplémentaire** | 20 000 Ar |
+| **Fichiers bruts** | +40 % |
+| **Droits publicitaires 3 mois** | +30 % |
+| **Droits publicitaires 12 mois** | +60 % |
+| **Publicité depuis votre compte (30 jours)** | Supplément à négocier |
+| **Exclusivité dans une catégorie** | Supplément à négocier selon la durée |
+
+*(Montants donnés en exemple. Pour les marques étrangères, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les abonnements
+
+| Formule | Contenu |
+| --- | --- |
+| **Essentiel** | 4 vidéos par mois, 2 accroches chacune, droits 3 mois |
+| **Croissance** | 8 vidéos par mois, 3 accroches, droits 6 mois, point mensuel sur les résultats |
+| **Partenaire créatif** | Concepts, scripts, vidéos, analyse des résultats, ajustements |
+
+> [!astuce]
+> L''abonnement répond à la **fatigue publicitaire** : les marques ont besoin de nouvelles vidéos chaque mois. Proposez-le après un premier pack réussi, avec un point mensuel sur les résultats.
+
+> [!attention]
+> Mettez **par écrit** les droits accordés pour chaque vidéo (canaux, durée, modification). Une vidéo utilisée en publicité au-delà de la durée prévue doit donner lieu à un supplément.
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : marque de cosmétiques naturels malgache.
+> **Problème** : publicités uniquement sur fond blanc, résultats en baisse depuis 3 mois.
+> **Solution** : audit créatif, 4 vidéos UGC (routine, problème et solution, déballage, trois raisons), 3 accroches chacune.
+> **Résultats partagés par la marque** : la vidéo « routine » avec l''accroche « Ma routine en 2 minutes » est devenue la meilleure publicité du compte ; taux de clic environ deux fois plus élevé que les anciennes publicités. Abonnement de 4 vidéos par mois signé ensuite.
+
+1. **Demandez** l''accord de la marque avant de publier les résultats.
+2. **Citez** les chiffres que la marque vous a donnés, sans les exagérer.
+3. **Montrez** la vidéo (si les droits le permettent) et expliquez le concept.
+
+## Organiser une petite agence
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Créateurs partenaires** | Pour proposer des profils variés (âges, styles, langues) |
+| **Monteur** | Quand le montage prend la majorité de votre temps |
+| **Stratège** (vous) | Audits, concepts, scripts, relation avec les marques |
+
+### Les règles de l''agence
+
+1. **Contrats** avec chaque créateur : rémunération, droits cédés, confidentialité.
+2. **Briefs et scripts** validés avant tournage.
+3. **Contrôle qualité** de chaque vidéo (son, lumière, honnêteté du message, sous-titres).
+4. **Rémunération juste** des créateurs, payée à temps.
+5. **Honnêteté** : chaque créateur teste réellement le produit.
+
+> [!madagascar]
+> Une agence UGC basée à Madagascar peut proposer aux marques des **créateurs francophones et malgachophones variés**, et un contenu authentique autour des produits de l''île. Commencez avec quelques créateurs fiables et une qualité constante : la réputation se construit vite dans ce métier.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Stratège créatif** | Analyse des publicités, concepts, direction de créateurs |
+| **Gestionnaire de publicités** | Voir la formation Gestionnaire de publicités en ligne |
+| **Community manager** | Voir la formation Community manager |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Créateur avec audience** | Construire votre propre communauté |
+
+> [!retenir]
+> - Créateur spécialisé, stratège ou agence : choisissez votre voie.
+> - Une grille de tarifs claire, avec les droits et options séparés.
+> - Des abonnements qui répondent à la fatigue publicitaire.
+> - Des études de cas avec l''accord et les chiffres de la marque.
+> - Une agence avec contrats, briefs, contrôle, rémunération juste et honnêteté.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez votre grille de tarifs et 3 formules d''abonnement.
+> 3. Rédigez une étude de cas à partir de vos projets (en présentant clairement les résultats réels ou simulés).
+> 4. Faites l''audit créatif de 3 marques et envoyez-leur une proposition.
+>
+> **À livrer** : votre plan, votre grille, vos abonnements, votre étude de cas et vos propositions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 4, 0, 'Pourquoi proposer un abonnement ?', '["Les marques ont besoin de nouvelles vidéos chaque mois","Pour éviter les droits","Pour travailler moins","C''est obligatoire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 4, 1, 'Que faire si une vidéo est utilisée au-delà de la durée prévue ?', '["Demander un supplément","Rien","Publier une critique","Supprimer la vidéo de la marque"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-a', 4, 2, 'Quelle règle pour les créateurs d''une agence ?', '["Ne pas payer à temps","Aucun contrat","Inventer des avis","Chacun teste réellement le produit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Qu''est-ce qu''une publicité à la performance ?', '["Une publication privée","Une publicité jugée sur une action mesurable comme un achat","Un spectacle","Une vidéo sans objectif"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quelle spécialité évite les frais de douane ?', '["Aucune","Déballage de colis étrangers","UGC pour applications et services","Photos de produits importés"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quel constat d''audit montre une faiblesse ?', '["Plusieurs formats variés","Des démonstrations","Les vidéos commencent par le logo sans accroche humaine","Des accroches testées"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'De quoi dépend aussi le coût par achat ?', '["De la couleur du logo","Seulement de la vidéo","Du produit, du prix, de la page et du ciblage","De rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que contient un pack test ?', '["Rien","Une seule photo","Plusieurs vidéos avec plusieurs accroches et versions","Un audit gratuit uniquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quel est souvent le premier achat le plus rentable ?', '["Une caméra de cinéma","Un ordinateur de jeu","Un micro-cravate","Un drone"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que fait la lumière d''appoint ?', '["Adoucir les ombres","Éclairer le fond seulement","Remplacer le micro","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'À quoi sert le ralenti ?', '["Allonger la vidéo","Rien","Montrer versements, gestes et textures","Économiser la batterie"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que vérifier avant d''utiliser une musique de CapCut dans une publicité ?', '["Sa durée","Rien","Sa popularité","Les conditions d''utilisation commerciale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quelle structure présente un problème, sa conséquence puis le produit ?', '["Trois raisons","Démonstration","Problème, agitation, solution","Réaction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Comment enrichir la banque d''accroches ?', '["Avec les accroches qui ont le mieux marché selon les résultats","Ne jamais la modifier","En copiant d''autres créateurs mot pour mot","Au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quand filmer le face caméra pendant une journée de tournage ?', '["Jamais","La nuit","Le matin, avec la meilleure lumière","Au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quelles variantes fournir pour les tests ?', '["Accroches, appels à l''action, durées, versions","Des vidéos d''autres marques","Une seule version","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que faire d''une demande de nouveau tournage hors contrat ?', '["L''ignorer","La faire gratuitement","Refuser sans répondre","Proposer un devis"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Pourquoi garder une copie de chaque livraison ?', '["Pour la publier","Pour la vendre à un concurrent","Ce n''est pas utile","Ne jamais perdre le travail d''une marque"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Faut-il un accent parfait pour l''UGC en anglais ?', '["Oui, américain uniquement","Oui, britannique uniquement","Non, l''authenticité compte plus","Oui, toujours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que demande la FTC aux États-Unis ?', '["Signaler clairement les liens matériels avec une marque","Rien","Publier sans mention","Interdire l''UGC"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que signifie « perpetual » dans un contrat ?', '["Sans limite de durée","Gratuit","Un mois","Exclusif"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que faire payer en plus ?', '["La relecture du brief","Le message de livraison","L''exclusivité","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Qu''est-ce que le whitelisting ?', '["Une publicité diffusée depuis le compte du créateur","Une liste de clients","Un fond blanc","Un filtre"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que préciser sur les envois vers Madagascar ?', '["Que la douane est gratuite","Que la livraison est immédiate","Délais et frais de douane possibles","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que séparer dans la grille de tarifs ?', '["Rien","Les impôts","La vidéo, les options et les droits","Seulement le prix total"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quelle formule inclut l''analyse des résultats ?', '["Aucune","Une accroche supplémentaire","Partenaire créatif","Une vidéo seule"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Que faire avant de publier les résultats d''une marque ?', '["Les exagérer","Les inventer","Rien","Demander son accord"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-a', 'Quel atout pour une agence UGC à Madagascar ?', '["Des prix secrets","Aucun","Des avis inventés","Créateurs francophones et malgachophones et contenu authentique"]'::jsonb, 3);
 
 -- mkt-4-f
 delete from public.exam_questions where course_id = 'mkt-4-f';

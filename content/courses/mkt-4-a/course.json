@@ -1,0 +1,97 @@
+{
+  "id": "mkt-4-a",
+  "hours": 14,
+  "description": "Ce niveau Avancé fait du créateur UGC un partenaire créatif dont les vidéos font vendre dans les publicités : spécialité (performance, niche, applications, sans visage, stratégie, photos), audit créatif et fatigue publicitaire, indicateurs publicitaires, matériel et outils payants (micro-cravate, éclairage LED et CapCut Pro), structures de scripts, banque d'accroches, journées de tournage, variantes pour les tests, création en anglais, règles de publicité, contrats et droits, publicité depuis le compte du créateur, puis grille de tarifs, abonnements et agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et réaliser un audit créatif des publicités d'une marque",
+    "Lire les indicateurs publicitaires sans promettre de résultat",
+    "Utiliser micro-cravate, éclairage LED, mode manuel et CapCut Pro",
+    "Produire en série avec structures, accroches et variantes pour les tests",
+    "Travailler avec des marques étrangères en respectant les règles et les droits",
+    "Construire une grille de tarifs, des abonnements et une petite agence"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer les publicités et lire les indicateurs",
+      "summary": "Les 6 spécialités avancées, la publicité à la performance, l'audit créatif et la fatigue publicitaire, la bibliothèque publicitaire de Meta, les indicateurs et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la fatigue publicitaire ?", "options": ["La baisse des résultats quand le public voit trop souvent la même publicité", "La fatigue du créateur", "Une panne de la plateforme", "Un manque de budget"], "correct": 0 },
+        { "q": "Quel outil permet de voir les publicités actives d'une marque ?", "options": ["La bibliothèque publicitaire de Meta", "Un tableur", "Google Docs", "CapCut"], "correct": 0 },
+        { "q": "Que mesure le taux d'arrêt ?", "options": ["La force de l'accroche", "Le prix du produit", "Le nombre d'abonnés", "La durée du tournage"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : micro-cravate, éclairage LED et CapCut Pro",
+      "summary": "Types et placement du micro-cravate, éclairage en trois points et température de couleur, mode manuel du smartphone, fonctions avancées de CapCut Pro et petit studio à domicile.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Où placer la lumière principale ?", "options": ["À 45° devant vous, un peu au-dessus des yeux", "Derrière vous", "Sous le menton", "Au sol"], "correct": 0 },
+        { "q": "Pourquoi ne pas mélanger lumière du jour et ampoule chaude ?", "options": ["Les couleurs deviennent étranges", "Cela coûte plus cher", "C'est interdit", "Aucune raison"], "correct": 0 },
+        { "q": "Que verrouiller pour garder le produit net ?", "options": ["La mise au point", "Le volume", "Le Wi-Fi", "La batterie"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : scripts, accroches, tournage et variantes",
+      "summary": "Six structures de scripts, banque d'accroches, journée de tournage organisée, variantes pour les tests créatifs, livraison et gestion des retours.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il garder avec une structure de script ?", "options": ["Un contenu vrai", "Des résultats inventés", "Un faux avant et après", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un test créatif ?", "options": ["Comparer plusieurs versions d'une vidéo pour trouver la plus efficace", "Un examen", "Une critique", "Un tournage raté"], "correct": 0 },
+        { "q": "Que faire entre deux marques pendant une journée de tournage ?", "options": ["Changer de tenue et de décor", "Rien", "Garder les mêmes plans pour tous", "Mélanger les fichiers"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, règles de publicité, contrats et droits",
+      "summary": "Création en anglais, règles de mention des partenariats aux États-Unis, en France et dans l'UE, vocabulaire du contrat, publicité depuis le compte du créateur, envois de produits et paiements.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « usage rights » ?", "options": ["Droits d'utilisation", "Fichiers bruts", "Corrections", "Exclusivité"], "correct": 0 },
+        { "q": "Comment donner accès à votre compte pour une publicité ?", "options": ["Par les outils officiels de la plateforme", "En donnant votre mot de passe", "Par e-mail", "Sans accord"], "correct": 0 },
+        { "q": "Que faire en publiant une vidéo sponsorisée sur votre propre compte ?", "options": ["Ajouter la mention de partenariat demandée", "Ne rien indiquer", "Cacher le partenariat", "Supprimer les sous-titres"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : tarifs, abonnements, études de cas et agence",
+      "summary": "Trois voies, grille de tarifs avec droits et options, abonnements contre la fatigue publicitaire, études de cas avec accord, agence de créateurs et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi proposer un abonnement ?", "options": ["Les marques ont besoin de nouvelles vidéos chaque mois", "Pour travailler moins", "C'est obligatoire", "Pour éviter les droits"], "correct": 0 },
+        { "q": "Que faire si une vidéo est utilisée au-delà de la durée prévue ?", "options": ["Demander un supplément", "Rien", "Supprimer la vidéo de la marque", "Publier une critique"], "correct": 0 },
+        { "q": "Quelle règle pour les créateurs d'une agence ?", "options": ["Chacun teste réellement le produit", "Inventer des avis", "Ne pas payer à temps", "Aucun contrat"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce qu'une publicité à la performance ?", "options": ["Une publicité jugée sur une action mesurable comme un achat", "Un spectacle", "Une vidéo sans objectif", "Une publication privée"], "correct": 0 },
+    { "q": "Quelle spécialité évite les frais de douane ?", "options": ["UGC pour applications et services", "Photos de produits importés", "Déballage de colis étrangers", "Aucune"], "correct": 0 },
+    { "q": "Quel constat d'audit montre une faiblesse ?", "options": ["Les vidéos commencent par le logo sans accroche humaine", "Plusieurs formats variés", "Des démonstrations", "Des accroches testées"], "correct": 0 },
+    { "q": "De quoi dépend aussi le coût par achat ?", "options": ["Du produit, du prix, de la page et du ciblage", "Seulement de la vidéo", "De la couleur du logo", "De rien"], "correct": 0 },
+    { "q": "Que contient un pack test ?", "options": ["Plusieurs vidéos avec plusieurs accroches et versions", "Une seule photo", "Rien", "Un audit gratuit uniquement"], "correct": 0 },
+    { "q": "Quel est souvent le premier achat le plus rentable ?", "options": ["Un micro-cravate", "Une caméra de cinéma", "Un drone", "Un ordinateur de jeu"], "correct": 0 },
+    { "q": "Que fait la lumière d'appoint ?", "options": ["Adoucir les ombres", "Éclairer le fond seulement", "Remplacer le micro", "Rien"], "correct": 0 },
+    { "q": "À quoi sert le ralenti ?", "options": ["Montrer versements, gestes et textures", "Allonger la vidéo", "Économiser la batterie", "Rien"], "correct": 0 },
+    { "q": "Que vérifier avant d'utiliser une musique de CapCut dans une publicité ?", "options": ["Les conditions d'utilisation commerciale", "Sa popularité", "Rien", "Sa durée"], "correct": 0 },
+    { "q": "Quelle structure présente un problème, sa conséquence puis le produit ?", "options": ["Problème, agitation, solution", "Trois raisons", "Réaction", "Démonstration"], "correct": 0 },
+    { "q": "Comment enrichir la banque d'accroches ?", "options": ["Avec les accroches qui ont le mieux marché selon les résultats", "Au hasard", "En copiant d'autres créateurs mot pour mot", "Ne jamais la modifier"], "correct": 0 },
+    { "q": "Quand filmer le face caméra pendant une journée de tournage ?", "options": ["Le matin, avec la meilleure lumière", "La nuit", "Jamais", "Au hasard"], "correct": 0 },
+    { "q": "Quelles variantes fournir pour les tests ?", "options": ["Accroches, appels à l'action, durées, versions", "Une seule version", "Rien", "Des vidéos d'autres marques"], "correct": 0 },
+    { "q": "Que faire d'une demande de nouveau tournage hors contrat ?", "options": ["Proposer un devis", "La faire gratuitement", "Refuser sans répondre", "L'ignorer"], "correct": 0 },
+    { "q": "Pourquoi garder une copie de chaque livraison ?", "options": ["Ne jamais perdre le travail d'une marque", "Pour la publier", "Ce n'est pas utile", "Pour la vendre à un concurrent"], "correct": 0 },
+    { "q": "Faut-il un accent parfait pour l'UGC en anglais ?", "options": ["Non, l'authenticité compte plus", "Oui, toujours", "Oui, américain uniquement", "Oui, britannique uniquement"], "correct": 0 },
+    { "q": "Que demande la FTC aux États-Unis ?", "options": ["Signaler clairement les liens matériels avec une marque", "Rien", "Interdire l'UGC", "Publier sans mention"], "correct": 0 },
+    { "q": "Que signifie « perpetual » dans un contrat ?", "options": ["Sans limite de durée", "Un mois", "Gratuit", "Exclusif"], "correct": 0 },
+    { "q": "Que faire payer en plus ?", "options": ["L'exclusivité", "Rien", "La relecture du brief", "Le message de livraison"], "correct": 0 },
+    { "q": "Qu'est-ce que le whitelisting ?", "options": ["Une publicité diffusée depuis le compte du créateur", "Un fond blanc", "Une liste de clients", "Un filtre"], "correct": 0 },
+    { "q": "Que préciser sur les envois vers Madagascar ?", "options": ["Délais et frais de douane possibles", "Rien", "Que la livraison est immédiate", "Que la douane est gratuite"], "correct": 0 },
+    { "q": "Que séparer dans la grille de tarifs ?", "options": ["La vidéo, les options et les droits", "Rien", "Seulement le prix total", "Les impôts"], "correct": 0 },
+    { "q": "Quelle formule inclut l'analyse des résultats ?", "options": ["Partenaire créatif", "Une vidéo seule", "Une accroche supplémentaire", "Aucune"], "correct": 0 },
+    { "q": "Que faire avant de publier les résultats d'une marque ?", "options": ["Demander son accord", "Les exagérer", "Les inventer", "Rien"], "correct": 0 },
+    { "q": "Quel atout pour une agence UGC à Madagascar ?", "options": ["Créateurs francophones et malgachophones et contenu authentique", "Des avis inventés", "Aucun", "Des prix secrets"], "correct": 0 }
+  ]
+}

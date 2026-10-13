@@ -3491,7 +3491,7 @@ export const PUBLISHED = {
     "summary": "Capture, zooms et annotations dans Camtasia, multicaméra, son et sous-titres dans Premiere Pro, construction du cours, quiz, diffusion progressive et attestations, vente honnête et choix des outils.",
     "sections": [
      "Camtasia : les vidéos de démonstration",
-     "Premier Pro : les vidéos soignées",
+     "Premiere Pro : les vidéos soignées",
      "Teachable ou Thinkific : construire le cours",
      "Paramétrer la vente",
      "Choisir les outils",
@@ -6695,6 +6695,84 @@ export const PUBLISHED = {
      "Se faire payer",
      "Évoluer dans le métier",
      "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
+ "mkt-4-a": {
+  "hours": 14,
+  "description": "Ce niveau Avancé fait du créateur UGC un partenaire créatif dont les vidéos font vendre dans les publicités : spécialité (performance, niche, applications, sans visage, stratégie, photos), audit créatif et fatigue publicitaire, indicateurs publicitaires, matériel et outils payants (micro-cravate, éclairage LED et CapCut Pro), structures de scripts, banque d'accroches, journées de tournage, variantes pour les tests, création en anglais, règles de publicité, contrats et droits, publicité depuis le compte du créateur, puis grille de tarifs, abonnements et agence. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et réaliser un audit créatif des publicités d'une marque",
+   "Lire les indicateurs publicitaires sans promettre de résultat",
+   "Utiliser micro-cravate, éclairage LED, mode manuel et CapCut Pro",
+   "Produire en série avec structures, accroches et variantes pour les tests",
+   "Travailler avec des marques étrangères en respectant les règles et les droits",
+   "Construire une grille de tarifs, des abonnements et une petite agence"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer les publicités et lire les indicateurs",
+    "summary": "Les 6 spécialités avancées, la publicité à la performance, l'audit créatif et la fatigue publicitaire, la bibliothèque publicitaire de Meta, les indicateurs et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit créatif",
+     "Les indicateurs publicitaires",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : micro-cravate, éclairage LED et CapCut Pro",
+    "summary": "Types et placement du micro-cravate, éclairage en trois points et température de couleur, mode manuel du smartphone, fonctions avancées de CapCut Pro et petit studio à domicile.",
+    "sections": [
+     "Le micro-cravate",
+     "L'éclairage LED",
+     "Le mode manuel du smartphone",
+     "CapCut Pro : les fonctions avancées",
+     "Un petit studio chez vous",
+     "Exercice pratique : votre installation professionnelle"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : scripts, accroches, tournage et variantes",
+    "summary": "Six structures de scripts, banque d'accroches, journée de tournage organisée, variantes pour les tests créatifs, livraison et gestion des retours.",
+    "sections": [
+     "Les structures de scripts",
+     "La banque d'accroches",
+     "La journée de tournage",
+     "Les variantes pour les tests",
+     "Livrer et gérer les retours",
+     "Exercice pratique : une journée de production"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, règles de publicité, contrats et droits",
+    "summary": "Création en anglais, règles de mention des partenariats aux États-Unis, en France et dans l'UE, vocabulaire du contrat, publicité depuis le compte du créateur, envois de produits et paiements.",
+    "sections": [
+     "Créer en anglais",
+     "Les règles de publicité selon les régions",
+     "Le contrat UGC en anglais",
+     "L'usage de votre compte dans les publicités",
+     "Envois de produits et paiements",
+     "Exercice pratique : une collaboration internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : tarifs, abonnements, études de cas et agence",
+    "summary": "Trois voies, grille de tarifs avec droits et options, abonnements contre la fatigue publicitaire, études de cas avec accord, agence de créateurs et évolution.",
+    "sections": [
+     "Les trois voies",
+     "La grille de tarifs",
+     "Les études de cas",
+     "Organiser une petite agence",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
     ],
     "minutes": 6
    }

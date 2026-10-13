@@ -23,7 +23,7 @@ Les créateurs de cours professionnels produisent leurs vidéos avec **Camtasia*
 > [!astuce]
 > Pour les tutoriels de logiciels, enregistrez en **plein écran** et en haute résolution, puis utilisez les **zooms** au montage. Le spectateur sur téléphone verra clairement chaque clic.
 
-## Premier Pro : les vidéos soignées
+## Premiere Pro : les vidéos soignées
 
 | Fonction | Usage |
 | --- | --- |
