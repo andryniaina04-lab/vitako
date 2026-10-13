@@ -7666,6 +7666,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-0-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité du développement mobile et mener un audit d'application",
+   "Publier sur Google Play et l'App Store avec des comptes au nom du client",
+   "Remplir des déclarations de confidentialité exactes et suivre la qualité après publication",
+   "Construire une application maintenable, testée, automatisée et utilisable hors connexion",
+   "Travailler avec des clients étrangers : anglais, traduction, paiements, données et accessibilité",
+   "Développer son activité avec des forfaits, des contrats de maintenance et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et réaliser un audit d'application",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, audit de la stabilité, de la performance, des avis, de la sécurité, des mises à jour et de la fiche, accès officiel, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit d'application : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : Google Play Console et Apple Developer Program",
+    "summary": "Comptes au nom du client et vérification, pistes de test, signature et publication progressive, Android vitals et version cible, certificats, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics et avis.",
+    "sections": [
+     "Les comptes développeurs",
+     "Google Play Console",
+     "App Store Connect et TestFlight",
+     "Les déclarations de confidentialité",
+     "Suivre la qualité après publication",
+     "Exercice pratique : un plan de publication"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : architecture, environnements, tests, automatisation et hors connexion",
+    "summary": "Couches présentation, état, domaine et données, variantes de compilation, tests unitaires, de widget et d'intégration, GitHub Actions, compilation dans le cloud, performance sur téléphones d'entrée de gamme, file d'attente hors connexion.",
+    "sections": [
+     "Une architecture claire",
+     "Des environnements séparés",
+     "Des tests utiles",
+     "Automatiser compilation et publication",
+     "Performance et téléphones d'entrée de gamme",
+     "Le fonctionnement hors connexion",
+     "Exercice pratique : une application maintenable"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, traduction, paiements, données et accessibilité",
+    "summary": "Formules en anglais, fichiers ARB et formats locaux, règles de paiement des magasins selon le produit et le pays, RGPD, stockage sécurisé, règles Firebase, accessibilité testée, conditions avec un client étranger.",
+    "sections": [
+     "Échanger en anglais",
+     "Traduire et adapter l'application",
+     "Les règles de paiement des magasins",
+     "Données et accessibilité",
+     "Vos conditions avec un client étranger",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : forfaits, maintenance, études de cas et studio",
+    "summary": "Trois voies, audit, application simple, mode hors connexion et maintenance mensuelle, mises à jour obligatoires des magasins, études de cas chiffrées, équipe, parc de téléphones de test, guide technique et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits de création et de maintenance",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "tech-0-f": {
   "hours": 22,
   "description": "Le développeur mobile crée, teste et publie des applications pour Android et iOS. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des commerces, des start-up, des ONG et des agences, à Madagascar et à l'étranger, avec Flutter et Firebase : native ou multiplateforme, cycle de vie d'une application, Dart, widgets, mise en page, état, navigation, formulaires adaptés au contexte local, comptes et base de données, fonctionnement hors connexion, règles de sécurité, première version, tests en conditions réelles et publication sur Google Play. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -34,7 +34,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 16, true),
   ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 22, true),
-  ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
+  ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 17, true),
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
@@ -54316,6 +54316,501 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi les droits publicitaires se paient-ils ?', '["Pour décorer le contrat","Ce n''est pas le cas","La vidéo peut faire vendre beaucoup pendant des mois","Ils sont gratuits"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel paiement proposer pour une commande ?', '["Rien","Seulement en cadeaux","Tout après 6 mois","50 % à la commande et 50 % à la livraison"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel moyen de paiement utiliser avec une marque locale ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
+
+-- tech-0-a
+delete from public.exam_questions where course_id = 'tech-0-a';
+delete from public.module_questions where course_id = 'tech-0-a';
+delete from public.lessons where course_id = 'tech-0-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-a', 0, 'Se spécialiser et réaliser un audit d''application', 'Six spécialités avancées et avantages depuis Madagascar, audit de la stabilité, de la performance, des avis, de la sécurité, des mises à jour et de la fiche, accès officiel, offres à plus forte valeur.', 'Créer une application Flutter avec Firebase et la publier ouvre les premières missions. Les développeurs mobiles les mieux payés vont plus loin : ils choisissent un **domaine**, livrent des applications **stables** et **maintenues**, et accompagnent le client après la publication. Ce module vous aide à choisir votre spécialité et à proposer un audit d''application comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du développement mobile.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit d''une application existante.
+> 4. Présenter des résultats clairs et chiffrés.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Applications hors connexion** | Applications qui fonctionnent sans réseau et se synchronisent plus tard | Base de données locale, synchronisation, conflits |
+| 2 | **Commerce et paiement** | Boutiques, réservations, paiement mobile | Paiements, sécurité, parcours d''achat |
+| 3 | **Maintenance et reprise d''applications** | Corriger, mettre à jour et faire évoluer des applications existantes | Lecture de code, mises à jour, dépendances |
+| 4 | **Intégrations natives** | Fonctions propres à Android ou iOS (capteurs, notifications, paiement, Bluetooth) | Kotlin ou Swift de base, canaux de plateforme |
+| 5 | **Qualité et performance** | Applications rapides et fiables, même sur des téléphones d''entrée de gamme | Tests, outils de profilage, suivi des plantages |
+| 6 | **Publication et croissance** | Fiche de l''application, avis, statistiques, mises à jour régulières | Règles des magasins, optimisation de la fiche (ASO) |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Applications hors connexion** pour les ONG, la santé, l''agriculture et les enquêtes de terrain, là où le réseau est absent ou instable.
+> - **Paiement par Mobile Money** pour les commerces et les services locaux.
+> - **Téléphones d''entrée de gamme** : vous connaissez les contraintes de mémoire, de stockage et de batterie de la majorité des utilisateurs africains.
+
+## L''audit d''application : votre offre d''entrée
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Stabilité** | Taux de plantages, erreurs fréquentes, appareils concernés |
+| **Performance** | Temps de démarrage, fluidité, taille de l''application, consommation de données |
+| **Avis des utilisateurs** | Problèmes cités dans les avis et les notes |
+| **Sécurité** | Clés exposées, règles de la base de données, données sensibles |
+| **Mises à jour** | Version de Flutter, dépendances obsolètes, exigences des magasins |
+| **Fiche du magasin** | Captures, description, mots-clés, catégorie |
+
+### Le rapport d''audit
+
+```
+Application : Mofo Gasy Express (exemple)
+Constat principal : 4,2 % des sessions se terminent par un plantage,
+surtout sur les téléphones de 2 Go de mémoire ; note de 3,1 sur 5.
+
+Problèmes prioritaires
+1. Images du catalogue chargées en pleine taille : plantages mémoire.
+2. Règles Firestore trop ouvertes : commandes lisibles par tous.
+3. Version cible d''Android bientôt refusée par Google Play.
+
+Proposition
+- Semaine 1 : images, règles de sécurité, version cible.
+- Semaines 2 et 3 : suivi des plantages, tests, nouvelle version progressive.
+```
+
+> [!attention]
+> Pour auditer une application, obtenez un **accès officiel** du client (code source, console Firebase, consoles des magasins) et un accord écrit. N''essayez jamais de décompiler ou d''analyser l''application d''un tiers sans son autorisation.
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Contrat de maintenance** | L''application reste compatible et stable, sans surprise pour le client |
+| **Reprise d''application** | Sauver un projet abandonné par un autre prestataire |
+| **Version hors connexion** | Ouvre l''application à des utilisateurs sans réseau |
+| **Accompagnement de publication** | Fiche, tests, publication progressive et suivi des avis |
+
+> [!retenir]
+> - 6 spécialités : hors connexion, commerce et paiement, maintenance, natif, qualité, publication.
+> - Audit : stabilité, performance, avis, sécurité, mises à jour, fiche.
+> - Accès officiel et accord écrit avant tout audit.
+> - Vendre maintenance, reprise, mode hors connexion et accompagnement.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez votre application du niveau Fondamentaux selon les 6 domaines.
+> 3. Rédigez un rapport avec 3 problèmes prioritaires et une proposition.
+> 4. Analysez les avis publics d''une application malgache et notez les 5 problèmes les plus cités.
+>
+> **À livrer** : votre positionnement, votre rapport d''audit et votre analyse des avis.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 0, 0, 'Que faut-il avant d''auditer une application ?', '["Un téléphone neuf","Rien","Un accès officiel et un accord écrit du client","La décompiler sans demander"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 0, 1, 'Quelle spécialité sert les enquêtes de terrain sans réseau ?', '["La publicité","Le design de logo","La retouche photo","Les applications hors connexion"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 0, 2, 'Pourquoi un contrat de maintenance vaut-il plus ?', '["Il est gratuit","L''application reste compatible et stable","Il remplace la publication","Il est plus court"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-a', 1, 'Outils professionnels : Google Play Console et Apple Developer Program', 'Comptes au nom du client et vérification, pistes de test, signature et publication progressive, Android vitals et version cible, certificats, TestFlight et revue d''Apple, déclarations de confidentialité, Crashlytics et avis.', 'Pour publier une application, il faut des comptes développeurs payants : **Google Play Console** pour Android et l''**Apple Developer Program** pour iPhone. Ce module vous apprend à les utiliser comme un professionnel : comptes au nom du client, pistes de test, signature, publication progressive, déclarations de confidentialité et suivi de la qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer et organiser les comptes développeurs avec le client.
+> 2. Utiliser les pistes de test et la publication progressive sur Google Play.
+> 3. Préparer une publication sur l''App Store avec TestFlight.
+> 4. Remplir les déclarations de confidentialité.
+> 5. Suivre la qualité de l''application après publication.
+
+## Les comptes développeurs
+
+| Point | Google Play Console | Apple Developer Program |
+| --- | --- | --- |
+| **Prix** | Frais d''inscription payés une fois | Abonnement annuel |
+| **Compte d''organisation** | Possible, avec vérification de l''entreprise | Possible, avec un numéro D-U-N-S de l''entreprise |
+| **Vérification** | Identité et coordonnées du développeur | Identité, et entreprise pour une organisation |
+| **Matériel** | Un ordinateur suffit | Un Mac avec Xcode, ou un service de compilation dans le cloud |
+
+> [!attention]
+> Les comptes développeurs doivent être **au nom du client**, qui vous ajoute comme utilisateur avec les droits nécessaires. Si le compte est à votre nom et que vous arrêtez de travailler ensemble, le client risque de perdre son application.
+
+> [!madagascar]
+> Les frais se paient en dollars par carte bancaire internationale, et la vérification d''une organisation demande des documents d''entreprise. Prévoyez **plusieurs semaines** dans le planning du projet pour la création et la vérification des comptes, surtout pour une entreprise malgache.
+
+## Google Play Console
+
+| Fonction | Usage |
+| --- | --- |
+| **Pistes de test** | Test interne, test fermé, test ouvert, puis production |
+| **Signature des applications par Google Play** | Google conserve la clé de signature finale ; vous gardez la clé d''importation en sécurité |
+| **Publication progressive** | Publier pour 5 %, puis 20 %, puis 100 % des utilisateurs |
+| **Android vitals** | Plantages, blocages, démarrage lent, batterie |
+| **Fiche du magasin** | Titre, descriptions, captures, vidéo, traductions |
+| **Version cible d''Android** | Exigence minimale imposée chaque année par Google |
+
+> [!astuce]
+> Pour les **nouveaux comptes personnels**, Google Play peut exiger un test fermé avec un nombre minimal de testeurs pendant une durée minimale avant d''ouvrir la production. Vérifiez la règle actuelle dans la console et recrutez vos testeurs dès le début du projet.
+
+## App Store Connect et TestFlight
+
+| Étape | Action |
+| --- | --- |
+| 1 | Créer l''identifiant de l''application et la fiche dans App Store Connect |
+| 2 | Gérer les certificats et profils (Xcode peut le faire automatiquement) |
+| 3 | Compiler et envoyer la version depuis Xcode ou un service de compilation |
+| 4 | Tester avec **TestFlight** : testeurs internes, puis externes après une vérification d''Apple |
+| 5 | Remplir la fiche, les captures et les informations de confidentialité |
+| 6 | Soumettre à la **revue d''Apple** et répondre à ses éventuelles questions |
+
+> [!definition] Revue des applications
+> Apple vérifie chaque application avant publication selon ses règles (fonctionnement, contenu, confidentialité, paiements). Une application peut être refusée ; il faut alors corriger et soumettre de nouveau. Lisez les règles avant de commencer le développement.
+
+## Les déclarations de confidentialité
+
+| Magasin | Déclaration |
+| --- | --- |
+| **Google Play** | Section « Sécurité des données » : données collectées, partagées, chiffrées, supprimables |
+| **App Store** | Informations de confidentialité affichées sur la fiche, et fichier de confidentialité requis pour certaines fonctions |
+| **Les deux** | Politique de confidentialité en ligne, suppression du compte possible depuis l''application si elle permet d''en créer un |
+
+> [!attention]
+> Les déclarations doivent correspondre à **ce que fait réellement l''application**, y compris les bibliothèques tierces (statistiques, publicité, plantages). Une déclaration fausse peut entraîner la suppression de l''application.
+
+## Suivre la qualité après publication
+
+| Outil | Usage |
+| --- | --- |
+| **Firebase Crashlytics** | Plantages détaillés par appareil et par version |
+| **Android vitals et statistiques d''App Store Connect** | Qualité technique vue par les magasins |
+| **Avis des utilisateurs** | Répondre poliment, repérer les problèmes fréquents |
+| **Firebase Analytics** | Écrans utilisés, parcours, abandon |
+
+> [!retenir]
+> - Comptes au nom du client, vérification prévue dans le planning.
+> - Google Play : pistes de test, signature, publication progressive, vitals, version cible.
+> - App Store : certificats, TestFlight, revue d''Apple, Mac ou service cloud.
+> - Déclarations de confidentialité exactes, bibliothèques comprises.
+> - Crashlytics, statistiques des magasins, avis et Analytics.
+
+## Exercice pratique : un plan de publication
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Rédigez la liste des documents et des étapes pour créer les deux comptes au nom d''un client.
+> 2. Préparez la fiche complète de votre application (textes, captures, catégorie) en français et en anglais.
+> 3. Remplissez sur papier la section « Sécurité des données » pour votre application.
+> 4. Ajoutez Crashlytics à votre application et provoquez un plantage de test.
+>
+> **À livrer** : votre liste, la fiche, la déclaration et une capture de Crashlytics.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 1, 0, 'Au nom de qui créer les comptes développeurs ?', '["Au nom d''un ami","Au nom du client","Sans nom","Au nom du développeur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 1, 1, 'Que permet la publication progressive ?', '["Publier sans test","Changer de magasin","Supprimer l''application","Publier d''abord pour une partie des utilisateurs"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 1, 2, 'Que doivent refléter les déclarations de confidentialité ?', '["Ce que fait réellement l''application, bibliothèques comprises","Seulement le nom","Ce qui arrange le client","Rien"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-a', 2, 'Qualité et rapidité : architecture, environnements, tests, automatisation et hors connexion', 'Couches présentation, état, domaine et données, variantes de compilation, tests unitaires, de widget et d''intégration, GitHub Actions, compilation dans le cloud, performance sur téléphones d''entrée de gamme, file d''attente hors connexion.', 'Une application professionnelle se maintient pendant des années : nouvelles fonctions, mises à jour de Flutter et des magasins, corrections rapides. Ce module vous donne les méthodes qui permettent de livrer vite sans tout casser : architecture claire, environnements séparés, tests, intégration continue, performance et mode hors connexion.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser le code d''une application qui grandit.
+> 2. Séparer les environnements de développement et de production.
+> 3. Écrire des tests utiles.
+> 4. Automatiser la compilation et la publication.
+> 5. Optimiser la performance et le fonctionnement hors connexion.
+
+## Une architecture claire
+
+| Couche | Rôle | Exemple |
+| --- | --- | --- |
+| **Présentation** | Écrans et widgets | `ecran_commande.dart` |
+| **État** | Gestion de l''état avec une solution choisie par l''équipe (Provider, Riverpod, Bloc) | `commande_controller.dart` |
+| **Domaine** | Règles métier, modèles | `commande.dart` |
+| **Données** | Accès à Firebase, à l''API et au stockage local | `commande_repository.dart` |
+
+> [!astuce]
+> Choisissez **une** solution de gestion d''état et tenez-vous-y dans tout le projet. Une application qui mélange trois approches devient très difficile à reprendre, pour vous comme pour un autre développeur.
+
+## Des environnements séparés
+
+| Environnement | Usage |
+| --- | --- |
+| **Développement** | Vos essais, avec un projet Firebase de développement |
+| **Recette** | Tests par le client avant publication |
+| **Production** | Les vrais utilisateurs et leurs vraies données |
+
+Avec les **variantes de compilation** (flavors), chaque environnement a son nom, son icône et son projet Firebase. Vous ne risquez plus d''écrire des données de test chez les vrais clients.
+
+## Des tests utiles
+
+| Type de test | Ce qu''il vérifie | Exemple |
+| --- | --- | --- |
+| **Unitaire** | Une fonction ou une règle | Le calcul du total d''une commande |
+| **De widget** | Un écran ou un composant | Le bouton « Commander » est désactivé si le panier est vide |
+| **D''intégration** | Un parcours complet sur un appareil | Ajouter au panier, commander, voir la confirmation |
+
+```dart
+test(''le total inclut la livraison'', () {
+  final commande = Commande(articles: [Article(prix: 5000, quantite: 2)]);
+  expect(commande.total(fraisLivraison: 2000), 12000);
+});
+```
+
+## Automatiser compilation et publication
+
+| Outil | Usage |
+| --- | --- |
+| **GitHub Actions** | Lancer l''analyse et les tests à chaque modification |
+| **Services de compilation mobile** (par exemple Codemagic) | Compiler Android et iOS dans le cloud, sans Mac sur place |
+| **fastlane** | Automatiser signature, captures et envoi vers les magasins |
+| **Numéros de version** | Augmentés automatiquement à chaque publication |
+
+```yaml
+name: Analyse et tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+```
+
+> [!attention]
+> Les clés de signature, les fichiers de configuration Firebase de production et les mots de passe des comptes vont dans les **secrets** du service d''intégration continue, jamais dans le dépôt de code.
+
+## Performance et téléphones d''entrée de gamme
+
+| Action | Effet |
+| --- | --- |
+| **Images redimensionnées et mises en cache** | Moins de mémoire, moins de données mobiles |
+| **Listes construites à la demande** (`ListView.builder`) | Défilement fluide même avec des centaines d''éléments |
+| **Outils de profilage** (Flutter DevTools) | Repérer les images saccadées et la mémoire excessive |
+| **Taille de l''application réduite** | Paquets séparés par architecture, ressources inutiles supprimées |
+| **Tests sur un vrai téléphone d''entrée de gamme** | Voir ce que vivent la plupart des utilisateurs |
+
+## Le fonctionnement hors connexion
+
+| Élément | Solution possible |
+| --- | --- |
+| **Lecture hors connexion** | Cache local de Firestore, ou base locale |
+| **Saisie hors connexion** | File d''attente des modifications, envoi au retour du réseau |
+| **Conflits** | Règle claire : la dernière modification gagne, ou fusion |
+| **Information de l''utilisateur** | Indicateur « hors connexion » et « en attente d''envoi » |
+
+> [!madagascar]
+> Testez votre application en **mode avion**, puis en réactivant le réseau au milieu d''une action. Pour une application utilisée en brousse ou dans les quartiers où le réseau coupe souvent, ce test vaut plus que tous les autres.
+
+> [!retenir]
+> - Couches présentation, état, domaine, données ; une seule solution d''état.
+> - Environnements séparés avec des variantes de compilation.
+> - Tests unitaires, de widget et d''intégration.
+> - Intégration continue, compilation dans le cloud, secrets protégés.
+> - Performance sur téléphone d''entrée de gamme et mode hors connexion testé.
+
+## Exercice pratique : une application maintenable
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Réorganisez votre application en 4 couches.
+> 2. Créez deux variantes de compilation (développement et production).
+> 3. Écrivez 3 tests unitaires et 2 tests de widget.
+> 4. Ajoutez un workflow GitHub Actions et rendez une fonction utilisable hors connexion.
+>
+> **À livrer** : le lien du dépôt, une capture du workflow réussi et une vidéo du mode hors connexion.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 2, 0, 'Pourquoi séparer développement et production ?', '["Ne pas écrire de données de test chez les vrais clients","Pour payer plus","Ce n''est pas utile","Pour ralentir l''application"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 2, 1, 'Où mettre les clés de signature dans l''intégration continue ?', '["Dans le dépôt de code","Dans les secrets du service","Dans le README","Dans l''application"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 2, 2, 'Comment tester le mode hors connexion ?', '["Sur la fibre seulement","En mode avion puis en réactivant le réseau pendant une action","En éteignant l''ordinateur","Jamais"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-a', 3, 'Clients internationaux : anglais, traduction, paiements, données et accessibilité', 'Formules en anglais, fichiers ARB et formats locaux, règles de paiement des magasins selon le produit et le pays, RGPD, stockage sécurisé, règles Firebase, accessibilité testée, conditions avec un client étranger.', 'Start-up, agences et entreprises d''Europe, d''Amérique du Nord et d''Afrique recrutent des développeurs mobiles à distance. Ce module vous prépare à travailler avec eux : échanges en anglais, traduction de l''application, règles des paiements dans les applications, protection des données, accessibilité et contrats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Échanger avec une équipe en anglais.
+> 2. Traduire et adapter une application à plusieurs pays.
+> 3. Respecter les règles de paiement des magasins.
+> 4. Protéger les données et rendre l''application accessible.
+> 5. Négocier vos conditions avec un client étranger.
+
+## Échanger en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Estimer | « I estimate five days for the booking flow, including tests on Android and iOS. » |
+| Signaler un risque | « The new store requirement means we need to update the target SDK before August. » |
+| Livrer en test | « Build 1.4.0 (42) is available on TestFlight and in the Play internal track. » |
+| Rapport de bug | « The crash only happens on Android 10 devices with less than 3 GB of RAM. » |
+| Revue de code | « I''ve split the widget into smaller components, as you suggested. » |
+
+## Traduire et adapter l''application
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Textes** | Fichiers de traduction (ARB) avec le paquet d''internationalisation de Flutter |
+| **Formats** | Dates, nombres et monnaies selon la langue et le pays |
+| **Longueur des textes** | Les traductions peuvent être plus longues : écrans qui s''adaptent |
+| **Sens d''écriture** | Prévoir les langues de droite à gauche si nécessaire |
+| **Fiche du magasin** | Traduite pour chaque pays visé |
+
+> [!madagascar]
+> Proposez systématiquement une version **en malgache** aux clients locaux et aux ONG : peu d''applications le font, et c''est un vrai avantage pour toucher les utilisateurs hors des grandes villes.
+
+## Les règles de paiement des magasins
+
+| Ce qui est vendu | Règle générale |
+| --- | --- |
+| **Contenu ou service numérique utilisé dans l''application** (abonnement, niveaux, contenu premium) | Souvent obligatoire de passer par le système de paiement du magasin, qui prend une commission |
+| **Biens physiques** (repas, vêtements) | Paiement possible par d''autres moyens (carte, Mobile Money) |
+| **Services rendus hors de l''application** (transport, réservation) | Paiement possible par d''autres moyens |
+
+> [!attention]
+> Les règles de paiement des magasins sont **complexes et changent selon les pays** (des exceptions existent dans certaines régions). Avant de développer un système de paiement, lisez les règles actuelles de Google Play et de l''App Store pour le type de produit et les pays du client, et faites-les valider par le client.
+
+## Données et accessibilité
+
+| Domaine | En pratique |
+| --- | --- |
+| **RGPD** pour les utilisateurs européens | Consentement, droit d''accès et de suppression, données minimales |
+| **Stockage sécurisé** | Jetons et données sensibles dans un stockage chiffré de l''appareil |
+| **Règles Firebase** | Chaque utilisateur ne lit que ses propres données |
+| **Accessibilité** | Libellés pour les lecteurs d''écran (Semantics), contrastes, tailles de texte agrandies |
+| **Tests** | TalkBack sur Android, VoiceOver sur iPhone |
+
+## Vos conditions avec un client étranger
+
+| Point | Exemple |
+| --- | --- |
+| **Prix** | Par projet, par sprint ou par jour |
+| **Propriété** | Code, comptes des magasins et projets Firebase au nom du client |
+| **Appareils de test** | Liste des appareils et versions pris en charge |
+| **Garantie** | Correction gratuite des bugs pendant une période après livraison |
+| **Maintenance** | Contrat séparé pour les mises à jour obligatoires des magasins |
+| **Paiement** | Acompte, puis par étape ou par sprint |
+
+> [!retenir]
+> - En anglais : estimer, signaler un risque, livrer en test, décrire un bug.
+> - Traduction avec ARB, formats locaux, écrans adaptables, fiche traduite.
+> - Paiements : système du magasin pour les contenus numériques, règles à vérifier par pays.
+> - RGPD, stockage sécurisé, règles Firebase, accessibilité testée.
+> - Conditions : propriété au client, appareils, garantie, maintenance séparée.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Traduisez votre application en anglais et en malgache avec des fichiers ARB.
+> 2. Ajoutez des libellés d''accessibilité et testez avec TalkBack ou VoiceOver.
+> 3. Décrivez, pour 3 types de produits, si le paiement doit passer par le magasin et pourquoi.
+> 4. Rédigez vos conditions en 6 points en anglais.
+>
+> **À livrer** : des captures dans les 3 langues, votre test d''accessibilité, votre analyse et vos conditions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 3, 0, 'Comment payer un repas commandé dans une application ?', '["C''est interdit","Par chèque uniquement","Obligatoirement par le magasin","Par d''autres moyens que le magasin, c''est un bien physique"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 3, 1, 'Avec quoi traduire une application Flutter ?', '["Rien","Des fichiers ARB et le paquet d''internationalisation","Un PDF","Des captures d''écran"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 3, 2, 'Avec quoi tester l''accessibilité sur Android ?', '["TalkBack","Photoshop","Nmap","Excel"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-a', 4, 'Développer son activité : forfaits, maintenance, études de cas et studio', 'Trois voies, audit, application simple, mode hors connexion et maintenance mensuelle, mises à jour obligatoires des magasins, études de cas chiffrées, équipe, parc de téléphones de test, guide technique et évolution.', 'Un développeur mobile expérimenté combine des projets de création, des contrats de maintenance réguliers et parfois une petite équipe. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits de création et de maintenance.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Développeur spécialisé** | Une spécialité (hors connexion, paiement, maintenance) pour plusieurs clients | Ceux qui aiment l''expertise technique |
+| **Développeur intégré à une équipe** | Contrat long avec une start-up ou une agence étrangère | Ceux qui veulent un revenu stable |
+| **Petit studio mobile** | Conception, développement, tests et publication | Ceux qui aiment organiser |
+
+## Des forfaits de création et de maintenance
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit d''application** | Stabilité, performance, sécurité, mises à jour, rapport | 800 000 Ar |
+| **Application simple** | 5 à 8 écrans, Firebase, publication Android et iOS | 6 000 000 Ar |
+| **Ajout du mode hors connexion** | Cache, file d''attente, gestion des conflits, tests | 2 500 000 Ar |
+| **Maintenance mensuelle** | Mises à jour Flutter et magasins, suivi des plantages, petites corrections | 600 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Expliquez au client que les magasins imposent des **mises à jour obligatoires** chaque année (versions d''Android et d''iOS, règles de confidentialité). Sans maintenance, une application peut être retirée ou devenir impossible à mettre à jour. C''est la meilleure justification d''un contrat de maintenance.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : Mofo Gasy Express. **Besoin** : une application qui plantait souvent sur les petits téléphones. **Réalisation** : images optimisées, règles de sécurité corrigées, tests, publication progressive. **Résultat** : sessions avec plantage de 4,2 % à 0,6 %, note de 3,1 à 4,4 sur 5 en trois mois, commandes par l''application en hausse de 35 %.
+
+Une bonne étude de cas présente le problème, la méthode, des captures, les chiffres avant et après sur une période comparable et un témoignage, **avec l''accord du client**.
+
+## Organiser une petite équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Designer UI/UX** | Maquettes et parcours |
+| **Développeurs Flutter** | Écrans et fonctions selon l''architecture du studio |
+| **Développeur back-end** | API, Firebase, paiements |
+| **Testeur** | Tests sur de vrais appareils, rapports de bugs |
+| **Vous** | Architecture, revue de code, publication, relation client |
+
+> [!madagascar]
+> Gardez au studio un **parc de téléphones de test** variés : un Android d''entrée de gamme, un Android récent, un iPhone ancien et un récent. Achetez-les d''occasion. C''est un argument fort auprès des clients locaux et étrangers, et cela évite de nombreuses mauvaises surprises après publication.
+
+> [!astuce]
+> Écrivez un **guide technique** du studio : architecture, solution d''état, conventions de nommage, tests attendus, procédure de publication. Un nouveau développeur devient productif beaucoup plus vite.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur mobile confirmé** | Natif avancé (Kotlin, Swift), architecture, encadrement |
+| **Responsable technique** | Choix techniques, estimation, revue de code, recrutement |
+| **Développeur back-end** | Voir la formation Développeur back-end |
+| **Testeur logiciel (QA)** | Voir la formation Testeur logiciel |
+| **Éditeur d''applications** | Vos propres applications, avec un modèle économique |
+
+> [!retenir]
+> - Spécialiste, développeur intégré à une équipe, ou studio mobile.
+> - Audits, applications, mode hors connexion et maintenance mensuelle.
+> - Mises à jour obligatoires des magasins : justification de la maintenance.
+> - Études de cas chiffrées avec accord du client.
+> - Équipe, parc de téléphones de test et guide technique.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez 3 forfaits, dont un contrat de maintenance avec son contenu précis.
+> 3. Rédigez une étude de cas à partir de votre application.
+> 4. Rédigez la première page de votre guide technique.
+>
+> **À livrer** : votre plan, vos forfaits, votre étude de cas et votre guide.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 4, 0, 'Quelle est la meilleure justification d''un contrat de maintenance ?', '["La couleur de l''application","Rien","Le plaisir","Les mises à jour obligatoires imposées par les magasins"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 4, 1, 'Pourquoi un parc de téléphones de test variés ?', '["Éviter les mauvaises surprises après publication","Pour les revendre","Rien","Pour décorer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-a', 4, 2, 'Que contient le guide technique du studio ?', '["Rien","Les salaires","Les mots de passe","Architecture, état, conventions, tests et publication"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Quelle spécialité reprend des applications abandonnées ?', '["Commerce","Intégrations natives","Maintenance et reprise d''applications","Publication et croissance"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Quel avantage pour un développeur à Madagascar ?', '["Pas de règles des magasins","Aucun","Des comptes gratuits","Connaître les téléphones d''entrée de gamme et le réseau instable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que révèle le taux de plantages ?', '["Le design","La langue","La stabilité de l''application","Le prix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que risquent des règles Firestore trop ouvertes ?', '["Rien","Des données lisibles par tous","Plus d''avis positifs","Une application plus rapide"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Comment se paie l''Apple Developer Program ?', '["Par Mobile Money uniquement","Par abonnement annuel","Une seule fois à vie","Gratuitement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que faut-il pour un compte Apple d''organisation ?', '["Un iPad","Une adresse en Europe","Rien","Un numéro D-U-N-S de l''entreprise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que faut-il pour compiler une application iOS ?', '["Un Mac avec Xcode ou un service de compilation dans le cloud","Rien","Une imprimante","Un téléphone Android"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que prévoir pour la création et la vérification des comptes ?', '["Le jour de la publication","Plusieurs semaines dans le planning","Rien","Une heure"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que fait la signature des applications par Google Play ?', '["Elle supprime la clé","Google conserve la clé de signature finale","Elle publie sans test","Elle traduit l''application"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que montre Android vitals ?', '["Rien","Plantages, blocages, démarrage lent et batterie","Les avis seulement","Le prix des téléphones"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'À quoi sert TestFlight ?', '["Faire tester une application iPhone avant publication","Héberger une base de données","Payer Apple","Compiler pour Android"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que faire si une application permet de créer un compte ?', '["Rien","Interdire la suppression","Cacher le compte","Permettre aussi de le supprimer depuis l''application"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Quel outil détaille les plantages par appareil ?', '["Audacity","Firebase Crashlytics","Canva","Figma"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Combien de solutions de gestion d''état utiliser ?', '["Aucune","Une par écran","Trois mélangées","Une seule dans tout le projet"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que vérifie un test de widget ?', '["La traduction de la fiche","Le serveur","Le prix","Un écran ou un composant"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que fait flutter analyze ?', '["Il supprime le projet","Il analyse le code à la recherche de problèmes","Il publie l''application","Il traduit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Pourquoi utiliser ListView.builder ?', '["Traduire","Ajouter des images","Payer","Construire les éléments à la demande pour un défilement fluide"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que montrer à l''utilisateur hors connexion ?', '["Un indicateur hors connexion et en attente d''envoi","Un plantage","Une publicité","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que faut-il prévoir pour les traductions ?', '["Rien","Une seule langue","Des textes coupés","Des écrans qui s''adaptent à des textes plus longs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Pour un abonnement à du contenu numérique dans l''application, que faut-il souvent ?', '["Un virement direct obligatoire","Un paiement en espèces","Rien","Passer par le système de paiement du magasin"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Où stocker un jeton de connexion sur l''appareil ?', '["Dans le nom de l''application","Dans une capture d''écran","Dans un stockage chiffré","Dans un fichier texte public"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'À quoi servent les libellés Semantics ?', '["Rendre l''application lisible par les lecteurs d''écran","Payer","Compresser les images","Colorer les boutons"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que couvre la garantie après livraison ?', '["La correction gratuite des bugs pendant une période","Toutes les nouvelles fonctions","Les frais des magasins","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Que contient la maintenance mensuelle ?', '["Rien","Le design complet","Une nouvelle application chaque mois","Mises à jour, suivi des plantages et petites corrections"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-a', 'Vers quoi peut évoluer un développeur mobile ?', '["Retouche photo uniquement","Responsable technique, natif avancé ou éditeur d''applications","Plomberie","Rien"]'::jsonb, 1);
 
 -- tech-0-f
 delete from public.exam_questions where course_id = 'tech-0-f';

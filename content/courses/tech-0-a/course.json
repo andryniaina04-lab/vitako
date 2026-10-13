@@ -1,0 +1,97 @@
+{
+  "id": "tech-0-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité du développement mobile et mener un audit d'application",
+    "Publier sur Google Play et l'App Store avec des comptes au nom du client",
+    "Remplir des déclarations de confidentialité exactes et suivre la qualité après publication",
+    "Construire une application maintenable, testée, automatisée et utilisable hors connexion",
+    "Travailler avec des clients étrangers : anglais, traduction, paiements, données et accessibilité",
+    "Développer son activité avec des forfaits, des contrats de maintenance et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et réaliser un audit d'application",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, audit de la stabilité, de la performance, des avis, de la sécurité, des mises à jour et de la fiche, accès officiel, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il avant d'auditer une application ?", "options": ["Un accès officiel et un accord écrit du client", "Rien", "La décompiler sans demander", "Un téléphone neuf"], "correct": 0 },
+        { "q": "Quelle spécialité sert les enquêtes de terrain sans réseau ?", "options": ["Les applications hors connexion", "La publicité", "Le design de logo", "La retouche photo"], "correct": 0 },
+        { "q": "Pourquoi un contrat de maintenance vaut-il plus ?", "options": ["L'application reste compatible et stable", "Il est plus court", "Il est gratuit", "Il remplace la publication"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Google Play Console et Apple Developer Program",
+      "summary": "Comptes au nom du client et vérification, pistes de test, signature et publication progressive, Android vitals et version cible, certificats, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics et avis.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Au nom de qui créer les comptes développeurs ?", "options": ["Au nom du client", "Au nom du développeur", "Au nom d'un ami", "Sans nom"], "correct": 0 },
+        { "q": "Que permet la publication progressive ?", "options": ["Publier d'abord pour une partie des utilisateurs", "Publier sans test", "Supprimer l'application", "Changer de magasin"], "correct": 0 },
+        { "q": "Que doivent refléter les déclarations de confidentialité ?", "options": ["Ce que fait réellement l'application, bibliothèques comprises", "Ce qui arrange le client", "Rien", "Seulement le nom"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : architecture, environnements, tests, automatisation et hors connexion",
+      "summary": "Couches présentation, état, domaine et données, variantes de compilation, tests unitaires, de widget et d'intégration, GitHub Actions, compilation dans le cloud, performance sur téléphones d'entrée de gamme, file d'attente hors connexion.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi séparer développement et production ?", "options": ["Ne pas écrire de données de test chez les vrais clients", "Pour payer plus", "Ce n'est pas utile", "Pour ralentir l'application"], "correct": 0 },
+        { "q": "Où mettre les clés de signature dans l'intégration continue ?", "options": ["Dans les secrets du service", "Dans le dépôt de code", "Dans le README", "Dans l'application"], "correct": 0 },
+        { "q": "Comment tester le mode hors connexion ?", "options": ["En mode avion puis en réactivant le réseau pendant une action", "Sur la fibre seulement", "Jamais", "En éteignant l'ordinateur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, traduction, paiements, données et accessibilité",
+      "summary": "Formules en anglais, fichiers ARB et formats locaux, règles de paiement des magasins selon le produit et le pays, RGPD, stockage sécurisé, règles Firebase, accessibilité testée, conditions avec un client étranger.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment payer un repas commandé dans une application ?", "options": ["Par d'autres moyens que le magasin, c'est un bien physique", "Obligatoirement par le magasin", "C'est interdit", "Par chèque uniquement"], "correct": 0 },
+        { "q": "Avec quoi traduire une application Flutter ?", "options": ["Des fichiers ARB et le paquet d'internationalisation", "Des captures d'écran", "Un PDF", "Rien"], "correct": 0 },
+        { "q": "Avec quoi tester l'accessibilité sur Android ?", "options": ["TalkBack", "Photoshop", "Nmap", "Excel"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, maintenance, études de cas et studio",
+      "summary": "Trois voies, audit, application simple, mode hors connexion et maintenance mensuelle, mises à jour obligatoires des magasins, études de cas chiffrées, équipe, parc de téléphones de test, guide technique et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la meilleure justification d'un contrat de maintenance ?", "options": ["Les mises à jour obligatoires imposées par les magasins", "Le plaisir", "Rien", "La couleur de l'application"], "correct": 0 },
+        { "q": "Pourquoi un parc de téléphones de test variés ?", "options": ["Éviter les mauvaises surprises après publication", "Pour décorer", "Pour les revendre", "Rien"], "correct": 0 },
+        { "q": "Que contient le guide technique du studio ?", "options": ["Architecture, état, conventions, tests et publication", "Les salaires", "Rien", "Les mots de passe"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité reprend des applications abandonnées ?", "options": ["Maintenance et reprise d'applications", "Publication et croissance", "Intégrations natives", "Commerce"], "correct": 0 },
+    { "q": "Quel avantage pour un développeur à Madagascar ?", "options": ["Connaître les téléphones d'entrée de gamme et le réseau instable", "Aucun", "Des comptes gratuits", "Pas de règles des magasins"], "correct": 0 },
+    { "q": "Que révèle le taux de plantages ?", "options": ["La stabilité de l'application", "Le prix", "Le design", "La langue"], "correct": 0 },
+    { "q": "Que risquent des règles Firestore trop ouvertes ?", "options": ["Des données lisibles par tous", "Rien", "Une application plus rapide", "Plus d'avis positifs"], "correct": 0 },
+    { "q": "Comment se paie l'Apple Developer Program ?", "options": ["Par abonnement annuel", "Une seule fois à vie", "Gratuitement", "Par Mobile Money uniquement"], "correct": 0 },
+    { "q": "Que faut-il pour un compte Apple d'organisation ?", "options": ["Un numéro D-U-N-S de l'entreprise", "Rien", "Un iPad", "Une adresse en Europe"], "correct": 0 },
+    { "q": "Que faut-il pour compiler une application iOS ?", "options": ["Un Mac avec Xcode ou un service de compilation dans le cloud", "Un téléphone Android", "Rien", "Une imprimante"], "correct": 0 },
+    { "q": "Que prévoir pour la création et la vérification des comptes ?", "options": ["Plusieurs semaines dans le planning", "Une heure", "Rien", "Le jour de la publication"], "correct": 0 },
+    { "q": "Que fait la signature des applications par Google Play ?", "options": ["Google conserve la clé de signature finale", "Elle supprime la clé", "Elle publie sans test", "Elle traduit l'application"], "correct": 0 },
+    { "q": "Que montre Android vitals ?", "options": ["Plantages, blocages, démarrage lent et batterie", "Le prix des téléphones", "Les avis seulement", "Rien"], "correct": 0 },
+    { "q": "À quoi sert TestFlight ?", "options": ["Faire tester une application iPhone avant publication", "Payer Apple", "Compiler pour Android", "Héberger une base de données"], "correct": 0 },
+    { "q": "Que faire si une application permet de créer un compte ?", "options": ["Permettre aussi de le supprimer depuis l'application", "Rien", "Interdire la suppression", "Cacher le compte"], "correct": 0 },
+    { "q": "Quel outil détaille les plantages par appareil ?", "options": ["Firebase Crashlytics", "Canva", "Audacity", "Figma"], "correct": 0 },
+    { "q": "Combien de solutions de gestion d'état utiliser ?", "options": ["Une seule dans tout le projet", "Trois mélangées", "Aucune", "Une par écran"], "correct": 0 },
+    { "q": "Que vérifie un test de widget ?", "options": ["Un écran ou un composant", "Le serveur", "Le prix", "La traduction de la fiche"], "correct": 0 },
+    { "q": "Que fait flutter analyze ?", "options": ["Il analyse le code à la recherche de problèmes", "Il publie l'application", "Il supprime le projet", "Il traduit"], "correct": 0 },
+    { "q": "Pourquoi utiliser ListView.builder ?", "options": ["Construire les éléments à la demande pour un défilement fluide", "Ajouter des images", "Payer", "Traduire"], "correct": 0 },
+    { "q": "Que montrer à l'utilisateur hors connexion ?", "options": ["Un indicateur hors connexion et en attente d'envoi", "Rien", "Un plantage", "Une publicité"], "correct": 0 },
+    { "q": "Que faut-il prévoir pour les traductions ?", "options": ["Des écrans qui s'adaptent à des textes plus longs", "Des textes coupés", "Une seule langue", "Rien"], "correct": 0 },
+    { "q": "Pour un abonnement à du contenu numérique dans l'application, que faut-il souvent ?", "options": ["Passer par le système de paiement du magasin", "Un virement direct obligatoire", "Rien", "Un paiement en espèces"], "correct": 0 },
+    { "q": "Où stocker un jeton de connexion sur l'appareil ?", "options": ["Dans un stockage chiffré", "Dans un fichier texte public", "Dans une capture d'écran", "Dans le nom de l'application"], "correct": 0 },
+    { "q": "À quoi servent les libellés Semantics ?", "options": ["Rendre l'application lisible par les lecteurs d'écran", "Colorer les boutons", "Compresser les images", "Payer"], "correct": 0 },
+    { "q": "Que couvre la garantie après livraison ?", "options": ["La correction gratuite des bugs pendant une période", "Toutes les nouvelles fonctions", "Rien", "Les frais des magasins"], "correct": 0 },
+    { "q": "Que contient la maintenance mensuelle ?", "options": ["Mises à jour, suivi des plantages et petites corrections", "Une nouvelle application chaque mois", "Rien", "Le design complet"], "correct": 0 },
+    { "q": "Vers quoi peut évoluer un développeur mobile ?", "options": ["Responsable technique, natif avancé ou éditeur d'applications", "Plomberie", "Rien", "Retouche photo uniquement"], "correct": 0 }
+  ]
+}
