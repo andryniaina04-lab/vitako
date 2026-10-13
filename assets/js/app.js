@@ -351,7 +351,7 @@ function home() {
     <div class="lp-hero-in">
       <div class="lp-hero-txt">
         <div class="eyebrow lp-eyebrow">Formations en ligne depuis Madagascar</div>
-        <h1>Apprends un métier à distance. <em>Termine-le.</em></h1>
+        <h1>Apprends un <em>métier</em> à <em>distance</em>.</h1>
         <p class="lp-lead">${nJobs} métiers du freelance et du télétravail, en leçons courtes et concrètes. Chaque formation réussie te donne une attestation vérifiable à montrer à tes clients.</p>
         <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a></div>
       </div>
