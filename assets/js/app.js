@@ -249,7 +249,7 @@ function searchPanel() {
   if (!list.length) {
     return `<div class="hs-sec"><p class="hs-empty">Aucun métier ne correspond à « ${esc(q)} ».</p><div class="eyebrow">Essayez plutôt</div>${termChips}</div>`;
   }
-  return `<div class="hs-sec"><div class="hs-count">${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations</div>
+  return `<div class="hs-sec"><div class="hs-count">${countLabel(list)}</div>
     <ul class="hs-list">${list.map(hsRow).join('')}</ul></div>`;
 }
 function refreshSearch() {
@@ -266,6 +266,11 @@ function levelStatus(c) {
   const n = doneSet(c.id).size;
   return n ? `<span class="pill">${n}/${c.modules.length}</span>` : '';
 }
+const countLabel = (jobs) => {
+  const nc = jobs.reduce((n, j) => n + j.courses.length, 0);
+  const nm = jobs.filter((j) => !j.single).length;
+  return nm ? `${jobs.length} métier${jobs.length > 1 ? 's' : ''} · ${nc} formation${nc > 1 ? 's' : ''}` : `${nc} formation${nc > 1 ? 's' : ''}`;
+};
 function catalogGrid() {
   const list = JOBS.filter((j) => S.filter.dom === 'all' || j.dom.id === S.filter.dom);
   const locked = !hasAccess();
@@ -277,7 +282,7 @@ function catalogGrid() {
       <div class="lvls">${j.courses.map((c) => `<a class="lv" href="#/formation/${c.id}"><span>${c.levelName} <small>· ${c.hours} h</small></span>
         <span class="r">${levelStatus(c)}${locked && c.published ? `<span class="lock" title="Abonnement requis">${I.lock}</span>` : ''}</span></a>`).join('')}</div>
     </div>`).join('');
-  return { count: `${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations`, html: cards || '<p class="muted">Aucun métier dans ce domaine.</p>' };
+  return { count: countLabel(list), html: cards || '<p class="muted">Aucun métier dans ce domaine.</p>' };
 }
 function catalog() {
   const published = COURSES.filter((c) => c.published).length;
