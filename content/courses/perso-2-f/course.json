@@ -1,0 +1,92 @@
+{
+  "id": "perso-2-f",
+  "hours": 8,
+  "description": "En télétravail, on peut travailler toute la journée sans avancer. Cette formation pratique, en 5 modules, aide à organiser ses journées et à tenir ses délais malgré les imprévus : journal de temps, voleurs de temps, multitâche et énergie, matrice urgent et important, règle des 80/20, 3 priorités par jour, estimation des durées, Google Agenda, Google Tasks, méthode Pomodoro, tâches hors ligne pour les coupures, cas pratique d'une assistante virtuelle à trois clients, routines et prévention de la surcharge. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Mesurer où part son temps et repérer ses voleurs de temps",
+    "Choisir ses priorités avec la matrice urgent et important et la règle des 80/20",
+    "Estimer ses durées avec une marge réaliste",
+    "Organiser ses journées avec Google Agenda, Google Tasks et la méthode Pomodoro",
+    "Gérer plusieurs clients et les imprévus comme les coupures",
+    "Installer des routines durables et éviter la surcharge"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre où part son temps",
+      "summary": "Journal de temps sur 3 jours, 4 catégories, voleurs de temps du télétravail, coût du multitâche et des interruptions, courbe d'énergie.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant de changer son organisation ?", "options": ["Mesurer son temps avec un journal", "Acheter un logiciel", "Travailler plus tard", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce que le coût de reprise ?", "options": ["Le temps pour retrouver sa concentration après une interruption", "Le prix d'un ordinateur", "Une pénalité de retard", "Le coût d'Internet"], "correct": 0 },
+        { "q": "Quand placer les tâches importantes ?", "options": ["Au moment de plus forte énergie", "Après le déjeuner", "Tard le soir", "Au hasard"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : priorités, 80/20 et estimation des durées",
+      "summary": "Matrice d'Eisenhower et importance de la case 2, règle des 80/20, 3 priorités par jour, estimation des durées avec une marge de 50 %.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire des tâches importantes mais pas urgentes ?", "options": ["Les planifier", "Les éliminer", "Les ignorer", "Les déléguer toujours"], "correct": 0 },
+        { "q": "Combien de priorités choisir par jour ?", "options": ["3", "20", "Aucune", "1 par heure"], "correct": 0 },
+        { "q": "Par combien multiplier une estimation de durée ?", "options": ["1,5", "0,5", "10", "1"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Agenda, Google Tasks et Pomodoro",
+      "summary": "Blocage du temps par couleurs, 4 listes dont « En attente », méthode Pomodoro, regroupement des tâches, espace de travail et tâches hors ligne.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien dure un Pomodoro de travail ?", "options": ["25 minutes", "2 heures", "5 minutes", "1 jour"], "correct": 0 },
+        { "q": "À quoi sert la liste « En attente » ?", "options": ["Noter ce que l'on attend d'un client", "Ranger ses loisirs", "Lister ses dettes", "Rien"], "correct": 0 },
+        { "q": "Que faire pendant une coupure de courant ?", "options": ["Passer à une liste de tâches hors ligne", "Attendre sans rien faire", "Arrêter la journée", "Défiler sur les réseaux"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : la journée de Fanja",
+      "summary": "Assistante virtuelle à trois clients : journée avant et après, messages regroupés, une couleur et une liste par client, décalage horaire, réaction aux imprévus.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand Fanja traite-t-elle les messages ?", "options": ["À 10 h et à 15 h", "Dès qu'ils arrivent", "La nuit", "Jamais"], "correct": 0 },
+        { "q": "Comment éviter de mélanger les clients ?", "options": ["Une couleur et une liste par client", "Tout dans une seule note", "Ne rien noter", "Changer de client chaque jour"], "correct": 0 },
+        { "q": "Que fait Fanja si une tâche prend plus de temps ?", "options": ["Elle prévient le client avant le délai", "Elle ne dit rien", "Elle abandonne la tâche", "Elle accuse le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : un système durable",
+      "summary": "Routines du matin et du soir, semaine type avec repos, réponses pour protéger son temps, signaux de surcharge et décisions.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert la routine du soir ?", "options": ["Marquer la fin de la journée et préparer demain", "Travailler plus tard", "Regarder des vidéos", "Rien"], "correct": 0 },
+        { "q": "Que répondre à une tâche hors contrat ?", "options": ["Proposer un prix et un délai supplémentaires", "La faire gratuitement", "Ignorer le client", "Se fâcher"], "correct": 0 },
+        { "q": "Être occupé en permanence, c'est :", "options": ["Souvent le signe d'une charge trop lourde ou de prix trop bas", "La preuve d'une bonne productivité", "Normal et sans risque", "Obligatoire"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Combien de jours tenir le journal de temps ?", "options": ["3 jours", "1 heure", "1 an", "Jamais"], "correct": 0 },
+    { "q": "Quelle catégorie pour « défiler sans but » ?", "options": ["Temps perdu", "Travail productif", "Travail nécessaire", "Vie personnelle"], "correct": 0 },
+    { "q": "Pourquoi éviter le multitâche ?", "options": ["Il cause plus d'erreurs et de fatigue", "Il est interdit", "Il est trop rapide", "Il est toujours meilleur"], "correct": 0 },
+    { "q": "Comment expliquer son travail à sa famille ?", "options": ["Annoncer ses horaires de travail simplement", "Ne rien dire", "Travailler la nuit uniquement", "Se fâcher"], "correct": 0 },
+    { "q": "Que faire des tâches urgentes et importantes ?", "options": ["Les faire maintenant", "Les éliminer", "Les reporter d'un mois", "Les oublier"], "correct": 0 },
+    { "q": "Que construit la case 2 de la matrice ?", "options": ["L'avenir : prospection et apprentissage", "Rien", "Les urgences", "Les loisirs"], "correct": 0 },
+    { "q": "Que dit la règle des 80/20 ?", "options": ["Une petite partie des efforts produit la plupart des résultats", "Il faut travailler 80 heures", "80 clients minimum", "20 % de pause obligatoire"], "correct": 0 },
+    { "q": "Par quoi commencer la journée ?", "options": ["La priorité n° 1", "Les réseaux sociaux", "Les messages non urgents", "Une sieste"], "correct": 0 },
+    { "q": "Quels imprévus intégrer aux délais ?", "options": ["Coupures de courant et connexion lente", "Aucun", "Les vacances des autres", "La météo d'un autre pays"], "correct": 0 },
+    { "q": "Qu'est-ce que le blocage du temps ?", "options": ["Réserver des plages dans son agenda pour des tâches précises", "Bloquer ses clients", "Éteindre son téléphone toute la journée", "Arrêter de travailler"], "correct": 0 },
+    { "q": "Que mettre en mode « Ne pas déranger » pendant un Pomodoro ?", "options": ["Le téléphone", "L'ordinateur entier", "La famille", "Rien"], "correct": 0 },
+    { "q": "Combien de fois répéter le Pomodoro avant une longue pause ?", "options": ["4 fois", "1 fois", "10 fois", "Jamais"], "correct": 0 },
+    { "q": "Comment traiter les messages efficacement ?", "options": ["Dans 2 ou 3 créneaux par jour", "Dès chaque notification", "Une fois par mois", "Jamais"], "correct": 0 },
+    { "q": "Pourquoi un coin réservé au travail ?", "options": ["Le cerveau l'associe à la concentration", "Pour impressionner", "Ce n'est pas utile", "Pour dormir"], "correct": 0 },
+    { "q": "Quel était le problème de Fanja au départ ?", "options": ["Elle répondait à tout immédiatement et travaillait de 7 h à 22 h", "Elle n'avait pas de clients", "Elle n'avait pas d'ordinateur", "Elle refusait de travailler"], "correct": 0 },
+    { "q": "Que fait Fanja pendant le repas ?", "options": ["Elle mange loin de l'écran", "Elle travaille", "Elle répond aux clients", "Elle saute le repas"], "correct": 0 },
+    { "q": "Comment ne pas oublier une tâche qui revient chaque semaine ?", "options": ["Créer une tâche récurrente avec rappel", "S'en souvenir de tête", "Demander au client chaque fois", "L'ignorer"], "correct": 0 },
+    { "q": "Combien de temps dure la routine du matin ?", "options": ["Environ 15 minutes", "3 heures", "1 minute", "Une journée"], "correct": 0 },
+    { "q": "Que répondre à une nouvelle mission quand l'agenda est plein ?", "options": ["Proposer une date de début réaliste", "Accepter et travailler la nuit", "Refuser sans explication", "Ne pas répondre"], "correct": 0 },
+    { "q": "Que faire en cas de fatigue permanente ?", "options": ["Réduire la charge et prendre soin de son équilibre", "Travailler plus", "Supprimer les pauses", "L'ignorer"], "correct": 0 }
+  ]
+}

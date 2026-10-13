@@ -3552,6 +3552,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-2-f": {
+  "hours": 8,
+  "description": "En télétravail, on peut travailler toute la journée sans avancer. Cette formation pratique, en 5 modules, aide à organiser ses journées et à tenir ses délais malgré les imprévus : journal de temps, voleurs de temps, multitâche et énergie, matrice urgent et important, règle des 80/20, 3 priorités par jour, estimation des durées, Google Agenda, Google Tasks, méthode Pomodoro, tâches hors ligne pour les coupures, cas pratique d'une assistante virtuelle à trois clients, routines et prévention de la surcharge. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Mesurer où part son temps et repérer ses voleurs de temps",
+   "Choisir ses priorités avec la matrice urgent et important et la règle des 80/20",
+   "Estimer ses durées avec une marge réaliste",
+   "Organiser ses journées avec Google Agenda, Google Tasks et la méthode Pomodoro",
+   "Gérer plusieurs clients et les imprévus comme les coupures",
+   "Installer des routines durables et éviter la surcharge"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre où part son temps",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : priorités, 80/20 et estimation des durées",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : Google Agenda, Google Tasks et Pomodoro",
+    "minutes": 5
+   },
+   {
+    "title": "Mise en situation : la journée de Fanja",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : un système durable",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

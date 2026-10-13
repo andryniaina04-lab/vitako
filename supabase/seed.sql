@@ -105,7 +105,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true),
   ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true),
   ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true),
-  ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 12, false),
+  ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true),
   ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 13, false),
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 14, false),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 10, false),
@@ -55163,6 +55163,430 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelle est la 5e étape pour se relever après un échec ?', '["Repartir","Abandonner","Oublier","Se blâmer"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Comment inspirer les autres ?', '["Partager ce qu''on a appris et tenir ses promesses","Garder ses méthodes secrètes","Critiquer les débutants","Se vanter"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que faire si une période difficile dure avec un grand épuisement ?', '["En parler à ses proches et à un professionnel de santé","L''ignorer","Tout porter seul","Travailler davantage"]'::jsonb, 0);
+
+-- perso-2-f
+delete from public.exam_questions where course_id = 'perso-2-f';
+delete from public.module_questions where course_id = 'perso-2-f';
+delete from public.lessons where course_id = 'perso-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-2-f', 0, 'Comprendre où part son temps', 'Journal de temps sur 3 jours, 4 catégories, voleurs de temps du télétravail, coût du multitâche et des interruptions, courbe d''énergie.', 'En télétravail, on a souvent l''impression d''avoir travaillé toute la journée sans avoir avancé. Avant de chercher des méthodes, il faut comprendre où part réellement votre temps. Ce premier module vous aide à faire ce diagnostic.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Tenir un journal de temps pendant quelques jours.
+> 2. Reconnaître les principaux voleurs de temps du télétravail.
+> 3. Comprendre le coût du multitâche et des interruptions.
+> 4. Repérer vos moments de forte et de faible énergie.
+
+## Où part votre temps ?
+
+Pendant 3 jours, notez ce que vous faites toutes les 30 minutes, sans rien changer à vos habitudes.
+
+```
+08:00 - 08:30  Messages WhatsApp (famille et clients mélangés)
+08:30 - 09:00  Facebook « juste 5 minutes »
+09:00 - 10:30  Traduction pour le client A
+10:30 - 11:00  Coupure de courant, attente
+11:00 - 11:30  Recherche d''offres sur une plateforme
+...
+```
+
+Puis classez chaque bloc :
+
+| Catégorie | Exemples |
+| --- | --- |
+| **Travail productif** | Réaliser une mission, apprendre une compétence utile |
+| **Travail nécessaire** | Factures, messages des clients, prospection |
+| **Temps perdu** | Réseaux sociaux sans but, attente sans plan B |
+| **Vie personnelle** | Repas, famille, repos (indispensable !) |
+
+## Les voleurs de temps du télétravail
+
+| Voleur | Exemple | Effet |
+| --- | --- | --- |
+| **Notifications** | Chaque message fait vibrer le téléphone | Concentration cassée toutes les 5 minutes |
+| **Réseaux sociaux** | « Juste un coup d''œil » | 30 minutes disparaissent |
+| **Interruptions à la maison** | Un proche demande un service | Difficile de reprendre le fil |
+| **Tâches sans fin** | Un logo retouché 20 fois | Le reste prend du retard |
+| **Absence de plan** | On commence par ce qui arrive | On traite l''urgent, jamais l''important |
+| **Imprévus non anticipés** | Coupure de courant, connexion lente | Journée perdue sans solution de secours |
+
+> [!madagascar]
+> Travailler à la maison, c''est souvent partager l''espace avec la famille, qui ne comprend pas toujours que vous « travaillez » devant un écran. Expliquer simplement vos horaires de travail et ce que vous faites aide beaucoup : « De 8 h à 12 h, je travaille pour des clients, comme si j''étais au bureau. »
+
+## Le coût du multitâche
+
+> [!definition] Coût de reprise
+> Le temps nécessaire pour retrouver sa concentration après une interruption. Il peut atteindre plusieurs minutes à chaque fois. Dix interruptions dans une matinée peuvent faire perdre plus d''une heure.
+
+| Multitâche | Une tâche à la fois |
+| --- | --- |
+| On saute de la traduction aux messages, puis à Facebook | On termine un bloc de traduction, puis on traite les messages |
+| Plus d''erreurs | Meilleure qualité |
+| Fatigue rapide | Énergie mieux gérée |
+
+## Votre énergie
+
+| Moment | Énergie (exemple) | Type de tâche adapté |
+| --- | --- | --- |
+| Tôt le matin | Forte | Travail difficile et créatif |
+| Fin de matinée | Bonne | Missions des clients |
+| Après le déjeuner | Faible | Messages, factures, tâches simples |
+| Fin d''après-midi | Moyenne | Prospection, apprentissage |
+
+> [!astuce]
+> Placez vos tâches les plus importantes à votre moment de **plus forte énergie**, et protégez ce moment comme un rendez-vous.
+
+> [!retenir]
+> - Mesurer avant de changer : le journal de temps.
+> - Notifications, réseaux, interruptions, tâches sans fin, absence de plan.
+> - Le multitâche coûte cher : une tâche à la fois.
+> - Les tâches importantes au moment de forte énergie.
+
+## Exercice pratique : votre diagnostic
+
+> [!exercice] Exercice pratique · 3 jours
+> 1. Tenez votre journal de temps pendant 3 jours, par tranches de 30 minutes.
+> 2. Classez chaque tranche dans les 4 catégories et calculez les heures de chacune.
+> 3. Notez vos 3 plus grands voleurs de temps.
+> 4. Repérez vos moments de forte énergie.
+>
+> **À livrer** : votre journal, vos totaux par catégorie, vos 3 voleurs de temps et votre courbe d''énergie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 0, 0, 'Que faire avant de changer son organisation ?', '["Mesurer son temps avec un journal","Travailler plus tard","Rien","Acheter un logiciel"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 0, 1, 'Qu''est-ce que le coût de reprise ?', '["Le coût d''Internet","Le prix d''un ordinateur","Le temps pour retrouver sa concentration après une interruption","Une pénalité de retard"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 0, 2, 'Quand placer les tâches importantes ?', '["Après le déjeuner","Au moment de plus forte énergie","Au hasard","Tard le soir"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-2-f', 1, 'Les bases : priorités, 80/20 et estimation des durées', 'Matrice d''Eisenhower et importance de la case 2, règle des 80/20, 3 priorités par jour, estimation des durées avec une marge de 50 %.', 'Le temps est limité ; il faut choisir. Ce module vous donne les règles de base pour décider quoi faire en premier, estimer correctement vos durées et ne plus vous laisser déborder par l''urgent.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Classer vos tâches avec la matrice urgent et important.
+> 2. Appliquer la règle des 80/20.
+> 3. Choisir 3 priorités par jour.
+> 4. Estimer la durée de vos tâches avec une marge.
+
+## Urgent ou important ?
+
+| | **Urgent** | **Pas urgent** |
+| --- | --- | --- |
+| **Important** | 1. Faire maintenant (livraison demain) | 2. Planifier (apprendre, prospecter, préparer) |
+| **Pas important** | 3. Réduire ou regrouper (certains messages) | 4. Éliminer (défilement sans but) |
+
+> [!definition] Matrice d''Eisenhower
+> Un tableau en 4 cases qui classe les tâches selon leur urgence et leur importance. Les freelances qui progressent consacrent du temps chaque semaine à la case 2 : ce qui n''est pas urgent aujourd''hui, mais construit l''avenir.
+
+> [!attention]
+> Si vous ne planifiez jamais la case 2 (prospecter, apprendre), vous vivrez en permanence dans la case 1 : un client qui part, et c''est la panique, car rien n''a été préparé.
+
+## La règle des 80/20
+
+Souvent, une petite partie des efforts produit la plus grande partie des résultats.
+
+| Constat possible | Décision |
+| --- | --- |
+| 2 clients sur 8 font 70 % de vos revenus | Les soigner en priorité |
+| 1 plateforme vous apporte presque toutes vos missions | Y concentrer votre prospection |
+| 20 % des retouches améliorent vraiment le résultat | S''arrêter quand le client est satisfait |
+
+## Les 3 priorités du jour
+
+Chaque soir, choisissez **3 tâches importantes** pour le lendemain. Le reste est du bonus.
+
+```
+Priorités du mardi
+1. Livrer la traduction du client A (2 h)
+2. Envoyer 3 propositions sur la plateforme (1 h)
+3. Terminer le module 2 de ma formation (45 min)
+```
+
+> [!astuce]
+> Commencez la journée par la priorité n° 1, **avant** d''ouvrir les réseaux sociaux. Une journée où les 3 priorités sont faites est une bonne journée, même si la liste des petites tâches reste longue.
+
+## Estimer les durées
+
+| Erreur fréquente | Bonne pratique |
+| --- | --- |
+| « Ça me prendra 1 heure » sans vérifier | Noter le temps réel des tâches similaires |
+| Oublier les échanges avec le client | Compter les messages et les corrections |
+| Oublier les imprévus | Ajouter une marge de 50 % (multiplier par 1,5) |
+
+> [!madagascar]
+> Les coupures de courant et les ralentissements de connexion font partie des imprévus fréquents. Intégrez-les dans vos estimations et dans les délais annoncés aux clients, plutôt que de devoir vous excuser après coup.
+
+> [!retenir]
+> - Urgent, important : faire, planifier, réduire, éliminer.
+> - La case 2 construit l''avenir.
+> - La règle des 80/20 pour concentrer ses efforts.
+> - 3 priorités par jour, durées multipliées par 1,5.
+
+## Exercice pratique : vos priorités
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Listez toutes vos tâches de la semaine et placez-les dans la matrice.
+> 2. Appliquez la règle des 80/20 à vos clients ou à vos sources de missions.
+> 3. Écrivez vos 3 priorités pour demain avec leur durée estimée.
+> 4. Le lendemain soir, comparez la durée réelle et la durée estimée.
+>
+> **À livrer** : votre matrice, votre analyse 80/20, vos priorités et la comparaison des durées.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 1, 0, 'Que faire des tâches importantes mais pas urgentes ?', '["Les déléguer toujours","Les planifier","Les ignorer","Les éliminer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 1, 1, 'Combien de priorités choisir par jour ?', '["20","1 par heure","3","Aucune"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 1, 2, 'Par combien multiplier une estimation de durée ?', '["1,5","1","0,5","10"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-2-f', 2, 'Les outils : Google Agenda, Google Tasks et Pomodoro', 'Blocage du temps par couleurs, 4 listes dont « En attente », méthode Pomodoro, regroupement des tâches, espace de travail et tâches hors ligne.', 'Ce module vous fait prendre en main des outils gratuits et des méthodes simples pour organiser vos journées : Google Agenda pour bloquer votre temps, Google Tasks pour vos listes, la méthode Pomodoro pour rester concentré et un espace de travail qui vous aide.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Bloquer votre temps dans Google Agenda.
+> 2. Gérer vos listes de tâches avec Google Tasks.
+> 3. Travailler avec la méthode Pomodoro.
+> 4. Regrouper les tâches et préparer votre espace de travail.
+
+## Bloquer son temps dans Google Agenda
+
+> [!definition] Blocage du temps
+> Réserver dans son agenda des plages horaires pour des tâches précises, comme des rendez-vous avec soi-même. Ce qui a une place dans l''agenda a beaucoup plus de chances d''être fait.
+
+| Bloc | Exemple | Couleur conseillée |
+| --- | --- | --- |
+| **Travail profond** | 8 h - 10 h : mission client A | Vert |
+| **Communication** | 11 h - 11 h 30 : messages et appels | Bleu |
+| **Prospection** | 15 h - 16 h : propositions | Orange |
+| **Apprentissage** | 16 h - 16 h 45 : formation | Violet |
+| **Pauses et repas** | 12 h - 13 h 30 | Gris |
+
+> [!astuce]
+> Activez les **notifications de Google Agenda** 10 minutes avant chaque bloc, et partagez votre agenda avec vos clients réguliers pour qu''ils voient vos disponibilités sans tout le détail.
+
+## Google Tasks : une seule liste fiable
+
+| Liste | Contenu |
+| --- | --- |
+| **Aujourd''hui** | Les 3 priorités et quelques petites tâches |
+| **Cette semaine** | Ce qui doit être fait avant vendredi |
+| **Plus tard** | Idées et projets sans date |
+| **En attente** | Ce que vous attendez d''un client (validation, paiement) |
+
+Tout ce qui vous passe par la tête va dans une liste. Votre cerveau n''a plus à s''en souvenir et peut se concentrer.
+
+## La méthode Pomodoro
+
+| Étape | Durée |
+| --- | --- |
+| Travailler sur une seule tâche, sans interruption | 25 minutes |
+| Pause courte (se lever, boire de l''eau) | 5 minutes |
+| Répéter 4 fois | |
+| Pause longue | 15 à 30 minutes |
+
+> [!astuce]
+> Pendant un Pomodoro, mettez le téléphone en mode « Ne pas déranger » et posez-le hors de portée. Si une idée vous vient, notez-la dans « Plus tard » et continuez.
+
+## Regrouper les tâches
+
+| Au lieu de… | Faire… |
+| --- | --- |
+| Répondre aux messages dès qu''ils arrivent | 2 ou 3 créneaux par jour pour les messages |
+| Facturer après chaque mission | Une séance de facturation le vendredi |
+| Chercher des offres à tout moment | Un bloc de prospection quotidien |
+
+## Un espace de travail qui aide
+
+| Élément | Pourquoi |
+| --- | --- |
+| **Un coin réservé au travail**, même petit | Le cerveau associe ce lieu à la concentration |
+| **Batterie externe, onduleur ou plan B pour la connexion** | Ne pas perdre une journée à cause d''une coupure |
+| **Casque ou écouteurs** | Réduire le bruit de la maison ou du quartier |
+| **Bonne lumière et chaise correcte** | Moins de fatigue |
+
+> [!madagascar]
+> Gardez une **liste de tâches « hors ligne »** à faire pendant les coupures : relire un document imprimé, préparer un devis sur papier, planifier la semaine, apprendre avec un cours téléchargé. La coupure devient un changement d''activité plutôt qu''une perte de temps.
+
+> [!retenir]
+> - Bloquer son temps par couleurs dans Google Agenda.
+> - Une liste fiable dans Google Tasks, avec une liste « En attente ».
+> - Pomodoro : 25 minutes de concentration, 5 minutes de pause.
+> - Regrouper les tâches, préparer son espace et ses tâches hors ligne.
+
+## Exercice pratique : votre semaine organisée
+
+> [!exercice] Exercice pratique · 1 heure, puis 1 semaine
+> 1. Créez vos blocs de la semaine dans Google Agenda avec des couleurs.
+> 2. Créez vos 4 listes dans Google Tasks et videz votre tête dedans.
+> 3. Faites au moins 4 Pomodoros par jour pendant 5 jours.
+> 4. Écrivez votre liste de 10 tâches à faire pendant une coupure.
+>
+> **À livrer** : une capture de votre agenda, vos listes, votre nombre de Pomodoros par jour et votre liste hors ligne.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 2, 0, 'Combien dure un Pomodoro de travail ?', '["1 jour","25 minutes","5 minutes","2 heures"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 2, 1, 'À quoi sert la liste « En attente » ?', '["Ranger ses loisirs","Noter ce que l''on attend d''un client","Lister ses dettes","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 2, 2, 'Que faire pendant une coupure de courant ?', '["Défiler sur les réseaux","Arrêter la journée","Attendre sans rien faire","Passer à une liste de tâches hors ligne"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-2-f', 3, 'Mise en situation : la journée de Fanja', 'Assistante virtuelle à trois clients : journée avant et après, messages regroupés, une couleur et une liste par client, décalage horaire, réaction aux imprévus.', 'Dans ce module, vous suivez Fanja, assistante virtuelle à Antananarivo, qui travaille pour trois clients et se sent débordée. Vous verrez comment elle réorganise ses journées avec les méthodes de la formation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une journée désorganisée.
+> 2. Construire une journée type réaliste.
+> 3. Gérer plusieurs clients sans tout mélanger.
+> 4. Réagir à un imprévu sans perdre la journée.
+
+## Le cas pratique : Fanja
+
+> [!exemple] Point de départ
+> **Fanja**, 27 ans, est assistante virtuelle pour 3 clients : une agence immobilière à La Réunion, un coach en France et une boutique en ligne à Antananarivo. Elle travaille de 7 h à 22 h, répond à tous les messages immédiatement, oublie parfois des tâches et se sent épuisée. Deux clients se sont plaints de retards.
+
+## Sa journée avant
+
+| Heure | Ce qui se passe |
+| --- | --- |
+| 7 h | Ouvre WhatsApp : 25 messages, répond à tout |
+| 9 h | Commence un tableau pour l''agence, interrompue par le coach |
+| 10 h | Coupure de courant : attend, défile sur Facebook depuis son téléphone |
+| 13 h | Mange devant l''ordinateur |
+| 15 h | Se rend compte qu''elle a oublié une publication de la boutique |
+| 21 h | Termine le tableau de l''agence, fatiguée |
+
+## Sa journée après
+
+| Heure | Bloc |
+| --- | --- |
+| 7 h 30 - 8 h | Planification : relire les 3 priorités, vérifier l''agenda |
+| 8 h - 10 h | Travail profond : priorité n° 1 (en Pomodoros, téléphone en silence) |
+| 10 h - 10 h 30 | Messages des 3 clients |
+| 10 h 30 - 12 h | Priorité n° 2 |
+| 12 h - 13 h 30 | Repas loin de l''écran, repos |
+| 13 h 30 - 15 h | Tâches simples et récurrentes des clients |
+| 15 h - 15 h 30 | Messages des 3 clients |
+| 15 h 30 - 16 h 30 | Priorité n° 3, prospection ou formation |
+| 16 h 30 - 17 h | Revue de la journée, priorités de demain |
+
+> [!astuce]
+> Fanja a envoyé un message à ses clients : « Pour mieux vous servir, je traite les messages à 10 h et à 15 h, heure de Madagascar. Pour une vraie urgence, appelez-moi. » Aucun client ne s''est plaint ; deux l''ont remerciée pour sa clarté.
+
+## Gérer plusieurs clients
+
+| Outil | Usage de Fanja |
+| --- | --- |
+| **Une couleur par client** dans Google Agenda | Bleu pour l''agence, violet pour le coach, orange pour la boutique |
+| **Une liste par client** dans Google Tasks | Rien ne se perd entre deux clients |
+| **Tâches récurrentes** | La publication de la boutique chaque mardi et vendredi, rappel automatique |
+| **Décalage horaire noté** | La Réunion : +1 h ; France : -1 h ou -2 h selon la saison |
+
+## Réagir à un imprévu
+
+| Imprévu | Réaction de Fanja |
+| --- | --- |
+| **Coupure de courant** | Elle passe à sa liste hors ligne (planifier, rédiger au brouillon sur papier) |
+| **Demande urgente d''un client** | Elle vérifie : est-ce vraiment urgent et important ? Si oui, elle décale une priorité et prévient |
+| **Tâche plus longue que prévu** | Elle prévient le client avant le délai et propose une nouvelle heure |
+
+> [!retenir]
+> - Analyser sa journée pour voir les pertes de temps.
+> - Une journée type avec travail profond, messages regroupés et vraie pause.
+> - Une couleur et une liste par client, des tâches récurrentes.
+> - Face à l''imprévu : plan B, tri urgent et important, prévenir tôt.
+
+## Exercice pratique : votre journée type
+
+> [!exercice] Exercice pratique · 1 heure, puis 1 semaine
+> 1. Décrivez votre journée actuelle heure par heure.
+> 2. Construisez votre journée type avec des blocs réalistes.
+> 3. Rédigez le message à vos clients pour annoncer vos créneaux de réponse.
+> 4. Appliquez votre journée type pendant 5 jours et notez ce qui doit être ajusté.
+>
+> **À livrer** : votre journée avant et après, votre message et vos ajustements.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 3, 0, 'Quand Fanja traite-t-elle les messages ?', '["Dès qu''ils arrivent","Jamais","À 10 h et à 15 h","La nuit"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 3, 1, 'Comment éviter de mélanger les clients ?', '["Ne rien noter","Tout dans une seule note","Une couleur et une liste par client","Changer de client chaque jour"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 3, 2, 'Que fait Fanja si une tâche prend plus de temps ?', '["Elle ne dit rien","Elle prévient le client avant le délai","Elle accuse le client","Elle abandonne la tâche"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-2-f', 4, 'Mon plan d''action : un système durable', 'Routines du matin et du soir, semaine type avec repos, réponses pour protéger son temps, signaux de surcharge et décisions.', 'Une bonne organisation tient dans la durée si elle est simple et respectueuse de votre énergie. Ce dernier module vous aide à installer des routines, à protéger votre temps et à éviter la surcharge.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Installer une routine de début et de fin de journée.
+> 2. Construire votre semaine type.
+> 3. Protéger votre temps en disant non.
+> 4. Repérer et éviter la surcharge.
+
+## Les routines de début et de fin
+
+| Routine du matin (15 minutes) | Routine du soir (15 minutes) |
+| --- | --- |
+| Relire les 3 priorités du jour | Cocher ce qui est fait |
+| Vérifier l''agenda | Choisir les 3 priorités de demain |
+| Préparer l''eau, le chargeur, la batterie | Ranger le bureau et fermer les onglets |
+| Commencer la priorité n° 1 | Noter une réussite de la journée |
+
+> [!astuce]
+> La routine du soir marque la **fin de la journée de travail**. En télétravail, sans elle, on a tendance à continuer tard le soir et à mal se reposer.
+
+## Votre semaine type
+
+| Jour | Thème possible |
+| --- | --- |
+| **Lundi** | Planification de la semaine, missions |
+| **Mardi à jeudi** | Missions des clients, travail profond |
+| **Vendredi** | Livraisons, facturation, revue de la semaine |
+| **Samedi matin** (si besoin) | Formation, portfolio |
+| **Dimanche** | Repos |
+
+## Protéger son temps
+
+| Situation | Réponse possible |
+| --- | --- |
+| Un client demande une tâche hors contrat | « Avec plaisir, c''est une tâche supplémentaire : voici le prix et le délai. » |
+| Une demande pendant votre bloc de travail profond | « Je reviens vers vous à 10 h. » |
+| Une nouvelle mission alors que l''agenda est plein | « Je peux commencer le 15. Cela vous convient-il ? » |
+| Un proche vous demande un service pendant le travail | « Je travaille jusqu''à 12 h, je t''aide juste après. » |
+
+## Repérer la surcharge
+
+| Signal | Que faire |
+| --- | --- |
+| Vous travaillez tous les soirs et les week-ends | Revoir le nombre de missions ou augmenter les prix |
+| Les délais sont souvent dépassés | Revoir les estimations (multiplier par 1,5) |
+| Vous oubliez des tâches | Revenir à une seule liste fiable |
+| Fatigue permanente, sommeil perturbé | Réduire la charge et voir la formation Gestion du stress et équilibre de vie |
+
+> [!attention]
+> Être occupé n''est pas être productif. Si vous êtes débordé en permanence, le problème n''est souvent pas votre organisation, mais une charge trop lourde ou des prix trop bas. Parfois, la meilleure décision est de **refuser une mission**.
+
+> [!retenir]
+> - Une routine de 15 minutes le matin et le soir.
+> - Une semaine type avec un jour de repos.
+> - Protéger son temps avec des réponses claires et polies.
+> - Surveiller les signaux de surcharge.
+
+## Exercice pratique : votre système durable
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Écrivez vos routines du matin et du soir.
+> 2. Construisez votre semaine type dans Google Agenda.
+> 3. Préparez 4 réponses pour protéger votre temps, adaptées à votre métier.
+> 4. Faites le point sur vos signaux de surcharge et décidez d''un changement.
+>
+> **À livrer** : vos routines, une capture de votre semaine type, vos réponses et votre décision.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 4, 0, 'À quoi sert la routine du soir ?', '["Regarder des vidéos","Rien","Marquer la fin de la journée et préparer demain","Travailler plus tard"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 4, 1, 'Que répondre à une tâche hors contrat ?', '["Ignorer le client","La faire gratuitement","Proposer un prix et un délai supplémentaires","Se fâcher"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-2-f', 4, 2, 'Être occupé en permanence, c''est :', '["Obligatoire","Normal et sans risque","La preuve d''une bonne productivité","Souvent le signe d''une charge trop lourde ou de prix trop bas"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Combien de jours tenir le journal de temps ?', '["Jamais","1 an","1 heure","3 jours"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Quelle catégorie pour « défiler sans but » ?', '["Vie personnelle","Travail nécessaire","Temps perdu","Travail productif"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Pourquoi éviter le multitâche ?', '["Il est toujours meilleur","Il est interdit","Il est trop rapide","Il cause plus d''erreurs et de fatigue"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Comment expliquer son travail à sa famille ?', '["Travailler la nuit uniquement","Annoncer ses horaires de travail simplement","Ne rien dire","Se fâcher"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que faire des tâches urgentes et importantes ?', '["Les reporter d''un mois","Les oublier","Les éliminer","Les faire maintenant"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que construit la case 2 de la matrice ?', '["L''avenir : prospection et apprentissage","Rien","Les loisirs","Les urgences"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que dit la règle des 80/20 ?', '["Une petite partie des efforts produit la plupart des résultats","Il faut travailler 80 heures","20 % de pause obligatoire","80 clients minimum"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Par quoi commencer la journée ?', '["La priorité n° 1","Les messages non urgents","Une sieste","Les réseaux sociaux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Quels imprévus intégrer aux délais ?', '["Coupures de courant et connexion lente","La météo d''un autre pays","Les vacances des autres","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Qu''est-ce que le blocage du temps ?', '["Bloquer ses clients","Réserver des plages dans son agenda pour des tâches précises","Arrêter de travailler","Éteindre son téléphone toute la journée"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que mettre en mode « Ne pas déranger » pendant un Pomodoro ?', '["Rien","La famille","Le téléphone","L''ordinateur entier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Combien de fois répéter le Pomodoro avant une longue pause ?', '["Jamais","4 fois","10 fois","1 fois"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Comment traiter les messages efficacement ?', '["Dans 2 ou 3 créneaux par jour","Dès chaque notification","Une fois par mois","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Pourquoi un coin réservé au travail ?', '["Pour impressionner","Pour dormir","Le cerveau l''associe à la concentration","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Quel était le problème de Fanja au départ ?', '["Elle n''avait pas de clients","Elle répondait à tout immédiatement et travaillait de 7 h à 22 h","Elle n''avait pas d''ordinateur","Elle refusait de travailler"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que fait Fanja pendant le repas ?', '["Elle répond aux clients","Elle travaille","Elle mange loin de l''écran","Elle saute le repas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Comment ne pas oublier une tâche qui revient chaque semaine ?', '["L''ignorer","Demander au client chaque fois","S''en souvenir de tête","Créer une tâche récurrente avec rappel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Combien de temps dure la routine du matin ?', '["3 heures","1 minute","Une journée","Environ 15 minutes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que répondre à une nouvelle mission quand l''agenda est plein ?', '["Accepter et travailler la nuit","Refuser sans explication","Proposer une date de début réaliste","Ne pas répondre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que faire en cas de fatigue permanente ?', '["Réduire la charge et prendre soin de son équilibre","Travailler plus","L''ignorer","Supprimer les pauses"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';
