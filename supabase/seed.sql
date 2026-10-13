@@ -28,7 +28,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true),
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 20, true),
   ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 18, true),
-  ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
+  ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 17, true),
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
@@ -20943,6 +20943,550 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que faire des sauvegardes de la base ?', '["Les supprimer","Les publier","Les programmer chaque jour et tester une restauration","Ne jamais les tester"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Pourquoi associer l''API à un petit front-end dans le portfolio ?', '["Le recruteur comprend mieux un projet qu''il peut utiliser","Pour ralentir l''API","Pour cacher le code","C''est obligatoire"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle évolution demande Docker et l''intégration continue ?', '["Traducteur","DevOps","Professeur de langue","Graphiste"]'::jsonb, 1);
+
+-- dev-2-a
+delete from public.exam_questions where course_id = 'dev-2-a';
+delete from public.module_questions where course_id = 'dev-2-a';
+delete from public.lessons where course_id = 'dev-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-a', 0, 'Se spécialiser et réaliser un audit d''intégration', 'Six spécialités avancées et avantages depuis Madagascar, audit du responsive, de l''accessibilité, de la performance, du code, de la compatibilité et du référencement technique, résultats avant et après, offres à plus forte valeur.', 'Transformer une maquette en page web propre et adaptée au mobile ouvre les premières missions. Les intégrateurs les mieux payés vont plus loin : ils garantissent l''**accessibilité**, la **performance** et la **maintenabilité** du code, et deviennent les partenaires réguliers des agences et des équipes de design. Ce module vous aide à choisir votre spécialité et à proposer un audit d''intégration comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''intégration web.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit d''intégration d''un site.
+> 4. Présenter des résultats clairs et chiffrés.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Accessibilité** | Rendre les sites utilisables par tous, y compris avec un lecteur d''écran | WCAG, ARIA, tests au clavier et au lecteur d''écran |
+| 2 | **Design system et composants** | Bibliothèque de composants réutilisables et documentés | Architecture CSS, variables, documentation |
+| 3 | **Performance** | Sites rapides, même sur un réseau lent | Images, polices, chargement, indicateurs Web Vitals |
+| 4 | **E-mails HTML** | Newsletters qui s''affichent bien dans toutes les messageries | Tableaux HTML, styles en ligne, tests multi-messageries |
+| 5 | **Animations et interactions** | Transitions, effets au défilement, micro-interactions | CSS, JavaScript léger, respect des préférences de mouvement |
+| 6 | **Intégration pour CMS** | Thèmes et blocs pour des outils de gestion de contenu | Modèles, champs dynamiques, édition par le client |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Performance sur réseau lent** : vous testez chaque jour dans les conditions de nombreux utilisateurs africains.
+> - **Accessibilité**, une obligation de plus en plus forte en Europe, qui crée une demande dans les agences francophones.
+> - **Partenariat régulier avec des agences** françaises, belges et canadiennes, grâce au français et au faible décalage horaire avec l''Europe.
+
+## L''audit d''intégration : votre offre d''entrée
+
+| Domaine | Ce que vous vérifiez | Outils |
+| --- | --- | --- |
+| **Responsive** | Affichage du petit téléphone au grand écran | Outils du navigateur, vrais appareils |
+| **Accessibilité** | Contrastes, titres, textes alternatifs, clavier, formulaires | Lighthouse, extensions d''audit, lecteur d''écran |
+| **Performance** | Temps de chargement, poids des pages, images | Lighthouse, PageSpeed Insights |
+| **Qualité du code** | HTML sémantique, CSS organisé, erreurs de validation | Validateurs, lecture du code |
+| **Compatibilité** | Navigateurs demandés par le client | Tests croisés |
+| **Référencement technique** | Titres, descriptions, balises, structure | Lighthouse, lecture du code |
+
+### Le rapport d''audit
+
+```
+Site : Lodge Tsara (exemple)
+Constat principal : page d''accueil de 6,8 Mo, plus de 9 secondes
+de chargement sur une connexion mobile lente ; score d''accessibilité 61/100.
+
+Problèmes prioritaires
+1. Photos non compressées (5,2 Mo) : passer en WebP, tailles adaptées.
+2. Boutons sans texte accessible et contrastes insuffisants.
+3. Formulaire de réservation inutilisable au clavier.
+
+Proposition
+- Semaine 1 : images, contrastes et formulaire.
+- Semaine 2 : nettoyage du CSS, tests et rapport avant et après.
+```
+
+> [!astuce]
+> Présentez toujours vos résultats **avant et après** avec les mêmes outils et les mêmes conditions de test. Un client comprend mieux « de 9 secondes à 3 secondes » qu''une liste de corrections techniques.
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Mise en conformité accessibilité** | Réduit un risque légal et élargit le public du client |
+| **Optimisation de performance** | Plus de visiteurs restent, meilleur référencement |
+| **Bibliothèque de composants** | L''équipe du client construit plus vite pendant des années |
+| **Partenariat mensuel avec une agence** | Revenu régulier, intégration de toutes ses maquettes |
+
+> [!retenir]
+> - 6 spécialités : accessibilité, design system, performance, e-mails, animations, CMS.
+> - Audit : responsive, accessibilité, performance, code, compatibilité, référencement technique.
+> - Résultats avant et après, dans les mêmes conditions.
+> - Vendre des mises en conformité, des optimisations, des bibliothèques et des partenariats.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez un site réel avec Lighthouse et les outils du navigateur (sans rien modifier).
+> 3. Rédigez un rapport avec 3 problèmes prioritaires et une proposition.
+> 4. Corrigez ces problèmes sur une copie locale du site de votre projet Fondamentaux et mesurez avant et après.
+>
+> **À livrer** : votre positionnement, votre rapport et vos mesures avant et après.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 0, 0, 'Comment présenter ses résultats d''audit ?', '["Sans chiffres","Seulement oralement","Avec des outils différents","Avant et après, avec les mêmes outils et conditions"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 0, 1, 'Quel avantage a un intégrateur à Madagascar pour la performance ?', '["Aucun","Il teste chaque jour en conditions de réseau lent","Des maquettes gratuites","Des serveurs plus rapides"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 0, 2, 'Quelle offre d''entrée est proposée ?', '["Rien","Une vidéo","L''audit d''intégration","Un logo"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-a', 1, 'Outils professionnels : Figma en offre payante et WebStorm', 'Mode développeur de Figma, inspection, variables, statut et annotations, jetons de design et variables CSS, complétion, inspections, refactorisation, débogueur et historique local, Git dans l''éditeur, choix d''investissement.', 'Figma gratuit et VS Code suffisent pour débuter. Dans les agences et les équipes produit, deux outils payants reviennent souvent : **Figma en offre payante**, avec son mode développeur, et **WebStorm**, un éditeur de code très complet. Ce module vous apprend à les utiliser pour passer de la maquette au code plus vite et avec moins d''erreurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Inspecter une maquette avec le mode développeur de Figma.
+> 2. Transformer les variables Figma en variables CSS.
+> 3. Utiliser les fonctions avancées de WebStorm.
+> 4. Travailler avec Git depuis l''éditeur.
+> 5. Choisir quand investir dans ces outils.
+
+## Figma en offre payante : le mode développeur
+
+| Fonction | Usage |
+| --- | --- |
+| **Inspection** | Mesures, espacements, couleurs, polices, exactement comme dans la maquette |
+| **Variables** | Couleurs, espacements et tailles nommés par le designer |
+| **Statut « prêt pour le développement »** | Savoir quelles pages sont validées |
+| **Annotations** | Comportements, états et règles notés par le designer |
+| **Comparaison des versions** | Voir ce qui a changé depuis la dernière intégration |
+| **Export des ressources** | Icônes en SVG, images aux bonnes tailles |
+
+> [!attention]
+> Le code proposé par l''outil d''inspection est un **point de départ**, pas un code prêt à livrer : positions absolues, tailles fixes, noms peu clairs. Réécrivez-le avec un HTML sémantique et un CSS responsive.
+
+## Des variables Figma aux variables CSS
+
+> [!definition] Jeton de design (design token)
+> Une valeur de design nommée et partagée entre la maquette et le code : une couleur, un espacement, une taille de police. Quand le designer modifie un jeton, le code peut être mis à jour au même endroit.
+
+```css
+:root {
+  /* Couleurs */
+  --couleur-primaire: #0e7c66;
+  --couleur-texte: #1d2321;
+  --couleur-fond: #ffffff;
+
+  /* Espacements */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-4: 16px;
+  --espace-8: 32px;
+
+  /* Typographie */
+  --police-titre: "Poppins", sans-serif;
+  --taille-texte: 1rem;
+  --taille-titre-1: clamp(2rem, 5vw, 3rem);
+}
+
+.bouton {
+  background: var(--couleur-primaire);
+  padding: var(--espace-2) var(--espace-4);
+}
+```
+
+> [!astuce]
+> Demandez au designer de **nommer les variables** dans Figma avec les mêmes noms que dans votre CSS. Une réunion de 30 minutes au début du projet évite des centaines de valeurs recopiées à la main.
+
+## WebStorm : un éditeur complet
+
+| Fonction | Usage |
+| --- | --- |
+| **Complétion intelligente** | HTML, CSS, JavaScript et frameworks courants |
+| **Inspections** | Erreurs, sélecteurs inutilisés, problèmes d''accessibilité signalés |
+| **Refactorisation** | Renommer une classe ou une variable partout sans erreur |
+| **Modèles de code** | Vos blocs fréquents insérés en quelques lettres |
+| **Débogueur** | Arrêter le JavaScript à une ligne et inspecter les valeurs |
+| **Historique local** | Retrouver une version d''un fichier même sans Git |
+
+## Git dans l''éditeur
+
+| Action | Usage |
+| --- | --- |
+| **Branches** | Une branche par fonctionnalité ou correction |
+| **Comparaison visuelle** | Voir les changements avant de valider |
+| **Résolution des conflits** | Fusionner deux versions avec un outil en trois colonnes |
+| **Demandes de fusion** | Faire relire son code par l''équipe |
+
+```bash
+git switch -c correction/formulaire-reservation
+git add .
+git commit -m "Formulaire : libellés associés et navigation au clavier"
+git push -u origin correction/formulaire-reservation
+```
+
+## Choisir quand investir
+
+| Outil | Modèle de prix | Investir quand… |
+| --- | --- | --- |
+| **Figma en offre payante** | Abonnement par personne, souvent payé par l''équipe du client | Vous travaillez régulièrement dans les fichiers d''une agence |
+| **WebStorm** | Abonnement, avec des offres gratuites pour certains usages (étudiants, usage non commercial selon les conditions) | Vous travaillez sur de gros projets et le gain de temps est réel |
+
+> [!madagascar]
+> Ces abonnements se paient en dollars ou en euros par carte bancaire internationale. Souvent, **l''agence vous ajoute à son équipe Figma** : vous n''avez rien à payer. Vérifiez les conditions actuelles des offres gratuites et étudiantes de chaque éditeur.
+
+> [!retenir]
+> - Mode développeur de Figma : inspection, variables, statut, annotations, versions.
+> - Le code proposé n''est qu''un point de départ.
+> - Jetons de design partagés entre Figma et le CSS, avec les mêmes noms.
+> - WebStorm : inspections, refactorisation, modèles, débogueur, historique local.
+> - Git : branches, comparaison, conflits, demandes de fusion.
+
+## Exercice pratique : de la maquette au code avec des jetons
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans une maquette Figma (communautaire ou la vôtre), relevez toutes les couleurs, espacements et tailles.
+> 2. Créez le fichier de variables CSS correspondant.
+> 3. Intégrez un composant (carte ou bouton avec ses états) en utilisant uniquement ces variables.
+> 4. Travaillez sur une branche Git et ouvrez une demande de fusion sur votre dépôt.
+>
+> **À livrer** : votre fichier de variables, le composant et le lien de la demande de fusion.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 1, 0, 'Que vaut le code proposé par l''inspection Figma ?', '["Il est interdit","C''est un point de départ à réécrire","Il remplace le designer","Il est prêt à livrer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 1, 1, 'Qu''est-ce qu''un jeton de design ?', '["Une pièce de monnaie","Une valeur de design nommée partagée entre maquette et code","Une image","Un mot de passe"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 1, 2, 'Que permet la refactorisation de WebStorm ?', '["Renommer une classe partout sans erreur","Héberger le site","Dessiner une maquette","Payer Figma"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-a', 2, 'Qualité et rapidité : architecture CSS, composants, vérifications et tests', 'Variables, BEM, fichiers par composant et mobile d''abord, états des composants et page de démonstration, Prettier, Stylelint, ESLint, tests d''accessibilité et de performance, contrôle avant livraison.', 'Un intégrateur professionnel livre un code propre, accessible, rapide et facile à reprendre par une autre personne. Ce module vous donne les méthodes qui permettent d''aller vite sans baisser la qualité : architecture CSS, composants, outils de vérification automatique, tests d''accessibilité et de performance, et contrôle avant livraison.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser votre CSS pour un projet qui grandit.
+> 2. Construire des composants réutilisables.
+> 3. Automatiser la mise en forme et la vérification du code.
+> 4. Tester l''accessibilité et la performance.
+> 5. Contrôler une intégration avant livraison.
+
+## Une architecture CSS claire
+
+| Méthode | Principe |
+| --- | --- |
+| **Variables** | Toutes les valeurs de design au même endroit |
+| **Nommage BEM** | Bloc, élément, modificateur : `.carte`, `.carte__titre`, `.carte--mise-en-avant` |
+| **Fichiers par composant** | Un fichier pour chaque composant |
+| **Classes utilitaires limitées** | Quelques classes d''aide (masquer visuellement, espacements) |
+| **Mobile d''abord** | Styles pour petit écran, puis requêtes média pour les plus grands |
+
+```css
+.carte {
+  display: grid;
+  gap: var(--espace-2);
+  padding: var(--espace-4);
+  border-radius: 12px;
+}
+
+.carte__titre {
+  font-size: 1.25rem;
+}
+
+.carte--mise-en-avant {
+  border: 2px solid var(--couleur-primaire);
+}
+
+@media (min-width: 48em) {
+  .carte {
+    grid-template-columns: 200px 1fr;
+  }
+}
+```
+
+## Des composants réutilisables
+
+| Composant | États à prévoir |
+| --- | --- |
+| **Bouton** | Normal, survol, focus visible, appuyé, désactivé, chargement |
+| **Champ de formulaire** | Vide, rempli, erreur avec message, désactivé |
+| **Carte** | Avec ou sans image, texte court ou long |
+| **Menu** | Ouvert, fermé, élément actif, navigation au clavier |
+| **Fenêtre modale** | Ouverture, focus piégé à l''intérieur, fermeture par Échap |
+
+> [!astuce]
+> Créez une **page de démonstration** qui affiche tous les composants avec tous leurs états. Vous testez tout d''un coup d''œil, et l''équipe du client sait ce qui existe déjà.
+
+## Automatiser la vérification
+
+| Outil | Rôle |
+| --- | --- |
+| **Prettier** | Met en forme le code automatiquement, toujours de la même façon |
+| **Stylelint** | Signale les erreurs et les mauvaises pratiques CSS |
+| **ESLint** | Fait de même pour le JavaScript |
+| **Validateur HTML** | Vérifie la structure du HTML |
+| **Vérifications avant validation Git** | Lancent ces outils automatiquement avant chaque commit |
+
+## Tester l''accessibilité
+
+| Test | Comment |
+| --- | --- |
+| **Automatique** | Lighthouse ou une extension d''audit d''accessibilité |
+| **Clavier** | Parcourir toute la page avec Tab, Maj+Tab, Entrée, Espace, Échap |
+| **Lecteur d''écran** | NVDA (gratuit, Windows) ou VoiceOver (Mac, iPhone) |
+| **Contrastes** | Outil de mesure des contrastes |
+| **Zoom** | Page lisible à 200 % sans défilement horizontal |
+| **Mouvement réduit** | Animations réduites si l''utilisateur l''a demandé |
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+> [!attention]
+> Les tests automatiques ne trouvent qu''**une partie** des problèmes d''accessibilité. Un score de 100 dans Lighthouse ne garantit pas qu''une page est accessible : les tests au clavier et au lecteur d''écran restent indispensables.
+
+## Tester la performance
+
+| Action | Effet |
+| --- | --- |
+| **Images en WebP ou AVIF**, aux bonnes tailles | Pages beaucoup plus légères |
+| **Chargement différé** des images hors écran | Affichage plus rapide |
+| **Polices limitées** et préchargées | Moins de fichiers, texte visible rapidement |
+| **CSS et JavaScript minifiés** | Fichiers plus petits |
+| **Dimensions des images indiquées** | Pas de décalage de la mise en page |
+
+> [!madagascar]
+> Testez toujours en **simulant une connexion mobile lente** dans les outils du navigateur, puis sur un vrai téléphone d''entrée de gamme avec une connexion locale. C''est le meilleur argument face aux clients : vous savez ce que vivent leurs visiteurs.
+
+## Le contrôle avant livraison
+
+| Point | Vérification |
+| --- | --- |
+| **Fidélité à la maquette** | Espacements, couleurs, typographie |
+| **Responsive** | De 320 pixels au grand écran |
+| **Navigateurs** | Ceux prévus au contrat |
+| **Accessibilité** | Clavier, lecteur d''écran, contrastes, zoom |
+| **Performance** | Mesure dans les conditions convenues |
+| **Code** | Aucune erreur des outils de vérification |
+| **Documentation** | README : installation, structure, composants |
+
+> [!retenir]
+> - Variables, BEM, fichiers par composant, mobile d''abord.
+> - Composants avec tous leurs états et une page de démonstration.
+> - Prettier, Stylelint, ESLint et validateur, lancés automatiquement.
+> - Accessibilité : outils, clavier, lecteur d''écran, contrastes, zoom, mouvement réduit.
+> - Performance : images, chargement différé, polices, minification, dimensions.
+
+## Exercice pratique : un kit de composants
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Créez 5 composants (bouton, champ, carte, menu, modale) avec tous leurs états.
+> 2. Rassemblez-les sur une page de démonstration.
+> 3. Configurez Prettier et Stylelint, et corrigez toutes les alertes.
+> 4. Testez la page au clavier, au lecteur d''écran et sur connexion lente, et notez vos résultats.
+>
+> **À livrer** : le lien du dépôt, la page de démonstration et votre rapport de tests.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 2, 0, 'Que signifie .carte--mise-en-avant en BEM ?', '["Un élément de la carte","Une erreur","Un modificateur du bloc carte","Un identifiant"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 2, 1, 'Un score de 100 en accessibilité dans Lighthouse garantit-il une page accessible ?', '["Lighthouse ne mesure pas l''accessibilité","Oui, toujours","Non, il faut aussi tester au clavier et au lecteur d''écran","Oui, sur mobile seulement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 2, 2, 'Pourquoi indiquer les dimensions des images ?', '["Changer leur couleur","Éviter les décalages de la mise en page","Rien","Les rendre plus lourdes"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-a', 3, 'Clients internationaux : anglais, accessibilité, cookies et revue de code', 'Formules en anglais, WCAG, Acte européen sur l''accessibilité et RGAA, consentement aux cookies et données, revue de code, navigateurs pris en charge, documentation et conditions avec une agence.', 'Les agences web et les équipes produit d''Europe, d''Amérique du Nord et d''Afrique sous-traitent beaucoup d''intégration. Ce module vous prépare à travailler avec elles : échanges en anglais, règles d''accessibilité et de protection des données, revue de code, compatibilité et documentation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Échanger avec une équipe en anglais.
+> 2. Connaître les obligations d''accessibilité des clients européens.
+> 3. Respecter les règles sur les cookies et les données.
+> 4. Travailler avec la revue de code d''une équipe.
+> 5. Négocier vos conditions avec une agence étrangère.
+
+## Échanger en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Poser une question sur la maquette | « The mobile design for the pricing table is missing. Should it stack or scroll horizontally? » |
+| Signaler un problème | « The text colour on the green button doesn''t meet contrast requirements. Could we darken it? » |
+| Annoncer une livraison | « The homepage is ready for review on the staging link. » |
+| Répondre à une revue de code | « Good catch, I''ve renamed the class and pushed a fix. » |
+| Estimer | « I estimate two days for the product page, including accessibility testing. » |
+
+> [!astuce]
+> Posez vos questions **tôt** et regroupées : un message clair avec captures d''écran le premier jour évite de découvrir un oubli de la maquette la veille de la livraison.
+
+## Les obligations d''accessibilité
+
+| Référence | À savoir |
+| --- | --- |
+| **WCAG** | Les règles internationales d''accessibilité du web, niveau AA le plus souvent demandé |
+| **Acte européen sur l''accessibilité** | Depuis juin 2025, de nombreux produits et services numériques vendus dans l''Union européenne doivent être accessibles |
+| **RGAA** | Le référentiel français, fondé sur les WCAG, utilisé notamment pour les services publics |
+| **Autres pays** | Règles propres (par exemple au Canada et aux États-Unis) |
+
+> [!attention]
+> Les règles d''accessibilité et leurs dates d''application évoluent et dépendent du pays et du type de service. Demandez au client **le niveau et le référentiel** exigés, vérifiez la version actuelle des textes, et ne promettez jamais une « conformité légale » sans audit complet.
+
+## Cookies et données personnelles
+
+| Règle | En pratique pour l''intégrateur |
+| --- | --- |
+| **Consentement** | Les outils de mesure et de publicité ne se chargent qu''après l''accord du visiteur, quand la loi l''exige |
+| **Bandeau de consentement** | Accepter et refuser aussi faciles l''un que l''autre |
+| **Formulaires** | Seulement les champs nécessaires, mention de l''usage des données |
+| **Ressources externes** | Polices et scripts tiers transmettent l''adresse IP : les héberger localement si possible |
+
+> [!madagascar]
+> Ces règles s''appliquent aux sites qui visent des visiteurs européens, même si l''intégrateur est à Madagascar. Les connaître est un **argument de vente** auprès des agences, qui cherchent des prestataires qui ne créent pas de risques pour leurs clients.
+
+## La revue de code d''une équipe
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Petites demandes de fusion** | Plus faciles et rapides à relire |
+| **Description claire** | Ce qui change, comment tester, captures |
+| **Respect des conventions** | Nommage, structure, outils de l''équipe |
+| **Réponse calme aux remarques** | La revue porte sur le code, pas sur vous |
+| **Tests avant envoi** | Les vérifications automatiques passent |
+
+## Compatibilité et documentation
+
+| Élément | Exemple |
+| --- | --- |
+| **Navigateurs pris en charge** | Deux dernières versions des principaux navigateurs, et Safari sur iPhone |
+| **Tailles d''écran** | De 320 pixels au grand écran |
+| **Documentation** | Installation, structure, composants, variables, déploiement |
+| **Passation** | Courte vidéo ou réunion pour présenter le code |
+
+## Vos conditions avec une agence étrangère
+
+| Point | Exemple |
+| --- | --- |
+| **Prix** | Par page, par composant ou par jour |
+| **Périmètre** | Navigateurs, tailles d''écran, niveau d''accessibilité inclus |
+| **Corrections** | Écarts avec la maquette corrigés sans frais ; nouvelles demandes facturées |
+| **Marque blanche** | Vous ne contactez pas les clients de l''agence |
+| **Paiement** | Acompte, puis paiement par étape ou mensuel |
+| **Portfolio** | Droit de montrer le travail après mise en ligne, avec accord |
+
+> [!retenir]
+> - En anglais : questions tôt, problèmes signalés avec solution, livraisons et estimations claires.
+> - WCAG, Acte européen sur l''accessibilité, RGAA : demander le niveau exigé.
+> - Consentement aux cookies, formulaires sobres, ressources hébergées localement.
+> - Revue de code : petites demandes, descriptions claires, conventions.
+> - Conditions écrites : périmètre, corrections, marque blanche, paiement.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais 5 questions sur une maquette réelle ou fictive.
+> 2. Vérifiez votre kit de composants selon 10 critères WCAG de niveau AA et notez les résultats.
+> 3. Intégrez un bandeau de consentement accessible avec boutons « Accepter » et « Refuser » équivalents.
+> 4. Rédigez le README de votre projet en anglais.
+>
+> **À livrer** : vos questions, votre grille, le bandeau et le README.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 3, 0, 'Quel niveau WCAG est le plus souvent demandé ?', '["AA","C","Aucun","Z"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 3, 1, 'Comment doit être un bandeau de consentement ?', '["Obligatoire pour lire le site sans choix","Sans bouton refuser","Caché","Accepter et refuser aussi faciles l''un que l''autre"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 3, 2, 'Comment recevoir une remarque en revue de code ?', '["En se vexant","En l''ignorant","En supprimant la branche","Calmement, la revue porte sur le code"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-a', 4, 'Développer son activité : forfaits, partenariats, études de cas et équipe', 'Trois voies, audit, pages, kits de composants et jours réservés, études de cas avec mesures avant et après, studio avec conventions, confidentialité et cession des droits, évolution.', 'Un intégrateur expérimenté peut vivre de quelques partenariats solides avec des agences, d''offres spécialisées bien payées et parfois d''une petite équipe. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Intégrateur spécialisé** | Accessibilité, performance ou e-mails, avec des audits et des corrections | Ceux qui aiment l''expertise |
+| **Partenaire d''agences** | Intégration régulière de toutes les maquettes d''une ou deux agences | Ceux qui veulent un revenu stable |
+| **Petit studio d''intégration** | Plusieurs intégrateurs, gros volumes, contrôle qualité | Ceux qui aiment organiser |
+
+## Des forfaits et des contrats durables
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit d''intégration** | Responsive, accessibilité, performance, code, rapport | 600 000 Ar |
+| **Intégration d''une page** | Maquette en HTML et CSS responsive, accessible | 300 000 Ar par page type |
+| **Kit de composants** | 15 composants documentés avec page de démonstration | 2 500 000 Ar |
+| **Partenariat mensuel** | Un nombre de jours réservés chaque mois pour une agence | 2 000 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Un **partenariat mensuel** avec des jours réservés rassure l''agence (vous êtes disponible) et vous (revenu prévisible). Prévoyez dans le contrat ce qui se passe si les jours ne sont pas utilisés : report limité ou perte.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : Lodge Tsara, via une agence. **Besoin** : un site lent et difficile à utiliser au clavier. **Réalisation** : images optimisées, polices allégées, contrastes et formulaire corrigés. **Résultat** : page d''accueil de 6,8 Mo à 1,1 Mo, chargement sur mobile lent de 9 à 3 secondes, score d''accessibilité Lighthouse de 61 à 96, formulaire utilisable entièrement au clavier.
+
+Une bonne étude de cas présente les mesures **avant et après** dans les mêmes conditions, des captures et le témoignage du client, **avec son accord**.
+
+## Organiser une petite équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Intégrateurs juniors** | Pages et composants selon les conventions du studio |
+| **Spécialiste accessibilité** | Tests au lecteur d''écran, audits |
+| **Testeur** | Navigateurs, appareils, contrôle avant livraison |
+| **Vous** | Architecture, revue de code, relation avec les agences |
+
+> [!madagascar]
+> Un petit studio d''intégration malgache, avec des conventions écrites, une revue de code systématique et des tests sur de vrais téléphones, peut devenir le **partenaire de production** de plusieurs agences européennes. Formez vos juniors sur vos propres projets d''exercice avant de les placer sur des projets clients.
+
+> [!attention]
+> Avec une équipe, signez des contrats qui prévoient la **confidentialité** (les maquettes des agences ne doivent jamais circuler) et la **cession des droits** sur le code produit, pour pouvoir les garantir à vos clients.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur front-end** | JavaScript avancé, frameworks : voir la formation Développeur front-end |
+| **Expert accessibilité** | Certifications, audits complets, formation des équipes |
+| **Ingénieur design system** | Composants dans un framework, documentation, gouvernance |
+| **Développeur WordPress et Shopify** | Voir la formation Développeur WordPress et Shopify |
+| **Responsable technique d''un studio** | Encadrement, estimation, qualité |
+
+> [!retenir]
+> - Spécialiste, partenaire d''agences ou studio d''intégration.
+> - Audits, pages, kits de composants, jours réservés chaque mois.
+> - Études de cas avec mesures avant et après, avec accord.
+> - Une équipe avec conventions, revue de code, confidentialité et cession des droits.
+> - Évoluer vers le front-end, l''accessibilité ou les design systems.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez 3 forfaits avec leur contenu et leur prix.
+> 3. Rédigez une étude de cas chiffrée à partir de votre projet d''audit.
+> 4. Rédigez les conventions de code de votre futur studio en une page.
+>
+> **À livrer** : votre plan, vos forfaits, votre étude de cas et vos conventions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 4, 0, 'Que prévoir dans un partenariat avec jours réservés ?', '["Ce qui se passe si les jours ne sont pas utilisés","Rien","La suppression des jours","Un prix variable au hasard"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 4, 1, 'Que doit montrer une étude de cas ?', '["Des mesures avant et après dans les mêmes conditions","Seulement le prix","Rien","Des chiffres inventés"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-a', 4, 2, 'Que doivent prévoir les contrats de l''équipe ?', '["Rien","Le partage des maquettes en public","Confidentialité et cession des droits sur le code","Seulement les horaires"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quelle spécialité rend les sites utilisables avec un lecteur d''écran ?', '["La performance","Les animations","L''accessibilité","Les e-mails HTML"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quelle spécialité demande des tableaux HTML et des styles en ligne ?', '["Les e-mails HTML","Le design system","L''accessibilité","La 3D"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quel outil gratuit mesure performance et accessibilité ?', '["Canva","Audacity","Lighthouse","Nessus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que proposer pour des photos de 5 Mo ?', '["Les mettre en BMP","Les laisser","WebP ou AVIF aux tailles adaptées","Les agrandir"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Pourquoi une bibliothèque de composants vaut-elle plus ?', '["L''équipe construit plus vite pendant des années","Elle remplace la maquette","Elle est gratuite","Elle est plus jolie"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Qu''indique le statut « prêt pour le développement » ?', '["La vitesse du site","Les pages validées par le designer","Le prix","Le serveur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que faire avec le designer au début d''un projet ?', '["Rien","Nommer les variables comme dans le CSS","Changer ses couleurs","Supprimer ses fichiers"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que permet l''historique local de WebStorm ?', '["Dessiner","Retrouver une version d''un fichier même sans Git","Payer l''abonnement","Publier le site"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Qui paie souvent l''accès Figma d''un intégrateur ?', '["L''hébergeur","L''agence, qui l''ajoute à son équipe","Le visiteur","Personne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quelle commande crée une nouvelle branche et y bascule ?', '["git delete","git pay","git print","git switch -c nom"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que signifie « mobile d''abord » ?', '["Ignorer le mobile","Tester à la fin","Styles pour petit écran puis requêtes média pour les grands","Faire seulement une application"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quel état est indispensable pour un bouton ?', '["Aucun","Le focus visible","Le clignotement","La disparition"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que doit faire une fenêtre modale accessible ?', '["S''ouvrir sans fin","Bloquer le clavier","Rien","Garder le focus à l''intérieur et se fermer avec Échap"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'À quoi sert Prettier ?', '["Compresser les images","Héberger le site","Tester les contrastes","Mettre en forme le code automatiquement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quel lecteur d''écran gratuit existe sous Windows ?', '["Photoshop","Jira","NVDA","Datadog"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que respecter pour le mouvement ?', '["Rien","Toujours plus d''animations","La préférence de mouvement réduit de l''utilisateur","Des animations obligatoires"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Comment tester la performance ?', '["En simulant un réseau lent puis sur un vrai téléphone","Seulement sur la fibre","Sur l''ordinateur du designer","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que contient le README livré ?', '["Les mots de passe","Rien","Le prix","Installation, structure, composants et déploiement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Depuis quand l''Acte européen sur l''accessibilité s''applique-t-il à de nombreux services ?', '["Juin 2025","1990","2040","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que ne faut-il jamais promettre sans audit complet ?', '["Un code propre","Un README","Une réponse rapide","Une conformité légale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Quand charger les outils de mesure soumis au consentement ?', '["Avant tout","Au hasard","Après l''accord du visiteur","Jamais de consentement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Pourquoi héberger les polices localement ?', '["Pour les rendre plus lourdes","Rien","Éviter de transmettre l''adresse IP à des tiers","Pour changer leur forme"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Comment doivent être les demandes de fusion ?', '["Petites et bien décrites","Sans test","Énormes","Sans description"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Que peut devenir un petit studio d''intégration malgache ?', '["Un hébergeur","Rien","Une banque","Le partenaire de production de plusieurs agences"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-a', 'Vers quoi peut évoluer un intégrateur ?', '["Comptabilité uniquement","Front-end, expert accessibilité ou design system","Plomberie","Rien"]'::jsonb, 1);
 
 -- dev-2-f
 delete from public.exam_questions where course_id = 'dev-2-f';

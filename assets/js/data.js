@@ -3138,6 +3138,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-2-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'intégrateur web le partenaire de confiance des agences et des équipes de design : spécialité (accessibilité, design system, performance, e-mails HTML, animations, CMS), audit d'intégration, outils payants (Figma en offre payante avec le mode développeur, WebStorm), jetons de design et variables CSS, Git, architecture CSS, composants et leurs états, vérification automatique, tests d'accessibilité et de performance, échanges en anglais, WCAG et règles européennes, cookies, revue de code, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité de l'intégration et mener un audit d'intégration",
+   "Passer de la maquette au code avec le mode développeur de Figma et des jetons de design",
+   "Travailler efficacement avec WebStorm et Git",
+   "Livrer un code organisé, accessible et rapide, vérifié automatiquement",
+   "Travailler avec des agences étrangères : anglais, accessibilité, cookies et revue de code",
+   "Développer son activité avec des forfaits, des partenariats et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et réaliser un audit d'intégration",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, audit du responsive, de l'accessibilité, de la performance, du code, de la compatibilité et du référencement technique, résultats avant et après, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit d'intégration : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : Figma en offre payante et WebStorm",
+    "summary": "Mode développeur de Figma, inspection, variables, statut et annotations, jetons de design et variables CSS, complétion, inspections, refactorisation, débogueur et historique local, Git dans l'éditeur, choix d'investissement.",
+    "sections": [
+     "Figma en offre payante : le mode développeur",
+     "Des variables Figma aux variables CSS",
+     "WebStorm : un éditeur complet",
+     "Git dans l'éditeur",
+     "Choisir quand investir",
+     "Exercice pratique : de la maquette au code avec des jetons"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : architecture CSS, composants, vérifications et tests",
+    "summary": "Variables, BEM, fichiers par composant et mobile d'abord, états des composants et page de démonstration, Prettier, Stylelint, ESLint, tests d'accessibilité et de performance, contrôle avant livraison.",
+    "sections": [
+     "Une architecture CSS claire",
+     "Des composants réutilisables",
+     "Automatiser la vérification",
+     "Tester l'accessibilité",
+     "Tester la performance",
+     "Le contrôle avant livraison",
+     "Exercice pratique : un kit de composants"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, accessibilité, cookies et revue de code",
+    "summary": "Formules en anglais, WCAG, Acte européen sur l'accessibilité et RGAA, consentement aux cookies et données, revue de code, navigateurs pris en charge, documentation et conditions avec une agence.",
+    "sections": [
+     "Échanger en anglais",
+     "Les obligations d'accessibilité",
+     "Cookies et données personnelles",
+     "La revue de code d'une équipe",
+     "Compatibilité et documentation",
+     "Vos conditions avec une agence étrangère",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : forfaits, partenariats, études de cas et équipe",
+    "summary": "Trois voies, audit, pages, kits de composants et jours réservés, études de cas avec mesures avant et après, studio avec conventions, confidentialité et cession des droits, évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "dev-2-f": {
   "hours": 18,
   "description": "L'intégrateur web transforme des maquettes graphiques en pages HTML et CSS fidèles, responsives, accessibles et rapides. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences web, des designers et des entreprises, à Madagascar et à l'étranger, avec HTML, CSS et Figma : rôle dans l'équipe, critères d'une bonne intégration, HTML sémantique, variables CSS, Flexbox et Grid, mobile d'abord, images et accessibilité, lecture d'une maquette, outils du navigateur, Git, composants et états, cas limites, contrôle qualité et mise en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

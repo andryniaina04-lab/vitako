@@ -1,0 +1,97 @@
+{
+  "id": "dev-2-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'intégrateur web le partenaire de confiance des agences et des équipes de design : spécialité (accessibilité, design system, performance, e-mails HTML, animations, CMS), audit d'intégration, outils payants (Figma en offre payante avec le mode développeur, WebStorm), jetons de design et variables CSS, Git, architecture CSS, composants et leurs états, vérification automatique, tests d'accessibilité et de performance, échanges en anglais, WCAG et règles européennes, cookies, revue de code, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité de l'intégration et mener un audit d'intégration",
+    "Passer de la maquette au code avec le mode développeur de Figma et des jetons de design",
+    "Travailler efficacement avec WebStorm et Git",
+    "Livrer un code organisé, accessible et rapide, vérifié automatiquement",
+    "Travailler avec des agences étrangères : anglais, accessibilité, cookies et revue de code",
+    "Développer son activité avec des forfaits, des partenariats et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et réaliser un audit d'intégration",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, audit du responsive, de l'accessibilité, de la performance, du code, de la compatibilité et du référencement technique, résultats avant et après, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment présenter ses résultats d'audit ?", "options": ["Avant et après, avec les mêmes outils et conditions", "Sans chiffres", "Avec des outils différents", "Seulement oralement"], "correct": 0 },
+        { "q": "Quel avantage a un intégrateur à Madagascar pour la performance ?", "options": ["Il teste chaque jour en conditions de réseau lent", "Aucun", "Des serveurs plus rapides", "Des maquettes gratuites"], "correct": 0 },
+        { "q": "Quelle offre d'entrée est proposée ?", "options": ["L'audit d'intégration", "Un logo", "Une vidéo", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Figma en offre payante et WebStorm",
+      "summary": "Mode développeur de Figma, inspection, variables, statut et annotations, jetons de design et variables CSS, complétion, inspections, refactorisation, débogueur et historique local, Git dans l'éditeur, choix d'investissement.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vaut le code proposé par l'inspection Figma ?", "options": ["C'est un point de départ à réécrire", "Il est prêt à livrer", "Il est interdit", "Il remplace le designer"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un jeton de design ?", "options": ["Une valeur de design nommée partagée entre maquette et code", "Une pièce de monnaie", "Un mot de passe", "Une image"], "correct": 0 },
+        { "q": "Que permet la refactorisation de WebStorm ?", "options": ["Renommer une classe partout sans erreur", "Dessiner une maquette", "Payer Figma", "Héberger le site"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : architecture CSS, composants, vérifications et tests",
+      "summary": "Variables, BEM, fichiers par composant et mobile d'abord, états des composants et page de démonstration, Prettier, Stylelint, ESLint, tests d'accessibilité et de performance, contrôle avant livraison.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie .carte--mise-en-avant en BEM ?", "options": ["Un modificateur du bloc carte", "Un élément de la carte", "Une erreur", "Un identifiant"], "correct": 0 },
+        { "q": "Un score de 100 en accessibilité dans Lighthouse garantit-il une page accessible ?", "options": ["Non, il faut aussi tester au clavier et au lecteur d'écran", "Oui, toujours", "Oui, sur mobile seulement", "Lighthouse ne mesure pas l'accessibilité"], "correct": 0 },
+        { "q": "Pourquoi indiquer les dimensions des images ?", "options": ["Éviter les décalages de la mise en page", "Les rendre plus lourdes", "Changer leur couleur", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, accessibilité, cookies et revue de code",
+      "summary": "Formules en anglais, WCAG, Acte européen sur l'accessibilité et RGAA, consentement aux cookies et données, revue de code, navigateurs pris en charge, documentation et conditions avec une agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel niveau WCAG est le plus souvent demandé ?", "options": ["AA", "Z", "Aucun", "C"], "correct": 0 },
+        { "q": "Comment doit être un bandeau de consentement ?", "options": ["Accepter et refuser aussi faciles l'un que l'autre", "Sans bouton refuser", "Caché", "Obligatoire pour lire le site sans choix"], "correct": 0 },
+        { "q": "Comment recevoir une remarque en revue de code ?", "options": ["Calmement, la revue porte sur le code", "En se vexant", "En l'ignorant", "En supprimant la branche"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, partenariats, études de cas et équipe",
+      "summary": "Trois voies, audit, pages, kits de composants et jours réservés, études de cas avec mesures avant et après, studio avec conventions, confidentialité et cession des droits, évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que prévoir dans un partenariat avec jours réservés ?", "options": ["Ce qui se passe si les jours ne sont pas utilisés", "Rien", "Un prix variable au hasard", "La suppression des jours"], "correct": 0 },
+        { "q": "Que doit montrer une étude de cas ?", "options": ["Des mesures avant et après dans les mêmes conditions", "Des chiffres inventés", "Seulement le prix", "Rien"], "correct": 0 },
+        { "q": "Que doivent prévoir les contrats de l'équipe ?", "options": ["Confidentialité et cession des droits sur le code", "Rien", "Seulement les horaires", "Le partage des maquettes en public"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité rend les sites utilisables avec un lecteur d'écran ?", "options": ["L'accessibilité", "La performance", "Les e-mails HTML", "Les animations"], "correct": 0 },
+    { "q": "Quelle spécialité demande des tableaux HTML et des styles en ligne ?", "options": ["Les e-mails HTML", "L'accessibilité", "Le design system", "La 3D"], "correct": 0 },
+    { "q": "Quel outil gratuit mesure performance et accessibilité ?", "options": ["Lighthouse", "Audacity", "Canva", "Nessus"], "correct": 0 },
+    { "q": "Que proposer pour des photos de 5 Mo ?", "options": ["WebP ou AVIF aux tailles adaptées", "Les agrandir", "Les laisser", "Les mettre en BMP"], "correct": 0 },
+    { "q": "Pourquoi une bibliothèque de composants vaut-elle plus ?", "options": ["L'équipe construit plus vite pendant des années", "Elle est plus jolie", "Elle est gratuite", "Elle remplace la maquette"], "correct": 0 },
+    { "q": "Qu'indique le statut « prêt pour le développement » ?", "options": ["Les pages validées par le designer", "Le prix", "La vitesse du site", "Le serveur"], "correct": 0 },
+    { "q": "Que faire avec le designer au début d'un projet ?", "options": ["Nommer les variables comme dans le CSS", "Rien", "Supprimer ses fichiers", "Changer ses couleurs"], "correct": 0 },
+    { "q": "Que permet l'historique local de WebStorm ?", "options": ["Retrouver une version d'un fichier même sans Git", "Publier le site", "Payer l'abonnement", "Dessiner"], "correct": 0 },
+    { "q": "Qui paie souvent l'accès Figma d'un intégrateur ?", "options": ["L'agence, qui l'ajoute à son équipe", "Personne", "Le visiteur", "L'hébergeur"], "correct": 0 },
+    { "q": "Quelle commande crée une nouvelle branche et y bascule ?", "options": ["git switch -c nom", "git delete", "git print", "git pay"], "correct": 0 },
+    { "q": "Que signifie « mobile d'abord » ?", "options": ["Styles pour petit écran puis requêtes média pour les grands", "Ignorer le mobile", "Faire seulement une application", "Tester à la fin"], "correct": 0 },
+    { "q": "Quel état est indispensable pour un bouton ?", "options": ["Le focus visible", "Aucun", "Le clignotement", "La disparition"], "correct": 0 },
+    { "q": "Que doit faire une fenêtre modale accessible ?", "options": ["Garder le focus à l'intérieur et se fermer avec Échap", "S'ouvrir sans fin", "Bloquer le clavier", "Rien"], "correct": 0 },
+    { "q": "À quoi sert Prettier ?", "options": ["Mettre en forme le code automatiquement", "Héberger le site", "Compresser les images", "Tester les contrastes"], "correct": 0 },
+    { "q": "Quel lecteur d'écran gratuit existe sous Windows ?", "options": ["NVDA", "Photoshop", "Datadog", "Jira"], "correct": 0 },
+    { "q": "Que respecter pour le mouvement ?", "options": ["La préférence de mouvement réduit de l'utilisateur", "Rien", "Toujours plus d'animations", "Des animations obligatoires"], "correct": 0 },
+    { "q": "Comment tester la performance ?", "options": ["En simulant un réseau lent puis sur un vrai téléphone", "Seulement sur la fibre", "Jamais", "Sur l'ordinateur du designer"], "correct": 0 },
+    { "q": "Que contient le README livré ?", "options": ["Installation, structure, composants et déploiement", "Les mots de passe", "Rien", "Le prix"], "correct": 0 },
+    { "q": "Depuis quand l'Acte européen sur l'accessibilité s'applique-t-il à de nombreux services ?", "options": ["Juin 2025", "1990", "Jamais", "2040"], "correct": 0 },
+    { "q": "Que ne faut-il jamais promettre sans audit complet ?", "options": ["Une conformité légale", "Une réponse rapide", "Un code propre", "Un README"], "correct": 0 },
+    { "q": "Quand charger les outils de mesure soumis au consentement ?", "options": ["Après l'accord du visiteur", "Avant tout", "Jamais de consentement", "Au hasard"], "correct": 0 },
+    { "q": "Pourquoi héberger les polices localement ?", "options": ["Éviter de transmettre l'adresse IP à des tiers", "Pour les rendre plus lourdes", "Rien", "Pour changer leur forme"], "correct": 0 },
+    { "q": "Comment doivent être les demandes de fusion ?", "options": ["Petites et bien décrites", "Énormes", "Sans description", "Sans test"], "correct": 0 },
+    { "q": "Que peut devenir un petit studio d'intégration malgache ?", "options": ["Le partenaire de production de plusieurs agences", "Rien", "Un hébergeur", "Une banque"], "correct": 0 },
+    { "q": "Vers quoi peut évoluer un intégrateur ?", "options": ["Front-end, expert accessibilité ou design system", "Plomberie", "Rien", "Comptabilité uniquement"], "correct": 0 }
+  ]
+}
