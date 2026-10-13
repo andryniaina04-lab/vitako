@@ -41,7 +41,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true),
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true),
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 18, false),
-  ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 12, false),
+  ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true),
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
@@ -55481,4 +55481,534 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que ne doit pas contenir la documentation livrée ?', '["Les mots de passe","Les procédures d''urgence","Les sauvegardes","L''architecture"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que contient un forfait mensuel ?', '["Mises à jour, surveillance, sauvegardes vérifiées et petites interventions","Rien","L''achat du serveur","Le développement complet de l''application"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement","Aucun"]'::jsonb, 2);
+
+-- tech-4-f
+delete from public.exam_questions where course_id = 'tech-4-f';
+delete from public.module_questions where course_id = 'tech-4-f';
+delete from public.lessons where course_id = 'tech-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-f', 0, 'Le métier d''analyste en cybersécurité depuis Madagascar', 'Rôle de l''analyste, vulnérabilités, principales menaces, arnaques courantes à Madagascar, confidentialité, intégrité et disponibilité, règles éthiques et légales, clients, laboratoire et plan d''apprentissage.', 'Les sites, les comptes et les données des entreprises sont attaqués tous les jours : mots de passe volés, faux e-mails, failles dans des sites mal entretenus. L''analyste en cybersécurité aide les organisations à se protéger : il repère les points faibles, propose des corrections et forme les équipes. Ce métier se fait en grande partie à distance. Ce premier module vous le présente, avec ses règles éthiques et légales, qui sont au cœur du métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un analyste en cybersécurité.
+> 2. Connaître les principales menaces.
+> 3. Comprendre les trois piliers de la sécurité.
+> 4. Respecter les règles éthiques et légales du métier.
+> 5. Préparer votre laboratoire et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un **analyste en cybersécurité** protège les systèmes d''une organisation : il évalue les risques, repère les faiblesses avec l''autorisation du client, recommande des corrections, surveille les alertes et sensibilise les utilisateurs.
+
+> [!definition] Vulnérabilité
+> Une faiblesse dans un logiciel, une configuration ou une habitude (par exemple un mot de passe réutilisé) qui pourrait être utilisée par un attaquant. Le travail de l''analyste est de les trouver et de les faire corriger **avant** qu''un attaquant ne les exploite.
+
+## Les principales menaces
+
+| Menace | Principe | Protection de base |
+| --- | --- | --- |
+| **Hameçonnage (phishing)** | Faux message pour voler un mot de passe ou faire payer | Sensibilisation, double authentification |
+| **Mots de passe faibles ou réutilisés** | Un mot de passe volé ouvre plusieurs comptes | Gestionnaire de mots de passe, double authentification |
+| **Logiciels pas à jour** | Failles connues non corrigées | Mises à jour régulières |
+| **Mauvaise configuration** | Service ouvert à tous, droits trop larges | Revue de configuration |
+| **Rançongiciel** | Fichiers chiffrés contre rançon | Sauvegardes hors ligne, mises à jour |
+| **Failles des sites web** | Erreurs de programmation exploitables | Bonnes pratiques de développement, tests |
+
+> [!madagascar]
+> À Madagascar, les arnaques les plus courantes passent par **les réseaux sociaux et le Mobile Money** : faux comptes, faux concours, demandes de code de confirmation. Expliquer simplement ces risques aux PME et à leurs employés est déjà un service de sécurité très utile.
+
+## Les trois piliers de la sécurité
+
+| Pilier | Question | Exemple d''atteinte |
+| --- | --- | --- |
+| **Confidentialité** | Seules les bonnes personnes voient-elles les données ? | Fuite d''une liste de clients |
+| **Intégrité** | Les données sont-elles exactes et non modifiées ? | Montant d''une facture changé |
+| **Disponibilité** | Le service fonctionne-t-il quand on en a besoin ? | Site bloqué, fichiers chiffrés |
+
+## Éthique et légalité : les règles absolues
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Autorisation écrite** avant tout test | Sans autorisation, tester un système est une infraction |
+| **Périmètre précis** | Ne tester que ce qui est prévu par écrit |
+| **Aucun dommage** | Pas de suppression, pas de blocage du service |
+| **Confidentialité** | Ce que vous découvrez reste entre vous et le client |
+| **Signalement** | Les faiblesses sont rapportées au client, jamais publiées ni vendues |
+| **Pas de « test » sur des tiers** | Ni un site au hasard, ni le compte d''un ami, même pour apprendre |
+
+> [!attention]
+> Scanner, tester ou tenter d''accéder à un système **sans autorisation écrite de son propriétaire** est illégal à Madagascar (loi sur la cybercriminalité) comme dans la plupart des pays, même si votre intention est bonne. Pour apprendre, utilisez uniquement **votre propre laboratoire** et les plateformes d''entraînement prévues à cet effet.
+
+## Qui sont vos clients ?
+
+| Client | Besoins |
+| --- | --- |
+| **PME** à Madagascar | Sécurité des comptes, sauvegardes, sensibilisation |
+| **Agences web** | Vérification de sécurité des sites avant livraison |
+| **Start-up** | Bonnes pratiques, revue de configuration |
+| **ONG** | Protection des données sensibles des bénéficiaires |
+| **Entreprises étrangères** | Analystes à distance pour la surveillance et l''analyse des alertes |
+
+## Votre laboratoire et votre plan d''apprentissage
+
+| Élément | Usage |
+| --- | --- |
+| **Machine virtuelle Linux** | Outils de sécurité |
+| **Application volontairement vulnérable** (par exemple OWASP Juice Shop) | S''entraîner légalement, sur votre machine |
+| **Plateformes d''entraînement** en ligne | Exercices encadrés et autorisés |
+| **Carnet de notes** | Méthodes, commandes, rapports |
+
+| Mois | Objectif |
+| --- | --- |
+| **1** | Réseau, Linux, menaces, éthique |
+| **2** | Sécurité des comptes et des sites, OWASP Top 10 |
+| **3** | Outils d''analyse : Nmap, OWASP ZAP, lecture de journaux |
+| **4** | Audit complet dans le laboratoire, rapport, portfolio |
+
+> [!retenir]
+> - L''analyste repère les faiblesses avec autorisation, recommande des corrections et sensibilise.
+> - Hameçonnage, mots de passe, mises à jour, configuration, rançongiciel, failles web.
+> - Confidentialité, intégrité, disponibilité.
+> - Autorisation écrite, périmètre, aucun dommage, confidentialité, signalement au client.
+> - S''entraîner uniquement dans son laboratoire et sur des plateformes prévues.
+
+## Exercice pratique : votre laboratoire et vos règles
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez une machine virtuelle Linux et l''application d''entraînement OWASP Juice Shop sur votre ordinateur.
+> 2. Faites la liste de vos propres comptes et activez la double authentification partout où c''est possible.
+> 3. Rédigez votre charte éthique personnelle en 6 règles.
+> 4. Décrivez 3 arnaques courantes à Madagascar et le conseil que vous donneriez pour chacune.
+>
+> **À livrer** : des captures de votre laboratoire, votre charte et vos conseils.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 0, 0, 'Que faut-il avant de tester un système ?', '["Une autorisation écrite de son propriétaire","Un compte sur un réseau social","Rien","Une bonne intention"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 0, 1, 'Quels sont les trois piliers de la sécurité ?', '["Confidentialité, intégrité, disponibilité","Vitesse, prix, design","Texte, image, vidéo","Logo, couleur, police"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 0, 2, 'Où s''entraîner légalement ?', '["Sur le site d''une entreprise au hasard","Sur le compte d''un ami","Sur le site d''une banque","Dans son propre laboratoire et sur des plateformes prévues"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-f', 1, 'Les bases : réseau, comptes, OWASP Top 10, journaux et risques', 'IP, ports, protocoles, pare-feu et chiffrement, double authentification et accès minimum, familles de risques de l''OWASP Top 10 et corrections, lecture des journaux, grille probabilité et impact.', 'Ce module vous donne les bases techniques de la cybersécurité défensive : le réseau, la sécurité des comptes, la sécurité des sites web avec l''OWASP Top 10, les journaux et la gestion des risques.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre les notions réseau utiles à la sécurité.
+> 2. Protéger les comptes et les accès.
+> 3. Connaître les grandes familles de failles web.
+> 4. Lire des journaux pour repérer un comportement suspect.
+> 5. Évaluer et classer les risques.
+
+## Le réseau pour la sécurité
+
+| Notion | Explication |
+| --- | --- |
+| **Adresse IP** | L''adresse d''une machine sur le réseau |
+| **Port** | Une « porte » pour un service (22 pour SSH, 443 pour HTTPS) |
+| **Protocole** | Les règles d''échange (HTTP, HTTPS, DNS, SSH) |
+| **Pare-feu** | Filtre qui autorise ou bloque les connexions |
+| **Chiffrement** | Rend les échanges illisibles pour un tiers (HTTPS) |
+
+> [!astuce]
+> Une règle simple : **chaque port ouvert est une porte**. Moins il y a de services exposés sur Internet, moins il y a de risques. Une grande partie d''un audit consiste à vérifier que seules les portes nécessaires sont ouvertes.
+
+## La sécurité des comptes
+
+| Mesure | Effet |
+| --- | --- |
+| **Double authentification** | Un mot de passe volé ne suffit plus |
+| **Gestionnaire de mots de passe** | Un mot de passe long et unique par compte |
+| **Accès minimum** | Chacun n''a que les droits nécessaires |
+| **Retrait des accès** au départ d''un employé | Éviter les comptes oubliés |
+| **Comptes d''administration séparés** | Limiter les dégâts en cas de vol |
+
+## La sécurité des sites : l''OWASP Top 10
+
+> [!definition] OWASP
+> L''OWASP est une communauté internationale ouverte qui publie des guides et des outils gratuits pour la sécurité des applications web. Son **Top 10** liste les familles de risques les plus importantes.
+
+| Famille de risque | Idée simple | Correction type |
+| --- | --- | --- |
+| **Contrôle d''accès défaillant** | Un utilisateur voit les données d''un autre | Vérifier les droits à chaque requête |
+| **Défaillances cryptographiques** | Données sensibles mal protégées | HTTPS partout, chiffrement adapté |
+| **Injection** | Des données saisies sont interprétées comme du code | Requêtes paramétrées, validation des entrées |
+| **Conception non sécurisée** | La sécurité n''a pas été prévue | Penser aux risques dès la conception |
+| **Mauvaise configuration** | Options par défaut, messages d''erreur trop détaillés | Revue de configuration |
+| **Composants vulnérables** | Bibliothèques pas à jour | Mises à jour, inventaire des composants |
+| **Authentification défaillante** | Connexion trop facile à contourner | Double authentification, limitation des essais |
+| **Intégrité des données et du logiciel** | Mises à jour ou données non vérifiées | Sources fiables, signatures |
+| **Journalisation insuffisante** | Une attaque passe inaperçue | Journaux et alertes |
+| **Requêtes forcées côté serveur** | Le serveur est poussé à contacter une adresse interne | Filtrer les adresses autorisées |
+
+*(La liste exacte évolue avec les versions publiées par l''OWASP : consultez la plus récente.)*
+
+> [!attention]
+> Dans ce cours, on apprend à **reconnaître et corriger** ces risques, pas à les exploiter sur des systèmes réels. Les essais pratiques se font uniquement sur votre application d''entraînement.
+
+## Lire les journaux
+
+| Signe | Ce qu''il peut indiquer |
+| --- | --- |
+| Des centaines d''échecs de connexion en quelques minutes | Essais automatiques de mots de passe |
+| Une connexion réussie depuis un pays inhabituel | Compte peut-être volé |
+| Des requêtes vers des pages qui n''existent pas | Exploration automatique du site |
+| Des erreurs serveur en série | Problème technique ou tentative d''attaque |
+
+```bash
+# Échecs de connexion SSH sur un serveur Ubuntu (votre laboratoire)
+sudo grep "Failed password" /var/log/auth.log
+```
+
+## Évaluer les risques
+
+| Probabilité / Impact | Impact faible | Impact fort |
+| --- | --- | --- |
+| **Probabilité forte** | Risque moyen | **Risque critique** |
+| **Probabilité faible** | Risque faible | Risque élevé |
+
+> [!exemple] Exemple
+> Un site de vente sans double authentification pour l''administrateur : probabilité forte (les essais automatiques sont fréquents), impact fort (accès à toutes les commandes). **Risque critique**, à corriger en priorité, avec une solution simple et peu coûteuse.
+
+> [!retenir]
+> - IP, ports, protocoles, pare-feu, chiffrement ; chaque port ouvert est une porte.
+> - Double authentification, gestionnaire de mots de passe, accès minimum.
+> - L''OWASP Top 10 pour les sites web : reconnaître et corriger.
+> - Les journaux révèlent les comportements suspects.
+> - Classer les risques selon probabilité et impact.
+
+## Exercice pratique : un petit diagnostic
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Faites l''inventaire des comptes d''une petite entreprise fictive et proposez 5 mesures de protection.
+> 2. Pour 5 familles de l''OWASP Top 10, écrivez une explication simple et une correction.
+> 3. Sur votre machine virtuelle, provoquez des échecs de connexion et retrouvez-les dans les journaux.
+> 4. Classez 6 risques dans la grille probabilité et impact.
+>
+> **À livrer** : votre inventaire, vos explications, vos captures et votre grille.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 1, 0, 'Quel est l''effet de la double authentification ?', '["Aucun","Les mots de passe deviennent inutiles","Un mot de passe volé ne suffit plus","Le site va plus vite"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 1, 1, 'Qu''est-ce que l''OWASP Top 10 ?', '["La liste des principales familles de risques des applications web","Un antivirus","Un classement de sites","Un hébergeur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 1, 2, 'Que peuvent indiquer des centaines d''échecs de connexion ?', '["Un site très populaire","Des essais automatiques de mots de passe","Rien","Une mise à jour"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-f', 2, 'Les outils : Nmap, OWASP ZAP, Burp Suite Professional et Nessus', 'Scan de ports dans un environnement autorisé, interprétation open, closed, filtered, exploration et analyse passive avec ZAP, niveaux d''alerte, faux positifs, outils payants et versions gratuites.', 'Ce module vous fait prendre en main deux outils gratuits incontournables : **Nmap** pour inventorier les machines et les services exposés, et **OWASP ZAP** pour analyser la sécurité d''un site web. Vous découvrirez ensuite les outils professionnels payants : **Burp Suite Professional** et **Nessus**. Tous les exercices se font dans votre laboratoire ou sur des cibles explicitement autorisées.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Inventorier les services d''un réseau autorisé avec Nmap.
+> 2. Interpréter les résultats d''un scan.
+> 3. Analyser une application web de test avec OWASP ZAP.
+> 4. Trier et vérifier les alertes.
+> 5. Comprendre l''apport de Burp Suite Professional et de Nessus.
+
+> [!attention]
+> Rappel : n''utilisez ces outils **que** sur votre propre laboratoire, sur les cibles d''entraînement prévues à cet effet, ou sur les systèmes d''un client qui vous a donné une **autorisation écrite** avec un périmètre précis.
+
+## Nmap : inventorier les services
+
+> [!definition] Scan de ports
+> Vérifier quels ports d''une machine répondent et quels services y fonctionnent. C''est l''équivalent de faire le tour d''un bâtiment pour compter les portes et vérifier lesquelles sont ouvertes.
+
+```bash
+# Machines actives dans votre réseau de laboratoire
+nmap -sn 192.168.56.0/24
+
+# Ports les plus courants d''une machine de votre laboratoire
+nmap 192.168.56.101
+
+# Versions des services détectés
+nmap -sV 192.168.56.101
+
+# Enregistrer les résultats pour le rapport
+nmap -sV -oN resultat-scan.txt 192.168.56.101
+```
+
+| Résultat | Signification | Question à se poser |
+| --- | --- | --- |
+| **open** | Un service répond | Ce service doit-il être accessible depuis Internet ? |
+| **closed** | Aucun service, mais la machine répond | Normal |
+| **filtered** | Un pare-feu bloque | Normal pour les ports non utilisés |
+
+> [!exemple] Interprétation
+> Un serveur web présente les ports 22 (SSH), 80 et 443 (web) et 3306 (base de données MySQL) ouverts. Le port 3306 ne devrait pas être accessible depuis Internet : **recommandation** : le fermer au pare-feu et n''autoriser l''accès qu''en interne.
+
+## OWASP ZAP : analyser un site web
+
+| Fonction | Usage |
+| --- | --- |
+| **Exploration (spider)** | Découvre les pages du site |
+| **Analyse passive** | Observe les réponses sans rien envoyer d''agressif : en-têtes de sécurité, cookies, informations exposées |
+| **Analyse active** | Envoie des requêtes de test : seulement sur un site de test et avec autorisation |
+| **Rapport** | Liste des alertes par niveau de risque |
+
+| Étape | Action dans votre laboratoire |
+| --- | --- |
+| 1 | Lancer OWASP Juice Shop sur votre machine |
+| 2 | Ouvrir ZAP et indiquer l''adresse locale de l''application |
+| 3 | Lancer l''exploration et l''analyse passive |
+| 4 | Lire les alertes et leur niveau |
+| 5 | Exporter le rapport |
+
+## Trier et vérifier les alertes
+
+| Niveau | Exemple d''alerte | Action |
+| --- | --- | --- |
+| **Élevé** | Données sensibles transmises sans chiffrement | Corriger en priorité |
+| **Moyen** | En-tête de sécurité manquant | Corriger rapidement |
+| **Faible** | Version du serveur visible | Corriger à l''occasion |
+| **Information** | Remarque technique | Noter |
+
+> [!astuce]
+> Les outils automatiques produisent des **faux positifs** : des alertes qui ne correspondent pas à un vrai problème. Vérifiez chaque alerte importante avant de la mettre dans un rapport. Un rapport rempli d''alertes non vérifiées fait perdre confiance au client.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Burp Suite Professional** | Outil de référence pour les tests de sécurité web autorisés : analyse approfondie, outils manuels avancés, rapports |
+| **Nessus** | Scanner de vulnérabilités : détecte les logiciels pas à jour et les mauvaises configurations sur de nombreuses machines, avec des rapports détaillés |
+
+> [!madagascar]
+> Ces licences coûtent cher et se paient en dollars par carte bancaire internationale. Commencez avec Nmap, OWASP ZAP et les versions gratuites ou d''essai (Burp Suite Community, Nessus Essentials pour un usage limité). Achetez une licence professionnelle quand vos contrats la justifient, ou utilisez celle du client.
+
+> [!retenir]
+> - Uniquement sur son laboratoire, des cibles d''entraînement ou avec autorisation écrite.
+> - Nmap : machines actives, ports ouverts, versions ; chaque service exposé doit être justifié.
+> - OWASP ZAP : exploration, analyse passive, analyse active sur site de test seulement.
+> - Trier par niveau et vérifier les faux positifs.
+> - Burp Suite Professional et Nessus pour aller plus loin.
+
+## Exercice pratique : inventaire et analyse dans votre laboratoire
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Créez un réseau privé de laboratoire avec deux machines virtuelles.
+> 2. Inventoriez-les avec Nmap et justifiez chaque port ouvert.
+> 3. Analysez OWASP Juice Shop avec ZAP (exploration et analyse passive).
+> 4. Choisissez 5 alertes, vérifiez-les et proposez une correction pour chacune.
+>
+> **À livrer** : vos résultats Nmap, le rapport ZAP et votre tableau d''alertes vérifiées.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 2, 0, 'À quoi sert Nmap ?', '["Écrire des e-mails","Inventorier les machines et services exposés d''un réseau autorisé","Monter des vidéos","Dessiner des logos"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 2, 1, 'Qu''est-ce qu''un faux positif ?', '["Un mot de passe fort","Un port fermé","Une faille confirmée","Une alerte qui ne correspond pas à un vrai problème"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 2, 2, 'Quand utiliser l''analyse active de ZAP ?', '["Seulement sur un site de test et avec autorisation","Jamais dans le laboratoire","Sur les sites des concurrents","Sur n''importe quel site"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-f', 3, 'Premier projet : l''audit de sécurité de Lamba Gasy Shop', 'Autorisation écrite, périmètre et accord de l''hébergeur, audit des services, du site, des comptes, de la messagerie et des sauvegardes, constats classés, rapport avec résumé pour la direction, correction et vérification.', 'Dans ce module, vous réalisez un audit de sécurité de base pour un client, comme le ferait un analyste indépendant : cadre et autorisation, inventaire, analyse du site, revue des comptes et des sauvegardes, rapport et plan de correction, puis vérification.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Cadrer une mission avec une autorisation écrite.
+> 2. Mener un audit de base avec méthode.
+> 3. Classer les constats par niveau de risque.
+> 4. Rédiger un rapport clair pour un client non technique.
+> 5. Accompagner les corrections et vérifier le résultat.
+
+## Le cas pratique : « Lamba Gasy Shop »
+
+> [!exemple] Votre client
+> **Lamba Gasy Shop** vend des lamba et des articles en soie sauvage sur son site, à Madagascar et à l''étranger. L''an dernier, le compte Facebook de la boutique a été piraté et un client s''est plaint d''avoir reçu un faux message de paiement. La gérante veut savoir si son site et ses comptes sont bien protégés. Le site est hébergé chez un prestataire et géré par une agence web.
+
+## Étape 1 : le cadre et l''autorisation
+
+| Élément de l''autorisation | Contenu |
+| --- | --- |
+| **Signataire** | La gérante, propriétaire du site et des comptes |
+| **Accord de l''hébergeur et de l''agence** | Vérifié : les conditions de l''hébergeur autorisent les tests, l''agence est informée |
+| **Périmètre** | Le site lambagasyshop.mg (exemple), les comptes de messagerie et de réseaux sociaux de la boutique |
+| **Hors périmètre** | Les comptes personnels, les systèmes de l''hébergeur et des clients |
+| **Méthodes** | Inventaire, analyse passive du site, revue de configuration avec la gérante |
+| **Dates et horaires** | Fenêtre définie, contact joignable en cas de problème |
+| **Confidentialité** | Résultats remis uniquement à la gérante |
+
+> [!attention]
+> Si le site est hébergé chez un prestataire, **son accord** ou ses conditions d''utilisation comptent aussi. Pas d''autorisation écrite complète, pas de test.
+
+## Étape 2 : l''audit
+
+| Domaine | Vérifications |
+| --- | --- |
+| **Inventaire** | Ports exposés, services, versions (Nmap, dans le périmètre autorisé) |
+| **Site web** | HTTPS, en-têtes de sécurité, cookies, version du CMS et des extensions (ZAP en analyse passive) |
+| **Comptes** | Double authentification, administrateurs, anciens accès |
+| **Messagerie** | Protection contre l''usurpation du nom de domaine (enregistrements SPF, DKIM, DMARC) |
+| **Sauvegardes** | Existence, fréquence, copie hors du serveur, restauration testée |
+| **Pratiques** | Qui a les mots de passe, comment sont-ils partagés |
+
+## Étape 3 : les constats
+
+| N° | Constat | Risque | Recommandation |
+| --- | --- | --- | --- |
+| 1 | Pas de double authentification sur Facebook et l''administration du site | **Critique** | L''activer immédiatement |
+| 2 | Extensions du site non mises à jour depuis 1 an | **Élevé** | Mettre à jour, supprimer les extensions inutiles |
+| 3 | Pas de protection DMARC sur le nom de domaine | **Élevé** | Configurer SPF, DKIM et DMARC avec l''hébergeur |
+| 4 | Ancien employé toujours administrateur | **Élevé** | Retirer l''accès |
+| 5 | Sauvegardes sur le même serveur, jamais testées | **Moyen** | Copie externe, test de restauration |
+| 6 | Version du serveur visible | **Faible** | Masquer la version |
+
+> [!madagascar]
+> Pour une boutique qui vend par Mobile Money, ajoutez une **recommandation de communication** : publier clairement sur le site et les réseaux les seuls numéros officiels de paiement, et rappeler aux clients que la boutique ne demande jamais de code de confirmation.
+
+## Étape 4 : le rapport
+
+```
+Rapport d''audit de sécurité – Lamba Gasy Shop
+1. Résumé pour la direction (1 page, sans jargon)
+   - Niveau global : à améliorer
+   - 3 actions prioritaires cette semaine
+2. Cadre : autorisation, périmètre, dates, méthodes
+3. Constats classés par risque (description, preuve, impact, recommandation)
+4. Plan de correction : quoi, qui, quand
+5. Annexes techniques (résultats d''outils vérifiés)
+```
+
+> [!astuce]
+> Le **résumé pour la direction** est la partie la plus lue. Écrivez-le pour quelqu''un qui n''est pas technicien : ce qui est en danger, ce qu''il faut faire, combien de temps cela prend.
+
+## Étape 5 : correction et vérification
+
+| N° | Action |
+| --- | --- |
+| 1 | Présenter le rapport à la gérante et à l''agence web |
+| 2 | Aider à prioriser : critique cette semaine, élevé ce mois-ci |
+| 3 | Accompagner les corrections (double authentification, retrait d''accès) |
+| 4 | Vérifier chaque correction (nouveau test dans le périmètre autorisé) |
+| 5 | Remettre une note de clôture et proposer une revue dans 6 mois |
+
+> [!retenir]
+> - Autorisation écrite, périmètre, hors périmètre, accord de l''hébergeur.
+> - Audit : inventaire, site, comptes, messagerie, sauvegardes, pratiques.
+> - Constats classés avec recommandations concrètes.
+> - Rapport avec résumé non technique et plan de correction.
+> - Accompagner et vérifier les corrections.
+
+## Exercice pratique : l''audit de Lamba Gasy Shop
+
+> [!exercice] Exercice pratique · 10 heures (sur plusieurs jours)
+> 1. Rédigez l''autorisation écrite de la mission (modèle).
+> 2. Dans votre laboratoire, installez un site de test (par exemple un CMS avec une extension ancienne) et auditez-le.
+> 3. Classez au moins 6 constats et rédigez vos recommandations.
+> 4. Écrivez le rapport complet avec le résumé pour la direction.
+> 5. Corrigez dans votre laboratoire et vérifiez les corrections.
+>
+> **À livrer** : l''autorisation, le rapport et la note de clôture. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 3, 0, 'Que fait-on si l''autorisation écrite n''est pas complète ?', '["On teste la nuit","On ne teste pas","On teste quand même","On demande à un ami"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 3, 1, 'Quelle partie du rapport est la plus lue ?', '["La page de garde","Aucune","Les annexes techniques","Le résumé pour la direction"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 3, 2, 'Que protègent SPF, DKIM et DMARC ?', '["Contre l''usurpation du nom de domaine dans les e-mails","Contre la pluie","Les images","Le design du site"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio sans données réelles, 5 canaux, offres de diagnostic, sensibilisation, vérification et accompagnement, prix, conditions et limite de responsabilité, refus des demandes illégales, paiements et évolution.', 'Les PME, les agences, les ONG et les entreprises étrangères ont besoin de conseils de sécurité fiables et compréhensibles. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix, vous protéger et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio sans exposer de données réelles.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Proposer des offres simples et utiles.
+> 4. Fixer vos prix et rédiger vos conditions.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Un rapport d''audit** réalisé sur votre laboratoire (cas Lamba Gasy Shop).
+2. **Un modèle d''autorisation** de mission.
+3. **Un support de sensibilisation** (hameçonnage, mots de passe, Mobile Money).
+4. **Vos résultats sur des plateformes d''entraînement** autorisées.
+5. **Des articles** simples sur la sécurité pour les PME.
+
+> [!attention]
+> Ne publiez **jamais** les résultats réels d''un client, même anonymisés à moitié. Votre portfolio se construit avec votre laboratoire et des cas fictifs.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **PME à Madagascar** | Proposer un diagnostic simple et une sensibilisation du personnel |
+| 2 | **Agences web** | Vérification de sécurité des sites avant livraison |
+| 3 | **ONG et associations** | Protection des données des bénéficiaires |
+| 4 | **Entreprises étrangères** | Postes d''analyste à distance (surveillance, analyse des alertes) |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une PME
+> « Bonjour, beaucoup de boutiques en ligne malgaches se font pirater leur page Facebook ou usurper leur nom pour de faux paiements Mobile Money. Je propose un diagnostic de sécurité simple : comptes, site, messagerie et sauvegardes, avec un rapport clair et 3 actions prioritaires. Tout se fait avec votre accord écrit et dans la confidentialité. »
+
+## Les offres de départ
+
+| Offre | Contenu |
+| --- | --- |
+| **Diagnostic de sécurité** | Revue des comptes, du site, de la messagerie et des sauvegardes, rapport |
+| **Sensibilisation** | Atelier pour les employés : hameçonnage, mots de passe, arnaques |
+| **Vérification avant mise en ligne** | Analyse d''un site pour une agence, avec autorisation |
+| **Accompagnement mensuel** | Suivi des mises à jour, des accès et des alertes |
+
+## Fixer ses prix
+
+| Offre | Exemple de prix |
+| --- | --- |
+| **Diagnostic petite entreprise** | 600 000 Ar |
+| **Atelier de sensibilisation** (demi-journée) | 300 000 Ar |
+| **Vérification d''un site pour une agence** | 500 000 Ar |
+| **Accompagnement mensuel** | 250 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions et votre protection
+
+1. **Autorisation écrite** signée par le propriétaire avant tout test.
+2. **Périmètre et méthodes** précisés.
+3. **Confidentialité** des résultats et destruction des données en fin de mission.
+4. **Limite de responsabilité** : un audit réduit les risques, il ne garantit pas une sécurité totale.
+5. **Pas de correction sans accord** : vous recommandez, le client décide.
+6. **Le paiement** : acompte à la commande, solde à la remise du rapport.
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Pour un client local, utilisez Mobile Money (MVola, Orange Money, Airtel Money) ou le virement ; pour un client étranger, le virement international ou Payoneer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+> [!attention]
+> Refusez toute demande de « récupérer » un compte qui n''appartient pas au demandeur, de surveiller une personne ou d''accéder aux messages de quelqu''un. Ce n''est pas de la cybersécurité, c''est illégal, quelle que soit la somme proposée.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Analyste en centre de surveillance (SOC)** | Outils de surveillance, analyse des alertes |
+| **Testeur d''intrusion** | Certifications reconnues, missions autorisées encadrées |
+| **Consultant en conformité** | Normes et réglementations sur les données |
+| **Spécialiste sécurité cloud** | Voir la formation Administrateur systèmes et DevOps |
+| **Formateur** | Sensibilisation pour entreprises et écoles |
+
+> [!retenir]
+> - Un portfolio fait de laboratoire et de cas fictifs, jamais de données réelles.
+> - PME, agences, ONG, entreprises étrangères, plateformes.
+> - Diagnostic, sensibilisation, vérification, accompagnement.
+> - Autorisation écrite, confidentialité, limite de responsabilité.
+> - Refuser toute demande illégale.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rassemblez votre portfolio en 5 éléments.
+> 2. Préparez un atelier de sensibilisation de 30 minutes pour une PME.
+> 3. Calculez vos prix et rédigez vos conditions en 6 points.
+> 4. Envoyez au moins 3 propositions à des PME, agences ou ONG.
+>
+> **À livrer** : votre portfolio, votre atelier, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 4, 0, 'Avec quoi construire son portfolio ?', '["Rien","Son laboratoire et des cas fictifs","Des comptes piratés","Les résultats réels de clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 4, 1, 'Que répondre à une demande d''accéder aux messages de quelqu''un ?', '["Accepter pour apprendre","Refuser, c''est illégal","Demander un acompte","Accepter si le prix est bon"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-f', 4, 2, 'Que garantit un audit ?', '["Un site plus beau","Il réduit les risques, sans garantir une sécurité totale","Rien du tout","Une sécurité totale"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que fait un analyste en cybersécurité ?', '["Il dessine des logos","Il gère la paie","Il pirate des comptes","Il repère les faiblesses avec autorisation, recommande des corrections et sensibilise"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Qu''est-ce qu''une vulnérabilité ?', '["Une faiblesse qui pourrait être utilisée par un attaquant","Un mot de passe fort","Un logiciel à jour","Une sauvegarde"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Qu''est-ce que l''hameçonnage ?', '["Un faux message pour voler un mot de passe ou faire payer","Une mise à jour","Un pare-feu","Une technique de pêche"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quelle protection contre le rançongiciel ?', '["Désactiver le pare-feu","Rien","Payer la rançon","Des sauvegardes hors ligne et des mises à jour"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quelles arnaques sont courantes à Madagascar ?', '["Faux comptes et demandes de code Mobile Money","Seulement par courrier papier","Aucune","Seulement par fax"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que signifie l''intégrité ?', '["Les données sont publiques","Le site est rapide","Le site est joli","Les données sont exactes et non modifiées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Tester un système sans autorisation, c''est :', '["Autorisé pour apprendre","Illégal, même avec une bonne intention","Toujours permis","Conseillé"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que faire des faiblesses découvertes ?', '["Les publier","Les exploiter","Les signaler au client, jamais les publier ni les vendre","Les vendre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Qu''est-ce qu''un port ?', '["Un mot de passe","Un écran","Un câble","Une porte pour un service sur une machine"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Pourquoi un gestionnaire de mots de passe ?', '["Aucune raison","Pour les écrire sur papier","Pour partager ses mots de passe","Un mot de passe long et unique par compte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que faire des accès d''un employé qui part ?', '["Rien","Les donner à un autre","Les retirer","Les garder"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quelle correction type contre l''injection ?', '["Ajouter des images","Requêtes paramétrées et validation des entrées","Changer la couleur du site","Supprimer le HTTPS"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que fait-on des failles dans ce cours ?', '["On apprend à les reconnaître et les corriger","On les ignore","On les vend","On les exploite sur des sites réels"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Comment classe-t-on un risque ?', '["Selon la couleur","Selon le prix du site","Selon sa probabilité et son impact","Au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que signifie un port filtered dans Nmap ?', '["Le port est cassé","Un pare-feu bloque","Un service répond","La machine est éteinte"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que recommander pour un port de base de données ouvert sur Internet ?', '["Changer de logo","L''ouvrir davantage","Rien","Le fermer au pare-feu et l''autoriser en interne seulement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que fait l''analyse passive de ZAP ?', '["Elle supprime le site","Elle envoie des e-mails","Elle observe les réponses sans envoyer de requêtes agressives","Elle bloque le serveur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que faire d''une alerte importante avant le rapport ?', '["La publier","La vérifier","La copier sans vérifier","L''effacer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel scanner de vulnérabilités payant est cité ?', '["Figma","Nessus","Audacity","Canva"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que doit préciser l''autorisation écrite ?', '["Le prix du café","Le périmètre, le hors périmètre, les méthodes et les dates","Rien","La couleur du rapport"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel risque est critique chez Lamba Gasy Shop ?', '["Le nom de la boutique","La version du serveur visible","La couleur du site","L''absence de double authentification"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que conseiller aux clients d''une boutique payée par Mobile Money ?', '["Les seuls numéros officiels et ne jamais donner de code de confirmation","Payer n''importe quel numéro","Donner son code","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que remettre en fin de mission ?', '["Le rapport puis une note de clôture après vérification","Une facture seule","Rien","Les mots de passe du client sur Internet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que publier dans son portfolio ?', '["Les résultats réels des clients","Des données personnelles","Des mots de passe","Des travaux sur son laboratoire et des cas fictifs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
 commit;

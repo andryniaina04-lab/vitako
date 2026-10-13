@@ -7768,5 +7768,91 @@ export const PUBLISHED = {
     "minutes": 6
    }
   ]
+ },
+ "tech-4-f": {
+  "hours": 22,
+  "description": "L'analyste en cybersécurité protège les sites, les comptes et les données des organisations : il repère les faiblesses avec l'autorisation du client, recommande des corrections et sensibilise les équipes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des PME, des agences, des ONG et des entreprises, à Madagascar et à l'étranger, avec Nmap et OWASP ZAP, dans un cadre strictement éthique et légal : menaces, trois piliers de la sécurité, autorisation écrite, réseau, sécurité des comptes, OWASP Top 10, journaux, évaluation des risques, inventaire, analyse de site, audit, rapport et plan de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier d'analyste en cybersécurité et ses règles éthiques et légales",
+   "Reconnaître les principales menaces et les protections de base",
+   "Comprendre les familles de risques web de l'OWASP Top 10 et leurs corrections",
+   "Inventorier et analyser un environnement autorisé avec Nmap et OWASP ZAP",
+   "Mener un audit de base et rédiger un rapport clair avec un plan de correction",
+   "Présenter un portfolio, fixer ses prix, se protéger et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'analyste en cybersécurité depuis Madagascar",
+    "summary": "Rôle de l'analyste, vulnérabilités, principales menaces, arnaques courantes à Madagascar, confidentialité, intégrité et disponibilité, règles éthiques et légales, clients, laboratoire et plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les principales menaces",
+     "Les trois piliers de la sécurité",
+     "Éthique et légalité : les règles absolues",
+     "Qui sont vos clients ?",
+     "Votre laboratoire et votre plan d'apprentissage",
+     "Exercice pratique : votre laboratoire et vos règles"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : réseau, comptes, OWASP Top 10, journaux et risques",
+    "summary": "IP, ports, protocoles, pare-feu et chiffrement, double authentification et accès minimum, familles de risques de l'OWASP Top 10 et corrections, lecture des journaux, grille probabilité et impact.",
+    "sections": [
+     "Le réseau pour la sécurité",
+     "La sécurité des comptes",
+     "La sécurité des sites : l'OWASP Top 10",
+     "Lire les journaux",
+     "Échecs de connexion SSH sur un serveur Ubuntu (votre laboratoire)",
+     "Évaluer les risques",
+     "Exercice pratique : un petit diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Nmap, OWASP ZAP, Burp Suite Professional et Nessus",
+    "summary": "Scan de ports dans un environnement autorisé, interprétation open, closed, filtered, exploration et analyse passive avec ZAP, niveaux d'alerte, faux positifs, outils payants et versions gratuites.",
+    "sections": [
+     "Nmap : inventorier les services",
+     "Machines actives dans votre réseau de laboratoire",
+     "Ports les plus courants d'une machine de votre laboratoire",
+     "Versions des services détectés",
+     "Enregistrer les résultats pour le rapport",
+     "OWASP ZAP : analyser un site web",
+     "Trier et vérifier les alertes",
+     "Les outils payants",
+     "Exercice pratique : inventaire et analyse dans votre laboratoire"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Premier projet : l'audit de sécurité de Lamba Gasy Shop",
+    "summary": "Autorisation écrite, périmètre et accord de l'hébergeur, audit des services, du site, des comptes, de la messagerie et des sauvegardes, constats classés, rapport avec résumé pour la direction, correction et vérification.",
+    "sections": [
+     "Le cas pratique : « Lamba Gasy Shop »",
+     "Étape 1 : le cadre et l'autorisation",
+     "Étape 2 : l'audit",
+     "Étape 3 : les constats",
+     "Étape 4 : le rapport",
+     "Étape 5 : correction et vérification",
+     "Exercice pratique : l'audit de Lamba Gasy Shop"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio sans données réelles, 5 canaux, offres de diagnostic, sensibilisation, vérification et accompagnement, prix, conditions et limite de responsabilité, refus des demandes illégales, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Les offres de départ",
+     "Fixer ses prix",
+     "Vos conditions et votre protection",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 5
+   }
+  ]
  }
 };

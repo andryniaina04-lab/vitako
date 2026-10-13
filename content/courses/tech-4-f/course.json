@@ -1,0 +1,97 @@
+{
+  "id": "tech-4-f",
+  "hours": 22,
+  "description": "L'analyste en cybersécurité protège les sites, les comptes et les données des organisations : il repère les faiblesses avec l'autorisation du client, recommande des corrections et sensibilise les équipes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des PME, des agences, des ONG et des entreprises, à Madagascar et à l'étranger, avec Nmap et OWASP ZAP, dans un cadre strictement éthique et légal : menaces, trois piliers de la sécurité, autorisation écrite, réseau, sécurité des comptes, OWASP Top 10, journaux, évaluation des risques, inventaire, analyse de site, audit, rapport et plan de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier d'analyste en cybersécurité et ses règles éthiques et légales",
+    "Reconnaître les principales menaces et les protections de base",
+    "Comprendre les familles de risques web de l'OWASP Top 10 et leurs corrections",
+    "Inventorier et analyser un environnement autorisé avec Nmap et OWASP ZAP",
+    "Mener un audit de base et rédiger un rapport clair avec un plan de correction",
+    "Présenter un portfolio, fixer ses prix, se protéger et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'analyste en cybersécurité depuis Madagascar",
+      "summary": "Rôle de l'analyste, vulnérabilités, principales menaces, arnaques courantes à Madagascar, confidentialité, intégrité et disponibilité, règles éthiques et légales, clients, laboratoire et plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il avant de tester un système ?", "options": ["Une autorisation écrite de son propriétaire", "Rien", "Une bonne intention", "Un compte sur un réseau social"], "correct": 0 },
+        { "q": "Quels sont les trois piliers de la sécurité ?", "options": ["Confidentialité, intégrité, disponibilité", "Vitesse, prix, design", "Logo, couleur, police", "Texte, image, vidéo"], "correct": 0 },
+        { "q": "Où s'entraîner légalement ?", "options": ["Dans son propre laboratoire et sur des plateformes prévues", "Sur le site d'une entreprise au hasard", "Sur le compte d'un ami", "Sur le site d'une banque"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : réseau, comptes, OWASP Top 10, journaux et risques",
+      "summary": "IP, ports, protocoles, pare-feu et chiffrement, double authentification et accès minimum, familles de risques de l'OWASP Top 10 et corrections, lecture des journaux, grille probabilité et impact.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est l'effet de la double authentification ?", "options": ["Un mot de passe volé ne suffit plus", "Le site va plus vite", "Les mots de passe deviennent inutiles", "Aucun"], "correct": 0 },
+        { "q": "Qu'est-ce que l'OWASP Top 10 ?", "options": ["La liste des principales familles de risques des applications web", "Un classement de sites", "Un antivirus", "Un hébergeur"], "correct": 0 },
+        { "q": "Que peuvent indiquer des centaines d'échecs de connexion ?", "options": ["Des essais automatiques de mots de passe", "Un site très populaire", "Rien", "Une mise à jour"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Nmap, OWASP ZAP, Burp Suite Professional et Nessus",
+      "summary": "Scan de ports dans un environnement autorisé, interprétation open, closed, filtered, exploration et analyse passive avec ZAP, niveaux d'alerte, faux positifs, outils payants et versions gratuites.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert Nmap ?", "options": ["Inventorier les machines et services exposés d'un réseau autorisé", "Dessiner des logos", "Écrire des e-mails", "Monter des vidéos"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un faux positif ?", "options": ["Une alerte qui ne correspond pas à un vrai problème", "Une faille confirmée", "Un mot de passe fort", "Un port fermé"], "correct": 0 },
+        { "q": "Quand utiliser l'analyse active de ZAP ?", "options": ["Seulement sur un site de test et avec autorisation", "Sur n'importe quel site", "Jamais dans le laboratoire", "Sur les sites des concurrents"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'audit de sécurité de Lamba Gasy Shop",
+      "summary": "Autorisation écrite, périmètre et accord de l'hébergeur, audit des services, du site, des comptes, de la messagerie et des sauvegardes, constats classés, rapport avec résumé pour la direction, correction et vérification.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait-on si l'autorisation écrite n'est pas complète ?", "options": ["On ne teste pas", "On teste quand même", "On teste la nuit", "On demande à un ami"], "correct": 0 },
+        { "q": "Quelle partie du rapport est la plus lue ?", "options": ["Le résumé pour la direction", "Les annexes techniques", "La page de garde", "Aucune"], "correct": 0 },
+        { "q": "Que protègent SPF, DKIM et DMARC ?", "options": ["Contre l'usurpation du nom de domaine dans les e-mails", "Contre la pluie", "Le design du site", "Les images"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio sans données réelles, 5 canaux, offres de diagnostic, sensibilisation, vérification et accompagnement, prix, conditions et limite de responsabilité, refus des demandes illégales, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Avec quoi construire son portfolio ?", "options": ["Son laboratoire et des cas fictifs", "Les résultats réels de clients", "Des comptes piratés", "Rien"], "correct": 0 },
+        { "q": "Que répondre à une demande d'accéder aux messages de quelqu'un ?", "options": ["Refuser, c'est illégal", "Accepter si le prix est bon", "Accepter pour apprendre", "Demander un acompte"], "correct": 0 },
+        { "q": "Que garantit un audit ?", "options": ["Il réduit les risques, sans garantir une sécurité totale", "Une sécurité totale", "Rien du tout", "Un site plus beau"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un analyste en cybersécurité ?", "options": ["Il repère les faiblesses avec autorisation, recommande des corrections et sensibilise", "Il pirate des comptes", "Il dessine des logos", "Il gère la paie"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une vulnérabilité ?", "options": ["Une faiblesse qui pourrait être utilisée par un attaquant", "Un mot de passe fort", "Un logiciel à jour", "Une sauvegarde"], "correct": 0 },
+    { "q": "Qu'est-ce que l'hameçonnage ?", "options": ["Un faux message pour voler un mot de passe ou faire payer", "Une technique de pêche", "Une mise à jour", "Un pare-feu"], "correct": 0 },
+    { "q": "Quelle protection contre le rançongiciel ?", "options": ["Des sauvegardes hors ligne et des mises à jour", "Payer la rançon", "Rien", "Désactiver le pare-feu"], "correct": 0 },
+    { "q": "Quelles arnaques sont courantes à Madagascar ?", "options": ["Faux comptes et demandes de code Mobile Money", "Aucune", "Seulement par courrier papier", "Seulement par fax"], "correct": 0 },
+    { "q": "Que signifie l'intégrité ?", "options": ["Les données sont exactes et non modifiées", "Le site est rapide", "Le site est joli", "Les données sont publiques"], "correct": 0 },
+    { "q": "Tester un système sans autorisation, c'est :", "options": ["Illégal, même avec une bonne intention", "Autorisé pour apprendre", "Toujours permis", "Conseillé"], "correct": 0 },
+    { "q": "Que faire des faiblesses découvertes ?", "options": ["Les signaler au client, jamais les publier ni les vendre", "Les publier", "Les vendre", "Les exploiter"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un port ?", "options": ["Une porte pour un service sur une machine", "Un câble", "Un mot de passe", "Un écran"], "correct": 0 },
+    { "q": "Pourquoi un gestionnaire de mots de passe ?", "options": ["Un mot de passe long et unique par compte", "Pour partager ses mots de passe", "Pour les écrire sur papier", "Aucune raison"], "correct": 0 },
+    { "q": "Que faire des accès d'un employé qui part ?", "options": ["Les retirer", "Les garder", "Les donner à un autre", "Rien"], "correct": 0 },
+    { "q": "Quelle correction type contre l'injection ?", "options": ["Requêtes paramétrées et validation des entrées", "Changer la couleur du site", "Ajouter des images", "Supprimer le HTTPS"], "correct": 0 },
+    { "q": "Que fait-on des failles dans ce cours ?", "options": ["On apprend à les reconnaître et les corriger", "On les exploite sur des sites réels", "On les ignore", "On les vend"], "correct": 0 },
+    { "q": "Comment classe-t-on un risque ?", "options": ["Selon sa probabilité et son impact", "Au hasard", "Selon la couleur", "Selon le prix du site"], "correct": 0 },
+    { "q": "Que signifie un port filtered dans Nmap ?", "options": ["Un pare-feu bloque", "Un service répond", "La machine est éteinte", "Le port est cassé"], "correct": 0 },
+    { "q": "Que recommander pour un port de base de données ouvert sur Internet ?", "options": ["Le fermer au pare-feu et l'autoriser en interne seulement", "L'ouvrir davantage", "Rien", "Changer de logo"], "correct": 0 },
+    { "q": "Que fait l'analyse passive de ZAP ?", "options": ["Elle observe les réponses sans envoyer de requêtes agressives", "Elle supprime le site", "Elle bloque le serveur", "Elle envoie des e-mails"], "correct": 0 },
+    { "q": "Que faire d'une alerte importante avant le rapport ?", "options": ["La vérifier", "La copier sans vérifier", "L'effacer", "La publier"], "correct": 0 },
+    { "q": "Quel scanner de vulnérabilités payant est cité ?", "options": ["Nessus", "Canva", "Figma", "Audacity"], "correct": 0 },
+    { "q": "Que doit préciser l'autorisation écrite ?", "options": ["Le périmètre, le hors périmètre, les méthodes et les dates", "Le prix du café", "Rien", "La couleur du rapport"], "correct": 0 },
+    { "q": "Quel risque est critique chez Lamba Gasy Shop ?", "options": ["L'absence de double authentification", "La version du serveur visible", "La couleur du site", "Le nom de la boutique"], "correct": 0 },
+    { "q": "Que conseiller aux clients d'une boutique payée par Mobile Money ?", "options": ["Les seuls numéros officiels et ne jamais donner de code de confirmation", "Payer n'importe quel numéro", "Donner son code", "Rien"], "correct": 0 },
+    { "q": "Que remettre en fin de mission ?", "options": ["Le rapport puis une note de clôture après vérification", "Rien", "Les mots de passe du client sur Internet", "Une facture seule"], "correct": 0 },
+    { "q": "Que publier dans son portfolio ?", "options": ["Des travaux sur son laboratoire et des cas fictifs", "Les résultats réels des clients", "Des mots de passe", "Des données personnelles"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
