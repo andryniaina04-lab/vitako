@@ -39,7 +39,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true),
-  ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 11, false),
+  ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true),
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 18, false),
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 12, false),
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
@@ -54822,4 +54822,663 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que contient un bilan de journée ?', '["Seulement vos heures","Des photos","Les mots de passe","Tickets, délais, problèmes principaux, incidents et propositions"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel forfait proposer à une petite structure locale ?', '["Un ordinateur gratuit","Un abonnement à une salle de sport","Un forfait mensuel de support à distance","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
+
+-- tech-3-f
+delete from public.exam_questions where course_id = 'tech-3-f';
+delete from public.module_questions where course_id = 'tech-3-f';
+delete from public.lessons where course_id = 'tech-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-f', 0, 'Les métiers d''administrateur systèmes et de DevOps depuis Madagascar', 'Administration et DevOps, serveurs physiques, VPS, cloud et conteneurs, chemin d''une requête, tâches du métier, règles de sécurité, clients, laboratoire et plan d''apprentissage.', 'Derrière chaque site, chaque application et chaque service en ligne, il y a des serveurs qui doivent fonctionner jour et nuit, être sécurisés, sauvegardés et mis à jour. L''administrateur systèmes s''en occupe ; le DevOps automatise en plus la mise en ligne des nouvelles versions. Ces métiers se font en grande partie à distance. Ce premier module vous les présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que font un administrateur systèmes et un DevOps.
+> 2. Comprendre ce qu''est un serveur et où il se trouve.
+> 3. Décrire le chemin d''une requête sur Internet.
+> 4. Connaître les responsabilités et les règles de sécurité du métier.
+> 5. Préparer votre laboratoire et votre plan d''apprentissage.
+
+## Les métiers en une phrase
+
+Un **administrateur systèmes** installe, configure, sécurise, surveille et sauvegarde des serveurs. Un **ingénieur DevOps** automatise en plus la construction, les tests et la mise en ligne des applications, pour livrer plus souvent et avec moins d''erreurs.
+
+> [!definition] DevOps
+> Une façon de travailler qui rapproche le développement (Dev) et l''exploitation des serveurs (Ops) : automatisation, livraisons fréquentes, surveillance, collaboration. On parle aussi d''ingénieur DevOps pour la personne qui met en place ces pratiques.
+
+## Qu''est-ce qu''un serveur ?
+
+| Type | Principe | Exemple |
+| --- | --- | --- |
+| **Serveur physique** | Un ordinateur dans une salle de serveurs | Serveur d''une entreprise dans ses locaux |
+| **Serveur virtuel (VPS)** | Une partie d''un gros serveur, louée chez un hébergeur | Petit serveur loué pour un site |
+| **Cloud** | Ressources louées à la demande chez un grand fournisseur | Serveurs, bases de données, stockage |
+| **Conteneur** | Application emballée avec tout ce dont elle a besoin | Application lancée avec Docker |
+
+> [!madagascar]
+> Vous pouvez administrer un serveur situé en **Europe ou aux États-Unis** depuis Antananarivo : tout se fait par une connexion sécurisée (SSH). La qualité de votre connexion compte, mais les serveurs eux-mêmes ont une connexion très rapide. Prévoyez une connexion de secours pour les interventions urgentes.
+
+## Le chemin d''une requête
+
+| Étape | Ce qui se passe |
+| --- | --- |
+| 1 | L''utilisateur tape l''adresse d''un site |
+| 2 | Le **DNS** traduit le nom en adresse IP du serveur |
+| 3 | La requête arrive sur le serveur, passe le **pare-feu** |
+| 4 | Le **serveur web** (par exemple Nginx) la reçoit |
+| 5 | Il la transmet à l''**application** (souvent dans un conteneur) |
+| 6 | L''application interroge la **base de données** |
+| 7 | La réponse repart vers l''utilisateur, chiffrée en **HTTPS** |
+
+## Les tâches du métier
+
+| Tâche | Exemple |
+| --- | --- |
+| **Installer et configurer** | Préparer un serveur Linux pour une application |
+| **Sécuriser** | Mises à jour, pare-feu, accès par clé, comptes limités |
+| **Déployer** | Mettre en ligne une nouvelle version |
+| **Automatiser** | Scripts, pipelines d''intégration et de déploiement continus |
+| **Surveiller** | Disponibilité, mémoire, disque, erreurs |
+| **Sauvegarder et restaurer** | Copies régulières et testées |
+| **Réagir aux incidents** | Site en panne, disque plein, attaque |
+| **Documenter** | Procédures, architecture, accès |
+
+## Responsabilités et règles de sécurité
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Accès minimum** | Chacun n''a que les droits nécessaires |
+| **Aucun mot de passe en clair** dans le code ou les messages | Éviter les vols d''accès |
+| **Changements préparés** et réversibles | Une erreur peut arrêter un service pour tous les clients |
+| **Sauvegardes testées** | Une sauvegarde jamais restaurée n''est pas fiable |
+| **Traçabilité** | Noter qui a fait quoi et quand |
+| **Confidentialité** | Vous avez accès à des données sensibles |
+
+> [!attention]
+> Un administrateur a des **pouvoirs étendus** : une seule commande mal tapée peut effacer des données ou arrêter un service. Travaillez avec méthode, relisez avant d''appuyer sur Entrée, et testez toujours sur un serveur de test avant la production.
+
+## Qui sont vos clients ?
+
+| Client | Besoins |
+| --- | --- |
+| **Agences web et développeurs** | Serveurs pour les sites de leurs clients, mises en ligne |
+| **Start-up** | Infrastructure, déploiement automatique, surveillance |
+| **PME** à Madagascar | Serveur de fichiers, messagerie, site, sauvegardes |
+| **Prestataires étrangers** | Techniciens Linux et DevOps à distance |
+| **ONG** | Hébergement de plateformes de collecte de données |
+
+## Votre laboratoire et votre plan d''apprentissage
+
+| Élément | Usage |
+| --- | --- |
+| **Machine virtuelle Linux** (Ubuntu Server) | S''entraîner sans risque |
+| **Compte GitHub** | Code, scripts, GitHub Actions |
+| **Docker** | Conteneurs |
+| **Petit VPS** (plus tard) | Pratique sur un vrai serveur en ligne |
+
+| Mois | Objectif |
+| --- | --- |
+| **1** | Linux : commandes, fichiers, utilisateurs, droits, SSH |
+| **2** | Réseau, serveur web, sécurité, sauvegardes |
+| **3** | Docker, Docker Compose, GitHub Actions |
+| **4** | Projet complet sur un VPS, documentation, portfolio |
+
+> [!retenir]
+> - L''administrateur gère des serveurs ; le DevOps automatise aussi les mises en ligne.
+> - Serveur physique, VPS, cloud, conteneur.
+> - DNS, pare-feu, serveur web, application, base de données, HTTPS.
+> - Accès minimum, aucun secret en clair, changements réversibles, sauvegardes testées.
+> - Un laboratoire Linux et un plan sur 4 mois.
+
+## Exercice pratique : votre laboratoire
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez VirtualBox et créez une machine virtuelle Ubuntu Server.
+> 2. Connectez-vous et notez la version du système, la mémoire et l''espace disque.
+> 3. Dessinez le chemin d''une requête vers un site que vous utilisez.
+> 4. Rédigez vos 5 règles personnelles de prudence en administration.
+>
+> **À livrer** : des captures de votre machine virtuelle, votre schéma et vos règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 0, 0, 'Que fait le DNS ?', '["Il héberge les images","Il sauvegarde la base","Il chiffre les données","Il traduit un nom de domaine en adresse IP"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 0, 1, 'Qu''est-ce qu''un VPS ?', '["Un téléphone","Un logiciel de dessin","Un câble","Une partie d''un gros serveur louée chez un hébergeur"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 0, 2, 'Qu''est-ce qu''une sauvegarde jamais restaurée ?', '["Une sauvegarde inutile à tester","Une sauvegarde dont on ne sait pas si elle est fiable","Une copie du code","Une sauvegarde parfaite"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-f', 1, 'Les bases : Linux, droits, services, journaux, SSH et pare-feu', 'Commandes essentielles et prudence avec rm, utilisateurs et droits, apt et systemctl, lecture des journaux, connexion SSH par clé, désactivation de root et des mots de passe, pare-feu ufw.', 'Ce module vous donne les bases de Linux pour l''administration : se déplacer et gérer les fichiers, les utilisateurs et les droits, les paquets et les services, les journaux, la connexion SSH par clé et le pare-feu.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les commandes essentielles de Linux.
+> 2. Gérer utilisateurs, groupes et droits.
+> 3. Installer des logiciels et gérer des services.
+> 4. Lire les journaux pour comprendre un problème.
+> 5. Sécuriser l''accès avec SSH et un pare-feu.
+
+## Les commandes essentielles
+
+```bash
+pwd                      # où suis-je ?
+ls -la                   # lister les fichiers, y compris cachés
+cd /var/www              # changer de dossier
+mkdir sauvegardes        # créer un dossier
+cp fichier.txt copie.txt # copier
+mv ancien.txt nouveau.txt # déplacer ou renommer
+rm fichier.txt           # supprimer (sans corbeille !)
+cat config.txt           # afficher un fichier
+nano config.txt          # modifier un fichier
+df -h                    # espace disque
+free -h                  # mémoire
+top                      # processus en cours
+```
+
+> [!attention]
+> Sous Linux, `rm` supprime **définitivement**, sans corbeille. Vérifiez toujours le dossier où vous êtes (`pwd`) et le nom des fichiers avant de supprimer, surtout avec des options récursives.
+
+## Utilisateurs, groupes et droits
+
+| Commande | Usage |
+| --- | --- |
+| `sudo adduser fara` | Créer un utilisateur |
+| `sudo usermod -aG sudo fara` | Donner les droits d''administration |
+| `sudo chown www-data:www-data site/` | Changer le propriétaire |
+| `chmod 640 config.env` | Changer les droits d''un fichier |
+
+> [!definition] Droits Linux
+> Chaque fichier a des droits de lecture (r), écriture (w) et exécution (x) pour son propriétaire, son groupe et les autres. `chmod 640` signifie : lecture et écriture pour le propriétaire, lecture pour le groupe, rien pour les autres.
+
+## Paquets et services
+
+```bash
+sudo apt update                 # mettre à jour la liste des paquets
+sudo apt upgrade                # installer les mises à jour
+sudo apt install nginx          # installer un logiciel
+sudo systemctl status nginx     # voir l''état d''un service
+sudo systemctl restart nginx    # redémarrer un service
+sudo systemctl enable nginx     # le lancer au démarrage
+```
+
+## Les journaux
+
+| Commande | Usage |
+| --- | --- |
+| `sudo journalctl -u nginx --since "1 hour ago"` | Journal d''un service sur la dernière heure |
+| `sudo tail -f /var/log/nginx/error.log` | Suivre les erreurs en direct |
+| `grep "error" fichier.log` | Chercher un mot dans un journal |
+
+> [!astuce]
+> Face à un problème, **lisez d''abord les journaux**. Ils indiquent presque toujours la cause : fichier introuvable, port déjà utilisé, droit refusé, disque plein.
+
+## SSH : se connecter de façon sécurisée
+
+```bash
+# Sur votre ordinateur : créer une paire de clés
+ssh-keygen -t ed25519 -C "fara@portable"
+
+# Copier la clé publique sur le serveur
+ssh-copy-id fara@203.0.113.10
+
+# Se connecter
+ssh fara@203.0.113.10
+```
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Connexion par clé** plutôt que par mot de passe | Bien plus difficile à pirater |
+| **Désactiver la connexion directe de root** | Limiter les attaques |
+| **Désactiver la connexion par mot de passe** une fois la clé testée | Bloquer les essais automatiques |
+| **Clé privée protégée** par une phrase de passe | Si l''ordinateur est volé |
+
+> [!attention]
+> Avant de désactiver la connexion par mot de passe, **testez la connexion par clé dans une deuxième fenêtre**. Sinon, vous risquez de vous enfermer dehors de votre propre serveur.
+
+## Le pare-feu
+
+```bash
+sudo ufw default deny incoming   # tout bloquer en entrée par défaut
+sudo ufw allow OpenSSH           # autoriser SSH
+sudo ufw allow ''Nginx Full''      # autoriser le web (HTTP et HTTPS)
+sudo ufw enable                  # activer le pare-feu
+sudo ufw status                  # vérifier
+```
+
+> [!definition] Pare-feu
+> Un filtre qui autorise ou bloque les connexions selon des règles. Le principe de base : tout bloquer, puis n''ouvrir que ce qui est nécessaire.
+
+> [!madagascar]
+> Une coupure de connexion pendant une modification de pare-feu ou de SSH peut vous empêcher de vous reconnecter. Vérifiez que l''hébergeur propose une **console de secours** (accès par son site web) avant de toucher à ces réglages.
+
+> [!retenir]
+> - Commandes de base, prudence avec `rm`.
+> - Utilisateurs, groupes, propriétaires et droits.
+> - apt pour les paquets, systemctl pour les services.
+> - Lire les journaux d''abord en cas de problème.
+> - SSH par clé, root et mots de passe désactivés après test, pare-feu fermé par défaut.
+
+## Exercice pratique : un serveur de base sécurisé
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans votre machine virtuelle, créez un utilisateur administrateur.
+> 2. Configurez la connexion SSH par clé depuis votre ordinateur, puis désactivez la connexion par mot de passe.
+> 3. Installez Nginx, activez le pare-feu et vérifiez que la page par défaut s''affiche.
+> 4. Provoquez une erreur (arrêtez Nginx) et retrouvez-la dans les journaux.
+>
+> **À livrer** : vos commandes commentées et des captures de chaque étape.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 1, 0, 'Que fait la commande rm sous Linux ?', '["Elle affiche un fichier","Elle copie","Elle supprime définitivement, sans corbeille","Elle renomme"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 1, 1, 'Que lire d''abord face à un problème ?', '["Les journaux","La documentation commerciale","Les réseaux sociaux","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 1, 2, 'Que faire avant de désactiver la connexion par mot de passe ?', '["Tester la connexion par clé dans une deuxième fenêtre","Éteindre le serveur","Supprimer la clé","Rien"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-f', 2, 'Les outils : Docker, Docker Compose, GitHub Actions et services payants', 'Image, conteneur, Dockerfile, registre et volume, Compose avec application et base de données, secrets dans .env, intégration et déploiement continus, VPS, cloud, alertes de budget et Datadog.', 'Ce module vous fait prendre en main les outils centraux du DevOps : **Docker** pour emballer les applications, **Docker Compose** pour lancer plusieurs services ensemble, **GitHub Actions** pour automatiser les tests et les mises en ligne. Vous découvrirez ensuite les services payants : **serveurs VPS ou cloud** (DigitalOcean, AWS) et la surveillance avec **Datadog**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre et utiliser les conteneurs Docker.
+> 2. Écrire un Dockerfile simple.
+> 3. Lancer une application avec Docker Compose.
+> 4. Créer un pipeline GitHub Actions.
+> 5. Comprendre les offres VPS, cloud et de surveillance.
+
+## Docker : les conteneurs
+
+> [!definition] Conteneur
+> Une application emballée avec tout ce dont elle a besoin (langage, bibliothèques, configuration). Elle fonctionne de la même façon sur l''ordinateur du développeur, sur le serveur de test et en production.
+
+| Notion | Explication |
+| --- | --- |
+| **Image** | Le modèle de l''application (comme une recette) |
+| **Conteneur** | Une image en cours d''exécution |
+| **Dockerfile** | Le fichier qui décrit comment construire l''image |
+| **Registre** | L''endroit où l''on stocke les images (Docker Hub, GitHub Container Registry) |
+| **Volume** | Un espace pour garder les données quand le conteneur est recréé |
+
+### Un Dockerfile simple
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
+
+```bash
+docker build -t mon-app .
+docker run -d -p 3000:3000 --name mon-app mon-app
+docker ps
+docker logs mon-app
+```
+
+## Docker Compose : plusieurs services
+
+```yaml
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - donnees_db:/var/lib/postgresql/data
+volumes:
+  donnees_db:
+```
+
+```bash
+docker compose up -d
+docker compose ps
+docker compose logs -f app
+```
+
+> [!attention]
+> Les mots de passe ne s''écrivent **jamais** dans le fichier Compose ou dans le code. On les met dans un fichier `.env` qui n''est pas envoyé sur Git, ou dans un gestionnaire de secrets.
+
+## GitHub Actions : automatiser
+
+> [!definition] Intégration et déploiement continus (CI/CD)
+> L''**intégration continue** lance automatiquement les tests à chaque modification du code. Le **déploiement continu** met automatiquement en ligne la nouvelle version quand les tests réussissent.
+
+```yaml
+name: Tests et construction
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+      - run: docker build -t mon-app .
+```
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Secrets dans les paramètres du dépôt** | Jamais dans le fichier du workflow |
+| **Tests avant le déploiement** | Ne pas mettre en ligne une version cassée |
+| **Petites étapes** | Repérer facilement ce qui échoue |
+| **Notifications** en cas d''échec | Réagir vite |
+
+> [!madagascar]
+> GitHub Actions s''exécute **sur les serveurs de GitHub**, pas sur votre ordinateur. Une coupure d''électricité ou de connexion chez vous n''empêche pas une mise en ligne automatique de se dérouler correctement.
+
+## Les services payants
+
+| Service | Ce qu''il apporte |
+| --- | --- |
+| **VPS** (DigitalOcean et autres hébergeurs) | Serveur virtuel simple, prix mensuel prévisible, idéal pour débuter et pour les petits projets |
+| **Cloud** (AWS et autres grands fournisseurs) | Très nombreux services (serveurs, bases gérées, stockage, réseau) ; puissant mais plus complexe ; facturation à l''usage |
+| **Datadog** | Surveillance complète : métriques, journaux, alertes, tableaux de bord |
+
+> [!attention]
+> Dans le cloud, une erreur de configuration peut coûter **très cher** (serveur oublié, trafic imprévu). Activez toujours des **alertes de budget** et éteignez les ressources de test après usage.
+
+> [!madagascar]
+> Ces services se paient en dollars par carte bancaire internationale, et c''est généralement **le client** qui paie l''hébergement à son nom. Pour vous former, utilisez les offres gratuites ou les crédits de départ des fournisseurs, en surveillant de près les limites.
+
+> [!retenir]
+> - Docker : image, conteneur, Dockerfile, registre, volume.
+> - Docker Compose pour lancer application et base de données ensemble.
+> - Aucun secret dans le code ni dans les fichiers versionnés.
+> - GitHub Actions : tests et construction automatiques, secrets dans les paramètres.
+> - VPS simple, cloud puissant mais à surveiller, Datadog pour la surveillance.
+
+## Exercice pratique : une application conteneurisée
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Prenez une petite application web d''exemple (Node.js ou Python).
+> 2. Écrivez son Dockerfile et lancez-la avec Docker.
+> 3. Ajoutez une base de données avec Docker Compose et un fichier `.env` exclu de Git.
+> 4. Créez un workflow GitHub Actions qui lance les tests et construit l''image.
+>
+> **À livrer** : le lien du dépôt et une capture d''une exécution réussie du workflow.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 2, 0, 'Quelle différence entre image et conteneur ?', '["Aucune","L''image est le modèle, le conteneur l''image en cours d''exécution","Le conteneur est un fichier texte","L''image est un serveur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 2, 1, 'Où mettre les mots de passe d''un projet Docker Compose ?', '["Dans le nom du conteneur","Dans un fichier .env exclu de Git ou un gestionnaire de secrets","Dans le fichier Compose sur GitHub","Dans le README"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 2, 2, 'Que faire pour éviter une facture cloud imprévue ?', '["Activer des alertes de budget et éteindre les ressources de test","Créer plus de serveurs","Rien","Désactiver les alertes"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-f', 3, 'Premier projet : la mise en production de Tsena Online', 'Préparation et sécurisation du serveur, déploiement avec Docker Compose et Nginx en proxy inverse, DNS et HTTPS avec Let''s Encrypt, déploiement automatique et retour arrière, surveillance, sauvegardes et documentation.', 'Dans ce module, vous mettez en production l''application d''un client sur un serveur VPS, comme le ferait un administrateur indépendant. Vous apprendrez à préparer le serveur, à déployer avec Docker, à configurer le nom de domaine et le HTTPS, à automatiser les mises en ligne, à surveiller et à sauvegarder.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer et sécuriser un serveur de production.
+> 2. Déployer une application avec Docker Compose et Nginx.
+> 3. Configurer le nom de domaine et le HTTPS.
+> 4. Automatiser le déploiement.
+> 5. Mettre en place surveillance, sauvegardes et documentation.
+
+## Le cas pratique : « Tsena Online »
+
+> [!exemple] Votre client
+> **Tsena Online** est une petite place de marché en ligne pour des producteurs de la région d''Antsirabe. Le développeur a terminé l''application (Node.js et PostgreSQL) et la fait tourner sur son ordinateur. Il vous confie la mise en production sur un VPS loué par le client, avec le nom de domaine tsena-online.mg (exemple), le HTTPS, les mises à jour automatiques et des sauvegardes.
+
+## Étape 1 : préparer le serveur
+
+| N° | Action |
+| --- | --- |
+| 1 | Créer le VPS au nom du client, avec votre accès |
+| 2 | Mettre à jour le système |
+| 3 | Créer un utilisateur administrateur, connexion SSH par clé |
+| 4 | Désactiver la connexion root et par mot de passe (après test) |
+| 5 | Activer le pare-feu : SSH, HTTP, HTTPS seulement |
+| 6 | Activer les mises à jour de sécurité automatiques |
+| 7 | Installer Docker et Docker Compose |
+
+## Étape 2 : déployer
+
+| Élément | Rôle |
+| --- | --- |
+| **Conteneur de l''application** | Le code du client |
+| **Conteneur PostgreSQL** | La base de données, avec un volume |
+| **Nginx** | Reçoit les requêtes et les transmet à l''application (proxy inverse) |
+| **Fichier .env** sur le serveur | Mots de passe et paramètres, droits limités |
+
+> [!definition] Proxy inverse
+> Un serveur (ici Nginx) placé devant l''application. Il reçoit les visiteurs, gère le HTTPS, et transmet les requêtes à l''application qui tourne en interne.
+
+```nginx
+server {
+    server_name tsena-online.mg www.tsena-online.mg;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+## Étape 3 : nom de domaine et HTTPS
+
+| Étape | Action |
+| --- | --- |
+| **DNS** | Enregistrement A du domaine vers l''adresse IP du serveur |
+| **Attente** | La propagation peut prendre de quelques minutes à quelques heures |
+| **Certificat** | Certificat gratuit avec Let''s Encrypt (outil Certbot) |
+| **Renouvellement** | Automatique, à vérifier |
+| **Redirection** | Tout le trafic HTTP vers HTTPS |
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d tsena-online.mg -d www.tsena-online.mg
+sudo certbot renew --dry-run
+```
+
+## Étape 4 : automatiser le déploiement
+
+| Étape du pipeline | Action |
+| --- | --- |
+| 1 | Le développeur envoie son code sur la branche principale |
+| 2 | GitHub Actions lance les tests |
+| 3 | Si les tests réussissent, l''image est construite et publiée dans un registre |
+| 4 | Le serveur récupère la nouvelle image et redémarre le conteneur |
+| 5 | Une vérification confirme que le site répond |
+
+> [!attention]
+> Prévoyez toujours un **retour arrière** : garder l''image précédente et savoir la relancer en une commande. Une mise en ligne qui casse le site doit pouvoir être annulée en quelques minutes.
+
+## Étape 5 : surveillance, sauvegardes et documentation
+
+### La surveillance
+
+| Élément | Outil possible |
+| --- | --- |
+| Le site répond-il ? | Service gratuit de vérification de disponibilité avec alerte |
+| Disque, mémoire, processeur | Outils de l''hébergeur ou agent de surveillance |
+| Erreurs de l''application | Journaux des conteneurs |
+| Certificat bientôt expiré | Alerte de renouvellement |
+
+### Les sauvegardes
+
+| Règle | Exemple |
+| --- | --- |
+| **Base de données chaque jour** | Export PostgreSQL automatique |
+| **Copie hors du serveur** | Stockage externe (autre fournisseur ou autre région) |
+| **Plusieurs versions** | 7 jours, 4 semaines, 3 mois |
+| **Restauration testée** | Une fois par mois sur un serveur de test |
+
+> [!madagascar]
+> Pour un client malgache, rappelez que les **coupures de connexion** de ses utilisateurs ne viennent pas du serveur. Votre surveillance doit mesurer la disponibilité du serveur depuis l''extérieur, pour distinguer un vrai problème du serveur d''un problème de réseau local.
+
+### La documentation livrée
+
+```
+Documentation – Tsena Online
+1. Architecture : VPS, Docker Compose (app, PostgreSQL), Nginx, HTTPS
+2. Accès : qui a accès, comment les retirer (sans mots de passe dans le document)
+3. Déploiement : pipeline GitHub Actions, retour arrière
+4. Sauvegardes : fréquence, emplacement, procédure de restauration
+5. Surveillance : alertes et destinataires
+6. Procédures d''urgence : site en panne, disque plein, certificat expiré
+```
+
+> [!retenir]
+> - Serveur à jour, accès par clé, pare-feu, mises à jour de sécurité automatiques.
+> - Application et base dans Docker Compose, Nginx en proxy inverse, secrets dans .env.
+> - DNS vers le serveur, HTTPS gratuit avec renouvellement automatique.
+> - Déploiement automatique avec tests et retour arrière possible.
+> - Surveillance, sauvegardes testées hors du serveur et documentation complète.
+
+## Exercice pratique : la mise en production de Tsena Online
+
+> [!exercice] Exercice pratique · 10 heures (sur plusieurs jours)
+> 1. Préparez et sécurisez un serveur (machine virtuelle ou petit VPS).
+> 2. Déployez l''application du module 3 avec Docker Compose et Nginx.
+> 3. Si vous avez un nom de domaine, configurez le HTTPS ; sinon, décrivez précisément les étapes.
+> 4. Automatisez le déploiement et testez un retour arrière.
+> 5. Mettez en place une sauvegarde quotidienne, testez une restauration et rédigez la documentation.
+>
+> **À livrer** : vos fichiers de configuration (sans secrets), des captures et la documentation. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 3, 0, 'Qu''est-ce qu''un proxy inverse ?', '["Un nom de domaine","Un antivirus","Une base de données","Un serveur devant l''application qui reçoit les visiteurs et gère le HTTPS"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 3, 1, 'Quel outil fournit un certificat HTTPS gratuit ?', '["Docker Hub","Datadog","Let''s Encrypt avec Certbot","Figma"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 3, 2, 'Pourquoi garder l''image précédente ?', '["Ce n''est pas utile","Pouvoir revenir en arrière vite si la mise en ligne casse le site","Pour payer moins","Pour décorer"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio technique sans secrets, 5 canaux, entretien technique, mise en production, forfait mensuel, interventions et astreinte, conditions avec réversibilité, paiements et évolution.', 'Les agences, start-up, développeurs indépendants et prestataires étrangers ont besoin d''administrateurs et de DevOps fiables. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio technique convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Réussir un entretien technique.
+> 4. Fixer vos prix : mise en place, forfait mensuel, intervention.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio technique
+
+1. **Dépôts GitHub** propres : Dockerfile, Compose, workflows, scripts, avec README.
+2. **Un projet complet** : application en production avec HTTPS, déploiement automatique, sauvegardes.
+3. **Un schéma d''architecture** clair.
+4. **Une documentation** type (sans informations sensibles).
+5. **Un article ou une note** expliquant un problème résolu (par exemple un disque plein).
+
+> [!attention]
+> Vérifiez soigneusement que vos dépôts publics ne contiennent **aucun secret** : mots de passe, clés, adresses de serveurs de clients. Utilisez des valeurs d''exemple.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Développeurs et agences web** | Ils codent mais n''aiment pas gérer les serveurs : proposez la mise en production et la maintenance |
+| 2 | **Start-up** | Mise en place du déploiement automatique et de la surveillance |
+| 3 | **PME et ONG à Madagascar** | Hébergement, sauvegardes, sécurité de base |
+| 4 | **Prestataires étrangers** | Techniciens Linux et DevOps à distance |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un développeur
+> « Bonjour, j''ai vu que vous développez des sites pour des PME. Si la mise en ligne, le HTTPS, les sauvegardes et la surveillance vous prennent du temps, je peux m''en occuper : déploiement automatique depuis GitHub, sauvegardes quotidiennes testées et alertes en cas de panne. Voici un exemple de projet que j''ai mis en production. »
+
+## Réussir un entretien technique
+
+| Type de question | Exemple |
+| --- | --- |
+| **Linux** | « Le disque est plein : comment trouvez-vous ce qui prend de la place ? » |
+| **Réseau** | « Le site ne répond plus : quelles vérifications faites-vous, dans quel ordre ? » |
+| **Docker** | « Quelle différence entre une image et un conteneur ? » |
+| **CI/CD** | « Comment éviter de mettre en ligne une version cassée ? » |
+| **Sécurité** | « Comment sécurisez-vous un nouveau serveur ? » |
+| **Mise en situation** | Résoudre un problème sur une machine de test |
+
+> [!astuce]
+> Expliquez votre **raisonnement à voix haute** : vérifier d''abord le plus simple, lire les journaux, tester une hypothèse à la fois. Les recruteurs évaluent votre méthode autant que vos connaissances.
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Mise en production** | Serveur sécurisé, Docker, HTTPS, déploiement, sauvegardes, documentation | 1 200 000 Ar |
+| **Forfait mensuel** | Mises à jour, surveillance, sauvegardes vérifiées, petites interventions | 300 000 Ar par mois et par serveur |
+| **Intervention ponctuelle** | Panne, migration, audit de sécurité de base | Tarif horaire ou journalier |
+| **Astreinte** | Disponibilité en dehors des heures | Supplément à négocier |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions
+
+1. **Ce qui est inclus** et ce qui ne l''est pas (développement de l''application, coûts d''hébergement).
+2. **Les comptes** (hébergeur, domaine, GitHub) au nom du client.
+3. **Les délais de réaction** selon la gravité.
+4. **Les sauvegardes** : fréquence, conservation, tests.
+5. **La confidentialité** des données et des accès.
+6. **La réversibilité** : remise des accès et de la documentation en fin de contrat.
+7. **Le paiement** : mise en place avec acompte, forfait mensuel payé d''avance.
+
+> [!attention]
+> Ne gardez jamais un client **prisonnier** en conservant seul les accès. Les comptes et les accès principaux appartiennent au client, et vous les lui remettez avec la documentation.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur cloud** | Services avancés d''un grand fournisseur, certifications |
+| **Ingénieur DevOps confirmé** | Infrastructure décrite en code, orchestration de conteneurs |
+| **Ingénieur fiabilité (SRE)** | Indicateurs de fiabilité, gestion des incidents |
+| **Analyste en cybersécurité** | Voir la formation Analyste en cybersécurité |
+| **Développeur back-end** | Voir la formation Développeur back-end |
+
+> [!retenir]
+> - Un portfolio : dépôts propres sans secrets, projet en production, schéma, documentation.
+> - Développeurs, agences, start-up, PME et ONG, prestataires étrangers, plateformes.
+> - En entretien, raisonner à voix haute avec méthode.
+> - Mise en production, forfait mensuel, interventions, astreinte.
+> - Comptes au nom du client et réversibilité.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Nettoyez vos dépôts et publiez votre projet de mise en production avec un README.
+> 2. Préparez vos réponses à 8 questions d''entretien.
+> 3. Calculez vos prix et rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 propositions à des développeurs, agences ou start-up.
+>
+> **À livrer** : les liens de vos dépôts, vos réponses, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 4, 0, 'Que proposer à un développeur qui n''aime pas gérer les serveurs ?', '["La mise en production et la maintenance","Réécrire son code","Un nouveau logo","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 4, 1, 'Comment répondre en entretien technique ?', '["En refusant","En parlant d''autre chose","Au hasard","En expliquant son raisonnement à voix haute"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-f', 4, 2, 'À qui appartiennent les comptes et accès principaux ?', '["Au client","À personne","À l''hébergeur seul","À l''administrateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que fait un administrateur systèmes ?', '["Il installe, sécurise, surveille et sauvegarde des serveurs","Il gère la comptabilité","Il dessine des maquettes","Il écrit des articles"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que signifie DevOps ?', '["Un antivirus","Rapprocher développement et exploitation avec automatisation","Un hébergeur","Un langage"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Comment administrer un serveur en Europe depuis Madagascar ?', '["En prenant l''avion","Par une connexion sécurisée SSH","Par téléphone","C''est impossible"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que filtre le pare-feu ?', '["Les connexions selon des règles","Les fautes d''orthographe","Rien","Les images"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Pourquoi tester avant la production ?', '["Pour perdre du temps","Une commande mal tapée peut arrêter un service ou effacer des données","Ce n''est pas utile","Pour facturer plus"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que fait df -h ?', '["Supprime des fichiers","Affiche l''espace disque","Redémarre le serveur","Crée un utilisateur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que signifie chmod 640 ?', '["Rien pour personne","Exécution seulement","Lecture et écriture pour le propriétaire, lecture pour le groupe, rien pour les autres","Tout pour tout le monde"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quelle commande redémarre un service ?', '["pwd","ls -la","cat","sudo systemctl restart nom"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel type de clé SSH créer ?', '["ed25519","Un mot de passe simple","Aucune","Une image"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel principe de base pour le pare-feu ?', '["Le désactiver","Tout ouvrir","Tout bloquer puis n''ouvrir que le nécessaire","Ouvrir au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que vérifier avant de modifier SSH ou le pare-feu ?', '["Que l''hébergeur propose une console de secours","Rien","La couleur du terminal","Le prix du domaine"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Qu''est-ce qu''un Dockerfile ?', '["Un journal d''erreurs","Une base de données","Un certificat","Le fichier qui décrit la construction d''une image"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'À quoi sert un volume Docker ?', '["Augmenter le son","Garder les données quand le conteneur est recréé","Chiffrer le site","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que fait l''intégration continue ?', '["Supprime le code","Achète un serveur","Lance les tests à chaque modification","Écrit la documentation"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Où stocker les secrets d''un workflow GitHub Actions ?', '["Dans un commentaire","Dans le README","Dans les paramètres de secrets du dépôt","Dans le fichier du workflow"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Pourquoi une coupure chez vous n''arrête pas GitHub Actions ?', '["Il tourne sur votre téléphone","Il s''exécute sur les serveurs de GitHub","Il n''existe pas","Il s''arrête toujours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel service surveille métriques, journaux et alertes ?', '["Audacity","Figma","Canva","Datadog"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel enregistrement DNS pointe le domaine vers le serveur ?', '["Un enregistrement A","Un commit","Un fichier .env","Un Dockerfile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que tester pour le renouvellement du certificat ?', '["df -h","certbot renew --dry-run","rm -rf","docker ps"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que doit précéder la mise en ligne automatique ?', '["La réussite des tests","Une coupure du site","Rien","La suppression de la base"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Où garder une copie des sauvegardes ?', '["Hors du serveur","Nulle part","Seulement sur le même disque","Dans un e-mail public"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'À quelle fréquence tester une restauration dans le cas pratique ?', '["Une fois tous les 10 ans","Jamais","Chaque minute","Une fois par mois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que ne doit pas contenir la documentation livrée ?', '["Les mots de passe","Les procédures d''urgence","Les sauvegardes","L''architecture"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que contient un forfait mensuel ?', '["Mises à jour, surveillance, sauvegardes vérifiées et petites interventions","Rien","L''achat du serveur","Le développement complet de l''application"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement","Aucun"]'::jsonb, 2);
 commit;

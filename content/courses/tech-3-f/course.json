@@ -1,0 +1,97 @@
+{
+  "id": "tech-3-f",
+  "hours": 22,
+  "description": "L'administrateur systèmes installe, sécurise, surveille et sauvegarde des serveurs ; le DevOps automatise en plus la mise en ligne des applications. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des développeurs, des start-up, des PME et des prestataires, à Madagascar et à l'étranger, avec Linux, Docker et GitHub Actions : serveurs, chemin d'une requête, commandes, droits, services, journaux, SSH par clé, pare-feu, conteneurs, Docker Compose, intégration et déploiement continus, Nginx, HTTPS, surveillance, sauvegardes et documentation. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer les métiers d'administrateur et de DevOps et leurs règles de prudence",
+    "Utiliser Linux : fichiers, utilisateurs, droits, paquets, services et journaux",
+    "Sécuriser un serveur avec SSH par clé et un pare-feu",
+    "Conteneuriser une application et automatiser ses tests avec GitHub Actions",
+    "Mettre en production avec Nginx, HTTPS, déploiement automatique, surveillance et sauvegardes",
+    "Présenter un portfolio technique, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Les métiers d'administrateur systèmes et de DevOps depuis Madagascar",
+      "summary": "Administration et DevOps, serveurs physiques, VPS, cloud et conteneurs, chemin d'une requête, tâches du métier, règles de sécurité, clients, laboratoire et plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait le DNS ?", "options": ["Il traduit un nom de domaine en adresse IP", "Il chiffre les données", "Il héberge les images", "Il sauvegarde la base"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un VPS ?", "options": ["Une partie d'un gros serveur louée chez un hébergeur", "Un téléphone", "Un logiciel de dessin", "Un câble"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une sauvegarde jamais restaurée ?", "options": ["Une sauvegarde dont on ne sait pas si elle est fiable", "Une sauvegarde parfaite", "Une sauvegarde inutile à tester", "Une copie du code"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : Linux, droits, services, journaux, SSH et pare-feu",
+      "summary": "Commandes essentielles et prudence avec rm, utilisateurs et droits, apt et systemctl, lecture des journaux, connexion SSH par clé, désactivation de root et des mots de passe, pare-feu ufw.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait la commande rm sous Linux ?", "options": ["Elle supprime définitivement, sans corbeille", "Elle renomme", "Elle affiche un fichier", "Elle copie"], "correct": 0 },
+        { "q": "Que lire d'abord face à un problème ?", "options": ["Les journaux", "La documentation commerciale", "Rien", "Les réseaux sociaux"], "correct": 0 },
+        { "q": "Que faire avant de désactiver la connexion par mot de passe ?", "options": ["Tester la connexion par clé dans une deuxième fenêtre", "Rien", "Supprimer la clé", "Éteindre le serveur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Docker, Docker Compose, GitHub Actions et services payants",
+      "summary": "Image, conteneur, Dockerfile, registre et volume, Compose avec application et base de données, secrets dans .env, intégration et déploiement continus, VPS, cloud, alertes de budget et Datadog.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle différence entre image et conteneur ?", "options": ["L'image est le modèle, le conteneur l'image en cours d'exécution", "Aucune", "Le conteneur est un fichier texte", "L'image est un serveur"], "correct": 0 },
+        { "q": "Où mettre les mots de passe d'un projet Docker Compose ?", "options": ["Dans un fichier .env exclu de Git ou un gestionnaire de secrets", "Dans le fichier Compose sur GitHub", "Dans le README", "Dans le nom du conteneur"], "correct": 0 },
+        { "q": "Que faire pour éviter une facture cloud imprévue ?", "options": ["Activer des alertes de budget et éteindre les ressources de test", "Rien", "Créer plus de serveurs", "Désactiver les alertes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la mise en production de Tsena Online",
+      "summary": "Préparation et sécurisation du serveur, déploiement avec Docker Compose et Nginx en proxy inverse, DNS et HTTPS avec Let's Encrypt, déploiement automatique et retour arrière, surveillance, sauvegardes et documentation.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un proxy inverse ?", "options": ["Un serveur devant l'application qui reçoit les visiteurs et gère le HTTPS", "Un antivirus", "Une base de données", "Un nom de domaine"], "correct": 0 },
+        { "q": "Quel outil fournit un certificat HTTPS gratuit ?", "options": ["Let's Encrypt avec Certbot", "Docker Hub", "Datadog", "Figma"], "correct": 0 },
+        { "q": "Pourquoi garder l'image précédente ?", "options": ["Pouvoir revenir en arrière vite si la mise en ligne casse le site", "Pour décorer", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio technique sans secrets, 5 canaux, entretien technique, mise en production, forfait mensuel, interventions et astreinte, conditions avec réversibilité, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que proposer à un développeur qui n'aime pas gérer les serveurs ?", "options": ["La mise en production et la maintenance", "Réécrire son code", "Rien", "Un nouveau logo"], "correct": 0 },
+        { "q": "Comment répondre en entretien technique ?", "options": ["En expliquant son raisonnement à voix haute", "Au hasard", "En refusant", "En parlant d'autre chose"], "correct": 0 },
+        { "q": "À qui appartiennent les comptes et accès principaux ?", "options": ["Au client", "À l'administrateur", "À l'hébergeur seul", "À personne"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un administrateur systèmes ?", "options": ["Il installe, sécurise, surveille et sauvegarde des serveurs", "Il dessine des maquettes", "Il écrit des articles", "Il gère la comptabilité"], "correct": 0 },
+    { "q": "Que signifie DevOps ?", "options": ["Rapprocher développement et exploitation avec automatisation", "Un langage", "Un antivirus", "Un hébergeur"], "correct": 0 },
+    { "q": "Comment administrer un serveur en Europe depuis Madagascar ?", "options": ["Par une connexion sécurisée SSH", "En prenant l'avion", "Par téléphone", "C'est impossible"], "correct": 0 },
+    { "q": "Que filtre le pare-feu ?", "options": ["Les connexions selon des règles", "Les images", "Les fautes d'orthographe", "Rien"], "correct": 0 },
+    { "q": "Pourquoi tester avant la production ?", "options": ["Une commande mal tapée peut arrêter un service ou effacer des données", "Pour perdre du temps", "Ce n'est pas utile", "Pour facturer plus"], "correct": 0 },
+    { "q": "Que fait df -h ?", "options": ["Affiche l'espace disque", "Supprime des fichiers", "Redémarre le serveur", "Crée un utilisateur"], "correct": 0 },
+    { "q": "Que signifie chmod 640 ?", "options": ["Lecture et écriture pour le propriétaire, lecture pour le groupe, rien pour les autres", "Tout pour tout le monde", "Rien pour personne", "Exécution seulement"], "correct": 0 },
+    { "q": "Quelle commande redémarre un service ?", "options": ["sudo systemctl restart nom", "ls -la", "pwd", "cat"], "correct": 0 },
+    { "q": "Quel type de clé SSH créer ?", "options": ["ed25519", "Aucune", "Un mot de passe simple", "Une image"], "correct": 0 },
+    { "q": "Quel principe de base pour le pare-feu ?", "options": ["Tout bloquer puis n'ouvrir que le nécessaire", "Tout ouvrir", "Le désactiver", "Ouvrir au hasard"], "correct": 0 },
+    { "q": "Que vérifier avant de modifier SSH ou le pare-feu ?", "options": ["Que l'hébergeur propose une console de secours", "La couleur du terminal", "Rien", "Le prix du domaine"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un Dockerfile ?", "options": ["Le fichier qui décrit la construction d'une image", "Un journal d'erreurs", "Une base de données", "Un certificat"], "correct": 0 },
+    { "q": "À quoi sert un volume Docker ?", "options": ["Garder les données quand le conteneur est recréé", "Augmenter le son", "Chiffrer le site", "Rien"], "correct": 0 },
+    { "q": "Que fait l'intégration continue ?", "options": ["Lance les tests à chaque modification", "Supprime le code", "Achète un serveur", "Écrit la documentation"], "correct": 0 },
+    { "q": "Où stocker les secrets d'un workflow GitHub Actions ?", "options": ["Dans les paramètres de secrets du dépôt", "Dans le fichier du workflow", "Dans le README", "Dans un commentaire"], "correct": 0 },
+    { "q": "Pourquoi une coupure chez vous n'arrête pas GitHub Actions ?", "options": ["Il s'exécute sur les serveurs de GitHub", "Il s'arrête toujours", "Il n'existe pas", "Il tourne sur votre téléphone"], "correct": 0 },
+    { "q": "Quel service surveille métriques, journaux et alertes ?", "options": ["Datadog", "Figma", "Canva", "Audacity"], "correct": 0 },
+    { "q": "Quel enregistrement DNS pointe le domaine vers le serveur ?", "options": ["Un enregistrement A", "Un fichier .env", "Un Dockerfile", "Un commit"], "correct": 0 },
+    { "q": "Que tester pour le renouvellement du certificat ?", "options": ["certbot renew --dry-run", "rm -rf", "docker ps", "df -h"], "correct": 0 },
+    { "q": "Que doit précéder la mise en ligne automatique ?", "options": ["La réussite des tests", "Rien", "Une coupure du site", "La suppression de la base"], "correct": 0 },
+    { "q": "Où garder une copie des sauvegardes ?", "options": ["Hors du serveur", "Seulement sur le même disque", "Nulle part", "Dans un e-mail public"], "correct": 0 },
+    { "q": "À quelle fréquence tester une restauration dans le cas pratique ?", "options": ["Une fois par mois", "Jamais", "Une fois tous les 10 ans", "Chaque minute"], "correct": 0 },
+    { "q": "Que ne doit pas contenir la documentation livrée ?", "options": ["Les mots de passe", "L'architecture", "Les procédures d'urgence", "Les sauvegardes"], "correct": 0 },
+    { "q": "Que contient un forfait mensuel ?", "options": ["Mises à jour, surveillance, sauvegardes vérifiées et petites interventions", "Le développement complet de l'application", "Rien", "L'achat du serveur"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

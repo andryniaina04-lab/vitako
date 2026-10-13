@@ -7681,5 +7681,92 @@ export const PUBLISHED = {
     "minutes": 6
    }
   ]
+ },
+ "tech-3-f": {
+  "hours": 22,
+  "description": "L'administrateur systèmes installe, sécurise, surveille et sauvegarde des serveurs ; le DevOps automatise en plus la mise en ligne des applications. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des développeurs, des start-up, des PME et des prestataires, à Madagascar et à l'étranger, avec Linux, Docker et GitHub Actions : serveurs, chemin d'une requête, commandes, droits, services, journaux, SSH par clé, pare-feu, conteneurs, Docker Compose, intégration et déploiement continus, Nginx, HTTPS, surveillance, sauvegardes et documentation. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer les métiers d'administrateur et de DevOps et leurs règles de prudence",
+   "Utiliser Linux : fichiers, utilisateurs, droits, paquets, services et journaux",
+   "Sécuriser un serveur avec SSH par clé et un pare-feu",
+   "Conteneuriser une application et automatiser ses tests avec GitHub Actions",
+   "Mettre en production avec Nginx, HTTPS, déploiement automatique, surveillance et sauvegardes",
+   "Présenter un portfolio technique, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Les métiers d'administrateur systèmes et de DevOps depuis Madagascar",
+    "summary": "Administration et DevOps, serveurs physiques, VPS, cloud et conteneurs, chemin d'une requête, tâches du métier, règles de sécurité, clients, laboratoire et plan d'apprentissage.",
+    "sections": [
+     "Les métiers en une phrase",
+     "Qu'est-ce qu'un serveur ?",
+     "Le chemin d'une requête",
+     "Les tâches du métier",
+     "Responsabilités et règles de sécurité",
+     "Qui sont vos clients ?",
+     "Votre laboratoire et votre plan d'apprentissage",
+     "Exercice pratique : votre laboratoire"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : Linux, droits, services, journaux, SSH et pare-feu",
+    "summary": "Commandes essentielles et prudence avec rm, utilisateurs et droits, apt et systemctl, lecture des journaux, connexion SSH par clé, désactivation de root et des mots de passe, pare-feu ufw.",
+    "sections": [
+     "Les commandes essentielles",
+     "Utilisateurs, groupes et droits",
+     "Paquets et services",
+     "Les journaux",
+     "SSH : se connecter de façon sécurisée",
+     "Sur votre ordinateur : créer une paire de clés",
+     "Copier la clé publique sur le serveur",
+     "Se connecter",
+     "Le pare-feu",
+     "Exercice pratique : un serveur de base sécurisé"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : Docker, Docker Compose, GitHub Actions et services payants",
+    "summary": "Image, conteneur, Dockerfile, registre et volume, Compose avec application et base de données, secrets dans .env, intégration et déploiement continus, VPS, cloud, alertes de budget et Datadog.",
+    "sections": [
+     "Docker : les conteneurs",
+     "Docker Compose : plusieurs services",
+     "GitHub Actions : automatiser",
+     "Les services payants",
+     "Exercice pratique : une application conteneurisée"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Premier projet : la mise en production de Tsena Online",
+    "summary": "Préparation et sécurisation du serveur, déploiement avec Docker Compose et Nginx en proxy inverse, DNS et HTTPS avec Let's Encrypt, déploiement automatique et retour arrière, surveillance, sauvegardes et documentation.",
+    "sections": [
+     "Le cas pratique : « Tsena Online »",
+     "Étape 1 : préparer le serveur",
+     "Étape 2 : déployer",
+     "Étape 3 : nom de domaine et HTTPS",
+     "Étape 4 : automatiser le déploiement",
+     "Étape 5 : surveillance, sauvegardes et documentation",
+     "Exercice pratique : la mise en production de Tsena Online"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio technique sans secrets, 5 canaux, entretien technique, mise en production, forfait mensuel, interventions et astreinte, conditions avec réversibilité, paiements et évolution.",
+    "sections": [
+     "Le portfolio technique",
+     "Où trouver des clients : 5 canaux",
+     "Réussir un entretien technique",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
  }
 };
