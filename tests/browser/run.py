@@ -22,6 +22,9 @@ BASE = f'http://127.0.0.1:{PORT}/index.html'
 read = lambda p: open(os.path.join(ROOT, p), encoding='utf-8').read()
 MOCK = read('tests/browser/.fixture.js') + read('tests/browser/mock-supabase.js')
 FAKE_PDF = read('tests/pdf-preview/jspdf-shim.js')
+# Une fois les 100 formations publiées, on retire tech-4-a de PUBLISHED dans data.js
+# (seulement pour ce test) afin de vérifier encore l'affichage d'une formation non publiée.
+DATA_JS = read('assets/js/data.js').replace('"tech-4-a": {', '"__test-non-publiee": {', 1)
 CONFIG = re.sub(r"supabaseAnonKey: '[^']*'", "supabaseAnonKey: 'test'", re.sub(r"supabaseUrl: '[^']*'", "supabaseUrl: 'https://test.supabase.co'", read('assets/js/config.js')))
 
 results, errors = [], []
@@ -35,6 +38,7 @@ def setup(page):
     page.route('https://fonts.googleapis.com/**', lambda r: r.abort())
     page.route('https://fonts.gstatic.com/**', lambda r: r.abort())
     page.route('**/assets/js/config.js', lambda r: r.fulfill(body=CONFIG, content_type='application/javascript'))
+    page.route('**/assets/js/data.js', lambda r: r.fulfill(body=DATA_JS, content_type='application/javascript'))
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
 
