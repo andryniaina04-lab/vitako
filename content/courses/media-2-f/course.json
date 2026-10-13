@@ -35,7 +35,7 @@
     },
     {
       "title": "Les outils : Audacity, Reaper, mixage et outils payants",
-      "summary": "Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX.",
+      "summary": "Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX, et un nouvel outil gratuit à tester (ArtCraft).",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -92,6 +92,7 @@
     { "q": "Peut-on utiliser l'épisode d'un client dans son portfolio sans accord ?", "options": ["Non", "Oui", "Oui, en partie", "Oui, s'il est ancien"], "correct": 0 },
     { "q": "Quel premier contact proposer à un podcasteur ?", "options": ["Un extrait de son épisode nettoyé pour montrer la différence", "Une critique sévère", "Un prix sans exemple", "Rien"], "correct": 0 },
     { "q": "Que préciser dans les conditions de travail ?", "options": ["La qualité minimale des enregistrements reçus", "La couleur du casque", "Rien", "Le nom du micro du client"], "correct": 0 },
-    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 },
+    { "q": "Comment utiliser SoundCraft aujourd'hui ?", "options": ["Le tester sur ses projets personnels, en gardant Audacity et Reaper pour les clients", "L'utiliser pour tous les épisodes des clients", "Le télécharger depuis n'importe quel site", "Ne jamais l'essayer"], "correct": 0 }
   ]
 }

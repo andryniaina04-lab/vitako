@@ -70,6 +70,27 @@ Ce module vous fait prendre en main les outils gratuits du motion designer : **J
 > [!madagascar]
 > Pour une vidéo d'ONG partagée par **WhatsApp** dans des zones à faible connexion, visez un fichier léger (courte durée, résolution 720p, compression adaptée). Testez l'envoi vous-même avant de livrer.
 
+## Un nouvel outil gratuit à tester : EffectCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **EffectCraft** | Adobe After Effects | Motion design, animation de textes et de logos, effets |
+| **VectorCraft** | Adobe Illustrator | Préparer les éléments vectoriels à animer |
+| **FilmCraft** | Adobe Premiere Pro | Assembler l'animation avec la vidéo et le son |
+
+> [!attention] Une version encore en test
+> Ces logiciels sont très récents : la plupart sont en version **alpha** ou en développement, et les premiers utilisateurs signalent des bugs. Pour l'instant :
+> - entraînez-vous avec EffectCraft sur vos **projets personnels** ;
+> - gardez **Jitter et Blender** pour les travaux de vos clients ;
+> - **enregistrez souvent** et vérifiez chaque rendu avant de l'envoyer ;
+> - les fichiers d'After Effects (.aep) des agences ne s'ouvriront probablement pas : vérifiez avant d'accepter un projet ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> EffectCraft est l'outil à surveiller pour le motion design gratuit : si sa version stable arrive, savoir déjà l'utiliser sera un avantage face au prix d'After Effects.
+
 ## Les outils payants
 
 | Outil | Ce qu'il apporte |

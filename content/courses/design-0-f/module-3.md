@@ -38,23 +38,23 @@ Quatre outils gratuits couvrent presque toutes les commandes d'un débutant, et 
 
 ## Un nouvel outil gratuit à tester : ArtCraft
 
-**ArtCraft** est une suite de logiciels de création **gratuits et open source**, publiée en octobre 2026 sur GitHub par un développeur indépendant. Elle veut proposer des équivalents gratuits des grands logiciels d'Adobe.
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Une version dans le navigateur existe aussi pour la plupart des applications.
 
 | Application ArtCraft | Équivalent payant | Utile pour un graphiste ? |
 | --- | --- | --- |
-| **Photocraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
-| **Vectorcraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
-| **Designcraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
-| **Lightcraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
-| **Printcraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l'imprimeur |
-| Filmcraft et Effectcraft | Premiere Pro et After Effects | Pour la vidéo et l'animation |
+| **PhotoCraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
+| **VectorCraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
+| **DesignCraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
+| **LightCraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
+| **PdfCraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l'imprimeur |
+| FilmCraft, EffectCraft, SoundCraft, GridCraft | Premiere Pro, After Effects, Pro Tools, Excel | Pour la vidéo, l'animation, l'audio et les tableaux |
 
 > [!attention] Une version encore en test
 > ArtCraft est une version **alpha** : son créateur lui-même la dit « pas du tout prête », et les premiers utilisateurs signalent des bugs (par exemple des outils de transformation qui ne répondent pas toujours). Pour l'instant :
 > - entraînez-vous avec sur vos **projets personnels** et votre portfolio ;
 > - gardez **Photopea, Inkscape, Canva et Figma** pour les travaux de vos clients ;
 > - **enregistrez souvent** et vérifiez chaque fichier exporté avant de l'envoyer ;
-> - téléchargez-le **uniquement depuis sa page officielle sur GitHub**, jamais depuis un site de téléchargement inconnu, et vérifiez les systèmes pris en charge (Windows, Mac, Linux).
+> - téléchargez-le **uniquement depuis sa page officielle sur GitHub**, jamais depuis un site de téléchargement inconnu, site officiel : getartcraft.com.
 
 > [!astuce]
 > Suivez les nouvelles versions d'ArtCraft : si l'outil devient stable, savoir déjà l'utiliser sera un vrai avantage, surtout depuis Madagascar où les abonnements Adobe coûtent cher. Mentionnez-le sur votre profil seulement quand vous l'aurez utilisé pour de vrais projets.

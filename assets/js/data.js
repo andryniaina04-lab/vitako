@@ -43,19 +43,19 @@ export const DOMAINS = [
    {
     "name": "Monteur vidéo",
     "blurb": "monte des vidéos YouTube, des publicités et des contenus courts",
-    "tools": "DaVinci Resolve et CapCut",
+    "tools": "DaVinci Resolve, CapCut et FilmCraft (en test)",
     "paid": "Adobe Premiere Pro, Final Cut Pro et DaVinci Resolve Studio"
    },
    {
     "name": "Motion designer",
     "blurb": "anime des logos, des textes et des infographies",
-    "tools": "Jitter et Blender",
+    "tools": "Jitter, Blender et EffectCraft (en test)",
     "paid": "Adobe After Effects et Cinema 4D"
    },
    {
     "name": "Monteur audio et podcast",
     "blurb": "nettoie, monte et publie des épisodes audio",
-    "tools": "Audacity et Reaper",
+    "tools": "Audacity, Reaper et SoundCraft (en test)",
     "paid": "Adobe Audition et iZotope RX"
    },
    {
@@ -235,13 +235,13 @@ export const DOMAINS = [
    {
     "name": "Opérateur de saisie de données",
     "blurb": "saisit et vérifie des données avec précision",
-    "tools": "Excel et Google Sheets",
+    "tools": "Excel, Google Sheets et GridCraft (en test)",
     "paid": "Microsoft Excel (Microsoft 365) et ABBYY FineReader"
    },
    {
     "name": "Analyste de données",
     "blurb": "transforme des chiffres en décisions",
-    "tools": "Excel, Power BI et SQL",
+    "tools": "Excel, Power BI, SQL et GridCraft (en test)",
     "paid": "Microsoft Excel (Microsoft 365), Power BI Pro et Tableau"
    },
    {
@@ -319,7 +319,7 @@ export const DOMAINS = [
    {
     "name": "Aide-comptable en ligne",
     "blurb": "tient la comptabilité de petites entreprises",
-    "tools": "Excel et des logiciels comptables",
+    "tools": "Excel, des logiciels comptables et GridCraft (en test)",
     "paid": "Sage, QuickBooks ou Odoo"
    }
   ]
@@ -956,7 +956,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : Google Sheets, Excel, OCR, et les outils payants",
-    "minutes": 10
+    "minutes": 12
    },
    {
     "title": "Premier projet : saisir et contrôler un lot de questionnaires",
@@ -1024,7 +1024,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : Excel, Power Query, SQL, Power BI et outils payants",
-    "minutes": 6
+    "minutes": 8
    },
    {
     "title": "Premier projet : l'analyse de l'Épicerie Mirana",
@@ -2452,7 +2452,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo",
-    "minutes": 6
+    "minutes": 7
    },
    {
     "title": "Premier projet : un mois de comptabilité pour Taxi Be Express",
@@ -2860,7 +2860,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : DaVinci Resolve, CapCut, et les logiciels payants",
-    "minutes": 9
+    "minutes": 10
    },
    {
     "title": "Premier projet : une vidéo YouTube et 3 vidéos courtes",
@@ -2928,7 +2928,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : Jitter, Blender, export et outils payants",
-    "minutes": 6
+    "minutes": 7
    },
    {
     "title": "Premier projet : la vidéo explicative de Mivoatra Microfinance",
@@ -2996,7 +2996,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils : Audacity, Reaper, mixage et outils payants",
-    "minutes": 6
+    "minutes": 8
    },
    {
     "title": "Premier projet : les épisodes du podcast Mpanorina",

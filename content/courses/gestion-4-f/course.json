@@ -35,7 +35,7 @@
     },
     {
       "title": "Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo",
-      "summary": "Formules de contrôle, fonctionnement d'un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants.",
+      "summary": "Formules de contrôle, fonctionnement d'un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants, et un nouvel outil gratuit à tester (ArtCraft).",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -92,6 +92,7 @@
     { "q": "Que demander pour les achats de carburant ?", "options": ["Garder chaque ticket et noter le véhicule", "Rien", "Jeter les tickets", "Payer sans reçu"], "correct": 0 },
     { "q": "Comment les cabinets testent-ils souvent les candidats ?", "options": ["Par une saisie d'essai", "Par un test de dessin", "Par un examen de chant", "Ils ne testent pas"], "correct": 0 },
     { "q": "80 pièces à 3 minutes chacune demandent…", "options": ["4 heures", "80 heures", "3 heures", "24 heures"], "correct": 0 },
-    { "q": "Quelle évolution demande un diplôme et une inscription à l'ordre ?", "options": ["Expert-comptable", "Aide-comptable", "Assistant de gestion", "Consultant logiciel"], "correct": 0 }
+    { "q": "Quelle évolution demande un diplôme et une inscription à l'ordre ?", "options": ["Expert-comptable", "Aide-comptable", "Assistant de gestion", "Consultant logiciel"], "correct": 0 },
+    { "q": "Comment utiliser GridCraft aujourd'hui ?", "options": ["Le tester sur des fichiers d'entraînement en vérifiant chaque formule", "L'utiliser pour les données réelles des clients", "Le télécharger depuis n'importe quel site", "Ne jamais l'essayer"], "correct": 0 }
   ]
 }

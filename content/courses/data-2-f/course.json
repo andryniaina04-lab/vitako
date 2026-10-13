@@ -35,7 +35,7 @@
     },
     {
       "title": "Les outils : Google Sheets, Excel, OCR, et les outils payants",
-      "summary": "Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader.",
+      "summary": "Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader, et un nouvel outil gratuit à tester (ArtCraft).",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -92,6 +92,7 @@
     { "q": "Quelle fonction d'Excel avancé permet de nettoyer de gros fichiers automatiquement ?", "options": ["Power Query", "Paint", "WordArt", "Le correcteur d'orthographe"], "correct": 0 },
     { "q": "150 champs contrôlés, 1 erreur : le taux d'erreur est d'environ…", "options": ["0,67 %", "1,5 %", "15 %", "0,01 %"], "correct": 0 },
     { "q": "Que contient le rapport de livraison ?", "options": ["Volume, temps, qualité, problèmes et description du fichier", "Seulement le prix", "Vos mots de passe", "Rien, le fichier suffit"], "correct": 0 },
-    { "q": "Que faire des données personnelles à la fin d'une mission, si le client le demande ?", "options": ["Les supprimer et le confirmer par écrit", "Les garder pour un autre client", "Les publier", "Les vendre"], "correct": 0 }
+    { "q": "Que faire des données personnelles à la fin d'une mission, si le client le demande ?", "options": ["Les supprimer et le confirmer par écrit", "Les garder pour un autre client", "Les publier", "Les vendre"], "correct": 0 },
+    { "q": "Comment utiliser GridCraft aujourd'hui ?", "options": ["Le tester sur des fichiers d'entraînement en vérifiant chaque formule", "L'utiliser pour les données réelles des clients", "Le télécharger depuis n'importe quel site", "Ne jamais l'essayer"], "correct": 0 }
   ]
 }

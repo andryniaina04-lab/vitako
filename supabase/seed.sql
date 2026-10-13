@@ -9403,7 +9403,7 @@ Chaque client a ses consignes. Mais ces règles reviennent presque toujours, et 
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 0, 'Que faire d''un champ illisible ?', '["Supprimer toute la ligne","Deviner la valeur la plus probable","Laisser un zéro","Mettre le code convenu, comme [ILLISIBLE], sans deviner"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 1, 'Dans un tableau propre, que représente une ligne ?', '["Une information, par exemple la date","Un élément, par exemple une facture","Un titre","Une couleur"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-2-f', 1, 2, '3 erreurs sur 1 000 champs contrôlés : quel est le taux d''erreur ?', '["0,3 %","3 %","30 %","0,03 %"]'::jsonb, 0);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 2, 'Les outils : Google Sheets, Excel, OCR, et les outils payants', 'Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader.', 'Le tableur est l''outil principal de l''opérateur de saisie. Bien utilisé, il **empêche** les erreurs avant qu''elles arrivent, **nettoie** les données en quelques secondes et **contrôle** le travail automatiquement. Ce module vous fait prendre en main Google Sheets et Excel, la reconnaissance de texte gratuite, puis les outils payants que demandent certains clients.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-2-f', 2, 'Les outils : Google Sheets, Excel, OCR, et les outils payants', 'Raccourcis, validation des données, 6 fonctions de nettoyage, doublons, tri et filtres, Google Forms, OCR, puis Microsoft 365 et ABBYY FineReader, et un nouvel outil gratuit à tester (ArtCraft).', 'Le tableur est l''outil principal de l''opérateur de saisie. Bien utilisé, il **empêche** les erreurs avant qu''elles arrivent, **nettoie** les données en quelques secondes et **contrôle** le travail automatiquement. Ce module vous fait prendre en main Google Sheets et Excel, la reconnaissance de texte gratuite, puis les outils payants que demandent certains clients.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -9521,6 +9521,26 @@ Pour saisir beaucoup de questionnaires identiques, un formulaire est souvent plu
 4. Copiez le texte dans votre tableau, puis **vérifiez chaque chiffre** : l''OCR confond souvent 0 et O, 1 et l, 5 et S, surtout sur des documents de mauvaise qualité.
 
 L''OCR fait gagner du temps sur les documents **imprimés** et nets. Sur l''écriture manuscrite ou les documents abîmés, la saisie manuelle reste souvent plus sûre.
+
+## Un nouvel outil gratuit à tester : GridCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour les tableaux, elle propose **GridCraft**, un tableur gratuit qui veut remplacer Excel, publié en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **GridCraft** | Microsoft Excel | Tableaux, formules et calculs |
+| **WordCraft** | Microsoft Word | Rapports et documents |
+| **PdfCraft** | Adobe Acrobat Pro | Fichiers PDF |
+
+> [!attention] Une version encore en test
+> GridCraft vient d''être publié et la presse spécialisée le juge encore loin d''Excel. Pour l''instant :
+> - testez-le sur des **fichiers d''entraînement**, jamais sur les données réelles d''un client ;
+> - **vérifiez chaque formule** et chaque total en comparant avec Excel ou Google Sheets ;
+> - vérifiez qu''il ouvre et enregistre correctement les fichiers **.xlsx** avant de l''utiliser avec quelqu''un d''autre ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Pour les données des clients, une erreur de formule peut coûter très cher. Restez sur Excel ou Google Sheets pour le travail réel, et suivez les nouvelles versions de GridCraft.
 
 ## Quand passer aux outils payants ?
 
@@ -9861,6 +9881,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', '150 champs contrôlés, 1 erreur : le taux d''erreur est d''environ…', '["0,67 %","15 %","0,01 %","1,5 %"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que contient le rapport de livraison ?', '["Seulement le prix","Rien, le fichier suffit","Vos mots de passe","Volume, temps, qualité, problèmes et description du fichier"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Que faire des données personnelles à la fin d''une mission, si le client le demande ?', '["Les supprimer et le confirmer par écrit","Les vendre","Les publier","Les garder pour un autre client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-2-f', 'Comment utiliser GridCraft aujourd''hui ?', '["L''utiliser pour les données réelles des clients","Le télécharger depuis n''importe quel site","Le tester sur des fichiers d''entraînement en vérifiant chaque formule","Ne jamais l''essayer"]'::jsonb, 2);
 
 -- data-3-a
 delete from public.exam_questions where course_id = 'data-3-a';
@@ -10684,7 +10705,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 0, 'Ventes de 10, 12, 11, 13 et 54 : quelle est la médiane ?', '["100","12","20","54"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 1, 'Quel graphique pour une évolution dans le temps ?', '["Une courbe","Un nuage de mots","Aucun","Un camembert à 12 parts"]'::jsonb, 0);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('data-3-f', 1, 2, 'Deux chiffres qui augmentent ensemble prouvent-ils une cause ?', '["Non, corrélation n''est pas cause","Oui, toujours","Oui, en saison des pluies","Oui, si le graphique est beau"]'::jsonb, 0);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 2, 'Les outils : Excel, Power Query, SQL, Power BI et outils payants', 'Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau.', 'Ce module vous fait prendre en main les trois outils de base de l''analyste : **Excel** (formules, Power Query, tableaux croisés dynamiques), **SQL** pour interroger une base de données, et **Power BI** pour les tableaux de bord. Vous découvrirez aussi les outils payants : **Microsoft 365**, **Power BI Pro** et **Tableau**.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('data-3-f', 2, 'Les outils : Excel, Power Query, SQL, Power BI et outils payants', 'Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau, et un nouvel outil gratuit à tester (ArtCraft).', 'Ce module vous fait prendre en main les trois outils de base de l''analyste : **Excel** (formules, Power Query, tableaux croisés dynamiques), **SQL** pour interroger une base de données, et **Power BI** pour les tableaux de bord. Vous découvrirez aussi les outils payants : **Microsoft 365**, **Power BI Pro** et **Tableau**.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -10787,6 +10808,26 @@ Panier moyen = DIVIDE([Total ventes], [Nombre de ventes])
 
 > [!definition] DAX
 > Le langage de formules de Power BI (les « mesures » ci-dessus). Les bases ressemblent aux formules d''Excel.
+
+## Un nouvel outil gratuit à tester : GridCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour les tableaux, elle propose **GridCraft**, un tableur gratuit qui veut remplacer Excel, publié en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **GridCraft** | Microsoft Excel | Tableaux, formules et calculs |
+| **WordCraft** | Microsoft Word | Rapports et documents |
+| **PdfCraft** | Adobe Acrobat Pro | Fichiers PDF |
+
+> [!attention] Une version encore en test
+> GridCraft vient d''être publié et la presse spécialisée le juge encore loin d''Excel. Pour l''instant :
+> - testez-le sur des **fichiers d''entraînement**, jamais sur les données réelles d''un client ;
+> - **vérifiez chaque formule** et chaque total en comparant avec Excel ou Google Sheets ;
+> - vérifiez qu''il ouvre et enregistre correctement les fichiers **.xlsx** avant de l''utiliser avec quelqu''un d''autre ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Pour les données des clients, une erreur de formule peut coûter très cher. Restez sur Excel ou Google Sheets pour le travail réel, et suivez les nouvelles versions de GridCraft.
 
 ## Les outils payants
 
@@ -11067,6 +11108,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quel type de données publiques peut attirer les ONG ?', '["Des données volées","Des mots de passe","Des données sur Madagascar : scolarisation, tourisme, agriculture","Des données inventées présentées comme réelles"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Comment traiter les données d''enquêtes sensibles ?', '["Les copier partout","Anonymiser et limiter les accès selon les règles du projet","Les publier","Les partager librement"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Quelle évolution demande Python et l''apprentissage automatique ?', '["Graphiste","Data scientist","Agent support","Opérateur de saisie"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('data-3-f', 'Comment utiliser GridCraft aujourd''hui ?', '["Ne jamais l''essayer","Le télécharger depuis n''importe quel site","L''utiliser pour les données réelles des clients","Le tester sur des fichiers d''entraînement en vérifiant chaque formule"]'::jsonb, 3);
 
 -- data-4-a
 delete from public.exam_questions where course_id = 'data-4-a';
@@ -13273,23 +13315,23 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 ## Un nouvel outil gratuit à tester : ArtCraft
 
-**ArtCraft** est une suite de logiciels de création **gratuits et open source**, publiée en octobre 2026 sur GitHub par un développeur indépendant. Elle veut proposer des équivalents gratuits des grands logiciels d''Adobe.
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Une version dans le navigateur existe aussi pour la plupart des applications.
 
 | Application ArtCraft | Équivalent payant | Utile pour un graphiste ? |
 | --- | --- | --- |
-| **Photocraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
-| **Vectorcraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
-| **Designcraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
-| **Lightcraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
-| **Printcraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l''imprimeur |
-| Filmcraft et Effectcraft | Premiere Pro et After Effects | Pour la vidéo et l''animation |
+| **PhotoCraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
+| **VectorCraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
+| **DesignCraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
+| **LightCraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
+| **PdfCraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l''imprimeur |
+| FilmCraft, EffectCraft, SoundCraft, GridCraft | Premiere Pro, After Effects, Pro Tools, Excel | Pour la vidéo, l''animation, l''audio et les tableaux |
 
 > [!attention] Une version encore en test
 > ArtCraft est une version **alpha** : son créateur lui-même la dit « pas du tout prête », et les premiers utilisateurs signalent des bugs (par exemple des outils de transformation qui ne répondent pas toujours). Pour l''instant :
 > - entraînez-vous avec sur vos **projets personnels** et votre portfolio ;
 > - gardez **Photopea, Inkscape, Canva et Figma** pour les travaux de vos clients ;
 > - **enregistrez souvent** et vérifiez chaque fichier exporté avant de l''envoyer ;
-> - téléchargez-le **uniquement depuis sa page officielle sur GitHub**, jamais depuis un site de téléchargement inconnu, et vérifiez les systèmes pris en charge (Windows, Mac, Linux).
+> - téléchargez-le **uniquement depuis sa page officielle sur GitHub**, jamais depuis un site de téléchargement inconnu, site officiel : getartcraft.com.
 
 > [!astuce]
 > Suivez les nouvelles versions d''ArtCraft : si l''outil devient stable, savoir déjà l''utiliser sera un vrai avantage, surtout depuis Madagascar où les abonnements Adobe coûtent cher. Mentionnez-le sur votre profil seulement quand vous l''aurez utilisé pour de vrais projets.
@@ -36095,7 +36137,7 @@ Les plans comptables malgache (PCG 2005) et français sont organisés en classes
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 0, 'Avec un taux de 20 %, quel est le HT de 120 000 Ar TTC ?', '["144 000 Ar","100 000 Ar","96 000 Ar","24 000 Ar"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 1, 'Quand l''entreprise paie un loyer par banque, le compte banque est…', '["Débité","Crédité","Supprimé","Inchangé"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-4-f', 1, 2, 'Qu''est-ce que le lettrage ?', '["Numériser une pièce","Écrire une lettre au client","Calculer la TVA","Relier une facture au paiement qui la règle"]'::jsonb, 3);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 2, 'Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo', 'Formules de contrôle, fonctionnement d''un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants.', 'Ce module vous fait prendre en main les outils de l''aide-comptable : **Excel** pour les contrôles et les tableaux de suivi, les **logiciels comptables** (avec des solutions gratuites pour apprendre), la **numérisation des pièces**, puis les logiciels payants les plus utilisés : **Sage**, **QuickBooks** et **Odoo**.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-4-f', 2, 'Les outils : Excel, logiciel comptable, numérisation, Sage, QuickBooks et Odoo', 'Formules de contrôle, fonctionnement d''un logiciel comptable, balance, numérisation et nommage des pièces, import du relevé bancaire, logiciels payants, et un nouvel outil gratuit à tester (ArtCraft).', 'Ce module vous fait prendre en main les outils de l''aide-comptable : **Excel** pour les contrôles et les tableaux de suivi, les **logiciels comptables** (avec des solutions gratuites pour apprendre), la **numérisation des pièces**, puis les logiciels payants les plus utilisés : **Sage**, **QuickBooks** et **Odoo**.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -36163,6 +36205,26 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 > [!attention]
 > Ne validez jamais les propositions automatiques sans les vérifier : deux factures du même montant chez le même fournisseur peuvent être confondues.
+
+## Un nouvel outil gratuit à tester : GridCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour les tableaux, elle propose **GridCraft**, un tableur gratuit qui veut remplacer Excel, publié en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **GridCraft** | Microsoft Excel | Tableaux, formules et calculs |
+| **WordCraft** | Microsoft Word | Rapports et documents |
+| **PdfCraft** | Adobe Acrobat Pro | Fichiers PDF |
+
+> [!attention] Une version encore en test
+> GridCraft vient d''être publié et la presse spécialisée le juge encore loin d''Excel. Pour l''instant :
+> - testez-le sur des **fichiers d''entraînement**, jamais sur les données réelles d''un client ;
+> - **vérifiez chaque formule** et chaque total en comparant avec Excel ou Google Sheets ;
+> - vérifiez qu''il ouvre et enregistre correctement les fichiers **.xlsx** avant de l''utiliser avec quelqu''un d''autre ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Pour les données des clients, une erreur de formule peut coûter très cher. Restez sur Excel ou Google Sheets pour le travail réel, et suivez les nouvelles versions de GridCraft.
 
 ## Les logiciels payants
 
@@ -36450,6 +36512,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Comment les cabinets testent-ils souvent les candidats ?', '["Par un test de dessin","Ils ne testent pas","Par un examen de chant","Par une saisie d''essai"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', '80 pièces à 3 minutes chacune demandent…', '["4 heures","3 heures","24 heures","80 heures"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Quelle évolution demande un diplôme et une inscription à l''ordre ?', '["Assistant de gestion","Aide-comptable","Consultant logiciel","Expert-comptable"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-4-f', 'Comment utiliser GridCraft aujourd''hui ?', '["Le tester sur des fichiers d''entraînement en vérifiant chaque formule","L''utiliser pour les données réelles des clients","Ne jamais l''essayer","Le télécharger depuis n''importe quel site"]'::jsonb, 0);
 
 -- lang-0-a
 delete from public.exam_questions where course_id = 'lang-0-a';
@@ -43476,7 +43539,7 @@ Ces valeurs sont des **repères** : écoutez toujours avec un casque **et** avec
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 0, 'Quel format pour TikTok, Reels et Shorts ?', '["Carré 1:1, 500 × 500","Vertical 9:16, 1080 × 1920","Horizontal 16:9, 1920 × 1080","4:3, 640 × 480"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 1, 'Quelle cadence choisir pour le projet ?', '["Toujours 24 i/s","La même que celle des rushes","N''importe laquelle","Toujours 60 i/s"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-0-f', 1, 2, 'Peut-on utiliser une chanson connue sans licence ?', '["Oui, si elle est courte","Oui, sur TikTok uniquement","Oui, si on cite l''artiste","Non, la vidéo peut être bloquée ou démonétisée"]'::jsonb, 3);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 2, 'Les outils : DaVinci Resolve, CapCut, et les logiciels payants', 'Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio.', 'Bonne nouvelle : vous pouvez devenir monteur professionnel avec des logiciels gratuits. **DaVinci Resolve** est utilisé jusque dans le cinéma, et **CapCut** est devenu l''outil de référence pour les vidéos courtes. Ce module vous les fait prendre en main, vous montre comment organiser vos fichiers et exporter correctement, puis vous présente les logiciels payants que demandent certains clients.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-0-f', 2, 'Les outils : DaVinci Resolve, CapCut, et les logiciels payants', 'Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio, et un nouvel outil gratuit à tester (ArtCraft).', 'Bonne nouvelle : vous pouvez devenir monteur professionnel avec des logiciels gratuits. **DaVinci Resolve** est utilisé jusque dans le cinéma, et **CapCut** est devenu l''outil de référence pour les vidéos courtes. Ce module vous les fait prendre en main, vous montre comment organiser vos fichiers et exporter correctement, puis vous présente les logiciels payants que demandent certains clients.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -43595,6 +43658,27 @@ Dans DaVinci Resolve, la page **Deliver** propose des réglages tout prêts (par
 
 > [!definition] Codec
 > La méthode de compression de la vidéo. **H.264** est le plus utilisé : bonne qualité, fichier raisonnable, lu partout.
+
+## Un nouvel outil gratuit à tester : FilmCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **FilmCraft** | Adobe Premiere Pro | Montage, étalonnage des couleurs et son |
+| **EffectCraft** | Adobe After Effects | Titres animés et effets |
+| **SoundCraft** | Pro Tools | Nettoyage et mixage du son |
+
+> [!attention] Une version encore en test
+> Ces logiciels sont très récents : la plupart sont en version **alpha** ou en développement, et les premiers utilisateurs signalent des bugs. Pour l''instant :
+> - entraînez-vous avec FilmCraft sur vos **projets personnels** ;
+> - gardez **DaVinci Resolve et CapCut** pour les montages de vos clients ;
+> - **enregistrez souvent** et regardez chaque export en entier avant de l''envoyer ;
+> - FilmCraft ne fonctionne qu''installé sur l''ordinateur (pas de version dans le navigateur) ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Suivez les nouvelles versions : si FilmCraft devient stable, ce sera une alternative gratuite à Premiere Pro. Ne le mentionnez sur votre profil qu''après l''avoir utilisé pour de vrais projets.
 
 ## Quand passer aux logiciels payants ?
 
@@ -43933,6 +44017,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Comment utiliser FilmCraft aujourd''hui ?', '["Le télécharger depuis n''importe quel site","L''utiliser pour tous les montages des clients","S''entraîner sur ses projets personnels, en gardant DaVinci Resolve et CapCut pour les clients","Ne jamais l''essayer"]'::jsonb, 2);
 
 -- media-1-a
 delete from public.exam_questions where course_id = 'media-1-a';
@@ -44637,7 +44722,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 0, 'Quelle astuce simple rend une animation vivante ?', '["Tout faire apparaître en même temps","Le décalage entre éléments","Supprimer les pauses","Le mouvement linéaire"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 1, 'À 25 images par seconde, combien dure un mouvement de 12 images ?', '["Une minute","Environ une demi-seconde","2 secondes","12 secondes"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 2, 'Qu''est-ce qu''une animatique ?', '["L''animation finale","Un logiciel","Le storyboard monté avec la voix pour valider le rythme","Un format d''export"]'::jsonb, 2);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 2, 'Les outils : Jitter, Blender, export et outils payants', 'Plans de travail, import SVG, animations et timeline de Jitter, logo animé, courbes d''accélération, modélisation, lumière, animation et rendu dans Blender, exports, After Effects et Cinema 4D.', 'Ce module vous fait prendre en main les outils gratuits du motion designer : **Jitter** pour animer rapidement des graphismes 2D dans le navigateur, et **Blender** pour la 3D et des animations plus libres. Vous découvrirez ensuite les outils payants de référence : **Adobe After Effects** et **Cinema 4D**.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 2, 'Les outils : Jitter, Blender, export et outils payants', 'Plans de travail, import SVG, animations et timeline de Jitter, logo animé, courbes d''accélération, modélisation, lumière, animation et rendu dans Blender, exports, After Effects et Cinema 4D, et un nouvel outil gratuit à tester (ArtCraft).', 'Ce module vous fait prendre en main les outils gratuits du motion designer : **Jitter** pour animer rapidement des graphismes 2D dans le navigateur, et **Blender** pour la 3D et des animations plus libres. Vous découvrirez ensuite les outils payants de référence : **Adobe After Effects** et **Cinema 4D**.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -44708,6 +44793,27 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 > [!madagascar]
 > Pour une vidéo d''ONG partagée par **WhatsApp** dans des zones à faible connexion, visez un fichier léger (courte durée, résolution 720p, compression adaptée). Testez l''envoi vous-même avant de livrer.
+
+## Un nouvel outil gratuit à tester : EffectCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **EffectCraft** | Adobe After Effects | Motion design, animation de textes et de logos, effets |
+| **VectorCraft** | Adobe Illustrator | Préparer les éléments vectoriels à animer |
+| **FilmCraft** | Adobe Premiere Pro | Assembler l''animation avec la vidéo et le son |
+
+> [!attention] Une version encore en test
+> Ces logiciels sont très récents : la plupart sont en version **alpha** ou en développement, et les premiers utilisateurs signalent des bugs. Pour l''instant :
+> - entraînez-vous avec EffectCraft sur vos **projets personnels** ;
+> - gardez **Jitter et Blender** pour les travaux de vos clients ;
+> - **enregistrez souvent** et vérifiez chaque rendu avant de l''envoyer ;
+> - les fichiers d''After Effects (.aep) des agences ne s''ouvriront probablement pas : vérifiez avant d''accepter un projet ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> EffectCraft est l''outil à surveiller pour le motion design gratuit : si sa version stable arrive, savoir déjà l''utiliser sera un avantage face au prix d''After Effects.
 
 ## Les outils payants
 
@@ -44977,6 +45083,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Comment estimer le prix d''une vidéo explicative ?', '["Par étape : script, storyboard, style, animation, son","Selon la couleur du logo","Toujours le même prix","Au hasard"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Que doit fournir le client ?', '["Rien","Ses factures","Son mot de passe","Logo vectoriel, textes, couleurs et voix off ou budget"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement PayPal","Aucun","Uniquement des chèques étrangers"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Comment utiliser EffectCraft aujourd''hui ?', '["Le télécharger depuis n''importe quel site","Ne jamais l''essayer","S''entraîner sur ses projets personnels, en gardant Jitter et Blender pour les clients","L''utiliser pour tous les projets des agences"]'::jsonb, 2);
 
 -- media-2-a
 delete from public.exam_questions where course_id = 'media-2-a';
@@ -45739,7 +45846,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 0, 'Quel niveau ne faut-il jamais dépasser ?', '["Aucun","−16 LUFS","−20 dBFS","0 dBFS"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 1, 'Que mesurent les LUFS ?', '["Le volume perçu sur la durée","Le poids du fichier","La durée","La qualité du micro"]'::jsonb, 0);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-f', 1, 2, 'À quoi sert un compresseur ?', '["Changer la langue","Compresser le fichier en ZIP","Supprimer la musique","Réduire l''écart entre passages forts et faibles"]'::jsonb, 3);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 2, 'Les outils : Audacity, Reaper, mixage et outils payants', 'Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX.', 'Ce module vous fait prendre en main les outils du monteur audio : **Audacity**, gratuit et simple, et **Reaper**, un logiciel professionnel très complet à petit prix. Vous apprendrez à monter, nettoyer, mixer et exporter un épisode. Vous découvrirez aussi les outils payants : **Adobe Audition** et **iZotope RX**.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-f', 2, 'Les outils : Audacity, Reaper, mixage et outils payants', 'Montage dans Audacity, projet multipistes dans Reaper, chaîne de traitement par voix, musique libre de droits, export, Adobe Audition et iZotope RX, et un nouvel outil gratuit à tester (ArtCraft).', 'Ce module vous fait prendre en main les outils du monteur audio : **Audacity**, gratuit et simple, et **Reaper**, un logiciel professionnel très complet à petit prix. Vous apprendrez à monter, nettoyer, mixer et exporter un épisode. Vous découvrirez aussi les outils payants : **Adobe Audition** et **iZotope RX**.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -45819,6 +45926,25 @@ Bus maître            : limiteur réglé selon la norme demandée
 | Épisode pour les plateformes | MP3, au niveau demandé par le client (souvent autour de −16 LUFS) |
 | Version de qualité pour archives | WAV |
 | Extraits pour les réseaux sociaux | Fichiers courts, parfois avec vidéo (forme d''onde animée) |
+
+## Un nouvel outil gratuit à tester : SoundCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour l''audio, elle propose **SoundCraft**, ajouté en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **SoundCraft** | Pro Tools | Enregistrement, montage multipistes et mixage |
+| **FilmCraft** | Adobe Premiere Pro | Monter un podcast vidéo |
+
+> [!attention] Une version encore en test
+> SoundCraft vient d''être publié et son niveau de maturité n''est pas encore connu ; les autres logiciels de la suite sont en version alpha, avec des bugs. Pour l''instant :
+> - testez-le sur vos **projets personnels** ;
+> - gardez **Audacity et Reaper** pour les épisodes de vos clients ;
+> - **enregistrez souvent** et écoutez chaque export en entier avant de livrer ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Comparez un même montage dans Reaper et dans SoundCraft : vous saurez vite si SoundCraft peut devenir un outil de travail pour vous.
 
 ## Les outils payants
 
@@ -46109,6 +46235,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel premier contact proposer à un podcasteur ?', '["Rien","Un prix sans exemple","Un extrait de son épisode nettoyé pour montrer la différence","Une critique sévère"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que préciser dans les conditions de travail ?', '["La couleur du casque","La qualité minimale des enregistrements reçus","Le nom du micro du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Comment utiliser SoundCraft aujourd''hui ?', '["Le tester sur ses projets personnels, en gardant Audacity et Reaper pour les clients","Ne jamais l''essayer","Le télécharger depuis n''importe quel site","L''utiliser pour tous les épisodes des clients"]'::jsonb, 0);
 
 -- media-3-a
 delete from public.exam_questions where course_id = 'media-3-a';

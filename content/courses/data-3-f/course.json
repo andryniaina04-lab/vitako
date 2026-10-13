@@ -35,7 +35,7 @@
     },
     {
       "title": "Les outils : Excel, Power Query, SQL, Power BI et outils payants",
-      "summary": "Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau.",
+      "summary": "Formules et tableaux croisés dynamiques, Power Query, requêtes SQL de base, premier tableau de bord Power BI avec mesures, Microsoft 365, Power BI Pro et Tableau, et un nouvel outil gratuit à tester (ArtCraft).",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -92,6 +92,7 @@
     { "q": "Que doit contenir la présentation finale ?", "options": ["Message, preuves, impact, recommandations et limites", "Seulement des tableaux", "Les données brutes", "Rien"], "correct": 0 },
     { "q": "Quel type de données publiques peut attirer les ONG ?", "options": ["Des données sur Madagascar : scolarisation, tourisme, agriculture", "Des mots de passe", "Des données volées", "Des données inventées présentées comme réelles"], "correct": 0 },
     { "q": "Comment traiter les données d'enquêtes sensibles ?", "options": ["Anonymiser et limiter les accès selon les règles du projet", "Les publier", "Les partager librement", "Les copier partout"], "correct": 0 },
-    { "q": "Quelle évolution demande Python et l'apprentissage automatique ?", "options": ["Data scientist", "Opérateur de saisie", "Graphiste", "Agent support"], "correct": 0 }
+    { "q": "Quelle évolution demande Python et l'apprentissage automatique ?", "options": ["Data scientist", "Opérateur de saisie", "Graphiste", "Agent support"], "correct": 0 },
+    { "q": "Comment utiliser GridCraft aujourd'hui ?", "options": ["Le tester sur des fichiers d'entraînement en vérifiant chaque formule", "L'utiliser pour les données réelles des clients", "Le télécharger depuis n'importe quel site", "Ne jamais l'essayer"], "correct": 0 }
   ]
 }

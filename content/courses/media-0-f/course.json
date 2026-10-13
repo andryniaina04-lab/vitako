@@ -35,7 +35,7 @@
     },
     {
       "title": "Les outils : DaVinci Resolve, CapCut, et les logiciels payants",
-      "summary": "Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio.",
+      "summary": "Arborescence de projet, les pages de DaVinci Resolve, montage en 8 étapes, raccourcis, CapCut, export, puis Premiere Pro, Final Cut Pro et Resolve Studio, et un nouvel outil gratuit à tester (ArtCraft).",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -92,6 +92,7 @@
     { "q": "Pourquoi laisser de la marge en bas et à droite d'une vidéo verticale ?", "options": ["Les boutons des applications cachent cette zone", "Pour mettre une publicité", "Pour économiser des données", "Ce n'est pas utile"], "correct": 0 },
     { "q": "Quelle version envoyer pour la validation ?", "options": ["Une version légère en 720p", "Les rushes complets", "Le fichier de projet", "Une version 8K"], "correct": 0 },
     { "q": "Combien de tours de retours prévoit-on souvent dans un devis ?", "options": ["2", "Illimités", "0", "20"], "correct": 0 },
-    { "q": "Qu'est-ce qu'une fiche de style client ?", "options": ["Un document avec ses polices, couleurs, effets, intro et fin", "Sa fiche de paie", "Son contrat de travail", "Sa liste de vidéos préférées sur Netflix"], "correct": 0 }
+    { "q": "Qu'est-ce qu'une fiche de style client ?", "options": ["Un document avec ses polices, couleurs, effets, intro et fin", "Sa fiche de paie", "Son contrat de travail", "Sa liste de vidéos préférées sur Netflix"], "correct": 0 },
+    { "q": "Comment utiliser FilmCraft aujourd'hui ?", "options": ["S'entraîner sur ses projets personnels, en gardant DaVinci Resolve et CapCut pour les clients", "L'utiliser pour tous les montages des clients", "Le télécharger depuis n'importe quel site", "Ne jamais l'essayer"], "correct": 0 }
   ]
 }

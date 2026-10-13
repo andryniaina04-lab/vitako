@@ -117,6 +117,26 @@ Pour saisir beaucoup de questionnaires identiques, un formulaire est souvent plu
 
 L'OCR fait gagner du temps sur les documents **imprimés** et nets. Sur l'écriture manuscrite ou les documents abîmés, la saisie manuelle reste souvent plus sûre.
 
+## Un nouvel outil gratuit à tester : GridCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour les tableaux, elle propose **GridCraft**, un tableur gratuit qui veut remplacer Excel, publié en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **GridCraft** | Microsoft Excel | Tableaux, formules et calculs |
+| **WordCraft** | Microsoft Word | Rapports et documents |
+| **PdfCraft** | Adobe Acrobat Pro | Fichiers PDF |
+
+> [!attention] Une version encore en test
+> GridCraft vient d'être publié et la presse spécialisée le juge encore loin d'Excel. Pour l'instant :
+> - testez-le sur des **fichiers d'entraînement**, jamais sur les données réelles d'un client ;
+> - **vérifiez chaque formule** et chaque total en comparant avec Excel ou Google Sheets ;
+> - vérifiez qu'il ouvre et enregistre correctement les fichiers **.xlsx** avant de l'utiliser avec quelqu'un d'autre ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Pour les données des clients, une erreur de formule peut coûter très cher. Restez sur Excel ou Google Sheets pour le travail réel, et suivez les nouvelles versions de GridCraft.
+
 ## Quand passer aux outils payants ?
 
 | Outil payant | Ce qu'il apporte | Qui le paie en général |

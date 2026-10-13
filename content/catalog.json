@@ -42,19 +42,19 @@
    {
     "name": "Monteur vidéo",
     "blurb": "monte des vidéos YouTube, des publicités et des contenus courts",
-    "tools": "DaVinci Resolve et CapCut",
+    "tools": "DaVinci Resolve, CapCut et FilmCraft (en test)",
     "paid": "Adobe Premiere Pro, Final Cut Pro et DaVinci Resolve Studio"
    },
    {
     "name": "Motion designer",
     "blurb": "anime des logos, des textes et des infographies",
-    "tools": "Jitter et Blender",
+    "tools": "Jitter, Blender et EffectCraft (en test)",
     "paid": "Adobe After Effects et Cinema 4D"
    },
    {
     "name": "Monteur audio et podcast",
     "blurb": "nettoie, monte et publie des épisodes audio",
-    "tools": "Audacity et Reaper",
+    "tools": "Audacity, Reaper et SoundCraft (en test)",
     "paid": "Adobe Audition et iZotope RX"
    },
    {
@@ -234,13 +234,13 @@
    {
     "name": "Opérateur de saisie de données",
     "blurb": "saisit et vérifie des données avec précision",
-    "tools": "Excel et Google Sheets",
+    "tools": "Excel, Google Sheets et GridCraft (en test)",
     "paid": "Microsoft Excel (Microsoft 365) et ABBYY FineReader"
    },
    {
     "name": "Analyste de données",
     "blurb": "transforme des chiffres en décisions",
-    "tools": "Excel, Power BI et SQL",
+    "tools": "Excel, Power BI, SQL et GridCraft (en test)",
     "paid": "Microsoft Excel (Microsoft 365), Power BI Pro et Tableau"
    },
    {
@@ -318,7 +318,7 @@
    {
     "name": "Aide-comptable en ligne",
     "blurb": "tient la comptabilité de petites entreprises",
-    "tools": "Excel et des logiciels comptables",
+    "tools": "Excel, des logiciels comptables et GridCraft (en test)",
     "paid": "Sage, QuickBooks ou Odoo"
    }
   ]

@@ -118,6 +118,27 @@ Dans DaVinci Resolve, la page **Deliver** propose des réglages tout prêts (par
 > [!definition] Codec
 > La méthode de compression de la vidéo. **H.264** est le plus utilisé : bonne qualité, fichier raisonnable, lu partout.
 
+## Un nouvel outil gratuit à tester : FilmCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **FilmCraft** | Adobe Premiere Pro | Montage, étalonnage des couleurs et son |
+| **EffectCraft** | Adobe After Effects | Titres animés et effets |
+| **SoundCraft** | Pro Tools | Nettoyage et mixage du son |
+
+> [!attention] Une version encore en test
+> Ces logiciels sont très récents : la plupart sont en version **alpha** ou en développement, et les premiers utilisateurs signalent des bugs. Pour l'instant :
+> - entraînez-vous avec FilmCraft sur vos **projets personnels** ;
+> - gardez **DaVinci Resolve et CapCut** pour les montages de vos clients ;
+> - **enregistrez souvent** et regardez chaque export en entier avant de l'envoyer ;
+> - FilmCraft ne fonctionne qu'installé sur l'ordinateur (pas de version dans le navigateur) ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Suivez les nouvelles versions : si FilmCraft devient stable, ce sera une alternative gratuite à Premiere Pro. Ne le mentionnez sur votre profil qu'après l'avoir utilisé pour de vrais projets.
+
 ## Quand passer aux logiciels payants ?
 
 | Logiciel | Ce qu'il apporte | Points à connaître |

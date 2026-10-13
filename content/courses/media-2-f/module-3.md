@@ -79,6 +79,25 @@ Bus maître            : limiteur réglé selon la norme demandée
 | Version de qualité pour archives | WAV |
 | Extraits pour les réseaux sociaux | Fichiers courts, parfois avec vidéo (forme d'onde animée) |
 
+## Un nouvel outil gratuit à tester : SoundCraft (ArtCraft)
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source** (licence MIT ou Apache 2.0), publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Pour l'audio, elle propose **SoundCraft**, ajouté en octobre 2026.
+
+| Application ArtCraft | Équivalent payant | Usage dans ce métier |
+| --- | --- | --- |
+| **SoundCraft** | Pro Tools | Enregistrement, montage multipistes et mixage |
+| **FilmCraft** | Adobe Premiere Pro | Monter un podcast vidéo |
+
+> [!attention] Une version encore en test
+> SoundCraft vient d'être publié et son niveau de maturité n'est pas encore connu ; les autres logiciels de la suite sont en version alpha, avec des bugs. Pour l'instant :
+> - testez-le sur vos **projets personnels** ;
+> - gardez **Audacity et Reaper** pour les épisodes de vos clients ;
+> - **enregistrez souvent** et écoutez chaque export en entier avant de livrer ;
+> - téléchargez-les **uniquement depuis le site officiel getartcraft.com ou la page GitHub du projet**, jamais depuis un site de téléchargement inconnu.
+
+> [!astuce]
+> Comparez un même montage dans Reaper et dans SoundCraft : vous saurez vite si SoundCraft peut devenir un outil de travail pour vous.
+
 ## Les outils payants
 
 | Outil | Ce qu'il apporte |
