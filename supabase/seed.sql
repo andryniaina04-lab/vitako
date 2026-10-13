@@ -27,7 +27,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true),
   ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true),
   ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 20, true),
-  ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 14, false),
+  ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 18, true),
   ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 15, false),
   ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
@@ -19947,6 +19947,636 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Que faire des sauvegardes de la base ?', '["Les supprimer","Les publier","Les programmer chaque jour et tester une restauration","Ne jamais les tester"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Pourquoi associer l''API à un petit front-end dans le portfolio ?', '["Le recruteur comprend mieux un projet qu''il peut utiliser","Pour ralentir l''API","Pour cacher le code","C''est obligatoire"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('dev-1-f', 'Quelle évolution demande Docker et l''intégration continue ?', '["Traducteur","DevOps","Professeur de langue","Graphiste"]'::jsonb, 1);
+
+-- dev-2-f
+delete from public.exam_questions where course_id = 'dev-2-f';
+delete from public.module_questions where course_id = 'dev-2-f';
+delete from public.lessons where course_id = 'dev-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-f', 0, 'Le métier d''intégrateur web depuis Madagascar', 'Rôle entre designer et développeurs, intégration au pixel près et responsive, critères d''une bonne intégration, types de missions, clients et poste de travail.', 'Un designer crée la maquette d''un site dans Figma. Il faut ensuite la transformer en vraies pages web, fidèles au design, rapides, accessibles et parfaites sur téléphone comme sur ordinateur. C''est le travail de l''intégrateur web. Il travaille avec HTML et CSS, et collabore à distance avec des designers et des développeurs. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un intégrateur web.
+> 2. Situer l''intégrateur entre le designer et le développeur.
+> 3. Connaître les critères d''une bonne intégration.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un intégrateur web **transforme une maquette graphique en pages HTML et CSS fidèles au design, adaptées à tous les écrans, accessibles et rapides, prêtes à être utilisées par les développeurs ou mises en ligne**.
+
+## L''intégrateur dans l''équipe
+
+| Rôle | Ce qu''il fait | Ce qu''il livre |
+| --- | --- | --- |
+| **Designer UI** | Conçoit l''apparence et l''expérience | Maquettes Figma |
+| **Intégrateur web** | Transforme les maquettes en pages | HTML, CSS, parfois un peu de JavaScript |
+| **Développeur front-end** | Ajoute la logique de l''interface | Applications interactives (voir la formation Développeur front-end) |
+| **Développeur back-end** | Gère les données et le serveur | API, base de données |
+
+> [!definition] Intégration
+> Le passage de la maquette visuelle au code. On parle d''intégration « au pixel près » quand le résultat est très fidèle à la maquette, et d''intégration « responsive » quand elle s''adapte à toutes les tailles d''écran.
+
+## Les critères d''une bonne intégration
+
+| Critère | Exemple |
+| --- | --- |
+| **Fidélité** | Espacements, couleurs, polices, tailles conformes à la maquette |
+| **Responsive** | Parfait sur téléphone, tablette, ordinateur |
+| **Sémantique** | Bonnes balises HTML (titres, navigation, boutons) |
+| **Accessibilité** | Contrastes, textes alternatifs, navigation au clavier |
+| **Performance** | Images optimisées, code léger, chargement rapide |
+| **Compatibilité** | Fonctionne dans les principaux navigateurs |
+| **Code propre** | Lisible, organisé, réutilisable par d''autres |
+
+> [!astuce]
+> Un bon intégrateur pense aux **cas que la maquette ne montre pas** : un titre beaucoup plus long, un écran très petit, une image manquante, un texte en anglais ou en malgache plus long que le français.
+
+## Les types de missions
+
+| Mission | Exemple |
+| --- | --- |
+| **Pages vitrines** | Accueil, présentation, contact d''une petite entreprise |
+| **Pages d''atterrissage** | Une page de vente pour une campagne publicitaire |
+| **Composants** | Boutons, cartes, menus, formulaires pour un système de design |
+| **Corrections responsive** | Un site qui s''affiche mal sur téléphone |
+| **Intégration dans un CMS** | Transformer une maquette en thème WordPress ou Shopify (avec les bases de ces outils) |
+| **E-mails HTML** | Newsletters compatibles avec les messageries |
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Agences web** d''Antananarivo qui sous-traitent l''intégration.
+2. **Entreprises** dont le site n''est pas adapté au téléphone.
+3. **Designers indépendants** qui ne codent pas.
+
+### À l''étranger
+
+1. **Agences web** francophones qui ont des designers mais manquent d''intégrateurs.
+2. **Studios de design** qui livrent des maquettes à leurs clients.
+3. **Start-up** qui veulent une page d''atterrissage rapide.
+
+> [!madagascar] Votre avantage
+> Les agences d''Antananarivo travaillent déjà pour des clients européens, et l''intégration se fait très bien à distance. Avec le faible décalage horaire, vous pouvez livrer une page **le lendemain matin** d''une maquette envoyée la veille. La majorité des internautes malgaches naviguent sur **téléphone** : l''intégration mobile d''abord est une compétence clé.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, un écran assez large (ou deux écrans) |
+| **Éditeur de code** | VS Code (gratuit) |
+| **Navigateurs** | Chrome, Firefox, et si possible Safari sur un appareil Apple |
+| **Figma** | Compte gratuit pour ouvrir et inspecter les maquettes |
+| **Téléphone** | Pour tester sur un vrai appareil |
+| **Git et GitHub** | Pour sauvegarder et partager le code |
+
+> [!retenir]
+> - L''intégrateur transforme les maquettes en pages HTML et CSS fidèles et adaptées.
+> - Il fait le lien entre le designer et les développeurs.
+> - Fidélité, responsive, sémantique, accessibilité, performance, compatibilité, code propre.
+> - Pages vitrines, pages d''atterrissage, composants, corrections, CMS, e-mails.
+> - VS Code, navigateurs, Figma, un vrai téléphone, Git.
+
+## Exercice pratique : observer une intégration
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez 3 sites (dont un site malgache) et regardez-les sur ordinateur et sur téléphone.
+> 2. Notez ce qui s''adapte bien et ce qui pose problème sur petit écran.
+> 3. Ouvrez les outils du navigateur et activez le mode d''affichage mobile ; testez 3 tailles d''écran.
+> 4. Installez VS Code, créez un compte Figma et un compte GitHub.
+>
+> **À livrer** : votre analyse des 3 sites et des captures de vos tests.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 0, 0, 'Que livre un intégrateur web ?', '["Des photos","Des pages HTML et CSS à partir de maquettes","Des maquettes Figma","Une base de données"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 0, 1, 'Qu''est-ce qu''une intégration responsive ?', '["Une intégration sans CSS","Une intégration en anglais","Une intégration rapide","Une intégration qui s''adapte à toutes les tailles d''écran"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 0, 2, 'À quoi un bon intégrateur pense-t-il ?', '["À la couleur de son éditeur","Aux cas que la maquette ne montre pas","À rien d''autre","Seulement à la maquette d''ordinateur"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-f', 1, 'Les bases : HTML sémantique, variables, Flexbox, Grid et responsive', 'Balises sémantiques, liens et boutons, variables CSS, Flexbox et Grid, mobile d''abord et media queries, images optimisées, chargement différé et accessibilité.', 'Ce module vous donne les bases techniques de l''intégration : un HTML sémantique, l''organisation du CSS, les variables, Flexbox et Grid, le responsive mobile d''abord, les images et l''accessibilité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Structurer une page avec un HTML sémantique.
+> 2. Organiser votre CSS avec des variables.
+> 3. Mettre en page avec Flexbox et Grid.
+> 4. Rendre une page responsive, mobile d''abord.
+> 5. Intégrer des images et vérifier l''accessibilité.
+
+## Un HTML sémantique
+
+```html
+<header class="site-header">
+  <a href="/" class="logo">Lodge Tsara</a>
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="#chambres">Chambres</a></li>
+      <li><a href="#activites">Activités</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <h1>Un lodge face à la mer, à Nosy Be</h1>
+    <p>Dix bungalows, une plage calme et une cuisine de saison.</p>
+    <a class="btn" href="#contact">Réserver</a>
+  </section>
+</main>
+<footer>…</footer>
+```
+
+| Balise | Usage |
+| --- | --- |
+| `header`, `nav`, `main`, `footer` | Grandes zones de la page |
+| `section`, `article` | Parties de contenu |
+| `h1` à `h6` | Titres, dans l''ordre, un seul `h1` par page |
+| `a` | Lien vers une autre page ou une ancre |
+| `button` | Action (ouvrir un menu, envoyer) |
+| `img` avec `alt` | Image avec texte alternatif |
+
+> [!attention]
+> Utilisez un **lien** pour aller ailleurs et un **bouton** pour une action. Un `div` cliquable n''est pas accessible au clavier ni aux lecteurs d''écran.
+
+## Organiser le CSS avec des variables
+
+```css
+:root {
+  --couleur-principale: #0f6b5c;
+  --couleur-texte: #1d2a2f;
+  --fond: #fdfaf4;
+  --police-titre: "Merriweather", serif;
+  --police-texte: "Inter", sans-serif;
+  --espace-s: 8px;
+  --espace-m: 16px;
+  --espace-l: 32px;
+  --rayon: 12px;
+}
+
+.btn {
+  background: var(--couleur-principale);
+  color: #fff;
+  padding: var(--espace-s) var(--espace-m);
+  border-radius: var(--rayon);
+}
+```
+
+> [!astuce]
+> Reprenez les **couleurs, polices et espacements** de la maquette dans des variables CSS. Si le designer change une couleur, vous ne la modifiez qu''à un seul endroit.
+
+## Flexbox et Grid
+
+| Outil | Usage | Exemple |
+| --- | --- | --- |
+| **Flexbox** | Alignement sur une ligne ou une colonne | Menu, barre de boutons, carte avec image et texte |
+| **Grid** | Mise en page en lignes et colonnes | Grille de chambres, galerie, page en plusieurs zones |
+
+```css
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chambres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--espace-l);
+}
+```
+
+## Le responsive, mobile d''abord
+
+> [!definition] Mobile d''abord (mobile first)
+> Écrire d''abord le CSS pour les petits écrans, puis ajouter des règles pour les écrans plus grands avec des media queries. Le site est ainsi plus léger et mieux adapté au téléphone.
+
+```css
+.hero h1 {
+  font-size: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+}
+```
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| Balise viewport dans le `head` | Sans elle, le téléphone affiche la page en petit |
+| Unités relatives (`rem`, `%`) | Le texte et les blocs s''adaptent |
+| Points de rupture selon le **contenu** | On ajoute une règle quand le design « casse », pas seulement pour des tailles d''appareils |
+| Zones tactiles d''au moins 44 pixels | Faciles à toucher avec le doigt |
+
+## Images et accessibilité
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Format** | WebP ou AVIF quand c''est possible, JPEG pour les photos, SVG pour les icônes et logos |
+| **Taille** | Images redimensionnées à la taille d''affichage |
+| **Chargement différé** | `loading="lazy"` pour les images sous la ligne de flottaison |
+| **Texte alternatif** | Description utile ; `alt=""` pour une image décorative |
+| **Contraste** | Texte bien lisible sur le fond |
+| **Focus visible** | On voit où l''on est quand on navigue au clavier |
+
+> [!madagascar]
+> Beaucoup d''internautes malgaches utilisent des **données mobiles coûteuses**. Des images bien compressées et un code léger rendent le site plus rapide et moins cher à consulter. Testez avec la simulation de connexion lente des outils du navigateur.
+
+> [!retenir]
+> - Un HTML sémantique : zones, titres dans l''ordre, liens et boutons corrects, images avec `alt`.
+> - Des variables CSS reprises de la maquette.
+> - Flexbox pour aligner, Grid pour les grilles.
+> - Mobile d''abord avec des media queries placées selon le contenu.
+> - Images légères, chargement différé, contraste et focus visible.
+
+## Exercice pratique : une page de base
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Écrivez le HTML sémantique d''une page d''accueil de lodge (en-tête, héro, chambres, contact, pied de page).
+> 2. Créez les variables CSS (couleurs, polices, espacements).
+> 3. Mettez en page l''en-tête avec Flexbox et les chambres avec Grid.
+> 4. Rendez la page responsive, mobile d''abord, et testez sur 3 tailles d''écran.
+>
+> **À livrer** : vos fichiers HTML et CSS et des captures sur 3 tailles d''écran.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 1, 0, 'Combien de h1 par page ?', '["Autant que de sections","Aucun","Trois","Un seul"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 1, 1, 'Quel outil pour une grille de cartes ?', '["Un tableau HTML","Grid","Des espaces","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 1, 2, 'Que signifie mobile d''abord ?', '["Ne faire que la version mobile","Tester seulement sur ordinateur","Écrire d''abord le CSS des petits écrans puis ajouter des règles pour les grands","Utiliser une application mobile"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-f', 2, 'Les outils : Figma, VS Code, outils du navigateur, Git et outils payants', 'Lecture d''une maquette et questions au designer, export des images, Emmet, Live Server et Prettier, inspecteur, mode appareil et Lighthouse, Git, Figma payant et WebStorm.', 'Ce module vous fait prendre en main les outils de l''intégrateur : **Figma** pour lire une maquette et récupérer les mesures, **VS Code** pour écrire le code, les **outils du navigateur** pour tester et corriger, et **Git** pour sauvegarder. Vous découvrirez aussi les outils payants : **Figma** en offre payante (avec le mode développeur) et **WebStorm**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire une maquette Figma et en extraire les informations.
+> 2. Exporter les images et les icônes.
+> 3. Travailler efficacement dans VS Code.
+> 4. Tester et corriger avec les outils du navigateur.
+> 5. Comprendre ce qu''apportent les outils payants.
+
+## Lire une maquette Figma
+
+| Information | Où la trouver |
+| --- | --- |
+| **Couleurs** | Styles de couleur ou variables de la maquette |
+| **Polices et tailles** | Styles de texte ; sélectionner un texte pour voir ses propriétés |
+| **Espacements** | Sélectionner un élément et survoler un autre avec la touche Alt (Option sur Mac) pour voir la distance |
+| **Mise en page automatique** (Auto Layout) | Indique souvent l''équivalent d''un Flexbox (direction, espacement, marges) |
+| **Composants** | Éléments réutilisables : boutons, cartes, champs |
+| **Versions** | Maquettes pour mobile, tablette et ordinateur, si le designer les a faites |
+
+> [!astuce]
+> Commencez par **parcourir toute la maquette** et faites la liste des composants qui se répètent (boutons, cartes, titres de section). Vous les coderez une seule fois, puis les réutiliserez.
+
+### Les questions à poser au designer
+
+1. Quelles maquettes existent pour le mobile et la tablette ?
+2. Quels sont les états des boutons et des champs (survol, actif, erreur, désactivé) ?
+3. Que se passe-t-il si un texte est plus long ?
+4. Quelles polices et quelles licences ?
+5. Les animations sont-elles prévues ?
+
+## Exporter les images et icônes
+
+| Élément | Format d''export |
+| --- | --- |
+| **Icônes, logos** | SVG |
+| **Photos** | JPEG ou WebP, en 1x et 2x pour les écrans haute densité |
+| **Illustrations simples** | SVG |
+| **Images avec transparence** | PNG ou WebP |
+
+## VS Code : travailler efficacement
+
+| Fonction | Usage |
+| --- | --- |
+| **Emmet** | Écrire du HTML très vite (par exemple `ul>li*3>a` crée une liste de 3 liens) |
+| **Extension Live Server** | Recharger la page automatiquement à chaque sauvegarde |
+| **Prettier** | Formater le code automatiquement |
+| **Recherche dans tout le projet** | Retrouver une classe ou une couleur |
+| **Terminal intégré** | Lancer Git |
+
+## Les outils du navigateur
+
+| Outil | Usage |
+| --- | --- |
+| **Inspecteur** | Voir et modifier le HTML et le CSS en direct |
+| **Mode appareil** | Simuler des tailles d''écran de téléphone et de tablette |
+| **Affichage Flexbox et Grid** | Voir les zones et les espacements |
+| **Simulation de réseau lent** | Tester la vitesse avec une connexion faible |
+| **Lighthouse** | Note de performance, d''accessibilité et de bonnes pratiques |
+
+> [!attention]
+> Le mode appareil du navigateur est une **simulation**. Testez toujours sur au moins un **vrai téléphone**, car certains comportements (clavier, zoom, barre d''adresse) ne se voient qu''en réel.
+
+## Git : sauvegarder et partager
+
+```bash
+git init
+git add .
+git commit -m "Intégration de l''en-tête et du héro"
+git branch -M main
+git remote add origin https://github.com/votre-compte/lodge-tsara.git
+git push -u origin main
+```
+
+> [!astuce]
+> Faites un **commit** à chaque étape terminée (en-tête, héro, section chambres). Si quelque chose casse, vous pouvez revenir à la version précédente.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Figma** (offre payante avec mode développeur) | Inspection plus complète, code CSS proposé pour les éléments, suivi des changements de la maquette, annotations du designer |
+| **WebStorm** | Éditeur professionnel de JetBrains : analyse du code, refactorisation, outils intégrés (une licence gratuite existe pour certains usages non commerciaux et pour les étudiants, selon les conditions) |
+
+> [!madagascar]
+> Souvent, c''est **l''agence ou le client** qui vous donne accès à son espace Figma payant. Pour débuter, la version gratuite de Figma et VS Code suffisent largement. Vérifiez les conditions des licences gratuites sur les sites officiels.
+
+> [!retenir]
+> - Figma : couleurs, polices, espacements, mise en page automatique, composants.
+> - Poser les bonnes questions au designer sur le mobile, les états et les textes longs.
+> - Exporter en SVG pour les icônes, en JPEG ou WebP en 1x et 2x pour les photos.
+> - VS Code avec Emmet, Live Server, Prettier ; tester avec les outils du navigateur et un vrai téléphone.
+> - Git à chaque étape ; Figma payant et WebStorm pour aller plus loin.
+
+## Exercice pratique : de Figma au code
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Ouvrez une maquette gratuite de la communauté Figma (page d''accueil simple).
+> 2. Listez les couleurs, polices, espacements et composants.
+> 3. Exportez les icônes en SVG et les photos en WebP.
+> 4. Intégrez l''en-tête et la première section, testez avec Lighthouse et sur un vrai téléphone.
+> 5. Publiez le code sur GitHub avec au moins 4 commits.
+>
+> **À livrer** : votre liste, le lien du dépôt GitHub, vos captures Lighthouse et téléphone.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 2, 0, 'Quel format pour exporter une icône ?', '["SVG","MP4","JPEG","DOCX"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 2, 1, 'Le mode appareil du navigateur suffit-il ?', '["Oui, pour Safari","Non, il faut aussi tester sur un vrai téléphone","Il ne sert à rien","Oui, toujours"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 2, 2, 'Quand faire un commit ?', '["Jamais","Toutes les 10 secondes","À chaque étape terminée","Une fois à la fin du projet"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-f', 3, 'Premier projet : le site du Lodge Tsara', 'Découpage en composants et planning, convention BEM, états des éléments, contenus réels et cas limites, contrôle qualité en 10 points, mise en ligne et README.', 'Dans ce module, vous intégrez un site complet à partir d''une maquette, comme le ferait un intégrateur pour une agence. Vous apprendrez à découper la maquette, à coder des composants réutilisables, à gérer les cas non prévus, à contrôler la qualité et à livrer un code propre et en ligne.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Découper une maquette en composants et en étapes.
+> 2. Coder des composants réutilisables avec leurs états.
+> 3. Gérer les contenus réels et les cas non prévus.
+> 4. Contrôler la qualité avec une liste de vérification.
+> 5. Mettre en ligne et livrer.
+
+## Le cas pratique : « Lodge Tsara »
+
+> [!exemple] Votre client
+> Une agence web d''Antananarivo vous confie l''intégration du site du **Lodge Tsara** à Nosy Be. Le designer a livré une maquette Figma de 4 pages (accueil, chambres, activités, contact) en version mobile et ordinateur. Le site sera en français et en anglais. Délai : 2 semaines.
+
+## Étape 1 : découper la maquette
+
+| Composants | Pages concernées |
+| --- | --- |
+| En-tête avec menu (et menu mobile) | Toutes |
+| Héro (grande image + titre + bouton) | Accueil, Chambres, Activités |
+| Carte de chambre | Accueil, Chambres |
+| Carte d''activité | Accueil, Activités |
+| Bloc témoignage | Accueil |
+| Formulaire de contact | Contact |
+| Pied de page | Toutes |
+
+### Le planning
+
+| Jours | Travail |
+| --- | --- |
+| 1 | Structure du projet, variables, typographie, en-tête et pied de page |
+| 2-3 | Composants : héro, cartes, témoignage, boutons et leurs états |
+| 4-6 | Pages accueil et chambres |
+| 7-8 | Pages activités et contact, formulaire |
+| 9 | Version anglaise, textes longs, cas limites |
+| 10 | Contrôle qualité, corrections, mise en ligne, livraison |
+
+## Étape 2 : des composants réutilisables
+
+```html
+<article class="carte-chambre">
+  <img src="img/bungalow-mer.webp" alt="Bungalow vue mer avec terrasse en bois" loading="lazy" width="600" height="400">
+  <div class="carte-chambre__contenu">
+    <h3 class="carte-chambre__titre">Bungalow vue mer</h3>
+    <p class="carte-chambre__texte">Lit double, terrasse privée, à 20 mètres de la plage.</p>
+    <a class="btn" href="contact.html">Demander un devis</a>
+  </div>
+</article>
+```
+
+> [!definition] Convention BEM
+> Une façon de nommer les classes : le **bloc** (`carte-chambre`), ses **éléments** (`carte-chambre__titre`) et ses **variantes** (`carte-chambre--mise-en-avant`). Le CSS reste lisible et évite les conflits.
+
+### Les états à coder
+
+| Élément | États |
+| --- | --- |
+| **Bouton** | Normal, survol, focus clavier, actif, désactivé |
+| **Lien** | Normal, survol, focus, visité si nécessaire |
+| **Champ de formulaire** | Vide, rempli, focus, erreur, succès |
+| **Menu mobile** | Fermé, ouvert |
+
+## Étape 3 : les contenus réels et les cas limites
+
+| Cas | Solution |
+| --- | --- |
+| **Titre beaucoup plus long** (version anglaise) | Le texte passe à la ligne sans casser la carte |
+| **Image manquante ou de proportion différente** | `object-fit: cover` et proportions fixées |
+| **Écran très petit** (320 pixels) | Vérifier qu''aucun élément ne dépasse |
+| **Écran très large** | Largeur maximale du contenu |
+| **Texte agrandi par l''utilisateur** | Unités relatives, pas de hauteurs fixes |
+
+> [!madagascar]
+> Testez aussi avec des **noms et textes malgaches** (souvent plus longs) si le site doit en contenir. Les mots longs comme « Antananarivo » ou « fanatanjahantena » peuvent dépasser des boutons ou des colonnes étroites.
+
+## Étape 4 : le contrôle qualité
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Fidélité à la maquette (couleurs, polices, espacements) sur mobile et ordinateur |
+| 2 | Toutes les tailles d''écran de 320 pixels à grand écran |
+| 3 | Navigateurs : Chrome, Firefox, Safari si possible |
+| 4 | Navigation complète au clavier, focus visible |
+| 5 | Textes alternatifs, titres dans l''ordre, contrastes |
+| 6 | Note Lighthouse (performance, accessibilité) |
+| 7 | Validation du HTML (validateur du W3C) |
+| 8 | Liens et formulaire fonctionnels |
+| 9 | Version anglaise complète |
+| 10 | Test sur un vrai téléphone |
+
+> [!attention]
+> Comparez votre page et la maquette **côte à côte**, à la même largeur. Les petites différences d''espacement sont celles que les designers remarquent en premier.
+
+## Étape 5 : mettre en ligne et livrer
+
+| Livrable | Contenu |
+| --- | --- |
+| **Code source** | Dépôt Git propre, avec un fichier README |
+| **Version en ligne** | Hébergement statique (GitHub Pages, Netlify ou celui de l''agence) |
+| **README** | Structure des dossiers, variables, composants, comment modifier un texte |
+| **Rapport de tests** | Navigateurs, appareils, notes Lighthouse |
+| **Points ouverts** | Questions au designer, éléments non fournis |
+
+> [!retenir]
+> - Découper la maquette en composants et planifier par étapes.
+> - Composants avec convention BEM et tous leurs états.
+> - Gérer textes longs, images différentes, petits et grands écrans, texte agrandi.
+> - Une liste de contrôle en 10 points et une comparaison côte à côte.
+> - Un dépôt propre, une version en ligne et un README.
+
+## Exercice pratique : le site du Lodge Tsara
+
+> [!exercice] Exercice pratique · 14 heures (sur plusieurs jours)
+> 1. Choisissez une maquette Figma gratuite de site vitrine de 3 ou 4 pages.
+> 2. Découpez-la en composants et faites votre planning.
+> 3. Intégrez toutes les pages, mobile d''abord, avec les états.
+> 4. Testez avec la liste de contrôle en 10 points.
+> 5. Mettez le site en ligne et rédigez le README.
+>
+> **À livrer** : le lien du site en ligne, le dépôt GitHub, le README et le rapport de tests. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 3, 0, 'Que nomme la convention BEM ?', '["Les fichiers images","Bloc, éléments et variantes des classes","Les couleurs","Les commits"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 3, 1, 'Quels états coder pour un bouton ?', '["Aucun","Seulement survol","Normal, survol, focus, actif, désactivé","Seulement normal"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 3, 2, 'Comment comparer avec la maquette ?', '["Sans regarder la maquette","De mémoire","Côte à côte, à la même largeur","Seulement sur mobile"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('dev-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avec maquette et résultat, 5 canaux, tests techniques, prix à la page, au composant ou au jour, conditions, paiements et évolution.', 'Les agences web, les designers et les entreprises ont régulièrement besoin d''intégrateurs fiables. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''intégrateur convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Réussir un test technique d''intégration.
+> 4. Fixer vos prix à la page, au composant ou au jour.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **3 à 5 intégrations en ligne** : maquette d''origine à côté du résultat.
+2. **Le code sur GitHub** : propre, organisé, avec README.
+3. **Les notes Lighthouse** et les tests sur téléphone.
+4. **Un avant et après** : un site mal adapté au mobile, corrigé par vous (exercice présenté honnêtement).
+5. **Une page de présentation** simple, elle-même parfaitement intégrée.
+
+> [!astuce]
+> Votre propre page de présentation est votre **meilleure preuve** : si elle est rapide, belle sur téléphone et accessible, le client sait déjà ce que vous savez faire.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences web à Madagascar** | Proposez-vous pour l''intégration de leurs maquettes |
+| 2 | **Designers indépendants** | Ils ont des maquettes mais ne codent pas : proposez un partenariat |
+| 3 | **Agences francophones à l''étranger** | Intégration rapide, livraison le lendemain |
+| 4 | **Entreprises aux sites mal adaptés au mobile** | Proposez un audit et une correction |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un designer
+> « Bonjour, j''ai vu vos maquettes sur Dribbble, elles sont superbes. Je suis intégrateur web : je transforme des maquettes Figma en pages HTML et CSS fidèles au pixel près, mobile d''abord et accessibles. Si vous livrez parfois des sites à vos clients, je peux m''occuper de l''intégration. Voici deux exemples avec la maquette et le résultat en ligne. »
+
+## Réussir un test technique
+
+| Type de test | Comment réussir |
+| --- | --- |
+| **Intégrer une maquette** en temps limité | Lire toute la maquette, commencer par la structure, gérer le mobile |
+| **Corriger un bug d''affichage** | Utiliser l''inspecteur, expliquer la cause |
+| **Questions sur le CSS** | Flexbox, Grid, spécificité, unités, responsive |
+| **Accessibilité** | Balises, focus, contrastes, textes alternatifs |
+| **Revue de votre code** | Code lisible, noms clairs, pas de copier-coller inutile |
+
+> [!attention]
+> Dans un test, un code **propre et responsive** mais légèrement incomplet vaut souvent mieux qu''un code complet mais désordonné. Les recruteurs regardent votre méthode autant que le résultat.
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Page simple** | Une page responsive à partir d''une maquette | 250 000 Ar |
+| **Site vitrine** | 4 à 5 pages, composants, version en ligne | 900 000 Ar |
+| **Composant** | Un composant complexe avec ses états | 60 000 Ar |
+| **Tarif journalier** | Pour les agences, missions longues | 120 000 Ar par jour |
+| **Correction responsive** | Audit et corrections d''un site existant | Sur devis |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions
+
+1. **Les maquettes fournies** : mobile et ordinateur, ou responsive à concevoir par vous (supplément).
+2. **Les navigateurs et appareils** testés.
+3. **Le nombre de corrections** incluses.
+4. **Ce qui n''est pas inclus** : contenu, photos, logique complexe, hébergement payant.
+5. **Les livrables** : code, version en ligne, README.
+6. **Le portfolio** : droit de montrer le résultat.
+7. **Le paiement** : acompte de 30 à 50 %, solde à la livraison.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur front-end** | JavaScript et frameworks (voir la formation Développeur front-end) |
+| **Intégrateur CMS** | Thèmes WordPress et Shopify (voir la formation Développeur WordPress et Shopify) |
+| **Spécialiste accessibilité** | Normes WCAG, audits |
+| **Spécialiste e-mails HTML** | Compatibilité avec les messageries |
+| **Designer UI** | Voir la formation Designer UI/UX |
+
+> [!retenir]
+> - Un portfolio : maquette à côté du résultat en ligne, code sur GitHub, notes Lighthouse.
+> - Agences, designers, agences étrangères, entreprises, plateformes.
+> - Un test réussi : structure, mobile, code propre, méthode.
+> - Des prix à la page, au composant ou au jour, avec des conditions claires.
+> - Évoluez vers le front-end, les CMS, l''accessibilité ou le design.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Intégrez et mettez en ligne votre page de présentation.
+> 2. Publiez 3 intégrations avec maquette et résultat.
+> 3. Calculez vos prix et rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 propositions à des designers ou des agences.
+>
+> **À livrer** : le lien de votre page, vos 3 intégrations, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 4, 0, 'Quelle est votre meilleure preuve de compétence ?', '["Votre propre page parfaitement intégrée","Un logo","Un CV long","Une photo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 4, 1, 'Quel partenariat proposer à un designer ?', '["Rien","Intégrer ses maquettes","Vendre ses maquettes","Copier ses maquettes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('dev-2-f', 4, 2, 'Que vaut un code propre mais légèrement incomplet en test ?', '["Rien","Toujours moins","Souvent mieux qu''un code complet désordonné","Il est refusé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que fait un intégrateur web ?', '["Il transforme une maquette en pages web fidèles et adaptées","Il dessine les maquettes","Il écrit les textes","Il gère les serveurs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Qui fournit les maquettes Figma ?', '["Le client final toujours","Le développeur back-end","Le designer UI","L''hébergeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quel critère concerne les lecteurs d''écran et le clavier ?', '["L''accessibilité","La performance","La fidélité","La compatibilité"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Pourquoi le mobile d''abord est-il clé à Madagascar ?', '["La majorité navigue sur téléphone","Les ordinateurs sont interdits","Pour réduire le prix","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quelle balise pour une action comme ouvrir un menu ?', '["button","span","img","div"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Pourquoi des variables CSS ?', '["Changer une couleur à un seul endroit","Rien","Ralentir le site","Remplacer le HTML"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'À quoi sert Flexbox ?', '["Créer une base de données","Compresser des images","Rien","Aligner des éléments sur une ligne ou une colonne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que faire sans la balise viewport ?', '["Utiliser des tableaux","L''ajouter, sinon le téléphone affiche la page en petit","Supprimer le CSS","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quelle taille minimale pour une zone tactile ?', '["Environ 44 pixels","500 pixels","5 pixels","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quel attribut pour une image décorative ?', '["alt=\"\"","Aucun attribut","alt=\"image\"","title seulement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que révèle Auto Layout dans Figma ?', '["Souvent l''équivalent d''un Flexbox","Le nom du designer","Le prix","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que demander au designer ?', '["Son mot de passe","Les états des boutons et le comportement des textes longs","Son salaire","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'À quoi sert Emmet ?', '["Écrire du HTML très vite","Héberger un site","Rien","Retoucher des photos"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que mesure Lighthouse ?', '["Performance, accessibilité et bonnes pratiques","Le prix du site","La couleur","Le nombre de visiteurs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Qui fournit souvent l''accès Figma payant ?', '["L''agence ou le client","Le navigateur","Personne","Toujours l''intégrateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que faire d''une image de proportion différente ?', '["Utiliser object-fit: cover et fixer les proportions","La supprimer","Rien","L''étirer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quelle largeur minimale tester ?', '["Aucune","50 pixels","320 pixels","1000 pixels"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Pourquoi tester avec des mots malgaches longs ?', '["Ils accélèrent le site","Ils peuvent dépasser des boutons ou colonnes étroites","Ils changent les couleurs","C''est inutile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que valider avec l''outil du W3C ?', '["Les images","Le HTML","Le prix","Le contrat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que contient le README ?', '["La facture","Structure, variables, composants et comment modifier un texte","Le mot de passe","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Où héberger un site statique simple ?', '["Nulle part","Dans un e-mail","Sur une clé USB","GitHub Pages ou Netlify par exemple"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Que montrer dans un portfolio d''intégrateur ?', '["La maquette à côté du résultat en ligne","Le code d''un autre","Rien","Seulement des captures"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Qu''est-ce qui n''est pas inclus dans un forfait d''intégration ?', '["Les états","Le responsive","Contenu, photos et logique complexe","Les tests"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Vers quoi évoluer avec JavaScript et les frameworks ?', '["Modérateur","Comédien voix off","Développeur front-end","Correcteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('dev-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Aucun","Mobile Money ou virement"]'::jsonb, 3);
 
 -- dev-3-a
 delete from public.exam_questions where course_id = 'dev-3-a';

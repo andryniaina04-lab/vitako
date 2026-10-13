@@ -2981,6 +2981,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "dev-2-f": {
+  "hours": 18,
+  "description": "L'intégrateur web transforme des maquettes graphiques en pages HTML et CSS fidèles, responsives, accessibles et rapides. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences web, des designers et des entreprises, à Madagascar et à l'étranger, avec HTML, CSS et Figma : rôle dans l'équipe, critères d'une bonne intégration, HTML sémantique, variables CSS, Flexbox et Grid, mobile d'abord, images et accessibilité, lecture d'une maquette, outils du navigateur, Git, composants et états, cas limites, contrôle qualité et mise en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les critères d'une bonne intégration",
+   "Écrire un HTML sémantique et un CSS organisé avec des variables",
+   "Mettre en page avec Flexbox et Grid, mobile d'abord",
+   "Lire une maquette Figma et tester avec les outils du navigateur",
+   "Intégrer un site complet avec composants, états, cas limites et contrôle qualité",
+   "Présenter son portfolio, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'intégrateur web depuis Madagascar",
+    "summary": "Rôle entre designer et développeurs, intégration au pixel près et responsive, critères d'une bonne intégration, types de missions, clients et poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "L'intégrateur dans l'équipe",
+     "Les critères d'une bonne intégration",
+     "Les types de missions",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : observer une intégration"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les bases : HTML sémantique, variables, Flexbox, Grid et responsive",
+    "summary": "Balises sémantiques, liens et boutons, variables CSS, Flexbox et Grid, mobile d'abord et media queries, images optimisées, chargement différé et accessibilité.",
+    "sections": [
+     "Un HTML sémantique",
+     "Organiser le CSS avec des variables",
+     "Flexbox et Grid",
+     "Le responsive, mobile d'abord",
+     "Images et accessibilité",
+     "Exercice pratique : une page de base"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : Figma, VS Code, outils du navigateur, Git et outils payants",
+    "summary": "Lecture d'une maquette et questions au designer, export des images, Emmet, Live Server et Prettier, inspecteur, mode appareil et Lighthouse, Git, Figma payant et WebStorm.",
+    "sections": [
+     "Lire une maquette Figma",
+     "Exporter les images et icônes",
+     "VS Code : travailler efficacement",
+     "Les outils du navigateur",
+     "Git : sauvegarder et partager",
+     "Les outils payants",
+     "Exercice pratique : de Figma au code"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : le site du Lodge Tsara",
+    "summary": "Découpage en composants et planning, convention BEM, états des éléments, contenus réels et cas limites, contrôle qualité en 10 points, mise en ligne et README.",
+    "sections": [
+     "Le cas pratique : « Lodge Tsara »",
+     "Étape 1 : découper la maquette",
+     "Étape 2 : des composants réutilisables",
+     "Étape 3 : les contenus réels et les cas limites",
+     "Étape 4 : le contrôle qualité",
+     "Étape 5 : mettre en ligne et livrer",
+     "Exercice pratique : le site du Lodge Tsara"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avec maquette et résultat, 5 canaux, tests techniques, prix à la page, au composant ou au jour, conditions, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Réussir un test technique",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-3-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur WordPress et Shopify un spécialiste recherché : audit, cahier des charges et offres à prix fixe, outils professionnels (Elementor Pro, thèmes premium, fonctions avancées de Shopify, un peu de Liquid et de PHP), méthode de travail sans risque (préproduction, Git, vitesse, sécurité, recette), sites conformes, multilingues et multidevises pour l'international, puis revenus récurrents et petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "dev-2-f",
+  "hours": 18,
+  "description": "L'intégrateur web transforme des maquettes graphiques en pages HTML et CSS fidèles, responsives, accessibles et rapides. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences web, des designers et des entreprises, à Madagascar et à l'étranger, avec HTML, CSS et Figma : rôle dans l'équipe, critères d'une bonne intégration, HTML sémantique, variables CSS, Flexbox et Grid, mobile d'abord, images et accessibilité, lecture d'une maquette, outils du navigateur, Git, composants et états, cas limites, contrôle qualité et mise en ligne. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les critères d'une bonne intégration",
+    "Écrire un HTML sémantique et un CSS organisé avec des variables",
+    "Mettre en page avec Flexbox et Grid, mobile d'abord",
+    "Lire une maquette Figma et tester avec les outils du navigateur",
+    "Intégrer un site complet avec composants, états, cas limites et contrôle qualité",
+    "Présenter son portfolio, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'intégrateur web depuis Madagascar",
+      "summary": "Rôle entre designer et développeurs, intégration au pixel près et responsive, critères d'une bonne intégration, types de missions, clients et poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que livre un intégrateur web ?", "options": ["Des pages HTML et CSS à partir de maquettes", "Des maquettes Figma", "Une base de données", "Des photos"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une intégration responsive ?", "options": ["Une intégration qui s'adapte à toutes les tailles d'écran", "Une intégration rapide", "Une intégration en anglais", "Une intégration sans CSS"], "correct": 0 },
+        { "q": "À quoi un bon intégrateur pense-t-il ?", "options": ["Aux cas que la maquette ne montre pas", "Seulement à la maquette d'ordinateur", "À la couleur de son éditeur", "À rien d'autre"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : HTML sémantique, variables, Flexbox, Grid et responsive",
+      "summary": "Balises sémantiques, liens et boutons, variables CSS, Flexbox et Grid, mobile d'abord et media queries, images optimisées, chargement différé et accessibilité.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de h1 par page ?", "options": ["Un seul", "Autant que de sections", "Aucun", "Trois"], "correct": 0 },
+        { "q": "Quel outil pour une grille de cartes ?", "options": ["Grid", "Un tableau HTML", "Des espaces", "Rien"], "correct": 0 },
+        { "q": "Que signifie mobile d'abord ?", "options": ["Écrire d'abord le CSS des petits écrans puis ajouter des règles pour les grands", "Ne faire que la version mobile", "Tester seulement sur ordinateur", "Utiliser une application mobile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Figma, VS Code, outils du navigateur, Git et outils payants",
+      "summary": "Lecture d'une maquette et questions au designer, export des images, Emmet, Live Server et Prettier, inspecteur, mode appareil et Lighthouse, Git, Figma payant et WebStorm.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel format pour exporter une icône ?", "options": ["SVG", "JPEG", "MP4", "DOCX"], "correct": 0 },
+        { "q": "Le mode appareil du navigateur suffit-il ?", "options": ["Non, il faut aussi tester sur un vrai téléphone", "Oui, toujours", "Oui, pour Safari", "Il ne sert à rien"], "correct": 0 },
+        { "q": "Quand faire un commit ?", "options": ["À chaque étape terminée", "Une fois à la fin du projet", "Jamais", "Toutes les 10 secondes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le site du Lodge Tsara",
+      "summary": "Découpage en composants et planning, convention BEM, états des éléments, contenus réels et cas limites, contrôle qualité en 10 points, mise en ligne et README.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que nomme la convention BEM ?", "options": ["Bloc, éléments et variantes des classes", "Les couleurs", "Les fichiers images", "Les commits"], "correct": 0 },
+        { "q": "Quels états coder pour un bouton ?", "options": ["Normal, survol, focus, actif, désactivé", "Seulement normal", "Aucun", "Seulement survol"], "correct": 0 },
+        { "q": "Comment comparer avec la maquette ?", "options": ["Côte à côte, à la même largeur", "De mémoire", "Sans regarder la maquette", "Seulement sur mobile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avec maquette et résultat, 5 canaux, tests techniques, prix à la page, au composant ou au jour, conditions, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est votre meilleure preuve de compétence ?", "options": ["Votre propre page parfaitement intégrée", "Un CV long", "Une photo", "Un logo"], "correct": 0 },
+        { "q": "Quel partenariat proposer à un designer ?", "options": ["Intégrer ses maquettes", "Copier ses maquettes", "Rien", "Vendre ses maquettes"], "correct": 0 },
+        { "q": "Que vaut un code propre mais légèrement incomplet en test ?", "options": ["Souvent mieux qu'un code complet désordonné", "Rien", "Toujours moins", "Il est refusé"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un intégrateur web ?", "options": ["Il transforme une maquette en pages web fidèles et adaptées", "Il dessine les maquettes", "Il gère les serveurs", "Il écrit les textes"], "correct": 0 },
+    { "q": "Qui fournit les maquettes Figma ?", "options": ["Le designer UI", "Le développeur back-end", "Le client final toujours", "L'hébergeur"], "correct": 0 },
+    { "q": "Quel critère concerne les lecteurs d'écran et le clavier ?", "options": ["L'accessibilité", "La performance", "La fidélité", "La compatibilité"], "correct": 0 },
+    { "q": "Pourquoi le mobile d'abord est-il clé à Madagascar ?", "options": ["La majorité navigue sur téléphone", "Les ordinateurs sont interdits", "Ce n'est pas utile", "Pour réduire le prix"], "correct": 0 },
+    { "q": "Quelle balise pour une action comme ouvrir un menu ?", "options": ["button", "div", "span", "img"], "correct": 0 },
+    { "q": "Pourquoi des variables CSS ?", "options": ["Changer une couleur à un seul endroit", "Ralentir le site", "Remplacer le HTML", "Rien"], "correct": 0 },
+    { "q": "À quoi sert Flexbox ?", "options": ["Aligner des éléments sur une ligne ou une colonne", "Créer une base de données", "Compresser des images", "Rien"], "correct": 0 },
+    { "q": "Que faire sans la balise viewport ?", "options": ["L'ajouter, sinon le téléphone affiche la page en petit", "Rien", "Supprimer le CSS", "Utiliser des tableaux"], "correct": 0 },
+    { "q": "Quelle taille minimale pour une zone tactile ?", "options": ["Environ 44 pixels", "5 pixels", "500 pixels", "Aucune"], "correct": 0 },
+    { "q": "Quel attribut pour une image décorative ?", "options": ["alt=\"\"", "Aucun attribut", "alt=\"image\"", "title seulement"], "correct": 0 },
+    { "q": "Que révèle Auto Layout dans Figma ?", "options": ["Souvent l'équivalent d'un Flexbox", "Le prix", "Le nom du designer", "Rien"], "correct": 0 },
+    { "q": "Que demander au designer ?", "options": ["Les états des boutons et le comportement des textes longs", "Son salaire", "Rien", "Son mot de passe"], "correct": 0 },
+    { "q": "À quoi sert Emmet ?", "options": ["Écrire du HTML très vite", "Héberger un site", "Retoucher des photos", "Rien"], "correct": 0 },
+    { "q": "Que mesure Lighthouse ?", "options": ["Performance, accessibilité et bonnes pratiques", "Le nombre de visiteurs", "Le prix du site", "La couleur"], "correct": 0 },
+    { "q": "Qui fournit souvent l'accès Figma payant ?", "options": ["L'agence ou le client", "Toujours l'intégrateur", "Personne", "Le navigateur"], "correct": 0 },
+    { "q": "Que faire d'une image de proportion différente ?", "options": ["Utiliser object-fit: cover et fixer les proportions", "L'étirer", "La supprimer", "Rien"], "correct": 0 },
+    { "q": "Quelle largeur minimale tester ?", "options": ["320 pixels", "1000 pixels", "50 pixels", "Aucune"], "correct": 0 },
+    { "q": "Pourquoi tester avec des mots malgaches longs ?", "options": ["Ils peuvent dépasser des boutons ou colonnes étroites", "Ils changent les couleurs", "C'est inutile", "Ils accélèrent le site"], "correct": 0 },
+    { "q": "Que valider avec l'outil du W3C ?", "options": ["Le HTML", "Les images", "Le prix", "Le contrat"], "correct": 0 },
+    { "q": "Que contient le README ?", "options": ["Structure, variables, composants et comment modifier un texte", "Le mot de passe", "Rien", "La facture"], "correct": 0 },
+    { "q": "Où héberger un site statique simple ?", "options": ["GitHub Pages ou Netlify par exemple", "Dans un e-mail", "Sur une clé USB", "Nulle part"], "correct": 0 },
+    { "q": "Que montrer dans un portfolio d'intégrateur ?", "options": ["La maquette à côté du résultat en ligne", "Seulement des captures", "Rien", "Le code d'un autre"], "correct": 0 },
+    { "q": "Qu'est-ce qui n'est pas inclus dans un forfait d'intégration ?", "options": ["Contenu, photos et logique complexe", "Le responsive", "Les états", "Les tests"], "correct": 0 },
+    { "q": "Vers quoi évoluer avec JavaScript et les frameworks ?", "options": ["Développeur front-end", "Comédien voix off", "Correcteur", "Modérateur"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
