@@ -2562,6 +2562,91 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-4-f": {
+  "hours": 12,
+  "description": "Le créateur de miniatures YouTube conçoit l'image d'aperçu qui donne envie de cliquer sur une vidéo, en restant fidèle à son contenu. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des créateurs YouTube, des marques et des médias, à Madagascar et à l'étranger, avec Canva et Photopea : rôle de la miniature, taux de clic, contraintes techniques, honnêteté et droits, composition, visages, texte, couleurs, identité de chaîne, détourage, modèles, versions à tester et suivi des résultats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le rôle d'une miniature, le taux de clic et les contraintes techniques",
+   "Respecter l'honnêteté et les droits sur les images",
+   "Composer une miniature lisible en petit avec visage, texte et couleurs",
+   "Détourer dans Photopea et créer des modèles dans Canva",
+   "Produire chaque semaine pour une chaîne avec plusieurs versions et suivi",
+   "Présenter son portfolio, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de créateur de miniatures YouTube depuis Madagascar",
+    "summary": "Rôle de la miniature, taux de clic, format, taille et zone de la durée, types de clients, honnêteté et droits, qualités et poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le rôle de la miniature",
+     "Les contraintes techniques",
+     "Les types de clients",
+     "Honnêteté et droits",
+     "Les qualités du créateur de miniatures",
+     "Votre poste de travail",
+     "Exercice pratique : analyser des miniatures"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : idée, composition, visages, texte, couleurs et identité",
+    "summary": "Moment fort et complément du titre, sujet principal et contraste, visages et émotions fidèles, texte de 2 à 4 mots, couleurs saturées et identité de chaîne.",
+    "sections": [
+     "Trouver l'idée",
+     "La composition",
+     "Les visages et les émotions",
+     "Le texte",
+     "Les couleurs",
+     "L'identité de la chaîne",
+     "Exercice pratique : vos premières maquettes"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Photopea, Canva et outils payants",
+    "summary": "Images sources et photos dédiées, détourage et masque dans Photopea, assemblage par calques, modèle Canva, export et vérification en petit, Photoshop et Canva Pro.",
+    "sections": [
+     "Les images sources",
+     "Photopea : détourer et retoucher",
+     "Assembler la miniature",
+     "Canva : les modèles réutilisables",
+     "Export et vérification",
+     "Les outils payants",
+     "Exercice pratique : vos premières miniatures"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : un mois pour Sakafo Gasy avec Lova",
+    "summary": "Analyse de la chaîne et de la concurrence, identité et modèle, fiche vidéo, 3 versions par vidéo, calendrier hebdomadaire et suivi prudent des résultats.",
+    "sections": [
+     "Le cas pratique : « Sakafo Gasy avec Lova »",
+     "Étape 1 : analyser la chaîne et la concurrence",
+     "Étape 2 : l'identité et le modèle",
+     "Étape 3 : les informations de chaque vidéo",
+     "Étape 4 : proposer plusieurs versions",
+     "Étape 5 : suivre et améliorer",
+     "Exercice pratique : un mois pour une chaîne"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio varié et honnête, 5 canaux, prix par miniature et forfait mensuel, conditions en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "dev-0-a": {
   "hours": 20,
   "description": "Ce niveau Avancé fait du développeur front-end un professionnel confirmé : spécialité (applications React et Next.js, performance, accessibilité, design system, e-commerce, tests), audit technique et signaux web essentiels, outils payants (WebStorm et GitHub Copilot) avec TypeScript et Next.js, tests, intégration continue, performance et accessibilité, travail international en anglais et internationalisation, puis tarif, maintenance, portfolio et petite équipe. Chaque module contient une leçon détaillée, des exemples de code, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "design-4-f",
+  "hours": 12,
+  "description": "Le créateur de miniatures YouTube conçoit l'image d'aperçu qui donne envie de cliquer sur une vidéo, en restant fidèle à son contenu. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des créateurs YouTube, des marques et des médias, à Madagascar et à l'étranger, avec Canva et Photopea : rôle de la miniature, taux de clic, contraintes techniques, honnêteté et droits, composition, visages, texte, couleurs, identité de chaîne, détourage, modèles, versions à tester et suivi des résultats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le rôle d'une miniature, le taux de clic et les contraintes techniques",
+    "Respecter l'honnêteté et les droits sur les images",
+    "Composer une miniature lisible en petit avec visage, texte et couleurs",
+    "Détourer dans Photopea et créer des modèles dans Canva",
+    "Produire chaque semaine pour une chaîne avec plusieurs versions et suivi",
+    "Présenter son portfolio, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de créateur de miniatures YouTube depuis Madagascar",
+      "summary": "Rôle de la miniature, taux de clic, format, taille et zone de la durée, types de clients, honnêteté et droits, qualités et poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le taux de clic ?", "options": ["La part des personnes qui cliquent après avoir vu la miniature", "Le nombre d'abonnés", "La durée de la vidéo", "Le nombre de commentaires"], "correct": 0 },
+        { "q": "Quel format a une miniature YouTube ?", "options": ["16:9", "9:16", "1:1", "4:3"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une bonne miniature ?", "options": ["Une miniature qui crée une curiosité honnête", "Un piège à clics", "Une image sans rapport avec la vidéo", "Une capture floue"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : idée, composition, visages, texte, couleurs et identité",
+      "summary": "Moment fort et complément du titre, sujet principal et contraste, visages et émotions fidèles, texte de 2 à 4 mots, couleurs saturées et identité de chaîne.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de mots de texte sur une miniature ?", "options": ["2 à 4", "15", "Le titre entier", "Aucun jamais"], "correct": 0 },
+        { "q": "Que doit faire la miniature par rapport au titre ?", "options": ["Le compléter sans le répéter", "Le répéter mot pour mot", "Le contredire", "L'ignorer"], "correct": 0 },
+        { "q": "Quelle expression pour une chaîne de finance sérieuse ?", "options": ["Naturelle et confiante", "Très exagérée", "Effrayée", "Aucune"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Photopea, Canva et outils payants",
+      "summary": "Images sources et photos dédiées, détourage et masque dans Photopea, assemblage par calques, modèle Canva, export et vérification en petit, Photoshop et Canva Pro.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la meilleure source d'image ?", "options": ["Une photo dédiée prise pendant le tournage", "Une capture floue", "Une image trouvée au hasard", "Le logo d'une autre chaîne"], "correct": 0 },
+        { "q": "Pourquoi utiliser un masque de calque ?", "options": ["Affiner le détourage sans effacer définitivement", "Changer la langue", "Exporter", "Rien"], "correct": 0 },
+        { "q": "Où ne rien mettre d'important ?", "options": ["En bas à droite, sous la durée", "Au centre", "En haut à gauche", "Nulle part"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un mois pour Sakafo Gasy avec Lova",
+      "summary": "Analyse de la chaîne et de la concurrence, identité et modèle, fiche vidéo, 3 versions par vidéo, calendrier hebdomadaire et suivi prudent des résultats.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment vérifier qu'une miniature se distingue ?", "options": ["La placer dans une capture des résultats de recherche", "La regarder en grand seulement", "Demander à un ami au hasard", "Ne pas vérifier"], "correct": 0 },
+        { "q": "Quand livrer pour une publication le samedi matin ?", "options": ["La veille", "Le samedi à midi", "Le dimanche", "Le mois suivant"], "correct": 0 },
+        { "q": "Comment présenter les résultats du taux de clic ?", "options": ["Comme des tendances, avec prudence", "Comme des promesses", "Sans chiffres", "En inventant"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio varié et honnête, 5 canaux, prix par miniature et forfait mensuel, conditions en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment présenter une miniature refaite d'une chaîne réelle non cliente ?", "options": ["Comme un exercice non commandé", "Comme une commande", "Sans rien dire", "Avec un faux témoignage"], "correct": 0 },
+        { "q": "Quelle formule est la plus intéressante pour les deux parties ?", "options": ["Le forfait mensuel", "Une miniature isolée", "Un travail gratuit permanent", "Aucune"], "correct": 0 },
+        { "q": "Quel premier contact proposer à un créateur ?", "options": ["Sa dernière miniature refaite gratuitement", "Une critique publique", "Un prix sans exemple", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un créateur de miniatures ?", "options": ["Il conçoit l'image d'aperçu d'une vidéo", "Il monte la vidéo", "Il écrit le script", "Il gère les commentaires"], "correct": 0 },
+    { "q": "Quelle taille de miniature est courante ?", "options": ["1280 × 720 pixels", "100 × 100 pixels", "4000 × 4000 pixels", "500 × 2000 pixels"], "correct": 0 },
+    { "q": "De quoi dépend aussi le taux de clic ?", "options": ["Du titre, du sujet et de l'emplacement", "Seulement de la couleur", "Du nom du monteur", "De rien"], "correct": 0 },
+    { "q": "Pourquoi tester en tout petit ?", "options": ["Beaucoup de spectateurs regardent sur téléphone", "Pour économiser de l'encre", "Ce n'est pas utile", "Pour réduire le poids"], "correct": 0 },
+    { "q": "Peut-on utiliser le visage d'une personne sans son accord ?", "options": ["Non", "Oui", "Oui, si elle est connue", "Oui, en petit"], "correct": 0 },
+    { "q": "Combien d'éléments principaux sur une miniature ?", "options": ["Trois au maximum", "Dix", "Vingt", "Aucun"], "correct": 0 },
+    { "q": "Quel fond choisir ?", "options": ["Simple, flou ou peu chargé", "Très chargé", "Identique au sujet", "Transparent"], "correct": 0 },
+    { "q": "Où doit regarder le visage ?", "options": ["Vers l'objet ou le texte", "Hors de l'image", "Vers le bas", "Peu importe"], "correct": 0 },
+    { "q": "Comment rendre le texte lisible ?", "options": ["Police grasse et contraste ou contour", "Police fine et pâle", "Texte très long", "Couleur identique au fond"], "correct": 0 },
+    { "q": "Pourquoi éviter les couleurs de l'interface de YouTube ?", "options": ["Pour se distinguer de la page", "C'est interdit", "Pour économiser", "Rien"], "correct": 0 },
+    { "q": "Que comprend l'identité d'une chaîne ?", "options": ["Couleurs, police, position et éléments récurrents", "Seulement le nom", "Rien", "Le prix des vidéos"], "correct": 0 },
+    { "q": "Qu'est-ce que Photopea ?", "options": ["Un éditeur d'images gratuit dans le navigateur", "Une banque d'images", "Un logiciel de montage audio", "Une plateforme vidéo"], "correct": 0 },
+    { "q": "Que faire après la sélection automatique du sujet ?", "options": ["Créer un masque et corriger les bords", "Exporter directement", "Supprimer le fond définitivement sans vérifier", "Rien"], "correct": 0 },
+    { "q": "Pourquoi ajouter un contour ou une ombre au sujet ?", "options": ["Le détacher du fond", "Le cacher", "Réduire le poids", "Rien"], "correct": 0 },
+    { "q": "Quelle retouche du visage est acceptable ?", "options": ["Légère : lumière, contraste, défaut passager", "Changer complètement le visage sans accord", "Ajouter de fausses blessures", "Aucune"], "correct": 0 },
+    { "q": "Combien de temps pour une miniature avec un bon modèle ?", "options": ["20 à 30 minutes", "5 heures", "2 jours", "1 minute"], "correct": 0 },
+    { "q": "Que propose Canva Pro selon l'offre ?", "options": ["Suppression d'arrière-plan en un clic et kit de marque", "Le montage audio", "La comptabilité", "Rien"], "correct": 0 },
+    { "q": "Que contient la fiche vidéo envoyée par le créateur ?", "options": ["Titre, moment fort, photos, idée de texte, date", "Son mot de passe", "Rien", "Ses revenus"], "correct": 0 },
+    { "q": "Pourquoi proposer 3 versions ?", "options": ["Pour tester et choisir la plus efficace", "Pour facturer sans raison", "C'est obligatoire", "Pour embrouiller"], "correct": 0 },
+    { "q": "Quel enseignement tirer si un gros plan de plat gagne ?", "options": ["Les plats très visuels fonctionnent seuls", "Il faut toujours supprimer le visage", "Rien", "Il faut arrêter les tests"], "correct": 0 },
+    { "q": "Combien de miniatures dans un portfolio ?", "options": ["12 à 20 de niches différentes", "Une seule", "Toutes celles réalisées", "200"], "correct": 0 },
+    { "q": "Avec qui s'associer pour trouver des clients ?", "options": ["Des monteurs vidéo", "Personne", "Des concurrents pour copier", "Des banques"], "correct": 0 },
+    { "q": "Quand se payer pour un forfait mensuel ?", "options": ["Au début du mois", "Un an après", "Jamais", "Après 10 vidéos"], "correct": 0 },
+    { "q": "Que doit refléter la miniature selon vos conditions ?", "options": ["Le contenu réel de la vidéo", "Ce qui fait cliquer, même faux", "Une autre vidéo", "Rien"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

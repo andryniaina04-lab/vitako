@@ -11,7 +11,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
-  ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 14, false),
+  ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 12, true),
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
@@ -14953,7 +14953,7 @@ Un illustrateur numérique **crée des images dessinées sur ordinateur ou table
 > **À livrer** : votre tableau des 10 illustrations et vos 3 croquis.', null)
   on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 0, 'Quel type d''image reste net à toutes les tailles ?', '["Vectoriel","Matriciel","Photo","JPEG"]'::jsonb, 0);
-insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 1, 'Que achète le client en général ?', '["Le logiciel","L''illustrateur lui-même","Rien","Des droits d''utilisation précisés par écrit"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 1, 'Qu''achète le client en général ?', '["L''illustrateur lui-même","Des droits d''utilisation précisés par écrit","Rien","Le logiciel"]'::jsonb, 1);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 2, 'Peut-on dessiner un personnage de dessin animé protégé pour un client ?', '["Oui","Oui, en changeant les couleurs","Oui, si c''est petit","Non"]'::jsonb, 3);
 insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 1, 'Les bases : formes, composition, couleur, lumière et personnages', 'Construction en formes simples et silhouette, point focal et règle des tiers, valeurs et harmonies, source de lumière et ombres, fiche personnage.', 'Ce module vous donne les bases de l''illustration : les formes et les proportions, la composition, la couleur, la lumière et l''ombre, et la façon de construire un personnage. Ce sont des compétences qui se travaillent chaque jour, quel que soit le logiciel.
 
@@ -16521,6 +16521,554 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel niveau de prix pour un détourage de cheveux ?', '["Simple","Gratuit","Complexe, sur devis","Le même qu''un fond uni"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que prévoir pour les grosses séries ?', '["Un acompte","Aucun paiement","Le paiement un an après","Le paiement en photos"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
+
+-- design-4-f
+delete from public.exam_questions where course_id = 'design-4-f';
+delete from public.module_questions where course_id = 'design-4-f';
+delete from public.lessons where course_id = 'design-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-f', 0, 'Le métier de créateur de miniatures YouTube depuis Madagascar', 'Rôle de la miniature, taux de clic, format, taille et zone de la durée, types de clients, honnêteté et droits, qualités et poste de travail.', 'Sur YouTube, la miniature est la première chose que voit un spectateur. Avec le titre, elle décide s''il clique ou s''il passe à la vidéo suivante. Les créateurs de vidéos, les marques et les médias paient donc des spécialistes pour concevoir des miniatures qui attirent l''œil, honnêtement. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer le rôle d''une miniature YouTube.
+> 2. Connaître les formats et contraintes techniques.
+> 3. Comprendre le taux de clic et ses limites.
+> 4. Respecter les règles d''honnêteté et de droits.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un créateur de miniatures YouTube **conçoit l''image d''aperçu d''une vidéo pour qu''elle soit lisible en petit, attire l''attention et donne envie de cliquer, tout en reflétant fidèlement le contenu de la vidéo**.
+
+## Le rôle de la miniature
+
+| Rôle | Explication |
+| --- | --- |
+| **Attirer l''œil** | Se distinguer parmi des dizaines de vidéos |
+| **Annoncer le sujet** | Faire comprendre en une seconde de quoi parle la vidéo |
+| **Créer la curiosité** | Donner envie d''en savoir plus |
+| **Construire une identité** | Le spectateur reconnaît la chaîne |
+| **Compléter le titre** | Miniature et titre racontent ensemble, sans se répéter |
+
+> [!definition] Taux de clic (CTR)
+> Le pourcentage de personnes qui cliquent sur la vidéo après avoir vu sa miniature. YouTube l''affiche dans les statistiques de la chaîne. Il dépend de la miniature, du titre, du sujet et de l''endroit où la vidéo est montrée.
+
+## Les contraintes techniques
+
+| Élément | Repère courant (à vérifier dans l''aide officielle de YouTube) |
+| --- | --- |
+| **Format** | 16:9 |
+| **Taille** | Souvent 1280 × 720 pixels |
+| **Poids** | Limité (souvent 2 Mo maximum) |
+| **Formats de fichier** | JPG, PNG |
+| **Affichage** | Très petit sur téléphone, plus grand sur télévision |
+| **Zone masquée** | La durée de la vidéo s''affiche en bas à droite : n''y mettez rien d''important |
+
+> [!astuce]
+> Vérifiez toujours votre miniature **en tout petit** (comme sur un téléphone). Si on ne comprend pas l''image ou si on ne lit pas le texte à cette taille, elle ne fonctionnera pas.
+
+## Les types de clients
+
+| Client | Besoins |
+| --- | --- |
+| **Créateurs YouTube** | Miniatures régulières, identité de chaîne, tests |
+| **Marques et entreprises** | Vidéos de produits, tutoriels, témoignages |
+| **Médias** | Reportages, interviews, actualités |
+| **Formateurs** | Cours, tutoriels, webinaires |
+| **Agences de contenu** | Volume régulier pour plusieurs chaînes |
+
+> [!madagascar] Votre avantage
+> Les chaînes YouTube francophones (Afrique, France, Canada) et malgaches se multiplient : cuisine, voyage, éducation, technologie, musique. Beaucoup de créateurs n''ont ni le temps ni les compétences pour faire de bonnes miniatures. Vous pouvez leur proposer un service régulier, en français et en malgache.
+
+## Honnêteté et droits
+
+| Règle | Pourquoi |
+| --- | --- |
+| **La miniature reflète la vidéo** | Une miniature trompeuse déçoit le spectateur, qui quitte la vidéo ; YouTube interdit les miniatures trompeuses |
+| **Pas d''images choquantes ou interdites** | Règles de la communauté de YouTube |
+| **Images avec licence** | Photos libres de droits, photos de la vidéo ou photos fournies par le client |
+| **Pas de logos ou personnages protégés** sans autorisation | Droits des marques et des auteurs |
+| **Visages de personnes** | Seulement avec leur accord (souvent le créateur lui-même) |
+
+> [!attention]
+> Le « piège à clics » (une miniature qui promet ce que la vidéo ne montre pas) fait perdre la **confiance** des spectateurs et peut nuire à la chaîne. La bonne miniature crée de la curiosité **honnête** : elle montre le meilleur de ce que la vidéo contient vraiment.
+
+## Les qualités du créateur de miniatures
+
+1. **Le sens visuel** : contraste, couleur, composition.
+2. **La compréhension du public** : ce qui fait cliquer dans une niche.
+3. **La rapidité** : souvent plusieurs miniatures par semaine.
+4. **La régularité** : garder l''identité de la chaîne.
+5. **La curiosité** : analyser ce qui marche sur YouTube.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Navigateur récent, écran correct |
+| **Logiciels gratuits** | Canva (modèles, textes), Photopea (détourage, retouche, dans le navigateur) |
+| **Téléphone** | Pour vérifier l''affichage réel |
+| **Polices** | Polices très lisibles, avec licence commerciale |
+| **Banque d''images** | Photos libres de droits pour usage commercial |
+
+> [!retenir]
+> - La miniature attire, annonce, crée la curiosité et construit l''identité.
+> - 16:9, souvent 1280 × 720, poids limité, lisible en tout petit.
+> - Le taux de clic dépend aussi du titre, du sujet et de l''emplacement.
+> - Honnêteté : la miniature reflète la vidéo ; images avec licence.
+> - Canva et Photopea pour commencer.
+
+## Exercice pratique : analyser des miniatures
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez 3 chaînes YouTube de niches différentes (dont une chaîne malgache ou africaine).
+> 2. Analysez 5 miniatures de chacune : visage, texte, couleurs, lisibilité en petit.
+> 3. Notez les éléments qui reviennent (identité de la chaîne).
+> 4. Choisissez la meilleure et la moins bonne miniature, et expliquez pourquoi.
+>
+> **À livrer** : votre grille d''analyse des 15 miniatures et votre comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 0, 0, 'Qu''est-ce que le taux de clic ?', '["Le nombre de commentaires","La part des personnes qui cliquent après avoir vu la miniature","Le nombre d''abonnés","La durée de la vidéo"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 0, 1, 'Quel format a une miniature YouTube ?', '["4:3","1:1","9:16","16:9"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 0, 2, 'Qu''est-ce qu''une bonne miniature ?', '["Une capture floue","Un piège à clics","Une miniature qui crée une curiosité honnête","Une image sans rapport avec la vidéo"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-f', 1, 'Les bases : idée, composition, visages, texte, couleurs et identité', 'Moment fort et complément du titre, sujet principal et contraste, visages et émotions fidèles, texte de 2 à 4 mots, couleurs saturées et identité de chaîne.', 'Ce module vous donne les bases d''une miniature efficace : une idée claire, une composition simple, des visages expressifs, un texte court et lisible, des couleurs contrastées et une identité de chaîne.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Trouver l''idée principale d''une miniature.
+> 2. Composer une miniature lisible en petit.
+> 3. Utiliser les visages et les émotions avec justesse.
+> 4. Choisir un texte court, des polices et des couleurs efficaces.
+> 5. Créer une identité visuelle pour une chaîne.
+
+## Trouver l''idée
+
+| Question | Exemple : vidéo « Je cuisine le romazava de ma grand-mère » |
+| --- | --- |
+| Quel est le **moment le plus fort** de la vidéo ? | Le plat fini, fumant, avec la grand-mère qui sourit |
+| Quelle **émotion** le spectateur doit ressentir ? | L''envie, la chaleur familiale |
+| Que dit le **titre** ? | « Le romazava de ma grand-mère » |
+| Que doit ajouter la **miniature** ? | L''image du plat et l''émotion, pas la répétition du titre |
+
+> [!astuce]
+> Miniature et titre doivent se **compléter**. Si le titre dit « Le romazava de ma grand-mère », la miniature n''a pas besoin de répéter ces mots : elle peut montrer le plat et un texte court comme « Le secret ? ».
+
+## La composition
+
+| Règle | Explication |
+| --- | --- |
+| **Un seul sujet principal** | Trois éléments au maximum |
+| **Grand et proche** | Le sujet occupe une grande partie de l''image |
+| **Fond simple** | Flou, uni ou peu chargé |
+| **Contraste fort** | Le sujet se détache du fond |
+| **Règle des tiers** | Visage d''un côté, texte ou objet de l''autre |
+| **Zone de la durée libre** | Rien d''important en bas à droite |
+
+## Les visages et les émotions
+
+| Conseil | Pourquoi |
+| --- | --- |
+| **Visage grand et net** | Les visages attirent fortement le regard |
+| **Émotion claire** | Surprise, joie, curiosité, concentration |
+| **Regard** vers l''objet ou le texte | Il guide l''œil du spectateur |
+| **Émotion fidèle à la vidéo** | Pas de faux choc pour une vidéo calme |
+| **Détourage propre** | Contour net, avec un léger contour ou une ombre pour séparer du fond |
+
+> [!attention]
+> Les expressions exagérées sont à la mode dans certaines niches, mais pas partout. Une chaîne de formation ou de finance sérieuse sera plus crédible avec une expression **naturelle et confiante**. Adaptez-vous à la niche et à la personnalité du créateur.
+
+## Le texte
+
+| Règle | Exemple |
+| --- | --- |
+| **Très court** | 2 à 4 mots |
+| **Gros et épais** | Police grasse, très lisible |
+| **Contraste** | Texte clair sur fond foncé, ou contour autour des lettres |
+| **Complète le titre** | « 5 000 Ar seulement ? » plutôt que de répéter le titre |
+| **Langue du public** | Français, malgache, ou mélange selon la chaîne |
+
+## Les couleurs
+
+| Conseil | Pourquoi |
+| --- | --- |
+| **Couleurs saturées** pour le sujet | Elles attirent l''œil |
+| **Couleurs différentes de l''interface de YouTube** | Se distinguer du fond blanc, noir ou gris de la page |
+| **Couleurs complémentaires** | Fort contraste (bleu et orange, violet et jaune) |
+| **2 ou 3 couleurs dominantes** | Lisibilité et identité |
+
+> [!definition] Saturation
+> L''intensité d''une couleur. Une couleur saturée est vive ; une couleur désaturée tire vers le gris. Une légère augmentation de la saturation et du contraste rend souvent une miniature plus visible, sans exagérer.
+
+## L''identité de la chaîne
+
+| Élément | Exemple pour une chaîne de cuisine malgache |
+| --- | --- |
+| **Couleurs** | Orange et vert, couleurs des épices et des feuilles |
+| **Police** | Une seule police grasse, toujours la même |
+| **Position** | Visage à droite, plat à gauche, texte en haut |
+| **Élément récurrent** | Petit logo ou bandeau discret |
+| **Style des photos** | Lumière chaude, gros plans sur les plats |
+
+> [!madagascar]
+> Pour une chaîne malgache, intégrez des éléments **visuels locaux** (motifs lamba, couleurs de la terre rouge, plats, paysages) dans l''identité, sans surcharger. Le public local et la diaspora se reconnaissent immédiatement.
+
+> [!retenir]
+> - Une idée : le moment fort et l''émotion, en complément du titre.
+> - Un sujet principal, grand, sur un fond simple, avec un fort contraste.
+> - Des visages nets et des émotions fidèles à la vidéo et à la niche.
+> - Un texte de 2 à 4 mots, gros, contrasté.
+> - Des couleurs vives et une identité de chaîne constante.
+
+## Exercice pratique : vos premières maquettes
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez 3 vidéos réelles (ou imaginez 3 vidéos pour une chaîne de votre choix).
+> 2. Pour chacune, notez le moment fort, l''émotion et un texte de 2 à 4 mots.
+> 3. Dessinez 3 croquis de composition rapides par vidéo.
+> 4. Définissez l''identité de la chaîne (couleurs, police, position).
+>
+> **À livrer** : vos idées, vos 9 croquis et la fiche d''identité de la chaîne.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 1, 0, 'Combien de mots de texte sur une miniature ?', '["Le titre entier","2 à 4","15","Aucun jamais"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 1, 1, 'Que doit faire la miniature par rapport au titre ?', '["Le contredire","Le répéter mot pour mot","L''ignorer","Le compléter sans le répéter"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 1, 2, 'Quelle expression pour une chaîne de finance sérieuse ?', '["Aucune","Naturelle et confiante","Très exagérée","Effrayée"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-f', 2, 'Les outils : Photopea, Canva et outils payants', 'Images sources et photos dédiées, détourage et masque dans Photopea, assemblage par calques, modèle Canva, export et vérification en petit, Photoshop et Canva Pro.', 'Ce module vous fait prendre en main les outils du créateur de miniatures : **Canva** pour les modèles et les textes, **Photopea** pour le détourage et la retouche, gratuitement dans le navigateur. Vous découvrirez aussi les outils payants les plus utilisés : **Adobe Photoshop** et **Canva Pro**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer les images sources : captures de la vidéo, photos.
+> 2. Détourer un visage ou un objet dans Photopea.
+> 3. Assembler et retoucher une miniature.
+> 4. Créer un modèle réutilisable dans Canva.
+> 5. Comprendre ce qu''apportent Photoshop et Canva Pro.
+
+## Les images sources
+
+| Source | Conseil |
+| --- | --- |
+| **Captures de la vidéo** | Choisir une image nette, sans flou de mouvement |
+| **Photo dédiée** | La meilleure option : le créateur pose pour la miniature, avec une bonne lumière |
+| **Photos du client** | Haute résolution, avec droits |
+| **Banques d''images** | Licence pour usage commercial |
+| **Icônes et éléments graphiques** | Licence vérifiée |
+
+> [!astuce]
+> Proposez au créateur de prendre **3 ou 4 photos dédiées** à chaque tournage (expressions différentes, bonne lumière, fond simple). C''est la meilleure façon d''obtenir des miniatures de qualité.
+
+## Photopea : détourer et retoucher
+
+> [!definition] Photopea
+> Un éditeur d''images gratuit qui fonctionne dans le navigateur, très proche de Photoshop dans son interface. Il ouvre aussi les fichiers PSD.
+
+| Fonction | Usage |
+| --- | --- |
+| **Sélection du sujet** | Détourer automatiquement une personne ou un objet |
+| **Masque de calque** | Affiner le détourage sans effacer définitivement |
+| **Pinceau sur le masque** | Corriger les cheveux, les bords |
+| **Réglages** (niveaux, courbes, saturation) | Éclaircir, renforcer le contraste |
+| **Styles de calque** (contour, ombre portée) | Séparer le sujet du fond |
+| **Correcteur** | Retirer une petite imperfection |
+
+### La méthode de détourage
+
+1. **Sélection automatique** du sujet.
+2. **Masque de calque** à partir de la sélection.
+3. **Correction** des bords au pinceau, en zoomant.
+4. **Contour** blanc ou ombre légère pour détacher le sujet.
+5. **Vérification** sur fond clair et sur fond foncé.
+
+## Assembler la miniature
+
+| Calque (de bas en haut) | Contenu |
+| --- | --- |
+| **Fond** | Image floutée, couleur unie ou dégradé |
+| **Objet principal** | Plat, produit, lieu |
+| **Personne détourée** | Visage expressif |
+| **Effets** | Contour, ombre, lumière |
+| **Texte** | 2 à 4 mots, avec contour ou ombre |
+| **Éléments légers** | Flèche, cercle, logo discret (sans surcharger) |
+
+> [!attention]
+> Une retouche du visage doit rester **légère** : ajuster la lumière, le contraste, retirer un défaut passager. Ne transformez pas le visage d''une personne sans son accord, et ne trompez pas sur le contenu de la vidéo.
+
+## Canva : les modèles réutilisables
+
+| Élément du modèle | Rôle |
+| --- | --- |
+| **Format 1280 × 720** | Toujours la bonne taille |
+| **Emplacement du visage** | Même position à chaque fois |
+| **Zone de texte** avec la police et le style de la chaîne | Texte à changer en quelques secondes |
+| **Couleurs de la chaîne** | Enregistrées dans le modèle |
+| **Logo discret** | Toujours au même endroit |
+
+> [!astuce]
+> Avec un bon modèle, une nouvelle miniature se fait en **20 à 30 minutes** : vous changez la photo, le texte et un élément, l''identité reste la même.
+
+## Export et vérification
+
+1. **Exportez** en JPG ou PNG à 1280 × 720, sous la limite de poids.
+2. **Vérifiez** en tout petit sur un téléphone.
+3. **Comparez** avec les miniatures concurrentes dans les résultats de recherche (en faisant une capture et en plaçant la vôtre à côté).
+4. **Vérifiez** que rien d''important n''est sous la durée en bas à droite.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Adobe Photoshop** | Détourage et retouche les plus précis, effets avancés, actions ; standard des professionnels |
+| **Canva Pro** | Suppression d''arrière-plan en un clic, kit de marque, plus d''éléments et de polices, redimensionnement, selon l''offre |
+
+> [!madagascar]
+> Photoshop et Canva Pro se paient par abonnement en dollars, par carte bancaire internationale. Photopea et Canva gratuit suffisent pour débuter et pour vos premiers clients. Investissez quand vos revenus le permettent, et vérifiez les prix sur les sites officiels.
+
+> [!retenir]
+> - Des images sources nettes ; idéalement des photos dédiées.
+> - Photopea : sélection du sujet, masque, correction des bords, contour.
+> - Assembler par calques : fond, objet, personne, effets, texte.
+> - Un modèle Canva par chaîne pour aller vite.
+> - Vérifier en petit et à côté des concurrents ; Photoshop et Canva Pro plus tard.
+
+## Exercice pratique : vos premières miniatures
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Prenez 4 photos de vous (ou d''un proche qui accepte) avec des expressions différentes.
+> 2. Détourez-les dans Photopea avec la méthode en 5 étapes.
+> 3. Créez le modèle Canva de votre chaîne fictive.
+> 4. Réalisez 3 miniatures finales et vérifiez-les en petit à côté de miniatures concurrentes.
+>
+> **À livrer** : vos détourages, votre modèle, vos 3 miniatures et vos captures de comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 2, 0, 'Quelle est la meilleure source d''image ?', '["Une image trouvée au hasard","Le logo d''une autre chaîne","Une capture floue","Une photo dédiée prise pendant le tournage"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 2, 1, 'Pourquoi utiliser un masque de calque ?', '["Affiner le détourage sans effacer définitivement","Exporter","Rien","Changer la langue"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 2, 2, 'Où ne rien mettre d''important ?', '["Au centre","En bas à droite, sous la durée","En haut à gauche","Nulle part"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-f', 3, 'Premier projet : un mois pour Sakafo Gasy avec Lova', 'Analyse de la chaîne et de la concurrence, identité et modèle, fiche vidéo, 3 versions par vidéo, calendrier hebdomadaire et suivi prudent des résultats.', 'Dans ce module, vous travaillez pour une chaîne YouTube pendant un mois, comme le ferait un créateur de miniatures indépendant. Vous apprendrez à comprendre la chaîne, à proposer plusieurs versions, à organiser la production hebdomadaire et à suivre les résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Analyser une chaîne et sa concurrence.
+> 2. Recueillir les informations de chaque vidéo.
+> 3. Proposer plusieurs versions d''une miniature.
+> 4. Organiser une production régulière.
+> 5. Suivre les résultats et améliorer.
+
+## Le cas pratique : « Sakafo Gasy avec Lova »
+
+> [!exemple] Votre client
+> **Sakafo Gasy avec Lova** est une chaîne YouTube de cuisine malgache, en français et en malgache, suivie par des Malagasy de l''île et de la diaspora. Lova publie une vidéo chaque samedi. Ses miniatures actuelles sont des captures floues, sans texte, toutes différentes. Elle vous confie ses miniatures pour un mois, avec l''objectif d''améliorer le taux de clic.
+
+## Étape 1 : analyser la chaîne et la concurrence
+
+| Analyse | Constat |
+| --- | --- |
+| **Miniatures actuelles** | Captures floues, plats petits, aucune identité |
+| **Statistiques** (partagées par Lova) | Taux de clic plutôt faible par rapport à ses autres chaînes de référence |
+| **Concurrents** | Chaînes de cuisine africaine et réunionnaise : gros plans de plats, visage souriant, texte court |
+| **Public** | Diaspora nostalgique, jeunes qui apprennent à cuisiner |
+
+> [!astuce]
+> Faites une **capture des résultats de recherche** (« romazava », « cuisine malgache ») et placez-y vos maquettes : vous verrez immédiatement si votre miniature se distingue ou se perd parmi les autres.
+
+## Étape 2 : l''identité et le modèle
+
+| Élément | Décision |
+| --- | --- |
+| Couleurs | Orange chaud et vert feuille |
+| Police | Police grasse arrondie, texte blanc avec contour sombre |
+| Composition | Plat en gros plan à gauche, Lova à droite, texte en haut à gauche |
+| Photos | Photo dédiée de Lova et du plat fini à chaque tournage |
+
+## Étape 3 : les informations de chaque vidéo
+
+### La fiche vidéo (envoyée par Lova le mercredi)
+
+| Information | Exemple |
+| --- | --- |
+| Titre prévu | Le vrai ravitoto de ma mère (recette facile) |
+| Moment fort | Le plat fini avec le riz fumant |
+| Photos dédiées | 4 photos de Lova + 3 photos du plat |
+| Idée de texte | « Comme à la maison » |
+| Date de publication | Samedi 9 h, heure de Paris |
+
+## Étape 4 : proposer plusieurs versions
+
+| Version | Différence |
+| --- | --- |
+| **A** | Lova souriante + plat + « Comme à la maison » |
+| **B** | Gros plan du plat seul + « Le vrai ravitoto » |
+| **C** | Lova qui goûte, yeux fermés + « Ce goût… » |
+
+> [!definition] Test de miniatures
+> YouTube propose une fonction (selon la disponibilité sur la chaîne) pour tester plusieurs miniatures d''une même vidéo et garder celle qui retient le plus les spectateurs. À défaut, on compare les résultats d''une vidéo à l''autre.
+
+### Le calendrier hebdomadaire
+
+| Jour | Tâche |
+| --- | --- |
+| **Mercredi** | Réception de la fiche vidéo et des photos |
+| **Jeudi** | 3 versions envoyées |
+| **Vendredi** | Choix de Lova, corrections, fichier final |
+| **Samedi** | Publication par Lova ; test lancé si disponible |
+| **Samedi suivant** | Lecture des résultats de la semaine précédente |
+
+> [!madagascar]
+> Lova publie à 9 h, heure de Paris, pour la diaspora. Livrez **la veille** : une coupure d''électricité ou de connexion le samedi matin ne doit jamais retarder la publication.
+
+## Étape 5 : suivre et améliorer
+
+| Vidéo | Taux de clic | Version gagnante | Enseignement |
+| --- | --- | --- | --- |
+| Ravitoto | En hausse | C (Lova qui goûte) | L''émotion du goût fonctionne |
+| Mofo gasy | En hausse | B (gros plan) | Les plats très visuels fonctionnent seuls |
+| Akoho sy voanio | Stable | A | À retester avec un plan plus serré |
+
+> [!attention]
+> Le taux de clic varie selon le sujet, le titre, la saison et l''endroit où YouTube montre la vidéo. Comparez avec **prudence**, sur plusieurs vidéos, et présentez des tendances plutôt que des promesses.
+
+> [!retenir]
+> - Analyser la chaîne, ses statistiques, son public et ses concurrents.
+> - Une identité et un modèle validés.
+> - Une fiche vidéo chaque semaine et des photos dédiées.
+> - 3 versions, un calendrier fixe, une livraison la veille.
+> - Suivre les résultats et en tirer des enseignements prudents.
+
+## Exercice pratique : un mois pour une chaîne
+
+> [!exercice] Exercice pratique · 7 heures (sur plusieurs jours)
+> 1. Choisissez une chaîne réelle (petite chaîne d''un proche, ou la vôtre) ou fictive.
+> 2. Faites l''analyse et définissez l''identité et le modèle.
+> 3. Réalisez 3 versions pour 4 vidéos (12 miniatures).
+> 4. Placez-les dans des captures de résultats de recherche et choisissez les meilleures.
+> 5. Rédigez un bilan avec vos enseignements.
+>
+> **À livrer** : votre analyse, votre modèle, vos 12 miniatures, vos comparaisons et votre bilan. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 3, 0, 'Comment vérifier qu''une miniature se distingue ?', '["La placer dans une capture des résultats de recherche","Demander à un ami au hasard","La regarder en grand seulement","Ne pas vérifier"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 3, 1, 'Quand livrer pour une publication le samedi matin ?', '["Le dimanche","La veille","Le samedi à midi","Le mois suivant"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 3, 2, 'Comment présenter les résultats du taux de clic ?', '["Comme des promesses","Sans chiffres","En inventant","Comme des tendances, avec prudence"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio varié et honnête, 5 canaux, prix par miniature et forfait mensuel, conditions en 7 points, paiements et évolution.', 'Les créateurs YouTube publient souvent chaque semaine et ont besoin d''un créateur de miniatures fiable. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de miniatures convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix à la miniature ou au forfait.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **12 à 20 miniatures** de niches différentes (cuisine, éducation, technologie, voyage).
+2. **Des avant et après** : une miniature existante refaite par vous (en précisant qu''il s''agit d''un exercice).
+3. **Une série** pour une même chaîne, avec une identité cohérente.
+4. **Des mises en situation** : vos miniatures dans une capture de résultats de recherche.
+5. **Une page simple** ou un profil sur une plateforme.
+
+> [!attention]
+> Si vous refaites la miniature d''une chaîne réelle pour votre portfolio, indiquez clairement que c''est un **exercice non commandé**, et ne prétendez pas avoir travaillé pour elle.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Petites et moyennes chaînes francophones** | Repérez les chaînes actives avec des miniatures faibles ; proposez une refonte gratuite d''une miniature |
+| 2 | **Chaînes malgaches et de la diaspora** | Cuisine, musique, éducation, vlog : service en français et en malgache |
+| 3 | **Monteurs vidéo** | Ils cherchent souvent un partenaire pour les miniatures |
+| 4 | **Agences de contenu et marques** | Volume régulier |
+| 5 | **Plateformes de freelance et communautés de créateurs** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un créateur
+> « Bonjour, j''aime beaucoup vos vidéos de cuisine. Je crée des miniatures YouTube. Pour vous montrer ce que je peux apporter, j''ai refait gratuitement la miniature de votre dernière vidéo : je vous l''envoie à côté de l''actuelle, dans une capture des résultats de recherche. Si elle vous plaît, vous pouvez l''utiliser librement. »
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Une miniature** | 1 version, 1 série de corrections | 25 000 Ar |
+| **Miniature avec 3 versions** | Pour tester | 50 000 Ar |
+| **Forfait mensuel** | 4 vidéos, 2 versions chacune | 150 000 Ar par mois |
+| **Identité de chaîne** | Modèle, couleurs, police, bannière | 200 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Le **forfait mensuel** est le plus intéressant pour vous et pour le créateur : revenus réguliers pour vous, identité constante et délais fiables pour lui.
+
+## Vos conditions
+
+1. **Le nombre de versions** et de corrections incluses.
+2. **Le calendrier** : quand le client envoie les informations, quand vous livrez.
+3. **Les images** : fournies par le client ou sous licence ; pas d''images protégées.
+4. **L''honnêteté** : la miniature reflète la vidéo.
+5. **Les fichiers livrés** : JPG ou PNG, et fichier de travail si prévu.
+6. **Le portfolio** : droit de montrer les miniatures publiées.
+7. **Le paiement** : forfait payé au début du mois.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Stratège de « packaging »** | Conseiller sur les titres et les miniatures ensemble |
+| **Graphiste de chaîne** | Bannières, écrans de fin, visuels de réseaux (voir la formation Graphiste) |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Retoucheur photo** | Voir la formation Retoucheur photo |
+| **Gestionnaire de chaîne YouTube** | Publication, statistiques, stratégie |
+
+> [!retenir]
+> - Un portfolio varié, avec des avant et après présentés honnêtement.
+> - Chaînes francophones, chaînes malgaches, monteurs, agences, plateformes.
+> - Des prix par miniature, avec versions, et un forfait mensuel.
+> - Des conditions claires : versions, calendrier, images, honnêteté, paiement.
+> - Évoluez vers la stratégie, le graphisme de chaîne ou le montage.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Publiez votre portfolio avec 12 miniatures et 2 avant et après.
+> 2. Calculez vos prix à partir de votre temps par miniature.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 propositions avec une miniature refaite.
+>
+> **À livrer** : le lien de votre portfolio, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 4, 0, 'Comment présenter une miniature refaite d''une chaîne réelle non cliente ?', '["Comme un exercice non commandé","Sans rien dire","Comme une commande","Avec un faux témoignage"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 4, 1, 'Quelle formule est la plus intéressante pour les deux parties ?', '["Un travail gratuit permanent","Une miniature isolée","Aucune","Le forfait mensuel"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-f', 4, 2, 'Quel premier contact proposer à un créateur ?', '["Sa dernière miniature refaite gratuitement","Rien","Une critique publique","Un prix sans exemple"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que fait un créateur de miniatures ?', '["Il écrit le script","Il gère les commentaires","Il conçoit l''image d''aperçu d''une vidéo","Il monte la vidéo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quelle taille de miniature est courante ?', '["500 × 2000 pixels","100 × 100 pixels","1280 × 720 pixels","4000 × 4000 pixels"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'De quoi dépend aussi le taux de clic ?', '["Du titre, du sujet et de l''emplacement","Du nom du monteur","De rien","Seulement de la couleur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Pourquoi tester en tout petit ?', '["Ce n''est pas utile","Pour économiser de l''encre","Beaucoup de spectateurs regardent sur téléphone","Pour réduire le poids"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Peut-on utiliser le visage d''une personne sans son accord ?', '["Oui, si elle est connue","Oui, en petit","Non","Oui"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Combien d''éléments principaux sur une miniature ?', '["Dix","Vingt","Trois au maximum","Aucun"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quel fond choisir ?', '["Très chargé","Identique au sujet","Simple, flou ou peu chargé","Transparent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Où doit regarder le visage ?', '["Vers l''objet ou le texte","Vers le bas","Hors de l''image","Peu importe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Comment rendre le texte lisible ?', '["Police grasse et contraste ou contour","Police fine et pâle","Couleur identique au fond","Texte très long"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Pourquoi éviter les couleurs de l''interface de YouTube ?', '["C''est interdit","Pour économiser","Rien","Pour se distinguer de la page"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que comprend l''identité d''une chaîne ?', '["Le prix des vidéos","Rien","Couleurs, police, position et éléments récurrents","Seulement le nom"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Qu''est-ce que Photopea ?', '["Une plateforme vidéo","Un logiciel de montage audio","Un éditeur d''images gratuit dans le navigateur","Une banque d''images"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que faire après la sélection automatique du sujet ?', '["Exporter directement","Rien","Créer un masque et corriger les bords","Supprimer le fond définitivement sans vérifier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Pourquoi ajouter un contour ou une ombre au sujet ?', '["Réduire le poids","Le détacher du fond","Le cacher","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quelle retouche du visage est acceptable ?', '["Changer complètement le visage sans accord","Aucune","Ajouter de fausses blessures","Légère : lumière, contraste, défaut passager"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Combien de temps pour une miniature avec un bon modèle ?', '["1 minute","2 jours","5 heures","20 à 30 minutes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que propose Canva Pro selon l''offre ?', '["La comptabilité","Suppression d''arrière-plan en un clic et kit de marque","Le montage audio","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que contient la fiche vidéo envoyée par le créateur ?', '["Son mot de passe","Ses revenus","Rien","Titre, moment fort, photos, idée de texte, date"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Pourquoi proposer 3 versions ?', '["Pour tester et choisir la plus efficace","Pour facturer sans raison","Pour embrouiller","C''est obligatoire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quel enseignement tirer si un gros plan de plat gagne ?', '["Les plats très visuels fonctionnent seuls","Il faut arrêter les tests","Rien","Il faut toujours supprimer le visage"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Combien de miniatures dans un portfolio ?', '["12 à 20 de niches différentes","200","Toutes celles réalisées","Une seule"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Avec qui s''associer pour trouver des clients ?', '["Des banques","Des concurrents pour copier","Des monteurs vidéo","Personne"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quand se payer pour un forfait mensuel ?', '["Jamais","Un an après","Au début du mois","Après 10 vidéos"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Que doit refléter la miniature selon vos conditions ?', '["Rien","Ce qui fait cliquer, même faux","Le contenu réel de la vidéo","Une autre vidéo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Mobile Money ou virement","Uniquement des chèques étrangers","Aucun"]'::jsonb, 1);
 
 -- dev-0-a
 delete from public.exam_questions where course_id = 'dev-0-a';

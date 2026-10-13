@@ -18,7 +18,7 @@
       "video_url": "",
       "questions": [
         { "q": "Quel type d'image reste net à toutes les tailles ?", "options": ["Vectoriel", "Matriciel", "JPEG", "Photo"], "correct": 0 },
-        { "q": "Que achète le client en général ?", "options": ["Des droits d'utilisation précisés par écrit", "L'illustrateur lui-même", "Rien", "Le logiciel"], "correct": 0 },
+        { "q": "Qu'achète le client en général ?", "options": ["Des droits d'utilisation précisés par écrit", "L'illustrateur lui-même", "Rien", "Le logiciel"], "correct": 0 },
         { "q": "Peut-on dessiner un personnage de dessin animé protégé pour un client ?", "options": ["Non", "Oui", "Oui, en changeant les couleurs", "Oui, si c'est petit"], "correct": 0 }
       ]
     },
