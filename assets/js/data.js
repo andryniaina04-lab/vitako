@@ -3688,6 +3688,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-6-f": {
+  "hours": 8,
+  "description": "Présenter son travail, animer une réunion ou passer un entretien en visio demande de parler avec assurance devant une caméra. Cette formation pratique, en 5 modules, aide à le faire sans stress : comprendre et canaliser le trac, mots, voix et corps, particularités de la visio, méthode PREP, présentation en 3 parties, débit, articulation et pauses, regard caméra, Google Meet et Zoom, diapositives simples, entraînement avec le téléphone, respiration 4-6, cas pratique d'un bilan client et d'une réunion d'équipe, plan d'entraînement progressif. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Comprendre et canaliser le trac",
+   "Structurer ses interventions avec PREP et un plan en 3 parties",
+   "Maîtriser sa voix, son regard et sa posture en visio",
+   "Utiliser Google Meet, Zoom et des diapositives simples",
+   "Gérer les imprévus techniques et les questions difficiles",
+   "Animer une réunion et progresser avec un plan d'entraînement"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre la prise de parole et le trac",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : structure, voix et corps",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : Google Meet, Zoom, diapositives et gestion du trac",
+    "minutes": 4
+   },
+   {
+    "title": "Mise en situation : le bilan d'Ony",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : s'entraîner et progresser",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

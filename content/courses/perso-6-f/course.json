@@ -1,0 +1,92 @@
+{
+  "id": "perso-6-f",
+  "hours": 8,
+  "description": "Présenter son travail, animer une réunion ou passer un entretien en visio demande de parler avec assurance devant une caméra. Cette formation pratique, en 5 modules, aide à le faire sans stress : comprendre et canaliser le trac, mots, voix et corps, particularités de la visio, méthode PREP, présentation en 3 parties, débit, articulation et pauses, regard caméra, Google Meet et Zoom, diapositives simples, entraînement avec le téléphone, respiration 4-6, cas pratique d'un bilan client et d'une réunion d'équipe, plan d'entraînement progressif. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Comprendre et canaliser le trac",
+    "Structurer ses interventions avec PREP et un plan en 3 parties",
+    "Maîtriser sa voix, son regard et sa posture en visio",
+    "Utiliser Google Meet, Zoom et des diapositives simples",
+    "Gérer les imprévus techniques et les questions difficiles",
+    "Animer une réunion et progresser avec un plan d'entraînement"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre la prise de parole et le trac",
+      "summary": "Signes et rôle du trac, les 3 canaux : mots, voix et corps, particularités de la visioconférence, accent et clarté, auto-évaluation enregistrée.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire du trac ?", "options": ["Le canaliser : il donne de l'énergie", "Le faire disparaître totalement", "Annuler toutes les réunions", "L'ignorer"], "correct": 0 },
+        { "q": "Où regarder quand on parle en visio ?", "options": ["La caméra", "Ses notes", "Le plafond", "Son propre visage à l'écran"], "correct": 0 },
+        { "q": "Qu'est-ce qui compte le plus avec un accent ?", "options": ["La clarté : articuler et faire des pauses", "Le cacher", "Parler très vite", "Ne pas parler"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : structure, voix et corps",
+      "summary": "Méthode PREP, présentation en 3 parties et règle de 3, ouverture efficace, débit, articulation, pauses et volume, regard, cadrage, posture et mots clés.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie PREP ?", "options": ["Point, Raison, Exemple, Point", "Prix, Remise, Envoi, Paiement", "Préparer, Répéter, Écrire, Partir", "Rien"], "correct": 0 },
+        { "q": "Combien de points dans le développement ?", "options": ["3 maximum", "10", "1 seul toujours", "Aucun"], "correct": 0 },
+        { "q": "Pourquoi éviter de lire un texte mot à mot ?", "options": ["La voix devient monotone et le regard quitte la caméra", "C'est interdit", "Le texte est trop court", "Pour aller plus vite"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Meet, Zoom, diapositives et gestion du trac",
+      "summary": "Partage d'une fenêtre, arrière-plan, sous-titres, enregistrement avec accord, diapositives simples, entraînement avec le téléphone, respiration 4-6 et réponse aux questions difficiles.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi partager une seule fenêtre ?", "options": ["Pour ne pas montrer ses messages personnels", "Pour aller plus vite", "C'est obligatoire", "Pour cacher la présentation"], "correct": 0 },
+        { "q": "Quelle taille de police minimum sur les diapositives ?", "options": ["24 points", "8 points", "100 points", "Peu importe"], "correct": 0 },
+        { "q": "Qu'est-ce que la respiration 4-6 ?", "options": ["Inspirer sur 4 temps, expirer sur 6", "Respirer 4 fois en 6 heures", "Retenir son souffle", "Parler en respirant vite"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : le bilan d'Ony",
+      "summary": "Bilan mensuel en visio à un client de Montréal : préparation, coupure de connexion, question difficile avec PREP, réunion d'équipe avec ordre du jour et compte rendu.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait Ony quand la connexion coupe ?", "options": ["Elle passe au partage de connexion et prévient dans le chat", "Elle abandonne la réunion", "Elle ne dit rien", "Elle reporte d'une semaine"], "correct": 0 },
+        { "q": "Comment annoncer une mauvaise nouvelle ?", "options": ["Reconnaître, expliquer avec des faits, proposer", "La cacher", "Accuser l'équipe", "La minimiser"], "correct": 0 },
+        { "q": "Quand envoyer le compte rendu de réunion ?", "options": ["Dans l'heure qui suit", "Un mois après", "Jamais", "Avant la réunion"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : s'entraîner et progresser",
+      "summary": "Plan progressif sur 4 semaines, occasions de parler en public, tradition du kabary, questions pour obtenir des retours utiles, mesure des progrès.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment progresser à l'oral ?", "options": ["Parler souvent, avec des défis de plus en plus grands", "Attendre d'être prêt", "Éviter les réunions", "Lire des livres seulement"], "correct": 0 },
+        { "q": "Combien d'améliorations travailler à la fois ?", "options": ["Une", "Dix", "Aucune", "Toutes"], "correct": 0 },
+        { "q": "Comment mesurer ses progrès ?", "options": ["Refaire l'enregistrement et utiliser la même grille", "Se fier à son humeur", "Compter ses abonnés", "On ne peut pas"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Le trac est-il normal ?", "options": ["Oui, presque tous les orateurs en ressentent", "Non, c'est une maladie", "Seulement chez les débutants", "Seulement en anglais"], "correct": 0 },
+    { "q": "Quels sont les 3 canaux d'une prise de parole ?", "options": ["Les mots, la voix, le corps", "Le prix, le délai, le client", "Le son, l'image, Internet", "Aucun"], "correct": 0 },
+    { "q": "Pourquoi être plus court en visio ?", "options": ["L'attention baisse plus vite", "Internet coûte cher", "C'est la règle de Zoom", "Pour finir avant le client"], "correct": 0 },
+    { "q": "Pourquoi s'enregistrer au début ?", "options": ["Pour connaître son point de départ", "Pour publier la vidéo", "Pour se moquer de soi", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que contient l'ouverture d'une présentation ?", "options": ["Une accroche, l'objectif, le plan", "Le prix", "Des excuses", "La conclusion"], "correct": 0 },
+    { "q": "Combien d'idées le cerveau retient-il bien ?", "options": ["Trois", "Vingt", "Une seule", "Aucune"], "correct": 0 },
+    { "q": "Comment terminer ses phrases ?", "options": ["Avec une voix affirmée, sans la laisser retomber", "En chuchotant", "En riant", "Sans finir"], "correct": 0 },
+    { "q": "Que préparer à côté de la caméra ?", "options": ["3 à 5 mots clés par partie", "Un texte complet à lire", "Rien", "Son téléphone allumé"], "correct": 0 },
+    { "q": "Quand enregistrer une visio ?", "options": ["Avec l'accord de tous les participants", "Toujours en secret", "Jamais", "Seulement le client"], "correct": 0 },
+    { "q": "Combien d'idées par diapositive ?", "options": ["Une", "Cinq", "Dix", "Aucune"], "correct": 0 },
+    { "q": "Pourquoi des diapositives sobres ?", "options": ["Elles restent lisibles sur téléphone et connexion faible", "Elles coûtent moins cher", "C'est la mode", "Ce n'est pas important"], "correct": 0 },
+    { "q": "Comment regarder son enregistrement la première fois ?", "options": ["Sans le son, pour observer le corps", "En accéléré", "Les yeux fermés", "Jamais"], "correct": 0 },
+    { "q": "Que connaître par cœur ?", "options": ["Ses deux premières phrases", "Tout le texte", "Rien", "Les questions du client"], "correct": 0 },
+    { "q": "Que répondre à une question difficile sans réponse immédiate ?", "options": ["Je vérifie et je vous réponds par écrit avant ce soir", "Inventer une réponse", "Ignorer la question", "Changer de sujet"], "correct": 0 },
+    { "q": "À quelle heure Ony présente-t-elle à Madagascar pour 9 h à Montréal ?", "options": ["16 h", "9 h", "3 h", "21 h"], "correct": 0 },
+    { "q": "Que fait Ony après la visio perturbée ?", "options": ["Elle envoie les diapositives", "Rien", "Elle s'excuse pendant une heure", "Elle annule le contrat"], "correct": 0 },
+    { "q": "Que contient l'ordre du jour envoyé la veille ?", "options": ["3 points et une durée de 30 minutes", "La facture", "Rien", "Les mots de passe"], "correct": 0 },
+    { "q": "Que résumer à la fin d'une réunion ?", "options": ["Les décisions : qui fait quoi, pour quand", "Les blagues", "La météo", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce que le kabary ?", "options": ["L'art oratoire malgache", "Un logiciel de visio", "Une danse", "Un plat"], "correct": 0 },
+    { "q": "Quelle question pour savoir si le message est passé ?", "options": ["Quelle est l'idée principale que tu as retenue ?", "Tu as aimé ma tenue ?", "Il est quelle heure ?", "Aucune"], "correct": 0 }
+  ]
+}

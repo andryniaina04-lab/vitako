@@ -109,7 +109,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true),
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true),
-  ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 11, false),
+  ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true),
   ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 12, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
@@ -56877,6 +56877,417 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Relancer un client, c''est :', '["Montrer son sérieux, poliment et utilement","Inutile","Interdit","Le déranger toujours"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que faire si on a beaucoup d''entretiens mais peu de signatures ?', '["Ne rien changer","Baisser tous les prix","Améliorer la découverte et la proposition","Faire moins d''entretiens"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Comment répondre à une question sur la connexion en recrutement ?', '["De façon précise : connexion, secours, batterie, lieu de repli","Ne pas répondre","Mentir","« Ça va, pas de problème »"]'::jsonb, 0);
+
+-- perso-6-f
+delete from public.exam_questions where course_id = 'perso-6-f';
+delete from public.module_questions where course_id = 'perso-6-f';
+delete from public.lessons where course_id = 'perso-6-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-6-f', 0, 'Comprendre la prise de parole et le trac', 'Signes et rôle du trac, les 3 canaux : mots, voix et corps, particularités de la visioconférence, accent et clarté, auto-évaluation enregistrée.', 'Présenter son travail à un client, animer une réunion d''équipe, passer un entretien en visio : en télétravail, savoir parler avec assurance devant une caméra devient indispensable. Ce premier module vous aide à comprendre le trac et ce qui rend une prise de parole convaincante.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre le trac et pourquoi il est normal.
+> 2. Connaître les 3 canaux d''une prise de parole.
+> 3. Repérer les particularités de la visioconférence.
+> 4. Évaluer votre point de départ.
+
+## Le trac est normal
+
+| Signe du trac | Ce qui se passe |
+| --- | --- |
+| Cœur qui bat vite, mains moites | Le corps se prépare à l''effort |
+| Voix qui tremble | La respiration devient courte |
+| Trou de mémoire | Le stress perturbe la concentration |
+| Envie de parler très vite | On veut que ce soit fini |
+
+> [!definition] Trac
+> Une réaction normale du corps face à une situation importante. Presque tous les orateurs, même expérimentés, en ressentent. L''objectif n''est pas de le faire disparaître, mais de le **canaliser** : un peu de trac donne de l''énergie.
+
+## Les 3 canaux d''une prise de parole
+
+| Canal | Ce qu''il comprend | Exemple d''erreur |
+| --- | --- | --- |
+| **Les mots** | Le contenu, la structure, les exemples | Trop d''informations sans fil conducteur |
+| **La voix** | Le débit, le volume, le ton, les pauses | Parler vite et sans pause |
+| **Le corps** | Le regard, la posture, les gestes, le visage | Regarder ses notes ou l''écran au lieu de la caméra |
+
+> [!astuce]
+> Les trois canaux doivent dire la même chose. Dire « je suis ravi de vous présenter ce projet » avec une voix éteinte et le regard baissé n''est pas convaincant.
+
+## Les particularités de la visioconférence
+
+| En présentiel | En visio |
+| --- | --- |
+| On voit tout le corps | On voit surtout le visage et les mains |
+| On sent les réactions de la salle | Les réactions sont plus difficiles à percevoir |
+| L''attention dure plus longtemps | L''attention baisse vite : il faut être plus court |
+| Peu de problèmes techniques | Son, image, connexion peuvent tout perturber |
+| On regarde les personnes | Il faut regarder la **caméra**, pas l''écran |
+
+> [!madagascar]
+> En visio avec des clients étrangers, votre accent n''est pas un problème : la clarté l''est. Articuler, parler un peu plus lentement et faire des pauses rend votre français ou votre anglais facile à comprendre, quel que soit l''accent.
+
+## Votre point de départ
+
+Enregistrez-vous 2 minutes avec votre téléphone en présentant votre métier, puis notez de 1 à 5 :
+
+| Critère | Note |
+| --- | --- |
+| Mon message est clair et structuré | |
+| Je parle à un rythme confortable | |
+| Je fais des pauses | |
+| Je regarde la caméra | |
+| Ma posture est droite et ouverte | |
+| Je finis mes phrases avec une voix assurée | |
+
+> [!retenir]
+> - Le trac est normal : on le canalise.
+> - Les mots, la voix et le corps doivent aller ensemble.
+> - En visio : plus court, regard caméra, technique soignée.
+> - S''enregistrer pour connaître son point de départ.
+
+## Exercice pratique : votre premier enregistrement
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Enregistrez-vous 2 minutes pour présenter votre métier.
+> 2. Regardez la vidéo et remplissez la grille.
+> 3. Notez vos 2 points forts et vos 2 points à améliorer.
+> 4. Gardez la vidéo : vous la comparerez à la fin de la formation.
+>
+> **À livrer** : votre grille, vos points forts et vos points à améliorer.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 0, 0, 'Que faire du trac ?', '["Le faire disparaître totalement","Le canaliser : il donne de l''énergie","Annuler toutes les réunions","L''ignorer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 0, 1, 'Où regarder quand on parle en visio ?', '["La caméra","Son propre visage à l''écran","Ses notes","Le plafond"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 0, 2, 'Qu''est-ce qui compte le plus avec un accent ?', '["Ne pas parler","Parler très vite","Le cacher","La clarté : articuler et faire des pauses"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-6-f', 1, 'Les bases : structure, voix et corps', 'Méthode PREP, présentation en 3 parties et règle de 3, ouverture efficace, débit, articulation, pauses et volume, regard, cadrage, posture et mots clés.', 'Une bonne prise de parole repose sur trois piliers : une structure claire, une voix maîtrisée et un corps qui soutient le message. Ce module vous donne les techniques de base, utilisables dès votre prochaine réunion.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Structurer une intervention avec la méthode PREP.
+> 2. Construire une présentation en 3 parties.
+> 3. Travailler votre voix : débit, articulation, pauses.
+> 4. Utiliser le regard et les gestes en visio.
+
+## La méthode PREP pour une réponse courte
+
+| Lettre | Signification | Exemple (réponse à « Pourquoi ce choix de couleurs ? ») |
+| --- | --- | --- |
+| **P** | Point | « J''ai choisi le vert et le blanc. » |
+| **R** | Raison | « Ils évoquent la nature et la fraîcheur, comme vos produits. » |
+| **E** | Exemple | « Les marques de cosmétiques naturels les utilisent beaucoup, par exemple… » |
+| **P** | Point (rappel) | « C''est pourquoi le vert et le blanc me semblent les plus adaptés. » |
+
+## Une présentation en 3 parties
+
+| Partie | Contenu | Durée (présentation de 10 minutes) |
+| --- | --- | --- |
+| **Ouverture** | Une accroche, l''objectif, le plan | 1 minute |
+| **Développement** | 3 points maximum, chacun avec un exemple | 7 minutes |
+| **Conclusion** | Un résumé, la décision ou l''action attendue | 2 minutes |
+
+> [!exemple] Une ouverture efficace
+> « Le mois dernier, vos publications ont touché 12 000 personnes, deux fois plus qu''en janvier. Aujourd''hui, je vais vous montrer ce qui a marché, ce qui peut encore progresser, et vous proposer le plan d''avril. »
+
+> [!astuce]
+> **La règle de 3** : le cerveau retient bien trois idées, mal sept. Si vous avez beaucoup à dire, regroupez en trois parties.
+
+## La voix
+
+| Élément | Conseil | Exercice |
+| --- | --- | --- |
+| **Débit** | Un peu plus lent qu''en conversation | Lire un texte à voix haute en marquant chaque virgule |
+| **Articulation** | Prononcer chaque syllabe | Lire un texte avec un stylo entre les dents, puis sans |
+| **Pauses** | Une pause après chaque idée importante | Compter « un, deux » dans sa tête |
+| **Volume** | Assez fort pour paraître sûr de soi | Parler comme si la personne était à 3 mètres |
+| **Fin de phrase** | Ne pas laisser retomber la voix | Terminer les phrases sur une note affirmée |
+
+## Le corps en visio
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Regard** | Regarder la caméra quand vous parlez (coller un petit autocollant à côté) |
+| **Cadrage** | Tête et épaules visibles, un peu d''espace au-dessus de la tête |
+| **Posture** | Assis droit, un peu en avant, ou debout |
+| **Gestes** | Des gestes calmes, visibles dans le cadre |
+| **Visage** | Un sourire au début et à la fin ; hocher la tête quand l''autre parle |
+
+> [!attention]
+> Évitez de lire un texte mot à mot : la voix devient monotone et le regard part vers l''écran. Préparez plutôt **3 à 5 mots clés** par partie, posés à côté de la caméra.
+
+> [!retenir]
+> - PREP pour répondre clairement et brièvement.
+> - Ouverture, 3 points, conclusion avec action attendue.
+> - Débit plus lent, articulation, pauses, fins de phrases affirmées.
+> - Regard caméra, bon cadrage, mots clés plutôt que texte lu.
+
+## Exercice pratique : structure, voix et regard
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Répondez avec PREP à 3 questions fréquentes de vos clients.
+> 2. Préparez une présentation de 3 minutes en 3 parties sur un de vos projets.
+> 3. Faites les exercices de voix pendant 10 minutes.
+> 4. Enregistrez votre présentation en regardant la caméra, avec seulement des mots clés.
+>
+> **À livrer** : vos 3 réponses PREP, le plan de votre présentation et la vidéo.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 1, 0, 'Que signifie PREP ?', '["Rien","Préparer, Répéter, Écrire, Partir","Point, Raison, Exemple, Point","Prix, Remise, Envoi, Paiement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 1, 1, 'Combien de points dans le développement ?', '["3 maximum","10","Aucun","1 seul toujours"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 1, 2, 'Pourquoi éviter de lire un texte mot à mot ?', '["Pour aller plus vite","La voix devient monotone et le regard quitte la caméra","C''est interdit","Le texte est trop court"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-6-f', 2, 'Les outils : Google Meet, Zoom, diapositives et gestion du trac', 'Partage d''une fenêtre, arrière-plan, sous-titres, enregistrement avec accord, diapositives simples, entraînement avec le téléphone, respiration 4-6 et réponse aux questions difficiles.', 'Ce module vous fait maîtriser les outils de la visioconférence (Google Meet et Zoom), préparer des diapositives simples et utiliser votre téléphone pour vous entraîner. Vous apprendrez aussi des techniques concrètes pour gérer le trac.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions utiles de Google Meet et de Zoom.
+> 2. Préparer des diapositives simples et lisibles.
+> 3. Vous entraîner efficacement avec votre téléphone.
+> 4. Gérer le trac avant et pendant une prise de parole.
+
+## Google Meet et Zoom
+
+| Fonction | Usage |
+| --- | --- |
+| **Partage d''écran** | Montrer une présentation ou un document (une seule fenêtre plutôt que tout l''écran) |
+| **Arrière-plan flou** | Cacher une pièce encombrée |
+| **Sous-titres automatiques** | Aider la compréhension, notamment en anglais |
+| **Main levée et réactions** | Demander la parole, réagir sans interrompre |
+| **Chat** | Partager un lien, poser une question écrite |
+| **Enregistrement** | Seulement avec l''accord de tous les participants |
+| **Salles de sous-groupes** (Zoom, et Meet selon l''offre) | Faire travailler les participants en petits groupes |
+
+> [!astuce]
+> Partagez **une fenêtre précise** plutôt que tout l''écran : vous évitez d''afficher par erreur vos messages personnels ou vos onglets ouverts.
+
+## Des diapositives simples
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Une idée par diapositive** | Le public suit votre parole, pas le texte |
+| **6 lignes maximum, mots clés** | On ne lit pas pendant que vous parlez |
+| **Grande police (24 points minimum)** | Lisible sur un petit écran de téléphone |
+| **Images et chiffres plutôt que paragraphes** | Plus facile à retenir |
+| **Une diapositive finale avec l''action attendue** | Le public sait ce qu''il doit faire |
+
+> [!madagascar]
+> Beaucoup de participants suivent les visios sur leur téléphone, parfois avec une connexion faible. Des diapositives sobres (peu d''images lourdes, grandes polices) restent lisibles même quand la qualité de l''image baisse.
+
+## S''entraîner avec son téléphone
+
+| Étape | Action |
+| --- | --- |
+| 1 | Enregistrer la présentation complète |
+| 2 | Regarder une première fois sans le son : le corps et le regard |
+| 3 | Écouter une deuxième fois sans l''image : la voix et le rythme |
+| 4 | Noter 2 améliorations seulement |
+| 5 | Recommencer jusqu''à se sentir à l''aise |
+
+## Gérer le trac
+
+| Moment | Technique |
+| --- | --- |
+| **La veille** | Répéter à voix haute 3 fois, préparer le matériel |
+| **1 heure avant** | Tester la connexion, le son et l''image |
+| **5 minutes avant** | Respiration : inspirer sur 4 temps, expirer sur 6 temps, 5 fois |
+| **Au début** | Connaître ses deux premières phrases par cœur |
+| **Pendant** | Faire une pause et boire une gorgée d''eau en cas de trou de mémoire |
+| **En cas de question difficile** | « Bonne question, je vérifie et je vous réponds par écrit avant ce soir. » |
+
+> [!definition] Respiration 4-6
+> Inspirer par le nez en comptant jusqu''à 4, puis expirer lentement par la bouche en comptant jusqu''à 6. Une expiration plus longue que l''inspiration aide le corps à se calmer.
+
+> [!retenir]
+> - Partage d''une fenêtre, arrière-plan flou, sous-titres, enregistrement avec accord.
+> - Une idée par diapositive, grande police, action finale.
+> - S''entraîner avec le téléphone : sans le son, puis sans l''image.
+> - Respiration 4-6, deux premières phrases par cœur, réponse prête pour les questions difficiles.
+
+## Exercice pratique : votre présentation outillée
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Créez 5 diapositives simples dans Google Slides pour présenter un de vos projets.
+> 2. Faites une visio test avec un ami et partagez une seule fenêtre.
+> 3. Entraînez-vous avec la méthode du téléphone en 5 étapes.
+> 4. Pratiquez la respiration 4-6 avant la présentation finale.
+>
+> **À livrer** : vos diapositives, l''enregistrement final et vos notes d''amélioration.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 2, 0, 'Pourquoi partager une seule fenêtre ?', '["Pour ne pas montrer ses messages personnels","C''est obligatoire","Pour aller plus vite","Pour cacher la présentation"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 2, 1, 'Quelle taille de police minimum sur les diapositives ?', '["100 points","Peu importe","8 points","24 points"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 2, 2, 'Qu''est-ce que la respiration 4-6 ?', '["Retenir son souffle","Inspirer sur 4 temps, expirer sur 6","Parler en respirant vite","Respirer 4 fois en 6 heures"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-6-f', 3, 'Mise en situation : le bilan d''Ony', 'Bilan mensuel en visio à un client de Montréal : préparation, coupure de connexion, question difficile avec PREP, réunion d''équipe avec ordre du jour et compte rendu.', 'Dans ce module, vous suivez Ony, assistante marketing à distance basée à Toamasina, qui doit présenter le bilan mensuel à son client canadien, puis animer une petite réunion d''équipe. Deux imprévus vont tester sa préparation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer et présenter un bilan à un client en visio.
+> 2. Réagir à un problème technique pendant une présentation.
+> 3. Répondre à une question difficile.
+> 4. Animer une courte réunion d''équipe.
+
+## Le cas pratique : Ony
+
+> [!exemple] La situation
+> **Ony**, 28 ans, gère les réseaux sociaux de **Maple & Co**, une petite marque de thé à Montréal. Chaque mois, elle présente un bilan de 15 minutes au fondateur, Marc, en visio. Ce mois-ci, les résultats sont bons, sauf une campagne publicitaire qui a déçu. Elle anime aussi une réunion avec deux autres freelances de l''équipe.
+
+## La préparation
+
+| Élément | Ce que prépare Ony |
+| --- | --- |
+| **Horaire** | 9 h à Montréal, soit 16 h à Madagascar |
+| **Plan** | Les résultats du mois, ce qui a marché, la campagne décevante, le plan du mois prochain |
+| **Diapositives** | 6 diapositives, un chiffre clé par diapositive |
+| **Technique** | Connexion testée à 15 h 30, partage de connexion du téléphone prêt |
+| **Ouverture apprise par cœur** | « Bonjour Marc ! Bonne nouvelle : vos abonnés ont augmenté de 18 % ce mois-ci. » |
+
+## Imprévu 1 : la connexion coupe
+
+| Ce que fait Ony | Pourquoi |
+| --- | --- |
+| Elle passe au partage de connexion du téléphone en moins d''une minute | Le plan B était prêt |
+| Elle écrit dans le chat : « Désolée, petite coupure, je reviens dans une minute ! » | Le client sait ce qui se passe |
+| De retour, elle résume la dernière idée | Le fil n''est pas perdu |
+| Après la réunion, elle envoie les diapositives | Rien n''est perdu même si la visio a été perturbée |
+
+## Imprévu 2 : la question difficile
+
+> [!exemple] L''échange
+> **Marc** : « Pourquoi la campagne publicitaire a-t-elle si mal marché ? On a dépensé 300 dollars. »
+> **Ony** (méthode PREP) : « Elle n''a pas atteint l''objectif, c''est vrai. La raison principale : le visuel était trop proche de nos publications habituelles, il n''a pas attiré l''attention. Par exemple, le taux de clic a été de 0,4 %, contre 1,2 % pour la campagne de janvier. Pour la prochaine, je propose de tester deux visuels différents avec un petit budget d''abord. »
+> **Marc** : « D''accord, bonne idée. »
+
+> [!astuce]
+> Face à une mauvaise nouvelle : **reconnaître**, **expliquer** avec des faits, **proposer** une solution. Cacher ou minimiser un problème fait perdre la confiance du client bien plus qu''un échec expliqué.
+
+## La réunion d''équipe
+
+| Étape | Ce que fait Ony |
+| --- | --- |
+| **Avant** | Envoie l''ordre du jour la veille : 3 points, 30 minutes |
+| **Début** | Rappelle l''objectif et l''heure de fin |
+| **Pendant** | Donne la parole à chacun, recentre si la discussion s''éloigne |
+| **Fin** | Résume les décisions : qui fait quoi, pour quand |
+| **Après** | Envoie un compte rendu de 5 lignes dans l''heure |
+
+```
+Compte rendu – Réunion équipe Maple & Co – 12 avril
+Décisions :
+- Tojo prépare 2 visuels de test pour la campagne : vendredi 14.
+- Lalao rédige les textes des publications de mai : lundi 17.
+- Ony présente le test à Marc : jeudi 20.
+Prochaine réunion : mardi 25 à 16 h (heure de Madagascar).
+```
+
+> [!retenir]
+> - Une préparation complète : horaire, plan, diapositives, technique, ouverture.
+> - Un plan B de connexion prêt et des diapositives envoyées après.
+> - Une mauvaise nouvelle : reconnaître, expliquer, proposer.
+> - Une réunion avec ordre du jour, heure de fin, décisions et compte rendu.
+
+## Exercice pratique : votre bilan et votre réunion
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez un bilan de 10 minutes sur un projet réel ou fictif, avec une mauvaise nouvelle à annoncer.
+> 2. Présentez-le en visio à un ami qui pose une question difficile.
+> 3. Préparez l''ordre du jour d''une réunion de 30 minutes.
+> 4. Rédigez le compte rendu de cette réunion (réelle ou simulée).
+>
+> **À livrer** : vos diapositives, l''enregistrement, l''ordre du jour et le compte rendu.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 3, 0, 'Que fait Ony quand la connexion coupe ?', '["Elle passe au partage de connexion et prévient dans le chat","Elle abandonne la réunion","Elle reporte d''une semaine","Elle ne dit rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 3, 1, 'Comment annoncer une mauvaise nouvelle ?', '["La minimiser","Reconnaître, expliquer avec des faits, proposer","Accuser l''équipe","La cacher"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 3, 2, 'Quand envoyer le compte rendu de réunion ?', '["Un mois après","Jamais","Avant la réunion","Dans l''heure qui suit"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-6-f', 4, 'Mon plan d''action : s''entraîner et progresser', 'Plan progressif sur 4 semaines, occasions de parler en public, tradition du kabary, questions pour obtenir des retours utiles, mesure des progrès.', 'On progresse à l''oral en parlant souvent, dans des situations de plus en plus exigeantes. Ce dernier module vous aide à construire votre plan d''entraînement et à trouver des occasions de pratiquer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un plan d''entraînement progressif.
+> 2. Trouver des occasions de parler en public.
+> 3. Demander et utiliser des retours.
+> 4. Mesurer vos progrès.
+
+## Un plan progressif
+
+| Semaine | Défi |
+| --- | --- |
+| **1** | 1 enregistrement de 2 minutes par jour sur un sujet de votre métier |
+| **2** | 1 appel vidéo avec un ami pour présenter un projet |
+| **3** | Présenter un point dans une réunion d''équipe ou d''association |
+| **4** | Faire une présentation complète de 10 minutes à un client ou à un groupe |
+| **Ensuite** | Animer une réunion, un atelier ou un live sur les réseaux sociaux |
+
+> [!astuce]
+> Parlez de sujets que vous connaissez bien : votre métier, vos projets, ce que vous avez appris dans une formation. La maîtrise du sujet libère de l''énergie pour travailler la forme.
+
+## Trouver des occasions de parler
+
+| Occasion | Exemple |
+| --- | --- |
+| **Communautés de freelances** | Présenter une astuce dans un groupe en ligne |
+| **Associations et églises** | Animer un temps d''échange, présenter un projet |
+| **Clubs de prise de parole** | Des clubs d''éloquence ou de débat existent dans plusieurs villes et universités |
+| **Lives sur les réseaux sociaux** | Partager un conseil de 5 minutes sur votre métier |
+| **Votre ancienne école** | Témoigner de votre parcours devant des élèves |
+
+> [!madagascar]
+> Le kabary, l''art oratoire malgache, montre que la parole en public a une longue tradition à Madagascar. Les qualités du bon orateur de kabary (respect de l''auditoire, images parlantes, structure claire) sont exactement celles qui convainquent aussi en visio avec un client.
+
+## Demander et utiliser des retours
+
+| Question à poser | Pourquoi |
+| --- | --- |
+| « Quelle est l''idée principale que tu as retenue ? » | Vérifier que le message est passé |
+| « À quel moment as-tu décroché ? » | Repérer les longueurs |
+| « Qu''est-ce que je devrais garder ? » | Connaître ses points forts |
+| « Qu''est-ce que je devrais changer en priorité ? » | Une seule amélioration à la fois |
+
+## Mesurer ses progrès
+
+Refaites l''enregistrement du module 1 et comparez avec la même grille.
+
+```
+Point de départ : présentation de 2 minutes, regard sur l''écran,
+débit rapide, beaucoup de « euh ». Score : 14 / 30.
+Après 4 semaines : regard caméra, pauses, plan en 3 parties,
+2 « euh » seulement. Score : 23 / 30.
+```
+
+> [!retenir]
+> - Un plan progressif sur 4 semaines, puis des défis plus grands.
+> - Des occasions partout : communautés, associations, clubs, lives, écoles.
+> - Des retours précis, une amélioration à la fois.
+> - Mesurer ses progrès avec la même grille.
+
+## Exercice pratique : votre plan d''entraînement
+
+> [!exercice] Exercice pratique · 1 heure, puis 4 semaines
+> 1. Écrivez votre plan de 4 semaines avec des dates.
+> 2. Trouvez 2 occasions concrètes de parler en public dans les 2 prochains mois.
+> 3. Après chaque prise de parole, posez les 4 questions de retour à une personne.
+> 4. Refaites l''enregistrement du module 1 et comparez votre score.
+>
+> **À livrer** : votre plan, vos 2 occasions, les retours reçus et vos deux scores.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 4, 0, 'Comment progresser à l''oral ?', '["Attendre d''être prêt","Parler souvent, avec des défis de plus en plus grands","Éviter les réunions","Lire des livres seulement"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 4, 1, 'Combien d''améliorations travailler à la fois ?', '["Dix","Toutes","Une","Aucune"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-6-f', 4, 2, 'Comment mesurer ses progrès ?', '["Refaire l''enregistrement et utiliser la même grille","Compter ses abonnés","Se fier à son humeur","On ne peut pas"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Le trac est-il normal ?', '["Seulement en anglais","Oui, presque tous les orateurs en ressentent","Non, c''est une maladie","Seulement chez les débutants"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Quels sont les 3 canaux d''une prise de parole ?', '["Aucun","Le prix, le délai, le client","Les mots, la voix, le corps","Le son, l''image, Internet"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Pourquoi être plus court en visio ?', '["Pour finir avant le client","Internet coûte cher","C''est la règle de Zoom","L''attention baisse plus vite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Pourquoi s''enregistrer au début ?', '["Pour se moquer de soi","Ce n''est pas utile","Pour publier la vidéo","Pour connaître son point de départ"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que contient l''ouverture d''une présentation ?', '["Le prix","La conclusion","Des excuses","Une accroche, l''objectif, le plan"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Combien d''idées le cerveau retient-il bien ?', '["Aucune","Trois","Vingt","Une seule"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Comment terminer ses phrases ?', '["Avec une voix affirmée, sans la laisser retomber","En riant","Sans finir","En chuchotant"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que préparer à côté de la caméra ?', '["3 à 5 mots clés par partie","Un texte complet à lire","Son téléphone allumé","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Quand enregistrer une visio ?', '["Toujours en secret","Seulement le client","Avec l''accord de tous les participants","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Combien d''idées par diapositive ?', '["Une","Dix","Aucune","Cinq"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Pourquoi des diapositives sobres ?', '["Elles coûtent moins cher","Ce n''est pas important","C''est la mode","Elles restent lisibles sur téléphone et connexion faible"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Comment regarder son enregistrement la première fois ?', '["Sans le son, pour observer le corps","Jamais","En accéléré","Les yeux fermés"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que connaître par cœur ?', '["Rien","Tout le texte","Les questions du client","Ses deux premières phrases"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que répondre à une question difficile sans réponse immédiate ?', '["Changer de sujet","Je vérifie et je vous réponds par écrit avant ce soir","Ignorer la question","Inventer une réponse"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'À quelle heure Ony présente-t-elle à Madagascar pour 9 h à Montréal ?', '["16 h","21 h","9 h","3 h"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que fait Ony après la visio perturbée ?', '["Elle s''excuse pendant une heure","Rien","Elle annule le contrat","Elle envoie les diapositives"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que contient l''ordre du jour envoyé la veille ?', '["Rien","La facture","3 points et une durée de 30 minutes","Les mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que résumer à la fin d''une réunion ?', '["Rien","Les blagues","La météo","Les décisions : qui fait quoi, pour quand"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Qu''est-ce que le kabary ?', '["Un logiciel de visio","L''art oratoire malgache","Une danse","Un plat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Quelle question pour savoir si le message est passé ?', '["Quelle est l''idée principale que tu as retenue ?","Il est quelle heure ?","Aucune","Tu as aimé ma tenue ?"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';
