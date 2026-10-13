@@ -82,7 +82,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true),
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, true),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true),
-  ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
+  ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 13, true),
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
@@ -4936,6 +4936,547 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quelle offre faire à un lodge qui répond lentement ?', '["Gestion des messages 7 jours sur 7 avec un mois d''essai","Rien","Critiquer ses avis publiquement","Lui vendre des meubles"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que préciser dans les conditions ?', '["La couleur des bungalows","Le menu","La procédure d''urgence si vous êtes injoignable","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
+
+-- client-4-a
+delete from public.exam_questions where course_id = 'client-4-a';
+delete from public.module_questions where course_id = 'client-4-a';
+delete from public.lessons where course_id = 'client-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-a', 0, 'Se spécialiser, diagnostiquer une communauté et lire les indicateurs', 'Les 6 spécialités avancées, la confiance et sécurité, le diagnostic d''une communauté et son rapport, les indicateurs des équipes, et un parcours à plus forte valeur.', 'Appliquer des règles avec précision ouvre les premiers postes. Les modérateurs qui progressent deviennent ceux qui **améliorent le système** : ils contrôlent la qualité des décisions, rédigent et clarifient les règles, repèrent les fraudes organisées, forment les nouveaux et protègent les équipes. Ce module vous aide à choisir votre spécialité et à vous positionner sur ces rôles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la modération.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un diagnostic de la modération d''une communauté.
+> 4. Comprendre les indicateurs suivis par les équipes « confiance et sécurité ».
+> 5. Construire des offres et un parcours à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Contrôleur qualité (QA)** | Revoir un échantillon des décisions et donner un retour | Règles parfaites, objectivité, pédagogie |
+| 2 | **Spécialiste des règles** (policy) | Clarifier les lignes directrices, traiter les cas limites | Rédaction précise, analyse, contexte culturel |
+| 3 | **Enquêteur fraude et faux comptes** | Repérer les réseaux d''arnaques, de spam et de faux comptes | Analyse de schémas, rigueur, confidentialité |
+| 4 | **Modération multilingue et locale** | Contenus en malgache, en français local, en langues régionales | Langues, argot, contexte local |
+| 5 | **Modération de communautés de marques** | Gérer la modération de plusieurs pages et groupes | Chartes, outils intégrés, gestion de crise |
+| 6 | **Formateur et chef d''équipe** | Former, accompagner et protéger une équipe | Pédagogie, indicateurs, bien-être |
+
+> [!definition] Confiance et sécurité (trust and safety)
+> L''ensemble des équipes et des pratiques qui protègent les utilisateurs d''une plateforme : règles, modération, lutte contre la fraude, réponse aux signalements, protection des personnes vulnérables.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Modération en malgache** : peu de modérateurs comprennent le malgache écrit sur les réseaux, souvent mélangé au français.
+> - **Communautés de marques malgaches** : pages et groupes très actifs, avec beaucoup d''arnaques à combattre.
+> - **Contrôle qualité francophone** dans les entreprises de services numériques d''Antananarivo.
+
+## Le diagnostic de modération d''une communauté
+
+Pour une marque ou un média, un diagnostic est une bonne **offre d''entrée**.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Règles** | Existe-t-il une charte claire et visible ? |
+| **Volume** | Combien de commentaires, publications, signalements par jour ? |
+| **Délais** | Combien de temps restent en ligne les spams, insultes et arnaques ? |
+| **Cohérence** | Les mêmes cas sont-ils traités de la même façon ? |
+| **Outils** | Filtres, approbations, rôles utilisés ? |
+| **Risques** | Arnaques qui utilisent le nom de la marque, données personnelles publiées |
+
+### Le rapport de diagnostic
+
+```
+Page : Mofo Gasy Express – 30 derniers jours
+Constats
+- 140 commentaires de fausses promotions, restés en ligne 9 heures en moyenne.
+- 3 faux comptes utilisent le logo de la marque pour demander des paiements Mobile Money.
+- Critiques honnêtes parfois supprimées, insultes parfois laissées : décisions incohérentes.
+- Aucun filtre de mots, aucune charte épinglée.
+
+Plan proposé
+1. Charte publique et guide interne avec actions et délais.
+2. Filtres en français et en malgache, signalement des faux comptes à la plateforme.
+3. Modération de 7 h à 22 h et rapport mensuel.
+```
+
+## Les indicateurs des équipes confiance et sécurité
+
+| Indicateur | Ce qu''il montre |
+| --- | --- |
+| **Précision** (qualité) | Part des décisions confirmées par le contrôle qualité |
+| **Délai d''action** | Temps entre la publication ou le signalement et la décision |
+| **Taux d''appel et d''annulation** | Décisions contestées par les utilisateurs et annulées après révision |
+| **Prévalence** | Part des contenus problématiques encore visibles |
+| **Cohérence entre modérateurs** | Même décision sur le même cas |
+| **Bien-être de l''équipe** | Absences, rotation, utilisation du soutien |
+
+> [!attention]
+> Un bon indicateur ne doit jamais pousser à **aller plus vite au détriment de la justesse** ou de la santé des équipes. Un responsable qui ne regarde que le volume traité crée des erreurs et de l''épuisement.
+
+## Un parcours à plus forte valeur
+
+| Étape | Ce qu''elle apporte |
+| --- | --- |
+| **Modérateur précis et régulier** | La base de toute évolution |
+| **Référent sur un type de règle** | Les collègues vous consultent sur les cas limites |
+| **Contrôleur qualité** | Meilleure rémunération, rôle de conseil |
+| **Spécialiste des règles ou de la fraude** | Rôles rares, souvent mieux payés |
+| **Chef d''équipe ou formateur** | Encadrement et responsabilité |
+
+| Offre indépendante | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic d''une communauté** | Analyse de 30 jours, rapport, plan | 150 000 Ar |
+| **Mise en place** | Charte, guide, filtres, réglages, formation de l''équipe du client | 300 000 Ar |
+| **Modération de plusieurs pages** | Couverture 7 jours sur 7, rapport | Selon le volume |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : qualité, règles, fraude, multilingue, communautés, encadrement.
+> - Le diagnostic d''une communauté révèle délais, incohérences et arnaques.
+> - Précision, délai, appels, prévalence, cohérence, bien-être.
+> - Les indicateurs ne doivent jamais sacrifier la justesse ni la santé.
+> - Un parcours vers le contrôle qualité, les règles, la fraude ou l''encadrement.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Observez pendant 7 jours la page publique d''une marque malgache très commentée (sans interagir).
+> 3. Notez les spams, arnaques, insultes et délais de réaction visibles.
+> 4. Rédigez un rapport de diagnostic et un plan en 3 étapes.
+>
+> **À livrer** : votre choix, vos observations et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 0, 0, 'Que fait un contrôleur qualité ?', '["Il recrute les utilisateurs","Il crée les publicités","Il programme les filtres seul","Il revoit un échantillon des décisions et donne un retour"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 0, 1, 'Que mesure la prévalence ?', '["Le salaire moyen","La vitesse de connexion","La part des contenus problématiques encore visibles","Le nombre de modérateurs"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 0, 2, 'Un indicateur doit-il pousser à aller plus vite au détriment de la justesse ?', '["Oui, la nuit","Non","Oui, pour les nouveaux","Oui"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-a', 1, 'Outils professionnels : détection, contrôle qualité, enquêtes et appels', 'Filtres, classificateurs et seuil de confiance, outil de contrôle qualité et calibration, signaux de comptes coordonnés et méthode d''enquête, traitement des appels et tableau de bord.', 'Dans ce métier, vous n''achetez aucun outil : ils sont **fournis par la plateforme ou l''employeur**. Les rôles avancés demandent pourtant de bien comprendre les systèmes professionnels : files de travail, outils automatiques, outils de contrôle qualité, outils d''enquête, gestion des appels et tableaux de bord. Ce module vous présente leur fonctionnement.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre comment la détection automatique et la modération humaine travaillent ensemble.
+> 2. Utiliser un outil de contrôle qualité.
+> 3. Comprendre les principes d''une enquête sur des comptes coordonnés.
+> 4. Traiter les appels des utilisateurs.
+> 5. Lire un tableau de bord de modération.
+
+## Détection automatique et modération humaine
+
+| Étape | Rôle |
+| --- | --- |
+| **Filtres et règles automatiques** | Bloquer ou signaler des mots, des liens, des comportements connus |
+| **Classificateurs** (modèles d''IA) | Estimer la probabilité qu''un contenu viole une règle |
+| **Correspondance avec des contenus déjà identifiés** | Reconnaître automatiquement des contenus illégaux déjà connus, selon des procédures encadrées |
+| **File humaine** | Les cas incertains ou signalés sont envoyés aux modérateurs |
+| **Retour vers les systèmes** | Les décisions humaines servent à améliorer les outils |
+
+> [!definition] Seuil de confiance
+> Le niveau de probabilité à partir duquel un système automatique agit seul ou envoie le contenu à un humain. Un seuil trop bas crée trop de faux positifs (contenus corrects bloqués) ; trop haut, il laisse passer des contenus dangereux.
+
+> [!astuce]
+> Quand vous remarquez qu''un filtre automatique se trompe souvent (par exemple sur un mot malgache anodin qui ressemble à une insulte dans une autre langue), **signalez-le** avec des exemples. C''est une contribution très appréciée.
+
+## L''outil de contrôle qualité
+
+| Fonction | Usage |
+| --- | --- |
+| **Échantillonnage** | Tirage au hasard d''un pourcentage des décisions de chaque modérateur |
+| **Grille d''évaluation** | Décision correcte ou non, règle correcte ou non, gravité de l''erreur |
+| **Commentaire** | Explication pédagogique pour le modérateur |
+| **Contestation** | Le modérateur peut contester une évaluation |
+| **Calibration** | Plusieurs contrôleurs notent les mêmes cas pour vérifier qu''ils sont d''accord |
+
+> [!definition] Calibration
+> Une séance où les contrôleurs (et parfois les modérateurs) décident ensemble des mêmes cas difficiles, comparent leurs décisions et se mettent d''accord sur l''interprétation des règles.
+
+## Les enquêtes sur des comptes coordonnés
+
+| Signal | Exemple (sans contenu sensible) |
+| --- | --- |
+| **Création groupée** | 40 comptes créés le même jour avec des noms très proches |
+| **Comportement identique** | Même message publié sous de nombreuses publications en quelques minutes |
+| **Liens communs** | Même numéro de paiement ou même lien dans des annonces différentes |
+| **Usurpation** | Logo et nom d''une marque connue, avec une petite différence d''orthographe |
+
+### La méthode
+
+1. **Repérer** un cas suspect.
+2. **Chercher** les comptes et contenus liés par des éléments communs, avec les outils autorisés.
+3. **Documenter** chaque lien, de façon factuelle.
+4. **Proposer** une action proportionnée selon les règles.
+5. **Transmettre** aux équipes compétentes ce qui dépasse votre rôle.
+
+> [!attention]
+> Les enquêtes se font **uniquement avec les outils et les données autorisés** par votre employeur, dans le cadre de votre mission. On ne recherche jamais des informations personnelles en dehors de ce cadre, et on ne contacte jamais les personnes concernées.
+
+## Les appels des utilisateurs
+
+| Étape | Bonne pratique |
+| --- | --- |
+| **Relire** le contenu et la décision initiale | Avec un regard neuf |
+| **Vérifier** la règle appliquée et le contexte ajouté par l''utilisateur | Le contexte peut changer la décision |
+| **Décider** : maintenir ou annuler | Selon les règles, pas selon le ton de l''utilisateur |
+| **Expliquer** la décision | Message clair, sans jargon |
+| **Signaler** les erreurs répétées | Pour améliorer la formation ou les règles |
+
+> [!madagascar]
+> Pour les plateformes qui opèrent dans l''Union européenne, le règlement sur les services numériques (DSA) impose notamment d''informer les utilisateurs des raisons d''une décision et de leur offrir un recours. Ces obligations s''appliquent aussi au travail fait depuis Madagascar pour ces plateformes : les explications que vous rédigez doivent donc être **claires et justes**.
+
+## Le tableau de bord de modération
+
+| Élément | Lecture |
+| --- | --- |
+| **Volume par file et par heure** | Organisation des horaires |
+| **Délais par catégorie** | Les files en retard |
+| **Précision par modérateur et par règle** | Les besoins de formation |
+| **Taux d''appel et d''annulation** | Les règles mal comprises ou mal écrites |
+| **Nouveaux schémas** | Les vagues d''arnaques ou de spam à anticiper |
+
+> [!retenir]
+> - Automatisation et humains se complètent ; signaler les erreurs des filtres.
+> - Contrôle qualité : échantillon, grille, commentaire, contestation, calibration.
+> - Enquêtes : signaux, liens documentés, actions proportionnées, outils autorisés seulement.
+> - Appels : relire, vérifier, décider selon les règles, expliquer.
+> - Un tableau de bord pour organiser, former et anticiper.
+
+## Exercice pratique : comprendre les systèmes
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez une grille de contrôle qualité pour une page de marque (5 critères, 3 niveaux de gravité).
+> 2. Évaluez avec cette grille 20 décisions fictives (prises au module 4 des Fondamentaux ou inventées, sans contenu choquant).
+> 3. Décrivez un cas fictif de comptes coordonnés et documentez les liens.
+> 4. Rédigez 3 réponses à des appels d''utilisateurs.
+>
+> **À livrer** : votre grille, vos évaluations, votre dossier de cas et vos réponses.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 1, 0, 'Que crée un seuil de confiance trop bas ?', '["Trop de contenus corrects bloqués","Aucun blocage","Rien","Plus de salaires"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 1, 1, 'Qu''est-ce que la calibration ?', '["Supprimer les règles","Régler l''écran","Payer les modérateurs","Décider ensemble des mêmes cas pour s''accorder sur les règles"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 1, 2, 'Avec quelles données mener une enquête ?', '["En contactant la personne","Les données personnelles hors cadre","Uniquement les outils et données autorisés","Toutes les informations trouvables sur la personne"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-a', 2, 'Qualité et rapidité : règles, calibration, formation, vagues et bien-être', 'Réécrire une règle floue, qualités d''une bonne règle, séance de calibration, formation progressive, réaction à une vague d''arnaques et pratiques de bien-être.', 'Une équipe de modération de qualité prend des décisions **justes, cohérentes et rapides**, sans s''épuiser. Ce module vous donne les méthodes des meilleures équipes : améliorer les règles, organiser la calibration, former les nouveaux, gérer les vagues de contenus et protéger la santé de chacun.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Réécrire une règle floue en règle applicable.
+> 2. Organiser une séance de calibration.
+> 3. Former un nouveau modérateur.
+> 4. Réagir à une vague de spam ou d''arnaques.
+> 5. Mettre en place des pratiques de bien-être pour une équipe.
+
+## Améliorer une règle
+
+| Règle floue | Règle applicable |
+| --- | --- |
+| « Pas de contenu offensant » | « Retirer les insultes visant une personne ou un groupe en raison de son origine, sa religion, son genre… (liste) ; les critiques d''une entreprise ou d''un service restent autorisées » |
+| « Pas de spam » | « Retirer les messages identiques publiés plus de 3 fois en 24 heures, et les liens vers des sites sans rapport avec la publication » |
+| « Pas d''arnaque » | « Retirer les annonces qui demandent un paiement à l''avance hors de la plateforme, ou qui utilisent le nom d''une marque sans autorisation » |
+
+### Les qualités d''une bonne règle
+
+1. **Précise** : on sait exactement ce qui est visé.
+2. **Applicable** : deux modérateurs prennent la même décision.
+3. **Illustrée** : exemples autorisés et interdits.
+4. **Proportionnée** : action adaptée à la gravité.
+5. **Datée** : chaque modification est notée et communiquée.
+
+## La séance de calibration
+
+| Étape | Durée |
+| --- | --- |
+| Sélection de 10 cas difficiles de la semaine (anonymisés) | Préparation |
+| Chacun décide seul, sans discuter | 15 minutes |
+| Comparaison des décisions | 10 minutes |
+| Discussion des cas où les avis divergent | 25 minutes |
+| Décision commune et note de clarification | 10 minutes |
+
+> [!astuce]
+> Une séance de calibration régulière (par exemple chaque semaine) augmente fortement la **cohérence** de l''équipe. Les notes de clarification deviennent une base de connaissances très utile pour les nouveaux.
+
+## Former un nouveau modérateur
+
+| Semaine | Contenu |
+| --- | --- |
+| **1** | Règles et exemples, outils, confidentialité, bien-être et soutien disponible |
+| **2** | Décisions sur des cas d''entraînement, avec correction détaillée |
+| **3** | Travail réel sur des files peu sensibles, contrôle de 100 % des décisions |
+| **4** | Contrôle réduit progressivement selon la précision |
+
+> [!attention]
+> Un nouveau modérateur ne doit **pas** commencer par les files les plus difficiles. L''exposition aux contenus sensibles se fait progressivement, avec un soutien expliqué dès le premier jour.
+
+## Réagir à une vague de spam ou d''arnaques
+
+| Étape | Action |
+| --- | --- |
+| 1 | Repérer la vague (nombre inhabituel de contenus similaires) |
+| 2 | Prévenir le responsable et les collègues |
+| 3 | Identifier le schéma commun (texte, lien, numéro) |
+| 4 | Proposer une règle ou un filtre temporaire |
+| 5 | Traiter les contenus en lot si l''outil le permet |
+| 6 | Informer les utilisateurs si nécessaire (message épinglé « Attention aux fausses promotions ») |
+| 7 | Faire le bilan : volume, durée, mesures à garder |
+
+> [!madagascar]
+> Les arnaques qui demandent un paiement par **Mobile Money** en utilisant le nom de marques connues sont fréquentes sur les réseaux sociaux malgaches. Un message de prévention clair (« Nous ne demandons jamais de paiement par message privé ») protège les membres et réduit le travail de modération.
+
+## Le bien-être de l''équipe
+
+| Pratique | Effet |
+| --- | --- |
+| **Rotation** entre files sensibles et files plus légères | Limiter l''exposition |
+| **Pauses régulières** et pauses supplémentaires après un contenu difficile | Récupérer |
+| **Outils de protection** (floutage, noir et blanc, sans son) | Réduire l''impact |
+| **Soutien psychologique** accessible et confidentiel | Prendre en charge les réactions |
+| **Échanges d''équipe** sans détails des contenus | Ne pas rester seul |
+| **Droit de demander un changement de file** | Se protéger sans sanction |
+
+> [!attention]
+> En tant que chef d''équipe ou contrôleur, restez attentif aux **signes d''épuisement** (fatigue durable, irritabilité, isolement, baisse soudaine de la qualité). Orientez la personne vers le soutien prévu, avec bienveillance et discrétion.
+
+> [!retenir]
+> - Des règles précises, applicables, illustrées, proportionnées et datées.
+> - Une calibration régulière pour la cohérence.
+> - Une formation progressive, avec soutien dès le premier jour.
+> - Une méthode en 7 étapes face aux vagues de spam et d''arnaques.
+> - Rotation, pauses, outils de protection, soutien et attention aux signes d''épuisement.
+
+## Exercice pratique : améliorer le système
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Réécrivez 3 règles floues d''une charte réelle en règles applicables, avec exemples.
+> 2. Préparez une séance de calibration avec 10 cas fictifs (sans contenu choquant) et animez-la avec 2 ou 3 personnes.
+> 3. Rédigez le programme de formation de 4 semaines d''un nouveau modérateur.
+> 4. Rédigez la charte de bien-être d''une petite équipe.
+>
+> **À livrer** : vos règles, le compte rendu de calibration, le programme et la charte.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 2, 0, 'Qu''est-ce qu''une règle applicable ?', '["Une règle secrète","Deux modérateurs prennent la même décision","Une règle sans exemple","Une règle très vague"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 2, 1, 'Par quelles files commence un nouveau modérateur ?', '["Aucune","Toutes à la fois","Des files peu sensibles, progressivement","Les plus difficiles"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 2, 2, 'Que faire face à des signes d''épuisement chez un collègue ?', '["En parler publiquement","Le sanctionner","L''orienter vers le soutien avec bienveillance et discrétion","L''ignorer"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-a', 3, 'Exigences internationales : lois, DSA, contexte culturel et confidentialité', 'Règles mondiales et lois nationales, obligations du DSA, motivation des décisions, contexte culturel et malgache, travail pour une entreprise de services numériques et confidentialité renforcée.', 'Les plateformes et les entreprises de services numériques qui modèrent pour elles travaillent dans le monde entier. Ce module vous prépare aux exigences internationales : règles différentes selon les pays, obligations légales des plateformes, contextes culturels et langues, travail pour des entreprises de sous-traitance et confidentialité renforcée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre pourquoi les règles varient selon les pays.
+> 2. Connaître les grandes obligations légales des plateformes.
+> 3. Tenir compte du contexte culturel et linguistique.
+> 4. Travailler pour une entreprise de services numériques étrangère.
+> 5. Respecter les règles de confidentialité et de sécurité renforcées.
+
+## Des règles qui varient selon les pays
+
+| Niveau | Exemple |
+| --- | --- |
+| **Règles mondiales de la plateforme** | Les règles de la communauté, identiques partout |
+| **Lois nationales** | Certains contenus légaux dans un pays sont illégaux dans un autre |
+| **Demandes des autorités** | Retraits demandés selon la loi d''un pays, traités par des équipes spécialisées |
+| **Règles des annonceurs** | Contraintes supplémentaires pour les contenus monétisés |
+
+> [!attention]
+> Le modérateur applique les **règles et procédures fournies** par l''employeur. Il ne décide pas seul de ce qui est légal ou non dans un pays : les questions juridiques sont escaladées aux équipes compétentes.
+
+## Les obligations légales des plateformes
+
+| Région | Exemple d''obligation |
+| --- | --- |
+| **Union européenne** (règlement sur les services numériques, DSA) | Mécanisme de signalement, motivation des décisions, recours pour les utilisateurs, rapports de transparence, obligations renforcées pour les très grandes plateformes |
+| **Autres pays** | Lois variables sur les contenus illégaux, la protection des mineurs, les délais de retrait |
+
+> [!definition] Motivation d''une décision
+> L''explication donnée à l''utilisateur : quel contenu, quelle règle, quelle action, quelles possibilités de recours. Elle doit être compréhensible et exacte.
+
+## Contexte culturel et langues
+
+| Difficulté | Exemple |
+| --- | --- |
+| **Mots à double sens** | Un mot anodin en malgache qui ressemble à une insulte en français |
+| **Expressions et proverbes** | Un proverbe malgache (ohabolana) qui paraît violent mot à mot mais ne l''est pas |
+| **Symboles et gestes** | Sens différents selon les pays |
+| **Humour et ironie** | Difficiles à percevoir dans une autre culture |
+| **Événements locaux** | Une élection, une catastrophe naturelle : vagues de fausses informations |
+
+> [!madagascar]
+> Votre connaissance du **malgache, du français parlé à Madagascar et du contexte local** est une compétence précieuse. Proposez aux plateformes et aux employeurs de rédiger des **notes de contexte** (expressions, argot, événements) : elles aident toute l''équipe à prendre de meilleures décisions sur les contenus malgaches.
+
+## Travailler pour une entreprise de services numériques
+
+| Point | Ce qu''il faut savoir |
+| --- | --- |
+| **Contrat** | Salarié en général, avec horaires, objectifs et avantages |
+| **Lieu** | Bureau sécurisé ou domicile avec règles strictes |
+| **Objectifs** | Volume, précision, délais, souvent suivis chaque jour |
+| **Soutien** | Demandez quels dispositifs existent (psychologue, pauses, rotation) |
+| **Évolution** | Contrôle qualité, référent, formateur, chef d''équipe |
+| **Horaires** | Parfois de nuit ou le week-end pour couvrir d''autres fuseaux |
+
+> [!astuce]
+> Avant de signer, demandez par écrit : les types de contenus des files, les dispositifs de soutien, la politique de rotation et les possibilités d''évolution. Un employeur sérieux répond clairement à ces questions.
+
+## Confidentialité et sécurité renforcées
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Aucun appareil personnel** sur le poste de travail (selon les règles du site) | Empêcher les copies |
+| **Aucune capture**, aucune note personnelle sur les contenus | Protection des utilisateurs |
+| **Accords de confidentialité** stricts | Contenus et règles internes confidentiels |
+| **Ne pas parler** des contenus en dehors du cadre de soutien | Confidentialité et protection de soi |
+| **Signaler** toute faille de sécurité | Responsabilité collective |
+
+> [!attention]
+> Ne publiez jamais sur les réseaux sociaux des informations sur les règles internes, les outils ou les contenus vus au travail, même de façon anonyme. C''est une faute grave qui peut entraîner un licenciement et des poursuites.
+
+> [!retenir]
+> - Règles mondiales, lois nationales et demandes des autorités : appliquer les procédures, escalader le juridique.
+> - DSA : signalement, motivation, recours, transparence.
+> - Le contexte culturel et linguistique change le sens d''un contenu.
+> - Avant de signer, demander les files, le soutien, la rotation et l''évolution.
+> - Confidentialité et sécurité renforcées, même en dehors du travail.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez une note de contexte de 10 expressions malgaches ou franco-malgaches utiles aux modérateurs (sens réel, risque de mauvaise interprétation).
+> 2. Rédigez 3 motivations de décisions claires pour des utilisateurs.
+> 3. Préparez la liste des questions à poser à un employeur avant de signer.
+> 4. Résumez en 10 lignes les obligations du DSA concernant la modération (à partir de sources officielles).
+>
+> **À livrer** : votre note de contexte, vos motivations, vos questions et votre résumé.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 3, 0, 'Qui décide de ce qui est illégal dans un pays ?', '["Les équipes compétentes, via l''escalade","Le modérateur seul","Personne","L''utilisateur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 3, 1, 'Qu''impose notamment le DSA ?', '["Supprimer tous les commentaires","Motiver les décisions et offrir un recours","Ne rien expliquer","Interdire la modération"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 3, 2, 'Peut-on publier des informations sur les règles internes de son employeur ?', '["Oui, après 1 an","Oui, sur les réseaux","Oui, anonymement","Non, jamais"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-a', 4, 'Développer son parcours : évolution en entreprise ou activité indépendante', 'Étapes d''évolution, contributions visibles, offres indépendantes, limites de responsabilité, rapport mensuel, études de cas, équipe et suite du parcours.', 'La modération offre deux façons de progresser : **évoluer dans une entreprise** vers le contrôle qualité, les règles ou l''encadrement, ou **créer une activité indépendante** de modération pour des marques et des communautés. Ce dernier module vous aide à construire l''une ou l''autre.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer votre évolution dans une entreprise.
+> 2. Construire une offre indépendante durable.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de modération indépendante.
+> 5. Préparer la suite de votre parcours.
+
+## Évoluer dans une entreprise
+
+| Étape | Ce qui est attendu |
+| --- | --- |
+| **Modérateur confirmé** | Précision élevée et régulière, respect des délais |
+| **Référent** | Connaissance approfondie d''un domaine de règles, aide aux collègues |
+| **Contrôleur qualité** | Objectivité, retours pédagogiques, participation à la calibration |
+| **Formateur** | Programmes de formation, accompagnement des nouveaux |
+| **Chef d''équipe** | Organisation, indicateurs, bien-être de l''équipe |
+| **Spécialiste règles ou fraude** | Analyse, rédaction, enquêtes |
+
+> [!astuce]
+> Pour évoluer, rendez votre travail **visible** : notes de contexte, signalements d''erreurs des filtres, propositions d''amélioration des règles, participation active à la calibration. Demandez régulièrement un entretien sur vos objectifs d''évolution.
+
+## Une offre indépendante durable
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic** | Analyse de 30 jours, rapport | 150 000 Ar |
+| **Mise en place** | Charte, guide, filtres, formation de l''équipe du client | 300 000 Ar |
+| **Modération mensuelle** | Une page et un groupe, 7 h à 22 h, rapport | 450 000 Ar par mois |
+| **Modération de lancement ou d''événement** | Couverture renforcée sur quelques jours | Tarif horaire |
+| **Formation** | Atelier pour les équipes de communication des clients | 250 000 Ar la session |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Dans une offre indépendante, précisez **ce que vous ne faites pas** : décisions juridiques, réponses officielles en cas de crise, signalements aux autorités. Ces décisions restent au client, que vous alertez immédiatement.
+
+### Le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Volume | 5 200 commentaires examinés |
+| Actions | 710 masqués ou supprimés, 41 membres bannis |
+| Délai moyen d''action | 18 minutes (contre 9 heures avant la mission) |
+| Arnaques | 6 faux comptes signalés à la plateforme, 4 fermés |
+| Sentiment | Plaintes principales sur les délais de livraison du soir |
+| Propositions | Message épinglé de prévention, réponse type sur les délais |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : enseigne de livraison de repas à Antananarivo, 40 000 abonnés.
+> **Problème** : fausses promotions et faux comptes demandant des paiements Mobile Money, décisions incohérentes.
+> **Solution** : diagnostic, charte, guide interne, filtres en français et en malgache, modération de 7 h à 22 h, message de prévention.
+> **Résultats en 3 mois** : délai moyen d''action de 9 heures à 18 minutes ; signalements d''arnaques par les clients en forte baisse ; aucune critique honnête supprimée.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Modérateur** | Pour couvrir plus d''heures ou plus de clients |
+| **Modérateur bilingue** (malgache, anglais) | Pour des clients qui le demandent |
+| **Responsable** (vous) | Guides, contrôle qualité, relation client |
+
+### Les règles de l''équipe
+
+1. **Guide par client** et calibration régulière.
+2. **Contrôle d''un échantillon** des décisions de chaque modérateur.
+3. **Rotation** et pauses ; pas de longues heures sans coupure.
+4. **Accès personnels** aux pages des clients (rôles de modérateur).
+5. **Confidentialité** : accords signés.
+
+> [!madagascar]
+> Une petite structure de modération à Madagascar peut proposer aux marques locales et à la diaspora une couverture **en français et en malgache**, avec des horaires étendus. C''est un service encore rare et utile face aux arnaques fréquentes sur les réseaux sociaux.
+
+## Préparer la suite de votre parcours
+
+| Direction | Ce qu''il faut ajouter |
+| --- | --- |
+| **Confiance et sécurité** | Analyse de données, enquêtes, rédaction de règles |
+| **Community management** | Voir la formation Community manager |
+| **Annotation et évaluation pour l''IA** | Voir les formations Annotateur de données IA et Évaluateur de réponses d''IA |
+| **Relation client** | Voir la formation Agent support chat et e-mail |
+| **Cybersécurité** | Voir la formation Analyste en cybersécurité |
+
+> [!retenir]
+> - En entreprise : rendre son travail visible et viser qualité, formation, règles ou encadrement.
+> - En indépendant : diagnostic, mise en place, mensuel, événements, formation.
+> - Préciser ce qui reste au client : juridique, crise, autorités.
+> - Un rapport mensuel et des études de cas chiffrées.
+> - Une équipe calibrée, contrôlée, protégée et tenue à la confidentialité.
+
+## Exercice pratique : votre plan de progression
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie (entreprise ou indépendant) et fixez un objectif à 12 mois.
+> 2. Si entreprise : rédigez votre plan d''évolution et 3 contributions visibles. Si indépendant : construisez vos offres et leurs prix.
+> 3. Rédigez une étude de cas à partir de vos projets.
+> 4. Envoyez 3 candidatures ou 3 propositions de diagnostic.
+>
+> **À livrer** : votre plan, vos offres ou contributions, votre étude de cas et vos envois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 4, 0, 'Comment rendre son travail visible pour évoluer ?', '["Critiquer ses collègues","Changer d''employeur chaque mois","Travailler en silence sans rien proposer","Notes de contexte, signalements et propositions d''amélioration"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 4, 1, 'Que reste-t-il au client dans une offre indépendante ?', '["Les décisions juridiques et les réponses officielles de crise","Le spam","Rien","Les insultes"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-a', 4, 2, 'Quel service est encore rare à Madagascar ?', '["Aucun","La modération en français et en malgache avec horaires étendus","La vente de filtres","La modération en latin"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quelle spécialité clarifie les lignes directrices ?', '["Formateur","Spécialiste des règles (policy)","Modérateur de communauté","Contrôleur qualité"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que regroupe la confiance et sécurité ?', '["La logistique","Le marketing","La comptabilité","Les équipes et pratiques qui protègent les utilisateurs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel constat montre un problème de cohérence ?', '["Décisions identiques sur les mêmes cas","Critiques supprimées et insultes laissées","Délais courts","Charte claire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que montre le taux d''appel et d''annulation ?', '["Les décisions contestées puis annulées","Le nombre d''abonnés","La vitesse du réseau","Le salaire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que font les classificateurs ?', '["Estimer la probabilité qu''un contenu viole une règle","Supprimer les comptes au hasard","Payer les modérateurs","Écrire les règles"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que faire si un filtre se trompe souvent sur un mot malgache ?', '["Supprimer le filtre seul","Le signaler avec des exemples","L''ignorer","Bannir les utilisateurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que permet la contestation dans l''outil de contrôle qualité ?', '["De changer son salaire","Rien","De supprimer un utilisateur","Au modérateur de contester une évaluation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel signal suggère des comptes coordonnés ?', '["40 comptes créés le même jour avec des noms proches","Un commentaire unique","Une photo de profil personnelle","Un compte ancien actif"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Sur quoi baser la décision d''un appel ?', '["Le ton de l''utilisateur","Le nombre d''abonnés","L''humeur du jour","Les règles et le contexte, pas le ton de l''utilisateur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'À quoi sert le tableau de bord de modération ?', '["Décorer le bureau","Rien","Organiser, former et anticiper","Payer les factures"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Pourquoi dater chaque modification de règle ?', '["Ce n''est pas utile","Pour embrouiller","Pour décorer","Pour savoir quelle version appliquer et communiquer les changements"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que fait-on en premier pendant une calibration ?', '["On vote à main levée","On supprime les cas","On discute avant de décider","Chacun décide seul sans discuter"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel contrôle pour un nouveau modérateur en semaine 3 ?', '["1 % des décisions","Aucun contrôle","100 % des décisions contrôlées","Seulement à la fin de l''année"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que publier lors d''une vague de fausses promotions ?', '["Un message de prévention épinglé","Rien","Une promotion réelle","Les numéros des arnaqueurs avec insultes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel message réduit les arnaques Mobile Money ?', '["« Envoyez votre code secret »","« Nous ne demandons jamais de paiement par message privé »","Aucun","« Payez vite »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quelle pratique limite l''exposition aux contenus sensibles ?', '["Travailler 12 heures sur la même file","Regarder en plein écran avec le son","La rotation entre files","Supprimer les pauses"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que fait l''équipe face à une demande d''une autorité ?', '["Le modérateur décide seul","Elle la publie","Elle la confie à des équipes spécialisées selon la procédure","Elle l''ignore"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Qu''est-ce que la motivation d''une décision ?', '["Un encouragement","L''explication donnée à l''utilisateur","Un filtre","Une prime"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Pourquoi un proverbe malgache peut-il poser problème ?', '["Il contient des liens","Il n''a aucun sens","Il est toujours interdit","Il peut paraître violent mot à mot sans l''être"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que proposer à un employeur sur les contenus malgaches ?', '["Rien","Des notes de contexte","De tout approuver","De tout supprimer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que demander par écrit avant de signer ?', '["Les files, le soutien, la rotation et l''évolution","Les mots de passe","Rien","Le salaire des collègues"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Peut-on avoir son téléphone personnel sur le poste si le site l''interdit ?', '["Oui, en silencieux","Oui","Non","Oui, pour les captures"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel rôle demande objectivité et retours pédagogiques ?', '["Annonceur","Contrôleur qualité","Modérateur débutant","Utilisateur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Que montre le rapport mensuel d''une offre indépendante ?', '["Rien","Volume, actions, délai, arnaques, sentiment et propositions","Seulement la facture","Les données personnelles des membres"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-a', 'Quel accès utiliser sur les pages des clients ?', '["Le mot de passe du client","Aucun","Un compte partagé","Un rôle de modérateur personnel"]'::jsonb, 3);
 
 -- client-4-f
 delete from public.exam_questions where course_id = 'client-4-f';

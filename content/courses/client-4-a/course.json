@@ -1,0 +1,97 @@
+{
+  "id": "client-4-a",
+  "hours": 13,
+  "description": "Ce niveau Avancé prépare le modérateur aux rôles qui améliorent le système : spécialité (contrôle qualité, règles, fraude, multilingue, communautés de marques, encadrement), diagnostic d'une communauté et indicateurs de confiance et sécurité, outils professionnels fournis par les plateformes (détection automatique, contrôle qualité, calibration, enquêtes sur comptes coordonnés, appels), règles applicables, formation, vagues d'arnaques et bien-être des équipes, obligations légales comme le DSA, contexte culturel et malgache, puis évolution en entreprise ou activité indépendante. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, diagnostiquer une communauté et lire les indicateurs",
+    "Comprendre la détection automatique, le contrôle qualité et la calibration",
+    "Documenter des comptes coordonnés et traiter les appels avec justesse",
+    "Rédiger des règles applicables, former et protéger une équipe",
+    "Appliquer les exigences internationales et apporter le contexte malgache",
+    "Évoluer en entreprise ou construire une offre indépendante durable"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, diagnostiquer une communauté et lire les indicateurs",
+      "summary": "Les 6 spécialités avancées, la confiance et sécurité, le diagnostic d'une communauté et son rapport, les indicateurs des équipes, et un parcours à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un contrôleur qualité ?", "options": ["Il revoit un échantillon des décisions et donne un retour", "Il crée les publicités", "Il programme les filtres seul", "Il recrute les utilisateurs"], "correct": 0 },
+        { "q": "Que mesure la prévalence ?", "options": ["La part des contenus problématiques encore visibles", "Le nombre de modérateurs", "Le salaire moyen", "La vitesse de connexion"], "correct": 0 },
+        { "q": "Un indicateur doit-il pousser à aller plus vite au détriment de la justesse ?", "options": ["Non", "Oui", "Oui, la nuit", "Oui, pour les nouveaux"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : détection, contrôle qualité, enquêtes et appels",
+      "summary": "Filtres, classificateurs et seuil de confiance, outil de contrôle qualité et calibration, signaux de comptes coordonnés et méthode d'enquête, traitement des appels et tableau de bord.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que crée un seuil de confiance trop bas ?", "options": ["Trop de contenus corrects bloqués", "Aucun blocage", "Plus de salaires", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce que la calibration ?", "options": ["Décider ensemble des mêmes cas pour s'accorder sur les règles", "Régler l'écran", "Payer les modérateurs", "Supprimer les règles"], "correct": 0 },
+        { "q": "Avec quelles données mener une enquête ?", "options": ["Uniquement les outils et données autorisés", "Toutes les informations trouvables sur la personne", "Les données personnelles hors cadre", "En contactant la personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : règles, calibration, formation, vagues et bien-être",
+      "summary": "Réécrire une règle floue, qualités d'une bonne règle, séance de calibration, formation progressive, réaction à une vague d'arnaques et pratiques de bien-être.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une règle applicable ?", "options": ["Deux modérateurs prennent la même décision", "Une règle très vague", "Une règle secrète", "Une règle sans exemple"], "correct": 0 },
+        { "q": "Par quelles files commence un nouveau modérateur ?", "options": ["Des files peu sensibles, progressivement", "Les plus difficiles", "Toutes à la fois", "Aucune"], "correct": 0 },
+        { "q": "Que faire face à des signes d'épuisement chez un collègue ?", "options": ["L'orienter vers le soutien avec bienveillance et discrétion", "L'ignorer", "En parler publiquement", "Le sanctionner"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Exigences internationales : lois, DSA, contexte culturel et confidentialité",
+      "summary": "Règles mondiales et lois nationales, obligations du DSA, motivation des décisions, contexte culturel et malgache, travail pour une entreprise de services numériques et confidentialité renforcée.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui décide de ce qui est illégal dans un pays ?", "options": ["Les équipes compétentes, via l'escalade", "Le modérateur seul", "L'utilisateur", "Personne"], "correct": 0 },
+        { "q": "Qu'impose notamment le DSA ?", "options": ["Motiver les décisions et offrir un recours", "Supprimer tous les commentaires", "Ne rien expliquer", "Interdire la modération"], "correct": 0 },
+        { "q": "Peut-on publier des informations sur les règles internes de son employeur ?", "options": ["Non, jamais", "Oui, anonymement", "Oui, sur les réseaux", "Oui, après 1 an"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son parcours : évolution en entreprise ou activité indépendante",
+      "summary": "Étapes d'évolution, contributions visibles, offres indépendantes, limites de responsabilité, rapport mensuel, études de cas, équipe et suite du parcours.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment rendre son travail visible pour évoluer ?", "options": ["Notes de contexte, signalements et propositions d'amélioration", "Travailler en silence sans rien proposer", "Critiquer ses collègues", "Changer d'employeur chaque mois"], "correct": 0 },
+        { "q": "Que reste-t-il au client dans une offre indépendante ?", "options": ["Les décisions juridiques et les réponses officielles de crise", "Le spam", "Les insultes", "Rien"], "correct": 0 },
+        { "q": "Quel service est encore rare à Madagascar ?", "options": ["La modération en français et en malgache avec horaires étendus", "Aucun", "La modération en latin", "La vente de filtres"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité clarifie les lignes directrices ?", "options": ["Spécialiste des règles (policy)", "Contrôleur qualité", "Formateur", "Modérateur de communauté"], "correct": 0 },
+    { "q": "Que regroupe la confiance et sécurité ?", "options": ["Les équipes et pratiques qui protègent les utilisateurs", "La comptabilité", "Le marketing", "La logistique"], "correct": 0 },
+    { "q": "Quel constat montre un problème de cohérence ?", "options": ["Critiques supprimées et insultes laissées", "Décisions identiques sur les mêmes cas", "Charte claire", "Délais courts"], "correct": 0 },
+    { "q": "Que montre le taux d'appel et d'annulation ?", "options": ["Les décisions contestées puis annulées", "Le nombre d'abonnés", "La vitesse du réseau", "Le salaire"], "correct": 0 },
+    { "q": "Que font les classificateurs ?", "options": ["Estimer la probabilité qu'un contenu viole une règle", "Payer les modérateurs", "Écrire les règles", "Supprimer les comptes au hasard"], "correct": 0 },
+    { "q": "Que faire si un filtre se trompe souvent sur un mot malgache ?", "options": ["Le signaler avec des exemples", "L'ignorer", "Supprimer le filtre seul", "Bannir les utilisateurs"], "correct": 0 },
+    { "q": "Que permet la contestation dans l'outil de contrôle qualité ?", "options": ["Au modérateur de contester une évaluation", "De supprimer un utilisateur", "De changer son salaire", "Rien"], "correct": 0 },
+    { "q": "Quel signal suggère des comptes coordonnés ?", "options": ["40 comptes créés le même jour avec des noms proches", "Un compte ancien actif", "Un commentaire unique", "Une photo de profil personnelle"], "correct": 0 },
+    { "q": "Sur quoi baser la décision d'un appel ?", "options": ["Les règles et le contexte, pas le ton de l'utilisateur", "Le ton de l'utilisateur", "L'humeur du jour", "Le nombre d'abonnés"], "correct": 0 },
+    { "q": "À quoi sert le tableau de bord de modération ?", "options": ["Organiser, former et anticiper", "Décorer le bureau", "Payer les factures", "Rien"], "correct": 0 },
+    { "q": "Pourquoi dater chaque modification de règle ?", "options": ["Pour savoir quelle version appliquer et communiquer les changements", "Pour décorer", "Ce n'est pas utile", "Pour embrouiller"], "correct": 0 },
+    { "q": "Que fait-on en premier pendant une calibration ?", "options": ["Chacun décide seul sans discuter", "On discute avant de décider", "On vote à main levée", "On supprime les cas"], "correct": 0 },
+    { "q": "Quel contrôle pour un nouveau modérateur en semaine 3 ?", "options": ["100 % des décisions contrôlées", "Aucun contrôle", "1 % des décisions", "Seulement à la fin de l'année"], "correct": 0 },
+    { "q": "Que publier lors d'une vague de fausses promotions ?", "options": ["Un message de prévention épinglé", "Rien", "Les numéros des arnaqueurs avec insultes", "Une promotion réelle"], "correct": 0 },
+    { "q": "Quel message réduit les arnaques Mobile Money ?", "options": ["« Nous ne demandons jamais de paiement par message privé »", "« Payez vite »", "Aucun", "« Envoyez votre code secret »"], "correct": 0 },
+    { "q": "Quelle pratique limite l'exposition aux contenus sensibles ?", "options": ["La rotation entre files", "Travailler 12 heures sur la même file", "Supprimer les pauses", "Regarder en plein écran avec le son"], "correct": 0 },
+    { "q": "Que fait l'équipe face à une demande d'une autorité ?", "options": ["Elle la confie à des équipes spécialisées selon la procédure", "Le modérateur décide seul", "Elle l'ignore", "Elle la publie"], "correct": 0 },
+    { "q": "Qu'est-ce que la motivation d'une décision ?", "options": ["L'explication donnée à l'utilisateur", "Une prime", "Un encouragement", "Un filtre"], "correct": 0 },
+    { "q": "Pourquoi un proverbe malgache peut-il poser problème ?", "options": ["Il peut paraître violent mot à mot sans l'être", "Il est toujours interdit", "Il n'a aucun sens", "Il contient des liens"], "correct": 0 },
+    { "q": "Que proposer à un employeur sur les contenus malgaches ?", "options": ["Des notes de contexte", "Rien", "De tout supprimer", "De tout approuver"], "correct": 0 },
+    { "q": "Que demander par écrit avant de signer ?", "options": ["Les files, le soutien, la rotation et l'évolution", "Rien", "Le salaire des collègues", "Les mots de passe"], "correct": 0 },
+    { "q": "Peut-on avoir son téléphone personnel sur le poste si le site l'interdit ?", "options": ["Non", "Oui", "Oui, en silencieux", "Oui, pour les captures"], "correct": 0 },
+    { "q": "Quel rôle demande objectivité et retours pédagogiques ?", "options": ["Contrôleur qualité", "Modérateur débutant", "Utilisateur", "Annonceur"], "correct": 0 },
+    { "q": "Que montre le rapport mensuel d'une offre indépendante ?", "options": ["Volume, actions, délai, arnaques, sentiment et propositions", "Seulement la facture", "Rien", "Les données personnelles des membres"], "correct": 0 },
+    { "q": "Quel accès utiliser sur les pages des clients ?", "options": ["Un rôle de modérateur personnel", "Le mot de passe du client", "Un compte partagé", "Aucun"], "correct": 0 }
+  ]
+}

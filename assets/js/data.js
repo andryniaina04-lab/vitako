@@ -1012,6 +1012,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-4-a": {
+  "hours": 13,
+  "description": "Ce niveau Avancé prépare le modérateur aux rôles qui améliorent le système : spécialité (contrôle qualité, règles, fraude, multilingue, communautés de marques, encadrement), diagnostic d'une communauté et indicateurs de confiance et sécurité, outils professionnels fournis par les plateformes (détection automatique, contrôle qualité, calibration, enquêtes sur comptes coordonnés, appels), règles applicables, formation, vagues d'arnaques et bien-être des équipes, obligations légales comme le DSA, contexte culturel et malgache, puis évolution en entreprise ou activité indépendante. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, diagnostiquer une communauté et lire les indicateurs",
+   "Comprendre la détection automatique, le contrôle qualité et la calibration",
+   "Documenter des comptes coordonnés et traiter les appels avec justesse",
+   "Rédiger des règles applicables, former et protéger une équipe",
+   "Appliquer les exigences internationales et apporter le contexte malgache",
+   "Évoluer en entreprise ou construire une offre indépendante durable"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer une communauté et lire les indicateurs",
+    "summary": "Les 6 spécialités avancées, la confiance et sécurité, le diagnostic d'une communauté et son rapport, les indicateurs des équipes, et un parcours à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic de modération d'une communauté",
+     "Les indicateurs des équipes confiance et sécurité",
+     "Un parcours à plus forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : détection, contrôle qualité, enquêtes et appels",
+    "summary": "Filtres, classificateurs et seuil de confiance, outil de contrôle qualité et calibration, signaux de comptes coordonnés et méthode d'enquête, traitement des appels et tableau de bord.",
+    "sections": [
+     "Détection automatique et modération humaine",
+     "L'outil de contrôle qualité",
+     "Les enquêtes sur des comptes coordonnés",
+     "Les appels des utilisateurs",
+     "Le tableau de bord de modération",
+     "Exercice pratique : comprendre les systèmes"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : règles, calibration, formation, vagues et bien-être",
+    "summary": "Réécrire une règle floue, qualités d'une bonne règle, séance de calibration, formation progressive, réaction à une vague d'arnaques et pratiques de bien-être.",
+    "sections": [
+     "Améliorer une règle",
+     "La séance de calibration",
+     "Former un nouveau modérateur",
+     "Réagir à une vague de spam ou d'arnaques",
+     "Le bien-être de l'équipe",
+     "Exercice pratique : améliorer le système"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Exigences internationales : lois, DSA, contexte culturel et confidentialité",
+    "summary": "Règles mondiales et lois nationales, obligations du DSA, motivation des décisions, contexte culturel et malgache, travail pour une entreprise de services numériques et confidentialité renforcée.",
+    "sections": [
+     "Des règles qui varient selon les pays",
+     "Les obligations légales des plateformes",
+     "Contexte culturel et langues",
+     "Travailler pour une entreprise de services numériques",
+     "Confidentialité et sécurité renforcées",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son parcours : évolution en entreprise ou activité indépendante",
+    "summary": "Étapes d'évolution, contributions visibles, offres indépendantes, limites de responsabilité, rapport mensuel, études de cas, équipe et suite du parcours.",
+    "sections": [
+     "Évoluer dans une entreprise",
+     "Une offre indépendante durable",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer la suite de votre parcours",
+     "Exercice pratique : votre plan de progression"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "client-4-f": {
   "hours": 12,
   "description": "Le modérateur de contenu vérifie que les contenus publiés respectent les règles d'une plateforme ou d'une communauté. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des entreprises de services numériques, des marques, des médias et des communautés, avec les outils fournis par la plateforme : types de modération, lignes directrices, arbre de décision, contexte et langues, arnaques et faux comptes, escalade, protection face aux contenus difficiles, confidentialité, charte, gestion de crise et rapport. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
