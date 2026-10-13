@@ -850,6 +850,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-3-f": {
+  "hours": 14,
+  "description": "Le gestionnaire de réservations tient à jour les disponibilités et les prix d'un hébergement sur tous ses canaux et traite chaque réservation. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des hôtels, des lodges, des propriétaires et des agences de voyage, à Madagascar et à l'étranger, avec les extranets et Google Sheets : parcours d'une réservation, canaux de vente, planning, plans tarifaires, indicateurs, messages aux voyageurs, groupes, surréservation et bilan mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, le parcours d'une réservation et les canaux de vente",
+   "Tenir un planning sans erreur et appliquer plans tarifaires et politiques",
+   "Calculer le taux d'occupation, le prix moyen et le RevPAR",
+   "Utiliser les extranets, un fichier de suivi et des modèles de messages",
+   "Traiter une demande de groupe, réagir à une surréservation et faire un bilan",
+   "Présenter son travail, choisir sa rémunération et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de gestionnaire de réservations depuis Madagascar",
+    "summary": "Le parcours d'une réservation, les canaux de vente et les OTA, le vocabulaire de l'hôtellerie, la surréservation, les qualités et les clients.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le parcours d'une réservation",
+     "Les canaux de vente",
+     "Le vocabulaire de base",
+     "Les qualités du gestionnaire",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Exercice pratique : découvrir les canaux"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : planning, plans tarifaires, parité, indicateurs et messages",
+    "summary": "Planning des chambres et règles d'or, plans tarifaires et politiques d'annulation, parité tarifaire, taux d'occupation, prix moyen, RevPAR et messages aux voyageurs.",
+    "sections": [
+     "Le planning des chambres",
+     "Plans tarifaires et politiques d'annulation",
+     "La cohérence des prix entre les canaux",
+     "Les indicateurs de base",
+     "Communiquer avec les voyageurs",
+     "Exercice pratique : un planning et des messages"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : extranets, Google Sheets, modèles et channel managers",
+    "summary": "Fonctions et routine des extranets, fichier de suivi en 5 onglets, modèles de messages multilingues, PMS et channel manager, SiteMinder et Cloudbeds.",
+    "sections": [
+     "Les extranets des OTA",
+     "Google Sheets : le fichier de suivi",
+     "Les modèles de messages",
+     "PMS et channel manager",
+     "Les outils payants",
+     "Exercice pratique : votre système de réservation"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : un mois au Lodge Tsara",
+    "summary": "Prise en main, routines quotidiennes et hebdomadaires, demande de groupe et devis, réaction à une surréservation, bilan mensuel et continuité.",
+    "sections": [
+     "Le cas pratique : « Lodge Tsara »",
+     "Étape 1 : la prise en main",
+     "Étape 2 : les routines",
+     "Étape 3 : une demande de groupe",
+     "Étape 4 : réagir à une surréservation",
+     "Étape 5 : le bilan mensuel",
+     "Exercice pratique : un mois au Lodge Tsara"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Dossier de présentation, 5 canaux, forfait, pourcentage et prime, conditions en 7 points, jamais d'encaissement personnel, paiements et évolution.",
+    "sections": [
+     "Votre dossier de présentation",
+     "Où trouver des clients : 5 canaux",
+     "Les modes de rémunération",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : décrocher votre premier client"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "data-0-a": {
   "hours": 16,
   "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

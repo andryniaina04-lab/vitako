@@ -79,7 +79,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true),
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true),
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true),
-  ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 10, false),
+  ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true),
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 11, false),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
@@ -3819,6 +3819,581 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que faire des demandes de désinscription ?', '["Les respecter","Les rappeler","Les vendre","Les ignorer"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quel modèle de prix équilibre les risques ?', '["Le paiement au mot","Le modèle mixte","Aucun","Le travail gratuit"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle évolution consiste à mener les rendez-vous et conclure ?', '["Comptable","Transcripteur","Commercial (business developer)","Graphiste"]'::jsonb, 2);
+
+-- client-3-f
+delete from public.exam_questions where course_id = 'client-3-f';
+delete from public.module_questions where course_id = 'client-3-f';
+delete from public.lessons where course_id = 'client-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-f', 0, 'Le métier de gestionnaire de réservations depuis Madagascar', 'Le parcours d''une réservation, les canaux de vente et les OTA, le vocabulaire de l''hôtellerie, la surréservation, les qualités et les clients.', 'Les hôtels, maisons d''hôtes, lodges et agences de voyage reçoivent des réservations par de nombreux canaux : sites de réservation en ligne, e-mail, téléphone, WhatsApp, leur propre site. Le gestionnaire de réservations s''occupe de tout cela à distance : il tient les disponibilités à jour, confirme les réservations, répond aux voyageurs et évite les surréservations. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un gestionnaire de réservations.
+> 2. Décrire le parcours d''une réservation.
+> 3. Reconnaître les canaux de vente d''un hébergement.
+> 4. Connaître le vocabulaire de base de l''hôtellerie.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un gestionnaire de réservations **tient à jour les disponibilités et les prix d''un hébergement sur tous ses canaux de vente, traite chaque réservation de la demande jusqu''au départ du client, et répond aux voyageurs**.
+
+## Le parcours d''une réservation
+
+| N° | Étape | Ce que fait le gestionnaire |
+| --- | --- | --- |
+| 1 | **Demande** | Répond aux questions (disponibilités, prix, transferts) |
+| 2 | **Réservation** | Enregistre ou reçoit la réservation, vérifie les détails |
+| 3 | **Confirmation** | Envoie la confirmation, demande l''acompte si nécessaire |
+| 4 | **Avant l''arrivée** | Rappels, demandes spéciales, heure d''arrivée, transfert |
+| 5 | **Séjour** | Transmet les informations à l''équipe sur place |
+| 6 | **Départ** | Facture, demande d''avis |
+| 7 | **Après** | Répond aux avis, gère les réclamations |
+
+## Les canaux de vente
+
+| Canal | Exemples | Point clé |
+| --- | --- | --- |
+| **Agences de voyage en ligne** (OTA) | Booking.com, Expedia, Airbnb | Grande visibilité, commission sur chaque réservation |
+| **Réservation directe** | Site de l''hôtel, e-mail, téléphone, WhatsApp | Pas de commission, relation directe |
+| **Agences de voyage et tour-opérateurs** | Agences locales et étrangères | Contrats, tarifs négociés, allotements |
+| **Entreprises et groupes** | Séminaires, ONG, missions | Devis, factures, conditions particulières |
+
+> [!definition] OTA (Online Travel Agency)
+> Une agence de voyage en ligne, comme Booking.com ou Expedia. Elle affiche l''hébergement à des millions de voyageurs et prend une **commission** sur chaque réservation (son montant varie selon le contrat et le pays).
+
+## Le vocabulaire de base
+
+| Terme | Signification |
+| --- | --- |
+| **Disponibilités** (inventaire) | Le nombre de chambres libres pour chaque nuit |
+| **Type de chambre** | Double, twin, familiale, bungalow, suite |
+| **Plan tarifaire** | Un prix avec ses conditions (petit-déjeuner inclus, non remboursable…) |
+| **Politique d''annulation** | Les conditions et frais en cas d''annulation |
+| **Surréservation** (overbooking) | Plus de réservations que de chambres disponibles |
+| **No-show** | Un client qui ne vient pas sans avoir annulé |
+| **Allotement** | Un nombre de chambres réservé à l''avance pour une agence |
+| **Taux d''occupation** | Le pourcentage de chambres occupées |
+| **Extranet** | L''espace en ligne où l''hôtel gère son offre sur une OTA |
+
+> [!attention]
+> La **surréservation** est l''erreur la plus grave du métier : un voyageur arrive, souvent de loin et fatigué, et il n''y a pas de chambre pour lui. Votre rôle principal est de l''éviter en mettant à jour les disponibilités partout, immédiatement.
+
+## Les qualités du gestionnaire
+
+1. **La rigueur** : chaque date, chaque nom, chaque prix vérifié.
+2. **La réactivité** : les voyageurs attendent une réponse rapide.
+3. **Le sens du service** : politesse, chaleur, solutions.
+4. **Les langues** : français, anglais, souvent d''autres langues utiles.
+5. **L''organisation** : de nombreuses réservations et demandes en même temps.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Hôtels et lodges** à Nosy Be, Sainte-Marie, Morondava, Tuléar, Fianarantsoa, Antananarivo.
+2. **Maisons d''hôtes** et locations de vacances.
+3. **Agences de voyage réceptives** qui organisent des circuits.
+
+### À l''étranger
+
+1. **Petits hôtels et locations** en Europe, à La Réunion, à Maurice.
+2. **Propriétaires de plusieurs logements** sur Airbnb et Booking.com.
+3. **Agences** qui gèrent des logements pour leurs propriétaires.
+
+> [!madagascar] Votre avantage
+> Le tourisme est un secteur important à Madagascar, et beaucoup d''établissements n''ont pas de personne dédiée aux réservations en ligne. Vous connaissez les destinations, les distances, les saisons et les difficultés de transport : un vrai plus pour répondre aux voyageurs.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Plusieurs onglets ouverts en même temps |
+| **Téléphone** | Avec WhatsApp professionnel |
+| **Connexion** | Stable, avec une solution de secours |
+| **Électricité** | Batterie ou onduleur |
+| **Outils** | Google Sheets, messagerie, accès aux extranets fournis par l''hôtel |
+
+> [!retenir]
+> - Le gestionnaire tient les disponibilités à jour et traite chaque réservation.
+> - Demande, réservation, confirmation, avant l''arrivée, séjour, départ, après.
+> - OTA, réservation directe, agences, entreprises.
+> - La surréservation est l''erreur la plus grave.
+> - Rigueur, réactivité, service, langues, organisation.
+
+## Exercice pratique : découvrir les canaux
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez un hôtel à Madagascar présent sur plusieurs sites.
+> 2. Comparez ses prix, ses types de chambres et ses politiques d''annulation sur 2 OTA et sur son site.
+> 3. Notez les différences et les incohérences éventuelles.
+> 4. Listez 10 questions qu''un voyageur pourrait poser avant de réserver.
+>
+> **À livrer** : votre tableau comparatif et vos 10 questions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 0, 0, 'Qu''est-ce qu''une OTA ?', '["Un logiciel de comptabilité","Une agence de voyage en ligne comme Booking.com","Un moyen de paiement","Un hôtel"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 0, 1, 'Quelle est l''erreur la plus grave du métier ?', '["Un planning coloré","La surréservation","Un message trop poli","Une réponse rapide"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 0, 2, 'Qu''est-ce qu''un no-show ?', '["Une chambre fermée","Un avis négatif","Un spectacle annulé","Un client qui ne vient pas sans avoir annulé"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-f', 1, 'Les bases : planning, plans tarifaires, parité, indicateurs et messages', 'Planning des chambres et règles d''or, plans tarifaires et politiques d''annulation, parité tarifaire, taux d''occupation, prix moyen, RevPAR et messages aux voyageurs.', 'Ce module vous donne les bases de la gestion des réservations : le planning des chambres, les plans tarifaires et les politiques d''annulation, la parité tarifaire, les indicateurs de l''hôtellerie et la communication avec les voyageurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Tenir un planning des chambres sans erreur.
+> 2. Comprendre les plans tarifaires et les politiques d''annulation.
+> 3. Respecter la cohérence des prix entre les canaux.
+> 4. Calculer les indicateurs de base de l''hôtellerie.
+> 5. Rédiger des messages clairs aux voyageurs.
+
+## Le planning des chambres
+
+> [!definition] Planning des chambres
+> Un tableau qui montre, pour chaque chambre et chaque nuit, si elle est libre, réservée ou bloquée. C''est la référence unique des disponibilités.
+
+| Chambre | 12/11 | 13/11 | 14/11 | 15/11 |
+| --- | --- | --- | --- | --- |
+| Bungalow 1 | Dupont | Dupont | libre | libre |
+| Bungalow 2 | libre | Rakoto | Rakoto | Rakoto |
+| Bungalow 3 | travaux | travaux | libre | Smith |
+
+### Les règles d''or
+
+1. **Une seule source de vérité** : le planning (ou le logiciel de l''hôtel), pas les e-mails ou les messages.
+2. **Mise à jour immédiate** après chaque réservation, modification ou annulation.
+3. **Fermeture sur tous les canaux** quand la dernière chambre est vendue.
+4. **Vérification quotidienne** : le planning correspond-il aux réservations des OTA ?
+
+> [!attention]
+> Une réservation par WhatsApp ou par téléphone qui n''est pas reportée immédiatement dans le planning et fermée sur les OTA est la **cause principale des surréservations** dans les petits établissements.
+
+## Plans tarifaires et politiques d''annulation
+
+| Plan tarifaire | Conditions | Exemple de prix (donné en exemple) |
+| --- | --- | --- |
+| **Flexible** | Annulation gratuite jusqu''à 7 jours avant | 180 000 Ar la nuit |
+| **Non remboursable** | Payé à la réservation, aucun remboursement | 155 000 Ar la nuit |
+| **Demi-pension** | Petit-déjeuner et dîner inclus | 240 000 Ar la nuit |
+| **Long séjour** | À partir de 7 nuits | −10 % |
+
+| Situation | Que faire |
+| --- | --- |
+| Le client annule dans les délais | Annuler sans frais, rouvrir les disponibilités |
+| Le client annule hors délai | Appliquer la politique, avec tact ; proposer un report si l''hôtel l''autorise |
+| No-show | Appliquer la politique (souvent facturation de la première nuit), selon les règles de l''hôtel et du canal |
+
+## La cohérence des prix entre les canaux
+
+> [!definition] Parité tarifaire
+> Le fait de proposer le même prix pour la même chambre et les mêmes conditions sur les différents canaux. Les règles de parité dépendent des contrats avec les OTA et de la loi du pays ; certains pays les ont limitées.
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| Vérifier régulièrement les prix affichés sur chaque canal | Éviter les erreurs et la confusion des clients |
+| Connaître les règles du contrat de l''hôtel avec chaque OTA | Éviter les pénalités |
+| Mettre en valeur les avantages de la réservation directe autorisés (petit cadeau, transfert, flexibilité) | Encourager les réservations sans commission |
+
+## Les indicateurs de base
+
+| Indicateur | Calcul | Exemple |
+| --- | --- | --- |
+| **Taux d''occupation** | Nuits vendues ÷ nuits disponibles | 210 ÷ 300 = 70 % |
+| **Prix moyen par nuit** (ADR) | Chiffre d''affaires des chambres ÷ nuits vendues | 37 800 000 ÷ 210 = 180 000 Ar |
+| **Revenu par chambre disponible** (RevPAR) | Chiffre d''affaires des chambres ÷ nuits disponibles | 37 800 000 ÷ 300 = 126 000 Ar |
+| **Part des canaux** | Réservations par canal ÷ total | Booking 45 %, direct 30 %, agences 25 % |
+
+> [!astuce]
+> Le RevPAR combine l''occupation et le prix : il montre si l''hôtel gagne vraiment plus. Remplir l''hôtel en baissant fortement les prix n''est pas toujours une bonne affaire.
+
+## Communiquer avec les voyageurs
+
+| Message | Contenu essentiel |
+| --- | --- |
+| **Confirmation** | Nom, dates, type de chambre, plan tarifaire, prix, conditions d''annulation, acompte |
+| **Avant l''arrivée** | Adresse, plan d''accès, heure d''arrivée, transfert, contact |
+| **Réponse à une demande** | Disponibilités, prix, conditions, lien ou moyen de réserver |
+| **Après le séjour** | Remerciement, demande d''avis |
+
+> [!exemple] Message avant l''arrivée
+> « Bonjour Madame Martin, nous avons hâte de vous accueillir au Lodge Tsara le 12 novembre. Le lodge se trouve à 20 minutes de l''aéroport de Fascene. Souhaitez-vous que nous organisions votre transfert (30 000 Ar par trajet, à régler sur place) ? Pouvez-vous nous indiquer votre numéro de vol ? Bonne préparation de voyage. Fara, réservations. »
+
+> [!madagascar]
+> Les voyageurs étrangers ont souvent besoin d''informations pratiques sur Madagascar : état des routes, durée réelle des trajets, saison des pluies, change, électricité. Des réponses **exactes et honnêtes** évitent les mauvaises surprises et les mauvais avis.
+
+> [!retenir]
+> - Un planning unique, mis à jour immédiatement, vérifié chaque jour.
+> - Plans tarifaires et politiques d''annulation appliqués avec tact.
+> - Des prix cohérents selon les contrats de l''hôtel.
+> - Occupation, prix moyen, RevPAR, part des canaux.
+> - Des messages complets et honnêtes à chaque étape.
+
+## Exercice pratique : un planning et des messages
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez dans Google Sheets le planning d''un lodge de 6 bungalows sur un mois.
+> 2. Enregistrez 15 réservations fictives, dont 2 annulations et 1 modification.
+> 3. Calculez le taux d''occupation, le prix moyen et le RevPAR du mois.
+> 4. Rédigez une confirmation, un message avant l''arrivée et une réponse à une annulation hors délai.
+>
+> **À livrer** : votre planning, vos calculs et vos 3 messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 1, 0, 'Quelle est la cause principale des surréservations dans les petits établissements ?', '["Une chambre trop grande","Un avis négatif","Une réservation directe non reportée dans le planning","Un prix trop bas"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 1, 1, '210 nuits vendues sur 300 disponibles : quel taux d''occupation ?', '["30 %","210 %","90 %","70 %"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 1, 2, 'Que montre le RevPAR ?', '["La note des avis","Le nombre de clients","Le revenu par chambre disponible","Le prix du petit-déjeuner"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-f', 2, 'Les outils : extranets, Google Sheets, modèles et channel managers', 'Fonctions et routine des extranets, fichier de suivi en 5 onglets, modèles de messages multilingues, PMS et channel manager, SiteMinder et Cloudbeds.', 'Ce module vous fait prendre en main les outils du gestionnaire de réservations : les **extranets** des agences de voyage en ligne, **Google Sheets** pour le planning et le suivi, les modèles de messages, puis les outils payants des établissements organisés : les **channel managers** comme **SiteMinder** ou **Cloudbeds**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Gérer les disponibilités, les prix et les réservations dans un extranet.
+> 2. Organiser un fichier de suivi complet dans Google Sheets.
+> 3. Préparer des modèles de messages en plusieurs langues.
+> 4. Comprendre le rôle d''un PMS et d''un channel manager.
+> 5. Savoir ce qu''apportent SiteMinder et Cloudbeds.
+
+## Les extranets des OTA
+
+| Fonction (noms variables selon la plateforme) | Usage |
+| --- | --- |
+| **Calendrier des tarifs et disponibilités** | Ouvrir, fermer, modifier les prix par date |
+| **Réservations** | Voir, confirmer, gérer les modifications et annulations |
+| **Messagerie** | Répondre aux voyageurs |
+| **Description et photos** | Mettre à jour la présentation de l''établissement |
+| **Politiques** | Annulation, enfants, animaux, horaires |
+| **Avis** | Lire et répondre |
+| **Promotions** | Offres spéciales, réductions de dernière minute |
+| **Factures et commissions** | Suivre ce que l''hôtel doit à la plateforme |
+
+> [!attention]
+> Vous travaillez avec un **accès utilisateur personnel** créé par l''hôtel, avec les droits nécessaires. Ne demandez jamais le mot de passe principal du propriétaire, et ne modifiez jamais les coordonnées bancaires du compte.
+
+### La routine quotidienne dans les extranets
+
+1. **Vérifier** les nouvelles réservations, modifications et annulations.
+2. **Reporter** chaque changement dans le planning.
+3. **Fermer** les disponibilités vendues ailleurs.
+4. **Répondre** aux messages des voyageurs.
+5. **Contrôler** que les prix affichés sont corrects.
+
+## Google Sheets : le fichier de suivi
+
+| Onglet | Contenu |
+| --- | --- |
+| **Planning** | Chambres en lignes, nuits en colonnes |
+| **Réservations** | Numéro, nom, canal, dates, chambre, plan, prix, acompte, statut |
+| **Demandes** | Demandes en cours (devis, groupes) et relances |
+| **Arrivées** | Arrivées des 7 prochains jours, avec heure et transfert |
+| **Tableau de bord** | Occupation, prix moyen, part des canaux |
+
+> [!astuce]
+> Utilisez la **mise en forme conditionnelle** pour colorer automatiquement les nuits réservées, et la **validation des données** pour choisir le canal et le statut dans une liste. Moins de saisie libre, c''est moins d''erreurs.
+
+## Les modèles de messages
+
+| Modèle | Langues |
+| --- | --- |
+| Confirmation de réservation directe | Français, anglais |
+| Demande d''acompte | Français, anglais |
+| Informations avant l''arrivée | Français, anglais, italien ou allemand si utile |
+| Réponse à une demande de groupe | Français, anglais |
+| Remerciement et demande d''avis | Français, anglais |
+| Réponse à un avis négatif | Selon la langue de l''avis |
+
+> [!madagascar]
+> Les touristes en Madagascar viennent souvent de France, d''Italie, d''Allemagne, de La Réunion et d''Amérique du Nord. Préparer quelques modèles validés en **italien** ou en **allemand** (traduits et relus par une personne qui maîtrise la langue) est un vrai service pour l''hôtel.
+
+## PMS et channel manager
+
+> [!definition] PMS (Property Management System)
+> Le logiciel de gestion de l''hôtel : planning, réservations, fiches clients, arrivées, départs, factures.
+
+> [!definition] Channel manager
+> Un outil qui relie le PMS ou le planning à toutes les OTA. Quand une chambre est vendue sur un canal, il **met à jour automatiquement** les disponibilités sur tous les autres. Il réduit fortement le risque de surréservation.
+
+| Sans channel manager | Avec channel manager |
+| --- | --- |
+| Mise à jour manuelle de chaque extranet | Mise à jour automatique de tous les canaux |
+| Risque élevé de surréservation | Risque réduit |
+| Modifications de prix une par une | Prix modifiés en une fois pour tous les canaux |
+| Adapté à un très petit établissement | Indispensable dès plusieurs canaux et chambres |
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **SiteMinder** | Channel manager très répandu, connexion à de nombreuses OTA, moteur de réservation pour le site de l''hôtel, selon l''offre |
+| **Cloudbeds** | Plateforme tout-en-un : PMS, channel manager, moteur de réservation, paiements, rapports, selon l''offre |
+
+> [!madagascar]
+> Ces abonnements sont **payés par l''établissement**. Pour vous former, regardez les démonstrations et centres d''aide officiels, et demandez aux hôtels qui les utilisent de vous montrer leur fonctionnement. Savoir travailler avec un channel manager est un argument fort pour être recruté.
+
+> [!retenir]
+> - Une routine quotidienne dans les extranets, avec un accès personnel.
+> - Un fichier de suivi avec planning, réservations, demandes, arrivées, tableau de bord.
+> - Des modèles de messages validés dans plusieurs langues.
+> - Le PMS gère l''hôtel ; le channel manager synchronise les canaux.
+> - SiteMinder et Cloudbeds, payés par l''établissement.
+
+## Exercice pratique : votre système de réservation
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Complétez votre fichier Google Sheets avec les 5 onglets, la mise en forme conditionnelle et la validation des données.
+> 2. Rédigez 6 modèles de messages en français et en anglais.
+> 3. Regardez la démonstration d''un channel manager et résumez son fonctionnement en 10 lignes.
+> 4. Rédigez votre routine quotidienne sous forme de liste de contrôle.
+>
+> **À livrer** : le lien de votre fichier, vos modèles, votre résumé et votre liste de contrôle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 2, 0, 'Quel accès utiliser dans un extranet ?', '["Le mot de passe du propriétaire","Un compte partagé","Aucun","Un accès utilisateur personnel créé par l''hôtel"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 2, 1, 'Que fait un channel manager ?', '["Il fait la comptabilité","Il nettoie les chambres","Il synchronise automatiquement les disponibilités sur tous les canaux","Il traduit les avis"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 2, 2, 'Qu''est-ce qu''un PMS ?', '["Un type de chambre","Le logiciel de gestion de l''hôtel","Un moyen de transport","Une agence de voyage"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-f', 3, 'Premier projet : un mois au Lodge Tsara', 'Prise en main, routines quotidiennes et hebdomadaires, demande de groupe et devis, réaction à une surréservation, bilan mensuel et continuité.', 'Dans ce module, vous gérez les réservations d''un lodge pendant un mois de haute saison, comme le ferait un gestionnaire à distance. Vous apprendrez à prendre en main un établissement, à suivre la routine quotidienne, à traiter une demande de groupe, à réagir à une surréservation et à faire un bilan utile au propriétaire.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Prendre en main la gestion d''un nouvel établissement.
+> 2. Suivre une routine quotidienne et hebdomadaire.
+> 3. Traiter une demande de groupe avec un devis.
+> 4. Réagir à une surréservation.
+> 5. Rédiger un bilan mensuel.
+
+## Le cas pratique : « Lodge Tsara »
+
+> [!exemple] Votre client
+> **Le Lodge Tsara** est un établissement de 10 bungalows près de Nosy Be. Il est présent sur 2 OTA et reçoit aussi des réservations directes par e-mail et WhatsApp. Il n''a pas encore de channel manager. Le propriétaire, M. Rivo, vous confie la gestion des réservations à distance, 7 jours sur 7, pendant la haute saison (juillet à octobre).
+
+## Étape 1 : la prise en main
+
+| À obtenir | Pourquoi |
+| --- | --- |
+| Accès personnels aux 2 extranets | Gérer disponibilités et réservations |
+| Accès à la messagerie et au WhatsApp professionnel | Répondre aux demandes directes |
+| Liste des bungalows et de leurs caractéristiques | Bien vendre chaque type |
+| Plans tarifaires et politiques | Appliquer les bonnes règles |
+| Tarifs des transferts et excursions | Répondre aux voyageurs |
+| Contact de l''équipe sur place | Transmettre arrivées et demandes spéciales |
+| Procédure d''acompte | Savoir comment le client paie |
+
+> [!astuce]
+> Commencez par **vérifier le planning existant** ligne par ligne avec les réservations de chaque canal. Il est fréquent de trouver des erreurs dès le premier jour.
+
+## Étape 2 : les routines
+
+### Chaque jour
+
+1. Nouvelles réservations, modifications et annulations sur chaque canal.
+2. Mise à jour du planning et fermeture sur les autres canaux.
+3. Réponses aux messages (objectif : moins de 2 heures en journée).
+4. Liste des arrivées du lendemain envoyée à l''équipe sur place.
+5. Relance des acomptes non reçus.
+
+### Chaque semaine
+
+1. Vérification complète du planning sur les 60 jours suivants.
+2. Contrôle des prix affichés sur chaque canal.
+3. Réponse à tous les avis de la semaine.
+4. Point avec le propriétaire.
+
+## Étape 3 : une demande de groupe
+
+> [!exemple] La demande
+> Une agence de voyage italienne demande 6 bungalows pour 3 nuits, du 14 au 17 août, en demi-pension, avec transferts aéroport, pour un groupe de 12 personnes.
+
+| Étape | Action |
+| --- | --- |
+| **Vérifier** | Disponibilités réelles des 6 bungalows sur ces dates |
+| **Bloquer** | Une option de 48 heures, avec l''accord du propriétaire |
+| **Calculer** | Hébergement, repas, transferts, éventuelle remise de groupe validée par le propriétaire |
+| **Envoyer** | Un devis clair avec conditions d''acompte et d''annulation |
+| **Relancer** | Avant la fin de l''option |
+| **Confirmer ou libérer** | Selon la réponse |
+
+### Le devis
+
+```
+Devis – Agence Viaggi Sole – Groupe de 12 personnes
+Dates : du 14 au 17 août (3 nuits)
+6 bungalows doubles en demi-pension : 6 × 3 × 240 000 Ar = 4 320 000 Ar
+Remise groupe (accord du propriétaire) : −5 %, soit −216 000 Ar
+Transferts aéroport aller-retour : 2 × 60 000 Ar = 120 000 Ar
+Total : 4 224 000 Ar
+Acompte : 30 % à la confirmation
+Annulation : gratuite jusqu''à 30 jours avant l''arrivée, puis acompte conservé
+Option valable jusqu''au 20 juin, 18 h
+```
+
+*(Prix donnés en exemple.)*
+
+## Étape 4 : réagir à une surréservation
+
+> [!attention]
+> Malgré toutes les précautions, une surréservation peut arriver (par exemple deux réservations reçues en même temps sur deux canaux). Il faut agir **immédiatement**, avant l''arrivée du client.
+
+| Étape | Action |
+| --- | --- |
+| 1 | Prévenir le propriétaire tout de suite |
+| 2 | Chercher une solution : autre chambre libérée, client qui accepte de changer de dates |
+| 3 | Sinon, trouver un établissement équivalent ou supérieur à proximité |
+| 4 | Contacter le client concerné, s''excuser, proposer la solution (transfert offert, prise en charge de la différence selon la décision du propriétaire) |
+| 5 | Noter la cause et corriger la procédure |
+
+## Étape 5 : le bilan mensuel
+
+| Rubrique | Exemple (août) |
+| --- | --- |
+| Taux d''occupation | 86 % |
+| Prix moyen par nuit | 205 000 Ar |
+| RevPAR | 176 300 Ar |
+| Part des canaux | OTA 1 : 48 % ; OTA 2 : 17 % ; direct : 35 % |
+| Délai moyen de réponse | 1 h 10 |
+| Avis | 14 nouveaux, note moyenne 9,1 sur 10, tous ont reçu une réponse |
+| Incidents | 1 surréservation évitée de justesse |
+| Proposition | Installer un channel manager avant la prochaine haute saison |
+
+> [!madagascar]
+> Pendant la haute saison, les **coupures d''électricité et de connexion** sont un vrai risque pour un gestionnaire à distance. Prévoyez une batterie, un forfait mobile de secours et un collègue ou le propriétaire capable de fermer les disponibilités en urgence si vous êtes injoignable.
+
+> [!retenir]
+> - Une prise en main complète et un planning vérifié dès le premier jour.
+> - Des routines quotidiennes et hebdomadaires.
+> - Une demande de groupe : vérifier, bloquer, chiffrer, envoyer, relancer.
+> - Une surréservation : agir immédiatement, trouver une solution, corriger la cause.
+> - Un bilan mensuel chiffré avec des propositions.
+
+## Exercice pratique : un mois au Lodge Tsara
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Préparez la liste de prise en main et vos routines.
+> 2. Simulez un mois : 40 réservations sur 3 canaux, 5 annulations, une demande de groupe, une surréservation.
+> 3. Rédigez le devis du groupe et les messages de la surréservation.
+> 4. Rédigez le bilan mensuel avec vos calculs.
+>
+> **À livrer** : votre fichier de suivi, votre devis, vos messages et votre bilan. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 3, 0, 'Que vérifier dès le premier jour ?', '["Le planning ligne par ligne avec chaque canal","Le menu","La décoration","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 3, 1, 'Que faire pendant qu''un groupe réfléchit ?', '["Annuler la demande","Rien","Vendre les chambres à d''autres","Bloquer une option limitée dans le temps"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 3, 2, 'Quelle est la première action en cas de surréservation ?', '["Supprimer une réservation au hasard","Ne rien dire","Prévenir le propriétaire immédiatement","Attendre l''arrivée du client"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-f', 4, 'Trouver des clients et se faire payer', 'Dossier de présentation, 5 canaux, forfait, pourcentage et prime, conditions en 7 points, jamais d''encaissement personnel, paiements et évolution.', 'Les hôtels, lodges, propriétaires de logements et agences de voyage recherchent des gestionnaires de réservations fiables. Ce dernier module vous montre comment vous présenter, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer un dossier de présentation convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Choisir un mode de rémunération adapté.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Votre dossier de présentation
+
+1. **Un profil** : langues, outils maîtrisés, disponibilités (7 jours sur 7 ou non).
+2. **Votre projet Lodge Tsara** : fichier de suivi, devis, bilan mensuel.
+3. **Vos modèles de messages** en plusieurs langues.
+4. **Votre plan de continuité** : électricité, connexion, remplacement.
+5. **Des références** dès vos premières missions.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Hôtels et lodges malgaches** | Repérez ceux qui répondent lentement ou ont des avis sur les réservations, proposez une période d''essai |
+| 2 | **Propriétaires de plusieurs logements** | Proposez la gestion des messages et du calendrier |
+| 3 | **Agences de voyage réceptives** | Gestion des demandes, devis et confirmations |
+| 4 | **Sociétés de gestion de logements à l''étranger** | Support des voyageurs à distance, en français et en anglais |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un lodge
+> « Bonjour, votre lodge a d''excellents avis sur l''accueil. J''ai remarqué que certains voyageurs mentionnent des réponses tardives avant leur séjour. Je suis gestionnaire de réservations à distance : je peux gérer vos extranets, votre WhatsApp et vos demandes 7 jours sur 7, et vous envoyer un bilan chaque mois. Je vous propose un mois d''essai à demi-tarif. »
+
+## Les modes de rémunération
+
+| Mode | Principe | Exemple |
+| --- | --- | --- |
+| **Forfait mensuel** | Prix fixe selon la taille et les services | 500 000 Ar par mois pour un lodge de 10 chambres |
+| **Pourcentage** | Part du chiffre d''affaires des chambres | 2 à 5 % selon les services |
+| **Forfait + prime** | Fixe + prime si l''occupation ou la part directe augmente | 400 000 Ar + prime |
+| **Tarif horaire** | Pour des missions ponctuelles | 12 000 Ar de l''heure |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Un pourcentage seul peut devenir très faible en basse saison, alors que le travail continue. Préférez un **fixe minimum**, éventuellement complété par une part variable.
+
+## Vos conditions
+
+1. **Les services inclus** : canaux gérés, messagerie, devis, avis, bilan.
+2. **Les horaires** de disponibilité et le délai de réponse.
+3. **Ce que vous ne faites pas** : encaissement de l''argent des clients, décisions de prix sans accord.
+4. **Les accès** : personnels, avec les droits nécessaires.
+5. **La procédure d''urgence** : qui ferme les disponibilités si vous êtes injoignable.
+6. **La confidentialité** des données des voyageurs.
+7. **Le paiement** : mensuel, en début de mois pour un forfait.
+
+> [!attention]
+> N''encaissez jamais l''argent des voyageurs **sur votre compte personnel**. Les acomptes et paiements vont directement sur les comptes de l''établissement. C''est une question de confiance et de sécurité pour tout le monde.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Revenue manager** | Fixer les prix selon la demande, les saisons et la concurrence |
+| **Gestionnaire de distribution** | Channel managers, choix des canaux, contrats |
+| **Responsable de la relation voyageurs** | Avis, fidélisation, services |
+| **Assistant d''agence de voyage** | Circuits, devis complexes, partenaires |
+| **Téléconseiller** | Voir la formation Téléconseiller à distance |
+
+> [!retenir]
+> - Un dossier avec projet, modèles et plan de continuité.
+> - Lodges malgaches, propriétaires, agences, sociétés de gestion, plateformes.
+> - Un fixe minimum, éventuellement complété par une part variable.
+> - Jamais d''argent des voyageurs sur votre compte personnel.
+> - Évoluez vers le revenue management ou la distribution.
+
+## Exercice pratique : décrocher votre premier client
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez votre dossier de présentation.
+> 2. Choisissez votre mode de rémunération et calculez-le pour 2 établissements fictifs.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Repérez 10 établissements et envoyez au moins 3 propositions personnalisées.
+>
+> **À livrer** : votre dossier, vos calculs, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 4, 0, 'Pourquoi préférer un fixe minimum ?', '["Aucune raison","Le pourcentage seul baisse en basse saison","Le fixe est interdit","Pour travailler moins"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 4, 1, 'Peut-on encaisser les acomptes des voyageurs sur son compte personnel ?', '["Non, jamais","Oui, avec un reçu","Oui, en haute saison","Oui"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-f', 4, 2, 'Quel métier fixe les prix selon la demande et les saisons ?', '["Graphiste","Monteur vidéo","Revenue manager","Correcteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que fait un gestionnaire de réservations ?', '["Il construit les bungalows","Il nettoie les chambres","Il tient les disponibilités à jour et traite chaque réservation","Il cuisine"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quel est l''avantage de la réservation directe ?', '["Pas de commission et relation directe","Moins de clients","Une commission plus élevée","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qu''est-ce qu''un allotement ?', '["Des chambres réservées à l''avance pour une agence","Un lot de serviettes","Une réduction","Un avis"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qu''est-ce qu''un extranet ?', '["L''espace où l''hôtel gère son offre sur une OTA","Un logiciel de dessin","Un site d''avis","Le Wi-Fi de l''hôtel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Combien de sources de vérité pour les disponibilités ?', '["Aucune","Une par canal","Les e-mails","Une seule : le planning ou le logiciel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que faire quand la dernière chambre est vendue ?', '["Augmenter le prix seulement","Laisser ouvert","Fermer sur tous les canaux","Attendre le lendemain"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qu''est-ce qu''un plan non remboursable ?', '["Un plan sans petit-déjeuner obligatoire","Un prix payé à la réservation sans remboursement","Une annulation gratuite","Une chambre gratuite"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qu''est-ce que la parité tarifaire ?', '["Un prix différent partout","Le même prix pour les mêmes conditions sur les canaux","Une réduction de groupe","Deux chambres identiques"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', '37 800 000 Ar pour 210 nuits vendues : quel prix moyen ?', '["37 800 Ar","126 000 Ar","210 000 Ar","180 000 Ar"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que contient une confirmation ?', '["Nom, dates, chambre, plan, prix, annulation, acompte","Le mot de passe du client","Rien","Seulement le prix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quelles informations donner aux voyageurs étrangers ?', '["Seulement le prix","Des promesses irréalistes","Des informations pratiques exactes et honnêtes","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quelle routine quotidienne dans les extranets ?', '["Ne rien faire","Supprimer les avis","Changer les photos chaque jour","Vérifier, reporter, fermer, répondre, contrôler les prix"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que ne jamais modifier dans un extranet ?', '["Les tarifs demandés","Les réponses aux messages","Les disponibilités","Les coordonnées bancaires du compte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'À quoi sert la validation des données dans Google Sheets ?', '["Choisir dans une liste et éviter les erreurs de saisie","Colorer les cellules","Imprimer","Envoyer des e-mails"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Pourquoi des modèles en italien ou en allemand ?', '["Ce n''est pas utile","Beaucoup de touristes viennent d''Italie et d''Allemagne","C''est obligatoire","Pour décorer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qui paie SiteMinder ou Cloudbeds ?', '["Le gestionnaire","L''établissement","Le voyageur","Personne"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que doit-on obtenir à la prise en main ?', '["Rien","Accès, politiques, tarifs, contacts et procédure d''acompte","Les clés physiques","Le salaire du personnel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quel délai de réponse viser en journée dans le cas pratique ?', '["Moins de 2 heures","Un mois","Une semaine","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Qui valide une remise de groupe ?', '["Le propriétaire","Le client","Le gestionnaire seul","L''OTA"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que faire si aucune chambre ne peut être libérée en cas de surréservation ?', '["Laisser le client dehors","Trouver un établissement équivalent ou supérieur à proximité","Annuler sans prévenir","Ne rien dire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que proposer après une surréservation évitée de justesse ?', '["Baisser tous les prix","Fermer l''hôtel","Installer un channel manager","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que prévoir face aux coupures en haute saison ?', '["Travailler moins","Fermer tous les canaux","Batterie, forfait mobile et personne pour fermer les disponibilités en urgence","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quelle offre faire à un lodge qui répond lentement ?', '["Gestion des messages 7 jours sur 7 avec un mois d''essai","Rien","Critiquer ses avis publiquement","Lui vendre des meubles"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que préciser dans les conditions ?', '["La couleur des bungalows","Le menu","La procédure d''urgence si vous êtes injoignable","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
 
 -- data-0-a
 delete from public.exam_questions where course_id = 'data-0-a';

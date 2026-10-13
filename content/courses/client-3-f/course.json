@@ -1,0 +1,97 @@
+{
+  "id": "client-3-f",
+  "hours": 14,
+  "description": "Le gestionnaire de réservations tient à jour les disponibilités et les prix d'un hébergement sur tous ses canaux et traite chaque réservation. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des hôtels, des lodges, des propriétaires et des agences de voyage, à Madagascar et à l'étranger, avec les extranets et Google Sheets : parcours d'une réservation, canaux de vente, planning, plans tarifaires, indicateurs, messages aux voyageurs, groupes, surréservation et bilan mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, le parcours d'une réservation et les canaux de vente",
+    "Tenir un planning sans erreur et appliquer plans tarifaires et politiques",
+    "Calculer le taux d'occupation, le prix moyen et le RevPAR",
+    "Utiliser les extranets, un fichier de suivi et des modèles de messages",
+    "Traiter une demande de groupe, réagir à une surréservation et faire un bilan",
+    "Présenter son travail, choisir sa rémunération et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de gestionnaire de réservations depuis Madagascar",
+      "summary": "Le parcours d'une réservation, les canaux de vente et les OTA, le vocabulaire de l'hôtellerie, la surréservation, les qualités et les clients.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une OTA ?", "options": ["Une agence de voyage en ligne comme Booking.com", "Un hôtel", "Un logiciel de comptabilité", "Un moyen de paiement"], "correct": 0 },
+        { "q": "Quelle est l'erreur la plus grave du métier ?", "options": ["La surréservation", "Un message trop poli", "Un planning coloré", "Une réponse rapide"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un no-show ?", "options": ["Un client qui ne vient pas sans avoir annulé", "Une chambre fermée", "Un spectacle annulé", "Un avis négatif"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : planning, plans tarifaires, parité, indicateurs et messages",
+      "summary": "Planning des chambres et règles d'or, plans tarifaires et politiques d'annulation, parité tarifaire, taux d'occupation, prix moyen, RevPAR et messages aux voyageurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la cause principale des surréservations dans les petits établissements ?", "options": ["Une réservation directe non reportée dans le planning", "Un prix trop bas", "Un avis négatif", "Une chambre trop grande"], "correct": 0 },
+        { "q": "210 nuits vendues sur 300 disponibles : quel taux d'occupation ?", "options": ["70 %", "30 %", "210 %", "90 %"], "correct": 0 },
+        { "q": "Que montre le RevPAR ?", "options": ["Le revenu par chambre disponible", "Le nombre de clients", "La note des avis", "Le prix du petit-déjeuner"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : extranets, Google Sheets, modèles et channel managers",
+      "summary": "Fonctions et routine des extranets, fichier de suivi en 5 onglets, modèles de messages multilingues, PMS et channel manager, SiteMinder et Cloudbeds.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel accès utiliser dans un extranet ?", "options": ["Un accès utilisateur personnel créé par l'hôtel", "Le mot de passe du propriétaire", "Un compte partagé", "Aucun"], "correct": 0 },
+        { "q": "Que fait un channel manager ?", "options": ["Il synchronise automatiquement les disponibilités sur tous les canaux", "Il nettoie les chambres", "Il fait la comptabilité", "Il traduit les avis"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un PMS ?", "options": ["Le logiciel de gestion de l'hôtel", "Une agence de voyage", "Un moyen de transport", "Un type de chambre"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : un mois au Lodge Tsara",
+      "summary": "Prise en main, routines quotidiennes et hebdomadaires, demande de groupe et devis, réaction à une surréservation, bilan mensuel et continuité.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vérifier dès le premier jour ?", "options": ["Le planning ligne par ligne avec chaque canal", "La décoration", "Le menu", "Rien"], "correct": 0 },
+        { "q": "Que faire pendant qu'un groupe réfléchit ?", "options": ["Bloquer une option limitée dans le temps", "Vendre les chambres à d'autres", "Rien", "Annuler la demande"], "correct": 0 },
+        { "q": "Quelle est la première action en cas de surréservation ?", "options": ["Prévenir le propriétaire immédiatement", "Attendre l'arrivée du client", "Ne rien dire", "Supprimer une réservation au hasard"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Dossier de présentation, 5 canaux, forfait, pourcentage et prime, conditions en 7 points, jamais d'encaissement personnel, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi préférer un fixe minimum ?", "options": ["Le pourcentage seul baisse en basse saison", "Le fixe est interdit", "Pour travailler moins", "Aucune raison"], "correct": 0 },
+        { "q": "Peut-on encaisser les acomptes des voyageurs sur son compte personnel ?", "options": ["Non, jamais", "Oui", "Oui, en haute saison", "Oui, avec un reçu"], "correct": 0 },
+        { "q": "Quel métier fixe les prix selon la demande et les saisons ?", "options": ["Revenue manager", "Monteur vidéo", "Correcteur", "Graphiste"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un gestionnaire de réservations ?", "options": ["Il tient les disponibilités à jour et traite chaque réservation", "Il nettoie les chambres", "Il cuisine", "Il construit les bungalows"], "correct": 0 },
+    { "q": "Quel est l'avantage de la réservation directe ?", "options": ["Pas de commission et relation directe", "Une commission plus élevée", "Aucun", "Moins de clients"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un allotement ?", "options": ["Des chambres réservées à l'avance pour une agence", "Un lot de serviettes", "Une réduction", "Un avis"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un extranet ?", "options": ["L'espace où l'hôtel gère son offre sur une OTA", "Le Wi-Fi de l'hôtel", "Un site d'avis", "Un logiciel de dessin"], "correct": 0 },
+    { "q": "Combien de sources de vérité pour les disponibilités ?", "options": ["Une seule : le planning ou le logiciel", "Une par canal", "Aucune", "Les e-mails"], "correct": 0 },
+    { "q": "Que faire quand la dernière chambre est vendue ?", "options": ["Fermer sur tous les canaux", "Laisser ouvert", "Augmenter le prix seulement", "Attendre le lendemain"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un plan non remboursable ?", "options": ["Un prix payé à la réservation sans remboursement", "Une chambre gratuite", "Un plan sans petit-déjeuner obligatoire", "Une annulation gratuite"], "correct": 0 },
+    { "q": "Qu'est-ce que la parité tarifaire ?", "options": ["Le même prix pour les mêmes conditions sur les canaux", "Deux chambres identiques", "Un prix différent partout", "Une réduction de groupe"], "correct": 0 },
+    { "q": "37 800 000 Ar pour 210 nuits vendues : quel prix moyen ?", "options": ["180 000 Ar", "126 000 Ar", "210 000 Ar", "37 800 Ar"], "correct": 0 },
+    { "q": "Que contient une confirmation ?", "options": ["Nom, dates, chambre, plan, prix, annulation, acompte", "Seulement le prix", "Rien", "Le mot de passe du client"], "correct": 0 },
+    { "q": "Quelles informations donner aux voyageurs étrangers ?", "options": ["Des informations pratiques exactes et honnêtes", "Des promesses irréalistes", "Rien", "Seulement le prix"], "correct": 0 },
+    { "q": "Quelle routine quotidienne dans les extranets ?", "options": ["Vérifier, reporter, fermer, répondre, contrôler les prix", "Changer les photos chaque jour", "Ne rien faire", "Supprimer les avis"], "correct": 0 },
+    { "q": "Que ne jamais modifier dans un extranet ?", "options": ["Les coordonnées bancaires du compte", "Les disponibilités", "Les réponses aux messages", "Les tarifs demandés"], "correct": 0 },
+    { "q": "À quoi sert la validation des données dans Google Sheets ?", "options": ["Choisir dans une liste et éviter les erreurs de saisie", "Colorer les cellules", "Envoyer des e-mails", "Imprimer"], "correct": 0 },
+    { "q": "Pourquoi des modèles en italien ou en allemand ?", "options": ["Beaucoup de touristes viennent d'Italie et d'Allemagne", "Pour décorer", "C'est obligatoire", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Qui paie SiteMinder ou Cloudbeds ?", "options": ["L'établissement", "Le gestionnaire", "Le voyageur", "Personne"], "correct": 0 },
+    { "q": "Que doit-on obtenir à la prise en main ?", "options": ["Accès, politiques, tarifs, contacts et procédure d'acompte", "Rien", "Le salaire du personnel", "Les clés physiques"], "correct": 0 },
+    { "q": "Quel délai de réponse viser en journée dans le cas pratique ?", "options": ["Moins de 2 heures", "Une semaine", "Un mois", "Aucun"], "correct": 0 },
+    { "q": "Qui valide une remise de groupe ?", "options": ["Le propriétaire", "Le gestionnaire seul", "Le client", "L'OTA"], "correct": 0 },
+    { "q": "Que faire si aucune chambre ne peut être libérée en cas de surréservation ?", "options": ["Trouver un établissement équivalent ou supérieur à proximité", "Laisser le client dehors", "Ne rien dire", "Annuler sans prévenir"], "correct": 0 },
+    { "q": "Que proposer après une surréservation évitée de justesse ?", "options": ["Installer un channel manager", "Fermer l'hôtel", "Rien", "Baisser tous les prix"], "correct": 0 },
+    { "q": "Que prévoir face aux coupures en haute saison ?", "options": ["Batterie, forfait mobile et personne pour fermer les disponibilités en urgence", "Rien", "Travailler moins", "Fermer tous les canaux"], "correct": 0 },
+    { "q": "Quelle offre faire à un lodge qui répond lentement ?", "options": ["Gestion des messages 7 jours sur 7 avec un mois d'essai", "Critiquer ses avis publiquement", "Rien", "Lui vendre des meubles"], "correct": 0 },
+    { "q": "Que préciser dans les conditions ?", "options": ["La procédure d'urgence si vous êtes injoignable", "La couleur des bungalows", "Rien", "Le menu"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
