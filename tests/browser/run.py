@@ -269,6 +269,13 @@ with sync_playwright() as p:
         goto(mp, '#/formation/' + mod); mp.wait_for_timeout(500)
         check(f'module {mod} sur téléphone : pas de défilement horizontal', not mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
     mp.screenshot(path=f'{SHOTS}/11-mobile-module.png')
+    # Témoignages : bande qui défile sur l'accueil, sans dépasser de l'écran
+    goto(mp, '#/'); mp.wait_for_selector('.tm-card')
+    check('témoignages : 8 avis affichés (doublés pour la boucle)', mp.locator('.tm-card').count() == 16 and mp.locator('.tm-card:not([aria-hidden])').count() == 8)
+    check('témoignages : notes en étoiles', mp.locator('.tm .stars[aria-label="4,5 sur 5"]').count() >= 1)
+    check('témoignages : animation active', mp.evaluate("getComputedStyle(document.querySelector('.tm-track')).animationName") == 'tm-scroll')
+    check('témoignages sur téléphone : pas de défilement horizontal', not mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
+    mp.locator('.tm').scroll_into_view_if_needed(); mp.screenshot(path=f'{SHOTS}/12-mobile-temoignages.png')
     browser.close()
 httpd.shutdown()
 

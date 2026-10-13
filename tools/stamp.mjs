@@ -11,7 +11,7 @@ const now = new Date();
 const p = (n) => String(n).padStart(2, '0');
 const v = `${now.getUTCFullYear()}${p(now.getUTCMonth() + 1)}${p(now.getUTCDate())}-${p(now.getUTCHours())}${p(now.getUTCMinutes())}`;
 
-const modules = ['app.js', 'api.js', 'catalog.js', 'data.js', 'markdown.js', 'pdf.js'];
+const modules = ['app.js', 'api.js', 'catalog.js', 'data.js', 'markdown.js', 'pdf.js', 'temoignages.js'];
 const importMap = `<script type="importmap" id="vitako-importmap">${JSON.stringify({
   imports: Object.fromEntries(modules.map((m) => [`./assets/js/${m}`, `./assets/js/${m}?v=${v}`])),
 })}</script>`;

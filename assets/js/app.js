@@ -3,6 +3,7 @@ import * as api from './api.js';
 import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel, jobByKey } from './catalog.js';
 import { md, esc, sections, readingMinutes } from './markdown.js';
 import { certificatePdf, loadPdfFonts, slug } from './pdf.js';
+import { TEMOIGNAGES } from './temoignages.js';
 
 const CFG = window.VITAKO_CONFIG;
 const DAY = 864e5;
@@ -309,7 +310,31 @@ function catalog() {
     <div class="chips" id="chips">${chips()}</div>
   </div>
   <div class="count" id="count">${g.count}</div>
-  <div class="grid" id="grid">${g.html}</div>`;
+  <div class="grid" id="grid">${g.html}</div>
+  ${temoignages()}`;
+}
+// Bande de témoignages qui défile (la liste est doublée pour une boucle sans saut)
+const STAR = '<path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/>';
+function stars(n) {
+  let out = '';
+  for (let i = 1; i <= 5; i++) {
+    const fill = n >= i ? 1 : n >= i - 0.5 ? 0.5 : 0;
+    out += `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><defs><linearGradient id="st${i}-${fill}"><stop offset="${fill * 100}%" stop-color="currentColor"/><stop offset="${fill * 100}%" stop-color="currentColor" stop-opacity=".22"/></linearGradient></defs><g fill="url(#st${i}-${fill})">${STAR}</g></svg>`;
+  }
+  return `<span class="stars" role="img" aria-label="${String(n).replace('.', ',')} sur 5">${out}</span>`;
+}
+function temoignages() {
+  if (!TEMOIGNAGES.length) return '';
+  const card = (t, dup) => `<figure class="tm-card"${dup ? ' aria-hidden="true"' : ''}>
+      ${stars(t.note)}
+      <blockquote>${esc(t.texte)}</blockquote>
+      <figcaption><span class="tm-av">${esc(t.nom.charAt(0))}</span>${esc(t.nom)}</figcaption>
+    </figure>`;
+  const list = TEMOIGNAGES.map((t) => card(t, false)).join('') + TEMOIGNAGES.map((t) => card(t, true)).join('');
+  return `<section class="tm" aria-labelledby="tm-title">
+    <h2 id="tm-title">Ils ont aimé Vitako</h2>
+    <div class="tm-view"><div class="tm-track" style="--tm-n:${TEMOIGNAGES.length}">${list}</div></div>
+  </section>`;
 }
 // Icônes des domaines (traits simples, couleur du texte)
 const svgI = (body) => `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
