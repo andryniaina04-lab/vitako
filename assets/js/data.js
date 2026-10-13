@@ -5733,6 +5733,87 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-2-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du technicien support un professionnel qui administre, prévient les pannes et sécurise : spécialité (Microsoft 365, Google Workspace, services gérés, gestion des appareils, réseau, support applicatif), diagnostic du parc et support préventif, outils payants (TeamViewer pour gérer un parc et Zendesk avec incidents, problèmes et SLA), consoles d'administration, pratiques ITIL, arrivées et départs, scripts PowerShell, changements et documentation, support en anglais, protection des données et certifications, puis forfaits par poste, contrats, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, diagnostiquer un parc informatique et passer au préventif",
+   "Gérer et sécuriser un parc d'appareils avec TeamViewer",
+   "Organiser le support dans Zendesk avec incidents, problèmes et SLA",
+   "Appliquer ITIL, les procédures d'arrivée et de départ, les scripts et la gestion des changements",
+   "Travailler en anglais pour des clients étrangers en protégeant les données",
+   "Construire des forfaits par poste, des contrats, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer un parc et passer au préventif",
+    "summary": "Les 6 spécialités avancées, le RMM, le diagnostic du parc en 6 domaines et son rapport, le passage du support réactif au préventif et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic du parc informatique",
+     "Du réactif au préventif",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : TeamViewer, Zendesk et consoles d'administration",
+    "summary": "Groupes, accès sans surveillance, politiques et journaux dans TeamViewer, sécurisation des accès, types de tickets, problèmes et incidents liés, SLA par client et tâches courantes dans Microsoft 365.",
+    "sections": [
+     "TeamViewer : gérer un parc",
+     "Zendesk : organiser le support informatique",
+     "Les consoles d'administration",
+     "Exercice pratique : un environnement professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : ITIL, arrivées et départs, scripts et changements",
+    "summary": "Pratiques ITIL, procédures d'arrivée et de départ, commandes PowerShell de lecture, préparation d'un changement, documentation et indicateurs.",
+    "sections": [
+     "Les pratiques d'ITIL au quotidien",
+     "Les procédures d'arrivée et de départ",
+     "Automatiser avec des scripts simples",
+     "Informations sur le système",
+     "Espace libre sur les disques (en Go)",
+     "Tester l'accès à un site sur le port HTTPS",
+     "État d'un service (ici, le spouleur d'impression)",
+     "Préparer un changement",
+     "Documenter",
+     "Les indicateurs",
+     "Exercice pratique : la méthode professionnelle"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, couverture horaire, données et certifications",
+    "summary": "Appels et tickets en anglais, couverture horaire et continuité, protection des données et signalement, CompTIA, Microsoft, Google et ITIL, travail pour un prestataire étranger.",
+    "sections": [
+     "Le support en anglais",
+     "La couverture horaire",
+     "La protection des données",
+     "Les certifications utiles",
+     "Travailler pour un prestataire étranger",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : forfaits, contrats, études de cas et équipe",
+    "summary": "Trois voies, forfaits par poste, clauses du contrat et réversibilité, rapport mensuel, études de cas chiffrées, petite équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "tech-2-f": {
   "hours": 16,
   "description": "Le technicien support à distance aide les utilisateurs à résoudre leurs problèmes informatiques sans se déplacer. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant au support de niveau 1 à distance pour des entreprises, des prestataires informatiques et des centres de relation client, à Madagascar et à l'étranger, avec AnyDesk et Zendesk : niveaux de support, méthode de diagnostic, bases de Windows et du réseau, contrôle à distance sécurisé, tickets, base de connaissances, sécurité, escalade et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

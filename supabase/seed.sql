@@ -38,7 +38,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
-  ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, false),
+  ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true),
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 11, false),
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 18, false),
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 12, false),
@@ -41348,6 +41348,576 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle situation de paiement mobile tester à Madagascar ?', '["Aucune","Solde insuffisant et confirmation en retard","Uniquement le cas parfait","Le changement de logo"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quelle certification reconnue existe pour les testeurs ?', '["ISTQB niveau Fondation","PCG 2005","IELTS","DELF"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal","Aucun"]'::jsonb, 0);
+
+-- tech-2-a
+delete from public.exam_questions where course_id = 'tech-2-a';
+delete from public.module_questions where course_id = 'tech-2-a';
+delete from public.lessons where course_id = 'tech-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-a', 0, 'Se spécialiser, diagnostiquer un parc et passer au préventif', 'Les 6 spécialités avancées, le RMM, le diagnostic du parc en 6 domaines et son rapport, le passage du support réactif au préventif et les offres à forte valeur.', 'Résoudre les problèmes simples des utilisateurs ouvre les premières missions. Les techniciens les mieux payés vont plus loin : ils **administrent** les comptes et les postes de toute une entreprise, préviennent les pannes au lieu de les subir, renforcent la sécurité et règlent les problèmes de niveau 2. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du support informatique.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic du parc informatique d''une petite entreprise.
+> 4. Passer d''un support réactif à un support préventif.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Administrateur Microsoft 365** | Comptes, licences, messagerie, Teams, partages, sécurité | Centre d''administration, Entra ID, Exchange Online |
+| 2 | **Administrateur Google Workspace** | Comptes, groupes, Drive partagés, règles de sécurité | Console d''administration Google |
+| 3 | **Technicien de prestataire de services gérés** (MSP) | Surveiller et maintenir les postes de plusieurs clients | Outils de surveillance et de gestion à distance (RMM), tickets, contrats |
+| 4 | **Gestion des appareils** (MDM) | Configurer et sécuriser ordinateurs et téléphones à distance | Intune ou outils équivalents, politiques, déploiement |
+| 5 | **Réseau et accès à distance** | Wi-Fi, VPN, pare-feu de petites entreprises | Bases du réseau, matériel courant, sécurité |
+| 6 | **Support applicatif d''un éditeur** | Aider les clients d''un logiciel, reproduire et transmettre les bugs | Logiciel, journaux, API, rapports de bugs |
+
+> [!definition] RMM (surveillance et gestion à distance)
+> Un outil qui surveille en permanence les ordinateurs d''un client (espace disque, mises à jour, antivirus, sauvegardes) et permet d''agir à distance, souvent avant même que l''utilisateur remarque un problème.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Administration Microsoft 365 et Google Workspace** en français pour les petites entreprises européennes et africaines, qui n''ont pas d''informaticien.
+> - **Technicien MSP à distance** : les prestataires européens recherchent des techniciens francophones pour couvrir le début et la fin de journée.
+> - **Support des entreprises et ONG malgaches**, qui utilisent de plus en plus ces outils en ligne.
+
+## Le diagnostic du parc informatique
+
+Un diagnostic est une excellente **offre d''entrée** : le client découvre ses risques et vous confie la mise en ordre.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Inventaire** | Liste des postes, téléphones, imprimantes, logiciels, licences |
+| **Mises à jour** | Systèmes et logiciels à jour ou non |
+| **Comptes** | Comptes d''anciens employés encore actifs, droits d''administrateur |
+| **Sécurité** | Double authentification, antivirus, chiffrement des disques |
+| **Sauvegardes** | Existent-elles ? Ont-elles déjà été testées ? |
+| **Réseau** | Wi-Fi séparé pour les visiteurs, mot de passe de la box changé |
+
+### Le rapport de diagnostic
+
+```
+Client : Cabinet Fanilo – 18 postes
+Note globale : 4/10
+
+Risques majeurs
+1. Aucune sauvegarde testée des dossiers clients.
+2. 5 comptes d''anciens employés encore actifs.
+3. Double authentification absente sur la messagerie.
+Risques moyens
+4. 7 postes sans mises à jour depuis plus de 3 mois.
+5. Tous les utilisateurs sont administrateurs de leur poste.
+
+Plan proposé
+- Semaine 1 : désactiver les anciens comptes, activer la double authentification.
+- Semaine 2 : sauvegarde automatique + test de restauration.
+- Ensuite : forfait mensuel de surveillance, mises à jour et support.
+```
+
+> [!attention]
+> Pendant un diagnostic, vous voyez des informations sensibles. Travaillez avec un **accord écrit** du client, avec des comptes d''administration nominatifs (à votre nom), et ne copiez aucune donnée.
+
+## Du réactif au préventif
+
+| Support réactif | Support préventif |
+| --- | --- |
+| On attend que l''utilisateur appelle | L''outil de surveillance alerte avant la panne |
+| Mises à jour quand on y pense | Mises à jour planifiées chaque mois |
+| Sauvegarde « on verra » | Sauvegarde automatique et restauration testée |
+| Nouvel employé équipé dans l''urgence | Procédure d''arrivée et de départ |
+| Facturation à l''heure | Forfait mensuel par poste |
+
+> [!astuce]
+> Le support préventif réduit fortement les appels urgents. Il permet aussi de vendre un **forfait mensuel** stable plutôt que des interventions ponctuelles imprévisibles.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic du parc** | Inventaire, rapport, plan | 500 000 Ar |
+| **Mise en ordre** | Comptes, double authentification, sauvegardes, mises à jour | 1 500 000 Ar |
+| **Forfait de services gérés** | Surveillance, mises à jour, support à distance | 35 000 Ar par poste et par mois |
+| **Migration vers Microsoft 365 ou Google Workspace** | Comptes, messagerie, fichiers, formation | Sur devis |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : Microsoft 365, Google Workspace, MSP, MDM, réseau, support applicatif.
+> - Le diagnostic du parc montre les risques et ouvre une mission.
+> - Inventaire, mises à jour, comptes, sécurité, sauvegardes, réseau.
+> - Passer du réactif au préventif.
+> - Des offres à valeur : mise en ordre, forfait par poste, migrations.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Faites le diagnostic de votre propre ordinateur et de votre réseau domestique dans les 6 domaines.
+> 3. Rédigez un rapport de diagnostic fictif pour une PME de 15 postes.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre auto-diagnostic, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 0, 0, 'Que fait un outil RMM ?', '["Il dessine des schémas","Il envoie des newsletters","Il surveille les postes et permet d''agir à distance avant la panne","Il fait la comptabilité"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 0, 1, 'Quel risque majeur trouve-t-on souvent dans un diagnostic ?', '["Un écran trop grand","Un fond d''écran ancien","Des comptes d''anciens employés encore actifs","Une souris sans fil"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 0, 2, 'Quelle formule accompagne le support préventif ?', '["Un forfait mensuel par poste","Un paiement unique à vie","Une facture à chaque panne seulement","Aucun contrat"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-a', 1, 'Outils professionnels : TeamViewer, Zendesk et consoles d''administration', 'Groupes, accès sans surveillance, politiques et journaux dans TeamViewer, sécurisation des accès, types de tickets, problèmes et incidents liés, SLA par client et tâches courantes dans Microsoft 365.', 'Les prestataires et services informatiques professionnels utilisent les versions payantes de **TeamViewer** pour gérer un parc d''appareils, et de **Zendesk** pour organiser le support selon des processus clairs. Ce module vous apprend leurs fonctions avancées et les consoles d''administration que vous utiliserez chaque jour.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un parc d''appareils et l''accès sans surveillance dans TeamViewer.
+> 2. Sécuriser les accès à distance.
+> 3. Organiser le support avec les types de tickets, les SLA et les vues de Zendesk.
+> 4. Relier incidents et problèmes.
+> 5. Réaliser les tâches courantes dans une console d''administration.
+
+## TeamViewer : gérer un parc
+
+| Fonction (selon l''offre, à vérifier sur le site officiel) | Usage |
+| --- | --- |
+| **Liste d''ordinateurs et groupes** | Organiser les appareils par client, site ou service |
+| **Accès sans surveillance** | Se connecter à un poste sans présence de l''utilisateur, selon une politique autorisée |
+| **Déploiement en masse** | Installer et attribuer le logiciel sur de nombreux postes |
+| **Politiques de paramètres** | Imposer des réglages identiques à tous les postes |
+| **Gestion des utilisateurs et des droits** | Chaque technicien n''accède qu''à ses clients |
+| **Journaux et enregistrement des sessions** | Traçabilité : qui s''est connecté, quand, pourquoi |
+| **Surveillance et gestion des actifs** (modules complémentaires) | Alertes, inventaire, correctifs |
+| **Intégrations** | Lancer une session depuis un ticket du helpdesk |
+
+### Sécuriser les accès à distance
+
+1. **Double authentification** obligatoire pour tous les techniciens.
+2. **Comptes nominatifs** : jamais un compte partagé.
+3. **Accès sans surveillance** seulement sur les postes autorisés par le client.
+4. **Liste d''autorisation** : seuls les comptes de votre entreprise peuvent se connecter.
+5. **Journaux** conservés et consultables par le client.
+6. **Désactivation immédiate** des accès d''un technicien qui quitte l''équipe.
+
+> [!attention]
+> Un outil d''accès à distance mal sécurisé est une **porte d''entrée pour les pirates** vers tous vos clients à la fois. La sécurité de vos propres comptes est votre première responsabilité.
+
+## Zendesk : organiser le support informatique
+
+### Les types de tickets
+
+| Type | Usage |
+| --- | --- |
+| **Question** | Demande d''information |
+| **Incident** | Quelque chose ne fonctionne plus pour un utilisateur |
+| **Problème** | La cause commune de plusieurs incidents |
+| **Tâche** | Un travail planifié (préparer le poste d''un nouvel employé) |
+
+> [!definition] Incident et problème
+> Un **incident** est une panne vécue par un utilisateur. Un **problème** est la cause racine, qui peut provoquer plusieurs incidents. Dans Zendesk, on relie les incidents à un ticket de type problème : en résolvant le problème, on peut informer tous les utilisateurs concernés.
+
+> [!exemple] Problème et incidents liés
+> Ticket problème #3100 : « Le serveur de messagerie refuse les connexions depuis 8 h 40. » 12 tickets incidents d''utilisateurs y sont liés. À la résolution, un message unique informe les 12 utilisateurs.
+
+### Les réglages avancés
+
+| Réglage | Usage |
+| --- | --- |
+| **Formulaires de tickets** | Champs différents selon la demande (matériel, accès, logiciel) |
+| **Organisations** | Un client = une organisation, avec ses SLA |
+| **SLA par client et par priorité** | Délais contractuels suivis automatiquement |
+| **Vues** | « Urgents », « SLA bientôt dépassé », « En attente d''un tiers » |
+| **Déclencheurs et automatisations** | Notifications, relances, fermeture automatique |
+| **Centre d''aide par client** | Articles et procédures propres à chaque client |
+| **Rapports** | Volume, délais, résolution au premier contact, satisfaction |
+
+## Les consoles d''administration
+
+| Tâche courante | Où (exemple Microsoft 365) |
+| --- | --- |
+| Créer un utilisateur et lui attribuer une licence | Centre d''administration Microsoft 365 |
+| Réinitialiser un mot de passe, débloquer un compte | Centre d''administration ou Entra ID |
+| Exiger la double authentification | Entra ID (paramètres de sécurité ou accès conditionnel selon l''offre) |
+| Créer une boîte partagée | Centre d''administration Exchange |
+| Donner accès à un dossier partagé | SharePoint ou Teams |
+| Bloquer un compte compromis | Entra ID : bloquer la connexion, révoquer les sessions |
+
+> [!astuce]
+> Créez votre propre **environnement d''essai** (Microsoft et Google proposent des versions d''essai ou des programmes pour les développeurs selon les périodes) pour pratiquer sans risque sur des comptes fictifs.
+
+> [!madagascar]
+> Les licences TeamViewer, Zendesk et Microsoft 365 sont payées **par l''entreprise cliente ou par le prestataire qui vous emploie**. Votre valeur, c''est de savoir les configurer et les sécuriser. Documentez dans votre portfolio ce que vous avez configuré dans vos environnements d''essai.
+
+> [!retenir]
+> - TeamViewer : groupes, accès sans surveillance, politiques, droits, journaux.
+> - Sécuriser vos propres accès en premier : double authentification, comptes nominatifs.
+> - Zendesk : types de tickets, problèmes reliés aux incidents, SLA par client.
+> - Les tâches courantes dans les consoles d''administration.
+> - S''entraîner dans un environnement d''essai.
+
+## Exercice pratique : un environnement professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez dans TeamViewer (gratuit ou essai) deux groupes d''appareils et décrivez la politique de sécurité que vous appliqueriez.
+> 2. Dans Zendesk (essai), créez 2 organisations, des SLA, 3 vues et un formulaire de ticket.
+> 3. Créez un ticket problème et reliez-y 3 incidents.
+> 4. Dans un environnement d''essai Microsoft 365 ou Google Workspace, créez 3 utilisateurs, un groupe et activez la double authentification.
+>
+> **À livrer** : des captures de chaque étape et votre politique de sécurité.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 1, 0, 'Quelle est la première règle de sécurité pour les techniciens ?', '["Un accès à tous les clients pour tous","Double authentification et comptes nominatifs","Un compte partagé pour toute l''équipe","Pas de mot de passe"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 1, 1, 'Qu''est-ce qu''un ticket de type problème ?', '["La cause commune de plusieurs incidents","Une question simple","Une tâche planifiée","Une facture"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 1, 2, 'Que faire d''un compte Microsoft 365 compromis ?', '["Le partager","Attendre","Bloquer la connexion et révoquer les sessions","Changer seulement la photo"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-a', 2, 'Qualité et rapidité : ITIL, arrivées et départs, scripts et changements', 'Pratiques ITIL, procédures d''arrivée et de départ, commandes PowerShell de lecture, préparation d''un changement, documentation et indicateurs.', 'Un support informatique professionnel règle les problèmes **vite et durablement**, et chaque technicien travaille de la même façon. Ce module vous donne les méthodes des meilleures équipes : bases d''ITIL, procédures d''arrivée et de départ, scripts simples, gestion des changements, documentation et indicateurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les grandes pratiques d''ITIL au quotidien.
+> 2. Suivre des procédures d''arrivée et de départ des employés.
+> 3. Automatiser des vérifications avec des scripts simples.
+> 4. Préparer un changement sans risque.
+> 5. Documenter et suivre les bons indicateurs.
+
+## Les pratiques d''ITIL au quotidien
+
+> [!definition] ITIL
+> Un ensemble de bonnes pratiques reconnu dans le monde entier pour gérer les services informatiques. On n''a pas besoin de tout appliquer : quelques pratiques suffisent à une petite équipe.
+
+| Pratique | Au quotidien |
+| --- | --- |
+| **Gestion des incidents** | Rétablir le service le plus vite possible |
+| **Gestion des problèmes** | Trouver et supprimer la cause des incidents répétés |
+| **Gestion des demandes** | Traiter les demandes standard avec une procédure (nouveau compte, logiciel) |
+| **Gestion des changements** | Préparer, valider et planifier toute modification qui peut casser quelque chose |
+| **Gestion des connaissances** | Écrire ce qui est appris pour ne pas le rechercher à nouveau |
+
+## Les procédures d''arrivée et de départ
+
+### Arrivée d''un employé
+
+1. Créer le compte et attribuer la licence.
+2. Ajouter aux bons groupes (service, dossiers partagés).
+3. Préparer le poste : système à jour, logiciels, chiffrement, outil de gestion à distance.
+4. Activer la double authentification avec l''employé.
+5. Envoyer un guide de bienvenue informatique.
+
+### Départ d''un employé
+
+1. **Bloquer** la connexion le jour du départ (heure convenue avec la direction).
+2. **Transférer** la messagerie et les fichiers au responsable désigné.
+3. **Retirer** les groupes, les accès aux applications et les licences.
+4. **Récupérer** et réinitialiser le matériel.
+5. **Noter** toutes les actions dans le ticket.
+
+> [!attention]
+> Un compte d''ancien employé resté actif est l''une des **failles les plus courantes** dans les petites entreprises. La procédure de départ doit être appliquée le jour même, sans exception.
+
+## Automatiser avec des scripts simples
+
+PowerShell permet d''automatiser des vérifications sous Windows. Commencez par des commandes qui **lisent** des informations, sans rien modifier.
+
+```powershell
+# Informations sur le système
+Get-ComputerInfo | Select-Object CsName, OsName, OsVersion
+
+# Espace libre sur les disques (en Go)
+Get-PSDrive -PSProvider FileSystem |
+  Select-Object Name, @{Name=''LibreGo''; Expression={[math]::Round($_.Free / 1GB, 1)}}
+
+# Tester l''accès à un site sur le port HTTPS
+Test-NetConnection -ComputerName www.google.com -Port 443
+
+# État d''un service (ici, le spouleur d''impression)
+Get-Service -Name Spooler
+```
+
+> [!attention]
+> N''exécutez jamais un script trouvé en ligne sans le comprendre, et testez toujours un nouveau script sur **une machine de test** avant de l''utiliser chez un client. Un script qui modifie des centaines de postes peut provoquer une panne générale.
+
+## Préparer un changement
+
+| Élément | Exemple : mise à jour du pare-feu |
+| --- | --- |
+| **Description** | Mise à jour du logiciel du pare-feu vers la dernière version |
+| **Raison** | Correction d''une faille de sécurité |
+| **Risque** | Coupure d''Internet si la mise à jour échoue |
+| **Plan de retour arrière** | Sauvegarde de la configuration, version précédente disponible |
+| **Créneau** | Samedi 8 h, en dehors des heures de travail |
+| **Validation** | Accord écrit du directeur |
+| **Communication** | Message aux employés 2 jours avant |
+| **Vérification** | Tests d''accès après la mise à jour |
+
+> [!madagascar]
+> Planifiez les changements importants à un moment où l''**électricité et la connexion** sont les plus fiables, et prévoyez toujours un onduleur sur le matériel concerné. Une coupure pendant une mise à jour peut rendre un équipement inutilisable.
+
+## Documenter
+
+| Document | Contenu |
+| --- | --- |
+| **Fiche client** | Contacts, contrat, SLA, particularités |
+| **Inventaire** | Postes, utilisateurs, licences, garanties |
+| **Schéma réseau** | Box, routeur, Wi-Fi, imprimantes, adresses importantes |
+| **Procédures** | Arrivée, départ, sauvegarde, restauration |
+| **Accès** | Où sont les identifiants (gestionnaire de mots de passe), jamais les mots de passe eux-mêmes |
+
+## Les indicateurs
+
+| Indicateur | Ce qu''il montre |
+| --- | --- |
+| **Résolution au premier contact** | L''efficacité du niveau 1 |
+| **Délai moyen de résolution** | La rapidité globale |
+| **Respect des SLA** | Le respect des engagements |
+| **Incidents répétés** | Les problèmes à traiter à la source |
+| **Satisfaction des utilisateurs** | La perception du service |
+
+> [!retenir]
+> - Incidents, problèmes, demandes, changements, connaissances.
+> - Procédures d''arrivée et de départ appliquées sans exception.
+> - Des scripts simples, compris et testés avant usage.
+> - Chaque changement avec risque, retour arrière, créneau et validation.
+> - Une documentation à jour et des indicateurs suivis.
+
+## Exercice pratique : la méthode professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez les procédures d''arrivée et de départ pour une PME de 15 personnes.
+> 2. Exécutez les 4 commandes PowerShell dans votre machine virtuelle et expliquez chaque résultat.
+> 3. Rédigez une demande de changement complète pour une migration de messagerie.
+> 4. Créez la fiche client et l''inventaire du cabinet Fanilo.
+>
+> **À livrer** : vos procédures, vos résultats commentés, votre demande de changement et votre documentation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 2, 0, 'Quand bloquer le compte d''un employé qui part ?', '["Quand il le demande","Le jour du départ","Un an après","Jamais"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 2, 1, 'Que faire avant d''utiliser un nouveau script chez un client ?', '["Rien","Le copier sans le lire","L''exécuter sur tous les postes","Le comprendre et le tester sur une machine de test"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 2, 2, 'Que contient une demande de changement ?', '["Risque, plan de retour arrière, créneau et validation","Le prix du matériel","Seulement la date","Rien"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-a', 3, 'Clients internationaux : anglais, couverture horaire, données et certifications', 'Appels et tickets en anglais, couverture horaire et continuité, protection des données et signalement, CompTIA, Microsoft, Google et ITIL, travail pour un prestataire étranger.', 'Les prestataires de services informatiques, éditeurs de logiciels et entreprises d''Europe, d''Amérique du Nord et d''Afrique recrutent des techniciens à distance. Ce module vous prépare à travailler avec eux : support en anglais, couverture horaire, protection des données, certifications reconnues et règles des contrats internationaux.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un appel et rédiger un ticket en anglais.
+> 2. Organiser une couverture horaire pour des clients étrangers.
+> 3. Respecter les règles de protection des données.
+> 4. Choisir les certifications utiles à votre carrière.
+> 5. Travailler en sous-traitance pour un prestataire étranger.
+
+## Le support en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Accueillir | « IT support, this is Hery. How can I help you today? » |
+| Demander une précision | « Could you read me the exact error message? » |
+| Demander l''accès | « With your permission, I''d like to connect to your computer to take a look. » |
+| Expliquer | « I''m going to restart the print service. It will take about a minute. » |
+| Conclure | « Is everything working now? Your ticket number is 4821. » |
+
+> [!exemple] Ticket en anglais
+> **Summary**: Outlook not syncing on user laptop (Finance)
+> **Steps taken**: checked connectivity (OK), webmail works, recreated Outlook profile.
+> **Resolution**: profile corruption; new profile created, mailbox synced.
+> **Time spent**: 25 min. **Status**: Solved.
+
+> [!astuce]
+> Préparez une **fiche de phrases** pour les situations fréquentes et entraînez-vous à voix haute. À l''oral, parlez lentement, reformulez ce que dit l''utilisateur et confirmez chaque étape.
+
+## La couverture horaire
+
+| Besoin du client | Organisation possible |
+| --- | --- |
+| Heures de bureau européennes | Faible décalage : couverture naturelle depuis Madagascar |
+| Début et fin de journée étendus | Créneau tôt le matin ou en soirée |
+| Astreinte la nuit ou le week-end | Rotation dans l''équipe, rémunération prévue au contrat |
+| Clients en Amérique du Nord | Horaires décalés à négocier, ou une équipe partenaire |
+
+> [!madagascar]
+> Pour des clients européens, mettez en avant la **continuité** : électricité de secours, deuxième connexion, procédure en cas de panne locale. C''est la première question que posent les prestataires étrangers avant de confier leurs clients à un technicien à distance.
+
+## La protection des données
+
+| Règle | Au quotidien |
+| --- | --- |
+| **Accès minimum** | Seulement les droits nécessaires à votre travail |
+| **Comptes nominatifs** | Jamais de compte partagé |
+| **Pas de copie** | Aucun fichier client sur votre ordinateur personnel |
+| **Traçabilité** | Sessions et actions notées |
+| **Signalement** | Toute fuite ou intrusion signalée immédiatement au responsable |
+| **Règles locales** | RGPD pour les données de personnes dans l''Union européenne, lois locales ailleurs |
+
+> [!attention]
+> Une violation de données peut obliger l''entreprise cliente à **déclarer l''incident** aux autorités dans un délai court (par exemple 72 heures dans le RGPD dans certains cas). Signalez donc immédiatement tout incident, même si vous n''êtes pas sûr de sa gravité.
+
+## Les certifications utiles
+
+| Certification | Pour qui |
+| --- | --- |
+| **CompTIA A+** | Bases du support matériel et logiciel, très connue |
+| **Certifications Microsoft** (par exemple sur Microsoft 365 et l''administration des postes) | Administrateurs Microsoft 365 et Windows |
+| **Certification Google Workspace Administrator** | Administrateurs Google |
+| **ITIL 4 Foundation** | Bonnes pratiques de gestion des services |
+| **CompTIA Network+ et Security+** | Réseau et sécurité |
+
+> [!astuce]
+> Les éditeurs changent régulièrement les noms et le contenu de leurs certifications. Vérifiez la **liste actuelle** sur leur site officiel, ainsi que le prix, la langue et le mode d''examen (en ligne surveillé ou en centre). Les éditeurs proposent souvent des parcours d''apprentissage gratuits.
+
+## Travailler pour un prestataire étranger
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Marque blanche** | Vous parlez au nom du prestataire, vous ne démarchez pas ses clients |
+| **Contrat** | Confidentialité, horaires, SLA, astreinte, responsabilité |
+| **Outils** | Ceux du prestataire, avec des accès personnels |
+| **Procédures** | Respect strict de ses procédures et escalades |
+| **Rapports** | Temps passé et tickets traités, au format demandé |
+
+> [!retenir]
+> - En anglais : accueillir, préciser, demander l''accès, expliquer, conclure.
+> - Une couverture horaire claire et une continuité garantie.
+> - Accès minimum, comptes nominatifs, pas de copie, signalement immédiat.
+> - A+, Microsoft, Google, ITIL, Network+ et Security+ : vérifier les listes actuelles.
+> - Pour un prestataire : marque blanche, contrat et procédures.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Enregistrez-vous en train de mener en anglais un appel fictif de 5 minutes (imprimante ou messagerie).
+> 2. Rédigez en anglais 3 tickets résolus.
+> 3. Rédigez votre plan de continuité (électricité, connexion, remplacement).
+> 4. Choisissez une certification et notez ses conditions officielles et un plan d''étude de 2 mois.
+>
+> **À livrer** : votre enregistrement, vos tickets, votre plan de continuité et votre plan d''étude.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 3, 0, 'Comment demander l''accès à distance en anglais ?', '["« Give me your password. »","« With your permission, I''d like to connect to your computer. »","« I''m connecting now. »","Ne rien demander"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 3, 1, 'Que faire d''un incident de sécurité dont on n''est pas sûr ?', '["Le signaler immédiatement","Le cacher","Attendre d''être sûr","Le régler seul sans rien dire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 3, 2, 'Quelle certification est connue pour les bases du support ?', '["TOEFL","ISTQB","CompTIA A+","PMP"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-2-a', 4, 'Développer son activité : forfaits, contrats, études de cas et équipe', 'Trois voies, forfaits par poste, clauses du contrat et réversibilité, rapport mensuel, études de cas chiffrées, petite équipe et évolution.', 'Après quelques clients satisfaits, vous pouvez construire une **activité stable** de services informatiques : forfaits mensuels par poste, contrats avec des prestataires, études de cas, et peut-être une petite équipe de techniciens. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de support.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Petit prestataire de services gérés** | Ceux qui aiment gérer des clients | Forfaits mensuels par poste ou par utilisateur |
+| **Technicien sous-traitant** | Ceux qui préfèrent la technique | Contrats avec des prestataires étrangers |
+| **Salarié à distance** | Ceux qui préfèrent la stabilité | Salaire, évolution vers l''administration systèmes |
+
+## Des forfaits et des contrats durables
+
+### Le forfait par poste
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Essentiel** | Surveillance, mises à jour, antivirus géré | 20 000 Ar par poste et par mois |
+| **Standard** | Essentiel + support à distance illimité en heures ouvrées | 35 000 Ar par poste et par mois |
+| **Complet** | Standard + sauvegardes gérées, comptes Microsoft 365 ou Google, rapport mensuel | 50 000 Ar par poste et par mois |
+| **Mise en place** | Diagnostic, mise en ordre, déploiement des outils | Une fois, selon la taille |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les clauses importantes
+
+1. **Ce qui est inclus** et ce qui ne l''est pas (matériel, déplacements, projets).
+2. **Les SLA** par priorité.
+3. **Les horaires** couverts et l''astreinte éventuelle.
+4. **Les licences** : payées par le client, à son nom.
+5. **La responsabilité** : limites claires, notamment en cas de perte de données.
+6. **La réversibilité** : remise des accès et de la documentation si le contrat s''arrête.
+
+> [!attention]
+> Ne gardez jamais un client « prisonnier » en conservant seul les mots de passe administrateur. Les accès principaux appartiennent **au client**, et vous les lui remettez avec la documentation. C''est une question de confiance et de déontologie.
+
+### Le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Tickets | 42 traités, 88 % résolus au premier contact |
+| SLA | 100 % respectés |
+| Sécurité | Tous les postes à jour, 2 tentatives d''hameçonnage bloquées |
+| Sauvegardes | Test de restauration réussi le 10/10 |
+| Inventaire | 2 postes de plus de 6 ans à remplacer |
+| Recommandations | Former les employés aux e-mails suspects |
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : réseau de 4 écoles privées, 60 postes.
+> **Problème** : pannes fréquentes, aucune sauvegarde, comptes partagés, technicien qui se déplace sans cesse.
+> **Solution** : diagnostic, comptes individuels, double authentification, surveillance à distance, sauvegardes automatiques, procédures d''arrivée et de départ.
+> **Résultats en 6 mois** : déplacements réduits de 80 % ; appels urgents divisés par 3 ; une restauration réussie après une panne de disque, sans perte de données.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Technicien de niveau 1** | Quand les appels simples prennent la majorité de votre temps |
+| **Technicien de niveau 2** | Quand les clients ont des besoins d''administration plus complexes |
+| **Responsable** (vous) | Contrats, planning, relation client, projets |
+
+### Les règles de l''équipe
+
+1. **Procédures écrites** pour chaque tâche courante.
+2. **Accès nominatifs** et double authentification pour tous.
+3. **Relecture** des tickets et des changements importants.
+4. **Formation continue** et objectifs de certification.
+5. **Astreinte** organisée et rémunérée.
+
+> [!madagascar]
+> Les PME, écoles, cliniques et ONG malgaches ont souvent besoin d''un support informatique fiable sans pouvoir embaucher un informaticien à temps plein. Un forfait mensuel à distance, avec quelques déplacements facturés à part, répond bien à ce besoin, en plus des contrats avec des prestataires étrangers.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Administrateur systèmes** | Serveurs, cloud, automatisation (voir la formation Administrateur systèmes et DevOps) |
+| **Analyste en cybersécurité** | Surveillance, réponse aux incidents (voir la formation Analyste en cybersécurité) |
+| **Architecte Microsoft 365 ou Google Workspace** | Migrations, sécurité avancée, grands comptes |
+| **Responsable informatique** | Budget, stratégie, équipe |
+
+> [!retenir]
+> - Prestataire, sous-traitant ou salarié : choisissez votre voie.
+> - Des forfaits par poste avec ce qui est inclus ou non.
+> - Contrat : SLA, horaires, licences, responsabilité, réversibilité.
+> - Les accès principaux appartiennent au client.
+> - Une équipe avec procédures, accès nominatifs et astreinte rémunérée.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez vos forfaits et calculez le revenu mensuel pour 3 clients de 10, 20 et 40 postes.
+> 3. Rédigez les clauses principales de votre contrat et un modèle de rapport mensuel.
+> 4. Listez 10 prospects (PME locales ou prestataires étrangers) et envoyez 3 propositions de diagnostic.
+>
+> **À livrer** : votre plan, vos forfaits et calculs, vos clauses, votre modèle de rapport et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 4, 0, 'À qui appartiennent les accès principaux d''administration ?', '["Au fournisseur d''Internet","Au client","À personne","Au technicien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 4, 1, 'Qu''est-ce que la réversibilité dans un contrat ?', '["Remettre accès et documentation si le contrat s''arrête","Garder le client prisonnier","Inverser les écrans","Rembourser tout"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-2-a', 4, 2, 'Vers quel métier évoluer avec les serveurs et le cloud ?', '["Traducteur","Retoucheur photo","Monteur audio","Administrateur systèmes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Quelle spécialité configure et sécurise ordinateurs et téléphones à distance ?', '["La retouche","Le support applicatif","La gestion des appareils (MDM)","La rédaction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Pourquoi le diagnostic du parc est-il une bonne offre d''entrée ?', '["Il remplace le support","Il est toujours gratuit","Le client découvre ses risques et confie la mise en ordre","Il évite le travail"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Quelle question poser sur les sauvegardes ?', '["Combien pèsent les câbles ?","Aucune","De quelle couleur sont-elles ?","Ont-elles déjà été testées ?"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Comment travailler pendant un diagnostic ?', '["Sans prévenir","En copiant tous les fichiers","Avec un accord écrit et des comptes nominatifs, sans copier de données","Avec le mot de passe du directeur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Quelle est une caractéristique du support préventif ?', '["Facturer chaque panne","Des mises à jour planifiées chaque mois","Aucune sauvegarde","Attendre les appels"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'À quoi sert l''accès sans surveillance ?', '["Partager les mots de passe","Se connecter sans l''utilisateur, sur les postes autorisés","Se connecter partout sans accord","Supprimer les journaux"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Pourquoi un outil d''accès à distance mal sécurisé est-il dangereux ?', '["Aucun danger","Il coûte plus cher","Il est plus lent","C''est une porte d''entrée vers tous les clients à la fois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que fait-on à la résolution d''un ticket problème dans Zendesk ?', '["Informer tous les utilisateurs des incidents liés","Créer un nouveau compte","Rien","Supprimer les incidents"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Comment représenter un client dans Zendesk ?', '["Ce n''est pas possible","Par une organisation avec ses SLA","Par une étiquette de couleur","Par un mot de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Où s''entraîner sans risque aux consoles d''administration ?', '["Nulle part","Dans un environnement d''essai","Sur le compte d''un ami","Chez un client réel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que vise la gestion des problèmes dans ITIL ?', '["Recruter","Facturer","Rétablir vite une panne","Supprimer la cause des incidents répétés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Quelle étape fait partie de l''arrivée d''un employé ?', '["Supprimer sa messagerie","Récupérer son matériel","Activer la double authentification avec lui","Bloquer son compte"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que fait la commande Test-NetConnection avec -Port 443 ?', '["Supprimer un fichier","Tester l''accès à un site sur le port HTTPS","Installer Windows","Imprimer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Par quels scripts commencer ?', '["Ceux qui suppriment des comptes","Aucun","Ceux trouvés en ligne sans les lire","Ceux qui lisent des informations sans rien modifier"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Pourquoi un plan de retour arrière ?', '["Ce n''est pas utile","Pour décorer","Pour facturer plus","Revenir à l''état précédent si le changement échoue"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que noter dans la documentation des accès ?', '["Tous les mots de passe en clair","Où trouver les identifiants, jamais les mots de passe eux-mêmes","Rien","Les mots de passe dans un e-mail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Quel indicateur montre l''efficacité du niveau 1 ?', '["Le nombre de réunions","La couleur des tickets","Le nombre d''écrans","La résolution au premier contact"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que faire pendant un appel en anglais ?', '["Parler très vite","Ne rien expliquer","Raccrocher en cas de doute","Parler lentement, reformuler et confirmer chaque étape"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que demandent d''abord les prestataires étrangers ?', '["Votre couleur préférée","Rien","Votre nombre d''abonnés","Votre continuité en cas de panne locale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que signifie l''accès minimum ?', '["Un compte partagé","Seulement les droits nécessaires à son travail","Aucun accès","Tous les droits"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que vérifier pour une certification d''éditeur ?', '["Rien","Seulement le logo","Les réponses vendues en ligne","La liste actuelle, le prix, la langue et le mode d''examen"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que signifie travailler en marque blanche pour un prestataire ?', '["Parler en son nom sans démarcher ses clients","Travailler sans contrat","Signer de son propre nom","Travailler gratuitement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que contient le forfait Complet d''exemple ?', '["Seulement l''antivirus","Rien","Support, sauvegardes gérées, comptes et rapport mensuel","Du matériel gratuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Que doit montrer le rapport mensuel ?', '["Tickets, SLA, sécurité, sauvegardes et recommandations","Rien","Seulement la facture","Les mots de passe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-a', 'Comment organiser l''astreinte dans l''équipe ?', '["Inexistante","Toujours pour la même personne","Organisée et rémunérée","Gratuite et imposée"]'::jsonb, 2);
 
 -- tech-2-f
 delete from public.exam_questions where course_id = 'tech-2-f';

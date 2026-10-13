@@ -1,0 +1,97 @@
+{
+  "id": "tech-2-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du technicien support un professionnel qui administre, prévient les pannes et sécurise : spécialité (Microsoft 365, Google Workspace, services gérés, gestion des appareils, réseau, support applicatif), diagnostic du parc et support préventif, outils payants (TeamViewer pour gérer un parc et Zendesk avec incidents, problèmes et SLA), consoles d'administration, pratiques ITIL, arrivées et départs, scripts PowerShell, changements et documentation, support en anglais, protection des données et certifications, puis forfaits par poste, contrats, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, diagnostiquer un parc informatique et passer au préventif",
+    "Gérer et sécuriser un parc d'appareils avec TeamViewer",
+    "Organiser le support dans Zendesk avec incidents, problèmes et SLA",
+    "Appliquer ITIL, les procédures d'arrivée et de départ, les scripts et la gestion des changements",
+    "Travailler en anglais pour des clients étrangers en protégeant les données",
+    "Construire des forfaits par poste, des contrats, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, diagnostiquer un parc et passer au préventif",
+      "summary": "Les 6 spécialités avancées, le RMM, le diagnostic du parc en 6 domaines et son rapport, le passage du support réactif au préventif et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que fait un outil RMM ?", "options": ["Il surveille les postes et permet d'agir à distance avant la panne", "Il dessine des schémas", "Il fait la comptabilité", "Il envoie des newsletters"], "correct": 0 },
+        { "q": "Quel risque majeur trouve-t-on souvent dans un diagnostic ?", "options": ["Des comptes d'anciens employés encore actifs", "Un fond d'écran ancien", "Une souris sans fil", "Un écran trop grand"], "correct": 0 },
+        { "q": "Quelle formule accompagne le support préventif ?", "options": ["Un forfait mensuel par poste", "Une facture à chaque panne seulement", "Aucun contrat", "Un paiement unique à vie"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : TeamViewer, Zendesk et consoles d'administration",
+      "summary": "Groupes, accès sans surveillance, politiques et journaux dans TeamViewer, sécurisation des accès, types de tickets, problèmes et incidents liés, SLA par client et tâches courantes dans Microsoft 365.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la première règle de sécurité pour les techniciens ?", "options": ["Double authentification et comptes nominatifs", "Un compte partagé pour toute l'équipe", "Pas de mot de passe", "Un accès à tous les clients pour tous"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un ticket de type problème ?", "options": ["La cause commune de plusieurs incidents", "Une question simple", "Une facture", "Une tâche planifiée"], "correct": 0 },
+        { "q": "Que faire d'un compte Microsoft 365 compromis ?", "options": ["Bloquer la connexion et révoquer les sessions", "Attendre", "Le partager", "Changer seulement la photo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : ITIL, arrivées et départs, scripts et changements",
+      "summary": "Pratiques ITIL, procédures d'arrivée et de départ, commandes PowerShell de lecture, préparation d'un changement, documentation et indicateurs.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand bloquer le compte d'un employé qui part ?", "options": ["Le jour du départ", "Un an après", "Jamais", "Quand il le demande"], "correct": 0 },
+        { "q": "Que faire avant d'utiliser un nouveau script chez un client ?", "options": ["Le comprendre et le tester sur une machine de test", "L'exécuter sur tous les postes", "Le copier sans le lire", "Rien"], "correct": 0 },
+        { "q": "Que contient une demande de changement ?", "options": ["Risque, plan de retour arrière, créneau et validation", "Seulement la date", "Rien", "Le prix du matériel"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, couverture horaire, données et certifications",
+      "summary": "Appels et tickets en anglais, couverture horaire et continuité, protection des données et signalement, CompTIA, Microsoft, Google et ITIL, travail pour un prestataire étranger.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment demander l'accès à distance en anglais ?", "options": ["« With your permission, I'd like to connect to your computer. »", "« Give me your password. »", "« I'm connecting now. »", "Ne rien demander"], "correct": 0 },
+        { "q": "Que faire d'un incident de sécurité dont on n'est pas sûr ?", "options": ["Le signaler immédiatement", "Attendre d'être sûr", "Le cacher", "Le régler seul sans rien dire"], "correct": 0 },
+        { "q": "Quelle certification est connue pour les bases du support ?", "options": ["CompTIA A+", "PMP", "ISTQB", "TOEFL"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, contrats, études de cas et équipe",
+      "summary": "Trois voies, forfaits par poste, clauses du contrat et réversibilité, rapport mensuel, études de cas chiffrées, petite équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À qui appartiennent les accès principaux d'administration ?", "options": ["Au client", "Au technicien", "À personne", "Au fournisseur d'Internet"], "correct": 0 },
+        { "q": "Qu'est-ce que la réversibilité dans un contrat ?", "options": ["Remettre accès et documentation si le contrat s'arrête", "Inverser les écrans", "Rembourser tout", "Garder le client prisonnier"], "correct": 0 },
+        { "q": "Vers quel métier évoluer avec les serveurs et le cloud ?", "options": ["Administrateur systèmes", "Retoucheur photo", "Traducteur", "Monteur audio"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité configure et sécurise ordinateurs et téléphones à distance ?", "options": ["La gestion des appareils (MDM)", "Le support applicatif", "La retouche", "La rédaction"], "correct": 0 },
+    { "q": "Pourquoi le diagnostic du parc est-il une bonne offre d'entrée ?", "options": ["Le client découvre ses risques et confie la mise en ordre", "Il est toujours gratuit", "Il remplace le support", "Il évite le travail"], "correct": 0 },
+    { "q": "Quelle question poser sur les sauvegardes ?", "options": ["Ont-elles déjà été testées ?", "De quelle couleur sont-elles ?", "Aucune", "Combien pèsent les câbles ?"], "correct": 0 },
+    { "q": "Comment travailler pendant un diagnostic ?", "options": ["Avec un accord écrit et des comptes nominatifs, sans copier de données", "Avec le mot de passe du directeur", "Sans prévenir", "En copiant tous les fichiers"], "correct": 0 },
+    { "q": "Quelle est une caractéristique du support préventif ?", "options": ["Des mises à jour planifiées chaque mois", "Attendre les appels", "Aucune sauvegarde", "Facturer chaque panne"], "correct": 0 },
+    { "q": "À quoi sert l'accès sans surveillance ?", "options": ["Se connecter sans l'utilisateur, sur les postes autorisés", "Se connecter partout sans accord", "Supprimer les journaux", "Partager les mots de passe"], "correct": 0 },
+    { "q": "Pourquoi un outil d'accès à distance mal sécurisé est-il dangereux ?", "options": ["C'est une porte d'entrée vers tous les clients à la fois", "Il est plus lent", "Il coûte plus cher", "Aucun danger"], "correct": 0 },
+    { "q": "Que fait-on à la résolution d'un ticket problème dans Zendesk ?", "options": ["Informer tous les utilisateurs des incidents liés", "Supprimer les incidents", "Rien", "Créer un nouveau compte"], "correct": 0 },
+    { "q": "Comment représenter un client dans Zendesk ?", "options": ["Par une organisation avec ses SLA", "Par une étiquette de couleur", "Par un mot de passe", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Où s'entraîner sans risque aux consoles d'administration ?", "options": ["Dans un environnement d'essai", "Chez un client réel", "Sur le compte d'un ami", "Nulle part"], "correct": 0 },
+    { "q": "Que vise la gestion des problèmes dans ITIL ?", "options": ["Supprimer la cause des incidents répétés", "Rétablir vite une panne", "Facturer", "Recruter"], "correct": 0 },
+    { "q": "Quelle étape fait partie de l'arrivée d'un employé ?", "options": ["Activer la double authentification avec lui", "Bloquer son compte", "Récupérer son matériel", "Supprimer sa messagerie"], "correct": 0 },
+    { "q": "Que fait la commande Test-NetConnection avec -Port 443 ?", "options": ["Tester l'accès à un site sur le port HTTPS", "Supprimer un fichier", "Installer Windows", "Imprimer"], "correct": 0 },
+    { "q": "Par quels scripts commencer ?", "options": ["Ceux qui lisent des informations sans rien modifier", "Ceux qui suppriment des comptes", "Ceux trouvés en ligne sans les lire", "Aucun"], "correct": 0 },
+    { "q": "Pourquoi un plan de retour arrière ?", "options": ["Revenir à l'état précédent si le changement échoue", "Pour décorer", "Ce n'est pas utile", "Pour facturer plus"], "correct": 0 },
+    { "q": "Que noter dans la documentation des accès ?", "options": ["Où trouver les identifiants, jamais les mots de passe eux-mêmes", "Tous les mots de passe en clair", "Rien", "Les mots de passe dans un e-mail"], "correct": 0 },
+    { "q": "Quel indicateur montre l'efficacité du niveau 1 ?", "options": ["La résolution au premier contact", "Le nombre d'écrans", "La couleur des tickets", "Le nombre de réunions"], "correct": 0 },
+    { "q": "Que faire pendant un appel en anglais ?", "options": ["Parler lentement, reformuler et confirmer chaque étape", "Parler très vite", "Ne rien expliquer", "Raccrocher en cas de doute"], "correct": 0 },
+    { "q": "Que demandent d'abord les prestataires étrangers ?", "options": ["Votre continuité en cas de panne locale", "Votre couleur préférée", "Rien", "Votre nombre d'abonnés"], "correct": 0 },
+    { "q": "Que signifie l'accès minimum ?", "options": ["Seulement les droits nécessaires à son travail", "Aucun accès", "Tous les droits", "Un compte partagé"], "correct": 0 },
+    { "q": "Que vérifier pour une certification d'éditeur ?", "options": ["La liste actuelle, le prix, la langue et le mode d'examen", "Rien", "Seulement le logo", "Les réponses vendues en ligne"], "correct": 0 },
+    { "q": "Que signifie travailler en marque blanche pour un prestataire ?", "options": ["Parler en son nom sans démarcher ses clients", "Travailler sans contrat", "Signer de son propre nom", "Travailler gratuitement"], "correct": 0 },
+    { "q": "Que contient le forfait Complet d'exemple ?", "options": ["Support, sauvegardes gérées, comptes et rapport mensuel", "Seulement l'antivirus", "Du matériel gratuit", "Rien"], "correct": 0 },
+    { "q": "Que doit montrer le rapport mensuel ?", "options": ["Tickets, SLA, sécurité, sauvegardes et recommandations", "Seulement la facture", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Comment organiser l'astreinte dans l'équipe ?", "options": ["Organisée et rémunérée", "Gratuite et imposée", "Inexistante", "Toujours pour la même personne"], "correct": 0 }
+  ]
+}
