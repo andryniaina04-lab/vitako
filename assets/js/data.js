@@ -4856,6 +4856,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-3-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du correcteur un professionnel des textes exigeants : spécialité (édition, traductions, juridique, scientifique, marque, réécriture), niveaux d'édition et diagnostic rédactionnel, outils payants (Antidote et ProWritingAid), correction d'épreuves PDF, vitesse, précision, outils personnels et contrôle qualité, variétés de français, relecture de traductions, agences et maisons d'édition, puis abonnements, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, distinguer les niveaux d'édition et réaliser un diagnostic",
+   "Utiliser Antidote et ProWritingAid comme un professionnel",
+   "Corriger des épreuves PDF selon les normes de l'édition",
+   "Mesurer et garantir sa qualité sur de gros volumes",
+   "Travailler pour des agences de traduction, des éditeurs et des publics francophones variés",
+   "Construire des offres durables, des études de cas et une équipe de correcteurs"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, connaître les niveaux d'édition et diagnostiquer",
+    "summary": "Les 6 spécialités avancées, les épreuves, les 4 niveaux d'édition dans l'ordre, le diagnostic rédactionnel avec fautes pour 1 000 mots et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les niveaux d'édition professionnels",
+     "Le diagnostic de qualité rédactionnelle",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Antidote, ProWritingAid et épreuves PDF",
+    "summary": "Correcteur, dictionnaires, guides, prismes, inspecteur et réglages d'Antidote, méthode en 5 passes, rapports de ProWritingAid, annotations PDF, veuves et orphelines, formats des éditeurs.",
+    "sections": [
+     "Antidote : au-delà du correcteur",
+     "ProWritingAid pour l'anglais",
+     "Corriger des épreuves PDF",
+     "Les formats des éditeurs",
+     "Exercice pratique : outils professionnels"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : mesure, organisation, outils personnels et fatigue",
+    "summary": "Vitesse, précision et texte test, organisation d'un livre, listes de vérification et de recherches, macros testées, contrôle de ses propres modifications et gestion de la fatigue.",
+    "sections": [
+     "Mesurer vitesse et précision",
+     "Organiser une longue mission",
+     "Vos outils personnels",
+     "Contrôler votre propre travail",
+     "Gérer la fatigue",
+     "Exercice pratique : votre système de qualité"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : variétés de français, traductions, agences et éditeurs",
+    "summary": "Usages de France, du Québec, de Suisse et de Belgique, relecture de traductions et faux amis, agences de traduction, maisons d'édition et feuillet, correction de l'anglais et confidentialité.",
+    "sections": [
+     "Les variétés de français",
+     "Relire une traduction",
+     "Travailler pour une agence de traduction",
+     "Travailler pour une maison d'édition",
+     "Corriger de l'anglais ?",
+     "Confidentialité et droits des auteurs",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : abonnements, études de cas et équipe",
+    "summary": "Trois voies, abonnements, livres, traductions et ateliers, suppléments d'urgence, études de cas chiffrées, équipe testée et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "lang-3-f": {
   "hours": 15,
   "description": "Le correcteur et relecteur vérifie qu'un texte est sans faute, clair et cohérent avant sa publication. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des auteurs, des traducteurs et des entreprises, à Madagascar et à l'étranger, avec LanguageTool et BonPatron : niveaux d'intervention, fautes fréquentes, typographie française, méthode en plusieurs passages, suivi des modifications, feuille de style, correction d'un manuscrit et note de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

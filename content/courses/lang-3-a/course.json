@@ -1,0 +1,97 @@
+{
+  "id": "lang-3-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du correcteur un professionnel des textes exigeants : spécialité (édition, traductions, juridique, scientifique, marque, réécriture), niveaux d'édition et diagnostic rédactionnel, outils payants (Antidote et ProWritingAid), correction d'épreuves PDF, vitesse, précision, outils personnels et contrôle qualité, variétés de français, relecture de traductions, agences et maisons d'édition, puis abonnements, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, distinguer les niveaux d'édition et réaliser un diagnostic",
+    "Utiliser Antidote et ProWritingAid comme un professionnel",
+    "Corriger des épreuves PDF selon les normes de l'édition",
+    "Mesurer et garantir sa qualité sur de gros volumes",
+    "Travailler pour des agences de traduction, des éditeurs et des publics francophones variés",
+    "Construire des offres durables, des études de cas et une équipe de correcteurs"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, connaître les niveaux d'édition et diagnostiquer",
+      "summary": "Les 6 spécialités avancées, les épreuves, les 4 niveaux d'édition dans l'ordre, le diagnostic rédactionnel avec fautes pour 1 000 mots et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que les épreuves ?", "options": ["Le document mis en page juste avant publication", "Un examen de français", "Le premier brouillon", "Une facture"], "correct": 0 },
+        { "q": "Quel niveau d'édition vient en premier ?", "options": ["La révision de fond", "La correction d'épreuves", "La préparation de copie", "La typographie"], "correct": 0 },
+        { "q": "Comment mesurer la qualité d'un texte simplement ?", "options": ["En fautes pour 1 000 mots", "En nombre de pages", "En couleur", "En temps de lecture"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Antidote, ProWritingAid et épreuves PDF",
+      "summary": "Correcteur, dictionnaires, guides, prismes, inspecteur et réglages d'Antidote, méthode en 5 passes, rapports de ProWritingAid, annotations PDF, veuves et orphelines, formats des éditeurs.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi régler Antidote pour chaque client ?", "options": ["Pays, typographie et orthographe changent les alertes", "Pour changer les couleurs", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 },
+        { "q": "Qui est responsable d'une correction acceptée ?", "options": ["Le correcteur", "Antidote", "L'auteur seul", "Personne"], "correct": 0 },
+        { "q": "Sur des épreuves, on corrige :", "options": ["Le minimum nécessaire", "En réécrivant beaucoup", "Rien", "Seulement les titres"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : mesure, organisation, outils personnels et fatigue",
+      "summary": "Vitesse, précision et texte test, organisation d'un livre, listes de vérification et de recherches, macros testées, contrôle de ses propres modifications et gestion de la fatigue.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert un texte test aux fautes connues ?", "options": ["Mesurer sa précision réelle", "Décorer son portfolio", "Facturer plus", "Rien"], "correct": 0 },
+        { "q": "Comment utiliser une macro qui modifie tout le document ?", "options": ["La tester sur une copie avec le suivi activé", "La lancer directement sur l'original", "Jamais l'enregistrer", "La partager sans tester"], "correct": 0 },
+        { "q": "Quel risque présente une correction ?", "options": ["Introduire une nouvelle faute", "Aucun", "Effacer le fichier", "Changer la langue"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : variétés de français, traductions, agences et éditeurs",
+      "summary": "Usages de France, du Québec, de Suisse et de Belgique, relecture de traductions et faux amis, agences de traduction, maisons d'édition et feuillet, correction de l'anglais et confidentialité.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Faut-il corriger « septante » dans un texte pour la Belgique ?", "options": ["Non, c'est correct", "Oui, toujours", "Oui, en « soixante-dix »", "Seulement au début"], "correct": 0 },
+        { "q": "Que signifie « actually » ?", "options": ["En réalité", "Actuellement", "Activement", "Éventuellement"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un feuillet ?", "options": ["Environ 1 500 signes espaces comprises", "Une page imprimée de 300 mots exactement", "Une feuille de style", "Un contrat"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : abonnements, études de cas et équipe",
+      "summary": "Trois voies, abonnements, livres, traductions et ateliers, suppléments d'urgence, études de cas chiffrées, équipe testée et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle formule stabilise les revenus ?", "options": ["L'abonnement", "Une mission unique", "Un test gratuit", "Rien"], "correct": 0 },
+        { "q": "Comment recruter un correcteur dans l'équipe ?", "options": ["Avec un test d'entrée", "Sans test", "Au hasard", "Selon son nombre d'abonnés"], "correct": 0 },
+        { "q": "Quand augmenter ses prix ?", "options": ["Pour les délais très courts et les textes difficiles", "Jamais", "Au hasard", "Pour les textes faciles"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité compare une traduction à l'original ?", "options": ["La relecture de traductions", "La correction d'épreuves", "Les contenus de marque", "La réécriture"], "correct": 0 },
+    { "q": "Qu'est-ce que la préparation de copie ?", "options": ["Langue, cohérence et feuille de style avant mise en page", "La dernière vérification après mise en page", "L'écriture du livre", "L'impression"], "correct": 0 },
+    { "q": "Pourquoi respecter l'ordre des niveaux d'édition ?", "options": ["Pour ne pas corriger un passage qui sera supprimé", "Pour facturer plus", "Ce n'est pas important", "Pour aller plus vite sans lire"], "correct": 0 },
+    { "q": "Que vérifie le diagnostic dans le domaine Processus ?", "options": ["Qui écrit, qui relit et s'il existe un guide", "La couleur du site", "Le salaire de l'équipe", "Rien"], "correct": 0 },
+    { "q": "Quelle offre fixe les règles d'écriture d'une organisation ?", "options": ["Le guide éditorial", "La correction d'épreuves", "Le diagnostic", "La facture"], "correct": 0 },
+    { "q": "Que montrent les prismes d'Antidote ?", "options": ["Répétitions, phrases longues et tournures lourdes", "Les images", "Les mots de passe", "Le prix"], "correct": 0 },
+    { "q": "Que fait-on en premier dans la méthode avec Antidote ?", "options": ["Une passe humaine", "Accepter toutes les alertes", "La lecture finale", "Rien"], "correct": 0 },
+    { "q": "Quel rapport de ProWritingAid repère la voix passive ?", "options": ["Style", "Lisibilité", "Longueur des phrases", "Orthographe"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une ligne veuve ou orpheline ?", "options": ["Une ligne isolée d'un paragraphe en haut ou en bas de page", "Une ligne sans faute", "Un titre", "Une note de bas de page"], "correct": 0 },
+    { "q": "Que vérifier sur des épreuves ?", "options": ["Coupures, renvois, titres courants et dernières fautes", "Uniquement le style", "Rien", "La couverture seulement"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une liste de recherches systématiques ?", "options": ["Les formes à chercher avant chaque livraison", "Une liste de clients", "Un dictionnaire", "Une facture"], "correct": 0 },
+    { "q": "Quelle part relire à froid dans le contrôle final ?", "options": ["Un échantillon, par exemple 5 %", "Rien", "Seulement le titre", "Tout trois fois"], "correct": 0 },
+    { "q": "Pourquoi relire en PDF ou à voix haute ?", "options": ["Changer de support fait voir d'autres fautes", "C'est plus joli", "C'est obligatoire", "Pour aller plus vite"], "correct": 0 },
+    { "q": "Que prévoir face aux coupures d'électricité ?", "options": ["Sauvegarde en ligne, batterie et marge sur les délais", "Rien", "Travailler la nuit seulement", "Refuser les missions"], "correct": 0 },
+    { "q": "Que demander toujours au client sur la langue ?", "options": ["Le pays du public", "Sa couleur préférée", "Rien", "Son âge"], "correct": 0 },
+    { "q": "Comment traduire « eventually » ?", "options": ["Finalement", "Éventuellement", "Actuellement", "Évidemment"], "correct": 0 },
+    { "q": "Que doit respecter un relecteur d'agence ?", "options": ["Le glossaire et la mémoire de traduction", "Ses goûts personnels", "Rien", "Le style d'un autre client"], "correct": 0 },
+    { "q": "Comment les éditeurs paient-ils parfois la correction ?", "options": ["Au feuillet ou au signe", "Au kilo", "En droits d'auteur seulement", "Jamais"], "correct": 0 },
+    { "q": "Quand accepter de corriger un texte anglais destiné à publication ?", "options": ["Si votre anglais est natif ou équivalent", "Toujours", "Jamais pour personne", "Si le texte est court"], "correct": 0 },
+    { "q": "Que faire d'un manuscrit non publié ?", "options": ["Ne jamais le partager", "Le publier en extrait", "L'envoyer à des amis", "Le mettre en ligne"], "correct": 0 },
+    { "q": "Qui décide finalement du texte ?", "options": ["L'auteur", "Le correcteur", "Antidote", "Le lecteur"], "correct": 0 },
+    { "q": "Que chiffrer dans une étude de cas ?", "options": ["Fautes pour 1 000 mots, délais et volume", "Le nombre de couleurs", "Rien", "Les salaires"], "correct": 0 },
+    { "q": "Que faire avec chaque livraison d'un correcteur de l'équipe ?", "options": ["Relire un échantillon", "Rien", "Tout réécrire", "La supprimer"], "correct": 0 },
+    { "q": "Que propose un correcteur-formateur ?", "options": ["Corrections et ateliers d'écriture professionnelle", "Seulement des traductions", "Des logos", "Rien"], "correct": 0 },
+    { "q": "Vers quel métier évoluer pour accompagner des auteurs sur le fond ?", "options": ["Éditeur (editor)", "Monteur audio", "Modérateur", "Testeur"], "correct": 0 }
+  ]
+}

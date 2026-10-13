@@ -60,7 +60,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 13, true),
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 15, true),
   ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true),
-  ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 17, false),
+  ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 15, true),
   ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, true),
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
   ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
@@ -34377,6 +34377,538 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment recevoir des fichiers sensibles ?', '["Par une messagerie grand public","Par SMS","Sur un réseau social","Par un lien sécurisé"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que demander à une université dès le départ ?', '["Son mot de passe","Sa procédure de paiement et les documents nécessaires","Un paiement en espèces","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel service voisin demande de découper et synchroniser le texte avec la vidéo ?', '["Le sous-titrage","Le compte rendu","La traduction","La saisie"]'::jsonb, 0);
+
+-- lang-3-a
+delete from public.exam_questions where course_id = 'lang-3-a';
+delete from public.module_questions where course_id = 'lang-3-a';
+delete from public.lessons where course_id = 'lang-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-a', 0, 'Se spécialiser, connaître les niveaux d''édition et diagnostiquer', 'Les 6 spécialités avancées, les épreuves, les 4 niveaux d''édition dans l''ordre, le diagnostic rédactionnel avec fautes pour 1 000 mots et les offres à forte valeur.', 'Corriger des articles et des documents ouvre les premières missions. Les correcteurs les mieux payés interviennent sur des textes **exigeants** : livres publiés, documents juridiques ou médicaux, traductions, publications scientifiques, contenus de grandes marques. Ils maîtrisent les normes de l''édition et garantissent une qualité constante sur de gros volumes. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la correction.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un diagnostic de la qualité rédactionnelle d''un client.
+> 4. Distinguer les niveaux d''édition professionnels.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Correction d''édition** | Préparation de copie et épreuves pour des maisons d''édition et des auteurs | Normes typographiques, feuilles de style, épreuves PDF |
+| 2 | **Relecture de traductions** | Comparer la traduction à l''original et corriger | Une seconde langue, outils de traduction |
+| 3 | **Textes juridiques et administratifs** | Contrats, rapports, documents officiels | Vocabulaire juridique, cohérence des renvois |
+| 4 | **Textes scientifiques et médicaux** | Articles, thèses, notices | Terminologie, normes de citation, rigueur |
+| 5 | **Contenus de marque** | Sites, campagnes, documents marketing | Guide éditorial de la marque, ton |
+| 6 | **Révision et réécriture** | Améliorer la structure et la clarté de textes faibles | Plan, logique, style, accord de l''auteur |
+
+> [!definition] Épreuves
+> Le document mis en page (souvent un PDF) juste avant l''impression ou la publication. On le corrige avec des annotations, sans retaper le texte.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Relecture de traductions** malgache-français et anglais-français, peu de professionnels la proposent.
+> - **Documents d''ONG et de programmes de développement** en français, très nombreux à Madagascar.
+> - **Correction pour auteurs indépendants** francophones, avec un faible décalage horaire avec l''Europe.
+
+## Les niveaux d''édition professionnels
+
+| Niveau | Ce qui est fait | Moment |
+| --- | --- | --- |
+| **Révision de fond** (developmental editing) | Structure, logique, contenu | Avant tout le reste |
+| **Révision de style** (line editing) | Phrases, rythme, clarté, ton | Après la structure |
+| **Préparation de copie** (copy editing) | Langue, cohérence, application de la feuille de style | Avant la mise en page |
+| **Correction d''épreuves** (proofreading) | Dernières fautes et défauts de mise en page | Après la mise en page |
+
+> [!attention]
+> Ces niveaux se font **dans l''ordre**. Corriger les virgules d''un chapitre qui sera ensuite supprimé est du temps perdu. Demandez toujours au client à quel stade se trouve son texte.
+
+## Le diagnostic de qualité rédactionnelle
+
+Un diagnostic est une excellente **offre d''entrée** : le client découvre l''état de ses textes et vous confie la correction.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Langue** | Nombre de fautes pour 1 000 mots |
+| **Cohérence** | Termes, noms, chiffres, majuscules d''un document à l''autre |
+| **Clarté** | Phrases trop longues, jargon, répétitions |
+| **Typographie** | Espaces, guillemets, nombres, titres |
+| **Ton** | Correspond-il au public et à l''image du client ? |
+| **Processus** | Qui écrit, qui relit, existe-t-il un guide éditorial ? |
+
+### Le rapport de diagnostic
+
+```
+Client : ONG Fanabeazana – 5 rapports et 20 pages du site analysés
+Fautes de langue : 9 pour 1 000 mots en moyenne (objectif : moins de 1)
+Incohérences : « ONG » et « O.N.G. », « bénéficiaires » et « usagers » mélangés
+Clarté : 35 % des phrases dépassent 30 mots
+Typographie : guillemets anglais et espaces manquantes avant « : »
+Processus : aucune relecture avant publication ; pas de guide éditorial
+
+Proposition
+1. Guide éditorial de 4 pages.
+2. Correction des 5 rapports et des pages principales du site.
+3. Relecture mensuelle de toutes les publications.
+```
+
+> [!astuce]
+> Mesurez les fautes **pour 1 000 mots** : ce chiffre est simple à comprendre et permet de montrer les progrès au client après votre intervention.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic rédactionnel** | Analyse d''échantillons, rapport et plan | 200 000 Ar |
+| **Guide éditorial** | Règles de langue, typographie, ton, vocabulaire du client | 400 000 Ar |
+| **Préparation de copie d''un livre** | 60 000 mots, feuille de style, note de correction | 1 200 000 Ar |
+| **Abonnement de relecture** | Toutes les publications du mois, délai garanti | 350 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : édition, traductions, juridique, scientifique, marque, réécriture.
+> - Les 4 niveaux d''édition se font dans l''ordre.
+> - Le diagnostic mesure les fautes pour 1 000 mots et ouvre une mission.
+> - Cohérence, clarté, typographie, ton et processus.
+> - Des offres à valeur : guide éditorial, livre, abonnement.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Choisissez 3 publications d''une organisation (site, rapport, publication) et faites leur diagnostic.
+> 3. Comptez les fautes pour 1 000 mots et listez les incohérences.
+> 4. Rédigez le rapport et 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre rapport de diagnostic et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 0, 0, 'Qu''est-ce que les épreuves ?', '["Un examen de français","Le document mis en page juste avant publication","Le premier brouillon","Une facture"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 0, 1, 'Quel niveau d''édition vient en premier ?', '["La typographie","La correction d''épreuves","La préparation de copie","La révision de fond"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 0, 2, 'Comment mesurer la qualité d''un texte simplement ?', '["En fautes pour 1 000 mots","En temps de lecture","En couleur","En nombre de pages"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-a', 1, 'Outils professionnels : Antidote, ProWritingAid et épreuves PDF', 'Correcteur, dictionnaires, guides, prismes, inspecteur et réglages d''Antidote, méthode en 5 passes, rapports de ProWritingAid, annotations PDF, veuves et orphelines, formats des éditeurs.', 'Les correcteurs professionnels francophones travaillent presque tous avec **Antidote**, et ceux qui corrigent de l''anglais avec **ProWritingAid**. Ce module vous apprend à utiliser leurs fonctions avancées, à corriger des épreuves PDF et à travailler dans les formats des maisons d''édition.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser le correcteur, les dictionnaires et les guides d''Antidote.
+> 2. Exploiter les filtres de style et de révision d''Antidote.
+> 3. Utiliser les rapports de ProWritingAid pour l''anglais.
+> 4. Corriger des épreuves PDF avec des annotations.
+> 5. Travailler avec les formats et outils des éditeurs.
+
+## Antidote : au-delà du correcteur
+
+| Fonction | Usage professionnel |
+| --- | --- |
+| **Correcteur** | Détecter les fautes, avec une explication pour chacune |
+| **Dictionnaires** | Définitions, synonymes, cooccurrences, conjugaison |
+| **Guides** | Grammaire, typographie, style, avec exemples |
+| **Prismes de révision** | Répétitions, phrases longues, tournures lourdes, vocabulaire |
+| **Inspecteur** | Niveau de langue, lisibilité, statistiques du texte |
+| **Réglages** | Variante du français (France, Canada, Suisse, Belgique), rectifications orthographiques, typographie |
+
+> [!astuce]
+> Réglez Antidote **pour chaque client** : pays, typographie (espaces, guillemets), orthographe traditionnelle ou rectifiée. Un mauvais réglage génère des centaines d''alertes inutiles, ou laisse passer de vraies fautes.
+
+### La méthode avec Antidote
+
+1. **Première passe humaine** : vous lisez et corrigez.
+2. **Passe Antidote** : correcteur, en vérifiant chaque alerte.
+3. **Prismes** : répétitions et phrases longues, pour les suggestions de style.
+4. **Contrôle de cohérence** : termes et noms, avec la recherche du traitement de texte.
+5. **Lecture finale** humaine.
+
+> [!attention]
+> Antidote est très précis, mais **ne comprend pas toujours le sens**. Il peut proposer un accord grammaticalement possible mais faux dans le contexte. Vous restez seul responsable de chaque correction acceptée.
+
+## ProWritingAid pour l''anglais
+
+| Rapport | Ce qu''il montre |
+| --- | --- |
+| **Grammaire et orthographe** | Fautes, avec variante anglaise choisie (américaine, britannique) |
+| **Style** | Voix passive, adverbes, formulations faibles |
+| **Répétitions** | Mots et expressions trop fréquents |
+| **Lisibilité** | Phrases difficiles, score de lisibilité |
+| **Longueur des phrases** | Variété du rythme |
+| **Cohérence** | Orthographe, tirets, majuscules utilisés de façon différente |
+
+## Corriger des épreuves PDF
+
+| Outil d''annotation | Usage |
+| --- | --- |
+| **Barrer** | Supprimer un mot ou un signe |
+| **Insérer** | Ajouter un mot ou un signe à un endroit précis |
+| **Remplacer** | Barrer et proposer le texte correct |
+| **Commentaire** | Question ou remarque de mise en page |
+| **Surligner** | Signaler un problème à vérifier |
+
+### Ce qu''on vérifie sur des épreuves
+
+1. Les **dernières fautes** restées.
+2. Les **coupures de mots** en fin de ligne.
+3. Les **lignes seules** en haut ou en bas de page (veuves et orphelines).
+4. Les **titres courants**, numéros de page, table des matières.
+5. Les **légendes** et les renvois (« voir page 42 »).
+
+> [!definition] Veuve et orpheline
+> Une ligne isolée d''un paragraphe : seule en haut d''une page (veuve) ou seule en bas d''une page (orpheline), selon les conventions. Elles sont corrigées par le metteur en page.
+
+> [!attention]
+> Sur des épreuves, on corrige **le minimum nécessaire** : chaque modification peut décaler toute la mise en page. Une réécriture de phrase à ce stade doit être justifiée.
+
+## Les formats des éditeurs
+
+| Format | Usage |
+| --- | --- |
+| **Word avec suivi des modifications** | Préparation de copie |
+| **PDF annoté** | Correction d''épreuves |
+| **Feuille de style de l''éditeur** | Règles de la maison (italiques, chiffres, titres) |
+| **Signes de correction traditionnels** | Encore utilisés par certains éditeurs sur papier ou PDF |
+
+> [!madagascar]
+> Antidote se paie en licence ou abonnement, ProWritingAid en abonnement, en dollars ou en euros, par carte bancaire internationale. Vérifiez les prix, les promotions et les offres pour plusieurs appareils sur les sites officiels. Pour un correcteur professionnel en français, Antidote est généralement rentabilisé en quelques missions.
+
+> [!retenir]
+> - Antidote : correcteur, dictionnaires, guides, prismes, inspecteur, réglages par client.
+> - Une méthode en 5 passes, avec l''humain au début et à la fin.
+> - ProWritingAid pour le style et la cohérence en anglais.
+> - Épreuves PDF : fautes, coupures, veuves et orphelines, renvois, minimum de modifications.
+> - Respecter les formats et feuilles de style des éditeurs.
+
+## Exercice pratique : outils professionnels
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec la version d''essai d''Antidote (ou à défaut un correcteur gratuit), corrigez un texte de 2 000 mots selon la méthode en 5 passes.
+> 2. Notez 5 alertes d''Antidote que vous avez refusées, et pourquoi.
+> 3. Mettez en page 4 pages de texte dans un traitement de texte, exportez en PDF et corrigez les épreuves avec annotations.
+> 4. Rédigez la feuille de style d''un éditeur fictif.
+>
+> **À livrer** : votre texte corrigé, vos 5 refus expliqués, votre PDF annoté et la feuille de style.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 1, 0, 'Pourquoi régler Antidote pour chaque client ?', '["Pays, typographie et orthographe changent les alertes","Ce n''est pas utile","Pour changer les couleurs","Pour payer moins"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 1, 1, 'Qui est responsable d''une correction acceptée ?', '["Personne","Le correcteur","L''auteur seul","Antidote"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 1, 2, 'Sur des épreuves, on corrige :', '["Seulement les titres","En réécrivant beaucoup","Le minimum nécessaire","Rien"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-a', 2, 'Qualité et rapidité : mesure, organisation, outils personnels et fatigue', 'Vitesse, précision et texte test, organisation d''un livre, listes de vérification et de recherches, macros testées, contrôle de ses propres modifications et gestion de la fatigue.', 'Un correcteur professionnel livre une qualité **constante**, même sur de gros volumes et des délais courts. Ce module vous donne les méthodes des meilleurs : mesurer sa vitesse, organiser de longues missions, construire ses outils personnels, contrôler la qualité et gérer la fatigue.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mesurer votre vitesse et votre précision.
+> 2. Organiser une longue mission ou un volume régulier.
+> 3. Construire vos outils personnels : listes, macros, modèles.
+> 4. Contrôler la qualité de votre propre travail.
+> 5. Gérer la fatigue et la concentration.
+
+## Mesurer vitesse et précision
+
+| Indicateur | Comment le mesurer | Exemple |
+| --- | --- | --- |
+| **Vitesse** | Mots corrigés par heure, selon la difficulté | 2 000 mots par heure sur un texte propre, 800 sur un texte difficile |
+| **Précision** | Fautes trouvées sur un texte test dont on connaît les fautes | 47 sur 50, soit 94 % |
+| **Taux de retour client** | Corrections signalées par le client après livraison | 1 faute oubliée pour 20 000 mots |
+
+> [!astuce]
+> Préparez vous-même un **texte test** de 1 000 mots avec 30 fautes connues. Corrigez-le tous les mois : vous verrez vos progrès et vos points faibles réels.
+
+## Organiser une longue mission
+
+| Étape | Exemple pour un livre de 80 000 mots |
+| --- | --- |
+| **Lecture de survol** | Repérer le ton, la structure, les difficultés |
+| **Feuille de style** | Démarrée dès le premier chapitre, enrichie ensuite |
+| **Découpage** | 10 000 mots par jour sur 8 jours, plus 2 jours de cohérence et de contrôle |
+| **Points d''étape** | Envoi des questions au client tous les 3 jours |
+| **Cohérence globale** | Recherche de chaque terme de la feuille de style dans tout le texte |
+| **Contrôle final** | Relecture d''un échantillon, vérification des modifications |
+
+## Vos outils personnels
+
+| Outil | Usage |
+| --- | --- |
+| **Liste de vérification personnelle** | Vos erreurs habituelles et celles que les correcteurs automatiques manquent |
+| **Liste de recherches** | Mots à rechercher systématiquement : « malgré que », doubles espaces, « email » |
+| **Macros du traitement de texte** | Automatiser les remplacements sûrs (doubles espaces, espaces insécables) |
+| **Modèles de commentaires** | Explications de règles fréquentes, prêtes à coller |
+| **Bibliothèque de feuilles de style** | Une par client régulier |
+
+> [!attention]
+> Une macro qui modifie tout le document doit être **testée** sur une copie et utilisée avec le suivi des modifications activé. Un remplacement automatique mal pensé peut créer des centaines d''erreurs en une seconde.
+
+### Exemple de liste de recherches
+
+```
+Recherches systématiques avant livraison
+- Deux espaces consécutives
+- Espace avant une virgule ou un point
+- « : » sans espace avant
+- " (guillemets anglais) dans un texte français
+- malgré que / pallier à / se rappeler de
+- Nombres sans espace des milliers (ex. 25000)
+- Noms de la feuille de style (variantes)
+```
+
+## Contrôler votre propre travail
+
+1. **Vérifiez vos propres modifications** : une correction peut introduire une faute (accord oublié après un changement de mot).
+2. **Relisez les passages modifiés** dans leur contexte.
+3. **Passez votre liste de recherches**.
+4. **Comparez** la version propre et la version suivie : aucune modification ne doit manquer.
+5. **Relisez un échantillon** au hasard (par exemple 5 %) à froid.
+
+## Gérer la fatigue
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Séances de 45 à 60 minutes** et pauses | La précision baisse avec la fatigue |
+| **Les textes difficiles le matin** | Moment de meilleure concentration pour beaucoup de personnes |
+| **Changer de support** | Relire en PDF ou à voix haute fait voir d''autres fautes |
+| **Limiter les heures de correction intense** par jour | Au-delà, le taux de fautes oubliées augmente |
+| **Écran et posture adaptés** | Moins de fatigue visuelle |
+
+> [!madagascar]
+> Planifiez vos missions en tenant compte des **coupures d''électricité** possibles : sauvegardez automatiquement (stockage en ligne), gardez une batterie chargée et prévoyez une marge d''une journée sur chaque délai important.
+
+> [!retenir]
+> - Mesurer vitesse, précision et retours clients.
+> - Découper les longues missions avec feuille de style et points d''étape.
+> - Listes personnelles, recherches systématiques, macros testées, modèles.
+> - Contrôler ses propres modifications et relire un échantillon à froid.
+> - Séances courtes, textes difficiles au bon moment, marge sur les délais.
+
+## Exercice pratique : votre système de qualité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Préparez votre texte test de 1 000 mots avec 30 fautes connues et mesurez votre précision.
+> 2. Rédigez votre liste de vérification personnelle et votre liste de recherches.
+> 3. Créez 2 macros sûres dans votre traitement de texte et testez-les sur une copie.
+> 4. Planifiez une mission fictive de 80 000 mots jour par jour.
+>
+> **À livrer** : votre score, vos listes, une capture de vos macros et votre planning.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 2, 0, 'À quoi sert un texte test aux fautes connues ?', '["Facturer plus","Décorer son portfolio","Mesurer sa précision réelle","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 2, 1, 'Comment utiliser une macro qui modifie tout le document ?', '["La tester sur une copie avec le suivi activé","La partager sans tester","Jamais l''enregistrer","La lancer directement sur l''original"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 2, 2, 'Quel risque présente une correction ?', '["Changer la langue","Aucun","Effacer le fichier","Introduire une nouvelle faute"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-a', 3, 'Clients internationaux : variétés de français, traductions, agences et éditeurs', 'Usages de France, du Québec, de Suisse et de Belgique, relecture de traductions et faux amis, agences de traduction, maisons d''édition et feuillet, correction de l''anglais et confidentialité.', 'Les auteurs, éditeurs, agences et organisations internationales cherchent des correcteurs francophones fiables. Ce module vous prépare à travailler avec eux : différences entre les variétés de français, relecture de traductions, travail pour les agences de traduction et les maisons d''édition, correction de l''anglais et règles de confidentialité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Adapter votre correction aux variétés de français.
+> 2. Relire une traduction en la comparant à l''original.
+> 3. Travailler pour une agence de traduction ou une maison d''édition.
+> 4. Savoir quand accepter une correction en anglais.
+> 5. Respecter la confidentialité et les droits des auteurs.
+
+## Les variétés de français
+
+| Point | France | Québec (exemples) | Suisse et Belgique (exemples) |
+| --- | --- | --- | --- |
+| **Espaces avant « ; ! ? »** | Espace insécable (souvent fine) | Souvent pas d''espace avant « ; ! ? » | Selon les usages des éditeurs |
+| **Vocabulaire** | « courriel » ou « e-mail » | « courriel » recommandé | Usages locaux (« septante », « nonante ») |
+| **Féminisation des titres** | Usages variables | Très répandue | Usages variables |
+| **Anglicismes** | Certains admis | Davantage combattus officiellement | Variables |
+
+> [!attention]
+> Ne « corrigez » pas un usage régional correct. « Septante » est juste en Belgique et en Suisse ; « courriel » est la norme au Québec. Demandez toujours au client **le pays du public** et réglez vos outils en conséquence.
+
+## Relire une traduction
+
+| Vérification | Exemple d''erreur |
+| --- | --- |
+| **Sens** | « Eventually » traduit par « éventuellement » au lieu de « finalement » |
+| **Omissions et ajouts** | Une phrase de l''original absente de la traduction |
+| **Chiffres et noms** | Une date ou un montant modifié |
+| **Terminologie** | Un terme du glossaire du client non respecté |
+| **Fluidité** | Une phrase correcte mais calquée sur l''anglais |
+| **Langue et typographie** | Fautes, guillemets, espaces |
+
+> [!definition] Faux ami
+> Un mot qui ressemble à un mot d''une autre langue mais n''a pas le même sens : « actually » (en réalité) n''est pas « actuellement ».
+
+> [!madagascar]
+> Les ONG et les institutions produisent beaucoup de documents traduits entre le malgache, le français et l''anglais. Si vous maîtrisez bien deux de ces langues, la **relecture de traductions** est une spécialité rare et recherchée. Pour aller plus loin, voir la formation Traducteur.
+
+## Travailler pour une agence de traduction
+
+| Pratique | Ce qu''il faut savoir |
+| --- | --- |
+| **Outils de traduction assistée** | Les agences travaillent souvent dans des logiciels qui découpent le texte en segments ; vous relisez segment par segment |
+| **Glossaire et mémoire de traduction** | Termes imposés par le client, à respecter |
+| **Grilles de qualité** | Erreurs classées par type et gravité |
+| **Délais courts** | Livraisons souvent en 24 à 48 heures |
+| **Paiement au mot ou à l''heure** | Selon l''agence |
+
+## Travailler pour une maison d''édition
+
+| Pratique | Ce qu''il faut savoir |
+| --- | --- |
+| **Test d''entrée** | Correction d''un extrait selon les normes de la maison |
+| **Feuille de style maison** | À appliquer strictement |
+| **Étapes** | Préparation de copie, puis une ou plusieurs séries d''épreuves |
+| **Relation avec l''auteur** | Passe souvent par l''éditeur |
+| **Paiement** | Souvent au feuillet ou au signe (caractères espaces comprises), selon la maison |
+
+> [!definition] Feuillet
+> Une unité de mesure de l''édition française, d''environ 1 500 signes espaces comprises. Certains éditeurs paient la correction au feuillet.
+
+## Corriger de l''anglais ?
+
+| Situation | Conseil |
+| --- | --- |
+| Votre anglais est votre langue maternelle ou d''un niveau équivalent | Possible, avec des outils comme ProWritingAid |
+| Votre anglais est bon mais pas natif | Proposez plutôt la relecture de traductions vers le français ou la vérification de cohérence |
+| Texte destiné à publication en anglais | Laissez la correction finale à un correcteur natif |
+
+> [!attention]
+> Un correcteur doit être **plus fort que l''auteur** dans la langue du texte. Accepter de corriger une langue que l''on ne maîtrise pas parfaitement abîme votre réputation.
+
+## Confidentialité et droits des auteurs
+
+1. **Ne partagez jamais** un manuscrit non publié.
+2. **N''utilisez pas** les textes des clients dans des outils en ligne non autorisés.
+3. **Signez** les accords de confidentialité demandés et respectez-les.
+4. **Supprimez** les fichiers à la date convenue.
+5. **Respectez** la voix de l''auteur : vous proposez, il décide.
+
+> [!retenir]
+> - Adapter la correction au pays du public, sans corriger les usages régionaux corrects.
+> - Relire une traduction : sens, omissions, chiffres, terminologie, fluidité.
+> - Agences : segments, glossaires, grilles de qualité, délais courts.
+> - Éditeurs : test, feuille de style maison, épreuves, paiement au feuillet.
+> - Ne corriger que les langues que l''on maîtrise parfaitement ; confidentialité stricte.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Corrigez un texte de 800 mots destiné au Québec, en réglant vos outils en conséquence.
+> 2. Relisez la traduction française d''un texte anglais de 500 mots (traduit par vous ou par un outil) et classez les erreurs par type.
+> 3. Rédigez votre fiche de présentation pour une agence de traduction.
+> 4. Rédigez votre engagement de confidentialité type.
+>
+> **À livrer** : vos deux corrections, votre classement des erreurs, votre fiche et votre engagement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 3, 0, 'Faut-il corriger « septante » dans un texte pour la Belgique ?', '["Non, c''est correct","Oui, en « soixante-dix »","Seulement au début","Oui, toujours"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 3, 1, 'Que signifie « actually » ?', '["Actuellement","En réalité","Éventuellement","Activement"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 3, 2, 'Qu''est-ce qu''un feuillet ?', '["Un contrat","Une feuille de style","Une page imprimée de 300 mots exactement","Environ 1 500 signes espaces comprises"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-a', 4, 'Développer son activité : abonnements, études de cas et équipe', 'Trois voies, abonnements, livres, traductions et ateliers, suppléments d''urgence, études de cas chiffrées, équipe testée et évolution.', 'Après quelques clients réguliers, vous pouvez construire une **activité stable** de correction : abonnements, éditeurs fidèles, agences partenaires, études de cas, et peut-être une petite équipe de correcteurs. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Présenter des études de cas convaincantes.
+> 4. Organiser une petite équipe de correcteurs.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Correcteur spécialisé** | Édition, juridique, scientifique | Tarifs élevés, clients fidèles |
+| **Service de relecture** | Ceux qui aiment organiser | Abonnements avec des organisations et agences |
+| **Correcteur et formateur** | Ceux qui aiment transmettre | Corrections + formations à l''écrit professionnel |
+
+## Des offres et des prix durables
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Abonnement organisation** | Toutes les publications du mois, délai de 48 h | 350 000 Ar par mois |
+| **Préparation de copie d''un livre** | Feuille de style, correction, note | Selon le nombre de mots |
+| **Relecture de traductions** | Au mot, avec grille de qualité | Selon l''agence |
+| **Atelier d''écriture professionnelle** | Formation d''une équipe aux règles essentielles | 300 000 Ar la session |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Les **abonnements** stabilisent vos revenus. Proposez-les aux organisations qui publient régulièrement (ONG, agences de contenu, entreprises), avec un volume inclus et un prix au-delà.
+
+> [!attention]
+> Augmentez vos prix pour les **délais très courts** et les textes très difficiles. Accepter tout au même tarif mène à la fatigue et aux erreurs.
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : ONG présente dans 6 régions, 30 publications par mois (rapports, site, réseaux sociaux).
+> **Problème** : 9 fautes pour 1 000 mots, termes incohérents, aucun processus de relecture.
+> **Solution** : diagnostic, guide éditorial de 4 pages, abonnement de relecture avec délai de 48 heures, atelier de 2 heures pour l''équipe.
+> **Résultats en 6 mois** : moins d''une faute pour 1 000 mots dans les publications ; terminologie uniforme ; bailleur ayant salué la qualité des rapports.
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Chiffrez** : fautes pour 1 000 mots, délais, volume.
+3. **Montrez** un extrait avant et après (avec accord).
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Correcteur** | Quand vous refusez des missions |
+| **Correcteur spécialisé** (juridique, anglais) | Quand les clients demandent des domaines que vous ne couvrez pas |
+| **Responsable qualité** (vous) | Relecture d''échantillons, relation client |
+
+### Les règles de qualité
+
+1. **Test d''entrée** pour chaque correcteur (votre texte test).
+2. **Feuilles de style partagées** par client.
+3. **Relecture d''un échantillon** de chaque livraison par une seconde personne.
+4. **Liste de recherches commune** avant livraison.
+5. **Confidentialité** : accords signés, accès limités.
+
+> [!madagascar]
+> Une petite équipe de correcteurs à Madagascar peut couvrir le **français et l''anglais**, et la **relecture de traductions malgache**, pour des ONG, des agences et des éditeurs. Pour gagner la confiance des clients étrangers, mettez en avant vos indicateurs de qualité et vos délais tenus.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Éditeur** (editor) | Révision de fond, accompagnement des auteurs |
+| **Responsable éditorial** | Guides, processus, équipes de rédaction |
+| **Traducteur** | Voir la formation Traducteur |
+| **Formateur à l''écrit professionnel** | Voir la formation Formateur en ligne |
+| **Rédacteur** | Voir la formation Rédacteur web et copywriter |
+
+> [!retenir]
+> - Spécialiste, service de relecture ou correcteur-formateur : choisissez votre voie.
+> - Abonnements, livres, traductions, ateliers ; suppléments pour l''urgence.
+> - Des études de cas chiffrées en fautes pour 1 000 mots.
+> - Une équipe testée, avec feuilles de style partagées et relecture d''échantillons.
+> - Évoluez vers l''édition, la direction éditoriale, la traduction ou la formation.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez 3 offres, dont un abonnement, avec leurs prix.
+> 3. Rédigez une étude de cas à partir de vos projets.
+> 4. Listez 10 organisations, agences ou éditeurs et envoyez 3 propositions de diagnostic.
+>
+> **À livrer** : votre plan, vos offres, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 4, 0, 'Quelle formule stabilise les revenus ?', '["Un test gratuit","Rien","Une mission unique","L''abonnement"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 4, 1, 'Comment recruter un correcteur dans l''équipe ?', '["Avec un test d''entrée","Au hasard","Sans test","Selon son nombre d''abonnés"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-a', 4, 2, 'Quand augmenter ses prix ?', '["Pour les textes faciles","Jamais","Au hasard","Pour les délais très courts et les textes difficiles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Quelle spécialité compare une traduction à l''original ?', '["La réécriture","La relecture de traductions","La correction d''épreuves","Les contenus de marque"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Qu''est-ce que la préparation de copie ?', '["L''impression","L''écriture du livre","La dernière vérification après mise en page","Langue, cohérence et feuille de style avant mise en page"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Pourquoi respecter l''ordre des niveaux d''édition ?', '["Pour facturer plus","Ce n''est pas important","Pour ne pas corriger un passage qui sera supprimé","Pour aller plus vite sans lire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que vérifie le diagnostic dans le domaine Processus ?', '["La couleur du site","Qui écrit, qui relit et s''il existe un guide","Rien","Le salaire de l''équipe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Quelle offre fixe les règles d''écriture d''une organisation ?', '["La facture","Le guide éditorial","La correction d''épreuves","Le diagnostic"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que montrent les prismes d''Antidote ?', '["Les images","Le prix","Les mots de passe","Répétitions, phrases longues et tournures lourdes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que fait-on en premier dans la méthode avec Antidote ?', '["La lecture finale","Accepter toutes les alertes","Une passe humaine","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Quel rapport de ProWritingAid repère la voix passive ?', '["Lisibilité","Longueur des phrases","Style","Orthographe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Qu''est-ce qu''une ligne veuve ou orpheline ?', '["Un titre","Une ligne isolée d''un paragraphe en haut ou en bas de page","Une note de bas de page","Une ligne sans faute"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que vérifier sur des épreuves ?', '["Uniquement le style","La couverture seulement","Coupures, renvois, titres courants et dernières fautes","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Qu''est-ce qu''une liste de recherches systématiques ?', '["Une facture","Un dictionnaire","Les formes à chercher avant chaque livraison","Une liste de clients"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Quelle part relire à froid dans le contrôle final ?', '["Un échantillon, par exemple 5 %","Tout trois fois","Seulement le titre","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Pourquoi relire en PDF ou à voix haute ?', '["Pour aller plus vite","C''est plus joli","C''est obligatoire","Changer de support fait voir d''autres fautes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que prévoir face aux coupures d''électricité ?', '["Rien","Travailler la nuit seulement","Sauvegarde en ligne, batterie et marge sur les délais","Refuser les missions"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que demander toujours au client sur la langue ?', '["Sa couleur préférée","Son âge","Rien","Le pays du public"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Comment traduire « eventually » ?', '["Actuellement","Évidemment","Finalement","Éventuellement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que doit respecter un relecteur d''agence ?', '["Le style d''un autre client","Le glossaire et la mémoire de traduction","Rien","Ses goûts personnels"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Comment les éditeurs paient-ils parfois la correction ?', '["Au kilo","Au feuillet ou au signe","Jamais","En droits d''auteur seulement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Quand accepter de corriger un texte anglais destiné à publication ?', '["Toujours","Jamais pour personne","Si votre anglais est natif ou équivalent","Si le texte est court"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que faire d''un manuscrit non publié ?', '["Ne jamais le partager","L''envoyer à des amis","Le mettre en ligne","Le publier en extrait"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Qui décide finalement du texte ?', '["Le lecteur","Antidote","L''auteur","Le correcteur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que chiffrer dans une étude de cas ?', '["Rien","Les salaires","Le nombre de couleurs","Fautes pour 1 000 mots, délais et volume"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que faire avec chaque livraison d''un correcteur de l''équipe ?', '["Tout réécrire","Relire un échantillon","La supprimer","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Que propose un correcteur-formateur ?', '["Seulement des traductions","Des logos","Rien","Corrections et ateliers d''écriture professionnelle"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-a', 'Vers quel métier évoluer pour accompagner des auteurs sur le fond ?', '["Testeur","Éditeur (editor)","Modérateur","Monteur audio"]'::jsonb, 1);
 
 -- lang-3-f
 delete from public.exam_questions where course_id = 'lang-3-f';
