@@ -557,15 +557,6 @@ function coursePage(id) {
 // ---------------------------------------------------------------------------
 // Leçon + petit test
 // ---------------------------------------------------------------------------
-function videoBlock(url) {
-  const u = String(url || '').trim();
-  let m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
-  if (m) return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Vidéo de la leçon" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>`;
-  m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-  if (m) return `<div class="video"><iframe src="https://player.vimeo.com/video/${m[1]}" title="Vidéo de la leçon" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
-  if (/^https:\/\/\S+\.(mp4|webm)(\?\S*)?$/i.test(u)) return `<div class="video"><video controls preload="metadata" src="${esc(u)}"></video></div>`;
-  return '<div class="video empty">Vidéo de la leçon bientôt disponible. Le texte ci-dessous contient tout ce qu\'il faut pour réussir le test.</div>';
-}
 
 async function lessonPage(id, num) {
   const c = courseById(id);
@@ -599,7 +590,6 @@ async function lessonPage(id, num) {
         <li><button type="button" data-act="toc" data-target="mquiz-wrap"><span>${modNo}.${secs.length + 1}</span>Test du module</button></li></ol>
     </nav>
     <div class="lesson-wrap">
-      ${videoBlock(L.video_url)}
       <article class="lesson md">${md(L.body_md, { number: modNo })}</article>
   <section class="stack quiz-sec" id="mquiz-wrap">
     <h2 class="quiz-h"><span class="sec-num">${modNo}.${secs.length + 1}</span>Test du module</h2>
