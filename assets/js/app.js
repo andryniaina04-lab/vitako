@@ -60,8 +60,8 @@ const priceHtml = () => (promoOn()
 const promoBanner = () => (promoOn() ? `<a class="promo" href="#/abonnement">
     <span class="promo-pct">-${promoPct()} %</span>
     <span class="promo-txt"><b>Offre de lancement jusqu'au ${promoEnd()}</b>
-      <span>${ar(S.promoPrice)} au lieu de <s class="old-price">${ar(S.price)}</s> pour ${S.days} jours d'accès à toutes les formations.</span></span>
-    <span class="promo-go" aria-hidden="true">→</span></a>` : '');
+      <span><b class="promo-new">${ar(S.promoPrice)}</b> au lieu de <s class="old-price">${ar(S.price)}</s> pour ${S.days} jours d'accès à toutes les formations.</span></span>
+    <span class="promo-go">J'en profite <span aria-hidden="true">→</span></span></a>` : '');
 const fmtTel = (t) => String(t || '').replace(/(\d{3})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4');
 const opById = (id) => CFG.operators.find((o) => o.id === id) || CFG.operators[0];
 const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };

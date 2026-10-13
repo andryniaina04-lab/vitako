@@ -658,3 +658,19 @@ body{margin:0}
 .lp-final .btn.lp-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
 .lp-final .btn.lp-outline:hover{background:rgba(255,255,255,.1)}
 .tm.lp-band .tm-av{background:#0B7A55;color:#fff}
+
+/* Bannière promo : dégradé rouge */
+.promo{position:relative;overflow:hidden;gap:18px;padding:18px 22px;border:0;border-radius:calc(var(--r) * 1.4);color:#fff;text-decoration:none;
+  background:radial-gradient(520px 260px at 92% 0%,rgba(251,146,60,.55),transparent 65%),radial-gradient(420px 240px at 0% 120%,rgba(253,230,138,.22),transparent 60%),linear-gradient(120deg,#5F0F0F 0%,#991B1B 40%,#C2261A 70%,#E8452C 100%);
+  box-shadow:0 12px 30px rgba(153,27,27,.22);transition:transform .2s,box-shadow .2s}
+.promo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);background-size:20px 20px;-webkit-mask-image:linear-gradient(100deg,transparent 35%,#000 85%);mask-image:linear-gradient(100deg,transparent 35%,#000 85%);pointer-events:none}
+.promo>*{position:relative}
+.promo:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(153,27,27,.3)}
+.promo-pct{min-width:70px;height:70px;border-radius:50%;background:#fff;color:#B42318;font-family:var(--display);font-weight:800;font-size:1.15rem;transform:rotate(-8deg);box-shadow:0 8px 20px rgba(0,0,0,.2),0 0 0 4px rgba(255,255,255,.25)}
+.promo-txt b{color:#fff;font-size:1.08rem}
+.promo-txt span{color:rgba(255,255,255,.88)}
+.promo-txt .promo-new{display:inline;font-size:1.02rem;color:#FDE68A}
+.promo .old-price{color:rgba(255,255,255,.75);text-decoration-color:#FDE68A;font-weight:600}
+.promo-go{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:#fff;color:#B42318;font-size:.92rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.15);transition:gap .2s}
+.promo:hover .promo-go{gap:10px}
+@media (max-width:640px){.promo{padding:16px}.promo-go{display:none}.promo-pct{min-width:56px;height:56px;font-size:.98rem}}
