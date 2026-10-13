@@ -149,3 +149,19 @@ supabase/seed.sql       généré : catalogue et contenu
 tools/build.mjs         génère data.js et seed.sql
 tests/                  tests
 ```
+
+## E-mail à chaque demande de paiement
+
+La migration `supabase/migrations/20261013b_email_paiement.sql` envoie un e-mail à l'administrateur
+à chaque nouvelle demande de paiement (via Resend et l'extension pg_net de Supabase).
+À faire une seule fois :
+
+1. Créer un compte gratuit sur https://resend.com avec l'adresse qui doit recevoir les e-mails.
+2. Dans Resend : **API Keys** → **Create API Key** (permission « Sending access »), copier la clé.
+3. Dans Supabase > **SQL Editor**, exécuter (en remplaçant les valeurs) :
+   ```sql
+   select vault.create_secret('re_votre_cle', 'resend_api_key');
+   select vault.create_secret('votre.adresse@gmail.com', 'notify_email');
+   ```
+Ne jamais mettre la clé dans le code, sur GitHub ou dans une discussion.
+Sans domaine vérifié, Resend n'envoie qu'à l'adresse du compte Resend (expéditeur onboarding@resend.dev).
