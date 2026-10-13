@@ -1,0 +1,97 @@
+{
+  "id": "lang-4-f",
+  "hours": 14,
+  "description": "Le rédacteur de fiches produits écrit des descriptions claires, exactes et convaincantes qui aident les clients à acheter et les produits à être trouvés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : éléments d'une fiche, bénéfices, persona, mots clés, structure et ton, rédaction en volume, contrôle qualité, catalogue complet et import. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le rôle et les éléments d'une fiche produit complète",
+    "Transformer des caractéristiques en bénéfices pour un client cible",
+    "Choisir et placer des mots clés naturellement",
+    "Rédiger en volume avec Google Sheets et publier dans Shopify",
+    "Produire un catalogue complet avec échantillon validé et contrôle qualité",
+    "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de rédacteur de fiches produits depuis Madagascar",
+      "summary": "Le rôle d'une fiche produit, ses 8 éléments, la méta-description, les types de missions, les clients, les qualités du rédacteur et les affirmations encadrées.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi une fiche précise réduit-elle les retours ?", "options": ["Elle évite les déceptions", "Elle augmente les prix", "Elle cache les défauts", "Elle n'a aucun effet"], "correct": 0 },
+        { "q": "Qu'est-ce que la méta-description ?", "options": ["Le court texte sous le titre dans les résultats de Google", "Le prix du produit", "Une photo", "Le nom de la marque"], "correct": 0 },
+        { "q": "Quand écrire « 100 % naturel » ?", "options": ["Seulement si le client le confirme et peut le prouver", "Toujours", "Jamais pour les épices", "Pour vendre plus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : bénéfices, persona, mots clés, structure et ton",
+      "summary": "Caractéristique, avantage et bénéfice, persona, mots clés et emplacements, structure pour une lecture rapide, modèle de fiche et ton de la marque.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle question transforme une caractéristique en bénéfice ?", "options": ["« Et alors ? »", "« Combien ça coûte ? »", "« Qui l'a fabriqué ? »", "« Quelle couleur ? »"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un persona ?", "options": ["Le portrait d'un client type", "Un logiciel", "Un mot clé", "Un prix"], "correct": 0 },
+        { "q": "Que provoque la répétition excessive d'un mot clé ?", "options": ["Un texte illisible qui peut nuire au référencement", "Un meilleur classement garanti", "Plus de ventes", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Sheets, Shopify, mots clés et outils payants",
+      "summary": "Tableur de rédaction avec statuts et compteur de caractères, champs de Shopify, import CSV, mots clés gratuits, contrôle en 8 points, Semrush et applications Shopify payantes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle formule compte les caractères d'une cellule ?", "options": ["=NBCAR(F2) ou =LEN(F2)", "=SOMME(F2)", "=MOYENNE(F2)", "=SI(F2)"], "correct": 0 },
+        { "q": "Que ne faut-il jamais modifier dans la boutique du client ?", "options": ["Les prix, stocks et réglages", "Les descriptions", "Les textes alternatifs", "Les titres demandés"], "correct": 0 },
+        { "q": "Peut-on copier la description d'un fabricant ?", "options": ["Non, il faut un texte original", "Oui, toujours", "Oui, si elle est longue", "Oui, en changeant un mot"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le catalogue de Tanety Épices",
+      "summary": "Fiche de collecte, brief de rédaction, échantillon de 3 fiches validé, rédaction en série par famille, livraison d'un tableur prêt à importer et contrôle final.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire si une information manque ?", "options": ["Poser la question au client", "L'inventer", "La copier d'un concurrent", "L'ignorer"], "correct": 0 },
+        { "q": "Pourquoi un échantillon de 3 fiches ?", "options": ["Éviter de réécrire tout le catalogue", "Pour facturer plus", "Pour décorer", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Comment rédiger en série ?", "options": ["Par famille de produits, avec des formulations variées", "Au hasard", "Avec la même phrase partout", "Sans relire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avec avant et après, 5 canaux, prix par fiche et par catalogue, conditions en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel premier contact proposer à une boutique ?", "options": ["Une de ses fiches réécrite", "Une critique publique", "Un prix sans exemple", "Rien"], "correct": 0 },
+        { "q": "Qui confirme l'exactitude des informations fournies ?", "options": ["Le client", "Le rédacteur seul", "Personne", "La plateforme"], "correct": 0 },
+        { "q": "Vers quel métier évoluer pour gérer l'import et les variantes ?", "options": ["Gestionnaire de catalogue produits", "Monteur audio", "Testeur", "Traducteur juridique"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un rédacteur de fiches produits ?", "options": ["Il écrit des descriptions qui aident à acheter et à être trouvé", "Il prend les photos", "Il livre les colis", "Il fixe les prix"], "correct": 0 },
+    { "q": "Quel élément liste les informations essentielles en un coup d'œil ?", "options": ["Les points clés", "La méta-description", "Le texte alternatif", "L'URL"], "correct": 0 },
+    { "q": "Quel type de mission demande de respecter des règles strictes ?", "options": ["Les fiches pour places de marché", "Un message personnel", "Une note interne", "Aucune"], "correct": 0 },
+    { "q": "Quel avantage pour un rédacteur malgache ?", "options": ["Connaître les produits malgaches et leurs usages", "Aucun", "Le PayPal illimité", "Ne pas avoir besoin de relire"], "correct": 0 },
+    { "q": "Que donne la caractéristique « sachet refermable » comme bénéfice ?", "options": ["La vanille reste parfumée plusieurs mois", "Le sachet est marron", "Le prix baisse", "Rien"], "correct": 0 },
+    { "q": "Où placer le mot clé principal ?", "options": ["Dans le titre et les premières phrases", "Seulement à la fin", "Nulle part", "Dans le prix"], "correct": 0 },
+    { "q": "Comment le client lit-il une fiche sur téléphone ?", "options": ["Il la survole", "Il lit chaque mot lentement", "Il l'imprime", "Il ne la lit pas"], "correct": 0 },
+    { "q": "Combien de lignes pour un paragraphe de fiche ?", "options": ["2 à 4 lignes", "30 lignes", "Une seule phrase de 100 mots", "Aucune"], "correct": 0 },
+    { "q": "Qui fournit les chiffres d'un produit ?", "options": ["Le client, vérifiés avec lui", "Le rédacteur, au hasard", "Un concurrent", "Personne"], "correct": 0 },
+    { "q": "Que raconter pour une marque malgache ?", "options": ["Une histoire vraie et précise, avec accord", "Une histoire inventée", "Rien", "L'histoire d'un concurrent"], "correct": 0 },
+    { "q": "Pourquoi une colonne Statut dans le tableur ?", "options": ["Suivre l'avancement de chaque fiche", "Décorer", "Calculer le prix", "Rien"], "correct": 0 },
+    { "q": "Où saisir la méta-description dans Shopify ?", "options": ["Dans la section référencement sur les moteurs de recherche", "Dans le prix", "Dans les variantes", "Dans le stock"], "correct": 0 },
+    { "q": "Comment importer de nombreux produits dans Shopify ?", "options": ["Avec un fichier CSV au format du modèle", "Un par un obligatoirement", "Par e-mail", "C'est impossible"], "correct": 0 },
+    { "q": "Où trouver gratuitement des idées de mots clés ?", "options": ["Dans la saisie semi-automatique de Google", "Dans le dictionnaire seulement", "Nulle part", "Dans les factures"], "correct": 0 },
+    { "q": "Que vérifier dans la liste de contrôle ?", "options": ["Aucune propriété inventée ni affirmation non prouvée", "La couleur du texte", "Rien", "Le nombre d'images"], "correct": 0 },
+    { "q": "Qui paie souvent Semrush ?", "options": ["Le client ou l'agence", "Toujours le rédacteur débutant", "Personne", "La boutique concurrente"], "correct": 0 },
+    { "q": "Que contient la fiche de collecte ?", "options": ["Origine, usages, conservation, preuves, questions fréquentes", "Seulement le prix", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Comment écrire le nom malgache d'un produit dans le cas pratique ?", "options": ["Entre parenthèses quand il existe", "Jamais", "En majuscules", "À la place du nom français"], "correct": 0 },
+    { "q": "Quand rédiger les 37 autres fiches ?", "options": ["Après la validation de l'échantillon", "Avant l'échantillon", "Sans brief", "Jamais"], "correct": 0 },
+    { "q": "Pourquoi relire par lots de 10 ?", "options": ["La fatigue fait baisser la qualité", "Pour aller plus vite sans lire", "Ce n'est pas utile", "Pour facturer plus"], "correct": 0 },
+    { "q": "Que livrer en plus du tableur ?", "options": ["Une version lisible, les mots clés et des notes", "Rien", "Les photos retouchées", "Les prix"], "correct": 0 },
+    { "q": "Que montrer dans un portfolio ?", "options": ["Des fiches variées et un avant et après", "Des textes copiés", "Seulement un CV", "Rien"], "correct": 0 },
+    { "q": "Comment calculer son prix minimum par fiche ?", "options": ["Temps par fiche multiplié par le tarif horaire", "Au hasard", "Le prix le plus bas du marché", "Selon le prix du produit"], "correct": 0 },
+    { "q": "Que doit fournir le client avant la rédaction ?", "options": ["Les informations de la fiche de collecte", "Rien", "Son mot de passe bancaire", "Ses ventes"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

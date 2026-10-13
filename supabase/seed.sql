@@ -61,7 +61,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 15, true),
   ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true),
   ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 17, false),
-  ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, false),
+  ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, true),
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
   ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
   ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true),
@@ -32106,6 +32106,578 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Combien de mots environ dans une page ?', '["250 à 300","2 000","50","10"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quand demander un acompte ?', '["Pour les longs textes","Jamais","Seulement après livraison","Pour un SMS"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal"]'::jsonb, 1);
+
+-- lang-4-f
+delete from public.exam_questions where course_id = 'lang-4-f';
+delete from public.module_questions where course_id = 'lang-4-f';
+delete from public.lessons where course_id = 'lang-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-f', 0, 'Le métier de rédacteur de fiches produits depuis Madagascar', 'Le rôle d''une fiche produit, ses 8 éléments, la méta-description, les types de missions, les clients, les qualités du rédacteur et les affirmations encadrées.', 'Dans une boutique en ligne, le client ne peut ni toucher ni essayer le produit. La fiche produit doit donc répondre à toutes ses questions et lui donner envie d''acheter. Le rédacteur de fiches produits écrit ces textes pour des boutiques, des marques et des places de marché, souvent par dizaines ou par centaines. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer le rôle d''une fiche produit.
+> 2. Décrire les éléments d''une fiche produit complète.
+> 3. Reconnaître les types de missions et de clients.
+> 4. Comprendre les qualités attendues du rédacteur.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un rédacteur de fiches produits **écrit des descriptions claires, exactes et convaincantes qui aident les clients à choisir et à acheter, et qui aident les produits à être trouvés sur les moteurs de recherche**.
+
+## Le rôle d''une fiche produit
+
+| Rôle | Exemple |
+| --- | --- |
+| **Informer** | Dimensions, matière, contenu, entretien |
+| **Rassurer** | Garantie, retours, avis, origine |
+| **Donner envie** | Bénéfices, usages, ambiance |
+| **Être trouvé** | Mots que les clients tapent dans Google ou dans la boutique |
+| **Réduire les retours** | Une description précise évite les déceptions |
+| **Réduire les questions au service client** | Les réponses sont déjà dans la fiche |
+
+## Les éléments d''une fiche produit
+
+| Élément | Exemple pour un panier en raphia |
+| --- | --- |
+| **Titre** | Panier en raphia naturel tressé main – Grand modèle |
+| **Accroche** | Le panier idéal pour le marché, la plage et le rangement. |
+| **Description** | Bénéfices, usages, histoire du produit |
+| **Points clés** (liste) | Tressé à la main à Madagascar ; anses en cuir ; 45 × 30 cm |
+| **Caractéristiques** | Matière, dimensions, poids, couleur, entretien |
+| **Informations pratiques** | Livraison, retours, garantie |
+| **Textes pour le référencement** | Balise titre et méta-description |
+| **Texte alternatif des images** | Description de chaque photo |
+
+> [!definition] Méta-description
+> Le court texte (environ 150 caractères) qui apparaît sous le titre d''une page dans les résultats de Google. Il ne change pas directement le classement, mais il donne envie de cliquer.
+
+## Les types de missions
+
+| Mission | Volume | Point clé |
+| --- | --- | --- |
+| **Création de fiches** pour une nouvelle boutique | 20 à 200 fiches | Ton à définir, régularité |
+| **Réécriture** de fiches existantes | Catalogue entier | Améliorer sans perdre d''information |
+| **Fiches pour places de marché** | Variable | Règles strictes de chaque plateforme |
+| **Traduction et adaptation** | Variable | Adapter au pays, pas seulement traduire |
+| **Catégories et collections** | Quelques pages | Textes de présentation des catégories |
+
+## Les clients
+
+### À Madagascar
+
+1. **Artisans et marques** qui vendent en ligne (raphia, vanille, épices, bijoux, cosmétiques).
+2. **Boutiques locales** sur Facebook et sur leur propre site.
+3. **Exportateurs** qui présentent leurs produits à l''étranger.
+
+### À l''étranger
+
+1. **Boutiques en ligne** francophones.
+2. **Marques** présentes sur des places de marché.
+3. **Agences e-commerce et SEO** qui sous-traitent la rédaction.
+
+> [!madagascar] Votre avantage
+> Les produits malgaches (vanille, épices, raphia, huiles essentielles, pierres) se vendent de plus en plus en ligne. Vous connaissez ces produits, leur origine et leurs usages : un avantage réel pour écrire des fiches **exactes et authentiques**, en français et, avec de l''entraînement, en anglais.
+
+## Les qualités du rédacteur
+
+1. **Un français impeccable** : une faute dans une fiche fait douter de la qualité du produit.
+2. **La précision** : chiffres, matières et dimensions vérifiés.
+3. **L''honnêteté** : ne jamais inventer une propriété ou un bénéfice.
+4. **L''adaptation** : écrire dans le ton de chaque marque.
+5. **La régularité** : 200 fiches avec le même niveau de qualité.
+
+> [!attention]
+> Certaines affirmations sont **encadrées par la loi** : effets sur la santé, « bio », « 100 % naturel », « fabriqué à la main ». N''écrivez une telle affirmation que si le client vous la confirme et peut la prouver.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Pour le traitement de texte, le tableur et le navigateur |
+| **Tableur** | Google Sheets (gratuit) |
+| **Correcteur** | LanguageTool ou BonPatron |
+| **Boutique de test** | Une boutique Shopify en essai ou de développement |
+| **Connexion** | Stable, avec une solution de secours |
+
+> [!retenir]
+> - La fiche produit informe, rassure, donne envie et aide à être trouvé.
+> - Titre, accroche, description, points clés, caractéristiques, référencement.
+> - Création, réécriture, places de marché, traduction, catégories.
+> - Précision et honnêteté : aucune propriété inventée.
+> - Google Sheets, un correcteur et une boutique de test.
+
+## Exercice pratique : analyser des fiches
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez 5 fiches produits de boutiques différentes (dont une boutique de produits malgaches).
+> 2. Pour chacune, vérifiez la présence des 8 éléments d''une fiche complète.
+> 3. Notez les informations manquantes qui pourraient créer des questions ou des retours.
+> 4. Choisissez la meilleure et la moins bonne fiche, et expliquez pourquoi.
+>
+> **À livrer** : votre grille d''analyse des 5 fiches et votre comparaison.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 0, 0, 'Pourquoi une fiche précise réduit-elle les retours ?', '["Elle n''a aucun effet","Elle évite les déceptions","Elle cache les défauts","Elle augmente les prix"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 0, 1, 'Qu''est-ce que la méta-description ?', '["Le court texte sous le titre dans les résultats de Google","Le nom de la marque","Une photo","Le prix du produit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 0, 2, 'Quand écrire « 100 % naturel » ?', '["Jamais pour les épices","Seulement si le client le confirme et peut le prouver","Toujours","Pour vendre plus"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-f', 1, 'Les bases : bénéfices, persona, mots clés, structure et ton', 'Caractéristique, avantage et bénéfice, persona, mots clés et emplacements, structure pour une lecture rapide, modèle de fiche et ton de la marque.', 'Ce module vous donne les bases de la rédaction de fiches produits : transformer des caractéristiques en bénéfices, connaître le client cible, choisir les mots clés, structurer le texte pour une lecture rapide et adopter le ton de la marque.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Transformer une caractéristique en bénéfice.
+> 2. Écrire pour un client cible précis.
+> 3. Trouver et placer les mots clés naturellement.
+> 4. Structurer une fiche pour une lecture rapide.
+> 5. Adapter le ton à la marque.
+
+## Caractéristique, avantage, bénéfice
+
+| Caractéristique | Avantage | Bénéfice pour le client |
+| --- | --- | --- |
+| Raphia tressé serré | Solide | Vous pouvez y mettre vos courses lourdes sans crainte |
+| Anses en cuir | Confortables | Il se porte à l''épaule sans vous blesser |
+| Vanille Bourbon de la SAVA | Gousses grasses et parfumées | Vos desserts ont un goût intense avec une seule gousse |
+| Sachet refermable | Garde la fraîcheur | Votre vanille reste parfumée plusieurs mois |
+
+> [!astuce]
+> Après chaque caractéristique, demandez-vous : « **Et alors ?** Qu''est-ce que ça change pour le client ? » La réponse est le bénéfice.
+
+## Écrire pour un client cible
+
+| Question | Exemple pour la vanille |
+| --- | --- |
+| Qui achète ? | Pâtissiers amateurs, restaurants, amateurs de cuisine du monde |
+| Que cherche-t-il ? | Un goût authentique, une vanille de qualité, une origine sûre |
+| Quelles questions se pose-t-il ? | Combien de gousses ? Comment conserver ? Quelle différence avec l''extrait ? |
+| Qu''est-ce qui le fait hésiter ? | Le prix, la fraîcheur à l''arrivée |
+| Quel vocabulaire utilise-t-il ? | « gousse de vanille », « vanille de Madagascar », « vanille Bourbon » |
+
+> [!definition] Persona
+> Le portrait d''un client type : qui il est, ce qu''il cherche, ses hésitations. Il aide à écrire pour une vraie personne plutôt que pour « tout le monde ».
+
+## Les mots clés
+
+> [!definition] Mot clé
+> Le mot ou l''expression que les clients tapent dans un moteur de recherche pour trouver un produit, par exemple « gousse de vanille de Madagascar ».
+
+| Emplacement | Exemple |
+| --- | --- |
+| **Titre du produit** | Gousses de vanille de Madagascar – Bourbon, 10 gousses |
+| **Premières phrases** | Le mot clé principal dès le début |
+| **Points clés et caractéristiques** | Variantes naturelles (« vanille Bourbon », « vanille de la SAVA ») |
+| **Balise titre et méta-description** | Mot clé + bénéfice |
+| **Texte alternatif des images** | Description précise de la photo |
+
+> [!attention]
+> Répéter un mot clé à l''excès (« vanille vanille de Madagascar vanille pas chère ») rend le texte illisible et peut nuire au référencement. Écrivez d''abord **pour le client**, puis vérifiez que le mot clé est présent naturellement.
+
+## Structurer pour une lecture rapide
+
+Sur un téléphone, le client **survole** la fiche. Il doit trouver l''information en quelques secondes.
+
+| Règle | Exemple |
+| --- | --- |
+| Accroche courte en haut | Une phrase qui résume le bénéfice principal |
+| Liste de 3 à 6 points clés | Les informations essentielles en un coup d''œil |
+| Paragraphes courts | 2 à 4 lignes |
+| Intertitres | « Utilisation », « Conservation », « Origine » |
+| Caractéristiques dans un tableau | Dimensions, poids, matière |
+
+### Un modèle de fiche
+
+```
+Titre : Gousses de vanille de Madagascar – Bourbon, 10 gousses
+
+Accroche : Une vanille grasse et parfumée, récoltée dans la région SAVA,
+pour donner à vos desserts un goût intense et naturel.
+
+Points clés :
+- 10 gousses de 14 à 16 cm
+- Vanille Bourbon de Madagascar, région SAVA
+- Sachet refermable pour garder le parfum
+- Une gousse suffit pour environ un litre de crème
+
+Description : …
+Utilisation : …
+Conservation : à l''abri de la lumière et de la chaleur, dans un récipient fermé.
+Caractéristiques : poids net, longueur, origine, date de récolte.
+```
+
+> [!attention]
+> Les chiffres (longueur des gousses, quantité, poids) sont donnés **par le client** et vérifiés avec lui. Dans cet exemple, ils sont donnés à titre d''illustration.
+
+## Le ton de la marque
+
+| Marque | Ton | Exemple |
+| --- | --- | --- |
+| Épicerie fine haut de gamme | Élégant, précis | « Une vanille d''exception, sélectionnée gousse par gousse. » |
+| Boutique familiale | Chaleureux, proche | « Notre vanille vient du jardin de la famille Rakoto, à Sambava. » |
+| Marque pour jeunes | Simple, dynamique | « Ta pâtisserie passe au niveau supérieur. » |
+
+> [!madagascar]
+> Pour une marque malgache, l''**histoire** du produit (le village, les producteurs, le savoir-faire) est un argument fort. Racontez-la de façon vraie et précise, avec l''accord des personnes citées.
+
+> [!retenir]
+> - Caractéristique, avantage, bénéfice : « Et alors ? »
+> - Écrire pour un persona précis.
+> - Mots clés présents naturellement, sans excès.
+> - Accroche, points clés, paragraphes courts, intertitres.
+> - Un ton adapté à la marque et une histoire vraie.
+
+## Exercice pratique : vos premières fiches
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez 3 produits malgaches (réels ou fictifs) et créez un persona pour chacun.
+> 2. Faites le tableau caractéristique, avantage, bénéfice (5 lignes par produit).
+> 3. Trouvez 3 mots clés par produit.
+> 4. Rédigez les 3 fiches complètes avec le modèle.
+>
+> **À livrer** : vos personas, vos tableaux, vos mots clés et vos 3 fiches.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 1, 0, 'Quelle question transforme une caractéristique en bénéfice ?', '["« Combien ça coûte ? »","« Quelle couleur ? »","« Et alors ? »","« Qui l''a fabriqué ? »"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 1, 1, 'Qu''est-ce qu''un persona ?', '["Le portrait d''un client type","Un mot clé","Un logiciel","Un prix"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 1, 2, 'Que provoque la répétition excessive d''un mot clé ?', '["Plus de ventes","Rien","Un texte illisible qui peut nuire au référencement","Un meilleur classement garanti"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-f', 2, 'Les outils : Google Sheets, Shopify, mots clés et outils payants', 'Tableur de rédaction avec statuts et compteur de caractères, champs de Shopify, import CSV, mots clés gratuits, contrôle en 8 points, Semrush et applications Shopify payantes.', 'Ce module vous fait découvrir les outils du rédacteur de fiches produits : **Google Sheets** pour organiser et rédiger en volume, **Shopify** pour comprendre où et comment les textes sont publiés, les outils gratuits de recherche de mots clés, puis les outils payants : **Semrush** et les **applications Shopify payantes**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser la rédaction de nombreuses fiches dans Google Sheets.
+> 2. Saisir une fiche complète dans Shopify.
+> 3. Trouver des mots clés avec des outils gratuits.
+> 4. Contrôler vos textes avant livraison.
+> 5. Comprendre ce qu''apportent Semrush et les applications Shopify payantes.
+
+## Google Sheets : rédiger en volume
+
+| Colonne | Contenu |
+| --- | --- |
+| Référence (SKU) | VAN-BOURBON-10 |
+| Nom du produit | Gousses de vanille Bourbon |
+| Informations du client | Longueur, poids, origine, prix |
+| Mot clé principal | gousse de vanille de Madagascar |
+| Titre | Gousses de vanille de Madagascar – Bourbon, 10 gousses |
+| Accroche | … |
+| Points clés | … |
+| Description | … |
+| Balise titre | … |
+| Méta-description | … |
+| Statut | À rédiger, rédigé, relu, validé |
+
+> [!astuce]
+> Ajoutez des colonnes qui **comptent les caractères** avec la formule `=NBCAR(F2)` (ou `=LEN(F2)` selon la langue du tableur). Vous voyez immédiatement si une balise titre ou une méta-description est trop longue.
+
+### Les bonnes pratiques
+
+1. **Une ligne par produit**, une colonne par élément.
+2. **Une colonne Statut** et une couleur par statut.
+3. **Commentaires** pour les questions au client.
+4. **Partage** avec le client en mode commentateur.
+5. **Historique des versions** pour retrouver un ancien texte.
+
+## Shopify : où vont les textes
+
+| Champ dans Shopify | Votre texte |
+| --- | --- |
+| **Titre** | Titre du produit |
+| **Description** | Accroche, points clés, description (éditeur avec titres et listes) |
+| **Médias** | Texte alternatif de chaque image |
+| **Référencement sur les moteurs de recherche** | Titre de la page, méta-description, adresse de la page (URL) |
+| **Variantes** | Taille, couleur, quantité |
+| **Collections** | Textes de présentation des catégories |
+
+> [!attention]
+> Travaillez sur une **boutique de test** ou avec un accès collaborateur limité accordé par le client. Ne modifiez jamais les prix, les stocks ou les réglages de la boutique : votre rôle concerne les textes.
+
+### L''import en volume
+
+Shopify permet d''importer des produits avec un **fichier CSV** (un tableur exporté). Pour de gros catalogues, le client ou son gestionnaire de catalogue peut importer vos textes directement depuis le tableur, à condition de respecter le format du modèle d''import.
+
+## Trouver des mots clés gratuitement
+
+| Outil | Usage |
+| --- | --- |
+| **Saisie semi-automatique de Google** | Les suggestions qui apparaissent quand on tape le début d''une recherche |
+| **« Autres questions posées »** dans Google | Les questions des clients |
+| **Recherche dans la boutique et chez les concurrents** | Les mots utilisés dans le secteur |
+| **Google Search Console** du client (si accès) | Les recherches qui mènent déjà à la boutique |
+| **Outils gratuits ou versions limitées** d''outils de mots clés | Volumes de recherche approximatifs |
+
+## Contrôler avant livraison
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Toutes les informations du client sont présentes et exactes |
+| 2 | Aucune propriété inventée ni affirmation non prouvée |
+| 3 | Mot clé dans le titre et le début du texte, sans excès |
+| 4 | Longueurs respectées (titre, balise titre, méta-description) |
+| 5 | Orthographe et grammaire vérifiées |
+| 6 | Ton conforme à la marque |
+| 7 | Même structure sur toutes les fiches |
+| 8 | Aucun texte copié d''une autre boutique |
+
+> [!attention]
+> Copier la description d''un fabricant ou d''un concurrent est une mauvaise pratique : le texte est souvent déjà présent sur des centaines de sites, ce qui n''aide pas le référencement, et il peut être protégé par le droit d''auteur. Écrivez toujours un **texte original**.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Semrush** | Volumes de recherche, difficulté des mots clés, mots clés des concurrents, audit du référencement d''une boutique |
+| **Applications Shopify payantes** | Selon les applications : aide au référencement des fiches, gestion des avis clients, traduction des boutiques, import et export avancés |
+
+> [!madagascar]
+> Ces outils sont souvent **payés par le client ou l''agence**. Pour vous former, utilisez les versions d''essai et les comptes gratuits limités. Mentionnez dans votre profil les outils que vous avez réellement utilisés.
+
+> [!retenir]
+> - Un tableur avec une ligne par produit, des statuts et un compteur de caractères.
+> - Savoir où va chaque texte dans Shopify, sans toucher aux prix ni aux réglages.
+> - Des mots clés trouvés avec Google et les outils gratuits.
+> - Une liste de contrôle en 8 points et des textes toujours originaux.
+> - Semrush et les applications Shopify payantes pour aller plus loin.
+
+## Exercice pratique : un catalogue organisé
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un tableur de rédaction avec toutes les colonnes et les compteurs de caractères.
+> 2. Rédigez-y 5 fiches complètes.
+> 3. Ouvrez une boutique Shopify de test et saisissez 2 fiches avec images, textes alternatifs et champs de référencement.
+> 4. Passez la liste de contrôle sur les 5 fiches.
+>
+> **À livrer** : le lien de votre tableur, des captures de Shopify et votre liste de contrôle remplie.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 2, 0, 'Quelle formule compte les caractères d''une cellule ?', '["=NBCAR(F2) ou =LEN(F2)","=SOMME(F2)","=MOYENNE(F2)","=SI(F2)"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 2, 1, 'Que ne faut-il jamais modifier dans la boutique du client ?', '["Les textes alternatifs","Les titres demandés","Les prix, stocks et réglages","Les descriptions"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 2, 2, 'Peut-on copier la description d''un fabricant ?', '["Oui, toujours","Non, il faut un texte original","Oui, en changeant un mot","Oui, si elle est longue"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-f', 3, 'Premier projet : le catalogue de Tanety Épices', 'Fiche de collecte, brief de rédaction, échantillon de 3 fiches validé, rédaction en série par famille, livraison d''un tableur prêt à importer et contrôle final.', 'Dans ce module, vous rédigez le catalogue d''une boutique en ligne, du brief jusqu''à la livraison, comme le ferait un rédacteur indépendant. Vous apprendrez à recueillir les informations, à faire valider un échantillon, à produire en série sans perdre la qualité, et à livrer un fichier prêt à importer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Recueillir les informations nécessaires sur chaque produit.
+> 2. Définir le ton et la structure avec le client.
+> 3. Faire valider un échantillon avant la série.
+> 4. Rédiger en série de façon régulière.
+> 5. Livrer un catalogue prêt à publier.
+
+## Le cas pratique : « Tanety Épices »
+
+> [!exemple] Votre client
+> **Tanety Épices** est une jeune marque d''épices et de vanille de Madagascar qui ouvre sa boutique en ligne pour vendre en France et à Madagascar. Elle a 40 produits : vanille, poivre sauvage (voatsiperifery), cannelle, girofle, curcuma, mélanges. Les photos sont prêtes, mais aucun texte n''est écrit. La fondatrice, Mme Lalaina, veut des fiches qui racontent l''origine des produits et qui soient bien référencées.
+
+## Étape 1 : recueillir les informations
+
+### La fiche de collecte (une par produit)
+
+| Information | Exemple |
+| --- | --- |
+| Nom et variantes | Poivre sauvage, 50 g et 100 g |
+| Origine | Forêts de l''Est de Madagascar |
+| Mode de récolte et de préparation | Cueilli à la main, séché au soleil |
+| Goût et usages | Notes boisées et fraîches ; viandes, poissons, chocolat |
+| Conservation | Bocal fermé, à l''abri de la lumière |
+| Certifications et preuves | Uniquement celles dont la marque a les documents |
+| Prix, poids, emballage | 50 g, sachet kraft refermable |
+| Questions fréquentes des clients | « Faut-il le moudre ? » |
+
+> [!attention]
+> Si une information manque, **posez la question**. N''inventez jamais une origine, une certification, une propriété pour la santé ou une méthode de culture.
+
+## Étape 2 : le brief de rédaction
+
+| Point | Accord avec Mme Lalaina |
+| --- | --- |
+| Ton | Chaleureux et précis, vouvoiement |
+| Public | Amateurs de cuisine en France ; clients locaux à Madagascar |
+| Structure | Titre, accroche, 4 points clés, description de 150 à 250 mots, utilisation, conservation |
+| Mots clés | Un mot clé principal par produit, validé par la cliente |
+| Mots malgaches | Nom malgache entre parenthèses quand il existe (« poivre sauvage (voatsiperifery) ») |
+| Livraison | Tableur prêt à importer + version lisible |
+
+## Étape 3 : l''échantillon
+
+1. **Rédigez 3 fiches** de types différents (une vanille, un poivre, un mélange).
+2. **Envoyez-les** avec vos questions.
+3. **Notez** toutes les remarques de la cliente.
+4. **Mettez à jour** le brief (ton, longueur, formulations à éviter).
+5. **Attendez la validation** avant de rédiger les 37 autres.
+
+> [!astuce]
+> L''échantillon évite de devoir **réécrire 40 fiches** parce que le ton ne convenait pas. C''est l''étape la plus rentable du projet.
+
+## Étape 4 : rédiger en série
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Rédiger par famille** (toutes les vanilles, puis tous les poivres) | Garder la cohérence, gagner du temps |
+| **Varier les formulations** | Éviter 40 fiches qui commencent par la même phrase |
+| **Utiliser le modèle validé** | Même structure partout |
+| **Relire chaque lot de 10** avec la liste de contrôle | La fatigue fait baisser la qualité |
+| **Noter les questions** dans le tableur | Les envoyer en une seule fois à la cliente |
+
+> [!exemple] Une fiche de la série
+> **Titre** : Poivre sauvage de Madagascar (voatsiperifery) – 50 g
+> **Accroche** : Un poivre rare, cueilli à la main dans les forêts de l''Est de Madagascar, aux notes boisées et fraîches.
+> **Points clés** : cueilli à la main ; grains entiers à moudre au dernier moment ; idéal sur les viandes, poissons et desserts au chocolat ; sachet kraft refermable de 50 g.
+
+## Étape 5 : livrer
+
+| Livrable | Contenu |
+| --- | --- |
+| **Tableur final** | Toutes les colonnes, au format demandé pour l''import |
+| **Version lisible** | Document pour relecture par la cliente |
+| **Liste des mots clés** | Par produit |
+| **Notes** | Questions restantes, suggestions (par exemple ajouter un guide d''utilisation des épices) |
+
+### Le contrôle final
+
+1. Les 40 fiches ont la même structure.
+2. Chaque information vient de la fiche de collecte.
+3. Les longueurs des champs de référencement sont respectées.
+4. Aucune faute (correcteur + relecture humaine).
+5. Le tableur respecte le modèle d''import.
+
+> [!madagascar]
+> Les noms malgaches des produits et des lieux doivent être écrits **correctement et toujours de la même façon**. Faites valider la liste par la cliente et ajoutez-la à votre feuille de style.
+
+> [!retenir]
+> - Une fiche de collecte par produit, sans rien inventer.
+> - Un brief écrit : ton, public, structure, mots clés, livraison.
+> - Un échantillon de 3 fiches validé avant la série.
+> - Rédiger par famille, varier, relire par lots.
+> - Un tableur prêt à importer et une version lisible.
+
+## Exercice pratique : le catalogue de Tanety Épices
+
+> [!exercice] Exercice pratique · 7 heures (sur plusieurs jours)
+> 1. Créez la fiche de collecte et remplissez-la pour 12 produits (réels ou fictifs, en restant prudent sur les affirmations).
+> 2. Rédigez le brief et 3 fiches d''échantillon.
+> 3. Rédigez les 9 autres fiches dans le tableur.
+> 4. Passez le contrôle final et préparez la version lisible.
+>
+> **À livrer** : vos fiches de collecte, le brief, le tableur et la version lisible. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 3, 0, 'Que faire si une information manque ?', '["Poser la question au client","L''inventer","L''ignorer","La copier d''un concurrent"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 3, 1, 'Pourquoi un échantillon de 3 fiches ?', '["Pour décorer","Éviter de réécrire tout le catalogue","Ce n''est pas utile","Pour facturer plus"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 3, 2, 'Comment rédiger en série ?', '["Sans relire","Au hasard","Par famille de produits, avec des formulations variées","Avec la même phrase partout"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avec avant et après, 5 canaux, prix par fiche et par catalogue, conditions en 7 points, paiements et évolution.', 'Les boutiques en ligne, les marques et les agences e-commerce ont un besoin constant de fiches produits. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de fiches produits.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix par fiche ou par catalogue.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **5 à 10 fiches** de secteurs différents (alimentation, mode, maison, beauté).
+2. **Un avant et après** : une fiche faible réécrite par vous.
+3. **Votre projet Tanety Épices** : brief, tableur, fiches.
+4. **Les outils** que vous maîtrisez : Google Sheets, Shopify.
+5. **Une page simple** ou un profil sur une plateforme.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Boutiques en ligne aux fiches faibles** | Réécrivez gratuitement une fiche et envoyez l''avant et après |
+| 2 | **Marques et artisans malgaches** | Proposez la rédaction de leur catalogue pour l''export |
+| 3 | **Agences e-commerce et SEO** | Proposez-vous en sous-traitance régulière |
+| 4 | **Gestionnaires de boutiques et de catalogues** | Ils ont souvent besoin d''un rédacteur |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une boutique
+> « Bonjour, j''aime beaucoup vos paniers. J''ai remarqué que plusieurs fiches ne donnent pas les dimensions ni l''entretien, ce que les clients cherchent avant d''acheter. Je suis rédacteur de fiches produits : voici votre fiche du panier rond réécrite, avec les informations clés et les mots que les clients tapent dans Google. Je peux faire de même pour tout votre catalogue. »
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Fiche simple** | Titre, accroche, points clés, description courte | 8 000 Ar par fiche |
+| **Fiche complète** | + recherche de mots clés, champs de référencement, textes alternatifs | 15 000 Ar par fiche |
+| **Catalogue** | 40 fiches complètes, échantillon, tableur prêt à importer | 500 000 Ar |
+| **Page de catégorie** | Texte de présentation d''une collection | 20 000 Ar par page |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Chronométrez votre temps par fiche sur votre projet de formation. Si vous rédigez une fiche complète en 30 minutes et visez 25 000 Ar de l''heure, votre prix minimum est d''environ 12 500 Ar par fiche.
+
+## Vos conditions
+
+1. **Ce qui est inclus** dans chaque fiche (éléments, longueur).
+2. **Les informations à fournir** par le client (fiche de collecte).
+3. **L''échantillon** et sa validation avant la série.
+4. **Le nombre de corrections** incluses.
+5. **Le délai** par lot.
+6. **La responsabilité** : le client confirme l''exactitude des informations fournies.
+7. **Le paiement** : acompte de 30 à 50 % pour un catalogue.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Rédacteur e-commerce bilingue** | Fiches en anglais pour l''export |
+| **Rédacteur SEO** | Pages de catégories, articles de blog (voir la formation Spécialiste SEO) |
+| **Gestionnaire de catalogue** | Import, variantes, organisation (voir la formation Gestionnaire de catalogue produits) |
+| **Copywriter** | Pages de vente, e-mails (voir la formation Rédacteur web et copywriter) |
+
+> [!retenir]
+> - Un portfolio varié avec un avant et après.
+> - Boutiques, marques malgaches, agences, gestionnaires, plateformes.
+> - Un prix par fiche selon le contenu, calculé sur votre temps.
+> - Des conditions claires, dont la responsabilité des informations.
+> - Évoluez vers le bilingue, le SEO, le catalogue ou le copywriting.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez votre portfolio avec 5 fiches et un avant et après.
+> 2. Calculez vos prix à partir de votre temps chronométré.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Repérez 10 boutiques aux fiches faibles et envoyez 3 messages avec une fiche réécrite.
+>
+> **À livrer** : le lien de votre portfolio, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 4, 0, 'Quel premier contact proposer à une boutique ?', '["Rien","Un prix sans exemple","Une de ses fiches réécrite","Une critique publique"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 4, 1, 'Qui confirme l''exactitude des informations fournies ?', '["Le rédacteur seul","La plateforme","Le client","Personne"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-f', 4, 2, 'Vers quel métier évoluer pour gérer l''import et les variantes ?', '["Monteur audio","Gestionnaire de catalogue produits","Testeur","Traducteur juridique"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que fait un rédacteur de fiches produits ?', '["Il fixe les prix","Il écrit des descriptions qui aident à acheter et à être trouvé","Il livre les colis","Il prend les photos"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Quel élément liste les informations essentielles en un coup d''œil ?', '["Les points clés","La méta-description","Le texte alternatif","L''URL"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Quel type de mission demande de respecter des règles strictes ?', '["Un message personnel","Aucune","Une note interne","Les fiches pour places de marché"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Quel avantage pour un rédacteur malgache ?', '["Le PayPal illimité","Ne pas avoir besoin de relire","Connaître les produits malgaches et leurs usages","Aucun"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que donne la caractéristique « sachet refermable » comme bénéfice ?', '["Le sachet est marron","Rien","La vanille reste parfumée plusieurs mois","Le prix baisse"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Où placer le mot clé principal ?', '["Nulle part","Dans le titre et les premières phrases","Dans le prix","Seulement à la fin"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Comment le client lit-il une fiche sur téléphone ?', '["Il lit chaque mot lentement","Il la survole","Il l''imprime","Il ne la lit pas"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Combien de lignes pour un paragraphe de fiche ?', '["30 lignes","Une seule phrase de 100 mots","Aucune","2 à 4 lignes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Qui fournit les chiffres d''un produit ?', '["Personne","Le rédacteur, au hasard","Un concurrent","Le client, vérifiés avec lui"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que raconter pour une marque malgache ?', '["Une histoire inventée","L''histoire d''un concurrent","Rien","Une histoire vraie et précise, avec accord"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Pourquoi une colonne Statut dans le tableur ?', '["Suivre l''avancement de chaque fiche","Rien","Décorer","Calculer le prix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Où saisir la méta-description dans Shopify ?', '["Dans la section référencement sur les moteurs de recherche","Dans les variantes","Dans le stock","Dans le prix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Comment importer de nombreux produits dans Shopify ?', '["Par e-mail","Avec un fichier CSV au format du modèle","C''est impossible","Un par un obligatoirement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Où trouver gratuitement des idées de mots clés ?', '["Dans les factures","Nulle part","Dans le dictionnaire seulement","Dans la saisie semi-automatique de Google"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que vérifier dans la liste de contrôle ?', '["Rien","Aucune propriété inventée ni affirmation non prouvée","La couleur du texte","Le nombre d''images"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Qui paie souvent Semrush ?', '["Le client ou l''agence","La boutique concurrente","Personne","Toujours le rédacteur débutant"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que contient la fiche de collecte ?', '["Rien","Origine, usages, conservation, preuves, questions fréquentes","Les mots de passe","Seulement le prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Comment écrire le nom malgache d''un produit dans le cas pratique ?', '["Entre parenthèses quand il existe","Jamais","En majuscules","À la place du nom français"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Quand rédiger les 37 autres fiches ?', '["Sans brief","Jamais","Après la validation de l''échantillon","Avant l''échantillon"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Pourquoi relire par lots de 10 ?', '["La fatigue fait baisser la qualité","Pour aller plus vite sans lire","Pour facturer plus","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que livrer en plus du tableur ?', '["Les photos retouchées","Une version lisible, les mots clés et des notes","Rien","Les prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que montrer dans un portfolio ?', '["Des textes copiés","Rien","Des fiches variées et un avant et après","Seulement un CV"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Comment calculer son prix minimum par fiche ?', '["Au hasard","Temps par fiche multiplié par le tarif horaire","Selon le prix du produit","Le prix le plus bas du marché"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Que doit fournir le client avant la rédaction ?', '["Les informations de la fiche de collecte","Ses ventes","Rien","Son mot de passe bancaire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Mobile Money ou virement","Uniquement PayPal","Aucun"]'::jsonb, 1);
 
 -- media-0-a
 delete from public.exam_questions where course_id = 'media-0-a';

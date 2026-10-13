@@ -4523,6 +4523,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-4-f": {
+  "hours": 14,
+  "description": "Le rédacteur de fiches produits écrit des descriptions claires, exactes et convaincantes qui aident les clients à acheter et les produits à être trouvés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : éléments d'une fiche, bénéfices, persona, mots clés, structure et ton, rédaction en volume, contrôle qualité, catalogue complet et import. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le rôle et les éléments d'une fiche produit complète",
+   "Transformer des caractéristiques en bénéfices pour un client cible",
+   "Choisir et placer des mots clés naturellement",
+   "Rédiger en volume avec Google Sheets et publier dans Shopify",
+   "Produire un catalogue complet avec échantillon validé et contrôle qualité",
+   "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de rédacteur de fiches produits depuis Madagascar",
+    "summary": "Le rôle d'une fiche produit, ses 8 éléments, la méta-description, les types de missions, les clients, les qualités du rédacteur et les affirmations encadrées.",
+    "sections": [
+     "Le métier en une phrase",
+     "Le rôle d'une fiche produit",
+     "Les éléments d'une fiche produit",
+     "Les types de missions",
+     "Les clients",
+     "Les qualités du rédacteur",
+     "Votre poste de travail",
+     "Exercice pratique : analyser des fiches"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : bénéfices, persona, mots clés, structure et ton",
+    "summary": "Caractéristique, avantage et bénéfice, persona, mots clés et emplacements, structure pour une lecture rapide, modèle de fiche et ton de la marque.",
+    "sections": [
+     "Caractéristique, avantage, bénéfice",
+     "Écrire pour un client cible",
+     "Les mots clés",
+     "Structurer pour une lecture rapide",
+     "Le ton de la marque",
+     "Exercice pratique : vos premières fiches"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Google Sheets, Shopify, mots clés et outils payants",
+    "summary": "Tableur de rédaction avec statuts et compteur de caractères, champs de Shopify, import CSV, mots clés gratuits, contrôle en 8 points, Semrush et applications Shopify payantes.",
+    "sections": [
+     "Google Sheets : rédiger en volume",
+     "Shopify : où vont les textes",
+     "Trouver des mots clés gratuitement",
+     "Contrôler avant livraison",
+     "Les outils payants",
+     "Exercice pratique : un catalogue organisé"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : le catalogue de Tanety Épices",
+    "summary": "Fiche de collecte, brief de rédaction, échantillon de 3 fiches validé, rédaction en série par famille, livraison d'un tableur prêt à importer et contrôle final.",
+    "sections": [
+     "Le cas pratique : « Tanety Épices »",
+     "Étape 1 : recueillir les informations",
+     "Étape 2 : le brief de rédaction",
+     "Étape 3 : l'échantillon",
+     "Étape 4 : rédiger en série",
+     "Étape 5 : livrer",
+     "Exercice pratique : le catalogue de Tanety Épices"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avec avant et après, 5 canaux, prix par fiche et par catalogue, conditions en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "media-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du monteur un professionnel orienté résultats : spécialité (YouTube, publicité, documentaire…), rétention d'audience, logiciels professionnels (Premiere Pro, Final Cut Pro, DaVinci Resolve Studio), étalonnage et mixage, spécifications de livraison et licences pour les clients étrangers, puis développement d'une activité de partenaire de contenu ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
