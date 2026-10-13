@@ -1,0 +1,92 @@
+{
+  "id": "perso-4-f",
+  "hours": 9,
+  "description": "En télétravail, presque tout passe par des messages et des appels. Cette formation pratique, en 5 modules, apprend à écrire et à parler clairement à ses clients et collègues : éléments de la communication, origines des malentendus, niveaux de langage et choix du canal, message en 4 parties, e-mail professionnel, ton positif, écoute active et reformulation, Gmail, WhatsApp Business et modèles de messages, cas pratique d'une réclamation client, clients de différents pays, retour constructif et méthode DESC. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Comprendre d'où viennent les malentendus et choisir le bon canal",
+    "Écrire des messages et des e-mails clairs, polis et efficaces",
+    "Pratiquer l'écoute active et la reformulation à l'oral",
+    "Configurer Gmail et WhatsApp Business et créer ses modèles de messages",
+    "Répondre à une réclamation et mener un appel difficile",
+    "S'adapter aux clients de différents pays, donner un retour et exprimer un désaccord"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre la communication et les malentendus",
+      "summary": "Émetteur, message, canal, récepteur et retour, causes des malentendus, dire non clairement, niveaux de langage, choix du canal.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "D'où viennent la plupart des malentendus ?", "options": ["De messages flous ou incomplets", "De la mauvaise volonté", "Du logiciel", "Du hasard"], "correct": 0 },
+        { "q": "Quel niveau de langage avec un nouveau client ?", "options": ["Formel", "Familier", "Argotique", "Peu importe"], "correct": 0 },
+        { "q": "Quel canal pour un accord sur un prix ?", "options": ["L'e-mail, pour garder une trace écrite", "Un message vocal effacé", "Aucun", "Un réseau social public"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : écrire clairement et écouter activement",
+      "summary": "Message en 4 parties, structure de l'e-mail et objet efficace, ton poli et positif, relecture, écoute active, questions ouvertes, reformulation et résumé.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que doit dire l'objet d'un e-mail ?", "options": ["Le sujet et l'action attendue", "Seulement « Bonjour »", "Rien", "Le nom de l'expéditeur"], "correct": 0 },
+        { "q": "Comment dire « c'est impossible » de façon positive ?", "options": ["Ce n'est pas possible jeudi, je peux livrer vendredi", "C'est impossible", "Non", "Ne pas répondre"], "correct": 0 },
+        { "q": "Qu'est-ce que la reformulation ?", "options": ["Redire avec ses mots pour vérifier sa compréhension", "Répéter mot pour mot", "Changer de sujet", "Interrompre"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Gmail, WhatsApp Business et modèles de messages",
+      "summary": "Signature, libellés, modèles et envoi programmé dans Gmail, profil, messages automatiques, réponses rapides et étiquettes dans WhatsApp Business, 7 modèles de messages, règles pour ne rien oublier.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert l'envoi programmé ?", "options": ["Faire arriver un e-mail à une heure adaptée au fuseau du client", "Supprimer un e-mail", "Traduire un e-mail", "Rien"], "correct": 0 },
+        { "q": "Que faire d'un modèle de message ?", "options": ["Le personnaliser à chaque envoi", "L'envoyer tel quel à tous", "Ne jamais l'utiliser", "Le publier"], "correct": 0 },
+        { "q": "Dans quel délai répondre aux messages ?", "options": ["Sous 24 h les jours ouvrés", "Sous un mois", "Jamais", "Dans la minute, même la nuit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : la réclamation de Mme Durand",
+      "summary": "Gestionnaire de réservations d'une maison d'hôtes de Sainte-Marie : réponse écrite en 4 parties, appel avec reformulation, récapitulatif écrit et amélioration du service.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quoi commence la bonne réponse de Mialy ?", "options": ["Reconnaître l'émotion de la cliente", "Accuser la cliente", "Proposer une remise sans explication", "Ignorer le message"], "correct": 0 },
+        { "q": "Que fait Mialy après l'appel ?", "options": ["Elle envoie un récapitulatif écrit", "Rien", "Elle bloque la cliente", "Elle publie l'échange"], "correct": 0 },
+        { "q": "Quel a été le résultat ?", "options": ["Un avis positif mentionnant le service client", "Un avis négatif", "Un procès", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : clients du monde, retours et désaccords",
+      "summary": "Tendances de communication selon les pays, retour constructif en 3 étapes, méthode DESC, plan de progrès sur 30 jours.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment écrire à un client anglophone ?", "options": ["Messages courts, directs et simples", "Très longs messages", "En majuscules", "Sans salutation"], "correct": 0 },
+        { "q": "Quelles sont les 3 étapes d'un retour constructif ?", "options": ["Faits, impact, proposition", "Critique, colère, silence", "Prix, délai, facture", "Aucune"], "correct": 0 },
+        { "q": "Que signifie le S de DESC ?", "options": ["Suggérer une solution", "Se taire", "Signer", "Sanctionner"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quels sont les éléments d'une communication ?", "options": ["Émetteur, message, canal, récepteur, retour", "Logo, couleur, police", "Prix, délai, facture", "Aucun"], "correct": 0 },
+    { "q": "Quel message est clair ?", "options": ["Je vous envoie le fichier jeudi avant 12 h, heure de Paris", "Je vous envoie ça bientôt", "Ok", "On verra"], "correct": 0 },
+    { "q": "Comment éviter les mots techniques avec un client ?", "options": ["Expliquer simplement l'effet pour lui", "Utiliser plus de jargon", "Ne rien expliquer", "Changer de sujet"], "correct": 0 },
+    { "q": "Dire non clairement à un client étranger est perçu comme :", "options": ["Professionnel", "Impoli", "Interdit", "Inutile"], "correct": 0 },
+    { "q": "Quand passer au tutoiement ?", "options": ["Quand le client le propose", "Dès le premier message", "Jamais", "Toujours"], "correct": 0 },
+    { "q": "Quel canal pour un sujet délicat ?", "options": ["Un appel ou une visio, puis un récapitulatif écrit", "Un message de 3 mots", "Un post public", "Aucun"], "correct": 0 },
+    { "q": "Quelles sont les 4 parties d'un message ?", "options": ["Salutation, contexte, demande, délai et clôture", "Titre, image, prix, logo", "Bonjour, au revoir, merci, ok", "Aucune"], "correct": 0 },
+    { "q": "Que vérifier avant d'envoyer ?", "options": ["Fautes, nom du client, pièce jointe et date", "Rien", "La météo", "Le nombre d'émojis"], "correct": 0 },
+    { "q": "Pourquoi éviter les MAJUSCULES ?", "options": ["Elles donnent l'impression de crier", "Elles sont interdites", "Elles prennent trop de place", "Elles ne s'affichent pas"], "correct": 0 },
+    { "q": "Quelle est une question ouverte ?", "options": ["Que voulez-vous que vos clients ressentent ?", "Vous voulez du vert ?", "C'est d'accord ?", "Oui ou non ?"], "correct": 0 },
+    { "q": "Que mettre dans la signature Gmail ?", "options": ["Nom, métier, téléphone et lien du portfolio", "Ses mots de passe", "Rien", "Une longue citation"], "correct": 0 },
+    { "q": "À quoi servent les libellés Gmail ?", "options": ["Classer les messages par client ou par sujet", "Traduire", "Supprimer", "Payer"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une réponse rapide dans WhatsApp Business ?", "options": ["Un raccourci qui insère un message tout prêt", "Un appel vidéo", "Une facture", "Un statut"], "correct": 0 },
+    { "q": "Pourquoi séparer numéro pro et numéro perso ?", "options": ["Couper le travail le soir et paraître sérieux", "C'est obligatoire", "Pour payer moins", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que faire d'un accord important ?", "options": ["Le confirmer par écrit", "Le garder en tête", "L'oublier", "Le dire seulement à l'oral"], "correct": 0 },
+    { "q": "Quelle réponse aggrave une réclamation ?", "options": ["Ce n'est pas notre faute, vous n'aviez pas coché l'option", "Je suis désolée pour cette attente", "Nous vous remboursons le taxi", "Pouvons-nous en parler ?"], "correct": 0 },
+    { "q": "Que fait Mialy pendant l'appel ?", "options": ["Elle écoute, reformule et confirme la solution", "Elle interrompt la cliente", "Elle raccroche", "Elle parle d'autre chose"], "correct": 0 },
+    { "q": "Comment s'adapter au style d'un client ?", "options": ["Observer sa façon d'écrire et suivre son ton", "Toujours écrire pareil", "Écrire en argot", "Ne jamais répondre"], "correct": 0 },
+    { "q": "Que signifie le D de DESC ?", "options": ["Décrire les faits", "Discuter longtemps", "Douter", "Demander une remise"], "correct": 0 },
+    { "q": "Comment recevoir un retour ?", "options": ["Écouter, remercier, questionner, décider", "Se défendre tout de suite", "Ignorer", "Se vexer"], "correct": 0 }
+  ]
+}

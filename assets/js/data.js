@@ -3620,6 +3620,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-4-f": {
+  "hours": 9,
+  "description": "En télétravail, presque tout passe par des messages et des appels. Cette formation pratique, en 5 modules, apprend à écrire et à parler clairement à ses clients et collègues : éléments de la communication, origines des malentendus, niveaux de langage et choix du canal, message en 4 parties, e-mail professionnel, ton positif, écoute active et reformulation, Gmail, WhatsApp Business et modèles de messages, cas pratique d'une réclamation client, clients de différents pays, retour constructif et méthode DESC. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Comprendre d'où viennent les malentendus et choisir le bon canal",
+   "Écrire des messages et des e-mails clairs, polis et efficaces",
+   "Pratiquer l'écoute active et la reformulation à l'oral",
+   "Configurer Gmail et WhatsApp Business et créer ses modèles de messages",
+   "Répondre à une réclamation et mener un appel difficile",
+   "S'adapter aux clients de différents pays, donner un retour et exprimer un désaccord"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre la communication et les malentendus",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : écrire clairement et écouter activement",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : Gmail, WhatsApp Business et modèles de messages",
+    "minutes": 5
+   },
+   {
+    "title": "Mise en situation : la réclamation de Mme Durand",
+    "minutes": 4
+   },
+   {
+    "title": "Mon plan d'action : clients du monde, retours et désaccords",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

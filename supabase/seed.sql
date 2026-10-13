@@ -107,7 +107,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true),
   ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true),
   ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true),
-  ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 14, false),
+  ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 10, false),
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 11, false),
   ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 12, false)
@@ -56019,6 +56019,427 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que contient la feuille portefeuille ?', '["Une ligne par mission avec délai, avancement et paiement","Ses photos","Ses mots de passe","Rien"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quel modèle évite d''oublier quelque chose à la livraison ?', '["Le logo","La carte de visite","Le CV","La liste de contrôle avant livraison"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quel argument de vente pour un client étranger ?', '["Aucune nouvelle avant la fin","Des prix toujours plus bas","Un point d''avancement chaque semaine et à chaque étape","Pas de contrat"]'::jsonb, 2);
+
+-- perso-4-f
+delete from public.exam_questions where course_id = 'perso-4-f';
+delete from public.module_questions where course_id = 'perso-4-f';
+delete from public.lessons where course_id = 'perso-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-4-f', 0, 'Comprendre la communication et les malentendus', 'Émetteur, message, canal, récepteur et retour, causes des malentendus, dire non clairement, niveaux de langage, choix du canal.', 'En télétravail, presque tout passe par des messages : e-mails, WhatsApp, commentaires sur un document, appels vidéo. Un message mal compris peut faire perdre une journée, voire un client. Ce premier module vous explique comment la communication fonctionne et pourquoi les malentendus arrivent.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Décrire les éléments d''une communication.
+> 2. Comprendre d''où viennent les malentendus.
+> 3. Choisir le bon niveau de langage.
+> 4. Choisir le bon canal selon la situation.
+
+## Les éléments d''une communication
+
+| Élément | Exemple |
+| --- | --- |
+| **Émetteur** | Vous, freelance |
+| **Message** | « Le fichier sera prêt demain. » |
+| **Canal** | E-mail, WhatsApp, appel, visio |
+| **Récepteur** | Le client |
+| **Retour** | « Parfait, merci ! » ou une question |
+
+> [!definition] Malentendu
+> Un écart entre ce que l''émetteur voulait dire et ce que le récepteur a compris. Il vient rarement de la mauvaise volonté : le plus souvent, d''un message incomplet, flou ou mal adapté à la personne.
+
+## D''où viennent les malentendus
+
+| Cause | Exemple | Solution |
+| --- | --- | --- |
+| **Message flou** | « Je vous envoie ça bientôt » | « Je vous envoie le fichier jeudi avant 12 h, heure de Paris » |
+| **Information manquante** | Pas de format précisé | Préciser format, taille, nombre de versions |
+| **Mots techniques** | « Le DNS n''est pas propagé » | « Le site sera visible d''ici quelques heures » |
+| **Ton mal perçu** | « Ok. » | « D''accord, merci pour ces précisions ! » |
+| **Différences culturelles** | Un « oui » poli qui veut dire « peut-être » | Reformuler et confirmer par écrit |
+
+> [!madagascar]
+> Dans la culture malgache, on évite souvent de dire non directement pour préserver la relation (le fihavanana). Beaucoup de clients européens ou nord-américains, eux, attendent une réponse claire. Dire « Ce délai n''est pas possible, mais je peux livrer vendredi » est perçu comme **professionnel**, pas comme impoli.
+
+## Le niveau de langage
+
+| Niveau | Quand l''utiliser | Exemple |
+| --- | --- | --- |
+| **Formel** | Premier contact, client étranger, réclamation | « Bonjour Madame, je vous remercie pour votre message. » |
+| **Courant** | Client régulier, collègue | « Bonjour Laura, merci pour ton retour ! » |
+| **Familier** | Amis uniquement | « Slt, ça marche » |
+
+> [!astuce]
+> Commencez toujours au niveau **formel** avec un nouveau client, et passez au tutoiement seulement si le client le propose. Il vaut mieux être un peu trop poli que pas assez.
+
+## Choisir le bon canal
+
+| Situation | Canal conseillé |
+| --- | --- |
+| Proposition, devis, accord sur un prix | E-mail (trace écrite) |
+| Petite question rapide avec un client régulier | WhatsApp ou messagerie de l''équipe |
+| Sujet délicat (retard important, désaccord) | Appel ou visio, puis récapitulatif écrit |
+| Livraison de fichiers | E-mail ou lien de partage avec un message clair |
+
+> [!retenir]
+> - Émetteur, message, canal, récepteur, retour.
+> - Les malentendus viennent surtout de messages flous ou incomplets.
+> - Commencer formel, adapter ensuite.
+> - Le canal dépend de l''importance et de la sensibilité du sujet.
+
+## Exercice pratique : vos messages à la loupe
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Retrouvez 5 messages professionnels que vous avez envoyés récemment.
+> 2. Pour chacun, repérez ce qui pourrait être flou ou mal compris.
+> 3. Réécrivez-les en version claire et polie.
+> 4. Indiquez pour chacun si le canal était le bon.
+>
+> **À livrer** : vos 5 messages avant et après, avec vos remarques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 0, 0, 'D''où viennent la plupart des malentendus ?', '["De la mauvaise volonté","De messages flous ou incomplets","Du logiciel","Du hasard"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 0, 1, 'Quel niveau de langage avec un nouveau client ?', '["Familier","Formel","Peu importe","Argotique"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 0, 2, 'Quel canal pour un accord sur un prix ?', '["Un message vocal effacé","L''e-mail, pour garder une trace écrite","Aucun","Un réseau social public"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-4-f', 1, 'Les bases : écrire clairement et écouter activement', 'Message en 4 parties, structure de l''e-mail et objet efficace, ton poli et positif, relecture, écoute active, questions ouvertes, reformulation et résumé.', 'L''écrit est votre vitrine : un client juge souvent votre sérieux à la qualité de vos messages avant même de voir votre travail. Ce module vous apprend à écrire des messages clairs, polis et efficaces, et à communiquer à l''oral avec l''écoute active.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Structurer un message en 4 parties.
+> 2. Rédiger un e-mail professionnel.
+> 3. Adopter un ton poli et positif.
+> 4. Pratiquer l''écoute active et la reformulation.
+
+## Un message en 4 parties
+
+| Partie | Exemple |
+| --- | --- |
+| **1. Salutation** | « Bonjour Monsieur Rakoto, » |
+| **2. Contexte** | « Suite à notre échange de mardi sur votre catalogue, » |
+| **3. Message principal ou demande** | « pourriez-vous m''envoyer les photos des 20 produits ? » |
+| **4. Délai et clôture** | « Si je les reçois d''ici vendredi, je livre le catalogue le 15. Merci et bonne journée. » |
+
+## L''e-mail professionnel
+
+```
+Objet : Catalogue printemps – photos nécessaires d''ici vendredi
+
+Bonjour Monsieur Rakoto,
+
+Suite à notre échange de mardi, j''ai commencé la mise en page
+de votre catalogue de printemps.
+
+Pour avancer, j''ai besoin :
+- des photos des 20 produits (format JPG, bonne qualité) ;
+- des prix à jour.
+
+Si je les reçois d''ici vendredi, je vous livre le catalogue le 15 mars.
+
+Merci d''avance et bonne journée,
+Nirina Rasoa
+Graphiste freelance · 034 00 000 00
+```
+
+> [!astuce]
+> Un bon **objet** dit l''essentiel : le sujet et l''action attendue. « Catalogue – photos nécessaires d''ici vendredi » est bien plus efficace que « Bonjour » ou « Question ».
+
+## Le ton : poli et positif
+
+| À éviter | Préférer |
+| --- | --- |
+| « Vous ne m''avez pas envoyé les fichiers. » | « Je n''ai pas encore reçu les fichiers, pourriez-vous me les renvoyer ? » |
+| « C''est impossible. » | « Ce n''est pas possible pour jeudi ; je peux livrer vendredi. » |
+| « Comme je l''ai déjà dit… » | « Pour rappel… » |
+| Messages en MAJUSCULES | Une phrase en **gras** si c''est vraiment important |
+| « Ok. » | « Bien noté, merci ! » |
+
+> [!attention]
+> Relisez toujours avant d''envoyer : fautes, nom du client, pièce jointe, date. Une faute dans le nom du client ou une pièce jointe oubliée donne une impression de négligence.
+
+## À l''oral : l''écoute active
+
+| Technique | Exemple |
+| --- | --- |
+| **Écouter sans interrompre** | Laisser le client finir son explication |
+| **Poser des questions ouvertes** | « Que voulez-vous que vos clients ressentent en voyant le logo ? » |
+| **Reformuler** | « Si je comprends bien, vous voulez un logo simple, moderne, en vert et blanc ? » |
+| **Résumer à la fin** | « Je récapitule : 3 propositions mardi, puis 2 séries de corrections. » |
+
+> [!definition] Reformulation
+> Redire avec ses propres mots ce que l''autre a dit, pour vérifier que l''on a bien compris. C''est le meilleur outil contre les malentendus, à l''oral comme à l''écrit.
+
+> [!retenir]
+> - Salutation, contexte, demande, délai et clôture.
+> - Un objet d''e-mail qui dit l''essentiel.
+> - Un ton poli et positif, une relecture systématique.
+> - Écouter, questionner, reformuler, résumer.
+
+## Exercice pratique : écrire et écouter
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez 3 e-mails professionnels : une demande, une livraison, un retard.
+> 2. Transformez 5 phrases négatives de votre quotidien en phrases positives.
+> 3. Faites un jeu de rôle de 10 minutes avec un ami : il explique un besoin, vous reformulez et résumez.
+> 4. Notez ce que vous avez mal compris au départ.
+>
+> **À livrer** : vos 3 e-mails, vos 5 phrases et le compte rendu du jeu de rôle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 1, 0, 'Que doit dire l''objet d''un e-mail ?', '["Le sujet et l''action attendue","Le nom de l''expéditeur","Rien","Seulement « Bonjour »"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 1, 1, 'Comment dire « c''est impossible » de façon positive ?', '["Ce n''est pas possible jeudi, je peux livrer vendredi","Non","C''est impossible","Ne pas répondre"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 1, 2, 'Qu''est-ce que la reformulation ?', '["Redire avec ses mots pour vérifier sa compréhension","Répéter mot pour mot","Interrompre","Changer de sujet"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-4-f', 2, 'Les outils : Gmail, WhatsApp Business et modèles de messages', 'Signature, libellés, modèles et envoi programmé dans Gmail, profil, messages automatiques, réponses rapides et étiquettes dans WhatsApp Business, 7 modèles de messages, règles pour ne rien oublier.', 'Ce module vous fait prendre en main des outils gratuits pour communiquer comme un professionnel : Gmail avec une signature, des libellés et des modèles, WhatsApp Business avec un profil complet et des réponses rapides, et votre bibliothèque de modèles de messages.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Configurer Gmail pour un usage professionnel.
+> 2. Configurer WhatsApp Business.
+> 3. Créer votre bibliothèque de modèles de messages.
+> 4. Organiser vos échanges pour ne rien oublier.
+
+## Gmail professionnel
+
+| Fonction | Usage |
+| --- | --- |
+| **Adresse sérieuse** | prenom.nom@gmail.com plutôt qu''un surnom |
+| **Signature** | Nom, métier, téléphone, lien vers le portfolio |
+| **Libellés** | Un libellé par client et un pour « Factures » |
+| **Modèles** | Messages récurrents enregistrés (paramètres avancés de Gmail) |
+| **Étoiles** | Marquer les messages qui attendent une action |
+| **Envoi programmé** | Envoyer à une heure adaptée au fuseau horaire du client |
+
+> [!astuce]
+> Avec l''**envoi programmé**, vous pouvez écrire un e-mail le soir à Madagascar et le faire arriver à 9 h, heure de Montréal. Le client le voit en tête de sa boîte au début de sa journée.
+
+## WhatsApp Business
+
+| Fonction | Usage |
+| --- | --- |
+| **Profil d''entreprise** | Nom, description, horaires, adresse e-mail, lien du portfolio |
+| **Catalogue** | Vos offres avec leur prix |
+| **Message d''accueil** | Réponse automatique au premier message d''un nouveau contact |
+| **Message d''absence** | En dehors de vos horaires de travail |
+| **Réponses rapides** | Un raccourci comme « /tarifs » insère un message tout prêt |
+| **Étiquettes** | Nouveau client, devis envoyé, en cours, à payer |
+
+> [!madagascar]
+> Beaucoup de clients malgaches préfèrent WhatsApp à l''e-mail. Séparez votre numéro professionnel (WhatsApp Business) de votre numéro personnel si possible : vous pourrez couper les notifications professionnelles le soir, et vos clients verront un profil sérieux.
+
+## Votre bibliothèque de modèles
+
+| Modèle | Début du message |
+| --- | --- |
+| **Premier contact** | « Bonjour, merci pour votre message ! Pour vous proposer un devis précis, pourriez-vous me dire… » |
+| **Envoi d''un devis** | « Comme convenu, vous trouverez ci-joint le devis pour… » |
+| **Point d''avancement** | « Voici où en est votre projet : fait, en cours, j''ai besoin de vous… » |
+| **Livraison** | « Votre projet est prêt ! Vous trouverez ci-joint… Merci de me faire vos retours d''ici le… » |
+| **Relance de paiement** | « Je me permets de vous rappeler que la facture n°… arrive à échéance le… » |
+| **Retard** | « Je vous informe d''un léger décalage : … Je vous livrerai le… » |
+| **Remerciement et témoignage** | « Merci pour votre confiance ! Accepteriez-vous de laisser un court avis sur notre collaboration ? » |
+
+> [!attention]
+> Un modèle est un **point de départ**. Personnalisez toujours le nom, le projet et un détail précis, sinon le client se sent traité comme un numéro.
+
+## Ne rien oublier
+
+| Règle | Exemple |
+| --- | --- |
+| **Répondre sous 24 h** (jours ouvrés) | Même pour dire « Bien reçu, je vous réponds demain » |
+| **Boîte de réception quasi vide** | Archiver ce qui est traité, étoile pour ce qui attend |
+| **Tout accord important par écrit** | Prix, délai, modification |
+| **Une conversation par sujet** | Ne pas mélanger le devis et la facture dans le même fil |
+
+> [!retenir]
+> - Gmail : signature, libellés, modèles, envoi programmé.
+> - WhatsApp Business : profil, messages automatiques, réponses rapides, étiquettes.
+> - 7 modèles de messages à personnaliser.
+> - Répondre sous 24 h et garder une trace écrite.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Créez votre signature Gmail et 3 libellés.
+> 2. Configurez WhatsApp Business : profil, message d''accueil, message d''absence et 2 réponses rapides.
+> 3. Rédigez vos 7 modèles de messages adaptés à votre métier.
+> 4. Programmez un e-mail de test à 9 h, heure de Paris.
+>
+> **À livrer** : des captures de votre signature et de votre profil WhatsApp, et vos 7 modèles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 2, 0, 'À quoi sert l''envoi programmé ?', '["Traduire un e-mail","Faire arriver un e-mail à une heure adaptée au fuseau du client","Rien","Supprimer un e-mail"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 2, 1, 'Que faire d''un modèle de message ?', '["Ne jamais l''utiliser","Le personnaliser à chaque envoi","Le publier","L''envoyer tel quel à tous"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 2, 2, 'Dans quel délai répondre aux messages ?', '["Dans la minute, même la nuit","Sous un mois","Sous 24 h les jours ouvrés","Jamais"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-4-f', 3, 'Mise en situation : la réclamation de Mme Durand', 'Gestionnaire de réservations d''une maison d''hôtes de Sainte-Marie : réponse écrite en 4 parties, appel avec reformulation, récapitulatif écrit et amélioration du service.', 'Dans ce module, vous suivez Mialy, gestionnaire de réservations à distance pour une maison d''hôtes de Sainte-Marie, face à une cliente mécontente. Son cas montre comment une bonne communication transforme une situation tendue en relation de confiance.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Répondre par écrit à un client mécontent.
+> 2. Mener un appel difficile avec calme.
+> 3. Rédiger un récapitulatif après un appel.
+> 4. Transformer une réclamation en occasion de fidéliser.
+
+## Le cas pratique : Mialy
+
+> [!exemple] La situation
+> **Mialy**, 24 ans, gère à distance les réservations de **Ravinala Lodge**, une maison d''hôtes de l''île Sainte-Marie. Une cliente française, Mme Durand, écrit un e-mail en colère : son transfert depuis l''aéroport n''était pas prévu, elle a attendu une heure et a dû payer un taxi. Elle menace de laisser un avis négatif.
+
+## La première réponse : avant et après
+
+| Réponse maladroite | Pourquoi elle aggrave la situation |
+| --- | --- |
+| « Bonjour, ce n''est pas notre faute, vous n''aviez pas coché l''option transfert. » | Elle accuse la cliente et ignore son vécu |
+
+> [!exemple] La réponse de Mialy
+> « Bonjour Madame Durand,
+> Je suis vraiment désolée pour cette attente à votre arrivée. Après un long voyage, c''est très désagréable, et je comprends votre mécontentement.
+> J''ai vérifié votre réservation : le transfert n''y figurait pas, mais nous aurions dû vous le proposer clairement avant votre arrivée.
+> Nous vous remboursons le prix du taxi et votre transfert de retour vers l''aéroport vous est offert.
+> Seriez-vous disponible pour un court appel aujourd''hui à 18 h, afin que je m''assure que la suite de votre séjour se passe bien ?
+> Bien cordialement, Mialy Rasoanaivo, réservations Ravinala Lodge »
+
+| Partie | Rôle |
+| --- | --- |
+| **Reconnaître l''émotion** | La cliente se sent écoutée |
+| **Expliquer les faits sans accuser** | La vérité est dite, avec la part de responsabilité de l''établissement |
+| **Proposer une solution concrète** | Le problème est réparé |
+| **Proposer un échange** | La relation devient personnelle |
+
+## L''appel
+
+| Moment | Ce que fait Mialy |
+| --- | --- |
+| **Ouverture** | Remercie la cliente d''avoir accepté l''appel |
+| **Écoute** | La laisse raconter sans l''interrompre |
+| **Reformulation** | « Si je comprends bien, le plus gênant a été de ne savoir à qui vous adresser ? » |
+| **Solution** | Confirme le remboursement et le transfert, donne son numéro direct |
+| **Clôture** | « Je vous souhaite une très belle fin de séjour. » |
+
+## Le récapitulatif écrit
+
+```
+Objet : Suite à notre appel – remboursement et transfert retour
+
+Bonjour Madame Durand,
+Merci pour notre échange de ce soir. Comme convenu :
+- le remboursement du taxi (25 €) est fait aujourd''hui ;
+- votre transfert vers l''aéroport le 14 à 7 h 30 est offert ;
+- vous pouvez me joindre directement au 034 00 000 00.
+Très belle fin de séjour à Sainte-Marie,
+Mialy
+```
+
+## Le résultat et la leçon
+
+| Résultat | Leçon pour l''établissement |
+| --- | --- |
+| La cliente laisse un avis positif qui mentionne « un service client exceptionnel » | Ajouter une question sur le transfert dans l''e-mail de confirmation |
+
+> [!retenir]
+> - Reconnaître l''émotion, expliquer sans accuser, réparer, proposer un échange.
+> - À l''appel : écouter, reformuler, confirmer.
+> - Toujours un récapitulatif écrit.
+> - Chaque réclamation améliore le service.
+
+## Exercice pratique : votre réclamation
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Imaginez une réclamation réaliste dans votre métier (retard, erreur, malentendu).
+> 2. Écrivez une réponse maladroite, puis la bonne réponse en 4 parties.
+> 3. Faites l''appel en jeu de rôle avec un ami.
+> 4. Rédigez le récapitulatif écrit et la leçon à retenir.
+>
+> **À livrer** : vos deux réponses, le compte rendu de l''appel et le récapitulatif.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 3, 0, 'Par quoi commence la bonne réponse de Mialy ?', '["Accuser la cliente","Ignorer le message","Reconnaître l''émotion de la cliente","Proposer une remise sans explication"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 3, 1, 'Que fait Mialy après l''appel ?', '["Elle publie l''échange","Rien","Elle bloque la cliente","Elle envoie un récapitulatif écrit"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 3, 2, 'Quel a été le résultat ?', '["Rien","Un avis négatif","Un avis positif mentionnant le service client","Un procès"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-4-f', 4, 'Mon plan d''action : clients du monde, retours et désaccords', 'Tendances de communication selon les pays, retour constructif en 3 étapes, méthode DESC, plan de progrès sur 30 jours.', 'La communication progresse avec la pratique et l''ouverture aux autres cultures. Ce dernier module vous apprend à travailler avec des clients de pays différents, à donner et recevoir des retours, à gérer un désaccord, et à construire votre plan pour progresser.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Adapter votre communication aux clients de différents pays.
+> 2. Donner un retour constructif.
+> 3. Exprimer un désaccord avec la méthode DESC.
+> 4. Construire votre plan de progrès.
+
+## Communiquer avec des clients de différents pays
+
+| Clients | Habitudes fréquentes | Conseil |
+| --- | --- | --- |
+| **France et Belgique** | Formules de politesse, vouvoiement au début | Rester formel, soigner l''orthographe |
+| **Canada (Québec)** | Tutoiement plus rapide, ton direct et chaleureux | Suivre le ton du client |
+| **Pays anglophones** | Messages courts, directs, au prénom | Aller à l''essentiel, phrases simples |
+| **Clients malgaches** | Relation et confiance importantes, préférence pour l''oral | Prendre le temps de la relation, confirmer par écrit |
+
+> [!attention]
+> Ce sont des **tendances**, pas des règles : chaque personne est différente. Observez comment votre client écrit (longueur, ton, tutoiement) et adaptez-vous.
+
+## Donner un retour constructif
+
+| Étape | Exemple (à un collègue qui a fait une erreur) |
+| --- | --- |
+| **Les faits** | « Dans le rapport envoyé hier, les chiffres de mars sont ceux de février. » |
+| **L''impact** | « Le client a été surpris et a posé des questions. » |
+| **La proposition** | « Pourrions-nous relire les chiffres ensemble avant chaque envoi ? » |
+
+> [!astuce]
+> Pour **recevoir** un retour : écoutez jusqu''au bout, remerciez, posez des questions pour comprendre, puis décidez de ce que vous en faites. Un retour n''est pas une attaque personnelle.
+
+## Exprimer un désaccord : la méthode DESC
+
+| Lettre | Signification | Exemple (client qui demande des modifications sans fin) |
+| --- | --- | --- |
+| **D** | Décrire les faits | « Nous en sommes à la 5e série de modifications sur le logo. » |
+| **E** | Exprimer son ressenti ou l''impact | « Je crains que nous perdions de vue votre délai de lancement. » |
+| **S** | Suggérer une solution | « Je propose de choisir entre les deux dernières versions, puis une dernière série de corrections. » |
+| **C** | Conséquences positives | « Ainsi, votre logo sera prêt pour l''ouverture de la boutique. » |
+
+## Votre plan de progrès
+
+| Domaine | Action sur 30 jours |
+| --- | --- |
+| **Écrit** | Relire chaque message avant envoi ; 1 modèle amélioré par semaine |
+| **Oral** | 1 appel par semaine avec reformulation et résumé |
+| **Langues** | 15 minutes par jour d''anglais professionnel |
+| **Retours** | Demander à 2 clients ce qu''ils apprécient et ce que je peux améliorer |
+
+> [!madagascar]
+> Le français et le malgache sont déjà des atouts. Ajouter un anglais professionnel simple (savoir écrire un e-mail clair et suivre un appel) multiplie les clients possibles. Commencez par apprendre par cœur les formules de vos modèles de messages en anglais.
+
+> [!retenir]
+> - Observer et s''adapter au style de chaque client.
+> - Un retour constructif : faits, impact, proposition.
+> - La méthode DESC pour exprimer un désaccord.
+> - Un plan de progrès sur 30 jours : écrit, oral, langues, retours.
+
+## Exercice pratique : votre plan de communication
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Réécrivez un de vos modèles pour un client français et pour un client anglophone.
+> 2. Rédigez un retour constructif sur une situation réelle ou fictive.
+> 3. Préparez un message DESC pour un désaccord fréquent dans votre métier.
+> 4. Écrivez votre plan de progrès sur 30 jours.
+>
+> **À livrer** : vos deux versions du modèle, votre retour, votre message DESC et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 4, 0, 'Comment écrire à un client anglophone ?', '["Messages courts, directs et simples","Sans salutation","En majuscules","Très longs messages"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 4, 1, 'Quelles sont les 3 étapes d''un retour constructif ?', '["Prix, délai, facture","Critique, colère, silence","Aucune","Faits, impact, proposition"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-4-f', 4, 2, 'Que signifie le S de DESC ?', '["Suggérer une solution","Signer","Se taire","Sanctionner"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quels sont les éléments d''une communication ?', '["Aucun","Logo, couleur, police","Émetteur, message, canal, récepteur, retour","Prix, délai, facture"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quel message est clair ?', '["Je vous envoie ça bientôt","Ok","On verra","Je vous envoie le fichier jeudi avant 12 h, heure de Paris"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Comment éviter les mots techniques avec un client ?', '["Ne rien expliquer","Utiliser plus de jargon","Expliquer simplement l''effet pour lui","Changer de sujet"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Dire non clairement à un client étranger est perçu comme :', '["Interdit","Professionnel","Impoli","Inutile"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quand passer au tutoiement ?', '["Toujours","Jamais","Dès le premier message","Quand le client le propose"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quel canal pour un sujet délicat ?', '["Un post public","Aucun","Un appel ou une visio, puis un récapitulatif écrit","Un message de 3 mots"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quelles sont les 4 parties d''un message ?', '["Bonjour, au revoir, merci, ok","Titre, image, prix, logo","Salutation, contexte, demande, délai et clôture","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que vérifier avant d''envoyer ?', '["Le nombre d''émojis","La météo","Rien","Fautes, nom du client, pièce jointe et date"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Pourquoi éviter les MAJUSCULES ?', '["Elles sont interdites","Elles ne s''affichent pas","Elles donnent l''impression de crier","Elles prennent trop de place"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quelle est une question ouverte ?', '["Vous voulez du vert ?","C''est d''accord ?","Oui ou non ?","Que voulez-vous que vos clients ressentent ?"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que mettre dans la signature Gmail ?', '["Nom, métier, téléphone et lien du portfolio","Rien","Ses mots de passe","Une longue citation"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'À quoi servent les libellés Gmail ?', '["Supprimer","Traduire","Classer les messages par client ou par sujet","Payer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Qu''est-ce qu''une réponse rapide dans WhatsApp Business ?', '["Un statut","Un raccourci qui insère un message tout prêt","Un appel vidéo","Une facture"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Pourquoi séparer numéro pro et numéro perso ?', '["Ce n''est pas utile","C''est obligatoire","Couper le travail le soir et paraître sérieux","Pour payer moins"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que faire d''un accord important ?', '["Le confirmer par écrit","Le garder en tête","Le dire seulement à l''oral","L''oublier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Quelle réponse aggrave une réclamation ?', '["Ce n''est pas notre faute, vous n''aviez pas coché l''option","Pouvons-nous en parler ?","Je suis désolée pour cette attente","Nous vous remboursons le taxi"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que fait Mialy pendant l''appel ?', '["Elle raccroche","Elle parle d''autre chose","Elle interrompt la cliente","Elle écoute, reformule et confirme la solution"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Comment s''adapter au style d''un client ?', '["Écrire en argot","Toujours écrire pareil","Observer sa façon d''écrire et suivre son ton","Ne jamais répondre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que signifie le D de DESC ?', '["Douter","Discuter longtemps","Demander une remise","Décrire les faits"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Comment recevoir un retour ?', '["Écouter, remercier, questionner, décider","Se défendre tout de suite","Ignorer","Se vexer"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';
