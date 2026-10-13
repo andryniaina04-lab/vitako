@@ -1,0 +1,97 @@
+{
+  "id": "lang-3-f",
+  "hours": 15,
+  "description": "Le correcteur et relecteur vérifie qu'un texte est sans faute, clair et cohérent avant sa publication. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des auteurs, des traducteurs et des entreprises, à Madagascar et à l'étranger, avec LanguageTool et BonPatron : niveaux d'intervention, fautes fréquentes, typographie française, méthode en plusieurs passages, suivi des modifications, feuille de style, correction d'un manuscrit et note de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Distinguer correction, relecture et niveaux d'intervention",
+    "Repérer les fautes fréquentes et appliquer la typographie française",
+    "Corriger en plusieurs passages en respectant le style de l'auteur",
+    "Utiliser correcteurs automatiques, suivi des modifications et feuille de style",
+    "Corriger un long manuscrit et rédiger une note de correction",
+    "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de correcteur et relecteur depuis Madagascar",
+      "summary": "Correction, relecture, préparation de copie et épreuves, niveaux d'intervention, types de textes et de clients, niveau de français et poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vise surtout la relecture ?", "options": ["La clarté, la cohérence et le style", "Seulement les virgules", "La mise en page", "Le prix"], "correct": 0 },
+        { "q": "Quand décider du niveau d'intervention ?", "options": ["Avec le client avant de commencer", "Après la livraison", "Jamais", "Au hasard"], "correct": 0 },
+        { "q": "Peut-on écrire le mémoire d'un étudiant ?", "options": ["Non, on corrige seulement la langue", "Oui", "Oui, en partie", "Oui, s'il paie plus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : fautes fréquentes, typographie et méthode",
+      "summary": "Homophones, participes passés, accords, conjugaison et anglicismes, typographie française, correction en 5 passages, faute ou style et suivi des modifications.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle phrase est correcte ?", "options": ["Les lettres que j'ai écrites", "Les lettres que j'ai écrit", "Les lettres que j'ai écrits", "Les lettres que j'ai écrire"], "correct": 0 },
+        { "q": "Que met-on avant « ? » en typographie française ?", "options": ["Une espace insécable", "Rien", "Un point", "Une virgule"], "correct": 0 },
+        { "q": "Pourquoi corriger en plusieurs passages ?", "options": ["On ne voit pas tout en une seule lecture", "Pour facturer plus", "Ce n'est pas utile", "Pour changer le style"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : LanguageTool, BonPatron, Word, Docs et outils payants",
+      "summary": "Correcteurs automatiques avec esprit critique, suivi des modifications et mode Suggestion, rechercher et remplacer, feuille de style, ressources de référence, Antidote et ProWritingAid.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment utiliser un correcteur automatique ?", "options": ["Après sa propre correction, en vérifiant chaque alerte", "Cliquer sur « tout accepter »", "À la place de sa correction", "Jamais"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une feuille de style ?", "options": ["La liste des choix d'écriture d'un projet", "Un fichier de couleurs", "Une facture", "Un modèle de CV"], "correct": 0 },
+        { "q": "Quel outil payant est la référence pour le français ?", "options": ["Antidote", "Audacity", "Trello", "Reaper"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le manuscrit « Les vanilliers de la SAVA »",
+      "summary": "Évaluation sur extrait, cadre avec le client, organisation d'un long travail, vérification de cohérence, note de correction et contrôle avant livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi corriger d'abord un extrait ?", "options": ["Estimer la difficulté et montrer ce qu'on apporte", "Pour éviter de travailler", "Pour réécrire le livre", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que faire des mots malgaches dans le texte ?", "options": ["Vérifier leur orthographe cohérente sans les traduire de force", "Les supprimer", "Les remplacer par du français", "Les mettre en majuscules"], "correct": 0 },
+        { "q": "Quelle incohérence chercher ?", "options": ["Un nom écrit de deux façons", "Un chapitre court", "Un titre long", "Une police différente"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avant et après, 5 canaux, test de correction, prix au mot, à la page ou au forfait, conditions, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment calculer son prix au mot ?", "options": ["À partir de sa vitesse réelle et de son tarif horaire", "Au hasard", "Copier le prix le plus bas", "Selon la longueur du titre"], "correct": 0 },
+        { "q": "Quelle erreur éviter dans un test de correction ?", "options": ["Réécrire un texte qui demandait une simple correction", "Utiliser le suivi des modifications", "Lire les consignes", "Faire plusieurs passages"], "correct": 0 },
+        { "q": "Quelle spécialité est souvent très bien payée ?", "options": ["La correction juridique, médicale ou scientifique", "La correction de listes de courses", "Aucune", "La correction de SMS"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un correcteur et relecteur ?", "options": ["Il vérifie qu'un texte est sans faute, clair et cohérent", "Il écrit les livres", "Il imprime les documents", "Il traduit toujours"], "correct": 0 },
+    { "q": "Qu'est-ce que la correction d'épreuves ?", "options": ["La dernière vérification d'un document mis en page", "La première lecture d'un brouillon", "Un examen scolaire", "Une traduction"], "correct": 0 },
+    { "q": "Que faire si l'auteur veut garder son style ?", "options": ["Corriger les fautes et suggérer sans réécrire", "Tout réécrire", "Refuser", "Changer le ton"], "correct": 0 },
+    { "q": "Pourquoi travailler ses erreurs habituelles ?", "options": ["Un correcteur ne peut pas laisser passer ses propres fautes", "Ce n'est pas utile", "Pour aller plus vite seulement", "Pour plaire au client"], "correct": 0 },
+    { "q": "Quelle phrase est correcte ?", "options": ["C'est un bon projet", "Ces un bon projet", "Ses un bon projet", "S'est un bon projet"], "correct": 0 },
+    { "q": "Quelle astuce pour choisir entre « -er » et « -é » ?", "options": ["Remplacer par « vendre » ou « vendu »", "Compter les lettres", "Regarder le sujet", "Toujours mettre « -er »"], "correct": 0 },
+    { "q": "Quelle phrase est correcte ?", "options": ["Je serais content si tu venais", "Je serais content si tu viendrais", "Je serai content si tu viendrais", "Je serais content si tu viendra"], "correct": 0 },
+    { "q": "Comment écrire « 25000 Ar » correctement ?", "options": ["25 000 Ar", "25.000Ar", "25,000 Ar", "25000Ar"], "correct": 0 },
+    { "q": "Pourquoi une espace insécable ?", "options": ["Éviter qu'une ponctuation se retrouve seule en début de ligne", "Décorer le texte", "Allonger le texte", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que faire d'un dialogue en langage familier voulu par l'auteur ?", "options": ["Le respecter", "Le corriger en langage soutenu", "Le supprimer", "Le traduire"], "correct": 0 },
+    { "q": "Que doit permettre le suivi des modifications ?", "options": ["Accepter ou refuser chaque correction", "Cacher les corrections", "Supprimer le texte", "Imprimer"], "correct": 0 },
+    { "q": "Quel correcteur gratuit est spécialisé en français ?", "options": ["BonPatron", "ProWritingAid", "Zendesk", "Gorgias"], "correct": 0 },
+    { "q": "Peut-on envoyer un document confidentiel dans un outil en ligne ?", "options": ["Pas sans l'accord du client", "Oui, toujours", "Oui, si c'est gratuit", "Oui, la nuit"], "correct": 0 },
+    { "q": "Quel est le risque de « rechercher et remplacer » ?", "options": ["Modifier un mot à l'intérieur d'un autre", "Aucun", "Effacer le fichier", "Changer la langue"], "correct": 0 },
+    { "q": "Que contient le carnet de règles personnel ?", "options": ["Les règles cherchées avec un exemple", "Les mots de passe", "Les factures", "Rien"], "correct": 0 },
+    { "q": "Quel outil payant sert surtout pour l'anglais ?", "options": ["ProWritingAid", "Antidote", "BonPatron", "LanguageTool gratuit"], "correct": 0 },
+    { "q": "Combien de temps travailler sans pause sur un long texte ?", "options": ["Par séances de 45 à 60 minutes", "8 heures d'affilée", "10 minutes par jour", "Toute la nuit"], "correct": 0 },
+    { "q": "Que livrer à la fin d'un manuscrit ?", "options": ["Version suivi, version propre, feuille de style et note", "Seulement la facture", "Rien", "Un résumé du livre"], "correct": 0 },
+    { "q": "Que faire d'une date incohérente dans un récit ?", "options": ["Poser la question à l'auteur", "Choisir au hasard", "La supprimer", "L'ignorer"], "correct": 0 },
+    { "q": "Que vérifier dans la version propre ?", "options": ["Qu'il ne reste aucune marque de révision", "Qu'elle contient toutes les couleurs", "Rien", "Qu'elle est plus longue"], "correct": 0 },
+    { "q": "Peut-on publier le texte d'un client dans son portfolio ?", "options": ["Seulement avec son accord écrit", "Oui, toujours", "Oui, en partie", "Oui, s'il est ancien"], "correct": 0 },
+    { "q": "Quelle offre faire à un rédacteur web ?", "options": ["Une relecture rapide en suivi des modifications", "Écrire ses articles à sa place", "Critiquer publiquement ses fautes", "Rien"], "correct": 0 },
+    { "q": "Combien de mots environ dans une page ?", "options": ["250 à 300", "50", "2 000", "10"], "correct": 0 },
+    { "q": "Quand demander un acompte ?", "options": ["Pour les longs textes", "Jamais", "Seulement après livraison", "Pour un SMS"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

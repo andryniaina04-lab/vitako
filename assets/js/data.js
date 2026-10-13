@@ -4440,6 +4440,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-3-f": {
+  "hours": 15,
+  "description": "Le correcteur et relecteur vérifie qu'un texte est sans faute, clair et cohérent avant sa publication. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des auteurs, des traducteurs et des entreprises, à Madagascar et à l'étranger, avec LanguageTool et BonPatron : niveaux d'intervention, fautes fréquentes, typographie française, méthode en plusieurs passages, suivi des modifications, feuille de style, correction d'un manuscrit et note de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Distinguer correction, relecture et niveaux d'intervention",
+   "Repérer les fautes fréquentes et appliquer la typographie française",
+   "Corriger en plusieurs passages en respectant le style de l'auteur",
+   "Utiliser correcteurs automatiques, suivi des modifications et feuille de style",
+   "Corriger un long manuscrit et rédiger une note de correction",
+   "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de correcteur et relecteur depuis Madagascar",
+    "summary": "Correction, relecture, préparation de copie et épreuves, niveaux d'intervention, types de textes et de clients, niveau de français et poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Correction et relecture",
+     "Les niveaux d'intervention",
+     "Les types de textes et de clients",
+     "Votre niveau de français",
+     "Votre poste de travail",
+     "Exercice pratique : évaluer votre niveau"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : fautes fréquentes, typographie et méthode",
+    "summary": "Homophones, participes passés, accords, conjugaison et anglicismes, typographie française, correction en 5 passages, faute ou style et suivi des modifications.",
+    "sections": [
+     "Les fautes les plus fréquentes",
+     "Les règles de typographie française",
+     "La méthode en plusieurs passages",
+     "Faute ou choix de style ?",
+     "Présenter ses corrections",
+     "Exercice pratique : corriger avec méthode"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : LanguageTool, BonPatron, Word, Docs et outils payants",
+    "summary": "Correcteurs automatiques avec esprit critique, suivi des modifications et mode Suggestion, rechercher et remplacer, feuille de style, ressources de référence, Antidote et ProWritingAid.",
+    "sections": [
+     "Les correcteurs automatiques gratuits",
+     "Word et Google Docs",
+     "La feuille de style",
+     "Rechercher une règle",
+     "Les outils payants",
+     "Exercice pratique : votre boîte à outils"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : le manuscrit « Les vanilliers de la SAVA »",
+    "summary": "Évaluation sur extrait, cadre avec le client, organisation d'un long travail, vérification de cohérence, note de correction et contrôle avant livraison.",
+    "sections": [
+     "Le cas pratique : « Les vanilliers de la SAVA »",
+     "Étape 1 : évaluer sur un extrait",
+     "Étape 2 : fixer le cadre",
+     "Étape 3 : organiser un long travail",
+     "Étape 4 : la note de correction",
+     "Étape 5 : le contrôle avant livraison",
+     "Exercice pratique : un manuscrit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avant et après, 5 canaux, test de correction, prix au mot, à la page ou au forfait, conditions, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Réussir un test de correction",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "media-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du monteur un professionnel orienté résultats : spécialité (YouTube, publicité, documentaire…), rétention d'audience, logiciels professionnels (Premiere Pro, Final Cut Pro, DaVinci Resolve Studio), étalonnage et mixage, spécifications de livraison et licences pour les clients étrangers, puis développement d'une activité de partenaire de contenu ou d'une petite équipe. Cette formation, en 5 modules numérotés, suppose les bases du niveau Fondamentaux. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

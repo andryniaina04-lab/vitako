@@ -59,7 +59,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 16, true),
   ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 13, true),
   ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 15, true),
-  ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 13, false),
+  ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true),
   ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 17, false),
   ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, false),
   ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
@@ -31553,6 +31553,559 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Comment recevoir des fichiers sensibles ?', '["Par une messagerie grand public","Par SMS","Sur un réseau social","Par un lien sécurisé"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Que demander à une université dès le départ ?', '["Son mot de passe","Sa procédure de paiement et les documents nécessaires","Un paiement en espèces","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-2-f', 'Quel service voisin demande de découper et synchroniser le texte avec la vidéo ?', '["Le sous-titrage","Le compte rendu","La traduction","La saisie"]'::jsonb, 0);
+
+-- lang-3-f
+delete from public.exam_questions where course_id = 'lang-3-f';
+delete from public.module_questions where course_id = 'lang-3-f';
+delete from public.lessons where course_id = 'lang-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-f', 0, 'Le métier de correcteur et relecteur depuis Madagascar', 'Correction, relecture, préparation de copie et épreuves, niveaux d''intervention, types de textes et de clients, niveau de français et poste de travail.', 'Un texte plein de fautes fait perdre des clients, des lecteurs et de la crédibilité. Les entreprises, les auteurs, les étudiants, les agences et les sites web ont donc besoin de quelqu''un pour vérifier leurs textes avant publication. Le correcteur et relecteur travaille entièrement à distance, sur des fichiers envoyés par e-mail ou partagés en ligne. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer la différence entre correction et relecture.
+> 2. Décrire les niveaux d''intervention sur un texte.
+> 3. Reconnaître les types de textes et de clients.
+> 4. Évaluer votre niveau de français honnêtement.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un correcteur et relecteur **vérifie qu''un texte est sans faute, clair et cohérent, en respectant le style de l''auteur, avant qu''il soit publié ou envoyé**.
+
+## Correction et relecture
+
+| Activité | Ce que l''on fait | Exemple |
+| --- | --- | --- |
+| **Correction** | Orthographe, grammaire, conjugaison, accords, ponctuation, typographie | « les enfant sont arrivé » devient « les enfants sont arrivés » |
+| **Relecture** | Clarté, répétitions, cohérence, logique, style | Une phrase de 60 mots découpée en deux phrases claires |
+| **Préparation de copie** | Uniformiser le texte selon les règles d''une maison d''édition ou d''un client | Écrire toujours « e-mail » et jamais « email » ou « mail » |
+| **Correction d''épreuves** | Dernière vérification d''un document mis en page | Une coupure de mot mal placée en fin de ligne |
+
+> [!definition] Typographie
+> L''ensemble des règles de présentation d''un texte : majuscules, espaces avant la ponctuation, guillemets, chiffres, abréviations. En français, on met par exemple une espace (insécable) avant « : », « ; », « ! » et « ? ».
+
+## Les niveaux d''intervention
+
+| Niveau | Ce qui est autorisé | Quand |
+| --- | --- | --- |
+| **Correction légère** | Fautes seulement, aucun changement de style | Texte d''un auteur exigeant, document officiel |
+| **Correction et relecture** | Fautes + suggestions de clarté | Cas le plus courant |
+| **Réécriture partielle** | Reformuler des passages entiers | Texte mal écrit, avec l''accord du client |
+
+> [!attention]
+> Le niveau d''intervention se décide **avec le client avant de commencer**. Réécrire un texte alors que le client voulait seulement une correction est une erreur fréquente qui fâche les auteurs.
+
+## Les types de textes et de clients
+
+| Type de texte | Clients | Point d''attention |
+| --- | --- | --- |
+| **Articles de blog, pages web** | Agences, rédacteurs, entreprises | Rapidité, clarté |
+| **Livres** (romans, essais) | Auteurs, maisons d''édition | Cohérence sur des centaines de pages |
+| **Mémoires et thèses** | Étudiants, chercheurs | Normes universitaires ; ne pas écrire à la place de l''étudiant |
+| **Documents d''entreprise** | Rapports, présentations, contrats | Vocabulaire précis, mise en forme |
+| **Textes marketing** | Newsletters, publicités, fiches produits | Ton de la marque |
+| **Sous-titres et traductions** | Agences de traduction | Contraintes de longueur |
+
+> [!attention]
+> Pour les mémoires et les thèses, vous corrigez la langue, mais vous **n''écrivez pas** le contenu à la place de l''étudiant. Écrire le travail d''un étudiant est une fraude universitaire.
+
+## Votre niveau de français
+
+Le correcteur doit avoir un niveau de français **excellent**, à l''écrit, bien au-dessus de la moyenne.
+
+| Compétence | Ce qu''il faut maîtriser |
+| --- | --- |
+| **Orthographe** | Mots courants et difficiles, homophones (a/à, ou/où, ces/ses/c''est) |
+| **Grammaire** | Accords du participe passé, du verbe avec son sujet, de l''adjectif |
+| **Conjugaison** | Tous les temps courants, le subjonctif, la concordance des temps |
+| **Ponctuation** | Virgules, deux-points, points-virgules, guillemets |
+| **Vocabulaire** | Sens précis des mots, faux amis, anglicismes |
+
+> [!madagascar] Votre avantage et votre défi
+> Beaucoup de jeunes Malagasy ont étudié en français et en maîtrisent bien l''écrit. Le français reste cependant souvent une **seconde langue** : identifiez vos erreurs habituelles (accords, prépositions, expressions calquées sur le malgache) et travaillez-les sans relâche. Un correcteur ne peut pas laisser passer ses propres fautes.
+
+> [!astuce]
+> Faites un **test de niveau** en ligne en orthographe et en grammaire et notez vos points faibles. Refaites-le chaque mois : c''est votre tableau de progression.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | Assez puissant pour le traitement de texte et le navigateur |
+| **Traitement de texte** | Word, LibreOffice Writer ou Google Docs, avec le mode suivi des modifications |
+| **Dictionnaires et grammaires** | Dictionnaire en ligne de référence, ouvrage de grammaire, guide de typographie |
+| **Correcteur automatique gratuit** | LanguageTool, BonPatron |
+| **Lieu calme** | La concentration est indispensable |
+
+> [!retenir]
+> - La correction vise les fautes ; la relecture vise la clarté et la cohérence.
+> - Le niveau d''intervention se décide avec le client avant de commencer.
+> - Articles, livres, mémoires, documents d''entreprise, marketing, traductions.
+> - Corriger un mémoire, jamais l''écrire.
+> - Un français écrit excellent et des points faibles travaillés.
+
+## Exercice pratique : évaluer votre niveau
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Faites un test d''orthographe et de grammaire en ligne et notez votre score.
+> 2. Listez vos 5 erreurs les plus fréquentes.
+> 3. Trouvez un article de blog en français et corrigez-le à la main : notez chaque faute et sa règle.
+> 4. Comparez 2 dictionnaires et 2 correcteurs gratuits.
+>
+> **À livrer** : votre score, votre liste d''erreurs, votre article corrigé et votre comparatif.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 0, 0, 'Que vise surtout la relecture ?', '["La mise en page","Seulement les virgules","Le prix","La clarté, la cohérence et le style"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 0, 1, 'Quand décider du niveau d''intervention ?', '["Jamais","Au hasard","Après la livraison","Avec le client avant de commencer"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 0, 2, 'Peut-on écrire le mémoire d''un étudiant ?', '["Oui","Non, on corrige seulement la langue","Oui, s''il paie plus","Oui, en partie"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-f', 1, 'Les bases : fautes fréquentes, typographie et méthode', 'Homophones, participes passés, accords, conjugaison et anglicismes, typographie française, correction en 5 passages, faute ou style et suivi des modifications.', 'Ce module vous donne les bases du correcteur : les fautes les plus fréquentes, les règles de typographie française, la méthode de lecture en plusieurs passages, et la façon de présenter vos corrections pour qu''elles soient faciles à accepter.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Repérer les fautes les plus fréquentes.
+> 2. Appliquer les règles essentielles de typographie française.
+> 3. Corriger un texte en plusieurs passages.
+> 4. Distinguer une faute d''un choix de style.
+> 5. Présenter vos corrections avec le suivi des modifications.
+
+## Les fautes les plus fréquentes
+
+| Catégorie | Faute | Correction | Règle |
+| --- | --- | --- | --- |
+| **Homophones** | Il a mangé **a** la maison | Il a mangé **à** la maison | « à » préposition ; « a » verbe avoir |
+| **Homophones** | **Ces** un bon projet | **C''est** un bon projet | « c''est » = cela est |
+| **Participe passé** | Les lettres que j''ai **écrit** | Les lettres que j''ai **écrites** | Avec avoir, accord avec le COD placé avant |
+| **Infinitif ou participe** | Il faut **manger** / Il a **mangé** | (correct) | Remplacer par « vendre » / « vendu » pour vérifier |
+| **Accord sujet-verbe** | Les résultats de l''étude **montre** | Les résultats de l''étude **montrent** | Le sujet est « les résultats » |
+| **Pluriel** | Des **information** | Des **informations** | « des » entraîne le pluriel |
+| **Conjugaison** | Je **serais** content si tu **viendrais** | Je **serais** content si tu **venais** | Après « si » de condition : imparfait, pas conditionnel |
+| **Anglicismes** | **Adresser** un problème | **Traiter** un problème | Calque de l''anglais « to address » |
+
+> [!astuce]
+> Pour savoir s''il faut écrire « -er » ou « -é », remplacez le verbe par **vendre** ou **vendu** : « il faut vendre » (donc « manger »), « il a vendu » (donc « mangé »).
+
+## Les règles de typographie française
+
+| Règle | Exemple correct |
+| --- | --- |
+| Espace avant « : ; ! ? » (espace insécable) | « Attention : il arrive ! » |
+| Guillemets français avec espaces intérieures | « Bonjour » |
+| Pas d''espace avant la virgule et le point | « Bonjour, merci. » |
+| Majuscules accentuées | « État », « À bientôt » |
+| Nombres : espace entre les milliers | 25 000 Ar |
+| Heures | 14 h 30 |
+| Abréviations courantes | M. (monsieur), Mme (madame), n° (numéro) |
+| Points de suspension | Un seul caractère ou trois points, sans espace avant |
+
+> [!definition] Espace insécable
+> Une espace qui empêche le retour à la ligne entre deux éléments. Elle évite qu''un « ? » ou un « : » se retrouve seul au début d''une ligne. Dans les traitements de texte, on l''obtient souvent avec Ctrl + Maj + Espace.
+
+> [!madagascar]
+> Les textes destinés à la France, au Canada ou à la Suisse ont de petites différences typographiques (par exemple les espaces avant certaines ponctuations au Québec). Demandez toujours au client **pour quel pays** le texte est écrit.
+
+## La méthode en plusieurs passages
+
+| Passage | Objectif |
+| --- | --- |
+| **1. Lecture complète** | Comprendre le texte, son ton, son public, sans corriger |
+| **2. Correction de la langue** | Orthographe, grammaire, conjugaison, phrase par phrase |
+| **3. Relecture du sens** | Clarté, répétitions, cohérence des noms, des dates, des chiffres |
+| **4. Typographie** | Espaces, majuscules, guillemets, nombres |
+| **5. Vérification finale** | Lecture lente, si possible à voix haute ou le lendemain |
+
+> [!astuce]
+> On ne voit pas tout en une seule lecture. Le cerveau corrige automatiquement ce qu''il croit lire : en **séparant les objectifs** de chaque passage, vous trouvez beaucoup plus de fautes.
+
+## Faute ou choix de style ?
+
+| Situation | Faute ou style ? | Que faire |
+| --- | --- | --- |
+| « Les enfant » | Faute | Corriger |
+| Phrases très courtes dans un roman | Style de l''auteur | Respecter |
+| Le même mot répété 3 fois en 2 lignes | Maladresse | Suggérer une autre formulation |
+| « Malgré que » | Usage critiqué | Proposer « bien que », selon le niveau de langue demandé |
+| Dialogue en langage familier | Style voulu | Respecter |
+
+## Présenter ses corrections
+
+> [!definition] Suivi des modifications
+> Une fonction des traitements de texte qui affiche chaque modification (suppression, ajout) en couleur. L''auteur peut accepter ou refuser chaque correction.
+
+1. **Activez** le suivi des modifications avant de commencer.
+2. **Corrigez directement** les fautes certaines.
+3. **Ajoutez un commentaire** pour les suggestions de style ou les doutes.
+4. **Expliquez** brièvement les corrections importantes (« accord du participe avec le COD placé avant »).
+5. **Ne laissez aucune** modification non signalée.
+
+> [!retenir]
+> - Homophones, participes passés, accords, conjugaison, anglicismes.
+> - Typographie française : espaces, guillemets, nombres, majuscules accentuées.
+> - Cinq passages, chacun avec un objectif.
+> - Corriger les fautes, respecter le style, suggérer pour les maladresses.
+> - Suivi des modifications et commentaires pour chaque intervention.
+
+## Exercice pratique : corriger avec méthode
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Rédigez vous-même un texte de 300 mots contenant 20 fautes variées, puis échangez-le avec un camarade (ou utilisez un texte fourni par un proche).
+> 2. Corrigez le texte reçu en 5 passages, avec le suivi des modifications.
+> 3. Ajoutez au moins 3 commentaires de style.
+> 4. Notez pour chaque faute la règle correspondante.
+>
+> **À livrer** : le texte corrigé en suivi des modifications et votre tableau des règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 1, 0, 'Quelle phrase est correcte ?', '["Les lettres que j''ai écrites","Les lettres que j''ai écrire","Les lettres que j''ai écrit","Les lettres que j''ai écrits"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 1, 1, 'Que met-on avant « ? » en typographie française ?', '["Rien","Une virgule","Un point","Une espace insécable"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 1, 2, 'Pourquoi corriger en plusieurs passages ?', '["On ne voit pas tout en une seule lecture","Pour facturer plus","Ce n''est pas utile","Pour changer le style"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-f', 2, 'Les outils : LanguageTool, BonPatron, Word, Docs et outils payants', 'Correcteurs automatiques avec esprit critique, suivi des modifications et mode Suggestion, rechercher et remplacer, feuille de style, ressources de référence, Antidote et ProWritingAid.', 'Ce module vous fait découvrir les outils du correcteur : les correcteurs automatiques gratuits **LanguageTool** et **BonPatron**, le suivi des modifications dans Word et Google Docs, la feuille de style, et les outils payants les plus utilisés par les professionnels : **Antidote** et **ProWritingAid**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser LanguageTool et BonPatron avec esprit critique.
+> 2. Corriger dans Word et Google Docs en mode suivi.
+> 3. Construire une feuille de style pour un client.
+> 4. Rechercher efficacement une règle.
+> 5. Comprendre ce qu''apportent Antidote et ProWritingAid.
+
+## Les correcteurs automatiques gratuits
+
+| Outil | Points forts | Limites |
+| --- | --- | --- |
+| **LanguageTool** | Extension de navigateur et de traitement de texte, plusieurs langues, version gratuite utile | La version gratuite ne détecte pas tout ; textes longs limités |
+| **BonPatron** | Spécialisé en français, explications claires des règles | Copier-coller du texte, longueur limitée en version gratuite |
+
+> [!attention]
+> Un correcteur automatique **propose**, vous **décidez**. Il laisse passer des fautes (surtout les accords complexes et les homophones bien orthographiés) et signale parfois des « fautes » qui n''en sont pas. Ne cliquez jamais sur « tout accepter ».
+
+### La bonne utilisation
+
+1. **Corrigez d''abord vous-même** le texte.
+2. **Passez ensuite** le correcteur pour attraper ce qui vous a échappé.
+3. **Vérifiez** chaque alerte dans une grammaire si vous avez un doute.
+4. **Ne transmettez pas** de documents confidentiels à un outil en ligne sans l''accord du client.
+
+## Word et Google Docs
+
+| Fonction | Word | Google Docs |
+| --- | --- | --- |
+| Suivi des modifications | Révision → Suivi des modifications | Mode « Suggestion » |
+| Commentaires | Révision → Nouveau commentaire | Insertion → Commentaire |
+| Rechercher et remplacer | Ctrl + H | Ctrl + H |
+| Langue du document | Révision → Langue | Fichier → Langue |
+| Comparer deux versions | Révision → Comparer | Historique des versions |
+
+> [!astuce]
+> **Rechercher et remplacer** est très utile pour les corrections répétées (par exemple remplacer tous les « email » par « e-mail »), mais vérifiez chaque remplacement : un remplacement automatique peut modifier un mot à l''intérieur d''un autre mot.
+
+## La feuille de style
+
+> [!definition] Feuille de style
+> Un document qui liste les choix d''écriture d''un client ou d''un projet : orthographe des noms propres, majuscules, chiffres, termes techniques. Elle garantit un texte cohérent du début à la fin.
+
+```
+Feuille de style – Livre « Les vanilliers de la SAVA »
+Noms propres : Sambava, Antalaha, Vohémar (avec accent)
+Chiffres : en lettres de un à neuf, en chiffres à partir de 10
+Dates : 15 mars 2026 (mois en minuscule)
+Monnaie : 25 000 Ar (espace insécable avant Ar)
+Termes : « vanille verte », « vanille préparée » (minuscules)
+Personnages : Hery (jamais Héry), Mme Voahangy
+Dialogues : tirets cadratins, sans guillemets
+```
+
+## Rechercher une règle
+
+| Ressource | Usage |
+| --- | --- |
+| **Dictionnaire en ligne de référence** | Orthographe, sens, genre des mots |
+| **Ouvrage de grammaire de référence** | Règles détaillées et exceptions |
+| **Banque de dépannage linguistique** (Office québécois de la langue française) | Réponses claires aux questions fréquentes |
+| **Guide de typographie** | Règles de présentation |
+| **Conjugueur en ligne** | Conjugaison de tous les verbes |
+
+> [!madagascar]
+> Créez votre **carnet de règles personnel** (fichier ou cahier) : chaque fois que vous cherchez une règle, notez-la avec un exemple. En quelques mois, vous aurez votre propre guide, adapté à vos difficultés.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Antidote** | Référence pour le français : correcteur très précis, dictionnaires, guides de grammaire et de style, détection des répétitions et des phrases longues ; fonctionne dans Word, le navigateur et d''autres logiciels |
+| **ProWritingAid** | Surtout pour l''anglais : grammaire, style, rapports détaillés sur la lisibilité et les répétitions |
+
+> [!madagascar]
+> Antidote se paie en licence ou en abonnement selon les offres, ProWritingAid en abonnement, en dollars ou en euros. Commencez avec les outils gratuits ; achetez Antidote quand vous avez des clients réguliers en français : c''est l''outil le plus utilisé par les correcteurs professionnels francophones. Vérifiez les prix sur les sites officiels.
+
+> [!retenir]
+> - Correcteurs automatiques après votre propre correction, jamais « tout accepter ».
+> - Pas de document confidentiel dans un outil en ligne sans accord.
+> - Suivi des modifications, commentaires, rechercher et remplacer avec prudence.
+> - Une feuille de style par client ou par projet.
+> - Antidote, la référence payante pour le français.
+
+## Exercice pratique : votre boîte à outils
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Corrigez un texte de 500 mots vous-même, puis passez-le dans LanguageTool et BonPatron.
+> 2. Notez les fautes trouvées par les outils et celles qu''ils ont manquées.
+> 3. Corrigez le même texte dans Google Docs en mode Suggestion.
+> 4. Rédigez la feuille de style de ce texte et commencez votre carnet de règles (10 règles).
+>
+> **À livrer** : votre comparatif, le document en mode Suggestion, la feuille de style et votre carnet.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 2, 0, 'Comment utiliser un correcteur automatique ?', '["À la place de sa correction","Cliquer sur « tout accepter »","Après sa propre correction, en vérifiant chaque alerte","Jamais"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 2, 1, 'Qu''est-ce qu''une feuille de style ?', '["Un fichier de couleurs","Un modèle de CV","La liste des choix d''écriture d''un projet","Une facture"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 2, 2, 'Quel outil payant est la référence pour le français ?', '["Audacity","Reaper","Antidote","Trello"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-f', 3, 'Premier projet : le manuscrit « Les vanilliers de la SAVA »', 'Évaluation sur extrait, cadre avec le client, organisation d''un long travail, vérification de cohérence, note de correction et contrôle avant livraison.', 'Dans ce module, vous corrigez un premier manuscrit pour un auteur, du devis jusqu''à la livraison, comme le ferait un correcteur indépendant. Vous apprendrez à évaluer un texte, à fixer le niveau d''intervention, à organiser un long travail, à communiquer avec l''auteur et à contrôler la qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Évaluer un texte sur un extrait.
+> 2. Fixer le niveau d''intervention et le délai avec le client.
+> 3. Organiser la correction d''un long document.
+> 4. Rédiger une note de correction utile à l''auteur.
+> 5. Contrôler la qualité avant livraison.
+
+## Le cas pratique : « Les vanilliers de la SAVA »
+
+> [!exemple] Votre client
+> M. Andry, enseignant à Antalaha, a écrit un récit de 45 000 mots sur l''histoire de sa famille de producteurs de vanille. Il veut le publier en ligne et en version imprimée. Le texte est vivant, mais contient de nombreuses fautes d''accord, des répétitions et des incohérences dans les noms et les dates. Il souhaite garder sa voix et son style.
+
+## Étape 1 : évaluer sur un extrait
+
+1. **Demandez** un extrait de 2 à 3 pages (et le texte complet si possible pour voir sa longueur).
+2. **Corrigez** l''extrait en suivi des modifications.
+3. **Chronométrez** votre temps.
+4. **Estimez** la difficulté : légère, moyenne ou forte.
+
+| Mesure sur l''extrait | Résultat |
+| --- | --- |
+| Longueur | 1 000 mots |
+| Fautes de langue | 34 |
+| Suggestions de style | 9 |
+| Temps de correction | 50 minutes |
+| Difficulté | Moyenne à forte |
+
+> [!astuce]
+> L''extrait corrigé est aussi votre meilleur argument : l''auteur voit concrètement **ce que vous apportez** et le niveau d''intervention que vous proposez.
+
+## Étape 2 : fixer le cadre
+
+| Point | Accord avec M. Andry |
+| --- | --- |
+| Niveau d''intervention | Correction complète + suggestions de style en commentaires, sans réécriture |
+| Ce qui est respecté | Ses expressions malgaches, ses dialogues, son ton |
+| Délai | 3 semaines |
+| Format | Fichier Word en suivi des modifications + version propre |
+| Retours | Une série de questions et réponses incluse |
+| Prix | Selon le nombre de mots (module 5) |
+
+## Étape 3 : organiser un long travail
+
+| Semaine | Travail |
+| --- | --- |
+| **1** | Lecture complète rapide ; feuille de style (noms, dates, lieux) ; correction des chapitres 1 à 5 |
+| **2** | Correction des chapitres 6 à 12 ; mise à jour de la feuille de style |
+| **3** | Vérification de cohérence sur tout le texte ; typographie ; vérification finale ; note de correction |
+
+> [!attention]
+> Sur un long texte, la fatigue fait baisser la qualité. Travaillez par **séances de 45 à 60 minutes** avec des pauses, et pas plus de quelques heures de correction intense par jour.
+
+### La vérification de cohérence
+
+| Élément | Exemple d''incohérence |
+| --- | --- |
+| Noms | « Rasoa » au chapitre 2, « Razoa » au chapitre 7 |
+| Dates et âges | Le grand-père a 40 ans en 1960 et 50 ans en 1975 |
+| Lieux | Un village situé tantôt au nord, tantôt au sud d''Antalaha |
+| Chiffres | « 300 kilos » puis « trois cents kilos » |
+| Faits | Un personnage mort au chapitre 4 qui parle au chapitre 9 |
+
+> [!madagascar]
+> Les mots malgaches du texte (noms de plats, de cérémonies, expressions) sont une richesse. Ne les « corrigez » pas en français : vérifiez seulement leur **orthographe cohérente** et proposez à l''auteur de les mettre en italique de façon régulière, selon son choix.
+
+## Étape 4 : la note de correction
+
+```
+Note de correction – « Les vanilliers de la SAVA »
+
+Travail réalisé : correction complète des 14 chapitres (45 200 mots).
+Corrections principales :
+- Accords du participe passé (environ 300 corrections).
+- Concordance des temps dans les récits au passé.
+- Uniformisation des noms selon la feuille de style jointe.
+
+Questions pour vous (12 commentaires dans le texte), par exemple :
+- Chapitre 3 : le cyclone est daté de 1984, puis de 1986. Quelle est la bonne date ?
+- Chapitre 9 : Rakoto parle alors qu''il est décédé au chapitre 4. Est-ce voulu ?
+
+Suggestions de style : 47 commentaires, à accepter ou non librement.
+Fichiers joints : version suivi des modifications, version propre, feuille de style.
+```
+
+## Étape 5 : le contrôle avant livraison
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Toutes les pages ont été corrigées, aucun chapitre oublié |
+| 2 | Le suivi des modifications est activé et lisible |
+| 3 | La version propre ne contient plus de marques de révision |
+| 4 | La feuille de style est complète |
+| 5 | Les questions sont claires et numérotées |
+| 6 | Aucune de vos corrections n''a introduit de nouvelle faute |
+
+> [!retenir]
+> - Évaluer sur un extrait corrigé et chronométré.
+> - Fixer par écrit le niveau d''intervention, le délai et ce qui est respecté.
+> - Organiser un long texte par semaines avec une feuille de style.
+> - Une note de correction avec questions précises.
+> - Un contrôle final avant livraison.
+
+## Exercice pratique : un manuscrit
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Choisissez un texte long d''au moins 5 000 mots (texte libre de droits modifié, ou texte d''un proche qui accepte).
+> 2. Évaluez un extrait et chronométrez-le.
+> 3. Corrigez le texte complet avec une feuille de style.
+> 4. Faites la vérification de cohérence.
+> 5. Rédigez la note de correction et livrez les deux versions.
+>
+> **À livrer** : votre évaluation, le texte corrigé (deux versions), la feuille de style et la note. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 3, 0, 'Pourquoi corriger d''abord un extrait ?', '["Pour réécrire le livre","Ce n''est pas utile","Estimer la difficulté et montrer ce qu''on apporte","Pour éviter de travailler"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 3, 1, 'Que faire des mots malgaches dans le texte ?', '["Vérifier leur orthographe cohérente sans les traduire de force","Les remplacer par du français","Les mettre en majuscules","Les supprimer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 3, 2, 'Quelle incohérence chercher ?', '["Un titre long","Une police différente","Un chapitre court","Un nom écrit de deux façons"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-3-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avant et après, 5 canaux, test de correction, prix au mot, à la page ou au forfait, conditions, paiements et évolution.', 'Les agences de contenu, les auteurs, les maisons d''édition et les entreprises cherchent régulièrement des correcteurs fiables. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de correcteur.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Réussir un test de correction.
+> 4. Fixer vos prix au mot ou à la page.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Des exemples avant et après** : un extrait en suivi des modifications.
+2. **Une feuille de style** et une note de correction (projet du module 4).
+3. **Les types de textes** que vous corrigez : web, livres, documents d''entreprise.
+4. **Vos outils** : Word, Google Docs, correcteurs utilisés.
+5. **Une page simple** ou un profil sur une plateforme.
+
+> [!attention]
+> Ne publiez jamais le texte d''un client sans son **accord écrit**. Pour votre portfolio, utilisez vos propres textes, des textes libres de droits ou des textes de proches qui acceptent.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Agences de contenu et rédacteurs web** | Proposez de relire leurs articles avant livraison |
+| 2 | **Auteurs indépendants** | Groupes et forums d''auteurs ; proposez une correction d''extrait gratuite |
+| 3 | **Agences de traduction** | Relecture de traductions vers le français |
+| 4 | **Entreprises et ONG** | Rapports, sites web, documents officiels |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un rédacteur web
+> « Bonjour, je suis correcteur en français. Les rédacteurs qui livrent beaucoup d''articles laissent parfois passer quelques fautes, ce qui peut gêner leurs clients. Je propose une relecture rapide de vos articles, livrée en 24 heures, avec le suivi des modifications. Je peux corriger gratuitement votre prochain article de moins de 1 000 mots pour que vous jugiez. »
+
+## Réussir un test de correction
+
+| Conseil | Pourquoi |
+| --- | --- |
+| **Lisez les consignes** deux fois | Niveau d''intervention, format, délai |
+| **Utilisez le suivi des modifications** | Le recruteur veut voir chaque correction |
+| **Faites plusieurs passages** | Les tests contiennent des pièges volontaires |
+| **N''en faites pas trop** | Réécrire un texte qui demandait une simple correction est une erreur |
+| **Relisez votre propre travail** | Une faute introduite par vous élimine souvent |
+
+## Fixer ses prix
+
+| Base | Usage | Exemple de prix |
+| --- | --- | --- |
+| **Au mot** | Articles, documents | 15 Ar par mot pour une correction simple |
+| **À la page** (environ 250 à 300 mots) | Livres, mémoires | 4 000 Ar par page |
+| **Au forfait** | Volume régulier d''une agence | 300 000 Ar par mois pour un volume convenu |
+| **Supplément urgence** | Livraison en moins de 24 h | +30 % |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Calculez votre prix à partir de votre **vitesse réelle** : si vous corrigez 1 500 mots par heure sur un texte moyen et visez 20 000 Ar de l''heure, votre prix est d''environ 13 Ar par mot. Augmentez-le pour les textes difficiles.
+
+## Vos conditions
+
+1. **Le niveau d''intervention** convenu.
+2. **Le délai** et l''éventuel supplément d''urgence.
+3. **Le format** de livraison (suivi des modifications, version propre).
+4. **Une série de questions et réponses** incluse.
+5. **La confidentialité** des textes.
+6. **Le paiement** : acompte de 30 à 50 % pour les longs textes.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Correcteur d''édition** | Préparation de copie, correction d''épreuves, normes des maisons d''édition |
+| **Relecteur de traductions** | Une seconde langue (voir la formation Traducteur) |
+| **Rédacteur** | Écrire vos propres textes (voir la formation Rédacteur web et copywriter) |
+| **Correcteur spécialisé** | Juridique, médical, scientifique : vocabulaire précis et très bien payé |
+
+> [!retenir]
+> - Un portfolio avec avant et après, sans texte de client publié sans accord.
+> - Agences, auteurs, traducteurs, entreprises, plateformes.
+> - Un test réussi : consignes, suivi, plusieurs passages, pas d''excès.
+> - Un prix au mot ou à la page, calculé sur votre vitesse réelle.
+> - Évoluez vers l''édition, la traduction, la rédaction ou une spécialité.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez 3 extraits avant et après et publiez-les sur une page simple.
+> 2. Mesurez votre vitesse de correction sur 3 textes et calculez vos prix.
+> 3. Rédigez vos conditions en 6 points.
+> 4. Envoyez au moins 3 propositions (rédacteurs, auteurs ou agences).
+>
+> **À livrer** : le lien de votre page, vos calculs, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 4, 0, 'Comment calculer son prix au mot ?', '["À partir de sa vitesse réelle et de son tarif horaire","Au hasard","Selon la longueur du titre","Copier le prix le plus bas"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 4, 1, 'Quelle erreur éviter dans un test de correction ?', '["Lire les consignes","Réécrire un texte qui demandait une simple correction","Faire plusieurs passages","Utiliser le suivi des modifications"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-3-f', 4, 2, 'Quelle spécialité est souvent très bien payée ?', '["La correction de SMS","La correction de listes de courses","Aucune","La correction juridique, médicale ou scientifique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que fait un correcteur et relecteur ?', '["Il écrit les livres","Il imprime les documents","Il traduit toujours","Il vérifie qu''un texte est sans faute, clair et cohérent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Qu''est-ce que la correction d''épreuves ?', '["Un examen scolaire","Une traduction","La première lecture d''un brouillon","La dernière vérification d''un document mis en page"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que faire si l''auteur veut garder son style ?', '["Tout réécrire","Changer le ton","Corriger les fautes et suggérer sans réécrire","Refuser"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Pourquoi travailler ses erreurs habituelles ?', '["Pour aller plus vite seulement","Pour plaire au client","Ce n''est pas utile","Un correcteur ne peut pas laisser passer ses propres fautes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quelle phrase est correcte ?', '["S''est un bon projet","Ses un bon projet","Ces un bon projet","C''est un bon projet"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quelle astuce pour choisir entre « -er » et « -é » ?', '["Remplacer par « vendre » ou « vendu »","Toujours mettre « -er »","Compter les lettres","Regarder le sujet"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quelle phrase est correcte ?', '["Je serais content si tu viendra","Je serais content si tu venais","Je serai content si tu viendrais","Je serais content si tu viendrais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Comment écrire « 25000 Ar » correctement ?', '["25000Ar","25,000 Ar","25.000Ar","25 000 Ar"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Pourquoi une espace insécable ?', '["Allonger le texte","Décorer le texte","Ce n''est pas utile","Éviter qu''une ponctuation se retrouve seule en début de ligne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que faire d''un dialogue en langage familier voulu par l''auteur ?', '["Le respecter","Le supprimer","Le traduire","Le corriger en langage soutenu"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que doit permettre le suivi des modifications ?', '["Imprimer","Supprimer le texte","Cacher les corrections","Accepter ou refuser chaque correction"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel correcteur gratuit est spécialisé en français ?', '["Gorgias","Zendesk","BonPatron","ProWritingAid"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Peut-on envoyer un document confidentiel dans un outil en ligne ?', '["Pas sans l''accord du client","Oui, la nuit","Oui, toujours","Oui, si c''est gratuit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel est le risque de « rechercher et remplacer » ?', '["Aucun","Effacer le fichier","Modifier un mot à l''intérieur d''un autre","Changer la langue"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que contient le carnet de règles personnel ?', '["Rien","Les factures","Les règles cherchées avec un exemple","Les mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel outil payant sert surtout pour l''anglais ?', '["Antidote","BonPatron","LanguageTool gratuit","ProWritingAid"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Combien de temps travailler sans pause sur un long texte ?', '["8 heures d''affilée","Par séances de 45 à 60 minutes","Toute la nuit","10 minutes par jour"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que livrer à la fin d''un manuscrit ?', '["Un résumé du livre","Version suivi, version propre, feuille de style et note","Rien","Seulement la facture"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que faire d''une date incohérente dans un récit ?', '["Poser la question à l''auteur","La supprimer","Choisir au hasard","L''ignorer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Que vérifier dans la version propre ?', '["Qu''il ne reste aucune marque de révision","Qu''elle contient toutes les couleurs","Rien","Qu''elle est plus longue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Peut-on publier le texte d''un client dans son portfolio ?', '["Oui, toujours","Oui, s''il est ancien","Oui, en partie","Seulement avec son accord écrit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quelle offre faire à un rédacteur web ?', '["Rien","Une relecture rapide en suivi des modifications","Critiquer publiquement ses fautes","Écrire ses articles à sa place"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Combien de mots environ dans une page ?', '["250 à 300","2 000","50","10"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quand demander un acompte ?', '["Pour les longs textes","Jamais","Seulement après livraison","Pour un SMS"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal"]'::jsonb, 1);
 
 -- media-0-a
 delete from public.exam_questions where course_id = 'media-0-a';
