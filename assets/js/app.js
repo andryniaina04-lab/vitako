@@ -333,6 +333,7 @@ function temoignages() {
   const list = TEMOIGNAGES.map((t) => card(t, false)).join('') + TEMOIGNAGES.map((t) => card(t, true)).join('');
   return `<section class="tm" aria-labelledby="tm-title">
     <h2 id="tm-title">Ils ont aimé Vitako</h2>
+    <p class="tm-sub">Ce que disent les jeunes qui apprennent avec nous.</p>
     <div class="tm-view"><div class="tm-track" style="--tm-n:${TEMOIGNAGES.length}">${list}</div></div>
   </section>`;
 }

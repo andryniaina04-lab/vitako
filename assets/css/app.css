@@ -484,16 +484,17 @@ a.back{display:inline-block}
 .prog-lock .lock svg{width:15px;height:15px}
 
 /* Témoignages : bande qui défile horizontalement */
-.tm{margin-top:56px}
-.tm h2{margin:0 0 16px}
-.tm-view{overflow:hidden;margin-inline:-8px;padding:6px 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tm{margin-top:56px;padding:32px 0 34px;background:var(--accent);border-radius:calc(var(--r) * 1.6);overflow:hidden}
+.tm h2{margin:0 0 6px;padding-inline:32px;color:var(--accent-ink)}
+.tm-sub{margin:0 0 20px;padding-inline:32px;color:var(--accent-ink);opacity:.85}
+.tm-view{overflow:hidden;padding:6px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .tm-track{display:flex;gap:16px;width:max-content;animation:tm-scroll calc(var(--tm-n) * 7s) linear infinite;will-change:transform}
 .tm-view:hover .tm-track,.tm-view:focus-within .tm-track{animation-play-state:paused}
 @keyframes tm-scroll{to{transform:translateX(calc(-50% - 8px))}}
-.tm-card{margin:0;width:300px;flex:none;display:flex;flex-direction:column;gap:12px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.tm-card{margin:0;width:300px;flex:none;display:flex;flex-direction:column;gap:12px;padding:18px;background:var(--surface);border:0;border-radius:var(--r);box-shadow:0 6px 18px rgba(0,0,0,.12)}
 .tm-card blockquote{margin:0;flex:1;color:var(--ink);line-height:1.55;font-size:.95rem}
 .tm-card figcaption{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.9rem;color:var(--ink)}
-.tm-av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
+.tm-av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700}
 .stars{display:inline-flex;gap:2px;color:var(--gold)}
-@media (max-width:600px){.tm-card{width:260px}}
+@media (max-width:600px){.tm-card{width:260px}.tm{padding:26px 0 28px}.tm h2,.tm-sub{padding-inline:20px}}
 @media (prefers-reduced-motion:reduce){.tm-view{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.tm-track{animation:none}.tm-card[aria-hidden]{display:none}}
