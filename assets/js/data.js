@@ -3722,6 +3722,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-7-f": {
+  "hours": 8,
+  "description": "Le freelance apporte de la liberté, mais aussi des pressions : revenus irréguliers, clients exigeants, isolement, imprévus. Cette formation pratique, en 5 modules, aide à garder son énergie et à éviter l'épuisement : comprendre le stress et ses signaux d'alerte, reconnaître l'épuisement professionnel, 5 piliers de l'énergie, limites entre travail et vie personnelle, épargne de sécurité, respiration, carnet, pauses actives, déconnexion, planning équilibré, cas pratique d'un développeur surchargé, plan d'équilibre et réseau de soutien. Elle ne remplace pas l'avis d'un professionnel de santé. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Comprendre le stress et repérer ses signaux d'alerte personnels",
+   "Reconnaître les signes d'épuisement et savoir quand demander de l'aide",
+   "Renforcer les 5 piliers de l'énergie et poser des limites claires",
+   "Réduire le stress financier avec une épargne de sécurité",
+   "Utiliser des outils simples : respiration, carnet, pauses actives, déconnexion",
+   "Écrire son plan d'équilibre et construire son réseau de soutien"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre le stress du freelance",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : piliers de l'énergie, limites et finances",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : respiration, carnet, pauses et planning équilibré",
+    "minutes": 4
+   },
+   {
+    "title": "Mise en situation : le gros contrat de Tojo",
+    "minutes": 4
+   },
+   {
+    "title": "Mon plan d'action : équilibre et soutien",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,92 @@
+{
+  "id": "perso-7-f",
+  "hours": 8,
+  "description": "Le freelance apporte de la liberté, mais aussi des pressions : revenus irréguliers, clients exigeants, isolement, imprévus. Cette formation pratique, en 5 modules, aide à garder son énergie et à éviter l'épuisement : comprendre le stress et ses signaux d'alerte, reconnaître l'épuisement professionnel, 5 piliers de l'énergie, limites entre travail et vie personnelle, épargne de sécurité, respiration, carnet, pauses actives, déconnexion, planning équilibré, cas pratique d'un développeur surchargé, plan d'équilibre et réseau de soutien. Elle ne remplace pas l'avis d'un professionnel de santé. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Comprendre le stress et repérer ses signaux d'alerte personnels",
+    "Reconnaître les signes d'épuisement et savoir quand demander de l'aide",
+    "Renforcer les 5 piliers de l'énergie et poser des limites claires",
+    "Réduire le stress financier avec une épargne de sécurité",
+    "Utiliser des outils simples : respiration, carnet, pauses actives, déconnexion",
+    "Écrire son plan d'équilibre et construire son réseau de soutien"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre le stress du freelance",
+      "summary": "Stress ponctuel et stress qui dure, sources de stress du freelance et du télétravail, solidarité familiale, signes de stress, signaux d'alerte personnels, épuisement professionnel et demande d'aide.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand le stress devient-il un problème ?", "options": ["Quand il dure sans récupération", "Avant une livraison", "Jamais", "Toujours"], "correct": 0 },
+        { "q": "À quoi servent les signaux d'alerte personnels ?", "options": ["Dire qu'il est temps d'agir", "Rien", "Impressionner les clients", "Travailler plus"], "correct": 0 },
+        { "q": "Que faire face à des signes d'épuisement qui durent ?", "options": ["En parler et consulter un professionnel de santé", "Attendre que ça passe", "Travailler davantage", "S'isoler"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : piliers de l'énergie, limites et finances",
+      "summary": "Sommeil, alimentation, mouvement, pauses et relations, limites entre travail et vie personnelle, épargne de sécurité de 3 mois, changer ou accepter.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par combien de piliers commencer ?", "options": ["Un seul, le plus fragile", "Les cinq en même temps", "Aucun", "Dix"], "correct": 0 },
+        { "q": "Quel objectif d'épargne de sécurité ?", "options": ["3 mois de dépenses", "1 jour", "10 ans", "Aucun"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une limite ?", "options": ["Une règle pour se protéger, annoncée clairement", "Un mur infranchissable", "Une punition", "Un contrat de travail"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : respiration, carnet, pauses et planning équilibré",
+      "summary": "Respiration 4-6 et respiration rythmée, carnet pour vider sa tête et noter 3 choses positives, pauses actives, déconnexion, planning avec mouvement, relations, repos et marge.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment faire la respiration 4-6 ?", "options": ["Inspirer sur 4 temps, expirer sur 6", "Respirer 4 fois par heure", "Retenir son souffle 6 minutes", "Respirer très vite"], "correct": 0 },
+        { "q": "À quoi sert la marge du vendredi ?", "options": ["Rattraper les imprévus sans travailler la nuit", "Faire la fête", "Rien", "Ajouter des clients"], "correct": 0 },
+        { "q": "Quand lire ses messages professionnels ?", "options": ["Après le petit déjeuner, pas au réveil", "Dès le réveil", "Toute la nuit", "Jamais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : le gros contrat de Tojo",
+      "summary": "Installation progressive de l'épuisement, parler et consulter, message de limites au client, réduction de la charge, plan de récupération sur 4 semaines.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment s'installe l'épuisement ?", "options": ["Progressivement, par étapes", "En une journée", "Jamais chez les jeunes", "Seulement le week-end"], "correct": 0 },
+        { "q": "Comment réagit la cliente au message de limites de Tojo ?", "options": ["Elle accepte et trouve que c'est mieux", "Elle rompt le contrat", "Elle se fâche", "Elle ne répond pas"], "correct": 0 },
+        { "q": "Que fait Tojo en premier ?", "options": ["Il en parle à sa sœur puis consulte un médecin", "Il prend un nouveau client", "Il travaille la nuit", "Il ne dit rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : équilibre et soutien",
+      "summary": "Plan d'équilibre personnel, réseau de soutien, vers qui se tourner selon la situation, santé mentale à Madagascar, point mensuel sur son équilibre.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire en cas de pensées très sombres ?", "options": ["Parler immédiatement à une personne de confiance et contacter vite un médecin ou les urgences", "Attendre", "Le garder pour soi", "Travailler plus"], "correct": 0 },
+        { "q": "Quand entretenir son réseau de soutien ?", "options": ["Régulièrement, pas seulement en cas de difficulté", "Jamais", "Seulement en crise", "Une fois par an"], "correct": 0 },
+        { "q": "Cette formation remplace-t-elle un professionnel de santé ?", "options": ["Non", "Oui", "Parfois", "Toujours"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Qu'est-ce que le stress ?", "options": ["La réaction du corps et de l'esprit face à une exigence ou une menace", "Une maladie rare", "Un logiciel", "Une émotion toujours positive"], "correct": 0 },
+    { "q": "Quelle source de stress est propre au freelance ?", "options": ["Des revenus irréguliers", "Un salaire fixe garanti", "Un patron présent", "Aucune"], "correct": 0 },
+    { "q": "Quel est un signe de stress dans le corps ?", "options": ["Tensions dans la nuque et problèmes de sommeil", "Bonne humeur constante", "Appétit normal", "Aucun"], "correct": 0 },
+    { "q": "Qu'est-ce qui caractérise l'épuisement professionnel ?", "options": ["Une fatigue qui ne passe pas avec le repos", "Un peu de fatigue le vendredi", "Une envie de vacances", "Une journée chargée"], "correct": 0 },
+    { "q": "Demander de l'aide, c'est :", "options": ["Un signe de lucidité", "Un signe de faiblesse", "Inutile", "Interdit"], "correct": 0 },
+    { "q": "Quels sont les 5 piliers de l'énergie ?", "options": ["Sommeil, alimentation et eau, mouvement, pauses, relations", "Café, sucre, écran, nuit, travail", "Prix, délai, client, facture, devis", "Aucun"], "correct": 0 },
+    { "q": "Où laisser l'ordinateur ?", "options": ["Sur le bureau, pas dans le lit", "Dans le lit", "Allumé toute la nuit", "Peu importe"], "correct": 0 },
+    { "q": "Quelle part de chaque paiement épargner dans l'exemple ?", "options": ["10 %", "90 %", "0 %", "100 %"], "correct": 0 },
+    { "q": "Pourquoi avoir plusieurs clients ?", "options": ["Ne pas tout perdre si un client part", "Pour travailler la nuit", "C'est obligatoire", "Pour payer plus d'impôts"], "correct": 0 },
+    { "q": "Que faire des coupures de courant ?", "options": ["Les accepter et s'organiser autour", "Les ignorer", "Arrêter le freelance", "S'énerver"], "correct": 0 },
+    { "q": "Combien de temps dure la respiration rythmée ?", "options": ["5 minutes", "5 heures", "5 secondes", "Toute la journée"], "correct": 0 },
+    { "q": "Que noter chaque soir dans le carnet ?", "options": ["Ses préoccupations, des actions et 3 choses positives", "Ses mots de passe", "Rien", "Les erreurs des autres"], "correct": 0 },
+    { "q": "Que faire pendant une pause active ?", "options": ["Marcher, s'étirer, regarder au loin, respirer", "Lire ses e-mails", "Défiler sur les réseaux", "Rester assis"], "correct": 0 },
+    { "q": "Comment limiter les réseaux sociaux ?", "options": ["Un minuteur quotidien dans les réglages du téléphone", "Ne rien faire", "Les ouvrir toute la nuit", "Acheter un deuxième téléphone"], "correct": 0 },
+    { "q": "Quelle était l'erreur de Tojo semaine 3-4 ?", "options": ["Répondre aux messages jusqu'à 23 h", "Refuser des missions", "Dormir trop", "Faire du sport"], "correct": 0 },
+    { "q": "Que propose Tojo à sa cliente ?", "options": ["Des horaires clairs et un point chaque lundi", "De travailler la nuit", "Une remise", "D'arrêter le projet"], "correct": 0 },
+    { "q": "Comment Tojo réduit-il sa charge ?", "options": ["Il confie un petit client à un ami freelance de confiance", "Il prend un 4e client", "Il supprime ses pauses", "Il ne dort plus"], "correct": 0 },
+    { "q": "Que contient le plan d'équilibre ?", "options": ["Signaux, limites, routines, épargne, soutien et seuil d'alerte", "Seulement ses revenus", "Ses mots de passe", "Rien"], "correct": 0 },
+    { "q": "Vers qui se tourner pour une fatigue persistante depuis plusieurs semaines ?", "options": ["Un médecin généraliste ou un centre de santé", "Personne", "Un client", "Un réseau social"], "correct": 0 },
+    { "q": "Que faire si une note d'équilibre baisse deux mois de suite ?", "options": ["Choisir une action concrète et en parler à son réseau", "L'ignorer", "Arrêter de noter", "Travailler davantage"], "correct": 0 }
+  ]
+}

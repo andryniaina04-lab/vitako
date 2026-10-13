@@ -110,7 +110,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true),
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true),
-  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 12, false)
+  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
 
@@ -57288,6 +57288,415 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Que résumer à la fin d''une réunion ?', '["Rien","Les blagues","La météo","Les décisions : qui fait quoi, pour quand"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Qu''est-ce que le kabary ?', '["Un logiciel de visio","L''art oratoire malgache","Une danse","Un plat"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-6-f', 'Quelle question pour savoir si le message est passé ?', '["Quelle est l''idée principale que tu as retenue ?","Il est quelle heure ?","Aucune","Tu as aimé ma tenue ?"]'::jsonb, 0);
+
+-- perso-7-f
+delete from public.exam_questions where course_id = 'perso-7-f';
+delete from public.module_questions where course_id = 'perso-7-f';
+delete from public.lessons where course_id = 'perso-7-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-7-f', 0, 'Comprendre le stress du freelance', 'Stress ponctuel et stress qui dure, sources de stress du freelance et du télétravail, solidarité familiale, signes de stress, signaux d''alerte personnels, épuisement professionnel et demande d''aide.', 'Le freelance offre de la liberté, mais aussi des pressions particulières : revenus irréguliers, clients exigeants, travail seul, coupures au mauvais moment. Comprendre le stress est la première étape pour le gérer et garder son énergie sur la durée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce qu''est le stress et à quoi il sert.
+> 2. Reconnaître les sources de stress du freelance et du télétravail.
+> 3. Repérer vos propres signes de stress.
+> 4. Reconnaître les signes d''épuisement qui demandent de l''aide.
+
+## Qu''est-ce que le stress ?
+
+> [!definition] Stress
+> La réaction du corps et de l''esprit face à une situation perçue comme une exigence ou une menace. À court terme, il aide à se concentrer et à agir. Quand il dure trop longtemps sans récupération, il épuise.
+
+| Stress ponctuel | Stress qui dure |
+| --- | --- |
+| Avant une livraison importante | Pendant des semaines sans pause |
+| Donne de l''énergie et de la concentration | Fatigue, irritabilité, erreurs |
+| Disparaît après l''effort | Ne redescend plus, même le week-end |
+
+## Les sources de stress du freelance
+
+| Source | Exemple |
+| --- | --- |
+| **Revenus irréguliers** | Un mois à 800 000 Ar, le suivant à 150 000 Ar |
+| **Clients exigeants** | Messages à toute heure, modifications sans fin |
+| **Isolement** | Personne avec qui parler du travail |
+| **Frontière floue travail et vie privée** | L''ordinateur reste ouvert jusqu''à minuit |
+| **Imprévus techniques** | Coupure de courant la veille d''un délai |
+| **Pression de l''entourage** | « Quand vas-tu trouver un vrai travail ? » |
+
+> [!madagascar]
+> La famille élargie compte beaucoup à Madagascar, et un jeune qui gagne de l''argent est souvent sollicité pour aider. C''est une belle solidarité, mais elle peut ajouter de la pression quand les revenus sont irréguliers. En parler simplement et fixer ce que l''on peut donner chaque mois aide à préserver à la fois la relation et son équilibre.
+
+## Vos signes de stress
+
+| Domaine | Signes possibles |
+| --- | --- |
+| **Corps** | Maux de tête, tensions dans le dos ou la nuque, problèmes de sommeil, fatigue |
+| **Émotions** | Irritabilité, inquiétude constante, découragement |
+| **Pensées** | Difficulté à se concentrer, oublis, ruminations le soir |
+| **Comportements** | Grignotage ou perte d''appétit, café en excès, isolement, écrans tard la nuit |
+
+> [!astuce]
+> Chacun a ses **signaux d''alerte** personnels. Repérez les 3 premiers qui apparaissent chez vous quand la pression monte : ce sont vos voyants rouges, qui disent qu''il est temps d''agir.
+
+## Quand le stress devient épuisement
+
+> [!definition] Épuisement professionnel (burn-out)
+> Un état d''épuisement physique et émotionnel lié à un stress professionnel prolongé. Il se manifeste par une fatigue qui ne passe pas avec le repos, un sentiment de vide ou de détachement vis-à-vis du travail, et une baisse importante de l''efficacité.
+
+> [!attention]
+> Si vous ressentez pendant plusieurs semaines une fatigue qui ne passe pas avec le repos, des troubles du sommeil importants, une tristesse profonde, une perte d''intérêt pour tout, ou des pensées très sombres, ce n''est plus une simple question d''organisation. **Parlez-en à une personne de confiance et consultez un médecin ou un professionnel de santé.** Demander de l''aide est un signe de lucidité, pas de faiblesse.
+
+> [!retenir]
+> - Le stress aide à court terme et épuise quand il dure.
+> - Revenus irréguliers, clients, isolement, frontières floues, imprévus, entourage.
+> - Repérer ses 3 signaux d''alerte personnels.
+> - Face aux signes d''épuisement, demander de l''aide.
+
+## Exercice pratique : votre carte du stress
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Listez vos 5 principales sources de stress actuelles.
+> 2. Pour chacune, notez si vous pouvez agir dessus (oui, un peu, non).
+> 3. Notez vos 3 signaux d''alerte personnels.
+> 4. Notez le nom d''une personne de confiance à qui vous pourriez en parler.
+>
+> **À livrer** : votre liste, votre classement, vos 3 signaux et le nom (ou le rôle) de votre personne de confiance.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 0, 0, 'Quand le stress devient-il un problème ?', '["Avant une livraison","Jamais","Toujours","Quand il dure sans récupération"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 0, 1, 'À quoi servent les signaux d''alerte personnels ?', '["Dire qu''il est temps d''agir","Impressionner les clients","Travailler plus","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 0, 2, 'Que faire face à des signes d''épuisement qui durent ?', '["S''isoler","En parler et consulter un professionnel de santé","Travailler davantage","Attendre que ça passe"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-7-f', 1, 'Les bases : piliers de l''énergie, limites et finances', 'Sommeil, alimentation, mouvement, pauses et relations, limites entre travail et vie personnelle, épargne de sécurité de 3 mois, changer ou accepter.', 'On résiste mieux au stress quand les bases de la santé et de l''organisation sont solides. Ce module présente les piliers de l''équilibre et les limites à poser entre travail et vie personnelle, y compris sur le plan financier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Connaître les 5 piliers de l''énergie.
+> 2. Poser des limites entre travail et vie personnelle.
+> 3. Réduire le stress financier avec une épargne de sécurité.
+> 4. Distinguer ce que vous pouvez changer de ce que vous devez accepter.
+
+## Les 5 piliers de l''énergie
+
+| Pilier | Repère simple |
+| --- | --- |
+| **Sommeil** | Des horaires réguliers, pas d''écran dans la dernière demi-heure |
+| **Alimentation et eau** | Des repas réguliers, de l''eau à portée de main pendant le travail |
+| **Mouvement** | Marcher, s''étirer ou faire une activité physique chaque jour |
+| **Pauses** | Une pause courte toutes les heures, une vraie pause repas |
+| **Relations** | Voir ou appeler des proches, ne pas rester isolé |
+
+> [!astuce]
+> Commencez par **un seul pilier**, celui qui vous semble le plus fragile. Une petite amélioration tenue chaque jour vaut mieux que cinq grandes résolutions abandonnées au bout d''une semaine.
+
+## Des limites entre travail et vie personnelle
+
+| Limite | Exemple |
+| --- | --- |
+| **Horaires de travail annoncés** | « Je réponds aux messages de 8 h à 18 h, du lundi au vendredi. » |
+| **Un lieu de travail** | L''ordinateur reste sur le bureau, pas dans le lit |
+| **Un rituel de fin de journée** | Fermer l''ordinateur, noter les priorités de demain, sortir marcher |
+| **Notifications coupées le soir** | Mode « Ne pas déranger » à partir de 20 h |
+| **Un jour sans travail** | Le dimanche, par exemple |
+
+> [!definition] Limite
+> Une règle que l''on fixe pour se protéger, et que l''on annonce clairement aux autres. Une limite n''est pas un mur : une vraie urgence peut passer, mais l''exception reste rare.
+
+## Réduire le stress financier
+
+| Action | Effet |
+| --- | --- |
+| **Calculer ses dépenses mensuelles indispensables** | Savoir combien il faut gagner au minimum |
+| **Mettre de côté une partie de chaque paiement** (par exemple 10 %) | Construire peu à peu une réserve |
+| **Viser une épargne de sécurité de 3 mois de dépenses** | Traverser un mois sans client sans panique |
+| **Avoir plusieurs clients** | Ne pas tout perdre si un client part |
+| **Fixer ce que l''on peut donner à la famille** | Aider sans se mettre en danger |
+
+> [!madagascar]
+> Une épargne sur un compte d''épargne mobile ou bancaire, séparée de l''argent du quotidien, résiste mieux aux tentations et aux demandes imprévues. Même 5 000 Ar par semaine font une différence au bout d''un an.
+
+## Changer ou accepter
+
+| Je peux changer | Je dois accepter (et m''organiser autour) |
+| --- | --- |
+| Le nombre de missions acceptées | Les coupures de courant |
+| Mes horaires et mes limites | Les clients qui partent parfois |
+| Mon épargne | Les mois plus calmes |
+| Ma façon de répondre aux clients | Les délais de paiement de certaines plateformes |
+
+> [!retenir]
+> - Sommeil, alimentation, mouvement, pauses, relations.
+> - Des limites claires : horaires, lieu, rituel, notifications, jour de repos.
+> - Une épargne de sécurité et plusieurs clients.
+> - Agir sur ce qui dépend de soi, s''organiser autour du reste.
+
+## Exercice pratique : vos fondations
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Notez de 1 à 5 chacun des 5 piliers et choisissez le plus fragile.
+> 2. Définissez une petite action quotidienne pour ce pilier.
+> 3. Écrivez vos 4 limites et le message pour les annoncer à vos clients et à vos proches.
+> 4. Calculez vos dépenses indispensables et votre objectif d''épargne de sécurité.
+>
+> **À livrer** : vos notes, votre action, vos limites et votre calcul.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 1, 0, 'Par combien de piliers commencer ?', '["Aucun","Dix","Les cinq en même temps","Un seul, le plus fragile"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 1, 1, 'Quel objectif d''épargne de sécurité ?', '["3 mois de dépenses","Aucun","1 jour","10 ans"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 1, 2, 'Qu''est-ce qu''une limite ?', '["Un mur infranchissable","Une punition","Une règle pour se protéger, annoncée clairement","Un contrat de travail"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-7-f', 2, 'Les outils : respiration, carnet, pauses et planning équilibré', 'Respiration 4-6 et respiration rythmée, carnet pour vider sa tête et noter 3 choses positives, pauses actives, déconnexion, planning avec mouvement, relations, repos et marge.', 'Ce module vous donne des outils simples, gratuits et utilisables partout pour faire redescendre le stress : exercices de respiration, carnet, pauses actives, déconnexion et planning équilibré.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Pratiquer deux exercices de respiration.
+> 2. Utiliser un carnet pour vider votre tête.
+> 3. Faire des pauses actives pendant le travail.
+> 4. Construire un planning qui laisse de la place à la récupération.
+
+## La respiration
+
+| Exercice | Comment faire | Quand |
+| --- | --- | --- |
+| **Respiration 4-6** | Inspirer par le nez sur 4 temps, expirer lentement par la bouche sur 6 temps, 5 fois | Avant un appel, après un message stressant |
+| **Respiration rythmée de 5 minutes** | Inspirer 5 secondes, expirer 5 secondes, pendant 5 minutes | Le matin, à midi, le soir |
+
+> [!astuce]
+> Associez l''exercice à un moment précis de la journée (après le café, avant le déjeuner) pour qu''il devienne une habitude, comme se brosser les dents.
+
+## Le carnet pour vider sa tête
+
+| Pratique | Comment |
+| --- | --- |
+| **Vider sa tête** | Le soir, écrire 5 minutes tout ce qui préoccupe, sans se censurer |
+| **Transformer en actions** | Pour chaque souci, noter une petite action possible, ou « rien à faire pour l''instant » |
+| **Trois choses positives** | Noter 3 choses qui se sont bien passées dans la journée, même petites |
+
+```
+Ce qui me préoccupe : le client X n''a pas payé ; trop de travail jeudi.
+Actions : relancer X demain à 9 h ; demander à Y de décaler son délai à vendredi.
+Trois choses positives : article livré à temps ; balade avec ma sœur ; nouveau contact.
+```
+
+## Les pauses actives
+
+| Pause de 5 minutes | Effet |
+| --- | --- |
+| Se lever, marcher, boire de l''eau | Relance la circulation et l''attention |
+| Étirer la nuque, les épaules et le dos | Réduit les tensions de la posture assise |
+| Regarder au loin par la fenêtre | Repose les yeux après l''écran |
+| Respiration 4-6 | Fait redescendre la pression |
+
+## La déconnexion
+
+| Règle | Exemple |
+| --- | --- |
+| **Notifications professionnelles coupées hors horaires** | WhatsApp Business en mode absence le soir |
+| **Pas de messages pros au réveil** | Lire ses messages seulement après le petit déjeuner |
+| **Réseaux sociaux limités** | Un minuteur de 20 minutes par jour dans les réglages du téléphone |
+| **Un moment sans écran** | Le repas du soir en famille |
+
+## Un planning équilibré
+
+| Bloc | Exemple de semaine |
+| --- | --- |
+| Travail | 8 h - 12 h et 13 h 30 - 17 h, du lundi au vendredi |
+| Mouvement | 20 minutes de marche chaque jour à 17 h |
+| Relations | Appel à un ami le mercredi soir, famille le dimanche |
+| Récupération | Dimanche sans travail |
+| Marge pour les imprévus | Vendredi après-midi léger |
+
+> [!madagascar]
+> La **marge du vendredi** est particulièrement utile quand les coupures de courant ou de connexion peuvent faire perdre quelques heures dans la semaine : vous rattrapez sans travailler la nuit ni le week-end.
+
+> [!retenir]
+> - Respiration 4-6 et respiration rythmée de 5 minutes.
+> - Un carnet : vider sa tête, transformer en actions, 3 choses positives.
+> - Des pauses actives de 5 minutes.
+> - Déconnexion et planning avec mouvement, relations, repos et marge.
+
+## Exercice pratique : votre boîte à outils anti-stress
+
+> [!exercice] Exercice pratique · 1 heure, puis 1 semaine
+> 1. Pratiquez la respiration 4-6 trois fois par jour pendant 7 jours.
+> 2. Tenez le carnet chaque soir pendant 7 jours.
+> 3. Programmez des pauses actives dans votre agenda.
+> 4. Construisez votre planning équilibré de la semaine prochaine.
+>
+> **À livrer** : votre suivi de 7 jours, un extrait de carnet (ce que vous acceptez de partager) et votre planning.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 2, 0, 'Comment faire la respiration 4-6 ?', '["Retenir son souffle 6 minutes","Respirer 4 fois par heure","Respirer très vite","Inspirer sur 4 temps, expirer sur 6"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 2, 1, 'À quoi sert la marge du vendredi ?', '["Rattraper les imprévus sans travailler la nuit","Rien","Faire la fête","Ajouter des clients"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 2, 2, 'Quand lire ses messages professionnels ?', '["Toute la nuit","Après le petit déjeuner, pas au réveil","Dès le réveil","Jamais"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-7-f', 3, 'Mise en situation : le gros contrat de Tojo', 'Installation progressive de l''épuisement, parler et consulter, message de limites au client, réduction de la charge, plan de récupération sur 4 semaines.', 'Dans ce module, vous suivez Tojo, développeur no-code à Antananarivo, qui accepte un gros contrat et s''épuise peu à peu. Son histoire montre comment repérer les signaux, agir et demander de l''aide à temps.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Repérer l''installation progressive de l''épuisement.
+> 2. Poser des limites avec un client exigeant.
+> 3. Construire un plan de récupération.
+> 4. Savoir quand et à qui demander de l''aide.
+
+## Le cas pratique : Tojo
+
+> [!exemple] Point de départ
+> **Tojo**, 27 ans, crée des automatisations et des applications sans code. Il décroche un contrat important avec une start-up européenne : 1 800 000 Ar par mois. Il garde aussi ses deux petits clients locaux. Il est fier et veut tout réussir.
+
+## Comment l''épuisement s''installe
+
+| Semaine | Ce qui se passe | Signal |
+| --- | --- | --- |
+| 1-2 | Il travaille 10 heures par jour avec enthousiasme | Énergie haute |
+| 3-4 | Le client européen envoie des messages jusqu''à 23 h ; Tojo répond toujours | Frontières qui disparaissent |
+| 5-6 | Il saute des repas, dort 5 heures, annule le football du samedi | Piliers abandonnés |
+| 7-8 | Il fait des erreurs, s''énerve contre sa sœur, n''arrive plus à se concentrer | Signaux d''alerte |
+| 9 | Fatigue au réveil malgré un week-end de repos, maux de tête quotidiens | Épuisement qui s''installe |
+
+> [!attention]
+> L''épuisement s''installe **progressivement**. À chaque étape, Tojo se disait : « C''est temporaire, ça ira mieux le mois prochain. » Les signaux d''alerte sont là pour être écoutés avant d''arriver au bout de ses forces.
+
+## Ce que fait Tojo
+
+| Action | Détail |
+| --- | --- |
+| **En parler** | Il se confie à sa sœur, qui l''encourage à consulter |
+| **Consulter un médecin** | Le médecin lui conseille de réduire sa charge, de reprendre un sommeil régulier, et prévoit un suivi |
+| **Poser des limites au client** | Message clair sur ses horaires et un point hebdomadaire |
+| **Réduire la charge** | Il confie un petit client à un ami freelance de confiance |
+| **Reprendre les piliers** | Horaires de sommeil, repas, football le samedi |
+
+> [!exemple] Le message de Tojo au client
+> « Bonjour Julia, pour garder la qualité de mon travail sur la durée, je vous propose une organisation plus claire : je suis disponible de 9 h à 18 h, heure de Madagascar (8 h à 17 h à Paris en hiver). Les messages reçus après 18 h seront traités le lendemain matin. Pour les vraies urgences, appelez-moi. Je vous propose aussi un point de 30 minutes chaque lundi pour fixer les priorités de la semaine. »
+> **Réponse de Julia** : « Bien sûr, c''est même mieux pour nous. Désolée pour les messages tardifs ! »
+
+## Le plan de récupération
+
+| Semaine | Objectif |
+| --- | --- |
+| 1 | Dormir à heures fixes, 3 repas, aucune mission nouvelle |
+| 2 | Reprendre le mouvement : marche quotidienne, football le samedi |
+| 3 | Revenir à un planning de 7 heures de travail par jour, sans soirées |
+| 4 | Faire le bilan avec le médecin et avec sa sœur |
+
+> [!retenir]
+> - L''épuisement s''installe par étapes : écouter les signaux tôt.
+> - En parler, consulter un professionnel de santé, poser des limites, réduire la charge.
+> - Un client sérieux respecte des limites expliquées clairement.
+> - Un plan de récupération progressif, suivi avec un professionnel si besoin.
+
+## Exercice pratique : prévenir plutôt que guérir
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Décrivez la situation de travail qui pourrait vous mener au même scénario que Tojo.
+> 2. Notez à quelle étape vous agiriez, et comment.
+> 3. Rédigez votre message de limites à un client exigeant.
+> 4. Notez à qui vous pourriez parler et où consulter près de chez vous (médecin, centre de santé).
+>
+> **À livrer** : votre scénario, vos actions, votre message et vos contacts d''aide.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 3, 0, 'Comment s''installe l''épuisement ?', '["Progressivement, par étapes","Seulement le week-end","En une journée","Jamais chez les jeunes"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 3, 1, 'Comment réagit la cliente au message de limites de Tojo ?', '["Elle accepte et trouve que c''est mieux","Elle rompt le contrat","Elle se fâche","Elle ne répond pas"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 3, 2, 'Que fait Tojo en premier ?', '["Il ne dit rien","Il prend un nouveau client","Il travaille la nuit","Il en parle à sa sœur puis consulte un médecin"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-7-f', 4, 'Mon plan d''action : équilibre et soutien', 'Plan d''équilibre personnel, réseau de soutien, vers qui se tourner selon la situation, santé mentale à Madagascar, point mensuel sur son équilibre.', 'L''équilibre se construit et s''entretient, comme une compétence professionnelle. Ce dernier module vous aide à écrire votre plan d''équilibre personnel, à organiser votre réseau de soutien et à savoir où trouver de l''aide.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire votre plan d''équilibre personnel.
+> 2. Construire votre réseau de soutien.
+> 3. Savoir quand et où demander de l''aide.
+> 4. Faire le point régulièrement sur votre équilibre.
+
+## Votre plan d''équilibre personnel
+
+```
+Mon plan d''équilibre
+Mes 3 signaux d''alerte : je dors mal, je saute des repas, je m''énerve vite.
+Mes limites : travail de 8 h à 17 h ; dimanche libre ; notifications coupées à 20 h.
+Mes routines : respiration 4-6 le matin ; marche à 17 h ; carnet le soir.
+Mon épargne : 10 % de chaque paiement, objectif 3 mois de dépenses.
+Mon soutien : ma sœur, mon binôme freelance, le groupe des freelances de ma ville.
+Si mes signaux d''alerte durent plus de 2 semaines : j''en parle et je consulte.
+```
+
+## Votre réseau de soutien
+
+| Personne | Rôle |
+| --- | --- |
+| **Un proche de confiance** | Écouter sans juger |
+| **Un binôme freelance** | Comprendre les difficultés du métier |
+| **Une communauté** | Partager conseils, offres et encouragements |
+| **Un mentor** | Prendre du recul sur les décisions professionnelles |
+| **Un professionnel de santé** | Évaluer et accompagner quand le stress devient trop lourd |
+
+> [!astuce]
+> Ne gardez pas votre réseau de soutien seulement pour les moments difficiles. Échangez régulièrement, partagez aussi les bonnes nouvelles : la relation sera là le jour où vous en aurez besoin.
+
+## Quand et où demander de l''aide
+
+| Situation | Vers qui se tourner |
+| --- | --- |
+| Stress passager, besoin de parler | Un proche, un binôme, la communauté |
+| Fatigue persistante, sommeil perturbé depuis plusieurs semaines | Un médecin généraliste ou un centre de santé |
+| Tristesse profonde, perte d''intérêt, anxiété forte qui dure | Un médecin, qui peut orienter vers un psychologue ou un psychiatre |
+| Pensées très sombres ou idée de se faire du mal | Parler **immédiatement** à une personne de confiance et contacter rapidement un médecin ou les services d''urgence |
+
+> [!attention]
+> Cette formation donne des outils pour mieux gérer le stress du quotidien. Elle ne remplace pas l''avis d''un professionnel de santé. Si vous êtes inquiet pour vous ou pour un proche, consultez : il n''est jamais trop tôt pour demander de l''aide.
+
+> [!madagascar]
+> Dans beaucoup de familles, on parle peu de la santé mentale, et consulter pour de la fatigue ou de la tristesse peut sembler étrange. Pourtant, prendre soin de sa tête est aussi normal que prendre soin de son corps. Un médecin de votre quartier ou un centre de santé de base est un bon premier interlocuteur.
+
+## Faire le point régulièrement
+
+Chaque mois, notez de 1 à 5 :
+
+| Domaine | Note |
+| --- | --- |
+| Sommeil | |
+| Énergie pendant la journée | |
+| Plaisir au travail | |
+| Temps pour les proches | |
+| Sérénité financière | |
+| Respect de mes limites | |
+
+Si une note baisse deux mois de suite, choisissez une action concrète pour la remonter, et parlez-en à votre réseau de soutien.
+
+> [!retenir]
+> - Un plan écrit : signaux, limites, routines, épargne, soutien, seuil d''alerte.
+> - Un réseau de soutien entretenu régulièrement.
+> - Savoir vers qui se tourner selon la situation.
+> - Un point mensuel sur son équilibre.
+
+## Exercice pratique : votre plan d''équilibre
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Écrivez votre plan d''équilibre sur le modèle ci-dessus.
+> 2. Listez les personnes de votre réseau de soutien et contactez-en une cette semaine.
+> 3. Notez les coordonnées d''un médecin ou d''un centre de santé près de chez vous.
+> 4. Programmez votre point mensuel dans votre agenda pour les 6 prochains mois.
+>
+> **À livrer** : votre plan, votre réseau (rôles), la preuve de vos rappels dans l''agenda.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 4, 0, 'Que faire en cas de pensées très sombres ?', '["Le garder pour soi","Travailler plus","Attendre","Parler immédiatement à une personne de confiance et contacter vite un médecin ou les urgences"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 4, 1, 'Quand entretenir son réseau de soutien ?', '["Seulement en crise","Jamais","Une fois par an","Régulièrement, pas seulement en cas de difficulté"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-7-f', 4, 2, 'Cette formation remplace-t-elle un professionnel de santé ?', '["Oui","Parfois","Non","Toujours"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Qu''est-ce que le stress ?', '["Un logiciel","Une émotion toujours positive","Une maladie rare","La réaction du corps et de l''esprit face à une exigence ou une menace"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Quelle source de stress est propre au freelance ?', '["Des revenus irréguliers","Un patron présent","Un salaire fixe garanti","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Quel est un signe de stress dans le corps ?', '["Aucun","Appétit normal","Bonne humeur constante","Tensions dans la nuque et problèmes de sommeil"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Qu''est-ce qui caractérise l''épuisement professionnel ?', '["Un peu de fatigue le vendredi","Une fatigue qui ne passe pas avec le repos","Une envie de vacances","Une journée chargée"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Demander de l''aide, c''est :', '["Un signe de lucidité","Interdit","Inutile","Un signe de faiblesse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Quels sont les 5 piliers de l''énergie ?', '["Aucun","Sommeil, alimentation et eau, mouvement, pauses, relations","Prix, délai, client, facture, devis","Café, sucre, écran, nuit, travail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Où laisser l''ordinateur ?', '["Peu importe","Dans le lit","Sur le bureau, pas dans le lit","Allumé toute la nuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Quelle part de chaque paiement épargner dans l''exemple ?', '["10 %","100 %","90 %","0 %"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Pourquoi avoir plusieurs clients ?', '["Ne pas tout perdre si un client part","Pour travailler la nuit","C''est obligatoire","Pour payer plus d''impôts"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que faire des coupures de courant ?', '["Arrêter le freelance","S''énerver","Les accepter et s''organiser autour","Les ignorer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Combien de temps dure la respiration rythmée ?', '["5 secondes","Toute la journée","5 minutes","5 heures"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que noter chaque soir dans le carnet ?', '["Ses préoccupations, des actions et 3 choses positives","Les erreurs des autres","Rien","Ses mots de passe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que faire pendant une pause active ?', '["Lire ses e-mails","Marcher, s''étirer, regarder au loin, respirer","Défiler sur les réseaux","Rester assis"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Comment limiter les réseaux sociaux ?', '["Acheter un deuxième téléphone","Les ouvrir toute la nuit","Un minuteur quotidien dans les réglages du téléphone","Ne rien faire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Quelle était l''erreur de Tojo semaine 3-4 ?', '["Refuser des missions","Répondre aux messages jusqu''à 23 h","Faire du sport","Dormir trop"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que propose Tojo à sa cliente ?', '["De travailler la nuit","Des horaires clairs et un point chaque lundi","D''arrêter le projet","Une remise"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Comment Tojo réduit-il sa charge ?', '["Il confie un petit client à un ami freelance de confiance","Il prend un 4e client","Il supprime ses pauses","Il ne dort plus"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que contient le plan d''équilibre ?', '["Rien","Seulement ses revenus","Signaux, limites, routines, épargne, soutien et seuil d''alerte","Ses mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Vers qui se tourner pour une fatigue persistante depuis plusieurs semaines ?', '["Un réseau social","Personne","Un client","Un médecin généraliste ou un centre de santé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-7-f', 'Que faire si une note d''équilibre baisse deux mois de suite ?', '["Choisir une action concrète et en parler à son réseau","Travailler davantage","L''ignorer","Arrêter de noter"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';
