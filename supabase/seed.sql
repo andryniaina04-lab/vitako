@@ -96,7 +96,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true),
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true),
-  ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
+  ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 16, true),
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 16, true),
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
@@ -22527,6 +22527,526 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel avantage offre un forfait de 10 cours payé d''avance ?', '["Moins de préparation","Des revenus plus réguliers et un élève engagé","Des cours plus courts","Aucun"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle règle d''annulation est raisonnable ?', '["Jamais d''annulation possible","Gratuite jusqu''à 24 heures avant","Annulation possible après le cours","Pas de règle écrite"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle évolution permet de vendre des cours vidéo ?', '["Développeur back-end","Monteur audio","Créateur de cours","Comptable"]'::jsonb, 2);
+
+-- edu-1-a
+delete from public.exam_questions where course_id = 'edu-1-a';
+delete from public.module_questions where course_id = 'edu-1-a';
+delete from public.lessons where course_id = 'edu-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-a', 0, 'Se spécialiser, diagnostiquer et mesurer l''impact', 'Les 6 spécialités avancées, la facilitation, le diagnostic du dispositif en 6 domaines, les 4 niveaux d''impact, les conditions d''application et les offres à forte valeur.', 'Animer une bonne classe virtuelle ouvre les premières missions. Les formateurs les mieux payés vont plus loin : ils conçoivent des **programmes complets** qui changent réellement les pratiques au travail, animent des ateliers collaboratifs à fort enjeu, forment d''autres formateurs et mesurent l''impact de leurs formations. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du formateur en ligne.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un diagnostic du dispositif de formation d''une organisation.
+> 4. Relier une formation à des résultats mesurables.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Formation de formateurs** | Former les formateurs internes d''une ONG ou d''une entreprise | Pédagogie des adultes, observation, retours |
+| 2 | **Facilitation d''ateliers** | Animer des réunions de travail : stratégie, rétrospective, résolution de problèmes | Méthodes de facilitation, neutralité, outils collaboratifs |
+| 3 | **Compétences comportementales** | Communication, management, gestion du temps | Mises en situation, jeux de rôle à distance |
+| 4 | **Programmes à grande échelle** | Former des centaines d''agents dans plusieurs régions | Organisation, formateurs relais, suivi |
+| 5 | **Formation technique ou métier** | Logiciels, procédures, normes | Expertise du domaine, exercices pratiques |
+| 6 | **Webinaires et formation commerciale** | Former des clients à un produit, des communautés | Animation de grands groupes, interaction à distance |
+
+> [!definition] Facilitation
+> L''art d''aider un groupe à travailler ensemble pour atteindre un objectif (décider, résoudre, créer), sans imposer le contenu. Le facilitateur guide le processus, le groupe apporte les idées.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Programmes à grande échelle** pour les ONG et les programmes de développement présents dans plusieurs régions de Madagascar.
+> - **Formation de formateurs relais** qui animent ensuite sur le terrain, en malgache.
+> - **Formations francophones** pour l''Afrique et l''Europe, avec un faible décalage horaire.
+
+## Le diagnostic du dispositif de formation
+
+Un diagnostic est une excellente **offre d''entrée** : l''organisation voit pourquoi ses formations ont peu d''effet et vous confie l''amélioration.
+
+| Domaine | Questions |
+| --- | --- |
+| **Besoins** | Les formations répondent-elles à de vrais problèmes du travail ? |
+| **Conception** | Objectifs précis ? Assez de pratique ? |
+| **Animation** | Participation réelle ou longues présentations ? |
+| **Technique** | Connexions, outils, supports adaptés aux participants ? |
+| **Évaluation** | Mesure-t-on autre chose que la satisfaction ? |
+| **Application** | Les managers soutiennent-ils l''application au travail ? |
+
+### Le rapport de diagnostic
+
+```
+Organisation : ONG Fahasalamana – programme de santé communautaire
+Formations analysées : 6 sessions en ligne pour 80 agents
+
+Constats
+- 70 % du temps en présentation ; peu d''exercices.
+- Satisfaction élevée (4,5/5), mais aucun suivi de l''application sur le terrain.
+- 30 % des agents décrochent en cours de session (connexion faible, vidéos lourdes).
+- Les superviseurs ne connaissent pas le contenu des formations.
+
+Plan proposé
+1. Refonte des sessions : 60 % de pratique, supports légers envoyés avant.
+2. Formation de 8 superviseurs comme formateurs relais.
+3. Évaluation de l''application à 1 et 3 mois avec une grille d''observation.
+```
+
+## Relier la formation à des résultats
+
+| Niveau | Question | Exemple d''indicateur |
+| --- | --- | --- |
+| **Réaction** | Les participants ont-ils apprécié ? | Satisfaction moyenne |
+| **Apprentissage** | Ont-ils appris ? | Réussite au test final |
+| **Comportement** | Appliquent-ils au travail ? | Observation par le superviseur à 1 mois |
+| **Résultats** | L''organisation s''améliore-t-elle ? | Rapports corrects, visites réalisées, erreurs en baisse |
+
+> [!attention]
+> Une formation seule change rarement les résultats. Il faut aussi que le **manager** soutienne l''application, que les outils existent et que le temps soit prévu. Mettez ces conditions par écrit dans votre proposition, et ne promettez pas des résultats qui dépendent d''autres facteurs.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic du dispositif** | Analyse, entretiens, rapport | 400 000 Ar |
+| **Programme complet** | Conception, 6 sessions, supports, évaluation à 3 mois | 2 500 000 Ar |
+| **Formation de formateurs** | 4 sessions, observation, retours individuels | 1 500 000 Ar |
+| **Facilitation d''atelier** | Préparation, animation d''une demi-journée, synthèse | 500 000 Ar |
+
+*(Montants donnés en exemple. Les ONG et organismes internationaux ont souvent leurs propres grilles ; pour les clients étrangers, fixez vos prix en euros ou en dollars.)*
+
+> [!retenir]
+> - Six spécialités : formateurs, facilitation, comportemental, grande échelle, technique, webinaires.
+> - Le diagnostic montre pourquoi les formations ont peu d''effet.
+> - Quatre niveaux : réaction, apprentissage, comportement, résultats.
+> - Écrire les conditions d''application ; ne pas promettre ce qui dépend d''autres facteurs.
+> - Des offres à valeur : programme complet, formation de formateurs, facilitation.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Interrogez une personne qui a suivi récemment une formation en ligne au travail (6 domaines).
+> 3. Rédigez un rapport de diagnostic et un plan en 3 étapes.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, vos notes d''entretien, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 0, 0, 'Qu''est-ce que la facilitation ?', '["Présenter seul pendant 2 heures","Corriger des copies","Aider un groupe à travailler ensemble sans imposer le contenu","Faciliter les paiements"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 0, 1, 'Quel niveau vérifie l''application au travail ?', '["L''apprentissage","L''inscription","La réaction","Le comportement"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 0, 2, 'Une formation seule change-t-elle toujours les résultats ?', '["Oui, toujours","Oui, en ligne","Oui, si elle est longue","Non, il faut aussi le soutien du manager et les moyens"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-a', 1, 'Outils professionnels : Zoom Pro, webinaires et Miro payant', 'Sessions longues, enregistrement, sous-groupes préassignés, coanimateurs et rapports dans Zoom, organisation d''un webinaire, minuteur, vote, mode privé et modèles dans Miro, outils du client.', 'Les formateurs professionnels utilisent les offres payantes de **Zoom** et de **Miro** pour animer des sessions longues, de grands groupes et des ateliers collaboratifs riches. Ce module vous apprend leurs fonctions avancées, et comment travailler aussi avec les outils imposés par les clients (Teams, Google Meet).
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées de Zoom pour la formation.
+> 2. Organiser un webinaire avec inscription et rapports.
+> 3. Utiliser les fonctions de facilitation de Miro.
+> 4. Construire des modèles de tableaux réutilisables.
+> 5. Vous adapter aux outils du client.
+
+## Zoom : les fonctions avancées
+
+| Fonction (selon l''offre, à vérifier) | Usage en formation |
+| --- | --- |
+| **Réunions longues** | Sessions de 2 à 3 heures sans coupure |
+| **Enregistrement dans le cloud** | Partager la session aux absents, avec accord |
+| **Sous-groupes préassignés** | Préparer les groupes avant la session |
+| **Coanimateurs** | Un collègue gère le chat, la technique et les sous-groupes |
+| **Sondages avancés et quiz** | Vérifier la compréhension, noter les réponses |
+| **Inscription** | Liste des participants, questions préalables |
+| **Rapports** | Présence, durée de connexion, réponses aux sondages |
+| **Webinaires** (option) | Grands groupes, intervenants et public séparés, questions-réponses |
+
+> [!astuce]
+> Les **rapports de présence** sont précieux pour les ONG et les entreprises : ils prouvent la participation, exigée par de nombreux bailleurs et services de formation. Exportez-les après chaque session.
+
+## Organiser un webinaire
+
+| Étape | Action |
+| --- | --- |
+| **Inscription** | Formulaire avec 2 ou 3 questions (poste, attentes) |
+| **Rappels** | E-mails automatiques la veille et une heure avant |
+| **Rôles** | Animateur, intervenant, modérateur des questions |
+| **Interaction** | Sondages, questions-réponses, chat |
+| **Après** | Enregistrement, supports, questionnaire, rapport |
+
+## Miro : la facilitation
+
+| Fonction (selon l''offre) | Usage |
+| --- | --- |
+| **Tableaux illimités** | Un tableau par client ou par atelier |
+| **Minuteur** | Donner le rythme des activités |
+| **Vote** | Choisir les idées prioritaires |
+| **Mode privé** | Chacun écrit sans voir les autres, puis on révèle |
+| **Suivre le présentateur** | Tout le monde voit la même zone |
+| **Cadres et présentation** | Guider le groupe d''une étape à l''autre |
+| **Modèles** | Rétrospective, carte des idées, matrice de priorités |
+| **Invités et droits** | Participants avec droits limités |
+
+> [!exemple] Un atelier de résolution de problèmes en 60 minutes
+> Mode privé : chacun écrit les causes d''un problème (8 min) → révélation et regroupement (12 min) → vote : 3 points par personne (5 min) → sous-groupes sur les 3 causes principales (20 min) → restitution et plan d''action (15 min).
+
+## Des modèles réutilisables
+
+| Modèle | Contenu |
+| --- | --- |
+| **Accueil** | Consignes, zone « Ajoutez votre prénom », météo de l''humeur |
+| **Brise-glace** | 3 activités prêtes |
+| **Exercice en sous-groupes** | Cadres numérotés avec consigne |
+| **Synthèse** | Zone de regroupement et de vote |
+| **Plan d''action** | Qui, quoi, quand |
+| **Évaluation** | « Ce que je retiens », « Ce que j''applique demain » |
+
+> [!astuce]
+> Un **kit de modèles** prêts (Zoom et Miro) réduit votre temps de préparation et garantit une qualité constante. Dupliquez et adaptez pour chaque client.
+
+## S''adapter aux outils du client
+
+| Outil du client | Équivalents à connaître |
+| --- | --- |
+| **Microsoft Teams** | Salles de sous-groupes, sondages (Forms), tableau blanc |
+| **Google Meet** | Sous-groupes, sondages, questions-réponses selon l''offre du client |
+| **Plateforme interne** | Testez-la avant avec le service informatique du client |
+
+> [!attention]
+> Certaines organisations **interdisent** les outils externes (comme Miro) pour des raisons de sécurité. Demandez avant de les utiliser, et prévoyez une alternative avec les outils autorisés.
+
+> [!madagascar]
+> Les abonnements Zoom et Miro se paient en dollars par carte bancaire internationale. Souvent, **le client fournit ses outils**. Investissez dans vos propres abonnements quand vous animez régulièrement pour vos propres clients : ils deviennent alors rentables. Vérifiez les prix sur les sites officiels.
+
+> [!retenir]
+> - Zoom avancé : sessions longues, enregistrement, sous-groupes préassignés, coanimateurs, rapports.
+> - Webinaire : inscription, rappels, rôles, interaction, suivi.
+> - Miro : minuteur, vote, mode privé, présentation, modèles, droits.
+> - Un kit de modèles réutilisables.
+> - S''adapter aux outils du client et respecter ses règles de sécurité.
+
+## Exercice pratique : vos outils professionnels
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Préparez une session Zoom avec inscription, 3 sondages et des sous-groupes préassignés.
+> 2. Créez dans Miro un kit de 6 modèles réutilisables.
+> 3. Animez un atelier de résolution de problèmes de 60 minutes avec 3 à 5 personnes.
+> 4. Exportez un rapport de présence et rédigez une synthèse d''atelier.
+>
+> **À livrer** : des captures de vos paramètres, votre kit, la synthèse et le rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 1, 0, 'Pourquoi exporter les rapports de présence ?', '["Prouver la participation aux bailleurs et services de formation","Ce n''est pas utile","Pour sanctionner","Pour décorer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 1, 1, 'À quoi sert le mode privé de Miro ?', '["Chacun écrit sans voir les autres avant la révélation","Supprimer les idées","Payer moins","Cacher le tableau au client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 1, 2, 'Que faire si le client interdit Miro ?', '["Annuler la formation","Utiliser une alternative autorisée","L''utiliser quand même","Ne rien dire"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-a', 2, 'Qualité et rapidité : structures, énergie, kit formateur et observation', '1-2-4-tous et autres structures participatives, gestion de l''énergie, kit formateur, grille d''observation, retour à un formateur et amélioration après chaque session.', 'Un formateur avancé livre des sessions **efficaces et vivantes à chaque fois**, même avec des groupes difficiles et de nombreuses sessions. Ce module vous donne les méthodes des meilleurs : structures d''animation éprouvées, gestion de l''énergie, kit formateur, observation de formateurs et amélioration continue.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser des structures d''animation qui font participer tout le monde.
+> 2. Gérer l''énergie et l''attention d''un groupe à distance.
+> 3. Construire un kit formateur réutilisable.
+> 4. Observer et faire progresser un autre formateur.
+> 5. Améliorer vos formations après chaque session.
+
+## Des structures qui font participer tout le monde
+
+| Structure | Déroulé | Usage |
+| --- | --- | --- |
+| **1-2-4-tous** | Seul (2 min), à deux (4 min), à quatre (6 min), tout le groupe (8 min) | Faire émerger les idées de chacun |
+| **Écriture silencieuse** | Chacun écrit avant de parler | Donner la parole aux plus discrets |
+| **Tour de parole** | Chacun s''exprime en 30 secondes | Entendre tout le monde rapidement |
+| **Jeu de rôle en trio** | Un joue, un répond, un observe ; on tourne | Compétences comportementales |
+| **Étude de cas en sous-groupes** | Un cas réel, une question, une restitution | Appliquer à une situation réelle |
+| **Quiz en direct** | Questions courtes avec sondage | Vérifier et relancer l''attention |
+
+> [!astuce]
+> Commencez toujours un exercice par une phase **individuelle**, même courte. Sinon, les plus rapides parlent et les autres suivent sans réfléchir.
+
+## Gérer l''énergie à distance
+
+| Moment | Risque | Réponse |
+| --- | --- | --- |
+| **Début** | Participants pas encore « présents » | Activité courte et facile qui fait parler tout le monde |
+| **Après 45 à 60 minutes** | Baisse d''attention | Pause de 5 à 10 minutes |
+| **Après le repas** | Somnolence | Activité en mouvement ou en sous-groupes |
+| **Contenu dense** | Surcharge | Découper, alterner explication et pratique |
+| **Fin** | Départs anticipés | Synthèse et engagement d''action avant les 10 dernières minutes |
+
+> [!madagascar]
+> Dans les formations avec des agents de terrain, beaucoup suivent depuis un **téléphone**, parfois dans un lieu bruyant. Prévoyez des activités faisables au téléphone (chat, sondages, réponses courtes) et ne vous appuyez pas uniquement sur le tableau collaboratif.
+
+## Le kit formateur
+
+| Élément | Contenu |
+| --- | --- |
+| **Déroulé détaillé** | Minute par minute, avec consignes exactes |
+| **Diapositives** | Légères, avec notes de l''animateur |
+| **Supports participants** | Fiches, exercices, fichiers à télécharger |
+| **Tableaux Miro et sondages** | Prêts à dupliquer |
+| **Banque de questions** | Quiz et questions de relance |
+| **Plan B technique** | Que faire si l''outil, la connexion ou l''électricité manque |
+| **Évaluation** | Questionnaires, grille d''observation |
+
+> [!definition] Kit formateur
+> L''ensemble des documents qui permettent à **n''importe quel formateur formé** d''animer la même formation avec la même qualité. Il est indispensable pour les programmes à grande échelle et la formation de formateurs relais.
+
+## Observer et faire progresser un formateur
+
+### La grille d''observation
+
+| Critère | Observation |
+| --- | --- |
+| Objectifs annoncés et respectés | Oui, partiellement, non |
+| Part de pratique | Estimée en pourcentage du temps |
+| Participation de tous | Nombre de participants qui se sont exprimés |
+| Clarté des consignes | Les participants savent-ils quoi faire ? |
+| Gestion du temps | Avance, retard |
+| Gestion des imprévus | Réaction aux problèmes techniques et aux questions |
+
+### Le retour au formateur
+
+1. **Demandez d''abord** son propre avis sur la session.
+2. **Commencez** par 2 points forts précis.
+3. **Proposez** 1 ou 2 axes d''amélioration, avec un exemple concret.
+4. **Convenez** d''un objectif pour la prochaine session.
+
+> [!attention]
+> Un retour trop long ou trop critique décourage. Concentrez-vous sur **un ou deux points** qui feront vraiment la différence à la prochaine session.
+
+## Améliorer après chaque session
+
+| Question | Action |
+| --- | --- |
+| Quel moment a le mieux fonctionné ? | Le garder et le réutiliser |
+| Où le groupe a-t-il décroché ? | Raccourcir ou rendre plus actif |
+| Quelles questions sont revenues ? | Ajouter une explication ou une fiche |
+| Quels résultats au quiz ? | Revoir les notions mal comprises |
+| Quels incidents techniques ? | Compléter le plan B |
+
+> [!retenir]
+> - 1-2-4-tous, écriture silencieuse, tour de parole, jeux de rôle, études de cas, quiz.
+> - Gérer l''énergie : début facile, pauses, activités après le repas, synthèse avant la fin.
+> - Un kit formateur complet pour une qualité constante.
+> - Observer avec une grille et donner un retour court et utile.
+> - Améliorer chaque formation après chaque session.
+
+## Exercice pratique : la qualité constante
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Intégrez 3 structures d''animation dans une de vos sessions de 2 heures.
+> 2. Construisez le kit formateur complet de cette session.
+> 3. Faites animer un extrait de 20 minutes par une autre personne avec votre kit et observez-la avec la grille.
+> 4. Donnez-lui un retour et notez 3 améliorations du kit.
+>
+> **À livrer** : votre déroulé, votre kit, votre grille remplie et vos améliorations.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 2, 0, 'Par quelle phase commencer un exercice ?', '["Une phase individuelle","La conclusion","Une pause","Le grand groupe directement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 2, 1, 'À quoi sert un kit formateur ?', '["Facturer plus","Remplacer les participants","Permettre à d''autres formateurs d''animer avec la même qualité","Décorer les diapositives"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 2, 2, 'Combien d''axes d''amélioration donner dans un retour ?', '["Aucun","Un ou deux","Tous ceux observés","Dix"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-a', 3, 'Clients internationaux : anglais, cultures, fuseaux, accessibilité et appels d''offres', 'Formules d''animation en anglais, adaptation culturelle, organisation selon les fuseaux horaires, accessibilité, termes de référence et offres aux organisations internationales.', 'Les organisations internationales, les entreprises multinationales et les organismes de formation étrangers recrutent des formateurs capables d''animer à distance pour des publics variés. Ce module vous prépare à travailler avec eux : animer en anglais, s''adapter aux cultures, organiser des sessions sur plusieurs fuseaux, rendre les formations accessibles et répondre aux exigences des bailleurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Animer et préparer des supports en anglais.
+> 2. Adapter votre animation aux cultures des participants.
+> 3. Organiser des sessions pour plusieurs fuseaux horaires.
+> 4. Rendre vos formations accessibles à tous.
+> 5. Répondre aux appels d''offres et exigences des organisations internationales.
+
+## Animer en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Ouvrir | « Welcome, everyone. Let''s make sure you can all hear me — please react with a thumbs up. » |
+| Donner une consigne | « In your breakout rooms, you have 10 minutes to list three challenges. Please choose a spokesperson. » |
+| Relancer | « What do others think? Feel free to use the chat. » |
+| Gérer le temps | « We have five minutes left for this activity. » |
+| Conclure | « Before we leave, please write in the chat one thing you''ll try this week. » |
+
+> [!astuce]
+> Si vous animez dans une langue qui n''est pas la vôtre, **écrivez les consignes** sur les diapositives et dans le chat. Les participants (eux aussi souvent non natifs) suivent beaucoup mieux.
+
+## S''adapter aux cultures
+
+| Dimension | Ce que vous pouvez observer | Adaptation |
+| --- | --- | --- |
+| **Rapport à la hiérarchie** | Les participants n''osent pas contredire en présence de leur chef | Questions anonymes, sous-groupes sans le manager |
+| **Expression en public** | Certains participants parlent peu en grand groupe | Écriture silencieuse, chat, binômes |
+| **Rapport au temps** | Ponctualité plus ou moins stricte | Accueil progressif, mais fin à l''heure annoncée |
+| **Humour** | Ce qui fait rire ici peut blesser ailleurs | Humour léger, jamais sur les personnes ou les cultures |
+| **Caméra** | Allumer la caméra peut être difficile (connexion, intimité) | Ne pas l''imposer ; proposer d''autres façons de participer |
+
+## Plusieurs fuseaux horaires
+
+| Situation | Solution |
+| --- | --- |
+| Participants en Europe et à Madagascar | Peu de décalage : sessions en matinée ou début d''après-midi |
+| Participants en Europe et en Amérique du Nord | Créneau en fin de journée européenne ou deux sessions identiques |
+| Participants sur 3 continents | Formation mixte : courtes sessions en direct + travail à son rythme |
+
+> [!madagascar]
+> Depuis Madagascar, vous pouvez animer pour l''**Afrique de l''Est, l''Europe et le Moyen-Orient** à des heures normales. Pour l''Amérique du Nord, proposez des sessions en fin de journée ou une formation mixte plutôt que des sessions de nuit répétées.
+
+## Rendre les formations accessibles
+
+| Pratique | Pour qui |
+| --- | --- |
+| **Sous-titres automatiques ou transcription** | Personnes sourdes ou malentendantes, non natifs, connexion faible |
+| **Supports lisibles** (gros caractères, contrastes forts) | Personnes malvoyantes, petits écrans |
+| **Décrire à voix haute** ce qui est montré | Personnes malvoyantes, participants sans vidéo |
+| **Supports envoyés avant** | Tous, surtout avec connexion faible |
+| **Plusieurs façons de participer** (oral, chat, sondage) | Tous |
+| **Demander les besoins** dans le formulaire d''inscription | Anticiper |
+
+## Les organisations internationales
+
+| Exigence fréquente | Ce que vous devez préparer |
+| --- | --- |
+| **Appel d''offres ou termes de référence** | Lire attentivement : objectifs, livrables, calendrier, critères |
+| **Offre technique** | Compréhension du besoin, méthodologie, programme, CV, références |
+| **Offre financière** | Budget détaillé : jours, frais, outils |
+| **Livrables** | Supports, rapports de session, liste de présence, rapport final |
+| **Règles éthiques** | Code de conduite, protection des données, protection des participants |
+| **Factures et justificatifs** | Selon les règles de l''organisation |
+
+> [!definition] Termes de référence (TdR)
+> Le document qui décrit précisément une mission demandée par une organisation : contexte, objectifs, tâches, livrables, durée, profil recherché et critères de sélection.
+
+> [!attention]
+> Répondez **exactement** aux termes de référence : une offre hors sujet, même excellente, est souvent éliminée. Reprenez leurs mots, leur structure et chaque livrable demandé.
+
+> [!retenir]
+> - En anglais : consignes écrites, formules claires, rythme posé.
+> - Adapter l''animation à la hiérarchie, l''expression, le temps, l''humour et la caméra.
+> - Choisir le bon format selon les fuseaux horaires.
+> - Accessibilité : sous-titres, contrastes, description, supports avant, besoins demandés.
+> - Organisations internationales : lire les TdR et y répondre exactement.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Traduisez en anglais le déroulé et les consignes d''une de vos sessions.
+> 2. Animez 15 minutes en anglais avec 2 ou 3 personnes et enregistrez-vous (avec accord).
+> 3. Rendez une de vos sessions accessible (liste des adaptations).
+> 4. Trouvez de vrais termes de référence d''une mission de formation et rédigez le plan de votre offre technique.
+>
+> **À livrer** : votre déroulé en anglais, l''enregistrement, votre liste et votre plan d''offre.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 3, 0, 'Que faire si les participants n''osent pas contredire devant leur chef ?', '["Ignorer le problème","Exclure le chef sans prévenir","Les forcer à parler","Questions anonymes et sous-groupes sans le manager"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 3, 1, 'Qu''est-ce que les termes de référence ?', '["Une facture","Le document qui décrit précisément une mission demandée","Un logiciel","Un dictionnaire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 3, 2, 'Quelle pratique rend une formation plus accessible ?', '["Petits caractères","Sous-titres ou transcription","Imposer la caméra","Supports envoyés après seulement"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-1-a', 4, 'Développer son activité : offres, impact, droits et réseau de formateurs', 'Trois voies, programmes récurrents, licence du kit, accompagnement annuel, tarif journalier, droits sur les supports, études de cas d''impact et réseau de formateurs associés.', 'Après quelques formations réussies, vous pouvez construire une **activité stable** de formateur : programmes récurrents, clients fidèles, réponses aux appels d''offres, réseau de formateurs associés et catalogue de formations. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas qui montrent l''impact.
+> 4. Organiser un réseau de formateurs associés.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Formateur expert indépendant** | Un domaine fort, des clients fidèles | Sessions, programmes, facilitation |
+| **Petit organisme de formation** | Ceux qui aiment organiser et vendre | Catalogue, formateurs associés, appels d''offres |
+| **Responsable formation** dans une organisation | Ceux qui préfèrent la stabilité | Salaire, plans de formation, équipes |
+
+## Des offres et des prix durables
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Programme récurrent** | Même formation pour chaque nouvelle promotion d''agents | Prix par session ou par promotion |
+| **Licence du kit** | Le client utilise votre kit avec ses formateurs relais formés par vous | Formation de formateurs + droit d''utilisation |
+| **Accompagnement annuel** | Diagnostic, programme, évaluation, ajustements | Forfait annuel |
+| **Facilitation régulière** | Ateliers trimestriels de stratégie ou de rétrospective | Prix par atelier |
+
+*(Montants à fixer selon votre marché ; pour les organisations internationales, suivez leurs grilles ou proposez un tarif journalier en euros ou en dollars.)*
+
+> [!astuce]
+> Un **tarif journalier** clair (préparation et animation comprises) simplifie vos réponses aux appels d''offres. Calculez-le à partir de vos jours réellement facturables dans l''année.
+
+> [!attention]
+> Précisez dans le contrat **les droits sur vos supports** : le client peut-il les réutiliser, les modifier, les donner à d''autres formateurs ? Une licence claire protège votre travail et peut devenir une source de revenus.
+
+## Des études de cas qui montrent l''impact
+
+> [!exemple] Étude de cas courte
+> **Client** : ONG de santé communautaire, 80 agents dans 4 régions.
+> **Problème** : formations très appréciées mais peu appliquées sur le terrain ; décrochage dû aux connexions faibles.
+> **Solution** : diagnostic, refonte avec 60 % de pratique, supports légers, formation de 8 superviseurs relais, évaluation à 1 et 3 mois.
+> **Résultats** : participation complète passée de 70 % à 92 % ; à 3 mois, 78 % des agents appliquent correctement la nouvelle procédure de suivi (observation des superviseurs).
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Montrez** les 4 niveaux quand c''est possible (réaction, apprentissage, comportement, résultats).
+3. **Expliquez** les conditions qui ont permis le résultat (soutien des superviseurs).
+
+## Un réseau de formateurs associés
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Sélection** sur une session observée | Garantir la qualité |
+| **Kit formateur** commun | Même formation, même qualité |
+| **Formation et calibration** | Même façon d''animer et d''évaluer |
+| **Contrat** | Rémunération, confidentialité, propriété des supports |
+| **Observation et retours** | Amélioration continue |
+
+> [!madagascar]
+> Un réseau de formateurs à Madagascar capables d''animer **en français et en malgache**, en ligne et sur le terrain, répond bien aux besoins des programmes de développement. Pour les appels d''offres, présentez l''équipe, la méthode commune et vos références chiffrées.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur pédagogique** | Parcours complets, dispositifs mixtes |
+| **Facilitateur professionnel** | Méthodes de facilitation, accompagnement des directions |
+| **Coach** | Formation spécifique au coaching |
+| **Créateur de cours en ligne** | Voir la formation Créateur de cours en ligne |
+| **Responsable de la formation** | Plans, budgets, équipes |
+
+> [!retenir]
+> - Expert indépendant, organisme ou responsable formation : choisissez votre voie.
+> - Programmes récurrents, licence du kit, accompagnement annuel, facilitation.
+> - Un tarif journalier clair et des droits sur les supports écrits.
+> - Des études de cas sur plusieurs niveaux d''impact.
+> - Un réseau de formateurs sélectionnés, formés et calibrés.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Calculez votre tarif journalier et construisez 3 offres.
+> 3. Rédigez une étude de cas à partir de vos projets, sur au moins 2 niveaux d''impact.
+> 4. Repérez 3 appels d''offres ou 5 organisations et envoyez 3 propositions.
+>
+> **À livrer** : votre plan, votre tarif, vos offres, votre étude de cas et vos envois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 4, 0, 'Que préciser dans le contrat sur les supports ?', '["Rien","Les droits de réutilisation et de modification","La couleur","Le nom du projecteur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 4, 1, 'Comment sélectionner un formateur associé ?', '["Au hasard","Sans sélection","Sur une session observée","Selon son nombre d''abonnés"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-1-a', 4, 2, 'Qu''est-ce qu''une licence du kit ?', '["Un permis de conduire","Une facture","Un abonnement Zoom","Le client utilise votre kit avec ses formateurs formés par vous"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quelle spécialité forme les formateurs internes ?', '["Les webinaires","La facilitation","La formation technique","La formation de formateurs"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quel constat montre un problème de conception ?', '["Des objectifs précis","70 % du temps en présentation","60 % de pratique","Des supports légers"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quel indicateur mesure les résultats pour l''organisation ?', '["Erreurs en baisse ou rapports corrects","Satisfaction seule","Durée de la session","Nombre de diapositives"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que propose une offre de facilitation ?', '["Un recrutement","Un logiciel","Préparation, animation d''un atelier et synthèse","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que permettent les sous-groupes préassignés ?', '["Supprimer les participants","Rien","Préparer les groupes avant la session","Enregistrer sans accord"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quel rôle prévoir dans un webinaire ?', '["Aucun","Un participant qui parle tout le temps","Un spectateur unique","Un modérateur des questions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'À quoi sert le vote dans Miro ?', '["Choisir les idées prioritaires","Payer","Élire le formateur","Supprimer le tableau"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Pourquoi un kit de modèles réutilisables ?', '["Réduire la préparation et garder une qualité constante","Rendre chaque session différente","Rien","Éviter les participants"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Comment se déroule 1-2-4-tous ?', '["Tout le groupe seulement","Quatre fois la même chose","Seul, à deux, à quatre, puis tout le groupe","Seul puis rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que faire après 45 à 60 minutes ?', '["Ajouter une heure de théorie","Accélérer","Une pause de 5 à 10 minutes","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que prévoir pour les participants sur téléphone ?', '["Des fichiers très lourds","Uniquement le tableau collaboratif","Chat, sondages et réponses courtes","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que contient le plan B d''un kit formateur ?', '["Un menu","Rien","Les salaires","Que faire si l''outil, la connexion ou l''électricité manque"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Par quoi commencer un retour à un formateur ?', '["Lister toutes ses erreurs","Le noter sur 20","Lui demander son propre avis","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que faire quand le groupe décroche à un moment ?', '["Raccourcir ou rendre ce moment plus actif","Ajouter de la théorie","Le garder tel quel","Supprimer les pauses"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Pourquoi écrire les consignes en anglais sur les diapositives ?', '["C''est obligatoire","Les participants non natifs suivent mieux","Pour éviter de parler","Pour décorer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Faut-il imposer la caméra ?', '["Oui, toujours","Non, proposer d''autres façons de participer","Oui, pour les ONG","Oui, aux débutants"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quel format pour des participants sur 3 continents ?', '["Une session de 8 heures","Aucun","Sessions de nuit pour tous","Formation mixte avec courtes sessions en direct"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que décrire à voix haute ?', '["Rien","Son repas","Ce qui est montré à l''écran","Les noms des absents"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que contient une offre technique ?', '["Rien","Seulement le prix","Un logo","Compréhension du besoin, méthodologie, programme, CV et références"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Pourquoi reprendre la structure des termes de référence ?', '["Une offre hors sujet est souvent éliminée","Pour copier","Pour être plus long","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Comment calculer un tarif journalier ?', '["À partir des jours réellement facturables dans l''année","Le plus bas possible","Au hasard","Selon la météo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Que montrer dans une étude de cas d''impact ?', '["Rien","Plusieurs niveaux d''impact et leurs conditions","Seulement la satisfaction","Des chiffres inventés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Pourquoi calibrer les formateurs associés ?', '["Rien","Même façon d''animer et d''évaluer","Pour décorer","Pour les payer moins"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Quel atout pour un réseau malgache dans les appels d''offres ?', '["Des prix secrets","Aucun","Pas de références","Animer en français et en malgache, en ligne et sur le terrain"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-a', 'Vers quel métier évoluer pour concevoir des dispositifs mixtes ?', '["Ingénieur pédagogique","Modérateur","Retoucheur","Testeur"]'::jsonb, 0);
 
 -- edu-1-f
 delete from public.exam_questions where course_id = 'edu-1-f';

@@ -3300,6 +3300,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-1-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du formateur en ligne un professionnel qui conçoit des programmes à impact et anime des ateliers à fort enjeu : spécialité (formation de formateurs, facilitation, compétences comportementales, grande échelle, technique, webinaires), diagnostic du dispositif de formation et 4 niveaux d'impact, outils payants (Zoom Pro et Miro payant) avec webinaires, rapports, minuteur, vote et mode privé, structures d'animation, énergie, kit formateur et observation, animation en anglais, cultures, accessibilité et termes de référence, puis offres, études de cas et réseau de formateurs. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et diagnostiquer un dispositif de formation",
+   "Relier une formation aux niveaux réaction, apprentissage, comportement et résultats",
+   "Utiliser Zoom Pro et Miro payant pour la formation, les webinaires et la facilitation",
+   "Animer avec des structures participatives et construire un kit formateur",
+   "Former à l'international, en anglais, de façon accessible et selon les termes de référence",
+   "Construire des offres durables, des études de cas et un réseau de formateurs"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer et mesurer l'impact",
+    "summary": "Les 6 spécialités avancées, la facilitation, le diagnostic du dispositif en 6 domaines, les 4 niveaux d'impact, les conditions d'application et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic du dispositif de formation",
+     "Relier la formation à des résultats",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Zoom Pro, webinaires et Miro payant",
+    "summary": "Sessions longues, enregistrement, sous-groupes préassignés, coanimateurs et rapports dans Zoom, organisation d'un webinaire, minuteur, vote, mode privé et modèles dans Miro, outils du client.",
+    "sections": [
+     "Zoom : les fonctions avancées",
+     "Organiser un webinaire",
+     "Miro : la facilitation",
+     "Des modèles réutilisables",
+     "S'adapter aux outils du client",
+     "Exercice pratique : vos outils professionnels"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : structures, énergie, kit formateur et observation",
+    "summary": "1-2-4-tous et autres structures participatives, gestion de l'énergie, kit formateur, grille d'observation, retour à un formateur et amélioration après chaque session.",
+    "sections": [
+     "Des structures qui font participer tout le monde",
+     "Gérer l'énergie à distance",
+     "Le kit formateur",
+     "Observer et faire progresser un formateur",
+     "Améliorer après chaque session",
+     "Exercice pratique : la qualité constante"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, cultures, fuseaux, accessibilité et appels d'offres",
+    "summary": "Formules d'animation en anglais, adaptation culturelle, organisation selon les fuseaux horaires, accessibilité, termes de référence et offres aux organisations internationales.",
+    "sections": [
+     "Animer en anglais",
+     "S'adapter aux cultures",
+     "Plusieurs fuseaux horaires",
+     "Rendre les formations accessibles",
+     "Les organisations internationales",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres, impact, droits et réseau de formateurs",
+    "summary": "Trois voies, programmes récurrents, licence du kit, accompagnement annuel, tarif journalier, droits sur les supports, études de cas d'impact et réseau de formateurs associés.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Des études de cas qui montrent l'impact",
+     "Un réseau de formateurs associés",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "edu-1-f": {
   "hours": 15,
   "description": "Le formateur en ligne conçoit et anime des formations en direct, à distance, pour des adultes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des ONG, des entreprises, des organismes de formation et des programmes de développement, à Madagascar et à l'étranger, avec Zoom et Miro : apprentissage des adultes, analyse des besoins, objectifs, déroulé pédagogique, méthodes d'animation, évaluation, classe virtuelle sécurisée, tableau collaboratif, situations difficiles, incidents techniques et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
