@@ -525,3 +525,9 @@ a.back{display:inline-block}
 .rv-tbl .rv-com{max-width:360px;white-space:pre-wrap}
 .kpi .stars{margin-top:4px}
 @media (max-width:600px){.rv{padding:20px 18px}}
+
+/* Réseaux sociaux (pied de page) */
+.foot-links{align-items:center}
+.social{display:flex;gap:8px}
+.social a{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--muted);transition:color .15s,border-color .15s,background .15s}
+.social a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
