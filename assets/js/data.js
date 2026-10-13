@@ -6456,6 +6456,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-3-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du comédien voix off un professionnel au son de studio et aux contrats maîtrisés : spécialité (publicité, e-learning, livre audio, personnages, téléphonie, institutionnel), démos, diagnostic sonore, matériel et logiciels payants (micro XLR avec interface audio, Adobe Audition et iZotope RX), acoustique, sonie, nettoyage, sessions dirigées à distance, préparation du texte, normes de livraison, contrôle qualité, santé vocale, plateformes et agences, auditions, contrats d'usage, clauses sur l'IA et le clonage de voix, puis tarifs selon l'usage, fidélisation et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir ses spécialités, préparer ses démos et mener un diagnostic sonore",
+   "Obtenir un son de studio avec un micro XLR, une interface et une acoustique traitée",
+   "Enregistrer, monter et nettoyer avec Adobe Audition et iZotope RX",
+   "Livrer selon les normes des clients en protégeant sa voix",
+   "Travailler avec des clients étrangers et comprendre les contrats d'usage et les clauses sur l'IA",
+   "Développer son activité avec des tarifs selon l'usage, des clients fidèles et un studio"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, préparer ses démos et réaliser un diagnostic sonore",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, une démo par spécialité, diagnostic des contenus, de la cohérence, de la compréhension, de la qualité et de l'identité, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Une démo par spécialité",
+     "Le diagnostic sonore : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : micro XLR, interface audio, Adobe Audition et iZotope RX",
+    "summary": "Micros statiques et dynamiques, interface, 48 V et gain, acoustique simple, enregistrement multipiste et par insertion, affichage spectral, sonie, traitement par lots, nettoyage léger et sessions dirigées à distance.",
+    "sections": [
+     "Micro XLR et interface audio",
+     "L'acoustique de votre espace",
+     "Adobe Audition : enregistrer et monter",
+     "iZotope RX : nettoyer sans abîmer",
+     "Les sessions dirigées à distance",
+     "Exercice pratique : votre studio professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : préparation, enregistrement, livraison et santé vocale",
+    "summary": "Texte annoté et prononciations, enregistrement par blocs et par insertion, normes de livraison, découpage et noms de fichiers, grille de contrôle, délais types, échauffement, pauses et limite quotidienne.",
+    "sections": [
+     "Préparer le texte",
+     "Enregistrer efficacement",
+     "Les normes de livraison courantes",
+     "Le contrôle avant livraison",
+     "Délais et santé vocale",
+     "Exercice pratique : une livraison e-learning"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : plateformes, auditions, contrats d'usage et IA",
+    "summary": "Plateformes, agences, studios et livres audio, auditions efficaces, langues et accents annoncés honnêtement, usage selon média, durée, territoire et exclusivité, cession totale, clauses sur l'IA et le clonage de voix.",
+    "sections": [
+     "Plateformes et agences",
+     "Réussir une audition à distance",
+     "Langues et accents",
+     "Le contrat d'usage de la voix",
+     "Les clauses sur l'IA et le clonage de voix",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : tarifs selon l'usage, fidélisation et studio",
+    "summary": "Trois voies, grille de tarifs selon l'usage, extension d'usage, voix de marque et fiche technique client, studio, contrats des comédiens et accord parental, évolution.",
+    "sections": [
+     "Les trois voies",
+     "Une grille de tarifs selon l'usage",
+     "Fidéliser des clients réguliers",
+     "Organiser un petit studio et une équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "media-3-f": {
   "hours": 15,
   "description": "Le comédien voix off prête sa voix à des publicités, des vidéos, des formations, des serveurs vocaux et des messages de sensibilisation, avec une qualité sonore professionnelle. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance depuis un studio à domicile, pour des ONG, des studios, des agences et des créateurs, à Madagascar et à l'étranger, avec Audacity et un micro USB : types de projets, qualités de la voix, droits et clonage, respiration, articulation, interprétation, santé vocale, réglages, enregistrement, audition, séance dirigée, livraison et démos. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "media-3-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du comédien voix off un professionnel au son de studio et aux contrats maîtrisés : spécialité (publicité, e-learning, livre audio, personnages, téléphonie, institutionnel), démos, diagnostic sonore, matériel et logiciels payants (micro XLR avec interface audio, Adobe Audition et iZotope RX), acoustique, sonie, nettoyage, sessions dirigées à distance, préparation du texte, normes de livraison, contrôle qualité, santé vocale, plateformes et agences, auditions, contrats d'usage, clauses sur l'IA et le clonage de voix, puis tarifs selon l'usage, fidélisation et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir ses spécialités, préparer ses démos et mener un diagnostic sonore",
+    "Obtenir un son de studio avec un micro XLR, une interface et une acoustique traitée",
+    "Enregistrer, monter et nettoyer avec Adobe Audition et iZotope RX",
+    "Livrer selon les normes des clients en protégeant sa voix",
+    "Travailler avec des clients étrangers et comprendre les contrats d'usage et les clauses sur l'IA",
+    "Développer son activité avec des tarifs selon l'usage, des clients fidèles et un studio"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, préparer ses démos et réaliser un diagnostic sonore",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, une démo par spécialité, diagnostic des contenus, de la cohérence, de la compréhension, de la qualité et de l'identité, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quoi commencer une démo ?", "options": ["Par le meilleur extrait", "Par une longue présentation", "Par le prix", "Par du silence"], "correct": 0 },
+        { "q": "Que ne faut-il pas faire dans une démo ?", "options": ["Laisser croire qu'on a travaillé pour une marque connue sans que ce soit vrai", "Écrire ses propres textes", "Varier les extraits", "Soigner le son"], "correct": 0 },
+        { "q": "Quelle offre d'entrée est proposée ?", "options": ["Le diagnostic sonore", "Un spot gratuit", "Un micro offert", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : micro XLR, interface audio, Adobe Audition et iZotope RX",
+      "summary": "Micros statiques et dynamiques, interface, 48 V et gain, acoustique simple, enregistrement multipiste et par insertion, affichage spectral, sonie, traitement par lots, nettoyage léger et sessions dirigées à distance.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel micro choisir dans une pièce imparfaite ?", "options": ["Un micro dynamique", "Un micro statique très sensible", "Le micro du téléphone", "Aucun"], "correct": 0 },
+        { "q": "Que mesure la sonie en LUFS ?", "options": ["Le niveau sonore perçu", "La durée", "Le poids du fichier", "La langue"], "correct": 0 },
+        { "q": "Quel est le risque d'un nettoyage trop fort ?", "options": ["Une voix métallique et artificielle", "Une voix plus naturelle", "Aucun", "Un fichier plus court"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : préparation, enregistrement, livraison et santé vocale",
+      "summary": "Texte annoté et prononciations, enregistrement par blocs et par insertion, normes de livraison, découpage et noms de fichiers, grille de contrôle, délais types, échauffement, pauses et limite quotidienne.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que demander au client avant d'enregistrer ?", "options": ["La prononciation des noms propres et des sigles", "Son mot de passe", "Rien", "Sa couleur préférée"], "correct": 0 },
+        { "q": "Quel format est souvent demandé ?", "options": ["WAV, 48 kHz, 24 bits, mono", "MP3 de faible qualité", "PDF", "JPG"], "correct": 0 },
+        { "q": "Pourquoi une limite quotidienne de voix finie ?", "options": ["Garder la même qualité du début à la fin", "Travailler moins", "Ce n'est pas utile", "Pour facturer plus"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : plateformes, auditions, contrats d'usage et IA",
+      "summary": "Plateformes, agences, studios et livres audio, auditions efficaces, langues et accents annoncés honnêtement, usage selon média, durée, territoire et exclusivité, cession totale, clauses sur l'IA et le clonage de voix.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'enregistrer pour une audition ?", "options": ["Seulement l'extrait demandé, en qualité finale", "Le texte complet gratuitement", "Une chanson", "Rien"], "correct": 0 },
+        { "q": "De quoi dépend le prix en voix off ?", "options": ["De l'usage autant que du temps passé", "Seulement de la durée de la séance", "De la couleur du micro", "De rien"], "correct": 0 },
+        { "q": "Que prévoir face au clonage de voix ?", "options": ["Une clause interdisant cet usage sans accord écrit séparé", "Rien", "Accepter toutes les clauses", "Changer de voix"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : tarifs selon l'usage, fidélisation et studio",
+      "summary": "Trois voies, grille de tarifs selon l'usage, extension d'usage, voix de marque et fiche technique client, studio, contrats des comédiens et accord parental, évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il indiquer sur chaque devis ?", "options": ["L'usage", "La marque du micro", "Rien", "Son âge"], "correct": 0 },
+        { "q": "À quoi sert une fiche technique client ?", "options": ["Retrouver exactement le même son à chaque fois", "Décorer le studio", "Remplacer le contrat", "Rien"], "correct": 0 },
+        { "q": "Que faut-il pour une voix d'enfant ?", "options": ["L'accord écrit des parents et des conditions adaptées", "Rien", "Seulement l'accord de l'enfant", "Un micro spécial"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité demande une précision au dixième de seconde ?", "options": ["La publicité", "Le livre audio", "La téléphonie", "L'institutionnel"], "correct": 0 },
+    { "q": "Quelle spécialité demande le plus d'endurance ?", "options": ["Le livre audio", "Le message d'accueil", "Le logo sonore", "Le spot de 10 secondes"], "correct": 0 },
+    { "q": "Quel avantage a une voix malgache ?", "options": ["Elle est recherchée pour les campagnes et les applications en malgache", "Aucun", "Elle est interdite", "Elle remplace toutes les langues"], "correct": 0 },
+    { "q": "Combien de temps dure une démo publicité ?", "options": ["Environ 60 secondes", "10 minutes", "1 heure", "3 secondes"], "correct": 0 },
+    { "q": "Que regarde le diagnostic sonore ?", "options": ["Contenus, cohérence, compréhension, qualité et identité", "Seulement le prix", "Le logo", "Les serveurs"], "correct": 0 },
+    { "q": "Que nécessite un micro statique ?", "options": ["L'alimentation fantôme 48 V", "Une batterie de voiture", "Rien", "Un câble USB uniquement"], "correct": 0 },
+    { "q": "Comment régler le gain ?", "options": ["La voix la plus forte nettement sous 0 dB", "Au maximum", "Au minimum", "Au hasard"], "correct": 0 },
+    { "q": "Que compte le plus pour la qualité ?", "options": ["Une acoustique traitée", "Le prix du micro seul", "La couleur de la pièce", "Rien"], "correct": 0 },
+    { "q": "Que permet l'enregistrement par insertion ?", "options": ["Reprendre une phrase sans tout recommencer", "Supprimer la voix", "Ajouter de la musique", "Publier"], "correct": 0 },
+    { "q": "À quoi sert l'affichage spectral ?", "options": ["Voir et retirer précisément les bruits", "Écrire le script", "Payer", "Changer de langue"], "correct": 0 },
+    { "q": "Que demandent souvent les clients ?", "options": ["Une voix brute ou à peine nettoyée", "Une voix très traitée", "Une voix robotique", "Rien"], "correct": 0 },
+    { "q": "Que faire pendant une session dirigée à distance ?", "options": ["Enregistrer aussi en local par sécurité", "Ne rien enregistrer", "Couper le micro", "Changer d'ordinateur"], "correct": 0 },
+    { "q": "Que signifie // dans un texte annoté ?", "options": ["Une pause longue", "Un mot important", "Une faute", "La fin"], "correct": 0 },
+    { "q": "Que faire en cas d'erreur pendant l'enregistrement ?", "options": ["Se taire et reprendre au début de la phrase", "Continuer sans rien dire", "Tout arrêter", "Rire"], "correct": 0 },
+    { "q": "Pourquoi un silence au début et à la fin des fichiers ?", "options": ["C'est souvent une consigne de livraison", "Pour allonger le fichier", "Ce n'est jamais demandé", "Pour cacher des erreurs"], "correct": 0 },
+    { "q": "Comment nommer les fichiers d'un projet e-learning ?", "options": ["Exactement comme le tableau du client", "Au hasard", "Avec son prénom seulement", "Sans nom"], "correct": 0 },
+    { "q": "Où faire une écoute finale ?", "options": ["Au casque et sur un haut-parleur de téléphone", "Nulle part", "Seulement sur des enceintes de concert", "Dans la rue"], "correct": 0 },
+    { "q": "Que faire en cas de rhume ou d'enrouement ?", "options": ["Se reposer et ne pas abîmer sa voix", "Enregistrer quand même toute la journée", "Crier", "Rien"], "correct": 0 },
+    { "q": "Que vérifier avant d'utiliser une plateforme de voix off ?", "options": ["Qu'elle accepte les comédiens basés à Madagascar et leurs paiements", "Sa couleur", "Rien", "Le nombre de ses employés"], "correct": 0 },
+    { "q": "Comment annoncer ses langues ?", "options": ["Honnêtement, selon son vrai niveau", "En exagérant", "Toutes les langues", "Sans les préciser"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une cession totale (buyout) ?", "options": ["Tous les usages sans limite, à un prix plus élevé", "Un usage interne", "Un essai gratuit", "Une audition"], "correct": 0 },
+    { "q": "Qu'est-ce que l'exclusivité dans un contrat voix ?", "options": ["Ne pas faire la voix d'un concurrent pendant une période", "Travailler gratuitement", "Enregistrer seul", "Rien"], "correct": 0 },
+    { "q": "Que faire face à une clause IA incomprise ?", "options": ["La refuser et demander conseil", "La signer vite", "L'ignorer", "La supprimer en secret"], "correct": 0 },
+    { "q": "Quel usage se paie le plus cher dans la grille ?", "options": ["Le spot radio national", "Le message interne", "L'e-learning interne", "L'audition"], "correct": 0 },
+    { "q": "Que doit contenir le contrat d'un comédien de votre studio ?", "options": ["Rémunération, usages, clauses IA et confidentialité", "Seulement son nom", "Rien", "Sa date de naissance seule"], "correct": 0 }
+  ]
+}

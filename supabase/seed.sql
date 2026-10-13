@@ -20,7 +20,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
   ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true),
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 15, true),
-  ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
+  ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 17, true),
   ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
   ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true),
   ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
@@ -45533,6 +45533,507 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel premier contact proposer à un podcasteur ?', '["Rien","Un prix sans exemple","Un extrait de son épisode nettoyé pour montrer la différence","Une critique sévère"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Que préciser dans les conditions de travail ?', '["La couleur du casque","La qualité minimale des enregistrements reçus","Le nom du micro du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
+
+-- media-3-a
+delete from public.exam_questions where course_id = 'media-3-a';
+delete from public.module_questions where course_id = 'media-3-a';
+delete from public.lessons where course_id = 'media-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-3-a', 0, 'Se spécialiser, préparer ses démos et réaliser un diagnostic sonore', 'Six spécialités avancées et avantages depuis Madagascar, une démo par spécialité, diagnostic des contenus, de la cohérence, de la compréhension, de la qualité et de l''identité, offres à plus forte valeur.', 'Une voix claire, un bon enregistrement et une interprétation juste ouvrent les premières commandes. Les comédiens voix off les mieux payés vont plus loin : ils choisissent un **genre**, ont une démo pour chacun, et facturent selon l''**usage** de leur voix. Ce module vous aide à choisir votre spécialité et à proposer un diagnostic sonore comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la voix off.
+> 2. Choisir la vôtre selon votre voix et le marché.
+> 3. Préparer une démo par spécialité.
+> 4. Mener un diagnostic sonore pour un client.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Publicité** | Spots radio, télévision et Internet | Énergie, précision au dixième de seconde, sourire dans la voix |
+| 2 | **Formation et e-learning** | Modules de formation, tutoriels | Clarté, régularité sur des heures de texte, termes techniques |
+| 3 | **Livre audio** | Lecture intégrale de livres | Endurance, voix des personnages, constance |
+| 4 | **Personnages et doublage** | Dessins animés, jeux, doublage de films | Jeu d''acteur, synchronisation labiale |
+| 5 | **Téléphonie et assistants** | Messages d''accueil, serveurs vocaux, annonces | Neutralité, diction parfaite, cohérence entre messages |
+| 6 | **Documentaire et institutionnel** | Films d''entreprise, documentaires, campagnes publiques | Crédibilité, chaleur, rythme posé |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Voix en malgache** pour les campagnes de santé, d''éducation et de prévention, les spots radio et les applications.
+> - **Français clair et neutre** pour l''e-learning des entreprises et des organisations francophones.
+> - **Versions bilingues** malgache et français d''une même campagne.
+
+## Une démo par spécialité
+
+| Démo | Contenu conseillé |
+| --- | --- |
+| **Publicité** | 4 à 6 extraits courts et variés, 60 secondes au total |
+| **E-learning** | 60 à 90 secondes d''explication calme et claire |
+| **Livre audio** | 2 à 3 minutes avec narration et dialogues |
+| **Personnages** | Plusieurs voix et émotions, 60 secondes |
+| **Malgache** | Démo séparée, avec des textes adaptés au public malgache |
+
+> [!astuce]
+> Commencez la démo par **votre meilleur extrait**. Les clients et les agences de casting écoutent souvent seulement les 10 premières secondes avant de décider.
+
+> [!attention]
+> N''utilisez pas de vraies publicités de marques connues sans autorisation dans vos démos, et ne laissez pas croire que vous avez travaillé pour une marque si ce n''est pas le cas. Écrivez vos propres textes ou utilisez de vrais travaux avec l''accord du client.
+
+## Le diagnostic sonore : votre offre d''entrée
+
+| Domaine | Questions |
+| --- | --- |
+| **Contenus actuels** | Vidéos, standard téléphonique, formations : quelle voix, quelle qualité ? |
+| **Cohérence** | La même voix et le même ton partout ? |
+| **Compréhension** | Le public comprend-il la langue et le débit ? |
+| **Qualité technique** | Bruit de fond, écho, niveaux irréguliers ? |
+| **Identité** | La voix correspond-elle à l''image de la marque ? |
+
+### Le rapport de diagnostic
+
+```
+Client : Fahasalamana (centre de santé, exemple)
+Constat principal : le message d''accueil téléphonique est enregistré
+au téléphone, avec du bruit, en français seulement.
+
+Recommandations prioritaires
+1. Nouveau message d''accueil et d''attente en malgache et en français.
+2. Une même voix pour le standard, les vidéos et les annonces.
+3. Un guide de ton : chaleureux, rassurant, débit calme.
+
+Proposition
+- Enregistrement de 8 messages dans les 2 langues.
+- Puis un forfait annuel pour les mises à jour (horaires, campagnes).
+```
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Voix de marque** | Une voix unique pour tous les contenus pendant une période |
+| **Pack bilingue** | Deux langues, cohérence garantie |
+| **Forfait annuel** | Mises à jour régulières sans renégocier |
+| **Prestation complète** | Texte adapté, voix, montage, musique et mixage |
+
+> [!retenir]
+> - 6 spécialités : publicité, e-learning, livre audio, personnages, téléphonie, institutionnel.
+> - Une démo courte par spécialité, le meilleur extrait en premier.
+> - Le diagnostic sonore comme offre d''entrée.
+> - Vendre une voix de marque, des packs bilingues et des forfaits.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez 2 spécialités qui conviennent à votre voix et justifiez-les.
+> 2. Enregistrez une démo de 60 secondes pour l''une d''elles, avec vos propres textes.
+> 3. Réalisez le diagnostic sonore d''une organisation réelle ou fictive.
+> 4. Rédigez une proposition en 2 étapes.
+>
+> **À livrer** : votre positionnement, votre démo, votre diagnostic et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 0, 0, 'Par quoi commencer une démo ?', '["Par du silence","Par le meilleur extrait","Par une longue présentation","Par le prix"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 0, 1, 'Que ne faut-il pas faire dans une démo ?', '["Varier les extraits","Soigner le son","Laisser croire qu''on a travaillé pour une marque connue sans que ce soit vrai","Écrire ses propres textes"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 0, 2, 'Quelle offre d''entrée est proposée ?', '["Le diagnostic sonore","Un micro offert","Rien","Un spot gratuit"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-3-a', 1, 'Outils professionnels : micro XLR, interface audio, Adobe Audition et iZotope RX', 'Micros statiques et dynamiques, interface, 48 V et gain, acoustique simple, enregistrement multipiste et par insertion, affichage spectral, sonie, traitement par lots, nettoyage léger et sessions dirigées à distance.', 'Un micro USB et Audacity suffisent pour débuter. Les studios, les agences et les plateformes internationales attendent cependant une qualité « studio » constante. Ce module présente l''équipement et les logiciels professionnels : **micro XLR avec interface audio**, traitement acoustique, **Adobe Audition** et **iZotope RX**, ainsi que les sessions dirigées à distance.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir et régler un micro XLR et une interface audio.
+> 2. Améliorer l''acoustique de votre espace d''enregistrement.
+> 3. Enregistrer et monter efficacement avec Adobe Audition.
+> 4. Nettoyer un enregistrement avec iZotope RX sans l''abîmer.
+> 5. Participer à une session dirigée à distance.
+
+## Micro XLR et interface audio
+
+| Élément | Rôle |
+| --- | --- |
+| **Micro statique (à condensateur)** | Très précis, capte les détails ; demande une pièce bien traitée |
+| **Micro dynamique** | Moins sensible aux bruits de la pièce ; bon choix dans un espace imparfait |
+| **Interface audio** | Convertit le son du micro pour l''ordinateur, avec un préamplificateur |
+| **Alimentation fantôme (48 V)** | Nécessaire pour les micros statiques |
+| **Casque fermé** | S''écouter sans que le son revienne dans le micro |
+| **Filtre anti-pop et suspension** | Limiter les « p » et les vibrations |
+
+> [!astuce]
+> Réglez le **gain** pour que votre voix la plus forte reste nettement en dessous de 0 dB (par exemple vers −10 à −6 dB au maximum). Un son trop faible se rattrape ; un son saturé est perdu.
+
+## L''acoustique de votre espace
+
+| Problème | Solution simple |
+| --- | --- |
+| **Écho de la pièce** | Couvertures épaisses, matelas, vêtements autour de vous |
+| **Bruits extérieurs** | Enregistrer aux heures calmes, fermer les fenêtres |
+| **Bruits de l''ordinateur** | Ordinateur éloigné ou dans une autre pièce |
+| **Pluie sur un toit de tôle** | Reporter l''enregistrement ou se protéger avec une cabine bien isolée |
+| **Résonance des murs** | Panneaux absorbants ou meubles et étagères pleines |
+
+> [!madagascar]
+> Une petite cabine faite de couvertures épaisses tendues sur un cadre en bois ou en tuyaux donne souvent un meilleur résultat qu''un micro très cher dans une pièce nue. Pensez aussi aux **coupures d''électricité** : un onduleur pour l''ordinateur et l''interface évite de perdre une session.
+
+## Adobe Audition : enregistrer et monter
+
+| Fonction | Usage |
+| --- | --- |
+| **Enregistrement multipiste** | Voix, musique et effets sur des pistes séparées |
+| **Enregistrement par insertion (punch-in)** | Reprendre une phrase sans tout recommencer |
+| **Affichage spectral** | Voir les bruits (clics, souffle) et les retirer précisément |
+| **Préréglages d''effets** | Votre chaîne de traitement appliquée en un clic |
+| **Correspondance de sonie** | Mettre plusieurs fichiers au même niveau perçu |
+| **Traitement par lots** | Exporter des dizaines de fichiers au bon format |
+
+> [!definition] Sonie (loudness)
+> Le niveau sonore **perçu** par l''oreille, mesuré en LUFS. Les plateformes et les clients demandent souvent une valeur précise (par exemple −16 LUFS pour certains contenus Internet, −23 LUFS pour la télévision européenne). Lisez toujours la consigne du client.
+
+## iZotope RX : nettoyer sans abîmer
+
+| Module | Usage |
+| --- | --- |
+| **Réduction de bruit** | Souffle continu, ventilateur |
+| **Suppression des clics de bouche** | Petits bruits de salive |
+| **Contrôle des respirations** | Atténuer les respirations trop fortes |
+| **Réduction de réverbération** | Diminuer l''écho de la pièce |
+| **Réparation spectrale** | Effacer un bruit ponctuel (chien, porte) |
+
+> [!attention]
+> Un nettoyage trop fort rend la voix **métallique** et artificielle. Beaucoup de clients demandent une voix « brute » ou à peine nettoyée, pour la traiter eux-mêmes. Un bon enregistrement vaut toujours mieux qu''une réparation.
+
+## Les sessions dirigées à distance
+
+| Outil | Usage |
+| --- | --- |
+| **Outils de session à distance pour studios** | Le client entend votre micro en haute qualité et vous dirige en direct |
+| **Appel vidéo avec partage du son** | Sessions simples, enregistrement local en parallèle |
+| **Enregistrement local de sécurité** | Toujours enregistrer aussi sur votre ordinateur |
+
+> [!madagascar]
+> Une session dirigée demande une **connexion stable**. Testez-la avant avec le client, prévoyez une connexion de secours et proposez des sessions aux heures où votre réseau est le plus fiable.
+
+> [!retenir]
+> - Micro statique ou dynamique selon la pièce, interface, 48 V, casque fermé, gain prudent.
+> - Une acoustique traitée compte plus que le prix du micro.
+> - Audition : multipiste, insertion, spectral, sonie, traitement par lots.
+> - RX : nettoyer légèrement, sans rendre la voix artificielle.
+> - Sessions dirigées : connexion testée et enregistrement local de sécurité.
+
+## Exercice pratique : votre studio professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Mesurez le bruit de fond de votre espace, améliorez l''acoustique et mesurez de nouveau.
+> 2. Enregistrez 2 minutes de texte avec des reprises par insertion.
+> 3. Nettoyez légèrement et réglez la sonie selon une consigne choisie.
+> 4. Faites une session test à distance avec un ami qui vous dirige.
+>
+> **À livrer** : les enregistrements avant et après, le fichier final et un compte rendu de la session.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 1, 0, 'Quel micro choisir dans une pièce imparfaite ?', '["Le micro du téléphone","Aucun","Un micro dynamique","Un micro statique très sensible"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 1, 1, 'Que mesure la sonie en LUFS ?', '["La langue","La durée","Le poids du fichier","Le niveau sonore perçu"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 1, 2, 'Quel est le risque d''un nettoyage trop fort ?', '["Un fichier plus court","Aucun","Une voix plus naturelle","Une voix métallique et artificielle"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-3-a', 2, 'Qualité et rapidité : préparation, enregistrement, livraison et santé vocale', 'Texte annoté et prononciations, enregistrement par blocs et par insertion, normes de livraison, découpage et noms de fichiers, grille de contrôle, délais types, échauffement, pauses et limite quotidienne.', 'Un comédien voix off professionnel livre vite, toujours au même niveau, avec des fichiers prêts à l''emploi. Ce module vous donne une méthode de travail complète : préparation du texte, enregistrement efficace, montage, normes de livraison, contrôle qualité, délais et santé vocale.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer un texte pour enregistrer sans hésitation.
+> 2. Enregistrer efficacement par blocs.
+> 3. Monter et livrer selon les normes demandées.
+> 4. Contrôler chaque fichier avant livraison.
+> 5. Tenir des délais courts en protégeant votre voix.
+
+## Préparer le texte
+
+| Annotation | Usage |
+| --- | --- |
+| **Mots importants soulignés** | Les appuyer légèrement |
+| **Pauses marquées** (/ courte, // longue) | Respirer au bon endroit |
+| **Prononciations notées** | Noms propres, sigles, mots étrangers |
+| **Intention écrite** | « Rassurant », « enthousiaste », « confidentiel » |
+| **Durée cible** | Pour une publicité au temps exact |
+
+> [!astuce]
+> Avant d''enregistrer, demandez au client la **prononciation** des noms propres, des sigles et des termes techniques, et notez-la. Une seule erreur sur le nom d''une entreprise oblige à réenregistrer.
+
+## Enregistrer efficacement
+
+| Méthode | Principe |
+| --- | --- |
+| **Par blocs** | Enregistrer un paragraphe ou une phrase à la fois |
+| **Reprise immédiate** | En cas d''erreur, se taire, reprendre au début de la phrase |
+| **Clap ou repère** | Un petit bruit ou une pause longue pour retrouver les erreurs au montage |
+| **Enregistrement par insertion** | Le logiciel rejoue la fin de la phrase précédente et vous enchaînez |
+| **Plusieurs prises** | Pour la publicité, 2 ou 3 intentions différentes |
+
+## Les normes de livraison courantes
+
+| Élément | Exemple de consigne |
+| --- | --- |
+| **Format** | WAV, 48 kHz, 24 bits, mono |
+| **Niveau** | Sonie demandée, crêtes sous une valeur précise |
+| **Silence** | Une demi-seconde au début et à la fin |
+| **Ambiance** | Quelques secondes de silence de la pièce, livrées à part, si demandé |
+| **Découpage** | Un fichier par phrase, par écran ou par chapitre |
+| **Noms de fichiers** | Selon le tableau du client, sans erreur |
+
+> [!exemple] Projet e-learning
+> Un module de formation contient 45 écrans. Le client fournit un tableau avec un identifiant par écran (par exemple `M02_E07`). Vous livrez 45 fichiers WAV nommés exactement comme le tableau, au même niveau, avec une demi-seconde de silence au début et à la fin. Un traitement par lots dans votre logiciel fait l''export en quelques minutes.
+
+## Le contrôle avant livraison
+
+| Point | Vérification |
+| --- | --- |
+| **Texte** | Chaque mot conforme au script, rien d''oublié |
+| **Prononciation** | Noms propres et sigles justes |
+| **Bruits** | Pas de clics, de respirations fortes ni de bruits extérieurs |
+| **Niveau** | Régulier d''un fichier à l''autre |
+| **Format et noms** | Conformes à la consigne |
+| **Écoute finale** | Au casque et sur un petit haut-parleur de téléphone |
+
+## Délais et santé vocale
+
+| Délai type | Prestation |
+| --- | --- |
+| 24 heures | Spot ou message court |
+| 48 à 72 heures | Module d''e-learning de 10 à 20 minutes |
+| Selon planning | Livre audio (quelques heures de voix finie par jour) |
+
+| Habitude | Pourquoi |
+| --- | --- |
+| **Échauffement** de 10 minutes | Voix prête et stable |
+| **Hydratation** régulière | Moins de bruits de bouche |
+| **Pauses** toutes les 45 à 60 minutes | Éviter la fatigue vocale |
+| **Limite quotidienne** de voix finie | Garder la même qualité à la fin qu''au début |
+| **Repos** en cas de rhume ou d''enrouement | Ne pas abîmer la voix pour une commande |
+
+> [!madagascar]
+> Planifiez vos enregistrements aux heures **calmes** (tôt le matin ou le soir selon votre quartier) et gardez une marge dans vos délais pour les jours de pluie forte ou de coupure. Annoncez des délais que vous pouvez tenir même avec ces imprévus.
+
+> [!retenir]
+> - Texte annoté : mots importants, pauses, prononciations, intention, durée.
+> - Enregistrer par blocs, avec repères et insertion.
+> - Respecter exactement le format, le niveau, le silence, le découpage et les noms.
+> - Contrôler texte, prononciation, bruits, niveau, format, et écouter sur téléphone.
+> - Délais réalistes et habitudes de santé vocale.
+
+## Exercice pratique : une livraison e-learning
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Écrivez ou trouvez un texte libre de droits de 15 écrans courts et créez le tableau d''identifiants.
+> 2. Annotez le texte, puis enregistrez-le par blocs.
+> 3. Montez et exportez 15 fichiers nommés selon le tableau, au même niveau.
+> 4. Passez votre grille de contrôle et notez le temps total.
+>
+> **À livrer** : le texte annoté, les 15 fichiers, la grille remplie et votre temps de travail.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 2, 0, 'Que demander au client avant d''enregistrer ?', '["Rien","Son mot de passe","La prononciation des noms propres et des sigles","Sa couleur préférée"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 2, 1, 'Quel format est souvent demandé ?', '["MP3 de faible qualité","WAV, 48 kHz, 24 bits, mono","JPG","PDF"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 2, 2, 'Pourquoi une limite quotidienne de voix finie ?', '["Travailler moins","Pour facturer plus","Garder la même qualité du début à la fin","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-3-a', 3, 'Clients internationaux : plateformes, auditions, contrats d''usage et IA', 'Plateformes, agences, studios et livres audio, auditions efficaces, langues et accents annoncés honnêtement, usage selon média, durée, territoire et exclusivité, cession totale, clauses sur l''IA et le clonage de voix.', 'Studios, agences de casting, producteurs d''e-learning et éditeurs de livres audio cherchent des voix dans de nombreuses langues. Ce module vous prépare à travailler avec eux : plateformes et agences, auditions, accents et langues, contrats d''usage et clauses sur l''intelligence artificielle.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Trouver des clients sur les plateformes et auprès des agences.
+> 2. Réussir une audition à distance.
+> 3. Présenter clairement vos langues et accents.
+> 4. Comprendre un contrat d''usage de la voix.
+> 5. Protéger votre voix face au clonage par IA.
+
+## Plateformes et agences
+
+| Canal | Principe | Point d''attention |
+| --- | --- | --- |
+| **Plateformes de voix off** | Les clients publient des demandes, les comédiens envoient des auditions | Vérifier qu''elles acceptent les comédiens basés à Madagascar et leurs moyens de paiement |
+| **Agences de voix** | Une agence vous représente et vous propose des castings | Sélection sur démo, commission |
+| **Studios de doublage et d''e-learning** | Ils cherchent des voix régulières dans certaines langues | Contact direct avec démo ciblée |
+| **Producteurs de livres audio** | Lecture de livres entiers | Démo longue et constance |
+
+## Réussir une audition à distance
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Lire toute la demande** | Langue, accent, ton, durée, délai, budget |
+| **Enregistrer seulement l''extrait demandé** | Ne pas livrer gratuitement le texte complet |
+| **Qualité finale** | L''audition est jugée comme un produit fini |
+| **Envoyer vite** | Les premières auditions sont souvent écoutées en premier |
+| **Message court** | Une ou deux phrases, en anglais si la demande est en anglais |
+
+> [!exemple] Message d''audition
+> « Hello, please find my audition for the e-learning narration in French. I can deliver the full 25 minutes in WAV 48 kHz within 3 working days. Kind regards, Fara. »
+
+## Langues et accents
+
+| Description | Exemple |
+| --- | --- |
+| **Langue maternelle et langues de travail** | Malgache (maternelle), français (courant), anglais (niveau à préciser honnêtement) |
+| **Accent en français** | Préciser comment on vous perçoit et proposer des extraits |
+| **Variétés de malgache** | Malgache officiel, et variantes régionales si vous les maîtrisez |
+
+> [!attention]
+> N''annoncez jamais une langue ou un accent que vous ne maîtrisez pas au niveau professionnel. Un client qui reçoit une voix avec un accent inattendu ne vous recommandera pas, et vous risquez de devoir rembourser.
+
+## Le contrat d''usage de la voix
+
+> [!definition] Usage (droits de diffusion)
+> L''endroit, la durée et le territoire où l''enregistrement sera utilisé. En voix off, le prix dépend autant de l''**usage** que du temps passé : un spot national à la télévision se paie bien plus qu''une vidéo interne.
+
+| Élément | Exemples |
+| --- | --- |
+| **Média** | Interne, Internet, réseaux sociaux, radio, télévision, cinéma |
+| **Durée** | 1 an, 3 ans, sans limite |
+| **Territoire** | Madagascar, Afrique, Europe, monde |
+| **Exclusivité** | Interdiction de faire la voix d''une marque concurrente pendant une période |
+| **Cession totale** (« buyout ») | Tous les usages sans limite, à un prix nettement plus élevé |
+
+## Les clauses sur l''IA et le clonage de voix
+
+| Risque | Protection |
+| --- | --- |
+| **Entraînement d''une IA avec vos enregistrements** | Clause interdisant cet usage sans accord écrit séparé |
+| **Création d''une voix synthétique à partir de la vôtre** | Accord spécifique, durée limitée, rémunération |
+| **Réutilisation de vos phrases pour de nouveaux textes** | Interdite sans accord |
+| **Plateformes** | Lire leurs conditions sur l''IA avant d''accepter |
+
+> [!attention]
+> Votre voix est votre outil de travail. Une clause floue peut permettre à un client de **cloner votre voix** et de ne plus jamais faire appel à vous. Lisez chaque contrat, refusez les clauses d''usage par l''IA que vous ne comprenez pas et demandez conseil à un professionnel du droit pour les contrats importants.
+
+> [!madagascar]
+> Les voix en malgache sont rares dans les bases de données des entreprises d''IA, ce qui les rend **recherchées**. Si une entreprise vous propose d''enregistrer des heures de malgache pour une voix de synthèse, faites-vous expliquer précisément l''usage, la durée et la rémunération, et faites relire le contrat.
+
+> [!retenir]
+> - Plateformes, agences, studios et producteurs de livres audio.
+> - Auditions de qualité finale, rapides, limitées à l''extrait demandé.
+> - Langues et accents annoncés honnêtement.
+> - Prix selon l''usage : média, durée, territoire, exclusivité, cession totale.
+> - Clauses claires sur l''IA et le clonage de voix.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Repérez 3 plateformes ou agences et vérifiez leurs conditions pour Madagascar.
+> 2. Enregistrez 2 auditions à partir de demandes réelles ou fictives, avec leur message.
+> 3. Rédigez votre présentation de langues et d''accents.
+> 4. Rédigez la clause sur l''IA que vous voulez voir dans vos contrats.
+>
+> **À livrer** : votre liste, vos auditions, votre présentation et votre clause.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 3, 0, 'Qu''enregistrer pour une audition ?', '["Une chanson","Le texte complet gratuitement","Rien","Seulement l''extrait demandé, en qualité finale"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 3, 1, 'De quoi dépend le prix en voix off ?', '["De l''usage autant que du temps passé","De la couleur du micro","De rien","Seulement de la durée de la séance"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 3, 2, 'Que prévoir face au clonage de voix ?', '["Rien","Accepter toutes les clauses","Une clause interdisant cet usage sans accord écrit séparé","Changer de voix"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-3-a', 4, 'Développer son activité : tarifs selon l''usage, fidélisation et studio', 'Trois voies, grille de tarifs selon l''usage, extension d''usage, voix de marque et fiche technique client, studio, contrats des comédiens et accord parental, évolution.', 'Un comédien voix off expérimenté combine des clients réguliers, des tarifs selon l''usage et parfois un petit studio. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire une grille de tarifs selon l''usage.
+> 3. Fidéliser des clients réguliers.
+> 4. Organiser un petit studio et une équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Comédien spécialisé** | Une ou deux spécialités, clients réguliers | Ceux qui aiment interpréter chaque jour |
+| **Voix de marques** | Voix attitrée de quelques entreprises et organisations | Ceux qui ont une voix reconnaissable |
+| **Studio voix et son** | Casting, enregistrement, direction et mixage | Ceux qui aiment organiser et la technique |
+
+## Une grille de tarifs selon l''usage
+
+| Prestation | Usage | Exemple de prix |
+| --- | --- | --- |
+| **Message téléphonique** | Standard d''une entreprise, 1 an | 80 000 Ar par message |
+| **Vidéo interne ou e-learning** | Usage interne | 60 000 Ar par minute finie |
+| **Vidéo Internet et réseaux sociaux** | 1 an, Madagascar | 250 000 Ar pour 60 secondes |
+| **Spot radio national** | 1 an, Madagascar | 400 000 Ar par spot |
+| **Livre audio** | Selon contrat | Prix par heure finie |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché et les usages demandés.)*
+
+> [!attention]
+> Indiquez toujours l''**usage** sur votre devis et votre facture. Si le client veut ensuite diffuser à la télévision ou à l''étranger, vous pourrez facturer une extension d''usage.
+
+## Fidéliser des clients réguliers
+
+| Action | Exemple |
+| --- | --- |
+| **Voix de marque** | Contrat annuel avec un nombre de messages inclus |
+| **Réactivité** | Réponse dans la journée, délais toujours tenus |
+| **Fiche client** | Réglages du micro, distance, ton, prononciations : même son à chaque fois |
+| **Petites corrections offertes** | Une erreur de votre part corrigée gratuitement et vite |
+| **Relance** | Proposer les mises à jour (horaires, nouvelles campagnes) |
+
+> [!astuce]
+> Gardez pour chaque client une **fiche technique** : micro, réglages, distance, préréglages de traitement, ton et rythme. Six mois plus tard, votre voix sonnera exactement comme la première fois, ce que les clients remarquent et apprécient.
+
+## Organiser un petit studio et une équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Comédiens** | Voix d''hommes, de femmes, d''enfants (avec accord parental), plusieurs langues |
+| **Ingénieur du son** | Enregistrement, nettoyage, mixage |
+| **Directeur artistique voix** | Casting et direction des comédiens |
+| **Vous** | Relation client, contrôle qualité, contrats |
+
+> [!madagascar]
+> Peu de studios proposent des castings professionnels en **malgache** pour des clients étrangers (applications, jeux, campagnes internationales, doublage). Un petit studio bien équipé, avec plusieurs voix et des contrats clairs, peut se faire une place sur ce marché.
+
+> [!attention]
+> Avec d''autres comédiens, signez un contrat pour chacun : rémunération, usages autorisés de leur voix, clauses sur l''IA, confidentialité. Pour une voix d''enfant, il faut l''**accord écrit des parents** et des conditions de travail adaptées.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Directeur artistique voix** | Casting, direction d''acteurs |
+| **Narrateur de livres audio** | Endurance, interprétation longue |
+| **Comédien de doublage** | Synchronisation labiale, jeu |
+| **Monteur audio et podcast** | Voir la formation Monteur audio et podcast |
+| **Formateur** | Ateliers de voix et de diction |
+
+> [!retenir]
+> - Comédien spécialisé, voix de marques ou studio.
+> - Prix selon l''usage, toujours indiqué sur le devis.
+> - Fiche technique par client pour un son constant.
+> - Un studio avec contrats, clauses IA et accord parental pour les enfants.
+> - Évoluer vers la direction, le livre audio, le doublage ou la formation.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez votre grille de tarifs selon l''usage.
+> 3. Créez une fiche technique client complète.
+> 4. Rédigez une proposition de voix de marque annuelle pour une entreprise réelle ou fictive.
+>
+> **À livrer** : votre plan, votre grille, votre fiche technique et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 4, 0, 'Que faut-il indiquer sur chaque devis ?', '["La marque du micro","L''usage","Rien","Son âge"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 4, 1, 'À quoi sert une fiche technique client ?', '["Remplacer le contrat","Retrouver exactement le même son à chaque fois","Décorer le studio","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-3-a', 4, 2, 'Que faut-il pour une voix d''enfant ?', '["Seulement l''accord de l''enfant","Un micro spécial","Rien","L''accord écrit des parents et des conditions adaptées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Quelle spécialité demande une précision au dixième de seconde ?', '["La téléphonie","Le livre audio","L''institutionnel","La publicité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Quelle spécialité demande le plus d''endurance ?', '["Le livre audio","Le spot de 10 secondes","Le message d''accueil","Le logo sonore"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Quel avantage a une voix malgache ?', '["Elle est interdite","Elle est recherchée pour les campagnes et les applications en malgache","Elle remplace toutes les langues","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Combien de temps dure une démo publicité ?', '["10 minutes","3 secondes","1 heure","Environ 60 secondes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que regarde le diagnostic sonore ?', '["Contenus, cohérence, compréhension, qualité et identité","Les serveurs","Seulement le prix","Le logo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que nécessite un micro statique ?', '["Un câble USB uniquement","Rien","L''alimentation fantôme 48 V","Une batterie de voiture"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Comment régler le gain ?', '["Au minimum","Au hasard","Au maximum","La voix la plus forte nettement sous 0 dB"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que compte le plus pour la qualité ?', '["Une acoustique traitée","La couleur de la pièce","Le prix du micro seul","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que permet l''enregistrement par insertion ?', '["Reprendre une phrase sans tout recommencer","Ajouter de la musique","Supprimer la voix","Publier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'À quoi sert l''affichage spectral ?', '["Changer de langue","Payer","Voir et retirer précisément les bruits","Écrire le script"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que demandent souvent les clients ?', '["Une voix robotique","Une voix très traitée","Rien","Une voix brute ou à peine nettoyée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que faire pendant une session dirigée à distance ?', '["Changer d''ordinateur","Ne rien enregistrer","Enregistrer aussi en local par sécurité","Couper le micro"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que signifie // dans un texte annoté ?', '["La fin","Une pause longue","Un mot important","Une faute"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que faire en cas d''erreur pendant l''enregistrement ?', '["Se taire et reprendre au début de la phrase","Rire","Tout arrêter","Continuer sans rien dire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Pourquoi un silence au début et à la fin des fichiers ?', '["Ce n''est jamais demandé","C''est souvent une consigne de livraison","Pour allonger le fichier","Pour cacher des erreurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Comment nommer les fichiers d''un projet e-learning ?', '["Exactement comme le tableau du client","Avec son prénom seulement","Au hasard","Sans nom"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Où faire une écoute finale ?', '["Au casque et sur un haut-parleur de téléphone","Seulement sur des enceintes de concert","Dans la rue","Nulle part"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que faire en cas de rhume ou d''enrouement ?', '["Se reposer et ne pas abîmer sa voix","Crier","Enregistrer quand même toute la journée","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que vérifier avant d''utiliser une plateforme de voix off ?', '["Le nombre de ses employés","Qu''elle accepte les comédiens basés à Madagascar et leurs paiements","Sa couleur","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Comment annoncer ses langues ?', '["Toutes les langues","Sans les préciser","En exagérant","Honnêtement, selon son vrai niveau"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Qu''est-ce qu''une cession totale (buyout) ?', '["Une audition","Tous les usages sans limite, à un prix plus élevé","Un usage interne","Un essai gratuit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Qu''est-ce que l''exclusivité dans un contrat voix ?', '["Enregistrer seul","Rien","Travailler gratuitement","Ne pas faire la voix d''un concurrent pendant une période"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que faire face à une clause IA incomprise ?', '["La supprimer en secret","L''ignorer","La signer vite","La refuser et demander conseil"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Quel usage se paie le plus cher dans la grille ?', '["Le spot radio national","Le message interne","L''e-learning interne","L''audition"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-3-a', 'Que doit contenir le contrat d''un comédien de votre studio ?', '["Seulement son nom","Rien","Rémunération, usages, clauses IA et confidentialité","Sa date de naissance seule"]'::jsonb, 2);
 
 -- media-3-f
 delete from public.exam_questions where course_id = 'media-3-f';
