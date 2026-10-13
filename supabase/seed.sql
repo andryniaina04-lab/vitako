@@ -13233,7 +13233,7 @@ Avant d''envoyer un visuel à un client, vérifiez :
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-f', 1, 0, 'Sur une affiche de concert, que doit-on lire en premier ?', '["Les conditions de vente","Le numéro de téléphone","Le nom du graphiste","Le nom de l''artiste"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-f', 1, 1, 'Combien de polices utiliser au maximum sur un visuel simple ?', '["Autant que possible","Une par ligne","Deux","Cinq"]'::jsonb, 2);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-0-f', 1, 2, 'Que dit la règle 60-30-10 pour les couleurs ?', '["60 % couleur principale, 30 % neutre, 10 % accent","60 % texte, 30 % image, 10 % vide","60 couleurs différentes au maximum","Utiliser 3 couleurs à parts égales"]'::jsonb, 0);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-f', 2, 'Les outils gratuits et payants, les formats', 'Les outils gratuits et payants, les formats de fichiers, les tailles, l''impression et le rangement des fichiers.', 'Quatre outils gratuits couvrent presque toutes les commandes d''un débutant, et leurs équivalents payants prennent le relais quand les clients l''exigent. Mais le vrai savoir-faire est ailleurs : livrer chaque visuel au bon format, à la bonne taille, et retrouver ses fichiers en 10 secondes. C''est l''objet de ce module.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-0-f', 2, 'Les outils gratuits et payants, les formats', 'Les outils gratuits (dont la nouvelle suite ArtCraft, encore en test) et payants, les formats de fichiers, les tailles, l''impression et le rangement des fichiers.', 'Quatre outils gratuits couvrent presque toutes les commandes d''un débutant, et leurs équivalents payants prennent le relais quand les clients l''exigent. Mais le vrai savoir-faire est ailleurs : livrer chaque visuel au bon format, à la bonne taille, et retrouver ses fichiers en 10 secondes. C''est l''objet de ce module.
 
 > [!objectifs]
 > À la fin de ce module, vous saurez :
@@ -13270,6 +13270,29 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 3. Partez d''une page vide ou d''un modèle, puis **changez tout** : couleurs, polices, photos, textes. Un modèle laissé tel quel se reconnaît tout de suite.
 4. Enregistrez vos couleurs et polices dans le **Kit de marque** (Brand Kit) quand vous travaillez souvent pour le même client (la version gratuite est limitée ; Canva Pro permet un kit par client).
 5. Exportez avec **Partager → Télécharger**, en choisissant le format (voir plus bas).
+
+## Un nouvel outil gratuit à tester : ArtCraft
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source**, publiée en octobre 2026 sur GitHub par un développeur indépendant. Elle veut proposer des équivalents gratuits des grands logiciels d''Adobe.
+
+| Application ArtCraft | Équivalent payant | Utile pour un graphiste ? |
+| --- | --- | --- |
+| **Photocraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
+| **Vectorcraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
+| **Designcraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
+| **Lightcraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
+| **Printcraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l''imprimeur |
+| Filmcraft et Effectcraft | Premiere Pro et After Effects | Pour la vidéo et l''animation |
+
+> [!attention] Une version encore en test
+> ArtCraft est une version **alpha** : son créateur lui-même la dit « pas du tout prête », et les premiers utilisateurs signalent des bugs (par exemple des outils de transformation qui ne répondent pas toujours). Pour l''instant :
+> - entraînez-vous avec sur vos **projets personnels** et votre portfolio ;
+> - gardez **Photopea, Inkscape, Canva et Figma** pour les travaux de vos clients ;
+> - **enregistrez souvent** et vérifiez chaque fichier exporté avant de l''envoyer ;
+> - téléchargez-le **uniquement depuis sa page officielle sur GitHub**, jamais depuis un site de téléchargement inconnu, et vérifiez les systèmes pris en charge (Windows, Mac, Linux).
+
+> [!astuce]
+> Suivez les nouvelles versions d''ArtCraft : si l''outil devient stable, savoir déjà l''utiliser sera un vrai avantage, surtout depuis Madagascar où les abonnements Adobe coûtent cher. Mentionnez-le sur votre profil seulement quand vous l''aurez utilisé pour de vrais projets.
 
 ## Les outils payants
 
@@ -13639,6 +13662,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi présenter un logo « en situation » (enseigne, t-shirt…) ?', '["Pour cacher les défauts","Parce que c''est obligatoire","Pour augmenter le prix sans raison","Pour que le client se projette et valide plus vite"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Il est personnalisé, court, avec un exemple et une proposition concrète","Il demande directement de l''argent","Il est très long et détaillé","Il est envoyé à 50 personnes à l''identique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Les clients préfèrent un prix fixe et choisissent souvent la formule du milieu","Parce que les plateformes l''exigent","Pour compliquer le choix","Pour éviter de faire un devis"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-0-f', 'Comment utiliser ArtCraft aujourd''hui ?', '["L''utiliser pour tous les travaux des clients","S''entraîner sur ses projets personnels, en gardant les outils stables pour les clients","Le télécharger depuis n''importe quel site","Ne jamais l''essayer"]'::jsonb, 1);
 
 -- design-1-a
 delete from public.exam_questions where course_id = 'design-1-a';

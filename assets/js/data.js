@@ -7,7 +7,7 @@ export const DOMAINS = [
    {
     "name": "Graphiste",
     "blurb": "crée des logos, des visuels pour les réseaux sociaux et des supports imprimés",
-    "tools": "Canva, Figma, Photopea et Inkscape",
+    "tools": "Canva, Figma, Photopea, Inkscape et ArtCraft (en test)",
     "paid": "Adobe Illustrator, Photoshop, InDesign et Canva Pro"
    },
    {
@@ -1160,7 +1160,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les outils gratuits et payants, les formats",
-    "minutes": 9
+    "minutes": 11
    },
    {
     "title": "Créer un logo et une identité visuelle",

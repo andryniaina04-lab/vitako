@@ -89,7 +89,7 @@
     },
     {
       "title": "Les outils gratuits et payants, les formats",
-      "summary": "Les outils gratuits et payants, les formats de fichiers, les tailles, l'impression et le rangement des fichiers.",
+      "summary": "Les outils gratuits (dont la nouvelle suite ArtCraft, encore en test) et payants, les formats de fichiers, les tailles, l'impression et le rangement des fichiers.",
       "file": "module-3.md",
       "video_url": "",
       "questions": [
@@ -450,6 +450,16 @@
         "Pour compliquer le choix",
         "Parce que les plateformes l'exigent",
         "Pour éviter de faire un devis"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Comment utiliser ArtCraft aujourd'hui ?",
+      "options": [
+        "S'entraîner sur ses projets personnels, en gardant les outils stables pour les clients",
+        "L'utiliser pour tous les travaux des clients",
+        "Le télécharger depuis n'importe quel site",
+        "Ne jamais l'essayer"
       ],
       "correct": 0
     }
