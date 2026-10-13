@@ -10,7 +10,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
-  ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, false),
+  ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 14, false),
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
@@ -12644,6 +12644,563 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Où publier une étude de cas visible par les recruteurs ?', '["Nulle part","Un SMS","Un groupe privé","Behance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel partenaire peut vous apporter des projets de design ?', '["Un concurrent direct","Personne","Un client mécontent","Un développeur freelance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quand les fichiers sont-ils transférés au client ?', '["Au premier appel","Avant de commencer","Après le paiement complet","Jamais"]'::jsonb, 2);
+
+-- design-3-a
+delete from public.exam_questions where course_id = 'design-3-a';
+delete from public.module_questions where course_id = 'design-3-a';
+delete from public.lessons where course_id = 'design-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-a', 0, 'Se spécialiser, réussir un test et retoucher avec éthique', 'Les 6 spécialités avancées, le mannequin invisible, le test de retouche, le diagnostic des images d''un client, l''éthique de la retouche avancée et les offres à forte valeur.', 'Détourer des produits et corriger des couleurs ouvre les premières missions. Les retoucheurs les mieux payés livrent des images **haut de gamme**, en grand volume et dans les délais, selon le guide de style précis de chaque client : studios photo, marques de mode, agences immobilières, photographes de mariage. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la retouche.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Faire un test de retouche et un diagnostic des images d''un client.
+> 4. Respecter les règles éthiques de la retouche avancée.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **E-commerce en volume** | Des centaines de photos de produits par semaine selon un guide de style | Détourage rapide, mannequin invisible, actions, régularité |
+| 2 | **Beauté et portrait haut de gamme** | Peau naturelle, lumière sculptée, détails | Séparation de fréquences, dodge and burn, couleurs de peau |
+| 3 | **Immobilier et hôtellerie** | Intérieurs lumineux et fidèles | Fusion d''expositions, verticales, fenêtres, couleurs mixtes |
+| 4 | **Mariage et événementiel** | Tri, développement et harmonisation de grandes séries | Lightroom, préréglages, cohérence |
+| 5 | **Restauration de photos anciennes** | Réparer rayures, déchirures, taches, couleurs passées | Clonage précis, reconstruction, colorisation prudente |
+| 6 | **Montage publicitaire** | Assembler plusieurs images en une seule | Masques, lumière, perspective, ombres |
+
+> [!definition] Mannequin invisible (ghost mannequin)
+> Une technique de mode : le vêtement est photographié sur un mannequin, puis l''intérieur (col, dos) est ajouté depuis une autre photo pour donner l''impression d''un vêtement porté par une personne invisible.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **E-commerce en volume** : les studios et marques européens cherchent des retoucheurs réguliers pour livrer du jour au lendemain, ce que permet le faible décalage horaire.
+> - **Développement de séries pour photographes** francophones, surtout pendant la saison des mariages.
+> - **Hôtellerie et tourisme** : les établissements de l''océan Indien ont besoin de photos fidèles et attirantes.
+
+## Le test de retouche
+
+Beaucoup de clients professionnels commencent par un **test** : 3 à 5 images à retoucher selon leur guide.
+
+| Étape | Bonne pratique |
+| --- | --- |
+| **Lire le guide** | Marges, fond, ombres, format, nom des fichiers |
+| **Poser des questions** | Avant de commencer, pas après |
+| **Soigner chaque détail** | Bords, poussières, plis, couleurs fidèles au produit |
+| **Respecter le délai** | Livrer à l''heure annoncée |
+| **Joindre une note** | Temps passé par image, questions, choix faits |
+
+> [!attention]
+> Un test gratuit doit rester **court** (quelques images). Si un client demande des dizaines d''images « pour tester », proposez un test payé : c''est probablement du travail réel.
+
+## Le diagnostic des images d''un client
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Régularité** | Même cadrage, même fond, même taille de produit sur toutes les images |
+| **Couleurs** | Fidélité au produit réel, régularité entre les séries |
+| **Qualité** | Poussières, plis, bords, reflets |
+| **Formats** | Taille, poids, format adapté aux plateformes |
+| **Délais** | Combien de temps entre la séance et la mise en ligne ? |
+| **Coût** | Combien coûte la retouche actuelle par image ? |
+
+> [!exemple] Constat d''un diagnostic
+> Sur la boutique d''une marque de bijoux, les produits occupent tantôt 50 %, tantôt 90 % de l''image ; trois blancs de fond différents ; ombres présentes sur certaines images seulement. Proposition : un **guide de style** et la reprise des 240 images existantes, puis la retouche des nouvelles chaque semaine.
+
+## L''éthique de la retouche avancée
+
+| Règle | Exemple |
+| --- | --- |
+| **Fidélité du produit** | Ne pas changer la couleur ou la forme réelle d''un produit vendu |
+| **Immobilier honnête** | Ne pas effacer un défaut permanent (fissure, pylône) ni ajouter une vue qui n''existe pas |
+| **Portrait respectueux** | Garder la texture de la peau, ne pas transformer le corps sans demande claire |
+| **Images générées par IA** | Les signaler quand le client ou la loi l''exige ; respecter les conditions des outils |
+| **Droits d''auteur** | Ne jamais utiliser une image sans droit dans un montage |
+
+> [!attention]
+> Certains pays ont des règles sur les photos retouchées utilisées en publicité (par exemple des mentions obligatoires quand la silhouette d''un mannequin a été modifiée). Le client est responsable de ces mentions, mais vous devez **signaler** ce que vous avez modifié.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Guide de style et reprise du catalogue** | Guide écrit, actions, reprise des images | Selon le volume |
+| **Forfait e-commerce mensuel** | Jusqu''à 400 images par mois, livraison en 24 à 48 h | 1 200 000 Ar par mois |
+| **Retouche beauté haut de gamme** | Par image, avec 2 séries de corrections | 40 000 Ar par image |
+| **Développement d''un mariage** | Tri, développement, 30 retouches avancées | 600 000 Ar par mariage |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : e-commerce, beauté, immobilier, mariage, restauration, montage.
+> - Réussir un test : guide lu, questions avant, détails, délai, note.
+> - Le diagnostic montre l''irrégularité et ouvre une mission.
+> - Fidélité, honnêteté, respect, transparence sur l''IA, droits d''auteur.
+> - Des offres à valeur : guide de style, forfait mensuel, haut de gamme.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Faites le diagnostic des images d''une boutique en ligne réelle (sans la contacter) dans les 6 domaines.
+> 3. Rédigez un mini guide de style pour cette boutique.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre diagnostic, votre guide et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 0, 0, 'Qu''est-ce que le mannequin invisible ?', '["Un type de fond","Un outil de Lightroom","Un vêtement qui semble porté par une personne invisible","Un mannequin en plastique transparent"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 0, 1, 'Que faire si un client demande des dizaines d''images en test gratuit ?', '["Livrer en basse qualité","Proposer un test payé","Tout faire gratuitement","Refuser sans répondre"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 0, 2, 'Peut-on effacer une fissure permanente sur une photo immobilière ?', '["Oui, pour vendre plus vite","Non, ce serait trompeur","Oui, si personne ne voit","Oui, toujours"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-a', 1, 'Outils professionnels : Photoshop et Lightroom avancés', 'Séparation de fréquences, dodge and burn, mannequin invisible, objets dynamiques et outils génératifs, flux de travail Lightroom Classic, aller-retour avec Photoshop et choix de l''abonnement.', 'Les studios et photographes professionnels travaillent avec **Adobe Photoshop** et **Adobe Lightroom**. Ce module vous apprend les techniques avancées de Photoshop (séparation de fréquences, dodge and burn, mannequin invisible, objets dynamiques, outils génératifs) et l''organisation de grandes séries dans Lightroom Classic.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Retoucher une peau de façon naturelle avec la séparation de fréquences et le dodge and burn.
+> 2. Créer un mannequin invisible.
+> 3. Utiliser les objets dynamiques et les outils génératifs avec prudence.
+> 4. Organiser, développer et exporter une grande série dans Lightroom Classic.
+> 5. Choisir l''abonnement adapté.
+
+## Photoshop : la retouche de peau naturelle
+
+### La séparation de fréquences
+
+> [!definition] Séparation de fréquences
+> Une technique qui sépare l''image en deux calques : la **texture** (pores, grain) et les **couleurs et tons**. On peut alors corriger les taches de couleur sans effacer la texture, et inversement.
+
+1. Dupliquez le calque deux fois : « Basse fréquence » et « Haute fréquence ».
+2. Floutez la basse fréquence jusqu''à ne plus voir la texture.
+3. Sur la haute fréquence, appliquez l''image de la basse fréquence pour ne garder que la texture, et passez le calque en mode « Lumière linéaire ».
+4. Corrigez les irrégularités de **couleur** sur la basse fréquence, les petites imperfections de **texture** sur la haute fréquence.
+
+> [!attention]
+> La séparation de fréquences mal utilisée donne une peau « plastique ». Travaillez à faible opacité, zone par zone, et comparez souvent avec l''original.
+
+### Le dodge and burn
+
+| Étape | Rôle |
+| --- | --- |
+| Calque gris neutre en mode « Lumière douce » (ou deux courbes, une claire et une sombre, avec masques) | Éclaircir et assombrir sans détruire |
+| Calque d''aide en noir et blanc, au-dessus | Mieux voir les différences de lumière |
+| Pinceau doux, faible débit | Corriger les petites zones claires et sombres, puis sculpter les volumes |
+
+## Le mannequin invisible
+
+1. **Détourez** le vêtement sur la photo principale (sur le mannequin).
+2. **Détourez** l''intérieur du col ou du dos sur la seconde photo (vêtement retourné ou à plat).
+3. **Placez** l''intérieur derrière le vêtement et déformez-le pour suivre la forme.
+4. **Ajoutez** une ombre intérieure légère pour donner du volume.
+5. **Vérifiez** la symétrie et la cohérence des couleurs.
+
+## Les objets dynamiques et les outils génératifs
+
+| Fonction | Usage |
+| --- | --- |
+| **Objets dynamiques** | Redimensionner et modifier sans perte ; filtres modifiables |
+| **Calques de réglage et masques** | Corrections réversibles |
+| **Remplissage génératif et outils d''IA** (selon la version) | Étendre un fond, supprimer un objet gênant, compléter une zone |
+| **Suppression d''objet** | Retirer rapidement poussières, câbles, petits défauts |
+
+> [!attention]
+> Les outils génératifs peuvent **inventer des détails** (motifs, textes, étiquettes). Sur une photo de produit, vérifiez qu''aucun détail du produit n''a été modifié. Respectez les conditions d''utilisation de l''outil et les demandes du client sur l''usage de l''IA.
+
+## Lightroom Classic : les grandes séries
+
+### Le flux de travail
+
+| Étape | Action |
+| --- | --- |
+| **Import** | Dans un catalogue, avec renommage et mots-clés |
+| **Tri** | Étoiles, drapeaux (retenue, rejetée), collections |
+| **Développement** | Balance des blancs, exposition, courbes, couleurs, profil de l''appareil |
+| **Masques** | Ciel, sujet, arrière-plan, zones (masques automatiques selon la version) |
+| **Synchronisation** | Appliquer les réglages à toutes les photos d''une même lumière |
+| **Préréglages** | Le style du photographe, enregistré et réutilisé |
+| **Export** | Préréglages d''export : web, impression, réseaux sociaux |
+
+> [!astuce]
+> Pour un mariage, triez d''abord **toutes** les photos rapidement (drapeaux), puis développez scène par scène en synchronisant. Ne développez jamais une photo qui sera rejetée.
+
+### Lightroom et Photoshop ensemble
+
+1. Développez la photo dans Lightroom.
+2. Ouvrez-la dans Photoshop pour la retouche avancée (« Modifier dans »).
+3. Enregistrez : la version retouchée revient automatiquement dans le catalogue Lightroom.
+
+## Choisir l''abonnement
+
+| Formule (noms et prix à vérifier sur le site officiel d''Adobe) | Pour qui |
+| --- | --- |
+| **Offre Photographie** (Photoshop + Lightroom) | Retoucheurs et photographes : souvent l''offre la moins chère pour ces deux logiciels |
+| **Photoshop seul** | Retouche sans grandes séries |
+| **Toutes les applications** | Si vous faites aussi du design et de la vidéo |
+
+> [!madagascar]
+> L''abonnement se paie en dollars ou en euros par carte bancaire internationale. Attendez d''avoir des **clients réguliers** pour vous abonner, et profitez des périodes d''essai pour vous former. N''utilisez jamais de version piratée : elles exposent aux virus et ne sont pas acceptées par les clients professionnels.
+
+> [!retenir]
+> - Séparation de fréquences et dodge and burn pour une peau naturelle.
+> - Mannequin invisible en 5 étapes.
+> - Objets dynamiques et outils génératifs, sans modifier le produit.
+> - Lightroom : import, tri, développement, synchronisation, préréglages, export.
+> - L''offre Photographie d''Adobe pour Photoshop et Lightroom.
+
+## Exercice pratique : techniques avancées
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Retouchez un portrait avec séparation de fréquences et dodge and burn ; montrez l''avant et l''après.
+> 2. Réalisez un mannequin invisible à partir de deux photos d''un vêtement.
+> 3. Importez une série de 100 photos dans Lightroom, triez-les, développez-les avec synchronisation et créez un préréglage.
+> 4. Exportez avec deux préréglages : web et impression.
+>
+> **À livrer** : vos avant et après, votre mannequin invisible, une capture de votre catalogue et vos exports.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 1, 0, 'Que sépare la séparation de fréquences ?', '["La texture et les couleurs et tons","Le fond et le sujet","Les calques de texte","Les formats de fichier"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 1, 1, 'Quel risque présentent les outils génératifs sur un produit ?', '["Inventer ou modifier des détails du produit","Aucun risque","Rendre le fichier plus léger","Changer la langue"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 1, 2, 'Que permet la synchronisation dans Lightroom ?', '["Appliquer les réglages à toutes les photos d''une même lumière","Imprimer","Envoyer les photos par e-mail","Supprimer les originaux"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-a', 2, 'Qualité et rapidité : couleurs, automatisation, organisation et contrôle', 'Écran calibré et profils, actions, traitement par lots et droplets, raccourcis, organisation des dossiers, contrôle qualité en 8 points et mesure de la productivité.', 'Un retoucheur professionnel livre des images **régulières, sans défaut et dans les délais**, même avec des centaines de fichiers par semaine. Ce module vous donne les méthodes des meilleurs : gestion des couleurs, automatisation, raccourcis, organisation des fichiers, contrôle qualité et suivi du temps.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Garantir des couleurs fidèles avec un écran calibré.
+> 2. Automatiser avec les actions, les droplets et le traitement par lots.
+> 3. Gagner du temps avec les raccourcis et les préréglages.
+> 4. Organiser les fichiers et les livraisons.
+> 5. Contrôler la qualité et mesurer votre productivité.
+
+## Des couleurs fidèles
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Écran** | Un écran correct, calibré régulièrement avec une sonde de calibration |
+| **Lumière de la pièce** | Stable, sans soleil direct sur l''écran |
+| **Profil de travail** | sRVB pour le web, sauf demande différente (Adobe RVB ou profil d''impression) |
+| **Conversion à l''export** | Convertir vers le profil demandé et l''incorporer |
+| **Référence du produit** | Photo avec une charte de couleurs, ou échantillon décrit par le client |
+
+> [!madagascar]
+> Une sonde de calibration est un investissement important, mais c''est **l''outil qui protège votre réputation** : sans elle, vos couleurs peuvent paraître justes chez vous et fausses chez le client. Si elle est hors budget au début, comparez vos images sur plusieurs écrans et demandez un retour au client sur les premières livraisons.
+
+## Automatiser
+
+| Outil | Usage |
+| --- | --- |
+| **Actions Photoshop** | Enregistrer une suite d''étapes (taille, fond, marges, export) |
+| **Traitement par lots** | Appliquer une action à un dossier entier |
+| **Droplet** | Une action transformée en icône : on dépose un dossier dessus |
+| **Processeur d''images** | Exporter plusieurs formats et tailles à la fois |
+| **Préréglages Lightroom** | Développement et export identiques sur une série |
+
+### Exemple d''action e-commerce
+
+```
+1. Recadrer en carré 2000 × 2000 px
+2. Placer le produit détouré sur un fond blanc pur
+3. Redimensionner le produit pour occuper environ 85 % de la hauteur
+4. Ajouter l''ombre portée standard du client
+5. Convertir en sRVB
+6. Exporter en JPEG qualité 85, nom = référence produit
+```
+
+> [!astuce]
+> Automatisez les étapes **répétitives**, jamais les étapes de jugement (détourage délicat, retouche de peau). Le temps gagné sur le répétitif sert à soigner le reste.
+
+## Raccourcis et organisation de l''espace de travail
+
+1. **Apprenez** les 20 raccourcis que vous utilisez le plus (outils, zoom, taille du pinceau, calques).
+2. **Créez** des raccourcis personnalisés pour vos actions fréquentes.
+3. **Enregistrez** un espace de travail par type de mission.
+4. **Utilisez** une tablette graphique pour le détourage et la retouche de peau si possible.
+
+## Organiser les fichiers et les livraisons
+
+```
+Client_LambaStudio/
+  2026-10-13_Collection-Automne/
+    01_Originaux/        (jamais modifiés)
+    02_Travail/          (fichiers PSD avec calques)
+    03_Livraison/        (JPEG finaux)
+    Notes.txt            (consignes, questions, réponses)
+```
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Originaux jamais modifiés** | Pouvoir toujours recommencer |
+| **Fichiers de travail avec calques** | Corriger rapidement une demande |
+| **Noms selon la convention du client** | Mise en ligne directe sans renommage |
+| **Sauvegarde** | Disque externe et stockage en ligne |
+| **Durée de conservation convenue** | Ne pas garder indéfiniment les images des clients |
+
+## Le contrôle qualité
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Bords nets, aucun reste de l''ancien fond |
+| 2 | Poussières, cheveux, fils retirés |
+| 3 | Couleurs fidèles et régulières dans la série |
+| 4 | Marges et taille du produit conformes au guide |
+| 5 | Ombres identiques sur toute la série |
+| 6 | Format, taille, profil et poids conformes |
+| 7 | Noms de fichiers corrects |
+| 8 | Aucun détail du produit modifié par erreur |
+
+> [!attention]
+> Contrôlez à **100 % de zoom** sur une partie des images et regardez toute la série en planche-contact : les irrégularités se voient mieux côte à côte.
+
+## Mesurer votre productivité
+
+| Indicateur | Exemple |
+| --- | --- |
+| Temps moyen par image et par type | Produit simple : 6 min ; mannequin invisible : 15 min |
+| Taux de retours du client | 3 images à corriger sur 200 |
+| Délai de livraison | 100 % des lots livrés à l''heure ce mois |
+
+> [!retenir]
+> - Écran calibré, profil adapté, conversion à l''export.
+> - Actions, lots et droplets pour le répétitif ; soin humain pour le jugement.
+> - Raccourcis, espaces de travail, tablette graphique.
+> - Dossiers clairs, originaux intacts, sauvegarde.
+> - Contrôle en 8 points et suivi du temps par image.
+
+## Exercice pratique : un flux de production
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez une action e-commerce complète et un droplet.
+> 2. Traitez un lot de 30 images de produits avec votre action.
+> 3. Contrôlez le lot avec la liste en 8 points et corrigez.
+> 4. Chronométrez votre temps par image et calculez votre productivité.
+>
+> **À livrer** : votre action (fichier ou captures), le lot final, votre liste de contrôle et vos temps.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 2, 0, 'Quel profil utiliser pour le web, sauf demande contraire ?', '["CMJN","sRVB","Niveaux de gris","Aucun"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 2, 1, 'Qu''est-ce qu''un droplet ?', '["Un pinceau","Un format","Une action transformée en icône sur laquelle on dépose un dossier","Une goutte de couleur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 2, 2, 'Que ne faut-il jamais modifier ?', '["Les originaux","Les fichiers de livraison","Les notes","Les fichiers de travail"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-a', 3, 'Clients internationaux : brief en anglais, places de marché et livraison de nuit', 'Vocabulaire et questions en anglais, exigences d''images des places de marché, fond blanc vérifié, livraison de nuit, transfert de gros volumes, confidentialité et marque blanche.', 'Les studios photo, marques et photographes d''Europe, d''Amérique du Nord et d''Australie confient leur retouche à des retoucheurs à distance. Ce module vous prépare à travailler avec eux : brief en anglais, exigences des places de marché, livraison de nuit, transfert de gros fichiers, confidentialité et collaboration avec les studios.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre et poser des questions sur un brief en anglais.
+> 2. Respecter les exigences d''images des places de marché.
+> 3. Organiser une livraison de nuit pour un client européen.
+> 4. Transférer de gros volumes de fichiers en sécurité.
+> 5. Travailler sous accord de confidentialité avec un studio.
+
+## Le brief en anglais
+
+| Terme | Signification |
+| --- | --- |
+| **Clipping path** | Détourage au tracé |
+| **Pure white background** (RGB 255, 255, 255) | Fond blanc pur |
+| **Drop shadow, natural shadow** | Ombre portée, ombre naturelle |
+| **Ghost mannequin** | Mannequin invisible |
+| **Color matching** | Correspondance des couleurs avec le produit ou une référence |
+| **Skin retouching, high-end** | Retouche de peau, haut de gamme |
+| **Turnaround time** | Délai de livraison |
+| **Revisions** | Corrections |
+
+> [!exemple] Questions à poser
+> « Thanks for the brief. Before I start, could you confirm: (1) Should the product fill about 85% of the frame? (2) Natural shadow or no shadow? (3) Do you need the layered PSD files or only JPEGs? (4) What is the file naming convention? »
+
+## Les exigences des places de marché
+
+Chaque plateforme publie ses règles d''images, qui changent parfois. Lisez toujours la **page officielle** avant de commencer.
+
+| Exigence courante (exemple : image principale sur Amazon) | Ce qu''il faut faire |
+| --- | --- |
+| Fond blanc pur | RGB 255, 255, 255 sur tout le fond |
+| Produit qui occupe la majeure partie de l''image | Souvent autour de 85 % du cadre |
+| Pas de texte, logo ajouté ni filigrane | Image du produit seul |
+| Taille minimale pour le zoom | Grand côté suffisamment grand (vérifier la valeur actuelle) |
+| Produit entier, non coupé | Marges respectées |
+
+> [!attention]
+> Une image refusée par la place de marché retarde la vente du client. Vérifiez le fond avec la **pipette** sur plusieurs points : un blanc à 253 ou 254 peut suffire à faire refuser l''image.
+
+## La livraison de nuit
+
+| Heure (Madagascar) | Étape pour un client européen |
+| --- | --- |
+| Fin d''après-midi | Le studio envoie les photos de la journée |
+| Soirée | Retouche et contrôle qualité |
+| Avant le matin européen | Livraison ; le client trouve les images à son arrivée |
+
+> [!madagascar]
+> Ce service « vous photographiez le jour, vous recevez les images le lendemain matin » est un **argument très fort** pour les studios européens. Il demande une organisation solide : électricité de secours, connexion de secours et horaires réguliers.
+
+## Transférer de gros volumes
+
+| Outil | Usage |
+| --- | --- |
+| **Stockage partagé du client** (Google Drive, Dropbox, OneDrive) | Le plus simple, droits gérés par le client |
+| **Services de transfert de gros fichiers** | Envois ponctuels |
+| **Serveur FTP ou SFTP du client** | Grands studios |
+| **Outils de synchronisation** | Dossiers qui se mettent à jour automatiquement |
+
+> [!astuce]
+> Avec une connexion lente, envoyez en priorité les **JPEG finaux** (légers), et les fichiers PSD avec calques seulement s''ils sont demandés. Programmez les gros envois la nuit quand la connexion est souvent meilleure.
+
+## La confidentialité et les studios
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Accord de confidentialité** (NDA) | Lire et respecter : pas de publication avant la date autorisée |
+| **Collections non sorties** | Ne jamais les montrer dans votre portfolio sans accord |
+| **Marque blanche** | Vous retouchez pour le studio ; vous ne contactez pas ses clients |
+| **Sécurité** | Ordinateur protégé par mot de passe, fichiers supprimés à la date convenue |
+| **Guide du studio** | Respecter ses actions, ses noms de fichiers, son style |
+
+> [!retenir]
+> - Comprendre le vocabulaire du brief en anglais et poser ses questions avant.
+> - Lire les règles officielles de chaque place de marché.
+> - Fond blanc vérifié à la pipette.
+> - La livraison de nuit : un argument fort, qui demande une organisation solide.
+> - Confidentialité, marque blanche et sécurité des fichiers.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais 5 questions sur un brief e-commerce fictif.
+> 2. Lisez les règles d''images d''une place de marché et rédigez une fiche de 10 points.
+> 3. Retouchez 10 images selon cette fiche et vérifiez le fond à la pipette.
+> 4. Proposez votre organisation pour une livraison de nuit (horaires, secours, transfert).
+>
+> **À livrer** : vos questions, votre fiche, vos 10 images et votre organisation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 3, 0, 'Que signifie « clipping path » ?', '["Délai de livraison","Correction de couleur","Détourage au tracé","Ombre portée"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 3, 1, 'Comment vérifier un fond blanc pur ?', '["Avec la pipette sur plusieurs points","Sur le téléphone","À l''œil seulement","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 3, 2, 'Peut-on montrer une collection non sortie dans son portfolio ?', '["Oui, en petit","Oui, toujours","Oui, sur les réseaux","Non, sans accord"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-3-a', 4, 'Développer son activité : prix, forfaits, études de cas et équipe', 'Trois voies, prix par image selon le temps, prix dégressifs, forfaits, études de cas avec avant et après, équipe de retouche et évolution.', 'Après quelques clients réguliers, vous pouvez construire une **activité stable** de retoucheur : forfaits mensuels, clients fidèles, études de cas, et peut-être une petite équipe capable de traiter de gros volumes. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Présenter des études de cas convaincantes.
+> 4. Organiser une petite équipe de retouche.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Retoucheur haut de gamme** | Beauté, mode, publicité | Prix élevé par image, moins de volume |
+| **Studio de retouche en volume** | Ceux qui aiment organiser et produire | Forfaits mensuels avec des e-commerçants et studios |
+| **Partenaire de photographes** | Mariage, portrait, immobilier | Séries régulières, fidélité |
+
+## Des offres et des prix durables
+
+### Calculer le prix par image
+
+1. **Chronométrez** chaque type de retouche (module 3).
+2. **Multipliez** par votre tarif horaire.
+3. **Ajoutez** une marge pour les corrections et les échanges.
+4. **Proposez** des prix dégressifs selon le volume.
+
+| Type | Temps moyen | Exemple de prix |
+| --- | --- | --- |
+| Produit simple sur fond blanc | 6 min | 4 000 Ar |
+| Produit complexe (bijou, verre) | 15 min | 10 000 Ar |
+| Mannequin invisible | 15 min | 10 000 Ar |
+| Portrait beauté haut de gamme | 60 min | 40 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les forfaits
+
+| Forfait | Contenu |
+| --- | --- |
+| **Volume mensuel** | Nombre d''images inclus, délai, prix au-delà |
+| **Livraison express** | Supplément pour une livraison en moins de 12 heures |
+| **Abonnement photographe** | Développement des séances du mois et retouches incluses |
+
+> [!attention]
+> Les plateformes à très bas prix tirent le marché vers le bas. Ne vous battez pas sur le prix : battez-vous sur la **régularité, les délais et la qualité**. Un client qui reçoit des images parfaites à l''heure ne change pas de retoucheur pour quelques centimes.
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : marque de prêt-à-porter en ligne, 2 collections par an.
+> **Problème** : images irrégulières, 5 jours entre la séance et la mise en ligne.
+> **Solution** : guide de style, actions dédiées, livraison de nuit, mannequin invisible.
+> **Résultats** : 1 200 images par collection livrées en 48 heures ; aucune image refusée par les places de marché ; taux de corrections sous 2 %.
+
+1. **Montrez** des avant et après (avec accord du client).
+2. **Donnez** des chiffres : volume, délai, corrections.
+3. **Expliquez** votre méthode.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Retoucheur détourage** | Quand le volume dépasse votre capacité |
+| **Contrôleur qualité** | Quand plusieurs retoucheurs travaillent sur un même client |
+| **Coordinateur** (vous) | Pour la relation client, les lots et les délais |
+
+### Les règles de qualité
+
+1. **Guide de style** écrit pour chaque client, avec exemples.
+2. **Actions communes** pour garantir la régularité.
+3. **Contrôle** de chaque lot par une seconde personne.
+4. **Formation** sur un test interne avant de travailler pour un client.
+5. **Confidentialité** : accords signés, accès limités.
+
+> [!madagascar]
+> Un studio de retouche à Madagascar peut couvrir les **horaires de nuit européens** et livrer de gros volumes en français et en anglais. Pour réussir, investissez d''abord dans la fiabilité : électricité de secours, connexion de secours, écrans calibrés pour toute l''équipe.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Retoucheur haut de gamme** | Portfolio beauté et mode, collaboration avec des photographes reconnus |
+| **Directeur de post-production** | Organisation de grosses productions, relation avec les marques |
+| **Graphiste** | Mise en page, identité visuelle (voir la formation Graphiste) |
+| **Photographe** | Prise de vue produit ou immobilier |
+
+> [!retenir]
+> - Haut de gamme, volume ou partenaire de photographes : choisissez votre voie.
+> - Un prix par image basé sur votre temps réel, dégressif selon le volume.
+> - Se battre sur la régularité, les délais et la qualité, pas sur le prix.
+> - Des études de cas avec avant et après et des chiffres.
+> - Une équipe avec guide de style, actions communes et contrôle.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez votre grille de prix par type d''image et 2 forfaits.
+> 3. Rédigez une étude de cas à partir de vos projets de formation.
+> 4. Listez 10 studios ou marques à contacter et envoyez 3 propositions de test.
+>
+> **À livrer** : votre plan, votre grille, vos forfaits, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 4, 0, 'Sur quoi se battre face aux plateformes à très bas prix ?', '["Rien","Le prix le plus bas","Régularité, délais et qualité","La quantité de couleurs"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 4, 1, 'Comment calculer le prix par image ?', '["Temps réel multiplié par le tarif horaire, plus une marge","Selon la couleur du produit","Au hasard","Toujours 1 000 Ar"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-3-a', 4, 2, 'Quelle règle de qualité pour une équipe ?', '["Un contrôle de chaque lot par une seconde personne","Aucun guide","Chacun son style","Pas de contrôle"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quelle spécialité harmonise de grandes séries de mariage ?', '["Montage publicitaire","E-commerce","Mariage et événementiel","Restauration"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que faire avant de commencer un test de retouche ?', '["Lire le guide et poser ses questions","Demander le paiement total","Commencer sans lire","Changer le guide"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quel constat montre un catalogue irrégulier ?', '["Produits à des tailles et sur des blancs différents","Des noms de fichiers corrects","Toutes les images identiques","Des couleurs fidèles"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que faire quand on modifie la silhouette d''un mannequin pour une publicité ?', '["Signaler la modification au client","Ne rien dire","Le cacher","Refuser toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quelle offre crée un revenu régulier ?', '["Le forfait e-commerce mensuel","Une image unique","Un test gratuit","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Comment éviter une peau « plastique » ?', '["Flouter toute la peau","Augmenter le contraste","Travailler à faible opacité, zone par zone, et comparer","Supprimer la texture"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'À quoi sert le calque d''aide noir et blanc en dodge and burn ?', '["Détourer","Changer les couleurs","Exporter","Mieux voir les différences de lumière"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que fait-on de l''intérieur du col dans un mannequin invisible ?', '["On le supprime","On le détoure sur une seconde photo et on le place derrière","On le colorie","On le floute"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quel avantage des objets dynamiques ?', '["Redimensionner et modifier sans perte","Supprimer les calques","Rendre le fichier illisible","Imprimer plus vite"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quand développer les photos d''un mariage ?', '["Avant de trier","Au hasard","Après avoir trié toute la série","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quelle offre Adobe est souvent la moins chère pour Photoshop et Lightroom ?', '["L''offre Photographie","Aucune","Une version piratée","Toutes les applications"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Pourquoi éviter les versions piratées ?', '["Elles sont en anglais","Aucune raison","Virus et refus des clients professionnels","Elles sont plus lentes seulement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'À quoi sert une sonde de calibration ?', '["Imprimer","Mesurer la température","Accélérer l''ordinateur","Rendre les couleurs de l''écran fidèles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que faut-il automatiser ?', '["Tout sans exception","Les étapes de jugement","Rien","Les étapes répétitives"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Où garder les fichiers PSD avec calques ?', '["Dans les originaux","Nulle part","Dans le dossier de travail","Sur les réseaux sociaux"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Comment repérer les irrégularités d''une série ?', '["Demander au client de vérifier","Regarder une seule image","Regarder toute la série en planche-contact","Ne rien vérifier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quel indicateur suivre ?', '["Temps moyen par image et taux de retours","La taille de l''écran","Le nombre de couleurs","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que signifie « turnaround time » ?', '["Ombre portée","Délai de livraison","Rotation de l''image","Fond blanc"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Quelle est la valeur d''un fond blanc pur ?', '["RGB 255, 255, 255","RGB 128, 128, 128","RGB 250, 250, 250","RGB 0, 0, 0"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Où trouver les règles d''images d''une place de marché ?', '["Nulle part","Sur sa page officielle","En devinant","Dans un vieux forum"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Qu''est-ce que la livraison de nuit ?', '["Ne pas livrer","Retoucher le soir pour livrer avant le matin européen","Livrer à pied la nuit","Livrer une semaine après"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Avec une connexion lente, que livrer en priorité ?', '["Rien","Les originaux","Tous les PSD","Les JPEG finaux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que signifie travailler en marque blanche pour un studio ?', '["Signer chaque image","Ne pas contacter ses clients directement","Retoucher en blanc","Travailler gratuitement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Que proposer selon le volume ?', '["Rien","Des prix plus élevés","Des prix dégressifs","Le même prix sans réflexion"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-3-a', 'Dans quoi investir d''abord pour un studio de retouche à Madagascar ?', '["Rien","Un grand bureau décoré","La fiabilité : électricité, connexion de secours, écrans calibrés","La publicité seulement"]'::jsonb, 2);
 
 -- design-3-f
 delete from public.exam_questions where course_id = 'design-3-f';

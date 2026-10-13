@@ -1,0 +1,97 @@
+{
+  "id": "design-3-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du retoucheur photo un professionnel qui livre des images haut de gamme, en volume et dans les délais : spécialité (e-commerce en volume, beauté, immobilier, mariage, restauration, montage), test de retouche, diagnostic et éthique, techniques avancées de Photoshop (séparation de fréquences, dodge and burn, mannequin invisible, outils génératifs) et grandes séries dans Lightroom Classic, gestion des couleurs, actions et lots, contrôle qualité, clients internationaux et places de marché, puis prix par image, forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, réussir un test de retouche et respecter l'éthique",
+    "Retoucher une peau naturellement et créer un mannequin invisible dans Photoshop",
+    "Organiser, développer et exporter de grandes séries dans Lightroom Classic",
+    "Garantir des couleurs fidèles, automatiser et contrôler la qualité",
+    "Travailler pour des clients étrangers et respecter les règles des places de marché",
+    "Fixer des prix par image, construire des forfaits et organiser une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, réussir un test et retoucher avec éthique",
+      "summary": "Les 6 spécialités avancées, le mannequin invisible, le test de retouche, le diagnostic des images d'un client, l'éthique de la retouche avancée et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le mannequin invisible ?", "options": ["Un vêtement qui semble porté par une personne invisible", "Un mannequin en plastique transparent", "Un outil de Lightroom", "Un type de fond"], "correct": 0 },
+        { "q": "Que faire si un client demande des dizaines d'images en test gratuit ?", "options": ["Proposer un test payé", "Tout faire gratuitement", "Refuser sans répondre", "Livrer en basse qualité"], "correct": 0 },
+        { "q": "Peut-on effacer une fissure permanente sur une photo immobilière ?", "options": ["Non, ce serait trompeur", "Oui, toujours", "Oui, si personne ne voit", "Oui, pour vendre plus vite"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Photoshop et Lightroom avancés",
+      "summary": "Séparation de fréquences, dodge and burn, mannequin invisible, objets dynamiques et outils génératifs, flux de travail Lightroom Classic, aller-retour avec Photoshop et choix de l'abonnement.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que sépare la séparation de fréquences ?", "options": ["La texture et les couleurs et tons", "Le fond et le sujet", "Les formats de fichier", "Les calques de texte"], "correct": 0 },
+        { "q": "Quel risque présentent les outils génératifs sur un produit ?", "options": ["Inventer ou modifier des détails du produit", "Aucun risque", "Rendre le fichier plus léger", "Changer la langue"], "correct": 0 },
+        { "q": "Que permet la synchronisation dans Lightroom ?", "options": ["Appliquer les réglages à toutes les photos d'une même lumière", "Envoyer les photos par e-mail", "Supprimer les originaux", "Imprimer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : couleurs, automatisation, organisation et contrôle",
+      "summary": "Écran calibré et profils, actions, traitement par lots et droplets, raccourcis, organisation des dossiers, contrôle qualité en 8 points et mesure de la productivité.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel profil utiliser pour le web, sauf demande contraire ?", "options": ["sRVB", "CMJN", "Niveaux de gris", "Aucun"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un droplet ?", "options": ["Une action transformée en icône sur laquelle on dépose un dossier", "Une goutte de couleur", "Un pinceau", "Un format"], "correct": 0 },
+        { "q": "Que ne faut-il jamais modifier ?", "options": ["Les originaux", "Les fichiers de travail", "Les fichiers de livraison", "Les notes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : brief en anglais, places de marché et livraison de nuit",
+      "summary": "Vocabulaire et questions en anglais, exigences d'images des places de marché, fond blanc vérifié, livraison de nuit, transfert de gros volumes, confidentialité et marque blanche.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « clipping path » ?", "options": ["Détourage au tracé", "Ombre portée", "Délai de livraison", "Correction de couleur"], "correct": 0 },
+        { "q": "Comment vérifier un fond blanc pur ?", "options": ["Avec la pipette sur plusieurs points", "À l'œil seulement", "Sur le téléphone", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Peut-on montrer une collection non sortie dans son portfolio ?", "options": ["Non, sans accord", "Oui, toujours", "Oui, en petit", "Oui, sur les réseaux"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, forfaits, études de cas et équipe",
+      "summary": "Trois voies, prix par image selon le temps, prix dégressifs, forfaits, études de cas avec avant et après, équipe de retouche et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur quoi se battre face aux plateformes à très bas prix ?", "options": ["Régularité, délais et qualité", "Le prix le plus bas", "La quantité de couleurs", "Rien"], "correct": 0 },
+        { "q": "Comment calculer le prix par image ?", "options": ["Temps réel multiplié par le tarif horaire, plus une marge", "Au hasard", "Toujours 1 000 Ar", "Selon la couleur du produit"], "correct": 0 },
+        { "q": "Quelle règle de qualité pour une équipe ?", "options": ["Un contrôle de chaque lot par une seconde personne", "Chacun son style", "Aucun guide", "Pas de contrôle"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité harmonise de grandes séries de mariage ?", "options": ["Mariage et événementiel", "Restauration", "Montage publicitaire", "E-commerce"], "correct": 0 },
+    { "q": "Que faire avant de commencer un test de retouche ?", "options": ["Lire le guide et poser ses questions", "Commencer sans lire", "Demander le paiement total", "Changer le guide"], "correct": 0 },
+    { "q": "Quel constat montre un catalogue irrégulier ?", "options": ["Produits à des tailles et sur des blancs différents", "Toutes les images identiques", "Des couleurs fidèles", "Des noms de fichiers corrects"], "correct": 0 },
+    { "q": "Que faire quand on modifie la silhouette d'un mannequin pour une publicité ?", "options": ["Signaler la modification au client", "Le cacher", "Refuser toujours", "Ne rien dire"], "correct": 0 },
+    { "q": "Quelle offre crée un revenu régulier ?", "options": ["Le forfait e-commerce mensuel", "Un test gratuit", "Une image unique", "Rien"], "correct": 0 },
+    { "q": "Comment éviter une peau « plastique » ?", "options": ["Travailler à faible opacité, zone par zone, et comparer", "Flouter toute la peau", "Supprimer la texture", "Augmenter le contraste"], "correct": 0 },
+    { "q": "À quoi sert le calque d'aide noir et blanc en dodge and burn ?", "options": ["Mieux voir les différences de lumière", "Changer les couleurs", "Exporter", "Détourer"], "correct": 0 },
+    { "q": "Que fait-on de l'intérieur du col dans un mannequin invisible ?", "options": ["On le détoure sur une seconde photo et on le place derrière", "On le supprime", "On le colorie", "On le floute"], "correct": 0 },
+    { "q": "Quel avantage des objets dynamiques ?", "options": ["Redimensionner et modifier sans perte", "Rendre le fichier illisible", "Supprimer les calques", "Imprimer plus vite"], "correct": 0 },
+    { "q": "Quand développer les photos d'un mariage ?", "options": ["Après avoir trié toute la série", "Avant de trier", "Au hasard", "Jamais"], "correct": 0 },
+    { "q": "Quelle offre Adobe est souvent la moins chère pour Photoshop et Lightroom ?", "options": ["L'offre Photographie", "Toutes les applications", "Aucune", "Une version piratée"], "correct": 0 },
+    { "q": "Pourquoi éviter les versions piratées ?", "options": ["Virus et refus des clients professionnels", "Elles sont plus lentes seulement", "Elles sont en anglais", "Aucune raison"], "correct": 0 },
+    { "q": "À quoi sert une sonde de calibration ?", "options": ["Rendre les couleurs de l'écran fidèles", "Mesurer la température", "Accélérer l'ordinateur", "Imprimer"], "correct": 0 },
+    { "q": "Que faut-il automatiser ?", "options": ["Les étapes répétitives", "Les étapes de jugement", "Tout sans exception", "Rien"], "correct": 0 },
+    { "q": "Où garder les fichiers PSD avec calques ?", "options": ["Dans le dossier de travail", "Dans les originaux", "Nulle part", "Sur les réseaux sociaux"], "correct": 0 },
+    { "q": "Comment repérer les irrégularités d'une série ?", "options": ["Regarder toute la série en planche-contact", "Regarder une seule image", "Ne rien vérifier", "Demander au client de vérifier"], "correct": 0 },
+    { "q": "Quel indicateur suivre ?", "options": ["Temps moyen par image et taux de retours", "Le nombre de couleurs", "La taille de l'écran", "Rien"], "correct": 0 },
+    { "q": "Que signifie « turnaround time » ?", "options": ["Délai de livraison", "Rotation de l'image", "Ombre portée", "Fond blanc"], "correct": 0 },
+    { "q": "Quelle est la valeur d'un fond blanc pur ?", "options": ["RGB 255, 255, 255", "RGB 250, 250, 250", "RGB 0, 0, 0", "RGB 128, 128, 128"], "correct": 0 },
+    { "q": "Où trouver les règles d'images d'une place de marché ?", "options": ["Sur sa page officielle", "Dans un vieux forum", "Nulle part", "En devinant"], "correct": 0 },
+    { "q": "Qu'est-ce que la livraison de nuit ?", "options": ["Retoucher le soir pour livrer avant le matin européen", "Livrer à pied la nuit", "Ne pas livrer", "Livrer une semaine après"], "correct": 0 },
+    { "q": "Avec une connexion lente, que livrer en priorité ?", "options": ["Les JPEG finaux", "Tous les PSD", "Les originaux", "Rien"], "correct": 0 },
+    { "q": "Que signifie travailler en marque blanche pour un studio ?", "options": ["Ne pas contacter ses clients directement", "Retoucher en blanc", "Travailler gratuitement", "Signer chaque image"], "correct": 0 },
+    { "q": "Que proposer selon le volume ?", "options": ["Des prix dégressifs", "Des prix plus élevés", "Le même prix sans réflexion", "Rien"], "correct": 0 },
+    { "q": "Dans quoi investir d'abord pour un studio de retouche à Madagascar ?", "options": ["La fiabilité : électricité, connexion de secours, écrans calibrés", "Un grand bureau décoré", "La publicité seulement", "Rien"], "correct": 0 }
+  ]
+}

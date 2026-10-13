@@ -1995,6 +1995,86 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-3-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du retoucheur photo un professionnel qui livre des images haut de gamme, en volume et dans les délais : spécialité (e-commerce en volume, beauté, immobilier, mariage, restauration, montage), test de retouche, diagnostic et éthique, techniques avancées de Photoshop (séparation de fréquences, dodge and burn, mannequin invisible, outils génératifs) et grandes séries dans Lightroom Classic, gestion des couleurs, actions et lots, contrôle qualité, clients internationaux et places de marché, puis prix par image, forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, réussir un test de retouche et respecter l'éthique",
+   "Retoucher une peau naturellement et créer un mannequin invisible dans Photoshop",
+   "Organiser, développer et exporter de grandes séries dans Lightroom Classic",
+   "Garantir des couleurs fidèles, automatiser et contrôler la qualité",
+   "Travailler pour des clients étrangers et respecter les règles des places de marché",
+   "Fixer des prix par image, construire des forfaits et organiser une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, réussir un test et retoucher avec éthique",
+    "summary": "Les 6 spécialités avancées, le mannequin invisible, le test de retouche, le diagnostic des images d'un client, l'éthique de la retouche avancée et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le test de retouche",
+     "Le diagnostic des images d'un client",
+     "L'éthique de la retouche avancée",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Photoshop et Lightroom avancés",
+    "summary": "Séparation de fréquences, dodge and burn, mannequin invisible, objets dynamiques et outils génératifs, flux de travail Lightroom Classic, aller-retour avec Photoshop et choix de l'abonnement.",
+    "sections": [
+     "Photoshop : la retouche de peau naturelle",
+     "Le mannequin invisible",
+     "Les objets dynamiques et les outils génératifs",
+     "Lightroom Classic : les grandes séries",
+     "Choisir l'abonnement",
+     "Exercice pratique : techniques avancées"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : couleurs, automatisation, organisation et contrôle",
+    "summary": "Écran calibré et profils, actions, traitement par lots et droplets, raccourcis, organisation des dossiers, contrôle qualité en 8 points et mesure de la productivité.",
+    "sections": [
+     "Des couleurs fidèles",
+     "Automatiser",
+     "Raccourcis et organisation de l'espace de travail",
+     "Organiser les fichiers et les livraisons",
+     "Le contrôle qualité",
+     "Mesurer votre productivité",
+     "Exercice pratique : un flux de production"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : brief en anglais, places de marché et livraison de nuit",
+    "summary": "Vocabulaire et questions en anglais, exigences d'images des places de marché, fond blanc vérifié, livraison de nuit, transfert de gros volumes, confidentialité et marque blanche.",
+    "sections": [
+     "Le brief en anglais",
+     "Les exigences des places de marché",
+     "La livraison de nuit",
+     "Transférer de gros volumes",
+     "La confidentialité et les studios",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : prix, forfaits, études de cas et équipe",
+    "summary": "Trois voies, prix par image selon le temps, prix dégressifs, forfaits, études de cas avec avant et après, équipe de retouche et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "design-3-f": {
   "hours": 15,
   "description": "Le retoucheur photo prépare et améliore des photos pour les boutiques en ligne, l'immobilier, les photographes et les particuliers, sans tromper sur la réalité. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance avec Photopea et GIMP : image numérique, histogramme, couleurs, calques et masques, détourage, fond blanc, nettoyage, redressement, traitement par lots, missions complètes et prix à l'image. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
