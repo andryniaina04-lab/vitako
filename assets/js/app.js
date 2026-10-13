@@ -253,7 +253,8 @@ function catalogGrid() {
   const list = JOBS.filter((j) => S.filter.dom === 'all' || j.dom.id === S.filter.dom);
   const locked = !hasAccess();
   const cards = list.map((j) => `<div class="card job">
-      <div class="row"><span class="eyebrow">${esc(j.dom.name)}</span>${jobCert(j.key) ? '<span class="pill gold">Parcours complet</span>' : ''}</div>
+      ${cover(j, { noTitle: true })}
+      ${jobCert(j.key) ? '<div class="row"><span class="pill gold">Parcours complet</span></div>' : ''}
       <h3>${esc(j.name)}</h3>
       <p class="b">${esc(j.blurb.charAt(0).toUpperCase() + j.blurb.slice(1))}.</p>
       <div class="lvls">${j.courses.map((c) => `<a class="lv" href="#/formation/${c.id}"><span>${c.levelName} <small>· ${c.hours} h</small></span>
@@ -304,6 +305,34 @@ const DOM_ICONS = {
   gestion: svgI('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/>'),
   edu: svgI('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/>'),
 };
+// ---------------------------------------------------------------------------
+// Couvertures dessinées (en attendant les images) : une couleur par domaine,
+// complémentaire du vert Vitako, et un motif différent pour chaque métier.
+// Une vraie image peut les remplacer : champ "cover" du métier dans content/catalog.json.
+// ---------------------------------------------------------------------------
+const COVER_COLORS = {
+  design: ['#4C1D95', '#8B5CF6'],  // violet
+  media: ['#991B1B', '#F97316'],   // rouge orangé
+  dev: ['#1E3A8A', '#3B82F6'],     // bleu
+  tech: ['#172554', '#6366F1'],    // bleu nuit
+  mkt: ['#831843', '#EC4899'],     // framboise
+  lang: ['#7C2D12', '#EA580C'],    // terre cuite
+  data: ['#164E63', '#0EA5E9'],    // bleu pétrole
+  client: ['#9F1239', '#FB7185'],  // rouge corail
+  gestion: ['#78350F', '#F59E0B'], // ambre
+  edu: ['#581C87', '#D946EF'],     // prune
+};
+function cover(j, opts = {}) {
+  const [c1, c2] = COVER_COLORS[j.dom.id] || ['#13241B', '#0B7A55'];
+  const n = Number(j.key.split('-').pop()) || 0;
+  const title = opts.title || j.name;
+  const badge = opts.level ? `<span class="cv-badge${opts.level === 'a' ? ' a' : ''}">${opts.level === 'a' ? 'Avancé' : 'Fondamentaux'}</span>` : '';
+  const img = j.cover ? `<img class="cv-img" src="${esc(j.cover)}" alt="" loading="lazy" decoding="async">` : '';
+  return `<div class="cover cv-p${n % 5}${opts.big ? ' big' : ''}" style="--c1:${c1};--c2:${c2};--ang:${120 + n * 18}deg" aria-hidden="true">
+    ${img || `<span class="cv-ic">${DOM_ICONS[j.dom.id] || ''}</span>`}
+    <span class="cv-txt"><span class="cv-dom">${DOM_ICONS[j.dom.id] || ''}${esc(j.dom.name)}</span>${opts.noTitle ? '' : `<b class="cv-title">${esc(title)}</b>`}</span>${badge}
+  </div>`;
+}
 const chips = () => `<button class="chip${S.filter.dom === 'all' ? ' on' : ''}" data-dom="all" aria-pressed="${S.filter.dom === 'all'}">${DOM_ICONS.all}<span>Tous les domaines</span></button>` +
   DOMAINS_LIST.map((d) => `<button class="chip${S.filter.dom === d.id ? ' on' : ''}" data-dom="${d.id}" aria-pressed="${S.filter.dom === d.id}">${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></button>`).join('');
 function refreshGrid() {
@@ -350,7 +379,7 @@ function coursePage(id) {
   <div class="cols">
     <div class="stack" style="gap:26px;min-width:0">
       <div class="stack" style="gap:10px">
-        <span class="eyebrow">${esc(c.dom.name)} · Métier : ${esc(c.job.name)}</span>
+        ${cover(c.job, { big: true, level: c.level, title: c.title.startsWith(c.job.name) ? c.job.name : c.title })}
         <h1>${esc(c.title)}</h1>
         <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill ${c.level === 'a' ? 'gold' : ''}">${c.levelName}</span><span class="pill grey">${c.hours} heures</span><span class="pill grey">${n} modules + examen</span>${c.published ? '' : '<span class="pill grey">Bientôt disponible</span>'}</div>
       </div>

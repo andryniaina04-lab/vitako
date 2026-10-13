@@ -50,7 +50,7 @@ export const COURSES = [];
 
 DOMAINS.forEach((dom, di) => {
   dom.jobs.forEach((j, ji) => {
-    const job = { key: `${dom.id}-${ji}`, name: j.name, blurb: j.blurb, tools: j.tools, paid: j.paid, dom, courses: [] };
+    const job = { key: `${dom.id}-${ji}`, name: j.name, blurb: j.blurb, tools: j.tools, paid: j.paid, cover: j.cover || null, dom, courses: [] };
     ['f', 'a'].forEach((level) => {
       const id = `${job.key}-${level}`;
       const pub = PUBLISHED[id];

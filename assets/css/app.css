@@ -380,3 +380,36 @@ a.back{display:inline-block}
 @media (max-width:900px){.lesson-grid{grid-template-columns:1fr}.toc{position:static;max-height:none}}
 .quiz-sec{gap:14px;margin-top:30px;max-width:68ch}
 .quiz-h{display:flex;align-items:baseline;gap:10px;padding-top:6px;border-top:1px solid var(--line)}
+
+/* ---- Couvertures dessinées des métiers et formations ---- */
+.cover{position:relative;overflow:hidden;isolation:isolate;aspect-ratio:16/8;border-radius:10px;color:#fff;
+  background:linear-gradient(var(--ang,135deg),var(--c1),var(--c2));display:flex;align-items:flex-end;padding:14px}
+.cover::before,.cover::after{content:"";position:absolute;z-index:-1;pointer-events:none}
+/* Ombre douce à gauche pour que le texte blanc reste lisible */
+.cover::after{inset:0;background:linear-gradient(90deg,rgba(0,0,0,.38),rgba(0,0,0,.08) 60%,transparent)}
+/* 5 motifs, un par métier dans chaque domaine */
+.cv-p0::before{inset:0;background:radial-gradient(circle at 85% 20%,rgba(255,255,255,.28) 0 18%,transparent 18.5%),radial-gradient(circle at 100% 100%,rgba(255,255,255,.16) 0 34%,transparent 34.5%)}
+.cv-p1::before{inset:-20%;background:repeating-linear-gradient(-35deg,rgba(255,255,255,.13) 0 14px,transparent 14px 34px)}
+.cv-p2::before{inset:0;background:radial-gradient(rgba(255,255,255,.3) 1.6px,transparent 2px) 0 0/18px 18px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000);mask-image:linear-gradient(90deg,transparent 30%,#000)}
+.cv-p3::before{inset:0;background:radial-gradient(circle at 92% 50%,transparent 0 22%,rgba(255,255,255,.22) 22.5% 25%,transparent 25.5% 36%,rgba(255,255,255,.16) 36.5% 39%,transparent 39.5%)}
+.cv-p4::before{inset:0;background:conic-gradient(from 210deg at 100% 0,rgba(255,255,255,.22) 0 25deg,transparent 25deg 50deg,rgba(255,255,255,.14) 50deg 75deg,transparent 75deg)}
+.cv-ic{position:absolute;right:6%;top:50%;transform:translateY(-50%) rotate(-8deg);color:rgba(255,255,255,.9);z-index:-1;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.cv-ic svg{width:clamp(48px,26cqi,96px);height:auto;stroke-width:1.6}
+.cover{container-type:inline-size}
+.cv-txt{display:flex;flex-direction:column;gap:4px;max-width:68%;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.cv-dom{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.92}
+.cv-dom svg{width:13px;height:13px}
+.cv-title{font-family:var(--display);font-weight:700;font-size:clamp(1rem,7.2cqi,1.6rem);line-height:1.12;text-wrap:balance}
+.cv-badge{position:absolute;top:12px;left:14px;font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:#13241B}
+.cv-badge.a{background:#FBEFD0;color:#7A4E00}
+.cv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cover.big{aspect-ratio:16/6;border-radius:14px;padding:20px 22px;margin-bottom:6px}
+.cover.big .cv-title{font-size:clamp(1.3rem,4.6cqi,2.2rem)}
+.cover.big .cv-ic svg{width:clamp(64px,16cqi,140px)}
+@media (max-width:560px){.cover.big{aspect-ratio:16/8}}
+/* Sur les cartes du catalogue, la couverture touche les bords */
+.card.job>.cover{margin:-16px -16px 2px;border-radius:var(--r) var(--r) 0 0;aspect-ratio:16/7.5}
+.card.job:hover>.cover .cv-ic{transform:translateY(-50%) rotate(-3deg) scale(1.05)}
+.cv-ic{transition:transform .35s ease}
+@media (prefers-reduced-motion:reduce){.cv-ic{transition:none}}
+@media (max-width:560px){.card.job>.cover{aspect-ratio:16/6}}
