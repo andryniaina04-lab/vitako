@@ -341,6 +341,12 @@ function home() {
     </dl>
   </section>
   ${promoBanner()}
+  <section class="lp-cat" aria-labelledby="cat-title">
+    <div class="eyebrow lp-eyebrow">Catalogue</div>
+    <h2 id="cat-title">Toutes les formations</h2>
+    <p class="muted">${nJobs} métiers du freelance et du télétravail, chacun en Fondamentaux et Avancé, plus ${JOBS.filter((j) => j.single).length} formations de développement personnel. Choisissez un domaine :</p>
+    <div class="chips">${`<button class="chip" data-act="dom-go" data-d="all">${DOM_ICONS.all}<span>Tous les domaines</span></button>` + DOMAINS_LIST.map((d) => `<button class="chip" data-act="dom-go" data-d="${d.id}">${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></button>`).join('')}</div>
+  </section>
   <section class="lp-sec-block" aria-labelledby="feat-title">
     <div class="lp-head"><div class="eyebrow lp-eyebrow">Les plus demandées</div><h2 id="feat-title">10 formations pour décrocher vos premiers clients</h2></div>
     <div class="grid feat-grid">${feat.map(card).join('')}</div>
@@ -1126,6 +1132,7 @@ document.addEventListener('click', async (e) => {
   }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'dom-go') { S.filter.dom = t.dataset.d; go('#/formations'); return; }
   if (t.dataset.act === 'review-later') {
     const id = document.getElementById('review-form')?.dataset.course;
     if (id) { try { localStorage.setItem(SKIP_KEY, JSON.stringify([...skipped(), id])); } catch (err) {} }

@@ -75,6 +75,10 @@ with sync_playwright() as p:
     check('accueil : plus de barre de recherche dans la page', page.locator('#search').count() == 0)
     check('accueil : pas de défilement horizontal', not page.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
     page.screenshot(path=f'{SHOTS}/00-accueil.png', full_page=True)
+    check('accueil : bloc catalogue avec 12 domaines', page.locator('.lp-cat .chip').count() == 12)
+    page.click('.lp-cat [data-d=media]'); page.wait_for_timeout(400)
+    check('accueil : un domaine ouvre le catalogue filtré', page.evaluate('location.hash') == '#/formations' and page.locator('.card.job').count() == 5)
+    page.click('[data-dom=all]'); goto(page, '#/'); page.wait_for_timeout(300)
     page.click('.lp-more a'); page.wait_for_timeout(400)
     # --- Catalogue complet
     check('catalogue : 58 cartes (50 métiers + 8 formations perso)', page.locator('.card.job').count() == 58 and page.evaluate('location.hash') == '#/formations')
