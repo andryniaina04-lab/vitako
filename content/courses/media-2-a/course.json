@@ -1,0 +1,97 @@
+{
+  "id": "media-2-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du monteur audio un professionnel qui répare, produit et livre un son régulier : spécialité (production de podcast, livre audio, restauration, podcast vidéo, formation, narration), audit sonore et plan d'amélioration, outils payants (Adobe Audition et iZotope RX) avec édition spectrale, harmonisation du volume et modules de réparation, montage rapide, normes des livres audio, contrôle qualité et versions, clients internationaux, enregistrement à distance et droits, puis formules, rapports, études de cas et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et réaliser un audit sonore avec un plan d'amélioration",
+    "Monter, mixer et harmoniser le volume dans Adobe Audition",
+    "Réparer bruit, écho, clics, saturation et bourdonnement avec iZotope RX",
+    "Livrer des livres audio conformes et contrôler chaque fichier",
+    "Travailler en anglais, organiser l'enregistrement à distance et respecter les droits",
+    "Construire des formules durables, des études de cas et une petite équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer un podcast et proposer un plan",
+      "summary": "Les 6 spécialités avancées, le room tone, l'audit sonore en 6 domaines avec extrait avant et après, le plan priorisé et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le room tone ?", "options": ["Quelques secondes du silence de la pièce", "Une musique de générique", "Un micro", "Un effet d'écho"], "correct": 0 },
+        { "q": "Que joindre à un rapport d'audit sonore ?", "options": ["Un extrait avant et après", "Une facture", "Rien", "Une photo du micro"], "correct": 0 },
+        { "q": "Que conseiller d'abord pour un son très abîmé ?", "options": ["Un meilleur enregistrement", "Promettre de tout réparer", "Augmenter le volume", "Ajouter de la musique forte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Adobe Audition et iZotope RX",
+      "summary": "Modes d'Audition, affichage spectral, Son essentiel et ducking, correspondance du volume, traitement par lots, modules de réparation de RX, méthode de réparation et licences.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le ducking ?", "options": ["La baisse automatique de la musique quand une voix parle", "Une coupure", "Un format", "Un micro"], "correct": 0 },
+        { "q": "Quelle est la fréquence de base du bourdonnement électrique à Madagascar ?", "options": ["50 Hz", "60 Hz", "1 000 Hz", "10 Hz"], "correct": 0 },
+        { "q": "Que crée une réparation trop forte ?", "options": ["Des artefacts comme une voix métallique", "Un son plus naturel", "Un fichier plus court", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : montage rapide, livres audio, contrôle et versions",
+      "summary": "Raccourcis, marqueurs et modèles, normes des livres audio, montage sur le texte, contrôle en 8 points, organisation des versions et mesure de la rentabilité.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi demander à l'animateur de claquer des mains après une erreur ?", "options": ["Le pic montre où couper", "Pour applaudir", "Pour tester le micro", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Que faire de chaque fichier de livre audio avant livraison ?", "options": ["Le mesurer avec un outil d'analyse", "Rien", "Le compresser en ZIP", "L'écouter en accéléré seulement"], "correct": 0 },
+        { "q": "Pourquoi numéroter les versions ?", "options": ["Savoir quelle version le client a écoutée", "Pour décorer", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, enregistrement à distance et droits",
+      "summary": "Montage de l'anglais et montage sur transcription, messages de livraison, vocabulaire, enregistrement local et secours, droits sur la musique, les invités et les voix clonées, travail pour un studio.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire après un montage sur transcription ?", "options": ["Toujours réécouter les coupes", "Livrer sans écouter", "Supprimer l'audio", "Changer de langue"], "correct": 0 },
+        { "q": "Quelle méthode d'enregistrement à distance donne la meilleure qualité ?", "options": ["L'enregistrement local de chaque intervenant", "Seulement l'appel", "Le téléphone posé loin", "Aucune"], "correct": 0 },
+        { "q": "Peut-on cloner la voix d'un invité sans son accord ?", "options": ["Non", "Oui", "Oui, pour un mot", "Oui, si personne ne remarque"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : formules, rapports, études de cas et studio",
+      "summary": "Trois voies, formules de production et de lancement, corrections encadrées, rapport mensuel, études de cas avec avant et après, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il encadrer par écrit dans les formules ?", "options": ["Les corrections au-delà et les mauvais enregistrements", "La couleur du casque", "Rien", "Le nom du micro"], "correct": 0 },
+        { "q": "Que montre le rapport mensuel du producteur ?", "options": ["Épisodes, écoutes, extraits et propositions", "Seulement la facture", "Rien", "Les mots de passe"], "correct": 0 },
+        { "q": "Quelle règle de qualité dans un studio ?", "options": ["Un contrôle de chaque épisode par une seconde personne", "Chacun son style", "Pas de guide", "Pas de contrôle"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité sauve des enregistrements abîmés ?", "options": ["Restauration et réparation", "Podcast vidéo", "Production", "Formation"], "correct": 0 },
+    { "q": "Pourquoi l'audit sonore est-il une bonne offre d'entrée ?", "options": ["Le client entend le problème et confie l'amélioration", "Il est toujours gratuit", "Il remplace le montage", "Il évite le travail"], "correct": 0 },
+    { "q": "Quel constat gêne directement l'auditeur ?", "options": ["Un volume très différent d'un épisode à l'autre", "Un fichier bien nommé", "Des chapitres", "Un générique court"], "correct": 0 },
+    { "q": "Quelle priorité vient en premier dans un plan d'amélioration ?", "options": ["Un volume régulier entre épisodes", "Changer le logo", "Allonger les épisodes", "Supprimer la musique"], "correct": 0 },
+    { "q": "Quel mode d'Audition permet de modifier les effets à tout moment ?", "options": ["L'éditeur multipiste", "L'éditeur de forme d'onde", "Aucun", "Le mode impression"], "correct": 0 },
+    { "q": "À quoi sert l'affichage spectral ?", "options": ["Voir et effacer un bruit isolé", "Changer la langue", "Dessiner un logo", "Publier l'épisode"], "correct": 0 },
+    { "q": "Que fait la correspondance du volume ?", "options": ["Harmonise plusieurs fichiers à un volume perçu cible", "Supprime la voix", "Ajoute de l'écho", "Coupe les silences"], "correct": 0 },
+    { "q": "Quel module de RX sépare la voix du bruit de fond ?", "options": ["Dialogue Isolate", "De-clip", "De-hum", "Mouth De-click"], "correct": 0 },
+    { "q": "Dans quel ordre réparer ?", "options": ["Du plus grave au plus léger", "Au hasard", "Du plus léger au plus grave", "Tout en une passe forte"], "correct": 0 },
+    { "q": "Quel est le but d'une réparation ?", "options": ["Un son naturel et intelligible", "Un silence parfait", "Une voix métallique", "Un volume maximal"], "correct": 0 },
+    { "q": "Que surveiller avant d'acheter une licence RX ?", "options": ["Les promotions et l'édition réellement nécessaire", "Rien", "Les versions piratées", "La couleur de la boîte"], "correct": 0 },
+    { "q": "Quelle exigence ACX concerne les crêtes ?", "options": ["Pas au-dessus de −3 dB", "Au-dessus de 0 dB", "Exactement −16 LUFS", "Aucune"], "correct": 0 },
+    { "q": "Que faire des erreurs de lecture d'un livre audio ?", "options": ["Les marquer pour un réenregistrement", "Les laisser", "Les inventer", "Les cloner sans accord"], "correct": 0 },
+    { "q": "Par quoi remplacer les silences numériques ?", "options": ["Du room tone", "De la musique", "Un bip", "Rien"], "correct": 0 },
+    { "q": "Comment écrire une correction ?", "options": ["Avec le minutage : « 12:34 : couper la phrase »", "« Il y a un problème quelque part »", "Oralement seulement", "Sans détail"], "correct": 0 },
+    { "q": "Pourquoi prévoir une journée de marge ?", "options": ["Une coupure ne doit jamais retarder un épisode", "Pour travailler moins", "Ce n'est pas utile", "Pour payer plus"], "correct": 0 },
+    { "q": "Comment calculer son revenu horaire réel ?", "options": ["Prix de l'épisode divisé par le temps passé", "Au hasard", "Selon la durée de l'épisode seulement", "Impossible"], "correct": 0 },
+    { "q": "Faut-il supprimer tous les « um » d'un épisode en anglais ?", "options": ["Non, retirer les excès et garder le naturel", "Oui, tous", "Non, n'en retirer aucun", "Les remplacer par de la musique"], "correct": 0 },
+    { "q": "Que signifie « cold open » ?", "options": ["Un extrait accrocheur avant le générique", "Une fin d'épisode", "Un fichier froid", "Une erreur"], "correct": 0 },
+    { "q": "Que demander en secours de l'enregistrement local ?", "options": ["L'enregistrement de l'appel", "Rien", "Une photo", "Un texte"], "correct": 0 },
+    { "q": "Que garder pour chaque musique ?", "options": ["La preuve de la licence", "Rien", "Le nom seulement", "Une capture du lecteur"], "correct": 0 },
+    { "q": "Qui gère souvent l'accord des invités pour la diffusion ?", "options": ["Le client, avec un formulaire signé", "Personne", "Le monteur seul", "La plateforme"], "correct": 0 },
+    { "q": "Quelle formule apporte un revenu régulier ?", "options": ["La production complète mensuelle", "Un audit unique", "Un épisode gratuit", "Rien"], "correct": 0 },
+    { "q": "Que faire écouter dans une étude de cas ?", "options": ["Un extrait avant et après, avec accord", "L'épisode d'un concurrent", "Rien", "Des fichiers confidentiels"], "correct": 0 },
+    { "q": "Quels marchés locaux développer à Madagascar ?", "options": ["Programmes radio des ONG et podcasts de la diaspora", "Aucun", "Seulement la musique", "Seulement la publicité télé"], "correct": 0 }
+  ]
+}

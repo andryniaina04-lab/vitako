@@ -4523,6 +4523,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-2-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du monteur audio un professionnel qui répare, produit et livre un son régulier : spécialité (production de podcast, livre audio, restauration, podcast vidéo, formation, narration), audit sonore et plan d'amélioration, outils payants (Adobe Audition et iZotope RX) avec édition spectrale, harmonisation du volume et modules de réparation, montage rapide, normes des livres audio, contrôle qualité et versions, clients internationaux, enregistrement à distance et droits, puis formules, rapports, études de cas et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et réaliser un audit sonore avec un plan d'amélioration",
+   "Monter, mixer et harmoniser le volume dans Adobe Audition",
+   "Réparer bruit, écho, clics, saturation et bourdonnement avec iZotope RX",
+   "Livrer des livres audio conformes et contrôler chaque fichier",
+   "Travailler en anglais, organiser l'enregistrement à distance et respecter les droits",
+   "Construire des formules durables, des études de cas et une petite équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer un podcast et proposer un plan",
+    "summary": "Les 6 spécialités avancées, le room tone, l'audit sonore en 6 domaines avec extrait avant et après, le plan priorisé et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit sonore d'un podcast",
+     "Le plan d'amélioration",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Adobe Audition et iZotope RX",
+    "summary": "Modes d'Audition, affichage spectral, Son essentiel et ducking, correspondance du volume, traitement par lots, modules de réparation de RX, méthode de réparation et licences.",
+    "sections": [
+     "Adobe Audition",
+     "iZotope RX : la réparation",
+     "Audition et RX ensemble",
+     "Choisir les licences",
+     "Exercice pratique : réparer et produire"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : montage rapide, livres audio, contrôle et versions",
+    "summary": "Raccourcis, marqueurs et modèles, normes des livres audio, montage sur le texte, contrôle en 8 points, organisation des versions et mesure de la rentabilité.",
+    "sections": [
+     "Monter plus vite",
+     "Les normes des livres audio",
+     "Le contrôle qualité avant livraison",
+     "Fichiers et versions",
+     "Mesurer votre rentabilité",
+     "Exercice pratique : un livre audio conforme"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, enregistrement à distance et droits",
+    "summary": "Montage de l'anglais et montage sur transcription, messages de livraison, vocabulaire, enregistrement local et secours, droits sur la musique, les invités et les voix clonées, travail pour un studio.",
+    "sections": [
+     "Monter de l'anglais",
+     "Échanger sur les corrections",
+     "L'enregistrement à distance",
+     "Les droits",
+     "Travailler pour un studio étranger",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : formules, rapports, études de cas et studio",
+    "summary": "Trois voies, formules de production et de lancement, corrections encadrées, rapport mensuel, études de cas avec avant et après, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "media-2-f": {
   "hours": 15,
   "description": "Le monteur audio et podcast transforme des enregistrements bruts en épisodes clairs, agréables et prêts à publier. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des podcasteurs, des formateurs, des studios et des créateurs, à Madagascar et à l'étranger, avec Audacity et Reaper : niveaux et LUFS, formats, défauts courants, chaîne de traitement, montage, mixage, mastering, publication et extraits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

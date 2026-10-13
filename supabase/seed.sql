@@ -18,7 +18,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 12, false),
   ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
   ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
-  ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 18, false),
+  ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true),
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 14, false),
   ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 14, false),
   ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
@@ -32361,6 +32361,559 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-2-a
+delete from public.exam_questions where course_id = 'media-2-a';
+delete from public.module_questions where course_id = 'media-2-a';
+delete from public.lessons where course_id = 'media-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-a', 0, 'Se spécialiser, auditer un podcast et proposer un plan', 'Les 6 spécialités avancées, le room tone, l''audit sonore en 6 domaines avec extrait avant et après, le plan priorisé et les offres à forte valeur.', 'Monter et nettoyer un podcast ouvre les premières missions. Les monteurs audio les mieux payés vont plus loin : ils **réparent** des enregistrements que d''autres jugent perdus, respectent les normes strictes des livres audio, produisent des podcasts de bout en bout et livrent un son régulier, épisode après épisode. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''audio.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Faire un audit sonore d''un podcast.
+> 4. Proposer un plan d''amélioration au client.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Production de podcast** | De l''idée à la publication : conseil, montage, publication, statistiques | Format, narration, hébergement, croissance |
+| 2 | **Livre audio** | Monter et masteriser des lectures selon des normes strictes | Normes des plateformes, montage précis, régularité |
+| 3 | **Restauration et réparation** | Sauver des enregistrements abîmés | iZotope RX, éditeur spectral, patience |
+| 4 | **Podcast vidéo** | Monter le son et l''image d''émissions filmées | Synchronisation, montage multicaméra, son pour la vidéo |
+| 5 | **Audio de formation et d''entreprise** | Voix homogènes pour des cours, des webinaires, des messages | Régularité, volume, délais |
+| 6 | **Documentaire et narration sonore** | Raconter une histoire avec voix, ambiances et musique | Structure, design sonore, mixage |
+
+> [!definition] Room tone
+> Quelques secondes de « silence » enregistrées dans la pièce, sans parole. On l''utilise pour combler les coupes et garder un fond sonore régulier, ce que demandent les normes des livres audio.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Production de podcasts francophones** : beaucoup de créateurs en France, en Belgique, au Canada et en Afrique cherchent un producteur complet.
+> - **Restauration d''archives** : radios, familles et institutions ont des enregistrements anciens à sauver, y compris en malgache.
+> - **Audio de formation** en français pour des organismes de formation en ligne.
+
+## L''audit sonore d''un podcast
+
+Un audit est une excellente **offre d''entrée** : le client entend ce qui ne va pas et vous confie l''amélioration.
+
+| Domaine | Ce que vous écoutez et mesurez |
+| --- | --- |
+| **Enregistrement** | Micro, pièce, distance, bruit, écho |
+| **Montage** | Rythme, longueurs, coupes audibles, hésitations |
+| **Traitement** | Bruit résiduel, voix « métallique », sifflantes |
+| **Équilibre** | Voix entre elles, musique sous la voix |
+| **Volume** | Volume perçu en LUFS, crêtes, régularité entre épisodes |
+| **Publication** | Titres, descriptions, chapitres, extraits |
+
+### Le rapport d''audit
+
+```
+Podcast : « Entreprendre à Tana » – 3 derniers épisodes analysés
+
+Constats
+- Volume : de −22 à −14 LUFS selon les épisodes ; l''auditeur doit régler le volume.
+- Invités enregistrés par l''appel en ligne : son compressé et coupures.
+- Écho important dans la voix de l''animatrice (pièce vide).
+- Aucun chapitre, descriptions très courtes.
+
+Plan proposé
+1. Guide d''enregistrement + micro dynamique conseillé pour l''animatrice.
+2. Enregistrement local des invités (chacun sa piste).
+3. Réduction de réverbération et normalisation à −16 LUFS sur tous les épisodes.
+4. Notes d''épisode avec chapitres et 2 extraits par épisode.
+```
+
+> [!astuce]
+> Joignez au rapport un **extrait de 60 secondes** avant et après votre traitement. L''oreille convainc mieux que n''importe quel texte.
+
+## Le plan d''amélioration
+
+| Priorité | Action | Effet pour l''auditeur |
+| --- | --- | --- |
+| 1 | Volume régulier entre épisodes | Plus besoin de toucher au volume |
+| 2 | Meilleur enregistrement (local, micro, pièce) | Voix plus proches et naturelles |
+| 3 | Montage plus rythmé | Moins d''abandons en cours d''écoute |
+| 4 | Habillage cohérent | Une identité sonore reconnaissable |
+| 5 | Publication soignée | Plus facile à trouver et à partager |
+
+> [!attention]
+> Ne promettez pas de « tout réparer » au montage. Certains défauts (saturation forte, écho énorme, coupure du son) ne se corrigent que partiellement. Dites clairement ce qui est possible, et **conseillez d''abord un meilleur enregistrement**.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit sonore** | 3 épisodes analysés, extrait avant et après, plan | 200 000 Ar |
+| **Production complète** | Conseil, montage, habillage, publication, extraits, statistiques | 600 000 Ar par mois (4 épisodes) |
+| **Livre audio** | Montage et mastering selon les normes, par heure finie | 150 000 Ar par heure finie |
+| **Restauration** | Par minute d''enregistrement abîmé, selon la difficulté | Sur devis |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : production, livre audio, restauration, podcast vidéo, formation, narration.
+> - Le room tone garde un fond régulier.
+> - L''audit sonore avec un extrait avant et après ouvre une mission.
+> - Un plan priorisé, sans promettre l''impossible.
+> - Des offres à valeur : production complète, livres audio, restauration.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Écoutez 3 épisodes d''un podcast francophone et mesurez leur volume perçu.
+> 3. Rédigez un rapport d''audit avec constats et plan.
+> 4. Préparez un extrait avant et après de 60 secondes (avec un enregistrement à vous ou libre de droits).
+>
+> **À livrer** : votre choix, votre rapport, votre extrait et 3 offres avec prix.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 0, 0, 'Qu''est-ce que le room tone ?', '["Quelques secondes du silence de la pièce","Une musique de générique","Un micro","Un effet d''écho"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 0, 1, 'Que joindre à un rapport d''audit sonore ?', '["Une photo du micro","Un extrait avant et après","Rien","Une facture"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 0, 2, 'Que conseiller d''abord pour un son très abîmé ?', '["Augmenter le volume","Promettre de tout réparer","Ajouter de la musique forte","Un meilleur enregistrement"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-a', 1, 'Outils professionnels : Adobe Audition et iZotope RX', 'Modes d''Audition, affichage spectral, Son essentiel et ducking, correspondance du volume, traitement par lots, modules de réparation de RX, méthode de réparation et licences.', 'Les studios et producteurs professionnels utilisent **Adobe Audition** pour le montage et le mixage, et **iZotope RX** pour la réparation. Ce module vous apprend leurs fonctions avancées : montage multipiste, édition spectrale, réglage automatique du volume, traitement par lots, et les modules de réparation de RX.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une session multipiste professionnelle dans Audition.
+> 2. Corriger un bruit isolé avec l''éditeur spectral.
+> 3. Harmoniser le volume de plusieurs fichiers.
+> 4. Réparer bruit, réverbération, clics et saturation avec iZotope RX.
+> 5. Choisir les licences adaptées.
+
+## Adobe Audition
+
+### Les deux modes
+
+| Mode | Usage |
+| --- | --- |
+| **Éditeur de forme d''onde** | Travail sur un seul fichier, effets appliqués directement |
+| **Éditeur multipiste** | Plusieurs pistes (voix, musique, habillage), effets modifiables à tout moment |
+
+### Les fonctions avancées
+
+| Fonction | Usage |
+| --- | --- |
+| **Affichage spectral des fréquences** | Voir et effacer un bruit isolé (toux, sonnerie, chaise) |
+| **Panneau Son essentiel** | Réglages rapides par type (dialogue, musique, ambiance), dont la baisse automatique de la musique sous la voix |
+| **Correspondance du volume** (Match Loudness) | Harmoniser plusieurs fichiers à un volume perçu cible |
+| **Traitement par lots** | Appliquer des effets et des exports à un dossier |
+| **Préréglages d''effets en chaîne** | Enregistrer sa chaîne de traitement de la voix |
+| **Montage par suppression d''espace** (ripple delete) | Supprimer un passage et recoller la suite sur toutes les pistes |
+
+> [!definition] Ducking
+> La baisse automatique de la musique quand une voix parle, puis sa remontée dans les silences.
+
+> [!astuce]
+> Enregistrez une **session modèle** par podcast : pistes nommées, effets, bus, habillage placé. Un nouvel épisode commence alors en quelques secondes.
+
+## iZotope RX : la réparation
+
+| Module (noms à vérifier selon la version) | Problème réparé |
+| --- | --- |
+| **Repair Assistant** | Analyse automatique et propositions de réglages |
+| **Dialogue Isolate** | Séparer la voix du bruit de fond (rue, foule) |
+| **Spectral De-noise** | Réduire un bruit constant (souffle, climatisation) |
+| **Dialogue De-reverb** | Réduire l''écho d''une pièce |
+| **Mouth De-click** | Supprimer les clics de bouche |
+| **De-clip** | Reconstruire les crêtes saturées |
+| **De-hum** | Supprimer le bourdonnement électrique (50 Hz à Madagascar et en Europe) |
+| **Spectral Repair** | Effacer ou reconstruire une zone précise du spectre |
+
+> [!definition] Bourdonnement (hum)
+> Un son grave et continu causé par le réseau électrique. Sa fréquence de base est de **50 Hz** dans les pays dont le courant est à 50 Hz (dont Madagascar et l''Europe), et de 60 Hz en Amérique du Nord.
+
+### La méthode de réparation
+
+1. **Écoutez** et repérez chaque type de défaut.
+2. **Traitez** du plus grave au plus léger : saturation, bourdonnement, bruits isolés, bruit constant, réverbération, clics.
+3. **Utilisez** de petits réglages, en plusieurs passes plutôt qu''une seule forte.
+4. **Comparez** souvent avec l''original, au même volume.
+5. **Écoutez** le résultat sur casque et sur haut-parleur de téléphone.
+
+> [!attention]
+> Une réparation trop forte crée des **artefacts** : sons métalliques, voix « sous l''eau », gargouillis. Le but est un son naturel et intelligible, pas un silence parfait.
+
+## Audition et RX ensemble
+
+| Étape | Outil |
+| --- | --- |
+| Réparation des fichiers bruts | RX (application autonome ou modules dans Audition) |
+| Montage et mixage | Audition (multipiste) |
+| Volume final et export | Audition (correspondance du volume, limiteur) |
+
+## Choisir les licences
+
+| Outil | Formules (à vérifier sur les sites officiels) |
+| --- | --- |
+| **Audition** | Abonnement Adobe seul ou inclus dans l''offre de toutes les applications |
+| **iZotope RX** | Plusieurs éditions (de la plus simple à la plus complète), en licence ou en abonnement selon les offres |
+
+> [!madagascar]
+> Ces outils se paient en dollars par carte bancaire internationale. Les éditeurs proposent souvent des **promotions importantes** plusieurs fois par an : surveillez-les avant d''acheter. Commencez par l''édition de RX dont vous avez réellement besoin, et n''utilisez jamais de version piratée.
+
+> [!retenir]
+> - Audition : multipiste, spectral, Son essentiel, correspondance du volume, lots.
+> - Une session modèle par podcast.
+> - RX : isoler la voix, débruiter, déréverbérer, déclipper, supprimer le bourdonnement.
+> - Réparer du plus grave au plus léger, par petites passes.
+> - Un son naturel plutôt qu''un silence parfait.
+
+## Exercice pratique : réparer et produire
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Enregistrez une voix avec 4 défauts volontaires (bruit, écho, clics, une toux).
+> 2. Réparez-la avec RX (version d''essai) en suivant la méthode ; notez chaque réglage.
+> 3. Montez un épisode dans une session multipiste Audition avec ducking.
+> 4. Harmonisez 3 épisodes au même volume perçu et exportez-les par lots.
+>
+> **À livrer** : l''avant et l''après, vos notes de réglages, une capture de la session et les 3 exports.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 1, 0, 'Qu''est-ce que le ducking ?', '["Une coupure","Un micro","Un format","La baisse automatique de la musique quand une voix parle"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 1, 1, 'Quelle est la fréquence de base du bourdonnement électrique à Madagascar ?', '["10 Hz","1 000 Hz","50 Hz","60 Hz"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 1, 2, 'Que crée une réparation trop forte ?', '["Un fichier plus court","Un son plus naturel","Des artefacts comme une voix métallique","Rien"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-a', 2, 'Qualité et rapidité : montage rapide, livres audio, contrôle et versions', 'Raccourcis, marqueurs et modèles, normes des livres audio, montage sur le texte, contrôle en 8 points, organisation des versions et mesure de la rentabilité.', 'Un monteur audio professionnel livre chaque épisode **à l''heure, au même niveau de qualité**, même avec plusieurs clients. Ce module vous donne les méthodes des meilleurs : montage rapide, modèles, contrôle qualité, normes des livres audio, gestion des versions et suivi du temps.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Monter plus vite avec les raccourcis et les marqueurs.
+> 2. Livrer un livre audio conforme aux normes.
+> 3. Contrôler chaque fichier avant livraison.
+> 4. Organiser les fichiers et les versions.
+> 5. Mesurer votre temps et votre rentabilité.
+
+## Monter plus vite
+
+| Technique | Gain |
+| --- | --- |
+| **Raccourcis** pour couper, supprimer avec recollement, zoomer | Moins de souris, plus de rythme |
+| **Marqueurs pendant la première écoute** | On repère les erreurs une seule fois, puis on coupe |
+| **Lecture accélérée** pour le contrôle (avec prudence) | Moins de temps sur les passages propres |
+| **Sessions modèles** | Démarrage immédiat |
+| **Chaînes d''effets enregistrées** | Traitement identique à chaque épisode |
+| **Notes de l''animateur** | Il indique les passages à couper avec leur minutage |
+
+> [!astuce]
+> Demandez à l''animateur de **claquer des mains** ou de dire « je reprends » après une erreur pendant l''enregistrement. Le pic dans la forme d''onde vous montre immédiatement où couper.
+
+## Les normes des livres audio
+
+Chaque plateforme publie ses exigences. Un exemple courant (celui d''ACX, pour Audible), à vérifier sur la page officielle avant chaque projet :
+
+| Exigence | Valeur indiquée |
+| --- | --- |
+| **Niveau moyen (RMS)** | Entre −23 dB et −18 dB |
+| **Crêtes** | Pas au-dessus de −3 dB |
+| **Bruit de fond** | Pas au-dessus de −60 dB RMS |
+| **Room tone** | Environ 0,5 à 1 seconde au début et 1 à 5 secondes à la fin |
+| **Fichiers** | Un fichier par chapitre, format et débit imposés (MP3 à débit constant) |
+| **Régularité** | Même son et même volume d''un chapitre à l''autre |
+
+> [!attention]
+> Un livre audio refusé par la plateforme coûte des jours de travail. Mesurez **chaque fichier** avec un outil d''analyse avant livraison, et gardez une trace des mesures.
+
+### Le montage d''un livre audio
+
+1. **Suivez le texte** pendant l''écoute : chaque mot doit être lu, sans erreur.
+2. **Marquez** les erreurs de lecture pour une réenregistrement (pick-up).
+3. **Gardez** des respirations naturelles, retirez celles qui sont trop fortes.
+4. **Respectez** les pauses entre paragraphes et chapitres.
+5. **Remplacez** les silences numériques par du room tone.
+
+## Le contrôle qualité avant livraison
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Écoute complète (au moins une fois en vitesse normale sur les passages montés) |
+| 2 | Aucune coupe audible, aucun mot coupé |
+| 3 | Volume perçu et crêtes conformes à la cible |
+| 4 | Pas de bruit isolé oublié (téléphone, porte, toux) |
+| 5 | Début et fin propres (pas de clic) |
+| 6 | Musique et habillage aux bons endroits |
+| 7 | Format, débit, fréquence d''échantillonnage, mono ou stéréo conformes |
+| 8 | Noms de fichiers et métadonnées (titre, auteur, numéro d''épisode) |
+
+## Fichiers et versions
+
+```
+Client_Mpanorina/
+  Ep045_Hery/
+    01_Bruts/            (jamais modifiés)
+    02_Session/          (session Audition, fichiers réparés)
+    03_Exports/
+      Ep045_v1.mp3
+      Ep045_v2_corrections.mp3
+      Ep045_FINAL.mp3
+    Notes.txt            (demandes, corrections, mesures)
+```
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Bruts jamais modifiés** | Revenir en arrière à tout moment |
+| **Versions numérotées** | Savoir quelle version le client a écoutée |
+| **Corrections écrites avec minutage** | « 12:34 : couper la phrase sur la météo » |
+| **Sauvegarde** | Disque externe et stockage en ligne |
+
+> [!madagascar]
+> Prévoyez toujours **une journée de marge** sur les délais. Une coupure d''électricité ou de connexion la veille de la livraison ne doit jamais mettre un épisode en retard. Envoyez les gros fichiers dès qu''ils sont prêts, sans attendre la dernière minute.
+
+## Mesurer votre rentabilité
+
+| Indicateur | Exemple |
+| --- | --- |
+| Rapport temps de travail / durée de l''épisode | 2,5 (90 minutes pour 36 minutes d''épisode) |
+| Temps moyen par heure finie de livre audio | 3 heures de travail par heure finie |
+| Taux de corrections demandées | 1 série de corrections pour 5 épisodes |
+| Revenu horaire réel | Prix de l''épisode ÷ temps passé |
+
+> [!retenir]
+> - Raccourcis, marqueurs, modèles et chaînes d''effets pour monter vite.
+> - Livres audio : normes officielles mesurées sur chaque fichier.
+> - Une liste de contrôle en 8 points avant chaque livraison.
+> - Bruts intacts, versions numérotées, corrections écrites avec minutage.
+> - Mesurer le temps réel pour connaître son revenu horaire.
+
+## Exercice pratique : un livre audio conforme
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Enregistrez (ou faites enregistrer) la lecture de 2 chapitres courts d''un texte libre de droits.
+> 2. Montez-les en suivant le texte, avec room tone et pauses régulières.
+> 3. Mesurez chaque fichier et ajustez pour respecter les normes d''une plateforme.
+> 4. Passez la liste de contrôle et notez votre temps par heure finie.
+>
+> **À livrer** : les 2 chapitres, vos mesures, votre liste de contrôle et vos temps.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 2, 0, 'Pourquoi demander à l''animateur de claquer des mains après une erreur ?', '["Pour applaudir","Ce n''est pas utile","Le pic montre où couper","Pour tester le micro"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 2, 1, 'Que faire de chaque fichier de livre audio avant livraison ?', '["L''écouter en accéléré seulement","Rien","Le compresser en ZIP","Le mesurer avec un outil d''analyse"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 2, 2, 'Pourquoi numéroter les versions ?', '["Savoir quelle version le client a écoutée","Pour payer moins","Pour décorer","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-a', 3, 'Clients internationaux : anglais, enregistrement à distance et droits', 'Montage de l''anglais et montage sur transcription, messages de livraison, vocabulaire, enregistrement local et secours, droits sur la musique, les invités et les voix clonées, travail pour un studio.', 'Les podcasteurs, éditeurs de livres audio et studios d''Europe, d''Amérique du Nord et d''Afrique confient leur montage à des monteurs à distance. Ce module vous prépare à travailler avec eux : monter de l''anglais, échanger sur les corrections, organiser l''enregistrement à distance, respecter les droits et livrer selon les habitudes de chaque marché.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Monter un épisode en anglais avec précision.
+> 2. Échanger avec des clients anglophones sur les corrections.
+> 3. Organiser un enregistrement à distance de qualité.
+> 4. Respecter les droits sur la musique, les voix et les contenus.
+> 5. Travailler en sous-traitance pour un studio étranger.
+
+## Monter de l''anglais
+
+| Difficulté | Solution |
+| --- | --- |
+| **Comprendre tous les mots** | Utiliser une transcription automatique comme guide |
+| **Couper sans casser la phrase** | Repérer les fins de groupes de sens, pas seulement les silences |
+| **Mots de remplissage** (« um », « uh », « like », « you know ») | Retirer les excès, pas tous : garder le naturel |
+| **Accents variés** | S''entraîner avec des podcasts de différents pays |
+
+> [!definition] Montage sur transcription
+> Certains outils permettent de monter en supprimant des mots dans le texte transcrit : l''audio est coupé automatiquement. C''est rapide pour le premier montage, mais il faut **toujours réécouter** pour vérifier les coupes.
+
+## Échanger sur les corrections
+
+> [!exemple] Message de livraison en anglais
+> Hi Mark,
+> Episode 45 is ready: (lien)
+> What I did: removed long pauses and repeated sentences, reduced the room echo on your guest''s track, normalized to −16 LUFS.
+> One question: at 23:10, your guest mentions a client''s name. Would you like me to remove it?
+> Turnaround for revisions: 24 hours.
+> Best, Fara
+
+| Terme | Signification |
+| --- | --- |
+| **Timestamp** | Minutage (« at 12:34 ») |
+| **Revisions, edits** | Corrections |
+| **Pick-ups** | Passages réenregistrés |
+| **Show notes** | Notes d''épisode |
+| **Cold open** | Extrait accrocheur placé avant le générique |
+
+## L''enregistrement à distance
+
+| Méthode | Qualité | Conseil |
+| --- | --- | --- |
+| **Enregistrement local de chaque intervenant** (double-ender) | Excellente | Chacun enregistre sa voix et envoie le fichier |
+| **Plateformes d''enregistrement à distance** | Très bonne | Elles enregistrent localement puis envoient les pistes séparées |
+| **Enregistrement de l''appel seulement** | Moyenne à faible | Seulement en secours |
+
+> [!astuce]
+> Demandez toujours aussi l''**enregistrement de l''appel** comme secours : si le fichier local d''un invité est perdu ou corrompu, l''épisode reste publiable.
+
+> [!madagascar]
+> Si vous animez ou enregistrez vous-même depuis Madagascar, une plateforme qui enregistre **localement** puis envoie les fichiers progressivement évite que les coupures de connexion abîment le son. Vérifiez qu''elle gère bien les connexions instables.
+
+## Les droits
+
+| Élément | Règle |
+| --- | --- |
+| **Musique** | Licence qui couvre l''usage (podcast, publicité, vidéo) et la diffusion ; garder la preuve |
+| **Extraits d''autres médias** | Autorisation nécessaire, sauf exceptions légales qui varient selon les pays |
+| **Voix des invités** | Accord de l''invité pour la diffusion (souvent un formulaire signé géré par le client) |
+| **Voix générées ou clonées par IA** | Seulement avec l''accord écrit de la personne dont la voix est imitée, et selon les règles de la plateforme |
+
+> [!attention]
+> Ne clonez jamais la voix d''un animateur ou d''un invité pour « réparer » un mot sans son **accord explicite**. Même avec accord, signalez au client chaque passage généré.
+
+## Travailler pour un studio étranger
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Guide du studio** | Normes de volume, style de montage, noms de fichiers |
+| **Marque blanche** | Vous ne contactez pas les clients du studio |
+| **Confidentialité** | Pas de diffusion avant la publication officielle |
+| **Délais** | Annoncés clairement en heure du client |
+| **Facturation** | Mensuelle, avec le détail des épisodes |
+
+> [!retenir]
+> - Monter l''anglais avec une transcription comme guide, en réécoutant.
+> - Livrer avec un message clair : fait, question, délai de corrections.
+> - Enregistrement local de chaque voix, plus l''appel en secours.
+> - Licences, accords des invités, aucune voix clonée sans accord.
+> - En studio : guide, marque blanche, confidentialité.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Montez 10 minutes d''un podcast en anglais libre de droits (ou enregistré avec des proches).
+> 2. Rédigez en anglais le message de livraison avec une question au client.
+> 3. Rédigez un guide d''enregistrement à distance en anglais pour des invités.
+> 4. Listez les droits à vérifier pour un épisode avec musique, extrait de film et deux invités.
+>
+> **À livrer** : votre montage, votre message, votre guide et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 3, 0, 'Que faire après un montage sur transcription ?', '["Supprimer l''audio","Changer de langue","Livrer sans écouter","Toujours réécouter les coupes"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 3, 1, 'Quelle méthode d''enregistrement à distance donne la meilleure qualité ?', '["Seulement l''appel","Le téléphone posé loin","L''enregistrement local de chaque intervenant","Aucune"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 3, 2, 'Peut-on cloner la voix d''un invité sans son accord ?', '["Non","Oui, si personne ne remarque","Oui, pour un mot","Oui"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-2-a', 4, 'Développer son activité : formules, rapports, études de cas et studio', 'Trois voies, formules de production et de lancement, corrections encadrées, rapport mensuel, études de cas avec avant et après, équipe et évolution.', 'Après quelques clients fidèles, vous pouvez construire une **activité stable** dans l''audio : abonnements de production, livres audio, restauration, et peut-être un petit studio de post-production. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Présenter des études de cas convaincantes.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Producteur de podcasts** | Ceux qui aiment le contenu et le conseil | Abonnements mensuels par émission |
+| **Spécialiste réparation et livres audio** | Ceux qui aiment la précision | Prix à la minute ou à l''heure finie |
+| **Studio de post-production** | Ceux qui aiment organiser | Plusieurs clients, équipe de monteurs |
+
+## Des offres et des prix durables
+
+### Les formules de production
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Montage** | Montage, nettoyage, volume | 60 000 Ar par épisode |
+| **Production** | Montage + habillage + notes + publication | 120 000 Ar par épisode |
+| **Production complète** | Production + extraits vidéo + conseil éditorial + rapport mensuel | 900 000 Ar par mois (4 épisodes) |
+| **Lancement d''un podcast** | Concept, habillage, guide d''enregistrement, 3 premiers épisodes | 1 200 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Facturez les **corrections au-delà** de ce qui est inclus, et les enregistrements de très mauvaise qualité. Sans ces règles écrites, un épisode « simple » peut vous prendre trois fois plus de temps que prévu.
+
+### Le rapport mensuel du producteur
+
+| Rubrique | Exemple |
+| --- | --- |
+| Épisodes publiés | 4, tous à l''heure |
+| Écoutes | +22 % par rapport au mois précédent (selon l''hébergeur) |
+| Épisode le plus écouté | Ép. 47, invitée cheffe d''entreprise |
+| Extraits sur les réseaux | 8 extraits, 3 fois plus de vues sur les extraits courts |
+| Propositions | Chapitres plus courts, série spéciale de 3 épisodes |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : organisme de formation en ligne, 120 vidéos de cours.
+> **Problème** : son très inégal, bruit de climatisation, volume différent d''une leçon à l''autre.
+> **Solution** : réparation dans RX, chaîne de traitement commune, harmonisation du volume, traitement par lots.
+> **Résultats** : 120 leçons traitées en 3 semaines ; plaintes des apprenants sur le son passées de 14 par mois à zéro.
+
+1. **Faites écouter** un extrait avant et après (avec accord).
+2. **Donnez** des chiffres : volume traité, délai, résultats.
+3. **Expliquez** la méthode simplement.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Monteur** | Quand vous refusez des épisodes |
+| **Contrôleur qualité** | Quand plusieurs monteurs travaillent pour les mêmes clients |
+| **Chargé des extraits vidéo et réseaux** | Quand les clients demandent plus de diffusion |
+| **Producteur** (vous) | Relation client, conseil, planning |
+
+### Les règles de qualité
+
+1. **Sessions modèles et chaînes d''effets** communes pour chaque client.
+2. **Guide par client** : style, volume, habillage, livraison.
+3. **Contrôle** de chaque épisode par une seconde personne.
+4. **Casques identiques** ou de même gamme pour toute l''équipe.
+5. **Confidentialité** et accès personnels aux espaces des clients.
+
+> [!madagascar]
+> Un petit studio à Madagascar peut proposer la **production en français, en malgache et en anglais** à des médias, ONG et entreprises. Les programmes de sensibilisation radio des ONG et les podcasts de la diaspora sont des marchés à développer, en plus des clients européens.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Producteur éditorial** | Choix des sujets, écriture, narration |
+| **Ingénieur du son** | Prise de son en studio, mixage musical |
+| **Design sonore** | Création d''ambiances et d''habillages |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+
+> [!retenir]
+> - Producteur, spécialiste réparation ou studio : choisissez votre voie.
+> - Des formules claires avec les corrections et les mauvais enregistrements encadrés.
+> - Un rapport mensuel qui montre la croissance du podcast.
+> - Des études de cas avec avant et après.
+> - Une équipe avec modèles, guides et contrôle.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez vos formules avec leurs prix et leurs règles de corrections.
+> 3. Rédigez une étude de cas à partir de vos projets de formation, avec un extrait avant et après.
+> 4. Listez 10 prospects et envoyez 3 propositions d''audit sonore.
+>
+> **À livrer** : votre plan, vos formules, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 4, 0, 'Que faut-il encadrer par écrit dans les formules ?', '["Le nom du micro","Rien","Les corrections au-delà et les mauvais enregistrements","La couleur du casque"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 4, 1, 'Que montre le rapport mensuel du producteur ?', '["Épisodes, écoutes, extraits et propositions","Seulement la facture","Rien","Les mots de passe"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-2-a', 4, 2, 'Quelle règle de qualité dans un studio ?', '["Un contrôle de chaque épisode par une seconde personne","Chacun son style","Pas de guide","Pas de contrôle"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quelle spécialité sauve des enregistrements abîmés ?', '["Production","Podcast vidéo","Formation","Restauration et réparation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Pourquoi l''audit sonore est-il une bonne offre d''entrée ?', '["Il remplace le montage","Le client entend le problème et confie l''amélioration","Il est toujours gratuit","Il évite le travail"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quel constat gêne directement l''auditeur ?', '["Un volume très différent d''un épisode à l''autre","Des chapitres","Un fichier bien nommé","Un générique court"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quelle priorité vient en premier dans un plan d''amélioration ?', '["Allonger les épisodes","Un volume régulier entre épisodes","Supprimer la musique","Changer le logo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quel mode d''Audition permet de modifier les effets à tout moment ?', '["L''éditeur de forme d''onde","L''éditeur multipiste","Le mode impression","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'À quoi sert l''affichage spectral ?', '["Dessiner un logo","Publier l''épisode","Changer la langue","Voir et effacer un bruit isolé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que fait la correspondance du volume ?', '["Harmonise plusieurs fichiers à un volume perçu cible","Supprime la voix","Ajoute de l''écho","Coupe les silences"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quel module de RX sépare la voix du bruit de fond ?', '["Mouth De-click","De-clip","Dialogue Isolate","De-hum"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Dans quel ordre réparer ?', '["Au hasard","Du plus grave au plus léger","Tout en une passe forte","Du plus léger au plus grave"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quel est le but d''une réparation ?', '["Un son naturel et intelligible","Un volume maximal","Un silence parfait","Une voix métallique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que surveiller avant d''acheter une licence RX ?', '["La couleur de la boîte","Rien","Les promotions et l''édition réellement nécessaire","Les versions piratées"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quelle exigence ACX concerne les crêtes ?', '["Exactement −16 LUFS","Aucune","Pas au-dessus de −3 dB","Au-dessus de 0 dB"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que faire des erreurs de lecture d''un livre audio ?', '["Les marquer pour un réenregistrement","Les inventer","Les cloner sans accord","Les laisser"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Par quoi remplacer les silences numériques ?', '["Rien","Du room tone","Un bip","De la musique"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Comment écrire une correction ?', '["Avec le minutage : « 12:34 : couper la phrase »","Sans détail","« Il y a un problème quelque part »","Oralement seulement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Pourquoi prévoir une journée de marge ?', '["Une coupure ne doit jamais retarder un épisode","Ce n''est pas utile","Pour travailler moins","Pour payer plus"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Comment calculer son revenu horaire réel ?', '["Au hasard","Prix de l''épisode divisé par le temps passé","Impossible","Selon la durée de l''épisode seulement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Faut-il supprimer tous les « um » d''un épisode en anglais ?', '["Non, n''en retirer aucun","Les remplacer par de la musique","Oui, tous","Non, retirer les excès et garder le naturel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que signifie « cold open » ?', '["Un extrait accrocheur avant le générique","Une erreur","Un fichier froid","Une fin d''épisode"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que demander en secours de l''enregistrement local ?', '["Rien","L''enregistrement de l''appel","Un texte","Une photo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que garder pour chaque musique ?', '["Rien","La preuve de la licence","Le nom seulement","Une capture du lecteur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Qui gère souvent l''accord des invités pour la diffusion ?', '["Le monteur seul","La plateforme","Personne","Le client, avec un formulaire signé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quelle formule apporte un revenu régulier ?', '["Un épisode gratuit","La production complète mensuelle","Un audit unique","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Que faire écouter dans une étude de cas ?', '["Rien","L''épisode d''un concurrent","Un extrait avant et après, avec accord","Des fichiers confidentiels"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-2-a', 'Quels marchés locaux développer à Madagascar ?', '["Aucun","Programmes radio des ONG et podcasts de la diaspora","Seulement la publicité télé","Seulement la musique"]'::jsonb, 1);
 
 -- media-2-f
 delete from public.exam_questions where course_id = 'media-2-f';
