@@ -58,7 +58,7 @@ DOMAINS.forEach((dom, di) => {
       const course = {
         id, job, dom, level,
         levelName: LEVELS[level],
-        title: `${job.name} – ${LEVELS[level]}`,
+        title: pub?.title ?? `${job.name} – ${LEVELS[level]}`,
         hours: pub?.hours ?? (fond ? 10 + ((di + ji) % 5) : 14 + ((di * 2 + ji) % 5)),
         description: pub?.description ?? (`${upperFirst(lower(job.name))} : ${job.blurb}. ` + (fond
           ? 'Ce niveau Fondamentaux donne les bases pour réaliser vos premières missions en freelance ou en télétravail depuis Madagascar.'

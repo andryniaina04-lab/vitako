@@ -42,7 +42,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true),
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 17, true),
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true),
-  ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
+  ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Administrateur Microsoft 365 et Google Workspace', 17, true),
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
@@ -59031,6 +59031,527 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que ne doit pas contenir la documentation livrée ?', '["Les mots de passe","Les procédures d''urgence","Les sauvegardes","L''architecture"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Que contient un forfait mensuel ?', '["Mises à jour, surveillance, sauvegardes vérifiées et petites interventions","Rien","L''achat du serveur","Le développement complet de l''application"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement","Aucun"]'::jsonb, 2);
+
+-- tech-4-a
+delete from public.exam_questions where course_id = 'tech-4-a';
+delete from public.module_questions where course_id = 'tech-4-a';
+delete from public.lessons where course_id = 'tech-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-a', 0, 'Le métier et l''audit d''un environnement collaboratif', 'Rôle de l''administrateur, locataire, comparaison de Microsoft 365 et Google Workspace, clients et besoins, risques des adresses personnelles, audit des comptes, licences, domaine, fichiers, protections et sauvegardes, offres.', 'Presque toutes les PME, écoles et ONG utilisent une messagerie, des fichiers partagés et des visioconférences. Beaucoup le font avec des comptes Gmail personnels, des mots de passe partagés et des fichiers dispersés. L''administrateur **Microsoft 365** et **Google Workspace** met de l''ordre : comptes professionnels, licences, messagerie au nom de l''organisation, partage de fichiers maîtrisé, double authentification et sauvegardes. C''est un service très demandé, qui se rend presque entièrement à distance. Ce premier module vous présente le métier et l''audit qui sert d''offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un administrateur Microsoft 365 et Google Workspace.
+> 2. Comparer les deux suites et conseiller un client.
+> 3. Identifier vos clients et leurs besoins.
+> 4. Mener l''audit d''un environnement de travail collaboratif.
+> 5. Proposer des offres adaptées.
+
+## Le métier en une phrase
+
+L''administrateur crée et gère les **comptes**, attribue les **licences**, configure la **messagerie** avec le nom de domaine de l''organisation, organise le **partage des fichiers**, active les **protections de base** comme la double authentification, met en place les **sauvegardes**, et aide les utilisateurs au quotidien.
+
+> [!definition] Locataire (tenant)
+> L''espace propre à une organisation chez Microsoft 365 ou Google Workspace, avec ses utilisateurs, ses licences, son nom de domaine et ses réglages. On l''administre depuis une console web : le **Centre d''administration Microsoft 365** ou la **Console d''administration Google**.
+
+## Les deux suites en bref
+
+| Élément | Microsoft 365 | Google Workspace |
+| --- | --- | --- |
+| **Messagerie** | Outlook et Exchange Online | Gmail |
+| **Fichiers** | OneDrive et SharePoint | Google Drive et Drive partagés |
+| **Bureautique** | Word, Excel, PowerPoint (en ligne et sur ordinateur selon l''offre) | Docs, Sheets, Slides (dans le navigateur) |
+| **Réunions et discussion** | Teams | Google Meet et Google Chat |
+| **Console d''administration** | Centre d''administration Microsoft 365 | Console d''administration Google |
+| **Points forts** | Logiciels Office sur ordinateur, fichiers Office complexes | Simplicité, travail dans le navigateur, collaboration en direct |
+
+> [!astuce]
+> Ne vendez pas votre suite préférée : partez des **habitudes du client**. Une équipe qui échange beaucoup de fichiers Excel complexes avec des bailleurs sera plus à l''aise avec Microsoft 365 ; une petite équipe mobile qui travaille surtout dans le navigateur appréciera Google Workspace.
+
+## Vos clients et leurs besoins
+
+| Client | Besoins fréquents |
+| --- | --- |
+| **PME** | Adresses e-mail au nom de l''entreprise, fichiers partagés, arrivées et départs d''employés |
+| **ONG et associations** | Équipes réparties dans plusieurs régions, partage avec les partenaires, offres pour associations |
+| **Écoles et centres de formation** | Comptes pour enseignants et élèves, classes en ligne |
+| **Cabinets** (comptables, avocats, architectes) | Confidentialité, organisation des dossiers clients |
+| **Prestataires étrangers** | Administrateurs à distance pour leurs propres clients |
+
+> [!madagascar]
+> Beaucoup d''organisations malgaches fonctionnent encore avec des adresses Gmail ou Yahoo personnelles. Quand un employé part, il garde l''adresse, les contacts et parfois les fichiers. Montrer ce risque, avec un exemple simple, est souvent le meilleur argument pour passer à des comptes professionnels.
+
+## L''audit de l''environnement collaboratif : votre offre d''entrée
+
+| Domaine | Questions |
+| --- | --- |
+| **Comptes** | Comptes personnels ou professionnels ? Comptes partagés ? Anciens employés encore actifs ? |
+| **Licences** | Combien de licences payées, combien utilisées ? Bonne offre pour chaque utilisateur ? |
+| **Messagerie et domaine** | Adresses au nom de l''organisation ? Enregistrements DNS corrects (MX, SPF, DKIM, DMARC) ? |
+| **Fichiers** | Où sont les fichiers ? Qui y a accès ? Liens publics oubliés ? |
+| **Protection des comptes** | Double authentification activée ? Comptes administrateurs limités ? |
+| **Sauvegardes** | Les e-mails et fichiers sont-ils sauvegardés ailleurs ? |
+| **Utilisateurs** | Savent-ils utiliser les outils ? Où demandent-ils de l''aide ? |
+
+### Le rapport d''audit
+
+```
+Client : association Tanora Mandroso (exemple)
+Constat principal : 14 personnes utilisent des adresses Gmail personnelles ;
+les fichiers des projets sont dans les Drive personnels de 3 anciens volontaires.
+
+Recommandations prioritaires
+1. Adresses professionnelles @tanoramandroso.org pour toute l''équipe.
+2. Drive partagés par projet, appartenant à l''association.
+3. Double authentification pour tous, et 2 comptes administrateurs seulement.
+
+Proposition
+- Phase 1 : choix de la suite, domaine, comptes, migration des e-mails et fichiers.
+- Phase 2 : formation de l''équipe, puis forfait mensuel de gestion.
+```
+
+## Des offres adaptées
+
+| Offre | Contenu |
+| --- | --- |
+| **Audit** | État des lieux et recommandations |
+| **Mise en place ou migration** | Domaine, comptes, messagerie, fichiers, protections, formation |
+| **Gestion mensuelle** | Arrivées et départs, licences, assistance, contrôles réguliers |
+| **Formation des utilisateurs** | Ateliers pratiques, guides en français et en malgache |
+
+> [!retenir]
+> - L''administrateur gère comptes, licences, messagerie, fichiers, protections et sauvegardes.
+> - Microsoft 365 et Google Workspace : choisir selon les habitudes du client.
+> - PME, ONG, écoles, cabinets et prestataires étrangers.
+> - L''audit : comptes, licences, domaine, fichiers, protection, sauvegardes, utilisateurs.
+> - Audit, mise en place, gestion mensuelle et formation.
+
+## Exercice pratique : votre premier audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Créez un tableau comparatif des deux suites pour 3 types de clients.
+> 2. Préparez un questionnaire d''audit de 20 questions.
+> 3. Réalisez l''audit d''une organisation que vous connaissez (avec son accord) ou d''un cas fictif.
+> 4. Rédigez le rapport avec 3 recommandations et une proposition en 2 phases.
+>
+> **À livrer** : votre tableau, votre questionnaire et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 0, 0, 'Qu''est-ce qu''un locataire (tenant) ?', '["L''espace propre à une organisation avec ses utilisateurs et réglages","Un logiciel de dessin","Un bureau loué","Un câble réseau"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 0, 1, 'Sur quoi baser le choix entre les deux suites ?', '["Le hasard","La couleur du logo","Sa suite préférée","Les habitudes du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 0, 2, 'Quel risque présentent les adresses Gmail personnelles ?', '["Aucun","Elles coûtent plus cher","Elles sont plus sûres","L''employé qui part garde l''adresse, les contacts et parfois les fichiers"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-a', 1, 'Administrer Microsoft 365', 'Offres Business Basic, Standard et Premium, offres pour associations, utilisateurs, import CSV, groupes, boîtes partagées, départ d''un employé, domaine et enregistrements DNS, Teams, SharePoint et OneDrive, protections de base.', 'Ce module vous apprend à administrer **Microsoft 365** au quotidien depuis le Centre d''administration : choisir les offres, créer les utilisateurs, attribuer les licences, configurer le domaine et la messagerie, organiser Teams, SharePoint et OneDrive, et activer les protections de base.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir les offres Microsoft 365 adaptées au client.
+> 2. Gérer utilisateurs, groupes et licences.
+> 3. Ajouter un domaine et configurer la messagerie.
+> 4. Organiser le partage des fichiers avec Teams, SharePoint et OneDrive.
+> 5. Activer la double authentification et limiter les comptes administrateurs.
+
+## Choisir les offres
+
+| Offre (entreprise) | Contenu principal | Pour qui |
+| --- | --- | --- |
+| **Business Basic** | Messagerie, Teams, OneDrive, SharePoint, Office en ligne | Équipes qui travaillent surtout dans le navigateur |
+| **Business Standard** | Basic, plus les logiciels Office sur ordinateur | Utilisateurs de Word et Excel au quotidien |
+| **Business Premium** | Standard, plus des protections avancées des comptes et des appareils | Organisations avec des données sensibles |
+
+> [!astuce]
+> On peut **mélanger les offres** : Business Standard pour les comptables, Business Basic pour les agents de terrain. Ce simple réglage fait souvent économiser beaucoup au client. Les noms, contenus et prix des offres changent régulièrement : vérifiez toujours la page officielle avant de conseiller.
+
+> [!madagascar]
+> Microsoft propose des **offres pour les associations** (dons ou réductions) aux organisations éligibles. Pour une ONG malgache, vérifiez l''éligibilité sur le site de Microsoft pour les associations et préparez les documents demandés (statuts, récépissé). Le paiement des licences se fait généralement par carte bancaire internationale ou via un revendeur.
+
+## Utilisateurs, groupes et licences
+
+| Tâche | Où |
+| --- | --- |
+| **Créer un utilisateur** et lui attribuer une licence | Utilisateurs, puis Utilisateurs actifs |
+| **Créer plusieurs utilisateurs** d''un coup | Import à partir d''un fichier CSV |
+| **Groupes Microsoft 365** | Équipe avec messagerie, calendrier et fichiers communs |
+| **Boîte aux lettres partagée** | Adresse commune (par exemple contact@) sans licence supplémentaire, dans les limites prévues |
+| **Départ d''un employé** | Bloquer la connexion, transférer les e-mails et les fichiers à un responsable, puis retirer la licence |
+
+> [!attention]
+> Quand un employé part, ne supprimez pas son compte tout de suite : **bloquez la connexion**, confiez ses e-mails et ses fichiers à un responsable, et gardez une trace. Une suppression trop rapide peut faire perdre des documents importants au client.
+
+## Domaine et messagerie
+
+| Enregistrement DNS | Rôle |
+| --- | --- |
+| **TXT de vérification** | Prouver que l''organisation possède le domaine |
+| **MX** | Diriger les e-mails vers Microsoft 365 |
+| **SPF** (TXT) | Indiquer quels serveurs peuvent envoyer au nom du domaine |
+| **DKIM** (CNAME) | Signer les e-mails envoyés |
+| **DMARC** (TXT) | Dire aux destinataires quoi faire des e-mails qui ne passent pas les contrôles |
+| **Autodiscover** (CNAME) | Configurer automatiquement Outlook |
+
+> [!definition] SPF, DKIM et DMARC
+> Trois réglages du nom de domaine qui aident les messageries des destinataires à reconnaître les vrais e-mails de l''organisation. Sans eux, les e-mails du client arrivent plus souvent dans les indésirables, et des escrocs peuvent plus facilement envoyer de faux messages en son nom.
+
+## Teams, SharePoint et OneDrive
+
+| Outil | Usage conseillé |
+| --- | --- |
+| **OneDrive** | Fichiers personnels de travail |
+| **Équipes Teams** | Une équipe par service ou par projet, avec des canaux |
+| **SharePoint** | Les fichiers des équipes (chaque équipe Teams a son site SharePoint) |
+| **Partage externe** | Autorisé seulement vers les partenaires, avec des liens limités |
+
+> [!astuce]
+> Proposez une règle simple au client : « Ce qui concerne l''équipe va dans Teams ou SharePoint, jamais dans le OneDrive d''une seule personne. » Ainsi, les fichiers restent à l''organisation quand quelqu''un part.
+
+## Les protections de base
+
+| Réglage | Effet |
+| --- | --- |
+| **Double authentification pour tous** | Un mot de passe volé ne suffit plus |
+| **Valeurs de sécurité par défaut** ou règles d''accès conditionnel (selon l''offre) | Protections recommandées activées pour tout le monde |
+| **Deux comptes administrateurs au maximum**, séparés des comptes de travail | Moins de risques en cas de vol d''un compte |
+| **Compte d''urgence** | Un accès administrateur de secours, protégé et conservé en lieu sûr |
+| **Alertes** | Être prévenu des activités inhabituelles |
+
+> [!retenir]
+> - Choisir et mélanger les offres selon les usages ; vérifier les offres pour associations.
+> - Utilisateurs, groupes, boîtes partagées, départs gérés sans perte.
+> - Domaine : vérification, MX, SPF, DKIM, DMARC, Autodiscover.
+> - Fichiers d''équipe dans Teams et SharePoint, partage externe limité.
+> - Double authentification, peu d''administrateurs, compte d''urgence, alertes.
+
+## Exercice pratique : un locataire Microsoft 365 de test
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Ouvrez un essai gratuit de Microsoft 365 (ou un environnement de démonstration) pour une entreprise fictive.
+> 2. Créez 5 utilisateurs par import CSV, 2 groupes et une boîte partagée.
+> 3. Créez une équipe Teams par projet et testez le partage d''un fichier avec un compte externe.
+> 4. Activez la double authentification et simulez le départ d''un employé.
+>
+> **À livrer** : des captures de chaque étape et votre procédure de départ d''un employé.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 1, 0, 'Que faire en premier au départ d''un employé ?', '["Partager son mot de passe","Rien","Supprimer le compte immédiatement","Bloquer la connexion et confier ses e-mails et fichiers à un responsable"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 1, 1, 'À quoi sert l''enregistrement MX ?', '["Créer des utilisateurs","Changer le logo","Diriger les e-mails vers la messagerie","Sauvegarder les fichiers"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 1, 2, 'Où ranger les fichiers d''une équipe ?', '["Sur une clé USB","Dans les e-mails","Dans le OneDrive d''une seule personne","Dans Teams ou SharePoint"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-a', 2, 'Administrer Google Workspace', 'Éditions Business Starter, Standard et Plus, Google pour les associations, unités organisationnelles, groupes et rôles, Gmail, domaine et alias, Drive partagés et niveaux d''accès, validation en deux étapes et codes de secours.', 'Ce module vous apprend à administrer **Google Workspace** depuis la Console d''administration : choisir les éditions, organiser les utilisateurs en unités, configurer Gmail et le domaine, organiser les Drive partagés, maîtriser le partage externe et protéger les comptes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir l''édition Google Workspace adaptée.
+> 2. Organiser utilisateurs, unités organisationnelles et groupes.
+> 3. Configurer Gmail et le domaine.
+> 4. Organiser les fichiers avec les Drive partagés.
+> 5. Activer la validation en deux étapes et les contrôles de base.
+
+## Choisir l''édition
+
+| Édition (entreprise) | Contenu principal | Pour qui |
+| --- | --- | --- |
+| **Business Starter** | Gmail, Drive, Meet, Docs, stockage limité | Petites équipes |
+| **Business Standard** | Plus de stockage, enregistrement des réunions, fonctions avancées | Équipes qui collaborent beaucoup |
+| **Business Plus** | Plus de contrôles et d''archivage (Vault) | Organisations avec des obligations de conservation |
+
+> [!madagascar]
+> Google propose **Google pour les associations**, avec une édition gratuite ou à prix réduit pour les organisations éligibles. Vérifiez l''éligibilité de l''ONG cliente sur le site officiel et les documents demandés. Comme pour Microsoft, les offres et les prix changent : vérifiez toujours avant de conseiller.
+
+## Utilisateurs, unités et groupes
+
+| Élément | Usage |
+| --- | --- |
+| **Utilisateurs** | Création un par un ou par import CSV |
+| **Unités organisationnelles** | Appliquer des réglages différents (par exemple Direction, Terrain, Volontaires) |
+| **Groupes** | Adresses de diffusion (equipe@), boîtes collaboratives, partage de fichiers à un groupe |
+| **Rôles d''administration** | Donner des droits limités (par exemple réinitialiser les mots de passe) sans donner tous les droits |
+
+> [!astuce]
+> Partagez les fichiers et les agendas avec des **groupes**, pas avec des personnes une par une. Quand quelqu''un arrive ou part, il suffit de l''ajouter ou de le retirer du groupe.
+
+## Gmail et le domaine
+
+| Réglage | Rôle |
+| --- | --- |
+| **Vérification du domaine** | Prouver que l''organisation possède le domaine |
+| **Enregistrements MX** | Diriger les e-mails vers Gmail |
+| **SPF, DKIM, DMARC** | Faire reconnaître les vrais e-mails de l''organisation |
+| **Alias** | Plusieurs adresses pour un même utilisateur (par exemple direction@) |
+| **Groupes de diffusion** | Une adresse pour une équipe |
+| **Signature commune** | Signature identique pour tous, gérée par l''administrateur ou un outil dédié |
+
+> [!attention]
+> Avant de changer les enregistrements **MX**, préparez la bascule : comptes créés, utilisateurs prévenus, heure choisie en dehors des heures de travail. Une erreur sur les MX peut faire perdre ou retarder des e-mails pendant plusieurs heures.
+
+## Les Drive partagés
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Un Drive partagé par service ou par projet** | Les fichiers appartiennent à l''organisation, pas à une personne |
+| **Accès donnés à des groupes** | Gestion simple des arrivées et départs |
+| **Niveaux d''accès** | Lecteur, commentateur, contributeur, gestionnaire de contenu, gestionnaire |
+| **Partage externe contrôlé** | Autorisé seulement vers les partenaires, ou avec avertissement |
+| **Nommage clair** | Par exemple : « Projet Eau Analamanga 2026 » |
+
+> [!exemple] Organisation proposée à une ONG
+> Drive partagés : « Direction », « Finances », « Ressources humaines », « Projet Eau Analamanga », « Communication ». Les finances et les ressources humaines sont accessibles seulement à leurs groupes. Les volontaires sont dans une unité organisationnelle à part, sans partage externe.
+
+## Protéger les comptes
+
+| Réglage | Effet |
+| --- | --- |
+| **Validation en deux étapes obligatoire** (après une période d''inscription) | Un mot de passe volé ne suffit plus |
+| **Super-administrateurs limités** à 2 comptes séparés | Moins de risques |
+| **Règles de mot de passe** | Longueur minimale, pas de réutilisation |
+| **Alertes de la console** | Connexions suspectes, changements importants |
+| **Appareils mobiles** | Gestion de base : verrouillage, effacement des données de l''organisation si le téléphone est perdu |
+
+> [!madagascar]
+> Beaucoup d''utilisateurs n''ont qu''un téléphone, parfois partagé. Pour la validation en deux étapes, proposez l''**application Google Authenticator** ou les invites sur le téléphone plutôt que les SMS, qui arrivent parfois en retard selon le réseau, et fournissez des **codes de secours** imprimés et rangés en lieu sûr.
+
+> [!retenir]
+> - Choisir l''édition selon les besoins ; vérifier l''offre pour associations.
+> - Unités organisationnelles pour les réglages, groupes pour le partage.
+> - Domaine, MX préparés, SPF, DKIM, DMARC, alias, groupes.
+> - Drive partagés par service ou projet, accès par groupes, partage externe contrôlé.
+> - Validation en deux étapes, peu de super-administrateurs, alertes, appareils.
+
+## Exercice pratique : un environnement Google Workspace de test
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Ouvrez un essai gratuit de Google Workspace pour une organisation fictive.
+> 2. Créez 3 unités organisationnelles, 6 utilisateurs et 3 groupes.
+> 3. Créez 4 Drive partagés avec des accès par groupe, et testez un partage externe.
+> 4. Rendez la validation en deux étapes obligatoire et rédigez le guide d''activation pour les utilisateurs.
+>
+> **À livrer** : des captures, votre schéma d''organisation et votre guide d''activation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 2, 0, 'À quoi servent les unités organisationnelles ?', '["Envoyer des e-mails","Payer les licences","Stocker des vidéos","Appliquer des réglages différents à des groupes d''utilisateurs"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 2, 1, 'Avec qui partager les fichiers de préférence ?', '["Avec personne","Avec tout Internet","Avec des groupes","Avec chaque personne une par une"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 2, 2, 'Que préparer avant de changer les MX ?', '["Rien","Supprimer les comptes","Comptes créés, utilisateurs prévenus et heure choisie","Changer le logo"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-a', 3, 'Premier projet : la migration de Tanora Mandroso', 'Plan de migration validé par écrit, domaine au nom du client, comptes, groupes et Drive partagés, migration des e-mails et fichiers avec l''accord des utilisateurs, bascule, formation, responsabilité partagée, sauvegardes et documentation.', 'Dans ce module, vous menez un projet complet comme un administrateur indépendant : faire passer une association de comptes Gmail personnels à un environnement professionnel, sans perdre d''e-mails ni de fichiers. Vous apprendrez à planifier, préparer le domaine, migrer, basculer, former et documenter, puis à mettre en place les sauvegardes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Planifier une migration étape par étape.
+> 2. Préparer le domaine et les comptes.
+> 3. Migrer les e-mails et les fichiers.
+> 4. Réussir la bascule et former les utilisateurs.
+> 5. Mettre en place les sauvegardes et la documentation.
+
+## Le cas pratique : « Tanora Mandroso »
+
+> [!exemple] Votre client
+> **Tanora Mandroso** est une association de formation des jeunes, avec 14 personnes à Antananarivo, Fianarantsoa et Mahajanga. Chacun utilise son adresse Gmail personnelle. Les fichiers des projets sont dispersés dans les Drive personnels, dont ceux de trois anciens volontaires. L''association a choisi Google Workspace (offre pour associations) et possède le domaine tanoramandroso.org (exemple).
+
+## Étape 1 : le plan de migration
+
+| N° | Étape | Durée indicative |
+| --- | --- | --- |
+| 1 | Inventaire : personnes, adresses, fichiers importants, partenaires | 2 jours |
+| 2 | Ouverture de l''environnement et vérification du domaine | 1 à 3 jours |
+| 3 | Création des comptes, groupes, Drive partagés | 1 jour |
+| 4 | Migration des e-mails et des fichiers | 2 à 5 jours |
+| 5 | Bascule des MX et contrôles | 1 soirée |
+| 6 | Formation et assistance renforcée | 1 à 2 semaines |
+| 7 | Documentation et passation | 1 jour |
+
+> [!attention]
+> Faites valider le plan **par écrit** par la direction, avec la date de bascule. Prévenez les utilisateurs une semaine avant, puis la veille. Une migration surprise crée de la panique et des pertes.
+
+## Étape 2 : préparer le domaine et les comptes
+
+| Action | Détail |
+| --- | --- |
+| **Accès au domaine** | Obtenir l''accès au gestionnaire DNS, au nom de l''association |
+| **Vérification** | Enregistrement TXT de vérification |
+| **Comptes** | prénom.nom@tanoramandroso.org, mot de passe temporaire, validation en deux étapes à activer à la première connexion |
+| **Groupes** | equipe@, direction@, contact@ |
+| **Drive partagés** | Un par projet et un par service |
+
+> [!madagascar]
+> Le nom de domaine en .mg s''achète auprès d''un bureau d''enregistrement agréé ; d''autres extensions (.org, .com) s''achètent auprès de bureaux internationaux, souvent par carte bancaire. Vérifiez que le domaine est bien **au nom de l''association**, avec une adresse de contact qui ne dépend pas d''une seule personne.
+
+## Étape 3 : migrer les e-mails et les fichiers
+
+| Élément | Méthode |
+| --- | --- |
+| **E-mails des anciens comptes Gmail** | Outil de migration des données de la console, avec l''accord de chaque utilisateur |
+| **Contacts et agendas** | Export et import, ou outil de migration |
+| **Fichiers** | Chaque personne déplace ses fichiers de travail dans le bon Drive partagé, avec votre aide |
+| **Fichiers des anciens volontaires** | Demander poliment le transfert ou le partage ; ne jamais essayer d''accéder à leurs comptes |
+
+> [!attention]
+> Vous ne touchez **jamais** aux comptes personnels sans l''accord et la présence de leur propriétaire. Les e-mails et fichiers privés d''un employé ne concernent pas l''association : chacun choisit ce qu''il transfère.
+
+## Étape 4 : la bascule et la formation
+
+| Moment | Action |
+| --- | --- |
+| **Avant** | Réduire la durée de vie des enregistrements DNS (TTL) quelques jours avant |
+| **Le soir de la bascule** | Changer les MX, ajouter SPF et DKIM, puis DMARC en mode surveillance |
+| **Contrôles** | Envoyer et recevoir des e-mails de test depuis plusieurs messageries |
+| **Le lendemain** | Permanence d''assistance, réponses rapides |
+| **Formation** | Atelier de 2 heures : Gmail, Drive partagés, Meet, validation en deux étapes |
+| **Supports** | Guide court en français et en malgache, avec captures |
+
+> [!astuce]
+> Avec des équipes dans plusieurs villes et des connexions inégales, enregistrez l''atelier et préparez des **fiches d''une page** : « Se connecter et activer la validation en deux étapes », « Où ranger mes fichiers », « Partager un fichier avec un partenaire ».
+
+## Étape 5 : sauvegardes et documentation
+
+> [!definition] Responsabilité partagée
+> Microsoft et Google assurent le fonctionnement de leurs services, mais pas la récupération de **tout** ce que les utilisateurs suppriment ou écrasent au-delà des délais de la corbeille et de conservation. C''est à l''organisation de prévoir une sauvegarde adaptée.
+
+| Solution | Principe |
+| --- | --- |
+| **Règles de conservation** (Vault ou fonctions équivalentes, selon l''édition) | Garder les données pendant une durée définie |
+| **Outil de sauvegarde tiers** | Copie quotidienne des e-mails et fichiers hors de la suite, restauration simple |
+| **Test de restauration** | Restaurer un fichier et une boîte de test chaque trimestre |
+
+```
+Documentation – Tanora Mandroso
+1. Comptes et groupes : liste, unités organisationnelles, rôles
+2. Domaine : bureau d''enregistrement, enregistrements DNS (sans mots de passe)
+3. Fichiers : Drive partagés, accès, règles de partage
+4. Protections : validation en deux étapes, administrateurs, compte d''urgence
+5. Sauvegardes : outil, fréquence, procédure de restauration
+6. Procédures : arrivée, départ, mot de passe oublié, téléphone perdu
+```
+
+> [!retenir]
+> - Un plan validé par écrit, des utilisateurs prévenus.
+> - Domaine au nom du client, comptes, groupes, Drive partagés.
+> - Migration avec l''accord des utilisateurs, jamais d''accès aux comptes personnels.
+> - Bascule préparée (TTL, MX, SPF, DKIM, DMARC), contrôles et formation.
+> - Sauvegarde adaptée, restauration testée, documentation complète.
+
+## Exercice pratique : la migration de Tanora Mandroso
+
+> [!exercice] Exercice pratique · 8 heures (sur plusieurs jours)
+> 1. Rédigez le plan de migration complet avec un calendrier.
+> 2. Dans votre environnement d''essai, créez les comptes, groupes et Drive partagés de l''association.
+> 3. Migrez les e-mails d''un compte Gmail de test que vous possédez.
+> 4. Rédigez 3 fiches d''une page pour les utilisateurs et la documentation finale.
+>
+> **À livrer** : le plan, des captures, vos fiches et la documentation. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 3, 0, 'Peut-on accéder aux comptes personnels des anciens volontaires ?', '["Oui, avec un logiciel spécial","Oui, la nuit","Oui, sans demander","Non, on leur demande poliment de transférer ou partager les fichiers"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 3, 1, 'Que faire quelques jours avant la bascule ?', '["Rien","Supprimer le domaine","Réduire la durée de vie (TTL) des enregistrements DNS","Changer de suite"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 3, 2, 'Que signifie la responsabilité partagée ?', '["L''organisation doit prévoir sa propre sauvegarde adaptée","Le client n''a rien à faire","Personne n''est responsable","Microsoft et Google sauvegardent tout pour toujours"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-4-a', 4, 'Trouver des clients, fixer ses prix et développer son activité', 'Portfolio et certifications, 5 canaux, message à une PME, audit, migration, gestion mensuelle et formation, licences payées par le client, comptes au nom du client, clients étrangers, paiements et évolution.', 'Les PME, les ONG, les écoles et les prestataires étrangers ont besoin d''administrateurs fiables, disponibles et pédagogues. Ce dernier module vous montre comment présenter vos services, trouver vos clients, fixer vos prix, travailler avec des clients étrangers et développer une activité durable.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio et des certifications utiles.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix et vos forfaits mensuels.
+> 4. Travailler pour des clients étrangers.
+> 5. Développer votre activité et évoluer.
+
+## Portfolio et certifications
+
+| Élément | Exemple |
+| --- | --- |
+| **Étude de cas** | La migration de Tanora Mandroso, avec plan, captures et résultats |
+| **Guides utilisateurs** | Vos fiches d''une page en français et en malgache |
+| **Modèles** | Procédures d''arrivée et de départ, questionnaire d''audit |
+| **Certifications Microsoft** | Par exemple Microsoft 365 Fundamentals, puis une certification d''administration |
+| **Certification Google** | Google Workspace Administrator |
+
+> [!astuce]
+> Les éditeurs modifient régulièrement leurs certifications et leurs noms. Vérifiez la **liste actuelle**, le prix, la langue et le mode d''examen sur les sites officiels, et utilisez leurs parcours d''apprentissage gratuits.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **PME locales** | Proposer l''audit et montrer le risque des adresses personnelles |
+| 2 | **ONG et associations** | Mettre en avant les offres pour associations et la gestion d''équipes réparties |
+| 3 | **Écoles et centres de formation** | Comptes pour enseignants et élèves, formation |
+| 4 | **Prestataires informatiques étrangers** | Administration à distance de leurs clients, en marque blanche |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une PME
+> « Bonjour, si vos employés utilisent des adresses Gmail personnelles, vos contacts clients et vos fichiers partent avec eux quand ils quittent l''entreprise. Je mets en place des adresses à votre nom, des fichiers partagés qui appartiennent à l''entreprise et la double authentification, sans interruption de votre messagerie. Je vous propose un audit gratuit de 30 minutes. »
+
+## Fixer ses prix
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit** | Questionnaire, revue de l''environnement, rapport | 300 000 Ar |
+| **Mise en place ou migration** | Jusqu''à 15 utilisateurs, domaine, messagerie, fichiers, protections, formation | 1 500 000 Ar |
+| **Gestion mensuelle** | Arrivées et départs, licences, assistance, contrôles mensuels | 200 000 Ar par mois, plus un montant par utilisateur au-delà de 15 |
+| **Formation** | Atelier de 2 heures et guides | 250 000 Ar |
+
+*(Montants donnés en exemple. Les licences Microsoft 365 ou Google Workspace sont payées par le client, en plus de vos prestations. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Les licences, le domaine et le locataire doivent être **au nom du client**. Vous êtes un administrateur invité avec vos propres comptes, jamais le propriétaire. À la fin du contrat, vous remettez les accès et la documentation, et votre compte est retiré.
+
+## Travailler pour des clients étrangers
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Anglais** | « I''ve created the accounts and enabled two-step verification for all users. » |
+| **Procédures du prestataire** | Respecter ses outils de tickets et ses règles |
+| **Délais de réponse** | Écrits au contrat selon la gravité |
+| **Données** | Accès personnels, aucun fichier client sur votre ordinateur, respect du RGPD pour les clients européens |
+| **Marque blanche** | Ne pas démarcher les clients du prestataire |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Pour un client local, utilisez Mobile Money (MVola, Orange Money, Airtel Money) ou le virement ; pour un client étranger, le virement international ou Payoneer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Développer son activité
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Plusieurs forfaits mensuels** | 10 à 20 organisations suivies chaque mois |
+| **Petite équipe** | Un technicien pour l''assistance, vous pour les projets et les clients |
+| **Revendeur de licences** | Devenir partenaire d''un éditeur ou passer par un distributeur, selon leurs conditions |
+| **Technicien support à distance** | Voir la formation Technicien support à distance |
+| **Administrateur systèmes et DevOps** | Voir la formation Administrateur systèmes et DevOps |
+
+> [!retenir]
+> - Portfolio : étude de cas, guides, modèles ; certifications à vérifier.
+> - PME, ONG, écoles, prestataires étrangers, plateformes.
+> - Audit, migration, gestion mensuelle, formation ; licences payées par le client.
+> - Tout au nom du client, remise des accès en fin de contrat.
+> - Grandir avec des forfaits mensuels, une équipe ou la revente de licences.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rassemblez votre portfolio en 4 éléments.
+> 2. Calculez vos prix et rédigez vos conditions en 6 points.
+> 3. Choisissez une certification et préparez un plan d''étude de 2 mois.
+> 4. Envoyez au moins 3 propositions à des PME, ONG ou écoles.
+>
+> **À livrer** : votre portfolio, vos prix, vos conditions, votre plan d''étude et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 4, 0, 'Qui paie les licences Microsoft 365 ou Google Workspace ?', '["L''administrateur","L''hébergeur du site","Personne","Le client, en plus des prestations"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 4, 1, 'Au nom de qui sont le domaine et le locataire ?', '["Au nom du client","Au nom d''un ami","Sans propriétaire","Au nom de l''administrateur"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-4-a', 4, 2, 'Que contient la gestion mensuelle ?', '["Un nouveau site web","Arrivées et départs, licences, assistance et contrôles","Rien","La comptabilité du client"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que fait un administrateur Microsoft 365 et Google Workspace ?', '["Il gère comptes, licences, messagerie, fichiers, protections et sauvegardes","Il monte des vidéos","Il dessine des logos","Il répare des téléphones"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Quel est l''équivalent de Gmail chez Microsoft ?', '["Outlook et Exchange Online","Excel","OneDrive","Teams"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Quel est le point fort de Google Workspace ?', '["Le dessin 3D","L''absence de messagerie","Les logiciels Office sur ordinateur","La simplicité et la collaboration dans le navigateur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Quelle est l''offre d''entrée proposée ?', '["Une vidéo","Un site web gratuit","L''audit de l''environnement collaboratif","Un logo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que vérifier pour les licences lors d''un audit ?', '["Leur couleur","Combien sont payées, combien utilisées, et si l''offre convient","Le nom du vendeur","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Quelle offre Microsoft ajoute les logiciels Office sur ordinateur ?', '["Business Standard","Business Starter","Business Basic","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Peut-on mélanger les offres Microsoft 365 ?', '["Oui, selon les besoins de chaque utilisateur","Non, jamais","Seulement le dimanche","Seulement pour les ONG"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que vérifier avant de conseiller une offre ?', '["Le prix d''il y a 5 ans","Un vieux forum","Rien","La page officielle, car offres et prix changent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Qu''est-ce qu''une boîte aux lettres partagée ?', '["Une adresse commune utilisée par plusieurs personnes","Un disque dur","Une boîte postale","Un groupe WhatsApp"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que font SPF, DKIM et DMARC ?', '["Accélèrent Internet","Aident à faire reconnaître les vrais e-mails de l''organisation","Créent des utilisateurs","Impriment des documents"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Combien de comptes administrateurs conseiller ?', '["Deux au maximum, séparés des comptes de travail","Tous les employés","Aucun","Un seul partagé par tous"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'À quoi sert un compte d''urgence ?', '["Remplacer tous les comptes","Garder un accès administrateur de secours protégé","Envoyer des publicités","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Qu''est-ce qu''un Drive partagé ?', '["Un e-mail","Une clé USB","Un espace de fichiers qui appartient à l''organisation","Le Drive personnel d''un employé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que permet un groupe comme equipe@ ?', '["Payer les salaires","Supprimer l''équipe","Rien","Une adresse de diffusion pour toute une équipe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que donner aux utilisateurs pour la validation en deux étapes ?', '["Rien","Le mot de passe de l''administrateur","Des codes de secours rangés en lieu sûr","Un logiciel de dessin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Pourquoi préférer une application d''authentification aux SMS ?', '["Pour payer moins","Les SMS sont plus sûrs","Les SMS arrivent parfois en retard selon le réseau","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Comment valider le plan de migration ?', '["Après la migration","Oralement seulement","Sans en parler","Par écrit avec la direction, avec la date de bascule"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Au nom de qui doit être le nom de domaine ?', '["De l''administrateur","D''un ancien volontaire","De personne","De l''organisation cliente"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que faire le soir de la bascule ?', '["Changer les MX, ajouter SPF et DKIM, puis tester","Partir en congé","Rien","Supprimer tous les comptes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Dans quel mode activer d''abord DMARC ?', '["Au hasard","Jamais","En mode surveillance","En mode suppression totale"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que préparer pour des équipes aux connexions inégales ?', '["Rien","Un atelier enregistré et des fiches d''une page","Un livre de 300 pages","Une seule réunion sans support"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'À quelle fréquence tester une restauration ?', '["Seulement après une perte","Tous les 10 ans","Jamais","Chaque trimestre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que ne doit pas contenir la documentation ?', '["Les mots de passe","La liste des groupes","Les procédures de départ","Les sauvegardes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Que faire à la fin d''un contrat ?', '["Remettre les accès et la documentation, et faire retirer son compte","Changer les mots de passe sans prévenir","Garder les accès","Supprimer les données"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-a', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Aucun","Uniquement des chèques étrangers","Mobile Money ou virement"]'::jsonb, 3);
 
 -- tech-4-f
 delete from public.exam_questions where course_id = 'tech-4-f';

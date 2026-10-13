@@ -38,7 +38,7 @@ def setup(page):
     page.route('https://fonts.googleapis.com/**', lambda r: r.abort())
     page.route('https://fonts.gstatic.com/**', lambda r: r.abort())
     page.route('**/assets/js/config.js', lambda r: r.fulfill(body=CONFIG, content_type='application/javascript'))
-    page.route('**/assets/js/data.js', lambda r: r.fulfill(body=DATA_JS, content_type='application/javascript'))
+    page.route(re.compile(r'.*/assets/js/data\.js(\?.*)?$'), lambda r: r.fulfill(body=DATA_JS, content_type='application/javascript'))
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
 
@@ -70,7 +70,7 @@ with sync_playwright() as p:
 
     # --- Catalogue
     check('catalogue : 50 métiers', page.locator('.card.job').count() == 50)
-    nb_pub = sum(1 for c in page.evaluate("window.__VITAKO_FIXTURE__").get('courses', []) if c.get('published'))
+    nb_pub = sum(1 for c in page.evaluate("window.__VITAKO_FIXTURE__").get('courses', []) if c.get('published') and c.get('id') != 'tech-4-a')  # tech-4-a simulée non publiée
     check(f'catalogue : {nb_pub} formations disponibles', page.locator('.fact b').nth(1).inner_text().strip() == str(nb_pub))
     page.fill('#search', 'photoshop'); page.wait_for_timeout(150)
     n = page.locator('.card.job').count()
@@ -102,7 +102,11 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/02z-fiche.png', full_page=True)
     check('fiche : invite à créer un compte', page.locator('aside a:has-text("Créer un compte")').count() == 1)
     goto(page, '#/formation/tech-4-a')
-    check('fiche non publiée : « Bientôt disponible »', 'Bientôt disponible' in page.content())
+    try:
+        page.wait_for_selector('.pill:has-text("Bientôt disponible")', timeout=3000); ok = True
+    except Exception:
+        ok = False
+    check('fiche non publiée : « Bientôt disponible »', ok)
     goto(page, '#/formation/design-0-f/module/1')
     check('leçon bloquée pour un visiteur', 'Connectez-vous pour continuer' in page.content())
 

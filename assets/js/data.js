@@ -8316,6 +8316,87 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-4-a": {
+  "title": "Administrateur Microsoft 365 et Google Workspace",
+  "hours": 17,
+  "description": "L'administrateur Microsoft 365 et Google Workspace met de l'ordre dans les outils de travail des organisations : comptes professionnels, licences, messagerie au nom de l'organisation, partage de fichiers maîtrisé, double authentification et sauvegardes. Cette formation, en 5 modules numérotés et progressifs, prépare à proposer ce service très demandé à distance, à des PME, des ONG, des écoles et des prestataires, à Madagascar et à l'étranger : audit de l'environnement collaboratif, choix des offres, utilisateurs, groupes et licences, domaine et enregistrements DNS, Teams, SharePoint, OneDrive, Gmail et Drive partagés, protections de base, migration complète, formation des utilisateurs, sauvegardes, documentation, prix et forfaits mensuels. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et conseiller un client entre Microsoft 365 et Google Workspace",
+   "Mener l'audit d'un environnement de travail collaboratif",
+   "Administrer Microsoft 365 : offres, utilisateurs, licences, domaine, fichiers et protections",
+   "Administrer Google Workspace : éditions, unités, groupes, Gmail, Drive partagés et protections",
+   "Mener une migration complète avec formation, sauvegardes et documentation",
+   "Trouver des clients, fixer ses prix et vendre des forfaits mensuels"
+  ],
+  "modules": [
+   {
+    "title": "Le métier et l'audit d'un environnement collaboratif",
+    "summary": "Rôle de l'administrateur, locataire, comparaison de Microsoft 365 et Google Workspace, clients et besoins, risques des adresses personnelles, audit des comptes, licences, domaine, fichiers, protections et sauvegardes, offres.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les deux suites en bref",
+     "Vos clients et leurs besoins",
+     "L'audit de l'environnement collaboratif : votre offre d'entrée",
+     "Des offres adaptées",
+     "Exercice pratique : votre premier audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Administrer Microsoft 365",
+    "summary": "Offres Business Basic, Standard et Premium, offres pour associations, utilisateurs, import CSV, groupes, boîtes partagées, départ d'un employé, domaine et enregistrements DNS, Teams, SharePoint et OneDrive, protections de base.",
+    "sections": [
+     "Choisir les offres",
+     "Utilisateurs, groupes et licences",
+     "Domaine et messagerie",
+     "Teams, SharePoint et OneDrive",
+     "Les protections de base",
+     "Exercice pratique : un locataire Microsoft 365 de test"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Administrer Google Workspace",
+    "summary": "Éditions Business Starter, Standard et Plus, Google pour les associations, unités organisationnelles, groupes et rôles, Gmail, domaine et alias, Drive partagés et niveaux d'accès, validation en deux étapes et codes de secours.",
+    "sections": [
+     "Choisir l'édition",
+     "Utilisateurs, unités et groupes",
+     "Gmail et le domaine",
+     "Les Drive partagés",
+     "Protéger les comptes",
+     "Exercice pratique : un environnement Google Workspace de test"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la migration de Tanora Mandroso",
+    "summary": "Plan de migration validé par écrit, domaine au nom du client, comptes, groupes et Drive partagés, migration des e-mails et fichiers avec l'accord des utilisateurs, bascule, formation, responsabilité partagée, sauvegardes et documentation.",
+    "sections": [
+     "Le cas pratique : « Tanora Mandroso »",
+     "Étape 1 : le plan de migration",
+     "Étape 2 : préparer le domaine et les comptes",
+     "Étape 3 : migrer les e-mails et les fichiers",
+     "Étape 4 : la bascule et la formation",
+     "Étape 5 : sauvegardes et documentation",
+     "Exercice pratique : la migration de Tanora Mandroso"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Trouver des clients, fixer ses prix et développer son activité",
+    "summary": "Portfolio et certifications, 5 canaux, message à une PME, audit, migration, gestion mensuelle et formation, licences payées par le client, comptes au nom du client, clients étrangers, paiements et évolution.",
+    "sections": [
+     "Portfolio et certifications",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Travailler pour des clients étrangers",
+     "Développer son activité",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "tech-4-f": {
   "hours": 22,
   "description": "L'analyste en cybersécurité protège les sites, les comptes et les données des organisations : il repère les faiblesses avec l'autorisation du client, recommande des corrections et sensibilise les équipes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des PME, des agences, des ONG et des entreprises, à Madagascar et à l'étranger, avec Nmap et OWASP ZAP, dans un cadre strictement éthique et légal : menaces, trois piliers de la sécurité, autorisation écrite, réseau, sécurité des comptes, OWASP Top 10, journaux, évaluation des risques, inventaire, analyse de site, audit, rapport et plan de correction. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

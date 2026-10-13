@@ -1,0 +1,98 @@
+{
+  "id": "tech-4-a",
+  "title": "Administrateur Microsoft 365 et Google Workspace",
+  "hours": 17,
+  "description": "L'administrateur Microsoft 365 et Google Workspace met de l'ordre dans les outils de travail des organisations : comptes professionnels, licences, messagerie au nom de l'organisation, partage de fichiers maîtrisé, double authentification et sauvegardes. Cette formation, en 5 modules numérotés et progressifs, prépare à proposer ce service très demandé à distance, à des PME, des ONG, des écoles et des prestataires, à Madagascar et à l'étranger : audit de l'environnement collaboratif, choix des offres, utilisateurs, groupes et licences, domaine et enregistrements DNS, Teams, SharePoint, OneDrive, Gmail et Drive partagés, protections de base, migration complète, formation des utilisateurs, sauvegardes, documentation, prix et forfaits mensuels. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et conseiller un client entre Microsoft 365 et Google Workspace",
+    "Mener l'audit d'un environnement de travail collaboratif",
+    "Administrer Microsoft 365 : offres, utilisateurs, licences, domaine, fichiers et protections",
+    "Administrer Google Workspace : éditions, unités, groupes, Gmail, Drive partagés et protections",
+    "Mener une migration complète avec formation, sauvegardes et documentation",
+    "Trouver des clients, fixer ses prix et vendre des forfaits mensuels"
+  ],
+  "modules": [
+    {
+      "title": "Le métier et l'audit d'un environnement collaboratif",
+      "summary": "Rôle de l'administrateur, locataire, comparaison de Microsoft 365 et Google Workspace, clients et besoins, risques des adresses personnelles, audit des comptes, licences, domaine, fichiers, protections et sauvegardes, offres.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un locataire (tenant) ?", "options": ["L'espace propre à une organisation avec ses utilisateurs et réglages", "Un bureau loué", "Un logiciel de dessin", "Un câble réseau"], "correct": 0 },
+        { "q": "Sur quoi baser le choix entre les deux suites ?", "options": ["Les habitudes du client", "Sa suite préférée", "Le hasard", "La couleur du logo"], "correct": 0 },
+        { "q": "Quel risque présentent les adresses Gmail personnelles ?", "options": ["L'employé qui part garde l'adresse, les contacts et parfois les fichiers", "Aucun", "Elles sont plus sûres", "Elles coûtent plus cher"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Administrer Microsoft 365",
+      "summary": "Offres Business Basic, Standard et Premium, offres pour associations, utilisateurs, import CSV, groupes, boîtes partagées, départ d'un employé, domaine et enregistrements DNS, Teams, SharePoint et OneDrive, protections de base.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire en premier au départ d'un employé ?", "options": ["Bloquer la connexion et confier ses e-mails et fichiers à un responsable", "Supprimer le compte immédiatement", "Rien", "Partager son mot de passe"], "correct": 0 },
+        { "q": "À quoi sert l'enregistrement MX ?", "options": ["Diriger les e-mails vers la messagerie", "Changer le logo", "Créer des utilisateurs", "Sauvegarder les fichiers"], "correct": 0 },
+        { "q": "Où ranger les fichiers d'une équipe ?", "options": ["Dans Teams ou SharePoint", "Dans le OneDrive d'une seule personne", "Sur une clé USB", "Dans les e-mails"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Administrer Google Workspace",
+      "summary": "Éditions Business Starter, Standard et Plus, Google pour les associations, unités organisationnelles, groupes et rôles, Gmail, domaine et alias, Drive partagés et niveaux d'accès, validation en deux étapes et codes de secours.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi servent les unités organisationnelles ?", "options": ["Appliquer des réglages différents à des groupes d'utilisateurs", "Envoyer des e-mails", "Stocker des vidéos", "Payer les licences"], "correct": 0 },
+        { "q": "Avec qui partager les fichiers de préférence ?", "options": ["Avec des groupes", "Avec chaque personne une par une", "Avec tout Internet", "Avec personne"], "correct": 0 },
+        { "q": "Que préparer avant de changer les MX ?", "options": ["Comptes créés, utilisateurs prévenus et heure choisie", "Rien", "Supprimer les comptes", "Changer le logo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la migration de Tanora Mandroso",
+      "summary": "Plan de migration validé par écrit, domaine au nom du client, comptes, groupes et Drive partagés, migration des e-mails et fichiers avec l'accord des utilisateurs, bascule, formation, responsabilité partagée, sauvegardes et documentation.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Peut-on accéder aux comptes personnels des anciens volontaires ?", "options": ["Non, on leur demande poliment de transférer ou partager les fichiers", "Oui, sans demander", "Oui, la nuit", "Oui, avec un logiciel spécial"], "correct": 0 },
+        { "q": "Que faire quelques jours avant la bascule ?", "options": ["Réduire la durée de vie (TTL) des enregistrements DNS", "Supprimer le domaine", "Rien", "Changer de suite"], "correct": 0 },
+        { "q": "Que signifie la responsabilité partagée ?", "options": ["L'organisation doit prévoir sa propre sauvegarde adaptée", "Microsoft et Google sauvegardent tout pour toujours", "Personne n'est responsable", "Le client n'a rien à faire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients, fixer ses prix et développer son activité",
+      "summary": "Portfolio et certifications, 5 canaux, message à une PME, audit, migration, gestion mensuelle et formation, licences payées par le client, comptes au nom du client, clients étrangers, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui paie les licences Microsoft 365 ou Google Workspace ?", "options": ["Le client, en plus des prestations", "L'administrateur", "Personne", "L'hébergeur du site"], "correct": 0 },
+        { "q": "Au nom de qui sont le domaine et le locataire ?", "options": ["Au nom du client", "Au nom de l'administrateur", "Au nom d'un ami", "Sans propriétaire"], "correct": 0 },
+        { "q": "Que contient la gestion mensuelle ?", "options": ["Arrivées et départs, licences, assistance et contrôles", "Un nouveau site web", "Rien", "La comptabilité du client"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un administrateur Microsoft 365 et Google Workspace ?", "options": ["Il gère comptes, licences, messagerie, fichiers, protections et sauvegardes", "Il dessine des logos", "Il monte des vidéos", "Il répare des téléphones"], "correct": 0 },
+    { "q": "Quel est l'équivalent de Gmail chez Microsoft ?", "options": ["Outlook et Exchange Online", "Teams", "OneDrive", "Excel"], "correct": 0 },
+    { "q": "Quel est le point fort de Google Workspace ?", "options": ["La simplicité et la collaboration dans le navigateur", "Les logiciels Office sur ordinateur", "L'absence de messagerie", "Le dessin 3D"], "correct": 0 },
+    { "q": "Quelle est l'offre d'entrée proposée ?", "options": ["L'audit de l'environnement collaboratif", "Un site web gratuit", "Une vidéo", "Un logo"], "correct": 0 },
+    { "q": "Que vérifier pour les licences lors d'un audit ?", "options": ["Combien sont payées, combien utilisées, et si l'offre convient", "Leur couleur", "Rien", "Le nom du vendeur"], "correct": 0 },
+    { "q": "Quelle offre Microsoft ajoute les logiciels Office sur ordinateur ?", "options": ["Business Standard", "Business Basic", "Aucune", "Business Starter"], "correct": 0 },
+    { "q": "Peut-on mélanger les offres Microsoft 365 ?", "options": ["Oui, selon les besoins de chaque utilisateur", "Non, jamais", "Seulement pour les ONG", "Seulement le dimanche"], "correct": 0 },
+    { "q": "Que vérifier avant de conseiller une offre ?", "options": ["La page officielle, car offres et prix changent", "Un vieux forum", "Rien", "Le prix d'il y a 5 ans"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une boîte aux lettres partagée ?", "options": ["Une adresse commune utilisée par plusieurs personnes", "Une boîte postale", "Un groupe WhatsApp", "Un disque dur"], "correct": 0 },
+    { "q": "Que font SPF, DKIM et DMARC ?", "options": ["Aident à faire reconnaître les vrais e-mails de l'organisation", "Accélèrent Internet", "Créent des utilisateurs", "Impriment des documents"], "correct": 0 },
+    { "q": "Combien de comptes administrateurs conseiller ?", "options": ["Deux au maximum, séparés des comptes de travail", "Tous les employés", "Aucun", "Un seul partagé par tous"], "correct": 0 },
+    { "q": "À quoi sert un compte d'urgence ?", "options": ["Garder un accès administrateur de secours protégé", "Envoyer des publicités", "Remplacer tous les comptes", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un Drive partagé ?", "options": ["Un espace de fichiers qui appartient à l'organisation", "Le Drive personnel d'un employé", "Une clé USB", "Un e-mail"], "correct": 0 },
+    { "q": "Que permet un groupe comme equipe@ ?", "options": ["Une adresse de diffusion pour toute une équipe", "Supprimer l'équipe", "Payer les salaires", "Rien"], "correct": 0 },
+    { "q": "Que donner aux utilisateurs pour la validation en deux étapes ?", "options": ["Des codes de secours rangés en lieu sûr", "Le mot de passe de l'administrateur", "Rien", "Un logiciel de dessin"], "correct": 0 },
+    { "q": "Pourquoi préférer une application d'authentification aux SMS ?", "options": ["Les SMS arrivent parfois en retard selon le réseau", "Les SMS sont plus sûrs", "Pour payer moins", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Comment valider le plan de migration ?", "options": ["Par écrit avec la direction, avec la date de bascule", "Oralement seulement", "Sans en parler", "Après la migration"], "correct": 0 },
+    { "q": "Au nom de qui doit être le nom de domaine ?", "options": ["De l'organisation cliente", "De l'administrateur", "D'un ancien volontaire", "De personne"], "correct": 0 },
+    { "q": "Que faire le soir de la bascule ?", "options": ["Changer les MX, ajouter SPF et DKIM, puis tester", "Supprimer tous les comptes", "Partir en congé", "Rien"], "correct": 0 },
+    { "q": "Dans quel mode activer d'abord DMARC ?", "options": ["En mode surveillance", "En mode suppression totale", "Jamais", "Au hasard"], "correct": 0 },
+    { "q": "Que préparer pour des équipes aux connexions inégales ?", "options": ["Un atelier enregistré et des fiches d'une page", "Rien", "Un livre de 300 pages", "Une seule réunion sans support"], "correct": 0 },
+    { "q": "À quelle fréquence tester une restauration ?", "options": ["Chaque trimestre", "Jamais", "Tous les 10 ans", "Seulement après une perte"], "correct": 0 },
+    { "q": "Que ne doit pas contenir la documentation ?", "options": ["Les mots de passe", "La liste des groupes", "Les procédures de départ", "Les sauvegardes"], "correct": 0 },
+    { "q": "Que faire à la fin d'un contrat ?", "options": ["Remettre les accès et la documentation, et faire retirer son compte", "Garder les accès", "Supprimer les données", "Changer les mots de passe sans prévenir"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

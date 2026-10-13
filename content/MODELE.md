@@ -65,6 +65,8 @@ entre deux lignes ```. Ne numérotez pas les titres `##` à la main : la numéro
 - 4 réponses par question, une seule bonne, mise en premier dans le fichier
   (`"correct": 0`) : l'ordre est mélangé automatiquement.
 - Les mauvaises réponses doivent être plausibles, sans piège sur la formulation.
+- Titre facultatif : `"title"` dans `course.json` remplace le titre automatique
+  « Métier – Niveau » (utilisé par tech-4-a, « Administrateur Microsoft 365 et Google Workspace »).
 
 ## 6. Publier
 

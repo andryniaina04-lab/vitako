@@ -40,6 +40,7 @@ function check(q, where) {
 const published = {};
 for (const [id, c] of Object.entries(full)) {
   published[id] = {
+    ...(c.title ? { title: c.title } : {}),
     hours: c.hours,
     description: c.description,
     objectives: c.objectives,
