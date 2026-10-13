@@ -81,7 +81,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true),
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true),
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
-  ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 11, false),
+  ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
@@ -4097,7 +4097,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | Réponse à un avis négatif | Selon la langue de l''avis |
 
 > [!madagascar]
-> Les touristes en Madagascar viennent souvent de France, d''Italie, d''Allemagne, de La Réunion et d''Amérique du Nord. Préparer quelques modèles validés en **italien** ou en **allemand** (traduits et relus par une personne qui maîtrise la langue) est un vrai service pour l''hôtel.
+> Les touristes à Madagascar viennent souvent de France, d''Italie, d''Allemagne, de La Réunion et d''Amérique du Nord. Préparer quelques modèles validés en **italien** ou en **allemand** (traduits et relus par une personne qui maîtrise la langue) est un vrai service pour l''hôtel.
 
 ## PMS et channel manager
 
@@ -4394,6 +4394,559 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quelle offre faire à un lodge qui répond lentement ?', '["Gestion des messages 7 jours sur 7 avec un mois d''essai","Rien","Critiquer ses avis publiquement","Lui vendre des meubles"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Que préciser dans les conditions ?', '["La couleur des bungalows","Le menu","La procédure d''urgence si vous êtes injoignable","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
+
+-- client-4-f
+delete from public.exam_questions where course_id = 'client-4-f';
+delete from public.module_questions where course_id = 'client-4-f';
+delete from public.lessons where course_id = 'client-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-f', 0, 'Le métier de modérateur de contenu depuis Madagascar', 'Types de modération, contenus et clients, lignes directrices, exigences du métier, réalité des contenus difficiles et fausses offres d''emploi.', 'Chaque minute, des millions de messages, photos, vidéos, commentaires et annonces sont publiés en ligne. Les réseaux sociaux, les places de marché, les sites d''annonces, les forums et les applications ont besoin de personnes pour vérifier que ces contenus respectent leurs règles. Le modérateur de contenu fait ce travail à distance, avec les outils fournis par la plateforme ou par l''entreprise qui l''emploie. Ce premier module vous présente le métier, ses réalités et ses exigences.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un modérateur de contenu.
+> 2. Distinguer les types de modération.
+> 3. Reconnaître les principaux types de contenus et de clients.
+> 4. Comprendre les exigences et les risques du métier.
+> 5. Repérer les fausses offres d''emploi.
+
+## Le métier en une phrase
+
+Un modérateur de contenu **examine des contenus publiés ou signalés et décide, selon les règles écrites de la plateforme, s''ils peuvent rester en ligne, doivent être retirés ou transmis à une équipe spécialisée**.
+
+## Les types de modération
+
+| Type | Principe | Exemple |
+| --- | --- | --- |
+| **Avant publication** | Le contenu est vérifié avant d''apparaître | Annonces d''un site de petites annonces |
+| **Après publication** | Le contenu est publié, puis vérifié | Commentaires sur une page |
+| **Sur signalement** | Les utilisateurs signalent, le modérateur décide | Réseaux sociaux |
+| **Automatique + humaine** | Un outil filtre, l''humain tranche les cas douteux | Grandes plateformes |
+| **Modération de communauté** | Animer et protéger un groupe ou un forum | Groupe Facebook d''une marque |
+
+## Les types de contenus et de clients
+
+| Domaine | Ce que l''on vérifie | Exemples de clients |
+| --- | --- | --- |
+| **Commentaires et avis** | Insultes, spam, faux avis, données personnelles | Marques, médias, sites d''avis |
+| **Petites annonces et places de marché** | Produits interdits, arnaques, fausses annonces | Sites d''annonces, boutiques en ligne |
+| **Profils** | Faux comptes, photos interdites, usurpation d''identité | Applications de rencontre, réseaux |
+| **Images et vidéos** | Contenus violents, choquants ou illégaux | Réseaux sociaux, plateformes vidéo |
+| **Communautés** | Respect des règles du groupe, ambiance | Groupes, forums, serveurs de discussion |
+| **Données pour l''IA** | Classer des contenus selon des consignes | Entreprises d''IA (voir la formation Annotateur de données IA) |
+
+> [!definition] Lignes directrices (guidelines)
+> Le document écrit qui décrit précisément ce qui est autorisé ou interdit sur une plateforme, avec des exemples. Le modérateur applique ces règles, **pas ses opinions personnelles**.
+
+## Les exigences du métier
+
+1. **L''objectivité** : appliquer les règles de la même façon pour tous.
+2. **La rapidité et la précision** : de nombreux contenus par heure, avec peu d''erreurs.
+3. **La compréhension des langues** : sous-entendus, argot, ironie, en français, en anglais, en malgache selon le poste.
+4. **La confidentialité** : aucune information vue ne sort du travail.
+5. **La résistance émotionnelle** : certains postes exposent à des contenus difficiles.
+
+## La réalité des contenus difficiles
+
+Selon le poste, un modérateur peut voir des contenus **choquants** (violence, haine, contenus illégaux). Ce n''est pas le cas de tous les postes : la modération de commentaires de marque ou d''annonces est beaucoup moins exposée que celle des images et vidéos d''un grand réseau social.
+
+| Question à poser avant d''accepter un poste | Pourquoi |
+| --- | --- |
+| Quels types de contenus vais-je voir ? | Savoir à quoi vous attendre |
+| Existe-t-il un soutien psychologique ? | Les employeurs sérieux en proposent |
+| Y a-t-il des pauses et une rotation des tâches ? | Limiter l''exposition |
+| Les images peuvent-elles être floutées ou en noir et blanc ? | Outils de protection |
+| Puis-je changer de file si c''est trop difficile ? | Vous protéger |
+
+> [!attention]
+> Votre santé mentale passe avant le travail. Si un poste vous expose à des contenus que vous ne supportez pas, parlez-en à votre responsable, demandez le soutien prévu, et n''hésitez pas à choisir un autre type de modération. Des postes moins exposés existent.
+
+## Les fausses offres d''emploi
+
+Le mot « modération » est souvent utilisé par des **arnaqueurs**.
+
+| Signal d''alerte | Exemple |
+| --- | --- |
+| On vous demande de payer | « Frais de formation » ou « frais d''inscription » |
+| Salaire très élevé pour peu de travail | « 500 € par semaine pour liker des publications » |
+| Contact uniquement par messagerie, sans entreprise identifiable | Pas de site, pas de contrat |
+| On vous demande vos codes bancaires ou Mobile Money | Toujours une arnaque |
+
+> [!madagascar]
+> Des recruteurs sérieux emploient des modérateurs francophones à Madagascar, souvent via des **entreprises de services numériques et de relation client** installées à Antananarivo. Vérifiez toujours l''existence réelle de l''entreprise, et ne payez jamais pour obtenir un emploi.
+
+> [!retenir]
+> - Le modérateur applique les règles écrites de la plateforme, pas ses opinions.
+> - Avant ou après publication, sur signalement, automatique et humaine, communauté.
+> - Commentaires, annonces, profils, images, communautés, données pour l''IA.
+> - Certains postes exposent à des contenus difficiles : posez les bonnes questions.
+> - Ne payez jamais pour un emploi de modérateur.
+
+## Exercice pratique : découvrir les règles
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Lisez les règles de la communauté de 2 plateformes (un réseau social et un site d''annonces).
+> 2. Listez 10 types de contenus interdits pour chacune.
+> 3. Notez 3 différences entre les deux règlements.
+> 4. Rédigez la liste des 5 questions que vous poseriez à un employeur avant d''accepter un poste.
+>
+> **À livrer** : vos listes, vos différences et vos 5 questions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 0, 0, 'Selon quoi le modérateur décide-t-il ?', '["Ses opinions personnelles","Au hasard","Les règles écrites de la plateforme","Le nombre de likes"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 0, 1, 'Que demander avant d''accepter un poste ?', '["Les types de contenus et le soutien psychologique prévu","Le nom des utilisateurs","Rien","La couleur des bureaux"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 0, 2, 'Un recruteur demande des frais de formation : c''est…', '["Un signal d''arnaque","Obligatoire","Normal","Une bonne affaire"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-f', 1, 'Les bases : lignes directrices, décision, contexte et escalade', 'Lire des lignes directrices, arbre de décision, procédures d''urgence, ironie, citation, langues et culture, spam, arnaques, faux comptes, documentation et escalade.', 'Ce module vous donne les bases de la modération : lire et appliquer des lignes directrices, suivre un arbre de décision, analyser le contexte, reconnaître les arnaques et les faux comptes, et documenter vos décisions.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire et appliquer des lignes directrices.
+> 2. Prendre une décision avec un arbre de décision.
+> 3. Tenir compte du contexte, de l''ironie et des langues.
+> 4. Reconnaître les arnaques, le spam et les faux comptes.
+> 5. Documenter et escalader correctement.
+
+## Lire des lignes directrices
+
+| Élément | Exemple pour un site d''annonces |
+| --- | --- |
+| **Catégorie de règle** | Produits interdits |
+| **Définition** | Produits dont la vente est illégale ou dangereuse |
+| **Exemples interdits** | Médicaments sur ordonnance, animaux protégés, armes |
+| **Exemples autorisés** | Livres de médecine, photos d''animaux, jouets |
+| **Cas limites** | Produits de beauté avec allégations médicales |
+| **Action** | Retirer l''annonce, avertir l''utilisateur, suspendre en cas de récidive |
+
+> [!astuce]
+> Les lignes directrices changent souvent. Lisez chaque **mise à jour** dès qu''elle est publiée et notez les changements. Appliquer une ancienne règle est une erreur fréquente.
+
+## L''arbre de décision
+
+```
+1. Le contenu viole-t-il clairement une règle ?
+   → Oui : appliquer l''action prévue (retirer, avertir) et noter la règle.
+   → Non : passer à 2.
+2. Le contenu est-il dans un cas limite ou un cas non prévu ?
+   → Oui : appliquer la règle la plus proche si elle est claire, sinon escalader.
+   → Non : passer à 3.
+3. Le contenu présente-t-il un danger grave ou urgent ?
+   → Oui : escalader immédiatement selon la procédure d''urgence.
+   → Non : approuver.
+```
+
+> [!attention]
+> Les plateformes ont des **procédures d''urgence** pour les cas graves (menace contre une personne, danger pour un enfant, risque de suicide). Vous ne gérez pas ces situations seul : vous les transmettez immédiatement à l''équipe spécialisée selon la procédure.
+
+## Le contexte
+
+| Facteur | Exemple |
+| --- | --- |
+| **Ironie et humour** | « Je vais te tuer si tu rates encore le bus » entre amis n''est pas une menace réelle, selon le contexte et les règles |
+| **Citation ou critique** | Citer un propos haineux pour le dénoncer n''est pas la même chose que le soutenir |
+| **Langue et argot** | Un mot anodin en français peut être une insulte en argot ou dans une autre langue |
+| **Contexte culturel** | Un geste ou un symbole peut avoir un sens différent selon les pays |
+| **Historique de l''utilisateur** | Récidive, compte récent, nombreux signalements |
+
+> [!madagascar]
+> Les plateformes cherchent des modérateurs capables de comprendre le **malgache**, le français parlé à Madagascar et le mélange des deux, utilisé sur les réseaux sociaux malgaches. Cette compétence est rare et utile, en particulier pour les contenus locaux.
+
+## Arnaques, spam et faux comptes
+
+| Type | Signes |
+| --- | --- |
+| **Spam** | Même message répété, liens suspects, publicité hors sujet |
+| **Arnaque à l''annonce** | Prix très bas, vendeur pressé, paiement à l''avance demandé, refus de rencontre |
+| **Hameçonnage** | Lien vers une fausse page de connexion ou de paiement |
+| **Faux compte** | Compte récent, photo volée, aucun ami réel, activité automatique |
+| **Usurpation d''identité** | Compte qui se fait passer pour une personne ou une marque connue |
+| **Faux avis** | Nombreux avis identiques en peu de temps, comptes sans historique |
+
+## Documenter et escalader
+
+| Élément à noter | Exemple |
+| --- | --- |
+| Identifiant du contenu | Annonce n° 552 194 |
+| Décision | Retirée |
+| Règle appliquée | Produits interdits, section 3.2 |
+| Commentaire (si utile) | Allégation médicale non autorisée sur un savon |
+| Escalade | Non |
+
+> [!definition] Escalade
+> Le fait de transmettre un cas à une personne ou une équipe plus expérimentée ou spécialisée, parce qu''il est grave, inhabituel ou non prévu par les règles.
+
+> [!retenir]
+> - Lire les règles avec leurs exemples, cas limites et actions ; suivre les mises à jour.
+> - Un arbre de décision : violation claire, cas limite, danger grave.
+> - Le contexte compte : ironie, citation, langue, culture, historique.
+> - Spam, arnaques, hameçonnage, faux comptes, usurpation, faux avis.
+> - Documenter chaque décision et escalader selon la procédure.
+
+## Exercice pratique : décider avec méthode
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Rédigez des lignes directrices simples (5 règles) pour un groupe Facebook de petites annonces à Madagascar.
+> 2. Inventez 20 contenus fictifs (annonces et commentaires) variés, sans contenu choquant.
+> 3. Décidez pour chacun avec l''arbre de décision et documentez la règle appliquée.
+> 4. Repérez parmi eux les arnaques et les faux comptes, et expliquez les signes.
+>
+> **À livrer** : vos règles, votre tableau de 20 décisions et vos explications.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 1, 0, 'Que faire d''un cas grave comme une menace contre une personne ?', '["L''ignorer","Le gérer seul","Contacter l''utilisateur","L''escalader immédiatement selon la procédure"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 1, 1, 'Citer un propos haineux pour le dénoncer est-il la même chose que le soutenir ?', '["Oui, si c''est court","Oui, toujours","Ça dépend de l''heure","Non, le contexte compte"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 1, 2, 'Qu''est-ce qu''une escalade ?', '["Transmettre un cas à une équipe plus spécialisée","Monter en grade","Supprimer un compte","Publier un message"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-f', 2, 'Les outils : outils intégrés, file de modération, protection et confidentialité', 'Filtres, approbation, questions d''adhésion et sanctions, file de modération et indicateurs, raccourcis, floutage et pauses, soutien psychologique et règles de confidentialité.', 'Ce module vous fait découvrir les outils du modérateur. Contrairement à d''autres métiers, vous n''avez **rien à acheter** : les outils de modération sont fournis par la plateforme ou l''entreprise qui vous emploie. Vous apprendrez à utiliser les outils intégrés des réseaux sociaux pour modérer une communauté, à comprendre une interface de modération professionnelle, et à protéger votre santé et vos données.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les outils de modération intégrés d''une page ou d''un groupe.
+> 2. Comprendre le fonctionnement d''une file de modération professionnelle.
+> 3. Travailler vite avec les raccourcis et les étiquettes.
+> 4. Utiliser les outils de protection face aux contenus difficiles.
+> 5. Respecter la sécurité et la confidentialité.
+
+## Les outils intégrés des réseaux sociaux
+
+| Outil (noms variables selon la plateforme) | Usage |
+| --- | --- |
+| **Filtres de mots** | Masquer automatiquement les commentaires contenant certains mots |
+| **Approbation des publications** | Valider les publications d''un groupe avant leur parution |
+| **Questions d''adhésion** | Filtrer les nouveaux membres d''un groupe |
+| **Règles du groupe** | Afficher les règles et les citer lors d''un retrait |
+| **Signalements** | Voir ce que les membres ont signalé |
+| **Sanctions** | Avertir, mettre en sourdine, retirer, bannir |
+| **Rôles** | Administrateurs, modérateurs avec des droits différents |
+
+> [!astuce]
+> Pour une page de marque, un **filtre de mots** bien préparé (insultes courantes, mots liés aux arnaques, en français et en malgache) supprime une grande partie du travail répétitif. Mettez-le à jour chaque mois.
+
+## Une file de modération professionnelle
+
+> [!definition] File de modération
+> La liste des contenus à examiner, présentés un par un dans un outil interne. Le modérateur voit le contenu, son contexte, les règles possibles, et choisit une décision.
+
+| Élément de l''interface | Rôle |
+| --- | --- |
+| **Contenu** | Texte, image, vidéo, profil, annonce |
+| **Contexte** | Commentaires autour, historique de l''utilisateur, signalements |
+| **Boutons de décision** | Approuver, retirer, escalader, demander une modification |
+| **Liste des règles** | Choisir la règle appliquée |
+| **Notes** | Expliquer un cas particulier |
+| **Indicateurs personnels** | Nombre traité, temps moyen, taux de précision |
+
+### Les indicateurs habituels
+
+| Indicateur | Signification |
+| --- | --- |
+| **Volume** | Nombre de contenus traités par heure |
+| **Précision** (qualité) | Pourcentage de décisions confirmées par les contrôleurs |
+| **Délai** | Temps entre le signalement et la décision |
+| **Taux d''escalade** | Part des cas transmis |
+
+> [!attention]
+> La précision compte autant que la vitesse. Aller trop vite et se tromper entraîne des retraits injustes ou des contenus dangereux laissés en ligne. En cas de doute réel, **escaladez** plutôt que de deviner.
+
+## Travailler vite et bien
+
+1. **Apprenez les raccourcis clavier** de l''outil.
+2. **Connaissez les règles par cœur**, avec leurs numéros.
+3. **Utilisez les notes** pour les cas que vous voulez revoir avec votre responsable.
+4. **Faites des pauses régulières** : la fatigue fait baisser la précision.
+5. **Relisez les retours** des contrôleurs qualité pour progresser.
+
+## Se protéger face aux contenus difficiles
+
+| Outil ou pratique | Effet |
+| --- | --- |
+| **Floutage des images** par défaut | Voir seulement ce qui est nécessaire pour décider |
+| **Affichage en noir et blanc** | Réduire l''impact émotionnel |
+| **Vidéos sans son** et en vignettes | Décider sans tout regarder |
+| **Pauses de bien-être** | Prévues par les employeurs sérieux |
+| **Soutien psychologique** | Échanger avec un professionnel |
+| **Séparation travail et vie privée** | Une activité apaisante après le travail, ne pas en parler en détail chez soi |
+
+> [!attention]
+> Si vous ressentez des troubles du sommeil, de l''anxiété, des images qui reviennent ou un changement d''humeur durable, parlez-en **rapidement** au soutien psychologique de votre employeur ou à un professionnel de santé. Ce sont des réactions connues dans ce métier, et elles se prennent en charge.
+
+## Sécurité et confidentialité
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Aucune capture d''écran** de contenus ou de données d''utilisateurs | Confidentialité et loi |
+| **Aucun partage** de ce que vous voyez, même anonymisé, sur les réseaux | Contrat de confidentialité |
+| **Poste de travail sécurisé** | Mot de passe, écran verrouillé, pas d''accès par d''autres personnes |
+| **Ne jamais contacter** un utilisateur en dehors de l''outil | Sécurité et neutralité |
+| **Ne jamais modérer** un contenu qui vous concerne personnellement | Conflit d''intérêts : le signaler |
+
+> [!madagascar]
+> Le travail de modération se fait souvent dans des **bureaux sécurisés** d''entreprises de services numériques, ou à domicile avec des règles strictes (pièce fermée, personne d''autre devant l''écran). Préparez un lieu de travail calme et privé avant de postuler à un poste à domicile.
+
+> [!retenir]
+> - Aucun outil à acheter : ils sont fournis par la plateforme ou l''employeur.
+> - Outils intégrés : filtres, approbation, questions, règles, sanctions, rôles.
+> - File professionnelle : contenu, contexte, décision, règle, notes, indicateurs.
+> - Précision autant que vitesse ; escalader en cas de doute.
+> - Se protéger : floutage, noir et blanc, pauses, soutien ; confidentialité stricte.
+
+## Exercice pratique : modérer une communauté
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un groupe de test (privé, avec quelques proches) sur un réseau social.
+> 2. Configurez les règles, les questions d''adhésion, l''approbation des publications et un filtre de mots en français et en malgache.
+> 3. Faites publier 10 contenus fictifs par vos proches et modérez-les.
+> 4. Rédigez votre plan personnel de protection (pauses, activités, personnes ressources).
+>
+> **À livrer** : des captures de votre configuration, vos décisions et votre plan de protection.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 2, 0, 'Qui fournit les outils de modération professionnelle ?', '["La plateforme ou l''employeur","Personne","Les utilisateurs","Le modérateur les achète"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 2, 1, 'Que faire en cas de doute réel ?', '["Escalader plutôt que deviner","Approuver toujours","Supprimer toujours","Deviner vite"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 2, 2, 'Peut-on faire une capture d''écran d''un contenu modéré ?', '["Oui, pour ses amis","Oui","Non","Oui, si c''est drôle"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-f', 3, 'Premier projet : la communauté de Mofo Gasy Express', 'Charte publique et guide interne, routine, réponses aux membres, gestion d''un afflux de commentaires négatifs et rapport mensuel.', 'Dans ce module, vous assurez la modération d''une communauté en ligne pour une marque, comme le ferait un modérateur indépendant. Vous apprendrez à rédiger une charte, à organiser une routine, à répondre aux membres, à gérer une crise et à faire un rapport utile au client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger une charte de communauté et un guide de modération.
+> 2. Organiser une routine de modération.
+> 3. Répondre aux membres de façon juste et cohérente.
+> 4. Gérer un afflux de commentaires négatifs.
+> 5. Rédiger un rapport mensuel.
+
+## Le cas pratique : « Mofo Gasy Express »
+
+> [!exemple] Votre client
+> **Mofo Gasy Express** est une entreprise de livraison de repas à Antananarivo. Sa page compte 40 000 abonnés et son groupe de clients 6 000 membres. Les publications reçoivent beaucoup de commentaires : questions, plaintes, compliments, mais aussi du spam, des insultes et de fausses promotions qui volent les numéros des clients. La gérante, Mme Hanta, vous confie la modération à distance, de 7 h à 22 h.
+
+## Étape 1 : la charte et le guide
+
+### La charte publique (extrait)
+
+```
+Règles du groupe Mofo Gasy Express
+1. Respect : pas d''insultes, ni d''attaques personnelles.
+2. Pas de publicité ni de liens vers d''autres services.
+3. Pas de données personnelles en commentaire (numéro, adresse) : utilisez la messagerie.
+4. Les réclamations sont bienvenues : restez courtois, nous répondons.
+5. Les fausses promotions et les arnaques sont supprimées et leurs auteurs bannis.
+```
+
+### Le guide de modération (interne)
+
+| Situation | Action | Délai |
+| --- | --- | --- |
+| Question sur une commande | Répondre ou rediriger vers la messagerie | 1 heure |
+| Plainte courtoise | Répondre publiquement avec empathie, régler en privé | 1 heure |
+| Plainte avec insultes | Masquer, répondre en privé, avertir si récidive | Immédiat |
+| Spam, faux concours, lien suspect | Supprimer, bannir, prévenir les membres si nécessaire | Immédiat |
+| Numéro de téléphone publié | Masquer pour protéger le client, lui écrire en privé | Immédiat |
+| Critique négative honnête | **Ne jamais supprimer** : répondre | 1 heure |
+| Cas grave ou juridique | Transmettre à la gérante | Immédiat |
+
+> [!attention]
+> Supprimer les critiques honnêtes donne l''impression que la marque cache quelque chose, et provoque souvent plus de colère. La modération **protège** la communauté, elle ne sert pas à effacer les avis négatifs.
+
+## Étape 2 : la routine
+
+| Moment | Tâche |
+| --- | --- |
+| **Début de journée** | Vérifier tout ce qui a été publié dans la nuit |
+| **Toutes les heures** | Commentaires nouveaux, publications en attente, signalements |
+| **Midi et soir** (heures de commande) | Surveillance renforcée |
+| **Fin de journée** | Note de passation, cas en cours |
+| **Chaque semaine** | Mise à jour du filtre de mots, bilan avec la gérante |
+
+## Étape 3 : répondre aux membres
+
+> [!exemple] Réponse à une plainte publique
+> « Bonjour Lova, nous sommes désolés que votre commande soit arrivée froide ce midi. Ce n''est pas le service que nous voulons vous offrir. Nous vous avons écrit en message privé pour régler cela rapidement. »
+
+| Règle | Pourquoi |
+| --- | --- |
+| Répondre avec le prénom | Personnaliser |
+| Reconnaître le problème | Montrer qu''on a lu |
+| Passer en privé pour les détails | Protéger les données |
+| Rester neutre et poli, même face à l''agressivité | Image de la marque |
+| Appliquer la même règle à tous | Équité |
+
+> [!madagascar]
+> Sur les réseaux sociaux malgaches, les commentaires mélangent souvent **malgache et français**. Répondez dans la langue utilisée par le membre, avec le ton validé par la marque.
+
+## Étape 4 : gérer un afflux de commentaires négatifs
+
+> [!exemple] La situation
+> Un soir, une panne de l''application empêche les commandes pendant 2 heures. Des centaines de commentaires négatifs arrivent en peu de temps.
+
+| Étape | Action |
+| --- | --- |
+| 1 | Prévenir immédiatement la gérante |
+| 2 | Obtenir un message officiel validé (cause, excuses, solution) |
+| 3 | Publier ou épingler le message officiel |
+| 4 | Répondre aux commentaires avec une réponse courte renvoyant au message |
+| 5 | Supprimer seulement ce qui viole la charte (insultes, spam, arnaques qui profitent de la situation) |
+| 6 | Faire un point après la crise : nombre de commentaires, sentiment, leçons |
+
+## Étape 5 : le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Volume | 4 800 commentaires examinés |
+| Actions | 620 masqués ou supprimés, 37 membres bannis |
+| Motifs principaux | Spam (45 %), fausses promotions (25 %), insultes (20 %) |
+| Délai moyen de réponse | 34 minutes |
+| Sentiment | Plaintes principales : retards du soir |
+| Propositions | Ajouter « faux concours » au filtre ; publier un rappel contre les arnaques |
+
+> [!retenir]
+> - Une charte publique et un guide interne avec actions et délais.
+> - Une routine renforcée aux heures de forte activité.
+> - Des réponses justes, polies, en privé pour les détails.
+> - Ne jamais supprimer une critique honnête.
+> - Une crise gérée avec un message officiel et un rapport mensuel chiffré.
+
+## Exercice pratique : la communauté de Mofo Gasy Express
+
+> [!exercice] Exercice pratique · 6 heures
+> 1. Rédigez la charte publique et le guide de modération complet.
+> 2. Inventez 30 commentaires variés (français et malgache, sans contenu choquant) et traitez-les avec le guide.
+> 3. Rédigez le message officiel et 5 réponses pour la crise de la panne.
+> 4. Rédigez le rapport mensuel.
+>
+> **À livrer** : la charte, le guide, vos décisions, vos messages de crise et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 3, 0, 'Que faire d''une critique négative honnête ?', '["Ne jamais la supprimer et y répondre","Bannir l''auteur","L''ignorer","La supprimer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 3, 1, 'Que faire d''un numéro de téléphone publié en commentaire ?', '["Le partager","Le masquer pour protéger le client et lui écrire en privé","L''appeler","Le laisser"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 3, 2, 'Première étape en cas d''afflux de commentaires négatifs ?', '["Ne rien faire","Prévenir immédiatement la gérante","Fermer la page","Tout supprimer"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-4-f', 4, 'Trouver du travail et se faire payer', 'Poste salarié ou missions indépendantes, dossier, canaux, test de recrutement, tarifs et conditions, paiements et évolution.', 'La modération offre deux grands chemins : les **postes salariés** dans des entreprises qui modèrent pour de grandes plateformes, et les **missions indépendantes** pour des marques et des communautés. Ce dernier module vous montre comment vous présenter, trouver du travail, fixer votre tarif et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre poste salarié et missions indépendantes.
+> 2. Préparer votre candidature ou votre offre.
+> 3. Réussir un test de recrutement de modération.
+> 4. Fixer votre tarif pour des missions indépendantes.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Deux chemins
+
+| Chemin | Avantages | Points d''attention |
+| --- | --- | --- |
+| **Poste salarié** (entreprise de services numériques ou de relation client) | Contrat, salaire régulier, formation, soutien | Horaires fixes ou décalés, objectifs de volume, exposition selon la file |
+| **Missions indépendantes** (marques, communautés, médias) | Choix des clients, contenus moins exposés | Revenus variables, prospection |
+
+## Préparer votre candidature ou votre offre
+
+1. **Un CV ou profil** : langues (français, malgache, anglais), outils, disponibilités, lieu de travail calme.
+2. **Votre projet Mofo Gasy Express** : charte, guide, rapport.
+3. **Vos qualités** : objectivité, rigueur, confidentialité.
+4. **Une connaissance des réseaux** : Facebook, Instagram, TikTok, groupes, forums.
+5. **Votre plan de continuité** : électricité, connexion.
+
+## Où trouver du travail
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Entreprises de services numériques et de relation client** à Madagascar | Offres de « modérateur », « content reviewer » ou « trust and safety » |
+| 2 | **Marques et commerces malgaches** avec une grande page | Proposez la modération de leurs commentaires et groupes |
+| 3 | **Médias en ligne** | Modération des commentaires des articles |
+| 4 | **Agences de community management** | Sous-traitance de la modération |
+| 5 | **Plateformes de freelance et sites d''emploi** | Vérifiez l''entreprise et qu''elle accepte les profils basés à Madagascar |
+
+> [!attention]
+> Rappel : un vrai employeur ne vous demande **jamais de payer** pour être recruté ou formé, ni vos codes bancaires ou Mobile Money. Vérifiez l''adresse, le site et l''existence légale de l''entreprise.
+
+## Réussir un test de recrutement
+
+| Type de test | Comment réussir |
+| --- | --- |
+| **Lecture de règles puis décisions** | Lire les règles deux fois, appliquer exactement, ne pas juger selon ses opinions |
+| **Compréhension d''une langue** | Repérer l''ironie, l''argot, les sous-entendus |
+| **Vitesse et précision** | Rester précis, ne pas deviner |
+| **Questions de mise en situation** | Montrer que vous savez escalader et protéger les données |
+| **Entretien sur la résistance émotionnelle** | Être honnête sur ce que vous pouvez supporter |
+
+## Fixer votre tarif (missions indépendantes)
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Page de marque** | Modération des commentaires, 7 h à 22 h | 300 000 Ar par mois |
+| **Page + groupe** | Commentaires, publications, membres, rapport | 450 000 Ar par mois |
+| **Mise en place** | Charte, guide, filtres, réglages | 150 000 Ar une fois |
+| **Au tarif horaire** | Événement, lancement, crise | 10 000 Ar de l''heure |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+## Vos conditions (missions indépendantes)
+
+1. **Les horaires** couverts et le délai de réaction.
+2. **Ce qui est inclus** : pages, groupes, messagerie ou non.
+3. **Le guide de modération** validé par le client.
+4. **Les décisions réservées au client** : cas juridiques, crises, réponses officielles.
+5. **La confidentialité**.
+6. **Les accès** : rôle de modérateur, jamais le mot de passe du compte.
+7. **Le paiement** : mensuel, en début de mois.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Employeur ou client local | Salaire par virement, ou Mobile Money (MVola, Orange Money, Airtel Money) pour un indépendant |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Si vous travaillez comme indépendant, renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Contrôleur qualité de la modération** | Expertise des règles, formation des nouveaux |
+| **Spécialiste des règles (policy)** | Rédiger et améliorer les lignes directrices |
+| **Spécialiste confiance et sécurité** (trust and safety) | Enquêtes sur les fraudes et les réseaux de faux comptes |
+| **Community manager** | Animer et développer les communautés (voir la formation Community manager) |
+| **Annotateur de données IA** | Voir la formation Annotateur de données IA |
+
+> [!retenir]
+> - Poste salarié ou missions indépendantes : deux chemins différents.
+> - Un dossier avec langues, projet, qualités et continuité.
+> - Ne jamais payer pour un emploi ; vérifier l''entreprise.
+> - Un test réussi : règles appliquées exactement, précision, escalade.
+> - Évoluez vers la qualité, les règles, la sécurité ou le community management.
+
+## Exercice pratique : votre premier contrat
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre chemin et justifiez-le.
+> 2. Rédigez votre CV ou votre offre, avec votre projet.
+> 3. Repérez 5 offres d''emploi réelles et vérifiez l''existence de chaque entreprise.
+> 4. Envoyez au moins 3 candidatures ou propositions.
+>
+> **À livrer** : votre choix, votre CV ou offre, vos vérifications et vos envois.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 4, 0, 'Quel accès demander pour modérer la page d''un client ?', '["Le mot de passe du compte","Aucun","Un rôle de modérateur","L''accès bancaire"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 4, 1, 'Comment réussir un test de modération ?', '["Aller le plus vite possible sans lire","Appliquer exactement les règles, sans ses opinions","Juger selon ses goûts","Deviner"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-4-f', 4, 2, 'Vers quel métier évoluer pour rédiger les lignes directrices ?', '["Spécialiste des règles (policy)","Monteur vidéo","Retoucheur","Comptable"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que fait un modérateur de contenu ?', '["Il programme l''application","Il vend des produits","Il décide selon les règles si un contenu reste en ligne","Il crée des publicités"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Qu''est-ce que la modération avant publication ?', '["Le contenu est vérifié des mois après","Le contenu est vérifié avant d''apparaître","Une publicité","Aucune vérification"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que sont les lignes directrices ?', '["Les règles écrites avec des exemples","Une liste d''utilisateurs","Un logiciel","Un contrat de travail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quels postes sont les plus exposés aux contenus difficiles ?', '["La modération d''annonces de meubles","Aucun","La relecture de fiches produits","La modération d''images et vidéos des grands réseaux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que faire si un poste vous expose à des contenus insupportables ?', '["Continuer sans rien dire","Quitter sans prévenir","En parler, demander le soutien et envisager un autre type de modération","Partager les contenus"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Pourquoi lire chaque mise à jour des règles ?', '["Pour les critiquer","Pour passer le temps","Ce n''est pas utile","Appliquer une ancienne règle est une erreur fréquente"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que faire d''un cas limite non prévu ?', '["Supprimer au hasard","Approuver toujours","Appliquer la règle la plus proche si elle est claire, sinon escalader","Bannir l''utilisateur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Pourquoi le malgache est-il un atout ?', '["Aucun intérêt","Il évite les tests","Compétence rare pour comprendre les contenus locaux","Il remplace les règles"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quel est un signe d''arnaque à l''annonce ?', '["Photos claires","Vendeur identifié","Rencontre proposée en lieu public","Prix très bas et paiement à l''avance demandé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quel est un signe de faux compte ?', '["Messages variés","Compte ancien avec amis réels","Photo personnelle","Compte récent, photo volée, activité automatique"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que noter pour chaque décision ?', '["Rien","Identifiant, décision, règle appliquée, commentaire, escalade","Le nom de famille de l''utilisateur partagé en public","Son opinion personnelle"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'À quoi sert un filtre de mots ?', '["Payer les modérateurs","Masquer automatiquement certains commentaires","Traduire les publications","Publier des annonces"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Qu''est-ce qu''une file de modération ?', '["Une file d''attente à la banque","La liste des contenus à examiner un par un","Un rapport mensuel","Un groupe Facebook"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que mesure la précision ?', '["Le nombre de pauses","Les décisions confirmées par les contrôleurs","La vitesse de frappe","La taille de l''écran"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quel outil réduit l''impact émotionnel des images ?', '["Le zoom maximal","Le plein écran","L''affichage flouté ou en noir et blanc","Le son fort"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que faire en cas de troubles du sommeil ou d''anxiété durables ?', '["En parler rapidement au soutien psychologique ou à un professionnel","Les ignorer","Travailler plus","En parler sur les réseaux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que faire si un contenu vous concerne personnellement ?', '["Le supprimer vite","Le signaler pour conflit d''intérêts","Le partager","Le modérer soi-même"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que contient la charte publique ?', '["Les salaires","Les règles du groupe expliquées aux membres","Les décisions internes","Les mots de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que faire d''une plainte avec insultes ?', '["Masquer, répondre en privé, avertir si récidive","Ignorer","Publier le profil de l''auteur","Insulter en retour"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quand renforcer la surveillance pour un service de livraison de repas ?', '["Aux heures de commande, midi et soir","Jamais","La nuit seulement","Le dimanche uniquement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Dans quelle langue répondre à un membre ?', '["Aucune","Toujours en anglais","Celle qu''il utilise, avec le ton de la marque","Toujours en latin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Que supprimer pendant une crise ?', '["Seulement ce qui viole la charte","La page entière","Tous les commentaires négatifs","Rien du tout, même les arnaques"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Qu''est-ce que le domaine trust and safety ?', '["La comptabilité","Enquêtes sur fraudes et faux comptes","La traduction","La retouche photo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quelles décisions sont réservées au client ?', '["Répondre à une question simple","Cas juridiques, crises et réponses officielles","Masquer une insulte","Supprimer le spam"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-4-f', 'Quel moyen de paiement utiliser avec un client local indépendant ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
 
 -- data-0-a
 delete from public.exam_questions where course_id = 'data-0-a';

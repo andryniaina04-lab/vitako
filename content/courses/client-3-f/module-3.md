@@ -57,7 +57,7 @@ Ce module vous fait prendre en main les outils du gestionnaire de réservations 
 | Réponse à un avis négatif | Selon la langue de l'avis |
 
 > [!madagascar]
-> Les touristes en Madagascar viennent souvent de France, d'Italie, d'Allemagne, de La Réunion et d'Amérique du Nord. Préparer quelques modèles validés en **italien** ou en **allemand** (traduits et relus par une personne qui maîtrise la langue) est un vrai service pour l'hôtel.
+> Les touristes à Madagascar viennent souvent de France, d'Italie, d'Allemagne, de La Réunion et d'Amérique du Nord. Préparer quelques modèles validés en **italien** ou en **allemand** (traduits et relus par une personne qui maîtrise la langue) est un vrai service pour l'hôtel.
 
 ## PMS et channel manager
 

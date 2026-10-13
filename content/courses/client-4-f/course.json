@@ -1,0 +1,97 @@
+{
+  "id": "client-4-f",
+  "hours": 12,
+  "description": "Le modérateur de contenu vérifie que les contenus publiés respectent les règles d'une plateforme ou d'une communauté. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des entreprises de services numériques, des marques, des médias et des communautés, avec les outils fournis par la plateforme : types de modération, lignes directrices, arbre de décision, contexte et langues, arnaques et faux comptes, escalade, protection face aux contenus difficiles, confidentialité, charte, gestion de crise et rapport. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types de modération et ses exigences",
+    "Appliquer des lignes directrices avec un arbre de décision",
+    "Tenir compte du contexte, repérer les arnaques et escalader",
+    "Utiliser les outils de modération en protégeant sa santé et les données",
+    "Modérer une communauté de marque avec charte, guide, crise et rapport",
+    "Trouver un poste ou des missions sans tomber dans les arnaques"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de modérateur de contenu depuis Madagascar",
+      "summary": "Types de modération, contenus et clients, lignes directrices, exigences du métier, réalité des contenus difficiles et fausses offres d'emploi.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Selon quoi le modérateur décide-t-il ?", "options": ["Les règles écrites de la plateforme", "Ses opinions personnelles", "Le nombre de likes", "Au hasard"], "correct": 0 },
+        { "q": "Que demander avant d'accepter un poste ?", "options": ["Les types de contenus et le soutien psychologique prévu", "Rien", "La couleur des bureaux", "Le nom des utilisateurs"], "correct": 0 },
+        { "q": "Un recruteur demande des frais de formation : c'est…", "options": ["Un signal d'arnaque", "Normal", "Obligatoire", "Une bonne affaire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : lignes directrices, décision, contexte et escalade",
+      "summary": "Lire des lignes directrices, arbre de décision, procédures d'urgence, ironie, citation, langues et culture, spam, arnaques, faux comptes, documentation et escalade.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'un cas grave comme une menace contre une personne ?", "options": ["L'escalader immédiatement selon la procédure", "Le gérer seul", "L'ignorer", "Contacter l'utilisateur"], "correct": 0 },
+        { "q": "Citer un propos haineux pour le dénoncer est-il la même chose que le soutenir ?", "options": ["Non, le contexte compte", "Oui, toujours", "Oui, si c'est court", "Ça dépend de l'heure"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une escalade ?", "options": ["Transmettre un cas à une équipe plus spécialisée", "Supprimer un compte", "Monter en grade", "Publier un message"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : outils intégrés, file de modération, protection et confidentialité",
+      "summary": "Filtres, approbation, questions d'adhésion et sanctions, file de modération et indicateurs, raccourcis, floutage et pauses, soutien psychologique et règles de confidentialité.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qui fournit les outils de modération professionnelle ?", "options": ["La plateforme ou l'employeur", "Le modérateur les achète", "Les utilisateurs", "Personne"], "correct": 0 },
+        { "q": "Que faire en cas de doute réel ?", "options": ["Escalader plutôt que deviner", "Deviner vite", "Approuver toujours", "Supprimer toujours"], "correct": 0 },
+        { "q": "Peut-on faire une capture d'écran d'un contenu modéré ?", "options": ["Non", "Oui", "Oui, pour ses amis", "Oui, si c'est drôle"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la communauté de Mofo Gasy Express",
+      "summary": "Charte publique et guide interne, routine, réponses aux membres, gestion d'un afflux de commentaires négatifs et rapport mensuel.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire d'une critique négative honnête ?", "options": ["Ne jamais la supprimer et y répondre", "La supprimer", "Bannir l'auteur", "L'ignorer"], "correct": 0 },
+        { "q": "Que faire d'un numéro de téléphone publié en commentaire ?", "options": ["Le masquer pour protéger le client et lui écrire en privé", "Le laisser", "Le partager", "L'appeler"], "correct": 0 },
+        { "q": "Première étape en cas d'afflux de commentaires négatifs ?", "options": ["Prévenir immédiatement la gérante", "Tout supprimer", "Fermer la page", "Ne rien faire"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver du travail et se faire payer",
+      "summary": "Poste salarié ou missions indépendantes, dossier, canaux, test de recrutement, tarifs et conditions, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel accès demander pour modérer la page d'un client ?", "options": ["Un rôle de modérateur", "Le mot de passe du compte", "Aucun", "L'accès bancaire"], "correct": 0 },
+        { "q": "Comment réussir un test de modération ?", "options": ["Appliquer exactement les règles, sans ses opinions", "Juger selon ses goûts", "Aller le plus vite possible sans lire", "Deviner"], "correct": 0 },
+        { "q": "Vers quel métier évoluer pour rédiger les lignes directrices ?", "options": ["Spécialiste des règles (policy)", "Monteur vidéo", "Comptable", "Retoucheur"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un modérateur de contenu ?", "options": ["Il décide selon les règles si un contenu reste en ligne", "Il crée des publicités", "Il programme l'application", "Il vend des produits"], "correct": 0 },
+    { "q": "Qu'est-ce que la modération avant publication ?", "options": ["Le contenu est vérifié avant d'apparaître", "Le contenu est vérifié des mois après", "Aucune vérification", "Une publicité"], "correct": 0 },
+    { "q": "Que sont les lignes directrices ?", "options": ["Les règles écrites avec des exemples", "Un logiciel", "Un contrat de travail", "Une liste d'utilisateurs"], "correct": 0 },
+    { "q": "Quels postes sont les plus exposés aux contenus difficiles ?", "options": ["La modération d'images et vidéos des grands réseaux", "La modération d'annonces de meubles", "La relecture de fiches produits", "Aucun"], "correct": 0 },
+    { "q": "Que faire si un poste vous expose à des contenus insupportables ?", "options": ["En parler, demander le soutien et envisager un autre type de modération", "Continuer sans rien dire", "Partager les contenus", "Quitter sans prévenir"], "correct": 0 },
+    { "q": "Pourquoi lire chaque mise à jour des règles ?", "options": ["Appliquer une ancienne règle est une erreur fréquente", "Pour passer le temps", "Ce n'est pas utile", "Pour les critiquer"], "correct": 0 },
+    { "q": "Que faire d'un cas limite non prévu ?", "options": ["Appliquer la règle la plus proche si elle est claire, sinon escalader", "Supprimer au hasard", "Approuver toujours", "Bannir l'utilisateur"], "correct": 0 },
+    { "q": "Pourquoi le malgache est-il un atout ?", "options": ["Compétence rare pour comprendre les contenus locaux", "Aucun intérêt", "Il remplace les règles", "Il évite les tests"], "correct": 0 },
+    { "q": "Quel est un signe d'arnaque à l'annonce ?", "options": ["Prix très bas et paiement à l'avance demandé", "Photos claires", "Vendeur identifié", "Rencontre proposée en lieu public"], "correct": 0 },
+    { "q": "Quel est un signe de faux compte ?", "options": ["Compte récent, photo volée, activité automatique", "Compte ancien avec amis réels", "Photo personnelle", "Messages variés"], "correct": 0 },
+    { "q": "Que noter pour chaque décision ?", "options": ["Identifiant, décision, règle appliquée, commentaire, escalade", "Rien", "Le nom de famille de l'utilisateur partagé en public", "Son opinion personnelle"], "correct": 0 },
+    { "q": "À quoi sert un filtre de mots ?", "options": ["Masquer automatiquement certains commentaires", "Traduire les publications", "Publier des annonces", "Payer les modérateurs"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une file de modération ?", "options": ["La liste des contenus à examiner un par un", "Une file d'attente à la banque", "Un groupe Facebook", "Un rapport mensuel"], "correct": 0 },
+    { "q": "Que mesure la précision ?", "options": ["Les décisions confirmées par les contrôleurs", "Le nombre de pauses", "La vitesse de frappe", "La taille de l'écran"], "correct": 0 },
+    { "q": "Quel outil réduit l'impact émotionnel des images ?", "options": ["L'affichage flouté ou en noir et blanc", "Le zoom maximal", "Le son fort", "Le plein écran"], "correct": 0 },
+    { "q": "Que faire en cas de troubles du sommeil ou d'anxiété durables ?", "options": ["En parler rapidement au soutien psychologique ou à un professionnel", "Les ignorer", "Travailler plus", "En parler sur les réseaux"], "correct": 0 },
+    { "q": "Que faire si un contenu vous concerne personnellement ?", "options": ["Le signaler pour conflit d'intérêts", "Le modérer soi-même", "Le partager", "Le supprimer vite"], "correct": 0 },
+    { "q": "Que contient la charte publique ?", "options": ["Les règles du groupe expliquées aux membres", "Les mots de passe", "Les salaires", "Les décisions internes"], "correct": 0 },
+    { "q": "Que faire d'une plainte avec insultes ?", "options": ["Masquer, répondre en privé, avertir si récidive", "Insulter en retour", "Ignorer", "Publier le profil de l'auteur"], "correct": 0 },
+    { "q": "Quand renforcer la surveillance pour un service de livraison de repas ?", "options": ["Aux heures de commande, midi et soir", "La nuit seulement", "Jamais", "Le dimanche uniquement"], "correct": 0 },
+    { "q": "Dans quelle langue répondre à un membre ?", "options": ["Celle qu'il utilise, avec le ton de la marque", "Toujours en anglais", "Toujours en latin", "Aucune"], "correct": 0 },
+    { "q": "Que supprimer pendant une crise ?", "options": ["Seulement ce qui viole la charte", "Tous les commentaires négatifs", "Rien du tout, même les arnaques", "La page entière"], "correct": 0 },
+    { "q": "Qu'est-ce que le domaine trust and safety ?", "options": ["Enquêtes sur fraudes et faux comptes", "La comptabilité", "La retouche photo", "La traduction"], "correct": 0 },
+    { "q": "Quelles décisions sont réservées au client ?", "options": ["Cas juridiques, crises et réponses officielles", "Supprimer le spam", "Masquer une insulte", "Répondre à une question simple"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local indépendant ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

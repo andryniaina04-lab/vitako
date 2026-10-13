@@ -933,6 +933,90 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-4-f": {
+  "hours": 12,
+  "description": "Le modérateur de contenu vérifie que les contenus publiés respectent les règles d'une plateforme ou d'une communauté. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des entreprises de services numériques, des marques, des médias et des communautés, avec les outils fournis par la plateforme : types de modération, lignes directrices, arbre de décision, contexte et langues, arnaques et faux comptes, escalade, protection face aux contenus difficiles, confidentialité, charte, gestion de crise et rapport. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types de modération et ses exigences",
+   "Appliquer des lignes directrices avec un arbre de décision",
+   "Tenir compte du contexte, repérer les arnaques et escalader",
+   "Utiliser les outils de modération en protégeant sa santé et les données",
+   "Modérer une communauté de marque avec charte, guide, crise et rapport",
+   "Trouver un poste ou des missions sans tomber dans les arnaques"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de modérateur de contenu depuis Madagascar",
+    "summary": "Types de modération, contenus et clients, lignes directrices, exigences du métier, réalité des contenus difficiles et fausses offres d'emploi.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types de modération",
+     "Les types de contenus et de clients",
+     "Les exigences du métier",
+     "La réalité des contenus difficiles",
+     "Les fausses offres d'emploi",
+     "Exercice pratique : découvrir les règles"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : lignes directrices, décision, contexte et escalade",
+    "summary": "Lire des lignes directrices, arbre de décision, procédures d'urgence, ironie, citation, langues et culture, spam, arnaques, faux comptes, documentation et escalade.",
+    "sections": [
+     "Lire des lignes directrices",
+     "L'arbre de décision",
+     "Le contexte",
+     "Arnaques, spam et faux comptes",
+     "Documenter et escalader",
+     "Exercice pratique : décider avec méthode"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : outils intégrés, file de modération, protection et confidentialité",
+    "summary": "Filtres, approbation, questions d'adhésion et sanctions, file de modération et indicateurs, raccourcis, floutage et pauses, soutien psychologique et règles de confidentialité.",
+    "sections": [
+     "Les outils intégrés des réseaux sociaux",
+     "Une file de modération professionnelle",
+     "Travailler vite et bien",
+     "Se protéger face aux contenus difficiles",
+     "Sécurité et confidentialité",
+     "Exercice pratique : modérer une communauté"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la communauté de Mofo Gasy Express",
+    "summary": "Charte publique et guide interne, routine, réponses aux membres, gestion d'un afflux de commentaires négatifs et rapport mensuel.",
+    "sections": [
+     "Le cas pratique : « Mofo Gasy Express »",
+     "Étape 1 : la charte et le guide",
+     "Étape 2 : la routine",
+     "Étape 3 : répondre aux membres",
+     "Étape 4 : gérer un afflux de commentaires négatifs",
+     "Étape 5 : le rapport mensuel",
+     "Exercice pratique : la communauté de Mofo Gasy Express"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver du travail et se faire payer",
+    "summary": "Poste salarié ou missions indépendantes, dossier, canaux, test de recrutement, tarifs et conditions, paiements et évolution.",
+    "sections": [
+     "Deux chemins",
+     "Préparer votre candidature ou votre offre",
+     "Où trouver du travail",
+     "Réussir un test de recrutement",
+     "Fixer votre tarif (missions indépendantes)",
+     "Vos conditions (missions indépendantes)",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : votre premier contrat"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "data-0-a": {
   "hours": 16,
   "description": "Ce niveau Avancé prépare l'annotateur aux tâches les plus demandées et les mieux payées : vidéo, segmentation fine, données spécialisées, projets en langues et évaluation des réponses d'IA. Il couvre les fonctions avancées des outils, le contrôle qualité et la rédaction de consignes, le travail avec des équipes internationales et la sécurité des données, puis l'évolution vers l'encadrement ou une petite équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
