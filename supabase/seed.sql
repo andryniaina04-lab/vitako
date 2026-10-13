@@ -108,7 +108,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true),
   ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true),
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
-  ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 10, false),
+  ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true),
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 11, false),
   ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 12, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
@@ -56440,6 +56440,443 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Comment s''adapter au style d''un client ?', '["Écrire en argot","Toujours écrire pareil","Observer sa façon d''écrire et suivre son ton","Ne jamais répondre"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Que signifie le D de DESC ?', '["Douter","Discuter longtemps","Demander une remise","Décrire les faits"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-4-f', 'Comment recevoir un retour ?', '["Écouter, remercier, questionner, décider","Se défendre tout de suite","Ignorer","Se vexer"]'::jsonb, 0);
+
+-- perso-5-f
+delete from public.exam_questions where course_id = 'perso-5-f';
+delete from public.module_questions where course_id = 'perso-5-f';
+delete from public.lessons where course_id = 'perso-5-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-5-f', 0, 'Comprendre les entretiens avec les clients', 'Découverte, présentation, négociation et suivi, objectif de chaque entretien, conseiller plutôt que vendre, valeur pour le client, préparation en 15 minutes.', 'Un échange de 30 minutes avec un client peut décider d''une mission de plusieurs mois. Beaucoup de freelances perdent des clients non pas à cause de leur travail, mais parce qu''ils ne savent pas mener l''entretien. Ce premier module vous présente les types d''entretiens et le bon état d''esprit.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Distinguer les 4 types d''entretiens avec un client.
+> 2. Fixer l''objectif de chaque entretien.
+> 3. Adopter l''état d''esprit du conseiller plutôt que du vendeur.
+> 4. Préparer un entretien en 15 minutes.
+
+## Les 4 types d''entretiens
+
+| Type | Objectif | Moment |
+| --- | --- | --- |
+| **Découverte** | Comprendre le besoin, le budget, le délai | Premier échange |
+| **Présentation de l''offre** | Proposer une solution et un prix adaptés | Après la découverte |
+| **Négociation** | Trouver un accord gagnant pour les deux | Quand le client hésite ou discute le prix |
+| **Suivi** | Faire le point, fidéliser, proposer une suite | Pendant et après la mission |
+
+> [!astuce]
+> Ne mélangez pas tout dans le premier échange. Si vous annoncez un prix avant d''avoir compris le besoin, il sera soit trop bas (vous perdez de l''argent), soit trop haut (vous perdez le client).
+
+## Un objectif clair pour chaque entretien
+
+| Entretien | Objectif formulé |
+| --- | --- |
+| Découverte | « À la fin, je connais le problème du client, son budget, son délai et qui décide. » |
+| Présentation | « À la fin, le client a choisi une option ou fixé une date pour décider. » |
+| Négociation | « À la fin, nous avons un accord écrit, ou je sais pourquoi ce n''est pas possible. » |
+| Suivi | « À la fin, le client est rassuré et je sais s''il a d''autres besoins. » |
+
+## Conseiller plutôt que vendre
+
+| Vendeur pressé | Conseiller |
+| --- | --- |
+| Parle surtout de lui | Pose des questions et écoute |
+| Veut signer tout de suite | Veut comprendre le problème |
+| Accepte tout pour décrocher la mission | Dit honnêtement ce qui est possible |
+| Baisse son prix au premier « c''est cher » | Explique la valeur et propose des options |
+
+> [!definition] Valeur pour le client
+> Ce que votre travail lui rapporte ou lui évite : plus de ventes, du temps gagné, une image plus professionnelle, moins d''erreurs. Un client accepte un prix quand il voit clairement cette valeur.
+
+> [!madagascar]
+> Avec des clients malgaches, la confiance et la relation comptent souvent autant que le prix : prenez quelques minutes pour faire connaissance avant de parler affaires. Avec des clients étrangers, soyez ponctuel à la minute près et indiquez toujours l''heure avec le fuseau (« 15 h, heure de Paris »).
+
+## Préparer un entretien en 15 minutes
+
+| Étape | Action |
+| --- | --- |
+| 1. **Se renseigner** | Site, page Facebook, avis clients, secteur |
+| 2. **Fixer l''objectif** | Une phrase, comme dans le tableau ci-dessus |
+| 3. **Préparer ses questions** | 5 à 8 questions clés |
+| 4. **Préparer ses preuves** | 2 exemples de travaux proches de son besoin |
+| 5. **Vérifier la technique** | Connexion, batterie, lien de la visio, lieu calme |
+
+> [!retenir]
+> - Découverte, présentation, négociation, suivi.
+> - Un objectif clair pour chaque entretien.
+> - Conseiller, écouter, montrer la valeur.
+> - 15 minutes de préparation : se renseigner, objectif, questions, preuves, technique.
+
+## Exercice pratique : préparer un entretien
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez un client possible réel dans votre ville ou sur une plateforme.
+> 2. Renseignez-vous sur lui et notez 5 informations utiles.
+> 3. Écrivez l''objectif de l''entretien de découverte.
+> 4. Choisissez 2 travaux de votre portfolio à lui montrer.
+>
+> **À livrer** : vos 5 informations, votre objectif et vos 2 exemples choisis, avec la raison de votre choix.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 0, 0, 'Pourquoi ne pas annoncer un prix avant la découverte ?', '["C''est interdit","Pour gagner du temps","Le client ne veut pas de prix","Il serait trop bas ou trop haut"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 0, 1, 'Que fait un conseiller ?', '["Il signe à tout prix","Il baisse son prix tout de suite","Il parle surtout de lui","Il pose des questions et écoute"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 0, 2, 'Qu''est-ce que la valeur pour le client ?', '["Le logiciel utilisé","Le prix le plus bas","Ce que le travail lui rapporte ou lui évite","Le nombre de pages"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-5-f', 1, 'Les bases : l''entretien de découverte', 'Les 5 temps de la découverte, questions sur la situation, le problème, l''impact, le résultat, le délai, la décision et le budget, fourchette de prix, écoute et prochaine étape précise.', 'L''entretien de découverte est le plus important : tout ce qui suit en dépend. Ce module vous apprend à poser les bonnes questions, à écouter vraiment, à prendre des notes utiles et à conclure avec une étape claire.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Structurer un entretien de découverte en 5 temps.
+> 2. Poser les questions qui révèlent le vrai besoin.
+> 3. Parler du budget sans gêne.
+> 4. Conclure avec une prochaine étape précise.
+
+## Les 5 temps de la découverte
+
+| Temps | Durée indicative | Contenu |
+| --- | --- | --- |
+| 1. **Accueil** | 2 min | Se présenter, remercier, annoncer le déroulé |
+| 2. **Questions** | 15 min | Comprendre la situation et le besoin |
+| 3. **Reformulation** | 3 min | Vérifier que l''on a bien compris |
+| 4. **Premières pistes** | 5 min | Donner une idée de solution, sans prix précis |
+| 5. **Prochaine étape** | 2 min | Fixer la date d''envoi de la proposition |
+
+> [!exemple] L''accueil
+> « Bonjour Madame Ravao, merci pour votre temps. Je vous propose de commencer par mieux comprendre votre boutique et vos besoins, puis je vous donnerai quelques premières idées. Ensuite, je vous enverrai une proposition détaillée. Cela vous convient ? »
+
+## Les questions qui révèlent le besoin
+
+| Thème | Questions |
+| --- | --- |
+| **Situation** | « Comment vous trouvez vos clients aujourd''hui ? » |
+| **Problème** | « Qu''est-ce qui ne fonctionne pas comme vous voudriez ? » |
+| **Impact** | « Qu''est-ce que cela vous coûte : en ventes, en temps, en image ? » |
+| **Résultat attendu** | « Si tout se passait bien, qu''est-ce qui aurait changé dans 3 mois ? » |
+| **Délai** | « Pour quand en avez-vous besoin, et pourquoi cette date ? » |
+| **Décision** | « Qui d''autre participe à la décision ? » |
+| **Budget** | « Avez-vous prévu un budget pour ce projet ? » |
+
+> [!astuce]
+> La question sur l''**impact** est souvent oubliée, et c''est la plus utile : elle aide le client à mesurer la valeur de votre travail, et vous aide à justifier votre prix.
+
+## Parler du budget sans gêne
+
+| Situation | Réponse possible |
+| --- | --- |
+| Le client donne un budget | « Merci, cela m''aide à vous proposer la solution la plus adaptée. » |
+| Le client ne sait pas | « Pour vous donner un ordre d''idée, ce type de projet se situe en général entre 150 000 et 400 000 Ar selon les options. Où vous situez-vous ? » |
+| Le client refuse de répondre | « Pas de souci, je vous proposerai deux ou trois options à des prix différents. » |
+
+## Écouter et prendre des notes
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Le client parle 70 % du temps** | C''est lui qui détient l''information |
+| **Noter les mots exacts du client** | Les réutiliser dans la proposition |
+| **Ne pas interrompre** | Les informations importantes arrivent souvent à la fin d''une phrase |
+| **Reformuler avant de proposer** | « Si je résume : vous voulez… pour… avant… C''est bien cela ? » |
+
+## Conclure avec une étape précise
+
+| À éviter | À préférer |
+| --- | --- |
+| « Je vous recontacte. » | « Je vous envoie ma proposition jeudi avant 17 h. Pouvons-nous en parler vendredi à 10 h ? » |
+
+> [!madagascar]
+> Si la connexion coupe pendant un appel, rappelez immédiatement ou envoyez un message : « La connexion a coupé, je vous rappelle dans 2 minutes. » Préparez à l''avance un numéro de téléphone pour basculer en appel classique si la visio ne fonctionne pas.
+
+> [!retenir]
+> - Accueil, questions, reformulation, pistes, prochaine étape.
+> - Situation, problème, impact, résultat, délai, décision, budget.
+> - Parler du budget avec une fourchette.
+> - Le client parle 70 % du temps ; conclure avec une date précise.
+
+## Exercice pratique : votre guide de découverte
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez votre accueil de 30 secondes.
+> 2. Écrivez vos 7 questions adaptées à votre métier.
+> 3. Préparez votre phrase pour parler du budget avec une fourchette réaliste.
+> 4. Faites un entretien de découverte de 20 minutes en jeu de rôle et prenez des notes.
+>
+> **À livrer** : votre accueil, vos questions, votre phrase budget et vos notes de l''entretien.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 1, 0, 'Quelle question est souvent oubliée et très utile ?', '["Celle sur la météo","Aucune","Celle sur l''âge du client","Celle sur l''impact du problème"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 1, 1, 'Combien de temps le client doit-il parler ?', '["Environ 70 % du temps","10 %","100 %","Jamais"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 1, 2, 'Comment conclure un entretien ?', '["Avec une date précise d''envoi et d''appel","« Je vous recontacte »","En raccrochant","Sans rien dire"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-5-f', 2, 'Les outils : Google Meet, fiche de découverte et proposition', 'Visio professionnelle et plan B de connexion, fiche de découverte, proposition en trois options, contenu de la proposition écrite et façon de la présenter.', 'Ce module vous fait préparer vos outils d''entretien : une visioconférence soignée avec Google Meet, une fiche de découverte réutilisable et un modèle de proposition en trois options, qui facilite la décision du client.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Préparer une visioconférence professionnelle avec Google Meet.
+> 2. Utiliser une fiche de découverte.
+> 3. Construire une proposition en trois options.
+> 4. Présenter votre proposition de façon convaincante.
+
+## Une visio professionnelle avec Google Meet
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Connexion** | Tester 10 minutes avant ; plan B : partage de connexion du téléphone |
+| **Image** | Caméra à hauteur des yeux, lumière face à vous, fond simple ou flouté |
+| **Son** | Écouteurs avec micro, lieu calme, prévenir la famille |
+| **Écran** | Fermer les onglets et les notifications avant de partager l''écran |
+| **Documents prêts** | Portfolio et exemples ouverts dans un onglet |
+| **Enregistrement** | Seulement avec l''accord du client, demandé au début |
+
+> [!madagascar]
+> Si votre connexion est faible, proposez de **couper la caméra** pendant la discussion et de la rallumer au début et à la fin. Le son passe mieux, et le client comprend très bien.
+
+## La fiche de découverte
+
+```
+Fiche de découverte – Date : ......   Client : ......
+Contact et rôle : ......            Décideur : ......
+Situation actuelle : ......
+Problème principal (mots du client) : ......
+Impact (ventes, temps, image) : ......
+Résultat attendu dans 3 mois : ......
+Délai et raison : ......
+Budget ou fourchette : ......
+Questions à vérifier : ......
+Prochaine étape : proposition envoyée le ...... ; appel le ......
+```
+
+## La proposition en trois options
+
+| Option | Contenu (exemple : community management) | Prix |
+| --- | --- | --- |
+| **Essentielle** | 8 publications par mois, 1 réseau social | 150 000 Ar par mois |
+| **Recommandée** | 12 publications, 2 réseaux sociaux, réponses aux messages | 250 000 Ar par mois |
+| **Complète** | 16 publications, 2 réseaux, messages, 1 campagne publicitaire gérée | 400 000 Ar par mois |
+
+*(Montants donnés en exemple.)*
+
+> [!astuce]
+> Trois options transforment la question « Est-ce que je prends ? » en « **Laquelle** je prends ? ». La plupart des clients choisissent l''option du milieu : construisez-la pour qu''elle réponde exactement au besoin découvert.
+
+## Le contenu de la proposition écrite
+
+| Partie | Contenu |
+| --- | --- |
+| **Votre situation** | Le besoin du client, avec ses propres mots |
+| **L''objectif** | Le résultat attendu |
+| **Les options** | Le tableau des trois options |
+| **Les preuves** | 1 ou 2 exemples, un témoignage |
+| **Les conditions** | Délai, paiement, nombre de modifications |
+| **La prochaine étape** | « Pour commencer le 1er avril, il suffit de confirmer avant le 25 mars. » |
+
+## Présenter la proposition
+
+| Étape | Exemple |
+| --- | --- |
+| **Rappeler le besoin** | « Vous m''avez dit que vos publications ne génèrent presque pas de messages… » |
+| **Présenter la solution recommandée d''abord** | « Je vous recommande l''option du milieu, parce que… » |
+| **Montrer les autres options** | « Si vous préférez commencer plus simplement… » |
+| **Se taire et écouter** | Laisser le client réagir |
+| **Demander la décision** | « Quelle option vous semble la plus adaptée ? » |
+
+> [!retenir]
+> - Une visio soignée : connexion, image, son, écran, accord pour enregistrer.
+> - Une fiche de découverte réutilisable.
+> - Trois options, construites autour du besoin.
+> - Rappeler le besoin, recommander, écouter, demander la décision.
+
+## Exercice pratique : vos outils d''entretien
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Faites une visio test avec un ami et vérifiez image, son et partage d''écran.
+> 2. Imprimez ou créez votre fiche de découverte.
+> 3. Construisez vos trois options pour une offre de votre métier.
+> 4. Rédigez une proposition écrite complète à partir de l''entretien du module 2.
+>
+> **À livrer** : votre fiche, vos trois options et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 2, 0, 'Quand enregistrer une visio ?', '["Seulement avec l''accord du client","Toujours, sans le dire","En secret","Jamais"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 2, 1, 'Pourquoi proposer trois options ?', '["Pour gagner moins","C''est obligatoire","Pour compliquer","Le client choisit laquelle au lieu de dire oui ou non"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 2, 2, 'Que faire si la connexion est faible ?', '["Ne rien dire","Annuler le client","Couper la caméra pendant la discussion","Crier"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-5-f', 3, 'Mise en situation : les entretiens d''Andry', 'Community manager face à une boulangerie d''Antsirabe et une marque française : réponses aux objections, négociation par échanges, prix plancher, confirmation écrite, accepter un non.', 'Dans ce module, vous suivez Andry, community manager à Antsirabe, lors de deux entretiens : une boulangerie de sa ville et une marque française de cosmétiques. Vous verrez comment il répond aux objections et négocie sans brader son travail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Répondre aux objections les plus fréquentes.
+> 2. Négocier avec des concessions contre des contreparties.
+> 3. Conclure un accord et le confirmer par écrit.
+> 4. Accepter un « non » avec élégance.
+
+## Le cas pratique : Andry
+
+> [!exemple] Deux clients
+> **Andry**, 25 ans, community manager. Premier client : la **Boulangerie Mamy** à Antsirabe, qui veut plus de commandes de gâteaux d''anniversaire. Second client : **Kalo Beauté**, une petite marque française de cosmétiques naturels, qui cherche quelqu''un pour animer son Instagram en français.
+
+## Les objections et les réponses
+
+| Objection | Réponse d''Andry |
+| --- | --- |
+| « C''est trop cher. » | « Je comprends. Si l''option recommandée vous apporte 10 commandes de gâteaux en plus par mois, elle est remboursée en deux semaines. Mais nous pouvons aussi commencer par l''option essentielle. » |
+| « Je dois réfléchir. » | « Bien sûr. Qu''est-ce qui vous fait hésiter ? … Je vous rappelle jeudi pour répondre à vos questions ? » |
+| « Ma nièce peut le faire gratuitement. » | « C''est une bonne solution pour commencer. La différence avec un professionnel, c''est la régularité, les résultats suivis chaque mois et la publicité ciblée. » |
+| « On a déjà essayé, ça n''a pas marché. » | « Qu''avez-vous essayé exactement ? … Voici ce que je ferais différemment. » |
+
+> [!definition] Objection
+> Une hésitation ou un frein exprimé par le client. Ce n''est pas un refus : c''est souvent une demande d''information ou de réassurance. On l''accueille, on pose une question, puis on répond.
+
+## Négocier : donner, mais pas pour rien
+
+> [!exemple] La négociation avec Kalo Beauté
+> **Cliente** : « Votre option recommandée est à 450 €. Notre budget est de 350 €. »
+> **Andry** : « Je comprends. Pour 350 €, je peux faire 10 publications au lieu de 12. Ou bien je garde les 12 publications à 380 € si vous vous engagez sur 6 mois. Qu''est-ce qui vous convient le mieux ? »
+> **Cliente** : « On part sur 6 mois à 380 €. »
+
+| Règle de négociation | Pourquoi |
+| --- | --- |
+| **Ne pas baisser le prix sans rien changer** | Sinon, votre premier prix semblait gonflé |
+| **Échanger : moins de contenu, ou plus d''engagement** | Chacun y gagne |
+| **Connaître son prix plancher à l''avance** | Ne pas accepter une mission à perte |
+| **Proposer deux choix** | Le client garde le sentiment de décider |
+
+## Conclure et confirmer
+
+```
+Objet : Confirmation – animation Instagram Kalo Beauté
+
+Bonjour Claire,
+Merci pour notre échange. Comme convenu :
+- 12 publications par mois sur Instagram, en français ;
+- 380 € par mois, engagement de 6 mois (avril à septembre) ;
+- paiement au début de chaque mois par Payoneer ;
+- un rapport des résultats chaque fin de mois.
+Je commence le 1er avril. Pouvez-vous me confirmer par retour de mail ?
+Bien cordialement, Andry
+```
+
+## Accepter un « non »
+
+La Boulangerie Mamy décide finalement d''attendre la fin de l''année.
+
+> [!exemple] La réponse d''Andry
+> « Je comprends tout à fait, merci pour votre temps et votre franchise. Je vous envoie quand même 3 idées de publications gratuites pour la fête des mères. Je me permettrai de reprendre contact en novembre. »
+
+En novembre, la boulangerie signe l''option essentielle.
+
+> [!retenir]
+> - Une objection est une question déguisée : accueillir, questionner, répondre.
+> - Négocier par échanges, jamais par baisse sèche ; connaître son prix plancher.
+> - Confirmer l''accord par écrit.
+> - Un « non » poli aujourd''hui peut devenir un « oui » plus tard.
+
+## Exercice pratique : objections et négociation
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Listez les 5 objections les plus fréquentes dans votre métier et écrivez vos réponses.
+> 2. Fixez votre prix plancher pour votre offre principale.
+> 3. Préparez deux échanges possibles pour une négociation sur le prix.
+> 4. Faites un jeu de rôle de négociation et rédigez le message de confirmation.
+>
+> **À livrer** : vos réponses aux objections, votre prix plancher, vos échanges et votre confirmation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 3, 0, 'Qu''est-ce qu''une objection ?', '["Une insulte","Une hésitation qui demande information ou réassurance","Un refus définitif","Un contrat"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 3, 1, 'Comment négocier le prix ?', '["Échanger moins de contenu ou plus d''engagement","Baisser le prix sans rien changer","Doubler le prix","Refuser toute discussion"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 3, 2, 'Que fait Andry après un « non » ?', '["Il remercie, offre des idées et reprend contact plus tard","Il bloque le client","Il se fâche","Il insiste chaque jour"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-5-f', 4, 'Mon plan d''action : suivi, indicateurs et recrutement', 'Calendrier de suivi et relances, taux de conversion, montant moyen et délai de décision, entretien de suivi pour fidéliser, entretien de recrutement à distance et méthode STAR.', 'Un entretien ne s''arrête pas quand l''appel se termine. Ce dernier module vous apprend à assurer le suivi, à mesurer vos résultats et à préparer aussi les entretiens de recrutement pour des postes en télétravail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire un suivi efficace après un entretien.
+> 2. Mesurer votre taux de conversion.
+> 3. Mener un entretien de suivi pour fidéliser.
+> 4. Réussir un entretien de recrutement à distance.
+
+## Le suivi après l''entretien
+
+| Moment | Action |
+| --- | --- |
+| **Le jour même** | Message de remerciement et récapitulatif |
+| **À la date promise** | Envoi de la proposition |
+| **2 à 3 jours après** | Appel ou message : « Avez-vous des questions sur la proposition ? » |
+| **1 semaine après** | Dernière relance, avec une information utile |
+| **Ensuite** | Noter une date de reprise de contact dans l''agenda |
+
+> [!astuce]
+> Relancer n''est pas déranger : beaucoup de clients oublient simplement de répondre. Une relance polie et utile (une idée, un exemple) montre votre sérieux.
+
+## Mesurer ses résultats
+
+| Indicateur | Calcul | Exemple |
+| --- | --- | --- |
+| **Taux de conversion** | Clients signés ÷ entretiens de découverte | 4 ÷ 10 = 40 % |
+| **Montant moyen** | Total signé ÷ nombre de clients | 1 000 000 ÷ 4 = 250 000 Ar |
+| **Délai de décision** | Jours entre découverte et signature | 9 jours en moyenne |
+
+| Si… | Alors… |
+| --- | --- |
+| Beaucoup d''entretiens, peu de signatures | Améliorer la découverte et la proposition |
+| Peu d''entretiens | Améliorer la prospection |
+| Montants trop bas | Revoir les options et la négociation |
+
+## L''entretien de suivi pour fidéliser
+
+| Question | But |
+| --- | --- |
+| « Qu''est-ce qui vous a le plus satisfait ? » | Connaître ses points forts, obtenir un témoignage |
+| « Qu''est-ce qui pourrait être amélioré ? » | Progresser |
+| « Les résultats correspondent-ils à vos attentes ? » | Vérifier la valeur perçue |
+| « Quels sont vos projets pour les prochains mois ? » | Repérer une nouvelle mission |
+| « Connaissez-vous quelqu''un qui aurait besoin de ce service ? » | Obtenir une recommandation |
+
+## L''entretien de recrutement à distance
+
+| Étape | Conseil |
+| --- | --- |
+| **Avant** | Relire l''annonce, préparer 3 exemples concrets de vos réussites |
+| **Se présenter** | 1 minute : parcours, compétences clés, pourquoi ce poste |
+| **Répondre aux questions** | Méthode STAR : Situation, Tâche, Action, Résultat |
+| **Questions sur le télétravail** | Expliquer votre organisation, votre connexion de secours, votre disponibilité horaire |
+| **Vos questions** | Poser 2 questions sur l''équipe, les outils ou les objectifs |
+| **Après** | Remercier par e-mail dans les 24 heures |
+
+> [!exemple] Une réponse STAR
+> « **Situation** : un client avait besoin de 50 fiches produits en une semaine. **Tâche** : je devais les rédiger et les mettre en ligne. **Action** : j''ai créé un modèle, regroupé les produits par catégorie et envoyé un point chaque soir. **Résultat** : livré en 5 jours, et le client m''a confié la suite du catalogue. »
+
+> [!madagascar]
+> Les recruteurs étrangers posent souvent la question de la fiabilité de la connexion et de l''électricité. Une réponse précise et rassurante (« fibre plus 4G de secours, batterie de 6 heures, lieu de repli à 10 minutes ») vaut beaucoup mieux que « ça va, pas de problème ».
+
+> [!retenir]
+> - Suivi : remercier, envoyer, relancer, noter une date.
+> - Mesurer conversion, montant moyen et délai de décision.
+> - Un entretien de suivi pour fidéliser et obtenir des recommandations.
+> - En recrutement : préparation, méthode STAR, réponses précises sur le télétravail.
+
+## Exercice pratique : votre système d''entretiens
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez vos messages de suivi (jour même, relance à 3 jours, relance à 1 semaine).
+> 2. Créez un tableau pour suivre vos entretiens et vos indicateurs.
+> 3. Préparez vos 5 questions d''entretien de suivi.
+> 4. Préparez 3 réponses STAR et votre réponse sur votre organisation en télétravail.
+>
+> **À livrer** : vos messages, votre tableau, vos questions et vos réponses STAR.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 4, 0, 'Comment calculer le taux de conversion ?', '["Aucun calcul","Prix multiplié par délai","Clients signés divisés par entretiens de découverte","Nombre de messages"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 4, 1, 'Que signifie STAR ?', '["Situation, Tâche, Action, Résultat","Salaire, Temps, Avis, Retour","Rien","Style, Ton, Accent, Rythme"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-5-f', 4, 2, 'Quand remercier après un entretien de recrutement ?', '["Jamais","Dans les 24 heures","Avant l''entretien","Un mois après"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Quel est l''objectif de l''entretien de découverte ?', '["Parler de soi","Comprendre le besoin, le budget, le délai et le décideur","Signer tout de suite","Annoncer le prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Comment indiquer une heure à un client étranger ?', '["En heure de Madagascar seulement","Ne jamais donner d''heure","Avec le fuseau horaire, par exemple heure de Paris","Sans préciser"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que préparer avant un entretien ?', '["Renseignements, objectif, questions, preuves, technique","Un contrat signé","Une remise","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Par quoi commence l''entretien de découverte ?', '["La facture","L''accueil et l''annonce du déroulé","La négociation","Le prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que faire avant de proposer une solution ?', '["Raccrocher","Reformuler le besoin","Envoyer la facture","Changer de sujet"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que répondre si le client ne connaît pas son budget ?', '["Refuser le projet","Annoncer le prix le plus haut","Donner une fourchette pour ce type de projet","Ne rien dire"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Pourquoi noter les mots exacts du client ?', '["Ce n''est pas utile","Pour les publier","Pour les réutiliser dans la proposition","Pour se moquer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que faire si la connexion coupe pendant l''appel ?', '["Changer de client","Rappeler ou prévenir immédiatement","Ne rien faire","Attendre le lendemain"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Où placer la caméra ?', '["À hauteur des yeux, lumière face à soi","Au sol","Au plafond","Derrière soi"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Quelle option choisissent souvent les clients ?', '["Celle du milieu","Aucune","La moins chère toujours","La plus chère toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que contient la proposition écrite ?', '["Le CV complet","Besoin, objectif, options, preuves, conditions, prochaine étape","Seulement le prix","Une seule phrase"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que faire après avoir présenté la proposition ?', '["Partir","Parler sans arrêt","Baisser le prix","Se taire et écouter la réaction"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Comment répondre à « je dois réfléchir » ?', '["Demander ce qui fait hésiter et proposer un rappel","Abandonner","Se fâcher","Insister lourdement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que répondre à « ma nièce le fait gratuitement » ?', '["Expliquer la différence de régularité et de résultats","Faire gratuit aussi","Critiquer la nièce","Raccrocher"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Pourquoi connaître son prix plancher ?', '["Pour le doubler","Pour l''annoncer au client","Ce n''est pas utile","Pour ne pas accepter une mission à perte"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Qu''obtient Andry en échange d''un prix plus bas ?', '["Un délai plus court","Un cadeau","Un engagement de 6 mois","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Comment confirmer un accord ?', '["Sur les réseaux sociaux","Ne pas le confirmer","Oralement seulement","Par un message écrit récapitulatif"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Relancer un client, c''est :', '["Montrer son sérieux, poliment et utilement","Inutile","Interdit","Le déranger toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Que faire si on a beaucoup d''entretiens mais peu de signatures ?', '["Ne rien changer","Baisser tous les prix","Améliorer la découverte et la proposition","Faire moins d''entretiens"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-5-f', 'Comment répondre à une question sur la connexion en recrutement ?', '["De façon précise : connexion, secours, batterie, lieu de repli","Ne pas répondre","Mentir","« Ça va, pas de problème »"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';

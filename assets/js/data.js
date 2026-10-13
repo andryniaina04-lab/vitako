@@ -3654,6 +3654,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-5-f": {
+  "hours": 9,
+  "description": "Un échange de 30 minutes peut décider d'une mission de plusieurs mois. Cette formation pratique, en 5 modules, apprend à mener ses entretiens avec les clients, de la découverte à la signature : 4 types d'entretiens, état d'esprit du conseiller, préparation, questions qui révèlent le besoin et son impact, budget, écoute et prochaine étape, visioconférence avec Google Meet, fiche de découverte, proposition en trois options, objections, négociation par échanges, confirmation écrite, suivi, indicateurs et entretien de recrutement à distance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Distinguer les types d'entretiens et préparer chacun avec un objectif clair",
+   "Mener un entretien de découverte qui révèle le besoin, l'impact et le budget",
+   "Préparer une visioconférence professionnelle et une proposition en trois options",
+   "Répondre aux objections et négocier sans brader son travail",
+   "Confirmer les accords par écrit et assurer le suivi",
+   "Mesurer ses résultats et réussir un entretien de recrutement à distance"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre les entretiens avec les clients",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : l'entretien de découverte",
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : Google Meet, fiche de découverte et proposition",
+    "minutes": 4
+   },
+   {
+    "title": "Mise en situation : les entretiens d'Andry",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : suivi, indicateurs et recrutement",
+    "minutes": 5
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

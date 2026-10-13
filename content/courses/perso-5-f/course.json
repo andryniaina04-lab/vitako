@@ -1,0 +1,92 @@
+{
+  "id": "perso-5-f",
+  "hours": 9,
+  "description": "Un échange de 30 minutes peut décider d'une mission de plusieurs mois. Cette formation pratique, en 5 modules, apprend à mener ses entretiens avec les clients, de la découverte à la signature : 4 types d'entretiens, état d'esprit du conseiller, préparation, questions qui révèlent le besoin et son impact, budget, écoute et prochaine étape, visioconférence avec Google Meet, fiche de découverte, proposition en trois options, objections, négociation par échanges, confirmation écrite, suivi, indicateurs et entretien de recrutement à distance. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Distinguer les types d'entretiens et préparer chacun avec un objectif clair",
+    "Mener un entretien de découverte qui révèle le besoin, l'impact et le budget",
+    "Préparer une visioconférence professionnelle et une proposition en trois options",
+    "Répondre aux objections et négocier sans brader son travail",
+    "Confirmer les accords par écrit et assurer le suivi",
+    "Mesurer ses résultats et réussir un entretien de recrutement à distance"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre les entretiens avec les clients",
+      "summary": "Découverte, présentation, négociation et suivi, objectif de chaque entretien, conseiller plutôt que vendre, valeur pour le client, préparation en 15 minutes.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi ne pas annoncer un prix avant la découverte ?", "options": ["Il serait trop bas ou trop haut", "C'est interdit", "Le client ne veut pas de prix", "Pour gagner du temps"], "correct": 0 },
+        { "q": "Que fait un conseiller ?", "options": ["Il pose des questions et écoute", "Il parle surtout de lui", "Il signe à tout prix", "Il baisse son prix tout de suite"], "correct": 0 },
+        { "q": "Qu'est-ce que la valeur pour le client ?", "options": ["Ce que le travail lui rapporte ou lui évite", "Le prix le plus bas", "Le nombre de pages", "Le logiciel utilisé"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : l'entretien de découverte",
+      "summary": "Les 5 temps de la découverte, questions sur la situation, le problème, l'impact, le résultat, le délai, la décision et le budget, fourchette de prix, écoute et prochaine étape précise.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle question est souvent oubliée et très utile ?", "options": ["Celle sur l'impact du problème", "Celle sur la météo", "Celle sur l'âge du client", "Aucune"], "correct": 0 },
+        { "q": "Combien de temps le client doit-il parler ?", "options": ["Environ 70 % du temps", "10 %", "Jamais", "100 %"], "correct": 0 },
+        { "q": "Comment conclure un entretien ?", "options": ["Avec une date précise d'envoi et d'appel", "« Je vous recontacte »", "Sans rien dire", "En raccrochant"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Google Meet, fiche de découverte et proposition",
+      "summary": "Visio professionnelle et plan B de connexion, fiche de découverte, proposition en trois options, contenu de la proposition écrite et façon de la présenter.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand enregistrer une visio ?", "options": ["Seulement avec l'accord du client", "Toujours, sans le dire", "Jamais", "En secret"], "correct": 0 },
+        { "q": "Pourquoi proposer trois options ?", "options": ["Le client choisit laquelle au lieu de dire oui ou non", "Pour compliquer", "Pour gagner moins", "C'est obligatoire"], "correct": 0 },
+        { "q": "Que faire si la connexion est faible ?", "options": ["Couper la caméra pendant la discussion", "Annuler le client", "Ne rien dire", "Crier"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : les entretiens d'Andry",
+      "summary": "Community manager face à une boulangerie d'Antsirabe et une marque française : réponses aux objections, négociation par échanges, prix plancher, confirmation écrite, accepter un non.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une objection ?", "options": ["Une hésitation qui demande information ou réassurance", "Un refus définitif", "Une insulte", "Un contrat"], "correct": 0 },
+        { "q": "Comment négocier le prix ?", "options": ["Échanger moins de contenu ou plus d'engagement", "Baisser le prix sans rien changer", "Refuser toute discussion", "Doubler le prix"], "correct": 0 },
+        { "q": "Que fait Andry après un « non » ?", "options": ["Il remercie, offre des idées et reprend contact plus tard", "Il se fâche", "Il insiste chaque jour", "Il bloque le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : suivi, indicateurs et recrutement",
+      "summary": "Calendrier de suivi et relances, taux de conversion, montant moyen et délai de décision, entretien de suivi pour fidéliser, entretien de recrutement à distance et méthode STAR.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment calculer le taux de conversion ?", "options": ["Clients signés divisés par entretiens de découverte", "Prix multiplié par délai", "Nombre de messages", "Aucun calcul"], "correct": 0 },
+        { "q": "Que signifie STAR ?", "options": ["Situation, Tâche, Action, Résultat", "Salaire, Temps, Avis, Retour", "Style, Ton, Accent, Rythme", "Rien"], "correct": 0 },
+        { "q": "Quand remercier après un entretien de recrutement ?", "options": ["Dans les 24 heures", "Jamais", "Un mois après", "Avant l'entretien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quel est l'objectif de l'entretien de découverte ?", "options": ["Comprendre le besoin, le budget, le délai et le décideur", "Signer tout de suite", "Annoncer le prix", "Parler de soi"], "correct": 0 },
+    { "q": "Comment indiquer une heure à un client étranger ?", "options": ["Avec le fuseau horaire, par exemple heure de Paris", "Sans préciser", "En heure de Madagascar seulement", "Ne jamais donner d'heure"], "correct": 0 },
+    { "q": "Que préparer avant un entretien ?", "options": ["Renseignements, objectif, questions, preuves, technique", "Rien", "Une remise", "Un contrat signé"], "correct": 0 },
+    { "q": "Par quoi commence l'entretien de découverte ?", "options": ["L'accueil et l'annonce du déroulé", "Le prix", "La facture", "La négociation"], "correct": 0 },
+    { "q": "Que faire avant de proposer une solution ?", "options": ["Reformuler le besoin", "Envoyer la facture", "Raccrocher", "Changer de sujet"], "correct": 0 },
+    { "q": "Que répondre si le client ne connaît pas son budget ?", "options": ["Donner une fourchette pour ce type de projet", "Refuser le projet", "Annoncer le prix le plus haut", "Ne rien dire"], "correct": 0 },
+    { "q": "Pourquoi noter les mots exacts du client ?", "options": ["Pour les réutiliser dans la proposition", "Pour se moquer", "Pour les publier", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Que faire si la connexion coupe pendant l'appel ?", "options": ["Rappeler ou prévenir immédiatement", "Attendre le lendemain", "Ne rien faire", "Changer de client"], "correct": 0 },
+    { "q": "Où placer la caméra ?", "options": ["À hauteur des yeux, lumière face à soi", "Au sol", "Derrière soi", "Au plafond"], "correct": 0 },
+    { "q": "Quelle option choisissent souvent les clients ?", "options": ["Celle du milieu", "La moins chère toujours", "La plus chère toujours", "Aucune"], "correct": 0 },
+    { "q": "Que contient la proposition écrite ?", "options": ["Besoin, objectif, options, preuves, conditions, prochaine étape", "Seulement le prix", "Une seule phrase", "Le CV complet"], "correct": 0 },
+    { "q": "Que faire après avoir présenté la proposition ?", "options": ["Se taire et écouter la réaction", "Parler sans arrêt", "Baisser le prix", "Partir"], "correct": 0 },
+    { "q": "Comment répondre à « je dois réfléchir » ?", "options": ["Demander ce qui fait hésiter et proposer un rappel", "Insister lourdement", "Abandonner", "Se fâcher"], "correct": 0 },
+    { "q": "Que répondre à « ma nièce le fait gratuitement » ?", "options": ["Expliquer la différence de régularité et de résultats", "Critiquer la nièce", "Faire gratuit aussi", "Raccrocher"], "correct": 0 },
+    { "q": "Pourquoi connaître son prix plancher ?", "options": ["Pour ne pas accepter une mission à perte", "Pour l'annoncer au client", "Ce n'est pas utile", "Pour le doubler"], "correct": 0 },
+    { "q": "Qu'obtient Andry en échange d'un prix plus bas ?", "options": ["Un engagement de 6 mois", "Rien", "Un cadeau", "Un délai plus court"], "correct": 0 },
+    { "q": "Comment confirmer un accord ?", "options": ["Par un message écrit récapitulatif", "Oralement seulement", "Ne pas le confirmer", "Sur les réseaux sociaux"], "correct": 0 },
+    { "q": "Relancer un client, c'est :", "options": ["Montrer son sérieux, poliment et utilement", "Le déranger toujours", "Interdit", "Inutile"], "correct": 0 },
+    { "q": "Que faire si on a beaucoup d'entretiens mais peu de signatures ?", "options": ["Améliorer la découverte et la proposition", "Faire moins d'entretiens", "Baisser tous les prix", "Ne rien changer"], "correct": 0 },
+    { "q": "Comment répondre à une question sur la connexion en recrutement ?", "options": ["De façon précise : connexion, secours, batterie, lieu de repli", "« Ça va, pas de problème »", "Ne pas répondre", "Mentir"], "correct": 0 }
+  ]
+}
