@@ -97,7 +97,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true),
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true),
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 18, false),
-  ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 11, false),
+  ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 16, true),
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true),
@@ -22010,6 +22010,568 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que montre l''extrait vidéo du dossier ?', '["Vos vacances","Votre façon d''animer","Les données du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi une formation devient-elle plus rentable avec le temps ?', '["Elle demande plus de préparation","Elle ne l''est jamais","Elle est déjà conçue pour les sessions suivantes","Elle coûte plus cher aux clients"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Mobile Money ou virement","Uniquement PayPal","Aucun"]'::jsonb, 1);
+
+-- edu-2-f
+delete from public.exam_questions where course_id = 'edu-2-f';
+delete from public.module_questions where course_id = 'edu-2-f';
+delete from public.lessons where course_id = 'edu-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-f', 0, 'Le métier de créateur de cours en ligne depuis Madagascar', 'Formation asynchrone, types de cours et de contenus, étapes de création, ingénierie pédagogique, clients et poste de création.', 'Des millions de personnes apprennent en ligne à leur rythme, avec des vidéos courtes, des quiz et des exercices. Derrière chaque cours bien fait, il y a un créateur de cours en ligne : il transforme le savoir d''un expert en un parcours clair, agréable et efficace. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un créateur de cours en ligne.
+> 2. Distinguer les types de cours et de contenus.
+> 3. Décrire les étapes de création d''un cours.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de création.
+
+## Le métier en une phrase
+
+Un créateur de cours en ligne **conçoit et produit des cours que les apprenants suivent à leur rythme (vidéos, documents, quiz, exercices), à partir du savoir d''un expert ou du sien, et les met en ligne sur une plateforme d''apprentissage**.
+
+> [!definition] Formation asynchrone
+> Une formation que chacun suit quand il veut, sans session en direct. C''est la différence principale avec le formateur en ligne, qui anime des classes virtuelles en direct (voir la formation Formateur en ligne).
+
+## Les types de cours
+
+| Type | Exemple | Client type |
+| --- | --- | --- |
+| **Cours grand public** | « Apprendre Excel en 10 leçons » vendu en ligne | Experts, créateurs de contenu |
+| **Formation interne d''entreprise** | Accueil des nouveaux employés, procédures | Entreprises |
+| **Formation pour ONG** | Hygiène, gestion d''une coopérative, droits | ONG, programmes |
+| **Cours académique en ligne** | Module d''une université | Écoles, universités |
+| **Microlearning** | Leçons de 3 à 5 minutes sur téléphone | Entreprises, applications |
+
+## Les contenus d''un cours
+
+| Contenu | Usage |
+| --- | --- |
+| **Vidéo face caméra** | Créer un lien avec l''expert |
+| **Vidéo de capture d''écran** | Montrer un logiciel pas à pas |
+| **Diapositives animées avec voix** | Expliquer un concept |
+| **Document à télécharger** | Fiche récapitulative, modèle, checklist |
+| **Quiz** | Vérifier la compréhension |
+| **Exercice pratique** | Appliquer ce qui est appris |
+| **Étude de cas** | Raisonner sur une situation réelle |
+
+## Les étapes de création d''un cours
+
+| N° | Étape | Ce que fait le créateur |
+| --- | --- | --- |
+| 1 | **Analyse** | Public, objectifs, contraintes |
+| 2 | **Conception** | Plan du cours, modules, leçons, activités |
+| 3 | **Scénarisation** | Script de chaque vidéo, storyboard |
+| 4 | **Production** | Enregistrement, montage, diapositives, quiz |
+| 5 | **Mise en ligne** | Plateforme, organisation, paramètres |
+| 6 | **Test** | Vérification par quelques apprenants |
+| 7 | **Amélioration** | Corrections selon les résultats et les retours |
+
+> [!definition] Ingénierie pédagogique
+> L''ensemble des méthodes pour concevoir une formation efficace : analyser le besoin, fixer les objectifs, choisir les activités et l''évaluation. Le créateur de cours en ligne en applique les principes.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Experts et formateurs** qui veulent vendre leur savoir en ligne.
+2. **ONG et programmes** qui forment des agents dispersés dans le pays.
+3. **Entreprises** qui veulent former leurs employés sans déplacements.
+4. **Écoles et universités** qui développent l''enseignement à distance.
+
+### À l''étranger
+
+1. **Créateurs de formations** francophones qui n''ont pas le temps de produire.
+2. **Organismes de formation** qui passent au numérique.
+3. **Entreprises** qui externalisent la production de leurs modules.
+
+> [!madagascar] Votre avantage
+> Les plateformes comme Vitako montrent que la demande de cours en ligne en français existe à Madagascar et en Afrique. Un créateur qui sait produire des cours **légers** (vidéos courtes, fichiers peu lourds, lisibles sur téléphone) répond à un vrai besoin local, en plus des clients européens.
+
+## Votre poste de création
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive pour l''enregistrement et le montage |
+| **Micro** | Micro USB ou micro-cravate : le son compte plus que l''image |
+| **Webcam ou téléphone** | Pour les vidéos face caméra |
+| **Lumière** | Face à une fenêtre ou une lampe douce |
+| **Logiciels gratuits** | Canva (diapositives, visuels), OBS Studio (enregistrement) |
+| **Pièce calme** | Rideaux, tissus pour limiter l''écho |
+
+> [!retenir]
+> - Le créateur produit des cours suivis à son rythme.
+> - Vidéos, documents, quiz, exercices, études de cas.
+> - Analyse, conception, scénarisation, production, mise en ligne, test, amélioration.
+> - Experts, ONG, entreprises, écoles, organismes de formation.
+> - Un bon son est plus important qu''une belle image.
+
+## Exercice pratique : analyser des cours en ligne
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Suivez les premières leçons de 2 cours en ligne gratuits (dont un en français).
+> 2. Notez pour chacun : durée des vidéos, types de contenus, quiz, exercices, documents.
+> 3. Notez 3 points forts et 3 points faibles de chaque cours.
+> 4. Choisissez un sujet que vous maîtrisez pour votre futur cours.
+>
+> **À livrer** : votre analyse des 2 cours et votre sujet choisi.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 0, 0, 'Qu''est-ce qu''une formation asynchrone ?', '["Une formation suivie à son rythme, sans session en direct","Une classe virtuelle en direct","Un examen","Une conférence"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 0, 1, 'Quelle étape vient après la scénarisation ?', '["L''analyse","La production","La conception","L''amélioration"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 0, 2, 'Qu''est-ce qui compte le plus dans une vidéo de cours ?', '["Un décor luxueux","Un son clair","De la musique forte","Une caméra très chère"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-f', 1, 'Les bases : public, objectifs, plan, leçons courtes, scripts et quiz', 'Analyse du public, objectifs avec verbes d''action, plan construit à partir des objectifs, microlearning, structure d''un script et règles des quiz.', 'Ce module vous donne les bases de la conception d''un cours en ligne : définir le public et les objectifs, construire le plan, découper en leçons courtes, écrire des scripts clairs et créer des quiz utiles.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Définir le public et les objectifs d''un cours.
+> 2. Construire le plan d''un cours en modules et leçons.
+> 3. Découper le contenu en leçons courtes.
+> 4. Écrire le script d''une vidéo pédagogique.
+> 5. Créer des questions de quiz efficaces.
+
+## Le public et les objectifs
+
+| Question | Exemple : cours « Tenir la comptabilité simple d''une petite boutique » |
+| --- | --- |
+| Qui suit le cours ? | Commerçants débutants, souvent sur téléphone |
+| Que savent-ils déjà ? | Compter, utiliser WhatsApp |
+| Que sauront-ils faire à la fin ? | Tenir un cahier de caisse, calculer leur bénéfice du mois |
+| Combien de temps ont-ils ? | 10 à 15 minutes par jour |
+| Quelles contraintes ? | Connexion mobile, données coûteuses |
+
+### Des objectifs avec des verbes d''action
+
+| Objectif flou | Objectif précis |
+| --- | --- |
+| Comprendre la comptabilité | Enregistrer chaque vente et chaque dépense dans un cahier de caisse |
+| Connaître le bénéfice | Calculer le bénéfice d''un mois à partir du cahier |
+
+## Le plan du cours
+
+```
+Cours : Tenir la comptabilité simple d''une petite boutique
+Module 1 – Pourquoi tenir ses comptes
+  Leçon 1.1 Ce que vos comptes vous apprennent (vidéo 4 min)
+  Leçon 1.2 Les erreurs les plus fréquentes (vidéo 3 min) + quiz
+Module 2 – Le cahier de caisse
+  Leçon 2.1 Les colonnes du cahier (vidéo 5 min) + modèle à télécharger
+  Leçon 2.2 Enregistrer une journée (vidéo 6 min) + exercice
+Module 3 – Calculer son bénéfice
+  Leçon 3.1 Recettes, dépenses, bénéfice (vidéo 5 min) + quiz
+  Leçon 3.2 Le bilan du mois (vidéo 6 min) + exercice final
+```
+
+> [!astuce]
+> Construisez le plan **à partir des objectifs** : chaque leçon sert un objectif, chaque objectif a au moins une activité pratique et une vérification (quiz ou exercice).
+
+## Des leçons courtes
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Une idée par leçon** | L''apprenant retient mieux |
+| **Vidéos de 3 à 8 minutes** | L''attention baisse au-delà, surtout sur téléphone |
+| **Une activité après chaque leçon** | Apprendre en faisant |
+| **Des titres clairs** | L''apprenant sait où il en est et peut revenir en arrière |
+| **Un récapitulatif à la fin du module** | Fixer l''essentiel |
+
+> [!definition] Microlearning
+> Une façon d''apprendre par très petites leçons (souvent 2 à 5 minutes), chacune avec un seul objectif. Très adaptée au téléphone et aux personnes qui ont peu de temps.
+
+## Le script d''une vidéo
+
+| Partie | Durée | Contenu |
+| --- | --- | --- |
+| **Accroche** | 10 à 20 secondes | Une question ou une situation concrète |
+| **Objectif** | 10 secondes | « À la fin de cette vidéo, vous saurez… » |
+| **Contenu** | 2 à 5 minutes | Explication en étapes, avec exemple |
+| **Récapitulatif** | 20 secondes | Les 2 ou 3 points à retenir |
+| **Appel à l''action** | 10 secondes | « Faites maintenant l''exercice sous la vidéo » |
+
+> [!exemple] Extrait de script
+> « Mme Voahangy vend des produits de beauté à Ambalavao. Chaque soir, elle a l''impression d''avoir bien vendu… mais à la fin du mois, il ne lui reste presque rien. Que se passe-t-il ? Dans cette vidéo, vous allez apprendre à remplir un cahier de caisse en 3 colonnes, pour savoir enfin où va votre argent. »
+
+> [!astuce]
+> Écrivez comme vous **parlez** : phrases courtes, mots simples, « vous ». Lisez le script à voix haute avant d''enregistrer : si vous butez sur une phrase, raccourcissez-la.
+
+## Des quiz utiles
+
+| Bonne pratique | Exemple |
+| --- | --- |
+| Tester l''objectif, pas un détail | « Quel est le bénéfice si les recettes sont de 500 000 Ar et les dépenses de 380 000 Ar ? » |
+| Des mauvaises réponses plausibles | 880 000 Ar ; 120 000 Ar ; 380 000 Ar ; 500 000 Ar |
+| Une explication après la réponse | « Bénéfice = recettes − dépenses = 120 000 Ar. » |
+| Éviter les pièges et les doubles négations | Pas de « Laquelle n''est pas incorrecte ? » |
+| Varier les types | Choix multiple, vrai ou faux, association, calcul |
+
+> [!madagascar]
+> Pour un public malgache, des **exemples locaux** (commerçants, coopératives, prix en ariary, lieux connus) rendent le cours plus vivant et plus facile à comprendre. Selon le public, une version en malgache ou des mots clés en malgache peuvent aussi beaucoup aider.
+
+> [!retenir]
+> - Définir le public, ses contraintes et des objectifs précis.
+> - Un plan construit à partir des objectifs.
+> - Une idée par leçon, des vidéos de 3 à 8 minutes, une activité après chaque leçon.
+> - Un script : accroche, objectif, contenu, récapitulatif, appel à l''action.
+> - Des quiz qui testent l''objectif, avec explications.
+
+## Exercice pratique : concevoir votre cours
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Pour le sujet choisi au module 1, rédigez l''analyse du public et 4 objectifs précis.
+> 2. Construisez le plan complet : 3 modules, 6 leçons, activités.
+> 3. Écrivez le script complet de 2 vidéos.
+> 4. Créez 5 questions de quiz avec explications.
+>
+> **À livrer** : votre analyse, votre plan, vos 2 scripts et vos 5 questions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 1, 0, 'Quelle durée viser pour une vidéo de cours ?', '["1 heure","3 à 8 minutes","2 heures","30 secondes toujours"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 1, 1, 'Par quoi commence un script ?', '["Les remerciements","Une accroche","Le prix","La conclusion"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 1, 2, 'Qu''ajouter après la réponse à un quiz ?', '["Rien","Une explication","Une question piège","Une publicité"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-f', 2, 'Les outils : Canva, OBS Studio, montage, plateforme et outils payants', 'Règles des diapositives et licences, scènes et réglages d''OBS, enregistrement en MKV, montage et export léger, plateforme e-learning, liste de contrôle, Camtasia, Premiere Pro, Teachable et Thinkific.', 'Ce module vous fait prendre en main les outils du créateur de cours : **Canva** pour les diapositives et les visuels, **OBS Studio** pour enregistrer l''écran et la caméra, et une **plateforme e-learning** pour mettre le cours en ligne. Vous découvrirez ensuite les outils payants : **Camtasia**, **Adobe Premiere Pro**, **Teachable** et **Thinkific**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer des diapositives et des fiches claires avec Canva.
+> 2. Enregistrer une vidéo de cours avec OBS Studio.
+> 3. Faire un montage simple et exporter une vidéo légère.
+> 4. Mettre en ligne un cours sur une plateforme e-learning.
+> 5. Comprendre ce qu''apportent les outils payants.
+
+## Canva : diapositives et fiches
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Une idée par diapositive** | Lisible et facile à suivre |
+| **Peu de texte**, gros caractères | Lisible sur téléphone |
+| **Couleurs et polices constantes** | Image professionnelle, une charte pour tout le cours |
+| **Images et icônes utiles** | Illustrer, pas décorer |
+| **Format 16:9** pour la vidéo | Format standard des écrans |
+| **Fiche récapitulative en PDF** | Document à télécharger à la fin du module |
+
+> [!attention]
+> Vérifiez la **licence** des images, icônes et musiques que vous utilisez, surtout pour un cours vendu. Dans Canva, certains éléments sont réservés aux offres payantes ou ont des conditions d''utilisation particulières.
+
+## OBS Studio : enregistrer
+
+> [!definition] OBS Studio
+> Un logiciel gratuit et libre pour enregistrer l''écran, la webcam et le micro, et les combiner dans une même vidéo.
+
+### Les réglages de base
+
+| Réglage | Recommandation |
+| --- | --- |
+| **Scènes** | Une scène « Diapositives + caméra en petit », une scène « Caméra seule », une scène « Écran seul » |
+| **Résolution** | 1920 × 1080 ou 1280 × 720 |
+| **Images par seconde** | 30 |
+| **Format d''enregistrement** | MKV puis remux en MP4 (plus sûr en cas de coupure) |
+| **Micro** | Filtre de suppression de bruit, niveau sans saturation |
+
+> [!astuce]
+> Enregistrez en **MKV** : si l''électricité coupe pendant l''enregistrement, le fichier reste lisible. OBS permet ensuite de le convertir en MP4 (fonction « Remux »).
+
+### Enregistrer une leçon
+
+1. **Préparez** le script, les diapositives et le logiciel à montrer.
+2. **Fermez** les notifications et les fenêtres inutiles.
+3. **Faites un test** de 30 secondes et réécoutez le son.
+4. **Enregistrez** par petits morceaux ; en cas d''erreur, faites une pause et reprenez la phrase.
+5. **Gardez** une copie des fichiers originaux.
+
+## Le montage simple
+
+| Étape | Outil gratuit possible |
+| --- | --- |
+| Couper les erreurs et les silences | Éditeur vidéo gratuit (par exemple CapCut, Clipchamp, DaVinci Resolve) |
+| Ajouter titre et sous-titres | Même éditeur |
+| Exporter en MP4 | 720p ou 1080p, débit modéré |
+
+> [!madagascar]
+> Pensez aux apprenants qui ont des **données mobiles coûteuses** : exportez des vidéos légères (720p suffit souvent pour des diapositives), proposez le texte de la vidéo et un PDF récapitulatif, qui permettent d''apprendre même sans regarder toute la vidéo.
+
+## La plateforme e-learning
+
+> [!definition] Plateforme e-learning (LMS)
+> Un site qui héberge les cours : leçons, vidéos, quiz, suivi des progrès des apprenants, attestations. Certaines sont gratuites (comme Moodle, à installer ou héberger), d''autres proposent une offre gratuite limitée ou un essai.
+
+| Fonction | Usage |
+| --- | --- |
+| **Structure** | Modules et leçons dans l''ordre |
+| **Leçons** | Vidéo, texte, fichiers à télécharger |
+| **Quiz** | Questions, note minimale, nombre d''essais |
+| **Progression** | Leçons à débloquer dans l''ordre ou libres |
+| **Suivi** | Avancement et résultats de chaque apprenant |
+| **Attestation** | Délivrée à la fin du cours |
+
+### La liste de contrôle avant la publication
+
+1. Toutes les vidéos se lisent sur ordinateur et sur téléphone.
+2. Les quiz ont les bonnes réponses et des explications.
+3. Les fichiers se téléchargent.
+4. Les titres et l''ordre des leçons sont cohérents.
+5. Le son est clair et régulier d''une vidéo à l''autre.
+6. Un apprenant test a suivi tout le cours.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Camtasia** | Enregistrement d''écran et montage simple réunis, zooms, annotations, quiz intégrés à la vidéo selon les versions |
+| **Adobe Premiere Pro** | Montage vidéo professionnel pour des cours très soignés |
+| **Teachable** et **Thinkific** | Plateformes pour vendre des cours en ligne : pages de vente, paiements, apprenants, attestations |
+
+> [!madagascar]
+> Ces outils se paient en dollars par carte bancaire internationale, et c''est souvent **le client** qui paie la plateforme de vente de son cours. Vérifiez aussi que la plateforme accepte les paiements depuis les pays de vos clients. Commencez avec Canva, OBS et un éditeur gratuit.
+
+> [!retenir]
+> - Canva : une idée par diapositive, peu de texte, licence des éléments vérifiée.
+> - OBS : scènes préparées, enregistrement en MKV, test du son.
+> - Montage simple et export léger pour les connexions mobiles.
+> - Une plateforme e-learning bien structurée et testée.
+> - Camtasia, Premiere Pro, Teachable, Thinkific pour aller plus loin.
+
+## Exercice pratique : produire une leçon
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez les diapositives d''une leçon de votre cours dans Canva, avec une charte simple.
+> 2. Enregistrez la vidéo avec OBS (diapositives + caméra en petit).
+> 3. Montez-la, ajoutez des sous-titres et exportez-la en 720p.
+> 4. Mettez la leçon en ligne sur une plateforme gratuite avec un quiz et une fiche PDF.
+>
+> **À livrer** : vos diapositives, votre vidéo, la fiche et le lien de la leçon en ligne.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 2, 0, 'Pourquoi enregistrer en MKV avec OBS ?', '["Le fichier reste lisible en cas de coupure","Il est obligatoire","Il ajoute des sous-titres","Il est plus joli"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 2, 1, 'Pourquoi exporter des vidéos légères ?', '["Ce n''est pas utile","Pour aller plus vite au montage","Pour réduire la qualité du son","Pour les apprenants aux données mobiles coûteuses"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 2, 2, 'Qu''est-ce qu''un LMS ?', '["Un format vidéo","Un micro","Un logiciel de comptabilité","Une plateforme qui héberge les cours"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-f', 3, 'Premier projet : le cours de Tantely Bio', 'Entretien structuré avec l''expert, planning sur 6 semaines et tableau de suivi, guide de tournage à distance, test avec des apprenants et livraison complète.', 'Dans ce module, vous créez un cours complet pour un client expert, comme le ferait un créateur de cours indépendant. Vous apprendrez à extraire le savoir de l''expert, à organiser la production, à guider un tournage à distance, à tester le cours et à le livrer prêt à vendre ou à diffuser.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Extraire le savoir d''un expert avec un entretien structuré.
+> 2. Planifier la production d''un cours complet.
+> 3. Guider l''enregistrement d''un expert à distance.
+> 4. Tester le cours avec de vrais apprenants.
+> 5. Livrer un cours complet et documenté.
+
+## Le cas pratique : « Tantely Bio »
+
+> [!exemple] Votre client
+> M. Rado est apiculteur à Ambatondrazaka depuis 20 ans. Il forme des apiculteurs débutants sur place, mais reçoit des demandes de tout Madagascar. Il veut un cours en ligne en français, avec des mots clés en malgache : « Démarrer en apiculture : les 6 premiers mois ». Il n''a aucune compétence technique, mais il a beaucoup de photos et de vidéos de ses ruchers.
+
+## Étape 1 : extraire le savoir de l''expert
+
+| Question à l''expert | Pourquoi |
+| --- | --- |
+| Quelles erreurs font les débutants ? | Elles deviennent des leçons |
+| Quelles sont les étapes des 6 premiers mois ? | La structure du cours |
+| Que doit savoir faire un débutant à la fin ? | Les objectifs |
+| Quelles questions vous pose-t-on toujours ? | Une foire aux questions |
+| Avez-vous des histoires vécues ? | Des exemples marquants |
+| Quel matériel faut-il absolument ? | Une fiche à télécharger |
+
+> [!astuce]
+> Enregistrez l''entretien (avec son accord) et faites-en une **transcription**. L''expert parle souvent mieux qu''il n''écrit : sa transcription est une excellente base pour les scripts.
+
+## Étape 2 : planifier la production
+
+| Semaine | Travail |
+| --- | --- |
+| **1** | Entretien, plan du cours, validation par M. Rado |
+| **2** | Scripts des 12 leçons, validation |
+| **3** | Diapositives, fiches, sélection de ses photos et vidéos |
+| **4** | Enregistrements (par M. Rado et par vous) |
+| **5** | Montage, quiz, mise en ligne |
+| **6** | Test avec 5 apprenants, corrections, livraison |
+
+### Le tableau de suivi
+
+| Leçon | Script | Validation | Enregistrement | Montage | Quiz | En ligne |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1.1 Pourquoi l''apiculture | fait | fait | fait | en cours | à faire | à faire |
+| 1.2 Le matériel de base | fait | à faire | à faire | à faire | à faire | à faire |
+
+## Étape 3 : guider un enregistrement à distance
+
+### Le guide de tournage pour l''expert
+
+1. **Filmez à l''horizontale**, téléphone posé sur un support stable.
+2. **Face à la lumière**, jamais dos à une fenêtre.
+3. **Micro-cravate** branché au téléphone, ou téléphone à moins d''un mètre.
+4. **Lieu calme**, sans vent pour les vidéos en extérieur (ou micro protégé).
+5. **Une prise par idée**, avec un silence de 2 secondes avant et après.
+6. **Envoyez les fichiers originaux** par un service de stockage en ligne, pas par WhatsApp (qui compresse les vidéos).
+
+> [!attention]
+> Pour les vidéos au rucher, la **sécurité** passe avant l''image : l''expert porte toujours son équipement de protection, et vous ne demandez jamais un geste risqué « pour la caméra ».
+
+> [!madagascar]
+> Si la connexion de l''expert est trop faible pour envoyer de grosses vidéos, prévoyez un **envoi en plusieurs fois**, de nuit, ou la remise d''une carte mémoire par un transporteur de confiance. Planifiez ce délai dans le calendrier.
+
+## Étape 4 : tester le cours
+
+| Ce que vous observez | Comment |
+| --- | --- |
+| Les apprenants terminent-ils les leçons ? | Statistiques de progression de la plateforme |
+| Où abandonnent-ils ? | Leçon où beaucoup s''arrêtent |
+| Les quiz sont-ils trop faciles ou trop difficiles ? | Taux de réussite par question |
+| Qu''est-ce qui n''est pas clair ? | Questionnaire et courts entretiens |
+| La lecture marche-t-elle sur leurs téléphones ? | Retours sur les vidéos et les fichiers |
+
+> [!exemple] Une correction après le test
+> 4 apprenants sur 5 se trompent à la question sur la date de la première récolte. La vidéo n''en parle qu''en passant. Correction : ajouter une diapositive claire et un exemple de calendrier.
+
+## Étape 5 : livrer
+
+| Livrable | Contenu |
+| --- | --- |
+| **Cours en ligne** | Structure complète, vidéos, quiz, fichiers, attestation |
+| **Fichiers sources** | Diapositives Canva, vidéos montées, scripts |
+| **Guide d''administration** | Ajouter un apprenant, voir les résultats, modifier une leçon |
+| **Rapport de test** | Résultats et corrections faites |
+| **Suggestions** | Leçons à ajouter, version malgache, communauté WhatsApp |
+
+> [!retenir]
+> - Un entretien structuré et enregistré pour extraire le savoir de l''expert.
+> - Un planning sur 6 semaines et un tableau de suivi par leçon.
+> - Un guide de tournage simple, avec la sécurité avant l''image.
+> - Un test avec de vrais apprenants et des corrections.
+> - Une livraison complète avec sources et guide d''administration.
+
+## Exercice pratique : le cours de Tantely Bio
+
+> [!exercice] Exercice pratique · 10 heures (sur plusieurs jours)
+> 1. Choisissez un expert de votre entourage (ou vous-même) et menez l''entretien.
+> 2. Construisez le plan, le tableau de suivi et le guide de tournage.
+> 3. Produisez au moins 4 leçons complètes (vidéo, quiz, fiche).
+> 4. Faites tester par 3 personnes et corrigez.
+> 5. Rédigez le guide d''administration et le rapport de test.
+>
+> **À livrer** : le lien du cours, vos documents de production, le guide et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 3, 0, 'Pourquoi transcrire l''entretien avec l''expert ?', '["Pour le facturer plus","Pour le publier sans accord","Sa parole est une bonne base pour les scripts","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 3, 1, 'Comment l''expert doit-il envoyer ses vidéos ?', '["Par SMS","Par un service de stockage en ligne, en fichiers originaux","Par WhatsApp qui compresse","Il ne doit pas les envoyer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 3, 2, 'Que révèle un quiz raté par la plupart des testeurs ?', '["Un problème de son","Une leçon à clarifier","Rien","Des apprenants paresseux"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avec cours de démonstration, 5 canaux, prix par minute, par leçon ou par cours, conditions en 7 points, propriété du contenu, paiements et évolution.', 'Les experts, les organismes de formation, les entreprises et les ONG ont besoin de créateurs de cours pour transformer leur savoir en formations en ligne. Ce dernier module vous montre comment vous présenter, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de créateur de cours.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix par minute de vidéo, par leçon ou par cours.
+> 4. Rédiger vos conditions, dont la propriété du contenu.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Un cours de démonstration** en ligne, même court (votre projet du module 4).
+2. **Un extrait vidéo** de 2 minutes montrant votre style.
+3. **Un exemple de plan** de cours et de script.
+4. **Un avant et après** : un contenu brut d''expert transformé en leçon.
+5. **Les outils** que vous maîtrisez.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Experts et créateurs de contenu** | Ceux qui publient beaucoup mais n''ont pas de cours : proposez de transformer leur savoir |
+| 2 | **Organismes de formation** | Passage au numérique de leurs formations en salle |
+| 3 | **ONG et programmes** | Cours pour former des agents dans tout le pays |
+| 4 | **Entreprises** | Modules d''accueil et de procédures internes |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à un expert
+> « Bonjour, je suis vos publications sur la gestion des petites entreprises depuis longtemps, et vos conseils sont très demandés dans les commentaires. Je suis créateur de cours en ligne : je peux transformer votre savoir en un cours court, avec vidéos, quiz et fiches, que vous pourrez vendre ou offrir. Vous n''avez qu''à répondre à mes questions et filmer quelques vidéos avec votre téléphone : je m''occupe du reste. »
+
+## Fixer ses prix
+
+| Base | Exemple de prix |
+| --- | --- |
+| **Par minute de vidéo finale** (script, enregistrement guidé, montage) | 25 000 Ar par minute |
+| **Par leçon complète** (vidéo, quiz, fiche) | 120 000 Ar |
+| **Cours complet** (12 leçons, plateforme, test) | 1 500 000 Ar |
+| **Mise à jour** d''un cours existant | Selon le volume |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Une minute de vidéo finale demande souvent **une à plusieurs heures** de travail (script, enregistrement, montage, quiz). Chronométrez votre projet pour fixer un prix réaliste.
+
+## Vos conditions
+
+1. **Le contenu fourni** par l''expert (savoir, validations, vidéos tournées).
+2. **Les étapes de validation** : plan, scripts, version finale.
+3. **Le nombre de corrections** incluses à chaque étape.
+4. **Les délais**, qui dépendent aussi des validations du client.
+5. **Les coûts des outils** (plateforme, licences) à la charge du client.
+6. **La propriété du contenu** : le client est propriétaire de son cours ; vous pouvez montrer un extrait dans votre portfolio si le contrat le prévoit.
+7. **Le paiement** : acompte de 30 à 50 %, puis paiements par étapes.
+
+> [!attention]
+> Le **savoir** appartient à l''expert, et le cours est en général cédé au client une fois payé. Écrivez clairement dans le contrat ce que vous cédez, ce que vous pouvez garder (vos modèles de diapositives, par exemple) et ce que vous pouvez montrer dans votre portfolio.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur pédagogique** | Parcours complets, évaluations, normes e-learning |
+| **Concepteur e-learning interactif** | Outils auteurs, modules interactifs, formats standard des plateformes d''entreprise |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Formateur en ligne** | Voir la formation Formateur en ligne |
+| **Créateur de vos propres cours** | Vendre votre savoir sur votre plateforme |
+
+> [!retenir]
+> - Un portfolio avec un cours de démonstration et un avant et après.
+> - Experts, organismes, ONG, entreprises, plateformes.
+> - Un prix par minute, par leçon ou par cours, basé sur votre temps réel.
+> - Des validations par étapes et une propriété du contenu clairement écrite.
+> - Évoluez vers l''ingénierie pédagogique ou vos propres cours.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez votre portfolio avec votre cours de démonstration.
+> 2. Calculez vos prix à partir de votre temps chronométré.
+> 3. Rédigez vos conditions en 7 points, dont la propriété du contenu.
+> 4. Repérez 10 experts ou organismes et envoyez 3 propositions.
+>
+> **À livrer** : le lien de votre portfolio, vos calculs, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 4, 0, 'À qui appartient en général le cours une fois payé ?', '["À personne","Au créateur","À la plateforme","Au client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 4, 1, 'Pourquoi les délais dépendent-ils aussi du client ?', '["Il n''a aucun rôle","Il fixe le prix des outils","Il fait le montage","Il doit valider le plan, les scripts et la version finale"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-f', 4, 2, 'Quelle offre faire à un expert qui publie beaucoup ?', '["Écrire ses publications","Transformer son savoir en cours","Rien","Lui vendre une caméra"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que fait un créateur de cours en ligne ?', '["Il anime uniquement des sessions en direct","Il vend des ordinateurs","Il conçoit et produit des cours suivis à son rythme","Il corrige des copies papier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Qu''est-ce que le microlearning ?', '["Un cours de 10 heures","Un examen","Un microscope","Des leçons très courtes avec un seul objectif"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quel contenu montre un logiciel pas à pas ?', '["La vidéo de capture d''écran","La fiche PDF seule","La photo","Le quiz"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Qu''est-ce que l''ingénierie pédagogique ?', '["La réparation d''ordinateurs","Les méthodes pour concevoir une formation efficace","La construction d''écoles","La vente de cours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quel objectif est précis ?', '["Calculer le bénéfice d''un mois à partir du cahier","Connaître le bénéfice","Comprendre la comptabilité","Savoir les comptes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Comment construire le plan ?', '["À partir des vidéos disponibles seulement","À partir des objectifs","Au hasard","Selon la durée souhaitée uniquement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Combien d''idées par leçon ?', '["Aucune","Dix","Une","Toutes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Comment écrire un script ?', '["En langage juridique","Comme on parle : phrases courtes et « vous »","Sans relire","En phrases très longues"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Recettes 500 000 Ar, dépenses 380 000 Ar : quel bénéfice ?', '["120 000 Ar","380 000 Ar","500 000 Ar","880 000 Ar"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Qu''éviter dans un quiz ?', '["Les exemples","Les réponses plausibles","Les doubles négations et les pièges","Les explications"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quel format pour les diapositives d''une vidéo ?', '["Vertical toujours","Carré obligatoire","Aucun","16:9"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que vérifier pour les images d''un cours vendu ?', '["Leur couleur seulement","Rien","Leur licence","Leur poids uniquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que faire avant d''enregistrer une leçon ?', '["Allumer la musique","Rien","Un test de 30 secondes et réécouter le son","Ouvrir toutes les applications"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quelle résolution suffit souvent pour des diapositives ?', '["8K","Aucune","144p","720p"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que proposer en plus de la vidéo pour les connexions faibles ?', '["Rien","Une vidéo plus lourde","Le texte de la vidéo et une fiche PDF","Un CD"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que doit-on tester avant publication ?', '["La couleur du logo","Rien","Seulement le titre","Lecture sur ordinateur et téléphone, quiz, fichiers, ordre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'À quoi servent Teachable et Thinkific ?', '["Vendre des cours en ligne","Monter de l''audio","Retoucher des photos","Gérer un hôtel"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quelle question poser à l''expert ?', '["« Quelles erreurs font les débutants ? »","« Avez-vous un logo ? »","« Quel est votre salaire ? »","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Qu''est-ce qui passe avant l''image lors d''un tournage au rucher ?', '["La musique","La vitesse","La sécurité","Le décor"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Comment filmer avec un téléphone ?', '["À l''horizontale, stable, face à la lumière","Sans son","À la verticale en marchant","Dos à la fenêtre"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que montrent les statistiques de progression ?', '["Où les apprenants abandonnent","Le salaire de l''expert","Rien","Le prix du cours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que livrer avec le cours ?', '["Les mots de passe des apprenants","Seulement une facture","Fichiers sources, guide d''administration et rapport de test","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Combien de temps demande souvent une minute de vidéo finale ?', '["Cinq secondes","Une minute","Une semaine","Une à plusieurs heures de travail"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Que préciser dans le contrat ?', '["Ce qui est cédé et ce qui peut être montré au portfolio","La couleur des diapositives","Le nom de la caméra","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Aucun","Mobile Money ou virement"]'::jsonb, 3);
 
 -- edu-3-a
 delete from public.exam_questions where course_id = 'edu-3-a';

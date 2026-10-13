@@ -1,0 +1,97 @@
+{
+  "id": "edu-2-f",
+  "hours": 16,
+  "description": "Le créateur de cours en ligne conçoit et produit des cours suivis à son rythme : vidéos, documents, quiz et exercices. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des experts, des organismes de formation, des entreprises et des ONG, à Madagascar et à l'étranger, avec Canva, OBS et une plateforme e-learning : étapes de création, objectifs, plan, leçons courtes, scripts, quiz, enregistrement, montage léger, mise en ligne, entretien avec l'expert, tournage à distance et test. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types de cours et les étapes de création",
+    "Définir le public et les objectifs et construire le plan d'un cours",
+    "Écrire des scripts de vidéos et des quiz efficaces",
+    "Produire des leçons avec Canva et OBS et les mettre en ligne",
+    "Créer un cours complet avec un expert, le tester et le livrer",
+    "Présenter son travail, fixer ses prix et protéger la propriété du contenu"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de créateur de cours en ligne depuis Madagascar",
+      "summary": "Formation asynchrone, types de cours et de contenus, étapes de création, ingénierie pédagogique, clients et poste de création.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une formation asynchrone ?", "options": ["Une formation suivie à son rythme, sans session en direct", "Une classe virtuelle en direct", "Un examen", "Une conférence"], "correct": 0 },
+        { "q": "Quelle étape vient après la scénarisation ?", "options": ["La production", "L'analyse", "La conception", "L'amélioration"], "correct": 0 },
+        { "q": "Qu'est-ce qui compte le plus dans une vidéo de cours ?", "options": ["Un son clair", "Un décor luxueux", "Une caméra très chère", "De la musique forte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : public, objectifs, plan, leçons courtes, scripts et quiz",
+      "summary": "Analyse du public, objectifs avec verbes d'action, plan construit à partir des objectifs, microlearning, structure d'un script et règles des quiz.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle durée viser pour une vidéo de cours ?", "options": ["3 à 8 minutes", "1 heure", "30 secondes toujours", "2 heures"], "correct": 0 },
+        { "q": "Par quoi commence un script ?", "options": ["Une accroche", "La conclusion", "Le prix", "Les remerciements"], "correct": 0 },
+        { "q": "Qu'ajouter après la réponse à un quiz ?", "options": ["Une explication", "Rien", "Une publicité", "Une question piège"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Canva, OBS Studio, montage, plateforme et outils payants",
+      "summary": "Règles des diapositives et licences, scènes et réglages d'OBS, enregistrement en MKV, montage et export léger, plateforme e-learning, liste de contrôle, Camtasia, Premiere Pro, Teachable et Thinkific.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi enregistrer en MKV avec OBS ?", "options": ["Le fichier reste lisible en cas de coupure", "Il est plus joli", "Il est obligatoire", "Il ajoute des sous-titres"], "correct": 0 },
+        { "q": "Pourquoi exporter des vidéos légères ?", "options": ["Pour les apprenants aux données mobiles coûteuses", "Pour réduire la qualité du son", "Ce n'est pas utile", "Pour aller plus vite au montage"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un LMS ?", "options": ["Une plateforme qui héberge les cours", "Un micro", "Un format vidéo", "Un logiciel de comptabilité"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le cours de Tantely Bio",
+      "summary": "Entretien structuré avec l'expert, planning sur 6 semaines et tableau de suivi, guide de tournage à distance, test avec des apprenants et livraison complète.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi transcrire l'entretien avec l'expert ?", "options": ["Sa parole est une bonne base pour les scripts", "Pour le publier sans accord", "Ce n'est pas utile", "Pour le facturer plus"], "correct": 0 },
+        { "q": "Comment l'expert doit-il envoyer ses vidéos ?", "options": ["Par un service de stockage en ligne, en fichiers originaux", "Par WhatsApp qui compresse", "Par SMS", "Il ne doit pas les envoyer"], "correct": 0 },
+        { "q": "Que révèle un quiz raté par la plupart des testeurs ?", "options": ["Une leçon à clarifier", "Des apprenants paresseux", "Rien", "Un problème de son"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avec cours de démonstration, 5 canaux, prix par minute, par leçon ou par cours, conditions en 7 points, propriété du contenu, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À qui appartient en général le cours une fois payé ?", "options": ["Au client", "Au créateur", "À la plateforme", "À personne"], "correct": 0 },
+        { "q": "Pourquoi les délais dépendent-ils aussi du client ?", "options": ["Il doit valider le plan, les scripts et la version finale", "Il fait le montage", "Il n'a aucun rôle", "Il fixe le prix des outils"], "correct": 0 },
+        { "q": "Quelle offre faire à un expert qui publie beaucoup ?", "options": ["Transformer son savoir en cours", "Écrire ses publications", "Rien", "Lui vendre une caméra"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un créateur de cours en ligne ?", "options": ["Il conçoit et produit des cours suivis à son rythme", "Il anime uniquement des sessions en direct", "Il vend des ordinateurs", "Il corrige des copies papier"], "correct": 0 },
+    { "q": "Qu'est-ce que le microlearning ?", "options": ["Des leçons très courtes avec un seul objectif", "Un cours de 10 heures", "Un microscope", "Un examen"], "correct": 0 },
+    { "q": "Quel contenu montre un logiciel pas à pas ?", "options": ["La vidéo de capture d'écran", "La fiche PDF seule", "Le quiz", "La photo"], "correct": 0 },
+    { "q": "Qu'est-ce que l'ingénierie pédagogique ?", "options": ["Les méthodes pour concevoir une formation efficace", "La construction d'écoles", "La réparation d'ordinateurs", "La vente de cours"], "correct": 0 },
+    { "q": "Quel objectif est précis ?", "options": ["Calculer le bénéfice d'un mois à partir du cahier", "Connaître le bénéfice", "Comprendre la comptabilité", "Savoir les comptes"], "correct": 0 },
+    { "q": "Comment construire le plan ?", "options": ["À partir des objectifs", "À partir des vidéos disponibles seulement", "Au hasard", "Selon la durée souhaitée uniquement"], "correct": 0 },
+    { "q": "Combien d'idées par leçon ?", "options": ["Une", "Dix", "Aucune", "Toutes"], "correct": 0 },
+    { "q": "Comment écrire un script ?", "options": ["Comme on parle : phrases courtes et « vous »", "En phrases très longues", "En langage juridique", "Sans relire"], "correct": 0 },
+    { "q": "Recettes 500 000 Ar, dépenses 380 000 Ar : quel bénéfice ?", "options": ["120 000 Ar", "880 000 Ar", "380 000 Ar", "500 000 Ar"], "correct": 0 },
+    { "q": "Qu'éviter dans un quiz ?", "options": ["Les doubles négations et les pièges", "Les explications", "Les exemples", "Les réponses plausibles"], "correct": 0 },
+    { "q": "Quel format pour les diapositives d'une vidéo ?", "options": ["16:9", "Carré obligatoire", "Vertical toujours", "Aucun"], "correct": 0 },
+    { "q": "Que vérifier pour les images d'un cours vendu ?", "options": ["Leur licence", "Leur couleur seulement", "Rien", "Leur poids uniquement"], "correct": 0 },
+    { "q": "Que faire avant d'enregistrer une leçon ?", "options": ["Un test de 30 secondes et réécouter le son", "Rien", "Allumer la musique", "Ouvrir toutes les applications"], "correct": 0 },
+    { "q": "Quelle résolution suffit souvent pour des diapositives ?", "options": ["720p", "8K", "144p", "Aucune"], "correct": 0 },
+    { "q": "Que proposer en plus de la vidéo pour les connexions faibles ?", "options": ["Le texte de la vidéo et une fiche PDF", "Rien", "Une vidéo plus lourde", "Un CD"], "correct": 0 },
+    { "q": "Que doit-on tester avant publication ?", "options": ["Lecture sur ordinateur et téléphone, quiz, fichiers, ordre", "Seulement le titre", "Rien", "La couleur du logo"], "correct": 0 },
+    { "q": "À quoi servent Teachable et Thinkific ?", "options": ["Vendre des cours en ligne", "Retoucher des photos", "Monter de l'audio", "Gérer un hôtel"], "correct": 0 },
+    { "q": "Quelle question poser à l'expert ?", "options": ["« Quelles erreurs font les débutants ? »", "« Quel est votre salaire ? »", "Aucune", "« Avez-vous un logo ? »"], "correct": 0 },
+    { "q": "Qu'est-ce qui passe avant l'image lors d'un tournage au rucher ?", "options": ["La sécurité", "Le décor", "La musique", "La vitesse"], "correct": 0 },
+    { "q": "Comment filmer avec un téléphone ?", "options": ["À l'horizontale, stable, face à la lumière", "À la verticale en marchant", "Dos à la fenêtre", "Sans son"], "correct": 0 },
+    { "q": "Que montrent les statistiques de progression ?", "options": ["Où les apprenants abandonnent", "Le prix du cours", "Le salaire de l'expert", "Rien"], "correct": 0 },
+    { "q": "Que livrer avec le cours ?", "options": ["Fichiers sources, guide d'administration et rapport de test", "Rien", "Seulement une facture", "Les mots de passe des apprenants"], "correct": 0 },
+    { "q": "Combien de temps demande souvent une minute de vidéo finale ?", "options": ["Une à plusieurs heures de travail", "Une minute", "Cinq secondes", "Une semaine"], "correct": 0 },
+    { "q": "Que préciser dans le contrat ?", "options": ["Ce qui est cédé et ce qui peut être montré au portfolio", "Rien", "La couleur des diapositives", "Le nom de la caméra"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

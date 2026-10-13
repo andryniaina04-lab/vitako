@@ -3227,6 +3227,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-2-f": {
+  "hours": 16,
+  "description": "Le créateur de cours en ligne conçoit et produit des cours suivis à son rythme : vidéos, documents, quiz et exercices. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des experts, des organismes de formation, des entreprises et des ONG, à Madagascar et à l'étranger, avec Canva, OBS et une plateforme e-learning : étapes de création, objectifs, plan, leçons courtes, scripts, quiz, enregistrement, montage léger, mise en ligne, entretien avec l'expert, tournage à distance et test. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types de cours et les étapes de création",
+   "Définir le public et les objectifs et construire le plan d'un cours",
+   "Écrire des scripts de vidéos et des quiz efficaces",
+   "Produire des leçons avec Canva et OBS et les mettre en ligne",
+   "Créer un cours complet avec un expert, le tester et le livrer",
+   "Présenter son travail, fixer ses prix et protéger la propriété du contenu"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de créateur de cours en ligne depuis Madagascar",
+    "summary": "Formation asynchrone, types de cours et de contenus, étapes de création, ingénierie pédagogique, clients et poste de création.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types de cours",
+     "Les contenus d'un cours",
+     "Les étapes de création d'un cours",
+     "Qui sont vos clients ?",
+     "Votre poste de création",
+     "Exercice pratique : analyser des cours en ligne"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : public, objectifs, plan, leçons courtes, scripts et quiz",
+    "summary": "Analyse du public, objectifs avec verbes d'action, plan construit à partir des objectifs, microlearning, structure d'un script et règles des quiz.",
+    "sections": [
+     "Le public et les objectifs",
+     "Le plan du cours",
+     "Des leçons courtes",
+     "Le script d'une vidéo",
+     "Des quiz utiles",
+     "Exercice pratique : concevoir votre cours"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Canva, OBS Studio, montage, plateforme et outils payants",
+    "summary": "Règles des diapositives et licences, scènes et réglages d'OBS, enregistrement en MKV, montage et export léger, plateforme e-learning, liste de contrôle, Camtasia, Premiere Pro, Teachable et Thinkific.",
+    "sections": [
+     "Canva : diapositives et fiches",
+     "OBS Studio : enregistrer",
+     "Le montage simple",
+     "La plateforme e-learning",
+     "Les outils payants",
+     "Exercice pratique : produire une leçon"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : le cours de Tantely Bio",
+    "summary": "Entretien structuré avec l'expert, planning sur 6 semaines et tableau de suivi, guide de tournage à distance, test avec des apprenants et livraison complète.",
+    "sections": [
+     "Le cas pratique : « Tantely Bio »",
+     "Étape 1 : extraire le savoir de l'expert",
+     "Étape 2 : planifier la production",
+     "Étape 3 : guider un enregistrement à distance",
+     "Étape 4 : tester le cours",
+     "Étape 5 : livrer",
+     "Exercice pratique : le cours de Tantely Bio"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avec cours de démonstration, 5 canaux, prix par minute, par leçon ou par cours, conditions en 7 points, propriété du contenu, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-3-a": {
   "hours": 16,
   "description": "Ce niveau Avancé fait du chef de projet digital un professionnel qui pilote des projets plus gros et plus risqués : spécialité (Scrum Master, Product Owner, agence, e-commerce, projets financés, PMO), diagnostic et redressement d'un projet en difficulté, outils payants (Jira, Monday.com et Notion Plus), estimation en points et en fourchettes, suivi du budget, RACI, réunions et parties prenantes, équipes internationales en anglais, cultures de travail, certifications et projets de bailleurs, puis tarif journalier, études de cas et réseau de partenaires. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
