@@ -15,7 +15,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
-  ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 12, false),
+  ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 18, true),
   ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
   ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
   ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true),
@@ -41731,6 +41731,556 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-1-f
+delete from public.exam_questions where course_id = 'media-1-f';
+delete from public.module_questions where course_id = 'media-1-f';
+delete from public.lessons where course_id = 'media-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 0, 'Le métier de motion designer depuis Madagascar', 'Types de projets, étapes d''un projet d''animation, images clés, images par seconde, formats, courbes d''accélération, qualités et poste de travail.', 'Logos qui s''animent, chiffres qui apparaissent, textes qui bougent au rythme d''une musique, petites vidéos explicatives : le motion design est partout sur les réseaux sociaux, les sites, les applications et les publicités. Le motion designer donne vie aux éléments graphiques. Il travaille entièrement à distance. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un motion designer.
+> 2. Reconnaître les principaux types de projets.
+> 3. Décrire les étapes d''un projet d''animation.
+> 4. Comprendre les notions techniques de base.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un motion designer **anime des éléments graphiques (textes, logos, formes, icônes, illustrations, chiffres) pour expliquer, rendre plus vivant ou mettre en valeur un message**.
+
+> [!definition] Motion design
+> L''animation de graphismes. À la différence du dessin animé classique, il anime surtout des formes, des textes et des éléments de design plutôt que des personnages qui jouent une histoire.
+
+## Les types de projets
+
+| Type | Exemple | Clients |
+| --- | --- | --- |
+| **Logo animé** | Le logo apparaît en 3 secondes au début d''une vidéo | Entreprises, chaînes YouTube |
+| **Publications animées** | Texte et visuels qui bougent pour Instagram ou TikTok | Marques, community managers |
+| **Vidéo explicative** | 60 à 90 secondes pour expliquer un service | Start-up, ONG, formations |
+| **Infographie animée** | Chiffres et graphiques qui apparaissent | Médias, ONG, entreprises |
+| **Habillage vidéo** | Titres, bandeaux, transitions pour une chaîne ou un événement | Créateurs, médias |
+| **Animations d''interface** | Petites animations dans une application ou un site | Développeurs, designers |
+
+> [!madagascar] Votre avantage
+> Les ONG et programmes à Madagascar ont besoin de **vidéos explicatives courtes**, faciles à partager sur WhatsApp et Facebook, souvent en malgache. Les agences et marques francophones cherchent aussi des motion designers à distance. Un motion designer qui sait faire des vidéos **légères et claires** est très utile.
+
+## Les étapes d''un projet
+
+| N° | Étape | Ce qui est produit |
+| --- | --- | --- |
+| 1 | **Brief** | Objectif, public, durée, format, ton |
+| 2 | **Script** | Le texte de la voix off ou des titres |
+| 3 | **Storyboard** | Les images clés dessinées, scène par scène |
+| 4 | **Planches de style** (styleframes) | Quelques images finales qui fixent le style |
+| 5 | **Animatique** | Storyboard monté avec la voix, pour valider le rythme |
+| 6 | **Animation** | Mise en mouvement de toutes les scènes |
+| 7 | **Son et finitions** | Musique, bruitages, voix, export |
+
+> [!astuce]
+> Le **storyboard** et les **planches de style** font gagner beaucoup de temps : le client valide le contenu et le style avant que vous animiez. Changer une idée sur un dessin prend quelques minutes, changer une animation peut prendre des heures.
+
+## Les notions techniques de base
+
+| Notion | Explication |
+| --- | --- |
+| **Images clés** (keyframes) | Les positions de départ et d''arrivée ; le logiciel calcule les images entre les deux |
+| **Images par seconde** | Souvent 24, 25 ou 30 images par seconde |
+| **Durée** | Une animation de réseaux sociaux dure souvent 5 à 15 secondes |
+| **Format** | 16:9 (YouTube, site), 9:16 (Stories, TikTok), 1:1 ou 4:5 (publications) |
+| **Courbes d''accélération** | La façon dont un mouvement accélère ou ralentit |
+| **Export** | Vidéo MP4, GIF, ou formats pour le web et les applications |
+
+> [!definition] Courbe d''accélération (easing)
+> Un mouvement réel ne démarre et ne s''arrête jamais d''un coup : il accélère puis ralentit. Les courbes d''accélération rendent l''animation **naturelle**. Sans elles, le mouvement paraît mécanique.
+
+## Les qualités du motion designer
+
+1. **Le sens du rythme** : timing, synchronisation avec la musique et la voix.
+2. **Le sens du design** : typographie, couleurs, composition.
+3. **La patience** : beaucoup de petits ajustements.
+4. **La clarté** : l''animation sert le message, pas l''inverse.
+5. **La curiosité** : observer et analyser les animations qu''on voit.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive au minimum, 16 Go conseillé pour la 3D |
+| **Carte graphique** | Utile pour Blender et la 3D |
+| **Logiciels gratuits** | Jitter (dans le navigateur, animation 2D), Blender (3D et 2D) |
+| **Casque** | Pour travailler le rythme avec le son |
+| **Stockage** | Les projets et les rendus prennent beaucoup de place |
+
+> [!retenir]
+> - Le motion designer anime textes, logos, formes, icônes et chiffres.
+> - Logos animés, publications, vidéos explicatives, infographies, habillage, interfaces.
+> - Brief, script, storyboard, planches de style, animatique, animation, son.
+> - Images clés, images par seconde, formats et courbes d''accélération.
+> - Jitter et Blender pour commencer.
+
+## Exercice pratique : observer le motion design
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Trouvez 10 exemples de motion design (logos animés, publicités, vidéos explicatives).
+> 2. Pour chacun, notez le type, la durée, le format et ce qui rend l''animation agréable.
+> 3. Choisissez-en un et décrivez seconde par seconde ce qui bouge.
+> 4. Installez Blender et créez un compte sur Jitter.
+>
+> **À livrer** : votre tableau des 10 exemples et votre analyse seconde par seconde.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 0, 0, 'Qu''anime surtout un motion designer ?', '["Des photos de mariage","Textes, logos, formes, icônes et chiffres","Uniquement des personnages de dessin animé","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 0, 1, 'Que sont les images clés ?', '["Les miniatures YouTube","Les photos du client","Les positions de départ et d''arrivée d''un mouvement","Les fichiers sources"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 0, 2, 'Pourquoi les courbes d''accélération ?', '["Changer les couleurs","Réduire le poids du fichier","Rien","Rendre le mouvement naturel"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 1, 'Les bases : principes, timing, typographie, transitions et storyboard', 'Accélération, anticipation, dépassement, écrasement, décalage et arcs, timing en images, temps de lecture, typographie animée, transitions, storyboard et animatique.', 'Ce module vous donne les bases de l''animation : les principes qui rendent un mouvement naturel, le timing, la typographie animée, les transitions et la façon de construire un storyboard.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Appliquer les principes essentiels de l''animation.
+> 2. Régler le timing et l''espacement d''un mouvement.
+> 3. Animer un texte de façon lisible.
+> 4. Choisir des transitions cohérentes.
+> 5. Construire un storyboard et une animatique.
+
+## Les principes essentiels de l''animation
+
+| Principe | Explication | Exemple en motion design |
+| --- | --- | --- |
+| **Accélération et ralentissement** | Un mouvement démarre et s''arrête progressivement | Un bouton glisse et ralentit en arrivant |
+| **Anticipation** | Un petit mouvement inverse avant l''action | Une icône recule légèrement avant de bondir |
+| **Dépassement et retour** | L''objet dépasse sa position puis revient | Un titre arrive, dépasse un peu, se stabilise |
+| **Écrasement et étirement** | L''objet se déforme avec la vitesse | Une balle qui s''aplatit en touchant le sol |
+| **Décalage** | Les éléments ne bougent pas tous en même temps | Les lettres d''un mot arrivent l''une après l''autre |
+| **Arcs** | Les mouvements naturels suivent des courbes | Un élément qui tombe en courbe plutôt qu''en ligne droite |
+
+> [!astuce]
+> Le **décalage** est l''astuce la plus simple pour rendre une animation vivante : au lieu de faire apparaître 5 icônes en même temps, faites-les apparaître à quelques images d''intervalle.
+
+## Timing et espacement
+
+| Durée d''un mouvement | Effet |
+| --- | --- |
+| **Très court** (4 à 8 images) | Rapide, énergique |
+| **Moyen** (10 à 20 images) | Naturel, confortable |
+| **Long** (plus de 30 images) | Calme, solennel |
+
+> [!definition] Timing
+> Le nombre d''images que dure un mouvement. À 25 images par seconde, un mouvement de 12 images dure environ une demi-seconde.
+
+### Laisser le temps de lire
+
+| Règle | Repère |
+| --- | --- |
+| Un texte court doit rester affiché assez longtemps | Environ le temps de le lire deux fois |
+| Un seul mouvement important à la fois | Le regard ne peut pas suivre partout |
+| Une pause après une information clé | Le spectateur comprend avant la suite |
+
+## La typographie animée
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Polices très lisibles** | Le texte bouge : il doit rester facile à lire |
+| **Peu de mots par écran** | 3 à 7 mots |
+| **Animation qui sert le sens** | Un mot important peut grandir, un chiffre peut compter |
+| **Cohérence** | Toujours le même type d''apparition dans une vidéo |
+| **Contraste** | Texte bien visible sur le fond |
+
+> [!attention]
+> Une animation de texte trop rapide ou trop compliquée rend le message **illisible**. Sur les réseaux sociaux, beaucoup regardent sans le son : le texte doit se lire facilement.
+
+## Les transitions
+
+| Transition | Usage |
+| --- | --- |
+| **Coupe nette** | Changement de sujet, rythme rapide |
+| **Glissement** | Passer d''une idée à la suivante |
+| **Transformation de forme** | Une forme devient une autre (cercle → icône) |
+| **Zoom** | Entrer dans un détail |
+| **Masque** | Une forme révèle la scène suivante |
+
+> [!astuce]
+> Choisissez **2 ou 3 types de transitions** pour toute une vidéo. Trop de transitions différentes donnent une impression de désordre.
+
+## Storyboard et animatique
+
+### Le storyboard
+
+| Case | Contenu |
+| --- | --- |
+| **Image** | Croquis de la scène |
+| **Texte à l''écran** | Les mots exacts |
+| **Voix off** | La phrase dite pendant la scène |
+| **Mouvement** | Ce qui bouge (flèches, notes) |
+| **Durée** | En secondes |
+
+> [!definition] Animatique
+> Le storyboard monté en vidéo avec la voix off et la musique, sans animation finale. Elle permet de valider le **rythme** et la durée avant de commencer l''animation.
+
+> [!madagascar]
+> Pour une vidéo explicative en **malgache et en français**, les phrases n''ont pas la même longueur dans les deux langues. Prévoyez le timing à partir de la voix off réelle dans chaque langue, et une mise en page qui accepte des textes plus longs.
+
+> [!retenir]
+> - Accélération, anticipation, dépassement, écrasement, décalage, arcs.
+> - Le timing en images ; laisser le temps de lire.
+> - Typographie animée lisible, peu de mots, animation au service du sens.
+> - 2 ou 3 types de transitions par vidéo.
+> - Storyboard puis animatique pour valider contenu et rythme.
+
+## Exercice pratique : les principes en pratique
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Dessinez sur papier une balle qui rebondit, image par image (12 images), avec écrasement et étirement.
+> 2. Écrivez le script d''une vidéo explicative de 30 secondes (sujet de votre choix).
+> 3. Réalisez le storyboard en 6 à 8 cases.
+> 4. Enregistrez la voix off avec votre téléphone et montez l''animatique avec un éditeur vidéo gratuit.
+>
+> **À livrer** : vos dessins, votre script, votre storyboard et votre animatique.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 0, 'Quelle astuce simple rend une animation vivante ?', '["Tout faire apparaître en même temps","Le décalage entre éléments","Supprimer les pauses","Le mouvement linéaire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 1, 'À 25 images par seconde, combien dure un mouvement de 12 images ?', '["Une minute","Environ une demi-seconde","2 secondes","12 secondes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 1, 2, 'Qu''est-ce qu''une animatique ?', '["L''animation finale","Un logiciel","Le storyboard monté avec la voix pour valider le rythme","Un format d''export"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 2, 'Les outils : Jitter, Blender, export et outils payants', 'Plans de travail, import SVG, animations et timeline de Jitter, logo animé, courbes d''accélération, modélisation, lumière, animation et rendu dans Blender, exports, After Effects et Cinema 4D.', 'Ce module vous fait prendre en main les outils gratuits du motion designer : **Jitter** pour animer rapidement des graphismes 2D dans le navigateur, et **Blender** pour la 3D et des animations plus libres. Vous découvrirez ensuite les outils payants de référence : **Adobe After Effects** et **Cinema 4D**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Animer un logo et une publication dans Jitter.
+> 2. Utiliser les images clés et les courbes d''accélération.
+> 3. Créer une animation 3D simple dans Blender.
+> 4. Exporter dans le bon format selon l''usage.
+> 5. Comprendre ce qu''apportent After Effects et Cinema 4D.
+
+## Jitter : l''animation 2D dans le navigateur
+
+| Fonction (selon l''offre) | Usage |
+| --- | --- |
+| **Plans de travail** | Un format par plateforme (16:9, 9:16, 1:1) |
+| **Import de fichiers** | Graphismes depuis Figma ou fichiers SVG |
+| **Animations prêtes** | Apparition, glissement, rotation, échelle, opacité |
+| **Timeline** | Régler le moment, la durée et l''accélération de chaque animation |
+| **Courbes d''accélération** | Choix parmi des courbes prédéfinies |
+| **Export** | MP4, GIF et autres formats selon l''offre |
+
+### Animer un logo en 3 secondes
+
+1. **Importez** le logo en SVG, avec ses éléments séparés.
+2. **Faites apparaître** le symbole (échelle de 0 à 100 % avec dépassement).
+3. **Décalez** l''apparition des lettres du nom.
+4. **Ajoutez** une petite animation finale (léger rebond ou brillance).
+5. **Laissez** le logo immobile au moins une seconde à la fin.
+
+> [!astuce]
+> Demandez toujours au client son logo en **format vectoriel** (SVG, AI, PDF), avec les éléments séparés. Animer un logo à partir d''une image JPEG est beaucoup plus limité.
+
+## Images clés et courbes
+
+| Courbe | Effet |
+| --- | --- |
+| **Linéaire** | Vitesse constante, effet mécanique (à éviter sauf exception) |
+| **Ralentissement à l''arrivée** (ease out) | Entrée naturelle d''un élément |
+| **Accélération au départ** (ease in) | Sortie naturelle d''un élément |
+| **Accélération et ralentissement** (ease in-out) | Mouvement d''un point à un autre |
+| **Rebond** | Effet ludique |
+
+## Blender : la 3D et plus encore
+
+> [!definition] Blender
+> Un logiciel gratuit et libre de 3D : modélisation, matériaux, lumière, animation, rendu. Il permet aussi l''animation 2D avec le Grease Pencil et le montage vidéo.
+
+| Étape | Exemple : un logo 3D qui tourne |
+| --- | --- |
+| **Modélisation** | Importer le logo SVG et lui donner de l''épaisseur |
+| **Matériau** | Couleur, aspect brillant ou mat |
+| **Lumière** | Une lumière principale et une lumière d''appoint |
+| **Caméra** | Cadrage du logo |
+| **Animation** | Images clés de rotation, avec courbes dans l''éditeur de graphes |
+| **Rendu** | Calcul des images finales |
+
+> [!attention]
+> Le **rendu 3D** peut être long sur un ordinateur modeste. Faites des tests en basse résolution et avec moins d''images, et lancez le rendu final la nuit. Prévoyez du temps dans votre planning, surtout si l''électricité peut couper.
+
+## Exporter selon l''usage
+
+| Usage | Format courant |
+| --- | --- |
+| **Réseaux sociaux** | MP4 (H.264), format adapté à la plateforme |
+| **Site web** | MP4 léger, ou format d''animation pour le web selon le besoin du développeur |
+| **Messageries** (WhatsApp) | MP4 court et léger |
+| **Présentation** | MP4 ou GIF |
+| **Montage par le client** | Vidéo de haute qualité, parfois avec fond transparent (formats spécifiques) |
+
+> [!madagascar]
+> Pour une vidéo d''ONG partagée par **WhatsApp** dans des zones à faible connexion, visez un fichier léger (courte durée, résolution 720p, compression adaptée). Testez l''envoi vous-même avant de livrer.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Adobe After Effects** | Référence du motion design 2D : calques, effets, masques, expressions, très nombreuses extensions ; demandé par la plupart des agences |
+| **Cinema 4D** | Logiciel 3D très utilisé en motion design, apprécié pour sa simplicité et son intégration avec After Effects |
+
+> [!madagascar]
+> After Effects (abonnement Adobe) et Cinema 4D (abonnement Maxon) se paient en dollars et sont coûteux. Commencez avec Jitter et Blender, qui permettent de construire un vrai portfolio. Passez aux outils payants quand vos clients ou une agence les demandent. Vérifiez les offres étudiants et les prix sur les sites officiels.
+
+> [!retenir]
+> - Jitter : plans de travail, import SVG, animations prêtes, timeline, export.
+> - Logo animé : vectoriel séparé, échelle, décalage, finition, pause finale.
+> - Courbes d''accélération adaptées ; éviter le linéaire.
+> - Blender : modélisation, matériau, lumière, caméra, animation, rendu.
+> - Exporter selon l''usage ; After Effects et Cinema 4D plus tard.
+
+## Exercice pratique : vos premières animations
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Dans Jitter, animez un logo (le vôtre ou un logo fictif) en 3 secondes.
+> 2. Créez une publication animée de 8 secondes au format 4:5 avec un texte de 5 mots.
+> 3. Dans Blender, créez un logo 3D simple qui tourne et faites le rendu de 3 secondes.
+> 4. Exportez chaque animation dans un format adapté à son usage.
+>
+> **À livrer** : vos 3 animations et une note sur les réglages d''export.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 2, 0, 'Dans quel format demander le logo du client ?', '["Vectoriel avec éléments séparés","JPEG basse résolution","PDF scanné","Capture d''écran"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 2, 1, 'Quelle courbe donne une entrée naturelle ?', '["Aléatoire","Aucune","Linéaire","Ralentissement à l''arrivée (ease out)"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 2, 2, 'Que faire si le rendu 3D est long ?', '["Abandonner la 3D","Rendre en 8K","Tester en basse résolution et lancer le rendu final la nuit","Ne jamais tester"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 3, 'Premier projet : la vidéo explicative de Mivoatra Microfinance', 'Brief et script exact, validations par étapes, voix off avant l''animation, animation scène par scène, son et sous-titres, versions en plusieurs langues et formats.', 'Dans ce module, vous réalisez une vidéo explicative animée pour un client, du brief jusqu''à la livraison, comme le ferait un motion designer indépendant. Vous apprendrez à transformer un message en script, à faire valider chaque étape, à animer avec méthode et à livrer des fichiers adaptés à chaque plateforme.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Transformer un brief en script clair.
+> 2. Faire valider storyboard, style et animatique.
+> 3. Organiser l''animation d''une vidéo de 60 secondes.
+> 4. Ajouter le son et finaliser.
+> 5. Livrer plusieurs versions adaptées aux plateformes.
+
+## Le cas pratique : « Mivoatra Microfinance »
+
+> [!exemple] Votre client
+> **Mivoatra** est une institution de microfinance. Elle lance un service d''épargne par Mobile Money et veut une vidéo explicative de 60 secondes, en malgache et en français, pour Facebook, WhatsApp et les écrans de ses agences. Le message : « Épargner un peu chaque semaine, facilement, depuis votre téléphone ». Le public : commerçants et agriculteurs, souvent peu familiers des services numériques.
+
+## Étape 1 : du brief au script
+
+| Élément | Décision |
+| --- | --- |
+| Objectif | Expliquer le service et donner envie d''essayer |
+| Public | Commerçants et agriculteurs, en ville et en zone rurale |
+| Durée | 60 secondes |
+| Langues | Une version malgache, une version française |
+| Formats | 16:9 (agences), 1:1 (Facebook), 9:16 (Stories et WhatsApp) |
+| Ton | Simple, rassurant, chaleureux |
+
+### Le script (version française)
+
+```
+0-8 s   « Mialy vend des légumes au marché. Elle aimerait mettre un peu d''argent de côté. »
+8-20 s  « Avec l''épargne Mivoatra, elle épargne depuis son téléphone, quand elle veut. »
+20-38 s « 1. Elle compose le code. 2. Elle choisit le montant. 3. Elle reçoit un SMS de confirmation. »
+38-50 s « Son argent est en sécurité, et elle peut le retirer en cas de besoin. »
+50-60 s « Épargnez un peu chaque semaine. Renseignez-vous dans votre agence Mivoatra. »
+```
+
+> [!attention]
+> Une vidéo financière doit être **exacte** : montants, frais, conditions, sécurité. Faites valider chaque phrase par le client, et n''ajoutez jamais une promesse (rendement, absence de frais) qu''il ne confirme pas par écrit.
+
+## Étape 2 : les validations
+
+| Étape | Livrable | Validation |
+| --- | --- | --- |
+| **Script** | Texte en 2 langues avec timing | Client |
+| **Storyboard** | 10 à 12 cases | Client |
+| **Planches de style** | 3 images finales (personnage, téléphone, agence) | Client |
+| **Voix off** | Enregistrée par un comédien dans chaque langue | Client |
+| **Animatique** | Storyboard + voix + musique | Client |
+| **Animation** | Version complète | Retours groupés |
+
+> [!astuce]
+> Enregistrez la **voix off avant d''animer**. Le rythme de la voix guide toute l''animation, surtout quand il y a deux langues.
+
+## Étape 3 : animer avec méthode
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Animer scène par scène** dans l''ordre | Garder le fil de l''histoire |
+| **Bibliothèque d''éléments** (personnage, téléphone, icônes) | Réutiliser et garder la cohérence |
+| **Mêmes courbes et durées** pour les mêmes types de mouvements | Style homogène |
+| **Textes sur des calques séparés** | Adapter facilement à l''autre langue |
+| **Prévisualisation régulière** avec le son | Vérifier le rythme |
+
+> [!madagascar]
+> Représentez des personnes, des lieux et des objets **familiers au public** : un marché malgache, un téléphone simple, une agence de quartier. Le public se reconnaît et comprend mieux le message.
+
+## Étape 4 : son et finitions
+
+1. **Voix off** calée sur l''animation.
+2. **Musique** libre de droits pour usage commercial, discrète sous la voix.
+3. **Bruitages légers** (clic, notification) pour souligner les actions.
+4. **Sous-titres** pour les spectateurs qui regardent sans le son.
+5. **Écran final** : logo, message, contact.
+
+## Étape 5 : livrer les versions
+
+| Version | Format | Usage |
+| --- | --- | --- |
+| Malgache 16:9 | 1920 × 1080 | Écrans des agences, YouTube |
+| Malgache 1:1 | 1080 × 1080 | Facebook |
+| Malgache 9:16 | 1080 × 1920 | Stories, statuts WhatsApp |
+| Français (mêmes formats) | Idem | Diaspora, partenaires |
+| Version légère | 720p, fichier compressé | Partage WhatsApp |
+
+> [!attention]
+> Adapter une vidéo 16:9 en 9:16 ne se fait pas en recadrant simplement : il faut **réorganiser** les éléments pour qu''ils restent lisibles. Prévoyez ce travail dans votre devis dès le départ.
+
+> [!retenir]
+> - Un script court, exact, validé dans chaque langue.
+> - Storyboard, style, voix off et animatique validés avant l''animation.
+> - Animer scène par scène avec une bibliothèque d''éléments.
+> - Voix, musique sous licence, bruitages, sous-titres, écran final.
+> - Plusieurs langues et formats, plus une version légère pour WhatsApp.
+
+## Exercice pratique : la vidéo de Mivoatra
+
+> [!exercice] Exercice pratique · 12 heures (sur plusieurs jours)
+> 1. Rédigez le script en français (et en malgache si possible) avec le timing.
+> 2. Réalisez le storyboard et 2 planches de style.
+> 3. Enregistrez la voix off et montez l''animatique.
+> 4. Animez une version de 30 à 60 secondes au format 16:9, puis adaptez-la en 9:16.
+> 5. Préparez la version légère pour WhatsApp et le dossier de livraison.
+>
+> **À livrer** : votre script, votre storyboard, l''animatique, les vidéos finales et le dossier. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 3, 0, 'Quand enregistrer la voix off ?', '["Avant d''animer","Au milieu de l''animation","Jamais","Après la livraison"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 3, 1, 'Que faire d''une promesse non confirmée par le client dans une vidéo financière ?', '["La mettre en petit","Ne jamais l''ajouter","L''ajouter pour convaincre","L''inventer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 3, 2, 'Comment passer du 16:9 au 9:16 ?', '["Recadrer sans réfléchir","Réorganiser les éléments pour rester lisible","C''est impossible","Étirer l''image"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-f', 4, 'Trouver des clients et se faire payer', 'Bande démo et portfolio, 5 canaux, prix par projet estimés par étape, conditions en 7 points, paiements et évolution.', 'Les marques, les agences, les ONG, les créateurs et les start-up ont besoin de motion designers pour leurs réseaux, leurs sites et leurs vidéos. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une bande démo et un portfolio.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix par projet ou à la seconde.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## La bande démo et le portfolio
+
+> [!definition] Bande démo (showreel)
+> Une vidéo courte (30 à 60 secondes) qui montre vos meilleurs extraits, montés sur une musique rythmée. C''est la carte de visite du motion designer.
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Commencez par votre meilleur extrait** | Beaucoup de clients regardent seulement les premières secondes |
+| **Courte** : 30 à 60 secondes | Garder l''attention |
+| **Variété** : logo, texte, infographie, explicative | Montrer l''étendue de vos compétences |
+| **Musique libre de droits** | Pas de problème de publication |
+| **Projets détaillés** en plus | Storyboard, planches de style, vidéo finale |
+
+> [!attention]
+> Ne montrez dans votre bande démo que des projets dont vous avez le **droit** de diffuser des extraits. Pour un projet confidentiel ou sans accord, créez votre propre version sur un sujet fictif.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **ONG et institutions à Madagascar** | Vidéos explicatives et de sensibilisation |
+| 2 | **Marques et community managers** | Publications animées régulières pour les réseaux |
+| 3 | **Chaînes YouTube et monteurs** | Logos animés, habillage, infographies |
+| 4 | **Agences et studios** | Sous-traitance régulière |
+| 5 | **Plateformes de freelance et réseaux de créatifs** | Publiez vos animations ; vérifiez qu''elles acceptent les profils basés à Madagascar |
+
+> [!exemple] Message à une marque
+> « Bonjour, vos publications Instagram sont très belles mais toutes fixes. Les publications animées attirent souvent plus l''attention dans le fil d''actualité. J''ai animé l''une de vos dernières publications pour vous montrer le résultat (8 secondes, ci-jointe). Je peux vous proposer un forfait de 8 publications animées par mois. »
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Logo animé** | 3 à 5 secondes, 2 propositions de mouvement | 150 000 Ar |
+| **Publication animée** | 5 à 15 secondes | 60 000 Ar |
+| **Forfait réseaux sociaux** | 8 publications animées par mois | 400 000 Ar par mois |
+| **Vidéo explicative** | 60 secondes, script, storyboard, animation, son | 1 500 000 Ar et plus |
+| **Version supplémentaire** (langue, format) | Adaptation | Selon le travail |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Pour une vidéo explicative, estimez le temps **par étape** (script, storyboard, style, animation, son) plutôt qu''au hasard. L''animation prend souvent plusieurs heures par tranche de 10 secondes.
+
+## Vos conditions
+
+1. **Les étapes et validations** : script, storyboard, style, animatique, animation.
+2. **Le nombre de corrections** par étape ; les changements après validation sont facturés.
+3. **Les éléments fournis** par le client : logo vectoriel, textes, couleurs, voix off ou budget pour un comédien.
+4. **La musique et les images** : sous licence, coûts éventuels à la charge du client.
+5. **Les formats et versions** livrés.
+6. **Les droits** et le **portfolio**.
+7. **Le paiement** : acompte de 30 à 50 %, solde avant la livraison finale.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Motion designer 3D** | Blender ou Cinema 4D avancé, rendu |
+| **Animateur d''interfaces** | Animations pour applications et sites (voir la formation Designer UI/UX) |
+| **Directeur artistique motion** | Concepts, direction d''équipes |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Illustrateur** | Créer vos propres visuels (voir la formation Illustrateur numérique) |
+
+> [!retenir]
+> - Une bande démo courte qui commence par votre meilleur extrait.
+> - ONG, marques, chaînes YouTube, agences, plateformes.
+> - Des prix par projet, estimés étape par étape.
+> - Des conditions claires : étapes, corrections, éléments fournis, licences, versions.
+> - Évoluez vers la 3D, les interfaces ou la direction artistique.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Montez votre bande démo de 30 à 60 secondes.
+> 2. Publiez votre portfolio avec 3 projets détaillés.
+> 3. Calculez vos prix et rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 propositions avec une animation d''exemple.
+>
+> **À livrer** : le lien de votre bande démo et de votre portfolio, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 4, 0, 'Par quoi commencer une bande démo ?', '["Votre nom en grand pendant 20 secondes","Votre moins bon projet","Votre meilleur extrait","Une page blanche"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 4, 1, 'Quelle durée pour une bande démo ?', '["1 heure","30 à 60 secondes","5 secondes","10 minutes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-f', 4, 2, 'Que faire d''un changement demandé après validation ?', '["Le faire gratuitement sans limite","L''ignorer","Le facturer","Refuser sans répondre"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Que fait un motion designer ?', '["Il écrit des articles","Il gère des réservations","Il anime des éléments graphiques pour un message","Il prend des photos"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel projet dure souvent 60 à 90 secondes ?', '["Le logo animé","L''animation d''interface","La vidéo explicative","La publication de 5 secondes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quelle étape fixe le style avec quelques images finales ?', '["Les planches de style","Le son","Le brief","L''export"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel format pour TikTok et les Stories ?', '["21:9","4:3","9:16","16:9"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel logiciel gratuit sert à la 3D ?', '["Jitter","Blender","Canva","Krita"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Qu''est-ce que l''anticipation ?', '["La fin de l''animation","Un format","Un petit mouvement inverse avant l''action","Une transition"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Qu''est-ce que le dépassement et retour ?', '["L''objet reste fixe","Un bug","L''objet disparaît","L''objet dépasse sa position puis revient"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Combien de temps laisser un texte affiché ?', '["Une minute pour 3 mots","Jamais plus d''une image","Un dixième de seconde","Environ le temps de le lire deux fois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Combien de mots par écran en typographie animée ?', '["Un paragraphe","Aucun","3 à 7","30"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Combien de types de transitions dans une vidéo ?', '["10 ou plus","2 ou 3","Une différente à chaque scène","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Que contient une case de storyboard ?', '["Le nom du client","Image, texte, voix off, mouvement et durée","Rien","Seulement le prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Pourquoi le timing change-t-il entre malgache et français ?', '["À cause des couleurs","Le malgache est toujours plus court","Les phrases n''ont pas la même longueur","Il ne change pas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Que faire à la fin d''un logo animé ?', '["Rien","Laisser le logo immobile au moins une seconde","Le faire disparaître aussitôt","Le faire trembler"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quelle courbe donne un effet mécanique ?', '["Ease in-out","Linéaire","Rebond","Ease out"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel format pour un partage WhatsApp en zone à faible connexion ?', '["MP4 court et léger en 720p","GIF de 200 Mo","Fichier de projet","4K non compressé"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel outil payant est la référence du motion design 2D ?', '["Trello","Adobe After Effects","Audacity","Canva"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Pourquoi séparer les textes sur des calques ?', '["Pour décorer","Adapter facilement à l''autre langue","Pour ralentir","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Pourquoi une bibliothèque d''éléments ?', '["Facturer plus","Ralentir le projet","Réutiliser et garder la cohérence","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quelle musique utiliser ?', '["Celle d''un concurrent","Une chanson connue sans autorisation","N''importe laquelle","Libre de droits pour usage commercial"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Pourquoi des sous-titres ?', '["C''est interdit","Beaucoup regardent sans le son","Rien","Pour allonger la vidéo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quels projets montrer dans la bande démo ?', '["Tous, même confidentiels","Ceux que vous avez le droit de diffuser","Ceux d''autres créateurs","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quelle offre proposer à une marque aux publications fixes ?', '["Rien","Un nouveau logo sans demande","Une critique","Un forfait de publications animées"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Comment estimer le prix d''une vidéo explicative ?', '["Par étape : script, storyboard, style, animation, son","Selon la couleur du logo","Toujours le même prix","Au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Que doit fournir le client ?', '["Rien","Ses factures","Son mot de passe","Logo vectoriel, textes, couleurs et voix off ou budget"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Uniquement PayPal","Aucun","Uniquement des chèques étrangers"]'::jsonb, 0);
 
 -- media-2-a
 delete from public.exam_questions where course_id = 'media-2-a';

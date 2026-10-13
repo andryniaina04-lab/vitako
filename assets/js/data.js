@@ -5897,6 +5897,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-1-f": {
+  "hours": 18,
+  "description": "Le motion designer anime des textes, des logos, des formes et des chiffres pour expliquer et mettre en valeur un message. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des marques, des ONG, des créateurs et des agences, à Madagascar et à l'étranger, avec Jitter et Blender : types de projets, étapes, images clés, principes de l'animation, timing, typographie animée, storyboard et animatique, logo animé, 3D simple, vidéo explicative en plusieurs langues et formats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types de projets et les étapes d'une animation",
+   "Appliquer les principes de l'animation, le timing et la typographie animée",
+   "Construire un storyboard et une animatique",
+   "Animer dans Jitter et Blender et exporter selon l'usage",
+   "Réaliser une vidéo explicative en plusieurs langues et formats",
+   "Présenter une bande démo, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de motion designer depuis Madagascar",
+    "summary": "Types de projets, étapes d'un projet d'animation, images clés, images par seconde, formats, courbes d'accélération, qualités et poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types de projets",
+     "Les étapes d'un projet",
+     "Les notions techniques de base",
+     "Les qualités du motion designer",
+     "Votre poste de travail",
+     "Exercice pratique : observer le motion design"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : principes, timing, typographie, transitions et storyboard",
+    "summary": "Accélération, anticipation, dépassement, écrasement, décalage et arcs, timing en images, temps de lecture, typographie animée, transitions, storyboard et animatique.",
+    "sections": [
+     "Les principes essentiels de l'animation",
+     "Timing et espacement",
+     "La typographie animée",
+     "Les transitions",
+     "Storyboard et animatique",
+     "Exercice pratique : les principes en pratique"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Jitter, Blender, export et outils payants",
+    "summary": "Plans de travail, import SVG, animations et timeline de Jitter, logo animé, courbes d'accélération, modélisation, lumière, animation et rendu dans Blender, exports, After Effects et Cinema 4D.",
+    "sections": [
+     "Jitter : l'animation 2D dans le navigateur",
+     "Images clés et courbes",
+     "Blender : la 3D et plus encore",
+     "Exporter selon l'usage",
+     "Les outils payants",
+     "Exercice pratique : vos premières animations"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la vidéo explicative de Mivoatra Microfinance",
+    "summary": "Brief et script exact, validations par étapes, voix off avant l'animation, animation scène par scène, son et sous-titres, versions en plusieurs langues et formats.",
+    "sections": [
+     "Le cas pratique : « Mivoatra Microfinance »",
+     "Étape 1 : du brief au script",
+     "Étape 2 : les validations",
+     "Étape 3 : animer avec méthode",
+     "Étape 4 : son et finitions",
+     "Étape 5 : livrer les versions",
+     "Exercice pratique : la vidéo de Mivoatra"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Bande démo et portfolio, 5 canaux, prix par projet estimés par étape, conditions en 7 points, paiements et évolution.",
+    "sections": [
+     "La bande démo et le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "media-2-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du monteur audio un professionnel qui répare, produit et livre un son régulier : spécialité (production de podcast, livre audio, restauration, podcast vidéo, formation, narration), audit sonore et plan d'amélioration, outils payants (Adobe Audition et iZotope RX) avec édition spectrale, harmonisation du volume et modules de réparation, montage rapide, normes des livres audio, contrôle qualité et versions, clients internationaux, enregistrement à distance et droits, puis formules, rapports, études de cas et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

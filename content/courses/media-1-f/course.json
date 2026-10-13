@@ -1,0 +1,97 @@
+{
+  "id": "media-1-f",
+  "hours": 18,
+  "description": "Le motion designer anime des textes, des logos, des formes et des chiffres pour expliquer et mettre en valeur un message. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des marques, des ONG, des créateurs et des agences, à Madagascar et à l'étranger, avec Jitter et Blender : types de projets, étapes, images clés, principes de l'animation, timing, typographie animée, storyboard et animatique, logo animé, 3D simple, vidéo explicative en plusieurs langues et formats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types de projets et les étapes d'une animation",
+    "Appliquer les principes de l'animation, le timing et la typographie animée",
+    "Construire un storyboard et une animatique",
+    "Animer dans Jitter et Blender et exporter selon l'usage",
+    "Réaliser une vidéo explicative en plusieurs langues et formats",
+    "Présenter une bande démo, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de motion designer depuis Madagascar",
+      "summary": "Types de projets, étapes d'un projet d'animation, images clés, images par seconde, formats, courbes d'accélération, qualités et poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'anime surtout un motion designer ?", "options": ["Textes, logos, formes, icônes et chiffres", "Uniquement des personnages de dessin animé", "Des photos de mariage", "Rien"], "correct": 0 },
+        { "q": "Que sont les images clés ?", "options": ["Les positions de départ et d'arrivée d'un mouvement", "Les photos du client", "Les miniatures YouTube", "Les fichiers sources"], "correct": 0 },
+        { "q": "Pourquoi les courbes d'accélération ?", "options": ["Rendre le mouvement naturel", "Réduire le poids du fichier", "Changer les couleurs", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : principes, timing, typographie, transitions et storyboard",
+      "summary": "Accélération, anticipation, dépassement, écrasement, décalage et arcs, timing en images, temps de lecture, typographie animée, transitions, storyboard et animatique.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle astuce simple rend une animation vivante ?", "options": ["Le décalage entre éléments", "Tout faire apparaître en même temps", "Le mouvement linéaire", "Supprimer les pauses"], "correct": 0 },
+        { "q": "À 25 images par seconde, combien dure un mouvement de 12 images ?", "options": ["Environ une demi-seconde", "12 secondes", "2 secondes", "Une minute"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une animatique ?", "options": ["Le storyboard monté avec la voix pour valider le rythme", "L'animation finale", "Un logiciel", "Un format d'export"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Jitter, Blender, export et outils payants",
+      "summary": "Plans de travail, import SVG, animations et timeline de Jitter, logo animé, courbes d'accélération, modélisation, lumière, animation et rendu dans Blender, exports, After Effects et Cinema 4D.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Dans quel format demander le logo du client ?", "options": ["Vectoriel avec éléments séparés", "JPEG basse résolution", "Capture d'écran", "PDF scanné"], "correct": 0 },
+        { "q": "Quelle courbe donne une entrée naturelle ?", "options": ["Ralentissement à l'arrivée (ease out)", "Linéaire", "Aucune", "Aléatoire"], "correct": 0 },
+        { "q": "Que faire si le rendu 3D est long ?", "options": ["Tester en basse résolution et lancer le rendu final la nuit", "Abandonner la 3D", "Rendre en 8K", "Ne jamais tester"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la vidéo explicative de Mivoatra Microfinance",
+      "summary": "Brief et script exact, validations par étapes, voix off avant l'animation, animation scène par scène, son et sous-titres, versions en plusieurs langues et formats.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand enregistrer la voix off ?", "options": ["Avant d'animer", "Après la livraison", "Jamais", "Au milieu de l'animation"], "correct": 0 },
+        { "q": "Que faire d'une promesse non confirmée par le client dans une vidéo financière ?", "options": ["Ne jamais l'ajouter", "L'ajouter pour convaincre", "La mettre en petit", "L'inventer"], "correct": 0 },
+        { "q": "Comment passer du 16:9 au 9:16 ?", "options": ["Réorganiser les éléments pour rester lisible", "Recadrer sans réfléchir", "Étirer l'image", "C'est impossible"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Bande démo et portfolio, 5 canaux, prix par projet estimés par étape, conditions en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quoi commencer une bande démo ?", "options": ["Votre meilleur extrait", "Votre nom en grand pendant 20 secondes", "Votre moins bon projet", "Une page blanche"], "correct": 0 },
+        { "q": "Quelle durée pour une bande démo ?", "options": ["30 à 60 secondes", "10 minutes", "5 secondes", "1 heure"], "correct": 0 },
+        { "q": "Que faire d'un changement demandé après validation ?", "options": ["Le facturer", "Le faire gratuitement sans limite", "Refuser sans répondre", "L'ignorer"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un motion designer ?", "options": ["Il anime des éléments graphiques pour un message", "Il écrit des articles", "Il prend des photos", "Il gère des réservations"], "correct": 0 },
+    { "q": "Quel projet dure souvent 60 à 90 secondes ?", "options": ["La vidéo explicative", "Le logo animé", "L'animation d'interface", "La publication de 5 secondes"], "correct": 0 },
+    { "q": "Quelle étape fixe le style avec quelques images finales ?", "options": ["Les planches de style", "Le brief", "Le son", "L'export"], "correct": 0 },
+    { "q": "Quel format pour TikTok et les Stories ?", "options": ["9:16", "16:9", "4:3", "21:9"], "correct": 0 },
+    { "q": "Quel logiciel gratuit sert à la 3D ?", "options": ["Blender", "Jitter", "Canva", "Krita"], "correct": 0 },
+    { "q": "Qu'est-ce que l'anticipation ?", "options": ["Un petit mouvement inverse avant l'action", "La fin de l'animation", "Une transition", "Un format"], "correct": 0 },
+    { "q": "Qu'est-ce que le dépassement et retour ?", "options": ["L'objet dépasse sa position puis revient", "L'objet disparaît", "L'objet reste fixe", "Un bug"], "correct": 0 },
+    { "q": "Combien de temps laisser un texte affiché ?", "options": ["Environ le temps de le lire deux fois", "Un dixième de seconde", "Jamais plus d'une image", "Une minute pour 3 mots"], "correct": 0 },
+    { "q": "Combien de mots par écran en typographie animée ?", "options": ["3 à 7", "30", "Un paragraphe", "Aucun"], "correct": 0 },
+    { "q": "Combien de types de transitions dans une vidéo ?", "options": ["2 ou 3", "10 ou plus", "Une différente à chaque scène", "Aucune"], "correct": 0 },
+    { "q": "Que contient une case de storyboard ?", "options": ["Image, texte, voix off, mouvement et durée", "Seulement le prix", "Rien", "Le nom du client"], "correct": 0 },
+    { "q": "Pourquoi le timing change-t-il entre malgache et français ?", "options": ["Les phrases n'ont pas la même longueur", "Il ne change pas", "Le malgache est toujours plus court", "À cause des couleurs"], "correct": 0 },
+    { "q": "Que faire à la fin d'un logo animé ?", "options": ["Laisser le logo immobile au moins une seconde", "Le faire disparaître aussitôt", "Le faire trembler", "Rien"], "correct": 0 },
+    { "q": "Quelle courbe donne un effet mécanique ?", "options": ["Linéaire", "Ease out", "Ease in-out", "Rebond"], "correct": 0 },
+    { "q": "Quel format pour un partage WhatsApp en zone à faible connexion ?", "options": ["MP4 court et léger en 720p", "4K non compressé", "Fichier de projet", "GIF de 200 Mo"], "correct": 0 },
+    { "q": "Quel outil payant est la référence du motion design 2D ?", "options": ["Adobe After Effects", "Audacity", "Trello", "Canva"], "correct": 0 },
+    { "q": "Pourquoi séparer les textes sur des calques ?", "options": ["Adapter facilement à l'autre langue", "Pour décorer", "Pour ralentir", "Rien"], "correct": 0 },
+    { "q": "Pourquoi une bibliothèque d'éléments ?", "options": ["Réutiliser et garder la cohérence", "Facturer plus", "Ralentir le projet", "Rien"], "correct": 0 },
+    { "q": "Quelle musique utiliser ?", "options": ["Libre de droits pour usage commercial", "Une chanson connue sans autorisation", "N'importe laquelle", "Celle d'un concurrent"], "correct": 0 },
+    { "q": "Pourquoi des sous-titres ?", "options": ["Beaucoup regardent sans le son", "Pour allonger la vidéo", "C'est interdit", "Rien"], "correct": 0 },
+    { "q": "Quels projets montrer dans la bande démo ?", "options": ["Ceux que vous avez le droit de diffuser", "Tous, même confidentiels", "Ceux d'autres créateurs", "Aucun"], "correct": 0 },
+    { "q": "Quelle offre proposer à une marque aux publications fixes ?", "options": ["Un forfait de publications animées", "Rien", "Une critique", "Un nouveau logo sans demande"], "correct": 0 },
+    { "q": "Comment estimer le prix d'une vidéo explicative ?", "options": ["Par étape : script, storyboard, style, animation, son", "Au hasard", "Toujours le même prix", "Selon la couleur du logo"], "correct": 0 },
+    { "q": "Que doit fournir le client ?", "options": ["Logo vectoriel, textes, couleurs et voix off ou budget", "Rien", "Son mot de passe", "Ses factures"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
