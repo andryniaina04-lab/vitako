@@ -314,6 +314,23 @@ const STEPS = [
   ['Apprenez à votre rythme', 'Des leçons courtes, des exemples de Madagascar et un exercice pratique par module.'],
   ['Obtenez votre attestation', 'Réussissez l\'examen final et partagez une attestation vérifiable en ligne.'],
 ];
+// Vidéo de présentation de l'accueil : CFG.heroVideo (fichier .mp4 ou .webm, lien YouTube ou Vimeo).
+// Sans vidéo, une illustration animée occupe la place.
+function heroMedia() {
+  const v = String(CFG.heroVideo || '').trim();
+  if (v) {
+    const yt = v.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+    const vm = v.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (yt) return `<div class="lp-video"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&mute=1&loop=1&playlist=${yt[1]}&controls=0&rel=0&playsinline=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+    if (vm) return `<div class="lp-video"><iframe src="https://player.vimeo.com/video/${vm[1]}?autoplay=1&muted=1&loop=1&background=1" title="Présentation de Vitako" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
+    return `<div class="lp-video"><video src="${esc(v)}"${CFG.heroPoster ? ` poster="${esc(CFG.heroPoster)}"` : ''} autoplay muted loop playsinline aria-label="Présentation de Vitako"></video></div>`;
+  }
+  return `<div class="lp-art" aria-hidden="true">
+    <div class="lp-glass g1"><span class="g-ic">${DOM_ICONS.design}</span><div><b>Graphiste – Fondamentaux</b><small>Module 3 sur 5</small><i class="g-bar"><i style="width:60%"></i></i></div></div>
+    <div class="lp-glass g2"><span class="g-ok">${I.check}</span><div><b>Attestation obtenue</b><small>Vérifiable en ligne</small></div></div>
+    <div class="lp-glass g3"><span class="g-stars">★★★★★</span><small>« Formation claire et facile à comprendre »</small></div>
+  </div>`;
+}
 function home() {
   const feat = FEATURED.map(courseById).filter((c) => c && c.published !== false);
   const card = (c) => {
@@ -329,17 +346,22 @@ function home() {
   const cta = S.session ? `<a class="btn lg" href="#/mon-espace">Mon espace</a>` : `<a class="btn lg" href="#/inscription">Créer mon compte gratuit</a>`;
   return `
   <section class="lp-hero">
-    <div class="eyebrow lp-eyebrow">Formations en ligne depuis Madagascar</div>
-    <h1>Apprends un métier à distance. <em>Termine-le.</em></h1>
-    <p class="lp-lead">${nJobs} métiers du freelance et du télétravail, en leçons courtes et concrètes. Chaque formation réussie te donne une attestation vérifiable à montrer à tes clients.</p>
-    <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a>${S.session ? '' : '<a class="lnk lp-sec" href="#/connexion">J\'ai déjà un compte</a>'}</div>
-    <dl class="lp-stats">
-      <div><dt>Formations</dt><dd>${COURSES.length}</dd></div>
-      <div><dt>Domaines</dt><dd>${DOMAINS_LIST.length}</dd></div>
-      <div><dt>Pour réussir</dt><dd>50/100</dd></div>
-      <div><dt>Attestation</dt><dd>Vérifiable</dd></div>
-    </dl>
+    <div class="lp-hero-in">
+      <div class="lp-hero-txt">
+        <div class="eyebrow lp-eyebrow">Formations en ligne depuis Madagascar</div>
+        <h1>Apprends un métier à distance. <em>Termine-le.</em></h1>
+        <p class="lp-lead">${nJobs} métiers du freelance et du télétravail, en leçons courtes et concrètes. Chaque formation réussie te donne une attestation vérifiable à montrer à tes clients.</p>
+        <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a>${S.session ? '' : '<a class="lnk lp-sec" href="#/connexion">J\'ai déjà un compte</a>'}</div>
+      </div>
+      <div class="lp-media">${heroMedia()}</div>
+    </div>
   </section>
+  <dl class="lp-stats">
+    <div><dt>Formations</dt><dd>${COURSES.length}</dd></div>
+    <div><dt>Domaines</dt><dd>${DOMAINS_LIST.length}</dd></div>
+    <div><dt>Pour réussir</dt><dd>50/100</dd></div>
+    <div><dt>Attestation</dt><dd>Vérifiable</dd></div>
+  </dl>
   ${promoBanner()}
   <section class="lp-cat" aria-labelledby="cat-title">
     <div class="eyebrow lp-eyebrow">Catalogue</div>

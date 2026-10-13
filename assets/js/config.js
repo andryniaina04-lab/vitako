@@ -19,6 +19,11 @@ window.VITAKO_CONFIG = {
     { id: 'orange', name: 'Orange Money', number: '032 62 291 65', holder: 'ANDRIANIAINA PHILIBERT RANDRIAMIHANTA', prefixes: ['032', '037'] },
   ],
 
+  // Vidéo de présentation de l'accueil (à côté du titre) : fichier .mp4/.webm dans assets/video/,
+  // ou lien YouTube ou Vimeo. Laisser vide pour afficher l'illustration animée.
+  heroVideo: '',
+  heroPoster: '', // image affichée avant le chargement d'une vidéo .mp4 (facultatif)
+
   // Délai de validation annoncé aux étudiants.
   validationDelay: '12 h',
 };
