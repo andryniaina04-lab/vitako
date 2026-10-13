@@ -635,3 +635,14 @@ body{margin:0}
 @media (max-width:860px){.lp-hero-in{grid-template-columns:1fr}.lp-art{margin:0 auto;max-width:440px;width:100%}}
 @media (max-width:560px){.lp-art{aspect-ratio:16/14}.lp-glass{padding:12px 14px}.g1{width:90%}.g2{width:80%}.g3{width:84%;left:4%}}
 .lp-stats{margin-bottom:clamp(36px,6vw,56px)}
+
+/* Barre du haut : Connexion et Créer un compte pour les visiteurs */
+.tb-link{font-weight:600;color:var(--ink);text-decoration:none;padding:9px 12px;border-radius:10px}
+.tb-link:hover{background:var(--surface)}
+.btn.tb-cta{padding:9px 16px;margin-right:6px;white-space:nowrap}
+@media (max-width:560px){.tb-link{display:none}.btn.tb-cta{padding:8px 12px;font-size:.88rem;margin-right:2px}}
+@media (max-width:360px){.btn.tb-cta{display:none}}
+.tb-s{display:none}
+@media (max-width:560px){.tb-l{display:none}.tb-s{display:inline}}
+@media (max-width:420px){.tb-actions{gap:6px}.tb-actions .iconbtn{width:38px;height:38px}.btn.tb-cta{padding:8px 10px}}
+@media (max-width:360px){.btn.tb-cta{display:inline-flex}.tb-actions [data-act=theme]{display:none}}

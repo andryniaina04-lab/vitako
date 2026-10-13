@@ -195,6 +195,8 @@ function topbar() {
   topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil"><i>${I.check.replace('currentColor', 'var(--accent-ink)')}</i>vitako</a>
     <div class="tb-actions">
       ${S.session && S.profile && hasAccess() && !isAdmin() ? `<span class="pill tb-pill">Abonné · ${daysLeft()} j</span>` : ''}
+      ${!S.session ? `<a class="tb-link" href="#/connexion">Connexion</a><a class="btn tb-cta" href="#/inscription"><span class="tb-l">Créer un compte</span><span class="tb-s">S'inscrire</span></a>` : ''}
+      ${S.session && S.profile && !hasAccess() ? `<a class="btn tb-cta" href="#/abonnement">S'abonner</a>` : ''}
       <button class="iconbtn${S.ui.search ? ' on' : ''}" data-act="search-toggle" aria-label="Rechercher une formation" aria-expanded="${S.ui.search}" aria-controls="tb-search">${I.search}</button>
       <button class="iconbtn" data-act="theme" aria-label="${dark ? 'Passer au thème clair' : 'Passer au thème sombre'}" title="${dark ? 'Thème clair' : 'Thème sombre'}">${dark ? I.sun : I.moon}</button>
       <button class="iconbtn${S.ui.menu ? ' on' : ''}" data-act="menu" aria-label="${S.ui.menu ? 'Fermer le menu' : 'Ouvrir le menu'}" aria-expanded="${S.ui.menu}" aria-controls="menu">${S.ui.menu ? I.close : I.burger}${badge}</button>
@@ -351,7 +353,7 @@ function home() {
         <div class="eyebrow lp-eyebrow">Formations en ligne depuis Madagascar</div>
         <h1>Apprends un métier à distance. <em>Termine-le.</em></h1>
         <p class="lp-lead">${nJobs} métiers du freelance et du télétravail, en leçons courtes et concrètes. Chaque formation réussie te donne une attestation vérifiable à montrer à tes clients.</p>
-        <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a>${S.session ? '' : '<a class="lnk lp-sec" href="#/connexion">J\'ai déjà un compte</a>'}</div>
+        <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a></div>
       </div>
       <div class="lp-media">${heroMedia()}</div>
     </div>

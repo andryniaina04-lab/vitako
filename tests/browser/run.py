@@ -73,6 +73,7 @@ with sync_playwright() as p:
     check('accueil : 4 chiffres clés', page.locator('.lp-stats > div').count() == 4 and '108' in page.locator('.lp-stats').inner_text())
     check('accueil : bandes vertes (témoignages et appel final)', page.locator('.lp-band').count() == 2)
     check('accueil : plus de barre de recherche dans la page', page.locator('#search').count() == 0)
+    check('barre du haut : Connexion et Créer un compte pour les visiteurs', page.locator('.tb-actions a[href="#/connexion"]').count() == 1 and page.locator('.tb-actions a[href="#/inscription"]').count() == 1)
     check('accueil : pas de défilement horizontal', not page.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
     page.screenshot(path=f'{SHOTS}/00-accueil.png', full_page=True)
     check('accueil : bloc catalogue avec 12 domaines', page.locator('.lp-cat .chip').count() == 12)
