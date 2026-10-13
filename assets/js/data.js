@@ -6138,6 +6138,87 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-3-f": {
+  "hours": 15,
+  "description": "Le comédien voix off prête sa voix à des publicités, des vidéos, des formations, des serveurs vocaux et des messages de sensibilisation, avec une qualité sonore professionnelle. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance depuis un studio à domicile, pour des ONG, des studios, des agences et des créateurs, à Madagascar et à l'étranger, avec Audacity et un micro USB : types de projets, qualités de la voix, droits et clonage, respiration, articulation, interprétation, santé vocale, réglages, enregistrement, audition, séance dirigée, livraison et démos. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types de projets et les droits de la voix",
+   "Maîtriser respiration, articulation et préparation du texte",
+   "Interpréter selon l'intention et prendre soin de sa voix",
+   "Enregistrer, monter légèrement et exporter avec Audacity",
+   "Répondre à une audition, enregistrer en séance dirigée et livrer",
+   "Créer des démos, fixer ses prix selon l'usage et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de comédien voix off depuis Madagascar",
+    "summary": "Types de projets, qualités de la voix, usage et droits, clonage par IA, premier poste d'enregistrement et traitement acoustique.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types de projets",
+     "Les qualités de votre voix",
+     "Les droits de la voix",
+     "Votre premier poste d'enregistrement",
+     "Exercice pratique : découvrir votre voix"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : respiration, articulation, texte, interprétation et santé vocale",
+    "summary": "Respiration abdominale, échauffement et articulation naturelle, annotation du texte et prononciations, intention et sourire dans la voix, styles par projet, hygiène vocale.",
+    "sections": [
+     "La respiration",
+     "L'articulation",
+     "Préparer et annoter le texte",
+     "L'interprétation",
+     "Prendre soin de votre voix",
+     "Exercice pratique : la technique au quotidien"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : micro, Audacity, montage léger et matériel professionnel",
+    "summary": "Placement et niveau du micro, réglages d'Audacity, méthode d'enregistrement et prises, montage et traitement légers, voix brute, export WAV, micro XLR, interface audio, Audition et iZotope RX.",
+    "sections": [
+     "Placer et régler le micro",
+     "Enregistrer dans Audacity",
+     "Le montage et le traitement légers",
+     "Exporter et livrer",
+     "Le matériel et les logiciels payants",
+     "Exercice pratique : votre première session professionnelle"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Premier projet : la campagne de Fahasalamana",
+    "summary": "Audition professionnelle, indications de direction, séance dirigée à distance avec enregistrement local, livraison vérifiée et règles de reprises.",
+    "sections": [
+     "Le cas pratique : « Fahasalamana »",
+     "Étape 1 : l'audition",
+     "Étape 2 : comprendre les indications",
+     "Étape 3 : la séance dirigée à distance",
+     "Étape 4 : la livraison",
+     "Étape 5 : corrections et reprises",
+     "Exercice pratique : la campagne de Fahasalamana"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Démos vocales par style et par langue, 5 canaux, prix selon le projet et l'usage, conditions avec clause sur l'IA, paiements et évolution.",
+    "sections": [
+     "Les démos vocales",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 7
+   }
+  ]
+ },
  "media-4-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait du sous-titreur un professionnel aux normes des diffuseurs : spécialité (traduction, sous-titres pour sourds et malentendants, streaming, réseaux sociaux, formation, contrôle qualité), audit de sous-titres, outils payants (Descript et offres de sous-titrage automatique) combinés à Subtitle Edit, normes techniques et liste de contrôle, guides de style et confidentialité des agences, puis prix, packs et petite équipe face à l'IA. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

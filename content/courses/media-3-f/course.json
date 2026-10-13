@@ -1,0 +1,97 @@
+{
+  "id": "media-3-f",
+  "hours": 15,
+  "description": "Le comédien voix off prête sa voix à des publicités, des vidéos, des formations, des serveurs vocaux et des messages de sensibilisation, avec une qualité sonore professionnelle. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance depuis un studio à domicile, pour des ONG, des studios, des agences et des créateurs, à Madagascar et à l'étranger, avec Audacity et un micro USB : types de projets, qualités de la voix, droits et clonage, respiration, articulation, interprétation, santé vocale, réglages, enregistrement, audition, séance dirigée, livraison et démos. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types de projets et les droits de la voix",
+    "Maîtriser respiration, articulation et préparation du texte",
+    "Interpréter selon l'intention et prendre soin de sa voix",
+    "Enregistrer, monter légèrement et exporter avec Audacity",
+    "Répondre à une audition, enregistrer en séance dirigée et livrer",
+    "Créer des démos, fixer ses prix selon l'usage et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de comédien voix off depuis Madagascar",
+      "summary": "Types de projets, qualités de la voix, usage et droits, clonage par IA, premier poste d'enregistrement et traitement acoustique.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'achète un client à un comédien voix off ?", "options": ["Un usage de la voix selon le contrat", "La voix pour toujours, sans limite", "Le micro", "Rien"], "correct": 0 },
+        { "q": "Faut-il accepter le clonage de sa voix sans clause écrite ?", "options": ["Non", "Oui", "Oui, si c'est gratuit", "Oui, pour les ONG"], "correct": 0 },
+        { "q": "Qu'est-ce qui compte le plus pour un bon son ?", "options": ["Une pièce calme et traitée", "Un micro très cher dans une pièce vide", "Un écran plus grand", "Une connexion rapide"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : respiration, articulation, texte, interprétation et santé vocale",
+      "summary": "Respiration abdominale, échauffement et articulation naturelle, annotation du texte et prononciations, intention et sourire dans la voix, styles par projet, hygiène vocale.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que vérifier avant d'enregistrer ?", "options": ["Toutes les prononciations, dont les noms de marques", "La couleur du micro", "Rien", "Le prix"], "correct": 0 },
+        { "q": "Qu'est-ce que le sourire dans la voix ?", "options": ["Sourire en parlant pour une voix plus chaleureuse", "Rire pendant l'enregistrement", "Un effet audio", "Un logiciel"], "correct": 0 },
+        { "q": "Que faire en cas d'enrouement qui dure plus de deux semaines ?", "options": ["Consulter un médecin", "Forcer la voix", "Crier pour s'échauffer", "Ignorer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : micro, Audacity, montage léger et matériel professionnel",
+      "summary": "Placement et niveau du micro, réglages d'Audacity, méthode d'enregistrement et prises, montage et traitement légers, voix brute, export WAV, micro XLR, interface audio, Audition et iZotope RX.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quelle distance placer le micro ?", "options": ["Environ une main de la bouche", "Collé aux lèvres", "À deux mètres", "Derrière la tête"], "correct": 0 },
+        { "q": "Que veut souvent un client qui demande une voix « dry » ?", "options": ["Une voix brute et propre, sans effets", "Une voix avec écho", "Une voix avec musique", "Une voix accélérée"], "correct": 0 },
+        { "q": "Quelle est la première priorité d'équipement ?", "options": ["Une pièce calme et traitée", "Un logiciel de réparation", "Une interface audio", "Un micro XLR"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : la campagne de Fahasalamana",
+      "summary": "Audition professionnelle, indications de direction, séance dirigée à distance avec enregistrement local, livraison vérifiée et règles de reprises.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quoi commencer une audition ?", "options": ["Directement par le texte", "Une longue présentation", "De la musique", "Un silence de 30 secondes"], "correct": 0 },
+        { "q": "Quel fichier livrer après une séance dirigée en visio ?", "options": ["L'enregistrement local en haute qualité", "Le son de la visioconférence", "Une note vocale WhatsApp", "Rien"], "correct": 0 },
+        { "q": "Qui paie la reprise si le client change le texte ?", "options": ["Le client, c'est une reprise payante", "Le comédien gratuitement", "Personne", "La radio"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Démos vocales par style et par langue, 5 canaux, prix selon le projet et l'usage, conditions avec clause sur l'IA, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle durée pour une démo vocale ?", "options": ["Environ 60 à 90 secondes", "10 minutes", "5 secondes", "1 heure"], "correct": 0 },
+        { "q": "De quoi dépend surtout le prix d'une voix publicitaire ?", "options": ["De l'usage : média, durée et territoire", "Du nombre de mots seulement", "De la couleur du micro", "De rien"], "correct": 0 },
+        { "q": "Peut-on utiliser une vraie marque dans une démo sans autorisation ?", "options": ["Non, inventer ou utiliser ses projets avec accord", "Oui, toujours", "Oui, si elle est connue", "Oui, en petit"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un comédien voix off ?", "options": ["Il interprète un texte avec une qualité sonore professionnelle", "Il écrit les scripts", "Il monte des vidéos", "Il vend des micros"], "correct": 0 },
+    { "q": "Quel projet demande une voix neutre, souriante et très claire ?", "options": ["Le serveur vocal", "Le film d'horreur", "Le rap", "Aucun"], "correct": 0 },
+    { "q": "Pourquoi les voix en malgache sont-elles un atout ?", "options": ["Elles sont demandées et rares", "Elles sont interdites", "Elles ne servent à rien", "Elles remplacent le français partout"], "correct": 0 },
+    { "q": "Qu'est-ce que le traitement acoustique ?", "options": ["Réduire l'écho avec des matériaux mous", "Augmenter le volume", "Un logiciel", "Un format"], "correct": 0 },
+    { "q": "À quoi sert le filtre anti-pop ?", "options": ["Éviter que les « p » et « b » explosent", "Changer la voix", "Enregistrer en stéréo", "Rien"], "correct": 0 },
+    { "q": "Quelle respiration utiliser ?", "options": ["Abdominale, épaules immobiles", "Haute, en levant les épaules", "Par saccades", "Aucune"], "correct": 0 },
+    { "q": "Que signifie une barre oblique dans un texte annoté ?", "options": ["Une respiration ou une pause", "Un mot à supprimer", "Une erreur", "Un prix"], "correct": 0 },
+    { "q": "Quelle question guide l'interprétation ?", "options": ["À qui je parle et pourquoi ?", "Combien je gagne ?", "Quel micro ?", "Quelle heure est-il ?"], "correct": 0 },
+    { "q": "Quel rythme pour un e-learning ?", "options": ["Moyen et régulier", "Très rapide", "Très lent", "Irrégulier"], "correct": 0 },
+    { "q": "Que boire régulièrement ?", "options": ["De l'eau", "Du lait juste avant", "Des sodas sucrés", "Rien"], "correct": 0 },
+    { "q": "Pourquoi marquer la position du micro ?", "options": ["Garder le même son d'une séance à l'autre", "Pour décorer", "C'est obligatoire", "Rien"], "correct": 0 },
+    { "q": "Quel niveau de crêtes viser ?", "options": ["Autour de −12 à −6 dB, sans saturation", "0 dB en permanence", "−60 dB", "Le plus fort possible"], "correct": 0 },
+    { "q": "Que faire en cas d'erreur pendant l'enregistrement ?", "options": ["Pause, signal, puis relire la phrase entière", "Continuer sans rien faire", "Recommencer tout le texte", "Arrêter définitivement"], "correct": 0 },
+    { "q": "Faut-il supprimer toutes les respirations ?", "options": ["Non, atténuer seulement les trop fortes", "Oui, toutes", "Oui, et ajouter de l'écho", "Non, les amplifier"], "correct": 0 },
+    { "q": "Quel format livrer en général ?", "options": ["WAV mono au format demandé", "MP3 de très basse qualité", "Vidéo", "Texte"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une interface audio ?", "options": ["Un boîtier qui relie un micro XLR à l'ordinateur", "Un logiciel de montage", "Un casque", "Une application"], "correct": 0 },
+    { "q": "Que signifie « plus d'autorité » ?", "options": ["Voix plus posée, phrases qui descendent à la fin", "Crier", "Parler plus vite", "Chuchoter"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une séance dirigée ?", "options": ["Un enregistrement avec indications du client en direct", "Un enregistrement seul", "Un examen", "Une formation"], "correct": 0 },
+    { "q": "Que proposer avec une connexion instable ?", "options": ["Une séance par messages", "Annuler", "Livrer le son de la visio", "Rien"], "correct": 0 },
+    { "q": "Que vérifier avant livraison ?", "options": ["Texte exact, prononciations, durées, propreté et noms", "Seulement le volume", "Rien", "La couleur des fichiers"], "correct": 0 },
+    { "q": "Qui paie une reprise due à votre erreur ?", "options": ["Vous : reprise gratuite", "Le client", "La radio", "Personne"], "correct": 0 },
+    { "q": "Combien de démos préparer ?", "options": ["Une par style et par langue", "Une seule pour tout", "Aucune", "Vingt identiques"], "correct": 0 },
+    { "q": "Que demander avant de donner un prix pour une publicité ?", "options": ["Où et combien de temps la voix sera diffusée", "La couleur du logo", "Rien", "L'âge du client"], "correct": 0 },
+    { "q": "Que préciser sur l'IA dans vos conditions ?", "options": ["Clonage interdit sans accord écrit et rémunéré", "Clonage autorisé par défaut", "Rien", "Clonage gratuit"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}
