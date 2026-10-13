@@ -1,6 +1,6 @@
 // Vitako : pages du site (routeur, vues, actions).
 import * as api from './api.js';
-import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel } from './catalog.js';
+import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel, jobByKey } from './catalog.js';
 import { md, esc, sections, readingMinutes } from './markdown.js';
 import { certificatePdf, loadPdfFonts, slug } from './pdf.js';
 
@@ -180,8 +180,11 @@ function topbar() {
       <button class="iconbtn${S.ui.menu ? ' on' : ''}" data-act="menu" aria-label="${S.ui.menu ? 'Fermer le menu' : 'Ouvrir le menu'}" aria-expanded="${S.ui.menu}" aria-controls="menu">${S.ui.menu ? I.close : I.burger}${badge}</button>
     </div>
     <div class="tb-search" id="tb-search" ${S.ui.search ? '' : 'hidden'}>
-      <span class="tb-search-ic">${I.search}</span>
-      <input id="hsearch" type="search" autocomplete="off" placeholder="Rechercher un métier ou un logiciel (ex. graphiste, Photoshop, Excel)" aria-label="Rechercher un métier ou un logiciel" value="${esc(S.filter.q)}">
+      <div class="tb-field">
+        <span class="tb-search-ic">${I.search}</span>
+        <input id="hsearch" type="search" autocomplete="off" placeholder="Rechercher un métier ou un logiciel (ex. graphiste, Photoshop, Excel)" aria-label="Rechercher un métier ou un logiciel" aria-controls="hs-panel" value="${esc(S.filter.q)}">
+      </div>
+      <div class="hs-panel" id="hs-panel" role="region" aria-live="polite" aria-label="Résultats de la recherche">${S.ui.search ? searchPanel() : ''}</div>
     </div>
     <nav class="menu" id="menu" aria-label="Menu principal" ${S.ui.menu ? '' : 'hidden'}>${who}<div class="menu-list">${items}</div>${foot}</nav>`;
   if (S.ui.searchFocus) {
@@ -189,6 +192,52 @@ function topbar() {
     if (h) { h.focus(); h.setSelectionRange(h.value.length, h.value.length); }
     S.ui.searchFocus = false;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Recherche (barre du haut, résultats affichés juste en dessous)
+// ---------------------------------------------------------------------------
+const norm = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const POPULAR_TERMS = ['Photoshop', 'Canva', 'Excel', 'WordPress', 'Figma', 'Anglais', 'Microsoft 365', 'Vidéo'];
+const POPULAR_JOBS = ['gestion-0', 'design-0', 'mkt-0', 'dev-0', 'data-0', 'lang-1'];
+const customTitle = (c) => c.title !== `${c.job.name} – ${c.levelName}`;
+function searchJobs(q) {
+  const words = norm(q).split(/\s+/).filter(Boolean);
+  if (!words.length) return [];
+  return JOBS.map((j) => {
+    const name = norm(j.name);
+    const hay = norm(`${j.name} ${j.blurb} ${j.dom.name} ${j.tools} ${j.paid} ${j.courses.map((c) => c.title).join(' ')}`);
+    if (!words.every((w) => hay.includes(w))) return null;
+    const score = words.reduce((n, w) => n + (name.startsWith(w) ? 3 : name.includes(w) ? 2 : 0), 0);
+    return { j, score };
+  }).filter(Boolean).sort((a, b) => b.score - a.score || a.j.name.localeCompare(b.j.name, 'fr')).map((x) => x.j);
+}
+function hsRow(j) {
+  const extra = j.courses.filter(customTitle).map((c) => `<small class="hs-extra">${esc(c.levelName)} : ${esc(c.title)}</small>`).join('');
+  return `<li class="hs-row">
+    <a class="hs-main" href="#/formation/${j.courses[0].id}"><b>${esc(j.name)}</b><small>${esc(j.dom.name)} · ${esc(j.tools)}</small>${extra}</a>
+    <span class="hs-lvls">${j.courses.map((c) => `<a class="hs-lv${c.level === 'a' ? ' a' : ''}" href="#/formation/${c.id}" title="${esc(c.title)}">${esc(c.levelName)}</a>`).join('')}</span>
+  </li>`;
+}
+function searchPanel() {
+  const q = S.filter.q.trim();
+  const terms = POPULAR_TERMS.filter((t) => searchJobs(t).length);
+  const termChips = `<div class="hs-terms">${terms.map((t) => `<button type="button" class="chip" data-act="hs-pick" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>`;
+  if (!q) {
+    const jobs = POPULAR_JOBS.map(jobByKey).filter(Boolean);
+    return `<div class="hs-sec"><div class="eyebrow">Recherches fréquentes</div>${termChips}</div>
+      <div class="hs-sec"><div class="eyebrow">Métiers très demandés</div><ul class="hs-list">${jobs.map(hsRow).join('')}</ul></div>`;
+  }
+  const list = searchJobs(q);
+  if (!list.length) {
+    return `<div class="hs-sec"><p class="hs-empty">Aucun métier ne correspond à « ${esc(q)} ».</p><div class="eyebrow">Essayez plutôt</div>${termChips}</div>`;
+  }
+  return `<div class="hs-sec"><div class="hs-count">${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations</div>
+    <ul class="hs-list">${list.map(hsRow).join('')}</ul></div>`;
+}
+function refreshSearch() {
+  const p = document.getElementById('hs-panel');
+  if (p) p.innerHTML = searchPanel();
 }
 
 // ---------------------------------------------------------------------------
@@ -201,9 +250,7 @@ function levelStatus(c) {
   return n ? `<span class="pill">${n}/${c.modules.length}</span>` : '';
 }
 function catalogGrid() {
-  const q = S.filter.q.trim().toLowerCase();
-  const list = JOBS.filter((j) => (S.filter.dom === 'all' || j.dom.id === S.filter.dom) &&
-    (!q || `${j.name} ${j.blurb} ${j.dom.name} ${j.tools} ${j.paid}`.toLowerCase().includes(q)));
+  const list = JOBS.filter((j) => S.filter.dom === 'all' || j.dom.id === S.filter.dom);
   const locked = !hasAccess();
   const cards = list.map((j) => `<div class="card job">
       <div class="row"><span class="eyebrow">${esc(j.dom.name)}</span>${jobCert(j.key) ? '<span class="pill gold">Parcours complet</span>' : ''}</div>
@@ -212,7 +259,7 @@ function catalogGrid() {
       <div class="lvls">${j.courses.map((c) => `<a class="lv" href="#/formation/${c.id}"><span>${c.levelName} <small>· ${c.hours} h</small></span>
         <span class="r">${levelStatus(c)}${locked && c.published ? `<span class="lock" title="Abonnement requis">${I.lock}</span>` : ''}</span></a>`).join('')}</div>
     </div>`).join('');
-  return { count: `${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations`, html: cards || '<p class="muted">Aucun métier ne correspond à cette recherche.</p>' };
+  return { count: `${list.length} métier${list.length > 1 ? 's' : ''} · ${list.length * 2} formations`, html: cards || '<p class="muted">Aucun métier dans ce domaine.</p>' };
 }
 function catalog() {
   const published = COURSES.filter((c) => c.published).length;
@@ -237,7 +284,6 @@ function catalog() {
   </section>
   ${banner ? `<div style="margin-bottom:18px">${banner}</div>` : ''}
   <div class="filters">
-    <input id="search" class="search" type="search" placeholder="Rechercher un métier ou un logiciel (ex. graphiste, Photoshop, Excel)" value="${esc(S.filter.q)}" aria-label="Rechercher un métier">
     <div class="chips" id="chips">${chips()}</div>
   </div>
   <div class="count" id="count">${g.count}</div>
@@ -804,11 +850,21 @@ const busy = (btn, on, label) => { if (!btn) return; btn.disabled = on; if (labe
 document.addEventListener('click', async (e) => {
   // Fermer le menu quand on clique ailleurs
   if (S.ui.menu && !e.target.closest('#menu') && !e.target.closest('[data-act=menu]')) { S.ui.menu = false; topbar(); }
+  // Fermer la recherche quand on clique ailleurs (un clic sur un résultat la ferme au changement de page)
+  const hsLink = e.target.closest('#hs-panel a');
+  if (S.ui.search && ((!e.target.closest('#tb-search') && !e.target.closest('[data-act=search-toggle]')) || (hsLink && hsLink.getAttribute('href') === location.hash))) {
+    S.ui.search = false; S.filter.q = ''; topbar();
+  }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
   if (t.dataset.act === 'menu') { S.ui.menu = !S.ui.menu; topbar(); if (S.ui.menu) document.querySelector('#menu .menu-item')?.focus(); return; }
   if (t.dataset.act === 'search-toggle') {
-    S.ui.search = !S.ui.search; S.ui.menu = false; S.ui.searchFocus = S.ui.search; topbar(); return;
+    S.ui.search = !S.ui.search; S.ui.menu = false; S.ui.searchFocus = S.ui.search; if (!S.ui.search) S.filter.q = ''; topbar(); return;
+  }
+  if (t.dataset.act === 'hs-pick') {
+    S.filter.q = t.dataset.q; const h = document.getElementById('hsearch');
+    if (h) { h.value = S.filter.q; h.focus(); }
+    refreshSearch(); return;
   }
   if (t.dataset.dom) { S.filter.dom = t.dataset.dom; refreshGrid(); return; }
   if (t.dataset.op) { S.payOp = t.dataset.op; render(); return; }
@@ -875,23 +931,20 @@ document.addEventListener('click', async (e) => {
 });
 
 document.addEventListener('input', (e) => {
-  if (e.target.id === 'search') {
-    S.filter.q = e.target.value; refreshGrid();
-    const h = document.getElementById('hsearch'); if (h) h.value = S.filter.q;
-  }
-  if (e.target.id === 'hsearch') {
-    S.filter.q = e.target.value;
-    if (route().path !== '/') { S.ui.searchFocus = true; location.hash = '#/'; return; }
-    refreshGrid();
-    const c = document.getElementById('search'); if (c) c.value = S.filter.q;
-  }
+  if (e.target.id === 'hsearch') { S.filter.q = e.target.value; refreshSearch(); }
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && (S.ui.menu || S.ui.search)) {
-    const wasMenu = S.ui.menu; S.ui.menu = false; if (!wasMenu) S.ui.search = false; topbar();
+    const wasMenu = S.ui.menu; S.ui.menu = false; if (!wasMenu) { S.ui.search = false; S.filter.q = ''; } topbar();
     document.querySelector(wasMenu ? '[data-act=menu]' : '[data-act=search-toggle]')?.focus();
   }
-  if (e.key === 'Enter' && e.target.id === 'hsearch') { document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  if (e.target.id === 'hsearch' && (e.key === 'Enter' || e.key === 'ArrowDown')) {
+    const first = document.querySelector(S.filter.q.trim() ? '#hs-panel .hs-main' : '#hs-panel .chip, #hs-panel .hs-main');
+    if (!first) return;
+    e.preventDefault();
+    if (e.key === 'Enter' && S.filter.q.trim()) { S.ui.search = false; S.filter.q = ''; location.hash = first.getAttribute('href'); topbar(); }
+    else first.focus();
+  }
 });
 
 document.addEventListener('submit', async (e) => {
@@ -1024,7 +1077,7 @@ document.addEventListener('submit', async (e) => {
 });
 
 window.addEventListener('hashchange', () => {
-  S.ui.menu = false;
+  S.ui.menu = false; S.ui.search = false; S.filter.q = '';
   const { path } = route();
   if (!/\/examen$/.test(path)) { S.examResult = null; }
   render();
