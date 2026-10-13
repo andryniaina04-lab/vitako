@@ -1,0 +1,97 @@
+{
+  "id": "client-3-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de réservations un professionnel qui augmente le revenu des établissements : spécialité (revenue management, distribution, courte durée, groupes, réceptif, réputation), audit de distribution et indicateurs, outils payants (SiteMinder et Cloudbeds) avec plans dérivés, correspondance des canaux, restrictions, moteur de réservation et rapports, calendrier de la demande, pick-up, segmentation, clients internationaux, locations de courte durée, règles locales et protection des données, puis rémunération, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et réaliser un audit de distribution chiffré",
+    "Paramétrer un channel manager et un PMS : plans, correspondances, restrictions",
+    "Piloter les prix avec le calendrier de la demande, le pick-up et les segments",
+    "Organiser la gestion de plusieurs établissements sans erreur",
+    "Gérer des voyageurs et des logements à l'étranger en protégeant les données",
+    "Construire une rémunération durable, des rapports et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer la distribution et lire les bons indicateurs",
+      "summary": "Les 6 spécialités avancées, le revenue management, l'audit de distribution en 7 domaines et son rapport, les indicateurs du propriétaire et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le revenue management ?", "options": ["Vendre la bonne chambre au bon client, au bon moment et au bon prix", "Faire la comptabilité", "Nettoyer les chambres", "Recruter le personnel"], "correct": 0 },
+        { "q": "Remplir l'hôtel est-il toujours la meilleure stratégie ?", "options": ["Non, il faut raisonner en revenu et en marge", "Oui, toujours", "Oui, à n'importe quel prix", "Oui, en basse saison seulement"], "correct": 0 },
+        { "q": "Que montre la part directe ?", "options": ["Les réservations sans commission", "Le nombre de chambres", "La note des avis", "Le coût du ménage"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : SiteMinder, Cloudbeds et paramétrage",
+      "summary": "Types de chambres et plans dérivés, correspondance des canaux, restrictions de vente, moteur de réservation sécurisé et rapports du PMS.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un plan tarifaire dérivé ?", "options": ["Un plan calculé automatiquement à partir du plan de base", "Un plan sans prix", "Un plan copié d'un concurrent", "Une chambre fermée"], "correct": 0 },
+        { "q": "À quoi sert une durée minimale de séjour en haute saison ?", "options": ["Éviter les nuits isolées invendues", "Faire fuir les clients", "Baisser les prix", "Rien"], "correct": 0 },
+        { "q": "Peut-on demander un numéro de carte par WhatsApp ?", "options": ["Non, jamais", "Oui", "Oui, en haute saison", "Oui, pour les groupes"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : demande, pick-up, segments, routines et contrôle",
+      "summary": "Calendrier de la demande, lecture du pick-up, segmentation et date de libération, routines pour plusieurs établissements, journal des décisions et contrôle hebdomadaire.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le pick-up ?", "options": ["Les réservations reçues depuis une date de référence", "Un transfert aéroport", "Une voiture", "Un avis client"], "correct": 0 },
+        { "q": "Que faire des dernières chambres d'une période très demandée ?", "options": ["Les vendre au prix le plus haut", "Les brader", "Les fermer", "Les offrir"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une date de libération ?", "options": ["La date où les chambres non utilisées d'un allotement reviennent à l'hôtel", "La date de départ du client", "La date de paiement", "La date d'ouverture"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : voyageurs, courte durée, règles locales et données",
+      "summary": "Messages multilingues, gestion de locations de courte durée, contact local et procédure d'urgence, autorisations et taxes, protection des données et des paiements, travail pour une société de gestion.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il avant de prendre en charge un logement à l'étranger ?", "options": ["Un contact local fiable et une procédure d'urgence", "Rien", "Seulement les photos", "Le mot de passe bancaire du propriétaire"], "correct": 0 },
+        { "q": "Qui est responsable des autorisations de location ?", "options": ["Le propriétaire", "Le gestionnaire seul", "Le voyageur", "La plateforme seule"], "correct": 0 },
+        { "q": "Comment indiquer vos horaires de réponse ?", "options": ["En heure locale du logement", "En heure de Madagascar seulement", "Sans horaire", "En heure de New York"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : rémunération, rapports, études de cas et équipe",
+      "summary": "Trois voies, forfait, pourcentage et prime de performance, base de comparaison écrite, rapport mensuel, études de cas honnêtes, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que définir par écrit pour une prime de performance ?", "options": ["La base de comparaison et les exclusions", "La couleur du rapport", "Rien", "Le nom des voyageurs"], "correct": 0 },
+        { "q": "Quel indicateur combine occupation et prix ?", "options": ["Le RevPAR", "Le nombre d'avis", "Le délai de réponse", "Le coût du ménage"], "correct": 0 },
+        { "q": "Comment grandir au début ?", "options": ["Bien gérer 2 ou 3 établissements et obtenir des recommandations", "Prendre 30 clients d'un coup", "Baisser les prix au minimum", "Ne pas faire de rapport"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité choisit et paramètre les canaux de vente ?", "options": ["La gestion de la distribution", "La réputation", "Les groupes", "Le réceptif"], "correct": 0 },
+    { "q": "Quel constat d'audit montre de l'argent perdu en haute saison ?", "options": ["Même prix toute l'année alors que juillet est complet très tôt", "Des avis positifs", "Un site rapide", "Un channel manager en place"], "correct": 0 },
+    { "q": "Que mesure le coût de distribution ?", "options": ["Les commissions et frais par canal", "Le prix du ménage", "Le salaire du gérant", "Rien"], "correct": 0 },
+    { "q": "Que propose une offre de mise en place ?", "options": ["Channel manager, plans tarifaires et moteur de réservation", "Une décoration", "Un menu", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce que la correspondance (mapping) ?", "options": ["L'association des chambres et plans entre le channel manager et chaque OTA", "Une carte routière", "Un plan de l'hôtel", "Un avis"], "correct": 0 },
+    { "q": "Quand connecter un channel manager de préférence ?", "options": ["En basse saison, avec vérifications", "Le 31 décembre", "Pendant un pic de réservations", "Sans vérification"], "correct": 0 },
+    { "q": "Que fait la restriction « fermé à l'arrivée » ?", "options": ["Interdit les arrivées un jour donné", "Ferme l'hôtel", "Supprime les réservations", "Baisse les prix"], "correct": 0 },
+    { "q": "Que propose souvent un hôtel pour encourager la réservation directe ?", "options": ["Des avantages comme le petit-déjeuner ou le transfert", "Des prix secrets interdits", "Rien", "Une commission plus élevée"], "correct": 0 },
+    { "q": "Quel rapport aide à décider des prix futurs ?", "options": ["Les prévisions d'occupation et le pick-up", "La liste des fournisseurs", "Le planning du ménage seulement", "Aucun"], "correct": 0 },
+    { "q": "Sur quoi construire le calendrier de la demande ?", "options": ["L'historique réel de l'établissement", "Une règle générale", "Les vacances du gestionnaire", "Le hasard"], "correct": 0 },
+    { "q": "Pick-up plus lent que l'an dernier : que faire ?", "options": ["Offre adaptée ou canal supplémentaire", "Augmenter fortement les prix", "Fermer tous les canaux", "Rien"], "correct": 0 },
+    { "q": "Quel segment réserve souvent en dernière minute le week-end ?", "options": ["Les clients locaux", "Les groupes", "Les tour-opérateurs", "Les loisirs internationaux"], "correct": 0 },
+    { "q": "Quel est le premier risque avec plusieurs établissements ?", "options": ["La confusion entre établissements", "Trop de clients", "Des avis positifs", "Une bonne connexion"], "correct": 0 },
+    { "q": "Que note le journal des décisions ?", "options": ["Situation, décision, validation et résultat", "Les mots de passe", "Les salaires", "Rien"], "correct": 0 },
+    { "q": "Que vérifier chaque semaine ?", "options": ["Prix identiques entre channel manager et canaux sur plusieurs dates", "La couleur du site", "Rien", "Le menu du restaurant"], "correct": 0 },
+    { "q": "Dans quelles langues préparer des modèles ?", "options": ["Celles des clients principaux, validées", "Une seule langue", "Aucune", "Toutes sans relecture"], "correct": 0 },
+    { "q": "Que planifier après chaque réservation de courte durée ?", "options": ["Le ménage avec l'équipe locale", "Rien", "Une rénovation", "Un nouveau prix au hasard"], "correct": 0 },
+    { "q": "Que faire si la situation légale d'un logement semble douteuse ?", "options": ["Signaler le doute et ne pas gérer un logement illégal", "Gérer quand même", "Ne rien dire", "Augmenter les prix"], "correct": 0 },
+    { "q": "Que faire des copies de pièces d'identité exigées par la loi ?", "options": ["Les stocker de façon sécurisée et les supprimer ensuite", "Les garder sur son téléphone", "Les partager", "Les publier"], "correct": 0 },
+    { "q": "Pourquoi changer régulièrement les codes de boîtes à clés ?", "options": ["Pour la sécurité des logements", "Pour décorer", "C'est inutile", "Pour embêter les voyageurs"], "correct": 0 },
+    { "q": "Que demande souvent une société de gestion européenne ?", "options": ["Un accord de confidentialité ou de traitement des données", "Rien", "Un dépôt d'argent", "Un mot de passe bancaire"], "correct": 0 },
+    { "q": "Quel modèle combine un fixe et une part de la hausse du revenu ?", "options": ["Forfait + prime de performance", "Forfait seul", "Tarif horaire", "Bénévolat"], "correct": 0 },
+    { "q": "Que montre le rapport mensuel ?", "options": ["Revenu, RevPAR, occupation, prix moyen, part directe, avis, plan", "Seulement la facture", "Rien", "Les salaires"], "correct": 0 },
+    { "q": "Que mentionner dans une étude de cas ?", "options": ["Les autres facteurs comme une rénovation", "Rien d'autre que vos actions", "Des chiffres inventés", "Les données des voyageurs"], "correct": 0 },
+    { "q": "Comment couvrir 7 jours sur 7 en équipe ?", "options": ["Par une rotation", "Toujours la même personne", "Sans organisation", "En fermant le week-end"], "correct": 0 }
+  ]
+}

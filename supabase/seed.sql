@@ -80,7 +80,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true),
   ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true),
   ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true),
-  ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, false),
+  ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, true),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 17, false),
   ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
@@ -3819,6 +3819,548 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Que faire des demandes de désinscription ?', '["Les respecter","Les rappeler","Les vendre","Les ignorer"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quel modèle de prix équilibre les risques ?', '["Le paiement au mot","Le modèle mixte","Aucun","Le travail gratuit"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('client-2-f', 'Quelle évolution consiste à mener les rendez-vous et conclure ?', '["Comptable","Transcripteur","Commercial (business developer)","Graphiste"]'::jsonb, 2);
+
+-- client-3-a
+delete from public.exam_questions where course_id = 'client-3-a';
+delete from public.module_questions where course_id = 'client-3-a';
+delete from public.lessons where course_id = 'client-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-a', 0, 'Se spécialiser, auditer la distribution et lire les bons indicateurs', 'Les 6 spécialités avancées, le revenue management, l''audit de distribution en 7 domaines et son rapport, les indicateurs du propriétaire et les offres à forte valeur.', 'Tenir un planning sans erreur et répondre vite aux voyageurs ouvre les premières missions. Les gestionnaires les mieux payés vont plus loin : ils **augmentent le chiffre d''affaires** des établissements en choisissant les bons canaux, les bons prix et les bonnes restrictions au bon moment, et ils pilotent plusieurs établissements à la fois. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la gestion des réservations.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un audit de distribution d''un établissement.
+> 4. Lire les indicateurs qui comptent pour le propriétaire.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Revenue management** | Fixer les prix et les restrictions selon la demande | Prévisions, saisons, concurrence, indicateurs |
+| 2 | **Gestion de la distribution** | Choisir et paramétrer les canaux de vente | Channel managers, OTA, moteur de réservation |
+| 3 | **Locations de courte durée** | Gérer plusieurs logements pour des propriétaires | Calendriers, messages, ménage, avis |
+| 4 | **Groupes et événements** | Séminaires, mariages, voyages de groupe | Devis, contrats, allotements, logistique |
+| 5 | **Agences réceptives et circuits** | Réserver hébergements et services pour des circuits | Partenaires, confirmations, imprévus |
+| 6 | **Expérience voyageur et réputation** | Messages, avis, fidélisation | Communication, réponses aux avis, analyses |
+
+> [!definition] Revenue management
+> L''art de vendre la bonne chambre, au bon client, au bon moment, au bon prix et par le bon canal, pour obtenir le meilleur revenu possible.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Revenue management et distribution** pour les hôtels et lodges malgaches, souvent peu outillés.
+> - **Gestion de plusieurs logements** à La Réunion, à Maurice et en Europe, en français.
+> - **Agences réceptives** : vous connaissez les distances, les routes et les saisons de Madagascar.
+
+## L''audit de distribution
+
+Un audit est une excellente **offre d''entrée** : le propriétaire voit l''argent qu''il laisse sur la table et vous confie l''amélioration.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Canaux** | Lesquels sont utilisés ? Lesquels manquent ? Coût de chacun ? |
+| **Présentation** | Photos, descriptions, équipements, politiques sur chaque canal |
+| **Prix** | Saisons, différences entre semaine et week-end, cohérence entre canaux |
+| **Restrictions** | Durée minimale de séjour, fermetures, conditions d''annulation |
+| **Réservation directe** | Site avec moteur de réservation ? Avantages pour réserver en direct ? |
+| **Outils** | PMS, channel manager, ou tout à la main ? |
+| **Réputation** | Notes, avis sans réponse, plaintes répétées |
+
+### Le rapport d''audit
+
+```
+Établissement : Lodge Tsara – 10 bungalows
+Occupation annuelle : 54 % ; prix moyen : 165 000 Ar
+
+Constats
+1. Même prix toute l''année, alors que juillet-août est complet 3 mois à l''avance.
+2. Aucune durée minimale de séjour en haute saison : nuits isolées invendues entre deux séjours.
+3. Réservation directe : 12 % seulement ; le site n''a pas de moteur de réservation.
+4. 2 surréservations l''an dernier : pas de channel manager.
+5. 9 avis négatifs sans réponse.
+
+Plan proposé
+- Calendrier tarifaire par saison et règles de durée minimale.
+- Channel manager et moteur de réservation sur le site.
+- Réponse à tous les avis et modèles de messages.
+Objectif : +10 % de revenu par chambre disponible sur la prochaine haute saison.
+```
+
+## Les indicateurs du propriétaire
+
+| Indicateur | Pourquoi il compte |
+| --- | --- |
+| **RevPAR** (revenu par chambre disponible) | Combine occupation et prix |
+| **Prix moyen** (ADR) | Le niveau de prix réellement obtenu |
+| **Taux d''occupation** | Le remplissage |
+| **Coût de distribution** | Commissions et frais par canal |
+| **Part directe** | Les réservations sans commission |
+| **Délai moyen de réservation** | Combien de temps à l''avance les clients réservent |
+| **Note moyenne des avis** | Influence fortement les ventes futures |
+
+> [!attention]
+> Remplir l''hôtel n''est pas toujours la meilleure stratégie. Un hôtel plein à prix cassé peut gagner **moins** qu''un hôtel occupé à 80 % à un bon prix, avec moins de coûts. Raisonnez toujours en revenu et en marge, pas seulement en occupation.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit de distribution** | Analyse, rapport, plan chiffré | 400 000 Ar |
+| **Mise en place** | Channel manager, plans tarifaires, moteur de réservation | 1 000 000 Ar |
+| **Revenue management mensuel** | Prix, restrictions, rapport | 600 000 Ar par mois ou part du chiffre d''affaires |
+| **Gestion complète** | Réservations, messages, avis, revenue management | Forfait + part variable |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : revenue, distribution, courte durée, groupes, réceptif, réputation.
+> - L''audit de distribution chiffre l''argent laissé sur la table.
+> - RevPAR, prix moyen, occupation, coût de distribution, part directe, délai, avis.
+> - Raisonner en revenu et en marge, pas seulement en remplissage.
+> - Des offres à valeur : mise en place, revenue management, gestion complète.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Choisissez un établissement malgache présent en ligne et auditez sa distribution (canaux, prix sur plusieurs dates, politiques, avis).
+> 3. Rédigez un rapport avec 4 constats et un plan.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre grille d''audit, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 0, 0, 'Qu''est-ce que le revenue management ?', '["Vendre la bonne chambre au bon client, au bon moment et au bon prix","Faire la comptabilité","Recruter le personnel","Nettoyer les chambres"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 0, 1, 'Remplir l''hôtel est-il toujours la meilleure stratégie ?', '["Oui, toujours","Oui, à n''importe quel prix","Oui, en basse saison seulement","Non, il faut raisonner en revenu et en marge"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 0, 2, 'Que montre la part directe ?', '["Les réservations sans commission","Le nombre de chambres","La note des avis","Le coût du ménage"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-a', 1, 'Outils professionnels : SiteMinder, Cloudbeds et paramétrage', 'Types de chambres et plans dérivés, correspondance des canaux, restrictions de vente, moteur de réservation sécurisé et rapports du PMS.', 'Les établissements organisés utilisent un **channel manager** comme **SiteMinder** et souvent une plateforme tout-en-un comme **Cloudbeds** (PMS, channel manager et moteur de réservation). Ce module vous apprend à les paramétrer correctement : types de chambres, plans tarifaires, restrictions, connexion des canaux, moteur de réservation et rapports.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Structurer les types de chambres et les plans tarifaires.
+> 2. Relier correctement les canaux au channel manager.
+> 3. Utiliser les restrictions de vente.
+> 4. Paramétrer un moteur de réservation pour le site de l''hôtel.
+> 5. Lire les rapports d''un PMS.
+
+## Structurer l''offre
+
+| Élément | Exemple pour le Lodge Tsara |
+| --- | --- |
+| **Types de chambres** | Bungalow jardin (6), Bungalow vue mer (3), Suite familiale (1) |
+| **Plan de base** | Flexible, petit-déjeuner inclus |
+| **Plans dérivés** | Non remboursable (−12 %), Demi-pension (+60 000 Ar par nuit), Long séjour (−10 % dès 7 nuits) |
+| **Saisons** | Basse, moyenne, haute, fêtes de fin d''année |
+
+> [!definition] Plan tarifaire dérivé
+> Un plan dont le prix est calculé automatiquement à partir du plan de base (par exemple −12 %). Quand vous changez le prix de base, tous les plans dérivés suivent : moins de saisie, moins d''erreurs.
+
+## Relier les canaux
+
+> [!definition] Correspondance (mapping)
+> L''association entre chaque type de chambre et plan tarifaire du channel manager et ceux de chaque OTA. Une erreur de correspondance envoie un mauvais prix ou une mauvaise disponibilité sur un canal.
+
+### La méthode de connexion
+
+1. **Nettoyez** d''abord les types de chambres et plans sur chaque OTA.
+2. **Créez** la même structure dans le channel manager.
+3. **Reliez** chaque type et chaque plan un par un.
+4. **Vérifiez** sur chaque OTA que les prix et disponibilités affichés sont corrects, sur plusieurs dates.
+5. **Fermez** les anciennes saisies manuelles pour éviter les doubles mises à jour.
+
+> [!attention]
+> La période de **connexion** est la plus risquée : un canal peut rester ouvert avec d''anciennes disponibilités. Faites-la en basse saison si possible, et vérifiez toutes les réservations des jours suivants.
+
+## Les restrictions
+
+| Restriction | Usage | Exemple |
+| --- | --- | --- |
+| **Durée minimale de séjour** | Éviter les nuits isolées en haute saison | 3 nuits minimum en août |
+| **Durée maximale** | Limiter certains tarifs | Non remboursable limité à 7 nuits |
+| **Fermé à l''arrivée** | Interdire les arrivées un jour donné | Pas d''arrivée le samedi pendant un festival |
+| **Fermé au départ** | Interdire les départs un jour donné | Pas de départ le 31 décembre |
+| **Arrêt des ventes** (stop sell) | Fermer un canal ou un type de chambre | Fermer une OTA quand il reste 1 chambre |
+| **Délai minimal avant l''arrivée** | Pour les tarifs promotionnels | Non remboursable réservé au moins 14 jours avant |
+
+> [!astuce]
+> Les restrictions sont aussi puissantes que les prix. Une durée minimale bien placée en haute saison peut augmenter le revenu **sans changer le prix**, en évitant les trous dans le planning.
+
+## Le moteur de réservation
+
+| Élément | Bonne pratique |
+| --- | --- |
+| **Intégration au site** | Bouton « Réserver » visible sur toutes les pages |
+| **Prix** | Cohérents avec les OTA, selon les contrats |
+| **Avantages directs** | Petit-déjeuner, transfert, flexibilité, selon ce que l''hôtel décide |
+| **Paiement** | Acompte ou garantie par carte via une solution de paiement sécurisée |
+| **Langues et devises** | Français, anglais ; devises des clients principaux |
+| **Version mobile** | Testée sur téléphone |
+
+> [!attention]
+> Ne demandez **jamais** aux voyageurs d''envoyer leur numéro de carte bancaire par e-mail ou WhatsApp. Les données de carte doivent passer par une solution de paiement sécurisée, conforme aux règles du secteur.
+
+## Les rapports du PMS
+
+| Rapport | Usage |
+| --- | --- |
+| **Arrivées et départs du jour** | Organisation de l''équipe sur place |
+| **Prévisions d''occupation** | Décisions de prix et de restrictions |
+| **Pick-up** (réservations reçues depuis une date) | Voir si la demande accélère ou ralentit |
+| **Production par canal** | Coût et efficacité de chaque canal |
+| **Annulations et no-show** | Ajuster les politiques |
+
+> [!madagascar]
+> SiteMinder, Cloudbeds et les outils similaires sont **payés par l''établissement**, en dollars. Pour vous former, utilisez les démonstrations, les centres d''aide et les académies en ligne proposés par les éditeurs. Avoir configuré un channel manager pour un établissement réel est une très bonne référence.
+
+> [!retenir]
+> - Types de chambres clairs, plan de base et plans dérivés.
+> - Une correspondance vérifiée canal par canal, en période calme.
+> - Restrictions : durée minimale, fermetures à l''arrivée ou au départ, arrêt des ventes.
+> - Un moteur de réservation visible, cohérent et sécurisé.
+> - Les rapports du PMS : prévisions, pick-up, production par canal.
+
+## Exercice pratique : paramétrer une distribution
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Concevez la structure complète du Lodge Tsara : types, plan de base, 4 plans dérivés, 4 saisons.
+> 2. Rédigez la procédure de connexion d''une OTA au channel manager, étape par étape.
+> 3. Définissez 6 restrictions pour l''année, avec leur raison.
+> 4. Regardez la démonstration d''un PMS et listez les 5 rapports que vous consulteriez chaque semaine.
+>
+> **À livrer** : votre structure, votre procédure, vos restrictions et votre liste de rapports.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 1, 0, 'Qu''est-ce qu''un plan tarifaire dérivé ?', '["Une chambre fermée","Un plan sans prix","Un plan calculé automatiquement à partir du plan de base","Un plan copié d''un concurrent"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 1, 1, 'À quoi sert une durée minimale de séjour en haute saison ?', '["Baisser les prix","Éviter les nuits isolées invendues","Rien","Faire fuir les clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 1, 2, 'Peut-on demander un numéro de carte par WhatsApp ?', '["Oui, en haute saison","Oui","Non, jamais","Oui, pour les groupes"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-a', 2, 'Qualité et rapidité : demande, pick-up, segments, routines et contrôle', 'Calendrier de la demande, lecture du pick-up, segmentation et date de libération, routines pour plusieurs établissements, journal des décisions et contrôle hebdomadaire.', 'Un gestionnaire avancé ne se contente pas d''enregistrer les réservations : il **pilote** les prix et les disponibilités pour obtenir le meilleur revenu, et il organise son travail pour gérer plusieurs établissements sans erreur. Ce module vous donne les bases du revenue management et les méthodes des meilleures équipes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un calendrier de la demande.
+> 2. Lire le pick-up et ajuster les prix.
+> 3. Segmenter la clientèle.
+> 4. Organiser des routines pour plusieurs établissements.
+> 5. Contrôler la qualité et documenter vos décisions.
+
+## Le calendrier de la demande
+
+| Période | Demande | Stratégie |
+| --- | --- | --- |
+| **Juillet-août** | Très forte (vacances européennes) | Prix élevés, durée minimale, peu de promotions |
+| **Fin d''année** | Forte | Prix élevés, fermé au départ le 31 décembre |
+| **Avril-juin et septembre-novembre** | Moyenne | Prix moyens, offres long séjour |
+| **Janvier-mars** (saison des pluies et des cyclones selon les régions) | Faible | Prix bas, promotions, clientèle locale |
+| **Événements locaux** | Pics ponctuels | Prix ajustés quelques jours |
+
+> [!madagascar]
+> Les saisons touristiques varient selon les régions de Madagascar (Nord, Sud-Ouest, côte Est, hautes terres) et selon les marchés d''origine des voyageurs. Construisez le calendrier **à partir de l''historique réel** de l''établissement, pas d''une règle générale.
+
+## Lire le pick-up
+
+> [!definition] Pick-up
+> Le nombre de réservations reçues pour une période donnée depuis une date de référence. Il montre si la demande pour une date future avance plus vite ou moins vite que d''habitude.
+
+| Date de séjour | Réservées il y a 30 jours | Réservées aujourd''hui | Même date l''an dernier | Décision |
+| --- | --- | --- | --- | --- |
+| 15 août | 6 chambres | 9 chambres | 7 chambres | Demande forte : augmenter le prix des dernières chambres |
+| 10 octobre | 2 chambres | 2 chambres | 5 chambres | Demande faible : offre long séjour, canal supplémentaire |
+
+> [!astuce]
+> Les **dernières chambres** disponibles d''une période très demandée sont celles qui doivent être vendues au prix le plus haut. Ne les bradez pas par habitude.
+
+## Segmenter la clientèle
+
+| Segment | Comportement | Approche |
+| --- | --- | --- |
+| **Loisirs internationaux** | Réservent tôt, séjours longs | Prix selon la saison, plans flexibles |
+| **Clients locaux** | Week-ends, dernière minute | Offres en basse saison, réservation directe |
+| **Affaires et ONG** | En semaine, missions | Tarifs négociés, factures |
+| **Groupes et agences** | Contrats, allotements | Devis, dates limites de libération |
+
+> [!definition] Date de libération
+> La date à laquelle les chambres non utilisées d''un allotement reviennent à l''hôtel pour être vendues sur d''autres canaux. Elle doit figurer dans le contrat avec l''agence.
+
+## Les routines pour plusieurs établissements
+
+| Fréquence | Tâche |
+| --- | --- |
+| **Chaque jour** | Réservations, messages, contrôle des disponibilités, arrivées du lendemain |
+| **Chaque semaine** | Pick-up des 90 prochains jours, ajustement des prix et restrictions, avis |
+| **Chaque mois** | Rapport au propriétaire, analyse des canaux, prévisions |
+| **Chaque saison** | Révision du calendrier tarifaire et des contrats |
+
+> [!attention]
+> Avec plusieurs établissements, la confusion est le premier risque. Utilisez un **tableau de bord** par établissement, une couleur par client, et ne travaillez jamais sur deux extranets ouverts en même temps sans vérifier le nom de l''établissement.
+
+## Documenter les décisions
+
+```
+Journal des décisions – Lodge Tsara
+02/06 : Juillet à 92 % réservé (contre 80 % l''an dernier à la même date).
+        Décision : bungalows vue mer +15 % du 10 au 31 juillet ; durée minimale 3 nuits.
+        Validé par M. Rivo.
+16/06 : Pick-up toujours fort. Pas de changement.
+01/08 : Résultat juillet : occupation 97 %, prix moyen +11 %, RevPAR +14 %.
+```
+
+## Le contrôle qualité
+
+| N° | Vérification hebdomadaire |
+| --- | --- |
+| 1 | Prix identiques entre le channel manager et chaque canal sur 5 dates au hasard |
+| 2 | Aucune réservation en attente non confirmée |
+| 3 | Restrictions conformes au plan |
+| 4 | Avis de la semaine tous traités |
+| 5 | Acomptes reçus pour les arrivées des 30 prochains jours |
+
+> [!retenir]
+> - Un calendrier de la demande construit sur l''historique réel.
+> - Le pick-up pour ajuster prix et restrictions à temps.
+> - Des segments avec des approches différentes, et des dates de libération pour les groupes.
+> - Des routines par fréquence et un tableau de bord par établissement.
+> - Un journal des décisions et un contrôle hebdomadaire.
+
+## Exercice pratique : piloter le revenu
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Construisez le calendrier de la demande d''un lodge sur 12 mois à partir de données fictives.
+> 2. Préparez un tableau de pick-up pour 10 dates et décidez des actions.
+> 3. Définissez 4 segments et leurs offres.
+> 4. Rédigez un journal de décisions sur 2 mois et le contrôle hebdomadaire.
+>
+> **À livrer** : votre calendrier, votre tableau de pick-up, vos segments et votre journal.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 2, 0, 'Qu''est-ce que le pick-up ?', '["Un transfert aéroport","Les réservations reçues depuis une date de référence","Un avis client","Une voiture"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 2, 1, 'Que faire des dernières chambres d''une période très demandée ?', '["Les brader","Les offrir","Les fermer","Les vendre au prix le plus haut"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 2, 2, 'Qu''est-ce qu''une date de libération ?', '["La date d''ouverture","La date de paiement","La date de départ du client","La date où les chambres non utilisées d''un allotement reviennent à l''hôtel"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-a', 3, 'Clients internationaux : voyageurs, courte durée, règles locales et données', 'Messages multilingues, gestion de locations de courte durée, contact local et procédure d''urgence, autorisations et taxes, protection des données et des paiements, travail pour une société de gestion.', 'Les hôtels, les propriétaires de logements et les sociétés de gestion d''Europe, de l''océan Indien et d''Amérique du Nord recrutent des gestionnaires de réservations à distance. Ce module vous prépare à travailler avec eux : communiquer avec des voyageurs du monde entier, gérer des locations de courte durée à l''étranger, respecter les règles locales et protéger les données.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Communiquer avec les voyageurs en plusieurs langues.
+> 2. Gérer des logements de courte durée pour des propriétaires étrangers.
+> 3. Tenir compte des règles locales de location.
+> 4. Protéger les données des voyageurs et les paiements.
+> 5. Travailler pour une société de gestion étrangère.
+
+## Communiquer avec les voyageurs
+
+> [!exemple] Message en anglais avant l''arrivée
+> Hi Sarah,
+> We''re looking forward to welcoming you to the Seaview Apartment on Friday!
+> Check-in is from 3 pm. The key box code will be sent on the morning of your arrival.
+> Address and directions: (lien)
+> If you need anything, just reply here — we answer from 7 am to 10 pm.
+> Best, Fara – Guest team
+
+| Situation | Bonne pratique |
+| --- | --- |
+| **Langues** | Modèles validés en français, anglais et dans les langues des clients principaux |
+| **Fuseaux horaires** | Horaires de réponse indiqués en heure locale du logement |
+| **Ton** | Chaleureux, clair, précis |
+| **Plaintes** | Reconnaître, agir vite, proposer une solution, suivre |
+| **Urgences sur place** | Contacts locaux (équipe de ménage, technicien, propriétaire) toujours à jour |
+
+## Gérer des locations de courte durée
+
+| Tâche | Ce qu''il faut organiser |
+| --- | --- |
+| **Calendriers** | Synchronisation entre plateformes, blocages du propriétaire |
+| **Prix** | Saisons, week-ends, événements, durée minimale |
+| **Messages** | Avant, pendant, après le séjour |
+| **Ménage** | Planning envoyé à l''équipe locale après chaque réservation |
+| **Arrivées** | Boîte à clés, codes, accueil |
+| **Avis** | Demande d''avis, réponses |
+| **Rapports** | Revenus, frais, occupation par logement |
+
+> [!attention]
+> En cas de problème grave sur place (fuite d''eau, panne, problème de sécurité), vous devez pouvoir joindre **immédiatement** une personne locale. Ne prenez jamais en charge un logement sans un contact local fiable et une procédure d''urgence écrite.
+
+## Les règles locales
+
+| Point | Ce qu''il faut savoir |
+| --- | --- |
+| **Autorisations** | De nombreuses villes encadrent la location de courte durée (enregistrement, numéro d''autorisation, nombre de nuits limité) |
+| **Taxes de séjour** | Collectées par la plateforme ou par le propriétaire selon le lieu |
+| **Déclaration des voyageurs** | Obligatoire dans certains pays |
+| **Règles de copropriété** | Peuvent interdire ou limiter la location |
+
+> [!attention]
+> Ces règles sont de la **responsabilité du propriétaire**. Votre rôle est de lui demander s''il est en règle, d''appliquer les informations qu''il vous donne (numéro d''enregistrement à afficher, taxes) et de signaler tout doute. Ne gérez pas un logement dont la situation vous semble illégale.
+
+## Protéger les données et les paiements
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Aucune donnée de carte** par e-mail ou messagerie | Sécurité et règles du secteur des paiements |
+| **Copies de pièces d''identité** seulement si la loi l''exige, stockées de façon sécurisée et supprimées ensuite | Protection des données (RGPD en Europe) |
+| **Accès personnels** aux outils | Traçabilité |
+| **Codes de boîtes à clés** changés régulièrement | Sécurité des logements |
+| **Aucune donnée de voyageur** sur votre téléphone personnel sans nécessité | Confidentialité |
+
+> [!madagascar]
+> Les sociétés de gestion européennes vous demanderont souvent de signer un **accord de traitement des données** ou une clause de confidentialité. Lisez-les, respectez-les, et organisez votre poste de travail en conséquence (mot de passe, verrouillage, stockage en ligne sécurisé).
+
+## Travailler pour une société de gestion étrangère
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Outils** | PMS ou logiciel de gestion de locations de la société |
+| **Procédures** | Messages types, gestes commerciaux autorisés, escalades |
+| **Horaires** | Couverture convenue, en heure locale des logements |
+| **Indicateurs** | Délai de réponse, note des avis, erreurs de calendrier |
+| **Continuité** | Électricité et connexion de secours, remplaçant en cas d''absence |
+
+> [!retenir]
+> - Des modèles multilingues et des horaires en heure locale.
+> - Courte durée : calendriers, prix, messages, ménage, arrivées, avis, rapports.
+> - Un contact local fiable et une procédure d''urgence pour chaque logement.
+> - Règles locales sous la responsabilité du propriétaire, à vérifier avec lui.
+> - Aucune donnée de carte par messagerie ; données des voyageurs protégées.
+
+## Exercice pratique : une gestion internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais et en français 5 messages types pour un appartement en location de courte durée.
+> 2. Rédigez la procédure d''urgence d''un logement (contacts, situations, actions).
+> 3. Listez les questions à poser à un propriétaire sur les règles locales.
+> 4. Rédigez vos règles personnelles de protection des données.
+>
+> **À livrer** : vos messages, votre procédure, vos questions et vos règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 3, 0, 'Que faut-il avant de prendre en charge un logement à l''étranger ?', '["Rien","Un contact local fiable et une procédure d''urgence","Seulement les photos","Le mot de passe bancaire du propriétaire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 3, 1, 'Qui est responsable des autorisations de location ?', '["Le gestionnaire seul","La plateforme seule","Le voyageur","Le propriétaire"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 3, 2, 'Comment indiquer vos horaires de réponse ?', '["En heure locale du logement","En heure de New York","Sans horaire","En heure de Madagascar seulement"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('client-3-a', 4, 'Développer son activité : rémunération, rapports, études de cas et équipe', 'Trois voies, forfait, pourcentage et prime de performance, base de comparaison écrite, rapport mensuel, études de cas honnêtes, équipe et évolution.', 'Après quelques établissements satisfaits, vous pouvez construire une **activité stable** de gestion à distance : plusieurs clients, une rémunération liée aux résultats, des études de cas chiffrées, et peut-être une petite équipe. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire une rémunération durable et motivante.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Revenue manager indépendant** | Ceux qui aiment les chiffres | Forfait + part de la hausse du revenu |
+| **Agence de gestion à distance** | Ceux qui aiment organiser | Plusieurs établissements, équipe |
+| **Salarié d''une société de gestion ou d''une chaîne** | Ceux qui préfèrent la stabilité | Salaire, évolution vers la direction de la distribution |
+
+## Une rémunération durable
+
+| Modèle | Principe | Exemple |
+| --- | --- | --- |
+| **Forfait** | Prix fixe mensuel | 600 000 Ar par mois |
+| **Pourcentage du chiffre d''affaires des chambres** | Part de tout le revenu | 3 à 5 % selon les services |
+| **Forfait + prime de performance** | Fixe + part de la hausse par rapport à l''année précédente | 400 000 Ar + 10 % de la hausse du revenu |
+| **Gestion de courte durée** | Pourcentage des revenus de chaque logement | Souvent 15 à 25 % pour une gestion complète, à adapter au marché |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Pour une prime de performance, définissez **par écrit** la base de comparaison (année précédente, mêmes chambres, mêmes mois) et ce qui est exclu (rénovations, nouveaux bungalows, événement exceptionnel). Sans règle claire, la prime devient une source de conflit.
+
+### Le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Revenu des chambres | 52 millions Ar (+14 % sur un an) |
+| RevPAR | 168 000 Ar (+16 %) |
+| Occupation | 82 % (+3 points) |
+| Prix moyen | 205 000 Ar (+11 %) |
+| Part directe | 28 % (contre 12 %) |
+| Coût de distribution | 13 % du revenu (contre 17 %) |
+| Note des avis | 9,2 sur 10 |
+| Décisions du mois et plan | Prix de fin d''année, offre long séjour de février |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : lodge de 10 bungalows, sud-ouest de Madagascar.
+> **Problème** : prix identiques toute l''année, réservations manuelles, 2 surréservations, faible part directe.
+> **Solution** : audit, channel manager, calendrier tarifaire, durées minimales, moteur de réservation, modèles de messages.
+> **Résultats sur 12 mois** : RevPAR +19 % ; part directe de 12 % à 28 % ; aucune surréservation ; note moyenne de 8,4 à 9,1.
+
+1. **Demandez** l''accord du propriétaire ou anonymisez.
+2. **Comparez** des périodes équivalentes.
+3. **Mentionnez** les autres facteurs (rénovation, nouvelle route, contexte touristique).
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Assistant de réservations** | Messages et confirmations quand le volume augmente |
+| **Spécialiste avis et messages** | Plusieurs établissements à suivre 7 jours sur 7 |
+| **Revenue manager** (vous) | Prix, stratégie, relation avec les propriétaires |
+
+### Les règles de l''équipe
+
+1. **Procédures écrites** par établissement.
+2. **Accès personnels** à chaque outil.
+3. **Rotation** pour couvrir 7 jours sur 7 sans épuisement.
+4. **Contrôle hebdomadaire** des disponibilités et des prix.
+5. **Plan de continuité** : électricité, connexion, remplaçant.
+
+> [!madagascar]
+> Une agence de gestion basée à Madagascar peut servir à la fois les **établissements malgaches** et des propriétaires de **l''océan Indien et d''Europe**. Commencez par 2 ou 3 établissements bien gérés : les recommandations entre hôteliers sont le meilleur moyen de grandir.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Revenue manager de groupe** | Plusieurs hôtels, outils de tarification automatique |
+| **Responsable de la distribution** | Contrats avec les OTA, stratégie de canaux |
+| **Consultant en hôtellerie** | Audits, ouverture d''établissements |
+| **Analyste de données** | Voir la formation Analyste de données |
+
+> [!retenir]
+> - Revenue manager, agence ou salarié : choisissez votre voie.
+> - Forfait, pourcentage ou prime de performance avec une base écrite.
+> - Un rapport mensuel chiffré qui montre la valeur.
+> - Des études de cas honnêtes sur des périodes comparables.
+> - Une équipe avec procédures, rotation et continuité.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Choisissez votre modèle de rémunération et calculez-le pour 2 établissements fictifs.
+> 3. Rédigez le modèle de rapport mensuel et une étude de cas à partir de vos projets.
+> 4. Listez 10 établissements et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, vos calculs, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 4, 0, 'Que définir par écrit pour une prime de performance ?', '["Le nom des voyageurs","Rien","La couleur du rapport","La base de comparaison et les exclusions"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 4, 1, 'Quel indicateur combine occupation et prix ?', '["Le coût du ménage","Le délai de réponse","Le RevPAR","Le nombre d''avis"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('client-3-a', 4, 2, 'Comment grandir au début ?', '["Bien gérer 2 ou 3 établissements et obtenir des recommandations","Ne pas faire de rapport","Prendre 30 clients d''un coup","Baisser les prix au minimum"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quelle spécialité choisit et paramètre les canaux de vente ?', '["La gestion de la distribution","La réputation","Les groupes","Le réceptif"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quel constat d''audit montre de l''argent perdu en haute saison ?', '["Des avis positifs","Un site rapide","Même prix toute l''année alors que juillet est complet très tôt","Un channel manager en place"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que mesure le coût de distribution ?', '["Rien","Le salaire du gérant","Les commissions et frais par canal","Le prix du ménage"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que propose une offre de mise en place ?', '["Channel manager, plans tarifaires et moteur de réservation","Un menu","Une décoration","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Qu''est-ce que la correspondance (mapping) ?', '["Un avis","L''association des chambres et plans entre le channel manager et chaque OTA","Une carte routière","Un plan de l''hôtel"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quand connecter un channel manager de préférence ?', '["Sans vérification","En basse saison, avec vérifications","Le 31 décembre","Pendant un pic de réservations"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que fait la restriction « fermé à l''arrivée » ?', '["Ferme l''hôtel","Supprime les réservations","Baisse les prix","Interdit les arrivées un jour donné"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que propose souvent un hôtel pour encourager la réservation directe ?', '["Une commission plus élevée","Rien","Des avantages comme le petit-déjeuner ou le transfert","Des prix secrets interdits"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quel rapport aide à décider des prix futurs ?', '["La liste des fournisseurs","Aucun","Les prévisions d''occupation et le pick-up","Le planning du ménage seulement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Sur quoi construire le calendrier de la demande ?', '["Le hasard","L''historique réel de l''établissement","Les vacances du gestionnaire","Une règle générale"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Pick-up plus lent que l''an dernier : que faire ?', '["Augmenter fortement les prix","Offre adaptée ou canal supplémentaire","Rien","Fermer tous les canaux"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quel segment réserve souvent en dernière minute le week-end ?', '["Les tour-opérateurs","Les groupes","Les loisirs internationaux","Les clients locaux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quel est le premier risque avec plusieurs établissements ?', '["Une bonne connexion","La confusion entre établissements","Des avis positifs","Trop de clients"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que note le journal des décisions ?', '["Rien","Les mots de passe","Les salaires","Situation, décision, validation et résultat"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que vérifier chaque semaine ?', '["Rien","Le menu du restaurant","La couleur du site","Prix identiques entre channel manager et canaux sur plusieurs dates"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Dans quelles langues préparer des modèles ?', '["Celles des clients principaux, validées","Une seule langue","Aucune","Toutes sans relecture"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que planifier après chaque réservation de courte durée ?', '["Une rénovation","Un nouveau prix au hasard","Le ménage avec l''équipe locale","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que faire si la situation légale d''un logement semble douteuse ?', '["Ne rien dire","Signaler le doute et ne pas gérer un logement illégal","Gérer quand même","Augmenter les prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que faire des copies de pièces d''identité exigées par la loi ?', '["Les stocker de façon sécurisée et les supprimer ensuite","Les partager","Les garder sur son téléphone","Les publier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Pourquoi changer régulièrement les codes de boîtes à clés ?', '["C''est inutile","Pour la sécurité des logements","Pour décorer","Pour embêter les voyageurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que demande souvent une société de gestion européenne ?', '["Un accord de confidentialité ou de traitement des données","Rien","Un mot de passe bancaire","Un dépôt d''argent"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Quel modèle combine un fixe et une part de la hausse du revenu ?', '["Tarif horaire","Bénévolat","Forfait seul","Forfait + prime de performance"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que montre le rapport mensuel ?', '["Les salaires","Revenu, RevPAR, occupation, prix moyen, part directe, avis, plan","Rien","Seulement la facture"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Que mentionner dans une étude de cas ?', '["Rien d''autre que vos actions","Les données des voyageurs","Les autres facteurs comme une rénovation","Des chiffres inventés"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('client-3-a', 'Comment couvrir 7 jours sur 7 en équipe ?', '["Par une rotation","Toujours la même personne","Sans organisation","En fermant le week-end"]'::jsonb, 0);
 
 -- client-3-f
 delete from public.exam_questions where course_id = 'client-3-f';

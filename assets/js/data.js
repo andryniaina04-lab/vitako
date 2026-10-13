@@ -850,6 +850,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "client-3-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de réservations un professionnel qui augmente le revenu des établissements : spécialité (revenue management, distribution, courte durée, groupes, réceptif, réputation), audit de distribution et indicateurs, outils payants (SiteMinder et Cloudbeds) avec plans dérivés, correspondance des canaux, restrictions, moteur de réservation et rapports, calendrier de la demande, pick-up, segmentation, clients internationaux, locations de courte durée, règles locales et protection des données, puis rémunération, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et réaliser un audit de distribution chiffré",
+   "Paramétrer un channel manager et un PMS : plans, correspondances, restrictions",
+   "Piloter les prix avec le calendrier de la demande, le pick-up et les segments",
+   "Organiser la gestion de plusieurs établissements sans erreur",
+   "Gérer des voyageurs et des logements à l'étranger en protégeant les données",
+   "Construire une rémunération durable, des rapports et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer la distribution et lire les bons indicateurs",
+    "summary": "Les 6 spécialités avancées, le revenue management, l'audit de distribution en 7 domaines et son rapport, les indicateurs du propriétaire et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit de distribution",
+     "Les indicateurs du propriétaire",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : SiteMinder, Cloudbeds et paramétrage",
+    "summary": "Types de chambres et plans dérivés, correspondance des canaux, restrictions de vente, moteur de réservation sécurisé et rapports du PMS.",
+    "sections": [
+     "Structurer l'offre",
+     "Relier les canaux",
+     "Les restrictions",
+     "Le moteur de réservation",
+     "Les rapports du PMS",
+     "Exercice pratique : paramétrer une distribution"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : demande, pick-up, segments, routines et contrôle",
+    "summary": "Calendrier de la demande, lecture du pick-up, segmentation et date de libération, routines pour plusieurs établissements, journal des décisions et contrôle hebdomadaire.",
+    "sections": [
+     "Le calendrier de la demande",
+     "Lire le pick-up",
+     "Segmenter la clientèle",
+     "Les routines pour plusieurs établissements",
+     "Documenter les décisions",
+     "Le contrôle qualité",
+     "Exercice pratique : piloter le revenu"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : voyageurs, courte durée, règles locales et données",
+    "summary": "Messages multilingues, gestion de locations de courte durée, contact local et procédure d'urgence, autorisations et taxes, protection des données et des paiements, travail pour une société de gestion.",
+    "sections": [
+     "Communiquer avec les voyageurs",
+     "Gérer des locations de courte durée",
+     "Les règles locales",
+     "Protéger les données et les paiements",
+     "Travailler pour une société de gestion étrangère",
+     "Exercice pratique : une gestion internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : rémunération, rapports, études de cas et équipe",
+    "summary": "Trois voies, forfait, pourcentage et prime de performance, base de comparaison écrite, rapport mensuel, études de cas honnêtes, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Une rémunération durable",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "client-3-f": {
   "hours": 14,
   "description": "Le gestionnaire de réservations tient à jour les disponibilités et les prix d'un hébergement sur tous ses canaux et traite chaque réservation. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des hôtels, des lodges, des propriétaires et des agences de voyage, à Madagascar et à l'étranger, avec les extranets et Google Sheets : parcours d'une réservation, canaux de vente, planning, plans tarifaires, indicateurs, messages aux voyageurs, groupes, surréservation et bilan mensuel. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
