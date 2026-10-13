@@ -285,7 +285,6 @@ function catalogGrid() {
   return { count: countLabel(list), html: cards || '<p class="muted">Aucun métier dans ce domaine.</p>' };
 }
 function catalog() {
-  const published = COURSES.filter((c) => c.published).length;
   const g = catalogGrid();
   let banner = '';
   if (!S.session) banner = notice('info', 'Tout le monde peut consulter les formations, leurs descriptions et leurs objectifs. Pour suivre les cours, <a href="#/inscription">créez un compte</a> puis prenez un abonnement mensuel.');
@@ -301,7 +300,6 @@ function catalog() {
     </div>
     <div class="facts">
       <div class="fact"><b>${COURSES.length}</b><span>formations</span></div>
-      <div class="fact"><b>${published}</b><span>disponible${published > 1 ? 's' : ''} aujourd'hui</span></div>
       <div class="fact"><b>50/100</b><span>pour réussir un examen</span></div>
     </div>
   </section>

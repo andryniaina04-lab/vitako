@@ -70,8 +70,7 @@ with sync_playwright() as p:
 
     # --- Catalogue
     check('catalogue : 58 cartes (50 métiers + 8 formations perso)', page.locator('.card.job').count() == 58)
-    nb_pub = sum(1 for c in page.evaluate("window.__VITAKO_FIXTURE__").get('courses', []) if c.get('published') and c.get('id') != 'tech-4-a')  # tech-4-a simulée non publiée
-    check(f'catalogue : {nb_pub} formations disponibles', page.locator('.fact b').nth(1).inner_text().strip() == str(nb_pub))
+    check('accueil : 2 chiffres clés (plus de « disponibles aujourd\'hui »)', page.locator('.fact').count() == 2 and 'disponible' not in page.locator('.facts').inner_text())
     check('accueil : plus de barre de recherche dans la page', page.locator('#search').count() == 0)
     page.click('[data-dom=data]'); page.wait_for_timeout(150)
     check('filtre domaine : 5 métiers', page.locator('.card.job').count() == 5)
