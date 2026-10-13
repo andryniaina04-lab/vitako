@@ -7275,6 +7275,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-0-f": {
+  "hours": 22,
+  "description": "Le développeur mobile crée, teste et publie des applications pour Android et iOS. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des commerces, des start-up, des ONG et des agences, à Madagascar et à l'étranger, avec Flutter et Firebase : native ou multiplateforme, cycle de vie d'une application, Dart, widgets, mise en page, état, navigation, formulaires adaptés au contexte local, comptes et base de données, fonctionnement hors connexion, règles de sécurité, première version, tests en conditions réelles et publication sur Google Play. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les approches native et multiplateforme et le cycle de vie",
+   "Écrire du Dart et construire des interfaces avec les widgets Flutter",
+   "Gérer l'état, la navigation et des formulaires adaptés au contexte local",
+   "Connecter une application à Firebase avec des règles de sécurité et le hors connexion",
+   "Réaliser, tester et publier une première version sur Google Play",
+   "Présenter son portfolio, chiffrer une application et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de développeur mobile depuis Madagascar",
+    "summary": "Native ou multiplateforme, Flutter, Mac pour iOS, cycle de vie d'une application, tâches du métier, données personnelles, clients, poste de travail et plan d'apprentissage.",
+    "sections": [
+     "Le métier en une phrase",
+     "Native ou multiplateforme",
+     "Le cycle de vie d'une application",
+     "Les tâches du développeur mobile",
+     "Qui sont vos clients ?",
+     "Votre poste de travail",
+     "Votre plan d'apprentissage",
+     "Exercice pratique : préparer votre environnement"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : Dart, widgets, mise en page, état, navigation et formulaires",
+    "summary": "Types, interpolation, fonctions, classes et null safety, widgets, Column, Row, ListView et Card, StatefulWidget et setState, Navigator, formulaires vérifiés et adaptés à Madagascar.",
+    "sections": [
+     "Les bases de Dart",
+     "Tout est widget",
+     "La mise en page",
+     "L'état d'un écran",
+     "Navigation et formulaires",
+     "Exercice pratique : une petite application"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : Flutter, Firebase, sécurité et comptes de publication",
+    "summary": "Rechargement à chaud, DevTools, pub.dev, services Firebase, lecture et écriture dans Firestore, hors connexion, règles de sécurité, préparation de la publication, Google Play Console et Apple Developer Program.",
+    "sections": [
+     "Les outils de Flutter",
+     "Firebase : les services utiles",
+     "Les règles de sécurité",
+     "Préparer la publication",
+     "Les comptes de publication",
+     "Exercice pratique : une application connectée"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : l'application de Mofo Gasy Express",
+    "summary": "Première version réaliste, paiement Mobile Money par référence, organisation du code et planning, états de l'interface, tests en conditions réelles, taille de l'application et publication sur Google Play.",
+    "sections": [
+     "Le cas pratique : « Mofo Gasy Express »",
+     "Étape 1 : une première version réaliste",
+     "Étape 2 : organiser le code et le travail",
+     "Étape 3 : les états de l'interface",
+     "Étape 4 : tester en conditions réelles",
+     "Étape 5 : publier et livrer",
+     "Exercice pratique : l'application de Mofo Gasy Express"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio sans secrets, 5 canaux, chiffrage par fonctions avec marge et coûts externes, maintenance, conditions en 7 points, paiement par étapes et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Chiffrer une application",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "tech-1-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du testeur un professionnel qui aide les équipes à livrer vite sans casser ce qui marche : spécialité (automatisation, API, mobile, performance, accessibilité, QA lead), audit qualité, stratégie fondée sur les risques et pyramide des tests, outils payants (BrowserStack et Jira avec gestion des tests), Page Object, sélecteurs robustes, données de test, intégration continue et tests instables, rapports en anglais, rituels agiles, ISTQB, test participatif et localisation, puis offres, contrats récurrents, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

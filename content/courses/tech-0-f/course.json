@@ -1,0 +1,97 @@
+{
+  "id": "tech-0-f",
+  "hours": 22,
+  "description": "Le développeur mobile crée, teste et publie des applications pour Android et iOS. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des commerces, des start-up, des ONG et des agences, à Madagascar et à l'étranger, avec Flutter et Firebase : native ou multiplateforme, cycle de vie d'une application, Dart, widgets, mise en page, état, navigation, formulaires adaptés au contexte local, comptes et base de données, fonctionnement hors connexion, règles de sécurité, première version, tests en conditions réelles et publication sur Google Play. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les approches native et multiplateforme et le cycle de vie",
+    "Écrire du Dart et construire des interfaces avec les widgets Flutter",
+    "Gérer l'état, la navigation et des formulaires adaptés au contexte local",
+    "Connecter une application à Firebase avec des règles de sécurité et le hors connexion",
+    "Réaliser, tester et publier une première version sur Google Play",
+    "Présenter son portfolio, chiffrer une application et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de développeur mobile depuis Madagascar",
+      "summary": "Native ou multiplateforme, Flutter, Mac pour iOS, cycle de vie d'une application, tâches du métier, données personnelles, clients, poste de travail et plan d'apprentissage.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que Flutter ?", "options": ["Un outil pour développer Android et iOS avec une seule base de code", "Un réseau social", "Un hébergeur", "Un langage de base de données"], "correct": 0 },
+        { "q": "Que faut-il pour compiler une application iOS ?", "options": ["Un Mac", "Un téléphone Android", "Une tablette graphique", "Rien de particulier"], "correct": 0 },
+        { "q": "Quelles autorisations demander à l'utilisateur ?", "options": ["Seulement celles nécessaires", "Toutes", "Aucune jamais", "Celles des autres applications"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : Dart, widgets, mise en page, état, navigation et formulaires",
+      "summary": "Types, interpolation, fonctions, classes et null safety, widgets, Column, Row, ListView et Card, StatefulWidget et setState, Navigator, formulaires vérifiés et adaptés à Madagascar.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie String? en Dart ?", "options": ["La valeur peut être vide", "Une erreur", "Un nombre", "Une liste"], "correct": 0 },
+        { "q": "Quel widget affiche une liste qui défile ?", "options": ["ListView", "Text", "Row", "Padding"], "correct": 0 },
+        { "q": "À quoi sert setState ?", "options": ["Indiquer que l'état a changé et redessiner l'écran", "Fermer l'application", "Changer d'écran", "Envoyer un e-mail"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Flutter, Firebase, sécurité et comptes de publication",
+      "summary": "Rechargement à chaud, DevTools, pub.dev, services Firebase, lecture et écriture dans Firestore, hors connexion, règles de sécurité, préparation de la publication, Google Play Console et Apple Developer Program.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que permet Cloud Firestore quand la connexion coupe ?", "options": ["Continuer à fonctionner et synchroniser au retour du réseau", "Rien", "Supprimer les données", "Bloquer l'application"], "correct": 0 },
+        { "q": "Peut-on laisser une base en mode test ouvert à tous après publication ?", "options": ["Non, jamais", "Oui", "Oui, la première année", "Oui, si l'application est gratuite"], "correct": 0 },
+        { "q": "Au nom de qui ouvrir le compte de publication ?", "options": ["Du client", "Du développeur toujours", "D'un ami", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : l'application de Mofo Gasy Express",
+      "summary": "Première version réaliste, paiement Mobile Money par référence, organisation du code et planning, états de l'interface, tests en conditions réelles, taille de l'application et publication sur Google Play.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que demande un paiement Mobile Money automatique ?", "options": ["Une intégration officielle avec contrat", "Rien de particulier", "Un simple bouton", "Un SMS"], "correct": 0 },
+        { "q": "Quel état est souvent oublié dans les maquettes ?", "options": ["Les états vides et d'erreur", "Le contenu", "Le titre", "Le logo"], "correct": 0 },
+        { "q": "Sur quel téléphone tester en priorité ?", "options": ["Un Android d'entrée de gamme", "Seulement le plus récent", "Aucun", "Un ordinateur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio sans secrets, 5 canaux, chiffrage par fonctions avec marge et coûts externes, maintenance, conditions en 7 points, paiement par étapes et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que ne doit jamais contenir un dépôt public ?", "options": ["Des clés secrètes ou la clé de signature", "Un README", "Du code Dart", "Des captures"], "correct": 0 },
+        { "q": "Pourquoi proposer la maintenance ?", "options": ["Les systèmes et magasins exigent des mises à jour régulières", "Pour facturer sans raison", "Ce n'est pas utile", "Pour garder le code secret"], "correct": 0 },
+        { "q": "Quelle marge ajouter à l'estimation ?", "options": ["20 à 30 % pour tests, publication et échanges", "Aucune", "200 %", "1 %"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un développeur mobile ?", "options": ["Il crée, teste et publie des applications mobiles", "Il répare des téléphones", "Il vend des forfaits", "Il dessine des logos"], "correct": 0 },
+    { "q": "Quel langage utilise Flutter ?", "options": ["Dart", "Swift", "PHP", "SQL"], "correct": 0 },
+    { "q": "Quel système est majoritaire à Madagascar ?", "options": ["Android", "iOS", "Windows Phone", "Aucun"], "correct": 0 },
+    { "q": "Quelle étape vient après les tests ?", "options": ["La publication", "L'idée", "Les maquettes", "Le développement"], "correct": 0 },
+    { "q": "Quel est un avantage du multiplateforme ?", "options": ["Une seule base de code pour Android et iOS", "Aucun", "Il interdit iOS", "Il est toujours plus lent"], "correct": 0 },
+    { "q": "Comment afficher une variable dans un texte Dart ?", "options": ["Avec l'interpolation $variable", "Avec un tableau", "Impossible", "Avec une image"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un widget ?", "options": ["Un élément de l'interface", "Un serveur", "Un paiement", "Un fichier image"], "correct": 0 },
+    { "q": "Quel widget place les éléments côte à côte ?", "options": ["Row", "Column", "ListView", "Text"], "correct": 0 },
+    { "q": "Quand utiliser un StatefulWidget ?", "options": ["Quand l'écran change selon les actions", "Jamais", "Pour un texte fixe", "Pour l'icône"], "correct": 0 },
+    { "q": "Comment revenir à l'écran précédent ?", "options": ["Navigator.pop(context)", "setState", "print", "main()"], "correct": 0 },
+    { "q": "Comment adapter l'adresse dans un formulaire malgache ?", "options": ["Quartier et repère plutôt que numéro de rue seulement", "Code postal à 5 chiffres obligatoire", "Aucune adresse", "Adresse européenne imposée"], "correct": 0 },
+    { "q": "À quoi sert le rechargement à chaud ?", "options": ["Voir les changements en moins d'une seconde", "Chauffer le téléphone", "Publier l'application", "Supprimer les données"], "correct": 0 },
+    { "q": "Que vérifier avant d'ajouter un paquet de pub.dev ?", "options": ["Popularité, mises à jour et compatibilité", "Sa couleur", "Rien", "Son nom seulement"], "correct": 0 },
+    { "q": "Quel service Firebase gère les comptes ?", "options": ["Authentication", "Storage", "Crashlytics", "Analytics"], "correct": 0 },
+    { "q": "Comment tester le fonctionnement hors connexion ?", "options": ["En mode avion", "En augmentant le volume", "En changeant de langue", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Que vérifient les règles de sécurité de Firestore ?", "options": ["Qui peut lire ou modifier chaque donnée", "La couleur de l'application", "La vitesse du réseau", "Rien"], "correct": 0 },
+    { "q": "Où conserver la clé de signature ?", "options": ["En lieu sûr, jamais dans un dépôt public", "Sur GitHub public", "Dans la fiche Google Play", "Par e-mail à tous"], "correct": 0 },
+    { "q": "Que faut-il publier avec l'application ?", "options": ["Une politique de confidentialité", "Le code source obligatoirement", "Les mots de passe", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une première version (MVP) ?", "options": ["La version la plus simple qui apporte une vraie valeur", "La version finale avec tout", "Une maquette papier", "Un test de recrutement"], "correct": 0 },
+    { "q": "Que voit l'utilisateur en cas d'erreur ?", "options": ["Un message clair et un bouton Réessayer", "Un écran blanc", "Un code d'erreur technique", "Rien"], "correct": 0 },
+    { "q": "Pourquoi surveiller la taille de l'application ?", "options": ["Peu de stockage et données limitées chez beaucoup d'utilisateurs", "Pour la beauté", "Ce n'est pas important", "Pour payer moins Google"], "correct": 0 },
+    { "q": "Que tester en plus des écrans ?", "options": ["Interruptions comme un appel ou la mise en arrière-plan", "Rien", "La couleur du câble", "Le nom du téléphone"], "correct": 0 },
+    { "q": "Comment chiffrer une application ?", "options": ["Fonctions estimées en jours, marge, tarif journalier et coûts externes", "Au hasard", "Selon le nombre d'icônes", "Toujours le même prix"], "correct": 0 },
+    { "q": "Quel paiement par étapes proposer ?", "options": ["Par exemple 30 %, 40 %, 30 %", "Tout après un an", "Rien avant la fin", "Tout en avance sans contrat"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

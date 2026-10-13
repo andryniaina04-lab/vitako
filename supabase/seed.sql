@@ -33,7 +33,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
   ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
   ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 16, true),
-  ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 13, false),
+  ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 22, true),
   ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 15, false),
   ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
   ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
@@ -51781,6 +51781,659 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi les droits publicitaires se paient-ils ?', '["Pour décorer le contrat","Ce n''est pas le cas","La vidéo peut faire vendre beaucoup pendant des mois","Ils sont gratuits"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel paiement proposer pour une commande ?', '["Rien","Seulement en cadeaux","Tout après 6 mois","50 % à la commande et 50 % à la livraison"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel moyen de paiement utiliser avec une marque locale ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
+
+-- tech-0-f
+delete from public.exam_questions where course_id = 'tech-0-f';
+delete from public.module_questions where course_id = 'tech-0-f';
+delete from public.lessons where course_id = 'tech-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-f', 0, 'Le métier de développeur mobile depuis Madagascar', 'Native ou multiplateforme, Flutter, Mac pour iOS, cycle de vie d''une application, tâches du métier, données personnelles, clients, poste de travail et plan d''apprentissage.', 'Commander un repas, payer par Mobile Money, suivre une livraison, apprendre une langue, gérer une boutique : tout passe par des applications mobiles. Le développeur mobile crée ces applications pour Android et iOS. Avec des outils comme Flutter, une seule base de code suffit pour les deux systèmes. C''est un métier qui se fait entièrement à distance. Ce premier module vous le présente.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un développeur mobile.
+> 2. Distinguer les approches native et multiplateforme.
+> 3. Décrire le cycle de vie d''une application.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail et votre plan d''apprentissage.
+
+## Le métier en une phrase
+
+Un développeur mobile **conçoit, programme, teste et publie des applications pour téléphones et tablettes, en tenant compte des contraintes des appareils : petits écrans, connexion variable, batterie, mémoire**.
+
+## Native ou multiplateforme
+
+| Approche | Principe | Langages et outils | Avantages |
+| --- | --- | --- | --- |
+| **Native Android** | Une application spécifique à Android | Kotlin, Android Studio | Accès complet au système |
+| **Native iOS** | Une application spécifique à l''iPhone | Swift, Xcode (sur Mac) | Accès complet au système |
+| **Multiplateforme** | Une seule base de code pour Android et iOS | Flutter (Dart), React Native (JavaScript) | Moins de travail, une seule équipe |
+
+> [!definition] Flutter
+> Un outil gratuit créé par Google pour développer des applications Android, iOS, web et ordinateur à partir d''une seule base de code, avec le langage Dart. Il dessine lui-même l''interface, ce qui donne le même rendu sur tous les appareils.
+
+> [!madagascar]
+> Pour publier sur l''App Store d''Apple, il faut compiler l''application sur un **Mac**. Beaucoup de développeurs malgaches commencent donc par **Android**, très majoritaire à Madagascar, et utilisent plus tard un Mac, un service de compilation en ligne ou l''équipe du client pour la version iOS.
+
+## Le cycle de vie d''une application
+
+| N° | Étape | Ce qui se passe |
+| --- | --- | --- |
+| 1 | **Idée et besoins** | Qui utilise l''application, pour quoi faire |
+| 2 | **Maquettes** | Écrans dessinés dans Figma par un designer |
+| 3 | **Développement** | Interface, logique, connexion aux données |
+| 4 | **Tests** | Sur plusieurs téléphones, connexions, tailles d''écran |
+| 5 | **Publication** | Google Play et App Store, avec fiche et captures |
+| 6 | **Suivi** | Bugs, avis, statistiques, mises à jour |
+
+## Les tâches du développeur mobile
+
+1. **Construire les écrans** à partir des maquettes.
+2. **Gérer la navigation** entre les écrans.
+3. **Connecter l''application aux données** : base de données, API, comptes.
+4. **Gérer les cas réels** : pas de connexion, erreur, chargement.
+5. **Utiliser les fonctions du téléphone** : appareil photo, localisation, notifications.
+6. **Tester** sur de vrais appareils.
+7. **Publier et mettre à jour**.
+
+> [!attention]
+> Une application mobile manipule souvent des **données personnelles** (nom, téléphone, localisation, photos). Demandez seulement les autorisations nécessaires, protégez les données et respectez les règles des magasins d''applications sur la confidentialité.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Commerces et restaurants** : commande, fidélité, livraison.
+2. **Start-up** : services de paiement, transport, agriculture, éducation.
+3. **ONG** : collecte de données sur le terrain, applications hors connexion.
+4. **Écoles et organismes de formation**.
+
+### À l''étranger
+
+1. **Start-up** qui lancent une première version d''application.
+2. **Agences** qui cherchent des développeurs Flutter.
+3. **Entreprises** qui veulent maintenir et améliorer une application existante.
+
+> [!madagascar] Votre avantage
+> Les applications pour l''Afrique doivent fonctionner sur des **téléphones Android d''entrée de gamme** et avec une **connexion faible ou coupée**. Un développeur qui maîtrise ces contraintes (mode hors ligne, applications légères) est très recherché par les ONG et les start-up qui ciblent ces marchés.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive au minimum, 16 Go conseillé, SSD |
+| **Système** | Windows, Linux ou macOS (macOS nécessaire pour compiler pour iOS) |
+| **Logiciels gratuits** | Flutter, Android Studio (et son émulateur), VS Code |
+| **Téléphone Android** | Pour tester en conditions réelles (mode développeur activé) |
+| **Compte Firebase** | Gratuit pour commencer |
+| **Git et GitHub** | Pour sauvegarder le code |
+
+## Votre plan d''apprentissage
+
+| Mois | Objectif |
+| --- | --- |
+| **1** | Bases de Dart et de Flutter : widgets, mise en page, navigation |
+| **2** | Données : formulaires, listes, API, Firebase |
+| **3** | Projet complet testé sur un vrai téléphone |
+| **4** | Publication sur Google Play (test interne), portfolio |
+
+> [!retenir]
+> - Le développeur mobile crée, teste et publie des applications pour Android et iOS.
+> - Native ou multiplateforme ; Flutter permet une seule base de code.
+> - Idée, maquettes, développement, tests, publication, suivi.
+> - Protéger les données et ne demander que les autorisations utiles.
+> - Commencer par Android, avec Flutter, Android Studio et un vrai téléphone.
+
+## Exercice pratique : préparer votre environnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Installez Flutter, Android Studio et VS Code avec l''extension Flutter.
+> 2. Lancez la commande de diagnostic de Flutter et corrigez les problèmes signalés.
+> 3. Créez le projet d''exemple et lancez-le sur l''émulateur puis sur votre téléphone.
+> 4. Listez 5 applications que vous utilisez et notez ce qui se passe quand la connexion coupe.
+>
+> **À livrer** : une capture du diagnostic, une capture de l''application sur votre téléphone et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 0, 0, 'Qu''est-ce que Flutter ?', '["Un langage de base de données","Un réseau social","Un outil pour développer Android et iOS avec une seule base de code","Un hébergeur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 0, 1, 'Que faut-il pour compiler une application iOS ?', '["Un Mac","Un téléphone Android","Rien de particulier","Une tablette graphique"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 0, 2, 'Quelles autorisations demander à l''utilisateur ?', '["Celles des autres applications","Seulement celles nécessaires","Aucune jamais","Toutes"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-f', 1, 'Les bases : Dart, widgets, mise en page, état, navigation et formulaires', 'Types, interpolation, fonctions, classes et null safety, widgets, Column, Row, ListView et Card, StatefulWidget et setState, Navigator, formulaires vérifiés et adaptés à Madagascar.', 'Ce module vous donne les bases du développement avec Flutter : le langage Dart, les widgets, la mise en page, l''état d''un écran, la navigation et les formulaires.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire du code Dart simple.
+> 2. Construire une interface avec des widgets.
+> 3. Mettre en page avec Row, Column et ListView.
+> 4. Gérer l''état d''un écran.
+> 5. Naviguer entre écrans et vérifier un formulaire.
+
+## Les bases de Dart
+
+```dart
+void main() {
+  String nom = ''Mialy'';
+  int quantite = 3;
+  double prix = 2500.0;
+  bool livraison = true;
+
+  double total = quantite * prix;
+  print(''Bonjour $nom, total : $total Ar'');
+
+  List<String> plats = [''Romazava'', ''Ravitoto'', ''Mofo gasy''];
+  for (final plat in plats) {
+    print(plat);
+  }
+
+  if (livraison) {
+    print(''Livraison demandée'');
+  }
+}
+```
+
+| Notion | Exemple |
+| --- | --- |
+| **Types** | `String`, `int`, `double`, `bool`, `List`, `Map` |
+| **Interpolation** | `''Total : $total Ar''` |
+| **Fonctions** | `double calculerTotal(int q, double p) => q * p;` |
+| **Classes** | Modèle de données : `class Plat { final String nom; final double prix; ... }` |
+| **Null safety** | `String?` indique qu''une valeur peut être vide |
+
+> [!definition] Null safety
+> Un mécanisme de Dart qui empêche d''utiliser une valeur vide par erreur. Si une variable peut être vide, son type se termine par `?`, et le code doit vérifier ce cas.
+
+## Tout est widget
+
+> [!definition] Widget
+> Un élément de l''interface : un texte, un bouton, une image, une colonne, un écran entier. Une application Flutter est un arbre de widgets imbriqués.
+
+| Widget | Usage |
+| --- | --- |
+| `Text` | Afficher un texte |
+| `ElevatedButton` | Bouton |
+| `Image` | Image locale ou en ligne |
+| `TextField` | Champ de saisie |
+| `Scaffold` | Structure d''un écran (barre du haut, contenu, bouton flottant) |
+| `Padding`, `SizedBox` | Espacements |
+
+## La mise en page
+
+| Widget | Usage |
+| --- | --- |
+| `Column` | Éléments empilés verticalement |
+| `Row` | Éléments côte à côte |
+| `Expanded` | Prendre l''espace disponible |
+| `ListView` | Liste qui défile |
+| `Card` | Carte avec ombre |
+
+```dart
+ListView.builder(
+  itemCount: plats.length,
+  itemBuilder: (context, index) {
+    final plat = plats[index];
+    return Card(
+      child: ListTile(
+        title: Text(plat.nom),
+        subtitle: Text(''${plat.prix} Ar''),
+        trailing: const Icon(Icons.add_shopping_cart),
+      ),
+    );
+  },
+)
+```
+
+## L''état d''un écran
+
+| Type de widget | Usage |
+| --- | --- |
+| `StatelessWidget` | L''écran ne change pas tout seul |
+| `StatefulWidget` | L''écran change selon les actions (compteur, panier, formulaire) |
+
+```dart
+class PagePanier extends StatefulWidget {
+  const PagePanier({super.key});
+
+  @override
+  State<PagePanier> createState() => _PagePanierState();
+}
+
+class _PagePanierState extends State<PagePanier> {
+  int nombreArticles = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text(''Mon panier'')),
+      body: Center(child: Text(''Articles : $nombreArticles'')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() => nombreArticles++),
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+```
+
+> [!astuce]
+> `setState` indique à Flutter que l''état a changé et qu''il faut **redessiner** l''écran. Pour les applications plus grandes, on utilise des outils de gestion d''état (Provider, Riverpod, Bloc), que vous découvrirez au niveau Avancé.
+
+## Navigation et formulaires
+
+```dart
+// Aller vers l''écran de détail
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => PageDetail(plat: plat)),
+);
+
+// Revenir en arrière
+Navigator.pop(context);
+```
+
+| Vérification d''un formulaire | Exemple |
+| --- | --- |
+| Champ obligatoire | Le nom ne doit pas être vide |
+| Format | Numéro de téléphone malgache à 10 chiffres commençant par 03 |
+| Message clair | « Veuillez saisir un numéro valide (ex. 034 12 345 67) » |
+| Bouton désactivé | Tant que le formulaire n''est pas valide |
+
+> [!madagascar]
+> Adaptez les formulaires au contexte : format des **numéros malgaches**, adresses souvent décrites par un quartier et un repère plutôt qu''un numéro de rue, noms longs. Un formulaire pensé pour l''Europe bloque souvent les utilisateurs malgaches.
+
+> [!retenir]
+> - Dart : types, interpolation, fonctions, classes, null safety.
+> - Une application Flutter est un arbre de widgets.
+> - Column, Row, Expanded, ListView et Card pour la mise en page.
+> - StatefulWidget et setState pour les écrans qui changent.
+> - Navigator pour changer d''écran ; formulaires vérifiés et adaptés au contexte local.
+
+## Exercice pratique : une petite application
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Créez une classe `Plat` et une liste de 6 plats.
+> 2. Affichez-les dans un `ListView` avec des cartes.
+> 3. Ajoutez un compteur de panier qui augmente quand on touche un plat.
+> 4. Créez un écran de détail et un formulaire de commande (nom, téléphone, quartier) avec vérification.
+>
+> **À livrer** : le lien du dépôt GitHub et une courte vidéo de l''application sur votre téléphone.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 1, 0, 'Que signifie String? en Dart ?', '["Un nombre","Une erreur","Une liste","La valeur peut être vide"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 1, 1, 'Quel widget affiche une liste qui défile ?', '["Row","Text","Padding","ListView"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 1, 2, 'À quoi sert setState ?', '["Envoyer un e-mail","Changer d''écran","Fermer l''application","Indiquer que l''état a changé et redessiner l''écran"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-f', 2, 'Les outils : Flutter, Firebase, sécurité et comptes de publication', 'Rechargement à chaud, DevTools, pub.dev, services Firebase, lecture et écriture dans Firestore, hors connexion, règles de sécurité, préparation de la publication, Google Play Console et Apple Developer Program.', 'Ce module vous fait prendre en main les outils du développeur mobile : **Flutter** avec ses outils de développement, **Firebase** pour les comptes et les données, et la préparation de la publication. Vous découvrirez aussi les comptes payants indispensables pour publier : **Google Play Console** et **Apple Developer Program**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les outils de développement de Flutter.
+> 2. Connecter une application à Firebase.
+> 3. Gérer les comptes utilisateurs et les données avec Firebase.
+> 4. Protéger les données avec des règles de sécurité.
+> 5. Comprendre les comptes de publication et leurs coûts.
+
+## Les outils de Flutter
+
+| Outil | Usage |
+| --- | --- |
+| **Rechargement à chaud** (hot reload) | Voir les changements en moins d''une seconde, sans redémarrer l''application |
+| **Flutter DevTools** | Inspecter les widgets, la mémoire, les performances |
+| **Émulateur Android** | Tester sans téléphone |
+| **Téléphone réel** en mode développeur | Tester en conditions réelles |
+| **pub.dev** | Bibliothèque de paquets (cartes, appareil photo, stockage) |
+| **flutter analyze** | Repérer les erreurs et mauvaises pratiques |
+
+> [!attention]
+> Avant d''ajouter un paquet de pub.dev, vérifiez sa **popularité**, sa date de mise à jour et sa compatibilité. Un paquet abandonné peut bloquer votre application lors d''une future mise à jour.
+
+## Firebase : les services utiles
+
+> [!definition] Firebase
+> Une plateforme de Google qui fournit des services prêts à l''emploi pour les applications : comptes, base de données, stockage de fichiers, notifications, statistiques. Elle propose une offre gratuite avec des limites, puis un paiement à l''usage.
+
+| Service | Usage |
+| --- | --- |
+| **Authentication** | Comptes : e-mail, téléphone, Google |
+| **Cloud Firestore** | Base de données en temps réel, avec fonctionnement hors connexion |
+| **Storage** | Photos et fichiers |
+| **Cloud Messaging** | Notifications |
+| **Crashlytics** | Rapports de plantage |
+| **Analytics** | Statistiques d''utilisation |
+
+### Lire et écrire des données
+
+```dart
+final db = FirebaseFirestore.instance;
+
+// Ajouter une commande
+await db.collection(''commandes'').add({
+  ''clientId'': utilisateur.uid,
+  ''plats'': [''Romazava'', ''Mofo gasy''],
+  ''total'': 12500,
+  ''statut'': ''en_attente'',
+  ''date'': FieldValue.serverTimestamp(),
+});
+
+// Écouter les commandes du client en temps réel
+db.collection(''commandes'')
+  .where(''clientId'', isEqualTo: utilisateur.uid)
+  .snapshots()
+  .listen((resultat) {
+    // mettre à jour l''écran
+  });
+```
+
+> [!madagascar]
+> Cloud Firestore garde une **copie locale** des données sur le téléphone : l''application continue de fonctionner quand la connexion coupe, et les modifications sont envoyées au retour du réseau. C''est un grand avantage pour les utilisateurs à Madagascar. Testez toujours votre application en **mode avion**.
+
+## Les règles de sécurité
+
+Sans règles, n''importe qui pourrait lire ou modifier les données de votre base. Les règles de Firestore définissent qui peut faire quoi.
+
+```
+rules_version = ''2'';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /commandes/{commandeId} {
+      allow read: if request.auth != null
+                  && resource.data.clientId == request.auth.uid;
+      allow create: if request.auth != null
+                    && request.resource.data.clientId == request.auth.uid;
+    }
+  }
+}
+```
+
+> [!attention]
+> Ne laissez **jamais** une base en « mode test » ouvert à tous une fois l''application publiée. Testez vos règles avec l''outil de simulation de la console Firebase avant chaque mise en ligne.
+
+## Préparer la publication
+
+| Élément | Contenu |
+| --- | --- |
+| **Identifiant de l''application** | Unique, par exemple com.mivoatra.epargne |
+| **Icône et nom** | Aux formats demandés par chaque magasin |
+| **Version** | Numéro de version et de build, augmentés à chaque publication |
+| **Signature** | Clé de signature conservée en lieu sûr |
+| **Fiche** | Description, captures d''écran, catégorie |
+| **Politique de confidentialité** | Page en ligne expliquant l''usage des données |
+| **Déclarations** | Données collectées, public visé, contenu |
+
+> [!attention]
+> La **clé de signature** de l''application doit être sauvegardée en lieu sûr et ne jamais être publiée dans un dépôt de code public. Sans elle, ou si elle est volée, la gestion des mises à jour devient très compliquée.
+
+## Les comptes de publication
+
+| Compte | Coût et conditions (à vérifier sur les sites officiels) |
+| --- | --- |
+| **Google Play Console** | Frais d''inscription unique ; vérification d''identité ; règles de test avant publication pour certains nouveaux comptes personnels |
+| **Apple Developer Program** | Abonnement annuel ; Mac nécessaire pour compiler et envoyer l''application |
+
+> [!madagascar]
+> Ces frais se paient en dollars par carte bancaire internationale. Le plus souvent, **le client ouvre son propre compte** de publication et vous ajoute comme utilisateur : l''application lui appartient. Pour votre propre portfolio, un compte Google Play suffit pour commencer.
+
+> [!retenir]
+> - Rechargement à chaud, DevTools, émulateur, téléphone réel, pub.dev, analyse.
+> - Firebase : comptes, Firestore, stockage, notifications, plantages, statistiques.
+> - Firestore fonctionne hors connexion : tester en mode avion.
+> - Des règles de sécurité testées ; jamais de base ouverte à tous.
+> - Préparer identifiant, icône, version, signature, fiche et politique de confidentialité ; comptes au nom du client.
+
+## Exercice pratique : une application connectée
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Créez un projet Firebase et connectez-le à votre application du module 2.
+> 2. Ajoutez la connexion par e-mail.
+> 3. Enregistrez les commandes dans Firestore et affichez celles du client connecté.
+> 4. Écrivez les règles de sécurité et testez-les dans le simulateur.
+> 5. Testez l''application en mode avion puis au retour du réseau.
+>
+> **À livrer** : le lien du dépôt (sans clés secrètes), une capture des règles testées et une vidéo du test hors connexion.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 2, 0, 'Que permet Cloud Firestore quand la connexion coupe ?', '["Bloquer l''application","Continuer à fonctionner et synchroniser au retour du réseau","Supprimer les données","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 2, 1, 'Peut-on laisser une base en mode test ouvert à tous après publication ?', '["Oui, la première année","Non, jamais","Oui","Oui, si l''application est gratuite"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 2, 2, 'Au nom de qui ouvrir le compte de publication ?', '["D''un ami","Personne","Du développeur toujours","Du client"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-f', 3, 'Premier projet : l''application de Mofo Gasy Express', 'Première version réaliste, paiement Mobile Money par référence, organisation du code et planning, états de l''interface, tests en conditions réelles, taille de l''application et publication sur Google Play.', 'Dans ce module, vous réalisez une application complète pour un client, du cadrage à la publication, comme le ferait un développeur mobile indépendant. Vous apprendrez à définir une première version réaliste, à organiser le développement, à tester sur des appareils variés et à publier sur Google Play.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Définir une première version réaliste avec le client.
+> 2. Organiser le code et le développement par étapes.
+> 3. Gérer les états de chargement, d''erreur et hors connexion.
+> 4. Tester sur plusieurs appareils et conditions réelles.
+> 5. Publier sur Google Play et livrer.
+
+## Le cas pratique : « Mofo Gasy Express »
+
+> [!exemple] Votre client
+> **Mofo Gasy Express** livre des repas à Antananarivo. Aujourd''hui, les commandes arrivent par appels et messages Facebook, et beaucoup se perdent. Le gérant, M. Fidy, veut une application Android simple : voir le menu, commander, choisir le quartier de livraison, payer à la livraison ou par Mobile Money (référence de transaction), et suivre l''état de la commande.
+
+## Étape 1 : une première version réaliste
+
+| Dans la première version | Pour plus tard |
+| --- | --- |
+| Menu avec photos et prix | Programme de fidélité |
+| Panier et commande | Paiement intégré automatique |
+| Choix du quartier et repère | Suivi du livreur sur une carte |
+| Paiement à la livraison ou référence Mobile Money | Application iOS |
+| Suivi du statut (reçue, en préparation, en route, livrée) | Avis et notes |
+| Écran d''administration simple pour le gérant | Statistiques avancées |
+
+> [!definition] Première version (MVP)
+> La version la plus simple qui apporte une vraie valeur aux utilisateurs. On la publie vite, on observe, puis on ajoute des fonctions selon les besoins réels.
+
+> [!attention]
+> Un paiement Mobile Money **automatique** demande une intégration officielle avec l''opérateur ou un prestataire agréé, avec un contrat. Dans la première version, l''application enregistre seulement la **référence de transaction**, vérifiée par le gérant. Ne promettez pas une intégration de paiement sans avoir vérifié les conditions.
+
+## Étape 2 : organiser le code et le travail
+
+```
+lib/
+  main.dart
+  modeles/      plat.dart, commande.dart
+  services/     auth_service.dart, commande_service.dart
+  ecrans/       menu.dart, panier.dart, commande.dart, suivi.dart, admin.dart
+  widgets/      carte_plat.dart, bouton_principal.dart
+```
+
+| Semaine | Travail |
+| --- | --- |
+| 1 | Structure, modèles, menu et panier |
+| 2 | Comptes, commande, Firestore, règles de sécurité |
+| 3 | Suivi du statut, écran du gérant, notifications |
+| 4 | États d''erreur et hors connexion, tests, publication en test interne |
+| 5 | Corrections, publication, formation du gérant |
+
+## Étape 3 : les états de l''interface
+
+| État | Ce que voit l''utilisateur |
+| --- | --- |
+| **Chargement** | Indicateur de chargement ou squelette de la page |
+| **Contenu** | Le menu, la commande |
+| **Vide** | « Votre panier est vide » avec un bouton vers le menu |
+| **Erreur** | Message clair et bouton « Réessayer » |
+| **Hors connexion** | Bandeau « Hors connexion : votre commande sera envoyée dès le retour du réseau » |
+
+> [!astuce]
+> Les **états vides et d''erreur** sont souvent oubliés dans les maquettes. Proposez-les au designer ou au client : ils font une grande différence pour les utilisateurs.
+
+## Étape 4 : tester en conditions réelles
+
+| Test | Pourquoi |
+| --- | --- |
+| **Téléphone Android d''entrée de gamme** | La plupart des clients en ont un |
+| **Petit écran et grand écran** | Mise en page adaptée |
+| **Connexion lente et mode avion** | Comportement hors connexion |
+| **Taille de texte agrandie** dans les réglages | Accessibilité |
+| **Interruption** (appel, mise en arrière-plan) | L''application reprend correctement |
+| **Testeurs réels** (5 clients du restaurant) | Retours sur la simplicité |
+
+> [!madagascar]
+> Surveillez la **taille de l''application** : beaucoup d''utilisateurs ont un téléphone avec peu de stockage et des données mobiles limitées. Compressez les images, évitez les paquets inutiles, et chargez les photos du menu à la demande.
+
+## Étape 5 : publier et livrer
+
+| Étape | Action |
+| --- | --- |
+| **Compte Google Play** | Au nom de Mofo Gasy Express, vous ajouté comme utilisateur |
+| **Fichier de publication** | App bundle signé |
+| **Fiche** | Description en français et en malgache, captures, icône |
+| **Politique de confidentialité** | Page en ligne |
+| **Test interne puis fermé** | Avec des testeurs, selon les règles de Google Play |
+| **Publication** | Après validation par Google |
+| **Livraison** | Code source, accès, documentation, formation du gérant |
+
+> [!retenir]
+> - Une première version réaliste ; le paiement automatique demande une intégration officielle.
+> - Un code organisé en modèles, services, écrans et widgets ; un planning par semaine.
+> - Chargement, contenu, vide, erreur et hors connexion prévus.
+> - Tests sur téléphone d''entrée de gamme, connexion lente, texte agrandi, testeurs réels.
+> - Publication au nom du client, avec fiche, confidentialité, tests et livraison complète.
+
+## Exercice pratique : l''application de Mofo Gasy Express
+
+> [!exercice] Exercice pratique · 20 heures (sur plusieurs semaines)
+> 1. Définissez la première version et le planning.
+> 2. Développez le menu, le panier, la commande, le suivi et l''écran du gérant avec Firebase.
+> 3. Ajoutez tous les états, dont le hors connexion.
+> 4. Testez avec au moins 3 personnes sur des téléphones différents.
+> 5. Préparez la fiche Google Play et publiez en test interne si vous avez un compte.
+>
+> **À livrer** : le dépôt GitHub, une vidéo de démonstration, votre rapport de tests et la fiche. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 3, 0, 'Que demande un paiement Mobile Money automatique ?', '["Un simple bouton","Une intégration officielle avec contrat","Un SMS","Rien de particulier"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 3, 1, 'Quel état est souvent oublié dans les maquettes ?', '["Le contenu","Les états vides et d''erreur","Le logo","Le titre"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 3, 2, 'Sur quel téléphone tester en priorité ?', '["Seulement le plus récent","Aucun","Un ordinateur","Un Android d''entrée de gamme"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-0-f', 4, 'Trouver des clients et se faire payer', 'Portfolio sans secrets, 5 canaux, chiffrage par fonctions avec marge et coûts externes, maintenance, conditions en 7 points, paiement par étapes et évolution.', 'Les start-up, les agences, les commerces et les ONG ont besoin de développeurs mobiles pour créer et faire évoluer leurs applications. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, chiffrer une application et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de développeur mobile.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Chiffrer une application avec une marge réaliste.
+> 4. Rédiger vos conditions, dont la maintenance.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **2 ou 3 applications** : vidéo de démonstration, captures, lien Google Play si publiée.
+2. **Le code sur GitHub** : organisé, avec README, sans clés secrètes.
+3. **Les choix techniques** expliqués : hors connexion, sécurité, performance.
+4. **Un projet utile localement** : application pour un commerce ou une association.
+5. **Un profil professionnel** clair : Flutter, Firebase, Android, iOS si possible.
+
+> [!attention]
+> Vérifiez que vos dépôts publics ne contiennent **aucune clé secrète**, aucun mot de passe ni aucune clé de signature. Les fichiers de configuration sensibles doivent être exclus avec le fichier `.gitignore`.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Commerces et restaurants** à Madagascar | Application de commande simple, vidéo de démonstration |
+| 2 | **Start-up et incubateurs** | Premières versions d''applications |
+| 3 | **ONG** | Applications de collecte de données hors connexion |
+| 4 | **Agences étrangères** cherchant des développeurs Flutter | Profil, tests techniques, missions |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une ONG
+> « Bonjour, vos agents collectent des données dans des zones sans connexion. Je développe des applications Android en Flutter qui fonctionnent hors connexion et synchronisent les données au retour du réseau. Voici une démonstration de 2 minutes. Je peux vous proposer une première version pour un de vos questionnaires. »
+
+## Chiffrer une application
+
+### La méthode
+
+1. **Listez** les écrans et les fonctions de la première version.
+2. **Estimez** chaque élément en jours.
+3. **Ajoutez** les tests, la publication et les échanges (20 à 30 %).
+4. **Multipliez** par votre tarif journalier.
+5. **Ajoutez** les coûts externes payés par le client (comptes de publication, Firebase au-delà du gratuit).
+
+> [!exemple] Calcul
+> Menu et panier : 3 jours · Comptes et commande : 4 jours · Suivi et notifications : 3 jours · Écran du gérant : 2 jours · États et hors connexion : 2 jours. Total : 14 jours + 25 % ≈ 18 jours. À 150 000 Ar par jour : **2 700 000 Ar**. *(Montants donnés en exemple.)*
+
+| Formule | Exemple de prix |
+| --- | --- |
+| **Première version simple** | Selon le calcul ci-dessus |
+| **Maintenance mensuelle** | 250 000 Ar par mois (mises à jour, corrections, suivi des plantages) |
+| **Mission en régie** pour une agence | Tarif journalier |
+
+*(Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Proposez toujours la **maintenance** : les systèmes Android et iOS changent chaque année, et les magasins demandent des mises à jour régulières. Sans maintenance, une application peut cesser de fonctionner ou être retirée.
+
+## Vos conditions
+
+1. **Le périmètre** de la première version, écrit précisément.
+2. **Les étapes** et démonstrations régulières.
+3. **Les comptes** (Google Play, Apple, Firebase) au nom du client.
+4. **La propriété du code** après paiement complet.
+5. **La garantie** : corrections des bugs pendant une période après la livraison.
+6. **La maintenance** : proposée à part.
+7. **Le paiement** par étapes : par exemple 30 % au début, 40 % à la version de test, 30 % à la publication.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Développeur Flutter confirmé** | Gestion d''état, architecture, tests automatiques |
+| **Développeur iOS ou Android natif** | Swift ou Kotlin |
+| **Développeur back-end** | API et serveurs (voir la formation Développeur back-end) |
+| **Testeur mobile** | Voir la formation Testeur logiciel (QA) |
+| **Chef de projet mobile** | Voir la formation Chef de projet digital |
+
+> [!retenir]
+> - Un portfolio avec démonstrations, code propre et sans secrets.
+> - Commerces, start-up, ONG, agences étrangères, plateformes.
+> - Chiffrer par fonctions en jours, avec marge et coûts externes.
+> - Comptes au nom du client, garantie, maintenance proposée à part.
+> - Paiement par étapes ; évoluez vers Flutter avancé, le natif ou le back-end.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Publiez votre portfolio avec la vidéo de votre application.
+> 2. Chiffrez une application fictive pour une ONG (collecte de données hors connexion).
+> 3. Rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 propositions à des commerces, ONG ou start-up.
+>
+> **À livrer** : le lien de votre portfolio, votre chiffrage, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 4, 0, 'Que ne doit jamais contenir un dépôt public ?', '["Des captures","Des clés secrètes ou la clé de signature","Du code Dart","Un README"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 4, 1, 'Pourquoi proposer la maintenance ?', '["Pour garder le code secret","Les systèmes et magasins exigent des mises à jour régulières","Ce n''est pas utile","Pour facturer sans raison"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-0-f', 4, 2, 'Quelle marge ajouter à l''estimation ?', '["200 %","20 à 30 % pour tests, publication et échanges","1 %","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que fait un développeur mobile ?', '["Il répare des téléphones","Il crée, teste et publie des applications mobiles","Il dessine des logos","Il vend des forfaits"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel langage utilise Flutter ?', '["SQL","Dart","Swift","PHP"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel système est majoritaire à Madagascar ?', '["Aucun","iOS","Android","Windows Phone"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quelle étape vient après les tests ?', '["Les maquettes","Le développement","La publication","L''idée"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel est un avantage du multiplateforme ?', '["Il interdit iOS","Aucun","Une seule base de code pour Android et iOS","Il est toujours plus lent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Comment afficher une variable dans un texte Dart ?', '["Avec l''interpolation $variable","Impossible","Avec une image","Avec un tableau"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Qu''est-ce qu''un widget ?', '["Un paiement","Un serveur","Un élément de l''interface","Un fichier image"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel widget place les éléments côte à côte ?', '["Column","Row","Text","ListView"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quand utiliser un StatefulWidget ?', '["Pour un texte fixe","Quand l''écran change selon les actions","Pour l''icône","Jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Comment revenir à l''écran précédent ?', '["Navigator.pop(context)","main()","print","setState"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Comment adapter l''adresse dans un formulaire malgache ?', '["Quartier et repère plutôt que numéro de rue seulement","Code postal à 5 chiffres obligatoire","Adresse européenne imposée","Aucune adresse"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'À quoi sert le rechargement à chaud ?', '["Chauffer le téléphone","Supprimer les données","Voir les changements en moins d''une seconde","Publier l''application"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que vérifier avant d''ajouter un paquet de pub.dev ?', '["Popularité, mises à jour et compatibilité","Sa couleur","Son nom seulement","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel service Firebase gère les comptes ?', '["Crashlytics","Authentication","Analytics","Storage"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Comment tester le fonctionnement hors connexion ?', '["En augmentant le volume","En changeant de langue","En mode avion","Ce n''est pas possible"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que vérifient les règles de sécurité de Firestore ?', '["Rien","Qui peut lire ou modifier chaque donnée","La couleur de l''application","La vitesse du réseau"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Où conserver la clé de signature ?', '["Sur GitHub public","Dans la fiche Google Play","En lieu sûr, jamais dans un dépôt public","Par e-mail à tous"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que faut-il publier avec l''application ?', '["Rien","Le code source obligatoirement","Les mots de passe","Une politique de confidentialité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Qu''est-ce qu''une première version (MVP) ?', '["Une maquette papier","Un test de recrutement","La version la plus simple qui apporte une vraie valeur","La version finale avec tout"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que voit l''utilisateur en cas d''erreur ?', '["Rien","Un message clair et un bouton Réessayer","Un écran blanc","Un code d''erreur technique"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Pourquoi surveiller la taille de l''application ?', '["Ce n''est pas important","Pour la beauté","Peu de stockage et données limitées chez beaucoup d''utilisateurs","Pour payer moins Google"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Que tester en plus des écrans ?', '["Le nom du téléphone","Interruptions comme un appel ou la mise en arrière-plan","La couleur du câble","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Comment chiffrer une application ?', '["Toujours le même prix","Fonctions estimées en jours, marge, tarif journalier et coûts externes","Au hasard","Selon le nombre d''icônes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel paiement par étapes proposer ?', '["Tout après un an","Par exemple 30 %, 40 %, 30 %","Tout en avance sans contrat","Rien avant la fin"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-0-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Mobile Money ou virement","Uniquement des chèques étrangers","Aucun"]'::jsonb, 1);
 
 -- tech-1-a
 delete from public.exam_questions where course_id = 'tech-1-a';
