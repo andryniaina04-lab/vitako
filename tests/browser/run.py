@@ -68,10 +68,16 @@ with sync_playwright() as p:
     page = ctx.new_page(); setup(page)
     page.goto(BASE + '#/'); page.wait_for_timeout(600)
 
-    # --- Catalogue
-    check('catalogue : 58 cartes (50 métiers + 8 formations perso)', page.locator('.card.job').count() == 58)
-    check('accueil : 2 chiffres clés (plus de « disponibles aujourd\'hui »)', page.locator('.fact').count() == 2 and 'disponible' not in page.locator('.facts').inner_text())
+    # --- Accueil (page d'atterrissage)
+    check('accueil : 10 formations mises en avant', page.locator('.feat-grid .card.feat').count() == 10)
+    check('accueil : 4 chiffres clés', page.locator('.lp-stats > div').count() == 4 and '108' in page.locator('.lp-stats').inner_text())
+    check('accueil : bandes vertes (témoignages et appel final)', page.locator('.lp-band').count() == 2)
     check('accueil : plus de barre de recherche dans la page', page.locator('#search').count() == 0)
+    check('accueil : pas de défilement horizontal', not page.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
+    page.screenshot(path=f'{SHOTS}/00-accueil.png', full_page=True)
+    page.click('.lp-more a'); page.wait_for_timeout(400)
+    # --- Catalogue complet
+    check('catalogue : 58 cartes (50 métiers + 8 formations perso)', page.locator('.card.job').count() == 58 and page.evaluate('location.hash') == '#/formations')
     page.click('[data-dom=data]'); page.wait_for_timeout(150)
     check('filtre domaine : 5 métiers', page.locator('.card.job').count() == 5)
     page.click('[data-dom=all]')
@@ -275,7 +281,7 @@ with sync_playwright() as p:
     # --- Téléphone (390 px)
     m = browser.new_context(viewport={'width': 390, 'height': 844}, locale='fr-FR', device_scale_factor=2)
     mp = m.new_page(); setup(mp)
-    for name, h in [('07-mobile-catalogue', '#/'), ('08-mobile-formation', '#/formation/design-0-f'), ('09-mobile-inscription', '#/inscription')]:
+    for name, h in [('07-mobile-accueil', '#/'), ('07b-mobile-catalogue', '#/formations'), ('08-mobile-formation', '#/formation/design-0-f'), ('09-mobile-inscription', '#/inscription')]:
         mp.goto(BASE + h); mp.wait_for_timeout(500)
         overflow = mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1')
         check(f'{name} : pas de défilement horizontal', not overflow)

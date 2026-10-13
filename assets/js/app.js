@@ -142,7 +142,7 @@ function needConfig() {
   return `<div class="narrow panel stack">
     <h2>Site en cours de configuration</h2>
     <p class="muted">La base de données n'est pas encore reliée. Renseignez l'adresse et la clé Supabase dans <span class="mono">assets/js/config.js</span> (voir le guide README).</p>
-    <a class="btn ghost" href="#/">Voir les formations</a></div>`;
+    <a class="btn ghost" href="#/formations">Voir les formations</a></div>`;
 }
 function needLogin(next) {
   return `<div class="narrow panel stack" style="gap:14px">
@@ -175,7 +175,7 @@ function topbar() {
   const r = route();
   const on = (p) => (r.path === p ? ' on' : '');
   const item = (href, label, extra = '') => `<a class="menu-item${on(href.slice(1))}" href="${href}">${label}${extra}</a>`;
-  let items = item('#/', 'Métiers et formations');
+  let items = item('#/', 'Accueil') + item('#/formations', 'Toutes les formations');
   if (S.session) {
     items += item('#/mon-espace', 'Mon espace');
     if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '');
@@ -287,6 +287,7 @@ function catalogGrid() {
     </div>`).join('');
   return { count: countLabel(list), html: cards || '<p class="muted">Aucun métier dans ce domaine.</p>' };
 }
+// Catalogue complet (#/formations) : filtres par domaine et toutes les formations
 function catalog() {
   const g = catalogGrid();
   let banner = '';
@@ -294,26 +295,67 @@ function catalog() {
   else if (S.profile && !hasAccess()) banner = notice(pendingPayment() ? 'info' : 'warn', pendingPayment()
     ? `Votre paiement est en attente de validation (en général sous ${esc(CFG.validationDelay)}).`
     : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${priceHtml()} / ${S.days} jours)</a>.`);
-  return `
-  <section class="hero">
-    <div>
-      <div class="eyebrow">Métiers du freelance et du télétravail</div>
-      <h1 style="margin-top:10px">Apprends un métier à distance depuis Madagascar. <em>Termine-le.</em></h1>
-      <p class="lead">${JOBS.filter((j) => !j.single).length} métiers, chacun en deux formations : Fondamentaux pour décrocher vos premiers clients, Avancé pour viser des missions mieux payées.${JOBS.some((j) => j.single) ? ` Plus ${JOBS.filter((j) => j.single).length} formations de développement personnel.` : ''} Chaque formation réussie donne une attestation.</p>
-    </div>
-    <div class="facts">
-      <div class="fact"><b>${COURSES.length}</b><span>formations</span></div>
-      <div class="fact"><b>50/100</b><span>pour réussir un examen</span></div>
-    </div>
-  </section>
+  return `${pageHead('Catalogue', 'Toutes les formations', `<p class="muted">${JOBS.filter((j) => !j.single).length} métiers du freelance et du télétravail, chacun en Fondamentaux et Avancé, plus ${JOBS.filter((j) => j.single).length} formations de développement personnel.</p>`)}
   ${promoBanner()}
   ${banner ? `<div style="margin-bottom:18px">${banner}</div>` : ''}
   <div class="filters">
     <div class="chips" id="chips">${chips()}</div>
   </div>
   <div class="count" id="count">${g.count}</div>
-  <div class="grid" id="grid">${g.html}</div>
-  ${temoignages()}`;
+  <div class="grid" id="grid">${g.html}</div>`;
+}
+
+// Accueil : page d'atterrissage aérée
+// Les 10 formations mises en avant (identifiants des formations, dans l'ordre d'affichage).
+const FEATURED = ['gestion-0-f', 'mkt-0-f', 'design-0-f', 'media-0-f', 'lang-0-f', 'dev-3-f', 'data-0-f', 'data-4-f', 'client-0-f', 'lang-1-f'];
+const STEPS = [
+  ['Créez votre compte', 'Gratuit. Parcourez toutes les formations, leurs objectifs et leurs programmes.'],
+  ['Abonnez-vous', 'Par MVola ou Orange Money, pour 30 jours d\'accès à toutes les formations.'],
+  ['Apprenez à votre rythme', 'Des leçons courtes, des exemples de Madagascar et un exercice pratique par module.'],
+  ['Obtenez votre attestation', 'Réussissez l\'examen final et partagez une attestation vérifiable en ligne.'],
+];
+function home() {
+  const feat = FEATURED.map(courseById).filter((c) => c && c.published !== false);
+  const card = (c) => {
+    const j = c.job;
+    return `<a class="card job feat" href="#/formation/${c.id}">
+      ${cover(j, { noTitle: true })}
+      <h3>${esc(j.name)}</h3>
+      <p class="b">${esc(j.blurb.charAt(0).toUpperCase() + j.blurb.slice(1))}.</p>
+      <span class="feat-meta"><span>${esc(c.levelName)} · ${c.hours} h</span><span class="feat-go" aria-hidden="true">→</span></span>
+    </a>`;
+  };
+  const nJobs = JOBS.filter((j) => !j.single).length;
+  const cta = S.session ? `<a class="btn lg" href="#/mon-espace">Mon espace</a>` : `<a class="btn lg" href="#/inscription">Créer mon compte gratuit</a>`;
+  return `
+  <section class="lp-hero">
+    <div class="eyebrow lp-eyebrow">Formations en ligne depuis Madagascar</div>
+    <h1>Apprends un métier à distance. <em>Termine-le.</em></h1>
+    <p class="lp-lead">${nJobs} métiers du freelance et du télétravail, en leçons courtes et concrètes. Chaque formation réussie te donne une attestation vérifiable à montrer à tes clients.</p>
+    <div class="lp-ctas"><a class="btn lg" href="#/formations">Voir les formations <span aria-hidden="true">→</span></a>${S.session ? '' : '<a class="lnk lp-sec" href="#/connexion">J\'ai déjà un compte</a>'}</div>
+    <dl class="lp-stats">
+      <div><dt>Formations</dt><dd>${COURSES.length}</dd></div>
+      <div><dt>Domaines</dt><dd>${DOMAINS_LIST.length}</dd></div>
+      <div><dt>Pour réussir</dt><dd>50/100</dd></div>
+      <div><dt>Attestation</dt><dd>Vérifiable</dd></div>
+    </dl>
+  </section>
+  ${promoBanner()}
+  <section class="lp-sec-block" aria-labelledby="feat-title">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Les plus demandées</div><h2 id="feat-title">10 formations pour décrocher vos premiers clients</h2></div>
+    <div class="grid feat-grid">${feat.map(card).join('')}</div>
+    <div class="lp-more"><a class="btn ghost lg" href="#/formations">Voir les ${COURSES.length} formations <span aria-hidden="true">→</span></a></div>
+  </section>
+  ${temoignages()}
+  <section class="lp-sec-block" aria-labelledby="steps-title">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Comment ça marche</div><h2 id="steps-title">De l'inscription à l'attestation</h2></div>
+    <ol class="lp-steps">${STEPS.map(([t, d], i) => `<li><span class="lp-num">${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  </section>
+  <section class="lp-band lp-final">
+    <h2>Ton premier client commence ici</h2>
+    <p>Inscription gratuite. Abonnement à ${priceHtml()} pour ${S.days} jours d'accès à toutes les formations.</p>
+    <div class="lp-ctas">${cta}<a class="btn lg lp-outline" href="#/formations">Voir les formations</a></div>
+  </section>`;
 }
 // Bande de témoignages qui défile (la liste est doublée pour une boucle sans saut)
 const STAR = '<path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/>';
@@ -333,7 +375,7 @@ function temoignages() {
       <figcaption><span class="tm-av">${esc(t.nom.charAt(0))}</span>${esc(t.nom)}</figcaption>
     </figure>`;
   const list = TEMOIGNAGES.map((t) => card(t, false)).join('') + TEMOIGNAGES.map((t) => card(t, true)).join('');
-  return `<section class="tm" aria-labelledby="tm-title">
+  return `<section class="tm lp-band" aria-labelledby="tm-title">
     <h2 id="tm-title">Ils ont aimé Vitako</h2>
     <p class="tm-sub">Ce que disent les jeunes qui apprennent avec nous.</p>
     <div class="tm-view"><div class="tm-track" style="--tm-n:${TEMOIGNAGES.length}">${list}</div></div>
@@ -431,7 +473,7 @@ function coursePage(id) {
   const tries = attemptsOf(c.id).length;
   const fondCert = c.level === 'a' && courseCert(other.id);
 
-  return `${back('#/', 'Tous les métiers')}
+  return `${back('#/formations', 'Tous les métiers')}
   <div class="cols">
     <div class="stack" style="gap:26px;min-width:0">
       <div class="stack" style="gap:10px">
@@ -609,7 +651,7 @@ function examResult(c) {
       ? `<p>Bravo ${esc((S.profile.full_name || '').split(' ')[0])} ! Vous avez terminé « ${esc(c.title)} ». Votre attestation est prête.${R.job_certificate_id ? ' Vous avez réussi les deux niveaux : votre attestation de parcours complet est aussi disponible.' : ''}</p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
            <a class="btn" href="#/attestation/${R.certificate_id}">Voir mon attestation</a>
-           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : (other ? `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>` : '<a class="btn ghost" href="#/">Voir les autres formations</a>')}</div>`
+           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : (other ? `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>` : '<a class="btn ghost" href="#/formations">Voir les autres formations</a>')}</div>`
       : `<p>Il manque ${50 - R.score} point${50 - R.score > 1 ? 's' : ''}. Relisez les modules si besoin, puis recommencez : le nombre d'essais n'est pas limité.</p>
          <p id="exerr" class="notice err" hidden></p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
@@ -845,7 +887,7 @@ function accountPage() {
     <section class="panel stack" style="gap:4px">
       <b>Formations en cours</b>
       <div class="list">${ongoing.length ? ongoing.map((c) => `<div class="item"><div class="t"><div>${esc(c.title)}</div><small class="muted">${doneSet(c.id).size}/${c.modules.length} modules${attemptsOf(c.id).length ? ` · examen ${bestOf(c.id)}/100` : ''}</small></div><a class="btn ghost sm" href="#/formation/${c.id}">Continuer</a></div>`).join('')
-        : '<p class="muted" style="padding-top:8px">Aucune formation en cours. <a href="#/">Parcourir les métiers</a></p>'}</div>
+        : '<p class="muted" style="padding-top:8px">Aucune formation en cours. <a href="#/formations">Parcourir les métiers</a></p>'}</div>
     </section>
     <section class="panel stack" style="gap:4px">
       <b>Mes attestations</b>
@@ -1017,7 +1059,7 @@ function renderReviewSlot() {
 }
 
 function notFound() {
-  return '<div class="narrow panel stack"><h2>Page introuvable</h2><p class="muted">Cette page n\'existe pas ou n\'est plus disponible.</p><a class="btn" href="#/">Voir les formations</a></div>';
+  return '<div class="narrow panel stack"><h2>Page introuvable</h2><p class="muted">Cette page n\'existe pas ou n\'est plus disponible.</p><a class="btn" href="#/formations">Voir les formations</a></div>';
 }
 
 // ---------------------------------------------------------------------------
@@ -1029,7 +1071,8 @@ function route() {
   return { path: path || '/', query: new URLSearchParams(qs || '') };
 }
 const ROUTES = [
-  [/^\/$/, catalog],
+  [/^\/$/, home],
+  [/^\/formations$/, catalog],
   [/^\/formation\/([\w-]+)$/, coursePage],
   [/^\/formation\/([\w-]+)\/module\/(\d+)$/, lessonPage],
   [/^\/formation\/([\w-]+)\/examen$/, examPage],
