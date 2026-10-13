@@ -153,6 +153,12 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/03-admin.png')
     page.click('[data-act=pay-ok]'); page.wait_for_timeout(500)
     check('admin : paiement validé', page.locator('[data-act=pay-ok]').count() == 0 and 'Validé' in page.content())
+    goto(page, '#/admin/stats'); page.wait_for_timeout(500)
+    check('admin : page Statistiques', 'Statistiques' in page.locator('h1').inner_text())
+    check('statistiques : 12 indicateurs', page.locator('.kpi').count() == 12)
+    check('statistiques : courbe des inscriptions sur 30 jours', page.locator('.bars .cbar').count() == 30)
+    check('statistiques : recettes du paiement validé', '30 000 Ar' in page.locator('.kpis').nth(1).inner_text() or '60 000 Ar' in page.locator('.kpis').nth(1).inner_text())
+    page.screenshot(path=f'{SHOTS}/03b-statistiques.png', full_page=True)
     logout(page)
 
     # --- Étudiante abonnée : modules

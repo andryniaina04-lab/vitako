@@ -192,3 +192,17 @@ select (public.admin_decide_payment((select id from public.payments where refere
 select :'until'::timestamptz between now() + interval '39 days 23 hours' and now() + interval '40 days 1 hour';
 reset role;
 \echo '--- Fin'
+
+\echo '--- Statistiques administrateur'
+set role authenticated; set request.jwt.claim.sub = 'aaaaaaaa-0000-0000-0000-000000000001';
+select t.err('select public.admin_stats()', 'forbidden');
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000000000009';
+select (public.admin_stats()->'users'->>'total')::int >= 1;
+select (public.admin_stats()->'payments'->>'approved')::int >= 1 and (public.admin_stats()->'payments'->>'revenue_total')::int > 0;
+select jsonb_array_length(public.admin_stats()->'signups') = 30;
+select jsonb_typeof(public.admin_stats()->'top_courses') = 'array';
+reset role;
+set role anon;
+select t.err('select public.admin_stats()', 'permission denied');
+reset role;

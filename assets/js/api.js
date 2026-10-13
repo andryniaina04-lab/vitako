@@ -189,6 +189,10 @@ export async function adminDecide(id, approve, reason) {
   need();
   return run(sb.rpc('admin_decide_payment', { p_id: id, p_approve: approve, p_reason: reason || null }));
 }
+export async function adminStats() {
+  need();
+  return run(sb.rpc('admin_stats'));
+}
 export async function adminCounts() {
   need();
   const [pending, active] = await Promise.all([

@@ -175,7 +175,7 @@ function topbar() {
   let items = item('#/', 'Métiers et formations');
   if (S.session) {
     items += item('#/mon-espace', 'Mon espace');
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
@@ -833,7 +833,7 @@ async function adminPage() {
   S.admin = counts;
   topbar();
   const ops = CFG.operators.map((o) => `${esc(o.name)} ${esc(o.number)}`).join(' · ');
-  return `${pageHead('Administration', 'Paiements à valider', `<p class="muted">${counts.pending} en attente · ${counts.active} abonné${counts.active > 1 ? 's' : ''} actif${counts.active > 1 ? 's' : ''} · ${ops}</p>`)}
+  return `${adminTabs('pay')}${pageHead('Administration', 'Paiements à valider', `<p class="muted">${counts.pending} en attente · ${counts.active} abonné${counts.active > 1 ? 's' : ''} actif${counts.active > 1 ? 's' : ''} · ${ops}</p>`)}
   <div style="margin-bottom:18px">${notice('warn', `Avant de valider, ouvrez votre application MVola ou Orange Money et vérifiez : la référence existe, le montant correspond au « Montant attendu » de la demande et, s'il est indiqué, le numéro de l'expéditeur correspond. Ne validez jamais à partir d'une capture d'écran.`)}</div>
   ${pending.length ? `<div class="paylist">${pending.map((p) => `<div class="panel">
       <div class="payhead"><div><b>${esc(p.profile?.full_name || 'Étudiant')}</b><small class="muted">${esc(p.profile?.email || '')}</small></div><span class="pill grey">Reçu le ${fmtDT(p.created_at)}</span></div>
@@ -854,6 +854,60 @@ async function adminPage() {
     ${done.map((p) => `<tr><td>${fmtDT(p.decided_at || p.created_at)}</td><td>${esc(p.profile?.full_name || '')}<br><small class="muted">${esc(p.profile?.email || '')}</small></td><td>${esc(opById(p.operator).name)}</td><td class="mono">${esc(p.reference)}</td>
       <td>${p.status === 'approved' ? `<span class="pill">Validé</span>${p.access_until ? ` <small class="muted">jusqu'au ${fmtDate(p.access_until)}</small>` : ''}` : `<span class="pill red">Refusé</span> <small class="muted">${esc(p.reason || '')}</small>`}</td></tr>`).join('')}
   </tbody></table></div>` : '<p class="muted">Aucun paiement traité pour l\'instant.</p>'}`;
+}
+
+const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
+  <a class="tab${on === 'pay' ? ' on' : ''}" href="#/admin"${on === 'pay' ? ' aria-current="page"' : ''}>Paiements${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
+  <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a></nav>`;
+const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
+const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
+const kpi = (label, value, sub = '', tone = '') => `<div class="kpi${tone ? ' ' + tone : ''}"><span class="kpi-l">${label}</span><b class="kpi-v">${value}</b>${sub ? `<span class="kpi-s">${sub}</span>` : ''}</div>`;
+
+async function adminStatsPage() {
+  if (!S.session) return needLogin('/admin/stats');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const [st, counts] = await Promise.all([api.adminStats(), api.adminCounts()]);
+  S.admin = counts; topbar();
+  const U = st.users, Sb = st.subs, P = st.payments, L = st.learning;
+  const days = st.signups || [];
+  const max = Math.max(1, ...days.map((d) => d.n));
+  const total30 = days.reduce((n, d) => n + d.n, 0);
+  const fmtDay = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+  const bars = days.map((d) => `<div class="cbar" tabindex="0" data-tip="${fmtDay(d.d)} : ${d.n} inscription${d.n > 1 ? 's' : ''}" aria-label="${fmtDay(d.d)} : ${d.n} inscription${d.n > 1 ? 's' : ''}">
+      <i style="height:${d.n ? Math.max(4, Math.round((d.n / max) * 100)) : 0}%"></i></div>`).join('');
+  const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  return `${adminTabs('stats')}${pageHead('Administration', 'Statistiques', `<p class="muted">Chiffres en temps réel, mis à jour à ${time}. <button class="lnk" data-act="reload" style="padding:0 4px">Actualiser</button></p>`)}
+  <h2 class="st-h">Utilisateurs</h2>
+  <div class="kpis">
+    ${kpi('Inscrits', nf(U.total), `+${nf(U.today)} aujourd'hui · +${nf(U.week)} en 7 jours · +${nf(U.month)} en 30 jours`)}
+    ${kpi('Abonnés actifs', nf(Sb.active), `${pct(Sb.active, U.total)} % des inscrits${Sb.ending7 ? ` · ${nf(Sb.ending7)} finissent dans 7 jours` : ''}`, 'good')}
+    ${kpi('Abonnements terminés', nf(Sb.expired), 'À relancer pour un renouvellement')}
+    ${kpi('Jamais abonnés', nf(Sb.never), 'Inscrits sans paiement validé')}
+  </div>
+  <div class="panel chart">
+    <div class="chart-h"><b>Inscriptions sur 30 jours</b><span class="muted">${nf(total30)} au total · maximum ${nf(max === 1 && !days.some((d) => d.n) ? 0 : max)} en un jour</span></div>
+    <div class="bars" role="img" aria-label="Inscriptions par jour sur les 30 derniers jours, ${total30} au total">${bars}</div>
+    <div class="bars-x"><span>${days[0] ? fmtDay(days[0].d) : ''}</span><span>${days.length ? fmtDay(days[days.length - 1].d) : ''}</span></div>
+  </div>
+  <h2 class="st-h">Paiements</h2>
+  <div class="kpis">
+    ${kpi('Recettes ce mois', ar(P.revenue_month), 'Paiements validés depuis le 1er du mois', 'good')}
+    ${kpi('Recettes totales', ar(P.revenue_total), `${nf(P.approved)} paiement${P.approved > 1 ? 's' : ''} validé${P.approved > 1 ? 's' : ''}`)}
+    ${kpi('En attente', `<a href="#/admin">${nf(P.pending)}</a>`, 'À vérifier dans MVola ou Orange Money', P.pending ? 'warn' : '')}
+    ${kpi('Refusés', nf(P.rejected), `${pct(P.rejected, P.approved + P.rejected)} % des paiements traités`)}
+  </div>
+  <h2 class="st-h">Apprentissage</h2>
+  <div class="kpis">
+    ${kpi('Étudiants en formation', nf(L.learners), `${nf(L.active7)} actifs ces 7 derniers jours`)}
+    ${kpi('Modules terminés', nf(L.modules_done))}
+    ${kpi('Examens passés', nf(L.exams), `${nf(L.exams_passed)} réussis (${pct(L.exams_passed, L.exams)} %)`)}
+    ${kpi('Attestations', nf(L.course_certs), `${nf(L.job_certs)} parcours complet${L.job_certs > 1 ? 's' : ''}`, 'gold')}
+  </div>
+  <h2 class="st-h">Formations les plus suivies</h2>
+  ${st.top_courses?.length ? `<div class="tbl"><table><thead><tr><th>#</th><th>Formation</th><th>Étudiants</th><th>Attestations</th></tr></thead><tbody>
+    ${st.top_courses.map((c, i) => `<tr><td class="mono">${i + 1}</td><td><a href="#/formation/${esc(c.id)}">${esc(c.title)}</a></td><td class="mono">${nf(c.learners)}</td><td class="mono">${nf(c.certs)}</td></tr>`).join('')}
+  </tbody></table></div>` : '<p class="muted">Aucun module terminé pour l\'instant.</p>'}`;
 }
 
 function notFound() {
@@ -882,6 +936,7 @@ const ROUTES = [
   [/^\/attestation\/([\w-]+)$/, certificatePage],
   [/^\/verifier$/, verifyPage],
   [/^\/admin$/, adminPage],
+  [/^\/admin\/stats$/, adminStatsPage],
 ];
 let renderToken = 0;
 async function render() {

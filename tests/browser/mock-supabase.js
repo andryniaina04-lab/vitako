@@ -109,6 +109,33 @@
       } else Object.assign(p, { status: 'rejected', decided_at: now(), reason: p_reason || 'Paiement introuvable' });
       save(); return { data: p, error: null };
     },
+    admin_stats() {
+      if (!isAdmin()) return err('forbidden');
+      const st = db.profiles.filter((p) => !p.is_admin);
+      const day = (iso) => new Date(Date.parse(iso) + 3 * 3600e3).toISOString().slice(0, 10);
+      const today = day(now());
+      const signups = Array.from({ length: 30 }, (_, i) => {
+        const d = new Date(Date.parse(today) - (29 - i) * 864e5).toISOString().slice(0, 10);
+        return { d, n: st.filter((p) => day(p.created_at || now()) === d).length };
+      });
+      const ok = db.payments.filter((p) => p.status === 'approved');
+      const learners = new Set(db.progress.map((x) => x.user_id));
+      const byCourse = {};
+      db.progress.forEach((x) => { (byCourse[x.course_id] ||= new Set()).add(x.user_id); });
+      const top = Object.entries(byCourse).map(([id, set]) => ({ id, title: (FIX.courses.find((c) => c.id === id) || {}).title || id, learners: set.size,
+        certs: db.certificates.filter((c) => c.kind === 'course' && c.course_id === id).length })).sort((a, b) => b.learners - a.learners).slice(0, 10);
+      const exams = db.exam_attempts.filter((a) => a.submitted_at);
+      return { data: {
+        users: { total: st.length, today: st.filter((p) => day(p.created_at || now()) === today).length, week: st.length, month: st.length },
+        subs: { active: st.filter((p) => p.sub_end && new Date(p.sub_end) > new Date()).length, expired: st.filter((p) => p.sub_end && new Date(p.sub_end) <= new Date()).length,
+          never: st.filter((p) => !p.sub_end).length, ending7: 0 },
+        payments: { pending: db.payments.filter((p) => p.status === 'pending').length, approved: ok.length, rejected: db.payments.filter((p) => p.status === 'rejected').length,
+          revenue_total: ok.reduce((n, p) => n + p.amount, 0), revenue_month: ok.reduce((n, p) => n + p.amount, 0) },
+        learning: { learners: learners.size, active7: learners.size, modules_done: db.progress.length, exams: exams.length, exams_passed: exams.filter((a) => a.score >= 50).length,
+          course_certs: db.certificates.filter((c) => c.kind === 'course').length, job_certs: db.certificates.filter((c) => c.kind === 'job').length },
+        signups, top_courses: top,
+      }, error: null };
+    },
     start_exam({ p_course }) {
       if (!me()) return err('not_authenticated');
       if (!hasAccess()) return err('no_access');
