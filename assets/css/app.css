@@ -498,3 +498,30 @@ a.back{display:inline-block}
 .stars{display:inline-flex;gap:2px;color:var(--gold)}
 @media (max-width:600px){.tm-card{width:260px}.tm{padding:26px 0 28px}.tm h2,.tm-sub{padding-inline:20px}}
 @media (prefers-reduced-motion:reduce){.tm-view{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.tm-track{animation:none}.tm-card[aria-hidden]{display:none}}
+
+/* Avis après une attestation (bloc au-dessus du pied de page) */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#review-slot:empty{display:none}
+.rv{margin:48px 0 8px;padding:26px 28px;background:var(--gold-soft);border:1.5px solid var(--gold);border-radius:calc(var(--r) * 1.6)}
+.rv h2{margin:0 0 4px;font-size:1.3rem}
+.rv p{margin:0;color:var(--body)}
+.rv-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.rv-ico{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#fff}
+.rv-form{display:grid;gap:10px;max-width:640px}
+.rv-stars{border:0;margin:0;padding:0}
+.rv-stars legend{font-weight:600;font-size:.92rem;margin-bottom:4px}
+.rv-starrow{display:inline-flex;flex-direction:row-reverse;gap:4px}
+.rv-starrow input{position:absolute;opacity:0;width:1px;height:1px}
+.rv-starrow label{cursor:pointer;color:var(--line);transition:color .15s,transform .15s;line-height:0}
+.rv-starrow svg{fill:currentColor}
+.rv-starrow label:hover,.rv-starrow label:hover~label,.rv-starrow input:checked~label{color:var(--gold)}
+.rv-starrow label:hover{transform:scale(1.12)}
+.rv-starrow input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.rv textarea.in{padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);width:100%;font:inherit;resize:vertical}
+.rv-check{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;color:var(--body)}
+.rv-check input{margin-top:3px;accent-color:var(--accent)}
+.rv-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.rv-done{text-align:center}
+.rv-tbl .rv-com{max-width:360px;white-space:pre-wrap}
+.kpi .stars{margin-top:4px}
+@media (max-width:600px){.rv{padding:20px 18px}}

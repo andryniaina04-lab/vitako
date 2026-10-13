@@ -6,7 +6,7 @@
   const KEY = 'vitako_mock_db';
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } };
   let db = load() || {
-    users: [], profiles: [], progress: [], exam_attempts: [], certificates: [], payments: [],
+    users: [], profiles: [], progress: [], exam_attempts: [], certificates: [], payments: [], reviews: [],
     settings: [{ key: 'price_ar', value: '60000' }, { key: 'promo_price_ar', value: '30000' }, { key: 'promo_until', value: '2026-11-30' }, { key: 'access_days', value: '30' }],
     session: null,
   };
@@ -37,6 +37,7 @@
       case 'module_questions': return hasAccess() ? FIX.module_questions : [];
       case 'progress': return db.progress.filter((p) => p.user_id === me() || isAdmin());
       case 'exam_attempts': return db.exam_attempts.filter((p) => p.user_id === me() || isAdmin());
+      case 'reviews': return (db.reviews ||= []).filter((p) => p.user_id === me() || isAdmin());
       case 'certificates': return db.certificates.filter((p) => p.user_id === me() || isAdmin());
       case 'payments': return db.payments.filter((p) => p.user_id === me() || isAdmin())
         .map((p) => ({ ...p, profile: (({ full_name, email }) => ({ full_name, email }))(db.profiles.find((x) => x.id === p.user_id) || {}) }));
@@ -108,6 +109,23 @@
         Object.assign(p, { status: 'approved', decided_at: now(), access_until: prof.sub_end });
       } else Object.assign(p, { status: 'rejected', decided_at: now(), reason: p_reason || 'Paiement introuvable' });
       save(); return { data: p, error: null };
+    },
+    submit_review({ p_course, p_rating, p_comment, p_publish }) {
+      if (!me()) return err('not_authenticated');
+      if (!(p_rating >= 1 && p_rating <= 5)) return err('bad_rating');
+      if (!db.certificates.some((c) => c.user_id === me() && c.kind === 'course' && c.course_id === p_course)) return err('no_certificate');
+      db.reviews ||= [];
+      db.reviews = db.reviews.filter((r) => !(r.user_id === me() && r.course_id === p_course));
+      const row = { id: uuid(), user_id: me(), course_id: p_course, rating: p_rating, comment: String(p_comment || '').trim().slice(0, 1000), can_publish: !!p_publish, created_at: now() };
+      db.reviews.push(row); save(); return { data: row, error: null };
+    },
+    admin_reviews() {
+      if (!isAdmin()) return err('forbidden');
+      const list = (db.reviews || []).slice().reverse().map((r) => {
+        const p = db.profiles.find((x) => x.id === r.user_id) || {};
+        return { ...r, full_name: p.full_name, email: p.email, course_title: (FIX.courses.find((c) => c.id === r.course_id) || {}).title };
+      });
+      return { data: list, error: null };
     },
     admin_stats() {
       if (!isAdmin()) return err('forbidden');

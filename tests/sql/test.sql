@@ -206,3 +206,25 @@ reset role;
 set role anon;
 select t.err('select public.admin_stats()', 'permission denied');
 reset role;
+
+-- Avis après une attestation
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select t.err('select public.submit_review(''t-0-f'', 5, ''Super'')', 'no_certificate');
+select t.err('insert into public.reviews (user_id, course_id, rating) values (auth.uid(), ''t-0-f'', 5)', 'permission denied');
+select t.err('select public.admin_reviews()', 'forbidden');
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'aaaaaaaa-0000-0000-0000-000000000001';
+select t.err('select public.submit_review(''t-0-f'', 6, '''')', 'bad_rating');
+select (public.submit_review('t-0-f', 4, '  Très claire  ', true)).comment = 'Très claire';
+select (public.submit_review('t-0-f', 5, 'Encore mieux', false)).rating = 5;   -- modification, pas de doublon
+select count(*) = 1 from public.reviews;
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) = 0 from public.reviews;   -- ne voit pas l'avis des autres
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000000000009';
+select jsonb_array_length(public.admin_reviews()) = 1 and public.admin_reviews()->0->>'full_name' = 'Fanja Rakoto' and (public.admin_reviews()->0->>'rating')::int = 5;
+reset role;
+set role anon;
+select t.err('select public.submit_review(''t-0-f'', 5)', 'permission denied');
+reset role;

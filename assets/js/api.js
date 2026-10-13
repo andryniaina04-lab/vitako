@@ -46,6 +46,8 @@ const MESSAGES = {
   no_questions: 'L\'examen de cette formation n\'est pas encore disponible.',
   already_submitted: 'Cet examen a déjà été corrigé. Recommencez un nouveau passage.',
   expired: 'Ce passage a expiré (plus de 3 heures). Recommencez l\'examen.',
+  no_certificate: 'Vous pourrez donner votre avis après avoir obtenu l\'attestation de cette formation.',
+  bad_rating: 'Choisissez une note de 1 à 5 étoiles.',
   timeout: 'La connexion prend trop de temps. Vérifiez votre connexion Internet, fermez les autres onglets Vitako, puis réessayez.',
   'Invalid login credentials': 'E-mail ou mot de passe incorrect.',
   'Email not confirmed': 'Confirmez d\'abord votre adresse : ouvrez le lien reçu par e-mail.',
@@ -188,6 +190,18 @@ export async function adminPayments(status) {
 export async function adminDecide(id, approve, reason) {
   need();
   return run(sb.rpc('admin_decide_payment', { p_id: id, p_approve: approve, p_reason: reason || null }));
+}
+export async function getMyReviews(uid) {
+  need();
+  return run(sb.from('reviews').select('course_id, rating').eq('user_id', uid));
+}
+export async function submitReview(courseId, rating, comment, publish) {
+  need();
+  return run(sb.rpc('submit_review', { p_course: courseId, p_rating: rating, p_comment: comment, p_publish: publish }));
+}
+export async function adminReviews() {
+  need();
+  return run(sb.rpc('admin_reviews'));
 }
 export async function adminStats() {
   need();

@@ -16,6 +16,7 @@ const S = {
   profile: null,
   progress: new Map(),   // course_id -> Set(module_index)
   certs: [],
+  reviews: [],
   attempts: [],
   payments: [],
   admin: { pending: 0, active: 0 },
@@ -70,13 +71,14 @@ const verifyUrl = (id) => `${location.origin}${location.pathname}#/attestation/$
 async function loadUser() {
   const id = uid();
   if (!id) {
-    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [] });
+    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [] });
     return;
   }
   let profile = await api.getProfile(id);
   if (!profile) { await new Promise((r) => setTimeout(r, 800)); profile = await api.getProfile(id); }
-  const [progress, certs, attempts, payments] = await Promise.all([
+  const [progress, certs, attempts, payments, reviews] = await Promise.all([
     api.getProgress(id), api.getCertificates(id), api.getAttempts(id), api.getMyPayments(id),
+    api.getMyReviews(id).catch(() => []),
   ]);
   S.profile = profile;
   S.progress = new Map();
@@ -84,7 +86,7 @@ async function loadUser() {
     if (!S.progress.has(p.course_id)) S.progress.set(p.course_id, new Set());
     S.progress.get(p.course_id).add(p.module_index);
   }
-  S.certs = certs; S.attempts = attempts; S.payments = payments;
+  S.certs = certs; S.attempts = attempts; S.payments = payments; S.reviews = reviews;
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
 }
 
@@ -176,7 +178,7 @@ function topbar() {
   let items = item('#/', 'Métiers et formations');
   if (S.session) {
     items += item('#/mon-espace', 'Mon espace');
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
@@ -899,7 +901,8 @@ async function adminPage() {
 
 const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'pay' ? ' on' : ''}" href="#/admin"${on === 'pay' ? ' aria-current="page"' : ''}>Paiements${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
-  <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a></nav>`;
+  <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
+  <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a></nav>`;
 const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const kpi = (label, value, sub = '', tone = '') => `<div class="kpi${tone ? ' ' + tone : ''}"><span class="kpi-l">${label}</span><b class="kpi-v">${value}</b>${sub ? `<span class="kpi-s">${sub}</span>` : ''}</div>`;
@@ -951,6 +954,68 @@ async function adminStatsPage() {
   </tbody></table></div>` : '<p class="muted">Aucun module terminé pour l\'instant.</p>'}`;
 }
 
+async function adminReviewsPage() {
+  if (!S.session) return needLogin('/admin/avis');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const list = await api.adminReviews();
+  const n = list.length;
+  const avg = n ? list.reduce((a, r) => a + r.rating, 0) / n : 0;
+  const dist = [5, 4, 3, 2, 1].map((k) => [k, list.filter((r) => r.rating === k).length]);
+  const pub = list.filter((r) => r.can_publish).length;
+  const fmtD = (d) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+  return `${adminTabs('avis')}${pageHead('Administration', 'Avis des apprenants', '<p class="muted">Avis laissés après l\'obtention d\'une attestation. Seuls les avis marqués « Accord pour publier » peuvent être repris dans les témoignages de l\'accueil.</p>')}
+  <div class="kpis">
+    ${kpi('Avis reçus', nf(n))}
+    ${kpi('Note moyenne', n ? `${avg.toFixed(1).replace('.', ',')} / 5` : '–', n ? stars(Math.round(avg * 2) / 2) : '', 'gold')}
+    ${kpi('Accord pour publier', nf(pub), `${pct(pub, n)} % des avis`, 'good')}
+    ${kpi('Satisfaits (4 et 5 ★)', n ? `${pct(dist[0][1] + dist[1][1], n)} %` : '–', dist.map(([k, c]) => `${k} ★ : ${c}`).join(' · '))}
+  </div>
+  ${n ? `<div class="tbl" style="margin-top:18px"><table class="rv-tbl"><thead><tr><th>Date</th><th>Apprenant</th><th>Formation</th><th>Note</th><th>Commentaire</th><th>Publication</th></tr></thead><tbody>
+    ${list.map((r) => `<tr><td>${fmtD(r.created_at)}</td><td>${esc(r.full_name || '')}<br><small class="muted">${esc(r.email || '')}</small></td>
+      <td><a href="#/formation/${esc(r.course_id)}">${esc(r.course_title || r.course_id)}</a></td><td>${stars(r.rating)}</td>
+      <td class="rv-com">${r.comment ? esc(r.comment) : '<span class="muted">Pas de commentaire</span>'}</td>
+      <td>${r.can_publish ? '<span class="pill">Accord pour publier</span>' : '<span class="muted">Privé</span>'}</td></tr>`).join('')}
+  </tbody></table></div>` : '<p class="muted">Aucun avis pour l\'instant. Le formulaire s\'affiche aux apprenants dès qu\'ils obtiennent une attestation.</p>'}`;
+}
+
+// Bloc « Donnez votre avis » au-dessus du pied de page, après une attestation
+const SKIP_KEY = 'vitako_review_skip';
+const skipped = () => { try { return JSON.parse(localStorage.getItem(SKIP_KEY)) || []; } catch (e) { return []; } };
+function pendingReview() {
+  if (!S.profile || isAdmin()) return null;
+  const done = new Set(S.reviews.map((r) => r.course_id));
+  const skip = new Set(skipped());
+  return S.certs.filter((c) => c.kind === 'course' && c.course_id && !done.has(c.course_id) && !skip.has(c.course_id))
+    .sort((a, b) => String(b.issued_at).localeCompare(String(a.issued_at)))[0] || null;
+}
+const RV_LABELS = ['', 'Décevante', 'Moyenne', 'Bien', 'Très bien', 'Excellente'];
+function reviewBlock() {
+  const c = pendingReview();
+  if (!c || /^\/admin/.test(route().path) || /\/examen$/.test(route().path) && !S.examResult) return '';
+  const title = courseById(c.course_id)?.title || c.title;
+  const starsIn = [5, 4, 3, 2, 1].map((k) => `<input type="radio" name="rv-rating" id="rv-${k}" value="${k}"><label for="rv-${k}" title="${RV_LABELS[k]}"><span class="sr">${k} étoile${k > 1 ? 's' : ''} : ${RV_LABELS[k]}</span><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">${STAR}</svg></label>`).join('');
+  return `<section class="rv" aria-labelledby="rv-title">
+    <div class="rv-head">
+      <span class="rv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></span>
+      <div><h2 id="rv-title">Bravo pour votre attestation !</h2>
+      <p>Que pensez-vous de la formation <b>${esc(title)}</b> ? Votre avis nous aide à améliorer Vitako. Il ne prend qu'une minute.</p></div>
+    </div>
+    <form id="review-form" class="rv-form" data-course="${esc(c.course_id)}">
+      <fieldset class="rv-stars"><legend>Votre note</legend><div class="rv-starrow">${starsIn}</div></fieldset>
+      <label class="l" for="rv-comment">Votre commentaire <span class="muted">(facultatif)</span></label>
+      <textarea id="rv-comment" class="in" rows="3" maxlength="1000" placeholder="Ce qui vous a plu, ce qui pourrait être amélioré…"></textarea>
+      <label class="rv-check"><input type="checkbox" id="rv-publish"> J'accepte que mon avis soit publié sur le site avec mon prénom et l'initiale de mon nom.</label>
+      <p id="rverr" class="notice err" hidden></p>
+      <div class="rv-actions"><button class="btn" type="submit">Envoyer mon avis</button><button class="lnk" type="button" data-act="review-later">Plus tard</button></div>
+    </form>
+  </section>`;
+}
+function renderReviewSlot() {
+  const slot = document.getElementById('review-slot');
+  if (slot) slot.innerHTML = reviewBlock();
+}
+
 function notFound() {
   return '<div class="narrow panel stack"><h2>Page introuvable</h2><p class="muted">Cette page n\'existe pas ou n\'est plus disponible.</p><a class="btn" href="#/">Voir les formations</a></div>';
 }
@@ -978,6 +1043,7 @@ const ROUTES = [
   [/^\/verifier$/, verifyPage],
   [/^\/admin$/, adminPage],
   [/^\/admin\/stats$/, adminStatsPage],
+  [/^\/admin\/avis$/, adminReviewsPage],
 ];
 let renderToken = 0;
 async function render() {
@@ -997,6 +1063,7 @@ async function render() {
   }
   if (token !== renderToken) return;
   app.innerHTML = html;
+  renderReviewSlot();
   document.title = path === '/' ? 'Vitako · Formations aux métiers du freelance' : `${document.querySelector('#app h1, #app h2')?.textContent || 'Vitako'} · Vitako`;
 }
 
@@ -1016,6 +1083,11 @@ document.addEventListener('click', async (e) => {
   }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'review-later') {
+    const id = document.getElementById('review-form')?.dataset.course;
+    if (id) { try { localStorage.setItem(SKIP_KEY, JSON.stringify([...skipped(), id])); } catch (err) {} }
+    renderReviewSlot(); toast('D\'accord. Vous pourrez donner votre avis une autre fois.'); return;
+  }
   if (t.dataset.act === 'menu') { S.ui.menu = !S.ui.menu; topbar(); if (S.ui.menu) document.querySelector('#menu .menu-item')?.focus(); return; }
   if (t.dataset.act === 'search-toggle') {
     S.ui.search = !S.ui.search; S.ui.menu = false; S.ui.searchFocus = S.ui.search; if (!S.ui.search) S.filter.q = ''; topbar(); return;
@@ -1218,6 +1290,19 @@ document.addEventListener('submit', async (e) => {
       document.getElementById('mquiz').innerHTML = moduleQuizHtml();
       document.getElementById('mquiz-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) { toast(err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'review-form') {
+    const sel = f.querySelector('input[name="rv-rating"]:checked');
+    if (!sel) return showErr('rverr', 'Choisissez une note de 1 à 5 étoiles.');
+    busy(btn, true, 'Envoi…');
+    try {
+      await api.submitReview(f.dataset.course, Number(sel.value), f.querySelector('#rv-comment').value, f.querySelector('#rv-publish').checked);
+      S.reviews = [...S.reviews, { course_id: f.dataset.course, rating: Number(sel.value) }];
+      const slot = document.getElementById('review-slot');
+      if (slot) slot.innerHTML = '<section class="rv rv-done" role="status"><h2>Merci pour votre avis !</h2><p>Il a bien été envoyé à l\'équipe Vitako.</p></section>';
+      setTimeout(renderReviewSlot, 6000);
+    } catch (err) { showErr('rverr', err.message); busy(btn, false, 'Envoyer mon avis'); }
     return;
   }
   if (f.id === 'exam-form') {
