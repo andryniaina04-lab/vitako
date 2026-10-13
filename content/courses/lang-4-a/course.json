@@ -1,0 +1,97 @@
+{
+  "id": "lang-4-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du rédacteur de fiches produits un professionnel dont les textes font vendre et font trouver : spécialité (SEO e-commerce, places de marché, multilingue, B2B, aide à l'achat, conversion), audit des fiches et indicateurs de vente, outils payants (Semrush et applications Shopify payantes), plan de mots clés et champs de référencement, modèles par catégorie, IA utilisée avec prudence, contrôle en volume et tests, fiches en anglais, localisation, règles des places de marché et allégations, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer des fiches et relier les textes aux ventes",
+    "Rechercher des mots clés avec Semrush et construire un plan pour un catalogue",
+    "Utiliser les applications Shopify et soigner les champs de référencement",
+    "Produire en volume avec modèles, contrôle qualité et tests mesurés",
+    "Rédiger en anglais, localiser un catalogue et respecter les règles des plateformes",
+    "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer les fiches et mesurer les ventes",
+      "summary": "Les 6 spécialités avancées, l'intention de recherche, l'audit en 6 domaines et son rapport, les indicateurs de vente, la prudence sur les promesses et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quelle intention répond surtout une fiche produit ?", "options": ["L'intention d'achat", "L'intention d'information seulement", "Aucune", "L'intention de divertissement"], "correct": 0 },
+        { "q": "Quelles fiches réécrire en priorité ?", "options": ["Les fiches très vues et peu achetées", "Les fiches jamais vues", "Les fiches au hasard", "Les fiches les plus courtes"], "correct": 0 },
+        { "q": "Peut-on promettre qu'un texte doublera les ventes ?", "options": ["Non, les ventes dépendent aussi d'autres facteurs", "Oui, toujours", "Oui, pour les petites boutiques", "Oui, avec l'IA"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Semrush et applications Shopify payantes",
+      "summary": "Recherche de mots clés, vue d'ensemble, écarts et suivi de position dans Semrush, critères de choix, plan de mots clés, familles d'applications Shopify, données structurées et champs de référencement.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que montre l'analyse des écarts de Semrush ?", "options": ["Les mots clés des concurrents que la boutique n'a pas", "Les prix des concurrents", "Les avis clients", "Les images"], "correct": 0 },
+        { "q": "Combien de mots clés principaux par page ?", "options": ["Un", "Dix", "Aucun", "Tous les mots possibles"], "correct": 0 },
+        { "q": "Que permettent les données structurées ?", "options": ["Afficher prix ou étoiles dans les résultats de Google", "Changer les couleurs", "Traduire la page", "Supprimer les avis"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : modèles, formulations, IA, contrôle et tests",
+      "summary": "Modèles par catégorie, banque de formulations variées, usage prudent de l'IA, contrôle d'un gros catalogue et test d'amélioration mesuré.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel risque présente l'IA pour une fiche ?", "options": ["Inventer une caractéristique ou une certification", "Aucun", "Écrire trop lentement", "Supprimer la fiche"], "correct": 0 },
+        { "q": "D'où doivent venir les informations d'une fiche ?", "options": ["Des données du client", "De l'IA", "D'un concurrent", "De l'imagination"], "correct": 0 },
+        { "q": "Comment mesurer un test d'amélioration ?", "options": ["Sur des périodes comparables avant et après", "Sur un seul jour", "Sans mesure", "En comparant décembre et février"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, localisation, places de marché et allégations",
+      "summary": "Fiches en anglais et différences de style, localisation (tailles, unités, saisons, vocabulaire), règles des places de marché, allégations de santé, cosmétiques, environnement et bio, travail avec une agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la localisation ?", "options": ["Adapter un contenu à un pays précis", "Traduire mot à mot", "Trouver l'adresse du client", "Changer de boutique"], "correct": 0 },
+        { "q": "Que ne faut-il pas mettre dans un titre de place de marché ?", "options": ["Un prix ou une promotion", "Le nom du produit", "Une caractéristique", "La matière"], "correct": 0 },
+        { "q": "Comment présenter une vertu traditionnelle d'une plante ?", "options": ["De façon descriptive, sans promesse médicale", "Comme un médicament", "En promettant une guérison", "Sans validation"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : offres, rapports, études de cas et équipe",
+      "summary": "Trois voies, audits, catalogues, forfaits et localisation, rapport mensuel chiffré, études de cas honnêtes, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qui transforme une mission en contrat durable ?", "options": ["Un rapport mensuel chiffré", "Un prix plus bas", "Rien", "Un logo"], "correct": 0 },
+        { "q": "Que faire dans une étude de cas si de nouvelles photos ont aussi été ajoutées ?", "options": ["Le mentionner honnêtement", "Le cacher", "Attribuer tout le mérite aux textes", "Ne pas publier"], "correct": 0 },
+        { "q": "Qui prépare le plan de mots clés dans un studio ?", "options": ["Le responsable", "Chaque rédacteur au hasard", "Le client seul", "Personne"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité réécrit et teste les fiches qui vendent mal ?", "options": ["L'optimisation de la conversion", "Les fiches B2B", "La localisation", "Les places de marché"], "correct": 0 },
+    { "q": "Comment vérifier qu'une description est copiée ?", "options": ["Rechercher une phrase entre guillemets dans Google", "Compter les mots", "Regarder la couleur", "Ce n'est pas possible"], "correct": 0 },
+    { "q": "Quelle information manquante cause souvent des retours ?", "options": ["Les dimensions", "Le nom de la marque", "La couleur du site", "Le logo"], "correct": 0 },
+    { "q": "Que mesure le taux d'ajout au panier ?", "options": ["L'envie créée par la fiche", "Le trafic", "Les retours", "Le prix"], "correct": 0 },
+    { "q": "Pourquoi viser des mots clés précis pour une petite boutique ?", "options": ["Plus faciles à gagner et acheteurs", "Ils sont interdits", "Ils sont plus recherchés", "Aucune raison"], "correct": 0 },
+    { "q": "Que se passe-t-il si deux fiches visent le même mot clé ?", "options": ["Elles se concurrencent dans Google", "Elles se renforcent toujours", "Rien", "Elles sont supprimées"], "correct": 0 },
+    { "q": "Quelle longueur viser pour une balise titre ?", "options": ["Environ 50 à 60 caractères", "500 caractères", "5 caractères", "Aucune limite"], "correct": 0 },
+    { "q": "Qui paie Semrush en général ?", "options": ["La boutique ou l'agence", "Toujours le rédacteur débutant", "Google", "Personne"], "correct": 0 },
+    { "q": "Que doit contenir un modèle de fiche alimentaire ?", "options": ["Origine, usages, conservation et allergènes", "Seulement le prix", "Le guide des tailles", "La compatibilité électronique"], "correct": 0 },
+    { "q": "À quoi sert une banque de formulations ?", "options": ["Gagner du temps en variant les tournures", "Rendre toutes les fiches identiques", "Remplacer les informations du client", "Rien"], "correct": 0 },
+    { "q": "Que faire si un client interdit l'usage de l'IA ?", "options": ["Respecter sa règle", "L'utiliser quand même", "Ne rien dire", "Changer de client sans prévenir"], "correct": 0 },
+    { "q": "Quelles affirmations rechercher lors du contrôle ?", "options": ["« bio », « naturel », « guérit », « 100 % »", "« bonjour »", "Les prix", "Les couleurs"], "correct": 0 },
+    { "q": "Quelle hypothèse tester sur un panier peu acheté ?", "options": ["Les visiteurs ne savent pas s'il est assez grand", "Le site est trop rapide", "Les clients n'aiment pas acheter", "Rien"], "correct": 0 },
+    { "q": "Comment écrire une fiche en anglais ?", "options": ["La réécrire pour le lecteur anglophone", "La traduire mot à mot", "Garder le français", "Utiliser uniquement l'IA sans relire"], "correct": 0 },
+    { "q": "Quel mot anglais correspond souvent au « cabas » ?", "options": ["Tote bag", "Basket", "Suitcase", "Wallet"], "correct": 0 },
+    { "q": "Que lire avant de rédiger pour une place de marché ?", "options": ["Les règles officielles de la catégorie", "Un vieux forum", "Rien", "Les avis des concurrents seulement"], "correct": 0 },
+    { "q": "Quelle allégation est très encadrée dans l'UE pour les aliments ?", "options": ["Les allégations de santé", "La couleur", "Le poids", "L'origine exacte"], "correct": 0 },
+    { "q": "Quand écrire « bio » ?", "options": ["Seulement avec une certification réelle", "Toujours pour les produits naturels", "Jamais", "Pour vendre plus cher"], "correct": 0 },
+    { "q": "Que valider avec une agence avant la série ?", "options": ["Un échantillon", "Rien", "Le prix des concurrents", "Le logo"], "correct": 0 },
+    { "q": "Que garder confidentiel avec une agence ?", "options": ["Produits non lancés, prix et fournisseurs", "Rien", "Le nom de la boutique publique", "Les fiches publiées"], "correct": 0 },
+    { "q": "Que montre un bon rapport mensuel ?", "options": ["Positions, trafic, conversion et plan suivant", "Seulement le nombre de mots", "Rien", "Les salaires"], "correct": 0 },
+    { "q": "Comment comparer des résultats dans une étude de cas ?", "options": ["Sur des périodes équivalentes", "Sur des périodes différentes choisies au hasard", "Sans chiffres", "Avec des chiffres inventés"], "correct": 0 },
+    { "q": "Quand ajouter un correcteur à l'équipe ?", "options": ["Quand plusieurs rédacteurs produisent", "Jamais", "Dès le premier jour seul", "Quand il n'y a plus de clients"], "correct": 0 },
+    { "q": "Quel avantage pour un studio malgache ?", "options": ["Connaissance réelle des produits et fiches en français et en anglais", "Aucun", "Pas besoin de relire", "Prix toujours plus élevés"], "correct": 0 },
+    { "q": "Vers quelle formation aller pour approfondir le référencement ?", "options": ["Spécialiste SEO", "Monteur audio", "Modérateur", "Testeur"], "correct": 0 }
+  ]
+}

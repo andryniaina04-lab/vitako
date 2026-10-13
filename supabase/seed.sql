@@ -62,7 +62,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true),
   ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 15, true),
   ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, true),
-  ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 18, false),
+  ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 15, true),
   ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 14, true),
   ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true),
   ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 13, true),
@@ -35462,6 +35462,526 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Combien de mots environ dans une page ?', '["250 à 300","2 000","50","10"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quand demander un acompte ?', '["Pour les longs textes","Jamais","Seulement après livraison","Pour un SMS"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('lang-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Mobile Money ou virement","Uniquement des chèques étrangers","Uniquement PayPal"]'::jsonb, 1);
+
+-- lang-4-a
+delete from public.exam_questions where course_id = 'lang-4-a';
+delete from public.module_questions where course_id = 'lang-4-a';
+delete from public.lessons where course_id = 'lang-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-a', 0, 'Se spécialiser, auditer les fiches et mesurer les ventes', 'Les 6 spécialités avancées, l''intention de recherche, l''audit en 6 domaines et son rapport, les indicateurs de vente, la prudence sur les promesses et les offres à forte valeur.', 'Rédiger des fiches claires et exactes ouvre les premières missions. Les rédacteurs les mieux payés vont plus loin : leurs textes **font vendre et font trouver**. Ils maîtrisent le référencement e-commerce, les règles des places de marché, les catalogues en plusieurs langues et mesurent l''effet de leurs textes sur les ventes. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la rédaction e-commerce.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un audit des fiches produits d''une boutique.
+> 4. Relier vos textes à des indicateurs de vente.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **SEO e-commerce** | Fiches, pages de catégories et guides qui se classent dans Google | Recherche de mots clés, intention, structure des pages |
+| 2 | **Places de marché** | Fiches optimisées pour Amazon et autres plateformes | Règles et champs de chaque plateforme, recherche interne |
+| 3 | **Fiches multilingues** | Adapter un catalogue à plusieurs pays | Localisation, unités, tailles, règles locales |
+| 4 | **Fiches techniques B2B** | Produits professionnels, caractéristiques précises | Vocabulaire technique, tableaux, documents |
+| 5 | **Contenus d''aide à l''achat** | Guides d''achat, comparatifs, questions fréquentes | Pédagogie, structure, référencement |
+| 6 | **Optimisation de la conversion** | Réécrire et tester les fiches qui vendent mal | Analyse des données, tests, psychologie d''achat |
+
+> [!definition] Intention de recherche
+> Ce que la personne veut vraiment quand elle tape une recherche : s''informer (« comment utiliser la vanille »), comparer (« meilleure vanille pour pâtisserie »), ou acheter (« acheter gousses de vanille Madagascar »). Une fiche produit répond surtout à l''intention d''achat.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Catalogues de produits malgaches pour l''export** (vanille, épices, huiles essentielles, artisanat), en français et en anglais.
+> - **Fiches pour boutiques francophones**, avec un faible décalage horaire avec l''Europe.
+> - **Contenus d''aide à l''achat** sur des produits que vous connaissez de l''intérieur.
+
+## L''audit des fiches produits
+
+Un audit est une excellente **offre d''entrée** : la boutique voit ce qui l''empêche de vendre et vous confie la réécriture.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Complétude** | Les informations essentielles sont-elles présentes (dimensions, matière, entretien) ? |
+| **Référencement** | Titres, balises, mots clés, contenus en double |
+| **Persuasion** | Bénéfices, preuves, réponses aux objections |
+| **Lisibilité** | Structure, longueur, lecture sur téléphone |
+| **Cohérence** | Même structure et même ton sur tout le catalogue |
+| **Performance** | Fiches très vues mais peu achetées, retours fréquents |
+
+### Le rapport d''audit
+
+```
+Boutique : Raphia & Co – 120 fiches analysées
+Constats
+- 68 fiches ont une description copiée du fournisseur (texte identique sur d''autres sites).
+- 45 fiches n''indiquent pas les dimensions ; c''est le premier motif de retour.
+- Les titres ne contiennent pas les mots recherchés (« panier en raphia », « sac de plage »).
+- 15 produits très vus ont un taux de conversion inférieur à 0,5 %.
+
+Plan proposé
+1. Réécriture prioritaire des 15 fiches très vues et peu achetées.
+2. Modèle de fiche par catégorie et réécriture des 68 descriptions copiées.
+3. 4 pages de catégories optimisées et un guide d''achat.
+```
+
+## Relier les textes aux ventes
+
+| Indicateur | Ce qu''il montre |
+| --- | --- |
+| **Taux de conversion de la fiche** | La part des visiteurs qui achètent |
+| **Trafic depuis les moteurs de recherche** | L''efficacité du référencement |
+| **Taux d''ajout au panier** | L''envie créée par la fiche |
+| **Taux de retour** et motifs | Les informations manquantes ou trompeuses |
+| **Questions au service client** | Les réponses absentes de la fiche |
+
+> [!attention]
+> Les ventes dépendent aussi du **prix, des photos, des avis et de la livraison**. Ne promettez jamais qu''un texte seul doublera les ventes. Mesurez avant et après, sur une période comparable, et présentez les résultats honnêtement.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit des fiches** | Analyse d''un échantillon, rapport et plan | 250 000 Ar |
+| **Réécriture des fiches prioritaires** | 15 fiches très vues, avec suivi des résultats | 450 000 Ar |
+| **Pages de catégories SEO** | Textes, structure, balises | 60 000 Ar par page |
+| **Forfait mensuel catalogue** | Nouveaux produits, optimisation, rapport | 500 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : SEO, places de marché, multilingue, B2B, aide à l''achat, conversion.
+> - L''audit révèle les fiches copiées, incomplètes ou peu efficaces.
+> - Prioriser les fiches très vues et peu achetées.
+> - Mesurer les effets sans promettre l''impossible.
+> - Des offres à valeur : réécriture prioritaire, catégories, forfait.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Choisissez une boutique en ligne et auditez 20 fiches dans les 6 domaines.
+> 3. Vérifiez si certaines descriptions sont copiées (recherche d''une phrase entre guillemets dans Google).
+> 4. Rédigez le rapport et 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre grille d''audit, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 0, 0, 'À quelle intention répond surtout une fiche produit ?', '["L''intention de divertissement","L''intention d''achat","L''intention d''information seulement","Aucune"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 0, 1, 'Quelles fiches réécrire en priorité ?', '["Les fiches au hasard","Les fiches les plus courtes","Les fiches jamais vues","Les fiches très vues et peu achetées"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 0, 2, 'Peut-on promettre qu''un texte doublera les ventes ?', '["Oui, toujours","Non, les ventes dépendent aussi d''autres facteurs","Oui, pour les petites boutiques","Oui, avec l''IA"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-a', 1, 'Outils professionnels : Semrush et applications Shopify payantes', 'Recherche de mots clés, vue d''ensemble, écarts et suivi de position dans Semrush, critères de choix, plan de mots clés, familles d''applications Shopify, données structurées et champs de référencement.', 'Les agences et boutiques professionnelles utilisent **Semrush** pour la recherche de mots clés et le suivi du référencement, et des **applications Shopify payantes** pour le référencement, les avis, la traduction et la gestion en volume. Ce module vous apprend à les utiliser pour rédiger des fiches qui se classent et qui vendent.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Trouver et choisir des mots clés avec Semrush.
+> 2. Analyser les mots clés des concurrents.
+> 3. Suivre le positionnement et repérer les problèmes techniques des fiches.
+> 4. Connaître les familles d''applications Shopify utiles au rédacteur.
+> 5. Construire un plan de mots clés pour un catalogue.
+
+## Semrush : la recherche de mots clés
+
+| Outil (noms à vérifier selon la version) | Usage |
+| --- | --- |
+| **Recherche de mots clés** (Keyword Magic Tool) | Trouver des centaines de variantes à partir d''un mot de départ |
+| **Vue d''ensemble d''un mot clé** | Volume de recherche, difficulté, intention, résultats actuels |
+| **Analyse des écarts** (Keyword Gap) | Mots clés des concurrents que la boutique n''a pas |
+| **Suivi de position** | Évolution du classement des pages dans le temps |
+| **Audit de site** | Titres en double, balises manquantes, pages lentes |
+
+### Choisir un mot clé
+
+| Critère | Exemple |
+| --- | --- |
+| **Volume** | « panier raphia » : assez recherché |
+| **Difficulté** | Faible ou moyenne pour une petite boutique |
+| **Intention** | Achat (« panier raphia rond ») plutôt qu''information |
+| **Pertinence** | Correspond exactement au produit |
+| **Pays** | France, Belgique, Canada : les volumes diffèrent |
+
+> [!astuce]
+> Pour une petite boutique, les **mots clés précis** (« panier raphia rond avec anses cuir ») sont souvent plus faciles à gagner et achètent mieux que les mots généraux (« panier »), même s''ils sont moins recherchés.
+
+## Le plan de mots clés d''un catalogue
+
+| Page | Mot clé principal | Mots clés secondaires |
+| --- | --- | --- |
+| Catégorie Paniers | panier en raphia | panier tressé, panier osier raphia |
+| Fiche Panier rond | panier raphia rond | panier rond anses cuir |
+| Fiche Cabas | cabas raphia | sac cabas tressé, sac de plage raphia |
+| Guide d''achat | comment choisir un panier en raphia | entretien panier raphia |
+
+> [!attention]
+> Une page = un mot clé principal. Si deux fiches visent exactement le même mot clé, elles se **concurrencent** entre elles dans Google. Répartissez les mots clés pour que chaque page ait son rôle.
+
+## Les applications Shopify payantes
+
+| Famille d''applications | Ce qu''elle apporte au rédacteur |
+| --- | --- |
+| **Référencement** | Contrôle des balises, données structurées (étoiles, prix dans Google), alertes sur les pages mal optimisées |
+| **Avis clients** | Avis et photos de clients sur les fiches, questions et réponses |
+| **Traduction et marchés** | Versions des fiches par langue et par pays |
+| **Import et modification en volume** | Modifier des centaines de descriptions depuis un tableur |
+| **Contenus enrichis** | Onglets, tableaux de tailles, blocs de questions fréquentes |
+
+> [!definition] Données structurées
+> Des informations ajoutées au code de la page (prix, disponibilité, avis) que Google peut afficher directement dans les résultats, sous forme d''étoiles ou de prix.
+
+> [!madagascar]
+> Semrush et les applications Shopify sont **payés par la boutique ou l''agence**, en dollars. Semrush propose généralement un essai et une version gratuite limitée : utilisez-les pour vous former. Mentionnez sur votre profil ce que vous avez réellement fait avec chaque outil.
+
+## Les champs de référencement d''une fiche
+
+| Champ | Bonne pratique |
+| --- | --- |
+| **Titre du produit** | Mot clé principal + caractéristique distinctive |
+| **Balise titre** | Environ 50 à 60 caractères, mot clé au début, nom de la marque à la fin si la place le permet |
+| **Méta-description** | Environ 150 caractères, bénéfice + incitation au clic |
+| **Adresse (URL)** | Courte, avec le mot clé, sans mots inutiles |
+| **Titres dans la description** | Structurer avec des intertitres utiles |
+| **Texte alternatif des images** | Description précise, mot clé si naturel |
+
+> [!retenir]
+> - Semrush : recherche, vue d''ensemble, écarts, suivi de position, audit.
+> - Choisir selon volume, difficulté, intention, pertinence et pays.
+> - Un mot clé principal par page, sans concurrence interne.
+> - Applications Shopify : référencement, avis, traduction, volume, contenus enrichis.
+> - Des champs de référencement soignés sur chaque fiche.
+
+## Exercice pratique : un plan de mots clés
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec l''essai ou la version gratuite de Semrush, recherchez les mots clés d''un catalogue de 10 produits malgaches.
+> 2. Analysez 2 boutiques concurrentes et notez 10 mots clés qu''elles visent.
+> 3. Construisez le plan de mots clés (catégories, fiches, guide).
+> 4. Rédigez les champs de référencement de 5 fiches.
+>
+> **À livrer** : vos captures de recherche, votre plan et vos 5 fiches.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 1, 0, 'Que montre l''analyse des écarts de Semrush ?', '["Les prix des concurrents","Les mots clés des concurrents que la boutique n''a pas","Les images","Les avis clients"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 1, 1, 'Combien de mots clés principaux par page ?', '["Tous les mots possibles","Dix","Aucun","Un"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 1, 2, 'Que permettent les données structurées ?', '["Traduire la page","Changer les couleurs","Supprimer les avis","Afficher prix ou étoiles dans les résultats de Google"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-a', 2, 'Qualité et rapidité : modèles, formulations, IA, contrôle et tests', 'Modèles par catégorie, banque de formulations variées, usage prudent de l''IA, contrôle d''un gros catalogue et test d''amélioration mesuré.', 'Un rédacteur e-commerce professionnel livre des centaines de fiches **de même qualité**, dans les délais, et améliore celles qui vendent mal. Ce module vous donne les méthodes des meilleurs : modèles par catégorie, banque de formulations, usage prudent de l''IA, contrôle qualité en volume et tests d''amélioration.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer des modèles de fiches par catégorie.
+> 2. Construire une banque de formulations validées.
+> 3. Utiliser l''IA comme assistant sans perdre en exactitude ni en originalité.
+> 4. Contrôler la qualité d''un gros catalogue.
+> 5. Améliorer une fiche avec un test mesuré.
+
+## Les modèles par catégorie
+
+| Catégorie | Éléments spécifiques du modèle |
+| --- | --- |
+| **Vêtements** | Coupe, matière, guide des tailles, taille portée par le mannequin, entretien |
+| **Alimentation** | Origine, goût, usages, conservation, allergènes, date de récolte |
+| **Cosmétiques** | Ingrédients, mode d''emploi, type de peau, précautions |
+| **Décoration** | Dimensions, matière, entretien, idées d''utilisation |
+| **Électronique** | Caractéristiques techniques, compatibilité, contenu de la boîte, garantie |
+
+> [!astuce]
+> Un modèle par catégorie fait gagner du temps **et** garantit que rien n''est oublié : les dimensions des paniers, les allergènes des épices, les ingrédients des cosmétiques.
+
+## La banque de formulations
+
+| Usage | Formulations validées (exemples) |
+| --- | --- |
+| **Introduire un bénéfice** | « Idéal pour… » ; « Pensé pour… » ; « Vous apprécierez… » |
+| **Parler de l''origine** | « Tressé à la main par des artisanes de… » ; « Récolté dans la région… » |
+| **Rassurer** | « Livré dans un emballage protecteur » ; « Retour possible sous 30 jours » (si c''est la politique) |
+| **Entretien** | « Nettoyer avec un chiffon légèrement humide » |
+
+> [!attention]
+> Une banque de formulations sert à gagner du temps, pas à rendre toutes les fiches **identiques**. Variez les tournures et gardez toujours une phrase propre à chaque produit.
+
+## L''IA comme assistant
+
+| Usage utile | Prudence nécessaire |
+| --- | --- |
+| Proposer des idées de titres ou d''accroches | Vérifier qu''elles sont vraies et adaptées |
+| Reformuler une phrase lourde | Garder le ton de la marque |
+| Préparer une première structure | Ajouter les informations réelles du client |
+| Traduire un premier jet | Faire relire par un locuteur compétent |
+
+> [!attention]
+> Un outil d''IA peut **inventer** une caractéristique, une certification ou un bénéfice. Chaque information d''une fiche doit venir des données du client. Respectez aussi les règles du client : certains interdisent l''usage de l''IA ou demandent qu''on le signale. N''envoyez pas de données confidentielles dans un outil non autorisé.
+
+## Contrôler un gros catalogue
+
+| Contrôle | Méthode |
+| --- | --- |
+| **Champs vides** | Filtres dans le tableur |
+| **Longueurs** | Compteurs de caractères (titres, balises, méta-descriptions) |
+| **Doublons de texte** | Comparer les premières phrases des fiches (formule ou outil) |
+| **Mots clés présents** | Recherche du mot clé dans le titre et la description |
+| **Affirmations sensibles** | Recherche de « bio », « naturel », « guérit », « 100 % » et vérification |
+| **Orthographe** | Correcteur + relecture d''un échantillon |
+
+## Améliorer une fiche avec un test
+
+| Étape | Exemple |
+| --- | --- |
+| **Choisir** une fiche très vue et peu achetée | Panier rond : 2 000 visites par mois, 0,4 % de conversion |
+| **Formuler une hypothèse** | « Les visiteurs ne savent pas si le panier est assez grand » |
+| **Modifier un élément** | Dimensions en tête, photo avec objets à l''intérieur, « contient un ordinateur portable 15 pouces » |
+| **Mesurer** sur une période comparable | 4 semaines avant, 4 semaines après |
+| **Conclure prudemment** | Conversion passée à 0,9 %, retours pour taille en baisse |
+
+> [!madagascar]
+> Pour une boutique qui vend à l''international, tenez compte des **saisons** et des fêtes des pays cibles avant de comparer deux périodes : les ventes de décembre en Europe ne se comparent pas à celles de février.
+
+> [!retenir]
+> - Un modèle par catégorie, sans oubli d''information.
+> - Une banque de formulations variée, jamais des fiches identiques.
+> - L''IA pour aider, jamais pour inventer ; respect des règles du client.
+> - Contrôle en volume : champs, longueurs, doublons, mots clés, affirmations.
+> - Des tests mesurés sur une période comparable.
+
+## Exercice pratique : la production en volume
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Créez 3 modèles de fiches pour 3 catégories différentes.
+> 2. Rédigez une banque de 20 formulations.
+> 3. Rédigez 10 fiches avec les modèles et contrôlez-les avec le tableau de contrôle.
+> 4. Rédigez le plan d''un test d''amélioration pour une fiche peu performante.
+>
+> **À livrer** : vos modèles, votre banque, vos 10 fiches contrôlées et votre plan de test.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 2, 0, 'Quel risque présente l''IA pour une fiche ?', '["Écrire trop lentement","Aucun","Inventer une caractéristique ou une certification","Supprimer la fiche"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 2, 1, 'D''où doivent venir les informations d''une fiche ?', '["De l''IA","De l''imagination","D''un concurrent","Des données du client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 2, 2, 'Comment mesurer un test d''amélioration ?', '["Sur des périodes comparables avant et après","En comparant décembre et février","Sur un seul jour","Sans mesure"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-a', 3, 'Clients internationaux : anglais, localisation, places de marché et allégations', 'Fiches en anglais et différences de style, localisation (tailles, unités, saisons, vocabulaire), règles des places de marché, allégations de santé, cosmétiques, environnement et bio, travail avec une agence.', 'Vendre à l''étranger demande des fiches adaptées à chaque pays et à chaque plateforme. Ce module vous prépare à travailler pour des marques et des agences internationales : rédiger en anglais, localiser un catalogue, respecter les règles des places de marché et les règles sur les allégations.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger des fiches produits en anglais.
+> 2. Localiser un catalogue pour plusieurs pays.
+> 3. Respecter les règles des places de marché.
+> 4. Éviter les allégations interdites selon les régions.
+> 5. Travailler avec une agence e-commerce étrangère.
+
+## Rédiger en anglais
+
+> [!exemple] Fiche en anglais
+> **Title**: Handwoven Raffia Tote Bag with Leather Handles – Natural, Large
+> **Bullet points**:
+> - Handwoven by artisans in Madagascar from natural raffia
+> - Roomy 45 × 30 cm design fits a 15-inch laptop, groceries or beach essentials
+> - Genuine leather handles, comfortable to carry on the shoulder
+> - Lightweight yet sturdy for everyday use
+> - Wipe clean with a damp cloth; avoid soaking
+
+| Différence | Français | Anglais |
+| --- | --- | --- |
+| Style | Phrases souvent plus longues | Phrases courtes, verbes d''action |
+| Majuscules dans les titres | Majuscule au premier mot | Souvent majuscule à chaque mot important |
+| Unités | Centimètres, grammes | Selon le pays : pouces et livres aux États-Unis, centimètres au Royaume-Uni souvent avec équivalences |
+| Ton | Vouvoiement | « You », plus direct |
+
+> [!astuce]
+> Ne traduisez pas mot à mot : **réécrivez** pour le lecteur anglophone. Faites relire vos premières fiches en anglais par un locuteur natif ou un professionnel.
+
+## Localiser un catalogue
+
+> [!definition] Localisation
+> Adapter un contenu à un pays précis : langue, unités, tailles, devises, références culturelles, règles locales. C''est plus qu''une traduction.
+
+| Élément | Exemple d''adaptation |
+| --- | --- |
+| **Tailles de vêtements** | Correspondances France, Royaume-Uni, États-Unis |
+| **Unités** | 45 cm (environ 17,7 pouces) |
+| **Devises et prix** | Affichage selon le marché (géré par la boutique) |
+| **Saisons** | L''été en juillet en Europe, en janvier en Afrique australe |
+| **Vocabulaire** | « Cabas » en France, « tote bag » au Royaume-Uni et aux États-Unis |
+| **Livraison et retours** | Conditions propres à chaque pays |
+
+## Les places de marché
+
+| Règle fréquente (à vérifier sur la plateforme) | Exemple |
+| --- | --- |
+| **Structure imposée** | Titre, puces (bullet points), description, mots clés cachés |
+| **Longueur maximale** | Nombre de caractères limité pour le titre et chaque puce |
+| **Interdictions** | Pas de prix, de promotion ni de coordonnées dans le titre ; pas de majuscules excessives |
+| **Termes interdits** | Superlatifs non prouvés, mentions de santé non autorisées |
+| **Contenu enrichi** | Modules d''images et de textes réservés aux marques enregistrées sur certaines plateformes |
+
+> [!attention]
+> Les places de marché changent régulièrement leurs règles et peuvent **bloquer une fiche** qui ne les respecte pas. Lisez toujours les règles officielles de la catégorie avant de rédiger, et notez la date de votre lecture.
+
+## Les allégations
+
+| Type d''allégation | Prudence |
+| --- | --- |
+| **Santé** (« soulage », « guérit », « renforce l''immunité ») | Très encadrées, souvent interdites sans autorisation, notamment dans l''Union européenne pour les aliments |
+| **Cosmétiques** (« anti-âge », « répare ») | Doivent être prouvées par le fabricant |
+| **Environnement** (« écologique », « durable ») | De plus en plus encadrées ; doivent être précises et justifiées |
+| **Bio** | Seulement avec une certification réelle |
+| **Origine** (« fabriqué à Madagascar ») | Doit être exacte |
+
+> [!madagascar]
+> Pour les produits malgaches exportés (huiles essentielles, plantes, épices), les **vertus traditionnelles** sont souvent mises en avant. Dans une fiche destinée à l''Europe, ne transformez pas une utilisation traditionnelle en promesse médicale. Restez descriptif (« utilisée traditionnellement en cuisine ») et faites valider par le client.
+
+## Travailler avec une agence étrangère
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Brief** | Ton, structure, longueurs, mots clés, interdictions |
+| **Outils** | Tableur partagé, plateforme du client, outil de gestion de projet |
+| **Validation** | Échantillon validé avant la série |
+| **Délais** | En heure du client |
+| **Confidentialité** | Produits non lancés, prix, fournisseurs |
+
+> [!retenir]
+> - En anglais : réécrire, phrases courtes, unités et majuscules adaptées.
+> - Localiser : tailles, unités, saisons, vocabulaire, conditions.
+> - Lire les règles officielles de chaque place de marché et de chaque catégorie.
+> - Allégations de santé, cosmétiques, environnement et bio : prudence et preuves.
+> - Agences : brief, échantillon, délais en heure du client, confidentialité.
+
+## Exercice pratique : un catalogue international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais 5 fiches de produits malgaches avec titre et 5 puces.
+> 2. Localisez 2 de ces fiches pour les États-Unis (unités, vocabulaire).
+> 3. Lisez les règles d''une catégorie sur une place de marché et rédigez une fiche de 10 règles.
+> 4. Relisez vos fiches et retirez toute allégation non prouvée.
+>
+> **À livrer** : vos fiches, vos versions localisées, votre fiche de règles et vos corrections.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 3, 0, 'Qu''est-ce que la localisation ?', '["Trouver l''adresse du client","Changer de boutique","Traduire mot à mot","Adapter un contenu à un pays précis"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 3, 1, 'Que ne faut-il pas mettre dans un titre de place de marché ?', '["Un prix ou une promotion","La matière","Une caractéristique","Le nom du produit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 3, 2, 'Comment présenter une vertu traditionnelle d''une plante ?', '["De façon descriptive, sans promesse médicale","Sans validation","Comme un médicament","En promettant une guérison"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('lang-4-a', 4, 'Développer son activité : offres, rapports, études de cas et équipe', 'Trois voies, audits, catalogues, forfaits et localisation, rapport mensuel chiffré, études de cas honnêtes, équipe et évolution.', 'Après quelques clients satisfaits, vous pouvez construire une **activité stable** de rédaction e-commerce : forfaits mensuels, agences partenaires, études de cas chiffrées, et peut-être une petite équipe de rédacteurs. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de rédacteurs.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Spécialiste SEO e-commerce** | Ceux qui aiment l''analyse | Audits, catégories, forfaits d''optimisation |
+| **Studio de contenus produits** | Ceux qui aiment organiser | Gros catalogues, plusieurs langues, équipe |
+| **Rédacteur intégré** à une marque ou une agence | Ceux qui préfèrent la stabilité | Contrat long ou salaire |
+
+## Des offres et des prix durables
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit et plan** | Analyse, mots clés, priorités | 250 000 Ar |
+| **Catalogue complet** | Modèles, fiches, champs de référencement, contrôle | Selon le nombre de fiches |
+| **Forfait mensuel** | Nouveaux produits, optimisation de 10 fiches, rapport | 500 000 Ar par mois |
+| **Localisation** | Adaptation d''un catalogue à un pays | Par fiche, selon la langue |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Un **rapport mensuel** avec des chiffres (positions, trafic, conversion des fiches optimisées) transforme une mission ponctuelle en contrat durable : le client voit la valeur de votre travail.
+
+### Le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Fiches créées et optimisées | 18 créées, 10 optimisées |
+| Positions | 12 mots clés dans les 10 premiers résultats (contre 4 il y a 3 mois) |
+| Trafic depuis Google vers les fiches | +35 % sur 3 mois |
+| Conversion des fiches optimisées | De 0,6 % à 1,1 % en moyenne |
+| Retours pour « taille non conforme » | En baisse |
+| Plan du mois suivant | Guide d''achat, 2 catégories, 10 fiches prioritaires |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : boutique d''artisanat malgache vendant en France, 140 produits.
+> **Problème** : descriptions copiées du fournisseur, aucune information de taille, peu de trafic depuis Google.
+> **Solution** : audit, plan de mots clés, 4 modèles par catégorie, réécriture de 140 fiches, 5 pages de catégories et un guide d''achat.
+> **Résultats en 6 mois** : trafic depuis Google multiplié par 2,4 ; retours pour taille divisés par 2 ; conversion moyenne de 0,8 % à 1,3 %.
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Comparez** des périodes équivalentes.
+3. **Expliquez** les autres facteurs (nouvelles photos, promotions) honnêtement.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Rédacteur** | Quand le volume dépasse votre capacité |
+| **Rédacteur anglophone** ou autre langue | Pour la localisation |
+| **Correcteur** | Quand plusieurs rédacteurs produisent |
+| **Responsable** (vous) | Audits, mots clés, relation client, contrôle |
+
+### Les règles de qualité
+
+1. **Modèles et banque de formulations** communs par client.
+2. **Plan de mots clés** préparé par vous.
+3. **Contrôle** de chaque lot (tableau de contrôle + relecture d''échantillon).
+4. **Règles sur l''IA** claires et conformes aux demandes des clients.
+5. **Confidentialité** des catalogues et des prix.
+
+> [!madagascar]
+> Un petit studio à Madagascar peut produire des fiches en **français et en anglais**, avec une connaissance réelle des produits malgaches. C''est un argument fort pour les exportateurs et les boutiques européennes qui vendent ces produits.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Spécialiste SEO** | Voir la formation Spécialiste SEO |
+| **Gestionnaire de catalogue** | Voir la formation Gestionnaire de catalogue produits |
+| **Responsable contenu e-commerce** | Stratégie de contenus, équipe, budget |
+| **Copywriter** | Pages de vente, publicités (voir la formation Rédacteur web et copywriter) |
+
+> [!retenir]
+> - Spécialiste SEO, studio de contenus ou rédacteur intégré : choisissez votre voie.
+> - Audits, catalogues, forfaits et localisation.
+> - Un rapport mensuel chiffré qui fidélise.
+> - Des études de cas honnêtes, sur des périodes comparables.
+> - Une équipe avec modèles, mots clés, contrôle et règles sur l''IA.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez vos offres et leurs prix.
+> 3. Rédigez un modèle de rapport mensuel et une étude de cas à partir de vos projets.
+> 4. Listez 10 boutiques ou agences et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, vos offres, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 4, 0, 'Qu''est-ce qui transforme une mission en contrat durable ?', '["Rien","Un rapport mensuel chiffré","Un logo","Un prix plus bas"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 4, 1, 'Que faire dans une étude de cas si de nouvelles photos ont aussi été ajoutées ?', '["Le mentionner honnêtement","Attribuer tout le mérite aux textes","Ne pas publier","Le cacher"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('lang-4-a', 4, 2, 'Qui prépare le plan de mots clés dans un studio ?', '["Personne","Chaque rédacteur au hasard","Le responsable","Le client seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelle spécialité réécrit et teste les fiches qui vendent mal ?', '["Les fiches B2B","La localisation","Les places de marché","L''optimisation de la conversion"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Comment vérifier qu''une description est copiée ?', '["Rechercher une phrase entre guillemets dans Google","Compter les mots","Regarder la couleur","Ce n''est pas possible"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelle information manquante cause souvent des retours ?', '["Le nom de la marque","La couleur du site","Les dimensions","Le logo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que mesure le taux d''ajout au panier ?', '["L''envie créée par la fiche","Le prix","Le trafic","Les retours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Pourquoi viser des mots clés précis pour une petite boutique ?', '["Aucune raison","Plus faciles à gagner et acheteurs","Ils sont plus recherchés","Ils sont interdits"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que se passe-t-il si deux fiches visent le même mot clé ?', '["Elles sont supprimées","Elles se concurrencent dans Google","Rien","Elles se renforcent toujours"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelle longueur viser pour une balise titre ?', '["Aucune limite","Environ 50 à 60 caractères","500 caractères","5 caractères"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Qui paie Semrush en général ?', '["Toujours le rédacteur débutant","Google","Personne","La boutique ou l''agence"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que doit contenir un modèle de fiche alimentaire ?', '["Le guide des tailles","Seulement le prix","La compatibilité électronique","Origine, usages, conservation et allergènes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'À quoi sert une banque de formulations ?', '["Gagner du temps en variant les tournures","Rendre toutes les fiches identiques","Remplacer les informations du client","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que faire si un client interdit l''usage de l''IA ?', '["L''utiliser quand même","Respecter sa règle","Changer de client sans prévenir","Ne rien dire"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelles affirmations rechercher lors du contrôle ?', '["« bonjour »","« bio », « naturel », « guérit », « 100 % »","Les couleurs","Les prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelle hypothèse tester sur un panier peu acheté ?', '["Rien","Les visiteurs ne savent pas s''il est assez grand","Le site est trop rapide","Les clients n''aiment pas acheter"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Comment écrire une fiche en anglais ?', '["La traduire mot à mot","Utiliser uniquement l''IA sans relire","La réécrire pour le lecteur anglophone","Garder le français"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quel mot anglais correspond souvent au « cabas » ?', '["Basket","Tote bag","Wallet","Suitcase"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que lire avant de rédiger pour une place de marché ?', '["Les règles officielles de la catégorie","Un vieux forum","Les avis des concurrents seulement","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quelle allégation est très encadrée dans l''UE pour les aliments ?', '["Le poids","La couleur","Les allégations de santé","L''origine exacte"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quand écrire « bio » ?', '["Jamais","Toujours pour les produits naturels","Pour vendre plus cher","Seulement avec une certification réelle"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que valider avec une agence avant la série ?', '["Rien","Le logo","Un échantillon","Le prix des concurrents"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que garder confidentiel avec une agence ?', '["Rien","Produits non lancés, prix et fournisseurs","Le nom de la boutique publique","Les fiches publiées"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Que montre un bon rapport mensuel ?', '["Les salaires","Positions, trafic, conversion et plan suivant","Seulement le nombre de mots","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Comment comparer des résultats dans une étude de cas ?', '["Sur des périodes différentes choisies au hasard","Avec des chiffres inventés","Sur des périodes équivalentes","Sans chiffres"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quand ajouter un correcteur à l''équipe ?', '["Jamais","Quand il n''y a plus de clients","Quand plusieurs rédacteurs produisent","Dès le premier jour seul"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Quel avantage pour un studio malgache ?', '["Aucun","Connaissance réelle des produits et fiches en français et en anglais","Pas besoin de relire","Prix toujours plus élevés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('lang-4-a', 'Vers quelle formation aller pour approfondir le référencement ?', '["Modérateur","Testeur","Spécialiste SEO","Monteur audio"]'::jsonb, 2);
 
 -- lang-4-f
 delete from public.exam_questions where course_id = 'lang-4-f';

@@ -5017,6 +5017,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "lang-4-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait du rédacteur de fiches produits un professionnel dont les textes font vendre et font trouver : spécialité (SEO e-commerce, places de marché, multilingue, B2B, aide à l'achat, conversion), audit des fiches et indicateurs de vente, outils payants (Semrush et applications Shopify payantes), plan de mots clés et champs de référencement, modèles par catégorie, IA utilisée avec prudence, contrôle en volume et tests, fiches en anglais, localisation, règles des places de marché et allégations, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer des fiches et relier les textes aux ventes",
+   "Rechercher des mots clés avec Semrush et construire un plan pour un catalogue",
+   "Utiliser les applications Shopify et soigner les champs de référencement",
+   "Produire en volume avec modèles, contrôle qualité et tests mesurés",
+   "Rédiger en anglais, localiser un catalogue et respecter les règles des plateformes",
+   "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer les fiches et mesurer les ventes",
+    "summary": "Les 6 spécialités avancées, l'intention de recherche, l'audit en 6 domaines et son rapport, les indicateurs de vente, la prudence sur les promesses et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit des fiches produits",
+     "Relier les textes aux ventes",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Semrush et applications Shopify payantes",
+    "summary": "Recherche de mots clés, vue d'ensemble, écarts et suivi de position dans Semrush, critères de choix, plan de mots clés, familles d'applications Shopify, données structurées et champs de référencement.",
+    "sections": [
+     "Semrush : la recherche de mots clés",
+     "Le plan de mots clés d'un catalogue",
+     "Les applications Shopify payantes",
+     "Les champs de référencement d'une fiche",
+     "Exercice pratique : un plan de mots clés"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : modèles, formulations, IA, contrôle et tests",
+    "summary": "Modèles par catégorie, banque de formulations variées, usage prudent de l'IA, contrôle d'un gros catalogue et test d'amélioration mesuré.",
+    "sections": [
+     "Les modèles par catégorie",
+     "La banque de formulations",
+     "L'IA comme assistant",
+     "Contrôler un gros catalogue",
+     "Améliorer une fiche avec un test",
+     "Exercice pratique : la production en volume"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, localisation, places de marché et allégations",
+    "summary": "Fiches en anglais et différences de style, localisation (tailles, unités, saisons, vocabulaire), règles des places de marché, allégations de santé, cosmétiques, environnement et bio, travail avec une agence.",
+    "sections": [
+     "Rédiger en anglais",
+     "Localiser un catalogue",
+     "Les places de marché",
+     "Les allégations",
+     "Travailler avec une agence étrangère",
+     "Exercice pratique : un catalogue international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres, rapports, études de cas et équipe",
+    "summary": "Trois voies, audits, catalogues, forfaits et localisation, rapport mensuel chiffré, études de cas honnêtes, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "lang-4-f": {
   "hours": 14,
   "description": "Le rédacteur de fiches produits écrit des descriptions claires, exactes et convaincantes qui aident les clients à acheter et les produits à être trouvés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : éléments d'une fiche, bénéfices, persona, mots clés, structure et ton, rédaction en volume, contrôle qualité, catalogue complet et import. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
