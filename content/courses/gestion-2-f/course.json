@@ -1,0 +1,97 @@
+{
+  "id": "gestion-2-f",
+  "hours": 15,
+  "description": "Le gestionnaire de catalogue produits crée et maintient des données produits exactes et bien organisées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : données produits, SKU et variantes, fonctions du tableur, images, contrôle qualité, collections automatiques, import CSV, métachamps, nouvelles collections, mises à jour en masse, soldes et rapport de qualité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier et les données d'une fiche produit",
+    "Construire un fichier produits propre avec SKU et variantes",
+    "Utiliser les fonctions du tableur pour générer et contrôler les données",
+    "Créer des produits, des collections et importer un CSV dans Shopify",
+    "Lancer une collection, mettre à jour prix et stocks et préparer des soldes",
+    "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier de gestionnaire de catalogue depuis Madagascar",
+      "summary": "Les tâches du métier, les données d'une fiche produit, le SKU, l'organisation d'un catalogue, la règle des 3 clics, les clients et le poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un SKU ?", "options": ["Une référence unique pour chaque produit ou variante", "Un prix", "Une photo", "Un client"], "correct": 0 },
+        { "q": "Pourquoi le poids est-il important ?", "options": ["Il sert au calcul des frais de livraison", "Pour décorer la fiche", "Il n'est pas utile", "Pour le référencement seulement"], "correct": 0 },
+        { "q": "Quelle est la règle des 3 clics ?", "options": ["Un client doit trouver un produit en 3 clics ou moins", "Trois photos par produit", "Trois prix par produit", "Trois collections maximum"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : fichier produits, SKU, tableur, images et contrôle",
+      "summary": "Une ligne par variante, format des prix, règle de nommage des SKU, fonctions essentielles du tableur, nommage des images et contrôle qualité des données.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment écrire un prix dans un fichier d'import ?", "options": ["Sans espace ni unité, selon le format demandé", "Avec « Ar » et des espaces", "En lettres", "Avec un symbole euro"], "correct": 0 },
+        { "q": "Quelle fonction aide à repérer les doublons ?", "options": ["NB.SI", "MAJUSCULE", "SUPPRESPACE", "CONCATENER"], "correct": 0 },
+        { "q": "Peut-on changer un SKU existant librement ?", "options": ["Non, pas sans accord", "Oui, toujours", "Oui, le week-end", "Oui, pour l'embellir"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Shopify, collections, import CSV, métachamps et outils payants",
+      "summary": "Produits et variantes dans Shopify, limites à vérifier, collections manuelles et automatiques, liste d'étiquettes, méthode d'import CSV, métachamps, offres payantes de Shopify et Matrixify.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment fonctionne une collection automatique ?", "options": ["Les produits y entrent selon des conditions", "On ajoute les produits un par un", "Elle se vide chaque jour", "Elle est payante"], "correct": 0 },
+        { "q": "Que faire avant toute modification en masse ?", "options": ["Un export complet de sauvegarde", "Rien", "Supprimer les produits", "Changer de boutique"], "correct": 0 },
+        { "q": "À quoi sert un métachamp ?", "options": ["Stocker une information supplémentaire comme l'entretien", "Changer le prix", "Supprimer un produit", "Envoyer un e-mail"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le catalogue de Lamba Studio",
+      "summary": "Nettoyage des données fournisseur avec table de correspondance, lancement d'une collection en brouillon, mises à jour de prix et de stock, soldes et rapport de qualité.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire des données brutes du fournisseur ?", "options": ["Les garder intactes dans un onglet séparé", "Les supprimer", "Les modifier directement", "Les envoyer aux clients"], "correct": 0 },
+        { "q": "Dans quel statut importer une nouvelle collection ?", "options": ["Brouillon", "Actif immédiatement", "Archivé", "Supprimé"], "correct": 0 },
+        { "q": "Que faire d'un produit arrêté ?", "options": ["L'archiver plutôt que le supprimer", "Le supprimer avec son historique", "Le laisser actif", "Changer son SKU"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio avant et après et vidéo de méthode, 5 canaux, prix par produit, audit, forfait et tarif horaire, conditions en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que proposer à une boutique avec des filtres vides ?", "options": ["Un audit de son catalogue", "Une critique publique", "Rien", "Un nouveau logo"], "correct": 0 },
+        { "q": "Que faire valider par écrit avant un import ?", "options": ["Les listes de prix et de soldes", "La couleur du site", "Rien", "Le nom du rédacteur"], "correct": 0 },
+        { "q": "Quel outil sert aux migrations entre plateformes ?", "options": ["Matrixify", "Audacity", "Trello", "Canva"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un gestionnaire de catalogue produits ?", "options": ["Il crée et maintient des données produits exactes et organisées", "Il fabrique les produits", "Il livre les commandes", "Il prend les photos"], "correct": 0 },
+    { "q": "Que décrit le SKU « RB-LAMBA-IND-M » ?", "options": ["Robe lamba, couleur indigo, taille M", "Un client", "Une commande", "Un prix"], "correct": 0 },
+    { "q": "À quoi servent les codes-barres EAN ou GTIN ?", "options": ["Places de marché et publicités produits", "Décorer les photos", "Calculer le poids", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un attribut pour les filtres ?", "options": ["Taille, couleur, matière ou prix", "Le nom du gérant", "Le mot de passe", "La date de création du site"], "correct": 0 },
+    { "q": "Combien de lignes par variante dans un fichier d'import ?", "options": ["Une ligne par variante", "Une ligne pour tout le catalogue", "Dix lignes", "Aucune"], "correct": 0 },
+    { "q": "Quels caractères utiliser dans un SKU ?", "options": ["Majuscules, chiffres et tirets", "Accents et espaces", "Émojis", "Tous"], "correct": 0 },
+    { "q": "Quelle formule construit un SKU à partir de 3 colonnes ?", "options": ["=A2&\"-\"&B2&\"-\"&C2", "=SOMME(A2:C2)", "=MOYENNE(A2:C2)", "=NB(A2:C2)"], "correct": 0 },
+    { "q": "Pourquoi « Indigo » et « indigo » posent-ils problème ?", "options": ["Ils comptent comme deux valeurs différentes", "Aucun problème", "Ils changent le prix", "Ils suppriment le produit"], "correct": 0 },
+    { "q": "Comment nommer les images ?", "options": ["À partir du SKU, avec un numéro d'ordre", "IMG_2034.jpg", "Au hasard", "Avec le nom du photographe"], "correct": 0 },
+    { "q": "Quel contrôle détecte un prix barré incohérent ?", "options": ["Une formule qui compare prix barré et prix de vente", "Un filtre sur les images", "Le poids", "Rien"], "correct": 0 },
+    { "q": "Que vérifier avant de créer beaucoup de variantes dans Shopify ?", "options": ["Les limites actuelles dans le centre d'aide", "La couleur du thème", "Rien", "Le nombre de clients"], "correct": 0 },
+    { "q": "Pourquoi fixer une liste d'étiquettes ?", "options": ["Pour que les collections automatiques fonctionnent correctement", "Pour décorer", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 },
+    { "q": "Quel encodage choisir pour un CSV avec accents ?", "options": ["UTF-8", "Aucun", "Une image", "Un PDF"], "correct": 0 },
+    { "q": "Par quoi commencer un import ?", "options": ["Un test avec 2 ou 3 produits", "Le fichier complet sans test", "La suppression du catalogue", "Rien"], "correct": 0 },
+    { "q": "Qui paie l'abonnement Shopify d'une boutique ?", "options": ["La boutique", "Le gestionnaire", "Les clients finaux", "Personne"], "correct": 0 },
+    { "q": "À quoi sert une table de correspondance ?", "options": ["Transformer les valeurs reçues en valeurs standard", "Calculer les impôts", "Envoyer des factures", "Prendre des photos"], "correct": 0 },
+    { "q": "Que faire après l'activation d'une collection ?", "options": ["Contrôler sur téléphone et ordinateur", "Rien", "Supprimer le brouillon du fournisseur", "Changer les SKU"], "correct": 0 },
+    { "q": "Pourquoi importer seulement les colonnes nécessaires ?", "options": ["Pour ne pas écraser d'autres modifications", "Pour aller plus lentement", "Ce n'est pas possible", "Pour supprimer les images"], "correct": 0 },
+    { "q": "Que comparer lors d'un inventaire ?", "options": ["Le stock compté et le stock en ligne par SKU", "Les couleurs", "Les avis", "Les prix des concurrents"], "correct": 0 },
+    { "q": "Que préparer à l'avance pour la fin des soldes ?", "options": ["Le fichier de retour aux prix normaux", "Rien", "Une nouvelle boutique", "Des avis clients"], "correct": 0 },
+    { "q": "Que montre le rapport de qualité du catalogue ?", "options": ["Erreurs restantes et prochaines actions", "Seulement les ventes", "Les salaires", "Rien"], "correct": 0 },
+    { "q": "Que montrer dans un portfolio ?", "options": ["Un fichier désordonné devenu propre", "Les données réelles d'un client sans accord", "Seulement un CV", "Rien"], "correct": 0 },
+    { "q": "De quoi êtes-vous responsable pour les prix ?", "options": ["De leur saisie exacte", "De leur montant décidé par le client", "De rien", "Des bénéfices du client"], "correct": 0 },
+    { "q": "Vers quoi évoluer avec les flux Google Shopping ?", "options": ["Spécialiste données produits", "Monteur audio", "Modérateur", "Traducteur"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

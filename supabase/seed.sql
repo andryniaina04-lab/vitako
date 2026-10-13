@@ -87,7 +87,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
-  ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
+  ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 15, true),
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true),
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 15, true),
@@ -26404,6 +26404,574 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que doit préciser le contrat sur les décisions ?', '["Qui décide des prix, promotions et remboursements","Rien","Le salaire du client","La couleur de la boutique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
+
+-- gestion-2-f
+delete from public.exam_questions where course_id = 'gestion-2-f';
+delete from public.module_questions where course_id = 'gestion-2-f';
+delete from public.lessons where course_id = 'gestion-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-f', 0, 'Le métier de gestionnaire de catalogue depuis Madagascar', 'Les tâches du métier, les données d''une fiche produit, le SKU, l''organisation d''un catalogue, la règle des 3 clics, les clients et le poste de travail.', 'Une boutique en ligne peut avoir des dizaines, des centaines ou des milliers de produits, chacun avec ses tailles, ses couleurs, ses prix, ses photos et son stock. Si le catalogue est mal tenu, les clients ne trouvent pas les produits, commandent des articles épuisés ou voient des prix faux. Le gestionnaire de catalogue produits crée, organise et met à jour ces informations, entièrement à distance. Ce premier module vous présente le métier.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un gestionnaire de catalogue.
+> 2. Décrire les données d''une fiche produit.
+> 3. Comprendre l''organisation d''un catalogue.
+> 4. Repérer vos premiers clients possibles.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un gestionnaire de catalogue produits **crée et maintient des données produits exactes, complètes et bien organisées, pour que les clients trouvent facilement ce qu''ils cherchent et achètent sans erreur**.
+
+## Les tâches du métier
+
+| Tâche | Exemple |
+| --- | --- |
+| **Créer des produits** | Ajouter la nouvelle collection de 60 articles |
+| **Gérer les variantes** | Tailles S à XL, 4 couleurs |
+| **Mettre à jour les prix** | Soldes, hausse des tarifs du fournisseur |
+| **Gérer le stock** | Corriger les quantités, masquer les produits épuisés |
+| **Organiser** | Collections, catégories, étiquettes, filtres |
+| **Gérer les images** | Ajouter, nommer, ordonner, texte alternatif |
+| **Importer et exporter** | Fichiers de centaines de produits en une fois |
+| **Contrôler la qualité** | Produits sans photo, sans prix, sans poids |
+
+> [!definition] Données produits
+> Toutes les informations qui décrivent un produit : nom, référence, prix, variantes, stock, poids, dimensions, images, catégorie, description, codes-barres.
+
+## Les données d''une fiche produit
+
+| Donnée | Exemple | Pourquoi c''est important |
+| --- | --- | --- |
+| **Titre** | Robe portefeuille en lamba – Bleu indigo | Recherche et compréhension |
+| **Référence (SKU)** | RB-LAMBA-IND-M | Identifier sans ambiguïté |
+| **Prix et prix barré** | 120 000 Ar, au lieu de 150 000 Ar | Vente et promotions |
+| **Variantes** | Taille : S, M, L ; Couleur : indigo, rouge | Choix du client |
+| **Stock** | 12 en taille M | Éviter de vendre ce qui n''existe pas |
+| **Poids** | 350 g | Calcul des frais de livraison |
+| **Codes-barres** (EAN, GTIN) | 13 chiffres | Places de marché, publicités produits |
+| **Images** | 5 photos, dans l''ordre | Décision d''achat |
+| **Catégorie et étiquettes** | Femme, Robes, Coton, Été | Filtres et navigation |
+| **Description** | Texte du rédacteur | Information et référencement |
+
+> [!definition] SKU (Stock Keeping Unit)
+> Une référence unique donnée à chaque produit ou variante. « RB-LAMBA-IND-M » désigne la robe en lamba, couleur indigo, taille M. Deux variantes ne doivent jamais avoir le même SKU.
+
+## L''organisation d''un catalogue
+
+| Niveau | Exemple |
+| --- | --- |
+| **Catégories principales** | Femme, Homme, Maison, Accessoires |
+| **Sous-catégories** | Femme → Robes, Hauts, Jupes |
+| **Collections thématiques** | Nouveautés, Été, Fabriqué à Madagascar, Soldes |
+| **Attributs pour les filtres** | Taille, couleur, matière, prix |
+
+> [!astuce]
+> Un bon catalogue se teste avec une question simple : **un client peut-il trouver un produit en 3 clics ou moins ?** Si non, l''organisation doit être revue.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Boutiques en ligne** de mode, d''artisanat, de cosmétiques et d''alimentation.
+2. **Distributeurs et grossistes** qui vendent à des revendeurs.
+3. **Exportateurs** qui préparent des catalogues pour l''étranger.
+
+### À l''étranger
+
+1. **Boutiques Shopify et WooCommerce** de toutes tailles.
+2. **Marques sur les places de marché**.
+3. **Agences e-commerce** qui sous-traitent la mise à jour des catalogues.
+
+> [!madagascar] Votre avantage
+> Le travail de catalogue demande de la **rigueur et de la régularité** plus que de la créativité, et se fait très bien à distance. Beaucoup d''entreprises e-commerce étrangères confient déjà ce travail à des équipes à Madagascar, souvent en français.
+
+## Les qualités du gestionnaire de catalogue
+
+1. **La rigueur** : un chiffre faux peut coûter cher.
+2. **Le goût de l''organisation** : noms, dossiers, structures logiques.
+3. **La maîtrise du tableur** : vous y passerez beaucoup de temps.
+4. **La patience** : des centaines de lignes à vérifier.
+5. **La communication** : poser les bonnes questions au client.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive pour les gros tableurs |
+| **Écran** | Un grand écran ou deux écrans si possible |
+| **Tableur** | Google Sheets (gratuit) |
+| **Boutique de test** | Une boutique Shopify d''essai ou de développement |
+| **Connexion** | Stable, avec une solution de secours |
+
+> [!retenir]
+> - Le gestionnaire crée et maintient des données produits exactes et organisées.
+> - Titre, SKU, prix, variantes, stock, poids, codes-barres, images, catégories.
+> - Un SKU unique pour chaque variante.
+> - Catégories, sous-catégories, collections, attributs pour les filtres.
+> - Rigueur, organisation et maîtrise du tableur.
+
+## Exercice pratique : analyser un catalogue
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez une boutique en ligne d''au moins 50 produits.
+> 2. Dessinez son organisation : catégories, sous-catégories, collections, filtres.
+> 3. Testez la règle des 3 clics sur 5 produits.
+> 4. Relevez 5 problèmes (photo manquante, prix incohérent, mauvaise catégorie…).
+>
+> **À livrer** : votre schéma d''organisation, vos tests et vos 5 problèmes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 0, 0, 'Qu''est-ce qu''un SKU ?', '["Une référence unique pour chaque produit ou variante","Un client","Une photo","Un prix"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 0, 1, 'Pourquoi le poids est-il important ?', '["Pour le référencement seulement","Il sert au calcul des frais de livraison","Pour décorer la fiche","Il n''est pas utile"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 0, 2, 'Quelle est la règle des 3 clics ?', '["Trois prix par produit","Trois photos par produit","Un client doit trouver un produit en 3 clics ou moins","Trois collections maximum"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-f', 1, 'Les bases : fichier produits, SKU, tableur, images et contrôle', 'Une ligne par variante, format des prix, règle de nommage des SKU, fonctions essentielles du tableur, nommage des images et contrôle qualité des données.', 'Ce module vous donne les bases du gestionnaire de catalogue : construire un fichier produits propre, nommer les SKU, gérer les variantes, maîtriser les fonctions essentielles du tableur, organiser les images et contrôler la qualité des données.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un fichier produits avec une ligne par variante.
+> 2. Créer une règle de nommage des SKU.
+> 3. Utiliser les fonctions essentielles du tableur.
+> 4. Nommer et organiser les images.
+> 5. Contrôler la qualité des données.
+
+## Le fichier produits
+
+Dans la plupart des outils e-commerce, le fichier d''import contient **une ligne par variante**, regroupées par produit.
+
+| Identifiant produit | Titre | Option 1 | Option 2 | SKU | Prix | Stock |
+| --- | --- | --- | --- | --- | --- | --- |
+| robe-lamba | Robe portefeuille en lamba | Indigo | S | RB-LAMBA-IND-S | 120000 | 5 |
+| robe-lamba | | Indigo | M | RB-LAMBA-IND-M | 120000 | 12 |
+| robe-lamba | | Rouge | S | RB-LAMBA-ROU-S | 120000 | 3 |
+| robe-lamba | | Rouge | M | RB-LAMBA-ROU-M | 120000 | 0 |
+
+> [!attention]
+> Dans un fichier d''import, les **prix s''écrivent sans espace ni unité** (120000, pas « 120 000 Ar »), selon le format demandé par l''outil. Une seule cellule mal formatée peut faire échouer l''import ou créer un prix faux.
+
+## La règle de nommage des SKU
+
+| Partie | Signification | Exemple |
+| --- | --- | --- |
+| Type | Catégorie du produit | RB (robe) |
+| Modèle | Nom court du modèle | LAMBA |
+| Couleur | Code couleur | IND (indigo) |
+| Taille | Taille | M |
+
+**Résultat** : RB-LAMBA-IND-M
+
+### Les bonnes pratiques
+
+1. **Une règle écrite** et partagée avec le client.
+2. **Lettres majuscules, chiffres et tirets** seulement (pas d''accents, pas d''espaces).
+3. **Un SKU unique** par variante, jamais réutilisé.
+4. **Ne jamais changer** un SKU existant sans accord : il peut être lié au stock, à la comptabilité ou à un entrepôt.
+
+## Les fonctions essentielles du tableur
+
+| Fonction | Usage | Exemple |
+| --- | --- | --- |
+| `CONCATENER` ou `&` | Construire un SKU ou un titre | `=A2&"-"&B2&"-"&C2` |
+| `RECHERCHEV` ou `RECHERCHEX` | Récupérer une information dans un autre tableau | Le prix fournisseur à partir du SKU |
+| `NB.SI` | Repérer les doublons | `=NB.SI(E:E;E2)>1` |
+| `SI` | Appliquer une condition | Prix soldé si la collection est « Soldes » |
+| `SUPPRESPACE` | Retirer les espaces en trop | Nettoyer des noms copiés |
+| `MAJUSCULE` | Mettre en majuscules | Uniformiser les SKU |
+| **Filtres et tri** | Trouver les lignes à problème | Produits sans prix |
+| **Mise en forme conditionnelle** | Colorer les erreurs | Stock négatif en rouge |
+
+> [!astuce]
+> Les noms des fonctions et le séparateur (« ; » ou « , ») dépendent de la **langue du tableur**. Si une formule ne fonctionne pas, vérifiez d''abord ces deux points.
+
+## Organiser les images
+
+| Règle | Exemple |
+| --- | --- |
+| **Nom du fichier** basé sur le SKU | rb-lamba-ind-1.jpg, rb-lamba-ind-2.jpg |
+| **Ordre** | 1 : face ; 2 : dos ; 3 : détail ; 4 : porté |
+| **Format et poids** | JPEG ou WebP, poids raisonnable, même format carré pour toute la boutique |
+| **Texte alternatif** | « Robe portefeuille en lamba bleu indigo, vue de face » |
+| **Dossiers** | Un dossier par collection |
+
+## Contrôler la qualité des données
+
+| Contrôle | Comment le faire |
+| --- | --- |
+| SKU en double | `NB.SI` et mise en forme conditionnelle |
+| Prix manquants ou à zéro | Filtre sur la colonne Prix |
+| Prix barré inférieur au prix de vente | Formule de comparaison |
+| Poids manquant | Filtre (le poids sert au calcul de la livraison) |
+| Produits sans image | Filtre sur la colonne Images |
+| Fautes dans les options | « Indigo », « indigo » et « Indigo » comptent comme 3 valeurs différentes |
+| Stock négatif | Mise en forme conditionnelle |
+
+> [!madagascar]
+> Les fournisseurs malgaches envoient souvent leurs listes de produits sous des formes très variées (photos de cahiers, messages WhatsApp, tableurs incomplets). Votre première tâche sera souvent de **transformer ces informations en un fichier propre** : c''est une compétence très appréciée.
+
+> [!retenir]
+> - Une ligne par variante, avec des valeurs au format de l''outil.
+> - Une règle de SKU écrite, unique, sans accents ni espaces.
+> - Concaténer, rechercher, compter, nettoyer, filtrer, colorer.
+> - Des images nommées, ordonnées, légères, avec texte alternatif.
+> - Un contrôle qualité systématique avant chaque import.
+
+## Exercice pratique : un fichier produits propre
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Créez un fichier pour 8 produits avec 2 options chacun (au moins 30 lignes de variantes).
+> 2. Générez les SKU automatiquement avec une formule.
+> 3. Ajoutez 5 erreurs volontaires (doublon, prix vide, stock négatif…) et les contrôles qui les détectent.
+> 4. Rédigez votre règle de nommage des SKU et des images.
+>
+> **À livrer** : le lien de votre fichier et votre règle de nommage.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 1, 0, 'Comment écrire un prix dans un fichier d''import ?', '["Avec « Ar » et des espaces","Sans espace ni unité, selon le format demandé","Avec un symbole euro","En lettres"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 1, 1, 'Quelle fonction aide à repérer les doublons ?', '["SUPPRESPACE","NB.SI","CONCATENER","MAJUSCULE"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 1, 2, 'Peut-on changer un SKU existant librement ?', '["Oui, pour l''embellir","Oui, toujours","Non, pas sans accord","Oui, le week-end"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-f', 2, 'Les outils : Shopify, collections, import CSV, métachamps et outils payants', 'Produits et variantes dans Shopify, limites à vérifier, collections manuelles et automatiques, liste d''étiquettes, méthode d''import CSV, métachamps, offres payantes de Shopify et Matrixify.', 'Ce module vous fait prendre en main les outils du gestionnaire de catalogue : **Google Sheets** pour préparer les données et **Shopify** pour les publier. Vous apprendrez à créer des produits et des variantes, à organiser les collections, à importer un fichier CSV, puis vous découvrirez les outils payants utilisés pour les gros catalogues : les **offres payantes de Shopify** et l''application **Matrixify**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer un produit avec ses variantes dans Shopify.
+> 2. Organiser les collections manuelles et automatiques.
+> 3. Importer et exporter des produits avec un fichier CSV.
+> 4. Utiliser les métachamps pour des informations supplémentaires.
+> 5. Comprendre ce qu''apportent les offres payantes de Shopify et Matrixify.
+
+## Shopify : produits et variantes
+
+| Champ | Contenu |
+| --- | --- |
+| **Titre et description** | Fournis par le rédacteur ou le client |
+| **Médias** | Images dans l''ordre, avec texte alternatif |
+| **Prix et prix barré** | Prix de vente et « comparer au prix » |
+| **Inventaire** | SKU, code-barres, quantité, suivi du stock |
+| **Expédition** | Poids, produit physique ou non |
+| **Variantes** | Options (taille, couleur) et valeurs |
+| **Organisation du produit** | Type, fournisseur, collections, étiquettes |
+| **Statut** | Actif, brouillon ou archivé |
+
+> [!attention]
+> Le nombre d''options et de variantes par produit est **limité** par Shopify, et ces limites évoluent. Vérifiez les limites actuelles dans le centre d''aide officiel avant de structurer un produit avec beaucoup de tailles et de couleurs.
+
+## Les collections
+
+| Type | Principe | Exemple |
+| --- | --- | --- |
+| **Manuelle** | On ajoute les produits un par un | « Sélection de la fondatrice » |
+| **Automatique** | Les produits entrent selon des conditions | Étiquette = « été » ; type = « Robe » ; prix inférieur à 50 000 Ar |
+
+> [!astuce]
+> Les collections automatiques font gagner beaucoup de temps : si les **étiquettes et les types** sont bien remplis, un nouveau produit apparaît tout seul dans les bonnes collections. D''où l''importance d''une liste d''étiquettes fixée et respectée.
+
+### La liste des étiquettes
+
+```
+Étiquettes autorisées – Boutique Lamba Studio
+Saison : ete, hiver
+Matière : coton, lin, raphia, soie-sauvage
+Origine : fabrique-a-madagascar
+Promotion : soldes, nouveaute
+(minuscules, sans accents, avec tirets)
+```
+
+## L''import et l''export CSV
+
+> [!definition] Fichier CSV
+> Un fichier tableur simple, où chaque valeur est séparée par une virgule (ou un point-virgule). Shopify fournit un **modèle de CSV** avec les colonnes attendues.
+
+### La méthode d''import
+
+1. **Téléchargez** le modèle CSV officiel ou exportez quelques produits existants.
+2. **Remplissez** le fichier dans Google Sheets en respectant les noms de colonnes.
+3. **Contrôlez** les données (module 2).
+4. **Exportez** au format CSV (encodage UTF-8 pour garder les accents).
+5. **Testez** d''abord l''import avec 2 ou 3 produits.
+6. **Importez** le fichier complet et vérifiez le résultat dans la boutique.
+
+> [!attention]
+> Avant toute modification en masse, faites un **export complet** de sauvegarde. Si l''import écrase des données par erreur, vous pourrez revenir en arrière.
+
+## Les métachamps
+
+> [!definition] Métachamp (metafield)
+> Un champ personnalisé ajouté aux produits pour stocker une information qui n''existe pas par défaut : guide d''entretien, pays de fabrication, composition, durée de conservation.
+
+| Métachamp | Exemple |
+| --- | --- |
+| Composition | 100 % coton |
+| Entretien | Lavage à la main à 30 °C |
+| Origine | Antsirabe, Madagascar |
+| Artisan | Coopérative Fanja |
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Offres payantes de Shopify** | Une boutique en ligne réelle (au-delà de l''essai), plus de comptes collaborateurs et de fonctions selon l''offre ; c''est le client qui paie l''abonnement |
+| **Matrixify** (application Shopify) | Import et export très complets au format Excel ou CSV : produits, variantes, métachamps, collections, clients, redirections ; mises à jour planifiées ; idéal pour les gros catalogues et les migrations |
+
+> [!madagascar]
+> L''abonnement Shopify et Matrixify sont **payés par la boutique**. Pour vous former, utilisez une boutique d''essai ou une boutique de développement (avec un compte partenaire Shopify), et l''offre de démonstration de Matrixify si elle est proposée. Vérifiez les conditions sur les sites officiels.
+
+> [!retenir]
+> - Produits, variantes, inventaire, expédition, organisation et statut dans Shopify.
+> - Vérifier les limites actuelles de variantes.
+> - Collections automatiques basées sur des étiquettes fixées.
+> - Import CSV : modèle, contrôle, UTF-8, test, sauvegarde avant.
+> - Métachamps pour les informations en plus ; Matrixify pour les gros catalogues.
+
+## Exercice pratique : un catalogue dans Shopify
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Ouvrez une boutique Shopify d''essai ou de développement.
+> 2. Créez 2 produits à la main avec variantes, images et poids.
+> 3. Importez 6 autres produits avec un fichier CSV préparé dans Google Sheets.
+> 4. Créez 3 collections automatiques et 2 métachamps.
+> 5. Faites un export complet et comparez-le avec votre fichier.
+>
+> **À livrer** : des captures de la boutique, votre fichier CSV et l''export.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 2, 0, 'Comment fonctionne une collection automatique ?', '["Elle se vide chaque jour","Elle est payante","Les produits y entrent selon des conditions","On ajoute les produits un par un"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 2, 1, 'Que faire avant toute modification en masse ?', '["Un export complet de sauvegarde","Changer de boutique","Supprimer les produits","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 2, 2, 'À quoi sert un métachamp ?', '["Envoyer un e-mail","Stocker une information supplémentaire comme l''entretien","Supprimer un produit","Changer le prix"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-f', 3, 'Premier projet : le catalogue de Lamba Studio', 'Nettoyage des données fournisseur avec table de correspondance, lancement d''une collection en brouillon, mises à jour de prix et de stock, soldes et rapport de qualité.', 'Dans ce module, vous mettez en ligne et maintenez le catalogue d''une boutique, comme le ferait un gestionnaire à distance. Vous apprendrez à transformer les informations d''un fournisseur en fichier propre, à lancer une nouvelle collection, à mettre à jour les prix et les stocks, et à faire un rapport de qualité du catalogue.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Transformer les données d''un fournisseur en fichier d''import.
+> 2. Lancer une nouvelle collection complète.
+> 3. Mettre à jour prix et stocks en masse sans erreur.
+> 4. Préparer une période de soldes.
+> 5. Rédiger un rapport de qualité du catalogue.
+
+## Le cas pratique : « Lamba Studio »
+
+> [!exemple] Votre client
+> **Lamba Studio** vend des vêtements et accessoires inspirés des tissus malgaches. La boutique Shopify compte 180 produits et 900 variantes. Les ateliers partenaires d''Antsirabe et d''Antananarivo envoient leurs nouvelles collections sous forme de tableurs incomplets et de photos. La gérante, Mme Laure, vous confie la gestion du catalogue à distance.
+
+## Étape 1 : des données fournisseur au fichier d''import
+
+### Ce que vous recevez
+
+| Problème | Exemple |
+| --- | --- |
+| Noms de couleurs variés | « bleu », « Bleu foncé », « indigo » pour la même couleur |
+| Tailles mal écrites | « m », « Moyen », « M » |
+| Prix manquants | 4 produits sans prix |
+| Poids absents | Aucun poids indiqué |
+| Photos mal nommées | IMG_2034.jpg |
+
+### La méthode
+
+1. **Copiez** les données brutes dans un onglet « Fournisseur » (sans les modifier).
+2. **Créez** un onglet « Nettoyé » avec des formules et des listes de correspondance (par exemple « bleu foncé » donne « Indigo »).
+3. **Listez** les questions au client (prix, poids manquants).
+4. **Générez** les SKU avec la règle.
+5. **Renommez** les photos selon les SKU.
+6. **Préparez** l''onglet « Import » au format exact du CSV.
+
+> [!astuce]
+> Une **table de correspondance** (valeur reçue, valeur standard) se réutilise à chaque nouvelle collection. Avec `RECHERCHEV`, le nettoyage devient presque automatique.
+
+## Étape 2 : lancer une nouvelle collection
+
+| Étape | Action |
+| --- | --- |
+| 1 | Import des produits en statut **brouillon** |
+| 2 | Vérification dans la boutique : images, variantes, prix, poids |
+| 3 | Ajout des descriptions du rédacteur et des métachamps |
+| 4 | Étiquettes et collections automatiques |
+| 5 | Validation par la gérante |
+| 6 | Passage en statut **actif** à la date de lancement |
+| 7 | Contrôle sur téléphone et ordinateur après la mise en ligne |
+
+## Étape 3 : mettre à jour prix et stocks
+
+| Situation | Méthode |
+| --- | --- |
+| Le fournisseur augmente ses prix de 10 % | Export, formule de calcul dans le tableur, vérification, import des seuls prix |
+| Inventaire physique de l''atelier | Comparaison du stock compté et du stock en ligne par SKU, correction des écarts |
+| Produit arrêté | Archiver plutôt que supprimer (historique des commandes conservé) |
+
+> [!attention]
+> Pour une mise à jour en masse, n''importez que les **colonnes nécessaires** (SKU et prix, par exemple), selon ce que permet l''outil. Réimporter tout le fichier risque d''écraser des modifications faites entre-temps dans la boutique.
+
+### Le contrôle après mise à jour
+
+1. Comparez 10 produits au hasard avec votre fichier.
+2. Vérifiez qu''aucun prix n''est à zéro ou anormalement bas.
+3. Vérifiez les produits épuisés : masqués ou affichés « épuisé » selon le choix de la boutique.
+
+## Étape 4 : préparer les soldes
+
+| Étape | Action |
+| --- | --- |
+| Liste des produits soldés | Validée par la gérante, avec le pourcentage |
+| Calcul | Nouveau prix et prix barré (ancien prix) dans le tableur |
+| Étiquette « soldes » | La collection automatique se remplit seule |
+| Programmation | Import la veille au soir, vérification le matin |
+| Fin des soldes | Fichier de retour aux prix normaux préparé à l''avance |
+
+> [!madagascar]
+> Les soldes d''une boutique européenne commencent souvent **tôt le matin en Europe**. Avec le décalage horaire de Madagascar (une à deux heures d''avance selon la saison), vous pouvez faire les vérifications avant l''ouverture et réagir vite en cas de problème.
+
+## Étape 5 : le rapport de qualité du catalogue
+
+| Indicateur | Exemple |
+| --- | --- |
+| Produits actifs | 214 |
+| Produits sans poids | 0 (contre 37 le mois dernier) |
+| Produits avec moins de 3 photos | 12 |
+| Variantes épuisées encore visibles | 0 |
+| SKU en double | 0 |
+| Produits sans métachamp « Entretien » | 18 |
+| Prochaines actions | Photos supplémentaires pour 12 produits ; entretien à compléter |
+
+> [!retenir]
+> - Garder les données brutes, nettoyer avec des tables de correspondance.
+> - Lancer une collection en brouillon, vérifier, valider, activer.
+> - Mettre à jour en masse seulement les colonnes nécessaires, puis contrôler.
+> - Préparer les soldes et leur fin à l''avance.
+> - Un rapport mensuel de qualité du catalogue.
+
+## Exercice pratique : le catalogue de Lamba Studio
+
+> [!exercice] Exercice pratique · 7 heures (sur plusieurs jours)
+> 1. Créez un fichier fournisseur « désordonné » de 10 produits et nettoyez-le avec une table de correspondance.
+> 2. Importez la collection en brouillon dans votre boutique de test, puis activez-la.
+> 3. Simulez une hausse de prix de 10 % et un inventaire avec 5 écarts.
+> 4. Préparez des soldes de 20 % sur 6 produits et leur retour aux prix normaux.
+> 5. Rédigez le rapport de qualité.
+>
+> **À livrer** : vos fichiers, des captures de la boutique et le rapport. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 3, 0, 'Que faire des données brutes du fournisseur ?', '["Les garder intactes dans un onglet séparé","Les envoyer aux clients","Les modifier directement","Les supprimer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 3, 1, 'Dans quel statut importer une nouvelle collection ?', '["Actif immédiatement","Archivé","Supprimé","Brouillon"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 3, 2, 'Que faire d''un produit arrêté ?', '["Le laisser actif","Changer son SKU","L''archiver plutôt que le supprimer","Le supprimer avec son historique"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio avant et après et vidéo de méthode, 5 canaux, prix par produit, audit, forfait et tarif horaire, conditions en 7 points, paiements et évolution.', 'Les boutiques en ligne, les marques et les agences e-commerce ont un besoin régulier de gestionnaires de catalogue fiables. Ce dernier module vous montre comment vous présenter, trouver vos premiers clients, fixer vos prix et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio de gestionnaire de catalogue.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer vos prix par produit, par heure ou au forfait.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **Un avant et après** : fichier fournisseur désordonné, fichier d''import propre.
+2. **Votre boutique de test** avec collections automatiques et métachamps.
+3. **Votre règle de nommage** des SKU et des images.
+4. **Un rapport de qualité** du catalogue.
+5. **Une courte vidéo** (2 à 3 minutes) qui montre votre méthode d''import.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Boutiques avec des problèmes visibles** | Photos manquantes, filtres vides, produits épuisés visibles : proposez un audit |
+| 2 | **Marques et artisans malgaches** | Mise en ligne de leur catalogue pour le web et l''export |
+| 3 | **Agences e-commerce** | Sous-traitance des imports et mises à jour |
+| 4 | **Annuaire des partenaires de Shopify** et communautés de marchands | Profil avec exemples |
+| 5 | **Plateformes de freelance** | Vérifiez qu''elles acceptent les freelances basés à Madagascar |
+
+> [!exemple] Message à une boutique
+> « Bonjour, j''ai parcouru votre boutique : plusieurs filtres de taille ne donnent aucun résultat et une dizaine de produits épuisés restent visibles. Je suis gestionnaire de catalogue Shopify. Je peux vous proposer un audit gratuit de 20 produits et corriger ces points. Je gère aussi les imports de nouvelles collections et les mises à jour de prix. »
+
+## Fixer ses prix
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Par produit créé** | Produit avec variantes, images, étiquettes | 5 000 Ar par produit |
+| **Audit du catalogue** | Rapport des erreurs et plan de correction | 150 000 Ar |
+| **Forfait mensuel** | Nouvelles collections, mises à jour, rapport | 400 000 Ar par mois |
+| **Tarif horaire** | Nettoyage, migration, missions ponctuelles | 12 000 Ar de l''heure |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Chronométrez votre projet du module 4. Si un produit avec variantes vous prend 15 minutes en moyenne, vous savez combien en traiter par heure et à quel prix le facturer.
+
+## Vos conditions
+
+1. **Ce qui est inclus** : création, images, étiquettes, métachamps ou non.
+2. **Les données à fournir** par le client (prix, poids, photos, textes).
+3. **Les accès** : compte collaborateur avec les droits nécessaires.
+4. **La sauvegarde** avant toute modification en masse.
+5. **Les validations** : collections en brouillon validées avant activation.
+6. **Le délai** par collection ou par lot.
+7. **Le paiement** : par lot, ou mensuel payé d''avance pour un forfait.
+
+> [!attention]
+> Vous n''êtes **pas responsable** des prix décidés par le client, mais vous l''êtes de leur saisie exacte. Faites toujours valider par écrit les listes de prix et de soldes avant de les importer.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Spécialiste données produits** | Flux pour Google Shopping et places de marché, codes-barres |
+| **Spécialiste des migrations** | Passer d''une plateforme à l''autre avec Matrixify |
+| **Gestionnaire de boutique en ligne** | Voir la formation Gestionnaire de boutique en ligne |
+| **Rédacteur de fiches produits** | Voir la formation Rédacteur de fiches produits |
+| **Analyste de données** | Voir la formation Analyste de données |
+
+> [!retenir]
+> - Un portfolio avant et après, boutique de test et vidéo de méthode.
+> - Boutiques à problèmes, marques malgaches, agences, annuaires, plateformes.
+> - Un prix par produit, par heure ou au forfait, basé sur votre temps.
+> - Validation écrite des prix et sauvegarde avant chaque import.
+> - Évoluez vers les flux, les migrations ou la gestion de boutique.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Préparez votre portfolio et enregistrez votre vidéo de méthode.
+> 2. Calculez vos prix à partir de votre temps chronométré.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Repérez 10 boutiques avec des problèmes de catalogue et envoyez 3 propositions d''audit.
+>
+> **À livrer** : le lien de votre portfolio, vos calculs, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 4, 0, 'Que proposer à une boutique avec des filtres vides ?', '["Un audit de son catalogue","Un nouveau logo","Rien","Une critique publique"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 4, 1, 'Que faire valider par écrit avant un import ?', '["Rien","Le nom du rédacteur","Les listes de prix et de soldes","La couleur du site"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-f', 4, 2, 'Quel outil sert aux migrations entre plateformes ?', '["Audacity","Canva","Matrixify","Trello"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que fait un gestionnaire de catalogue produits ?', '["Il crée et maintient des données produits exactes et organisées","Il fabrique les produits","Il prend les photos","Il livre les commandes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que décrit le SKU « RB-LAMBA-IND-M » ?', '["Robe lamba, couleur indigo, taille M","Une commande","Un prix","Un client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'À quoi servent les codes-barres EAN ou GTIN ?', '["Places de marché et publicités produits","Rien","Décorer les photos","Calculer le poids"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Qu''est-ce qu''un attribut pour les filtres ?', '["La date de création du site","Taille, couleur, matière ou prix","Le nom du gérant","Le mot de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Combien de lignes par variante dans un fichier d''import ?', '["Une ligne pour tout le catalogue","Une ligne par variante","Dix lignes","Aucune"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Quels caractères utiliser dans un SKU ?', '["Émojis","Majuscules, chiffres et tirets","Tous","Accents et espaces"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Quelle formule construit un SKU à partir de 3 colonnes ?', '["=NB(A2:C2)","=SOMME(A2:C2)","=A2&\"-\"&B2&\"-\"&C2","=MOYENNE(A2:C2)"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Pourquoi « Indigo » et « indigo » posent-ils problème ?', '["Ils suppriment le produit","Ils comptent comme deux valeurs différentes","Aucun problème","Ils changent le prix"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Comment nommer les images ?', '["Au hasard","IMG_2034.jpg","Avec le nom du photographe","À partir du SKU, avec un numéro d''ordre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Quel contrôle détecte un prix barré incohérent ?', '["Rien","Un filtre sur les images","Une formule qui compare prix barré et prix de vente","Le poids"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que vérifier avant de créer beaucoup de variantes dans Shopify ?', '["Le nombre de clients","Les limites actuelles dans le centre d''aide","La couleur du thème","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Pourquoi fixer une liste d''étiquettes ?', '["Pour décorer","Pour que les collections automatiques fonctionnent correctement","Ce n''est pas utile","Pour payer moins"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Quel encodage choisir pour un CSV avec accents ?', '["Aucun","Un PDF","Une image","UTF-8"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Par quoi commencer un import ?', '["Le fichier complet sans test","Un test avec 2 ou 3 produits","La suppression du catalogue","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Qui paie l''abonnement Shopify d''une boutique ?', '["La boutique","Le gestionnaire","Les clients finaux","Personne"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'À quoi sert une table de correspondance ?', '["Prendre des photos","Envoyer des factures","Transformer les valeurs reçues en valeurs standard","Calculer les impôts"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que faire après l''activation d''une collection ?', '["Rien","Supprimer le brouillon du fournisseur","Contrôler sur téléphone et ordinateur","Changer les SKU"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Pourquoi importer seulement les colonnes nécessaires ?', '["Pour ne pas écraser d''autres modifications","Pour aller plus lentement","Ce n''est pas possible","Pour supprimer les images"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que comparer lors d''un inventaire ?', '["Les prix des concurrents","Le stock compté et le stock en ligne par SKU","Les couleurs","Les avis"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que préparer à l''avance pour la fin des soldes ?', '["Une nouvelle boutique","Le fichier de retour aux prix normaux","Des avis clients","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que montre le rapport de qualité du catalogue ?', '["Rien","Seulement les ventes","Les salaires","Erreurs restantes et prochaines actions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Que montrer dans un portfolio ?', '["Seulement un CV","Rien","Un fichier désordonné devenu propre","Les données réelles d''un client sans accord"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'De quoi êtes-vous responsable pour les prix ?', '["De leur montant décidé par le client","De leur saisie exacte","Des bénéfices du client","De rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Vers quoi évoluer avec les flux Google Shopping ?', '["Spécialiste données produits","Traducteur","Modérateur","Monteur audio"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement","Aucun"]'::jsonb, 2);
 
 -- gestion-3-a
 delete from public.exam_questions where course_id = 'gestion-3-a';

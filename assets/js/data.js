@@ -3792,6 +3792,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-2-f": {
+  "hours": 15,
+  "description": "Le gestionnaire de catalogue produits crée et maintient des données produits exactes et bien organisées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : données produits, SKU et variantes, fonctions du tableur, images, contrôle qualité, collections automatiques, import CSV, métachamps, nouvelles collections, mises à jour en masse, soldes et rapport de qualité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier et les données d'une fiche produit",
+   "Construire un fichier produits propre avec SKU et variantes",
+   "Utiliser les fonctions du tableur pour générer et contrôler les données",
+   "Créer des produits, des collections et importer un CSV dans Shopify",
+   "Lancer une collection, mettre à jour prix et stocks et préparer des soldes",
+   "Présenter son travail, fixer ses prix et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de gestionnaire de catalogue depuis Madagascar",
+    "summary": "Les tâches du métier, les données d'une fiche produit, le SKU, l'organisation d'un catalogue, la règle des 3 clics, les clients et le poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les tâches du métier",
+     "Les données d'une fiche produit",
+     "L'organisation d'un catalogue",
+     "Qui sont vos clients ?",
+     "Les qualités du gestionnaire de catalogue",
+     "Votre poste de travail",
+     "Exercice pratique : analyser un catalogue"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les bases : fichier produits, SKU, tableur, images et contrôle",
+    "summary": "Une ligne par variante, format des prix, règle de nommage des SKU, fonctions essentielles du tableur, nommage des images et contrôle qualité des données.",
+    "sections": [
+     "Le fichier produits",
+     "La règle de nommage des SKU",
+     "Les fonctions essentielles du tableur",
+     "Organiser les images",
+     "Contrôler la qualité des données",
+     "Exercice pratique : un fichier produits propre"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : Shopify, collections, import CSV, métachamps et outils payants",
+    "summary": "Produits et variantes dans Shopify, limites à vérifier, collections manuelles et automatiques, liste d'étiquettes, méthode d'import CSV, métachamps, offres payantes de Shopify et Matrixify.",
+    "sections": [
+     "Shopify : produits et variantes",
+     "Les collections",
+     "L'import et l'export CSV",
+     "Les métachamps",
+     "Les outils payants",
+     "Exercice pratique : un catalogue dans Shopify"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Premier projet : le catalogue de Lamba Studio",
+    "summary": "Nettoyage des données fournisseur avec table de correspondance, lancement d'une collection en brouillon, mises à jour de prix et de stock, soldes et rapport de qualité.",
+    "sections": [
+     "Le cas pratique : « Lamba Studio »",
+     "Étape 1 : des données fournisseur au fichier d'import",
+     "Étape 2 : lancer une nouvelle collection",
+     "Étape 3 : mettre à jour prix et stocks",
+     "Étape 4 : préparer les soldes",
+     "Étape 5 : le rapport de qualité du catalogue",
+     "Exercice pratique : le catalogue de Lamba Studio"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio avant et après et vidéo de méthode, 5 canaux, prix par produit, audit, forfait et tarif horaire, conditions en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-3-a": {
   "hours": 15,
   "description": "Ce niveau Avancé fait de l'agent SAV e-commerce un professionnel qui réduit les demandes, protège la réputation et organise le support : spécialité (vente conversationnelle, avis, places de marché, litiges, optimisation du helpdesk, responsable), audit et analyse des motifs de contact, outils payants (Gorgias et Zendesk) avec règles, macros, SLA, libre-service et assistants d'IA, contrôle qualité, planning, pics et contestations de paiement, support international et règles de retour par région, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
