@@ -88,7 +88,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 15, true),
-  ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
+  ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 16, true),
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true),
   ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 15, true),
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
@@ -28615,6 +28615,563 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que doit préciser le contrat sur les décisions ?', '["Qui décide des prix, promotions et remboursements","Rien","Le salaire du client","La couleur de la boutique"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
+
+-- gestion-2-a
+delete from public.exam_questions where course_id = 'gestion-2-a';
+delete from public.module_questions where course_id = 'gestion-2-a';
+delete from public.lessons where course_id = 'gestion-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-a', 0, 'Se spécialiser, auditer les données et les relier aux ventes', 'Les 6 spécialités avancées, les flux produits, l''audit en 6 domaines et son rapport, les effets des erreurs de données sur les ventes et les offres à forte valeur.', 'Créer des produits et importer des collections ouvre les premières missions. Les gestionnaires de catalogue les mieux payés vont plus loin : ils **migrent** des boutiques entières, alimentent Google Shopping et les places de marché, automatisent les mises à jour des fournisseurs et garantissent des données fiables sur des milliers de produits. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la gestion de catalogue.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un audit de qualité des données d''un catalogue.
+> 4. Relier la qualité des données aux ventes.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Migrations de plateforme** | Passer une boutique de WooCommerce ou d''une autre plateforme vers Shopify | Export, transformation, import, redirections |
+| 2 | **Flux produits** | Alimenter Google Shopping, les catalogues publicitaires et les comparateurs | Exigences des flux, codes-barres, catégories |
+| 3 | **Données produits à grande échelle** | Catalogues de milliers de produits et variantes | Tableurs avancés, Matrixify, règles de qualité |
+| 4 | **Multicanal et places de marché** | Même catalogue sur la boutique et plusieurs places de marché | Correspondance des champs, stocks synchronisés |
+| 5 | **Automatisation des mises à jour** | Prix et stocks des fournisseurs mis à jour automatiquement | Imports planifiés, règles, contrôles |
+| 6 | **Catalogues B2B** | Tarifs par client, quantités minimales, fiches techniques | Organisation, prix multiples, documents |
+
+> [!definition] Flux produits
+> Un fichier ou une connexion qui envoie automatiquement les données des produits (titre, prix, stock, image, code-barres) à une autre plateforme, comme Google Merchant Center ou un catalogue publicitaire.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Migrations et nettoyage de catalogues** pour des boutiques francophones : un travail long et rigoureux, très adapté au travail à distance.
+> - **Catalogues d''exportateurs malgaches** à mettre en ligne sur plusieurs canaux.
+> - **Mises à jour régulières** pour des boutiques européennes, livrées avant leur ouverture grâce au faible décalage horaire.
+
+## L''audit de qualité des données
+
+Un audit est une excellente **offre d''entrée** : le client voit les erreurs qui lui coûtent des ventes et vous confie la correction.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Complétude** | Produits sans poids, sans code-barres, sans image, sans description |
+| **Exactitude** | Prix incohérents, stocks négatifs, mauvaises catégories |
+| **Cohérence** | Valeurs d''options différentes pour la même chose (« Bleu », « bleu marine », « Navy ») |
+| **Structure** | Collections, étiquettes, métachamps, filtres |
+| **Flux** | Produits refusés par Google Merchant Center et raisons |
+| **Processus** | Qui met à jour quoi, à quelle fréquence, avec quels fichiers |
+
+### Le rapport d''audit
+
+```
+Boutique : Lamba Studio – 214 produits, 1 080 variantes
+Complétude : 37 % des variantes sans code-barres ; 12 produits sans poids
+Cohérence : 9 façons d''écrire les couleurs ; 3 systèmes de tailles
+Flux : 160 produits refusés par Google Merchant Center (code-barres manquant ou invalide)
+Filtres : le filtre « Couleur » affiche 46 valeurs au lieu de 12
+Processus : prix des fournisseurs reportés à la main une fois par mois
+
+Plan proposé
+1. Normalisation des couleurs et tailles, codes-barres et poids complétés.
+2. Correction du flux Google : objectif moins de 5 % de produits refusés.
+3. Import planifié des prix fournisseurs chaque semaine avec contrôles.
+```
+
+## Relier les données aux ventes
+
+| Problème de données | Effet sur les ventes |
+| --- | --- |
+| Produits refusés par Google Merchant Center | Absents des annonces Shopping |
+| Filtres encombrés | Les clients ne trouvent pas les produits |
+| Stocks faux | Commandes annulées, clients mécontents |
+| Poids manquants | Frais de livraison faux |
+| Images manquantes | Taux de conversion faible |
+
+> [!attention]
+> Présentez les gains possibles avec **prudence** : vous pouvez montrer combien de produits redeviennent visibles ou trouvables, mais les ventes dépendent aussi des prix, de la publicité et de la demande.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit des données** | Analyse complète, rapport, plan | 300 000 Ar |
+| **Normalisation du catalogue** | Options, codes-barres, poids, collections, filtres | Selon le nombre de variantes |
+| **Migration de plateforme** | Produits, variantes, images, clients, redirections | 2 500 000 Ar et plus selon la taille |
+| **Gestion mensuelle et automatisation** | Imports planifiés, contrôles, rapport | 600 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : migrations, flux, grande échelle, multicanal, automatisation, B2B.
+> - L''audit des données révèle complétude, exactitude, cohérence, structure, flux et processus.
+> - Les erreurs de données coûtent visibilité, ventes et clients satisfaits.
+> - Présenter les gains avec prudence.
+> - Des offres à valeur : normalisation, migration, gestion mensuelle.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Exportez le catalogue de votre boutique de test (ou créez un export fictif de 100 variantes avec des erreurs).
+> 3. Réalisez l''audit dans les 6 domaines avec des formules et des filtres.
+> 4. Rédigez le rapport et 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre fichier d''audit, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 0, 0, 'Qu''est-ce qu''un flux produits ?', '["Une facture","L''envoi automatique des données produits à une autre plateforme","Une liste de clients","Un camion de livraison"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 0, 1, 'Quel effet ont des produits refusés par Google Merchant Center ?', '["Ils sont absents des annonces Shopping","Aucun","Ils sont supprimés de la boutique","Ils se vendent mieux"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 0, 2, 'Que montre un filtre « Couleur » avec 46 valeurs ?', '["Rien","Une erreur de Google","Un catalogue parfait","Des valeurs d''options non normalisées"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-a', 1, 'Outils professionnels : Shopify avancé et Matrixify', 'Éditeur en masse, métachamps, métaobjets, marchés et automatisations, export et import Matrixify, commandes d''import, mise à jour par SKU, import planifié avec garde-fous et plan de migration.', 'Les catalogues professionnels se gèrent avec les **fonctions avancées de Shopify** (marchés, métaobjets, automatisations) et avec **Matrixify** pour les imports, exports, mises à jour en masse et migrations. Ce module vous apprend à les utiliser en sécurité sur des milliers de produits.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les fonctions avancées de Shopify pour les données produits.
+> 2. Exporter et importer tout un catalogue avec Matrixify.
+> 3. Mettre à jour en masse par SKU sans écraser d''autres données.
+> 4. Planifier des imports automatiques depuis un fichier fournisseur.
+> 5. Préparer une migration de plateforme.
+
+## Shopify : les fonctions avancées
+
+| Fonction (selon l''offre, à vérifier) | Usage pour le catalogue |
+| --- | --- |
+| **Éditeur en masse** | Modifier de nombreux produits et variantes dans un tableau |
+| **Métachamps** | Informations supplémentaires (composition, entretien, origine) |
+| **Métaobjets** | Données structurées réutilisables (fiche d''un artisan, guide des tailles) liées à plusieurs produits |
+| **Marchés** (Markets) | Prix, devises, langues et disponibilités par pays |
+| **Automatisations** (Shopify Flow, selon l''offre) | Étiqueter les produits en rupture, masquer les produits sans image, alerter |
+| **Canaux de vente** | Google et YouTube, Facebook et Instagram, places de marché |
+
+> [!exemple] Une automatisation utile
+> Quand le stock d''une variante passe à 0, ajouter l''étiquette « rupture » ; quand toutes les variantes d''un produit sont à 0, retirer le produit de la collection « Nouveautés » et prévenir la gérante.
+
+## Matrixify : export et import complets
+
+> [!definition] Matrixify
+> Une application Shopify payante qui exporte et importe presque toutes les données de la boutique (produits, variantes, images, métachamps, collections, clients, commandes, redirections) dans des fichiers Excel ou CSV.
+
+| Fonction | Usage |
+| --- | --- |
+| **Export complet** | Sauvegarde et base de travail |
+| **Import avec commande** (création, mise à jour, remplacement, suppression) | Contrôler précisément ce qui change |
+| **Mise à jour par SKU ou par identifiant** | Modifier les prix ou stocks seulement |
+| **Imports planifiés** | Lire chaque semaine un fichier fournisseur à une adresse ou un serveur |
+| **Migration** | Importer des données exportées d''une autre plateforme |
+| **Redirections** | Garder le référencement des anciennes adresses |
+
+### La colonne « Command »
+
+| Commande (selon la documentation officielle) | Effet |
+| --- | --- |
+| **NEW** | Créer seulement si l''élément n''existe pas |
+| **UPDATE** | Modifier seulement si l''élément existe |
+| **MERGE** | Créer ou modifier |
+| **REPLACE** | Supprimer et recréer (attention : perte possible de données liées) |
+| **DELETE** | Supprimer |
+
+> [!attention]
+> **REPLACE** et **DELETE** sont dangereux sur une boutique en ligne. Faites toujours un **export complet de sauvegarde** avant un import, testez sur quelques lignes, et vérifiez dans la documentation officielle le comportement exact de chaque commande.
+
+## Mettre à jour par SKU
+
+1. **Exportez** les variantes avec leur SKU et les colonnes à modifier.
+2. **Calculez** les nouvelles valeurs dans le tableur (nouveau prix fournisseur × coefficient).
+3. **Gardez** uniquement les colonnes nécessaires (identifiant, SKU, prix).
+4. **Importez** avec la commande de mise à jour.
+5. **Contrôlez** un échantillon et le rapport de résultats de Matrixify.
+
+## L''import planifié depuis un fournisseur
+
+| Étape | Exemple |
+| --- | --- |
+| **Fichier fournisseur** | Le fournisseur publie chaque lundi un fichier : référence, prix, stock |
+| **Correspondance** | Sa référence est reliée à votre SKU (colonne dédiée ou métachamp) |
+| **Transformation** | Calcul du prix de vente, arrondi, limitation des stocks |
+| **Planification** | Import automatique chaque lundi à 6 h |
+| **Contrôles** | Alerte si un prix change de plus de 20 % ou si un stock est négatif |
+
+> [!astuce]
+> Ajoutez toujours des **garde-fous** : un fichier fournisseur erroné (prix à 0, colonne décalée) importé automatiquement peut casser toute la boutique en quelques minutes. Un contrôle avant import vaut mieux qu''une correction après.
+
+## Préparer une migration
+
+| Étape | Contenu |
+| --- | --- |
+| **Inventaire** | Produits, variantes, images, catégories, clients, commandes, pages, adresses |
+| **Correspondance des champs** | Ancienne plateforme → Shopify |
+| **Transformation** | Nettoyage, normalisation, nouvelles collections |
+| **Import test** | Sur une boutique de développement |
+| **Redirections** | Chaque ancienne adresse vers la nouvelle |
+| **Recette** | Vérification par échantillon et par le client |
+| **Bascule** | Import final, vérifications, mise en ligne |
+
+> [!madagascar]
+> Shopify et Matrixify sont **payés par la boutique**, en dollars. Pour vous former, utilisez une boutique de développement (avec un compte partenaire Shopify) et l''offre de démonstration de Matrixify si elle existe. Une migration réussie documentée est une excellente référence pour votre portfolio.
+
+> [!retenir]
+> - Shopify avancé : éditeur en masse, métachamps, métaobjets, marchés, automatisations.
+> - Matrixify : export complet, commandes d''import, mise à jour par SKU, planification, migration, redirections.
+> - Sauvegarde, test sur quelques lignes et documentation officielle avant tout import.
+> - Des garde-fous sur les imports automatiques.
+> - Une migration en 7 étapes, avec redirections et recette.
+
+## Exercice pratique : des imports professionnels
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Faites un export complet de votre boutique de test (avec Matrixify en démonstration ou l''export CSV de Shopify).
+> 2. Simulez une hausse de prix fournisseur de 8 % et préparez un fichier de mise à jour par SKU.
+> 3. Rédigez les règles de contrôle d''un import planifié (5 garde-fous).
+> 4. Rédigez le plan de migration d''une boutique WooCommerce de 300 produits.
+>
+> **À livrer** : vos fichiers, vos garde-fous et votre plan de migration.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 1, 0, 'Quelles commandes Matrixify sont dangereuses sur une boutique en ligne ?', '["Aucune","NEW","UPDATE","REPLACE et DELETE"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 1, 1, 'Que faire avant un import important ?', '["Un export complet de sauvegarde et un test sur quelques lignes","Rien","Supprimer le catalogue","Changer de plateforme"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 1, 2, 'Pourquoi des garde-fous sur un import planifié ?', '["Ce n''est pas utile","Pour ralentir l''import","Un fichier fournisseur erroné peut casser la boutique","Pour payer moins"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-a', 2, 'Qualité et rapidité : dictionnaire, normalisation, contrôles et versions', 'Dictionnaire de données, taxonomie et table de normalisation, contrôles automatiques et chiffre de contrôle, tableau hebdomadaire, sauvegardes, journal des imports et processus écrits.', 'Un catalogue professionnel reste **propre dans la durée**, même avec des milliers de produits, plusieurs fournisseurs et plusieurs personnes qui le modifient. Ce module vous donne les méthodes des meilleurs : règles de données, taxonomie, contrôles automatiques, gestion des versions et documentation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger un dictionnaire de données pour un catalogue.
+> 2. Construire une taxonomie et des valeurs d''options normalisées.
+> 3. Mettre en place des contrôles automatiques de qualité.
+> 4. Gérer les sauvegardes et les versions des fichiers.
+> 5. Documenter les processus pour une équipe.
+
+## Le dictionnaire de données
+
+> [!definition] Dictionnaire de données
+> Un document qui décrit chaque champ du catalogue : son nom, son format, ses valeurs autorisées, s''il est obligatoire, et qui le remplit.
+
+| Champ | Format | Valeurs autorisées | Obligatoire | Responsable |
+| --- | --- | --- | --- | --- |
+| SKU | MAJUSCULES-TIRETS | Règle de nommage | Oui | Gestionnaire de catalogue |
+| Couleur | Texte | Liste fermée de 12 couleurs | Oui (si option) | Gestionnaire de catalogue |
+| Poids | Nombre en grammes | Supérieur à 0 | Oui | Logistique |
+| Code-barres | 8, 12, 13 ou 14 chiffres | Code valide du fabricant | Selon le canal | Fournisseur |
+| Composition | Métachamp texte | Format « 100 % coton » | Oui (vêtements) | Fournisseur |
+
+## Taxonomie et valeurs normalisées
+
+| Valeurs reçues | Valeur normalisée |
+| --- | --- |
+| bleu, Bleu foncé, indigo, Navy | Indigo |
+| rouge, Bordeaux, rouge vin | Bordeaux |
+| m, Moyen, Medium, M | M |
+
+| Niveau de taxonomie | Exemple |
+| --- | --- |
+| Catégorie principale | Femme |
+| Sous-catégorie | Robes |
+| Type de produit | Robe portefeuille |
+| Catégorie Google (pour les flux) | Catégorie standard correspondante de Google |
+
+> [!astuce]
+> Une **table de normalisation** unique, partagée par toute l''équipe, évite que chaque personne invente ses propres valeurs. Les filtres de la boutique restent alors propres et utiles.
+
+## Les contrôles automatiques
+
+| Contrôle | Méthode |
+| --- | --- |
+| **Champs obligatoires vides** | Formule ou filtre dans l''export |
+| **Valeurs hors liste** | Comparaison avec la table de normalisation |
+| **Prix anormaux** | Prix inférieur au coût ou variation de plus de 20 % |
+| **Codes-barres invalides** | Longueur et chiffre de contrôle |
+| **Doublons de SKU** | Comptage |
+| **Produits actifs sans image ou sans stock suivi** | Filtre ou automatisation |
+
+> [!definition] Chiffre de contrôle
+> Le dernier chiffre d''un code-barres EAN ou GTIN, calculé à partir des autres. S''il ne correspond pas au calcul, le code est faux. Les outils de vérification en ligne et les formules de tableur peuvent le vérifier.
+
+### Le tableau de contrôle hebdomadaire
+
+| Indicateur | Cette semaine | Objectif |
+| --- | --- | --- |
+| Variantes sans code-barres | 2 % | Moins de 1 % |
+| Valeurs de couleur hors liste | 0 | 0 |
+| Produits refusés dans le flux Google | 3 % | Moins de 5 % |
+| Produits actifs sans image | 0 | 0 |
+
+## Sauvegardes et versions
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Export complet avant chaque import important** | Pouvoir revenir en arrière |
+| **Nom de fichier daté** | « catalogue_2026-10-13_avant-soldes.xlsx » |
+| **Dossier d''archives** | Garder les versions des 3 à 6 derniers mois |
+| **Journal des imports** | Date, fichier, nombre de lignes, résultat, personne |
+
+> [!attention]
+> Ne travaillez jamais directement sur le **seul exemplaire** d''un fichier fournisseur ou d''un export. Travaillez sur une copie et gardez l''original intact.
+
+## Documenter les processus
+
+```
+Processus – Nouvelle collection (Lamba Studio)
+1. Réception du fichier fournisseur dans le dossier « 01_Fournisseur ».
+2. Normalisation avec la table (couleurs, tailles) dans « 02_Travail ».
+3. Contrôles automatiques : 0 erreur bloquante.
+4. Génération des SKU et renommage des images.
+5. Import en brouillon (commande NEW), contrôle de 10 produits.
+6. Validation par la gérante.
+7. Passage en actif, vérification du flux Google sous 48 h.
+8. Entrée dans le journal des imports.
+```
+
+> [!madagascar]
+> Une documentation claire permet à un **remplaçant** de prendre le relais si vous êtes indisponible (coupure, maladie). Les clients étrangers sont rassurés quand ils voient que le travail ne dépend pas d''une seule personne.
+
+> [!retenir]
+> - Un dictionnaire de données : format, valeurs, obligation, responsable.
+> - Une taxonomie et une table de normalisation partagées.
+> - Des contrôles automatiques et un tableau hebdomadaire.
+> - Sauvegardes datées, archives, journal des imports, travail sur copie.
+> - Des processus écrits que d''autres peuvent suivre.
+
+## Exercice pratique : la qualité dans la durée
+
+> [!exercice] Exercice pratique · 3 heures 30
+> 1. Rédigez le dictionnaire de données d''un catalogue de vêtements (10 champs).
+> 2. Créez la table de normalisation des couleurs et des tailles.
+> 3. Construisez dans le tableur 5 contrôles automatiques et le tableau hebdomadaire.
+> 4. Rédigez le processus « Mise à jour des prix fournisseur ».
+>
+> **À livrer** : votre dictionnaire, votre table, votre fichier de contrôles et votre processus.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 2, 0, 'Que décrit un dictionnaire de données ?', '["Les prix des concurrents","Les clients","Chaque champ : format, valeurs, obligation, responsable","Le sens des mots français"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 2, 1, 'À quoi sert le chiffre de contrôle d''un code-barres ?', '["Indiquer le prix","Rien","Vérifier que le code est valide","Indiquer la couleur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 2, 2, 'Sur quoi travailler pour un fichier fournisseur ?', '["Sur rien","Sur une photo du fichier","Sur une copie, l''original restant intact","Directement sur l''original"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-a', 3, 'Clients internationaux : marchés, Google Merchant Center et places de marché', 'Langues, prix, tailles et unités par marché, exigences de Google Merchant Center et correction des refus, GTIN réels, places de marché, informations obligatoires et collaboration en anglais.', 'Vendre dans plusieurs pays et sur plusieurs canaux demande un catalogue adapté à chaque destination. Ce module vous prépare à travailler pour des boutiques internationales : vendre sur plusieurs marchés avec Shopify, alimenter Google Merchant Center, publier sur des places de marché, respecter les informations obligatoires et collaborer en anglais.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un catalogue pour plusieurs pays.
+> 2. Alimenter correctement Google Merchant Center.
+> 3. Publier un catalogue sur des places de marché.
+> 4. Tenir compte des informations obligatoires selon les marchés.
+> 5. Collaborer avec une équipe e-commerce étrangère.
+
+## Un catalogue pour plusieurs pays
+
+| Élément | Adaptation |
+| --- | --- |
+| **Langues** | Titres, descriptions et options traduits (par un traducteur ou une application de traduction relue) |
+| **Prix et devises** | Prix par marché, arrondis adaptés |
+| **Disponibilité** | Certains produits non vendus dans certains pays |
+| **Tailles** | Correspondances France, Royaume-Uni, États-Unis |
+| **Unités** | Centimètres et grammes, ou pouces et livres |
+| **Livraison** | Poids exacts, zones et tarifs par pays |
+
+> [!attention]
+> Dans un catalogue multilingue, les **valeurs d''options** traduites doivent rester cohérentes : « Bleu indigo » en français doit toujours devenir la même valeur en anglais, sinon les filtres et les flux se dérèglent.
+
+## Google Merchant Center
+
+> [!definition] Google Merchant Center
+> L''outil de Google qui reçoit les données des produits d''une boutique pour les afficher dans Google Shopping, les annonces Shopping et d''autres surfaces de Google.
+
+| Exigence courante (à vérifier dans le centre d''aide officiel) | Bonne pratique |
+| --- | --- |
+| **Titre** | Précis, avec marque, type, caractéristique principale ; sans texte promotionnel en majuscules |
+| **Image** | Claire, fond simple pour l''image principale, sans texte promotionnel ni filigrane |
+| **Prix et disponibilité** | Identiques à ceux de la page produit |
+| **Identifiants** | GTIN (code-barres) quand le produit en a un ; marque ; référence fabricant |
+| **Catégorie** | Correspondance avec la catégorie Google |
+| **Attributs** | Couleur, taille, genre, tranche d''âge pour les vêtements |
+| **Livraison** | Frais et délais configurés |
+
+### Corriger les refus
+
+| Motif de refus fréquent | Correction |
+| --- | --- |
+| GTIN invalide ou manquant | Vérifier le code du fabricant ; ne jamais inventer un GTIN |
+| Prix différent entre le flux et la page | Synchroniser, vérifier les devises et promotions |
+| Image avec texte promotionnel | Remplacer l''image principale |
+| Attribut obligatoire manquant | Compléter couleur, taille, genre, tranche d''âge |
+
+> [!attention]
+> N''inventez **jamais** de codes-barres. Les GTIN sont attribués par les fabricants (via un organisme officiel). Pour un produit artisanal sans code, utilisez les options prévues par Google pour les produits sans identifiant, selon ses règles.
+
+## Les places de marché
+
+| Étape | Contenu |
+| --- | --- |
+| **Correspondance des champs** | Vos champs Shopify vers les champs de la place de marché |
+| **Catégories** | Chaque place de marché a sa propre arborescence |
+| **Attributs obligatoires** | Souvent plus nombreux que sur votre boutique |
+| **Stocks synchronisés** | Une vente sur un canal met à jour les autres |
+| **Règles de contenu** | Titres, images, termes interdits |
+
+## Les informations obligatoires
+
+| Marché | Exemples d''informations demandées (à vérifier) |
+| --- | --- |
+| **Union européenne** | Informations sur le fabricant ou la personne responsable dans l''UE pour la sécurité des produits, avertissements, composition des textiles |
+| **Produits alimentaires** | Ingrédients, allergènes, poids net, conservation |
+| **Cosmétiques** | Liste des ingrédients, précautions |
+| **Électronique** | Caractéristiques, conformité, garantie |
+
+> [!madagascar]
+> Les exportateurs malgaches qui vendent en Europe doivent souvent fournir des **informations réglementaires** supplémentaires. Votre rôle est de prévoir les champs (métachamps) et de demander les données au client ; la conformité juridique reste sa responsabilité, avec ses conseils.
+
+## Collaborer en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Signaler des erreurs | « 160 products were disapproved in Merchant Center, mainly because of invalid GTINs. » |
+| Demander une donnée | « Could you share the manufacturer GTINs for the new collection? » |
+| Annoncer un import | « The price update will run on Monday at 6 am, after the backup. » |
+| Rendre compte | « All 1,080 variants are now live, 0 errors, report attached. » |
+
+> [!retenir]
+> - Langues, prix, disponibilités, tailles, unités et livraison par marché.
+> - Valeurs d''options traduites de façon cohérente.
+> - Google Merchant Center : titres, images, prix, GTIN réels, attributs ; corriger les refus.
+> - Places de marché : correspondances, catégories, attributs, stocks, règles.
+> - Informations obligatoires selon les marchés, demandées au client.
+
+## Exercice pratique : un catalogue international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Préparez une version anglaise de 10 produits de votre boutique de test avec options cohérentes.
+> 2. Lisez les exigences produits de Google Merchant Center et rédigez une liste de contrôle de 12 points.
+> 3. Corrigez un fichier fictif de 20 produits avec 8 motifs de refus.
+> 4. Listez les informations obligatoires à demander à un exportateur de cosmétiques pour l''Europe.
+>
+> **À livrer** : vos produits en anglais, votre liste de contrôle, votre fichier corrigé et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 3, 0, 'Peut-on inventer un GTIN ?', '["Oui, avec 13 chiffres","Non, jamais","Oui, si Google le refuse","Oui, pour les produits artisanaux"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 3, 1, 'Que doit-on vérifier entre le flux et la page produit ?', '["Que la couleur du site est la même","Rien","Que le prix et la disponibilité sont identiques","Que le texte est plus long"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 3, 2, 'Qui est responsable de la conformité réglementaire des produits ?', '["Le client, avec ses conseils","Le gestionnaire seul","Personne","Google"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-2-a', 4, 'Développer son activité : offres, migrations, rapports et équipe', 'Trois voies, audits, migrations, correction de flux et gestion mensuelle, chiffrage, responsabilités écrites, rapport mensuel, études de cas, équipe et évolution.', 'Après quelques catalogues réussis, vous pouvez construire une **activité stable** : gestion mensuelle de plusieurs boutiques, migrations, partenariats avec des agences, études de cas chiffrées, et peut-être une petite équipe. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de données produits.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Spécialiste migrations et flux** | Ceux qui aiment les projets techniques | Projets ponctuels bien payés |
+| **Service de gestion de catalogues** | Ceux qui aiment la régularité et l''organisation | Forfaits mensuels avec plusieurs boutiques |
+| **Partenaire d''agences e-commerce** | Ceux qui préfèrent ne pas chercher les clients finaux | Volume régulier en sous-traitance |
+
+## Des offres et des prix durables
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit des données** | Rapport et plan | 300 000 Ar |
+| **Migration** | Selon le nombre de produits, variantes, clients et redirections | À partir de 2 500 000 Ar |
+| **Correction de flux Google** | Refus corrigés, règles, contrôle | 500 000 Ar |
+| **Gestion mensuelle** | Nouvelles collections, imports planifiés, contrôles, rapport | 600 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Pour chiffrer une migration, comptez les **éléments** (produits, variantes, images, clients, commandes, pages, adresses à rediriger) et les **difficultés** (données sales, options complexes). Un audit payant avant la migration évite les mauvaises surprises.
+
+> [!attention]
+> Précisez par écrit les **responsabilités** : le client valide les prix et les données réglementaires ; vous êtes responsable de l''exactitude des imports par rapport aux fichiers validés. Gardez toujours les sauvegardes prévues au contrat.
+
+### Le rapport mensuel
+
+| Rubrique | Exemple |
+| --- | --- |
+| Produits créés et mis à jour | 46 créés, 1 200 prix mis à jour |
+| Qualité des données | 0 doublon, 0,8 % de variantes sans code-barres |
+| Flux Google | 2 % de produits refusés (contre 18 % il y a 3 mois) |
+| Imports | 4 imports planifiés, 0 incident |
+| Propositions | Ajouter un métachamp « Entretien » sur les accessoires |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : boutique de mode éthique, 1 080 variantes, vente en France et en Belgique.
+> **Problème** : 18 % des produits refusés par Google, filtres de couleur encombrés, prix fournisseurs saisis à la main.
+> **Solution** : audit, dictionnaire de données, normalisation des options, correction du flux, import planifié hebdomadaire avec garde-fous.
+> **Résultats en 3 mois** : produits refusés de 18 % à 2 % ; filtre couleur de 46 à 12 valeurs ; 6 heures de saisie économisées chaque mois.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Assistant de saisie et de contrôle** | Quand les volumes augmentent |
+| **Spécialiste flux et places de marché** | Quand plusieurs clients vendent sur plusieurs canaux |
+| **Rédacteur de fiches** (partenaire) | Pour proposer des fiches complètes |
+| **Responsable** (vous) | Audits, migrations, relation client, contrôle |
+
+### Les règles de l''équipe
+
+1. **Dictionnaire de données et processus écrits** par client.
+2. **Accès personnels** avec les droits nécessaires.
+3. **Aucun import sans sauvegarde** et sans relecture par une seconde personne pour les gros volumes.
+4. **Journal des imports** tenu à jour.
+5. **Confidentialité** des prix, marges et fournisseurs.
+
+> [!madagascar]
+> Une petite équipe de données produits basée à Madagascar peut proposer aux agences européennes des **mises à jour livrées avant l''ouverture des boutiques** et un travail rigoureux sur de gros volumes. Mettez en avant vos processus et vos indicateurs de qualité.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Responsable des données produits** (PIM) | Outils de gestion des informations produits, gouvernance |
+| **Spécialiste e-commerce technique** | Thèmes, intégrations, automatisations |
+| **Gestionnaire de boutique en ligne** | Voir la formation Gestionnaire de boutique en ligne |
+| **Analyste de données** | Voir la formation Analyste de données |
+| **Spécialiste automatisation** | Voir la formation Spécialiste automatisation et IA |
+
+> [!retenir]
+> - Migrations et flux, service mensuel ou partenaire d''agences : choisissez votre voie.
+> - Chiffrer selon les éléments et les difficultés, avec un audit avant les gros projets.
+> - Responsabilités et sauvegardes écrites dans le contrat.
+> - Un rapport mensuel et des études de cas chiffrées.
+> - Une équipe avec dictionnaire, processus, sauvegardes et double contrôle.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Chiffrez une migration fictive de 500 produits et 2 000 variantes.
+> 3. Rédigez votre modèle de rapport mensuel et une étude de cas à partir de vos projets.
+> 4. Listez 10 boutiques ou agences et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, votre chiffrage, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 4, 0, 'Comment chiffrer une migration ?', '["Compter les éléments et évaluer les difficultés","Au hasard","Toujours le même prix","Selon la couleur du site"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 4, 1, 'Que proposer avant une grosse migration ?', '["Rien","Un import immédiat","Un audit payant","Une remise de 90 %"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-2-a', 4, 2, 'Quelle règle pour les gros imports en équipe ?', '["Import direct sans contrôle","Aucun journal","Sauvegarde et relecture par une seconde personne","Un mot de passe partagé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quelle spécialité fait passer une boutique d''une plateforme à une autre ?', '["Les flux","Le B2B","La normalisation","Les migrations"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que vérifie le domaine Complétude de l''audit ?', '["Le logo","Le prix des concurrents","Produits sans poids, code-barres, image ou description","Les avis"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quel effet ont des stocks faux ?', '["Commandes annulées et clients mécontents","Plus de ventes","Aucun","Des avis positifs"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Comment présenter les gains d''une correction de données ?', '["En promettant le double des ventes","En inventant des résultats","Sans chiffres","Avec prudence"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'À quoi servent les métaobjets ?', '["Supprimer des produits","Des données structurées réutilisables liées à plusieurs produits","Changer le thème","Payer les fournisseurs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quelle automatisation est utile ?', '["Baisser tous les prix","Étiqueter les variantes en rupture","Supprimer toutes les images","Fermer la boutique"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que fait la commande MERGE ?', '["Créer ou modifier","Ne rien faire","Supprimer","Remplacer tout"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que garder dans un fichier de mise à jour des prix ?', '["Toutes les colonnes","Identifiant, SKU et prix","Rien","Seulement les images"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quel garde-fou pour un import fournisseur ?', '["Supprimer les stocks","Aucun","Alerte si un prix change de plus de 20 %","Importer deux fois"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Pourquoi des redirections dans une migration ?', '["Garder le référencement des anciennes adresses","Décorer","Rien","Ralentir le site"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que contient une table de normalisation ?', '["Les clients","Les factures","Les valeurs reçues et leur valeur standard","Les mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Comment nommer une sauvegarde ?', '["Avec la date et le contexte","Sans nom","catalogue.xlsx toujours","Au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que note le journal des imports ?', '["Rien","Date, fichier, lignes, résultat et personne","Les avis clients","Les salaires"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Pourquoi documenter les processus ?', '["Ce n''est pas utile","Un remplaçant peut prendre le relais","Pour garder le savoir pour soi","Pour décorer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que reste-t-il cohérent dans un catalogue multilingue ?', '["Rien","Les images uniquement","Les valeurs d''options traduites","Seulement les prix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Qu''est-ce que Google Merchant Center ?', '["Un réseau social","Une place de marché malgache","Une banque","L''outil qui reçoit les données produits pour Google Shopping"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quelle image principale éviter dans un flux ?', '["Une image nette","Une image claire sur fond simple","Une photo du produit","Une image avec texte promotionnel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que faire pour un produit artisanal sans code-barres ?', '["Inventer un code","Utiliser les options prévues par Google pour les produits sans identifiant","Copier le code d''un autre produit","Ne jamais le vendre"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que faut-il sur les places de marché ?', '["Supprimer les attributs","Correspondance des champs, catégories et stocks synchronisés","Rien","Des prix différents au hasard"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quelles informations un cosmétique demande-t-il souvent ?', '["Le salaire du fabricant","Le nom du livreur","Rien","Liste des ingrédients et précautions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Comment annoncer un import en anglais ?', '["« Maybe later »","« No backup needed »","Rien","« The price update will run on Monday at 6 am, after the backup. »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Quelle voie donne un volume régulier sans chercher les clients finaux ?', '["Spécialiste migrations seul","Influenceur","Aucune","Partenaire d''agences e-commerce"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'De quoi êtes-vous responsable dans un import ?', '["Des ventes","Des prix décidés par le client","Des lois du pays","De l''exactitude par rapport aux fichiers validés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que montre une bonne étude de cas ?', '["Problème, solution et résultats chiffrés","Seulement un logo","Rien","Des données confidentielles"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-2-a', 'Que garder confidentiel ?', '["Prix, marges et fournisseurs","Le nom de la boutique publique","Rien","Les fiches publiées"]'::jsonb, 0);
 
 -- gestion-2-f
 delete from public.exam_questions where course_id = 'gestion-2-f';

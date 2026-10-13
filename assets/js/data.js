@@ -4115,6 +4115,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-2-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du gestionnaire de catalogue un professionnel des données produits à grande échelle : spécialité (migrations, flux, grande échelle, multicanal, automatisation, B2B), audit de qualité des données, outils payants (fonctions avancées de Shopify et Matrixify) avec commandes d'import, mises à jour par SKU, imports planifiés et migrations, dictionnaire de données, normalisation, contrôles automatiques et sauvegardes, marchés internationaux, Google Merchant Center, places de marché et informations obligatoires, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et réaliser un audit de qualité des données",
+   "Utiliser les fonctions avancées de Shopify et Matrixify en sécurité",
+   "Automatiser les mises à jour fournisseurs avec des garde-fous et préparer une migration",
+   "Garder un catalogue propre avec dictionnaire, normalisation et contrôles",
+   "Adapter un catalogue à plusieurs pays, à Google Merchant Center et aux places de marché",
+   "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer les données et les relier aux ventes",
+    "summary": "Les 6 spécialités avancées, les flux produits, l'audit en 6 domaines et son rapport, les effets des erreurs de données sur les ventes et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit de qualité des données",
+     "Relier les données aux ventes",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Shopify avancé et Matrixify",
+    "summary": "Éditeur en masse, métachamps, métaobjets, marchés et automatisations, export et import Matrixify, commandes d'import, mise à jour par SKU, import planifié avec garde-fous et plan de migration.",
+    "sections": [
+     "Shopify : les fonctions avancées",
+     "Matrixify : export et import complets",
+     "Mettre à jour par SKU",
+     "L'import planifié depuis un fournisseur",
+     "Préparer une migration",
+     "Exercice pratique : des imports professionnels"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : dictionnaire, normalisation, contrôles et versions",
+    "summary": "Dictionnaire de données, taxonomie et table de normalisation, contrôles automatiques et chiffre de contrôle, tableau hebdomadaire, sauvegardes, journal des imports et processus écrits.",
+    "sections": [
+     "Le dictionnaire de données",
+     "Taxonomie et valeurs normalisées",
+     "Les contrôles automatiques",
+     "Sauvegardes et versions",
+     "Documenter les processus",
+     "Exercice pratique : la qualité dans la durée"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : marchés, Google Merchant Center et places de marché",
+    "summary": "Langues, prix, tailles et unités par marché, exigences de Google Merchant Center et correction des refus, GTIN réels, places de marché, informations obligatoires et collaboration en anglais.",
+    "sections": [
+     "Un catalogue pour plusieurs pays",
+     "Google Merchant Center",
+     "Les places de marché",
+     "Les informations obligatoires",
+     "Collaborer en anglais",
+     "Exercice pratique : un catalogue international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : offres, migrations, rapports et équipe",
+    "summary": "Trois voies, audits, migrations, correction de flux et gestion mensuelle, chiffrage, responsabilités écrites, rapport mensuel, études de cas, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-2-f": {
   "hours": 15,
   "description": "Le gestionnaire de catalogue produits crée et maintient des données produits exactes et bien organisées. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des marques et des agences, à Madagascar et à l'étranger, avec Google Sheets et Shopify : données produits, SKU et variantes, fonctions du tableur, images, contrôle qualité, collections automatiques, import CSV, métachamps, nouvelles collections, mises à jour en masse, soldes et rapport de qualité. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
