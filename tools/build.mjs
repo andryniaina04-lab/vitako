@@ -44,7 +44,8 @@ for (const [id, c] of Object.entries(full)) {
     hours: c.hours,
     description: c.description,
     objectives: c.objectives,
-    modules: c.modules.map((m) => ({ title: m.title, summary: m.summary, sections: sections(m.body), minutes: readingMinutes(m.body) })),
+    // Seuls les titres des modules sont publics : résumés et sous-parties restent dans la base (abonnés).
+    modules: c.modules.map((m) => ({ title: m.title, minutes: readingMinutes(m.body) })),
   };
 }
 writeFileSync(join(root, 'assets/js/data.js'),

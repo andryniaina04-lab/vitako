@@ -366,6 +366,11 @@ function refreshGrid() {
 function coursePage(id) {
   const c = courseById(id);
   if (!c) return notFound();
+  // Le détail du programme (résumés et sous-parties des modules) n'est pas dans le site public :
+  // il est lu dans la base, qui ne le donne qu'aux abonnés.
+  if (c.published && hasAccess() && api.configured && !S.lessons.has(id)) {
+    return api.getLessons(id).then((ls) => { S.lessons.set(id, ls); return coursePage(id); });
+  }
   const other = otherLevel(c);
   const done = doneSet(c.id);
   const n = c.modules.length;
@@ -410,15 +415,19 @@ function coursePage(id) {
         <div class="panel"><span class="pill gold">Payants (professionnels)</span><p style="margin-top:8px">${esc(c.job.paid)}</p></div></div>
         <p class="muted" style="font-size:.88rem">${c.level === 'f' ? 'Ce niveau se fait avec les outils gratuits ; les outils payants sont présentés pour savoir quand ils deviennent rentables.' : 'Ce niveau utilise les outils payants demandés par les clients. Essais gratuits possibles.'} Les prix changent souvent : vérifiez-les sur le site officiel. Pas de logiciels piratés : virus et vol de fichiers clients.</p></div>
       <div class="stack" style="gap:12px"><h2>Programme</h2>
+        ${c.published && !ok ? `<p class="muted prog-lock"><span class="lock">${I.lock}</span> Le détail de chaque module (résumé, sous-parties, leçon et tests) est réservé aux abonnés.</p>` : ''}
         <div class="mods">
           ${c.modules.map((m, i) => {
             const d = done.has(i);
             const action = c.published && ok
               ? `<a class="btn ghost sm" href="#/formation/${c.id}/module/${i + 1}">${d ? 'Revoir' : 'Ouvrir'}</a>`
               : c.published ? `<span class="lock">${I.lock}</span>` : '';
-            const secs = m.sections?.length ? `<ol class="mod-secs">${m.sections.map((s2, k) => `<li><span>${i + 1}.${k + 1}</span>${esc(s2)}</li>`).join('')}<li><span>${i + 1}.${m.sections.length + 1}</span>Test du module (3 questions)</li></ol>` : '';
+            const L = ok ? (S.lessons.get(c.id) || []).find((l) => l.module_index === i) : null;
+            const subs = L ? sections(L.body_md || '') : [];
+            const secs = subs.length ? `<ol class="mod-secs">${subs.map((s2, k) => `<li><span>${i + 1}.${k + 1}</span>${esc(s2)}</li>`).join('')}<li><span>${i + 1}.${subs.length + 1}</span>Test du module (3 questions)</li></ol>` : '';
+            const info = L ? `${esc(L.summary || '')}${m.minutes ? ` · environ ${m.minutes} min de lecture` : ''}` : (c.published ? `Leçon${m.minutes ? ` d'environ ${m.minutes} min` : ''} + petit test` : '');
             return `<div class="mod${d ? ' done' : ''}"><span class="n">${d ? smallCheck : pad2(i + 1)}</span>
-              <div class="t"><b>Module ${i + 1} · ${esc(m.title)}</b><small>${esc(m.summary)}${m.minutes ? ` · environ ${m.minutes} min de lecture` : c.published ? ' · leçon + petit test' : ''}</small>${secs}</div>${action}</div>`;
+              <div class="t"><b>Module ${i + 1} · ${esc(m.title)}</b>${info ? `<small>${info}</small>` : ''}${secs}</div>${action}</div>`;
           }).join('')}
           <div class="mod${cert ? ' done' : ''}"><span class="n">${cert ? smallCheck : 'EX'}</span>
             <div class="t"><b>Examen final</b><small>10 questions · 50/100 pour réussir · essais illimités</small></div>
