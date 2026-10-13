@@ -260,6 +260,12 @@ with sync_playwright() as p:
         overflow = mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1')
         check(f'{name} : pas de défilement horizontal', not overflow)
         mp.screenshot(path=f'{SHOTS}/{name}.png', full_page=name.endswith('attestation'))
+    # Pages des modules (tableaux, blocs de code, sommaire) : rien ne doit dépasser de l'écran
+    signup(mp, 'Admin Mobile', 'admin@mobile.mg')
+    for mod in ['media-0-f/module/2', 'design-0-f/module/1', 'tech-3-f/module/3', 'tech-0-a/module/3', 'data-3-a/module/2']:
+        goto(mp, '#/formation/' + mod); mp.wait_for_timeout(500)
+        check(f'module {mod} sur téléphone : pas de défilement horizontal', not mp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
+    mp.screenshot(path=f'{SHOTS}/11-mobile-module.png')
     browser.close()
 httpd.shutdown()
 

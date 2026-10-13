@@ -377,7 +377,7 @@ a.back{display:inline-block}
 .mod-secs{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:.88rem;color:var(--muted)}
 .mod-secs li{display:flex;gap:8px}
 .mod-secs span{flex:none;min-width:2.4em;font-size:.82rem}
-@media (max-width:900px){.lesson-grid{grid-template-columns:1fr}.toc{position:static;max-height:none}}
+@media (max-width:900px){.lesson-grid{grid-template-columns:minmax(0,1fr)}.lesson-grid>*{min-width:0}.toc{position:static;max-height:none}}
 .quiz-sec{gap:14px;margin-top:30px;max-width:68ch}
 .quiz-h{display:flex;align-items:baseline;gap:10px;padding-top:6px;border-top:1px solid var(--line)}
 
@@ -462,3 +462,21 @@ a.back{display:inline-block}
 .cbar:last-child:hover::after,.cbar:last-child:focus-visible::after{left:auto;right:0;transform:none}
 .cbar:focus-visible{box-shadow:inset 0 0 0 2px var(--accent);border-radius:4px}
 .bars-x{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:6px}
+
+/* ---- Leçons sur téléphone : rien ne dépasse de l'écran ---- */
+@media (max-width:600px){
+  .md-table table{font-size:.88rem}
+  .md-table th,.md-table td{padding:8px 10px}
+  /* 2 ou 3 colonnes : le tableau tient dans l'écran, le texte passe à la ligne */
+  .md-table.cols-2 table,.md-table.cols-3 table{min-width:0}
+  .md-table td,.md-table th{overflow-wrap:anywhere}
+  .md-table code{white-space:normal}
+  /* 4 colonnes et plus : glissement horizontal dans le cadre, avec une ombre qui l'indique */
+  .md-table.cols-4,.md-table.cols-5{background:linear-gradient(90deg,var(--surface) 30%,transparent) left/24px 100% no-repeat local,
+    linear-gradient(270deg,var(--surface) 30%,transparent) right/24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.14),transparent) left/12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.14),transparent) right/12px 100% no-repeat scroll,var(--surface)}
+  .md-table.cols-4 table{min-width:480px}
+  .md-table.cols-5 table{min-width:560px}
+}
+.md-table:focus-visible{outline:3px solid var(--accent);outline-offset:2px}

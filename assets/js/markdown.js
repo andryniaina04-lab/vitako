@@ -114,7 +114,7 @@ export function md(src, opts = {}) {
       i += 2;
       const rows = [];
       while (i < lines.length && /^\s*\|/.test(lines[i])) { rows.push(cells(lines[i])); i++; }
-      out.push('<div class="md-table"><table><thead><tr>' + head.map((c) => `<th>${inline(c)}</th>`).join('') +
+      out.push(`<div class="md-table cols-${Math.min(head.length, 5)}" tabindex="0"><table><thead><tr>` + head.map((c) => `<th>${inline(c)}</th>`).join('') +
         '</tr></thead><tbody>' + rows.map((r) => '<tr>' + r.map((c) => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') +
         '</tbody></table></div>');
       continue;
