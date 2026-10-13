@@ -11,6 +11,7 @@ on:
       - 'supabase/seed.sql'
       - 'content/**'
       - 'tools/build.mjs'
+      - 'supabase/migrations/**'
   workflow_dispatch:
 
 concurrency:
@@ -47,6 +48,15 @@ jobs:
 
       - name: Installer psql
         run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+
+      - name: Appliquer les migrations (rejouables sans risque)
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          for m in supabase/migrations/*.sql; do
+            echo "Migration : $m"
+            psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -q -f "$m"
+          done
 
       - name: Exécuter seed.sql dans Supabase
         env:

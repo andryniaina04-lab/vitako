@@ -73,11 +73,18 @@ select t.err('select public.submit_payment(''mvola'',''AB'')', 'bad_reference');
 select t.err('select public.submit_payment(''mvola'',''ABC DEF 123'',''0321234567'')', 'sender_operator_mismatch');
 select t.err('select public.submit_payment(''mvola'',''ABCDEF123'',''03812'')', 'bad_sender');
 select (public.submit_payment('mvola', ' mp241012.0915.b42817 ', null)).status = 'pending';
-select reference = 'MP241012.0915.B42817' and sender is null and amount = 25000 from public.payments;
+select reference = 'MP241012.0915.B42817' and sender is null and amount = public.current_price_ar() from public.payments;
+select public.current_price_ar() = case when (now() at time zone 'Indian/Antananarivo')::date <= date '2026-11-30' then 30000 else 60000 end;
 select t.err('select public.submit_payment(''orange'',''XYZ12345'')', 'already_pending');
 select t.err('insert into public.payments (user_id, operator, reference, amount) values (auth.uid(), ''mvola'', ''ZZZZZZ'', 1)', 'permission denied');
 select t.err('select public.admin_decide_payment((select id from public.payments limit 1), true)', 'forbidden');
 reset role;
+\echo '--- Promotion : fin automatique'
+update public.settings set value = '2000-01-01' where key = 'promo_until';
+select public.current_price_ar() = 60000;
+update public.settings set value = '2999-12-31' where key = 'promo_until';
+select public.current_price_ar() = 30000;
+update public.settings set value = '2026-11-30' where key = 'promo_until';
 
 set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
 select t.err('select public.submit_payment(''mvola'',''MP241012.0915.B42817'')', 'reference_used');

@@ -7,7 +7,7 @@
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } };
   let db = load() || {
     users: [], profiles: [], progress: [], exam_attempts: [], certificates: [], payments: [],
-    settings: [{ key: 'price_ar', value: '25000' }, { key: 'access_days', value: '30' }],
+    settings: [{ key: 'price_ar', value: '60000' }, { key: 'promo_price_ar', value: '30000' }, { key: 'promo_until', value: '2026-11-30' }, { key: 'access_days', value: '30' }],
     session: null,
   };
   const save = () => localStorage.setItem(KEY, JSON.stringify(db));
@@ -93,7 +93,7 @@
       if (sender && ((p_operator === 'mvola' && !['034', '038'].includes(sender.slice(0, 3))) || (p_operator === 'orange' && !['032', '037'].includes(sender.slice(0, 3))))) return err('sender_operator_mismatch');
       if (db.payments.some((p) => p.user_id === me() && p.status === 'pending')) return err('already_pending');
       if (db.payments.some((p) => p.operator === p_operator && p.reference === ref && p.status !== 'rejected')) return err('reference_used');
-      const row = { id: uuid(), user_id: me(), operator: p_operator, reference: ref, sender, amount: 25000, status: 'pending', reason: null, created_at: now(), decided_at: null, access_until: null };
+      const row = { id: uuid(), user_id: me(), operator: p_operator, reference: ref, sender, amount: (new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10) <= '2026-11-30' ? 30000 : 60000), status: 'pending', reason: null, created_at: now(), decided_at: null, access_until: null };
       db.payments.push(row); save(); return { data: row, error: null };
     },
     admin_decide_payment({ p_id, p_approve, p_reason }) {

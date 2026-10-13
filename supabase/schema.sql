@@ -13,7 +13,9 @@ create table public.settings (
   value text not null
 );
 insert into public.settings (key, value) values
-  ('price_ar', '25000'),
+  ('price_ar', '60000'),
+  ('promo_price_ar', '30000'),      -- prix réduit (0 ou absent = pas de promotion)
+  ('promo_until', '2026-11-30'),    -- dernier jour de la promotion, heure de Madagascar
   ('access_days', '30');
 
 -- Un profil par compte. Créé automatiquement à l'inscription.
@@ -153,6 +155,20 @@ returns int language sql stable security definer set search_path = public as $$
   select coalesce((select value::int from public.settings where key = p_key), p_default);
 $$;
 
+-- Prix à payer aujourd'hui : prix réduit jusqu'au dernier jour de la promotion inclus
+-- (date de Madagascar), sinon prix normal.
+create or replace function public.current_price_ar()
+returns int language sql stable set search_path = public as $$
+  select case
+    when public.setting_int('promo_price_ar', 0) > 0
+     and (select value from public.settings where key = 'promo_until') ~ '^\d{4}-\d{2}-\d{2}$'
+     and (now() at time zone 'Indian/Antananarivo')::date
+         <= (select value::date from public.settings where key = 'promo_until')
+    then public.setting_int('promo_price_ar', 0)
+    else public.setting_int('price_ar', 60000)
+  end;
+$$;
+
 -- Crée le profil dès qu'un compte est créé dans Supabase Auth.
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
@@ -215,7 +231,7 @@ begin
   end if;
 
   insert into public.payments (user_id, operator, reference, sender, amount)
-  values (v_uid, p_operator, v_ref, v_sender, public.setting_int('price_ar', 25000))
+  values (v_uid, p_operator, v_ref, v_sender, public.current_price_ar())
   returning * into v_row;
   return v_row;
 end;

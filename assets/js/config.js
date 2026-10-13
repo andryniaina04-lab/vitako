@@ -7,7 +7,10 @@ window.VITAKO_CONFIG = {
   supabaseAnonKey: 'sb_publishable_tV6rjLynB9TiTg-1OGNc6Q_qQgQWJcU',
 
   // Prix affiché par défaut. Le prix réel est lu dans la table settings (clé price_ar).
-  price: 25000,
+  // Prix normal et promotion (les valeurs de la table settings de Supabase ont priorité)
+  price: 60000,
+  promoPrice: 30000,
+  promoUntil: '2026-11-30', // dernier jour inclus, heure de Madagascar
   accessDays: 30,
 
   // Numéros qui reçoivent les paiements, avec le nom du titulaire affiché aux étudiants.

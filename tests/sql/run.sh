@@ -9,6 +9,7 @@ fresh() {
   su postgres -c "dropdb --if-exists $DB && createdb $DB"
   su postgres -c "$PSQL -d $DB -f tests/sql/supabase_stub.sql"
   su postgres -c "$PSQL -d $DB -f supabase/schema.sql"
+  for m in supabase/migrations/*.sql; do su postgres -c "$PSQL -d $DB -f $m"; done
 }
 
 fresh

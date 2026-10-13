@@ -413,3 +413,22 @@ a.back{display:inline-block}
 .cv-ic{transition:transform .35s ease}
 @media (prefers-reduced-motion:reduce){.cv-ic{transition:none}}
 @media (max-width:560px){.card.job>.cover{aspect-ratio:16/6}}
+
+/* ---- Promotion : ancien prix barré en rouge ---- */
+.old-price{color:var(--danger);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--danger);font-weight:600}
+.price .old-price{font-size:.55em;vertical-align:middle;margin-right:6px}
+.new-price{color:var(--ink)}
+.btn-pct{background:#fff;color:#B42318;font-size:.75rem;font-weight:800;padding:2px 7px;border-radius:999px;margin-left:2px}
+.promo{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding:14px 16px;border-radius:var(--r);border:1.5px solid var(--danger);
+  background:var(--danger-soft);color:var(--ink);text-decoration:none}
+.promo:hover{box-shadow:0 6px 18px rgba(180,35,24,.15)}
+.promo-pct{flex:none;display:grid;place-items:center;min-width:64px;height:64px;padding:0 6px;border-radius:14px;background:#B42318;color:#fff;
+  font-family:var(--display);font-weight:700;font-size:1.15rem;transform:rotate(-4deg)}
+.promo-txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.promo-txt b{font-size:1.02rem}
+.promo-txt span{color:var(--muted)}
+.promo-go{flex:none;font-size:1.4rem;color:var(--danger);font-weight:700}
+@media (max-width:480px){.promo-pct{min-width:52px;height:52px;font-size:1rem}.promo-go{display:none}}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+.price .old-price{margin-right:0}
+.price small{white-space:nowrap}

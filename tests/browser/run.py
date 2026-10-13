@@ -120,6 +120,10 @@ with sync_playwright() as p:
     signup(page, 'Fanja Rakoto', 'fanja@exemple.mg')
     check('après inscription : page abonnement', '#/abonnement' in page.url)
     check('numéro MVola affiché', '038 28 753 61' in page.content())
+    promo = page.evaluate("new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10)") <= '2026-11-30'
+    if promo:
+        check('promotion : ancien prix 60 000 Ar barré en rouge', page.locator('.price .old-price').count() == 1 and '60 000' in page.locator('.price .old-price').inner_text())
+        check('promotion : 30 000 Ar à envoyer', '30 000 Ar' in page.locator('.steps').inner_text())
     check('nom du titulaire MVola affiché', 'Andrianiaina Philibert' in page.content())
     page.screenshot(path=f'{SHOTS}/02a-abonnement.png')
     page.click('[data-op=orange]'); page.wait_for_timeout(200)

@@ -19,6 +19,8 @@ const S = {
   payments: [],
   admin: { pending: 0, active: 0 },
   price: CFG.price,
+  promoPrice: CFG.promoPrice || 0,
+  promoUntil: CFG.promoUntil || '',
   days: CFG.accessDays,
   lessons: new Map(),    // course_id -> leçons (cache)
   exam: null,            // passage en cours
@@ -43,6 +45,21 @@ const pendingPayment = () => S.payments.find((p) => p.status === 'pending');
 const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const fmtDT = (t) => new Date(t).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 const ar = (n) => Number(n).toLocaleString('fr-FR').replace(/ | /g, ' ') + ' Ar';
+// Promotion : active jusqu'au dernier jour inclus, date de Madagascar (UTC+3), comme dans la base.
+const mgDate = () => new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10);
+const promoOn = () => S.promoPrice > 0 && S.promoPrice < S.price && /^\d{4}-\d{2}-\d{2}$/.test(S.promoUntil) && mgDate() <= S.promoUntil;
+const priceNow = () => (promoOn() ? S.promoPrice : S.price);
+const promoPct = () => Math.round((1 - S.promoPrice / S.price) * 100);
+const promoEnd = () => new Date(`${S.promoUntil}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+// Prix affiché : ancien prix barré en rouge pendant la promotion
+const priceHtml = () => (promoOn()
+  ? `<s class="old-price">${ar(S.price)}</s> <span class="new-price">${ar(S.promoPrice)}</span>`
+  : ar(S.price));
+const promoBanner = () => (promoOn() ? `<a class="promo" href="#/abonnement">
+    <span class="promo-pct">-${promoPct()} %</span>
+    <span class="promo-txt"><b>Offre de lancement jusqu'au ${promoEnd()}</b>
+      <span>${ar(S.promoPrice)} au lieu de <s class="old-price">${ar(S.price)}</s> pour ${S.days} jours d'accès à toutes les formations.</span></span>
+    <span class="promo-go" aria-hidden="true">→</span></a>` : '');
 const fmtTel = (t) => String(t || '').replace(/(\d{3})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4');
 const opById = (id) => CFG.operators.find((o) => o.id === id) || CFG.operators[0];
 const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -137,7 +154,7 @@ function needSub() {
   return `<div class="narrow panel stack" style="gap:14px">
     <h2>${expired ? 'Votre abonnement est terminé' : 'Abonnement nécessaire'}</h2>
     <p class="muted">${expired ? `Votre accès aux cours s'est arrêté le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Les cours, les tests et les examens sont réservés aux abonnés.'}</p>
-    <a class="btn" href="#/abonnement">${expired ? 'Renouveler' : "S'abonner"} · ${ar(S.price)} / ${S.days} jours</a></div>`;
+    <a class="btn" href="#/abonnement">${expired ? 'Renouveler' : "S'abonner"} · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>${promoOn() ? `<p class="muted" style="margin:0">Au lieu de <s class="old-price">${ar(S.price)}</s>, jusqu'au ${promoEnd()}.</p>` : ''}</div>`;
 }
 // Renvoie un écran de blocage si l'étudiant ne peut pas suivre les cours, sinon null.
 function gate(next) {
@@ -269,7 +286,7 @@ function catalog() {
   if (!S.session) banner = notice('info', 'Tout le monde peut consulter les formations, leurs descriptions et leurs objectifs. Pour suivre les cours, <a href="#/inscription">créez un compte</a> puis prenez un abonnement mensuel.');
   else if (S.profile && !hasAccess()) banner = notice(pendingPayment() ? 'info' : 'warn', pendingPayment()
     ? `Votre paiement est en attente de validation (en général sous ${esc(CFG.validationDelay)}).`
-    : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${ar(S.price)} / ${S.days} jours)</a>.`);
+    : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${priceHtml()} / ${S.days} jours)</a>.`);
   return `
   <section class="hero">
     <div>
@@ -283,6 +300,7 @@ function catalog() {
       <div class="fact"><b>50/100</b><span>pour réussir un examen</span></div>
     </div>
   </section>
+  ${promoBanner()}
   ${banner ? `<div style="margin-bottom:18px">${banner}</div>` : ''}
   <div class="filters">
     <div class="chips" id="chips">${chips()}</div>
@@ -363,7 +381,7 @@ function coursePage(id) {
       <a class="btn ghost" href="#/connexion?suite=${encodeURIComponent('/formation/' + c.id)}">J'ai déjà un compte</a>`;
   else if (!S.profile) cta = loadingView();
   else if (!ok) cta = `<p class="muted">${S.profile.sub_end ? `Votre abonnement s'est terminé le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Un abonnement est nécessaire pour suivre cette formation.'}</p>
-      <a class="btn" href="#/abonnement">${S.profile.sub_end ? 'Renouveler' : "S'abonner"} · ${ar(S.price)} / ${S.days} jours</a>`;
+      <a class="btn" href="#/abonnement">${S.profile.sub_end ? 'Renouveler' : "S'abonner"} · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>`;
   else {
     const next = [...Array(n).keys()].find((i) => !done.has(i));
     cta = next !== undefined
@@ -716,7 +734,8 @@ function subscribePage() {
   return `<div class="narrow stack" style="gap:18px">
     <div class="panel stack" style="gap:12px">
       <span class="eyebrow">Abonnement mensuel</span>
-      <div class="price">${ar(S.price)} <small>/ ${S.days} jours</small></div>
+      ${promoOn() ? `<div><span class="pill red">-${promoPct()} % jusqu'au ${promoEnd()}</span></div>` : ''}
+      <div class="price">${priceHtml()} <small>/ ${S.days} jours</small></div>
       <ul class="obj"><li>Accès à toutes les formations disponibles</li><li>Tests et examens illimités</li><li>Une attestation par formation réussie, plus l'attestation de parcours complet</li><li>Désactivation automatique au bout de ${S.days} jours, sans prélèvement</li></ul>
       ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
     </div>
@@ -732,7 +751,7 @@ function subscribePage() {
         ${CFG.operators.map((o) => `<button type="button" class="op${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}<small>${o.prefixes.join(' / ')}</small></button>`).join('')}
       </div>
       <ol class="steps">
-        <li><span>Envoyez <b class="mono">${ar(S.price)}</b> à ce numéro ${esc(op.name)} :</span>
+        <li><span>Envoyez <b class="mono">${ar(priceNow())}</b> à ce numéro ${esc(op.name)} :</span>
           <div class="paynum"><span class="mono">${esc(op.number)}</span><button type="button" class="btn ghost sm" data-act="copy" data-v="${op.number.replace(/ /g, '')}">Copier</button></div>
           <div class="holder">Au nom de <b>${esc(op.holder)}</b></div>
           <small class="muted">Vérifiez ce nom avant de confirmer le transfert, puis gardez le SMS de confirmation : il contient la référence de la transaction.</small></li>
@@ -815,7 +834,7 @@ async function adminPage() {
   topbar();
   const ops = CFG.operators.map((o) => `${esc(o.name)} ${esc(o.number)}`).join(' · ');
   return `${pageHead('Administration', 'Paiements à valider', `<p class="muted">${counts.pending} en attente · ${counts.active} abonné${counts.active > 1 ? 's' : ''} actif${counts.active > 1 ? 's' : ''} · ${ops}</p>`)}
-  <div style="margin-bottom:18px">${notice('warn', `Avant de valider, ouvrez votre application MVola ou Orange Money et vérifiez : la référence existe, le montant est de ${ar(S.price)} et, s'il est indiqué, le numéro de l'expéditeur correspond. Ne validez jamais à partir d'une capture d'écran.`)}</div>
+  <div style="margin-bottom:18px">${notice('warn', `Avant de valider, ouvrez votre application MVola ou Orange Money et vérifiez : la référence existe, le montant correspond au « Montant attendu » de la demande et, s'il est indiqué, le numéro de l'expéditeur correspond. Ne validez jamais à partir d'une capture d'écran.`)}</div>
   ${pending.length ? `<div class="paylist">${pending.map((p) => `<div class="panel">
       <div class="payhead"><div><b>${esc(p.profile?.full_name || 'Étudiant')}</b><small class="muted">${esc(p.profile?.email || '')}</small></div><span class="pill grey">Reçu le ${fmtDT(p.created_at)}</span></div>
       <dl class="paydl">
@@ -1143,6 +1162,8 @@ render();
   try {
     const settings = await api.getSettings();
     if (settings.price_ar) S.price = Number(settings.price_ar);
+    if ('promo_price_ar' in settings) S.promoPrice = Number(settings.promo_price_ar) || 0;
+    if ('promo_until' in settings) S.promoUntil = settings.promo_until || '';
     if (settings.access_days) S.days = Number(settings.access_days);
     S.session = await api.getSession();
     await loadUser();
