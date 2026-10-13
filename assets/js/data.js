@@ -6154,6 +6154,89 @@ export const PUBLISHED = {
    }
   ]
  },
+ "mkt-4-f": {
+  "hours": 13,
+  "description": "Le créateur de contenu UGC filme des vidéos authentiques avec de vrais produits, que les marques publient sur leurs comptes et dans leurs publicités. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des marques malgaches et étrangères, des agences et des applications, avec un smartphone et CapCut : UGC et influence, formats, accroches, script naturel, cadrage, lumière et son, montage, sous-titres, musique et droits, livraison, brief, droits d'utilisation et règles d'honnêteté. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le contenu UGC, ses formats et ses règles d'honnêteté",
+   "Construire une vidéo en 4 parties avec une accroche efficace",
+   "Filmer au smartphone avec un bon cadrage, une bonne lumière et un son clair",
+   "Monter, sous-titrer et livrer des vidéos avec CapCut sans problème de droits",
+   "Réaliser une commande complète à partir du brief d'une marque",
+   "Fixer le prix des vidéos et des droits d'utilisation et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier de créateur de contenu UGC depuis Madagascar",
+    "summary": "UGC et influence, formats les plus demandés, accroche, usages par les marques, droits d'utilisation, règles d'honnêteté, clients et matériel de départ.",
+    "sections": [
+     "Le métier en une phrase",
+     "UGC ou influence ?",
+     "Les formats les plus demandés",
+     "Comment les marques utilisent ces vidéos",
+     "Les règles d'honnêteté",
+     "Qui sont vos clients ?",
+     "Votre matériel de départ",
+     "Exercice pratique : observer les vidéos UGC"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Les bases : structure, accroches, script, image et son",
+    "summary": "Structure en 4 parties, types d'accroches vraies, script naturel en points clés, format vertical, lumière, plans de coupe et son clair.",
+    "sections": [
+     "La structure d'une vidéo UGC",
+     "Les accroches",
+     "Le script naturel",
+     "Cadrage et lumière au smartphone",
+     "Un son clair",
+     "Exercice pratique : vos premières vidéos"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Les outils : smartphone, CapCut, droits de la musique et matériel payant",
+    "summary": "Réglages du smartphone, montage dans CapCut, sous-titres corrigés, rythme, musique et droits, versions et livraison, micro-cravate, LED et CapCut Pro.",
+    "sections": [
+     "Régler le smartphone",
+     "Monter dans CapCut",
+     "La musique et les droits",
+     "Exporter et livrer",
+     "Le matériel payant",
+     "Exercice pratique : monter et livrer"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Premier projet : la commande de Voary Cosmétiques",
+    "summary": "Lecture du brief et questions, test réel du produit, concepts et accroches, liste de plans, tournage, livraison des versions et gestion des modifications.",
+    "sections": [
+     "Le cas pratique : « Voary Cosmétiques »",
+     "Étape 1 : le brief",
+     "Étape 2 : concepts et scripts",
+     "Étape 3 : le tournage",
+     "Étape 4 : le montage et la livraison",
+     "Étape 5 : les modifications",
+     "Exercice pratique : la commande de Voary Cosmétiques"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des marques et se faire payer",
+    "summary": "Portfolio d'exemples, 5 canaux, prix des vidéos, des accroches et des fichiers bruts, droits d'utilisation, conditions, douane, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des marques : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "tech-1-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du testeur un professionnel qui aide les équipes à livrer vite sans casser ce qui marche : spécialité (automatisation, API, mobile, performance, accessibilité, QA lead), audit qualité, stratégie fondée sur les risques et pyramide des tests, outils payants (BrowserStack et Jira avec gestion des tests), Page Object, sélecteurs robustes, données de test, intégration continue et tests instables, rapports en anglais, rituels agiles, ISTQB, test participatif et localisation, puis offres, contrats récurrents, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

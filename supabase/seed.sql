@@ -51,7 +51,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true),
   ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true),
   ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 16, true),
-  ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, false),
+  ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, true),
   ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 16, false),
   ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
   ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
@@ -44070,6 +44070,579 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quel message envoyer à une boutique sans automatisation ?', '["Une critique","Une liste de prix sans explication","Montrer le problème constaté et proposer les automatisations","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Que faire si un client insiste pour écrire à une liste achetée ?', '["Refuser","Accepter","Doubler le prix","Accepter en secret"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-3-f', 'Quelle évolution concerne les programmes de fidélité et les SMS ?', '["Comptable","Spécialiste CRM et fidélisation","Développeur back-end","Monteur audio"]'::jsonb, 1);
+
+-- mkt-4-f
+delete from public.exam_questions where course_id = 'mkt-4-f';
+delete from public.module_questions where course_id = 'mkt-4-f';
+delete from public.lessons where course_id = 'mkt-4-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-f', 0, 'Le métier de créateur de contenu UGC depuis Madagascar', 'UGC et influence, formats les plus demandés, accroche, usages par les marques, droits d''utilisation, règles d''honnêteté, clients et matériel de départ.', 'Sur TikTok, Instagram et Facebook, les publicités qui fonctionnent le mieux ressemblent souvent à des vidéos de vraies personnes : quelqu''un qui teste un produit, montre comment il l''utilise ou donne son avis sincère. Les marques paient des créateurs pour produire ces vidéos, qu''elles diffusent ensuite sur leurs propres comptes et dans leurs publicités. C''est le métier de créateur de contenu UGC. Ce premier module vous le présente, avec ses règles d''honnêteté.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce qu''est le contenu UGC et ce qui le distingue de l''influence.
+> 2. Reconnaître les principaux formats de vidéos UGC.
+> 3. Comprendre comment les marques utilisent ces vidéos.
+> 4. Connaître les règles d''honnêteté du métier.
+> 5. Préparer votre matériel de départ.
+
+## Le métier en une phrase
+
+Un créateur de contenu UGC **filme des vidéos authentiques avec de vrais produits ou services, pour qu''une marque les publie sur ses comptes ou les utilise dans ses publicités**.
+
+> [!definition] UGC (User Generated Content)
+> À l''origine, le contenu créé spontanément par les utilisateurs d''un produit. Aujourd''hui, on parle aussi d''UGC pour des vidéos **commandées et payées** par une marque, dans un style naturel, comme si un client parlait du produit.
+
+## UGC ou influence ?
+
+| Critère | Créateur UGC | Influenceur |
+| --- | --- | --- |
+| **Ce qui est vendu** | La vidéo | L''accès à son audience |
+| **Où la vidéo est publiée** | Surtout sur les comptes et publicités de la marque | Sur le compte de l''influenceur |
+| **Nombre d''abonnés nécessaire** | Aucun minimum | Une audience importante |
+| **Ce qui compte** | La qualité et l''efficacité de la vidéo | La confiance de sa communauté |
+
+> [!astuce]
+> C''est une bonne nouvelle pour les débutants : **vous n''avez pas besoin d''abonnés** pour devenir créateur UGC. Votre portfolio compte plus que votre nombre de followers.
+
+## Les formats les plus demandés
+
+| Format | Principe | Exemple |
+| --- | --- | --- |
+| **Témoignage** | Vous racontez votre expérience réelle avec le produit | « J''utilise ce savon depuis 3 semaines, voici ce que j''en pense » |
+| **Démonstration** | Vous montrez comment utiliser le produit | Préparer un thé épicé pas à pas |
+| **Déballage** (unboxing) | Vous ouvrez le colis et découvrez le produit | Ouverture d''un coffret de vanille |
+| **Problème et solution** | Un problème du quotidien, puis le produit qui aide | « Mes épices perdaient leur goût… » |
+| **Avant et après** | Le résultat réel, sans trucage | Une pièce rangée avec des paniers en raphia |
+| **Trois raisons** | Une liste courte et rythmée | « 3 raisons pour lesquelles j''adore ce sac » |
+| **Accroches seules** | Plusieurs débuts de vidéo différents pour tester | 5 premières secondes différentes |
+
+> [!definition] Accroche (hook)
+> Les 1 à 3 premières secondes d''une vidéo, qui doivent arrêter la personne qui fait défiler son fil d''actualité. C''est l''élément le plus important d''une vidéo UGC.
+
+## Comment les marques utilisent ces vidéos
+
+1. **Publications organiques** sur les comptes de la marque.
+2. **Publicités payantes** sur TikTok, Instagram, Facebook.
+3. **Pages produits** de la boutique en ligne.
+4. **Tests A/B** : comparer plusieurs accroches ou formats pour trouver le plus efficace.
+
+> [!definition] Droits d''utilisation
+> L''autorisation donnée à la marque d''utiliser votre vidéo : où (comptes, publicités), combien de temps (3 mois, 1 an, sans limite) et comment (modifications permises). Ces droits se négocient et se paient (voir le module 5).
+
+## Les règles d''honnêteté
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Tester réellement le produit** | Votre avis doit être vrai |
+| **Ne jamais inventer un résultat** | Un faux « avant et après » trompe les clients |
+| **Ne pas faire d''allégations de santé** non prouvées | Interdit dans beaucoup de pays (« guérit », « fait maigrir ») |
+| **Respecter les règles de publicité** des plateformes | Mention « partenariat » ou « publicité » quand c''est demandé |
+| **Refuser les produits** dangereux ou douteux | Votre visage est associé au produit |
+
+> [!attention]
+> Les autorités de nombreux pays sanctionnent les **publicités trompeuses** et les faux avis. Si une marque vous demande de dire quelque chose de faux ou d''exagéré sur un produit, refusez ou proposez une formulation honnête.
+
+## Qui sont vos clients ?
+
+### À Madagascar
+
+1. **Marques locales** : cosmétiques naturels, épices, vanille, mode, artisanat, restaurants, applications.
+2. **Commerces en ligne** sur Facebook et Instagram.
+3. **Agences de marketing** qui gèrent la publicité de plusieurs marques.
+
+### À l''étranger
+
+1. **Marques e-commerce** francophones.
+2. **Applications et services en ligne** (pas besoin d''envoyer un produit physique).
+3. **Agences UGC** qui mettent en relation marques et créateurs.
+
+> [!madagascar] Votre défi et votre avantage
+> Recevoir des produits de l''étranger à Madagascar peut être long et coûteux (frais de livraison, douane). Commencez par les **marques locales**, les **applications** et les **services en ligne**, qui ne demandent pas d''envoi. Les produits malgaches (vanille, raphia, cosmétiques naturels) sont aussi un atout : vous pouvez les filmer dans leur cadre authentique.
+
+## Votre matériel de départ
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Smartphone** | Caméra arrière correcte, assez de stockage |
+| **Lumière naturelle** | Face à une fenêtre, en journée |
+| **Support** | Trépied simple ou pile de livres |
+| **Son** | Pièce calme, rideaux ; un micro-cravate plus tard |
+| **Montage** | CapCut (version gratuite) |
+| **Décor** | Coin propre et simple de votre maison |
+
+> [!retenir]
+> - Le créateur UGC vend des vidéos, pas son audience.
+> - Témoignage, démonstration, déballage, problème et solution, avant et après.
+> - L''accroche des premières secondes est l''élément clé.
+> - Tester réellement, ne rien inventer, respecter les règles de publicité.
+> - Commencer avec un smartphone, la lumière du jour et CapCut.
+
+## Exercice pratique : observer les vidéos UGC
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Trouvez 10 publicités de style UGC sur TikTok, Instagram ou Facebook (la bibliothèque publicitaire de Meta aide à les trouver).
+> 2. Pour chacune, notez le format, l''accroche, la durée et l''appel à l''action.
+> 3. Classez-les de la plus convaincante à la moins convaincante, et expliquez pourquoi.
+> 4. Listez 5 marques malgaches pour lesquelles vous aimeriez créer.
+>
+> **À livrer** : votre tableau d''analyse et votre liste de marques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 0, 0, 'Que vend un créateur UGC ?', '["Son nombre d''abonnés","La vidéo","Le produit","Son compte"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 0, 1, 'Qu''est-ce que l''accroche ?', '["Les 1 à 3 premières secondes qui arrêtent le défilement","Le logo","Le prix","La fin de la vidéo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 0, 2, 'Que faire si une marque demande de dire quelque chose de faux ?', '["Ne rien dire et filmer","Exagérer encore plus","Refuser ou proposer une formulation honnête","Le dire"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-f', 1, 'Les bases : structure, accroches, script, image et son', 'Structure en 4 parties, types d''accroches vraies, script naturel en points clés, format vertical, lumière, plans de coupe et son clair.', 'Ce module vous donne les bases d''une bonne vidéo UGC : la structure, les accroches, l''écriture d''un script naturel, le cadrage et la lumière au smartphone, et le son.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une vidéo UGC en 4 parties.
+> 2. Écrire des accroches efficaces.
+> 3. Rédiger un script qui sonne naturel.
+> 4. Filmer avec un bon cadrage et une bonne lumière.
+> 5. Enregistrer un son clair.
+
+## La structure d''une vidéo UGC
+
+| Partie | Durée | Rôle | Exemple |
+| --- | --- | --- | --- |
+| **Accroche** | 1 à 3 secondes | Arrêter le défilement | « J''ai enfin trouvé une vanille qui sent vraiment la vanille. » |
+| **Problème ou contexte** | 3 à 8 secondes | Créer l''identification | « Celle du supermarché n''avait presque aucun goût dans mes gâteaux. » |
+| **Produit et preuve** | 10 à 30 secondes | Montrer, démontrer, ressentir | Ouvrir le sachet, sentir, couper la gousse, montrer les grains |
+| **Appel à l''action** | 2 à 5 secondes | Dire quoi faire | « Le lien est en description si vous voulez essayer. » |
+
+> [!astuce]
+> La plupart des vidéos UGC durent **15 à 45 secondes**. Une idée claire bien montrée vaut mieux qu''une longue liste d''arguments.
+
+## Les accroches
+
+| Type d''accroche | Exemple |
+| --- | --- |
+| **Question** | « Pourquoi vos gâteaux n''ont jamais le goût de ceux de la pâtisserie ? » |
+| **Affirmation surprenante** (vraie) | « Ce panier a résisté à 3 ans de marché chaque samedi. » |
+| **Problème** | « J''en avais assez de mes cheveux secs à cause de la poussière. » |
+| **Résultat** | « Voici ma cuisine après avoir tout rangé dans ces paniers. » |
+| **Visuelle** | Un geste fort dès la première image (verser, ouvrir, découper) |
+| **Contraste** | « Avant, j''achetais mes épices au hasard. Maintenant… » |
+
+> [!attention]
+> Une accroche doit être **vraie**. « Ce produit a changé ma vie » est souvent exagéré ; préférez un fait précis que vous avez réellement vécu.
+
+## Le script naturel
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Écrire comme on parle** | Le style UGC doit sonner spontané |
+| **Phrases très courtes** | Plus faciles à dire et à retenir |
+| **Points clés plutôt que texte appris par cœur** | Moins récité, plus naturel |
+| **Votre propre expérience** | « Moi, j''utilise… », « Ce que j''aime… » |
+| **Un seul message principal** | Le spectateur retient une idée |
+
+> [!exemple] Script de 30 secondes
+> **Accroche** (face caméra) : « J''ai trouvé l''astuce pour que mes épices gardent leur goût. »
+> **Problème** : « Avant, je les laissais dans les sachets ouverts, et au bout d''un mois, plus rien. »
+> **Produit** (gros plan) : « Les épices Tanety arrivent dans ce sachet refermable. Regardez, je l''ouvre… sentez-moi ce poivre sauvage. »
+> **Preuve** : « Je l''utilise depuis 6 semaines et il sent toujours aussi fort. »
+> **Appel à l''action** : « Si vous cuisinez souvent, essayez, le lien est juste en dessous. »
+
+## Cadrage et lumière au smartphone
+
+| Élément | Recommandation |
+| --- | --- |
+| **Format** | Vertical 9:16 pour TikTok, Reels et Stories |
+| **Caméra** | La caméra arrière est souvent de meilleure qualité ; la caméra avant facilite le face caméra |
+| **Objectif propre** | Essuyez-le avant chaque tournage |
+| **Lumière** | Face à une fenêtre, jamais dos à la lumière |
+| **Heure** | Lumière douce du matin ou de fin d''après-midi |
+| **Cadrage face caméra** | Yeux au tiers supérieur de l''image |
+| **Plans variés** | Face caméra, gros plans du produit, mains en action |
+| **Stabilité** | Trépied ou appui, sauf mouvement voulu |
+
+> [!definition] Plan de coupe (B-roll)
+> Les images qui illustrent ce que vous dites : gros plan du produit, gestes, résultat. Elles rendent la vidéo plus dynamique et sont très demandées par les marques.
+
+## Un son clair
+
+1. **Pièce calme** : fenêtres fermées, ventilateur éteint.
+2. **Pièce meublée** : les rideaux, coussins et lits réduisent l''écho.
+3. **Téléphone proche** de votre bouche (moins d''un mètre) si vous n''avez pas de micro.
+4. **Test** : enregistrez 10 secondes et réécoutez au casque.
+5. **Moment calme** de la journée, loin des bruits de la rue.
+
+> [!madagascar]
+> Les bruits de la rue, des coqs, de la pluie sur la tôle ou d''un groupe électrogène s''entendent beaucoup dans une vidéo. Repérez dans votre logement **le coin le plus calme** et l''heure la plus tranquille, et faites-en votre « studio ».
+
+> [!retenir]
+> - Accroche, problème, produit et preuve, appel à l''action.
+> - Des accroches vraies : question, problème, résultat, visuelle, contraste.
+> - Un script en points clés, à la première personne, avec un message principal.
+> - Vertical, face à la lumière, plans variés et plans de coupe.
+> - Un son clair dans un coin calme et meublé.
+
+## Exercice pratique : vos premières vidéos
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez 2 produits que vous utilisez vraiment chez vous.
+> 2. Écrivez 5 accroches différentes pour chacun.
+> 3. Rédigez un script de 30 secondes pour chacun.
+> 4. Filmez les 2 vidéos (face caméra + 3 plans de coupe chacune) sans montage pour l''instant.
+>
+> **À livrer** : vos accroches, vos scripts et vos fichiers bruts.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 1, 0, 'Quel est l''ordre d''une vidéo UGC ?', '["Appel à l''action, accroche, problème","Accroche, problème, produit et preuve, appel à l''action","Prix puis accroche","Produit seul"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 1, 1, 'Où se placer par rapport à la fenêtre ?', '["Dos à la fenêtre","Dans le noir","Face à la fenêtre","Peu importe"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 1, 2, 'Qu''est-ce qu''un plan de coupe ?', '["Une coupure de courant","Un plan de travail","Une erreur de montage","Une image qui illustre ce que vous dites"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-f', 2, 'Les outils : smartphone, CapCut, droits de la musique et matériel payant', 'Réglages du smartphone, montage dans CapCut, sous-titres corrigés, rythme, musique et droits, versions et livraison, micro-cravate, LED et CapCut Pro.', 'Ce module vous fait prendre en main les outils du créateur UGC : votre **smartphone** et ses réglages, **CapCut** pour le montage, et le matériel qui améliore vos vidéos quand vous commencez à gagner de l''argent : **CapCut Pro**, un **micro-cravate** et un **éclairage LED**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Régler votre smartphone pour filmer de bonnes vidéos.
+> 2. Monter une vidéo UGC dans CapCut.
+> 3. Ajouter des sous-titres, du texte et de la musique sans problème de droits.
+> 4. Exporter et livrer selon les demandes des marques.
+> 5. Choisir le matériel payant au bon moment.
+
+## Régler le smartphone
+
+| Réglage | Recommandation |
+| --- | --- |
+| **Résolution** | 1080p ou 4K selon la demande, à 30 images par seconde |
+| **Stabilisation** | Activée |
+| **Mise au point et exposition** | Appui long sur l''écran pour les verrouiller sur le visage ou le produit |
+| **Grille** | Activée pour bien cadrer |
+| **Mode avion** | Activé pendant le tournage (pas d''appel qui coupe la prise) |
+| **Stockage** | Assez d''espace libre ; transférer les fichiers après chaque tournage |
+
+> [!astuce]
+> Filmez **plusieurs prises** de chaque phrase et de chaque plan de coupe. Au montage, vous choisirez la meilleure, et la marque pourra parfois en demander d''autres versions.
+
+## Monter dans CapCut
+
+| Étape | Action |
+| --- | --- |
+| 1 | Importer les prises dans l''ordre du script |
+| 2 | Couper les silences, les hésitations et les erreurs |
+| 3 | Insérer les plans de coupe pendant que vous parlez |
+| 4 | Ajouter des sous-titres automatiques, puis les corriger |
+| 5 | Ajouter quelques textes à l''écran (accroche, prix, bénéfice) |
+| 6 | Régler le volume : votre voix bien audible, musique très basse |
+| 7 | Vérifier la durée et le rythme |
+| 8 | Exporter |
+
+> [!attention]
+> Corrigez toujours les **sous-titres automatiques** : ils font des fautes, surtout sur les noms propres et les mots malgaches. Une faute dans une publicité nuit à l''image de la marque.
+
+### Le rythme
+
+1. **Une coupe toutes les 2 à 4 secondes** environ (changement de plan, zoom, texte).
+2. **Pas de temps mort** au début : l''accroche commence dès la première image.
+3. **Des sous-titres lisibles** : gros caractères, au centre bas, sans cacher le produit.
+4. **Évitez les effets trop nombreux** : le style UGC doit rester naturel.
+
+## La musique et les droits
+
+| Source | Usage possible |
+| --- | --- |
+| **Sons tendance de TikTok ou Instagram** | Publication sur la plateforme ; souvent **pas autorisés** dans les publicités des marques |
+| **Musiques libres de droits pour usage commercial** | Utilisables selon la licence |
+| **Bibliothèque de musiques commerciales des plateformes** | Prévue pour les marques, selon les conditions |
+| **Pas de musique** | Souvent préféré : la marque ajoute sa propre musique |
+
+> [!astuce]
+> Beaucoup de marques demandent une version **sans musique** et une version **sans sous-titres**, pour les ajouter elles-mêmes. Demandez toujours avant d''exporter.
+
+## Exporter et livrer
+
+| Élément | Habitude courante (à confirmer avec la marque) |
+| --- | --- |
+| **Format** | Vertical 9:16, 1080 × 1920 |
+| **Fichier** | MP4 |
+| **Versions** | Avec et sans sous-titres, avec et sans musique |
+| **Accroches** | Parfois 2 à 5 accroches différentes pour la même vidéo |
+| **Fichiers bruts** | Seulement si le contrat le prévoit (souvent payant en plus) |
+| **Livraison** | Dossier en ligne bien nommé (marque_produit_v1_sous-titres.mp4) |
+
+> [!madagascar]
+> Les vidéos en 4K sont lourdes à envoyer avec une connexion mobile. Exportez en **1080p** sauf demande contraire, et envoyez les fichiers par un service de stockage en ligne pendant les heures où votre connexion est la meilleure.
+
+## Le matériel payant
+
+| Matériel ou outil | Quand l''acheter | Ce qu''il apporte |
+| --- | --- | --- |
+| **Micro-cravate** (filaire ou sans fil) | Dès vos premiers revenus | Un son net, même avec un peu de bruit autour |
+| **Éclairage LED** (panneau ou anneau) | Quand vous filmez souvent le soir ou par temps gris | Une lumière régulière, indépendante de la météo |
+| **CapCut Pro** | Quand vous avez besoin de fonctions avancées ou d''éléments réservés | Effets, modèles et fonctions supplémentaires selon l''offre |
+| **Trépied avec bras** | Pour les vues de dessus (cuisine, déballage) | Plans stables vus d''en haut |
+
+> [!attention]
+> Vérifiez les **conditions d''utilisation commerciale** des éléments de CapCut (modèles, musiques, effets) avant de les utiliser dans une vidéo pour une marque. Certains éléments ne sont pas autorisés pour la publicité.
+
+> [!retenir]
+> - Smartphone réglé : 1080p ou 4K, stabilisation, mise au point verrouillée, mode avion.
+> - CapCut : couper, plans de coupe, sous-titres corrigés, voix audible.
+> - Un rythme vif mais naturel.
+> - Pas de musique tendance dans les publicités ; versions sans musique et sans sous-titres.
+> - Micro-cravate et LED quand les revenus arrivent.
+
+## Exercice pratique : monter et livrer
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Montez les 2 vidéos filmées au module 2 dans CapCut.
+> 2. Corrigez les sous-titres et réglez le son.
+> 3. Exportez 4 versions de chaque vidéo (avec et sans sous-titres, avec et sans musique libre de droits).
+> 4. Créez 3 accroches alternatives pour une des vidéos.
+>
+> **À livrer** : le lien de votre dossier de livraison avec tous les fichiers bien nommés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 2, 0, 'Pourquoi activer le mode avion pendant le tournage ?', '["Améliorer la lumière","Changer le format","Éviter qu''un appel coupe la prise","Économiser la batterie seulement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 2, 1, 'Peut-on utiliser un son tendance dans la publicité d''une marque ?', '["Oui, s''il est court","Toujours oui","Oui, sans vérifier","Souvent non, à cause des droits"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 2, 2, 'Que faire des sous-titres automatiques ?', '["Les laisser tels quels","Les traduire en anglais","Les corriger","Les supprimer toujours"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-f', 3, 'Premier projet : la commande de Voary Cosmétiques', 'Lecture du brief et questions, test réel du produit, concepts et accroches, liste de plans, tournage, livraison des versions et gestion des modifications.', 'Dans ce module, vous réalisez une commande complète pour une marque, du brief jusqu''à la livraison, comme le ferait un créateur UGC indépendant. Vous apprendrez à lire un brief, à poser les bonnes questions, à proposer des scripts, à tourner et monter plusieurs vidéos, et à gérer les retours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Lire et compléter le brief d''une marque.
+> 2. Proposer des concepts et des scripts.
+> 3. Organiser un tournage efficace.
+> 4. Livrer plusieurs vidéos et versions.
+> 5. Gérer les demandes de modification.
+
+## Le cas pratique : « Voary Cosmétiques »
+
+> [!exemple] Votre client
+> **Voary Cosmétiques** est une marque malgache de soins naturels (huiles, savons, baumes à base de plantes de Madagascar). Elle lance une huile pour cheveux et veut des vidéos UGC pour ses publicités Facebook et Instagram, à Madagascar et auprès de la diaspora en France. La responsable marketing, Mme Ony, vous envoie le produit et un brief.
+
+## Étape 1 : le brief
+
+| Élément | Contenu du brief de Voary |
+| --- | --- |
+| **Produit** | Huile pour cheveux, 100 ml |
+| **Public** | Femmes de 20 à 40 ans, cheveux secs ou abîmés |
+| **Message principal** | Des cheveux plus doux, avec des ingrédients naturels de Madagascar |
+| **Livrables** | 3 vidéos de 20 à 40 secondes, 3 accroches par vidéo |
+| **Formats** | Vertical, avec et sans sous-titres |
+| **À dire** | Mode d''emploi, ingrédients principaux |
+| **À ne pas dire** | Aucune promesse médicale (« fait pousser », « soigne ») |
+| **Usage** | Publicités Facebook et Instagram pendant 6 mois |
+| **Délai** | 10 jours après réception du produit |
+
+### Les questions à poser
+
+1. Avez-vous des exemples de vidéos que vous aimez ?
+2. Quelle langue : français, malgache, ou les deux ?
+3. Quel ton : amical, conseil d''experte, humoristique ?
+4. Puis-je mentionner le prix et une promotion ?
+5. Combien de séries de modifications sont incluses ?
+
+> [!attention]
+> Avant de filmer, **utilisez vraiment le produit** pendant le temps nécessaire pour avoir un avis réel. Si vous n''aimez pas le produit ou s''il vous cause un problème (irritation, par exemple), dites-le à la marque plutôt que de faire un faux témoignage.
+
+## Étape 2 : concepts et scripts
+
+| Vidéo | Concept | Accroches proposées |
+| --- | --- | --- |
+| **1** | Routine du soir (démonstration) | « Ma routine en 2 minutes pour des cheveux doux le matin » ; « Ce que je fais chaque soir avant de dormir » ; geste visuel : verser l''huile au ralenti |
+| **2** | Problème et solution (témoignage) | « La poussière de Tana abîmait mes pointes » ; « Mes cheveux secs, c''était tous les jours » ; « J''ai testé une huile malgache pendant 3 semaines » |
+| **3** | Trois raisons | « 3 raisons pour lesquelles je ne change plus d''huile » ; « Ce que j''aime dans cette huile » ; « Pourquoi j''ai choisi une marque malgache » |
+
+> [!astuce]
+> Envoyez les concepts et les scripts **avant de tourner** et attendez la validation. Une modification de script coûte 5 minutes ; une vidéo refaite coûte une demi-journée.
+
+## Étape 3 : le tournage
+
+### La liste de plans
+
+| Plan | Vidéo |
+| --- | --- |
+| Face caméra : accroches et témoignage | 1, 2, 3 |
+| Gros plan : le flacon, l''étiquette | 1, 2, 3 |
+| Verser quelques gouttes dans la main | 1, 3 |
+| Appliquer sur les pointes | 1, 2 |
+| Cheveux après application (lumière naturelle, sans retouche trompeuse) | 2, 3 |
+| Le produit dans un décor de salle de bain ou de chambre | 1, 3 |
+
+### L''organisation
+
+1. **Un seul jour** de tournage pour toutes les vidéos, en lumière du matin.
+2. **Tous les plans de coupe** d''abord, puis les passages face caméra.
+3. **Plusieurs prises** de chaque accroche.
+4. **Vérification** des fichiers avant de ranger le matériel.
+
+## Étape 4 : le montage et la livraison
+
+| Livrable | Nombre |
+| --- | --- |
+| Vidéos complètes | 3 |
+| Accroches alternatives | 3 par vidéo (9 au total) |
+| Versions | Avec et sans sous-titres |
+| Fichiers nommés | voary_huile_v1_routine_hook2_soustitres.mp4 |
+
+> [!madagascar]
+> Pour la diaspora en France et le public malgache, proposez à la marque une version avec **quelques mots en malgache** (une salutation, une expression) dans une vidéo en français : c''est souvent très apprécié et crée de la proximité, si la marque le valide.
+
+## Étape 5 : les modifications
+
+| Demande | Réponse |
+| --- | --- |
+| Changer un texte à l''écran | Incluse (série de modifications prévue) |
+| Couper une phrase | Incluse |
+| Refaire une vidéo avec un nouveau concept | Hors brief : proposer un devis |
+| Ajouter une promesse non prouvée | Refuser poliment et proposer une formulation honnête |
+
+> [!retenir]
+> - Lire le brief et poser les questions avant de commencer.
+> - Utiliser vraiment le produit et rester honnête.
+> - Faire valider concepts et scripts avant de tourner.
+> - Un tournage organisé : plans de coupe, face caméra, plusieurs prises.
+> - Des modifications incluses selon le contrat, le reste sur devis.
+
+## Exercice pratique : la commande de Voary Cosmétiques
+
+> [!exercice] Exercice pratique · 7 heures (sur plusieurs jours)
+> 1. Choisissez un produit de soin ou d''alimentation que vous utilisez réellement et rédigez un brief comme celui de Voary.
+> 2. Proposez 3 concepts avec 3 accroches chacun et rédigez les scripts.
+> 3. Tournez en une session avec votre liste de plans.
+> 4. Montez et livrez les 3 vidéos, leurs accroches et leurs versions.
+>
+> **À livrer** : votre brief, vos scripts, votre liste de plans et votre dossier de livraison. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 3, 0, 'Que faire avant de filmer un témoignage ?', '["Inventer son avis","Rien","Copier une autre vidéo","Utiliser vraiment le produit"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 3, 1, 'Pourquoi faire valider les scripts avant de tourner ?', '["Pour facturer plus","Pour retarder la livraison","Ce n''est pas utile","Une vidéo refaite coûte bien plus qu''un script modifié"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 3, 2, 'Que répondre à une demande d''ajouter une promesse non prouvée ?', '["Accepter","Ajouter une promesse encore plus forte","Ignorer le client","Refuser poliment et proposer une formulation honnête"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('mkt-4-f', 4, 'Trouver des marques et se faire payer', 'Portfolio d''exemples, 5 canaux, prix des vidéos, des accroches et des fichiers bruts, droits d''utilisation, conditions, douane, paiements et évolution.', 'Les marques ont besoin de nombreuses vidéos chaque mois pour leurs publicités. Ce dernier module vous montre comment construire votre portfolio, trouver vos premières marques, fixer vos prix et vos droits d''utilisation, et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio UGC convaincant.
+> 2. Trouver des marques grâce à 5 canaux.
+> 3. Fixer le prix d''une vidéo et des droits d''utilisation.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **5 à 8 vidéos** variées : témoignage, démonstration, déballage, problème et solution.
+2. **Des produits que vous utilisez vraiment** (achetés ou reçus), filmés comme pour une marque.
+3. **Plusieurs accroches** pour une même vidéo.
+4. **Une page simple** (site gratuit, dossier en ligne ou profil sur une plateforme UGC) avec vos vidéos, vos tarifs de départ et vos coordonnées.
+5. **Un compte TikTok ou Instagram** de démonstration (facultatif).
+
+> [!attention]
+> Dans votre portfolio, n''utilisez pas le logo d''une marque comme si elle était votre cliente si ce n''est pas le cas. Présentez ces vidéos comme des **exemples** (« vidéo réalisée pour mon portfolio »).
+
+## Où trouver des marques : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **Marques malgaches** sur Facebook et Instagram | Envoyez un message avec une vidéo d''exemple de leur produit |
+| 2 | **Agences de marketing** à Madagascar | Proposez-vous pour leurs clients |
+| 3 | **Plateformes UGC** qui relient marques et créateurs | Vérifiez qu''elles acceptent les créateurs basés à Madagascar et leurs moyens de paiement |
+| 4 | **Applications et services en ligne** francophones | Pas d''envoi de produit nécessaire |
+| 5 | **Réseaux professionnels** | Publiez vos vidéos et votre offre |
+
+> [!exemple] Message à une marque malgache
+> « Bonjour, j''utilise votre baume au karité depuis 2 mois et je l''adore. Je suis créatrice de contenu UGC : je réalise des vidéos naturelles pour les publicités des marques. Voici une vidéo que j''ai faite avec votre baume pour vous montrer ce que je pourrais vous proposer. Si elle vous plaît, je peux vous en préparer 3 pour vos prochaines publicités. »
+
+## Fixer ses prix
+
+### Le prix de la vidéo
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Une vidéo** | 15 à 45 secondes, 1 accroche, 1 série de modifications | 80 000 Ar |
+| **Pack de 3 vidéos** | 3 concepts, 3 accroches chacun | 200 000 Ar |
+| **Accroche supplémentaire** | Nouveau début de vidéo | 15 000 Ar |
+| **Fichiers bruts** | Toutes les prises non montées | 30 à 50 % en plus |
+
+### Les droits d''utilisation
+
+| Droit | Supplément habituel |
+| --- | --- |
+| **Publication organique** sur les comptes de la marque | Souvent inclus |
+| **Publicités payantes** pendant 3 mois | Supplément (par exemple 20 à 30 %) |
+| **Publicités** pendant 6 à 12 mois | Supplément plus élevé |
+| **Durée illimitée** | Supplément important, ou à éviter |
+| **Publicité diffusée depuis votre propre compte** | Négociée à part |
+
+*(Montants donnés en exemple. Pour les marques étrangères, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Les droits publicitaires ont de la valeur, car votre vidéo peut faire **vendre beaucoup** pendant des mois. Ne les cédez pas gratuitement : précisez toujours la durée et les canaux par écrit.
+
+## Vos conditions
+
+1. **Les livrables** : nombre de vidéos, durées, accroches, versions.
+2. **Les droits d''utilisation** : canaux, durée, modifications permises.
+3. **Le nombre de modifications** incluses.
+4. **Le délai** après réception du produit.
+5. **Le produit** : envoyé gratuitement par la marque, conservé ou non.
+6. **L''honnêteté** : pas d''allégation non prouvée, avis réel.
+7. **Le paiement** : 50 % à la commande et 50 % à la livraison, ou paiement avant livraison des fichiers finaux.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Marque locale | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Marque étrangère en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement. Pensez aussi aux **frais de douane** si une marque étrangère vous envoie un produit : précisez qui les paie avant l''envoi.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Créateur UGC spécialisé** | Une niche : beauté, cuisine, technologie, voyage |
+| **Stratège créatif** | Concevoir les concepts publicitaires et analyser les résultats |
+| **Influenceur** | Construire votre propre audience |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Gestionnaire de publicités** | Voir la formation Gestionnaire de publicités en ligne |
+
+> [!retenir]
+> - Un portfolio de vidéos variées présentées comme des exemples.
+> - Marques malgaches, agences, plateformes UGC, applications, réseaux.
+> - Un prix de la vidéo plus des droits d''utilisation précisés par écrit.
+> - Des conditions claires, dont l''honnêteté et les frais de douane.
+> - Évoluez vers une niche, la stratégie créative ou la publicité.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Mettez en ligne votre portfolio avec 5 vidéos.
+> 2. Rédigez votre grille de prix et de droits d''utilisation.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 messages à des marques avec une vidéo d''exemple.
+>
+> **À livrer** : le lien de votre portfolio, votre grille, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 4, 0, 'Comment présenter une vidéo de portfolio faite sans commande ?', '["Comme une commande de la marque","Avec le logo de la marque comme cliente","Sans rien dire","Comme un exemple réalisé pour le portfolio"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 4, 1, 'Que préciser pour les droits d''utilisation ?', '["Rien","Le nom du téléphone","Les canaux et la durée","La couleur de la vidéo"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('mkt-4-f', 4, 2, 'Que préciser avant qu''une marque étrangère envoie un produit ?', '["La couleur du colis","Le nom du livreur","Rien","Qui paie les frais de douane"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Faut-il beaucoup d''abonnés pour devenir créateur UGC ?', '["Non, le portfolio compte plus","Oui, au moins 10 000","Oui, au moins 100 000","Oui, toujours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Où la vidéo UGC est-elle surtout publiée ?', '["Sur les comptes et publicités de la marque","À la télévision","Nulle part","Uniquement sur le compte du créateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel format montre comment utiliser un produit ?', '["Le déballage","L''avant et après","Les accroches seules","La démonstration"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Que sont les droits d''utilisation ?', '["L''autorisation donnée à la marque d''utiliser la vidéo","Une taxe","Un logiciel","Le droit de filmer dans la rue"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quelle allégation éviter ?', '["« Le flacon fait 100 ml »","« J''aime l''odeur »","« Guérit » ou « fait maigrir » sans preuve","« Je l''utilise le soir »"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Par quels clients commencer depuis Madagascar ?', '["Uniquement des marques étrangères avec envoi","Marques locales, applications et services en ligne","Uniquement des influenceurs","Aucun"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quelle durée pour la plupart des vidéos UGC ?', '["15 à 45 secondes","2 secondes","1 heure","5 minutes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quelle accroche est honnête ?', '["Un fait précis réellement vécu","« Ce produit a changé ma vie » sans raison","Un faux résultat","Une promesse médicale"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Comment rédiger un script naturel ?', '["Sans message principal","En langage juridique","En points clés, à la première personne","En texte très long appris par cœur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel format pour TikTok et Reels ?', '["Panoramique","Carré obligatoire","Horizontal 16:9","Vertical 9:16"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Où placer les yeux dans le cadre ?', '["Au centre exact toujours","Hors du cadre","En bas de l''image","Au tiers supérieur de l''image"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Comment réduire l''écho ?', '["Filmer dans une pièce vide carrelée","Ouvrir les fenêtres sur la rue","Parler plus fort","Filmer dans une pièce meublée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi filmer plusieurs prises ?', '["Pour perdre du temps","Remplir le téléphone","Choisir la meilleure et proposer des versions","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel rythme de coupes viser ?', '["Une coupe toutes les 2 à 4 secondes environ","Une coupe par minute","Dix coupes par seconde","Aucune coupe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quelles versions demandent souvent les marques ?', '["En 144p","Sans musique et sans sous-titres","Seulement en noir et blanc","Sans son du tout"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quelle résolution exporter avec une connexion mobile, sauf demande contraire ?', '["1080p","Aucune","240p","8K"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quand acheter un micro-cravate ?', '["Dès les premiers revenus","Jamais","Après 10 ans","Avant même de commencer, à crédit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Que vérifier pour les éléments de CapCut ?', '["Leur couleur","Leur popularité","Les conditions d''utilisation commerciale","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Que faire si le produit vous irrite la peau ?', '["Filmer quand même un avis positif","Ne rien dire","Le dire à la marque plutôt que de faire un faux témoignage","Accuser la marque publiquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel ordre de tournage suivre ?', '["Rien n''est prévu","Le face caméra seulement","Les plans de coupe d''abord, puis le face caméra","Au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Comment nommer les fichiers livrés ?', '["Avec la date seulement","Au hasard","Marque, produit, version, accroche, sous-titres","video1.mp4"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Que faire d''une demande de nouveau concept hors brief ?', '["Proposer un devis","Livrer en retard","Refuser sans répondre","La faire gratuitement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi les droits publicitaires se paient-ils ?', '["Pour décorer le contrat","Ce n''est pas le cas","La vidéo peut faire vendre beaucoup pendant des mois","Ils sont gratuits"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel paiement proposer pour une commande ?', '["Rien","Seulement en cadeaux","Tout après 6 mois","50 % à la commande et 50 % à la livraison"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel moyen de paiement utiliser avec une marque locale ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
 
 -- tech-1-a
 delete from public.exam_questions where course_id = 'tech-1-a';
