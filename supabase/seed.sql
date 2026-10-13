@@ -90,7 +90,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 10, false),
   ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 17, false),
   ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true),
-  ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 18, false),
+  ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 15, true),
   ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
   ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
   ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
@@ -25277,6 +25277,569 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Que préparer à l''avance pour garder un client ?', '["Les excuses","Rien","Les saisons : soldes, fêtes, Black Friday, Noël","Une augmentation surprise"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('gestion-1-f', 'Quel contenu valorise les produits d''artisans malgaches ?', '["Des photos volées","Les artisans et le savoir-faire, avec leur accord","Rien","Des avis inventés"]'::jsonb, 1);
 
+-- gestion-3-a
+delete from public.exam_questions where course_id = 'gestion-3-a';
+delete from public.module_questions where course_id = 'gestion-3-a';
+delete from public.lessons where course_id = 'gestion-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-a', 0, 'Se spécialiser, auditer le service client et réduire les demandes', 'Les 6 spécialités avancées, la contestation de paiement, l''audit en 6 domaines et son rapport, les motifs de contact, les causes racines et les offres à forte valeur.', 'Répondre correctement aux clients ouvre les premières missions. Les agents SAV les mieux payés vont plus loin : ils **réduisent le nombre de demandes**, transforment le service client en source de ventes, protègent la réputation de la boutique et organisent le support d''une équipe. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du SAV e-commerce.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit du service client d''une boutique.
+> 4. Analyser les motifs de contact pour réduire les demandes.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Vente conversationnelle** | Conseiller sur le chat et transformer les questions en ventes | Connaissance des produits, chat, suivi des revenus |
+| 2 | **Avis et e-réputation** | Répondre aux avis, traiter les plaintes publiques | Ton public, gestion de crise, plateformes d''avis |
+| 3 | **SAV des places de marché** | Messages, litiges et retours sur les places de marché | Règles de chaque plateforme, délais, indicateurs du vendeur |
+| 4 | **Litiges et fraude** | Contestations de paiement, commandes suspectes | Preuves, procédures des moyens de paiement |
+| 5 | **Optimisation du helpdesk** | Règles, macros, libre-service, automatisations | Gorgias, Zendesk, base de connaissances |
+| 6 | **Responsable du support** | Organiser une équipe, ses horaires et sa qualité | Indicateurs, planning, formation, contrôle qualité |
+
+> [!definition] Contestation de paiement (chargeback)
+> Quand un client demande à sa banque d''annuler un paiement par carte. La boutique doit fournir des preuves (livraison, échanges) dans un délai précis, sinon elle perd l''argent et paie souvent des frais.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Support francophone en soirée et le week-end** pour des boutiques européennes, grâce au faible décalage horaire.
+> - **Vente conversationnelle en français**, avec un ton chaleureux apprécié des clients.
+> - **Équipes de support externalisées** : Madagascar a déjà une forte expérience de la relation client.
+
+## L''audit du service client
+
+Un audit est une excellente **offre d''entrée** : la boutique découvre où elle perd du temps et des clients.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Volume et motifs** | Nombre de demandes par mois, motifs principaux |
+| **Délais** | Première réponse, résolution, heures non couvertes |
+| **Qualité** | Ton, exactitude, réponses complètes, satisfaction |
+| **Outils** | Helpdesk, macros, étiquettes, intégration avec la boutique |
+| **Libre-service** | Foire aux questions, suivi de commande en ligne, politique claire |
+| **Avis publics** | Note moyenne, avis négatifs sans réponse |
+
+### Le rapport d''audit
+
+```
+Boutique : Lamba Studio – septembre
+Volume : 1 180 demandes ; première réponse moyenne : 19 h.
+
+Constats
+1. 46 % des demandes = « Où est ma commande ? » ; aucun lien de suivi automatique.
+2. Aucune étiquette de motif : impossible de suivre les causes.
+3. 31 avis négatifs sans réponse sur la page d''avis.
+4. Le chat reste ouvert la nuit sans personne pour répondre.
+
+Plan proposé
+- Semaine 1 : étiquettes de motifs, 15 macros, e-mail de suivi automatique.
+- Semaine 2 : page « Suivre ma commande » et foire aux questions réécrite.
+- Ensuite : réponse aux avis et couverture du soir, rapport mensuel.
+Objectif : −30 % de demandes « Où est ma commande ? » en 2 mois.
+```
+
+## Analyser les motifs de contact
+
+> [!definition] Motif de contact
+> La raison principale d''une demande (suivi, retour, taille, produit défectueux…). On l''enregistre avec une étiquette sur chaque ticket.
+
+| Motif | Part | Cause racine possible | Action pour réduire |
+| --- | --- | --- | --- |
+| Où est ma commande ? | 46 % | Pas d''information de suivi | E-mails de suivi automatiques, page de suivi |
+| Taille | 14 % | Guide des tailles imprécis | Guide plus précis, mesures sur chaque fiche |
+| Retour | 12 % | Procédure peu claire | Portail de retour en libre-service |
+| Produit abîmé | 6 % | Emballage fragile | Signaler à la logistique |
+
+> [!astuce]
+> Le meilleur service client est celui dont le client **n''a pas besoin**. Chaque mois, choisissez le motif le plus fréquent et proposez une action pour le réduire : c''est ce qui fait de vous un partenaire et non un simple exécutant.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit du service client** | Analyse d''un mois de tickets, rapport et plan | 400 000 Ar |
+| **Optimisation du helpdesk** | Étiquettes, macros, règles, libre-service | 1 200 000 Ar |
+| **Support externalisé** | Couverture du soir et du week-end | 1 500 000 Ar par mois |
+| **Gestion des avis** | Réponse à tous les avis, rapport mensuel | 400 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : vente, avis, places de marché, litiges, helpdesk, responsable.
+> - L''audit chiffre les problèmes et ouvre une mission.
+> - Étiqueter les motifs pour trouver les causes racines.
+> - Réduire chaque mois le motif le plus fréquent.
+> - Des offres à valeur : optimisation, support externalisé, avis.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Reprenez les 20 tickets de votre projet Lamba Studio et étiquetez leurs motifs.
+> 3. Calculez la part de chaque motif et proposez une action pour les 3 premiers.
+> 4. Rédigez un rapport d''audit et 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre analyse des motifs, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 0, 0, 'Qu''est-ce qu''une contestation de paiement ?', '["Un client qui demande à sa banque d''annuler un paiement par carte","Un avis négatif","Un remboursement volontaire","Un code promo"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 0, 1, 'Pourquoi étiqueter le motif de chaque ticket ?', '["Pour décorer","Ce n''est pas utile","Pour trouver les causes racines et réduire les demandes","Pour ralentir le travail"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 0, 2, 'Quel est le meilleur service client ?', '["Celui dont le client n''a pas besoin","Celui qui reçoit le plus de tickets","Celui qui répond le plus tard","Celui qui n''a pas d''outil"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-a', 1, 'Outils professionnels : Gorgias, Zendesk et assistants d''IA', 'Commandes et actions dans Gorgias, règles et WISMO, déclencheurs, automatisations, vues et SLA dans Zendesk, taxonomie des étiquettes, libre-service et usage prudent de l''IA.', 'Les boutiques en ligne qui grandissent utilisent des helpdesks professionnels comme **Gorgias** et **Zendesk**. Ce module vous apprend à les configurer et à les utiliser comme un expert : règles automatiques, macros avec actions sur les commandes, niveaux de service, libre-service, statistiques et assistants d''IA.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Configurer Gorgias pour une boutique Shopify.
+> 2. Créer des règles et des macros avec actions sur les commandes.
+> 3. Configurer Zendesk : déclencheurs, automatisations, vues et SLA.
+> 4. Mettre en place le libre-service et une base de connaissances.
+> 5. Utiliser les assistants d''IA avec prudence.
+
+## Gorgias : le helpdesk de l''e-commerce
+
+| Fonction | Usage |
+| --- | --- |
+| **Fiche client et commandes** | Voir les commandes Shopify à côté du ticket |
+| **Actions sur les commandes** | Selon les droits : rembourser, annuler, modifier l''adresse, renvoyer depuis le ticket |
+| **Macros avec variables** | Insérer automatiquement le numéro de commande, le lien de suivi |
+| **Règles** (rules) | Étiqueter, attribuer, répondre automatiquement selon des conditions |
+| **Canaux réunis** | E-mail, chat, Facebook, Instagram, parfois SMS et WhatsApp |
+| **Statistiques de revenus** | Ventes réalisées après une conversation de support |
+| **Libre-service** | Suivi de commande, retours et questions fréquentes dans le chat |
+
+### Exemple de règle
+
+```
+Quand : un ticket est créé
+Si : le message contient « où est ma commande » ou « suivi » ou « livraison »
+Alors : ajouter l''étiquette « WISMO », priorité normale,
+        et répondre automatiquement avec la macro « Suivi de commande »
+        si la commande est expédiée
+```
+
+> [!definition] WISMO
+> « Where is my order? » : le nom anglais courant des demandes de suivi de commande, souvent le premier motif de contact en e-commerce.
+
+> [!attention]
+> Une réponse automatique doit être **juste**. Si la règle répond « votre colis arrive demain » à un client dont la commande n''est pas encore expédiée, elle crée une nouvelle plainte. Testez chaque règle sur des tickets réels avant de l''activer.
+
+## Zendesk : le helpdesk polyvalent
+
+| Fonction | Usage |
+| --- | --- |
+| **Déclencheurs** (triggers) | Actions immédiates quand un ticket est créé ou modifié |
+| **Automatisations** | Actions basées sur le temps (relancer après 48 h sans réponse, fermer après 4 jours) |
+| **Vues** | Listes de travail : urgents, à attribuer, en attente depuis plus de 24 h |
+| **SLA** | Délais cibles selon la priorité, avec alertes |
+| **Macros** | Réponses et actions enregistrées |
+| **Centre d''aide** | Base de connaissances publique |
+| **Rapports** (Explore) | Volumes, délais, satisfaction, performances des agents |
+
+### Exemple de SLA
+
+| Priorité | Première réponse | Résolution |
+| --- | --- | --- |
+| Urgente | 1 heure | 8 heures |
+| Haute | 4 heures | 24 heures |
+| Normale | 12 heures | 48 heures |
+| Basse | 24 heures | 5 jours |
+
+## La taxonomie des étiquettes
+
+| Famille | Étiquettes |
+| --- | --- |
+| **Motif** | suivi, retour, échange, remboursement, defaut, taille, avant-achat, paiement |
+| **Produit** | robes, sacs, bijoux |
+| **Résultat** | resolu-premier-contact, escalade, geste-commercial |
+| **Canal** | email, chat, instagram |
+
+> [!astuce]
+> Gardez **peu d''étiquettes**, bien définies et documentées. Une liste de 80 étiquettes que chacun utilise à sa façon rend les rapports inutilisables.
+
+## Le libre-service
+
+1. **Page de suivi de commande** accessible sans écrire au support.
+2. **Portail de retour** : le client lance son retour seul selon la politique.
+3. **Centre d''aide** avec les 20 questions les plus fréquentes.
+4. **Réponses automatiques** dans le chat pour les questions simples, avec passage à un humain facile.
+
+## Les assistants d''IA
+
+| Usage | Prudence |
+| --- | --- |
+| **Suggestions de réponses** à l''agent | L''agent relit et corrige avant d''envoyer |
+| **Résumé d''un long échange** | Vérifier les faits dans l''historique |
+| **Agent automatique** pour les questions simples | Limiter aux sujets sûrs, toujours permettre de parler à un humain |
+| **Traduction** | Relire les réponses importantes |
+
+> [!attention]
+> Un assistant d''IA peut **inventer** une règle de retour ou un délai. Il doit s''appuyer sur la base de connaissances de la boutique, et les sujets sensibles (remboursements importants, litiges, clients en colère) restent traités par un humain.
+
+> [!madagascar]
+> Ces outils sont payés **par la boutique**. Proposez-vous comme la personne qui les **configure et les fait vivre** : c''est une compétence rare et mieux payée que la seule réponse aux tickets. Utilisez les démonstrations et centres d''aide officiels pour vous former.
+
+> [!retenir]
+> - Gorgias : commandes à côté du ticket, actions, règles, revenus, libre-service.
+> - Tester chaque règle automatique avant de l''activer.
+> - Zendesk : déclencheurs, automatisations, vues, SLA, centre d''aide, rapports.
+> - Peu d''étiquettes, bien définies.
+> - L''IA aide les agents, mais les sujets sensibles restent humains.
+
+## Exercice pratique : configurer un helpdesk
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans un essai de Gorgias ou de Zendesk, créez une taxonomie de 15 étiquettes.
+> 2. Créez 3 règles ou déclencheurs et 2 automatisations basées sur le temps.
+> 3. Créez 10 macros avec variables.
+> 4. Définissez les SLA par priorité et 3 vues de travail.
+>
+> **À livrer** : des captures de votre configuration et une note expliquant chaque règle.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 1, 0, 'Que signifie WISMO ?', '["Un type de retour","« Où est ma commande ? »","Un moyen de paiement","Un transporteur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 1, 1, 'Que faire avant d''activer une règle de réponse automatique ?', '["La tester sur des tickets réels","L''activer pour tous immédiatement","Rien","La cacher"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 1, 2, 'Qui traite les sujets sensibles comme les litiges ?', '["Uniquement l''IA","Le transporteur","Un humain","Personne"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-a', 2, 'Qualité et rapidité : grille de qualité, macros, planning, pics et litiges', 'Grille de qualité et retours, bibliothèque de macros, base de connaissances vivante, planning selon le volume, périodes de pointe et réponse groupée, contestations de paiement.', 'Un service client professionnel répond **vite, juste et de la même façon** quel que soit l''agent. Ce module vous donne les méthodes des meilleures équipes : contrôle qualité des réponses, bibliothèque de macros, base de connaissances vivante, planification des horaires, gestion des pics et des litiges.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Évaluer la qualité des réponses avec une grille.
+> 2. Maintenir une bibliothèque de macros et une base de connaissances.
+> 3. Planifier les horaires selon le volume.
+> 4. Préparer les périodes de pointe.
+> 5. Traiter une contestation de paiement avec des preuves.
+
+## La grille de qualité
+
+| Critère | Points |
+| --- | --- |
+| **Exactitude** : information juste, politique respectée | 30 |
+| **Résolution** : demande réglée ou prochaine étape claire | 25 |
+| **Ton** : chaleureux, poli, personnalisé | 20 |
+| **Clarté** : phrases courtes, sans faute | 15 |
+| **Procédure** : étiquettes, notes internes, statut | 10 |
+
+> [!definition] Contrôle qualité (QA)
+> La relecture régulière d''un échantillon de tickets de chaque agent, notée avec une grille, suivie d''un retour constructif.
+
+> [!astuce]
+> Relisez **5 à 10 tickets par agent et par semaine**, et commencez chaque retour par ce qui est réussi. Le contrôle qualité sert à progresser, pas à punir.
+
+## La bibliothèque de macros
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Noms clairs et classés** (« Retour – Procédure », « Suivi – Retard ») | Retrouver vite la bonne macro |
+| **Un propriétaire** | Quelqu''un met à jour quand la politique change |
+| **Revue tous les 3 mois** | Supprimer les macros obsolètes |
+| **Variables et personnalisation** | Éviter les réponses impersonnelles |
+| **Statistiques d''usage** | Repérer les macros inutilisées ou trop corrigées |
+
+## La base de connaissances vivante
+
+1. **Chaque question nouvelle** fréquente devient un article.
+2. **Chaque changement de politique** met à jour les articles et les macros le jour même.
+3. **Chaque article** a une date de dernière vérification.
+4. **Les agents** proposent des corrections via un formulaire simple.
+
+## Planifier les horaires
+
+| Étape | Exemple |
+| --- | --- |
+| **Mesurer** le volume par heure et par jour | Pics le lundi matin et le soir de 19 h à 22 h (heure du client) |
+| **Calculer** la capacité | Un agent traite environ 10 à 12 tickets par heure sur l''e-mail |
+| **Couvrir** les heures de pointe | 2 agents le lundi matin, 1 le soir |
+| **Prévoir** les absences et les pauses | Un agent de remplacement identifié |
+
+> [!madagascar]
+> Les boutiques européennes reçoivent beaucoup de messages **le soir et le week-end**, quand leurs équipes sont absentes. Une équipe à Madagascar peut couvrir ces horaires sans travail de nuit grâce au faible décalage : c''est un argument commercial très concret.
+
+## Préparer les périodes de pointe
+
+| Période | Préparation |
+| --- | --- |
+| **Black Friday, fin d''année, soldes** | Macros prêtes, articles mis à jour, agents supplémentaires formés |
+| **Lancement d''une collection** | Fiches produits connues, questions anticipées |
+| **Incident** (retard de transporteur, bug de paiement) | Message unique validé, réponse groupée, page d''information |
+
+> [!exemple] Réponse groupée lors d''un incident
+> « Bonjour, suite à une grève du transporteur, les colis expédiés entre le 3 et le 5 décembre ont 2 à 3 jours de retard. Votre commande n° {numéro} en fait partie. Elle est en route et vous recevrez le suivi mis à jour dès demain. Nous vous offrons la livraison sur votre prochaine commande pour ce désagrément. »
+
+## Les contestations de paiement
+
+| Étape | Action |
+| --- | --- |
+| 1 | Lire le motif de la contestation (non reçu, non conforme, non autorisé) |
+| 2 | Rassembler les preuves : suivi de livraison, signature, échanges, photos, politique acceptée |
+| 3 | Répondre dans le délai fixé par le moyen de paiement |
+| 4 | Rédiger un résumé factuel et chronologique |
+| 5 | Noter le résultat et repérer les schémas de fraude |
+
+> [!attention]
+> Ne contactez pas le client de façon agressive pendant une contestation, et ne promettez pas de remboursement en dehors de la procédure : vous risquez d''être **payé deux fois** ou de perdre deux fois. Suivez la procédure de la boutique et de l''outil de paiement.
+
+> [!retenir]
+> - Une grille de qualité et des retours constructifs chaque semaine.
+> - Des macros classées, avec un propriétaire et une revue régulière.
+> - Une base de connaissances mise à jour le jour même.
+> - Des horaires calculés sur le volume réel.
+> - Des pics préparés et des contestations traitées avec des preuves.
+
+## Exercice pratique : la méthode des meilleures équipes
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Notez 10 de vos réponses avec la grille de qualité et améliorez les 3 plus faibles.
+> 2. Organisez votre bibliothèque de macros avec noms, propriétaire et date de revue.
+> 3. À partir d''un volume fictif par heure, construisez le planning d''une semaine.
+> 4. Préparez le dossier de réponse à une contestation « colis non reçu ».
+>
+> **À livrer** : vos notes, votre bibliothèque, votre planning et votre dossier.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 2, 0, 'Quel critère pèse le plus dans la grille de qualité ?', '["Les emojis","L''exactitude","La longueur","La police"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 2, 1, 'Quand mettre à jour les macros après un changement de politique ?', '["Le jour même","Jamais","Quand un client se plaint","Dans un an"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 2, 2, 'Que rassembler pour une contestation « colis non reçu » ?', '["Rien","Suivi de livraison, échanges et politique acceptée","Une excuse","Un nouveau code promo"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-a', 3, 'Clients internationaux : anglais, retours par région, places de marché et fuseaux', 'Réponses et formules en anglais, règles de retour selon les régions, messagerie et indicateurs des places de marché, couverture étendue, note de relais et travail en agence.', 'Les boutiques qui vendent dans plusieurs pays ont besoin d''un service client en plusieurs langues, sur plusieurs fuseaux horaires et sur les places de marché. Ce module vous prépare à travailler pour elles : support en anglais, règles de retour selon les pays, places de marché, couverture horaire et travail pour une agence de support.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Répondre aux clients en anglais avec le bon ton.
+> 2. Connaître les grandes règles de retour selon les régions.
+> 3. Gérer les messages et litiges des places de marché.
+> 4. Organiser une couverture sur plusieurs fuseaux horaires.
+> 5. Travailler pour une agence de support externalisé.
+
+## Le support en anglais
+
+> [!exemple] Réponse en anglais
+> Hi Emily,
+> I''m sorry your necklace arrived damaged — that''s not the experience we want for you.
+> I''ve just sent a replacement at no cost; you''ll receive the tracking link within 24 hours. No need to return the damaged one.
+> If there''s anything else I can do, just reply to this email.
+> Best, Fanja – Lamba Studio
+
+| Situation | Formule |
+| --- | --- |
+| S''excuser | « I''m sorry for the inconvenience. » |
+| Reconnaître | « I understand how frustrating this must be. » |
+| Annoncer une action | « I''ve just issued a full refund. » |
+| Donner un délai | « You should see it in your account within 5 to 10 business days. » |
+| Conclure | « Is there anything else I can help you with? » |
+
+> [!astuce]
+> En anglais, le ton du support est souvent plus **direct et familier** qu''en français (prénom, « Hi », phrases courtes). Respectez toujours le guide de ton de la marque.
+
+## Les règles de retour selon les régions
+
+| Région | Principe à connaître |
+| --- | --- |
+| **Union européenne** | Droit de rétractation de 14 jours pour la plupart des achats en ligne, avec des exceptions (produits personnalisés, certains produits d''hygiène descellés…) |
+| **Royaume-Uni** | Règles proches, propres au pays |
+| **États-Unis et Canada** | Pas de droit général équivalent partout : la politique de la boutique fait souvent la règle, avec des règles qui varient selon les États ou provinces |
+| **Autres pays** | Lois de protection des consommateurs à vérifier |
+
+> [!attention]
+> Vous appliquez la **politique écrite de la boutique**. Si un client invoque une loi que vous ne connaissez pas, ne discutez pas le droit : transmettez au responsable. La boutique doit faire valider sa politique par un conseil juridique.
+
+## Les places de marché
+
+| Point | Ce qu''il faut savoir |
+| --- | --- |
+| **Délais de réponse** | Les places de marché mesurent souvent le temps de réponse du vendeur, qui influence son classement |
+| **Messagerie interne** | Répondre dans la messagerie de la plateforme, pas en dehors |
+| **Garanties et litiges** | Chaque plateforme a sa procédure (par exemple une garantie acheteur) |
+| **Indicateurs du vendeur** | Taux de commandes problématiques, retards, annulations |
+| **Règles de contact** | Interdiction fréquente de rediriger le client vers son propre site |
+
+> [!definition] Indicateurs de performance du vendeur
+> Les mesures qu''une place de marché utilise pour juger un vendeur. Si elles se dégradent, le compte peut être suspendu. Le SAV a un rôle direct dans ces indicateurs.
+
+## La couverture sur plusieurs fuseaux
+
+| Modèle | Principe |
+| --- | --- |
+| **Heures étendues** | Une équipe couvre le soir et le week-end en plus de l''équipe principale |
+| **Suivre le soleil** (follow the sun) | Des équipes dans plusieurs régions se passent le relais pour couvrir 24 h sur 24 |
+| **Langue par équipe** | Une équipe francophone, une anglophone |
+
+### La note de relais
+
+```
+Relais de 22 h (heure de Paris) – équipe Madagascar → équipe du matin
+- 48 tickets traités, 6 en attente du client.
+- 2 escalades : #9932 (remboursement > 200 €), #9940 (menace d''avis négatif).
+- Incident : paiement par carte refusé entre 20 h et 20 h 40 ; réglé, 9 clients informés.
+- À surveiller : retards du transporteur pour la Belgique.
+```
+
+> [!madagascar]
+> Madagascar couvre naturellement la **soirée européenne** et une partie de la matinée. Associé à une équipe en Amérique du Nord ou en Asie, ce créneau complète bien une couverture mondiale.
+
+## Travailler pour une agence de support
+
+| Point | Bonne pratique |
+| --- | --- |
+| **Plusieurs marques** | Bien distinguer le ton et les règles de chaque client |
+| **Indicateurs individuels** | Délais, qualité, satisfaction suivis de près |
+| **Confidentialité** | Accords signés, aucune donnée copiée hors des outils |
+| **Formation continue** | Nouveaux produits, nouvelles règles |
+
+> [!retenir]
+> - En anglais : direct, chaleureux, selon le guide de la marque.
+> - Appliquer la politique de la boutique et transmettre les questions juridiques.
+> - Places de marché : messagerie interne, délais, indicateurs du vendeur.
+> - Couverture étendue ou « suivre le soleil » avec une note de relais.
+> - En agence : distinguer chaque marque et respecter la confidentialité.
+
+## Exercice pratique : un support international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Répondez en anglais à 6 tickets variés (retard, retour, défaut, client en colère, question avant achat, remboursement).
+> 2. Comparez les politiques de retour de 3 boutiques qui vendent en Europe et en Amérique du Nord.
+> 3. Rédigez 2 notes de relais entre équipes.
+> 4. Listez les règles de messagerie d''une place de marché que vous choisissez.
+>
+> **À livrer** : vos réponses, votre comparatif, vos notes et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 3, 0, 'Quel délai de rétractation existe dans l''UE pour la plupart des achats en ligne ?', '["14 jours","Aucun","1 an","2 jours"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 3, 1, 'Où répondre aux clients d''une place de marché ?', '["Nulle part","Par un message privé sur son propre site","Par SMS personnel","Dans la messagerie de la plateforme"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 3, 2, 'Que contient une note de relais ?', '["Un poème","Volume, escalades, incidents et points à surveiller","Les mots de passe","Rien"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('gestion-3-a', 4, 'Développer son activité : prix, SLA, rapports, études de cas et équipe', 'Trois voies, calcul du prix d''un support externalisé, formules, SLA réalistes, rapport mensuel, études de cas chiffrées, équipe et évolution.', 'Après quelques missions réussies, vous pouvez construire une **activité stable** dans le service client : contrats mensuels, missions de configuration, études de cas chiffrées, et peut-être une petite équipe de support externalisé. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe de support.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Expert helpdesk indépendant** | Configuration de Gorgias ou Zendesk, audits, optimisation | Projets et accompagnement mensuel |
+| **Équipe de support externalisée** | Ceux qui aiment organiser une équipe | Contrats mensuels avec plusieurs boutiques |
+| **Responsable du support salarié à distance** | Ceux qui préfèrent la stabilité | Salaire, progression vers la direction de l''expérience client |
+
+## Des offres et des prix durables
+
+### Le prix d''un support externalisé
+
+1. **Estimez** le volume mensuel de tickets.
+2. **Calculez** les heures nécessaires (par exemple 10 tickets par heure).
+3. **Ajoutez** le temps de gestion, de contrôle qualité et de rapport (15 à 20 %).
+4. **Multipliez** par votre tarif horaire.
+
+> [!exemple] Calcul
+> 1 200 tickets par mois ÷ 10 par heure = 120 heures + 20 % = 144 heures. À 12 000 Ar de l''heure : **1 728 000 Ar par mois**, avec un supplément au-delà de 1 300 tickets. *(Montants donnés en exemple.)*
+
+| Formule | Contenu |
+| --- | --- |
+| **Forfait par volume** | Nombre de tickets inclus, prix au-delà |
+| **Forfait par heures de couverture** | Plages horaires garanties |
+| **Configuration et optimisation** | Projet ponctuel : taxonomie, macros, règles, libre-service |
+| **Accompagnement mensuel** | Analyse des motifs, mises à jour, rapport |
+
+*(Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Fixez par écrit les **engagements de délai** (SLA) que vous pouvez réellement tenir, et ce qui se passe en cas de pic exceptionnel (Black Friday, incident). Un engagement non tenu fait perdre un client plus vite qu''un prix élevé.
+
+### Le rapport mensuel qui fidélise
+
+| Rubrique | Exemple |
+| --- | --- |
+| Volume et motifs | 1 140 tickets ; suivi de commande en baisse de 46 % à 31 % |
+| Délais | Première réponse moyenne : 2 h 10 ; 97 % dans le SLA |
+| Satisfaction | 4,7 sur 5 |
+| Revenus influencés | 38 ventes après conversation de chat |
+| Avis | 100 % des avis négatifs ont reçu une réponse |
+| Propositions | Ajouter les mesures des sacs sur les fiches produits |
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : boutique de décoration en ligne, 3 pays européens.
+> **Problème** : support seulement en semaine, 30 heures de délai moyen, avis en baisse.
+> **Solution** : configuration de Gorgias, 40 macros, libre-service pour le suivi et les retours, couverture le soir et le week-end depuis Madagascar.
+> **Résultats en 3 mois** : délai moyen de première réponse de 30 h à 3 h ; demandes de suivi −35 % ; note des avis de 4,1 à 4,6.
+
+## Organiser une petite équipe
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Agent** | Quand le volume dépasse votre capacité |
+| **Agent senior ou référent qualité** | À partir de 3 agents |
+| **Responsable** (vous) | Planning, relation client, rapports, amélioration |
+
+### Les règles de qualité
+
+1. **Formation** sur chaque client avant la première réponse.
+2. **Guide par client** : ton, politique, gestes autorisés, escalades.
+3. **Contrôle qualité** hebdomadaire avec la grille.
+4. **Équipement** : connexion et électricité de secours pour chaque agent.
+5. **Confidentialité** : accords signés, accès personnels, aucune copie de données.
+
+> [!madagascar]
+> Une petite équipe de support francophone basée à Madagascar, fiable et bien outillée, répond à un vrai besoin des boutiques européennes. Pour gagner leur confiance, mettez en avant vos **chiffres** (délais, satisfaction) et vos **solutions de secours** (électricité, connexion), qui sont souvent leur première inquiétude.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Responsable de l''expérience client** | Stratégie, outils, budget, lien avec le marketing et la logistique |
+| **Consultant helpdesk** | Certifications ou programmes de partenaires des éditeurs |
+| **Gestionnaire de boutique en ligne** | Voir la formation Gestionnaire de boutique en ligne |
+| **Spécialiste automatisation** | Voir la formation Spécialiste automatisation et IA |
+
+> [!retenir]
+> - Expert helpdesk, équipe externalisée ou salarié : choisissez votre voie.
+> - Un prix calculé sur le volume, avec gestion et contrôle inclus.
+> - Des SLA réalistes et les pics prévus par écrit.
+> - Un rapport mensuel avec motifs, délais, satisfaction et propositions.
+> - Une équipe formée, contrôlée, équipée et tenue à la confidentialité.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Calculez le prix d''un support externalisé pour 800 et 2 000 tickets par mois.
+> 3. Rédigez un modèle de rapport mensuel et une étude de cas à partir de vos projets.
+> 4. Listez 10 boutiques à contacter et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, vos calculs, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 4, 0, '1 200 tickets à 10 par heure plus 20 % : combien d''heures ?', '["100 heures","200 heures","120 heures","144 heures"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 4, 1, 'Que faut-il prévoir par écrit dans un contrat de support ?', '["Des SLA réalistes et la gestion des pics","Rien","La couleur du logo","Un nombre de tickets illimité"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('gestion-3-a', 4, 2, 'Que mettre en avant pour rassurer une boutique européenne ?', '["Seulement un prix bas","Votre nombre d''abonnés","Vos chiffres et vos solutions de secours","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quelle spécialité transforme les questions du chat en ventes ?', '["Les places de marché","Les litiges","Le contrôle qualité","La vente conversationnelle"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Pourquoi l''audit du service client est-il une bonne offre d''entrée ?', '["Il évite le travail","La boutique découvre où elle perd du temps et des clients","Il remplace le support","Il est toujours gratuit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quelle action réduit les demandes de suivi ?', '["Fermer le chat","Ne plus répondre","Augmenter les prix","E-mails de suivi automatiques et page de suivi"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que faire chaque mois avec le motif le plus fréquent ?', '["Le supprimer des rapports","Le cacher au client","L''ignorer","Proposer une action pour le réduire"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quel avantage principal de Gorgias pour l''e-commerce ?', '["Retoucher les photos","Faire la comptabilité","Créer des logos","Voir et gérer les commandes à côté du ticket"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Qu''est-ce qu''un déclencheur dans Zendesk ?', '["Une action immédiate à la création ou modification d''un ticket","Une facture","Un agent","Un client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Qu''est-ce qu''une automatisation dans Zendesk ?', '["Une action basée sur le temps","Un bouton de couleur","Une réponse écrite à la main","Un avis client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que définissent les SLA ?', '["Les prix des produits","Les salaires","Les couleurs du site","Les délais cibles selon la priorité"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Pourquoi garder peu d''étiquettes ?', '["Ce n''est pas utile","Pour ralentir","Pour des rapports utilisables","Pour faire joli"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quel élément de libre-service réduit les demandes de retour ?', '["Un portail de retour","Un formulaire supprimé","Rien","Un numéro caché"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quel risque présente un assistant d''IA ?', '["Il est toujours exact","Il peut inventer une règle ou un délai","Aucun","Il répond trop lentement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Combien de tickets relire par agent et par semaine ?', '["Aucun","Tous","5 à 10","1 par an"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Comment commencer un retour de contrôle qualité ?', '["Par une critique générale","Sans rien dire","Par ce qui est réussi","Par une sanction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Pourquoi une date de vérification sur chaque article ?', '["Savoir s''il est encore à jour","Pour le supprimer","Pour décorer","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Comment planifier les horaires ?', '["Selon la météo","Toujours les mêmes heures pour tous","Selon le volume réel par heure et par jour","Au hasard"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que préparer avant le Black Friday ?', '["Macros, articles à jour et agents formés","Fermer le support","Rien","Supprimer les macros"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Pourquoi ne pas rembourser hors procédure pendant une contestation ?', '["Pour aller plus vite","C''est toujours conseillé","Aucune raison","Risque de payer ou perdre deux fois"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quel ton adopter en anglais ?', '["Très administratif","Agressif","Sans formule de politesse","Direct et chaleureux, selon le guide de la marque"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que faire si un client invoque une loi inconnue ?', '["Transmettre au responsable sans discuter le droit","Le contredire","Inventer une réponse","Ignorer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Pourquoi les délais de réponse comptent-ils sur une place de marché ?', '["Pour payer moins","Pour décorer","Ils influencent le classement et les indicateurs du vendeur","Ils ne comptent pas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Qu''est-ce que « suivre le soleil » ?', '["Travailler dehors","Fermer la nuit","Changer d''outil chaque jour","Des équipes dans plusieurs régions se passent le relais"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quelle plage Madagascar couvre-t-elle naturellement pour l''Europe ?', '["Le dimanche uniquement","Aucune","Le milieu de la nuit américaine seulement","La soirée européenne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que suivre dans le rapport mensuel ?', '["Rien","Seulement le nombre de tickets","Motifs, délais, satisfaction, revenus influencés et propositions","Les mots de passe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Quand ajouter un référent qualité ?', '["À partir de 3 agents","Jamais","Après 100 agents","Dès le premier jour seul"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('gestion-3-a', 'Que fournir à chaque agent de l''équipe ?', '["Un mot de passe partagé","Un accès à toutes les données copiées","Rien","Connexion et électricité de secours"]'::jsonb, 3);
+
 -- gestion-3-f
 delete from public.exam_questions where course_id = 'gestion-3-f';
 delete from public.module_questions where course_id = 'gestion-3-f';
@@ -32617,7 +33180,7 @@ Chaque plateforme publie ses exigences. Un exemple courant (celui d''ACX, pour A
 ### Le montage d''un livre audio
 
 1. **Suivez le texte** pendant l''écoute : chaque mot doit être lu, sans erreur.
-2. **Marquez** les erreurs de lecture pour une réenregistrement (pick-up).
+2. **Marquez** les erreurs de lecture pour un réenregistrement (pick-up).
 3. **Gardez** des respirations naturelles, retirez celles qui sont trop fortes.
 4. **Respectez** les pauses entre paragraphes et chapitres.
 5. **Remplacez** les silences numériques par du room tone.

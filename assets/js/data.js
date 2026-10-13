@@ -3625,6 +3625,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "gestion-3-a": {
+  "hours": 15,
+  "description": "Ce niveau Avancé fait de l'agent SAV e-commerce un professionnel qui réduit les demandes, protège la réputation et organise le support : spécialité (vente conversationnelle, avis, places de marché, litiges, optimisation du helpdesk, responsable), audit et analyse des motifs de contact, outils payants (Gorgias et Zendesk) avec règles, macros, SLA, libre-service et assistants d'IA, contrôle qualité, planning, pics et contestations de paiement, support international et règles de retour par région, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un service client et analyser les motifs de contact",
+   "Configurer Gorgias et Zendesk : règles, macros, SLA, vues et libre-service",
+   "Utiliser les assistants d'IA en gardant les sujets sensibles humains",
+   "Contrôler la qualité, planifier les horaires et traiter pics et contestations",
+   "Assurer un support international et respecter les règles des places de marché",
+   "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer le service client et réduire les demandes",
+    "summary": "Les 6 spécialités avancées, la contestation de paiement, l'audit en 6 domaines et son rapport, les motifs de contact, les causes racines et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit du service client",
+     "Analyser les motifs de contact",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 7
+   },
+   {
+    "title": "Outils professionnels : Gorgias, Zendesk et assistants d'IA",
+    "summary": "Commandes et actions dans Gorgias, règles et WISMO, déclencheurs, automatisations, vues et SLA dans Zendesk, taxonomie des étiquettes, libre-service et usage prudent de l'IA.",
+    "sections": [
+     "Gorgias : le helpdesk de l'e-commerce",
+     "Zendesk : le helpdesk polyvalent",
+     "La taxonomie des étiquettes",
+     "Le libre-service",
+     "Les assistants d'IA",
+     "Exercice pratique : configurer un helpdesk"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : grille de qualité, macros, planning, pics et litiges",
+    "summary": "Grille de qualité et retours, bibliothèque de macros, base de connaissances vivante, planning selon le volume, périodes de pointe et réponse groupée, contestations de paiement.",
+    "sections": [
+     "La grille de qualité",
+     "La bibliothèque de macros",
+     "La base de connaissances vivante",
+     "Planifier les horaires",
+     "Préparer les périodes de pointe",
+     "Les contestations de paiement",
+     "Exercice pratique : la méthode des meilleures équipes"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, retours par région, places de marché et fuseaux",
+    "summary": "Réponses et formules en anglais, règles de retour selon les régions, messagerie et indicateurs des places de marché, couverture étendue, note de relais et travail en agence.",
+    "sections": [
+     "Le support en anglais",
+     "Les règles de retour selon les régions",
+     "Les places de marché",
+     "La couverture sur plusieurs fuseaux",
+     "Travailler pour une agence de support",
+     "Exercice pratique : un support international"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : prix, SLA, rapports, études de cas et équipe",
+    "summary": "Trois voies, calcul du prix d'un support externalisé, formules, SLA réalistes, rapport mensuel, études de cas chiffrées, équipe et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "gestion-3-f": {
   "hours": 14,
   "description": "L'agent SAV e-commerce répond aux questions et réclamations des clients d'une boutique en ligne et trouve des solutions justes. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des boutiques en ligne, des agences de support et des entreprises, à Madagascar et à l'étranger, avec l'e-mail et un helpdesk : parcours de commande, réponse en 5 étapes, clients en colère, politique de retour, tickets, réponses enregistrées, base de connaissances, escalade et compte rendu. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

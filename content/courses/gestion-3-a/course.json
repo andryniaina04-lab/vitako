@@ -1,0 +1,97 @@
+{
+  "id": "gestion-3-a",
+  "hours": 15,
+  "description": "Ce niveau Avancé fait de l'agent SAV e-commerce un professionnel qui réduit les demandes, protège la réputation et organise le support : spécialité (vente conversationnelle, avis, places de marché, litiges, optimisation du helpdesk, responsable), audit et analyse des motifs de contact, outils payants (Gorgias et Zendesk) avec règles, macros, SLA, libre-service et assistants d'IA, contrôle qualité, planning, pics et contestations de paiement, support international et règles de retour par région, puis offres, rapports, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, auditer un service client et analyser les motifs de contact",
+    "Configurer Gorgias et Zendesk : règles, macros, SLA, vues et libre-service",
+    "Utiliser les assistants d'IA en gardant les sujets sensibles humains",
+    "Contrôler la qualité, planifier les horaires et traiter pics et contestations",
+    "Assurer un support international et respecter les règles des places de marché",
+    "Construire des offres durables, des rapports, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, auditer le service client et réduire les demandes",
+      "summary": "Les 6 spécialités avancées, la contestation de paiement, l'audit en 6 domaines et son rapport, les motifs de contact, les causes racines et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une contestation de paiement ?", "options": ["Un client qui demande à sa banque d'annuler un paiement par carte", "Un remboursement volontaire", "Un code promo", "Un avis négatif"], "correct": 0 },
+        { "q": "Pourquoi étiqueter le motif de chaque ticket ?", "options": ["Pour trouver les causes racines et réduire les demandes", "Pour décorer", "Ce n'est pas utile", "Pour ralentir le travail"], "correct": 0 },
+        { "q": "Quel est le meilleur service client ?", "options": ["Celui dont le client n'a pas besoin", "Celui qui reçoit le plus de tickets", "Celui qui répond le plus tard", "Celui qui n'a pas d'outil"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Gorgias, Zendesk et assistants d'IA",
+      "summary": "Commandes et actions dans Gorgias, règles et WISMO, déclencheurs, automatisations, vues et SLA dans Zendesk, taxonomie des étiquettes, libre-service et usage prudent de l'IA.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie WISMO ?", "options": ["« Où est ma commande ? »", "Un moyen de paiement", "Un transporteur", "Un type de retour"], "correct": 0 },
+        { "q": "Que faire avant d'activer une règle de réponse automatique ?", "options": ["La tester sur des tickets réels", "Rien", "L'activer pour tous immédiatement", "La cacher"], "correct": 0 },
+        { "q": "Qui traite les sujets sensibles comme les litiges ?", "options": ["Un humain", "Uniquement l'IA", "Personne", "Le transporteur"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : grille de qualité, macros, planning, pics et litiges",
+      "summary": "Grille de qualité et retours, bibliothèque de macros, base de connaissances vivante, planning selon le volume, périodes de pointe et réponse groupée, contestations de paiement.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel critère pèse le plus dans la grille de qualité ?", "options": ["L'exactitude", "La longueur", "Les emojis", "La police"], "correct": 0 },
+        { "q": "Quand mettre à jour les macros après un changement de politique ?", "options": ["Le jour même", "Dans un an", "Jamais", "Quand un client se plaint"], "correct": 0 },
+        { "q": "Que rassembler pour une contestation « colis non reçu » ?", "options": ["Suivi de livraison, échanges et politique acceptée", "Rien", "Une excuse", "Un nouveau code promo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, retours par région, places de marché et fuseaux",
+      "summary": "Réponses et formules en anglais, règles de retour selon les régions, messagerie et indicateurs des places de marché, couverture étendue, note de relais et travail en agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel délai de rétractation existe dans l'UE pour la plupart des achats en ligne ?", "options": ["14 jours", "2 jours", "1 an", "Aucun"], "correct": 0 },
+        { "q": "Où répondre aux clients d'une place de marché ?", "options": ["Dans la messagerie de la plateforme", "Par un message privé sur son propre site", "Par SMS personnel", "Nulle part"], "correct": 0 },
+        { "q": "Que contient une note de relais ?", "options": ["Volume, escalades, incidents et points à surveiller", "Rien", "Les mots de passe", "Un poème"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : prix, SLA, rapports, études de cas et équipe",
+      "summary": "Trois voies, calcul du prix d'un support externalisé, formules, SLA réalistes, rapport mensuel, études de cas chiffrées, équipe et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "1 200 tickets à 10 par heure plus 20 % : combien d'heures ?", "options": ["144 heures", "120 heures", "100 heures", "200 heures"], "correct": 0 },
+        { "q": "Que faut-il prévoir par écrit dans un contrat de support ?", "options": ["Des SLA réalistes et la gestion des pics", "Rien", "La couleur du logo", "Un nombre de tickets illimité"], "correct": 0 },
+        { "q": "Que mettre en avant pour rassurer une boutique européenne ?", "options": ["Vos chiffres et vos solutions de secours", "Seulement un prix bas", "Rien", "Votre nombre d'abonnés"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité transforme les questions du chat en ventes ?", "options": ["La vente conversationnelle", "Les litiges", "Les places de marché", "Le contrôle qualité"], "correct": 0 },
+    { "q": "Pourquoi l'audit du service client est-il une bonne offre d'entrée ?", "options": ["La boutique découvre où elle perd du temps et des clients", "Il est toujours gratuit", "Il remplace le support", "Il évite le travail"], "correct": 0 },
+    { "q": "Quelle action réduit les demandes de suivi ?", "options": ["E-mails de suivi automatiques et page de suivi", "Fermer le chat", "Ne plus répondre", "Augmenter les prix"], "correct": 0 },
+    { "q": "Que faire chaque mois avec le motif le plus fréquent ?", "options": ["Proposer une action pour le réduire", "L'ignorer", "Le supprimer des rapports", "Le cacher au client"], "correct": 0 },
+    { "q": "Quel avantage principal de Gorgias pour l'e-commerce ?", "options": ["Voir et gérer les commandes à côté du ticket", "Retoucher les photos", "Faire la comptabilité", "Créer des logos"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un déclencheur dans Zendesk ?", "options": ["Une action immédiate à la création ou modification d'un ticket", "Une facture", "Un agent", "Un client"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une automatisation dans Zendesk ?", "options": ["Une action basée sur le temps", "Un bouton de couleur", "Une réponse écrite à la main", "Un avis client"], "correct": 0 },
+    { "q": "Que définissent les SLA ?", "options": ["Les délais cibles selon la priorité", "Les prix des produits", "Les couleurs du site", "Les salaires"], "correct": 0 },
+    { "q": "Pourquoi garder peu d'étiquettes ?", "options": ["Pour des rapports utilisables", "Pour faire joli", "Ce n'est pas utile", "Pour ralentir"], "correct": 0 },
+    { "q": "Quel élément de libre-service réduit les demandes de retour ?", "options": ["Un portail de retour", "Un numéro caché", "Un formulaire supprimé", "Rien"], "correct": 0 },
+    { "q": "Quel risque présente un assistant d'IA ?", "options": ["Il peut inventer une règle ou un délai", "Aucun", "Il répond trop lentement", "Il est toujours exact"], "correct": 0 },
+    { "q": "Combien de tickets relire par agent et par semaine ?", "options": ["5 à 10", "Aucun", "Tous", "1 par an"], "correct": 0 },
+    { "q": "Comment commencer un retour de contrôle qualité ?", "options": ["Par ce qui est réussi", "Par une sanction", "Par une critique générale", "Sans rien dire"], "correct": 0 },
+    { "q": "Pourquoi une date de vérification sur chaque article ?", "options": ["Savoir s'il est encore à jour", "Pour décorer", "Ce n'est pas utile", "Pour le supprimer"], "correct": 0 },
+    { "q": "Comment planifier les horaires ?", "options": ["Selon le volume réel par heure et par jour", "Au hasard", "Toujours les mêmes heures pour tous", "Selon la météo"], "correct": 0 },
+    { "q": "Que préparer avant le Black Friday ?", "options": ["Macros, articles à jour et agents formés", "Rien", "Fermer le support", "Supprimer les macros"], "correct": 0 },
+    { "q": "Pourquoi ne pas rembourser hors procédure pendant une contestation ?", "options": ["Risque de payer ou perdre deux fois", "C'est toujours conseillé", "Pour aller plus vite", "Aucune raison"], "correct": 0 },
+    { "q": "Quel ton adopter en anglais ?", "options": ["Direct et chaleureux, selon le guide de la marque", "Très administratif", "Agressif", "Sans formule de politesse"], "correct": 0 },
+    { "q": "Que faire si un client invoque une loi inconnue ?", "options": ["Transmettre au responsable sans discuter le droit", "Le contredire", "Inventer une réponse", "Ignorer"], "correct": 0 },
+    { "q": "Pourquoi les délais de réponse comptent-ils sur une place de marché ?", "options": ["Ils influencent le classement et les indicateurs du vendeur", "Ils ne comptent pas", "Pour décorer", "Pour payer moins"], "correct": 0 },
+    { "q": "Qu'est-ce que « suivre le soleil » ?", "options": ["Des équipes dans plusieurs régions se passent le relais", "Travailler dehors", "Fermer la nuit", "Changer d'outil chaque jour"], "correct": 0 },
+    { "q": "Quelle plage Madagascar couvre-t-elle naturellement pour l'Europe ?", "options": ["La soirée européenne", "Le milieu de la nuit américaine seulement", "Aucune", "Le dimanche uniquement"], "correct": 0 },
+    { "q": "Que suivre dans le rapport mensuel ?", "options": ["Motifs, délais, satisfaction, revenus influencés et propositions", "Seulement le nombre de tickets", "Rien", "Les mots de passe"], "correct": 0 },
+    { "q": "Quand ajouter un référent qualité ?", "options": ["À partir de 3 agents", "Dès le premier jour seul", "Jamais", "Après 100 agents"], "correct": 0 },
+    { "q": "Que fournir à chaque agent de l'équipe ?", "options": ["Connexion et électricité de secours", "Un mot de passe partagé", "Rien", "Un accès à toutes les données copiées"], "correct": 0 }
+  ]
+}

@@ -41,7 +41,7 @@ Chaque plateforme publie ses exigences. Un exemple courant (celui d'ACX, pour Au
 ### Le montage d'un livre audio
 
 1. **Suivez le texte** pendant l'écoute : chaque mot doit être lu, sans erreur.
-2. **Marquez** les erreurs de lecture pour une réenregistrement (pick-up).
+2. **Marquez** les erreurs de lecture pour un réenregistrement (pick-up).
 3. **Gardez** des respirations naturelles, retirez celles qui sont trop fortes.
 4. **Respectez** les pauses entre paragraphes et chapitres.
 5. **Remplacez** les silences numériques par du room tone.
