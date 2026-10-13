@@ -1,0 +1,97 @@
+{
+  "id": "media-1-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du motion designer un professionnel recherché par les agences et les marques : spécialité (vidéos explicatives, identité animée, interfaces, publicités sociales, données, 3D), diagnostic de communication animée, styleframes, outils payants (Adobe After Effects et Cinema 4D), éditeur de courbes, expressions, modèles modifiables, Lottie, MoGraph, production en étapes validées, animatique, organisation des projets, rendu, contrôle qualité, brief en anglais, livrables standards, licences, validations à distance, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité du motion design et mener un diagnostic client",
+    "Utiliser les fonctions professionnelles d'After Effects et de Cinema 4D",
+    "Livrer des modèles modifiables, des animations Lottie et des rendus adaptés",
+    "Suivre une méthode de production de studio avec validations et contrôle qualité",
+    "Travailler avec des agences étrangères : anglais, livrables, licences et validations",
+    "Développer son activité avec des forfaits, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et réaliser un diagnostic de communication animée",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, diagnostic du message, des vidéos, de l'identité, des formats, des langues et de l'accessibilité, styleframes, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un styleframe ?", "options": ["Une image fixe qui montre le style d'une scène", "Une vidéo finale", "Un contrat", "Une musique"], "correct": 0 },
+        { "q": "Quelle offre d'entrée est proposée ?", "options": ["Le diagnostic de communication animée", "Une vidéo gratuite", "Un site web", "Rien"], "correct": 0 },
+        { "q": "Pourquoi un kit d'identité animée vaut-il plus ?", "options": ["Il est réutilisable pendant des années", "Il est plus court", "Il est gratuit", "Il n'a pas de logo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Adobe After Effects et Cinema 4D",
+      "summary": "Compositions, calques de forme, éditeur de courbes, parentage, expressions simples, modèles MOGRT, Lottie, vidéos avec transparence, cloneurs et effecteurs MoGraph, rendu et choix d'investissement.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert l'éditeur de courbes ?", "options": ["Régler la vitesse et l'accélération des mouvements", "Écrire le script", "Payer le logiciel", "Enregistrer la voix"], "correct": 0 },
+        { "q": "Que fait l'expression wiggle(2, 10) ?", "options": ["Un tremblement 2 fois par seconde de 10 pixels au maximum", "Une rotation de 2 degrés", "Un fondu de 10 secondes", "Rien"], "correct": 0 },
+        { "q": "Pourquoi rendre en séquence d'images ?", "options": ["Reprendre à la dernière image après une coupure", "Pour un fichier plus petit", "Pour ajouter du son", "Ce n'est jamais utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : étapes, organisation, réutilisation et rendu",
+      "summary": "Script, storyboard, styleframes, animatique, animation et finalisation validés par écrit, structure de dossiers, versions, préréglages et bibliothèques, formats de rendu, envoi de gros fichiers, grille de contrôle.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une animatique ?", "options": ["Le storyboard monté au rythme de la voix off", "La vidéo finale", "Un logiciel", "Une facture"], "correct": 0 },
+        { "q": "Quel format pour la diffusion sur Internet ?", "options": ["H.264 (MP4)", "PSD", "PDF", "DOCX"], "correct": 0 },
+        { "q": "Quand lancer les rendus longs à Madagascar ?", "options": ["Aux heures où l'électricité est la plus stable, avec un onduleur", "Pendant les coupures", "Jamais", "Sans sauvegarde"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, livrables, licences et validations",
+      "summary": "Formules en anglais et retours avec code temporel, livrables standards et version sans texte, licences de musiques, polices, images et voix, plateformes de relecture, conditions avec une agence.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi demander les retours avec le code temporel ?", "options": ["Éviter les messages flous et les allers-retours", "Pour décorer", "Pour facturer plus", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "À quoi sert une version sans texte ?", "options": ["Traduire la vidéo dans d'autres langues à faible coût", "Rien", "Réduire la qualité", "Supprimer la musique"], "correct": 0 },
+        { "q": "Que risque une musique sans licence adaptée ?", "options": ["Le blocage de la vidéo ou une réclamation", "Rien", "Plus de vues", "Un meilleur son"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, études de cas et studio",
+      "summary": "Trois voies, forfaits calculés sur le temps réel, abonnement réseaux sociaux, études de cas avec étapes et accord du client, studio avec contrats et droits, évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur quoi calculer ses prix ?", "options": ["Le temps réel passé, validations et rendus compris", "Le prix d'un concurrent au hasard", "Rien", "La météo"], "correct": 0 },
+        { "q": "Que doit montrer une étude de cas ?", "options": ["Besoin, storyboard, styleframes, extrait et résultat", "Seulement le prix", "Le mot de passe du client", "Rien"], "correct": 0 },
+        { "q": "Que prévoir pour les comédiens voix off de l'équipe ?", "options": ["Un contrat précisant les usages autorisés de leur voix", "Rien", "Seulement un message", "Un paiement sans contrat"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité réalise des micro-animations d'applications ?", "options": ["L'animation d'interfaces", "La vidéo explicative", "La 3D", "Les données animées"], "correct": 0 },
+    { "q": "Quelle durée pour une vidéo explicative typique ?", "options": ["60 à 120 secondes", "10 minutes", "2 heures", "1 seconde"], "correct": 0 },
+    { "q": "Pourquoi produire en malgache et en français ?", "options": ["C'est très demandé pour les campagnes nationales", "C'est interdit", "Ce n'est pas utile", "Pour réduire la qualité"], "correct": 0 },
+    { "q": "Que vérifier pour l'accessibilité ?", "options": ["Que la vidéo se comprend sans le son", "La couleur du logo", "Le prix", "Rien"], "correct": 0 },
+    { "q": "Quand faire valider les styleframes ?", "options": ["Avant d'animer", "Après la livraison", "Jamais", "Pendant le rendu"], "correct": 0 },
+    { "q": "Que permettent les objets nuls et le parentage ?", "options": ["Animer plusieurs éléments ensemble", "Supprimer des calques", "Payer", "Exporter en PDF"], "correct": 0 },
+    { "q": "Que fait loopOut(\"cycle\") ?", "options": ["Répète en boucle les images clés", "Supprime l'animation", "Ajoute du son", "Change la couleur"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un MOGRT ?", "options": ["Un modèle modifiable dans Premiere Pro", "Un format audio", "Un logiciel 3D", "Un contrat"], "correct": 0 },
+    { "q": "Que vérifier avant une animation Lottie ?", "options": ["La liste des fonctions compatibles", "La météo", "Le prix d'After Effects", "Rien"], "correct": 0 },
+    { "q": "Que font les cloneurs MoGraph ?", "options": ["Dupliquer des objets en grille, cercle ou chemin", "Enregistrer la voix", "Écrire le script", "Compresser"], "correct": 0 },
+    { "q": "Par quel logiciel commencer ?", "options": ["After Effects, qui couvre la majorité des commandes", "Cinema 4D", "Un moteur de rendu avancé", "Aucun"], "correct": 0 },
+    { "q": "Quelle est la première étape de production ?", "options": ["Le script", "L'animation", "Le rendu", "La facture"], "correct": 0 },
+    { "q": "Pourquoi numéroter les versions des projets ?", "options": ["Revenir en arrière si un fichier est abîmé", "Décorer", "Rien", "Payer moins"], "correct": 0 },
+    { "q": "Que faire en fin de projet ?", "options": ["Rassembler les fichiers, polices et sons compris", "Tout supprimer", "Rien", "Changer de logiciel"], "correct": 0 },
+    { "q": "Quel format pour un monteur ou une télévision ?", "options": ["ProRes", "GIF", "JPG", "TXT"], "correct": 0 },
+    { "q": "Quel format pour une vidéo avec transparence ?", "options": ["ProRes 4444 ou séquence PNG", "H.264 simple", "MP3", "DOCX"], "correct": 0 },
+    { "q": "Comment envoyer un gros fichier avec une connexion lente ?", "options": ["Version légère de validation, puis fichier final par un service à reprise", "Par SMS", "Ne jamais l'envoyer", "Sur une clé par la poste à chaque fois"], "correct": 0 },
+    { "q": "Que vérifier pour les textes à l'écran ?", "options": ["Qu'ils restent affichés assez longtemps pour être lus", "Qu'ils soient très rapides", "Qu'ils soient flous", "Rien"], "correct": 0 },
+    { "q": "Que demander dans les retours du client ?", "options": ["Des commentaires avec code temporel", "Un vote", "Rien", "Un nouveau brief"], "correct": 0 },
+    { "q": "Pourquoi livrer des pistes audio séparées ?", "options": ["Pour ajuster voix, musique et bruitages séparément", "Pour réduire la qualité", "Rien", "Pour supprimer la voix"], "correct": 0 },
+    { "q": "Que doit permettre la licence d'une police ?", "options": ["L'usage en vidéo et si besoin l'envoi au client", "Rien", "Seulement l'impression", "Uniquement l'usage personnel"], "correct": 0 },
+    { "q": "Que signifie travailler en marque blanche ?", "options": ["Ne pas contacter les clients de l'agence", "Utiliser du blanc partout", "Travailler gratuitement", "Signer chaque vidéo"], "correct": 0 },
+    { "q": "Que contient le forfait vidéo explicative ?", "options": ["Script, storyboard, animation, voix off et sous-titres", "Seulement un logo", "Rien", "Un site web"], "correct": 0 },
+    { "q": "Que peut viser un studio malgache complet ?", "options": ["Des appels d'offres d'ONG et d'organisations internationales", "Rien", "Uniquement des mariages", "Uniquement la télévision étrangère"], "correct": 0 },
+    { "q": "Vers quoi peut évoluer un motion designer ?", "options": ["Direction artistique, 3D, interfaces ou réalisation", "Comptabilité uniquement", "Rien", "Plomberie"], "correct": 0 }
+  ]
+}

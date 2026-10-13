@@ -16,7 +16,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 18, true),
-  ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, false),
+  ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, true),
   ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
   ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true),
   ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 15, true),
@@ -43357,6 +43357,500 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Quelle version envoyer pour la validation ?', '["Le fichier de projet","Les rushes complets","Une version légère en 720p","Une version 8K"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Combien de tours de retours prévoit-on souvent dans un devis ?', '["0","20","2","Illimités"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('media-0-f', 'Qu''est-ce qu''une fiche de style client ?', '["Sa liste de vidéos préférées sur Netflix","Sa fiche de paie","Son contrat de travail","Un document avec ses polices, couleurs, effets, intro et fin"]'::jsonb, 3);
+
+-- media-1-a
+delete from public.exam_questions where course_id = 'media-1-a';
+delete from public.module_questions where course_id = 'media-1-a';
+delete from public.lessons where course_id = 'media-1-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-a', 0, 'Se spécialiser et réaliser un diagnostic de communication animée', 'Six spécialités avancées et avantages depuis Madagascar, diagnostic du message, des vidéos, de l''identité, des formats, des langues et de l''accessibilité, styleframes, offres à plus forte valeur.', 'Animer un logo, un texte ou une petite vidéo explicative ouvre les premières commandes. Les motion designers les mieux payés vont plus loin : ils choisissent un **domaine**, maîtrisent une méthode de production complète et vendent des **systèmes d''animation** réutilisables à des marques et à des agences. Ce module vous aide à choisir votre spécialité et à proposer un diagnostic comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du motion design.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic de la communication animée d''un client.
+> 4. Construire une proposition claire.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Vidéos explicatives** | Expliquer un service ou une idée en 60 à 120 secondes | Script, storyboard, rythme, voix off |
+| 2 | **Identité animée** | Logo animé, génériques, habillage de chaînes et d''événements | Charte graphique, cohérence, déclinaisons |
+| 3 | **Animation d''interfaces** | Micro-animations d''applications et de sites | Logique d''interface, export Lottie |
+| 4 | **Publicités pour réseaux sociaux** | Courtes vidéos animées pour les campagnes | Formats verticaux, accroche en 3 secondes |
+| 5 | **Données animées** | Infographies et chiffres qui bougent | Clarté des données, typographie |
+| 6 | **Motion design 3D** | Objets, produits et logos en trois dimensions | Modélisation simple, lumière, rendu |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Vidéos explicatives** pour les ONG, la microfinance, la santé et l''éducation, avec des personnages et des situations du quotidien malgache.
+> - **Versions en malgache et en français** d''une même animation, très demandées pour les campagnes nationales.
+> - **Publicités pour réseaux sociaux** pour les PME locales qui veulent se démarquer.
+
+## Le diagnostic de communication animée : votre offre d''entrée
+
+| Domaine | Questions |
+| --- | --- |
+| **Message** | Le client explique-t-il clairement ce qu''il fait ? |
+| **Vidéos actuelles** | Existent-elles ? Sont-elles regardées jusqu''au bout ? |
+| **Identité** | Le logo et les couleurs sont-ils animés de façon cohérente ? |
+| **Formats** | Horizontal, vertical, carré : sont-ils adaptés à chaque réseau ? |
+| **Langues** | Le public comprend-il la langue utilisée ? |
+| **Accessibilité** | Les vidéos sont-elles compréhensibles sans le son ? |
+
+### Le rapport de diagnostic
+
+```
+Client : Mivoatra Microfinance (exemple)
+Constat principal : les clients ruraux ne comprennent pas
+le fonctionnement du crédit de groupe ; les vidéos actuelles
+sont des diaporamas sans voix, en français seulement.
+
+Recommandations prioritaires
+1. Une vidéo explicative de 90 secondes en malgache, sous-titrée en français.
+2. Un logo animé de 3 secondes pour toutes les vidéos.
+3. Une série de 5 publications animées verticales pour Facebook.
+
+Proposition
+- Phase 1 : script, storyboard et styleframes (2 semaines).
+- Phase 2 : animation, voix off, sous-titres et déclinaisons.
+```
+
+> [!definition] Styleframe
+> Une image fixe qui montre à quoi ressemblera une scène de l''animation : couleurs, personnages, typographie, ambiance. On fait valider les styleframes **avant** d''animer.
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Vidéo explicative complète** | Script, voix, animation et déclinaisons en un seul contrat |
+| **Kit d''identité animée** | Logo, transitions, titres et modèles réutilisables pendant des années |
+| **Modèles modifiables** | Le client change lui-même les textes de ses vidéos |
+| **Abonnement mensuel** | Un nombre fixe d''animations chaque mois |
+
+> [!retenir]
+> - 6 spécialités : explicatif, identité animée, interfaces, publicités sociales, données, 3D.
+> - Le diagnostic : message, vidéos, identité, formats, langues, accessibilité.
+> - Valider des styleframes avant d''animer.
+> - Vendre des projets complets, des kits, des modèles et des abonnements.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Réalisez le diagnostic d''une organisation réelle ou fictive.
+> 3. Rédigez un rapport avec 3 recommandations et une proposition en 2 phases.
+> 4. Réalisez 2 styleframes pour la première recommandation.
+>
+> **À livrer** : votre positionnement, votre rapport et vos styleframes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 0, 0, 'Qu''est-ce qu''un styleframe ?', '["Un contrat","Une musique","Une vidéo finale","Une image fixe qui montre le style d''une scène"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 0, 1, 'Quelle offre d''entrée est proposée ?', '["Le diagnostic de communication animée","Une vidéo gratuite","Rien","Un site web"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 0, 2, 'Pourquoi un kit d''identité animée vaut-il plus ?', '["Il n''a pas de logo","Il est gratuit","Il est plus court","Il est réutilisable pendant des années"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-a', 1, 'Outils professionnels : Adobe After Effects et Cinema 4D', 'Compositions, calques de forme, éditeur de courbes, parentage, expressions simples, modèles MOGRT, Lottie, vidéos avec transparence, cloneurs et effecteurs MoGraph, rendu et choix d''investissement.', 'Jitter et Blender permettent de débuter. Les agences et les marques travaillent cependant surtout avec **Adobe After Effects**, et beaucoup de projets 3D se font avec **Cinema 4D**. Ce module vous présente les fonctions professionnelles de ces deux logiciels et les livrables qu''on vous demandera.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un projet After Effects comme un professionnel.
+> 2. Maîtriser l''éditeur de courbes et les calques de forme.
+> 3. Utiliser quelques expressions simples.
+> 4. Créer des modèles modifiables et des animations Lottie.
+> 5. Comprendre l''apport de Cinema 4D et de ses outils MoGraph.
+
+## After Effects : les fonctions essentielles
+
+| Fonction | Usage |
+| --- | --- |
+| **Compositions et précompositions** | Organiser une animation en blocs réutilisables |
+| **Calques de forme** | Formes vectorielles animables (icônes, illustrations) |
+| **Éditeur de courbes** | Régler la vitesse et l''accélération des mouvements |
+| **Masques et caches** | Révéler ou cacher une partie d''un calque |
+| **Objets nuls et parentage** | Animer plusieurs éléments ensemble |
+| **Effets** | Flous, dégradés, distorsions, particules simples |
+
+> [!definition] Éditeur de courbes
+> Une vue qui montre comment la vitesse d''un mouvement change dans le temps. Une courbe douce donne un mouvement naturel ; une courbe plate donne un mouvement mécanique. C''est l''outil qui distingue le plus un animateur débutant d''un professionnel.
+
+## Quelques expressions simples
+
+> [!definition] Expression
+> Une petite ligne de code attachée à une propriété, qui calcule sa valeur automatiquement.
+
+```javascript
+// Tremblement léger : 2 fois par seconde, 10 pixels au maximum
+wiggle(2, 10)
+
+// Répéter en boucle les images clés d''une propriété
+loopOut("cycle")
+
+// Rotation continue : 90 degrés par seconde
+time * 90
+```
+
+> [!astuce]
+> Quelques expressions bien choisies font gagner des heures : boucles, tremblements, rotations, liens entre propriétés. Inutile de devenir programmeur ; gardez un fichier de vos expressions favorites, commentées en français.
+
+## Modèles modifiables et animations Lottie
+
+| Livrable | Usage |
+| --- | --- |
+| **Modèle de graphiques animés** (MOGRT) | Le monteur du client change textes et couleurs dans Premiere Pro |
+| **Animation Lottie** | Animation légère pour une application ou un site, exportée avec une extension comme Bodymovin |
+| **Vidéo avec transparence** | Logo ou titre à superposer sur d''autres vidéos |
+| **Kit de transitions** | Transitions aux couleurs de la marque, prêtes à l''emploi |
+
+> [!attention]
+> Les animations Lottie ne prennent pas en charge tous les effets d''After Effects. Vérifiez la **liste des fonctions compatibles** avant de commencer et testez l''export régulièrement, sinon vous risquez de devoir tout refaire.
+
+## Cinema 4D : la 3D pour le motion design
+
+| Fonction | Usage |
+| --- | --- |
+| **MoGraph : cloneurs** | Dupliquer des objets en grille, en cercle ou le long d''un chemin |
+| **MoGraph : effecteurs** | Animer tous les clones ensemble (vague, hasard, délai) |
+| **Matériaux** | Métal, verre, plastique, tissu |
+| **Lumières et caméras** | Mise en scène des objets |
+| **Moteurs de rendu** | Rendu standard ou moteur avancé (par exemple Redshift) |
+| **Lien avec After Effects** | Composer les rendus 3D avec le reste de l''animation |
+
+> [!madagascar]
+> Le rendu 3D demande un **ordinateur puissant** et beaucoup de temps. Avec des coupures d''électricité, il faut un onduleur et des rendus en séquence d''images (une image par fichier) : en cas de coupure, vous reprenez à la dernière image au lieu de tout recommencer.
+
+## Choisir quand investir
+
+| Outil | Modèle de prix | Investir quand… |
+| --- | --- | --- |
+| **After Effects** | Abonnement mensuel | Vos clients ou agences demandent des fichiers After Effects ou des MOGRT |
+| **Cinema 4D** | Abonnement | Vous avez des commandes régulières en 3D |
+| **Moteur de rendu avancé** | Abonnement | Vos rendus doivent être photoréalistes |
+
+> [!madagascar]
+> Ces logiciels se paient en dollars ou en euros par carte bancaire internationale. Profitez des **versions d''essai** et des **tarifs étudiants**, et commencez par After Effects : il couvre la majorité des commandes.
+
+> [!retenir]
+> - After Effects : compositions, calques de forme, éditeur de courbes, parentage.
+> - Expressions simples : wiggle, loopOut, rotation continue.
+> - Livrables : MOGRT, Lottie, vidéos avec transparence, kits de transitions.
+> - Cinema 4D : cloneurs, effecteurs, matériaux, rendu ; séquences d''images contre les coupures.
+> - Investir quand les commandes le justifient.
+
+## Exercice pratique : un kit d''identité animée
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Avec une version d''essai, animez le logo d''une marque fictive en 3 secondes en travaillant les courbes.
+> 2. Créez 2 transitions et un titre animé aux couleurs de la marque.
+> 3. Exportez le titre en modèle modifiable et le logo en animation Lottie.
+> 4. Bonus : créez une petite animation 3D avec un cloneur.
+>
+> **À livrer** : vos fichiers, vos exports et une vidéo de présentation du kit.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 1, 0, 'À quoi sert l''éditeur de courbes ?', '["Payer le logiciel","Écrire le script","Régler la vitesse et l''accélération des mouvements","Enregistrer la voix"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 1, 1, 'Que fait l''expression wiggle(2, 10) ?', '["Rien","Un tremblement 2 fois par seconde de 10 pixels au maximum","Une rotation de 2 degrés","Un fondu de 10 secondes"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 1, 2, 'Pourquoi rendre en séquence d''images ?', '["Pour ajouter du son","Reprendre à la dernière image après une coupure","Pour un fichier plus petit","Ce n''est jamais utile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-a', 2, 'Qualité et rapidité : étapes, organisation, réutilisation et rendu', 'Script, storyboard, styleframes, animatique, animation et finalisation validés par écrit, structure de dossiers, versions, préréglages et bibliothèques, formats de rendu, envoi de gros fichiers, grille de contrôle.', 'Une animation professionnelle est livrée dans les délais, sans surprise pour le client et sans fichiers perdus. Ce module vous donne la méthode de production des studios : étapes validées, projet bien organisé, éléments réutilisables, rendu maîtrisé et contrôle qualité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Suivre les étapes de production d''un studio.
+> 2. Organiser vos projets et vos fichiers.
+> 3. Réutiliser vos éléments pour aller plus vite.
+> 4. Choisir les bons formats de rendu.
+> 5. Contrôler une animation avant livraison.
+
+## Les étapes de production
+
+| Étape | Ce que voit le client | Modifications possibles |
+| --- | --- | --- |
+| 1. **Script** | Le texte de la voix off et les idées de scènes | Changements importants |
+| 2. **Storyboard** | Les scènes dessinées simplement | Changements importants |
+| 3. **Styleframes** | Le style final de 2 ou 3 scènes | Ajustements de style |
+| 4. **Animatique** | Le storyboard calé sur la voix off | Ajustements de rythme |
+| 5. **Animation** | La vidéo animée | Petites corrections |
+| 6. **Finalisation** | Son, sous-titres, déclinaisons | Corrections mineures |
+
+> [!definition] Animatique
+> Une première version de la vidéo faite avec les images du storyboard, montées au rythme de la voix off. Elle permet de valider la durée et le rythme avant de passer des jours à animer.
+
+> [!attention]
+> Faites valider chaque étape **par écrit**. Changer le script après l''animation oblige à refaire la voix off et des scènes entières. Précisez dans votre devis que ces changements tardifs sont facturés en plus.
+
+## Organiser projets et fichiers
+
+```
+2026-03_Mivoatra_Explicative/
+  01_Brief/
+  02_Script/
+  03_Storyboard/
+  04_Design/        (styleframes, illustrations)
+  05_Audio/         (voix off, musique, bruitages)
+  06_Projet_AE/     (fichiers After Effects numérotés v01, v02...)
+  07_Rendus/
+  08_Livraison/
+```
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Noms clairs** pour les compositions et calques | Retrouver un élément en quelques secondes |
+| **Versions numérotées** | Revenir en arrière si un fichier est abîmé |
+| **Rassembler les fichiers** en fin de projet | Archiver tout ce qui est utilisé, polices et sons compris |
+| **Sauvegarde externe** | Ne rien perdre en cas de panne de disque |
+
+## Réutiliser pour aller plus vite
+
+| Élément réutilisable | Exemple |
+| --- | --- |
+| **Préréglages d''animation** | Entrées et sorties de texte, rebonds |
+| **Bibliothèque de personnages articulés** | Personnages prêts à animer, adaptables |
+| **Modèles de projet** | Dossiers, compositions aux bons formats, réglages de rendu |
+| **Kits de transitions** | Transitions personnalisables |
+| **Effets sonores** | Petits sons libres de droits classés par type |
+
+## Le rendu
+
+| Format | Usage |
+| --- | --- |
+| **H.264 (MP4)** | Diffusion sur Internet et réseaux sociaux |
+| **ProRes** | Fichier de très bonne qualité pour un monteur ou une chaîne de télévision |
+| **ProRes 4444 ou séquence PNG** | Vidéo avec transparence |
+| **Séquence d''images** | Rendus longs, reprise possible après coupure |
+| **GIF ou Lottie** | Petites animations pour le web |
+
+> [!madagascar]
+> Lancez les rendus longs **la nuit** ou pendant les heures où l''électricité est la plus stable, avec un onduleur. Pour envoyer de gros fichiers malgré une connexion lente, compressez une version de validation légère et n''envoyez le fichier final qu''après accord du client, via un service de transfert qui permet de reprendre un envoi interrompu.
+
+## Le contrôle avant livraison
+
+| Point | Vérification |
+| --- | --- |
+| **Orthographe** | Tous les textes relus, dans chaque langue |
+| **Synchronisation** | Animation calée sur la voix et la musique |
+| **Lisibilité** | Textes affichés assez longtemps pour être lus |
+| **Formats** | Horizontal, vertical, carré selon la commande |
+| **Son** | Niveau régulier, pas de saturation |
+| **Sous-titres** | Présents et justes si prévus |
+| **Droits** | Musique, polices et images sous licence |
+
+> [!retenir]
+> - Script, storyboard, styleframes, animatique, animation, finalisation : validation écrite.
+> - Dossiers clairs, versions numérotées, archives complètes.
+> - Préréglages, personnages, modèles et transitions réutilisables.
+> - H.264, ProRes, transparence, séquences d''images.
+> - Contrôle : orthographe, synchronisation, lisibilité, formats, son, sous-titres, droits.
+
+## Exercice pratique : une production complète
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Préparez un modèle de projet avec la structure de dossiers et les compositions aux 3 formats.
+> 2. Réalisez l''animatique d''une vidéo de 30 secondes à partir d''une voix off enregistrée.
+> 3. Créez 3 préréglages d''animation de texte réutilisables.
+> 4. Rédigez votre grille de contrôle avant livraison.
+>
+> **À livrer** : le modèle de projet, l''animatique, les préréglages et votre grille.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 2, 0, 'Qu''est-ce qu''une animatique ?', '["La vidéo finale","Le storyboard monté au rythme de la voix off","Une facture","Un logiciel"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 2, 1, 'Quel format pour la diffusion sur Internet ?', '["PDF","H.264 (MP4)","PSD","DOCX"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 2, 2, 'Quand lancer les rendus longs à Madagascar ?', '["Pendant les coupures","Sans sauvegarde","Aux heures où l''électricité est la plus stable, avec un onduleur","Jamais"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-a', 3, 'Clients internationaux : anglais, livrables, licences et validations', 'Formules en anglais et retours avec code temporel, livrables standards et version sans texte, licences de musiques, polices, images et voix, plateformes de relecture, conditions avec une agence.', 'Agences, studios et marques d''Europe, d''Amérique du Nord et d''Afrique sous-traitent beaucoup d''animations. Ce module vous prépare à travailler avec eux : échanges en anglais, livrables standards, licences des musiques et des polices, transfert de gros fichiers et conditions de travail.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre un brief et échanger en anglais.
+> 2. Livrer selon les standards des agences.
+> 3. Respecter les licences des musiques, polices et images.
+> 4. Organiser les validations à distance.
+> 5. Négocier vos conditions avec une agence étrangère.
+
+## Le brief et les échanges en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Confirmer le brief | « To confirm: a 60-second explainer, 16:9 and 9:16, English voice-over, delivered by 20 May. » |
+| Présenter les styleframes | « Here are two styleframes for scene 3. Which direction feels closer to the brand? » |
+| Partager l''animatique | « The animatic is timed to the voice-over. Please check the pacing before we animate. » |
+| Demander des retours précis | « Could you add your comments with timecodes, please? » |
+| Livrer | « Final renders and the collected project files are in the shared folder. » |
+
+> [!astuce]
+> Demandez toujours des retours **avec le code temporel** (par exemple « 0:42 : texte trop rapide »). Cela évite les messages flous et les allers-retours inutiles.
+
+## Les livrables standards des agences
+
+| Livrable | Détail |
+| --- | --- |
+| **Rendus finaux** | Formats et ratios demandés, nommés clairement |
+| **Version sans texte** | Pour traduire la vidéo dans d''autres langues |
+| **Version sans sous-titres et avec** | Selon les réseaux |
+| **Fichiers sources** | Projet rassemblé avec polices et sons, si prévu au contrat |
+| **Modèles modifiables** | Si l''agence veut décliner elle-même |
+| **Bande son séparée** | Voix, musique et bruitages sur pistes séparées |
+
+> [!madagascar]
+> Une **version sans texte** est très utile pour vos clients malgaches aussi : la même animation peut être déclinée en malgache, en français et en anglais pour un coût faible. Proposez-la systématiquement.
+
+## Musiques, polices et images
+
+| Élément | Règle |
+| --- | --- |
+| **Musique** | Licence adaptée à l''usage (réseaux sociaux, publicité, télévision) |
+| **Polices** | Licence qui autorise l''usage vidéo et, si besoin, l''envoi au client |
+| **Images et icônes** | Licence commerciale ou création originale |
+| **Voix off** | Contrat avec le comédien précisant les usages |
+| **Logos de tiers** | Seulement avec autorisation |
+
+> [!attention]
+> Une musique sans licence adaptée peut faire **bloquer** une vidéo sur les plateformes ou entraîner une réclamation contre votre client. Gardez une trace de chaque licence dans le dossier du projet et transmettez-la au client.
+
+## Les validations à distance
+
+| Outil | Usage |
+| --- | --- |
+| **Plateformes de relecture vidéo** (par exemple Frame.io) | Commentaires directement sur l''image, au bon moment |
+| **Liens privés** (Vimeo, Google Drive) | Partage de versions de validation |
+| **Tableau de suivi** | Étapes, dates et validations |
+| **Appels vidéo** | Présentation des étapes importantes |
+
+## Vos conditions avec une agence étrangère
+
+| Point | Exemple |
+| --- | --- |
+| **Prix** | Par projet, par seconde d''animation ou par jour |
+| **Étapes et paiements** | Acompte au démarrage, solde à la livraison |
+| **Corrections** | 2 séries par étape incluses |
+| **Marque blanche** | Vous ne contactez pas les clients de l''agence |
+| **Portfolio** | Droit de montrer le travail après diffusion, avec accord |
+| **Fichiers sources** | Inclus ou facturés à part |
+
+> [!retenir]
+> - En anglais : confirmer, présenter, partager l''animatique, demander des retours avec code temporel.
+> - Livrables : rendus, version sans texte, sources, modèles, pistes audio séparées.
+> - Licences de musiques, polices, images et voix, gardées dans le dossier.
+> - Validations sur une plateforme de relecture et un tableau de suivi.
+> - Conditions claires, marque blanche et droit de portfolio.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais la confirmation d''un brief de vidéo explicative.
+> 2. Préparez la liste complète des livrables pour ce projet.
+> 3. Trouvez une musique et une police dont la licence convient, et notez leurs conditions.
+> 4. Rédigez vos conditions en 6 points pour une agence.
+>
+> **À livrer** : votre confirmation, votre liste de livrables, vos licences et vos conditions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 3, 0, 'Pourquoi demander les retours avec le code temporel ?', '["Pour facturer plus","Éviter les messages flous et les allers-retours","Ce n''est pas utile","Pour décorer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 3, 1, 'À quoi sert une version sans texte ?', '["Rien","Supprimer la musique","Réduire la qualité","Traduire la vidéo dans d''autres langues à faible coût"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 3, 2, 'Que risque une musique sans licence adaptée ?', '["Le blocage de la vidéo ou une réclamation","Rien","Un meilleur son","Plus de vues"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('media-1-a', 4, 'Développer son activité : forfaits, études de cas et studio', 'Trois voies, forfaits calculés sur le temps réel, abonnement réseaux sociaux, études de cas avec étapes et accord du client, studio avec contrats et droits, évolution.', 'Un motion designer expérimenté combine des projets bien payés, des contrats réguliers avec des agences et parfois une petite équipe. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Rédiger des études de cas convaincantes.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Motion designer spécialisé** | Projets dans une spécialité, pour agences et marques | Ceux qui aiment animer chaque jour |
+| **Partenaire d''agences** | Contrats réguliers en marque blanche | Ceux qui veulent un revenu stable |
+| **Petit studio d''animation** | Script, illustration, animation, voix et son | Ceux qui aiment organiser |
+
+## Des forfaits et des contrats durables
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Logo animé** | 3 à 5 secondes, 2 versions, transparence | 400 000 Ar |
+| **Vidéo explicative de 60 secondes** | Script, storyboard, animation, voix off, sous-titres | 2 500 000 Ar |
+| **Kit d''identité animée** | Logo, titres, transitions, modèles modifiables | 1 800 000 Ar |
+| **Abonnement réseaux sociaux** | 6 animations courtes par mois | 1 200 000 Ar par mois |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!astuce]
+> Calculez vos prix à partir du **temps réel** passé sur vos derniers projets, étapes de validation et rendus compris. Beaucoup de motion designers débutants sous-estiment le temps de préparation et de corrections.
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : Mivoatra Microfinance. **Besoin** : faire comprendre le crédit de groupe aux clients ruraux. **Réalisation** : vidéo explicative de 90 secondes en malgache, sous-titrée en français, et 5 publications verticales. **Résultat** : la vidéo est diffusée dans les agences et lors des réunions de village ; les conseillers indiquent que les questions de base ont nettement diminué lors des premiers rendez-vous.
+
+Une bonne étude de cas montre : le besoin, le storyboard, les styleframes, un extrait de la vidéo finale et le résultat, **avec l''accord du client**.
+
+## Organiser une petite équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Scénariste** | Scripts et adaptation dans chaque langue |
+| **Illustrateur** | Personnages et décors prêts à animer |
+| **Animateurs** | Animation selon les styleframes validés |
+| **Comédiens voix off et monteur son** | Voix, musique, bruitages |
+| **Vous** | Direction artistique, relation client, contrôle final |
+
+> [!madagascar]
+> Un petit studio malgache qui réunit illustration, animation et voix off en **malgache et en français** peut répondre à des appels d''offres d''ONG et d''organisations internationales, qui cherchent des prestataires capables de produire des campagnes complètes adaptées au pays.
+
+> [!attention]
+> Avec une équipe, signez un **contrat** avec chaque collaborateur : rémunération, délais, confidentialité, droits sur les créations et, pour les comédiens, usages autorisés de leur voix. Sans cela, vous ne pouvez pas garantir les droits à vos clients.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Directeur artistique** | Encadrement, choix de styles, présentation aux grandes marques |
+| **Spécialiste 3D** | Modélisation, éclairage, rendu avancé |
+| **Animateur d''interfaces** | Collaboration avec des designers UI/UX |
+| **Réalisateur de films d''animation** | Narration, mise en scène, production longue |
+| **Formateur** | Cours de motion design en ligne |
+
+> [!retenir]
+> - Spécialiste, partenaire d''agences ou petit studio.
+> - Forfaits calculés sur le temps réel, abonnements mensuels.
+> - Études de cas avec étapes, extrait et résultat, avec accord.
+> - Une équipe complète avec contrats et droits clairs.
+> - Évoluer vers la direction artistique, la 3D, l''interface ou la réalisation.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Calculez le temps réel de votre dernier projet et construisez 3 forfaits.
+> 3. Rédigez une étude de cas à partir de votre meilleur projet.
+> 4. Dessinez l''organisation de votre future équipe.
+>
+> **À livrer** : votre plan, vos forfaits, votre étude de cas et votre organisation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 4, 0, 'Sur quoi calculer ses prix ?', '["La météo","Le prix d''un concurrent au hasard","Le temps réel passé, validations et rendus compris","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 4, 1, 'Que doit montrer une étude de cas ?', '["Rien","Le mot de passe du client","Seulement le prix","Besoin, storyboard, styleframes, extrait et résultat"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('media-1-a', 4, 2, 'Que prévoir pour les comédiens voix off de l''équipe ?', '["Rien","Un contrat précisant les usages autorisés de leur voix","Un paiement sans contrat","Seulement un message"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quelle spécialité réalise des micro-animations d''applications ?', '["La vidéo explicative","L''animation d''interfaces","La 3D","Les données animées"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quelle durée pour une vidéo explicative typique ?', '["2 heures","60 à 120 secondes","1 seconde","10 minutes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Pourquoi produire en malgache et en français ?', '["C''est très demandé pour les campagnes nationales","Ce n''est pas utile","Pour réduire la qualité","C''est interdit"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que vérifier pour l''accessibilité ?', '["Le prix","La couleur du logo","Que la vidéo se comprend sans le son","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quand faire valider les styleframes ?', '["Pendant le rendu","Après la livraison","Avant d''animer","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que permettent les objets nuls et le parentage ?', '["Animer plusieurs éléments ensemble","Supprimer des calques","Exporter en PDF","Payer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que fait loopOut("cycle") ?', '["Supprime l''animation","Change la couleur","Ajoute du son","Répète en boucle les images clés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Qu''est-ce qu''un MOGRT ?', '["Un logiciel 3D","Un format audio","Un contrat","Un modèle modifiable dans Premiere Pro"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que vérifier avant une animation Lottie ?', '["Le prix d''After Effects","La liste des fonctions compatibles","La météo","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que font les cloneurs MoGraph ?', '["Dupliquer des objets en grille, cercle ou chemin","Écrire le script","Enregistrer la voix","Compresser"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Par quel logiciel commencer ?', '["Cinema 4D","Aucun","Un moteur de rendu avancé","After Effects, qui couvre la majorité des commandes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quelle est la première étape de production ?', '["Le rendu","Le script","La facture","L''animation"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Pourquoi numéroter les versions des projets ?', '["Rien","Payer moins","Revenir en arrière si un fichier est abîmé","Décorer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que faire en fin de projet ?', '["Tout supprimer","Rassembler les fichiers, polices et sons compris","Changer de logiciel","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quel format pour un monteur ou une télévision ?', '["JPG","TXT","GIF","ProRes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Quel format pour une vidéo avec transparence ?', '["ProRes 4444 ou séquence PNG","DOCX","MP3","H.264 simple"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Comment envoyer un gros fichier avec une connexion lente ?', '["Version légère de validation, puis fichier final par un service à reprise","Par SMS","Sur une clé par la poste à chaque fois","Ne jamais l''envoyer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que vérifier pour les textes à l''écran ?', '["Qu''ils restent affichés assez longtemps pour être lus","Rien","Qu''ils soient flous","Qu''ils soient très rapides"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que demander dans les retours du client ?', '["Un vote","Rien","Un nouveau brief","Des commentaires avec code temporel"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Pourquoi livrer des pistes audio séparées ?', '["Pour supprimer la voix","Rien","Pour réduire la qualité","Pour ajuster voix, musique et bruitages séparément"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que doit permettre la licence d''une police ?', '["Uniquement l''usage personnel","Rien","Seulement l''impression","L''usage en vidéo et si besoin l''envoi au client"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que signifie travailler en marque blanche ?', '["Ne pas contacter les clients de l''agence","Travailler gratuitement","Signer chaque vidéo","Utiliser du blanc partout"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que contient le forfait vidéo explicative ?', '["Script, storyboard, animation, voix off et sous-titres","Un site web","Seulement un logo","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Que peut viser un studio malgache complet ?', '["Uniquement la télévision étrangère","Des appels d''offres d''ONG et d''organisations internationales","Rien","Uniquement des mariages"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('media-1-a', 'Vers quoi peut évoluer un motion designer ?', '["Comptabilité uniquement","Rien","Direction artistique, 3D, interfaces ou réalisation","Plomberie"]'::jsonb, 2);
 
 -- media-1-f
 delete from public.exam_questions where course_id = 'media-1-f';

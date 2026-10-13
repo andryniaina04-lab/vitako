@@ -6138,6 +6138,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "media-1-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du motion designer un professionnel recherché par les agences et les marques : spécialité (vidéos explicatives, identité animée, interfaces, publicités sociales, données, 3D), diagnostic de communication animée, styleframes, outils payants (Adobe After Effects et Cinema 4D), éditeur de courbes, expressions, modèles modifiables, Lottie, MoGraph, production en étapes validées, animatique, organisation des projets, rendu, contrôle qualité, brief en anglais, livrables standards, licences, validations à distance, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité du motion design et mener un diagnostic client",
+   "Utiliser les fonctions professionnelles d'After Effects et de Cinema 4D",
+   "Livrer des modèles modifiables, des animations Lottie et des rendus adaptés",
+   "Suivre une méthode de production de studio avec validations et contrôle qualité",
+   "Travailler avec des agences étrangères : anglais, livrables, licences et validations",
+   "Développer son activité avec des forfaits, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et réaliser un diagnostic de communication animée",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, diagnostic du message, des vidéos, de l'identité, des formats, des langues et de l'accessibilité, styleframes, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic de communication animée : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : Adobe After Effects et Cinema 4D",
+    "summary": "Compositions, calques de forme, éditeur de courbes, parentage, expressions simples, modèles MOGRT, Lottie, vidéos avec transparence, cloneurs et effecteurs MoGraph, rendu et choix d'investissement.",
+    "sections": [
+     "After Effects : les fonctions essentielles",
+     "Quelques expressions simples",
+     "Modèles modifiables et animations Lottie",
+     "Cinema 4D : la 3D pour le motion design",
+     "Choisir quand investir",
+     "Exercice pratique : un kit d'identité animée"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : étapes, organisation, réutilisation et rendu",
+    "summary": "Script, storyboard, styleframes, animatique, animation et finalisation validés par écrit, structure de dossiers, versions, préréglages et bibliothèques, formats de rendu, envoi de gros fichiers, grille de contrôle.",
+    "sections": [
+     "Les étapes de production",
+     "Organiser projets et fichiers",
+     "Réutiliser pour aller plus vite",
+     "Le rendu",
+     "Le contrôle avant livraison",
+     "Exercice pratique : une production complète"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, livrables, licences et validations",
+    "summary": "Formules en anglais et retours avec code temporel, livrables standards et version sans texte, licences de musiques, polices, images et voix, plateformes de relecture, conditions avec une agence.",
+    "sections": [
+     "Le brief et les échanges en anglais",
+     "Les livrables standards des agences",
+     "Musiques, polices et images",
+     "Les validations à distance",
+     "Vos conditions avec une agence étrangère",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : forfaits, études de cas et studio",
+    "summary": "Trois voies, forfaits calculés sur le temps réel, abonnement réseaux sociaux, études de cas avec étapes et accord du client, studio avec contrats et droits, évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les études de cas",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "media-1-f": {
   "hours": 18,
   "description": "Le motion designer anime des textes, des logos, des formes et des chiffres pour expliquer et mettre en valeur un message. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des marques, des ONG, des créateurs et des agences, à Madagascar et à l'étranger, avec Jitter et Blender : types de projets, étapes, images clés, principes de l'animation, timing, typographie animée, storyboard et animatique, logo animé, 3D simple, vidéo explicative en plusieurs langues et formats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
