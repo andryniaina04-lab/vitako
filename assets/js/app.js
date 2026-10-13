@@ -295,7 +295,7 @@ function catalog() {
   else if (S.profile && !hasAccess()) banner = notice(pendingPayment() ? 'info' : 'warn', pendingPayment()
     ? `Votre paiement est en attente de validation (en général sous ${esc(CFG.validationDelay)}).`
     : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${priceHtml()} / ${S.days} jours)</a>.`);
-  return `${pageHead('Catalogue', 'Toutes les formations', `<p class="muted">${JOBS.filter((j) => !j.single).length} métiers du freelance et du télétravail, chacun en Fondamentaux et Avancé, plus ${JOBS.filter((j) => j.single).length} formations de développement personnel.</p>`)}
+  return `${pageHead('Catalogue', 'Toutes les formations')}
   ${promoBanner()}
   ${banner ? `<div style="margin-bottom:18px">${banner}</div>` : ''}
   <div class="filters">
@@ -344,7 +344,6 @@ function home() {
   <section class="lp-cat" aria-labelledby="cat-title">
     <div class="eyebrow lp-eyebrow">Catalogue</div>
     <h2 id="cat-title">Toutes les formations</h2>
-    <p class="muted">${nJobs} métiers du freelance et du télétravail, chacun en Fondamentaux et Avancé, plus ${JOBS.filter((j) => j.single).length} formations de développement personnel. Choisissez un domaine :</p>
     <div class="chips">${`<button class="chip" data-act="dom-go" data-d="all">${DOM_ICONS.all}<span>Tous les domaines</span></button>` + DOMAINS_LIST.map((d) => `<button class="chip" data-act="dom-go" data-d="${d.id}">${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></button>`).join('')}</div>
   </section>
   <section class="lp-sec-block" aria-labelledby="feat-title">
