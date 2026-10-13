@@ -2896,6 +2896,83 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-3-a": {
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du chef de projet digital un professionnel qui pilote des projets plus gros et plus risqués : spécialité (Scrum Master, Product Owner, agence, e-commerce, projets financés, PMO), diagnostic et redressement d'un projet en difficulté, outils payants (Jira, Monday.com et Notion Plus), estimation en points et en fourchettes, suivi du budget, RACI, réunions et parties prenantes, équipes internationales en anglais, cultures de travail, certifications et projets de bailleurs, puis tarif journalier, études de cas et réseau de partenaires. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, diagnostiquer et redresser un projet en difficulté",
+   "Piloter un projet agile dans Jira et un portefeuille dans Monday.com",
+   "Documenter décisions, réunions et risques dans Notion Plus",
+   "Estimer de façon fiable, suivre le budget et clarifier les rôles",
+   "Piloter une équipe internationale en anglais et répondre aux exigences des bailleurs",
+   "Fixer un tarif journalier, rédiger des études de cas et construire un réseau de partenaires"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, diagnostiquer et redresser un projet",
+    "summary": "Les 6 spécialités avancées, le backlog, le diagnostic en 6 domaines, les signaux d'alerte, le plan de redressement et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Le diagnostic d'un projet en difficulté",
+     "Le plan de redressement",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre diagnostic"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Jira, Monday.com et Notion Plus",
+    "summary": "Epics, histoires et sprints dans Jira, burndown, vélocité et flux cumulé, portefeuille et charge dans Monday.com, documentation de projet dans Notion Plus et choix de l'outil.",
+    "sections": [
+     "Jira : piloter un projet agile",
+     "Monday.com : suivre plusieurs projets",
+     "Notion Plus : la documentation de projet",
+     "Choisir l'outil",
+     "Exercice pratique : un projet outillé"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : estimation, budget, RACI, réunions et parties prenantes",
+    "summary": "Points d'effort, planning poker et estimation à trois points, suivi du budget et coût final prévu, matrice RACI, réunions utiles, parties prenantes et registre des décisions.",
+    "sections": [
+     "Estimer de façon fiable",
+     "Suivre le budget",
+     "Clarifier les rôles avec RACI",
+     "Des réunions utiles",
+     "Gérer les parties prenantes",
+     "Exercice pratique : la méthode professionnelle"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, équipes réparties, cultures, certifications et bailleurs",
+    "summary": "Rapport d'état en anglais, formules utiles, équipes sur plusieurs fuseaux, différences culturelles, PSM, PSPO, CAPM, PMP, PRINCE2 et exigences des bailleurs avec le cadre logique.",
+    "sections": [
+     "Communiquer en anglais",
+     "Piloter une équipe répartie",
+     "Les cultures de travail",
+     "Les certifications reconnues",
+     "Les projets financés par des bailleurs",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : tarif, offres, études de cas et partenaires",
+    "summary": "Trois voies, tarif journalier sur les jours facturables, formules, risque du forfait, études de cas chiffrées, réseau de partenaires et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des prix durables",
+     "Les études de cas chiffrées",
+     "Un réseau de partenaires",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "edu-3-f": {
   "hours": 15,
   "description": "Le chef de projet digital organise et coordonne un projet numérique, de l'idée à la livraison, dans les délais, le budget et la qualité convenus. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des agences, des entreprises de services numériques et des ONG, à Madagascar et à l'étranger, avec Trello et Notion : cadrage, découpage, planning, risques, demandes de changement, rituels agiles, recette, mise en ligne et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

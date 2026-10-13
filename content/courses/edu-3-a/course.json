@@ -1,0 +1,97 @@
+{
+  "id": "edu-3-a",
+  "hours": 16,
+  "description": "Ce niveau Avancé fait du chef de projet digital un professionnel qui pilote des projets plus gros et plus risqués : spécialité (Scrum Master, Product Owner, agence, e-commerce, projets financés, PMO), diagnostic et redressement d'un projet en difficulté, outils payants (Jira, Monday.com et Notion Plus), estimation en points et en fourchettes, suivi du budget, RACI, réunions et parties prenantes, équipes internationales en anglais, cultures de travail, certifications et projets de bailleurs, puis tarif journalier, études de cas et réseau de partenaires. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité, diagnostiquer et redresser un projet en difficulté",
+    "Piloter un projet agile dans Jira et un portefeuille dans Monday.com",
+    "Documenter décisions, réunions et risques dans Notion Plus",
+    "Estimer de façon fiable, suivre le budget et clarifier les rôles",
+    "Piloter une équipe internationale en anglais et répondre aux exigences des bailleurs",
+    "Fixer un tarif journalier, rédiger des études de cas et construire un réseau de partenaires"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, diagnostiquer et redresser un projet",
+      "summary": "Les 6 spécialités avancées, le backlog, le diagnostic en 6 domaines, les signaux d'alerte, le plan de redressement et les offres à forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le backlog ?", "options": ["La liste ordonnée de ce qui reste à construire", "Une facture", "Un compte rendu", "Un outil de dessin"], "correct": 0 },
+        { "q": "Quel est un signal d'alerte d'un projet ?", "options": ["« Presque fini » depuis plusieurs semaines", "Une démonstration chaque semaine", "Des décisions écrites", "Un périmètre clair"], "correct": 0 },
+        { "q": "Quelle mesure est souvent la plus efficace pour redresser un projet ?", "options": ["Réduire le périmètre", "Ajouter beaucoup de personnes", "Supprimer les tests", "Arrêter les réunions avec le client"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Jira, Monday.com et Notion Plus",
+      "summary": "Epics, histoires et sprints dans Jira, burndown, vélocité et flux cumulé, portefeuille et charge dans Monday.com, documentation de projet dans Notion Plus et choix de l'outil.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert la vélocité ?", "options": ["Prévoir ce que l'équipe peut faire", "Comparer les équipes", "Mettre la pression", "Calculer les salaires"], "correct": 0 },
+        { "q": "Quel outil convient pour suivre plusieurs projets et la charge des équipes ?", "options": ["Monday.com", "Audacity", "Photopea", "Postman"], "correct": 0 },
+        { "q": "Où ne jamais stocker de mots de passe ?", "options": ["Dans un wiki ou une page partagée", "Dans un gestionnaire de mots de passe", "Nulle part du tout", "Dans un coffre-fort numérique"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : estimation, budget, RACI, réunions et parties prenantes",
+      "summary": "Points d'effort, planning poker et estimation à trois points, suivi du budget et coût final prévu, matrice RACI, réunions utiles, parties prenantes et registre des décisions.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi donner une fourchette plutôt qu'une date unique ?", "options": ["Elle reste honnête et montre les hypothèses", "Pour éviter de travailler", "Pour tromper le client", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Sur quoi mesurer l'avancement ?", "options": ["Le travail réellement terminé et validé", "Le temps passé", "Le nombre de réunions", "Le nombre de messages"], "correct": 0 },
+        { "q": "Combien d'approbateurs par activité dans une RACI ?", "options": ["Un seul", "Tous", "Aucun", "Trois"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, équipes réparties, cultures, certifications et bailleurs",
+      "summary": "Rapport d'état en anglais, formules utiles, équipes sur plusieurs fuseaux, différences culturelles, PSM, PSPO, CAPM, PMP, PRINCE2 et exigences des bailleurs avec le cadre logique.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que contient un rapport d'état hebdomadaire ?", "options": ["Statut, fait, suite, risques, décision demandée", "Seulement des félicitations", "La liste des salaires", "Rien"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un cadre logique ?", "options": ["Un tableau reliant activités, résultats, objectifs et indicateurs", "Un logiciel", "Un contrat de travail", "Un type de réunion"], "correct": 0 },
+        { "q": "Quelle certification vise les Scrum Masters ?", "options": ["PSM I ou CSM", "PMP uniquement", "ISTQB", "TOEIC"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : tarif, offres, études de cas et partenaires",
+      "summary": "Trois voies, tarif journalier sur les jours facturables, formules, risque du forfait, études de cas chiffrées, réseau de partenaires et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment calculer son tarif journalier minimum ?", "options": ["Revenu annuel visé divisé par les jours facturables réalistes", "Au hasard", "Copier un collègue", "Diviser par 365"], "correct": 0 },
+        { "q": "Qui porte le risque de dépassement d'un projet vendu au forfait ?", "options": ["Le chef de projet qui l'a vendu", "Le client", "Personne", "Le bailleur"], "correct": 0 },
+        { "q": "Que faut-il avec chaque partenaire du réseau ?", "options": ["Un contrat écrit", "Rien", "Un mot de passe partagé", "Un paiement avant tout travail"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un Product Owner ?", "options": ["Il décide de ce qui est construit et dans quel ordre", "Il code toutes les fonctions", "Il gère la paie", "Il teste seul le produit"], "correct": 0 },
+    { "q": "Quelle spécialité suit un ensemble de projets pour une direction ?", "options": ["Le bureau de projets (PMO)", "Le Scrum Master", "Le testeur", "Le graphiste"], "correct": 0 },
+    { "q": "Pourquoi le diagnostic est-il une bonne offre d'entrée ?", "options": ["Les clients appellent souvent quand le projet va déjà mal", "Il est toujours gratuit", "Il évite tout travail", "Il remplace le projet"], "correct": 0 },
+    { "q": "Comment présenter un diagnostic ?", "options": ["Avec des faits, sans accuser personne", "En accusant l'équipe", "Sans chiffres", "Oralement seulement"], "correct": 0 },
+    { "q": "Que se passe-t-il souvent quand on ajoute des personnes à un projet en retard ?", "options": ["Il ralentit au début", "Il finit immédiatement", "Rien ne change", "Le budget baisse"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un epic ?", "options": ["Un grand ensemble de travail regroupant des histoires", "Un bug", "Une réunion", "Un logiciel"], "correct": 0 },
+    { "q": "Que montre le burndown ?", "options": ["Le travail restant du sprint jour après jour", "Les salaires", "Les bugs en production", "La météo"], "correct": 0 },
+    { "q": "Que signale un burndown plat qui tombe le dernier jour ?", "options": ["Des tâches trop grosses ou mises à jour tardivement", "Une équipe parfaite", "Un sprint annulé", "Rien"], "correct": 0 },
+    { "q": "Que montre la vue charge de travail de Monday.com ?", "options": ["Qui est surchargé et qui est disponible", "Les couleurs du projet", "Les mots de passe", "Les factures"], "correct": 0 },
+    { "q": "Que contient la base Décisions dans Notion ?", "options": ["Date, décision, qui a décidé et pourquoi", "Les mots de passe", "Les photos de l'équipe", "Rien"], "correct": 0 },
+    { "q": "Quel outil utiliser si le client en a déjà un ?", "options": ["L'outil du client, sauf problème grave", "Toujours un nouvel outil", "Aucun outil", "Un tableur imprimé"], "correct": 0 },
+    { "q": "Qu'est-ce que le planning poker ?", "options": ["Chaque membre estime en même temps puis on discute des écarts", "Un jeu d'argent", "Une réunion de recrutement", "Un outil de paiement"], "correct": 0 },
+    { "q": "Avec optimiste 4, probable 6, pessimiste 14, quelle estimation à trois points ?", "options": ["7 semaines", "6 semaines", "14 semaines", "4 semaines"], "correct": 0 },
+    { "q": "Budget 20 M, dépensé 12 M, travail fait 50 % : quel écart ?", "options": ["2 M de dépassement", "Aucun écart", "8 M d'économie", "10 M de dépassement"], "correct": 0 },
+    { "q": "Que signifie le « A » de RACI ?", "options": ["Approbateur", "Assistant", "Absent", "Archive"], "correct": 0 },
+    { "q": "Quand envoyer le compte rendu d'une réunion ?", "options": ["Dans les 24 heures", "Un mois après", "Jamais", "Avant la réunion"], "correct": 0 },
+    { "q": "Pourquoi un registre des décisions ?", "options": ["Garder la trace de qui a décidé quoi et pourquoi", "Pour décorer", "Pour remplacer le budget", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Comment refuser un ajout en anglais avec tact ?", "options": ["Expliquer l'effet sur le délai et proposer la phase 2", "Dire « No » sans explication", "Ignorer la demande", "L'ajouter sans rien dire"], "correct": 0 },
+    { "q": "Que privilégier avec des équipes sur plusieurs fuseaux ?", "options": ["Le travail asynchrone et l'écrit", "Des réunions de 4 heures", "Aucune communication", "Des appels la nuit pour tous"], "correct": 0 },
+    { "q": "Que faire dans une équipe où l'on hésite à signaler les problèmes ?", "options": ["Demander des retours individuels et remercier ceux qui alertent", "Punir les alertes", "Ne rien changer", "Supprimer les réunions"], "correct": 0 },
+    { "q": "Quelle certification exige de l'expérience en gestion de projet ?", "options": ["PMP", "CAPM", "Aucune", "PSM I"], "correct": 0 },
+    { "q": "Que demander pour justifier les dépenses d'un projet financé ?", "options": ["Factures, contrats, listes de présence classées", "Rien", "Seulement des photos", "Des promesses orales"], "correct": 0 },
+    { "q": "Combien de jours facturables compter souvent pour un indépendant ?", "options": ["120 à 160 par an", "365 par an", "30 par an", "300 par an"], "correct": 0 },
+    { "q": "Que préciser dans une étude de cas ?", "options": ["Votre rôle précis et des chiffres", "Rien de précis", "Les salaires de l'équipe", "Des résultats inventés"], "correct": 0 },
+    { "q": "Quel avantage offre un réseau de partenaires à Antananarivo ?", "options": ["Proposer une équipe complète francophone avec un seul interlocuteur", "Ne rien payer", "Éviter les contrats", "Travailler sans méthode"], "correct": 0 }
+  ]
+}

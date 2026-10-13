@@ -100,7 +100,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 11, false),
   ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
-  ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 15, false),
+  ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true),
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
@@ -19759,6 +19759,548 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quel avantage offre un forfait de 10 cours payé d''avance ?', '["Moins de préparation","Des revenus plus réguliers et un élève engagé","Des cours plus courts","Aucun"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle règle d''annulation est raisonnable ?', '["Jamais d''annulation possible","Gratuite jusqu''à 24 heures avant","Annulation possible après le cours","Pas de règle écrite"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-0-f', 'Quelle évolution permet de vendre des cours vidéo ?', '["Développeur back-end","Monteur audio","Créateur de cours","Comptable"]'::jsonb, 2);
+
+-- edu-3-a
+delete from public.exam_questions where course_id = 'edu-3-a';
+delete from public.module_questions where course_id = 'edu-3-a';
+delete from public.lessons where course_id = 'edu-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-a', 0, 'Se spécialiser, diagnostiquer et redresser un projet', 'Les 6 spécialités avancées, le backlog, le diagnostic en 6 domaines, les signaux d''alerte, le plan de redressement et les offres à forte valeur.', 'Coordonner un petit site web ouvre les premières missions. Les chefs de projet digital les mieux payés pilotent des projets **plus gros et plus risqués** : plusieurs équipes, des budgets importants, des clients exigeants, et ils savent redresser un projet en difficulté. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la gestion de projet digital.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un diagnostic d''un projet en difficulté.
+> 4. Présenter un plan de redressement.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Scrum Master** | Faire fonctionner une équipe agile, lever les obstacles | Scrum, animation, amélioration continue |
+| 2 | **Product Owner** | Décider de ce qui est construit et dans quel ordre | Backlog, priorités, besoins des utilisateurs |
+| 3 | **Chef de projet en agence web** | Mener plusieurs projets clients en parallèle | Devis, planning, relation client, rentabilité |
+| 4 | **Projets e-commerce** | Lancer ou migrer une boutique en ligne | Paiement, logistique, catalogue, mise en ligne |
+| 5 | **Projets financés** (ONG, bailleurs) | Piloter des projets numériques avec rapports aux financeurs | Cadre logique, indicateurs, budget, rapports |
+| 6 | **Bureau de projets** (PMO) | Suivre un ensemble de projets pour une direction | Tableaux de bord, standards, arbitrages |
+
+> [!definition] Backlog
+> La liste ordonnée de tout ce qui reste à construire dans un produit. Le Product Owner la tient à jour et décide des priorités.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Projets financés** : de nombreuses ONG et programmes de coopération à Madagascar ont des projets numériques et des exigences de rapport précises.
+> - **Coordination d''équipes offshore** : les entreprises de services numériques d''Antananarivo travaillent pour des clients européens et ont besoin de chefs de projet francophones.
+> - **Projets e-commerce francophones** pour l''Europe et l''Afrique.
+
+## Le diagnostic d''un projet en difficulté
+
+Beaucoup de clients appellent un chef de projet quand le projet **va déjà mal**. Un diagnostic rapide est une excellente offre d''entrée.
+
+| Domaine | Questions |
+| --- | --- |
+| **Périmètre** | Le périmètre est-il écrit ? A-t-il changé sans accord ? |
+| **Planning** | Quel retard réel ? Les estimations étaient-elles réalistes ? |
+| **Budget** | Combien dépensé, combien reste-t-il à dépenser ? |
+| **Équipe** | Rôles clairs ? Personnes surchargées ou absentes ? |
+| **Qualité** | Nombre de bugs, tests, dette technique |
+| **Communication** | Fréquence des points, décisions écrites, satisfaction du client |
+
+### Les signaux d''alerte
+
+1. **« Presque fini »** depuis plusieurs semaines.
+2. **Aucune démonstration** concrète depuis longtemps.
+3. **Demandes ajoutées** sans changement de délai ni de budget.
+4. **Décisions orales** jamais écrites.
+5. **Une seule personne** sait comment tout fonctionne.
+
+## Le plan de redressement
+
+```
+Projet : application de suivi scolaire – ONG Fanabeazana
+Diagnostic : 9 semaines de retard ; 40 % du budget restant pour 60 % du travail.
+
+Causes principales
+1. Périmètre jamais figé : 23 fonctions ajoutées depuis le lancement.
+2. Aucun environnement de test : bugs découverts par les utilisateurs.
+3. Développeur principal seul à connaître le code.
+
+Plan proposé
+- Semaine 1 : geler le périmètre ; classer les fonctions en « indispensable », « utile », « plus tard ».
+- Semaines 2 à 6 : livrer uniquement l''indispensable, démonstration chaque vendredi.
+- Dès maintenant : environnement de test, documentation, second développeur en binôme.
+- Décision demandée au comité : report des fonctions « plus tard » à une phase 2 financée séparément.
+```
+
+> [!astuce]
+> Dans un plan de redressement, **réduire le périmètre** est presque toujours plus efficace qu''ajouter des personnes. Ajouter des personnes à un projet en retard le ralentit souvent au début.
+
+> [!attention]
+> Présentez le diagnostic avec des **faits**, sans accuser personne. L''équipe en place doit rester motivée : vous aurez besoin d''elle pour réussir le redressement.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic de projet** | Analyse en 1 semaine, rapport, plan | 600 000 Ar |
+| **Pilotage de projet** | Chef de projet à temps partiel jusqu''à la mise en ligne | 2 500 000 Ar par mois |
+| **Scrum Master à temps partiel** | Rituels, amélioration continue, indicateurs | 1 800 000 Ar par mois |
+| **Mise en place d''un bureau de projets** | Standards, modèles, tableau de bord | 3 000 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : Scrum Master, Product Owner, agence, e-commerce, projets financés, PMO.
+> - Le diagnostic d''un projet en difficulté est une offre d''entrée recherchée.
+> - Repérer les signaux d''alerte.
+> - Redresser en réduisant le périmètre, avec des faits et sans accuser.
+> - Des offres à valeur : diagnostic, pilotage, Scrum Master, PMO.
+
+## Exercice pratique : votre spécialité et votre diagnostic
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Inventez (ou reprenez de votre expérience) un projet en difficulté et faites son diagnostic dans les 6 domaines.
+> 3. Rédigez un plan de redressement avec une décision demandée au client.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre diagnostic, votre plan et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 0, 0, 'Qu''est-ce que le backlog ?', '["Une facture","Un outil de dessin","Un compte rendu","La liste ordonnée de ce qui reste à construire"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 0, 1, 'Quel est un signal d''alerte d''un projet ?', '["« Presque fini » depuis plusieurs semaines","Une démonstration chaque semaine","Des décisions écrites","Un périmètre clair"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 0, 2, 'Quelle mesure est souvent la plus efficace pour redresser un projet ?', '["Réduire le périmètre","Ajouter beaucoup de personnes","Supprimer les tests","Arrêter les réunions avec le client"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-a', 1, 'Outils professionnels : Jira, Monday.com et Notion Plus', 'Epics, histoires et sprints dans Jira, burndown, vélocité et flux cumulé, portefeuille et charge dans Monday.com, documentation de projet dans Notion Plus et choix de l''outil.', 'Les équipes professionnelles pilotent leurs projets avec **Jira**, **Monday.com** ou **Notion Plus**. Ce module vous apprend à organiser un projet agile dans Jira, à suivre un portefeuille de projets dans Monday.com, et à construire une documentation de projet partagée dans Notion.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un projet Scrum dans Jira : epics, backlog, sprints.
+> 2. Lire les rapports agiles de Jira.
+> 3. Suivre plusieurs projets et la charge des équipes dans Monday.com.
+> 4. Construire un espace de projet documenté dans Notion Plus.
+> 5. Choisir l''outil adapté au client.
+
+## Jira : piloter un projet agile
+
+### La hiérarchie du travail
+
+| Niveau | Exemple |
+| --- | --- |
+| **Epic** | « Paiement en ligne » |
+| **Histoire utilisateur** (story) | « En tant que client, je veux payer par Mobile Money afin de valider ma commande » |
+| **Sous-tâche** | « Intégrer l''API de paiement », « Écrire les tests » |
+| **Bug** | « Le paiement échoue avec un numéro commençant par 034 » |
+
+### Le déroulé d''un sprint dans Jira
+
+1. **Affiner** le backlog : histoires claires, critères d''acceptation, estimations.
+2. **Planifier** : glisser dans le sprint ce que l''équipe peut terminer.
+3. **Suivre** sur le tableau : À faire, En cours, En revue, Terminé.
+4. **Clôturer** : les éléments non terminés retournent au backlog.
+
+### Les rapports agiles
+
+| Rapport | Ce qu''il montre |
+| --- | --- |
+| **Burndown** | Le travail restant du sprint jour après jour |
+| **Vélocité** | La quantité de travail terminée par sprint, sur plusieurs sprints |
+| **Rapport de sprint** | Ce qui a été terminé, ajouté ou retiré |
+| **Diagramme de flux cumulé** | Les goulots d''étranglement (par exemple trop d''éléments en revue) |
+| **Feuille de route** (roadmap) | Les epics dans le temps |
+
+> [!definition] Vélocité
+> La moyenne du travail terminé par sprint. Elle sert à **prévoir** ce que l''équipe peut faire, jamais à comparer des équipes ou à mettre la pression.
+
+> [!astuce]
+> Un burndown qui reste plat puis tombe d''un coup le dernier jour signale des tâches trop grosses ou mises à jour tardivement. Proposez de **découper** davantage les histoires.
+
+## Monday.com : suivre plusieurs projets
+
+| Fonction | Usage |
+| --- | --- |
+| **Tableaux** (boards) | Un tableau par projet ou par client |
+| **Colonnes** | Statut, responsable, échéance, budget, priorité |
+| **Vues** | Tableau, Kanban, Gantt, calendrier |
+| **Tableaux de bord** | Vue d''ensemble de tous les projets |
+| **Charge de travail** (workload) | Qui est surchargé, qui est disponible |
+| **Automatisations** | Notifier quand une échéance approche, changer un statut |
+
+> [!exemple] Un tableau de bord de portefeuille
+> 8 projets en cours · 5 en vert, 2 en orange, 1 en rouge · Budget consommé : 62 % pour 58 % d''avancement · 2 personnes chargées à plus de 120 % la semaine prochaine.
+
+## Notion Plus : la documentation de projet
+
+| Élément | Contenu |
+| --- | --- |
+| **Page d''accueil du projet** | Objectif, équipe, liens, météo |
+| **Base Décisions** | Date, décision, qui a décidé, pourquoi |
+| **Base Réunions** | Comptes rendus reliés aux décisions et actions |
+| **Base Risques** | Probabilité, impact, plan, responsable |
+| **Wiki** | Procédures, accès, glossaire |
+| **Partage** | Invités du client avec droits limités |
+
+> [!attention]
+> Ne stockez jamais de **mots de passe** dans un wiki ou une page partagée. Utilisez le gestionnaire de mots de passe de l''équipe et indiquez seulement où trouver l''accès.
+
+## Choisir l''outil
+
+| Situation | Outil conseillé |
+| --- | --- |
+| Équipe de développement agile | Jira |
+| Agence ou direction qui suit plusieurs projets et la charge | Monday.com |
+| Petite équipe qui veut documentation et tâches au même endroit | Notion Plus |
+| Client avec un outil déjà en place | L''outil du client, sauf problème grave |
+
+> [!madagascar]
+> Ces abonnements sont payés **par le client ou l''employeur**, en dollars. Pour vous former, utilisez les offres gratuites et les essais. Indiquez sur votre profil ce que vous avez réellement configuré dans chaque outil, avec des captures de votre portfolio.
+
+> [!retenir]
+> - Jira : epics, histoires, sous-tâches, sprints et rapports agiles.
+> - La vélocité sert à prévoir, jamais à comparer ou à mettre la pression.
+> - Monday.com : portefeuille, tableaux de bord, charge de travail.
+> - Notion Plus : décisions, réunions, risques, wiki, partage limité.
+> - Utiliser l''outil du client quand il existe.
+
+## Exercice pratique : un projet outillé
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Dans Jira (gratuit), créez un projet Scrum avec 3 epics, 15 histoires et un sprint.
+> 2. Simulez le sprint pendant quelques jours et observez le burndown.
+> 3. Dans Monday.com (essai), créez un tableau de bord de 4 projets fictifs.
+> 4. Dans Notion, créez l''espace de projet avec les bases Décisions, Réunions et Risques.
+>
+> **À livrer** : des captures des 3 outils et une note sur l''outil que vous conseilleriez à une agence.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 1, 0, 'À quoi sert la vélocité ?', '["Comparer les équipes","Prévoir ce que l''équipe peut faire","Mettre la pression","Calculer les salaires"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 1, 1, 'Quel outil convient pour suivre plusieurs projets et la charge des équipes ?', '["Audacity","Postman","Monday.com","Photopea"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 1, 2, 'Où ne jamais stocker de mots de passe ?', '["Nulle part du tout","Dans un coffre-fort numérique","Dans un wiki ou une page partagée","Dans un gestionnaire de mots de passe"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-a', 2, 'Qualité et rapidité : estimation, budget, RACI, réunions et parties prenantes', 'Points d''effort, planning poker et estimation à trois points, suivi du budget et coût final prévu, matrice RACI, réunions utiles, parties prenantes et registre des décisions.', 'Un projet bien piloté livre **ce qui a été promis, à temps, dans le budget**, avec une équipe qui reste motivée. Ce module vous donne les méthodes des meilleurs chefs de projet : estimer de façon fiable, suivre le budget, définir clairement les rôles, tenir des réunions utiles et gérer les parties prenantes.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Estimer avec des points et des fourchettes.
+> 2. Suivre le budget d''un projet et prévoir son coût final.
+> 3. Clarifier les rôles avec une matrice RACI.
+> 4. Tenir des réunions courtes et utiles.
+> 5. Gérer les parties prenantes et les décisions.
+
+## Estimer de façon fiable
+
+| Méthode | Principe |
+| --- | --- |
+| **Points d''effort** (story points) | Comparer les histoires entre elles (1, 2, 3, 5, 8, 13) plutôt qu''en heures |
+| **Planning poker** | Chaque membre vote en même temps, on discute des écarts |
+| **Fourchette** | « Entre 6 et 9 semaines » plutôt qu''une date unique |
+| **Estimation à trois points** | Optimiste, probable, pessimiste |
+
+> [!definition] Estimation à trois points
+> Une estimation qui combine trois valeurs. Une formule courante : (optimiste + 4 × probable + pessimiste) ÷ 6. Par exemple (4 + 4 × 6 + 14) ÷ 6 = 7 semaines.
+
+> [!astuce]
+> Donnez toujours au client une **fourchette** et ses hypothèses (« si le contenu est fourni avant le 15 »). Une date unique devient une promesse ; une fourchette avec hypothèses reste honnête.
+
+## Suivre le budget
+
+| Élément | Exemple |
+| --- | --- |
+| **Budget total** | 20 000 000 Ar |
+| **Dépensé à ce jour** | 12 000 000 Ar |
+| **Avancement réel** | 50 % du travail terminé |
+| **Valeur du travail fait** | 50 % × 20 000 000 = 10 000 000 Ar |
+| **Écart** | 12 000 000 − 10 000 000 = 2 000 000 Ar de dépassement |
+| **Prévision simple du coût final** | 20 000 000 ÷ (10 000 000 ÷ 12 000 000) = 24 000 000 Ar |
+
+> [!attention]
+> Mesurez l''avancement sur le **travail réellement terminé** (fonctions livrées et validées), pas sur le temps passé. Sinon, le projet paraît « à 90 % » pendant des semaines.
+
+## Clarifier les rôles avec RACI
+
+> [!definition] Matrice RACI
+> Pour chaque activité : qui **R**éalise, qui est **A**pprobateur (une seule personne), qui est **C**onsulté, qui est **I**nformé.
+
+| Activité | Chef de projet | Designer | Développeurs | Client |
+| --- | --- | --- | --- | --- |
+| Maquettes | C | R | C | A |
+| Développement | I | C | R | I |
+| Recette | R | C | C | A |
+| Mise en ligne | A | I | R | I |
+
+## Des réunions utiles
+
+| Règle | Exemple |
+| --- | --- |
+| **Un objectif écrit** | « Décider de la date de mise en ligne » |
+| **Un ordre du jour envoyé avant** | 3 points, avec les documents |
+| **Une durée courte** | 30 minutes, point quotidien de 15 minutes |
+| **Seulement les personnes utiles** | Les autres reçoivent le compte rendu |
+| **Un compte rendu en 24 heures** | Décisions, actions, responsables, dates |
+
+> [!madagascar]
+> Avec des équipes réparties entre Madagascar, l''Europe et parfois le Canada, privilégiez le **travail asynchrone** : mises à jour écrites, vidéos courtes, décisions notées dans l''outil. Gardez les réunions en direct pour les décisions et les rituels essentiels.
+
+## Gérer les parties prenantes
+
+| Partie prenante | Intérêt | Influence | Approche |
+| --- | --- | --- | --- |
+| Directeur de l''ONG | Fort | Forte | Point mensuel, décisions clés |
+| Bailleur de fonds | Moyen | Forte | Rapports aux dates prévues |
+| Équipe terrain | Fort | Faible | Démonstrations, formation, écoute |
+| Service informatique | Moyen | Moyenne | Associer tôt aux choix techniques |
+
+### Le registre des décisions
+
+```
+D-014 · 12/10 · Report du module SMS à la phase 2
+Décidé par : directeur (comité du 12/10)
+Raison : budget restant insuffisant ; priorité au suivi des élèves
+Conséquence : livraison phase 1 maintenue au 30/11
+```
+
+> [!retenir]
+> - Estimer en points et en fourchettes, avec des hypothèses.
+> - Suivre le budget sur le travail terminé et prévoir le coût final.
+> - Une matrice RACI avec un seul approbateur par activité.
+> - Des réunions courtes avec objectif, ordre du jour et compte rendu.
+> - Gérer les parties prenantes et écrire chaque décision.
+
+## Exercice pratique : la méthode professionnelle
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Estimez 10 histoires en points, puis le projet en fourchette à trois points.
+> 2. Calculez l''écart et le coût final prévu d''un projet fictif à mi-parcours.
+> 3. Construisez la matrice RACI du projet.
+> 4. Rédigez l''ordre du jour, le compte rendu et 3 décisions d''un comité de pilotage.
+>
+> **À livrer** : vos estimations, vos calculs, votre RACI, votre compte rendu et votre registre de décisions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 2, 0, 'Pourquoi donner une fourchette plutôt qu''une date unique ?', '["Pour tromper le client","Pour éviter de travailler","Elle reste honnête et montre les hypothèses","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 2, 1, 'Sur quoi mesurer l''avancement ?', '["Le temps passé","Le nombre de messages","Le travail réellement terminé et validé","Le nombre de réunions"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 2, 2, 'Combien d''approbateurs par activité dans une RACI ?', '["Tous","Trois","Un seul","Aucun"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-a', 3, 'Clients internationaux : anglais, équipes réparties, cultures, certifications et bailleurs', 'Rapport d''état en anglais, formules utiles, équipes sur plusieurs fuseaux, différences culturelles, PSM, PSPO, CAPM, PMP, PRINCE2 et exigences des bailleurs avec le cadre logique.', 'Les agences, éditeurs et organisations internationales recrutent des chefs de projet à distance. Ce module vous prépare à travailler avec eux : communiquer en anglais, piloter des équipes réparties sur plusieurs fuseaux, comprendre les différences culturelles, connaître les certifications reconnues et piloter des projets financés par des bailleurs.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Communiquer sur un projet en anglais.
+> 2. Piloter une équipe répartie sur plusieurs fuseaux horaires.
+> 3. Adapter votre communication aux cultures de travail.
+> 4. Choisir une certification reconnue.
+> 5. Répondre aux exigences des bailleurs de fonds.
+
+## Communiquer en anglais
+
+> [!exemple] Weekly status report
+> **Project**: School tracking app · **Week**: 41 · **Status**: Amber
+> **Done**: student profiles, attendance module (validated by the client).
+> **Next week**: grades module, first field test in Antsirabe.
+> **Risks**: field test depends on tablets delivery (expected Oct 20).
+> **Decision needed**: confirm that SMS notifications move to phase 2 by Friday.
+
+| Situation | Formule utile |
+| --- | --- |
+| Annoncer un retard | « We are about one week behind on the payment module. Here is why and what we propose. » |
+| Demander une décision | « We need your decision on X by Friday to keep the launch date. » |
+| Refuser un ajout | « We can add this, but it would move the launch by two weeks. Shall we plan it for phase 2? » |
+| Remercier l''équipe | « Great work on the release, everyone. » |
+
+## Piloter une équipe répartie
+
+| Pratique | Pourquoi |
+| --- | --- |
+| **Heures communes** affichées | Chacun sait quand les autres sont disponibles |
+| **Mises à jour écrites quotidiennes** | Remplacent une partie des réunions |
+| **Délais de réponse convenus** | Par exemple 24 heures pour les questions non urgentes |
+| **Tout dans l''outil** | Décisions et documents accessibles à toute heure |
+| **Rituels tournants** | L''horaire difficile n''est pas toujours pour les mêmes |
+
+> [!madagascar]
+> Madagascar a peu de décalage avec l''Europe (une à deux heures selon la saison) et les mêmes heures que l''Afrique de l''Est. Vous pouvez servir de **pont** entre une équipe de développement à Antananarivo et un client européen : c''est un rôle très recherché par les entreprises de services numériques.
+
+## Les cultures de travail
+
+| Dimension | Exemples de différences |
+| --- | --- |
+| **Communication directe ou indirecte** | Certains disent « non » clairement, d''autres disent « ce sera difficile » |
+| **Rapport à la hiérarchie** | Dans certaines équipes, on n''ose pas contredire le chef en réunion |
+| **Rapport au temps** | Ponctualité stricte ou souplesse |
+| **Décision** | Par le chef seul ou par consensus |
+
+> [!astuce]
+> Dans une équipe où l''on hésite à signaler un problème, demandez des **retours écrits ou individuels**, et remerciez publiquement ceux qui signalent un risque. Les mauvaises nouvelles doivent arriver tôt.
+
+## Les certifications reconnues
+
+| Certification | Pour qui |
+| --- | --- |
+| **Professional Scrum Master (PSM I)** ou **Certified ScrumMaster (CSM)** | Scrum Masters |
+| **Professional Scrum Product Owner (PSPO)** | Product Owners |
+| **CAPM** (PMI) | Débutants en gestion de projet |
+| **PMP** (PMI) | Chefs de projet expérimentés (expérience exigée) |
+| **PRINCE2 Foundation** | Organisations qui utilisent cette méthode, souvent en Europe |
+
+> [!attention]
+> Vérifiez sur le site officiel de chaque organisme les **conditions, le prix, la langue et le mode d''examen** (en ligne surveillé ou en centre). Méfiez-vous des sites qui vendent des certifications sans examen.
+
+## Les projets financés par des bailleurs
+
+| Exigence | Ce que vous devez faire |
+| --- | --- |
+| **Cadre logique** | Relier activités, résultats, objectifs et indicateurs |
+| **Indicateurs** | Les mesurer à chaque période (par exemple nombre d''utilisateurs formés) |
+| **Budget par ligne** | Suivre les dépenses selon les lignes accordées |
+| **Rapports** | Narratif et financier aux dates prévues, dans le format demandé |
+| **Pièces justificatives** | Factures, contrats, listes de présence, classées |
+| **Règles d''achat** | Respecter les procédures (devis comparatifs) |
+
+> [!definition] Cadre logique
+> Un tableau qui présente la logique d''un projet : les activités produisent des résultats, qui contribuent à un objectif, mesurés par des indicateurs avec leurs sources de vérification.
+
+> [!retenir]
+> - Rapports d''état en anglais clairs : statut, fait, suite, risques, décision.
+> - Équipes réparties : heures communes, écrit, tout dans l''outil.
+> - Adapter sa communication aux cultures et encourager les alertes.
+> - PSM, PSPO, CAPM, PMP, PRINCE2 : vérifier les conditions officielles.
+> - Projets financés : cadre logique, indicateurs, budget par ligne, justificatifs.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais 2 rapports d''état hebdomadaires, dont un avec un retard.
+> 2. Proposez l''organisation d''une équipe répartie entre Antananarivo, Paris et Montréal.
+> 3. Rédigez le cadre logique simplifié d''un projet numérique d''ONG.
+> 4. Choisissez une certification et notez ses conditions officielles.
+>
+> **À livrer** : vos rapports, votre organisation, votre cadre logique et votre fiche certification.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 3, 0, 'Que contient un rapport d''état hebdomadaire ?', '["Rien","Statut, fait, suite, risques, décision demandée","La liste des salaires","Seulement des félicitations"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 3, 1, 'Qu''est-ce qu''un cadre logique ?', '["Un logiciel","Un tableau reliant activités, résultats, objectifs et indicateurs","Un type de réunion","Un contrat de travail"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 3, 2, 'Quelle certification vise les Scrum Masters ?', '["PMP uniquement","ISTQB","TOEIC","PSM I ou CSM"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-3-a', 4, 'Développer son activité : tarif, offres, études de cas et partenaires', 'Trois voies, tarif journalier sur les jours facturables, formules, risque du forfait, études de cas chiffrées, réseau de partenaires et évolution.', 'Après quelques projets réussis, vous pouvez construire une **activité stable** de chef de projet : missions longues, offres claires, études de cas, réseau de partenaires, et peut-être une petite structure. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des prix durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Créer un réseau de partenaires ou une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Chef de projet indépendant** | Missions de pilotage, diagnostics | Tarif journalier, forfaits mensuels |
+| **Petite agence de gestion de projet** | Ceux qui aiment vendre et coordonner un réseau | Projets complets avec des partenaires |
+| **Salarié à distance** | Ceux qui préfèrent la stabilité | Salaire, évolution vers la direction de projets |
+
+## Des offres et des prix durables
+
+### Le tarif journalier
+
+1. **Fixez** votre revenu annuel visé.
+2. **Comptez** vos jours facturables réalistes (souvent 120 à 160 par an pour un indépendant, à cause de la prospection, de l''administration et des congés).
+3. **Divisez** pour obtenir votre tarif journalier minimum.
+
+> [!exemple] Calcul
+> Revenu visé : 30 000 000 Ar par an · Jours facturables : 150 · Tarif minimum : **200 000 Ar par jour**. *(Montants donnés en exemple.)*
+
+### Les formules
+
+| Formule | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic** | 5 jours, rapport et plan | 1 000 000 Ar |
+| **Pilotage à temps partiel** | 2 jours par semaine | 1 600 000 Ar par mois |
+| **Pilotage complet** | Du cadrage à la mise en ligne | Selon la durée |
+| **Scrum Master pour plusieurs équipes** | Rituels et coaching | Selon le nombre d''équipes |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Si vous vendez un projet complet au forfait avec des partenaires (designers, développeurs), c''est **vous** qui portez le risque de dépassement. Prévoyez une marge, un périmètre écrit et une procédure de demande de changement.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : ONG de santé, programme financé sur 2 ans.
+> **Problème** : application de suivi des patients avec 4 mois de retard, rapports au bailleur en retard.
+> **Solution** : diagnostic, gel du périmètre, sprints de 2 semaines, tableau de bord des indicateurs, rapports au format du bailleur.
+> **Résultats** : mise en ligne 6 semaines après la reprise ; tous les rapports suivants remis à temps ; 320 agents formés.
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Donnez** des chiffres : délais, budget, utilisateurs.
+3. **Expliquez** votre rôle précis.
+
+## Un réseau de partenaires
+
+| Partenaire | Pourquoi |
+| --- | --- |
+| **Designers UI/UX** | Maquettes pour les projets que vous pilotez |
+| **Développeurs** (front, back, no-code) | Réalisation |
+| **Testeurs** | Qualité avant mise en ligne |
+| **Rédacteurs et traducteurs** | Contenus |
+
+### Les règles du réseau
+
+1. **Contrats écrits** avec chaque partenaire : délais, prix, confidentialité, propriété.
+2. **Même méthode** : outils, rituels, modèles de documents.
+3. **Paiement** des partenaires selon des étapes validées.
+4. **Évaluation** après chaque projet.
+
+> [!madagascar]
+> Antananarivo compte de nombreux freelances et entreprises de services numériques. En les réunissant autour de projets bien pilotés, vous pouvez proposer à des clients étrangers une **équipe complète francophone**, à un coût compétitif et avec un seul interlocuteur : vous.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Directeur de projets ou de programme** | Plusieurs projets liés, budget important, arbitrages |
+| **Responsable produit** (Product Manager) | Stratégie produit, données, utilisateurs |
+| **Coach agile** | Accompagnement de plusieurs équipes et organisations |
+| **Consultant en transformation digitale** | Conseil aux directions |
+
+> [!retenir]
+> - Indépendant, agence ou salarié : choisissez votre voie.
+> - Un tarif journalier basé sur vos jours réellement facturables.
+> - Au forfait, vous portez le risque : marge et périmètre écrit.
+> - Des études de cas chiffrées sur votre rôle.
+> - Un réseau de partenaires avec contrats et méthode commune.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et calculez votre tarif journalier minimum.
+> 2. Construisez 3 formules avec leurs prix.
+> 3. Rédigez une étude de cas à partir de votre projet de formation.
+> 4. Listez 5 partenaires possibles et 10 clients à contacter ; envoyez 3 messages.
+>
+> **À livrer** : votre plan, vos formules, votre étude de cas et vos listes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 4, 0, 'Comment calculer son tarif journalier minimum ?', '["Au hasard","Copier un collègue","Revenu annuel visé divisé par les jours facturables réalistes","Diviser par 365"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 4, 1, 'Qui porte le risque de dépassement d''un projet vendu au forfait ?', '["Le chef de projet qui l''a vendu","Le bailleur","Personne","Le client"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-3-a', 4, 2, 'Que faut-il avec chaque partenaire du réseau ?', '["Un contrat écrit","Rien","Un paiement avant tout travail","Un mot de passe partagé"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que fait un Product Owner ?', '["Il décide de ce qui est construit et dans quel ordre","Il code toutes les fonctions","Il teste seul le produit","Il gère la paie"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Quelle spécialité suit un ensemble de projets pour une direction ?', '["Le bureau de projets (PMO)","Le testeur","Le Scrum Master","Le graphiste"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Pourquoi le diagnostic est-il une bonne offre d''entrée ?', '["Les clients appellent souvent quand le projet va déjà mal","Il est toujours gratuit","Il remplace le projet","Il évite tout travail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Comment présenter un diagnostic ?', '["Sans chiffres","Avec des faits, sans accuser personne","En accusant l''équipe","Oralement seulement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que se passe-t-il souvent quand on ajoute des personnes à un projet en retard ?', '["Le budget baisse","Il ralentit au début","Il finit immédiatement","Rien ne change"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Qu''est-ce qu''un epic ?', '["Une réunion","Un bug","Un grand ensemble de travail regroupant des histoires","Un logiciel"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que montre le burndown ?', '["La météo","Le travail restant du sprint jour après jour","Les salaires","Les bugs en production"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que signale un burndown plat qui tombe le dernier jour ?', '["Un sprint annulé","Rien","Des tâches trop grosses ou mises à jour tardivement","Une équipe parfaite"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que montre la vue charge de travail de Monday.com ?', '["Les factures","Qui est surchargé et qui est disponible","Les couleurs du projet","Les mots de passe"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que contient la base Décisions dans Notion ?', '["Date, décision, qui a décidé et pourquoi","Les mots de passe","Les photos de l''équipe","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Quel outil utiliser si le client en a déjà un ?', '["Un tableur imprimé","Aucun outil","Toujours un nouvel outil","L''outil du client, sauf problème grave"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Qu''est-ce que le planning poker ?', '["Chaque membre estime en même temps puis on discute des écarts","Une réunion de recrutement","Un outil de paiement","Un jeu d''argent"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Avec optimiste 4, probable 6, pessimiste 14, quelle estimation à trois points ?', '["14 semaines","4 semaines","7 semaines","6 semaines"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Budget 20 M, dépensé 12 M, travail fait 50 % : quel écart ?', '["8 M d''économie","2 M de dépassement","10 M de dépassement","Aucun écart"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que signifie le « A » de RACI ?', '["Assistant","Archive","Approbateur","Absent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Quand envoyer le compte rendu d''une réunion ?', '["Jamais","Avant la réunion","Dans les 24 heures","Un mois après"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Pourquoi un registre des décisions ?', '["Pour remplacer le budget","Ce n''est pas utile","Garder la trace de qui a décidé quoi et pourquoi","Pour décorer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Comment refuser un ajout en anglais avec tact ?', '["Expliquer l''effet sur le délai et proposer la phase 2","L''ajouter sans rien dire","Ignorer la demande","Dire « No » sans explication"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que privilégier avec des équipes sur plusieurs fuseaux ?', '["Des réunions de 4 heures","Le travail asynchrone et l''écrit","Des appels la nuit pour tous","Aucune communication"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que faire dans une équipe où l''on hésite à signaler les problèmes ?', '["Punir les alertes","Supprimer les réunions","Demander des retours individuels et remercier ceux qui alertent","Ne rien changer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Quelle certification exige de l''expérience en gestion de projet ?', '["CAPM","PSM I","PMP","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que demander pour justifier les dépenses d''un projet financé ?', '["Seulement des photos","Factures, contrats, listes de présence classées","Des promesses orales","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Combien de jours facturables compter souvent pour un indépendant ?', '["30 par an","365 par an","300 par an","120 à 160 par an"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Que préciser dans une étude de cas ?', '["Des résultats inventés","Les salaires de l''équipe","Votre rôle précis et des chiffres","Rien de précis"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-3-a', 'Quel avantage offre un réseau de partenaires à Antananarivo ?', '["Éviter les contrats","Ne rien payer","Proposer une équipe complète francophone avec un seul interlocuteur","Travailler sans méthode"]'::jsonb, 2);
 
 -- edu-3-f
 delete from public.exam_questions where course_id = 'edu-3-f';
