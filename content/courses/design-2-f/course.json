@@ -1,0 +1,97 @@
+{
+  "id": "design-2-f",
+  "hours": 18,
+  "description": "L'illustrateur numérique crée des images dessinées sur ordinateur ou tablette pour l'édition, les marques, les réseaux sociaux, l'éducation et les produits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des ONG, des auteurs, des éditeurs et des marques, à Madagascar et à l'étranger, avec Krita et Inkscape : matriciel et vectoriel, droits d'auteur, formes, composition, couleur, lumière, fiche personnage, calques, export, commande complète et série cohérente. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Expliquer le métier, les types d'illustrations et les droits d'auteur",
+    "Construire un dessin, composer une image et choisir une palette",
+    "Placer la lumière et créer une fiche personnage",
+    "Dessiner dans Krita et Inkscape et exporter selon l'usage",
+    "Réaliser une commande complète avec validations et série cohérente",
+    "Présenter son portfolio, fixer ses prix et ses droits et se faire payer"
+  ],
+  "modules": [
+    {
+      "title": "Le métier d'illustrateur numérique depuis Madagascar",
+      "summary": "Types d'illustrations et clients, matriciel et vectoriel, résolution, droits d'auteur et IA, qualités de l'illustrateur et poste de travail.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel type d'image reste net à toutes les tailles ?", "options": ["Vectoriel", "Matriciel", "JPEG", "Photo"], "correct": 0 },
+        { "q": "Que achète le client en général ?", "options": ["Des droits d'utilisation précisés par écrit", "L'illustrateur lui-même", "Rien", "Le logiciel"], "correct": 0 },
+        { "q": "Peut-on dessiner un personnage de dessin animé protégé pour un client ?", "options": ["Non", "Oui", "Oui, en changeant les couleurs", "Oui, si c'est petit"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : formes, composition, couleur, lumière et personnages",
+      "summary": "Construction en formes simples et silhouette, point focal et règle des tiers, valeurs et harmonies, source de lumière et ombres, fiche personnage.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert le test de la silhouette ?", "options": ["Vérifier que le dessin reste lisible en noir", "Choisir la couleur", "Exporter", "Rien"], "correct": 0 },
+        { "q": "Comment vérifier les valeurs d'une illustration ?", "options": ["En la passant en niveaux de gris", "En l'agrandissant", "En changeant de logiciel", "En l'imprimant en couleur"], "correct": 0 },
+        { "q": "À quoi sert une fiche personnage ?", "options": ["Garder le personnage identique d'une image à l'autre", "Facturer", "Remplacer le croquis", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Krita, Inkscape, export et outils payants",
+      "summary": "Création du document et fond perdu, calques et brosses de Krita, plume de Bézier et opérations de chemins d'Inkscape, formats d'export, Procreate, Clip Studio Paint et Illustrator.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le fond perdu ?", "options": ["Une marge supplémentaire coupée à l'impression", "Un fond effacé", "Un calque caché", "Une erreur"], "correct": 0 },
+        { "q": "Pourquoi retourner l'image horizontalement ?", "options": ["Repérer les erreurs de proportions", "Changer le style", "Exporter plus vite", "Rien"], "correct": 0 },
+        { "q": "Pourquoi garder le fichier de travail avec ses calques ?", "options": ["Pour modifier facilement à la demande du client", "Pour décorer", "C'est inutile", "Pour l'imprimer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Premier projet : le livret illustré de Rano Madio",
+      "summary": "Brief, références visuelles, recherche de style, fiches personnages, croquis, scène test, corrections, cohérence de la série et dossier de livraison.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire valider avant la couleur ?", "options": ["Les croquis", "La facture", "Rien", "Le fichier final"], "correct": 0 },
+        { "q": "Que demander pour représenter justement un village ?", "options": ["Des photos de référence", "Rien", "Un dessin d'un autre artiste à copier", "Un logo"], "correct": 0 },
+        { "q": "Que faire si l'ONG veut changer de style après validation ?", "options": ["Proposer un supplément", "Le faire gratuitement sans limite", "Refuser sans répondre", "Livrer sans changer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients et se faire payer",
+      "summary": "Portfolio court et cohérent, 5 canaux, prix selon le temps et les droits, conditions en 7 points, paiements et évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien d'illustrations dans un bon portfolio ?", "options": ["10 à 15 de votre meilleur niveau", "Toutes vos images", "Une seule", "100"], "correct": 0 },
+        { "q": "Qu'est-ce qui augmente le prix d'une illustration ?", "options": ["Un usage commercial étendu", "Une couleur bleue", "Un petit format", "Rien"], "correct": 0 },
+        { "q": "Quand livrer les fichiers finaux ?", "options": ["Après le paiement du solde", "Avant tout paiement", "Jamais", "Au hasard"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un illustrateur numérique ?", "options": ["Il crée des images dessinées sur ordinateur ou tablette", "Il prend des photos", "Il programme des sites", "Il monte des vidéos"], "correct": 0 },
+    { "q": "Quel logiciel gratuit sert au vectoriel ?", "options": ["Inkscape", "Krita", "Audacity", "OBS"], "correct": 0 },
+    { "q": "Quelle résolution est courante pour l'impression ?", "options": ["300 ppp à la taille réelle", "72 ppp", "10 ppp", "Aucune"], "correct": 0 },
+    { "q": "Que faire si vous utilisez l'IA pour une étape ?", "options": ["Le dire au client et respecter ses règles", "Le cacher", "Facturer plus", "Rien"], "correct": 0 },
+    { "q": "Quel outil améliore le plus le dessin sur ordinateur ?", "options": ["Une tablette graphique", "Une imprimante", "Une webcam", "Un micro"], "correct": 0 },
+    { "q": "Qu'est-ce que la ligne d'action ?", "options": ["Une courbe qui donne le mouvement de la posture", "Un trait de contour final", "Une règle de prix", "Un calque"], "correct": 0 },
+    { "q": "Qu'est-ce que le point focal ?", "options": ["L'élément que l'œil voit en premier", "Le coin de l'image", "Le logo", "La signature"], "correct": 0 },
+    { "q": "Que demander avant de composer une couverture ?", "options": ["Où ira le texte", "La couleur préférée de l'imprimeur", "Rien", "Le prix du papier"], "correct": 0 },
+    { "q": "Que sont les couleurs complémentaires ?", "options": ["Des couleurs opposées comme bleu et orange", "Des couleurs voisines", "Une seule couleur", "Du noir et blanc"], "correct": 0 },
+    { "q": "Qu'est-ce que l'ombre portée ?", "options": ["L'ombre projetée sur le sol ou un autre objet", "L'ombre sur l'objet lui-même", "La lumière principale", "Un filtre"], "correct": 0 },
+    { "q": "Que contient une fiche personnage ?", "options": ["Vues, proportions, couleurs et expressions", "Le prix", "Le contrat", "Rien"], "correct": 0 },
+    { "q": "Quelle taille pour une publication Instagram ?", "options": ["1080 × 1080 ou 1080 × 1350 pixels", "100 × 100 pixels", "A0", "Aucune"], "correct": 0 },
+    { "q": "Quel est l'ordre de la méthode en calques ?", "options": ["Croquis, encrage, aplats, ombres et lumières, finitions", "Finitions puis croquis", "Couleur puis croquis", "Au hasard"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une courbe de Bézier ?", "options": ["Une courbe modifiée par des points et des poignées", "Une brosse", "Un format", "Une couleur"], "correct": 0 },
+    { "q": "Quel format pour une illustration vectorielle livrée ?", "options": ["SVG ou PDF vectoriel", "JPEG", "MP3", "DOCX"], "correct": 0 },
+    { "q": "Quel outil payant est une référence pour la bande dessinée ?", "options": ["Clip Studio Paint", "Audition", "Zendesk", "Trello"], "correct": 0 },
+    { "q": "Pourquoi les enfants remarquent-ils les incohérences ?", "options": ["Ils reconnaissent tout changement de personnage", "Ils ne regardent pas", "Ils lisent seulement le texte", "Ils préfèrent les erreurs"], "correct": 0 },
+    { "q": "Comment recevoir les corrections ?", "options": ["Groupées en une seule liste par étape", "Une par une tous les jours", "Oralement sans trace", "Jamais"], "correct": 0 },
+    { "q": "Que livrer pour l'impression du livret ?", "options": ["Illustrations 300 ppp avec fond perdu", "Images basse résolution", "Croquis seulement", "Rien"], "correct": 0 },
+    { "q": "Que contient la note de livraison ?", "options": ["Liste des fichiers, droits accordés et crédits", "Le mot de passe", "Rien", "Un poème"], "correct": 0 },
+    { "q": "Pourquoi montrer le processus dans le portfolio ?", "options": ["Montrer votre méthode et votre sérieux", "Pour remplir", "Ce n'est pas utile", "Pour cacher le résultat"], "correct": 0 },
+    { "q": "Quel premier contact proposer à une ONG ?", "options": ["Portfolio et exemple adapté à ses supports", "Une critique de ses supports", "Rien", "Un prix sans exemple"], "correct": 0 },
+    { "q": "Comment calculer un prix ?", "options": ["Temps multiplié par le tarif horaire, plus la valeur des droits", "Au hasard", "Toujours le même prix", "Selon le nombre de couleurs"], "correct": 0 },
+    { "q": "Que demander pour votre portfolio dans les conditions ?", "options": ["Le droit de montrer l'illustration après publication", "Rien", "Le logo du client gratuitement", "Les mots de passe"], "correct": 0 },
+    { "q": "Quel moyen de paiement utiliser avec un client local ?", "options": ["Mobile Money ou virement", "Uniquement PayPal", "Uniquement des chèques étrangers", "Aucun"], "correct": 0 }
+  ]
+}

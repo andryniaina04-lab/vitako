@@ -2319,6 +2319,88 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-2-f": {
+  "hours": 18,
+  "description": "L'illustrateur numérique crée des images dessinées sur ordinateur ou tablette pour l'édition, les marques, les réseaux sociaux, l'éducation et les produits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des ONG, des auteurs, des éditeurs et des marques, à Madagascar et à l'étranger, avec Krita et Inkscape : matriciel et vectoriel, droits d'auteur, formes, composition, couleur, lumière, fiche personnage, calques, export, commande complète et série cohérente. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Expliquer le métier, les types d'illustrations et les droits d'auteur",
+   "Construire un dessin, composer une image et choisir une palette",
+   "Placer la lumière et créer une fiche personnage",
+   "Dessiner dans Krita et Inkscape et exporter selon l'usage",
+   "Réaliser une commande complète avec validations et série cohérente",
+   "Présenter son portfolio, fixer ses prix et ses droits et se faire payer"
+  ],
+  "modules": [
+   {
+    "title": "Le métier d'illustrateur numérique depuis Madagascar",
+    "summary": "Types d'illustrations et clients, matriciel et vectoriel, résolution, droits d'auteur et IA, qualités de l'illustrateur et poste de travail.",
+    "sections": [
+     "Le métier en une phrase",
+     "Les types d'illustrations",
+     "Matriciel ou vectoriel",
+     "Les droits d'auteur : l'essentiel",
+     "Les qualités de l'illustrateur",
+     "Votre poste de travail",
+     "Exercice pratique : découvrir le métier"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les bases : formes, composition, couleur, lumière et personnages",
+    "summary": "Construction en formes simples et silhouette, point focal et règle des tiers, valeurs et harmonies, source de lumière et ombres, fiche personnage.",
+    "sections": [
+     "Construire avec des formes simples",
+     "La composition",
+     "La couleur",
+     "Lumière et ombre",
+     "Créer un personnage",
+     "Exercice pratique : les fondamentaux du dessin"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Les outils : Krita, Inkscape, export et outils payants",
+    "summary": "Création du document et fond perdu, calques et brosses de Krita, plume de Bézier et opérations de chemins d'Inkscape, formats d'export, Procreate, Clip Studio Paint et Illustrator.",
+    "sections": [
+     "Créer le bon document",
+     "Krita : dessin et peinture",
+     "Inkscape : l'illustration vectorielle",
+     "Exporter selon l'usage",
+     "Les outils payants",
+     "Exercice pratique : une illustration complète"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Premier projet : le livret illustré de Rano Madio",
+    "summary": "Brief, références visuelles, recherche de style, fiches personnages, croquis, scène test, corrections, cohérence de la série et dossier de livraison.",
+    "sections": [
+     "Le cas pratique : « Rano Madio »",
+     "Étape 1 : le brief",
+     "Étape 2 : recherches et croquis",
+     "Étape 3 : les corrections",
+     "Étape 4 : la cohérence de la série",
+     "Étape 5 : la livraison",
+     "Exercice pratique : le livret de Rano Madio"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Trouver des clients et se faire payer",
+    "summary": "Portfolio court et cohérent, 5 canaux, prix selon le temps et les droits, conditions en 7 points, paiements et évolution.",
+    "sections": [
+     "Le portfolio",
+     "Où trouver des clients : 5 canaux",
+     "Fixer ses prix",
+     "Vos conditions",
+     "Se faire payer",
+     "Évoluer dans le métier",
+     "Exercice pratique : lancer votre activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "design-3-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du retoucheur photo un professionnel qui livre des images haut de gamme, en volume et dans les délais : spécialité (e-commerce en volume, beauté, immobilier, mariage, restauration, montage), test de retouche, diagnostic et éthique, techniques avancées de Photoshop (séparation de fréquences, dodge and burn, mannequin invisible, outils génératifs) et grandes séries dans Lightroom Classic, gestion des couleurs, actions et lots, contrôle qualité, clients internationaux et places de marché, puis prix par image, forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

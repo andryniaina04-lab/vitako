@@ -7,7 +7,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
   ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
-  ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 12, false),
+  ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 18, true),
   ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
@@ -14855,6 +14855,553 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Où publier une étude de cas visible par les recruteurs ?', '["Nulle part","Un SMS","Un groupe privé","Behance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel partenaire peut vous apporter des projets de design ?', '["Un concurrent direct","Personne","Un client mécontent","Un développeur freelance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quand les fichiers sont-ils transférés au client ?', '["Au premier appel","Avant de commencer","Après le paiement complet","Jamais"]'::jsonb, 2);
+
+-- design-2-f
+delete from public.exam_questions where course_id = 'design-2-f';
+delete from public.module_questions where course_id = 'design-2-f';
+delete from public.lessons where course_id = 'design-2-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 0, 'Le métier d''illustrateur numérique depuis Madagascar', 'Types d''illustrations et clients, matriciel et vectoriel, résolution, droits d''auteur et IA, qualités de l''illustrateur et poste de travail.', 'Livres pour enfants, couvertures, affiches, emballages, publications sur les réseaux sociaux, autocollants, jeux : les illustrations sont partout. L''illustrateur numérique dessine sur ordinateur ou sur tablette, et peut travailler entièrement à distance pour des clients du monde entier. Ce premier module vous présente le métier, ses débouchés et ce qu''il faut pour commencer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce que fait un illustrateur numérique.
+> 2. Distinguer les grands types d''illustrations et de clients.
+> 3. Comprendre la différence entre images matricielles et vectorielles.
+> 4. Connaître les règles de base sur les droits d''auteur.
+> 5. Préparer votre poste de travail.
+
+## Le métier en une phrase
+
+Un illustrateur numérique **crée des images dessinées sur ordinateur ou tablette pour raconter une histoire, expliquer une idée ou donner une identité à une marque**.
+
+## Les types d''illustrations
+
+| Type | Exemples | Clients |
+| --- | --- | --- |
+| **Édition** | Albums jeunesse, couvertures, illustrations intérieures | Auteurs, éditeurs |
+| **Marques** | Mascottes, motifs, emballages, illustrations de site | Entreprises, agences |
+| **Réseaux sociaux** | Illustrations de publications, bandes dessinées courtes | Marques, créateurs, médias |
+| **Éducation** | Manuels, affiches pédagogiques, supports de sensibilisation | ONG, écoles, organismes |
+| **Produits** | Autocollants, t-shirts, cartes, impression à la demande | Boutiques, créateurs |
+| **Jeux et applications** | Personnages, décors, icônes | Studios, développeurs |
+
+> [!madagascar] Votre avantage
+> Les ONG et programmes à Madagascar produisent beaucoup de **supports de sensibilisation illustrés** (santé, environnement, éducation) qui doivent représenter des personnes, des paysages et des situations malgaches. Un illustrateur qui connaît ces réalités est précieux. Les éditeurs francophones cherchent aussi des illustrateurs capables de représenter l''Afrique et l''océan Indien avec justesse.
+
+## Matriciel ou vectoriel
+
+| Critère | Image matricielle (raster) | Image vectorielle |
+| --- | --- | --- |
+| **Principe** | Une grille de pixels | Des formes définies par des calculs |
+| **Agrandissement** | Devient flou si on agrandit trop | Reste net à toutes les tailles |
+| **Style** | Peinture numérique, textures, dégradés riches | Formes nettes, aplats, logos, icônes |
+| **Logiciels gratuits** | Krita | Inkscape |
+| **Usage typique** | Couverture de livre, illustration peinte | Mascotte, motif, illustration pour un site |
+
+> [!definition] Résolution
+> Le nombre de pixels d''une image. Pour l''impression, on parle souvent de 300 pixels par pouce (ppp ou dpi) à la taille réelle. Une illustration prévue pour un livre doit être dessinée **directement en haute résolution**.
+
+## Les droits d''auteur : l''essentiel
+
+| Règle | Explication |
+| --- | --- |
+| **Vous êtes l''auteur** de vos dessins | Vous en avez les droits dès leur création |
+| **Le client achète des droits d''utilisation** | Où, combien de temps, pour quels usages, précisés par écrit |
+| **Ne copiez pas** le travail d''un autre artiste | Même en changeant les couleurs |
+| **Ne dessinez pas** de personnages protégés pour un client | Personnages de dessins animés, mascottes de marques |
+| **Références** | S''inspirer de photos ou de styles est normal ; copier ne l''est pas |
+
+> [!attention]
+> Les illustrations générées par IA posent des questions de droits et sont refusées par certains clients et concours. Si vous utilisez l''IA pour une étape, **dites-le au client** et respectez ses règles. Beaucoup d''éditeurs exigent un travail entièrement réalisé à la main.
+
+## Les qualités de l''illustrateur
+
+1. **Le dessin** : formes, proportions, perspective, s''améliorent avec la pratique quotidienne.
+2. **Le sens de la couleur** et de la composition.
+3. **L''écoute** : comprendre ce que veut le client.
+4. **La régularité** : garder le même style sur toute une série.
+5. **L''organisation** : étapes, délais, fichiers.
+
+## Votre poste de travail
+
+| Élément | Minimum conseillé |
+| --- | --- |
+| **Ordinateur** | 8 Go de mémoire vive, écran correct |
+| **Tablette graphique** | Une tablette à stylet simple suffit pour commencer |
+| **Logiciels gratuits** | Krita (dessin et peinture), Inkscape (vectoriel) |
+| **Carnet de croquis** | Pour s''entraîner et chercher les idées |
+| **Stockage** | Disque externe ou stockage en ligne |
+
+> [!astuce]
+> Une **tablette graphique** à stylet sensible à la pression change tout : on dessine avec la main comme sur papier. Les modèles d''entrée de gamme suffisent largement pour débuter.
+
+> [!retenir]
+> - L''illustrateur crée des images pour l''édition, les marques, les réseaux, l''éducation, les produits et les jeux.
+> - Matriciel pour la peinture numérique, vectoriel pour les formes nettes.
+> - Dessiner en haute résolution quand l''image sera imprimée.
+> - Vous êtes l''auteur ; le client achète des droits d''utilisation précisés par écrit.
+> - Pratique quotidienne, tablette graphique, Krita et Inkscape.
+
+## Exercice pratique : découvrir le métier
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Trouvez 10 illustrations professionnelles de types différents et classez-les (édition, marque, réseaux…).
+> 2. Indiquez pour chacune si elle semble matricielle ou vectorielle.
+> 3. Installez Krita et Inkscape.
+> 4. Dessinez 3 croquis rapides (un personnage, un objet, un paysage malgache).
+>
+> **À livrer** : votre tableau des 10 illustrations et vos 3 croquis.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 0, 'Quel type d''image reste net à toutes les tailles ?', '["Vectoriel","Matriciel","Photo","JPEG"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 1, 'Que achète le client en général ?', '["Le logiciel","L''illustrateur lui-même","Rien","Des droits d''utilisation précisés par écrit"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 0, 2, 'Peut-on dessiner un personnage de dessin animé protégé pour un client ?', '["Oui","Oui, en changeant les couleurs","Oui, si c''est petit","Non"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 1, 'Les bases : formes, composition, couleur, lumière et personnages', 'Construction en formes simples et silhouette, point focal et règle des tiers, valeurs et harmonies, source de lumière et ombres, fiche personnage.', 'Ce module vous donne les bases de l''illustration : les formes et les proportions, la composition, la couleur, la lumière et l''ombre, et la façon de construire un personnage. Ce sont des compétences qui se travaillent chaque jour, quel que soit le logiciel.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un dessin à partir de formes simples.
+> 2. Composer une image lisible.
+> 3. Choisir une palette de couleurs cohérente.
+> 4. Placer la lumière et les ombres.
+> 5. Créer un personnage et sa fiche.
+
+## Construire avec des formes simples
+
+| Étape | Exemple pour un personnage |
+| --- | --- |
+| **1. Formes de base** | Cercle pour la tête, ovales et rectangles pour le corps |
+| **2. Ligne d''action** | Une courbe qui donne le mouvement de la posture |
+| **3. Proportions** | Taille de la tête par rapport au corps |
+| **4. Silhouette** | La forme générale doit être lisible, même toute noire |
+| **5. Détails** | Visage, vêtements, accessoires, à la fin |
+
+> [!astuce]
+> Testez la **silhouette** : remplissez votre personnage en noir. Si on le reconnaît encore et si on comprend sa posture, le dessin est solide.
+
+## La composition
+
+| Principe | Explication |
+| --- | --- |
+| **Point focal** | L''élément que l''œil doit voir en premier |
+| **Règle des tiers** | Placer les éléments importants sur les lignes qui divisent l''image en trois |
+| **Contraste** | Le point focal est le plus contrasté (lumière, couleur, détail) |
+| **Lignes directrices** | Routes, bras, regards qui mènent vers le point focal |
+| **Espace vide** | Laisser respirer l''image ; prévoir la place du texte |
+| **Lisibilité en petit** | L''image doit fonctionner en vignette |
+
+> [!attention]
+> Pour une couverture ou une publication, demandez **où ira le texte** (titre, logo) avant de composer. Une illustration magnifique dont le sujet est caché par le titre devra être refaite.
+
+## La couleur
+
+| Notion | Explication |
+| --- | --- |
+| **Teinte** | La couleur elle-même (rouge, bleu…) |
+| **Saturation** | L''intensité de la couleur |
+| **Valeur** | La clarté ou l''obscurité |
+| **Couleurs chaudes et froides** | Les chaudes avancent, les froides reculent |
+| **Palette limitée** | 3 à 5 couleurs principales donnent une image cohérente |
+
+> [!definition] Valeur
+> Le degré de clarté d''une couleur. Une image avec de bonnes valeurs reste lisible même en noir et blanc. Vérifiez vos illustrations en les passant en niveaux de gris.
+
+### Les harmonies simples
+
+| Harmonie | Principe |
+| --- | --- |
+| **Monochrome** | Une seule teinte, plusieurs valeurs |
+| **Analogue** | Couleurs voisines (jaune, orange, rouge) |
+| **Complémentaire** | Couleurs opposées (bleu et orange) pour un fort contraste |
+
+> [!madagascar]
+> Inspirez-vous des **couleurs de Madagascar** : terre rouge des hautes terres, vert des rizières, bleu du canal du Mozambique, tissus lamba. Constituez votre propre bibliothèque de palettes à partir de vos photos.
+
+## Lumière et ombre
+
+| Élément | Rôle |
+| --- | --- |
+| **Source de lumière** | Décidée au début et respectée partout |
+| **Zones éclairées** | Face à la lumière |
+| **Ombre propre** | Sur l''objet, du côté opposé à la lumière |
+| **Ombre portée** | Projetée sur le sol ou un autre objet |
+| **Lumière réfléchie** | Légère lumière renvoyée par le sol ou les objets voisins |
+
+## Créer un personnage
+
+### La fiche personnage
+
+| Élément | Contenu |
+| --- | --- |
+| **Vue de face, de profil et de dos** | Pour dessiner le personnage sous tous les angles |
+| **Proportions** | Hauteur en nombre de têtes |
+| **Couleurs** | Codes exacts de la peau, des cheveux, des vêtements |
+| **Expressions** | Joie, tristesse, surprise, colère |
+| **Personnalité** | Quelques mots qui guident les postures |
+
+> [!definition] Fiche personnage (model sheet)
+> Le document de référence qui garantit qu''un personnage reste identique d''une illustration à l''autre. Indispensable pour un livre ou une série de publications.
+
+> [!retenir]
+> - Formes simples, ligne d''action, proportions, silhouette, détails.
+> - Composition : point focal, tiers, contraste, lignes, espace pour le texte.
+> - Couleur : palette limitée, valeurs vérifiées en niveaux de gris, harmonies.
+> - Une seule source de lumière, ombres cohérentes.
+> - Une fiche personnage pour garder un personnage identique.
+
+## Exercice pratique : les fondamentaux du dessin
+
+> [!exercice] Exercice pratique · 4 heures (à répartir sur plusieurs jours)
+> 1. Dessinez 20 personnages rapides en formes simples avec une ligne d''action.
+> 2. Faites 3 compositions différentes d''une même scène (marché d''Analakely, par exemple) en vignettes.
+> 3. Créez 3 palettes de couleurs inspirées de photos de Madagascar.
+> 4. Créez la fiche d''un personnage original (3 vues, 4 expressions, couleurs).
+>
+> **À livrer** : vos croquis, vos compositions, vos palettes et votre fiche personnage.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 1, 0, 'À quoi sert le test de la silhouette ?', '["Vérifier que le dessin reste lisible en noir","Choisir la couleur","Exporter","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 1, 1, 'Comment vérifier les valeurs d''une illustration ?', '["En changeant de logiciel","En la passant en niveaux de gris","En l''agrandissant","En l''imprimant en couleur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 1, 2, 'À quoi sert une fiche personnage ?', '["Garder le personnage identique d''une image à l''autre","Rien","Facturer","Remplacer le croquis"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 2, 'Les outils : Krita, Inkscape, export et outils payants', 'Création du document et fond perdu, calques et brosses de Krita, plume de Bézier et opérations de chemins d''Inkscape, formats d''export, Procreate, Clip Studio Paint et Illustrator.', 'Ce module vous fait prendre en main les outils gratuits de l''illustrateur : **Krita** pour le dessin et la peinture numérique, **Inkscape** pour l''illustration vectorielle. Vous découvrirez ensuite les outils payants les plus utilisés par les professionnels : **Procreate** sur iPad, **Clip Studio Paint** et **Adobe Illustrator**.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer un document adapté au support final.
+> 2. Dessiner et peindre avec les calques dans Krita.
+> 3. Créer une illustration vectorielle dans Inkscape.
+> 4. Exporter selon l''usage : impression, web, réseaux sociaux.
+> 5. Comprendre ce qu''apportent les outils payants.
+
+## Créer le bon document
+
+| Support | Réglages courants (à confirmer avec le client) |
+| --- | --- |
+| **Livre imprimé** | Taille réelle de la page + fond perdu, 300 ppp, mode couleur demandé par l''imprimeur |
+| **Publication Instagram** | 1080 × 1080 ou 1080 × 1350 pixels, sRVB |
+| **Affiche** | Taille réelle, 150 à 300 ppp selon la distance de lecture |
+| **Site web** | Taille d''affichage en pixels, sRVB, poids léger |
+
+> [!definition] Fond perdu
+> Une marge supplémentaire autour d''une illustration destinée à l''impression (souvent 3 à 5 mm), qui sera coupée. Elle évite les bords blancs si la découpe est légèrement décalée.
+
+## Krita : dessin et peinture
+
+| Fonction | Usage |
+| --- | --- |
+| **Calques** | Croquis, encrage, couleurs, ombres, lumières séparés |
+| **Brosses** | Crayon, encre, aquarelle, aérographe, textures |
+| **Stabilisateur** | Lisser les traits tremblants |
+| **Sélections et masques** | Colorier sans déborder |
+| **Calques de filtre** | Ajuster les couleurs sans détruire |
+| **Miroir** | Retourner l''image pour repérer les défauts |
+| **Palette** | Enregistrer les couleurs du projet |
+
+### La méthode en calques
+
+1. **Croquis** à faible opacité.
+2. **Encrage** sur un nouveau calque (ou peinture directe sans contour).
+3. **Aplats de couleur** sous l''encrage.
+4. **Ombres** et **lumières** sur des calques séparés.
+5. **Finitions** : textures, détails, ajustements.
+
+> [!astuce]
+> **Retournez votre image** horizontalement de temps en temps : les erreurs de proportions et de symétrie sautent aux yeux. C''est une technique utilisée par tous les illustrateurs.
+
+## Inkscape : l''illustration vectorielle
+
+| Fonction | Usage |
+| --- | --- |
+| **Formes** | Rectangles, cercles, étoiles, polygones |
+| **Outil plume (Bézier)** | Dessiner des courbes précises |
+| **Opérations de chemins** | Union, différence, intersection pour construire des formes |
+| **Dégradés** | Volumes simples |
+| **Calques et groupes** | Organiser les éléments |
+| **Export** | SVG, PNG, PDF |
+
+> [!definition] Courbe de Bézier
+> Une courbe définie par des points et des poignées. On la modifie en déplaçant ces poignées. C''est la base de toutes les illustrations vectorielles et des logos.
+
+## Exporter selon l''usage
+
+| Usage | Format |
+| --- | --- |
+| **Fichier de travail** | Format natif (.kra pour Krita, .svg pour Inkscape) avec calques |
+| **Impression** | PDF ou TIFF haute résolution, selon l''imprimeur |
+| **Web et réseaux** | PNG (transparence, aplats) ou JPEG (peinture), sRVB |
+| **Vectoriel pour le client** | SVG ou PDF vectoriel |
+
+> [!attention]
+> Gardez toujours le **fichier de travail avec ses calques**. Un client demande souvent une modification (couleur d''un vêtement, position d''un élément) : sans calques, il faudrait tout redessiner.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte |
+| --- | --- |
+| **Procreate** (iPad) | Application de dessin très populaire, simple et puissante, paiement unique ; demande un iPad et un stylet compatible |
+| **Clip Studio Paint** | Référence pour la bande dessinée, le manga et l''encrage ; règles de perspective, gestion des pages |
+| **Adobe Illustrator** | Référence du vectoriel professionnel ; demandé par beaucoup d''agences |
+
+> [!madagascar]
+> Ces outils se paient en dollars (Procreate en paiement unique, Clip Studio Paint selon les offres, Illustrator par abonnement). Un iPad représente un investissement important : commencez avec Krita, Inkscape et une tablette graphique, et investissez quand vos revenus le permettent. Vérifiez les prix et les promotions sur les sites officiels.
+
+> [!retenir]
+> - Un document créé pour le support final : taille, résolution, fond perdu, couleurs.
+> - Krita : calques, brosses, stabilisateur, masques, miroir.
+> - Inkscape : formes, plume de Bézier, opérations de chemins, export SVG.
+> - Garder le fichier de travail avec ses calques ; exporter selon l''usage.
+> - Procreate, Clip Studio Paint et Illustrator pour aller plus loin.
+
+## Exercice pratique : une illustration complète
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Dans Krita, réalisez une illustration de votre personnage (module 2) dans un décor, avec la méthode en calques.
+> 2. Dans Inkscape, réalisez une version vectorielle simplifiée du même personnage.
+> 3. Exportez l''illustration Krita pour Instagram et pour une impression A5.
+> 4. Exportez la version vectorielle en SVG et en PNG transparent.
+>
+> **À livrer** : vos fichiers de travail, vos exports et une capture des calques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 2, 0, 'Qu''est-ce que le fond perdu ?', '["Une marge supplémentaire coupée à l''impression","Un calque caché","Une erreur","Un fond effacé"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 2, 1, 'Pourquoi retourner l''image horizontalement ?', '["Rien","Changer le style","Exporter plus vite","Repérer les erreurs de proportions"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 2, 2, 'Pourquoi garder le fichier de travail avec ses calques ?', '["Pour décorer","Pour l''imprimer","C''est inutile","Pour modifier facilement à la demande du client"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 3, 'Premier projet : le livret illustré de Rano Madio', 'Brief, références visuelles, recherche de style, fiches personnages, croquis, scène test, corrections, cohérence de la série et dossier de livraison.', 'Dans ce module, vous réalisez une commande complète pour un client, du brief jusqu''à la livraison, comme le ferait un illustrateur indépendant. Vous apprendrez à poser les bonnes questions, à proposer des croquis, à gérer les validations et les corrections, et à livrer des fichiers prêts à l''emploi.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Recueillir un brief complet.
+> 2. Proposer des recherches et des croquis.
+> 3. Organiser les étapes de validation.
+> 4. Garder un style cohérent sur une série.
+> 5. Livrer des fichiers adaptés et organisés.
+
+## Le cas pratique : « Rano Madio »
+
+> [!exemple] Votre client
+> L''ONG **Rano Madio** prépare un livret illustré de 12 pages pour expliquer aux enfants des écoles rurales comment garder l''eau propre. Elle veut 8 illustrations avec deux personnages récurrents, Mialy et Tojo, dans des décors de village malgache. Le livret sera imprimé en A5 et partagé en PDF. Le texte est en malgache et en français.
+
+## Étape 1 : le brief
+
+| Question | Réponse de l''ONG |
+| --- | --- |
+| Public | Enfants de 7 à 11 ans, zones rurales |
+| Message | Gestes simples : couvrir l''eau, se laver les mains, utiliser un seau propre |
+| Nombre d''illustrations | 8, plus la couverture |
+| Format | A5 imprimé, PDF |
+| Style | Coloré, simple, chaleureux, personnages expressifs |
+| Texte | Placé sous ou à côté des images (espace à prévoir) |
+| Délai | 5 semaines |
+| Droits | Utilisation par l''ONG pour ce livret et ses supports de sensibilisation, pendant 5 ans |
+
+> [!madagascar]
+> Demandez à l''ONG des **photos de référence** des villages, des maisons, des puits et des vêtements des régions concernées. Une illustration juste et respectueuse de la vie réelle des enfants aide beaucoup à faire passer le message.
+
+## Étape 2 : recherches et croquis
+
+| Étape | Livrable | Validation |
+| --- | --- | --- |
+| **Recherche de style** | 2 ou 3 essais de style sur une même scène | Choix d''un style par l''ONG |
+| **Fiches personnages** | Mialy et Tojo : vues, expressions, couleurs | Validation |
+| **Croquis des 8 scènes** | Croquis rapides en noir et blanc | Validation de la composition |
+| **Couleur d''une scène test** | Une illustration finalisée | Validation des couleurs |
+| **Finalisation** | Les 8 illustrations et la couverture | Retours groupés |
+
+> [!astuce]
+> Faites valider les **croquis** avant la couleur. Changer une composition au stade du croquis prend 10 minutes ; au stade de l''illustration finie, cela peut prendre une journée.
+
+## Étape 3 : les corrections
+
+| Règle | Exemple |
+| --- | --- |
+| **Nombre inclus** dans le devis | 2 séries de corrections par étape |
+| **Retours groupés** | L''ONG envoie une seule liste par étape |
+| **Corrections précises** | « Scène 3 : le seau doit avoir un couvercle » |
+| **Hors devis** | Changer de style après validation : supplément |
+
+## Étape 4 : la cohérence de la série
+
+| Élément | Comment le garder |
+| --- | --- |
+| **Personnages** | Fiches personnages ouvertes à côté de chaque illustration |
+| **Palette** | Même palette enregistrée pour toute la série |
+| **Lumière** | Même type de lumière (matin, plein jour) |
+| **Épaisseur des traits** | Mêmes brosses et réglages |
+| **Niveau de détail** | Décors aussi détaillés d''une scène à l''autre |
+
+> [!attention]
+> Les enfants reconnaissent immédiatement si un personnage **change** d''une page à l''autre (coiffure, couleur des vêtements). La cohérence est indispensable dans un livre.
+
+## Étape 5 : la livraison
+
+| Fichier | Usage |
+| --- | --- |
+| **Illustrations haute résolution** (300 ppp, taille A5 avec fond perdu) | Impression |
+| **Versions web** (PNG ou JPEG légers) | PDF numérique, réseaux sociaux |
+| **Fichiers de travail** (si prévu au contrat) | Modifications futures |
+| **Fiches personnages** | Futurs supports de l''ONG |
+| **Note de livraison** | Liste des fichiers, droits accordés, crédits |
+
+```
+Rano_Madio_livret/
+  01_impression/   scene01_300ppp.tif … couverture_300ppp.tif
+  02_web/          scene01.jpg … couverture.jpg
+  03_personnages/  Mialy_fiche.png, Tojo_fiche.png
+  Note_de_livraison.pdf
+```
+
+> [!retenir]
+> - Un brief complet : public, message, format, style, texte, délai, droits.
+> - Style, personnages, croquis, scène test, puis finalisation.
+> - Valider les croquis avant la couleur ; corrections groupées et limitées.
+> - Fiches personnages et palette pour une série cohérente.
+> - Une livraison organisée pour l''impression et le web, avec une note.
+
+## Exercice pratique : le livret de Rano Madio
+
+> [!exercice] Exercice pratique · 10 heures (sur plusieurs jours)
+> 1. Rédigez le brief et rassemblez des références visuelles.
+> 2. Créez les fiches de Mialy et Tojo.
+> 3. Réalisez les croquis de 4 scènes et la couverture.
+> 4. Finalisez 2 scènes en couleur et la couverture, avec l''espace pour le texte.
+> 5. Préparez le dossier de livraison.
+>
+> **À livrer** : votre brief, vos fiches, vos croquis, vos illustrations finies et le dossier. C''est votre projet de portfolio.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 3, 0, 'Que faire valider avant la couleur ?', '["La facture","Rien","Les croquis","Le fichier final"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 3, 1, 'Que demander pour représenter justement un village ?', '["Des photos de référence","Un logo","Un dessin d''un autre artiste à copier","Rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 3, 2, 'Que faire si l''ONG veut changer de style après validation ?', '["Livrer sans changer","Refuser sans répondre","Proposer un supplément","Le faire gratuitement sans limite"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-f', 4, 'Trouver des clients et se faire payer', 'Portfolio court et cohérent, 5 canaux, prix selon le temps et les droits, conditions en 7 points, paiements et évolution.', 'Les auteurs, éditeurs, ONG, marques et créateurs cherchent régulièrement des illustrateurs. Ce dernier module vous montre comment présenter votre travail, trouver vos premiers clients, fixer vos prix et vos droits, et vous faire payer depuis Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire un portfolio d''illustrateur convaincant.
+> 2. Trouver des clients grâce à 5 canaux.
+> 3. Fixer le prix d''une illustration et des droits.
+> 4. Rédiger vos conditions de travail.
+> 5. Vous faire payer et évoluer dans le métier.
+
+## Le portfolio
+
+1. **10 à 15 illustrations** de votre meilleur niveau, dans un style cohérent.
+2. **Des séries** : un personnage dans plusieurs scènes montre que vous savez garder la cohérence.
+3. **Le processus** : croquis, fiche personnage, illustration finale.
+4. **Des mises en situation** : illustration sur une couverture, un emballage, une publication.
+5. **Une page en ligne** (portfolio, réseau d''artistes, réseau social professionnel).
+
+> [!attention]
+> Mieux vaut **10 illustrations excellentes** que 40 de niveau inégal. Le client juge sur votre moins bonne image. Ne montrez que le style que vous voulez qu''on vous demande.
+
+## Où trouver des clients : 5 canaux
+
+| N° | Canal | Comment s''y prendre |
+| --- | --- | --- |
+| 1 | **ONG et programmes à Madagascar** | Supports de sensibilisation : proposez votre portfolio et un exemple adapté |
+| 2 | **Auteurs indépendants** | Couvertures et illustrations intérieures ; groupes d''auteurs |
+| 3 | **Éditeurs** | Envoyez un portfolio ciblé selon leurs collections |
+| 4 | **Marques et commerces** | Illustrations de réseaux, emballages, mascottes |
+| 5 | **Réseaux d''artistes et plateformes de freelance** | Publiez régulièrement ; vérifiez qu''elles acceptent les profils basés à Madagascar |
+
+> [!exemple] Message à une ONG
+> « Bonjour, je suis illustrateur à Antananarivo. J''ai vu vos supports sur l''hygiène dans les écoles. Je dessine des personnages et des scènes de la vie malgache pour des livrets et affiches de sensibilisation, adaptés aux enfants et aux adultes. Vous trouverez mon portfolio et un exemple de livret ci-joint. »
+
+## Fixer ses prix
+
+| Élément | Exemple de prix |
+| --- | --- |
+| **Illustration simple** (réseaux sociaux, peu de décor) | 80 000 Ar |
+| **Illustration complète** (personnages et décor) | 200 000 Ar |
+| **Couverture de livre** | 300 000 Ar et plus |
+| **Fiche personnage** | 120 000 Ar |
+| **Livret de 8 illustrations** | Prix des illustrations − remise de série |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+### Les droits
+
+| Usage | Effet sur le prix |
+| --- | --- |
+| Usage limité (un livret, une publication) | Prix de base |
+| Usage étendu (plusieurs supports, plusieurs années) | Supplément |
+| Usage commercial important (emballage, publicité) | Supplément important |
+| Cession totale des droits | Prix nettement plus élevé |
+
+> [!astuce]
+> Calculez d''abord votre **temps** (croquis, finalisation, corrections), multipliez par votre tarif horaire, puis ajoutez la valeur des **droits** selon l''usage. Une mascotte utilisée sur tous les emballages d''une marque vaut bien plus qu''une illustration de publication.
+
+## Vos conditions
+
+1. **Les étapes** : croquis, couleur, finalisation, avec validation.
+2. **Le nombre de corrections** par étape.
+3. **Les droits** : usages, durée, territoire.
+4. **Les fichiers livrés** : formats, fichiers de travail ou non.
+5. **Le crédit** : votre nom mentionné quand c''est possible.
+6. **Le portfolio** : droit de montrer l''illustration après publication.
+7. **Le paiement** : acompte de 30 à 50 %, solde avant la livraison des fichiers finaux.
+
+## Se faire payer
+
+| Situation | Moyens de paiement |
+| --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money) ou virement bancaire |
+| Plateforme internationale | Retrait selon la plateforme : souvent Payoneer ou virement vers une banque malgache |
+| Client étranger en direct | Virement international ou Payoneer |
+
+> [!madagascar]
+> Les possibilités de PayPal sont limitées pour Madagascar : vérifiez avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement.
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Illustrateur jeunesse** | Albums complets, narration, collaboration avec des éditeurs |
+| **Illustrateur de marque** | Mascottes, systèmes d''illustrations, emballages |
+| **Auteur de bande dessinée** | Scénario, découpage, mise en page |
+| **Motion designer** | Animer vos illustrations (voir la formation Motion designer) |
+| **Graphiste** | Mise en page, identité visuelle (voir la formation Graphiste) |
+
+> [!retenir]
+> - Un portfolio court, cohérent, avec des séries et le processus.
+> - ONG, auteurs, éditeurs, marques, réseaux d''artistes.
+> - Un prix basé sur le temps, plus la valeur des droits.
+> - Des conditions claires : étapes, corrections, droits, fichiers, crédit, portfolio.
+> - Évoluez vers la jeunesse, les marques, la BD ou l''animation.
+
+## Exercice pratique : lancer votre activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Sélectionnez 10 illustrations et publiez votre portfolio en ligne.
+> 2. Calculez vos prix pour 3 types d''illustrations, avec les droits.
+> 3. Rédigez vos conditions en 7 points.
+> 4. Envoyez au moins 3 messages à des ONG, auteurs ou marques.
+>
+> **À livrer** : le lien de votre portfolio, vos prix, vos conditions et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 4, 0, 'Combien d''illustrations dans un bon portfolio ?', '["Une seule","10 à 15 de votre meilleur niveau","Toutes vos images","100"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 4, 1, 'Qu''est-ce qui augmente le prix d''une illustration ?', '["Une couleur bleue","Un usage commercial étendu","Rien","Un petit format"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-f', 4, 2, 'Quand livrer les fichiers finaux ?', '["Jamais","Après le paiement du solde","Au hasard","Avant tout paiement"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que fait un illustrateur numérique ?', '["Il prend des photos","Il monte des vidéos","Il programme des sites","Il crée des images dessinées sur ordinateur ou tablette"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel logiciel gratuit sert au vectoriel ?', '["Inkscape","Audacity","OBS","Krita"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quelle résolution est courante pour l''impression ?', '["72 ppp","10 ppp","300 ppp à la taille réelle","Aucune"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que faire si vous utilisez l''IA pour une étape ?', '["Facturer plus","Le cacher","Rien","Le dire au client et respecter ses règles"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel outil améliore le plus le dessin sur ordinateur ?', '["Une webcam","Une tablette graphique","Un micro","Une imprimante"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Qu''est-ce que la ligne d''action ?', '["Une courbe qui donne le mouvement de la posture","Une règle de prix","Un calque","Un trait de contour final"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Qu''est-ce que le point focal ?', '["La signature","L''élément que l''œil voit en premier","Le logo","Le coin de l''image"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que demander avant de composer une couverture ?', '["Le prix du papier","Où ira le texte","Rien","La couleur préférée de l''imprimeur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que sont les couleurs complémentaires ?', '["Une seule couleur","Du noir et blanc","Des couleurs opposées comme bleu et orange","Des couleurs voisines"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Qu''est-ce que l''ombre portée ?', '["L''ombre sur l''objet lui-même","Un filtre","La lumière principale","L''ombre projetée sur le sol ou un autre objet"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que contient une fiche personnage ?', '["Le contrat","Le prix","Rien","Vues, proportions, couleurs et expressions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quelle taille pour une publication Instagram ?', '["1080 × 1080 ou 1080 × 1350 pixels","100 × 100 pixels","Aucune","A0"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel est l''ordre de la méthode en calques ?', '["Couleur puis croquis","Finitions puis croquis","Au hasard","Croquis, encrage, aplats, ombres et lumières, finitions"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Qu''est-ce qu''une courbe de Bézier ?', '["Une brosse","Un format","Une courbe modifiée par des points et des poignées","Une couleur"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel format pour une illustration vectorielle livrée ?', '["DOCX","MP3","SVG ou PDF vectoriel","JPEG"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel outil payant est une référence pour la bande dessinée ?', '["Trello","Audition","Clip Studio Paint","Zendesk"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Pourquoi les enfants remarquent-ils les incohérences ?', '["Ils préfèrent les erreurs","Ils ne regardent pas","Ils reconnaissent tout changement de personnage","Ils lisent seulement le texte"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Comment recevoir les corrections ?', '["Groupées en une seule liste par étape","Oralement sans trace","Jamais","Une par une tous les jours"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que livrer pour l''impression du livret ?', '["Rien","Images basse résolution","Illustrations 300 ppp avec fond perdu","Croquis seulement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que contient la note de livraison ?', '["Liste des fichiers, droits accordés et crédits","Le mot de passe","Un poème","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Pourquoi montrer le processus dans le portfolio ?', '["Pour cacher le résultat","Pour remplir","Ce n''est pas utile","Montrer votre méthode et votre sérieux"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel premier contact proposer à une ONG ?', '["Rien","Un prix sans exemple","Une critique de ses supports","Portfolio et exemple adapté à ses supports"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Comment calculer un prix ?', '["Temps multiplié par le tarif horaire, plus la valeur des droits","Selon le nombre de couleurs","Toujours le même prix","Au hasard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Que demander pour votre portfolio dans les conditions ?', '["Le logo du client gratuitement","Rien","Les mots de passe","Le droit de montrer l''illustration après publication"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Uniquement des chèques étrangers","Mobile Money ou virement","Aucun"]'::jsonb, 2);
 
 -- design-3-a
 delete from public.exam_questions where course_id = 'design-3-a';
