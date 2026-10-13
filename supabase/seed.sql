@@ -104,7 +104,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
   ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true),
   ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true),
-  ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 11, false),
+  ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true),
   ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 12, false),
   ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 13, false),
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 14, false),
@@ -54745,6 +54745,424 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Qu''est-ce qu''un binôme ?', '["Un concurrent","Un logiciel","Une personne qui se lance aussi et avec qui on s''encourage","Un client"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'Que faire face aux moqueries répétées ?', '["S''en éloigner","Les écouter tous les jours","Se moquer à son tour","Abandonner son projet"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-0-f', 'À quelle fréquence mesurer ses progrès ?', '["Une fois dans sa vie","Jamais","Chaque minute","Chaque mois"]'::jsonb, 3);
+
+-- perso-1-f
+delete from public.exam_questions where course_id = 'perso-1-f';
+delete from public.module_questions where course_id = 'perso-1-f';
+delete from public.lessons where course_id = 'perso-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-1-f', 0, 'Comprendre le leadership personnel', 'Se diriger soi-même, choisir 3 valeurs, écrire une vision à 3 ans, distinguer ce que l''on contrôle, influence ou ne contrôle pas.', 'En freelance ou en télétravail, personne ne vous dit à quelle heure commencer, quoi faire en premier ni comment progresser. Le leadership personnel, c''est la capacité à **se diriger soi-même** : savoir où l''on va, pourquoi, et tenir ses engagements. Ce premier module pose les fondations.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer ce qu''est le leadership personnel.
+> 2. Identifier vos valeurs principales.
+> 3. Écrire une vision simple de votre vie professionnelle.
+> 4. Distinguer ce que vous contrôlez de ce que vous ne contrôlez pas.
+
+## Se diriger soi-même
+
+| Leadership classique | Leadership personnel |
+| --- | --- |
+| Diriger une équipe | Se diriger soi-même |
+| Donner une direction aux autres | Se donner une direction |
+| Motiver les autres | Se mettre en action même sans motivation |
+| Être responsable des résultats du groupe | Être responsable de ses propres résultats |
+
+> [!definition] Leadership personnel
+> La capacité à choisir sa direction, à prendre des décisions alignées avec ses valeurs et à agir avec constance pour atteindre ses objectifs, sans attendre qu''on nous le demande.
+
+## Vos valeurs : votre boussole
+
+Les valeurs sont ce qui compte vraiment pour vous. Elles aident à décider quand plusieurs choix sont possibles.
+
+| Valeur | Ce qu''elle peut guider |
+| --- | --- |
+| **Famille** | Choisir des horaires qui laissent du temps aux proches |
+| **Honnêteté** | Ne jamais promettre un délai impossible |
+| **Liberté** | Préférer plusieurs clients plutôt qu''un seul patron |
+| **Apprentissage** | Accepter une mission difficile pour progresser |
+| **Sécurité** | Garder une épargne avant de quitter un emploi |
+| **Contribution** | Travailler pour des projets utiles à Madagascar |
+
+> [!astuce]
+> Choisissez **3 valeurs** maximum. Avec dix valeurs, on ne sait plus laquelle suivre quand elles s''opposent.
+
+## Une vision simple
+
+Une vision répond à la question : « Où est-ce que je veux être dans 3 ans ? » Elle doit être concrète et motivante.
+
+```
+Dans 3 ans, je suis traductrice freelance français-anglais-malgache.
+Je travaille 6 heures par jour depuis Toamasina pour 5 clients réguliers,
+dont 2 à l''étranger. Je gagne assez pour aider mes parents
+et je prends deux semaines de vacances par an.
+```
+
+## Ce que je contrôle
+
+| Je contrôle | J''influence | Je ne contrôle pas |
+| --- | --- | --- |
+| Mes heures de travail | La décision d''un client | La météo, les coupures de courant |
+| La qualité de mon travail | Mes relations professionnelles | L''économie mondiale |
+| Le nombre de propositions envoyées | Ma réputation | Le choix final d''un recruteur |
+| Mes apprentissages | Les recommandations | Les règles des plateformes |
+
+> [!madagascar]
+> Les délestages, une connexion instable ou un client qui disparaît sont de vraies difficultés. Un bon leader personnel ne les nie pas : il concentre son énergie sur ce qu''il peut contrôler, comme une batterie de secours, une connexion de remplacement ou plusieurs clients.
+
+> [!retenir]
+> - Le leadership personnel, c''est se diriger soi-même.
+> - 3 valeurs maximum pour guider ses choix.
+> - Une vision concrète à 3 ans.
+> - Mettre son énergie sur ce que l''on contrôle.
+
+## Exercice pratique : votre boussole
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Dans une liste de 20 valeurs, entourez-en 6, puis gardez-en 3.
+> 2. Écrivez votre vision à 3 ans en 5 phrases maximum.
+> 3. Remplissez le tableau « je contrôle, j''influence, je ne contrôle pas » pour votre situation.
+> 4. Choisissez une action sur ce que vous contrôlez, à faire cette semaine.
+>
+> **À livrer** : vos 3 valeurs, votre vision, votre tableau et votre action.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 0, 0, 'Qu''est-ce que le leadership personnel ?', '["Diriger une grande équipe","Être célèbre","Obéir à un patron","La capacité à se diriger soi-même"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 0, 1, 'Combien de valeurs principales garder ?', '["Une par jour","3 maximum","Aucune","20"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 0, 2, 'Sur quoi concentrer son énergie ?', '["Les choix des recruteurs","L''économie mondiale","Ce que l''on contrôle","La météo"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-1-f', 1, 'Les bases : objectifs, discipline et engagements', 'Objectifs SMART, découpage jusqu''à l''action du jour, différence entre motivation et discipline, règles pour tenir ses engagements.', 'Une vision donne la direction ; les objectifs tracent le chemin. Ce module vous apprend à transformer votre vision en objectifs précis, à tenir vos engagements et à avancer même les jours sans motivation.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire des objectifs SMART.
+> 2. Découper un grand objectif en étapes.
+> 3. Distinguer motivation et discipline.
+> 4. Tenir vos engagements envers vous-même et les autres.
+
+## Des objectifs SMART
+
+| Lettre | Signification | Question |
+| --- | --- | --- |
+| **S** | Spécifique | Qu''est-ce que je veux exactement ? |
+| **M** | Mesurable | Comment saurai-je que c''est atteint ? |
+| **A** | Atteignable | Est-ce réaliste avec mes moyens ? |
+| **R** | Relevant (pertinent) | Est-ce lié à ma vision et à mes valeurs ? |
+| **T** | Temporel | Pour quelle date ? |
+
+| Objectif flou | Objectif SMART |
+| --- | --- |
+| « Trouver des clients » | « Signer 3 clients réguliers de rédaction d''ici le 31 mars » |
+| « M''améliorer en anglais » | « Atteindre le niveau B2 au test en ligne d''ici le 30 juin en étudiant 30 minutes par jour » |
+| « Gagner plus » | « Facturer 800 000 Ar par mois en septembre » |
+
+## Découper un grand objectif
+
+```
+Objectif à 6 mois : facturer 800 000 Ar par mois.
+  Mois 1-2 : terminer le portfolio et l''attestation Vitako.
+  Mois 3   : envoyer 40 propositions, décrocher 2 clients.
+  Mois 4-5 : fidéliser ces clients, demander des recommandations.
+  Mois 6   : 4 clients réguliers, augmenter le prix de 15 %.
+Cette semaine : terminer 2 projets du portfolio.
+Aujourd''hui   : choisir les couleurs du projet 1.
+```
+
+> [!astuce]
+> Si une étape vous paraît trop lourde, découpez-la encore jusqu''à obtenir une action faisable **en moins d''une heure**.
+
+## Motivation et discipline
+
+| Motivation | Discipline |
+| --- | --- |
+| Une émotion : elle va et vient | Une habitude : elle reste |
+| Elle donne envie de commencer | Elle fait continuer |
+| Elle dépend de l''humeur | Elle dépend d''un système |
+| « J''ai envie de travailler » | « C''est 8 heures, je commence » |
+
+> [!definition] Discipline
+> Faire ce qui est prévu, au moment prévu, même quand l''envie n''est pas là. Elle se construit avec des horaires fixes, un environnement préparé et des actions petites.
+
+## Tenir ses engagements
+
+| Règle | Exemple |
+| --- | --- |
+| **Promettre moins, livrer plus** | Annoncer 5 jours quand on pense finir en 4 |
+| **Écrire chaque engagement** | Tout délai promis va dans l''agenda |
+| **Prévenir tôt en cas de problème** | « Avec la coupure d''hier, je livrerai jeudi au lieu de mercredi » |
+| **Tenir aussi les promesses faites à soi-même** | Si j''ai prévu d''étudier 30 minutes, je le fais |
+
+> [!madagascar]
+> Les clients étrangers hésitent parfois à travailler avec des freelances qu''ils ne connaissent pas. Tenir chaque délai annoncé est la façon la plus sûre de bâtir une réputation solide, et de faire mentir les préjugés.
+
+> [!retenir]
+> - Des objectifs SMART, liés à votre vision.
+> - Découper jusqu''à une action de moins d''une heure.
+> - La discipline fait avancer quand la motivation manque.
+> - Promettre moins, livrer plus, prévenir tôt.
+
+## Exercice pratique : vos objectifs
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Écrivez 3 objectifs SMART à 6 mois liés à votre vision.
+> 2. Découpez le plus important jusqu''à l''action d''aujourd''hui.
+> 3. Choisissez vos horaires fixes de travail pour la semaine.
+> 4. Notez tous vos engagements en cours dans votre agenda.
+>
+> **À livrer** : vos 3 objectifs, le découpage et votre semaine type.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 1, 0, 'Que signifie le T de SMART ?', '["Téléphone","Talent","Travail","Temporel : une date"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 1, 1, 'Jusqu''où découper un objectif ?', '["Jusqu''à une action de moins d''une heure","Jusqu''à l''oublier","En 2 parties seulement","Ne jamais le découper"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 1, 2, 'Que faire en cas de retard prévisible ?', '["Rendre un travail bâclé","Ne rien dire","Prévenir le client tôt","Disparaître"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-1-f', 2, 'Les outils : habitudes, tableau de suivi et revue hebdomadaire', 'Déclencheur, routine et récompense, empilement d''habitudes, petite habitude, tableau de suivi et règle des deux jours, revue hebdomadaire, version papier.', 'Les objectifs se réalisent grâce aux habitudes de chaque jour. Ce module vous donne des outils simples et gratuits pour construire de bonnes habitudes, suivre vos objectifs et faire le point chaque semaine.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre comment se forme une habitude.
+> 2. Créer une nouvelle habitude avec la méthode de la petite habitude.
+> 3. Tenir un tableau de suivi de vos objectifs.
+> 4. Faire une revue hebdomadaire.
+
+## Comment se forme une habitude
+
+| Élément | Exemple |
+| --- | --- |
+| **Déclencheur** | Après le café du matin |
+| **Routine** | Je réponds aux messages des clients |
+| **Récompense** | Je coche la case et je me sens organisé |
+
+> [!definition] Empilement d''habitudes
+> Accrocher une nouvelle habitude à une habitude existante : « Après [habitude actuelle], je fais [nouvelle habitude]. » Par exemple : « Après le déjeuner, je fais 15 minutes d''anglais. »
+
+## La méthode de la petite habitude
+
+| Grande habitude visée | Version minuscule pour commencer |
+| --- | --- |
+| Étudier 1 heure par jour | Ouvrir le cours et lire une page |
+| Envoyer 5 propositions par jour | En envoyer une |
+| Faire du sport | Faire 5 pompes |
+| Lire un livre par mois | Lire 2 pages le soir |
+
+> [!astuce]
+> Une habitude minuscule semble ridicule, et c''est voulu : elle est si facile qu''on ne trouve aucune excuse. Une fois installée, on l''agrandit naturellement.
+
+## Le tableau de suivi
+
+Un simple tableau (sur papier ou dans Google Sheets) suffit :
+
+| Habitude | Lun | Mar | Mer | Jeu | Ven | Sam | Dim |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 proposition envoyée | ✓ | ✓ | ✓ | | ✓ | ✓ | |
+| 15 min d''anglais | ✓ | ✓ | | ✓ | ✓ | | |
+| Coucher avant 23 h | ✓ | | ✓ | ✓ | ✓ | ✓ | ✓ |
+
+> [!attention]
+> Manquer un jour n''est pas grave. La règle : **ne jamais manquer deux jours de suite**. Un jour manqué est un accident ; deux jours deviennent le début d''une nouvelle habitude, la mauvaise.
+
+## La revue hebdomadaire
+
+Chaque dimanche soir ou lundi matin, 30 minutes :
+
+```
+1. Qu''est-ce que j''ai accompli cette semaine ?
+2. Qu''est-ce qui n''a pas marché, et pourquoi ?
+3. Où en sont mes 3 objectifs (en %) ?
+4. Quelles sont mes 3 priorités pour la semaine prochaine ?
+5. Quels rendez-vous et délais dois-je mettre dans l''agenda ?
+```
+
+| Outil gratuit | Usage |
+| --- | --- |
+| **Google Agenda** | Bloquer les heures de travail et les délais |
+| **Google Sheets** | Tableau des objectifs et des habitudes |
+| **Un carnet** | Revue hebdomadaire et idées |
+
+> [!madagascar]
+> Préparez une version **papier** de votre tableau et de votre agenda de la semaine. Les jours de coupure de courant ou sans connexion, vous savez quand même quoi faire.
+
+> [!retenir]
+> - Déclencheur, routine, récompense.
+> - Commencer par une habitude minuscule, accrochée à une habitude existante.
+> - Un tableau de suivi et la règle des deux jours.
+> - Une revue hebdomadaire de 30 minutes.
+
+## Exercice pratique : votre système
+
+> [!exercice] Exercice pratique · 1 heure, puis 2 semaines
+> 1. Choisissez 3 habitudes liées à vos objectifs et leur version minuscule.
+> 2. Écrivez la phrase d''empilement pour chacune.
+> 3. Créez votre tableau de suivi et remplissez-le pendant 2 semaines.
+> 4. Faites 2 revues hebdomadaires.
+>
+> **À livrer** : vos 3 habitudes, votre tableau rempli et vos 2 revues.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 2, 0, 'Qu''est-ce que l''empilement d''habitudes ?', '["Accrocher une nouvelle habitude à une habitude existante","Changer d''habitude chaque jour","Abandonner ses habitudes","Faire 10 habitudes en même temps"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 2, 1, 'Quelle est la règle des deux jours ?', '["Commencer dans deux jours","Travailler deux jours par semaine","Se reposer deux jours sur trois","Ne jamais manquer deux jours de suite"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 2, 2, 'Pourquoi une version papier du planning ?', '["Pour l''envoyer aux clients","Ce n''est pas utile","Pour décorer","Pour les jours de coupure ou sans connexion"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-1-f', 3, 'Mise en situation : les six mois de Rado', 'Plan d''un développeur de Fianarantsoa, réaction à un objectif en retard, décision guidée par les valeurs, bilan à six mois.', 'Dans ce module, vous suivez Rado, développeur web débutant à Fianarantsoa, pendant ses six premiers mois de freelance. Son parcours montre comment valeurs, objectifs, habitudes et revues fonctionnent ensemble.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Relier vision, objectifs et habitudes dans un plan cohérent.
+> 2. Réagir à un objectif qui prend du retard.
+> 3. Prendre une décision difficile grâce à vos valeurs.
+> 4. Tirer les leçons d''une période de six mois.
+
+## Le cas pratique : Rado
+
+> [!exemple] Point de départ
+> **Rado**, 25 ans, vient de terminer la formation Développeur front-end. Il vit chez ses parents, travaille le soir dans une boutique et veut vivre du freelance. Ses valeurs : **famille**, **apprentissage**, **honnêteté**. Sa vision à 3 ans : « Développeur indépendant, 1 500 000 Ar par mois, je peux aider mes frères et sœurs pour leurs études. »
+
+## Son plan
+
+| Niveau | Contenu |
+| --- | --- |
+| **Objectif à 6 mois** | Facturer 600 000 Ar par mois en juillet |
+| **Objectifs du mois 1** | Portfolio de 3 sites, profil complet sur 2 plateformes |
+| **Habitudes** | 2 heures de code chaque matin de 6 h à 8 h ; 1 proposition par jour ; revue le dimanche |
+| **Engagements** | Ne jamais promettre un délai sans avoir lu tout le cahier des charges |
+
+## Les six mois de Rado
+
+| Mois | Ce qui se passe | Ce que fait Rado |
+| --- | --- | --- |
+| 1 | Portfolio terminé | Revue : objectif atteint, il passe à la prospection |
+| 2 | 25 propositions, aucune réponse | Il demande l''avis d''un mentor : ses messages sont trop généraux ; il les personnalise |
+| 3 | 2 petits clients (150 000 Ar) | Il livre en avance et demande un témoignage |
+| 4 | Un client propose 400 000 Ar pour un site en 5 jours | Ses valeurs l''aident : honnêteté, il annonce 10 jours ; le client accepte |
+| 5 | Coupures de courant fréquentes | Il déplace son travail chez un ami équipé d''un groupe électrogène 2 jours par semaine |
+| 6 | 3 clients réguliers, 520 000 Ar | Objectif atteint à 87 % ; il ajuste son plan |
+
+> [!astuce]
+> Rado n''a pas atteint 100 % de son objectif, et ce n''est pas un échec : il a progressé de 0 à 520 000 Ar en six mois. Un objectif sert à **donner une direction**, pas à se juger.
+
+## Quand un objectif prend du retard
+
+| Question | Réponse de Rado au mois 2 |
+| --- | --- |
+| **Le problème vient-il de l''effort ?** | Non, il a envoyé 25 propositions |
+| **Vient-il de la méthode ?** | Oui, ses messages étaient trop généraux |
+| **L''objectif est-il encore réaliste ?** | Oui, avec une meilleure méthode |
+| **Que vais-je changer cette semaine ?** | Personnaliser chaque message avec le nom et le besoin du client |
+
+## Décider grâce à ses valeurs
+
+> [!exemple] Le dilemme du mois 4
+> Le client veut un site en 5 jours. Rado pourrait accepter et travailler la nuit, au risque de livrer en retard ou de mauvaise qualité. Sa valeur **honnêteté** lui fait annoncer un délai réaliste de 10 jours ; sa valeur **famille** lui rappelle qu''il ne veut pas sacrifier tout son sommeil. Le client apprécie sa franchise et devient un client régulier.
+
+> [!retenir]
+> - Vision, objectifs, habitudes et engagements forment un seul système.
+> - En cas de retard : effort, méthode, réalisme, changement.
+> - Les valeurs aident à trancher les dilemmes.
+> - Un objectif donne une direction, pas un jugement.
+
+## Exercice pratique : votre plan sur 6 mois
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Remplissez le tableau « plan » de Rado avec votre propre situation.
+> 2. Imaginez un problème probable au mois 2 et répondez aux 4 questions.
+> 3. Décrivez un dilemme possible et la décision que vos valeurs vous dictent.
+> 4. Fixez la date de votre bilan à 6 mois dans votre agenda.
+>
+> **À livrer** : votre plan, votre analyse de problème et votre dilemme.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 3, 0, 'Pourquoi Rado n''a-t-il pas de réponses au mois 2 ?', '["Il était trop cher","Ses messages étaient trop généraux","Il n''envoyait rien","Il n''avait pas Internet"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 3, 1, 'Quel délai Rado annonce-t-il au client pressé ?', '["Un an","5 jours en travaillant la nuit","Un délai réaliste de 10 jours","Aucun délai"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 3, 2, 'Atteindre 87 % de son objectif, c''est :', '["Une erreur de calcul","Un échec total","Un vrai progrès qui donne une direction","Une raison d''arrêter"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-1-f', 4, 'Mon plan d''action : garder le cap', 'Revue mensuelle et « arrêter, commencer, continuer », partenaire de responsabilité, se relever en 5 étapes, inspirer les autres par l''exemple.', 'Le leadership personnel se cultive toute la vie. Ce dernier module vous aide à garder le cap dans la durée, à vous relever après un échec et à commencer à inspirer les autres par votre exemple.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Faire une revue mensuelle et ajuster votre plan.
+> 2. Vous rendre responsable grâce à un partenaire.
+> 3. Vous relever après un échec.
+> 4. Inspirer les autres par l''exemple.
+
+## La revue mensuelle
+
+| Question | But |
+| --- | --- |
+| Quels objectifs ai-je atteints, et à quel pourcentage ? | Mesurer |
+| Quelles habitudes ai-je tenues ? | Vérifier le système |
+| Qu''est-ce que j''ai appris ce mois-ci ? | Capitaliser |
+| Mes objectifs sont-ils toujours liés à ma vision ? | Garder le cap |
+| Qu''est-ce que j''arrête, je commence, je continue ? | Ajuster |
+
+> [!astuce]
+> La question « arrêter, commencer, continuer » est très efficace : en trois lignes, vous savez exactement ce qui change le mois suivant.
+
+## Un partenaire de responsabilité
+
+| Règle | Exemple |
+| --- | --- |
+| **Choisir quelqu''un de sérieux** | Un autre freelance, pas forcément du même métier |
+| **Annoncer ses objectifs de la semaine** | Message chaque lundi |
+| **Faire le point** | Appel de 15 minutes chaque vendredi |
+| **Être honnête** | Dire aussi ce qui n''a pas été fait |
+| **Rendre la pareille** | L''aider à tenir ses propres objectifs |
+
+## Se relever après un échec
+
+| Étape | Exemple |
+| --- | --- |
+| 1. **Reconnaître** | « J''ai perdu mon plus gros client. » |
+| 2. **Prendre ses responsabilités, sans se blâmer** | « J''ai livré deux fois en retard. Je peux faire mieux. » |
+| 3. **Analyser** | « Je prenais trop de missions en même temps. » |
+| 4. **Décider d''un changement** | « Maximum 3 missions en parallèle. » |
+| 5. **Repartir** | Relancer 5 anciens contacts cette semaine |
+
+> [!attention]
+> Prendre ses responsabilités ne veut pas dire tout porter seul. Si une période difficile dure, s''accompagne d''un grand épuisement ou d''une tristesse profonde, parlez-en à vos proches et à un professionnel de santé.
+
+## Inspirer par l''exemple
+
+| Action | Effet |
+| --- | --- |
+| **Partager ce que vous avez appris** | Un post sur une méthode qui vous a aidé |
+| **Aider un débutant** | 30 minutes pour relire son portfolio |
+| **Tenir vos promesses** | On vous fait confiance, on vous recommande |
+| **Reconnaître le travail des autres** | Un message de remerciement à un collègue |
+
+> [!madagascar]
+> Chaque jeune Malgache qui réussit en freelance ouvre la voie aux autres. En partageant votre expérience dans votre quartier, votre famille ou votre ancienne école, vous devenez un modèle concret : « C''est possible depuis ici. »
+
+> [!retenir]
+> - Une revue mensuelle : arrêter, commencer, continuer.
+> - Un partenaire de responsabilité.
+> - Se relever en 5 étapes, sans se blâmer.
+> - Inspirer en partageant et en tenant ses promesses.
+
+## Exercice pratique : garder le cap
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Programmez vos 6 prochaines revues mensuelles dans votre agenda.
+> 2. Trouvez un partenaire de responsabilité et envoyez-lui vos objectifs de la semaine.
+> 3. Appliquez les 5 étapes à un échec passé.
+> 4. Partagez une chose que vous avez apprise avec une personne qui débute.
+>
+> **À livrer** : vos dates de revue, le message à votre partenaire, votre analyse et votre partage.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 4, 0, 'Quelle question aide à ajuster son plan chaque mois ?', '["Qu''est-ce que j''arrête, je commence, je continue ?","Combien gagnent les autres ?","Qui est le meilleur ?","Quel temps fera-t-il ?"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 4, 1, 'Que fait un partenaire de responsabilité ?', '["Il vous paie","Il vous juge","Il suit vos objectifs et vous aide à les tenir","Il travaille à votre place"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-1-f', 4, 2, 'Prendre ses responsabilités après un échec, c''est :', '["Se punir","Analyser et changer, sans se blâmer","Abandonner","Accuser les autres"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que fait un leader personnel ?', '["Il attend les ordres","Il choisit sa direction et agit avec constance","Il dirige toujours une équipe","Il évite les décisions"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'À quoi servent les valeurs ?', '["À décider quand plusieurs choix sont possibles","À juger les autres","À rien","À décorer un CV"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Une bonne vision est :', '["Concrète et motivante","Vague et générale","Changeante chaque jour","Secrète"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Une coupure de courant, c''est :', '["Une chose que je contrôle","Quelque chose que je ne contrôle pas mais que je peux anticiper","Ma faute","Une raison d''arrêter le freelance"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que signifie le M de SMART ?', '["Mesurable","Mensuel","Matériel","Magnifique"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quel objectif est SMART ?', '["Trouver des clients","Gagner plus","Signer 3 clients réguliers d''ici le 31 mars","M''améliorer"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelle est la différence entre motivation et discipline ?', '["La discipline est une émotion","Il n''y en a pas","La motivation va et vient, la discipline reste","La motivation est une habitude"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que veut dire « promettre moins, livrer plus » ?', '["Ne rien promettre","Annoncer un délai prudent et le battre","Promettre beaucoup","Livrer moins que prévu"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quels sont les 3 éléments d''une habitude ?', '["Déclencheur, routine, récompense","Prix, client, délai","Matin, midi, soir","Objectif, vision, valeur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelle est une petite habitude pour « étudier 1 heure par jour » ?', '["Ouvrir le cours et lire une page","Acheter un livre","Ne rien faire","Étudier 5 heures d''un coup"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Combien de temps dure la revue hebdomadaire ?', '["Une journée","Un mois","Environ 30 minutes","5 secondes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quel outil gratuit pour bloquer ses heures de travail ?', '["Photoshop","Nessus","Google Agenda","Audacity"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelles sont les valeurs de Rado ?', '["Vitesse, risque, chance","Famille, apprentissage, honnêteté","Aucune","Argent, pouvoir, célébrité"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que fait Rado face aux coupures de courant ?', '["Il ment aux clients","Il travaille chez un ami équipé d''un groupe électrogène","Il arrête le freelance","Il ne fait rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que demande Rado après une livraison réussie ?', '["Rien","Un remboursement","Un témoignage","Une remise"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelles sont les 4 questions face à un objectif en retard ?', '["Aucune","Prix, délai, client, outil","Qui, quoi, où, quand","Effort, méthode, réalisme, changement"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que faire à chaque revue mensuelle ?', '["Changer de vision","Mesurer, vérifier, apprendre et ajuster","Tout recommencer","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Quelle est la 5e étape pour se relever après un échec ?', '["Repartir","Abandonner","Oublier","Se blâmer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Comment inspirer les autres ?', '["Partager ce qu''on a appris et tenir ses promesses","Garder ses méthodes secrètes","Critiquer les débutants","Se vanter"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-1-f', 'Que faire si une période difficile dure avec un grand épuisement ?', '["En parler à ses proches et à un professionnel de santé","L''ignorer","Tout porter seul","Travailler davantage"]'::jsonb, 0);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';

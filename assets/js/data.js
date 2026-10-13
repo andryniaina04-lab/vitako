@@ -3518,6 +3518,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-1-f": {
+  "hours": 8,
+  "description": "En freelance ou en télétravail, personne ne vous dit quoi faire : il faut savoir se diriger soi-même. Cette formation pratique, en 5 modules, aide à choisir sa direction et à avancer avec constance : valeurs, vision à 3 ans, ce que l'on contrôle, objectifs SMART, découpage, discipline et engagements, habitudes, tableau de suivi, revues hebdomadaires et mensuelles, cas pratique d'un développeur de Fianarantsoa, partenaire de responsabilité et rebond après un échec. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Définir ses valeurs et une vision concrète à 3 ans",
+   "Concentrer son énergie sur ce que l'on contrôle",
+   "Écrire des objectifs SMART et les découper en actions",
+   "Construire des habitudes durables et un système de suivi",
+   "Tenir ses engagements et décider grâce à ses valeurs",
+   "Garder le cap avec des revues, un partenaire et la capacité de rebondir"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre le leadership personnel",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : objectifs, discipline et engagements",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : habitudes, tableau de suivi et revue hebdomadaire",
+    "minutes": 4
+   },
+   {
+    "title": "Mise en situation : les six mois de Rado",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : garder le cap",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

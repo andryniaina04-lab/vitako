@@ -1,0 +1,92 @@
+{
+  "id": "perso-1-f",
+  "hours": 8,
+  "description": "En freelance ou en télétravail, personne ne vous dit quoi faire : il faut savoir se diriger soi-même. Cette formation pratique, en 5 modules, aide à choisir sa direction et à avancer avec constance : valeurs, vision à 3 ans, ce que l'on contrôle, objectifs SMART, découpage, discipline et engagements, habitudes, tableau de suivi, revues hebdomadaires et mensuelles, cas pratique d'un développeur de Fianarantsoa, partenaire de responsabilité et rebond après un échec. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Définir ses valeurs et une vision concrète à 3 ans",
+    "Concentrer son énergie sur ce que l'on contrôle",
+    "Écrire des objectifs SMART et les découper en actions",
+    "Construire des habitudes durables et un système de suivi",
+    "Tenir ses engagements et décider grâce à ses valeurs",
+    "Garder le cap avec des revues, un partenaire et la capacité de rebondir"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre le leadership personnel",
+      "summary": "Se diriger soi-même, choisir 3 valeurs, écrire une vision à 3 ans, distinguer ce que l'on contrôle, influence ou ne contrôle pas.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que le leadership personnel ?", "options": ["La capacité à se diriger soi-même", "Diriger une grande équipe", "Obéir à un patron", "Être célèbre"], "correct": 0 },
+        { "q": "Combien de valeurs principales garder ?", "options": ["3 maximum", "20", "Aucune", "Une par jour"], "correct": 0 },
+        { "q": "Sur quoi concentrer son énergie ?", "options": ["Ce que l'on contrôle", "La météo", "L'économie mondiale", "Les choix des recruteurs"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : objectifs, discipline et engagements",
+      "summary": "Objectifs SMART, découpage jusqu'à l'action du jour, différence entre motivation et discipline, règles pour tenir ses engagements.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie le T de SMART ?", "options": ["Temporel : une date", "Talent", "Travail", "Téléphone"], "correct": 0 },
+        { "q": "Jusqu'où découper un objectif ?", "options": ["Jusqu'à une action de moins d'une heure", "Ne jamais le découper", "En 2 parties seulement", "Jusqu'à l'oublier"], "correct": 0 },
+        { "q": "Que faire en cas de retard prévisible ?", "options": ["Prévenir le client tôt", "Ne rien dire", "Disparaître", "Rendre un travail bâclé"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : habitudes, tableau de suivi et revue hebdomadaire",
+      "summary": "Déclencheur, routine et récompense, empilement d'habitudes, petite habitude, tableau de suivi et règle des deux jours, revue hebdomadaire, version papier.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que l'empilement d'habitudes ?", "options": ["Accrocher une nouvelle habitude à une habitude existante", "Faire 10 habitudes en même temps", "Abandonner ses habitudes", "Changer d'habitude chaque jour"], "correct": 0 },
+        { "q": "Quelle est la règle des deux jours ?", "options": ["Ne jamais manquer deux jours de suite", "Travailler deux jours par semaine", "Se reposer deux jours sur trois", "Commencer dans deux jours"], "correct": 0 },
+        { "q": "Pourquoi une version papier du planning ?", "options": ["Pour les jours de coupure ou sans connexion", "Pour décorer", "Ce n'est pas utile", "Pour l'envoyer aux clients"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : les six mois de Rado",
+      "summary": "Plan d'un développeur de Fianarantsoa, réaction à un objectif en retard, décision guidée par les valeurs, bilan à six mois.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi Rado n'a-t-il pas de réponses au mois 2 ?", "options": ["Ses messages étaient trop généraux", "Il n'envoyait rien", "Il était trop cher", "Il n'avait pas Internet"], "correct": 0 },
+        { "q": "Quel délai Rado annonce-t-il au client pressé ?", "options": ["Un délai réaliste de 10 jours", "5 jours en travaillant la nuit", "Aucun délai", "Un an"], "correct": 0 },
+        { "q": "Atteindre 87 % de son objectif, c'est :", "options": ["Un vrai progrès qui donne une direction", "Un échec total", "Une raison d'arrêter", "Une erreur de calcul"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : garder le cap",
+      "summary": "Revue mensuelle et « arrêter, commencer, continuer », partenaire de responsabilité, se relever en 5 étapes, inspirer les autres par l'exemple.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle question aide à ajuster son plan chaque mois ?", "options": ["Qu'est-ce que j'arrête, je commence, je continue ?", "Qui est le meilleur ?", "Combien gagnent les autres ?", "Quel temps fera-t-il ?"], "correct": 0 },
+        { "q": "Que fait un partenaire de responsabilité ?", "options": ["Il suit vos objectifs et vous aide à les tenir", "Il travaille à votre place", "Il vous paie", "Il vous juge"], "correct": 0 },
+        { "q": "Prendre ses responsabilités après un échec, c'est :", "options": ["Analyser et changer, sans se blâmer", "Se punir", "Accuser les autres", "Abandonner"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un leader personnel ?", "options": ["Il choisit sa direction et agit avec constance", "Il attend les ordres", "Il dirige toujours une équipe", "Il évite les décisions"], "correct": 0 },
+    { "q": "À quoi servent les valeurs ?", "options": ["À décider quand plusieurs choix sont possibles", "À décorer un CV", "À rien", "À juger les autres"], "correct": 0 },
+    { "q": "Une bonne vision est :", "options": ["Concrète et motivante", "Vague et générale", "Secrète", "Changeante chaque jour"], "correct": 0 },
+    { "q": "Une coupure de courant, c'est :", "options": ["Quelque chose que je ne contrôle pas mais que je peux anticiper", "Ma faute", "Une raison d'arrêter le freelance", "Une chose que je contrôle"], "correct": 0 },
+    { "q": "Que signifie le M de SMART ?", "options": ["Mesurable", "Magnifique", "Mensuel", "Matériel"], "correct": 0 },
+    { "q": "Quel objectif est SMART ?", "options": ["Signer 3 clients réguliers d'ici le 31 mars", "Trouver des clients", "Gagner plus", "M'améliorer"], "correct": 0 },
+    { "q": "Quelle est la différence entre motivation et discipline ?", "options": ["La motivation va et vient, la discipline reste", "Il n'y en a pas", "La discipline est une émotion", "La motivation est une habitude"], "correct": 0 },
+    { "q": "Que veut dire « promettre moins, livrer plus » ?", "options": ["Annoncer un délai prudent et le battre", "Ne rien promettre", "Livrer moins que prévu", "Promettre beaucoup"], "correct": 0 },
+    { "q": "Quels sont les 3 éléments d'une habitude ?", "options": ["Déclencheur, routine, récompense", "Prix, client, délai", "Matin, midi, soir", "Objectif, vision, valeur"], "correct": 0 },
+    { "q": "Quelle est une petite habitude pour « étudier 1 heure par jour » ?", "options": ["Ouvrir le cours et lire une page", "Étudier 5 heures d'un coup", "Ne rien faire", "Acheter un livre"], "correct": 0 },
+    { "q": "Combien de temps dure la revue hebdomadaire ?", "options": ["Environ 30 minutes", "5 secondes", "Une journée", "Un mois"], "correct": 0 },
+    { "q": "Quel outil gratuit pour bloquer ses heures de travail ?", "options": ["Google Agenda", "Photoshop", "Nessus", "Audacity"], "correct": 0 },
+    { "q": "Quelles sont les valeurs de Rado ?", "options": ["Famille, apprentissage, honnêteté", "Argent, pouvoir, célébrité", "Vitesse, risque, chance", "Aucune"], "correct": 0 },
+    { "q": "Que fait Rado face aux coupures de courant ?", "options": ["Il travaille chez un ami équipé d'un groupe électrogène", "Il arrête le freelance", "Il ment aux clients", "Il ne fait rien"], "correct": 0 },
+    { "q": "Que demande Rado après une livraison réussie ?", "options": ["Un témoignage", "Une remise", "Un remboursement", "Rien"], "correct": 0 },
+    { "q": "Quelles sont les 4 questions face à un objectif en retard ?", "options": ["Effort, méthode, réalisme, changement", "Qui, quoi, où, quand", "Prix, délai, client, outil", "Aucune"], "correct": 0 },
+    { "q": "Que faire à chaque revue mensuelle ?", "options": ["Mesurer, vérifier, apprendre et ajuster", "Tout recommencer", "Changer de vision", "Rien"], "correct": 0 },
+    { "q": "Quelle est la 5e étape pour se relever après un échec ?", "options": ["Repartir", "Abandonner", "Se blâmer", "Oublier"], "correct": 0 },
+    { "q": "Comment inspirer les autres ?", "options": ["Partager ce qu'on a appris et tenir ses promesses", "Se vanter", "Garder ses méthodes secrètes", "Critiquer les débutants"], "correct": 0 },
+    { "q": "Que faire si une période difficile dure avec un grand épuisement ?", "options": ["En parler à ses proches et à un professionnel de santé", "Tout porter seul", "Travailler davantage", "L'ignorer"], "correct": 0 }
+  ]
+}
