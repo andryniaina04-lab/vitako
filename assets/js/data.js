@@ -3462,6 +3462,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "edu-2-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du créateur de cours en ligne un professionnel des parcours que les apprenants terminent vraiment : spécialité (e-learning d'entreprise, cours vendus, microlearning, vidéo soignée, interactif, faible connectivité), audit d'un cours et indicateurs, outils payants (Camtasia, Adobe Premiere Pro, Teachable ou Thinkific) avec vente honnête, chaîne de production, guide de style, production par lots, contrôle qualité et accessibilité, localisation, SCORM et xAPI, droits et image, puis rémunération, rapports, études de cas et studio. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité, auditer un cours et lire ses indicateurs",
+   "Produire avec Camtasia et Premiere Pro et publier sur Teachable ou Thinkific",
+   "Organiser une chaîne de production par lots avec guide de style et contrôle qualité",
+   "Rendre un cours accessible et l'améliorer grâce à ses données",
+   "Localiser un cours, livrer des modules SCORM et respecter les droits",
+   "Construire des offres durables, des rapports, des études de cas et un studio"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, auditer un cours et lire ses indicateurs",
+    "summary": "Les 6 spécialités avancées, le format SCORM, l'audit en 6 domaines et son rapport, les indicateurs d'un cours, la prudence sur la complétion et les offres à forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit d'un cours existant",
+     "Les indicateurs d'un cours",
+     "Des offres à forte valeur",
+     "Exercice pratique : votre spécialité et votre audit"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Camtasia, Premiere Pro, Teachable et Thinkific",
+    "summary": "Capture, zooms et annotations dans Camtasia, multicaméra, son et sous-titres dans Premiere Pro, construction du cours, quiz, diffusion progressive et attestations, vente honnête et choix des outils.",
+    "sections": [
+     "Camtasia : les vidéos de démonstration",
+     "Premier Pro : les vidéos soignées",
+     "Teachable ou Thinkific : construire le cours",
+     "Paramétrer la vente",
+     "Choisir les outils",
+     "Exercice pratique : un cours professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : chaîne de production, style, lots, contrôle et données",
+    "summary": "Chaîne en 7 étapes et tableau de suivi, guide de style, enregistrement et montage par lots, contrôle qualité et accessibilité en 10 points, amélioration et mise à jour grâce aux données.",
+    "sections": [
+     "La chaîne de production",
+     "Le guide de style du cours",
+     "Enregistrer et monter par lots",
+     "Contrôle qualité et accessibilité",
+     "Améliorer grâce aux données",
+     "Exercice pratique : la production professionnelle"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Clients internationaux : anglais, localisation, SCORM, droits et accessibilité",
+    "summary": "Production en anglais, localisation prévue dès la conception, SCORM et xAPI, outil auteur et test du module, droits et autorisations d'image, IA signalée et normes d'accessibilité.",
+    "sections": [
+     "Produire en anglais",
+     "Localiser un cours",
+     "Les modules pour plateformes d'entreprise",
+     "Droits et image des personnes",
+     "Accessibilité pour les clients internationaux",
+     "Exercice pratique : un cours international"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : rémunération, rapports, études de cas et studio",
+    "summary": "Trois voies, forfait, prix par minute, partage de revenus avec fixe, maintenance, rapport mensuel, études de cas honnêtes, studio et évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des offres et des rémunérations durables",
+     "Les études de cas",
+     "Organiser un petit studio",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "edu-2-f": {
   "hours": 16,
   "description": "Le créateur de cours en ligne conçoit et produit des cours suivis à son rythme : vidéos, documents, quiz et exercices. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des experts, des organismes de formation, des entreprises et des ONG, à Madagascar et à l'étranger, avec Canva, OBS et une plateforme e-learning : étapes de création, objectifs, plan, leçons courtes, scripts, quiz, enregistrement, montage léger, mise en ligne, entretien avec l'expert, tournage à distance et test. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

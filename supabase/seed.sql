@@ -98,7 +98,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true),
   ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 16, true),
   ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 16, true),
-  ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 14, false),
+  ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 17, true),
   ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
   ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true),
   ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
@@ -23613,6 +23613,557 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Que montre l''extrait vidéo du dossier ?', '["Vos vacances","Votre façon d''animer","Les données du client","Rien"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Pourquoi une formation devient-elle plus rentable avec le temps ?', '["Elle demande plus de préparation","Elle ne l''est jamais","Elle est déjà conçue pour les sessions suivantes","Elle coûte plus cher aux clients"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-1-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Mobile Money ou virement","Uniquement PayPal","Aucun"]'::jsonb, 1);
+
+-- edu-2-a
+delete from public.exam_questions where course_id = 'edu-2-a';
+delete from public.module_questions where course_id = 'edu-2-a';
+delete from public.lessons where course_id = 'edu-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-a', 0, 'Se spécialiser, auditer un cours et lire ses indicateurs', 'Les 6 spécialités avancées, le format SCORM, l''audit en 6 domaines et son rapport, les indicateurs d''un cours, la prudence sur la complétion et les offres à forte valeur.', 'Produire des leçons claires avec des vidéos et des quiz ouvre les premières missions. Les créateurs de cours les mieux payés vont plus loin : ils conçoivent des **parcours complets** que les apprenants terminent vraiment, produisent des vidéos soignées, livrent des modules compatibles avec les plateformes des entreprises et aident les experts à vendre leurs cours. Ce module vous aide à choisir votre spécialité et à vendre des résultats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de la création de cours.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Réaliser un audit d''un cours existant.
+> 4. Lire les indicateurs d''un cours en ligne.
+> 5. Construire des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **E-learning d''entreprise** | Modules pour les plateformes de formation des entreprises | Ingénierie pédagogique, formats standard (SCORM), outils auteurs |
+| 2 | **Cours vendus en ligne** | Aider un expert à créer et lancer un cours payant | Plateformes de vente, page de vente, lancement |
+| 3 | **Microlearning mobile** | Leçons de 2 à 5 minutes sur téléphone | Scénarisation courte, formats verticaux, légèreté |
+| 4 | **Vidéo pédagogique soignée** | Tournage et montage de haute qualité | Lumière, son, montage, animations simples |
+| 5 | **E-learning interactif** | Scénarios, mises en situation, simulations | Outils auteurs, scénarios à embranchements |
+| 6 | **Cours pour faible connectivité** | Formations pour des publics avec peu de données mobiles | Fichiers légers, mode hors ligne, textes et audio |
+
+> [!definition] SCORM
+> Un format standard qui permet de créer un module e-learning une fois et de le faire fonctionner dans de nombreuses plateformes de formation d''entreprise (LMS), avec le suivi de la progression et des résultats.
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Cours pour faible connectivité**, une compétence rare et utile en Afrique et à Madagascar.
+> - **Cours en français pour des experts francophones** qui veulent vendre leur savoir.
+> - **Modules pour ONG et programmes** qui forment des agents dans tout le pays.
+
+## L''audit d''un cours existant
+
+Un audit est une excellente **offre d''entrée** : l''expert ou l''organisation voit pourquoi les apprenants abandonnent et vous confie l''amélioration.
+
+| Domaine | Ce que vous vérifiez |
+| --- | --- |
+| **Objectifs** | Clairs et reliés aux leçons ? |
+| **Structure** | Leçons courtes, progression logique ? |
+| **Engagement** | Activités, quiz, exercices, ou seulement des vidéos longues ? |
+| **Qualité de production** | Son, image, lisibilité des diapositives |
+| **Accessibilité** | Sous-titres, transcriptions, lisible sur téléphone |
+| **Données** | Taux de complétion, abandon par leçon, résultats aux quiz |
+
+### Le rapport d''audit
+
+```
+Cours : « Gérer sa petite entreprise » – 18 leçons, 340 apprenants
+Taux de complétion : 14 %
+Abandon : 45 % des apprenants s''arrêtent à la leçon 3 (vidéo de 32 minutes)
+Quiz : 2 questions sur 3 réussies par plus de 95 % (trop faciles)
+Son : écho dans 10 leçons ; pas de sous-titres
+Téléphone : diapositives illisibles sur petit écran
+
+Plan proposé
+1. Découper les 4 vidéos de plus de 15 minutes en leçons de 5 à 8 minutes.
+2. Ajouter un exercice pratique par module et revoir les quiz.
+3. Nettoyer le son, ajouter les sous-titres, refaire les diapositives pour le téléphone.
+Objectif : doubler le taux de complétion en 3 mois.
+```
+
+## Les indicateurs d''un cours
+
+| Indicateur | Ce qu''il montre |
+| --- | --- |
+| **Taux de complétion** | La part des apprenants qui terminent |
+| **Abandon par leçon** | Où les apprenants décrochent |
+| **Temps passé** | Si les leçons sont regardées en entier |
+| **Résultats aux quiz** | Questions trop faciles, trop difficiles ou mal formulées |
+| **Satisfaction et commentaires** | Ce qui plaît, ce qui manque |
+| **Ventes et remboursements** (cours vendus) | La valeur perçue |
+
+> [!attention]
+> Un taux de complétion faible n''est pas toujours un échec : certains apprenants ne viennent chercher qu''une leçon. Analysez **où et pourquoi** ils s''arrêtent avant de conclure, et ne promettez pas un taux précis sans connaître le public.
+
+## Des offres à forte valeur
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit de cours** | Analyse des données et du contenu, rapport, plan | 300 000 Ar |
+| **Refonte d''un cours** | Découpage, nouvelles activités, son, sous-titres | Selon le volume |
+| **Cours complet clé en main** | Conception, production, plateforme, lancement | 3 000 000 Ar et plus |
+| **Module e-learning d''entreprise** | Module interactif au format standard | Selon la durée et l''interactivité |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!retenir]
+> - Six spécialités : entreprise, cours vendus, microlearning, vidéo, interactif, faible connectivité.
+> - SCORM rend un module compatible avec de nombreuses plateformes d''entreprise.
+> - L''audit révèle où et pourquoi les apprenants abandonnent.
+> - Complétion, abandon par leçon, temps passé, quiz, satisfaction, ventes.
+> - Des offres à valeur : refonte, cours clé en main, modules d''entreprise.
+
+## Exercice pratique : votre spécialité et votre audit
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez-la en 5 lignes.
+> 2. Suivez les 3 premières leçons d''un cours en ligne gratuit et auditez-le dans les 6 domaines.
+> 3. Rédigez un rapport avec 4 constats et un plan.
+> 4. Préparez 3 offres avec leur prix.
+>
+> **À livrer** : votre choix, votre grille d''audit, votre rapport et vos offres.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 0, 0, 'Qu''est-ce que SCORM ?', '["Un format standard pour les modules e-learning d''entreprise","Une plateforme de vente","Un logiciel de montage","Un micro"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 0, 1, 'Que révèle l''abandon par leçon ?', '["Rien","Le prix du cours","La couleur des diapositives","Où les apprenants décrochent"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 0, 2, 'Quelle cause d''abandon apparaît dans l''audit d''exemple ?', '["Une attestation","Une bonne lumière","Une vidéo de 32 minutes","Un quiz trop court"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-a', 1, 'Outils professionnels : Camtasia, Premiere Pro, Teachable et Thinkific', 'Capture, zooms et annotations dans Camtasia, multicaméra, son et sous-titres dans Premiere Pro, construction du cours, quiz, diffusion progressive et attestations, vente honnête et choix des outils.', 'Les créateurs de cours professionnels produisent leurs vidéos avec **Camtasia** ou **Adobe Premiere Pro**, et publient les cours payants sur des plateformes comme **Teachable** ou **Thinkific**. Ce module vous apprend leurs fonctions avancées pour produire plus vite et mieux, et pour lancer un cours vendu.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Produire des vidéos de démonstration efficaces avec Camtasia.
+> 2. Monter des vidéos soignées avec Premiere Pro.
+> 3. Construire un cours complet sur Teachable ou Thinkific.
+> 4. Paramétrer la vente, les accès et les attestations.
+> 5. Choisir les outils selon le projet et le budget.
+
+## Camtasia : les vidéos de démonstration
+
+| Fonction (selon la version) | Usage |
+| --- | --- |
+| **Enregistrement écran + caméra + micro** | Tout capturer en une fois, sur des pistes séparées |
+| **Zooms et panoramiques** | Montrer un détail de l''écran |
+| **Mise en valeur du curseur et des clics** | Rendre les manipulations visibles |
+| **Annotations** | Flèches, cadres, textes, raccourcis clavier |
+| **Modèles et thèmes** | Introductions, titres et couleurs identiques pour tout le cours |
+| **Sous-titres** | Création et export |
+| **Quiz dans la vidéo** (selon l''export) | Questions qui apparaissent pendant la vidéo |
+
+> [!astuce]
+> Pour les tutoriels de logiciels, enregistrez en **plein écran** et en haute résolution, puis utilisez les **zooms** au montage. Le spectateur sur téléphone verra clairement chaque clic.
+
+## Premier Pro : les vidéos soignées
+
+| Fonction | Usage |
+| --- | --- |
+| **Montage multicaméra** | Expert filmé sous deux angles |
+| **Panneau Son essentiel** | Voix claires, musique baissée sous la voix |
+| **Sous-titres** (transcription automatique, à corriger) | Accessibilité et compréhension |
+| **Modèles graphiques** | Titres, bandeaux, chiffres animés, identiques dans tout le cours |
+| **Étalonnage simple** | Couleurs régulières d''une vidéo à l''autre |
+| **Exports prédéfinis** | Mêmes réglages pour toutes les vidéos |
+
+> [!attention]
+> Les **sous-titres automatiques** doivent toujours être relus : les noms propres, les termes techniques et les mots malgaches sont souvent mal transcrits.
+
+## Teachable ou Thinkific : construire le cours
+
+| Élément (selon la plateforme et l''offre) | Usage |
+| --- | --- |
+| **Constructeur de cours** | Sections, leçons, vidéos, textes, fichiers |
+| **Quiz** | Note minimale, nombre d''essais |
+| **Diffusion progressive** (drip) | Ouvrir les leçons au fil des jours |
+| **Prérequis** | Terminer une leçon pour débloquer la suivante |
+| **Attestation** | Délivrée à la fin du cours |
+| **Communauté ou commentaires** | Questions et échanges entre apprenants |
+| **Statistiques** | Progression, complétion, ventes |
+
+## Paramétrer la vente
+
+| Élément | Choix à faire avec l''expert |
+| --- | --- |
+| **Prix** | Paiement unique, paiement en plusieurs fois, abonnement |
+| **Page de vente** | Promesse, programme, formateur, témoignages réels, questions fréquentes |
+| **Codes promo** | Lancement, partenaires |
+| **Paiements** | Moyens acceptés dans les pays des apprenants |
+| **Taxes** | Selon la plateforme et les pays (taxes sur les services numériques) |
+| **Accès** | À vie ou limité dans le temps |
+| **Remboursement** | Politique claire |
+
+> [!attention]
+> Sur la page de vente, n''utilisez que des **témoignages réels**, avec l''accord des personnes. Évitez les promesses de revenus garantis (« gagnez 1 000 € par mois ») : elles sont trompeuses et souvent interdites.
+
+> [!madagascar]
+> Vérifiez que la plateforme permet de **recevoir l''argent des ventes** dans le pays de l''expert. Pour un expert basé à Madagascar, les moyens de versement disponibles peuvent être limités : c''est un point à vérifier avant de choisir la plateforme, et parfois une raison de choisir une autre solution.
+
+## Choisir les outils
+
+| Projet | Outils conseillés |
+| --- | --- |
+| Tutoriels de logiciels | Camtasia, ou OBS + éditeur gratuit |
+| Cours avec tournages soignés | Premiere Pro |
+| Cours vendu par un expert | Teachable, Thinkific ou une plateforme équivalente |
+| Formation interne d''entreprise | La plateforme de l''entreprise, modules au format standard |
+| Public à faible connectivité | Plateforme légère, vidéos courtes, textes et audio téléchargeables |
+
+> [!madagascar]
+> Ces outils se paient en dollars par carte bancaire internationale. Souvent, **l''expert ou l''entreprise** paie la plateforme ; vous payez vos outils de production quand vos revenus le permettent. Utilisez les périodes d''essai pour vous former.
+
+> [!retenir]
+> - Camtasia : capture, zooms, curseur, annotations, modèles, sous-titres.
+> - Premiere Pro : multicaméra, son, sous-titres relus, modèles graphiques, exports.
+> - Teachable ou Thinkific : leçons, quiz, diffusion progressive, attestations, statistiques.
+> - Vente : prix, page honnête, paiements, taxes, accès, remboursement.
+> - Choisir les outils selon le projet, le public et le budget.
+
+## Exercice pratique : un cours professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Produisez un tutoriel de 5 minutes avec Camtasia (essai) ou OBS, avec zooms et annotations.
+> 2. Montez une vidéo face caméra avec un titre animé et des sous-titres relus.
+> 3. Construisez un mini-cours de 3 leçons sur une plateforme (essai ou offre gratuite) avec quiz et attestation.
+> 4. Rédigez la page de vente du cours, sans promesse trompeuse.
+>
+> **À livrer** : vos vidéos, le lien du mini-cours et la page de vente.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 1, 0, 'Pourquoi utiliser les zooms dans un tutoriel ?', '["Décorer","Ralentir la vidéo","Cacher l''écran","Rendre chaque clic visible sur téléphone"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 1, 1, 'Que faire des sous-titres automatiques ?', '["Les supprimer","Les publier tels quels","Les relire et les corriger","Les traduire sans relire"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 1, 2, 'Quelle promesse éviter sur une page de vente ?', '["La politique de remboursement","Des revenus garantis","Le nom du formateur","Le programme du cours"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-a', 2, 'Qualité et rapidité : chaîne de production, style, lots, contrôle et données', 'Chaîne en 7 étapes et tableau de suivi, guide de style, enregistrement et montage par lots, contrôle qualité et accessibilité en 10 points, amélioration et mise à jour grâce aux données.', 'Un créateur de cours professionnel produit des dizaines de leçons **de même qualité**, dans les délais, et améliore ses cours grâce aux données. Ce module vous donne les méthodes des meilleurs : chaîne de production, guide de style, enregistrement par lots, contrôle qualité, accessibilité et amélioration continue.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une chaîne de production efficace.
+> 2. Créer un guide de style pour un cours.
+> 3. Enregistrer et monter par lots.
+> 4. Contrôler la qualité et l''accessibilité avant publication.
+> 5. Améliorer un cours grâce à ses données.
+
+## La chaîne de production
+
+| Étape | Livrable | Validation |
+| --- | --- | --- |
+| **1. Plan** | Modules, leçons, objectifs | Expert |
+| **2. Scripts** | Texte de chaque vidéo | Expert |
+| **3. Supports** | Diapositives, fiches, exercices | Interne |
+| **4. Enregistrement** | Fichiers bruts | Interne |
+| **5. Montage** | Vidéos finales | Expert (échantillon) |
+| **6. Quiz et activités** | Questions avec explications | Expert |
+| **7. Mise en ligne** | Cours complet | Test apprenants |
+
+### Le tableau de suivi
+
+| Leçon | Script | Validé | Diapos | Enregistré | Monté | Quiz | En ligne |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2.1 | fait | fait | fait | fait | fait | fait | fait |
+| 2.2 | fait | fait | fait | fait | en cours | à faire | à faire |
+| 2.3 | fait | en attente | à faire | à faire | à faire | à faire | à faire |
+
+> [!astuce]
+> Les **validations de l''expert** sont souvent le goulot d''étranglement. Regroupez-les (par exemple tous les scripts d''un module en une fois) et fixez des dates de retour dans le calendrier.
+
+## Le guide de style du cours
+
+| Élément | Exemple |
+| --- | --- |
+| **Couleurs et polices** | 2 couleurs principales, 1 police pour les titres, 1 pour le texte |
+| **Modèles de diapositives** | Titre, contenu, citation, exercice, récapitulatif |
+| **Introduction et conclusion** | 5 secondes de titre, phrase d''objectif, récapitulatif final |
+| **Ton** | « Vous », phrases courtes, exemples malgaches |
+| **Durées** | 3 à 8 minutes par vidéo |
+| **Nommage des fichiers** | M02_L03_titre-court_v2.mp4 |
+| **Sous-titres** | Police, taille, position |
+
+## Enregistrer et monter par lots
+
+| Pratique | Gain |
+| --- | --- |
+| **Enregistrer tout un module** en une séance | Même lumière, même son, même tenue |
+| **Diapositives prêtes** avant l''enregistrement | Pas d''interruption |
+| **Marqueurs** à chaque erreur (claquement, pause) | Montage plus rapide |
+| **Montage par lot** avec les mêmes modèles | Cohérence et rapidité |
+| **Export par lot** avec un préréglage unique | Fichiers homogènes |
+
+> [!madagascar]
+> Planifiez les séances d''enregistrement aux heures où l''**électricité et le calme** sont les plus fiables, et gardez une batterie pour l''ordinateur et la lumière. Une séance coupée au milieu oblige souvent à tout recommencer pour garder une image cohérente.
+
+## Contrôle qualité et accessibilité
+
+| N° | Vérification |
+| --- | --- |
+| 1 | Son clair, volume régulier d''une vidéo à l''autre |
+| 2 | Aucune erreur de contenu (validée par l''expert) |
+| 3 | Diapositives lisibles sur téléphone |
+| 4 | Sous-titres relus et synchronisés |
+| 5 | Transcription ou fiche résumée disponible |
+| 6 | Contrastes suffisants, pas d''information transmise uniquement par la couleur |
+| 7 | Quiz avec bonnes réponses et explications |
+| 8 | Liens et fichiers fonctionnels |
+| 9 | Ordre des leçons et titres cohérents |
+| 10 | Test complet par un apprenant sur téléphone |
+
+> [!definition] Accessibilité numérique
+> Le fait qu''un contenu puisse être utilisé par tous, y compris les personnes ayant un handicap (visuel, auditif, moteur) ou des contraintes (connexion faible, petit écran). Des normes internationales, comme les WCAG, en décrivent les règles.
+
+## Améliorer grâce aux données
+
+| Donnée | Action possible |
+| --- | --- |
+| Abandon fort à une leçon | Raccourcir, découper, ajouter une activité |
+| Quiz réussi par presque tous | Rendre la question plus utile |
+| Quiz raté par beaucoup | Clarifier la leçon ou la question |
+| Leçon souvent revue | Ajouter une fiche récapitulative |
+| Questions fréquentes dans les commentaires | Ajouter une leçon ou une foire aux questions |
+
+> [!attention]
+> Mettez à jour un cours **régulièrement** (outils qui changent, chiffres dépassés, liens cassés). Un cours dont les captures d''écran ne correspondent plus au logiciel actuel perd vite sa crédibilité.
+
+> [!retenir]
+> - Une chaîne de production en 7 étapes avec un tableau de suivi.
+> - Un guide de style pour la cohérence du cours.
+> - Enregistrer et monter par lots.
+> - Un contrôle qualité et accessibilité en 10 points.
+> - Améliorer et mettre à jour grâce aux données.
+
+## Exercice pratique : la production professionnelle
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Rédigez le guide de style de votre cours.
+> 2. Enregistrez 3 leçons d''un même module en une séance.
+> 3. Montez-les par lot avec les mêmes modèles et le même préréglage d''export.
+> 4. Passez le contrôle en 10 points et corrigez.
+>
+> **À livrer** : votre guide de style, vos 3 vidéos, votre tableau de suivi et votre contrôle rempli.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 2, 0, 'Quel est souvent le goulot d''étranglement de la production ?', '["Les validations de l''expert","Le nom des fichiers","L''export","La musique"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 2, 1, 'Pourquoi enregistrer tout un module en une séance ?', '["Même lumière, son et tenue","Pour aller moins vite","Pour éviter les scripts","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 2, 2, 'Que faire d''un quiz raté par beaucoup d''apprenants ?', '["Le supprimer sans réfléchir","Clarifier la leçon ou la question","Rien","Le rendre plus difficile"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-a', 3, 'Clients internationaux : anglais, localisation, SCORM, droits et accessibilité', 'Production en anglais, localisation prévue dès la conception, SCORM et xAPI, outil auteur et test du module, droits et autorisations d''image, IA signalée et normes d''accessibilité.', 'Les entreprises, les organismes de formation et les experts du monde entier ont besoin de cours en ligne. Ce module vous prépare à travailler pour eux : produire en anglais, adapter un cours à d''autres langues, livrer des modules compatibles avec les plateformes d''entreprise, respecter les droits et l''accessibilité, et collaborer à distance avec des experts étrangers.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Produire ou adapter un cours en anglais.
+> 2. Localiser un cours : sous-titres, voix off, supports.
+> 3. Livrer un module au format standard pour une plateforme d''entreprise.
+> 4. Respecter les droits sur les contenus et l''image des personnes.
+> 5. Collaborer à distance avec un expert étranger.
+
+## Produire en anglais
+
+| Situation | Bonne pratique |
+| --- | --- |
+| Scripts en anglais | Phrases courtes, vocabulaire simple, relecture par un professionnel |
+| Expert anglophone | Vous préparez la structure ; il valide le contenu et enregistre sa voix |
+| Communication | Formules claires, validations écrites, vidéos de démonstration |
+
+> [!exemple] Message à un expert
+> « Hi Daniel, here are the scripts for Module 2 (5 lessons). Could you review them by Thursday? Please add comments directly in the document. Once approved, I''ll send you the slides and a short recording guide. »
+
+## Localiser un cours
+
+| Élément | Adaptation |
+| --- | --- |
+| **Sous-titres** | Traduits et relus, synchronisés |
+| **Voix off** | Réenregistrée dans la langue cible, ou doublage (voir la formation Comédien voix off) |
+| **Diapositives et fiches** | Traduites ; attention à la longueur des textes |
+| **Exemples** | Adaptés au pays (prix, noms, situations) |
+| **Quiz** | Traduits et vérifiés |
+| **Unités et formats** | Dates, nombres, devises |
+
+> [!astuce]
+> Prévoyez la localisation **dès la conception** : textes séparés des images, diapositives avec de l''espace pour des traductions plus longues, voix enregistrée séparément de la musique. Adapter un cours devient alors beaucoup plus simple.
+
+## Les modules pour plateformes d''entreprise
+
+| Format | Usage |
+| --- | --- |
+| **SCORM** | Le plus répandu : progression et score remontés dans la plateforme |
+| **xAPI** | Plus récent : suit des activités plus variées, y compris hors plateforme |
+| **Vidéo + quiz de la plateforme** | Solution simple si l''entreprise l''accepte |
+
+### Livrer un module
+
+1. **Demandez** la plateforme et le format exigés.
+2. **Créez** le module avec un outil auteur qui exporte dans ce format.
+3. **Testez** le module sur un service de test de modules ou une plateforme de test.
+4. **Vérifiez** que la progression et le score remontent correctement.
+5. **Livrez** le fichier avec une note : durée, critères de réussite, réglages conseillés.
+
+> [!definition] Outil auteur
+> Un logiciel qui sert à créer des modules e-learning interactifs (diapositives, quiz, scénarios, clics) et à les exporter dans des formats standard comme SCORM.
+
+## Droits et image des personnes
+
+| Élément | Règle |
+| --- | --- |
+| **Contenu de l''expert** | Appartient à l''expert ou à son organisation selon le contrat |
+| **Images, musiques, icônes** | Licences vérifiées pour l''usage commercial |
+| **Captures d''écran de logiciels** | Usage pédagogique généralement accepté, sans dénigrer la marque ; vérifier les conditions de l''éditeur si besoin |
+| **Personnes filmées** | Autorisation écrite d''utiliser leur image |
+| **Données personnelles des apprenants** | Protégées selon les lois (RGPD en Europe) |
+
+> [!attention]
+> N''utilisez jamais une **voix ou un visage générés par IA** imitant une personne réelle sans son accord écrit. Signalez au client tout contenu généré par IA dans le cours, selon ses règles.
+
+## Accessibilité pour les clients internationaux
+
+Beaucoup d''entreprises et d''organisations publiques demandent des cours conformes aux normes d''accessibilité (souvent les **WCAG**). Prévoyez :
+
+1. Sous-titres et transcriptions.
+2. Contrastes suffisants et textes lisibles.
+3. Navigation possible au clavier dans les modules interactifs.
+4. Textes alternatifs pour les images utiles.
+5. Pas d''information transmise uniquement par la couleur ou le son.
+
+> [!madagascar]
+> Mettre en avant votre capacité à produire des cours **légers et accessibles**, utilisables avec une connexion faible, est un argument fort pour les organisations qui forment en Afrique, en plus de leurs exigences d''accessibilité.
+
+> [!retenir]
+> - En anglais : scripts simples, relecture professionnelle, validations écrites.
+> - Localiser dès la conception : textes séparés, espace, voix séparée.
+> - SCORM ou xAPI selon la plateforme, testés avant livraison.
+> - Licences, autorisations d''image, données des apprenants, IA signalée.
+> - Accessibilité selon les normes demandées par le client.
+
+## Exercice pratique : un cours international
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Traduisez et adaptez une de vos leçons en anglais (script, sous-titres, diapositives).
+> 2. Créez un mini-module interactif avec un outil auteur en version d''essai et exportez-le en SCORM.
+> 3. Testez-le sur un service de test de modules.
+> 4. Rédigez la liste des droits et autorisations à obtenir pour un cours tourné avec 3 personnes.
+>
+> **À livrer** : votre leçon en anglais, votre module SCORM, une capture du test et votre liste.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 3, 0, 'Quand prévoir la localisation ?', '["Jamais","Seulement pour l''anglais","Après la publication","Dès la conception"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 3, 1, 'Qu''est-ce qu''un outil auteur ?', '["Un logiciel pour créer des modules e-learning interactifs","Un dictionnaire","Un traitement de texte","Une caméra"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 3, 2, 'Que faut-il pour filmer une personne dans un cours ?', '["Rien","Payer la plateforme","Son autorisation écrite","Un accord oral suffit toujours"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('edu-2-a', 4, 'Développer son activité : rémunération, rapports, études de cas et studio', 'Trois voies, forfait, prix par minute, partage de revenus avec fixe, maintenance, rapport mensuel, études de cas honnêtes, studio et évolution.', 'Après quelques cours réussis, vous pouvez construire une **activité stable** : cours clés en main pour des experts, modules pour des entreprises, partage des revenus, maintenance des cours, et peut-être un petit studio. Ce dernier module vous aide à construire cette activité.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des offres et des modèles de rémunération durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser un petit studio de production.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Pour qui | Revenus |
+| --- | --- | --- |
+| **Studio de cours pour experts** | Ceux qui aiment accompagner des créateurs | Projets, partage de revenus, maintenance |
+| **Concepteur e-learning d''entreprise** | Ceux qui aiment la rigueur et l''interactivité | Modules facturés à la durée ou au projet |
+| **Créateur de vos propres cours** | Ceux qui ont un savoir à vendre | Ventes directes |
+
+## Des offres et des rémunérations durables
+
+| Modèle | Principe | Exemple |
+| --- | --- | --- |
+| **Forfait projet** | Prix fixe pour un cours complet | 3 000 000 Ar pour 12 leçons |
+| **Prix par minute finale** | Selon le niveau de production | De 25 000 à 80 000 Ar la minute |
+| **Partage de revenus** | Part des ventes du cours | 10 à 30 % selon votre apport, avec un fixe minimum |
+| **Maintenance** | Mises à jour, support technique, rapports | Forfait mensuel |
+| **Module d''entreprise** | Selon la durée et l''interactivité | Devis par module |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Un **partage de revenus seul** est risqué : beaucoup de cours se vendent peu. Exigez un fixe minimum pour couvrir votre travail, définissez par écrit comment les ventes sont mesurées et quand vous êtes payé, et vérifiez que vous pouvez consulter les chiffres.
+
+### Le rapport mensuel (maintenance)
+
+| Rubrique | Exemple |
+| --- | --- |
+| Nouveaux apprenants | 85 |
+| Taux de complétion | 31 % (contre 14 % avant la refonte) |
+| Leçons les plus abandonnées | 4.2 (à revoir) |
+| Résultats aux quiz | Question 3.4 ratée par 60 % : leçon à clarifier |
+| Mises à jour faites | 3 captures d''écran remplacées, 2 liens corrigés |
+| Propositions | Ajouter un module bonus sur les outils mobiles |
+
+## Les études de cas
+
+> [!exemple] Étude de cas courte
+> **Client** : expert en gestion de petites entreprises, cours vendu en ligne.
+> **Problème** : 14 % de complétion, avis moyens, peu de ventes.
+> **Solution** : audit, découpage en leçons de 5 à 8 minutes, exercices pratiques, nouveau son, sous-titres, diapositives pour téléphone, page de vente réécrite.
+> **Résultats en 4 mois** : complétion de 14 % à 31 % ; note des apprenants de 3,9 à 4,7 ; remboursements divisés par 2.
+
+1. **Demandez** l''accord du client ou anonymisez.
+2. **Comparez** avant et après sur des périodes équivalentes.
+3. **Expliquez** ce qui vient de votre travail et ce qui vient d''autres facteurs (publicité, saison).
+
+## Organiser un petit studio
+
+| Rôle | Quand l''ajouter |
+| --- | --- |
+| **Monteur vidéo** | Quand le montage prend la majorité de votre temps |
+| **Graphiste** | Diapositives et visuels soignés |
+| **Concepteur de quiz et d''activités** | Gros volumes de cours |
+| **Traducteur ou voix off** | Localisation |
+| **Chef de projet** (vous) | Experts, planning, qualité |
+
+### Les règles du studio
+
+1. **Guide de style** par cours et **chaîne de production** commune.
+2. **Tableau de suivi** partagé.
+3. **Contrôle qualité** en 10 points avant chaque mise en ligne.
+4. **Sauvegarde** des fichiers sources de chaque cours.
+5. **Contrats** : propriété, confidentialité, délais.
+
+> [!madagascar]
+> Un studio basé à Madagascar peut produire des cours **en français, en malgache et en anglais**, adaptés aux connexions faibles, pour des experts, des ONG et des entreprises d''Afrique et d''Europe. Commencez par 2 ou 3 cours bien réussis : les recommandations entre experts sont le meilleur moyen de grandir.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Ingénieur pédagogique** | Dispositifs complets, évaluation, accompagnement des directions formation |
+| **Responsable e-learning** | Plateforme d''entreprise, catalogue, équipes |
+| **Producteur vidéo** | Tournages plus ambitieux (voir la formation Monteur vidéo) |
+| **Formateur en ligne** | Voir la formation Formateur en ligne |
+
+> [!retenir]
+> - Studio pour experts, e-learning d''entreprise ou vos propres cours : choisissez votre voie.
+> - Forfait, prix par minute, partage de revenus avec fixe minimum, maintenance.
+> - Un rapport mensuel basé sur les données du cours.
+> - Des études de cas honnêtes et chiffrées.
+> - Un studio avec guide, chaîne, suivi, contrôle, sauvegardes et contrats.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et fixez un objectif à 12 mois.
+> 2. Construisez 3 offres avec leur modèle de rémunération.
+> 3. Rédigez votre modèle de rapport mensuel et une étude de cas à partir de vos projets.
+> 4. Listez 10 experts, organismes ou entreprises et envoyez 3 propositions d''audit.
+>
+> **À livrer** : votre plan, vos offres, votre modèle de rapport, votre étude de cas et vos messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 4, 0, 'Pourquoi exiger un fixe avec un partage de revenus ?', '["Aucune raison","Pour payer moins d''impôts","Beaucoup de cours se vendent peu","C''est interdit sinon"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 4, 1, 'Que contient un rapport de maintenance ?', '["Rien","Apprenants, complétion, abandons, quiz, mises à jour et propositions","Seulement la facture","Les données bancaires"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('edu-2-a', 4, 2, 'Que sauvegarder pour chaque cours ?', '["Rien","Seulement le titre","Les mots de passe","Les fichiers sources"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quelle spécialité produit pour des publics avec peu de données mobiles ?', '["E-learning interactif","Cours pour faible connectivité","Vidéo soignée","Cours vendus"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que vérifie le domaine Engagement de l''audit ?', '["Le prix","Activités, quiz et exercices","Le nom de l''expert","La couleur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Un taux de complétion faible est-il toujours un échec ?', '["Non, il faut analyser où et pourquoi","Oui, toujours","Oui, s''il est sous 50 %","Non, il n''a aucune importance"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que propose un cours clé en main ?', '["Seulement le montage","Une caméra","Conception, production, plateforme et lancement","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que permet la diffusion progressive (drip) ?', '["Ouvrir les leçons au fil des jours","Supprimer des leçons","Baisser le prix","Télécharger la vidéo"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que vérifier pour un expert basé à Madagascar ?', '["Son nombre d''abonnés","Rien","La couleur de la plateforme","Qu''il peut recevoir l''argent des ventes"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quels témoignages utiliser ?', '["Des témoignages inventés","Des témoignages réels avec accord","Des avis de concurrents","Aucun jamais"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quel outil pour un cours avec tournages soignés ?', '["Un traitement de texte","Premiere Pro","Aucun","Un tableur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Comment réduire l''attente des validations ?', '["Ne plus rien faire valider","Les regrouper avec des dates de retour","Valider à la place de l''expert","Attendre sans date"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que contient le guide de style d''un cours ?', '["Les mots de passe","Les prix","Rien","Couleurs, modèles, ton, durées, nommage, sous-titres"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Pourquoi des marqueurs pendant l''enregistrement ?', '["Monter plus vite","Allonger la vidéo","Rien","Décorer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Qu''est-ce que l''accessibilité numérique ?', '["Un accès gratuit","Une connexion rapide","Un contenu utilisable par tous, y compris en situation de handicap","Un prix bas"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que faire d''une leçon souvent revue ?', '["Ajouter une fiche récapitulative","La cacher","Rien","La supprimer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Pourquoi mettre à jour un cours ?', '["Pour décorer","Pour changer le prix","Captures, chiffres et liens deviennent dépassés","Ce n''est jamais utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Comment préparer des diapositives pour la traduction ?', '["Rien","Mettre le texte dans les images","Laisser de l''espace pour des textes plus longs","Écrire tout petit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que suit xAPI ?', '["Des activités variées, y compris hors plateforme","Les mots de passe","Rien","Seulement les paiements"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que vérifier en testant un module SCORM ?', '["Le nombre de pages","Que progression et score remontent correctement","La couleur du logo","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'À qui appartient le contenu de l''expert ?', '["À personne","À l''expert ou à son organisation selon le contrat","Au créateur toujours","À la plateforme"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Peut-on imiter la voix d''une personne réelle par IA sans accord ?', '["Oui","Oui, si elle est connue","Non","Oui, pour un cours gratuit"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quelle norme d''accessibilité est souvent demandée ?', '["Le MP4","Le SCORM","Les WCAG","Le RGPD"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quel argument pour les organisations qui forment en Afrique ?', '["Des cours légers et accessibles","Des cours sans quiz","Des vidéos très lourdes","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quel modèle de rémunération dépend de la durée finale ?', '["Maintenance","Partage de revenus","Bénévolat","Prix par minute finale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Que définir par écrit pour un partage de revenus ?', '["La couleur du cours","Mesure des ventes et date de paiement","Le nom des apprenants","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Quand ajouter un monteur vidéo au studio ?', '["Dès le premier cours seul","Quand le montage prend la majorité de votre temps","Jamais","Quand il n''y a plus de projets"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('edu-2-a', 'Comment grandir au début ?', '["Ne pas suivre les données","Baisser les prix au minimum","Réussir 2 ou 3 cours et obtenir des recommandations","Prendre 20 projets d''un coup"]'::jsonb, 2);
 
 -- edu-2-f
 delete from public.exam_questions where course_id = 'edu-2-f';
