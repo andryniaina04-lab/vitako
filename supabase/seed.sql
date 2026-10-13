@@ -40,7 +40,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
   ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true),
   ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true),
-  ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 18, false),
+  ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 17, true),
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true),
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Analyste en cybersécurité – Avancé', 14, false),
   ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
@@ -57852,6 +57852,526 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Que contient un bilan de journée ?', '["Seulement vos heures","Des photos","Les mots de passe","Tickets, délais, problèmes principaux, incidents et propositions"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel forfait proposer à une petite structure locale ?', '["Un ordinateur gratuit","Un abonnement à une salle de sport","Un forfait mensuel de support à distance","Rien"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-2-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement des chèques étrangers","Aucun","Mobile Money ou virement","Uniquement PayPal"]'::jsonb, 2);
+
+-- tech-3-a
+delete from public.exam_questions where course_id = 'tech-3-a';
+delete from public.module_questions where course_id = 'tech-3-a';
+delete from public.lessons where course_id = 'tech-3-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-a', 0, 'Se spécialiser et réaliser un audit d''infrastructure', 'Six spécialités avancées et avantages depuis Madagascar, audit de la sécurité, des sauvegardes, de la disponibilité, du déploiement, de la surveillance, des coûts et de la documentation, priorités par gravité et effort, offres à plus forte valeur.', 'Sécuriser un serveur, déployer une application avec Docker et automatiser les tests ouvrent les premières missions. Les administrateurs et DevOps les mieux payés vont plus loin : ils conçoivent des infrastructures **fiables**, **reproductibles** et **maîtrisées en coût**, et prennent la responsabilité de leur bon fonctionnement. Ce module vous aide à choisir votre spécialité et à proposer un audit d''infrastructure comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du DevOps.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Mener un audit d''infrastructure.
+> 4. Présenter des risques et des priorités clairs.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Cloud** | Concevoir et gérer des infrastructures chez un grand fournisseur | Réseau, identités et droits, services gérés |
+| 2 | **Infrastructure décrite en code** | Créer serveurs et réseaux à partir de fichiers versionnés | Terraform, Ansible, Git |
+| 3 | **Orchestration de conteneurs** | Faire tourner de nombreux conteneurs de façon fiable | Kubernetes, réseau, stockage |
+| 4 | **Observabilité et fiabilité (SRE)** | Mesurer, alerter, réagir aux incidents | Métriques, journaux, traces, objectifs de fiabilité |
+| 5 | **Sécurité DevOps (DevSecOps)** | Intégrer la sécurité dans les pipelines et l''infrastructure | Secrets, analyses de vulnérabilités, durcissement |
+| 6 | **Maîtrise des coûts (FinOps)** | Réduire et prévoir les factures du cloud | Facturation, dimensionnement, réservations |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Maintenance et surveillance à distance** pour des PME et agences européennes, avec un faible décalage horaire.
+> - **Maîtrise des coûts** : vous savez travailler avec des budgets serrés, une qualité très recherchée par les start-up.
+> - **Infrastructures pour l''Afrique** : choix des régions proches des utilisateurs, applications qui supportent les réseaux lents.
+
+## L''audit d''infrastructure : votre offre d''entrée
+
+| Domaine | Questions |
+| --- | --- |
+| **Sécurité** | Accès, mots de passe, mises à jour, ports ouverts, secrets dans le code ? |
+| **Sauvegardes** | Existent-elles hors du serveur ? Une restauration a-t-elle déjà été testée ? |
+| **Disponibilité** | Que se passe-t-il si un serveur tombe ? Combien de pannes ces derniers mois ? |
+| **Déploiement** | Manuel ou automatique ? Retour arrière possible ? |
+| **Surveillance** | Qui est prévenu en cas de panne, et comment ? |
+| **Coûts** | Ressources inutilisées, serveurs trop gros, facture qui augmente ? |
+| **Documentation** | Une autre personne pourrait-elle reprendre l''infrastructure ? |
+
+> [!attention]
+> Réalisez l''audit avec un **accès officiel en lecture**, accordé par écrit par le client, et sans rien modifier pendant l''audit. Les corrections viennent ensuite, une fois validées.
+
+### Le rapport d''audit
+
+```
+Client : Tsena Online (exemple)
+Constat principal : un seul serveur, sauvegardes sur le même disque,
+déploiements manuels par SSH, facture cloud en hausse de 60 % en 6 mois.
+
+Risques prioritaires
+1. Perte totale des données si le disque tombe en panne.
+2. Deux anciens prestataires ont encore un accès administrateur.
+3. Trois serveurs de test oubliés représentent 35 % de la facture.
+
+Proposition
+- Semaine 1 : retrait des accès, sauvegardes externes testées, arrêt des serveurs inutiles.
+- Semaines 2 à 4 : infrastructure en code, déploiement automatique, surveillance.
+```
+
+> [!astuce]
+> Classez chaque constat par **gravité** et par **effort** de correction. Commencez par les corrections graves et rapides (accès, sauvegardes) : le client voit tout de suite la valeur de votre travail.
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Infrastructure reproductible** | Le client peut recréer son infrastructure en cas de catastrophe |
+| **Surveillance et astreinte** | Les pannes sont détectées et traitées, même la nuit |
+| **Réduction des coûts** | Le travail se rembourse par les économies réalisées |
+| **Plan de reprise après sinistre** | Le client sait combien de temps et de données il peut perdre au maximum |
+
+> [!retenir]
+> - 6 spécialités : cloud, infrastructure en code, orchestration, observabilité, DevSecOps, FinOps.
+> - Audit : sécurité, sauvegardes, disponibilité, déploiement, surveillance, coûts, documentation.
+> - Accès en lecture accordé par écrit, aucune modification pendant l''audit.
+> - Priorités par gravité et effort.
+> - Vendre reproductibilité, surveillance, économies et reprise après sinistre.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Auditez l''infrastructure de votre projet Fondamentaux selon les 7 domaines.
+> 3. Classez vos constats dans une grille gravité et effort.
+> 4. Rédigez un rapport avec une proposition en 2 étapes.
+>
+> **À livrer** : votre positionnement, votre grille et votre rapport.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 0, 0, 'Comment réaliser un audit d''infrastructure ?', '["Sans accord","En éteignant les serveurs","Avec un accès en lecture accordé par écrit, sans rien modifier","En modifiant tout directement"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 0, 1, 'Par quoi commencer les corrections ?', '["Rien","Les plus longs","Les problèmes graves et rapides à corriger","Les détails esthétiques"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 0, 2, 'Que fait la spécialité FinOps ?', '["Dessiner des logos","Réduire et prévoir les factures du cloud","Monter des vidéos","Écrire des articles"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-a', 1, 'Outils professionnels : DigitalOcean, AWS et Datadog', 'Droplets, bases gérées, Spaces et App Platform, IAM, EC2, S3, RDS, VPC, CloudWatch et Budgets, régions et zones, sécurité des identités, agent, métriques, journaux, traces, moniteurs et tableaux de bord, maîtrise des coûts.', 'Un petit VPS suffit pour les premiers projets. Les clients plus importants utilisent des fournisseurs de cloud et des outils de surveillance professionnels. Ce module vous présente les services clés de **DigitalOcean** et d''**AWS**, et la surveillance complète avec **Datadog**, avec un objectif constant : sécurité et maîtrise des coûts.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser les services principaux de DigitalOcean.
+> 2. Comprendre les services de base d''AWS.
+> 3. Sécuriser les identités et les accès dans le cloud.
+> 4. Surveiller une infrastructure avec Datadog.
+> 5. Maîtriser les coûts du cloud et de la surveillance.
+
+## DigitalOcean : simple et prévisible
+
+| Service | Usage |
+| --- | --- |
+| **Droplets** | Serveurs virtuels |
+| **Bases de données gérées** | PostgreSQL, MySQL, Redis, avec sauvegardes automatiques |
+| **Spaces** | Stockage de fichiers compatible avec S3 |
+| **App Platform** | Déployer une application sans gérer de serveur |
+| **Pare-feu cloud** | Règles réseau appliquées à plusieurs serveurs |
+| **Instantanés et sauvegardes** | Copies des serveurs |
+| **Équilibreurs de charge** | Répartir le trafic entre plusieurs serveurs |
+
+## AWS : les services de base
+
+| Service | Usage |
+| --- | --- |
+| **IAM** | Utilisateurs, rôles et droits |
+| **EC2** | Serveurs virtuels |
+| **S3** | Stockage de fichiers |
+| **RDS** | Bases de données gérées |
+| **VPC et groupes de sécurité** | Réseau privé et règles d''accès |
+| **CloudWatch** | Métriques, journaux et alarmes |
+| **AWS Budgets** | Alertes quand la facture dépasse un montant |
+
+> [!definition] Région et zone de disponibilité
+> Une **région** est un ensemble de centres de données dans une zone géographique (par exemple en Europe ou en Afrique du Sud). Chaque région contient plusieurs **zones de disponibilité** séparées. Répartir une application sur deux zones lui permet de continuer à fonctionner si un centre de données tombe en panne.
+
+## Sécuriser les identités et les accès
+
+| Règle | En pratique |
+| --- | --- |
+| **Compte principal protégé** | Double authentification, jamais utilisé au quotidien |
+| **Un utilisateur par personne** | Pas de compte partagé |
+| **Droits minimum** | Rôles limités à ce qui est nécessaire |
+| **Rôles pour les applications** | Pas de clés d''accès écrites dans le code |
+| **Journal des actions** | Activé et conservé (par exemple CloudTrail sur AWS) |
+| **Revue régulière** | Retirer les accès inutiles chaque trimestre |
+
+> [!attention]
+> Une clé d''accès cloud publiée par erreur sur GitHub peut être trouvée et utilisée par des robots en **quelques minutes**, par exemple pour créer des serveurs de minage aux frais du client. Ne mettez jamais de clé dans le code, activez les alertes de budget et désactivez immédiatement toute clé exposée.
+
+## Datadog : surveiller l''infrastructure
+
+| Fonction | Usage |
+| --- | --- |
+| **Agent** | Installé sur les serveurs ou dans Kubernetes, il envoie les données |
+| **Métriques d''infrastructure** | Processeur, mémoire, disque, réseau |
+| **Journaux** | Centralisés, filtrables, avec recherche |
+| **APM (traces)** | Suivre une requête à travers l''application et trouver ce qui ralentit |
+| **Moniteurs** | Alertes selon des seuils ou des anomalies |
+| **Tableaux de bord** | Vue d''ensemble pour l''équipe et le client |
+| **Tests synthétiques** | Vérifier depuis plusieurs pays que le site répond |
+
+> [!astuce]
+> Une bonne alerte est **utile et rare**. Alertez sur ce qui touche les utilisateurs (site indisponible, erreurs en hausse, lenteur) plutôt que sur chaque pic de processeur. Trop d''alertes inutiles, et l''équipe finit par les ignorer.
+
+## Maîtriser les coûts
+
+| Action | Effet |
+| --- | --- |
+| **Étiquettes (tags)** sur chaque ressource | Savoir quel projet coûte quoi |
+| **Alertes de budget** | Être prévenu avant la mauvaise surprise |
+| **Arrêt des ressources de test** | Plus de serveurs oubliés |
+| **Bon dimensionnement** | Serveurs adaptés à l''usage réel |
+| **Réservations ou engagements** | Réductions pour les ressources utilisées en continu |
+| **Coût de la surveillance** | Datadog facture selon les hôtes, les journaux et les fonctions : choisir ce qui est vraiment utile |
+
+> [!madagascar]
+> Ces services se paient en dollars par carte bancaire internationale, généralement **par le client et à son nom**. Pour vous former, utilisez les offres gratuites et les crédits de départ, avec des alertes de budget très basses, et supprimez tout après chaque exercice.
+
+> [!retenir]
+> - DigitalOcean : Droplets, bases gérées, Spaces, App Platform, pare-feu.
+> - AWS : IAM, EC2, S3, RDS, VPC, CloudWatch, Budgets ; régions et zones.
+> - Identités : compte principal protégé, utilisateurs nominatifs, droits minimum, rôles, journal.
+> - Datadog : agent, métriques, journaux, traces, moniteurs, tableaux de bord.
+> - Coûts : étiquettes, budgets, arrêts, dimensionnement, réservations.
+
+## Exercice pratique : une infrastructure cloud surveillée
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Avec une offre gratuite, créez un compte avec double authentification et une alerte de budget basse.
+> 2. Créez un utilisateur avec des droits limités et déployez votre application sur un serveur.
+> 3. Installez l''agent d''un outil de surveillance (version d''essai) et créez 3 moniteurs utiles.
+> 4. Étiquetez toutes les ressources, puis supprimez-les à la fin de l''exercice.
+>
+> **À livrer** : des captures de chaque étape, la liste de vos moniteurs et la preuve de suppression.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 1, 0, 'À quoi sert IAM sur AWS ?', '["Envoyer des e-mails","Stocker des fichiers","Dessiner des schémas","Gérer les utilisateurs, rôles et droits"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 1, 1, 'Que faire d''une clé d''accès exposée sur GitHub ?', '["La renommer","La partager","La désactiver immédiatement","La laisser"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 1, 2, 'Qu''est-ce qu''une bonne alerte ?', '["Une alerte jamais lue","Une alerte utile et rare, liée à l''impact sur les utilisateurs","Une alerte à chaque pic de processeur","Aucune alerte"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-a', 2, 'Qualité et rapidité : infrastructure en code, déploiements, incidents et reprise', 'Terraform init, plan et apply, état protégé, Ansible et idempotence, mises à jour progressives, bleu et vert, canari, SLO, étapes d''un incident, analyse sans coupable, runbooks, RPO, RTO et exercice de reprise.', 'Une infrastructure professionnelle se recrée en quelques minutes, change sans interruption et se répare vite. Ce module vous donne les méthodes des équipes expérimentées : infrastructure décrite en code, déploiements sans coupure, objectifs de fiabilité, gestion des incidents et plan de reprise après sinistre.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Décrire une infrastructure en code avec Terraform.
+> 2. Configurer des serveurs avec Ansible.
+> 3. Déployer sans coupure.
+> 4. Définir des objectifs de fiabilité et gérer les incidents.
+> 5. Préparer un plan de reprise après sinistre.
+
+## L''infrastructure décrite en code
+
+> [!definition] Infrastructure décrite en code
+> Serveurs, réseaux, bases de données et règles d''accès sont décrits dans des fichiers texte versionnés avec Git. On peut relire chaque changement, le tester, le reproduire et revenir en arrière.
+
+```hcl
+resource "digitalocean_droplet" "web" {
+  name   = "tsena-web-1"
+  region = "fra1"
+  size   = "s-1vcpu-2gb"
+  image  = "ubuntu-24-04-x64"
+  tags   = ["tsena", "production"]
+}
+
+resource "digitalocean_firewall" "web" {
+  name        = "tsena-web"
+  droplet_ids = [digitalocean_droplet.web.id]
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "443"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+}
+```
+
+```bash
+terraform init      # préparer le projet
+terraform plan      # voir ce qui va changer, sans rien modifier
+terraform apply     # appliquer après relecture
+```
+
+> [!attention]
+> Relisez toujours le résultat de `terraform plan` avant d''appliquer. Une ligne indiquant qu''une base de données sera **détruite et recréée** doit vous arrêter immédiatement. Protégez aussi le fichier d''état de Terraform, qui peut contenir des informations sensibles : stockage distant chiffré, accès limité.
+
+## Configurer les serveurs avec Ansible
+
+| Élément | Rôle |
+| --- | --- |
+| **Inventaire** | Liste des serveurs et de leurs groupes |
+| **Playbook** | Liste des tâches à appliquer (paquets, utilisateurs, fichiers, services) |
+| **Rôles** | Ensembles de tâches réutilisables (Nginx, Docker, sécurité de base) |
+| **Idempotence** | Lancer deux fois le même playbook donne le même résultat, sans casser |
+
+## Déployer sans coupure
+
+| Méthode | Principe |
+| --- | --- |
+| **Mise à jour progressive** | Remplacer les instances une par une |
+| **Bleu et vert** | Préparer la nouvelle version à côté, puis basculer le trafic d''un coup |
+| **Canari** | Envoyer d''abord une petite partie du trafic vers la nouvelle version |
+| **Contrôles de santé** | L''équilibreur n''envoie du trafic qu''aux instances qui répondent bien |
+| **Migrations de base compatibles** | La base fonctionne avec l''ancienne et la nouvelle version pendant la transition |
+
+## Objectifs de fiabilité et incidents
+
+> [!definition] Objectif de niveau de service (SLO)
+> Un objectif mesurable de fiabilité, par exemple : « 99,5 % des requêtes réussies sur 30 jours ». Il permet de décider ensemble quand privilégier la stabilité plutôt que les nouvelles fonctions.
+
+| Étape d''un incident | Action |
+| --- | --- |
+| **Détection** | Alerte ou signalement |
+| **Qualification** | Gravité selon l''impact sur les utilisateurs |
+| **Communication** | Prévenir le client et les personnes concernées, puis donner des nouvelles régulières |
+| **Rétablissement** | Retour arrière, redémarrage, bascule, avant de chercher la cause profonde |
+| **Analyse après incident** | Chronologie, causes, actions pour éviter la répétition, sans chercher de coupable |
+
+> [!astuce]
+> Rédigez des **procédures d''intervention** (runbooks) pour les incidents fréquents : disque plein, certificat expiré, base saturée, site indisponible. À 3 heures du matin, une liste d''étapes claires vaut mieux qu''une bonne mémoire.
+
+## Le plan de reprise après sinistre
+
+| Notion | Question |
+| --- | --- |
+| **RPO** (perte de données maximale) | Combien de minutes ou d''heures de données le client accepte-t-il de perdre ? |
+| **RTO** (durée d''interruption maximale) | En combien de temps le service doit-il être rétabli ? |
+| **Sauvegardes** | Fréquence adaptée au RPO, copies dans une autre région |
+| **Infrastructure en code** | Recréer tout l''environnement rapidement |
+| **Exercice de reprise** | Tester la reprise complète au moins une fois par an |
+
+> [!madagascar]
+> Pour des clients malgaches, choisissez la région du cloud en fonction des utilisateurs (souvent l''Europe ou l''Afrique du Sud) et des règles sur les données. Indiquez clairement dans le plan que vos propres **coupures d''électricité ou de connexion** n''empêchent pas l''infrastructure de fonctionner, et qui intervient si vous êtes injoignable.
+
+> [!retenir]
+> - Terraform : init, plan relu, apply ; état protégé.
+> - Ansible : inventaire, playbooks, rôles, idempotence.
+> - Déploiements progressifs, bleu et vert, canari, contrôles de santé.
+> - SLO, gestion des incidents, analyse sans coupable, runbooks.
+> - RPO, RTO, sauvegardes dans une autre région, exercice de reprise.
+
+## Exercice pratique : une infrastructure reproductible
+
+> [!exercice] Exercice pratique · 5 heures
+> 1. Décrivez en Terraform un serveur, un pare-feu et un stockage, puis créez-les et détruisez-les.
+> 2. Écrivez un playbook Ansible qui installe Docker et sécurise le serveur.
+> 3. Définissez un SLO pour votre application et 3 runbooks.
+> 4. Rédigez un plan de reprise avec RPO, RTO et procédure, puis testez une restauration.
+>
+> **À livrer** : le dépôt de code, vos SLO et runbooks, et le compte rendu du test de reprise.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 2, 0, 'Que faire avant terraform apply ?', '["Relire le résultat de terraform plan","Rien","Éteindre le serveur","Supprimer l''état"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 2, 1, 'Que signifie le RPO ?', '["Le nombre d''utilisateurs","La couleur du tableau de bord","La perte de données maximale acceptée","Le prix du serveur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 2, 2, 'Pendant un incident, que faire en priorité ?', '["Rédiger le rapport final","Rétablir le service avant de chercher la cause profonde","Chercher un coupable","Attendre"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-a', 3, 'Clients internationaux : anglais, astreinte, sécurité, conformité et certifications', 'Messages d''incident et de changement en anglais, astreinte et fuseaux horaires, double connexion et remplaçant, double authentification, VPN et droits temporaires, RGPD, ISO 27001 et SOC 2, certifications, SLA.', 'Start-up, éditeurs de logiciels et prestataires d''Europe, d''Amérique du Nord et d''Afrique recrutent des administrateurs et des ingénieurs DevOps à distance. Ce module vous prépare à travailler avec eux : communication en anglais pendant les incidents, astreinte selon les fuseaux horaires, sécurité des accès, conformité, certifications et contrats.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Communiquer en anglais, en particulier pendant un incident.
+> 2. Organiser une astreinte avec des clients dans d''autres fuseaux horaires.
+> 3. Respecter les exigences de sécurité et de conformité des clients.
+> 4. Choisir les certifications utiles.
+> 5. Négocier vos conditions et un engagement de service.
+
+## Communiquer en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Ouvrir un incident | « We''re investigating elevated error rates on the checkout API. Next update in 30 minutes. » |
+| Donner des nouvelles | « We''ve identified a full disk on the database server and are freeing space. » |
+| Clore | « The issue is resolved. Error rates are back to normal. A post-incident review will follow. » |
+| Proposer un changement | « I''d like to upgrade PostgreSQL on Saturday at 06:00 UTC. Expected downtime: under 5 minutes. » |
+| Demander une validation | « Could you approve the Terraform plan before I apply it? » |
+
+> [!astuce]
+> Pendant un incident, communiquez **régulièrement**, même pour dire « toujours en cours ». Un client tolère mieux une panne quand il sait ce qui se passe et quand viendra la prochaine information.
+
+## L''astreinte et les fuseaux horaires
+
+| Question | Réponse à prévoir au contrat |
+| --- | --- |
+| **Heures couvertes** | Heures de bureau du client, ou 24 heures sur 24 |
+| **Délai de réaction** | Selon la gravité (par exemple 15 minutes pour un incident critique) |
+| **Outils d''alerte** | Application d''astreinte, appel téléphonique, SMS |
+| **Remplaçant** | Qui intervient si vous êtes injoignable |
+| **Rémunération** | Forfait d''astreinte, plus les interventions |
+
+> [!madagascar]
+> Une astreinte crédible depuis Madagascar demande une **double connexion** (fibre ou 4G de deux opérateurs), une batterie ou un onduleur pour le routeur et l''ordinateur, et un remplaçant identifié. Les clients étrangers posent toujours cette question : préparez une réponse écrite.
+
+## Sécurité des accès chez le client
+
+| Exigence fréquente | En pratique |
+| --- | --- |
+| **Double authentification** partout | Application d''authentification ou clé de sécurité |
+| **Accès par VPN ou serveur de rebond** | Pas d''accès direct aux serveurs depuis Internet |
+| **Appareil sécurisé** | Disque chiffré, mises à jour, antivirus selon la politique du client |
+| **Accès temporaires** | Droits élevés seulement pour la durée d''une intervention |
+| **Traçabilité** | Toutes les actions enregistrées |
+
+## La conformité
+
+| Référence | Ce que le client peut vous demander |
+| --- | --- |
+| **RGPD** | Données de citoyens européens stockées dans des régions autorisées, accès limités, journal des incidents |
+| **ISO 27001** | Respect de procédures de sécurité documentées |
+| **SOC 2** | Preuves de contrôles (accès, changements, sauvegardes) pour les audits du client |
+| **Règles du secteur** | Santé, banque, paiement : exigences supplémentaires |
+
+> [!attention]
+> Ne promettez jamais qu''une infrastructure est « conforme » à une norme sans audit officiel. Vous pouvez dire que vous **appliquez des pratiques** qui aident le client à se mettre en conformité, et fournir les preuves de votre travail.
+
+## Les certifications utiles
+
+| Certification | Pour qui |
+| --- | --- |
+| **AWS Certified Cloud Practitioner, puis Solutions Architect Associate** | Cloud AWS |
+| **HashiCorp Terraform Associate** | Infrastructure décrite en code |
+| **Certified Kubernetes Administrator (CKA)** | Orchestration de conteneurs |
+| **Certifications Linux** (par exemple LFCS) | Administration Linux |
+| **Certification Datadog** | Surveillance avec Datadog |
+
+> [!astuce]
+> Les éditeurs modifient régulièrement leurs certifications. Vérifiez la **liste actuelle**, le prix, la langue et le mode d''examen sur le site officiel, et utilisez leurs parcours d''apprentissage gratuits.
+
+## Vos conditions et l''engagement de service
+
+| Point | Exemple |
+| --- | --- |
+| **Périmètre** | Serveurs, services et environnements couverts |
+| **Engagement de service (SLA)** | Délais de réaction et de rétablissement selon la gravité |
+| **Changements** | Fenêtres de maintenance, validation par le client |
+| **Comptes et propriété** | Au nom du client, documentation à jour remise |
+| **Responsabilité** | Limitée, selon le contrat |
+| **Paiement** | Forfait mensuel payé d''avance, interventions en plus |
+
+> [!retenir]
+> - En anglais : ouvrir, informer, clore un incident ; proposer et faire valider un changement.
+> - Astreinte : heures, délais, outils, remplaçant, rémunération, double connexion.
+> - Accès : double authentification, VPN, appareil sécurisé, droits temporaires.
+> - Conformité : appliquer des pratiques, ne pas promettre de certification.
+> - SLA, fenêtres de maintenance, propriété au client.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais les 3 messages d''un incident fictif (ouverture, suivi, clôture).
+> 2. Rédigez votre plan de continuité pour l''astreinte.
+> 3. Choisissez une certification et préparez un plan d''étude de 2 mois.
+> 4. Rédigez un SLA simple avec 3 niveaux de gravité.
+>
+> **À livrer** : vos messages, votre plan de continuité, votre plan d''étude et votre SLA.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 3, 0, 'Comment communiquer pendant un incident ?', '["Jamais","Une fois par semaine","Seulement à la fin","Régulièrement, même pour dire que c''est toujours en cours"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 3, 1, 'Que faut-il pour une astreinte crédible depuis Madagascar ?', '["Rien","Un bureau en ville","Un seul téléphone","Double connexion, onduleur et remplaçant identifié"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 3, 2, 'Que peut-on dire sur la conformité sans audit officiel ?', '["Que tout est certifié","Rien du tout","Qu''on applique des pratiques qui aident le client","Que la norme ne s''applique pas"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('tech-3-a', 4, 'Développer son activité : forfaits, études de cas et équipe d''exploitation', 'Trois voies, audit, mise en place, optimisation des coûts, exploitation mensuelle et astreinte, rémunération sur économies, études de cas sans détail sensible, équipe, rotation d''astreinte, deux sites et base de connaissances.', 'Un administrateur systèmes et DevOps expérimenté vit de contrats mensuels durables, de projets de migration et d''optimisation, et parfois d''une petite équipe qui assure une surveillance continue. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe d''exploitation.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Expert indépendant** | Audits, migrations, infrastructure en code, optimisation des coûts | Ceux qui aiment les projets techniques |
+| **Ingénieur intégré à une équipe** | Contrat long avec une start-up ou un éditeur étranger | Ceux qui veulent un revenu stable |
+| **Petit prestataire d''exploitation** | Surveillance, maintenance et astreinte pour plusieurs clients | Ceux qui aiment organiser |
+
+## Des forfaits et des contrats durables
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Audit d''infrastructure** | 7 domaines, grille de priorités, rapport | 1 000 000 Ar |
+| **Mise en place professionnelle** | Infrastructure en code, déploiement automatique, surveillance, plan de reprise | 4 500 000 Ar |
+| **Optimisation des coûts** | Analyse de la facture et corrections | Forfait, ou part des économies la première année |
+| **Exploitation mensuelle** | Mises à jour, surveillance, sauvegardes testées, petites évolutions | 900 000 Ar par mois |
+| **Astreinte** | Disponibilité hors des heures de bureau | Supplément mensuel |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Une rémunération fondée sur les **économies réalisées** doit être définie avec précision : point de départ mesuré, période, mode de calcul. Sinon, elle mène à des désaccords. Mettez tout par écrit avant de commencer.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : Tsena Online. **Besoin** : un seul serveur fragile et une facture en hausse. **Réalisation** : infrastructure en code, base de données gérée, sauvegardes dans une autre région, déploiement automatique, surveillance. **Résultat** : facture mensuelle réduite de 38 %, aucune interruption de plus de 5 minutes en 6 mois, mise en ligne d''une nouvelle version en 8 minutes au lieu d''une heure, restauration complète testée en 25 minutes.
+
+Une bonne étude de cas présente la situation de départ, la méthode, des chiffres avant et après sur une période comparable et un témoignage, **avec l''accord du client** et sans détail qui pourrait aider un attaquant.
+
+## Organiser une petite équipe d''exploitation
+
+| Rôle | Mission |
+| --- | --- |
+| **Administrateurs juniors** | Mises à jour, contrôles quotidiens, premières réponses aux alertes |
+| **Ingénieur DevOps** | Infrastructure en code, pipelines, migrations |
+| **Rotation d''astreinte** | Une personne de garde chaque semaine, avec un second niveau |
+| **Vous** | Architecture, relation client, analyses d''incidents, contrôle des changements |
+
+> [!madagascar]
+> Une petite équipe répartie dans **deux villes** (par exemple Antananarivo et Toamasina), avec des connexions de fournisseurs différents, rassure fortement les clients étrangers sur la continuité du service. Formez vos juniors sur des environnements de test avant de leur donner des accès de production.
+
+> [!astuce]
+> Tenez une **base de connaissances** interne : architecture de chaque client, runbooks, contacts, historique des incidents. C''est elle qui permet à un membre de l''équipe de remplacer un autre pendant une astreinte.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Architecte cloud** | Conception d''infrastructures complexes, certifications avancées |
+| **Ingénieur fiabilité (SRE) confirmé** | Fiabilité à grande échelle, culture d''analyse des incidents |
+| **Responsable de plateforme** | Outils internes pour les équipes de développement |
+| **Analyste en cybersécurité** | Voir la formation Analyste en cybersécurité |
+| **Directeur technique** | Stratégie, budget, encadrement |
+
+> [!retenir]
+> - Expert indépendant, ingénieur intégré ou prestataire d''exploitation.
+> - Audits, mises en place, optimisation des coûts, exploitation mensuelle, astreinte.
+> - Rémunération sur les économies définie précisément par écrit.
+> - Études de cas chiffrées, avec accord et sans détail sensible.
+> - Équipe avec rotation d''astreinte, deux sites et base de connaissances.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez 3 forfaits avec leur contenu et leur prix.
+> 3. Rédigez une étude de cas à partir de votre projet d''infrastructure.
+> 4. Rédigez le plan de rotation d''astreinte d''une équipe de 3 personnes.
+>
+> **À livrer** : votre plan, vos forfaits, votre étude de cas et votre rotation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 4, 0, 'Que préciser pour une rémunération sur les économies ?', '["Rien","La couleur de la facture","Seulement le pourcentage","Le point de départ, la période et le mode de calcul"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 4, 1, 'Qu''éviter dans une étude de cas publique ?', '["Les détails qui pourraient aider un attaquant","La méthode","Le témoignage","Les chiffres"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('tech-3-a', 4, 2, 'À quoi sert une base de connaissances interne ?', '["Stocker les mots de passe en clair","Permettre à un membre de l''équipe d''en remplacer un autre","Décorer","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Quelle spécialité crée l''infrastructure à partir de fichiers versionnés ?', '["L''observabilité","Le FinOps","La sécurité réseau","L''infrastructure décrite en code"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Quel outil d''orchestration de conteneurs est cité ?', '["Kubernetes","Canva","Excel","Audacity"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Pourquoi la maîtrise des coûts intéresse-t-elle les start-up ?', '["Elles ont des budgets serrés","Le cloud est gratuit","Ce n''est pas utile","Elles aiment payer plus"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que révèle souvent un audit des coûts ?', '["Rien","Des logos","Des serveurs de test oubliés","Des économies impossibles"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que propose un plan de reprise après sinistre ?', '["Savoir combien de temps et de données on peut perdre au maximum","Rien","Un nouveau logo","Un site plus beau"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Qu''est-ce que Spaces chez DigitalOcean ?', '["Un éditeur de texte","Un stockage de fichiers compatible avec S3","Un antivirus","Une base de données"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Qu''est-ce qu''une zone de disponibilité ?', '["Un pays","Un logiciel","Un mot de passe","Un centre de données séparé dans une région"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Comment protéger le compte principal du cloud ?', '["Le partager","Double authentification et pas d''usage quotidien","Le publier","Un mot de passe simple"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Comment une application accède-t-elle au cloud sans clé dans le code ?', '["Avec un rôle","C''est impossible","Avec une clé écrite dans le code","Avec un e-mail"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'À quoi sert l''APM de Datadog ?', '["Créer des serveurs","Payer la facture","Suivre une requête et trouver ce qui ralentit","Écrire du code"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'À quoi servent les étiquettes sur les ressources ?', '["Savoir quel projet coûte quoi","Les supprimer","Rien","Les décorer"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que fait terraform plan ?', '["Supprime tout","Installe Docker","Applique les changements","Montre ce qui va changer sans rien modifier"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que signifie l''idempotence d''un playbook Ansible ?', '["Le relancer donne le même résultat sans casser","Il supprime le serveur","Il est payant","Il ne fonctionne qu''une fois"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Qu''est-ce qu''un déploiement canari ?', '["Supprimer l''ancienne version d''abord","Tout couper puis redémarrer","Déployer la nuit sans test","Envoyer d''abord une petite partie du trafic vers la nouvelle version"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Qu''est-ce qu''un SLO ?', '["Un objectif mesurable de fiabilité","Un mot de passe","Un logiciel","Un serveur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Comment mener une analyse après incident ?', '["Chronologie, causes et actions, sans chercher de coupable","En la cachant","En désignant un coupable","Jamais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Qu''est-ce qu''un runbook ?', '["Un livre de cuisine","Un antivirus","Une facture","Une procédure d''intervention écrite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Où garder des copies de sauvegarde ?', '["Nulle part","Sur le même disque","Dans une autre région","Dans un e-mail"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'À quelle fréquence tester la reprise complète ?', '["Seulement après une catastrophe","Jamais","Au moins une fois par an","Tous les 10 ans"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que demander au client avant d''appliquer un plan Terraform ?', '["Sa validation","Rien","Son mot de passe","Un paiement supplémentaire"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que prévoir au contrat d''astreinte ?', '["Seulement le nom","Rien","Seulement le prix","Heures, délais, outils, remplaçant et rémunération"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Pourquoi des accès temporaires ?', '["Pour partager les accès","Limiter les droits élevés à la durée d''une intervention","Ce n''est pas utile","Pour aller plus vite"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Quelle certification concerne Terraform ?', '["CompTIA A+","ISTQB","Google Ads","HashiCorp Terraform Associate"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Que contient un SLA ?', '["Le mot de passe","Rien","Les délais de réaction et de rétablissement selon la gravité","Le logo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('tech-3-a', 'Pourquoi une équipe répartie dans deux villes ?', '["Payer plus de loyers","Rien","Pour voyager","Rassurer sur la continuité du service"]'::jsonb, 3);
 
 -- tech-3-f
 delete from public.exam_questions where course_id = 'tech-3-f';

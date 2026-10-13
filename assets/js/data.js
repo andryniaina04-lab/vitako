@@ -8151,6 +8151,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "tech-3-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'administrateur systèmes et DevOps un professionnel responsable d'infrastructures fiables, reproductibles et maîtrisées en coût : spécialité (cloud, infrastructure en code, orchestration, observabilité, DevSecOps, FinOps), audit d'infrastructure, services payants (DigitalOcean, AWS et Datadog), identités et accès, surveillance, maîtrise des coûts, Terraform, Ansible, déploiements sans coupure, SLO, gestion des incidents, plan de reprise, communication en anglais, astreinte, sécurité des accès, conformité, certifications, puis forfaits, études de cas et équipe d'exploitation. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité du DevOps et mener un audit d'infrastructure",
+   "Utiliser DigitalOcean, AWS et Datadog avec des accès sécurisés et des coûts maîtrisés",
+   "Décrire une infrastructure en code avec Terraform et Ansible",
+   "Déployer sans coupure, gérer les incidents et préparer un plan de reprise",
+   "Travailler pour des clients étrangers : anglais, astreinte, sécurité, conformité et SLA",
+   "Développer son activité avec des forfaits, des études de cas et une équipe d'exploitation"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser et réaliser un audit d'infrastructure",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, audit de la sécurité, des sauvegardes, de la disponibilité, du déploiement, de la surveillance, des coûts et de la documentation, priorités par gravité et effort, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "L'audit d'infrastructure : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : DigitalOcean, AWS et Datadog",
+    "summary": "Droplets, bases gérées, Spaces et App Platform, IAM, EC2, S3, RDS, VPC, CloudWatch et Budgets, régions et zones, sécurité des identités, agent, métriques, journaux, traces, moniteurs et tableaux de bord, maîtrise des coûts.",
+    "sections": [
+     "DigitalOcean : simple et prévisible",
+     "AWS : les services de base",
+     "Sécuriser les identités et les accès",
+     "Datadog : surveiller l'infrastructure",
+     "Maîtriser les coûts",
+     "Exercice pratique : une infrastructure cloud surveillée"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : infrastructure en code, déploiements, incidents et reprise",
+    "summary": "Terraform init, plan et apply, état protégé, Ansible et idempotence, mises à jour progressives, bleu et vert, canari, SLO, étapes d'un incident, analyse sans coupable, runbooks, RPO, RTO et exercice de reprise.",
+    "sections": [
+     "L'infrastructure décrite en code",
+     "Configurer les serveurs avec Ansible",
+     "Déployer sans coupure",
+     "Objectifs de fiabilité et incidents",
+     "Le plan de reprise après sinistre",
+     "Exercice pratique : une infrastructure reproductible"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, astreinte, sécurité, conformité et certifications",
+    "summary": "Messages d'incident et de changement en anglais, astreinte et fuseaux horaires, double connexion et remplaçant, double authentification, VPN et droits temporaires, RGPD, ISO 27001 et SOC 2, certifications, SLA.",
+    "sections": [
+     "Communiquer en anglais",
+     "L'astreinte et les fuseaux horaires",
+     "Sécurité des accès chez le client",
+     "La conformité",
+     "Les certifications utiles",
+     "Vos conditions et l'engagement de service",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : forfaits, études de cas et équipe d'exploitation",
+    "summary": "Trois voies, audit, mise en place, optimisation des coûts, exploitation mensuelle et astreinte, rémunération sur économies, études de cas sans détail sensible, équipe, rotation d'astreinte, deux sites et base de connaissances.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe d'exploitation",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "tech-3-f": {
   "hours": 22,
   "description": "L'administrateur systèmes installe, sécurise, surveille et sauvegarde des serveurs ; le DevOps automatise en plus la mise en ligne des applications. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des agences, des développeurs, des start-up, des PME et des prestataires, à Madagascar et à l'étranger, avec Linux, Docker et GitHub Actions : serveurs, chemin d'une requête, commandes, droits, services, journaux, SSH par clé, pare-feu, conteneurs, Docker Compose, intégration et déploiement continus, Nginx, HTTPS, surveillance, sauvegardes et documentation. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

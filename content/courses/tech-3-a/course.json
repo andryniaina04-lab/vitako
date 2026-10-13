@@ -1,0 +1,97 @@
+{
+  "id": "tech-3-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'administrateur systèmes et DevOps un professionnel responsable d'infrastructures fiables, reproductibles et maîtrisées en coût : spécialité (cloud, infrastructure en code, orchestration, observabilité, DevSecOps, FinOps), audit d'infrastructure, services payants (DigitalOcean, AWS et Datadog), identités et accès, surveillance, maîtrise des coûts, Terraform, Ansible, déploiements sans coupure, SLO, gestion des incidents, plan de reprise, communication en anglais, astreinte, sécurité des accès, conformité, certifications, puis forfaits, études de cas et équipe d'exploitation. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité du DevOps et mener un audit d'infrastructure",
+    "Utiliser DigitalOcean, AWS et Datadog avec des accès sécurisés et des coûts maîtrisés",
+    "Décrire une infrastructure en code avec Terraform et Ansible",
+    "Déployer sans coupure, gérer les incidents et préparer un plan de reprise",
+    "Travailler pour des clients étrangers : anglais, astreinte, sécurité, conformité et SLA",
+    "Développer son activité avec des forfaits, des études de cas et une équipe d'exploitation"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser et réaliser un audit d'infrastructure",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, audit de la sécurité, des sauvegardes, de la disponibilité, du déploiement, de la surveillance, des coûts et de la documentation, priorités par gravité et effort, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment réaliser un audit d'infrastructure ?", "options": ["Avec un accès en lecture accordé par écrit, sans rien modifier", "En modifiant tout directement", "Sans accord", "En éteignant les serveurs"], "correct": 0 },
+        { "q": "Par quoi commencer les corrections ?", "options": ["Les problèmes graves et rapides à corriger", "Les détails esthétiques", "Rien", "Les plus longs"], "correct": 0 },
+        { "q": "Que fait la spécialité FinOps ?", "options": ["Réduire et prévoir les factures du cloud", "Dessiner des logos", "Écrire des articles", "Monter des vidéos"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : DigitalOcean, AWS et Datadog",
+      "summary": "Droplets, bases gérées, Spaces et App Platform, IAM, EC2, S3, RDS, VPC, CloudWatch et Budgets, régions et zones, sécurité des identités, agent, métriques, journaux, traces, moniteurs et tableaux de bord, maîtrise des coûts.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "À quoi sert IAM sur AWS ?", "options": ["Gérer les utilisateurs, rôles et droits", "Stocker des fichiers", "Envoyer des e-mails", "Dessiner des schémas"], "correct": 0 },
+        { "q": "Que faire d'une clé d'accès exposée sur GitHub ?", "options": ["La désactiver immédiatement", "La laisser", "La partager", "La renommer"], "correct": 0 },
+        { "q": "Qu'est-ce qu'une bonne alerte ?", "options": ["Une alerte utile et rare, liée à l'impact sur les utilisateurs", "Une alerte à chaque pic de processeur", "Une alerte jamais lue", "Aucune alerte"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : infrastructure en code, déploiements, incidents et reprise",
+      "summary": "Terraform init, plan et apply, état protégé, Ansible et idempotence, mises à jour progressives, bleu et vert, canari, SLO, étapes d'un incident, analyse sans coupable, runbooks, RPO, RTO et exercice de reprise.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire avant terraform apply ?", "options": ["Relire le résultat de terraform plan", "Rien", "Supprimer l'état", "Éteindre le serveur"], "correct": 0 },
+        { "q": "Que signifie le RPO ?", "options": ["La perte de données maximale acceptée", "Le prix du serveur", "Le nombre d'utilisateurs", "La couleur du tableau de bord"], "correct": 0 },
+        { "q": "Pendant un incident, que faire en priorité ?", "options": ["Rétablir le service avant de chercher la cause profonde", "Chercher un coupable", "Attendre", "Rédiger le rapport final"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, astreinte, sécurité, conformité et certifications",
+      "summary": "Messages d'incident et de changement en anglais, astreinte et fuseaux horaires, double connexion et remplaçant, double authentification, VPN et droits temporaires, RGPD, ISO 27001 et SOC 2, certifications, SLA.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment communiquer pendant un incident ?", "options": ["Régulièrement, même pour dire que c'est toujours en cours", "Seulement à la fin", "Jamais", "Une fois par semaine"], "correct": 0 },
+        { "q": "Que faut-il pour une astreinte crédible depuis Madagascar ?", "options": ["Double connexion, onduleur et remplaçant identifié", "Rien", "Un seul téléphone", "Un bureau en ville"], "correct": 0 },
+        { "q": "Que peut-on dire sur la conformité sans audit officiel ?", "options": ["Qu'on applique des pratiques qui aident le client", "Que tout est certifié", "Que la norme ne s'applique pas", "Rien du tout"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, études de cas et équipe d'exploitation",
+      "summary": "Trois voies, audit, mise en place, optimisation des coûts, exploitation mensuelle et astreinte, rémunération sur économies, études de cas sans détail sensible, équipe, rotation d'astreinte, deux sites et base de connaissances.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que préciser pour une rémunération sur les économies ?", "options": ["Le point de départ, la période et le mode de calcul", "Rien", "Seulement le pourcentage", "La couleur de la facture"], "correct": 0 },
+        { "q": "Qu'éviter dans une étude de cas publique ?", "options": ["Les détails qui pourraient aider un attaquant", "Les chiffres", "Le témoignage", "La méthode"], "correct": 0 },
+        { "q": "À quoi sert une base de connaissances interne ?", "options": ["Permettre à un membre de l'équipe d'en remplacer un autre", "Décorer", "Rien", "Stocker les mots de passe en clair"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité crée l'infrastructure à partir de fichiers versionnés ?", "options": ["L'infrastructure décrite en code", "Le FinOps", "L'observabilité", "La sécurité réseau"], "correct": 0 },
+    { "q": "Quel outil d'orchestration de conteneurs est cité ?", "options": ["Kubernetes", "Canva", "Audacity", "Excel"], "correct": 0 },
+    { "q": "Pourquoi la maîtrise des coûts intéresse-t-elle les start-up ?", "options": ["Elles ont des budgets serrés", "Elles aiment payer plus", "Ce n'est pas utile", "Le cloud est gratuit"], "correct": 0 },
+    { "q": "Que révèle souvent un audit des coûts ?", "options": ["Des serveurs de test oubliés", "Rien", "Des économies impossibles", "Des logos"], "correct": 0 },
+    { "q": "Que propose un plan de reprise après sinistre ?", "options": ["Savoir combien de temps et de données on peut perdre au maximum", "Un nouveau logo", "Un site plus beau", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce que Spaces chez DigitalOcean ?", "options": ["Un stockage de fichiers compatible avec S3", "Un éditeur de texte", "Un antivirus", "Une base de données"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une zone de disponibilité ?", "options": ["Un centre de données séparé dans une région", "Un pays", "Un mot de passe", "Un logiciel"], "correct": 0 },
+    { "q": "Comment protéger le compte principal du cloud ?", "options": ["Double authentification et pas d'usage quotidien", "Le partager", "Un mot de passe simple", "Le publier"], "correct": 0 },
+    { "q": "Comment une application accède-t-elle au cloud sans clé dans le code ?", "options": ["Avec un rôle", "Avec une clé écrite dans le code", "Avec un e-mail", "C'est impossible"], "correct": 0 },
+    { "q": "À quoi sert l'APM de Datadog ?", "options": ["Suivre une requête et trouver ce qui ralentit", "Payer la facture", "Créer des serveurs", "Écrire du code"], "correct": 0 },
+    { "q": "À quoi servent les étiquettes sur les ressources ?", "options": ["Savoir quel projet coûte quoi", "Les décorer", "Les supprimer", "Rien"], "correct": 0 },
+    { "q": "Que fait terraform plan ?", "options": ["Montre ce qui va changer sans rien modifier", "Supprime tout", "Applique les changements", "Installe Docker"], "correct": 0 },
+    { "q": "Que signifie l'idempotence d'un playbook Ansible ?", "options": ["Le relancer donne le même résultat sans casser", "Il ne fonctionne qu'une fois", "Il supprime le serveur", "Il est payant"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un déploiement canari ?", "options": ["Envoyer d'abord une petite partie du trafic vers la nouvelle version", "Tout couper puis redémarrer", "Déployer la nuit sans test", "Supprimer l'ancienne version d'abord"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un SLO ?", "options": ["Un objectif mesurable de fiabilité", "Un logiciel", "Un serveur", "Un mot de passe"], "correct": 0 },
+    { "q": "Comment mener une analyse après incident ?", "options": ["Chronologie, causes et actions, sans chercher de coupable", "En désignant un coupable", "En la cachant", "Jamais"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un runbook ?", "options": ["Une procédure d'intervention écrite", "Un livre de cuisine", "Un antivirus", "Une facture"], "correct": 0 },
+    { "q": "Où garder des copies de sauvegarde ?", "options": ["Dans une autre région", "Sur le même disque", "Nulle part", "Dans un e-mail"], "correct": 0 },
+    { "q": "À quelle fréquence tester la reprise complète ?", "options": ["Au moins une fois par an", "Jamais", "Tous les 10 ans", "Seulement après une catastrophe"], "correct": 0 },
+    { "q": "Que demander au client avant d'appliquer un plan Terraform ?", "options": ["Sa validation", "Son mot de passe", "Rien", "Un paiement supplémentaire"], "correct": 0 },
+    { "q": "Que prévoir au contrat d'astreinte ?", "options": ["Heures, délais, outils, remplaçant et rémunération", "Rien", "Seulement le prix", "Seulement le nom"], "correct": 0 },
+    { "q": "Pourquoi des accès temporaires ?", "options": ["Limiter les droits élevés à la durée d'une intervention", "Pour aller plus vite", "Pour partager les accès", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Quelle certification concerne Terraform ?", "options": ["HashiCorp Terraform Associate", "CompTIA A+", "ISTQB", "Google Ads"], "correct": 0 },
+    { "q": "Que contient un SLA ?", "options": ["Les délais de réaction et de rétablissement selon la gravité", "Le logo", "Rien", "Le mot de passe"], "correct": 0 },
+    { "q": "Pourquoi une équipe répartie dans deux villes ?", "options": ["Rassurer sur la continuité du service", "Payer plus de loyers", "Rien", "Pour voyager"], "correct": 0 }
+  ]
+}
