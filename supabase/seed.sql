@@ -8,7 +8,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
   ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 18, true),
-  ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 16, false),
+  ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 17, true),
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 12, true),
@@ -14855,6 +14855,505 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Où publier une étude de cas visible par les recruteurs ?', '["Nulle part","Un SMS","Un groupe privé","Behance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quel partenaire peut vous apporter des projets de design ?', '["Un concurrent direct","Personne","Un client mécontent","Un développeur freelance"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-1-f', 'Quand les fichiers sont-ils transférés au client ?', '["Au premier appel","Avant de commencer","Après le paiement complet","Jamais"]'::jsonb, 2);
+
+-- design-2-a
+delete from public.exam_questions where course_id = 'design-2-a';
+delete from public.module_questions where course_id = 'design-2-a';
+delete from public.lessons where course_id = 'design-2-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-a', 0, 'Se spécialiser, définir son style et réaliser un diagnostic visuel', 'Six spécialités avancées et avantages depuis Madagascar, éléments d''un style personnel, diagnostic visuel comme offre d''entrée et rapport, offres à plus forte valeur.', 'Savoir dessiner un personnage, construire une composition et livrer des fichiers propres ouvre les premières commandes. Les illustrateurs les mieux payés vont plus loin : ils choisissent un **domaine**, développent un **style reconnaissable** et vendent des droits d''utilisation, pas seulement des dessins. Ce module vous aide à choisir votre spécialité et à proposer une offre d''entrée convaincante.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées de l''illustration.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Définir un style personnel cohérent.
+> 4. Mener un diagnostic visuel pour un client.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Édition jeunesse** | Albums, livres scolaires, contes | Personnages constants, narration en images, mise en page avec le texte |
+| 2 | **Illustration de marque** | Mascottes, emballages, visuels de campagne | Charte graphique, vectoriel, déclinaisons |
+| 3 | **Illustration éditoriale** | Images pour articles, magazines, rapports | Idées visuelles fortes, délais courts |
+| 4 | **Concept art et jeux** | Personnages, décors et objets pour jeux vidéo et animation | Perspective, anatomie, recherches rapides |
+| 5 | **Illustration pédagogique** | Supports de sensibilisation, infographies illustrées, manuels | Clarté, culture du public, tests de compréhension |
+| 6 | **Motifs et produits** | Motifs répétables, textiles, papeterie, impression à la demande | Raccords, couleurs d''impression, droits de licence |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Illustration pédagogique** pour les ONG et les projets de santé, d''éducation et d''environnement, avec des personnages et des décors que le public malgache reconnaît.
+> - **Faune, flore et culture de Madagascar** (lémuriens, baobabs, lamba, marchés) pour l''édition, le tourisme et les produits.
+> - **Édition jeunesse bilingue** malgache et français.
+
+## Un style personnel cohérent
+
+| Élément du style | Questions à se poser |
+| --- | --- |
+| **Formes** | Arrondies ou anguleuses ? Proportions réalistes ou stylisées ? |
+| **Trait** | Contour net, trait texturé, ou pas de contour ? |
+| **Couleur** | Palette limitée ou riche ? Couleurs vives ou douces ? |
+| **Texture** | Aplats, grain, aquarelle numérique ? |
+| **Lumière** | Ombres simples ou rendu détaillé ? |
+
+> [!astuce]
+> Un client achète un **style qu''il a vu** dans votre portfolio. Si votre portfolio montre cinq styles différents, il ne sait pas ce qu''il obtiendra. Gardez un style principal et, au plus, un second style pour un autre marché.
+
+## Le diagnostic visuel : votre offre d''entrée
+
+Un diagnostic montre au client ce que l''illustration peut apporter à sa communication ou à son produit.
+
+| Domaine | Questions |
+| --- | --- |
+| **Images actuelles** | Photos de banque d''images ? Dessins sans cohérence ? |
+| **Public** | Enfants, adultes, clients étrangers, communautés rurales ? |
+| **Message** | Que doit comprendre ou ressentir le public ? |
+| **Supports** | Réseaux sociaux, imprimés, emballages, site, livres ? |
+| **Identité** | Les images reflètent-elles la marque ou le projet ? |
+| **Droits** | Les images utilisées sont-elles libres de droits ? |
+
+### Le rapport de diagnostic
+
+```
+Client : association Ala Maitso (reboisement, exemple)
+Constat principal : les supports de sensibilisation utilisent des photos
+de banque d''images étrangères, peu reconnues par les villageois.
+
+Recommandations prioritaires
+1. Créer 3 personnages récurrents (un enfant, une mère, un chef de fokontany).
+2. Une série de 8 illustrations pour les étapes du reboisement.
+3. Un guide de style pour que toutes les affiches restent cohérentes.
+
+Proposition
+- Phase 1 : personnages et guide de style (2 semaines).
+- Phase 2 : 8 illustrations et déclinaisons affiche et réseaux sociaux.
+```
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Personnages et guide de style** | Le client réutilise ses personnages pendant des années |
+| **Série complète** | Cohérence garantie sur tous les supports |
+| **Licence d''utilisation étendue** | Le client paie selon l''usage (durée, territoire, supports) |
+| **Abonnement mensuel** | Un nombre fixe d''illustrations chaque mois |
+
+> [!retenir]
+> - 6 spécialités : jeunesse, marque, éditorial, concept art, pédagogique, motifs et produits.
+> - Un style principal reconnaissable.
+> - Le diagnostic visuel comme offre d''entrée.
+> - Vendre des personnages, des séries, des licences et des abonnements.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et justifiez votre choix en 5 lignes.
+> 2. Décrivez votre style en 5 éléments et rassemblez 6 de vos images qui le montrent.
+> 3. Réalisez le diagnostic visuel d''une organisation réelle ou fictive.
+> 4. Rédigez une proposition en 2 phases.
+>
+> **À livrer** : votre positionnement, votre planche de style, votre diagnostic et votre proposition.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 0, 0, 'Pourquoi garder un style principal ?', '["Pour dessiner moins","Le client achète un style qu''il a vu dans le portfolio","Pour changer à chaque commande","Ce n''est pas utile"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 0, 1, 'Quelle offre d''entrée est proposée ?', '["Le diagnostic visuel","Un logo gratuit","Rien","Une affiche au hasard"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 0, 2, 'Pourquoi un guide de style vaut-il plus ?', '["Il remplace le contrat","Il est plus joli","Il est plus court","Le client réutilise ses personnages pendant des années"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-a', 1, 'Outils professionnels : Procreate, Clip Studio Paint et Adobe Illustrator', 'Pinceaux, guides et vidéos en accéléré sur iPad, perspective, poses 3D, cases et pages multiples, plans de travail, couleurs globales, Pantone et motifs, combinaison des outils et choix d''investissement.', 'Krita et Inkscape suffisent pour débuter. Les clients et les éditeurs travaillent cependant souvent avec d''autres outils, et certains gagnent beaucoup de temps. Ce module présente les trois outils professionnels du métier : **Procreate** sur iPad, **Clip Studio Paint** et **Adobe Illustrator**, et la façon de les combiner.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser Procreate pour dessiner vite et partout.
+> 2. Utiliser les fonctions avancées de Clip Studio Paint.
+> 3. Produire des illustrations vectorielles professionnelles avec Illustrator.
+> 4. Combiner ces outils dans un processus efficace.
+> 5. Choisir quand investir dans chacun.
+
+## Procreate : dessiner sur iPad
+
+| Fonction | Usage |
+| --- | --- |
+| **Pinceaux personnalisés** | Créer ou importer vos pinceaux, les classer par projet |
+| **Calques et modes de fusion** | Ombres, lumières, textures |
+| **Formes rapides et guides** | Lignes droites, symétrie, perspective |
+| **Enregistrement en accéléré** | Vidéo du dessin, idéale pour les réseaux sociaux |
+| **Animation simple** | Petits GIF animés |
+| **Export** | PSD avec calques, PNG, PDF |
+
+> [!madagascar]
+> Procreate s''achète une seule fois, mais il faut un **iPad compatible et un stylet**, ce qui représente un investissement important à Madagascar. Calculez combien de commandes il faut pour le rembourser avant d''acheter, ou commencez avec une tablette graphique et Krita.
+
+## Clip Studio Paint : bande dessinée et rendu avancé
+
+| Fonction | Usage |
+| --- | --- |
+| **Règles de perspective** | Décors en 1, 2 ou 3 points de fuite |
+| **Modèles 3D de pose** | Poser un mannequin pour vérifier une posture difficile |
+| **Cases et bulles** | Planches de bande dessinée et de manga |
+| **Encrage vectoriel** | Corriger l''épaisseur d''un trait après coup |
+| **Pages multiples** | Gérer un livre entier dans un seul projet |
+| **Matériaux** | Trames, textures, objets réutilisables |
+
+> [!astuce]
+> Le modèle 3D de pose aide à **vérifier** une posture, pas à la remplacer. Les éditeurs reconnaissent vite les poses figées copiées d''un mannequin. Dessinez toujours par-dessus avec votre propre interprétation.
+
+## Adobe Illustrator : le vectoriel professionnel
+
+| Fonction | Usage |
+| --- | --- |
+| **Plans de travail multiples** | Toutes les déclinaisons dans un seul fichier |
+| **Couleurs globales** | Changer une couleur partout en un clic |
+| **Nuancier Pantone** | Couleurs exactes pour l''impression et les produits |
+| **Symboles** | Éléments répétés modifiables d''un coup |
+| **Outil Motif** | Motifs répétables pour textiles et emballages |
+| **Vectorisation de l''image** | Convertir un croquis en tracés (à retoucher ensuite) |
+
+> [!definition] Couleur globale
+> Une couleur enregistrée dans le nuancier et liée à tous les objets qui l''utilisent. Si le client change sa couleur principale, vous la modifiez une seule fois et toutes les illustrations se mettent à jour.
+
+## Combiner les outils
+
+| Étape | Outil possible |
+| --- | --- |
+| Croquis et recherches | Procreate ou Clip Studio Paint |
+| Illustration peinte | Procreate, Clip Studio Paint ou Krita |
+| Mascotte ou illustration de marque | Illustrator |
+| Livre ou bande dessinée | Clip Studio Paint |
+| Préparation pour l''impression | Selon l''imprimeur : PDF en CMJN, souvent depuis Illustrator ou un logiciel de mise en page |
+
+## Choisir quand investir
+
+| Outil | Modèle de prix | Investir quand… |
+| --- | --- | --- |
+| **Procreate** | Achat unique, sur iPad | Vous travaillez déjà sur iPad ou en déplacement |
+| **Clip Studio Paint** | Achat unique ou abonnement selon la version | Vous faites de la bande dessinée ou de l''édition |
+| **Adobe Illustrator** | Abonnement mensuel | Vos clients de marque demandent des fichiers .ai ou du vectoriel complexe |
+
+> [!madagascar]
+> Ces logiciels se paient en dollars ou en euros par carte bancaire internationale. Vérifiez les **versions d''essai** et les **réductions étudiantes**, et faites payer l''abonnement par vos contrats : un logiciel n''est rentable que s''il vous fait gagner du temps ou des clients.
+
+> [!retenir]
+> - Procreate : rapide, mobile, vidéos en accéléré, achat unique mais iPad nécessaire.
+> - Clip Studio Paint : perspective, poses 3D, cases, pages multiples.
+> - Illustrator : plans de travail, couleurs globales, Pantone, motifs.
+> - Combiner selon l''étape et le type de projet.
+> - Investir quand les commandes le justifient.
+
+## Exercice pratique : un projet avec les outils professionnels
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec la version d''essai d''un outil, dessinez une mascotte en vectoriel avec 4 couleurs globales.
+> 2. Changez une couleur globale et montrez l''avant et l''après.
+> 3. Dessinez un décor en perspective à 2 points de fuite.
+> 4. Créez un motif répétable à partir de votre mascotte.
+>
+> **À livrer** : vos fichiers et une page qui explique votre processus.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 1, 0, 'Qu''est-ce qu''une couleur globale dans Illustrator ?', '["Une couleur interdite","Une couleur liée à tous les objets qui l''utilisent","Une couleur pour le monde entier","Un filtre"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 1, 1, 'Quel outil est adapté à la bande dessinée et aux pages multiples ?', '["Clip Studio Paint","Nmap","Audacity","Datadog"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 1, 2, 'Comment utiliser le modèle 3D de pose ?', '["Pour le copier tel quel","Jamais","Pour vérifier une posture, puis dessiner par-dessus","Pour remplacer le dessin"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-a', 2, 'Qualité et rapidité : étapes, bibliothèques, personnages et impression', 'Croquis, crayonné, couleur et finalisation validés par écrit, pinceaux, palettes et modèles, fiches personnage, expressions et nuancier, 300 dpi, CMJN et fond perdu, gestion des retours.', 'Un illustrateur professionnel livre des images de qualité constante, dans les délais, avec peu d''allers-retours. Ce module vous donne les méthodes qui font gagner du temps sans baisser la qualité : processus en étapes validées, bibliothèques réutilisables, préparation pour l''impression et gestion des retours.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser un projet en étapes validées par le client.
+> 2. Créer des bibliothèques réutilisables.
+> 3. Garder des personnages constants sur une longue série.
+> 4. Préparer des fichiers pour l''impression.
+> 5. Limiter et traiter les demandes de modification.
+
+## Un processus en étapes validées
+
+| Étape | Ce que voit le client | Modifications possibles |
+| --- | --- | --- |
+| 1. **Croquis** | Composition et idée, en noir et blanc | Changements importants |
+| 2. **Crayonné propre** | Formes et poses définitives | Ajustements |
+| 3. **Couleur** | Palette et ambiance | Ajustements de couleurs |
+| 4. **Finalisation** | Image terminée | Petites corrections |
+
+> [!attention]
+> Une modification de composition demandée **après la couleur** peut coûter des heures. Faites valider chaque étape **par écrit** et précisez dans votre devis que les changements importants après validation sont facturés en plus.
+
+## Les bibliothèques réutilisables
+
+| Bibliothèque | Contenu |
+| --- | --- |
+| **Pinceaux** | Un jeu limité de pinceaux par style |
+| **Palettes** | Une palette par projet ou par client |
+| **Modèles de fichiers** | Formats courants (carré réseaux sociaux, A4, double page) avec repères |
+| **Textures** | Grains, papiers, motifs |
+| **Éléments récurrents** | Arbres, maisons, objets du quotidien malgache, déjà dessinés et adaptables |
+
+> [!astuce]
+> Nommez vos fichiers de la même façon partout, par exemple : `client_projet_page03_v2.psd`. Vous retrouvez tout en quelques secondes, même un an plus tard.
+
+## Des personnages constants
+
+| Outil | Usage |
+| --- | --- |
+| **Fiche personnage** | Face, profil, trois-quarts, dos |
+| **Fiche d''expressions** | Joie, tristesse, surprise, colère, peur |
+| **Fiche de proportions** | Taille en nombre de têtes, comparaison entre personnages |
+| **Nuancier** | Couleurs exactes de la peau, des cheveux et des vêtements |
+| **Vêtements et accessoires** | Ce que le personnage porte toujours |
+
+> [!exemple] Dans un livre de 24 pages
+> Le personnage Rano porte toujours un lamba jaune avec trois bandes rouges. À la page 18, l''illustrateur a dessiné deux bandes. L''éditeur l''a remarqué à l''impression d''essai : il a fallu corriger et réimprimer. Une fiche personnage affichée à côté de l''écran évite ce genre d''erreur.
+
+## Préparer pour l''impression
+
+| Point | Règle courante |
+| --- | --- |
+| **Résolution** | 300 dpi à la taille réelle d''impression |
+| **Couleurs** | CMJN selon le profil demandé par l''imprimeur |
+| **Fond perdu** | Souvent 3 mm de dessin en plus sur chaque bord |
+| **Marges de sécurité** | Aucun texte important près du bord |
+| **Noir** | Noir riche ou noir pur selon les consignes de l''imprimeur |
+| **Format de fichier** | PDF d''impression ou format demandé |
+
+> [!madagascar]
+> Les imprimeurs d''Antananarivo n''ont pas tous les mêmes exigences ni les mêmes machines. **Demandez toujours leurs consignes** et, pour un gros tirage, un bon à tirer imprimé : les couleurs à l''écran et sur papier sont souvent très différentes.
+
+## Gérer les retours du client
+
+| Bonne pratique | Exemple |
+| --- | --- |
+| **Nombre de séries de retours prévu** | Deux séries de modifications par étape incluses |
+| **Retours regroupés** | Une seule liste par étape, pas des messages au fil de la journée |
+| **Retours précis** | « Agrandir le baobab », pas « je ne sais pas, quelque chose ne va pas » |
+| **Questions pour clarifier** | « Est-ce la couleur ou la position qui vous gêne ? » |
+
+> [!retenir]
+> - Croquis, crayonné, couleur, finalisation : validation écrite à chaque étape.
+> - Pinceaux, palettes, modèles, textures et éléments réutilisables.
+> - Fiches personnage, expressions, proportions et nuancier.
+> - 300 dpi, CMJN, fond perdu et consignes de l''imprimeur.
+> - Retours limités, regroupés et précis.
+
+## Exercice pratique : une méthode professionnelle
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Créez la fiche complète d''un personnage (vues, expressions, proportions, nuancier).
+> 2. Dessinez-le dans 3 scènes différentes en suivant les 4 étapes.
+> 3. Préparez l''une des scènes pour l''impression A4 avec fond perdu.
+> 4. Rédigez votre règle de gestion des retours en 5 points.
+>
+> **À livrer** : la fiche, les 3 scènes avec chaque étape, le fichier d''impression et vos règles.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 2, 0, 'Quand une modification de composition coûte-t-elle cher ?', '["Après la mise en couleur","Jamais","Avant le brief","Au croquis"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 2, 1, 'Quelle résolution pour l''impression ?', '["300 dpi à la taille réelle","72 dpi","10 dpi","Peu importe"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 2, 2, 'À quoi sert le fond perdu ?', '["Changer les couleurs","Éviter un bord blanc après la coupe","Ajouter un cadre","Réduire le poids"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-a', 3, 'Clients internationaux : anglais, licences, agents et règles sur l''IA', 'Confirmation du brief et vocabulaire de l''édition en anglais, licence selon usage, durée, territoire et exclusivité, cession totale, agents et éditeurs, IA générative et fichiers de travail, portfolio international.', 'Les éditeurs, agences et marques d''Europe, d''Amérique du Nord et d''Afrique commandent des illustrations à distance. Ce module vous prépare à travailler avec eux : brief en anglais, droits et licences, agents d''illustrateurs, règles sur l''intelligence artificielle et présentation internationale.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre un brief et échanger en anglais.
+> 2. Négocier des licences d''utilisation.
+> 3. Travailler avec des agents et des éditeurs étrangers.
+> 4. Respecter les règles des clients sur l''IA générative.
+> 5. Présenter un portfolio adapté à l''international.
+
+## Le brief et les échanges en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Confirmer le brief | « Just to confirm: 12 spot illustrations, full colour, delivered as layered PSD by 15 March. » |
+| Présenter un croquis | « Here are three rough sketches. Which direction would you like me to develop? » |
+| Demander une précision | « Could you share the text for this page, so the image matches it? » |
+| Annoncer un retard | « I need two extra days for the final colours. Would Friday work for you? » |
+| Livrer | « Please find the final files attached. Let me know if anything needs adjusting. » |
+
+> [!astuce]
+> Les éditeurs anglophones utilisent des mots précis : **spot illustration** (petite image sans fond), **full-page** (page entière), **spread** (double page), **cover** (couverture), **roughs** (croquis), **finals** (images finales). Apprenez-les pour éviter les malentendus.
+
+## Les licences d''utilisation
+
+> [!definition] Licence
+> Une autorisation donnée au client d''utiliser votre illustration pour certains usages, pendant une durée, sur un territoire. Vous restez l''auteur. Le prix dépend de l''étendue de la licence.
+
+| Élément | Exemples |
+| --- | --- |
+| **Usage** | Livre, emballage, publicité, réseaux sociaux, produits dérivés |
+| **Durée** | 1 an, 5 ans, durée des droits |
+| **Territoire** | Madagascar, Europe, monde entier |
+| **Exclusivité** | Exclusive (vous ne la revendez pas) ou non exclusive |
+| **Modifications** | Le client peut-il modifier l''image ? |
+
+> [!attention]
+> Une **cession totale de droits** ou un contrat « work for hire » (le client devient propriétaire de l''œuvre) se paie beaucoup plus cher qu''une licence limitée. Lisez attentivement chaque contrat et demandez conseil à un professionnel du droit d''auteur pour les gros contrats.
+
+## Agents et éditeurs étrangers
+
+| Point | À savoir |
+| --- | --- |
+| **Agent d''illustrateurs** | Trouve des commandes et négocie pour vous, contre un pourcentage |
+| **Sélection** | Les agences reçoivent beaucoup de demandes : un portfolio ciblé est indispensable |
+| **Éditeurs jeunesse** | Certains acceptent les portfolios directement, d''autres seulement via un agent |
+| **Avance et droits** | En édition, une avance sur droits ou un forfait selon les pays et les contrats |
+| **Délais** | Un livre peut prendre plusieurs mois, avec des paiements par étapes |
+
+> [!madagascar]
+> Les éditeurs et les ONG cherchent de plus en plus des **illustrateurs du pays** pour représenter fidèlement les cultures. Mettez en avant votre connaissance des vêtements, des paysages, des gestes et des scènes de la vie quotidienne à Madagascar : c''est un vrai avantage face à un illustrateur étranger.
+
+## Les règles sur l''IA générative
+
+| Situation | Bonne pratique |
+| --- | --- |
+| Le contrat interdit l''IA générative | Ne pas l''utiliser, à aucune étape |
+| Le client demande de déclarer les outils | Déclarer honnêtement |
+| Vous utilisez l''IA pour des recherches | Le dire, et ne jamais livrer une image générée comme votre dessin |
+| Concours et éditeurs | Lire leurs règles, souvent strictes |
+
+> [!attention]
+> Livrer une image générée par IA en la présentant comme un dessin original peut entraîner **l''annulation du contrat** et nuire durablement à votre réputation. Gardez vos fichiers de travail (croquis, calques, étapes) : ils prouvent que vous êtes l''auteur.
+
+## Un portfolio international
+
+| Élément | Conseil |
+| --- | --- |
+| **Site personnel** | Nom de domaine, 15 à 25 images, page « About » et contact |
+| **Langue** | Anglais, avec une version française |
+| **Ciblage** | Une page par marché (jeunesse, éditorial, marques) |
+| **Plateformes d''illustrateurs** | Présence soignée et régulière |
+| **Mise à jour** | Retirer les images faibles ou anciennes |
+
+> [!retenir]
+> - Un brief en anglais confirmé par écrit, avec le vocabulaire de l''édition.
+> - Licence : usage, durée, territoire, exclusivité, modifications.
+> - Agents et éditeurs : portfolio ciblé, avances, délais.
+> - Respecter les règles sur l''IA et garder ses fichiers de travail.
+> - Un portfolio en anglais, ciblé et à jour.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais la confirmation d''un brief de 6 illustrations.
+> 2. Proposez 3 niveaux de licence pour une même illustration, avec un prix pour chacun.
+> 3. Repérez 5 agents ou éditeurs qui correspondent à votre style et notez leurs conditions.
+> 4. Rédigez votre page « About » en anglais.
+>
+> **À livrer** : votre confirmation, vos licences, votre liste et votre page « About ».', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 3, 0, 'Que signifie « spread » ?', '["Un croquis","Une facture","Une couverture","Une double page"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 3, 1, 'De quoi dépend le prix d''une licence ?', '["De la couleur","Du nombre de calques","De l''usage, de la durée, du territoire et de l''exclusivité","Du logiciel"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 3, 2, 'Pourquoi garder ses fichiers de travail ?', '["Pour occuper le disque","Ils remplacent la facture","Ce n''est pas utile","Ils prouvent que vous êtes l''auteur"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-2-a', 4, 'Développer son activité : forfaits, licences, revenus et équipe', 'Trois voies, forfaits avec création et licence séparées, impression à la demande, banques d''images, livres et produits, études de cas chiffrées, petit studio et contrats de droits, évolution.', 'Un illustrateur expérimenté ne vit pas seulement de commandes ponctuelles. Il combine des contrats durables, des licences, des revenus de produits et parfois une petite équipe. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Créer des revenus complémentaires avec vos images.
+> 4. Rédiger des études de cas convaincantes.
+> 5. Organiser une petite équipe et préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Illustrateur indépendant spécialisé** | Commandes et licences dans un domaine | Ceux qui aiment dessiner chaque jour |
+| **Studio d''illustration** | Plusieurs illustrateurs, gros projets (livres scolaires, campagnes) | Ceux qui aiment organiser |
+| **Auteur et créateur de produits** | Vos propres livres, motifs et produits | Ceux qui ont un univers personnel fort |
+
+## Des forfaits et des contrats durables
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Personnages et guide de style** | 3 personnages, fiches complètes, guide d''usage | 1 200 000 Ar |
+| **Livre jeunesse de 24 pages** | Couverture et 12 doubles pages, licence pour l''édition | 3 500 000 Ar |
+| **Abonnement réseaux sociaux** | 8 illustrations par mois aux couleurs de la marque | 800 000 Ar par mois |
+| **Campagne de sensibilisation** | Série de 10 illustrations et déclinaisons | 2 500 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché, et ajoutez le prix de la licence.)*
+
+> [!attention]
+> Dans chaque devis, séparez le **travail de création** et la **licence d''utilisation**. Si le client veut plus tard utiliser l''image sur des produits ou dans un autre pays, vous pourrez facturer une extension de licence.
+
+## Les revenus complémentaires
+
+| Source | Principe | Point d''attention |
+| --- | --- | --- |
+| **Impression à la demande** | Vos motifs sur t-shirts, tasses, affiches, vendus par une plateforme | Vérifier que la plateforme accepte les vendeurs basés à Madagascar et ses modes de paiement |
+| **Banques d''illustrations** | Vente de licences non exclusives | Revenus faibles par image, il faut du volume |
+| **Livres et cahiers de coloriage** | Vos propres livres, imprimés ou numériques | Qualité de l''impression et distribution |
+| **Pinceaux et ressources** | Vente de pinceaux ou de modèles à d''autres artistes | Assistance aux acheteurs |
+| **Produits locaux** | Cartes postales, calendriers pour le tourisme | Partenariat avec des boutiques |
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Client** : association Ala Maitso. **Besoin** : des affiches de sensibilisation comprises dans les villages. **Réalisation** : 3 personnages, guide de style, 10 illustrations. **Résultat** : lors des tests dans 4 villages, 9 personnes sur 10 ont expliqué correctement les étapes du reboisement, contre 4 sur 10 avec les anciennes affiches.
+
+Une bonne étude de cas présente : le besoin, votre démarche (avec croquis), le résultat final et, si possible, un **chiffre** ou un témoignage du client.
+
+## Organiser une petite équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Coloriste** | Mise en couleur selon votre palette |
+| **Assistant décors** | Décors et éléments secondaires |
+| **Maquettiste** | Mise en page du texte et préparation pour l''impression |
+| **Vous** | Direction artistique, personnages, relation client, contrôle final |
+
+> [!madagascar]
+> Les projets de livres scolaires, de manuels de santé et de campagnes d''ONG demandent parfois des centaines d''illustrations en peu de temps. Un petit studio malgache bien organisé, avec un guide de style et un contrôle qualité, peut répondre à ces appels d''offres que des indépendants seuls ne peuvent pas assumer.
+
+> [!attention]
+> Avec une équipe, rédigez un **contrat** avec chaque collaborateur : rémunération, délais, confidentialité et surtout **droits d''auteur** sur ce qu''ils dessinent, pour pouvoir accorder des licences claires à vos clients.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Directeur artistique** | Encadrement d''équipes, choix de styles, relation avec les marques |
+| **Auteur-illustrateur** | Écriture, édition de vos propres livres |
+| **Concept artist** | Studios de jeux et d''animation |
+| **Motion designer** | Voir la formation Motion designer |
+| **Formateur** | Ateliers de dessin en ligne |
+
+> [!retenir]
+> - Indépendant spécialisé, studio ou auteur et créateur de produits.
+> - Séparer création et licence dans les devis.
+> - Impression à la demande, banques d''images, livres, ressources, produits locaux.
+> - Études de cas avec résultats.
+> - Une équipe avec contrats et droits clairs.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez 3 forfaits avec prix de création et prix de licence séparés.
+> 3. Choisissez une source de revenus complémentaires et préparez 5 images pour la lancer.
+> 4. Rédigez une étude de cas à partir de votre meilleur projet.
+>
+> **À livrer** : votre plan d''activité, vos forfaits, vos 5 images et votre étude de cas.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 4, 0, 'Que séparer dans un devis ?', '["Les couleurs","Le texte et les images","Rien","Le travail de création et la licence d''utilisation"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 4, 1, 'Que vérifier avant d''utiliser une plateforme d''impression à la demande ?', '["Rien","Le nombre d''employés","Qu''elle accepte les vendeurs basés à Madagascar et ses paiements","Sa couleur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-2-a', 4, 2, 'Que prévoir dans le contrat d''un collaborateur ?', '["Rémunération, délais, confidentialité et droits d''auteur","Sa couleur préférée","Rien","Seulement son nom"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quelle spécialité réalise des mascottes et des emballages ?', '["L''illustration éditoriale","Le concept art","L''édition jeunesse","L''illustration de marque"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quelle spécialité sert aux ONG pour la sensibilisation ?', '["Les motifs textiles","L''illustration pédagogique","La retouche photo","Le concept art"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quel avantage a un illustrateur malgache ?', '["Des logiciels gratuits partout","Sa connaissance des scènes, vêtements et paysages de Madagascar","Aucun","Des délais plus longs"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que regarde le diagnostic visuel ?', '["Images actuelles, public, message, supports, identité et droits","La comptabilité","Le serveur","Seulement le prix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Comment Procreate est-il vendu ?', '["Gratuit sur Windows","Abonnement obligatoire","Uniquement en magasin","Achat unique, sur iPad"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'À quoi servent les règles de perspective de Clip Studio Paint ?', '["Payer des clients","Corriger l''orthographe","Exporter en MP3","Dessiner des décors à 1, 2 ou 3 points de fuite"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quel avantage offre l''encrage vectoriel ?', '["Imprimer plus vite","Rien","Corriger l''épaisseur d''un trait après coup","Supprimer les calques"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'À quoi sert le nuancier Pantone ?', '["Écrire du texte","Obtenir des couleurs exactes à l''impression","Compresser les fichiers","Créer des animations"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quand investir dans un logiciel payant ?', '["Quand un ami l''a","Jamais","Dès le premier jour","Quand les commandes le justifient"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quelles sont les 4 étapes d''une illustration ?', '["Croquis, crayonné, couleur, finalisation","Couleur, croquis, facture, impression","Facture, couleur, croquis, livraison","Aucune"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Comment faire valider chaque étape ?', '["À la fin seulement","Pas besoin","Oralement seulement","Par écrit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que contient une fiche personnage ?', '["La facture","Face, profil, trois-quarts et dos","Le prix","Le contrat"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quel mode de couleur demande souvent l''imprimeur ?', '["RVB uniquement","Aucun","Noir et blanc","CMJN"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que demander à un imprimeur avant un gros tirage ?', '["Rien","Une vidéo","Ses consignes et un bon à tirer imprimé","Un logo"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Comment recevoir les retours du client ?', '["Jamais","Regroupés en une liste précise par étape","Au fil de la journée","Sans limite"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que signifie « roughs » ?', '["Les images finales","Une couverture","Des croquis","Une facture"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Qu''est-ce qu''une licence ?', '["Un impôt","La vente du logiciel","Une autorisation d''usage définie, l''illustrateur restant l''auteur","Un diplôme"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Qu''est-ce qu''un contrat « work for hire » ?', '["Une licence d''un an","Un contrat où le client devient propriétaire de l''œuvre","Un stage","Un contrat gratuit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que fait un agent d''illustrateurs ?', '["Il vend des tablettes","Il trouve des commandes et négocie contre un pourcentage","Il dessine à votre place","Il imprime les livres"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que faire si le contrat interdit l''IA générative ?', '["L''utiliser discrètement","Ignorer le contrat","L''utiliser pour les couleurs","Ne l''utiliser à aucune étape"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Dans quelle langue préparer son portfolio international ?', '["Seulement en malgache","Sans texte","En anglais, avec une version française","En latin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que permet de facturer une licence séparée ?', '["Un remboursement","Rien de plus","Une extension si l''usage s''élargit","Une réduction"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quel est le point faible des banques d''illustrations ?', '["Elles sont interdites","Elles paient trop","Des revenus faibles par image, il faut du volume","Elles demandent un iPad"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Que doit contenir une bonne étude de cas ?', '["Seulement l''image finale","Rien","Besoin, démarche, résultat et si possible un chiffre","Le prix seulement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-2-a', 'Quel rôle garde l''illustrateur dans son studio ?', '["Aucun","Seulement la comptabilité","Direction artistique, personnages, relation client et contrôle final","Seulement l''impression"]'::jsonb, 2);
 
 -- design-2-f
 delete from public.exam_questions where course_id = 'design-2-f';

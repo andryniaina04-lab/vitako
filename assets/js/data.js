@@ -2319,6 +2319,85 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-2-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'illustrateur un professionnel qui vend un style, des séries cohérentes et des licences : spécialité (jeunesse, marque, éditorial, concept art, pédagogique, motifs et produits), style personnel, diagnostic visuel, outils payants (Procreate, Clip Studio Paint et Adobe Illustrator), processus en étapes validées, bibliothèques, personnages constants, préparation pour l'impression, gestion des retours, brief en anglais, licences, agents et éditeurs, règles sur l'IA générative, puis forfaits, revenus complémentaires, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité de l'illustration et définir un style reconnaissable",
+   "Mener un diagnostic visuel et proposer des offres à forte valeur",
+   "Utiliser Procreate, Clip Studio Paint et Adobe Illustrator selon le projet",
+   "Livrer des séries constantes, prêtes pour l'impression, avec peu d'allers-retours",
+   "Travailler avec des clients étrangers : anglais, licences, agents et règles sur l'IA",
+   "Développer son activité avec des forfaits, des revenus complémentaires et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, définir son style et réaliser un diagnostic visuel",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, éléments d'un style personnel, diagnostic visuel comme offre d'entrée et rapport, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Un style personnel cohérent",
+     "Le diagnostic visuel : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Outils professionnels : Procreate, Clip Studio Paint et Adobe Illustrator",
+    "summary": "Pinceaux, guides et vidéos en accéléré sur iPad, perspective, poses 3D, cases et pages multiples, plans de travail, couleurs globales, Pantone et motifs, combinaison des outils et choix d'investissement.",
+    "sections": [
+     "Procreate : dessiner sur iPad",
+     "Clip Studio Paint : bande dessinée et rendu avancé",
+     "Adobe Illustrator : le vectoriel professionnel",
+     "Combiner les outils",
+     "Choisir quand investir",
+     "Exercice pratique : un projet avec les outils professionnels"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Qualité et rapidité : étapes, bibliothèques, personnages et impression",
+    "summary": "Croquis, crayonné, couleur et finalisation validés par écrit, pinceaux, palettes et modèles, fiches personnage, expressions et nuancier, 300 dpi, CMJN et fond perdu, gestion des retours.",
+    "sections": [
+     "Un processus en étapes validées",
+     "Les bibliothèques réutilisables",
+     "Des personnages constants",
+     "Préparer pour l'impression",
+     "Gérer les retours du client",
+     "Exercice pratique : une méthode professionnelle"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, licences, agents et règles sur l'IA",
+    "summary": "Confirmation du brief et vocabulaire de l'édition en anglais, licence selon usage, durée, territoire et exclusivité, cession totale, agents et éditeurs, IA générative et fichiers de travail, portfolio international.",
+    "sections": [
+     "Le brief et les échanges en anglais",
+     "Les licences d'utilisation",
+     "Agents et éditeurs étrangers",
+     "Les règles sur l'IA générative",
+     "Un portfolio international",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Développer son activité : forfaits, licences, revenus et équipe",
+    "summary": "Trois voies, forfaits avec création et licence séparées, impression à la demande, banques d'images, livres et produits, études de cas chiffrées, petit studio et contrats de droits, évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les revenus complémentaires",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 6
+   }
+  ]
+ },
  "design-2-f": {
   "hours": 18,
   "description": "L'illustrateur numérique crée des images dessinées sur ordinateur ou tablette pour l'édition, les marques, les réseaux sociaux, l'éducation et les produits. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des ONG, des auteurs, des éditeurs et des marques, à Madagascar et à l'étranger, avec Krita et Inkscape : matriciel et vectoriel, droits d'auteur, formes, composition, couleur, lumière, fiche personnage, calques, export, commande complète et série cohérente. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

@@ -1,0 +1,97 @@
+{
+  "id": "design-2-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait de l'illustrateur un professionnel qui vend un style, des séries cohérentes et des licences : spécialité (jeunesse, marque, éditorial, concept art, pédagogique, motifs et produits), style personnel, diagnostic visuel, outils payants (Procreate, Clip Studio Paint et Adobe Illustrator), processus en étapes validées, bibliothèques, personnages constants, préparation pour l'impression, gestion des retours, brief en anglais, licences, agents et éditeurs, règles sur l'IA générative, puis forfaits, revenus complémentaires, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité de l'illustration et définir un style reconnaissable",
+    "Mener un diagnostic visuel et proposer des offres à forte valeur",
+    "Utiliser Procreate, Clip Studio Paint et Adobe Illustrator selon le projet",
+    "Livrer des séries constantes, prêtes pour l'impression, avec peu d'allers-retours",
+    "Travailler avec des clients étrangers : anglais, licences, agents et règles sur l'IA",
+    "Développer son activité avec des forfaits, des revenus complémentaires et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, définir son style et réaliser un diagnostic visuel",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, éléments d'un style personnel, diagnostic visuel comme offre d'entrée et rapport, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi garder un style principal ?", "options": ["Le client achète un style qu'il a vu dans le portfolio", "Pour dessiner moins", "Ce n'est pas utile", "Pour changer à chaque commande"], "correct": 0 },
+        { "q": "Quelle offre d'entrée est proposée ?", "options": ["Le diagnostic visuel", "Un logo gratuit", "Une affiche au hasard", "Rien"], "correct": 0 },
+        { "q": "Pourquoi un guide de style vaut-il plus ?", "options": ["Le client réutilise ses personnages pendant des années", "Il est plus joli", "Il est plus court", "Il remplace le contrat"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Procreate, Clip Studio Paint et Adobe Illustrator",
+      "summary": "Pinceaux, guides et vidéos en accéléré sur iPad, perspective, poses 3D, cases et pages multiples, plans de travail, couleurs globales, Pantone et motifs, combinaison des outils et choix d'investissement.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une couleur globale dans Illustrator ?", "options": ["Une couleur liée à tous les objets qui l'utilisent", "Une couleur pour le monde entier", "Une couleur interdite", "Un filtre"], "correct": 0 },
+        { "q": "Quel outil est adapté à la bande dessinée et aux pages multiples ?", "options": ["Clip Studio Paint", "Datadog", "Audacity", "Nmap"], "correct": 0 },
+        { "q": "Comment utiliser le modèle 3D de pose ?", "options": ["Pour vérifier une posture, puis dessiner par-dessus", "Pour le copier tel quel", "Pour remplacer le dessin", "Jamais"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : étapes, bibliothèques, personnages et impression",
+      "summary": "Croquis, crayonné, couleur et finalisation validés par écrit, pinceaux, palettes et modèles, fiches personnage, expressions et nuancier, 300 dpi, CMJN et fond perdu, gestion des retours.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand une modification de composition coûte-t-elle cher ?", "options": ["Après la mise en couleur", "Au croquis", "Avant le brief", "Jamais"], "correct": 0 },
+        { "q": "Quelle résolution pour l'impression ?", "options": ["300 dpi à la taille réelle", "72 dpi", "10 dpi", "Peu importe"], "correct": 0 },
+        { "q": "À quoi sert le fond perdu ?", "options": ["Éviter un bord blanc après la coupe", "Ajouter un cadre", "Réduire le poids", "Changer les couleurs"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, licences, agents et règles sur l'IA",
+      "summary": "Confirmation du brief et vocabulaire de l'édition en anglais, licence selon usage, durée, territoire et exclusivité, cession totale, agents et éditeurs, IA générative et fichiers de travail, portfolio international.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie « spread » ?", "options": ["Une double page", "Une couverture", "Un croquis", "Une facture"], "correct": 0 },
+        { "q": "De quoi dépend le prix d'une licence ?", "options": ["De l'usage, de la durée, du territoire et de l'exclusivité", "De la couleur", "Du nombre de calques", "Du logiciel"], "correct": 0 },
+        { "q": "Pourquoi garder ses fichiers de travail ?", "options": ["Ils prouvent que vous êtes l'auteur", "Pour occuper le disque", "Ils remplacent la facture", "Ce n'est pas utile"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, licences, revenus et équipe",
+      "summary": "Trois voies, forfaits avec création et licence séparées, impression à la demande, banques d'images, livres et produits, études de cas chiffrées, petit studio et contrats de droits, évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que séparer dans un devis ?", "options": ["Le travail de création et la licence d'utilisation", "Le texte et les images", "Les couleurs", "Rien"], "correct": 0 },
+        { "q": "Que vérifier avant d'utiliser une plateforme d'impression à la demande ?", "options": ["Qu'elle accepte les vendeurs basés à Madagascar et ses paiements", "Sa couleur", "Rien", "Le nombre d'employés"], "correct": 0 },
+        { "q": "Que prévoir dans le contrat d'un collaborateur ?", "options": ["Rémunération, délais, confidentialité et droits d'auteur", "Seulement son nom", "Rien", "Sa couleur préférée"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle spécialité réalise des mascottes et des emballages ?", "options": ["L'illustration de marque", "L'édition jeunesse", "Le concept art", "L'illustration éditoriale"], "correct": 0 },
+    { "q": "Quelle spécialité sert aux ONG pour la sensibilisation ?", "options": ["L'illustration pédagogique", "Les motifs textiles", "Le concept art", "La retouche photo"], "correct": 0 },
+    { "q": "Quel avantage a un illustrateur malgache ?", "options": ["Sa connaissance des scènes, vêtements et paysages de Madagascar", "Aucun", "Des logiciels gratuits partout", "Des délais plus longs"], "correct": 0 },
+    { "q": "Que regarde le diagnostic visuel ?", "options": ["Images actuelles, public, message, supports, identité et droits", "Seulement le prix", "La comptabilité", "Le serveur"], "correct": 0 },
+    { "q": "Comment Procreate est-il vendu ?", "options": ["Achat unique, sur iPad", "Abonnement obligatoire", "Gratuit sur Windows", "Uniquement en magasin"], "correct": 0 },
+    { "q": "À quoi servent les règles de perspective de Clip Studio Paint ?", "options": ["Dessiner des décors à 1, 2 ou 3 points de fuite", "Corriger l'orthographe", "Exporter en MP3", "Payer des clients"], "correct": 0 },
+    { "q": "Quel avantage offre l'encrage vectoriel ?", "options": ["Corriger l'épaisseur d'un trait après coup", "Imprimer plus vite", "Supprimer les calques", "Rien"], "correct": 0 },
+    { "q": "À quoi sert le nuancier Pantone ?", "options": ["Obtenir des couleurs exactes à l'impression", "Créer des animations", "Écrire du texte", "Compresser les fichiers"], "correct": 0 },
+    { "q": "Quand investir dans un logiciel payant ?", "options": ["Quand les commandes le justifient", "Dès le premier jour", "Jamais", "Quand un ami l'a"], "correct": 0 },
+    { "q": "Quelles sont les 4 étapes d'une illustration ?", "options": ["Croquis, crayonné, couleur, finalisation", "Facture, couleur, croquis, livraison", "Couleur, croquis, facture, impression", "Aucune"], "correct": 0 },
+    { "q": "Comment faire valider chaque étape ?", "options": ["Par écrit", "Oralement seulement", "Pas besoin", "À la fin seulement"], "correct": 0 },
+    { "q": "Que contient une fiche personnage ?", "options": ["Face, profil, trois-quarts et dos", "Le prix", "Le contrat", "La facture"], "correct": 0 },
+    { "q": "Quel mode de couleur demande souvent l'imprimeur ?", "options": ["CMJN", "RVB uniquement", "Noir et blanc", "Aucun"], "correct": 0 },
+    { "q": "Que demander à un imprimeur avant un gros tirage ?", "options": ["Ses consignes et un bon à tirer imprimé", "Rien", "Un logo", "Une vidéo"], "correct": 0 },
+    { "q": "Comment recevoir les retours du client ?", "options": ["Regroupés en une liste précise par étape", "Au fil de la journée", "Sans limite", "Jamais"], "correct": 0 },
+    { "q": "Que signifie « roughs » ?", "options": ["Des croquis", "Les images finales", "Une couverture", "Une facture"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une licence ?", "options": ["Une autorisation d'usage définie, l'illustrateur restant l'auteur", "La vente du logiciel", "Un diplôme", "Un impôt"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un contrat « work for hire » ?", "options": ["Un contrat où le client devient propriétaire de l'œuvre", "Un contrat gratuit", "Un stage", "Une licence d'un an"], "correct": 0 },
+    { "q": "Que fait un agent d'illustrateurs ?", "options": ["Il trouve des commandes et négocie contre un pourcentage", "Il dessine à votre place", "Il imprime les livres", "Il vend des tablettes"], "correct": 0 },
+    { "q": "Que faire si le contrat interdit l'IA générative ?", "options": ["Ne l'utiliser à aucune étape", "L'utiliser discrètement", "L'utiliser pour les couleurs", "Ignorer le contrat"], "correct": 0 },
+    { "q": "Dans quelle langue préparer son portfolio international ?", "options": ["En anglais, avec une version française", "Seulement en malgache", "Sans texte", "En latin"], "correct": 0 },
+    { "q": "Que permet de facturer une licence séparée ?", "options": ["Une extension si l'usage s'élargit", "Rien de plus", "Une réduction", "Un remboursement"], "correct": 0 },
+    { "q": "Quel est le point faible des banques d'illustrations ?", "options": ["Des revenus faibles par image, il faut du volume", "Elles sont interdites", "Elles paient trop", "Elles demandent un iPad"], "correct": 0 },
+    { "q": "Que doit contenir une bonne étude de cas ?", "options": ["Besoin, démarche, résultat et si possible un chiffre", "Seulement l'image finale", "Le prix seulement", "Rien"], "correct": 0 },
+    { "q": "Quel rôle garde l'illustrateur dans son studio ?", "options": ["Direction artistique, personnages, relation client et contrôle final", "Aucun", "Seulement la comptabilité", "Seulement l'impression"], "correct": 0 }
+  ]
+}
