@@ -1,0 +1,92 @@
+{
+  "id": "perso-3-f",
+  "hours": 9,
+  "description": "Chaque mission de freelance est un petit projet. Cette formation pratique, en 5 modules, apprend à les mener de bout en bout, à temps et sans stress : objectif, livrables, délai, budget, triangle qualité-coût-délai, fiche de mission avec ce qui est inclus et exclu, découpage en tâches, rétroplanning et jalons, risques, Trello, suivi dans Google Sheets, points d'avancement, demandes de modification, cas pratique d'une mission de 20 articles, capacité de travail, missions en parallèle, modèles et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Décrire une mission avec ses 5 éléments et le triangle qualité, coût, délai",
+    "Rédiger une fiche de mission claire et la faire confirmer par écrit",
+    "Construire un rétroplanning avec jalons, temps de validation et risques",
+    "Suivre ses missions avec Trello et Google Sheets et informer le client",
+    "Gérer les retards du client et les demandes de modification",
+    "Piloter plusieurs missions selon sa capacité et s'améliorer après chacune"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre la gestion d'une mission",
+      "summary": "Les 5 éléments d'une mission, livrables, triangle qualité, coût et délai, les 5 étapes d'une mission et les causes fréquentes d'échec.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un livrable ?", "options": ["Un résultat concret et vérifiable remis au client", "Une promesse orale", "Un logiciel payant", "Une réunion"], "correct": 0 },
+        { "q": "Si le client veut un délai plus court, que faut-il ajuster ?", "options": ["Le contenu ou le prix", "Rien", "La couleur", "Le nom du projet"], "correct": 0 },
+        { "q": "D'où viennent la plupart des échecs ?", "options": ["D'un mauvais cadrage", "De la météo", "Du logiciel", "Du hasard"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : cadrage, tâches, rétroplanning et risques",
+      "summary": "Fiche de mission avec inclus et non inclus, découpage en lots, rétroplanning et jalons, temps de validation du client, liste des risques.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle ligne de la fiche évite le plus de malentendus ?", "options": ["Non inclus", "Le nom du client", "La date du jour", "Le logo"], "correct": 0 },
+        { "q": "Qu'est-ce qu'un rétroplanning ?", "options": ["Un planning construit à partir de la date de livraison", "Un planning du passé", "Une facture", "Un contrat"], "correct": 0 },
+        { "q": "Qu'oublie-t-on souvent dans un planning ?", "options": ["Le temps de validation du client", "La date de fin", "Le nom des tâches", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils : Trello, Google Sheets et points d'avancement",
+      "summary": "Colonnes Trello et limite des tâches en cours, suivi du temps réel dans Google Sheets, message d'avancement, gestion des demandes de modification.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de cartes au maximum dans « En cours » ?", "options": ["3", "20", "Aucune", "Illimité"], "correct": 0 },
+        { "q": "Pourquoi noter le temps réel passé ?", "options": ["Pour mieux estimer et vérifier ses prix", "Pour se punir", "Ce n'est pas utile", "Pour le client uniquement"], "correct": 0 },
+        { "q": "Que faire face à une demande hors fiche ?", "options": ["Annoncer l'impact et obtenir un accord écrit", "La faire gratuitement", "Refuser sans explication", "L'ignorer"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation : la mission de Hasina",
+      "summary": "Mission de 20 articles pour une agence de Nosy Be : cadrage par questions, planning lié aux paiements, retard de validation du client, modification devenue nouvelle offre, clôture.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment Hasina lie-t-il planning et paiements ?", "options": ["Un paiement à certains jalons", "Tout payé à la fin", "Aucun paiement prévu", "Paiement chaque jour"], "correct": 0 },
+        { "q": "Que fait Hasina quand le client tarde à valider ?", "options": ["Il continue, rappelle poliment et annonce l'impact", "Il arrête tout", "Il se fâche", "Il ne dit rien"], "correct": 0 },
+        { "q": "Que demande Hasina à la fin de la mission ?", "options": ["Un témoignage et une proposition de suite", "Une remise", "Rien", "Un nouveau délai"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action : piloter plusieurs missions",
+      "summary": "Calcul de la capacité vendable, feuille portefeuille et revue du lundi, modèles réutilisables, bilan de fin de mission.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faut-il retirer des heures disponibles pour connaître sa capacité ?", "options": ["Administration, prospection et marge pour imprévus", "Rien", "Les heures de sommeil seulement", "Le temps de facturation uniquement"], "correct": 0 },
+        { "q": "Où ranger ses modèles ?", "options": ["Dans un dossier dédié, par exemple sur Google Drive", "Nulle part", "Dans sa tête", "Chez le client"], "correct": 0 },
+        { "q": "À quoi sert le bilan de fin de mission ?", "options": ["Mieux estimer et ajuster ses prix", "Accuser le client", "Rien", "Remplacer la facture"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quels sont les 5 éléments d'une mission ?", "options": ["Objectif, livrables, délai, budget, contact", "Logo, couleur, police, image, son", "Matin, midi, soir, nuit, week-end", "Aucun"], "correct": 0 },
+    { "q": "« Aider le client » est-il un livrable ?", "options": ["Non, ce n'est pas concret ni vérifiable", "Oui", "Parfois", "Toujours"], "correct": 0 },
+    { "q": "Que proposer à un client qui veut « plus, plus vite et moins cher » ?", "options": ["Expliquer le triangle et proposer deux options", "Tout accepter", "Raccrocher", "Baisser le prix de moitié"], "correct": 0 },
+    { "q": "Quelle est la première étape d'une mission ?", "options": ["Le cadrage", "La facture", "La livraison", "La clôture"], "correct": 0 },
+    { "q": "Pourquoi le cadrage écrit est-il important à distance ?", "options": ["Les malentendus coûtent cher avec le décalage horaire", "Ce n'est pas important", "Pour remplir des papiers", "Pour retarder la mission"], "correct": 0 },
+    { "q": "Que faire avant de commencer la mission ?", "options": ["Obtenir la confirmation écrite de la fiche", "Envoyer la facture finale", "Livrer", "Rien"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un jalon ?", "options": ["Un point de contrôle important, souvent une validation", "Une pause", "Un logiciel", "Un client"], "correct": 0 },
+    { "q": "Comment prévenir le risque de coupure ?", "options": ["Batterie, lieu de secours et marge dans le planning", "L'ignorer", "Annuler la mission", "Travailler sans sauvegarde"], "correct": 0 },
+    { "q": "Quelles colonnes contient le tableau Trello ?", "options": ["À faire, En cours, En validation, Terminé", "Lundi à dimanche", "Client, prix, logo", "Aucune"], "correct": 0 },
+    { "q": "À quoi sert une liste de contrôle dans une carte Trello ?", "options": ["Lister les étapes d'une tâche", "Payer le client", "Dessiner", "Envoyer un e-mail"], "correct": 0 },
+    { "q": "Que contient un point d'avancement ?", "options": ["Ce qui est fait, en cours et ce dont on a besoin du client", "Une facture", "Une plainte", "Rien"], "correct": 0 },
+    { "q": "Que faire après un accord oral avec un client ?", "options": ["Envoyer un récapitulatif écrit", "Rien", "L'oublier", "Changer de client"], "correct": 0 },
+    { "q": "Quelle question pose Hasina au cadrage ?", "options": ["Qui sont vos lecteurs ?", "Quel est votre âge ?", "Où habitez-vous ?", "Aucune"], "correct": 0 },
+    { "q": "Que propose Hasina pour la version anglaise ?", "options": ["Un prix et un délai séparés, après la mission en cours", "De la faire gratuitement", "De retarder les 20 articles", "De refuser"], "correct": 0 },
+    { "q": "Pourquoi Hasina continue-t-il les articles 11 à 20 pendant le retard ?", "options": ["Pour ne pas perdre de temps", "Pour punir le client", "Par erreur", "Pour finir plus tard"], "correct": 0 },
+    { "q": "Qu'a appris Hasina dans son bilan ?", "options": ["Prévoir 15 % de temps en plus", "Ne plus travailler", "Baisser ses prix", "Rien"], "correct": 0 },
+    { "q": "Combien d'heures vendables reste-t-il sur 40 h dans l'exemple ?", "options": ["Environ 24 h", "40 h", "60 h", "10 min"], "correct": 0 },
+    { "q": "Que contient la feuille portefeuille ?", "options": ["Une ligne par mission avec délai, avancement et paiement", "Ses photos", "Ses mots de passe", "Rien"], "correct": 0 },
+    { "q": "Quel modèle évite d'oublier quelque chose à la livraison ?", "options": ["La liste de contrôle avant livraison", "Le logo", "La carte de visite", "Le CV"], "correct": 0 },
+    { "q": "Quel argument de vente pour un client étranger ?", "options": ["Un point d'avancement chaque semaine et à chaque étape", "Des prix toujours plus bas", "Pas de contrat", "Aucune nouvelle avant la fin"], "correct": 0 }
+  ]
+}

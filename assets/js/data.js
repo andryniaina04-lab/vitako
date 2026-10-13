@@ -3586,6 +3586,40 @@ export const PUBLISHED = {
    }
   ]
  },
+ "perso-3-f": {
+  "hours": 9,
+  "description": "Chaque mission de freelance est un petit projet. Cette formation pratique, en 5 modules, apprend à les mener de bout en bout, à temps et sans stress : objectif, livrables, délai, budget, triangle qualité-coût-délai, fiche de mission avec ce qui est inclus et exclu, découpage en tâches, rétroplanning et jalons, risques, Trello, suivi dans Google Sheets, points d'avancement, demandes de modification, cas pratique d'une mission de 20 articles, capacité de travail, missions en parallèle, modèles et bilan. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Décrire une mission avec ses 5 éléments et le triangle qualité, coût, délai",
+   "Rédiger une fiche de mission claire et la faire confirmer par écrit",
+   "Construire un rétroplanning avec jalons, temps de validation et risques",
+   "Suivre ses missions avec Trello et Google Sheets et informer le client",
+   "Gérer les retards du client et les demandes de modification",
+   "Piloter plusieurs missions selon sa capacité et s'améliorer après chacune"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre la gestion d'une mission",
+    "minutes": 4
+   },
+   {
+    "title": "Les bases : cadrage, tâches, rétroplanning et risques",
+    "minutes": 4
+   },
+   {
+    "title": "Les outils : Trello, Google Sheets et points d'avancement",
+    "minutes": 5
+   },
+   {
+    "title": "Mise en situation : la mission de Hasina",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action : piloter plusieurs missions",
+    "minutes": 4
+   }
+  ]
+ },
  "tech-0-a": {
   "hours": 17,
   "description": "Ce niveau Avancé fait du développeur mobile un professionnel qui livre et maintient des applications stables : spécialité (hors connexion, commerce et paiement, maintenance, intégrations natives, qualité, publication), audit d'application, comptes payants (Google Play Console et Apple Developer Program), pistes de test, signature, publication progressive, TestFlight et revue d'Apple, déclarations de confidentialité, Crashlytics, architecture, environnements, tests, intégration continue, performance, mode hors connexion, traduction, règles de paiement des magasins, RGPD et accessibilité, puis forfaits, maintenance, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

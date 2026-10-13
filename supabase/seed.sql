@@ -106,7 +106,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true),
   ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true),
   ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true),
-  ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 13, false),
+  ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true),
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 14, false),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 10, false),
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 11, false),
@@ -55587,6 +55587,438 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Combien de temps dure la routine du matin ?', '["3 heures","1 minute","Une journée","Environ 15 minutes"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que répondre à une nouvelle mission quand l''agenda est plein ?', '["Accepter et travailler la nuit","Refuser sans explication","Proposer une date de début réaliste","Ne pas répondre"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('perso-2-f', 'Que faire en cas de fatigue permanente ?', '["Réduire la charge et prendre soin de son équilibre","Travailler plus","L''ignorer","Supprimer les pauses"]'::jsonb, 0);
+
+-- perso-3-f
+delete from public.exam_questions where course_id = 'perso-3-f';
+delete from public.module_questions where course_id = 'perso-3-f';
+delete from public.lessons where course_id = 'perso-3-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-3-f', 0, 'Comprendre la gestion d''une mission', 'Les 5 éléments d''une mission, livrables, triangle qualité, coût et délai, les 5 étapes d''une mission et les causes fréquentes d''échec.', 'Chaque mission de freelance est un petit projet : un client, un objectif, des livrables, un délai et un budget. Les freelances qui livrent à temps et sans stress ne sont pas plus rapides que les autres : ils **gèrent** leurs missions. Ce premier module vous donne le vocabulaire et la vision d''ensemble.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Décrire une mission avec ses 5 éléments.
+> 2. Comprendre l''équilibre qualité, coût et délai.
+> 3. Connaître les 5 étapes d''une mission.
+> 4. Repérer les causes fréquentes d''échec.
+
+## Les 5 éléments d''une mission
+
+| Élément | Question | Exemple (mission de traduction) |
+| --- | --- | --- |
+| **Objectif** | Pourquoi le client fait-il appel à moi ? | Lancer son site en anglais pour les touristes |
+| **Livrables** | Qu''est-ce que je remets exactement ? | 12 pages traduites dans un document Word |
+| **Délai** | Pour quand ? | Le 20 mars |
+| **Budget** | Pour quel prix ? | 360 000 Ar |
+| **Client et contact** | Qui valide ? | La gérante, par e-mail |
+
+> [!definition] Livrable
+> Un résultat concret et vérifiable remis au client : un fichier, une page web, un rapport, une vidéo. « Aider le client » n''est pas un livrable ; « 12 pages traduites » en est un.
+
+## Qualité, coût et délai
+
+| Si le client veut… | Il faut ajuster… |
+| --- | --- |
+| Plus de qualité ou plus de contenu | Le prix ou le délai augmente |
+| Un délai plus court | Le contenu diminue ou le prix augmente |
+| Un prix plus bas | Le contenu diminue ou le délai s''allonge |
+
+> [!astuce]
+> Quand un client demande « plus, plus vite et moins cher », expliquez calmement ce triangle et proposez deux options. C''est une façon professionnelle de dire non sans perdre le client.
+
+## Les 5 étapes d''une mission
+
+| Étape | Ce que l''on fait |
+| --- | --- |
+| 1. **Cadrage** | Comprendre le besoin, définir les livrables, le prix et le délai |
+| 2. **Planification** | Découper en tâches, fixer les dates, prévoir les risques |
+| 3. **Réalisation** | Faire le travail et informer le client de l''avancement |
+| 4. **Livraison et validation** | Remettre les livrables, intégrer les corrections prévues |
+| 5. **Clôture** | Facturer, faire le bilan, demander un témoignage |
+
+## Pourquoi les missions dérapent
+
+| Cause | Conséquence |
+| --- | --- |
+| **Besoin mal compris** | On refait le travail |
+| **Livrables flous** | Le client demande toujours plus |
+| **Pas de planning** | Tout se fait la veille du délai |
+| **Pas de nouvelles au client** | Le client s''inquiète et perd confiance |
+| **Modifications sans limite** | La mission ne finit jamais |
+
+> [!madagascar]
+> Avec des clients à distance, parfois dans un autre fuseau horaire, les malentendus coûtent cher : une question non posée peut faire perdre une journée d''échanges. Un bon cadrage par écrit est encore plus important qu''avec un client que l''on voit en personne.
+
+> [!retenir]
+> - Objectif, livrables, délai, budget, contact.
+> - Le triangle qualité, coût, délai.
+> - Cadrage, planification, réalisation, livraison, clôture.
+> - La plupart des échecs viennent d''un mauvais cadrage.
+
+## Exercice pratique : analyser une mission
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez une mission passée ou une annonce réelle de votre métier.
+> 2. Décrivez ses 5 éléments.
+> 3. Repérez ce qui était flou ou manquant.
+> 4. Écrivez 3 questions que vous auriez dû poser au client.
+>
+> **À livrer** : votre fiche des 5 éléments, les points flous et vos 3 questions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 0, 0, 'Qu''est-ce qu''un livrable ?', '["Une promesse orale","Une réunion","Un logiciel payant","Un résultat concret et vérifiable remis au client"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 0, 1, 'Si le client veut un délai plus court, que faut-il ajuster ?', '["La couleur","Rien","Le contenu ou le prix","Le nom du projet"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 0, 2, 'D''où viennent la plupart des échecs ?', '["De la météo","D''un mauvais cadrage","Du hasard","Du logiciel"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-3-f', 1, 'Les bases : cadrage, tâches, rétroplanning et risques', 'Fiche de mission avec inclus et non inclus, découpage en lots, rétroplanning et jalons, temps de validation du client, liste des risques.', 'Une mission bien cadrée et bien planifiée est déjà à moitié réussie. Ce module vous apprend à rédiger une fiche de mission claire, à découper le travail en tâches, à fixer des jalons et à anticiper les risques.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Rédiger une fiche de mission avec ce qui est inclus et exclu.
+> 2. Découper une mission en tâches.
+> 3. Construire un rétroplanning avec des jalons.
+> 4. Identifier et prévenir les risques.
+
+## La fiche de mission
+
+```
+Fiche de mission – Traduction du site Lodge Tsara
+Objectif : site en anglais pour les touristes avant la haute saison.
+Livrables : 12 pages traduites (Word), 1 relecture finale.
+Inclus : traduction, relecture, 1 série de corrections.
+Non inclus : mise en ligne sur le site, traduction des avis clients.
+Délai : livraison finale le 20 mars.
+Budget : 360 000 Ar, 50 % à la commande, 50 % à la livraison.
+Validation : la gérante valide chaque lot par e-mail sous 48 h.
+```
+
+> [!astuce]
+> La ligne **« Non inclus »** est la plus importante pour éviter les malentendus. Envoyez la fiche au client et demandez une confirmation écrite avant de commencer.
+
+## Découper en tâches
+
+| Lot | Tâches | Durée estimée |
+| --- | --- | --- |
+| **Lot 1 : préparation** | Lire tout le site, créer un glossaire des mots clés | 3 h |
+| **Lot 2 : pages 1 à 6** | Traduire, relire | 8 h |
+| **Lot 3 : pages 7 à 12** | Traduire, relire | 8 h |
+| **Lot 4 : finalisation** | Intégrer les corrections, relecture finale | 3 h |
+
+## Le rétroplanning et les jalons
+
+> [!definition] Rétroplanning
+> Un planning construit **à partir de la date de livraison**, en remontant le temps. On place d''abord la date finale, puis on recule tâche par tâche pour savoir quand commencer.
+
+> [!definition] Jalon
+> Un point de contrôle important, souvent une validation du client : « lot 1 validé », « maquette acceptée ». Les jalons permettent de corriger le cap tôt.
+
+| Date | Étape | Jalon |
+| --- | --- | --- |
+| 20 mars | Livraison finale | **Jalon 3 : mission terminée** |
+| 18-19 mars | Corrections et relecture finale | |
+| 15-17 mars | Pages 7 à 12 | **Jalon 2 : lot 3 envoyé le 17** |
+| 13-14 mars | Validation du client (48 h) | |
+| 9-12 mars | Pages 1 à 6 | **Jalon 1 : lot 2 envoyé le 12** |
+| 8 mars | Préparation et glossaire | |
+
+> [!attention]
+> N''oubliez pas le temps de **validation du client** dans le planning. Beaucoup de retards viennent d''un client qui met 4 jours à répondre, alors que le planning prévoyait une réponse immédiate.
+
+## Prévoir les risques
+
+| Risque | Probabilité | Prévention |
+| --- | --- | --- |
+| Coupure de courant prolongée | Moyenne | Batterie, lieu de secours, une journée de marge |
+| Client lent à valider | Forte | Délai de validation écrit dans la fiche |
+| Texte plus technique que prévu | Moyenne | Lire tout le site avant de donner le prix |
+| Maladie | Faible | Marge dans le planning, prévenir tôt |
+
+> [!retenir]
+> - Une fiche de mission avec « Inclus » et « Non inclus », confirmée par écrit.
+> - Des lots et des tâches estimées.
+> - Un rétroplanning avec jalons et temps de validation.
+> - Une liste des risques et de leur prévention.
+
+## Exercice pratique : cadrer une mission
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez la fiche de mission d''un projet réel ou fictif de votre métier.
+> 2. Découpez-le en 4 lots avec des durées.
+> 3. Construisez le rétroplanning avec 3 jalons.
+> 4. Listez 4 risques et leur prévention.
+>
+> **À livrer** : votre fiche, vos lots, votre rétroplanning et vos risques.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 1, 0, 'Quelle ligne de la fiche évite le plus de malentendus ?', '["La date du jour","Le nom du client","Non inclus","Le logo"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 1, 1, 'Qu''est-ce qu''un rétroplanning ?', '["Une facture","Un contrat","Un planning construit à partir de la date de livraison","Un planning du passé"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 1, 2, 'Qu''oublie-t-on souvent dans un planning ?', '["La date de fin","Rien","Le temps de validation du client","Le nom des tâches"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-3-f', 2, 'Les outils : Trello, Google Sheets et points d''avancement', 'Colonnes Trello et limite des tâches en cours, suivi du temps réel dans Google Sheets, message d''avancement, gestion des demandes de modification.', 'Ce module vous fait prendre en main des outils gratuits pour suivre vos missions : un tableau Trello pour visualiser l''avancement, Google Sheets pour le planning et le suivi, et des modèles de messages pour tenir le client informé.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une mission dans un tableau Trello.
+> 2. Suivre le planning et le temps passé dans Google Sheets.
+> 3. Envoyer un point d''avancement clair au client.
+> 4. Gérer une demande de modification.
+
+## Trello : voir l''avancement d''un coup d''œil
+
+| Colonne | Contenu |
+| --- | --- |
+| **À faire** | Toutes les tâches de la mission |
+| **En cours** | 1 à 3 tâches maximum à la fois |
+| **En validation** | Ce qui attend la réponse du client |
+| **Terminé** | Ce qui est validé |
+
+| Fonction utile | Usage |
+| --- | --- |
+| **Date d''échéance** sur chaque carte | Voir les retards en rouge |
+| **Liste de contrôle** dans une carte | Les étapes d''une tâche (traduire, relire, mettre en forme) |
+| **Étiquettes de couleur** | Une couleur par client ou par lot |
+| **Pièces jointes** | Le brief, les fichiers du client |
+
+> [!astuce]
+> Limitez la colonne « En cours » à 3 cartes. Commencer dix tâches à la fois donne l''impression d''avancer, mais rien ne se termine.
+
+## Google Sheets : planning et temps passé
+
+| Tâche | Début | Fin prévue | Fin réelle | Temps estimé | Temps réel | Statut |
+| --- | --- | --- | --- | --- | --- | --- |
+| Glossaire | 08/03 | 08/03 | 08/03 | 3 h | 2 h 30 | Terminé |
+| Pages 1 à 6 | 09/03 | 12/03 | 12/03 | 8 h | 9 h 30 | Terminé |
+| Pages 7 à 12 | 15/03 | 17/03 | | 8 h | | En cours |
+
+> [!astuce]
+> Noter le **temps réel** passé sur chaque tâche est la meilleure façon d''apprendre à estimer, et de savoir si votre prix est juste. Après cinq missions, vos devis deviennent beaucoup plus précis.
+
+## Le point d''avancement
+
+Envoyez un court message au client à chaque jalon, ou chaque semaine pour une mission longue :
+
+```
+Bonjour Madame Rabe,
+Voici le point sur la traduction du site :
+✓ Fait : pages 1 à 6 traduites et relues (envoyées le 12/03).
+→ En cours : pages 7 à 12, livraison prévue le 17/03.
+? J''ai besoin de vous : validation des pages 1 à 6 d''ici le 14/03.
+Tout est dans les temps pour la livraison finale du 20/03.
+Bonne journée, Hasina
+```
+
+## Gérer une demande de modification
+
+| Étape | Exemple |
+| --- | --- |
+| 1. **Accueillir** | « Merci, c''est une bonne idée. » |
+| 2. **Vérifier la fiche de mission** | La traduction des avis clients est « non incluse » |
+| 3. **Annoncer l''impact** | « Cela représente 3 pages de plus : 90 000 Ar et 2 jours. » |
+| 4. **Obtenir un accord écrit** | « Pouvez-vous me confirmer par e-mail ? » |
+| 5. **Mettre à jour le planning** | Nouvelle carte Trello, nouvelle date |
+
+> [!madagascar]
+> Pour un client local qui préfère WhatsApp, envoyez quand même un récapitulatif écrit après chaque accord oral (« Comme convenu au téléphone… »). En cas de désaccord sur un paiement, ce message est votre preuve.
+
+> [!retenir]
+> - Trello : À faire, En cours (3 max), En validation, Terminé.
+> - Google Sheets : dates et temps réel pour mieux estimer.
+> - Un point d''avancement : fait, en cours, besoin du client.
+> - Modification : vérifier, chiffrer, obtenir un accord écrit.
+
+## Exercice pratique : votre tableau de mission
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Créez un tableau Trello pour la mission cadrée au module 2.
+> 2. Créez votre feuille de suivi dans Google Sheets.
+> 3. Rédigez un point d''avancement au premier jalon.
+> 4. Rédigez votre réponse à une demande de modification hors fiche.
+>
+> **À livrer** : une capture de Trello, votre feuille de suivi, votre message d''avancement et votre réponse.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 2, 0, 'Combien de cartes au maximum dans « En cours » ?', '["Illimité","20","Aucune","3"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 2, 1, 'Pourquoi noter le temps réel passé ?', '["Pour le client uniquement","Pour se punir","Pour mieux estimer et vérifier ses prix","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 2, 2, 'Que faire face à une demande hors fiche ?', '["L''ignorer","Refuser sans explication","La faire gratuitement","Annoncer l''impact et obtenir un accord écrit"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-3-f', 3, 'Mise en situation : la mission de Hasina', 'Mission de 20 articles pour une agence de Nosy Be : cadrage par questions, planning lié aux paiements, retard de validation du client, modification devenue nouvelle offre, clôture.', 'Dans ce module, vous suivez Hasina, rédacteur web à Mahajanga, qui décroche sa plus grosse mission : 20 articles pour un site de tourisme à Nosy Be. Vous verrez comment il la mène de bout en bout, malgré un imprévu.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener une mission complète avec les outils de la formation.
+> 2. Gérer un retard du client sans compromettre le délai.
+> 3. Traiter une demande de modification importante.
+> 4. Clôturer proprement une mission.
+
+## Le cas pratique : Hasina
+
+> [!exemple] La mission
+> **Hasina**, 26 ans, rédacteur web, est contacté par **Nosy Be Évasion**, une agence de voyages. Besoin : 20 articles de 800 mots pour attirer des touristes francophones avant la haute saison. Budget proposé : 1 200 000 Ar. Délai : 6 semaines.
+
+## Le cadrage
+
+| Question posée par Hasina | Réponse du client |
+| --- | --- |
+| Qui sont vos lecteurs ? | Couples et familles de France et de La Réunion |
+| Avez-vous une liste de sujets ? | Non, à proposer |
+| Faut-il des photos ? | Non, l''agence a les siennes |
+| Qui valide les articles ? | Le directeur, sous 3 jours |
+| Faut-il mettre les articles en ligne ? | Non |
+
+Fiche de mission envoyée et confirmée : 20 articles, 1 série de corrections par article, sujets proposés par Hasina, paiement en 3 fois (30 % au début, 40 % à 10 articles, 30 % à la fin).
+
+## Le planning
+
+| Semaine | Travail | Jalon |
+| --- | --- | --- |
+| 1 | Liste de 25 sujets, validation de 20 | **Liste validée** |
+| 2-3 | Articles 1 à 10 | **10 articles envoyés**, 2e paiement |
+| 4-5 | Articles 11 à 20 | **20 articles envoyés** |
+| 6 | Corrections finales, marge | **Mission terminée** |
+
+## L''imprévu : le client tarde
+
+En semaine 3, le directeur part en voyage et ne valide pas les articles 1 à 10 pendant 9 jours.
+
+| Ce que fait Hasina | Pourquoi |
+| --- | --- |
+| Il continue les articles 11 à 20 | Ne pas perdre de temps |
+| Il envoie un rappel poli au jour 4 | Le délai de validation prévu est dépassé |
+| Il écrit : « Pour garder la livraison finale au 30 avril, j''ai besoin des retours avant le 15. Sinon, la date finale sera décalée d''autant. » | Il rappelle l''impact, sans accuser |
+| Il note tout dans son suivi | En cas de discussion sur le délai |
+
+## La demande de modification
+
+En semaine 4, l''agence demande d''ajouter une version anglaise de 5 articles.
+
+> [!exemple] La réponse d''Hasina
+> « Bonne idée pour toucher aussi les touristes anglophones. La traduction n''est pas incluse dans la mission actuelle. Pour 5 articles, je propose 250 000 Ar et une livraison une semaine après la fin de la mission en cours, pour ne pas retarder les 20 articles. Pouvez-vous me confirmer par e-mail ? »
+
+## La clôture
+
+| Action | Résultat |
+| --- | --- |
+| Livraison des 20 articles et des corrections | Le 2 mai (2 jours de décalage, liés à la validation tardive, acceptés par écrit) |
+| Facture du solde | Payée sous une semaine |
+| Bilan personnel | Temps réel : 62 h pour 55 h estimées ; prochaine fois, prévoir 15 % de plus |
+| Demande de témoignage | « Travail sérieux, toujours informé, je recommande. » |
+| Proposition de suite | 4 articles par mois, sous forme d''abonnement |
+
+> [!retenir]
+> - Un cadrage par questions, confirmé par écrit.
+> - Un planning en jalons, liés aux paiements.
+> - Face au retard du client : continuer, rappeler, annoncer l''impact.
+> - Une modification devient une nouvelle offre, sans retarder le reste.
+> - Clôture : facture, bilan, témoignage, proposition de suite.
+
+## Exercice pratique : votre mission de A à Z
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez une mission de votre métier d''au moins 3 semaines.
+> 2. Rédigez les questions de cadrage et la fiche de mission.
+> 3. Construisez le planning avec jalons et paiements.
+> 4. Rédigez le message en cas de retard de validation et la réponse à une demande de modification.
+>
+> **À livrer** : vos questions, votre fiche, votre planning et vos deux messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 3, 0, 'Comment Hasina lie-t-il planning et paiements ?', '["Aucun paiement prévu","Paiement chaque jour","Tout payé à la fin","Un paiement à certains jalons"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 3, 1, 'Que fait Hasina quand le client tarde à valider ?', '["Il continue, rappelle poliment et annonce l''impact","Il ne dit rien","Il se fâche","Il arrête tout"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 3, 2, 'Que demande Hasina à la fin de la mission ?', '["Une remise","Un nouveau délai","Un témoignage et une proposition de suite","Rien"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('perso-3-f', 4, 'Mon plan d''action : piloter plusieurs missions', 'Calcul de la capacité vendable, feuille portefeuille et revue du lundi, modèles réutilisables, bilan de fin de mission.', 'Gérer une mission, c''est bien ; en gérer plusieurs en même temps, sans retard ni épuisement, c''est ce qui fait vivre un freelance. Ce dernier module vous aide à piloter plusieurs missions, à créer vos modèles et à vous améliorer après chaque projet.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Calculer votre capacité de travail.
+> 2. Suivre plusieurs missions en parallèle.
+> 3. Créer vos modèles réutilisables.
+> 4. Faire un bilan et vous améliorer après chaque mission.
+
+## Votre capacité de travail
+
+```
+Heures disponibles par semaine : 40 h
+- Messages, facturation, administration : 6 h
+- Prospection et apprentissage : 6 h
+- Marge pour les imprévus (15 %) : 4 h
+= Heures réellement vendables : environ 24 h par semaine
+```
+
+> [!attention]
+> Beaucoup de freelances acceptent 40 heures de missions par semaine en oubliant le temps non facturable. Résultat : retards et soirées de travail. Calculez votre capacité **avant** d''accepter une nouvelle mission.
+
+## Plusieurs missions en parallèle
+
+| Outil | Usage |
+| --- | --- |
+| **Un tableau Trello commun** | Une étiquette de couleur par client |
+| **Une feuille « portefeuille »** dans Google Sheets | Une ligne par mission : client, délai, avancement, heures restantes, paiement |
+| **Google Agenda** | Des blocs par mission, les jalons et les délais |
+| **Une revue le lundi** | Vérifier les délais de la semaine et les paiements attendus |
+
+| Mission | Client | Délai | Avancement | Heures restantes | Paiement |
+| --- | --- | --- | --- | --- | --- |
+| 20 articles | Nosy Be Évasion | 30/04 | 60 % | 22 h | 2 sur 3 reçus |
+| Fiches produits | Boutique Tsara | 12/04 | 30 % | 10 h | Acompte reçu |
+| Newsletter | Coach Laura | Chaque jeudi | Récurrent | 2 h par semaine | Mensuel |
+
+## Vos modèles réutilisables
+
+| Modèle | Gain |
+| --- | --- |
+| **Questions de cadrage** | Ne rien oublier au premier rendez-vous |
+| **Fiche de mission** | Cadrer en 15 minutes |
+| **Tableau Trello type** | Démarrer une mission en 2 minutes |
+| **Messages types** | Avancement, rappel, modification, livraison |
+| **Liste de contrôle avant livraison** | Ne rien oublier au moment de livrer |
+
+> [!astuce]
+> Rangez vos modèles dans un dossier Google Drive « Mes modèles ». À chaque mission, améliorez-les un peu : au bout d''un an, vous aurez une vraie méthode professionnelle.
+
+## Le bilan de fin de mission
+
+| Question | Exemple de réponse |
+| --- | --- |
+| Le délai a-t-il été tenu ? | Oui, avec 2 jours de décalage acceptés |
+| Le temps réel correspond-il à l''estimation ? | 62 h pour 55 h : sous-estimé de 13 % |
+| Le prix était-il juste ? | Un peu bas : augmenter de 10 % la prochaine fois |
+| Qu''est-ce qui a bien marché ? | Le planning lié aux paiements |
+| Qu''est-ce que je change ? | Écrire le délai de validation en gras dans la fiche |
+
+> [!madagascar]
+> Une bonne gestion de projet est un argument de vente fort auprès des clients étrangers, qui craignent parfois le manque de suivi à distance. Mentionnez-la dans vos propositions : « Vous recevez un point d''avancement chaque semaine et à chaque étape. »
+
+> [!retenir]
+> - Calculer sa capacité vendable avant d''accepter.
+> - Une feuille « portefeuille » et une revue le lundi.
+> - Des modèles réutilisables, améliorés à chaque mission.
+> - Un bilan de fin de mission pour mieux estimer et mieux vendre.
+
+## Exercice pratique : votre système de missions
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Calculez votre capacité vendable par semaine.
+> 2. Créez votre feuille « portefeuille » avec vos missions actuelles ou fictives.
+> 3. Créez votre dossier de modèles avec au moins 4 modèles.
+> 4. Faites le bilan d''une mission passée avec les 5 questions.
+>
+> **À livrer** : votre calcul, votre feuille, la liste de vos modèles et votre bilan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 4, 0, 'Que faut-il retirer des heures disponibles pour connaître sa capacité ?', '["Le temps de facturation uniquement","Administration, prospection et marge pour imprévus","Les heures de sommeil seulement","Rien"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 4, 1, 'Où ranger ses modèles ?', '["Dans un dossier dédié, par exemple sur Google Drive","Nulle part","Chez le client","Dans sa tête"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('perso-3-f', 4, 2, 'À quoi sert le bilan de fin de mission ?', '["Mieux estimer et ajuster ses prix","Remplacer la facture","Rien","Accuser le client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quels sont les 5 éléments d''une mission ?', '["Aucun","Matin, midi, soir, nuit, week-end","Logo, couleur, police, image, son","Objectif, livrables, délai, budget, contact"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', '« Aider le client » est-il un livrable ?', '["Non, ce n''est pas concret ni vérifiable","Toujours","Parfois","Oui"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que proposer à un client qui veut « plus, plus vite et moins cher » ?', '["Tout accepter","Expliquer le triangle et proposer deux options","Raccrocher","Baisser le prix de moitié"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quelle est la première étape d''une mission ?', '["La clôture","La facture","Le cadrage","La livraison"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Pourquoi le cadrage écrit est-il important à distance ?', '["Pour retarder la mission","Ce n''est pas important","Pour remplir des papiers","Les malentendus coûtent cher avec le décalage horaire"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que faire avant de commencer la mission ?', '["Livrer","Envoyer la facture finale","Obtenir la confirmation écrite de la fiche","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Qu''est-ce qu''un jalon ?', '["Un logiciel","Un client","Une pause","Un point de contrôle important, souvent une validation"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Comment prévenir le risque de coupure ?', '["Batterie, lieu de secours et marge dans le planning","L''ignorer","Annuler la mission","Travailler sans sauvegarde"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quelles colonnes contient le tableau Trello ?', '["Lundi à dimanche","Aucune","Client, prix, logo","À faire, En cours, En validation, Terminé"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'À quoi sert une liste de contrôle dans une carte Trello ?', '["Lister les étapes d''une tâche","Envoyer un e-mail","Dessiner","Payer le client"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que contient un point d''avancement ?', '["Une facture","Rien","Ce qui est fait, en cours et ce dont on a besoin du client","Une plainte"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que faire après un accord oral avec un client ?', '["L''oublier","Rien","Changer de client","Envoyer un récapitulatif écrit"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quelle question pose Hasina au cadrage ?', '["Qui sont vos lecteurs ?","Aucune","Où habitez-vous ?","Quel est votre âge ?"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que propose Hasina pour la version anglaise ?', '["Un prix et un délai séparés, après la mission en cours","De retarder les 20 articles","De refuser","De la faire gratuitement"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Pourquoi Hasina continue-t-il les articles 11 à 20 pendant le retard ?', '["Pour ne pas perdre de temps","Par erreur","Pour punir le client","Pour finir plus tard"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Qu''a appris Hasina dans son bilan ?', '["Rien","Ne plus travailler","Prévoir 15 % de temps en plus","Baisser ses prix"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Combien d''heures vendables reste-t-il sur 40 h dans l''exemple ?', '["60 h","10 min","40 h","Environ 24 h"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Que contient la feuille portefeuille ?', '["Une ligne par mission avec délai, avancement et paiement","Ses photos","Ses mots de passe","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quel modèle évite d''oublier quelque chose à la livraison ?', '["Le logo","La carte de visite","Le CV","La liste de contrôle avant livraison"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('perso-3-f', 'Quel argument de vente pour un client étranger ?', '["Aucune nouvelle avant la fin","Des prix toujours plus bas","Un point d''avancement chaque semaine et à chaque étape","Pas de contrat"]'::jsonb, 2);
 
 -- tech-0-a
 delete from public.exam_questions where course_id = 'tech-0-a';
