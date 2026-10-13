@@ -2641,6 +2641,84 @@ export const PUBLISHED = {
    }
   ]
  },
+ "design-4-a": {
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du créateur de miniatures un partenaire de la croissance des chaînes : spécialité (niche, stratégie titre et miniature, tests, identité de chaîne, direction photo, multi-plateformes), statistiques, audit de chaîne, outils payants (Adobe Photoshop et Canva Pro), objets dynamiques, actions, tests de miniatures, travail en amont du tournage, banque d'expressions, contrôle avant livraison, règles des plateformes, clients étrangers, droits sur les images, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Choisir une spécialité et lire les statistiques utiles d'une chaîne",
+   "Réaliser un audit de chaîne et proposer des offres à forte valeur",
+   "Produire vite et bien avec Photoshop et Canva Pro, modèles et automatisations",
+   "Organiser une production fiable qui respecte les règles des plateformes",
+   "Travailler avec des créateurs étrangers en respectant les droits sur les images",
+   "Développer son activité avec des forfaits, des études de cas et une équipe"
+  ],
+  "modules": [
+   {
+    "title": "Se spécialiser, lire les statistiques et auditer une chaîne",
+    "summary": "Six spécialités avancées et avantages depuis Madagascar, impressions, taux de clics, durée de visionnage et sources de trafic, audit de chaîne comme offre d'entrée, offres à plus forte valeur.",
+    "sections": [
+     "Les 6 spécialités avancées",
+     "Les statistiques utiles",
+     "L'audit de chaîne : votre offre d'entrée",
+     "Des offres à plus forte valeur",
+     "Exercice pratique : votre positionnement"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Outils professionnels : Adobe Photoshop et Canva Pro",
+    "summary": "Sélection du sujet, masques, calques de réglage et lumière cohérente, modèles avec objets dynamiques, actions et lots, kit de marque, redimensionnement et modèles d'équipe, tests de miniatures et prudence avec l'IA.",
+    "sections": [
+     "Photoshop : détourer et intégrer",
+     "Les objets dynamiques et les modèles",
+     "Automatiser les tâches répétitives",
+     "Canva Pro : travailler avec une chaîne",
+     "Tester des miniatures sur YouTube",
+     "Exercice pratique : un modèle professionnel"
+    ],
+    "minutes": 6
+   },
+   {
+    "title": "Qualité et rapidité : avant le tournage, banque d'expressions, contrôle et règles",
+    "summary": "Concepts avec le titre avant le tournage, liste de photos, banque d'expressions, grille de contrôle avant livraison, délais fiables, plan de continuité et règles des plateformes.",
+    "sections": [
+     "Penser la miniature avant le tournage",
+     "La banque de photos et d'expressions",
+     "Le contrôle avant livraison",
+     "Des délais fiables",
+     "Respecter les règles des plateformes",
+     "Exercice pratique : une semaine de production"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Clients internationaux : anglais, publics, équipes et droits",
+    "summary": "Formules en anglais, adaptation au public, rôles et outils de l'équipe d'un créateur, avantage du décalage horaire, licences, marques, personnes célèbres et captures, conditions avec un client étranger.",
+    "sections": [
+     "Échanger en anglais",
+     "Adapter au public",
+     "Travailler avec l'équipe d'un créateur",
+     "Les droits sur les images",
+     "Vos conditions avec un client étranger",
+     "Exercice pratique : une mission internationale"
+    ],
+    "minutes": 5
+   },
+   {
+    "title": "Développer son activité : forfaits, études de cas et équipe",
+    "summary": "Trois voies, forfaits Essentiel, Croissance, Stratégie et identité de chaîne, pas de promesse de chiffres, études de cas avec accord du créateur, équipe et guide interne, évolution.",
+    "sections": [
+     "Les trois voies",
+     "Des forfaits et des contrats durables",
+     "Les études de cas chiffrées",
+     "Organiser une petite équipe",
+     "Préparer votre évolution",
+     "Exercice pratique : votre plan d'activité"
+    ],
+    "minutes": 5
+   }
+  ]
+ },
  "design-4-f": {
   "hours": 12,
   "description": "Le créateur de miniatures YouTube conçoit l'image d'aperçu qui donne envie de cliquer sur une vidéo, en restant fidèle à son contenu. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des créateurs YouTube, des marques et des médias, à Madagascar et à l'étranger, avec Canva et Photopea : rôle de la miniature, taux de clic, contraintes techniques, honnêteté et droits, composition, visages, texte, couleurs, identité de chaîne, détourage, modèles, versions à tester et suivi des résultats. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",

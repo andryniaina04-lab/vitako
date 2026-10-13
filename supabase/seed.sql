@@ -12,7 +12,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
   ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
   ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 12, true),
-  ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 18, false),
+  ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 17, true),
   ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 16, true),
   ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
   ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 18, true),
@@ -17020,6 +17020,503 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel niveau de prix pour un détourage de cheveux ?', '["Simple","Gratuit","Complexe, sur devis","Le même qu''un fond uni"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Que prévoir pour les grosses séries ?', '["Un acompte","Aucun paiement","Le paiement un an après","Le paiement en photos"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('design-3-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Mobile Money ou virement","Aucun","Uniquement PayPal","Uniquement des chèques étrangers"]'::jsonb, 0);
+
+-- design-4-a
+delete from public.exam_questions where course_id = 'design-4-a';
+delete from public.module_questions where course_id = 'design-4-a';
+delete from public.lessons where course_id = 'design-4-a' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-a', 0, 'Se spécialiser, lire les statistiques et auditer une chaîne', 'Six spécialités avancées et avantages depuis Madagascar, impressions, taux de clics, durée de visionnage et sources de trafic, audit de chaîne comme offre d''entrée, offres à plus forte valeur.', 'Faire une miniature lisible et attirante ouvre les premières commandes. Les créateurs de miniatures les mieux payés vont plus loin : ils comprennent les **chiffres de la chaîne**, travaillent l''idée de la vidéo avec le créateur et vendent un **système** de miniatures, pas des images isolées. Ce module vous aide à choisir votre spécialité et à proposer un audit de chaîne comme offre d''entrée.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comparer les 6 spécialités avancées du métier.
+> 2. Choisir la vôtre selon vos forces et le marché.
+> 3. Lire les statistiques utiles d''une chaîne.
+> 4. Mener un audit des miniatures d''une chaîne.
+> 5. Proposer des offres à plus forte valeur.
+
+## Les 6 spécialités avancées
+
+| N° | Spécialité | Ce que vous faites | Ce qu''il faut maîtriser |
+| --- | --- | --- | --- |
+| 1 | **Spécialiste d''une niche** | Miniatures pour un type de chaînes (jeux, éducation, cuisine, finance) | Codes visuels et public de la niche |
+| 2 | **Stratège titre et miniature** | Travailler l''idée, le titre et la miniature ensemble avant le tournage | Psychologie du clic, statistiques |
+| 3 | **Tests de miniatures** | Préparer des variantes et analyser les résultats | Méthode de test, lecture des données |
+| 4 | **Identité de chaîne** | Système visuel complet : couleurs, police, cadrages, bannière | Charte graphique, modèles |
+| 5 | **Direction photo** | Préparer la séance photo du créateur pour la miniature | Lumière, expressions, cadrage |
+| 6 | **Multi-plateformes** | Couvertures de podcasts, Shorts, diffusions en direct, formations | Formats et règles de chaque plateforme |
+
+> [!madagascar] Des spécialités où vous avez un avantage
+> - **Chaînes francophones** d''Afrique, de France, de Belgique et du Canada, qui cherchent des designers réguliers et réactifs.
+> - **Créateurs malgaches** qui grandissent sur YouTube et ont besoin d''une identité professionnelle.
+> - **Niches que vous connaissez** : cuisine, voyage, éducation, musique, foi, agriculture.
+
+## Les statistiques utiles
+
+> [!definition] Taux de clics des impressions (CTR)
+> Le pourcentage de personnes qui ont cliqué sur la vidéo après avoir vu sa miniature sur YouTube. Il dépend de la miniature et du titre, mais aussi du sujet, du public et de l''endroit où la vidéo est montrée.
+
+| Statistique | Ce qu''elle indique |
+| --- | --- |
+| **Impressions** | Combien de fois la miniature a été montrée |
+| **Taux de clics** | La force de la miniature et du titre pour ce public |
+| **Durée moyenne de visionnage** | Si la vidéo tient la promesse de la miniature |
+| **Sources de trafic** | Recherche, accueil, vidéos suggérées |
+| **Comparaison entre vidéos** | Quelles miniatures fonctionnent le mieux sur cette chaîne |
+
+> [!attention]
+> Un taux de clics ne se compare pas d''une chaîne à l''autre ni d''un sujet à l''autre. Comparez une vidéo avec les **autres vidéos de la même chaîne**, sur une même période. Et une miniature trompeuse peut augmenter les clics mais faire **chuter la durée de visionnage**, ce qui nuit à la chaîne.
+
+## L''audit de chaîne : votre offre d''entrée
+
+| Domaine | Questions |
+| --- | --- |
+| **Lisibilité** | Les miniatures se lisent-elles en petit, sur téléphone ? |
+| **Cohérence** | Reconnaît-on la chaîne au premier coup d''œil ? |
+| **Promesse** | La miniature montre-t-elle clairement le sujet ou l''émotion ? |
+| **Titre et miniature** | Se complètent-ils ou répètent-ils la même chose ? |
+| **Statistiques** | Quelles vidéos ont le meilleur et le moins bon taux de clics ? |
+| **Concurrence** | Comment se présentent les chaînes voisines ? |
+
+### Le rapport d''audit
+
+```
+Chaîne : Sakafo Gasy avec Lova (exemple)
+Constat principal : les miniatures répètent le titre en entier,
+le texte est illisible sur téléphone.
+
+Recommandations prioritaires
+1. 3 mots maximum sur la miniature, complémentaires du titre.
+2. Le plat en très gros plan avec le visage de Lova à droite.
+3. Une couleur de fond propre à chaque série (rapide, fête, budget).
+
+Proposition
+- Refaire les 10 miniatures des vidéos les plus vues.
+- Puis un forfait de 8 miniatures par mois, avec suivi des statistiques.
+```
+
+## Des offres à plus forte valeur
+
+| Offre | Pourquoi elle vaut plus |
+| --- | --- |
+| **Titre et miniature ensemble** | Vous travaillez l''idée qui fait cliquer, pas seulement l''image |
+| **Variantes pour tests** | Le créateur choisit sur des données, pas au hasard |
+| **Identité de chaîne** | Tous les visuels deviennent cohérents |
+| **Forfait mensuel avec suivi** | Le créateur n''a plus à penser à ses miniatures |
+
+> [!retenir]
+> - 6 spécialités : niche, stratégie titre et miniature, tests, identité, direction photo, multi-plateformes.
+> - Impressions, taux de clics, durée de visionnage, sources de trafic.
+> - Comparer uniquement au sein de la même chaîne ; pas de promesse trompeuse.
+> - L''audit de chaîne comme offre d''entrée.
+> - Vendre l''idée, les variantes, l''identité et le suivi.
+
+## Exercice pratique : votre positionnement
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez votre spécialité et votre niche, et justifiez votre choix.
+> 2. Choisissez une chaîne réelle et analysez ses 12 dernières miniatures.
+> 3. Rédigez un rapport d''audit avec 3 recommandations.
+> 4. Refaites 2 miniatures selon vos recommandations, avec l''avant et l''après.
+>
+> **À livrer** : votre positionnement, votre audit et vos 2 miniatures.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 0, 0, 'Avec quoi comparer le taux de clics d''une vidéo ?', '["Avec la météo","Jamais","Avec les autres vidéos de la même chaîne","Avec n''importe quelle chaîne"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 0, 1, 'Quel risque présente une miniature trompeuse ?', '["La durée de visionnage chute","Aucun","Plus d''abonnés garantis","Un meilleur référencement"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 0, 2, 'Quelle offre d''entrée est proposée ?', '["L''audit de chaîne","Rien","Un logo","Une vidéo gratuite"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-a', 1, 'Outils professionnels : Adobe Photoshop et Canva Pro', 'Sélection du sujet, masques, calques de réglage et lumière cohérente, modèles avec objets dynamiques, actions et lots, kit de marque, redimensionnement et modèles d''équipe, tests de miniatures et prudence avec l''IA.', 'Photopea et Canva gratuit suffisent pour débuter. Pour travailler vite, à un niveau professionnel et en équipe avec des créateurs, deux outils payants dominent le métier : **Adobe Photoshop** pour la retouche et le détourage de précision, et **Canva Pro** pour les modèles, le kit de marque et la collaboration. Ce module vous apprend à en tirer le meilleur.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Détourer et intégrer un visage avec Photoshop.
+> 2. Utiliser les calques de réglage et les objets dynamiques.
+> 3. Automatiser les tâches répétitives.
+> 4. Organiser le travail d''une chaîne dans Canva Pro.
+> 5. Utiliser l''outil de test de miniatures de YouTube.
+
+## Photoshop : détourer et intégrer
+
+| Fonction | Usage |
+| --- | --- |
+| **Sélection d''objet et du sujet** | Détourer un visage ou un objet en quelques secondes |
+| **Sélectionner et masquer** | Affiner les cheveux et les contours |
+| **Masques de fusion** | Effacer sans détruire, corriger à tout moment |
+| **Calques de réglage** | Luminosité, contraste, couleurs, sans abîmer la photo |
+| **Contour et ombre portée** | Détacher le sujet du fond |
+| **Remplissage génératif** | Agrandir un fond ou retirer un objet (selon les règles du client) |
+
+> [!astuce]
+> Un visage bien intégré est **éclairé comme le fond**. Si la lumière du décor vient de la gauche, le visage doit aussi être éclairé par la gauche. Corrigez avec des calques de réglage et un léger éclairage peint sur un calque séparé.
+
+## Les objets dynamiques et les modèles
+
+> [!definition] Objet dynamique
+> Un calque qui contient une image ou un groupe de calques, et qu''on peut agrandir, réduire ou remplacer sans perte de qualité. Dans un modèle de miniature, on remplace simplement le contenu de l''objet dynamique par la nouvelle photo.
+
+| Élément du modèle | Rôle |
+| --- | --- |
+| **Objet dynamique « Visage »** | Remplacer la photo du créateur |
+| **Objet dynamique « Sujet »** | Remplacer l''objet ou le plat montré |
+| **Calque de texte** | Police et style de la chaîne déjà réglés |
+| **Calques de réglage** | Contraste et couleurs propres à la chaîne |
+| **Repères** | Zone où apparaît la durée de la vidéo, à laisser libre |
+
+## Automatiser les tâches répétitives
+
+| Outil | Usage |
+| --- | --- |
+| **Actions** | Enregistrer une suite d''étapes (contraste, contour, netteté) et la rejouer en un clic |
+| **Traitement par lots** | Appliquer une action à plusieurs images |
+| **Exportation rapide** | Exporter en JPG ou PNG au bon poids |
+| **Bibliothèques** | Partager couleurs, logos et styles entre fichiers |
+
+## Canva Pro : travailler avec une chaîne
+
+| Fonction | Usage |
+| --- | --- |
+| **Kit de marque** | Couleurs, polices et logos de la chaîne |
+| **Suppression d''arrière-plan** | Détourage en un clic |
+| **Redimensionnement** | Décliner la miniature pour les Shorts, Instagram ou un podcast |
+| **Modèles d''équipe** | Le créateur ou son équipe peut faire des petites modifications |
+| **Commentaires** | Retours directement sur l''image |
+| **Dossiers partagés** | Toutes les miniatures de la chaîne au même endroit |
+
+> [!madagascar]
+> Photoshop et Canva Pro se paient par abonnement en dollars ou en euros avec une carte bancaire internationale. Commencez par **un seul** des deux : Canva Pro si vos clients veulent modifier eux-mêmes leurs miniatures, Photoshop si vous faites surtout du détourage et des effets avancés.
+
+## Tester des miniatures sur YouTube
+
+Selon la chaîne et les fonctions disponibles dans YouTube Studio, le créateur peut proposer **plusieurs miniatures** pour une même vidéo. YouTube les montre à différents spectateurs et indique celle qui obtient la meilleure part du temps de visionnage.
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Variantes vraiment différentes** | Changer l''idée (visage, objet, texte), pas seulement une couleur |
+| **Un test à la fois** | Comprendre ce qui fait la différence |
+| **Assez de vues** | Un test sur trop peu de vues n''est pas fiable |
+| **Noter les résultats** | Construire les règles propres à la chaîne |
+
+> [!attention]
+> Le remplissage génératif et les visages générés par IA posent des questions de **confiance** et parfois de règles de plateforme ou de contrat. Ne modifiez jamais l''apparence d''une personne réelle de façon trompeuse, et demandez l''accord du créateur avant d''utiliser l''IA sur ses photos.
+
+> [!retenir]
+> - Photoshop : sélection du sujet, masques, calques de réglage, lumière cohérente.
+> - Modèles avec objets dynamiques et zone de durée libre.
+> - Actions et traitements par lots pour gagner du temps.
+> - Canva Pro : kit de marque, redimensionnement, modèles d''équipe, commentaires.
+> - Tests de miniatures : variantes différentes, un test à la fois, résultats notés.
+
+## Exercice pratique : un modèle professionnel
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Avec une version d''essai, créez un modèle de miniature avec deux objets dynamiques.
+> 2. Enregistrez une action qui applique le traitement de la chaîne.
+> 3. Produisez 3 miniatures à partir du modèle en moins de 30 minutes chacune.
+> 4. Préparez 2 variantes vraiment différentes pour l''une d''elles.
+>
+> **À livrer** : le modèle, l''action, les miniatures et les variantes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 1, 0, 'Qu''est-ce qu''un objet dynamique ?', '["Une vidéo","Un filtre de couleur","Une police","Un calque qu''on remplace ou redimensionne sans perte de qualité"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 1, 1, 'À quoi sert une action Photoshop ?', '["Publier sur YouTube","Payer l''abonnement","Écrire le titre","Rejouer une suite d''étapes en un clic"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 1, 2, 'Que doivent être les variantes d''un test ?', '["Identiques","Floues","Différentes d''une seule couleur","Vraiment différentes dans l''idée"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-a', 2, 'Qualité et rapidité : avant le tournage, banque d''expressions, contrôle et règles', 'Concepts avec le titre avant le tournage, liste de photos, banque d''expressions, grille de contrôle avant livraison, délais fiables, plan de continuité et règles des plateformes.', 'Les créateurs publient souvent plusieurs vidéos par semaine. Ils ont besoin d''un designer qui livre vite, toujours au même niveau, sans erreurs ni retards. Ce module vous donne une méthode de production : travail en amont du tournage, banque d''expressions, contrôle de lisibilité, délais et respect des règles de YouTube.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Travailler l''idée de la miniature avant le tournage.
+> 2. Constituer une banque de photos et d''expressions.
+> 3. Contrôler chaque miniature avant livraison.
+> 4. Organiser des délais fiables.
+> 5. Respecter les règles des plateformes.
+
+## Penser la miniature avant le tournage
+
+| Moment | Action |
+| --- | --- |
+| **Idée de la vidéo** | Proposer 2 ou 3 concepts de miniature avec le titre |
+| **Préparation** | Liste des photos à prendre : expression, objet, décor |
+| **Tournage** | Le créateur prend les photos prévues, en bonne lumière |
+| **Montage** | Vous recevez les photos et une capture des meilleurs moments |
+| **Publication** | Miniature finale et variantes de test |
+
+> [!exemple] Liste de photos demandée à Lova
+> 1. Lova surprise, bouche ouverte, regard vers la caméra, fond uni.
+> 2. Le plat fini, vu de dessus, bien éclairé.
+> 3. Lova qui goûte, yeux fermés, sourire.
+> 4. Les ingrédients alignés sur la table.
+> Toutes les photos en format horizontal, téléphone posé, lumière de la fenêtre face à Lova.
+
+## La banque de photos et d''expressions
+
+| Contenu | Usage |
+| --- | --- |
+| **Expressions du créateur** | Surprise, joie, doute, colère amusée, réflexion |
+| **Poses** | Doigt pointé, bras croisés, mains ouvertes |
+| **Objets récurrents** | Produits, ustensiles, matériel |
+| **Fonds de la chaîne** | Décors et dégradés aux couleurs de la chaîne |
+
+> [!astuce]
+> Organisez une **séance photo d''une heure** avec le créateur pour remplir la banque d''expressions. Vous aurez toujours une photo de secours quand celles du tournage sont floues ou mal éclairées.
+
+## Le contrôle avant livraison
+
+| Point | Vérification |
+| --- | --- |
+| **Taille réduite** | Lisible à la taille d''une miniature sur téléphone |
+| **Texte** | 3 à 4 mots maximum, sans faute |
+| **Zone de durée** | Rien d''important en bas à droite |
+| **Contraste** | Le sujet se détache du fond, aussi en mode sombre |
+| **Promesse** | La miniature correspond vraiment au contenu de la vidéo |
+| **Format** | 1280 × 720 pixels, 16:9, poids accepté par YouTube |
+| **Nom du fichier** | Nom clair avec le titre de la vidéo et la version |
+
+## Des délais fiables
+
+| Étape | Délai type |
+| --- | --- |
+| Concepts de miniature | 24 heures après l''idée de vidéo |
+| Première version | 24 à 48 heures après réception des photos |
+| Corrections | 12 à 24 heures |
+| Urgence | Tarif majoré, si possible |
+
+> [!madagascar]
+> Prévenez vos clients de vos horaires et de votre plan en cas de **coupure** d''électricité ou de connexion : batterie, partage de connexion depuis le téléphone, fichiers synchronisés dans le cloud. Un créateur qui publie à heure fixe ne peut pas attendre.
+
+## Respecter les règles des plateformes
+
+| Règle | Exemple de ce qu''il faut éviter |
+| --- | --- |
+| **Pas de miniature trompeuse** | Montrer quelque chose qui n''est pas dans la vidéo |
+| **Pas de contenu choquant ou sexualisé** | Images violentes ou suggestives pour attirer les clics |
+| **Respect des droits** | Photo, logo ou personnage d''un tiers sans autorisation |
+| **Respect des personnes** | Se moquer d''une personne réelle ou la ridiculiser |
+
+> [!attention]
+> YouTube peut **retirer une miniature** ou sanctionner une chaîne qui ne respecte pas ses règles. Relisez régulièrement le règlement de la communauté et les règles sur les miniatures, car ils évoluent.
+
+> [!retenir]
+> - Concevoir la miniature avec le titre, avant le tournage.
+> - Une banque d''expressions et de fonds pour chaque chaîne.
+> - Contrôle : petite taille, texte, zone de durée, contraste, promesse, format.
+> - Délais clairs et plan de continuité.
+> - Pas de tromperie, de contenu choquant ni d''atteinte aux droits.
+
+## Exercice pratique : une semaine de production
+
+> [!exercice] Exercice pratique · 4 heures
+> 1. Pour 3 idées de vidéos, proposez 2 concepts de miniature chacune avec le titre.
+> 2. Rédigez la liste de photos à prendre pour l''une d''elles.
+> 3. Réalisez les 3 miniatures et passez-les dans votre grille de contrôle.
+> 4. Rédigez votre plan de continuité en cas de coupure.
+>
+> **À livrer** : vos concepts, votre liste de photos, vos miniatures avec la grille et votre plan.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 2, 0, 'Quand penser la miniature ?', '["Jamais","Un mois plus tard","Après la publication","Avant le tournage, avec le titre"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 2, 1, 'Quelle zone laisser libre ?', '["Tout le haut","Aucune","Le centre","En bas à droite, où apparaît la durée"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 2, 2, 'Quel format pour une miniature YouTube ?', '["Format vertical uniquement","1280 × 720 pixels en 16:9","500 × 500 pixels","Format A4"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-a', 3, 'Clients internationaux : anglais, publics, équipes et droits', 'Formules en anglais, adaptation au public, rôles et outils de l''équipe d''un créateur, avantage du décalage horaire, licences, marques, personnes célèbres et captures, conditions avec un client étranger.', 'Des milliers de créateurs francophones et anglophones cherchent des designers de miniatures fiables. Ce module vous prépare à travailler avec eux : échanges en anglais, compréhension de leur public, outils de travail en équipe, droits des images et conditions de paiement.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Échanger avec un créateur en anglais.
+> 2. Adapter vos miniatures à un public étranger.
+> 3. Travailler avec l''équipe d''un créateur.
+> 4. Respecter les droits sur les images.
+> 5. Négocier vos conditions avec un client étranger.
+
+## Échanger en anglais
+
+| Situation | Formule utile |
+| --- | --- |
+| Proposer des concepts | « Here are three thumbnail concepts. Concept B focuses on the reaction. » |
+| Demander des photos | « Could you send me a few shots of your face looking surprised, on a plain background? » |
+| Expliquer un choix | « I kept the text to three words so it reads well on mobile. » |
+| Livrer | « Final thumbnail attached, plus one variant for A/B testing. » |
+| Suivre | « How did the click-through rate compare with your last videos? » |
+
+> [!astuce]
+> Dans les miniatures pour un public anglophone, le texte doit être **naturel et très court**. Faites relire chaque mot par le client : une faute ou une expression maladroite se voit tout de suite.
+
+## Adapter au public
+
+| Public | Points d''attention |
+| --- | --- |
+| **France et Belgique** | Textes en français, codes de la niche locale |
+| **Canada francophone** | Expressions propres au Québec, souvent proposées par le créateur |
+| **Afrique francophone** | Personnages, décors et références locales |
+| **Public anglophone** | Textes en anglais, codes très établis dans certaines niches |
+| **International** | Peu ou pas de texte, l''image doit suffire |
+
+## Travailler avec l''équipe d''un créateur
+
+| Rôle dans l''équipe | Ce que vous échangez |
+| --- | --- |
+| **Créateur** | Idée de la vidéo, validation finale |
+| **Monteur** | Captures des meilleurs moments, délais |
+| **Gestionnaire de chaîne** | Calendrier de publication, statistiques |
+| **Responsable des partenariats** | Mentions obligatoires d''une vidéo sponsorisée |
+
+| Outil courant | Usage |
+| --- | --- |
+| **Messageries d''équipe** (Discord, Slack) | Échanges quotidiens |
+| **Tableaux de suivi** (Trello, Notion) | Une carte par vidéo, avec statut et date |
+| **Stockage partagé** (Google Drive, Dropbox) | Photos et fichiers sources |
+
+> [!madagascar]
+> Le faible décalage horaire avec l''Europe est un atout : vous pouvez livrer pendant la journée de travail du créateur. Pour l''Amérique du Nord, profitez du décalage : la miniature commandée le soir chez eux peut être prête à leur réveil.
+
+## Les droits sur les images
+
+| Élément | Règle |
+| --- | --- |
+| **Photos du créateur** | Utilisables pour sa chaîne selon votre accord |
+| **Photos de banques d''images** | Vérifier la licence (usage commercial autorisé) |
+| **Logos et produits de marques** | Possible pour parler du produit, sans laisser croire à un partenariat inexistant |
+| **Personnes célèbres** | Prudence : pas de fausse citation ni de faux soutien |
+| **Captures d''autres vidéos ou films** | Risque de réclamation de droits d''auteur : demander l''avis du créateur |
+
+> [!attention]
+> Un visage de personne célèbre sur une miniature peut laisser croire qu''elle **recommande** ou participe à la vidéo. C''est trompeur et peut entraîner des plaintes. N''utilisez l''image d''une personne réelle que si la vidéo parle réellement d''elle, sans lui prêter des propos.
+
+## Vos conditions avec un client étranger
+
+| Point | Exemple |
+| --- | --- |
+| **Prix par miniature ou forfait** | Forfait mensuel de 8 miniatures avec variantes |
+| **Délais** | 48 heures après réception des photos |
+| **Corrections** | 2 séries incluses |
+| **Fichiers sources** | Inclus ou facturés à part |
+| **Paiement** | Forfait payé d''avance, chaque mois |
+| **Portfolio** | Droit de montrer les miniatures après publication |
+
+> [!retenir]
+> - Formules en anglais pour proposer, demander, expliquer, livrer et suivre.
+> - Adapter les textes et les codes au public de la chaîne.
+> - Travailler avec le monteur, le gestionnaire et les outils de l''équipe.
+> - Licences des photos, marques, personnes célèbres et captures : prudence.
+> - Forfait payé d''avance, délais, corrections, fichiers sources et portfolio.
+
+## Exercice pratique : une mission internationale
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Rédigez en anglais un message de présentation à un créateur anglophone.
+> 2. Réalisez une miniature pour un public anglophone et une pour un public francophone sur le même sujet.
+> 3. Créez un tableau de suivi de 8 vidéos dans un outil gratuit.
+> 4. Rédigez vos conditions en 6 points.
+>
+> **À livrer** : votre message, vos 2 miniatures, votre tableau et vos conditions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 3, 0, 'Comment doit être le texte pour un public anglophone ?', '["Absent obligatoirement","Naturel, très court et relu par le client","Long et détaillé","Traduit mot à mot sans relecture"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 3, 1, 'Pourquoi être prudent avec un visage célèbre ?', '["Cela peut laisser croire à une recommandation trompeuse","Il coûte cher","Ce n''est jamais un problème","Il est trop petit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 3, 2, 'Comment se paie un forfait mensuel ?', '["Après un an","D''avance, chaque mois","Jamais","À la fin de la chaîne"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('design-4-a', 4, 'Développer son activité : forfaits, études de cas et équipe', 'Trois voies, forfaits Essentiel, Croissance, Stratégie et identité de chaîne, pas de promesse de chiffres, études de cas avec accord du créateur, équipe et guide interne, évolution.', 'Un créateur de miniatures expérimenté peut vivre de quelques clients réguliers bien choisis, puis élargir son offre vers la stratégie de chaîne ou monter une petite équipe. Ce dernier module vous aide à construire une activité stable et à préparer votre évolution.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir entre trois voies de développement.
+> 2. Construire des forfaits et des contrats durables.
+> 3. Rédiger des études de cas chiffrées.
+> 4. Organiser une petite équipe.
+> 5. Préparer votre évolution.
+
+## Les trois voies
+
+| Voie | Principe | Pour qui |
+| --- | --- | --- |
+| **Designer spécialisé** | Quelques chaînes régulières dans une niche | Ceux qui aiment créer chaque jour |
+| **Stratège de chaîne** | Idées, titres, miniatures et analyse des statistiques | Ceux qui aiment les chiffres et la stratégie |
+| **Petit studio** | Plusieurs designers pour de nombreuses chaînes | Ceux qui aiment organiser |
+
+## Des forfaits et des contrats durables
+
+| Forfait | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Essentiel** | 4 miniatures par mois, 2 séries de corrections | 200 000 Ar par mois |
+| **Croissance** | 8 miniatures, 1 variante de test chacune, suivi des résultats | 450 000 Ar par mois |
+| **Stratégie** | Idées, titres, miniatures, variantes et rapport mensuel | 900 000 Ar par mois |
+| **Identité de chaîne** | Bannière, modèles, charte, 10 miniatures refaites | 700 000 Ar |
+
+*(Montants donnés en exemple. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
+
+> [!attention]
+> Ne promettez **jamais** un nombre de vues ou un taux de clics précis : le résultat dépend aussi du sujet, de la vidéo et de l''algorithme. Promettez une méthode, une qualité et un suivi, et montrez les résultats obtenus.
+
+## Les études de cas chiffrées
+
+> [!exemple] Étude de cas courte
+> **Chaîne** : Sakafo Gasy avec Lova. **Besoin** : des miniatures plus lisibles et une identité reconnaissable. **Réalisation** : charte, modèles, banque d''expressions, 8 miniatures par mois avec variantes. **Résultat** : sur 3 mois, le taux de clics moyen est passé de 3,1 % à 5,4 % sur les nouvelles vidéos, pour une durée de visionnage stable.
+
+Une bonne étude de cas présente l''avant et l''après en images, la méthode, les chiffres sur une période comparable et un témoignage du créateur, **avec son accord**.
+
+## Organiser une petite équipe
+
+| Rôle | Mission |
+| --- | --- |
+| **Designers juniors** | Production à partir des modèles et des concepts validés |
+| **Détoureur et retoucheur** | Préparation des photos |
+| **Coordinateur** | Calendrier, relation avec les équipes des créateurs |
+| **Vous** | Concepts, contrôle qualité, stratégie, clients principaux |
+
+> [!madagascar]
+> Former de jeunes designers malgaches à votre méthode (modèles, grille de contrôle, délais) permet de servir davantage de chaînes. Gardez le **contrôle final** de chaque miniature au début, puis confiez-le progressivement aux plus fiables.
+
+> [!astuce]
+> Rédigez un **guide interne** : règles de lisibilité, modèles par chaîne, délais, formules d''échange, grille de contrôle. C''est ce qui permet à un nouveau designer de produire au bon niveau dès sa première semaine.
+
+## Préparer votre évolution
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Stratège YouTube** | Analyse approfondie des statistiques, conseil sur les sujets |
+| **Directeur artistique de chaînes** | Encadrement d''équipes, identités complètes |
+| **Monteur vidéo** | Voir la formation Monteur vidéo |
+| **Motion designer** | Voir la formation Motion designer |
+| **Créateur de contenu** | Votre propre chaîne sur le design de miniatures |
+
+> [!retenir]
+> - Designer spécialisé, stratège de chaîne ou petit studio.
+> - Forfaits mensuels, sans promesse de chiffres.
+> - Études de cas avec avant et après, chiffres comparables et accord du créateur.
+> - Une équipe formée à une méthode écrite, avec contrôle final.
+> - Des évolutions vers la stratégie, la direction artistique ou la vidéo.
+
+## Exercice pratique : votre plan d''activité
+
+> [!exercice] Exercice pratique · 2 heures 30
+> 1. Choisissez votre voie et justifiez-la.
+> 2. Construisez 3 forfaits avec leur contenu et leur prix.
+> 3. Rédigez une étude de cas à partir de votre meilleur projet (réel ou d''exercice).
+> 4. Rédigez la première page de votre guide interne.
+>
+> **À livrer** : votre plan, vos forfaits, votre étude de cas et votre guide.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 4, 0, 'Que ne faut-il jamais promettre ?', '["Un suivi","Des délais","Un nombre de vues ou un taux de clics précis","Une méthode"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 4, 1, 'Que faut-il pour publier le témoignage d''un créateur ?', '["Un logiciel payant","Un million de vues","Son accord","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('design-4-a', 4, 2, 'À quoi sert un guide interne ?', '["Décorer le bureau","Remplacer les clients","Permettre à un nouveau designer de produire au bon niveau vite","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que fait un stratège titre et miniature ?', '["Il monte la vidéo","Il écrit les sous-titres","Il travaille l''idée, le titre et la miniature avant le tournage","Il gère la publicité"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que mesure le taux de clics des impressions ?', '["Le nombre d''abonnés","Le pourcentage de personnes qui cliquent après avoir vu la miniature","Le revenu","La durée de la vidéo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Qu''indique la durée moyenne de visionnage ?', '["Si la vidéo tient la promesse de la miniature","Le prix","La langue","La taille du fichier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que vérifier en premier dans un audit ?', '["La couleur du bureau","La lisibilité sur téléphone","Le prix du micro","Le nom du monteur"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Combien de mots sur une miniature ?', '["20","Au moins 10","3 à 4 maximum","Le titre entier"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que doit compléter le texte de la miniature ?', '["Rien","Les commentaires","Le titre, sans le répéter","La description"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Comment intégrer un visage de façon crédible ?', '["Le réduire au maximum","Le flouter","Le mettre en noir et blanc","L''éclairer comme le fond"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Pourquoi utiliser des masques de fusion ?', '["Effacer sans détruire et corriger à tout moment","Supprimer la photo","Compresser","Publier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'À quoi sert le kit de marque de Canva Pro ?', '["Héberger la chaîne","Monter des vidéos","Payer les clients","Garder couleurs, polices et logos de la chaîne"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Quel outil choisir si le client veut modifier lui-même ses miniatures ?', '["Datadog","Nessus","Audacity","Canva Pro"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que faire avant d''utiliser l''IA sur les photos d''un créateur ?', '["Demander son accord et ne rien modifier de trompeur","Changer son visage","Le faire en secret","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Combien de choses changer à la fois dans un test ?', '["Au hasard","Une seule idée","Tout","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que demander au créateur avant le tournage ?', '["Rien","Son mot de passe","Son salaire","Une liste de photos précises à prendre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Pourquoi une banque d''expressions ?', '["Remplacer le tournage","Avoir une photo de secours de qualité","Rien","Décorer"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que vérifier pour le contraste ?', '["La couleur du logo seulement","Que le sujet se détache, aussi en mode sombre","Rien","Le volume"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que prévoir en cas de coupure ?', '["Batterie, connexion de secours et fichiers synchronisés","Annuler les clients","Attendre","Rien"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que risque une miniature contraire aux règles ?', '["Une récompense","Être retirée ou faire sanctionner la chaîne","Plus de vues garanties","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Pour un public international, que faire ?', '["Peu ou pas de texte, l''image doit suffire","Rien","Un long titre","Beaucoup de texte en malgache"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que demander au monteur ?', '["Sa facture","Son logo","Rien","Des captures des meilleurs moments"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Quel avantage du décalage avec l''Amérique du Nord ?', '["Des prix plus bas","Moins de travail","Aucun","Une commande du soir prête à leur réveil"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que vérifier pour une photo de banque d''images ?', '["Son poids","Que la licence autorise l''usage commercial","Sa couleur","Rien"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que contient le forfait Croissance ?', '["Le montage des vidéos","Une seule miniature","8 miniatures avec une variante de test et un suivi","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que montrer dans une étude de cas ?', '["Avant et après, méthode et chiffres comparables","Rien","Seulement le prix","Des chiffres inventés"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Que garder au début en dirigeant une équipe ?', '["Le montage","Seulement la facturation","Rien","Le contrôle final de chaque miniature"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('design-4-a', 'Vers quoi peut évoluer un créateur de miniatures ?', '["Rien","Stratège YouTube ou directeur artistique de chaînes","Comptable uniquement","Mécanicien"]'::jsonb, 1);
 
 -- design-4-f
 delete from public.exam_questions where course_id = 'design-4-f';

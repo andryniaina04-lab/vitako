@@ -1,0 +1,97 @@
+{
+  "id": "design-4-a",
+  "hours": 17,
+  "description": "Ce niveau Avancé fait du créateur de miniatures un partenaire de la croissance des chaînes : spécialité (niche, stratégie titre et miniature, tests, identité de chaîne, direction photo, multi-plateformes), statistiques, audit de chaîne, outils payants (Adobe Photoshop et Canva Pro), objets dynamiques, actions, tests de miniatures, travail en amont du tournage, banque d'expressions, contrôle avant livraison, règles des plateformes, clients étrangers, droits sur les images, puis forfaits, études de cas et équipe. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Choisir une spécialité et lire les statistiques utiles d'une chaîne",
+    "Réaliser un audit de chaîne et proposer des offres à forte valeur",
+    "Produire vite et bien avec Photoshop et Canva Pro, modèles et automatisations",
+    "Organiser une production fiable qui respecte les règles des plateformes",
+    "Travailler avec des créateurs étrangers en respectant les droits sur les images",
+    "Développer son activité avec des forfaits, des études de cas et une équipe"
+  ],
+  "modules": [
+    {
+      "title": "Se spécialiser, lire les statistiques et auditer une chaîne",
+      "summary": "Six spécialités avancées et avantages depuis Madagascar, impressions, taux de clics, durée de visionnage et sources de trafic, audit de chaîne comme offre d'entrée, offres à plus forte valeur.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Avec quoi comparer le taux de clics d'une vidéo ?", "options": ["Avec les autres vidéos de la même chaîne", "Avec n'importe quelle chaîne", "Avec la météo", "Jamais"], "correct": 0 },
+        { "q": "Quel risque présente une miniature trompeuse ?", "options": ["La durée de visionnage chute", "Aucun", "Plus d'abonnés garantis", "Un meilleur référencement"], "correct": 0 },
+        { "q": "Quelle offre d'entrée est proposée ?", "options": ["L'audit de chaîne", "Une vidéo gratuite", "Un logo", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Outils professionnels : Adobe Photoshop et Canva Pro",
+      "summary": "Sélection du sujet, masques, calques de réglage et lumière cohérente, modèles avec objets dynamiques, actions et lots, kit de marque, redimensionnement et modèles d'équipe, tests de miniatures et prudence avec l'IA.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'un objet dynamique ?", "options": ["Un calque qu'on remplace ou redimensionne sans perte de qualité", "Une vidéo", "Un filtre de couleur", "Une police"], "correct": 0 },
+        { "q": "À quoi sert une action Photoshop ?", "options": ["Rejouer une suite d'étapes en un clic", "Payer l'abonnement", "Publier sur YouTube", "Écrire le titre"], "correct": 0 },
+        { "q": "Que doivent être les variantes d'un test ?", "options": ["Vraiment différentes dans l'idée", "Identiques", "Différentes d'une seule couleur", "Floues"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Qualité et rapidité : avant le tournage, banque d'expressions, contrôle et règles",
+      "summary": "Concepts avec le titre avant le tournage, liste de photos, banque d'expressions, grille de contrôle avant livraison, délais fiables, plan de continuité et règles des plateformes.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quand penser la miniature ?", "options": ["Avant le tournage, avec le titre", "Après la publication", "Jamais", "Un mois plus tard"], "correct": 0 },
+        { "q": "Quelle zone laisser libre ?", "options": ["En bas à droite, où apparaît la durée", "Le centre", "Tout le haut", "Aucune"], "correct": 0 },
+        { "q": "Quel format pour une miniature YouTube ?", "options": ["1280 × 720 pixels en 16:9", "500 × 500 pixels", "Format A4", "Format vertical uniquement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Clients internationaux : anglais, publics, équipes et droits",
+      "summary": "Formules en anglais, adaptation au public, rôles et outils de l'équipe d'un créateur, avantage du décalage horaire, licences, marques, personnes célèbres et captures, conditions avec un client étranger.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment doit être le texte pour un public anglophone ?", "options": ["Naturel, très court et relu par le client", "Long et détaillé", "Traduit mot à mot sans relecture", "Absent obligatoirement"], "correct": 0 },
+        { "q": "Pourquoi être prudent avec un visage célèbre ?", "options": ["Cela peut laisser croire à une recommandation trompeuse", "Il est trop petit", "Il coûte cher", "Ce n'est jamais un problème"], "correct": 0 },
+        { "q": "Comment se paie un forfait mensuel ?", "options": ["D'avance, chaque mois", "Après un an", "Jamais", "À la fin de la chaîne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Développer son activité : forfaits, études de cas et équipe",
+      "summary": "Trois voies, forfaits Essentiel, Croissance, Stratégie et identité de chaîne, pas de promesse de chiffres, études de cas avec accord du créateur, équipe et guide interne, évolution.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que ne faut-il jamais promettre ?", "options": ["Un nombre de vues ou un taux de clics précis", "Des délais", "Une méthode", "Un suivi"], "correct": 0 },
+        { "q": "Que faut-il pour publier le témoignage d'un créateur ?", "options": ["Son accord", "Rien", "Un logiciel payant", "Un million de vues"], "correct": 0 },
+        { "q": "À quoi sert un guide interne ?", "options": ["Permettre à un nouveau designer de produire au bon niveau vite", "Décorer le bureau", "Remplacer les clients", "Rien"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait un stratège titre et miniature ?", "options": ["Il travaille l'idée, le titre et la miniature avant le tournage", "Il monte la vidéo", "Il gère la publicité", "Il écrit les sous-titres"], "correct": 0 },
+    { "q": "Que mesure le taux de clics des impressions ?", "options": ["Le pourcentage de personnes qui cliquent après avoir vu la miniature", "La durée de la vidéo", "Le nombre d'abonnés", "Le revenu"], "correct": 0 },
+    { "q": "Qu'indique la durée moyenne de visionnage ?", "options": ["Si la vidéo tient la promesse de la miniature", "La taille du fichier", "Le prix", "La langue"], "correct": 0 },
+    { "q": "Que vérifier en premier dans un audit ?", "options": ["La lisibilité sur téléphone", "La couleur du bureau", "Le nom du monteur", "Le prix du micro"], "correct": 0 },
+    { "q": "Combien de mots sur une miniature ?", "options": ["3 à 4 maximum", "20", "Le titre entier", "Au moins 10"], "correct": 0 },
+    { "q": "Que doit compléter le texte de la miniature ?", "options": ["Le titre, sans le répéter", "La description", "Les commentaires", "Rien"], "correct": 0 },
+    { "q": "Comment intégrer un visage de façon crédible ?", "options": ["L'éclairer comme le fond", "Le mettre en noir et blanc", "Le flouter", "Le réduire au maximum"], "correct": 0 },
+    { "q": "Pourquoi utiliser des masques de fusion ?", "options": ["Effacer sans détruire et corriger à tout moment", "Supprimer la photo", "Compresser", "Publier"], "correct": 0 },
+    { "q": "À quoi sert le kit de marque de Canva Pro ?", "options": ["Garder couleurs, polices et logos de la chaîne", "Monter des vidéos", "Payer les clients", "Héberger la chaîne"], "correct": 0 },
+    { "q": "Quel outil choisir si le client veut modifier lui-même ses miniatures ?", "options": ["Canva Pro", "Nessus", "Datadog", "Audacity"], "correct": 0 },
+    { "q": "Que faire avant d'utiliser l'IA sur les photos d'un créateur ?", "options": ["Demander son accord et ne rien modifier de trompeur", "Rien", "Le faire en secret", "Changer son visage"], "correct": 0 },
+    { "q": "Combien de choses changer à la fois dans un test ?", "options": ["Une seule idée", "Tout", "Rien", "Au hasard"], "correct": 0 },
+    { "q": "Que demander au créateur avant le tournage ?", "options": ["Une liste de photos précises à prendre", "Son mot de passe", "Son salaire", "Rien"], "correct": 0 },
+    { "q": "Pourquoi une banque d'expressions ?", "options": ["Avoir une photo de secours de qualité", "Remplacer le tournage", "Décorer", "Rien"], "correct": 0 },
+    { "q": "Que vérifier pour le contraste ?", "options": ["Que le sujet se détache, aussi en mode sombre", "La couleur du logo seulement", "Rien", "Le volume"], "correct": 0 },
+    { "q": "Que prévoir en cas de coupure ?", "options": ["Batterie, connexion de secours et fichiers synchronisés", "Rien", "Annuler les clients", "Attendre"], "correct": 0 },
+    { "q": "Que risque une miniature contraire aux règles ?", "options": ["Être retirée ou faire sanctionner la chaîne", "Rien", "Plus de vues garanties", "Une récompense"], "correct": 0 },
+    { "q": "Pour un public international, que faire ?", "options": ["Peu ou pas de texte, l'image doit suffire", "Beaucoup de texte en malgache", "Un long titre", "Rien"], "correct": 0 },
+    { "q": "Que demander au monteur ?", "options": ["Des captures des meilleurs moments", "Son logo", "Sa facture", "Rien"], "correct": 0 },
+    { "q": "Quel avantage du décalage avec l'Amérique du Nord ?", "options": ["Une commande du soir prête à leur réveil", "Aucun", "Des prix plus bas", "Moins de travail"], "correct": 0 },
+    { "q": "Que vérifier pour une photo de banque d'images ?", "options": ["Que la licence autorise l'usage commercial", "Sa couleur", "Rien", "Son poids"], "correct": 0 },
+    { "q": "Que contient le forfait Croissance ?", "options": ["8 miniatures avec une variante de test et un suivi", "Une seule miniature", "Le montage des vidéos", "Rien"], "correct": 0 },
+    { "q": "Que montrer dans une étude de cas ?", "options": ["Avant et après, méthode et chiffres comparables", "Seulement le prix", "Des chiffres inventés", "Rien"], "correct": 0 },
+    { "q": "Que garder au début en dirigeant une équipe ?", "options": ["Le contrôle final de chaque miniature", "Rien", "Seulement la facturation", "Le montage"], "correct": 0 },
+    { "q": "Vers quoi peut évoluer un créateur de miniatures ?", "options": ["Stratège YouTube ou directeur artistique de chaînes", "Comptable uniquement", "Mécanicien", "Rien"], "correct": 0 }
+  ]
+}
