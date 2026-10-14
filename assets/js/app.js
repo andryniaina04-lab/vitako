@@ -327,8 +327,11 @@ function heroMedia() {
     const vm = v.match(/vimeo\.com\/(?:video\/)?(\d+)/);
     if (yt) return `<div class="lp-video"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&mute=1&loop=1&playlist=${yt[1]}&controls=0&rel=0&playsinline=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
     if (vm) return `<div class="lp-video"><iframe src="https://player.vimeo.com/video/${vm[1]}?autoplay=1&muted=1&loop=1&background=1" title="Présentation de Vitako" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
-    return `<div class="lp-video"><video id="hero-video" src="${esc(v)}"${CFG.heroPoster ? ` poster="${esc(CFG.heroPoster)}"` : ''} muted loop playsinline preload="none" controls controlslist="nodownload noplaybackrate" disablepictureinpicture aria-label="Vidéo de présentation de Vitako"></video>
-      <button class="lp-sound" type="button" data-act="hero-sound" aria-pressed="false">${I.soundOff}<span>Activer le son</span></button></div>`;
+    const hd = String(CFG.heroVideoHD || '').trim();
+    const useHd = hd && heroQuality() === '1080';
+    const qBtn = hd ? `<button class="lp-quality" type="button" data-act="hero-quality" aria-label="Qualité de la vidéo">${useHd ? '1080p' : '720p'}</button>` : '';
+    return `<div class="lp-video"><video id="hero-video" src="${esc(useHd ? hd : v)}"${CFG.heroPoster ? ` poster="${esc(CFG.heroPoster)}"` : ''} muted loop playsinline preload="none" controls controlslist="nodownload noplaybackrate" disablepictureinpicture aria-label="Vidéo de présentation de Vitako"></video>
+      <button class="lp-sound" type="button" data-act="hero-sound" aria-pressed="false">${I.soundOff}<span>Activer le son</span></button>${qBtn}</div>`;
   }
   return `<div class="lp-art" aria-hidden="true">
     <div class="lp-glass g1"><span class="g-ic">${DOM_ICONS.design}</span><div><b>Graphiste – Fondamentaux</b><small>Module 3 sur 5</small><i class="g-bar"><i style="width:60%"></i></i></div></div>
@@ -1108,6 +1111,8 @@ function reviewBlock() {
 }
 // Vidéo de l'accueil : lecture automatique sans son sur grand écran, et jamais en mode « économie de données »
 // (sur téléphone, la vidéo ne se charge que si la personne appuie sur lecture).
+const HQ_KEY = 'vitako_video_quality';
+function heroQuality() { try { return localStorage.getItem(HQ_KEY) || '720'; } catch (e) { return '720'; } }
 function startHeroVideo() {
   const v = document.getElementById('hero-video');
   if (!v) return;
@@ -1190,6 +1195,20 @@ document.addEventListener('click', async (e) => {
   }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'hero-quality') {
+    const v = document.getElementById('hero-video');
+    if (v && CFG.heroVideoHD) {
+      const q = heroQuality() === '1080' ? '720' : '1080';
+      try { localStorage.setItem(HQ_KEY, q); } catch (err) {}
+      const time = v.currentTime, playing = !v.paused;
+      v.src = q === '1080' ? CFG.heroVideoHD : CFG.heroVideo;
+      v.addEventListener('loadedmetadata', () => { v.currentTime = time; if (playing) v.play().catch(() => {}); }, { once: true });
+      v.load();
+      t.textContent = `${q}p`;
+      toast(q === '1080' ? 'Vidéo en 1080p (meilleure qualité, 12,7 Mo).' : 'Vidéo en 720p (plus légère, 6,5 Mo).');
+    }
+    return;
+  }
   if (t.dataset.act === 'hero-sound') {
     const v = document.getElementById('hero-video');
     if (v) {

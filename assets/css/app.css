@@ -748,3 +748,6 @@ main:has(> .dsh-hero:first-child){padding-top:28px}
 .lp-video video{background:#04281C}
 .lp-sound{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:999px;background:rgba(4,40,28,.72);color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .lp-sound:hover{background:rgba(4,40,28,.9)}
+.lp-quality{position:absolute;top:12px;left:12px;padding:7px 11px;border:0;border-radius:999px;background:rgba(4,40,28,.72);color:#fff;font-weight:700;font-size:.8rem;font-family:var(--mono);cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lp-quality:hover{background:rgba(4,40,28,.9)}
+.lp-quality::before{content:"HD ";opacity:.7}
