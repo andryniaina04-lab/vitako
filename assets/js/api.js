@@ -48,6 +48,11 @@ const MESSAGES = {
   expired: 'Ce passage a expiré (plus de 3 heures). Recommencez l\'examen.',
   no_certificate: 'Vous pourrez donner votre avis après avoir obtenu l\'attestation de cette formation.',
   bad_rating: 'Choisissez une note de 1 à 5 étoiles.',
+  bad_category: 'Choisissez le type de remarque.',
+  message_too_short: 'Votre message est trop court : écrivez au moins 10 caractères.',
+  message_too_long: 'Votre message est trop long : 2 000 caractères au maximum.',
+  bad_email: 'Cette adresse e-mail ne semble pas valide.',
+  too_many_feedback: 'Vous avez envoyé plusieurs remarques récemment. Réessayez dans une heure.',
   timeout: 'La connexion prend trop de temps. Vérifiez votre connexion Internet, fermez les autres onglets Vitako, puis réessayez.',
   'Invalid login credentials': 'E-mail ou mot de passe incorrect.',
   'Email not confirmed': 'Confirmez d\'abord votre adresse : ouvrez le lien reçu par e-mail.',
@@ -203,6 +208,18 @@ export async function adminReviews() {
   need();
   return run(sb.rpc('admin_reviews'));
 }
+export async function submitFeedback(category, message, email, page) {
+  need();
+  return run(sb.rpc('submit_feedback', { p_category: category, p_message: message, p_email: email || null, p_page: page || null }));
+}
+export async function adminFeedback() {
+  need();
+  return run(sb.rpc('admin_feedback'));
+}
+export async function adminFeedbackMark(id, read) {
+  need();
+  return run(sb.rpc('admin_feedback_mark', { p_id: id, p_read: read }));
+}
 export async function adminStats() {
   need();
   return run(sb.rpc('admin_stats'));
@@ -215,5 +232,6 @@ export async function adminCounts() {
   ]);
   if (pending.error) throw new ApiError(pending.error);
   if (active.error) throw new ApiError(active.error);
-  return { pending: pending.count || 0, active: active.count || 0 };
+  const fb = await sb.rpc('admin_feedback_new_count');
+  return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0) };
 }

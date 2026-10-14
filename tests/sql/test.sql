@@ -232,3 +232,23 @@ reset role;
 -- E-mail à l'étudiant après la décision de l'administrateur (sans clé Resend : rien n'est envoyé, rien ne bloque)
 select exists (select 1 from pg_trigger where tgname = 'payments_decision_email');
 select public.mail_from() = 'Vitako <onboarding@resend.dev>';
+
+-- Remarques
+set role anon;
+select public.submit_feedback('site', 'Le site est très clair, merci !', 'visiteur@exemple.mg', '/') is not null;
+select t.err('select public.submit_feedback(''site'', ''court'')', 'message_too_short');
+select t.err('select public.submit_feedback(''nimporte'', ''Un message assez long'')', 'bad_category');
+select t.err('select public.submit_feedback(''site'', ''Un message assez long'', ''pas-un-email'')', 'bad_email');
+select t.err('select * from public.feedback', 'permission denied');
+select t.err('select public.admin_feedback()', 'permission denied');
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'aaaaaaaa-0000-0000-0000-000000000001';
+select public.submit_feedback('bug', 'Le bouton examen ne répond pas sur mon téléphone.') is not null;
+select t.err('select public.admin_feedback()', 'forbidden');
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000000000009';
+select jsonb_array_length(public.admin_feedback()) = 2 and public.admin_feedback_new_count() = 2;
+select (public.admin_feedback()->0->>'full_name') = 'Fanja Rakoto' and (public.admin_feedback()->0->>'email') is not null;
+select public.admin_feedback_mark((public.admin_feedback()->0->>'id')::uuid, true);
+select public.admin_feedback_new_count() = 1;
+reset role;

@@ -127,6 +127,27 @@
       });
       return { data: list, error: null };
     },
+    submit_feedback({ p_category, p_message, p_email, p_page }) {
+      if (!['site', 'bug', 'formation', 'autre'].includes(p_category)) return err('bad_category');
+      const msg = String(p_message || '').trim();
+      if (msg.length < 10) return err('message_too_short');
+      db.feedback ||= [];
+      const row = { id: uuid(), user_id: me() || null, email: p_email || (profile() || {}).email || null, category: p_category, message: msg, page: p_page || null, status: 'new', created_at: now() };
+      db.feedback.push(row); save(); return { data: row.id, error: null };
+    },
+    admin_feedback() {
+      if (!isAdmin()) return err('forbidden');
+      return { data: (db.feedback || []).slice().reverse().map((f) => ({ ...f, full_name: (db.profiles.find((p) => p.id === f.user_id) || {}).full_name || null, has_account: !!f.user_id })), error: null };
+    },
+    admin_feedback_mark({ p_id, p_read }) {
+      if (!isAdmin()) return err('forbidden');
+      const f = (db.feedback || []).find((x) => x.id === p_id); if (!f) return err('not_found');
+      f.status = p_read ? 'read' : 'new'; save(); return { data: null, error: null };
+    },
+    admin_feedback_new_count() {
+      if (!isAdmin()) return err('forbidden');
+      return { data: (db.feedback || []).filter((f) => f.status === 'new').length, error: null };
+    },
     admin_stats() {
       if (!isAdmin()) return err('forbidden');
       const st = db.profiles.filter((p) => !p.is_admin);

@@ -19,7 +19,7 @@ const S = {
   reviews: [],
   attempts: [],
   payments: [],
-  admin: { pending: 0, active: 0 },
+  admin: { pending: 0, active: 0, feedback: 0 },
   price: CFG.price,
   promoPrice: CFG.promoPrice || 0,
   promoUntil: CFG.promoUntil || '',
@@ -180,11 +180,11 @@ function topbar() {
   let items = item('#/', 'Accueil') + item('#/formations', 'Toutes les formations');
   if (S.session) {
     items += item('#/mon-espace', 'Mon espace');
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
-  items += item('#/verifier', 'Vérifier une attestation');
+  items += item('#/verifier', 'Vérifier une attestation') + item('#/remarque', 'Envoyer une remarque');
   const who = S.session
     ? `<div class="menu-who"><b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
         ${S.profile && hasAccess() && !isAdmin() ? `<span class="pill">Abonné · ${daysLeft()} j restants</span>` : ''}</div>`
@@ -777,6 +777,43 @@ function diplomaHtml(cert, t) {
   </div></div>`;
 }
 
+// Remarques : formulaire ouvert à tous (menu « Envoyer une remarque »)
+const FB_CATS = [['site', 'Amélioration du site'], ['bug', 'Problème technique'], ['formation', 'Formation ou contenu'], ['autre', 'Autre']];
+function feedbackPage() {
+  if (!api.configured) return needConfig();
+  return `${pageHead('Votre avis compte', 'Envoyer une remarque')}
+  <form id="feedback-form" class="narrow panel stack" style="gap:14px">
+    <p class="muted">Une idée pour améliorer le site, un problème rencontré, une formation à ajouter ? Écrivez-nous : chaque remarque est lue par l'équipe Vitako.</p>
+    <div class="f"><label class="l" for="fb-cat">Type de remarque</label>
+      <select class="in" id="fb-cat" required>${FB_CATS.map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select></div>
+    <div class="f"><label class="l" for="fb-msg">Votre message</label>
+      <textarea class="in" id="fb-msg" rows="6" minlength="10" maxlength="2000" required placeholder="Décrivez votre idée ou le problème, avec la page concernée si possible."></textarea></div>
+    ${S.session ? `<p class="muted" style="font-size:.88rem">Envoyé avec votre compte (${esc(S.session.user.email || '')}), pour que nous puissions vous répondre.</p>`
+      : '<div class="f"><label class="l" for="fb-email">Votre e-mail <span class="muted">(facultatif, pour recevoir une réponse)</span></label><input class="in" id="fb-email" type="email" autocomplete="email" placeholder="vous@exemple.mg"></div>'}
+    <p id="fberr" class="notice err" hidden></p>
+    <button class="btn" type="submit">Envoyer ma remarque</button>
+  </form>`;
+}
+
+async function adminFeedbackPage() {
+  if (!S.session) return needLogin('/admin/remarques');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const [list, counts] = await Promise.all([api.adminFeedback(), api.adminCounts()]);
+  S.admin = counts; topbar();
+  const label = Object.fromEntries(FB_CATS);
+  const fresh = list.filter((f) => f.status === 'new').length;
+  const fmtD = (d) => new Date(d).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  return `${adminTabs('remarques')}${pageHead('Administration', 'Remarques', `<p class="muted">${list.length} remarque${list.length > 1 ? 's' : ''} · ${fresh} non lue${fresh > 1 ? 's' : ''}. Envoyées depuis le menu « Envoyer une remarque ».</p>`)}
+  ${list.length ? `<div class="fb-list">${list.map((f) => `<article class="fb-item${f.status === 'new' ? ' new' : ''}">
+      <div class="fb-top"><span class="pill${f.category === 'bug' ? ' red' : f.category === 'formation' ? ' gold' : ''}">${esc(label[f.category] || f.category)}</span>
+        ${f.status === 'new' ? '<span class="fb-dot" aria-label="Non lue"></span>' : ''}<small class="muted">${fmtD(f.created_at)}${f.page ? ` · page ${esc(f.page)}` : ''}</small></div>
+      <p class="fb-msg">${esc(f.message)}</p>
+      <div class="fb-foot"><small>${f.full_name ? `<b>${esc(f.full_name)}</b> · ` : '<b>Visiteur</b> · '}${f.email ? `<a href="mailto:${esc(f.email)}">${esc(f.email)}</a>` : '<span class="muted">pas d\'e-mail</span>'}</small>
+        <button class="btn ghost sm" data-act="fb-mark" data-id="${f.id}" data-read="${f.status === 'new'}">${f.status === 'new' ? 'Marquer comme lue' : 'Marquer non lue'}</button></div>
+    </article>`).join('')}</div>` : '<p class="muted">Aucune remarque pour l\'instant.</p>'}`;
+}
+
 function verifyPage() {
   return `${pageHead('Vérification', 'Vérifier une attestation')}
   <form id="verify-form" class="narrow panel stack" style="gap:14px">
@@ -1000,7 +1037,8 @@ async function adminPage() {
 const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'pay' ? ' on' : ''}" href="#/admin"${on === 'pay' ? ' aria-current="page"' : ''}>Paiements${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
   <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
-  <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a></nav>`;
+  <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a>
+  <a class="tab${on === 'remarques' ? ' on' : ''}" href="#/admin/remarques"${on === 'remarques' ? ' aria-current="page"' : ''}>Remarques${S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : ''}</a></nav>`;
 const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const kpi = (label, value, sub = '', tone = '') => `<div class="kpi${tone ? ' ' + tone : ''}"><span class="kpi-l">${label}</span><b class="kpi-v">${value}</b>${sub ? `<span class="kpi-s">${sub}</span>` : ''}</div>`;
@@ -1155,6 +1193,8 @@ const ROUTES = [
   [/^\/admin$/, adminPage],
   [/^\/admin\/stats$/, adminStatsPage],
   [/^\/admin\/avis$/, adminReviewsPage],
+  [/^\/admin\/remarques$/, adminFeedbackPage],
+  [/^\/remarque$/, feedbackPage],
 ];
 let renderToken = 0;
 async function render() {
@@ -1217,6 +1257,12 @@ document.addEventListener('click', async (e) => {
       t.setAttribute('aria-pressed', String(!v.muted));
       t.innerHTML = v.muted ? `${I.soundOff}<span>Activer le son</span>` : `${I.soundOn}<span>Couper le son</span>`;
     }
+    return;
+  }
+  if (t.dataset.act === 'fb-mark') {
+    t.disabled = true;
+    try { await api.adminFeedbackMark(t.dataset.id, t.dataset.read === 'true'); render(); }
+    catch (err) { toast(err.message); t.disabled = false; }
     return;
   }
   if (t.dataset.act === 'dom-go') { S.filter.dom = t.dataset.d; go('#/formations'); return; }
@@ -1429,6 +1475,16 @@ document.addEventListener('submit', async (e) => {
     } catch (err) { toast(err.message); busy(btn, false); }
     return;
   }
+  if (f.id === 'feedback-form') {
+    const msg = f.querySelector('#fb-msg').value.trim();
+    if (msg.length < 10) return showErr('fberr', 'Votre message est trop court : écrivez au moins 10 caractères.');
+    busy(btn, true, 'Envoi…');
+    try {
+      await api.submitFeedback(f.querySelector('#fb-cat').value, msg, f.querySelector('#fb-email')?.value.trim(), S.ui.fromPage || '');
+      f.outerHTML = '<div class="narrow panel stack fb-thanks" role="status"><h2>Merci pour votre remarque !</h2><p class="muted">Elle a bien été transmise à l\'équipe Vitako. Vos idées nous aident à améliorer le site.</p><a class="btn" href="#/">Retour à l\'accueil</a></div>';
+    } catch (err) { showErr('fberr', err.message); busy(btn, false, 'Envoyer ma remarque'); }
+    return;
+  }
   if (f.id === 'review-form') {
     const sel = f.querySelector('input[name="rv-rating"]:checked');
     if (!sel) return showErr('rverr', 'Choisissez une note de 1 à 5 étoiles.');
@@ -1462,7 +1518,8 @@ document.addEventListener('submit', async (e) => {
   }
 });
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', (ev) => {
+  try { const prev = new URL(ev.oldURL).hash.replace(/^#/, ''); if (prev !== '/remarque') S.ui.fromPage = prev || '/'; } catch (e) {}
   S.ui.menu = false; S.ui.search = false; S.filter.q = '';
   const { path } = route();
   if (!/\/examen$/.test(path)) { S.examResult = null; }
