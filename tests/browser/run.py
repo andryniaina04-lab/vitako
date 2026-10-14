@@ -176,7 +176,7 @@ with sync_playwright() as p:
     # --- Étudiante abonnée : modules
     login(page, 'fanja@exemple.mg')
     check('connexion : redirection vers mon espace', '#/mon-espace' in page.url)
-    check('mon espace : abonnement actif 30 jours', '30 jours restants' in page.content())
+    check('mon espace : abonnement actif 30 jours', '30 jours restants' in page.locator('.dsh-days').inner_text())
     goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)
     check('fiche abonnée : détail du programme visible (1.1…)', page.locator('.mod-secs').count() == 5 and '1.1' in page.locator('.mod-secs').first.inner_text() and page.locator('.prog-lock').count() == 0)
     fx = page.evaluate('window.__VITAKO_FIXTURE__')
@@ -254,6 +254,8 @@ with sync_playwright() as p:
     check('catalogue : « Réussi » au survol de la coche', page.evaluate("getComputedStyle(document.querySelector('.done-chk'), '::after').opacity") == '1')
     page.locator('.card.job').first.screenshot(path=f'{SHOTS}/06b-coche-reussi.png')
     goto(page, '#/mon-espace')
+    check('mon espace : en-tête coloré et cartes', page.locator('.dsh-hero').count() == 1 and page.locator('.dsh-card').count() == 4)
+    page.screenshot(path=f'{SHOTS}/06c-mon-espace.png', full_page=True)
 
     # --- Nom, thème, mot de passe
     page.fill('#n-name', 'Fanja Rakotomalala'); page.click('#name-form button[type=submit]'); page.wait_for_timeout(300)

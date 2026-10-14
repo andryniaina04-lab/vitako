@@ -887,7 +887,7 @@ function accountPage() {
   if (P.is_admin) subHtml = '<p class="muted">Compte administrateur : accès à tous les cours.</p><a class="btn" href="#/admin">Valider les paiements</a>';
   else if (act) {
     const left = daysLeft();
-    subHtml = `<div class="mono" style="font-size:1.6rem">${left} jour${left > 1 ? 's' : ''} restant${left > 1 ? 's' : ''}</div>
+    subHtml = `<div class="dsh-days"><b>${left}</b> jour${left > 1 ? 's' : ''} restant${left > 1 ? 's' : ''}</div>
       <div class="bar"><i style="width:${Math.min(100, (left / S.days) * 100)}%"></i></div>
       <p class="muted">Se désactive automatiquement le ${fmtDate(P.sub_end)}.</p>
       ${pending ? notice('warn', `Paiement en attente de validation (envoyé le ${fmtDT(pending.created_at)}).`) : ''}
@@ -897,28 +897,55 @@ function accountPage() {
       ${pending ? notice('warn', `Paiement en attente de validation (envoyé le ${fmtDT(pending.created_at)}).`) : ''}
       <a class="btn" href="#/abonnement">${P.sub_end ? 'Renouveler' : "S'abonner"}</a>`;
   }
-  return `${pageHead('Mon espace', `Salama, ${(P.full_name || '').split(' ')[0]}`)}
-  <div class="dash">
-    <section class="panel stack" style="gap:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Abonnement</b>${P.is_admin ? '<span class="pill">Admin</span>' : act ? '<span class="pill">Actif</span>' : `<span class="pill red">${P.sub_end ? 'Expiré' : 'Aucun'}</span>`}</div>
+  const ic = (b) => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${b}</svg>`;
+  const IC = {
+    sub: ic('<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/>'),
+    learn: ic('<path d="M2 7.5 12 3l10 4.5-10 4.5z"/><path d="M6 9.8v5.2c0 1.7 2.7 3 6 3s6-1.3 6-3V9.8"/>'),
+    cert: ic('<circle cx="12" cy="9" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/>'),
+    user: ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>'),
+  };
+  const modsDone = [...S.progress.values()].reduce((n, set) => n + set.size, 0);
+  const subTone = P.is_admin || act ? 'ok' : pending ? 'wait' : 'off';
+  const domColor = (c) => (COVER_COLORS[c.dom.id] || ['#0B7A55', '#14A06F']);
+  const ongoingHtml = ongoing.map((c) => {
+    const [c1, c2] = domColor(c); const n = doneSet(c.id).size; const pc = Math.round((n / c.modules.length) * 100);
+    return `<div class="dsh-course"><span class="dsh-dot" style="background:linear-gradient(135deg,${c1},${c2})">${DOM_ICONS[c.dom.id] || ''}</span>
+      <div class="t"><div class="dsh-ct">${esc(c.title)}</div>
+        <div class="dsh-prog"><span class="bar"><i style="width:${pc}%;background:linear-gradient(90deg,${c1},${c2})"></i></span><small>${n}/${c.modules.length} modules${attemptsOf(c.id).length ? ` · examen ${bestOf(c.id)}/100` : ''}</small></div></div>
+      <a class="btn sm" href="#/formation/${c.id}">Continuer</a></div>`;
+  }).join('');
+  return `<section class="dsh-hero">
+    <div class="dsh-hero-in">
+      <div><div class="dsh-eyebrow">Mon espace</div><h1>Salama, ${esc((P.full_name || '').split(' ')[0])}</h1>
+        <p>${act && !P.is_admin ? `Abonnement actif : encore ${daysLeft()} jour${daysLeft() > 1 ? 's' : ''} pour apprendre.` : P.is_admin ? 'Compte administrateur.' : 'Abonnez-vous pour suivre les cours et obtenir vos attestations.'}</p></div>
+      <div class="dsh-kpis">
+        <div><b>${ongoing.length}</b><span>en cours</span></div>
+        <div><b>${modsDone}</b><span>modules terminés</span></div>
+        <div><b>${courseCerts.length + jobCerts.length}</b><span>attestation${courseCerts.length + jobCerts.length > 1 ? 's' : ''}</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="dash dsh">
+    <section class="panel stack dsh-card tone-${subTone}" style="gap:12px">
+      <div class="dsh-h"><span class="dsh-ic">${IC.sub}</span><b>Abonnement</b>${P.is_admin ? '<span class="pill">Admin</span>' : act ? '<span class="pill">Actif</span>' : pending ? '<span class="pill gold">En attente</span>' : `<span class="pill red">${P.sub_end ? 'Expiré' : 'Aucun'}</span>`}</div>
       ${subHtml}
     </section>
-    <section class="panel stack" style="gap:4px">
-      <b>Formations en cours</b>
-      <div class="list">${ongoing.length ? ongoing.map((c) => `<div class="item"><div class="t"><div>${esc(c.title)}</div><small class="muted">${doneSet(c.id).size}/${c.modules.length} modules${attemptsOf(c.id).length ? ` · examen ${bestOf(c.id)}/100` : ''}</small></div><a class="btn ghost sm" href="#/formation/${c.id}">Continuer</a></div>`).join('')
+    <section class="panel stack dsh-card tone-learn" style="gap:4px">
+      <div class="dsh-h"><span class="dsh-ic">${IC.learn}</span><b>Formations en cours</b>${ongoing.length ? `<span class="pill blue">${ongoing.length}</span>` : ''}</div>
+      <div class="list">${ongoing.length ? ongoingHtml
         : '<p class="muted" style="padding-top:8px">Aucune formation en cours. <a href="#/formations">Parcourir les métiers</a></p>'}</div>
     </section>
-    <section class="panel stack" style="gap:4px">
-      <b>Mes attestations</b>
+    <section class="panel stack dsh-card tone-cert" style="gap:4px">
+      <div class="dsh-h"><span class="dsh-ic">${IC.cert}</span><b>Mes attestations</b>${courseCerts.length + jobCerts.length ? `<span class="pill gold">${courseCerts.length + jobCerts.length}</span>` : ''}</div>
       <div class="list">
-        ${jobCerts.map((c) => `<div class="item"><div class="t"><div>Parcours complet : ${esc(c.title)}</div><small class="muted mono">${esc(c.id)}</small></div><a class="btn sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')}
-        ${courseCerts.length ? courseCerts.map((c) => `<div class="item"><div class="t"><div>${esc(c.title)}</div><small class="muted mono">${esc(c.id)} · ${c.score}/100</small></div><a class="btn ghost sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')
+        ${jobCerts.map((c) => `<div class="item dsh-cert job"><span class="dsh-medal">${I.seal || IC.cert}</span><div class="t"><div>Parcours complet : ${esc(c.title)}</div><small class="muted mono">${esc(c.id)}</small></div><a class="btn sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')}
+        ${courseCerts.length ? courseCerts.map((c) => `<div class="item dsh-cert"><span class="dsh-medal">${IC.cert}</span><div class="t"><div>${esc(c.title)}</div><small class="muted mono">${esc(c.id)} · <span class="dsh-score">${c.score}/100</span></small></div><a class="btn ghost sm" href="#/attestation/${c.id}">Voir</a></div>`).join('')
           : '<p class="muted" style="padding-top:8px">Terminez une formation et réussissez l\'examen pour obtenir votre première attestation.</p>'}
       </div>
     </section>
   </div>
-  <form id="name-form" class="panel stack" style="gap:12px;margin-top:22px;max-width:520px">
-    <b>Nom sur les attestations</b>
+  <form id="name-form" class="panel stack dsh-card tone-user" style="gap:12px;margin-top:22px;max-width:520px">
+    <div class="dsh-h"><span class="dsh-ic">${IC.user}</span><b>Nom sur les attestations</b></div>
     <div class="f"><label class="l" for="n-name">Nom complet</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
     <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
     <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
