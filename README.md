@@ -165,3 +165,17 @@ La migration `supabase/migrations/20261013b_email_paiement.sql` envoie un e-mail
    ```
 Ne jamais mettre la clé dans le code, sur GitHub ou dans une discussion.
 Sans domaine vérifié, Resend n'envoie qu'à l'adresse du compte Resend (expéditeur onboarding@resend.dev).
+
+## E-mail à l'étudiant quand son accès est validé
+
+La migration `supabase/migrations/20261014_email_acces.sql` envoie un e-mail à l'étudiant dès que
+l'administrateur valide son paiement (accès activé, date de fin), ou le refuse (avec le motif).
+Elle utilise la même clé Resend. Pour que les étudiants reçoivent vraiment ces e-mails :
+
+1. Dans Resend : **Domains** → **Add Domain** (par exemple `vitako.mg`), puis ajouter chez le
+   fournisseur du domaine les enregistrements DNS affichés par Resend, et attendre « Verified ».
+2. Dans Supabase > **SQL Editor** :
+   ```sql
+   select vault.create_secret('Vitako <contact@vitako.mg>', 'mail_from');
+   ```
+Tant que le domaine n'est pas vérifié, Resend n'envoie qu'à l'adresse du compte Resend.

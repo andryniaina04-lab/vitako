@@ -228,3 +228,7 @@ reset role;
 set role anon;
 select t.err('select public.submit_review(''t-0-f'', 5)', 'permission denied');
 reset role;
+
+-- E-mail à l'étudiant après la décision de l'administrateur (sans clé Resend : rien n'est envoyé, rien ne bloque)
+select exists (select 1 from pg_trigger where tgname = 'payments_decision_email');
+select public.mail_from() = 'Vitako <onboarding@resend.dev>';

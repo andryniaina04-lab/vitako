@@ -25,5 +25,5 @@ window.VITAKO_CONFIG = {
   heroPoster: '', // image affichée avant le chargement d'une vidéo .mp4 (facultatif)
 
   // Délai de validation annoncé aux étudiants.
-  validationDelay: '12 h',
+  validationDelay: 'quelques minutes',
 };

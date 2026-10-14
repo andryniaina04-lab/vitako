@@ -295,7 +295,7 @@ function catalog() {
   let banner = '';
   if (!S.session) banner = notice('info', 'Tout le monde peut consulter les formations, leurs descriptions et leurs objectifs. Pour suivre les cours, <a href="#/inscription">créez un compte</a> puis prenez un abonnement mensuel.');
   else if (S.profile && !hasAccess()) banner = notice(pendingPayment() ? 'info' : 'warn', pendingPayment()
-    ? `Votre paiement est en attente de validation (en général sous ${esc(CFG.validationDelay)}).`
+    ? `Votre paiement est en attente de validation (en général en ${esc(CFG.validationDelay)}). Vous recevrez un e-mail dès que votre accès sera activé.`
     : `Vous n'avez pas d'abonnement actif. Pour suivre les cours, <a href="#/abonnement">abonnez-vous (${priceHtml()} / ${S.days} jours)</a>.`);
   return `${pageHead('Catalogue', 'Toutes les formations')}
   ${promoBanner()}
@@ -850,7 +850,7 @@ function subscribePage() {
     ${pending ? `<div class="panel stack" style="gap:10px">
       <div><span class="pill gold">En attente de validation</span></div>
       <p>Paiement ${esc(opById(pending.operator).name)} de <b class="mono">${ar(pending.amount)}</b>${pending.sender ? ` depuis le <span class="mono">${fmtTel(pending.sender)}</span>` : ''}, référence <span class="mono">${esc(pending.reference)}</span>, envoyé le ${fmtDT(pending.created_at)}.</p>
-      <p class="muted">Nous vérifions la réception puis activons votre accès pour ${S.days} jours, en général sous ${esc(CFG.validationDelay)}.</p>
+      <p class="muted">Nous vérifions la réception puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}. Vous recevrez un e-mail dès que c'est fait.</p>
     </div>` : `
     ${showKo ? notice('err', `Votre paiement du ${fmtDT(last.created_at)} (référence ${esc(last.reference)}) n'a pas été validé : ${esc(last.reason || 'paiement introuvable')}. Vérifiez la référence dans votre SMS de confirmation et renvoyez-la.`) : ''}
     <form id="pay-form" class="panel stack" style="gap:16px" novalidate>
@@ -869,7 +869,7 @@ function subscribePage() {
       <div class="f"><label class="l" for="p-tel">Votre numéro ${esc(op.name)} (facultatif)</label><input class="in mono" id="p-tel" inputmode="tel" autocomplete="tel" placeholder="${op.prefixes[0]} 12 345 67"><small class="muted">Le numéro qui a envoyé l'argent. Il nous aide à retrouver votre paiement plus vite.</small></div>
       <p id="perr" class="notice err" hidden></p>
       <button class="btn" type="submit">Envoyer ma référence</button>
-      <p class="muted" style="font-size:.85rem">Nous vérifions le paiement puis activons votre accès pour ${S.days} jours, en général sous ${esc(CFG.validationDelay)}. Accès prévu du ${fmtDate(start)} au ${fmtDate(start.getTime() + S.days * DAY)}.</p>
+      <p class="muted" style="font-size:.85rem">Nous vérifions le paiement puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}, et vous prévenons par e-mail. Accès prévu du ${fmtDate(start)} au ${fmtDate(start.getTime() + S.days * DAY)}.</p>
     </form>`}
   </div>`;
 }
