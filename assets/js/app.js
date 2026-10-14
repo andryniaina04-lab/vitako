@@ -94,6 +94,8 @@ async function loadUser() {
 // Icônes
 // ---------------------------------------------------------------------------
 const I = {
+  soundOff: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>',
+  soundOn: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>',
   lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
   seal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/><path d="M9.5 9l2 2 3-3.5"/></svg>',
@@ -325,7 +327,8 @@ function heroMedia() {
     const vm = v.match(/vimeo\.com\/(?:video\/)?(\d+)/);
     if (yt) return `<div class="lp-video"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&mute=1&loop=1&playlist=${yt[1]}&controls=0&rel=0&playsinline=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
     if (vm) return `<div class="lp-video"><iframe src="https://player.vimeo.com/video/${vm[1]}?autoplay=1&muted=1&loop=1&background=1" title="Présentation de Vitako" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
-    return `<div class="lp-video"><video src="${esc(v)}"${CFG.heroPoster ? ` poster="${esc(CFG.heroPoster)}"` : ''} autoplay muted loop playsinline aria-label="Présentation de Vitako"></video></div>`;
+    return `<div class="lp-video"><video id="hero-video" src="${esc(v)}"${CFG.heroPoster ? ` poster="${esc(CFG.heroPoster)}"` : ''} muted loop playsinline preload="none" controls controlslist="nodownload noplaybackrate" disablepictureinpicture aria-label="Vidéo de présentation de Vitako"></video>
+      <button class="lp-sound" type="button" data-act="hero-sound" aria-pressed="false">${I.soundOff}<span>Activer le son</span></button></div>`;
   }
   return `<div class="lp-art" aria-hidden="true">
     <div class="lp-glass g1"><span class="g-ic">${DOM_ICONS.design}</span><div><b>Graphiste – Fondamentaux</b><small>Module 3 sur 5</small><i class="g-bar"><i style="width:60%"></i></i></div></div>
@@ -1103,6 +1106,16 @@ function reviewBlock() {
     </form>
   </section>`;
 }
+// Vidéo de l'accueil : lecture automatique sans son sur grand écran, et jamais en mode « économie de données »
+// (sur téléphone, la vidéo ne se charge que si la personne appuie sur lecture).
+function startHeroVideo() {
+  const v = document.getElementById('hero-video');
+  if (!v) return;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const wide = window.matchMedia && window.matchMedia('(min-width: 861px)').matches;
+  const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (wide && !saveData && !calm) { v.muted = true; v.play().catch(() => {}); }
+}
 function renderReviewSlot() {
   const slot = document.getElementById('review-slot');
   if (slot) slot.innerHTML = reviewBlock();
@@ -1157,6 +1170,7 @@ async function render() {
   if (token !== renderToken) return;
   app.innerHTML = html;
   renderReviewSlot();
+  startHeroVideo();
   document.title = path === '/' ? 'Vitako · Formations aux métiers du freelance' : `${document.querySelector('#app h1, #app h2')?.textContent || 'Vitako'} · Vitako`;
 }
 
@@ -1176,6 +1190,16 @@ document.addEventListener('click', async (e) => {
   }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'hero-sound') {
+    const v = document.getElementById('hero-video');
+    if (v) {
+      v.muted = !v.muted;
+      if (!v.muted) { if (v.paused) v.play().catch(() => {}); }
+      t.setAttribute('aria-pressed', String(!v.muted));
+      t.innerHTML = v.muted ? `${I.soundOff}<span>Activer le son</span>` : `${I.soundOn}<span>Couper le son</span>`;
+    }
+    return;
+  }
   if (t.dataset.act === 'dom-go') { S.filter.dom = t.dataset.d; go('#/formations'); return; }
   if (t.dataset.act === 'review-later') {
     const id = document.getElementById('review-form')?.dataset.course;

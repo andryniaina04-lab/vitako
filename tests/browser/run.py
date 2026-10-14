@@ -14,8 +14,9 @@ subprocess.run(['node', 'tests/browser/fixture.mjs'], cwd=ROOT, check=True)
 PORT = 8765
 Handler = partial(http.server.SimpleHTTPRequestHandler, directory=ROOT)
 Handler.log_message = lambda *a: None
-socketserver.TCPServer.allow_reuse_address = True
-httpd = socketserver.TCPServer(('127.0.0.1', PORT), Handler)
+socketserver.ThreadingTCPServer.allow_reuse_address = True; socketserver.ThreadingTCPServer.daemon_threads = True
+httpd = socketserver.ThreadingTCPServer(('127.0.0.1', PORT), Handler)
+httpd.handle_error = lambda *a: None  # coupures de lecture vidéo par le navigateur : sans importance
 threading.Thread(target=httpd.serve_forever, daemon=True).start()
 BASE = f'http://127.0.0.1:{PORT}/index.html'
 
@@ -69,6 +70,10 @@ with sync_playwright() as p:
     page.goto(BASE + '#/'); page.wait_for_timeout(600)
 
     # --- Accueil (page d'atterrissage)
+    check('accueil : vidéo de présentation avec image d\'attente', page.locator('#hero-video[poster$="vitako-presentation.jpg"]').count() == 1)
+    page.click('[data-act=hero-sound]'); page.wait_for_timeout(100)
+    check('accueil : bouton son de la vidéo', page.evaluate("document.getElementById('hero-video').muted") is False and 'Couper' in page.locator('.lp-sound').inner_text())
+    page.click('[data-act=hero-sound]')
     check('accueil : 10 formations mises en avant', page.locator('.feat-grid .card.feat').count() == 10)
     check('accueil : 4 chiffres clés', page.locator('.lp-stats > div').count() == 4 and '111' in page.locator('.lp-stats').inner_text())
     check('accueil : bandes vertes (témoignages et appel final)', page.locator('.lp-band').count() == 2)

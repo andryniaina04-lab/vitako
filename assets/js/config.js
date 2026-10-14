@@ -21,8 +21,8 @@ window.VITAKO_CONFIG = {
 
   // Vidéo de présentation de l'accueil (à côté du titre) : fichier .mp4/.webm dans assets/video/,
   // ou lien YouTube ou Vimeo. Laisser vide pour afficher l'illustration animée.
-  heroVideo: '',
-  heroPoster: '', // image affichée avant le chargement d'une vidéo .mp4 (facultatif)
+  heroVideo: 'assets/video/vitako-presentation.mp4',
+  heroPoster: 'assets/video/vitako-presentation.jpg', // image affichée avant le chargement d'une vidéo .mp4 (facultatif)
 
   // Délai de validation annoncé aux étudiants.
   validationDelay: 'quelques minutes',

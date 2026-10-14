@@ -742,3 +742,9 @@ main:has(> .dsh-hero:first-child){padding-top:28px}
 @media (max-width:560px){.dsh-kpis{width:100%}.dsh-kpis div{flex:1;min-width:0}}
 .dsh-days{color:var(--muted);font-weight:600}
 .dsh-days b{font-family:var(--display);font-size:2.2rem;color:var(--tone);margin-right:4px}
+
+/* Vidéo de présentation de l'accueil */
+.lp-video{position:relative;aspect-ratio:16/9}
+.lp-video video{background:#04281C}
+.lp-sound{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:999px;background:rgba(4,40,28,.72);color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lp-sound:hover{background:rgba(4,40,28,.9)}
