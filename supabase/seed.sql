@@ -110,7 +110,9 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
   ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true),
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true),
-  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true)
+  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true),
+  ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true),
+  ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
 
@@ -54475,6 +54477,1026 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Pourquoi les droits publicitaires se paient-ils ?', '["Pour décorer le contrat","Ce n''est pas le cas","La vidéo peut faire vendre beaucoup pendant des mois","Ils sont gratuits"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel paiement proposer pour une commande ?', '["Rien","Seulement en cadeaux","Tout après 6 mois","50 % à la commande et 50 % à la livraison"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('mkt-4-f', 'Quel moyen de paiement utiliser avec une marque locale ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
+
+-- num-0-f
+delete from public.exam_questions where course_id = 'num-0-f';
+delete from public.module_questions where course_id = 'num-0-f';
+delete from public.lessons where course_id = 'num-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-0-f', 0, 'L''ordinateur, les fichiers et la sauvegarde', 'Éléments d''un ordinateur, cloud, organisation des dossiers par client et projet, noms de fichiers, formats DOCX, XLSX, PPTX, PDF, JPG, PNG et ZIP, raccourcis clavier, règle 3-2-1.', 'Avant de produire des documents pour un client, il faut être à l''aise avec l''ordinateur lui-même : retrouver ses fichiers, les nommer correctement, les envoyer dans le bon format et ne jamais les perdre. Ce module pose ces bases, qui vous feront gagner du temps chaque jour.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Reconnaître les éléments d''un ordinateur et leur rôle.
+> 2. Organiser vos dossiers et nommer vos fichiers de façon professionnelle.
+> 3. Choisir le bon format de fichier (DOCX, XLSX, PDF, JPG, ZIP).
+> 4. Utiliser les raccourcis clavier essentiels.
+> 5. Sauvegarder votre travail avec la règle 3-2-1.
+
+## L''ordinateur en quelques mots
+
+Un ordinateur, c''est une machine qui stocke des fichiers et fait tourner des logiciels.
+
+| Élément | Rôle | Ce qu''il faut savoir |
+| --- | --- | --- |
+| **Processeur** | Fait les calculs | Plus il est récent, plus l''ordinateur est rapide |
+| **Mémoire vive (RAM)** | Travail en cours | 8 Go permettent de travailler confortablement avec plusieurs onglets |
+| **Stockage (disque ou SSD)** | Garde les fichiers | Un SSD démarre beaucoup plus vite qu''un disque classique |
+| **Système d''exploitation** | Fait fonctionner l''ensemble | Windows, macOS ou Linux |
+| **Navigateur** | Accès à Internet | Chrome, Firefox ou Edge, toujours à jour |
+
+> [!definition] Cloud
+> Un espace de stockage sur Internet (Google Drive, OneDrive, Dropbox). Vos fichiers y sont accessibles depuis n''importe quel appareil, même si votre ordinateur tombe en panne.
+
+## Organiser ses dossiers
+
+Un client doit pouvoir vous demander un fichier et le recevoir en moins d''une minute.
+
+1. Créez un dossier principal **Travail**.
+2. Dedans, un dossier par client.
+3. Dans chaque client, un dossier par projet, avec la date au début.
+4. Gardez un dossier **Administratif** pour vos factures et contrats.
+
+```
+Travail/
+  Client_ONG-Fanantenana/
+    2026-10_Rapport-annuel/
+      01_Recu/
+      02_En-cours/
+      03_Livre/
+  Client_Hotel-Ravinala/
+Administratif/
+  Factures/
+  Contrats/
+```
+
+> [!astuce]
+> Nommez vos fichiers ainsi : **date_client_sujet_version**. Par exemple `2026-10-14_Ravinala_Tarifs_v2.xlsx`. La date au format année-mois-jour range automatiquement les fichiers dans l''ordre.
+
+## Les formats de fichiers
+
+Le format, c''est l''extension à la fin du nom (.docx, .pdf…). Il indique avec quel logiciel ouvrir le fichier.
+
+| Format | Contenu | Quand l''utiliser |
+| --- | --- | --- |
+| **.docx** | Texte modifiable | Document que le client va encore corriger |
+| **.xlsx** | Tableau et calculs | Budgets, listes, suivis |
+| **.pptx** | Présentation | Diapositives pour une réunion |
+| **.pdf** | Document figé | Version finale, devis, facture, CV |
+| **.jpg / .png** | Image | Photo (JPG) ou capture d''écran et logo (PNG) |
+| **.zip** | Dossier compressé | Envoyer plusieurs fichiers d''un coup |
+
+> [!exemple] Bon réflexe
+> Hery envoie un devis à une entreprise de Toamasina. Il le rédige dans un traitement de texte, puis l''exporte en **PDF** : le client ne peut pas le modifier par erreur, et la mise en page reste identique sur tous les appareils.
+
+## Les raccourcis clavier essentiels
+
+Les raccourcis font gagner plusieurs minutes par heure. Sur Mac, remplacez Ctrl par Cmd.
+
+| Raccourci | Action |
+| --- | --- |
+| **Ctrl + C / Ctrl + V** | Copier / Coller |
+| **Ctrl + X** | Couper |
+| **Ctrl + Z / Ctrl + Y** | Annuler / Rétablir |
+| **Ctrl + S** | Enregistrer |
+| **Ctrl + F** | Chercher un mot |
+| **Alt + Tab** | Passer d''une fenêtre à l''autre |
+| **Windows + Maj + S** | Capture d''une partie de l''écran (Windows) |
+
+## Ne jamais perdre son travail : la règle 3-2-1
+
+> [!definition] Règle 3-2-1
+> Garder **3** copies de vos fichiers importants, sur **2** supports différents, dont **1** hors de chez vous (dans le cloud).
+
+1. La copie de travail sur votre ordinateur.
+2. Une copie sur une clé USB ou un disque externe, mise à jour chaque semaine.
+3. Une copie dans le cloud, synchronisée automatiquement.
+
+> [!madagascar]
+> Les coupures de courant peuvent arrêter l''ordinateur en plein travail. Prenez l''habitude de faire **Ctrl + S** toutes les 10 minutes, activez l''enregistrement automatique quand le logiciel le propose, et gardez une batterie chargée ou un onduleur si possible.
+
+> [!attention] Erreurs fréquentes
+> - Tout laisser sur le Bureau ou dans Téléchargements.
+> - Des noms comme « document final final 2.docx ».
+> - Envoyer un .docx quand le client attend une version définitive (PDF).
+> - Aucune sauvegarde : un vol ou une panne, et des semaines de travail disparaissent.
+
+> [!retenir]
+> - Un dossier par client, un sous-dossier par projet.
+> - Noms de fichiers : date_client_sujet_version.
+> - PDF pour la version finale, DOCX ou XLSX pour un document à modifier.
+> - Ctrl + S souvent, et la règle 3-2-1 pour sauvegarder.
+
+## Exercice pratique : votre espace de travail
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez l''arborescence Travail et Administratif sur votre ordinateur.
+> 2. Créez un dossier pour un client imaginaire, avec un projet daté.
+> 3. Renommez 5 de vos fichiers existants selon la règle date_client_sujet_version.
+> 4. Installez Google Drive ou OneDrive et activez la synchronisation du dossier Travail.
+> 5. Faites une capture d''écran de votre arborescence.
+>
+> **À livrer** : la capture d''écran de vos dossiers et la liste des 5 fichiers renommés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 0, 0, 'Quel format envoyer pour une version finale non modifiable ?', '["DOCX","TXT","PDF","XLSX"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 0, 1, 'Que signifie la règle 3-2-1 ?', '["3 mots de passe, 2 comptes, 1 ordinateur","3 copies, sur 2 supports, dont 1 hors de chez soi","3 dossiers, 2 clients, 1 projet","3 heures de travail, 2 pauses, 1 sauvegarde"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 0, 2, 'Quel raccourci enregistre un fichier ?', '["Ctrl + S","Ctrl + Z","Alt + Tab","Ctrl + F"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-0-f', 1, 'Le traitement de texte', 'Google Docs, Word et LibreOffice Writer, styles de titres, table des matières automatique, mise en page, commentaires, mode suggestion et historique des versions.', 'Le traitement de texte est l''outil le plus utilisé dans le travail à distance : rapports, comptes rendus, devis, CV, courriers. Un document bien structuré se lit vite, se modifie facilement et donne une image professionnelle. Ce module vous apprend à le faire avec Word, Google Docs ou LibreOffice Writer.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Choisir un traitement de texte gratuit adapté.
+> 2. Structurer un document avec les styles de titres.
+> 3. Créer une table des matières automatique.
+> 4. Mettre en page : marges, en-tête, numéros de page.
+> 5. Travailler à plusieurs avec les commentaires et le suivi des modifications.
+
+## Les logiciels de traitement de texte
+
+| Logiciel | Prix | Points forts |
+| --- | --- | --- |
+| **Google Docs** | Gratuit avec un compte Google | En ligne, partage facile, enregistrement automatique |
+| **Microsoft Word (version web)** | Gratuit avec un compte Microsoft | Compatible avec les clients qui utilisent Word |
+| **LibreOffice Writer** | Gratuit, à installer | Fonctionne sans Internet |
+| **Microsoft Word (bureau)** | Payant, avec Microsoft 365 | Le plus utilisé en entreprise |
+
+> [!astuce]
+> Vérifiez les prix et conditions sur les sites officiels : ils changent souvent. Pour débuter, Google Docs et LibreOffice suffisent largement.
+
+## Les styles : la base d''un document propre
+
+Au lieu de mettre un titre en gras et en grand à la main, on lui applique un **style** (Titre 1, Titre 2, Normal).
+
+1. Écrivez votre texte sans mise en forme.
+2. Placez le curseur sur un titre principal et choisissez **Titre 1**.
+3. Pour un sous-titre, choisissez **Titre 2**.
+4. Laissez le reste en **Texte normal**.
+5. Pour changer l''apparence de tous les titres d''un coup, modifiez le style une seule fois.
+
+> [!definition] Style
+> Un ensemble de réglages (police, taille, couleur, espacement) enregistré sous un nom. Tous les textes qui ont ce style changent ensemble.
+
+## La table des matières automatique
+
+Grâce aux styles, le logiciel crée lui-même la table des matières.
+
+| Logiciel | Où la trouver |
+| --- | --- |
+| **Google Docs** | Insertion, puis Table des matières |
+| **Word** | Références, puis Table des matières |
+| **LibreOffice** | Insertion, puis Table des matières et index |
+
+Après avoir ajouté des pages, cliquez sur **Mettre à jour** pour corriger les numéros.
+
+## La mise en page
+
+| Élément | Réglage conseillé |
+| --- | --- |
+| **Police** | Une seule police lisible (Arial, Calibri, Roboto), taille 11 ou 12 |
+| **Marges** | 2 à 2,5 cm |
+| **Interligne** | 1,15 ou 1,5 |
+| **En-tête** | Nom du client ou du projet |
+| **Pied de page** | Numéro de page |
+| **Images** | Alignées, avec une légende si besoin |
+
+> [!exemple] Compte rendu de réunion
+> Voahangy est assistante virtuelle pour une coopérative de vanille à Sambava. Après chaque réunion en ligne, elle envoie un compte rendu : un Titre 1 par réunion, des Titres 2 « Décisions », « Actions » et « Prochaine réunion », un tableau des actions avec la personne responsable et la date. Le document est exporté en PDF et partagé dans le dossier commun.
+
+## Travailler à plusieurs sur un document
+
+| Outil | Usage |
+| --- | --- |
+| **Commentaire** | Poser une question ou faire une remarque sans modifier le texte |
+| **Suivi des modifications** (Word) ou **Mode suggestion** (Google Docs) | Proposer des changements que l''autre accepte ou refuse |
+| **Historique des versions** | Revenir à une version précédente |
+
+> [!attention] Erreurs fréquentes
+> - Faire des titres « à la main » : la table des matières ne fonctionne plus.
+> - Utiliser la touche Entrée plusieurs fois pour changer de page : utilisez **Saut de page**.
+> - Mélanger trois ou quatre polices.
+> - Modifier directement le texte d''un client sans le mode suggestion.
+
+> [!madagascar]
+> Beaucoup d''organisations à Madagascar travaillent en français, et certaines aussi en anglais ou en malgache. Activez le correcteur dans la bonne langue (menu Outils ou Révision) pour éviter les fautes qui donnent une mauvaise image.
+
+> [!retenir]
+> - Les styles de titres structurent le document.
+> - Table des matières automatique, mise à jour en un clic.
+> - Une police, des marges régulières, des numéros de page.
+> - Commentaires et mode suggestion pour travailler avec un client.
+
+## Exercice pratique : un rapport de 3 pages
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Rédigez un court rapport sur un sujet de votre choix (votre quartier, un projet, une entreprise locale).
+> 2. Utilisez au moins 3 Titres 1 et 4 Titres 2.
+> 3. Ajoutez une table des matières, un en-tête et des numéros de page.
+> 4. Insérez un tableau et une image avec une légende.
+> 5. Exportez en PDF.
+>
+> **À livrer** : le fichier DOCX (ou le lien Google Docs) et la version PDF.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 1, 0, 'Pourquoi utiliser les styles de titres ?', '["Ce n''est pas utile","Pour structurer le document et créer la table des matières automatique","Pour imprimer plus vite","Pour colorer le texte"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 1, 1, 'Comment passer à la page suivante proprement ?', '["En ajoutant des espaces","Avec un saut de page","En changeant de police","En appuyant plusieurs fois sur Entrée"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 1, 2, 'Comment proposer des corrections dans le texte d''un client ?', '["En modifiant directement sans prévenir","En envoyant une photo","Avec le mode suggestion ou le suivi des modifications","En réécrivant tout"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-0-f', 2, 'Le tableur : formules et analyse', 'Cellules et bonnes règles d''un tableau, SOMME, MOYENNE, NB, SI, SOMME.SI, RECHERCHEV, références absolues avec $, tri, filtre, mise en forme conditionnelle, tableau croisé dynamique et graphique.', 'Le tableur est l''outil qui distingue le plus vite un assistant ordinaire d''un assistant recherché. Suivre un budget, un stock, des ventes ou une liste de contacts : tout cela se fait dans un tableur. Ce module vous apprend les formules et les fonctions qui servent tous les jours, avec Excel, Google Sheets ou LibreOffice Calc.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Comprendre cellules, lignes, colonnes et feuilles.
+> 2. Écrire des formules et utiliser les fonctions essentielles.
+> 3. Utiliser les références absolues avec le signe $.
+> 4. Trier, filtrer et mettre en forme un tableau.
+> 5. Résumer des données avec un tableau croisé dynamique et un graphique.
+
+## Les bases du tableur
+
+> [!definition] Cellule
+> La case à l''intersection d''une colonne (lettre) et d''une ligne (chiffre). La cellule B3 est dans la colonne B, à la ligne 3.
+
+| Logiciel | Prix | Remarque |
+| --- | --- | --- |
+| **Google Sheets** | Gratuit | En ligne, partage facile |
+| **Excel (version web)** | Gratuit avec un compte Microsoft | Fonctions principales |
+| **LibreOffice Calc** | Gratuit | Sans Internet |
+| **Excel (bureau)** | Payant | Le plus demandé par les entreprises |
+
+Règles d''un bon tableau :
+1. Une ligne de titres en haut, une colonne par information.
+2. Une ligne par élément (une vente, un produit, un contact).
+3. Pas de ligne vide au milieu.
+4. Les dates au même format partout.
+
+## Les formules et fonctions essentielles
+
+Une formule commence toujours par le signe **=**.
+
+| Fonction | Exemple | Résultat |
+| --- | --- | --- |
+| **SOMME** | =SOMME(C2:C20) | Le total de la colonne |
+| **MOYENNE** | =MOYENNE(C2:C20) | La moyenne |
+| **NB** | =NB(C2:C20) | Le nombre de cellules contenant un nombre |
+| **SI** | =SI(D2>=50;"Réussi";"À revoir") | Un résultat selon une condition |
+| **SOMME.SI** | =SOMME.SI(B2:B20;"Vanille";C2:C20) | Le total pour une seule catégorie |
+| **RECHERCHEV** | =RECHERCHEV(A2;Produits!A:C;3;FAUX) | Va chercher une information dans une autre liste |
+
+> [!astuce]
+> Selon la langue du logiciel, le séparateur est le point-virgule ou la virgule, et les noms de fonctions changent (SUM en anglais). Les versions récentes d''Excel et de Google Sheets proposent aussi RECHERCHEX (XLOOKUP), plus simple que RECHERCHEV.
+
+## Les références absolues
+
+Quand on recopie une formule vers le bas, les cellules se décalent. Pour bloquer une cellule, on ajoute **$**.
+
+> [!exemple] Prix en euros
+> Un hôtel de Nosy Be note ses tarifs en ariary dans la colonne B, et le taux de change dans la cellule F1. La formule en C2 est =B2/$F$1. Recopiée vers le bas, elle utilise toujours le taux de F1, mais le prix de chaque ligne.
+
+Astuce : sélectionnez la référence dans la formule et appuyez sur **F4** pour ajouter les $ automatiquement (dans Excel).
+
+## Trier, filtrer, mettre en forme
+
+| Action | Utilité |
+| --- | --- |
+| **Figer la première ligne** | Garder les titres visibles en descendant |
+| **Filtre** | Afficher seulement une catégorie ou une période |
+| **Tri** | Classer du plus grand au plus petit, ou par date |
+| **Format nombre** | Séparateur de milliers, 2 décimales, format date |
+| **Mise en forme conditionnelle** | Colorer automatiquement les retards ou les stocks bas |
+
+## Résumer les données
+
+> [!definition] Tableau croisé dynamique
+> Un outil qui résume une grande liste en quelques clics : par exemple le total des ventes par mois et par produit, sans écrire de formule.
+
+1. Sélectionnez votre tableau.
+2. Insertion, puis Tableau croisé dynamique.
+3. Placez « Mois » en lignes, « Produit » en colonnes, « Montant » en valeurs.
+4. Insérez un graphique à partir du résultat : histogramme pour comparer, courbe pour une évolution.
+
+> [!attention] Erreurs fréquentes
+> - Taper les totaux à la main au lieu d''une formule.
+> - Fusionner des cellules dans un tableau de données : le tri et le filtre ne marchent plus.
+> - Mélanger texte et nombres dans une même colonne (« 15 000 Ar » au lieu de 15000).
+> - Oublier les $ et obtenir des résultats faux en recopiant.
+
+> [!madagascar]
+> Beaucoup de petites entreprises tiennent encore leurs comptes dans un cahier. Proposer de transformer ce cahier en tableur, avec des totaux automatiques par mois, est un premier service simple et très utile à vendre localement.
+
+> [!retenir]
+> - Une ligne par élément, une colonne par information.
+> - SOMME, MOYENNE, SI, SOMME.SI, RECHERCHEV.
+> - Le $ pour bloquer une cellule.
+> - Filtres, tri, mise en forme conditionnelle, tableau croisé dynamique.
+
+## Exercice pratique : le suivi des ventes d''une boutique
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Créez un tableau de 30 ventes : date, produit, quantité, prix unitaire, montant.
+> 2. Calculez le montant avec une formule, puis le total général.
+> 3. Ajoutez une colonne « Gros achat » avec SI (oui au-delà de 100 000 Ar).
+> 4. Faites un tableau croisé dynamique des ventes par produit et un graphique.
+> 5. Colorez automatiquement les gros achats.
+>
+> **À livrer** : le fichier XLSX (ou le lien Google Sheets) avec le tableau, le résumé et le graphique.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 2, 0, 'Par quel signe commence une formule ?', '["#","=","+","$"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 2, 1, 'À quoi sert le signe $ dans =B2/$F$1 ?', '["À bloquer la cellule F1 quand on recopie la formule","À arrondir le résultat","À afficher des dollars","À rien"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 2, 2, 'Quel outil résume une grande liste par mois et par produit sans formule ?', '["Le tableau croisé dynamique","La fusion de cellules","Le correcteur","Le saut de page"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-0-f', 3, 'Présenter, partager et travailler en ligne', 'Règles d''une présentation claire, droits d''accès lecteur, commentateur et éditeur, visioconférence avant, pendant et après, e-mail professionnel, mots de passe, gestionnaire et double authentification.', 'Travailler à distance, c''est aussi présenter ses idées, partager des fichiers avec des personnes qu''on ne voit jamais et protéger ses comptes. Ce module couvre les présentations, le partage dans le cloud, la visioconférence, l''e-mail professionnel et la sécurité de base.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Créer une présentation claire et lisible.
+> 2. Partager un fichier avec les bons droits d''accès.
+> 3. Réussir une visioconférence.
+> 4. Écrire un e-mail professionnel.
+> 5. Protéger vos comptes avec de bons mots de passe et la double authentification.
+
+## Des présentations claires
+
+Outils gratuits : **Google Slides**, **PowerPoint (version web)**, **LibreOffice Impress**, **Canva**.
+
+| Règle | Pourquoi |
+| --- | --- |
+| **Une idée par diapositive** | Le public suit plus facilement |
+| **Peu de texte**, 3 à 5 lignes maximum | On écoute l''orateur, on ne lit pas un roman |
+| **Police de 24 points minimum** | Lisible sur un petit écran partagé |
+| **Un modèle et 2 ou 3 couleurs** | Une présentation cohérente |
+| **Des chiffres en graphique** | Plus parlant qu''un tableau |
+
+> [!exemple] Présentation d''un bilan
+> Fanja prépare pour une ONG d''Antsirabe un bilan trimestriel en 8 diapositives : titre, objectifs, 3 résultats chiffrés en graphique, une photo de terrain, les difficultés, les prochaines étapes. Elle l''envoie aussi en PDF pour ceux qui n''ont pas pu assister à la réunion.
+
+## Partager des fichiers dans le cloud
+
+> [!definition] Droits d''accès
+> Ce qu''une personne peut faire avec un fichier partagé : **lecteur** (voir), **commentateur** (voir et commenter), **éditeur** (modifier).
+
+1. Rangez le fichier dans le bon dossier du client.
+2. Cliquez sur **Partager**.
+3. Ajoutez l''adresse e-mail de la personne, plutôt qu''un lien ouvert à tous.
+4. Choisissez le droit le plus faible suffisant (souvent lecteur ou commentateur).
+5. Envoyez un court message pour expliquer ce que vous partagez.
+
+## La visioconférence
+
+| Avant | Pendant | Après |
+| --- | --- | --- |
+| Tester le micro et la caméra | Couper le micro quand on ne parle pas | Envoyer un compte rendu |
+| Choisir un fond neutre et calme | Regarder la caméra en parlant | Noter les actions et les dates |
+| Préparer l''ordre du jour | Partager uniquement la fenêtre utile | Ranger les fichiers évoqués |
+
+Outils courants : **Google Meet**, **Zoom**, **Microsoft Teams**.
+
+> [!madagascar]
+> Si la connexion est faible, coupez la caméra et gardez l''audio : c''est mieux qu''une image figée. Prévenez au début de la réunion, et ayez un forfait de données mobiles en secours en cas de coupure de la connexion principale.
+
+## L''e-mail professionnel
+
+```
+Objet : Rapport mensuel d''octobre – Coopérative Mamy
+
+Bonjour Madame Rasoa,
+
+Vous trouverez ci-joint le rapport mensuel d''octobre (PDF, 6 pages).
+Les points importants sont en page 2 : les ventes ont progressé de 12 %.
+
+Je reste disponible pour en parler jeudi si vous le souhaitez.
+
+Cordialement,
+Tiana Rakoto
+Assistante administrative à distance · 034 00 000 00
+```
+
+> [!astuce]
+> Un objet précis, une formule de politesse, l''essentiel en deux phrases, la pièce jointe annoncée et une signature complète. Relisez avant d''envoyer et vérifiez que la pièce jointe est bien là.
+
+## La sécurité de base
+
+| Règle | Comment |
+| --- | --- |
+| **Mot de passe long et unique** | Au moins 12 caractères, un différent par compte |
+| **Gestionnaire de mots de passe** | Bitwarden (version gratuite) ou celui du navigateur |
+| **Double authentification** | Un code sur le téléphone en plus du mot de passe |
+| **Méfiance face aux liens** | Ne jamais saisir un mot de passe après un lien reçu par message |
+| **Mises à jour** | Accepter les mises à jour du système et du navigateur |
+
+> [!attention] Erreurs fréquentes
+> - Partager un dossier client « à toute personne disposant du lien ».
+> - Le même mot de passe partout.
+> - Des diapositives couvertes de texte.
+> - Un e-mail sans objet ou avec « Bonjour » comme seul texte.
+
+> [!retenir]
+> - Une idée par diapositive, peu de texte, grande police.
+> - Partager avec le droit le plus faible suffisant.
+> - Micro coupé, ordre du jour, compte rendu.
+> - Mots de passe uniques et double authentification.
+
+## Exercice pratique : présenter et partager
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Créez une présentation de 6 diapositives qui présente vos compétences.
+> 2. Partagez-la avec une personne de confiance en droit « commentateur ».
+> 3. Demandez-lui un commentaire et répondez-y.
+> 4. Rédigez l''e-mail d''envoi de la présentation à un client imaginaire.
+> 5. Activez la double authentification sur votre compte e-mail.
+>
+> **À livrer** : le lien ou le PDF de la présentation, votre e-mail et la confirmation que la double authentification est active.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 3, 0, 'Combien d''idées par diapositive ?', '["Une","Cinq","Aucune","Autant que possible"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 3, 1, 'Quel droit donner le plus souvent à un client qui doit seulement relire ?', '["Accès public à tous","Lecteur ou commentateur","Éditeur","Propriétaire"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 3, 2, 'Que faire si la connexion est faible en visioconférence ?', '["Quitter sans prévenir","Parler plus fort","Couper la caméra et garder l''audio","Partager tout l''écran"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-0-f', 4, 'Mise en situation et plan d''action', 'Cas d''une association de couturières à Fianarantsoa : comprendre, organiser, saisir, calculer, présenter, documenter et former. Vérifications avant livraison, services à proposer, plan de progression sur 30 jours.', 'Ce dernier module rassemble tout ce que vous avez appris dans une mission réelle, puis vous aide à construire votre plan pour progresser et proposer vos services. La bureautique est une compétence demandée dans presque tous les métiers du télétravail : elle peut être un premier revenu et un tremplin.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener une petite mission de bureautique de bout en bout.
+> 2. Livrer un travail propre et vérifié.
+> 3. Présenter une offre de services en bureautique.
+> 4. Construire votre plan de progression sur 30 jours.
+
+## Le cas pratique : Miora et l''association de Fianarantsoa
+
+> [!exemple] Point de départ
+> **Miora**, 22 ans, vient de terminer cette formation. Une association de couturières de Fianarantsoa lui demande de l''aide : leurs commandes sont notées dans un cahier, elles ne savent jamais combien elles ont gagné dans le mois, et elles doivent présenter un bilan à un partenaire.
+
+## Les étapes de la mission
+
+| Étape | Ce que fait Miora | Outil |
+| --- | --- | --- |
+| **1. Comprendre** | Un appel de 30 minutes pour lister les besoins | Google Meet |
+| **2. Organiser** | Un dossier partagé avec trois sous-dossiers | Google Drive |
+| **3. Saisir** | Les commandes du cahier dans un tableau | Google Sheets |
+| **4. Calculer** | Totaux par mois, par client et par type de vêtement | Formules, tableau croisé dynamique |
+| **5. Présenter** | Un bilan de 6 diapositives avec 2 graphiques | Google Slides |
+| **6. Documenter** | Un guide d''une page pour remplir le tableau | Google Docs, exporté en PDF |
+| **7. Former** | 45 minutes pour montrer comment saisir une commande | Visioconférence |
+
+> [!madagascar]
+> Pour un client qui découvre l''informatique, un guide simple avec des captures d''écran et une petite formation font souvent la différence. Proposez aussi une version imprimable du tableau mensuel : beaucoup aiment garder une trace papier.
+
+## Livrer un travail propre
+
+Avant chaque livraison, vérifiez :
+
+1. Les noms des fichiers suivent la règle date_client_sujet_version.
+2. Les formules donnent les bons totaux (contrôlez un total à la main).
+3. L''orthographe est vérifiée.
+4. Les droits de partage sont corrects.
+5. Un e-mail récapitule ce qui est livré et comment l''utiliser.
+
+## Proposer vos services
+
+| Service | Exemple de description |
+| --- | --- |
+| **Mise en forme de documents** | Rapports, mémoires, CV, avec table des matières |
+| **Tableaux de suivi** | Ventes, stocks, budgets, avec totaux automatiques |
+| **Saisie et nettoyage de données** | Passer du papier ou de fichiers en désordre à un tableau propre |
+| **Présentations** | Bilans, présentations de projet, supports de formation |
+| **Assistance bureautique** | Organisation du Drive, modèles de documents |
+
+> [!astuce]
+> Les prix varient beaucoup selon le client et la complexité. Annoncez un prix par mission plutôt qu''à l''heure, après avoir estimé le temps nécessaire, et montrez toujours un exemple de votre travail.
+
+> [!attention] Erreurs fréquentes
+> - Commencer sans avoir bien compris le besoin.
+> - Livrer un tableau sans expliquer comment l''utiliser.
+> - Promettre un délai trop court.
+> - Oublier de garder une copie de sauvegarde du travail livré.
+
+## Votre plan de progression sur 30 jours
+
+| Semaine | Objectif |
+| --- | --- |
+| **1** | Refaire les exercices des modules 1 et 2 sans regarder le cours |
+| **2** | Pratiquer le tableur 30 minutes par jour : un petit problème par jour |
+| **3** | Créer 3 exemples pour votre portfolio : un rapport, un tableau, une présentation |
+| **4** | Proposer une première mission, même petite, à une association ou un commerce proche |
+
+> [!retenir]
+> - Une mission : comprendre, organiser, réaliser, vérifier, livrer, former.
+> - Toujours vérifier avant de livrer.
+> - Des services simples et utiles à proposer.
+> - Un portfolio de 3 exemples et un plan sur 30 jours.
+
+## Exercice pratique : votre portfolio bureautique
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez une petite organisation réelle ou imaginaire.
+> 2. Créez pour elle un tableau de suivi, un rapport de 2 pages et une présentation de 5 diapositives.
+> 3. Rédigez le guide d''utilisation du tableau en une page.
+> 4. Rédigez votre offre de services en 5 lignes.
+>
+> **À livrer** : les 4 documents et votre offre de services.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 4, 0, 'Quelle est la première étape d''une mission ?', '["Comprendre le besoin du client","Créer les graphiques","Choisir les couleurs","Envoyer la facture"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 4, 1, 'Que livrer avec un tableau de suivi pour un client débutant ?', '["Un logiciel payant","Un guide d''utilisation simple","Rien de plus","Un mot de passe"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-0-f', 4, 2, 'Comment vérifier les formules avant de livrer ?', '["Contrôler un total à la main","Demander au client de vérifier","Supprimer les formules","Ne rien vérifier"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Où ranger les fichiers d''un projet client ?', '["Dans Téléchargements","Dans un dossier par client, puis un sous-dossier par projet","Dans la corbeille","Sur le Bureau"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quel nom de fichier est le plus professionnel ?', '["document final final 2.xlsx","aaa.xlsx","nouveau.xlsx","2026-10-14_Ravinala_Tarifs_v2.xlsx"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quel format pour un tableau de calcul modifiable ?', '["ZIP","PDF","JPG","XLSX"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quel format pour envoyer plusieurs fichiers d''un coup ?', '["DOCX","PNG","ZIP","PPTX"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Qu''est-ce que le cloud ?', '["Un virus","Un type d''écran","Une imprimante","Un espace de stockage sur Internet"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quel raccourci annule la dernière action ?', '["Ctrl + Z","Ctrl + P","Ctrl + S","Ctrl + C"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Que faire contre les coupures de courant ?', '["Enregistrer souvent et activer l''enregistrement automatique","Ne jamais enregistrer","Éteindre l''écran","Travailler sans ordinateur"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Qu''est-ce qu''un style dans un traitement de texte ?', '["Une image","Un ensemble de réglages de mise en forme enregistré sous un nom","Une police unique","Un modèle de facture"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Que faire après avoir ajouté des pages à un document avec table des matières ?', '["La supprimer","Rien","La réécrire à la main","Mettre à jour la table des matières"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Combien de polices utiliser dans un document professionnel ?', '["Quatre","Une par paragraphe","Une, ou deux au maximum","Peu importe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'À quoi sert l''historique des versions ?', '["Imprimer","Compter les mots","Changer de langue","Revenir à une version précédente"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quelle formule calcule le total de C2 à C20 ?', '["=TOTAL C2-C20","=SOMME(C2:C20)","SOMME(C2+C20)","=C2:C20"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Que fait =SI(D2>=50;"Réussi";"À revoir") ?', '["Supprime D2","Colore la cellule","Additionne D2 et 50","Affiche Réussi si D2 vaut au moins 50, sinon À revoir"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'À quoi sert SOMME.SI ?', '["Trier un tableau","Compter les lignes vides","Faire le total pour une seule catégorie","Créer un graphique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'À quoi sert RECHERCHEV ?', '["Aller chercher une information dans une autre liste","Chercher un fichier","Ouvrir Internet","Vérifier l''orthographe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Pourquoi éviter de fusionner des cellules dans un tableau de données ?', '["Cela colore le tableau","Cela ralentit Internet","Le tri et le filtre ne fonctionnent plus","Ce n''est pas un problème"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Comment noter un montant dans un tableur ?', '["« 15 000 Ar » en texte","Quinze mille","15.000.Ar","15000, avec un format nombre"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quel graphique pour montrer une évolution dans le temps ?', '["Aucun","Une courbe","Un tableau de texte","Un camembert"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quelle taille de police minimum dans une présentation ?', '["24 points","8 points","10 points","Peu importe"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Comment partager un dossier client en sécurité ?', '["Avec l''adresse e-mail de la personne et le droit le plus faible suffisant","En publiant le lien sur Facebook","En donnant son mot de passe","Avec un lien ouvert à tous"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Que contient un bon objet d''e-mail ?', '["Bonjour","URGENT !!!","Le sujet précis, par exemple « Rapport mensuel d''octobre – Coopérative Mamy »","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Qu''est-ce que la double authentification ?', '["Deux ordinateurs","Deux comptes e-mail","Deux mots de passe identiques","Un code sur le téléphone en plus du mot de passe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Quelle longueur minimum pour un bon mot de passe ?', '["12 caractères","6 chiffres","Son prénom","4 caractères"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Comment fixer le prix d''une mission de bureautique ?', '["Toujours gratuitement","Par mission, après avoir estimé le temps nécessaire","Au hasard","Le plus cher possible"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-0-f', 'Que mettre dans un portfolio bureautique ?', '["Un rapport, un tableau de suivi et une présentation","Ses mots de passe","Des photos de vacances","Rien"]'::jsonb, 0);
+
+-- num-1-f
+delete from public.exam_questions where course_id = 'num-1-f';
+delete from public.module_questions where course_id = 'num-1-f';
+delete from public.lessons where course_id = 'num-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-1-f', 0, 'Comprendre l''intelligence artificielle', 'IA générative et modèles de langage, prompt, principaux assistants gratuits, ce que l''IA fait bien et mal, hallucinations, rôle central du freelance, limites sur Madagascar.', 'Les assistants d''intelligence artificielle sont devenus des outils de travail quotidiens pour beaucoup de freelances : ils aident à écrire, résumer, traduire et trouver des idées. Mais ils se trompent aussi, parfois avec beaucoup d''assurance. Ce premier module vous aide à comprendre ce qu''est l''IA, ce qu''elle sait faire et où sont ses limites.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Expliquer simplement ce qu''est une IA générative.
+> 2. Citer les principaux assistants gratuits.
+> 3. Savoir ce que l''IA fait bien et ce qu''elle fait mal.
+> 4. Reconnaître une « hallucination ».
+> 5. Comprendre pourquoi votre jugement reste indispensable.
+
+## Qu''est-ce qu''une IA générative ?
+
+> [!definition] IA générative
+> Un programme entraîné sur une très grande quantité de textes ou d''images, capable de **produire** du contenu nouveau : un texte, un résumé, une traduction, une image, à partir d''une demande écrite.
+
+> [!definition] Modèle de langage
+> Le moteur d''un assistant comme ChatGPT, Claude ou Gemini. Il prédit, mot après mot, la suite la plus probable d''un texte. Il ne « sait » pas les choses comme un humain : il produit ce qui ressemble le plus à une bonne réponse.
+
+La demande que vous écrivez s''appelle un **prompt** (ou « invite »). Le module 2 est entièrement consacré à l''art de bien l''écrire.
+
+## Les principaux assistants
+
+| Assistant | Éditeur | Remarque |
+| --- | --- | --- |
+| **ChatGPT** | OpenAI | Très connu, version gratuite avec limites |
+| **Claude** | Anthropic | Apprécié pour l''écriture et les longs documents |
+| **Gemini** | Google | Lié aux outils Google (Gmail, Docs) |
+| **Microsoft Copilot** | Microsoft | Intégré à Windows, Edge et Microsoft 365 |
+| **Meta AI** | Meta | Accessible depuis WhatsApp et Facebook |
+
+> [!astuce]
+> Les versions gratuites, les limites d''utilisation et les prix changent souvent. Vérifiez toujours sur le site officiel de chaque outil. Pour apprendre, une version gratuite suffit.
+
+## Ce que l''IA fait bien, et moins bien
+
+| L''IA est utile pour | L''IA est peu fiable pour |
+| --- | --- |
+| Faire un premier jet de texte | Donner des chiffres, des dates ou des prix exacts |
+| Reformuler, raccourcir, changer le ton | Citer des sources sans les inventer |
+| Résumer un long document | Connaître les règles locales de Madagascar |
+| Proposer des idées et des plans | Les événements très récents |
+| Expliquer une notion simplement | Les calculs complexes sans vérification |
+| Traduire entre langues très répandues | Le malgache, encore moins bien maîtrisé |
+
+## Les hallucinations
+
+> [!definition] Hallucination
+> Une réponse fausse donnée avec assurance par l''IA : un chiffre inventé, une loi qui n''existe pas, une citation imaginaire, un lien qui ne mène nulle part.
+
+> [!exemple] Une erreur évitée
+> Rado, rédacteur web à Mahajanga, demande à une IA un article sur le tourisme à Madagascar. Le texte affirme qu''un parc national a été créé en 1953 et cite une statistique de visiteurs. Rado vérifie sur le site officiel : la date est fausse et le chiffre n''apparaît nulle part. Il corrige avant de livrer. Sans cette vérification, son client aurait publié une erreur sous son nom.
+
+## Votre rôle reste central
+
+1. **Vous** comprenez le besoin réel du client.
+2. **Vous** donnez le contexte à l''IA.
+3. **Vous** vérifiez les faits, les chiffres et le ton.
+4. **Vous** adaptez au contexte malgache.
+5. **Vous** êtes responsable de ce que vous livrez.
+
+> [!madagascar]
+> Les assistants d''IA connaissent beaucoup moins bien Madagascar que l''Europe ou les États-Unis : lois, prix, institutions, noms de lieux, expressions. Votre connaissance du terrain est un vrai avantage face à l''IA seule.
+
+> [!attention] Erreurs fréquentes
+> - Copier-coller une réponse sans la relire.
+> - Croire que l''IA « cherche sur Internet » à chaque fois : ce n''est pas toujours le cas.
+> - Lui confier des informations confidentielles d''un client.
+> - Penser que l''IA va faire tout le travail à votre place.
+
+> [!retenir]
+> - L''IA générative produit du contenu à partir d''une demande, le prompt.
+> - Excellente pour les premiers jets, les résumés et les idées.
+> - Elle peut inventer avec assurance : c''est une hallucination.
+> - Vous vérifiez, adaptez et restez responsable.
+
+## Exercice pratique : tester les limites
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez un compte gratuit sur deux assistants différents.
+> 2. Posez-leur la même question sur votre ville ou votre région (histoire, population, économie).
+> 3. Comparez les réponses et vérifiez 3 informations sur une source fiable.
+> 4. Notez une erreur ou une imprécision trouvée, s''il y en a.
+>
+> **À livrer** : les deux réponses, vos 3 vérifications avec la source, et votre conclusion en 5 lignes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 0, 0, 'Qu''est-ce qu''une hallucination de l''IA ?', '["Une réponse trop courte","Une réponse fausse donnée avec assurance","Une panne d''Internet","Une image en couleur"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 0, 1, 'Comment s''appelle la demande écrite à une IA ?', '["Un prompt","Un modèle","Un fichier","Un code PIN"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 0, 2, 'Qui est responsable du travail livré au client ?', '["Personne","Le freelance","L''IA","L''éditeur de l''IA"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-1-f', 1, 'Les bases : écrire de bons prompts', 'Méthode RCTF (rôle, contexte, tâche, format), exemples et interdictions, amélioration en plusieurs échanges, demandes utiles, bibliothèque de prompts, contexte malgache.', 'La qualité de la réponse dépend surtout de la qualité de la demande. Une demande vague donne une réponse vague ; une demande précise donne un résultat presque prêt à l''emploi. Ce module vous apprend une méthode simple pour écrire de bons prompts.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Écrire un prompt avec la méthode RCTF.
+> 2. Donner des exemples à l''IA pour obtenir le bon style.
+> 3. Améliorer une réponse en plusieurs échanges.
+> 4. Créer votre bibliothèque de prompts réutilisables.
+
+## La méthode RCTF
+
+| Lettre | Signification | Question à se poser |
+| --- | --- | --- |
+| **R** | Rôle | Qui l''IA doit-elle jouer ? |
+| **C** | Contexte | Quelle est la situation, pour qui, dans quel but ? |
+| **T** | Tâche | Que doit-elle produire exactement ? |
+| **F** | Format | Quelle forme, quelle longueur, quel ton ? |
+
+> [!exemple] Avant et après
+> **Prompt vague** : « Écris une description pour un hôtel. »
+>
+> **Prompt RCTF** : « Tu es rédacteur web spécialisé dans le tourisme. Mon client est un petit hôtel de 12 chambres à Ifaty, au bord de la mer, avec un restaurant de fruits de mer et des sorties en pirogue. Ses clients sont surtout des familles françaises. Rédige la description de la page d''accueil de son site. Format : 120 mots maximum, ton chaleureux, 3 points forts en liste à la fin, pas de superlatifs exagérés. »
+
+## Donner des exemples
+
+Quand le style compte, montrez un exemple de ce que vous attendez.
+
+```
+Voici deux publications Facebook que le client aime :
+1. « Le soleil se lève sur Anakao. Votre café vous attend sur la terrasse. »
+2. « Ce soir, poisson grillé et coucher de soleil. On vous garde une table ? »
+Écris 5 nouvelles publications dans le même style, une par jour de la semaine.
+```
+
+> [!astuce]
+> Précisez aussi ce que vous **ne voulez pas** : « sans emoji », « sans jargon », « pas plus de 3 phrases ». Les interdictions claires améliorent beaucoup le résultat.
+
+## Améliorer en plusieurs échanges
+
+La première réponse est rarement la meilleure. On la retravaille comme avec un collègue.
+
+1. Lisez la réponse en entier.
+2. Dites ce qui va et ce qui ne va pas : « Le ton est bon, mais c''est trop long. »
+3. Demandez une modification précise : « Raccourcis à 80 mots et ajoute le prix des chambres : 150 000 Ar la nuit. »
+4. Demandez plusieurs versions pour choisir : « Propose 3 titres différents. »
+5. Finalisez vous-même : relecture, vérification, adaptation.
+
+| Demande utile | Effet |
+| --- | --- |
+| « Pose-moi d''abord des questions pour bien comprendre. » | L''IA vous aide à préciser le besoin |
+| « Explique ton raisonnement étape par étape. » | Plus facile de repérer une erreur |
+| « Relis ton texte et corrige les répétitions. » | Une deuxième passe de qualité |
+| « Résume en 3 points pour un client pressé. » | Une version courte prête à envoyer |
+
+## Votre bibliothèque de prompts
+
+Un bon prompt se réutilise. Gardez-les dans un document classé par usage.
+
+| Usage | Exemple de prompt modèle |
+| --- | --- |
+| **Résumé de réunion** | Résume ces notes en : décisions, actions (qui, quoi, quand), questions ouvertes. |
+| **Réponse client** | Rédige une réponse polie et brève à ce message, en proposant [solution]. Ton professionnel. |
+| **Fiche produit** | Rédige une fiche produit de 80 mots pour [produit], avec 3 avantages et une phrase d''appel. |
+| **Relecture** | Corrige l''orthographe et la grammaire sans changer le sens. Liste les corrections. |
+
+> [!madagascar]
+> Pour des textes destinés à des clients malgaches, précisez le contexte : « Les lecteurs sont à Antananarivo, les prix sont en ariary, le paiement se fait par MVola ou Orange Money. » Sans cela, l''IA parlera d''euros et de cartes bancaires.
+
+> [!attention] Erreurs fréquentes
+> - Des prompts d''une seule ligne pour des tâches complexes.
+> - Accepter la première réponse sans la retravailler.
+> - Oublier de préciser la longueur et le ton.
+> - Ne pas garder les prompts qui marchent bien.
+
+> [!retenir]
+> - Rôle, Contexte, Tâche, Format.
+> - Des exemples et des interdictions pour obtenir le bon style.
+> - Améliorer en plusieurs échanges.
+> - Une bibliothèque de prompts classée par usage.
+
+## Exercice pratique : avant et après
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez 3 tâches de votre futur métier (exemple : une publication, un e-mail, une fiche produit).
+> 2. Pour chacune, écrivez d''abord un prompt vague, puis un prompt RCTF.
+> 3. Comparez les deux réponses.
+> 4. Améliorez la meilleure réponse en au moins 2 échanges.
+> 5. Ajoutez les 3 prompts réussis à votre bibliothèque.
+>
+> **À livrer** : vos 6 prompts, les réponses comparées et votre bibliothèque de départ.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 1, 0, 'Que signifie RCTF ?', '["Rapide, Court, Terminé, Facile","Répéter, Copier, Taper, Finir","Rôle, Contexte, Tâche, Format","Rien"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 1, 1, 'Que faire si la première réponse ne convient pas ?', '["Changer d''ordinateur","La livrer quand même","Dire ce qui ne va pas et demander une modification précise","Abandonner"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 1, 2, 'Pourquoi préciser « prix en ariary, paiement par MVola » ?', '["Pour que l''IA adapte le texte au contexte malgache","Ce n''est pas utile","Pour payer l''IA","Pour aller plus vite"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-1-f', 2, 'Les outils et les usages', 'Écrire, reformuler, résumer et corriger, traduction et limites en malgache, formules de tableur et données fictives, images et transcription, usages par métier.', 'L''IA peut faire gagner beaucoup de temps sur des tâches précises : écrire, résumer, traduire, analyser un tableau, créer une image ou transcrire un enregistrement. Ce module passe en revue les usages les plus utiles en freelance et en télétravail, avec les outils gratuits correspondants.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser l''IA pour écrire, reformuler et résumer.
+> 2. Traduire avec l''IA en connaissant ses limites.
+> 3. Vous faire aider pour les formules de tableur et l''analyse de données.
+> 4. Créer des images et transcrire de l''audio.
+> 5. Choisir les bons usages selon votre métier.
+
+## Écrire, reformuler et résumer
+
+| Tâche | Exemple de demande |
+| --- | --- |
+| **Premier jet** | Rédige un e-mail de relance poli pour une facture en retard de 15 jours. |
+| **Reformuler** | Rends ce paragraphe plus simple, pour un lecteur qui n''est pas spécialiste. |
+| **Changer le ton** | Rends ce message plus chaleureux, sans être familier. |
+| **Résumer** | Résume ce rapport de 20 pages en 10 points pour la direction. |
+| **Corriger** | Corrige les fautes et liste les corrections faites. |
+
+> [!exemple] Gagner une heure
+> Lalao, assistante virtuelle, reçoit chaque semaine 3 enregistrements de réunions d''une ONG. Elle les fait transcrire, puis demande à l''IA un compte rendu en « décisions, actions, questions ». Elle relit, corrige les noms propres et envoie le compte rendu le jour même. Le travail qui prenait une matinée prend maintenant une heure.
+
+## Traduire avec l''IA
+
+| Paire de langues | Qualité habituelle | Conseil |
+| --- | --- | --- |
+| Français vers anglais | Bonne | Relire le ton et les termes techniques |
+| Anglais vers français | Bonne | Vérifier les faux amis |
+| Français vers malgache | Variable | Toujours faire relire par un locuteur |
+| Malgache vers français | Variable | Vérifier le sens, surtout les expressions |
+
+> [!madagascar]
+> Le malgache est moins présent dans les données d''entraînement des IA que le français ou l''anglais : les traductions peuvent être maladroites ou fausses, et les variantes régionales sont mal connues. C''est justement une compétence humaine précieuse que vous pouvez vendre.
+
+## Tableurs et données
+
+L''IA aide à écrire des formules et à comprendre des données.
+
+1. Décrivez votre tableau : « Colonne A : date, B : produit, C : quantité, D : prix. »
+2. Dites ce que vous voulez : « Je veux le total des ventes de vanille par mois. »
+3. Demandez la formule pour votre logiciel : « Pour Google Sheets, en français. »
+4. Testez la formule sur quelques lignes et vérifiez un résultat à la main.
+
+> [!astuce]
+> Ne collez jamais dans une IA un fichier contenant des données personnelles de clients (noms, téléphones, montants) sans autorisation. Remplacez-les par des données fictives pour obtenir la formule, puis appliquez-la au vrai fichier.
+
+## Images et audio
+
+| Besoin | Outils possibles | Point de vigilance |
+| --- | --- | --- |
+| **Créer une image** | Fonctions IA de Canva, Copilot, Gemini, ChatGPT | Vérifier les droits d''utilisation commerciale |
+| **Retoucher une photo** | Fonctions IA de Canva, de Photopea ou du téléphone | Ne pas tromper sur un produit |
+| **Transcrire un audio** | Transcription de Google Docs, Word ou d''outils dédiés | Relire les noms propres et le malgache |
+| **Sous-titrer une vidéo** | CapCut et autres outils de montage | Vérifier la synchronisation |
+
+## Les usages selon votre métier
+
+| Métier | Usage utile de l''IA |
+| --- | --- |
+| **Assistant virtuel** | Brouillons d''e-mails, comptes rendus, organisation |
+| **Community manager** | Idées de publications, calendrier, variantes de textes |
+| **Rédacteur web** | Plans d''articles, titres, relecture |
+| **Graphiste** | Recherche d''idées, images d''ambiance, déclinaisons |
+| **Analyste de données** | Formules, explication de résultats, code simple |
+| **Service client** | Modèles de réponses, résumés de demandes |
+
+> [!attention] Erreurs fréquentes
+> - Utiliser l''IA pour une tâche où elle est faible (chiffres locaux, malgache) sans vérifier.
+> - Livrer un texte « qui sent l''IA » : phrases creuses, mêmes tournures partout.
+> - Coller des données confidentielles dans un outil public.
+> - Utiliser une image générée sans vérifier les conditions d''utilisation.
+
+> [!retenir]
+> - Premier jet, reformulation, résumé et correction : les usages les plus rentables.
+> - Traduction : bonne en français et en anglais, à faire relire en malgache.
+> - Formules de tableur : décrire, demander, tester, vérifier.
+> - Images et audio : vérifier les droits et relire.
+
+## Exercice pratique : votre boîte à outils IA
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Choisissez le métier que vous visez.
+> 2. Réalisez 4 tâches typiques de ce métier avec l''aide de l''IA.
+> 3. Pour chaque tâche, notez le temps passé avec et sans IA (estimation).
+> 4. Notez les corrections que vous avez dû faire.
+>
+> **À livrer** : les 4 résultats finaux, vos prompts, le temps gagné et la liste des corrections.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 2, 0, 'Comment traiter une traduction vers le malgache faite par IA ?', '["La traduire en anglais","La faire relire par un locuteur","La publier directement","L''ignorer"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 2, 1, 'Comment obtenir une formule sans exposer les données d''un client ?', '["Envoyer le mot de passe du client","Impossible","Coller tout le fichier client","Utiliser des données fictives pour décrire le tableau"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 2, 2, 'Que vérifier avant d''utiliser une image générée pour un client ?', '["Rien","Sa couleur","Les conditions d''utilisation commerciale","Son poids"]'::jsonb, 2);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-1-f', 3, 'Utiliser l''IA de façon responsable', 'Données confidentielles, paramètres de confidentialité, vérification en 5 points, droits d''auteur, règles des plateformes, transparence avec les clients, cas d''un rédacteur pour une agence de voyage.', 'Utiliser l''IA de façon professionnelle, c''est aussi protéger les données de vos clients, respecter les règles et rester honnête sur votre façon de travailler. Ce module présente les bonnes pratiques, puis un cas réel de freelance à Madagascar.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Protéger les données confidentielles de vos clients.
+> 2. Vérifier les informations produites par l''IA.
+> 3. Respecter les droits d''auteur et les règles des plateformes.
+> 4. Être transparent avec vos clients sur l''usage de l''IA.
+> 5. Appliquer ces règles dans une vraie mission.
+
+## Protéger les données
+
+> [!definition] Donnée confidentielle
+> Toute information qu''un client ne souhaite pas voir partagée : noms et coordonnées de ses propres clients, chiffres financiers, contrats, mots de passe, projets non publiés.
+
+| À éviter | À faire |
+| --- | --- |
+| Coller un contrat complet avec les noms | Remplacer les noms par « Client A », « Société B » |
+| Envoyer la liste des clients d''une entreprise | Utiliser des données fictives pour tester |
+| Partager des mots de passe | Ne jamais en donner à une IA |
+| Utiliser n''importe quel outil inconnu | Lire les réglages de confidentialité de l''outil utilisé |
+
+> [!astuce]
+> Certains outils permettent de désactiver l''utilisation de vos conversations pour améliorer leurs modèles. Regardez les paramètres de confidentialité et demandez à votre client s''il a des règles internes sur l''IA.
+
+## Vérifier avant de livrer
+
+1. **Les faits** : dates, chiffres, noms, lois. Vérifiez sur une source officielle.
+2. **Les sources** : si l''IA cite un lien ou une étude, ouvrez-le pour vérifier qu''il existe.
+3. **Le contexte local** : prix en ariary, institutions malgaches, usages.
+4. **Le ton** : il doit correspondre au client et à son public.
+5. **L''originalité** : retravaillez le texte pour qu''il ne ressemble pas à une réponse générique.
+
+## Droits, règles et transparence
+
+| Sujet | Bonne pratique |
+| --- | --- |
+| **Droits d''auteur** | Ne pas demander de copier le texte ou le style exact d''un auteur ou d''une marque |
+| **Images** | Vérifier les conditions d''utilisation commerciale de l''outil |
+| **Plateformes freelance** | Lire leurs règles : certaines demandent de déclarer l''usage de l''IA |
+| **Écoles et concours** | Ne pas faire passer un travail généré pour un travail personnel |
+| **Clients** | Expliquer comment vous utilisez l''IA si on vous le demande |
+
+> [!exemple] Une phrase simple pour vos clients
+> « J''utilise des outils d''IA pour gagner du temps sur les premiers jets et les résumés. Chaque texte est ensuite vérifié, corrigé et adapté par moi. Je n''y mets jamais vos données confidentielles. »
+
+## Le cas pratique : Tahina et l''agence de voyage
+
+> [!exemple] Point de départ
+> **Tahina**, 25 ans, rédacteur à Antananarivo, est contacté par une agence de voyage qui veut 10 fiches de circuits pour son nouveau site, en français et en anglais, en 2 semaines.
+
+| Étape | Ce que fait Tahina |
+| --- | --- |
+| **Préparation** | Il demande à l''agence les programmes réels, les prix et les photos |
+| **Plan** | Il fait proposer à l''IA une structure de fiche, qu''il ajuste |
+| **Rédaction** | Il fait un premier jet par circuit avec un prompt RCTF détaillé |
+| **Vérification** | Il contrôle chaque distance, durée et prix avec l''agence |
+| **Adaptation** | Il ajoute des détails locaux que seule l''agence connaît |
+| **Traduction** | Il fait traduire en anglais, puis relit avec soin |
+| **Livraison** | Il livre en avance et propose une mise à jour mensuelle |
+
+> [!madagascar]
+> Les informations pratiques changent vite : état des routes, saisons des pluies, horaires des vols intérieurs. Une IA peut donner des informations dépassées. Tahina fait valider ces points par l''agence avant chaque publication.
+
+> [!attention] Erreurs fréquentes
+> - Coller les données d''un client dans un outil sans réfléchir.
+> - Livrer des chiffres non vérifiés.
+> - Cacher l''usage de l''IA quand le client ou la plateforme le demande.
+> - Promettre des délais irréalistes « parce que l''IA va vite ».
+
+> [!retenir]
+> - Jamais de données confidentielles dans une IA sans autorisation.
+> - Vérifier faits, sources, contexte local, ton et originalité.
+> - Respecter les droits d''auteur et les règles des plateformes.
+> - Être transparent sur sa méthode de travail.
+
+## Exercice pratique : votre charte d''usage de l''IA
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Rédigez votre charte personnelle d''usage de l''IA en 8 règles maximum.
+> 2. Rédigez la phrase que vous enverrez aux clients qui posent la question.
+> 3. Reprenez un texte produit au module 3 et appliquez la liste de vérification en 5 points.
+> 4. Notez chaque correction faite.
+>
+> **À livrer** : votre charte, votre phrase pour les clients et le texte vérifié avec ses corrections.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 3, 0, 'Que faire des noms dans un contrat avant de le donner à une IA ?', '["Les mettre en gras","Les traduire","Les remplacer par Client A ou Société B","Les laisser"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 3, 1, 'Que fait Tahina avec les distances et les prix ?', '["Il les supprime","Il les vérifie avec l''agence","Il fait confiance à l''IA","Il les invente"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 3, 2, 'Que répondre à un client qui demande si vous utilisez l''IA ?', '["Mentir","Refuser de répondre","Augmenter le prix","Expliquer honnêtement votre méthode et vos vérifications"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('num-1-f', 4, 'Mon plan d''action avec l''IA', 'Routine de travail, temps sans IA, valoriser un résultat plutôt qu''un outil, mesurer le temps gagné, rester à jour, faux sites et promesses miracles, plan sur 30 jours.', 'L''IA évolue très vite : les outils d''aujourd''hui seront différents dans six mois. Ce qui reste, c''est votre méthode et votre jugement. Ce dernier module vous aide à intégrer l''IA dans votre façon de travailler, à valoriser cette compétence auprès des clients et à continuer d''apprendre.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Construire une routine de travail avec l''IA.
+> 2. Valoriser vos compétences en IA dans vos offres.
+> 3. Mesurer le temps réellement gagné.
+> 4. Rester à jour sans vous disperser.
+> 5. Écrire votre plan d''action sur 30 jours.
+
+## Une routine de travail avec l''IA
+
+| Moment | Usage |
+| --- | --- |
+| **Début de journée** | Résumer les messages reçus et lister les priorités |
+| **Pendant une mission** | Premiers jets, reformulations, idées |
+| **Avant livraison** | Relecture assistée, puis vérification humaine |
+| **Fin de semaine** | Mettre à jour la bibliothèque de prompts |
+
+> [!astuce]
+> Gardez des temps de travail **sans IA** : écrire, réfléchir et résoudre un problème par vous-même entretient vos compétences. L''IA doit vous rendre plus fort, pas vous rendre dépendant.
+
+## Valoriser cette compétence
+
+Les clients recherchent des freelances qui savent utiliser l''IA **avec méthode**. Mettez en avant le résultat, pas l''outil.
+
+| Formulation faible | Formulation forte |
+| --- | --- |
+| « Je sais utiliser ChatGPT. » | « Je livre vos comptes rendus le jour même grâce à une méthode assistée par IA, vérifiée à la main. » |
+| « Je fais des textes avec l''IA. » | « Je rédige des fiches produits optimisées, relues et adaptées à votre marché. » |
+| « Je connais l''IA. » | « J''automatise vos réponses fréquentes pour réduire votre temps de traitement. » |
+
+> [!exemple] Une offre claire
+> Nirina, assistante virtuelle à Toliara, propose : « Gestion de votre boîte e-mail et comptes rendus de réunion livrés sous 24 h. J''utilise des outils d''IA pour aller plus vite, chaque document est vérifié par moi, vos données restent confidentielles. »
+
+## Mesurer le temps gagné
+
+1. Choisissez une tâche répétitive.
+2. Notez le temps qu''elle prend sans IA, sur 3 occurrences.
+3. Notez le temps avec IA, vérification comprise.
+4. Comparez, et gardez l''IA seulement là où le gain est réel.
+
+## Rester à jour sans se disperser
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| **Maîtriser un ou deux outils** | Mieux vaut bien connaître un outil que survoler dix |
+| **Tester les nouveautés une fois par mois** | Suivre les évolutions sans perdre de temps |
+| **Suivre les annonces officielles** | Éviter les rumeurs et les faux outils |
+| **Échanger avec d''autres freelances** | Partager prompts et bonnes pratiques |
+
+> [!madagascar]
+> Méfiez-vous des faux sites et des fausses applications qui imitent les assistants connus, et des formations miracles qui promettent des revenus garantis grâce à l''IA. Utilisez uniquement les sites et applications officiels.
+
+> [!attention] Erreurs fréquentes
+> - Changer d''outil chaque semaine.
+> - Vendre « de l''IA » au lieu d''un résultat pour le client.
+> - Ne jamais mesurer le temps réellement gagné.
+> - Arrêter de développer ses propres compétences.
+
+## Votre plan d''action sur 30 jours
+
+| Semaine | Objectif |
+| --- | --- |
+| **1** | Choisir votre outil principal et compléter votre bibliothèque de prompts (10 prompts) |
+| **2** | Utiliser l''IA chaque jour sur une tâche réelle et mesurer le temps gagné |
+| **3** | Créer 2 exemples de travaux assistés par IA pour votre portfolio |
+| **4** | Mettre à jour votre profil et votre offre avec une formulation centrée sur le résultat |
+
+> [!retenir]
+> - Une routine simple : début de journée, mission, livraison, fin de semaine.
+> - Vendre un résultat, pas un outil.
+> - Mesurer le temps gagné, vérification comprise.
+> - Un ou deux outils maîtrisés, une veille mensuelle.
+
+## Exercice pratique : votre plan IA
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Écrivez votre routine de travail avec l''IA.
+> 2. Mesurez le temps gagné sur une tâche répétitive (3 essais).
+> 3. Réécrivez la présentation de votre offre avec une formulation centrée sur le résultat.
+> 4. Remplissez votre plan d''action sur 30 jours.
+>
+> **À livrer** : votre routine, votre mesure de temps, votre offre réécrite et votre plan sur 30 jours.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 4, 0, 'Que mettre en avant dans une offre ?', '["Le nom de l''outil d''IA","Le résultat pour le client","Rien","Le nombre de prompts"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 4, 1, 'Combien d''outils d''IA maîtriser au départ ?', '["Un ou deux","Aucun","Dix","Tous"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('num-1-f', 4, 2, 'Comment savoir si l''IA fait vraiment gagner du temps ?', '["Demander à l''IA","Mesurer le temps avec et sans IA, vérification comprise","Le deviner","Ce n''est pas mesurable"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que fait une IA générative ?', '["Elle produit du contenu nouveau à partir d''une demande","Elle répare les ordinateurs","Elle remplace Internet","Elle stocke des fichiers"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Comment fonctionne un modèle de langage ?', '["Il appelle un humain","Il prédit la suite la plus probable d''un texte","Il lit dans les pensées","Il recopie toujours Wikipédia"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Pour quelle tâche l''IA est-elle la plus utile ?', '["Garantir une source","Faire un premier jet de texte","Donner un prix exact à Madagascar","Connaître une loi locale récente"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Pourquoi l''IA connaît-elle moins bien Madagascar ?', '["C''est faux, elle connaît tout","Madagascar interdit l''IA","Elle a été entraînée sur moins de données sur Madagascar","Elle ne parle pas français"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que fait Rado quand l''IA donne une date ?', '["Il la change au hasard","Il la vérifie sur une source officielle","Il la publie","Il l''ignore"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Dans RCTF, que précise le F ?', '["Le fichier","La facture","Le format : forme, longueur et ton","La fin"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Pourquoi donner des exemples à l''IA ?', '["Pour payer moins","Pour la ralentir","Pour obtenir le bon style","Ce n''est pas utile"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Quelle demande aide l''IA à mieux comprendre le besoin ?', '["« Écris n''importe quoi. »","« Ne réponds pas. »","« Fais vite. »","« Pose-moi d''abord des questions. »"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'À quoi sert une bibliothèque de prompts ?', '["Payer l''IA","Stocker des mots de passe","Lire des livres","Réutiliser les prompts qui fonctionnent"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Quel est un bon usage de l''IA pour une assistante virtuelle ?', '["Faire un compte rendu à partir d''une transcription, puis le relire","Ne jamais relire","Remplacer le client","Envoyer les données clients à tous les outils"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Quelle traduction demande le plus de vérification ?', '["Français vers malgache","Aucune","Anglais vers français","Français vers anglais"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Comment vérifier une formule proposée par l''IA ?', '["La tester sur quelques lignes et vérifier un résultat à la main","La supprimer","La traduire","La croire sans test"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Qu''est-ce qu''un texte « qui sent l''IA » ?', '["Un texte creux avec les mêmes tournures partout","Un texte parfait","Un texte court","Un texte en malgache"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Qu''est-ce qu''une donnée confidentielle ?', '["Un nom de ville","Une donnée publique","Un titre de film","Une information que le client ne veut pas voir partagée"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que faut-il ne jamais donner à une IA ?', '["Une question générale","Un texte que vous avez écrit","Un plan d''article","Des mots de passe"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Si l''IA cite un lien ou une étude, que faire ?', '["Ouvrir le lien pour vérifier qu''il existe","Le recopier tel quel","Le traduire","Le supprimer sans regarder"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que demander à une IA à propos d''un auteur connu ?', '["Publier sous son nom","Ne pas copier son texte ou son style exact","Recopier son livre","Imiter sa signature"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que doivent faire les freelances sur les plateformes ?', '["Ignorer les règles","Lire leurs règles sur l''usage de l''IA","Cacher tout","Créer plusieurs comptes"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Pourquoi Tahina fait-il valider les infos pratiques par l''agence ?', '["Parce qu''elles changent vite et l''IA peut être dépassée","Pour gagner moins","Par politesse seulement","Ce n''est pas utile"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Pourquoi garder des temps de travail sans IA ?', '["Parce que l''IA est interdite","Pour économiser l''électricité","Pour entretenir ses propres compétences","Pour perdre du temps"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Quelle formulation d''offre est la plus forte ?', '["« Je fais des textes. »","« Je livre vos comptes rendus le jour même, vérifiés à la main. »","« Je connais l''IA. »","« Je sais utiliser ChatGPT. »"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Comment rester à jour sans se disperser ?', '["Tester les nouveautés une fois par mois","Changer d''outil chaque jour","Suivre les rumeurs","Ne jamais rien tester"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'De quoi faut-il se méfier ?', '["Des faux sites et des formations qui promettent des revenus garantis","Des autres freelances","Des mises à jour","Des sites officiels"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Que faire la semaine 3 du plan d''action ?', '["Rien","Créer 2 exemples de travaux pour son portfolio","Supprimer son profil","Arrêter d''utiliser l''IA"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('num-1-f', 'Qui vérifie, adapte et reste responsable du travail ?', '["L''IA","Le client","La plateforme","Vous"]'::jsonb, 3);
 
 -- perso-0-f
 delete from public.exam_questions where course_id = 'perso-0-f';

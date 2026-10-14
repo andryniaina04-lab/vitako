@@ -420,5 +420,25 @@
     "single": true
    }
   ]
+ },
+ {
+  "id": "num",
+  "name": "Compétences numériques",
+  "jobs": [
+   {
+    "name": "Informatique et bureautique",
+    "blurb": "maîtriser l'ordinateur, les fichiers, le traitement de texte, le tableur, les présentations et les outils en ligne",
+    "tools": "Google Docs, Sheets et Slides, LibreOffice et Microsoft 365 (versions web gratuites)",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Intelligence artificielle au quotidien",
+    "blurb": "utiliser les assistants d'IA pour écrire, résumer, traduire et gagner du temps, avec méthode et prudence",
+    "tools": "ChatGPT, Claude, Gemini et Microsoft Copilot (versions gratuites)",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ]

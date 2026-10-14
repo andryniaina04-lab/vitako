@@ -1,0 +1,97 @@
+{
+  "id": "num-1-f",
+  "hours": 10,
+  "description": "Les assistants d'intelligence artificielle font gagner du temps aux freelances, à condition de savoir s'en servir avec méthode et prudence. Cette formation pratique, en 5 modules, explique ce qu'est l'IA générative, les principaux assistants gratuits (ChatGPT, Claude, Gemini, Copilot), leurs forces et leurs limites, les hallucinations, la méthode RCTF pour écrire de bons prompts, l'amélioration en plusieurs échanges, la bibliothèque de prompts, les usages utiles (écrire, résumer, traduire, formules de tableur, images, transcription), la protection des données des clients, la vérification avant livraison, les droits d'auteur et la transparence, avec le cas d'un rédacteur pour une agence de voyage, puis une routine de travail et un plan d'action. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Comprendre ce qu'est l'IA générative, ses forces et ses limites",
+    "Écrire des prompts efficaces avec la méthode RCTF et les améliorer",
+    "Utiliser l'IA pour écrire, résumer, traduire, analyser des données et créer des images",
+    "Protéger les données des clients et vérifier tout ce que l'IA produit",
+    "Respecter les droits d'auteur, les règles des plateformes et rester transparent",
+    "Intégrer l'IA dans sa routine et la valoriser dans ses offres"
+  ],
+  "modules": [
+    {
+      "title": "Comprendre l'intelligence artificielle",
+      "summary": "IA générative et modèles de langage, prompt, principaux assistants gratuits, ce que l'IA fait bien et mal, hallucinations, rôle central du freelance, limites sur Madagascar.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce qu'une hallucination de l'IA ?", "options": ["Une réponse fausse donnée avec assurance", "Une image en couleur", "Une panne d'Internet", "Une réponse trop courte"], "correct": 0 },
+        { "q": "Comment s'appelle la demande écrite à une IA ?", "options": ["Un prompt", "Un code PIN", "Un fichier", "Un modèle"], "correct": 0 },
+        { "q": "Qui est responsable du travail livré au client ?", "options": ["Le freelance", "L'IA", "L'éditeur de l'IA", "Personne"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les bases : écrire de bons prompts",
+      "summary": "Méthode RCTF (rôle, contexte, tâche, format), exemples et interdictions, amélioration en plusieurs échanges, demandes utiles, bibliothèque de prompts, contexte malgache.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que signifie RCTF ?", "options": ["Rôle, Contexte, Tâche, Format", "Rapide, Court, Terminé, Facile", "Répéter, Copier, Taper, Finir", "Rien"], "correct": 0 },
+        { "q": "Que faire si la première réponse ne convient pas ?", "options": ["Dire ce qui ne va pas et demander une modification précise", "Abandonner", "La livrer quand même", "Changer d'ordinateur"], "correct": 0 },
+        { "q": "Pourquoi préciser « prix en ariary, paiement par MVola » ?", "options": ["Pour que l'IA adapte le texte au contexte malgache", "Pour payer l'IA", "Ce n'est pas utile", "Pour aller plus vite"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les outils et les usages",
+      "summary": "Écrire, reformuler, résumer et corriger, traduction et limites en malgache, formules de tableur et données fictives, images et transcription, usages par métier.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Comment traiter une traduction vers le malgache faite par IA ?", "options": ["La faire relire par un locuteur", "La publier directement", "La traduire en anglais", "L'ignorer"], "correct": 0 },
+        { "q": "Comment obtenir une formule sans exposer les données d'un client ?", "options": ["Utiliser des données fictives pour décrire le tableau", "Coller tout le fichier client", "Envoyer le mot de passe du client", "Impossible"], "correct": 0 },
+        { "q": "Que vérifier avant d'utiliser une image générée pour un client ?", "options": ["Les conditions d'utilisation commerciale", "Sa couleur", "Son poids", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Utiliser l'IA de façon responsable",
+      "summary": "Données confidentielles, paramètres de confidentialité, vérification en 5 points, droits d'auteur, règles des plateformes, transparence avec les clients, cas d'un rédacteur pour une agence de voyage.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que faire des noms dans un contrat avant de le donner à une IA ?", "options": ["Les remplacer par Client A ou Société B", "Les laisser", "Les mettre en gras", "Les traduire"], "correct": 0 },
+        { "q": "Que fait Tahina avec les distances et les prix ?", "options": ["Il les vérifie avec l'agence", "Il fait confiance à l'IA", "Il les supprime", "Il les invente"], "correct": 0 },
+        { "q": "Que répondre à un client qui demande si vous utilisez l'IA ?", "options": ["Expliquer honnêtement votre méthode et vos vérifications", "Mentir", "Refuser de répondre", "Augmenter le prix"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mon plan d'action avec l'IA",
+      "summary": "Routine de travail, temps sans IA, valoriser un résultat plutôt qu'un outil, mesurer le temps gagné, rester à jour, faux sites et promesses miracles, plan sur 30 jours.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Que mettre en avant dans une offre ?", "options": ["Le résultat pour le client", "Le nom de l'outil d'IA", "Le nombre de prompts", "Rien"], "correct": 0 },
+        { "q": "Combien d'outils d'IA maîtriser au départ ?", "options": ["Un ou deux", "Dix", "Tous", "Aucun"], "correct": 0 },
+        { "q": "Comment savoir si l'IA fait vraiment gagner du temps ?", "options": ["Mesurer le temps avec et sans IA, vérification comprise", "Le deviner", "Demander à l'IA", "Ce n'est pas mesurable"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Que fait une IA générative ?", "options": ["Elle produit du contenu nouveau à partir d'une demande", "Elle répare les ordinateurs", "Elle remplace Internet", "Elle stocke des fichiers"], "correct": 0 },
+    { "q": "Comment fonctionne un modèle de langage ?", "options": ["Il prédit la suite la plus probable d'un texte", "Il lit dans les pensées", "Il recopie toujours Wikipédia", "Il appelle un humain"], "correct": 0 },
+    { "q": "Pour quelle tâche l'IA est-elle la plus utile ?", "options": ["Faire un premier jet de texte", "Donner un prix exact à Madagascar", "Connaître une loi locale récente", "Garantir une source"], "correct": 0 },
+    { "q": "Pourquoi l'IA connaît-elle moins bien Madagascar ?", "options": ["Elle a été entraînée sur moins de données sur Madagascar", "Madagascar interdit l'IA", "Elle ne parle pas français", "C'est faux, elle connaît tout"], "correct": 0 },
+    { "q": "Que fait Rado quand l'IA donne une date ?", "options": ["Il la vérifie sur une source officielle", "Il la publie", "Il la change au hasard", "Il l'ignore"], "correct": 0 },
+    { "q": "Dans RCTF, que précise le F ?", "options": ["Le format : forme, longueur et ton", "Le fichier", "La facture", "La fin"], "correct": 0 },
+    { "q": "Pourquoi donner des exemples à l'IA ?", "options": ["Pour obtenir le bon style", "Pour la ralentir", "Ce n'est pas utile", "Pour payer moins"], "correct": 0 },
+    { "q": "Quelle demande aide l'IA à mieux comprendre le besoin ?", "options": ["« Pose-moi d'abord des questions. »", "« Fais vite. »", "« Écris n'importe quoi. »", "« Ne réponds pas. »"], "correct": 0 },
+    { "q": "À quoi sert une bibliothèque de prompts ?", "options": ["Réutiliser les prompts qui fonctionnent", "Stocker des mots de passe", "Payer l'IA", "Lire des livres"], "correct": 0 },
+    { "q": "Quel est un bon usage de l'IA pour une assistante virtuelle ?", "options": ["Faire un compte rendu à partir d'une transcription, puis le relire", "Envoyer les données clients à tous les outils", "Ne jamais relire", "Remplacer le client"], "correct": 0 },
+    { "q": "Quelle traduction demande le plus de vérification ?", "options": ["Français vers malgache", "Français vers anglais", "Anglais vers français", "Aucune"], "correct": 0 },
+    { "q": "Comment vérifier une formule proposée par l'IA ?", "options": ["La tester sur quelques lignes et vérifier un résultat à la main", "La croire sans test", "La supprimer", "La traduire"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un texte « qui sent l'IA » ?", "options": ["Un texte creux avec les mêmes tournures partout", "Un texte parfait", "Un texte en malgache", "Un texte court"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une donnée confidentielle ?", "options": ["Une information que le client ne veut pas voir partagée", "Une donnée publique", "Un titre de film", "Un nom de ville"], "correct": 0 },
+    { "q": "Que faut-il ne jamais donner à une IA ?", "options": ["Des mots de passe", "Un plan d'article", "Une question générale", "Un texte que vous avez écrit"], "correct": 0 },
+    { "q": "Si l'IA cite un lien ou une étude, que faire ?", "options": ["Ouvrir le lien pour vérifier qu'il existe", "Le recopier tel quel", "Le supprimer sans regarder", "Le traduire"], "correct": 0 },
+    { "q": "Que demander à une IA à propos d'un auteur connu ?", "options": ["Ne pas copier son texte ou son style exact", "Recopier son livre", "Imiter sa signature", "Publier sous son nom"], "correct": 0 },
+    { "q": "Que doivent faire les freelances sur les plateformes ?", "options": ["Lire leurs règles sur l'usage de l'IA", "Ignorer les règles", "Cacher tout", "Créer plusieurs comptes"], "correct": 0 },
+    { "q": "Pourquoi Tahina fait-il valider les infos pratiques par l'agence ?", "options": ["Parce qu'elles changent vite et l'IA peut être dépassée", "Pour gagner moins", "Par politesse seulement", "Ce n'est pas utile"], "correct": 0 },
+    { "q": "Pourquoi garder des temps de travail sans IA ?", "options": ["Pour entretenir ses propres compétences", "Pour perdre du temps", "Parce que l'IA est interdite", "Pour économiser l'électricité"], "correct": 0 },
+    { "q": "Quelle formulation d'offre est la plus forte ?", "options": ["« Je livre vos comptes rendus le jour même, vérifiés à la main. »", "« Je sais utiliser ChatGPT. »", "« Je connais l'IA. »", "« Je fais des textes. »"], "correct": 0 },
+    { "q": "Comment rester à jour sans se disperser ?", "options": ["Tester les nouveautés une fois par mois", "Changer d'outil chaque jour", "Ne jamais rien tester", "Suivre les rumeurs"], "correct": 0 },
+    { "q": "De quoi faut-il se méfier ?", "options": ["Des faux sites et des formations qui promettent des revenus garantis", "Des sites officiels", "Des mises à jour", "Des autres freelances"], "correct": 0 },
+    { "q": "Que faire la semaine 3 du plan d'action ?", "options": ["Créer 2 exemples de travaux pour son portfolio", "Arrêter d'utiliser l'IA", "Supprimer son profil", "Rien"], "correct": 0 },
+    { "q": "Qui vérifie, adapte et reste responsable du travail ?", "options": ["Vous", "L'IA", "Le client", "La plateforme"], "correct": 0 }
+  ]
+}

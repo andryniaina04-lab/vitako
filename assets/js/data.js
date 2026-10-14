@@ -421,6 +421,26 @@ export const DOMAINS = [
     "single": true
    }
   ]
+ },
+ {
+  "id": "num",
+  "name": "Compétences numériques",
+  "jobs": [
+   {
+    "name": "Informatique et bureautique",
+    "blurb": "maîtriser l'ordinateur, les fichiers, le traitement de texte, le tableur, les présentations et les outils en ligne",
+    "tools": "Google Docs, Sheets et Slides, LibreOffice et Microsoft 365 (versions web gratuites)",
+    "paid": "",
+    "single": true
+   },
+   {
+    "name": "Intelligence artificielle au quotidien",
+    "blurb": "utiliser les assistants d'IA pour écrire, résumer, traduire et gagner du temps, avec méthode et prudence",
+    "tools": "ChatGPT, Claude, Gemini et Microsoft Copilot (versions gratuites)",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ];
 export const PUBLISHED = {
@@ -3481,6 +3501,74 @@ export const PUBLISHED = {
    {
     "title": "Trouver des marques et se faire payer",
     "minutes": 6
+   }
+  ]
+ },
+ "num-0-f": {
+  "hours": 12,
+  "description": "Savoir se servir d'un ordinateur et des logiciels de bureau est demandé dans presque tous les métiers du télétravail. Cette formation pratique, en 5 modules, couvre l'essentiel et un peu plus : organisation des dossiers et noms de fichiers, formats (DOCX, XLSX, PDF), raccourcis clavier, sauvegarde 3-2-1, traitement de texte avec styles et table des matières, tableur avec formules, SI, SOMME.SI, RECHERCHEV, références absolues et tableau croisé dynamique, présentations, partage dans le cloud, visioconférence, e-mail professionnel et sécurité des comptes, puis une mission complète et un plan pour proposer ses services. Avec des outils gratuits : Google Docs, Sheets et Slides, LibreOffice et les versions web de Microsoft 365. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Organiser ses fichiers, choisir le bon format et ne jamais perdre son travail",
+   "Créer des documents structurés avec styles, table des matières et mise en page",
+   "Utiliser un tableur : formules, fonctions, références absolues, tableau croisé dynamique",
+   "Réaliser des présentations claires et partager des fichiers avec les bons droits",
+   "Communiquer à distance par visioconférence et e-mail, et protéger ses comptes",
+   "Mener une mission de bureautique de bout en bout et proposer ses services"
+  ],
+  "modules": [
+   {
+    "title": "L'ordinateur, les fichiers et la sauvegarde",
+    "minutes": 6
+   },
+   {
+    "title": "Le traitement de texte",
+    "minutes": 5
+   },
+   {
+    "title": "Le tableur : formules et analyse",
+    "minutes": 6
+   },
+   {
+    "title": "Présenter, partager et travailler en ligne",
+    "minutes": 5
+   },
+   {
+    "title": "Mise en situation et plan d'action",
+    "minutes": 5
+   }
+  ]
+ },
+ "num-1-f": {
+  "hours": 10,
+  "description": "Les assistants d'intelligence artificielle font gagner du temps aux freelances, à condition de savoir s'en servir avec méthode et prudence. Cette formation pratique, en 5 modules, explique ce qu'est l'IA générative, les principaux assistants gratuits (ChatGPT, Claude, Gemini, Copilot), leurs forces et leurs limites, les hallucinations, la méthode RCTF pour écrire de bons prompts, l'amélioration en plusieurs échanges, la bibliothèque de prompts, les usages utiles (écrire, résumer, traduire, formules de tableur, images, transcription), la protection des données des clients, la vérification avant livraison, les droits d'auteur et la transparence, avec le cas d'un rédacteur pour une agence de voyage, puis une routine de travail et un plan d'action. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Comprendre ce qu'est l'IA générative, ses forces et ses limites",
+   "Écrire des prompts efficaces avec la méthode RCTF et les améliorer",
+   "Utiliser l'IA pour écrire, résumer, traduire, analyser des données et créer des images",
+   "Protéger les données des clients et vérifier tout ce que l'IA produit",
+   "Respecter les droits d'auteur, les règles des plateformes et rester transparent",
+   "Intégrer l'IA dans sa routine et la valoriser dans ses offres"
+  ],
+  "modules": [
+   {
+    "title": "Comprendre l'intelligence artificielle",
+    "minutes": 5
+   },
+   {
+    "title": "Les bases : écrire de bons prompts",
+    "minutes": 5
+   },
+   {
+    "title": "Les outils et les usages",
+    "minutes": 5
+   },
+   {
+    "title": "Utiliser l'IA de façon responsable",
+    "minutes": 5
+   },
+   {
+    "title": "Mon plan d'action avec l'IA",
+    "minutes": 5
    }
   ]
  },

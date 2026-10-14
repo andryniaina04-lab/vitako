@@ -1,0 +1,97 @@
+{
+  "id": "num-0-f",
+  "hours": 12,
+  "description": "Savoir se servir d'un ordinateur et des logiciels de bureau est demandé dans presque tous les métiers du télétravail. Cette formation pratique, en 5 modules, couvre l'essentiel et un peu plus : organisation des dossiers et noms de fichiers, formats (DOCX, XLSX, PDF), raccourcis clavier, sauvegarde 3-2-1, traitement de texte avec styles et table des matières, tableur avec formules, SI, SOMME.SI, RECHERCHEV, références absolues et tableau croisé dynamique, présentations, partage dans le cloud, visioconférence, e-mail professionnel et sécurité des comptes, puis une mission complète et un plan pour proposer ses services. Avec des outils gratuits : Google Docs, Sheets et Slides, LibreOffice et les versions web de Microsoft 365. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Organiser ses fichiers, choisir le bon format et ne jamais perdre son travail",
+    "Créer des documents structurés avec styles, table des matières et mise en page",
+    "Utiliser un tableur : formules, fonctions, références absolues, tableau croisé dynamique",
+    "Réaliser des présentations claires et partager des fichiers avec les bons droits",
+    "Communiquer à distance par visioconférence et e-mail, et protéger ses comptes",
+    "Mener une mission de bureautique de bout en bout et proposer ses services"
+  ],
+  "modules": [
+    {
+      "title": "L'ordinateur, les fichiers et la sauvegarde",
+      "summary": "Éléments d'un ordinateur, cloud, organisation des dossiers par client et projet, noms de fichiers, formats DOCX, XLSX, PPTX, PDF, JPG, PNG et ZIP, raccourcis clavier, règle 3-2-1.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel format envoyer pour une version finale non modifiable ?", "options": ["PDF", "DOCX", "XLSX", "TXT"], "correct": 0 },
+        { "q": "Que signifie la règle 3-2-1 ?", "options": ["3 copies, sur 2 supports, dont 1 hors de chez soi", "3 dossiers, 2 clients, 1 projet", "3 mots de passe, 2 comptes, 1 ordinateur", "3 heures de travail, 2 pauses, 1 sauvegarde"], "correct": 0 },
+        { "q": "Quel raccourci enregistre un fichier ?", "options": ["Ctrl + S", "Ctrl + Z", "Ctrl + F", "Alt + Tab"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Le traitement de texte",
+      "summary": "Google Docs, Word et LibreOffice Writer, styles de titres, table des matières automatique, mise en page, commentaires, mode suggestion et historique des versions.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi utiliser les styles de titres ?", "options": ["Pour structurer le document et créer la table des matières automatique", "Pour colorer le texte", "Pour imprimer plus vite", "Ce n'est pas utile"], "correct": 0 },
+        { "q": "Comment passer à la page suivante proprement ?", "options": ["Avec un saut de page", "En appuyant plusieurs fois sur Entrée", "En changeant de police", "En ajoutant des espaces"], "correct": 0 },
+        { "q": "Comment proposer des corrections dans le texte d'un client ?", "options": ["Avec le mode suggestion ou le suivi des modifications", "En modifiant directement sans prévenir", "En réécrivant tout", "En envoyant une photo"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Le tableur : formules et analyse",
+      "summary": "Cellules et bonnes règles d'un tableau, SOMME, MOYENNE, NB, SI, SOMME.SI, RECHERCHEV, références absolues avec $, tri, filtre, mise en forme conditionnelle, tableau croisé dynamique et graphique.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Par quel signe commence une formule ?", "options": ["=", "+", "$", "#"], "correct": 0 },
+        { "q": "À quoi sert le signe $ dans =B2/$F$1 ?", "options": ["À bloquer la cellule F1 quand on recopie la formule", "À afficher des dollars", "À arrondir le résultat", "À rien"], "correct": 0 },
+        { "q": "Quel outil résume une grande liste par mois et par produit sans formule ?", "options": ["Le tableau croisé dynamique", "La fusion de cellules", "Le correcteur", "Le saut de page"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Présenter, partager et travailler en ligne",
+      "summary": "Règles d'une présentation claire, droits d'accès lecteur, commentateur et éditeur, visioconférence avant, pendant et après, e-mail professionnel, mots de passe, gestionnaire et double authentification.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien d'idées par diapositive ?", "options": ["Une", "Cinq", "Autant que possible", "Aucune"], "correct": 0 },
+        { "q": "Quel droit donner le plus souvent à un client qui doit seulement relire ?", "options": ["Lecteur ou commentateur", "Éditeur", "Propriétaire", "Accès public à tous"], "correct": 0 },
+        { "q": "Que faire si la connexion est faible en visioconférence ?", "options": ["Couper la caméra et garder l'audio", "Quitter sans prévenir", "Parler plus fort", "Partager tout l'écran"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Mise en situation et plan d'action",
+      "summary": "Cas d'une association de couturières à Fianarantsoa : comprendre, organiser, saisir, calculer, présenter, documenter et former. Vérifications avant livraison, services à proposer, plan de progression sur 30 jours.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la première étape d'une mission ?", "options": ["Comprendre le besoin du client", "Choisir les couleurs", "Envoyer la facture", "Créer les graphiques"], "correct": 0 },
+        { "q": "Que livrer avec un tableau de suivi pour un client débutant ?", "options": ["Un guide d'utilisation simple", "Rien de plus", "Un mot de passe", "Un logiciel payant"], "correct": 0 },
+        { "q": "Comment vérifier les formules avant de livrer ?", "options": ["Contrôler un total à la main", "Ne rien vérifier", "Demander au client de vérifier", "Supprimer les formules"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Où ranger les fichiers d'un projet client ?", "options": ["Dans un dossier par client, puis un sous-dossier par projet", "Sur le Bureau", "Dans Téléchargements", "Dans la corbeille"], "correct": 0 },
+    { "q": "Quel nom de fichier est le plus professionnel ?", "options": ["2026-10-14_Ravinala_Tarifs_v2.xlsx", "document final final 2.xlsx", "nouveau.xlsx", "aaa.xlsx"], "correct": 0 },
+    { "q": "Quel format pour un tableau de calcul modifiable ?", "options": ["XLSX", "PDF", "JPG", "ZIP"], "correct": 0 },
+    { "q": "Quel format pour envoyer plusieurs fichiers d'un coup ?", "options": ["ZIP", "DOCX", "PNG", "PPTX"], "correct": 0 },
+    { "q": "Qu'est-ce que le cloud ?", "options": ["Un espace de stockage sur Internet", "Un virus", "Un type d'écran", "Une imprimante"], "correct": 0 },
+    { "q": "Quel raccourci annule la dernière action ?", "options": ["Ctrl + Z", "Ctrl + S", "Ctrl + C", "Ctrl + P"], "correct": 0 },
+    { "q": "Que faire contre les coupures de courant ?", "options": ["Enregistrer souvent et activer l'enregistrement automatique", "Ne jamais enregistrer", "Travailler sans ordinateur", "Éteindre l'écran"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un style dans un traitement de texte ?", "options": ["Un ensemble de réglages de mise en forme enregistré sous un nom", "Une image", "Un modèle de facture", "Une police unique"], "correct": 0 },
+    { "q": "Que faire après avoir ajouté des pages à un document avec table des matières ?", "options": ["Mettre à jour la table des matières", "La supprimer", "La réécrire à la main", "Rien"], "correct": 0 },
+    { "q": "Combien de polices utiliser dans un document professionnel ?", "options": ["Une, ou deux au maximum", "Quatre", "Une par paragraphe", "Peu importe"], "correct": 0 },
+    { "q": "À quoi sert l'historique des versions ?", "options": ["Revenir à une version précédente", "Changer de langue", "Imprimer", "Compter les mots"], "correct": 0 },
+    { "q": "Quelle formule calcule le total de C2 à C20 ?", "options": ["=SOMME(C2:C20)", "=TOTAL C2-C20", "SOMME(C2+C20)", "=C2:C20"], "correct": 0 },
+    { "q": "Que fait =SI(D2>=50;\"Réussi\";\"À revoir\") ?", "options": ["Affiche Réussi si D2 vaut au moins 50, sinon À revoir", "Additionne D2 et 50", "Supprime D2", "Colore la cellule"], "correct": 0 },
+    { "q": "À quoi sert SOMME.SI ?", "options": ["Faire le total pour une seule catégorie", "Compter les lignes vides", "Trier un tableau", "Créer un graphique"], "correct": 0 },
+    { "q": "À quoi sert RECHERCHEV ?", "options": ["Aller chercher une information dans une autre liste", "Vérifier l'orthographe", "Chercher un fichier", "Ouvrir Internet"], "correct": 0 },
+    { "q": "Pourquoi éviter de fusionner des cellules dans un tableau de données ?", "options": ["Le tri et le filtre ne fonctionnent plus", "Cela colore le tableau", "Cela ralentit Internet", "Ce n'est pas un problème"], "correct": 0 },
+    { "q": "Comment noter un montant dans un tableur ?", "options": ["15000, avec un format nombre", "« 15 000 Ar » en texte", "Quinze mille", "15.000.Ar"], "correct": 0 },
+    { "q": "Quel graphique pour montrer une évolution dans le temps ?", "options": ["Une courbe", "Un camembert", "Aucun", "Un tableau de texte"], "correct": 0 },
+    { "q": "Quelle taille de police minimum dans une présentation ?", "options": ["24 points", "8 points", "10 points", "Peu importe"], "correct": 0 },
+    { "q": "Comment partager un dossier client en sécurité ?", "options": ["Avec l'adresse e-mail de la personne et le droit le plus faible suffisant", "Avec un lien ouvert à tous", "En publiant le lien sur Facebook", "En donnant son mot de passe"], "correct": 0 },
+    { "q": "Que contient un bon objet d'e-mail ?", "options": ["Le sujet précis, par exemple « Rapport mensuel d'octobre – Coopérative Mamy »", "Bonjour", "Rien", "URGENT !!!"], "correct": 0 },
+    { "q": "Qu'est-ce que la double authentification ?", "options": ["Un code sur le téléphone en plus du mot de passe", "Deux mots de passe identiques", "Deux comptes e-mail", "Deux ordinateurs"], "correct": 0 },
+    { "q": "Quelle longueur minimum pour un bon mot de passe ?", "options": ["12 caractères", "4 caractères", "6 chiffres", "Son prénom"], "correct": 0 },
+    { "q": "Comment fixer le prix d'une mission de bureautique ?", "options": ["Par mission, après avoir estimé le temps nécessaire", "Toujours gratuitement", "Au hasard", "Le plus cher possible"], "correct": 0 },
+    { "q": "Que mettre dans un portfolio bureautique ?", "options": ["Un rapport, un tableau de suivi et une présentation", "Ses mots de passe", "Des photos de vacances", "Rien"], "correct": 0 }
+  ]
+}
