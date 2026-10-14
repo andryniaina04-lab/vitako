@@ -675,3 +675,26 @@ body{margin:0}
 .promo:hover .promo-go{gap:10px}
 @media (max-width:640px){.promo{padding:16px}.promo-go{display:none}.promo-pct{min-width:56px;height:56px;font-size:.98rem}}
 .lp-eyebrow::before{display:none!important}
+
+/* Étoiles de l'avis : bien visibles dès le départ */
+.rv-starline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.rv-starrow label{color:#fff}
+.rv-starrow svg{stroke:var(--gold);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
+.rv-starrow label:hover,.rv-starrow label:hover~label,.rv-starrow input:checked~label{color:#F5B301}
+.rv-starrow label:hover svg,.rv-starrow label:hover~label svg,.rv-starrow input:checked~label svg{stroke:#C98E00}
+.rv-word{font-weight:700;color:var(--gold)}
+.rv-starline:has(#rv-1:checked) .rv-word::after{content:"Décevante"}
+.rv-starline:has(#rv-2:checked) .rv-word::after{content:"Moyenne"}
+.rv-starline:has(#rv-3:checked) .rv-word::after{content:"Bien"}
+.rv-starline:has(#rv-4:checked) .rv-word::after{content:"Très bien"}
+.rv-starline:has(#rv-5:checked) .rv-word::after{content:"Excellente"}
+/* Bloc d'avis : tout centré */
+.rv{text-align:center}
+.rv-head{flex-direction:column;align-items:center;gap:10px}
+.rv-form{margin:0 auto;justify-items:center}
+.rv-stars legend{margin-inline:auto}
+.rv-starline{justify-content:center}
+.rv textarea.in{text-align:left}
+.rv-check{justify-content:center;text-align:left}
+.rv-actions{justify-content:center}
+.rv textarea.in{width:100%}

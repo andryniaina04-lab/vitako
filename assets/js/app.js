@@ -1055,7 +1055,7 @@ function reviewBlock() {
   const c = pendingReview();
   if (!c || /^\/admin/.test(route().path) || /\/examen$/.test(route().path) && !S.examResult) return '';
   const title = courseById(c.course_id)?.title || c.title;
-  const starsIn = [5, 4, 3, 2, 1].map((k) => `<input type="radio" name="rv-rating" id="rv-${k}" value="${k}"><label for="rv-${k}" title="${RV_LABELS[k]}"><span class="sr">${k} étoile${k > 1 ? 's' : ''} : ${RV_LABELS[k]}</span><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">${STAR}</svg></label>`).join('');
+  const starsIn = [5, 4, 3, 2, 1].map((k) => `<input type="radio" name="rv-rating" id="rv-${k}" value="${k}"><label for="rv-${k}" title="${RV_LABELS[k]}"><span class="sr">${k} étoile${k > 1 ? 's' : ''} : ${RV_LABELS[k]}</span><svg viewBox="0 0 24 24" width="38" height="38" aria-hidden="true">${STAR}</svg></label>`).join('');
   return `<section class="rv" aria-labelledby="rv-title">
     <div class="rv-head">
       <span class="rv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></span>
@@ -1063,7 +1063,7 @@ function reviewBlock() {
       <p>Que pensez-vous de la formation <b>${esc(title)}</b> ? Votre avis nous aide à améliorer Vitako. Il ne prend qu'une minute.</p></div>
     </div>
     <form id="review-form" class="rv-form" data-course="${esc(c.course_id)}">
-      <fieldset class="rv-stars"><legend>Votre note</legend><div class="rv-starrow">${starsIn}</div></fieldset>
+      <fieldset class="rv-stars"><legend>Votre note <span class="muted">(cliquez sur une étoile)</span></legend><div class="rv-starline"><div class="rv-starrow">${starsIn}</div><span class="rv-word" aria-hidden="true"></span></div></fieldset>
       <label class="l" for="rv-comment">Votre commentaire <span class="muted">(facultatif)</span></label>
       <textarea id="rv-comment" class="in" rows="3" maxlength="1000" placeholder="Ce qui vous a plu, ce qui pourrait être amélioré…"></textarea>
       <label class="rv-check"><input type="checkbox" id="rv-publish"> J'accepte que mon avis soit publié sur le site avec mon prénom et l'initiale de mon nom.</label>
@@ -1428,3 +1428,7 @@ render();
     render();
   });
 })();
+// Avis : le message « choisissez une note » disparaît dès qu'une étoile est choisie
+document.addEventListener('change', (e) => {
+  if (e.target.name === 'rv-rating') { const el = document.getElementById('rverr'); if (el) el.hidden = true; }
+});
