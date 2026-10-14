@@ -424,6 +424,7 @@ const DOM_ICONS = {
   client: svgI('<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M19.5 19a3 3 0 0 1-3 3H13"/>'),
   gestion: svgI('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/>'),
   num: svgI('<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M12 7.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/>'),
+  free: svgI('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v6"/><path d="M8 11h6"/>'),
   perso: svgI('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M19 5l-5.5 5.5"/>'),
   edu: svgI('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/>'),
 };
@@ -444,6 +445,7 @@ const COVER_COLORS = {
   gestion: ['#78350F', '#F59E0B'], // ambre
   edu: ['#581C87', '#D946EF'],     // prune
   num: ['#1E1B4B', '#22D3EE'],     // nuit indigo et cyan numérique
+  free: ['#14532D', '#84CC16'],     // vert forêt et vert tilleul
   perso: ['#1E293B', '#F59E0B'],   // nuit et soleil levant
 };
 function cover(j, opts = {}) {

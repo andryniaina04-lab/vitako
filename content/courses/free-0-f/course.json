@@ -1,0 +1,97 @@
+{
+  "id": "free-0-f",
+  "hours": 12,
+  "description": "Savoir faire un métier ne suffit pas : il faut trouver des clients et se faire payer. Cette formation pratique, en 5 modules, donne tout ce qu'il faut faire, étape par étape : une offre claire en une phrase, le choix de ses clients, un portfolio sans client, un profil convaincant et un premier prix, les plateformes (Upwork, Fiverr, Freelancer, PeoplePerHour, ComeUp, Codeur.com, 99designs, Toptal, Malt) et la proposition qui obtient des réponses, les arnaques à éviter, LinkedIn, les groupes Facebook, la prospection directe, les sites d'emploi à distance et le bouche-à-oreille, le premier échange, le devis, l'acompte, les moyens de paiement depuis Madagascar (Mobile Money, Payoneer, virements), les impayés, puis une routine quotidienne, un tableau de suivi, la fidélisation et un plan d'action sur 30 jours. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+    "Formuler une offre claire et préparer un portfolio et un profil convaincants",
+    "Choisir les bonnes plateformes et rédiger des propositions qui obtiennent des réponses",
+    "Trouver des clients hors plateformes : LinkedIn, groupes, prospection directe, réseau",
+    "Transformer une piste en mission avec un devis, un acompte et des conditions claires",
+    "Choisir un moyen de paiement adapté depuis Madagascar et éviter les arnaques",
+    "Installer une routine de prospection, suivre ses résultats et fidéliser ses clients"
+  ],
+  "modules": [
+    {
+      "title": "Se préparer : offre, portfolio, profil et prix",
+      "summary": "Offre en une phrase, choix des clients (Madagascar, francophones, anglophones, agences), portfolio sans client, profil professionnel, calcul d'un premier prix par mission.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle formule pour une offre claire ?", "options": ["J'aide [client] à [résultat] grâce à [service]", "Je fais tout", "Je suis le meilleur", "Contactez-moi"], "correct": 0 },
+        { "q": "Comment avoir un portfolio sans client ?", "options": ["Réaliser 3 à 5 projets d'exemple", "Copier le travail des autres", "Attendre un client", "Ne rien montrer"], "correct": 0 },
+        { "q": "Que mettre dans le titre du profil ?", "options": ["Votre offre, par exemple « Assistante virtuelle pour TPE francophones »", "Votre âge", "Votre numéro de téléphone", "« Disponible »"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les plateformes de freelance",
+      "summary": "Upwork, Fiverr, Freelancer, PeoplePerHour, ComeUp, Codeur.com, 99designs, Toptal et Malt, répondre à des offres ou vendre des services, profil complet, proposition personnalisée, arnaques fréquentes.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Sur quelle plateforme crée-t-on des services à prix fixe en français ?", "options": ["ComeUp", "Toptal", "99designs", "LinkedIn"], "correct": 0 },
+        { "q": "Que faire si un client veut payer hors de la plateforme dès le début ?", "options": ["Refuser et rester sur la plateforme", "Accepter tout de suite", "Lui donner son mot de passe", "Payer un test"], "correct": 0 },
+        { "q": "Par quoi commence une bonne proposition ?", "options": ["Le besoin du client, repris en une phrase", "« Je suis le meilleur »", "Le prix", "Son CV complet"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Trouver des clients hors plateformes",
+      "summary": "LinkedIn, groupes Facebook et communautés, prospection directe en 5 étapes, message type, sites d'emploi à distance, réseau local et bouche-à-oreille.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Qu'est-ce que la prospection ?", "options": ["Aller vers des clients potentiels", "Attendre les clients", "Baisser ses prix", "Changer de métier"], "correct": 0 },
+        { "q": "Combien de relances après un message de prospection ?", "options": ["Une seule, après 5 à 7 jours", "Une par jour", "Aucune", "Dix"], "correct": 0 },
+        { "q": "Que faire dans un groupe avant de vendre ?", "options": ["Aider en répondant aux questions", "Publier sa pub partout", "Envoyer des messages à tous", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Du premier contact au paiement",
+      "summary": "Questions du premier échange, devis complet, acompte et validation par étapes, moyens de paiement depuis Madagascar (Mobile Money, virement, plateformes, Payoneer, PayPal à vérifier), impayés.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle part d'acompte demander à un nouveau client ?", "options": ["30 à 50 %", "0 %", "100 % après livraison", "5 %"], "correct": 0 },
+        { "q": "Que doit contenir un devis ?", "options": ["Livrables, délai, corrections, prix et paiement", "Seulement le prix", "Une photo", "Rien d'écrit"], "correct": 0 },
+        { "q": "Que faire avant de proposer un moyen de paiement ?", "options": ["Vérifier sur le site officiel qu'il fonctionne depuis Madagascar", "Choisir au hasard", "Demander à un ami", "Rien"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Ma routine et mon plan d'action",
+      "summary": "Routine quotidienne et hebdomadaire, tableau de suivi et taux de conversion, avis et recommandations, forfaits mensuels et fidélisation, plan sur 30 jours.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Combien de démarches personnalisées par jour ?", "options": ["3 à 5", "50 messages identiques", "Aucune", "Une par mois"], "correct": 0 },
+        { "q": "Qu'est-ce que le taux de conversion ?", "options": ["La part des démarches qui deviennent des missions", "Le taux de change", "Le nombre d'heures travaillées", "Le prix horaire"], "correct": 0 },
+        { "q": "Comment obtenir un revenu plus régulier ?", "options": ["Proposer un forfait mensuel", "Changer de client chaque semaine", "Arrêter la prospection", "Baisser ses prix"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Pourquoi les débutants n'obtiennent-ils souvent aucune réponse ?", "options": ["Offre floue, profil vide et aucune preuve", "Parce qu'Internet est lent", "Parce que les clients n'existent pas", "Parce qu'ils sont trop qualifiés"], "correct": 0 },
+    { "q": "Combien de services proposer pour commencer ?", "options": ["Un service, pour un type de client", "Tous les services possibles", "Dix", "Aucun"], "correct": 0 },
+    { "q": "Quel avantage ont les clients à Madagascar ?", "options": ["Même langue et paiement Mobile Money", "Budgets toujours plus élevés", "Aucune concurrence", "Paiement en dollars"], "correct": 0 },
+    { "q": "Comment présenter un projet dans son portfolio ?", "options": ["Contexte, ce que vous avez fait et résultat", "Juste une image sans texte", "Le prix payé", "Le nom de votre école"], "correct": 0 },
+    { "q": "Quelle photo de profil choisir ?", "options": ["Visage net, souriant, fond simple", "Un logo", "Un paysage", "Une photo de groupe"], "correct": 0 },
+    { "q": "Comment calculer un tarif horaire minimum ?", "options": ["Dépenses mensuelles divisées par les heures facturables", "Prendre le prix le plus bas du marché", "Au hasard", "Demander au client"], "correct": 0 },
+    { "q": "Pourquoi éviter un prix très bas ?", "options": ["Il attire des clients peu fiables et fait baisser les prix", "Il est interdit", "Il donne trop de travail payé", "Ce n'est pas un problème"], "correct": 0 },
+    { "q": "Sur Upwork, que faut-il pour répondre aux offres ?", "options": ["Des crédits", "Un diplôme", "Une carte bancaire française", "Rien"], "correct": 0 },
+    { "q": "Quel est le modèle de Fiverr ?", "options": ["Vendre des services à prix fixe", "Concours de design", "Sélection d'experts uniquement", "Emploi salarié"], "correct": 0 },
+    { "q": "Quelle plateforme est réservée aux profils expérimentés après sélection ?", "options": ["Toptal", "Fiverr", "ComeUp", "Freelancer.com"], "correct": 0 },
+    { "q": "Que vérifier avant de s'inscrire sur une plateforme ?", "options": ["Conditions, commissions, pays acceptés et moyens de retrait", "La couleur du site", "Le nombre de freelances", "Rien"], "correct": 0 },
+    { "q": "Combien de plateformes viser au départ ?", "options": ["Une ou deux, bien soignées", "Toutes", "Aucune", "Dix au minimum"], "correct": 0 },
+    { "q": "Que faire face à une demande de payer pour un test ?", "options": ["Refuser : on ne paie jamais pour obtenir un travail", "Payer rapidement", "Envoyer son mot de passe", "Demander un prêt"], "correct": 0 },
+    { "q": "Qu'a changé Tsiry pour obtenir des réponses ?", "options": ["5 propositions personnalisées par jour au lieu de 50 génériques", "Il a baissé ses prix à zéro", "Il a créé 10 comptes", "Il a arrêté d'envoyer"], "correct": 0 },
+    { "q": "Que publier sur LinkedIn chaque semaine ?", "options": ["Un conseil, un projet réalisé ou un avant-après", "Des publicités agressives", "Rien", "Des messages personnels"], "correct": 0 },
+    { "q": "Que mettre au début d'un message de prospection ?", "options": ["Un point concret observé chez l'entreprise", "Son CV", "Son prix", "« Bonjour, vous avez du travail ? »"], "correct": 0 },
+    { "q": "Que vérifier dans une offre « à distance » ?", "options": ["Si elle est réservée à un pays ou un fuseau horaire", "La couleur du logo", "Le nombre de candidats", "Rien"], "correct": 0 },
+    { "q": "Pourquoi le bouche-à-oreille est-il précieux à Madagascar ?", "options": ["La confiance passe beaucoup par les relations personnelles", "Il est obligatoire", "Il est payant", "Il ne l'est pas"], "correct": 0 },
+    { "q": "Que faire à la fin du premier appel avec un client ?", "options": ["Reformuler son besoin pour vérifier", "Raccrocher sans résumé", "Envoyer la facture", "Changer de sujet"], "correct": 0 },
+    { "q": "Quand envoyer les fichiers finaux ?", "options": ["Après le paiement du solde", "Avant tout échange", "Jamais", "Sans conditions dès le début"], "correct": 0 },
+    { "q": "Quel moyen de paiement pour un client à Madagascar ?", "options": ["Mobile Money ou virement local", "Uniquement PayPal", "Uniquement un chèque étranger", "Aucun"], "correct": 0 },
+    { "q": "Que garder pour prouver l'origine de ses revenus ?", "options": ["Les factures et les relevés", "Rien", "Les photos de profil", "Les mots de passe"], "correct": 0 },
+    { "q": "Que faire si un client sur une plateforme ne paie pas ?", "options": ["Ouvrir un litige via le service d'aide", "Abandonner", "Publier son nom partout", "Livrer quand même"], "correct": 0 },
+    { "q": "Que noter dans un tableau de suivi ?", "options": ["Date, client, source, étape, prochaine action, montant", "Seulement les clients gagnés", "Ses mots de passe", "Rien"], "correct": 0 },
+    { "q": "Quelle erreur faire quand on a du travail ?", "options": ["Arrêter complètement de chercher des clients", "Continuer à prospecter un peu", "Demander des avis", "Fidéliser"], "correct": 0 }
+  ]
+}

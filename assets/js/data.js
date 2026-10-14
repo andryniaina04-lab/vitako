@@ -441,6 +441,19 @@ export const DOMAINS = [
     "single": true
    }
   ]
+ },
+ {
+  "id": "free",
+  "name": "Démarrer en freelance",
+  "jobs": [
+   {
+    "name": "Trouver des clients en freelance",
+    "blurb": "savoir où et comment chercher du travail et des clients, sur les plateformes et ailleurs, et se faire payer",
+    "tools": "LinkedIn, Upwork, Fiverr, ComeUp, Codeur.com, groupes Facebook, Google Sheets et Payoneer",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ];
 export const PUBLISHED = {
@@ -2141,6 +2154,40 @@ export const PUBLISHED = {
    {
     "title": "Trouver des clients et se faire payer",
     "minutes": 7
+   }
+  ]
+ },
+ "free-0-f": {
+  "hours": 12,
+  "description": "Savoir faire un métier ne suffit pas : il faut trouver des clients et se faire payer. Cette formation pratique, en 5 modules, donne tout ce qu'il faut faire, étape par étape : une offre claire en une phrase, le choix de ses clients, un portfolio sans client, un profil convaincant et un premier prix, les plateformes (Upwork, Fiverr, Freelancer, PeoplePerHour, ComeUp, Codeur.com, 99designs, Toptal, Malt) et la proposition qui obtient des réponses, les arnaques à éviter, LinkedIn, les groupes Facebook, la prospection directe, les sites d'emploi à distance et le bouche-à-oreille, le premier échange, le devis, l'acompte, les moyens de paiement depuis Madagascar (Mobile Money, Payoneer, virements), les impayés, puis une routine quotidienne, un tableau de suivi, la fidélisation et un plan d'action sur 30 jours. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "objectives": [
+   "Formuler une offre claire et préparer un portfolio et un profil convaincants",
+   "Choisir les bonnes plateformes et rédiger des propositions qui obtiennent des réponses",
+   "Trouver des clients hors plateformes : LinkedIn, groupes, prospection directe, réseau",
+   "Transformer une piste en mission avec un devis, un acompte et des conditions claires",
+   "Choisir un moyen de paiement adapté depuis Madagascar et éviter les arnaques",
+   "Installer une routine de prospection, suivre ses résultats et fidéliser ses clients"
+  ],
+  "modules": [
+   {
+    "title": "Se préparer : offre, portfolio, profil et prix",
+    "minutes": 6
+   },
+   {
+    "title": "Les plateformes de freelance",
+    "minutes": 6
+   },
+   {
+    "title": "Trouver des clients hors plateformes",
+    "minutes": 5
+   },
+   {
+    "title": "Du premier contact au paiement",
+    "minutes": 6
+   },
+   {
+    "title": "Ma routine et mon plan d'action",
+    "minutes": 5
    }
   ]
  },

@@ -440,5 +440,18 @@
     "single": true
    }
   ]
+ },
+ {
+  "id": "free",
+  "name": "Démarrer en freelance",
+  "jobs": [
+   {
+    "name": "Trouver des clients en freelance",
+    "blurb": "savoir où et comment chercher du travail et des clients, sur les plateformes et ailleurs, et se faire payer",
+    "tools": "LinkedIn, Upwork, Fiverr, ComeUp, Codeur.com, groupes Facebook, Google Sheets et Payoneer",
+    "paid": "",
+    "single": true
+   }
+  ]
  }
 ]

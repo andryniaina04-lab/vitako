@@ -112,7 +112,8 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true),
   ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true),
   ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true),
-  ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true)
+  ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true),
+  ('free-0-f', 'free-0', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 12, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published;
 
@@ -30453,6 +30454,530 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Combien de temps dure la confidentialité dans le contrat ?', '["Jamais","Seulement le premier mois","Y compris après la fin du contrat","Seulement pendant une semaine"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quelle évolution demande une formation en droit du travail du pays ?', '["Graphiste","Monteur vidéo","Traducteur","Gestionnaire de paie"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('edu-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Uniquement PayPal","Uniquement des chèques étrangers","Mobile Money ou virement","Aucun"]'::jsonb, 2);
+
+-- free-0-f
+delete from public.exam_questions where course_id = 'free-0-f';
+delete from public.module_questions where course_id = 'free-0-f';
+delete from public.lessons where course_id = 'free-0-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-0-f', 0, 'Se préparer : offre, portfolio, profil et prix', 'Offre en une phrase, choix des clients (Madagascar, francophones, anglophones, agences), portfolio sans client, profil professionnel, calcul d''un premier prix par mission.', 'Beaucoup de débutants s''inscrivent sur dix plateformes le premier jour, envoient des dizaines de messages… et n''obtiennent aucune réponse. Le problème vient presque toujours d''avant : une offre floue, un profil vide, aucune preuve. Ce premier module vous aide à préparer ce qu''un client veut voir avant de vous faire confiance.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Formuler une offre claire en une phrase.
+> 2. Choisir les clients que vous visez.
+> 3. Construire un portfolio de départ, même sans client.
+> 4. Rédiger un profil professionnel convaincant.
+> 5. Fixer un premier prix réaliste.
+
+## Une offre claire en une phrase
+
+Un client achète une solution à son problème, pas une liste de compétences.
+
+> [!definition] Offre
+> Ce que vous proposez, à qui, et le résultat obtenu. Formule simple : **J''aide [type de client] à [résultat] grâce à [service].**
+
+| Offre floue | Offre claire |
+| --- | --- |
+| « Je fais du graphisme. » | « J''aide les restaurants à attirer des clients avec des visuels pour Facebook et Instagram. » |
+| « Je suis assistante virtuelle. » | « J''aide les petites entreprises françaises à gérer leurs e-mails et leurs rendez-vous, 2 heures par jour. » |
+| « Je fais de la traduction. » | « Je traduis vos documents du français vers l''anglais, relus et livrés sous 48 h. » |
+
+## Choisir ses clients
+
+| Type de client | Avantages | Points d''attention |
+| --- | --- | --- |
+| **Entreprises et ONG à Madagascar** | Même langue, rencontres possibles, paiement Mobile Money | Budgets souvent plus faibles |
+| **Clients francophones (France, Belgique, Canada, Afrique)** | Langue commune, fuseau horaire proche de l''Europe | Concurrence forte |
+| **Clients anglophones** | Marché très large, budgets plus élevés | Anglais professionnel nécessaire |
+| **Agences** | Volume de travail régulier | Tarifs négociés, délais serrés |
+
+> [!astuce]
+> Pour commencer, choisissez **un service** et **un type de client**. Vous élargirez ensuite. Un profil qui dit « je fais tout » ne rassure personne.
+
+## Le portfolio de départ
+
+Sans client, on peut quand même montrer son travail.
+
+1. Réalisez 3 à 5 projets d''exemple, comme si un vrai client les avait commandés.
+2. Pour chaque projet, écrivez le contexte, ce que vous avez fait et le résultat.
+3. Proposez un travail à une association ou un commerce local, en échange d''un avis écrit.
+4. Rassemblez tout dans un portfolio en ligne gratuit : Google Drive organisé, Canva, Behance (design) ou GitHub (développement).
+5. Gardez un lien court et facile à partager.
+
+> [!exemple] Un portfolio sans client
+> Andry veut devenir community manager. Il crée pour trois commerces de son quartier à Antsirabe (une boulangerie, un salon de coiffure, une épicerie) un calendrier de publications d''un mois et 6 visuels chacun. La boulangerie publie ses visuels et lui écrit un avis. Andry a maintenant 3 projets à montrer et une recommandation.
+
+## Un profil professionnel
+
+| Élément | Conseil |
+| --- | --- |
+| **Photo** | Visage net, souriant, fond simple, lumière naturelle |
+| **Titre** | Votre offre, pas seulement votre métier : « Assistante virtuelle pour TPE francophones » |
+| **Présentation** | 5 à 8 lignes : pour qui, quel résultat, comment, une preuve |
+| **Compétences** | Celles demandées dans les offres que vous visez |
+| **Portfolio** | 3 à 5 projets, les meilleurs en premier |
+| **Disponibilités** | Vos horaires et votre fuseau horaire (GMT+3) |
+
+## Un premier prix réaliste
+
+1. Calculez vos dépenses mensuelles indispensables (Internet, électricité, matériel, vie quotidienne).
+2. Estimez le nombre d''heures réellement facturables par mois.
+3. Divisez pour obtenir un tarif horaire minimum.
+4. Regardez les prix des freelances de votre niveau sur les plateformes.
+5. Annoncez de préférence un **prix par mission**, plus simple pour le client.
+
+> [!madagascar]
+> Un tarif très bas attire souvent des clients exigeants et peu fiables, et fait baisser les prix pour tout le monde. Mieux vaut un prix juste et un travail impeccable. Augmentez vos tarifs dès que vous avez quelques avis positifs.
+
+> [!attention] Erreurs fréquentes
+> - S''inscrire partout avant d''avoir une offre et un portfolio.
+> - Un profil « je fais tout ».
+> - Une photo floue ou un logo à la place du visage.
+> - Accepter n''importe quel prix pour « avoir un premier client ».
+
+> [!retenir]
+> - J''aide [client] à [résultat] grâce à [service].
+> - Un service et un type de client pour commencer.
+> - 3 à 5 projets d''exemple dans un portfolio en ligne.
+> - Un profil clair et un prix juste, de préférence par mission.
+
+## Exercice pratique : votre kit de départ
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Écrivez votre offre en une phrase, puis 2 variantes.
+> 2. Choisissez votre type de client et justifiez votre choix en 3 lignes.
+> 3. Réalisez au moins 2 projets d''exemple pour votre portfolio.
+> 4. Rédigez le titre et la présentation de votre profil.
+> 5. Calculez votre tarif horaire minimum et un prix pour une mission type.
+>
+> **À livrer** : votre offre, le lien de votre portfolio, votre texte de profil et votre calcul de prix.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 0, 0, 'Quelle formule pour une offre claire ?', '["Je fais tout","Contactez-moi","J''aide [client] à [résultat] grâce à [service]","Je suis le meilleur"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 0, 1, 'Comment avoir un portfolio sans client ?', '["Réaliser 3 à 5 projets d''exemple","Copier le travail des autres","Attendre un client","Ne rien montrer"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 0, 2, 'Que mettre dans le titre du profil ?', '["Votre numéro de téléphone","Votre âge","« Disponible »","Votre offre, par exemple « Assistante virtuelle pour TPE francophones »"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-0-f', 1, 'Les plateformes de freelance', 'Upwork, Fiverr, Freelancer, PeoplePerHour, ComeUp, Codeur.com, 99designs, Toptal et Malt, répondre à des offres ou vendre des services, profil complet, proposition personnalisée, arnaques fréquentes.', 'Les plateformes de freelance mettent en relation des clients du monde entier avec des freelances. Elles sécurisent le paiement, mais prennent une commission et la concurrence y est forte. Ce module présente les principales plateformes, leur fonctionnement, et la manière de s''y démarquer quand on débute.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Connaître les principales plateformes et leur public.
+> 2. Comprendre les deux modèles : répondre à des offres ou vendre des services.
+> 3. Créer un profil qui ressort dans les recherches.
+> 4. Rédiger une proposition qui obtient des réponses.
+> 5. Repérer les arnaques fréquentes.
+
+## Les principales plateformes
+
+| Plateforme | Type | Public | Remarque |
+| --- | --- | --- | --- |
+| **Upwork** | Offres de clients | International, surtout anglophone | Très grande, des crédits sont nécessaires pour répondre |
+| **Fiverr** | Services à prix fixe | International | Vous créez des offres, les clients viennent à vous |
+| **Freelancer.com** | Offres de clients | International | Beaucoup de petits projets |
+| **PeoplePerHour** | Offres et services | Royaume-Uni et Europe | Projets en anglais |
+| **ComeUp** | Services à prix fixe | Francophone | Proche de Fiverr, en français |
+| **Codeur.com** | Offres de clients | Francophone | Projets web, rédaction, graphisme |
+| **99designs** | Concours et projets | Design | Pour les graphistes |
+| **Toptal** | Sélection stricte | Experts | Pour les profils expérimentés |
+| **Malt** | Profils | France et Europe | Vérifiez si votre pays de résidence est accepté |
+
+> [!attention] À vérifier vous-même
+> Les commissions, les conditions d''inscription et les pays acceptés changent régulièrement. Lisez toujours les conditions et la page d''aide officielle de chaque plateforme avant de vous inscrire, en particulier sur les moyens de retrait disponibles depuis Madagascar.
+
+## Deux façons de travailler
+
+| Modèle | Comment ça marche | Pour qui |
+| --- | --- | --- |
+| **Répondre à des offres** (Upwork, Freelancer, Codeur.com) | Le client publie un besoin, vous envoyez une proposition | Ceux qui savent bien écrire et répondre vite |
+| **Vendre des services** (Fiverr, ComeUp) | Vous publiez une offre avec prix et délai, le client commande | Les services simples et bien définis |
+
+> [!astuce]
+> Commencez par **une ou deux plateformes** et soignez-les, plutôt que cinq profils à moitié remplis. Un profil complet à 100 % apparaît plus haut dans les recherches.
+
+## Se démarquer quand on débute
+
+1. Complétez le profil à 100 % : photo, titre, présentation, portfolio, compétences.
+2. Passez les tests de compétences proposés par la plateforme quand ils existent.
+3. Visez d''abord des petits projets, pour obtenir rapidement des avis.
+4. Répondez vite : les premières propositions sont souvent les plus lues.
+5. Livrez avant le délai et demandez poliment un avis à la fin.
+
+## La proposition qui obtient des réponses
+
+```
+Bonjour Claire,
+
+Vous cherchez quelqu''un pour mettre en page votre catalogue de 20 produits
+avant le salon du 15 novembre. J''ai réalisé un catalogue similaire pour une
+marque de cosmétiques (exemple en pièce jointe, pages 3 à 6).
+
+Je vous propose :
+- une maquette des 2 premières pages sous 48 h pour valider le style ;
+- le catalogue complet 5 jours après validation ;
+- 2 séries de corrections incluses.
+
+Une question : avez-vous déjà les photos des produits, ou faut-il les retoucher ?
+
+Bonne journée,
+Fanja
+```
+
+| À faire | À éviter |
+| --- | --- |
+| Reprendre le besoin du client dans la première phrase | « Bonjour, je suis la meilleure pour ce travail. » |
+| Montrer **un** exemple pertinent | Un message copié-collé envoyé à tout le monde |
+| Proposer des étapes et un délai | Parler longuement de soi |
+| Poser une question qui ouvre la discussion | Un prix sans explication |
+
+> [!exemple] Des résultats en un mois
+> Tsiry, traducteur à Antananarivo, envoyait 50 propositions génériques par semaine sans réponse. Il passe à 5 propositions par jour, chacune personnalisée avec un exemple adapté. Au bout de trois semaines, il obtient 4 réponses et 2 premières missions.
+
+## Repérer les arnaques
+
+| Signal d''alerte | Ce qu''il faut faire |
+| --- | --- |
+| Le client veut continuer hors de la plateforme dès le premier message | Refuser : vous perdez la protection du paiement, et c''est souvent interdit |
+| On vous demande de payer pour un test, un logiciel ou une « formation » | Ne jamais payer pour obtenir un travail |
+| Un « test gratuit » qui ressemble à une vraie mission complète | Proposer un petit extrait, pas le travail entier |
+| Un chèque ou un virement trop élevé, avec demande de rembourser la différence | Arnaque classique : ne rien renvoyer |
+| Un lien à ouvrir ou un fichier exécutable à installer | Ne pas ouvrir, signaler à la plateforme |
+
+> [!madagascar]
+> Activez la double authentification sur vos comptes de plateformes et de paiement. Un compte piraté peut vous faire perdre vos gains et votre réputation. Ne partagez jamais votre compte avec un ami, même pour « aider » : les plateformes ferment les comptes partagés.
+
+> [!retenir]
+> - Une ou deux plateformes bien choisies, un profil complet.
+> - Répondre à des offres ou vendre des services : deux modèles.
+> - Une proposition personnalisée, courte, avec un exemple et une question.
+> - Rester sur la plateforme et ne jamais payer pour obtenir un travail.
+
+## Exercice pratique : votre profil et 5 propositions
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Choisissez une ou deux plateformes adaptées à votre métier et lisez leurs conditions.
+> 2. Créez ou complétez votre profil à 100 %.
+> 3. Trouvez 5 offres qui correspondent à votre service.
+> 4. Rédigez 5 propositions personnalisées selon le modèle (sans les envoyer si vous n''êtes pas prêt).
+>
+> **À livrer** : le lien ou une capture de votre profil, et vos 5 propositions.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 1, 0, 'Sur quelle plateforme crée-t-on des services à prix fixe en français ?', '["99designs","ComeUp","LinkedIn","Toptal"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 1, 1, 'Que faire si un client veut payer hors de la plateforme dès le début ?', '["Refuser et rester sur la plateforme","Lui donner son mot de passe","Accepter tout de suite","Payer un test"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 1, 2, 'Par quoi commence une bonne proposition ?', '["Le besoin du client, repris en une phrase","« Je suis le meilleur »","Son CV complet","Le prix"]'::jsonb, 0);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-0-f', 2, 'Trouver des clients hors plateformes', 'LinkedIn, groupes Facebook et communautés, prospection directe en 5 étapes, message type, sites d''emploi à distance, réseau local et bouche-à-oreille.', 'Les plateformes ne sont qu''une source de clients parmi d''autres. Beaucoup de freelances trouvent leurs meilleurs clients ailleurs : sur LinkedIn, dans les groupes Facebook, par le bouche-à-oreille ou en contactant directement des entreprises. Ce module vous montre ces autres chemins, souvent sans commission.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Utiliser LinkedIn pour être trouvé et contacter des clients.
+> 2. Trouver des missions dans les groupes et les réseaux sociaux.
+> 3. Prospecter directement des entreprises avec un message efficace.
+> 4. Chercher des emplois à distance sur les sites spécialisés.
+> 5. Activer votre réseau local et le bouche-à-oreille.
+
+## LinkedIn
+
+> [!definition] Prospection
+> Le fait d''aller vers des clients potentiels, au lieu d''attendre qu''ils viennent à vous.
+
+1. Mettez votre offre dans le titre du profil.
+2. Remplissez la section « Infos » comme votre présentation de plateforme.
+3. Ajoutez vos projets dans la section « Sélection » ou « Projets ».
+4. Connectez-vous avec des personnes de votre secteur cible (5 à 10 par jour, avec un petit mot).
+5. Publiez une fois par semaine : un conseil, un projet réalisé, un avant-après.
+6. Cherchez les publications contenant « recherche freelance » ou « looking for a freelancer ».
+
+## Groupes et réseaux sociaux
+
+| Où chercher | Comment |
+| --- | --- |
+| **Groupes Facebook de freelances francophones** | Offres de missions publiées par des clients et des agences |
+| **Groupes Facebook d''entrepreneurs malgaches** | Besoins locaux : logos, pages, comptabilité, saisie |
+| **Groupes de votre métier** | Entraide, sous-traitance entre freelances |
+| **X (Twitter) et Threads** | Recherche « hiring freelance » ou le nom de votre métier |
+| **Communautés en ligne (Discord, Slack)** | Canaux d''offres d''emploi dans certaines communautés |
+
+> [!astuce]
+> Dans un groupe, aidez avant de vendre : répondez aux questions, partagez un conseil. On se souvient de vous quand un besoin apparaît.
+
+## La prospection directe
+
+Contacter directement une entreprise qui pourrait avoir besoin de vous.
+
+1. Choisissez 20 entreprises qui correspondent à votre client cible.
+2. Observez un point concret à améliorer (site lent, page Facebook inactive, fiches produits vides).
+3. Trouvez la bonne personne (gérant, responsable marketing).
+4. Envoyez un message court et personnalisé.
+5. Relancez une seule fois après 5 à 7 jours.
+
+```
+Bonjour Monsieur Rakotomalala,
+
+J''ai vu que la page Facebook de votre hôtel publie peu depuis septembre,
+alors que vos photos de la plage sont superbes.
+
+Je suis community manager. Je peux vous préparer gratuitement 3 publications
+d''exemple pour novembre, pour que vous jugiez sur pièce.
+
+Seriez-vous d''accord pour un appel de 10 minutes cette semaine ?
+
+Andry Rabe · 034 00 000 00
+```
+
+> [!exemple] La prospection locale
+> Lova, graphiste à Antananarivo, fait le tour des boutiques de son quartier avec une tablette et son portfolio. Sur 15 commerces visités, 3 commandent un logo ou une affiche. Deux d''entre eux la recommandent ensuite à d''autres commerçants.
+
+## Les sites d''emploi à distance
+
+| Site | Type d''offres |
+| --- | --- |
+| **LinkedIn Emplois** | Filtre « À distance », toutes les catégories |
+| **We Work Remotely** | Emplois à distance, surtout en anglais |
+| **Remote OK** | Emplois et missions à distance internationaux |
+| **Welcome to the Jungle** | Offres francophones, filtre télétravail |
+| **Portaljob Madagascar** | Offres à Madagascar, dont certaines à distance |
+
+> [!attention] Bien lire les offres
+> Certaines offres « à distance » sont réservées aux habitants d''un pays ou d''un fuseau horaire précis. Vérifiez cette condition avant de postuler pour ne pas perdre de temps.
+
+## Le réseau et le bouche-à-oreille
+
+| Action | Exemple |
+| --- | --- |
+| **Prévenir son entourage** | Un message WhatsApp à vos contacts pour présenter votre offre |
+| **Demander des recommandations** | « Connaissez-vous quelqu''un qui aurait besoin de… ? » |
+| **S''associer à d''autres freelances** | Un développeur et un graphiste se recommandent mutuellement |
+| **Participer aux événements** | Rencontres d''entrepreneurs, salons, espaces de coworking |
+
+> [!madagascar]
+> À Madagascar, la confiance passe beaucoup par les relations personnelles. Un client satisfait qui parle de vous vaut souvent plus que dix messages de prospection. Soignez chaque client, même petit.
+
+> [!retenir]
+> - LinkedIn : profil clair, connexions ciblées, une publication par semaine.
+> - Groupes : aider avant de vendre.
+> - Prospection directe : un point concret, un message court, une relance.
+> - Sites d''emploi à distance, réseau local et bouche-à-oreille.
+
+## Exercice pratique : votre liste de prospection
+
+> [!exercice] Exercice pratique · 3 heures
+> 1. Optimisez votre profil LinkedIn (titre, infos, projets).
+> 2. Rejoignez 3 groupes pertinents et notez les types d''offres publiées.
+> 3. Listez 20 entreprises cibles avec le point concret que vous pourriez améliorer.
+> 4. Rédigez 3 messages de prospection personnalisés.
+>
+> **À livrer** : la capture de votre profil LinkedIn, votre liste de 20 entreprises et vos 3 messages.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 2, 0, 'Qu''est-ce que la prospection ?', '["Aller vers des clients potentiels","Attendre les clients","Baisser ses prix","Changer de métier"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 2, 1, 'Combien de relances après un message de prospection ?', '["Une seule, après 5 à 7 jours","Aucune","Dix","Une par jour"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 2, 2, 'Que faire dans un groupe avant de vendre ?', '["Rien","Aider en répondant aux questions","Envoyer des messages à tous","Publier sa pub partout"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-0-f', 3, 'Du premier contact au paiement', 'Questions du premier échange, devis complet, acompte et validation par étapes, moyens de paiement depuis Madagascar (Mobile Money, virement, plateformes, Payoneer, PayPal à vérifier), impayés.', 'Un client intéressé n''est pas encore un client qui paie. Entre le premier message et le premier paiement, il y a un échange, un devis, des conditions claires et un moyen de paiement adapté. Ce module vous aide à transformer une piste en mission, en vous protégeant.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Mener un premier échange avec un client.
+> 2. Rédiger un devis clair.
+> 3. Fixer des conditions simples : acompte, délais, corrections.
+> 4. Choisir un moyen de paiement adapté depuis Madagascar.
+> 5. Réagir face à un client qui ne paie pas.
+
+## Le premier échange
+
+| Étape | Questions à poser |
+| --- | --- |
+| **Le besoin** | Quel est votre objectif ? Pour quand ? |
+| **Le contexte** | Qui sont vos clients ? Qu''avez-vous déjà essayé ? |
+| **Le périmètre** | Que faut-il livrer exactement ? En quel format ? |
+| **Le budget** | Avez-vous une enveloppe prévue ? |
+| **La décision** | Qui valide le travail ? |
+
+> [!astuce]
+> Reformulez à la fin de l''appel : « Si je résume, vous avez besoin de… pour le… ». Le client se sent compris, et vous évitez les malentendus.
+
+## Le devis
+
+> [!definition] Devis
+> Un document qui décrit précisément le travail, le prix, le délai et les conditions, avant de commencer. Une fois accepté, il sert de référence en cas de désaccord.
+
+| Élément du devis | Exemple |
+| --- | --- |
+| **Description** | Création de 12 visuels pour Instagram, format carré 1080 × 1080 px |
+| **Livrables** | Fichiers PNG et fichiers sources Canva |
+| **Délai** | 7 jours après réception des textes et photos |
+| **Corrections** | 2 séries incluses, les suivantes facturées à part |
+| **Prix** | Prix total, en ariary ou dans la devise du client |
+| **Paiement** | 50 % à la commande, 50 % à la livraison |
+| **Validité** | Devis valable 15 jours |
+
+## Des conditions qui vous protègent
+
+1. **Acompte** : demandez 30 à 50 % avant de commencer, surtout avec un nouveau client.
+2. **Validation par étapes** : faites valider une première partie avant de tout produire.
+3. **Accord écrit** : un e-mail ou un message qui dit « J''accepte le devis » suffit souvent.
+4. **Fichiers finaux après paiement** : envoyez un aperçu (avec filigrane si besoin) avant le solde.
+5. **Traces** : gardez tous les échanges écrits.
+
+## Se faire payer depuis Madagascar
+
+| Moyen | Pour quels clients | Points d''attention |
+| --- | --- | --- |
+| **MVola, Orange Money, Airtel Money** | Clients à Madagascar | Simple et rapide, gardez la référence de chaque transaction |
+| **Virement bancaire local** | Entreprises et ONG à Madagascar | Facture souvent demandée |
+| **Paiement via la plateforme** | Clients des plateformes | Retrait selon les options offertes pour Madagascar |
+| **Payoneer** | Clients et plateformes à l''étranger | Très utilisé par les freelances malgaches pour recevoir et retirer vers une banque locale |
+| **Virement international** | Clients à l''étranger | Frais et délais variables selon les banques |
+| **PayPal** | Clients à l''étranger | Les possibilités de réception et de retrait depuis Madagascar sont limitées : vérifiez sur le site officiel |
+
+> [!attention] Toujours vérifier
+> Les services disponibles, les frais et les plafonds changent. Vérifiez chaque moyen de paiement sur son site officiel et auprès de votre banque avant de le proposer à un client. Pour les questions de déclaration et d''impôts, renseignez-vous auprès de la Direction générale des impôts ou d''un comptable.
+
+> [!madagascar]
+> Les règles de change encadrent les paiements venant de l''étranger. Gardez vos factures et vos relevés : ils prouvent l''origine de vos revenus si votre banque vous pose des questions.
+
+## Quand un client ne paie pas
+
+1. Relance polie le jour de l''échéance, avec la facture.
+2. Deuxième relance après 7 jours, plus ferme, en rappelant le devis accepté.
+3. Sur une plateforme : ouvrez un litige via le service d''aide.
+4. Hors plateforme : suspendez le travail et ne livrez pas les fichiers finaux.
+5. Tirez la leçon : acompte systématique la prochaine fois.
+
+> [!exemple] Un acompte qui protège
+> Mamy, développeur WordPress à Toamasina, demande toujours 40 % d''acompte. Un client disparaît après la maquette : Mamy a été payé pour le travail réalisé, et le site n''a pas été livré. Sans acompte, il aurait tout perdu.
+
+> [!retenir]
+> - Comprendre le besoin, puis reformuler.
+> - Un devis précis : livrables, délai, corrections, prix, paiement.
+> - Acompte, validation par étapes, accord écrit.
+> - Un moyen de paiement adapté au client, vérifié sur le site officiel.
+
+## Exercice pratique : votre devis type
+
+> [!exercice] Exercice pratique · 2 heures
+> 1. Préparez votre liste de questions pour un premier échange.
+> 2. Créez un modèle de devis avec tous les éléments du tableau.
+> 3. Rédigez vos conditions de paiement (acompte, échéance, corrections).
+> 4. Listez les moyens de paiement que vous proposerez, après vérification sur les sites officiels.
+>
+> **À livrer** : votre liste de questions, votre modèle de devis en PDF et vos conditions de paiement.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 3, 0, 'Quelle part d''acompte demander à un nouveau client ?', '["100 % après livraison","0 %","5 %","30 à 50 %"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 3, 1, 'Que doit contenir un devis ?', '["Une photo","Livrables, délai, corrections, prix et paiement","Rien d''écrit","Seulement le prix"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 3, 2, 'Que faire avant de proposer un moyen de paiement ?', '["Demander à un ami","Rien","Choisir au hasard","Vérifier sur le site officiel qu''il fonctionne depuis Madagascar"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-0-f', 4, 'Ma routine et mon plan d''action', 'Routine quotidienne et hebdomadaire, tableau de suivi et taux de conversion, avis et recommandations, forfaits mensuels et fidélisation, plan sur 30 jours.', 'Trouver des clients n''est pas un coup de chance : c''est une routine. Les freelances qui réussissent consacrent du temps chaque semaine à la recherche de clients, même quand ils sont occupés. Ce dernier module vous aide à organiser cette routine, à suivre vos résultats et à transformer vos premiers clients en clients réguliers.
+
+> [!objectifs]
+> À la fin de ce module, vous saurez :
+> 1. Organiser une routine de recherche de clients.
+> 2. Suivre vos démarches dans un tableau.
+> 3. Obtenir des avis et des recommandations.
+> 4. Fidéliser vos clients.
+> 5. Écrire votre plan d''action sur 30 jours.
+
+## Une routine de recherche
+
+| Fréquence | Action |
+| --- | --- |
+| **Chaque jour (1 heure)** | 3 à 5 propositions ou messages personnalisés |
+| **Chaque jour (10 minutes)** | Répondre aux messages et relancer |
+| **Chaque semaine** | Une publication LinkedIn ou un projet ajouté au portfolio |
+| **Chaque semaine** | Faire le bilan de vos chiffres |
+| **Chaque mois** | Mettre à jour vos profils et vos prix |
+
+## Le tableau de suivi
+
+Un simple tableur suffit pour ne perdre aucune piste.
+
+| Colonne | Exemple |
+| --- | --- |
+| **Date** | 14/10 |
+| **Client ou offre** | Hôtel Ravinala, Nosy Be |
+| **Source** | Prospection directe |
+| **Étape** | Message envoyé, réponse, appel, devis, gagné, perdu |
+| **Prochaine action** | Relance le 21/10 |
+| **Montant** | 400 000 Ar |
+
+> [!definition] Taux de conversion
+> La part de vos démarches qui deviennent des missions. Par exemple, 2 missions pour 40 propositions, c''est 5 %. Ce chiffre vous montre ce qu''il faut améliorer : le profil, les messages ou le prix.
+
+## Avis et recommandations
+
+1. À la fin d''une mission réussie, remerciez le client.
+2. Demandez un avis sur la plateforme, ou un court témoignage écrit.
+3. Demandez la permission de montrer le travail dans votre portfolio.
+4. Demandez : « Connaissez-vous quelqu''un qui pourrait avoir besoin du même service ? »
+
+## Fidéliser ses clients
+
+> [!exemple] Du ponctuel au régulier
+> Hanta, assistante virtuelle à Fianarantsoa, termine une mission de saisie pour une boutique en ligne française. Elle propose ensuite un forfait mensuel : mise à jour des produits et réponses aux clients, 10 heures par mois. La cliente accepte. Un an plus tard, Hanta a 3 clients réguliers de ce type, et un revenu beaucoup plus stable.
+
+| Action | Effet |
+| --- | --- |
+| **Livrer à temps, toujours** | La confiance s''installe |
+| **Proposer un forfait mensuel** | Un revenu régulier et prévisible |
+| **Donner des nouvelles** | Un message tous les 2 ou 3 mois aux anciens clients |
+| **Proposer des améliorations** | Le client voit que vous pensez à son activité |
+
+> [!madagascar]
+> Les coupures de courant ou de connexion arrivent. Prévenez vos clients à l''avance si un délai est menacé, et proposez une solution. Un client prévenu reste un client ; un client laissé sans nouvelles part.
+
+> [!attention] Erreurs fréquentes
+> - Arrêter de chercher des clients dès qu''on a du travail, puis se retrouver sans rien.
+> - Ne pas noter ses démarches et oublier les relances.
+> - Ne jamais demander d''avis.
+> - Dépendre d''un seul client.
+
+> [!retenir]
+> - Une routine quotidienne : 3 à 5 démarches personnalisées.
+> - Un tableau de suivi et un taux de conversion.
+> - Des avis, des témoignages et des recommandations.
+> - Des forfaits mensuels pour des revenus réguliers.
+
+## Votre plan d''action sur 30 jours
+
+| Semaine | Objectifs |
+| --- | --- |
+| **1** | Offre, portfolio de 3 projets, profils LinkedIn et une plateforme complétés |
+| **2** | 20 propositions sur la plateforme et 10 messages de prospection |
+| **3** | 25 nouvelles démarches, relances, premier appel avec un client |
+| **4** | Bilan des chiffres, amélioration des messages, objectif : première mission |
+
+## Exercice pratique : votre système de recherche de clients
+
+> [!exercice] Exercice pratique · 2 heures, puis 30 jours
+> 1. Créez votre tableau de suivi avec les colonnes proposées.
+> 2. Écrivez votre routine quotidienne et hebdomadaire.
+> 3. Remplissez votre plan d''action sur 30 jours avec des objectifs chiffrés.
+> 4. Pendant 30 jours, suivez votre plan et notez chaque démarche.
+>
+> **À livrer** : votre tableau de suivi, votre routine, votre plan sur 30 jours et, après un mois, votre bilan en 10 lignes.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 4, 0, 'Combien de démarches personnalisées par jour ?', '["Une par mois","3 à 5","Aucune","50 messages identiques"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 4, 1, 'Qu''est-ce que le taux de conversion ?', '["La part des démarches qui deviennent des missions","Le taux de change","Le nombre d''heures travaillées","Le prix horaire"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-0-f', 4, 2, 'Comment obtenir un revenu plus régulier ?', '["Changer de client chaque semaine","Baisser ses prix","Proposer un forfait mensuel","Arrêter la prospection"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Pourquoi les débutants n''obtiennent-ils souvent aucune réponse ?', '["Parce qu''ils sont trop qualifiés","Parce que les clients n''existent pas","Offre floue, profil vide et aucune preuve","Parce qu''Internet est lent"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Combien de services proposer pour commencer ?', '["Un service, pour un type de client","Tous les services possibles","Aucun","Dix"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quel avantage ont les clients à Madagascar ?', '["Aucune concurrence","Même langue et paiement Mobile Money","Paiement en dollars","Budgets toujours plus élevés"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Comment présenter un projet dans son portfolio ?', '["Contexte, ce que vous avez fait et résultat","Le prix payé","Le nom de votre école","Juste une image sans texte"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quelle photo de profil choisir ?', '["Un paysage","Un logo","Visage net, souriant, fond simple","Une photo de groupe"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Comment calculer un tarif horaire minimum ?', '["Demander au client","Au hasard","Dépenses mensuelles divisées par les heures facturables","Prendre le prix le plus bas du marché"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Pourquoi éviter un prix très bas ?', '["Ce n''est pas un problème","Il attire des clients peu fiables et fait baisser les prix","Il est interdit","Il donne trop de travail payé"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Sur Upwork, que faut-il pour répondre aux offres ?', '["Un diplôme","Une carte bancaire française","Des crédits","Rien"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quel est le modèle de Fiverr ?', '["Emploi salarié","Concours de design","Vendre des services à prix fixe","Sélection d''experts uniquement"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quelle plateforme est réservée aux profils expérimentés après sélection ?', '["ComeUp","Freelancer.com","Fiverr","Toptal"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que vérifier avant de s''inscrire sur une plateforme ?', '["La couleur du site","Conditions, commissions, pays acceptés et moyens de retrait","Rien","Le nombre de freelances"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Combien de plateformes viser au départ ?', '["Aucune","Toutes","Une ou deux, bien soignées","Dix au minimum"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que faire face à une demande de payer pour un test ?', '["Payer rapidement","Demander un prêt","Envoyer son mot de passe","Refuser : on ne paie jamais pour obtenir un travail"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Qu''a changé Tsiry pour obtenir des réponses ?', '["5 propositions personnalisées par jour au lieu de 50 génériques","Il a arrêté d''envoyer","Il a baissé ses prix à zéro","Il a créé 10 comptes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que publier sur LinkedIn chaque semaine ?', '["Des messages personnels","Rien","Un conseil, un projet réalisé ou un avant-après","Des publicités agressives"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que mettre au début d''un message de prospection ?', '["Un point concret observé chez l''entreprise","Son CV","Son prix","« Bonjour, vous avez du travail ? »"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que vérifier dans une offre « à distance » ?', '["Rien","Si elle est réservée à un pays ou un fuseau horaire","Le nombre de candidats","La couleur du logo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Pourquoi le bouche-à-oreille est-il précieux à Madagascar ?', '["Il est obligatoire","La confiance passe beaucoup par les relations personnelles","Il est payant","Il ne l''est pas"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que faire à la fin du premier appel avec un client ?', '["Envoyer la facture","Changer de sujet","Reformuler son besoin pour vérifier","Raccrocher sans résumé"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quand envoyer les fichiers finaux ?', '["Avant tout échange","Sans conditions dès le début","Après le paiement du solde","Jamais"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quel moyen de paiement pour un client à Madagascar ?', '["Mobile Money ou virement local","Uniquement PayPal","Uniquement un chèque étranger","Aucun"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que garder pour prouver l''origine de ses revenus ?', '["Rien","Les photos de profil","Les mots de passe","Les factures et les relevés"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que faire si un client sur une plateforme ne paie pas ?', '["Livrer quand même","Ouvrir un litige via le service d''aide","Publier son nom partout","Abandonner"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que noter dans un tableau de suivi ?', '["Ses mots de passe","Rien","Date, client, source, étape, prochaine action, montant","Seulement les clients gagnés"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quelle erreur faire quand on a du travail ?', '["Continuer à prospecter un peu","Demander des avis","Fidéliser","Arrêter complètement de chercher des clients"]'::jsonb, 3);
 
 -- gestion-0-a
 delete from public.exam_questions where course_id = 'gestion-0-a';
