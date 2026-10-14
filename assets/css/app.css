@@ -674,3 +674,4 @@ body{margin:0}
 .promo-go{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:#fff;color:#B42318;font-size:.92rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.15);transition:gap .2s}
 .promo:hover .promo-go{gap:10px}
 @media (max-width:640px){.promo{padding:16px}.promo-go{display:none}.promo-pct{min-width:56px;height:56px;font-size:.98rem}}
+.lp-eyebrow::before{display:none!important}
