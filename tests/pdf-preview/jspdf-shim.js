@@ -33,6 +33,7 @@
       },
       rect: (x, y, w, h, s) => out.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" ${paint(s)}/>`),
       roundedRect: (x, y, w, h, rx, ry, s) => out.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ${paint(s)}/>`),
+      addImage: (src, fmt, x, y, w, h) => out.push(`<image href="${src}" x="${x}" y="${y}" width="${w}" height="${h}"/>`),
       line: (x1, y1, x2, y2) => out.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${paint('S')}/>`),
       circle: (x, y, r, s) => out.push(`<circle cx="${x}" cy="${y}" r="${r}" ${paint(s)}/>`),
       lines(rel, x, y, scale, style, closed) {

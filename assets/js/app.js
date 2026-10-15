@@ -2,7 +2,7 @@
 import * as api from './api.js';
 import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel, jobByKey } from './catalog.js';
 import { md, esc, sections, readingMinutes } from './markdown.js';
-import { certificatePdf, loadPdfFonts, slug } from './pdf.js';
+import { certificatePdf, loadPdfFonts, loadPdfLogo, slug } from './pdf.js';
 import { TEMOIGNAGES } from './temoignages.js';
 
 const CFG = window.VITAKO_CONFIG;
@@ -104,6 +104,20 @@ const I = {
   sun: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   moon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
 };
+
+// Logo officiel (fichiers sources dans assets/img/logo/). Le mot prend la couleur du texte (currentColor)
+// pour rester lisible en thème clair et sombre ; le symbole garde son dégradé.
+const LOGO_BOX = 'M54,0h92c29.823,0,54,24.177,54,54h0v92c0,29.823-24.177,54-54,54H54c-29.823,0-54-24.177-54-54V54C0,24.177,24.177,0,54,0Z';
+const LOGO_CHECK = 'M56,102.75l27.5,27.5,60.5-60.5';
+const LOGO_WORD = ['M342.016,143.148l-13.604-.194,38.481-91.928h42.368l-51.892,110.974h-45.283l-51.892-110.974h43.923l37.898,92.122Z', 'M436.275,40.143c-6.869,0-12.438-1.716-16.714-5.15-4.276-3.432-6.414-8.065-6.414-13.896,0-5.958,2.138-10.689,6.414-14.188s9.845-5.248,16.714-5.248c7.124,0,12.793,1.749,17.005,5.248,4.209,3.499,6.316,8.229,6.316,14.188,0,5.831-2.107,10.464-6.316,13.896-4.212,3.435-9.881,5.15-17.005,5.15ZM416.451,49.277l20.018,3.887,19.824-3.887v112.723h-39.842V49.277Z', 'M464.453,80.373v-17.297l22.545-9.135,17.103-32.845h22.544v29.93h46.645v29.347h-46.645v32.65c0,8.035,1.619,13.672,4.859,16.909,3.237,3.24,9.135,4.858,17.686,4.858,5.442,0,10.268-.486,14.479-1.458,4.209-.972,8.065-2.234,11.563-3.789v29.93c-3.887,1.427-9.007,2.721-15.354,3.887-6.35,1.166-12.894,1.749-19.629,1.749-12.311,0-22.384-1.88-30.222-5.636-7.841-3.757-13.638-9.165-17.395-16.229-3.759-7.061-5.636-15.32-5.636-24.779v-38.093h-22.545Z', 'M694.37,106.61c-1.815,11.661-5.411,21.897-10.786,30.707-5.379,8.812-12.181,15.646-20.407,20.504-8.229,4.859-17.589,7.288-28.083,7.288-10.885,0-20.44-2.429-28.667-7.288-8.229-4.858-14.673-11.725-19.338-20.601-4.665-8.874-6.997-19.077-6.997-30.61,0-11.789,2.332-22.089,6.997-30.901,4.665-8.81,11.108-15.676,19.338-20.602,8.227-4.922,17.782-7.385,28.667-7.385,10.494,0,19.854,2.429,28.083,7.288,8.227,4.859,15.062,11.661,20.504,20.407s9.004,19.144,10.689,31.193ZM620.322,106.61c0,5.441,1.133,10.301,3.401,14.576,2.266,4.275,5.409,7.613,9.427,10.009,4.014,2.399,8.615,3.596,13.799,3.596,5.441,0,10.559-1.196,15.354-3.596,4.791-2.396,9.004-5.733,12.633-10.009,3.625-4.275,6.346-9.135,8.162-14.576-1.816-5.569-4.537-10.495-8.162-14.771-3.629-4.276-7.842-7.644-12.633-10.106-4.795-2.46-9.912-3.692-15.354-3.692-5.184,0-9.785,1.232-13.799,3.692-4.018,2.463-7.161,5.83-9.427,10.106-2.269,4.275-3.401,9.201-3.401,14.771ZM685.041,162l-5.053-40.036,5.247-15.354-5.247-15.354,5.053-40.23h41.203l-6.997,55.39,6.997,55.584h-41.203Z', 'M781.242,130.321l-10.884-3.693,61.415-75.602h41.785l-96.593,110.974h-35.565V12.351h39.842v117.971ZM800.094,107.776l29.93-20.99,46.45,75.214h-44.7l-31.68-54.224Z', 'M940.998,165.109c-14.255,0-26.693-2.429-37.315-7.288-10.626-4.858-18.919-11.725-24.877-20.601-5.961-8.874-8.94-19.077-8.94-30.61,0-11.789,2.979-22.089,8.94-30.901,5.958-8.81,14.251-15.676,24.877-20.602,10.622-4.922,23.061-7.385,37.315-7.385,14.12,0,26.528,2.463,37.218,7.385,10.689,4.926,19.013,11.792,24.974,20.602,5.958,8.812,8.94,19.046,8.94,30.707s-2.982,21.931-8.94,30.805c-5.961,8.876-14.284,15.742-24.974,20.601-10.689,4.859-23.098,7.288-37.218,7.288ZM940.998,135.763c6.477,0,12.016-1.166,16.616-3.498,4.598-2.332,8.13-5.667,10.593-10.009,2.459-4.34,3.692-9.554,3.692-15.646,0-6.22-1.233-11.497-3.692-15.84-2.463-4.339-5.995-7.677-10.593-10.009-4.601-2.332-10.14-3.498-16.616-3.498s-12.05,1.166-16.715,3.498c-4.664,2.332-8.229,5.67-10.688,10.009-2.463,4.343-3.693,9.557-3.693,15.646s1.23,11.339,3.693,15.742c2.459,4.406,6.024,7.774,10.688,10.106,4.665,2.332,10.234,3.498,16.715,3.498Z'];
+let logoN = 0;
+function logoSvg({ word = true, label = 'Vitako' } = {}) {
+  const id = 'vtk-g' + (++logoN);
+  const grad = `<linearGradient id="${id}" x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#04281c"/><stop offset=".45" stop-color="#075c40"/><stop offset=".75" stop-color="#0b7a55"/><stop offset="1" stop-color="#14a06f"/></linearGradient>`;
+  const sym = `<path d="${LOGO_BOX}" fill="url(#${id})"/><path d="${LOGO_CHECK}" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"/>`;
+  const txt = word ? LOGO_WORD.map(d => `<path d="${d}" fill="currentColor"/>`).join('') : '';
+  return `<svg class="vtk-logo" viewBox="0 0 ${word ? 1014 : 200} 200" role="img" aria-label="${label}"><defs>${grad}</defs>${sym}${txt}</svg>`;
+}
 I.search = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>';
 I.burger = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
 I.close = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
@@ -194,7 +208,8 @@ function topbar() {
     : '<div class="menu-cta"><a class="btn" href="#/inscription">Créer un compte</a><a class="btn ghost" href="#/connexion">Connexion</a></div>';
   const dark = isDark();
   const badge = S.session && isAdmin() && S.admin.pending ? `<span class="dot-badge">${S.admin.pending}</span>` : '';
-  topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil"><i>${I.check.replace('currentColor', 'var(--accent-ink)')}</i>vitako</a>
+  const fl = document.getElementById('foot-logo'); if (fl && !fl.firstChild) fl.innerHTML = logoSvg({ label: 'Vitako, accueil' });
+  topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil">${logoSvg({ label: 'Vitako, accueil' })}</a>
     <div class="tb-actions">
       ${S.session && S.profile && hasAccess() && !isAdmin() ? `<span class="pill tb-pill">Abonné · ${daysLeft()} j</span>` : ''}
       ${!S.session ? `<a class="tb-link" href="#/connexion">Connexion</a><a class="btn tb-cta" href="#/inscription"><span class="tb-l">Créer un compte</span><span class="tb-s">S'inscrire</span></a>` : ''}
@@ -760,7 +775,7 @@ function diplomaHtml(cert, t) {
     <div class="dip-body"><div class="dip-frame">
       <i class="dip-corner tl"></i><i class="dip-corner tr"></i><i class="dip-corner bl"></i><i class="dip-corner br"></i>
       <div class="dip-mark" aria-hidden="true">${I.check}</div>
-      <div class="dip-logo"><i>${I.check.replace('currentColor', '#fff')}</i>vitako</div>
+      <div class="dip-logo">${logoSvg()}</div>
       <div class="dip-tag">Formations aux métiers du freelance et du télétravail</div>
       <div class="dip-title">${esc(main)}</div>
       <div class="dip-sub">${esc(rest.join(' '))}</div>
@@ -1340,8 +1355,9 @@ document.addEventListener('click', async (e) => {
     const label = t.textContent;
     busy(t, true, 'Préparation du PDF…');
     const fonts = await loadPdfFonts().catch(() => null);
+    const logo = await loadPdfLogo().catch(() => null);
     const tx = certText(cert);
-    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id), year: new Date(cert.issued_at).getFullYear(), fonts })
+    certificatePdf({ heading: tx.heading, name: cert.full_name, text: tx.text, rows: tx.rows, verifyUrl: verifyUrl(cert.id), year: new Date(cert.issued_at).getFullYear(), fonts, logo })
       .save(`attestation-vitako-${slug(cert.full_name)}-${cert.id.toLowerCase()}.pdf`);
     busy(t, false, label);
     return;

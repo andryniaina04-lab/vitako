@@ -38,6 +38,15 @@ export async function loadPdfFonts() {
   fontCache = loaded;
   return loaded;
 }
+let logoCache = null;
+// Logo officiel en PNG (le PDF ne sait pas dessiner le SVG). En cas d'échec, on dessine l'ancien logo.
+export async function loadPdfLogo() {
+  if (logoCache) return logoCache;
+  const res = await fetch(new URL('../img/logo/vitako-logo-horizontal.png', import.meta.url));
+  if (!res.ok) throw new Error('logo');
+  logoCache = 'data:image/png;base64,' + toBase64(await res.arrayBuffer());
+  return logoCache;
+}
 const FAMILY = { helvetica: 'sans', times: 'serif' };
 let embedded = new Set();
 // Choisit la police intégrée si elle existe, sinon la police standard de jsPDF.
@@ -187,10 +196,14 @@ export function certificatePdf(c) {
   check(d, cx - 26, 104, 52, [231, 238, 226], 9);
 
   // En-tête : logo
-  d.setFillColor(...GREEN); d.roundedRect(cx - 17.5, 20, 7.5, 7.5, 1.6, 1.6, 'F');
-  check(d, cx - 15.8, 24, 4.2, [255, 255, 255], 0.9);
-  font(d, 'helvetica', 'bold'); d.setFontSize(17); d.setTextColor(...INK);
-  d.text('vitako', cx - 8, 26.4);
+  if (c.logo) {
+    d.addImage(c.logo, 'PNG', cx - 19, 20, 38, 38 * 200 / 1014);
+  } else {
+    d.setFillColor(...GREEN); d.roundedRect(cx - 17.5, 20, 7.5, 7.5, 1.6, 1.6, 'F');
+    check(d, cx - 15.8, 24, 4.2, [255, 255, 255], 0.9);
+    font(d, 'helvetica', 'bold'); d.setFontSize(17); d.setTextColor(...INK);
+    d.text('vitako', cx - 8, 26.4);
+  }
   font(d, 'helvetica', 'normal'); d.setFontSize(7.6); d.setTextColor(...MUTED);
   spacedCenter(d, clean('FORMATIONS AUX MÉTIERS DU FREELANCE ET DU TÉLÉTRAVAIL'), cx, 34, 0.8);
 

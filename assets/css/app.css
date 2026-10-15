@@ -33,8 +33,7 @@ button,input,select{font:inherit;color:inherit}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:12px}
 .logo{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);text-decoration:none;cursor:pointer;background:none;border:0;padding:0}
-.logo i{width:26px;height:26px;border-radius:7px;background:var(--accent);display:grid;place-items:center}
-.logo i svg{width:16px;height:16px}
+.logo .vtk-logo{height:28px;width:auto;display:block}
 .nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-left:auto}
 .lnk{background:none;border:0;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:600}
 .lnk:hover,.lnk.on{color:var(--ink);background:var(--accent-soft)}
@@ -251,8 +250,8 @@ a.back{display:inline-block}
 .dip-mark svg{width:70%;height:70%;stroke-width:3.4}
 .dip-frame>*:not(.dip-mark):not(.dip-corner){position:relative}
 .dip-logo{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:clamp(1rem,2.2cqi,1.45rem)}
-.dip-logo i{width:1.4em;height:1.4em;border-radius:.3em;background:var(--d-green);display:grid;place-items:center}
-.dip-logo i svg{width:62%;height:62%}
+.dip-logo{color:var(--d-ink)}
+.dip-logo .vtk-logo{height:1.5em;width:auto;display:block}
 .dip-tag{text-transform:uppercase;letter-spacing:.2em;font-size:clamp(.55rem,1cqi,.72rem);color:var(--d-muted)}
 .dip-title{font-family:var(--d-serif);font-weight:700;text-transform:uppercase;color:var(--d-green);font-size:clamp(1.9rem,6.2cqi,3.6rem);letter-spacing:.14em;line-height:1;margin-top:1.6cqi;text-indent:.14em}
 .dip-sub{color:var(--d-gold);font-weight:700;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(.66rem,1.5cqi,.95rem);text-indent:.32em}
@@ -763,3 +762,8 @@ select.in{padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;ba
 .fb-msg{white-space:pre-wrap;line-height:1.55}
 .fb-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .fb-thanks{text-align:center;align-items:center}
+
+/* Logo du pied de page */
+.foot-logo{display:inline-flex;color:var(--ink)}
+.foot-logo .vtk-logo,.foot-logo img{height:22px;width:auto;display:block}
+@media (max-width:400px){.logo .vtk-logo{height:22px}}
