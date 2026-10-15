@@ -767,3 +767,7 @@ select.in{padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;ba
 .foot-logo{display:inline-flex;color:var(--ink)}
 .foot-logo .vtk-logo,.foot-logo img{height:22px;width:auto;display:block}
 @media (max-width:400px){.logo .vtk-logo{height:22px}}
+/* Vidéo de l'accueil plus grande sur ordinateur */
+@media (min-width:861px){
+  .lp-hero-in{max-width:1240px;grid-template-columns:minmax(0,.92fr) minmax(0,1.18fr);gap:clamp(28px,4vw,56px)}
+}
