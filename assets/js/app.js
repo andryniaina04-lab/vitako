@@ -340,6 +340,7 @@ function heroMedia() {
   </div>`;
 }
 function home() {
+  heroQ = '720';
   const feat = FEATURED.map(courseById).filter((c) => c && c.published !== false);
   const card = (c) => {
     const j = c.job;
@@ -1149,10 +1150,11 @@ function reviewBlock() {
 }
 // Vidéo de l'accueil : lecture automatique sans son sur grand écran, et jamais en mode « économie de données »
 // (sur téléphone, la vidéo ne se charge que si la personne appuie sur lecture).
-const HQ_KEY = 'vitako_video_quality';
 const SEEN_KEY = 'vitako_video_seen';
 function heroSeen() { try { return localStorage.getItem(SEEN_KEY) === '1'; } catch (e) { return false; } }
-function heroQuality() { try { return localStorage.getItem(HQ_KEY) || '720'; } catch (e) { return '720'; } }
+// Toujours 720p au chargement de la page ; le 1080p n'est utilisé que si la personne le choisit.
+let heroQ = '720';
+function heroQuality() { return heroQ; }
 function startHeroVideo() {
   const v = document.getElementById('hero-video');
   if (!v) return;
@@ -1246,7 +1248,7 @@ document.addEventListener('click', async (e) => {
     const v = document.getElementById('hero-video');
     if (v && CFG.heroVideoHD) {
       const q = heroQuality() === '1080' ? '720' : '1080';
-      try { localStorage.setItem(HQ_KEY, q); } catch (err) {}
+      heroQ = q;
       const time = v.currentTime, playing = !v.paused;
       v.src = q === '1080' ? CFG.heroVideoHD : CFG.heroVideo;
       v.addEventListener('loadedmetadata', () => { v.currentTime = time; if (playing) v.play().catch(() => {}); }, { once: true });
