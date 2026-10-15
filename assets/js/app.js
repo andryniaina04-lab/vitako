@@ -1150,6 +1150,8 @@ function reviewBlock() {
 // Vidéo de l'accueil : lecture automatique sans son sur grand écran, et jamais en mode « économie de données »
 // (sur téléphone, la vidéo ne se charge que si la personne appuie sur lecture).
 const HQ_KEY = 'vitako_video_quality';
+const SEEN_KEY = 'vitako_video_seen';
+function heroSeen() { try { return localStorage.getItem(SEEN_KEY) === '1'; } catch (e) { return false; } }
 function heroQuality() { try { return localStorage.getItem(HQ_KEY) || '720'; } catch (e) { return '720'; } }
 function startHeroVideo() {
   const v = document.getElementById('hero-video');
@@ -1157,7 +1159,12 @@ function startHeroVideo() {
   const saveData = navigator.connection && navigator.connection.saveData;
   const wide = window.matchMedia && window.matchMedia('(min-width: 861px)').matches;
   const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (wide && !saveData && !calm) { v.muted = true; v.play().catch(() => {}); }
+  // Vidéo vue en entier (au moins 90 %) : on s'en souvient sur cet appareil.
+  v.addEventListener('timeupdate', () => {
+    if (v.duration && v.currentTime >= v.duration * 0.9 && !heroSeen()) { try { localStorage.setItem(SEEN_KEY, '1'); } catch (e) {} }
+  });
+  // Lecture automatique seulement pour ceux qui ne l'ont pas encore vue.
+  if (wide && !saveData && !calm && !heroSeen()) { v.muted = true; v.play().catch(() => {}); }
 }
 function renderReviewSlot() {
   const slot = document.getElementById('review-slot');

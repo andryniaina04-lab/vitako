@@ -73,6 +73,8 @@ with sync_playwright() as p:
     check('accueil : vidéo de présentation avec image d\'attente', page.locator('#hero-video[poster$="vitako-presentation.jpg"]').count() == 1)
     page.click('[data-act=hero-sound]'); page.wait_for_timeout(100)
     check('accueil : bouton son de la vidéo', page.evaluate("document.getElementById('hero-video').muted") is False and 'Couper' in page.locator('.lp-sound').inner_text())
+    check('accueil : vidéo marquée « vue » en fin de lecture', page.evaluate("""() => { const v = document.getElementById('hero-video'); Object.defineProperty(v, 'duration', { value: 120, configurable: true }); Object.defineProperty(v, 'currentTime', { value: 110, configurable: true, writable: true }); v.dispatchEvent(new Event('timeupdate')); return localStorage.getItem('vitako_video_seen') === '1'; }"""))
+    page.evaluate("localStorage.removeItem('vitako_video_seen')")
     check('accueil : vidéo en 720p par défaut', page.evaluate("document.getElementById('hero-video').getAttribute('src')").endswith('-720.mp4'))
     page.click('[data-act=hero-quality]'); page.wait_for_timeout(150)
     check('accueil : passage en 1080p', page.evaluate("document.getElementById('hero-video').getAttribute('src')").endswith('-1080.mp4') and '1080p' in page.locator('.lp-quality').inner_text())
