@@ -393,7 +393,7 @@ function home() {
     <div class="chips">${`<button class="chip" data-act="dom-go" data-d="all">${DOM_ICONS.all}<span>Tous les domaines</span></button>` + DOMAINS_LIST.map((d) => `<button class="chip" data-act="dom-go" data-d="${d.id}">${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></button>`).join('')}</div>
   </section>
   <section class="lp-sec-block" aria-labelledby="feat-title">
-    <div class="lp-head"><div class="eyebrow lp-eyebrow">Les plus demandées</div><h2 id="feat-title">10 formations pour décrocher vos premiers clients</h2></div>
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Les plus demandées</div><h2 id="feat-title">10 formations pour décrocher<br class="br-d"> vos premiers clients</h2></div>
     <div class="grid feat-grid">${feat.map(card).join('')}</div>
     <div class="lp-more"><a class="btn ghost lg" href="#/formations">Voir les ${COURSES.length} formations <span aria-hidden="true">→</span></a></div>
   </section>
