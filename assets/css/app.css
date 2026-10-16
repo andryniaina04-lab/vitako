@@ -867,3 +867,17 @@ ul.sub-perks b{font-weight:700;color:var(--ink)}
 .av-pick{cursor:pointer}
 @media (max-width:560px){.av-lg{width:56px;height:56px;font-size:1.2rem}.dsh-who{gap:12px}}
 .av-edit .stack{flex:1;min-width:200px}
+
+/* ===== Recadrage de la photo ===== */
+.crop-ov{position:fixed;inset:0;z-index:200;background:rgba(4,20,12,.72);display:grid;place-items:center;padding:16px}
+.crop-box{width:min(360px,100%);background:var(--surface);color:var(--ink);border-radius:20px;padding:20px;box-shadow:0 30px 60px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+.crop-title{font-family:var(--display);font-size:1.15rem}
+.crop-help{margin:0;color:var(--muted);font-size:.88rem}
+.crop-stage{position:relative;width:280px;max-width:100%;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#111;touch-action:none}
+.crop-stage canvas{width:100%;height:100%;display:block;cursor:grab}
+.crop-stage canvas:active{cursor:grabbing}
+.crop-ring{position:absolute;inset:0;pointer-events:none;border-radius:50%;box-shadow:0 0 0 999px rgba(0,0,0,.5);outline:2px solid #fff;outline-offset:-2px}
+.crop-zoom{display:flex;align-items:center;gap:10px;width:100%;font-weight:700;color:var(--muted)}
+.crop-zoom input{flex:1;accent-color:var(--accent)}
+.crop-actions{display:flex;gap:10px;width:100%}
+.crop-actions .btn{flex:1}

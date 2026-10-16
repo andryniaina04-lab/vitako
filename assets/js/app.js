@@ -188,23 +188,81 @@ function gate(next) {
 // Photo de profil : recadrée en carré et compressée dans le navigateur avant l'envoi
 // ---------------------------------------------------------------------------
 const AV_SIZE = 320;
-async function compressAvatar(file) {
+async function loadImageFile(file) {
   if (!file || !/^image\//.test(file.type)) throw new Error('Choisissez une image (JPG, PNG, WebP ou HEIC).');
   if (file.size > 25 * 1024 * 1024) throw new Error('Image trop lourde (25 Mo maximum).');
-  let img;
-  try { img = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+  try { return await createImageBitmap(file, { imageOrientation: 'from-image' }); }
   catch (e) {
-    img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Image illisible. Essayez une photo JPG ou PNG.')); i.src = URL.createObjectURL(file); });
+    return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Image illisible. Essayez une photo JPG ou PNG.')); i.src = URL.createObjectURL(file); });
   }
-  const w = img.width, h = img.height, side = Math.min(w, h);
+}
+// Découpe la zone choisie (sx, sy, côté) et la compresse en 320 x 320 px.
+async function cropToBlob(img, sx, sy, side) {
   const c = document.createElement('canvas'); c.width = AV_SIZE; c.height = AV_SIZE;
   const g = c.getContext('2d'); g.imageSmoothingQuality = 'high';
-  g.drawImage(img, (w - side) / 2, (h - side) / 2, side, side, 0, 0, AV_SIZE, AV_SIZE);
+  g.fillStyle = '#fff'; g.fillRect(0, 0, AV_SIZE, AV_SIZE);
+  g.drawImage(img, sx, sy, side, side, 0, 0, AV_SIZE, AV_SIZE);
   const toBlob = (type, q) => new Promise((r) => c.toBlob(r, type, q));
   let blob = await toBlob('image/webp', 0.8);
   if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', 0.82);
   if (!blob) throw new Error("Impossible de préparer l'image.");
   return blob;
+}
+async function compressAvatar(file) {
+  const img = await loadImageFile(file);
+  const side = Math.min(img.width, img.height);
+  return cropToBlob(img, (img.width - side) / 2, (img.height - side) / 2, side);
+}
+// Fenêtre de recadrage : glisser pour déplacer, curseur / molette / pincement pour zoomer.
+function openCropper(img) {
+  return new Promise((resolve) => {
+    const V = 280; // côté de la zone visible, en px
+    const base = V / Math.min(img.width, img.height);
+    let z = 1, ox = (V - img.width * base) / 2, oy = (V - img.height * base) / 2;
+    const ov = document.createElement('div');
+    ov.className = 'crop-ov';
+    ov.innerHTML = `<div class="crop-box" role="dialog" aria-modal="true" aria-labelledby="crop-t">
+      <b id="crop-t" class="crop-title">Recadrer la photo</b>
+      <p class="crop-help">Faites glisser la photo pour la placer, puis zoomez.</p>
+      <div class="crop-stage"><canvas width="${V * 2}" height="${V * 2}" aria-label="Aperçu du recadrage"></canvas><span class="crop-ring" aria-hidden="true"></span></div>
+      <label class="crop-zoom"><span aria-hidden="true">−</span><input type="range" min="1" max="4" step="0.01" value="1" aria-label="Zoom"><span aria-hidden="true">+</span></label>
+      <div class="crop-actions"><button type="button" class="btn ghost" data-c="cancel">Annuler</button><button type="button" class="btn" data-c="ok">Enregistrer</button></div>
+    </div>`;
+    document.body.appendChild(ov);
+    const cv = ov.querySelector('canvas'), g = cv.getContext('2d'), range = ov.querySelector('input');
+    const sc = () => base * z;
+    const clamp = () => { const s = sc(); ox = Math.min(0, Math.max(V - img.width * s, ox)); oy = Math.min(0, Math.max(V - img.height * s, oy)); };
+    const draw = () => { clamp(); g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, V, V); g.imageSmoothingQuality = 'high'; g.drawImage(img, ox, oy, img.width * sc(), img.height * sc()); };
+    const zoomTo = (nz, cx = V / 2, cy = V / 2) => {
+      nz = Math.min(4, Math.max(1, nz)); const s0 = sc();
+      const ix = (cx - ox) / s0, iy = (cy - oy) / s0; z = nz; ox = cx - ix * sc(); oy = cy - iy * sc();
+      range.value = z; draw();
+    };
+    draw();
+    const pts = new Map(); let pinch = 0;
+    cv.addEventListener('pointerdown', (e) => { cv.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); });
+    cv.addEventListener('pointermove', (e) => {
+      if (!pts.has(e.pointerId)) return;
+      const [px, py] = pts.get(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]);
+      if (pts.size === 2) {
+        const [a, b] = [...pts.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+        if (pinch) zoomTo(z * d / pinch); pinch = d; return;
+      }
+      const k = V / cv.getBoundingClientRect().width; ox += (e.clientX - px) * k; oy += (e.clientY - py) * k; draw();
+    });
+    const up = (e) => { pts.delete(e.pointerId); if (pts.size < 2) pinch = 0; };
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+    cv.addEventListener('wheel', (e) => { e.preventDefault(); const r = cv.getBoundingClientRect(), k = V / r.width; zoomTo(z * (e.deltaY < 0 ? 1.08 : 1 / 1.08), (e.clientX - r.left) * k, (e.clientY - r.top) * k); }, { passive: false });
+    range.addEventListener('input', () => zoomTo(Number(range.value)));
+    const close = (val) => { document.removeEventListener('keydown', key); ov.remove(); resolve(val); };
+    const key = (e) => { if (e.key === 'Escape') close(null); };
+    document.addEventListener('keydown', key);
+    ov.addEventListener('click', (e) => {
+      if (e.target === ov || e.target.dataset.c === 'cancel') close(null);
+      else if (e.target.dataset.c === 'ok') { const s = sc(); close({ sx: -ox / s, sy: -oy / s, side: V / s }); }
+    });
+    ov.querySelector('[data-c=ok]').focus();
+  });
 }
 const initials = (name) => (name || '?').trim().split(/\s+/).slice(0, 2).map((x) => x[0]).join('').toUpperCase();
 function avatarHtml(P, cls = '') {
@@ -1114,7 +1172,7 @@ function accountPage() {
       <div class="stack" style="gap:8px">
         <div class="av-btns"><label class="btn ghost sm av-pick" for="av-file">${P.avatar_url ? 'Changer la photo' : 'Ajouter une photo'}</label>${P.avatar_url ? '<button type="button" class="btn ghost sm" data-act="av-remove">Retirer</button>' : ''}</div>
         <input type="file" id="av-file" accept="image/*" hidden>
-        <small class="muted">JPG, PNG ou photo du téléphone. Elle est recadrée et compressée automatiquement.</small>
+        <small class="muted">JPG, PNG ou photo du téléphone. Vous choisissez le cadrage, la photo est ensuite compressée automatiquement.</small>
       </div>
     </div>
     <div class="f"><label class="l" for="n-name">Nom complet (sur les attestations)</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
@@ -1707,9 +1765,13 @@ document.addEventListener('change', async (e) => {
   if (e.target.id === 'av-file') {
     const file = e.target.files?.[0]; e.target.value = '';
     if (!file) return;
+    let img;
+    try { img = await loadImageFile(file); } catch (err) { toast(err.message); return; }
+    const box = await openCropper(img);
+    if (!box) return;
     const pick = document.querySelector('.av-pick'); if (pick) pick.textContent = 'Envoi…';
     try {
-      const blob = await compressAvatar(file);
+      const blob = await cropToBlob(img, box.sx, box.sy, box.side);
       S.profile.avatar_url = await api.uploadAvatar(uid(), blob);
       toast(`Photo enregistrée (${Math.max(1, Math.round(blob.size / 1024))} Ko).`);
     } catch (err) { toast(err.message || "La photo n'a pas pu être envoyée."); }

@@ -217,6 +217,13 @@ with sync_playwright() as p:
       c.toBlob((b) => { const fr = new FileReader(); fr.onload = () => r(fr.result.split(',')[1]); fr.readAsDataURL(b); }, 'image/png'); })''')
     import base64
     page.set_input_files('#av-file', files=[{'name': 'photo.png', 'mimeType': 'image/png', 'buffer': base64.b64decode(big)}])
+    page.wait_for_selector('.crop-ov canvas', timeout=5000)
+    check('photo de profil : fenêtre de recadrage', page.locator('.crop-ov input[type=range]').count() == 1)
+    page.fill('.crop-ov input[type=range]', '2')
+    box = page.locator('.crop-ov canvas').bounding_box()
+    page.mouse.move(box['x'] + 140, box['y'] + 140); page.mouse.down(); page.mouse.move(box['x'] + 60, box['y'] + 90, steps=5); page.mouse.up()
+    page.screenshot(path=f'{SHOTS}/06f-recadrage.png')
+    page.click('.crop-ov [data-c=ok]')
     page.wait_for_selector('.dsh-who img.av', timeout=5000)
     f = page.evaluate("Object.values(window.__mockdb().files || {})[0]")
     check('photo de profil : compressée (< 60 Ko, 320 px)', f and f['size'] < 60000 and f['type'] in ('image/webp', 'image/jpeg'))
