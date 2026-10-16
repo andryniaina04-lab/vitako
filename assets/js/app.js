@@ -30,7 +30,7 @@ const S = {
   filter: { q: '', dom: 'all' },
   payOp: CFG.operators[0].id,
   booting: true,
-  ui: { menu: false, search: false, searchFocus: false },
+  ui: { menu: false, search: false, searchFocus: false, notif: false },
 };
 
 const uid = () => S.session?.user?.id;
@@ -185,6 +185,70 @@ function gate(next) {
 }
 
 // ---------------------------------------------------------------------------
+// Notifications (cloche en haut, point rouge sur le menu)
+// ---------------------------------------------------------------------------
+I.bell = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+const NSEEN = () => 'vitako_notif_seen_' + (uid() || '');
+function notifSeen() { try { return new Set(JSON.parse(localStorage.getItem(NSEEN()) || '[]')); } catch (e) { return new Set(); } }
+function notifMarkSeen(list) {
+  try { const seen = notifSeen(); list.forEach((n) => seen.add(n.id)); localStorage.setItem(NSEEN(), JSON.stringify([...seen].slice(-60))); } catch (e) { /* stockage indisponible */ }
+}
+function notifications() {
+  if (!S.session || !S.profile) return [];
+  const out = [];
+  const plural = (n, a, b) => (n > 1 ? b : a);
+  if (isAdmin()) {
+    const p = S.admin.pending || 0, f = S.admin.feedback || 0;
+    // Toujours non lues tant qu'il reste quelque chose à traiter
+    if (p) out.push({ id: 'adm-pay-' + p + '-' + Date.now(), tone: 'gold', sticky: true, title: `${p} ${plural(p, 'paiement', 'paiements')} à valider`, text: 'Vérifiez la référence dans votre application, puis validez ou refusez.', href: '#/admin' });
+    if (f) out.push({ id: 'adm-fb-' + f + '-' + Date.now(), tone: 'blue', sticky: true, title: `${f} ${plural(f, 'nouvelle remarque', 'nouvelles remarques')}`, text: 'Des visiteurs ou des apprenants vous ont écrit.', href: '#/admin/remarques' });
+    return out;
+  }
+  for (const pay of S.payments.slice(0, 5)) {
+    if (pay.status === 'pending') out.push({ id: 'pay-p-' + pay.id, tone: 'gold', title: 'Paiement en cours de vérification', text: `Référence ${pay.reference}. Votre accès sera activé en ${CFG.validationDelay}.`, href: '#/abonnement', ts: pay.created_at });
+    else if (pay.status === 'approved') out.push({ id: 'pay-a-' + pay.id, tone: 'ok', title: 'Votre accès est activé 🎉', text: `Paiement validé. Accès à toutes les formations jusqu'au ${fmtDate(pay.access_until || S.profile.sub_end)}.`, href: '#/formations', ts: pay.decided_at });
+    else if (pay.status === 'rejected') out.push({ id: 'pay-r-' + pay.id, tone: 'err', title: 'Paiement non validé', text: `${pay.reason || 'Paiement introuvable'}. Vérifiez la référence dans votre SMS et renvoyez-la.`, href: '#/abonnement', ts: pay.decided_at });
+  }
+  const end = S.profile.sub_end ? new Date(S.profile.sub_end) : null;
+  if (end) {
+    const left = Math.ceil((end - Date.now()) / DAY);
+    if (left > 0 && left <= 3) out.push({ id: 'sub-soon-' + end.toISOString().slice(0, 10), tone: 'gold', title: `Votre abonnement se termine dans ${left} ${plural(left, 'jour', 'jours')}`, text: `Prolongez-le pour garder l'accès après le ${fmtDate(end)}.`, href: '#/abonnement' });
+    else if (left <= 0 && left > -30) out.push({ id: 'sub-end-' + end.toISOString().slice(0, 10), tone: 'err', title: 'Votre abonnement est terminé', text: 'Vos attestations restent disponibles. Renouvelez pour continuer les formations.', href: '#/abonnement' });
+  }
+  return out.sort((a, b) => String(b.ts || '9').localeCompare(String(a.ts || '9')));
+}
+function notifUnread(list = notifications()) {
+  const seen = notifSeen();
+  return list.filter((n) => n.sticky || !seen.has(n.id)).length;
+}
+function notifPanel(list) {
+  const seen = notifSeen();
+  if (!list.length) return '<p class="nt-empty">Aucune notification pour le moment.</p>';
+  return list.map((n) => `<a class="nt-item ${n.tone}${n.sticky || !seen.has(n.id) ? ' new' : ''}" href="${n.href}">
+      <span class="nt-dot" aria-hidden="true"></span>
+      <span class="nt-body"><b>${esc(n.title)}</b><small>${esc(n.text)}</small>${n.ts ? `<em>${fmtDT(n.ts)}</em>` : ''}</span></a>`).join('');
+}
+// Vérifie régulièrement s'il y a du nouveau (toutes les 60 s, et au retour sur l'onglet)
+let notifBusy = false;
+async function refreshNotifs() {
+  if (notifBusy || !S.session || !S.profile || document.hidden) return;
+  notifBusy = true;
+  try {
+    const before = JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end]);
+    if (isAdmin()) S.admin = await api.adminCounts();
+    else {
+      const [pays, prof] = await Promise.all([api.getMyPayments(uid()), api.getProfile(uid())]);
+      S.payments = pays; if (prof) S.profile = prof;
+    }
+    const after = JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end]);
+    if (before !== after) { if (S.ui.notif || S.ui.menu) topbar(); else render(); }
+  } catch (e) { /* réseau indisponible : on réessaiera */ }
+  notifBusy = false;
+}
+setInterval(refreshNotifs, 60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshNotifs(); });
+
+// ---------------------------------------------------------------------------
 // Barre du haut
 // ---------------------------------------------------------------------------
 function topbar() {
@@ -207,13 +271,20 @@ function topbar() {
     ? '<button class="menu-item danger" data-act="logout">Déconnexion</button>'
     : '<div class="menu-cta"><a class="btn" href="#/inscription">Créer un compte</a><a class="btn ghost" href="#/connexion">Connexion</a></div>';
   const dark = isDark();
-  const badge = S.session && isAdmin() && S.admin.pending ? `<span class="dot-badge">${S.admin.pending}</span>` : '';
+  const nlist = notifications();
+  const unread = notifUnread(nlist);
+  const badge = unread ? '<span class="red-dot" aria-hidden="true"></span>' : '';
+  const bell = S.session && S.profile ? `<div class="nt-wrap">
+        <button class="iconbtn${S.ui.notif ? ' on' : ''}" data-act="notif" aria-label="Notifications${unread ? ` (${unread} non lue${unread > 1 ? 's' : ''})` : ''}" aria-expanded="${!!S.ui.notif}" aria-controls="notif">${I.bell}${unread ? `<span class="nt-count">${unread}</span>` : ''}</button>
+        <div class="nt-panel" id="notif" role="dialog" aria-label="Notifications" ${S.ui.notif ? '' : 'hidden'}><div class="nt-head">Notifications</div>${notifPanel(nlist)}</div>
+      </div>` : '';
   const fl = document.getElementById('foot-logo'); if (fl && !fl.firstChild) fl.innerHTML = logoSvg({ label: 'Vitako, accueil' });
   topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil">${logoSvg({ label: 'Vitako, accueil' })}</a>
     <div class="tb-actions">
       ${S.session && S.profile && hasAccess() && !isAdmin() ? `<span class="pill tb-pill">Abonné · ${daysLeft()} j</span>` : ''}
       ${!S.session ? `<a class="tb-link" href="#/connexion">Connexion</a><a class="btn tb-cta" href="#/inscription"><span class="tb-l">Créer un compte</span><span class="tb-s">S'inscrire</span></a>` : ''}
       ${S.session && S.profile && !hasAccess() ? `<a class="btn tb-cta" href="#/abonnement">S'abonner</a>` : ''}
+      ${bell}
       <button class="iconbtn${S.ui.search ? ' on' : ''}" data-act="search-toggle" aria-label="Rechercher une formation" aria-expanded="${S.ui.search}" aria-controls="tb-search">${I.search}</button>
       <button class="iconbtn" data-act="theme" aria-label="${dark ? 'Passer au thème clair' : 'Passer au thème sombre'}" title="${dark ? 'Thème clair' : 'Thème sombre'}">${dark ? I.sun : I.moon}</button>
       <button class="iconbtn${S.ui.menu ? ' on' : ''}" data-act="menu" aria-label="${S.ui.menu ? 'Fermer le menu' : 'Ouvrir le menu'}" aria-expanded="${S.ui.menu}" aria-controls="menu">${S.ui.menu ? I.close : I.burger}${badge}</button>
@@ -1253,6 +1324,7 @@ const busy = (btn, on, label) => { if (!btn) return; btn.disabled = on; if (labe
 document.addEventListener('click', async (e) => {
   // Fermer le menu quand on clique ailleurs
   if (S.ui.menu && !e.target.closest('#menu') && !e.target.closest('[data-act=menu]')) { S.ui.menu = false; topbar(); }
+  if (S.ui.notif && !e.target.closest('.nt-wrap')) { S.ui.notif = false; topbar(); }
   // Fermer la recherche quand on clique ailleurs (un clic sur un résultat la ferme au changement de page)
   const hsLink = e.target.closest('#hs-panel a');
   if (S.ui.search && ((!e.target.closest('#tb-search') && !e.target.closest('[data-act=search-toggle]')) || (hsLink && hsLink.getAttribute('href') === location.hash))) {
@@ -1295,6 +1367,11 @@ document.addEventListener('click', async (e) => {
     const id = document.getElementById('review-form')?.dataset.course;
     if (id) { try { localStorage.setItem(SKIP_KEY, JSON.stringify([...skipped(), id])); } catch (err) {} }
     renderReviewSlot(); toast('D\'accord. Vous pourrez donner votre avis une autre fois.'); return;
+  }
+  if (t.dataset.act === 'notif') {
+    S.ui.notif = !S.ui.notif; S.ui.menu = false; S.ui.search = false;
+    const list = notifications(); topbar(); if (S.ui.notif) { notifMarkSeen(list); refreshNotifs(); }
+    return;
   }
   if (t.dataset.act === 'menu') { S.ui.menu = !S.ui.menu; topbar(); if (S.ui.menu) document.querySelector('#menu .menu-item')?.focus(); return; }
   if (t.dataset.act === 'search-toggle') {
@@ -1546,7 +1623,7 @@ document.addEventListener('submit', async (e) => {
 
 window.addEventListener('hashchange', (ev) => {
   try { const prev = new URL(ev.oldURL).hash.replace(/^#/, ''); if (prev !== '/remarque') S.ui.fromPage = prev || '/'; } catch (e) {}
-  S.ui.menu = false; S.ui.search = false; S.filter.q = '';
+  S.ui.menu = false; S.ui.search = false; S.ui.notif = false; S.filter.q = '';
   const { path } = route();
   if (!/\/examen$/.test(path)) { S.examResult = null; }
   render();
