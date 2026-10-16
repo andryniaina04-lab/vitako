@@ -854,3 +854,16 @@ ul.sub-perks b{font-weight:700;color:var(--ink)}
 .nt-item.new.err{background:var(--danger-soft)}
 .nt-item.new.gold{background:var(--gold-soft)}
 @media (max-width:560px){.nt-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}}
+
+/* ===== Photo de profil ===== */
+.av{flex:none;width:40px;height:40px;border-radius:50%;object-fit:cover;display:inline-grid;place-items:center;background:var(--accent);color:#fff;font-family:var(--display);font-weight:700;font-size:.95rem}
+.av-sm{width:44px;height:44px;margin-bottom:8px}
+.av-lg{width:72px;height:72px;font-size:1.6rem;box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.av-xl{width:88px;height:88px;font-size:1.9rem}
+.av-ini{background:linear-gradient(135deg,#075C40,#14A06F)}
+.dsh-who{display:flex;align-items:center;gap:18px}
+.av-edit{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.av-btns{display:flex;gap:8px;flex-wrap:wrap}
+.av-pick{cursor:pointer}
+@media (max-width:560px){.av-lg{width:56px;height:56px;font-size:1.2rem}.dsh-who{gap:12px}}
+.av-edit .stack{flex:1;min-width:200px}

@@ -70,7 +70,7 @@
       }
       let rows = table(this.name).filter((r) => this.filters.every((f) => f(r)));
       if (this.op === 'update') {
-        if (this.name !== 'profiles' || Object.keys(this.vals).some((k) => k !== 'full_name')) return err('permission denied');
+        if (this.name !== 'profiles' || Object.keys(this.vals).some((k) => k !== 'full_name' && k !== 'avatar_url')) return err('permission denied');
         rows.filter((r) => r.id === me()).forEach((r) => Object.assign(db.profiles.find((p) => p.id === r.id), this.vals));
         save(); return { data: null, error: null };
       }
@@ -243,7 +243,20 @@
 
   window.supabase = {
     createClient() {
-      return { auth, from: (name) => new Query(name), rpc: async (name, params) => RPC[name](params) };
+      const storage = {
+        from: (bucket) => ({
+          async upload(path, blob, opts) {
+            if (bucket !== 'avatars' || !me() || path.split('/')[0] !== me()) return err('new row violates row-level security policy');
+            if (blob.size > 204800) return err('The object exceeded the maximum allowed size');
+            const url = await new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); });
+            (db.files ||= {})[bucket + '/' + path] = { url, size: blob.size, type: blob.type }; save();
+            return { data: { path }, error: null };
+          },
+          getPublicUrl(path) { const f = db.files?.[bucket + '/' + path]; return { data: { publicUrl: f ? f.url : 'https://mock.supabase.co/storage/v1/object/public/' + bucket + '/' + path } }; },
+          async remove(paths) { paths.forEach((p) => { if (db.files) delete db.files[bucket + '/' + p]; }); save(); return { data: [], error: null }; },
+        }),
+      };
+      return { auth, storage, from: (name) => new Query(name), rpc: async (name, params) => RPC[name](params) };
     },
   };
   window.__mockdb = () => db;

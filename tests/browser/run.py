@@ -211,6 +211,17 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/06d-notifications.png')
     page.click('[data-act=notif]'); page.wait_for_timeout(150)
     check('étudiante : notification lue, plus de compteur', page.locator('[data-act=notif] .nt-count').count() == 0)
+    # Photo de profil : une grande image (1600 x 1200) est recadrée et compressée avant l'envoi
+    big = page.evaluate('''() => new Promise((r) => { const c = document.createElement('canvas'); c.width = 1600; c.height = 1200; const g = c.getContext('2d');
+      for (let i = 0; i < 400; i++) { g.fillStyle = `hsl(${i * 7 % 360},70%,50%)`; g.fillRect(Math.random() * 1600, Math.random() * 1200, 120, 120); }
+      c.toBlob((b) => { const fr = new FileReader(); fr.onload = () => r(fr.result.split(',')[1]); fr.readAsDataURL(b); }, 'image/png'); })''')
+    import base64
+    page.set_input_files('#av-file', files=[{'name': 'photo.png', 'mimeType': 'image/png', 'buffer': base64.b64decode(big)}])
+    page.wait_for_selector('.dsh-who img.av', timeout=5000)
+    f = page.evaluate("Object.values(window.__mockdb().files || {})[0]")
+    check('photo de profil : compressée (< 60 Ko, 320 px)', f and f['size'] < 60000 and f['type'] in ('image/webp', 'image/jpeg'))
+    check('photo de profil : affichée dans Mon espace', page.locator('.dsh-who img.av').count() == 1 and page.locator('.av-edit img.av').count() == 1)
+    page.screenshot(path=f'{SHOTS}/06e-photo-profil.png', full_page=True)
     goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)
     check('fiche abonnée : détail du programme visible (1.1…)', page.locator('.mod-secs').count() == 5 and '1.1' in page.locator('.mod-secs').first.inner_text() and page.locator('.prog-lock').count() == 0)
     fx = page.evaluate('window.__VITAKO_FIXTURE__')

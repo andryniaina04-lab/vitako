@@ -185,6 +185,35 @@ function gate(next) {
 }
 
 // ---------------------------------------------------------------------------
+// Photo de profil : recadrée en carré et compressée dans le navigateur avant l'envoi
+// ---------------------------------------------------------------------------
+const AV_SIZE = 320;
+async function compressAvatar(file) {
+  if (!file || !/^image\//.test(file.type)) throw new Error('Choisissez une image (JPG, PNG, WebP ou HEIC).');
+  if (file.size > 25 * 1024 * 1024) throw new Error('Image trop lourde (25 Mo maximum).');
+  let img;
+  try { img = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+  catch (e) {
+    img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Image illisible. Essayez une photo JPG ou PNG.')); i.src = URL.createObjectURL(file); });
+  }
+  const w = img.width, h = img.height, side = Math.min(w, h);
+  const c = document.createElement('canvas'); c.width = AV_SIZE; c.height = AV_SIZE;
+  const g = c.getContext('2d'); g.imageSmoothingQuality = 'high';
+  g.drawImage(img, (w - side) / 2, (h - side) / 2, side, side, 0, 0, AV_SIZE, AV_SIZE);
+  const toBlob = (type, q) => new Promise((r) => c.toBlob(r, type, q));
+  let blob = await toBlob('image/webp', 0.8);
+  if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', 0.82);
+  if (!blob) throw new Error("Impossible de préparer l'image.");
+  return blob;
+}
+const initials = (name) => (name || '?').trim().split(/\s+/).slice(0, 2).map((x) => x[0]).join('').toUpperCase();
+function avatarHtml(P, cls = '') {
+  return P?.avatar_url
+    ? `<img class="av ${cls}" src="${esc(P.avatar_url)}" alt="" width="${AV_SIZE}" height="${AV_SIZE}" loading="lazy" decoding="async">`
+    : `<span class="av av-ini ${cls}" aria-hidden="true">${esc(initials(P?.full_name))}</span>`;
+}
+
+// ---------------------------------------------------------------------------
 // Notifications (cloche en haut, point rouge sur le menu)
 // ---------------------------------------------------------------------------
 I.bell = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
@@ -264,7 +293,7 @@ function topbar() {
   }
   items += item('#/verifier', 'Vérifier une attestation') + item('#/remarque', 'Envoyer une remarque');
   const who = S.session
-    ? `<div class="menu-who"><b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
+    ? `<div class="menu-who">${avatarHtml(S.profile, 'av-sm')}<b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
         ${S.profile && hasAccess() && !isAdmin() ? `<span class="pill">Abonné · ${daysLeft()} j restants</span>` : ''}</div>`
     : '';
   const foot = S.session
@@ -1051,8 +1080,8 @@ function accountPage() {
   }).join('');
   return `<section class="dsh-hero">
     <div class="dsh-hero-in">
-      <div><div class="dsh-eyebrow">Mon espace</div><h1>Salama, ${esc((P.full_name || '').split(' ')[0])}</h1>
-        <p>${act && !P.is_admin ? `Abonnement actif : encore ${daysLeft()} jour${daysLeft() > 1 ? 's' : ''} pour apprendre.` : P.is_admin ? 'Compte administrateur.' : 'Abonnez-vous pour suivre les cours et obtenir vos attestations.'}</p></div>
+      <div class="dsh-who">${avatarHtml(P, 'av-lg')}<div><div class="dsh-eyebrow">Mon espace</div><h1>Salama, ${esc((P.full_name || '').split(' ')[0])}</h1>
+        <p>${act && !P.is_admin ? `Abonnement actif : encore ${daysLeft()} jour${daysLeft() > 1 ? 's' : ''} pour apprendre.` : P.is_admin ? 'Compte administrateur.' : 'Abonnez-vous pour suivre les cours et obtenir vos attestations.'}</p></div></div>
       <div class="dsh-kpis">
         <div><b>${ongoing.length}</b><span>en cours</span></div>
         <div><b>${modsDone}</b><span>modules terminés</span></div>
@@ -1080,8 +1109,15 @@ function accountPage() {
     </section>
   </div>
   <form id="name-form" class="panel stack dsh-card tone-user" style="gap:12px;margin-top:22px;max-width:520px">
-    <div class="dsh-h"><span class="dsh-ic">${IC.user}</span><b>Nom sur les attestations</b></div>
-    <div class="f"><label class="l" for="n-name">Nom complet</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
+    <div class="dsh-h"><span class="dsh-ic">${IC.user}</span><b>Mon profil</b></div>
+    <div class="av-edit">${avatarHtml(P, 'av-xl')}
+      <div class="stack" style="gap:8px">
+        <div class="av-btns"><label class="btn ghost sm av-pick" for="av-file">${P.avatar_url ? 'Changer la photo' : 'Ajouter une photo'}</label>${P.avatar_url ? '<button type="button" class="btn ghost sm" data-act="av-remove">Retirer</button>' : ''}</div>
+        <input type="file" id="av-file" accept="image/*" hidden>
+        <small class="muted">JPG, PNG ou photo du téléphone. Elle est recadrée et compressée automatiquement.</small>
+      </div>
+    </div>
+    <div class="f"><label class="l" for="n-name">Nom complet (sur les attestations)</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
     <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
     <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
   </form>`;
@@ -1411,6 +1447,10 @@ document.addEventListener('click', async (e) => {
   }
   if (a === 'reload') { render(); return; }
   if (a === 'toc') { document.getElementById(t.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  if (a === 'av-remove') {
+    try { await api.removeAvatar(uid()); S.profile.avatar_url = null; toast('Photo retirée.'); } catch (err) { toast(err.message); }
+    render(); return;
+  }
   if (a === 'logout') { S.ui.menu = false; await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
 
   if (a === 'mquiz-retry') {
@@ -1663,6 +1703,18 @@ render();
   });
 })();
 // Avis : le message « choisissez une note » disparaît dès qu'une étoile est choisie
-document.addEventListener('change', (e) => {
+document.addEventListener('change', async (e) => {
+  if (e.target.id === 'av-file') {
+    const file = e.target.files?.[0]; e.target.value = '';
+    if (!file) return;
+    const pick = document.querySelector('.av-pick'); if (pick) pick.textContent = 'Envoi…';
+    try {
+      const blob = await compressAvatar(file);
+      S.profile.avatar_url = await api.uploadAvatar(uid(), blob);
+      toast(`Photo enregistrée (${Math.max(1, Math.round(blob.size / 1024))} Ko).`);
+    } catch (err) { toast(err.message || "La photo n'a pas pu être envoyée."); }
+    render();
+    return;
+  }
   if (e.target.name === 'rv-rating') { const el = document.getElementById('rverr'); if (el) el.hidden = true; }
 });

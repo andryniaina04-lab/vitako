@@ -117,7 +117,24 @@ export async function updatePassword(password) {
 // --- Profil, progression, attestations --------------------------------
 export async function getProfile(uid) {
   need();
-  return run(sb.from('profiles').select('id, full_name, email, is_admin, sub_end').eq('id', uid).maybeSingle());
+  return run(sb.from('profiles').select('id, full_name, email, is_admin, sub_end, avatar_url').eq('id', uid).maybeSingle());
+}
+// Photo de profil : fichier déjà compressé par le navigateur, rangé dans avatars/<uid>/.
+export async function uploadAvatar(uid, blob) {
+  need();
+  const ext = blob.type === 'image/webp' ? 'webp' : 'jpg';
+  const path = `${uid}/avatar.${ext}`;
+  const up = await sb.storage.from('avatars').upload(path, blob, { upsert: true, contentType: blob.type, cacheControl: '3600' });
+  if (up.error) throw new ApiError(up.error);
+  const pub = sb.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+  const url = /^https?:/.test(pub) ? pub + '?v=' + Date.now() : pub; // ?v= : la nouvelle photo remplace l'ancienne en cache
+  await run(sb.from('profiles').update({ avatar_url: url }).eq('id', uid));
+  return url;
+}
+export async function removeAvatar(uid) {
+  need();
+  await sb.storage.from('avatars').remove([`${uid}/avatar.webp`, `${uid}/avatar.jpg`]).catch(() => null);
+  await run(sb.from('profiles').update({ avatar_url: null }).eq('id', uid));
 }
 export async function updateName(uid, fullName) {
   need();
