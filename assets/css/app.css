@@ -826,3 +826,7 @@ ul.sub-perks b{font-weight:700;color:var(--ink)}
   .sub-wrap .sub-pay{order:1}
   .sub-wrap .sub-plan{order:2;position:sticky;top:90px}
 }
+/* Paiement : numéro et titulaire alignés sur toute la largeur, comme les champs */
+.pay-panel ol.steps{padding-left:0;list-style-position:inside}
+.pay-panel .paynum{margin-left:0;margin-right:0}
+.pay-panel .paynum .mono{font-size:1.3rem}
