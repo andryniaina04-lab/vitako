@@ -924,7 +924,7 @@ function subscribePage() {
         <li>Entrez les informations du paiement :</li>
       </ol>
       <div class="f"><label class="l" for="p-ref">Référence de la transaction</label><input class="in mono" id="p-ref" autocomplete="off" required placeholder="Copiez-la depuis le SMS de confirmation"></div>
-      <div class="f"><label class="l" for="p-tel">Votre numéro ${esc(op.name)} (facultatif)</label><input class="in mono" id="p-tel" inputmode="tel" autocomplete="tel" placeholder="${op.prefixes[0]} 12 345 67"></div>
+      <div class="f"><label class="l" for="p-tel">Votre numéro (facultatif)</label><input class="in mono" id="p-tel" inputmode="tel" autocomplete="tel" placeholder="${op.prefixes[0]} 12 345 67"></div>
       <p id="perr" class="notice err" hidden></p>
       <button class="btn" type="submit">Envoyer ma référence</button>
       <p class="muted" style="font-size:.85rem">Nous vérifions le paiement puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}, et vous prévenons par e-mail. Accès prévu du ${fmtDate(start)} au ${fmtDate(start.getTime() + S.days * DAY)}.</p>
