@@ -898,7 +898,7 @@ function subscribePage() {
   const last = S.payments[0];
   const showKo = last && last.status === 'rejected';
   const start = act ? new Date(S.profile.sub_end) : new Date();
-  return `<div class="narrow stack" style="gap:18px">
+  return `<div class="sub-wrap">
     <div class="panel stack sub-plan" style="gap:14px">
       <span class="eyebrow">Abonnement mensuel</span>
       ${promoOn() ? `<div><span class="pill red">-${promoPct()} % jusqu'au ${promoEnd()}</span></div>` : ''}
@@ -906,6 +906,7 @@ function subscribePage() {
       <ul class="obj sub-perks"><li><span><b>Toutes les formations</b> disponibles, sans limite</span></li><li><span><b>Tests et examens</b> illimités</span></li><li><span><b>Une attestation</b> par formation réussie, plus l'attestation de parcours complet</span></li><li><span><b>Sans engagement</b> : l'accès s'arrête seul au bout de ${S.days} jours, aucun prélèvement</span></li></ul>
       ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
     </div>
+    <div class="sub-pay stack" style="gap:18px">
     ${pending ? `<div class="panel stack" style="gap:10px">
       <div><span class="pill gold">En attente de validation</span></div>
       <p>Paiement ${esc(opById(pending.operator).name)} de <b class="mono">${ar(pending.amount)}</b>${pending.sender ? ` depuis le <span class="mono">${fmtTel(pending.sender)}</span>` : ''}, référence <span class="mono">${esc(pending.reference)}</span>, envoyé le ${fmtDT(pending.created_at)}.</p>
@@ -929,6 +930,7 @@ function subscribePage() {
       <button class="btn" type="submit">Envoyer ma référence</button>
       <p class="muted" style="font-size:.85rem">Nous vérifions le paiement puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}, et vous prévenons par e-mail. Accès prévu du ${fmtDate(start)} au ${fmtDate(start.getTime() + S.days * DAY)}.</p>
     </form>`}
+    </div>
   </div>`;
 }
 

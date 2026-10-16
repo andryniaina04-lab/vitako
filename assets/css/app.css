@@ -819,3 +819,10 @@ ul.sub-perks b{font-weight:700;color:var(--ink)}
 .pay-panel button.btn[type=submit]{background:#FDE68A;color:#04281C;border-color:#FDE68A;font-size:1.05rem;padding-block:14px}
 .pay-panel button.btn[type=submit]:hover{background:#FCD34D}
 .pay-panel .notice.err{background:#FCE7E4;color:#7A1610}
+/* Page abonnement : paiement à gauche, offre à droite sur ordinateur */
+.sub-wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+@media (min-width:861px){
+  .sub-wrap{max-width:1000px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+  .sub-wrap .sub-pay{order:1}
+  .sub-wrap .sub-plan{order:2;position:sticky;top:90px}
+}
