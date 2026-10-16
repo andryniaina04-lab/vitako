@@ -799,17 +799,18 @@ ul.sub-perks b{font-weight:700;color:var(--ink)}
 .pay-panel .op small{font-size:.8rem;opacity:.85;color:inherit}
 .pay-panel .op:hover{filter:none;transform:translateY(-1px)}
 .pay-panel .op.on{filter:none;border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.25),0 10px 24px rgba(0,0,0,.25)}
-.pay-panel .op-mvola{background:#FFD200;color:#1A1A1A}
-.pay-panel .op-orange{background:#FF7900;color:#fff}
+.pay-panel .op-mvola{background:#FFD200;color:#111}
+.pay-panel .op{font-weight:800}
+.pay-panel .op-orange{background:#FF7900;color:#111}
 .pay-panel .op.on::after{content:"✓";position:absolute;top:8px;right:8px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:#0B7A55;font-size:.8rem;font-weight:800}
 .pay-panel ol.steps{color:#fff}
-.pay-panel ol.steps li::marker{color:#FDE68A;font-weight:700}
-.pay-panel .steps b.mono{color:#FDE68A}
+.pay-panel ol.steps li::marker{color:#6EE7B7;font-weight:700}
+.pay-panel .steps b.mono{color:#6EE7B7}
 .pay-panel .paynum{background:#fff;color:#13241B;border-radius:14px;padding:12px 14px;justify-content:space-between}
 .pay-panel .paynum .mono{font-size:1.6rem}
 .pay-panel .paynum .btn{background:var(--accent);color:#fff;border-color:var(--accent)}
 .pay-panel .holder{color:#fff}
-.pay-panel .holder b{color:#FDE68A}
+.pay-panel .holder b{color:#6EE7B7}
 .pay-panel .muted,.pay-panel small.muted{color:#CFE9DC}
 .pay-panel .l{color:#fff;font-weight:600}
 .pay-panel .in{background:#fff;color:#13241B;border-color:transparent}
