@@ -780,3 +780,41 @@ select.in{padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;ba
 @media (min-width:861px){.lp-hero-in{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,80px)}}
 @media (min-width:861px){.lp-head{max-width:980px}}
 @media (max-width:860px){.br-d{display:none}}
+
+/* ===== Abonnement : avantages avec coche verte ===== */
+.sub-plan{border-top:4px solid var(--accent)}
+.sub-plan .price{color:var(--ink)}
+ul.sub-perks{gap:12px}
+ul.sub-perks li{align-items:flex-start;line-height:1.45}
+ul.sub-perks li::before{width:22px;height:22px;margin-top:1px;border:0;border-radius:50%;
+  background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center/14px no-repeat}
+ul.sub-perks b{font-weight:700;color:var(--ink)}
+
+/* ===== Paiement Mobile Money : fond vert de la marque ===== */
+.pay-panel{position:relative;overflow:hidden;color:#fff;border:0;
+  background:radial-gradient(500px 300px at 100% 0,rgba(110,231,183,.25),transparent 60%),linear-gradient(150deg,#04281C 0%,#075C40 50%,#0B7A55 100%)}
+.pay-panel .pay-head b{display:block;font-family:var(--display);font-size:1.25rem}
+.pay-panel .pay-head span{font-size:.9rem;color:#A7F3D0}
+.pay-panel .op{border:2px solid transparent;border-radius:14px;padding:14px 8px;font-size:1.05rem;transition:transform .15s,box-shadow .15s;position:relative;filter:saturate(.75) brightness(.92)}
+.pay-panel .op small{font-size:.8rem;opacity:.85;color:inherit}
+.pay-panel .op:hover{filter:none;transform:translateY(-1px)}
+.pay-panel .op.on{filter:none;border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.25),0 10px 24px rgba(0,0,0,.25)}
+.pay-panel .op-mvola{background:#FFD200;color:#1A1A1A}
+.pay-panel .op-orange{background:#FF7900;color:#fff}
+.pay-panel .op.on::after{content:"✓";position:absolute;top:8px;right:8px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:#0B7A55;font-size:.8rem;font-weight:800}
+.pay-panel ol.steps{color:#fff}
+.pay-panel ol.steps li::marker{color:#FDE68A;font-weight:700}
+.pay-panel .steps b.mono{color:#FDE68A}
+.pay-panel .paynum{background:#fff;color:#13241B;border-radius:14px;padding:12px 14px;justify-content:space-between}
+.pay-panel .paynum .mono{font-size:1.6rem}
+.pay-panel .paynum .btn{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pay-panel .holder{color:#fff}
+.pay-panel .holder b{color:#FDE68A}
+.pay-panel .muted,.pay-panel small.muted{color:#CFE9DC}
+.pay-panel .l{color:#fff;font-weight:600}
+.pay-panel .in{background:#fff;color:#13241B;border-color:transparent}
+.pay-panel .in::placeholder{color:#7A8A80}
+.pay-panel .in:focus{outline:3px solid #FDE68A;outline-offset:1px}
+.pay-panel button.btn[type=submit]{background:#FDE68A;color:#04281C;border-color:#FDE68A;font-size:1.05rem;padding-block:14px}
+.pay-panel button.btn[type=submit]:hover{background:#FCD34D}
+.pay-panel .notice.err{background:#FCE7E4;color:#7A1610}

@@ -899,11 +899,11 @@ function subscribePage() {
   const showKo = last && last.status === 'rejected';
   const start = act ? new Date(S.profile.sub_end) : new Date();
   return `<div class="narrow stack" style="gap:18px">
-    <div class="panel stack" style="gap:12px">
+    <div class="panel stack sub-plan" style="gap:14px">
       <span class="eyebrow">Abonnement mensuel</span>
       ${promoOn() ? `<div><span class="pill red">-${promoPct()} % jusqu'au ${promoEnd()}</span></div>` : ''}
       <div class="price">${priceHtml()} <small>/ ${S.days} jours</small></div>
-      <ul class="obj"><li>Accès à toutes les formations disponibles</li><li>Tests et examens illimités</li><li>Une attestation par formation réussie, plus l'attestation de parcours complet</li><li>Désactivation automatique au bout de ${S.days} jours, sans prélèvement</li></ul>
+      <ul class="obj sub-perks"><li><span><b>Toutes les formations</b> disponibles, sans limite</span></li><li><span><b>Tests et examens</b> illimités</span></li><li><span><b>Une attestation</b> par formation réussie, plus l'attestation de parcours complet</span></li><li><span><b>Sans engagement</b> : l'accès s'arrête seul au bout de ${S.days} jours, aucun prélèvement</span></li></ul>
       ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
     </div>
     ${pending ? `<div class="panel stack" style="gap:10px">
@@ -912,10 +912,10 @@ function subscribePage() {
       <p class="muted">Nous vérifions la réception puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}. Vous recevrez un e-mail dès que c'est fait.</p>
     </div>` : `
     ${showKo ? notice('err', `Votre paiement du ${fmtDT(last.created_at)} (référence ${esc(last.reference)}) n'a pas été validé : ${esc(last.reason || 'paiement introuvable')}. Vérifiez la référence dans votre SMS de confirmation et renvoyez-la.`) : ''}
-    <form id="pay-form" class="panel stack" style="gap:16px" novalidate>
-      <b>Payer par Mobile Money</b>
+    <form id="pay-form" class="panel stack pay-panel" style="gap:16px" novalidate>
+      <div class="pay-head"><b>Payer par Mobile Money</b><span>Choisissez votre opérateur</span></div>
       <div class="ops two" role="radiogroup" aria-label="Opérateur">
-        ${CFG.operators.map((o) => `<button type="button" class="op${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}<small>${o.prefixes.join(' / ')}</small></button>`).join('')}
+        ${CFG.operators.map((o) => `<button type="button" class="op op-${o.id}${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}<small>${o.prefixes.join(' / ')}</small></button>`).join('')}
       </div>
       <ol class="steps">
         <li><span>Envoyez <b class="mono">${ar(priceNow())}</b> à ce numéro ${esc(op.name)} :</span>

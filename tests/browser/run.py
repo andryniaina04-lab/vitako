@@ -148,7 +148,7 @@ with sync_playwright() as p:
         check('promotion : ancien prix 60 000 Ar barré en rouge', page.locator('.price .old-price').count() == 1 and '60 000' in page.locator('.price .old-price').inner_text())
         check('promotion : 30 000 Ar à envoyer', '30 000 Ar' in page.locator('.steps').inner_text())
     check('nom du titulaire MVola affiché', 'Andrianiaina Philibert' in page.content())
-    page.screenshot(path=f'{SHOTS}/02a-abonnement.png')
+    page.screenshot(path=f'{SHOTS}/02a-abonnement.png', full_page=True)
     page.click('[data-op=orange]'); page.wait_for_timeout(200)
     check('numéro Orange Money affiché', '032 62 291 65' in page.content())
     check('nom du titulaire Orange Money affiché', 'ANDRIANIAINA PHILIBERT RANDRIAMIHANTA' in page.content())
