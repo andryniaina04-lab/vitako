@@ -915,7 +915,7 @@ function subscribePage() {
     <form id="pay-form" class="panel stack pay-panel" style="gap:16px" novalidate>
       <div class="pay-head"><b>Payer par Mobile Money</b><span>Choisissez votre opérateur</span></div>
       <div class="ops two" role="radiogroup" aria-label="Opérateur">
-        ${CFG.operators.map((o) => `<button type="button" class="op op-${o.id}${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}<small>${o.prefixes.join(' / ')}</small></button>`).join('')}
+        ${CFG.operators.map((o) => `<button type="button" class="op op-${o.id}${o.id === op.id ? ' on' : ''}" data-op="${o.id}" role="radio" aria-checked="${o.id === op.id}">${esc(o.name)}</button>`).join('')}
       </div>
       <ol class="steps">
         <li><span>Envoyez <b class="mono">${ar(priceNow())}</b> à ce numéro ${esc(op.name)} :</span>
