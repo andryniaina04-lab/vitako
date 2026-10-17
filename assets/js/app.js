@@ -868,6 +868,11 @@ async function coursePage2(c) {
         <ul class="dur-leg">${parts.map(([k, v, col]) => `<li><i style="background:var(--${col})"></i>${k} <b>${fmtDur(v)}</b></li>`).join('')}</ul>
         <p class="muted" style="font-size:.88rem">Environ ${Math.round((total / 60) / 4.3)} h par semaine pour finir en un mois. Les exercices et les projets rejoignent votre portfolio.</p></div>` : ''}
       <div class="stack" style="gap:12px"><h2>Objectifs</h2><ol class="obj-num">${M.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ol></div>
+      ${c.job.paid ? `<div class="stack" style="gap:12px"><h2>Outils du métier</h2>
+        <div class="tools"><div class="panel"><span class="pill">Gratuits</span><p style="margin-top:8px">${esc(c.job.tools)}</p></div>
+        <div class="panel"><span class="pill gold">Payants (professionnels)</span><p style="margin-top:8px">${esc(c.job.paid)}</p></div></div>
+        <p class="muted" style="font-size:.88rem">${c.level === 'f' ? 'Ce niveau se fait avec les outils gratuits ; les outils payants sont présentés pour savoir quand ils deviennent rentables.' : 'Ce niveau utilise les outils payants demandés par les clients. Essais gratuits possibles.'} Les prix changent souvent : vérifiez-les sur le site officiel. Pas de logiciels piratés.</p></div>`
+        : `<div class="stack" style="gap:12px"><h2>Outils utilisés</h2><div class="panel"><p>${esc(c.job.tools.charAt(0).toUpperCase() + c.job.tools.slice(1))}. Tout se fait avec des outils gratuits.</p></div></div>`}
       <div class="stack" style="gap:12px"><h2>Programme</h2>
         ${c.published && !ok ? `<p class="muted prog-lock"><span class="lock">${I.lock}</span> Le titre des leçons, les cours et les QCM sont réservés aux abonnés.</p>` : ''}
         <div class="mods2">${modsHtml}

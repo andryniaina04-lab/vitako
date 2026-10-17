@@ -1172,89 +1172,56 @@ export const PUBLISHED = {
   ]
  },
  "design-0-f": {
-  "hours": 14,
-  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à vendre ses premiers travaux à des clients à Madagascar et à l'étranger, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "hours": 50,
+  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [
-   "Expliquer ce que fait un graphiste freelance et qui le paie",
-   "Appliquer les règles de composition, couleur et typographie",
-   "Produire et exporter un visuel au bon format",
-   "Savoir quand passer aux outils payants (Illustrator, Photoshop, InDesign, Canva Pro)",
-   "Créer un logo et une mini-charte pour un client",
-   "Fixer un prix, se faire payer depuis Madagascar et livrer"
+   "Expliquer ce que fait un graphiste freelance, pour qui, et s'organiser depuis Madagascar",
+   "Appliquer les règles de hiérarchie, de composition, de couleur et de typographie",
+   "Utiliser Canva, Inkscape, Figma et Photopea, et livrer chaque fichier au bon format",
+   "Créer des visuels pour les réseaux sociaux, des affiches, des flyers et des menus",
+   "Créer un logo et une charte graphique, du brief à la livraison",
+   "Construire un portfolio, fixer ses prix, faire un devis et se faire payer"
   ],
+  "breakdown": {
+   "lecture": 351,
+   "qcm": 150,
+   "exercices": 1650,
+   "projets": 810,
+   "examen": 60
+  },
   "modules": [
    {
-    "title": "Le métier de graphiste freelance depuis Madagascar",
-    "minutes": 8
+    "title": "Le métier de graphiste freelance",
+    "minutes": 60,
+    "lessons": 5
    },
    {
-    "title": "Les fondamentaux du design",
-    "minutes": 7
+    "title": "Les bases du design",
+    "minutes": 58,
+    "lessons": 5
    },
    {
-    "title": "Les outils gratuits et payants, les formats",
-    "minutes": 11
+    "title": "Les outils du graphiste",
+    "minutes": 60,
+    "lessons": 5
+   },
+   {
+    "title": "Créer des visuels qui fonctionnent",
+    "minutes": 59,
+    "lessons": 5
    },
    {
     "title": "Créer un logo et une identité visuelle",
-    "minutes": 8
+    "minutes": 56,
+    "lessons": 5
    },
    {
     "title": "Trouver des clients et se faire payer",
-    "minutes": 8
+    "minutes": 58,
+    "lessons": 5
    }
   ],
-  "preview": {
-   "hours": 50,
-   "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
-   "objectives": [
-    "Expliquer ce que fait un graphiste freelance, pour qui, et s'organiser depuis Madagascar",
-    "Appliquer les règles de hiérarchie, de composition, de couleur et de typographie",
-    "Utiliser Canva, Inkscape, Figma et Photopea, et livrer chaque fichier au bon format",
-    "Créer des visuels pour les réseaux sociaux, des affiches, des flyers et des menus",
-    "Créer un logo et une charte graphique, du brief à la livraison",
-    "Construire un portfolio, fixer ses prix, faire un devis et se faire payer"
-   ],
-   "breakdown": {
-    "lecture": 351,
-    "qcm": 150,
-    "exercices": 1650,
-    "projets": 810,
-    "examen": 60
-   },
-   "modules": [
-    {
-     "title": "Le métier de graphiste freelance",
-     "minutes": 60,
-     "lessons": 5
-    },
-    {
-     "title": "Les bases du design",
-     "minutes": 58,
-     "lessons": 5
-    },
-    {
-     "title": "Les outils du graphiste",
-     "minutes": 60,
-     "lessons": 5
-    },
-    {
-     "title": "Créer des visuels qui fonctionnent",
-     "minutes": 59,
-     "lessons": 5
-    },
-    {
-     "title": "Créer un logo et une identité visuelle",
-     "minutes": 56,
-     "lessons": 5
-    },
-    {
-     "title": "Trouver des clients et se faire payer",
-     "minutes": 58,
-     "lessons": 5
-    }
-   ]
-  }
+  "format": 2
  },
  "design-1-a": {
   "hours": 17,

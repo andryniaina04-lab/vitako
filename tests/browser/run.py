@@ -2,7 +2,7 @@
 Usage : python3 tests/browser/run.py   (depuis la racine du projet)
 Captures d'écran dans tests/browser/shots/.
 """
-import http.server, os, re, socketserver, subprocess, sys, threading
+import http.server, json, os, re, socketserver, subprocess, sys, threading
 from functools import partial
 from playwright.sync_api import sync_playwright, expect
 
@@ -231,11 +231,11 @@ with sync_playwright() as p:
     check('photo de profil : compressée (10 Ko au maximum)', f and f['size'] <= 10240 and f['type'] in ('image/webp', 'image/jpeg'))
     check('photo de profil : affichée dans Mon espace', page.locator('.dsh-who img.av').count() == 1 and page.locator('.av-edit img.av').count() == 1)
     page.screenshot(path=f'{SHOTS}/06e-photo-profil.png', full_page=True)
-    goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)
+    goto(page, '#/formation/design-0-a'); page.wait_for_timeout(500)
     check('fiche abonnée : détail du programme visible (1.1…)', page.locator('.mod-secs').count() == 5 and '1.1' in page.locator('.mod-secs').first.inner_text() and page.locator('.prog-lock').count() == 0)
     fx = page.evaluate('window.__VITAKO_FIXTURE__')
     for i in range(1, 6):
-        goto(page, f'#/formation/design-0-f/module/{i}'); page.wait_for_timeout(300)
+        goto(page, f'#/formation/design-0-a/module/{i}'); page.wait_for_timeout(300)
         if i == 3:
             check('leçon 3 : tableau des outils payants', page.locator('.md-table').count() >= 2)
             check('leçon 3 : sections numérotées 3.1, 3.2…', page.locator('.md h2 .sec-num').first.inner_text() == '3.1')
@@ -249,7 +249,7 @@ with sync_playwright() as p:
             page.locator(f'input[name=mq{q}]').first.check()
         page.click('#mquiz-form button[type=submit]'); page.wait_for_timeout(300)
         check(f'module {i} validé', 'terminé' in page.locator('#mquiz').inner_text())
-    goto(page, '#/formation/design-0-f')
+    goto(page, '#/formation/design-0-a')
     check('progression 100 %', '100 %' in page.content())
     # Autre formation : blocs de code (arborescence, HTML, CSS)
     goto(page, '#/formation/dev-3-f/module/2'); page.wait_for_timeout(300)
@@ -259,7 +259,7 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/04c-lecon-code.png', full_page=False)
 
     # --- Examen : échec puis réussite
-    goto(page, '#/formation/design-0-f/examen')
+    goto(page, '#/formation/design-0-a/examen')
     page.click('[data-act=exam-start]'); page.wait_for_timeout(500)
     check('examen : 10 questions', page.locator('#exam-form .q').count() == 10)
     correct = {q['question']: q['options'][q['correct']] for q in fx['exam_questions'] if q.get('version', 1) == 1}
@@ -293,7 +293,7 @@ with sync_playwright() as p:
 
     # --- Attestation
     goto(page, '#/attestation/' + page.evaluate("window.__mockdb().certificates.find((c) => c.kind === 'course').id")); page.wait_for_timeout(500)
-    check('attestation : nom et formation', 'Fanja Rakoto' in page.content() and 'Graphiste – Fondamentaux' in page.content())
+    check('attestation : nom et formation', 'Fanja Rakoto' in page.content() and 'Graphiste – Avancé' in page.content())
     cert_id = page.locator('.dip-rows b').nth(2).inner_text()
     check('attestation : tampon affiché', page.locator('.dip-seal').count() == 1)
     page.click('[data-act=pdf]'); page.wait_for_timeout(200)
@@ -464,19 +464,15 @@ with sync_playwright() as p:
     check('formateur : retour en compte étudiant', page.url.endswith('#/mon-espace') and page.locator('.tr-invite').count() == 1 and page.evaluate("window.__mockdb().profiles.find((p) => p.email === 'hery@exemple.mg').role") == 'student')
     logout(page)
 
-    # --- Formation version 2 (leçons) : aperçu réservé à l'administrateur
-    login(page, 'fanja@exemple.mg')
-    goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)
-    check('version 2 : invisible pour une étudiante (version actuelle affichée)', page.locator('.mods2').count() == 0 and page.locator('.mods .mod').count() >= 5)
-    logout(page)
-    login(page, 'admin@vitako.mg')
+    # --- Formation version 2 (leçons) : Graphiste – Fondamentaux en ligne
+    LIVE = json.load(open(os.path.join(ROOT, 'content/courses/design-0-f/v2/course.json'), encoding='utf-8')).get('live')
+    login(page, 'fanja@exemple.mg' if LIVE else 'admin@vitako.mg')
     goto(page, '#/formation/design-0-f'); page.wait_for_selector('.mods2')
-    check('version 2 : aperçu pour l\'administrateur (6 modules, 30 leçons)', page.locator('.mods2 details.mod2').count() == 6 and page.locator('.les2 li').count() == 30 and 'Aperçu de la nouvelle version' in page.content())
+    check('version 2 : 6 modules et 30 leçons' + (' (en ligne, vue étudiante)' if LIVE else ' (aperçu administrateur)'),
+          page.locator('.mods2 details.mod2').count() == 6 and page.locator('.les2 li').count() == 30 and (('Aperçu de la nouvelle version' in page.content()) != bool(LIVE)))
     check('version 2 : durée calculée et répartition', '50 heures' in page.content() and page.locator('.dur-bar i').count() == 5)
+    check('version 2 : outils du métier affichés', 'Adobe Illustrator' in page.content())
     page.screenshot(path=f'{SHOTS}/15-v2-formation.png', full_page=True)
-    page.click('[data-act=preview-toggle]'); page.wait_for_timeout(400)
-    check('version 2 : l\'admin peut revenir à la version actuelle', page.locator('.mods2').count() == 0 and 'Voir la nouvelle version' in page.content())
-    page.click('[data-act=preview-toggle]'); page.wait_for_timeout(400)
     goto(page, '#/formation/design-0-f/module/1'); page.wait_for_selector('#pquiz-form')
     check('version 2 : un module ouvre sa première leçon', page.url.endswith('/module/1/lecon/1') and '1.1' in page.locator('.lesson-head .mod-num').inner_text())
     check('version 2 : schémas dessinés dans la leçon', page.locator('.lesson .sc').count() >= 4 and page.locator('.lesson .sc-steps li').count() >= 4)
@@ -502,6 +498,8 @@ with sync_playwright() as p:
     check('version 2 : examen annoncé à 20 questions', '20 questions tirées au hasard' in page.content())
     page.click('[data-act=exam-start]'); page.wait_for_timeout(600)
     check('version 2 : examen de 20 questions', page.locator('#exam-form .q').count() == 20)
+    goto(page, '#/formation/design-0-f'); page.wait_for_selector('.mods2')
+    check('version 2 : progression de la leçon visible sur la fiche', page.locator('.les2 li.done').count() == 30 and '30 leçons sur 30' in page.locator('aside').inner_text())
     goto(page, '#/'); logout(page)
     mv = browser.new_context(viewport={'width': 390, 'height': 844}, locale='fr-FR', device_scale_factor=2)
     mvp = mv.new_page(); setup(mvp); mvp.goto(BASE + '#/'); mvp.wait_for_timeout(500)

@@ -3,7 +3,7 @@
 -- Il remplace le contenu des formations sans toucher aux comptes, paiements ni attestations.
 begin;
 insert into public.courses (id, job_key, job_name, level, title, hours, published) values
-  ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 14, true),
+  ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 50, true),
   ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
   ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
   ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
@@ -65162,7 +65162,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que publier dans son portfolio ?', '["Les résultats réels des clients","Des données personnelles","Des mots de passe","Des travaux sur son laboratoire et des cas fictifs"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
 
--- design-0-f (version 2, aperçu administrateur)
+-- design-0-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'design-0-f';
 delete from public.modules2 where course_id = 'design-0-f' and module_index >= 6;
 insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 0, 'Le métier de graphiste freelance', 'Ce que fait un graphiste, les commandes que vous recevrez, vos clients, votre organisation depuis Madagascar et les règles pour travailler en règle.')
@@ -69063,5 +69063,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Vous serez en retard d''un jour. Que faire ?', '["Ne rien dire","Changer de numéro de téléphone","Prévenir avant l''échéance et proposer une nouvelle date","Livrer un travail inachevé"]'::jsonb, 2, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un « client » demande de rembourser un trop-perçu après un paiement suspect. Que faire ?', '["Rembourser immédiatement","Donner ses codes Mobile Money","Vérifier la réception réelle sur son compte et ne rien rembourser","Commencer le travail tout de suite"]'::jsonb, 2, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment vérifier qu''un paiement Mobile Money est arrivé ?', '["Sur la capture envoyée par le client","En attendant une semaine","En demandant au client","Dans l''application ou le relevé de son propre compte"]'::jsonb, 3, 2);
-update public.courses set v2_live = false where id = 'design-0-f';
+select public.course_go_live('design-0-f', array[0, 1, 2, 4, 5]::int[]);
 commit;
