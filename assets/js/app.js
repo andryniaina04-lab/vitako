@@ -1731,6 +1731,14 @@ window.addEventListener('hashchange', (ev) => {
 // ---------------------------------------------------------------------------
 // Démarrage
 // ---------------------------------------------------------------------------
+// Nouvel inscrit arrivé sur l'accueil (lien de confirmation par e-mail) : on l'amène à l'abonnement.
+function toSubscribeIfNew() {
+  if (!S.session || !S.profile || isAdmin() || hasAccess() || S.payments?.length) return false;
+  if (route().path !== '/') return false;
+  toast('Bienvenue ! Votre compte est prêt.');
+  go('#/abonnement');
+  return true;
+}
 applyTheme();
 render();
 (async () => {
@@ -1743,6 +1751,7 @@ render();
     if (settings.access_days) S.days = Number(settings.access_days);
     S.session = await api.getSession();
     await loadUser();
+    if (api.fromAuthLink) toSubscribeIfNew();
   } catch (e) { console.error(e); }
   S.booting = false;
   render();
@@ -1756,6 +1765,7 @@ render();
     if (event === 'SIGNED_IN') {
       const next = S.afterLogin; S.afterLogin = null;
       if (next !== undefined && next !== null) { toast('Connexion réussie.'); go('#' + (next || (isAdmin() ? '/admin' : '/mon-espace'))); return; }
+      if (toSubscribeIfNew()) return;
     }
     render();
   });
