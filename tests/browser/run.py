@@ -442,6 +442,9 @@ with sync_playwright() as p:
     check('Espace formateur sur téléphone : pas de défilement horizontal', not page.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
     page.screenshot(path=f'{SHOTS}/13i-mobile-espace-formateur.png', full_page=True)
     page.set_viewport_size({'width': 1280, 'height': 900})
+    page.once('dialog', lambda d: d.accept())
+    page.click('[data-act=leave-trainer]'); page.wait_for_timeout(600)
+    check('formateur : retour en compte étudiant', page.url.endswith('#/mon-espace') and page.locator('.tr-invite').count() == 1 and page.evaluate("window.__mockdb().profiles.find((p) => p.email === 'hery@exemple.mg').role") == 'student')
     logout(page)
 
     # --- Téléphone (390 px)

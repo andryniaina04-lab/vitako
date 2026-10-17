@@ -153,6 +153,10 @@ export async function becomeTrainer() {
   need();
   return run(sb.rpc('become_trainer'));
 }
+export async function leaveTrainer() {
+  need();
+  return run(sb.rpc('leave_trainer'));
+}
 export async function getMyTrainer(uid) {
   need();
   return run(sb.from('trainer_profiles').select('*').eq('user_id', uid).maybeSingle());

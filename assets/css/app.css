@@ -1052,3 +1052,6 @@ a.chip{text-decoration:none}
   .tb-actions.crowd [data-act=theme]{display:none}
   .menu .menu-theme{display:flex}
 }
+
+.tr-leave{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.tr-leave p{font-size:.88rem;max-width:62ch}

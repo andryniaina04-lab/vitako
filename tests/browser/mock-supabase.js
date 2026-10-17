@@ -139,6 +139,12 @@
       if (!me()) return err('not_authenticated');
       profile().role = 'trainer';
       if (!trainerOf(me())) db.trainers.push(newTrainer(me()));
+      refreshTrainer(me()); save(); return { data: null, error: null };
+    },
+    leave_trainer() {
+      if (!me()) return err('not_authenticated');
+      profile().role = 'student';
+      const t = trainerOf(me()); if (t) Object.assign(t, { status: 'draft', reason: null, decided_at: null });
       save(); return { data: null, error: null };
     },
     save_trainer_profile({ p }) {

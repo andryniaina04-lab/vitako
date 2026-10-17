@@ -354,3 +354,21 @@ set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000
 select t.err('select public.admin_decide_trainer(''bbbbbbbb-0000-0000-0000-000000000002'', true)', 'trainer_profile_incomplete');
 select jsonb_array_length(public.admin_trainers()) = 2;
 reset role;
+
+\echo '--- Un formateur revient en compte étudiant'
+update public.profiles set sub_end = now() + interval '10 days' where id = :T;
+set role authenticated; set request.jwt.claim.sub = 'eeeeeeee-0000-0000-0000-000000000005';
+select count(*) = 1 from (select public.leave_trainer()) x;
+select role = 'student' from public.profiles where id = auth.uid();
+select t.err('select public.save_trainer_profile(''{}'')', 'not_trainer');
+reset role;
+set role anon; set request.jwt.claim.sub = '';
+select public.get_trainer(:T) is null and jsonb_array_length(public.list_trainers()) = 0;
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000000000009';
+select not exists (select 1 from jsonb_array_elements(public.admin_trainers()) e where e ->> 'user_id' = 'eeeeeeee-0000-0000-0000-000000000005');
+reset role;
+set role authenticated; set request.jwt.claim.sub = 'eeeeeeee-0000-0000-0000-000000000005';
+select count(*) = 1 from (select public.become_trainer()) x;
+select status = 'pending' from public.trainer_profiles where user_id = auth.uid();   -- profil retrouvé, à revalider
+reset role;

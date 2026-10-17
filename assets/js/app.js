@@ -1475,6 +1475,8 @@ function trainerSpacePage() {
     <p id="terr" class="notice err" hidden></p>
     <div class="tr-save"><button class="btn" type="submit">Enregistrer mon profil</button><a class="btn ghost" href="#/formateur/${uid()}">Voir mon profil public</a></div>
     <p class="muted" style="font-size:.88rem">${st === 'approved' ? 'Votre profil est validé : vos modifications sont visibles tout de suite.' : 'Une fois votre profil complet et votre abonnement payé, Vitako le vérifie puis le rend visible.'}</p>
+    <div class="tr-leave"><b>Ne plus être formateur ?</b><p class="muted">Votre compte redevient un compte étudiant : vous gardez votre abonnement, vos cours et vos attestations. Votre profil formateur n'est plus affiché nulle part. Vous pourrez redevenir formateur plus tard (votre profil sera de nouveau vérifié).</p>
+      <button type="button" class="btn ghost sm" data-act="leave-trainer">Revenir en compte étudiant</button></div>
   </form>
   <aside class="tr-preview" aria-label="Aperçu de votre carte">
     <span class="eyebrow">Aperçu de votre carte</span>
@@ -1986,6 +1988,17 @@ document.addEventListener('click', async (e) => {
       toast('Bienvenue dans votre Espace formateur !');
       go('#/espace-formateur');
     } catch (err) { showErr('berr', err.message); busy(t, false); }
+    return;
+  }
+  if (a === 'leave-trainer') {
+    if (!confirm('Revenir en compte étudiant ? Votre profil formateur ne sera plus affiché.')) return;
+    busy(t, true);
+    try {
+      await api.leaveTrainer();
+      S.profile.role = 'student'; S.trainer = null; S.trainers = null;
+      toast('Votre compte est redevenu un compte étudiant.');
+      go('#/mon-espace');
+    } catch (err) { toast(err.message); busy(t, false); }
     return;
   }
   if (a === 'tr-ok' || a === 'tr-ko') {
