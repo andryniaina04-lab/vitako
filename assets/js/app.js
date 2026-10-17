@@ -1678,6 +1678,7 @@ async function adminPage() {
 
 const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'pay' ? ' on' : ''}" href="#/admin"${on === 'pay' ? ' aria-current="page"' : ''}>Paiements${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
+  <a class="tab${on === 'inscrits' ? ' on' : ''}" href="#/admin/inscrits"${on === 'inscrits' ? ' aria-current="page"' : ''}>Inscrits</a>
   <a class="tab${on === 'formateurs' ? ' on' : ''}" href="#/admin/formateurs"${on === 'formateurs' ? ' aria-current="page"' : ''}>Formateurs${S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : ''}</a>
   <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
   <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a>
@@ -1685,6 +1686,56 @@ const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
 const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const kpi = (label, value, sub = '', tone = '') => `<div class="kpi${tone ? ' ' + tone : ''}"><span class="kpi-l">${label}</span><b class="kpi-v">${value}</b>${sub ? `<span class="kpi-s">${sub}</span>` : ''}</div>`;
+
+// Liste des inscrits : abonnés ou non, recherche, filtres et export pour Excel
+const USER_FILTERS = [['all', 'Tous'], ['active', 'Abonnés'], ['never', 'Jamais abonnés'], ['expired', 'Abonnement terminé'], ['trainer', 'Formateurs']];
+const userState = (u) => (u.sub_end && new Date(u.sub_end) > new Date() ? 'active' : u.sub_end ? 'expired' : 'never');
+function usersFiltered() {
+  const A = S.adminUsers || { list: [], f: 'all', q: '' };
+  const q = norm(A.q).trim();
+  return A.list.filter((u) => !u.is_admin
+    && (A.f === 'all' || (A.f === 'trainer' ? u.role === 'trainer' : userState(u) === A.f))
+    && (!q || norm(`${u.full_name} ${u.email}`).includes(q)));
+}
+function usersTable() {
+  const list = usersFiltered();
+  const fmtD = (d) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+  const st = (u) => { const s = userState(u);
+    return s === 'active' ? `<span class="pill">Abonné</span> <small class="muted">jusqu'au ${fmtDate(u.sub_end)}</small>`
+      : s === 'expired' ? `<span class="pill red">Terminé</span> <small class="muted">le ${fmtDate(u.sub_end)}</small>` : '<span class="pill grey">Jamais abonné</span>'; };
+  return `<div class="count">${list.length} personne${list.length > 1 ? 's' : ''}</div>
+  ${list.length ? `<div class="tbl"><table class="us-tbl"><thead><tr><th>Inscrit le</th><th>Nom</th><th>E-mail</th><th>Type</th><th>Abonnement</th></tr></thead><tbody>
+    ${list.map((u) => `<tr><td>${fmtD(u.created_at)}</td><td><span class="us-n">${avatarHtml(u, 'av-xs')}${esc(u.full_name)}</span></td><td><a href="mailto:${esc(u.email || '')}">${esc(u.email || '')}</a></td>
+      <td>${u.role === 'trainer' ? '<span class="pill tr-tag">Formateur</span>' : 'Étudiant'}</td><td>${st(u)}</td></tr>`).join('')}
+  </tbody></table></div>` : '<p class="muted">Aucune personne ne correspond.</p>'}`;
+}
+async function adminUsersPage() {
+  if (!S.session) return needLogin('/admin/inscrits');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const list = await api.adminUsers();
+  S.adminUsers = { list, f: S.adminUsers?.f || 'all', q: S.adminUsers?.q || '' };
+  const users = list.filter((u) => !u.is_admin);
+  const n = (f) => users.filter((u) => (f === 'all' ? true : f === 'trainer' ? u.role === 'trainer' : userState(u) === f)).length;
+  return `${adminTabs('inscrits')}${pageHead('Administration', 'Inscrits', '<p class="muted">Toutes les personnes inscrites, abonnées ou non. Cliquez sur un e-mail pour écrire à la personne.</p>')}
+  <div class="kpis">${kpi('Inscrits', nf(n('all')))}${kpi('Abonnés actifs', nf(n('active')), '', 'good')}${kpi('Jamais abonnés', nf(n('never')))}${kpi('Abonnement terminé', nf(n('expired')), 'À relancer', 'warn')}</div>
+  <div class="us-bar">
+    <div class="chips" id="us-chips">${USER_FILTERS.map(([k, l]) => `<button class="chip${S.adminUsers.f === k ? ' on' : ''}" data-act="us-filter" data-f="${k}">${l} <small>${n(k)}</small></button>`).join('')}</div>
+    <div class="us-tools"><input class="in" id="us-q" type="search" placeholder="Rechercher un nom ou un e-mail" value="${esc(S.adminUsers.q)}" aria-label="Rechercher un inscrit">
+      <button class="btn ghost" data-act="us-csv">Télécharger (Excel)</button></div>
+  </div>
+  <div id="us-list">${usersTable()}</div>`;
+}
+function usersCsv() {
+  const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const d = (t) => (t ? new Date(t).toLocaleDateString('fr-FR') : '');
+  const label = { active: 'Abonné', expired: 'Terminé', never: 'Jamais abonné' };
+  const rows = [['Inscrit le', 'Nom', 'E-mail', 'Type', 'Abonnement', "Fin d'abonnement"]].concat(
+    usersFiltered().map((u) => [d(u.created_at), u.full_name, u.email, u.role === 'trainer' ? 'Formateur' : 'Étudiant', label[userState(u)], d(u.sub_end)]));
+  const blob = new Blob(['\ufeff' + rows.map((r) => r.map(cell).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `vitako-inscrits-${mgDate()}.csv`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
 
 async function adminStatsPage() {
   if (!S.session) return needLogin('/admin/stats');
@@ -1846,6 +1897,7 @@ const ROUTES = [
   [/^\/admin\/avis$/, adminReviewsPage],
   [/^\/admin\/remarques$/, adminFeedbackPage],
   [/^\/admin\/formateurs$/, adminTrainersPage],
+  [/^\/admin\/inscrits$/, adminUsersPage],
   [/^\/accompagnement$/, accompagnementPage],
   [/^\/formateur\/([\w-]+)$/, trainerPage],
   [/^\/espace-formateur$/, trainerSpacePage],
@@ -1994,6 +2046,12 @@ document.addEventListener('click', async (e) => {
     } catch (err) { showErr('berr', err.message); busy(t, false); }
     return;
   }
+  if (a === 'us-filter') {
+    S.adminUsers.f = t.dataset.f;
+    document.querySelectorAll('#us-chips .chip').forEach((c) => c.classList.toggle('on', c === t));
+    document.getElementById('us-list').innerHTML = usersTable(); return;
+  }
+  if (a === 'us-csv') { usersCsv(); return; }
   if (a === 'leave-trainer') {
     if (!confirm('Revenir en compte étudiant ? Votre profil formateur ne sera plus affiché.')) return;
     busy(t, true);
@@ -2067,6 +2125,7 @@ document.addEventListener('click', async (e) => {
 
 document.addEventListener('input', (e) => {
   if (e.target.id === 'hsearch') { S.filter.q = e.target.value; refreshSearch(); }
+  if (e.target.id === 'us-q' && S.adminUsers) { S.adminUsers.q = e.target.value; document.getElementById('us-list').innerHTML = usersTable(); }
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && (S.ui.menu || S.ui.search)) {

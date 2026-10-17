@@ -304,6 +304,17 @@ export async function adminFeedbackMark(id, read) {
   need();
   return run(sb.rpc('admin_feedback_mark', { p_id: id, p_read: read }));
 }
+// Tous les inscrits (l'administrateur peut lire tous les profils, voir schema.sql). Par paquets de 1 000.
+export async function adminUsers() {
+  need();
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    const rows = await run(sb.from('profiles').select('id, full_name, email, role, is_admin, sub_end, created_at, avatar_url')
+      .order('created_at', { ascending: false }).range(from, from + 999));
+    out.push(...rows);
+    if (rows.length < 1000) return out;
+  }
+}
 export async function adminStats() {
   need();
   return run(sb.rpc('admin_stats'));

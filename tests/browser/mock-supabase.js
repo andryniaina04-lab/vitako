@@ -55,6 +55,7 @@
     not(c, op, v) { this.filters.push((r) => r[c] !== null && r[c] !== undefined); return this; }
     order(c, o) { this.sort = [c, o?.ascending !== false]; return this; }
     limit(n) { this.lim = n; return this; }
+    range(a, b) { this.rng = [a, b]; return this; }
     maybeSingle() { this.single = true; return this; }
     update(vals) { this.op = 'update'; this.vals = vals; return this; }
     upsert(row) { this.op = 'upsert'; this.row = row; return this; }
@@ -78,6 +79,7 @@
       }
       if (this.sort) { const [c, asc] = this.sort; rows = rows.slice().sort((a, b) => (a[c] > b[c] ? 1 : a[c] < b[c] ? -1 : 0) * (asc ? 1 : -1)); }
       if (this.lim) rows = rows.slice(0, this.lim);
+      if (this.rng) rows = rows.slice(this.rng[0], this.rng[1] + 1);
       if (this.opts?.head) return { data: null, count: rows.length, error: null };
       if (this.single) return { data: rows[0] ? JSON.parse(JSON.stringify(rows[0])) : null, error: null };
       return { data: JSON.parse(JSON.stringify(rows)), error: null };

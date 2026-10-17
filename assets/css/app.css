@@ -1059,3 +1059,11 @@ a.chip{text-decoration:none}
 .role-note p{margin:0}
 .tr-exp-chk{display:flex;gap:8px;align-items:flex-start;font-weight:600;font-size:.9rem}
 .tr-exp-chk input{margin-top:3px;accent-color:var(--accent)}
+
+/* Administration : liste des inscrits */
+.us-bar{display:flex;flex-direction:column;gap:12px;margin:18px 0 10px}
+.us-tools{display:flex;gap:10px;flex-wrap:wrap}
+.us-tools .in{flex:1;min-width:200px}
+.us-n{display:inline-flex;align-items:center;gap:8px}
+.av.av-xs{width:28px;height:28px;font-size:.7rem}
+.us-tbl td{vertical-align:middle}
