@@ -1088,7 +1088,7 @@ function authPage(mode, opts = {}) {
   const rolePick = `<fieldset class="role-pick"><legend class="l">Je m'inscris comme</legend>
       <label class="role-opt"><input type="radio" name="a-role" value="student"${asTrainer ? '' : ' checked'}><span><b>Étudiant(e)</b><small>Je veux apprendre un métier</small></span></label>
       <label class="role-opt"><input type="radio" name="a-role" value="trainer"${asTrainer ? ' checked' : ''}><span><b>Formateur(trice)</b><small>Je veux accompagner des étudiants</small></span></label></fieldset>
-    <p class="notice info role-note" id="role-note"${asTrainer ? '' : ' hidden'}>Même abonnement que les étudiants, avec accès à toutes les formations. Vous remplissez votre profil, puis Vitako le vérifie avant de l'afficher aux étudiants.</p>`;
+    <div class="notice info role-note stack" id="role-note"${asTrainer ? '' : ' hidden'} style="gap:8px"><p>Réservé aux profils <b>seniors ou confirmés</b> : au moins <b>5 ans d'expérience</b> en freelance ou en télétravail.</p><p>Même abonnement que les étudiants, avec accès à toutes les formations. Vous remplissez votre profil, puis Vitako le vérifie avant de l'afficher aux étudiants.</p><label class="rv-check tr-exp-chk"><input type="checkbox" id="a-exp"> Je confirme avoir au moins 5 ans d'expérience en freelance ou en télétravail.</label></div>`;
   return `<div class="narrow panel stack" style="gap:18px">
     <div class="stack" style="gap:6px"><h2>${signup ? 'Créer un compte' : 'Connexion'}</h2>
       <p class="muted">${signup ? 'Gratuit. Vous pourrez voir toutes les formations ; l\'abonnement débloque les cours.' : 'Heureux de vous revoir.'}</p></div>
@@ -1270,7 +1270,7 @@ const TR_STATUS = {
   approved: ['Profil validé', ''],
   rejected: ['À corriger', 'red'],
 };
-const TR_REASONS = ['Photo de profil absente ou inadaptée', 'Présentation trop courte ou peu claire', 'Informations fausses ou douteuses',
+const TR_REASONS = ['Moins de 5 ans d\'expérience en freelance ou télétravail', 'Photo de profil absente ou inadaptée', 'Présentation trop courte ou peu claire', 'Informations fausses ou douteuses',
   'Profil sans rapport avec les formations Vitako', 'Coordonnées invalides'];
 const trStatus = (t) => t?.status || 'draft';
 const trPill = (t) => { const [label, cls] = TR_STATUS[trStatus(t)]; return `<span class="pill ${cls}">${label}</span>`; };
@@ -1364,12 +1364,14 @@ function becomeTrainerPanel() {
     <span class="eyebrow">Accompagnement</span>
     <h1 class="tr-become-t">Devenir formateur</h1>
     <p>Accompagnez les étudiants de Vitako dans votre domaine et faites connaître vos services.</p>
+    <p class="notice warn">Réservé aux profils <b>seniors ou confirmés</b> : au moins <b>5 ans d'expérience</b> en freelance ou en télétravail. Vitako vérifie votre parcours avant d'afficher votre profil.</p>
     <ul class="obj sub-perks">
       <li><span><b>Un profil public</b> avec photo, couverture, présentation, tarifs et contacts</span></li>
       <li><span><b>Visible par les étudiants</b> dans le menu Accompagnement et sous les formations de vos domaines</span></li>
       <li><span><b>Même abonnement</b> que les étudiants, avec accès à toutes les formations</span></li>
     </ul>
     <p class="muted" style="font-size:.9rem">Vous gardez votre compte, vos cours et vos attestations. Vitako vérifie votre profil avant de l'afficher.</p>
+    <label class="rv-check tr-exp-chk"><input type="checkbox" id="b-exp"> Je confirme avoir au moins 5 ans d'expérience en freelance ou en télétravail.</label>
     <p id="berr" class="notice err" hidden></p>
     <button class="btn" data-act="become-trainer">Devenir formateur</button></div>`;
 }
@@ -1431,6 +1433,7 @@ function trainerSpacePage() {
   ${steps}
   <div class="tr-layout">
   <form id="trainer-form" class="tr-form stack" novalidate>
+    <p class="notice warn">Réservé aux profils <b>seniors ou confirmés</b> : au moins <b>5 ans d'expérience</b> en freelance ou en télétravail. Indiquez vos années d'expérience et vos principales réalisations dans votre présentation : Vitako les vérifie avant d'afficher votre profil.</p>
     <section class="panel stack dsh-card tone-trainer">
       <div class="dsh-h"><span class="dsh-ic">${CT_ICONS.camera}</span><b>Photos</b></div>
       <div class="tr-cover-prev" style="--c1:${c1};--c2:${c2}">${T.cover_url ? `<img src="${esc(T.cover_url)}" alt="Votre photo de couverture">` : '<span>Photo de couverture (format paysage)</span>'}</div>
@@ -1453,7 +1456,7 @@ function trainerSpacePage() {
         <div class="chips chips-wrap">${DOMAINS_LIST.map((d) => `<label class="chip chk${domSet.has(d.id) ? ' on' : ''}"><input type="checkbox" name="t-dom" value="${d.id}"${domSet.has(d.id) ? ' checked' : ''}>${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></label>`).join('')}</div>
         <small class="muted">Votre profil s'affiche sous les formations de ces domaines.</small></fieldset>
       <div class="f"><label class="l" for="t-bio">Présentation</label>
-        <textarea class="in" id="t-bio" rows="6" maxlength="1500" placeholder="Votre parcours, ce que vous avez réalisé, et comment vous accompagnez les étudiants (séances en visio, relecture de portfolio, aide pour trouver des clients…).">${esc(D.bio || '')}</textarea>
+        <textarea class="in" id="t-bio" rows="6" maxlength="1500" placeholder="Vos années d'expérience en freelance ou télétravail, ce que vous avez réalisé, et comment vous accompagnez les étudiants (séances en visio, relecture de portfolio, aide pour trouver des clients…).">${esc(D.bio || '')}</textarea>
         <small class="muted">30 caractères au moins, 1 500 au maximum.</small></div>
       <div class="f"><label class="l" for="t-rates">Tarifs d'accompagnement <span class="muted">(facultatif)</span></label>
         <textarea class="in" id="t-rates" rows="3" maxlength="600" placeholder="Ex. Séance d'une heure en visio : 20 000 Ar. Suivi d'un mois : 80 000 Ar.">${esc(D.rates || '')}</textarea></div>
@@ -1980,6 +1983,7 @@ document.addEventListener('click', async (e) => {
     render(); return;
   }
   if (a === 'become-trainer') {
+    if (!document.getElementById('b-exp')?.checked) { showErr('berr', 'Cochez la case pour confirmer vos 5 ans d\'expérience au moins.'); return; }
     busy(t, true);
     try {
       await api.becomeTrainer();
@@ -2093,6 +2097,7 @@ document.addEventListener('submit', async (e) => {
     if (signup && name.length < 2) return showErr('aerr', 'Indiquez votre nom complet : il figurera sur vos attestations.');
     if (pass.length < 8) return showErr('aerr', 'Le mot de passe doit contenir au moins 8 caractères.');
     const role = signup && f.querySelector('input[name=a-role]:checked')?.value === 'trainer' ? 'trainer' : 'student';
+    if (role === 'trainer' && !f.querySelector('#a-exp')?.checked) return showErr('aerr', 'Le compte formateur est réservé aux personnes ayant au moins 5 ans d\'expérience en freelance ou en télétravail. Cochez la case pour le confirmer, ou choisissez « Étudiant(e) ».');
     busy(btn, true);
     // Où aller une fois connecté (lu par onAuthChange, qui peut se déclencher pendant l'appel).
     // Étudiant : page d'accueil. Formateur : son Espace formateur, pour remplir son profil.

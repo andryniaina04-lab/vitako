@@ -1055,3 +1055,7 @@ a.chip{text-decoration:none}
 
 .tr-leave{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .tr-leave p{font-size:.88rem;max-width:62ch}
+
+.role-note p{margin:0}
+.tr-exp-chk{display:flex;gap:8px;align-items:flex-start;font-weight:600;font-size:.9rem}
+.tr-exp-chk input{margin-top:3px;accent-color:var(--accent)}
