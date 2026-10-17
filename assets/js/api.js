@@ -57,7 +57,9 @@ const MESSAGES = {
   'Invalid login credentials': 'E-mail ou mot de passe incorrect.',
   'Email not confirmed': 'Confirmez d\'abord votre adresse : ouvrez le lien reçu par e-mail.',
   'User already registered': 'Un compte existe déjà avec cet e-mail. Connectez-vous plutôt.',
-  'Password should be at least 6 characters': 'Le mot de passe doit contenir au moins 8 caractères.',
+  'rate limit': 'Beaucoup d\'inscriptions en ce moment. Patientez quelques minutes puis réessayez.',
+  'Too Many Requests': 'Beaucoup d\'inscriptions en ce moment. Patientez quelques minutes puis réessayez.',
+  'Password should be at least 6 characters':'Le mot de passe doit contenir au moins 8 caractères.',
 };
 
 export class ApiError extends Error {
