@@ -29,6 +29,50 @@ for (const id of readdirSync(coursesDir)) {
   full[id] = c;
 }
 
+// Formations « version 2 » : content/courses/<id>/v2/course.json + un fichier par leçon.
+// 6 modules, 4 à 6 leçons par module, un QCM (avec explications) par leçon, 60 questions d'examen.
+// « live »: false = aperçu réservé à l'administrateur ; true = en ligne pour tous.
+const v2 = {};
+const durMin = (body, kind) => {
+  let total = 0;
+  for (const line of body.split('\n')) {
+    const m = line.match(new RegExp(`^>\\s*\\[!${kind}\\](.*)$`, 'i'));
+    if (!m) continue;
+    const h = m[1].match(/(\d+)\s*h(?:eures?)?(?:\s*(\d+))?/i);
+    const mn = m[1].match(/(\d+)\s*min/i);
+    total += h ? Number(h[1]) * 60 + Number(h[2] || 0) : mn ? Number(mn[1]) : 0;
+  }
+  return total;
+};
+for (const id of Object.keys(full)) {
+  const file = join(coursesDir, id, 'v2', 'course.json');
+  if (!existsSync(file)) continue;
+  const c = JSON.parse(readFileSync(file, 'utf8'));
+  // Un module ou l'examen peut être rangé dans son propre fichier JSON (ex. "m1.json").
+  const sub = (x) => (typeof x === 'string' ? JSON.parse(readFileSync(join(coursesDir, id, 'v2', x), 'utf8')) : x);
+  c.modules = c.modules.map(sub);
+  c.exam = sub(c.exam);
+  const br = { lecture: 0, qcm: 0, exercices: 0, projets: 0, examen: 60 };
+  c.modules.forEach((m, i) => {
+    if (!m.title || !Array.isArray(m.lessons) || m.lessons.length < 1) throw new Error(`${id} v2 module ${i + 1} : titre ou leçons manquants`);
+    m.lessons.forEach((l, k) => {
+      const where = `${id} v2 leçon ${i + 1}.${k + 1}`;
+      l.body = readFileSync(join(coursesDir, id, 'v2', l.file), 'utf8').trim();
+      l.minutes = readingMinutes(l.body, 120);
+      if (!Array.isArray(l.questions) || l.questions.length < 3) throw new Error(`${where} : il faut au moins 3 questions`);
+      for (const q of l.questions) { check(q, where); if (!q.why) throw new Error(`${where} : explication (why) manquante pour « ${q.q} »`); }
+      br.lecture += l.minutes; br.qcm += 5;
+      br.exercices += durMin(l.body, 'exercice'); br.projets += durMin(l.body, 'projet');
+    });
+  });
+  if (c.exam.length < 20) throw new Error(`${id} v2 : il faut au moins 20 questions d'examen (${c.exam.length}).`);
+  c.exam.forEach((q) => check(q, `${id} v2 examen`));
+  c.breakdown = br;
+  c.hoursCalc = Math.round(Object.values(br).reduce((a, b) => a + b, 0) / 60);
+  if (!c.progress_map || c.progress_map.length !== full[id].modules.length) throw new Error(`${id} v2 : progress_map doit avoir ${full[id].modules.length} valeurs`);
+  v2[id] = c;
+}
+
 function check(q, where) {
   if (!q.q || !Array.isArray(q.options) || q.options.length < 2 || q.options.length > 6
       || !Number.isInteger(q.correct) || q.correct < 0 || q.correct >= q.options.length) {
@@ -47,6 +91,17 @@ for (const [id, c] of Object.entries(full)) {
     // Seuls les titres des modules sont publics : résumés et sous-parties restent dans la base (abonnés).
     modules: c.modules.map((m) => ({ title: m.title, minutes: readingMinutes(m.body) })),
   };
+}
+// Version 2 : en ligne, elle remplace la version 1 ; en aperçu, ses titres sont joints sous « preview ».
+for (const [id, c] of Object.entries(v2)) {
+  const meta = {
+    hours: c.hoursCalc,
+    description: c.description,
+    objectives: c.objectives,
+    breakdown: c.breakdown,
+    modules: c.modules.map((m) => ({ title: m.title, minutes: m.lessons.reduce((n, l) => n + l.minutes, 0), lessons: m.lessons.length })),
+  };
+  published[id] = c.live ? { ...(published[id].title ? { title: published[id].title } : {}), ...meta, format: 2 } : { ...published[id], preview: meta };
 }
 writeFileSync(join(root, 'assets/js/data.js'),
   '// Fichier généré par tools/build.mjs. Ne pas modifier à la main : modifier content/.\n' +
@@ -99,7 +154,36 @@ for (const [id, c] of Object.entries(full)) {
     out.push(`insert into public.exam_questions (course_id, question, options, correct) values (${lit(id)}, ${lit(q.q)}, ${json(s.options)}, ${s.correct});`);
   });
 }
+for (const [id, c] of Object.entries(v2)) {
+  out.push(`\n-- ${id} (version 2${c.live ? ', en ligne' : ', aperçu administrateur'})`);
+  out.push(`delete from public.lesson_parts where course_id = ${lit(id)};`);
+  out.push(`delete from public.modules2 where course_id = ${lit(id)} and module_index >= ${c.modules.length};`);
+  c.modules.forEach((m, i) => {
+    out.push(`insert into public.modules2 (course_id, module_index, title, summary) values (${lit(id)}, ${i}, ${lit(m.title)}, ${lit(m.summary || '')})`);
+    out.push('  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;');
+    m.lessons.forEach((l, k) => {
+      out.push(`insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values (${lit(id)}, ${i}, ${k}, ${lit(l.title)}, ${l.minutes}, ${lit(l.body)});`);
+      l.questions.forEach((q, n) => {
+        const s = shuffled(q, `${id}-v2-${i}-${k}-${n}`);
+        out.push(`insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values (${lit(id)}, ${i}, ${k}, ${n}, ${lit(q.q)}, ${json(s.options)}, ${s.correct}, ${lit(q.why)});`);
+      });
+    });
+  });
+  c.exam.forEach((q, k) => {
+    const s = shuffled(q, `${id}-v2x${k}`);
+    out.push(`insert into public.exam_questions (course_id, question, options, correct, version) values (${lit(id)}, ${lit(q.q)}, ${json(s.options)}, ${s.correct}, 2);`);
+  });
+  out.push(c.live ? `select public.course_go_live(${lit(id)}, array[${c.progress_map.map((x) => (x === null ? 'null' : Number(x))).join(', ')}]::int[]);`
+    : `update public.courses set v2_live = false where id = ${lit(id)};`);
+}
 out.push('commit;');
 writeFileSync(join(root, 'supabase/seed.sql'), out.join('\n') + '\n');
 
 console.log(`Catalogue : ${COURSES.length} formations, dont ${Object.keys(full).length} publiée(s) : ${Object.keys(full).join(', ')}`);
+for (const [id, c] of Object.entries(v2)) {
+  const n = c.modules.reduce((a, m) => a + m.lessons.length, 0);
+  const words = c.modules.reduce((a, m) => a + m.lessons.reduce((b, l) => b + l.body.split(/\s+/).length, 0), 0);
+  const h = (x) => `${Math.floor(x / 60)} h ${String(x % 60).padStart(2, '0')}`;
+  console.log(`Version 2 ${id} (${c.live ? 'en ligne' : 'aperçu'}) : ${c.modules.length} modules, ${n} leçons, ${words} mots, ${c.modules.reduce((a, m) => a + m.lessons.reduce((b, l) => b + l.questions.length, 0), 0)} questions de QCM, ${c.exam.length} d'examen`);
+  console.log(`  Durée : ${c.hoursCalc} h = lecture ${h(c.breakdown.lecture)} + QCM ${h(c.breakdown.qcm)} + exercices ${h(c.breakdown.exercices)} + projets ${h(c.breakdown.projets)} + examen ${h(c.breakdown.examen)}`);
+}

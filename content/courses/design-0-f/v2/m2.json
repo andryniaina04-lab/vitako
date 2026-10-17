@@ -1,0 +1,61 @@
+{
+  "title": "Les bases du design",
+  "summary": "Hiérarchie, composition, couleur, typographie et images : les règles qui rendent un visuel clair et professionnel, avec une liste de contrôle en 10 points.",
+  "lessons": [
+    {
+      "title": "La hiérarchie : ce qu'on lit en premier",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Combien de temps une personne regarde-t-elle un visuel sur Facebook, en général ?", "options": ["Moins de 3 secondes", "Environ 30 secondes", "Une minute", "Le temps de tout lire"], "correct": 0, "why": "Le lecteur décide très vite de continuer ou de passer : il ne lit que ce qui est le plus visible. D'où l'importance d'un niveau 1 évident." },
+        { "q": "Sur une promotion d'ouverture de pâtisserie, quel est le meilleur niveau 1 ?", "options": ["« -15 % à l'ouverture »", "Le numéro de téléphone", "Les horaires d'ouverture", "La présence d'un parking"], "correct": 0, "why": "Le niveau 1 est l'information qui donne envie d'agir. L'offre fait venir ; les horaires et le téléphone sont des informations pratiques (niveau 3)." },
+        { "q": "Quel écart de taille crée une vraie hiérarchie entre un titre et un texte ?", "options": ["Un titre 2 à 3 fois plus grand que le texte", "Un titre de 50 px sur un texte de 40 px", "La même taille, mais en couleur", "Un titre légèrement plus petit"], "correct": 0, "why": "Un faible écart ressemble à une erreur. Un écart franc (par exemple 120 px contre 40 px) montre clairement ce qui est le plus important." },
+        { "q": "Dans un parcours de lecture en Z, où placer l'appel à l'action ?", "options": ["En bas à droite, là où l'œil termine", "En haut à gauche, à la place du titre", "Au centre, sur la photo", "Dans la marge"], "correct": 0, "why": "L'œil part du haut à gauche, traverse vers le haut à droite, descend en diagonale et termine en bas à droite : c'est l'endroit idéal pour l'action finale." },
+        { "q": "À quoi sert le test des 5 secondes ?", "options": ["Vérifier que la personne retient bien le message principal", "Mesurer le temps d'export", "Vérifier les couleurs à l'impression", "Compter les mots du visuel"], "correct": 0, "why": "On montre le visuel 5 secondes puis on le cache : si la personne retient autre chose que le niveau 1, la hiérarchie est à revoir." }
+      ]
+    },
+    {
+      "title": "La composition : aligner, espacer, regrouper",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Quelle marge minimale garder sur un visuel de 1080 px de large ?", "options": ["Environ 54 px (5 %) sur chaque bord", "Aucune, il faut utiliser tout l'espace", "5 px", "La moitié du visuel"], "correct": 0, "why": "Une marge d'au moins 5 % évite l'impression d'étouffement et protège le texte quand l'image est recadrée sur certains écrans ou à l'impression." },
+        { "q": "Quel alignement est le plus facile à lire pour un texte de plusieurs lignes ?", "options": ["Aligné à gauche", "Centré", "Justifié", "Aligné à droite"], "correct": 0, "why": "Avec un alignement à gauche, chaque ligne commence au même endroit : l'œil retrouve facilement le début de la ligne suivante." },
+        { "q": "Que dit la règle de proximité ?", "options": ["Ce qui va ensemble est proche, ce qui est différent est éloigné", "Tous les éléments doivent être à égale distance", "Le texte doit toucher la photo", "Il faut remplir chaque espace vide"], "correct": 0, "why": "Le lecteur comprend les groupes avant de lire : date, heure et lieu ensemble ; téléphone et adresse ensemble, plus loin." },
+        { "q": "À quoi sert l'espace vide sur un visuel ?", "options": ["À guider l'œil et donner une impression de qualité", "À rien, c'est un oubli du graphiste", "À économiser l'encre uniquement", "À cacher les erreurs"], "correct": 0, "why": "L'espace vide met en valeur ce qui compte. En cas de doute, on enlève un élément plutôt que d'en ajouter un." },
+        { "q": "Avec la règle des tiers, où placer le sujet principal d'une photo ?", "options": ["Sur l'un des 4 points d'intersection des lignes", "Toujours exactement au centre", "Dans un coin, contre le bord", "Hors du cadre"], "correct": 0, "why": "Les intersections des tiers sont des points où l'œil se pose naturellement ; cela rend l'image dynamique et libère de la place pour le texte." }
+      ]
+    },
+    {
+      "title": "La couleur : choisir et associer",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "Que dit la règle 60-30-10 ?", "options": ["60 % couleur dominante, 30 % couleur principale, 10 % accent", "60 couleurs maximum par visuel", "30 % de texte et 70 % d'image", "Une couleur différente pour chaque élément"], "correct": 0, "why": "Une couleur domine, une accompagne et une ressort : ce dosage donne presque toujours un résultat équilibré." },
+        { "q": "Quel ratio de contraste minimum viser pour un texte courant ?", "options": ["4,5 : 1", "1 : 1", "2 : 1", "Peu importe"], "correct": 0, "why": "Les règles d'accessibilité recommandent au moins 4,5 : 1 pour un texte courant, et 3 : 1 pour les gros titres." },
+        { "q": "Quelle combinaison est la moins lisible ?", "options": ["Texte jaune sur fond blanc", "Texte blanc sur fond vert foncé", "Texte bleu nuit sur fond blanc", "Texte brun foncé sur fond crème"], "correct": 0, "why": "Le jaune et le blanc sont tous deux très clairs : le contraste est trop faible pour lire un texte." },
+        { "q": "Quel code de couleur utiliser pour l'impression ?", "options": ["CMJN", "HEX", "RVB", "Le nom de la couleur"], "correct": 0, "why": "Les imprimantes utilisent des encres Cyan, Magenta, Jaune et Noir. HEX et RVB décrivent les couleurs des écrans." },
+        { "q": "Un client a une enseigne bleue connue dans son quartier. Que faire ?", "options": ["Garder ce bleu dans ses visuels", "Le remplacer par votre couleur préférée", "Utiliser toutes les couleurs pour faire gai", "Ne mettre aucune couleur"], "correct": 0, "why": "Les couleurs existantes du client font partie de sa reconnaissance. On part de ce qu'il utilise déjà avant d'ajouter quoi que ce soit." }
+      ]
+    },
+    {
+      "title": "La typographie : choisir ses polices",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Combien de polices utiliser au maximum sur un visuel ?", "options": ["Deux", "Une par ligne", "Quatre", "Autant que nécessaire"], "correct": 0, "why": "Une police de titre et une police de texte suffisent ; on varie ensuite avec les graisses (normal, gras) plutôt qu'avec une troisième police." },
+        { "q": "Pourquoi éviter un texte long entièrement en majuscules ?", "options": ["Il se lit plus lentement, car la forme des mots disparaît", "Il prend moins de place", "Il est interdit sur Facebook", "Il ne s'imprime pas"], "correct": 0, "why": "En majuscules, toutes les lettres ont la même hauteur : l'œil ne reconnaît plus la silhouette des mots. On les réserve aux titres courts." },
+        { "q": "Quelle taille minimale pour un texte sur un visuel de 1080 × 1080 px ?", "options": ["Environ 28 px, jamais moins de 24 px", "10 px", "14 px", "Plus de 200 px"], "correct": 0, "why": "Le visuel est vu en petit sur un téléphone : en dessous de 24 px, le texte devient illisible." },
+        { "q": "Quel interligne convient à un texte courant ?", "options": ["1,3 à 1,5 fois la taille du texte", "0,5 fois la taille", "3 fois la taille", "Aucun interligne"], "correct": 0, "why": "Un interligne de 1,3 à 1,5 laisse respirer les lignes sans les éparpiller. Les grands titres, eux, se resserrent." },
+        { "q": "Où trouver des polices gratuites utilisables pour un logo client ?", "options": ["Sur Google Fonts, en vérifiant la licence", "En copiant les polices d'un site au hasard", "Dans n'importe quel fichier reçu", "Sur un site de téléchargement piraté"], "correct": 0, "why": "La plupart des polices de Google Fonts sont sous licence libre (SIL Open Font License) et peuvent servir pour des clients, logos compris." }
+      ]
+    },
+    {
+      "title": "Images, photos et icônes",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "Comment demander au client ses photos sans perte de qualité par WhatsApp ?", "options": ["Les envoyer comme document plutôt que comme photo", "Les envoyer en capture d'écran", "Les envoyer en message vocal", "Les réduire avant l'envoi"], "correct": 0, "why": "WhatsApp compresse les photos envoyées normalement. Envoyées comme document, elles gardent leur résolution d'origine." },
+        { "q": "Quelle résolution viser pour une image à imprimer ?", "options": ["300 dpi à la taille d'impression", "72 dpi", "10 dpi", "La résolution n'a pas d'importance"], "correct": 0, "why": "Environ 300 points par pouce à la taille réelle donnent une impression nette ; en dessous, l'image paraît floue." },
+        { "q": "Comment rendre lisible un texte blanc sur une photo chargée ?", "options": ["Ajouter un voile sombre ou un bandeau derrière le texte", "Mettre le texte en jaune", "Réduire la taille du texte", "Ajouter d'autres images"], "correct": 0, "why": "Le voile ou le bandeau crée un fond calme et contrasté sous le texte, sans cacher toute la photo." },
+        { "q": "Pourquoi utiliser un seul jeu d'icônes ?", "options": ["Pour garder un style cohérent et professionnel", "Parce que les icônes sont payantes", "Pour que le visuel soit plus chargé", "Parce que Canva l'impose"], "correct": 0, "why": "Des icônes de styles différents (contour, pleine, 3D) donnent une impression de désordre. Un seul style, une seule couleur." },
+        { "q": "Avant de livrer, quelle vérification est la plus importante pour éviter une erreur grave ?", "options": ["Faire valider par écrit le numéro, les prix, les dates et l'adresse", "Changer la police au dernier moment", "Ajouter un effet d'ombre", "Augmenter le nombre de couleurs"], "correct": 0, "why": "Une erreur de numéro ou de prix coûte plus cher qu'un défaut graphique. La validation écrite du client vous protège aussi." }
+      ]
+    }
+  ]
+}

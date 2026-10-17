@@ -1,0 +1,61 @@
+{
+  "title": "Créer des visuels qui fonctionnent",
+  "summary": "Publications, stories, carrousels, miniatures YouTube, affiches, menus, cartes de visite et dépliants, puis des séries cohérentes avec des modèles réutilisables et un forfait mensuel.",
+  "lessons": [
+    {
+      "title": "La publication qui arrête le défilement",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "Quels sont les 4 éléments d'une publication efficace ?", "options": ["Accroche, détail utile, image, appel à l'action", "Logo, slogan, adresse, horaires", "Titre, sous-titre, texte long, signature", "Trois photos et un prix"], "correct": 0, "why": "Ces 4 éléments suffisent ; le reste de l'information va dans la légende, sous la publication." },
+        { "q": "Quelle accroche est la plus forte ?", "options": ["« Votre gâteau d'anniversaire en 24 h »", "« Bienvenue dans notre pâtisserie »", "« Pâtisserie de qualité »", "« Venez nombreux »"], "correct": 0, "why": "Elle donne un bénéfice concret et précis au lecteur ; les autres sont des formules vagues qui ne disent pas pourquoi agir." },
+        { "q": "Où mettre les conditions, l'adresse détaillée et les horaires ?", "options": ["Dans la légende de la publication", "En grand sur le visuel", "Dans le logo", "Nulle part"], "correct": 0, "why": "Le visuel doit rester lisible en un coup d'œil sur téléphone ; les détails se lisent dans la légende par les personnes intéressées." },
+        { "q": "Pourquoi varier les types de publications (produit, conseil, témoignage…) ?", "options": ["Une page qui ne publie que des promotions lasse ses abonnés", "Facebook l'oblige", "Pour utiliser plus de couleurs", "Pour publier moins souvent"], "correct": 0, "why": "Le mélange crée la confiance et l'intérêt ; c'est aussi un argument pour proposer un forfait mensuel au client." },
+        { "q": "À Madagascar, pourquoi afficher le prix sur le visuel ?", "options": ["Il évite des dizaines de questions « combien ? » et filtre les clients sérieux", "C'est obligatoire par la loi sur Facebook", "Pour remplir l'espace vide", "Pour cacher la photo"], "correct": 0, "why": "Les acheteurs demandent souvent le prix en commentaire ; l'afficher fait gagner du temps au vendeur et aux clients." }
+      ]
+    },
+    {
+      "title": "Stories, carrousels et miniatures YouTube",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Combien d'idées mettre dans une story ?", "options": ["Une seule", "Trois", "Toutes les informations de l'offre", "Aucune, seulement une photo"], "correct": 0, "why": "Une story se regarde en 2 secondes en plein écran : une idée par story, et une série de stories pour plusieurs informations." },
+        { "q": "Quelle image d'un carrousel est la plus importante ?", "options": ["La première, celle qu'on voit dans le fil", "La dernière", "Celle du milieu", "Elles ont toutes la même importance"], "correct": 0, "why": "La première image doit donner envie de glisser ; si elle n'attire pas, personne ne voit les suivantes." },
+        { "q": "Combien de mots mettre sur une miniature YouTube ?", "options": ["3 ou 4 au maximum", "Le titre complet de la vidéo", "Au moins 15", "Aucun mot n'est conseillé"], "correct": 0, "why": "La miniature s'affiche en tout petit et le titre est déjà écrit à côté : quelques mots très gros suffisent." },
+        { "q": "Pourquoi laisser libre le coin inférieur droit d'une miniature YouTube ?", "options": ["YouTube y affiche la durée de la vidéo", "C'est la place du logo de YouTube", "Pour économiser des pixels", "Ce coin n'est pas visible"], "correct": 0, "why": "La durée de la vidéo se superpose à cet endroit et cacherait un texte ou un détail important." },
+        { "q": "Un client veut le même visuel en publication, story et bannière. Que faire ?", "options": ["Recomposer chaque format en gardant les éléments clés", "Étirer l'image pour remplir chaque format", "Livrer le carré pour tous les formats", "Couper l'image au hasard"], "correct": 0, "why": "Chaque format a sa forme et ses zones cachées : on réorganise les mêmes éléments, on ne les déforme pas." }
+      ]
+    },
+    {
+      "title": "Affiches et flyers d'événement",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "Pourquoi écrire le jour de la semaine avec la date (« Samedi 14 décembre ») ?", "options": ["Le lecteur se situe vite, et cela permet de repérer une erreur de date", "Pour remplir l'affiche", "Parce que les chiffres sont interdits", "Pour faire plus joli"], "correct": 0, "why": "Si le jour et la date ne correspondent pas, vous détectez une erreur avant l'impression et vous demandez confirmation au client." },
+        { "q": "Où placer les logos des 10 partenaires d'un concert ?", "options": ["Dans une bande en bas, alignés et de taille égale", "En grand au centre", "Dispersés partout sur l'affiche", "À la place de la photo de l'artiste"], "correct": 0, "why": "Les partenaires sont au niveau 4 : visibles mais discrets, pour ne pas concurrencer le message principal." },
+        { "q": "Comment vérifier qu'une affiche A3 se lira de loin ?", "options": ["L'imprimer en petit ou la regarder réduite à 2 mètres", "La regarder de très près à l'écran", "Compter les mots", "Demander si les couleurs plaisent"], "correct": 0, "why": "Une affiche est lue de loin, en passant : si le titre ne se lit pas réduit à 2 mètres, il ne se lira pas dans la rue." },
+        { "q": "Sur un flyer recto verso, que mettre au recto ?", "options": ["L'accroche, l'image forte, la date et le lieu", "Le programme détaillé et le plan", "Uniquement les logos des partenaires", "Les conditions générales"], "correct": 0, "why": "Le recto doit donner envie de retourner le flyer ; le verso garde les détails pour les personnes intéressées." },
+        { "q": "Quand pouvez-vous lancer l'impression d'une affiche ?", "options": ["Après la validation écrite du client sur le texte final", "Dès que le client a dit « c'est bon » au téléphone", "Avant de lui montrer le visuel", "Quand l'imprimeur est disponible"], "correct": 0, "why": "Une validation écrite évite les erreurs coûteuses et vous protège si une information fournie par le client était fausse." }
+      ]
+    },
+    {
+      "title": "Menus, cartes de visite et dépliants",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "Comment présenter les prix sur un menu lisible ?", "options": ["Alignés à droite, dans une même colonne", "Écrits à la main sur des étiquettes", "Mélangés au texte de la description", "En police décorative"], "correct": 0, "why": "Des prix alignés permettent de comparer d'un coup d'œil ; une police simple évite les erreurs de lecture." },
+        { "q": "Quel est le format courant d'une carte de visite à Madagascar et en Europe ?", "options": ["85 × 55 mm", "148 × 210 mm", "1080 × 1080 px", "210 × 297 mm"], "correct": 0, "why": "85 × 55 mm est le format standard ; avec 3 mm de fond perdu, le fichier fait 91 × 61 mm." },
+        { "q": "Quelle taille minimale pour un QR code sur une carte de visite ?", "options": ["Environ 2 × 2 cm, avec une marge blanche", "5 × 5 mm", "La plus petite possible", "Toute la carte"], "correct": 0, "why": "Trop petit, le QR code n'est pas lu par tous les téléphones ; on le teste toujours avec plusieurs appareils avant d'imprimer." },
+        { "q": "Que faire avant de mettre en page un dépliant à 3 volets ?", "options": ["Une maquette en papier pliée pour placer chaque contenu", "Commencer directement par la couverture", "Imprimer 500 exemplaires d'essai", "Choisir 5 polices"], "correct": 0, "why": "Une fois plié, l'ordre des volets surprend : la maquette en papier montre où chaque partie doit se trouver dans le fichier." },
+        { "q": "Un menu de 50 plats ne tient sur une page qu'en 6 points. Que proposer ?", "options": ["Réduire le nombre de plats affichés, ou passer à 2 pages", "Garder le texte à 6 points", "Supprimer tous les prix", "Mettre le texte en majuscules"], "correct": 0, "why": "Un texte de 6 points est illisible dans un restaurant peu éclairé ; un menu lisible fait vendre davantage qu'un menu complet." }
+      ]
+    },
+    {
+      "title": "Séries cohérentes et modèles réutilisables",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "Qu'est-ce qui doit rester constant d'une publication à l'autre ?", "options": ["La palette, les polices, la position du logo et la grille", "La photo et le texte de l'accroche", "Le prix affiché", "Le format, toujours carré"], "correct": 0, "why": "Ces éléments constants rendent la page reconnaissable ; la photo et le texte changent à chaque publication." },
+        { "q": "À quoi sert un modèle (gabarit) de publication ?", "options": ["Produire une publication en 10 à 15 minutes en ne changeant que le contenu", "Copier le travail d'un autre graphiste", "Remplacer la charte graphique", "Éviter de parler au client"], "correct": 0, "why": "Les éléments fixes sont déjà en place ; on remplace la photo, le texte et le prix, ce qui fait gagner beaucoup de temps." },
+        { "q": "Comment tester un modèle avant de l'utiliser ?", "options": ["Avec des contenus différents : titre court et long, photo claire et sombre", "En le montrant seulement à un ami", "En l'imprimant en A3", "Il n'y a pas besoin de le tester"], "correct": 0, "why": "Un modèle doit supporter des contenus variés ; s'il casse avec un titre long ou une photo sombre, il faut l'ajuster." },
+        { "q": "Combien de temps à l'avance proposer les visuels d'une fête importante ?", "options": ["3 à 4 semaines avant", "Le jour même", "La veille au soir", "Une semaine après"], "correct": 0, "why": "Les commerçants préparent leurs promotions à l'avance ; proposer tôt évite le rush et montre votre professionnalisme." },
+        { "q": "Que doit toujours préciser un forfait mensuel ?", "options": ["Le nombre de visuels et le nombre de corrections inclus", "Que tout est illimité", "Uniquement le prix", "Le nombre d'heures passées par le graphiste"], "correct": 0, "why": "Un forfait sans limite fait exploser votre charge de travail ; un forfait précis protège votre temps et rassure le client." }
+      ]
+    }
+  ]
+}

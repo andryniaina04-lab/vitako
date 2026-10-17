@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des clients et se faire payer",
+  "summary": "Portfolio, prospection, prix et devis, gestion d'un projet client, paiements depuis Madagascar, fidélisation et plan d'action pour vos 30 premiers jours.",
+  "lessons": [
+    {
+      "title": "Construire son portfolio",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Combien de projets suffisent pour un portfolio de départ ?", "options": ["6 projets solides et bien présentés", "Au moins 40 images", "Un seul projet", "Tous les travaux réalisés, même faibles"], "correct": 0, "why": "Un projet faible fait baisser l'impression générale ; 6 bons projets ciblés convainquent davantage qu'une grande quantité." },
+        { "q": "Peut-on montrer les exercices de la formation dans son portfolio ?", "options": ["Oui, en indiquant « projet d'étude »", "Non, c'est interdit", "Oui, en les présentant comme de vrais clients", "Seulement s'ils sont parfaits"], "correct": 0, "why": "Ils montrent vos compétences ; l'honnêteté (« projet d'étude ») rassure le client au lieu de le tromper." },
+        { "q": "Que contient une étude de cas ?", "options": ["Le besoin, le défi, la solution et le résultat en situation", "Seulement l'image finale", "Le prix payé par le client", "La liste des logiciels utilisés"], "correct": 0, "why": "L'étude de cas montre votre façon de penser et de résoudre un problème, pas seulement votre technique." },
+        { "q": "Quel poids viser pour un portfolio PDF envoyé par WhatsApp ?", "options": ["Moins de 5 Mo", "Plus de 50 Mo", "Le poids n'a pas d'importance", "Exactement 100 Mo"], "correct": 0, "why": "Beaucoup de prospects l'ouvriront sur téléphone avec une connexion lente ; un fichier lourd ne s'ouvrira pas." },
+        { "q": "Quelle présentation est la plus efficace ?", "options": ["« Je crée les visuels et logos des marques artisanales ; réponse sous 2 h ; WhatsApp : … »", "« Je suis passionné de design depuis toujours »", "« Je fais tout type de graphisme »", "Aucune présentation, seulement des images"], "correct": 0, "why": "Elle dit ce que vous faites, pour qui, comment vous travaillez et comment vous contacter." }
+      ]
+    },
+    {
+      "title": "Trouver ses premiers clients",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "Qu'est-ce qui rend un message de prospection efficace ?", "options": ["Personnalisé, court, avec un exemple et une proposition concrète", "Long et copié-collé à 50 personnes", "Uniquement le prix", "Une critique sévère de leurs visuels"], "correct": 0, "why": "Un détail précis montre que vous avez regardé leur travail ; l'exemple et la proposition rendent la suite facile." },
+        { "q": "Combien de messages personnalisés envoyer par jour dans la routine conseillée ?", "options": ["Environ 5", "Un par mois", "200", "Aucun, il faut attendre"], "correct": 0, "why": "5 messages soignés par jour, avec des relances, valent mieux que des dizaines de messages identiques." },
+        { "q": "Quand relancer un prospect qui n'a pas répondu ?", "options": ["Vers J+4 ou J+5, puis une dernière fois vers J+12", "Toutes les heures", "Jamais", "Le lendemain matin à 5 h"], "correct": 0, "why": "Les prospects sont souvent occupés ; une ou deux relances polies sont normales, au-delà on passe à autre chose." },
+        { "q": "Que vérifier avant de créer un profil sur une plateforme de freelance ?", "options": ["Qu'elle accepte Madagascar et permet d'y retirer l'argent, et ses frais", "La couleur de son logo", "Le nombre de ses employés", "Rien, toutes se valent"], "correct": 0, "why": "Toutes les plateformes n'acceptent pas les freelances basés à Madagascar ni ne proposent des retraits simples." },
+        { "q": "Que penser d'un essai gratuit ?", "options": ["Un petit essai court et protégé pour un prospect sérieux, jamais un projet entier", "Il faut toujours faire tout le projet gratuitement", "C'est la seule façon de trouver des clients", "Il faut le livrer en haute définition sans filigrane"], "correct": 0, "why": "Un essai limité peut débloquer une collaboration ; un travail entier gratuit ou des « concours » vous font travailler pour rien." }
+      ]
+    },
+    {
+      "title": "Fixer ses prix et faire un devis",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Comment calculer son prix horaire ?", "options": ["Revenu mensuel visé ÷ heures facturables par mois", "Copier le prix du voisin", "Diviser par le nombre de clients", "Prendre le prix le plus bas du marché"], "correct": 0, "why": "On part de ses besoins réels et du temps vraiment payé, qui est souvent la moitié du temps de travail." },
+        { "q": "Avec un prix horaire de 19 000 Ar et 4 heures de travail, quel prix proposer (marge de 20 % incluse) ?", "options": ["Environ 90 000 Ar", "19 000 Ar", "40 000 Ar", "500 000 Ar"], "correct": 0, "why": "4 × 19 000 = 76 000 Ar, plus 20 % = 91 200 Ar, arrondi à environ 90 000 Ar." },
+        { "q": "Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?", "options": ["Les clients préfèrent un prix fixe et choisissent souvent celui du milieu", "Pour compliquer le choix", "Parce que c'est obligatoire", "Pour vendre moins cher"], "correct": 0, "why": "Le client sait exactement ce qu'il paie, et le forfait du milieu, plus complet, devient un choix naturel." },
+        { "q": "Quand demander l'acompte ?", "options": ["À la commande, avant de commencer le travail", "Après la livraison des fichiers", "Jamais", "Seulement si le client le propose"], "correct": 0, "why": "50 % à la commande est la norme ; un client qui refuse tout acompte est souvent un client qui ne paiera pas." },
+        { "q": "Un client dit « c'est trop cher ». Que faire d'abord ?", "options": ["Demander son budget et ajuster le contenu plutôt que le prix", "Diviser le prix par deux sans rien changer", "Refuser de répondre", "Travailler gratuitement"], "correct": 0, "why": "Baisser sans contrepartie apprend au client que vos prix se négocient toujours ; un forfait plus léger respecte votre valeur." }
+      ]
+    },
+    {
+      "title": "Gérer un projet client de A à Z",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Que faire après un appel avec un client ?", "options": ["Envoyer un résumé écrit de ce qui a été décidé", "Ne rien écrire pour gagner du temps", "Attendre qu'il écrive lui-même", "Commencer sans attendre de validation"], "correct": 0, "why": "Le résumé écrit devient la référence commune et évite le « je n'ai jamais demandé ça »." },
+        { "q": "Vous allez livrer avec un jour de retard. Que faire ?", "options": ["Prévenir le client avant l'échéance et proposer une nouvelle date ferme", "Ne rien dire et livrer quand c'est prêt", "Livrer un travail inachevé à l'heure sans prévenir", "Ignorer ses messages"], "correct": 0, "why": "Prévenir à l'avance garde la confiance ; le silence est ce qui fâche le plus les clients." },
+        { "q": "Le client change le brief en plein projet. Quelle réponse est professionnelle ?", "options": ["Annoncer l'impact du changement sur le délai et le prix, puis demander confirmation", "Refaire tout gratuitement sans rien dire", "Refuser toute modification", "Arrêter le projet sans explication"], "correct": 0, "why": "Le changement est possible, mais il a un coût : le dire avant de travailler évite les conflits." },
+        { "q": "Un « client » envoie un paiement trop élevé et demande de rembourser la différence. Que penser ?", "options": ["C'est une arnaque fréquente : vérifier la réception réelle et ne rien rembourser", "C'est une erreur honnête, il faut rembourser tout de suite", "Il faut lui donner vos codes MVola", "Il faut commencer le travail immédiatement"], "correct": 0, "why": "Le faux justificatif de paiement suivi d'une demande de remboursement est une arnaque classique : seul compte le paiement réellement reçu." },
+        { "q": "Quand envoyer les fichiers finaux en haute définition ?", "options": ["Après la réception du solde", "Avant tout paiement", "Avec le devis", "Au premier aperçu"], "correct": 0, "why": "Les aperçus restent protégés (basse définition, filigrane) tant que le solde n'est pas payé." }
+      ]
+    },
+    {
+      "title": "Être payé et fidéliser",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Quel moyen de paiement convient pour un client local à Madagascar ?", "options": ["Mobile Money (MVola, Orange Money, Airtel Money) ou virement", "Uniquement les chèques étrangers", "Uniquement les cartes cadeaux", "Aucun, il faut travailler à crédit"], "correct": 0, "why": "Le Mobile Money est le moyen le plus courant et le plus rapide pour les clients locaux, avec une trace de chaque transaction." },
+        { "q": "Comment vérifier qu'un client a payé ?", "options": ["Sur votre compte (application MVola, relevé bancaire)", "Sur la capture d'écran envoyée par le client", "En lui demandant s'il a payé", "Ce n'est pas nécessaire"], "correct": 0, "why": "Une capture d'écran peut être modifiée ; seule la réception réelle sur votre compte compte." },
+        { "q": "Quelle est la différence entre un devis et une facture ?", "options": ["Le devis annonce le prix avant le travail ; la facture demande ou confirme le paiement après", "Ce sont deux noms pour le même document", "La facture se fait avant le devis", "Le devis est réservé aux clients étrangers"], "correct": 0, "why": "Le devis fixe le cadre ; la facture, numérotée sans trou, correspond au travail réalisé et au paiement." },
+        { "q": "Comment obtenir plus facilement un avis client ?", "options": ["Envoyer un lien direct et une question simple, puis relancer une fois", "Attendre que le client y pense seul", "Écrire l'avis à sa place", "Demander un avis avant de commencer le travail"], "correct": 0, "why": "Plus c'est simple, plus les clients répondent ; un avis précis convainc davantage les futurs clients." },
+        { "q": "Pourquoi penser d'abord à vos anciens clients ?", "options": ["Faire revenir un client satisfait demande moins d'efforts que d'en trouver un nouveau", "Parce qu'ils paient toujours plus cher", "Parce que les nouveaux clients sont interdits", "Pour ne plus jamais prospecter"], "correct": 0, "why": "Relances, propositions avant les fêtes, forfaits mensuels et services complémentaires transforment un projet en revenu régulier." }
+      ]
+    }
+  ]
+}

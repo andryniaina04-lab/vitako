@@ -1,0 +1,61 @@
+{
+  "title": "Créer un logo et une identité visuelle",
+  "summary": "Du brief à la livraison : recherche, croquis, vectorisation, typographie et couleurs, tests, présentation au client, pack de fichiers et charte graphique.",
+  "lessons": [
+    {
+      "title": "Le brief et la recherche",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Quelle est la première étape d'un projet de logo ?", "options": ["Le brief écrit validé, le devis signé et l'acompte", "Dessiner directement dans Inkscape", "Choisir les couleurs préférées du graphiste", "Chercher un logo à modifier sur Internet"], "correct": 0, "why": "Sans brief validé, on dessine au hasard et les retouches se multiplient ; le devis et l'acompte protègent votre travail." },
+        { "q": "Quelle question du brief est souvent la plus précieuse ?", "options": ["« Qu'est-ce qui vous différencie de vos concurrents ? »", "« Quelle est votre police préférée ? »", "« Avez-vous un ordinateur ? »", "« Combien d'employés avez-vous ? »"], "correct": 0, "why": "La différence du client (origine, savoir-faire, service) inspire souvent l'idée centrale du logo." },
+        { "q": "Pourquoi analyser les logos des concurrents avant de dessiner ?", "options": ["Pour connaître les codes du secteur et éviter de leur ressembler", "Pour copier le meilleur", "Pour choisir la même police que le leader", "C'est inutile"], "correct": 0, "why": "On comprend ce qui inspire confiance dans le secteur, et l'on cherche ce que personne ne fait pour que le client se démarque." },
+        { "q": "À quoi sert une planche d'inspiration (moodboard) ?", "options": ["Vérifier avec le client l'ambiance recherchée avant de dessiner", "Remplacer le logo", "Choisir le prix du projet", "Montrer des logos à copier"], "correct": 0, "why": "Une heure de planche évite souvent plusieurs tours de corrections, car on s'accorde sur l'ambiance avant de créer." },
+        { "q": "Pourquoi demander où le logo sera utilisé (broderie, tampon, enseigne…) ?", "options": ["Un logo trop détaillé ne passera pas sur certains supports", "Pour facturer plus cher", "Pour choisir la taille de l'écran", "Ce n'est pas utile au graphiste"], "correct": 0, "why": "Traits fins et dégradés disparaissent en broderie, en tampon ou en peinture : il faut le savoir avant de dessiner." }
+      ]
+    },
+    {
+      "title": "Des croquis au vectoriel",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "Pourquoi commencer un logo sur papier ?", "options": ["On explore beaucoup d'idées très vite sans s'attacher à la première", "Le papier donne de meilleures couleurs", "Les clients préfèrent les dessins à la main", "Les logiciels ne savent pas dessiner de logos"], "correct": 0, "why": "Une idée prend 1 à 2 minutes sur papier contre 15 à 30 à l'ordinateur : on explore plus de directions." },
+        { "q": "Quelles sont les 4 pistes de recherche pour varier les croquis ?", "options": ["Symbole direct, symbole indirect, lettre, nom seul", "Rouge, vert, bleu, noir", "Petit, moyen, grand, très grand", "Carré, rond, triangle, étoile"], "correct": 0, "why": "Changer volontairement de piste évite de dessiner 12 fois la même idée et fait apparaître des propositions plus originales." },
+        { "q": "Combien de propositions présenter au client ?", "options": ["2 ou 3 propositions abouties et différentes", "Tous les croquis, pour qu'il choisisse", "Une seule, sans explication", "Au moins 10"], "correct": 0, "why": "Sélectionner fait partie de votre rôle ; trop de choix perd le client et donne une impression d'hésitation." },
+        { "q": "Pourquoi travailler d'abord en noir et blanc ?", "options": ["Un logo solide sans couleur fonctionnera aussi en couleur", "Les couleurs coûtent plus cher", "Inkscape n'a pas de couleurs", "Les clients préfèrent le noir et blanc"], "correct": 0, "why": "Si la force du logo vient seulement de la couleur, il sera faible sur un tampon, une photocopie ou une broderie d'une couleur." },
+        { "q": "Que penser de la vectorisation automatique pour un logo ?", "options": ["Elle donne souvent des formes irrégulières : mieux vaut redessiner à la main", "Elle est parfaite dans tous les cas", "Elle est interdite", "Elle remplace les croquis"], "correct": 0, "why": "Redessiner en suivant le croquis donne des courbes propres, avec peu de points, et un fichier léger." }
+      ]
+    },
+    {
+      "title": "Types de logos, typographie et couleurs",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Quel type de logo convient à un nom court et original ?", "options": ["Le logotype (le nom seul, travaillé)", "L'emblème avec beaucoup de détails", "Une illustration complète", "Un monogramme obligatoirement"], "correct": 0, "why": "Avec un nom court et original, le travailler seul permet de le faire mémoriser directement." },
+        { "q": "Qu'est-ce qu'un emblème ?", "options": ["Le nom placé à l'intérieur d'une forme (badge, cercle, écusson)", "Les initiales entrelacées", "Une icône sans texte", "Un slogan"], "correct": 0, "why": "L'emblème a un aspect traditionnel qui inspire confiance : cafés, coopératives, produits artisanaux." },
+        { "q": "Quelle police utiliser pour le nom d'un logo ?", "options": ["Une police dont la licence autorise l'usage commercial, comme celles de Google Fonts", "N'importe quelle police « gratuite pour usage personnel »", "La police par défaut de l'ordinateur sans vérifier", "Une police copiée d'un autre logo"], "correct": 0, "why": "Le logo sera utilisé partout pendant des années : la licence doit le permettre (souvent SIL Open Font License)." },
+        { "q": "Combien de couleurs prévoir pour un logo ?", "options": ["2 ou 3 au maximum", "Au moins 6", "Une par lettre", "Le plus possible avec des dégradés"], "correct": 0, "why": "Peu de couleurs rendent le logo plus fort, plus facile à imprimer et à reproduire sur tous les supports." },
+        { "q": "Un client veut une gousse, une orchidée, la carte de Madagascar et un soleil dans son logo. Que conseiller ?", "options": ["Garder une seule idée forte ; les autres iront sur les emballages ou le site", "Tout mettre, le client a toujours raison", "Ajouter aussi un slogan long", "Faire 4 logos différents"], "correct": 0, "why": "Un logo doit être reconnaissable en une seconde ; trop d'éléments en font une illustration illisible en petit." }
+      ]
+    },
+    {
+      "title": "Tester et présenter le logo",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "Un logo solide doit rester lisible…", "options": ["En tout petit (32 px) et en une seule couleur", "Uniquement en très grand", "Uniquement en couleur", "Uniquement sur fond blanc"], "correct": 0, "why": "Le logo vivra sur des photos de profil, des tampons et des documents en noir et blanc : il doit y rester reconnaissable." },
+        { "q": "Comment vérifier qu'un logo ne ressemble pas à un logo existant ?", "options": ["Faire une recherche d'image inversée (Google Images ou Lens)", "Demander à un ami s'il le connaît", "Changer une couleur", "Ce n'est pas nécessaire"], "correct": 0, "why": "En 2 minutes, la recherche d'image inversée évite qu'un client doive tout changer à cause d'une marque trop proche." },
+        { "q": "Pourquoi présenter un logo « en situation » ?", "options": ["Le client se projette et valide plus vite", "Pour cacher les défauts du logo", "Parce que le fond blanc est interdit", "Pour facturer les maquettes"], "correct": 0, "why": "Voir le logo sur une enseigne, une étiquette ou un t-shirt aide le client à juger son usage réel." },
+        { "q": "Quelle question donne les retours les plus utiles ?", "options": ["« Quelle proposition correspond le mieux à vos 3 mots-clés ? »", "« Ça vous plaît ? »", "« Des remarques ? »", "« On change tout ? »"], "correct": 0, "why": "Une question liée au brief oriente le client vers ses objectifs plutôt que vers ses goûts du moment." },
+        { "q": "Comment gérer les retouches demandées par le client ?", "options": ["Un nombre de tours fixé dans le devis, avec une liste écrite par tour", "Accepter chaque petite modification au fil de la journée", "Refuser toute modification", "Recommencer un nouveau logo à chaque remarque"], "correct": 0, "why": "Les tours limités et les listes écrites protègent la qualité du logo et votre temps ; au-delà, on annonce un supplément." }
+      ]
+    },
+    {
+      "title": "La charte graphique et le pack de livraison",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Quelles versions du logo livrer ?", "options": ["Principale, horizontale/verticale, compacte, noire et blanche", "Une seule version en JPG", "La version couleur uniquement", "Les croquis sur papier"], "correct": 0, "why": "Chaque version répond à un usage : petits espaces, fonds foncés, tampons, bannières…" },
+        { "q": "Quel fichier un imprimeur ou un brodeur demandera-t-il ?", "options": ["Un fichier vectoriel (SVG ou PDF)", "Une capture d'écran", "Un PNG de 200 px", "Une photo du logo prise au téléphone"], "correct": 0, "why": "Le vectoriel s'agrandit sans perte et permet aux fabricants de reproduire exactement les formes." },
+        { "q": "Que contient une mini-charte graphique ?", "options": ["Les versions du logo, les couleurs (HEX, RVB, CMJN), les polices, la zone de protection, la taille minimale et les interdits", "Seulement le prix du logo", "Le brief et le devis", "Les croquis refusés"], "correct": 0, "why": "La charte permet au client d'utiliser son logo seul et correctement, avec n'importe quel prestataire." },
+        { "q": "Qu'est-ce que la zone de protection ?", "options": ["L'espace vide minimum autour du logo", "Un mot de passe sur le fichier", "La partie du logo en couleur", "Un filigrane anti-copie"], "correct": 0, "why": "Aucun autre élément ne doit y entrer ; on la mesure avec une partie du logo (par exemple la hauteur d'une lettre)." },
+        { "q": "Quand les droits d'utilisation du logo sont-ils cédés au client ?", "options": ["Après le paiement complet, comme précisé dans le devis", "Dès la première proposition", "Jamais", "Avant la signature du devis"], "correct": 0, "why": "Préciser cette règle dans le devis protège le graphiste ; le client peut ensuite déposer sa marque à l'OMAPI." }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,7 @@
   const profile = () => db.profiles.find((p) => p.id === me());
   const isAdmin = () => !!profile()?.is_admin;
   const hasAccess = () => { const p = profile(); return !!p && (p.is_admin || (p.sub_end && new Date(p.sub_end) > new Date())); };
+  const v2Visible = (cid) => !!FIX.courses.find((c) => c.id === cid)?.v2_live || isAdmin();
   const listeners = [];
   // Comme supabase-js : la connexion attend la fin des rappels, et les appels à la base
   // attendent la fin de la connexion. Un rappel qui appelle la base bloquerait tout.
@@ -39,6 +40,10 @@
       case 'exam_attempts': return db.exam_attempts.filter((p) => p.user_id === me() || isAdmin());
       case 'reviews': return (db.reviews ||= []).filter((p) => p.user_id === me() || isAdmin());
       case 'certificates': return db.certificates.filter((p) => p.user_id === me() || isAdmin());
+      case 'modules2': return FIX.modules2.filter((r) => hasAccess() && v2Visible(r.course_id));
+      case 'lesson_parts': return FIX.lesson_parts.filter((r) => hasAccess() && v2Visible(r.course_id));
+      case 'part_questions': return FIX.part_questions.filter((r) => hasAccess() && v2Visible(r.course_id));
+      case 'part_progress': return (db.part_progress ||= []).filter((p) => p.user_id === me() || isAdmin());
       case 'trainer_profiles': return (db.trainers ||= []).filter((t) => t.user_id === me() || isAdmin());
       case 'payments': return db.payments.filter((p) => p.user_id === me() || isAdmin())
         .map((p) => ({ ...p, profile: (({ full_name, email, role }) => ({ full_name, email, role }))(db.profiles.find((x) => x.id === p.user_id) || {}) }));
@@ -283,15 +288,30 @@
         signups, top_courses: top,
       }, error: null };
     },
+    complete_part({ p_course, p_module, p_part, p_good, p_total }) {
+      if (!me()) return err('not_authenticated');
+      if (!hasAccess()) return err('no_access');
+      if (!v2Visible(p_course) || !FIX.lesson_parts.some((l) => l.course_id === p_course && l.module_index === p_module && l.part_index === p_part)) return err('not_found');
+      db.part_progress ||= [];
+      const ex = db.part_progress.find((x) => x.user_id === me() && x.course_id === p_course && x.module_index === p_module && x.part_index === p_part);
+      if (ex) ex.good = Math.max(ex.good || 0, p_good || 0); else db.part_progress.push({ user_id: me(), course_id: p_course, module_index: p_module, part_index: p_part, good: p_good, total: p_total, completed_at: now() });
+      const parts = FIX.lesson_parts.filter((l) => l.course_id === p_course && l.module_index === p_module).length;
+      const done = db.part_progress.filter((x) => x.user_id === me() && x.course_id === p_course && x.module_index === p_module).length;
+      if (done >= parts && !db.progress.some((p) => p.user_id === me() && p.course_id === p_course && p.module_index === p_module)) db.progress.push({ user_id: me(), course_id: p_course, module_index: p_module, completed_at: now() });
+      save(); return { data: { module_done: done >= parts, parts_done: done, parts }, error: null };
+    },
     start_exam({ p_course }) {
       if (!me()) return err('not_authenticated');
       if (!hasAccess()) return err('no_access');
       const c = FIX.courses.find((x) => x.id === p_course && x.published);
       if (!c) return err('not_found');
-      const needed = FIX.lessons.filter((l) => l.course_id === p_course).length;
-      const done = db.progress.filter((p) => p.user_id === me() && p.course_id === p_course).length;
+      const v2 = v2Visible(p_course) && FIX.modules2.some((m) => m.course_id === p_course);
+      const pp = (db.part_progress || []).filter((x) => x.user_id === me() && x.course_id === p_course);
+      const needed = v2 ? FIX.modules2.filter((m) => m.course_id === p_course).length : FIX.lessons.filter((l) => l.course_id === p_course).length;
+      const done = v2 ? FIX.modules2.filter((m) => m.course_id === p_course && pp.filter((x) => x.module_index === m.module_index).length >= FIX.lesson_parts.filter((l) => l.course_id === p_course && l.module_index === m.module_index).length).length
+        : db.progress.filter((p) => p.user_id === me() && p.course_id === p_course).length;
       if (done < needed) return err('modules_incomplete');
-      const qs = FIX.exam_questions.filter((q) => q.course_id === p_course).sort(() => Math.random() - 0.5).slice(0, 10);
+      const qs = FIX.exam_questions.filter((q) => q.course_id === p_course && (q.version || 1) === (v2 ? 2 : 1)).sort(() => Math.random() - 0.5).slice(0, v2 ? 20 : 10);
       const att = { id: uuid(), user_id: me(), course_id: p_course, question_ids: qs.map((q) => q.id), started_at: now(), submitted_at: null, score: null };
       db.exam_attempts.push(att); save();
       return { data: { attempt_id: att.id, questions: qs.map(({ id, question, options }) => ({ id, question, options })) }, error: null };

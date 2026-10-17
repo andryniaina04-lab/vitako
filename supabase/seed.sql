@@ -65161,4 +65161,3907 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que remettre en fin de mission ?', '["Le rapport puis une note de clôture après vérification","Une facture seule","Rien","Les mots de passe du client sur Internet"]'::jsonb, 0);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que publier dans son portfolio ?', '["Les résultats réels des clients","Des données personnelles","Des mots de passe","Des travaux sur son laboratoire et des cas fictifs"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
+
+-- design-0-f (version 2, aperçu administrateur)
+delete from public.lesson_parts where course_id = 'design-0-f';
+delete from public.modules2 where course_id = 'design-0-f' and module_index >= 6;
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 0, 'Le métier de graphiste freelance', 'Ce que fait un graphiste, les commandes que vous recevrez, vos clients, votre organisation depuis Madagascar et les règles pour travailler en règle.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 0, 0, 'Ce que fait vraiment un graphiste', 12, 'Un graphiste freelance vend des images qui aident ses clients à vendre. Depuis Madagascar, avec un ordinateur et une connexion Internet, vous pouvez travailler pour une boutique d''Analakely comme pour une marque de cosmétiques à Lyon. Cette première leçon pose les bases : ce que fait vraiment un graphiste, et ce qui distingue un visuel utile d''un visuel simplement « joli ».
+
+> [!objectifs] Objectifs de la leçon
+> À la fin de cette leçon, vous saurez :
+> 1. Expliquer en une phrase ce que fait un graphiste.
+> 2. Citer les 3 objectifs de tout visuel professionnel.
+> 3. Distinguer les grandes spécialités du graphisme.
+> 4. Comparer le travail en freelance, en agence et en entreprise.
+
+## Le graphiste traduit un message en image
+
+Un graphiste **traduit un message en image**. Le client a quelque chose à dire : « nous ouvrons un restaurant », « nos prix baissent ce week-end », « faites-nous confiance pour vos voyages ». Le graphiste choisit les mots mis en avant, les couleurs, la mise en page et les images qui feront passer ce message en quelques secondes.
+
+Ce n''est donc pas « dessiner joli ». Un visuel peut être magnifique et ne rien vendre. À l''inverse, un visuel très simple, bien construit, peut remplir un restaurant tout un week-end. La beauté est un moyen, pas le but.
+
+```schema etapes
+titre: Le travail du graphiste, du besoin au résultat
+Le client : « Je veux vendre plus de jus le samedi »
+Le message : « Jus frais à 2 000 Ar, ce samedi seulement »
+Les choix : grand prix, photo de fruits, couleur vive
+Le visuel : une publication Facebook lisible en 3 secondes
+Le résultat : des clients qui viennent samedi
+```
+
+> [!definition] Graphiste
+> Un graphiste (ou designer graphique) conçoit des supports visuels : logos, affiches, publications pour les réseaux sociaux, emballages, menus, présentations. Il combine texte, image, couleur et mise en page pour transmettre un message précis à un public précis.
+
+## Les 3 objectifs de tout visuel
+
+Chaque choix que vous faites doit servir au moins un de ces trois objectifs. Si un élément ne sert à rien, il gêne : enlevez-le.
+
+```schema entonnoir
+titre: Ce qu''un bon visuel doit obtenir, dans l''ordre
+Attirer : la personne s''arrête au lieu de faire défiler
+Faire comprendre : elle saisit le message en moins de 3 secondes
+Faire agir : elle appelle, commande, vient ou partage
+```
+
+1. **Attirer l''attention.** Sur un téléphone, une personne fait défiler des dizaines de publications par minute. Votre visuel doit l''arrêter : une couleur forte, un visage, un chiffre, un contraste net.
+2. **Faire comprendre.** Une fois arrêtée, la personne doit comprendre immédiatement de quoi il s''agit. Un seul message principal, écrit en grand.
+3. **Faire agir.** Le visuel doit dire quoi faire ensuite : « Commandez au 034 12 345 67 », « Rendez-vous samedi à 19 h », « Lien dans la bio ».
+
+> [!exemple] Une épicerie à Antsirabe
+> L''épicerie Tsara publie la photo de ses rayons avec le texte « Venez nombreux ». La publication est jolie, mais personne ne sait pourquoi venir. Le graphiste propose : une photo de 3 produits, le texte « Riz, huile, sucre : -10 % jusqu''à dimanche » en très grand, et l''adresse en bas. Le message est clair, et il pousse à l''action.
+
+## Les grandes spécialités du graphisme
+
+Le graphisme couvre plusieurs métiers proches. Un débutant touche un peu à tout, puis se spécialise avec le temps (c''est l''objet du niveau Avancé).
+
+| Spécialité | Ce qu''on y fait | Exemples de commandes |
+| --- | --- | --- |
+| Graphisme pour le web et les réseaux | Visuels pour écrans | Publications Facebook, stories, bannières, miniatures YouTube |
+| Identité visuelle | Créer l''image d''une marque | Logo, couleurs, polices, charte graphique |
+| Édition et impression | Mise en page de documents | Affiches, flyers, menus, catalogues, rapports |
+| Packaging | Emballages et étiquettes | Étiquette de pot de miel, sachet de vanille, boîte de chocolat |
+| Illustration | Dessins originaux | Personnages, cartes, illustrations de livres |
+| Design d''interface (UI) | Écrans d''applications et de sites | Maquettes de site, écrans d''application |
+
+```schema barres
+titre: Exemple : les 10 premières demandes reçues par Hery, graphiste débutant à Antananarivo
+Réseaux sociaux : 5
+Affiches et flyers : 2
+Logos : 1
+Menus, cartes, dépliants : 1
+Miniature YouTube : 1
+```
+
+C''est un exemple, mais il reflète une réalité : les **visuels pour les réseaux sociaux** sont la demande la plus fréquente, car presque tous les commerces vendent sur Facebook, WhatsApp ou TikTok. C''est là que vous trouverez vos premiers clients.
+
+## Freelance, agence ou entreprise ?
+
+Un graphiste peut travailler de trois façons. Cette formation vous prépare au freelance, mais les trois sont possibles, et beaucoup de graphistes combinent un emploi et quelques clients personnels.
+
+```schema comparaison
+colonnes: Freelance | Agence | Entreprise
+Vous choisissez vos clients et vos horaires | Vous travaillez pour les clients de l''agence | Vous travaillez pour une seule marque
+Revenus variables d''un mois à l''autre | Salaire fixe | Salaire fixe
+Vous gérez tout : prospection, devis, paiements | Un chef de projet gère les clients | Un responsable vous donne les demandes
+Projets très variés | Projets variés, rythme rapide | Projets liés à une seule marque
+Possible depuis chez vous, à Madagascar | Souvent au bureau, à Antananarivo | Souvent au bureau
+```
+
+> [!definition] Freelance
+> Un freelance (ou travailleur indépendant) travaille pour plusieurs clients, mission par mission, sans être salarié. Il fixe ses prix, choisit ses horaires et gère lui-même ses clients, ses paiements et ses impôts.
+
+Le freelance demande donc deux compétences : **le graphisme** et **la gestion d''une petite activité**. Cette formation travaille les deux. Les modules 2 à 5 vous apprennent à créer, et le module 6 à vendre et à être payé.
+
+> [!madagascar] Votre avantage depuis Madagascar
+> Vous travaillez en français, et souvent en malgache et en anglais. Pour un client en France, en Belgique, au Canada, à La Réunion ou à Maurice, vous êtes joignable dans sa journée de travail (une à deux heures de décalage avec Paris). Vos tarifs, adaptés au coût de la vie local, restent intéressants pour lui, tout en vous rapportant un bon revenu.
+
+## Les qualités d''un bon graphiste freelance
+
+Le talent artistique compte moins qu''on ne le pense. Les clients reviennent vers les graphistes qui ont ces 5 qualités :
+
+```schema checklist
+titre: Ce que les clients apprécient le plus
+[x] Comprendre le besoin avant de commencer (poser des questions)
+[x] Respecter les délais annoncés
+[x] Répondre vite et clairement aux messages
+[x] Livrer des fichiers propres, au bon format
+[x] Accepter les retours sans se vexer
+```
+
+> [!erreur] Croire qu''il faut savoir dessiner
+> Beaucoup de débutants pensent qu''il faut savoir dessiner à la main pour devenir graphiste. C''est faux pour la majorité des commandes : un visuel de promotion, une affiche ou un menu se construisent avec des photos, des formes simples et du texte bien placé. Ce qui compte, c''est de **savoir organiser l''information**. Le dessin aide pour les logos et l''illustration, et il s''apprend avec de la pratique.
+
+> [!attention] Erreurs fréquentes des débutants
+> - Commencer à créer avant d''avoir compris ce que le client veut obtenir.
+> - Ajouter des éléments « pour décorer » qui brouillent le message.
+> - Mettre tous les textes à la même taille : le lecteur ne sait pas quoi lire en premier.
+> - Oublier l''action attendue (le numéro, l''adresse, la date).
+
+> [!retenir]
+> - Un graphiste **traduit un message en image** ; la beauté est un moyen, pas le but.
+> - Un bon visuel **attire**, **fait comprendre** et **fait agir**.
+> - La moitié des demandes d''un débutant concernent les **réseaux sociaux**.
+> - Le freelance demande deux compétences : créer **et** gérer son activité.
+
+## Exercice pratique : analyser 5 visuels
+
+> [!exercice] Exercice pratique · 30 minutes
+> 1. Ouvrez Facebook ou Instagram et choisissez 5 publications de commerces malgaches (restaurant, boutique, hôtel, salon de coiffure, épicerie).
+> 2. Faites une capture d''écran de chacune.
+> 3. Pour chaque visuel, notez dans un tableau : **le message principal** (en une phrase), **l''action attendue**, et une note de 1 à 5 pour chacun des 3 objectifs (attirer, faire comprendre, faire agir).
+> 4. Pour le visuel le moins bien noté, écrivez en 3 lignes ce que vous changeriez.
+>
+> **Exemple de ligne** : « Pizzeria Mamy · message : pizza achetée = boisson offerte le mardi · action : commander par téléphone · attirer 4/5, comprendre 2/5 (texte trop petit), agir 3/5. »
+>
+> **À livrer** : vos 5 captures et votre tableau. Gardez-les : vous les reprendrez au module 2 pour les améliorer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 0, 0, 'Quel est le rôle principal d''un graphiste ?', '["Dessiner ce qu''il trouve beau","Gérer la page Facebook du client","Imprimer des affiches","Traduire le message du client en image utile"]'::jsonb, 3, 'Le graphiste part du message que le client veut faire passer et choisit les mots, couleurs et images qui le rendent clair. La beauté est un moyen, pas le but.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 0, 1, 'Quels sont, dans l''ordre, les 3 objectifs d''un bon visuel ?', '["Faire comprendre, attirer, décorer","Décorer, remplir, signer","Attirer, faire comprendre, faire agir","Attirer, divertir, informer sur tout"]'::jsonb, 2, 'Le visuel doit d''abord arrêter le regard, puis faire comprendre le message en quelques secondes, et enfin dire quoi faire (appeler, venir, commander).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 0, 2, 'Sur un visuel, à quoi sert l''information « Commandez au 034 12 345 67 » ?', '["À faire agir le lecteur","À attirer l''attention","À décorer le visuel","À remplacer le titre"]'::jsonb, 0, 'C''est l''appel à l''action : il indique au lecteur ce qu''il doit faire ensuite. Sans lui, le visuel informe mais ne fait pas vendre.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 0, 3, 'Quelle commande représente la plus grande part des demandes d''un graphiste débutant ?', '["Les maquettes d''applications","Les visuels pour les réseaux sociaux","Les emballages","Les illustrations de livres"]'::jsonb, 1, 'Presque tous les commerces vendent sur Facebook, WhatsApp ou TikTok et ont besoin de visuels réguliers : c''est la porte d''entrée la plus fréquente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 0, 4, 'Quelle est la principale différence entre un freelance et un graphiste salarié en agence ?', '["Le freelance ne fait que des logos","Le salarié n''a jamais de délais","Le freelance gère lui-même ses clients, ses prix et ses paiements","Le freelance n''a pas besoin d''ordinateur"]'::jsonb, 2, 'En freelance, vous choisissez vos clients et vos horaires, mais vous gérez aussi la prospection, les devis et les paiements, que l''agence gère pour ses salariés.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 0, 1, 'Les commandes que vous recevrez', 13, 'Un débutant reçoit presque toujours les mêmes types de demandes. Les connaître à l''avance vous permet de préparer vos modèles, d''estimer votre temps et de répondre vite et avec assurance quand un client vous écrit. Cette leçon passe en revue les 6 commandes les plus fréquentes, ce que le client attend vraiment pour chacune, et l''ordre dans lequel les apprendre.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Reconnaître les 6 commandes les plus fréquentes d''un graphiste débutant.
+> 2. Savoir ce que le client attend pour chacune (livrables, délais).
+> 3. Estimer la difficulté et le temps d''une commande.
+> 4. Choisir les commandes à travailler en premier pour votre portfolio.
+
+## Les 6 commandes les plus fréquentes
+
+| N° | Commande | Exemple de client | Délai habituel | Difficulté |
+| --- | --- | --- | --- | --- |
+| 1 | Visuels pour réseaux sociaux | Boutique de vêtements à Analakely | 1 à 2 jours | ★☆☆ |
+| 2 | Affiche ou flyer d''événement | Concert, église, association | 1 à 3 jours | ★★☆ |
+| 3 | Miniature YouTube, couverture d''e-book | Créateur de contenu en France | 1 jour | ★☆☆ |
+| 4 | Carte de visite, menu, dépliant | Hôtel, gargote, cabinet médical | 1 à 3 jours | ★★☆ |
+| 5 | Logo et petite identité visuelle | Restaurant, coopérative agricole | 5 à 10 jours | ★★★ |
+| 6 | Présentation ou catalogue | ONG, PME, école | 3 à 7 jours | ★★☆ |
+
+Les délais sont ceux que les clients jugent normaux. Ils supposent que le client répond vite à vos questions : s''il met deux jours à envoyer ses photos, le délai commence à ce moment-là. Dites-le clairement dès le départ.
+
+## Ce que le client attend vraiment
+
+Pour chaque commande, le client a une attente visible (le fichier) et une attente cachée (le résultat). Les graphistes qui réussissent répondent aux deux.
+
+### 1. Les visuels pour réseaux sociaux
+
+- **Ce qu''il demande** : « 3 visuels pour mes promotions de la semaine ».
+- **Ce qu''il veut vraiment** : vendre plus, et avoir une page qui inspire confiance.
+- **Ce que vous livrez** : des fichiers PNG ou JPG aux bonnes dimensions (carré, vertical, story), avec un texte lisible sur téléphone.
+- **Le piège** : trop de texte. Un client veut souvent tout mettre (prix, adresse, horaires, 10 produits). Votre rôle est de choisir l''essentiel.
+
+### 2. L''affiche ou le flyer d''événement
+
+- **Ce qu''il demande** : une affiche pour un concert, une conférence, une kermesse.
+- **Ce qu''il veut vraiment** : que des gens viennent, et que les informations pratiques soient justes.
+- **Ce que vous livrez** : un fichier pour Facebook et, souvent, un fichier PDF pour l''imprimeur.
+- **Le piège** : une erreur de date ou de numéro. Faites toujours relire et valider les informations par écrit.
+
+### 3. La miniature YouTube
+
+- **Ce qu''il demande** : une image d''aperçu pour sa vidéo.
+- **Ce qu''il veut vraiment** : plus de clics sur sa vidéo.
+- **Ce que vous livrez** : une image de 1280 × 720 px, avec 3 ou 4 mots maximum, un visage expressif et un fort contraste.
+- **Le piège** : un texte trop petit. La miniature est vue en tout petit sur téléphone.
+
+### 4. La carte de visite, le menu, le dépliant
+
+- **Ce qu''il demande** : un document à imprimer.
+- **Ce qu''il veut vraiment** : paraître sérieux et professionnel.
+- **Ce que vous livrez** : un PDF prêt pour l''imprimeur (vous l''apprendrez au module 3) et une version JPG pour WhatsApp et Facebook.
+- **Le piège** : les fautes et les prix faux sur un menu. Une fois imprimé à 500 exemplaires, l''erreur coûte cher.
+
+### 5. Le logo
+
+- **Ce qu''il demande** : « un logo pour mon entreprise ».
+- **Ce qu''il veut vraiment** : une image de marque reconnaissable, qu''il utilisera pendant des années.
+- **Ce que vous livrez** : un pack de fichiers (couleur, noir, blanc) et une mini-charte graphique (module 5).
+- **Le piège** : commencer sans brief. Le logo est la commande où les malentendus sont les plus fréquents.
+
+### 6. La présentation ou le catalogue
+
+- **Ce qu''il demande** : mettre en forme un document de plusieurs pages.
+- **Ce qu''il veut vraiment** : un document clair qui convainc un partenaire, un bailleur ou un acheteur.
+- **Ce que vous livrez** : un PDF, parfois le fichier modifiable (PowerPoint, Google Slides ou Canva).
+- **Le piège** : sous-estimer le temps. 20 pages, c''est 20 fois la vérification des textes et des images.
+
+> [!definition] Livrable
+> Un livrable est ce que vous remettez concrètement au client à la fin : les fichiers, dans des formats précis. Écrivez toujours la liste des livrables dans votre devis (exemple : « 3 visuels PNG 1080 × 1080 px et 1 version story 1080 × 1920 px »). Le client sait exactement ce qu''il paie.
+
+## Estimer le temps d''une commande
+
+Pour un débutant, le temps réel est souvent 2 fois plus long que prévu. La raison : on oublie tout ce qui entoure la création elle-même.
+
+```schema barres
+titre: Exemple : où passent les 5 heures d''une affiche de concert
+Échanges avec le client : 1 h
+Recherche d''idées et d''images : 0,75 h
+Création : 2 h
+Corrections demandées : 0,75 h
+Export et livraison : 0,5 h
+```
+
+La création pure ne représente ici que **40 %** du temps. Si vous calculez votre prix seulement sur le temps de création, vous travaillerez à moitié prix. Retenez cette règle simple pour vos premières estimations : **temps de création × 2**.
+
+> [!exemple] Rado, à Fianarantsoa
+> Rado accepte de faire « une petite affiche » pour la fête de son quartier. Il pense y passer une heure. Il passe finalement une heure au téléphone pour comprendre le programme, attend les photos pendant 2 jours, refait l''affiche deux fois parce que la date change, puis découvre que l''imprimeur veut un PDF avec des marges particulières. Au total : 5 heures. La prochaine fois, il demande toutes les informations **avant** de commencer et prévoit le temps des échanges.
+
+## Par quelles commandes commencer ?
+
+Commencez par les commandes rapides et très demandées. Elles vous donnent vite des projets à montrer et des premiers revenus. Gardez les logos pour plus tard : ils demandent plus de méthode et d''expérience.
+
+```schema etapes
+titre: L''ordre conseillé pour construire votre expérience
+Réseaux sociaux : rapides, demandés chaque semaine
+Miniatures YouTube : clients étrangers, travail court
+Affiches et flyers : premier contact avec l''impression
+Menus et cartes : mise en page plus précise
+Logos : à partir du module 5, avec une vraie méthode
+```
+
+> [!astuce] Préparez vos modèles
+> Pour chaque type de commande, gardez un fichier modèle avec vos tailles, vos marges et une structure de base. Au bout de quelques commandes, vous gagnerez une heure par projet. Vous apprendrez à créer ces modèles au module 4.
+
+> [!madagascar] Les demandes typiques à Madagascar
+> - **Fêtes et événements** : affiches de concerts, de bals, de famadihana (dans certaines régions), de mariages, de fêtes paroissiales.
+> - **Périodes fortes** : la rentrée scolaire, la fête de l''Indépendance du 26 juin, les fêtes de fin d''année. Proposez vos services aux commerces **un mois avant**.
+> - **Commerce sur Facebook** : vêtements, cosmétiques, téléphones, plats à emporter. Ces vendeurs publient chaque jour et ont besoin de visuels réguliers : ce sont de bons clients récurrents.
+
+> [!attention] Erreurs fréquentes
+> - Accepter « une petite affiche » sans demander à quoi elle servira (Facebook ? impression ? les deux ?).
+> - Promettre un délai avant d''avoir reçu les textes et les photos du client.
+> - Accepter un logo comme premier projet payant, sans méthode.
+> - Oublier de préciser les livrables : le client attend ensuite des fichiers que vous n''aviez pas prévus.
+
+> [!retenir]
+> - Les 6 commandes fréquentes : réseaux sociaux, affiches, miniatures, imprimés, logos, présentations.
+> - Chaque commande a une **attente visible** (le fichier) et une **attente cachée** (le résultat).
+> - Écrivez toujours la liste des **livrables**.
+> - Pour estimer votre temps au début : **temps de création × 2**.
+> - Commencez par les réseaux sociaux et les miniatures ; gardez les logos pour le module 5.
+
+## Exercice pratique : vos fiches de commande
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Créez un document intitulé « Mes fiches de commande ».
+> 2. Pour les commandes 1, 2 et 3 du tableau, écrivez une fiche avec : **ce que le client demande**, **ce qu''il veut vraiment**, **les livrables** (formats et tailles), **le délai que vous proposeriez**, **les informations à demander avant de commencer**.
+> 3. Pour chaque fiche, estimez le temps total d''une commande (en pensant aux échanges, aux corrections et à la livraison).
+> 4. Relisez vos fiches en vous mettant à la place d''un client : manque-t-il une question importante ?
+>
+> **À livrer** : vos 3 fiches. Elles vous serviront à répondre vite et sans oubli à vos premiers clients.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 1, 0, 'Qu''est-ce qu''un « livrable » ?', '["Le prix d''un projet","Le brief du client","Le message de prospection","Ce que vous remettez concrètement au client : fichiers et formats"]'::jsonb, 3, 'Les livrables sont les fichiers remis à la fin, dans des formats précis. Les écrire dans le devis évite que le client attende des fichiers non prévus.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 1, 1, 'Pour une première estimation, quelle règle appliquer au temps de création ?', '["Ne compter que la création","Le diviser par 2","Ajouter 10 minutes","Le multiplier par 2"]'::jsonb, 3, 'Les échanges, la recherche, les corrections et la livraison prennent autant de temps que la création elle-même. Multiplier par 2 évite de travailler à moitié prix.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 1, 2, 'Pour une miniature YouTube, que faut-il éviter ?', '["Un texte trop long et trop petit","Un fort contraste","Un visage expressif","3 ou 4 mots maximum"]'::jsonb, 0, 'La miniature est vue en tout petit sur téléphone : un long texte devient illisible. Quelques mots en grand, un visage et du contraste fonctionnent mieux.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 1, 3, 'Pourquoi garder les logos pour plus tard quand on débute ?', '["Ils se font uniquement à la main","Ils demandent plus de méthode et c''est là que les malentendus sont les plus fréquents","Ils sont interdits aux débutants","Ils ne sont jamais payés"]'::jsonb, 1, 'Un logo engage le client pour des années : il faut un brief solide, des recherches et un pack complet. Les visuels réseaux sociaux sont un meilleur premier pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 1, 4, 'Avant d''annoncer un délai, que devez-vous avoir reçu ?', '["L''avis du client sur le visuel final","Le paiement complet","Rien, il faut répondre tout de suite","Les textes, les photos et les informations du client"]'::jsonb, 3, 'Le délai dépend des éléments fournis par le client. S''il met deux jours à envoyer ses photos, le délai doit commencer à leur réception.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 0, 2, 'Vos clients, à Madagascar et ailleurs', 11, 'Avant de chercher des clients, il faut savoir qui ils sont, ce qu''ils attendent et où les trouver. Un commerce de quartier à Toamasina et une créatrice de contenu à Montréal n''achètent pas de la même façon : ils n''ont ni le même budget, ni les mêmes délais, ni les mêmes moyens de paiement. Cette leçon vous aide à choisir vos premières cibles et à parler à chacune comme il faut.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Citer les 5 grandes familles de clients à Madagascar.
+> 2. Citer les 3 grandes familles de clients à l''étranger.
+> 3. Comprendre ce que chaque client attend (budget, délai, communication).
+> 4. Choisir votre première cible et savoir où la trouver.
+
+## Vos clients à Madagascar
+
+```schema comparaison
+colonnes: Qui ? | Ce qu''ils commandent
+Commerces qui vendent sur Facebook (vêtements, cosmétiques, téléphones, plats) | Visuels de promotion chaque semaine, logo simple
+Tourisme : hôtels, guides, agences (Nosy Be, Sainte-Marie, Isalo, Morondava) | Visuels de séjours, dépliants, menus, cartes de visite
+Associations, ONG, églises, écoles | Affiches d''événements, rapports, visuels de campagne
+Organisateurs d''événements (concerts, mariages, conférences) | Affiches, billets, visuels pour Facebook
+Entrepreneurs qui lancent une marque (épices, vanille, artisanat, cosmétiques) | Logo, étiquettes, emballages, visuels de lancement
+```
+
+Ces clients ont des points communs : ils vous trouvent par le bouche-à-oreille et Facebook, ils communiquent surtout par **WhatsApp et Messenger**, ils paient en **ariary par Mobile Money**, et ils veulent souvent un résultat rapide.
+
+> [!exemple] Les vendeuses en ligne d''Antananarivo
+> Mialy vend des vêtements importés sur Facebook. Elle publie chaque jour et fait des « lives » le week-end. Elle n''a pas besoin d''un logo compliqué : elle a besoin de **visuels réguliers** (nouveautés, promotions, annonce des lives) qui donnent une image sérieuse à sa page. Une graphiste qui lui propose « 10 visuels par mois » devient vite indispensable. Ce type de cliente paie peu par visuel, mais elle commande **tous les mois**.
+
+## Vos clients à l''étranger
+
+1. **Petites entreprises francophones** (France, Belgique, Suisse, Canada, La Réunion, Maurice) : artisans, coachs, restaurants, boutiques en ligne. Elles cherchent un graphiste fiable à prix raisonnable.
+2. **Créateurs de contenu** (YouTube, Instagram, TikTok, podcasts) : ils ont besoin de miniatures et de visuels **chaque semaine**.
+3. **Agences** de communication ou de marketing : elles sous-traitent une partie de leur production quand elles ont trop de travail.
+
+Ces clients vous trouvent par les **plateformes de freelance**, LinkedIn, Instagram ou une recommandation. Ils communiquent par e-mail, WhatsApp ou des outils comme Slack, et paient en euros ou en dollars, par virement ou via une plateforme. Ils sont plus exigeants sur les délais et la qualité des fichiers, mais leurs budgets sont souvent plus élevés.
+
+> [!definition] Client récurrent
+> Un client récurrent revient régulièrement (chaque semaine, chaque mois). Un seul client qui commande 8 visuels par mois vaut souvent plus, sur l''année, qu''un logo ponctuel. Les clients récurrents stabilisent vos revenus : cherchez-les en priorité.
+
+## Ce que chaque client attend
+
+| Critère | Client local | Client étranger | Agence |
+| --- | --- | --- | --- |
+| Budget par commande | Plus modeste, en ariary | Plus élevé, en euros ou dollars | Moyen, mais commandes régulières |
+| Délai | Souvent urgent | Planifié, mais strict | Strict, avec des consignes précises |
+| Communication | WhatsApp, appels, vocaux | E-mail, messages écrits | Plateformes, e-mail, réunions en visio |
+| Paiement | Mobile Money, espèces | Virement, plateforme, Payoneer | Virement, souvent à 30 jours |
+| Ce qui compte le plus | Rapidité, prix, contact humain | Fiabilité, qualité, réponses claires | Respect des consignes et des fichiers sources |
+
+> [!astuce] Adaptez votre façon de communiquer
+> Avec un client local, un message vocal sur WhatsApp passe très bien. Avec un client étranger ou une agence, préférez l''écrit : un message clair, avec une liste numérotée de ce que vous avez compris et de ce que vous livrerez. L''écrit évite les malentendus et sert de preuve en cas de désaccord.
+
+## Choisir votre première cible
+
+Vous ne pouvez pas viser tout le monde au début. Choisissez **une** cible principale pour vos 3 premiers mois, puis élargissez.
+
+```schema etapes
+titre: Choisir sa première cible en 4 questions
+Qui connaissez-vous déjà ? : famille, amis, voisins qui vendent quelque chose
+Qu''aimez-vous ? : mode, cuisine, tourisme, musique, sport…
+Qui a besoin de visuels souvent ? : vendeurs en ligne, restaurants, créateurs
+Où les trouver facilement ? : votre quartier, des groupes Facebook, une plateforme
+```
+
+> [!exemple] Trois choix de départ réalistes
+> - **Tiana**, à Mahajanga, adore la cuisine : elle vise les restaurants et les gargotes de sa ville (menus, visuels de plats du jour).
+> - **Fanja**, à Antananarivo, suit beaucoup de créateurs YouTube français : elle vise les miniatures pour petites chaînes francophones.
+> - **Hery**, à Antsirabe, a un cousin guide touristique : il vise les guides et les petits hôtels (visuels de circuits, dépliants).
+
+## Où trouver ces clients ?
+
+```schema chiffres
+titre: Les 5 canaux pour trouver des clients (détaillés au module 6)
+1 : Votre entourage et les commerces de votre quartier
+2 : Les groupes Facebook d''entrepreneurs et de vendeurs malgaches
+3 : Les plateformes de freelance (Fiverr, Upwork, Malt, Codeur.com…)
+4 : LinkedIn et Instagram, avec un portfolio visible
+5 : Les agences, contactées par e-mail
+```
+
+Au début, les canaux 1 et 2 sont les plus rapides : on vous fait confiance plus facilement quand on vous connaît, même de loin. Les plateformes demandent plus de patience, car il faut d''abord obtenir ses premiers avis.
+
+> [!madagascar] Pensez à la diaspora
+> Beaucoup de Malgaches vivant en France, au Canada ou à La Réunion ont une activité (restaurant, épicerie, association, petite entreprise) et préfèrent travailler avec un graphiste de Madagascar : même langue, même culture, confiance plus facile. Les groupes Facebook de la diaspora sont un bon endroit pour vous faire connaître.
+
+> [!erreur] Viser « tout le monde »
+> « Je fais tout type de graphisme pour tout type de client » : ce message ne retient personne. Comparez avec « Je crée les visuels Facebook des restaurants de Mahajanga, livrés en 24 h ». Le second paraît plus professionnel, et un restaurateur se dit tout de suite : « c''est pour moi ». Vous pourrez toujours accepter d''autres commandes, mais **présentez-vous avec une cible précise**.
+
+> [!attention] Erreurs fréquentes
+> - Attendre que les clients viennent seuls, sans jamais les contacter.
+> - Viser uniquement l''étranger dès le début, sans aucun projet à montrer.
+> - Négliger les petits clients récurrents au profit d''un « gros » client hypothétique.
+> - Répondre à un client étranger par messages vocaux ou avec des fautes : soignez l''écrit.
+
+> [!retenir]
+> - **Localement** : commerces en ligne, tourisme, associations, événements, nouvelles marques.
+> - **À l''étranger** : petites entreprises francophones, créateurs de contenu, agences.
+> - Chaque client a ses attentes : **budget, délai, communication, paiement**.
+> - Choisissez **une cible principale** pour vos 3 premiers mois.
+> - Les **clients récurrents** sont les plus précieux.
+
+## Exercice pratique : votre liste de 10 clients
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Répondez aux 4 questions du schéma « Choisir sa première cible » et écrivez votre cible en une phrase (exemple : « les restaurants de Mahajanga »).
+> 2. Faites un tableau à 4 colonnes : **Client**, **Ce qu''il vend**, **Visuel qui l''aiderait**, **Comment le contacter**.
+> 3. Notez 5 clients possibles autour de vous (commerces du quartier, connaissances qui vendent en ligne, association de votre église ou de votre école).
+> 4. Ajoutez 5 clients possibles à l''étranger : cherchez sur Facebook ou Instagram de petites marques francophones dont les visuels pourraient être améliorés.
+>
+> **Exemple de ligne** : « Épicerie Tsara (Ambohijatovo) · produits alimentaires · une affiche des prix de la semaine pour Facebook · message Messenger. »
+>
+> **À livrer** : votre cible en une phrase et votre tableau de 10 clients. Gardez-les : ils serviront au module 6 pour votre première prospection.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 2, 0, 'Qu''est-ce qu''un client récurrent ?', '["Un client qui revient régulièrement, chaque semaine ou chaque mois","Un client à l''étranger","Un client qui commande un logo","Un client qui ne paie pas"]'::jsonb, 0, 'Un client qui commande chaque mois stabilise vos revenus et vaut souvent plus, sur l''année, qu''une grosse commande ponctuelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 2, 1, 'Comment communiquer de préférence avec un client étranger ou une agence ?', '["Uniquement par appels sans compte rendu","En attendant qu''il relance","Par écrit, avec un message clair et une liste numérotée","Uniquement par messages vocaux"]'::jsonb, 2, 'L''écrit évite les malentendus, permet de vérifier ce qui a été compris et sert de référence en cas de désaccord.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 2, 2, 'Quelle présentation attire le mieux les clients ?', '["« Je fais tout type de graphisme pour tout le monde »","« Je crée les visuels Facebook des restaurants de Mahajanga, livrés en 24 h »","« Je fais des logos pas chers »","« Graphiste disponible »"]'::jsonb, 1, 'Une cible précise montre votre spécialité : le client concerné se reconnaît immédiatement et vous trouve plus professionnel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 2, 3, 'Au début, quels canaux donnent généralement les premiers clients le plus vite ?', '["Les appels d''offres publics","L''entourage et les groupes Facebook locaux","La publicité payante à l''étranger","Les grandes agences internationales"]'::jsonb, 1, 'On vous fait plus facilement confiance quand on vous connaît, même de loin. Les plateformes demandent d''abord d''obtenir des avis.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 2, 4, 'Pourquoi la diaspora malgache est-elle une cible intéressante ?', '["Elle paie toujours en espèces","Elle ne demande jamais de délai","Elle n''a pas besoin de visuels","Même langue, même culture, confiance plus facile, et des budgets en euros ou en dollars"]'::jsonb, 3, 'Beaucoup de Malgaches à l''étranger ont une activité et préfèrent un graphiste de Madagascar qui comprend leur culture.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 0, 3, 'S''équiper et s''organiser depuis Madagascar', 12, 'Un graphiste freelance travaille avec peu de matériel, mais ce matériel doit être fiable. À Madagascar, il faut aussi composer avec les coupures d''électricité, une connexion parfois lente et le décalage horaire avec vos clients étrangers. Cette leçon vous aide à vous équiper sans dépenser trop, et à organiser vos journées pour livrer à l''heure, quoi qu''il arrive.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Savoir quel matériel est indispensable, et ce qui peut attendre.
+> 2. Vous protéger contre les coupures et les pertes de fichiers.
+> 3. Travailler avec une connexion faible.
+> 4. Gérer le décalage horaire et organiser une journée de travail.
+
+## Le matériel : l''indispensable d''abord
+
+```schema comparaison
+colonnes: Indispensable | Utile plus tard | Inutile au début
+Un ordinateur portable (même d''occasion) | Un second écran | Une tablette graphique chère
+Une souris | Une tablette graphique d''entrée de gamme | Un ordinateur de dernière génération
+Une connexion Internet (box ou forfait mobile) | Un onduleur pour l''ordinateur fixe | Des logiciels payants
+Un téléphone pour WhatsApp et les tests | Un disque dur externe | Un bureau loué en ville
+```
+
+### Quel ordinateur ?
+
+Un ordinateur portable a un gros avantage à Madagascar : sa **batterie** vous permet de continuer à travailler pendant une coupure. Pour les outils de cette formation (Canva, Figma, Photopea, Inkscape), visez au minimum :
+
+| Élément | Minimum conseillé | Confortable |
+| --- | --- | --- |
+| Mémoire vive (RAM) | 8 Go | 16 Go |
+| Stockage | SSD de 256 Go | SSD de 512 Go |
+| Écran | 14 pouces, 1920 × 1080 px | 15 pouces ou plus |
+| Batterie | 3 heures réelles | 5 heures ou plus |
+
+> [!astuce] Le SSD avant tout
+> Sur un ordinateur d''occasion, un disque **SSD** change tout : l''ordinateur démarre et ouvre les fichiers beaucoup plus vite qu''avec un ancien disque dur. Si votre ordinateur est lent, faire remplacer le disque par un SSD chez un réparateur coûte bien moins cher qu''un ordinateur neuf.
+
+### Et le téléphone ?
+
+Votre téléphone sert à trois choses : parler aux clients (WhatsApp), **tester vos visuels** (la plupart seront vus sur un téléphone) et partager la connexion quand la box est coupée. Un téléphone Android correct suffit.
+
+## Se protéger des coupures et des pertes
+
+Une coupure d''électricité ne doit jamais vous faire perdre plus de quelques minutes de travail. Et une panne d''ordinateur ne doit jamais vous faire perdre les fichiers d''un client.
+
+```schema etapes
+titre: La règle des 3 copies
+Copie 1 : sur votre ordinateur, dans un dossier bien rangé
+Copie 2 : en ligne (Google Drive), synchronisée automatiquement
+Copie 3 : sur un disque externe ou une clé USB, chaque semaine
+```
+
+1. **Enregistrez souvent** : prenez le réflexe **Ctrl + S** (ou Cmd + S sur Mac) toutes les 10 minutes. Canva et Figma enregistrent en ligne automatiquement, mais seulement quand la connexion fonctionne.
+2. **Chargez tout pendant que le courant est là** : ordinateur, téléphone, batterie externe.
+3. **Gardez une batterie externe** pour le téléphone, qui servira de modem en cas de coupure de la box.
+4. **Prévoyez une marge sur les délais** : si un travail prend 2 jours, promettez 3 jours.
+
+> [!madagascar] Délestages : s''organiser à l''avance
+> Quand la JIRAMA annonce des délestages dans votre quartier, organisez votre journée autour : les tâches qui demandent Internet et beaucoup d''énergie (exports, envois de gros fichiers, appels vidéo) pendant les heures de courant ; les croquis, la réflexion et les textes pendant les coupures. Certains graphistes vont aussi travailler dans un espace de coworking ou un café équipé d''un groupe électrogène pour les livraisons importantes.
+
+## Travailler avec une connexion faible
+
+1. **Préparez hors ligne, envoyez en une fois.** Inkscape fonctionne sans Internet ; travaillez-y quand la connexion est mauvaise.
+2. **Envoyez des aperçus légers** : un JPG de 300 Ko suffit pour faire valider un visuel. Le fichier final, plus lourd, s''envoie une seule fois, à la fin.
+3. **Compressez les envois** : regroupez les fichiers dans un dossier .zip, ou partagez un lien Google Drive au lieu d''envoyer 10 pièces jointes.
+4. **Gardez un forfait de données de secours** pour les livraisons urgentes.
+5. **Téléchargez à l''avance** les polices, les photos et les ressources dont vous aurez besoin.
+
+> [!cle] Le poids d''un fichier
+> Un visuel PNG de 1080 × 1080 px pèse souvent entre 300 Ko et 2 Mo ; le même en JPG de bonne qualité, 150 à 500 Ko. Un fichier de travail Photoshop (PSD) peut dépasser 100 Mo. Pensez-y avant d''envoyer un fichier par WhatsApp avec une petite connexion.
+
+## Le décalage horaire
+
+Madagascar est à **UTC+3** toute l''année (pas de changement d''heure). Vos clients, eux, peuvent changer d''heure.
+
+| Ville | Différence avec Antananarivo | Quand il est 9 h chez le client |
+| --- | --- | --- |
+| Paris, Bruxelles (heure d''hiver) | Madagascar a 2 h d''avance | 11 h à Antananarivo |
+| Paris, Bruxelles (heure d''été) | Madagascar a 1 h d''avance | 10 h à Antananarivo |
+| La Réunion, Maurice | Madagascar a 1 h de retard | 8 h à Antananarivo |
+| Montréal (heure d''été) | Madagascar a 7 h d''avance | 16 h à Antananarivo |
+
+Pour les clients européens, c''est un avantage : vos journées se recouvrent presque entièrement. Pour le Canada, vous pouvez répondre en fin d''après-midi à leurs messages du matin.
+
+> [!astuce] Annoncez vos horaires
+> Indiquez clairement vos horaires de réponse sur vos profils et dans votre premier message : « Je réponds du lundi au samedi, de 8 h à 18 h (heure de Madagascar). » Sur WhatsApp Business, créez un message d''absence automatique pour les heures où vous ne travaillez pas.
+
+## Organiser une journée de travail
+
+Travailler chez soi demande de la discipline. Une journée structurée vous évite de répondre aux messages toute la journée sans rien créer.
+
+```schema etapes
+titre: Exemple de journée de graphiste freelance
+8 h – 8 h 30 : lire et répondre aux messages, planifier la journée
+8 h 30 – 12 h : création (le moment où l''on est le plus concentré)
+12 h – 13 h 30 : pause, déjeuner
+13 h 30 – 15 h : corrections, exports, livraisons
+15 h – 16 h : prospection (messages à de nouveaux clients)
+16 h – 17 h : formation, veille, portfolio
+```
+
+Adaptez ces horaires à votre vie et aux coupures de votre quartier. L''important est de **réserver un bloc de création sans interruption** et un **moment fixe pour la prospection**, même quand vous avez du travail.
+
+> [!erreur] Promettre « livré ce soir »
+> Promettre une livraison le soir même expose à tous les imprévus : coupure, connexion, correction de dernière minute. Un client préfère un délai de 2 jours tenu à une promesse de quelques heures non tenue. **Promettez moins, livrez plus tôt** : c''est ainsi qu''on construit sa réputation.
+
+> [!attention] Erreurs fréquentes
+> - Travailler uniquement en ligne, sans copie des fichiers sur l''ordinateur.
+> - Acheter du matériel coûteux avant d''avoir des clients.
+> - Envoyer des fichiers de 50 Mo par WhatsApp pour faire valider une idée.
+> - Répondre aux messages toute la journée sans bloc de création.
+
+> [!retenir]
+> - Un **ordinateur portable**, une souris, une connexion et un téléphone suffisent pour commencer.
+> - La **règle des 3 copies** protège les fichiers de vos clients.
+> - Connexion faible : **aperçus légers**, envois groupés, travail hors ligne.
+> - Madagascar est à **UTC+3** ; annoncez vos horaires de réponse.
+> - Une journée organisée : un **bloc de création** et un **moment de prospection**.
+
+## Exercice pratique : votre plan d''organisation
+
+> [!exercice] Exercice pratique · 35 minutes
+> 1. Faites l''inventaire de votre matériel (ordinateur : mémoire, stockage, batterie ; téléphone ; connexion) et notez ce qui manque par rapport à l''indispensable.
+> 2. Créez votre dossier de travail sur l''ordinateur, puis installez Google Drive (ou un service équivalent) pour la copie en ligne.
+> 3. Écrivez votre plan anti-coupure en 5 lignes : ce que vous faites quand le courant est là, et ce que vous faites pendant une coupure.
+> 4. Écrivez votre journée type, avec vos horaires réels.
+> 5. Rédigez votre message d''horaires de réponse (une phrase).
+>
+> **À livrer** : votre inventaire, votre plan anti-coupure, votre journée type et votre message d''horaires.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 3, 0, 'Pourquoi un ordinateur portable est-il conseillé à Madagascar ?', '["Il n''a pas besoin de mise à jour","Il est toujours plus puissant","Sa batterie permet de continuer pendant une coupure","Il remplace le téléphone"]'::jsonb, 2, 'Avec les délestages, la batterie d''un portable vous laisse le temps d''enregistrer et de continuer à travailler.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 3, 1, 'Que dit la règle des 3 copies ?', '["Trois sauvegardes sur le même disque","Trois versions du même visuel pour le client","Trois exports dans trois formats","Ordinateur, copie en ligne et disque externe"]'::jsonb, 3, 'Une copie sur l''ordinateur, une en ligne et une sur un support externe : si l''un tombe en panne, les fichiers du client restent en sécurité.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 3, 2, 'Avec une connexion faible, comment faire valider un visuel ?', '["Envoyer le fichier de travail de 100 Mo","Envoyer un aperçu JPG léger, puis le fichier final une seule fois à la fin","Envoyer 10 pièces jointes séparées","Attendre une meilleure connexion pour tout"]'::jsonb, 1, 'Un JPG de quelques centaines de Ko suffit pour une validation ; les gros fichiers ne s''envoient qu''une fois, regroupés.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 3, 3, 'Quand il est 9 h à Paris en hiver, quelle heure est-il à Antananarivo ?', '["8 h","11 h","9 h","10 h"]'::jsonb, 1, 'Madagascar est à UTC+3 toute l''année ; Paris est à UTC+1 en hiver, soit 2 heures de différence.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 3, 4, 'Pourquoi éviter de promettre « livré ce soir » ?', '["Les clients n''aiment pas les livraisons rapides","Il est interdit de livrer le soir","Une coupure ou une correction peut empêcher de tenir la promesse","Cela coûte plus cher en électricité"]'::jsonb, 2, 'Un délai réaliste tenu inspire plus confiance qu''une promesse rapide non tenue. Promettez moins, livrez plus tôt.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 0, 4, 'Travailler en règle et avec éthique', 12, 'Un graphiste sérieux ne se juge pas seulement à ses visuels. Il se juge aussi à sa façon de travailler : respecter le droit d''auteur, utiliser des images et des polices autorisées, protéger les informations de ses clients et déclarer son activité. Ces règles vous évitent des problèmes, et elles rassurent les clients sérieux, en particulier à l''étranger.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Connaître les démarches de base pour travailler en règle à Madagascar.
+> 2. Comprendre le droit d''auteur appliqué au graphisme.
+> 3. Trouver des images, des icônes et des polices utilisables légalement.
+> 4. Utiliser l''intelligence artificielle de façon honnête.
+> 5. Respecter la confidentialité de vos clients.
+
+## Travailler en règle à Madagascar
+
+Pour facturer officiellement des clients à Madagascar, un travailleur indépendant demande en général deux numéros :
+
+```schema etapes
+titre: Les démarches de base (à vérifier auprès de l''administration)
+NIF : numéro d''identification fiscale, au centre fiscal de votre ville
+STAT : carte statistique, auprès de l''INSTAT
+Régime d''imposition : selon votre chiffre d''affaires (souvent un régime simplifié au début)
+Factures : numérotées, avec votre NIF et votre STAT
+Archives : garder une trace de chaque paiement reçu
+```
+
+Les démarches, les montants et les impôts dépendent de votre situation et changent avec les lois de finances. **Renseignez-vous auprès du centre fiscal de votre ville** avant de facturer régulièrement, ou demandez conseil à un comptable.
+
+Dès maintenant, même avant d''être déclaré, prenez une bonne habitude : **notez chaque paiement reçu** (date, client, montant, moyen de paiement) dans un tableau, et gardez les captures des SMS de Mobile Money.
+
+> [!definition] Facture
+> Une facture est le document qui demande le paiement d''un travail réalisé. Elle indique au minimum : votre nom et vos numéros (NIF, STAT), le nom du client, la date, un numéro unique, la description du travail, le montant et les conditions de paiement. Elle est différente du **devis**, qui annonce le prix **avant** le travail (vous l''apprendrez au module 6).
+
+## Le droit d''auteur : ce qui ne vous appartient pas
+
+Une image trouvée sur Google, une photo sur Facebook ou le logo d''une marque **appartiennent à leur auteur**. Les utiliser dans le travail d''un client sans autorisation est interdit, même si vous les modifiez un peu.
+
+```schema comparaison
+colonnes: Interdit | Autorisé
+Copier une image trouvée sur Google | Utiliser une photo d''une banque d''images libre de droits
+Reprendre le logo d''une marque connue « en changeant un peu » | Créer un logo original à partir d''un brief
+Utiliser une police payante sans licence | Utiliser une police gratuite à licence ouverte
+Copier le visuel d''un concurrent | S''inspirer d''une idée et créer quelque chose de différent
+Utiliser une photo de personne sans son accord | Utiliser les photos fournies par le client
+```
+
+S''inspirer est normal : tous les graphistes regardent le travail des autres. La différence entre **inspiration** et **copie** : l''inspiration reprend une idée générale (« un fond uni et une grande photo de produit »), la copie reprend une réalisation précise (la même mise en page, les mêmes éléments, les mêmes couleurs).
+
+> [!attention] Un risque réel
+> Une plateforme de freelance peut suspendre votre compte pour un visuel copié. Un client peut recevoir une réclamation de l''auteur d''une photo et vous en tenir responsable. Et un logo copié ne pourra pas être protégé par votre client. Une seule copie peut ruiner une réputation construite pendant des mois.
+
+## Où trouver des ressources autorisées
+
+| Ressource | Sites gratuits | À vérifier |
+| --- | --- | --- |
+| Photos | Unsplash, Pexels, Pixabay | La licence de chaque photo ; pas de logo ni de personne reconnaissable dans un usage gênant |
+| Icônes | Google Material Symbols, Phosphor, Tabler Icons | Certaines demandent de citer l''auteur |
+| Polices | Google Fonts | La licence (SIL Open Font License le plus souvent : utilisable pour des clients) |
+| Illustrations | unDraw, Open Peeps | Les conditions d''usage commercial |
+| Modèles Canva | Canva (gratuit) | Les éléments marqués d''une couronne sont réservés à Canva Pro |
+
+Les conditions d''utilisation changent parfois : lisez la page « Licence » du site avant d''utiliser une ressource pour un client, et gardez une note de la source (nom du site et lien) dans le dossier du projet.
+
+> [!astuce] Les photos du client avant tout
+> Les meilleures photos sont souvent celles du client lui-même : ses vrais produits, son vrai restaurant, ses vrais employés. Elles sont uniques et elles inspirent confiance. Apprenez-lui à faire de bonnes photos au téléphone : lumière du jour, fond simple, téléphone stable, produit centré.
+
+## L''intelligence artificielle : un outil, pas une baguette magique
+
+Des outils d''intelligence artificielle génèrent des images à partir d''un texte, suppriment un arrière-plan ou proposent des idées de mise en page. Ils peuvent vous faire gagner du temps, à condition de les utiliser honnêtement.
+
+```schema comparaison
+titre: Utiliser l''IA de façon professionnelle
+colonnes: À éviter | À faire
+Livrer une image générée sans la retravailler | Retravailler le résultat : l''IA donne une base, pas un visuel fini
+Cacher au client qu''une image vient d''une IA | Prévenir le client quand une image a été générée par IA
+Générer un logo par IA et le livrer tel quel | Créer les logos avec la méthode du module 5
+Imiter le style d''un artiste précis ou d''une marque | Vérifier que l''outil autorise l''usage commercial
+Laisser des mains, des textes ou des logos déformés | Vérifier chaque détail avant de livrer
+ton: mauvais-bon
+```
+
+Un logo doit être **original et protégeable** par votre client : un logo généré par IA peut ressembler à des logos existants et poser des problèmes de droits. Pour les logos, gardez la méthode du module 5.
+
+## La confidentialité et la confiance
+
+Vos clients vous confient des informations : leurs prix, leurs projets avant leur lancement, parfois des photos personnelles ou des documents internes.
+
+1. **Ne publiez jamais un travail** dans votre portfolio sans l''accord du client, et jamais avant son lancement officiel.
+2. **Ne partagez pas** les fichiers d''un client avec un autre.
+3. **Supprimez ou archivez** les documents sensibles une fois le projet terminé.
+4. **Protégez vos comptes** (Google, Facebook, Canva) avec un mot de passe solide et la validation en deux étapes.
+
+> [!madagascar] Facebook, WhatsApp et réputation
+> À Madagascar, beaucoup de clients se recommandent entre eux dans les groupes Facebook et WhatsApp. Une seule mauvaise expérience (travail copié, fichier partagé, délai non tenu) peut circuler très vite. À l''inverse, un graphiste connu pour être honnête et fiable reçoit des recommandations sans même les demander.
+
+> [!retenir]
+> - Pour facturer officiellement : **NIF** et **STAT** ; renseignez-vous au centre fiscal.
+> - Notez **chaque paiement** dès maintenant.
+> - **Inspiration oui, copie non** : n''utilisez que des ressources autorisées.
+> - **IA** : un outil à retravailler, jamais pour un logo livré tel quel.
+> - **Confidentialité** : pas de publication sans accord du client.
+
+## Exercice pratique : votre boîte à ressources
+
+> [!exercice] Exercice pratique · 30 minutes
+> 1. Créez un dossier « Ressources » sur votre ordinateur, avec 4 sous-dossiers : Photos, Icônes, Polices, Sources.
+> 2. Sur Google Fonts, choisissez 3 polices pour les titres et 3 pour les textes ; téléchargez-les et lisez leur licence.
+> 3. Sur Unsplash ou Pexels, téléchargez 5 photos utiles pour vos futurs clients (nourriture, vêtements, paysages de Madagascar, personnes au travail).
+> 4. Dans un fichier « Sources », notez pour chaque ressource le site, le lien et la licence.
+>
+> **À livrer** : une capture de votre dossier Ressources et votre fichier Sources.
+
+## Projet du module 1 : votre plan de démarrage
+
+> [!projet] Projet du module · 1 heure 30
+> Rassemblez le travail des 5 leçons dans un document unique, « Mon plan de démarrage de graphiste freelance » (3 à 4 pages), avec :
+> 1. **Ma présentation** en 3 phrases : qui je suis, ce que je propose, à qui.
+> 2. **Ma cible principale** et ma liste de 10 clients possibles (leçon 1.3).
+> 3. **Mes 3 fiches de commande** (leçon 1.2), relues et complétées.
+> 4. **Mon organisation** : matériel, plan anti-coupure, journée type, horaires de réponse (leçon 1.4).
+> 5. **Mes règles de travail** : 5 engagements que vous prenez envers vos clients (exemple : « Je réponds sous 2 heures pendant mes horaires », « Je n''utilise que des ressources autorisées »).
+> 6. **Mes 3 objectifs** pour la fin de la formation (exemple : « 6 projets dans mon portfolio et 2 premiers clients payants »).
+>
+> **À livrer** : votre document en PDF. Relisez-le à la fin de chaque module pour mesurer vos progrès.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 4, 0, 'Quels numéros un indépendant demande-t-il en général pour facturer officiellement à Madagascar ?', '["Un numéro de passeport uniquement","Aucun numéro","Le NIF et la carte statistique (STAT)","Un numéro Mobile Money"]'::jsonb, 2, 'Le NIF (identification fiscale) et la carte statistique sont les démarches de base ; renseignez-vous au centre fiscal de votre ville pour votre situation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 4, 1, 'Pouvez-vous utiliser une image trouvée sur Google pour un client ?', '["Oui, si le client est d''accord","Oui, si l''image est petite","Oui, si vous la modifiez un peu","Non, sauf si sa licence l''autorise : elle appartient à son auteur"]'::jsonb, 3, 'Une image trouvée en ligne appartient à son auteur. Utilisez des banques libres de droits, les photos du client ou vos créations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 4, 2, 'Quelle est la différence entre inspiration et copie ?', '["L''inspiration est interdite","Il n''y en a aucune","La copie est autorisée si on change les couleurs","L''inspiration reprend une idée générale, la copie reprend une réalisation précise"]'::jsonb, 3, 'Reprendre l''idée « fond uni et grande photo de produit » est normal ; reprendre la même mise en page et les mêmes éléments est une copie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 4, 3, 'Comment utiliser un générateur d''images par IA de façon professionnelle ?', '["Livrer directement l''image générée","Vérifier la licence, retravailler le résultat et prévenir le client","Imiter le style d''un artiste connu","Générer le logo du client et le livrer tel quel"]'::jsonb, 1, 'L''IA donne une base qu''il faut vérifier et retravailler. Un logo doit rester original et protégeable : gardez la méthode du module 5.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 0, 4, 4, 'Quand pouvez-vous publier le travail d''un client dans votre portfolio ?', '["Jamais, même avec son accord","Avec son accord, et après le lancement officiel","Dès que vous l''avez terminé","Avant de le lui envoyer"]'::jsonb, 1, 'Le travail d''un client peut contenir des informations confidentielles. Demandez toujours l''accord et attendez le lancement.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 1, 'Les bases du design', 'Hiérarchie, composition, couleur, typographie et images : les règles qui rendent un visuel clair et professionnel, avec une liste de contrôle en 10 points.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 1, 0, 'La hiérarchie : ce qu''on lit en premier', 12, 'Pourquoi certains visuels paraissent professionnels et d''autres non, alors qu''ils parlent de la même chose ? Le plus souvent, la différence vient de la **hiérarchie** : dans un bon visuel, l''œil sait immédiatement quoi lire en premier, puis en deuxième, puis en troisième. Cette leçon vous apprend à décider cet ordre à l''avance et à le rendre évident.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Classer les informations d''un visuel en 3 niveaux.
+> 2. Utiliser la taille, la graisse, la couleur et la position pour créer la hiérarchie.
+> 3. Connaître les sens de lecture naturels (en Z et en F).
+> 4. Tester la hiérarchie d''un visuel en quelques secondes.
+
+## Le lecteur ne lit pas tout
+
+Sur Facebook, on regarde un visuel **moins de 3 secondes**. Le lecteur ne lit pas tout : il lit ce qui est le plus visible, puis décide de continuer ou de passer. Si tout a la même importance, rien n''est important : l''œil ne sait pas où se poser, et la personne passe.
+
+Votre travail est donc de **choisir l''ordre de lecture** avant de commencer à créer.
+
+```schema pyramide
+titre: Les 3 niveaux de lecture
+Niveau 1 : le message principal, une seule information
+Niveau 2 : les détails utiles (date, lieu, prix, offre)
+Niveau 3 : les informations pratiques (téléphone, adresse, logo, réseaux)
+```
+
+La pyramide se lit de haut en bas : le niveau 1 occupe peu de mots mais beaucoup de place ; le niveau 3 contient beaucoup d''informations mais reste discret.
+
+> [!exemple] Affiche de concert
+> 1. **Niveau 1** : le nom de l''artiste, en très grand.
+> 2. **Niveau 2** : « Samedi 14 décembre · 19 h · Palais des Sports, Mahamasina ».
+> 3. **Niveau 3** : prix des billets, numéro pour réserver, logos des partenaires.
+
+## Classer les informations : la méthode
+
+Le client vous envoie souvent un long message avec toutes ses informations en vrac. Avant d''ouvrir Canva, faites ce tri :
+
+```schema etapes
+titre: Trier les informations du client en 4 étapes
+Tout lister : chaque information, une par ligne
+Trouver le niveau 1 : « Si on ne lit qu''une chose, laquelle ? »
+Classer le reste : niveau 2 (utile pour décider), niveau 3 (pratique)
+Supprimer : ce qui ne sert pas l''objectif du visuel
+```
+
+> [!exemple] Le message de la pâtisserie Mofo Gasy
+> Le client écrit : « Nouvelle pâtisserie à Ankorondrano, gâteaux d''anniversaire sur commande, ouvert du lundi au samedi de 7 h à 19 h, livraison possible, -15 % pour l''ouverture jusqu''au 30, tél 034 12 345 67, on fait aussi des mofo gasy et du café, page Facebook Mofo Gasy Ankorondrano, parking disponible. »
+>
+> Le tri :
+> - **Niveau 1** : « -15 % pour l''ouverture » (c''est ce qui fera venir).
+> - **Niveau 2** : « Nouvelle pâtisserie à Ankorondrano · jusqu''au 30 octobre ».
+> - **Niveau 3** : téléphone, horaires, « livraison possible ».
+> - **Supprimé** pour ce visuel : le parking, le café, la page Facebook (le visuel est déjà sur Facebook). Ces informations iront dans le texte de la publication.
+
+## Les 4 outils de la hiérarchie
+
+Une fois l''ordre décidé, il faut le rendre visible. Vous disposez de 4 outils, que l''on combine souvent.
+
+| Outil | Comment l''utiliser | Exemple |
+| --- | --- | --- |
+| **Taille** | Le niveau 1 est 2 à 3 fois plus grand que le niveau 2 | Titre à 120 px, détails à 48 px |
+| **Graisse** | Gras pour le niveau 1, normal pour le reste | « -15 % » en très gras |
+| **Couleur** | La couleur d''accent seulement sur le niveau 1 ou l''appel à l''action | Prix en jaune sur fond bleu foncé |
+| **Position** | Le haut et le centre sont vus en premier | Le titre en haut, les informations pratiques en bas |
+
+```schema typo
+titre: La taille crée la hiérarchie (exemple pour un visuel de 1080 × 1080 px)
+-15 % à l''ouverture | 44 | gras | Niveau 1
+Nouvelle pâtisserie à Ankorondrano | 24 | gras | Niveau 2
+Jusqu''au 30 octobre · Livraison possible | 16 | normal | Niveau 2
+034 12 345 67 · Lundi au samedi, 7 h – 19 h | 13 | normal | Niveau 3
+```
+
+Les tailles du schéma sont réduites pour tenir sur l''écran ; ce qui compte, c''est le **rapport** entre les niveaux. Sur un vrai visuel de 1080 px de large, le niveau 1 ferait plutôt 100 à 140 px.
+
+> [!cle] Le contraste de taille
+> Un écart de taille trop faible ne crée pas de hiérarchie. Un titre de 50 px au-dessus d''un texte de 40 px semble être une erreur. Un titre de 120 px au-dessus d''un texte de 40 px est clairement plus important. **Osez les grands écarts.**
+
+## Les sens de lecture naturels
+
+Dans les langues qui s''écrivent de gauche à droite (français, malgache, anglais), l''œil suit des chemins prévisibles. Placez vos informations sur ces chemins.
+
+```schema composition
+titre: Le sens de lecture en Z, pour les visuels avec peu de texte
+regle: z
+1 : en haut à gauche, l''œil arrive (logo ou accroche)
+2 : en haut à droite (information secondaire)
+3 : il traverse en diagonale vers le bas à gauche (image, détails)
+4 : il termine en bas à droite : placez-y l''appel à l''action
+```
+
+Le **parcours en Z** convient aux affiches, aux publications et aux flyers : peu de texte, de grands éléments. Pour les pages avec beaucoup de texte (site web, dépliant), l''œil suit plutôt un **parcours en F** : il lit le haut, puis le début des lignes en descendant. Mettez alors les mots importants **au début** des lignes et des titres.
+
+## Tester la hiérarchie en 5 secondes
+
+Avant d''envoyer un visuel, faites ces trois tests rapides :
+
+```schema checklist
+titre: 3 tests rapides
+[x] Le test du plissement d''yeux : plissez les yeux devant l''écran ; ce que vous voyez encore est votre niveau 1
+[x] Le test du téléphone : affichez le visuel en petit sur votre téléphone ; le message principal se lit-il encore ?
+[x] Le test des 5 secondes : montrez le visuel 5 secondes à quelqu''un, cachez-le, demandez-lui ce qu''il a retenu
+```
+
+Si la personne retient autre chose que votre niveau 1 (le logo, une photo décorative, un détail), la hiérarchie est à revoir : agrandissez le niveau 1, réduisez ce qui le concurrence.
+
+> [!erreur] Tout mettre en gras et en majuscules
+> Un client demande souvent que « tout se voie bien ». Résultat : tout est en gras, en majuscules, en couleur. Quand tout crie, plus rien ne se remarque. Expliquez-lui calmement : « Si on met tout en avant, le lecteur ne sait plus quoi regarder. Mettons votre promotion en grand, et le reste restera lisible. » Montrez-lui les deux versions : il comprend vite.
+
+> [!madagascar] Les visuels chargés
+> Beaucoup de visuels de commerces malgaches sur Facebook contiennent 10 informations au même niveau. C''est une **opportunité** pour vous : un visuel clair, avec un vrai niveau 1, se remarque tout de suite à côté des autres. Montrez cette différence dans votre portfolio avec des « avant / après ».
+
+> [!attention] Erreurs fréquentes
+> - Commencer à créer sans avoir trié les informations.
+> - Choisir un niveau 1 qui n''intéresse pas le lecteur (le nom de la boutique au lieu de l''offre).
+> - Des écarts de taille trop faibles entre les niveaux.
+> - Placer l''appel à l''action en tout petit, au milieu d''autres informations.
+
+> [!retenir]
+> - Le lecteur regarde un visuel **moins de 3 secondes**.
+> - **3 niveaux** : message principal, détails utiles, informations pratiques.
+> - **4 outils** : taille, graisse, couleur, position ; osez les grands écarts.
+> - Lecture en **Z** pour les visuels courts, en **F** pour les pages de texte.
+> - Testez : plissement d''yeux, téléphone, 5 secondes.
+
+## Exercice pratique : trier et hiérarchiser
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Reprenez le visuel le moins bien noté de l''exercice de la leçon 1.1.
+> 2. Listez toutes ses informations, une par ligne.
+> 3. Classez-les en niveau 1, niveau 2, niveau 3, et barrez celles à supprimer.
+> 4. Sur papier, dessinez un nouveau visuel carré en respectant les 3 niveaux et le parcours en Z (pas besoin de bien dessiner : des rectangles et des lignes suffisent).
+> 5. Faites le test des 5 secondes avec une personne de votre entourage, sur l''original puis sur votre croquis.
+>
+> **À livrer** : votre liste triée, votre croquis, et ce que la personne a retenu de chaque version.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 0, 0, 'Combien de temps une personne regarde-t-elle un visuel sur Facebook, en général ?', '["Le temps de tout lire","Environ 30 secondes","Moins de 3 secondes","Une minute"]'::jsonb, 2, 'Le lecteur décide très vite de continuer ou de passer : il ne lit que ce qui est le plus visible. D''où l''importance d''un niveau 1 évident.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 0, 1, 'Sur une promotion d''ouverture de pâtisserie, quel est le meilleur niveau 1 ?', '["Le numéro de téléphone","« -15 % à l''ouverture »","Les horaires d''ouverture","La présence d''un parking"]'::jsonb, 1, 'Le niveau 1 est l''information qui donne envie d''agir. L''offre fait venir ; les horaires et le téléphone sont des informations pratiques (niveau 3).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 0, 2, 'Quel écart de taille crée une vraie hiérarchie entre un titre et un texte ?', '["La même taille, mais en couleur","Un titre légèrement plus petit","Un titre de 50 px sur un texte de 40 px","Un titre 2 à 3 fois plus grand que le texte"]'::jsonb, 3, 'Un faible écart ressemble à une erreur. Un écart franc (par exemple 120 px contre 40 px) montre clairement ce qui est le plus important.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 0, 3, 'Dans un parcours de lecture en Z, où placer l''appel à l''action ?', '["Dans la marge","En haut à gauche, à la place du titre","Au centre, sur la photo","En bas à droite, là où l''œil termine"]'::jsonb, 3, 'L''œil part du haut à gauche, traverse vers le haut à droite, descend en diagonale et termine en bas à droite : c''est l''endroit idéal pour l''action finale.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 0, 4, 'À quoi sert le test des 5 secondes ?', '["Vérifier que la personne retient bien le message principal","Mesurer le temps d''export","Vérifier les couleurs à l''impression","Compter les mots du visuel"]'::jsonb, 0, 'On montre le visuel 5 secondes puis on le cache : si la personne retient autre chose que le niveau 1, la hiérarchie est à revoir.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 1, 1, 'La composition : aligner, espacer, regrouper', 11, 'La hiérarchie décide de l''ordre de lecture ; la **composition** organise l''espace pour que cet ordre paraisse naturel et propre. Un visuel bien composé donne une impression de sérieux, même avec peu d''éléments. Cette leçon vous donne 5 règles simples, utilisées par tous les graphistes professionnels, et la méthode pour les appliquer dans vos outils.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Aligner les éléments sur des lignes invisibles.
+> 2. Respecter des marges et laisser respirer le message.
+> 3. Regrouper ce qui va ensemble (la proximité).
+> 4. Utiliser la répétition et une grille simple.
+> 5. Placer un sujet avec la règle des tiers.
+
+## Règle 1 : aligner
+
+Chaque élément doit être aligné sur une **ligne invisible** : à gauche, au centre ou à droite. Un élément placé « à peu près » donne l''impression d''une erreur, même si le lecteur ne sait pas dire pourquoi.
+
+```schema comparaison
+titre: L''alignement
+colonnes: À éviter | À faire
+Titre centré, texte aligné à gauche, logo à droite : trois axes différents | Un seul axe principal pour tout le texte (tout à gauche, ou tout centré)
+Éléments décalés de quelques pixels | Éléments alignés grâce aux repères de l''outil
+Texte long centré (difficile à lire) | Texte long aligné à gauche
+ton: mauvais-bon
+```
+
+L''alignement **à gauche** est le plus facile à lire et le plus « professionnel » pour un débutant. Le **centré** convient aux visuels courts et symétriques (invitation, citation, annonce). Évitez le **justifié** sur les visuels : il crée des trous entre les mots.
+
+> [!astuce] Les repères de vos outils
+> Dans Canva et Figma, des lignes de couleur (roses ou rouges) apparaissent quand vous déplacez un élément : elles indiquent qu''il est aligné avec un autre élément ou avec le centre. Dans Inkscape, utilisez la fenêtre **Aligner et distribuer** (Ctrl + Maj + A). Ne placez jamais un élément « à l''œil ».
+
+## Règle 2 : garder des marges et laisser respirer
+
+Les **marges** sont l''espace vide entre les bords du visuel et le contenu. Elles évitent l''impression d''étouffement, et protègent le texte quand l''image est recadrée (sur certains téléphones, dans les stories, à l''impression).
+
+```schema composition
+titre: Marges et espace vide
+regle: marges
+Marges d''au moins 5 % de la largeur sur chaque bord : 54 px sur un visuel de 1080 px
+Plus d''espace autour du message principal qu''entre les détails
+Le bouton ou l''appel à l''action isolé, avec de l''espace autour
+```
+
+> [!definition] Espace vide (ou espace négatif)
+> L''espace vide est la partie du visuel où il n''y a rien : ni texte, ni image. Ce n''est pas du gaspillage : il **guide l''œil** vers ce qui compte et donne une impression de qualité. Les marques de luxe en utilisent beaucoup ; les promotions « bas prix » en utilisent peu. Pour un débutant, la règle est simple : **en cas de doute, enlevez un élément**.
+
+## Règle 3 : regrouper (la proximité)
+
+Ce qui va ensemble doit être **proche** ; ce qui est différent doit être **éloigné**. Le lecteur comprend les groupes avant même de lire.
+
+```schema comparaison
+titre: La proximité sur une affiche d''événement
+colonnes: Mal groupé | Bien groupé
+Date en haut, heure en bas, lieu au milieu | Date, heure et lieu ensemble, sur 2 lignes
+Le même espace entre toutes les lignes | Grand espace entre les groupes, petit espace dans un groupe
+Téléphone collé au titre | Téléphone en bas, avec les autres informations pratiques
+ton: mauvais-bon
+```
+
+Une astuce simple : l''espace **entre deux groupes** doit être au moins **2 fois plus grand** que l''espace **entre deux lignes d''un même groupe**.
+
+## Règle 4 : répéter et utiliser une grille
+
+La **répétition** crée l''unité : mêmes couleurs, mêmes polices, mêmes formes, mêmes espacements d''un visuel à l''autre. C''est ce qui rend une page Facebook cohérente et reconnaissable.
+
+La **grille** est un ensemble de colonnes invisibles sur lesquelles on aligne les éléments. Pour un visuel carré, une grille simple suffit :
+
+```schema ecran
+titre: Une grille simple pour un visuel carré de 1080 × 1080 px
+haut: Titre sur toute la largeur, aligné à gauche [1]
+gauche: Texte et prix sur la colonne de gauche [2]
+centre: Photo du produit sur les 2 colonnes de droite [3]
+bas: Informations pratiques et logo, sur toute la largeur [4]
+[1] Le titre commence à la marge de gauche (54 px)
+[2] Colonne de gauche : environ un tiers de la largeur
+[3] La photo occupe les deux tiers restants
+[4] Le bas est réservé au niveau 3, toujours au même endroit d''un visuel à l''autre
+```
+
+Dans Canva, affichez les règles (**Fichier → Paramètres → Afficher les règles et les repères**) et tirez des repères depuis les règles. Dans Figma, ajoutez une grille de mise en page au cadre (section **Layout grid** ou **Layout guide** du panneau de droite, selon la version).
+
+## Règle 5 : la règle des tiers
+
+Pour placer une photo ou un sujet principal, divisez le visuel en **3 parties égales** dans la largeur et dans la hauteur. Les 4 points d''intersection sont les endroits où l''œil se pose naturellement.
+
+```schema composition
+titre: La règle des tiers
+regle: tiers
+sujet: haut-droite
+Placez le visage, le produit ou l''objet principal sur un des 4 points
+Laissez l''espace libre du côté où regarde la personne ou l''objet
+Posez la ligne d''horizon sur une des lignes, pas au milieu
+```
+
+Un sujet en plein centre n''est pas interdit (il donne un effet stable et frontal), mais un sujet sur un tiers rend l''image plus dynamique et libère de la place pour le texte.
+
+> [!exemple] Visuel pour un hôtel à Nosy Be
+> Photo de la plage : l''horizon est placé sur la ligne du tiers supérieur, le palmier sur la ligne de droite. Le grand espace de mer et de sable, à gauche et en bas, accueille le titre « 3 nuits, petit-déjeuner offert » sans cacher la photo.
+
+> [!erreur] Remplir chaque espace vide
+> Le réflexe du débutant : un coin vide ? On ajoute une étoile, une icône, un autre texte. Résultat : un visuel chargé où le message se perd. L''espace vide est un **outil**, pas un problème. Avant d''ajouter un élément, demandez-vous : « Aide-t-il à attirer, faire comprendre ou faire agir ? » Si la réponse est non, ne l''ajoutez pas.
+
+> [!attention] Erreurs fréquentes
+> - Utiliser plusieurs alignements différents sur un même visuel.
+> - Coller le texte aux bords : il sera coupé sur certains écrans et à l''impression.
+> - Le même espacement partout : les groupes ne se distinguent plus.
+> - Changer de mise en page à chaque publication : la page du client perd son unité.
+
+> [!retenir]
+> - **Aligner** : un axe principal, jamais « à l''œil ».
+> - **Marges** : au moins 5 % sur chaque bord ; l''espace vide guide l''œil.
+> - **Proximité** : espace entre groupes = au moins 2 fois l''espace dans un groupe.
+> - **Répétition et grille** : la cohérence d''un visuel à l''autre.
+> - **Règle des tiers** : le sujet sur un point fort, l''espace libre pour le texte.
+
+## Exercice pratique : recomposer un visuel
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Dans Canva, créez un visuel carré (1080 × 1080 px) et affichez les règles et repères.
+> 2. Placez des repères à 54 px de chaque bord, puis à un tiers et deux tiers de la largeur.
+> 3. Recréez la promotion de la pâtisserie Mofo Gasy (leçon 2.1) : titre « -15 % à l''ouverture », détails et informations pratiques, avec une photo de gâteau (banque d''images libre).
+> 4. Appliquez les 5 règles : un seul alignement, marges, groupes bien séparés, grille, photo sur un tiers.
+> 5. Faites une deuxième version qui enfreint volontairement les règles (tout centré, collé aux bords, même espacement partout), puis comparez les deux côte à côte.
+>
+> **À livrer** : vos 2 versions en PNG et 3 phrases qui expliquent la différence.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 1, 0, 'Quelle marge minimale garder sur un visuel de 1080 px de large ?', '["Aucune, il faut utiliser tout l''espace","La moitié du visuel","Environ 54 px (5 %) sur chaque bord","5 px"]'::jsonb, 2, 'Une marge d''au moins 5 % évite l''impression d''étouffement et protège le texte quand l''image est recadrée sur certains écrans ou à l''impression.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 1, 1, 'Quel alignement est le plus facile à lire pour un texte de plusieurs lignes ?', '["Aligné à droite","Justifié","Centré","Aligné à gauche"]'::jsonb, 3, 'Avec un alignement à gauche, chaque ligne commence au même endroit : l''œil retrouve facilement le début de la ligne suivante.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 1, 2, 'Que dit la règle de proximité ?', '["Tous les éléments doivent être à égale distance","Le texte doit toucher la photo","Ce qui va ensemble est proche, ce qui est différent est éloigné","Il faut remplir chaque espace vide"]'::jsonb, 2, 'Le lecteur comprend les groupes avant de lire : date, heure et lieu ensemble ; téléphone et adresse ensemble, plus loin.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 1, 3, 'À quoi sert l''espace vide sur un visuel ?', '["À guider l''œil et donner une impression de qualité","À économiser l''encre uniquement","À rien, c''est un oubli du graphiste","À cacher les erreurs"]'::jsonb, 0, 'L''espace vide met en valeur ce qui compte. En cas de doute, on enlève un élément plutôt que d''en ajouter un.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 1, 4, 'Avec la règle des tiers, où placer le sujet principal d''une photo ?', '["Hors du cadre","Sur l''un des 4 points d''intersection des lignes","Dans un coin, contre le bord","Toujours exactement au centre"]'::jsonb, 1, 'Les intersections des tiers sont des points où l''œil se pose naturellement ; cela rend l''image dynamique et libère de la place pour le texte.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 1, 2, 'La couleur : choisir et associer', 11, 'La couleur est la première chose que l''œil perçoit, avant même de lire un mot. Bien utilisée, elle attire l''attention, renforce la marque du client et guide vers l''action. Mal utilisée, elle rend un texte illisible ou donne une image bon marché. Bonne nouvelle : quelques règles simples suffisent pour faire des choix sûrs.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire une palette de 3 couleurs avec la règle 60-30-10.
+> 2. Vérifier le contraste pour que le texte reste lisible.
+> 3. Utiliser le cercle chromatique pour associer des couleurs.
+> 4. Connaître ce que les couleurs évoquent.
+> 5. Lire et utiliser les codes de couleur (HEX, RVB, CMJN).
+
+## La règle 60-30-10
+
+Un visuel équilibré utilise rarement plus de 3 couleurs. La règle **60-30-10** indique comment les répartir :
+
+```schema palette
+titre: Exemple de palette 60-30-10 pour une coopérative de vanille
+#F7F1E3 Neutre (fond) | 60 %
+#3B2416 Principale (marque) | 30 %
+#C9A227 Accent (offre, bouton) | 10 %
+```
+
+1. **60 %** : une couleur **neutre** ou dominante, souvent le fond (blanc, beige, gris clair, ou une couleur sombre).
+2. **30 %** : la couleur **principale** de la marque (titres, formes, bandeaux).
+3. **10 %** : la couleur **d''accent**, réservée à ce qui doit se remarquer : le prix, l''offre, le bouton.
+
+Selon les marques, la couleur dominante peut aussi être la couleur principale (un fond rouge pour une promotion, par exemple). L''important est d''avoir **une couleur qui domine**, une qui accompagne et une qui ressort.
+
+> [!astuce] L''accent ne sert qu''à une chose
+> Si vous utilisez la couleur d''accent partout, elle ne ressort plus. Réservez-la au niveau 1 ou à l''appel à l''action. Un seul élément en jaune sur un visuel bleu attire l''œil ; cinq éléments jaunes se neutralisent.
+
+## Le contraste avant tout
+
+Le texte doit se lire facilement, même sur un petit téléphone, en plein soleil, avec la luminosité baissée. Le **contraste** est la différence de clarté entre le texte et son fond. Le site calcule ci-dessous le contraste de quelques combinaisons :
+
+```schema contraste
+titre: Contraste texte / fond (4,5 : 1 minimum pour un texte courant)
+#FFFFFF sur #0B7A55 Texte blanc
+#1E2A44 sur #FFFFFF Bleu nuit
+#3B2416 sur #F7F1E3 Brun sur crème
+#A0A0A0 sur #FFFFFF Gris clair
+#F5D90A sur #FFFFFF Jaune
+#E53935 sur #2E7D32 Rouge sur vert
+```
+
+> [!definition] Ratio de contraste
+> Le ratio de contraste compare la clarté de deux couleurs, de 1 : 1 (aucune différence) à 21 : 1 (noir sur blanc). Les règles d''accessibilité du web recommandent **au moins 4,5 : 1** pour un texte courant et **3 : 1** pour les gros titres. Des outils gratuits le calculent (cherchez « contrast checker » dans votre navigateur).
+
+Le **rouge sur vert** pose aussi un problème aux personnes daltoniennes, qui distinguent mal ces deux couleurs : évitez cette association pour une information importante.
+
+## Le cercle chromatique : associer les couleurs
+
+Le cercle chromatique range les couleurs en rond. Il permet de trouver des associations qui fonctionnent à coup sûr.
+
+```schema comparaison
+titre: Les 3 harmonies les plus utiles
+colonnes: Monochrome | Analogue | Complémentaire
+Une seule teinte, en plusieurs clartés | 2 ou 3 couleurs voisines sur le cercle | 2 couleurs opposées sur le cercle
+Exemple : bleu nuit, bleu, bleu ciel | Exemple : jaune, orange, rouge | Exemple : bleu et orange
+Effet : calme, élégant, très sûr | Effet : chaleureux, harmonieux | Effet : dynamique, fort contraste
+Idéal : banque, clinique, cabinet | Idéal : restaurant, fête, nature | Idéal : promotion, sport, appel à l''action
+```
+
+```schema palette
+titre: Une harmonie complémentaire (bleu et orange)
+#14365F Bleu nuit | 60 %
+#3E7CB1 Bleu moyen | 30 %
+#F28C28 Orange (accent) | 10 %
+```
+
+> [!astuce] Des palettes toutes faites
+> Des sites gratuits comme **Coolors** ou **Adobe Color** génèrent des palettes harmonieuses en un clic. Partez d''une couleur imposée par le client, et laissez l''outil proposer les autres. Vérifiez ensuite le contraste du texte.
+
+## Ce que les couleurs évoquent
+
+Les couleurs évoquent des émotions, mais ces associations dépendent de la culture et du contexte. Voici les plus courantes :
+
+| Couleur | Évoque souvent | Exemples d''usage |
+| --- | --- | --- |
+| Vert | Nature, agriculture, santé, fraîcheur | Épicerie bio, coopérative, pharmacie |
+| Bleu | Confiance, sérieux, calme | Banque, clinique, assurance, agence de voyage |
+| Rouge | Urgence, promotion, passion, appétit | Soldes, restauration rapide |
+| Orange | Énergie, convivialité, jeunesse | Événements, téléphonie, sport |
+| Jaune | Optimisme, attention | Signalétique, promotions (en accent) |
+| Noir | Luxe, élégance, puissance | Mode, parfum, produits haut de gamme |
+| Beige, brun | Naturel, artisanal, chaleur | Vanille, café, artisanat, raphia |
+
+> [!madagascar] Les couleurs du client avant les vôtres
+> Partez toujours des couleurs que le client utilise **déjà** : enseigne, uniformes, emballages, peinture de la boutique, couleur de son opérateur de Mobile Money s''il est revendeur. Un commerce de Tsaralalana connu pour sa façade bleue doit garder ce bleu, même si vous préférez le vert : c''est ainsi que ses clients le reconnaissent.
+
+## Les codes de couleur : HEX, RVB, CMJN
+
+Pour qu''une couleur soit toujours la même, on la désigne par un **code**, jamais par un nom (« un beau vert » ne veut rien dire pour un imprimeur).
+
+| Code | Pour quoi | Exemple (vert Vitako) |
+| --- | --- | --- |
+| **HEX** | Écrans : Canva, Figma, sites web | #0B7A55 |
+| **RVB** (RGB) | Écrans, mêmes couleurs que HEX | 11, 122, 85 |
+| **CMJN** (CMYK) | Impression : Cyan, Magenta, Jaune, Noir | environ 91, 0, 30, 52 |
+
+L''écran produit les couleurs avec de la lumière (RVB) ; l''imprimante, avec de l''encre (CMJN). Certaines couleurs très vives à l''écran (verts fluo, bleus électriques) ne peuvent pas être imprimées à l''identique : elles sortent plus ternes. Vous verrez au module 3 comment préparer un fichier pour l''imprimeur.
+
+> [!astuce] La pipette
+> Pour récupérer la couleur exacte d''un logo ou d''une photo du client, utilisez la **pipette** (dans Canva : cliquez sur la couleur, puis sur l''icône de pipette ; dans Figma et Photopea : touche I). Notez le code HEX obtenu dans votre fichier de projet.
+
+> [!erreur] Trop de couleurs « pour faire gai »
+> Un visuel avec 6 couleurs vives paraît désordonné et bon marché. Pour un effet joyeux, gardez 3 couleurs et jouez sur leur **clarté** (une version claire et une version foncée de la même couleur). Vous obtiendrez un résultat vivant, mais maîtrisé.
+
+> [!attention] Erreurs fréquentes
+> - Texte gris clair ou jaune sur fond blanc : illisible.
+> - Texte posé sur une photo chargée, sans bandeau ni ombre pour le faire ressortir.
+> - Changer les couleurs de la marque du client sans lui demander.
+> - Désigner une couleur par son nom au lieu de son code.
+
+> [!retenir]
+> - **60-30-10** : une couleur domine, une accompagne, une ressort.
+> - **Contraste** d''au moins 4,5 : 1 pour le texte ; testez sur téléphone.
+> - **Harmonies** : monochrome, analogue, complémentaire.
+> - Les **couleurs du client** passent avant vos goûts.
+> - **HEX/RVB** pour l''écran, **CMJN** pour l''impression.
+
+## Exercice pratique : 3 palettes pour 3 clients
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez 3 palettes de 3 couleurs (60-30-10), avec leurs codes HEX, pour : une clinique dentaire à Antananarivo, un restaurant de brochettes à Toamasina, une marque de vanille haut de gamme.
+> 2. Pour chaque palette, indiquez l''harmonie utilisée (monochrome, analogue ou complémentaire) et justifiez vos choix en 2 phrases.
+> 3. Vérifiez le contraste du texte principal avec un outil en ligne (au moins 4,5 : 1).
+> 4. Dans Canva, faites un visuel simple pour chacun (fond, titre, bouton) en appliquant la palette.
+>
+> **À livrer** : vos 3 palettes avec leurs codes, vos justifications, les ratios de contraste et les 3 visuels.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 2, 0, 'Que dit la règle 60-30-10 ?', '["Une couleur différente pour chaque élément","60 % couleur dominante, 30 % couleur principale, 10 % accent","60 couleurs maximum par visuel","30 % de texte et 70 % d''image"]'::jsonb, 1, 'Une couleur domine, une accompagne et une ressort : ce dosage donne presque toujours un résultat équilibré.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 2, 1, 'Quel ratio de contraste minimum viser pour un texte courant ?', '["4,5 : 1","2 : 1","1 : 1","Peu importe"]'::jsonb, 0, 'Les règles d''accessibilité recommandent au moins 4,5 : 1 pour un texte courant, et 3 : 1 pour les gros titres.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 2, 2, 'Quelle combinaison est la moins lisible ?', '["Texte blanc sur fond vert foncé","Texte jaune sur fond blanc","Texte bleu nuit sur fond blanc","Texte brun foncé sur fond crème"]'::jsonb, 1, 'Le jaune et le blanc sont tous deux très clairs : le contraste est trop faible pour lire un texte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 2, 3, 'Quel code de couleur utiliser pour l''impression ?', '["RVB","Le nom de la couleur","HEX","CMJN"]'::jsonb, 3, 'Les imprimantes utilisent des encres Cyan, Magenta, Jaune et Noir. HEX et RVB décrivent les couleurs des écrans.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 2, 4, 'Un client a une enseigne bleue connue dans son quartier. Que faire ?', '["Le remplacer par votre couleur préférée","Utiliser toutes les couleurs pour faire gai","Garder ce bleu dans ses visuels","Ne mettre aucune couleur"]'::jsonb, 2, 'Les couleurs existantes du client font partie de sa reconnaissance. On part de ce qu''il utilise déjà avant d''ajouter quoi que ce soit.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 1, 3, 'La typographie : choisir ses polices', 12, 'La typographie, c''est le choix et la mise en forme des lettres. On la remarque peu quand elle est réussie, mais on la remarque tout de suite quand elle est ratée : texte illisible, polices qui se battent, impression d''amateurisme. Cette leçon vous apprend à choisir 2 polices, à les associer et à les régler pour qu''elles restent lisibles sur un téléphone.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Reconnaître les 4 grandes familles de polices.
+> 2. Associer une police de titre et une police de texte.
+> 3. Utiliser les graisses et les tailles pour la hiérarchie.
+> 4. Régler l''interligne et l''espacement des lettres.
+> 5. Choisir des polices gratuites utilisables pour des clients.
+
+## Les 4 familles de polices
+
+```schema comparaison
+titre: Les grandes familles de polices
+colonnes: Avec empattements (serif) | Sans empattements (sans-serif) | Manuscrites et décoratives
+Petits traits au bout des lettres | Lettres simples, sans traits | Imitent l''écriture ou ont un style fort
+Évoquent : tradition, sérieux, élégance | Évoquent : modernité, clarté, simplicité | Évoquent : fête, personnalité, artisanat
+Exemples : Playfair Display, Merriweather, Lora | Exemples : Montserrat, Poppins, Open Sans, Inter | Exemples : Pacifico, Dancing Script, Bebas Neue (titres)
+Pour : titres élégants, livres, menus chics | Pour : presque tout, surtout sur écran | Pour : quelques mots seulement, jamais pour un texte long
+```
+
+> [!definition] Police, famille et graisse
+> Une **famille** de polices regroupe plusieurs variantes d''un même dessin : Montserrat Regular, Montserrat Bold, Montserrat Black… Chaque variante est une **police**. La **graisse** est l''épaisseur des traits : fin (Light), normal (Regular), demi-gras (SemiBold), gras (Bold), très gras (Black).
+
+Pour un débutant, les polices **sans empattements** sont le choix le plus sûr : elles restent lisibles en petit sur un écran. Les manuscrites se réservent à 2 ou 3 mots (un titre d''invitation, un slogan), jamais à un numéro de téléphone ou un prix.
+
+## Associer 2 polices, pas plus
+
+Sur un visuel, **2 polices suffisent** : une pour les titres, une pour le texte. Utilisez ensuite les graisses (normal, gras) pour varier, plutôt qu''une troisième police.
+
+| Police de titre | Police de texte | Ambiance | Pour quels clients |
+| --- | --- | --- | --- |
+| Bebas Neue | Open Sans | Forte, directe | Promotions, sport, événements |
+| Playfair Display | Lato | Élégante | Restaurants, hôtels, mariages |
+| Montserrat | Inter | Moderne, nette | Entreprises, services, technologie |
+| Poppins | Poppins (une seule famille) | Simple, sympathique | Boutiques, vendeurs en ligne, écoles |
+
+Ces polices sont gratuites sur Google Fonts et disponibles dans Canva.
+
+Les règles pour réussir une association :
+
+1. **Du contraste** : une police de titre avec du caractère, une police de texte très simple. Deux polices qui se ressemblent presque créent un malaise.
+2. **Une seule police « forte »** : jamais deux polices décoratives ensemble.
+3. **La même ambiance** : une police de titre élégante avec une police de texte sobre, pas avec une police enfantine.
+
+> [!astuce] Une seule famille, c''est possible
+> Une famille complète (comme Montserrat ou Poppins, qui ont 9 graisses) suffit à elle seule : titre en Black, sous-titre en SemiBold, texte en Regular. C''est la solution la plus sûre pour vos premiers visuels.
+
+## Tailles, graisses et majuscules
+
+### Les tailles lisibles sur téléphone
+
+Sur un visuel de 1080 × 1080 px, affiché en petit sur un téléphone, respectez ces tailles minimales :
+
+| Élément | Taille conseillée | Graisse |
+| --- | --- | --- |
+| Titre (niveau 1) | 80 à 140 px | Gras ou très gras |
+| Sous-titre (niveau 2) | 40 à 60 px | Demi-gras ou gras |
+| Texte (niveau 3) | 28 à 36 px (jamais moins de 24 px) | Normal |
+| Mentions légales, conditions | 22 à 26 px | Normal |
+
+### Les majuscules avec modération
+
+Un texte entièrement en MAJUSCULES se lit **plus lentement**, car toutes les lettres ont la même hauteur et l''œil ne reconnaît plus la forme des mots. Réservez les majuscules aux titres courts (3 à 5 mots) et aux étiquettes (« NOUVEAU », « PROMO »).
+
+## L''interligne et l''espacement des lettres
+
+Deux réglages font souvent la différence entre un texte amateur et un texte professionnel.
+
+```schema comparaison
+titre: Les deux réglages qui changent tout
+colonnes: Interligne (espace entre les lignes) | Espacement des lettres (approche)
+Texte courant : 1,3 à 1,5 fois la taille du texte | Texte courant : laisser à 0
+Grands titres : resserrer, 1,0 à 1,15 | Titres en majuscules : l''augmenter légèrement (+2 à +5 %)
+Trop serré : les lignes se touchent | Trop serré : les lettres se collent, illisible en petit
+Trop large : le texte s''éparpille | Trop large : les mots se défont
+```
+
+Dans Canva, ces réglages se trouvent dans le bouton **Espacement** de la barre d''outils (lettres et lignes). Dans Figma, dans le panneau **Texte** (Line height et Letter spacing).
+
+> [!exemple] Le titre qui ne tenait pas
+> Fanja doit écrire « Grande vente de rentrée scolaire » sur une story. En Bebas Neue à 140 px, le titre déborde sur 4 lignes très espacées. Elle réduit l''interligne à 1,0, passe le titre à 120 px et coupe la phrase en deux blocs logiques : « GRANDE VENTE » / « de rentrée scolaire » (la deuxième ligne en Open Sans). Le titre tient sur 2 lignes et se lit d''un coup d''œil.
+
+## Où trouver des polices gratuites et autorisées
+
+1. **Google Fonts** (fonts.google.com) : plus de 1 500 familles, presque toutes sous licence libre (SIL Open Font License), utilisables pour des clients, y compris pour un logo.
+2. **Les polices de Canva** : utilisables dans Canva ; certaines sont réservées à Canva Pro (icône de couronne).
+3. **Les polices installées sur votre ordinateur** : attention, certaines (Arial, Calibri…) ont des licences liées au système ; préférez Google Fonts pour un logo ou un fichier que le client utilisera ailleurs.
+
+> [!madagascar] Les accents et le malgache
+> Vérifiez que la police contient tous les caractères dont vous avez besoin : les accents français (é, è, ê, à, ç) et, pour le malgache, la lettre ô présente dans certains mots. Tapez une phrase de test avec tous ces caractères avant de choisir une police : certaines polices décoratives gratuites n''ont pas les accents et affichent des carrés vides.
+
+> [!erreur] Le « texte arc-en-ciel »
+> 4 polices, 5 couleurs, du texte en contour, en ombre et en dégradé sur le même visuel : c''est l''erreur la plus fréquente sur les pages Facebook de commerces. Le message devient impossible à lire. **Deux polices, deux ou trois couleurs, aucun effet inutile** : c''est cela qui donne une image professionnelle.
+
+> [!attention] Erreurs fréquentes
+> - Utiliser 3 polices ou plus sur un même visuel.
+> - Écrire un texte long en majuscules ou en police manuscrite.
+> - Mettre un texte de moins de 24 px sur un visuel de 1080 px.
+> - Étirer ou déformer une police pour la faire rentrer.
+> - Utiliser une police dont la licence n''autorise pas l''usage commercial.
+
+> [!retenir]
+> - 4 familles : avec empattements, sans empattements, manuscrites, décoratives.
+> - **2 polices maximum** ; variez avec les **graisses**.
+> - Tailles minimales sur 1080 px : titre 80 px, texte **28 px**.
+> - Interligne : **1,3 à 1,5** pour le texte, plus serré pour les grands titres.
+> - **Google Fonts** : des polices libres, utilisables pour vos clients.
+
+## Exercice pratique : votre bibliothèque de typographies
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Sur Google Fonts, choisissez 3 associations de 2 polices (titre + texte) pour 3 ambiances : sérieuse, festive, élégante.
+> 2. Pour chacune, tapez la même phrase de test : « Nouvelle collection : -20 % jusqu''au 30 juin à Antananarivo » et vérifiez les accents.
+> 3. Dans Canva, créez un visuel carré par association, avec un titre, un sous-titre et un texte aux bonnes tailles.
+> 4. Affichez les 3 visuels sur votre téléphone, en petit : notez ce qui se lit bien et ce qui doit être agrandi.
+>
+> **À livrer** : vos 3 associations (noms des polices et usage conseillé) et les 3 visuels corrigés.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 3, 0, 'Combien de polices utiliser au maximum sur un visuel ?', '["Une par ligne","Quatre","Deux","Autant que nécessaire"]'::jsonb, 2, 'Une police de titre et une police de texte suffisent ; on varie ensuite avec les graisses (normal, gras) plutôt qu''avec une troisième police.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 3, 1, 'Pourquoi éviter un texte long entièrement en majuscules ?', '["Il ne s''imprime pas","Il se lit plus lentement, car la forme des mots disparaît","Il prend moins de place","Il est interdit sur Facebook"]'::jsonb, 1, 'En majuscules, toutes les lettres ont la même hauteur : l''œil ne reconnaît plus la silhouette des mots. On les réserve aux titres courts.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 3, 2, 'Quelle taille minimale pour un texte sur un visuel de 1080 × 1080 px ?', '["10 px","Environ 28 px, jamais moins de 24 px","14 px","Plus de 200 px"]'::jsonb, 1, 'Le visuel est vu en petit sur un téléphone : en dessous de 24 px, le texte devient illisible.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 3, 3, 'Quel interligne convient à un texte courant ?', '["0,5 fois la taille","3 fois la taille","1,3 à 1,5 fois la taille du texte","Aucun interligne"]'::jsonb, 2, 'Un interligne de 1,3 à 1,5 laisse respirer les lignes sans les éparpiller. Les grands titres, eux, se resserrent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 3, 4, 'Où trouver des polices gratuites utilisables pour un logo client ?', '["Sur Google Fonts, en vérifiant la licence","Dans n''importe quel fichier reçu","Sur un site de téléchargement piraté","En copiant les polices d''un site au hasard"]'::jsonb, 0, 'La plupart des polices de Google Fonts sont sous licence libre (SIL Open Font License) et peuvent servir pour des clients, logos compris.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 1, 4, 'Images, photos et icônes', 12, 'Une bonne photo fait la moitié du travail : elle attire l''œil, montre le produit et donne envie. Une photo floue, mal cadrée ou trop chargée ruine un visuel, même parfaitement composé. Cette leçon vous apprend à choisir, recadrer et intégrer les images et les icônes, puis à vérifier un visuel complet avec une liste de contrôle en 10 points qui reprend tout le module.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir une photo adaptée au message.
+> 2. Vérifier qu''une image est assez nette (résolution).
+> 3. Recadrer et placer du texte sur une photo sans perdre en lisibilité.
+> 4. Utiliser des icônes cohérentes.
+> 5. Contrôler un visuel complet avant de l''envoyer.
+
+## Choisir la bonne photo
+
+Une photo doit **servir le message**, pas seulement décorer. Posez-vous trois questions :
+
+```schema checklist
+titre: Les 3 questions avant de choisir une photo
+[x] Montre-t-elle ce que le client vend (le produit, le plat, le lieu, le résultat) ?
+[x] Est-elle nette, bien éclairée, avec un fond simple ?
+[x] Laisse-t-elle de la place pour le texte ?
+```
+
+| Type de photo | Effet | Quand l''utiliser |
+| --- | --- | --- |
+| Produit seul sur fond uni | Clair, professionnel | Boutiques, catalogues, promotions |
+| Produit « en situation » (porté, utilisé, servi) | Donne envie, rend concret | Vêtements, plats, cosmétiques |
+| Personne qui regarde l''objectif | Crée un lien, attire l''œil | Services, coachs, formations |
+| Lieu, paysage | Fait rêver, situe | Hôtels, tourisme, événements |
+| Détail en gros plan | Montre la qualité | Artisanat, vanille, bijoux, matières |
+
+> [!astuce] Le regard guide le regard
+> Quand une personne sur la photo regarde dans une direction, le lecteur regarde dans la même direction. Placez le texte **du côté où regarde la personne**, jamais derrière sa tête.
+
+## La résolution : assez de pixels
+
+Une photo est faite de **pixels**. Si elle en a trop peu pour la taille où vous l''affichez, elle devient floue ou « pixelisée ».
+
+```schema chiffres
+titre: Le minimum de pixels selon l''usage
+1080 px : de large pour une photo en plein écran sur un visuel réseaux sociaux
+1280 px : de large pour une miniature YouTube
+300 dpi : à la taille d''impression (environ 1750 px de large pour un flyer A5)
+```
+
+> [!definition] Résolution
+> La résolution est la quantité de pixels d''une image. Pour l''écran, on parle en pixels (par exemple 1080 × 1080 px). Pour l''impression, on parle en **dpi** (points par pouce) : il en faut environ 300 à la taille réelle d''impression. Une photo envoyée par WhatsApp est souvent compressée : demandez au client d''envoyer ses photos comme **document** (et non comme photo) pour garder la qualité d''origine.
+
+Une image trop petite **ne peut pas être améliorée** en l''agrandissant : elle devient seulement plus floue. Si le client n''a pas de meilleure photo, réduisez la place qu''elle occupe, ou utilisez une photo de banque d''images libre.
+
+## Recadrer et poser du texte sur une photo
+
+Le recadrage permet de supprimer ce qui distrait et de mettre le sujet sur un point fort (règle des tiers, leçon 2.2).
+
+```schema etapes
+titre: Rendre un texte lisible sur une photo
+Choisir une zone calme : ciel, mur, table, fond flou
+Ajouter un voile : un rectangle sombre à 30-50 % d''opacité
+Ou un bandeau : une bande de couleur unie derrière le texte
+Ou une ombre légère : seulement si le fond est déjà assez calme
+Vérifier sur téléphone : le texte se lit-il en petit ?
+```
+
+> [!exemple] Le plat du jour de la gargote Chez Lova
+> La photo du romazava est prise de haut, avec des couverts et une bouteille autour. La graphiste recadre pour garder le bol, légèrement décentré à droite, et ajoute un voile sombre sur la moitié gauche de l''image. Le titre « Romazava du jour · 8 000 Ar » en blanc devient parfaitement lisible, et la photo garde tout son appétit.
+
+### Détourer un produit
+
+**Détourer**, c''est enlever le fond d''une photo pour ne garder que le sujet. Un produit détouré peut être posé sur un fond de couleur, ce qui donne un rendu très propre. Vous apprendrez à le faire gratuitement avec Photopea au module 3 (leçon 3.4). Canva le fait en un clic, mais avec Canva Pro.
+
+## Les icônes : simples et cohérentes
+
+Les icônes aident à repérer une information en un coup d''œil (téléphone, adresse, horaire, livraison). Elles doivent rester discrètes et **toutes venir du même style**.
+
+```schema comparaison
+titre: Utiliser les icônes
+colonnes: À éviter | À faire
+Icônes de styles différents (une en contour, une pleine, une en 3D) | Un seul jeu d''icônes, même style, même épaisseur de trait
+Icônes de couleurs différentes | Une seule couleur, celle du texte ou de la marque
+Icônes plus grandes que le texte | Icônes à la hauteur du texte qu''elles accompagnent
+Icônes « décoratives » sans sens | Une icône seulement si elle aide à comprendre
+ton: mauvais-bon
+```
+
+## La liste de contrôle en 10 points
+
+Avant d''envoyer un visuel à un client, passez cette liste. Elle reprend tout le module 2. Avec l''habitude, elle prend 2 minutes et vous évite la plupart des corrections.
+
+```schema checklist
+titre: Contrôle qualité d''un visuel
+[ ] 1. Le message principal se comprend en 3 secondes
+[ ] 2. Il y a 3 niveaux de lecture clairs (taille, graisse, couleur)
+[ ] 3. Tous les éléments sont alignés sur un même axe
+[ ] 4. Les marges sont respectées sur les 4 bords
+[ ] 5. Les groupes d''informations sont bien séparés
+[ ] 6. 3 couleurs maximum, contraste suffisant pour le texte
+[ ] 7. 2 polices maximum, tailles lisibles sur téléphone
+[ ] 8. Les images sont nettes et servent le message
+[ ] 9. L''appel à l''action est visible (numéro, date, lien)
+[ ] 10. Aucune faute ; numéro, prix, dates et adresse vérifiés
+```
+
+> [!madagascar] Faire relire les informations
+> Les erreurs les plus graves ne sont pas graphiques : c''est un numéro de téléphone faux, un prix erroné, une date qui ne correspond pas au bon jour de la semaine. Avant de livrer, envoyez au client le texte seul et demandez-lui de répondre « Validé » par écrit. En cas d''erreur, vous aurez la preuve que l''information venait de lui.
+
+> [!attention] Erreurs fréquentes
+> - Utiliser une photo floue ou pixelisée en grand.
+> - Poser un texte blanc sur un ciel blanc ou une photo chargée.
+> - Mélanger des icônes de styles différents.
+> - Oublier de vérifier les informations pratiques avec le client.
+
+> [!retenir]
+> - Une photo doit **servir le message**, être **nette** et laisser **de la place** au texte.
+> - Résolution : **1080 px** de large pour les réseaux, **300 dpi** pour l''impression.
+> - Texte sur photo : zone calme, **voile**, bandeau ou ombre légère.
+> - Icônes : **un seul style**, une seule couleur.
+> - Passez la **liste de contrôle en 10 points** avant chaque envoi.
+
+## Exercice pratique : améliorer 3 photos
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Prenez 3 photos avec votre téléphone (un plat, un vêtement ou un objet, un lieu), en lumière du jour, sur un fond simple.
+> 2. Dans Canva, recadrez chaque photo au format carré en plaçant le sujet sur un tiers.
+> 3. Ajoutez un titre sur chacune, en utilisant une technique différente à chaque fois : zone calme, voile sombre, bandeau de couleur.
+> 4. Vérifiez la lisibilité sur votre téléphone.
+>
+> **À livrer** : vos 3 photos d''origine et vos 3 visuels, avec la technique utilisée pour chacun.
+
+## Projet du module 2 : 4 « avant / après »
+
+> [!projet] Projet du module · 2 heures 30
+> Les « avant / après » sont parmi les projets les plus convaincants d''un portfolio : ils montrent votre regard autant que votre technique.
+> 1. Choisissez 4 visuels de commerces malgaches publiés sur Facebook (vous pouvez reprendre ceux de la leçon 1.1).
+> 2. Pour chacun, passez la liste de contrôle en 10 points et notez les problèmes.
+> 3. Refaites chaque visuel dans Canva, au format carré, en appliquant tout le module : hiérarchie, composition, couleur, typographie, images.
+> 4. Présentez chaque projet sur une page : l''original à gauche, votre version à droite, et 3 lignes qui expliquent vos choix.
+> 5. Indiquez « projet d''étude » et ne mentionnez pas le nom du commerce sans son accord.
+>
+> **À livrer** : un PDF de 4 pages « avant / après ». Il rejoindra votre portfolio au module 6.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 4, 0, 'Comment demander au client ses photos sans perte de qualité par WhatsApp ?', '["Les envoyer en message vocal","Les envoyer en capture d''écran","Les réduire avant l''envoi","Les envoyer comme document plutôt que comme photo"]'::jsonb, 3, 'WhatsApp compresse les photos envoyées normalement. Envoyées comme document, elles gardent leur résolution d''origine.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 4, 1, 'Quelle résolution viser pour une image à imprimer ?', '["72 dpi","300 dpi à la taille d''impression","La résolution n''a pas d''importance","10 dpi"]'::jsonb, 1, 'Environ 300 points par pouce à la taille réelle donnent une impression nette ; en dessous, l''image paraît floue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 4, 2, 'Comment rendre lisible un texte blanc sur une photo chargée ?', '["Ajouter un voile sombre ou un bandeau derrière le texte","Mettre le texte en jaune","Ajouter d''autres images","Réduire la taille du texte"]'::jsonb, 0, 'Le voile ou le bandeau crée un fond calme et contrasté sous le texte, sans cacher toute la photo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 4, 3, 'Pourquoi utiliser un seul jeu d''icônes ?', '["Parce que les icônes sont payantes","Pour garder un style cohérent et professionnel","Pour que le visuel soit plus chargé","Parce que Canva l''impose"]'::jsonb, 1, 'Des icônes de styles différents (contour, pleine, 3D) donnent une impression de désordre. Un seul style, une seule couleur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 1, 4, 4, 'Avant de livrer, quelle vérification est la plus importante pour éviter une erreur grave ?', '["Faire valider par écrit le numéro, les prix, les dates et l''adresse","Changer la police au dernier moment","Augmenter le nombre de couleurs","Ajouter un effet d''ombre"]'::jsonb, 0, 'Une erreur de numéro ou de prix coûte plus cher qu''un défaut graphique. La validation écrite du client vous protège aussi.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 2, 'Les outils du graphiste', 'Canva, Inkscape, Figma et Photopea pas à pas, quand passer aux outils payants, et comment livrer chaque fichier au bon format, à la bonne taille.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 2, 0, 'Choisir ses outils : gratuits, payants, à tester', 11, 'Bonne nouvelle : vous pouvez travailler pour de vrais clients avec des outils **entièrement gratuits**. Quatre logiciels couvrent presque toutes les commandes d''un débutant. Les logiciels payants deviennent utiles plus tard, quand ils vous font gagner de l''argent ou qu''un client les exige. Cette leçon vous aide à choisir le bon outil pour chaque commande, et à savoir quand investir.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Connaître les 4 outils gratuits et leur rôle.
+> 2. Choisir le bon outil selon la commande.
+> 3. Savoir quand passer aux outils payants, et comment les payer depuis Madagascar.
+> 4. Découvrir ArtCraft, une suite gratuite encore en test.
+> 5. Comprendre pourquoi les logiciels piratés sont un piège.
+
+## Les 4 outils gratuits
+
+| Outil | Pour quoi faire | Point fort | Limite |
+| --- | --- | --- | --- |
+| **Canva** | Visuels réseaux sociaux, affiches, présentations | Très rapide, nombreux modèles, fonctionne aussi sur téléphone | Les modèles se ressemblent ; certains éléments sont payants |
+| **Figma** | Logos simples, maquettes, visuels sur mesure | Précis, partage facile avec le client | Demande un peu d''apprentissage ; fonctionne en ligne |
+| **Inkscape** | Logos vectoriels, fichiers pour imprimeur | Installé sur l''ordinateur, **fonctionne hors ligne** | Interface moins moderne |
+| **Photopea** | Retouche photo, détourage, montages | Dans le navigateur, très proche de Photoshop, ouvre les fichiers .psd | Lent avec une connexion faible ; publicités |
+
+Ces outils sont gratuits au moment où nous écrivons ; leurs offres changent parfois. Vérifiez les conditions sur leur site officiel.
+
+## Quel outil pour quelle commande ?
+
+```schema etapes
+titre: Choisir l''outil selon la commande
+Publication, story, affiche simple : Canva
+Logo : Inkscape (hors ligne) ou Figma (en ligne)
+Retouche ou détourage d''une photo : Photopea
+Maquette de site ou d''application : Figma
+Fichier pour l''imprimeur : Canva (PDF pour impression) ou Inkscape
+```
+
+Vous n''avez pas besoin de tout maîtriser en même temps. Suivez cet ordre : **Canva** d''abord (vous vendrez vos premiers visuels avec), puis **Photopea** (pour améliorer les photos des clients), puis **Inkscape ou Figma** (pour les logos, au module 5).
+
+> [!astuce] Par où commencer ?
+> Maîtrisez d''abord Canva pour vendre vite vos premiers visuels. Apprenez ensuite Inkscape pour les logos : il fonctionne sans Internet, ce qui est précieux en cas de coupure de connexion. Les leçons 3.2 à 3.4 vous guident pas à pas dans chaque outil.
+
+## Les outils payants : quand passer le cap ?
+
+Les agences et certains clients étrangers demandent des fichiers créés avec les logiciels professionnels.
+
+| Outil payant | Équivalent gratuit | Quand il devient utile |
+| --- | --- | --- |
+| Adobe Illustrator | Inkscape | Logos vectoriels ; agences et imprimeurs qui demandent des fichiers .ai |
+| Adobe Photoshop | Photopea, GIMP | Retouche avancée ; fichiers .psd échangés avec les agences |
+| Adobe InDesign | Canva, Scribus | Catalogues, magazines, livres de plusieurs dizaines de pages |
+| Canva Pro | Canva gratuit | Kit de marque par client, suppression d''arrière-plan, redimensionnement en un clic |
+| Figma (offre payante) | Figma gratuit | Nombreux projets, bibliothèques partagées en équipe |
+
+```schema checklist
+titre: Passez au payant quand au moins une condition est vraie
+[x] L''abonnement est couvert par une ou deux commandes par mois
+[x] Un client exige un format précis (.ai, .psd, .indd)
+[x] L''outil vous fait gagner plusieurs heures par semaine
+```
+
+Avant cela, les outils gratuits suffisent pour vendre. De nombreux graphistes freelances travaillent plusieurs mois, voire des années, avec Canva, Figma et Inkscape.
+
+> [!madagascar] Payer un abonnement depuis Madagascar
+> 1. Ces logiciels se paient en ligne, en dollars ou en euros, par carte Visa ou Mastercard internationale.
+> 2. Demandez à votre banque une carte utilisable sur Internet, ou une carte prépayée virtuelle.
+> 3. Profitez des **essais gratuits** pour un projet précis, et des tarifs étudiants si vous y avez droit.
+> 4. Les prix changent souvent et varient selon les pays : vérifiez toujours le tarif sur le site officiel de l''éditeur.
+
+## Un nouvel outil gratuit à tester : ArtCraft
+
+**ArtCraft** est une suite de logiciels de création **gratuits et open source**, publiée en octobre 2026 par un développeur indépendant. Elle fonctionne sur Windows, Mac et Linux, sans compte, et veut proposer des équivalents gratuits des grands logiciels payants. Une version dans le navigateur existe aussi pour la plupart des applications.
+
+| Application ArtCraft | Équivalent payant | Utile pour un graphiste ? |
+| --- | --- | --- |
+| **PhotoCraft** | Adobe Photoshop | Oui : retouche, détourage, montages |
+| **VectorCraft** | Adobe Illustrator | Oui : logos et illustrations vectorielles |
+| **DesignCraft** | Adobe InDesign | Oui : flyers, brochures, mise en page |
+| **LightCraft** | Adobe Lightroom | Parfois : retouche de séries de photos |
+| **PdfCraft** | Adobe Acrobat Pro | Parfois : fichiers PDF pour l''imprimeur |
+
+> [!attention] Une version encore en test
+> ArtCraft est une version **alpha** : son créateur lui-même la dit « pas du tout prête », et les premiers utilisateurs signalent des bugs. Pour l''instant :
+> - entraînez-vous avec sur vos **projets personnels** et votre portfolio ;
+> - gardez **Photopea, Inkscape, Canva et Figma** pour les travaux de vos clients ;
+> - **enregistrez souvent** et vérifiez chaque fichier exporté avant de l''envoyer ;
+> - téléchargez-le **uniquement depuis son site officiel (getartcraft.com) ou sa page GitHub**, jamais depuis un site de téléchargement inconnu.
+
+Suivez les nouvelles versions : si l''outil devient stable, savoir déjà l''utiliser sera un vrai avantage, surtout depuis Madagascar où les abonnements coûtent cher. Mentionnez-le sur votre profil seulement quand vous l''aurez utilisé pour de vrais projets.
+
+## Pas de logiciels piratés
+
+```schema comparaison
+titre: Logiciel « cracké » ou outil gratuit légal ?
+colonnes: Logiciel piraté | Outil gratuit légal
+Contient souvent des virus qui volent mots de passe et fichiers | Téléchargé depuis le site officiel, mis à jour
+Peut faire perdre un compte sur une plateforme de freelance | Aucun risque pour votre réputation
+Fichiers parfois corrompus, plantages | Stable et documenté
+Impossible à mettre sur un CV ou un profil sérieux | Compétence reconnue et affichable
+ton: mauvais-bon
+```
+
+> [!erreur] « Tout le monde utilise une version crackée »
+> C''est l''argument qu''on entend souvent. Mais un seul virus peut vider votre compte Mobile Money (s''il vole vos codes), effacer les fichiers de vos clients ou envoyer des messages en votre nom. Et une agence étrangère qui découvre un logiciel piraté arrête souvent la collaboration. Les outils gratuits légaux sont aujourd''hui assez puissants pour éviter ce risque.
+
+> [!retenir]
+> - **Canva** pour aller vite, **Inkscape** ou **Figma** pour les logos, **Photopea** pour les photos.
+> - Apprenez dans cet ordre : Canva, Photopea, puis Inkscape ou Figma.
+> - Le **payant** devient utile quand il est rentabilisé ou exigé par le client.
+> - **ArtCraft** : à tester sur vos projets personnels, pas encore pour vos clients.
+> - **Jamais de logiciel piraté.**
+
+## Exercice pratique : installer votre atelier
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Créez un compte gratuit sur **Canva** et sur **Figma** avec une adresse e-mail professionnelle (exemple : prenom.nom.graphiste@gmail.com).
+> 2. Téléchargez et installez **Inkscape** depuis inkscape.org.
+> 3. Ouvrez **Photopea** (photopea.com) et passez l''interface en français (menu **More → Language**).
+> 4. Dans chaque outil, créez un document vide, écrivez votre prénom et exportez-le en PNG.
+> 5. Rangez les 4 fichiers dans un dossier « Tests outils ».
+>
+> **À livrer** : une capture de vos 4 outils ouverts et vos 4 fichiers PNG.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 0, 0, 'Quel outil gratuit fonctionne hors ligne pour créer des logos vectoriels ?', '["Photopea","Inkscape","Figma","Canva"]'::jsonb, 1, 'Inkscape s''installe sur l''ordinateur et fonctionne sans Internet, ce qui est précieux en cas de coupure de connexion.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 0, 1, 'Pour retoucher et détourer la photo d''un produit, quel outil gratuit choisir ?', '["Photopea","Inkscape","Google Fonts","Figma"]'::jsonb, 0, 'Photopea est un logiciel de retouche photo dans le navigateur, très proche de Photoshop.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 0, 2, 'Quand passer à un logiciel payant ?', '["Quand il est rentabilisé, exigé par un client, ou qu''il fait gagner beaucoup de temps","Dès le premier jour de formation","Quand un ami l''utilise","Jamais, c''est interdit"]'::jsonb, 0, 'Avant cela, les outils gratuits suffisent pour vendre. Le payant doit être un investissement rentable, pas une dépense par principe.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 0, 3, 'Comment utiliser ArtCraft aujourd''hui ?', '["Le télécharger sur n''importe quel site","Ne jamais l''ouvrir","Pour s''entraîner sur ses projets personnels, en gardant les outils stables pour les clients","Pour tous les projets clients dès maintenant"]'::jsonb, 2, 'ArtCraft est encore en version alpha avec des bugs : on l''essaie sur ses projets, et on le télécharge uniquement depuis son site officiel ou GitHub.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 0, 4, 'Pourquoi éviter les logiciels piratés ?', '["Ils sont plus lents à démarrer","Ils contiennent souvent des virus et peuvent faire perdre clients et comptes","Ils n''existent pas en français","Ils ne savent pas exporter en PNG"]'::jsonb, 1, 'Un virus peut voler vos mots de passe ou les fichiers de vos clients, et une agence qui découvre un logiciel piraté arrête souvent la collaboration.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 2, 1, 'Canva de A à Z', 12, 'Canva est l''outil le plus utilisé par les graphistes débutants, et par beaucoup de professionnels pour les visuels du quotidien. Il est rapide, fonctionne dans le navigateur et sur téléphone, et contient des milliers de modèles. Le risque : produire des visuels qui ressemblent à ceux de tout le monde. Cette leçon vous apprend à l''utiliser en professionnel, de la création à l''export.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Vous repérer dans l''interface de Canva.
+> 2. Créer un design aux bonnes dimensions.
+> 3. Transformer un modèle pour en faire un visuel unique.
+> 4. Travailler avec les calques, l''alignement et les groupes.
+> 5. Exporter dans le bon format et partager avec un client.
+
+## L''interface de Canva
+
+```schema ecran
+titre: L''éditeur de Canva (version ordinateur)
+haut: Menu Fichier, Redimensionner, nom du design, Partager [1]
+gauche: Modèles, Éléments, Texte, Importer, Projets [2]
+centre: La page de travail [3]
+bas: Notes, zoom, pages, mode plein écran [4]
+[1] En haut : le menu Fichier (paramètres, règles), le nom du design et le bouton Partager (télécharger, lien)
+[2] À gauche : les panneaux pour ajouter des modèles, des formes, des photos, du texte et vos propres fichiers
+[3] Au centre : votre page ; la barre d''outils au-dessus change selon l''élément sélectionné
+[4] En bas : le zoom et la gestion des pages (ajouter, dupliquer)
+```
+
+Selon les mises à jour, l''emplacement exact des boutons peut changer légèrement, mais ces quatre zones restent les mêmes. Quand vous sélectionnez un élément (texte, photo, forme), une **barre d''outils** apparaît au-dessus de la page avec ses réglages : police, taille, couleur, effets, transparence, position.
+
+## Créer un design aux bonnes dimensions
+
+1. Sur l''accueil, cliquez sur **Créer un design**.
+2. Choisissez un format prédéfini (« Publication Instagram carrée », « Story », « Miniature YouTube ») ou **Taille personnalisée** pour entrer vos dimensions en pixels.
+3. Donnez immédiatement un nom clair au design (en haut) : `Mofo-Tsara_promo-weekend_carre`.
+4. Activez les **règles et repères** (Fichier → Paramètres → Afficher les règles et les repères) et placez vos marges (leçon 2.2).
+
+> [!astuce] Commencez toujours par la taille finale
+> Créez le design directement à la taille de livraison (1080 × 1080 px pour une publication carrée, par exemple). Agrandir un design trop petit à la fin donne des images floues.
+
+## Transformer un modèle en visuel unique
+
+Un modèle Canva laissé tel quel se reconnaît tout de suite : des milliers de pages Facebook utilisent les mêmes. Les clients le remarquent, surtout à l''étranger. Utilisez les modèles comme **point de départ**, jamais comme résultat.
+
+```schema etapes
+titre: Les 5 changements qui rendent un modèle unique
+Couleurs : appliquez la palette du client (codes HEX)
+Polices : remplacez par les 2 polices choisies pour la marque
+Photos : utilisez les photos du client ou des photos libres choisies
+Mise en page : déplacez, supprimez, simplifiez selon VOTRE hiérarchie
+Textes : réécrivez avec le vrai message du client
+```
+
+Si, après ces 5 changements, le visuel ressemble encore beaucoup au modèle d''origine, recommencez avec une page vide : vous avez maintenant assez de bases (module 2) pour composer vous-même.
+
+## Calques, alignement et groupes
+
+### Les calques : ce qui est devant, ce qui est derrière
+
+Chaque élément est posé sur un **calque**, comme des feuilles transparentes empilées. Pour changer l''ordre :
+
+1. Sélectionnez l''élément, puis cliquez sur **Position** dans la barre d''outils.
+2. Choisissez **Avancer** ou **Reculer**, ou ouvrez l''onglet **Calques** pour voir toute la pile et la réorganiser en glissant.
+3. **Verrouillez** les éléments terminés (icône de cadenas) pour ne pas les déplacer par erreur.
+
+### Aligner et espacer proprement
+
+- Sélectionnez plusieurs éléments (Maj + clic), puis **Position → Aligner** (à gauche, au centre, en haut…).
+- **Espacer** répartit les éléments à distance égale.
+- Les lignes roses qui apparaissent pendant le déplacement indiquent un alignement avec un autre élément ou avec le centre.
+
+### Grouper
+
+Sélectionnez un ensemble qui va ensemble (une icône et son texte, par exemple) et cliquez sur **Grouper** (Ctrl + G). Le groupe se déplace d''un bloc, sans casser l''alignement.
+
+> [!cle] Les raccourcis qui font gagner du temps
+> **Ctrl + D** : dupliquer · **Ctrl + G** : grouper · **Ctrl + Z** : annuler · **T** : ajouter un texte · **R** : ajouter un rectangle · **Alt + glisser** : dupliquer en déplaçant · **Maj + glisser** : déplacer en ligne droite. Sur Mac, remplacez Ctrl par Cmd.
+
+## Le kit de marque d''un client
+
+Quand vous travaillez souvent pour le même client, enregistrez ses couleurs, ses polices et son logo dans un **kit de marque** (Brand Kit). Vous les retrouvez en un clic dans chaque design. La version gratuite de Canva est limitée sur ce point ; Canva Pro permet d''en créer plusieurs, un par client. En attendant, gardez une **page « Charte »** au début de chaque design client, avec les couleurs (codes HEX), les polices et le logo : vous la copiez dans chaque nouveau visuel.
+
+## Exporter et partager
+
+Cliquez sur **Partager → Télécharger**, puis choisissez le format :
+
+| Format dans Canva | Pour quoi | Réglage conseillé |
+| --- | --- | --- |
+| PNG | Visuels avec texte, logos, réseaux sociaux | Taille × 1 ; « Arrière-plan transparent » pour un logo (option Pro) |
+| JPG | Photos, aperçus légers pour WhatsApp | Qualité 80 environ |
+| PDF standard | Documents à lire à l''écran, devis | — |
+| PDF pour impression | Imprimeur | Cocher « Traits de coupe et fond perdu » |
+| MP4 | Visuels animés, vidéos courtes | Selon la plateforme |
+
+Pour faire valider un visuel, vous pouvez aussi envoyer un **lien de partage en lecture seule** (Partager → copier le lien, en mode « Peut voir »). Le client voit le design sans pouvoir le modifier. Ne partagez jamais un lien en mode « Peut modifier » avec un client avant la fin du projet.
+
+> [!madagascar] Canva sur téléphone
+> L''application Canva sur téléphone permet de faire de petites corrections quand vous n''avez pas votre ordinateur ou pendant une coupure (avec la connexion du téléphone). Elle est pratique pour corriger un prix ou une date en urgence. Mais créez vos visuels sur ordinateur : la précision de placement y est bien meilleure.
+
+> [!erreur] Livrer un modèle à peine modifié
+> Un client étranger qui reconnaît un modèle Canva connu peut douter de vos compétences, voire demander un remboursement s''il pensait payer une création originale. Appliquez toujours les 5 changements, et soyez honnête : si un client demande juste « mon logo sur ce modèle », annoncez un petit prix pour une adaptation, pas le prix d''une création.
+
+> [!attention] Erreurs fréquentes
+> - Créer le design trop petit, puis l''agrandir.
+> - Laisser des éléments Pro (couronne) dans un design gratuit : un filigrane apparaît à l''export.
+> - Oublier de renommer les designs : impossible de les retrouver après quelques semaines.
+> - Partager un lien modifiable avec le client.
+
+> [!retenir]
+> - 4 zones : menu en haut, panneaux à gauche, page au centre, zoom et pages en bas.
+> - Créez toujours le design **à la taille finale** et nommez-le.
+> - Un modèle est un **point de départ** : 5 changements minimum.
+> - **Calques, alignement, groupes** et raccourcis pour un travail précis.
+> - Export : **PNG** pour le web, **PDF pour impression** pour l''imprimeur.
+
+## Exercice pratique : un modèle transformé
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Dans Canva, choisissez un modèle de publication Instagram pour une boutique de vêtements.
+> 2. Faites une copie de l''original (pour comparer à la fin).
+> 3. Transformez la copie pour une boutique fictive, « Lamba Shop » à Analakely, avec les 5 changements : palette (3 couleurs HEX), 2 polices, une photo libre, une nouvelle mise en page, un vrai message (« Nouvelle collection de lamba, à partir de 25 000 Ar »).
+> 4. Utilisez au moins une fois : un groupe, un alignement multiple et le verrouillage.
+> 5. Exportez en PNG et en JPG, et comparez le poids des deux fichiers.
+>
+> **À livrer** : le modèle d''origine et votre version (PNG), ainsi que le poids des fichiers PNG et JPG.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 1, 0, 'Pourquoi créer un design Canva directement à la taille finale ?', '["Agrandir un design trop petit à la fin donne des images floues","Canva interdit de changer la taille","Pour payer moins cher","Pour avoir plus de modèles"]'::jsonb, 0, 'Les images et les textes sont prévus pour une taille ; en agrandissant après coup, on perd en netteté.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 1, 1, 'Comment transformer un modèle Canva en visuel unique ?', '["Changer seulement le texte","Changer couleurs, polices, photos, mise en page et textes","Ajouter un filtre sur la photo","Garder le modèle tel quel"]'::jsonb, 1, 'Un modèle laissé presque tel quel se reconnaît tout de suite. Les 5 changements en font une création adaptée au client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 1, 2, 'Que fait le raccourci Ctrl + G dans Canva ?', '["Il ajoute une grille","Il annule la dernière action","Il télécharge le design","Il groupe les éléments sélectionnés"]'::jsonb, 3, 'Un groupe se déplace d''un bloc sans casser l''alignement de ses éléments (une icône et son texte, par exemple).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 1, 3, 'Quel export choisir pour un flyer destiné à l''imprimeur ?', '["PNG en taille réduite","JPG de faible qualité","PDF pour impression, avec traits de coupe et fond perdu","MP4"]'::jsonb, 2, 'Le PDF pour impression garde la qualité et ajoute le fond perdu et les repères de découpe attendus par l''imprimeur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 1, 4, 'Quel lien partager avec un client pour faire valider un visuel ?', '["Aucun lien, seulement le fichier de travail","Un lien en lecture seule (« Peut voir »)","Un lien qui permet de modifier","Le mot de passe de votre compte Canva"]'::jsonb, 1, 'Le client voit le design sans pouvoir le modifier ; le lien modifiable ne se partage pas avant la fin du projet.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 2, 2, 'Inkscape et Figma : le vectoriel', 12, 'Un logo, une icône ou une illustration simple doivent pouvoir s''afficher aussi bien sur une photo de profil que sur une enseigne de 3 mètres. Pour cela, on les crée en **vectoriel**. Cette leçon vous fait découvrir les deux outils gratuits pour le vectoriel : **Inkscape**, installé sur l''ordinateur et utilisable hors ligne, et **Figma**, en ligne et très pratique pour partager avec un client.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Comprendre la différence entre vectoriel et matriciel.
+> 2. Vous repérer dans Inkscape et dans Figma.
+> 3. Dessiner avec des formes simples et l''outil plume (Bézier).
+> 4. Combiner des formes (union, différence, intersection).
+> 5. Exporter un fichier vectoriel (SVG) et une image (PNG).
+
+## Vectoriel ou matriciel ?
+
+```schema comparaison
+titre: Les deux familles d''images
+colonnes: Matriciel (pixels) | Vectoriel (formes calculées)
+Fait de petits points de couleur | Fait de formes décrites par des points et des courbes
+Devient flou quand on l''agrandit | S''agrandit à l''infini sans perte
+Idéal pour les photos | Idéal pour les logos, icônes, illustrations simples
+Formats : JPG, PNG, WEBP, PSD | Formats : SVG, AI, EPS, PDF vectoriel
+Outils : Photopea, Photoshop, Canva | Outils : Inkscape, Figma, Illustrator
+```
+
+> [!definition] Vectoriel
+> Une image vectorielle ne contient pas de pixels : elle contient des instructions (« un cercle de tel rayon, rempli de tel vert »). L''ordinateur redessine l''image à chaque taille. C''est pourquoi **un logo se crée et se livre toujours en vectoriel** : le client pourra l''imprimer sur un stylo comme sur un panneau publicitaire.
+
+## Inkscape : l''atelier hors ligne
+
+```schema ecran
+titre: Inkscape 1.x (Windows, Mac, Linux)
+haut: Menus (Fichier, Édition, Objet, Chemin, Texte) et barre des réglages de l''outil [1]
+gauche: Boîte à outils : sélection, nœuds, rectangle, cercle, plume, texte [2]
+centre: La page et le plan de travail [3]
+droite: Panneaux : Remplissage et contour, Calques et objets, Aligner [4]
+bas: Palette de couleurs et barre d''état [5]
+[1] La barre sous les menus change selon l''outil choisi (taille, angle, police…)
+[2] Sélection (S), nœuds (N), rectangle (R), cercle (E), plume de Bézier (B), texte (T)
+[3] Dessinez sur la page ; ce qui dépasse n''est pas exporté
+[4] Remplissage et contour : Ctrl + Maj + F · Aligner et distribuer : Ctrl + Maj + A
+[5] Cliquez sur une couleur pour le remplissage, Maj + clic pour le contour
+```
+
+### Les gestes de base dans Inkscape
+
+1. **Dessiner une forme** : choisissez le rectangle (R) ou le cercle (E), puis glissez sur la page. Maintenez **Ctrl** pour un carré ou un cercle parfait.
+2. **Changer la couleur** : ouvrez **Remplissage et contour** (Ctrl + Maj + F) et entrez le code HEX dans le champ RVBA (par exemple `0b7a55ff`, le `ff` final signifie « opaque »).
+3. **Aligner** : sélectionnez plusieurs objets et ouvrez **Aligner et distribuer** (Ctrl + Maj + A).
+4. **Grouper** : Ctrl + G ; dégrouper : Ctrl + Maj + G.
+5. **Enregistrer** : Ctrl + S, au format **SVG Inkscape** (votre fichier de travail).
+
+## Combiner des formes : les opérations booléennes
+
+La plupart des logos simples se construisent en **combinant des formes de base**. Dans Inkscape, sélectionnez deux formes qui se chevauchent, puis menu **Chemin** :
+
+| Opération | Raccourci Inkscape | Résultat | Exemple |
+| --- | --- | --- | --- |
+| **Union** | Ctrl + + | Fusionne les formes en une seule | Un nuage fait de 3 cercles |
+| **Différence** | Ctrl + − | La forme du dessus « découpe » celle du dessous | Un croissant de lune : un cercle moins un autre cercle |
+| **Intersection** | Ctrl + * | Garde seulement la partie commune | Une feuille : l''intersection de deux cercles |
+| **Exclusion** | Ctrl + ^ | Garde tout sauf la partie commune | Effets de motifs |
+
+Dans Figma, les mêmes opérations s''appellent **Union, Subtract, Intersect, Exclude** (icône des formes superposées, en haut de l''écran).
+
+> [!exemple] Une feuille de vanille en 3 formes
+> Pour le futur logo de la coopérative « Vanille d''Antalaha » (module 5) : dessinez deux cercles qui se chevauchent et faites leur **intersection** : vous obtenez une forme de feuille. Dupliquez-la, tournez-la de 30°, et placez une fine tige (un rectangle arrondi) : en 5 minutes, vous avez un symbole simple, net à toutes les tailles.
+
+## La plume (outil Bézier)
+
+La plume permet de dessiner n''importe quelle forme, point par point. C''est l''outil le plus important du vectoriel, et celui qui demande le plus de pratique.
+
+```schema etapes
+titre: Dessiner avec la plume (Inkscape : B, Figma : P)
+Cliquer : crée un point d''angle (ligne droite)
+Cliquer-glisser : crée un point courbe, avec deux poignées
+Revenir au premier point : ferme la forme
+Outil nœuds (N) : déplacer les points et ajuster les poignées
+Moins de points : des courbes plus lisses et plus professionnelles
+```
+
+> [!astuce] Le jeu de la plume
+> Pour progresser vite, entraînez-vous 10 minutes par jour : redessinez des formes simples (une goutte, un cœur, une feuille, la lettre S) en utilisant **le moins de points possible**. Des sites gratuits comme « The Bézier Game » (bezier.method.ac) proposent des exercices guidés.
+
+## Figma : le vectoriel en ligne
+
+Figma fonctionne dans le navigateur. Son grand avantage : vous envoyez un **lien** au client, qui voit vos propositions sans rien installer, et peut laisser des commentaires directement sur le design.
+
+1. **Cadre (F)** : créez un cadre (« Frame ») à la taille voulue, par exemple 1080 × 1080.
+2. **Formes** : rectangle (R), ellipse (O), plume (P), texte (T).
+3. **Couleurs** : dans le panneau de droite, section **Fill** (remplissage) et **Stroke** (contour).
+4. **Composants** : transformez un élément réutilisé (votre logo, par exemple) en composant pour le modifier partout d''un coup.
+5. **Commentaires** : le client clique sur l''icône de bulle et écrit sur le design.
+
+> [!madagascar] Inkscape ou Figma ?
+> Si votre connexion est instable, faites le **dessin du logo dans Inkscape** (hors ligne), puis importez le SVG dans **Figma** pour le présenter au client avec un lien. Vous combinez ainsi les deux avantages : travailler pendant les coupures et partager facilement.
+
+## Exporter un fichier vectoriel
+
+| Besoin | Inkscape | Figma |
+| --- | --- | --- |
+| Fichier vectoriel pour le client | Fichier → Enregistrer une copie → **SVG simple** | Sélection → Export → **SVG** |
+| Image pour le web | Fichier → Exporter (Ctrl + Maj + E) → **PNG**, en choisissant la taille | Export → **PNG**, échelle 2x ou 3x |
+| Fichier pour l''imprimeur | Enregistrer une copie → **PDF** | Export → **PDF** |
+
+Avant d''exporter un logo en SVG, **convertissez le texte en tracé** (Inkscape : Chemin → Objet en chemin, Ctrl + Maj + C ; Figma : clic droit sur le texte → Flatten, Ctrl + E). Sinon, l''ordinateur du client affichera une autre police s''il n''a pas la vôtre.
+
+> [!erreur] Mettre une photo dans un « logo vectoriel »
+> Une photo collée dans Inkscape et enregistrée en SVG reste une image matricielle : elle sera floue en grand. Un logo vectoriel ne doit contenir **que des formes et du texte converti en tracé**. Vérifiez avec l''outil nœuds (N) : chaque partie du logo doit montrer des points et des courbes.
+
+> [!retenir]
+> - **Vectoriel** pour les logos et icônes, **matriciel** pour les photos.
+> - **Inkscape** : hors ligne, idéal pour dessiner ; **Figma** : en ligne, idéal pour partager.
+> - Les **opérations booléennes** créent des formes à partir de formes simples.
+> - La **plume** demande de la pratique : peu de points, courbes lisses.
+> - Texte **converti en tracé** avant d''exporter un logo en SVG.
+
+## Exercice pratique : 3 icônes vectorielles
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Dans Inkscape, créez une page de 1000 × 1000 px.
+> 2. Dessinez 3 icônes simples avec les formes de base et les opérations booléennes : une **feuille** (intersection), un **soleil** (union d''un cercle et de rectangles), une **lune** (différence).
+> 3. Dessinez une **goutte** avec la plume, en 3 points maximum.
+> 4. Appliquez une seule couleur à toutes les icônes (même style, leçon 2.5).
+> 5. Exportez la page en PNG et enregistrez une copie en SVG simple. Importez le SVG dans Figma pour vérifier qu''il s''affiche correctement.
+>
+> **À livrer** : votre fichier SVG et votre PNG avec les 4 dessins.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 2, 0, 'Quel format agrandit un logo sans perte de qualité ?', '["Le JPG","Le PNG","La capture d''écran","Le vectoriel (SVG)"]'::jsonb, 3, 'Une image vectorielle est faite de formes calculées : l''ordinateur la redessine nettement à n''importe quelle taille.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 2, 1, 'Quelle opération booléenne fusionne deux formes en une seule ?', '["L''intersection","L''union","La différence","L''exclusion"]'::jsonb, 1, 'L''union assemble les formes ; la différence découpe, l''intersection garde la partie commune et l''exclusion la retire.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 2, 2, 'Avec la plume (outil Bézier), que crée un cliquer-glisser ?', '["Un point courbe, avec deux poignées","Un texte","Un point d''angle droit","Un rectangle"]'::jsonb, 0, 'Un simple clic crée un angle ; cliquer-glisser crée une courbe dont on règle la forme avec les poignées.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 2, 3, 'Que faire au texte d''un logo avant l''export en SVG ?', '["Le mettre en majuscules","Le transformer en photo","Le supprimer","Le convertir en tracé"]'::jsonb, 3, 'Sinon, l''ordinateur du client affichera une autre police s''il n''a pas celle que vous avez utilisée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 2, 4, 'Quel est le grand avantage de Figma pour travailler avec un client ?', '["Il retouche les photos automatiquement","Il imprime les logos","Le client voit les propositions par un lien et peut commenter","Il fonctionne sans Internet"]'::jsonb, 2, 'Figma est en ligne : le client ouvre un lien, sans rien installer, et laisse ses commentaires directement sur le design.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 2, 3, 'Photopea : retoucher et détourer', 12, 'Les photos envoyées par les clients sont rarement parfaites : trop sombres, mal cadrées, avec un fond encombré. **Photopea** est un logiciel de retouche gratuit qui fonctionne dans le navigateur et ressemble beaucoup à Photoshop. Cette leçon vous apprend les 5 retouches qui reviennent dans presque toutes les commandes : recadrer, éclaircir, corriger les couleurs, nettoyer et détourer.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Vous repérer dans Photopea et comprendre les calques.
+> 2. Recadrer et redresser une photo.
+> 3. Corriger la lumière et les couleurs.
+> 4. Effacer un petit défaut.
+> 5. Détourer un produit et l''exporter en PNG transparent.
+
+## L''interface de Photopea
+
+```schema ecran
+titre: Photopea (photopea.com), dans le navigateur
+haut: Menus Fichier, Édition, Image, Calque, Sélection, Filtre [1]
+gauche: Outils : déplacement, sélection, recadrage, pinceau, correcteur, gomme [2]
+centre: L''image ouverte [3]
+droite: Panneaux Calques et Historique [4]
+[1] Image → Ajustements contient toutes les corrections de lumière et de couleur
+[2] Survolez un outil pour voir son nom et son raccourci ; clic droit pour les outils cachés
+[3] Ouvrez une photo avec Fichier → Ouvrir, ou en la glissant dans la fenêtre
+[4] Calques : chaque élément sur sa propre couche ; Historique : revenir plusieurs étapes en arrière
+```
+
+> [!definition] Calque
+> Un calque est une couche transparente posée sur l''image, comme une feuille de plastique. On peut retoucher ou déplacer un calque sans toucher aux autres. Prenez une habitude de professionnel : **dupliquez le calque de la photo** (Ctrl + J) avant toute retouche, et travaillez sur la copie. L''original reste intact en dessous.
+
+## Retouche 1 : recadrer et redresser
+
+1. Choisissez l''outil **Recadrage** (touche C).
+2. Dans la barre du haut, entrez un ratio (1 : 1 pour un carré, 16 : 9 pour une miniature) ou des dimensions précises.
+3. Placez le sujet sur un tiers (la grille des tiers s''affiche pendant le recadrage).
+4. Pour **redresser** un horizon penché, tournez le cadre de recadrage en plaçant la souris juste à l''extérieur d''un coin.
+5. Validez avec **Entrée**.
+
+## Retouche 2 : la lumière
+
+Une photo prise à l''intérieur ou en fin de journée est souvent trop sombre. Allez dans **Image → Ajustements** :
+
+| Réglage | Ce qu''il fait | Quand l''utiliser |
+| --- | --- | --- |
+| Luminosité / Contraste | Éclaircit et donne du relief | Correction rapide d''une photo terne |
+| Niveaux (Ctrl + L) | Règle les noirs, les tons moyens et les blancs | Photo grisâtre ou voilée |
+| Courbes (Ctrl + M) | Réglage précis de la lumière | Quand les niveaux ne suffisent pas |
+| Ombres / Hautes lumières | Débouche les zones sombres sans brûler le ciel | Contre-jour, visage dans l''ombre |
+
+> [!astuce] Les niveaux en 3 gestes
+> Dans la fenêtre **Niveaux**, sous l''histogramme (la petite montagne), glissez le curseur noir de gauche jusqu''au début de la montagne, puis le curseur blanc de droite jusqu''à sa fin. Ajustez enfin le curseur gris du milieu pour éclaircir ou assombrir. Dans la plupart des cas, la photo devient tout de suite plus nette et plus vivante.
+
+## Retouche 3 : les couleurs
+
+1. **Balance des couleurs** (Ctrl + B) : corrige une photo trop jaune (lumière d''ampoule) ou trop bleue (ombre). Ajoutez la couleur opposée.
+2. **Teinte / Saturation** (Ctrl + U) : rend les couleurs plus vives ou plus douces. Restez léger : +10 à +20 de saturation suffit.
+3. **Vérifiez les tons de peau** : ils doivent rester naturels. Une saturation trop forte rend les visages orange.
+
+> [!madagascar] La lumière de Madagascar
+> Le soleil de midi donne des ombres dures et des couleurs écrasées. Conseillez à vos clients de photographier leurs produits **le matin ou en fin d''après-midi**, près d''une fenêtre, ou à l''ombre d''un mur clair en extérieur. Une bonne photo de départ vous fait gagner 20 minutes de retouche… et donne un bien meilleur résultat.
+
+## Retouche 4 : effacer un petit défaut
+
+Pour supprimer une tache, une poussière ou un petit objet gênant :
+
+1. **Correcteur localisé** (touche J) : peignez sur le défaut ; Photopea le remplace par les pixels voisins. Idéal pour les petites taches.
+2. **Tampon de duplication** (touche S) : Alt + clic pour prendre une zone propre, puis peignez sur le défaut. Pour les zones plus grandes ou les textures régulières (mur, sable, tissu).
+
+> [!attention] Retouche honnête
+> Effacer une poussière ou un fil qui dépasse, c''est normal. Modifier un produit pour le rendre différent de la réalité (cacher un défaut, changer sa taille, embellir un plat au point qu''il ne ressemble plus à ce qui sera servi) trompe les acheteurs, et finit par nuire au client. Restez fidèle au produit réel.
+
+## Retouche 5 : détourer un produit
+
+**Détourer**, c''est enlever le fond pour ne garder que le sujet. Un produit détouré peut être posé sur n''importe quel fond de couleur : c''est l''une des retouches les plus demandées par les vendeurs en ligne.
+
+```schema etapes
+titre: Détourer un produit dans Photopea
+Ouvrir la photo et dupliquer le calque (Ctrl + J)
+Sélection → Supprimer l''arrière-plan (sélection automatique du sujet)
+Ou Sélection rapide (W) pour sélectionner le produit à la main
+Affiner les bords : Sélection → Améliorer le bord, puis supprimer le fond
+Masquer le calque d''origine et vérifier sur un fond coloré
+Fichier → Exporter sous → PNG (la transparence est conservée)
+```
+
+Selon la version, les menus peuvent avoir un nom légèrement différent ; cherchez dans le menu **Sélection**. La sélection automatique fonctionne très bien sur un produit posé sur un fond uni ; sur un fond chargé, il faudra souvent corriger à la main.
+
+```schema comparaison
+titre: JPG ou PNG après un détourage ?
+colonnes: JPG | PNG
+Pas de transparence : le fond devient blanc | Garde la transparence : le produit se pose sur n''importe quel fond
+Fichier léger | Fichier plus lourd
+Pour la photo finale avec fond | Pour un produit détouré, un logo, une icône
+```
+
+> [!exemple] Le savon artisanal de Fianarantsoa
+> Une savonnerie envoie 6 photos de ses savons sur une table en bois, avec des objets autour. La graphiste détoure chaque savon, corrige la lumière avec les niveaux, et pose les 6 produits sur un fond vert pâle uni, alignés sur une grille. Le résultat ressemble à un vrai catalogue, et la cliente commande ensuite un visuel par produit chaque mois.
+
+## Enregistrer et exporter
+
+| Pour… | Commande | Format |
+| --- | --- | --- |
+| Garder le fichier de travail avec ses calques | Fichier → Enregistrer sous | **PSD** |
+| Livrer une photo retouchée | Fichier → Exporter sous | **JPG** (qualité 80 à 90) |
+| Livrer un produit détouré | Fichier → Exporter sous | **PNG** |
+
+Photopea fonctionne dans le navigateur : vos fichiers ne sont pas enregistrés en ligne. **Enregistrez votre PSD sur l''ordinateur** régulièrement, surtout si la connexion est fragile.
+
+> [!erreur] Retoucher directement l''original
+> Travailler sans dupliquer le calque, puis enregistrer par-dessus le fichier du client : l''original est perdu. Si le client change d''avis (« finalement, gardez le fond »), vous ne pouvez plus revenir en arrière. **Dupliquez toujours le calque** et gardez la photo d''origine dans le dossier « Sources » du projet.
+
+> [!retenir]
+> - **Calques** : dupliquez (Ctrl + J) avant toute retouche.
+> - **Recadrage** (C) avec la règle des tiers ; redressez l''horizon.
+> - **Lumière** : niveaux (Ctrl + L) ; **couleurs** : balance et saturation, avec légèreté.
+> - **Correcteur** (J) et **tampon** (S) pour les petits défauts, en restant honnête.
+> - **Détourage** et export en **PNG** pour garder la transparence.
+
+## Exercice pratique : 3 photos de produit retouchées
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Photographiez 3 objets de chez vous (un fruit, un vêtement plié, une bouteille) sur un fond aussi simple que possible.
+> 2. Dans Photopea, pour chaque photo : dupliquez le calque, recadrez au carré, corrigez la lumière avec les niveaux et effacez un petit défaut.
+> 3. Détourez les 3 objets et exportez-les en PNG transparent.
+> 4. Dans Canva, posez les 3 produits détourés sur un fond de couleur uni, alignés, avec un titre « Nouveautés de la semaine ».
+>
+> **À livrer** : vos 3 photos d''origine, vos 3 PNG détourés et le visuel final.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 3, 0, 'Que faire avant toute retouche dans Photopea ?', '["Supprimer le calque d''origine","Passer l''image en noir et blanc","Dupliquer le calque de la photo (Ctrl + J)","Exporter en JPG"]'::jsonb, 2, 'On travaille sur la copie : l''original reste intact et l''on peut revenir en arrière si le client change d''avis.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 3, 1, 'Quel réglage corrige rapidement une photo grisâtre ou voilée ?', '["La gomme","Les Niveaux (Ctrl + L)","Le texte","Le recadrage"]'::jsonb, 1, 'En réglant les noirs, les tons moyens et les blancs, les niveaux redonnent du contraste et de la netteté à la photo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 3, 2, 'Quel format garde la transparence d''un produit détouré ?', '["MP4","JPG","PNG","PDF standard"]'::jsonb, 2, 'Le JPG ne gère pas la transparence : le fond devient blanc. Le PNG garde le produit seul, prêt à poser sur n''importe quel fond.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 3, 3, 'Quelle retouche reste honnête ?', '["Cacher un défaut réel du produit vendu","Embellir un plat au point qu''il ne ressemble plus à ce qui est servi","Effacer une poussière ou un fil qui dépasse","Changer la taille d''un produit pour le rendre plus attirant"]'::jsonb, 2, 'Nettoyer une photo est normal ; modifier la réalité d''un produit trompe les acheteurs et finit par nuire au client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 3, 4, 'Quel conseil donner à un client pour de meilleures photos de produits ?', '["Photographier le matin ou en fin d''après-midi, près d''une fenêtre ou à l''ombre","Prendre la photo dans le noir","Utiliser le flash à 10 cm","Photographier à midi en plein soleil"]'::jsonb, 0, 'La lumière douce évite les ombres dures et les couleurs écrasées du soleil de midi : la retouche devient plus rapide et plus réussie.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 2, 4, 'Formats, tailles, impression et rangement', 13, 'Un beau visuel livré au mauvais format, c''est un client déçu : un logo flou sur l''enseigne, une story dont le texte est coupé, un flyer imprimé avec un liseré blanc. Le vrai savoir-faire d''un graphiste, c''est aussi de **livrer chaque fichier au bon format, à la bonne taille**, et de retrouver ses fichiers en 10 secondes. Cette leçon rassemble toutes ces règles.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir le bon format de fichier (PNG, JPG, PDF, SVG, WEBP).
+> 2. Utiliser les bonnes tailles pour chaque réseau social.
+> 3. Préparer un fichier pour l''imprimeur.
+> 4. Ranger et nommer ses fichiers comme un professionnel.
+
+## Les formats de fichiers
+
+| Format | Quand l''utiliser | À éviter pour |
+| --- | --- | --- |
+| **PNG** | Visuels avec texte, logos sur fond transparent, réseaux sociaux | Grandes photos (fichiers lourds) |
+| **JPG** | Photos, aperçus légers à envoyer par WhatsApp | Logos (pas de transparence, texte moins net) |
+| **PDF** | Impression, devis, documents de plusieurs pages | Publications réseaux sociaux |
+| **SVG** | Logos et icônes vectoriels, agrandissables sans perte | Photos |
+| **WEBP** | Images pour les sites web (très légères) | Clients qui ne connaissent pas ce format |
+
+> [!cle] La règle simple
+> **PNG** pour les visuels web avec texte, **JPG** pour les photos, **PDF** pour l''impression, **SVG** pour les logos. Avec ces quatre réflexes, vous ne vous tromperez presque jamais.
+
+## Les tailles pour les réseaux sociaux
+
+```schema formats
+titre: Les formats les plus demandés (proportions réelles)
+Publication carrée : 1080 x 1080
+Publication verticale : 1080 x 1350
+Story, Reel, TikTok : 1080 x 1920
+Miniature YouTube : 1280 x 720
+Couverture Facebook : 1640 x 624
+```
+
+| Support | Taille en pixels | Remarque |
+| --- | --- | --- |
+| Publication carrée Facebook ou Instagram | 1080 × 1080 | Le format le plus sûr |
+| Publication verticale Instagram ou Facebook | 1080 × 1350 | Prend plus de place dans le fil : plus visible |
+| Story, Reel, TikTok | 1080 × 1920 | Gardez le texte loin du haut et du bas |
+| Miniature YouTube | 1280 × 720 | Lisible en tout petit |
+| Couverture de page Facebook | 1640 × 624 | Texte au centre : les bords sont coupés sur téléphone |
+| Bannière LinkedIn (profil) | 1584 × 396 | La photo de profil cache le bas à gauche |
+
+Les plateformes changent parfois leurs formats et leurs zones d''affichage : si un visuel s''affiche mal, vérifiez dans leur centre d''aide.
+
+### La zone de sécurité des stories
+
+En story, le nom du compte, la photo de profil et les boutons de réponse recouvrent le haut et le bas de l''écran.
+
+```schema ecran
+titre: Story 1080 × 1920 px : où placer le texte
+haut: Environ 250 px réservés : nom du compte, barre de progression [1]
+centre: Zone de sécurité : titre, offre, produit [2]
+bas: Environ 250 px réservés : champ de réponse, autocollants, lien [3]
+[1] Ne placez ni texte ni logo important dans le haut
+[2] Tout le message utile tient dans la zone centrale
+[3] Le bas est caché par les boutons : n''y mettez pas le prix ni le numéro
+```
+
+## Préparer un fichier pour l''imprimeur
+
+L''impression a ses propres règles. Un fichier parfait à l''écran peut donner un mauvais résultat sur papier.
+
+```schema etapes
+titre: Le fichier d''impression en 6 étapes
+Consignes : demandez à l''imprimeur ses exigences avant de commencer
+Format : à la taille réelle, en millimètres (A5 = 148 × 210 mm)
+Résolution : 300 dpi pour les images
+Couleurs : en CMJN si l''imprimeur le demande
+Fond perdu : 3 mm de fond en plus de chaque côté ; zone de sécurité de 5 mm
+Export : PDF haute qualité, avec traits de coupe
+```
+
+> [!definition] Fond perdu et zone de sécurité
+> Le **fond perdu** est une bande de 3 mm qui prolonge le fond au-delà du bord du document. La découpe n''est jamais parfaitement précise : sans fond perdu, un fin liseré blanc peut apparaître. La **zone de sécurité**, à l''inverse, est une marge intérieure de 5 mm : aucun texte important ne doit s''y trouver, sinon il risque d''être coupé.
+
+| Document | Format fini | Avec fond perdu (3 mm) |
+| --- | --- | --- |
+| Carte de visite | 85 × 55 mm | 91 × 61 mm |
+| Flyer A5 | 148 × 210 mm | 154 × 216 mm |
+| Affiche A3 | 297 × 420 mm | 303 × 426 mm |
+| Menu A4 | 210 × 297 mm | 216 × 303 mm |
+
+Dans Canva : activez **Fichier → Paramètres → Afficher le fond perdu**, étendez le fond jusqu''au bord extérieur, puis exportez en **PDF pour impression** en cochant **Traits de coupe et fond perdu**. Canva exporte en couleurs RVB par défaut ; certains imprimeurs les acceptent, d''autres demandent du CMJN (l''option CMJN est réservée à Canva Pro). Demandez-leur.
+
+> [!madagascar] Travailler avec les imprimeurs locaux
+> À Antananarivo comme en région, chaque imprimeur a ses habitudes : certains veulent un PDF, d''autres un JPG haute qualité, d''autres encore préfèrent recevoir le fichier sur clé USB. Appelez-le avant de commencer, et demandez toujours une **épreuve** (un exemplaire d''essai, appelé BAT, « bon à tirer ») avant de lancer 500 flyers. Notez les consignes de chaque imprimeur dans un fichier : vous les réutiliserez.
+
+## Organiser ses fichiers
+
+Au bout de quelques mois, vous aurez des centaines de fichiers. Une organisation claire vous fait gagner du temps, évite d''envoyer une mauvaise version, et rassure le client qui revient un an plus tard.
+
+```schema arbre
+titre: Une arborescence de projet professionnelle
+Clients/
+  Hotel-Ravinala/
+    2026-10_Promo-Noel/
+      Sources/ # photos, textes et logo reçus du client
+      Travail/ # fichiers Canva, Figma, Inkscape, PSD
+      Livraison/ # fichiers finaux envoyés
+        hotel-ravinala_promo-noel_carre_v2.png
+        hotel-ravinala_promo-noel_story_v2.png
+  Mofo-Tsara/
+Ressources/
+Administratif/ # devis, factures, suivi des paiements
+```
+
+### Nommer les fichiers
+
+Un bon nom de fichier contient : **client _ projet _ format _ version**, en minuscules, sans espaces ni accents (certains systèmes les gèrent mal). Exemple : `hotel-ravinala_promo-noel_story_v2.png`. La version (`v1`, `v2`) évite les « final », « final-2 », « vraiment-final » qui sèment la confusion.
+
+> [!erreur] Livrer « final-final-OK.png »
+> Un client qui reçoit trois fichiers nommés « final », « final2 » et « final OK » ne sait pas lequel publier, et finit parfois par imprimer le mauvais. Numérotez vos versions et ne livrez **que la dernière**, dans le dossier Livraison.
+
+> [!attention] Erreurs fréquentes
+> - Livrer un logo en JPG (fond blanc impossible à enlever).
+> - Mettre du texte dans les zones cachées d''une story.
+> - Envoyer à l''imprimeur un fichier sans fond perdu.
+> - Garder les fichiers d''un client uniquement dans les téléchargements, sans rangement ni copie.
+
+> [!retenir]
+> - **PNG** web, **JPG** photos, **PDF** impression, **SVG** logos.
+> - Tailles clés : **1080 × 1080**, **1080 × 1350**, **1080 × 1920**, **1280 × 720**.
+> - Stories : texte dans la **zone centrale**.
+> - Impression : **300 dpi**, **3 mm de fond perdu**, **5 mm de sécurité**, consignes de l''imprimeur, BAT.
+> - Dossiers **Sources / Travail / Livraison** et noms **client_projet_format_v2**.
+
+## Exercice pratique : un dossier de livraison complet
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Créez l''arborescence de projet ci-dessus pour un client fictif, « Mofo Tsara » (boulangerie), projet « Promo-weekend ».
+> 2. Placez dans Sources une photo libre de pain et un texte de promotion.
+> 3. Renommez vos fichiers selon la règle client_projet_format_version.
+> 4. Rédigez une fiche « Consignes imprimeur » avec les 6 questions à poser à un imprimeur avant de commencer.
+>
+> **À livrer** : une capture de l''arborescence et votre fiche de consignes.
+
+## Projet du module 3 : une promotion en 4 formats
+
+> [!projet] Projet du module · 2 heures
+> **Le client (fictif)** : la boulangerie « Mofo Tsara », à Antsirabe, lance « -20 % sur les viennoiseries ce week-end ».
+> 1. Retouchez une photo libre de viennoiseries dans Photopea (recadrage, lumière, éventuellement détourage).
+> 2. Dans Canva, créez **4 versions** : publication carrée (1080 × 1080), publication verticale (1080 × 1350), story (1080 × 1920, texte dans la zone de sécurité) et flyer A5 pour impression (fond perdu de 3 mm).
+> 3. Adaptez la mise en page à chaque format : ne vous contentez pas d''étirer l''image.
+> 4. Créez dans Inkscape ou Figma un petit pictogramme vectoriel « -20 % » réutilisé sur les 4 versions.
+> 5. Exportez au bon format (PNG pour les réseaux, PDF pour impression avec traits de coupe), nommez et rangez selon la méthode de la leçon.
+>
+> **À livrer** : le dossier Livraison complet (4 fichiers + le pictogramme en SVG). C''est un projet de portfolio : il montre que vous maîtrisez les formats.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 4, 0, 'Quelle taille pour une story Instagram ou TikTok ?', '["1080 × 1920 px","1280 × 720 px","1080 × 1080 px","1640 × 624 px"]'::jsonb, 0, 'La story est verticale ; 1080 × 1080 est le carré, 1280 × 720 la miniature YouTube et 1640 × 624 la couverture Facebook.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 4, 1, 'Où placer le texte important d''une story ?', '["Dans la zone centrale, loin du haut et du bas","Sur les bords","Tout en bas, près du champ de réponse","Tout en haut, près du nom du compte"]'::jsonb, 0, 'Le haut et le bas de la story sont recouverts par le nom du compte et les boutons : environ 250 px de chaque côté.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 4, 2, 'Que signifie « fond perdu » ?', '["Une marge blanche autour du document","Un fichier supprimé par erreur","Une bande de 3 mm de fond au-delà du bord, pour la découpe","Un fond transparent"]'::jsonb, 2, 'La découpe n''est jamais parfaite : sans fond perdu, un liseré blanc peut apparaître au bord du document imprimé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 4, 3, 'Quelle est la taille d''un flyer A5 avec fond perdu de 3 mm ?', '["150 × 212 mm","210 × 297 mm","154 × 216 mm","148 × 210 mm"]'::jsonb, 2, 'On ajoute 3 mm de chaque côté : 148 + 6 = 154 mm et 210 + 6 = 216 mm.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 2, 4, 4, 'Quel nom de fichier est le plus professionnel ?', '["Image 1 (2).png","hotel-ravinala_promo-noel_story_v2.png","Nouveau document.png","final-final-OK.png"]'::jsonb, 1, 'Client, projet, format et version : le fichier se retrouve facilement et la version livrée ne prête pas à confusion.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 3, 'Créer des visuels qui fonctionnent', 'Publications, stories, carrousels, miniatures YouTube, affiches, menus, cartes de visite et dépliants, puis des séries cohérentes avec des modèles réutilisables et un forfait mensuel.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 3, 0, 'La publication qui arrête le défilement', 12, 'Vous connaissez maintenant les règles du design et les outils. Ce module les met en pratique sur les commandes réelles, en commençant par la plus fréquente : la **publication pour les réseaux sociaux**. Son défi est simple à dire et difficile à réussir : arrêter le pouce d''une personne qui fait défiler son fil, puis lui donner envie d''agir.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Connaître l''anatomie d''une publication efficace.
+> 2. Écrire une accroche courte et forte.
+> 3. Limiter le texte sur le visuel et utiliser la légende.
+> 4. Choisir entre les grands types de publications.
+> 5. Tester une publication avant de la livrer.
+
+## L''anatomie d''une publication efficace
+
+```schema ecran
+titre: Une publication carrée de 1080 × 1080 px
+haut: Accroche : 3 à 7 mots, très grands [1]
+gauche: Détail utile : prix, date, offre [2]
+centre: Visuel principal : produit, plat, personne [3]
+bas: Appel à l''action et logo discret [4]
+[1] L''accroche est le niveau 1 : ce que l''on comprend en un coup d''œil
+[2] Le niveau 2 : ce qui aide à décider (prix, durée de l''offre)
+[3] Une seule image forte, nette, qui montre ce qui est vendu
+[4] « Commandez au 034… », « Lien en bio », « Samedi 19 h » ; logo petit, toujours au même endroit
+```
+
+Une bonne publication contient **4 éléments, pas plus** : une accroche, un détail utile, une image et un appel à l''action. Tout le reste va dans la **légende** (le texte écrit sous la publication).
+
+## L''accroche : 3 à 7 mots
+
+L''accroche est le texte principal. Elle doit être comprise en une seconde.
+
+```schema comparaison
+titre: Réécrire une accroche
+colonnes: Faible | Forte
+« Bienvenue dans notre boutique de vêtements » | « Nouvelle collection : -30 % »
+« Nous faisons des gâteaux pour toutes les occasions » | « Votre gâteau d''anniversaire en 24 h »
+« Venez découvrir notre restaurant » | « Le meilleur romazava d''Antsirabe »
+« Formation disponible » | « Apprenez Excel en 4 samedis »
+ton: mauvais-bon
+```
+
+Les accroches fortes ont en commun :
+
+1. **Un bénéfice concret** pour le lecteur (un prix, un gain de temps, un résultat).
+2. **Des mots simples**, ceux que le client emploierait lui-même.
+3. **Un chiffre** quand c''est possible : il attire l''œil et rend le message précis.
+4. **Pas de formule vide** (« de qualité », « le meilleur service », « venez nombreux ») sans preuve.
+
+> [!astuce] Demandez « pourquoi le client achèterait ? »
+> Quand un client vous envoie « faites un visuel pour mes chaussures », demandez-lui : « Qu''est-ce qui fait que vos clients achètent chez vous plutôt qu''ailleurs ? » La réponse (« livraison gratuite à Tana », « pointures jusqu''au 46 », « paiement en 2 fois ») est souvent la meilleure accroche.
+
+## Peu de texte sur l''image, le reste dans la légende
+
+Un visuel chargé de texte se lit mal sur téléphone et attire moins l''œil. Répartissez l''information :
+
+| Sur le visuel | Dans la légende |
+| --- | --- |
+| L''accroche (3 à 7 mots) | L''explication complète de l''offre |
+| Le prix ou la date | Les conditions (« dans la limite des stocks ») |
+| L''appel à l''action court | Les horaires, l''adresse détaillée, le plan |
+| Le logo, petit | Les mots-clés et hashtags |
+
+> [!cle] Une règle de repère : 20 % de texte
+> Un repère souvent utilisé par les graphistes : le texte ne devrait pas couvrir plus d''environ **un cinquième** de la surface du visuel. Ce n''est pas une règle officielle des plateformes, mais un bon garde-fou : au-delà, le visuel devient une affiche illisible sur téléphone.
+
+## Les grands types de publications
+
+| Type | Objectif | Ce qui compte | Exemple |
+| --- | --- | --- | --- |
+| **Promotion** | Vendre vite | Prix, réduction, date limite | « -20 % ce week-end » |
+| **Produit** | Montrer et donner envie | Photo nette, détails, prix | Un sac en raphia, ses couleurs, son prix |
+| **Annonce** | Informer | Date, lieu, information claire | Nouveaux horaires, fermeture exceptionnelle |
+| **Témoignage** | Rassurer | Citation courte, prénom, photo | « Livraison rapide, très bonne qualité ! » |
+| **Conseil** | Créer la confiance, être partagé | Un conseil utile, en peu de mots | « 3 astuces pour conserver la vanille » |
+| **Coulisses** | Humaniser la marque | Photo authentique de l''équipe ou de la fabrication | L''atelier de couture au travail |
+
+Une page qui ne publie que des promotions lasse vite ses abonnés. Proposez à vos clients un **mélange** : par exemple, sur 10 publications, 4 produits ou promotions, 3 conseils ou témoignages, 2 coulisses, 1 annonce. C''est un argument pour vendre un forfait mensuel (leçon 4.5).
+
+> [!exemple] La boutique de raphia de Lalao
+> Lalao vend des sacs en raphia à Antananarivo et à des clientes de la diaspora. Sa graphiste lui propose 8 publications par mois : 3 photos de produits détourés sur fond uni (couleur différente pour chaque modèle), 2 témoignages de clientes en France, 2 coulisses (les artisanes au travail, avec leur accord), 1 promotion pour la fête des mères. La page gagne en crédibilité, et les commandes depuis l''étranger augmentent.
+
+## Tester avant de livrer
+
+```schema checklist
+titre: 4 tests avant d''envoyer une publication
+[x] Test du pouce : affichez le visuel en petit au milieu d''autres publications ; est-ce qu''il se remarque ?
+[x] Test des 3 secondes : l''accroche se comprend-elle immédiatement ?
+[x] Test du téléphone : le plus petit texte se lit-il sans zoomer ?
+[x] Test de l''action : sait-on quoi faire après avoir vu le visuel ?
+```
+
+Pour le test du pouce, mettez votre visuel dans une capture d''écran de fil Facebook ou Instagram (dans Canva, posez-le au milieu de 3 autres publications) : vous verrez tout de suite s''il ressort ou s''il se fond dans la masse.
+
+> [!madagascar] Les publications qui marchent à Madagascar
+> - **Le prix bien visible** : beaucoup d''acheteurs demandent « combien ? » en commentaire. Afficher le prix évite des dizaines de questions et filtre les clients sérieux.
+> - **Le numéro WhatsApp ou MVola** : c''est souvent ainsi que se passent la commande et le paiement.
+> - **La livraison** : précisez la zone (« livraison à Tana et périphérie ») ; c''est un critère de choix important.
+> - **Le malgache et le français** : selon la clientèle, une accroche en malgache peut toucher davantage. Demandez au client dans quelle langue parlent ses acheteurs.
+
+> [!erreur] Mettre toute la description sur le visuel
+> Le client vous envoie 10 lignes et veut « tout sur l''image ». Proposez-lui deux versions : la sienne (tout le texte) et la vôtre (accroche + prix + action, le reste en légende). Montrez-les en petit, sur un téléphone. Dans la grande majorité des cas, il choisit la vôtre.
+
+> [!attention] Erreurs fréquentes
+> - Une accroche vague (« Bienvenue », « Découvrez »).
+> - Trop de texte sur l''image ; texte trop petit.
+> - Pas d''appel à l''action, ou un appel à l''action caché.
+> - Un logo énorme qui prend la place du message.
+
+> [!retenir]
+> - 4 éléments : **accroche, détail utile, image, appel à l''action**.
+> - Accroche de **3 à 7 mots**, avec un bénéfice concret et, si possible, un chiffre.
+> - Peu de texte sur le visuel, **le reste dans la légende**.
+> - Variez les **types de publications** : promotion, produit, témoignage, conseil, coulisses.
+> - Testez : **pouce, 3 secondes, téléphone, action**.
+
+## Exercice pratique : 3 publications pour un même client
+
+> [!exercice] Exercice pratique · 1 heure
+> **Le client (fictif)** : « Ravin''Jus », un bar à jus frais à Toamasina, ouvert de 7 h à 18 h, jus à partir de 2 500 Ar, livraison en ville.
+> 1. Écrivez 3 accroches de 3 à 7 mots pour 3 publications : une **promotion**, un **produit**, un **conseil**.
+> 2. Créez les 3 publications carrées dans Canva, avec la même palette et les mêmes polices.
+> 3. Rédigez la légende de chacune (3 à 5 lignes).
+> 4. Faites le test du pouce : placez chaque visuel au milieu de 3 autres publications et notez s''il ressort.
+>
+> **À livrer** : vos 3 visuels, leurs légendes et le résultat de vos tests.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 0, 0, 'Quels sont les 4 éléments d''une publication efficace ?', '["Logo, slogan, adresse, horaires","Trois photos et un prix","Accroche, détail utile, image, appel à l''action","Titre, sous-titre, texte long, signature"]'::jsonb, 2, 'Ces 4 éléments suffisent ; le reste de l''information va dans la légende, sous la publication.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 0, 1, 'Quelle accroche est la plus forte ?', '["« Venez nombreux »","« Bienvenue dans notre pâtisserie »","« Votre gâteau d''anniversaire en 24 h »","« Pâtisserie de qualité »"]'::jsonb, 2, 'Elle donne un bénéfice concret et précis au lecteur ; les autres sont des formules vagues qui ne disent pas pourquoi agir.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 0, 2, 'Où mettre les conditions, l''adresse détaillée et les horaires ?', '["Dans la légende de la publication","En grand sur le visuel","Dans le logo","Nulle part"]'::jsonb, 0, 'Le visuel doit rester lisible en un coup d''œil sur téléphone ; les détails se lisent dans la légende par les personnes intéressées.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 0, 3, 'Pourquoi varier les types de publications (produit, conseil, témoignage…) ?', '["Une page qui ne publie que des promotions lasse ses abonnés","Facebook l''oblige","Pour utiliser plus de couleurs","Pour publier moins souvent"]'::jsonb, 0, 'Le mélange crée la confiance et l''intérêt ; c''est aussi un argument pour proposer un forfait mensuel au client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 0, 4, 'À Madagascar, pourquoi afficher le prix sur le visuel ?', '["C''est obligatoire par la loi sur Facebook","Il évite des dizaines de questions « combien ? » et filtre les clients sérieux","Pour remplir l''espace vide","Pour cacher la photo"]'::jsonb, 1, 'Les acheteurs demandent souvent le prix en commentaire ; l''afficher fait gagner du temps au vendeur et aux clients.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 3, 1, 'Stories, carrousels et miniatures YouTube', 11, 'Au-delà de la publication carrée, trois formats reviennent sans cesse dans les commandes : la **story** (verticale, éphémère), le **carrousel** (plusieurs images qu''on fait glisser) et la **miniature YouTube**. Chacun a ses règles propres. Les maîtriser vous permet de proposer des « packs » plus complets à vos clients, et de travailler pour les créateurs de contenu, souvent à l''étranger.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Concevoir une story lisible et respectant la zone de sécurité.
+> 2. Construire un carrousel qui donne envie de faire glisser.
+> 3. Créer une miniature YouTube efficace en petit.
+> 4. Adapter un même message à plusieurs formats.
+
+## La story : verticale et rapide
+
+Une story reste affichée **quelques secondes** et disparaît après 24 heures. On la regarde téléphone en main, en plein écran.
+
+```schema comparaison
+titre: Publication ou story ?
+colonnes: Publication carrée ou verticale | Story
+Reste sur la page, visible longtemps | Disparaît après 24 h (sauf « à la une »)
+Vue dans le fil, au milieu d''autres | Vue en plein écran, l''une après l''autre
+Peut contenir un peu plus d''information | Une seule idée par story, lisible en 2 secondes
+Format 1080 × 1080 ou 1080 × 1350 | Format 1080 × 1920, avec zones cachées en haut et en bas
+```
+
+### Les règles d''une bonne story
+
+1. **Une idée par story.** Pour plusieurs informations, faites une série de 2 à 4 stories.
+2. **Texte dans la zone centrale** : laissez environ 250 px libres en haut et en bas (leçon 3.5).
+3. **Grand et contrasté** : le titre fait souvent 90 à 130 px de haut.
+4. **Laissez de la place aux éléments interactifs** : le client ajoutera peut-être un sondage, un compte à rebours ou un lien. Prévoyez une zone vide pour cela.
+5. **Pensez au mouvement** : les stories animées (texte qui apparaît, produit qui glisse) attirent plus l''œil ; Canva permet des animations simples.
+
+> [!exemple] Une série de 3 stories pour une soirée
+> 1. Story 1 : « Samedi soir » en très grand sur une photo de la salle.
+> 2. Story 2 : le nom de l''artiste et sa photo.
+> 3. Story 3 : « Entrée 10 000 Ar · Réservez sur WhatsApp », avec une zone vide pour l''autocollant de lien ajouté par le client.
+
+## Le carrousel : faire glisser jusqu''au bout
+
+Un carrousel est une publication de **2 à 10 images** (ou plus selon les plateformes) que l''on fait glisser. Il est idéal pour expliquer, comparer ou présenter plusieurs produits.
+
+```schema etapes
+titre: La structure d''un carrousel de 5 images
+Image 1 : la promesse, qui donne envie de glisser
+Images 2 à 4 : une idée par image, même mise en page
+Image 5 : le résumé et l''appel à l''action
+```
+
+1. **La première image** est la plus importante : c''est elle qu''on voit dans le fil. Elle pose une question ou une promesse (« 5 erreurs qui abîment vos cheveux »).
+2. **Les images du milieu** gardent la même mise en page (titre au même endroit, même fond), avec une seule idée chacune.
+3. **Un indice visuel** invite à glisser : une flèche, un numéro (« 1/5 »), une forme qui continue sur l''image suivante.
+4. **La dernière image** résume et donne l''action : « Prenez rendez-vous au 032… ».
+
+> [!astuce] Le carrousel « continu »
+> Créez un seul grand visuel de 5 × 1080 px de large (5400 × 1080 px pour un carrousel carré), puis découpez-le en 5 images de 1080 × 1080 px. Une forme ou une photo qui traverse deux images donne une impression de continuité, et pousse naturellement à glisser. Dans Canva, faites 5 pages identiques et alignez les éléments qui « débordent » au même niveau sur deux pages voisines.
+
+## La miniature YouTube : lisible en tout petit
+
+La miniature est l''image d''aperçu d''une vidéo. Sur un téléphone, elle s''affiche souvent en **quelques centimètres de large**. Elle doit donner envie de cliquer… sans mentir sur le contenu.
+
+```schema ecran
+titre: Miniature YouTube 1280 × 720 px
+gauche: Visage expressif, grand, détouré [1]
+centre: 3 ou 4 mots, très gros, très contrastés [2]
+droite: Élément concret : objet, résultat, chiffre [3]
+bas: Coin inférieur droit libre : la durée de la vidéo s''y affiche [4]
+[1] Un visage avec une émotion claire (surprise, joie, concentration) attire l''œil
+[2] Pas le titre de la vidéo : un complément court (« ENFIN ! », « 30 JOURS », « AVANT / APRÈS »)
+[3] Ce dont parle la vidéo, en grand, reconnaissable
+[4] YouTube affiche la durée en bas à droite : ne mettez rien d''important à cet endroit
+```
+
+| Règle | Pourquoi |
+| --- | --- |
+| 3 ou 4 mots maximum | Le titre de la vidéo est déjà écrit à côté |
+| Texte très gros, contour ou ombre | Lisible en 150 px de large |
+| 1 visage, 1 objet, 1 texte | Trois éléments, pas plus |
+| Couleurs vives et contraste fort | La miniature doit ressortir parmi les autres |
+| Même style pour toute la chaîne | Les abonnés reconnaissent la chaîne d''un coup d''œil |
+
+> [!attention] Pas de miniature trompeuse
+> Une miniature qui promet ce que la vidéo ne montre pas (« piège à clic ») déçoit les spectateurs, fait baisser le temps de visionnage, et peut nuire à la chaîne. Une bonne miniature **exagère l''émotion, pas la réalité**.
+
+> [!madagascar] Un marché pour travailler à distance
+> Les créateurs de contenu francophones (France, Belgique, Québec, Afrique de l''Ouest) publient souvent une ou deux vidéos par semaine et cherchent un graphiste régulier pour leurs miniatures. C''est un travail court, répétitif, bien adapté au télétravail depuis Madagascar : un bon client peut représenter 4 à 8 miniatures par mois. Préparez 6 miniatures d''exemple pour des chaînes fictives avant de démarcher.
+
+## Adapter un message à plusieurs formats
+
+Un client demande souvent : « le même visuel en publication, en story et en bannière ». **Étirer** l''image ne fonctionne jamais : il faut **recomposer**.
+
+```schema formats
+titre: Le même message, 4 compositions différentes
+Publication : 1080 x 1080
+Story : 1080 x 1920
+Miniature : 1280 x 720
+Bannière Facebook : 1640 x 624
+```
+
+1. **Gardez** les éléments clés : accroche, image principale, couleurs, appel à l''action.
+2. **Réorganisez** selon la forme : en vertical, on empile (titre, image, action) ; en horizontal, on place côte à côte (image à gauche, texte à droite).
+3. **Supprimez** ce qui ne tient pas : la bannière ne garde souvent que l''accroche et l''image.
+4. **Vérifiez** les zones cachées de chaque format.
+
+> [!erreur] Le texte coupé dans la bannière
+> Sur téléphone, la couverture Facebook est recadrée sur les côtés. Un graphiste place le numéro de téléphone tout à droite : il disparaît sur mobile, là où se trouvent la plupart des visiteurs. Gardez le texte **au centre** des bannières, et vérifiez l''affichage sur un téléphone avant de livrer.
+
+> [!retenir]
+> - **Story** : une idée, zone centrale, place pour les éléments interactifs.
+> - **Carrousel** : première image qui promet, mise en page constante, dernière image qui fait agir.
+> - **Miniature** : 3 ou 4 mots, un visage, un objet, fort contraste ; coin inférieur droit libre.
+> - **Plusieurs formats** : on recompose, on n''étire jamais.
+
+## Exercice pratique : un carrousel et sa miniature
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez un carrousel de 5 images carrées pour une pharmacie fictive de Mahajanga : « 4 gestes pour se protéger du soleil ».
+> 2. Respectez la structure : promesse, 3 conseils (une image chacun, même mise en page), résumé et appel à l''action.
+> 3. Ajoutez un indice visuel qui invite à glisser.
+> 4. Créez une miniature YouTube (1280 × 720 px) pour une vidéo fictive « J''ai appris Canva en 30 jours », avec 3 ou 4 mots maximum.
+> 5. Affichez la miniature à 150 px de large sur votre écran : le texte se lit-il ?
+>
+> **À livrer** : les 5 images du carrousel et la miniature.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 1, 0, 'Combien d''idées mettre dans une story ?', '["Une seule","Aucune, seulement une photo","Trois","Toutes les informations de l''offre"]'::jsonb, 0, 'Une story se regarde en 2 secondes en plein écran : une idée par story, et une série de stories pour plusieurs informations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 1, 1, 'Quelle image d''un carrousel est la plus importante ?', '["La première, celle qu''on voit dans le fil","La dernière","Elles ont toutes la même importance","Celle du milieu"]'::jsonb, 0, 'La première image doit donner envie de glisser ; si elle n''attire pas, personne ne voit les suivantes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 1, 2, 'Combien de mots mettre sur une miniature YouTube ?', '["Le titre complet de la vidéo","3 ou 4 au maximum","Au moins 15","Aucun mot n''est conseillé"]'::jsonb, 1, 'La miniature s''affiche en tout petit et le titre est déjà écrit à côté : quelques mots très gros suffisent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 1, 3, 'Pourquoi laisser libre le coin inférieur droit d''une miniature YouTube ?', '["Pour économiser des pixels","C''est la place du logo de YouTube","Ce coin n''est pas visible","YouTube y affiche la durée de la vidéo"]'::jsonb, 3, 'La durée de la vidéo se superpose à cet endroit et cacherait un texte ou un détail important.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 1, 4, 'Un client veut le même visuel en publication, story et bannière. Que faire ?', '["Couper l''image au hasard","Livrer le carré pour tous les formats","Recomposer chaque format en gardant les éléments clés","Étirer l''image pour remplir chaque format"]'::jsonb, 2, 'Chaque format a sa forme et ses zones cachées : on réorganise les mêmes éléments, on ne les déforme pas.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 3, 2, 'Affiches et flyers d''événement', 12, 'L''affiche d''événement est une commande très fréquente à Madagascar : concerts, kermesses, conférences, compétitions sportives, fêtes paroissiales, soirées. Elle combine tout ce que vous avez appris : hiérarchie forte, informations pratiques exactes et souvent une double vie, sur Facebook et sur papier. Cette leçon vous donne une méthode complète, du message du client au fichier pour l''imprimeur.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Recueillir toutes les informations d''un événement sans oubli.
+> 2. Construire la hiérarchie d''une affiche.
+> 3. Adapter une affiche à la distance de lecture.
+> 4. Concevoir un flyer recto verso.
+> 5. Livrer la version numérique et la version imprimée.
+
+## Recueillir les informations : la fiche événement
+
+Avant de commencer, envoyez au client cette liste et demandez-lui de la remplir. Elle évite les oublis et les allers-retours.
+
+```schema checklist
+titre: La fiche événement à faire remplir
+[ ] Nom de l''événement (et de l''artiste ou de l''intervenant)
+[ ] Date complète, avec le jour de la semaine
+[ ] Heure de début (et de fin si utile)
+[ ] Lieu précis, avec un repère connu
+[ ] Prix des billets, points de vente ou numéro de réservation
+[ ] Organisateur et partenaires (logos en bonne qualité)
+[ ] Photos ou visuels disponibles (artiste, lieu, éditions précédentes)
+[ ] Supports : Facebook, story, affiche A3, flyer A5 ? Quantités ?
+```
+
+> [!madagascar] Le jour de la semaine
+> Écrivez toujours « Samedi 14 décembre » et non « le 14/12 ». Le jour de la semaine permet au lecteur de se situer immédiatement, et il vous permet de **détecter une erreur** : si le client écrit « samedi 15 » alors que le 15 est un dimanche, demandez-lui laquelle des deux informations est juste. Ce genre d''erreur est fréquent, et une affiche imprimée avec une date fausse coûte cher à l''organisateur.
+
+## La hiérarchie d''une affiche
+
+```schema pyramide
+titre: Les niveaux d''une affiche d''événement
+Niveau 1 : le nom de l''artiste ou de l''événement
+Niveau 2 : date, heure et lieu, groupés
+Niveau 3 : prix, réservation, organisateur
+Niveau 4 : logos des partenaires, mentions
+```
+
+Une affiche contient plus d''informations qu''une publication. Elle a donc souvent **4 niveaux**. La règle reste la même : un seul élément domine, les autres sont groupés et de plus en plus discrets.
+
+### Un schéma de mise en page classique
+
+```schema ecran
+titre: Affiche A3 en format portrait
+haut: Nom de l''événement en très grand [1]
+centre: Photo de l''artiste ou visuel fort [2]
+bas: Bloc date, heure, lieu, puis bande des partenaires [3]
+[1] Le titre occupe le tiers supérieur : il se voit de loin
+[2] L''image principale crée l''émotion et l''envie de venir
+[3] Date, heure et lieu en un seul bloc ; prix et réservation juste en dessous ; logos des partenaires alignés tout en bas, à la même hauteur
+```
+
+> [!astuce] La bande des partenaires
+> Les organisateurs veulent souvent 8 ou 10 logos de sponsors. Placez-les tous dans une **bande en bas**, sur un fond uni (souvent blanc), alignés et de taille visuellement égale. Demandez-les en PNG transparent ou en vectoriel. S''ils arrivent en photo floue prise sur Facebook, signalez-le au client : un logo flou sur une affiche imprimée donne une mauvaise image… à l''organisateur comme au sponsor.
+
+## La distance de lecture
+
+Une affiche n''est pas regardée comme un écran. Elle est vue **de loin**, en passant, sur un mur, un poteau ou une vitrine.
+
+| Support | Distance de lecture | Hauteur minimale du titre |
+| --- | --- | --- |
+| Flyer A5 en main | 30 à 40 cm | environ 1 cm |
+| Affiche A3 sur un mur | 2 à 3 m | environ 4 à 5 cm |
+| Affiche A2 ou A1 dans la rue | 5 à 10 m | environ 8 à 15 cm |
+| Banderole | 10 à 30 m | environ 20 à 40 cm |
+
+Un repère simple pour les grandes distances : une lettre de **2,5 à 3 cm de haut** se lit à environ **10 mètres** par une personne à la vue normale, dans de bonnes conditions. Plus loin, et pour un passant pressé, il faut agrandir encore. Testez en imprimant votre affiche en petit (A4) et en la regardant à 2 mètres : si le titre ne se lit pas, il ne se lira pas non plus en grand dans la rue.
+
+## Le flyer recto verso
+
+Le flyer est distribué en main : on a quelques secondes au recto pour donner envie de le retourner.
+
+```schema comparaison
+titre: Répartir l''information sur un flyer A5
+colonnes: Recto | Verso
+L''accroche et l''image forte | Le programme ou les détails
+La date et le lieu | Les tarifs, les conditions
+Un appel à retourner (« Programme au dos ») | Le plan d''accès, les contacts, les réseaux
+Le logo de l''organisateur | Les logos des partenaires
+```
+
+> [!exemple] La kermesse de l''école Saint-Joseph, à Fianarantsoa
+> Recto : « Grande kermesse » en très grand, une photo d''enfants qui jouent, « Dimanche 8 juin · dès 9 h · Cour de l''école ». Verso : le programme heure par heure (jeux, spectacle, tombola), le prix des tickets de jeu, un petit plan, le numéro de l''association des parents. Le recto se lit en 3 secondes ; le verso garde toutes les informations utiles pour ceux qui sont intéressés.
+
+## Livrer : numérique et impression
+
+La même affiche sert souvent sur Facebook **et** au mur. Préparez deux fichiers distincts :
+
+| Version | Format | Réglages |
+| --- | --- | --- |
+| Facebook / Instagram | PNG, 1080 × 1350 px (vertical) | Texte vérifié sur téléphone |
+| Story | PNG, 1080 × 1920 px | Recomposée, texte dans la zone centrale |
+| Affiche A3 imprimée | PDF pour impression | 297 × 420 mm, 300 dpi, 3 mm de fond perdu |
+| Flyer A5 recto verso | PDF de 2 pages | 148 × 210 mm, fond perdu, recto en page 1 |
+
+> [!cle] Le format A et ses proportions
+> Tous les formats A (A5, A4, A3, A2…) ont la **même proportion** : on passe de l''un à l''autre en doublant ou en divisant la surface. Une affiche créée en A3 peut donc être imprimée en A4 ou en A2 sans déformation, à condition que les images soient en assez haute résolution. Dans Canva, créez le design en A3 et choisissez la taille à l''impression.
+
+> [!erreur] La date validée « de mémoire »
+> Le client dit au téléphone « c''est le 21 ». Vous l''écrivez, il ne relit pas, 300 affiches sont imprimées… et l''événement est le 22. Ne validez **jamais** une information pratique à l''oral : envoyez le texte complet par écrit et attendez un « Validé » écrit avant l''impression.
+
+> [!attention] Erreurs fréquentes
+> - Oublier le jour de la semaine, l''heure ou le lieu précis.
+> - Mettre les logos des partenaires en grand, à la place du message.
+> - Un titre trop petit pour être lu à 2 mètres.
+> - Envoyer à l''imprimeur la version Facebook (72 dpi, sans fond perdu).
+
+> [!retenir]
+> - Faites remplir la **fiche événement** avant de commencer.
+> - **4 niveaux** : événement, date-heure-lieu, prix-réservation, partenaires.
+> - Adaptez la taille du titre à la **distance de lecture**.
+> - Flyer : **recto** pour attirer, **verso** pour informer.
+> - Deux livraisons : **PNG pour les réseaux**, **PDF pour l''imprimeur**, après validation écrite.
+
+## Exercice pratique : l''affiche d''un concert
+
+> [!exercice] Exercice pratique · 1 heure 15
+> **L''événement (fictif)** : le groupe « Tsiky Band » en concert, samedi 13 décembre 2026 à 19 h, à la salle Ravinala de Toamasina (lieu fictif) ; billets à 15 000 Ar, réservation au 034 00 000 00 ; 5 partenaires.
+> 1. Vérifiez la date dans un calendrier : le 13 décembre 2026 est-il bien un samedi ? Si ce n''est pas le cas, écrivez le message que vous enverriez au client, puis continuez avec la date qu''il « confirme » (choisissez le samedi 12 décembre).
+> 2. Créez l''affiche A3 avec les 4 niveaux et la bande des partenaires (logos fictifs simples).
+> 3. Imprimez-la en A4 ou regardez-la à l''écran en petit, à 2 mètres : corrigez la taille du titre si besoin.
+> 4. Déclinez une version Facebook (1080 × 1350 px) et une story (1080 × 1920 px).
+> 5. Exportez l''affiche en PDF pour impression avec fond perdu.
+>
+> **À livrer** : les 3 fichiers et votre message au client (question 1).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 2, 0, 'Pourquoi écrire le jour de la semaine avec la date (« Samedi 14 décembre ») ?', '["Le lecteur se situe vite, et cela permet de repérer une erreur de date","Pour faire plus joli","Pour remplir l''affiche","Parce que les chiffres sont interdits"]'::jsonb, 0, 'Si le jour et la date ne correspondent pas, vous détectez une erreur avant l''impression et vous demandez confirmation au client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 2, 1, 'Où placer les logos des 10 partenaires d''un concert ?', '["Dispersés partout sur l''affiche","Dans une bande en bas, alignés et de taille égale","En grand au centre","À la place de la photo de l''artiste"]'::jsonb, 1, 'Les partenaires sont au niveau 4 : visibles mais discrets, pour ne pas concurrencer le message principal.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 2, 2, 'Comment vérifier qu''une affiche A3 se lira de loin ?', '["Compter les mots","Demander si les couleurs plaisent","La regarder de très près à l''écran","L''imprimer en petit ou la regarder réduite à 2 mètres"]'::jsonb, 3, 'Une affiche est lue de loin, en passant : si le titre ne se lit pas réduit à 2 mètres, il ne se lira pas dans la rue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 2, 3, 'Sur un flyer recto verso, que mettre au recto ?', '["Uniquement les logos des partenaires","Le programme détaillé et le plan","L''accroche, l''image forte, la date et le lieu","Les conditions générales"]'::jsonb, 2, 'Le recto doit donner envie de retourner le flyer ; le verso garde les détails pour les personnes intéressées.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 2, 4, 'Quand pouvez-vous lancer l''impression d''une affiche ?', '["Dès que le client a dit « c''est bon » au téléphone","Quand l''imprimeur est disponible","Après la validation écrite du client sur le texte final","Avant de lui montrer le visuel"]'::jsonb, 2, 'Une validation écrite évite les erreurs coûteuses et vous protège si une information fournie par le client était fausse.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 3, 3, 'Menus, cartes de visite et dépliants', 12, 'Les documents imprimés du quotidien (menus, cartes de visite, dépliants) sont moins spectaculaires qu''une affiche, mais très demandés par les restaurants, les hôtels, les cabinets et les commerçants. Ils demandent de la **rigueur** : beaucoup d''informations, peu de place, aucune erreur possible une fois imprimés. Cette leçon vous donne les mises en page qui fonctionnent et les vérifications à faire.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Mettre en page un menu clair et facile à lire.
+> 2. Créer une carte de visite recto verso.
+> 3. Concevoir un dépliant à 3 volets (plié en trois).
+> 4. Vérifier un document imprimé avant le bon à tirer.
+
+## Le menu de restaurant
+
+Un client lit un menu pour **choisir vite**. Le menu doit donc l''aider à trouver une catégorie, comparer les plats et voir les prix sans effort.
+
+```schema ecran
+titre: Menu A4, une colonne par catégorie
+haut: Nom du restaurant, logo, slogan court [1]
+gauche: Entrées, puis Plats [2]
+droite: Desserts, puis Boissons [3]
+bas: Horaires, téléphone, livraison, réseaux [4]
+[1] En-tête discret : le client sait déjà où il est
+[2] Les catégories en titres bien visibles, les plats en dessous
+[3] Même mise en page dans chaque colonne
+[4] Les informations pratiques en bas, en petit
+```
+
+### Les règles d''un menu lisible
+
+1. **Des catégories nettes** : titres de catégorie en gras ou en couleur, avec de l''espace au-dessus.
+2. **Nom du plat en gras**, description courte en dessous (une ligne), prix aligné.
+3. **Les prix alignés à droite**, dans une même colonne, sans symbole décoratif : « Romazava … 8 000 Ar » se lit mal avec des points de suite ; un simple alignement à droite est plus clair.
+4. **Pas plus de 2 polices**, et une taille de texte d''au moins 9 à 10 points à l''impression.
+5. **Mettre en avant 1 ou 2 plats** (spécialité du chef, plat le plus rentable) avec un encadré ou une petite photo.
+
+> [!exemple] Le menu de la gargote Chez Lova, à Antananarivo
+> Avant : 45 plats sur une page, en 3 polices, avec des prix écrits à la main sur des étiquettes. Après : 4 catégories (Plats malgaches, Grillades, Accompagnements, Boissons), 6 plats maximum par catégorie, la spécialité « Ravitoto sy henakisoa » encadrée avec une photo, les prix alignés à droite. Lova constate que ses clients commandent plus vite et que la spécialité se vend davantage.
+
+> [!astuce] Le menu modifiable
+> Les prix changent souvent. Créez le menu dans Canva et livrez au client, en plus du PDF, un **lien de modèle** (Partager → modèle) ou une version facile à mettre à jour. Ou bien proposez un forfait de mise à jour (par exemple 2 mises à jour par an incluses). C''est un service apprécié, et une raison pour le client de revenir vers vous.
+
+## La carte de visite
+
+La carte de visite paraît simple, mais elle concentre beaucoup d''informations sur un format minuscule : **85 × 55 mm** à Madagascar et en Europe (le format peut varier selon les pays, comme 89 × 51 mm aux États-Unis).
+
+```schema comparaison
+titre: Répartir les informations
+colonnes: Recto | Verso
+Logo, grand et centré (ou nom de la marque) | Nom et prénom, fonction
+Éventuellement le slogan | Téléphone, e-mail, adresse
+Couleur principale de la marque en fond | Site web ou réseaux, éventuellement un QR code
+```
+
+| Élément | Taille conseillée |
+| --- | --- |
+| Nom de la personne | 10 à 12 points |
+| Fonction | 7 à 8 points |
+| Coordonnées | 7 à 8 points (jamais moins de 6,5) |
+| Marge de sécurité | 3 à 5 mm des bords |
+| Fond perdu | 3 mm (soit 91 × 61 mm au total) |
+
+> [!definition] Le point (pt)
+> À l''impression, la taille du texte se mesure en **points** : 1 point ≈ 0,35 mm. Un texte de 8 pt fait donc environ 2,8 mm de haut (pour les majuscules et les lettres hautes). Les logiciels n''affichent pas tous la taille du texte dans la même unité : **imprimez toujours un essai à la taille réelle** pour vérifier la lisibilité.
+
+> [!cle] Le QR code
+> Un QR code peut renvoyer vers le WhatsApp, la page Facebook ou le site du client. Il doit faire **au moins 2 × 2 cm** sur une carte de visite, avec une marge blanche autour, et être **testé avec plusieurs téléphones** avant l''impression. Utilisez un générateur gratuit qui crée des codes « statiques » (le lien est écrit dans le code et ne dépend d''aucun abonnement).
+
+## Le dépliant à 3 volets
+
+Le dépliant (ou brochure) en 3 volets est une feuille A4 pliée en trois. Il présente un hôtel, une clinique, une école ou un circuit touristique.
+
+```schema etapes
+titre: L''ordre de lecture d''un dépliant à 3 volets (fermé, puis ouvert)
+Couverture (volet de droite, à l''extérieur) : titre, image, logo
+Volet replié (à l''intérieur, à gauche) : vu en premier à l''ouverture, une accroche
+Les 3 volets intérieurs : le contenu principal (services, programme, tarifs)
+Dos (volet du milieu, à l''extérieur) : contacts, plan, réseaux
+```
+
+La partie délicate est l''ordre des volets : une fois plié, le volet qui sert de couverture n''est pas celui qu''on imagine. **Faites toujours une maquette en papier** : pliez une feuille A4 en trois, écrivez sur chaque volet son contenu, puis dépliez-la pour voir où chaque partie doit se trouver dans votre fichier.
+
+> [!attention] Le volet rentrant
+> Dans un pli roulé, le volet qui se replie à l''intérieur doit être **2 à 3 mm plus étroit** que les autres, sinon il bute contre le pli et le dépliant ne ferme pas bien. Demandez à l''imprimeur ses dimensions exactes de volets : beaucoup fournissent un **gabarit** à télécharger.
+
+## Vérifier avant le bon à tirer
+
+Une erreur sur un document imprimé se reproduit sur des centaines d''exemplaires. Prenez 10 minutes pour cette vérification.
+
+```schema checklist
+titre: La relecture avant impression
+[ ] Orthographe : relire lentement, à voix haute, mot par mot
+[ ] Chiffres : chaque prix, chaque numéro de téléphone, chaque date
+[ ] Noms propres : nom du client, des plats, des personnes, des lieux
+[ ] Fond perdu de 3 mm et zone de sécurité respectés
+[ ] Images en 300 dpi (aucune image floue au zoom 100 %)
+[ ] QR code testé avec 2 téléphones
+[ ] Validation écrite du client sur le PDF final
+[ ] Épreuve (BAT) de l''imprimeur vérifiée avant le tirage complet
+```
+
+> [!madagascar] Les noms malgaches et français
+> Les noms malgaches sont longs et souvent mal écrits par les correcteurs automatiques. Copiez-collez les noms depuis le message du client au lieu de les retaper, et demandez-lui de vérifier spécialement l''orthographe des noms de personnes, de lieux et de plats. Une faute dans le nom du gérant sur sa propre carte de visite fait mauvaise impression.
+
+> [!erreur] Le texte trop petit « pour que tout rentre »
+> Pour faire tenir 50 plats sur un menu A4, le texte descend à 6 points : illisible dans un restaurant peu éclairé. Proposez plutôt de **réduire le nombre de plats** affichés, de passer à un menu de 2 pages, ou de mettre les boissons sur une carte séparée. Un menu lisible fait vendre plus qu''un menu complet mais illisible.
+
+> [!retenir]
+> - **Menu** : catégories nettes, plats en gras, prix alignés à droite, 1 ou 2 plats mis en avant.
+> - **Carte de visite** : 85 × 55 mm, texte d''au moins 7 pt, 3 mm de fond perdu, QR code de 2 cm testé.
+> - **Dépliant 3 volets** : maquette en papier d''abord, volet rentrant plus étroit, gabarit de l''imprimeur.
+> - **Relecture complète** et validation écrite avant le bon à tirer.
+
+## Exercice pratique : une carte de visite et un menu
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Créez la carte de visite recto verso de « Hery Rakoto, guide touristique à Morondava » (85 × 55 mm, fond perdu) avec un QR code vers un numéro WhatsApp fictif.
+> 2. Testez le QR code avec votre téléphone.
+> 3. Créez un menu A4 pour un snack fictif d''Antsirabe : 4 catégories, 5 plats par catégorie, prix alignés, une spécialité mise en avant.
+> 4. Imprimez les deux documents à la taille réelle (ou affichez-les à 100 % à l''écran) et vérifiez la lisibilité.
+> 5. Passez la liste de relecture et notez les corrections faites.
+>
+> **À livrer** : la carte en PDF (2 pages), le menu en PDF, et vos notes de relecture.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 3, 0, 'Comment présenter les prix sur un menu lisible ?', '["Mélangés au texte de la description","En police décorative","Alignés à droite, dans une même colonne","Écrits à la main sur des étiquettes"]'::jsonb, 2, 'Des prix alignés permettent de comparer d''un coup d''œil ; une police simple évite les erreurs de lecture.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 3, 1, 'Quel est le format courant d''une carte de visite à Madagascar et en Europe ?', '["210 × 297 mm","1080 × 1080 px","85 × 55 mm","148 × 210 mm"]'::jsonb, 2, '85 × 55 mm est le format standard ; avec 3 mm de fond perdu, le fichier fait 91 × 61 mm.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 3, 2, 'Quelle taille minimale pour un QR code sur une carte de visite ?', '["Environ 2 × 2 cm, avec une marge blanche","Toute la carte","La plus petite possible","5 × 5 mm"]'::jsonb, 0, 'Trop petit, le QR code n''est pas lu par tous les téléphones ; on le teste toujours avec plusieurs appareils avant d''imprimer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 3, 3, 'Que faire avant de mettre en page un dépliant à 3 volets ?', '["Choisir 5 polices","Imprimer 500 exemplaires d''essai","Commencer directement par la couverture","Une maquette en papier pliée pour placer chaque contenu"]'::jsonb, 3, 'Une fois plié, l''ordre des volets surprend : la maquette en papier montre où chaque partie doit se trouver dans le fichier.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 3, 4, 'Un menu de 50 plats ne tient sur une page qu''en 6 points. Que proposer ?', '["Réduire le nombre de plats affichés, ou passer à 2 pages","Mettre le texte en majuscules","Supprimer tous les prix","Garder le texte à 6 points"]'::jsonb, 0, 'Un texte de 6 points est illisible dans un restaurant peu éclairé ; un menu lisible fait vendre davantage qu''un menu complet.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 3, 4, 'Séries cohérentes et modèles réutilisables', 12, 'Un client qui publie tous les jours n''a pas besoin de visuels « au hasard » : il a besoin d''une **série cohérente**, reconnaissable au premier coup d''œil, et livrée régulièrement. C''est aussi ce qui vous permet de vendre des forfaits mensuels et d''avoir des revenus stables. Cette leçon vous apprend à créer un système de visuels : une charte de publication, des modèles réutilisables et un calendrier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rendre une page reconnaissable grâce à la cohérence.
+> 2. Créer des modèles réutilisables (gabarits).
+> 3. Organiser un calendrier de publications.
+> 4. Proposer un forfait mensuel à un client.
+
+## La cohérence : être reconnu sans lire le nom
+
+Quand une page est cohérente, ses abonnés reconnaissent ses publications **avant même de lire le nom** du commerce. C''est le signe d''une marque solide.
+
+```schema comparaison
+titre: Ce qui crée la cohérence d''une page
+colonnes: Ce qui doit rester constant | Ce qui peut varier
+Les 3 couleurs de la palette | La photo de chaque publication
+Les 2 polices et leurs tailles | Le texte de l''accroche
+La position du logo et de l''appel à l''action | La couleur d''accent selon le type (promotion, conseil)
+Le style des photos (lumière, fond, cadrage) | Le format (carré, story, carrousel)
+Les marges et la grille | Les éléments graphiques secondaires
+```
+
+> [!definition] Charte de publication
+> Une charte de publication est une page de référence qui fixe les règles des visuels d''un client sur les réseaux : couleurs (codes HEX), polices et tailles, position du logo, marges, style des photos, et un exemple de chaque type de publication. Elle complète la charte graphique du logo (module 5). Avec elle, n''importe quel visuel futur reste cohérent, même si vous le faites dans un an.
+
+## Les modèles réutilisables
+
+Un **modèle** (ou gabarit) est un visuel préparé dont on ne change que le contenu : la photo, le texte, le prix. Avec 4 à 6 modèles par client, vous produisez une publication en 10 à 15 minutes au lieu d''une heure.
+
+```schema chiffres
+titre: Le kit de modèles d''un client (exemple)
+1 : modèle « Promotion » (grand pourcentage, fond de couleur)
+2 : modèle « Produit » (photo détourée, prix, fond uni)
+3 : modèle « Témoignage » (citation, prénom, étoiles)
+4 : modèle « Conseil » (titre court, 3 points)
+5 : modèle « Annonce » (horaires, événement)
+6 : modèle « Story » (vertical, zone de sécurité respectée)
+```
+
+### Comment construire un bon modèle
+
+1. **Partez d''un vrai visuel réussi** pour le client, pas d''un modèle vide.
+2. **Fixez les éléments constants** (logo, bandeau, marges) et verrouillez-les dans Canva.
+3. **Prévoyez la place du contenu variable** : une zone photo, une zone titre, une zone prix, assez grandes pour des textes de longueurs différentes.
+4. **Testez le modèle avec 3 contenus différents** (un titre court, un titre long, une photo claire, une photo sombre) : s''il casse, ajustez-le.
+5. **Nommez-le clairement** : `Lamba-Shop_modele_promotion_carre`.
+
+> [!astuce] Livrer les modèles au client ?
+> Certains clients veulent faire eux-mêmes leurs publications courantes. Vous pouvez leur vendre un **kit de modèles Canva** (partagé en lien « Utiliser comme modèle ») avec une courte vidéo ou une fiche qui explique comment changer la photo et le texte. Ils restent autonomes pour le quotidien, et reviennent vers vous pour les visuels plus importants. C''est un produit intéressant pour les petits budgets.
+
+## Le calendrier de publications
+
+Publier régulièrement compte plus que publier beaucoup. Un **calendrier éditorial** planifie les publications d''un mois à l''avance.
+
+```schema etapes
+titre: Préparer le mois d''un client en 5 étapes
+Faire le point : nouveautés, promotions, événements, dates importantes du mois
+Choisir le rythme : par exemple 3 publications et 5 stories par semaine
+Répartir les types : produits, promotions, conseils, témoignages, coulisses
+Créer tous les visuels en une ou deux sessions avec les modèles
+Faire valider le lot complet, puis livrer avec les légendes
+```
+
+| Semaine | Lundi | Mercredi | Vendredi |
+| --- | --- | --- | --- |
+| 1 | Produit (nouveauté) | Conseil | Promotion du week-end |
+| 2 | Témoignage | Produit | Coulisses |
+| 3 | Produit | Conseil | Promotion du week-end |
+| 4 | Annonce (événement du mois suivant) | Témoignage | Produit |
+
+> [!madagascar] Les dates qui comptent à Madagascar
+> Pensez à ces moments forts dans le calendrier de vos clients : la **rentrée scolaire**, la **fête de l''Indépendance (26 juin)**, les **fêtes de fin d''année**, la **Saint-Valentin**, la **fête des mères**, ainsi que les grandes fêtes religieuses selon la clientèle. Proposez les visuels **3 à 4 semaines avant** : les commerçants préparent leurs promotions à l''avance, et vous évitez le rush de dernière minute.
+
+## Vendre un forfait mensuel
+
+Un forfait mensuel transforme un client ponctuel en client récurrent. Présentez-le simplement, avec un contenu clair :
+
+```schema comparaison
+titre: Exemple de 3 forfaits mensuels
+colonnes: Essentiel | Standard | Complet
+8 publications | 12 publications | 12 publications et 12 stories
+1 modèle de chaque type | Kit de 6 modèles | Kit de 6 modèles et charte de publication
+Légendes non comprises | Légendes courtes rédigées | Légendes et calendrier du mois
+1 tour de corrections par lot | 1 tour de corrections par lot | 2 tours de corrections par lot
+```
+
+Les prix dépendent de votre niveau, de votre marché et du temps réel passé : vous apprendrez à les calculer au module 6. Retenez qu''un forfait se paie **en début de mois** (ou à 50 % au début et 50 % à mi-mois), et qu''il précise toujours le **nombre de visuels** et le **nombre de corrections** inclus.
+
+> [!erreur] Le forfait « illimité »
+> « Pour 200 000 Ar par mois, je fais tous vos visuels » : le client demandera 3 visuels par jour, avec des corrections à toute heure. Ne proposez **jamais** de forfait sans limite de quantité et de corrections. Un forfait précis protège votre temps, et le client sait exactement ce qu''il reçoit.
+
+> [!attention] Erreurs fréquentes
+> - Changer de style à chaque publication.
+> - Créer chaque visuel de zéro au lieu d''utiliser des modèles.
+> - Livrer les visuels un par un, au jour le jour, sans planning.
+> - Des forfaits flous, sans nombre de visuels ni de corrections.
+
+> [!retenir]
+> - La **cohérence** rend une page reconnaissable : couleurs, polices, logo, photos, grille.
+> - Une **charte de publication** fixe ces règles.
+> - **4 à 6 modèles** par client : une publication en 10 à 15 minutes.
+> - Un **calendrier mensuel** organise le rythme et les types de publications.
+> - Un **forfait mensuel** précis transforme un client ponctuel en client récurrent.
+
+## Exercice pratique : le calendrier d''un mois
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Reprenez le client « Ravin''Jus » de la leçon 4.1.
+> 2. Établissez son calendrier de publications pour un mois (3 publications par semaine), en tenant compte d''une date importante du mois choisi.
+> 3. Rédigez sa charte de publication en une page : palette, polices, position du logo, style des photos.
+> 4. Rédigez une proposition de forfait « Standard » en 6 lignes (sans le prix).
+>
+> **À livrer** : le calendrier, la charte de publication et la proposition de forfait.
+
+## Projet du module 4 : le kit réseaux sociaux complet
+
+> [!projet] Projet du module · 3 heures
+> **Le client (fictif)** : « Lamba Shop », une boutique de vêtements en lamba et en wax à Analakely, qui vend aussi à la diaspora en France. Ses mots-clés : coloré, fier, moderne.
+> 1. Définissez sa palette (3 couleurs) et ses 2 polices.
+> 2. Créez un **kit de 6 modèles** : promotion, produit, témoignage, conseil, annonce, story.
+> 3. Utilisez ces modèles pour produire **6 publications réelles** et **1 carrousel** de 4 images (« Comment porter le lamba au quotidien »).
+> 4. Créez **une affiche A3** pour un défilé de mode de la boutique, et sa version story.
+> 5. Rédigez la charte de publication d''une page.
+> 6. Présentez le tout dans un PDF de portfolio : la charte, les modèles, puis les visuels en situation (sur un téléphone, par exemple avec un cadre de téléphone dessiné dans Canva).
+>
+> **À livrer** : le PDF de présentation et le dossier Livraison. C''est l''un des projets les plus forts de votre portfolio : il montre que vous savez gérer une marque entière, pas seulement un visuel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 4, 0, 'Qu''est-ce qui doit rester constant d''une publication à l''autre ?', '["La palette, les polices, la position du logo et la grille","Le prix affiché","La photo et le texte de l''accroche","Le format, toujours carré"]'::jsonb, 0, 'Ces éléments constants rendent la page reconnaissable ; la photo et le texte changent à chaque publication.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 4, 1, 'À quoi sert un modèle (gabarit) de publication ?', '["Éviter de parler au client","Remplacer la charte graphique","Copier le travail d''un autre graphiste","Produire une publication en 10 à 15 minutes en ne changeant que le contenu"]'::jsonb, 3, 'Les éléments fixes sont déjà en place ; on remplace la photo, le texte et le prix, ce qui fait gagner beaucoup de temps.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 4, 2, 'Comment tester un modèle avant de l''utiliser ?', '["En l''imprimant en A3","Il n''y a pas besoin de le tester","En le montrant seulement à un ami","Avec des contenus différents : titre court et long, photo claire et sombre"]'::jsonb, 3, 'Un modèle doit supporter des contenus variés ; s''il casse avec un titre long ou une photo sombre, il faut l''ajuster.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 4, 3, 'Combien de temps à l''avance proposer les visuels d''une fête importante ?', '["Une semaine après","La veille au soir","3 à 4 semaines avant","Le jour même"]'::jsonb, 2, 'Les commerçants préparent leurs promotions à l''avance ; proposer tôt évite le rush et montre votre professionnalisme.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 3, 4, 4, 'Que doit toujours préciser un forfait mensuel ?', '["Le nombre d''heures passées par le graphiste","Uniquement le prix","Que tout est illimité","Le nombre de visuels et le nombre de corrections inclus"]'::jsonb, 3, 'Un forfait sans limite fait exploser votre charge de travail ; un forfait précis protège votre temps et rassure le client.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 4, 'Créer un logo et une identité visuelle', 'Du brief à la livraison : recherche, croquis, vectorisation, typographie et couleurs, tests, présentation au client, pack de fichiers et charte graphique.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 4, 0, 'Le brief et la recherche', 12, 'Le logo est souvent la commande la mieux payée d''un graphiste débutant, et celle qui demande le plus de méthode. Un client utilise son logo pendant des années : sur son enseigne, ses emballages, ses réseaux, ses factures. Un bon logo ne naît pas d''une inspiration soudaine, mais d''un **bon brief** et d''une **recherche sérieuse**. C''est l''objet de cette première leçon.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Mener un brief client avec 10 questions.
+> 2. Transformer les réponses en 3 mots-clés et une phrase de positionnement.
+> 3. Analyser les logos des concurrents.
+> 4. Construire une planche d''inspiration (moodboard).
+> 5. Fixer le cadre du projet avant de dessiner.
+
+## Les 7 étapes d''un projet de logo
+
+```schema etapes
+titre: Le chemin complet d''un logo (leçons 5.1 à 5.5)
+Brief, devis signé et acompte : leçon 5.1
+Recherche et planche d''inspiration : leçon 5.1
+Croquis sur papier : leçon 5.2
+Vectorisation des meilleures idées : leçon 5.2
+Couleur et typographie : leçon 5.3
+Tests, présentation et retouches : leçon 5.4
+Pack de livraison et charte : leçon 5.5
+```
+
+| Étape | Durée indicative | Ce que vous produisez |
+| --- | --- | --- |
+| Brief, devis, acompte | 1 jour | Brief écrit validé par le client |
+| Recherche | 2 à 3 h | Analyse des concurrents, planche d''inspiration |
+| Croquis | 2 h | 12 à 20 idées rapides |
+| Vectorisation | 1 jour | 3 propositions en noir et blanc |
+| Couleur et typographie | 2 h | 2 ou 3 propositions finales |
+| Présentation et retouches | 1 à 3 jours | Logo validé |
+| Livraison | 2 à 3 h | Pack de fichiers et charte |
+
+## Le brief : les 10 questions
+
+Le brief est l''entretien avec le client (appel, WhatsApp ou rendez-vous). Envoyez les questions à l''avance, puis faites un appel de 20 à 30 minutes pour les approfondir.
+
+```schema chiffres
+titre: Les 10 questions du brief
+1 : Que vendez-vous, et à qui exactement ?
+2 : Qu''est-ce qui vous différencie de vos concurrents ?
+3 : Quels sont vos 3 mots-clés (l''image que vous voulez donner) ?
+4 : Qui sont vos 2 ou 3 principaux concurrents ?
+5 : Quelles couleurs aimez-vous, lesquelles refusez-vous ?
+6 : Où le logo sera-t-il utilisé (enseigne, emballage, broderie, tampon…) ?
+7 : Avez-vous déjà un logo ou des éléments à garder ?
+8 : Quels logos aimez-vous (même hors de votre secteur), et pourquoi ?
+9 : Quel est votre budget ?
+10 : Pour quelle date en avez-vous besoin, et pourquoi cette date ?
+```
+
+> [!astuce] La question 2 est la plus précieuse
+> « Qu''est-ce qui vous différencie ? » Beaucoup de clients n''y ont jamais réfléchi. Aidez-les avec des exemples : l''origine (« vanille de la SAVA, récoltée par 40 familles »), le savoir-faire (« tissage à la main depuis trois générations »), le service (« livraison en 2 heures à Tana »). La réponse inspire souvent l''idée centrale du logo.
+
+## Du brief aux mots-clés
+
+Après l''appel, résumez le brief en **une page** et faites-la valider par écrit. Elle contient deux éléments essentiels :
+
+1. **Les 3 mots-clés** : l''image que le logo doit donner (exemple : naturel, authentique, haut de gamme).
+2. **La phrase de positionnement** : « [Marque] propose [quoi] à [qui], et se distingue par [quoi]. »
+
+> [!exemple] Le brief de la coopérative « Vanille d''Antalaha »
+> - **Activité** : vanille bourbon de la région SAVA, vendue en ligne à des épiceries fines en France.
+> - **Différence** : coopérative de 40 familles de producteurs, préparation traditionnelle, traçabilité de chaque lot.
+> - **Mots-clés** : naturel, authentique, haut de gamme.
+> - **Usages** : étiquettes de tubes en verre, boîtes cadeaux, site web, tampon sur les sacs en toile.
+> - **Couleurs** : aime le brun et l''or ; refuse le vert fluo.
+> - **Positionnement** : « Vanille d''Antalaha propose une vanille bourbon d''exception aux épiceries fines françaises, et se distingue par la traçabilité de chaque gousse, de la famille productrice au client. »
+
+## Analyser les concurrents
+
+Regardez les logos des concurrents **avant** de dessiner, pour deux raisons : comprendre les codes du secteur, et **éviter de leur ressembler**.
+
+```schema comparaison
+titre: Ce que l''analyse des concurrents vous apprend
+colonnes: Les codes du secteur (à connaître) | Les pièges (à éviter)
+Couleurs fréquentes : brun, noir, or pour la vanille | Un logo presque identique à un concurrent
+Symboles fréquents : gousse, fleur d''orchidée | Le symbole le plus banal, utilisé par tous
+Typographies : élégantes, avec empattements | Reprendre la même police que le leader du marché
+Ce qui inspire confiance dans ce secteur | Ce qui fait « bon marché » dans ce secteur
+```
+
+Faites un tableau simple avec 5 concurrents : nom, capture du logo, couleurs, type de logo (leçon 5.3), ce qui fonctionne, ce qui ne fonctionne pas. Cherchez ensuite **ce que personne ne fait** : c''est là que votre client peut se démarquer.
+
+## La planche d''inspiration (moodboard)
+
+La planche d''inspiration rassemble des images qui traduisent l''ambiance recherchée : couleurs, matières, formes, typographies, photos. Elle sert à **vérifier que vous et le client imaginez la même chose** avant de dessiner.
+
+```schema ecran
+titre: Une planche d''inspiration sur une page
+haut: Les 3 mots-clés en titre [1]
+gauche: Couleurs et matières : bois, papier kraft, or [2]
+centre: Photos d''ambiance : gousses, mains de producteurs, paysage de la SAVA [3]
+droite: Typographies et styles de logos qui inspirent [4]
+bas: 3 lignes : ce que nous voulons, ce que nous évitons [5]
+[1] La planche commence par l''objectif : naturel, authentique, haut de gamme
+[2] Des échantillons de couleurs avec leurs codes
+[3] 6 à 10 images d''ambiance, pas plus
+[4] Des exemples de lettres et de styles, jamais un logo à copier
+[5] Une conclusion écrite qui se fait valider par le client
+```
+
+Créez-la dans Canva ou Figma avec des photos libres (leçon 1.5) et envoyez-la au client avec une question simple : « Est-ce que cette ambiance correspond à ce que vous imaginez ? » Une heure de planche évite souvent trois tours de corrections.
+
+> [!madagascar] Les usages locaux du logo
+> Beaucoup de clients malgaches font imprimer leur logo sur des **tampons**, des **sacs en raphia** ou en toile, des **t-shirts brodés**, des **enseignes peintes à la main**. Posez la question 6 dès le brief : un logo trop détaillé, avec des dégradés ou des traits très fins, ne passera ni en broderie, ni en tampon, ni en peinture. Le savoir à l''avance est un vrai argument de qualité face aux concurrents.
+
+> [!erreur] Dessiner avant d''avoir le brief
+> Le client écrit : « Fais-moi un logo pour mon restaurant, je te laisse carte blanche. » Vous proposez 3 logos… et il répond : « Ce n''est pas du tout ça, je voulais quelque chose de plus traditionnel, en rouge. » Le « carte blanche » n''existe presque jamais. **Pas de dessin sans brief écrit validé**, même pour un ami.
+
+> [!attention] Erreurs fréquentes
+> - Commencer sans brief, sans devis et sans acompte.
+> - Oublier de demander où le logo sera utilisé.
+> - Ne pas regarder les concurrents, et proposer un logo qui leur ressemble.
+> - Une planche d''inspiration avec des logos à copier.
+
+> [!retenir]
+> - Un logo suit **7 étapes**, du brief à la livraison.
+> - **10 questions** de brief, dont la plus précieuse : « qu''est-ce qui vous différencie ? »
+> - Résumez en **3 mots-clés** et une **phrase de positionnement**, validés par écrit.
+> - **Analysez 5 concurrents** pour connaître les codes et vous en distinguer.
+> - La **planche d''inspiration** vérifie que vous imaginez la même chose que le client.
+
+## Exercice pratique : le brief de la coopérative
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Reprenez l''exemple « Vanille d''Antalaha » et complétez le brief : répondez aux 10 questions comme si vous étiez le client (inventez des réponses réalistes pour le budget et la date).
+> 2. Écrivez les 3 mots-clés et la phrase de positionnement.
+> 3. Cherchez 5 marques de vanille (malgaches ou étrangères) et remplissez le tableau d''analyse des concurrents.
+> 4. Créez une planche d''inspiration d''une page dans Canva, avec des photos libres.
+>
+> **À livrer** : le brief d''une page, le tableau des concurrents et la planche d''inspiration. Ils serviront pour toutes les leçons de ce module.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 0, 0, 'Quelle est la première étape d''un projet de logo ?', '["Le brief écrit validé, le devis signé et l''acompte","Chercher un logo à modifier sur Internet","Dessiner directement dans Inkscape","Choisir les couleurs préférées du graphiste"]'::jsonb, 0, 'Sans brief validé, on dessine au hasard et les retouches se multiplient ; le devis et l''acompte protègent votre travail.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 0, 1, 'Quelle question du brief est souvent la plus précieuse ?', '["« Combien d''employés avez-vous ? »","« Qu''est-ce qui vous différencie de vos concurrents ? »","« Quelle est votre police préférée ? »","« Avez-vous un ordinateur ? »"]'::jsonb, 1, 'La différence du client (origine, savoir-faire, service) inspire souvent l''idée centrale du logo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 0, 2, 'Pourquoi analyser les logos des concurrents avant de dessiner ?', '["C''est inutile","Pour choisir la même police que le leader","Pour connaître les codes du secteur et éviter de leur ressembler","Pour copier le meilleur"]'::jsonb, 2, 'On comprend ce qui inspire confiance dans le secteur, et l''on cherche ce que personne ne fait pour que le client se démarque.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 0, 3, 'À quoi sert une planche d''inspiration (moodboard) ?', '["Montrer des logos à copier","Remplacer le logo","Choisir le prix du projet","Vérifier avec le client l''ambiance recherchée avant de dessiner"]'::jsonb, 3, 'Une heure de planche évite souvent plusieurs tours de corrections, car on s''accorde sur l''ambiance avant de créer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 0, 4, 'Pourquoi demander où le logo sera utilisé (broderie, tampon, enseigne…) ?', '["Pour choisir la taille de l''écran","Ce n''est pas utile au graphiste","Un logo trop détaillé ne passera pas sur certains supports","Pour facturer plus cher"]'::jsonb, 2, 'Traits fins et dégradés disparaissent en broderie, en tampon ou en peinture : il faut le savoir avant de dessiner.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 4, 1, 'Des croquis au vectoriel', 11, 'Avec un brief clair et une planche d''inspiration validée, vous pouvez enfin dessiner. Les graphistes expérimentés commencent presque toujours **sur papier**, au crayon : c''est le moyen le plus rapide d''explorer beaucoup d''idées sans se perdre dans les réglages d''un logiciel. Cette leçon vous guide des premiers croquis jusqu''aux logos propres en vectoriel.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Produire 12 à 20 idées rapides sur papier.
+> 2. Utiliser 4 pistes de recherche pour varier les idées.
+> 3. Sélectionner les 3 meilleures idées avec des critères objectifs.
+> 4. Vectoriser un croquis dans Inkscape ou Figma.
+> 5. Travailler en noir et blanc avant la couleur.
+
+## Pourquoi commencer sur papier
+
+```schema comparaison
+titre: Papier ou ordinateur pour les premières idées ?
+colonnes: Sur papier | Directement sur ordinateur
+Une idée en 1 à 2 minutes | Une idée en 15 à 30 minutes
+On explore beaucoup de directions | On s''attache vite à la première idée
+On pense à la forme, pas aux réglages | On se perd dans les polices et les effets
+Fonctionne pendant une coupure de courant | Dépend de l''ordinateur et de la batterie
+```
+
+Un croquis n''a pas besoin d''être beau : c''est un outil de réflexion, pas un rendu. Des formes simples, des flèches et des annotations suffisent.
+
+## La méthode des 12 cases
+
+```schema etapes
+titre: Une séance de croquis en 30 minutes
+Préparer : une feuille A4 divisée en 12 cases, un crayon, le brief à côté
+Dessiner : une idée par case, en 2 minutes maximum, sans couleur
+Varier : utiliser les 4 pistes de recherche (ci-dessous)
+Recommencer : une deuxième feuille de 12 cases avec les meilleures directions
+Choisir : entourer les 3 idées les plus fortes
+```
+
+### Les 4 pistes de recherche
+
+Pour éviter de dessiner 12 fois la même idée, changez volontairement de piste :
+
+| Piste | Principe | Exemple pour « Vanille d''Antalaha » |
+| --- | --- | --- |
+| **Le symbole direct** | Dessiner ce que vend le client | Une gousse de vanille stylisée |
+| **Le symbole indirect** | Une idée liée (origine, valeur, émotion) | Une fleur d''orchidée, des mains qui récoltent, le soleil levant sur la côte Est |
+| **La lettre** | Construire le logo autour de l''initiale | Un « V » formé par deux gousses croisées |
+| **Le nom seul** | Travailler uniquement la typographie du nom | « Vanille d''Antalaha » dans une écriture élégante, avec un détail sur une lettre |
+
+> [!astuce] Combiner deux idées
+> Les logos les plus mémorables combinent souvent **deux idées dans une seule forme** : une gousse qui dessine aussi un « V », une feuille dont les nervures forment une carte de Madagascar. Après vos 12 premiers croquis, cherchez les idées que l''on peut fusionner. C''est souvent là que naît la bonne proposition.
+
+## Choisir les 3 meilleures idées
+
+Ne choisissez pas « celle que vous trouvez la plus jolie ». Notez chaque croquis avec des critères liés au brief :
+
+```schema checklist
+titre: Les 5 critères de sélection
+[ ] Correspond aux 3 mots-clés du brief
+[ ] Reste simple : on peut le redessiner de mémoire en 10 secondes
+[ ] Fonctionne en petit (photo de profil, tampon)
+[ ] Se distingue des logos des concurrents analysés
+[ ] Peut être brodé, tamponné ou peint (si le client en a besoin)
+```
+
+Gardez **3 idées différentes** (pas trois variantes de la même) : vous les présenterez au client comme trois directions possibles.
+
+## Vectoriser un croquis
+
+Une fois les 3 idées choisies, redessinez-les proprement en vectoriel (leçon 3.3).
+
+```schema etapes
+titre: Du croquis au vectoriel dans Inkscape
+Photographier le croquis, bien à plat, en lumière du jour
+Fichier → Importer, réduire l''opacité à 30 %, verrouiller le calque
+Redessiner avec les formes simples et les opérations booléennes
+Compléter à la plume (Bézier) avec le moins de points possible
+Ajouter le nom avec l''outil Texte, puis Objet en chemin
+Masquer la photo du croquis et vérifier le résultat seul
+```
+
+> [!definition] Vectoriser à la main ou automatiquement ?
+> Inkscape propose une **vectorisation automatique** (Chemin → Vectoriser un objet matriciel). Elle est pratique pour un dessin à l''encre très net, mais elle produit souvent des formes irrégulières, avec trop de points. Pour un logo professionnel, **redessinez à la main** en vous servant du croquis comme guide : les courbes seront plus propres et le fichier plus léger.
+
+### Travailler en noir et blanc d''abord
+
+Dessinez les 3 propositions **uniquement en noir sur fond blanc**. Si un logo fonctionne sans couleur, il fonctionnera avec. Si sa force vient seulement de la couleur, il sera faible sur un tampon, une photocopie ou une broderie d''une seule couleur.
+
+### Construire avec des formes géométriques
+
+Les logos professionnels sont souvent construits à partir de cercles, de carrés et d''angles réguliers. Cela leur donne une impression d''équilibre et de solidité.
+
+1. **Utilisez des cercles** pour dessiner les courbes : une gousse, une feuille, un pétale peuvent naître de l''intersection de deux cercles.
+2. **Répétez les mêmes angles** (30°, 45°) et les mêmes épaisseurs de trait.
+3. **Alignez sur une grille** (Affichage → Grille de page dans Inkscape) et utilisez le magnétisme pour placer les points.
+
+> [!exemple] La gousse-V de Tsiry
+> Tsiry, graphiste à Antsiranana, dessine pour la coopérative un « V » formé de deux gousses de vanille. Sur papier, l''idée est forte mais les gousses sont irrégulières. Dans Inkscape, il construit chaque gousse avec l''intersection de deux grands cercles, duplique la forme, la retourne en miroir et les assemble à 30°. Le résultat est net, équilibré, et reste lisible même à 32 pixels.
+
+> [!madagascar] Croquis pendant les coupures
+> Les séances de croquis sont parfaites pour les heures de délestage : il ne faut qu''un crayon, du papier et de la lumière du jour. Organisez votre semaine en conséquence : croquis pendant les coupures, vectorisation quand le courant revient.
+
+> [!erreur] Proposer 10 logos au client
+> Envoyer tous ses croquis au client « pour qu''il choisisse » donne une impression d''hésitation, et le client se perd. Il risque de demander de mélanger les idées 3, 7 et 9. **Sélectionnez vous-même** et présentez 2 ou 3 propositions abouties, chacune avec une explication. C''est votre rôle de professionnel.
+
+> [!attention] Erreurs fréquentes
+> - Sauter l''étape papier et s''attacher à la première idée.
+> - Dessiner 12 variantes de la même idée au lieu d''explorer 4 pistes.
+> - Utiliser la vectorisation automatique telle quelle pour un logo.
+> - Ajouter la couleur avant d''avoir un logo solide en noir et blanc.
+
+> [!retenir]
+> - **12 à 20 croquis rapides** sur papier avant tout travail à l''ordinateur.
+> - **4 pistes** : symbole direct, symbole indirect, lettre, nom seul.
+> - Choisissez **3 idées différentes** avec les 5 critères de sélection.
+> - **Vectorisez à la main** en suivant le croquis, avec des formes géométriques.
+> - **Noir et blanc d''abord** : un logo solide sans couleur.
+
+## Exercice pratique : 24 croquis et 3 propositions
+
+> [!exercice] Exercice pratique · 1 heure 45
+> 1. Avec le brief de la leçon 5.1, faites 2 feuilles de 12 croquis pour « Vanille d''Antalaha », en utilisant les 4 pistes de recherche.
+> 2. Notez chaque croquis avec les 5 critères et entourez les 3 meilleures idées.
+> 3. Photographiez et vectorisez ces 3 idées dans Inkscape ou Figma, en noir sur blanc, nom compris.
+> 4. Vérifiez chaque logo à 32 px de large (taille d''une photo de profil).
+>
+> **À livrer** : la photo de vos 2 feuilles de croquis et vos 3 logos vectoriels en noir et blanc (SVG et PNG).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 1, 0, 'Pourquoi commencer un logo sur papier ?', '["Le papier donne de meilleures couleurs","On explore beaucoup d''idées très vite sans s''attacher à la première","Les clients préfèrent les dessins à la main","Les logiciels ne savent pas dessiner de logos"]'::jsonb, 1, 'Une idée prend 1 à 2 minutes sur papier contre 15 à 30 à l''ordinateur : on explore plus de directions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 1, 1, 'Quelles sont les 4 pistes de recherche pour varier les croquis ?', '["Carré, rond, triangle, étoile","Rouge, vert, bleu, noir","Petit, moyen, grand, très grand","Symbole direct, symbole indirect, lettre, nom seul"]'::jsonb, 3, 'Changer volontairement de piste évite de dessiner 12 fois la même idée et fait apparaître des propositions plus originales.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 1, 2, 'Combien de propositions présenter au client ?', '["Tous les croquis, pour qu''il choisisse","Une seule, sans explication","2 ou 3 propositions abouties et différentes","Au moins 10"]'::jsonb, 2, 'Sélectionner fait partie de votre rôle ; trop de choix perd le client et donne une impression d''hésitation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 1, 3, 'Pourquoi travailler d''abord en noir et blanc ?', '["Les clients préfèrent le noir et blanc","Les couleurs coûtent plus cher","Inkscape n''a pas de couleurs","Un logo solide sans couleur fonctionnera aussi en couleur"]'::jsonb, 3, 'Si la force du logo vient seulement de la couleur, il sera faible sur un tampon, une photocopie ou une broderie d''une couleur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 1, 4, 'Que penser de la vectorisation automatique pour un logo ?', '["Elle est parfaite dans tous les cas","Elle donne souvent des formes irrégulières : mieux vaut redessiner à la main","Elle est interdite","Elle remplace les croquis"]'::jsonb, 1, 'Redessiner en suivant le croquis donne des courbes propres, avec peu de points, et un fichier léger.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 4, 2, 'Types de logos, typographie et couleurs', 11, 'Vos trois propositions existent maintenant en noir et blanc. Il reste à affiner leur forme, à choisir la typographie du nom et à ajouter la couleur. C''est souvent à cette étape qu''un logo correct devient un logo professionnel. Cette leçon présente les types de logos, les règles de la typographie de logo et le choix des couleurs d''une marque.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Reconnaître les 4 types de logos et choisir le bon pour un client.
+> 2. Choisir et ajuster la typographie du nom.
+> 3. Équilibrer le symbole et le texte.
+> 4. Choisir 2 ou 3 couleurs de marque avec leurs codes.
+
+## Les 4 types de logos
+
+| Type | Description | Avantages | Idéal pour |
+| --- | --- | --- | --- |
+| **Logotype** | Le nom seul, dans une typographie travaillée | Le nom est mémorisé directement | Marques au nom court et original |
+| **Monogramme** | Les initiales, souvent entrelacées | Très compact, élégant | Noms longs, marques haut de gamme, cabinets |
+| **Symbole + nom** | Une icône à côté ou au-dessus du nom | Polyvalent : le symbole peut vivre seul | La plupart des commerces et services |
+| **Emblème** | Le nom à l''intérieur d''une forme (badge, cercle, écusson) | Traditionnel, inspire confiance | Cafés, coopératives, produits artisanaux, écoles |
+
+```schema comparaison
+titre: Quel type choisir ?
+colonnes: Si le client… | Proposez plutôt…
+a un nom court et original | un logotype
+a un nom long (plus de 3 mots) | un monogramme ou un symbole + nom
+veut une icône pour ses réseaux et son application | un symbole + nom (le symbole sert d''icône)
+vend un produit artisanal ou de terroir | un emblème, avec une version simplifiée
+```
+
+> [!cle] Les déclinaisons
+> Un logo professionnel a souvent **plusieurs versions** : une version complète (symbole + nom + éventuellement slogan), une version horizontale, une version compacte (symbole seul ou initiales) pour les petits espaces. Pensez-y dès maintenant : vous les livrerez à la leçon 5.5.
+
+## La typographie du nom
+
+Le nom est la partie la plus lue du logo. Sa typographie doit refléter les mots-clés du brief.
+
+```schema comparaison
+titre: Typographie et personnalité
+colonnes: Mot-clé du brief | Style de lettres
+Haut de gamme, élégant | Avec empattements fins, lettres espacées
+Moderne, technologique | Sans empattements géométrique (formes rondes et régulières)
+Artisanal, authentique | Avec empattements robustes, ou lettres dessinées
+Jeune, festif | Arrondie, épaisse, avec du rythme
+Solide, fiable | Sans empattements épaisse, en capitales
+```
+
+### Ajuster les lettres
+
+Un nom tapé directement dans une police, même belle, paraît souvent « fait vite ». Trois ajustements font la différence :
+
+1. **L''approche** : les espaces entre certaines lettres paraissent trop grands (souvent entre A et V, T et a, L et T). Ajustez-les à la main pour un rythme régulier (Inkscape : avec l''outil Texte, placez le curseur entre deux lettres, puis Alt + flèche gauche ou droite).
+2. **La graisse** : choisissez une graisse lisible en petit ; les graisses très fines disparaissent à 32 px et en broderie.
+3. **Un détail unique** : une lettre légèrement modifiée (une barre de A prolongée, un point de i remplacé par une goutte) rend le logotype propre à la marque. Un seul détail suffit.
+
+> [!attention] Vérifiez la licence de la police
+> La police d''un logo sera utilisée partout, pendant des années, souvent sous forme de fichier vectoriel. Utilisez une police dont la licence l''autorise : la plupart des polices de **Google Fonts** (licence SIL Open Font License) le permettent. Évitez les polices « gratuites pour usage personnel » trouvées sur des sites de téléchargement.
+
+## Équilibrer le symbole et le texte
+
+```schema ecran
+titre: Deux dispositions classiques
+gauche: Version horizontale : symbole à gauche, nom à droite [1]
+centre: Version verticale : symbole au-dessus, nom en dessous [2]
+[1] Pour les en-têtes de site, les factures, les bannières : le symbole a la hauteur du nom (ou un peu plus)
+[2] Pour les étiquettes, les photos de profil, les tampons : le symbole domine, le nom est centré dessous
+```
+
+Les règles d''équilibre :
+
+1. **Le symbole et le nom ont un poids visuel proche** : un énorme symbole avec un nom minuscule, ou l''inverse, déséquilibre le logo.
+2. **L''espace entre les deux** est égal à une valeur repère (par exemple la hauteur d''une lettre du nom) : notez-la, elle servira dans la charte.
+3. **Les alignements sont exacts** : le centre du symbole aligné sur le centre du nom (version verticale), ou le haut et le bas alignés (version horizontale).
+
+## Les couleurs de la marque
+
+Ajoutez la couleur seulement maintenant, sur un logo déjà solide en noir et blanc.
+
+```schema palette
+titre: Exemple de couleurs pour « Vanille d''Antalaha »
+#3B2416 Brun vanille (principale) | 60 %
+#C9A227 Or (accent) | 25 %
+#F7F1E3 Crème (fond) | 15 %
+```
+
+1. **2 ou 3 couleurs maximum** pour le logo lui-même.
+2. **Le sens des couleurs** doit suivre les mots-clés (leçon 2.3) : brun et or pour « naturel, haut de gamme ».
+3. **Le contraste** : le logo doit rester lisible sur fond clair **et** sur fond foncé (vous prévoirez une version blanche).
+4. **Les codes** : notez immédiatement HEX (écran) et CMJN (impression) de chaque couleur.
+
+> [!astuce] Évitez les dégradés dans le logo principal
+> Un dégradé est joli à l''écran, mais il pose problème en broderie, en tampon, en sérigraphie sur t-shirt et en impression bon marché. Si un dégradé est vraiment important pour la marque, prévoyez une **version en aplat** (couleurs unies) pour tous ces usages.
+
+> [!madagascar] Couleurs et symboles chargés de sens
+> Certaines associations ont un sens fort à Madagascar : les couleurs du drapeau (rouge, blanc, vert) évoquent l''État ou la patrie ; certains symboles ont une dimension religieuse ou traditionnelle. Ils peuvent être un bon choix (une marque qui revendique son origine malgache), mais vérifiez avec le client qu''ils correspondent à son intention, et que l''usage n''est pas réservé (emblèmes officiels).
+
+> [!erreur] Le logo qui dit tout
+> Une gousse, une orchidée, la carte de Madagascar, un soleil, des mains, le nom et un slogan, le tout dans un cercle : le client « voulait tout mettre ». Un logo n''est pas une illustration : il doit être **reconnaissable en une seconde**. Choisissez **une seule idée forte** ; les autres pourront vivre sur les emballages, le site ou les publications.
+
+> [!retenir]
+> - **4 types** : logotype, monogramme, symbole + nom, emblème.
+> - La **typographie** suit les mots-clés ; ajustez l''approche et ajoutez un seul détail unique.
+> - Police à **licence adaptée** (Google Fonts).
+> - **Équilibre** symbole/nom, espace repère, alignements exacts.
+> - **2 ou 3 couleurs**, codes HEX et CMJN, pas de dégradé dans la version principale.
+
+## Exercice pratique : finaliser 2 propositions
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Parmi vos 3 logos en noir et blanc (leçon 5.2), gardez les 2 plus forts.
+> 2. Pour chacun, choisissez une typographie adaptée aux mots-clés, ajustez l''approche et ajoutez un détail unique.
+> 3. Créez une version horizontale et une version verticale.
+> 4. Ajoutez les couleurs (2 ou 3), avec leurs codes HEX et CMJN.
+> 5. Placez chaque logo sur fond clair et sur fond brun foncé : est-il lisible dans les deux cas ?
+>
+> **À livrer** : vos 2 propositions, chacune en version horizontale et verticale, en couleur, avec la liste des codes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 2, 0, 'Quel type de logo convient à un nom court et original ?', '["Une illustration complète","Le logotype (le nom seul, travaillé)","Un monogramme obligatoirement","L''emblème avec beaucoup de détails"]'::jsonb, 1, 'Avec un nom court et original, le travailler seul permet de le faire mémoriser directement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 2, 1, 'Qu''est-ce qu''un emblème ?', '["Les initiales entrelacées","Une icône sans texte","Le nom placé à l''intérieur d''une forme (badge, cercle, écusson)","Un slogan"]'::jsonb, 2, 'L''emblème a un aspect traditionnel qui inspire confiance : cafés, coopératives, produits artisanaux.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 2, 2, 'Quelle police utiliser pour le nom d''un logo ?', '["N''importe quelle police « gratuite pour usage personnel »","Une police dont la licence autorise l''usage commercial, comme celles de Google Fonts","La police par défaut de l''ordinateur sans vérifier","Une police copiée d''un autre logo"]'::jsonb, 1, 'Le logo sera utilisé partout pendant des années : la licence doit le permettre (souvent SIL Open Font License).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 2, 3, 'Combien de couleurs prévoir pour un logo ?', '["Au moins 6","Une par lettre","2 ou 3 au maximum","Le plus possible avec des dégradés"]'::jsonb, 2, 'Peu de couleurs rendent le logo plus fort, plus facile à imprimer et à reproduire sur tous les supports.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 2, 4, 'Un client veut une gousse, une orchidée, la carte de Madagascar et un soleil dans son logo. Que conseiller ?', '["Ajouter aussi un slogan long","Faire 4 logos différents","Tout mettre, le client a toujours raison","Garder une seule idée forte ; les autres iront sur les emballages ou le site"]'::jsonb, 3, 'Un logo doit être reconnaissable en une seconde ; trop d''éléments en font une illustration illisible en petit.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 4, 3, 'Tester et présenter le logo', 11, 'Un logo qui vous plaît n''est pas forcément un logo solide. Avant de le montrer au client, il doit passer des **tests** qui simulent sa vraie vie : en tout petit, en une seule couleur, sur un tampon, au milieu des concurrents. Ensuite, la façon de le **présenter** compte presque autant que le logo lui-même. Cette leçon vous donne les tests, la méthode de présentation et la façon de gérer les retours du client.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Vérifier un logo avec 6 tests.
+> 2. Présenter un logo « en situation » avec des maquettes.
+> 3. Expliquer vos choix au client.
+> 4. Recueillir et traiter les retours sans perdre le contrôle du projet.
+
+## Les 6 tests d''un logo solide
+
+```schema checklist
+titre: Les 6 tests avant de présenter un logo
+[ ] Petite taille : lisible à 32 px (photo de profil) et à 1,5 cm imprimé
+[ ] Une seule couleur : fonctionne en noir sur blanc et en blanc sur noir
+[ ] Photocopie et tampon : reconnaissable sans détails fins ni dégradés
+[ ] Originalité : aucune ressemblance avec un logo existant (recherche d''image inversée)
+[ ] Les 5 secondes : une personne le décrit correctement après l''avoir vu 5 secondes
+[ ] Les supports réels : enseigne, étiquette, réseaux, broderie si le client en a besoin
+```
+
+### Les tests en pratique
+
+1. **Petite taille** : exportez le logo à 32 px de large et regardez-le à 100 %. Si des détails se mélangent, simplifiez (traits plus épais, moins d''éléments).
+2. **Une couleur** : remplissez tout le logo en noir, puis en blanc sur fond noir. Il doit rester reconnaissable.
+3. **Photocopie** : imprimez-le en petit, photocopiez la feuille, puis photocopiez la copie. Les détails trop fins disparaissent : c''est ce que verra le client sur un tampon ou un document mal imprimé.
+4. **Originalité** : faites une **recherche d''image inversée** (Google Images ou Google Lens : importer l''image du logo). Si un logo très proche apparaît, modifiez le vôtre.
+5. **5 secondes** : montrez-le à deux ou trois personnes extérieures au projet, cachez-le, demandez-leur de le décrire ou de le dessiner.
+6. **Supports réels** : placez le logo sur les supports cités dans le brief (étape suivante).
+
+> [!attention] Le test d''originalité n''est pas facultatif
+> Il arrive qu''un graphiste, de bonne foi, dessine un logo proche d''un logo existant qu''il a vu un jour sans s''en souvenir. Une marque déposée qui ressemble trop au logo de votre client peut l''obliger à tout changer… après avoir imprimé ses emballages. La recherche d''image inversée prend 2 minutes : faites-la à chaque fois.
+
+## Présenter le logo « en situation »
+
+Ne présentez jamais un logo seul sur fond blanc. Montrez-le **là où il vivra** : sur une enseigne, une étiquette, un t-shirt, un sac, une publication Facebook, une carte de visite. Le client se projette, comprend votre travail et valide plus vite.
+
+```schema etapes
+titre: Une présentation de logo en 6 pages
+Page 1 : rappel du brief (3 mots-clés, positionnement)
+Page 2 : la proposition A, en grand, avec 3 lignes d''explication
+Page 3 : la proposition A en situation (3 ou 4 maquettes)
+Page 4 : la proposition B, en grand, avec son explication
+Page 5 : la proposition B en situation
+Page 6 : la suite (comment donner son avis, nombre de retouches, délai)
+```
+
+> [!definition] Maquette (mockup)
+> Une maquette est une image qui montre un design sur un objet réel : un logo sur une enseigne, un visuel sur un téléphone, une étiquette sur un pot. Des sites proposent des maquettes gratuites (vérifiez la licence) ; Canva en propose aussi. Vous pouvez également photographier vous-même des objets simples (un sac en toile, une boîte en carton) et y poser le logo dans Photopea.
+
+### Expliquer vos choix
+
+Pour chaque proposition, écrivez **3 lignes** qui relient le logo au brief :
+
+> [!exemple] Explication de la proposition A pour « Vanille d''Antalaha »
+> « La lettre V est formée de deux gousses de vanille croisées : elle évoque à la fois le nom et le produit. Le brun et l''or traduisent le naturel et le haut de gamme demandés dans le brief. Le symbole reste net en tampon sur les sacs en toile et en petit sur les tubes en verre. »
+
+Le client ne juge plus « j''aime / je n''aime pas » : il vérifie si le logo répond à **ses** objectifs. La discussion devient professionnelle.
+
+## Recueillir les retours
+
+Après la présentation, guidez les retours avec des questions précises, plutôt que « Qu''en pensez-vous ? ».
+
+```schema comparaison
+titre: Des questions qui donnent des retours utiles
+colonnes: Question vague | Question utile
+« Ça vous plaît ? » | « Quelle proposition correspond le mieux à vos 3 mots-clés ? »
+« Des remarques ? » | « Y a-t-il un élément qui vous gêne, et pourquoi ? »
+« On change quelque chose ? » | « Sur la proposition choisie, que voudriez-vous ajuster : la forme, le nom, la couleur ? »
+ton: mauvais-bon
+```
+
+### Les règles des retouches
+
+1. **Le nombre de retouches est fixé dans le devis** (souvent 2 tours). Un « tour » regroupe toutes les demandes du client en une seule liste.
+2. **Demandez une liste écrite** de toutes les modifications, d''un coup, plutôt que des messages au fil de la journée.
+3. **Reformulez** chaque demande avant de commencer : « Si je comprends bien : nom plus grand, or un peu plus clair, symbole inchangé. C''est bien cela ? »
+4. **Au-delà des tours prévus**, annoncez un supplément avant de travailler.
+
+> [!astuce] Quand le client veut « mélanger » deux propositions
+> « J''aime le symbole de A et le nom de B » : c''est une demande fréquente. Faites l''essai, mais montrez honnêtement le résultat à côté des originaux. Souvent, le mélange est moins cohérent et le client le voit lui-même. Expliquez que chaque proposition a été pensée comme un ensemble.
+
+> [!madagascar] Les avis de l''entourage
+> Il est courant que le client montre les propositions à sa famille, à ses amis ou à un associé, puis revienne avec des avis contradictoires. Conseillez-lui de **décider avec 1 ou 2 personnes maximum**, et de vérifier les avis par rapport aux mots-clés du brief, pas aux goûts de chacun. Rappelez gentiment que le logo doit plaire **à ses clients**, pas forcément à tout son entourage.
+
+> [!erreur] Retoucher à l''infini
+> Un graphiste accepte une petite modification, puis une autre, puis encore une autre, sans limite. Après 8 versions, le projet a pris trois fois plus de temps que prévu, le logo a perdu sa force, et le client n''est pas plus satisfait. **Les tours de retouches limités protègent la qualité du logo autant que votre temps.**
+
+> [!retenir]
+> - **6 tests** : petite taille, une couleur, photocopie, originalité, 5 secondes, supports réels.
+> - La recherche d''**image inversée** est obligatoire.
+> - Présentez **en situation**, avec des maquettes, et **3 lignes d''explication** liées au brief.
+> - Posez des **questions précises** pour obtenir des retours utiles.
+> - **Tours de retouches limités**, liste écrite, reformulation, supplément au-delà.
+
+## Exercice pratique : la présentation au client
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Faites passer les 6 tests à vos 2 propositions (leçon 5.3) et corrigez ce qui doit l''être. Notez le résultat de chaque test.
+> 2. Créez une présentation de 6 pages dans Canva, avec au moins 3 maquettes par proposition (étiquette de tube de vanille, sac en toile, publication Facebook, carte de visite…).
+> 3. Rédigez les 3 lignes d''explication de chaque proposition.
+> 4. Rédigez le message d''envoi au client, avec vos 3 questions précises et le rappel des 2 tours de retouches.
+>
+> **À livrer** : vos résultats de tests, la présentation en PDF et le message d''envoi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 3, 0, 'Un logo solide doit rester lisible…', '["En tout petit (32 px) et en une seule couleur","Uniquement sur fond blanc","Uniquement en très grand","Uniquement en couleur"]'::jsonb, 0, 'Le logo vivra sur des photos de profil, des tampons et des documents en noir et blanc : il doit y rester reconnaissable.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 3, 1, 'Comment vérifier qu''un logo ne ressemble pas à un logo existant ?', '["Ce n''est pas nécessaire","Faire une recherche d''image inversée (Google Images ou Lens)","Demander à un ami s''il le connaît","Changer une couleur"]'::jsonb, 1, 'En 2 minutes, la recherche d''image inversée évite qu''un client doive tout changer à cause d''une marque trop proche.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 3, 2, 'Pourquoi présenter un logo « en situation » ?', '["Le client se projette et valide plus vite","Pour cacher les défauts du logo","Pour facturer les maquettes","Parce que le fond blanc est interdit"]'::jsonb, 0, 'Voir le logo sur une enseigne, une étiquette ou un t-shirt aide le client à juger son usage réel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 3, 3, 'Quelle question donne les retours les plus utiles ?', '["« Ça vous plaît ? »","« Des remarques ? »","« Quelle proposition correspond le mieux à vos 3 mots-clés ? »","« On change tout ? »"]'::jsonb, 2, 'Une question liée au brief oriente le client vers ses objectifs plutôt que vers ses goûts du moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 3, 4, 'Comment gérer les retouches demandées par le client ?', '["Un nombre de tours fixé dans le devis, avec une liste écrite par tour","Refuser toute modification","Accepter chaque petite modification au fil de la journée","Recommencer un nouveau logo à chaque remarque"]'::jsonb, 0, 'Les tours limités et les listes écrites protègent la qualité du logo et votre temps ; au-delà, on annonce un supplément.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 4, 4, 'La charte graphique et le pack de livraison', 11, 'Le logo est validé : le projet n''est pas terminé pour autant. Un client qui reçoit un seul fichier PNG reviendra vous demander une version blanche, une version carrée, le code de la couleur pour son imprimeur… La dernière étape d''un projet de logo est de livrer un **pack complet** et une **charte graphique** qui permettent au client d''utiliser son logo seul, correctement, pendant des années.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer toutes les versions du logo.
+> 2. Exporter chaque version dans les bons formats.
+> 3. Rédiger une charte graphique claire.
+> 4. Organiser et livrer le pack au client.
+
+## Les versions du logo
+
+```schema comparaison
+titre: Les versions à préparer
+colonnes: Version | À quoi elle sert
+Principale, en couleur | Usage courant : site, emballages, documents
+Horizontale et verticale | S''adapter à la place disponible (bannière ou étiquette)
+Compacte (symbole seul ou initiales) | Photo de profil, icône d''application, tampon, petits espaces
+Noire (une couleur) | Tampons, documents en noir et blanc, gravure
+Blanche (une couleur) | Sur photos et fonds foncés
+```
+
+## Les formats à livrer
+
+| Version | Formats | Remarque |
+| --- | --- | --- |
+| Principale couleur | SVG, PDF, PNG transparent | PNG en grande taille (au moins 2000 px de large) |
+| Horizontale, verticale | SVG, PNG transparent | Les deux dispositions |
+| Compacte | SVG, PNG 1080 × 1080 px | Avec un fond de couleur pour la photo de profil |
+| Noire | SVG, PNG transparent | — |
+| Blanche | SVG, PNG transparent | Le PNG blanc paraît vide à l''écran : c''est normal, prévenez le client |
+
+Les fichiers SVG et PDF sont les fichiers **sources vectoriels** : ce sont eux que le client transmettra à un imprimeur, à un brodeur ou à un fabricant d''enseigne. Les PNG servent au quotidien (réseaux, documents, site).
+
+```schema arbre
+titre: Le dossier de livraison d''un logo
+Vanille-dAntalaha_Logo/
+  01_Principal/
+    vanille-antalaha_logo_couleur.svg
+    vanille-antalaha_logo_couleur.pdf
+    vanille-antalaha_logo_couleur.png
+  02_Horizontal-Vertical/
+  03_Compact/
+  04_Noir-Blanc/
+  05_Charte/ # la charte graphique en PDF
+  LISEZ-MOI.pdf # quel fichier utiliser, et quand
+```
+
+> [!astuce] Le « Lisez-moi »
+> Ajoutez une page simple qui explique quel fichier utiliser : « Pour Facebook et WhatsApp : dossier 03, fichier PNG. Pour l''imprimeur : dossier 01, fichier PDF. Sur une photo sombre : dossier 04, version blanche. » Le client trouvera le bon fichier sans vous appeler, et il appréciera ce soin.
+
+## La charte graphique
+
+La charte graphique est un document de quelques pages qui fixe les règles d''utilisation du logo et des couleurs. Pour un petit client, **2 à 4 pages** suffisent.
+
+```schema etapes
+titre: Le contenu d''une mini-charte graphique
+Le logo et ses versions (principale, compacte, noir, blanc)
+Les couleurs, avec leurs codes HEX, RVB et CMJN
+Les polices du logo et des documents, avec leurs usages
+La zone de protection et la taille minimale
+Les usages interdits, illustrés
+Un ou deux exemples d''application (carte de visite, publication)
+```
+
+### La zone de protection
+
+La **zone de protection** est l''espace vide minimum autour du logo, où aucun autre élément ne doit entrer (texte, bord de page, autre logo). On la définit avec une mesure tirée du logo lui-même, par exemple **la hauteur de la lettre V** : ainsi, elle reste juste à toutes les tailles.
+
+### La taille minimale
+
+Indiquez la taille en dessous de laquelle le logo ne doit pas être utilisé, par exemple : « 25 mm de large en impression, 120 px à l''écran ; en dessous, utiliser la version compacte. »
+
+### Les usages interdits
+
+```schema comparaison
+titre: Les usages interdits les plus fréquents (à illustrer dans la charte)
+colonnes: Interdit | Pourquoi
+Logo étiré ou écrasé | Les proportions font partie de la marque
+Couleurs changées | La reconnaissance repose sur les couleurs fixées
+Logo sur un fond chargé, sans contraste | Le logo devient illisible
+Ombre, contour ou effet ajouté | Le logo perd sa netteté et son unité
+Éléments déplacés ou supprimés | Le logo n''est plus le même
+ton: mauvais-bon
+```
+
+Illustrez chaque interdit par une petite image barrée : c''est beaucoup plus parlant qu''une phrase.
+
+> [!exemple] La charte de « Vanille d''Antalaha » en 3 pages
+> **Page 1** : le logo principal en grand, ses versions horizontale, compacte, noire et blanche. **Page 2** : le brun vanille (#3B2416), l''or (#C9A227) et la crème (#F7F1E3) avec leurs codes RVB et CMJN ; les polices Playfair Display (titres) et Lato (textes). **Page 3** : la zone de protection (hauteur du V), la taille minimale (25 mm), 5 usages interdits illustrés, et l''étiquette d''un tube de vanille comme exemple.
+
+## Livrer comme un professionnel
+
+```schema checklist
+titre: Avant d''envoyer le pack
+[ ] Le solde du projet est payé (ou la date de paiement est convenue par écrit)
+[ ] Toutes les versions et tous les formats sont présents et s''ouvrent correctement
+[ ] Les textes du logo sont convertis en tracés dans les SVG et PDF
+[ ] Les noms de fichiers sont clairs et sans espaces
+[ ] La charte et le Lisez-moi sont inclus
+[ ] Le dossier est compressé (.zip) ou partagé par un lien Google Drive
+[ ] Un message récapitulatif accompagne la livraison
+```
+
+> [!madagascar] Protéger le logo de votre client
+> Un client peut déposer son logo et son nom comme **marque** pour être le seul à pouvoir les utiliser. À Madagascar, cela se fait auprès de l''**OMAPI** (Office malgache de la propriété industrielle). Ce n''est pas votre rôle de faire la démarche, mais le mentionner montre votre sérieux : « Pensez à déposer votre marque à l''OMAPI si vous souhaitez la protéger. » Précisez aussi dans votre devis que les droits d''utilisation du logo sont cédés au client **après paiement complet**.
+
+> [!erreur] Livrer seulement un JPG
+> Le graphiste envoie le logo en JPG par WhatsApp. Trois mois plus tard, le client veut une enseigne lumineuse : le fabricant demande un fichier vectoriel. Le client ne l''a pas ; le graphiste a changé d''ordinateur et a perdu le fichier. Le client doit tout refaire, et ne recommande plus ce graphiste. **Le pack vectoriel complet fait partie du logo.**
+
+> [!retenir]
+> - **5 versions** : principale, horizontale/verticale, compacte, noire, blanche.
+> - **SVG et PDF** pour les fabricants et imprimeurs, **PNG** pour le quotidien.
+> - **Mini-charte** : versions, couleurs (HEX, RVB, CMJN), polices, zone de protection, taille minimale, usages interdits.
+> - Un dossier rangé, un **Lisez-moi**, un message récapitulatif.
+> - Droits cédés **après paiement** ; conseillez le dépôt de marque à l''**OMAPI**.
+
+## Exercice pratique : la mini-charte
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Préparez les 5 versions de votre logo « Vanille d''Antalaha » validé (choisissez votre meilleure proposition de la leçon 5.4).
+> 2. Exportez-les dans les formats du tableau, avec des noms clairs.
+> 3. Rédigez la mini-charte de 3 pages selon l''exemple.
+> 4. Rédigez le Lisez-moi.
+>
+> **À livrer** : le dossier de livraison complet, compressé en .zip.
+
+## Projet du module 5 : l''identité visuelle complète
+
+> [!projet] Projet du module · 2 heures
+> Rassemblez et complétez votre travail du module pour en faire un projet de portfolio complet :
+> 1. **Le brief** d''une page et la planche d''inspiration (leçon 5.1).
+> 2. **Les croquis** (une photo de vos meilleures pages) et le logo final, en grand.
+> 3. **3 déclinaisons** : une étiquette de tube de vanille, une carte de visite recto verso, une publication Facebook de lancement.
+> 4. **La mini-charte** de 3 pages.
+> 5. Une page « **en situation** » avec 4 maquettes.
+> 6. Mettez le tout en page dans un PDF de 8 à 10 pages qui raconte le projet : le besoin, la recherche, la solution, le résultat.
+>
+> **À livrer** : le PDF de présentation du projet. C''est souvent le projet qui convainc un client de vous confier son logo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 4, 0, 'Quelles versions du logo livrer ?', '["Une seule version en JPG","Principale, horizontale/verticale, compacte, noire et blanche","Les croquis sur papier","La version couleur uniquement"]'::jsonb, 1, 'Chaque version répond à un usage : petits espaces, fonds foncés, tampons, bannières…');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 4, 1, 'Quel fichier un imprimeur ou un brodeur demandera-t-il ?', '["Un fichier vectoriel (SVG ou PDF)","Une photo du logo prise au téléphone","Une capture d''écran","Un PNG de 200 px"]'::jsonb, 0, 'Le vectoriel s''agrandit sans perte et permet aux fabricants de reproduire exactement les formes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 4, 2, 'Que contient une mini-charte graphique ?', '["Le brief et le devis","Seulement le prix du logo","Les croquis refusés","Les versions du logo, les couleurs (HEX, RVB, CMJN), les polices, la zone de protection, la taille minimale et les interdits"]'::jsonb, 3, 'La charte permet au client d''utiliser son logo seul et correctement, avec n''importe quel prestataire.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 4, 3, 'Qu''est-ce que la zone de protection ?', '["Un mot de passe sur le fichier","La partie du logo en couleur","Un filigrane anti-copie","L''espace vide minimum autour du logo"]'::jsonb, 3, 'Aucun autre élément ne doit y entrer ; on la mesure avec une partie du logo (par exemple la hauteur d''une lettre).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 4, 4, 4, 'Quand les droits d''utilisation du logo sont-ils cédés au client ?', '["Dès la première proposition","Avant la signature du devis","Jamais","Après le paiement complet, comme précisé dans le devis"]'::jsonb, 3, 'Préciser cette règle dans le devis protège le graphiste ; le client peut ensuite déposer sa marque à l''OMAPI.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('design-0-f', 5, 'Trouver des clients et se faire payer', 'Portfolio, prospection, prix et devis, gestion d''un projet client, paiements depuis Madagascar, fidélisation et plan d''action pour vos 30 premiers jours.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 5, 0, 'Construire son portfolio', 11, 'Savoir créer ne suffit pas : il faut que les clients le **voient**. Un client ne vous connaît pas, il ne peut pas juger votre talent sur parole : il juge sur ce que vous lui montrez. Votre portfolio est votre vitrine. Ce dernier module vous apprend à transformer vos compétences en revenus, en commençant par un portfolio qui inspire confiance en moins d''une minute.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir les 6 projets de votre portfolio.
+> 2. Présenter chaque projet comme une étude de cas.
+> 3. Créer un portfolio en ligne et une version PDF légère.
+> 4. Écrire une présentation professionnelle de vous-même.
+
+## Ce que cherche un client dans un portfolio
+
+```schema etapes
+titre: Ce qu''un client regarde, en moins d''une minute
+Est-ce que ce graphiste a déjà fait ce dont j''ai besoin ?
+Est-ce que la qualité est régulière, sans projet faible ?
+Est-ce que je comprends ce qu''il a fait et pourquoi ?
+Comment le contacter, et combien de temps ça prend ?
+```
+
+Le client ne cherche pas « le plus beau portfolio du monde ». Il cherche quelqu''un qui **a déjà résolu un problème comme le sien**. D''où l''importance de choisir vos projets en fonction de votre cible (leçon 1.3).
+
+## Choisir 6 projets
+
+**6 projets suffisent**, à condition qu''ils soient bons. Un projet moyen fait baisser l''impression générale : en cas de doute, enlevez-le.
+
+```schema chiffres
+titre: Un portfolio de départ équilibré (avec les projets de cette formation)
+1 : une identité visuelle complète (projet du module 5)
+2 : un kit réseaux sociaux de marque (projet du module 4)
+3 : une affiche d''événement avec sa déclinaison (leçon 4.3)
+4 : des « avant / après » de visuels (projet du module 2)
+5 : une promotion en plusieurs formats (projet du module 3)
+6 : un projet dans votre secteur cible (menu, miniatures, dépliant…)
+```
+
+Les exercices de cette formation comptent, même s''ils sont fictifs : indiquez simplement « **projet d''étude** » ou « **projet personnel** ». L''honnêteté rassure. Dès que vous avez de vrais clients, remplacez progressivement les projets d''étude par des projets réels (avec l''accord des clients).
+
+> [!astuce] Le projet « auto-commandé »
+> Vous visez les restaurants de Mahajanga mais vous n''avez aucun menu dans votre portfolio ? Créez-en un pour un restaurant **imaginaire**, ou proposez une refonte du menu d''un vrai restaurant (présentée comme « proposition de refonte, projet personnel »). Un portfolio ciblé convainc beaucoup plus qu''un portfolio varié mais hors sujet.
+
+## Présenter un projet comme une étude de cas
+
+Un visuel seul montre votre technique. Une **étude de cas** montre votre façon de penser : c''est ce qui distingue un graphiste professionnel.
+
+```schema etapes
+titre: La structure d''une étude de cas (une page par projet)
+Le client et son besoin : 2 phrases
+Le défi : ce qui rendait le projet difficile
+La solution : vos choix, en 3 points
+Le résultat en situation : maquettes, publication sur un téléphone
+Le résultat concret, si vous l''avez : retour du client, chiffres
+```
+
+> [!exemple] Étude de cas : « Lamba Shop »
+> **Le besoin** : une boutique de vêtements d''Analakely qui vend aussi à la diaspora veut une page Facebook plus professionnelle. **Le défi** : des produits très colorés, des photos prises au téléphone, des publications sans unité. **La solution** : une palette de 3 couleurs qui laisse les tissus ressortir, des photos détourées sur fonds unis, un kit de 6 modèles. **Le résultat** : 12 visuels en situation sur un téléphone, et le calendrier du mois. *Projet d''étude, formation Vitako.*
+
+## Où publier votre portfolio
+
+| Support | Avantages | Pour qui |
+| --- | --- | --- |
+| **Behance** (gratuit) | Reconnu à l''international, facile, bien référencé | Clients étrangers, agences, plateformes |
+| **PDF léger** (moins de 5 Mo) | S''envoie par WhatsApp et e-mail | Clients locaux, réponses rapides |
+| **Album ou page Facebook / Instagram** | Là où sont vos clients locaux | Commerces malgaches |
+| **Profils des plateformes** (Fiverr, Upwork, Malt…) | Directement visible par les acheteurs | Clients internationaux |
+
+Commencez par **Behance + un PDF**. Ce sont les deux supports que l''on vous demandera le plus souvent.
+
+> [!madagascar] Le PDF léger, indispensable
+> Beaucoup de vos prospects ouvriront votre portfolio sur un téléphone, parfois avec une connexion lente. Un PDF de 40 Mo ne s''ouvrira jamais. Exportez vos images en JPG de bonne qualité (pas en PNG lourd), limitez-vous à 8 à 10 pages, et visez **moins de 5 Mo**. Testez l''envoi par WhatsApp à un ami avant de l''envoyer à un client.
+
+## Votre présentation en quelques lignes
+
+Votre portfolio commence par une courte présentation : qui vous êtes, ce que vous proposez, à qui, et comment vous contacter.
+
+```schema comparaison
+titre: Réécrire sa présentation
+colonnes: À éviter | À faire
+« Je suis passionné par le design depuis toujours » | « Je crée les visuels réseaux sociaux et les logos des commerces et des marques artisanales »
+« Je fais tout type de graphisme » | « Spécialités : identité visuelle, visuels Facebook et Instagram, affiches »
+Pas de délai, pas de contact | « Réponse sous 2 h, de 8 h à 18 h (heure de Madagascar) · WhatsApp : … »
+Une photo floue ou pas de photo | Une photo nette, souriante, sur fond simple
+ton: mauvais-bon
+```
+
+> [!exemple] Une présentation de 4 lignes
+> « Je m''appelle Fanja, graphiste freelance à Antananarivo. Je crée l''identité visuelle et les publications des marques artisanales et des boutiques en ligne, à Madagascar et pour la diaspora. Formée chez Vitako (attestation vérifiable en ligne). Réponse sous 2 heures, du lundi au samedi : WhatsApp +261 34 00 000 00 · fanja.graphiste@gmail.com »
+
+> [!cle] Votre attestation Vitako
+> Chaque attestation obtenue sur Vitako a un numéro et un lien de vérification. Ajoutez ce lien à votre portfolio et à vos profils : un client peut vérifier en un clic que vous avez suivi et réussi la formation. C''est un élément de confiance supplémentaire, surtout quand vous débutez.
+
+> [!erreur] 40 images sans explication
+> Un portfolio avec 40 visuels sans contexte, dont certains très faibles, donne une impression de quantité, pas de qualité. Le client se fatigue et retient vos plus mauvais travaux. **6 projets bien présentés valent mieux que 40 images.**
+
+> [!attention] Erreurs fréquentes
+> - Montrer des travaux d''autres personnes ou des modèles à peine modifiés.
+> - Publier le travail d''un client sans son accord.
+> - Un PDF trop lourd pour être ouvert sur téléphone.
+> - Oublier le moyen de vous contacter.
+
+> [!retenir]
+> - Le client cherche quelqu''un qui a **déjà résolu un problème comme le sien**.
+> - **6 projets** solides, ciblés, honnêtement présentés (« projet d''étude »).
+> - Chaque projet est une **étude de cas** : besoin, défi, solution, résultat.
+> - **Behance + un PDF de moins de 5 Mo** pour commencer.
+> - Une présentation courte : qui, quoi, pour qui, délai de réponse, contact.
+
+## Exercice pratique : votre portfolio
+
+> [!exercice] Exercice pratique · 1 heure 30
+> 1. Choisissez vos 6 meilleurs projets parmi ceux de la formation (et ajoutez-en un ciblé si nécessaire).
+> 2. Pour chacun, rédigez l''étude de cas (besoin, défi, solution, résultat) en 5 à 8 lignes.
+> 3. Créez votre compte Behance et publiez au moins 3 projets.
+> 4. Créez votre portfolio PDF de 8 à 10 pages (présentation, 6 projets, contact) et vérifiez qu''il pèse moins de 5 Mo.
+> 5. Envoyez-le par WhatsApp à un ami et demandez-lui son avis : qu''a-t-il retenu ?
+>
+> **À livrer** : le lien de votre Behance et votre portfolio PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 0, 0, 'Combien de projets suffisent pour un portfolio de départ ?', '["Tous les travaux réalisés, même faibles","Au moins 40 images","Un seul projet","6 projets solides et bien présentés"]'::jsonb, 3, 'Un projet faible fait baisser l''impression générale ; 6 bons projets ciblés convainquent davantage qu''une grande quantité.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 0, 1, 'Peut-on montrer les exercices de la formation dans son portfolio ?', '["Seulement s''ils sont parfaits","Non, c''est interdit","Oui, en indiquant « projet d''étude »","Oui, en les présentant comme de vrais clients"]'::jsonb, 2, 'Ils montrent vos compétences ; l''honnêteté (« projet d''étude ») rassure le client au lieu de le tromper.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 0, 2, 'Que contient une étude de cas ?', '["Seulement l''image finale","Le prix payé par le client","La liste des logiciels utilisés","Le besoin, le défi, la solution et le résultat en situation"]'::jsonb, 3, 'L''étude de cas montre votre façon de penser et de résoudre un problème, pas seulement votre technique.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 0, 3, 'Quel poids viser pour un portfolio PDF envoyé par WhatsApp ?', '["Moins de 5 Mo","Plus de 50 Mo","Le poids n''a pas d''importance","Exactement 100 Mo"]'::jsonb, 0, 'Beaucoup de prospects l''ouvriront sur téléphone avec une connexion lente ; un fichier lourd ne s''ouvrira pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 0, 4, 'Quelle présentation est la plus efficace ?', '["« Je fais tout type de graphisme »","« Je suis passionné de design depuis toujours »","« Je crée les visuels et logos des marques artisanales ; réponse sous 2 h ; WhatsApp : … »","Aucune présentation, seulement des images"]'::jsonb, 2, 'Elle dit ce que vous faites, pour qui, comment vous travaillez et comment vous contacter.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 5, 1, 'Trouver ses premiers clients', 12, 'Les clients viennent rarement seuls au début : il faut aller les chercher. Bonne nouvelle : avec un portfolio et une méthode, trouver ses premiers clients est une question de **régularité**, pas de chance. Cette leçon vous donne 5 canaux, des messages prêts à adapter, et une routine de prospection qui tient en 30 minutes par jour.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser les 5 canaux de recherche de clients.
+> 2. Écrire un message de prospection personnalisé.
+> 3. Relancer sans être insistant.
+> 4. Démarrer sur une plateforme de freelance.
+> 5. Suivre votre prospection dans un tableau.
+
+## Les 5 canaux
+
+| N° | Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- | --- |
+| 1 | Entourage et commerces locaux | Premiers clients, paiement en ariary | Proposez une amélioration concrète de leur page Facebook ou de leur menu |
+| 2 | Groupes Facebook d''entrepreneurs et de vendeurs malgaches | Clients locaux et diaspora | Publiez vos réalisations avec une explication, aidez par des conseils, pas seulement « je cherche du travail » |
+| 3 | Plateformes de freelance (Fiverr, Upwork, Malt, Codeur.com…) | Clients internationaux | Une offre très précise, un profil complet, de la patience pour les premiers avis |
+| 4 | Instagram et LinkedIn | Marques, créateurs, agences | Publiez régulièrement vos projets ; contactez des comptes ciblés |
+| 5 | E-mail aux agences | Agences de communication | Proposez votre aide pour leurs pics d''activité, avec un lien vers votre portfolio |
+
+```schema barres
+titre: Exemple : où Tiana a trouvé ses 10 premiers clients (graphiste à Mahajanga)
+Entourage et bouche-à-oreille : 4
+Groupes Facebook : 3
+Messages directs à des commerces : 2
+Plateforme de freelance : 1
+```
+
+Cet exemple montre une tendance fréquente : **les premiers clients viennent souvent des canaux de proximité**. Les plateformes prennent plus de temps à démarrer, mais elles ouvrent sur des clients étrangers une fois les premiers avis obtenus.
+
+## Le message de prospection
+
+Un bon message de prospection est **personnalisé, court, avec un exemple et une proposition concrète**.
+
+```schema etapes
+titre: La structure d''un message en 5 phrases
+Saluer et vous présenter en une ligne
+Citer quelque chose de précis sur leur page ou leur commerce
+Proposer une amélioration concrète et un bénéfice
+Montrer un exemple (lien ou image)
+Proposer une suite simple, sans pression
+```
+
+> [!exemple] Message à un commerce local (Messenger ou WhatsApp)
+> « Bonjour Madame Rasoa, je suis Fanja, graphiste à Antananarivo. J''ai vu votre page Lamba Shop : vos tissus sont magnifiques, mais sur les photos du fil, les prix sont difficiles à lire sur téléphone. Je vous propose de créer 3 visuels pour vos nouveautés de la semaine, avec le prix bien visible et vos couleurs. Voici un exemple de mon travail : [lien]. Si cela vous intéresse, je peux vous envoyer une proposition gratuite pour un de vos produits. Bonne journée ! »
+
+> [!exemple] Message à une créatrice de contenu en France (e-mail ou Instagram)
+> « Bonjour Julie, je suis graphiste freelance à Madagascar et je regarde vos vidéos de cuisine depuis quelques mois. Vos miniatures actuelles ont un beau style, mais le texte est petit sur téléphone. Je crée des miniatures YouTube pour des chaînes francophones : voici 3 exemples [lien]. Je peux vous proposer une miniature pour votre prochaine vidéo, pour que vous jugiez sur pièce. Je suis disponible dans votre journée (1 à 2 h de décalage avec Paris). Belle journée ! »
+
+> [!attention] La « proposition gratuite » : avec mesure
+> Proposer **un** petit visuel d''essai à un prospect sérieux peut débloquer une collaboration. Mais ne faites jamais de projets entiers gratuitement, et méfiez-vous des « concours » où dix graphistes travaillent pour un seul payé. Un essai gratuit doit rester court (une heure maximum) et ne pas être utilisable par le client sans vous payer (filigrane, basse définition).
+
+### Les règles d''or
+
+1. **5 messages personnalisés par jour** valent mieux que 50 messages copiés-collés.
+2. **Citez un détail précis** : le client voit que vous avez vraiment regardé son travail.
+3. **Pas de critique blessante** : parlez d''amélioration, pas de « vos visuels sont mauvais ».
+4. **Une seule proposition claire** : ne listez pas tous vos services.
+
+## Relancer sans insister
+
+Beaucoup de prospects ne répondent pas au premier message : ils sont occupés, ils ont oublié. Une relance polie est normale et attendue.
+
+```schema etapes
+titre: Le calendrier de relance
+Jour 1 : le premier message
+Jour 4 ou 5 : une relance courte, avec un nouvel élément (un exemple, une idée)
+Jour 12 à 15 : une dernière relance, puis on passe à autre chose
+Dans 2 à 3 mois : un nouveau contact pour une occasion (fête, rentrée, promotion)
+```
+
+> [!exemple] Une relance courte
+> « Bonjour Madame Rasoa, je me permets de revenir vers vous : j''ai préparé une idée de visuel pour votre nouvelle collection de lamba (en pièce jointe, en basse définition). Si ce n''est pas le bon moment, aucun souci, je reste disponible. Bonne journée ! »
+
+## Démarrer sur une plateforme de freelance
+
+Les plateformes mettent en relation des clients du monde entier avec des freelances. Elles prennent une commission, mais elles apportent des clients qui ont déjà l''intention d''acheter.
+
+```schema checklist
+titre: Un profil de plateforme qui convertit
+[ ] Photo professionnelle et nette
+[ ] Titre précis : « Miniatures YouTube et visuels Instagram pour créateurs »
+[ ] Description courte : ce que vous faites, pour qui, en combien de temps
+[ ] 3 à 6 exemples de travaux dans votre spécialité
+[ ] Une première offre très précise : « 3 miniatures YouTube en 48 h »
+[ ] Des réponses rapides aux messages (les plateformes en tiennent compte)
+```
+
+> [!madagascar] Vérifier avant de s''inscrire
+> Toutes les plateformes n''acceptent pas les freelances basés à Madagascar, et toutes ne permettent pas de retirer facilement l''argent depuis Madagascar. **Avant de passer du temps sur un profil**, vérifiez dans l''aide de la plateforme : les pays acceptés, les moyens de retrait (Payoneer, virement…) et les frais. Renseignez-vous aussi auprès de freelances malgaches qui l''utilisent déjà, dans les groupes Facebook spécialisés.
+
+## Suivre sa prospection
+
+Un tableau simple évite d''oublier une relance et vous montre ce qui fonctionne.
+
+| Date | Prospect | Canal | Message envoyé | Relance 1 | Relance 2 | Résultat |
+| --- | --- | --- | --- | --- | --- | --- |
+| 03/11 | Lamba Shop | Messenger | Proposition 3 visuels | 07/11 | — | Devis envoyé |
+| 03/11 | Chez Lova | WhatsApp | Refonte du menu | 07/11 | 15/11 | Pas de réponse |
+| 04/11 | Chaîne « Cuisine de Julie » | E-mail | Miniatures | 09/11 | — | Essai accepté |
+
+> [!astuce] La routine des 30 minutes
+> Chaque jour de travail, à heure fixe (leçon 1.4) : **10 minutes** pour trouver 5 prospects, **15 minutes** pour leur écrire, **5 minutes** pour les relances et le tableau. Au bout d''un mois, vous aurez contacté une centaine de prospects. Même avec peu de réponses, cela suffit généralement à décrocher vos premiers clients.
+
+> [!erreur] Abandonner au bout d''une semaine
+> « J''ai envoyé 10 messages, personne n''a répondu, ça ne marche pas. » La prospection est un jeu de régularité. Analysez plutôt : vos messages sont-ils personnalisés ? Avez-vous un exemple pertinent ? Avez-vous relancé ? Ajustez, et continuez.
+
+> [!retenir]
+> - **5 canaux** ; les premiers clients viennent souvent de la **proximité**.
+> - Message : **personnalisé, court, un exemple, une proposition concrète**.
+> - **Relancez** à J+4 puis J+12, poliment.
+> - Plateformes : **profil précis, offre précise**, vérifiez les conditions pour Madagascar.
+> - **30 minutes par jour** et un **tableau de suivi**.
+
+## Exercice pratique : vos 10 premiers messages
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Reprenez votre liste de 10 clients (leçon 1.3) et complétez-la si besoin.
+> 2. Rédigez un message personnalisé pour chacun, selon la structure en 5 phrases.
+> 3. Créez votre tableau de suivi.
+> 4. Envoyez **au moins 3 messages pour de vrai**, et notez-les dans le tableau avec la date de relance prévue.
+>
+> **À livrer** : vos 10 messages et votre tableau de suivi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 1, 0, 'Qu''est-ce qui rend un message de prospection efficace ?', '["Personnalisé, court, avec un exemple et une proposition concrète","Uniquement le prix","Une critique sévère de leurs visuels","Long et copié-collé à 50 personnes"]'::jsonb, 0, 'Un détail précis montre que vous avez regardé leur travail ; l''exemple et la proposition rendent la suite facile.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 1, 1, 'Combien de messages personnalisés envoyer par jour dans la routine conseillée ?', '["200","Aucun, il faut attendre","Environ 5","Un par mois"]'::jsonb, 2, '5 messages soignés par jour, avec des relances, valent mieux que des dizaines de messages identiques.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 1, 2, 'Quand relancer un prospect qui n''a pas répondu ?', '["Vers J+4 ou J+5, puis une dernière fois vers J+12","Jamais","Le lendemain matin à 5 h","Toutes les heures"]'::jsonb, 0, 'Les prospects sont souvent occupés ; une ou deux relances polies sont normales, au-delà on passe à autre chose.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 1, 3, 'Que vérifier avant de créer un profil sur une plateforme de freelance ?', '["Le nombre de ses employés","Rien, toutes se valent","La couleur de son logo","Qu''elle accepte Madagascar et permet d''y retirer l''argent, et ses frais"]'::jsonb, 3, 'Toutes les plateformes n''acceptent pas les freelances basés à Madagascar ni ne proposent des retraits simples.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 1, 4, 'Que penser d''un essai gratuit ?', '["C''est la seule façon de trouver des clients","Un petit essai court et protégé pour un prospect sérieux, jamais un projet entier","Il faut le livrer en haute définition sans filigrane","Il faut toujours faire tout le projet gratuitement"]'::jsonb, 1, 'Un essai limité peut débloquer une collaboration ; un travail entier gratuit ou des « concours » vous font travailler pour rien.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 5, 2, 'Fixer ses prix et faire un devis', 12, 'Fixer ses prix est souvent ce qui angoisse le plus les débutants : trop cher, on a peur de perdre le client ; pas assez cher, on travaille beaucoup pour rien. La solution est de **calculer** son prix au lieu de le deviner, puis de le présenter clairement dans un **devis** qui vous protège. Cette leçon vous donne la méthode, des exemples chiffrés et un modèle de devis.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Calculer votre prix horaire.
+> 2. Calculer le prix d''un projet.
+> 3. Présenter 3 forfaits.
+> 4. Adapter vos prix aux clients étrangers.
+> 5. Rédiger un devis complet avec acompte.
+
+## Étape 1 : votre prix horaire
+
+Ne copiez pas le prix du voisin : calculez-le à partir de **vos** besoins et de **votre** temps réel.
+
+```schema etapes
+titre: Calculer son prix horaire en 3 étapes
+Revenu mensuel visé : ce dont vous avez besoin pour vivre et investir
+Heures facturables par mois : le temps vraiment payé par les clients
+Division : revenu visé ÷ heures facturables = prix horaire
+```
+
+1. **Le revenu mensuel visé** : vos dépenses de vie, plus vos frais professionnels (connexion, électricité, matériel, abonnements), plus une épargne. Exemple : 1 500 000 Ar.
+2. **Les heures facturables** : pas toutes vos heures de travail ! Une grande partie part en prospection, échanges, administratif et formation. Un freelance facture souvent **la moitié** de son temps de travail. Exemple : 160 h de travail par mois, dont 80 h facturables.
+3. **La division** : 1 500 000 ÷ 80 ≈ **19 000 Ar de l''heure**.
+
+> [!cle] Ces chiffres sont des exemples
+> Le revenu visé, les heures et donc le prix horaire dépendent de votre situation, de votre niveau et de votre marché. Refaites le calcul avec vos propres chiffres, et recalculez tous les 6 mois : quand votre portfolio et vos avis grandissent, votre prix doit grandir aussi.
+
+## Étape 2 : le prix d''un projet
+
+Multipliez votre prix horaire par le **temps total estimé** (création, échanges, corrections, livraison ; leçon 1.2), puis ajoutez une **marge de 20 %** pour les imprévus.
+
+| Projet | Temps total estimé | Calcul | Prix arrondi |
+| --- | --- | --- | --- |
+| 3 visuels Facebook | 3 h | 3 × 19 000 + 20 % | 70 000 Ar |
+| Affiche d''événement + version story | 4 h | 4 × 19 000 + 20 % | 90 000 Ar |
+| Menu A4 recto verso | 6 h | 6 × 19 000 + 20 % | 140 000 Ar |
+| Logo + mini-charte | 8 h | 8 × 19 000 + 20 % | 180 000 Ar |
+| Identité complète (logo, charte, 6 modèles) | 15 h | 15 × 19 000 + 20 % | 340 000 Ar |
+
+> [!astuce] Vendez la valeur, pas seulement le temps
+> Le calcul horaire vous donne un **prix plancher**, en dessous duquel vous perdez de l''argent. Mais certains travaux valent plus que le temps passé : un logo sera utilisé pendant des années sur tous les produits d''une coopérative. Avec l''expérience, vous pourrez augmenter le prix des projets à forte valeur pour le client.
+
+## Étape 3 : proposer 3 forfaits
+
+Les clients préfèrent un **prix fixe** à un prix à l''heure : ils savent exactement ce qu''ils paient. Proposez trois formules : la plupart choisissent celle du milieu.
+
+```schema comparaison
+titre: Exemple de forfaits pour un logo
+colonnes: Essentiel | Standard | Complet
+1 proposition de logo | 2 propositions de logo | 3 propositions de logo
+1 tour de retouches | 2 tours de retouches | 3 tours de retouches
+Logo en couleur et en noir (PNG, SVG) | Pack complet (5 versions) | Pack complet (5 versions)
+— | Mini-charte d''une page | Charte de 3 pages
+— | — | Carte de visite et 3 modèles de publications
+Exemple : 120 000 Ar | Exemple : 180 000 Ar | Exemple : 300 000 Ar
+```
+
+## Les clients étrangers
+
+Pour un client en France, au Canada ou en Belgique, affichez un prix **en euros ou en dollars**, adapté à **son** marché, pas converti directement depuis vos prix locaux.
+
+1. **Regardez les prix pratiqués** par les freelances débutants sur les plateformes pour le même service.
+2. **Placez-vous de façon raisonnable** : en dessous des freelances européens, mais sans brader. Un prix trop bas inquiète un client étranger (« où est le piège ? »).
+3. **Tenez compte des frais** : commission de la plateforme, frais de retrait et de change. Ils peuvent représenter une part importante du prix.
+
+> [!madagascar] Le même travail, deux marchés
+> Un graphiste malgache peut proposer des visuels en ariary à ses clients locaux, et le même service en euros, plus cher, à des clients étrangers dont le budget est différent. Ce n''est pas injuste : chaque client paie un prix normal **pour son marché**. Gardez simplement vos tarifs cohérents à l''intérieur de chaque marché.
+
+## Le devis : se protéger
+
+Le devis est le document qui fixe, **avant le travail**, ce que vous ferez, quand, et pour combien. Une fois accepté (signé ou validé par écrit), il vous protège autant que le client.
+
+```schema checklist
+titre: Ce que contient un devis complet
+[x] Vos coordonnées (et NIF/STAT si vous êtes déclaré) et celles du client
+[x] Un numéro de devis et la date
+[x] La description précise : « 2 propositions de logo, 2 tours de retouches »
+[x] Les livrables : formats, versions, nombre de fichiers
+[x] Ce qui n''est pas inclus : « impression non comprise », « photos fournies par le client »
+[x] Le délai, à partir de la réception de l''acompte et des éléments
+[x] Le prix total et l''échéancier : 50 % à la commande, 50 % à la livraison
+[x] La durée de validité du devis (par exemple 30 jours)
+[x] La cession des droits après paiement complet (pour un logo)
+```
+
+### Les 3 règles qui protègent
+
+1. **Pas de travail sans acompte.** 50 % à la commande, c''est la norme. Un client qui refuse tout acompte est souvent un client qui ne paiera pas.
+2. **Aperçus en basse définition ou avec filigrane** tant que le solde n''est pas payé.
+3. **Retouches limitées** au nombre prévu ; au-delà, un supplément annoncé avant de travailler.
+
+> [!exemple] Rado et le restaurant pressé
+> Un restaurant demande à Rado un menu « pour demain, on paiera après ». Rado envoie son devis (140 000 Ar, livraison 48 h après l''acompte) et demande 70 000 Ar d''acompte par MVola. Le restaurant paie. Deux jours plus tard, le gérant veut ajouter 10 plats : Rado rappelle que le devis prévoyait 30 plats, et propose un supplément de 30 000 Ar, accepté. Sans devis écrit, il aurait fait tout ce travail sans rien demander.
+
+> [!erreur] Baisser son prix dès la première objection
+> « C''est trop cher ! » Avant de baisser, demandez : « Quel budget aviez-vous prévu ? » Puis proposez d''**ajuster le contenu** plutôt que le prix (forfait Essentiel, moins de propositions, moins de visuels). Baisser son prix sans rien changer apprend au client que vos prix sont négociables à chaque fois.
+
+> [!retenir]
+> - **Prix horaire** = revenu visé ÷ heures facturables (souvent la moitié du temps de travail).
+> - **Prix d''un projet** = prix horaire × temps total + 20 %.
+> - Proposez **3 forfaits** ; la plupart des clients choisissent celui du milieu.
+> - Clients étrangers : prix **adaptés à leur marché**, en tenant compte des frais.
+> - **Devis écrit**, **50 % d''acompte**, aperçus protégés, retouches limitées.
+
+## Exercice pratique : vos prix et votre devis
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Calculez votre prix horaire avec **vos** chiffres (revenu visé, heures facturables).
+> 2. Calculez le prix de 4 projets du tableau avec votre prix horaire.
+> 3. Créez vos 3 forfaits pour les visuels réseaux sociaux (nombre de visuels, corrections, délais, prix).
+> 4. Rédigez le devis du logo « Vanille d''Antalaha » (forfait Standard), avec tous les éléments de la liste.
+>
+> **À livrer** : votre calcul, vos forfaits et le devis en PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 2, 0, 'Comment calculer son prix horaire ?', '["Copier le prix du voisin","Diviser par le nombre de clients","Revenu mensuel visé ÷ heures facturables par mois","Prendre le prix le plus bas du marché"]'::jsonb, 2, 'On part de ses besoins réels et du temps vraiment payé, qui est souvent la moitié du temps de travail.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 2, 1, 'Avec un prix horaire de 19 000 Ar et 4 heures de travail, quel prix proposer (marge de 20 % incluse) ?', '["19 000 Ar","Environ 90 000 Ar","500 000 Ar","40 000 Ar"]'::jsonb, 1, '4 × 19 000 = 76 000 Ar, plus 20 % = 91 200 Ar, arrondi à environ 90 000 Ar.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 2, 2, 'Pourquoi proposer 3 forfaits (Essentiel, Standard, Complet) ?', '["Pour compliquer le choix","Les clients préfèrent un prix fixe et choisissent souvent celui du milieu","Pour vendre moins cher","Parce que c''est obligatoire"]'::jsonb, 1, 'Le client sait exactement ce qu''il paie, et le forfait du milieu, plus complet, devient un choix naturel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 2, 3, 'Quand demander l''acompte ?', '["Jamais","À la commande, avant de commencer le travail","Après la livraison des fichiers","Seulement si le client le propose"]'::jsonb, 1, '50 % à la commande est la norme ; un client qui refuse tout acompte est souvent un client qui ne paiera pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 2, 4, 'Un client dit « c''est trop cher ». Que faire d''abord ?', '["Refuser de répondre","Travailler gratuitement","Diviser le prix par deux sans rien changer","Demander son budget et ajuster le contenu plutôt que le prix"]'::jsonb, 3, 'Baisser sans contrepartie apprend au client que vos prix se négocient toujours ; un forfait plus léger respecte votre valeur.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 5, 3, 'Gérer un projet client de A à Z', 11, 'Un client garde un bon souvenir d''un graphiste moins pour le visuel lui-même que pour **l''expérience** : réponses claires, délais tenus, aucune mauvaise surprise. Cette leçon décrit le déroulement complet d''un projet, de la première demande à la livraison, avec les messages types et la gestion des situations difficiles.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Suivre les 8 étapes d''un projet client.
+> 2. Communiquer clairement à chaque étape.
+> 3. Gérer les retards, les changements et les désaccords.
+> 4. Reconnaître un client à risque et vous protéger.
+
+## Les 8 étapes d''un projet
+
+```schema etapes
+titre: Le déroulement d''un projet client
+Demande : le client vous écrit ; vous répondez vite et posez vos questions
+Brief : vous recueillez toutes les informations, par écrit
+Devis : prix, délais, livrables ; validation écrite du client
+Acompte : vous commencez seulement après sa réception
+Création : vous travaillez en suivant le brief
+Présentation : vous montrez le travail avec une explication
+Retouches : le nombre de tours prévu, avec une liste écrite par tour
+Livraison et solde : fichiers finaux après le paiement du solde
+```
+
+## Communiquer à chaque étape
+
+### Répondre à la première demande
+
+Répondez **dans les heures qui suivent**, même pour dire que vous reviendrez plus tard. Un client contacte souvent plusieurs graphistes : le plus rapide et le plus clair a un avantage.
+
+> [!exemple] Réponse à une première demande
+> « Bonjour Monsieur Rakoto, merci pour votre message ! Avec plaisir pour l''affiche de votre tournoi de basket. Pour vous faire un devis précis, pouvez-vous me dire : la date, l''heure et le lieu ; les supports souhaités (Facebook, affiche imprimée, quelle taille ?) ; la quantité si vous imprimez ; et la date à laquelle vous en avez besoin ? Je vous envoie le devis dès réception. Bonne journée ! »
+
+### Tenir le client informé
+
+Pendant la création, un client sans nouvelles s''inquiète. Pour les projets de plus de 3 jours, envoyez un **point d''avancement** court à mi-parcours : « Les croquis sont terminés, je vectorise les 3 meilleures idées. Présentation prévue jeudi comme convenu. »
+
+### Le compte rendu écrit
+
+Après chaque appel ou message vocal, envoyez un **résumé écrit** de ce qui a été décidé. C''est la référence commune en cas de désaccord.
+
+```schema comparaison
+titre: Un résumé après un appel
+colonnes: Sans résumé | Avec résumé
+Chacun retient une version différente de l''appel | « Comme convenu : titre plus grand, fond bleu nuit, logo en bas à droite. Nouvelle version jeudi. »
+Le client dit plus tard « je n''ai jamais demandé ça » | Le client a validé le résumé : aucune ambiguïté
+Les corrections se contredisent | Une liste claire à suivre
+ton: mauvais-bon
+```
+
+## Gérer les situations difficiles
+
+| Situation | Bonne réaction |
+| --- | --- |
+| **Vous allez être en retard** | Prévenez **avant** l''échéance, expliquez brièvement, proposez une nouvelle date ferme. Jamais de silence. |
+| **Le client change le brief en cours de route** | « Bien noté. C''est un changement par rapport au brief validé : voici l''impact sur le délai et le prix. Je continue ainsi ? » |
+| **Le client demande des retouches sans fin** | Rappelez le nombre de tours prévus, proposez un supplément pour les suivants. |
+| **Le client n''aime pas le résultat** | Demandez précisément ce qui ne va pas par rapport au brief, et proposez une correction ciblée. |
+| **Le client ne répond plus** | Relancez à J+3 et J+7 ; le délai de livraison est suspendu tant qu''il ne répond pas (précisez-le dans le devis). |
+
+> [!astuce] La phrase magique : « par rapport au brief »
+> Ramenez toujours la discussion au brief validé : « Par rapport à vos mots-clés naturel et haut de gamme, le vert fluo risque de donner une image moins premium. Voulez-vous que je vous montre les deux ? » Vous ne défendez pas vos goûts, vous défendez les objectifs du client. Il l''entend beaucoup mieux.
+
+## Le client à risque
+
+Certains signaux doivent vous alerter **avant** de commencer :
+
+```schema checklist
+titre: Les signaux d''alerte
+[ ] Refuse tout acompte (« je paie à la fin, promis »)
+[ ] Veut un « essai gratuit » de tout le projet avant de décider
+[ ] Ne donne aucune information précise, mais un délai très court
+[ ] Négocie fortement le prix avant même de voir votre travail
+[ ] Dit que d''autres graphistes l''ont « déçu » plusieurs fois de suite
+[ ] Demande les fichiers sources avant le paiement du solde
+```
+
+Un seul signal n''est pas forcément grave. Plusieurs signaux ensemble : restez poli, mais **appliquez strictement vos règles** (acompte, devis, aperçus protégés), ou déclinez.
+
+> [!madagascar] Les arnaques visant les freelances
+> Méfiez-vous des « clients » étrangers qui proposent un gros projet, envoient un faux justificatif de paiement trop élevé et demandent de leur **rembourser la différence** par Mobile Money ou virement. Méfiez-vous aussi des messages qui demandent vos **codes MVola**, votre mot de passe Facebook ou un « paiement pour débloquer » une commande. Un vrai client ne vous demande jamais d''argent. Vérifiez toujours que le paiement est **réellement arrivé** sur votre compte (pas une capture d''écran) avant de commencer ou de livrer.
+
+## La livraison
+
+```schema etapes
+titre: Une livraison professionnelle
+Vérifier les fichiers finaux (liste de contrôle, noms, formats)
+Envoyer un aperçu final protégé et la demande de solde
+Après réception du solde : lien Google Drive ou dossier .zip
+Message récapitulatif : ce qui est livré, comment utiliser les fichiers
+Demande d''avis et proposition de suite
+```
+
+> [!exemple] Message de livraison
+> « Bonjour Madame Rasoa, merci pour votre paiement ! Voici vos fichiers : [lien Google Drive]. Vous y trouverez les 6 visuels de la semaine en PNG (carré et story), rangés par date, ainsi que les 6 modèles Canva pour vos prochaines publications. Le lien restera actif 3 mois : pensez à télécharger les fichiers. Ce fut un plaisir de travailler avec vous ; si vous êtes satisfaite, un avis sur ma page Facebook m''aiderait beaucoup. À bientôt pour vos visuels de Noël ! »
+
+> [!erreur] Disparaître pendant le projet
+> Le graphiste accepte le projet, reçoit l''acompte… et ne donne plus de nouvelles pendant une semaine, puis livre au dernier moment, en retard. Même si le résultat est bon, le client ne reviendra pas. **La communication fait partie du service** : un message court tous les 2 ou 3 jours suffit à rassurer.
+
+> [!retenir]
+> - **8 étapes** : demande, brief, devis, acompte, création, présentation, retouches, livraison.
+> - Répondez **vite**, faites un **point d''avancement**, envoyez un **résumé écrit** après chaque appel.
+> - Retard : **prévenez avant**. Changement : annoncez l''**impact** sur le prix et le délai.
+> - Repérez les **signaux d''alerte** et méfiez-vous des **arnaques** au remboursement.
+> - Livraison **après le solde**, avec un message récapitulatif et une demande d''avis.
+
+## Exercice pratique : un projet simulé
+
+> [!exercice] Exercice pratique · 45 minutes
+> Avec une personne de votre entourage qui joue le rôle du client (ou seul, en imaginant les réponses) :
+> 1. Écrivez la réponse à une première demande : « Bonjour, il me faut un flyer pour l''ouverture de mon salon de coiffure à Antsirabe. »
+> 2. Rédigez le résumé écrit du brief obtenu.
+> 3. Rédigez le message que vous enverriez si vous deviez annoncer un retard d''un jour.
+> 4. Rédigez votre réponse quand le client demande, après le premier tour, de « tout changer pour un style complètement différent ».
+> 5. Rédigez le message de livraison.
+>
+> **À livrer** : vos 5 messages.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 3, 0, 'Que faire après un appel avec un client ?', '["Commencer sans attendre de validation","Attendre qu''il écrive lui-même","Envoyer un résumé écrit de ce qui a été décidé","Ne rien écrire pour gagner du temps"]'::jsonb, 2, 'Le résumé écrit devient la référence commune et évite le « je n''ai jamais demandé ça ».');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 3, 1, 'Vous allez livrer avec un jour de retard. Que faire ?', '["Ne rien dire et livrer quand c''est prêt","Ignorer ses messages","Prévenir le client avant l''échéance et proposer une nouvelle date ferme","Livrer un travail inachevé à l''heure sans prévenir"]'::jsonb, 2, 'Prévenir à l''avance garde la confiance ; le silence est ce qui fâche le plus les clients.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 3, 2, 'Le client change le brief en plein projet. Quelle réponse est professionnelle ?', '["Arrêter le projet sans explication","Refuser toute modification","Annoncer l''impact du changement sur le délai et le prix, puis demander confirmation","Refaire tout gratuitement sans rien dire"]'::jsonb, 2, 'Le changement est possible, mais il a un coût : le dire avant de travailler évite les conflits.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 3, 3, 'Un « client » envoie un paiement trop élevé et demande de rembourser la différence. Que penser ?', '["C''est une arnaque fréquente : vérifier la réception réelle et ne rien rembourser","Il faut lui donner vos codes MVola","Il faut commencer le travail immédiatement","C''est une erreur honnête, il faut rembourser tout de suite"]'::jsonb, 0, 'Le faux justificatif de paiement suivi d''une demande de remboursement est une arnaque classique : seul compte le paiement réellement reçu.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 3, 4, 'Quand envoyer les fichiers finaux en haute définition ?', '["Avec le devis","Au premier aperçu","Après la réception du solde","Avant tout paiement"]'::jsonb, 2, 'Les aperçus restent protégés (basse définition, filigrane) tant que le solde n''est pas payé.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('design-0-f', 5, 4, 'Être payé et fidéliser', 12, 'La dernière étape d''un projet est aussi la première du suivant : être payé correctement, garder une trace propre de chaque paiement, puis faire en sorte que le client revienne et vous recommande. Cette leçon termine la formation avec les moyens de paiement depuis Madagascar, la facture, la fidélisation, et votre plan d''action pour les 30 prochains jours.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir le bon moyen de paiement selon le client.
+> 2. Établir une facture et suivre vos revenus.
+> 3. Obtenir des avis et des recommandations.
+> 4. Transformer des clients ponctuels en clients réguliers.
+> 5. Construire votre plan d''action pour les 30 prochains jours.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement courants | Points de vigilance |
+| --- | --- | --- |
+| Client local | Mobile Money (MVola, Orange Money, Airtel Money), virement bancaire, espèces | Vérifier la réception sur votre compte, pas sur une capture |
+| Plateforme internationale | Selon la plateforme : Payoneer, virement vers un compte bancaire | Commissions et frais de retrait ; délai de disponibilité |
+| Client étranger en direct | Virement international, Payoneer, autres services selon les pays | Frais de change et de réception ; délai de quelques jours |
+
+> [!madagascar] PayPal et les services de paiement
+> Les possibilités de PayPal sont limitées pour les comptes basés à Madagascar : vérifiez la situation actuelle avant de le proposer à un client. D''une manière générale, les services, les frais et les pays acceptés changent : **renseignez-vous sur le site officiel du service** et auprès de freelances malgaches qui l''utilisent, avant de l''indiquer dans un devis.
+
+### Les bonnes pratiques
+
+1. **Indiquez le moyen de paiement dans le devis**, avec le numéro ou les coordonnées exactes, et le nom du titulaire.
+2. **Vérifiez chaque paiement sur votre compte** (application MVola, relevé bancaire) : une capture d''écran peut être fausse.
+3. **Gardez une trace** : la référence de la transaction, la date, le montant, le client.
+4. **Envoyez un reçu ou une facture** après chaque paiement : c''est professionnel, et le client en a souvent besoin pour sa comptabilité.
+
+## La facture et le suivi des revenus
+
+```schema comparaison
+titre: Devis ou facture ?
+colonnes: Devis | Facture
+Avant le travail | Après le travail (ou à chaque paiement)
+Annonce le prix et le contenu | Demande ou confirme le paiement
+Peut être refusé ou négocié | Correspond au devis accepté
+Numéroté : D-2026-001 | Numérotée : F-2026-001, sans trou dans la numérotation
+```
+
+Tenez un **tableau de suivi** de vos revenus, même simple :
+
+| Date | Client | Projet | Facture | Montant | Moyen | Référence | Statut |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 05/11 | Lamba Shop | 6 visuels | F-2026-014 | 120 000 Ar | MVola | MP2611… | Payé |
+| 12/11 | Cuisine de Julie | 4 miniatures | F-2026-015 | 80 € | Payoneer | — | En attente |
+
+Ce tableau vous montre chaque mois ce que vous avez gagné, qui vous doit encore de l''argent, et quels clients rapportent le plus. Il vous servira aussi pour vos déclarations (leçon 1.5).
+
+## Obtenir des avis et des recommandations
+
+Un client satisfait est votre meilleure publicité, à condition de lui **demander** de le dire.
+
+```schema etapes
+titre: Obtenir un avis en 3 temps
+À la livraison : remercier et demander un avis, avec le lien direct
+3 à 5 jours plus tard : une relance aimable si l''avis n''est pas venu
+Une fois l''avis publié : remercier et le partager (avec l''accord du client)
+```
+
+> [!astuce] Rendez l''avis facile
+> Envoyez le **lien direct** vers la page où laisser l''avis (page Facebook, profil de plateforme, Google), et proposez une question simple : « En une phrase, qu''avez-vous apprécié dans notre collaboration ? » Plus c''est simple, plus les clients répondent. Les avis précis (« livré en 24 h, très à l''écoute ») convainquent davantage que « très bien ».
+
+## Fidéliser : les clients qui reviennent
+
+Trouver un nouveau client demande beaucoup plus d''efforts que de travailler à nouveau avec un client satisfait. Pensez à vos anciens clients **avant** de chercher de nouveaux.
+
+```schema chiffres
+titre: 4 façons de faire revenir un client
+1 mois après : une relance avec une idée concrète (« vos visuels de fin de mois ? »)
+Avant chaque fête : une proposition de visuels 3 à 4 semaines avant
+Le forfait mensuel : un nombre fixe de visuels chaque mois (leçon 4.5)
+Les services complémentaires : après un logo, les cartes de visite, l''enseigne, les publications
+```
+
+> [!exemple] De 1 à 6 projets avec la même cliente
+> Mialy commande un logo pour sa marque de cosmétiques. À la livraison, sa graphiste propose les étiquettes des produits. Un mois plus tard, elle propose 8 visuels pour le lancement. Avant la fête des mères, un carrousel de coffrets cadeaux. Puis un forfait mensuel de 10 publications. En un an, une seule cliente est devenue six projets et un revenu régulier, sans aucune prospection supplémentaire.
+
+> [!erreur] Livrer sur une simple capture d''écran
+> Un client envoie la capture d''un paiement MVola et demande les fichiers « tout de suite, c''est urgent ». Le graphiste livre… et découvre le soir que rien n''est arrivé sur son compte : la capture était ancienne ou modifiée. **Vérifiez toujours la réception dans votre propre application** avant de livrer les fichiers finaux, même si le client insiste, même pour un petit montant.
+
+## Votre plan d''action pour les 30 prochains jours
+
+La formation se termine ; votre activité commence. Voici un plan simple, à adapter à votre situation.
+
+```schema etapes
+titre: Les 30 premiers jours de votre activité
+Semaine 1 : finaliser le portfolio (Behance + PDF) et vos 3 forfaits
+Semaine 1 : créer vos profils (page Facebook pro, une plateforme vérifiée)
+Semaines 2 à 4 : prospection 30 minutes par jour, 5 messages personnalisés
+Chaque semaine : publier 2 projets ou conseils sur vos réseaux
+Chaque vendredi : mettre à jour le tableau de suivi, relancer, analyser
+Fin du mois : faire le bilan et ajuster vos messages, vos cibles ou vos prix
+```
+
+> [!retenir]
+> - **Mobile Money** pour les clients locaux ; **plateformes, virement ou Payoneer** pour l''étranger, en vérifiant les conditions.
+> - Vérifiez chaque paiement **sur votre compte**, jamais sur une capture.
+> - **Devis avant, facture après** ; un **tableau de suivi** de vos revenus.
+> - **Demandez des avis**, avec un lien direct et une question simple.
+> - **Fidélisez** : relances, fêtes, forfaits, services complémentaires.
+
+## Exercice pratique : vos outils de gestion
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez votre modèle de facture (avec numérotation F-2026-001) dans Canva, Google Docs ou un tableur.
+> 2. Créez votre tableau de suivi des revenus.
+> 3. Rédigez votre message de demande d''avis et votre message de relance à 1 mois.
+> 4. Écrivez votre plan d''action des 30 prochains jours avec des dates précises.
+>
+> **À livrer** : votre modèle de facture, votre tableau, vos 2 messages et votre plan.
+
+## Projet final : votre activité prête à démarrer
+
+> [!projet] Projet du module · 2 heures 30
+> Ce projet rassemble toute la formation. À la fin, vous êtes prêt à travailler avec de vrais clients.
+> 1. **Portfolio** : votre portfolio de la leçon 6.1, mis à jour avec vos meilleurs projets des modules 4 et 5, avec le lien de votre attestation Vitako.
+> 2. **Offre** : vos 3 forfaits pour les visuels réseaux sociaux et vos 3 forfaits pour les logos, avec vos prix calculés.
+> 3. **Documents** : votre modèle de devis, votre modèle de facture et votre tableau de suivi.
+> 4. **Prospection** : votre liste de 20 prospects, vos messages personnalisés, et la preuve d''au moins **5 messages réellement envoyés** (tableau de suivi).
+> 5. **Plan** : votre plan d''action des 30 prochains jours.
+> 6. **Bilan** : relisez votre « plan de démarrage » du module 1 et écrivez en une page ce qui a changé, et vos objectifs pour les 3 prochains mois.
+>
+> **À livrer** : un dossier complet avec tous ces éléments. Félicitations : vous avez terminé la formation. Il vous reste à passer l''examen final pour obtenir votre attestation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 4, 0, 'Quel moyen de paiement convient pour un client local à Madagascar ?', '["Uniquement les cartes cadeaux","Aucun, il faut travailler à crédit","Mobile Money (MVola, Orange Money, Airtel Money) ou virement","Uniquement les chèques étrangers"]'::jsonb, 2, 'Le Mobile Money est le moyen le plus courant et le plus rapide pour les clients locaux, avec une trace de chaque transaction.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 4, 1, 'Comment vérifier qu''un client a payé ?', '["Ce n''est pas nécessaire","Sur la capture d''écran envoyée par le client","Sur votre compte (application MVola, relevé bancaire)","En lui demandant s''il a payé"]'::jsonb, 2, 'Une capture d''écran peut être modifiée ; seule la réception réelle sur votre compte compte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 4, 2, 'Quelle est la différence entre un devis et une facture ?', '["Le devis est réservé aux clients étrangers","Ce sont deux noms pour le même document","Le devis annonce le prix avant le travail ; la facture demande ou confirme le paiement après","La facture se fait avant le devis"]'::jsonb, 2, 'Le devis fixe le cadre ; la facture, numérotée sans trou, correspond au travail réalisé et au paiement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 4, 3, 'Comment obtenir plus facilement un avis client ?', '["Demander un avis avant de commencer le travail","Écrire l''avis à sa place","Attendre que le client y pense seul","Envoyer un lien direct et une question simple, puis relancer une fois"]'::jsonb, 3, 'Plus c''est simple, plus les clients répondent ; un avis précis convainc davantage les futurs clients.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('design-0-f', 5, 4, 4, 'Pourquoi penser d''abord à vos anciens clients ?', '["Parce qu''ils paient toujours plus cher","Faire revenir un client satisfait demande moins d''efforts que d''en trouver un nouveau","Parce que les nouveaux clients sont interdits","Pour ne plus jamais prospecter"]'::jsonb, 1, 'Relances, propositions avant les fêtes, forfaits mensuels et services complémentaires transforment un projet en revenu régulier.');
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un graphiste freelance doit d''abord…', '["Fixer la date de livraison","Choisir ses couleurs préférées","Ouvrir un modèle Canva au hasard","Comprendre le message et l''objectif du client"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un visuel qui attire et se comprend, mais ne dit pas quoi faire, rate quel objectif ?', '["Décorer","Faire comprendre","Attirer","Faire agir"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pour une première estimation de temps, un débutant devrait…', '["Diviser son temps par 2","Ne jamais estimer","Multiplier son temps de création par 2","Compter seulement le temps de création"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Qu''est-ce qu''un livrable ?', '["Le message de prospection","Les fichiers remis au client, dans des formats précis","Le brief du client","Le paiement du solde"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel type de client stabilise le mieux les revenus d''un freelance ?', '["Le client récurrent","Le client qui commande une fois","Le client qui veut tout gratuitement","Le client qui ne paie qu''à la fin"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel fuseau horaire a Madagascar toute l''année ?', '["UTC−3","UTC+1","UTC+3","UTC+5"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quand il est 9 h à Paris en été, quelle heure est-il à Antananarivo ?', '["11 h","12 h","10 h","8 h"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que dit la règle des 3 copies ?', '["Trois dossiers sur le bureau","Trois versions pour le client","Trois exports du même fichier","Ordinateur, copie en ligne et disque externe"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelles démarches fait en général un indépendant pour facturer officiellement à Madagascar ?', '["Aucune démarche","Ouvrir uniquement un compte Facebook","Obtenir un NIF et une carte statistique","Obtenir un passeport"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Où trouver des photos utilisables pour un client ?', '["Sur la page d''un concurrent","Sur des banques libres de droits, en vérifiant la licence","Sur Google Images, sans vérifier","Dans les publicités d''une grande marque"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Combien de niveaux de lecture viser sur un visuel simple ?', '["Six","Autant que d''informations","Trois","Un seul"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Sur une affiche de concert, que doit-on lire en premier ?', '["Le numéro de téléphone","Le nom du graphiste","Le nom de l''artiste ou de l''événement","Les logos des partenaires"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quels sont les 4 outils de la hiérarchie ?', '["Taille, graisse, couleur, position","Ombre, contour, dégradé, reflet","Photo, icône, cadre, fond","Logo, slogan, adresse, prix"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle marge minimale garder sur un visuel de 1080 px de large ?', '["Environ 54 px sur chaque bord","5 px","500 px","Aucune marge"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que dit la règle de proximité ?', '["Il faut remplir chaque espace vide","Ce qui va ensemble est proche, ce qui est différent est éloigné","Le texte doit être au bord","Tous les éléments doivent se toucher"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'À quoi sert l''espace vide ?', '["À rien, c''est un oubli","À guider l''œil vers ce qui compte","À économiser de l''encre seulement","À cacher un défaut"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que dit la règle 60-30-10 ?', '["Six couleurs maximum","Trois polices par visuel","60 % de texte, 30 % d''image, 10 % de vide","Une couleur domine, une accompagne, une ressort"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle combinaison est la plus lisible ?', '["Texte gris clair sur fond blanc","Texte bleu nuit sur fond blanc","Texte jaune sur fond blanc","Texte rouge sur fond vert"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Combien de polices au maximum sur un visuel ?', '["Il n''y a pas de limite","Cinq","Une par ligne","Deux"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle taille de texte ne jamais descendre sous un visuel de 1080 × 1080 px ?', '["100 px","24 px","8 px","60 px"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel outil gratuit fonctionne hors ligne pour les logos vectoriels ?', '["Photopea","Inkscape","Canva","Figma"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment utiliser ArtCraft aujourd''hui ?', '["Pour s''entraîner sur ses projets personnels, pas encore pour les clients","Il faut l''éviter complètement","Pour tous les projets clients","En le téléchargeant sur n''importe quel site"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pourquoi éviter les logiciels piratés ?', '["Ils sont trop récents","Ils sont plus lents","Ils peuvent contenir des virus et faire perdre clients et comptes","Ils n''ont pas de couleurs"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que faut-il faire à un modèle Canva pour en faire un visuel unique ?', '["Changer couleurs, polices, photos, mise en page et textes","Changer seulement le prix","Rien, il est déjà unique","Ajouter un filtre"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel format agrandit un logo sans perte ?', '["Le JPG","Le vectoriel (SVG)","La capture d''écran","Le PNG de 200 px"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle opération booléenne découpe une forme avec une autre ?', '["L''union","La différence","Le groupe","La duplication"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Dans Photopea, que faire avant toute retouche ?', '["Exporter en JPG","Supprimer l''original","Dupliquer le calque de la photo","Passer en noir et blanc"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel format garde la transparence d''un produit détouré ?', '["PNG","JPG","MP4","PDF standard"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle taille pour une publication Instagram ou Facebook carrée ?', '["1080 × 1920 px","85 × 55 mm","1080 × 1080 px","1280 × 720 px"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle résolution demande en général un imprimeur pour les images ?', '["300 dpi","72 dpi","1000 dpi","30 dpi"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que signifie « fond perdu » ?', '["Un fichier perdu","Un fond transparent","Une marge blanche intérieure","Prolonger le fond de 3 mm au-delà du bord, pour la découpe"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'À quelle distance minimale du bord placer un texte important sur un document imprimé ?', '["1 mm","0 mm","5 cm","Environ 5 mm"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Où placer le texte important d''une story ?', '["Sur les bords","Tout en haut","Dans la zone centrale","Tout en bas"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle accroche est la plus efficace pour une publication ?', '["« Découvrez nos produits »","« Bienvenue dans notre boutique »","« Nouvelle collection : -30 % »","« Venez nombreux »"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Où mettre les conditions et l''adresse détaillée d''une offre publiée sur Facebook ?', '["En grand sur le visuel","Nulle part","Dans le logo","Dans la légende de la publication"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle image d''un carrousel compte le plus ?', '["La dernière","Celle du milieu","La première","Aucune en particulier"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Combien de mots mettre sur une miniature YouTube ?', '["Aucun","Une vingtaine","3 ou 4 au maximum","Le titre complet"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pourquoi écrire le jour de la semaine avec la date d''un événement ?', '["Pour remplir l''affiche","Parce que les chiffres sont interdits","Pour aider le lecteur et repérer une éventuelle erreur de date","Pour la décoration"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Sur un menu, comment présenter les prix ?', '["Mélangés aux descriptions","En police décorative","Écrits à la main","Alignés à droite, dans une même colonne"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que doit préciser un forfait mensuel de visuels ?', '["Le nombre d''heures de sommeil","Seulement la date de début","Que tout est illimité","Le nombre de visuels et de corrections inclus"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle est la première étape d''un logo ?', '["La livraison","Le choix des couleurs","La vectorisation","Le brief écrit validé, avec devis et acompte"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'À quoi sert une planche d''inspiration ?', '["Fixer le prix","Remplacer les croquis","Vérifier avec le client l''ambiance recherchée","Copier un logo existant"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pourquoi faire des croquis sur papier ?', '["Parce que les logiciels sont lents","Pour éviter la couleur","Parce que le client l''exige","Pour explorer beaucoup d''idées très vite"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pourquoi travailler un logo en noir et blanc d''abord ?', '["Pour gagner du temps à l''export","Les couleurs coûtent cher","S''il fonctionne sans couleur, il fonctionnera avec","C''est la mode"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un logo solide doit rester lisible…', '["En tout petit et en une seule couleur","Seulement en couleur","Seulement à l''écran","Seulement en très grand"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment vérifier qu''un logo ne ressemble pas à un logo existant ?', '["En changeant la couleur","Par une recherche d''image inversée","En demandant à un ami","Ce n''est pas nécessaire"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Pourquoi présenter un logo en situation (enseigne, t-shirt, étiquette) ?', '["Pour cacher ses défauts","Parce que le fond blanc est interdit","Pour facturer plus","Le client se projette et valide plus vite"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel code de couleur sert à l''impression ?', '["HEX","CMJN","Le nom de la couleur","RVB"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Que contient une mini-charte graphique ?', '["Le brief uniquement","Les croquis refusés","Les versions du logo, les couleurs, les polices, la zone de protection et les interdits","Le prix du logo"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelles versions d''un logo livrer au client ?', '["Principale, compacte, noire et blanche, en vectoriel et en PNG","La version couleur en basse définition","Une seule version en JPG","Les croquis scannés"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Combien de projets suffisent pour un premier portfolio ?', '["Environ 6, solides et bien présentés","Au moins 50","Un seul","Tous, même les plus faibles"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment présenter un exercice de formation dans son portfolio ?', '["Comme un vrai client","En indiquant « projet d''étude »","Il est interdit de le montrer","Sans aucune indication"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Qu''est-ce qui rend un message de prospection efficace ?', '["Une liste de tous vos services","Long et identique pour tous","Une critique de leurs visuels","Personnalisé, court, avec un exemple et une proposition concrète"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment calculer son prix horaire ?', '["Revenu mensuel visé ÷ heures facturables","Prix le plus bas du marché","Nombre de clients × 1 000 Ar","Prix du voisin moins 10 %"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quelle marge ajouter au prix d''un projet pour les imprévus ?', '["Environ 20 %","200 %","5 Ar","0 %"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quand demander l''acompte ?', '["Seulement aux clients étrangers","À la commande, avant de commencer","Après la livraison","Jamais"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Quel est l''acompte habituel ?', '["100 % après livraison","5 %","50 % à la commande","Rien"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Vous serez en retard d''un jour. Que faire ?', '["Ne rien dire","Changer de numéro de téléphone","Prévenir avant l''échéance et proposer une nouvelle date","Livrer un travail inachevé"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un « client » demande de rembourser un trop-perçu après un paiement suspect. Que faire ?', '["Rembourser immédiatement","Donner ses codes Mobile Money","Vérifier la réception réelle sur son compte et ne rien rembourser","Commencer le travail tout de suite"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment vérifier qu''un paiement Mobile Money est arrivé ?', '["Sur la capture envoyée par le client","En attendant une semaine","En demandant au client","Dans l''application ou le relevé de son propre compte"]'::jsonb, 3, 2);
+update public.courses set v2_live = false where id = 'design-0-f';
 commit;

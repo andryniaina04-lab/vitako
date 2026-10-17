@@ -1,0 +1,61 @@
+{
+  "title": "Les outils du graphiste",
+  "summary": "Canva, Inkscape, Figma et Photopea pas à pas, quand passer aux outils payants, et comment livrer chaque fichier au bon format, à la bonne taille.",
+  "lessons": [
+    {
+      "title": "Choisir ses outils : gratuits, payants, à tester",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Quel outil gratuit fonctionne hors ligne pour créer des logos vectoriels ?", "options": ["Inkscape", "Canva", "Figma", "Photopea"], "correct": 0, "why": "Inkscape s'installe sur l'ordinateur et fonctionne sans Internet, ce qui est précieux en cas de coupure de connexion." },
+        { "q": "Pour retoucher et détourer la photo d'un produit, quel outil gratuit choisir ?", "options": ["Photopea", "Inkscape", "Google Fonts", "Figma"], "correct": 0, "why": "Photopea est un logiciel de retouche photo dans le navigateur, très proche de Photoshop." },
+        { "q": "Quand passer à un logiciel payant ?", "options": ["Quand il est rentabilisé, exigé par un client, ou qu'il fait gagner beaucoup de temps", "Dès le premier jour de formation", "Jamais, c'est interdit", "Quand un ami l'utilise"], "correct": 0, "why": "Avant cela, les outils gratuits suffisent pour vendre. Le payant doit être un investissement rentable, pas une dépense par principe." },
+        { "q": "Comment utiliser ArtCraft aujourd'hui ?", "options": ["Pour s'entraîner sur ses projets personnels, en gardant les outils stables pour les clients", "Pour tous les projets clients dès maintenant", "Le télécharger sur n'importe quel site", "Ne jamais l'ouvrir"], "correct": 0, "why": "ArtCraft est encore en version alpha avec des bugs : on l'essaie sur ses projets, et on le télécharge uniquement depuis son site officiel ou GitHub." },
+        { "q": "Pourquoi éviter les logiciels piratés ?", "options": ["Ils contiennent souvent des virus et peuvent faire perdre clients et comptes", "Ils sont plus lents à démarrer", "Ils n'existent pas en français", "Ils ne savent pas exporter en PNG"], "correct": 0, "why": "Un virus peut voler vos mots de passe ou les fichiers de vos clients, et une agence qui découvre un logiciel piraté arrête souvent la collaboration." }
+      ]
+    },
+    {
+      "title": "Canva de A à Z",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Pourquoi créer un design Canva directement à la taille finale ?", "options": ["Agrandir un design trop petit à la fin donne des images floues", "Canva interdit de changer la taille", "Pour payer moins cher", "Pour avoir plus de modèles"], "correct": 0, "why": "Les images et les textes sont prévus pour une taille ; en agrandissant après coup, on perd en netteté." },
+        { "q": "Comment transformer un modèle Canva en visuel unique ?", "options": ["Changer couleurs, polices, photos, mise en page et textes", "Changer seulement le texte", "Ajouter un filtre sur la photo", "Garder le modèle tel quel"], "correct": 0, "why": "Un modèle laissé presque tel quel se reconnaît tout de suite. Les 5 changements en font une création adaptée au client." },
+        { "q": "Que fait le raccourci Ctrl + G dans Canva ?", "options": ["Il groupe les éléments sélectionnés", "Il ajoute une grille", "Il télécharge le design", "Il annule la dernière action"], "correct": 0, "why": "Un groupe se déplace d'un bloc sans casser l'alignement de ses éléments (une icône et son texte, par exemple)." },
+        { "q": "Quel export choisir pour un flyer destiné à l'imprimeur ?", "options": ["PDF pour impression, avec traits de coupe et fond perdu", "JPG de faible qualité", "PNG en taille réduite", "MP4"], "correct": 0, "why": "Le PDF pour impression garde la qualité et ajoute le fond perdu et les repères de découpe attendus par l'imprimeur." },
+        { "q": "Quel lien partager avec un client pour faire valider un visuel ?", "options": ["Un lien en lecture seule (« Peut voir »)", "Un lien qui permet de modifier", "Le mot de passe de votre compte Canva", "Aucun lien, seulement le fichier de travail"], "correct": 0, "why": "Le client voit le design sans pouvoir le modifier ; le lien modifiable ne se partage pas avant la fin du projet." }
+      ]
+    },
+    {
+      "title": "Inkscape et Figma : le vectoriel",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "Quel format agrandit un logo sans perte de qualité ?", "options": ["Le vectoriel (SVG)", "Le JPG", "Le PNG", "La capture d'écran"], "correct": 0, "why": "Une image vectorielle est faite de formes calculées : l'ordinateur la redessine nettement à n'importe quelle taille." },
+        { "q": "Quelle opération booléenne fusionne deux formes en une seule ?", "options": ["L'union", "La différence", "L'intersection", "L'exclusion"], "correct": 0, "why": "L'union assemble les formes ; la différence découpe, l'intersection garde la partie commune et l'exclusion la retire." },
+        { "q": "Avec la plume (outil Bézier), que crée un cliquer-glisser ?", "options": ["Un point courbe, avec deux poignées", "Un rectangle", "Un texte", "Un point d'angle droit"], "correct": 0, "why": "Un simple clic crée un angle ; cliquer-glisser crée une courbe dont on règle la forme avec les poignées." },
+        { "q": "Que faire au texte d'un logo avant l'export en SVG ?", "options": ["Le convertir en tracé", "Le mettre en majuscules", "Le supprimer", "Le transformer en photo"], "correct": 0, "why": "Sinon, l'ordinateur du client affichera une autre police s'il n'a pas celle que vous avez utilisée." },
+        { "q": "Quel est le grand avantage de Figma pour travailler avec un client ?", "options": ["Le client voit les propositions par un lien et peut commenter", "Il fonctionne sans Internet", "Il retouche les photos automatiquement", "Il imprime les logos"], "correct": 0, "why": "Figma est en ligne : le client ouvre un lien, sans rien installer, et laisse ses commentaires directement sur le design." }
+      ]
+    },
+    {
+      "title": "Photopea : retoucher et détourer",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "Que faire avant toute retouche dans Photopea ?", "options": ["Dupliquer le calque de la photo (Ctrl + J)", "Supprimer le calque d'origine", "Exporter en JPG", "Passer l'image en noir et blanc"], "correct": 0, "why": "On travaille sur la copie : l'original reste intact et l'on peut revenir en arrière si le client change d'avis." },
+        { "q": "Quel réglage corrige rapidement une photo grisâtre ou voilée ?", "options": ["Les Niveaux (Ctrl + L)", "La gomme", "Le texte", "Le recadrage"], "correct": 0, "why": "En réglant les noirs, les tons moyens et les blancs, les niveaux redonnent du contraste et de la netteté à la photo." },
+        { "q": "Quel format garde la transparence d'un produit détouré ?", "options": ["PNG", "JPG", "PDF standard", "MP4"], "correct": 0, "why": "Le JPG ne gère pas la transparence : le fond devient blanc. Le PNG garde le produit seul, prêt à poser sur n'importe quel fond." },
+        { "q": "Quelle retouche reste honnête ?", "options": ["Effacer une poussière ou un fil qui dépasse", "Changer la taille d'un produit pour le rendre plus attirant", "Cacher un défaut réel du produit vendu", "Embellir un plat au point qu'il ne ressemble plus à ce qui est servi"], "correct": 0, "why": "Nettoyer une photo est normal ; modifier la réalité d'un produit trompe les acheteurs et finit par nuire au client." },
+        { "q": "Quel conseil donner à un client pour de meilleures photos de produits ?", "options": ["Photographier le matin ou en fin d'après-midi, près d'une fenêtre ou à l'ombre", "Photographier à midi en plein soleil", "Utiliser le flash à 10 cm", "Prendre la photo dans le noir"], "correct": 0, "why": "La lumière douce évite les ombres dures et les couleurs écrasées du soleil de midi : la retouche devient plus rapide et plus réussie." }
+      ]
+    },
+    {
+      "title": "Formats, tailles, impression et rangement",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Quelle taille pour une story Instagram ou TikTok ?", "options": ["1080 × 1920 px", "1080 × 1080 px", "1280 × 720 px", "1640 × 624 px"], "correct": 0, "why": "La story est verticale ; 1080 × 1080 est le carré, 1280 × 720 la miniature YouTube et 1640 × 624 la couverture Facebook." },
+        { "q": "Où placer le texte important d'une story ?", "options": ["Dans la zone centrale, loin du haut et du bas", "Tout en haut, près du nom du compte", "Tout en bas, près du champ de réponse", "Sur les bords"], "correct": 0, "why": "Le haut et le bas de la story sont recouverts par le nom du compte et les boutons : environ 250 px de chaque côté." },
+        { "q": "Que signifie « fond perdu » ?", "options": ["Une bande de 3 mm de fond au-delà du bord, pour la découpe", "Un fond transparent", "Un fichier supprimé par erreur", "Une marge blanche autour du document"], "correct": 0, "why": "La découpe n'est jamais parfaite : sans fond perdu, un liseré blanc peut apparaître au bord du document imprimé." },
+        { "q": "Quelle est la taille d'un flyer A5 avec fond perdu de 3 mm ?", "options": ["154 × 216 mm", "148 × 210 mm", "150 × 212 mm", "210 × 297 mm"], "correct": 0, "why": "On ajoute 3 mm de chaque côté : 148 + 6 = 154 mm et 210 + 6 = 216 mm." },
+        { "q": "Quel nom de fichier est le plus professionnel ?", "options": ["hotel-ravinala_promo-noel_story_v2.png", "final-final-OK.png", "Image 1 (2).png", "Nouveau document.png"], "correct": 0, "why": "Client, projet, format et version : le fichier se retrouve facilement et la version livrée ne prête pas à confusion." }
+      ]
+    }
+  ]
+}

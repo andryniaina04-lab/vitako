@@ -1,0 +1,61 @@
+{
+  "title": "Le métier de graphiste freelance",
+  "summary": "Ce que fait un graphiste, les commandes que vous recevrez, vos clients, votre organisation depuis Madagascar et les règles pour travailler en règle.",
+  "lessons": [
+    {
+      "title": "Ce que fait vraiment un graphiste",
+      "file": "m1-l1.md",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un graphiste ?", "options": ["Traduire le message du client en image utile", "Dessiner ce qu'il trouve beau", "Imprimer des affiches", "Gérer la page Facebook du client"], "correct": 0, "why": "Le graphiste part du message que le client veut faire passer et choisit les mots, couleurs et images qui le rendent clair. La beauté est un moyen, pas le but." },
+        { "q": "Quels sont, dans l'ordre, les 3 objectifs d'un bon visuel ?", "options": ["Attirer, faire comprendre, faire agir", "Décorer, remplir, signer", "Faire comprendre, attirer, décorer", "Attirer, divertir, informer sur tout"], "correct": 0, "why": "Le visuel doit d'abord arrêter le regard, puis faire comprendre le message en quelques secondes, et enfin dire quoi faire (appeler, venir, commander)." },
+        { "q": "Sur un visuel, à quoi sert l'information « Commandez au 034 12 345 67 » ?", "options": ["À faire agir le lecteur", "À attirer l'attention", "À décorer le visuel", "À remplacer le titre"], "correct": 0, "why": "C'est l'appel à l'action : il indique au lecteur ce qu'il doit faire ensuite. Sans lui, le visuel informe mais ne fait pas vendre." },
+        { "q": "Quelle commande représente la plus grande part des demandes d'un graphiste débutant ?", "options": ["Les visuels pour les réseaux sociaux", "Les emballages", "Les maquettes d'applications", "Les illustrations de livres"], "correct": 0, "why": "Presque tous les commerces vendent sur Facebook, WhatsApp ou TikTok et ont besoin de visuels réguliers : c'est la porte d'entrée la plus fréquente." },
+        { "q": "Quelle est la principale différence entre un freelance et un graphiste salarié en agence ?", "options": ["Le freelance gère lui-même ses clients, ses prix et ses paiements", "Le freelance ne fait que des logos", "Le salarié n'a jamais de délais", "Le freelance n'a pas besoin d'ordinateur"], "correct": 0, "why": "En freelance, vous choisissez vos clients et vos horaires, mais vous gérez aussi la prospection, les devis et les paiements, que l'agence gère pour ses salariés." }
+      ]
+    },
+    {
+      "title": "Les commandes que vous recevrez",
+      "file": "m1-l2.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un « livrable » ?", "options": ["Ce que vous remettez concrètement au client : fichiers et formats", "Le prix d'un projet", "Le brief du client", "Le message de prospection"], "correct": 0, "why": "Les livrables sont les fichiers remis à la fin, dans des formats précis. Les écrire dans le devis évite que le client attende des fichiers non prévus." },
+        { "q": "Pour une première estimation, quelle règle appliquer au temps de création ?", "options": ["Le multiplier par 2", "Le diviser par 2", "Ne compter que la création", "Ajouter 10 minutes"], "correct": 0, "why": "Les échanges, la recherche, les corrections et la livraison prennent autant de temps que la création elle-même. Multiplier par 2 évite de travailler à moitié prix." },
+        { "q": "Pour une miniature YouTube, que faut-il éviter ?", "options": ["Un texte trop long et trop petit", "Un visage expressif", "Un fort contraste", "3 ou 4 mots maximum"], "correct": 0, "why": "La miniature est vue en tout petit sur téléphone : un long texte devient illisible. Quelques mots en grand, un visage et du contraste fonctionnent mieux." },
+        { "q": "Pourquoi garder les logos pour plus tard quand on débute ?", "options": ["Ils demandent plus de méthode et c'est là que les malentendus sont les plus fréquents", "Ils sont interdits aux débutants", "Ils ne sont jamais payés", "Ils se font uniquement à la main"], "correct": 0, "why": "Un logo engage le client pour des années : il faut un brief solide, des recherches et un pack complet. Les visuels réseaux sociaux sont un meilleur premier pas." },
+        { "q": "Avant d'annoncer un délai, que devez-vous avoir reçu ?", "options": ["Les textes, les photos et les informations du client", "Le paiement complet", "L'avis du client sur le visuel final", "Rien, il faut répondre tout de suite"], "correct": 0, "why": "Le délai dépend des éléments fournis par le client. S'il met deux jours à envoyer ses photos, le délai doit commencer à leur réception." }
+      ]
+    },
+    {
+      "title": "Vos clients, à Madagascar et ailleurs",
+      "file": "m1-l3.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un client récurrent ?", "options": ["Un client qui revient régulièrement, chaque semaine ou chaque mois", "Un client qui ne paie pas", "Un client à l'étranger", "Un client qui commande un logo"], "correct": 0, "why": "Un client qui commande chaque mois stabilise vos revenus et vaut souvent plus, sur l'année, qu'une grosse commande ponctuelle." },
+        { "q": "Comment communiquer de préférence avec un client étranger ou une agence ?", "options": ["Par écrit, avec un message clair et une liste numérotée", "Uniquement par messages vocaux", "Uniquement par appels sans compte rendu", "En attendant qu'il relance"], "correct": 0, "why": "L'écrit évite les malentendus, permet de vérifier ce qui a été compris et sert de référence en cas de désaccord." },
+        { "q": "Quelle présentation attire le mieux les clients ?", "options": ["« Je crée les visuels Facebook des restaurants de Mahajanga, livrés en 24 h »", "« Je fais tout type de graphisme pour tout le monde »", "« Graphiste disponible »", "« Je fais des logos pas chers »"], "correct": 0, "why": "Une cible précise montre votre spécialité : le client concerné se reconnaît immédiatement et vous trouve plus professionnel." },
+        { "q": "Au début, quels canaux donnent généralement les premiers clients le plus vite ?", "options": ["L'entourage et les groupes Facebook locaux", "Les grandes agences internationales", "Les appels d'offres publics", "La publicité payante à l'étranger"], "correct": 0, "why": "On vous fait plus facilement confiance quand on vous connaît, même de loin. Les plateformes demandent d'abord d'obtenir des avis." },
+        { "q": "Pourquoi la diaspora malgache est-elle une cible intéressante ?", "options": ["Même langue, même culture, confiance plus facile, et des budgets en euros ou en dollars", "Elle ne demande jamais de délai", "Elle paie toujours en espèces", "Elle n'a pas besoin de visuels"], "correct": 0, "why": "Beaucoup de Malgaches à l'étranger ont une activité et préfèrent un graphiste de Madagascar qui comprend leur culture." }
+      ]
+    },
+    {
+      "title": "S'équiper et s'organiser depuis Madagascar",
+      "file": "m1-l4.md",
+      "questions": [
+        { "q": "Pourquoi un ordinateur portable est-il conseillé à Madagascar ?", "options": ["Sa batterie permet de continuer pendant une coupure", "Il est toujours plus puissant", "Il n'a pas besoin de mise à jour", "Il remplace le téléphone"], "correct": 0, "why": "Avec les délestages, la batterie d'un portable vous laisse le temps d'enregistrer et de continuer à travailler." },
+        { "q": "Que dit la règle des 3 copies ?", "options": ["Ordinateur, copie en ligne et disque externe", "Trois versions du même visuel pour le client", "Trois exports dans trois formats", "Trois sauvegardes sur le même disque"], "correct": 0, "why": "Une copie sur l'ordinateur, une en ligne et une sur un support externe : si l'un tombe en panne, les fichiers du client restent en sécurité." },
+        { "q": "Avec une connexion faible, comment faire valider un visuel ?", "options": ["Envoyer un aperçu JPG léger, puis le fichier final une seule fois à la fin", "Envoyer le fichier de travail de 100 Mo", "Envoyer 10 pièces jointes séparées", "Attendre une meilleure connexion pour tout"], "correct": 0, "why": "Un JPG de quelques centaines de Ko suffit pour une validation ; les gros fichiers ne s'envoient qu'une fois, regroupés." },
+        { "q": "Quand il est 9 h à Paris en hiver, quelle heure est-il à Antananarivo ?", "options": ["11 h", "10 h", "8 h", "9 h"], "correct": 0, "why": "Madagascar est à UTC+3 toute l'année ; Paris est à UTC+1 en hiver, soit 2 heures de différence." },
+        { "q": "Pourquoi éviter de promettre « livré ce soir » ?", "options": ["Une coupure ou une correction peut empêcher de tenir la promesse", "Les clients n'aiment pas les livraisons rapides", "Il est interdit de livrer le soir", "Cela coûte plus cher en électricité"], "correct": 0, "why": "Un délai réaliste tenu inspire plus confiance qu'une promesse rapide non tenue. Promettez moins, livrez plus tôt." }
+      ]
+    },
+    {
+      "title": "Travailler en règle et avec éthique",
+      "file": "m1-l5.md",
+      "questions": [
+        { "q": "Quels numéros un indépendant demande-t-il en général pour facturer officiellement à Madagascar ?", "options": ["Le NIF et la carte statistique (STAT)", "Un numéro de passeport uniquement", "Un numéro Mobile Money", "Aucun numéro"], "correct": 0, "why": "Le NIF (identification fiscale) et la carte statistique sont les démarches de base ; renseignez-vous au centre fiscal de votre ville pour votre situation." },
+        { "q": "Pouvez-vous utiliser une image trouvée sur Google pour un client ?", "options": ["Non, sauf si sa licence l'autorise : elle appartient à son auteur", "Oui, si vous la modifiez un peu", "Oui, si le client est d'accord", "Oui, si l'image est petite"], "correct": 0, "why": "Une image trouvée en ligne appartient à son auteur. Utilisez des banques libres de droits, les photos du client ou vos créations." },
+        { "q": "Quelle est la différence entre inspiration et copie ?", "options": ["L'inspiration reprend une idée générale, la copie reprend une réalisation précise", "Il n'y en a aucune", "La copie est autorisée si on change les couleurs", "L'inspiration est interdite"], "correct": 0, "why": "Reprendre l'idée « fond uni et grande photo de produit » est normal ; reprendre la même mise en page et les mêmes éléments est une copie." },
+        { "q": "Comment utiliser un générateur d'images par IA de façon professionnelle ?", "options": ["Vérifier la licence, retravailler le résultat et prévenir le client", "Livrer directement l'image générée", "Générer le logo du client et le livrer tel quel", "Imiter le style d'un artiste connu"], "correct": 0, "why": "L'IA donne une base qu'il faut vérifier et retravailler. Un logo doit rester original et protégeable : gardez la méthode du module 5." },
+        { "q": "Quand pouvez-vous publier le travail d'un client dans votre portfolio ?", "options": ["Avec son accord, et après le lancement officiel", "Dès que vous l'avez terminé", "Jamais, même avec son accord", "Avant de le lui envoyer"], "correct": 0, "why": "Le travail d'un client peut contenir des informations confidentielles. Demandez toujours l'accord et attendez le lancement." }
+      ]
+    }
+  ]
+}

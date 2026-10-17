@@ -3,10 +3,11 @@ import { readFileSync, readdirSync, existsSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COURSES } from '../../assets/js/catalog.js';
+import { readingMinutes } from '../../assets/js/markdown.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const fx = { courses: [], lessons: [], module_questions: [], exam_questions: [] };
-fx.courses = COURSES.map((c) => ({ id: c.id, job_key: c.job.key, job_name: c.job.name, level: c.level, title: c.title, hours: c.hours, published: c.published }));
+const fx = { courses: [], lessons: [], module_questions: [], exam_questions: [], modules2: [], lesson_parts: [], part_questions: [] };
+fx.courses = COURSES.map((c) => ({ id: c.id, job_key: c.job.key, job_name: c.job.name, level: c.level, title: c.title, hours: c.hours, published: c.published, v2_live: c.format === 2 }));
 let qid = 1;
 for (const id of readdirSync(join(root, 'content/courses'))) {
   const f = join(root, 'content/courses', id, 'course.json');
@@ -17,7 +18,22 @@ for (const id of readdirSync(join(root, 'content/courses'))) {
       body_md: readFileSync(join(root, 'content/courses', id, m.file), 'utf8') });
     m.questions.forEach((q, k) => fx.module_questions.push({ id: qid++, course_id: id, module_index: i, position: k, question: q.q, options: q.options, correct: q.correct }));
   });
-  c.exam.forEach((q) => fx.exam_questions.push({ id: qid++, course_id: id, question: q.q, options: q.options, correct: q.correct }));
+  c.exam.forEach((q) => fx.exam_questions.push({ id: qid++, course_id: id, question: q.q, options: q.options, correct: q.correct, version: 1 }));
+  // Version 2 (leçons)
+  const f2 = join(root, 'content/courses', id, 'v2', 'course.json');
+  if (!existsSync(f2)) continue;
+  const c2 = JSON.parse(readFileSync(f2, 'utf8'));
+  const sub = (x) => (typeof x === 'string' ? JSON.parse(readFileSync(join(root, 'content/courses', id, 'v2', x), 'utf8')) : x);
+  c2.modules = c2.modules.map(sub); c2.exam = sub(c2.exam);
+  c2.modules.forEach((m, i) => {
+    fx.modules2.push({ course_id: id, module_index: i, title: m.title, summary: m.summary || '' });
+    m.lessons.forEach((l, k) => {
+      const body = readFileSync(join(root, 'content/courses', id, 'v2', l.file), 'utf8');
+      fx.lesson_parts.push({ course_id: id, module_index: i, part_index: k, title: l.title, minutes: readingMinutes(body, 120), body_md: body });
+      l.questions.forEach((q, n) => fx.part_questions.push({ id: qid++, course_id: id, module_index: i, part_index: k, position: n, question: q.q, options: q.options, correct: q.correct, explanation: q.why }));
+    });
+  });
+  c2.exam.forEach((q) => fx.exam_questions.push({ id: qid++, course_id: id, question: q.q, options: q.options, correct: q.correct, version: 2 }));
 }
 writeFileSync(join(root, 'tests/browser/.fixture.js'), `window.__VITAKO_FIXTURE__ = ${JSON.stringify(fx)};\n`);
-console.log(`fixture : ${fx.lessons.length} leçons, ${fx.exam_questions.length} questions d'examen`);
+console.log(`fixture : ${fx.lessons.length} leçons, ${fx.lesson_parts.length} leçons v2, ${fx.exam_questions.length} questions d'examen`);

@@ -372,3 +372,61 @@ set role authenticated; set request.jwt.claim.sub = 'eeeeeeee-0000-0000-0000-000
 select count(*) = 1 from (select public.become_trainer()) x;
 select status = 'pending' from public.trainer_profiles where user_id = auth.uid();   -- profil retrouvé, à revalider
 reset role;
+
+\echo '--- Version 2 : leçons et QCM par leçon'
+-- Formation t-0-a : version 2 en aperçu (2 modules : 2 leçons puis 1 leçon), 25 questions d'examen version 2
+insert into public.modules2 (course_id, module_index, title) values ('t-0-a', 0, 'Module A'), ('t-0-a', 1, 'Module B');
+insert into public.lesson_parts (course_id, module_index, part_index, title, body_md) values
+  ('t-0-a', 0, 0, 'Leçon 1.1', 'Texte 1.1'), ('t-0-a', 0, 1, 'Leçon 1.2', 'Texte 1.2'), ('t-0-a', 1, 0, 'Leçon 2.1', 'Texte 2.1');
+insert into public.part_questions (course_id, module_index, part_index, question, options, correct, explanation) values
+  ('t-0-a', 0, 0, 'Q?', '["a","b"]', 0, 'Parce que.');
+insert into public.exam_questions (course_id, question, options, correct, version)
+  select 't-0-a', 'Question V2-' || g, '["bonne","mauvaise"]', 0, 2 from generate_series(1, 25) g;
+-- Hery, abonné, sans accès à l'aperçu
+update public.profiles set sub_end = now() + interval '30 days' where id = :B;
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) = 0 from public.lesson_parts;          -- aperçu invisible pour les étudiants
+select count(*) = 0 from public.part_questions;
+select t.err('select public.complete_part(''t-0-a'', 0, 0)', 'not_found');
+reset role;
+set role anon; set request.jwt.claim.sub = '';
+select t.err('select * from public.lesson_parts', 'permission denied');
+reset role;
+-- L'administrateur voit l'aperçu et le suit
+set role authenticated; set request.jwt.claim.sub = 'dddddddd-0000-0000-0000-000000000009';
+select count(*) = 3 from public.lesson_parts;
+select explanation = 'Parce que.' from public.part_questions;
+select t.err('select public.start_exam(''t-0-a'')', 'modules_incomplete');
+select (public.complete_part('t-0-a', 0, 0, 1, 1) ->> 'module_done')::boolean = false;
+select (public.complete_part('t-0-a', 0, 1, 2, 3) ->> 'module_done')::boolean;
+select exists (select 1 from public.progress where user_id = auth.uid() and course_id = 't-0-a' and module_index = 0);
+select t.err('select public.complete_part(''t-0-a'', 0, 9)', 'not_found');
+select (public.complete_part('t-0-a', 1, 0) ->> 'module_done')::boolean;
+select jsonb_array_length(public.start_exam('t-0-a') -> 'questions') = 20;   -- 20 questions de la version 2
+select t.err('insert into public.part_progress (user_id, course_id, module_index, part_index) values (auth.uid(), ''t-0-a'', 0, 0)', 'permission denied');
+reset role;
+select bool_and(q.version = 2) from public.exam_questions q
+  where q.id = any ((select question_ids from public.exam_attempts where user_id = :ADM order by started_at desc limit 1)::bigint[]);
+
+\echo '--- Version 2 : mise en ligne et conversion de la progression'
+-- Hery a terminé le module 1 (index 0) de la version 1 de t-0-a
+insert into public.progress (user_id, course_id, module_index) values (:B, 't-0-a', 0);
+select count(*) = 1 from (select public.course_go_live('t-0-a', array[1])) x;   -- module 1 de la version 1 -> module 2 de la version 2
+select v2_live from public.courses where id = 't-0-a';
+select not exists (select 1 from public.progress where user_id = :B and course_id = 't-0-a' and module_index = 0)
+   and exists (select 1 from public.progress where user_id = :B and course_id = 't-0-a' and module_index = 1);
+select count(*) = 1 from public.part_progress where user_id = :B and course_id = 't-0-a' and module_index = 1;
+select count(*) = 1 from (select public.course_go_live('t-0-a', array[0])) x;   -- déjà en ligne : sans effet
+select exists (select 1 from public.progress where user_id = :B and course_id = 't-0-a' and module_index = 1);
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) = 3 from public.lesson_parts;          -- en ligne : visible par les abonnés
+select t.err('select public.start_exam(''t-0-a'')', 'modules_incomplete');
+select (public.complete_part('t-0-a', 0, 0) ->> 'module_done')::boolean = false;
+select (public.complete_part('t-0-a', 0, 1) ->> 'module_done')::boolean;
+select jsonb_array_length(public.start_exam('t-0-a') -> 'questions') = 20;
+select count(*) = 3 from public.part_progress where user_id = auth.uid();
+reset role;
+update public.profiles set sub_end = null where id = :B;
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) = 0 from public.lesson_parts;          -- sans abonnement : rien
+reset role;

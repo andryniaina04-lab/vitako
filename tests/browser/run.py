@@ -262,7 +262,7 @@ with sync_playwright() as p:
     goto(page, '#/formation/design-0-f/examen')
     page.click('[data-act=exam-start]'); page.wait_for_timeout(500)
     check('examen : 10 questions', page.locator('#exam-form .q').count() == 10)
-    correct = {q['question']: q['options'][q['correct']] for q in fx['exam_questions']}
+    correct = {q['question']: q['options'][q['correct']] for q in fx['exam_questions'] if q.get('version', 1) == 1}
     def answer(right):
         for k in range(10):
             qtext = page.locator('#exam-form legend').nth(k).inner_text().split('\n')[-1].strip()
@@ -463,6 +463,54 @@ with sync_playwright() as p:
     page.click('[data-act=leave-trainer]'); page.wait_for_timeout(600)
     check('formateur : retour en compte étudiant', page.url.endswith('#/mon-espace') and page.locator('.tr-invite').count() == 1 and page.evaluate("window.__mockdb().profiles.find((p) => p.email === 'hery@exemple.mg').role") == 'student')
     logout(page)
+
+    # --- Formation version 2 (leçons) : aperçu réservé à l'administrateur
+    login(page, 'fanja@exemple.mg')
+    goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)
+    check('version 2 : invisible pour une étudiante (version actuelle affichée)', page.locator('.mods2').count() == 0 and page.locator('.mods .mod').count() >= 5)
+    logout(page)
+    login(page, 'admin@vitako.mg')
+    goto(page, '#/formation/design-0-f'); page.wait_for_selector('.mods2')
+    check('version 2 : aperçu pour l\'administrateur (6 modules, 30 leçons)', page.locator('.mods2 details.mod2').count() == 6 and page.locator('.les2 li').count() == 30 and 'Aperçu de la nouvelle version' in page.content())
+    check('version 2 : durée calculée et répartition', '50 heures' in page.content() and page.locator('.dur-bar i').count() == 5)
+    page.screenshot(path=f'{SHOTS}/15-v2-formation.png', full_page=True)
+    page.click('[data-act=preview-toggle]'); page.wait_for_timeout(400)
+    check('version 2 : l\'admin peut revenir à la version actuelle', page.locator('.mods2').count() == 0 and 'Voir la nouvelle version' in page.content())
+    page.click('[data-act=preview-toggle]'); page.wait_for_timeout(400)
+    goto(page, '#/formation/design-0-f/module/1'); page.wait_for_selector('#pquiz-form')
+    check('version 2 : un module ouvre sa première leçon', page.url.endswith('/module/1/lecon/1') and '1.1' in page.locator('.lesson-head .mod-num').inner_text())
+    check('version 2 : schémas dessinés dans la leçon', page.locator('.lesson .sc').count() >= 4 and page.locator('.lesson .sc-steps li').count() >= 4)
+    check('version 2 : sommaire de la leçon (1.1.1…)', page.locator('.toc li').count() >= 5 and '1.1.1' in page.locator('.toc').inner_text())
+    page.screenshot(path=f'{SHOTS}/15b-v2-lecon.png', full_page=False)
+    page.click('#pquiz-form button[type=submit]'); page.wait_for_timeout(200)
+    check('QCM de leçon : réponses obligatoires', page.locator('#mqerr').is_visible())
+    for q in range(5):
+        page.locator(f'input[name=pq{q}]').first.check()
+    page.click('#pquiz-form button[type=submit]'); page.wait_for_timeout(500)
+    check('QCM de leçon : 5 explications après la correction', page.locator('.q-why').count() == 5 and 'leçon 1.1 validée' in page.locator('.quiz-res').inner_text())
+    check('QCM de leçon : leçon cochée et bouton « Leçon suivante »', page.locator('.l2-prog a.done').count() == 1 and page.locator('.quiz-res a[href$="/module/1/lecon/2"]').count() == 1)
+    page.locator('.quiz-res').scroll_into_view_if_needed(); page.screenshot(path=f'{SHOTS}/15c-v2-qcm.png', full_page=False)
+    page.click('[data-act=pquiz-retry]'); page.wait_for_timeout(200)
+    check('QCM de leçon : on peut le refaire', page.locator('.q-why').count() == 0 and page.locator('#pquiz-form button[type=submit]').count() == 1)
+    goto(page, '#/formation/design-0-f/examen'); page.wait_for_timeout(400)
+    check('version 2 : examen fermé tant que les leçons ne sont pas faites', 'Terminez' in page.content())
+    page.evaluate("""() => { const db = window.__mockdb(); const me = db.session.user.id; db.part_progress ||= [];
+      window.__VITAKO_FIXTURE__.lesson_parts.filter((l) => l.course_id === 'design-0-f').forEach((l) => db.part_progress.push({ user_id: me, course_id: 'design-0-f', module_index: l.module_index, part_index: l.part_index, good: 5, total: 5 }));
+      for (let i = 0; i < 6; i++) db.progress.push({ user_id: me, course_id: 'design-0-f', module_index: i }); localStorage.setItem('vitako_mock_db', JSON.stringify(db)); }""")
+    page.reload(); page.wait_for_timeout(800)
+    goto(page, '#/formation/design-0-f/examen'); page.wait_for_selector('[data-act=exam-start]')
+    check('version 2 : examen annoncé à 20 questions', '20 questions tirées au hasard' in page.content())
+    page.click('[data-act=exam-start]'); page.wait_for_timeout(600)
+    check('version 2 : examen de 20 questions', page.locator('#exam-form .q').count() == 20)
+    goto(page, '#/'); logout(page)
+    mv = browser.new_context(viewport={'width': 390, 'height': 844}, locale='fr-FR', device_scale_factor=2)
+    mvp = mv.new_page(); setup(mvp); mvp.goto(BASE + '#/'); mvp.wait_for_timeout(500)
+    signup(mvp, 'Admin Aperçu', 'admin@apercu.mg')
+    for name, h in [('15d-mobile-v2-formation', '#/formation/design-0-f'), ('15e-mobile-v2-lecon', '#/formation/design-0-f/module/3/lecon/5'), ('15f-mobile-v2-lecon-couleur', '#/formation/design-0-f/module/2/lecon/3')]:
+        goto(mvp, h); mvp.wait_for_selector('.mods2, .lesson .sc', timeout=8000); mvp.wait_for_timeout(300)
+        check(f'{name} : pas de défilement horizontal', not mvp.evaluate('document.documentElement.scrollWidth > window.innerWidth + 1'))
+        mvp.screenshot(path=f'{SHOTS}/{name}.png', full_page=True)
+    mv.close()
 
     # --- Téléphone (390 px)
     m = browser.new_context(viewport={'width': 390, 'height': 844}, locale='fr-FR', device_scale_factor=2)

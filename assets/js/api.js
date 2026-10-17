@@ -239,6 +239,33 @@ export async function getLessons(courseId) {
   return run(sb.from('lessons').select('module_index, title, summary, body_md, video_url')
     .eq('course_id', courseId).order('module_index'));
 }
+// --- Formations version 2 (modules découpés en leçons) ----------------------
+export async function getCourse2(courseId) {
+  need();
+  const [mods, parts] = await Promise.all([
+    run(sb.from('modules2').select('module_index, title, summary').eq('course_id', courseId).order('module_index')),
+    run(sb.from('lesson_parts').select('module_index, part_index, title, minutes').eq('course_id', courseId).order('module_index')),
+  ]);
+  return mods.map((m) => ({ ...m, lessons: parts.filter((p) => p.module_index === m.module_index).sort((a, b) => a.part_index - b.part_index) }));
+}
+export async function getPart(courseId, mi, pi) {
+  need();
+  const row = await run(sb.from('lesson_parts').select('body_md').eq('course_id', courseId).eq('module_index', mi).eq('part_index', pi).maybeSingle());
+  return row?.body_md || '';
+}
+export async function getPartQuestions(courseId, mi, pi) {
+  need();
+  return run(sb.from('part_questions').select('id, question, options, correct, explanation')
+    .eq('course_id', courseId).eq('module_index', mi).eq('part_index', pi).order('position'));
+}
+export async function getPartProgress(uid) {
+  need();
+  return run(sb.from('part_progress').select('course_id, module_index, part_index, good, total').eq('user_id', uid));
+}
+export async function completePart(courseId, mi, pi, good, total) {
+  need();
+  return run(sb.rpc('complete_part', { p_course: courseId, p_module: mi, p_part: pi, p_good: good, p_total: total }));
+}
 export async function getModuleQuestions(courseId, moduleIndex) {
   need();
   return run(sb.from('module_questions').select('id, question, options, correct')

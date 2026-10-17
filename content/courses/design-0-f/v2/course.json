@@ -1,0 +1,15 @@
+{
+  "live": false,
+  "progress_map": [0, 1, 2, 4, 5],
+  "description": "Le graphiste crée des logos, des visuels pour les réseaux sociaux et des supports imprimés. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+  "objectives": [
+    "Expliquer ce que fait un graphiste freelance, pour qui, et s'organiser depuis Madagascar",
+    "Appliquer les règles de hiérarchie, de composition, de couleur et de typographie",
+    "Utiliser Canva, Inkscape, Figma et Photopea, et livrer chaque fichier au bon format",
+    "Créer des visuels pour les réseaux sociaux, des affiches, des flyers et des menus",
+    "Créer un logo et une charte graphique, du brief à la livraison",
+    "Construire un portfolio, fixer ses prix, faire un devis et se faire payer"
+  ],
+  "modules": ["m1.json", "m2.json", "m3.json", "m4.json", "m5.json", "m6.json"],
+  "exam": "exam.json"
+}

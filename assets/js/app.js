@@ -1,7 +1,7 @@
 // Vitako : pages du site (routeur, vues, actions).
 import * as api from './api.js';
 import { JOBS, DOMAINS_LIST, COURSES, courseById, otherLevel, jobByKey } from './catalog.js';
-import { md, esc, sections, readingMinutes } from './markdown.js';
+import { md, esc, nbsp, sections, readingMinutes } from './markdown.js';
 import { certificatePdf, loadPdfFonts, loadPdfLogo, slug } from './pdf.js';
 import { TEMOIGNAGES } from './temoignages.js';
 
@@ -24,6 +24,9 @@ const S = {
   trainers: null,        // formateurs visibles (liste publique, en cache)
   trainersAt: 0,
   trainerDraft: null,    // formulaire de l'Espace formateur pas encore enregistré
+  parts: new Map(),      // version 2 : course_id -> modules et titres des leçons (cache)
+  partDone: new Map(),   // version 2 : course_id -> Map("module-leçon" -> { good, total })
+  previewOff: false,     // administrateur : voir la version actuelle au lieu de l'aperçu de la version 2
   price: CFG.price,
   promoPrice: CFG.promoPrice || 0,
   promoUntil: CFG.promoUntil || '',
@@ -77,15 +80,20 @@ const verifyUrl = (id) => `${location.origin}${location.pathname}#/attestation/$
 async function loadUser() {
   const id = uid();
   if (!id) {
-    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [], trainer: null, trainerDraft: null });
+    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [], trainer: null, trainerDraft: null, partDone: new Map() });
     return;
   }
   let profile = await api.getProfile(id);
   if (!profile) { await new Promise((r) => setTimeout(r, 800)); profile = await api.getProfile(id); }
-  const [progress, certs, attempts, payments, reviews] = await Promise.all([
+  const [progress, certs, attempts, payments, reviews, parts] = await Promise.all([
     api.getProgress(id), api.getCertificates(id), api.getAttempts(id), api.getMyPayments(id),
-    api.getMyReviews(id).catch(() => []),
+    api.getMyReviews(id).catch(() => []), api.getPartProgress(id).catch(() => []),
   ]);
+  S.partDone = new Map();
+  for (const p of parts) {
+    if (!S.partDone.has(p.course_id)) S.partDone.set(p.course_id, new Map());
+    S.partDone.get(p.course_id).set(`${p.module_index}-${p.part_index}`, { good: p.good, total: p.total });
+  }
   S.profile = profile;
   S.progress = new Map();
   for (const p of progress) {
@@ -698,6 +706,7 @@ function coursePage(id) {
   const c = courseById(id);
   if (!c) return notFound();
   if (S.trainers === null && api.configured) return loadTrainers().then(() => coursePage(id));
+  if (isV2(c)) return coursePage2(c);
   // Le détail du programme (résumés et sous-parties des modules) n'est pas dans le site public :
   // il est lu dans la base, qui ne le donne qu'aux abonnés.
   if (c.published && hasAccess() && api.configured && !S.lessons.has(id)) {
@@ -731,6 +740,7 @@ function coursePage(id) {
   const fondCert = c.level === 'a' && courseCert(other.id);
 
   return `${back('#/formations', 'Tous les métiers')}
+  ${c.preview && isAdmin() ? `<div style="margin-bottom:16px">${notice('info', `Une <b>nouvelle version</b> de cette formation est prête en aperçu (visible seulement par vous). <button class="lnk" data-act="preview-toggle">Voir la nouvelle version</button>`)}</div>` : ''}
   <div class="cols">
     <div class="stack" style="gap:26px;min-width:0">
       <div class="stack" style="gap:10px">
@@ -783,6 +793,173 @@ function coursePage(id) {
   </div>`;
 }
 
+
+// ---------------------------------------------------------------------------
+// Formations version 2 : 6 modules découpés en leçons, un QCM après chaque leçon
+// ---------------------------------------------------------------------------
+const isV2 = (c) => !!c && (c.format === 2 || (!!c.preview && isAdmin() && !S.previewOff));
+const meta2 = (c) => (c.format === 2 ? c : { ...c, ...(c.preview || {}) });
+const pkey = (m, p) => `${m}-${p}`;
+const partsDone = (cid) => S.partDone.get(cid) || new Map();
+async function course2(id) {
+  if (!S.parts.has(id)) S.parts.set(id, await api.getCourse2(id));
+  return S.parts.get(id);
+}
+const flatParts = (mods) => mods.flatMap((m) => m.lessons.map((l) => ({ m, l })));
+const nextPart = (cid, mods) => flatParts(mods).find(({ m, l }) => !partsDone(cid).has(pkey(m.module_index, l.part_index))) || null;
+const partHref = (cid, mi, pi) => `#/formation/${cid}/module/${mi + 1}/lecon/${pi + 1}`;
+const fmtDur = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h ? `${h} h${m ? ' ' + String(m).padStart(2, '0') : ''}` : `${m} min`; };
+
+async function coursePage2(c) {
+  const M = meta2(c);
+  const ok = hasAccess();
+  const mods = c.published && ok && api.configured ? await course2(c.id) : null;
+  const done = partsDone(c.id);
+  const nLessons = M.modules.reduce((n, m) => n + (m.lessons || 0), 0);
+  const nDone = mods ? flatParts(mods).filter(({ m, l }) => done.has(pkey(m.module_index, l.part_index))).length : 0;
+  const cert = courseCert(c.id);
+  const other = otherLevel(c);
+  let cta;
+  if (!c.published) cta = '<p class="muted">Cette formation est en préparation.</p>';
+  else if (!S.session) cta = `<p class="muted">Créez un compte gratuit pour suivre votre progression, puis abonnez-vous pour suivre les cours.</p>
+      <a class="btn" href="#/inscription?suite=${encodeURIComponent('/formation/' + c.id)}">Créer un compte</a>
+      <a class="btn ghost" href="#/connexion?suite=${encodeURIComponent('/formation/' + c.id)}">J'ai déjà un compte</a>`;
+  else if (!S.profile) cta = loadingView();
+  else if (!ok) cta = `<p class="muted">${S.profile.sub_end ? `Votre abonnement s'est terminé le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Un abonnement est nécessaire pour suivre cette formation.'}</p>
+      <a class="btn" href="#/abonnement">${S.profile.sub_end ? 'Renouveler' : "S'abonner"} · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>`;
+  else {
+    const nx = mods && nextPart(c.id, mods);
+    cta = nx ? `<a class="btn" href="${partHref(c.id, nx.m.module_index, nx.l.part_index)}">${nDone ? 'Continuer' : 'Commencer'} : leçon ${nx.m.module_index + 1}.${nx.l.part_index + 1}</a>`
+      : cert ? `<a class="btn" href="#/attestation/${cert.id}">Voir mon attestation</a>` : `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>`;
+  }
+  const pct = nLessons ? Math.round((nDone / nLessons) * 100) : 0;
+  const tries = attemptsOf(c.id).length;
+  const B = M.breakdown;
+  const parts = B ? [['Lecture', B.lecture, 's1'], ['Exercices', B.exercices, 's0'], ['Projets', B.projets, 's3'], ['QCM', B.qcm, 's2'], ['Examen', B.examen, 's4']] : [];
+  const total = parts.reduce((n, p) => n + p[1], 0) || 1;
+  const modsHtml = M.modules.map((pm, i) => {
+    const m = mods?.find((x) => x.module_index === i);
+    const mDone = m ? m.lessons.filter((l) => done.has(pkey(i, l.part_index))).length : 0;
+    const full = m && mDone === m.lessons.length;
+    const lessons = m ? `<ol class="les2">${m.lessons.map((l) => {
+      const d = done.get(pkey(i, l.part_index));
+      return `<li class="${d ? 'done' : ''}"><a href="${partHref(c.id, i, l.part_index)}"><span class="les2-n">${d ? smallCheck : `${i + 1}.${l.part_index + 1}`}</span><span class="les2-t">${esc(l.title)}</span>
+        <small>${d && d.total ? `QCM ${d.good}/${d.total}` : `${l.minutes} min`}</small></a></li>`;
+    }).join('')}</ol>` : '';
+    return `<details class="mod2${full ? ' done' : ''}"${m && !full && (mDone || i === 0 || (mods && nextPart(c.id, mods)?.m.module_index === i)) ? ' open' : ''}>
+      <summary><span class="mod2-n">${full ? smallCheck : pad2(i + 1)}</span><span class="mod2-t"><b>Module ${i + 1} · ${esc(pm.title)}</b>
+        <small>${pm.lessons} leçons · ${fmtDur(pm.minutes)} de lecture${m ? ` · ${mDone}/${m.lessons.length} faites` : ''}</small>${m?.summary ? `<span class="mod2-s">${esc(m.summary)}</span>` : ''}</span>
+        ${c.published && !ok ? `<span class="lock">${I.lock}</span>` : '<span class="mod2-chev" aria-hidden="true"></span>'}</summary>
+      ${lessons}</details>`;
+  }).join('');
+  const previewNote = c.format !== 2 && isAdmin()
+    ? `<div style="margin-bottom:16px">${notice('warn', `<b>Aperçu de la nouvelle version</b>, visible seulement par vous. Les étudiants voient encore la version actuelle. <button class="lnk" data-act="preview-toggle">Voir la version actuelle</button>`)}</div>` : '';
+  return `${back('#/formations', 'Tous les métiers')}${previewNote}
+  <div class="cols">
+    <div class="stack" style="gap:26px;min-width:0">
+      <div class="stack" style="gap:10px">
+        ${cover(c.job, { big: true, level: c.single ? null : c.level, title: c.title.startsWith(c.job.name) ? c.job.name : c.title })}
+        <h1>${esc(c.title)}</h1>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill ${c.level === 'a' ? 'gold' : ''}">${c.levelName}</span><span class="pill grey">${M.hours} heures</span><span class="pill grey">${M.modules.length} modules · ${nLessons} leçons</span><span class="pill grey">1 QCM après chaque leçon</span></div>
+      </div>
+      <p style="max-width:65ch">${esc(M.description)}</p>
+      ${parts.length ? `<div class="stack" style="gap:10px"><h2>Votre temps de formation</h2>
+        <div class="dur-bar" role="img" aria-label="Répartition des ${M.hours} heures">${parts.map(([k, v, col]) => `<i style="flex:${v};background:var(--${col})" title="${k} : ${fmtDur(v)}"></i>`).join('')}</div>
+        <ul class="dur-leg">${parts.map(([k, v, col]) => `<li><i style="background:var(--${col})"></i>${k} <b>${fmtDur(v)}</b></li>`).join('')}</ul>
+        <p class="muted" style="font-size:.88rem">Environ ${Math.round((total / 60) / 4.3)} h par semaine pour finir en un mois. Les exercices et les projets rejoignent votre portfolio.</p></div>` : ''}
+      <div class="stack" style="gap:12px"><h2>Objectifs</h2><ol class="obj-num">${M.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ol></div>
+      <div class="stack" style="gap:12px"><h2>Programme</h2>
+        ${c.published && !ok ? `<p class="muted prog-lock"><span class="lock">${I.lock}</span> Le titre des leçons, les cours et les QCM sont réservés aux abonnés.</p>` : ''}
+        <div class="mods2">${modsHtml}
+          <div class="mod2 exam2${cert ? ' done' : ''}"><div class="mod2-sum"><span class="mod2-n">${cert ? smallCheck : 'EX'}</span><span class="mod2-t"><b>Examen final</b><small>20 questions tirées au hasard · 50/100 pour réussir · essais illimités</small></span>
+            ${c.published && ok && mods && nDone >= nLessons ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published ? `<span class="lock">${I.lock}</span>` : ''}</div></div>
+        </div>
+      </div>
+      ${other ? `<div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><span class="eyebrow">Même métier</span><div style="font-weight:700">${esc(other.title)}</div></div>
+        <a class="btn ghost sm" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a></div>` : ''}
+      ${trainerSection(c)}
+    </div>
+    <aside class="panel side stack">
+      ${S.session && c.published && ok ? `<div class="stack" style="gap:8px"><div style="display:flex;justify-content:space-between"><b>Ma progression</b><span class="mono">${pct} %</span></div><div class="bar"><i style="width:${pct}%"></i></div>
+        <span class="muted" style="font-size:.9rem">${nDone} leçon${nDone > 1 ? 's' : ''} sur ${nLessons}</span>
+        ${tries ? `<span class="muted" style="font-size:.9rem">Examen : ${tries} essai${tries > 1 ? 's' : ''}, meilleur score <b class="mono">${bestOf(c.id)}/100</b></span>` : ''}</div>` : ''}
+      ${cert ? notice('warn', `Attestation obtenue le ${fmtDate(cert.issued_at)}.`) : ''}
+      ${cta}
+    </aside>
+  </div>`;
+}
+
+async function lessonPage2(id, num, k) {
+  const c = courseById(id);
+  if (!c || !c.published || !isV2(c)) return notFound();
+  const blocked = gate(`/formation/${id}/module/${num}${k ? '/lecon/' + k : ''}`);
+  if (blocked) return blocked;
+  const mods = await course2(id);
+  const mi = Number(num) - 1;
+  const m = mods.find((x) => x.module_index === mi);
+  if (!m) return notFound();
+  let L;
+  if (k == null) {
+    L = m.lessons.find((l) => !partsDone(id).has(pkey(mi, l.part_index))) || m.lessons[0];
+    history.replaceState(null, '', partHref(id, mi, L.part_index));
+  } else L = m.lessons.find((l) => l.part_index === Number(k) - 1);
+  if (!L) return notFound();
+  const pi = L.part_index;
+  const [body, qs] = await Promise.all([api.getPart(id, mi, pi), api.getPartQuestions(id, mi, pi)]);
+  S.pquiz = { courseId: id, mi, pi, answered: false, qs: qs.map((q) => ({ ...q, order: shuffle(q.options.map((_, j) => j)) })) };
+  const no = `${mi + 1}.${pi + 1}`;
+  const secs = sections(body);
+  const [c1, c2] = COVER_COLORS[c.dom.id] || ['#04281C', '#0B7A55'];
+  return `${back(`#/formation/${id}`, c.title)}
+  <div class="lesson-head l2-head" style="--c1:${c1};--c2:${c2}">
+    <span class="eyebrow">Module ${mi + 1} · ${esc(m.title)}</span>
+    <h1><span class="mod-num">${no}</span>${esc(L.title)}</h1>
+    <p class="muted">Leçon ${pi + 1} sur ${m.lessons.length} · environ ${L.minutes} min de lecture · QCM de ${qs.length} questions</p>
+    <div class="lesson-progress l2-prog" aria-label="Leçons du module ${mi + 1}">${m.lessons.map((l) => `<a data-p="${l.part_index}" href="${partHref(id, mi, l.part_index)}" class="${l.part_index === pi ? 'on' : ''}${partsDone(id).has(pkey(mi, l.part_index)) ? ' done' : ''}" title="Leçon ${mi + 1}.${l.part_index + 1} : ${esc(l.title)}">${mi + 1}.${l.part_index + 1}</a>`).join('')}</div>
+  </div>
+  <div class="lesson-grid">
+    <nav class="toc" aria-label="Sommaire de la leçon">
+      <b>Dans cette leçon</b>
+      <ol>${secs.map((t, j) => `<li><button type="button" data-act="toc" data-target="s-${no}-${j + 1}"><span>${no}.${j + 1}</span>${esc(t)}</button></li>`).join('')}
+        <li><button type="button" data-act="toc" data-target="mquiz-wrap"><span>${no}.${secs.length + 1}</span>QCM de la leçon</button></li></ol>
+    </nav>
+    <div class="lesson-wrap">
+      <article class="lesson md">${md(body, { number: no })}</article>
+      <section class="stack quiz-sec" id="mquiz-wrap">
+        <h2 class="quiz-h"><span class="sec-num">${no}.${secs.length + 1}</span>QCM de la leçon</h2>
+        <p class="muted">${qs.length} questions pour vérifier ce que vous avez retenu. Après vos réponses, chaque question est expliquée. La leçon est validée dès que vous rendez le QCM ; vous pouvez le refaire autant de fois que vous voulez.</p>
+        <div id="mquiz">${partQuizHtml()}</div>
+      </section>
+    </div>
+  </div>`;
+}
+function partQuizHtml() {
+  const Q = S.pquiz;
+  const mods = S.parts.get(Q.courseId) || [];
+  const flat = flatParts(mods);
+  const idx = flat.findIndex(({ m, l }) => m.module_index === Q.mi && l.part_index === Q.pi);
+  const nx = flat[idx + 1];
+  const qsHtml = Q.qs.map((q, qi) => {
+    const right = Q.answered && Q.answers[qi] === q.correct;
+    return `<div class="q${Q.answered ? (right ? ' q-ok' : ' q-ko') : ''}"><fieldset><legend><span>${pad2(qi + 1)}</span>${nbsp(esc(q.question))}</legend>
+    ${q.order.map((oi) => {
+      let cls = '';
+      if (Q.answered) { if (oi === q.correct) cls = ' ok'; else if (Q.answers[qi] === oi) cls = ' ko'; }
+      return `<label class="opt${cls}"><input type="radio" name="pq${qi}" value="${oi}" ${Q.answers?.[qi] === oi ? 'checked' : ''} ${Q.answered ? 'disabled' : ''}><span>${esc(q.options[oi])}</span></label>`;
+    }).join('')}
+    ${Q.answered ? `<p class="q-why"><b>${right ? '✓ Bonne réponse.' : `✕ La bonne réponse : ${nbsp(esc(q.options[q.correct]))}.`}</b> ${nbsp(esc(q.explanation || ''))}</p>` : ''}</fieldset></div>`;
+  }).join('');
+  if (!Q.answered) return `<form id="pquiz-form" class="stack">${qsHtml}<p id="mqerr" class="notice err" hidden>Répondez à toutes les questions avant de valider.</p><div><button class="btn" type="submit">Valider mes réponses</button></div></form>`;
+  const n = Q.qs.length, s = Q.score;
+  const msg = s === n ? 'Parfait, tout est juste !' : s >= Math.ceil(n * 0.6) ? 'Bien joué. Lisez les explications des questions manquées.' : 'Relisez les parties de la leçon liées aux questions en rouge, puis refaites le QCM.';
+  const allDone = flat.length && flat.every(({ m, l }) => partsDone(Q.courseId).has(pkey(m.module_index, l.part_index)));
+  const next = nx ? `<a class="btn" href="${partHref(Q.courseId, nx.m.module_index, nx.l.part_index)}">${nx.m.module_index !== Q.mi ? `Module suivant : ${nx.m.module_index + 1}.1` : `Leçon suivante : ${nx.m.module_index + 1}.${nx.l.part_index + 1}`}</a>`
+    : allDone ? `<a class="btn" href="#/formation/${Q.courseId}/examen">Passer l'examen final</a>` : `<a class="btn" href="#/formation/${Q.courseId}">Voir les leçons restantes</a>`;
+  return `<form id="pquiz-form" class="stack">${qsHtml}
+    <div class="panel stack quiz-res ${s === n ? 'all' : s >= Math.ceil(n * 0.6) ? 'ok' : 'low'}" style="gap:10px"><b>Résultat : <span class="mono">${s}/${n}</span> bonne${s > 1 ? 's' : ''} réponse${s > 1 ? 's' : ''} · leçon ${Q.mi + 1}.${Q.pi + 1} validée</b><p class="muted">${msg}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${next}<button type="button" class="btn ghost" data-act="pquiz-retry">Refaire le QCM</button></div></div></form>`;
+}
 // ---------------------------------------------------------------------------
 // Leçon + petit test
 // ---------------------------------------------------------------------------
@@ -790,6 +967,7 @@ function coursePage(id) {
 async function lessonPage(id, num) {
   const c = courseById(id);
   if (!c || !c.published) return notFound();
+  if (isV2(c)) return lessonPage2(id, num, null);
   const blocked = gate(`/formation/${id}/module/${num}`);
   if (blocked) return blocked;
   const mi = Number(num) - 1;
@@ -856,10 +1034,11 @@ function examPage(id) {
   if (!c || !c.published) return notFound();
   const blocked = gate(`/formation/${id}/examen`);
   if (blocked) return blocked;
-  const n = c.modules.length;
+  const v2 = isV2(c);
+  const n = v2 ? meta2(c).modules.length : c.modules.length;
   if (doneSet(id).size < n) {
     return `${back(`#/formation/${id}`, c.title)}<div class="narrow panel stack"><h2>Terminez d'abord les modules</h2>
-      <p class="muted">Vous avez terminé ${doneSet(id).size} module${doneSet(id).size > 1 ? 's' : ''} sur ${n}. L'examen s'ouvre quand tous les tests de module sont rendus.</p>
+      <p class="muted">Vous avez terminé ${doneSet(id).size} module${doneSet(id).size > 1 ? 's' : ''} sur ${n}. L'examen s'ouvre quand ${v2 ? 'les QCM de toutes les leçons sont rendus' : 'tous les tests de module sont rendus'}.</p>
       <a class="btn" href="#/formation/${id}">Voir le programme</a></div>`;
   }
   if (S.examResult?.courseId === id) return examResult(c);
@@ -868,7 +1047,7 @@ function examPage(id) {
   return `${back(`#/formation/${id}`, c.title)}
   ${pageHead('Examen final', c.title)}
   <div class="narrow panel stack" style="max-width:620px;gap:14px">
-    <ul class="obj"><li>10 questions tirées au hasard, 10 points chacune</li><li>50/100 pour réussir et obtenir l'attestation</li><li>Essais illimités : votre meilleur score est conservé</li><li>Vous avez 3 heures pour rendre vos réponses</li></ul>
+    <ul class="obj"><li>${v2 ? '20 questions tirées au hasard, 5 points chacune' : '10 questions tirées au hasard, 10 points chacune'}</li><li>50/100 pour réussir et obtenir l'attestation</li><li>Essais illimités : votre meilleur score est conservé</li><li>Vous avez 3 heures pour rendre vos réponses</li></ul>
     ${tries ? `<p class="muted">Déjà ${tries} essai${tries > 1 ? 's' : ''} · meilleur score <b class="mono">${bestOf(id)}/100</b></p>` : ''}
     <p id="exerr" class="notice err" hidden></p>
     <div><button class="btn" data-act="exam-start" data-id="${id}">Commencer l'examen</button></div>
@@ -1883,6 +2062,7 @@ const ROUTES = [
   [/^\/formations$/, catalog],
   [/^\/formation\/([\w-]+)$/, coursePage],
   [/^\/formation\/([\w-]+)\/module\/(\d+)$/, lessonPage],
+  [/^\/formation\/([\w-]+)\/module\/(\d+)\/lecon\/(\d+)$/, lessonPage2],
   [/^\/formation\/([\w-]+)\/examen$/, examPage],
   [/^\/connexion$/, () => authPage('login')],
   [/^\/inscription$/, () => authPage('signup')],
@@ -2084,6 +2264,13 @@ document.addEventListener('click', async (e) => {
   }
   if (a === 'logout') { S.ui.menu = false; await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
 
+  if (a === 'preview-toggle') { S.previewOff = !S.previewOff; render(); window.scrollTo(0, 0); return; }
+  if (a === 'pquiz-retry') {
+    S.pquiz.answered = false; S.pquiz.answers = null;
+    S.pquiz.qs = S.pquiz.qs.map((q) => ({ ...q, order: shuffle(q.order) }));
+    document.getElementById('mquiz').innerHTML = partQuizHtml();
+    document.getElementById('mquiz-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
+  }
   if (a === 'mquiz-retry') {
     S.mquiz.answered = false; S.mquiz.answers = null;
     S.mquiz.qs = S.mquiz.qs.map((q) => ({ ...q, order: shuffle(q.order) }));
@@ -2254,6 +2441,29 @@ document.addEventListener('submit', async (e) => {
   if (f.id === 'verify-form') {
     const id = f.querySelector('#v-id').value.trim().toUpperCase();
     if (id) go(`#/attestation/${encodeURIComponent(id)}`);
+    return;
+  }
+  if (f.id === 'pquiz-form') {
+    const Q = S.pquiz;
+    const answers = {};
+    for (let i = 0; i < Q.qs.length; i++) {
+      const sel = f.querySelector(`input[name="pq${i}"]:checked`);
+      if (!sel) { document.getElementById('mqerr').hidden = false; document.getElementById('mqerr').scrollIntoView({ block: 'center' }); return; }
+      answers[i] = Number(sel.value);
+    }
+    const good = Q.qs.filter((q, i) => answers[i] === q.correct).length;
+    busy(btn, true, 'Correction…');
+    try {
+      const r = await api.completePart(Q.courseId, Q.mi, Q.pi, good, Q.qs.length);
+      if (!S.partDone.has(Q.courseId)) S.partDone.set(Q.courseId, new Map());
+      const prev = S.partDone.get(Q.courseId).get(`${Q.mi}-${Q.pi}`);
+      S.partDone.get(Q.courseId).set(`${Q.mi}-${Q.pi}`, { good: Math.max(good, prev?.good || 0), total: Q.qs.length });
+      if (r?.module_done) { if (!S.progress.has(Q.courseId)) S.progress.set(Q.courseId, new Set()); S.progress.get(Q.courseId).add(Q.mi); }
+      Q.answers = answers; Q.answered = true; Q.score = good;
+      document.getElementById('mquiz').innerHTML = partQuizHtml();
+      document.querySelector(`.lesson-progress a[data-p="${Q.pi}"]`)?.classList.add('done');
+      document.getElementById('mquiz-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) { toast(err.message); busy(btn, false, 'Valider mes réponses'); }
     return;
   }
   if (f.id === 'mquiz-form') {

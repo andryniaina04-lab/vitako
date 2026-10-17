@@ -81,6 +81,10 @@ DOMAINS.forEach((dom, di) => {
         objectives: pub?.objectives ?? defaultObjectives(job, level),
         modules: pub?.modules ?? defaultModules(job, level),
         published: !!pub,
+        // Version 2 (modules découpés en leçons) : en ligne (format 2) ou en aperçu pour l'administrateur.
+        format: pub?.format || 1,
+        breakdown: pub?.breakdown || null,
+        preview: pub?.preview || null,
       };
       job.courses.push(course);
       COURSES.push(course);
