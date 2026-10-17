@@ -14,9 +14,6 @@ function tabLock(name, timeout, fn) {
   return run;
 }
 
-// Arrivée depuis un lien reçu par e-mail (confirmation d'inscription) : lu avant que supabase-js nettoie l'adresse.
-export const fromAuthLink = /[?&]code=/.test(location.search) || /access_token=/.test(location.hash);
-
 export const sb = configured
   ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, {
       auth: { flowType: 'pkce', persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, lock: tabLock },

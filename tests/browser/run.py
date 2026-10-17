@@ -141,7 +141,8 @@ with sync_playwright() as p:
 
     # --- Inscription + paiement
     signup(page, 'Fanja Rakoto', 'fanja@exemple.mg')
-    check('après inscription : page abonnement', '#/abonnement' in page.url)
+    check('après inscription : page d\'accueil', page.url.endswith('#/'))
+    goto(page, '#/abonnement')
     check('numéro MVola affiché', '038 28 753 61' in page.content())
     promo = page.evaluate("new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10)") <= '2026-11-30'
     if promo:
@@ -163,6 +164,7 @@ with sync_playwright() as p:
 
     # --- Second étudiant : référence déjà utilisée
     signup(page, 'Hery Randria', 'hery@exemple.mg')
+    goto(page, '#/abonnement')
     page.click('[data-op=orange]'); page.wait_for_timeout(200)
     page.fill('#p-ref', 'ci241012.1200.a1'); page.click('#pay-form button[type=submit]'); page.wait_for_timeout(400)
     check('référence déjà utilisée refusée', 'déjà été envoyée' in page.locator('#perr').inner_text())
