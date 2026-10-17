@@ -197,16 +197,26 @@ async function loadImageFile(file) {
   }
 }
 // Découpe la zone choisie (sx, sy, côté) et la compresse en 320 x 320 px.
+const AV_MAX = 10 * 1024; // 10 Ko au maximum par photo
 async function cropToBlob(img, sx, sy, side) {
-  const c = document.createElement('canvas'); c.width = AV_SIZE; c.height = AV_SIZE;
-  const g = c.getContext('2d'); g.imageSmoothingQuality = 'high';
-  g.fillStyle = '#fff'; g.fillRect(0, 0, AV_SIZE, AV_SIZE);
-  g.drawImage(img, sx, sy, side, side, 0, 0, AV_SIZE, AV_SIZE);
-  const toBlob = (type, q) => new Promise((r) => c.toBlob(r, type, q));
-  let blob = await toBlob('image/webp', 0.8);
-  if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', 0.82);
-  if (!blob) throw new Error("Impossible de préparer l'image.");
-  return blob;
+  // On baisse la qualité, puis la taille, jusqu'à passer sous 10 Ko.
+  let last = null;
+  for (const size of [AV_SIZE, 256, 200, 160, 128, 96]) {
+    const c = document.createElement('canvas'); c.width = size; c.height = size;
+    const g = c.getContext('2d'); g.imageSmoothingQuality = 'high';
+    g.fillStyle = '#fff'; g.fillRect(0, 0, size, size);
+    g.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+    const toBlob = (type, q) => new Promise((r) => c.toBlob(r, type, q));
+    for (const q of [0.8, 0.65, 0.5, 0.4]) {
+      let blob = await toBlob('image/webp', q);
+      if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', q);
+      if (!blob) continue;
+      last = blob;
+      if (blob.size <= AV_MAX) return blob;
+    }
+  }
+  if (!last) throw new Error("Impossible de préparer l'image.");
+  throw new Error('Cette image est trop détaillée. Essayez une autre photo.');
 }
 async function compressAvatar(file) {
   const img = await loadImageFile(file);

@@ -228,7 +228,7 @@ with sync_playwright() as p:
     page.click('.crop-ov [data-c=ok]')
     page.wait_for_selector('.dsh-who img.av', timeout=5000)
     f = page.evaluate("Object.values(window.__mockdb().files || {})[0]")
-    check('photo de profil : compressée (< 60 Ko, 320 px)', f and f['size'] < 60000 and f['type'] in ('image/webp', 'image/jpeg'))
+    check('photo de profil : compressée (10 Ko au maximum)', f and f['size'] <= 10240 and f['type'] in ('image/webp', 'image/jpeg'))
     check('photo de profil : affichée dans Mon espace', page.locator('.dsh-who img.av').count() == 1 and page.locator('.av-edit img.av').count() == 1)
     page.screenshot(path=f'{SHOTS}/06e-photo-profil.png', full_page=True)
     goto(page, '#/formation/design-0-f'); page.wait_for_timeout(500)

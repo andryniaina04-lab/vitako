@@ -247,7 +247,7 @@
         from: (bucket) => ({
           async upload(path, blob, opts) {
             if (bucket !== 'avatars' || !me() || path.split('/')[0] !== me()) return err('new row violates row-level security policy');
-            if (blob.size > 204800) return err('The object exceeded the maximum allowed size');
+            if (blob.size > 10240) return err('The object exceeded the maximum allowed size');
             const url = await new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); });
             (db.files ||= {})[bucket + '/' + path] = { url, size: blob.size, type: blob.type }; save();
             return { data: { path }, error: null };
