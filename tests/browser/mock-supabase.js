@@ -6,7 +6,7 @@
   const KEY = 'vitako_mock_db';
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } };
   let db = load() || {
-    users: [], profiles: [], progress: [], exam_attempts: [], certificates: [], payments: [], reviews: [],
+    users: [], profiles: [], progress: [], exam_attempts: [], certificates: [], payments: [], reviews: [], trainers: [],
     settings: [{ key: 'price_ar', value: '60000' }, { key: 'promo_price_ar', value: '30000' }, { key: 'promo_until', value: '2026-11-30' }, { key: 'access_days', value: '30' }],
     session: null,
   };
@@ -39,8 +39,9 @@
       case 'exam_attempts': return db.exam_attempts.filter((p) => p.user_id === me() || isAdmin());
       case 'reviews': return (db.reviews ||= []).filter((p) => p.user_id === me() || isAdmin());
       case 'certificates': return db.certificates.filter((p) => p.user_id === me() || isAdmin());
+      case 'trainer_profiles': return (db.trainers ||= []).filter((t) => t.user_id === me() || isAdmin());
       case 'payments': return db.payments.filter((p) => p.user_id === me() || isAdmin())
-        .map((p) => ({ ...p, profile: (({ full_name, email }) => ({ full_name, email }))(db.profiles.find((x) => x.id === p.user_id) || {}) }));
+        .map((p) => ({ ...p, profile: (({ full_name, email, role }) => ({ full_name, email, role }))(db.profiles.find((x) => x.id === p.user_id) || {}) }));
       default: throw new Error('table inconnue ' + name);
     }
   }
@@ -72,6 +73,7 @@
       if (this.op === 'update') {
         if (this.name !== 'profiles' || Object.keys(this.vals).some((k) => k !== 'full_name' && k !== 'avatar_url')) return err('permission denied');
         rows.filter((r) => r.id === me()).forEach((r) => Object.assign(db.profiles.find((p) => p.id === r.id), this.vals));
+        if ('avatar_url' in this.vals) refreshTrainer(me());
         save(); return { data: null, error: null };
       }
       if (this.sort) { const [c, asc] = this.sort; rows = rows.slice().sort((a, b) => (a[c] > b[c] ? 1 : a[c] < b[c] ? -1 : 0) * (asc ? 1 : -1)); }
@@ -82,10 +84,33 @@
     }
   }
 
+  // Formateurs (même logique que supabase/migrations/20261017c_formateurs.sql)
+  const trainerOf = (id) => (db.trainers ||= []).find((t) => t.user_id === id);
+  const isTrainer = (id) => db.profiles.find((p) => p.id === id)?.role === 'trainer';
+  const trainerComplete = (id) => {
+    const t = trainerOf(id); const p = db.profiles.find((x) => x.id === id);
+    return !!t && !!p && t.headline.length >= 3 && t.bio.length >= 30 && t.domains.length >= 1 && !!(t.whatsapp || t.phone || t.email) && !!p.avatar_url;
+  };
+  function refreshTrainer(id) {
+    const t = trainerOf(id); if (!t) return;
+    t.status = !trainerComplete(id) ? 'draft' : t.status === 'approved' ? 'approved' : 'pending';
+    t.updated_at = now();
+  }
+  const newTrainer = (id) => ({ user_id: id, headline: '', bio: '', domains: [], rates: '', whatsapp: null, phone: null, email: null,
+    facebook: null, linkedin: null, instagram: null, tiktok: null, website: null, cover_url: null, visual_url: null,
+    status: 'draft', reason: null, decided_at: null, created_at: now(), updated_at: now() });
+  const trainerVisible = (id) => { const t = trainerOf(id), p = db.profiles.find((x) => x.id === id);
+    return !!t && !!p && p.role === 'trainer' && t.status === 'approved' && !!p.sub_end && new Date(p.sub_end) > new Date(); };
+  const cleanPhone = (v) => { v = String(v || '').replace(/[^0-9+]/g, ''); if (!v) return null; if (!/^\+?[0-9]{8,15}$/.test(v)) throw new Error('bad_phone'); return v; };
+  const cleanLink = (v) => { v = String(v || '').trim(); if (!v) return null; if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+    if (v.length > 200 || !/^https?:\/\/[^\s<>"]+\.[^\s<>"]+$/.test(v)) throw new Error('bad_link'); return v; };
+  const DOMAIN_IDS = () => new Set(FIX.courses.map((c) => c.job_key.split('-')[0]));
+
   const newCertId = () => 'VTK-' + new Date().getFullYear() + '-' + Math.random().toString(16).slice(2, 8).toUpperCase();
   const RPC = {
     submit_payment({ p_operator, p_reference, p_sender }) {
       if (!me()) return err('not_authenticated');
+      if (isTrainer(me()) && (trainerOf(me())?.status || 'draft') === 'draft') return err('trainer_profile_incomplete');
       const ref = String(p_reference || '').replace(/\s/g, '').toUpperCase();
       const sender = String(p_sender || '').replace(/\D/g, '') || null;
       if (!['mvola', 'orange'].includes(p_operator)) return err('bad_operator');
@@ -109,6 +134,81 @@
         Object.assign(p, { status: 'approved', decided_at: now(), access_until: prof.sub_end });
       } else Object.assign(p, { status: 'rejected', decided_at: now(), reason: p_reason || 'Paiement introuvable' });
       save(); return { data: p, error: null };
+    },
+    become_trainer() {
+      if (!me()) return err('not_authenticated');
+      profile().role = 'trainer';
+      if (!trainerOf(me())) db.trainers.push(newTrainer(me()));
+      save(); return { data: null, error: null };
+    },
+    save_trainer_profile({ p }) {
+      if (!me()) return err('not_authenticated');
+      if (!isTrainer(me())) return err('not_trainer');
+      const headline = String(p.headline || '').replace(/\s+/g, ' ').trim(), bio = String(p.bio || '').trim(), rates = String(p.rates || '').trim();
+      const email = String(p.email || '').trim().toLowerCase() || null;
+      if (headline.length > 80) return err('headline_too_long');
+      if (bio.length > 1500) return err('bio_too_long');
+      if (rates.length > 600) return err('rates_too_long');
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return err('bad_email');
+      const domains = [...new Set(Array.isArray(p.domains) ? p.domains : [])].sort();
+      const ok = DOMAIN_IDS();
+      if (domains.some((d) => !ok.has(d))) return err('bad_domain');
+      let vals;
+      try {
+        vals = { headline, bio, rates, email, domains, whatsapp: cleanPhone(p.whatsapp), phone: cleanPhone(p.phone),
+          facebook: cleanLink(p.facebook), linkedin: cleanLink(p.linkedin), instagram: cleanLink(p.instagram), tiktok: cleanLink(p.tiktok), website: cleanLink(p.website) };
+      } catch (e) { return err(e.message); }
+      let t = trainerOf(me()); if (!t) { t = newTrainer(me()); db.trainers.push(t); }
+      Object.assign(t, vals); refreshTrainer(me()); save();
+      return { data: JSON.parse(JSON.stringify(t)), error: null };
+    },
+    set_trainer_image({ p_kind, p_url }) {
+      if (!me()) return err('not_authenticated');
+      if (!isTrainer(me())) return err('not_trainer');
+      if (!['cover', 'visual'].includes(p_kind)) return err('bad_image');
+      let t = trainerOf(me()); if (!t) { t = newTrainer(me()); db.trainers.push(t); }
+      t[p_kind === 'cover' ? 'cover_url' : 'visual_url'] = p_url || null; t.updated_at = now(); save();
+      return { data: JSON.parse(JSON.stringify(t)), error: null };
+    },
+    get_trainer({ p_id }) {
+      const t = trainerOf(p_id), p = db.profiles.find((x) => x.id === p_id);
+      if (!t || !p || p.role !== 'trainer') return { data: null, error: null };
+      const visible = trainerVisible(p_id), owner = me() === p_id;
+      if (!visible && !owner && !isAdmin()) return { data: null, error: null };
+      const out = { user_id: p_id, full_name: p.full_name, avatar_url: p.avatar_url || null, headline: t.headline, bio: t.bio, domains: t.domains, rates: t.rates,
+        cover_url: t.cover_url, visual_url: t.visual_url, visible };
+      if (owner || isAdmin()) Object.assign(out, { status: t.status, reason: t.reason, sub_end: p.sub_end });
+      if (me()) out.contacts = Object.fromEntries(['whatsapp', 'phone', 'email', 'facebook', 'linkedin', 'instagram', 'tiktok', 'website'].filter((k) => t[k]).map((k) => [k, t[k]]));
+      return { data: out, error: null };
+    },
+    list_trainers() {
+      const list = (db.trainers || []).filter((t) => trainerVisible(t.user_id)).map((t) => {
+        const p = db.profiles.find((x) => x.id === t.user_id);
+        return { user_id: t.user_id, full_name: p.full_name, avatar_url: p.avatar_url || null, headline: t.headline, domains: t.domains, rates: t.rates, cover_url: t.cover_url };
+      }).sort((a, b) => a.full_name.localeCompare(b.full_name));
+      return { data: list, error: null };
+    },
+    admin_trainers() {
+      if (!isAdmin()) return err('forbidden');
+      const order = { pending: 0, rejected: 1, approved: 2, draft: 3 };
+      const list = db.profiles.filter((p) => p.role === 'trainer').map((p) => {
+        const t = trainerOf(p.id) || newTrainer(p.id);
+        return { ...t, user_id: p.id, full_name: p.full_name, email: p.email, contact_email: t.email, avatar_url: p.avatar_url || null, sub_end: p.sub_end, created_at: p.created_at,
+          status: trainerOf(p.id) ? t.status : 'draft', has_pending_payment: db.payments.some((x) => x.user_id === p.id && x.status === 'pending') };
+      }).sort((a, b) => order[a.status] - order[b.status]);
+      return { data: list, error: null };
+    },
+    admin_decide_trainer({ p_user, p_approve, p_reason }) {
+      if (!isAdmin()) return err('forbidden');
+      const t = trainerOf(p_user); if (!t) return err('not_found');
+      if (p_approve && !trainerComplete(p_user)) return err('trainer_profile_incomplete');
+      Object.assign(t, { status: p_approve ? 'approved' : 'rejected', reason: p_approve ? null : (String(p_reason || '').trim() || 'Profil à corriger'), decided_at: now() });
+      save(); return { data: JSON.parse(JSON.stringify(t)), error: null };
+    },
+    admin_trainer_todo() {
+      if (!isAdmin()) return err('forbidden');
+      return { data: (db.trainers || []).filter((t) => { const p = db.profiles.find((x) => x.id === t.user_id);
+        return t.status === 'pending' && p?.sub_end && new Date(p.sub_end) > new Date() && !db.payments.some((x) => x.user_id === t.user_id && x.status === 'pending'); }).length, error: null };
     },
     submit_review({ p_course, p_rating, p_comment, p_publish }) {
       if (!me()) return err('not_authenticated');
@@ -226,7 +326,7 @@
       if (db.users.some((u) => u.email === email)) return err('User already registered');
       const user = { id: uuid(), email, password };
       db.users.push(user);
-      db.profiles.push({ id: user.id, full_name: options?.data?.full_name || email.split('@')[0], email, is_admin: email.startsWith('admin@'), sub_end: null, created_at: now() });
+      db.profiles.push({ id: user.id, full_name: options?.data?.full_name || email.split('@')[0], email, is_admin: email.startsWith('admin@'), sub_end: null, created_at: now(), role: options?.data?.role === 'trainer' ? 'trainer' : 'student', avatar_url: null });
       db.session = { user: { id: user.id, email } }; save(); await emit('SIGNED_IN');
       return { data: { user: db.session.user, session: db.session }, error: null };
     },
@@ -246,8 +346,8 @@
       const storage = {
         from: (bucket) => ({
           async upload(path, blob, opts) {
-            if (bucket !== 'avatars' || !me() || path.split('/')[0] !== me()) return err('new row violates row-level security policy');
-            if (blob.size > 10240) return err('The object exceeded the maximum allowed size');
+            if (!['avatars', 'covers'].includes(bucket) || !me() || path.split('/')[0] !== me()) return err('new row violates row-level security policy');
+            if (blob.size > (bucket === 'covers' ? 30720 : 10240)) return err('The object exceeded the maximum allowed size');
             const url = await new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); });
             (db.files ||= {})[bucket + '/' + path] = { url, size: blob.size, type: blob.type }; save();
             return { data: { path }, error: null };

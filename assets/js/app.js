@@ -19,7 +19,11 @@ const S = {
   reviews: [],
   attempts: [],
   payments: [],
-  admin: { pending: 0, active: 0, feedback: 0 },
+  admin: { pending: 0, active: 0, feedback: 0, trainers: 0 },
+  trainer: null,         // profil formateur de la personne connectée (si formateur)
+  trainers: null,        // formateurs visibles (liste publique, en cache)
+  trainersAt: 0,
+  trainerDraft: null,    // formulaire de l'Espace formateur pas encore enregistré
   price: CFG.price,
   promoPrice: CFG.promoPrice || 0,
   promoUntil: CFG.promoUntil || '',
@@ -35,6 +39,8 @@ const S = {
 
 const uid = () => S.session?.user?.id;
 const isAdmin = () => !!S.profile?.is_admin;
+const isTrainer = () => S.profile?.role === 'trainer';
+const homeAfterLogin = () => (isAdmin() ? '/admin' : isTrainer() ? '/espace-formateur' : '/mon-espace');
 const hasAccess = () => !!S.profile && (S.profile.is_admin || (S.profile.sub_end && new Date(S.profile.sub_end) > new Date()));
 const daysLeft = () => Math.max(0, Math.ceil((new Date(S.profile.sub_end) - Date.now()) / DAY));
 const doneSet = (cid) => S.progress.get(cid) || new Set();
@@ -71,7 +77,7 @@ const verifyUrl = (id) => `${location.origin}${location.pathname}#/attestation/$
 async function loadUser() {
   const id = uid();
   if (!id) {
-    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [] });
+    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [], trainer: null, trainerDraft: null });
     return;
   }
   let profile = await api.getProfile(id);
@@ -87,6 +93,7 @@ async function loadUser() {
     S.progress.get(p.course_id).add(p.module_index);
   }
   S.certs = certs; S.attempts = attempts; S.payments = payments; S.reviews = reviews;
+  S.trainer = profile?.role === 'trainer' ? await api.getMyTrainer(id).catch(() => null) : null;
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
 }
 
@@ -196,54 +203,66 @@ async function loadImageFile(file) {
     return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Image illisible. Essayez une photo JPG ou PNG.')); i.src = URL.createObjectURL(file); });
   }
 }
-// Découpe la zone choisie (sx, sy, côté) et la compresse en 320 x 320 px.
-const AV_MAX = 10 * 1024; // 10 Ko au maximum par photo
-async function cropToBlob(img, sx, sy, side) {
-  // On baisse la qualité, puis la taille, jusqu'à passer sous 10 Ko.
+// Découpe la zone choisie et la compresse : on baisse la qualité, puis la taille, jusqu'à passer sous le poids maximum.
+const AV_MAX = 10 * 1024;    // 10 Ko au maximum par image (photo de profil, visuel carré)
+const COVER_MAX = 30 * 1024; // 30 Ko au maximum pour la couverture d'un formateur
+async function encodeCrop(img, box, { widths, aspect = 1, max, qualities = [0.8, 0.7, 0.6, 0.5, 0.4] }) {
   let last = null;
-  for (const size of [AV_SIZE, 256, 200, 160, 128, 96]) {
-    const c = document.createElement('canvas'); c.width = size; c.height = size;
+  for (const w of widths) {
+    const h = Math.round(w / aspect);
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
     const g = c.getContext('2d'); g.imageSmoothingQuality = 'high';
-    g.fillStyle = '#fff'; g.fillRect(0, 0, size, size);
-    g.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+    g.fillStyle = '#fff'; g.fillRect(0, 0, w, h);
+    g.drawImage(img, box.sx, box.sy, box.sw, box.sh, 0, 0, w, h);
     const toBlob = (type, q) => new Promise((r) => c.toBlob(r, type, q));
-    for (const q of [0.8, 0.65, 0.5, 0.4]) {
+    for (const q of qualities) {
       let blob = await toBlob('image/webp', q);
       if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', q);
       if (!blob) continue;
       last = blob;
-      if (blob.size <= AV_MAX) return blob;
+      if (blob.size <= max) return blob;
     }
   }
   if (!last) throw new Error("Impossible de préparer l'image.");
   throw new Error('Cette image est trop détaillée. Essayez une autre photo.');
 }
+// Photo de profil : carré de 320 px au plus.
+function cropToBlob(img, sx, sy, side) {
+  return encodeCrop(img, { sx, sy, sw: side, sh: side }, { widths: [AV_SIZE, 256, 200, 160, 128, 96], max: AV_MAX, qualities: [0.8, 0.65, 0.5, 0.4] });
+}
+// Images du profil formateur : couverture en paysage (3 x 1) et visuel carré.
+const IMG_KINDS = {
+  cover: { aspect: 3, round: false, title: 'Recadrer la couverture', help: 'Format paysage. Faites glisser l\'image pour la placer, puis zoomez.', widths: [1200, 1050, 900, 750, 600, 480], max: COVER_MAX },
+  visual: { aspect: 1, round: false, title: 'Recadrer le visuel', help: 'Format carré. Faites glisser l\'image pour la placer, puis zoomez.', widths: [480, 400, 320, 256, 200, 160], max: AV_MAX },
+};
 async function compressAvatar(file) {
   const img = await loadImageFile(file);
   const side = Math.min(img.width, img.height);
   return cropToBlob(img, (img.width - side) / 2, (img.height - side) / 2, side);
 }
 // Fenêtre de recadrage : glisser pour déplacer, curseur / molette / pincement pour zoomer.
-function openCropper(img) {
+// aspect : largeur / hauteur de la zone gardée (1 = carré, 3 = paysage). round : cercle pour la photo de profil.
+function openCropper(img, { aspect = 1, round = true, title = 'Recadrer la photo', help = 'Faites glisser la photo pour la placer, puis zoomez.' } = {}) {
   return new Promise((resolve) => {
-    const V = 280; // côté de la zone visible, en px
-    const base = V / Math.min(img.width, img.height);
-    let z = 1, ox = (V - img.width * base) / 2, oy = (V - img.height * base) / 2;
+    const W = aspect === 1 ? 280 : 320, H = Math.round(W / aspect); // zone visible, en px
+    const V = W;
+    const base = Math.max(W / img.width, H / img.height);
+    let z = 1, ox = (W - img.width * base) / 2, oy = (H - img.height * base) / 2;
     const ov = document.createElement('div');
     ov.className = 'crop-ov';
     ov.innerHTML = `<div class="crop-box" role="dialog" aria-modal="true" aria-labelledby="crop-t">
-      <b id="crop-t" class="crop-title">Recadrer la photo</b>
-      <p class="crop-help">Faites glisser la photo pour la placer, puis zoomez.</p>
-      <div class="crop-stage"><canvas width="${V * 2}" height="${V * 2}" aria-label="Aperçu du recadrage"></canvas><span class="crop-ring" aria-hidden="true"></span></div>
+      <b id="crop-t" class="crop-title">${esc(title)}</b>
+      <p class="crop-help">${esc(help)}</p>
+      <div class="crop-stage" style="width:${W}px;aspect-ratio:${W}/${H}"><canvas width="${W * 2}" height="${H * 2}" aria-label="Aperçu du recadrage"></canvas><span class="crop-ring${round ? '' : ' sq'}" aria-hidden="true"></span></div>
       <label class="crop-zoom"><span aria-hidden="true">−</span><input type="range" min="1" max="4" step="0.01" value="1" aria-label="Zoom"><span aria-hidden="true">+</span></label>
       <div class="crop-actions"><button type="button" class="btn ghost" data-c="cancel">Annuler</button><button type="button" class="btn" data-c="ok">Enregistrer</button></div>
     </div>`;
     document.body.appendChild(ov);
     const cv = ov.querySelector('canvas'), g = cv.getContext('2d'), range = ov.querySelector('input');
     const sc = () => base * z;
-    const clamp = () => { const s = sc(); ox = Math.min(0, Math.max(V - img.width * s, ox)); oy = Math.min(0, Math.max(V - img.height * s, oy)); };
-    const draw = () => { clamp(); g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, V, V); g.imageSmoothingQuality = 'high'; g.drawImage(img, ox, oy, img.width * sc(), img.height * sc()); };
-    const zoomTo = (nz, cx = V / 2, cy = V / 2) => {
+    const clamp = () => { const s = sc(); ox = Math.min(0, Math.max(W - img.width * s, ox)); oy = Math.min(0, Math.max(H - img.height * s, oy)); };
+    const draw = () => { clamp(); g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, W, H); g.imageSmoothingQuality = 'high'; g.drawImage(img, ox, oy, img.width * sc(), img.height * sc()); };
+    const zoomTo = (nz, cx = W / 2, cy = H / 2) => {
       nz = Math.min(4, Math.max(1, nz)); const s0 = sc();
       const ix = (cx - ox) / s0, iy = (cy - oy) / s0; z = nz; ox = cx - ix * sc(); oy = cy - iy * sc();
       range.value = z; draw();
@@ -269,7 +288,7 @@ function openCropper(img) {
     document.addEventListener('keydown', key);
     ov.addEventListener('click', (e) => {
       if (e.target === ov || e.target.dataset.c === 'cancel') close(null);
-      else if (e.target.dataset.c === 'ok') { const s = sc(); close({ sx: -ox / s, sy: -oy / s, side: V / s }); }
+      else if (e.target.dataset.c === 'ok') { const s = sc(); close({ sx: -ox / s, sy: -oy / s, sw: W / s, sh: H / s, side: W / s }); }
     });
     ov.querySelector('[data-c=ok]').focus();
   });
@@ -299,12 +318,19 @@ function notifications() {
     // Toujours non lues tant qu'il reste quelque chose à traiter
     if (p) out.push({ id: 'adm-pay-' + p + '-' + Date.now(), tone: 'gold', sticky: true, title: `${p} ${plural(p, 'paiement', 'paiements')} à valider`, text: 'Vérifiez la référence dans votre application, puis validez ou refusez.', href: '#/admin' });
     if (f) out.push({ id: 'adm-fb-' + f + '-' + Date.now(), tone: 'blue', sticky: true, title: `${f} ${plural(f, 'nouvelle remarque', 'nouvelles remarques')}`, text: 'Des visiteurs ou des apprenants vous ont écrit.', href: '#/admin/remarques' });
+    const tr = S.admin.trainers || 0;
+    if (tr) out.push({ id: 'adm-tr-' + tr + '-' + Date.now(), tone: 'gold', sticky: true, title: `${tr} ${plural(tr, 'profil formateur', 'profils formateurs')} à valider`, text: 'Profils complétés ou corrigés par des formateurs déjà abonnés.', href: '#/admin/formateurs' });
     return out;
   }
   for (const pay of S.payments.slice(0, 5)) {
     if (pay.status === 'pending') out.push({ id: 'pay-p-' + pay.id, tone: 'gold', title: 'Paiement en cours de vérification', text: `Référence ${pay.reference}. Votre accès sera activé en ${CFG.validationDelay}.`, href: '#/abonnement', ts: pay.created_at });
     else if (pay.status === 'approved') out.push({ id: 'pay-a-' + pay.id, tone: 'ok', title: 'Votre accès est activé 🎉', text: `Paiement validé. Accès à toutes les formations jusqu'au ${fmtDate(pay.access_until || S.profile.sub_end)}.`, href: '#/formations', ts: pay.decided_at });
     else if (pay.status === 'rejected') out.push({ id: 'pay-r-' + pay.id, tone: 'err', title: 'Paiement non validé', text: `${pay.reason || 'Paiement introuvable'}. Vérifiez la référence dans votre SMS et renvoyez-la.`, href: '#/abonnement', ts: pay.decided_at });
+  }
+  const T = S.trainer;
+  if (isTrainer() && T?.decided_at) {
+    if (T.status === 'approved') out.push({ id: 'tr-ok-' + T.decided_at, tone: 'ok', title: 'Votre profil formateur est validé', text: hasAccess() ? 'Les étudiants peuvent maintenant le voir.' : 'Il sera visible dès que votre abonnement sera actif.', href: '#/espace-formateur', ts: T.decided_at });
+    else if (T.status === 'rejected') out.push({ id: 'tr-ko-' + T.decided_at, tone: 'err', title: 'Votre profil formateur est à corriger', text: `${T.reason || 'Voir le motif'}. Corrigez-le puis enregistrez-le.`, href: '#/espace-formateur', ts: T.decided_at });
   }
   const end = S.profile.sub_end ? new Date(S.profile.sub_end) : null;
   if (end) {
@@ -331,13 +357,15 @@ async function refreshNotifs() {
   if (notifBusy || !S.session || !S.profile || document.hidden) return;
   notifBusy = true;
   try {
-    const before = JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end]);
+    const snap = () => JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end, S.trainer?.status, S.trainer?.decided_at]);
+    const before = snap();
     if (isAdmin()) S.admin = await api.adminCounts();
     else {
-      const [pays, prof] = await Promise.all([api.getMyPayments(uid()), api.getProfile(uid())]);
+      const [pays, prof, tr] = await Promise.all([api.getMyPayments(uid()), api.getProfile(uid()), isTrainer() ? api.getMyTrainer(uid()).catch(() => S.trainer) : null]);
       S.payments = pays; if (prof) S.profile = prof;
+      if (isTrainer()) S.trainer = tr;
     }
-    const after = JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end]);
+    const after = snap();
     if (before !== after) { if (S.ui.notif || S.ui.menu) topbar(); else render(); }
   } catch (e) { /* réseau indisponible : on réessaiera */ }
   notifBusy = false;
@@ -352,17 +380,22 @@ function topbar() {
   const r = route();
   const on = (p) => (r.path === p ? ' on' : '');
   const item = (href, label, extra = '') => `<a class="menu-item${on(href.slice(1))}" href="${href}">${label}${extra}</a>`;
-  let items = item('#/', 'Accueil') + item('#/formations', 'Toutes les formations');
+  let items = item('#/', 'Accueil') + item('#/formations', 'Toutes les formations') + item('#/accompagnement', 'Accompagnement');
   if (S.session) {
     items += item('#/mon-espace', 'Mon espace');
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
+    if (isTrainer()) {
+      const st = trStatus(S.trainer);
+      items += item('#/espace-formateur', 'Espace formateur', st === 'draft' ? ' <span class="pill grey">À compléter</span>' : st === 'rejected' ? ' <span class="pill red">À corriger</span>' : '');
+    }
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/formateurs', 'Formateurs', S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
   items += item('#/verifier', 'Vérifier une attestation') + item('#/remarque', 'Envoyer une remarque');
+  items += `<button class="menu-item menu-theme" data-act="theme">${isDark() ? 'Passer au thème clair' : 'Passer au thème sombre'}</button>`;
   const who = S.session
     ? `<div class="menu-who">${avatarHtml(S.profile, 'av-sm')}<b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
-        ${S.profile && hasAccess() && !isAdmin() ? `<span class="pill">Abonné · ${daysLeft()} j restants</span>` : ''}</div>`
+        ${S.profile && hasAccess() && !isAdmin() ? `<span class="pill">${isTrainer() ? 'Formateur' : 'Abonné'} · ${daysLeft()} j restants</span>` : isTrainer() ? '<span class="pill grey">Formateur</span>' : ''}</div>`
     : '';
   const foot = S.session
     ? '<button class="menu-item danger" data-act="logout">Déconnexion</button>'
@@ -377,7 +410,7 @@ function topbar() {
       </div>` : '';
   const fl = document.getElementById('foot-logo'); if (fl && !fl.firstChild) fl.innerHTML = logoSvg({ label: 'Vitako, accueil' });
   topEl.innerHTML = `<a class="logo" href="#/" aria-label="Vitako, accueil">${logoSvg({ label: 'Vitako, accueil' })}</a>
-    <div class="tb-actions">
+    <div class="tb-actions${S.session && S.profile && !hasAccess() ? ' crowd' : ''}">
       ${S.session && S.profile && hasAccess() && !isAdmin() ? `<span class="pill tb-pill">Abonné · ${daysLeft()} j</span>` : ''}
       ${!S.session ? `<a class="tb-link" href="#/connexion">Connexion</a><a class="btn tb-cta" href="#/inscription"><span class="tb-l">Créer un compte</span><span class="tb-s">S'inscrire</span></a>` : ''}
       ${S.session && S.profile && !hasAccess() ? `<a class="btn tb-cta" href="#/abonnement">S'abonner</a>` : ''}
@@ -535,7 +568,7 @@ function home() {
     </a>`;
   };
   const nJobs = JOBS.filter((j) => !j.single).length;
-  const cta = S.session ? `<a class="btn lg" href="#/mon-espace">Mon espace</a>` : `<a class="btn lg" href="#/inscription">Créer mon compte gratuit</a>`;
+  const cta = S.session ? (isTrainer() ? `<a class="btn lg" href="#/espace-formateur">Espace formateur</a>` : `<a class="btn lg" href="#/mon-espace">Mon espace</a>`) : `<a class="btn lg" href="#/inscription">Créer mon compte gratuit</a>`;
   return `
   <section class="lp-hero">
     <div class="lp-hero-in">
@@ -664,6 +697,7 @@ function refreshGrid() {
 function coursePage(id) {
   const c = courseById(id);
   if (!c) return notFound();
+  if (S.trainers === null && api.configured) return loadTrainers().then(() => coursePage(id));
   // Le détail du programme (résumés et sous-parties des modules) n'est pas dans le site public :
   // il est lu dans la base, qui ne le donne qu'aux abonnés.
   if (c.published && hasAccess() && api.configured && !S.lessons.has(id)) {
@@ -738,6 +772,7 @@ function coursePage(id) {
         <div><span class="eyebrow">Même métier</span><div style="font-weight:700">${esc(other.title)}</div></div>
         <a class="btn ghost sm" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>
       </div>` : ''}
+      ${trainerSection(c)}
     </div>
     <aside class="panel side stack">
       ${S.session && c.published ? `<div class="stack" style="gap:8px"><div style="display:flex;justify-content:space-between"><b>Ma progression</b><span class="mono">${pct} %</span></div><div class="bar"><i style="width:${pct}%"></i></div>
@@ -864,13 +899,24 @@ function examResult(c) {
       ? `<p>Bravo ${esc((S.profile.full_name || '').split(' ')[0])} ! Vous avez terminé « ${esc(c.title)} ». Votre attestation est prête.${R.job_certificate_id ? ' Vous avez réussi les deux niveaux : votre attestation de parcours complet est aussi disponible.' : ''}</p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
            <a class="btn" href="#/attestation/${R.certificate_id}">Voir mon attestation</a>
-           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : (other ? `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>` : '<a class="btn ghost" href="#/formations">Voir les autres formations</a>')}</div>`
+           ${R.job_certificate_id ? `<a class="btn ghost" href="#/attestation/${R.job_certificate_id}">Attestation de parcours</a>` : (other ? `<a class="btn ghost" href="#/formation/${other.id}">Continuer : niveau ${other.levelName}</a>` : '<a class="btn ghost" href="#/formations">Voir les autres formations</a>')}</div>
+         ${examTrainers(c)}`
       : `<p>Il manque ${50 - R.score} point${50 - R.score > 1 ? 's' : ''}. Relisez les modules si besoin, puis recommencez : le nombre d'essais n'est pas limité.</p>
          <p id="exerr" class="notice err" hidden></p>
          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
            <button class="btn" data-act="exam-start" data-id="${c.id}">Recommencer l'examen</button>
            <a class="btn ghost" href="#/formation/${c.id}">Revoir les modules</a></div>`}
   </div>`;
+}
+
+// Après un examen réussi : des formateurs du domaine pour la suite
+function examTrainers(c) {
+  const list = trainersFor(c.dom.id).slice(0, 2);
+  if (!list.length) return '';
+  return `<section class="tr-after stack" aria-labelledby="tr-after-t"><h2 id="tr-after-t">Besoin d'aide pour la suite ?</h2>
+    <p class="muted">Ces formateurs en ${esc(c.dom.name)} peuvent vous accompagner pour trouver vos premiers clients.</p>
+    <div class="tr-grid">${list.map(trainerCard).join('')}</div>
+    <a href="#/accompagnement?domaine=${c.dom.id}">Voir tous les formateurs</a></section>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1015,10 +1061,11 @@ function passwordField(id, autocomplete, label = 'Mot de passe') {
     <div class="pw"><input class="in" id="${id}" type="password" required minlength="8" autocomplete="${autocomplete}" placeholder="8 caractères minimum">
     <button type="button" class="eye" data-act="eye" data-for="${id}" aria-pressed="false" aria-label="Afficher le mot de passe">${I.eye}<span>Afficher</span></button></div></div>`;
 }
-function authPage(mode) {
+function authPage(mode, opts = {}) {
   if (!api.configured) return needConfig();
   const r = route();
   const next = r.query.get('suite') || '';
+  const asTrainer = !!opts.trainer || r.query.get('profil') === 'formateur';
   if (mode === 'forgot') {
     return `<div class="narrow panel stack" style="gap:18px">
       <div class="stack" style="gap:6px"><h2>Mot de passe oublié</h2><p class="muted">Saisissez votre e-mail : vous recevrez un lien pour choisir un nouveau mot de passe.</p></div>
@@ -1035,12 +1082,18 @@ function authPage(mode) {
       <form id="reset-form" class="stack" style="gap:14px" novalidate>${passwordField('r-pass', 'new-password', 'Nouveau mot de passe')}
         <p id="rerr" class="notice err" hidden></p><button class="btn" type="submit">Enregistrer</button></form></div>`;
   }
+  if (S.session && asTrainer && S.profile) return becomeTrainerPanel();
   if (S.session) return `<div class="narrow panel stack"><h2>Vous êtes connecté</h2><a class="btn" href="#/mon-espace">Aller à mon espace</a></div>`;
   const signup = mode === 'signup';
+  const rolePick = `<fieldset class="role-pick"><legend class="l">Je m'inscris comme</legend>
+      <label class="role-opt"><input type="radio" name="a-role" value="student"${asTrainer ? '' : ' checked'}><span><b>Étudiant(e)</b><small>Je veux apprendre un métier</small></span></label>
+      <label class="role-opt"><input type="radio" name="a-role" value="trainer"${asTrainer ? ' checked' : ''}><span><b>Formateur(trice)</b><small>Je veux accompagner des étudiants</small></span></label></fieldset>
+    <p class="notice info role-note" id="role-note"${asTrainer ? '' : ' hidden'}>Même abonnement que les étudiants, avec accès à toutes les formations. Vous remplissez votre profil, puis Vitako le vérifie avant de l'afficher aux étudiants.</p>`;
   return `<div class="narrow panel stack" style="gap:18px">
     <div class="stack" style="gap:6px"><h2>${signup ? 'Créer un compte' : 'Connexion'}</h2>
       <p class="muted">${signup ? 'Gratuit. Vous pourrez voir toutes les formations ; l\'abonnement débloque les cours.' : 'Heureux de vous revoir.'}</p></div>
     <form id="auth-form" class="stack" style="gap:14px" novalidate data-mode="${signup ? 'signup' : 'login'}" data-next="${esc(next)}">
+      ${signup ? rolePick : ''}
       ${signup ? '<div class="f"><label class="l" for="a-name">Nom complet</label><input class="in" id="a-name" autocomplete="name" required placeholder="Ex. Hery Randria"><small class="muted">Il figurera sur vos attestations.</small></div>' : ''}
       <div class="f"><label class="l" for="a-email">E-mail</label><input class="in" id="a-email" type="email" autocomplete="email" required placeholder="vous@exemple.mg"></div>
       ${passwordField('a-pass', signup ? 'new-password' : 'current-password')}
@@ -1066,12 +1119,17 @@ function subscribePage() {
   const last = S.payments[0];
   const showKo = last && last.status === 'rejected';
   const start = act ? new Date(S.profile.sub_end) : new Date();
+  const tr = isTrainer() && !isAdmin();
+  const trFirst = tr && trStatus(S.trainer) === 'draft';
+  const perks = tr
+    ? `<li><span><b>Votre profil formateur</b> visible par les étudiants, après validation par Vitako</span></li><li><span><b>Affiché</b> dans le menu Accompagnement et sous les formations de vos domaines</span></li><li><span><b>Toutes les formations</b>, tests et attestations, comme les étudiants</span></li><li><span><b>Sans engagement</b> : l'accès s'arrête seul au bout de ${S.days} jours, aucun prélèvement</span></li>`
+    : `<li><span><b>Toutes les formations</b> disponibles, sans limite</span></li><li><span><b>Tests et examens</b> illimités</span></li><li><span><b>Une attestation</b> par formation réussie, plus l'attestation de parcours complet</span></li><li><span><b>Sans engagement</b> : l'accès s'arrête seul au bout de ${S.days} jours, aucun prélèvement</span></li>`;
   return `<div class="sub-wrap">
     <div class="panel stack sub-plan" style="gap:14px">
-      <span class="eyebrow">Abonnement mensuel</span>
+      <span class="eyebrow">${tr ? 'Abonnement formateur' : 'Abonnement mensuel'}</span>
       ${promoOn() ? `<div><span class="pill red">-${promoPct()} % jusqu'au ${promoEnd()}</span></div>` : ''}
       <div class="price">${priceHtml()} <small>/ ${S.days} jours</small></div>
-      <ul class="obj sub-perks"><li><span><b>Toutes les formations</b> disponibles, sans limite</span></li><li><span><b>Tests et examens</b> illimités</span></li><li><span><b>Une attestation</b> par formation réussie, plus l'attestation de parcours complet</span></li><li><span><b>Sans engagement</b> : l'accès s'arrête seul au bout de ${S.days} jours, aucun prélèvement</span></li></ul>
+      <ul class="obj sub-perks">${perks}</ul>
       ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
     </div>
     <div class="sub-pay stack" style="gap:18px">
@@ -1079,6 +1137,11 @@ function subscribePage() {
       <div><span class="pill gold">En attente de validation</span></div>
       <p>Paiement ${esc(opById(pending.operator).name)} de <b class="mono">${ar(pending.amount)}</b>${pending.sender ? ` depuis le <span class="mono">${fmtTel(pending.sender)}</span>` : ''}, référence <span class="mono">${esc(pending.reference)}</span>, envoyé le ${fmtDT(pending.created_at)}.</p>
       <p class="muted">Nous vérifions la réception puis activons votre accès pour ${S.days} jours, en général en ${esc(CFG.validationDelay)}. Vous recevrez un e-mail dès que c'est fait.</p>
+    </div>` : trFirst ? `<div class="panel stack tr-first" style="gap:12px">
+      <div><span class="pill gold">Étape 1 d'abord</span></div>
+      <h2>Remplissez d'abord votre profil formateur</h2>
+      <p class="muted">Vitako vérifie votre profil au moment de valider votre paiement. Il manque : ${esc(trainerMissing(S.trainer).join(', '))}.</p>
+      <div><a class="btn" href="#/espace-formateur">Remplir mon profil</a></div>
     </div>` : `
     ${showKo ? notice('err', `Votre paiement du ${fmtDT(last.created_at)} (référence ${esc(last.reference)}) n'a pas été validé : ${esc(last.reason || 'paiement introuvable')}. Vérifiez la référence dans votre SMS de confirmation et renvoyez-la.`) : ''}
     <form id="pay-form" class="panel stack pay-panel" style="gap:16px" novalidate>
@@ -1158,6 +1221,11 @@ function accountPage() {
     </div>
   </section>
   <div class="dash dsh">
+    ${isTrainer() ? `<section class="panel stack dsh-card tone-trainer" style="gap:12px">
+      <div class="dsh-h"><span class="dsh-ic">${CT_ICONS.trainer}</span><b>Espace formateur</b>${trPill(S.trainer)}</div>
+      <p class="muted">${esc(trainerStateText())}</p>
+      <div><a class="btn" href="#/espace-formateur">Ouvrir mon Espace formateur</a></div>
+    </section>` : ''}
     <section class="panel stack dsh-card tone-${subTone}" style="gap:12px">
       <div class="dsh-h"><span class="dsh-ic">${IC.sub}</span><b>Abonnement</b>${P.is_admin ? '<span class="pill">Admin</span>' : act ? '<span class="pill">Actif</span>' : pending ? '<span class="pill gold">En attente</span>' : `<span class="pill red">${P.sub_end ? 'Expiré' : 'Aucun'}</span>`}</div>
       ${subHtml}
@@ -1188,7 +1256,368 @@ function accountPage() {
     <div class="f"><label class="l" for="n-name">Nom complet (sur les attestations)</label><input class="in" id="n-name" value="${esc(P.full_name)}" autocomplete="name" required></div>
     <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
     <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
-  </form>`;
+  </form>
+  ${!isTrainer() && !P.is_admin ? `<p class="tr-invite muted">Vous voulez accompagner des étudiants dans votre métier ? <a href="#/devenir-formateur">Devenir formateur</a></p>` : ''}`;
+}
+
+// ---------------------------------------------------------------------------
+// Formateurs : accompagnement personnalisé
+// ---------------------------------------------------------------------------
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const TR_STATUS = {
+  draft: ['Profil à compléter', 'grey'],
+  pending: ['En attente de validation', 'gold'],
+  approved: ['Profil validé', ''],
+  rejected: ['À corriger', 'red'],
+};
+const TR_REASONS = ['Photo de profil absente ou inadaptée', 'Présentation trop courte ou peu claire', 'Informations fausses ou douteuses',
+  'Profil sans rapport avec les formations Vitako', 'Coordonnées invalides'];
+const trStatus = (t) => t?.status || 'draft';
+const trPill = (t) => { const [label, cls] = TR_STATUS[trStatus(t)]; return `<span class="pill ${cls}">${label}</span>`; };
+const domName = (id) => DOMAINS_LIST.find((d) => d.id === id)?.name || id;
+const domColors = (id) => COVER_COLORS[id] || ['#04281C', '#0B7A55'];
+const waLink = (v) => { let d = String(v || '').replace(/\D/g, ''); if (/^0\d{9}$/.test(d)) d = '261' + d.slice(1); return 'https://wa.me/' + d; };
+const fmtPhone = (v) => (/^0\d{9}$/.test(v || '') ? fmtTel(v) : v || '');
+const firstName = (n) => String(n || '').trim().split(/\s+/)[0] || '';
+const svgS = (body, fill = false) => `<svg viewBox="0 0 24 24" width="18" height="18" ${fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${body}</svg>`;
+const CT_ICONS = {
+  whatsapp: svgS('<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M9 10.2c.4 1.6 1.9 3.3 3.9 4.1l1.3-1.1 2 1-.4 1.6c-3.6.4-7.7-3.3-7.8-7.2l1.6-.5 1 2z"/>'),
+  phone: svgS('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'),
+  email: svgS('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+  facebook: svgS('<path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z"/>', true),
+  linkedin: svgS('<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.04c0-1.2-.02-2.75-1.68-2.75-1.68 0-1.94 1.31-1.94 2.66V21h-4z"/>', true),
+  instagram: svgS('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'),
+  tiktok: svgS('<path d="M16.6 3c.4 2.3 1.9 3.9 4.4 4.1v3.1c-1.6.1-3-.4-4.4-1.3v6.2c0 3.6-2.6 6.4-6.2 6.4S4 18.9 4 15.4c0-3.6 3-6.3 6.8-5.9v3.2c-1.9-.4-3.6.9-3.6 2.7 0 1.6 1.3 2.8 2.9 2.8 1.7 0 3-1.2 3-3.2V3h3.5z"/>', true),
+  website: svgS('<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'),
+  trainer: svgS('<circle cx="9" cy="7" r="4"/><path d="M2 21c.8-3.6 3.6-6 7-6s6.2 2.4 7 6"/><path d="m16 11 2 2 4-4"/>'),
+  camera: svgS('<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3.5"/>'),
+  text: svgS('<path d="M4 6h16M4 12h16M4 18h10"/>'),
+  contact: svgS('<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>'),
+};
+const SOCIALS = [['facebook', 'Facebook'], ['linkedin', 'LinkedIn'], ['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['website', 'Site web']];
+
+// Ce qui manque pour que le profil soit complet (mêmes règles que la base).
+function trainerMissing(t, P = S.profile) {
+  const m = [];
+  if (!P?.avatar_url) m.push('votre photo de profil');
+  if (!t || String(t.headline || '').trim().length < 3) m.push('votre métier');
+  if (!t || String(t.bio || '').trim().length < 30) m.push('une présentation (30 caractères au moins)');
+  if (!t || !(t.domains || []).length) m.push('au moins un domaine');
+  if (!t || !(t.whatsapp || t.phone || t.email)) m.push('un moyen de contact (WhatsApp, téléphone ou e-mail)');
+  return m;
+}
+// Phrase d'état pour le formateur connecté.
+function trainerStateText() {
+  const st = trStatus(S.trainer);
+  if (st === 'draft') return `Complétez votre profil. Il manque : ${trainerMissing(S.trainer).join(', ')}.`;
+  if (st === 'rejected') return `Profil à corriger : ${S.trainer.reason || 'voir le motif'}. Modifiez-le puis enregistrez-le : il repart en validation.`;
+  if (st === 'approved') return hasAccess() ? 'Votre profil est visible par les étudiants.' : 'Votre profil est validé. Il sera de nouveau visible dès que votre abonnement sera actif.';
+  if (pendingPayment()) return 'Vitako vérifie votre profil en même temps que votre paiement.';
+  return hasAccess() ? 'Vitako vérifie votre profil.' : 'Profil complet. Prenez votre abonnement : Vitako vérifie votre profil en même temps que le paiement.';
+}
+
+// Liste publique des formateurs visibles, gardée 5 minutes.
+async function loadTrainers(force = false) {
+  if (!api.configured) { S.trainers = []; return S.trainers; }
+  if (!force && S.trainers && Date.now() - S.trainersAt < 5 * 60e3) return S.trainers;
+  S.trainers = await api.listTrainers().catch(() => S.trainers || []);
+  S.trainersAt = Date.now();
+  return S.trainers;
+}
+// Ordre tiré au hasard, mais le même toute la journée : chaque formateur a sa chance d'être en tête.
+const dayHash = (s) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
+const dailyOrder = (list) => { const d = mgDate(); return list.slice().sort((a, b) => dayHash(a.user_id + d) - dayHash(b.user_id + d)); };
+const trainersFor = (dom) => dailyOrder((S.trainers || []).filter((t) => !dom || (t.domains || []).includes(dom)));
+
+function trainerCard(t) {
+  const doms = t.domains || [];
+  const pills = doms.slice(0, 3).map((d) => `<span class="pill grey">${esc(domName(d))}</span>`).join('') + (doms.length > 3 ? `<span class="pill grey">+${doms.length - 3}</span>` : '');
+  const [c1, c2] = domColors(doms[0]);
+  const rate = String(t.rates || '').split('\n')[0].trim();
+  return `<a class="tr-card" href="#/formateur/${esc(t.user_id)}">
+    <span class="tr-cv" style="--c1:${c1};--c2:${c2}">${t.cover_url ? `<img src="${esc(t.cover_url)}" alt="" loading="lazy" decoding="async">` : ''}</span>
+    <span class="tr-body">
+      ${avatarHtml(t, 'av-tr')}
+      <b class="tr-name">${esc(t.full_name)}</b>
+      <span class="tr-hl">${esc(t.headline)}</span>
+      <span class="tr-doms">${pills}</span>
+      ${rate ? `<span class="tr-rates">${esc(rate.length > 90 ? rate.slice(0, 88) + '…' : rate)}</span>` : ''}
+      <span class="tr-go">Voir le profil <span aria-hidden="true">→</span></span>
+    </span></a>`;
+}
+// Sous une formation : quelques formateurs du même domaine.
+function trainerSection(c) {
+  const list = trainersFor(c.dom.id);
+  if (!list.length) return '';
+  return `<section class="stack tr-sec" style="gap:12px" aria-labelledby="tr-sec-t">
+    <div class="tr-sec-h"><h2 id="tr-sec-t">Se faire accompagner</h2>${list.length > 3 ? `<a href="#/accompagnement?domaine=${c.dom.id}">Voir les ${list.length} formateurs</a>` : ''}</div>
+    <p class="muted">Ces formateurs en ${esc(c.dom.name)} peuvent vous aider pendant la formation et pour trouver vos premiers clients.</p>
+    <div class="tr-grid">${list.slice(0, 3).map(trainerCard).join('')}</div></section>`;
+}
+
+// Devenir formateur (personne déjà inscrite)
+function becomeTrainerPanel() {
+  if (isTrainer()) {
+    return `<div class="narrow panel stack"><h2>Vous êtes formateur</h2><p class="muted">Votre compte formateur est déjà actif.</p><a class="btn" href="#/espace-formateur">Aller à mon Espace formateur</a></div>`;
+  }
+  return `<div class="narrow panel stack tr-become" style="gap:14px">
+    <span class="eyebrow">Accompagnement</span>
+    <h1 class="tr-become-t">Devenir formateur</h1>
+    <p>Accompagnez les étudiants de Vitako dans votre domaine et faites connaître vos services.</p>
+    <ul class="obj sub-perks">
+      <li><span><b>Un profil public</b> avec photo, couverture, présentation, tarifs et contacts</span></li>
+      <li><span><b>Visible par les étudiants</b> dans le menu Accompagnement et sous les formations de vos domaines</span></li>
+      <li><span><b>Même abonnement</b> que les étudiants, avec accès à toutes les formations</span></li>
+    </ul>
+    <p class="muted" style="font-size:.9rem">Vous gardez votre compte, vos cours et vos attestations. Vitako vérifie votre profil avant de l'afficher.</p>
+    <p id="berr" class="notice err" hidden></p>
+    <button class="btn" data-act="become-trainer">Devenir formateur</button></div>`;
+}
+function becomeTrainerPage() {
+  if (!api.configured) return needConfig();
+  if (!S.session) return authPage('signup', { trainer: true });
+  if (!S.profile) return loadingView();
+  return becomeTrainerPanel();
+}
+
+// Espace formateur : étapes, puis le formulaire du profil
+function readTrainerForm(f) {
+  const v = (id) => f.querySelector('#' + id)?.value ?? '';
+  return {
+    headline: v('t-headline'), bio: v('t-bio'), rates: v('t-rates'),
+    domains: [...f.querySelectorAll('input[name=t-dom]:checked')].map((i) => i.value),
+    whatsapp: v('t-wa'), phone: v('t-phone'), email: v('t-email'),
+    facebook: v('t-fb'), linkedin: v('t-li'), instagram: v('t-ig'), tiktok: v('t-tt'), website: v('t-web'),
+  };
+}
+function trainerSpacePage() {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin('/espace-formateur');
+  if (!S.profile) return loadingView();
+  if (!isTrainer()) return becomeTrainerPanel();
+  const P = S.profile, T = S.trainer || {};
+  const D = S.trainerDraft || T;
+  const st = trStatus(S.trainer);
+  const act = hasAccess(), pend = pendingPayment();
+  const missing = trainerMissing(S.trainer);
+  const step = (n, state, title, text, action = '') => `<li class="tr-step ${state}"><span class="tr-step-n">${state === 'done' ? smallCheck : n}</span>
+    <div><b>${title}</b><p>${text}</p>${action}</div></li>`;
+  const s2 = st === 'draft' ? 'todo' : 'done';
+  const s3 = act ? 'done' : pend ? 'wait' : s2 === 'done' ? 'todo' : 'off';
+  const s4 = st === 'approved' ? (act ? 'done' : 'wait') : st === 'rejected' ? 'err' : st === 'pending' && (pend || act) ? 'wait' : 'off';
+  const steps = `<ol class="tr-steps" aria-label="Étapes pour être visible">
+    ${step(1, 'done', 'Créer votre compte', `C'est fait. Bienvenue, ${esc(firstName(P.full_name))} !`)}
+    ${step(2, s2, 'Remplir votre profil', s2 === 'done' ? 'Profil complet. Vous pouvez le modifier à tout moment.' : `Il manque : ${esc(missing.join(', '))}.`,
+      s2 === 'done' ? '' : '<button type="button" class="btn sm" data-act="toc" data-target="trainer-form">Remplir mon profil</button>')}
+    ${step(3, s3, 'Payer l\'abonnement', act ? `Actif jusqu'au ${fmtDate(P.sub_end)}.` : pend ? `Paiement envoyé le ${fmtDT(pend.created_at)}, en cours de vérification.`
+      : s3 === 'todo' ? `${ar(priceNow())} pour ${S.days} jours, par MVola ou Orange Money.` : 'Possible dès que votre profil est complet.',
+      s3 === 'todo' ? '<a class="btn sm" href="#/abonnement">Payer l\'abonnement</a>' : '')}
+    ${step(4, s4, 'Validation par Vitako', st === 'approved' ? (act ? 'Votre profil est visible par les étudiants.' : 'Profil validé. Il sera visible dès que votre abonnement sera actif.')
+      : st === 'rejected' ? `À corriger : ${esc(T.reason || '')}. Modifiez votre profil puis enregistrez-le : il repart en validation.`
+      : s4 === 'wait' ? 'Vitako vérifie votre profil en même temps que votre paiement.' : 'Après votre paiement, Vitako vérifie votre profil puis le rend visible.')}
+  </ol>`;
+  const [c1, c2] = domColors((D.domains || [])[0]);
+  const domSet = new Set(D.domains || []);
+  const field = (id, label, value, attrs = '', hint = '') => `<div class="f"><label class="l" for="${id}">${label}</label><input class="in" id="${id}" value="${esc(value || '')}" ${attrs}>${hint ? `<small class="muted">${hint}</small>` : ''}</div>`;
+  const visible = st === 'approved' && act;
+  return `<section class="dsh-hero tr-hero">
+    <div class="dsh-hero-in">
+      <div class="dsh-who">${avatarHtml(P, 'av-lg')}<div><div class="dsh-eyebrow">Espace formateur</div><h1>Salama, ${esc(firstName(P.full_name))}</h1>
+        <p>${esc(trainerStateText())}</p></div></div>
+      <div class="tr-hero-act"><span class="tr-hero-st${visible ? ' on' : ''}">${visible ? 'Visible par les étudiants' : TR_STATUS[st][0]}</span>
+        <a class="btn on-dark" href="#/formateur/${uid()}">Voir mon profil public</a></div>
+    </div>
+  </section>
+  ${steps}
+  <div class="tr-layout">
+  <form id="trainer-form" class="tr-form stack" novalidate>
+    <section class="panel stack dsh-card tone-trainer">
+      <div class="dsh-h"><span class="dsh-ic">${CT_ICONS.camera}</span><b>Photos</b></div>
+      <div class="tr-cover-prev" style="--c1:${c1};--c2:${c2}">${T.cover_url ? `<img src="${esc(T.cover_url)}" alt="Votre photo de couverture">` : '<span>Photo de couverture (format paysage)</span>'}</div>
+      <div class="av-btns"><label class="btn ghost sm tr-pick" for="tr-cover-file">${T.cover_url ? 'Changer la couverture' : 'Ajouter une couverture'}</label>${T.cover_url ? '<button type="button" class="btn ghost sm" data-act="tr-img-remove" data-kind="cover">Retirer</button>' : ''}</div>
+      <input type="file" id="tr-cover-file" data-kind="cover" accept="image/*" hidden>
+      <small class="muted">Facultative. Une image en longueur pour présenter vos services. Elle est compressée automatiquement (30 Ko au maximum).</small>
+      <div class="tr-imgs">
+        <div class="tr-img-col">${avatarHtml(P, 'av-xl')}<div class="stack" style="gap:6px"><b>Photo de profil <span class="pill gold">Obligatoire</span></b>
+          <div class="av-btns"><label class="btn ghost sm av-pick" for="av-file">${P.avatar_url ? 'Changer la photo' : 'Ajouter une photo'}</label></div>
+          <input type="file" id="av-file" accept="image/*" hidden><small class="muted">Une vraie photo de vous, le visage bien visible.</small></div></div>
+        <div class="tr-img-col"><span class="tr-visual-prev">${T.visual_url ? `<img src="${esc(T.visual_url)}" alt="Votre visuel">` : 'Visuel carré'}</span><div class="stack" style="gap:6px"><b>Visuel carré</b>
+          <div class="av-btns"><label class="btn ghost sm tr-pick" for="tr-visual-file">${T.visual_url ? 'Changer' : 'Ajouter'}</label>${T.visual_url ? '<button type="button" class="btn ghost sm" data-act="tr-img-remove" data-kind="visual">Retirer</button>' : ''}</div>
+          <input type="file" id="tr-visual-file" data-kind="visual" accept="image/*" hidden><small class="muted">Facultatif. Une affiche ou une réalisation (10 Ko au maximum).</small></div></div>
+      </div>
+    </section>
+    <section class="panel stack dsh-card tone-trainer">
+      <div class="dsh-h"><span class="dsh-ic">${CT_ICONS.text}</span><b>Présentation</b></div>
+      ${field('t-headline', 'Votre métier', D.headline, 'maxlength="80" placeholder="Ex. Graphiste freelance depuis 5 ans" autocomplete="organization-title"')}
+      <fieldset class="tr-doms-pick"><legend class="l">Domaines où vous pouvez accompagner <span class="muted">(autant que vous voulez)</span></legend>
+        <div class="chips chips-wrap">${DOMAINS_LIST.map((d) => `<label class="chip chk${domSet.has(d.id) ? ' on' : ''}"><input type="checkbox" name="t-dom" value="${d.id}"${domSet.has(d.id) ? ' checked' : ''}>${DOM_ICONS[d.id] || ''}<span>${esc(d.name)}</span></label>`).join('')}</div>
+        <small class="muted">Votre profil s'affiche sous les formations de ces domaines.</small></fieldset>
+      <div class="f"><label class="l" for="t-bio">Présentation</label>
+        <textarea class="in" id="t-bio" rows="6" maxlength="1500" placeholder="Votre parcours, ce que vous avez réalisé, et comment vous accompagnez les étudiants (séances en visio, relecture de portfolio, aide pour trouver des clients…).">${esc(D.bio || '')}</textarea>
+        <small class="muted">30 caractères au moins, 1 500 au maximum.</small></div>
+      <div class="f"><label class="l" for="t-rates">Tarifs d'accompagnement <span class="muted">(facultatif)</span></label>
+        <textarea class="in" id="t-rates" rows="3" maxlength="600" placeholder="Ex. Séance d'une heure en visio : 20 000 Ar. Suivi d'un mois : 80 000 Ar.">${esc(D.rates || '')}</textarea></div>
+    </section>
+    <section class="panel stack dsh-card tone-trainer">
+      <div class="dsh-h"><span class="dsh-ic">${CT_ICONS.contact}</span><b>Contacts</b></div>
+      <p class="muted" style="font-size:.9rem">Visibles seulement par les personnes inscrites et connectées. Indiquez au moins un numéro WhatsApp, un téléphone ou un e-mail.</p>
+      <div class="tr-fields">
+        ${field('t-wa', 'WhatsApp', fmtPhone(D.whatsapp), 'inputmode="tel" autocomplete="tel" placeholder="034 12 345 67"')}
+        ${field('t-phone', 'Téléphone', fmtPhone(D.phone), 'inputmode="tel" placeholder="032 12 345 67"')}
+        ${field('t-email', 'E-mail de contact', S.trainerDraft ? D.email : (T.email ?? (st === 'draft' ? P.email : '')), 'type="email" autocomplete="email" placeholder="vous@exemple.mg"')}
+        ${field('t-fb', 'Facebook', D.facebook, 'inputmode="url" placeholder="https://facebook.com/votre.page"')}
+        ${field('t-li', 'LinkedIn', D.linkedin, 'inputmode="url" placeholder="https://linkedin.com/in/votre-nom"')}
+        ${field('t-ig', 'Instagram', D.instagram, 'inputmode="url" placeholder="@votre.compte ou lien"')}
+        ${field('t-tt', 'TikTok', D.tiktok, 'inputmode="url" placeholder="@votre.compte ou lien"')}
+        ${field('t-web', 'Site web ou portfolio', D.website, 'inputmode="url" placeholder="https://monportfolio.com"')}
+      </div>
+    </section>
+    <p id="terr" class="notice err" hidden></p>
+    <div class="tr-save"><button class="btn" type="submit">Enregistrer mon profil</button><a class="btn ghost" href="#/formateur/${uid()}">Voir mon profil public</a></div>
+    <p class="muted" style="font-size:.88rem">${st === 'approved' ? 'Votre profil est validé : vos modifications sont visibles tout de suite.' : 'Une fois votre profil complet et votre abonnement payé, Vitako le vérifie puis le rend visible.'}</p>
+  </form>
+  <aside class="tr-preview" aria-label="Aperçu de votre carte">
+    <span class="eyebrow">Aperçu de votre carte</span>
+    ${trainerCard({ user_id: uid(), full_name: P.full_name, avatar_url: P.avatar_url, headline: T.headline || 'Votre métier', domains: T.domains || [], rates: T.rates, cover_url: T.cover_url })}
+    <p class="muted">C'est ainsi que les étudiants vous voient dans le menu Accompagnement et sous les formations de vos domaines.</p>
+  </aside>
+  </div>`;
+}
+
+// Profil public d'un formateur (comme une page LinkedIn)
+function contactsHtml(t, id) {
+  if (!S.session) {
+    return `<div class="tp-lock">${I.lock}<p>Connectez-vous pour voir ses contacts : WhatsApp, téléphone, e-mail et réseaux sociaux.</p>
+      <div class="av-btns"><a class="btn sm" href="#/connexion?suite=${encodeURIComponent('/formateur/' + id)}">Se connecter</a><a class="btn ghost sm" href="#/inscription?suite=${encodeURIComponent('/formateur/' + id)}">Créer un compte gratuit</a></div></div>`;
+  }
+  const C = t.contacts || {};
+  const rows = [];
+  if (C.whatsapp) rows.push(`<a class="ct-btn ct-wa" href="${waLink(C.whatsapp)}" target="_blank" rel="noopener">${CT_ICONS.whatsapp}<span>WhatsApp<small>${esc(fmtPhone(C.whatsapp))}</small></span></a>`);
+  if (C.phone) rows.push(`<a class="ct-btn" href="tel:${esc(C.phone)}">${CT_ICONS.phone}<span>Appeler<small>${esc(fmtPhone(C.phone))}</small></span></a>`);
+  if (C.email) rows.push(`<a class="ct-btn" href="mailto:${esc(C.email)}">${CT_ICONS.email}<span>E-mail<small>${esc(C.email)}</small></span></a>`);
+  const soc = SOCIALS.filter(([k]) => C[k]).map(([k, label]) => `<a href="${esc(C[k])}" target="_blank" rel="noopener nofollow" aria-label="${label} de ${esc(t.full_name)}" title="${label}">${CT_ICONS[k]}</a>`).join('');
+  if (!rows.length && !soc) return '<p class="muted">Aucun contact indiqué.</p>';
+  return `<div class="tp-contacts">${rows.join('')}</div>${soc ? `<div class="ct-social">${soc}</div>` : ''}`;
+}
+async function trainerPage(id) {
+  if (!api.configured) return needConfig();
+  if (!UUID_RE.test(id)) return notFound();
+  const t = await api.getTrainer(id);
+  if (!t) {
+    return `${back('#/accompagnement', 'Tous les formateurs')}<div class="narrow panel stack"><h2>Profil indisponible</h2>
+      <p class="muted">Ce formateur n'est pas visible pour le moment.</p><a class="btn" href="#/accompagnement">Voir les formateurs</a></div>`;
+  }
+  const own = uid() === id;
+  const doms = t.domains || [];
+  const [c1, c2] = domColors(doms[0]);
+  const fn = firstName(t.full_name);
+  let preview = '';
+  if (!t.visible) {
+    const why = t.status === 'approved' ? 'son abonnement n\'est pas actif' : t.status === 'rejected' ? `à corriger : ${t.reason || ''}` : t.status === 'pending' ? 'il attend la validation de Vitako' : 'il n\'est pas encore complet';
+    preview = notice('warn', own ? `<b>Aperçu de votre profil.</b> Il n'est pas encore visible par les étudiants : ${esc(why)}. <a href="#/espace-formateur">Retour à mon Espace formateur</a>`
+      : `<b>Profil non visible</b> (${esc(why)}). Vous le voyez parce que vous êtes administrateur.`);
+  } else if (own) preview = notice('info', 'Voici votre profil tel que les étudiants le voient. <a href="#/espace-formateur">Le modifier</a>');
+  const C = t.contacts || {};
+  const mainCta = !S.session ? `<a class="btn" href="#/connexion?suite=${encodeURIComponent('/formateur/' + id)}">Se connecter pour le contacter</a>`
+    : C.whatsapp ? `<a class="btn ct-wa-btn" href="${waLink(C.whatsapp)}" target="_blank" rel="noopener">${CT_ICONS.whatsapp}Écrire sur WhatsApp</a>`
+      : C.email ? `<a class="btn" href="mailto:${esc(C.email)}">${CT_ICONS.email}Envoyer un e-mail</a>`
+        : C.phone ? `<a class="btn" href="tel:${esc(C.phone)}">${CT_ICONS.phone}Appeler</a>` : '';
+  return `${back('#/accompagnement', 'Tous les formateurs')}
+  ${preview ? `<div style="margin-bottom:16px">${preview}</div>` : ''}
+  <article class="tp">
+    <div class="tp-card">
+      <div class="tp-cover" style="--c1:${c1};--c2:${c2}">${t.cover_url ? `<img src="${esc(t.cover_url)}" alt="Couverture du profil de ${esc(t.full_name)}" width="1200" height="400">` : ''}</div>
+      <div class="tp-body">
+        ${avatarHtml(t, 'av-tp')}
+        <div class="tp-row">
+          <div class="tp-id"><h1>${esc(t.full_name)}</h1><p class="tp-hl">${esc(t.headline)}</p>
+            <div class="tp-doms">${doms.map((d) => `<a class="chip" href="#/accompagnement?domaine=${esc(d)}">${DOM_ICONS[d] || ''}<span>${esc(domName(d))}</span></a>`).join('')}</div></div>
+          ${mainCta ? `<div class="tp-cta">${mainCta}</div>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="tp-cols">
+      <div class="stack" style="gap:16px;min-width:0">
+        <section class="panel tp-sec"><h2>À propos</h2><p class="tp-text">${esc(t.bio)}</p></section>
+        ${t.rates ? `<section class="panel tp-sec"><h2>Tarifs d'accompagnement</h2><p class="tp-text">${esc(t.rates)}</p></section>` : ''}
+      </div>
+      <aside class="stack" style="gap:16px;min-width:0">
+        ${t.visual_url ? `<figure class="panel tp-visual"><img src="${esc(t.visual_url)}" alt="Visuel de ${esc(t.full_name)}" width="480" height="480" loading="lazy"></figure>` : ''}
+        <section class="panel tp-sec"><h2>Contacter ${esc(fn)}</h2>${contactsHtml(t, id)}</section>
+        <p class="tp-safe">Vitako vérifie les profils des formateurs. L'accompagnement et son prix se décident directement entre vous et le formateur : mettez-vous d'accord sur le programme avant de payer.</p>
+      </aside>
+    </div>
+  </article>`;
+}
+
+// Menu Accompagnement : tous les formateurs visibles, filtre par domaine
+async function accompagnementPage() {
+  const dom = route().query.get('domaine') || 'all';
+  const list = await loadTrainers(true);
+  const count = {};
+  list.forEach((t) => (t.domains || []).forEach((d) => { count[d] = (count[d] || 0) + 1; }));
+  const shown = trainersFor(dom === 'all' ? null : dom);
+  const chip = (id, label, n) => `<a class="chip${dom === id ? ' on' : ''}" href="#/accompagnement${id === 'all' ? '' : '?domaine=' + id}"${dom === id ? ' aria-current="true"' : ''}>${DOM_ICONS[id] || ''}<span>${esc(label)}</span>${n ? ` <small>${n}</small>` : ''}</a>`;
+  const chips = list.length ? `<div class="filters"><div class="chips">${chip('all', 'Tous les domaines', list.length)}${DOMAINS_LIST.filter((d) => count[d.id] || d.id === dom).map((d) => chip(d.id, d.name, count[d.id] || 0)).join('')}</div></div>` : '';
+  const empty = !list.length ? 'Les premiers formateurs arrivent bientôt. Revenez dans quelques jours !'
+    : `Aucun formateur en ${esc(domName(dom))} pour le moment. <a href="#/accompagnement">Voir tous les formateurs</a>`;
+  return `${pageHead('Accompagnement', 'Un formateur pour vous accompagner', '<p class="muted" style="max-width:64ch">Des professionnels vérifiés par Vitako vous aident à progresser dans votre métier et à trouver vos premiers clients. Regardez leur profil, puis contactez celui qui vous correspond.</p>')}
+  ${chips}
+  ${shown.length ? `<div class="count">${shown.length} formateur${shown.length > 1 ? 's' : ''}</div><div class="tr-grid">${shown.map(trainerCard).join('')}</div>` : `<div class="panel"><p class="muted">${empty}</p></div>`}
+  ${isTrainer() ? '' : `<section class="panel tr-join"><div><b>Vous êtes formateur ou professionnel ?</b><p class="muted">Créez votre profil, accompagnez les étudiants de Vitako et faites connaître vos services.</p></div><a class="btn ghost" href="#/devenir-formateur">Devenir formateur</a></section>`}`;
+}
+
+// Administration : profil du formateur à côté de son paiement
+function adminTrainerBox(tr) {
+  const [c1, c2] = domColors((tr.domains || [])[0]);
+  const bio = String(tr.bio || '');
+  const contacts = [tr.whatsapp && `WhatsApp ${fmtPhone(tr.whatsapp)}`, tr.phone && `Tél. ${fmtPhone(tr.phone)}`, tr.contact_email].filter(Boolean);
+  const socials = SOCIALS.filter(([k]) => tr[k]).map(([k, l]) => `<a href="${esc(tr[k])}" target="_blank" rel="noopener nofollow">${l}</a>`).join(' · ');
+  return `<div class="pay-tr">
+    <div class="pay-tr-cv" style="--c1:${c1};--c2:${c2}">${tr.cover_url ? `<img src="${esc(tr.cover_url)}" alt="">` : ''}</div>
+    <div class="pay-tr-in">
+      <div class="pay-tr-h">${avatarHtml(tr, 'av-md')}<div><b>${esc(tr.headline || 'Métier non indiqué')}</b><small class="muted">${(tr.domains || []).map(domName).map(esc).join(' · ') || 'Aucun domaine'}</small></div>${trPill(tr)}</div>
+      ${!tr.avatar_url ? '<p class="notice warn">Pas de photo de profil.</p>' : ''}
+      <p class="pay-tr-bio">${bio ? esc(bio.length > 320 ? bio.slice(0, 318) + '…' : bio) : '<span class="muted">Pas de présentation.</span>'}</p>
+      <p class="pay-tr-ct"><b>Contacts :</b> ${contacts.length ? esc(contacts.join(' · ')) : '<span class="muted">aucun</span>'}${socials ? ` · ${socials}` : ''}</p>
+      ${tr.rates ? `<p class="pay-tr-ct"><b>Tarifs :</b> ${esc(tr.rates)}</p>` : ''}
+      <div class="pay-tr-foot">${tr.visual_url ? `<img class="pay-tr-vis" src="${esc(tr.visual_url)}" alt="Visuel carré">` : ''}<a class="btn ghost sm" href="#/formateur/${esc(tr.user_id)}" target="_blank" rel="noopener">Voir le profil complet</a></div>
+    </div></div>`;
+}
+const reasonSelect = (id, list, label) => `<select class="in sm" id="${id}" aria-label="${label}">${list.map((r) => `<option>${esc(r)}</option>`).join('')}</select>`;
+
+async function adminTrainersPage() {
+  if (!S.session) return needLogin('/admin/formateurs');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const [list, counts] = await Promise.all([api.adminTrainers(), api.adminCounts()]);
+  S.admin = counts; topbar();
+  const active = (t) => t.sub_end && new Date(t.sub_end) > new Date();
+  const n = (s) => list.filter((t) => t.status === s).length;
+  const visible = list.filter((t) => t.status === 'approved' && active(t)).length;
+  const fmtD = (d) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+  const item = (t) => {
+    const sub = active(t) ? `Abonné jusqu'au ${fmtDate(t.sub_end)}` : t.has_pending_payment ? 'Paiement en attente (onglet Paiements)' : t.sub_end ? `Abonnement terminé le ${fmtDate(t.sub_end)}` : 'Pas encore abonné';
+    let actions = `<a class="btn ghost sm" href="#/formateur/${esc(t.user_id)}">Voir le profil</a>`;
+    if (t.status === 'pending' || t.status === 'rejected') actions += `<button class="btn sm" data-act="tr-ok" data-user="${esc(t.user_id)}">Valider le profil</button>`;
+    if (t.status === 'pending' || t.status === 'approved') {
+      actions += `${reasonSelect('trk-' + t.user_id, TR_REASONS, 'Motif')}<button class="btn ghost sm" data-act="tr-ko" data-user="${esc(t.user_id)}">${t.status === 'approved' ? 'Masquer le profil' : 'Refuser'}</button>`;
+    }
+    return `<article class="fb-item adm-tr st-${t.status}">
+      <div class="adm-tr-h">${avatarHtml(t, 'av-md')}<div class="t"><b>${esc(t.full_name)}</b><small class="muted">${esc(t.email || '')}</small></div>${trPill(t)}</div>
+      <p><b>${esc(t.headline || 'Métier non indiqué')}</b>${(t.domains || []).length ? ` · <span class="muted">${(t.domains || []).map(domName).map(esc).join(', ')}</span>` : ''}</p>
+      <small class="muted">${esc(sub)}${t.updated_at ? ` · modifié le ${fmtD(t.updated_at)}` : ''}${t.status === 'rejected' && t.reason ? ` · motif : ${esc(t.reason)}` : ''}</small>
+      <div class="payact">${actions}</div>
+    </article>`;
+  };
+  return `${adminTabs('formateurs')}${pageHead('Administration', 'Formateurs', '<p class="muted">Un profil n\'est visible que s\'il est validé ET que l\'abonnement du formateur est actif. Le premier profil se valide en général avec le paiement, dans l\'onglet Paiements.</p>')}
+  <div class="kpis">
+    ${kpi('Formateurs inscrits', nf(list.length))}
+    ${kpi('Profils visibles', nf(visible), 'Validés et abonnés', 'good')}
+    ${kpi('En attente', nf(n('pending')), 'Profils complets à vérifier', n('pending') ? 'warn' : '')}
+    ${kpi('À compléter', nf(n('draft')), 'Profils pas encore remplis')}
+  </div>
+  ${list.length ? `<div class="fb-list" style="margin-top:18px">${list.map(item).join('')}</div>` : '<p class="muted" style="margin-top:18px">Aucun formateur inscrit pour l\'instant.</p>'}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1199,25 +1628,41 @@ async function adminPage() {
   if (!S.session) return needLogin('/admin');
   if (!S.profile) return loadingView();
   if (!isAdmin()) return notFound();
-  const [pending, done, counts] = await Promise.all([api.adminPayments('pending'), api.adminPayments('done'), api.adminCounts()]);
+  const [pending, done, counts, trainers] = await Promise.all([api.adminPayments('pending'), api.adminPayments('done'), api.adminCounts(), api.adminTrainers().catch(() => [])]);
   S.admin = counts;
+  const trOf = Object.fromEntries(trainers.map((t) => [t.user_id, t]));
+  const payReasons = ['Référence introuvable', 'Montant incorrect', 'Numéro d\'expéditeur différent', 'Référence déjà utilisée'];
+  const actions = (p) => {
+    const tr = p.profile?.role === 'trainer' ? trOf[p.user_id] : null;
+    if (!tr || tr.status === 'approved') {
+      return `<div class="payact">
+        <button class="btn sm" data-act="pay-ok" data-id="${p.id}">Valider : ${S.days} jours d'accès</button>
+        ${reasonSelect('r-' + p.id, payReasons, 'Motif du refus')}
+        <button class="btn ghost sm" data-act="pay-ko" data-id="${p.id}">Refuser</button></div>`;
+    }
+    return `${adminTrainerBox(tr)}
+      <div class="payrows">
+        <div class="payact"><button class="btn sm" data-act="pay-ok-tr" data-id="${p.id}" data-user="${esc(p.user_id)}"${tr.status === 'draft' ? ' disabled title="Profil incomplet"' : ''}>Valider le paiement et le profil</button>
+          <small class="muted">${tr.status === 'draft' ? 'Profil incomplet : validez seulement le paiement.' : `Accès de ${S.days} jours et profil visible par les étudiants.`}</small></div>
+        <div class="payact"><span class="payact-l">Accès aux cours, profil refusé :</span>${reasonSelect('tr-r-' + p.id, TR_REASONS, 'Motif du refus du profil')}
+          <button class="btn ghost sm" data-act="pay-ok-only" data-id="${p.id}" data-user="${esc(p.user_id)}">Valider le paiement seulement</button></div>
+        <div class="payact"><span class="payact-l">Paiement non reçu :</span>${reasonSelect('r-' + p.id, payReasons, 'Motif du refus du paiement')}
+          <button class="btn ghost sm" data-act="pay-ko" data-id="${p.id}">Refuser le paiement</button></div>
+      </div>`;
+  };
   topbar();
   const ops = CFG.operators.map((o) => `${esc(o.name)} ${esc(o.number)}`).join(' · ');
   return `${adminTabs('pay')}${pageHead('Administration', 'Paiements à valider', `<p class="muted">${counts.pending} en attente · ${counts.active} abonné${counts.active > 1 ? 's' : ''} actif${counts.active > 1 ? 's' : ''} · ${ops}</p>`)}
   <div style="margin-bottom:18px">${notice('warn', `Avant de valider, ouvrez votre application MVola ou Orange Money et vérifiez : la référence existe, le montant correspond au « Montant attendu » de la demande et, s'il est indiqué, le numéro de l'expéditeur correspond. Ne validez jamais à partir d'une capture d'écran.`)}</div>
   ${pending.length ? `<div class="paylist">${pending.map((p) => `<div class="panel">
-      <div class="payhead"><div><b>${esc(p.profile?.full_name || 'Étudiant')}</b><small class="muted">${esc(p.profile?.email || '')}</small></div><span class="pill grey">Reçu le ${fmtDT(p.created_at)}</span></div>
+      <div class="payhead"><div><b>${esc(p.profile?.full_name || 'Étudiant')}</b>${p.profile?.role === 'trainer' ? ' <span class="pill tr-tag">Formateur</span>' : ''}<small class="muted">${esc(p.profile?.email || '')}</small></div><span class="pill grey">Reçu le ${fmtDT(p.created_at)}</span></div>
       <dl class="paydl">
         <div><dt>Opérateur</dt><dd>${esc(opById(p.operator).name)} → ${esc(opById(p.operator).number)}</dd></div>
         <div><dt>Expéditeur</dt><dd class="${p.sender ? 'mono' : 'muted'}">${p.sender ? fmtTel(p.sender) : 'Non indiqué'}</dd></div>
         <div><dt>Référence</dt><dd class="mono">${esc(p.reference)}</dd></div>
         <div><dt>Montant attendu</dt><dd class="mono">${ar(p.amount)}</dd></div>
       </dl>
-      <div class="payact">
-        <button class="btn sm" data-act="pay-ok" data-id="${p.id}">Valider : ${S.days} jours d'accès</button>
-        <select class="in sm" id="r-${p.id}" aria-label="Motif du refus"><option>Référence introuvable</option><option>Montant incorrect</option><option>Numéro d'expéditeur différent</option><option>Référence déjà utilisée</option></select>
-        <button class="btn ghost sm" data-act="pay-ko" data-id="${p.id}">Refuser</button>
-      </div></div>`).join('')}</div>`
+      ${actions(p)}</div>`).join('')}</div>`
     : '<div class="panel"><p class="muted">Aucun paiement en attente. Les nouvelles références apparaîtront ici.</p></div>'}
   <h2 style="margin:30px 0 12px">Derniers paiements traités</h2>
   ${done.length ? `<div class="tbl"><table><thead><tr><th>Traité le</th><th>Étudiant</th><th>Opérateur</th><th>Référence</th><th>Résultat</th></tr></thead><tbody>
@@ -1228,6 +1673,7 @@ async function adminPage() {
 
 const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'pay' ? ' on' : ''}" href="#/admin"${on === 'pay' ? ' aria-current="page"' : ''}>Paiements${S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : ''}</a>
+  <a class="tab${on === 'formateurs' ? ' on' : ''}" href="#/admin/formateurs"${on === 'formateurs' ? ' aria-current="page"' : ''}>Formateurs${S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : ''}</a>
   <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
   <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a>
   <a class="tab${on === 'remarques' ? ' on' : ''}" href="#/admin/remarques"${on === 'remarques' ? ' aria-current="page"' : ''}>Remarques${S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : ''}</a></nav>`;
@@ -1394,6 +1840,11 @@ const ROUTES = [
   [/^\/admin\/stats$/, adminStatsPage],
   [/^\/admin\/avis$/, adminReviewsPage],
   [/^\/admin\/remarques$/, adminFeedbackPage],
+  [/^\/admin\/formateurs$/, adminTrainersPage],
+  [/^\/accompagnement$/, accompagnementPage],
+  [/^\/formateur\/([\w-]+)$/, trainerPage],
+  [/^\/espace-formateur$/, trainerSpacePage],
+  [/^\/devenir-formateur$/, becomeTrainerPage],
   [/^\/remarque$/, feedbackPage],
 ];
 let renderToken = 0;
@@ -1401,6 +1852,8 @@ async function render() {
   const token = ++renderToken;
   topbar();
   const { path } = route();
+  // Espace formateur : ce qui est tapé mais pas encore enregistré reste en place (envoi d'une image, notification…)
+  if (path === '/espace-formateur') { const tf = document.getElementById('trainer-form'); if (tf) S.trainerDraft = readTrainerForm(tf); } else S.trainerDraft = null;
   const hit = ROUTES.map(([re, fn]) => [path.match(re), fn]).find(([m]) => m);
   if (!hit) { app.innerHTML = notFound(); return; }
   const [m, fn] = hit;
@@ -1517,6 +1970,41 @@ document.addEventListener('click', async (e) => {
   if (a === 'toc') { document.getElementById(t.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
   if (a === 'av-remove') {
     try { await api.removeAvatar(uid()); S.profile.avatar_url = null; toast('Photo retirée.'); } catch (err) { toast(err.message); }
+    if (isTrainer()) S.trainer = await api.getMyTrainer(uid()).catch(() => S.trainer);
+    render(); return;
+  }
+  if (a === 'tr-img-remove') {
+    try { S.trainer = await api.removeTrainerImage(uid(), t.dataset.kind); toast('Image retirée.'); } catch (err) { toast(err.message); }
+    render(); return;
+  }
+  if (a === 'become-trainer') {
+    busy(t, true);
+    try {
+      await api.becomeTrainer();
+      S.profile.role = 'trainer';
+      S.trainer = await api.getMyTrainer(uid()).catch(() => null);
+      toast('Bienvenue dans votre Espace formateur !');
+      go('#/espace-formateur');
+    } catch (err) { showErr('berr', err.message); busy(t, false); }
+    return;
+  }
+  if (a === 'tr-ok' || a === 'tr-ko') {
+    busy(t, true);
+    try {
+      await api.adminDecideTrainer(t.dataset.user, a === 'tr-ok', a === 'tr-ko' ? document.getElementById('trk-' + t.dataset.user)?.value : null);
+      toast(a === 'tr-ok' ? 'Profil validé. Il est visible si l\'abonnement est actif.' : 'Profil masqué. Le formateur verra le motif.');
+      render();
+    } catch (err) { toast(err.message); busy(t, false); }
+    return;
+  }
+  if (a === 'pay-ok-tr' || a === 'pay-ok-only') {
+    busy(t, true);
+    try {
+      const p = await api.adminDecide(t.dataset.id, true);
+      if (a === 'pay-ok-tr') await api.adminDecideTrainer(t.dataset.user, true);
+      else await api.adminDecideTrainer(t.dataset.user, false, document.getElementById('tr-r-' + t.dataset.id)?.value);
+      toast(a === 'pay-ok-tr' ? `Paiement et profil validés. Accès jusqu'au ${fmtDate(p.access_until)}.` : `Accès activé jusqu'au ${fmtDate(p.access_until)}. Profil refusé : le formateur verra le motif.`);
+    } catch (err) { toast(err.message); }
     render(); return;
   }
   if (a === 'logout') { S.ui.menu = false; await api.signOut(); S.session = null; await loadUser(); go('#/'); toast('Vous êtes déconnecté.'); return; }
@@ -1591,13 +2079,15 @@ document.addEventListener('submit', async (e) => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('aerr', 'Saisissez une adresse e-mail valide, par exemple vous@exemple.mg.');
     if (signup && name.length < 2) return showErr('aerr', 'Indiquez votre nom complet : il figurera sur vos attestations.');
     if (pass.length < 8) return showErr('aerr', 'Le mot de passe doit contenir au moins 8 caractères.');
+    const role = signup && f.querySelector('input[name=a-role]:checked')?.value === 'trainer' ? 'trainer' : 'student';
     busy(btn, true);
     // Où aller une fois connecté (lu par onAuthChange, qui peut se déclencher pendant l'appel).
-    S.afterLogin = f.dataset.next || (signup ? '/' : '');
+    // Étudiant : page d'accueil. Formateur : son Espace formateur, pour remplir son profil.
+    S.afterLogin = f.dataset.next || (signup ? (role === 'trainer' ? '/espace-formateur' : '/') : '');
     try {
       let r;
       if (signup) {
-        r = await api.signUp(email, pass, name);
+        r = await api.signUp(email, pass, name, role);
         if (!r.session) {
           f.querySelectorAll('input,button').forEach((el) => { el.disabled = true; });
           const ok = document.getElementById('aok');
@@ -1614,7 +2104,7 @@ document.addEventListener('submit', async (e) => {
         S.session = r.session;
         await loadUser().catch((e2) => console.error(e2));
         toast('Connexion réussie.');
-        go('#' + (next || (isAdmin() ? '/admin' : '/mon-espace')));
+        go('#' + (next || homeAfterLogin()));
       }
     } catch (err) { S.afterLogin = null; showErr('aerr', err.message); busy(btn, false); }
     return;
@@ -1659,6 +2149,29 @@ document.addEventListener('submit', async (e) => {
     if (name.length < 2) { toast('Indiquez votre nom complet.'); return; }
     busy(btn, true);
     try { await api.updateName(uid(), name); S.profile.full_name = name; toast('Nom enregistré.'); render(); } catch (err) { toast(err.message); busy(btn, false); }
+    return;
+  }
+  if (f.id === 'trainer-form') {
+    const d = readTrainerForm(f);
+    const phoneOk = (v) => { const x = v.replace(/[^0-9+]/g, ''); return !x || /^\+?\d{8,15}$/.test(x); };
+    // @compte → lien complet pour Instagram et TikTok
+    if (/^@[\w.]{2,30}$/.test(d.instagram.trim())) d.instagram = 'https://instagram.com/' + d.instagram.trim().slice(1);
+    if (/^@[\w.]{2,30}$/.test(d.tiktok.trim())) d.tiktok = 'https://www.tiktok.com/' + d.tiktok.trim();
+    document.getElementById('terr').hidden = true;
+    if (!phoneOk(d.whatsapp)) return showErr('terr', 'Numéro WhatsApp invalide : 10 chiffres, par exemple 034 12 345 67.');
+    if (!phoneOk(d.phone)) return showErr('terr', 'Numéro de téléphone invalide : 10 chiffres, par exemple 034 12 345 67.');
+    if (d.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) return showErr('terr', 'L\'e-mail de contact ne semble pas valide.');
+    busy(btn, true, 'Enregistrement…');
+    try {
+      const before = trStatus(S.trainer);
+      S.trainer = await api.saveTrainer(d);
+      S.trainerDraft = null; f.id = '';
+      const st = trStatus(S.trainer);
+      toast(st === 'draft' ? `Profil enregistré. Il manque encore : ${trainerMissing(S.trainer).join(', ')}.`
+        : before !== st && st === 'pending' ? (hasAccess() || pendingPayment() ? 'Profil complet ! Vitako va le vérifier.' : 'Profil complet ! Vous pouvez maintenant payer l\'abonnement.')
+          : 'Profil enregistré.');
+      render(); window.scrollTo(0, 0);
+    } catch (err) { showErr('terr', err.message); busy(btn, false, 'Enregistrer mon profil'); }
     return;
   }
   if (f.id === 'verify-form') {
@@ -1723,7 +2236,7 @@ document.addEventListener('submit', async (e) => {
       S.exam = null;
       S.examResult = { ...r, courseId: E.courseId };
       const id = uid();
-      [S.certs, S.attempts] = await Promise.all([api.getCertificates(id), api.getAttempts(id)]);
+      [S.certs, S.attempts] = await Promise.all([api.getCertificates(id), api.getAttempts(id), r.passed ? loadTrainers().catch(() => null) : null]);
       render(); window.scrollTo(0, 0);
     } catch (err) { showErr('exerr', err.message); busy(btn, false, 'Valider l\'examen'); }
   }
@@ -1765,7 +2278,7 @@ render();
     await loadUser().catch((e) => console.error(e));
     if (event === 'SIGNED_IN') {
       const next = S.afterLogin; S.afterLogin = null;
-      if (next !== undefined && next !== null) { toast('Connexion réussie.'); go('#' + (next || (isAdmin() ? '/admin' : '/mon-espace'))); return; }
+      if (next !== undefined && next !== null) { toast('Connexion réussie.'); go('#' + (next || homeAfterLogin())); return; }
     }
     render();
   });
@@ -1784,9 +2297,29 @@ document.addEventListener('change', async (e) => {
       const blob = await cropToBlob(img, box.sx, box.sy, box.side);
       S.profile.avatar_url = await api.uploadAvatar(uid(), blob);
       toast(`Photo enregistrée (${Math.max(1, Math.round(blob.size / 1024))} Ko).`);
+      if (isTrainer()) S.trainer = await api.getMyTrainer(uid()).catch(() => S.trainer);
     } catch (err) { toast(err.message || "La photo n'a pas pu être envoyée."); }
     render();
     return;
   }
+  if (e.target.id === 'tr-cover-file' || e.target.id === 'tr-visual-file') {
+    const kind = e.target.dataset.kind, K = IMG_KINDS[kind];
+    const file = e.target.files?.[0]; e.target.value = '';
+    if (!file) return;
+    let img;
+    try { img = await loadImageFile(file); } catch (err) { toast(err.message); return; }
+    const box = await openCropper(img, K);
+    if (!box) return;
+    const pick = document.querySelector(`label[for="${e.target.id}"]`); if (pick) pick.textContent = 'Envoi…';
+    try {
+      const blob = await encodeCrop(img, box, K);
+      S.trainer = await api.uploadTrainerImage(uid(), kind, blob);
+      toast(`${kind === 'cover' ? 'Couverture enregistrée' : 'Visuel enregistré'} (${Math.max(1, Math.round(blob.size / 1024))} Ko).`);
+    } catch (err) { toast(err.message || "L'image n'a pas pu être envoyée."); }
+    render();
+    return;
+  }
+  if (e.target.name === 't-dom') { e.target.closest('.chip')?.classList.toggle('on', e.target.checked); return; }
+  if (e.target.name === 'a-role') { const n = document.getElementById('role-note'); if (n) n.hidden = e.target.value !== 'trainer'; return; }
   if (e.target.name === 'rv-rating') { const el = document.getElementById('rverr'); if (el) el.hidden = true; }
 });

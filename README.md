@@ -71,6 +71,26 @@ update public.settings set value = '30000' where key = 'price_ar';
 update public.settings set value = '30' where key = 'access_days';
 ```
 
+## Formateurs (accompagnement)
+
+Deux types de compte : **étudiant** et **formateur**. Le formateur paie le même abonnement et a accès à
+toutes les formations. Lien pour recruter des formateurs : `https://vitako.mg/#/devenir-formateur`.
+
+1. Le formateur s'inscrit (choix « Formateur(trice) ») et arrive sur son **Espace formateur**.
+   Un étudiant déjà inscrit peut aussi devenir formateur depuis Mon espace.
+2. Il remplit son profil : photo (obligatoire), métier, domaines, présentation, tarifs, contacts,
+   couverture en paysage (30 Ko au maximum) et visuel carré (10 Ko au maximum).
+   **Il ne peut pas payer tant que son profil n'est pas complet.**
+3. Dans **Administration > Paiements**, son profil s'affiche à côté de son paiement :
+   **Valider le paiement et le profil** (profil visible), **Valider le paiement seulement**
+   (accès aux cours, profil refusé avec un motif) ou **Refuser le paiement**.
+4. Un profil n'est visible que s'il est **validé ET que l'abonnement est actif**. Les contacts ne sont
+   montrés qu'aux personnes connectées. Un profil validé puis modifié reste visible ; un profil refusé
+   puis corrigé repart en validation (onglet **Formateurs**, où l'on peut aussi masquer un profil).
+
+Les formateurs visibles apparaissent dans le menu **Accompagnement**, sous chaque formation de leurs
+domaines et après un examen réussi (ordre tiré au hasard chaque jour).
+
 ## Ajouter ou modifier une formation
 
 Le contenu est dans `content/` :

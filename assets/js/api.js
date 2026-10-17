@@ -60,6 +60,15 @@ const MESSAGES = {
   'rate limit': 'Beaucoup d\'inscriptions en ce moment. Patientez quelques minutes puis réessayez.',
   'Too Many Requests': 'Beaucoup d\'inscriptions en ce moment. Patientez quelques minutes puis réessayez.',
   'Password should be at least 6 characters':'Le mot de passe doit contenir au moins 8 caractères.',
+  trainer_profile_incomplete: 'Remplissez d\'abord votre profil formateur (photo, métier, bio, domaines et un moyen de contact), puis enregistrez-le.',
+  not_trainer: 'Cette action est réservée aux formateurs.',
+  bad_domain: 'Choisissez vos domaines dans la liste.',
+  bad_phone: 'Numéro de téléphone invalide : 10 chiffres, par exemple 034 12 345 67.',
+  bad_link: 'Un lien n\'est pas valide. Copiez l\'adresse complète, par exemple https://facebook.com/votre.page.',
+  bad_image: 'Cette image n\'a pas pu être enregistrée. Réessayez.',
+  headline_too_long: 'Le métier affiché est trop long : 80 caractères au maximum.',
+  bio_too_long: 'La présentation est trop longue : 1 500 caractères au maximum.',
+  rates_too_long: 'Les tarifs sont trop longs : 600 caractères au maximum.',
 };
 
 export class ApiError extends Error {
@@ -96,9 +105,10 @@ export function onAuthChange(cb) {
 }
 const homeUrl = () => location.origin + location.pathname;
 
-export async function signUp(email, password, fullName) {
+export async function signUp(email, password, fullName, role = 'student') {
   need();
-  return run(withTimeout(sb.auth.signUp({ email, password, options: { data: { full_name: fullName }, emailRedirectTo: homeUrl() } })));
+  const data = role === 'trainer' ? { full_name: fullName, role: 'trainer' } : { full_name: fullName };
+  return run(withTimeout(sb.auth.signUp({ email, password, options: { data, emailRedirectTo: homeUrl() } })));
 }
 export async function signIn(email, password) {
   need();
@@ -119,7 +129,7 @@ export async function updatePassword(password) {
 // --- Profil, progression, attestations --------------------------------
 export async function getProfile(uid) {
   need();
-  return run(sb.from('profiles').select('id, full_name, email, is_admin, sub_end, avatar_url').eq('id', uid).maybeSingle());
+  return run(sb.from('profiles').select('*').eq('id', uid).maybeSingle());
 }
 // Photo de profil : fichier déjà compressé par le navigateur, rangé dans avatars/<uid>/.
 export async function uploadAvatar(uid, blob) {
@@ -138,6 +148,57 @@ export async function removeAvatar(uid) {
   await sb.storage.from('avatars').remove([`${uid}/avatar.webp`, `${uid}/avatar.jpg`]).catch(() => null);
   await run(sb.from('profiles').update({ avatar_url: null }).eq('id', uid));
 }
+// --- Formateurs -----------------------------------------------------------
+export async function becomeTrainer() {
+  need();
+  return run(sb.rpc('become_trainer'));
+}
+export async function getMyTrainer(uid) {
+  need();
+  return run(sb.from('trainer_profiles').select('*').eq('user_id', uid).maybeSingle());
+}
+export async function saveTrainer(fields) {
+  need();
+  return run(sb.rpc('save_trainer_profile', { p: fields }));
+}
+// Couverture (compartiment covers, 30 Ko) ou visuel carré (compartiment avatars, 10 Ko), déjà compressés.
+export async function uploadTrainerImage(uid, kind, blob) {
+  need();
+  const ext = blob.type === 'image/webp' ? 'webp' : 'jpg';
+  const bucket = kind === 'cover' ? 'covers' : 'avatars';
+  const path = `${uid}/${kind === 'cover' ? 'cover' : 'visuel'}.${ext}`;
+  const up = await sb.storage.from(bucket).upload(path, blob, { upsert: true, contentType: blob.type, cacheControl: '3600' });
+  if (up.error) throw new ApiError(up.error);
+  const other = `${uid}/${kind === 'cover' ? 'cover' : 'visuel'}.${ext === 'webp' ? 'jpg' : 'webp'}`;
+  sb.storage.from(bucket).remove([other]).catch(() => null);
+  const pub = sb.storage.from(bucket).getPublicUrl(path).data.publicUrl;
+  const url = /^https?:/.test(pub) ? pub + '?v=' + Date.now() : pub;
+  return run(sb.rpc('set_trainer_image', { p_kind: kind, p_url: url }));
+}
+export async function removeTrainerImage(uid, kind) {
+  need();
+  const bucket = kind === 'cover' ? 'covers' : 'avatars';
+  const name = kind === 'cover' ? 'cover' : 'visuel';
+  await sb.storage.from(bucket).remove([`${uid}/${name}.webp`, `${uid}/${name}.jpg`]).catch(() => null);
+  return run(sb.rpc('set_trainer_image', { p_kind: kind, p_url: null }));
+}
+export async function getTrainer(id) {
+  if (!sb) return null;
+  return run(sb.rpc('get_trainer', { p_id: id }));
+}
+export async function listTrainers() {
+  if (!sb) return [];
+  return (await run(sb.rpc('list_trainers'))) || [];
+}
+export async function adminTrainers() {
+  need();
+  return run(sb.rpc('admin_trainers'));
+}
+export async function adminDecideTrainer(userId, approve, reason) {
+  need();
+  return run(sb.rpc('admin_decide_trainer', { p_user: userId, p_approve: approve, p_reason: reason || null }));
+}
+
 export async function updateName(uid, fullName) {
   need();
   return run(sb.from('profiles').update({ full_name: fullName }).eq('id', uid));
@@ -205,7 +266,7 @@ export async function getMyPayments(uid) {
 // --- Administration -----------------------------------------------------
 export async function adminPayments(status) {
   need();
-  let q = sb.from('payments').select('*, profile:profiles!payments_user_id_fkey(full_name, email)');
+  let q = sb.from('payments').select('*, profile:profiles!payments_user_id_fkey(*)');
   q = status === 'pending'
     ? q.eq('status', 'pending').order('created_at', { ascending: true })
     : q.neq('status', 'pending').order('decided_at', { ascending: false }).limit(50);
@@ -251,6 +312,6 @@ export async function adminCounts() {
   ]);
   if (pending.error) throw new ApiError(pending.error);
   if (active.error) throw new ApiError(active.error);
-  const fb = await sb.rpc('admin_feedback_new_count');
-  return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0) };
+  const [fb, tr] = await Promise.all([sb.rpc('admin_feedback_new_count'), sb.rpc('admin_trainer_todo')]);
+  return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0), trainers: tr.error ? 0 : (tr.data || 0) };
 }
