@@ -1,0 +1,602 @@
+[
+ {
+  "q": "Comment une IA apprend-elle à reconnaître des objets ?",
+  "options": [
+   "À partir de milliers d'exemples annotés par des humains",
+   "En lisant un dictionnaire",
+   "Sans aucun exemple",
+   "En copiant une autre IA sans données"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'une donnée annotée ?",
+  "options": [
+   "Une donnée à laquelle un humain a ajouté une information (étiquette, cadre, transcription)",
+   "Une donnée effacée",
+   "Un fichier compressé",
+   "Un mot de passe"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que se passe-t-il quand les annotations contiennent une erreur répétée ?",
+  "options": [
+   "L'IA apprend l'erreur et la reproduit",
+   "L'IA la corrige seule",
+   "Rien",
+   "L'IA refuse les données"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quels types de tâches sont les plus accessibles pour commencer ?",
+  "options": [
+   "Classification, cadres et annotation de texte",
+   "Segmentation médicale et vidéo 3D",
+   "Évaluation d'IA spécialisée",
+   "Programmation"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que veut dire « bounding box » ?",
+  "options": [
+   "Cadre de délimitation",
+   "Consignes",
+   "Contrôleur qualité",
+   "Lot de tâches"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle source offre souvent un revenu plus stable et une formation ?",
+  "options": [
+   "Une entreprise d'annotation ou d'externalisation",
+   "Une offre reçue uniquement par WhatsApp",
+   "L'achat d'un compte",
+   "Un groupe qui demande un dépôt"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle durée de bloc de travail est conseillée ?",
+  "options": [
+   "45 à 50 minutes, puis une pause",
+   "3 heures sans pause",
+   "5 minutes",
+   "Toute la nuit"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire des données d'un projet ?",
+  "options": [
+   "Les garder confidentielles : ni capture, ni partage",
+   "Les publier sur ses réseaux",
+   "Les envoyer à des amis",
+   "Les vendre"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi la triche est-elle presque toujours détectée ?",
+  "options": [
+   "Questions de contrôle, comparaison, temps par tâche et relecture",
+   "Elle ne l'est jamais",
+   "Par la police",
+   "Par la couleur des cadres"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel est le premier achat à faire pour annoter des images ?",
+  "options": [
+   "Une souris",
+   "Un logiciel payant",
+   "Un accès à une plateforme",
+   "Un second téléphone"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle est la première étape pour lire des consignes ?",
+  "options": [
+   "Tout lire une fois sans rien annoter",
+   "Commencer à annoter",
+   "Lire seulement les étiquettes",
+   "Demander la réponse à un autre annotateur"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que signifie « must » dans une consigne en anglais ?",
+  "options": [
+   "C'est obligatoire",
+   "C'est un conseil facultatif",
+   "C'est un exemple",
+   "C'est interdit"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'un cadre serré ?",
+  "options": [
+   "Ses bords touchent les bords de l'objet",
+   "Il laisse une large marge",
+   "Il coupe une partie de l'objet",
+   "Il entoure plusieurs objets"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Un objet est à moitié caché, sans consigne particulière. Que faire ?",
+  "options": [
+   "Encadrer la partie visible",
+   "Imaginer et encadrer l'objet entier",
+   "Ne pas l'annoter",
+   "Encadrer l'objet qui le cache"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle est l'erreur la plus fréquente sur les cadres ?",
+  "options": [
+   "L'objet oublié",
+   "Le zoom trop fort",
+   "Le nom du fichier",
+   "La couleur"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Où placer beaucoup de points sur un polygone ?",
+  "options": [
+   "Dans les courbes",
+   "Sur les lignes droites",
+   "Au centre de l'objet",
+   "Nulle part"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pour les points clés, la main gauche d'une personne vue de face est…",
+  "options": [
+   "À droite sur l'image",
+   "À gauche sur l'image",
+   "Toujours cachée",
+   "Au centre"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire face à un cas limite ?",
+  "options": [
+   "Relire, chercher, signaler, demander, noter",
+   "Deviner pour aller plus vite",
+   "Choisir toujours « Autre »",
+   "Supprimer la tâche"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "188 bonnes réponses sur 200 donnent quelle précision ?",
+  "options": [
+   "94 %",
+   "88 %",
+   "98 %",
+   "12 %"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi un cadre trop large peut-il être compté comme une erreur ?",
+  "options": [
+   "Il fait chuter l'IoU sous le seuil du projet",
+   "Il est mal coloré",
+   "Il est trop rapide",
+   "Il ne l'est jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel outil libre est fait d'abord pour les images et les vidéos ?",
+  "options": [
+   "CVAT",
+   "Un traitement de texte",
+   "Google Sheets",
+   "Une messagerie"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans CVAT, que fait le raccourci F ?",
+  "options": [
+   "Passer à l'image suivante",
+   "Supprimer une forme",
+   "Enregistrer",
+   "Dessiner une forme"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle différence entre Shape et Track dans CVAT ?",
+  "options": [
+   "Shape dessine sur une image, Track suit un objet dans une vidéo",
+   "Aucune",
+   "Track exporte le projet",
+   "Shape supprime les objets"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'une image clé dans une vidéo ?",
+  "options": [
+   "Une image où vous avez placé ou corrigé le cadre vous-même",
+   "La première image du projet",
+   "Une image floue",
+   "Une image exportée"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel modèle Label Studio choisir pour marquer des personnes et des lieux dans un texte ?",
+  "options": [
+   "Named Entity Recognition",
+   "Text Classification",
+   "Object Detection",
+   "Audio Transcription"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment marquer « Banque centrale de Madagascar » ?",
+  "options": [
+   "Le groupe de mots entier, sans espace en trop",
+   "Seulement « Banque »",
+   "Chaque mot séparément",
+   "Ne pas le marquer"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment le format YOLO décrit-il un cadre ?",
+  "options": [
+   "Étiquette, centre x, centre y, largeur, hauteur, entre 0 et 1",
+   "Coin, largeur, hauteur en pixels",
+   "Quatre coins en centimètres",
+   "Seulement l'étiquette"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire après un export ?",
+  "options": [
+   "Ouvrir le fichier et vérifier images, objets et étiquettes",
+   "L'envoyer sans regarder",
+   "Le supprimer",
+   "Le renommer seulement"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "D'où vient surtout la vitesse d'un annotateur expérimenté ?",
+  "options": [
+   "Moins d'hésitations et moins de corrections",
+   "Cliquer au hasard",
+   "Ignorer les petits objets",
+   "Sauter la relecture"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire quand la précision baisse ?",
+  "options": [
+   "Ralentir avant de chercher à accélérer",
+   "Accélérer",
+   "Changer d'outil",
+   "Arrêter les pauses"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que cherche-t-on quand on classe l'intention d'un message ?",
+  "options": [
+   "Ce que la personne veut obtenir",
+   "Ce qu'elle ressent",
+   "De quel produit elle parle",
+   "Sa langue"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment classer « Super, encore une panne. Bravo. » en sentiment ?",
+  "options": [
+   "Négatif",
+   "Positif",
+   "Neutre",
+   "Remerciement"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que garde une transcription fidèle (verbatim) ?",
+  "options": [
+   "Tout : hésitations, répétitions, mots coupés",
+   "Seulement les phrases correctes",
+   "Un résumé",
+   "Les mots-clés"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire d'un passage audio incompréhensible ?",
+  "options": [
+   "Mettre la balise [inaudible]",
+   "Inventer le mot probable",
+   "Supprimer la phrase",
+   "Laisser un blanc sans balise"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel critère passe en premier pour évaluer une réponse d'IA ?",
+  "options": [
+   "L'exactitude des faits",
+   "La longueur",
+   "Le nombre de titres",
+   "La politesse"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que doit contenir une justification d'évaluation solide ?",
+  "options": [
+   "Le critère, l'endroit précis et la raison",
+   "« Bonne réponse »",
+   "Un avis général sur l'IA",
+   "Rien"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "La réponse la plus longue est-elle la meilleure ?",
+  "options": [
+   "Non, seulement si elle est plus exacte, plus utile ou mieux adaptée",
+   "Oui, toujours",
+   "Oui, si elle a des listes",
+   "Non, la plus courte gagne toujours"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Peut-on utiliser un assistant d'IA pour écrire ses réponses modèles ?",
+  "options": [
+   "Non, c'est souvent interdit et détecté",
+   "Oui, c'est conseillé",
+   "Oui, si on ne le dit pas",
+   "Oui, en malagasy"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment anonymiser un numéro de téléphone dans un message ?",
+  "options": [
+   "Le remplacer par la balise du projet, par exemple [TÉLÉPHONE]",
+   "Supprimer tout le message",
+   "Le laisser",
+   "Changer deux chiffres"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "« Ce produit est nul, je suis furieux » : quelle catégorie de toxicité ?",
+  "options": [
+   "Non toxique (critique d'un produit)",
+   "Menace",
+   "Haine",
+   "Arnaque"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelles sont les 5 phases d'un projet d'annotation ?",
+  "options": [
+   "Consignes, calibration, production, contrôle qualité, livraison",
+   "Inscription, paiement, retrait, repos, bilan",
+   "Production, livraison, calibration, consignes, contrôle",
+   "Il n'y a pas de phases"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans « Marché propre », un sac plastique tenu par un client est-il un déchet ?",
+  "options": [
+   "Non, il est encore utilisé",
+   "Oui, toujours",
+   "Oui, s'il est vide",
+   "Seulement s'il est bleu"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand poser ses questions sur les consignes ?",
+  "options": [
+   "Avant la production, regroupées, avec une proposition",
+   "Une par une pendant tout le projet",
+   "Jamais",
+   "Après la livraison"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi sert la calibration ?",
+  "options": [
+   "Aligner vos décisions sur celles du client avant la production",
+   "Calculer le prix",
+   "Tester la connexion",
+   "Remplacer le contrôle qualité"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Faut-il aller vite pendant la calibration ?",
+  "options": [
+   "Non, la vitesse ne compte pas encore",
+   "Oui, c'est ce qui est mesuré",
+   "Oui, pour finir avant les autres",
+   "Seulement au début"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien de marge garder avant la livraison ?",
+  "options": [
+   "Environ 2 jours",
+   "Aucune",
+   "Une heure",
+   "Un mois"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment choisir les tâches à contrôler ?",
+  "options": [
+   "Au hasard, environ 10 %, du début à la fin du lot",
+   "Les meilleures",
+   "Les 10 premières",
+   "Celles qu'on préfère"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire d'une erreur qui revient dans l'échantillon contrôlé ?",
+  "options": [
+   "La corriger dans tout le lot",
+   "La corriger dans l'échantillon seulement",
+   "L'ignorer",
+   "La cacher"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelles sont les 5 parties du rapport de projet ?",
+  "options": [
+   "Volume, temps, qualité, cas limites, propositions",
+   "Histoire, difficultés, excuses, remerciements, conclusion",
+   "Prix, facture, paiement, retrait, bilan",
+   "Une seule partie libre"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faut-il pour mettre des images d'un projet dans son portfolio ?",
+  "options": [
+   "Qu'elles soient autorisées, sans personnes reconnaissables",
+   "Rien",
+   "Les avoir téléchargées",
+   "Qu'elles soient en haute définition"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Une offre demande des « frais d'activation » par MVola. Que faire ?",
+  "options": [
+   "La refuser : c'est une arnaque",
+   "Payer pour essayer",
+   "Payer la moitié",
+   "Demander un reçu"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Peut-on louer ou acheter le compte d'un autre annotateur ?",
+  "options": [
+   "Non, c'est interdit et on risque de ne jamais être payé",
+   "Oui, en partageant les gains",
+   "Oui, pour aller plus vite",
+   "Oui, dans sa famille"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que vérifier avant de passer les tests d'une plateforme ?",
+  "options": [
+   "Qu'elle accepte les personnes résidant à Madagascar",
+   "Le nombre de ses abonnés",
+   "La couleur du site",
+   "Rien"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle présentation de CV est la plus convaincante ?",
+  "options": [
+   "« 200 images annotées avec 95 % de précision au contrôle »",
+   "« Je suis sérieux et motivé »",
+   "« Je connais l'IA »",
+   "« Disponible »"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que mesure surtout un test de qualification ?",
+  "options": [
+   "La précision",
+   "La vitesse de frappe",
+   "Le niveau en mathématiques",
+   "La connexion"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire après un échec à un test ?",
+  "options": [
+   "Comprendre les erreurs, s'entraîner et repasser si possible",
+   "Acheter les réponses",
+   "Créer un autre compte",
+   "Abandonner"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment calcule-t-on le revenu réel à l'heure ?",
+  "options": [
+   "Revenu total ÷ (heures de production + heures non payées)",
+   "Prix d'une tâche × 24",
+   "Revenu total ÷ heures de production seulement",
+   "Le prix affiché"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "40 tâches par heure à 150 Ar, avec 1 heure non payée pour 10 heures de production : revenu réel ?",
+  "options": [
+   "Environ 5 450 Ar de l'heure",
+   "6 000 Ar de l'heure",
+   "1 500 Ar de l'heure",
+   "60 000 Ar de l'heure"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand vérifier les moyens de paiement d'une plateforme ?",
+  "options": [
+   "Avant de travailler",
+   "Après un mois",
+   "Jamais",
+   "Seulement en cas de problème"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle évolution demande un excellent niveau de langue écrite ?",
+  "options": [
+   "Évaluateur de réponses d'IA",
+   "Annotateur de cadres simples",
+   "Aucune",
+   "Technicien réseau"
+  ],
+  "correct": 0
+ }
+]

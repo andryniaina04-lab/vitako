@@ -1,0 +1,61 @@
+{
+  "title": "Premier projet : « Marché propre »",
+  "summary": "Un projet d'annotation complet pour une entreprise fictive qui repère les déchets sur les marchés : brief et consignes, calibration, production organisée, contrôle qualité sur un échantillon, livraison, rapport d'une page et étude de cas pour le portfolio.",
+  "lessons": [
+    {
+      "title": "Le brief et les consignes du projet",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Quelles sont les 5 phases d'un projet d'annotation ?", "options": ["Consignes, calibration, production, contrôle qualité, livraison", "Inscription, paiement, production, retrait, vacances", "Production, livraison, consignes, calibration, contrôle", "Il n'y a pas de phases"], "correct": 0, "why": "On les retrouve dans presque tous les projets, en entreprise comme sur les plateformes." },
+        { "q": "Selon les consignes, un sac plastique tenu par un client est-il un déchet ?", "options": ["Non, il est encore utilisé", "Oui, toujours", "Oui, s'il est vide", "Seulement s'il est de couleur"], "correct": 0, "why": "Règle 3 : les sacs encore utilisés ne sont pas des déchets." },
+        { "q": "Un message signale un tas de déchets et demande les horaires de ramassage. Quelle catégorie ?", "options": ["Signalement", "Question", "Remerciement", "Hors sujet"], "correct": 0, "why": "Règle 8 : signalement et question → signalement." },
+        { "q": "Quand poser ses questions au client ?", "options": ["Avant la production, regroupées et avec une proposition", "Une par une pendant trois semaines", "Jamais", "Après la livraison"], "correct": 0, "why": "Une question posée avant évite de reprendre des dizaines d'images." },
+        { "q": "Que faire en attendant la réponse du client sur un point flou ?", "options": ["Travailler sur les tâches non concernées, par exemple les messages", "Annoter au hasard les images concernées", "Arrêter le projet", "Décider seul et ne plus en parler"], "correct": 0, "why": "On évite ainsi de devoir tout reprendre si la réponse est inattendue." }
+      ]
+    },
+    {
+      "title": "La calibration",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "À quoi sert la calibration ?", "options": ["Aligner vos décisions sur celles du client avant la production", "Mesurer la vitesse de connexion", "Calculer le prix du projet", "Remplacer le contrôle qualité"], "correct": 0, "why": "Elle révèle aussi les points flous des consignes et fixe votre précision de départ." },
+        { "q": "Faut-il aller vite pendant la calibration ?", "options": ["Non, la vitesse ne compte pas encore", "Oui, c'est ce qui est mesuré", "Oui, pour finir avant les autres", "Seulement à la fin"], "correct": 0, "why": "Le client juge la compréhension des consignes, pas la productivité." },
+        { "q": "160 cadres corrects sur 168 attendus donnent environ quelle précision ?", "options": ["95,2 %", "84 %", "99 %", "91 %"], "correct": 0, "why": "160 ÷ 168 × 100 ≈ 95,2 %." },
+        { "q": "Que faire de chaque retour de calibration ?", "options": ["L'écrire comme une règle sur la fiche mémo, avec un exemple", "L'oublier", "Le contester", "Le garder en mémoire sans l'écrire"], "correct": 0, "why": "Ce qui compte est de ne plus refaire ces erreurs." },
+        { "q": "Un responsable donne un retour par message vocal. Que faire ?", "options": ["Écrire la règle dans la fiche et la confirmer par écrit", "Ne rien noter", "Répondre aussi par vocal sans rien écrire", "Ignorer le message"], "correct": 0, "why": "Une trace écrite évite les doutes plus tard." }
+      ]
+    },
+    {
+      "title": "La production organisée",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Comment organiser 200 photos ?", "options": ["En sessions régulières, par exemple 8 sessions de 25 photos", "Toutes en une seule journée", "Au hasard, quand on a le temps", "La veille de la livraison"], "correct": 0, "why": "Les sessions régulières gardent la qualité et permettent de suivre le rythme." },
+        { "q": "Combien de marge garder avant la date de livraison ?", "options": ["Environ 2 jours", "Aucune", "Une heure", "Un mois"], "correct": 0, "why": "Elle sert au contrôle, aux corrections et aux imprévus." },
+        { "q": "Que faire au début de chaque session ?", "options": ["Relire la fiche mémo, surtout les règles ajoutées", "Supprimer le journal", "Changer les étiquettes", "Commencer sans rien relire"], "correct": 0, "why": "Les règles ajoutées après la calibration sont les plus faciles à oublier." },
+        { "q": "Le délai est menacé par une longue coupure. Que faire ?", "options": ["Prévenir le client dès que possible avec une nouvelle date réaliste", "Attendre le jour de la livraison pour le dire", "Bâcler la fin", "Ne rien dire"], "correct": 0, "why": "Un client prévenu à temps s'organise ; un client prévenu trop tard perd confiance." },
+        { "q": "Comment rattraper un retard ?", "options": ["Par la planification, pas en accélérant sans pause", "En annotant 100 photos d'un coup", "En sautant les petits objets", "En supprimant le contrôle"], "correct": 0, "why": "Les dernières photos faites à la hâte ont beaucoup plus d'erreurs." }
+      ]
+    },
+    {
+      "title": "Le contrôle qualité",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "Comment choisir les tâches à contrôler ?", "options": ["Au hasard, environ 10 %, du début à la fin du lot", "Les meilleures uniquement", "Les 10 premières", "Celles qu'on préfère"], "correct": 0, "why": "Le hasard donne une image honnête de tout le lot, fin comprise." },
+        { "q": "8 erreurs sur 160 cadres contrôlés donnent quelle précision ?", "options": ["95 %", "92 %", "98 %", "80 %"], "correct": 0, "why": "(160 − 8) ÷ 160 × 100 = 95 %." },
+        { "q": "Que faire d'une erreur qui revient dans l'échantillon ?", "options": ["La corriger dans tout le lot", "La corriger seulement dans l'échantillon", "L'ignorer", "La signaler au client sans corriger"], "correct": 0, "why": "Une erreur répétée dans l'échantillon est sûrement présente partout." },
+        { "q": "Quand faire son contrôle qualité ?", "options": ["Le lendemain, reposé, ou par une autre personne", "Juste après la dernière session, fatigué", "Jamais", "Pendant l'annotation"], "correct": 0, "why": "Les yeux fatigués qui ont fait les erreurs ne les voient pas." },
+        { "q": "Qu'est-ce qui ouvre le rôle de contrôleur qualité ?", "options": ["Une précision régulièrement élevée et des retours clairs", "Le plus grand nombre de tâches, sans contrôle", "L'ancienneté seulement", "L'achat d'un accès"], "correct": 0, "why": "Les contrôleurs sont choisis parmi les annotateurs les plus rigoureux." }
+      ]
+    },
+    {
+      "title": "La livraison, le rapport et l'étude de cas",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Que vérifier avant d'envoyer les fichiers ?", "options": ["Les exports ouverts, les nombres, les noms de fichiers, aucune donnée personnelle", "Seulement le nom du dossier", "Rien, l'outil fait tout", "La couleur des cadres"], "correct": 0, "why": "Un export incomplet ou une donnée personnelle oubliée fait perdre la confiance." },
+        { "q": "Quelles sont les 5 parties du rapport ?", "options": ["Volume, temps, qualité, cas limites, propositions", "Introduction, histoire, difficultés, excuses, conclusion", "Prix, facture, paiement, retrait, remerciements", "Une seule partie libre"], "correct": 0, "why": "Une page, cinq parties, des chiffres." },
+        { "q": "9 h 40 pour 200 photos donnent quel temps moyen par photo ?", "options": ["Environ 2 min 54 s", "4 min 50 s", "1 min 20 s", "29 s"], "correct": 0, "why": "580 minutes ÷ 200 = 2,9 minutes, soit 2 min 54 s." },
+        { "q": "Pourquoi proposer des améliorations des consignes ?", "options": ["Le rapport aide le client et prépare le lot suivant", "Pour critiquer le client", "Pour rallonger le rapport", "Ce n'est pas utile"], "correct": 0, "why": "Le rapport du premier lot est votre meilleure candidature pour le suivant." },
+        { "q": "Quelles images mettre dans l'étude de cas ?", "options": ["2 ou 3 captures autorisées, sans personnes reconnaissables", "Toutes les photos du client", "Des photos de personnes sans leur accord", "Aucune image n'est utile"], "correct": 0, "why": "Le portfolio doit respecter la confidentialité et l'accord des personnes." }
+      ]
+    }
+  ]
+}

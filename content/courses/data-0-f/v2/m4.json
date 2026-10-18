@@ -1,0 +1,61 @@
+{
+  "title": "Texte, audio et évaluation des réponses d'IA",
+  "summary": "Les tâches de langue, rares et souvent mieux payées : classer des messages en sentiment, intention et sujet, transcrire des enregistrements avec des balises, évaluer et comparer des réponses d'IA, rédiger des questions et des réponses modèles, anonymiser des données personnelles et classer des contenus toxiques.",
+  "lessons": [
+    {
+      "title": "Classer des textes : sentiment, intention et sujet",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "« J'ai payé par MVola hier mais je n'ai pas de confirmation, vous pouvez vérifier ? » : quelle intention ?", "options": ["Question", "Remerciement", "Commande", "Hors sujet"], "correct": 0, "why": "La personne demande une vérification ; le sujet est le paiement." },
+        { "q": "Comment classer « Super, encore une panne. Bravo. » en sentiment ?", "options": ["Négatif", "Positif", "Neutre", "Remerciement"], "correct": 0, "why": "L'ironie : les mots sont positifs, le sens est négatif." },
+        { "q": "Que faut-il quand une seule étiquette est permise et que deux conviennent ?", "options": ["Appliquer la règle de priorité de la consigne, ou signaler", "Choisir au hasard", "Mettre les deux", "Ne rien mettre"], "correct": 0, "why": "Sans règle de priorité, c'est un cas limite." },
+        { "q": "Comment classer un message qui mélange malagasy et français ?", "options": ["Selon son sens, avec les mêmes définitions", "Toujours « autre »", "Le supprimer", "Seulement la partie en français"], "correct": 0, "why": "La langue ne change pas les définitions ; on signale seulement les mots incompréhensibles." },
+        { "q": "« Merci de bien vouloir me rembourser » : quelle intention ?", "options": ["Une demande (plainte ou demande de remboursement)", "Un remerciement", "Une commande", "Un message neutre sans intention"], "correct": 0, "why": "La formule de politesse ne fait pas un remerciement." }
+      ]
+    },
+    {
+      "title": "La transcription audio",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Que garde une transcription fidèle (verbatim) ?", "options": ["Tout : hésitations, répétitions, mots coupés", "Seulement les phrases correctes", "Un résumé", "Les mots-clés"], "correct": 0, "why": "Elle sert à entraîner la reconnaissance vocale sur la parole réelle." },
+        { "q": "Que faire d'un passage qu'on n'entend pas ?", "options": ["Mettre la balise [inaudible]", "Inventer le mot le plus probable", "Supprimer toute la phrase", "Écrire « ... » sans explication"], "correct": 0, "why": "Un mot inventé apprend à l'IA un son faux." },
+        { "q": "Quand change-t-on de ligne dans une transcription ?", "options": ["À chaque changement de locuteur", "Toutes les 10 secondes", "Jamais", "À chaque mot"], "correct": 0, "why": "Chaque passage reçoit son étiquette de locuteur." },
+        { "q": "La personne dit « colis » dans une phrase en malagasy. Que transcrire ?", "options": ["« colis », le mot prononcé", "« entana », plus malagasy", "Rien", "[inaudible]"], "correct": 0, "why": "On écrit ce qui est dit, pas ce qu'on aurait dit à sa place." },
+        { "q": "Quelle est la première étape de la méthode ?", "options": ["Tout écouter une fois sans écrire", "Écrire tout d'un seul coup", "Ajouter les balises", "Relire la transcription"], "correct": 0, "why": "On repère le sujet et les voix avant de transcrire par morceaux." }
+      ]
+    },
+    {
+      "title": "Évaluer une réponse d'IA",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "Quel critère passe en premier dans la plupart des grilles ?", "options": ["L'exactitude des faits", "La longueur", "Le nombre de titres", "La politesse"], "correct": 0, "why": "Une réponse bien écrite mais fausse sera crue par la personne." },
+        { "q": "On demande 3 idées et la réponse en donne 10. Quel critère est en défaut ?", "options": ["Le respect de la demande", "La sécurité", "La langue", "Aucun"], "correct": 0, "why": "La réponse doit faire ce qui est demandé, dans le format demandé." },
+        { "q": "Comment vérifier un fait dans une réponse ?", "options": ["Chercher une source fiable et comparer", "Se fier à sa mémoire", "Faire confiance à l'IA", "Demander à un ami sur WhatsApp"], "correct": 0, "why": "Un souvenir n'est pas une preuve ; on refait aussi les calculs." },
+        { "q": "Que doit contenir une justification solide ?", "options": ["Le critère, l'endroit précis et la raison", "« Bonne réponse »", "Un avis sur l'IA en général", "Une note sans explication"], "correct": 0, "why": "C'est la justification que le contrôleur lit en premier." },
+        { "q": "Une réponse très bien présentée contient deux montants faux. Que faire ?", "options": ["Baisser fortement la note pour les erreurs de fait", "Lui donner 5 pour la présentation", "Ignorer les montants", "Corriger les montants et donner 5"], "correct": 0, "why": "On vérifie le fond d'abord, la présentation ensuite." }
+      ]
+    },
+    {
+      "title": "Comparer des réponses et rédiger des modèles",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "Comment comparer deux réponses A et B ?", "options": ["Évaluer A seule, B seule, puis comparer, l'exactitude d'abord", "Choisir la plus longue", "Choisir la mieux présentée", "Choisir toujours A"], "correct": 0, "why": "La différence la plus importante l'emporte." },
+        { "q": "La réponse la plus longue est-elle meilleure ?", "options": ["Non, seulement si elle est plus exacte, plus utile ou mieux adaptée", "Oui, toujours", "Oui, si elle a des listes", "Non, la plus courte gagne toujours"], "correct": 0, "why": "Si la personne demande une réponse courte, la plus courte peut gagner." },
+        { "q": "Quand choisir « A nettement meilleure » ?", "options": ["Quand B a une erreur de fait ou ne répond pas à la demande", "Quand A a plus de mots", "Quand les deux sont justes", "Jamais"], "correct": 0, "why": "Les différences de style seulement donnent « équivalentes » ou « un peu meilleure »." },
+        { "q": "Qu'est-ce qu'une bonne question pour tester une IA ?", "options": ["Précise, réaliste, variée, vérifiable et conforme aux règles", "Vague et générale", "Impossible à vérifier", "Toujours sur le même sujet"], "correct": 0, "why": "Elle doit ressembler à ce qu'un vrai utilisateur demanderait." },
+        { "q": "Peut-on utiliser un assistant d'IA pour rédiger ses réponses modèles ?", "options": ["Non, c'est souvent interdit et détecté", "Oui, c'est conseillé", "Oui, si on ne le dit pas", "Oui, pour les réponses en malagasy"], "correct": 0, "why": "Le but est d'obtenir un jugement et une écriture humains." }
+      ]
+    },
+    {
+      "title": "Données personnelles et contenus sensibles",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'une donnée personnelle ?", "options": ["Une information qui permet d'identifier une personne", "Seulement le nom", "Une donnée chiffrée", "Un message long"], "correct": 0, "why": "Un téléphone ou une adresse identifient aussi la personne." },
+        { "q": "Comment anonymiser un nom dans un message ?", "options": ["Le remplacer par la balise du projet, par exemple [NOM]", "Supprimer toute la phrase", "Le laisser", "Le remplacer par un autre nom"], "correct": 0, "why": "On garde le sens du message, sans pouvoir identifier la personne." },
+        { "q": "Pourquoi une erreur d'anonymisation est-elle grave ?", "options": ["Une seule donnée oubliée suffit à identifier la personne", "Elle ralentit l'IA", "Elle change la couleur du texte", "Elle n'est jamais grave"], "correct": 0, "why": "On relit chiffres, majuscules et signatures avant de valider." },
+        { "q": "« Ce produit est nul, je suis furieux » : quelle catégorie de toxicité ?", "options": ["Non toxique (critique d'un produit)", "Menace", "Haine", "Arnaque"], "correct": 0, "why": "Une critique en colère d'un produit n'est pas une insulte envers une personne." },
+        { "q": "Comment se protéger sur un projet de contenus difficiles ?", "options": ["Sessions courtes, pauses, pas le soir, en parler à son responsable", "Travailler toute la nuit pour finir vite", "Garder les contenus pour en parler", "Ne jamais faire de pause"], "correct": 0, "why": "On peut aussi demander à changer de projet." }
+      ]
+    }
+  ]
+}

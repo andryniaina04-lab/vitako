@@ -1,0 +1,61 @@
+{
+  "title": "Les bases : consignes, cadres et qualité",
+  "summary": "Lire des consignes et en tirer une fiche mémo, classer des images et dessiner des cadres selon les 6 règles, tracer des polygones, des points clés et des suivis vidéo, traiter les cas limites sans deviner, et comprendre comment la qualité est mesurée.",
+  "lessons": [
+    {
+      "title": "Lire des consignes et faire sa fiche mémo",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Quelle est la première étape pour lire des consignes ?", "options": ["Tout lire une fois sans rien annoter", "Commencer à annoter tout de suite", "Lire seulement la liste des étiquettes", "Demander la réponse à un autre annotateur"], "correct": 0, "why": "On comprend d'abord le but du projet ; une règle importante peut être page 14." },
+        { "q": "Quels exemples faut-il étudier en priorité ?", "options": ["Ceux marqués « incorrect »", "Aucun, seulement les règles", "Seulement le premier", "Ceux qui sont faciles"], "correct": 0, "why": "Les exemples incorrects montrent les pièges du projet." },
+        { "q": "Quelle taille doit faire la fiche mémo ?", "options": ["Une page", "Autant que les consignes", "Une ligne", "Dix pages"], "correct": 0, "why": "Elle résume l'essentiel pour être consultée sans perdre de temps." },
+        { "q": "Que signifie « must » dans une consigne en anglais ?", "options": ["C'est obligatoire", "C'est un conseil facultatif", "C'est interdit", "C'est un exemple"], "correct": 0, "why": "« Should » est un conseil ; « must » est une obligation, tout oubli est une erreur." },
+        { "q": "Pourquoi transformer les règles en questions oui ou non ?", "options": ["Pour décider en une seconde", "Pour rallonger la fiche", "Pour plaire au client", "Ce n'est pas utile"], "correct": 0, "why": "« Est-ce un reflet ? → ne pas annoter » se répond immédiatement." }
+      ]
+    },
+    {
+      "title": "La classification d'images et les cadres",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Comment classer une photo de marché couvert en « intérieur » ou « extérieur » ?", "options": ["Appliquer la définition du projet, ou signaler si elle ne tranche pas", "Selon son impression", "Toujours « extérieur »", "Choisir au hasard"], "correct": 0, "why": "Votre avis ne compte pas : c'est la définition écrite qui décide." },
+        { "q": "Qu'est-ce qu'un cadre « serré » ?", "options": ["Ses bords touchent les bords de l'objet", "Il laisse une grande marge", "Il coupe une partie de l'objet", "Il entoure plusieurs objets"], "correct": 0, "why": "Un cadre trop large apprend à l'IA que le fond fait partie de l'objet." },
+        { "q": "Cinq personnes côte à côte : combien de cadres ?", "options": ["Cinq", "Un seul", "Deux", "Aucun"], "correct": 0, "why": "Un cadre par objet : l'IA doit apprendre à compter et à séparer." },
+        { "q": "Un objet à moitié caché, sans consigne particulière : que faire ?", "options": ["Encadrer la partie visible", "Imaginer et encadrer l'objet entier", "Ne pas l'annoter", "Doubler la taille du cadre"], "correct": 0, "why": "On n'invente pas ce qu'on ne voit pas, sauf si la consigne le demande." },
+        { "q": "Quelle est l'erreur la plus fréquente sur les cadres ?", "options": ["L'objet oublié", "La couleur du cadre", "Le nom du fichier", "Le zoom trop fort"], "correct": 0, "why": "Une routine fixe (grands objets, petits objets, bords et ombres) évite les oublis." }
+      ]
+    },
+    {
+      "title": "Polygones, segmentation, points clés et vidéo",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "Où placer beaucoup de points sur un polygone ?", "options": ["Dans les courbes", "Sur les lignes droites", "Au centre de l'objet", "Nulle part"], "correct": 0, "why": "Les courbes ont besoin de points ; les lignes droites peu." },
+        { "q": "Quelle différence entre segmentation par classes et par objets ?", "options": ["Par objets, chaque objet est séparé même s'il a la même catégorie", "Il n'y a aucune différence", "Par classes, on dessine des rectangles", "Par objets, on ne colorie rien"], "correct": 0, "why": "Par classes, deux voitures collées forment une seule zone « voiture »." },
+        { "q": "Pour les points clés, la main gauche d'une personne de face est…", "options": ["À droite sur l'image", "À gauche sur l'image", "Toujours cachée", "Au centre"], "correct": 0, "why": "Gauche et droite sont ceux de la personne, pas ceux de l'annotateur." },
+        { "q": "Qu'est-ce que l'interpolation dans une vidéo ?", "options": ["L'outil calcule les positions entre deux ajustements", "Une erreur de lecture", "La suppression d'un objet", "Le son de la vidéo"], "correct": 0, "why": "Elle fait gagner du temps mais doit être vérifiée quand l'objet change de vitesse." },
+        { "q": "Que faire d'un contour proposé par l'aide automatique ?", "options": ["Le vérifier et le corriger avant de valider", "Le valider sans regarder", "Le supprimer toujours", "Le copier sur toutes les images"], "correct": 0, "why": "L'aide propose, l'annotateur reste responsable du résultat." }
+      ]
+    },
+    {
+      "title": "Les cas limites : ne jamais deviner",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Que faire face à un cas limite ?", "options": ["Relire, chercher, signaler, demander, noter", "Deviner pour aller plus vite", "Choisir toujours « Autre »", "Supprimer la tâche"], "correct": 0, "why": "Une réponse devinée entre dans les données et l'IA l'apprend." },
+        { "q": "Pourquoi un signalement vaut-il mieux qu'une réponse au hasard ?", "options": ["Il aide à améliorer les consignes, alors que l'erreur est apprise par l'IA", "Il est mieux payé", "Il cache l'erreur", "Il n'y a aucune différence"], "correct": 0, "why": "Les responsables apprécient les annotateurs qui posent de bonnes questions." },
+        { "q": "Que doit contenir une bonne question au responsable ?", "options": ["Le numéro de la tâche, la description et une proposition", "Seulement « je ne comprends pas »", "Une capture de tout l'écran avec vos autres onglets", "Dix questions séparées dans la journée"], "correct": 0, "why": "Une question claire reçoit une réponse rapide." },
+        { "q": "À quoi sert le journal des cas limites ?", "options": ["Prendre la même décision pour des cas identiques", "Noter ses heures de sommeil", "Remplacer les consignes", "Rien"], "correct": 0, "why": "La cohérence compte autant que la justesse de chaque décision." },
+        { "q": "Que faire quand les consignes sont mises à jour ?", "options": ["Les lire, mettre à jour la fiche et vérifier les tâches concernées", "Les ignorer jusqu'à la fin", "Recommencer tout le projet", "Attendre le contrôle"], "correct": 0, "why": "Le journal permet de retrouver rapidement les tâches à corriger." }
+      ]
+    },
+    {
+      "title": "Comment la qualité est mesurée",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'une question de contrôle ?", "options": ["Un exemple dont la bonne réponse est connue, glissé parmi les tâches", "Une question posée au responsable", "Un test de connexion", "Une question d'entretien"], "correct": 0, "why": "Elle mesure votre compréhension des consignes sans que vous le sachiez." },
+        { "q": "188 bonnes réponses sur 200 donnent quel taux de précision ?", "options": ["94 %", "88 %", "98 %", "12 %"], "correct": 0, "why": "188 ÷ 200 × 100 = 94 %." },
+        { "q": "Que mesure l'IoU ?", "options": ["Le recouvrement entre votre cadre et le cadre de référence", "La vitesse de connexion", "Le nombre de tâches par heure", "La taille de l'image"], "correct": 0, "why": "Surface commune ÷ surface totale couverte par les deux cadres." },
+        { "q": "Pourquoi un cadre trop large est-il compté comme une erreur ?", "options": ["Il fait chuter l'IoU sous le seuil du projet", "Il est mal coloré", "Il est trop rapide", "Il n'est jamais compté comme erreur"], "correct": 0, "why": "La surface totale augmente, donc le recouvrement diminue." },
+        { "q": "Comment réagir à un retour de contrôle juste ?", "options": ["L'accepter et ajouter la règle à sa fiche mémo", "Le contester longuement", "L'ignorer", "Quitter le projet"], "correct": 0, "why": "Chaque retour est la meilleure source de progrès." }
+      ]
+    }
+  ]
+}

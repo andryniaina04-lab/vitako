@@ -1,0 +1,61 @@
+{
+  "title": "Le métier d'annotateur de données IA",
+  "summary": "Comprendre comment une IA apprend à partir d'exemples annotés, connaître les 6 types de tâches et le vocabulaire du métier, savoir où se trouve le travail, adopter les qualités et les règles de conduite attendues, et préparer son poste de travail.",
+  "lessons": [
+    {
+      "title": "Comment une IA apprend avec des données annotées",
+      "file": "m1-l1.md",
+      "questions": [
+        { "q": "Comment une IA apprend-elle à reconnaître un zébu sur des photos ?", "options": ["À partir de milliers de photos où des humains ont indiqué les zébus", "En lisant une définition du mot « zébu »", "En regardant une seule photo très nette", "Toute seule, sans aucun exemple"], "correct": 0, "why": "L'IA compare ses essais aux annotations humaines et se corrige, des milliers de fois." },
+        { "q": "Qu'est-ce qu'une donnée annotée ?", "options": ["Une donnée à laquelle un humain a ajouté une information : étiquette, cadre, transcription", "Une donnée supprimée", "Un fichier compressé", "Une photo prise par une IA"], "correct": 0, "why": "On dit aussi donnée étiquetée ou labellisée, de l'anglais label." },
+        { "q": "Que se passe-t-il si les annotations contiennent la même erreur répétée ?", "options": ["L'IA apprend cette erreur et la reproduit", "L'IA la corrige toute seule", "Rien du tout", "L'IA s'arrête de fonctionner"], "correct": 0, "why": "L'IA ne sait pas si une annotation est fausse : elle apprend tout ce qu'on lui montre." },
+        { "q": "Pourquoi le besoin d'annotateurs est-il régulier ?", "options": ["On annote à nouveau à chaque fois que l'IA doit progresser", "Les IA oublient tout chaque mois", "La loi l'impose", "Les annotations s'effacent"], "correct": 0, "why": "On ajoute des exemples annotés là où l'IA se trompe, à chaque amélioration." },
+        { "q": "Pourquoi les données locales de Madagascar sont-elles précieuses ?", "options": ["La plupart des IA ont appris avec des données venues d'ailleurs et connaissent mal le pays", "Elles sont gratuites", "Elles sont toujours en anglais", "Elles n'ont pas besoin d'être annotées"], "correct": 0, "why": "Taxi-be, charrettes à zébus, malagasy parlé : les IA les reconnaissent mal sans données locales." }
+      ]
+    },
+    {
+      "title": "Les 6 types de tâches et le vocabulaire du métier",
+      "file": "m1-l2.md",
+      "questions": [
+        { "q": "Que fait-on dans une tâche de cadres de délimitation ?", "options": ["On dessine un rectangle autour de chaque objet", "On écrit ce qui est dit dans un enregistrement", "On note une réponse d'IA", "On traduit un texte"], "correct": 0, "why": "En anglais : bounding box." },
+        { "q": "Quelles tâches sont les plus accessibles pour commencer ?", "options": ["Classification, cadres et annotation de texte", "Segmentation et transcription médicale", "Évaluation de réponses d'IA spécialisées", "Programmation d'IA"], "correct": 0, "why": "Elles s'apprennent en quelques jours et sont demandées partout." },
+        { "q": "Que veut dire « guidelines » ?", "options": ["Les consignes du projet", "Les étiquettes", "Le paiement", "Le contrôleur qualité"], "correct": 0, "why": "Le document qui dit quoi annoter, comment, et que faire dans les cas difficiles." },
+        { "q": "Qu'est-ce qu'un « edge case » ?", "options": ["Un cas limite, où la règle n'est pas évidente", "Un objet coupé par le bord de l'image", "Une erreur de connexion", "Une tâche bien payée"], "correct": 0, "why": "Les cas limites font la différence entre un bon et un mauvais annotateur." },
+        { "q": "Une consigne demande un polygone ; que faire ?", "options": ["Suivre le contour exact avec des points, comme demandé", "Dessiner un rectangle, plus rapide", "Choisir la forme qu'on préfère", "Ne rien dessiner"], "correct": 0, "why": "Une forme différente de celle demandée fait refuser tout le lot." }
+      ]
+    },
+    {
+      "title": "Où se trouve le travail et les réalités du métier",
+      "file": "m1-l3.md",
+      "questions": [
+        { "q": "Quelle source offre souvent un revenu plus stable et une formation ?", "options": ["Les entreprises d'annotation et d'externalisation", "Les offres reçues uniquement par WhatsApp", "L'achat d'un compte sur une plateforme", "Les publicités sur les réseaux sociaux"], "correct": 0, "why": "Elles recrutent avec des tests, forment sur le projet et paient un salaire ou un tarif régulier." },
+        { "q": "Que faire quand une plateforme n'a pas de tâches pendant une semaine ?", "options": ["Combiner plusieurs sources, passer de nouveaux tests et se former", "Abandonner le métier", "Acheter le compte d'un autre annotateur", "Payer pour obtenir des tâches"], "correct": 0, "why": "Les projets arrivent par vagues : les annotateurs qui durent combinent plusieurs sources." },
+        { "q": "Laquelle de ces offres est une arnaque ?", "options": ["Une offre qui demande des « frais d'inscription » pour travailler", "Une entreprise avec un site officiel et un test d'entrée", "Une plateforme qui demande une calibration", "Un contrat écrit avec un mode de paiement clair"], "correct": 0, "why": "Les vraies plateformes et entreprises ne font jamais payer pour travailler." },
+        { "q": "Comment juger un tarif à la tâche ?", "options": ["Le convertir en revenu par heure réellement travaillée", "Le comparer au prix d'un forfait mobile", "Prendre toujours le plus élevé sans calcul", "Ce n'est pas possible"], "correct": 0, "why": "Il faut compter aussi le temps de lecture des consignes et des tests." },
+        { "q": "Quel avantage ont les projets en malagasy ?", "options": ["Peu de concurrence", "Ils sont les plus nombreux", "Ils ne demandent aucune rigueur", "Ils sont payés à l'avance"], "correct": 0, "why": "Les missions sont plus rares, mais peu de personnes peuvent les faire." }
+      ]
+    },
+    {
+      "title": "Les qualités et les règles de conduite",
+      "file": "m1-l4.md",
+      "questions": [
+        { "q": "Pourquoi la régularité compte-t-elle autant que la précision ?", "options": ["Le client doit pouvoir faire confiance à tout le lot", "Parce que le client paie à l'heure", "Pour finir plus tôt", "Ce n'est pas important"], "correct": 0, "why": "Un annotateur précis le matin et fatigué le soir donne un lot inégal." },
+        { "q": "Quelle durée de bloc de travail est conseillée ?", "options": ["45 à 50 minutes, puis une pause", "4 heures sans pause", "5 minutes", "Toute la nuit"], "correct": 0, "why": "La fatigue est la première cause d'erreurs." },
+        { "q": "Que faire des données d'un projet ?", "options": ["Les garder confidentielles : pas de capture ni de partage", "Les publier pour montrer son travail", "Les envoyer à des amis", "Les garder sur un ordinateur partagé"], "correct": 0, "why": "Les données appartiennent au client et aux personnes qu'elles concernent." },
+        { "q": "Peut-on refuser un projet de contenus sensibles ?", "options": ["Oui, ce n'est pas un échec", "Non, jamais", "Seulement en payant une amende", "Seulement après l'avoir terminé"], "correct": 0, "why": "On peut refuser ; si on accepte, on fait plus de pauses et on en parle à son responsable si besoin." },
+        { "q": "Comment une plateforme détecte-t-elle la triche ?", "options": ["Questions de contrôle, comparaison, temps par tâche et relecture", "Elle ne peut pas la détecter", "En appelant l'annotateur chaque jour", "Par hasard"], "correct": 0, "why": "La sanction est souvent l'exclusion du projet, avec la perte des paiements en attente." }
+      ]
+    },
+    {
+      "title": "Préparer son poste et son organisation",
+      "file": "m1-l5.md",
+      "questions": [
+        { "q": "Quel est le premier achat à faire pour annoter des images ?", "options": ["Une souris", "Un logiciel d'annotation payant", "Un accès à une plateforme", "Un deuxième téléphone"], "correct": 0, "why": "Le pavé tactile rend les cadres imprécis et lents." },
+        { "q": "Faut-il acheter des logiciels pour ce métier ?", "options": ["Non : les outils sont fournis par les plateformes, entreprises et clients", "Oui, un abonnement obligatoire", "Oui, un accès payant à chaque plateforme", "Oui, une licence par projet"], "correct": 0, "why": "Votre investissement, c'est votre équipement ; une demande d'achat est un signe d'arnaque." },
+        { "q": "Que faire en cas de coupure de courant pendant une tâche ?", "options": ["Passer sur le partage de connexion et la batterie, et enregistrer souvent", "Abandonner le projet", "Valider la tâche sans la finir", "Demander à un ami de finir sur son compte"], "correct": 0, "why": "Le plan anti-coupure évite de perdre des tâches." },
+        { "q": "À quoi sert le tableau de suivi ?", "options": ["Mesurer sa production, sa précision et ses cas limites pour progresser", "Remplacer les consignes", "Stocker les données du client", "Rien"], "correct": 0, "why": "Un annotateur qui mesure son travail progresse plus vite et négocie mieux." },
+        { "q": "Comment protéger son compte de plateforme ?", "options": ["Mot de passe unique et double authentification", "Le même mot de passe partout", "Partager son code avec l'assistance", "Prêter son compte à un ami"], "correct": 0, "why": "Un compte piraté ou bloqué, c'est la perte de vos revenus." }
+      ]
+    }
+  ]
+}

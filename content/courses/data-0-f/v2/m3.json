@@ -1,0 +1,61 @@
+{
+  "title": "Les outils : CVAT et Label Studio",
+  "summary": "Prendre en main deux outils libres de référence : CVAT pour les cadres, les polygones, les attributs et le suivi vidéo, Label Studio pour la classification de texte et les entités nommées. Exporter aux formats courants, vérifier un export et devenir rapide sans perdre en précision.",
+  "lessons": [
+    {
+      "title": "Le panorama des outils d'annotation",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Quel outil est fait d'abord pour les images et les vidéos ?", "options": ["CVAT", "Label Studio uniquement pour le son", "Google Sheets", "Un traitement de texte"], "correct": 0, "why": "CVAT sert aux cadres, polygones, points et suivis vidéo ; Label Studio couvre surtout texte, audio et images." },
+        { "q": "Qu'est-ce qu'un logiciel libre ?", "options": ["Un logiciel dont le code est public et qu'on peut utiliser gratuitement", "Un logiciel piraté", "Un logiciel sans mises à jour", "Un logiciel réservé aux entreprises"], "correct": 0, "why": "On peut s'y entraîner chez soi sur les mêmes gestes que dans les vrais projets." },
+        { "q": "Quelles sont les 5 zones communes à presque tous les outils ?", "options": ["Navigation, outils, zone de travail, liste des objets, validation", "Accueil, profil, paiement, chat, publicité", "Fichier, édition, affichage, aide, quitter", "Il n'y a rien de commun"], "correct": 0, "why": "Une fois ces zones repérées, un nouvel outil se prend en main en quelques minutes." },
+        { "q": "Quelles images utiliser pour s'entraîner et pour son portfolio ?", "options": ["Ses propres photos, des images libres de droits ou des jeux de données publics", "Des photos de personnes prises sur les réseaux sociaux", "Les données d'un client", "N'importe quelle image trouvée en ligne"], "correct": 0, "why": "Les images doivent être autorisées, et les personnes doivent avoir donné leur accord." },
+        { "q": "Que faire dès la première tâche dans l'outil maison d'une plateforme ?", "options": ["Chercher la page d'aide des raccourcis et repérer le bouton « signaler »", "Valider sans lire", "Désactiver le zoom", "Demander un autre outil"], "correct": 0, "why": "Les raccourcis et les boutons changent d'un outil à l'autre." }
+      ]
+    },
+    {
+      "title": "CVAT : projets, étiquettes et cadres",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Dans CVAT, que regroupe un projet ?", "options": ["Des tâches qui partagent les mêmes étiquettes", "Une seule image", "Les paiements", "Les utilisateurs d'une plateforme"], "correct": 0, "why": "Projet, puis tâche (un lot d'images), puis job (la part d'une personne)." },
+        { "q": "À quoi sert le raccourci N ?", "options": ["Dessiner une nouvelle forme avec le dernier outil", "Passer à l'image suivante", "Enregistrer", "Supprimer une forme"], "correct": 0, "why": "F passe à l'image suivante, Ctrl + S enregistre." },
+        { "q": "Quelle différence entre Shape et Track ?", "options": ["Shape dessine sur une image, Track suit l'objet dans une vidéo", "Aucune différence", "Track supprime l'objet", "Shape exporte le projet"], "correct": 0, "why": "Track garde le même identifiant d'une image à l'autre." },
+        { "q": "Pourquoi donner des couleurs contrastées aux étiquettes proches ?", "options": ["Pour repérer les erreurs d'étiquette d'un coup d'œil", "Pour décorer", "Parce que c'est obligatoire", "Pour accélérer le chargement"], "correct": 0, "why": "Un cadre orange autour d'une petite voiture saute aux yeux au contrôle." },
+        { "q": "Quand faut-il enregistrer ?", "options": ["Au moins après chaque image", "Une fois à la fin de la journée", "Jamais, c'est automatique partout", "Seulement en cas de coupure"], "correct": 0, "why": "Tout ce qui n'est pas enregistré est perdu en cas de coupure." }
+      ]
+    },
+    {
+      "title": "CVAT : polygones, attributs et vidéo",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "Comment vérifier un contour dans une image chargée d'objets ?", "options": ["Masquer les autres objets dans la liste de droite", "Supprimer les autres objets", "Dézoomer au maximum", "Changer l'étiquette"], "correct": 0, "why": "On vérifie un contour à la fois, puis on réaffiche tout." },
+        { "q": "Que précise l'attribut « caché » ?", "options": ["La part de l'objet cachée par un autre", "La couleur de l'objet", "Le prix de la tâche", "Le nom de l'annotateur"], "correct": 0, "why": "Les attributs sont contrôlés aussi sévèrement que les formes." },
+        { "q": "Qu'est-ce qu'une image clé ?", "options": ["Une image où vous avez placé ou corrigé le cadre vous-même", "La première image d'un projet", "Une image floue", "Une image exportée"], "correct": 0, "why": "Entre deux images clés, l'outil calcule les positions par interpolation." },
+        { "q": "Quand ajouter une image clé dans une vidéo ?", "options": ["À chaque changement de vitesse, de direction ou de taille", "Seulement au début et à la fin", "Jamais", "Toutes les 500 images"], "correct": 0, "why": "Sans cela, le cadre « décroche » de l'objet." },
+        { "q": "Que faire avant de valider un lot ?", "options": ["Le relire avec la liste de contrôle", "Le valider tout de suite", "Supprimer les attributs", "Changer toutes les couleurs"], "correct": 0, "why": "Quelques minutes de relecture évitent un lot renvoyé." }
+      ]
+    },
+    {
+      "title": "Label Studio : texte et entités",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "Quelle commande démarre Label Studio après l'installation ?", "options": ["label-studio start", "pip uninstall label-studio", "start cvat", "python label"], "correct": 0, "why": "On l'installe avec pip install label-studio, puis on le démarre avec label-studio start." },
+        { "q": "Quel modèle choisir pour classer des avis ?", "options": ["Text Classification", "Named Entity Recognition", "Object Detection", "Audio Transcription"], "correct": 0, "why": "Named Entity Recognition sert à surligner des entités dans le texte." },
+        { "q": "Comment marquer « Banque centrale de Madagascar » ?", "options": ["Surligner le groupe de mots entier", "Surligner seulement « Banque »", "Surligner chaque mot séparément", "Ne pas le marquer"], "correct": 0, "why": "Une entité se marque en entier, sans espace ni ponctuation en trop." },
+        { "q": "Que fait Ctrl + Entrée dans Label Studio ?", "options": ["Valide la tâche", "Supprime le projet", "Ouvre l'aide", "Change de langue"], "correct": 0, "why": "Avec les chiffres pour les étiquettes, on travaille presque sans souris." },
+        { "q": "Pourquoi un espace surligné en trop est-il une erreur ?", "options": ["L'entité ne correspond plus à la référence à la comparaison", "Il change la couleur", "Il ralentit l'ordinateur", "Ce n'est jamais une erreur"], "correct": 0, "why": "Double-cliquer sélectionne un mot entier sans espace." }
+      ]
+    },
+    {
+      "title": "Exporter, vérifier et gagner en vitesse",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Comment le format YOLO décrit-il un cadre ?", "options": ["Étiquette, centre x, centre y, largeur, hauteur, entre 0 et 1", "Coin, largeur, hauteur en pixels", "Quatre coins en centimètres", "Seulement l'étiquette"], "correct": 0, "why": "COCO utilise le coin en haut à gauche, la largeur et la hauteur en pixels." },
+        { "q": "Sur une image de 1 000 pixels de large, un centre à x = 300 vaut combien en YOLO ?", "options": ["0,3", "300", "3", "0,03"], "correct": 0, "why": "300 ÷ 1 000 = 0,3." },
+        { "q": "Que faire après un export ?", "options": ["Ouvrir le fichier et vérifier images, objets et étiquettes", "L'envoyer sans le regarder", "Le supprimer", "Le renommer seulement"], "correct": 0, "why": "Un export incomplet fait perdre la confiance du client." },
+        { "q": "D'où vient surtout la vitesse d'un annotateur expérimenté ?", "options": ["Moins d'hésitations et moins de corrections", "Cliquer plus vite au hasard", "Ignorer les petits objets", "Sauter la relecture"], "correct": 0, "why": "Il connaît les règles par cœur et dessine juste du premier coup." },
+        { "q": "Que faire quand la précision baisse ?", "options": ["Ralentir avant de chercher à accélérer", "Accélérer pour rattraper", "Changer d'outil", "Arrêter le métier"], "correct": 0, "why": "La précision fait votre réputation ; la vitesse vient ensuite." }
+      ]
+    }
+  ]
+}

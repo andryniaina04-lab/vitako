@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des projets et se faire payer",
+  "summary": "Transformer vos compétences en revenus : chercher dans les sources sérieuses et éviter les arnaques, construire un CV et un portfolio chiffrés, réussir les tests de qualification, calculer son revenu réel, se faire payer depuis Madagascar, évoluer dans le métier et lancer son plan des 30 prochains jours.",
+  "lessons": [
+    {
+      "title": "Les sources de travail et les arnaques",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Que vérifier avant de passer des heures sur les tests d'une plateforme ?", "options": ["Qu'elle accepte les personnes résidant à Madagascar", "La couleur de son logo", "Le nombre d'abonnés sur ses réseaux", "Rien"], "correct": 0, "why": "Mentir sur sa résidence fait bloquer le compte, avec les paiements." },
+        { "q": "Une offre demande 25 000 Ar de « frais d'activation ». Que faire ?", "options": ["La refuser : c'est une arnaque", "Payer pour essayer", "Payer la moitié", "Demander un reçu puis payer"], "correct": 0, "why": "Les vraies plateformes et entreprises ne font jamais payer pour travailler." },
+        { "q": "Peut-on louer le compte vérifié d'une autre personne ?", "options": ["Non, c'est interdit et on risque de ne jamais être payé", "Oui, si on partage les gains", "Oui, pour commencer plus vite", "Oui, entre membres de la famille"], "correct": 0, "why": "Les plateformes détectent ces comptes et les bloquent." },
+        { "q": "Combien de réponses négatives aux 6 questions suffisent pour refuser une offre ?", "options": ["Une seule", "Trois", "Toutes les six", "Aucune, on accepte toujours"], "correct": 0, "why": "Un seul signe grave suffit." },
+        { "q": "Comment vérifier une offre reçue en message privé au nom d'une entreprise connue ?", "options": ["Sur le site officiel de l'entreprise", "En répondant au message avec ses codes", "En cliquant sur le lien reçu", "En payant les frais demandés"], "correct": 0, "why": "Les faux recruteurs utilisent le nom de vraies entreprises." }
+      ]
+    },
+    {
+      "title": "Le CV, la présentation et le portfolio",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "Pourquoi le CV d'un annotateur ne doit-il contenir aucune faute ?", "options": ["Le recruteur le lit comme une annotation : il cherche les erreurs", "Pour qu'il soit plus long", "Parce que c'est la loi", "Ce n'est pas important"], "correct": 0, "why": "Une faute lui dit que vous ferez des erreurs dans le travail." },
+        { "q": "Quelle présentation est la plus convaincante ?", "options": ["« 200 images annotées avec 95 % de précision au contrôle »", "« Je suis sérieux et motivé »", "« Je connais l'IA »", "« Disponible »"], "correct": 0, "why": "Une preuve chiffrée vaut plus que des adjectifs." },
+        { "q": "Quelle est la pièce centrale du portfolio ?", "options": ["L'étude de cas « Marché propre »", "Une photo de profil", "La liste de ses loisirs", "Une capture de son tableau de bord vide"], "correct": 0, "why": "Elle prouve que vous menez un projet complet et contrôlez votre qualité." },
+        { "q": "Comment indiquer son niveau d'anglais ?", "options": ["Honnêtement, selon son vrai niveau", "Toujours « courant »", "Ne pas l'indiquer", "« Bilingue » pour avoir plus de chances"], "correct": 0, "why": "Un niveau exagéré mène à l'échec au test ou à des erreurs en production." },
+        { "q": "Pourquoi mettre le malagasy en avant ?", "options": ["Peu de profils dans le monde le proposent", "Il est obligatoire partout", "Il remplace l'anglais", "Il n'est jamais utile"], "correct": 0, "why": "Sur les projets de langue, c'est une compétence rare." }
+      ]
+    },
+    {
+      "title": "Réussir les tests de qualification",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Que mesure surtout un test de qualification ?", "options": ["La précision", "La vitesse de frappe", "Le niveau en mathématiques", "La qualité de la connexion"], "correct": 0, "why": "Les limites de temps, quand elles existent, sont presque toujours larges." },
+        { "q": "Quand passer un test ?", "options": ["Reposé, au calme, avec une connexion stable et assez de temps", "Juste avant un rendez-vous", "Tard le soir après une longue journée", "Pendant une coupure prévue"], "correct": 0, "why": "Les bonnes conditions évitent les erreurs d'attention." },
+        { "q": "Une règle importante se trouve page 9 des consignes. Comment ne pas la rater ?", "options": ["Tout lire avant de commencer", "Lire seulement la première page", "Commencer puis lire en cas de doute", "Demander les réponses à un ami"], "correct": 0, "why": "Les tests contiennent souvent des règles cachées dans le texte." },
+        { "q": "Que faire après un échec à un test ?", "options": ["Lire les explications, noter les erreurs, s'entraîner et repasser si possible", "Acheter les réponses", "Abandonner le métier", "Créer un autre compte"], "correct": 0, "why": "Chaque erreur est une règle à apprendre." },
+        { "q": "Que risque-t-on en utilisant des réponses de test partagées ?", "options": ["La fermeture du compte, et un projet qu'on ne sait pas faire", "Rien du tout", "Une meilleure note garantie", "Un bonus"], "correct": 0, "why": "Les plateformes repèrent ceux qui réussissent le test puis échouent en production." }
+      ]
+    },
+    {
+      "title": "Les revenus et l'organisation",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Comment calcule-t-on le revenu réel à l'heure ?", "options": ["Revenu total ÷ (heures de production + heures non payées)", "Prix d'une tâche × 24", "Revenu total ÷ heures de production seulement", "Prix affiché par tâche"], "correct": 0, "why": "La lecture des consignes et les tests font partie du temps de travail." },
+        { "q": "40 tâches par heure à 150 Ar rapportent combien par heure de production ?", "options": ["6 000 Ar", "1 500 Ar", "4 000 Ar", "60 000 Ar"], "correct": 0, "why": "40 × 150 = 6 000 Ar." },
+        { "q": "Un projet paie 400 Ar par image à 12 images par heure, un autre 150 Ar à 40 par heure. Lequel rapporte plus à l'heure ?", "options": ["Le second : 6 000 Ar contre 4 800 Ar", "Le premier, car il paie plus par image", "Ils rapportent autant", "On ne peut pas savoir"], "correct": 0, "why": "On compare au revenu à l'heure, pas au prix affiché." },
+        { "q": "Quel tarif plancher utiliser en freelance ?", "options": ["Votre revenu réel actuel", "Le tarif le plus bas du marché", "Zéro pour le premier client", "Le prix d'un forfait mobile"], "correct": 0, "why": "On ne casse pas les prix : un tarif trop bas fait douter de la qualité." },
+        { "q": "Pourquoi garder une source principale plus stable ?", "options": ["Elle couvre les périodes creuses des plateformes", "Pour travailler 7 jours sur 7", "Pour éviter les tests", "Ce n'est pas utile"], "correct": 0, "why": "Les plateformes ont des projets par vagues." }
+      ]
+    },
+    {
+      "title": "Être payé, évoluer et passer à l'action",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Quand vérifier les moyens de paiement d'une plateforme ?", "options": ["Avant de travailler", "Après le premier mois", "Jamais", "Seulement si on n'est pas payé"], "correct": 0, "why": "Il faut qu'au moins un moyen fonctionne depuis Madagascar." },
+        { "q": "Que faire avant de travailler pour une plateforme qui ne paie que par PayPal ?", "options": ["Vérifier qu'on pourra retirer l'argent depuis Madagascar", "Accepter sans vérifier", "Créer un compte dans un autre pays", "Demander à un ami de recevoir l'argent"], "correct": 0, "why": "Les possibilités de PayPal sont limitées pour Madagascar." },
+        { "q": "Quelle évolution demande un excellent niveau de langue écrite ?", "options": ["Évaluateur de réponses d'IA", "Annotateur de cadres simples", "Aucune", "Technicien réseau"], "correct": 0, "why": "Il faut juger, vérifier les faits et rédiger des justifications." },
+        { "q": "Pourquoi faire une veille régulière ?", "options": ["Les tâches changent avec les IA : plus de vérification et de spécialisation", "Pour remplacer le travail", "Parce que les outils ne changent jamais", "Ce n'est pas utile"], "correct": 0, "why": "Une heure par semaine suffit pour rester à jour." },
+        { "q": "Quand passer ses premiers tests ?", "options": ["Dans les 30 prochains jours, en continuant à se former", "Quand on maîtrise parfaitement tout", "Dans un an", "Jamais"], "correct": 0, "why": "Vous avez des projets, des chiffres et une méthode : il est temps de commencer." }
+      ]
+    }
+  ]
+}
