@@ -289,6 +289,12 @@ export async function submitPayment(operator, reference, sender) {
   need();
   return run(sb.rpc('submit_payment', { p_operator: operator, p_reference: reference, p_sender: sender || null }));
 }
+// Mises à jour des formations commencées (abonnés) : pour la cloche
+export async function myCourseUpdates() {
+  need();
+  return run(sb.rpc('my_course_updates'));
+}
+
 export async function getMyPayments(uid) {
   need();
   return run(sb.from('payments').select('*').eq('user_id', uid).order('created_at', { ascending: false }).limit(20));

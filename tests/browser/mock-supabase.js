@@ -115,6 +115,19 @@
 
   const newCertId = () => 'VTK-' + new Date().getFullYear() + '-' + Math.random().toString(16).slice(2, 8).toUpperCase();
   const RPC = {
+    my_course_updates() {
+      if (!me()) return err('not_authenticated');
+      const p = db.profiles.find((x) => x.id === me());
+      if (!p?.sub_end || new Date(p.sub_end) <= new Date()) return { data: [], error: null };
+      const started = new Map();
+      for (const r of [...db.progress, ...(db.part_progress || [])].filter((x) => x.user_id === me())) {
+        const t = r.completed_at || now(); if (!started.has(r.course_id) || t < started.get(r.course_id)) started.set(r.course_id, t);
+      }
+      const rows = (db.course_updates || []).filter((u) => started.has(u.course_id) && started.get(u.course_id) < u.created_at)
+        .map((u) => ({ ...u, title: FIX.courses.find((c) => c.id === u.course_id)?.title || u.course_id }))
+        .sort((a, b) => b.created_at.localeCompare(a.created_at));
+      return { data: rows, error: null };
+    },
     submit_payment({ p_operator, p_reference, p_sender }) {
       if (!me()) return err('not_authenticated');
       if (isTrainer(me()) && (trainerOf(me())?.status || 'draft') === 'draft') return err('trainer_profile_incomplete');

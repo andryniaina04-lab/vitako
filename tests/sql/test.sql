@@ -430,3 +430,28 @@ update public.profiles set sub_end = null where id = :B;
 set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
 select count(*) = 0 from public.lesson_parts;          -- sans abonnement : rien
 reset role;
+
+\echo '--- Mises à jour des formations : notifications aux abonnés qui les ont commencées'
+reset role;
+update public.profiles set sub_end = now() + interval '30 days' where id = :B;
+select count(*) >= 1 from public.course_updates where course_id = 't-0-a' and kind = 'new_version';   -- mise en ligne annoncée
+select public.sync_course_hashes('{"t-0-a":{"h":"aaa"}}'::jsonb) = 0;      -- première empreinte : pas de notification
+select public.sync_course_hashes('{"t-0-a":{"h":"aaa"}}'::jsonb) = 0;      -- inchangée : rien
+select public.sync_course_hashes('{"t-0-a":{"h":"bbb","note":"Leçon 2 corrigée."}}'::jsonb) = 1;   -- modifiée : annoncée
+select note = 'Leçon 2 corrigée.' and kind = 'update' from public.course_updates where course_id = 't-0-a' order by id desc limit 1;
+select exists (select 1 from public.course_update_recipients('t-0-a') where user_id = :B);
+select not exists (select 1 from public.course_update_recipients('t-0-a') where user_id = :ADM);   -- pas les administrateurs
+begin;   -- nouvelle version et contenu changé dans la même mise à jour : une seule annonce
+select public.announce_course_update('t-0-a', 'new_version') is not null;
+select public.sync_course_hashes('{"t-0-a":{"h":"ccc"}}'::jsonb) = 0;
+commit;
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) >= 3 and bool_and(course_id = 't-0-a' or course_id in (select course_id from public.progress where user_id = auth.uid())) from public.my_course_updates();
+select t.err('select count(*) from public.course_updates where false or public.announce_course_update(''t-0-a'', ''update'') is null', 'permission denied');
+select count(*) = 0 from public.course_updates;      -- table réservée à l'administrateur
+reset role;
+update public.profiles set sub_end = null where id = :B;
+set role authenticated; set request.jwt.claim.sub = 'bbbbbbbb-0000-0000-0000-000000000002';
+select count(*) = 0 from public.my_course_updates();   -- sans abonnement : rien
+reset role;
+select not exists (select 1 from public.course_update_recipients('t-0-a') where user_id = :B);

@@ -19,6 +19,7 @@ const S = {
   reviews: [],
   attempts: [],
   payments: [],
+  updates: [],           // mises à jour des formations commencées (cloche)
   admin: { pending: 0, active: 0, feedback: 0, trainers: 0 },
   trainer: null,         // profil formateur de la personne connectée (si formateur)
   trainers: null,        // formateurs visibles (liste publique, en cache)
@@ -102,6 +103,7 @@ async function loadUser() {
   }
   S.certs = certs; S.attempts = attempts; S.payments = payments; S.reviews = reviews;
   S.trainer = profile?.role === 'trainer' ? await api.getMyTrainer(id).catch(() => null) : null;
+  S.updates = profile && !profile.is_admin ? await api.myCourseUpdates().catch(() => []) : [];
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
 }
 
@@ -335,6 +337,9 @@ function notifications() {
     else if (pay.status === 'approved') out.push({ id: 'pay-a-' + pay.id, tone: 'ok', title: 'Votre accès est activé 🎉', text: `Paiement validé. Accès à toutes les formations jusqu'au ${fmtDate(pay.access_until || S.profile.sub_end)}.`, href: '#/formations', ts: pay.decided_at });
     else if (pay.status === 'rejected') out.push({ id: 'pay-r-' + pay.id, tone: 'err', title: 'Paiement non validé', text: `${pay.reason || 'Paiement introuvable'}. Vérifiez la référence dans votre SMS et renvoyez-la.`, href: '#/abonnement', ts: pay.decided_at });
   }
+  for (const u of (S.updates || []).slice(0, 10)) {
+    out.push({ id: 'cu-' + u.id, tone: 'blue', title: u.kind === 'new_version' ? `Nouvelle version : ${u.title}` : `Formation mise à jour : ${u.title}`, text: u.note || 'Le contenu de la formation a été amélioré.', href: '#/formation/' + u.course_id, ts: u.created_at });
+  }
   const T = S.trainer;
   if (isTrainer() && T?.decided_at) {
     if (T.status === 'approved') out.push({ id: 'tr-ok-' + T.decided_at, tone: 'ok', title: 'Votre profil formateur est validé', text: hasAccess() ? 'Les étudiants peuvent maintenant le voir.' : 'Il sera visible dès que votre abonnement sera actif.', href: '#/espace-formateur', ts: T.decided_at });
@@ -365,12 +370,12 @@ async function refreshNotifs() {
   if (notifBusy || !S.session || !S.profile || document.hidden) return;
   notifBusy = true;
   try {
-    const snap = () => JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end, S.trainer?.status, S.trainer?.decided_at]);
+    const snap = () => JSON.stringify([S.admin, S.payments.map((p) => p.id + p.status), S.profile.sub_end, S.trainer?.status, S.trainer?.decided_at, (S.updates || []).map((u) => u.id)]);
     const before = snap();
     if (isAdmin()) S.admin = await api.adminCounts();
     else {
-      const [pays, prof, tr] = await Promise.all([api.getMyPayments(uid()), api.getProfile(uid()), isTrainer() ? api.getMyTrainer(uid()).catch(() => S.trainer) : null]);
-      S.payments = pays; if (prof) S.profile = prof;
+      const [pays, prof, tr, ups] = await Promise.all([api.getMyPayments(uid()), api.getProfile(uid()), isTrainer() ? api.getMyTrainer(uid()).catch(() => S.trainer) : null, api.myCourseUpdates().catch(() => S.updates || [])]);
+      S.payments = pays; if (prof) S.profile = prof; S.updates = ups;
       if (isTrainer()) S.trainer = tr;
     }
     const after = snap();

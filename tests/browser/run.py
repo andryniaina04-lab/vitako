@@ -302,6 +302,18 @@ with sync_playwright() as p:
     page.screenshot(path=f'{SHOTS}/06-attestation.png', full_page=True)
     goto(page, '#/mon-espace')
     check('mon espace : attestation listée', cert_id in page.content())
+    # Mise à jour d'une formation commencée : notification dans la cloche
+    cid = page.evaluate("""(() => { const db = window.__mockdb(); const cid = db.progress.find((p) => p.user_id === db.profiles.find((x) => x.email === 'fanja@exemple.mg').id).course_id;
+      db.course_updates = [{ id: 1, course_id: cid, kind: 'update', note: 'Nouveaux exercices au module 2.', created_at: new Date().toISOString() },
+                           { id: 2, course_id: 'dev-3-a', kind: 'update', note: 'Pas pour elle.', created_at: new Date().toISOString() }];
+      localStorage.setItem('vitako_mock_db', JSON.stringify(db)); return cid; })()""")
+    page.reload(); page.wait_for_timeout(900)
+    check('mise à jour : cloche signale la formation commencée', page.locator('[data-act=notif] .nt-count').count() == 1)
+    page.click('[data-act=notif]'); page.wait_for_timeout(200)
+    txt = page.locator('#notif').inner_text()
+    check('mise à jour : notification avec le message, pas celle d\'une formation non commencée', 'Formation mise à jour' in txt and 'Nouveaux exercices' in txt and 'Pas pour elle' not in txt
+          and page.locator(f'#notif a[href="#/formation/{cid}"]').count() == 1)
+    page.click('[data-act=notif]'); page.wait_for_timeout(150)
     goto(page, '#/formations'); page.wait_for_selector('.done-chk')
     check('catalogue : coche sur la formation réussie', page.locator('.lv .done-chk').count() == 1 and page.locator('.lv .pill.gold').count() == 0)
     page.hover('.done-chk'); page.wait_for_timeout(300)

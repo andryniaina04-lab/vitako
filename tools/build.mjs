@@ -4,6 +4,7 @@
 // Usage : node tools/build.mjs
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -176,6 +177,19 @@ for (const [id, c] of Object.entries(v2)) {
   out.push(c.live ? `select public.course_go_live(${lit(id)}, array[${c.progress_map.map((x) => (x === null ? 'null' : Number(x))).join(', ')}]::int[]);`
     : `update public.courses set v2_live = false where id = ${lit(id)};`);
 }
+// Empreinte du contenu visible par les abonnés : si elle change, les personnes qui ont commencé
+// la formation sont prévenues (notification et e-mail). Message facultatif : "update_note" dans
+// course.json (v2/course.json pour une version 2 en ligne), à changer à chaque mise à jour.
+const hashes = {};
+for (const [id, c] of Object.entries(full)) {
+  const n = v2[id]?.live ? v2[id] : c;
+  const visible = v2[id]?.live
+    ? { v: 2, modules: n.modules.map((m) => ({ t: m.title, s: m.summary, l: m.lessons.map((l) => ({ t: l.title, b: l.body, q: l.questions })) })), exam: n.exam }
+    : { v: 1, modules: n.modules.map((m) => ({ t: m.title, s: m.summary, b: m.body, v: m.video_url, q: m.questions })), exam: n.exam };
+  hashes[id] = { h: createHash('sha256').update(JSON.stringify(visible)).digest('hex').slice(0, 32), ...(n.update_note ? { note: n.update_note } : {}) };
+}
+out.push('\n-- Mises à jour : prévient les abonnés concernés quand le contenu visible change');
+out.push(`select public.sync_course_hashes(${json(hashes)});`);
 out.push('commit;');
 writeFileSync(join(root, 'supabase/seed.sql'), out.join('\n') + '\n');
 
