@@ -69,3 +69,7 @@ jobs:
         run: |
           psql "$SUPABASE_DB_URL" -tA -c "select count(*) || ' formations, dont ' || count(*) filter (where published) || ' publiées' from public.courses"
           psql "$SUPABASE_DB_URL" -tA -c "select count(*) || ' leçons, ' || (select count(*) from public.exam_questions) || ' questions d''examen' from public.lessons"
+          echo "Notifications de mise à jour (7 derniers jours) :"
+          psql "$SUPABASE_DB_URL" -tA -c "select u.created_at::date || ' · ' || u.course_id || ' · ' || u.kind || ' · ' || u.recipients || ' personne(s) concernée(s) · ' || u.emailed || ' e-mail(s) envoyé(s)' from public.course_updates u where u.created_at > now() - interval '7 days' order by u.id"
+          echo "Réponses de Resend aux envois groupés (dernières 24 h) :"
+          psql "$SUPABASE_DB_URL" -tA -c "select coalesce(status_code::text, 'sans réponse') || ' : ' || count(*) || coalesce(' · ' || left(max(case when status_code >= 300 then content end), 300), '') from net._http_response where created > now() - interval '24 hours' group by status_code" || true
