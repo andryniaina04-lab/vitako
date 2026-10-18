@@ -1,0 +1,15 @@
+{
+  "live": false,
+  "progress_map": [0, 1, 3, 4, 5],
+  "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+  "objectives": [
+    "Expliquer ce que fait un community manager, choisir les bons réseaux et s'organiser depuis Madagascar",
+    "Construire une stratégie : fiche client type, objectifs mesurables, ligne éditoriale et calendrier",
+    "Écrire des publications, créer des visuels, des photos et des vidéos courtes qui fonctionnent",
+    "Programmer, répondre, modérer et mesurer avec Meta Business Suite",
+    "Gérer une page pendant un mois, de l'audit au rapport mensuel",
+    "Construire son portfolio, fixer ses formules, trouver des clients et se faire payer"
+  ],
+  "modules": ["m1.json", "m2.json", "m3.json", "m4.json", "m5.json", "m6.json"],
+  "exam": "exam.json"
+}

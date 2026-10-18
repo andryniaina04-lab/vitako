@@ -1,0 +1,61 @@
+{
+  "title": "Le métier de community manager",
+  "summary": "Ce que fait un community manager, les réseaux sociaux et leur fonctionnement, vos clients, votre organisation depuis Madagascar et les règles du métier.",
+  "lessons": [
+    {
+      "title": "Ce que fait vraiment un community manager",
+      "file": "m1-l1.md",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un community manager ?", "options": ["Transformer des abonnés en clients fidèles", "Publier le plus de photos possible", "Créer le logo de la marque", "Gérer la comptabilité de la boutique"], "correct": 0, "why": "Chaque publication et chaque réponse servent un objectif de l'entreprise : faire connaître, créer la confiance, faire vendre." },
+        { "q": "Dans quel ordre se suivent les 3 objectifs d'une page ?", "options": ["Faire connaître, créer la confiance, faire vendre", "Faire vendre, faire connaître, créer la confiance", "Créer la confiance, divertir, publier", "Publier, répondre, supprimer"], "correct": 0, "why": "Comme un entonnoir : beaucoup de personnes découvrent la marque, une partie lui fait confiance, une partie de celles-là achète." },
+        { "q": "Laquelle de ces tâches fait partie de la semaine type d'un community manager ?", "options": ["Répondre aux messages et aux commentaires", "Fabriquer les produits", "Livrer les commandes", "Créer le site web de la marque"], "correct": 0, "why": "Les 6 tâches sont planifier, créer, publier, répondre, animer et mesurer. Répondre prend souvent le plus de temps." },
+        { "q": "Qui crée et règle les campagnes de publicité payantes importantes ?", "options": ["Le gestionnaire de publicités", "Le community manager débutant, seul", "Le graphiste", "Le livreur"], "correct": 0, "why": "Le community manager peut booster une publication, mais les campagnes importantes sont le métier du gestionnaire de publicités." },
+        { "q": "Pourquoi la régularité est-elle si importante ?", "options": ["Le client paie pour que sa page reste vivante tout le temps", "Parce que Facebook l'exige par contrat", "Pour remplir la page de citations", "Elle n'a pas d'importance"], "correct": 0, "why": "Une page qui publie beaucoup puis s'arrête un mois donne une impression d'abandon. La régularité crée la confiance." }
+      ]
+    },
+    {
+      "title": "Les réseaux sociaux et leur fonctionnement",
+      "file": "m1-l2.md",
+      "questions": [
+        { "q": "Quel réseau est au cœur du métier pour la plupart des commerces à Madagascar ?", "options": ["Facebook, avec Messenger", "LinkedIn", "Pinterest", "X (Twitter)"], "correct": 0, "why": "Beaucoup de Malgaches découvrent un produit sur Facebook, posent une question en commentaire, puis commandent par Messenger." },
+        { "q": "Pourquoi utiliser une page plutôt qu'un profil personnel pour vendre ?", "options": ["La page donne des statistiques et des accès propres à chaque personne", "Le profil personnel a plus d'abonnés", "La page est payante, donc plus sérieuse", "Il n'y a aucune différence"], "correct": 0, "why": "Une page est faite pour l'activité commerciale : statistiques, accès avec des droits, pas de limite pratique d'abonnés." },
+        { "q": "Qu'est-ce qui aide une publication à être montrée à plus de personnes ?", "options": ["Les réactions, le temps passé et les échanges en commentaire", "Écrire « Partagez SVP !!! »", "Copier le contenu d'une autre page", "Acheter des abonnés"], "correct": 0, "why": "Les réseaux montrent davantage ce qui intéresse les gens : réactions, vidéos regardées jusqu'au bout, commentaires, partages." },
+        { "q": "Combien de réseaux ouvrir pour un petit client qui débute ?", "options": ["1 ou 2, bien tenus", "Tous les réseaux existants", "Au moins 5", "Aucun"], "correct": 0, "why": "Un compte abandonné fait croire que la boutique a fermé. On ajoute un réseau seulement quand les premiers fonctionnent." },
+        { "q": "Quel réseau conseiller en priorité à un cabinet d'expertise comptable qui vend à des entreprises ?", "options": ["LinkedIn, avec une page Facebook simple", "TikTok uniquement", "Instagram uniquement", "Aucun réseau"], "correct": 0, "why": "LinkedIn rassemble les décideurs des entreprises. Une page Facebook simple sert aux informations pratiques." }
+      ]
+    },
+    {
+      "title": "Vos clients, à Madagascar et ailleurs",
+      "file": "m1-l3.md",
+      "questions": [
+        { "q": "Quel est le besoin principal d'une boutique en ligne malgache ?", "options": ["Répondre vite aux messages et vendre par Messenger", "Publier sur LinkedIn", "Avoir un logo animé", "Écrire des articles de blog"], "correct": 0, "why": "Les ventes se font souvent par Messenger : une réponse rapide évite que le client parte chez un concurrent." },
+        { "q": "Comment publier pour un client dont les abonnés sont en France ?", "options": ["À l'heure de ses abonnés, en programmant si besoin", "À l'heure de Madagascar", "Au hasard", "Uniquement la nuit"], "correct": 0, "why": "Les abonnés sont actifs à leurs propres heures. La programmation permet de publier au bon moment sans travailler la nuit." },
+        { "q": "Pourquoi choisir une spécialité ?", "options": ["Vos messages sont plus convaincants et votre travail plus rapide", "Pour refuser tous les autres clients pour toujours", "Parce que c'est obligatoire", "Pour augmenter le nombre de réseaux"], "correct": 0, "why": "Un restaurant cherche quelqu'un qui connaît la restauration. Une spécialité permet aussi de réutiliser vos idées et vos modèles." },
+        { "q": "Un client vous demande de garantir 10 000 abonnés en un mois. Que faire ?", "options": ["Refuser la garantie et proposer une méthode avec un suivi chiffré", "Accepter et acheter des abonnés si besoin", "Promettre 20 000 pour le rassurer", "Ne rien répondre"], "correct": 0, "why": "On ne contrôle pas le nombre d'abonnés. Des abonnés achetés ne réagissent pas et n'achètent pas." },
+        { "q": "Quel avantage un community manager malgache a-t-il pour les pages locales ?", "options": ["Il répond dans la langue et le ton des clients, en français et en malgache", "Il travaille sans connexion", "Il n'a jamais besoin de valider les contenus", "Il peut publier sans accès"], "correct": 0, "why": "Beaucoup d'abonnés mélangent le français et le malgache. Répondre dans leur langue crée tout de suite de la proximité." }
+      ]
+    },
+    {
+      "title": "S'organiser à distance depuis Madagascar",
+      "file": "m1-l4.md",
+      "questions": [
+        { "q": "Une publication programmée part-elle pendant une coupure d'électricité chez vous ?", "options": ["Oui, elle est enregistrée sur les serveurs du réseau social", "Non, il faut que votre ordinateur reste allumé", "Seulement si votre téléphone est chargé", "Seulement le week-end"], "correct": 0, "why": "C'est pour cela que l'on programme la semaine à l'avance : la publication part à l'heure prévue, quoi qu'il arrive chez vous." },
+        { "q": "Quand les clients des commerces écrivent-ils surtout ?", "options": ["Le soir et le week-end", "Uniquement le lundi matin", "Uniquement pendant les heures de bureau", "Jamais en dehors des promotions"], "correct": 0, "why": "Les clients écrivent après le travail. Des horaires de réponse adaptés évitent de perdre les ventes du soir." },
+        { "q": "À quoi sert le message d'absence automatique ?", "options": ["Rassurer le client final en dehors des horaires de réponse", "Remplacer toutes les réponses", "Bloquer les messages", "Supprimer les commentaires"], "correct": 0, "why": "Il indique quand la réponse arrivera. Le client sait que son message a été reçu." },
+        { "q": "Une publication est prévue à 18 h pour des abonnés à Paris, en hiver. Quelle heure est-il à Antananarivo ?", "options": ["20 h", "17 h", "19 h", "16 h"], "correct": 0, "why": "En hiver, Paris est à UTC+1 et Madagascar à UTC+3 : 2 heures d'écart." },
+        { "q": "Que vérifier avant d'envoyer une réponse quand on gère plusieurs pages ?", "options": ["Le nom de la page depuis laquelle on répond", "La couleur de la page", "Le nombre d'abonnés", "La météo"], "correct": 0, "why": "Répondre depuis la mauvaise page crée une confusion et fait perdre des ventes. On vérifie toujours la page affichée." }
+      ]
+    },
+    {
+      "title": "Travailler en règle et avec éthique",
+      "file": "m1-l5.md",
+      "questions": [
+        { "q": "Pouvez-vous publier une belle photo de plat trouvée sur Internet pour un restaurant ?", "options": ["Non : elle appartient à son auteur, et elle trompe les abonnés", "Oui, si elle est jolie", "Oui, si on la recadre", "Oui, si on cite Google"], "correct": 0, "why": "Une image trouvée en ligne appartient à son auteur. Et montrer un plat qui n'est pas celui du restaurant trompe les clients." },
+        { "q": "Quelle musique utiliser dans une vidéo pour un compte professionnel ?", "options": ["Une musique de la bibliothèque autorisée pour les comptes professionnels", "N'importe quelle chanson populaire", "La chanson d'un artiste sans lui demander", "Une musique téléchargée sur YouTube"], "correct": 0, "why": "Une marque qui utilise une musique pour vendre doit en avoir le droit. Les réseaux proposent des bibliothèques adaptées." },
+        { "q": "Comment accéder à la page d'un client ?", "options": ["Avec votre propre compte, ajouté par le client avec des droits limités", "Avec le mot de passe personnel du client", "En créant un faux compte", "En demandant le code reçu par SMS"], "correct": 0, "why": "L'accès avec votre propre compte protège le client et vous. Il peut le retirer à tout moment." },
+        { "q": "Que faire des numéros de téléphone reçus dans la messagerie d'une page ?", "options": ["Les utiliser seulement pour la commande ou la question du client", "Les publier pour répondre à une critique", "Les copier pour d'autres clients", "Les vendre"], "correct": 0, "why": "Ce sont des données personnelles : elles servent uniquement à la demande du client, en message privé." },
+        { "q": "Que faire des publications promotionnelles programmées en cas de deuil national ?", "options": ["Les suspendre et demander au client s'il souhaite publier un message", "Les laisser partir comme prévu", "Les supprimer définitivement sans prévenir", "Doubler les promotions"], "correct": 0, "why": "Une promotion joyeuse pendant un drame choque les abonnés. On suspend et on décide avec le client." }
+      ]
+    }
+  ]
+}

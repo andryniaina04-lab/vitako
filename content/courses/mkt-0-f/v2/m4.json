@@ -1,0 +1,61 @@
+{
+  "title": "Les outils : publier, répondre et mesurer",
+  "summary": "Recevoir les accès sans mot de passe, programmer avec Meta Business Suite, gérer la messagerie et les commentaires, lire les statistiques, puis les outils payants et le boost d'une publication.",
+  "lessons": [
+    {
+      "title": "Les accès aux pages et la sécurité",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "Pourquoi ne jamais demander le mot de passe Facebook personnel d'un client ?", "options": ["Son compte peut être bloqué, vous voyez sa vie privée, et il ne peut pas vous retirer l'accès facilement", "Parce que Facebook n'a pas de mot de passe", "Parce que c'est plus lent", "Il n'y a aucun risque"], "correct": 0, "why": "Un accès donné à votre propre compte protège le client et vous, et se retire en deux clics." },
+        { "q": "Quels droits demander sur la page d'un client ?", "options": ["Publier, répondre aux messages et voir les statistiques, sans contrôle total", "Le contrôle total, pour être tranquille", "Aucun droit", "Les droits de supprimer la page"], "correct": 0, "why": "Le client doit garder le contrôle total de sa page. Un accès limité suffit pour le travail quotidien." },
+        { "q": "Que faut-il pour gérer Instagram dans Meta Business Suite ?", "options": ["Un compte Instagram professionnel, relié à la page Facebook", "Le mot de passe Instagram du client", "Un compte Instagram personnel", "Rien, c'est automatique"], "correct": 0, "why": "Meta Business Suite regroupe la page Facebook et le compte Instagram professionnel qui lui est relié." },
+        { "q": "Vous recevez « Votre page sera supprimée dans 24 h, faites appel ici ». Que faire ?", "options": ["Ne pas cliquer, et vérifier dans les paramètres officiels de la page", "Cliquer vite pour sauver la page", "Transférer le message au client sans rien vérifier", "Entrer son mot de passe sur le lien"], "correct": 0, "why": "C'est une technique courante de piratage : le lien mène à une fausse page de connexion." },
+        { "q": "Qui doit être propriétaire et administrateur de la page ?", "options": ["Toujours le client", "Le community manager seul", "Un ancien employé", "Personne"], "correct": 0, "why": "Si le community manager est le seul administrateur, le client risque de perdre sa page à la fin de la collaboration." }
+      ]
+    },
+    {
+      "title": "Programmer avec Meta Business Suite",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Que permet Meta Business Suite ?", "options": ["Programmer publications, Reels et stories sur Facebook et Instagram", "Créer des logos", "Monter des vidéos longues", "Gérer la comptabilité"], "correct": 0, "why": "C'est l'outil gratuit de Meta pour publier, répondre et voir les statistiques de Facebook et d'Instagram." },
+        { "q": "Que vérifier avant de cliquer sur « Programmer » ?", "options": ["La page choisie, l'aperçu sur téléphone, la date et le fuseau horaire", "Uniquement la couleur du visuel", "Le nombre d'abonnés", "Rien"], "correct": 0, "why": "La bonne page, une accroche visible et le bon fuseau évitent les erreurs les plus fréquentes." },
+        { "q": "Pourquoi adapter le texte d'une publication pour Instagram ?", "options": ["Les liens n'y sont pas cliquables et les hashtags y sont plus utiles", "Parce qu'Instagram refuse les textes de Facebook", "Pour écrire en anglais", "Ce n'est jamais utile"], "correct": 0, "why": "Chaque réseau a ses usages : sur Instagram, on renvoie vers le lien du profil et on ajoute quelques hashtags précis." },
+        { "q": "À quoi sert le planificateur ?", "options": ["Voir et déplacer toutes les publications programmées dans un calendrier", "Payer la publicité", "Répondre aux messages", "Supprimer la page"], "correct": 0, "why": "D'un coup d'œil, on vérifie la semaine : pas de trou, pas de journée surchargée, les bonnes heures." },
+        { "q": "Une publication prévue à 18 h pour Paris part à 16 h là-bas. Quelle est la cause probable ?", "options": ["Le fuseau horaire de l'outil n'était pas le bon", "Facebook était en panne", "Le visuel était trop lourd", "Le client a changé d'avis"], "correct": 0, "why": "L'outil utilisait le fuseau de Madagascar, 2 heures en avance sur Paris en hiver. On vérifie toujours le fuseau." }
+      ]
+    },
+    {
+      "title": "La messagerie et la modération",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "À quels messages répondre en premier ?", "options": ["Aux questions d'achat : prix, disponibilité, livraison", "Aux messages les plus anciens, sans les lire", "Aux publicités", "Aux messages hors sujet"], "correct": 0, "why": "Les questions d'achat sont des ventes possibles : une réponse rapide évite que le client parte ailleurs." },
+        { "q": "À quoi sert le message d'absence ?", "options": ["Répondre automatiquement en dehors des horaires, en indiquant quand la réponse arrivera", "Supprimer les messages", "Bloquer les clients", "Remplacer toutes les réponses"], "correct": 0, "why": "Le client sait que son message est reçu et quand il aura une réponse : il attend au lieu de partir." },
+        { "q": "Quelle est la première étape pour répondre à une critique ?", "options": ["Remercier pour le retour", "Supprimer le commentaire", "Expliquer que le client a tort", "Ignorer"], "correct": 0, "why": "Remercier, reconnaître, proposer en privé, régler : tous les abonnés voient une marque calme et sérieuse." },
+        { "q": "Un faux compte propose aux abonnés de payer des frais pour recevoir un lot. Que faire ?", "options": ["Supprimer le commentaire, signaler le faux compte et prévenir les abonnés", "Le laisser, ce n'est pas grave", "Répondre que c'est vrai", "Supprimer la page"], "correct": 0, "why": "C'est une arnaque courante. On protège les abonnés et la réputation de la marque." },
+        { "q": "Qui décide de la réponse publique en cas de crise ?", "options": ["Le client, avec le texte proposé par le community manager", "Le community manager seul, dans l'urgence", "Les abonnés", "Personne"], "correct": 0, "why": "En crise, la parole de la marque engage le client. Le community manager alerte vite et propose." }
+      ]
+    },
+    {
+      "title": "Lire et utiliser les statistiques",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "Que mesure la couverture ?", "options": ["Le nombre de personnes différentes qui ont vu le contenu", "Le nombre total de vues, même répétées", "Le nombre de commentaires", "Le nombre de ventes"], "correct": 0, "why": "La couverture compte les personnes. Les vues comptent les affichages : une personne peut voir plusieurs fois." },
+        { "q": "Une publication touche 2 000 personnes et reçoit 80 interactions. Quel est son taux d'interaction ?", "options": ["4 %", "40 %", "0,4 %", "8 %"], "correct": 0, "why": "80 ÷ 2 000 × 100 = 4 %." },
+        { "q": "Pourquoi utiliser le taux d'interaction plutôt que le nombre de réactions ?", "options": ["Pour comparer des publications qui n'ont pas touché le même nombre de personnes", "Parce que les réactions ne comptent pas", "Parce qu'il est plus grand", "Pour faire plaisir au client"], "correct": 0, "why": "Une publication très vue peut avoir beaucoup de réactions mais peu intéresser. Le taux rend la comparaison juste." },
+        { "q": "Que peut révéler la partie « Public » des statistiques ?", "options": ["L'âge, les villes et les heures de connexion des abonnés", "Les mots de passe des abonnés", "Leurs revenus exacts", "Leurs messages privés"], "correct": 0, "why": "Ces informations aident à choisir les heures, les sujets et parfois de nouvelles zones de livraison." },
+        { "q": "Pourquoi ne pas se fier seulement au nombre d'abonnés ?", "options": ["Des abonnés qui ne réagissent pas et n'écrivent pas n'apportent rien au client", "Parce qu'il ne change jamais", "Parce qu'il est secret", "C'est le seul chiffre important"], "correct": 0, "why": "Une petite page qui reçoit beaucoup de messages vaut mieux qu'une grande page sans contact." }
+      ]
+    },
+    {
+      "title": "Les outils payants et le boost d'une publication",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "Quand prendre un abonnement à un outil payant ?", "options": ["Quand il vous fait gagner du temps et que vos forfaits réguliers le permettent", "Dès le premier jour, pour faire professionnel", "Jamais", "Seulement si un ami l'a"], "correct": 0, "why": "Un abonnement est un investissement : il doit répondre à un vrai besoin et être payé par des revenus réguliers." },
+        { "q": "Quelle publication booster en priorité ?", "options": ["Une publication qui fonctionne déjà, avec un bon taux d'interaction", "La publication la moins réussie", "Une photo floue", "N'importe laquelle, au hasard"], "correct": 0, "why": "Une publication qui intéresse déjà les abonnés a plus de chances de bien fonctionner auprès d'un public plus large." },
+        { "q": "Qui paie le budget publicitaire d'un boost ?", "options": ["Le client, directement à Meta, avec son moyen de paiement", "Le community manager, sur son forfait", "Vitako", "Les abonnés"], "correct": 0, "why": "Le forfait rémunère le travail, pas le budget. On l'écrit clairement dans l'accord." },
+        { "q": "Que choisir avant de lancer un boost ?", "options": ["Un objectif, un public précis, un budget et une durée validés par le client", "Uniquement une couleur", "Tout Madagascar, sans objectif", "Le budget le plus élevé possible"], "correct": 0, "why": "Sans objectif ni public précis, le budget part en réactions de personnes qui ne peuvent pas acheter." },
+        { "q": "Que propose Canva Pro par rapport à la version gratuite ?", "options": ["Un kit de marque, la suppression d'arrière-plan et le redimensionnement en un clic", "La programmation sur TikTok", "La gestion des messages", "Rien de plus"], "correct": 0, "why": "Ces fonctions font gagner du temps quand on crée chaque semaine pour plusieurs marques." }
+      ]
+    }
+  ]
+}

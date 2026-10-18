@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des clients et se faire payer",
+  "summary": "Votre portfolio et votre page professionnelle, la prospection avec l'audit gratuit, l'appel de vente et l'accord de collaboration, le calcul de vos formules mensuelles, les paiements, la fidélisation et votre plan d'action.",
+  "lessons": [
+    {
+      "title": "Votre portfolio et votre page professionnelle",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Quel élément du portfolio prouve le mieux que vous obtenez des résultats ?", "options": ["Une étude de cas avec des chiffres avant et après", "20 visuels sans explication", "La liste de vos loisirs", "Une photo de votre ordinateur"], "correct": 0, "why": "Le client achète des résultats. Le contexte, la stratégie et les chiffres montrent ce que vous savez faire pour lui." },
+        { "q": "Quelle phrase de présentation est la plus efficace ?", "options": ["« J'aide les boutiques de mode d'Antananarivo à recevoir plus de commandes sur Messenger »", "« Community manager créatif et motivé »", "« Je fais tout sur tous les réseaux »", "« Disponible pour toutes missions »"], "correct": 0, "why": "La formule « J'aide [qui] à [résultat] grâce à [quoi] » permet au bon client de se reconnaître tout de suite." },
+        { "q": "Pourquoi votre propre page doit-elle être active ?", "options": ["C'est la première chose que le client regarde pour juger votre sérieux", "Parce que Facebook l'exige", "Pour avoir beaucoup d'abonnés à vendre", "Ce n'est pas important"], "correct": 0, "why": "Une page de community manager abandonnée fait douter de votre capacité à tenir celle d'un client." },
+        { "q": "Que faire si les chiffres de votre étude de cas viennent d'un exercice ?", "options": ["Indiquer clairement « projet d'étude »", "Les présenter comme un vrai client", "Les cacher", "Les multiplier par deux"], "correct": 0, "why": "L'honnêteté sur l'origine du projet protège votre réputation auprès des futurs clients." },
+        { "q": "Pourquoi un PDF léger de moins de 5 Mo ?", "options": ["Il s'ouvre même sur un téléphone avec une connexion limitée", "Parce que les gros fichiers sont interdits", "Pour cacher des pages", "Ce n'est pas important"], "correct": 0, "why": "Beaucoup de clients ouvriront votre portfolio sur téléphone. Un fichier trop lourd ne sera jamais vu." }
+      ]
+    },
+    {
+      "title": "Trouver vos premiers clients",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "À quoi sert l'audit gratuit de 15 minutes ?", "options": ["Montrer votre savoir-faire sans risque pour le commerçant, et commencer la relation", "Faire tout le travail gratuitement", "Critiquer la page en public", "Obtenir le mot de passe du client"], "correct": 0, "why": "L'audit montre ce qu'il faut faire. La mise en œuvre fait partie du travail payé." },
+        { "q": "Dans quel ordre écrire un message de prospection ?", "options": ["Personnalisation, problème, preuve, proposition", "Prix, remise, urgence", "Liste de compétences, diplômes, prix", "Bonjour, besoin de travail, merci"], "correct": 0, "why": "Le message montre que vous avez regardé la page, propose une solution à un problème précis et prouve votre savoir-faire." },
+        { "q": "Où faire vos observations sur la page d'un commerçant ?", "options": ["En privé, avec tact, en commençant par un point positif", "En commentaire sous ses publications", "Dans un groupe Facebook public", "Sur votre propre page, en le nommant"], "correct": 0, "why": "Une critique publique humilie le commerçant et vous ferme la porte." },
+        { "q": "Combien de relances envoyer à un commerçant qui ne répond pas ?", "options": ["Une, 5 à 7 jours plus tard", "Une par jour jusqu'à la réponse", "Aucune", "Dix, sur tous les réseaux"], "correct": 0, "why": "Une relance obtient souvent une réponse ; insister davantage abîme votre image." },
+        { "q": "Qu'est-ce qui compte le plus en prospection ?", "options": ["La régularité : quelques messages soignés chaque jour", "Envoyer 100 messages un seul jour", "Copier le même message partout", "Attendre que les clients viennent"], "correct": 0, "why": "À chaque étape, une partie des contacts s'arrête. Seule la régularité remplit le parcours jusqu'aux clients." }
+      ]
+    },
+    {
+      "title": "L'appel de vente et l'accord de collaboration",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Pendant l'appel de vente, qui doit parler le plus ?", "options": ["Le commerçant : vous écoutez, puis vous reformulez", "Vous, pour présenter toutes vos compétences", "Personne", "Les deux exactement autant"], "correct": 0, "why": "En expliquant ce qui ne va pas sur sa page, le commerçant se convainc lui-même." },
+        { "q": "Le commerçant dit : « J'ai peur de perdre le contrôle de ma page. » Que répondre ?", "options": ["Il reste propriétaire, vous ajoute avec un accès limité et valide chaque prix", "Il doit vous donner son mot de passe", "C'est normal de perdre le contrôle", "Il n'a pas le choix"], "correct": 0, "why": "La peur cache une question de confiance. Les accès limités et la validation rassurent." },
+        { "q": "Pourquoi proposer un mois d'essai payé plutôt que gratuit ?", "options": ["Le client s'engage, vous êtes payé, et le rapport du mois devient votre argument", "Parce que le gratuit est interdit", "Pour gagner plus que d'habitude", "Il vaut mieux toujours travailler gratuitement"], "correct": 0, "why": "Le mois gratuit attire souvent des clients qui ne paieront jamais." },
+        { "q": "Quel élément fait partie de « ce qui n'est pas inclus » dans l'accord ?", "options": ["Le budget publicitaire", "Les publications prévues", "Les réponses aux messages", "Le rapport mensuel"], "correct": 0, "why": "Le budget est payé par le client à Meta. Logo et séance photo professionnelle sont aussi d'autres prestations." },
+        { "q": "Comment valider un accord avec un commerçant qui préfère l'oral ?", "options": ["Envoyer un récapitulatif sur WhatsApp et obtenir son « OK » écrit", "Ne rien écrire", "Attendre un conflit", "Lui faire signer chez un notaire"], "correct": 0, "why": "Un accord oral s'oublie ou se comprend de deux façons. Un récapitulatif écrit suffit souvent." }
+      ]
+    },
+    {
+      "title": "Fixer ses formules mensuelles",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Revenu visé 1 000 000 Ar, frais 200 000 Ar, 80 heures facturables. Quel est le prix horaire ?", "options": ["15 000 Ar", "12 500 Ar", "2 500 Ar", "150 000 Ar"], "correct": 0, "why": "(1 000 000 + 200 000) ÷ 80 = 15 000 Ar de l'heure." },
+        { "q": "Pourquoi ne pas diviser par 160 heures ?", "options": ["Une partie du temps sert à prospecter, se former et gérer l'administration, et ne se facture pas", "Parce qu'un mois compte 80 heures", "Parce que les clients refusent de payer plus", "Il faut diviser par 160"], "correct": 0, "why": "Seules les heures facturées rapportent. Diviser par 160 donnerait un prix trop bas." },
+        { "q": "Quelle question poser avant de fixer le prix d'une formule ?", "options": ["Combien de messages la page reçoit-elle chaque jour ?", "Quelle est la couleur préférée du client ?", "Combien d'employés a le concurrent ?", "Quel téléphone a le client ?"], "correct": 0, "why": "Le temps de réponse aux messages varie énormément d'une page à l'autre et change le temps de travail." },
+        { "q": "Quand se paie un forfait mensuel ?", "options": ["Au début du mois, avant le travail", "À la fin de l'année", "Seulement si les résultats plaisent", "Quand le client le souhaite"], "correct": 0, "why": "Le paiement d'avance protège le community manager et fixe le cadre de la collaboration." },
+        { "q": "Pourquoi éviter un prix très bas « pour commencer » ?", "options": ["Il est difficile à augmenter ensuite et ne laisse plus de temps pour d'autres clients", "Parce que c'est interdit", "Parce que les clients préfèrent payer cher", "Il n'y a aucun risque"], "correct": 0, "why": "Mieux vaut un prix calculé et une petite formule Essentiel qu'un prix au rabais impossible à corriger." }
+      ]
+    },
+    {
+      "title": "Paiement, fidélisation et plan d'action",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Comment vérifier un paiement par Mobile Money ?", "options": ["Dans votre propre application, jamais sur une capture d'écran", "Avec la capture envoyée par le client", "En demandant à un ami", "Ce n'est pas nécessaire"], "correct": 0, "why": "Une capture peut être ancienne ou modifiée. Seule la réception sur votre compte compte." },
+        { "q": "Qu'envoyer avec la facture du début du mois ?", "options": ["Le rapport du mois précédent", "Vos mots de passe", "Votre CV", "Rien"], "correct": 0, "why": "Le rapport montre ce que le client a obtenu pour son argent, juste au moment où il paie." },
+        { "q": "Que vérifier avant de proposer PayPal à un client étranger ?", "options": ["Les possibilités actuelles pour un compte basé à Madagascar, sur le site officiel", "Rien, PayPal fonctionne partout pareil", "La couleur du logo", "L'avis d'un abonné"], "correct": 0, "why": "Les services de paiement et leurs conditions changent : on vérifie toujours avant de s'engager." },
+        { "q": "Qu'est-ce qui fait rester un client longtemps ?", "options": ["La régularité, des idées nouvelles, l'anticipation et des résultats expliqués", "Les prix toujours plus bas", "Les messages toutes les heures", "L'absence de rapport"], "correct": 0, "why": "Un client garde un community manager fiable, qui propose et qui montre ce que la page rapporte." },
+        { "q": "Que faire à la fin d'une mission ?", "options": ["Remettre les fichiers, vérifier que le client contrôle ses comptes, faire retirer vos accès", "Garder les accès au cas où", "Supprimer les modèles du client", "Disparaître sans prévenir"], "correct": 0, "why": "Une fin propre protège le client et votre réputation ; beaucoup de clients reviennent ou recommandent." }
+      ]
+    }
+  ]
+}

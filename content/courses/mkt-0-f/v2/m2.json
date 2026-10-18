@@ -1,0 +1,61 @@
+{
+  "title": "La stratégie : cible, objectifs et ligne éditoriale",
+  "summary": "La fiche client type, des objectifs mesurables, la ligne éditoriale et le ton de la marque, les piliers de contenu et les 4 types de publications, puis le calendrier éditorial.",
+  "lessons": [
+    {
+      "title": "Connaître la cible : la fiche client type",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'une fiche client type ?", "options": ["La description réaliste d'un client typique de la marque, avec un prénom", "La liste de tous les abonnés", "Le fichier des commandes", "Le logo de la marque"], "correct": 0, "why": "La fiche décrit l'âge, la ville, les habitudes, les freins et les déclencheurs d'un client typique. Elle guide chaque publication." },
+        { "q": "Pourquoi « hommes et femmes de 15 à 65 ans » est-il une mauvaise cible ?", "options": ["Elle est trop large pour décider quoi dire, quand et comment", "Elle est trop précise", "Elle oublie les enfants", "C'est une bonne cible"], "correct": 0, "why": "Une bonne fiche est précise, comme le portrait d'une seule personne. Une cible trop large n'aide à prendre aucune décision." },
+        { "q": "Où trouver les freins réels des clients ?", "options": ["Dans les questions qui reviennent dans les messages et les commentaires", "Dans l'imagination du community manager", "Dans les publications d'une autre marque étrangère", "Nulle part"], "correct": 0, "why": "Si beaucoup de clients demandent « C'est original ? », vous connaissez leur principal frein : la peur des contrefaçons." },
+        { "q": "Fara regarde Facebook après 19 h et a peur des contrefaçons. Quelle décision en découle ?", "options": ["Publier le soir et montrer des avis de vraies clientes", "Publier à 6 h du matin", "Publier des textes techniques sur la composition", "Supprimer les commentaires"], "correct": 0, "why": "La fiche indique le moment où la cliente est disponible et ce qui la rassure : des preuves de vraies clientes." },
+        { "q": "Que décrit la question « ses mots » de la fiche ?", "options": ["La langue et les expressions que le client utilise", "Le mot de passe du client", "Les mots interdits par Facebook", "Le nombre de mots par publication"], "correct": 0, "why": "Écrire avec les mots de la cible, en français, en malgache ou en mélangeant, crée de la proximité." }
+      ]
+    },
+    {
+      "title": "Fixer des objectifs mesurables",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Quel objectif est mesurable ?", "options": ["Passer de 40 à 55 messages reçus dans le mois", "Avoir plus de visibilité", "Être plus professionnel", "Faire mieux qu'avant"], "correct": 0, "why": "Un objectif mesurable dit ce qui change, de combien et pour quand. On peut vérifier s'il est atteint." },
+        { "q": "Quel indicateur est le plus proche de la vente pour un commerce qui vend par Messenger ?", "options": ["Le nombre de messages reçus", "Le nombre de mentions « J'aime » sur la photo de couverture", "Le nombre de publications", "Le nombre d'emojis"], "correct": 0, "why": "Chaque message est un client potentiel. C'est le signe le plus fiable du travail du community manager." },
+        { "q": "Pourquoi relever les chiffres le premier jour ?", "options": ["Pour pouvoir prouver les progrès ensuite", "Pour les publier", "Parce que Facebook l'exige", "Ce n'est pas utile"], "correct": 0, "why": "Sans point de départ, impossible de montrer ce qui a changé. Les captures du jour 1 sont votre meilleure preuve." },
+        { "q": "Combien d'objectifs retenir pour un premier mois ?", "options": ["3 au maximum, dont au moins un que vous contrôlez entièrement", "10 ou plus", "Un seul, sur les ventes", "Aucun"], "correct": 0, "why": "Peu d'objectifs, bien choisis, permettent de se concentrer. Ceux que vous contrôlez (régularité, réactivité) sont sûrs d'être tenus." },
+        { "q": "Pourquoi ne pas promettre un nombre de ventes ?", "options": ["Le community manager ne contrôle ni les prix, ni le stock, ni la livraison", "Parce que les ventes ne comptent pas", "Parce que c'est interdit par la loi", "Pour travailler moins"], "correct": 0, "why": "Les ventes dépendent aussi de facteurs que vous ne maîtrisez pas. On promet ce que l'on contrôle et on suit des indicateurs de la page." }
+      ]
+    },
+    {
+      "title": "La ligne éditoriale et le ton de la marque",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "À quoi sert la ligne éditoriale ?", "options": ["Garder la page cohérente, même quand plusieurs personnes publient", "Remplacer le calendrier", "Fixer les prix", "Choisir les abonnés"], "correct": 0, "why": "Elle fixe ce que la page publie, comment elle le dit et ce qu'elle ne publie jamais. Tout le monde suit la même règle." },
+        { "q": "Quel ton convient à un hôtel à Nosy Be ?", "options": ["Calme, chaleureux, élégant, avec le vouvoiement", "Très familier, avec dix emojis par phrase", "Agressif et pressant", "Technique et froid"], "correct": 0, "why": "Le ton correspond à la marque et à sa clientèle. Un hôtel qui vise des voyageurs choisit un ton calme et soigné." },
+        { "q": "Dans quelle langue répondre à un client qui écrit en malgache dans la messagerie ?", "options": ["En malgache", "Toujours en anglais", "Toujours en français", "Ne pas répondre"], "correct": 0, "why": "Dans la messagerie, on répond dans la langue du client : cela crée de la proximité et évite les malentendus." },
+        { "q": "Que contient au minimum la charte visuelle pour les réseaux ?", "options": ["Les couleurs, les polices, la place du logo, le style des photos et des modèles", "Uniquement le nom de la marque", "La liste des abonnés", "Les mots de passe"], "correct": 0, "why": "Ces éléments rendent la page reconnaissable au premier coup d'œil." },
+        { "q": "Quel sujet fait le plus souvent partie des interdits d'une marque commerciale ?", "options": ["La politique et la religion", "Les nouveautés", "Les horaires", "Les avis de clients"], "correct": 0, "why": "Ces sujets déclenchent des débats violents. Sauf si c'est le métier du client, une marque commerciale n'y prend pas position." }
+      ]
+    },
+    {
+      "title": "Les piliers de contenu et les 4 types de publications",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un pilier de contenu ?", "options": ["Un grand thème qui revient régulièrement et intéresse la cible", "Une publication payante", "Le logo de la page", "Un réseau social"], "correct": 0, "why": "Une marque a 3 à 5 piliers (coulisses, produits, clients…). Chaque publication appartient à l'un d'eux." },
+        { "q": "Quels sont les 4 types de publications ?", "options": ["Informer, divertir, prouver, vendre", "Lundi, mardi, mercredi, jeudi", "Photo, vidéo, texte, story", "Facebook, Instagram, TikTok, LinkedIn"], "correct": 0, "why": "Varier les buts évite la page-prospectus et crée la confiance qui rend les publications de vente efficaces." },
+        { "q": "La photo d'une cliente satisfaite avec son avis est une publication de quel type ?", "options": ["Prouver", "Informer", "Divertir", "Vendre"], "correct": 0, "why": "Elle rassure les futurs clients avec un fait : une vraie cliente est contente." },
+        { "q": "Quelle répartition conseiller pour commencer ?", "options": ["Environ 1 publication de vente sur 3 ou 4", "Uniquement des publications de vente", "Aucune publication de vente", "Une vente par heure"], "correct": 0, "why": "C'est un point de départ ; les statistiques permettent ensuite d'ajuster pour chaque page." },
+        { "q": "Quelle est la meilleure source d'idées de contenus ?", "options": ["Les questions que les clients posent souvent", "Les publications d'une autre page copiées telles quelles", "Des citations trouvées au hasard", "Les mots-clés les plus longs"], "correct": 0, "why": "Chaque question fréquente devient une publication utile, et réduit le nombre de questions en message." }
+      ]
+    },
+    {
+      "title": "Le calendrier éditorial",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "À quoi sert la colonne Statut du calendrier éditorial ?", "options": ["Savoir où en est chaque publication : en création, à valider, programmée…", "Indiquer le nombre d'abonnés", "Noter le prix des produits", "Classer les clients"], "correct": 0, "why": "D'un coup d'œil, vous et le client savez ce qui reste à faire et ce qui attend une validation." },
+        { "q": "Quel rythme est le meilleur pour une petite page ?", "options": ["3 publications par semaine, chaque semaine", "5 publications un jour, puis rien pendant 2 semaines", "Une publication par mois", "Dix publications par jour"], "correct": 0, "why": "La régularité compte plus que la quantité. Un rythme tenable se garde toute l'année." },
+        { "q": "Pourquoi les fins de mois sont-elles importantes pour beaucoup de commerces ?", "options": ["Les salaires tombent : c'est un bon moment pour les promotions", "Facebook montre plus les publications", "Les boutiques ferment", "Il ne faut rien publier"], "correct": 0, "why": "Les clients ont plus de budget juste après la paie. On place les offres importantes à ce moment." },
+        { "q": "Comment choisir les heures de publication ?", "options": ["Commencer selon les habitudes de la cible, puis ajuster après 4 semaines de statistiques", "Toujours publier à minuit", "Publier au hasard", "Copier l'heure d'une page étrangère"], "correct": 0, "why": "Il n'y a pas d'heure magique : chaque page a ses abonnés. Les statistiques montrent ce qui marche." },
+        { "q": "Que faut-il pour publier un prix ou une promotion ?", "options": ["Une validation écrite du client", "Un accord oral au téléphone suffit", "Rien, c'est le rôle du community manager", "L'avis d'un abonné"], "correct": 0, "why": "Un prix non validé peut obliger le client à vendre à perte ou à se contredire publiquement." }
+      ]
+    }
+  ]
+}

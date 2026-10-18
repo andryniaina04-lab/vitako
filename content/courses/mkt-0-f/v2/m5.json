@@ -1,0 +1,61 @@
+{
+  "title": "Premier projet : gérer une page pendant un mois",
+  "summary": "Le mois complet de la boutique Lamba Soa : audit de départ et objectifs, calendrier et production en lot, animation et jeu-concours, suivi quotidien et imprévus, rapport mensuel et étude de cas.",
+  "lessons": [
+    {
+      "title": "L'audit de départ et les objectifs",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Pourquoi faire un audit avant de changer quoi que ce soit ?", "options": ["Pour pouvoir prouver les résultats à la fin du mois", "Pour critiquer la gérante", "Parce que Facebook l'exige", "Ce n'est pas utile"], "correct": 0, "why": "Sans les chiffres et les captures du jour 1, impossible de montrer ce qui a changé." },
+        { "q": "Quelle question de l'appel de découverte donne les objectifs ?", "options": ["« À quoi verrez-vous, dans un mois, que c'est réussi ? »", "« Quel âge avez-vous ? »", "« Combien gagnez-vous ? »", "« Aimez-vous Facebook ? »"], "correct": 0, "why": "La réponse donne les objectifs avec les mots de la cliente. On la note mot pour mot." },
+        { "q": "À quoi sert l'analyse de 2 concurrents ?", "options": ["Voir ce que les clientes trouvent déjà ailleurs et trouver des améliorations réalistes", "Copier leurs publications", "Les critiquer en public", "Leur voler des abonnés"], "correct": 0, "why": "L'analyse montre ce qui fonctionne dans le même secteur, pour s'en inspirer sans copier." },
+        { "q": "Comment présenter l'audit à la gérante ?", "options": ["Commencer par ce qui marche, puis présenter les problèmes comme des occasions, avec des actions", "Lister toutes les erreurs de la page", "Dire que tout est à refaire", "Ne pas le présenter"], "correct": 0, "why": "La gérante a construit sa page seule ; une présentation respectueuse donne envie de travailler ensemble." },
+        { "q": "Quel objectif dépend entièrement du community manager ?", "options": ["Répondre aux messages en moins de 2 heures, de 8 h à 20 h", "Doubler les ventes", "Gagner 5 000 abonnés", "Faire baisser les prix des concurrents"], "correct": 0, "why": "La réactivité et la régularité dépendent de votre travail ; les ventes dépendent aussi des prix, du stock et de la livraison." }
+      ]
+    },
+    {
+      "title": "Le calendrier du mois et la production en lot",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "Pourquoi organiser une séance photo en début de mois ?", "options": ["Avoir la matière de tout le mois sans demander une photo chaque jour", "Pour remplacer le calendrier", "Pour publier toutes les photos le même jour", "Ce n'est pas utile"], "correct": 0, "why": "Une séance de 2 heures donne 30 à 40 photos : le mois peut être préparé à l'avance." },
+        { "q": "Que faut-il avant de photographier une vendeuse qui porte les vêtements ?", "options": ["Son accord écrit pour la publication sur les réseaux", "Rien, elle travaille à la boutique", "L'accord d'un abonné", "Un contrat de mannequin payé"], "correct": 0, "why": "Chaque personne photographiée doit accepter que son image soit publiée. Sinon, on photographie les vêtements à plat ou de dos." },
+        { "q": "Qu'est-ce que la production en lot ?", "options": ["Créer les contenus de plusieurs semaines en une ou deux journées", "Publier tout en une fois", "Acheter des contenus", "Copier les contenus d'une autre page"], "correct": 0, "why": "Créer textes, puis visuels, puis vidéos en série est plus rapide, plus cohérent et résiste aux coupures." },
+        { "q": "La gérante valide par message vocal. Que faire ?", "options": ["Répondre par écrit avec un résumé de ce qui est validé ou corrigé", "Refuser les vocaux", "Ne rien noter", "Publier sans validation"], "correct": 0, "why": "Le résumé écrit garde une trace des validations, même quand la cliente préfère parler." },
+        { "q": "Pourquoi le mois de mai est-il intéressant pour une boutique de vêtements ?", "options": ["Il contient la fête des mères, une occasion de cadeaux", "Il n'y a aucune fête", "Les boutiques ferment", "Facebook est fermé"], "correct": 0, "why": "Les dates importantes du mois guident le calendrier : idées de cadeaux, livraisons avant la fête." }
+      ]
+    },
+    {
+      "title": "Animer la communauté et organiser un jeu-concours",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Quelle question anime le mieux une page de vêtements ?", "options": ["« Pour un mariage, robe longue ou courte ? »", "« Quelle est votre opinion politique ? »", "« Pouvez-vous partager notre page ? »", "« Avez-vous vu notre concurrent ? »"], "correct": 0, "why": "Une bonne question est facile, liée à la marque, et ses réponses apprennent ce que les clientes préfèrent." },
+        { "q": "Quel lot choisir pour le concours d'une boutique de vêtements ?", "options": ["Un bon d'achat dans la boutique", "Un téléphone", "Une somme d'argent", "Un voyage"], "correct": 0, "why": "Un lot lié à la marque attire des personnes qui pourraient devenir clientes, pas des chasseurs de cadeaux." },
+        { "q": "Quelle condition de participation éviter sur Facebook ?", "options": ["« Partagez sur votre profil et identifiez 3 amis » comme condition obligatoire", "« Commentez avec votre robe préférée »", "« Répondez à la question en commentaire »", "« Votez pour votre tenue préférée »"], "correct": 0, "why": "Ces conditions vont à l'encontre des règles de Facebook pour les promotions des pages, et attirent des joueurs sans intérêt pour la marque." },
+        { "q": "Que préciser dans le règlement pour éviter les arnaques ?", "options": ["Le gagnant sera contacté uniquement par la page officielle, sans aucun paiement", "Le gagnant doit payer des frais de livraison par Mobile Money", "Le gagnant sera contacté par n'importe quel compte", "Rien"], "correct": 0, "why": "De faux comptes demandent souvent des frais aux participants. Le règlement les prévient." },
+        { "q": "Pourquoi montrer la remise du lot ?", "options": ["Pour prouver que le concours était honnête", "Pour obliger la gagnante à acheter", "Parce que c'est obligatoire", "Ce n'est pas utile"], "correct": 0, "why": "Une photo de la remise, avec l'accord de la gagnante, rend la marque crédible pour les prochains concours." }
+      ]
+    },
+    {
+      "title": "Le suivi quotidien et les imprévus",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "À quel moment de la journée la réactivité compte-t-elle souvent le plus ?", "options": ["Le soir, quand les clientes écrivent après le travail", "À 4 h du matin", "Uniquement le dimanche", "Jamais"], "correct": 0, "why": "Beaucoup de messages arrivent le soir : y répondre vite évite de perdre des ventes." },
+        { "q": "Que noter dans le journal de bord ?", "options": ["Messages reçus, questions fréquentes, ce qui a marché, ce qu'il faut signaler", "Uniquement le nombre d'abonnés", "Les mots de passe", "Rien"], "correct": 0, "why": "Le journal sert à repérer les besoins des clientes et prépare le rapport du mois." },
+        { "q": "Une cliente demande à payer en deux fois. Que fait le community manager ?", "options": ["Il transmet la demande à la gérante, avec une proposition", "Il accepte seul", "Il refuse seul", "Il ignore la demande"], "correct": 0, "why": "Les conditions de paiement sont une décision de la gérante. On transmet vite, en regroupant les questions." },
+        { "q": "Un article publié est en rupture de stock. Que faire ?", "options": ["Répondre honnêtement, proposer une alternative et mettre à jour la publication", "Continuer à prendre des commandes", "Supprimer tous les commentaires", "Ne rien dire"], "correct": 0, "why": "L'honnêteté garde la confiance. Une alternative peut sauver la vente." },
+        { "q": "Que faire des publications promotionnelles programmées pendant un cyclone qui fait des victimes ?", "options": ["Les suspendre, avec l'accord de la cliente", "Les laisser partir", "Ajouter plus de promotions", "Supprimer la page"], "correct": 0, "why": "Une promotion joyeuse pendant un drame choque les abonnés. On vérifie l'actualité pendant la saison cyclonique." }
+      ]
+    },
+    {
+      "title": "Le rapport mensuel et l'étude de cas",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Comment comparer les résultats du mois ?", "options": ["Avec les mêmes indicateurs, sur une période de même durée, par rapport au départ", "En comparant mai avec une seule semaine d'avril", "En choisissant seulement les bons chiffres", "Sans chiffres"], "correct": 0, "why": "Une comparaison juste rend le rapport crédible." },
+        { "q": "Que faire d'un résultat décevant dans le rapport ?", "options": ["L'expliquer et proposer une solution", "Le cacher", "Accuser la cliente", "Changer les chiffres"], "correct": 0, "why": "Une cliente fait davantage confiance à quelqu'un qui analyse ses erreurs qu'à quelqu'un qui prétend que tout est parfait." },
+        { "q": "Combien de propositions faire pour le mois suivant ?", "options": ["3 actions concrètes", "Aucune", "Une vingtaine", "Une seule, vague"], "correct": 0, "why": "Trois actions précises sont faciles à valider et à mesurer le mois suivant." },
+        { "q": "Pourquoi proposer un engagement de 3 mois après un mois d'essai réussi ?", "options": ["Les résultats d'une page se construisent sur plusieurs mois", "Pour bloquer la cliente", "Parce que Facebook l'exige", "Pour augmenter le prix sans raison"], "correct": 0, "why": "Un mois montre une tendance ; plusieurs mois installent des résultats durables." },
+        { "q": "Que faut-il indiquer dans une étude de cas faite sur une page qui n'est pas une vraie cliente ?", "options": ["« Projet d'étude »", "Rien", "Que c'est un vrai client", "Des chiffres inventés présentés comme réels"], "correct": 0, "why": "L'honnêteté sur l'origine du projet protège votre réputation auprès des futurs clients." }
+      ]
+    }
+  ]
+}

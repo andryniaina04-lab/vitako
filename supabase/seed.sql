@@ -72689,4 +72689,3255 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel moyen de paiement utiliser le plus souvent avec un client local à Madagascar ?', '["Uniquement des espèces envoyées par la poste","Mobile Money ou virement bancaire","Uniquement PayPal","Un chèque étranger"]'::jsonb, 1, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire à la fin d''une mission ?', '["Partir sans rien dire","Transmettre les tâches, transférer les fichiers et faire retirer les accès","Supprimer les fichiers du client sans prévenir","Garder les accès au cas où"]'::jsonb, 1, 2);
 select public.course_go_live('gestion-0-f', array[0, 2, 3, 4, 5]::int[]);
+
+-- mkt-0-f (version 2, aperçu administrateur)
+delete from public.lesson_parts where course_id = 'mkt-0-f';
+delete from public.modules2 where course_id = 'mkt-0-f' and module_index >= 6;
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 0, 'Le métier de community manager', 'Ce que fait un community manager, les réseaux sociaux et leur fonctionnement, vos clients, votre organisation depuis Madagascar et les règles du métier.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 0, 0, 'Ce que fait vraiment un community manager', 10, 'Un community manager fait vivre la présence d''une marque sur les réseaux sociaux : il publie, répond, anime et mesure. À Madagascar, presque tous les commerces vendent sur Facebook, et beaucoup n''ont personne pour s''en occuper sérieusement : les messages restent sans réponse, les publications sont irrégulières, les clients partent chez le concurrent. Cette première leçon vous montre le métier tel qu''il est vraiment, au quotidien.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer en une phrase ce que fait un community manager.
+> 2. Citer les 3 objectifs qu''un client attend de sa page.
+> 3. Décrire les 6 tâches d''une semaine type.
+> 4. Distinguer le community manager des métiers voisins.
+> 5. Repérer les qualités qui font un bon community manager.
+
+## Le métier en une phrase
+
+Un community manager **transforme des abonnés en clients fidèles**. Il ne se contente pas de « poster des photos » : chaque publication, chaque réponse et chaque story doit servir un objectif de l''entreprise.
+
+> [!definition] Communauté
+> L''ensemble des personnes qui suivent une marque et interagissent avec elle : abonnés, clients, personnes qui commentent ou partagent. Le community manager « gère » cette communauté : il l''écoute, lui répond et la fait grandir.
+
+### Les 3 objectifs d''une page
+
+```schema entonnoir
+titre: Ce que le client attend de sa page
+Faire connaître : plus de personnes voient la marque
+Créer la confiance : la page est active, on y répond vite et poliment
+Faire vendre : les abonnés envoient un message, commandent, viennent en boutique
+```
+
+Ces trois objectifs se suivent, comme un entonnoir : beaucoup de personnes découvrent la marque, une partie lui fait confiance, et une partie de celles-là achète. Un bon community manager sait toujours lequel de ces objectifs sert chaque publication.
+
+## Une semaine type : les 6 tâches du métier
+
+| N° | Tâche | Exemple concret | Temps par semaine (exemple pour 1 petite page) |
+| --- | --- | --- | --- |
+| 1 | Planifier | Le calendrier des publications de la semaine | 1 h |
+| 2 | Créer | Textes, visuels Canva, courtes vidéos | 3 à 4 h |
+| 3 | Publier et programmer | Programmation dans Meta Business Suite | 30 min |
+| 4 | Répondre | Questions sur les prix, la livraison, les horaires | 2 à 3 h |
+| 5 | Animer | Sondage, question du jour, jeu-concours | 1 h |
+| 6 | Mesurer et rendre compte | Les chiffres de la semaine, le rapport du mois | 30 min à 1 h |
+
+Ces durées sont des repères : une boutique qui reçoit 50 messages par jour demande beaucoup plus de temps de réponse qu''un cabinet d''avocat. Pour un débutant, gérer **3 à 5 petites pages** en même temps est un rythme réaliste.
+
+```schema cycle
+titre: Le cycle d''une semaine
+Lundi : planifier et programmer les publications de la semaine
+Chaque jour : répondre aux messages et aux commentaires, publier des stories
+En milieu de semaine : animer (sondage, question, direct)
+Vendredi : regarder les chiffres et noter ce qui a marché
+```
+
+## Ce que le community manager n''est pas
+
+Le community manager travaille souvent avec d''autres métiers. Il doit savoir où s''arrête son rôle, pour ne pas promettre ce qu''il ne fait pas.
+
+```schema comparaison
+titre: Des métiers voisins
+colonnes: Community manager | Graphiste | Gestionnaire de publicités
+Fait vivre la page au quotidien | Crée l''identité visuelle et les visuels élaborés | Crée et règle les campagnes payantes
+Publie, répond, anime, mesure | Logo, charte graphique, affiches | Budget, ciblage, suivi des ventes
+Utilise des modèles et la charte de la marque | Conçoit les modèles et la charte | Travaille avec le budget du client
+```
+
+Un community manager débutant crée des visuels simples dans Canva, et peut proposer de « booster » une publication. Mais la création d''un logo ou la gestion de grosses campagnes publicitaires sont d''autres métiers, avec leurs propres formations sur Vitako.
+
+## Les qualités d''un bon community manager
+
+```schema chiffres
+titre: Les 5 qualités que les clients recherchent
+Réactivité : répondre vite, surtout le soir et le week-end
+Écriture : des textes clairs, sans faute, dans le ton de la marque
+Calme : répondre poliment, même à un client énervé
+Curiosité : repérer les tendances et les idées de contenus
+Rigueur : publier régulièrement, noter les chiffres, tenir les délais
+```
+
+La **régularité** est souvent ce qui manque aux pages de commerces : on publie beaucoup pendant deux semaines, puis plus rien pendant un mois. Le client paie un community manager pour que sa page reste vivante **tout le temps**.
+
+> [!madagascar] Votre avantage
+> Les entreprises malgaches vous paient d''abord pour une chose simple : **répondre vite et bien** aux clients sur Messenger, en français et en malgache. Beaucoup de pages perdent des ventes parce que personne ne répond le soir ou le week-end. Un community manager fiable, qui connaît les habitudes des clients malgaches, apporte une vraie différence dès le premier mois.
+
+> [!exemple] Miora et la pâtisserie d''Antsirabe
+> Miora commence avec la pâtisserie de sa tante, à Antsirabe. La page publiait une photo de temps en temps, et les messages restaient sans réponse jusqu''au lendemain. Miora publie trois fois par semaine, prépare une story chaque matin avec les gâteaux du jour, et répond aux messages jusqu''à 20 h. Au bout de deux mois, les commandes de gâteaux d''anniversaire par Messenger ont nettement augmenté. Sa tante la recommande à deux commerçants de la ville.
+
+> [!erreur] Publier sans objectif
+> Un débutant publie « quelque chose » chaque jour : une citation trouvée sur Internet, une photo floue, un « Bonne journée à tous ! ». La page est active, mais rien ne se passe : aucun message, aucune vente. **Chaque publication doit servir un objectif** : faire connaître, créer la confiance ou faire vendre. Si vous ne savez pas lequel, ne la publiez pas.
+
+> [!retenir]
+> - Un community manager **transforme des abonnés en clients fidèles**.
+> - 3 objectifs : **faire connaître, créer la confiance, faire vendre**.
+> - 6 tâches : **planifier, créer, publier, répondre, animer, mesurer**.
+> - Le community manager n''est ni graphiste ni gestionnaire de publicités, mais travaille avec eux.
+> - **Réactivité, écriture, calme, curiosité, rigueur.**
+
+## Exercice pratique : observer 3 pages
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez 3 pages Facebook de commerces malgaches (une boutique, un restaurant, un service).
+> 2. Pour chacune, notez : le nombre d''abonnés, la date de la dernière publication, le nombre moyen de réactions sur les 5 dernières publications.
+> 3. Pour les 5 dernières publications de chaque page, notez l''objectif servi : faire connaître, créer la confiance ou faire vendre.
+> 4. Envoyez un message à chaque page avec une vraie question (« Livrez-vous à Ivato ? ») et notez le temps de réponse.
+>
+> **À livrer** : un tableau des 3 pages avec vos observations. Gardez-le : ces pages vous serviront tout au long de la formation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 0, 0, 'Quel est le rôle principal d''un community manager ?', '["Créer le logo de la marque","Publier le plus de photos possible","Transformer des abonnés en clients fidèles","Gérer la comptabilité de la boutique"]'::jsonb, 2, 'Chaque publication et chaque réponse servent un objectif de l''entreprise : faire connaître, créer la confiance, faire vendre.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 0, 1, 'Dans quel ordre se suivent les 3 objectifs d''une page ?', '["Publier, répondre, supprimer","Faire vendre, faire connaître, créer la confiance","Créer la confiance, divertir, publier","Faire connaître, créer la confiance, faire vendre"]'::jsonb, 3, 'Comme un entonnoir : beaucoup de personnes découvrent la marque, une partie lui fait confiance, une partie de celles-là achète.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 0, 2, 'Laquelle de ces tâches fait partie de la semaine type d''un community manager ?', '["Livrer les commandes","Répondre aux messages et aux commentaires","Créer le site web de la marque","Fabriquer les produits"]'::jsonb, 1, 'Les 6 tâches sont planifier, créer, publier, répondre, animer et mesurer. Répondre prend souvent le plus de temps.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 0, 3, 'Qui crée et règle les campagnes de publicité payantes importantes ?', '["Le livreur","Le community manager débutant, seul","Le graphiste","Le gestionnaire de publicités"]'::jsonb, 3, 'Le community manager peut booster une publication, mais les campagnes importantes sont le métier du gestionnaire de publicités.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 0, 4, 'Pourquoi la régularité est-elle si importante ?', '["Elle n''a pas d''importance","Pour remplir la page de citations","Parce que Facebook l''exige par contrat","Le client paie pour que sa page reste vivante tout le temps"]'::jsonb, 3, 'Une page qui publie beaucoup puis s''arrête un mois donne une impression d''abandon. La régularité crée la confiance.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 0, 1, 'Les réseaux sociaux et leur fonctionnement', 10, 'Un community manager ne doit pas être partout : il choisit les réseaux où se trouvent les clients de la marque, et il comprend comment chacun décide de montrer, ou non, une publication. Cette leçon vous présente les réseaux qui comptent à Madagascar et pour les clients étrangers, leurs formats, et les grands principes qui font qu''un contenu est vu.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Connaître les 5 réseaux principaux et leurs usages.
+> 2. Choisir les réseaux adaptés à chaque type de client.
+> 3. Distinguer un profil personnel d''une page ou d''un compte professionnel.
+> 4. Comprendre ce qui fait qu''une publication est montrée à plus de personnes.
+> 5. Éviter le piège « être partout ».
+
+## Les 5 réseaux principaux
+
+| Réseau | Pour quels clients | Contenus qui fonctionnent | Point fort |
+| --- | --- | --- | --- |
+| **Facebook** | Presque tous les commerces à Madagascar | Photos, vidéos, publications, groupes | Messenger : c''est là que se font les ventes |
+| **Instagram** | Mode, beauté, tourisme, restauration | Belles photos, Reels, stories | L''image de marque, un public plus urbain |
+| **TikTok** | Marques qui visent les jeunes | Vidéos courtes, tendances, humour | Une vidéo peut être vue par beaucoup de non-abonnés |
+| **WhatsApp Business** | Commerces de proximité, services | Catalogue, statuts, réponses rapides | Le contact direct avec les clients fidèles |
+| **LinkedIn** | Entreprises qui vendent à d''autres entreprises, ONG, recrutement | Textes professionnels, actualités, expertise | Le sérieux et les contacts professionnels |
+
+À Madagascar, **Facebook et Messenger** restent le cœur du métier pour la plupart des commerces. Les autres réseaux s''ajoutent selon la cible du client.
+
+> [!madagascar] Facebook, le marché en ligne
+> Pour beaucoup de Malgaches, Facebook est à la fois un journal, un lieu de discussion et un marché : on y découvre un produit, on pose une question en commentaire, puis on commande par Messenger. Certains forfaits mobiles proposent un accès à Facebook à prix réduit, ce qui en fait souvent le premier réseau utilisé. Pensez-y : vos abonnés lisent souvent sur un téléphone d''entrée de gamme, avec une connexion limitée.
+
+## Profil, page ou compte professionnel ?
+
+```schema comparaison
+titre: Deux types de comptes
+ton: mauvais-bon
+colonnes: Profil personnel utilisé pour vendre | Page ou compte professionnel
+Limité en nombre d''amis, mélange vie privée et ventes | Abonnés sans limite pratique, uniquement la marque
+Pas de statistiques | Statistiques détaillées
+Impossible de donner un accès propre à un community manager | Accès donnés à chaque personne, avec des droits
+Peut être bloqué pour usage commercial | Fait pour l''activité commerciale
+```
+
+Beaucoup de petits commerces vendent encore avec un profil personnel. Votre premier conseil sera souvent de **créer une vraie page**, ou de passer le compte Instagram ou TikTok en **compte professionnel**, gratuitement, depuis les paramètres de l''application.
+
+## Comment un réseau décide de montrer une publication
+
+Une page avec 5 000 abonnés ne montre pas chaque publication à 5 000 personnes. Chaque réseau choisit ce qu''il affiche à chaque utilisateur, avec un ensemble de règles qu''on appelle **l''algorithme**.
+
+> [!definition] Algorithme
+> Le système qui choisit, pour chaque personne, quels contenus afficher et dans quel ordre. Les détails sont secrets et changent souvent, mais les grands principes sont connus : le réseau montre davantage ce qui intéresse les gens.
+
+```schema etapes
+titre: Ce qui aide une publication à être vue
+Les premières réactions : si les premiers spectateurs réagissent, le réseau la montre à d''autres
+Le temps passé : une vidéo regardée jusqu''au bout, un carrousel que l''on fait défiler
+Les échanges : commentaires et réponses, messages, partages, enregistrements
+La régularité : une page qui publie souvent et régulièrement
+L''originalité : un contenu créé par la marque plutôt que copié ailleurs
+```
+
+Ce qui **nuit** à une publication : un texte qui supplie (« Partagez SVP !!! »), un lien qui fait quitter le réseau dès la première ligne, un contenu copié d''une autre page, ou des abonnés achetés qui ne réagissent jamais.
+
+> [!cle] Personne ne connaît la formule exacte
+> Méfiez-vous des vidéos qui promettent « l''astuce secrète de l''algorithme ». Les réseaux changent leurs règles régulièrement. La méthode durable reste la même : publier des contenus utiles ou agréables pour la cible, régulièrement, et regarder dans les statistiques ce qui fonctionne pour **cette** page.
+
+## Choisir les bons réseaux pour un client
+
+```schema etapes
+titre: Choisir en 4 questions
+La cible : son âge, sa ville, ses habitudes sur le téléphone
+Ce que la marque peut montrer : produits visuels, services, expertise
+Les contenus possibles : photos, vidéos, temps disponible du client
+Le lieu des ventes : Messenger, WhatsApp, boutique, site
+```
+
+> [!exemple] Trois clients, trois choix
+> **Une boutique de vêtements à Behoririka** : Facebook pour vendre par Messenger, Instagram pour l''image, WhatsApp Business pour les clientes fidèles. **Un cabinet d''expertise comptable à Antananarivo** : LinkedIn et une page Facebook simple pour les informations pratiques. **Un snack qui vise les étudiants d''Antsirabe** : Facebook et TikTok, avec des vidéos courtes des plats.
+
+Pour un débutant comme pour un petit client, la règle est simple : **1 ou 2 réseaux bien tenus valent mieux que 5 réseaux abandonnés**. On en ajoute un autre seulement quand les premiers fonctionnent.
+
+> [!erreur] Ouvrir tous les réseaux le même jour
+> Pour faire « professionnel », le community manager crée pour son client une page Facebook, un compte Instagram, un TikTok, un LinkedIn et une chaîne YouTube. Trois semaines plus tard, quatre comptes sur cinq n''ont plus rien publié. Un client potentiel qui tombe sur un compte abandonné pense que la boutique a fermé. **Commencez petit, et tenez ce que vous ouvrez.**
+
+> [!retenir]
+> - À Madagascar, **Facebook et Messenger** d''abord ; les autres réseaux selon la cible.
+> - Une **page ou un compte professionnel**, jamais un profil personnel pour vendre.
+> - L''algorithme montre davantage ce qui fait **réagir, rester et échanger**.
+> - Choisir les réseaux selon la **cible, les contenus possibles et le lieu des ventes**.
+> - **1 ou 2 réseaux bien tenus** valent mieux que 5 abandonnés.
+
+## Exercice pratique : choisir les réseaux
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour chacune des 3 pages observées à la leçon 1.1, cherchez si la marque existe sur d''autres réseaux et notez la date de la dernière publication sur chacun.
+> 2. Pour chaque marque, répondez aux 4 questions du choix des réseaux.
+> 3. Recommandez 1 ou 2 réseaux par marque, en expliquant votre choix en 3 lignes.
+> 4. Repérez une marque malgache qui utilise bien TikTok ou Instagram et notez 3 choses qu''elle fait bien.
+>
+> **À livrer** : votre tableau des réseaux, vos recommandations et vos 3 observations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 1, 0, 'Quel réseau est au cœur du métier pour la plupart des commerces à Madagascar ?', '["X (Twitter)","Pinterest","LinkedIn","Facebook, avec Messenger"]'::jsonb, 3, 'Beaucoup de Malgaches découvrent un produit sur Facebook, posent une question en commentaire, puis commandent par Messenger.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 1, 1, 'Pourquoi utiliser une page plutôt qu''un profil personnel pour vendre ?', '["La page donne des statistiques et des accès propres à chaque personne","Il n''y a aucune différence","Le profil personnel a plus d''abonnés","La page est payante, donc plus sérieuse"]'::jsonb, 0, 'Une page est faite pour l''activité commerciale : statistiques, accès avec des droits, pas de limite pratique d''abonnés.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 1, 2, 'Qu''est-ce qui aide une publication à être montrée à plus de personnes ?', '["Les réactions, le temps passé et les échanges en commentaire","Écrire « Partagez SVP !!! »","Acheter des abonnés","Copier le contenu d''une autre page"]'::jsonb, 0, 'Les réseaux montrent davantage ce qui intéresse les gens : réactions, vidéos regardées jusqu''au bout, commentaires, partages.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 1, 3, 'Combien de réseaux ouvrir pour un petit client qui débute ?', '["1 ou 2, bien tenus","Aucun","Au moins 5","Tous les réseaux existants"]'::jsonb, 0, 'Un compte abandonné fait croire que la boutique a fermé. On ajoute un réseau seulement quand les premiers fonctionnent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 1, 4, 'Quel réseau conseiller en priorité à un cabinet d''expertise comptable qui vend à des entreprises ?', '["TikTok uniquement","Aucun réseau","LinkedIn, avec une page Facebook simple","Instagram uniquement"]'::jsonb, 2, 'LinkedIn rassemble les décideurs des entreprises. Une page Facebook simple sert aux informations pratiques.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 0, 2, 'Vos clients, à Madagascar et ailleurs', 9, 'Restaurants, boutiques en ligne, hôtels, écoles, cabinets, petites entreprises françaises : beaucoup d''entreprises ont besoin d''un community manager, mais elles n''attendent pas toutes la même chose, ni ne paient de la même façon. Cette leçon vous aide à connaître vos clients possibles, à comprendre leurs besoins, et à choisir ceux que vous viserez en premier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Citer les principaux types de clients à Madagascar et à l''étranger.
+> 2. Relier chaque type de client à son besoin principal.
+> 3. Comparer le travail avec un client local et avec un client étranger.
+> 4. Choisir une spécialité pour démarrer.
+> 5. Repérer les signaux d''alerte avant d''accepter un client.
+
+## Les clients à Madagascar
+
+| Type de client | Exemples | Besoin principal |
+| --- | --- | --- |
+| **Boutiques en ligne** | Vêtements, cosmétiques, téléphones, accessoires | Répondre vite aux messages et vendre par Messenger |
+| **Restauration** | Restaurants, snacks, pâtisseries | Montrer les plats du jour, prendre les commandes |
+| **Tourisme** | Hôtels, guides, agences (Nosy Be, Sainte-Marie, Morondava, Isalo) | Belles images, réponses aux touristes en français et en anglais |
+| **Éducation et associations** | Écoles privées, centres de formation, églises, ONG | Informer les parents et les membres, annoncer les événements |
+| **Services** | Médecins, auto-écoles, salles de sport, salons de coiffure | Prises de rendez-vous et informations pratiques |
+
+## Les clients à l''étranger
+
+1. **Petites entreprises francophones** (France, Belgique, Suisse, Canada, La Réunion, Maurice) qui n''ont pas le temps de gérer leurs réseaux.
+2. **Agences de communication** qui sous-traitent la programmation, la modération des commentaires ou la réponse aux messages.
+3. **Créateurs, coachs et formateurs en ligne** qui veulent quelqu''un pour répondre à leurs abonnés et préparer leurs publications.
+4. **Entreprises de la diaspora malgache**, à l''étranger ou avec une activité à Madagascar.
+
+```schema comparaison
+titre: Client local ou client étranger ?
+colonnes: Client à Madagascar | Client à l''étranger
+Facebook et Messenger d''abord, parfois TikTok | Instagram, Facebook, LinkedIn selon le pays et le secteur
+Textes en français, en malgache ou un mélange | Textes en français soigné, parfois en anglais
+Validation rapide par WhatsApp, parfois par message vocal | Validation par e-mail ou dans un outil partagé
+Paiement par Mobile Money, prix en ariary | Paiement par virement ou plateforme, prix en euros ou dollars
+Publications à l''heure malgache | Publications à l''heure des abonnés du client
+```
+
+> [!madagascar] Le français, le malgache… et le mélange
+> Beaucoup d''abonnés malgaches écrivent en mélangeant le français et le malgache. Une page qui répond dans la langue du client, avec le bon ton, crée tout de suite de la proximité. C''est un savoir-faire que les agences étrangères n''ont pas : mettez-le en avant dans votre offre, et précisez dans quelles langues vous écrivez sans faute.
+
+## Choisir une spécialité pour démarrer
+
+Quand on débute, on a envie de dire « je gère les réseaux de tout le monde ». Mais un restaurant cherche quelqu''un qui connaît la restauration, un hôtel quelqu''un qui connaît le tourisme. Une spécialité rend vos messages plus convaincants et votre travail plus rapide : vous réutilisez vos idées, vos modèles et votre connaissance des clients.
+
+```schema entonnoir
+titre: Préciser sa spécialité
+Toutes les entreprises : trop large
+Les commerces : déjà plus clair
+Les restaurants et snacks : un secteur, des habitudes communes
+Les restaurants d''Antananarivo qui livrent : une cible précise
+Ceux qui veulent plus de commandes par Messenger : un besoin précis
+```
+
+```schema chiffres
+titre: 3 critères pour choisir
+Ce que vous connaissez : un secteur où vous avez travaillé ou que vous aimez
+Ce qui se paie : des entreprises qui vendent grâce aux réseaux sociaux
+Ce qui est accessible : des clients que vous pouvez contacter cette semaine
+```
+
+> [!exemple] Tojo et les hôtels de Nosy Be
+> Tojo a travaillé deux saisons à la réception d''un hôtel de Nosy Be. Il connaît les questions des touristes, les photos qui donnent envie et les périodes où les réservations se jouent. Il se présente comme « community manager pour les hôtels et lodges de Nosy Be ». Les gérants comprennent tout de suite qu''il connaît leur métier, et il décroche ses deux premiers clients en un mois.
+
+## Les signaux d''alerte
+
+Certains clients font perdre plus qu''ils ne rapportent. Repérez ces signaux dès les premiers échanges.
+
+```schema checklist
+titre: Méfiez-vous si le client…
+[ ] veut des résultats garantis : « 10 000 abonnés en un mois »
+[ ] demande d''acheter des abonnés, des faux avis ou des faux commentaires
+[ ] refuse de vous donner un accès propre et veut vous donner son mot de passe personnel
+[ ] ne veut rien payer avant la fin du mois, ou demande « un mois gratuit pour voir »
+[ ] vend des produits douteux ou interdits, ou demande de publier des fausses promesses
+[ ] vous demande de payer des frais pour obtenir la mission
+```
+
+Un ou deux signaux ne veulent pas toujours dire « mauvais client », mais ils doivent vous faire poser des questions avant d''accepter.
+
+> [!erreur] Promettre des abonnés
+> Pour convaincre une boutique, le débutant promet « 5 000 abonnés de plus en un mois ». Il n''y arrive pas, et achète des abonnés à l''étranger pour tenir sa promesse. La page gagne des abonnés qui ne réagissent jamais et n''achètent jamais ; ses publications sont moins montrées qu''avant. **Ne promettez jamais un nombre d''abonnés ou de ventes** : promettez une méthode, une régularité et un suivi chiffré.
+
+> [!retenir]
+> - À Madagascar : **boutiques en ligne, restauration, tourisme, éducation, services**.
+> - À l''étranger : **petites entreprises francophones, agences, créateurs, diaspora**.
+> - Local : Messenger, malgache et français, Mobile Money. Étranger : écrit soigné, virement, autre fuseau.
+> - Une **spécialité** rend vos messages plus convaincants.
+> - Jamais de **résultats garantis** ni d''**abonnés achetés**.
+
+## Exercice pratique : votre client idéal
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Listez 6 types de clients possibles (4 à Madagascar, 2 à l''étranger).
+> 2. Notez chacun de 1 à 5 sur les 3 critères : ce que vous connaissez, ce qui se paie, ce qui est accessible.
+> 3. Choisissez votre spécialité et précisez-la avec l''entonnoir, jusqu''au dernier niveau.
+> 4. Trouvez 5 pages de cette spécialité et notez, pour chacune, son principal problème visible.
+>
+> **À livrer** : votre tableau de notes, votre entonnoir rempli et la liste des 5 pages avec leur problème.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 2, 0, 'Quel est le besoin principal d''une boutique en ligne malgache ?', '["Avoir un logo animé","Écrire des articles de blog","Répondre vite aux messages et vendre par Messenger","Publier sur LinkedIn"]'::jsonb, 2, 'Les ventes se font souvent par Messenger : une réponse rapide évite que le client parte chez un concurrent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 2, 1, 'Comment publier pour un client dont les abonnés sont en France ?', '["À l''heure de Madagascar","Uniquement la nuit","Au hasard","À l''heure de ses abonnés, en programmant si besoin"]'::jsonb, 3, 'Les abonnés sont actifs à leurs propres heures. La programmation permet de publier au bon moment sans travailler la nuit.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 2, 2, 'Pourquoi choisir une spécialité ?', '["Parce que c''est obligatoire","Vos messages sont plus convaincants et votre travail plus rapide","Pour augmenter le nombre de réseaux","Pour refuser tous les autres clients pour toujours"]'::jsonb, 1, 'Un restaurant cherche quelqu''un qui connaît la restauration. Une spécialité permet aussi de réutiliser vos idées et vos modèles.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 2, 3, 'Un client vous demande de garantir 10 000 abonnés en un mois. Que faire ?', '["Accepter et acheter des abonnés si besoin","Ne rien répondre","Refuser la garantie et proposer une méthode avec un suivi chiffré","Promettre 20 000 pour le rassurer"]'::jsonb, 2, 'On ne contrôle pas le nombre d''abonnés. Des abonnés achetés ne réagissent pas et n''achètent pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 2, 4, 'Quel avantage un community manager malgache a-t-il pour les pages locales ?', '["Il répond dans la langue et le ton des clients, en français et en malgache","Il n''a jamais besoin de valider les contenus","Il travaille sans connexion","Il peut publier sans accès"]'::jsonb, 0, 'Beaucoup d''abonnés mélangent le français et le malgache. Répondre dans leur langue crée tout de suite de la proximité.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 0, 3, 'S''organiser à distance depuis Madagascar', 10, 'Un community manager travaille avec un téléphone, un ordinateur et une connexion. À Madagascar, les coupures d''électricité, les forfaits de données limités et le décalage horaire avec les clients étrangers font partie du quotidien. Les pages des clients, elles, ne s''arrêtent jamais : les messages arrivent le soir, le week-end, pendant les fêtes. Cette leçon vous aide à vous équiper et à vous organiser pour rester fiable.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Réunir l''équipement minimum d''un community manager.
+> 2. Programmer à l''avance pour résister aux coupures.
+> 3. Fixer des horaires de réponse clairs avec chaque client.
+> 4. Publier à l''heure des abonnés, quel que soit leur pays.
+> 5. Séparer votre vie personnelle et vos comptes de travail.
+
+## L''équipement du community manager
+
+| Équipement | Minimum pour commencer | Conseillé quand les revenus arrivent |
+| --- | --- | --- |
+| **Téléphone** | Un smartphone récent, avec une bonne caméra et assez de stockage | Un deuxième téléphone réservé au travail |
+| **Ordinateur** | Un ordinateur qui fait tourner un navigateur récent | Un portable avec une bonne batterie |
+| **Connexion** | Une connexion principale et un forfait de données mobiles | Deux opérateurs, pour avoir une connexion de secours |
+| **Électricité** | Une batterie externe pour le téléphone | Un onduleur ou une batterie pour la box et l''ordinateur |
+| **Pour filmer** | La lumière d''une fenêtre, un support pour poser le téléphone | Un petit trépied et un micro-cravate |
+
+Le téléphone est votre outil principal : vous y répondez aux messages, vous y filmez les vidéos courtes, vous y vérifiez l''aperçu des publications. L''ordinateur sert à créer les visuels, à programmer la semaine et à préparer les rapports.
+
+## Programmer pour résister aux coupures
+
+Une publication programmée part à l''heure prévue, même si votre électricité ou votre connexion est coupée : elle est enregistrée sur les serveurs du réseau social. C''est votre meilleure protection.
+
+```schema etapes
+titre: Le plan anti-coupure du community manager
+Programmer : toutes les publications de la semaine, le lundi
+Préparer : les visuels et les textes d''avance, rangés par client
+Répondre : depuis le téléphone, en données mobiles, si la box est coupée
+Prévenir : le client si une coupure longue retarde une tâche
+Rattraper : les messages en attente dès le retour de la connexion
+```
+
+> [!madagascar] Les données mobiles
+> Répondre aux messages consomme peu de données ; envoyer et télécharger des vidéos en consomme beaucoup. Gardez un forfait réservé au travail, téléchargez les vidéos lourdes quand vous avez une connexion fixe, et désactivez la lecture automatique des vidéos dans les applications pour économiser vos données. Préparez les fichiers sur l''ordinateur, puis transférez-les quand la connexion est bonne.
+
+## Fixer des horaires de réponse
+
+Les clients des commerces écrivent surtout **le soir et le week-end**. Mais vous ne pouvez pas répondre 24 heures sur 24, 7 jours sur 7. Mettez-vous d''accord avec chaque client sur des horaires clairs, écrits dans votre accord.
+
+```schema comparaison
+titre: Des horaires clairs
+ton: mauvais-bon
+colonnes: Sans règle | Avec des horaires écrits
+Le client attend une réponse à 23 h | Réponses de 8 h à 20 h, du lundi au samedi
+Vous répondez à tout moment, épuisé | Un message d''absence automatique en dehors des horaires
+Les week-ends ne sont jamais prévus | Le dimanche : un passage le matin et un le soir, si c''est dans le forfait
+Chacun imagine des délais différents | Délai maximum de réponse : 2 heures pendant les horaires
+```
+
+Le **message d''absence** automatique (vous verrez comment le régler au module 4) rassure le client final : « Merci pour votre message ! Nous vous répondons dès 8 h. »
+
+## Le décalage horaire
+
+Madagascar est à **UTC+3 toute l''année**. Pour un client étranger, programmez les publications **à l''heure de ses abonnés**, pas à la vôtre.
+
+| Pays des abonnés | Écart en hiver | Écart en été | 18 h chez les abonnés, c''est… à Antananarivo (hiver) |
+| --- | --- | --- | --- |
+| France, Belgique, Suisse | 2 h d''avance pour vous | 1 h d''avance | 20 h |
+| Québec (Montréal) | 8 h d''avance | 7 h d''avance | 2 h du matin, le lendemain |
+| La Réunion, Maurice | 1 h de retard (toute l''année) | 1 h de retard | 17 h |
+
+Pour un client au Québec, une publication prévue à 18 h là-bas tombe en pleine nuit chez vous : c''est exactement pour cela que l''on programme. Vérifiez aussi le fuseau horaire choisi dans l''outil de programmation : certains outils utilisent celui de la page, d''autres celui de votre ordinateur.
+
+> [!exemple] Les messages de 21 h
+> Miora gère la page d''une boutique de Mahajanga. Elle remarque que la plupart des messages arrivent entre 19 h et 22 h, après le travail des clientes. Avec la gérante, elle décide de répondre jusqu''à 21 h 30, et de commencer sa journée plus tard, à 10 h. Les ventes du soir ne sont plus perdues, et Miora garde des horaires tenables.
+
+## Séparer le personnel et le travail
+
+1. **Un compte Facebook sérieux** : c''est avec lui que vous gérerez les pages des clients. Photo correcte, double authentification activée.
+2. **Un dossier par client**, sur l''ordinateur et en ligne, avec ses visuels, ses textes et ses validations.
+3. **Un groupe WhatsApp par client**, pour les validations : vous gardez une trace écrite de chaque accord.
+4. **Les notifications de travail** coupées en dehors de vos horaires, sauf urgence prévue avec le client.
+
+> [!erreur] Répondre à un client depuis la mauvaise page
+> Un community manager qui gère cinq pages répond à un message de la boutique de vêtements… depuis la page du restaurant. Le client final reçoit une réponse incompréhensible, et la boutique perd une vente. **Vérifiez toujours le nom de la page affiché** avant d''envoyer une réponse ou de publier, surtout quand vous passez vite d''un client à l''autre.
+
+> [!retenir]
+> - Le **téléphone** pour répondre et filmer, l''**ordinateur** pour créer et programmer.
+> - **Programmer à l''avance** protège des coupures : la publication part quand même.
+> - Des **horaires de réponse écrits**, et un message d''absence automatique.
+> - Publier **à l''heure des abonnés** ; vérifier le fuseau de l''outil.
+> - **Un dossier et un groupe WhatsApp par client** ; toujours vérifier la page avant d''envoyer.
+
+## Exercice pratique : votre organisation
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Faites l''inventaire de votre équipement avec le tableau : ce que vous avez, ce qui manque, ce que vous achèterez en premier.
+> 2. Rédigez votre plan anti-coupure en 5 lignes et le message que vous enverriez à un client en cas de longue coupure.
+> 3. Proposez des horaires de réponse pour une boutique en ligne d''Antananarivo, et rédigez son message d''absence.
+> 4. Calculez à quelle heure programmer, depuis Madagascar, une publication prévue à 12 h et à 18 h pour des abonnés à Paris et à Montréal, en hiver et en été.
+>
+> **À livrer** : votre inventaire, votre plan, vos horaires et message d''absence, et votre tableau des heures.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 3, 0, 'Une publication programmée part-elle pendant une coupure d''électricité chez vous ?', '["Non, il faut que votre ordinateur reste allumé","Seulement si votre téléphone est chargé","Oui, elle est enregistrée sur les serveurs du réseau social","Seulement le week-end"]'::jsonb, 2, 'C''est pour cela que l''on programme la semaine à l''avance : la publication part à l''heure prévue, quoi qu''il arrive chez vous.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 3, 1, 'Quand les clients des commerces écrivent-ils surtout ?', '["Uniquement le lundi matin","Uniquement pendant les heures de bureau","Le soir et le week-end","Jamais en dehors des promotions"]'::jsonb, 2, 'Les clients écrivent après le travail. Des horaires de réponse adaptés évitent de perdre les ventes du soir.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 3, 2, 'À quoi sert le message d''absence automatique ?', '["Supprimer les commentaires","Bloquer les messages","Rassurer le client final en dehors des horaires de réponse","Remplacer toutes les réponses"]'::jsonb, 2, 'Il indique quand la réponse arrivera. Le client sait que son message a été reçu.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 3, 3, 'Une publication est prévue à 18 h pour des abonnés à Paris, en hiver. Quelle heure est-il à Antananarivo ?', '["20 h","19 h","17 h","16 h"]'::jsonb, 0, 'En hiver, Paris est à UTC+1 et Madagascar à UTC+3 : 2 heures d''écart.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 3, 4, 'Que vérifier avant d''envoyer une réponse quand on gère plusieurs pages ?', '["La couleur de la page","Le nombre d''abonnés","Le nom de la page depuis laquelle on répond","La météo"]'::jsonb, 2, 'Répondre depuis la mauvaise page crée une confusion et fait perdre des ventes. On vérifie toujours la page affichée.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 0, 4, 'Travailler en règle et avec éthique', 11, 'Une page de marque est publique : chaque image, chaque musique, chaque promesse et chaque réponse engage le client devant des milliers de personnes. Un community manager sérieux connaît les règles qui protègent la marque : les droits sur les images et la musique, la sécurité des accès, l''honnêteté envers les abonnés, et les démarches pour travailler en règle. Cette leçon termine le module 1 avec ces règles, puis le projet du module.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser des images et des musiques autorisées.
+> 2. Recevoir et protéger les accès aux pages des clients.
+> 3. Refuser les pratiques trompeuses : faux avis, faux abonnés, fausses promesses.
+> 4. Respecter les données personnelles des abonnés.
+> 5. Connaître les démarches de base pour travailler en règle à Madagascar.
+
+## Les images et la musique
+
+Une image trouvée sur Google, une photo d''un concurrent ou une chanson connue **appartiennent à leurs auteurs**. Les publier pour une marque sans autorisation peut entraîner la suppression du contenu, un blocage de la page, ou une réclamation de l''auteur.
+
+```schema comparaison
+titre: Ce que vous pouvez publier
+ton: mauvais-bon
+colonnes: Interdit | Autorisé
+Une photo trouvée sur Google ou sur une autre page | Les photos du client, vos propres photos, une banque d''images libre de droits
+Le visuel d''un concurrent « un peu modifié » | Un visuel créé à partir de la charte du client
+Une chanson connue ajoutée dans le montage | Les musiques proposées par le réseau pour les comptes professionnels
+La photo d''un client sans son accord | La photo d''un client qui a donné son accord écrit
+```
+
+| Ressource | Sources possibles | À vérifier |
+| --- | --- | --- |
+| Photos | Les photos du client, les vôtres, des banques libres de droits (Unsplash, Pexels, Pixabay) | La licence de chaque photo pour un usage commercial |
+| Visuels et modèles | Canva (éléments gratuits), les modèles créés pour la marque | Les éléments réservés à l''offre payante |
+| Musique | La bibliothèque de l''application, pour les comptes professionnels | Les conditions d''usage commercial |
+| Photos de clients | Les clients eux-mêmes | Un accord écrit pour chaque publication |
+
+Les conditions changent parfois : lisez la page « Licence » d''un site avant d''utiliser une ressource pour un client.
+
+> [!cle] La musique des comptes professionnels
+> Sur Instagram et TikTok, les comptes professionnels n''ont souvent pas accès à toutes les musiques populaires : ils doivent utiliser une bibliothèque de musiques autorisées pour un usage commercial. C''est normal : une marque qui utilise une chanson pour vendre doit en avoir le droit. Utilisez la bibliothèque proposée par l''application pour votre type de compte.
+
+## Les accès aux pages
+
+Ne demandez **jamais** le mot de passe Facebook personnel d''un client. C''est risqué pour lui (son compte peut être bloqué pour connexion suspecte) et pour vous (on pourrait vous accuser en cas de problème). La bonne méthode : le client vous ajoute à sa page avec **votre propre compte**, et des droits limités. Vous verrez comment au module 4.
+
+```schema chiffres
+titre: Les 4 règles de sécurité
+Double authentification : activée sur votre compte Facebook et vos autres comptes de travail
+Mots de passe : un gestionnaire de mots de passe, jamais un carnet ou un message
+Droits limités : publier, répondre et voir les statistiques, sans contrôle total de la page
+Fin de mission : vous demandez au client de retirer vos accès
+```
+
+Si votre compte est piraté, ce sont **les pages de tous vos clients** qui sont en danger. Votre sécurité fait partie de votre travail.
+
+## L''honnêteté envers les abonnés
+
+```schema checklist
+titre: Ce qu''un community manager refuse de faire
+[ ] Acheter des abonnés, des mentions « J''aime » ou des commentaires
+[ ] Écrire de faux avis clients, ou se faire passer pour un client satisfait
+[ ] Publier une promotion ou un prix non validés par le client
+[ ] Promettre des résultats qu''un produit ne donne pas (santé, minceur, argent facile)
+[ ] Cacher qu''une publication est payée par une marque partenaire
+[ ] Supprimer toutes les critiques pour ne garder que les compliments
+```
+
+Ces pratiques peuvent sembler efficaces à court terme. Mais les abonnés ne sont pas naïfs, les réseaux sociaux sanctionnent les faux comptes, et une seule tromperie découverte peut détruire la réputation de la marque… et la vôtre.
+
+## Les données personnelles des abonnés
+
+Dans la boîte de réception d''une page, vous voyez des noms, des numéros de téléphone, des adresses de livraison. Ce sont des **données personnelles**. Madagascar a une loi sur leur protection (loi n° 2014-038), et l''Europe applique le RGPD pour les personnes qui y vivent.
+
+1. **Utilisez ces informations seulement pour la commande ou la question du client.**
+2. **Ne publiez jamais** le nom, le numéro ou l''adresse d''un client, même pour « répondre » à une critique.
+3. **Ne copiez pas** les contacts des abonnés pour vos propres usages ou pour d''autres clients.
+4. **Passez en message privé** dès qu''une conversation contient des informations personnelles.
+
+## Travailler en règle à Madagascar
+
+Pour facturer officiellement, un travailleur indépendant demande en général deux numéros : le **NIF** (numéro d''identification fiscale), au centre fiscal de votre ville, et la **carte statistique** (STAT), auprès de l''INSTAT. Les démarches et les montants changent avec les lois de finances : **renseignez-vous auprès du centre fiscal** ou d''un comptable avant de facturer régulièrement. Dès maintenant, notez chaque paiement reçu dans un tableau.
+
+> [!madagascar] Les sujets sensibles
+> La politique, la religion, les tensions entre régions ou les drames de l''actualité déclenchent vite des débats violents en commentaire. Sauf si c''est le métier du client (une église, une association), **une marque commerciale n''y prend pas position**. En cas d''événement grave dans le pays (cyclone, deuil national), suspendez les publications promotionnelles programmées et demandez au client s''il souhaite publier un message de soutien.
+
+> [!erreur] La photo « trouvée sur Pinterest »
+> Pour illustrer une publication de restaurant, le débutant prend une belle photo de plat trouvée sur Internet. Un abonné reconnaît la photo d''un restaurant étranger et le signale en commentaire : « Ce n''est même pas votre plat ! » Les moqueries se multiplient. **Utilisez les vraies photos du client**, même simples : l''authenticité vaut mieux qu''une belle image empruntée.
+
+> [!retenir]
+> - Images et musiques : **celles du client, les vôtres, ou des sources autorisées**.
+> - **Jamais le mot de passe personnel du client** ; double authentification activée.
+> - Pas de **faux abonnés, faux avis, fausses promesses**.
+> - Les **données des abonnés** servent seulement à leur demande, en message privé.
+> - **NIF et STAT** pour facturer officiellement : renseignez-vous au centre fiscal.
+
+## Exercice pratique : vos règles de travail
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Activez la double authentification sur votre compte Facebook et installez un gestionnaire de mots de passe.
+> 2. Trouvez 2 banques d''images libres de droits et lisez leur page « Licence » ; notez ce qu''elles autorisent pour un usage commercial.
+> 3. Rédigez votre charte d''éthique en 6 points, que vous pourrez montrer à vos clients.
+>
+> **À livrer** : une capture de la double authentification activée (sans information personnelle), vos notes sur les licences et votre charte.
+
+## Projet du module 1 : votre plan de démarrage
+
+> [!projet] Projet du module · 2 heures
+> Rassemblez le travail du module dans un document de 2 à 3 pages, que vous relirez à la fin de la formation.
+> 1. **Mon métier** : ce que fait un community manager, en 3 phrases, avec vos mots (leçon 1.1).
+> 2. **Mes réseaux** : les réseaux que vous maîtrisez déjà et ceux que vous devez apprendre (leçon 1.2).
+> 3. **Ma spécialité** : votre entonnoir et les 5 pages repérées (leçon 1.3).
+> 4. **Mon organisation** : équipement, plan anti-coupure, horaires de réponse (leçon 1.4).
+> 5. **Mes règles** : votre charte d''éthique et vos démarches administratives (leçon 1.5).
+> 6. **L''analyse des 3 pages** de la leçon 1.1, avec 3 améliorations précises pour chacune.
+>
+> **À livrer** : votre plan de démarrage en PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 4, 0, 'Pouvez-vous publier une belle photo de plat trouvée sur Internet pour un restaurant ?', '["Oui, si on la recadre","Oui, si elle est jolie","Non : elle appartient à son auteur, et elle trompe les abonnés","Oui, si on cite Google"]'::jsonb, 2, 'Une image trouvée en ligne appartient à son auteur. Et montrer un plat qui n''est pas celui du restaurant trompe les clients.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 4, 1, 'Quelle musique utiliser dans une vidéo pour un compte professionnel ?', '["N''importe quelle chanson populaire","La chanson d''un artiste sans lui demander","Une musique de la bibliothèque autorisée pour les comptes professionnels","Une musique téléchargée sur YouTube"]'::jsonb, 2, 'Une marque qui utilise une musique pour vendre doit en avoir le droit. Les réseaux proposent des bibliothèques adaptées.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 4, 2, 'Comment accéder à la page d''un client ?', '["Avec le mot de passe personnel du client","En créant un faux compte","Avec votre propre compte, ajouté par le client avec des droits limités","En demandant le code reçu par SMS"]'::jsonb, 2, 'L''accès avec votre propre compte protège le client et vous. Il peut le retirer à tout moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 4, 3, 'Que faire des numéros de téléphone reçus dans la messagerie d''une page ?', '["Les copier pour d''autres clients","Les publier pour répondre à une critique","Les vendre","Les utiliser seulement pour la commande ou la question du client"]'::jsonb, 3, 'Ce sont des données personnelles : elles servent uniquement à la demande du client, en message privé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 0, 4, 4, 'Que faire des publications promotionnelles programmées en cas de deuil national ?', '["Les suspendre et demander au client s''il souhaite publier un message","Les supprimer définitivement sans prévenir","Les laisser partir comme prévu","Doubler les promotions"]'::jsonb, 0, 'Une promotion joyeuse pendant un drame choque les abonnés. On suspend et on décide avec le client.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 1, 'La stratégie : cible, objectifs et ligne éditoriale', 'La fiche client type, des objectifs mesurables, la ligne éditoriale et le ton de la marque, les piliers de contenu et les 4 types de publications, puis le calendrier éditorial.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 1, 0, 'Connaître la cible : la fiche client type', 10, 'On ne parle pas de la même façon à une étudiante de 20 ans et à un directeur d''hôtel. Avant d''écrire la moindre publication, un community manager doit savoir **à qui** il parle : qui sont les clients de la marque, à quelle heure ils sont sur leur téléphone, ce qui les fait hésiter et ce qui les décide. Cette leçon vous apprend à construire la fiche client type, l''outil de base de toute stratégie.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer ce qu''est une cible et une fiche client type.
+> 2. Construire une fiche client type en 6 questions.
+> 3. Trouver les informations auprès du client et dans la page existante.
+> 4. Utiliser la fiche pour choisir les sujets, le ton et les horaires.
+> 5. Éviter les fiches trop vagues ou inventées.
+
+## La cible et la fiche client type
+
+La **cible**, c''est le groupe de personnes que la marque veut toucher. « Tout le monde » n''est pas une cible : une page qui parle à tout le monde ne parle à personne.
+
+> [!definition] Fiche client type (ou persona)
+> Une description imaginaire mais réaliste d''un client typique de la marque : âge, ville, métier, habitudes, problèmes, ce qui le décide à acheter. On lui donne un prénom pour s''en souvenir et pour se poser la question à chaque publication : « Est-ce que cela intéresse Fara ? »
+
+Une marque a souvent **une ou deux** fiches client type, rarement plus. Une boutique de cosmétiques peut viser des jeunes femmes actives, et aussi des mères de famille qui achètent pour toute la famille.
+
+## Construire la fiche en 6 questions
+
+```schema etapes
+titre: La fiche client type en 6 questions
+Qui est-il ? Âge, ville ou quartier, métier, situation familiale
+Ses habitudes : quels réseaux, à quelle heure, sur quel téléphone
+Son problème : ce qu''il veut résoudre ou obtenir
+Ses freins : ce qui le fait hésiter (prix, confiance, livraison)
+Ses déclencheurs : ce qui le décide (promotion, avis, rapidité)
+Ses mots : la langue et les expressions qu''il utilise
+```
+
+> [!exemple] La fiche client type d''une boutique de cosmétiques à Antananarivo
+> **Fara, 24 ans**, employée de bureau à Ankorondrano, vit chez ses parents. Elle regarde Facebook et TikTok le soir après 19 h, sur un téléphone Android avec un forfait limité. Elle veut des produits efficaces pour sa peau mais a **peur des contrefaçons**. Elle hésite à cause du prix et de la livraison. Elle achète si elle voit **des avis de vraies clientes** et si la livraison est rapide. Elle écrit en français mêlé de malgache, avec des emojis.
+
+Avec cette fiche, beaucoup de décisions deviennent évidentes : publier le soir, montrer des avis de vraies clientes, rassurer sur l''authenticité des produits, indiquer clairement le délai de livraison, garder des vidéos courtes et légères.
+
+## Où trouver les informations
+
+Une fiche client type ne s''invente pas au hasard. Elle se construit avec des informations réelles.
+
+| Source | Ce qu''elle apprend | Comment l''obtenir |
+| --- | --- | --- |
+| **Le client** | Qui achète, ce qui se vend le mieux, les questions fréquentes | Un appel de 20 minutes avec des questions préparées |
+| **Les statistiques de la page** | Âge, sexe, villes des abonnés, heures de connexion | Dans les statistiques de la page (module 4) |
+| **Les messages et commentaires** | Les questions, les hésitations, les mots utilisés | En lisant les 50 derniers messages et commentaires |
+| **Les concurrents** | Ce qui fait réagir leurs abonnés | En observant leurs publications les plus commentées |
+| **Quelques clients réels** | Pourquoi ils ont acheté, et où ils ont connu la marque | Une petite question après une commande |
+
+> [!astuce] Les messages, une mine d''or
+> Lisez les 50 derniers messages reçus par la page et notez les questions qui reviennent. Si 20 personnes demandent « C''est original ? », vous connaissez le principal frein de la cible. Si 15 demandent « Vous livrez à Ivato ? », la zone de livraison doit apparaître dans chaque publication de vente.
+
+## Utiliser la fiche au quotidien
+
+```schema comparaison
+titre: Avant et après la fiche client type
+ton: mauvais-bon
+colonnes: Sans fiche | Avec la fiche de Fara
+Publications à n''importe quelle heure | Publications le soir, quand Fara est sur son téléphone
+Texte technique sur la composition | « Votre peau sèche dès midi ? »
+Photos du produit seul | Avis et photos de vraies clientes
+« Livraison possible » | « Livré en 24 h à Tana, 3 000 Ar »
+```
+
+Gardez la fiche à portée de main, imprimée ou épinglée dans le dossier du client. À chaque idée de publication, posez-vous la question : **« Est-ce que cela aide Fara à acheter, ou à faire confiance à la marque ? »**
+
+> [!madagascar] Une même ville, plusieurs publics
+> À Antananarivo, la cliente d''Ankorondrano qui travaille dans un bureau et l''étudiante d''Ankatso n''ont ni les mêmes horaires, ni le même budget, ni les mêmes moyens de paiement. En province, les habitudes changent encore : livraisons moins rapides, plus d''achats par l''intermédiaire de proches. Précisez toujours **où** vit le client type : cela change le prix acceptable, la livraison et parfois la langue.
+
+> [!erreur] La fiche « tout le monde »
+> « Notre cible : hommes et femmes de 15 à 65 ans, à Madagascar. » Cette fiche n''aide à rien : on ne sait ni quand publier, ni quoi dire, ni comment le dire. **Une bonne fiche est précise au point de sembler décrire une seule personne.** Si votre fiche pourrait décrire la moitié du pays, recommencez avec les vrais acheteurs de la marque.
+
+> [!retenir]
+> - La **cible** est le groupe que la marque veut toucher ; « tout le monde » n''est pas une cible.
+> - La **fiche client type** répond à 6 questions : qui, habitudes, problème, freins, déclencheurs, mots.
+> - Elle se construit avec **le client, les statistiques, les messages et les concurrents**.
+> - Elle décide des **horaires, des sujets, du ton et des preuves** à montrer.
+> - Une bonne fiche est **précise**, comme le portrait d''une seule personne.
+
+## Exercice pratique : deux fiches client type
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Choisissez une page de votre spécialité (leçon 1.3) et lisez ses 50 derniers commentaires et, si vous pouvez, ses messages.
+> 2. Notez les 5 questions ou hésitations qui reviennent le plus.
+> 3. Rédigez sa fiche client type en répondant aux 6 questions, avec un prénom.
+> 4. Rédigez la fiche client type d''un commerce imaginaire : « Snack Mofo Gasy, à Antsirabe ».
+> 5. Pour chaque fiche, écrivez 3 décisions qu''elle entraîne (horaires, sujets, preuves).
+>
+> **À livrer** : vos 5 questions fréquentes, vos 2 fiches et vos 6 décisions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 0, 0, 'Qu''est-ce qu''une fiche client type ?', '["La liste de tous les abonnés","La description réaliste d''un client typique de la marque, avec un prénom","Le logo de la marque","Le fichier des commandes"]'::jsonb, 1, 'La fiche décrit l''âge, la ville, les habitudes, les freins et les déclencheurs d''un client typique. Elle guide chaque publication.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 0, 1, 'Pourquoi « hommes et femmes de 15 à 65 ans » est-il une mauvaise cible ?', '["C''est une bonne cible","Elle oublie les enfants","Elle est trop précise","Elle est trop large pour décider quoi dire, quand et comment"]'::jsonb, 3, 'Une bonne fiche est précise, comme le portrait d''une seule personne. Une cible trop large n''aide à prendre aucune décision.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 0, 2, 'Où trouver les freins réels des clients ?', '["Nulle part","Dans l''imagination du community manager","Dans les publications d''une autre marque étrangère","Dans les questions qui reviennent dans les messages et les commentaires"]'::jsonb, 3, 'Si beaucoup de clients demandent « C''est original ? », vous connaissez leur principal frein : la peur des contrefaçons.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 0, 3, 'Fara regarde Facebook après 19 h et a peur des contrefaçons. Quelle décision en découle ?', '["Publier le soir et montrer des avis de vraies clientes","Publier des textes techniques sur la composition","Publier à 6 h du matin","Supprimer les commentaires"]'::jsonb, 0, 'La fiche indique le moment où la cliente est disponible et ce qui la rassure : des preuves de vraies clientes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 0, 4, 'Que décrit la question « ses mots » de la fiche ?', '["La langue et les expressions que le client utilise","Les mots interdits par Facebook","Le nombre de mots par publication","Le mot de passe du client"]'::jsonb, 0, 'Écrire avec les mots de la cible, en français, en malgache ou en mélangeant, crée de la proximité.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 1, 1, 'Fixer des objectifs mesurables', 10, '« Je veux plus de visibilité. » C''est ce que disent la plupart des clients. Mais comment savoir, dans un mois, si c''est réussi ? Un community manager transforme ces souhaits vagues en **objectifs mesurables**, avec un point de départ et un chiffre à atteindre. C''est ce qui vous permettra de prouver votre travail, et d''être payé longtemps. Cette leçon vous apprend à fixer de bons objectifs.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Transformer un souhait vague en objectif mesurable.
+> 2. Relier chaque objectif à un chiffre des statistiques.
+> 3. Mesurer la situation de départ avant de commencer.
+> 4. Choisir des objectifs réalistes pour un mois.
+> 5. Éviter les promesses que vous ne contrôlez pas.
+
+## D''un souhait à un objectif
+
+Un objectif utile est **précis, mesurable, réaliste et limité dans le temps**. Il dit ce qui doit changer, de combien, et pour quand.
+
+```schema comparaison
+titre: Des souhaits aux objectifs
+ton: mauvais-bon
+colonnes: Souhait vague | Objectif mesurable
+« Plus de visibilité » | Passer de 4 à 12 publications par mois, avec 2 vidéos par semaine
+« Plus de clients » | Passer de 40 à 60 messages reçus dans le mois
+« Être plus professionnel » | Répondre à tous les messages en moins de 2 heures, de 8 h à 20 h
+« Plus d''interactions » | Passer d''un taux d''interaction moyen de 1 % à 2 % en deux mois
+« Être connu à Mahajanga » | Augmenter de 30 % le nombre de personnes touchées à Mahajanga en trois mois
+```
+
+> [!definition] Indicateur
+> Le chiffre que l''on suit pour savoir si un objectif est atteint : nombre de messages reçus, nombre de personnes touchées, taux d''interaction, délai de réponse. On l''appelle aussi **KPI** (de l''anglais *key performance indicator*, indicateur clé de performance). Vous apprendrez à lire ces chiffres au module 4.
+
+## Relier les objectifs aux 3 étapes de l''entonnoir
+
+Chaque étape de l''entonnoir (leçon 1.1) se mesure avec ses propres chiffres.
+
+| Étape | Ce qu''on veut | Indicateurs à suivre |
+| --- | --- | --- |
+| **Faire connaître** | Que plus de personnes voient la marque | Personnes touchées (couverture), vues des vidéos, nouveaux abonnés |
+| **Créer la confiance** | Que les gens réagissent et posent des questions | Réactions, commentaires, partages, enregistrements, avis |
+| **Faire vendre** | Que les gens passent à l''action | Messages reçus, demandes de prix, clics sur « Appeler » ou « WhatsApp » |
+
+Pour un commerce qui vend par Messenger, l''indicateur le plus proche de la vente est souvent **le nombre de messages reçus**. Ce n''est pas le nombre de ventes (le community manager ne contrôle ni les prix, ni le stock, ni la livraison), mais c''est le signe le plus fiable de son travail.
+
+## Mesurer le point de départ
+
+Sans chiffres de départ, impossible de montrer un progrès. Avant de changer quoi que ce soit, notez la situation actuelle.
+
+```schema checklist
+titre: Les chiffres à relever le premier jour
+[ ] Nombre d''abonnés de la page
+[ ] Nombre de publications sur les 30 derniers jours
+[ ] Personnes touchées sur les 30 derniers jours
+[ ] Moyenne des réactions et commentaires par publication
+[ ] Nombre de messages reçus le mois dernier
+[ ] Délai moyen de réponse aux messages
+```
+
+> [!astuce] La capture du jour 1
+> Faites des captures d''écran des statistiques le jour où vous commencez, et rangez-les dans le dossier du client avec la date. Dans trois mois, quand le client aura oublié comment était sa page, ces captures seront votre meilleure preuve.
+
+## Des objectifs réalistes
+
+Un objectif trop facile ne motive pas ; un objectif impossible décourage tout le monde et vous fait passer pour un mauvais professionnel. Pour un premier mois, retenez **3 objectifs au maximum**, dont au moins un que vous contrôlez entièrement.
+
+```schema chiffres
+titre: 3 objectifs pour la boutique Lamba Soa (premier mois)
+Régularité : passer de 4 à 12 publications par mois
+Réactivité : répondre aux messages en moins de 2 heures, de 8 h à 20 h
+Contacts : passer de 40 à 55 messages reçus dans le mois
+```
+
+Les deux premiers dépendent entièrement de vous : vous êtes sûr de les atteindre si vous travaillez bien. Le troisième dépend aussi des produits, des prix et de la saison : on le fixe avec prudence, et on l''explique si le résultat est différent.
+
+> [!madagascar] Les saisons du commerce malgache
+> Les résultats d''un mois dépendent aussi du calendrier : fin du mois quand les salaires tombent, fêtes de fin d''année, rentrée scolaire, fête de l''Indépendance le 26 juin, haute saison touristique pour les hôtels. Un mois de janvier calme après les fêtes ne se compare pas à un mois de décembre. Tenez-en compte en fixant les objectifs, et comparez si possible avec le même mois de l''année précédente.
+
+> [!exemple] La conversation avec la gérante
+> Mme Voahangy, gérante de Lamba Soa, demande : « Je veux 100 ventes de plus par mois. » Miora lui explique calmement : « Je ne contrôle pas vos prix ni votre stock, donc je ne peux pas promettre de ventes. Je vous propose de mesurer ce que je contrôle : 12 publications par mois, des réponses en moins de 2 heures, et un objectif de 55 messages reçus au lieu de 40. Chaque message est un client potentiel pour vous. » La gérante accepte, rassurée par des chiffres clairs.
+
+> [!erreur] Promettre des ventes
+> Pour décrocher le contrat, le débutant promet « +50 % de ventes ». Le mois suivant, la boutique est en rupture de stock sur ses meilleurs articles : les ventes baissent, malgré une page très active. Le client conclut que le community manager n''a servi à rien. **Ne promettez que ce que vous contrôlez** : régularité, réactivité, et des indicateurs de la page.
+
+> [!retenir]
+> - Un objectif est **précis, mesurable, réaliste et limité dans le temps**.
+> - Chaque objectif se suit avec un **indicateur** des statistiques.
+> - **Faire connaître** : couverture ; **confiance** : interactions ; **vendre** : messages reçus.
+> - Relevez **les chiffres de départ** dès le premier jour, avec des captures.
+> - **3 objectifs au maximum**, dont un au moins que vous contrôlez entièrement.
+
+## Exercice pratique : les objectifs d''une page
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour la page choisie à la leçon 2.1, relevez les chiffres visibles de départ (abonnés, publications du mois, réactions moyennes, temps de réponse).
+> 2. Transformez ces 4 souhaits en objectifs mesurables : « plus de visibilité », « plus de commandes », « une page plus vivante », « plus de jeunes clients ».
+> 3. Choisissez 3 objectifs pour un premier mois, et dites pour chacun si vous le contrôlez entièrement ou en partie.
+> 4. Rédigez le message qui explique à un client pourquoi vous ne promettez pas un nombre de ventes.
+>
+> **À livrer** : vos chiffres de départ, vos 4 objectifs reformulés, vos 3 objectifs du mois et votre message.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 1, 0, 'Quel objectif est mesurable ?', '["Passer de 40 à 55 messages reçus dans le mois","Faire mieux qu''avant","Être plus professionnel","Avoir plus de visibilité"]'::jsonb, 0, 'Un objectif mesurable dit ce qui change, de combien et pour quand. On peut vérifier s''il est atteint.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 1, 1, 'Quel indicateur est le plus proche de la vente pour un commerce qui vend par Messenger ?', '["Le nombre d''emojis","Le nombre de publications","Le nombre de messages reçus","Le nombre de mentions « J''aime » sur la photo de couverture"]'::jsonb, 2, 'Chaque message est un client potentiel. C''est le signe le plus fiable du travail du community manager.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 1, 2, 'Pourquoi relever les chiffres le premier jour ?', '["Parce que Facebook l''exige","Pour les publier","Pour pouvoir prouver les progrès ensuite","Ce n''est pas utile"]'::jsonb, 2, 'Sans point de départ, impossible de montrer ce qui a changé. Les captures du jour 1 sont votre meilleure preuve.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 1, 3, 'Combien d''objectifs retenir pour un premier mois ?', '["10 ou plus","Aucun","3 au maximum, dont au moins un que vous contrôlez entièrement","Un seul, sur les ventes"]'::jsonb, 2, 'Peu d''objectifs, bien choisis, permettent de se concentrer. Ceux que vous contrôlez (régularité, réactivité) sont sûrs d''être tenus.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 1, 4, 'Pourquoi ne pas promettre un nombre de ventes ?', '["Parce que les ventes ne comptent pas","Pour travailler moins","Le community manager ne contrôle ni les prix, ni le stock, ni la livraison","Parce que c''est interdit par la loi"]'::jsonb, 2, 'Les ventes dépendent aussi de facteurs que vous ne maîtrisez pas. On promet ce que l''on contrôle et on suit des indicateurs de la page.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 1, 2, 'La ligne éditoriale et le ton de la marque', 10, 'Une page cohérente se reconnaît au premier coup d''œil : mêmes couleurs, même ton, mêmes types de sujets. Une page incohérente change de style chaque semaine et ne laisse aucun souvenir. La **ligne éditoriale** est la règle du jeu qui garantit cette cohérence, même quand plusieurs personnes publient. Cette leçon vous apprend à la rédiger, avec le ton de la marque et sa charte visuelle.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rédiger une ligne éditoriale en 6 points.
+> 2. Définir le ton de la marque avec des exemples concrets.
+> 3. Choisir la langue de la page : français, malgache ou les deux.
+> 4. Fixer une charte visuelle simple pour les réseaux sociaux.
+> 5. Lister les sujets interdits.
+
+## La ligne éditoriale en 6 points
+
+> [!definition] Ligne éditoriale
+> Le document qui fixe ce que la page publie, comment elle le dit, et ce qu''elle ne publie jamais. Il tient sur une ou deux pages et il est validé par le client. Toute personne qui publie pour la marque doit l''avoir lu.
+
+```schema etapes
+titre: Les 6 points d''une ligne éditoriale
+L''objectif : à quoi sert la page (faire connaître, vendre, informer)
+La cible : la ou les fiches client type (leçon 2.1)
+Les thèmes : les grands sujets de la page (leçon 2.4)
+Le ton : la façon de parler aux abonnés
+La langue : français, malgache, anglais, ou un mélange
+Les interdits : ce que la page ne publie jamais
+```
+
+## Le ton de la marque
+
+Le ton, c''est la « voix » de la marque. Une banque ne parle pas comme un snack d''étudiants, et un hôtel de luxe ne parle pas comme une boutique de vêtements à petit prix. Pour définir le ton, choisissez 3 adjectifs et donnez des exemples.
+
+| Question | Exemple pour un snack d''étudiants | Exemple pour un hôtel à Nosy Be |
+| --- | --- | --- |
+| Tutoiement ou vouvoiement ? | Tutoiement | Vouvoiement |
+| 3 adjectifs | Drôle, simple, généreux | Calme, chaleureux, élégant |
+| Emojis ? | Oui, plusieurs par publication | Peu, et sobres (🌴, ☀️) |
+| Longueur des textes | Très courts | Courts, avec une ou deux phrases de description |
+| Une phrase type | « Faim après les cours ? Viens, c''est prêt 🔥 » | « Le soleil se couche sur la baie. Votre table vous attend. » |
+
+```schema comparaison
+titre: Un même message, deux tons
+colonnes: Snack d''étudiants | Hôtel à Nosy Be
+« Nouveau ! Le burger zébu est là 🍔 Viens le goûter avant tout le monde ! » | « Notre chef vous propose désormais un burger de zébu, servi avec des frites maison. »
+« On est ouverts jusqu''à 22 h ce samedi, pas d''excuse 😄 » | « Le restaurant vous accueille ce samedi jusqu''à 22 h. »
+```
+
+> [!astuce] La liste « on dit / on ne dit pas »
+> Ajoutez à la ligne éditoriale une petite liste de mots : « On dit : nos clientes, la collection, livré en 24 h. On ne dit pas : nos clients (la boutique ne vend qu''aux femmes), pas cher (on dit : à petit prix), dispo (on écrit : disponible). » C''est la façon la plus simple de garder le même ton d''une publication à l''autre.
+
+## La langue de la page
+
+> [!madagascar] Français, malgache ou les deux ?
+> Le choix dépend de la cible. Une boutique de quartier peut publier surtout en malgache, ou mélanger les deux langues comme ses clientes. Un hôtel qui vise les touristes publie en français et parfois en anglais. Une ONG peut alterner selon le public de chaque publication. Ce qui compte : **décider une règle claire**, l''écrire dans la ligne éditoriale, et écrire sans faute dans chaque langue utilisée. Faites relire vos premiers textes en malgache si vous n''êtes pas sûr de vous.
+
+Dans la messagerie, la règle est plus simple : **répondez dans la langue du client**. S''il écrit en malgache, répondez en malgache ; s''il mélange, vous pouvez mélanger aussi.
+
+## La charte visuelle pour les réseaux
+
+La charte visuelle fixe l''apparence des publications. Si la marque a déjà une charte graphique faite par un graphiste, reprenez-la. Sinon, fixez au moins ces éléments avec le client :
+
+```schema palette
+titre: Exemple de palette pour la boutique Lamba Soa
+#7A1F3D Bordeaux, couleur principale | 60 %
+#F4E6D8 Beige clair, fonds | 30 %
+#C9A227 Doré, détails et prix | 10 %
+```
+
+1. **2 ou 3 couleurs**, avec leur code (comme ci-dessus).
+2. **1 ou 2 polices** : une pour les titres, une pour les textes.
+3. **La place du logo** : petit, toujours au même endroit.
+4. **Le style des photos** : lumière naturelle, fond clair, personnes ou produits seuls.
+5. **3 à 5 modèles Canva** réutilisables : promotion, nouveauté, avis client, information pratique.
+
+## Les interdits
+
+```schema checklist
+titre: Les interdits les plus courants
+[ ] Politique et religion (sauf si c''est le métier du client)
+[ ] Critiques ou moqueries des concurrents
+[ ] Prix, promotions ou délais non validés par le client
+[ ] Photos de clients ou d''enfants sans autorisation
+[ ] Contenus qui exagèrent les effets d''un produit (santé, minceur, beauté)
+[ ] Humour qui se moque d''un groupe de personnes
+```
+
+> [!exemple] La ligne éditoriale de Lamba Soa, en résumé
+> **Objectif** : vendre par Messenger et fidéliser les clientes. **Cible** : femmes actives de 22 à 40 ans à Antananarivo. **Thèmes** : nouveautés, conseils de style, avis de clientes, coulisses de la boutique. **Ton** : chaleureux, élégant, simple ; vouvoiement ; 1 ou 2 emojis maximum. **Langue** : français, avec quelques expressions malgaches dans les stories. **Interdits** : politique, prix non validés, photos de clientes sans accord.
+
+> [!erreur] Changer de ton selon l''humeur
+> Une semaine, la page publie des textes très drôles avec dix emojis ; la suivante, des textes longs et sérieux ; puis des messages en anglais. Les abonnés ne reconnaissent plus la marque, et le client se demande qui gère sa page. **Le ton se décide une fois, dans la ligne éditoriale**, et se respecte, quelle que soit la personne qui écrit.
+
+> [!retenir]
+> - La ligne éditoriale : **objectif, cible, thèmes, ton, langue, interdits**.
+> - Le ton : **tutoiement ou vouvoiement, 3 adjectifs, emojis, longueur**, avec des phrases types.
+> - La langue : **une règle claire**, et dans la messagerie, la langue du client.
+> - Une charte visuelle : **couleurs, polices, logo, style de photos, modèles Canva**.
+> - Des **interdits écrits**, validés par le client.
+
+## Exercice pratique : une ligne éditoriale complète
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Rédigez la ligne éditoriale en 6 points de la page choisie à la leçon 2.1.
+> 2. Définissez son ton avec le tableau (tutoiement, 3 adjectifs, emojis, longueur, phrase type) et une liste « on dit / on ne dit pas » de 6 mots.
+> 3. Écrivez un même message (une nouveauté) dans le ton de cette marque et dans le ton d''une marque très différente.
+> 4. Proposez une palette de 3 couleurs avec leurs codes, 2 polices et la place du logo.
+>
+> **À livrer** : la ligne éditoriale, le tableau du ton, vos 2 messages et votre charte visuelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 2, 0, 'À quoi sert la ligne éditoriale ?', '["Remplacer le calendrier","Garder la page cohérente, même quand plusieurs personnes publient","Fixer les prix","Choisir les abonnés"]'::jsonb, 1, 'Elle fixe ce que la page publie, comment elle le dit et ce qu''elle ne publie jamais. Tout le monde suit la même règle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 2, 1, 'Quel ton convient à un hôtel à Nosy Be ?', '["Calme, chaleureux, élégant, avec le vouvoiement","Très familier, avec dix emojis par phrase","Technique et froid","Agressif et pressant"]'::jsonb, 0, 'Le ton correspond à la marque et à sa clientèle. Un hôtel qui vise des voyageurs choisit un ton calme et soigné.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 2, 2, 'Dans quelle langue répondre à un client qui écrit en malgache dans la messagerie ?', '["Ne pas répondre","En malgache","Toujours en anglais","Toujours en français"]'::jsonb, 1, 'Dans la messagerie, on répond dans la langue du client : cela crée de la proximité et évite les malentendus.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 2, 3, 'Que contient au minimum la charte visuelle pour les réseaux ?', '["Les mots de passe","Les couleurs, les polices, la place du logo, le style des photos et des modèles","Uniquement le nom de la marque","La liste des abonnés"]'::jsonb, 1, 'Ces éléments rendent la page reconnaissable au premier coup d''œil.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 2, 4, 'Quel sujet fait le plus souvent partie des interdits d''une marque commerciale ?', '["La politique et la religion","Les horaires","Les nouveautés","Les avis de clients"]'::jsonb, 0, 'Ces sujets déclenchent des débats violents. Sauf si c''est le métier du client, une marque commerciale n''y prend pas position.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 1, 3, 'Les piliers de contenu et les 4 types de publications', 9, '« Qu''est-ce que je publie aujourd''hui ? » Sans méthode, cette question revient chaque matin et l''on finit par publier n''importe quoi, ou rien. Les community managers organisés ne cherchent pas leurs idées au hasard : ils s''appuient sur quelques **piliers de contenu** et varient entre **4 types de publications**. Cette leçon vous donne cette méthode et une réserve d''idées qui ne s''épuise pas.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Définir 3 à 5 piliers de contenu pour une marque.
+> 2. Utiliser la règle des 4 types de publications.
+> 3. Équilibrer les publications de vente et les autres.
+> 4. Trouver des idées de contenus à partir des questions des clients.
+> 5. Constituer une banque d''idées pour plusieurs semaines.
+
+## Les piliers de contenu
+
+> [!definition] Pilier de contenu
+> Un grand thème qui revient régulièrement sur la page et qui intéresse la cible. Une marque a en général 3 à 5 piliers. Chaque publication appartient à l''un d''eux.
+
+```schema pyramide
+titre: Les piliers d''un restaurant de Toamasina
+La marque : l''histoire du restaurant, l''équipe, le chef
+Les coulisses : le marché du matin, la préparation, la cuisine
+Les plats : le plat du jour, les spécialités, les nouveautés
+Les clients : les avis, les photos des clients, les événements
+Les infos pratiques : horaires, livraison, réservation, menus
+```
+
+Les piliers évitent la page monotone qui ne montre que des promotions, et ils donnent une direction claire quand on cherche des idées : « Cette semaine, qu''est-ce que je montre des coulisses ? »
+
+## La règle des 4 types de publications
+
+Chaque publication a aussi un **but** pour le lecteur. Variez entre 4 types :
+
+| Type | But | Exemple pour un restaurant | Exemple pour une boutique de vêtements |
+| --- | --- | --- | --- |
+| **Informer** | Donner une information utile | « Nouveaux horaires : ouvert jusqu''à 22 h le samedi » | « 3 façons de choisir sa taille de jean » |
+| **Divertir** | Faire sourire, créer un lien | Vidéo du cuisinier qui prépare un romazava | « Votre tenue du lundi, selon votre humeur » |
+| **Prouver** | Rassurer avec des faits | Photo d''un client satisfait, avis 5 étoiles | Photos de clientes avec leur tenue, avec leur accord |
+| **Vendre** | Pousser à l''achat | « Menu du jour à 12 000 Ar, livraison offerte dès 2 plats » | « Nouvelle collection : 12 robes, à partir de 45 000 Ar » |
+
+```schema barres
+titre: Une répartition de départ sur un mois de 12 publications
+Informer : 3
+Divertir : 3
+Prouver : 3
+Vendre : 3
+```
+
+Pour commencer, une bonne répartition est **environ 1 publication de vente sur 3 ou 4**. Ensuite, les statistiques vous diront ce qui fonctionne le mieux pour cette page : certaines boutiques vendent très bien avec plus de publications de vente, d''autres lassent leurs abonnés.
+
+> [!cle] Pourquoi ne pas vendre tout le temps ?
+> Une page qui ne publie que des promotions ressemble à un prospectus : les abonnés cessent de regarder, et les réseaux montrent moins ses publications. Les contenus qui informent, divertissent et prouvent créent l''attention et la confiance qui rendent les publications de vente efficaces.
+
+## Trouver des idées
+
+```schema etapes
+titre: 5 sources d''idées inépuisables
+Les questions des clients : chaque question fréquente devient une publication
+Le calendrier : fêtes, saisons, rentrée, jours de paie
+Les coulisses : ce que le client fait chaque jour et que personne ne voit
+Les avis et les photos des clients, avec leur accord
+Les tendances : un format ou un son populaire, adapté à la marque
+```
+
+> [!exemple] Des questions aux publications
+> Les messages de la boutique Lamba Soa contiennent souvent ces questions : « C''est quelle taille pour moi ? », « Vous livrez à Ambohimanarina ? », « La couleur est fidèle à la photo ? ». Miora en tire trois publications : un guide des tailles en carrousel, une carte des zones de livraison avec les prix, et une vidéo qui montre les robes à la lumière du jour. Les questions en message diminuent, et les clientes commandent plus vite.
+
+## La banque d''idées
+
+Notez toutes vos idées dans un tableau, rangées par pilier et par type. Quand vous préparez le calendrier du mois (leçon 2.5), vous piochez dedans au lieu de chercher.
+
+| Idée | Pilier | Type | Format conseillé |
+| --- | --- | --- | --- |
+| Le marché du matin avec le chef | Coulisses | Divertir | Vidéo courte |
+| Les 5 plats les plus commandés du mois | Plats | Vendre | Carrousel |
+| L''avis d''une famille venue pour un anniversaire | Clients | Prouver | Photo avec texte |
+| Comment réserver une table en 1 message | Infos pratiques | Informer | Visuel simple |
+
+> [!madagascar] Les contenus qui parlent aux Malgaches
+> Les contenus qui montrent la vie locale fonctionnent souvent très bien : un plat traditionnel, un quartier reconnaissable, une expression malgache bien choisie, l''équipe qui sourit. Les abonnés aiment se reconnaître. Restez respectueux des traditions et des croyances, et évitez les clichés sur les régions ou les groupes.
+
+> [!erreur] Copier les idées d''une autre page
+> Le débutant reprend chaque semaine les publications d''une page étrangère très populaire, en changeant seulement le nom de la marque. Les abonnés reconnaissent les contenus, et la page n''a aucune personnalité. **Inspirez-vous des formats, jamais du contenu exact** : une idée de format (« avant / après ») devient originale quand elle montre les vrais produits et les vraies personnes du client.
+
+> [!retenir]
+> - **3 à 5 piliers de contenu** par marque : chaque publication appartient à l''un d''eux.
+> - **4 types** : informer, divertir, prouver, vendre ; environ **1 publication de vente sur 3 ou 4** pour commencer.
+> - Les idées viennent des **questions des clients, du calendrier, des coulisses, des avis et des tendances**.
+> - Une **banque d''idées** rangée par pilier et par type.
+> - S''inspirer des **formats**, jamais copier le contenu.
+
+## Exercice pratique : piliers et banque d''idées
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Définissez 4 piliers de contenu pour la page choisie à la leçon 2.1.
+> 2. Transformez les 5 questions fréquentes notées à la leçon 2.1 en 5 idées de publications.
+> 3. Créez votre banque d''idées : 20 idées, rangées par pilier, type et format conseillé.
+> 4. Vérifiez la répartition : au moins 4 idées de chaque type.
+>
+> **À livrer** : vos 4 piliers et votre banque de 20 idées dans un tableau.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 3, 0, 'Qu''est-ce qu''un pilier de contenu ?', '["Un réseau social","Une publication payante","Le logo de la page","Un grand thème qui revient régulièrement et intéresse la cible"]'::jsonb, 3, 'Une marque a 3 à 5 piliers (coulisses, produits, clients…). Chaque publication appartient à l''un d''eux.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 3, 1, 'Quels sont les 4 types de publications ?', '["Lundi, mardi, mercredi, jeudi","Facebook, Instagram, TikTok, LinkedIn","Informer, divertir, prouver, vendre","Photo, vidéo, texte, story"]'::jsonb, 2, 'Varier les buts évite la page-prospectus et crée la confiance qui rend les publications de vente efficaces.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 3, 2, 'La photo d''une cliente satisfaite avec son avis est une publication de quel type ?', '["Divertir","Informer","Prouver","Vendre"]'::jsonb, 2, 'Elle rassure les futurs clients avec un fait : une vraie cliente est contente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 3, 3, 'Quelle répartition conseiller pour commencer ?', '["Une vente par heure","Aucune publication de vente","Uniquement des publications de vente","Environ 1 publication de vente sur 3 ou 4"]'::jsonb, 3, 'C''est un point de départ ; les statistiques permettent ensuite d''ajuster pour chaque page.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 3, 4, 'Quelle est la meilleure source d''idées de contenus ?', '["Des citations trouvées au hasard","Les questions que les clients posent souvent","Les publications d''une autre page copiées telles quelles","Les mots-clés les plus longs"]'::jsonb, 1, 'Chaque question fréquente devient une publication utile, et réduit le nombre de questions en message.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 1, 4, 'Le calendrier éditorial', 11, 'Vous connaissez la cible, les objectifs, le ton et les piliers. Il reste à tout organiser dans le temps : quoi publier, quel jour, à quelle heure, sur quel réseau. Le **calendrier éditorial** est l''outil central du community manager : il évite les oublis, permet au client de valider à l''avance, et transforme une page irrégulière en page vivante. Cette leçon vous apprend à le construire. Elle se termine par le projet du module 2.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire un calendrier éditorial dans Google Sheets.
+> 2. Fixer un rythme de publication réaliste.
+> 3. Placer les dates importantes du calendrier malgache.
+> 4. Choisir les heures de publication, puis les ajuster.
+> 5. Faire valider le calendrier par le client.
+
+## Le calendrier éditorial
+
+> [!definition] Calendrier éditorial
+> Un tableau partagé avec le client, qui liste toutes les publications prévues : date, heure, réseau, type, sujet, format, texte, visuel et statut. On le prépare pour un mois, ou au moins pour deux semaines.
+
+| Date | Heure | Réseau | Pilier | Type | Sujet | Format | Statut |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Lun 3 mai | 18 h 30 | Facebook + Instagram | Produits | Vendre | Nouvelle collection de robes | Carrousel 5 photos | Validé |
+| Mer 5 mai | 12 h 15 | Facebook | Clientes | Prouver | Avis d''une cliente avec photo | Visuel carré | À valider |
+| Ven 7 mai | 19 h | Facebook + Instagram | Style | Divertir | 3 façons de porter un lamba | Reel 30 s | En création |
+
+La colonne **Statut** est la plus utile au quotidien : Idée, En création, À valider, Validé, Programmé, Publié. D''un coup d''œil, vous et le client savez où en est chaque publication.
+
+## Construire le mois en 5 étapes
+
+```schema etapes
+titre: Le calendrier du mois
+Les dates : noter les fêtes, les événements du client, les jours de paie
+Le rythme : par exemple 3 publications par semaine et des stories chaque jour
+La répartition : piliers et types (environ 1 vente sur 3 ou 4)
+Les sujets : piocher dans la banque d''idées (leçon 2.4)
+La validation : envoyer au client avant le début du mois
+```
+
+### Un rythme réaliste
+
+```schema comparaison
+titre: Choisir un rythme
+ton: mauvais-bon
+colonnes: À éviter | À faire
+5 publications un lundi, puis rien pendant 2 semaines | 3 publications par semaine, chaque semaine
+Promettre une publication par jour sans photos du client | Un rythme adapté à ce que le client peut fournir
+Le même jour et la même heure pour tout | Des jours et des heures variés, puis ajustés avec les statistiques
+```
+
+Pour une petite page, **3 publications par semaine** et quelques stories sont un bon départ. La régularité compte plus que la quantité : mieux vaut 3 publications chaque semaine que 7 une semaine sur deux.
+
+## Les dates importantes à Madagascar
+
+```schema chiffres
+titre: Des dates à prévoir dans le calendrier
+Fin de chaque mois : les salaires tombent, bon moment pour les promotions
+14 février : la Saint-Valentin, pour les cadeaux, les restaurants, la beauté
+8 mars : la Journée internationale des droits des femmes, très fêtée à Madagascar
+26 juin : la fête de l''Indépendance, la plus grande fête nationale
+La rentrée scolaire : fournitures, uniformes, écoles, transport
+Décembre : Noël et le Nouvel An, la période la plus forte pour beaucoup de commerces
+```
+
+Ajoutez les dates propres au client : anniversaire de la boutique, arrivée d''une nouvelle collection, haute saison touristique pour un hôtel, inscriptions pour une école. Certaines dates changent chaque année (Pâques, fête des mères, date exacte de la rentrée) : vérifiez-les au moment de préparer le calendrier.
+
+> [!madagascar] Les dates à traiter avec respect
+> Certaines journées sont des commémorations, pas des fêtes : le 29 mars, par exemple, rappelle les événements de 1947. Ces jours-là, une marque ne publie pas de promotion ; elle peut ne rien publier, ou partager un message sobre si cela correspond à ses valeurs. Demandez l''avis du client en cas de doute.
+
+## Les heures de publication
+
+Il n''existe pas d''heure magique valable pour toutes les pages. Utilisez une méthode en deux temps :
+
+1. **Pour commencer**, publiez aux moments où la cible est sur son téléphone, d''après sa fiche client type : souvent vers midi, et le soir après le travail ou les cours.
+2. **Après 4 semaines**, regardez dans les statistiques les heures où les abonnés sont connectés, et les publications qui ont le mieux fonctionné. Gardez les heures qui marchent.
+
+> [!astuce] Préparer en lot
+> Ne créez pas chaque publication le jour même. Réservez un moment par semaine (par exemple le jeudi) pour créer tous les textes et visuels de la semaine suivante, puis programmez-les le lundi. C''est plus rapide, plus régulier, et vous restez libre pour répondre et animer.
+
+## La validation par le client
+
+Envoyez le calendrier **avant le début du mois**, avec les textes et les visuels dès qu''ils sont prêts. Demandez une validation écrite dans un délai précis : « Merci de valider ou de corriger d''ici jeudi 18 h. » Sans réponse, rappelez une fois, puis publiez seulement les contenus qui ne contiennent ni prix ni promotion, si votre accord le prévoit.
+
+> [!exemple] Le calendrier partagé
+> Miora partage avec Mme Voahangy un fichier Google Sheets en commentateur : la gérante peut ajouter des remarques sans modifier le tableau. Chaque jeudi, elle y ajoute les visuels de la semaine suivante. La gérante valide depuis son téléphone, en écrivant « OK » dans la colonne Statut. Toutes les validations restent écrites, avec leur date.
+
+> [!erreur] Publier un prix sans validation
+> Le community manager publie « −30 % sur toute la collection » parce que la gérante en avait parlé au téléphone « pour bientôt ». Le jour même, des dizaines de clientes demandent la remise… que la boutique n''avait pas encore décidée. **Prix, promotions et délais ne se publient qu''avec une validation écrite.**
+
+> [!retenir]
+> - Un **calendrier éditorial** partagé : date, heure, réseau, pilier, type, sujet, format, statut.
+> - Un **rythme régulier** et réaliste, par exemple 3 publications par semaine.
+> - Les **dates clés** : fins de mois, fêtes, rentrée, événements du client ; respect des commémorations.
+> - Des heures de départ selon la cible, **ajustées après 4 semaines** de statistiques.
+> - Une **validation écrite** avant le début du mois, surtout pour les prix.
+
+## Exercice pratique : un mois de calendrier
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez un calendrier éditorial dans Google Sheets avec les colonnes de la leçon et une liste déroulante pour le statut.
+> 2. Notez les dates importantes du mois prochain pour la page choisie à la leçon 2.1.
+> 3. Remplissez 12 publications sur 4 semaines, en piochant dans votre banque d''idées, avec au moins 2 publications de chaque type.
+> 4. Rédigez le message d''envoi du calendrier au client, avec la date limite de validation.
+>
+> **À livrer** : le lien de votre calendrier (en lecture) et votre message d''envoi.
+
+## Projet du module 2 : la stratégie d''une page
+
+> [!projet] Projet du module · 2 heures
+> Rassemblez le travail du module dans une stratégie de 3 à 4 pages, comme vous la présenterez à un vrai client.
+> 1. **Le point de départ** : les chiffres relevés et les principales observations sur la page (leçon 2.2).
+> 2. **La cible** : la fiche client type, avec les questions fréquentes (leçon 2.1).
+> 3. **Les objectifs** : 3 objectifs mesurables pour le premier mois, avec leurs indicateurs (leçon 2.2).
+> 4. **La ligne éditoriale** : les 6 points, le ton et la charte visuelle (leçon 2.3).
+> 5. **Les contenus** : les piliers et un extrait de la banque d''idées (leçon 2.4).
+> 6. **Le calendrier** : le premier mois (leçon 2.5).
+>
+> **À livrer** : votre stratégie en PDF, mise en page proprement dans Canva ou Google Docs. Elle rejoint votre portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 4, 0, 'À quoi sert la colonne Statut du calendrier éditorial ?', '["Classer les clients","Indiquer le nombre d''abonnés","Savoir où en est chaque publication : en création, à valider, programmée…","Noter le prix des produits"]'::jsonb, 2, 'D''un coup d''œil, vous et le client savez ce qui reste à faire et ce qui attend une validation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 4, 1, 'Quel rythme est le meilleur pour une petite page ?', '["Une publication par mois","3 publications par semaine, chaque semaine","Dix publications par jour","5 publications un jour, puis rien pendant 2 semaines"]'::jsonb, 1, 'La régularité compte plus que la quantité. Un rythme tenable se garde toute l''année.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 4, 2, 'Pourquoi les fins de mois sont-elles importantes pour beaucoup de commerces ?', '["Les salaires tombent : c''est un bon moment pour les promotions","Les boutiques ferment","Il ne faut rien publier","Facebook montre plus les publications"]'::jsonb, 0, 'Les clients ont plus de budget juste après la paie. On place les offres importantes à ce moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 4, 3, 'Comment choisir les heures de publication ?', '["Publier au hasard","Toujours publier à minuit","Commencer selon les habitudes de la cible, puis ajuster après 4 semaines de statistiques","Copier l''heure d''une page étrangère"]'::jsonb, 2, 'Il n''y a pas d''heure magique : chaque page a ses abonnés. Les statistiques montrent ce qui marche.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 1, 4, 4, 'Que faut-il pour publier un prix ou une promotion ?', '["Une validation écrite du client","Rien, c''est le rôle du community manager","Un accord oral au téléphone suffit","L''avis d''un abonné"]'::jsonb, 0, 'Un prix non validé peut obliger le client à vendre à perte ou à se contredire publiquement.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 2, 'Créer des contenus qui fonctionnent', 'Écrire une publication, créer des visuels avec Canva, photographier des produits au téléphone, monter des vidéos courtes avec CapCut, puis animer avec les stories, les directs et les contenus des clients.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 2, 0, 'Écrire une publication qui donne envie', 10, 'Sur un téléphone, une personne décide en deux secondes si elle lit une publication ou si elle passe. Votre texte doit être construit pour ces deux secondes : une première ligne qui arrête le pouce, quelques lignes faciles à lire, et une action claire à faire. Cette leçon vous donne la structure d''une bonne publication, les erreurs à éviter, et l''usage raisonnable des emojis et des hashtags.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Écrire une publication en 4 parties.
+> 2. Rédiger des accroches qui donnent envie de lire.
+> 3. Terminer chaque publication par un appel à l''action clair.
+> 4. Utiliser les emojis et les hashtags avec mesure.
+> 5. Adapter la longueur du texte au réseau et au format.
+
+## La structure d''une bonne publication
+
+```schema etapes
+titre: Une publication en 4 parties
+Accroche : une ligne qui arrête le regard (question, chiffre, promesse)
+Corps : 2 à 5 lignes courtes, avec l''information utile
+Appel à l''action : ce que le lecteur doit faire maintenant
+Infos pratiques : prix, adresse, horaires, zone de livraison, numéro
+```
+
+> [!exemple] Une publication pour une boutique de chaussures
+> 👟 Vos pieds vous font mal le soir ?
+>
+> Nos baskets légères arrivent enfin à Analakely.
+> Semelle souple, tailles 36 à 45, 4 couleurs.
+>
+> 👉 Envoyez « BASKET » en message pour réserver votre paire.
+> 💰 85 000 Ar · 🚚 Livraison à Tana sous 24 h
+
+Relisez cet exemple : l''accroche parle d''un problème de la cliente, le corps donne les informations utiles en deux lignes, l''appel à l''action est précis, et le prix est visible, ce qui évite des dizaines de questions en commentaire.
+
+## L''accroche : la seule ligne lue par tous
+
+Sur Facebook et Instagram, seules les premières lignes s''affichent avant « Voir plus ». L''accroche doit donner envie d''ouvrir la suite.
+
+| Type d''accroche | Exemple | Quand l''utiliser |
+| --- | --- | --- |
+| **La question** | « Votre peau tire après la douche ? » | Pour parler d''un problème de la cible |
+| **Le chiffre** | « 3 erreurs qui abîment vos cheveux » | Pour un conseil ou une liste |
+| **La nouveauté** | « Ils sont enfin arrivés : les sacs en raphia » | Pour une arrivée de produits |
+| **L''urgence réelle** | « Dernier jour : −20 % jusqu''à minuit » | Pour une vraie offre limitée |
+| **La surprise** | « Ce plat se mange… au petit-déjeuner » | Pour divertir |
+
+```schema comparaison
+titre: Des accroches faibles aux accroches fortes
+ton: mauvais-bon
+colonnes: Accroche faible | Accroche forte
+« Bonjour à tous, voici nos nouveaux produits » | « Ils sont enfin arrivés : 12 nouvelles robes pour la rentrée »
+« Promotion » | « −20 % sur les sacs, jusqu''à dimanche seulement »
+« Nous sommes une pâtisserie à Antsirabe » | « Un gâteau d''anniversaire livré le jour même, ça vous dit ? »
+```
+
+## L''appel à l''action
+
+> [!definition] Appel à l''action
+> La phrase qui dit au lecteur quoi faire : « Envoyez-nous un message », « Commentez avec votre taille », « Réservez au 034… ». Sans appel à l''action, le lecteur aime la publication… et passe à autre chose.
+
+Un bon appel à l''action est **unique** (une seule action demandée), **simple** (un mot à envoyer, un bouton) et **lié à l''objectif** de la publication. Pour une publication qui divertit, l''action peut être légère : « Et vous, vous êtes plutôt sucré ou salé ? Dites-le en commentaire. »
+
+## Emojis, hashtags et mise en forme
+
+```schema chiffres
+titre: Les règles de forme
+Retours à la ligne : une idée par ligne, des lignes courtes
+Emojis : 1 à 4, utiles pour guider l''œil (prix, livraison, adresse)
+Hashtags : 3 à 5 précis, surtout sur Instagram et TikTok
+Majuscules : jamais des phrases entières, qui donnent l''impression de crier
+Relecture : zéro faute, surtout sur les prix et les numéros
+```
+
+> [!cle] Les hashtags
+> Un hashtag (#) classe la publication dans un sujet. Quelques hashtags précis (#ModeMadagascar, #Antananarivo, le nom de la marque) aident un peu sur Instagram et TikTok ; sur Facebook, ils comptent peu. Quinze hashtags sans rapport avec le contenu n''apportent rien et donnent une impression de page amateur.
+
+## La longueur selon le réseau
+
+| Réseau ou format | Longueur conseillée | Pourquoi |
+| --- | --- | --- |
+| Publication Facebook | 3 à 8 lignes courtes | Lue sur téléphone, entre deux activités |
+| Publication Instagram | Une accroche forte, puis 3 à 6 lignes | L''image compte d''abord ; le texte complète |
+| Vidéo TikTok ou Reel | 1 à 2 lignes | Le message est dans la vidéo |
+| LinkedIn | 8 à 15 lignes aérées | Le public lit davantage, sur ordinateur aussi |
+| Story | Quelques mots sur l''image | Elle se regarde en quelques secondes |
+
+> [!madagascar] Écrire pour les abonnés malgaches
+> Beaucoup d''abonnés lisent sur des téléphones d''entrée de gamme, avec un forfait limité : certains ne chargent pas les vidéos ou les images lourdes. **Mettez toujours l''information principale dans le texte** : le prix, la zone de livraison, le moyen de commander. Et pensez aux mots que vos abonnés utilisent : un « Misaotra ! » bien placé ou une expression malgache courante peut rendre la marque plus proche, si cela correspond à sa ligne éditoriale.
+
+> [!erreur] Oublier le prix
+> La boutique publie une belle photo de robe avec « Nouveauté disponible ! ». En une heure, 40 commentaires demandent « Prix ? ». Beaucoup ne reçoivent pas de réponse à temps et passent à autre chose. Certains pensent même que la boutique cache ses prix parce qu''ils sont trop élevés. **Si le client est d''accord, affichez le prix** : c''est souvent la première question des acheteurs.
+
+> [!retenir]
+> - **Accroche, corps, appel à l''action, infos pratiques.**
+> - L''accroche est **la seule ligne lue par tous** : question, chiffre, nouveauté, urgence réelle, surprise.
+> - **Un seul appel à l''action**, simple et lié à l''objectif.
+> - **1 à 4 emojis utiles, 3 à 5 hashtags précis**, des lignes courtes.
+> - L''information principale **dans le texte**, et le prix si le client l''accepte.
+
+## Exercice pratique : 6 publications écrites
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Pour la page de votre stratégie (module 2), écrivez 6 publications en 4 parties : 2 pour vendre, 1 pour informer, 1 pour divertir, 2 pour prouver.
+> 2. Pour chacune, écrivez 3 accroches différentes et gardez la meilleure.
+> 3. Réécrivez cette publication faible : « BONJOUR À TOUS !!! Nouveaux arrivages de sacs, venez nombreux, prix intéressants, contactez-nous #sac #mode #fashion #style #madagascar #tana #shopping #love #instagood ».
+> 4. Relisez les 7 textes avec un correcteur.
+>
+> **À livrer** : vos 6 publications avec leurs 3 accroches, et la publication réécrite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 0, 0, 'Quelles sont les 4 parties d''une bonne publication ?', '["Bonjour, texte, emojis, merci","Accroche, corps, appel à l''action, infos pratiques","Prix, prix, prix, adresse","Titre, image, hashtags, signature"]'::jsonb, 1, 'L''accroche arrête le regard, le corps informe, l''appel à l''action dit quoi faire, et les infos pratiques évitent les questions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 0, 1, 'Pourquoi l''accroche est-elle si importante sur Facebook et Instagram ?', '["Elle n''est pas importante","Parce que les hashtags vont dedans","Parce qu''elle est en gras automatiquement","Seules les premières lignes s''affichent avant « Voir plus »"]'::jsonb, 3, 'C''est souvent la seule ligne lue par tous. Si elle n''accroche pas, la suite n''est jamais lue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 0, 2, 'Quel appel à l''action est le meilleur ?', '["« À bientôt peut-être »","« Envoyez BASKET en message pour réserver votre paire »","« Merci de votre attention »","« N''hésitez pas »"]'::jsonb, 1, 'Un bon appel à l''action est unique, simple et lié à l''objectif : ici, envoyer un message pour réserver.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 0, 3, 'Combien de hashtags utiliser sur une publication Instagram ?', '["Aucun, jamais","3 à 5, précis et liés au contenu","Exactement 30","Le maximum possible, même sans rapport"]'::jsonb, 1, 'Quelques hashtags précis aident un peu. Une longue liste sans rapport donne une impression amateur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 0, 4, 'Que se passe-t-il souvent quand une publication de vente n''affiche pas le prix ?', '["Les commentaires se remplissent de « Prix ? » et des clients passent à autre chose","Rien du tout","Les ventes augmentent toujours","Facebook ajoute le prix automatiquement"]'::jsonb, 0, 'Le prix est souvent la première question des acheteurs. S''il manque, une partie d''entre eux abandonne.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 2, 1, 'Créer des visuels avec Canva', 9, 'Un community manager n''est pas graphiste, mais il crée chaque semaine des visuels simples : une promotion, une nouveauté, un avis client, une information pratique. **Canva** permet de le faire vite et proprement, à condition de respecter quelques règles : le bon format, un seul message, un texte lisible sur téléphone, et la charte de la marque. Cette leçon vous les donne.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir le bon format pour chaque réseau.
+> 2. Créer un visuel lisible sur téléphone, avec un seul message.
+> 3. Respecter la charte de la marque dans Canva.
+> 4. Construire un carrousel qui donne envie de faire défiler.
+> 5. Préparer une série de modèles réutilisables.
+
+## Les bons formats
+
+```schema formats
+titre: Les formats les plus utilisés
+Carré : 1080 x 1080
+Vertical : 1080 x 1350
+Story, Reel, TikTok : 1080 x 1920
+```
+
+| Format | Dimensions (pixels) | Où l''utiliser |
+| --- | --- | --- |
+| Publication carrée | 1080 × 1080 | Facebook, Instagram |
+| Publication verticale 4:5 | 1080 × 1350 | Instagram et Facebook : prend plus de place à l''écran |
+| Story, Reel, TikTok | 1080 × 1920 | Stories et vidéos verticales |
+| Couverture de page Facebook | environ 1640 × 624 | En haut de la page (à vérifier, Facebook change parfois) |
+
+Les réseaux changent parfois leurs affichages : sur Instagram, par exemple, les vignettes de la grille du profil sont plus hautes que larges. **Gardez l''essentiel au centre** du visuel, pour qu''il reste visible même si l''image est recadrée.
+
+## Un visuel lisible sur téléphone
+
+Un visuel se regarde en une seconde, sur un petit écran. Il doit faire passer **un seul message**.
+
+```schema etapes
+titre: Créer un visuel en 6 étapes
+Choisir la bonne taille, ou « Taille personnalisée »
+Partir d''un modèle, puis remplacer toutes les couleurs et polices par celles de la marque
+Garder un seul message, en gros caractères (6 à 8 mots au plus)
+Ajouter le logo, petit, toujours au même endroit
+Vérifier la lisibilité en réduisant le zoom à la taille d''un téléphone
+Télécharger en PNG pour un visuel avec texte, en MP4 pour une animation
+```
+
+```schema contraste
+titre: Le contraste du texte
+#FFFFFF sur #7A1F3D Texte blanc sur bordeaux
+#C9A227 sur #F4E6D8 Doré sur beige clair
+#2B2B2B sur #F4E6D8 Texte foncé sur beige clair
+```
+
+Un texte doré sur un fond beige est élégant… mais illisible sur un téléphone en plein soleil. Gardez les couleurs claires ou dorées pour les détails, et utilisez une couleur foncée ou blanche, bien contrastée, pour le texte important.
+
+> [!astuce] Le test du bras tendu
+> Avant de publier, affichez le visuel sur votre téléphone et tenez-le à bout de bras. Si vous ne lisez pas le message principal en une seconde, il est trop petit, trop long ou pas assez contrasté.
+
+## Le carrousel
+
+Un carrousel est une publication de plusieurs images que l''on fait défiler. C''est un format très utile pour montrer plusieurs produits, expliquer des étapes, ou raconter un avant / après.
+
+```schema comparaison
+titre: Le carrousel qui fonctionne
+ton: mauvais-bon
+colonnes: Carrousel raté | Carrousel réussi
+La première image ressemble aux autres | La première image pose une question ou une promesse
+10 images sans lien entre elles | 3 à 7 images qui suivent un ordre logique
+Beaucoup de texte sur chaque image | Une idée par image
+Pas de conclusion | La dernière image donne l''appel à l''action
+```
+
+> [!exemple] Le carrousel « Quelle taille choisir ? »
+> Pour Lamba Soa, Miora crée un carrousel de 5 images. Image 1 : « Quelle taille choisir ? Le guide en 30 secondes ». Image 2 : comment se mesurer, avec un dessin simple. Image 3 : le tableau des tailles de la boutique. Image 4 : « Entre deux tailles ? Prenez la plus grande pour les robes ». Image 5 : « Une question ? Envoyez-nous vos mesures en message ». Les clientes l''enregistrent et le partagent, et les questions sur les tailles diminuent.
+
+## Les modèles de la marque
+
+Ne recommencez pas chaque visuel de zéro. Créez, une fois pour toutes, **4 à 6 modèles** aux couleurs de la marque, et dupliquez-les chaque semaine.
+
+| Modèle | Contenu | Utilisation |
+| --- | --- | --- |
+| Nouveauté | Grande photo, titre court, prix | Arrivée de produits |
+| Promotion | Pourcentage ou prix barré, date de fin | Offres limitées |
+| Avis client | Photo, citation courte, prénom | Prouver |
+| Information pratique | Icône, texte court | Horaires, livraison, fermeture |
+| Question du jour | Fond uni, grande question | Animer la communauté |
+
+Dans la version gratuite de Canva, rangez ces modèles dans un dossier par client. La version payante, Canva Pro, ajoute un **kit de marque** qui garde les couleurs, les polices et les logos (vous la verrez au module 4).
+
+> [!madagascar] Des visuels légers
+> Une image très lourde se charge mal avec une connexion faible. Les visuels exportés depuis Canva en PNG ou en JPG aux dimensions conseillées restent en général légers. Évitez d''empiler des effets, des dégradés et des photos de mauvaise qualité agrandies : un visuel simple et net se charge vite et se lit mieux.
+
+> [!erreur] Tout écrire sur l''image
+> Le débutant met sur une seule image le nom de la boutique, l''adresse, trois numéros de téléphone, les horaires, cinq produits et le prix de chacun. Personne ne lit rien. **Un visuel, un message.** Les détails vont dans le texte de la publication, sous l''image.
+
+> [!retenir]
+> - **1080 × 1080, 1080 × 1350, 1080 × 1920** : les trois formats de base ; l''essentiel au centre.
+> - **Un seul message**, en gros, avec un bon contraste.
+> - Le **test du bras tendu** avant chaque publication.
+> - Un **carrousel** : une première image qui accroche, une idée par image, l''action à la fin.
+> - **4 à 6 modèles** aux couleurs de la marque, dupliqués chaque semaine.
+
+## Exercice pratique : vos modèles et un carrousel
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Dans Canva, créez les 5 modèles du tableau aux couleurs de la page de votre stratégie (module 2).
+> 2. Utilisez-les pour créer les visuels de 4 des publications écrites à la leçon 3.1.
+> 3. Créez un carrousel de 5 images sur une question fréquente des clients de la page.
+> 4. Faites le test du bras tendu sur chaque visuel et corrigez ce qui ne se lit pas.
+>
+> **À livrer** : vos 5 modèles, vos 4 visuels et votre carrousel, en PNG.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 1, 0, 'Quelle taille utiliser pour une story ou une vidéo TikTok ?', '["500 × 500 pixels","1080 × 1920 pixels","1640 × 624 pixels","1080 × 1080 pixels"]'::jsonb, 1, 'Les stories, Reels et TikTok sont verticaux, au format 9:16, soit 1080 × 1920 pixels.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 1, 1, 'Combien de messages un visuel doit-il faire passer ?', '["Autant que possible","Aucun","Au moins cinq","Un seul"]'::jsonb, 3, 'Un visuel se regarde en une seconde sur un petit écran. Les détails vont dans le texte de la publication.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 1, 2, 'À quoi sert le test du bras tendu ?', '["Choisir les couleurs","Prendre une photo de soi","Vérifier que le message se lit en une seconde sur un téléphone","Mesurer la taille du visuel"]'::jsonb, 2, 'Si on ne lit pas le message principal à bout de bras, il est trop petit, trop long ou pas assez contrasté.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 1, 3, 'Que doit contenir la première image d''un carrousel ?', '["La liste complète des prix","Une image vide","Une question ou une promesse qui donne envie de faire défiler","Le logo seul"]'::jsonb, 2, 'Comme l''accroche d''un texte, la première image décide si l''abonné fait défiler la suite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 1, 4, 'Pourquoi créer 4 à 6 modèles aux couleurs de la marque ?', '["Pour gagner du temps et garder une page cohérente","Parce que Canva l''exige","Pour publier moins souvent","Pour copier une autre marque"]'::jsonb, 0, 'Dupliquer des modèles prêts permet de produire vite, avec toujours la même identité visuelle.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 2, 2, 'Photographier des produits au téléphone', 10, 'Une boutique en ligne vend d''abord avec ses photos : la cliente ne peut ni toucher le tissu, ni goûter le gâteau, ni essayer la paire de chaussures. Beaucoup de pages malgaches perdent des ventes avec des photos sombres, floues ou encombrées, alors qu''un simple téléphone suffit pour faire de belles images. Cette leçon vous apprend à photographier des produits proprement, avec la lumière du jour et un peu de méthode.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser la lumière naturelle pour des photos nettes et fidèles.
+> 2. Choisir un fond simple et cadrer le produit.
+> 3. Photographier différents types de produits : vêtements, nourriture, objets.
+> 4. Retoucher légèrement une photo sur le téléphone.
+> 5. Organiser une séance photo mensuelle avec le client.
+
+## La lumière : le secret d''une belle photo
+
+La lumière compte plus que le téléphone. Une photo prise avec un téléphone simple, près d''une fenêtre, est souvent plus belle qu''une photo prise avec un téléphone cher, sous une ampoule jaune.
+
+```schema comparaison
+titre: Choisir la lumière
+ton: mauvais-bon
+colonnes: Lumière à éviter | Lumière à rechercher
+Le soleil de midi, direct : ombres dures, couleurs écrasées | La lumière d''une fenêtre, de côté
+L''ampoule jaune du soir : couleurs fausses | Le matin ou la fin d''après-midi, à l''ombre
+Le flash du téléphone : reflets et ombres noires | Un mur clair qui renvoie la lumière
+Le contre-jour : produit sombre devant une fenêtre | La fenêtre derrière vous ou sur le côté
+```
+
+> [!madagascar] Profiter de la lumière de Madagascar
+> Madagascar a une lumière naturelle abondante une grande partie de l''année. Organisez les séances photo **le matin**, quand la lumière est douce et que l''électricité n''est pas nécessaire : vous n''êtes ni gêné par les coupures, ni obligé d''acheter des lampes. Un drap blanc tendu devant une fenêtre très ensoleillée adoucit la lumière, comme un vrai matériel de studio.
+
+## Le fond et le cadrage
+
+1. **Un fond simple** : un mur clair, un drap uni, une planche de bois, une grande feuille de papier. Rien qui distrait du produit.
+2. **Rien d''inutile dans l''image** : pas de sac plastique, de câble ou de bouteille qui traîne.
+3. **Le produit net** : appuyez sur l''écran à l''endroit du produit pour faire la mise au point.
+4. **Le téléphone stable** : posé sur une pile de livres ou un petit trépied, pour éviter le flou.
+5. **Plusieurs angles** : de face, de côté, un détail (tissu, couture, texture), le produit porté ou utilisé.
+
+```schema composition
+titre: Placer le produit avec la règle des tiers
+regle: tiers
+sujet: haut-droite
+Activez la grille dans les réglages de l''appareil photo du téléphone
+Placez le produit sur une intersection, ou au centre pour un produit seul
+Laissez de l''espace vide du côté où l''on ajoutera du texte
+```
+
+## Photographier selon le type de produit
+
+| Produit | Conseils | Erreur fréquente |
+| --- | --- | --- |
+| **Vêtements** | Portés si possible, sinon à plat ou sur cintre devant un mur clair ; une photo de détail du tissu | Vêtement froissé, photographié sur un lit défait |
+| **Nourriture** | Lumière de côté, photo de haut pour les assiettes, de face pour les gâteaux ; servir avec soin | Lumière jaune du soir, plat qui n''a plus l''air frais |
+| **Cosmétiques** | Fond clair, produit droit, étiquette lisible ; une photo de la texture | Reflets sur l''emballage brillant |
+| **Objets artisanaux** | Montrer la taille avec une main ou un objet connu ; un détail de la fabrication | Impossible de deviner la taille réelle |
+| **Hôtel, lieu** | Lumière du jour, pièces rangées, photo prise depuis un coin pour montrer l''espace | Photos sombres, prises de nuit |
+
+> [!exemple] Les savons de Fianarantsoa
+> Une savonnerie artisanale publiait ses savons photographiés sur une table encombrée, le soir. Miora organise une séance d''une heure, un matin, près d''une fenêtre : chaque savon sur une planche de bois clair, avec une photo du savon coupé pour montrer la texture, et une photo dans la main pour montrer la taille. Les nouvelles photos sont réutilisées pendant deux mois, et les clientes posent moins de questions sur la taille.
+
+## Retoucher légèrement sur le téléphone
+
+Une retouche légère rend la photo plus fidèle à la réalité ; une retouche forte la rend mensongère.
+
+```schema etapes
+titre: La retouche en 4 gestes (éditeur photo du téléphone ou Snapseed)
+Recadrer et redresser : le produit au bon endroit, l''horizon droit
+Éclaircir : un peu de luminosité si la photo est sombre
+Corriger les couleurs : enlever une teinte trop jaune ou trop bleue
+Vérifier : la couleur à l''écran est-elle la vraie couleur du produit ?
+```
+
+> [!attention] Fidèle au produit réel
+> Une robe photographiée plus brillante qu''en réalité, un plat retouché pour paraître plus copieux, un produit débarrassé de ses défauts : la cliente reçoit autre chose que ce qu''elle a vu, et elle le dit publiquement en commentaire. **La photo doit montrer le vrai produit**, à sa vraie couleur. C''est aussi la meilleure façon d''éviter les retours et les réclamations.
+
+## La séance photo mensuelle
+
+Plutôt que de demander une photo au client chaque jour, organisez une **séance photo par mois**, de 1 à 2 heures : 30 à 40 photos des nouveaux produits, des coulisses et de l''équipe. Vous avez la matière de tout le mois, et vous pouvez préparer le calendrier en avance.
+
+```schema checklist
+titre: Préparer la séance photo
+[ ] La liste des produits à photographier, validée avec le client
+[ ] Le créneau du matin, avec une bonne lumière
+[ ] Un fond simple et propre, et une table dégagée
+[ ] Le téléphone chargé, avec de l''espace de stockage libre
+[ ] L''accord des personnes qui apparaissent sur les photos
+[ ] Un dossier par séance, avec la date, pour ranger les photos
+```
+
+> [!erreur] Les photos du fournisseur
+> Pour aller vite, la boutique publie les photos du fournisseur étranger, avec un mannequin et un studio professionnel. Les clientes commandent… puis reçoivent un vêtement d''une autre qualité, d''une couleur différente. Les commentaires négatifs se multiplient. **Rien ne remplace les vraies photos des vrais produits**, même prises au téléphone.
+
+> [!retenir]
+> - **La lumière compte plus que le téléphone** : fenêtre, matin, lumière de côté, pas de flash.
+> - **Un fond simple**, rien d''inutile, le produit net et le téléphone stable.
+> - **Plusieurs angles** : face, côté, détail, produit porté ou utilisé, taille visible.
+> - Une **retouche légère et fidèle** : recadrer, éclaircir, corriger les couleurs.
+> - **Une séance photo par mois** pour avoir la matière de tout le calendrier.
+
+## Exercice pratique : une mini séance photo
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Choisissez 3 objets de chez vous (un vêtement, un aliment ou un plat, un petit objet).
+> 2. Photographiez chaque objet deux fois : une fois sans méthode (lumière du soir, fond encombré), une fois avec la méthode de la leçon.
+> 3. Pour chaque objet réussi, faites 3 angles : face, détail, objet utilisé ou dans une main.
+> 4. Retouchez légèrement les meilleures photos avec les 4 gestes.
+> 5. Rédigez la liste de préparation d''une séance photo pour la page de votre stratégie.
+>
+> **À livrer** : vos photos « avant / après », vos 9 photos réussies retouchées et votre liste de préparation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 2, 0, 'Quelle lumière choisir pour photographier un produit ?', '["La lumière d''une fenêtre, de côté, le matin ou en fin d''après-midi","Le soleil direct de midi","Le flash du téléphone","L''ampoule jaune du soir"]'::jsonb, 0, 'Une lumière naturelle douce donne des couleurs fidèles et des ombres légères. La lumière compte plus que le téléphone.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 2, 1, 'Comment montrer la taille réelle d''un objet artisanal ?', '["Agrandir la photo","Le photographier dans une main ou à côté d''un objet connu","Le photographier seul sur un fond noir","Écrire « grand » dans le texte"]'::jsonb, 1, 'Sans repère, impossible de deviner la taille. Une main ou un objet connu évite les déceptions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 2, 2, 'Jusqu''où retoucher une photo de produit ?', '["Légèrement, pour qu''elle reste fidèle au produit réel","Jusqu''à cacher tous les défauts","Jusqu''à changer la couleur du produit","Il ne faut jamais recadrer"]'::jsonb, 0, 'Une photo trompeuse provoque des retours et des commentaires négatifs. On recadre, on éclaircit, on corrige les couleurs.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 2, 3, 'Pourquoi organiser une séance photo par mois ?', '["Parce que les réseaux l''exigent","Pour éviter de publier","Pour remplacer toutes les vidéos","Avoir la matière de tout le calendrier du mois"]'::jsonb, 3, '30 à 40 photos prises en une séance permettent de préparer le mois sans demander une photo chaque jour au client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 2, 4, 'Peut-on publier les photos du fournisseur étranger à la place des vrais produits ?', '["Oui, elles sont plus belles","Oui, si on ajoute le logo","Oui, toujours","Non : les clientes risquent de recevoir un produit différent de la photo"]'::jsonb, 3, 'Les vraies photos des vrais produits évitent les déceptions et les réclamations publiques.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 2, 3, 'Les vidéos courtes : Reels et TikTok', 10, 'Les vidéos courtes, les **Reels** sur Facebook et Instagram et les vidéos **TikTok**, sont souvent les contenus les plus vus des réseaux sociaux : elles peuvent toucher des personnes qui ne suivent pas encore la page. Pas besoin de matériel coûteux : un téléphone, une bonne lumière et une application de montage gratuite comme **CapCut** suffisent. Cette leçon vous apprend à construire, filmer et monter une vidéo courte qui retient l''attention.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire une vidéo courte en 4 temps.
+> 2. Capter l''attention dans les 3 premières secondes.
+> 3. Filmer proprement avec un téléphone.
+> 4. Monter une vidéo avec CapCut : coupes, texte, sous-titres, musique autorisée.
+> 5. Choisir des idées de vidéos adaptées à une petite marque.
+
+## La structure d''une vidéo courte
+
+```schema etapes
+titre: Une vidéo courte en 4 temps
+L''accroche (0 à 3 s) : une image ou une phrase qui arrête le défilement
+Le contenu (3 à 25 s) : ce qu''on montre, en plans courts
+La preuve ou le résultat : le produit fini, l''avant / après, la réaction
+L''appel à l''action : « Commandez en message », « Enregistrez pour plus tard »
+```
+
+La plupart des personnes décident en **moins de 3 secondes** si elles regardent la suite. Commencez donc par le moment le plus fort : le gâteau déjà décoré, la robe portée, le résultat final. Le « Bonjour, je m''appelle… » de 10 secondes fait fuir presque tout le monde.
+
+| Type d''accroche | Exemple |
+| --- | --- |
+| Le résultat d''abord | Le plat fini, fumant, puis « Voici comment on le prépare » |
+| La question | « Vous savez reconnaître un vrai savon artisanal ? » |
+| Le texte à l''écran | « 3 tenues avec une seule jupe » |
+| Le mouvement | Une main qui ouvre un emballage, un tissu qui tombe |
+
+## Filmer avec un téléphone
+
+```schema checklist
+titre: Avant d''appuyer sur « Enregistrer »
+[ ] Téléphone tenu à la verticale (format 9:16)
+[ ] Objectif essuyé avec un tissu propre
+[ ] Lumière du jour, de face ou de côté, jamais dans le dos
+[ ] Téléphone posé ou tenu à deux mains, pour éviter les tremblements
+[ ] Endroit calme si quelqu''un parle, ou micro proche de la bouche
+[ ] Plusieurs plans courts plutôt qu''un long plan
+```
+
+Filmez **plus que nécessaire** : plusieurs plans de 3 à 5 secondes, sous différents angles. Au montage, vous garderez les meilleurs moments.
+
+## Monter avec CapCut
+
+CapCut est une application de montage gratuite, sur téléphone et sur ordinateur. Certaines fonctions sont réservées à la version payante : vérifiez avant de construire tout votre travail sur un effet payant.
+
+```schema ecran
+titre: CapCut sur téléphone : l''écran de montage
+haut: L''aperçu de la vidéo [1]
+centre: La ligne de temps avec les plans [2]
+bas: Les outils : Diviser, Texte, Sous-titres, Audio, Format [3]
+[1] Regardez souvent l''aperçu en entier, comme un abonné le verrait
+[2] Faites glisser pour vous déplacer ; pincez pour zoomer sur la ligne de temps
+[3] Les noms peuvent changer selon la version : cherchez ces fonctions dans la barre du bas
+```
+
+1. **Couper** : placez le curseur, touchez « Diviser », supprimez les moments inutiles. Gardez des plans courts.
+2. **Ajouter du texte** : un titre court au début, lisible, loin des bords (les boutons des applications cachent les côtés et le bas de l''écran).
+3. **Ajouter des sous-titres** : beaucoup de personnes regardent sans le son. Les sous-titres automatiques fonctionnent bien en français, mais **relisez-les toujours** : ils se trompent sur les noms, les prix et les mots malgaches.
+4. **Ajouter la musique** : de préférence dans l''application de publication (Instagram, TikTok), avec la bibliothèque autorisée pour les comptes professionnels (leçon 1.5).
+5. **Exporter** en 1080 × 1920, puis vérifier la vidéo sur le téléphone avant de la publier.
+
+> [!cle] Les zones à éviter
+> Sur un Reel ou un TikTok, le nom du compte, la description et les boutons (j''aime, commentaires, partage) s''affichent par-dessus la vidéo, en bas et à droite. Placez vos textes importants **dans la partie centrale** de l''image, sinon ils seront cachés.
+
+## Des idées de vidéos pour une petite marque
+
+```schema chiffres
+titre: 6 idées de vidéos faciles
+Les coulisses : la préparation d''un plat, l''emballage d''une commande
+L''avant / après : une coiffure, une pièce rangée, une tenue
+Le tutoriel : 3 façons de porter un foulard, comment utiliser un produit
+La réponse à une question : « Vous livrez à Ivato ? » en vidéo
+L''équipe : présenter le cuisinier, la couturière, le livreur
+L''avis client : une cliente qui montre son achat, avec son accord
+```
+
+> [!exemple] Le snack d''Antsirabe sur TikTok
+> Le Snack Mofo Gasy publie chaque mardi une vidéo de 15 secondes : les mofo gasy qui dorent dans les moules, filmés de près au lever du jour, avec un texte « 5 h 30, Antsirabe. Les premiers sont prêts. » Pas de grande production, juste de la lumière, un bon plan et une habitude régulière. Les étudiants partagent les vidéos, et viennent demander « les mofo de TikTok ».
+
+> [!madagascar] Des vidéos qui consomment peu
+> Beaucoup d''abonnés regardent avec des données limitées. Les vidéos **courtes**, de 15 à 45 secondes, sont plus souvent regardées jusqu''au bout. Pour vous aussi, montez sur le téléphone ou l''ordinateur avec les fichiers déjà enregistrés, et n''envoyez la vidéo finale qu''une seule fois, avec une bonne connexion.
+
+> [!erreur] La vidéo horizontale avec des bandes noires
+> Le débutant filme en tenant le téléphone à l''horizontale, puis publie la vidéo en Reel. Elle apparaît toute petite au milieu de l''écran, avec de grandes bandes noires. Les abonnés passent à la suivante. **Filmez toujours à la verticale** pour les Reels, les stories et TikTok.
+
+> [!retenir]
+> - **Accroche, contenu, preuve, appel à l''action** : le plus fort dans les 3 premières secondes.
+> - **Verticale, lumière du jour, téléphone stable**, plusieurs plans courts.
+> - CapCut : **couper, texte, sous-titres relus, export en 1080 × 1920**.
+> - Textes au **centre de l''image**, loin des boutons ; musique de la **bibliothèque autorisée**.
+> - Des idées simples : **coulisses, avant / après, tutoriel, réponse, équipe, avis client**.
+
+## Exercice pratique : deux vidéos courtes
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Écrivez le plan de 2 vidéos de 15 à 30 secondes pour la page de votre stratégie : une vidéo de coulisses et une vidéo tutoriel ou avant / après.
+> 2. Filmez chaque vidéo avec au moins 6 plans courts, à la verticale, en lumière du jour (avec vos propres objets si vous n''avez pas accès au client).
+> 3. Montez-les dans CapCut : coupes, titre, sous-titres relus, export en 1080 × 1920.
+> 4. Regardez-les sur votre téléphone et vérifiez qu''aucun texte n''est caché par les boutons.
+>
+> **À livrer** : vos 2 plans écrits et vos 2 vidéos.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 3, 0, 'Que montrer dans les 3 premières secondes d''une vidéo courte ?', '["Un écran noir","Le moment le plus fort : le résultat, une question, un mouvement","Le logo pendant 10 secondes","Une longue présentation de la marque"]'::jsonb, 1, 'La plupart des personnes décident en moins de 3 secondes si elles regardent la suite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 3, 1, 'Comment tenir le téléphone pour filmer un Reel ou un TikTok ?', '["En diagonale","À l''horizontale","À la verticale","Peu importe"]'::jsonb, 2, 'Une vidéo horizontale apparaît toute petite avec des bandes noires dans un format vertical.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 3, 2, 'Pourquoi ajouter des sous-titres ?', '["Beaucoup de personnes regardent sans le son","Pour remplacer les images","Parce que la musique est interdite","Ce n''est jamais utile"]'::jsonb, 0, 'Les sous-titres permettent de comprendre sans le son. On les relit toujours, surtout pour les noms et les prix.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 3, 3, 'Où placer les textes importants dans une vidéo verticale ?', '["Tout en bas","Sous les boutons","Dans la partie centrale de l''image","Collés au bord droit"]'::jsonb, 2, 'Le nom du compte, la description et les boutons s''affichent en bas et à droite, par-dessus la vidéo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 3, 4, 'Quelle idée de vidéo est la plus facile pour une petite marque ?', '["Une vidéo de 20 minutes","Les coulisses : la préparation d''un plat, l''emballage d''une commande","Un film publicitaire avec des acteurs","Une vidéo copiée d''une autre marque"]'::jsonb, 1, 'Les coulisses demandent peu de moyens et montrent de vraies personnes, ce qui crée de la confiance.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 2, 4, 'Stories, directs et contenus des clients', 10, 'Les publications construisent l''image de la marque ; les **stories** et les **directs** entretiennent le lien au quotidien. Et les contenus les plus convaincants ne viennent souvent pas de la marque elle-même, mais de ses **clients satisfaits**. Cette leçon termine le module 3 avec ces trois formats de proximité, puis le projet du module : un mois de contenus prêts à publier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser les stories pour garder un contact quotidien.
+> 2. Faire participer les abonnés avec les sondages et les questions.
+> 3. Préparer et animer un direct.
+> 4. Collecter et publier les contenus des clients, avec leur accord.
+> 5. Rassembler un mois de contenus variés.
+
+## Les stories : le contact quotidien
+
+Une story est un contenu vertical qui disparaît au bout de 24 heures. Elle est moins travaillée qu''une publication, et c''est justement sa force : elle montre la vie de la marque, au jour le jour.
+
+| Idée de story | Exemple | Pourquoi ça marche |
+| --- | --- | --- |
+| Les coulisses | La boutique qui ouvre le matin, le chef au marché | Les abonnés voient les vraies personnes |
+| Le produit du jour | « Dernière pièce en taille M » | Une urgence réelle, qui pousse à écrire |
+| Le sondage | « Rouge ou noir pour la prochaine collection ? » | Les abonnés donnent leur avis en un clic |
+| La question | « Posez-nous vos questions sur la livraison » | Des idées de contenus et des réponses publiques |
+| Le partage | Une publication de la page, pour lui donner plus de visibilité | Les abonnés qui regardent les stories la découvrent |
+
+```schema cycle
+titre: Le rythme des stories d''une boutique
+Le matin : l''ouverture ou le produit du jour
+À midi : un sondage ou une question
+Le soir : une nouveauté, un avis client ou les coulisses
+Le lendemain : les réponses au sondage, et on recommence
+```
+
+> [!astuce] Les stories à la une
+> Sur Instagram (et sur Facebook pour certaines pages), les stories importantes peuvent être gardées dans des **stories à la une**, affichées en haut du profil : Livraison, Tailles, Avis, Nouveautés. Une nouvelle abonnée y trouve tout de suite les réponses à ses questions.
+
+## Les directs
+
+Un direct (ou *live*) est une vidéo diffusée en temps réel. Les abonnés peuvent poser des questions et réagir. À Madagascar, beaucoup de boutiques vendent en direct sur Facebook : elles présentent les articles un par un, et les clientes réservent en commentaire.
+
+```schema etapes
+titre: Préparer un direct de vente
+Annoncer : la date et l''heure, 2 jours avant, puis le jour même
+Préparer : la liste des articles, leurs prix validés, la règle de réservation
+Tester : la connexion, la lumière, le son, le téléphone posé et chargé
+Animer : saluer les personnes par leur prénom, répondre aux questions
+Suivre : noter chaque réservation et répondre en message après le direct
+```
+
+> [!madagascar] La connexion pendant un direct
+> Un direct consomme beaucoup de données et a besoin d''une connexion stable. Faites un test la veille, à la même heure. Branchez le téléphone ou gardez une batterie externe, et prévoyez un message en cas de coupure : « Petite coupure de connexion, nous revenons dans 5 minutes ! » Évitez les heures où votre quartier connaît souvent des délestages.
+
+## Les contenus des clients
+
+Une photo envoyée par une cliente heureuse, avec sa robe Lamba Soa, convainc souvent plus qu''une belle photo de studio. On appelle ces contenus créés par les clients des **contenus générés par les utilisateurs** (en anglais *user generated content*, ou UGC).
+
+```schema etapes
+titre: Collecter et publier les contenus des clients
+Demander : après une commande, inviter le client à partager une photo
+Faciliter : un mot-clé ou une identification de la page
+Demander l''accord écrit avant de publier, en précisant où
+Publier : avec un merci et le prénom, si le client le souhaite
+Garder : les accords et les photos dans le dossier du client
+```
+
+> [!attention] Toujours demander l''accord
+> Une photo envoyée en message privé n''est pas une autorisation de la publier. Demandez toujours : « Pouvons-nous partager votre photo sur notre page, avec votre prénom ? » Gardez la réponse écrite. Pour une photo d''enfant, demandez l''accord d''un parent, ou ne la publiez pas.
+
+> [!exemple] Les avis de Lamba Soa
+> Miora ajoute une phrase dans le message envoyé avec chaque commande : « Si votre robe vous plaît, envoyez-nous une photo : nous adorons voir nos clientes ! » Chaque mois, une dizaine de clientes répondent. Avec leur accord, Miora publie un carrousel « Vos plus belles tenues du mois ». C''est l''une des publications qui reçoivent le plus de commentaires, et de nouvelles clientes écrivent : « Je veux la même que la troisième photo. »
+
+> [!erreur] Le direct sans préparation
+> La gérante lance un direct à l''improviste, sans annonce ni liste. Peu de personnes sont présentes, elle cherche les articles, ne connaît pas certains prix, et la connexion coupe deux fois. Les rares spectatrices quittent le direct. **Un direct se prépare comme un petit événement** : annonce, liste, prix validés, test technique.
+
+> [!retenir]
+> - Les **stories** montrent la vie quotidienne : coulisses, produit du jour, sondage, question.
+> - Les **stories à la une** gardent les informations utiles en haut du profil.
+> - Un **direct** s''annonce, se prépare, se teste et se suit.
+> - Les **contenus des clients** convainquent, toujours avec un **accord écrit**.
+> - Un mois de contenus mêle **publications, vidéos, stories et avis clients**.
+
+## Exercice pratique : stories et direct
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez 5 stories pour la page de votre stratégie (Canva ou photos) : coulisses, produit du jour, sondage, question, avis client.
+> 2. Rédigez l''annonce d''un direct de vente et la liste de préparation.
+> 3. Rédigez le message qui demande à une cliente une photo et son accord pour la publier.
+>
+> **À livrer** : vos 5 stories, votre annonce, votre liste de préparation et votre message.
+
+## Projet du module 3 : un mois de contenus
+
+> [!projet] Projet du module · 2 heures 30
+> Produisez les contenus du premier mois du calendrier préparé au module 2, comme si vous alliez les publier pour un vrai client.
+> 1. **12 publications** complètes : texte en 4 parties et visuel ou vidéo, avec au moins 2 publications de chaque type (informer, divertir, prouver, vendre).
+> 2. **Au moins 2 vidéos courtes** et **1 carrousel** parmi ces 12 publications (vous pouvez reprendre ceux des leçons 3.2 et 3.4).
+> 3. **10 stories** réparties sur le mois.
+> 4. **Le calendrier mis à jour** : chaque ligne avec son texte, le lien du visuel et le statut « À valider ».
+> 5. **Une relecture complète** : orthographe, prix, test du bras tendu, zones cachées des vidéos.
+>
+> **À livrer** : un dossier avec les 12 publications, les stories et le calendrier à jour. C''est la deuxième pièce de votre portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 4, 0, 'Combien de temps une story reste-t-elle visible ?', '["Pour toujours","Une semaine","Un mois","24 heures, sauf si on la garde à la une"]'::jsonb, 3, 'La story disparaît après 24 heures, ce qui en fait un format de contact quotidien et d''urgence.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 4, 1, 'À quoi servent les stories à la une ?', '["Supprimer les anciennes stories","Garder les informations utiles en haut du profil : livraison, tailles, avis","Payer une publicité","Publier en direct"]'::jsonb, 1, 'Une nouvelle abonnée trouve tout de suite les réponses à ses questions, sans écrire.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 4, 2, 'Que faire avant un direct de vente ?', '["Couper le son","Le lancer à l''improviste","L''annoncer, préparer la liste et les prix validés, tester la connexion","Ne rien préparer"]'::jsonb, 2, 'Un direct improvisé attire peu de monde et donne une mauvaise image. Il se prépare comme un petit événement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 4, 3, 'Une cliente envoie en message privé une photo avec sa robe. Peut-on la publier ?', '["Seulement après lui avoir demandé son accord écrit","Oui, si la photo est belle","Oui, si on cache son visage sans lui dire","Oui, tout de suite"]'::jsonb, 0, 'Un message privé n''est pas une autorisation de publier. On demande l''accord et on garde la réponse écrite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 2, 4, 4, 'Pourquoi les contenus des clients convainquent-ils autant ?', '["Les réseaux les mettent en premier par obligation","Ils sont toujours plus beaux","Ils montrent de vrais clients satisfaits, pas seulement la marque qui parle d''elle","Ils coûtent cher"]'::jsonb, 2, 'Une vraie cliente heureuse est une preuve. Les futures clientes s''y reconnaissent.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 3, 'Les outils : publier, répondre et mesurer', 'Recevoir les accès sans mot de passe, programmer avec Meta Business Suite, gérer la messagerie et les commentaires, lire les statistiques, puis les outils payants et le boost d''une publication.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 3, 0, 'Les accès aux pages et la sécurité', 11, 'Pour gérer la page d''un client, vous avez besoin d''y accéder. Beaucoup de débutants demandent le mot de passe Facebook du client : c''est la pire solution, pour lui comme pour vous. Les réseaux sociaux proposent tous une façon de **donner un accès à une autre personne**, avec son propre compte et des droits limités. Cette leçon vous apprend à recevoir ces accès proprement et à protéger les pages qui vous sont confiées.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer pourquoi on ne demande jamais le mot de passe d''un client.
+> 2. Recevoir un accès à une page Facebook avec des droits limités.
+> 3. Relier un compte Instagram professionnel à la page Facebook.
+> 4. Gérer l''accès aux autres réseaux sans partager de mot de passe personnel.
+> 5. Protéger vos comptes et ceux des clients.
+
+## Jamais le mot de passe du client
+
+```schema comparaison
+titre: Deux façons d''accéder à la page
+ton: mauvais-bon
+colonnes: Avec le mot de passe du client | Avec un accès donné à votre compte
+Le compte du client peut être bloqué pour connexion suspecte | Aucune connexion inhabituelle sur son compte
+Vous voyez ses messages personnels | Vous voyez seulement la page
+Impossible de savoir qui a publié quoi | Chaque action est liée à la bonne personne
+Le client doit changer son mot de passe pour vous retirer l''accès | Il retire votre accès en deux clics
+```
+
+Expliquez-le simplement au client : « Je ne vous demande pas votre mot de passe, c''est plus sûr pour vous. Vous m''ajoutez à votre page avec mon propre compte, et vous gardez le contrôle. »
+
+## L''accès à une page Facebook
+
+Sur Facebook, le client ajoute votre compte à sa page, depuis les paramètres de la page ou depuis son portefeuille d''entreprise dans Meta Business Suite.
+
+```schema etapes
+titre: Recevoir l''accès à une page Facebook
+Le client ouvre les paramètres de sa page, partie « Accès à la Page » (ou « Personnes »)
+Il vous ajoute avec votre propre compte Facebook ou votre adresse e-mail
+Il choisit les tâches : publier, répondre aux messages, voir les statistiques
+Il ne vous donne pas le contrôle total, sauf raison particulière
+Vous acceptez l''invitation reçue par notification ou par e-mail
+```
+
+Les noms des menus changent souvent : si le client ne trouve pas, cherchez avec lui « Accès à la Page » ou « Personnes » dans les paramètres, ou faites-le par partage d''écran.
+
+> [!cle] Le client reste propriétaire
+> La page appartient au client. Il doit toujours garder **le contrôle total**, et vous un accès limité. N''acceptez jamais d''être la seule personne à contrôler la page d''un client : s''il vous arrive quelque chose, ou si la relation se termine mal, il ne doit pas perdre sa page. Si une page n''a plus d''administrateur actif, aidez le client à reprendre le contrôle complet.
+
+## Instagram et Meta Business Suite
+
+**Meta Business Suite** est l''outil gratuit de Meta qui regroupe la page Facebook et le compte Instagram d''une marque : publications, messages, statistiques. Pour y gérer Instagram, le compte Instagram doit être **professionnel** et **relié** à la page Facebook.
+
+| Étape | Qui | Où |
+| --- | --- | --- |
+| 1. Passer Instagram en compte professionnel | Le client | Paramètres du compte Instagram, partie type de compte |
+| 2. Relier Instagram à la page Facebook | Le client | Paramètres de la page Facebook, ou Meta Business Suite |
+| 3. Vous donner l''accès | Le client | En vous ajoutant à la page ou au portefeuille d''entreprise |
+| 4. Vérifier | Vous | Meta Business Suite affiche les deux comptes |
+
+## Les autres réseaux
+
+```schema chiffres
+titre: Donner un accès sans mot de passe personnel
+TikTok : l''espace entreprise de TikTok permet d''ajouter des membres à un compte
+LinkedIn : le client vous ajoute comme administrateur de la page d''entreprise, avec un rôle limité
+WhatsApp Business : le client garde le téléphone ; vous l''aidez à préparer les réponses rapides et le catalogue
+Outils de programmation : chaque membre a son propre compte, invité par le client
+```
+
+Si un réseau n''offre aucune autre solution que le partage d''un identifiant, ce doit être un **compte créé pour la marque** (jamais le compte personnel du client), avec un mot de passe stocké dans un gestionnaire de mots de passe et la double authentification sur le téléphone du client.
+
+## Protéger les comptes
+
+Si votre compte Facebook est piraté, les pirates ont accès aux pages de **tous vos clients**. Votre sécurité fait partie de votre travail.
+
+```schema checklist
+titre: La sécurité du community manager
+[ ] Double authentification activée sur Facebook, Instagram, TikTok et votre e-mail
+[ ] Un mot de passe long et différent pour chaque compte, dans un gestionnaire
+[ ] Jamais de clic sur un message « Votre page sera supprimée, cliquez ici »
+[ ] Les connexions vérifiées régulièrement dans les paramètres de sécurité
+[ ] La liste des accès de chaque client, mise à jour
+[ ] Les accès retirés à la fin de chaque mission
+```
+
+> [!attention] Les faux messages de « Meta »
+> Les pirates envoient souvent aux gestionnaires de pages de faux messages : « Votre page a enfreint nos règles, elle sera supprimée dans 24 h. Faites appel ici. » Le lien mène à une fausse page de connexion. **Ne cliquez jamais sur ces liens.** Vérifiez les alertes dans les paramètres officiels de la page, ou dans l''Espace comptes de Meta, en ouvrant vous-même l''application.
+
+> [!madagascar] Les pages créées sur le profil d''un neveu
+> À Madagascar, beaucoup de pages de commerces ont été créées par un proche (un neveu, une amie) qui en est le seul administrateur. Quand cette personne n''est plus disponible, le commerçant perd l''accès à sa propre page. Lors de votre première mission, vérifiez qui contrôle la page, et aidez le gérant à en reprendre le contrôle total avec son propre compte.
+
+> [!exemple] La page récupérée à temps
+> En vérifiant les accès de la page d''un restaurant de Toliara, Miora découvre que le seul administrateur est un ancien employé parti à l''étranger. Avec le gérant, elle contacte l''ancien employé, qui ajoute le gérant avec le contrôle total. Puis le gérant ajoute Miora avec un accès limité. Trois mois plus tard, l''ancien compte est piraté : la page du restaurant, elle, reste protégée.
+
+> [!erreur] Être le seul administrateur
+> Pour « simplifier », un community manager crée la page d''un client avec son propre compte et en devient le seul administrateur. Deux ans plus tard, le client veut changer de prestataire : il découvre que sa page ne lui appartient pas. La séparation devient un conflit. **Le client doit toujours être propriétaire et administrateur de sa page.**
+
+> [!retenir]
+> - **Jamais le mot de passe du client** : un accès donné à votre propre compte.
+> - Des **droits limités** ; le client garde le **contrôle total**.
+> - **Meta Business Suite** regroupe Facebook et Instagram professionnel relié à la page.
+> - **Double authentification** partout ; jamais de clic sur les faux messages de « Meta ».
+> - Vérifier **qui contrôle la page** dès la première mission.
+
+## Exercice pratique : les accès d''une page
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez une page Facebook d''essai pour un commerce imaginaire (vous pourrez la supprimer ensuite).
+> 2. Avec un proche qui a un compte Facebook, ajoutez-le à la page avec un accès limité, puis retirez cet accès.
+> 3. Rédigez le message qui explique à un client comment vous donner un accès, sans mot de passe, étape par étape.
+> 4. Vérifiez les paramètres de sécurité de votre propre compte (double authentification, connexions récentes).
+>
+> **À livrer** : des captures de l''ajout et du retrait d''accès (sans information personnelle), votre message au client et une capture de la double authentification activée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 0, 0, 'Pourquoi ne jamais demander le mot de passe Facebook personnel d''un client ?', '["Parce que c''est plus lent","Parce que Facebook n''a pas de mot de passe","Il n''y a aucun risque","Son compte peut être bloqué, vous voyez sa vie privée, et il ne peut pas vous retirer l''accès facilement"]'::jsonb, 3, 'Un accès donné à votre propre compte protège le client et vous, et se retire en deux clics.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 0, 1, 'Quels droits demander sur la page d''un client ?', '["Aucun droit","Publier, répondre aux messages et voir les statistiques, sans contrôle total","Le contrôle total, pour être tranquille","Les droits de supprimer la page"]'::jsonb, 1, 'Le client doit garder le contrôle total de sa page. Un accès limité suffit pour le travail quotidien.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 0, 2, 'Que faut-il pour gérer Instagram dans Meta Business Suite ?', '["Le mot de passe Instagram du client","Rien, c''est automatique","Un compte Instagram personnel","Un compte Instagram professionnel, relié à la page Facebook"]'::jsonb, 3, 'Meta Business Suite regroupe la page Facebook et le compte Instagram professionnel qui lui est relié.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 0, 3, 'Vous recevez « Votre page sera supprimée dans 24 h, faites appel ici ». Que faire ?', '["Entrer son mot de passe sur le lien","Transférer le message au client sans rien vérifier","Cliquer vite pour sauver la page","Ne pas cliquer, et vérifier dans les paramètres officiels de la page"]'::jsonb, 3, 'C''est une technique courante de piratage : le lien mène à une fausse page de connexion.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 0, 4, 'Qui doit être propriétaire et administrateur de la page ?', '["Le community manager seul","Personne","Toujours le client","Un ancien employé"]'::jsonb, 2, 'Si le community manager est le seul administrateur, le client risque de perdre sa page à la fin de la collaboration.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 3, 1, 'Programmer avec Meta Business Suite', 9, 'Un community manager organisé ne publie pas « en direct » chaque jour : il **programme** toute la semaine en une fois, puis consacre le reste de son temps à répondre et à animer. **Meta Business Suite**, l''outil gratuit de Meta, permet de programmer les publications, les Reels et les stories sur Facebook et Instagram, et de voir toute la semaine dans un calendrier. Cette leçon vous apprend à l''utiliser.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Vous repérer dans Meta Business Suite.
+> 2. Programmer une publication sur Facebook et Instagram en même temps.
+> 3. Adapter une publication à chaque réseau.
+> 4. Utiliser le planificateur pour voir et déplacer la semaine.
+> 5. Programmer sur les autres réseaux.
+
+## Meta Business Suite
+
+```schema ecran
+titre: Meta Business Suite sur ordinateur (business.facebook.com)
+haut: Le compte choisi : la page et le compte Instagram du client [1]
+gauche: Menu : Accueil, Planificateur, Contenu, Boîte de réception, Statistiques [2]
+centre: Le calendrier ou la liste des publications [3]
+[1] Vérifiez toujours le nom du client affiché avant de créer quoi que ce soit
+[2] Les noms et la place des menus changent parfois : cherchez ces mots
+[3] Les publications programmées apparaissent à leur date et à leur heure
+```
+
+Meta Business Suite existe aussi en application sur téléphone, pratique pour répondre aux messages. Pour programmer une semaine complète, l''ordinateur est plus confortable.
+
+## Programmer une publication
+
+```schema etapes
+titre: Programmer en 8 étapes
+Choisir la page du client, en haut de l''écran
+Cliquer sur « Créer une publication » (ou « Créer un Reel » pour une vidéo courte)
+Cocher Facebook et, si la page est reliée, Instagram
+Ajouter le texte, puis le visuel ou la vidéo
+Vérifier l''aperçu sur téléphone : l''accroche est-elle visible avant « Voir plus » ?
+Choisir « Programmer » au lieu de « Publier »
+Choisir la date et l''heure, en vérifiant le fuseau horaire
+Confirmer, puis vérifier la publication dans le planificateur
+```
+
+> [!astuce] Le lundi de programmation
+> Réservez le lundi matin à la programmation de toute la semaine de chaque client : publications et Reels. Le reste de la semaine, vous ne faites plus que répondre, publier les stories du jour et ajuster. Si une coupure survient le mercredi, la publication du mercredi part quand même.
+
+## Adapter la publication à chaque réseau
+
+Publier exactement la même chose partout est rapide, mais pas toujours efficace. Meta Business Suite permet de **personnaliser** le texte pour Facebook et pour Instagram.
+
+| Élément | Facebook | Instagram |
+| --- | --- | --- |
+| Liens dans le texte | Cliquables | Non cliquables : renvoyer vers le lien du profil |
+| Hashtags | Peu utiles | 3 à 5 hashtags précis |
+| Format du visuel | Carré ou vertical | Vertical 4:5 de préférence |
+| Appel à l''action | « Envoyez-nous un message » | « Écrivez-nous en message privé » ou « Lien dans le profil » |
+
+## Le planificateur
+
+Le **planificateur** affiche toutes les publications programmées dans un calendrier, par semaine ou par mois. On peut y déplacer une publication en la faisant glisser à une autre date, ou l''ouvrir pour la modifier.
+
+```schema checklist
+titre: Vérifier la semaine dans le planificateur
+[ ] Le bon nombre de publications, aux bons jours
+[ ] Aucun trou de plusieurs jours, aucune journée surchargée
+[ ] Les heures correspondent au calendrier éditorial
+[ ] Les publications de vente ont leur prix validé
+[ ] Chaque publication a son visuel et son texte complet
+[ ] Le statut « Programmé » est mis à jour dans le calendrier éditorial
+```
+
+> [!exemple] La semaine de Lamba Soa
+> Chaque lundi à 9 h, Miora ouvre le calendrier éditorial validé, puis Meta Business Suite. En 45 minutes, elle programme les 3 publications de la semaine sur Facebook et Instagram, avec des textes légèrement adaptés pour chaque réseau. Elle fait une capture du planificateur et l''envoie à la gérante : « Votre semaine est programmée. » La gérante n''a plus à se demander si quelque chose sera publié.
+
+## Programmer sur les autres réseaux
+
+```schema chiffres
+titre: Les options selon le réseau
+Facebook et Instagram : Meta Business Suite, gratuit
+TikTok : programmation depuis l''ordinateur, dans l''espace de gestion des contenus de TikTok, selon les comptes
+LinkedIn : programmation possible au moment de créer la publication
+Plusieurs réseaux d''un coup : outils comme Metricool ou Hootsuite (leçon 4.5)
+```
+
+Les fonctions de programmation évoluent souvent. Avant de promettre à un client une programmation sur un réseau, **testez-la sur un compte d''essai**.
+
+> [!madagascar] Programmer pour se protéger des délestages
+> Une publication programmée est enregistrée sur les serveurs du réseau : elle part à l''heure prévue même si votre quartier est privé d''électricité. Pour les clients de l''étranger, c''est aussi ce qui vous permet de publier à 18 h à Montréal sans travailler à 2 h du matin. Gardez simplement l''habitude de vérifier, après l''heure prévue, que la publication est bien partie.
+
+> [!erreur] Le mauvais fuseau horaire
+> Un community manager programme pour un client à Paris une publication à « 18 h ». Mais l''outil utilise le fuseau de Madagascar : la publication part à 16 h à Paris, quand les abonnés sont encore au travail. **Vérifiez le fuseau horaire** indiqué au moment de programmer, et faites un essai avec une publication de test.
+
+> [!retenir]
+> - **Meta Business Suite** programme publications, Reels et stories sur Facebook et Instagram.
+> - **8 étapes** : page, créer, réseaux, contenu, aperçu, programmer, date et fuseau, vérification.
+> - **Adapter** le texte à chaque réseau : liens, hashtags, format, appel à l''action.
+> - Le **planificateur** montre toute la semaine ; on y vérifie chaque lundi.
+> - Toujours **vérifier le fuseau horaire** et le départ des publications.
+
+## Exercice pratique : une semaine programmée
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Sur votre page d''essai, programmez 3 publications de votre projet du module 3 sur une semaine, avec des heures différentes.
+> 2. Programmez 1 Reel et 2 stories.
+> 3. Adaptez le texte d''une des publications pour Instagram (si vous avez relié un compte d''essai) ou rédigez la version Instagram à part.
+> 4. Déplacez une publication dans le planificateur, puis vérifiez la semaine avec la liste de contrôle.
+>
+> **À livrer** : une capture du planificateur, la version Facebook et la version Instagram d''une publication, et votre liste de contrôle remplie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 1, 0, 'Que permet Meta Business Suite ?', '["Créer des logos","Gérer la comptabilité","Monter des vidéos longues","Programmer publications, Reels et stories sur Facebook et Instagram"]'::jsonb, 3, 'C''est l''outil gratuit de Meta pour publier, répondre et voir les statistiques de Facebook et d''Instagram.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 1, 1, 'Que vérifier avant de cliquer sur « Programmer » ?', '["La page choisie, l''aperçu sur téléphone, la date et le fuseau horaire","Rien","Le nombre d''abonnés","Uniquement la couleur du visuel"]'::jsonb, 0, 'La bonne page, une accroche visible et le bon fuseau évitent les erreurs les plus fréquentes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 1, 2, 'Pourquoi adapter le texte d''une publication pour Instagram ?', '["Les liens n''y sont pas cliquables et les hashtags y sont plus utiles","Pour écrire en anglais","Ce n''est jamais utile","Parce qu''Instagram refuse les textes de Facebook"]'::jsonb, 0, 'Chaque réseau a ses usages : sur Instagram, on renvoie vers le lien du profil et on ajoute quelques hashtags précis.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 1, 3, 'À quoi sert le planificateur ?', '["Voir et déplacer toutes les publications programmées dans un calendrier","Payer la publicité","Supprimer la page","Répondre aux messages"]'::jsonb, 0, 'D''un coup d''œil, on vérifie la semaine : pas de trou, pas de journée surchargée, les bonnes heures.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 1, 4, 'Une publication prévue à 18 h pour Paris part à 16 h là-bas. Quelle est la cause probable ?', '["Le client a changé d''avis","Le visuel était trop lourd","Facebook était en panne","Le fuseau horaire de l''outil n''était pas le bon"]'::jsonb, 3, 'L''outil utilisait le fuseau de Madagascar, 2 heures en avance sur Paris en hiver. On vérifie toujours le fuseau.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 3, 2, 'La messagerie et la modération', 10, 'Pour beaucoup de commerces, la vente ne se fait pas dans la publication, mais **dans la messagerie** : « C''est combien ? », « Vous livrez à Ivato ? », « Il reste la taille M ? ». Répondre vite, bien et poliment est souvent la partie la plus importante du travail. Il faut aussi savoir gérer les commentaires négatifs, les insultes et les arnaques. Cette leçon vous apprend à organiser la boîte de réception et la modération.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser la boîte de réception de Meta Business Suite.
+> 2. Régler les réponses automatiques et les réponses enregistrées.
+> 3. Répondre à un commentaire négatif en 4 étapes.
+> 4. Choisir entre répondre, masquer, supprimer ou bloquer.
+> 5. Réagir à un début de crise.
+
+## La boîte de réception unique
+
+La boîte de réception de Meta Business Suite regroupe les **messages Messenger**, les **messages Instagram** et les **commentaires** de Facebook et d''Instagram. Vous n''avez plus à ouvrir chaque application.
+
+```schema etapes
+titre: Le tri quotidien de la boîte de réception
+Ouvrir la boîte de réception de la page du client
+Répondre d''abord aux questions d''achat : prix, disponibilité, livraison
+Répondre ensuite aux autres messages et aux commentaires
+Transmettre au client ce qu''il doit décider : réclamation, grosse commande
+Marquer comme terminé ou étiqueter chaque conversation traitée
+```
+
+## Les réponses automatiques
+
+Les réglages se trouvent en général dans la partie **Automatisations** de la boîte de réception. Les noms peuvent changer : cherchez les fonctions ci-dessous.
+
+| Réglage | Ce qu''il fait | Exemple |
+| --- | --- | --- |
+| **Réponse instantanée** (message d''accueil) | Répond automatiquement au premier message d''une personne | « Bonjour et merci ! Nous vous répondons très vite. » |
+| **Message d''absence** | Répond en dehors des horaires choisis | « Merci pour votre message ! Nous répondons de 8 h à 20 h. » |
+| **Questions fréquentes** | Propose des questions toutes prêtes ; la personne clique et reçoit la réponse | « Quels sont vos prix ? », « Où livrez-vous ? » |
+| **Réponses enregistrées** | Des textes prêts, que vous insérez et personnalisez | Réponse sur la livraison, les tailles, le paiement |
+
+> [!astuce] Personnaliser toujours
+> Une réponse enregistrée fait gagner du temps, mais elle doit toujours être **personnalisée** : le prénom de la personne, le produit demandé, sa ville. « Bonjour Hanta ! Oui, la robe bleue existe encore en M. Livraison à Ivato : 4 000 Ar, demain. On vous la réserve ? » ressemble à une vraie conversation, pas à un robot.
+
+## Répondre aux commentaires négatifs
+
+Un commentaire négatif est public : tous les abonnés voient **comment la marque réagit**. Une réponse calme et utile rassure souvent plus qu''une page sans aucune critique.
+
+```schema etapes
+titre: Répondre à une critique en 4 étapes
+Remercier pour le retour, même s''il est désagréable
+Reconnaître le problème, sans se disputer ni se justifier longuement
+Proposer de continuer en message privé, avec une solution
+Régler en privé, puis remercier en public si le client est satisfait
+```
+
+> [!exemple] Réponse à « Commande jamais reçue, arnaque !!! »
+> « Bonjour Hery, merci de nous avoir signalé ce problème, et désolés pour l''attente. Nous vous écrivons tout de suite en message privé pour retrouver votre commande. »
+>
+> En privé, Miora retrouve la commande avec la gérante : le livreur s''était trompé de quartier. La commande est livrée le soir même. Hery revient lui-même sous son commentaire : « Problème réglé, merci pour la réactivité. »
+
+## Répondre, masquer, supprimer ou bloquer ?
+
+```schema comparaison
+titre: Que faire d''un commentaire ?
+colonnes: Répondre | Masquer | Supprimer ou bloquer
+Critique sur un produit, un retard, un prix | Insulte légère, message hors sujet, publicité pour une autre page | Insultes graves, menaces, contenu choquant
+Question, même maladroite | Commentaire qui donne le numéro d''un client | Arnaque : faux lien, faux concours, faux compte de la marque
+C''est le cas le plus fréquent | Seuls son auteur et ses amis le voient encore | En cas de récidive : bloquer le compte sur la page
+```
+
+Ne supprimez **jamais** une critique honnête simplement parce qu''elle dérange : l''auteur s''en rend compte, revient plus en colère, et parfois publie une capture ailleurs. Les paramètres de la page permettent aussi de **masquer automatiquement** les commentaires qui contiennent certains mots (insultes, arnaques courantes).
+
+> [!madagascar] Les arnaques en commentaire
+> Sur les pages qui organisent des jeux-concours ou des promotions, de faux comptes copient le nom et le logo de la marque et répondent aux abonnés : « Vous avez gagné ! Payez 5 000 Ar de frais par Mobile Money pour recevoir votre lot. » Supprimez ces commentaires, signalez les faux comptes, et publiez un message clair : « Nous ne demandons jamais de paiement pour recevoir un lot. Notre seule page officielle est celle-ci. »
+
+## Un début de crise
+
+Parfois, un problème prend de l''ampleur : une vidéo de client mécontent partagée des centaines de fois, une rumeur, une erreur grave de la marque.
+
+```schema checklist
+titre: Les bons réflexes en cas de crise
+[ ] Prévenir le client immédiatement, avec des captures
+[ ] Suspendre les publications programmées qui pourraient choquer
+[ ] Ne rien supprimer en masse et ne pas répondre sous le coup de l''émotion
+[ ] Préparer avec le client une réponse courte, honnête et unique
+[ ] Répondre aux personnes concernées en privé
+[ ] Noter ce qui s''est passé, pour éviter que cela recommence
+```
+
+La réponse publique est toujours **décidée par le client**. Votre rôle : alerter vite, proposer un texte, et appliquer la décision.
+
+> [!erreur] Se disputer en public
+> Un client écrit : « Vos prix sont du vol. » Le community manager répond, vexé : « Si c''est trop cher pour vous, allez ailleurs. » La capture tourne dans plusieurs groupes, et la boutique reçoit des dizaines de messages négatifs. **On ne se dispute jamais en public au nom d''une marque** : on remercie, on explique calmement (« Nos robes sont cousues à la main à Antananarivo »), ou on propose de continuer en privé.
+
+> [!retenir]
+> - La **boîte de réception** regroupe messages et commentaires ; les questions d''achat d''abord.
+> - **Réponse instantanée, message d''absence, questions fréquentes, réponses enregistrées** personnalisées.
+> - Une critique : **remercier, reconnaître, proposer en privé, régler**.
+> - **Répondre** aux critiques, **masquer** le hors-sujet, **supprimer ou bloquer** insultes graves et arnaques.
+> - En cas de crise : **alerter le client**, suspendre, une réponse décidée par lui.
+
+## Exercice pratique : la boîte de réception
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Sur votre page d''essai, réglez une réponse instantanée, un message d''absence et 3 questions fréquentes.
+> 2. Rédigez 6 réponses enregistrées pour une boutique : prix, tailles, livraison, paiement, retour, horaires.
+> 3. Répondez par écrit, en 4 étapes, à ces commentaires : « Livraison en retard de 3 jours, c''est inadmissible », « Vos prix ont augmenté, vous exagérez », « Arnaque !! ».
+> 4. Pour 5 commentaires fictifs (une insulte, une critique sur la qualité, une publicité pour une autre page, une question, un faux lien de concours), choisissez : répondre, masquer, supprimer ou bloquer.
+>
+> **À livrer** : des captures des réglages, vos 6 réponses enregistrées, vos 3 réponses et votre tableau de décision.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 2, 0, 'À quels messages répondre en premier ?', '["Aux publicités","Aux questions d''achat : prix, disponibilité, livraison","Aux messages hors sujet","Aux messages les plus anciens, sans les lire"]'::jsonb, 1, 'Les questions d''achat sont des ventes possibles : une réponse rapide évite que le client parte ailleurs.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 2, 1, 'À quoi sert le message d''absence ?', '["Répondre automatiquement en dehors des horaires, en indiquant quand la réponse arrivera","Remplacer toutes les réponses","Supprimer les messages","Bloquer les clients"]'::jsonb, 0, 'Le client sait que son message est reçu et quand il aura une réponse : il attend au lieu de partir.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 2, 2, 'Quelle est la première étape pour répondre à une critique ?', '["Expliquer que le client a tort","Remercier pour le retour","Supprimer le commentaire","Ignorer"]'::jsonb, 1, 'Remercier, reconnaître, proposer en privé, régler : tous les abonnés voient une marque calme et sérieuse.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 2, 3, 'Un faux compte propose aux abonnés de payer des frais pour recevoir un lot. Que faire ?', '["Supprimer la page","Le laisser, ce n''est pas grave","Supprimer le commentaire, signaler le faux compte et prévenir les abonnés","Répondre que c''est vrai"]'::jsonb, 2, 'C''est une arnaque courante. On protège les abonnés et la réputation de la marque.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 2, 4, 'Qui décide de la réponse publique en cas de crise ?', '["Le client, avec le texte proposé par le community manager","Personne","Les abonnés","Le community manager seul, dans l''urgence"]'::jsonb, 0, 'En crise, la parole de la marque engage le client. Le community manager alerte vite et propose.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 3, 3, 'Lire et utiliser les statistiques', 10, '« Est-ce que ça marche ? » Le client vous posera cette question chaque mois. Sans chiffres, vous ne pourrez répondre qu''avec des impressions. Les **statistiques** des réseaux sociaux disent combien de personnes ont vu les contenus, lesquelles ont réagi, et combien ont écrit à la marque. Cette leçon vous apprend à trouver ces chiffres, à les comprendre et à en tirer des décisions.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Trouver les statistiques d''une page et d''une publication.
+> 2. Comprendre les indicateurs essentiels.
+> 3. Calculer un taux d''interaction pour comparer des publications.
+> 4. Connaître le public de la page : âge, villes, heures de connexion.
+> 5. Tirer 3 décisions concrètes des chiffres du mois.
+
+## Où trouver les statistiques
+
+Dans **Meta Business Suite**, la partie **Statistiques** (ou *Insights*) montre les chiffres de la page Facebook et du compte Instagram : sur une période, par publication, et sur le public. Les applications Instagram et TikTok affichent aussi des statistiques pour les comptes professionnels.
+
+Les réseaux changent régulièrement le nom de leurs indicateurs. Meta parle par exemple de plus en plus de **vues** (le nombre de fois où un contenu a été vu) et de **spectateurs** ou de **couverture** (le nombre de personnes différentes qui l''ont vu). Cherchez toujours la définition affichée à côté du chiffre, en général dans une petite icône « i ».
+
+## Les indicateurs essentiels
+
+| Indicateur | Ce qu''il mesure | Ce qu''il dit |
+| --- | --- | --- |
+| **Couverture** (personnes touchées, spectateurs) | Le nombre de personnes différentes qui ont vu le contenu | Si la marque se fait connaître |
+| **Vues** | Le nombre de fois où le contenu a été vu (une personne peut compter plusieurs fois) | L''exposition totale |
+| **Interactions** | Réactions, commentaires, partages, enregistrements | Si le contenu intéresse vraiment |
+| **Taux d''interaction** | Interactions ÷ couverture × 100 | Permet de comparer deux publications |
+| **Messages reçus** | Les conversations commencées avec la page | Le signe le plus proche d''une vente |
+| **Abonnés gagnés et perdus** | L''évolution de la communauté | Si la page attire, ou lasse |
+| **Durée de visionnage** | Combien de temps les vidéos sont regardées | Si l''accroche et le rythme des vidéos fonctionnent |
+
+## Le taux d''interaction
+
+Une publication vue par 10 000 personnes avec 100 réactions n''est pas forcément meilleure qu''une publication vue par 2 000 personnes avec 80 réactions. Le **taux d''interaction** permet de comparer.
+
+> [!exemple] Comparer deux publications
+> **Publication A** : 10 000 personnes touchées, 100 interactions → 100 ÷ 10 000 × 100 = **1 %**.
+> **Publication B** : 2 000 personnes touchées, 80 interactions → 80 ÷ 2 000 × 100 = **4 %**.
+>
+> La publication B a moins circulé, mais elle a beaucoup plus intéressé ceux qui l''ont vue. C''est souvent ce type de contenu qu''il faut refaire, et éventuellement booster.
+
+```schema barres
+titre: Exemple : taux d''interaction par type de publication sur un mois
+unite: %
+Avis de clientes (prouver) : 4,2
+Vidéos de coulisses (divertir) : 3,6
+Guide des tailles (informer) : 2,8
+Promotions (vendre) : 1,9
+```
+
+Dans cet exemple, les promotions ont le taux le plus faible, ce qui est fréquent : elles intéressent surtout ceux qui sont prêts à acheter. Mais ce sont peut-être elles qui apportent le plus de **messages**. Regardez toujours plusieurs indicateurs ensemble.
+
+## Connaître le public de la page
+
+La partie **Public** (ou *Audience*) des statistiques montre, quand il y a assez d''abonnés : l''âge et le sexe des abonnés, leurs villes et leurs pays, et parfois les jours et les heures où ils sont connectés.
+
+> [!madagascar] Des abonnés qui ne sont pas où l''on croit
+> En regardant les villes des abonnés, une boutique d''Antananarivo découvre parfois qu''une part importante vient de Toamasina, de Mahajanga ou même de France (la diaspora). C''est une information précieuse : faut-il proposer la livraison en province ? Publier aussi aux heures de l''Europe ? Les statistiques révèlent souvent des clients que le commerçant ne soupçonnait pas.
+
+## Des chiffres aux décisions
+
+Les chiffres n''ont d''intérêt que s''ils changent quelque chose. Chaque mois, tirez-en **3 décisions**.
+
+```schema etapes
+titre: Analyser le mois en 4 questions
+Quelles sont les 3 publications avec le meilleur taux d''interaction, et pourquoi ?
+Lesquelles ont apporté le plus de messages ?
+Quels formats, jours et heures fonctionnent le mieux ?
+Quelles 3 décisions pour le mois prochain ?
+```
+
+```schema comparaison
+titre: Du constat à la décision
+colonnes: Constat dans les chiffres | Décision pour le mois suivant
+Les avis de clientes ont le meilleur taux d''interaction | Publier un avis client chaque semaine
+Les vidéos sont quittées après 2 secondes | Retravailler les accroches des vidéos
+Beaucoup d''abonnés à Toamasina | Proposer au client une offre de livraison en province
+```
+
+> [!astuce] Le tableau de suivi mensuel
+> Notez chaque mois les mêmes chiffres dans un tableau Google Sheets : abonnés, couverture, interactions, taux d''interaction moyen, messages reçus, délai de réponse. Au bout de trois mois, vous voyez les tendances d''un coup d''œil, et le rapport mensuel (module 5) se prépare en quelques minutes.
+
+> [!erreur] Ne regarder que le nombre d''abonnés
+> Le client se réjouit : « On a gagné 500 abonnés ! » Mais les messages ont baissé, et les nouveaux abonnés viennent d''un jeu-concours mal ciblé : ils voulaient le lot, pas les produits. **Le nombre d''abonnés n''est pas un objectif en soi.** Une page de 2 000 abonnés qui reçoit 80 messages par mois vaut mieux qu''une page de 10 000 abonnés qui n''en reçoit aucun.
+
+> [!retenir]
+> - Les statistiques sont dans **Meta Business Suite** et dans les applications, pour les comptes professionnels.
+> - **Couverture, vues, interactions, messages, abonnés, durée de visionnage** : vérifier la définition de chaque chiffre.
+> - **Taux d''interaction = interactions ÷ couverture × 100**, pour comparer.
+> - Le **public** révèle l''âge, les villes et les heures des abonnés.
+> - Chaque mois, **3 décisions** tirées des chiffres.
+
+## Exercice pratique : analyser des statistiques
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Calculez le taux d''interaction de ces 5 publications : A (3 000 personnes, 90 interactions), B (8 000, 120), C (1 500, 75), D (5 000, 50), E (2 500, 100). Classez-les.
+> 2. Pour chacune, imaginez une raison possible de son résultat.
+> 3. Sur votre page d''essai ou une page dont vous avez l''accès, trouvez la couverture, les interactions et les messages des 28 derniers jours.
+> 4. Créez votre tableau de suivi mensuel dans Google Sheets, avec les 6 indicateurs.
+> 5. Écrivez 3 décisions à partir des résultats de l''exercice 1.
+>
+> **À livrer** : vos calculs et votre classement, vos explications, votre tableau de suivi et vos 3 décisions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 3, 0, 'Que mesure la couverture ?', '["Le nombre total de vues, même répétées","Le nombre de commentaires","Le nombre de personnes différentes qui ont vu le contenu","Le nombre de ventes"]'::jsonb, 2, 'La couverture compte les personnes. Les vues comptent les affichages : une personne peut voir plusieurs fois.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 3, 1, 'Une publication touche 2 000 personnes et reçoit 80 interactions. Quel est son taux d''interaction ?', '["4 %","40 %","8 %","0,4 %"]'::jsonb, 0, '80 ÷ 2 000 × 100 = 4 %.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 3, 2, 'Pourquoi utiliser le taux d''interaction plutôt que le nombre de réactions ?', '["Parce que les réactions ne comptent pas","Pour comparer des publications qui n''ont pas touché le même nombre de personnes","Parce qu''il est plus grand","Pour faire plaisir au client"]'::jsonb, 1, 'Une publication très vue peut avoir beaucoup de réactions mais peu intéresser. Le taux rend la comparaison juste.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 3, 3, 'Que peut révéler la partie « Public » des statistiques ?', '["Les mots de passe des abonnés","Leurs revenus exacts","Leurs messages privés","L''âge, les villes et les heures de connexion des abonnés"]'::jsonb, 3, 'Ces informations aident à choisir les heures, les sujets et parfois de nouvelles zones de livraison.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 3, 4, 'Pourquoi ne pas se fier seulement au nombre d''abonnés ?', '["C''est le seul chiffre important","Des abonnés qui ne réagissent pas et n''écrivent pas n''apportent rien au client","Parce qu''il ne change jamais","Parce qu''il est secret"]'::jsonb, 1, 'Une petite page qui reçoit beaucoup de messages vaut mieux qu''une grande page sans contact.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 3, 4, 'Les outils payants et le boost d''une publication', 10, 'Avec les outils gratuits, un community manager peut déjà faire un travail professionnel. Mais quand le nombre de clients augmente, ou qu''un client veut toucher plus de monde, d''autres outils deviennent utiles : les **versions payantes** de Canva et des outils de programmation, et la **publicité** sur les réseaux, à commencer par le « boost » d''une publication. Cette leçon vous les présente, avec une règle importante : qui paie quoi. Elle se termine par le projet du module 4.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Savoir ce qu''apportent Canva Pro, Metricool et Hootsuite.
+> 2. Décider quand un outil payant devient utile.
+> 3. Booster une publication avec un petit budget bien ciblé.
+> 4. Expliquer au client que le budget publicitaire n''est pas dans le forfait.
+> 5. Préparer la boîte à outils complète d''un client.
+
+## Les outils payants
+
+| Outil | Ce qu''il apporte | Quand le prendre |
+| --- | --- | --- |
+| **Canva Pro** | Kit de marque (couleurs, polices, logos enregistrés), suppression d''arrière-plan, redimensionnement en un clic, plus de modèles et d''images | Quand vous créez chaque semaine pour plusieurs clients |
+| **Metricool** | Programmation sur plusieurs réseaux (dont TikTok et LinkedIn), rapports automatiques, suivi des concurrents | Quand un client est sur 3 réseaux ou plus |
+| **Hootsuite** | Gestion de nombreux comptes, travail en équipe, validations | Pour les agences et les clients importants |
+
+Ces outils ont souvent une **offre gratuite limitée** et plusieurs offres payantes. Les prix et les fonctions changent souvent : vérifiez-les sur le site officiel de chaque outil. Avant d''acheter, demandez si le client ou l''agence n''a pas déjà un abonnement auquel il peut vous donner accès.
+
+```schema comparaison
+titre: Acheter un abonnement ?
+ton: mauvais-bon
+colonnes: Trop tôt | Au bon moment
+Dès le premier client, « pour faire pro » | Quand l''outil vous fait gagner plusieurs heures par mois
+Payé avec vos premiers revenus incertains | Payé quand vos forfaits réguliers le permettent
+Pour une fonction que l''offre gratuite fait déjà | Pour une fonction précise qui vous manque vraiment
+```
+
+> [!madagascar] Payer un abonnement depuis Madagascar
+> Ces abonnements se paient en général par **carte bancaire internationale**, en euros ou en dollars. Renseignez-vous auprès de votre banque sur les cartes utilisables pour les paiements en ligne à l''étranger et sur les frais. Si l''outil sert à un seul client, vous pouvez aussi lui proposer de l''inclure dans son propre abonnement, ou de l''ajouter à votre forfait.
+
+## Booster une publication
+
+« Booster » une publication, c''est payer pour la montrer à plus de personnes, au-delà des abonnés. C''est la forme de publicité la plus simple, accessible depuis le bouton **Booster** sous une publication ou dans Meta Business Suite.
+
+```schema etapes
+titre: Booster une publication en 6 étapes
+Choisir une publication qui fonctionne déjà (bon taux d''interaction)
+Choisir l''objectif : plus de messages, plus de visites, plus de vues
+Définir le public : villes, âge, centres d''intérêt de la fiche client type
+Fixer le budget et la durée, par exemple un petit budget sur 5 à 7 jours
+Faire valider par le client le public, le budget et le moyen de paiement
+Suivre les résultats : coût par message, nombre de messages, commentaires
+```
+
+> [!cle] Le budget publicitaire n''est jamais dans votre forfait
+> L''argent dépensé en publicité est payé **directement par le client à Meta**, avec son propre moyen de paiement, dans son propre compte publicitaire. Votre forfait rémunère votre travail (préparer, régler, suivre), pas le budget. Écrivez-le clairement dans votre accord : vous éviterez les malentendus quand le client verra le relevé de sa banque.
+
+> [!exemple] Le premier boost de Lamba Soa
+> La publication « Nouvelle collection » a un bon taux d''interaction. Avec l''accord de la gérante, Miora la booste pendant 5 jours, auprès des femmes de 22 à 40 ans à Antananarivo, avec l''objectif « plus de messages » et un petit budget validé par la gérante, payé avec sa carte. Après 5 jours, Miora note dans le rapport le nombre de messages reçus grâce au boost et le coût de chaque message. La gérante décide de recommencer chaque début de mois.
+
+Pour des campagnes plus importantes (plusieurs publicités, plusieurs publics, suivi des ventes), le client a besoin d''un **gestionnaire de publicités**, un autre métier enseigné sur Vitako. Restez honnête sur vos limites.
+
+## Rassembler la boîte à outils d''un client
+
+```schema checklist
+titre: La boîte à outils prête pour un client
+[ ] Accès à la page avec votre compte et des droits limités (leçon 4.1)
+[ ] Instagram professionnel relié, visible dans Meta Business Suite
+[ ] Calendrier éditorial partagé (module 2)
+[ ] Modèles Canva aux couleurs de la marque (leçon 3.2)
+[ ] Réponses automatiques et réponses enregistrées réglées (leçon 4.3)
+[ ] Tableau de suivi mensuel des statistiques (leçon 4.4)
+[ ] Liste des accès, et règle écrite pour le budget publicitaire
+```
+
+> [!erreur] Booster sans objectif
+> Le client demande « de la publicité ». Le débutant booste au hasard une photo de la boutique, auprès de tout Madagascar, sans objectif. Le budget est dépensé en deux jours, avec beaucoup de mentions « J''aime » de personnes qui ne peuvent pas acheter, et aucun message. **Un boost se prépare** : une bonne publication, un objectif précis, un public précis, un budget validé, et un suivi.
+
+> [!retenir]
+> - **Canva Pro, Metricool, Hootsuite** : utiles quand ils font gagner du temps ; vérifier les prix sur le site officiel.
+> - Acheter un abonnement **quand vos forfaits réguliers le permettent**.
+> - Booster une publication **qui fonctionne déjà**, avec un objectif, un public et un budget validés.
+> - Le **budget publicitaire est payé par le client à Meta**, jamais compris dans votre forfait.
+> - Une **boîte à outils complète** prête pour chaque client.
+
+## Exercice pratique : préparer un boost
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Comparez les offres gratuites de Metricool et de Canva sur leur site officiel : notez ce qu''elles permettent et ce qui est payant.
+> 2. Choisissez une publication de votre projet du module 3 à booster et justifiez votre choix.
+> 3. Rédigez la proposition de boost pour le client : objectif, public (villes, âge, centres d''intérêt), durée, budget proposé, résultats attendus et façon de les mesurer.
+> 4. Rédigez la phrase de votre accord qui précise que le budget publicitaire n''est pas compris dans votre forfait.
+>
+> **À livrer** : votre comparaison, votre proposition de boost et votre phrase d''accord.
+
+## Projet du module 4 : la page d''essai prête à l''emploi
+
+> [!projet] Projet du module · 2 heures
+> Transformez votre page d''essai en démonstration complète de votre savoir-faire, à montrer à vos futurs clients.
+> 1. **Accès et sécurité** : votre message type pour recevoir un accès, et votre liste de sécurité remplie.
+> 2. **Programmation** : deux semaines de publications et de Reels programmées, avec les textes du module 3.
+> 3. **Messagerie** : réponse instantanée, message d''absence, questions fréquentes et 6 réponses enregistrées.
+> 4. **Statistiques** : votre tableau de suivi mensuel prêt, avec les indicateurs et une ligne d''exemple.
+> 5. **Publicité** : votre proposition de boost et votre règle sur le budget.
+> 6. **Présentation** : une page de présentation de votre « boîte à outils » pour un client, avec des captures.
+>
+> **À livrer** : la présentation en PDF avec des captures de chaque élément.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 4, 0, 'Quand prendre un abonnement à un outil payant ?', '["Quand il vous fait gagner du temps et que vos forfaits réguliers le permettent","Dès le premier jour, pour faire professionnel","Seulement si un ami l''a","Jamais"]'::jsonb, 0, 'Un abonnement est un investissement : il doit répondre à un vrai besoin et être payé par des revenus réguliers.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 4, 1, 'Quelle publication booster en priorité ?', '["Une publication qui fonctionne déjà, avec un bon taux d''interaction","N''importe laquelle, au hasard","Une photo floue","La publication la moins réussie"]'::jsonb, 0, 'Une publication qui intéresse déjà les abonnés a plus de chances de bien fonctionner auprès d''un public plus large.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 4, 2, 'Qui paie le budget publicitaire d''un boost ?', '["Le client, directement à Meta, avec son moyen de paiement","Vitako","Le community manager, sur son forfait","Les abonnés"]'::jsonb, 0, 'Le forfait rémunère le travail, pas le budget. On l''écrit clairement dans l''accord.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 4, 3, 'Que choisir avant de lancer un boost ?', '["Un objectif, un public précis, un budget et une durée validés par le client","Le budget le plus élevé possible","Tout Madagascar, sans objectif","Uniquement une couleur"]'::jsonb, 0, 'Sans objectif ni public précis, le budget part en réactions de personnes qui ne peuvent pas acheter.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 3, 4, 4, 'Que propose Canva Pro par rapport à la version gratuite ?', '["Rien de plus","Un kit de marque, la suppression d''arrière-plan et le redimensionnement en un clic","La gestion des messages","La programmation sur TikTok"]'::jsonb, 1, 'Ces fonctions font gagner du temps quand on crée chaque semaine pour plusieurs marques.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 4, 'Premier projet : gérer une page pendant un mois', 'Le mois complet de la boutique Lamba Soa : audit de départ et objectifs, calendrier et production en lot, animation et jeu-concours, suivi quotidien et imprévus, rapport mensuel et étude de cas.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 4, 0, 'L''audit de départ et les objectifs', 10, 'Place à la pratique. Dans ce module, vous gérez une page de A à Z pendant un mois, comme pour un vrai client : audit de départ, objectifs, calendrier, production, animation, suivi quotidien, puis rapport. Tout commence par un **audit** : une photographie précise de la page avant votre arrivée. Sans lui, impossible de prouver vos résultats. Cette leçon vous présente la cliente du module et la méthode d''audit.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer et mener l''appel de découverte avec un commerçant.
+> 2. Faire l''audit d''une page en 8 points.
+> 3. Analyser 2 concurrents.
+> 4. Fixer 3 objectifs chiffrés pour le premier mois.
+> 5. Présenter l''audit au client de façon constructive.
+
+## Votre cliente : la boutique Lamba Soa
+
+> [!exemple] Le cas pratique du module
+> **Lamba Soa** est une petite boutique de vêtements pour femmes à Antananarivo, à Behoririka. Elle vend sur Facebook depuis 2 ans : 3 200 abonnés, une publication par semaine environ, des photos prises au téléphone, le soir, dans la boutique. La gérante, **Mme Voahangy**, répond aux messages quand elle peut, parfois le lendemain. Elle a aussi un compte Instagram presque vide. Elle veut **plus de commandes par Messenger** et vous confie sa page pour un mois d''essai.
+
+## L''appel de découverte
+
+Avant tout audit, un appel de 30 minutes avec la gérante vous donne ce que les statistiques ne disent pas.
+
+```schema chiffres
+titre: Les 8 questions de l''appel
+Ventes : quels articles se vendent le mieux, à quel prix ?
+Clientes : qui achète, d''où, comment elles ont connu la boutique ?
+Messages : combien par jour, quelles questions reviennent ?
+Livraison : quelles zones, quels délais, quels prix ?
+Photos : qui peut en fournir, et quand ?
+Validation : qui valide les publications et les prix, par quel moyen ?
+Interdits : sujets, mots ou concurrents à ne jamais citer ?
+Réussite : à quoi verrez-vous, dans un mois, que c''est réussi ?
+```
+
+La dernière question est la plus importante : elle vous donne les objectifs avec les mots de la cliente. Notez la réponse mot pour mot.
+
+## L''audit de la page en 8 points
+
+| Point | Ce qu''on regarde | Exemple pour Lamba Soa |
+| --- | --- | --- |
+| 1. Photo de profil et couverture | Nettes, à jour, avec le logo ? | Logo flou, couverture de l''an dernier |
+| 2. Informations | Adresse, horaires, numéro, zone de livraison complets ? | Pas d''horaires, pas de zone de livraison |
+| 3. Fréquence | Publications sur les 30 derniers jours | 4 publications |
+| 4. Interactions | Moyenne des réactions et commentaires par publication | 35 réactions, 6 commentaires |
+| 5. Messages | Messages reçus le mois dernier, délai moyen de réponse | 40 messages, réponse en 9 h en moyenne |
+| 6. Contenus qui marchent | Les 3 meilleures publications, et pourquoi | Les photos de robes portées par la gérante |
+| 7. Avis et critiques | Commentaires négatifs sans réponse ? | 3 commentaires « Prix ? » sans réponse |
+| 8. Autres réseaux | Instagram, TikTok : actifs ou abandonnés ? | Instagram : 9 publications en 2 ans |
+
+> [!astuce] Les captures du jour 1
+> Faites des captures d''écran de la page, des statistiques et des 5 dernières publications **avant** de changer quoi que ce soit, et rangez-les avec la date. Dans un mois, ce seront vos meilleures preuves.
+
+## Analyser 2 concurrents
+
+```schema comparaison
+titre: Lamba Soa face à deux concurrentes
+colonnes: Lamba Soa | Boutique A (Analakely) | Boutique B (en ligne)
+4 publications par mois | 12 publications par mois | 20 publications et un direct par semaine
+Photos du soir, dans la boutique | Photos portées, en lumière du jour | Vidéos courtes, essayages en direct
+Réponse en 9 h en moyenne | Réponse dans l''heure | Message automatique et réponse rapide
+```
+
+L''analyse des concurrents ne sert pas à les copier : elle montre ce que les clientes trouvent déjà ailleurs, et donne des idées d''amélioration réalistes.
+
+## Fixer les objectifs du mois
+
+À partir de l''audit et de la réponse à la dernière question, fixez **3 objectifs** mesurables (leçon 2.2).
+
+```schema etapes
+titre: Les objectifs de Lamba Soa pour le premier mois
+Régularité : passer de 4 à 12 publications, et des stories 5 jours sur 7
+Réactivité : répondre aux messages en moins de 2 heures, de 8 h à 20 h
+Contacts : passer de 40 à 55 messages reçus dans le mois
+```
+
+## Présenter l''audit à la cliente
+
+Un audit peut vexer un commerçant : c''est sa page, son travail de deux ans. Présentez-le de façon constructive.
+
+1. **Commencez par ce qui marche** : « Vos robes portées plaisent beaucoup : ce sont vos meilleures publications. »
+2. **Présentez les problèmes comme des occasions** : « Plusieurs clientes demandent le prix et n''ont pas de réponse : ce sont des ventes possibles. »
+3. **Proposez des actions précises**, pas des critiques générales.
+4. **Terminez par les objectifs** et faites-les valider par écrit.
+
+> [!madagascar] Le respect du travail déjà fait
+> Beaucoup de petits commerçants malgaches ont construit leur page seuls, le soir, après la boutique. Ils en sont fiers, même si elle est imparfaite. Une critique brutale peut faire perdre la mission dès le premier jour. Respectez ce travail, parlez de « prochaine étape », et montrez que vous voulez faire grandir **leur** page, pas la remplacer par la vôtre.
+
+> [!erreur] Commencer sans audit
+> Motivé, le community manager commence à publier dès le premier jour, sans noter la situation de départ. À la fin du mois, la gérante demande : « Alors, qu''est-ce qui a changé ? » Il est incapable de le dire en chiffres. **L''audit et les captures du jour 1** sont la base de votre rapport, et de votre prochain contrat.
+
+> [!retenir]
+> - Un **appel de découverte** en 8 questions, dont « À quoi verrez-vous que c''est réussi ? ».
+> - Un **audit en 8 points**, avec des captures du jour 1.
+> - L''analyse de **2 concurrents**, pour des idées réalistes.
+> - **3 objectifs mesurables**, validés par écrit.
+> - Un audit présenté **avec respect** : ce qui marche, les occasions, les actions.
+
+## Exercice pratique : l''audit d''une vraie page
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Choisissez une vraie page de boutique de vêtements ou de votre spécialité (celle de votre stratégie, au module 2, si elle convient).
+> 2. Faites son audit en 8 points avec le tableau, et des captures datées.
+> 3. Analysez 2 concurrents avec le tableau de comparaison.
+> 4. Fixez 3 objectifs pour un premier mois.
+> 5. Rédigez le message de présentation de l''audit au client : ce qui marche, les occasions, les actions.
+>
+> **À livrer** : votre audit, l''analyse des concurrents, vos 3 objectifs et votre message de présentation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 0, 0, 'Pourquoi faire un audit avant de changer quoi que ce soit ?', '["Parce que Facebook l''exige","Ce n''est pas utile","Pour critiquer la gérante","Pour pouvoir prouver les résultats à la fin du mois"]'::jsonb, 3, 'Sans les chiffres et les captures du jour 1, impossible de montrer ce qui a changé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 0, 1, 'Quelle question de l''appel de découverte donne les objectifs ?', '["« Aimez-vous Facebook ? »","« Combien gagnez-vous ? »","« Quel âge avez-vous ? »","« À quoi verrez-vous, dans un mois, que c''est réussi ? »"]'::jsonb, 3, 'La réponse donne les objectifs avec les mots de la cliente. On la note mot pour mot.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 0, 2, 'À quoi sert l''analyse de 2 concurrents ?', '["Les critiquer en public","Voir ce que les clientes trouvent déjà ailleurs et trouver des améliorations réalistes","Leur voler des abonnés","Copier leurs publications"]'::jsonb, 1, 'L''analyse montre ce qui fonctionne dans le même secteur, pour s''en inspirer sans copier.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 0, 3, 'Comment présenter l''audit à la gérante ?', '["Lister toutes les erreurs de la page","Ne pas le présenter","Dire que tout est à refaire","Commencer par ce qui marche, puis présenter les problèmes comme des occasions, avec des actions"]'::jsonb, 3, 'La gérante a construit sa page seule ; une présentation respectueuse donne envie de travailler ensemble.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 0, 4, 'Quel objectif dépend entièrement du community manager ?', '["Répondre aux messages en moins de 2 heures, de 8 h à 20 h","Faire baisser les prix des concurrents","Gagner 5 000 abonnés","Doubler les ventes"]'::jsonb, 0, 'La réactivité et la régularité dépendent de votre travail ; les ventes dépendent aussi des prix, du stock et de la livraison.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 4, 1, 'Le calendrier du mois et la production en lot', 9, 'L''audit est fait, les objectifs sont validés. Il faut maintenant préparer le mois de Lamba Soa : le calendrier, puis tous les contenus. La clé d''un mois réussi est la **production en lot** : une séance photo, une journée de création, une validation groupée, puis une programmation chaque lundi. Cette leçon vous montre comment organiser ce travail pour ne jamais être en retard.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire le calendrier du mois à partir de l''audit et des objectifs.
+> 2. Organiser une séance photo efficace avec la cliente.
+> 3. Produire les contenus en lot plutôt qu''au jour le jour.
+> 4. Faire valider les contenus rapidement.
+> 5. Préparer un mois de stories.
+
+## Le calendrier de Lamba Soa
+
+Le mois choisi est mai : il contient la fête des mères, une très bonne occasion pour une boutique de vêtements (vérifiez la date exacte de l''année). Le calendrier suit les objectifs : 12 publications, environ 1 vente sur 3 ou 4, et des stories 5 jours sur 7.
+
+| Semaine | Thème | Publications (lundi, mercredi, vendredi) |
+| --- | --- | --- |
+| Semaine 1 (à partir du lundi 3 mai) | Nouvelle collection | Carrousel des nouveautés (vendre) · Avis d''une cliente (prouver) · Reel « 3 façons de porter un lamba » (divertir) |
+| Semaine 2 (à partir du lundi 10 mai) | Bien choisir | Guide des tailles (informer) · Coulisses de la boutique (divertir) · Robe de la semaine (vendre) |
+| Semaine 3 (à partir du lundi 17 mai) | Fête des mères | Idées de cadeaux (vendre) · « Votre maman en une tenue » (divertir) · Avis clientes (prouver) |
+| Semaine 4 (à partir du lundi 24 mai) | Dernière ligne droite | Livraison avant la fête (informer) · Rappel des cadeaux (vendre) · Merci aux clientes (prouver) |
+
+```schema barres
+titre: Répartition des 12 publications du mois
+Vendre : 4
+Prouver : 3
+Divertir : 3
+Informer : 2
+```
+
+## La séance photo du mois
+
+Plutôt que de demander une photo chaque jour à la gérante, organisez **une séance de 2 heures** en début de mois. Vous repartez avec la matière de tout le mois.
+
+```schema etapes
+titre: La séance photo de Lamba Soa
+La veille : envoyer la liste des 15 articles à photographier et l''heure
+Le matin : installer un fond clair près de la porte, à la lumière du jour
+Pour chaque article : 3 photos (portée, à plat, détail du tissu)
+Les coulisses : la gérante qui range, les étiquettes, l''emballage d''une commande
+Une courte vidéo : 3 tenues avec une même jupe, pour le Reel de la semaine 1
+Le soir : trier, renommer et ranger les photos dans le dossier du mois
+```
+
+> [!madagascar] Les mannequins et le droit à l''image
+> Beaucoup de boutiques font porter les vêtements par la gérante, une vendeuse ou une amie. Demandez toujours l''**accord écrit** de chaque personne photographiée, en précisant que les photos seront publiées sur Facebook et Instagram. Si une personne refuse, photographiez les vêtements portés de dos, sans visage, ou à plat.
+
+## La production en lot
+
+```schema comparaison
+titre: Produire au jour le jour ou en lot ?
+ton: mauvais-bon
+colonnes: Au jour le jour | En lot
+Chaque matin, chercher une idée et une photo | Une journée de création pour 2 semaines
+Une publication oubliée dès qu''une coupure survient | Tout est programmé à l''avance
+Des visuels de styles différents | Des visuels cohérents, créés avec les mêmes modèles
+La cliente valide une publication par jour | Elle valide 6 publications en une fois
+```
+
+Organisez deux **journées de création** par mois : une pour les semaines 1 et 2, une pour les semaines 3 et 4. Créez tous les textes, puis tous les visuels, puis montez les vidéos : passer d''une tâche à l''autre fait perdre du temps.
+
+## La validation groupée
+
+1. **Envoyez les contenus de deux semaines** en une fois, dans le calendrier partagé ou dans un document avec les visuels.
+2. **Fixez une date limite** : « Merci de valider d''ici jeudi 18 h. »
+3. **Demandez une réponse simple** : « OK » ou une correction par publication.
+4. **Rappelez une seule fois** si besoin, la veille de la date limite.
+5. **Notez la date de validation** dans la colonne Statut.
+
+> [!astuce] Les messages vocaux de la gérante
+> Mme Voahangy préfère répondre par message vocal sur WhatsApp. Miora l''accepte, mais répond toujours par écrit avec un résumé : « Bien noté : publication 4 validée, prix de la robe bleue changé à 55 000 Ar, publication 6 à refaire avec une autre photo. » Les validations restent écrites, même quand la cliente parle.
+
+## Les stories du mois
+
+Les stories ne se programment pas toutes à l''avance : elles montrent la vie du jour. Préparez quand même un **plan des stories** pour ne jamais être à court d''idées.
+
+```schema cycle
+titre: La semaine des stories de Lamba Soa
+Lundi : la nouveauté de la semaine
+Mardi : un sondage (« Rouge ou bleu ? »)
+Mercredi : les coulisses (la boutique qui ouvre)
+Jeudi : un avis de cliente partagé
+Samedi : la dernière pièce disponible, ou une réponse à une question fréquente
+```
+
+> [!erreur] Attendre la photo du jour
+> Le community manager demande chaque matin à la gérante : « Vous pouvez m''envoyer une photo pour aujourd''hui ? » La gérante est occupée avec ses clientes, la photo arrive à 17 h, floue, ou n''arrive pas. La page publie irrégulièrement, et la gérante se sent harcelée. **Une séance photo par mois et une production en lot** règlent ce problème.
+
+> [!retenir]
+> - Un calendrier construit à partir de **l''audit, des objectifs et des dates du mois**.
+> - **Une séance photo** de 2 heures en début de mois, avec l''accord des personnes photographiées.
+> - **Deux journées de création** par mois : textes, puis visuels, puis vidéos.
+> - Une **validation groupée**, avec une date limite et une trace écrite.
+> - Un **plan des stories** pour la semaine, complété par la vie du jour.
+
+## Exercice pratique : préparer le mois
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Construisez le calendrier complet d''un mois pour la page auditée à la leçon 5.1 : 12 publications et le plan des stories.
+> 2. Rédigez la liste de la séance photo du mois : articles, photos par article, coulisses, vidéo.
+> 3. Produisez en lot les textes des 6 premières publications.
+> 4. Rédigez le message de validation groupée, avec la date limite.
+>
+> **À livrer** : le calendrier, la liste de la séance photo, les 6 textes et le message de validation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 1, 0, 'Pourquoi organiser une séance photo en début de mois ?', '["Pour remplacer le calendrier","Avoir la matière de tout le mois sans demander une photo chaque jour","Ce n''est pas utile","Pour publier toutes les photos le même jour"]'::jsonb, 1, 'Une séance de 2 heures donne 30 à 40 photos : le mois peut être préparé à l''avance.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 1, 1, 'Que faut-il avant de photographier une vendeuse qui porte les vêtements ?', '["Un contrat de mannequin payé","Son accord écrit pour la publication sur les réseaux","Rien, elle travaille à la boutique","L''accord d''un abonné"]'::jsonb, 1, 'Chaque personne photographiée doit accepter que son image soit publiée. Sinon, on photographie les vêtements à plat ou de dos.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 1, 2, 'Qu''est-ce que la production en lot ?', '["Créer les contenus de plusieurs semaines en une ou deux journées","Copier les contenus d''une autre page","Publier tout en une fois","Acheter des contenus"]'::jsonb, 0, 'Créer textes, puis visuels, puis vidéos en série est plus rapide, plus cohérent et résiste aux coupures.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 1, 3, 'La gérante valide par message vocal. Que faire ?', '["Répondre par écrit avec un résumé de ce qui est validé ou corrigé","Refuser les vocaux","Publier sans validation","Ne rien noter"]'::jsonb, 0, 'Le résumé écrit garde une trace des validations, même quand la cliente préfère parler.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 1, 4, 'Pourquoi le mois de mai est-il intéressant pour une boutique de vêtements ?', '["Les boutiques ferment","Il n''y a aucune fête","Facebook est fermé","Il contient la fête des mères, une occasion de cadeaux"]'::jsonb, 3, 'Les dates importantes du mois guident le calendrier : idées de cadeaux, livraisons avant la fête.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 4, 2, 'Animer la communauté et organiser un jeu-concours', 11, 'Une page qui publie sans jamais dialoguer ressemble à une vitrine fermée. **Animer**, c''est donner aux abonnés des occasions de participer : répondre à une question, voter, commenter, gagner un lot. Une page animée reçoit plus de commentaires, est davantage montrée par les réseaux, et crée un lien qui donne envie d''acheter. Cette leçon vous apprend à animer la communauté de Lamba Soa, et à organiser un jeu-concours qui respecte les règles.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Utiliser les questions et les sondages pour faire participer les abonnés.
+> 2. Répondre aux commentaires pour faire vivre les conversations.
+> 3. Organiser un jeu-concours en 6 étapes.
+> 4. Respecter les règles des réseaux sociaux pour les concours.
+> 5. Éviter les concours qui attirent seulement des chasseurs de cadeaux.
+
+## Faire participer les abonnés
+
+```schema chiffres
+titre: 5 façons d''animer sans budget
+La question du jour : « Pour un mariage, robe longue ou courte ? »
+Le sondage en story : « Rouge ou bleu pour la prochaine collection ? »
+Le choix entre deux photos : « Tenue 1 ou tenue 2 ? Répondez en commentaire »
+Le « complétez la phrase » : « Ma couleur préférée pour l''été, c''est… »
+Les réponses publiques : une question fréquente transformée en publication
+```
+
+| Format d''animation | Effort | Ce qu''il apporte |
+| --- | --- | --- |
+| Question du jour | Très faible | Des commentaires, et des idées sur les goûts des clientes |
+| Sondage en story | Très faible | Des réponses en un clic, des avis sur les prochains produits |
+| Choix entre deux photos | Faible | Beaucoup de commentaires courts, une publication plus montrée |
+| Direct de vente | Moyen | Des réservations immédiates, un lien fort avec les clientes |
+| Jeu-concours | Moyen à fort | De nouveaux abonnés et beaucoup d''activité, s''il est bien conçu |
+
+Les meilleures questions sont **faciles** (on répond en un mot), **liées à la marque** (elles parlent des produits ou du style) et **utiles** : les réponses vous apprennent ce que les clientes préfèrent.
+
+## Répondre aux commentaires
+
+Chaque commentaire est une conversation. Une page qui répond à ses abonnés donne envie de commenter, et chaque réponse fait vivre la publication un peu plus longtemps.
+
+```schema comparaison
+titre: Répondre aux commentaires
+ton: mauvais-bon
+colonnes: Page silencieuse | Page qui anime
+Aucune réponse aux commentaires | Une réponse personnalisée à chaque commentaire dans la journée
+« Merci » copié sous chaque commentaire | « Merci Fara ! La robe existe aussi en vert 😊 »
+Les questions de prix restent sans réponse | Le prix donné, puis « On vous la réserve ? »
+```
+
+## Le jeu-concours
+
+Un jeu-concours bien fait attire de nouveaux abonnés intéressés par la marque et crée de l''activité. Mal fait, il attire des chasseurs de cadeaux qui n''achèteront jamais, et peut même mettre la page en difficulté.
+
+```schema etapes
+titre: Organiser un jeu-concours en 6 étapes
+Le lot : lié à la marque (un bon d''achat de 50 000 Ar chez Lamba Soa, pas un téléphone)
+Le règlement : comment participer, date de fin, date du tirage, zone de livraison du lot
+La participation : utile, par exemple commenter avec sa robe préférée de la collection
+Les règles des réseaux : vérifiées avant de publier
+Le tirage : transparent, avec un outil de tirage au sort ou une vidéo
+L''annonce : le gagnant, puis la remise du lot, en photo avec son accord
+```
+
+## Les règles des réseaux sociaux
+
+Facebook et Instagram ont des **règles pour les promotions et les concours** organisés par des pages. Elles évoluent : relisez-les sur les pages officielles de Meta avant chaque concours. Quelques principes reviennent depuis longtemps :
+
+```schema checklist
+titre: Vérifier avant de publier un concours sur Facebook
+[ ] Le règlement est écrit et accessible : conditions, dates, lot, zone
+[ ] Le concours précise qu''il n''est pas organisé ni parrainé par Facebook
+[ ] Pas d''obligation de partager sur son propre profil pour participer
+[ ] Pas d''obligation d''identifier des amis pour participer
+[ ] Le tirage est fait honnêtement, et le gagnant est contacté par la page officielle
+[ ] Pour un lot de grande valeur, les règles locales sur les jeux ont été vérifiées
+```
+
+> [!cle] Pourquoi pas « partagez et identifiez 3 amis » ?
+> Ces conditions sont très répandues, mais elles vont à l''encontre des règles de Facebook pour les promotions des pages. Elles attirent aussi des participants qui jouent à tous les concours, sans intérêt pour la marque. Une participation **liée aux produits** (« Quelle robe choisiriez-vous ? ») attire au contraire des personnes qui aiment vraiment la boutique.
+
+> [!madagascar] Les faux comptes pendant un concours
+> Pendant un concours, des escrocs créent souvent de faux comptes au nom de la boutique et écrivent aux participants : « Vous avez gagné ! Envoyez 5 000 Ar de frais par Mobile Money. » Prévenez dans le règlement : « Le gagnant sera contacté uniquement par notre page officielle. Nous ne demandons jamais de paiement. » Surveillez les commentaires et signalez les faux comptes.
+
+> [!exemple] Le concours de la fête des mères
+> Pour la fête des mères, Miora propose à Mme Voahangy un concours simple : « Dites-nous en commentaire quelle tenue de la collection vous offririez à votre maman. » Lot : un bon d''achat de 50 000 Ar. Règlement en commentaire épinglé, tirage au sort filmé une semaine plus tard. Le concours apporte 180 commentaires, de nombreux messages « Elle existe en quelle taille ? » et plusieurs ventes directes, de la part de clientes qui ont découvert la collection grâce au concours.
+
+## Après le concours
+
+1. **Annoncez le gagnant** sur la page, avec son accord pour son prénom.
+2. **Montrez la remise du lot** (photo de la gagnante, avec son accord) : c''est la preuve que le concours était honnête.
+3. **Remerciez tous les participants**, et proposez une petite offre limitée pour ceux qui n''ont pas gagné.
+4. **Mesurez** : nouveaux abonnés, commentaires, messages, et surtout les ventes signalées par la gérante.
+
+> [!erreur] Le lot qui n''a rien à voir
+> Une boutique de vêtements fait gagner un téléphone. Le concours attire des milliers de participants qui jouent pour le téléphone, s''abonnent, puis ne s''intéressent jamais aux vêtements. Après le concours, le taux d''interaction de la page s''effondre. **Le lot doit être lié à la marque** : il attire des personnes qui pourraient devenir clientes.
+
+> [!retenir]
+> - Animer avec des **questions faciles, des sondages, des choix entre deux photos**.
+> - **Répondre à chaque commentaire**, de façon personnalisée.
+> - Un concours en **6 étapes** : lot lié à la marque, règlement, participation utile, règles, tirage, annonce.
+> - Respecter les **règles des réseaux** : pas d''obligation de partager ni d''identifier des amis.
+> - Prévenir les **arnaques** : le gagnant est contacté uniquement par la page officielle.
+
+## Exercice pratique : un mois d''animation
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Rédigez 8 questions ou sondages pour animer la page auditée à la leçon 5.1 pendant un mois.
+> 2. Rédigez le règlement complet d''un jeu-concours pour cette page, en respectant la liste de vérification.
+> 3. Rédigez la publication d''annonce du concours, l''annonce du gagnant et le message aux participants.
+> 4. Répondez par écrit à 5 commentaires fictifs reçus sous la publication du concours, dont un faux compte qui demande des frais.
+>
+> **À livrer** : vos 8 questions, le règlement, les 3 publications et vos 5 réponses.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 2, 0, 'Quelle question anime le mieux une page de vêtements ?', '["« Avez-vous vu notre concurrent ? »","« Pour un mariage, robe longue ou courte ? »","« Quelle est votre opinion politique ? »","« Pouvez-vous partager notre page ? »"]'::jsonb, 1, 'Une bonne question est facile, liée à la marque, et ses réponses apprennent ce que les clientes préfèrent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 2, 1, 'Quel lot choisir pour le concours d''une boutique de vêtements ?', '["Une somme d''argent","Un bon d''achat dans la boutique","Un voyage","Un téléphone"]'::jsonb, 1, 'Un lot lié à la marque attire des personnes qui pourraient devenir clientes, pas des chasseurs de cadeaux.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 2, 2, 'Quelle condition de participation éviter sur Facebook ?', '["« Commentez avec votre robe préférée »","« Répondez à la question en commentaire »","« Votez pour votre tenue préférée »","« Partagez sur votre profil et identifiez 3 amis » comme condition obligatoire"]'::jsonb, 3, 'Ces conditions vont à l''encontre des règles de Facebook pour les promotions des pages, et attirent des joueurs sans intérêt pour la marque.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 2, 3, 'Que préciser dans le règlement pour éviter les arnaques ?', '["Le gagnant doit payer des frais de livraison par Mobile Money","Le gagnant sera contacté par n''importe quel compte","Le gagnant sera contacté uniquement par la page officielle, sans aucun paiement","Rien"]'::jsonb, 2, 'De faux comptes demandent souvent des frais aux participants. Le règlement les prévient.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 2, 4, 'Pourquoi montrer la remise du lot ?', '["Parce que c''est obligatoire","Ce n''est pas utile","Pour obliger la gagnante à acheter","Pour prouver que le concours était honnête"]'::jsonb, 3, 'Une photo de la remise, avec l''accord de la gagnante, rend la marque crédible pour les prochains concours.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 4, 3, 'Le suivi quotidien et les imprévus', 10, 'Le calendrier est programmé, les contenus sont prêts. Commence alors le travail le plus régulier, et souvent le plus important : le **suivi quotidien**. Répondre aux messages, publier les stories, repérer ce qui fonctionne, et gérer les imprévus : une rupture de stock, une coupure, une critique, une promotion décidée à la dernière minute. Cette leçon vous donne une routine claire pour tenir le mois sans rien oublier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Suivre une routine quotidienne de 30 à 60 minutes par page.
+> 2. Tenir un journal de bord de la page.
+> 3. Transmettre au client ce qu''il doit décider.
+> 4. Réagir aux imprévus les plus fréquents.
+> 5. Ajuster le calendrier en milieu de mois.
+
+## La routine quotidienne
+
+```schema etapes
+titre: La routine quotidienne pour une page
+Le matin : répondre aux messages de la nuit, publier la story du jour
+À midi : répondre aux commentaires des publications récentes
+Le soir (heure de pointe) : répondre vite aux messages, surveiller la publication du jour
+Chaque jour : noter les questions qui reviennent et les remarques des clientes
+Avant de terminer : vérifier que la publication du lendemain est bien programmée
+```
+
+Pour une petite page, comptez **30 minutes à 1 heure par jour**, réparties en plusieurs passages. Le soir est souvent le moment le plus important : c''est là que les clientes écrivent après le travail.
+
+## Le journal de bord
+
+Notez chaque jour, en quelques lignes, ce qui s''est passé sur la page. Ce journal vous servira pour le rapport du mois et pour vos décisions.
+
+| Date | Messages reçus | Questions fréquentes | Ce qui a marché | À signaler à la cliente |
+| --- | --- | --- | --- | --- |
+| Lun 3 mai | 6 | Taille de la robe bleue | Le carrousel : 12 commentaires | Plus de taille L en robe bleue |
+| Mar 4 mai | 4 | Livraison à Ivato | Sondage : 40 votes | Rien |
+| Mer 5 mai | 9 | Prix des jupes | L''avis client : 3 partages | Une cliente demande un paiement en deux fois |
+
+> [!astuce] Les questions qui reviennent
+> Si la même question arrive trois fois dans la semaine (« Vous livrez à Ivato ? »), c''est le signe qu''il manque une information sur la page. Ajoutez-la dans les infos de la page, dans une story à la une ou dans les questions fréquentes de la messagerie, et proposez une publication qui y répond.
+
+## Ce qui revient à la cliente
+
+Vous gérez la page, mais certaines décisions restent toujours à la cliente. Transmettez-les vite, regroupées, avec une proposition.
+
+```schema comparaison
+titre: Qui décide ?
+colonnes: Vous faites seul | Vous transmettez à la cliente
+Répondre aux questions avec les informations validées | Accorder une remise ou un paiement en plusieurs fois
+Publier les contenus validés | Changer un prix ou lancer une promotion
+Masquer un commentaire hors sujet | Répondre à une réclamation grave
+Ajuster l''heure d''une story | Une grosse commande ou une demande de partenariat
+```
+
+> [!exemple] Le message du soir à Mme Voahangy
+> Chaque soir, Miora envoie un court message à la gérante : « Aujourd''hui : 9 messages, 2 réservations (robe verte M, jupe noire S, coordonnées ci-dessous). 2 questions pour vous : 1. Une cliente demande à payer en deux fois, j''accepte ? 2. Plus de taille L en robe bleue, je retire la publication ou j''écris "bientôt de retour" ? » La gérante répond en une minute, et rien ne reste en attente.
+
+## Les imprévus fréquents
+
+| Imprévu | La bonne réaction |
+| --- | --- |
+| **Rupture de stock** sur un article publié | Répondre honnêtement, proposer une alternative, mettre à jour la publication ou la story |
+| **Coupure longue** de votre côté | Les publications programmées partent ; prévenir la cliente, répondre en données mobiles |
+| **Promotion décidée au dernier moment** | Demander la validation écrite du prix et de la date de fin, puis publier une story rapide |
+| **Critique publique** | Les 4 étapes : remercier, reconnaître, proposer en privé, régler (leçon 4.3) |
+| **Publication qui ne marche pas** | Ne pas la supprimer ; noter et comprendre ; essayer autrement la semaine suivante |
+| **Événement grave dans le pays** | Suspendre les publications promotionnelles et en parler avec la cliente |
+
+> [!madagascar] La saison des cyclones
+> De janvier à mars, certaines régions de Madagascar sont touchées par des cyclones. Une publication joyeuse sur une promotion, programmée pendant un cyclone qui fait des victimes, choque les abonnés. Pendant cette saison, **vérifiez chaque matin l''actualité** et soyez prêt à suspendre les publications programmées, avec l''accord de la cliente.
+
+## Le point de milieu de mois
+
+Au bout de deux semaines, faites un point rapide avec la cliente : ce qui marche, ce qui marche moins, et ce que vous ajustez pour la deuxième moitié du mois.
+
+```schema checklist
+titre: Le point de milieu de mois
+[ ] Les chiffres des deux semaines, comparés au départ
+[ ] Les 2 publications qui ont le mieux fonctionné, et pourquoi
+[ ] Les questions fréquentes et ce qui a été ajouté à la page
+[ ] Les ajustements proposés pour les deux semaines suivantes
+[ ] Les contenus des semaines 3 et 4 validés
+```
+
+> [!erreur] Disparaître le week-end sans prévenir
+> Le community manager ne répond plus du vendredi soir au lundi matin, alors que la boutique reçoit beaucoup de messages le samedi. Les clientes attendent, puis commandent ailleurs. La gérante le découvre en lisant les messages en retard. **Les horaires de réponse du week-end se décident à l''avance** avec la cliente, et le message d''absence indique quand la réponse arrivera.
+
+> [!retenir]
+> - Une **routine quotidienne** de 30 à 60 minutes, surtout le soir.
+> - Un **journal de bord** : messages, questions fréquentes, ce qui marche, à signaler.
+> - Les **décisions de la cliente** (prix, remises, réclamations) sont transmises vite, avec une proposition.
+> - Des **réactions prêtes** pour les imprévus : rupture, coupure, promotion, critique, événement grave.
+> - Un **point de milieu de mois** pour ajuster.
+
+## Exercice pratique : une semaine de suivi
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Créez le journal de bord de la page de votre projet dans Google Sheets, et remplissez 5 jours fictifs mais réalistes.
+> 2. Rédigez 3 messages du soir à la cliente, avec les questions qui lui reviennent.
+> 3. Rédigez votre réponse à 3 imprévus : une rupture de stock sur l''article le plus demandé, une promotion décidée le jour même, une coupure de 6 heures pendant un samedi chargé.
+> 4. Préparez l''ordre du jour du point de milieu de mois.
+>
+> **À livrer** : votre journal de bord, vos 3 messages, vos 3 réponses et l''ordre du jour.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 3, 0, 'À quel moment de la journée la réactivité compte-t-elle souvent le plus ?', '["À 4 h du matin","Le soir, quand les clientes écrivent après le travail","Jamais","Uniquement le dimanche"]'::jsonb, 1, 'Beaucoup de messages arrivent le soir : y répondre vite évite de perdre des ventes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 3, 1, 'Que noter dans le journal de bord ?', '["Uniquement le nombre d''abonnés","Les mots de passe","Rien","Messages reçus, questions fréquentes, ce qui a marché, ce qu''il faut signaler"]'::jsonb, 3, 'Le journal sert à repérer les besoins des clientes et prépare le rapport du mois.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 3, 2, 'Une cliente demande à payer en deux fois. Que fait le community manager ?', '["Il refuse seul","Il accepte seul","Il transmet la demande à la gérante, avec une proposition","Il ignore la demande"]'::jsonb, 2, 'Les conditions de paiement sont une décision de la gérante. On transmet vite, en regroupant les questions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 3, 3, 'Un article publié est en rupture de stock. Que faire ?', '["Supprimer tous les commentaires","Répondre honnêtement, proposer une alternative et mettre à jour la publication","Continuer à prendre des commandes","Ne rien dire"]'::jsonb, 1, 'L''honnêteté garde la confiance. Une alternative peut sauver la vente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 3, 4, 'Que faire des publications promotionnelles programmées pendant un cyclone qui fait des victimes ?', '["Ajouter plus de promotions","Les suspendre, avec l''accord de la cliente","Les laisser partir","Supprimer la page"]'::jsonb, 1, 'Une promotion joyeuse pendant un drame choque les abonnés. On vérifie l''actualité pendant la saison cyclonique.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 4, 4, 'Le rapport mensuel et l''étude de cas', 10, 'Le mois est terminé. Il reste l''étape qui décide de la suite : le **rapport mensuel**. Il montre à la cliente ce que vous avez fait, ce que cela a donné, et ce que vous proposez pour le mois suivant. Un bon rapport transforme un mois d''essai en contrat de plusieurs mois. Cette leçon vous apprend à le rédiger et à le présenter, puis vous fait construire votre étude de cas, la pièce maîtresse de votre portfolio.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rassembler les chiffres du mois et les comparer au départ.
+> 2. Rédiger un rapport mensuel en 6 parties.
+> 3. Expliquer honnêtement ce qui a moins bien marché.
+> 4. Proposer 3 actions pour le mois suivant et la suite de la mission.
+> 5. Transformer le projet en étude de cas de portfolio.
+
+## Rassembler les chiffres
+
+Reprenez les chiffres de l''audit (leçon 5.1) et relevez les mêmes, à la fin du mois, sur la même durée. Comparez toujours **les mêmes indicateurs, sur des périodes de même durée**.
+
+| Indicateur | Avant (mois d''avril) | Mai | Évolution |
+| --- | --- | --- | --- |
+| Publications | 4 | 12 | +8 |
+| Personnes touchées | 6 500 | 15 200 | +134 % |
+| Taux d''interaction moyen | 1,2 % | 2,6 % | plus du double |
+| Messages reçus | 40 | 63 | +58 % |
+| Délai moyen de réponse | 9 h | 1 h 30 | divisé par 6 |
+| Abonnés | 3 200 | 3 480 | +280 |
+
+*Chiffres donnés en exemple : vos résultats dépendront de chaque page.*
+
+## Le rapport en 6 parties
+
+```schema etapes
+titre: Un rapport mensuel d''une à deux pages
+Résumé : les résultats principaux, en 3 lignes
+Chiffres clés : le tableau, comparé au mois précédent et aux objectifs
+Les 3 meilleures publications : avec la raison de leur succès
+Ce qui a moins marché : et pourquoi, selon vous
+Ce que disent les clientes : questions fréquentes, remarques, demandes
+Les propositions : 3 actions concrètes pour le mois suivant
+```
+
+> [!exemple] Le résumé du rapport de Lamba Soa
+> « En mai, la page a publié 12 fois au lieu de 4, et les clientes ont reçu une réponse en 1 h 30 en moyenne au lieu de 9 h. Les messages reçus sont passés de 40 à 63 : les 3 objectifs du mois sont atteints. Les avis de clientes et les vidéos d''essayage ont été les contenus les plus appréciés ; je propose d''en faire davantage en juin, autour de la fête de l''Indépendance. »
+
+## Présenter les objectifs atteints… et les autres
+
+```schema comparaison
+titre: Présenter les résultats
+ton: mauvais-bon
+colonnes: Rapport faible | Rapport utile
+Un tableau de chiffres sans explication | Chaque chiffre important accompagné d''une phrase
+Seulement les bons résultats | Les bons résultats et ce qui a moins marché, avec une explication
+« La page marche mieux » | « Les messages sont passés de 40 à 63 »
+Aucune proposition | 3 actions concrètes pour le mois suivant
+```
+
+Un résultat décevant ne se cache pas : il s''explique. « Les vidéos de la semaine 2 ont peu été vues : les 3 premières secondes montraient la boutique vide. En juin, je commencerai chaque vidéo par une tenue portée. » Une cliente fait davantage confiance à quelqu''un qui analyse ses erreurs qu''à quelqu''un qui prétend que tout est parfait.
+
+```schema chiffres
+titre: Les 3 propositions pour juin
+Contenus : un avis de cliente chaque semaine, et 2 vidéos d''essayage
+Calendrier : une collection spéciale pour la fête de l''Indépendance, le 26 juin
+Ventes : un premier boost de la publication de la collection, avec un petit budget validé
+```
+
+## Présenter le rapport et proposer la suite
+
+1. **Envoyez le rapport à date fixe**, par exemple le 2 de chaque mois, même quand les chiffres sont moyens.
+2. **Proposez un appel de 15 minutes** pour le présenter et répondre aux questions.
+3. **Demandez la validation** des propositions du mois suivant.
+4. **Après un mois d''essai réussi**, proposez un engagement de 3 mois : les résultats d''une page se construisent sur plusieurs mois.
+5. **Demandez un avis** que vous pourrez publier, et l''accord pour présenter le travail dans votre portfolio.
+
+> [!madagascar] Le rapport sur téléphone
+> Beaucoup de commerçants liront votre rapport sur leur téléphone, entre deux clientes. Envoyez un **PDF léger** d''une ou deux pages, avec de gros chiffres et peu de texte, ou une image claire du tableau dans WhatsApp, suivie d''un message vocal de 2 minutes si la cliente préfère écouter. L''important : qu''elle comprenne en une minute ce que vous lui avez apporté.
+
+> [!erreur] Le rapport en retard, ou pas de rapport
+> Le community manager a bien travaillé, mais n''envoie pas de rapport : « La gérante voit bien la page. » Au bout de deux mois, la gérante se demande ce qu''elle paie exactement, et arrête la collaboration. **Le rapport rend votre travail visible.** Sans lui, même les meilleurs résultats passent inaperçus.
+
+> [!retenir]
+> - Comparer **les mêmes indicateurs**, sur des périodes de même durée, avec le point de départ.
+> - Un rapport en **6 parties**, d''une à deux pages.
+> - Les résultats décevants **s''expliquent**, avec une solution.
+> - **3 propositions concrètes** pour le mois suivant, et un engagement de 3 mois après l''essai.
+> - Un rapport **à date fixe**, lisible sur téléphone.
+
+## Exercice pratique : le rapport du mois
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Rédigez le rapport mensuel complet de la page de votre projet, en 6 parties, avec des chiffres fictifs mais réalistes.
+> 2. Incluez un résultat décevant et son explication.
+> 3. Mettez le rapport en page dans Canva ou Google Docs, en une ou deux pages lisibles sur téléphone.
+> 4. Rédigez le message d''envoi du rapport, avec la proposition d''un engagement de 3 mois.
+>
+> **À livrer** : votre rapport en PDF et votre message d''envoi.
+
+## Projet du module 5 : l''étude de cas
+
+> [!projet] Projet du module · 2 heures 30
+> Rassemblez tout le travail du module en une étude de cas de 3 à 5 pages : c''est la pièce maîtresse de votre portfolio.
+> 1. **Le contexte** : la marque, sa cible, sa situation de départ (audit et captures).
+> 2. **Les objectifs** : les 3 objectifs fixés avec la cliente.
+> 3. **La stratégie** : la ligne éditoriale, les piliers, le calendrier du mois.
+> 4. **Les réalisations** : 6 publications parmi les meilleures (visuels et textes), une vidéo, le concours.
+> 5. **Les résultats** : le tableau avant / après et ce que vous en concluez.
+> 6. **La suite** : vos propositions pour les mois suivants.
+>
+> Indiquez clairement « projet d''étude » si les chiffres sont fictifs ou si la page n''est pas une vraie cliente.
+>
+> **À livrer** : votre étude de cas en PDF léger (moins de 5 Mo).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 4, 0, 'Comment comparer les résultats du mois ?', '["Avec les mêmes indicateurs, sur une période de même durée, par rapport au départ","En choisissant seulement les bons chiffres","Sans chiffres","En comparant mai avec une seule semaine d''avril"]'::jsonb, 0, 'Une comparaison juste rend le rapport crédible.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 4, 1, 'Que faire d''un résultat décevant dans le rapport ?', '["Le cacher","Accuser la cliente","L''expliquer et proposer une solution","Changer les chiffres"]'::jsonb, 2, 'Une cliente fait davantage confiance à quelqu''un qui analyse ses erreurs qu''à quelqu''un qui prétend que tout est parfait.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 4, 2, 'Combien de propositions faire pour le mois suivant ?', '["3 actions concrètes","Une vingtaine","Aucune","Une seule, vague"]'::jsonb, 0, 'Trois actions précises sont faciles à valider et à mesurer le mois suivant.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 4, 3, 'Pourquoi proposer un engagement de 3 mois après un mois d''essai réussi ?', '["Les résultats d''une page se construisent sur plusieurs mois","Pour augmenter le prix sans raison","Parce que Facebook l''exige","Pour bloquer la cliente"]'::jsonb, 0, 'Un mois montre une tendance ; plusieurs mois installent des résultats durables.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 4, 4, 4, 'Que faut-il indiquer dans une étude de cas faite sur une page qui n''est pas une vraie cliente ?', '["Que c''est un vrai client","Des chiffres inventés présentés comme réels","« Projet d''étude »","Rien"]'::jsonb, 2, 'L''honnêteté sur l''origine du projet protège votre réputation auprès des futurs clients.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 5, 'Trouver des clients et se faire payer', 'Votre portfolio et votre page professionnelle, la prospection avec l''audit gratuit, l''appel de vente et l''accord de collaboration, le calcul de vos formules mensuelles, les paiements, la fidélisation et votre plan d''action.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 5, 0, 'Votre portfolio et votre page professionnelle', 9, 'Un client n''achète pas « des publications » : il achète des **résultats**, et la confiance que vous saurez les obtenir pour lui. Avant de le contacter, vous devez pouvoir lui montrer ce que vous savez faire. Pour un community manager, la première vitrine est… sa propre présence sur les réseaux. Cette leçon vous aide à construire votre portfolio et votre page professionnelle.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rassembler un portfolio de community manager convaincant.
+> 2. Présenter une étude de cas avec des chiffres.
+> 3. Écrire une phrase de présentation centrée sur le client.
+> 4. Tenir votre propre page professionnelle.
+> 5. Préparer un portfolio léger, facile à envoyer.
+
+## Les éléments du portfolio
+
+```schema etapes
+titre: Les 5 éléments d''un bon portfolio
+Une étude de cas complète : le projet du module 5, en 3 à 5 pages
+6 à 9 exemples de publications : visuels et textes, avec leur type
+2 vidéos courtes : vos meilleures, de moins de 30 secondes
+Une stratégie : un extrait de celle du module 2 (cible, ligne éditoriale, calendrier)
+Votre attestation Vitako, avec son lien de vérification
+```
+
+| Élément | D''où il vient | Ce qu''il prouve |
+| --- | --- | --- |
+| Étude de cas | Projet du module 5 | Que vous savez obtenir des résultats et les mesurer |
+| Publications | Projet du module 3 | Que vous écrivez bien et créez des visuels propres |
+| Vidéos | Leçon 3.4 | Que vous maîtrisez le format le plus vu |
+| Stratégie | Projet du module 2 | Que vous réfléchissez avant de publier |
+| Outils | Projet du module 4 | Que vous savez programmer, répondre et mesurer |
+
+> [!cle] Des chiffres, même modestes
+> « +58 % de messages en un mois » convainc plus que « page améliorée ». Même pour un projet d''étude, présentez des chiffres, en précisant clairement « projet d''étude » quand ce n''est pas un vrai client. Dès que vous aurez de vrais clients, remplacez les exemples par leurs résultats, avec leur accord.
+
+## Votre phrase de présentation
+
+Une formule simple : **J''aide [qui] à [quel résultat] grâce à [quoi].**
+
+```schema comparaison
+titre: Se présenter
+ton: mauvais-bon
+colonnes: Centré sur vous | Centré sur le client
+« Community manager créatif et motivé » | « J''aide les boutiques de mode d''Antananarivo à recevoir plus de commandes sur Messenger »
+« Je fais Facebook, Instagram, TikTok, tout » | « J''anime les pages des restaurants de Toamasina, du plat du jour aux avis clients »
+« Disponible pour toutes missions » | « J''aide les hôtels de Nosy Be à remplir leurs chambres grâce à de belles images et des réponses rapides aux voyageurs »
+```
+
+## Votre propre page professionnelle
+
+C''est la première chose que le client regardera. Une page de community manager abandonnée depuis trois mois fait douter de tout le reste.
+
+```schema checklist
+titre: Votre page professionnelle est prête si…
+[ ] La photo de profil et la couverture sont nettes et cohérentes
+[ ] La présentation reprend votre phrase « J''aide… »
+[ ] Les informations de contact sont complètes (WhatsApp, e-mail)
+[ ] Vous publiez au moins une fois par semaine : conseils, avant / après, coulisses
+[ ] Vos publications sont soignées : zéro faute, visuels propres
+[ ] Votre portfolio est accessible en un clic (lien ou publication épinglée)
+```
+
+> [!astuce] Publier des conseils utiles
+> Publiez chaque semaine un conseil pratique pour les commerçants : « 3 erreurs qui font perdre des ventes sur Messenger », « Comment photographier vos produits avec un téléphone ». Les commerçants qui vous lisent découvrent votre savoir-faire… et pensent à vous quand ils ont besoin d''aide.
+
+## Un portfolio facile à envoyer
+
+1. **Un PDF léger** (moins de 5 Mo), de 6 à 10 pages, à envoyer par WhatsApp ou e-mail.
+2. **Une version en ligne** : une page Canva, un dossier Google Drive en lecture seule, ou un profil sur une plateforme de portfolio.
+3. **Les vidéos** en lien, pas dans le PDF, pour garder un fichier léger.
+4. **Votre contact** sur la dernière page, avec une proposition : « Un audit gratuit de 15 minutes de votre page ? »
+
+> [!madagascar] Un portfolio qui se charge partout
+> Vos futurs clients malgaches ouvriront souvent votre portfolio sur un téléphone, avec une connexion limitée. Un PDF de 30 Mo plein de photos haute définition ne s''ouvrira pas. Compressez les images, limitez le nombre de pages, et testez l''ouverture du fichier sur un téléphone d''entrée de gamme avant de l''envoyer.
+
+> [!exemple] Le portfolio de Tojo
+> Tojo, spécialisé dans les hôtels de Nosy Be, n''a pas encore de client. Il crée un portfolio de 8 pages : une étude de cas sur la page d''un lodge imaginaire (clairement indiquée comme projet d''étude), 6 publications avec de vraies photos de paysages qu''il a prises lui-même, 2 Reels, et un audit gratuit proposé en dernière page. Il l''envoie à 10 hôtels. Deux gérants acceptent l''audit gratuit, et l''un d''eux devient son premier client.
+
+> [!erreur] Le portfolio sans résultats
+> Le débutant envoie 20 visuels Canva, très beaux, sans aucune explication. Le client ne sait pas pour qui ils ont été faits, ni ce qu''ils ont rapporté. Il se demande si ce community manager sait faire autre chose que de jolies images. **Montrez le contexte, la stratégie et les résultats**, pas seulement les visuels.
+
+> [!retenir]
+> - Le portfolio : **étude de cas, publications, vidéos, stratégie, attestation**.
+> - **Des chiffres**, même modestes, avec « projet d''étude » quand c''est le cas.
+> - **« J''aide [qui] à [quel résultat] grâce à [quoi] »**.
+> - **Votre propre page** tenue chaque semaine, avec des conseils utiles.
+> - Un **PDF léger**, testé sur un téléphone d''entrée de gamme.
+
+## Exercice pratique : votre portfolio
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Écrivez 3 versions de votre phrase de présentation et choisissez la meilleure.
+> 2. Créez ou mettez à jour votre page professionnelle avec la liste de vérification.
+> 3. Assemblez votre portfolio en PDF de 6 à 10 pages avec les 5 éléments, et vérifiez qu''il pèse moins de 5 Mo.
+> 4. Rédigez et programmez 2 publications de conseils pour votre propre page.
+>
+> **À livrer** : votre phrase, le lien de votre page, votre portfolio en PDF et vos 2 publications.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 0, 0, 'Quel élément du portfolio prouve le mieux que vous obtenez des résultats ?', '["La liste de vos loisirs","Une étude de cas avec des chiffres avant et après","Une photo de votre ordinateur","20 visuels sans explication"]'::jsonb, 1, 'Le client achète des résultats. Le contexte, la stratégie et les chiffres montrent ce que vous savez faire pour lui.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 0, 1, 'Quelle phrase de présentation est la plus efficace ?', '["« Disponible pour toutes missions »","« J''aide les boutiques de mode d''Antananarivo à recevoir plus de commandes sur Messenger »","« Community manager créatif et motivé »","« Je fais tout sur tous les réseaux »"]'::jsonb, 1, 'La formule « J''aide [qui] à [résultat] grâce à [quoi] » permet au bon client de se reconnaître tout de suite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 0, 2, 'Pourquoi votre propre page doit-elle être active ?', '["Parce que Facebook l''exige","Ce n''est pas important","C''est la première chose que le client regarde pour juger votre sérieux","Pour avoir beaucoup d''abonnés à vendre"]'::jsonb, 2, 'Une page de community manager abandonnée fait douter de votre capacité à tenir celle d''un client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 0, 3, 'Que faire si les chiffres de votre étude de cas viennent d''un exercice ?', '["Les présenter comme un vrai client","Les multiplier par deux","Indiquer clairement « projet d''étude »","Les cacher"]'::jsonb, 2, 'L''honnêteté sur l''origine du projet protège votre réputation auprès des futurs clients.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 0, 4, 'Pourquoi un PDF léger de moins de 5 Mo ?', '["Pour cacher des pages","Il s''ouvre même sur un téléphone avec une connexion limitée","Parce que les gros fichiers sont interdits","Ce n''est pas important"]'::jsonb, 1, 'Beaucoup de clients ouvriront votre portfolio sur téléphone. Un fichier trop lourd ne sera jamais vu.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 5, 1, 'Trouver vos premiers clients', 10, 'Les premiers clients ne viennent presque jamais tout seuls. Bonne nouvelle : un community manager a un avantage pour prospecter. Il peut regarder la page d''un commerce et voir tout de suite ce qui ne va pas, puis proposer une amélioration précise. Cette leçon vous présente les canaux qui fonctionnent, le message de prospection, et la routine qui apporte régulièrement de nouveaux contacts.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir 2 ou 3 canaux de prospection adaptés à votre spécialité.
+> 2. Proposer un audit gratuit comme porte d''entrée.
+> 3. Rédiger un message de prospection personnalisé.
+> 4. Relancer sans insister.
+> 5. Suivre vos contacts dans un tableau de prospection.
+
+## Les canaux de prospection
+
+| Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- |
+| **Commerces de votre entourage** | Premiers clients, paiement en ariary | Montrez 3 améliorations précises de leur page |
+| **Groupes Facebook d''entrepreneurs malgaches** | Boutiques en ligne, restaurants | Publiez un conseil utile chaque semaine, avec un exemple avant / après |
+| **Messages directs aux pages** | Commerces de votre spécialité | Un message personnalisé avec une observation précise |
+| **LinkedIn** | PME, hôtels, ONG, agences | Un profil clair, des messages personnalisés |
+| **Plateformes de freelance** | Clients étrangers | Une offre précise, un profil complet, de la patience pour les premiers avis |
+| **Agences de communication** | Sous-traitance régulière | Proposer la modération, la programmation ou la réponse aux messages |
+
+Choisissez **2 ou 3 canaux**, adaptés à votre spécialité, et travaillez-les sérieusement pendant au moins un mois avant de juger s''ils fonctionnent. Pour les plateformes, vérifiez qu''elles acceptent les freelances basés à Madagascar et comment vous retirerez votre argent.
+
+## L''audit gratuit : la porte d''entrée
+
+Proposer un **audit gratuit de 15 minutes** est une façon simple de commencer une relation : vous montrez votre savoir-faire sans que le commerçant prenne de risque.
+
+```schema etapes
+titre: L''audit gratuit qui donne envie de continuer
+Observer la page : les 8 points de l''audit (leçon 5.1), en 20 minutes
+Choisir 3 constats précis, dont un point positif
+Présenter en 15 minutes, par appel ou par message vocal et visuel
+Proposer 3 actions concrètes, sans tout donner
+Conclure : « Voulez-vous que je m''en occupe pendant un mois ? »
+```
+
+> [!cle] Ne pas tout donner gratuitement
+> L''audit gratuit montre **ce qu''il faut faire**, pas **comment le faire en détail**. Vous présentez les constats et les actions ; la mise en œuvre (le calendrier, les contenus, les réponses) fait partie du travail payé. Un audit de 15 minutes, pas un mois de travail offert.
+
+## Le message de prospection
+
+Un bon message est **personnalisé, court, utile** : il montre que vous avez vraiment regardé la page.
+
+```schema etapes
+titre: Un message en 4 temps
+Personnaliser : une phrase qui prouve que vous connaissez la page
+Le problème : une observation précise, dite avec tact
+La preuve : un exemple de votre travail, un lien
+La proposition : l''audit gratuit de 15 minutes
+```
+
+> [!exemple] Message à une boutique, sur Messenger ou WhatsApp
+> « Bonjour Madame, je suis community manager à Antananarivo et je suis votre page depuis quelque temps : vos robes sont très belles. J''ai remarqué que plusieurs questions sur les prix restent sans réponse en commentaire, ce sont peut-être des ventes perdues. J''aide des boutiques de mode à répondre vite et à publier régulièrement ; voici un exemple de mon travail : [lien]. Je peux vous offrir un audit de 15 minutes de votre page, sans engagement. Cela vous intéresse ? »
+
+```schema comparaison
+titre: Message générique ou message personnalisé ?
+ton: mauvais-bon
+colonnes: Message générique | Message personnalisé
+« Bonjour, avez-vous besoin d''un community manager ? » | Une observation précise sur la page de la personne
+Le même texte copié à 50 pages | 5 messages soignés par jour
+La liste de toutes vos compétences | Un problème, une preuve, une proposition
+« Je suis disponible pour tout » | Un audit gratuit de 15 minutes
+```
+
+## Relancer et suivre
+
+Beaucoup de commerçants ne répondent pas au premier message : ils sont occupés. **Une relance**, polie, 5 à 7 jours plus tard, suffit. Après une relance sans réponse, arrêtez : vous pourrez recontacter la personne dans quelques mois.
+
+| Commerce | Canal | Date du message | Relance | Statut | Prochaine action |
+| --- | --- | --- | --- | --- | --- |
+| Boutique Soa Style | Messenger | 3 mai | 10 mai | Audit prévu | Audit le 14 mai à 15 h |
+| Snack Mofo Gasy | WhatsApp | 4 mai | — | Pas intéressé | Recontacter en septembre |
+| Lodge Fasika | E-mail | 5 mai | 12 mai | Sans réponse | Aucune |
+
+```schema entonnoir
+titre: Le parcours d''un prospect
+Messages personnalisés envoyés
+Réponses reçues
+Audits gratuits réalisés
+Mois d''essai acceptés
+Clients réguliers
+```
+
+À chaque étape, une partie des contacts s''arrête : c''est normal. La **régularité** fait la différence : 5 messages soignés par jour, chaque jour ouvré, valent mieux que 100 messages un dimanche puis plus rien pendant un mois.
+
+> [!madagascar] Le bouche-à-oreille entre commerçants
+> À Madagascar, les commerçants d''un même quartier ou d''un même marché se parlent beaucoup. Un premier client satisfait à Behoririka ou à Analakely peut vous en amener trois autres. Soignez particulièrement vos premiers clients, et demandez-leur, quand les résultats sont là : « Connaissez-vous d''autres commerçants qui auraient besoin d''aide pour leur page ? »
+
+> [!erreur] Critiquer la page en public
+> Pour montrer son expertise, un débutant commente sous la publication d''une boutique : « Votre visuel est illisible, et vous ne répondez jamais aux clients. » La gérante est humiliée devant ses abonnés, et bloque le débutant. **Les observations se font toujours en privé**, avec tact, et en commençant par un point positif.
+
+> [!retenir]
+> - **2 ou 3 canaux** adaptés à votre spécialité, travaillés au moins un mois.
+> - L''**audit gratuit de 15 minutes** comme porte d''entrée, sans tout donner.
+> - Un message en 4 temps : **personnalisation, problème, preuve, proposition**.
+> - **Une relance** après 5 à 7 jours, puis on s''arrête ; un **tableau de prospection**.
+> - Les observations **en privé**, jamais en commentaire.
+
+## Exercice pratique : votre première semaine de prospection
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Choisissez vos 2 ou 3 canaux et justifiez chaque choix en une phrase.
+> 2. Créez votre tableau de prospection et listez 20 pages de votre spécialité.
+> 3. Préparez l''audit gratuit de 2 de ces pages : 3 constats et 3 actions pour chacune.
+> 4. Rédigez 5 messages personnalisés en 4 temps et votre message de relance ; envoyez-en au moins 3 pour de vrai.
+>
+> **À livrer** : vos canaux, votre tableau, vos 2 audits et vos messages.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 1, 0, 'À quoi sert l''audit gratuit de 15 minutes ?', '["Montrer votre savoir-faire sans risque pour le commerçant, et commencer la relation","Critiquer la page en public","Faire tout le travail gratuitement","Obtenir le mot de passe du client"]'::jsonb, 0, 'L''audit montre ce qu''il faut faire. La mise en œuvre fait partie du travail payé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 1, 1, 'Dans quel ordre écrire un message de prospection ?', '["Bonjour, besoin de travail, merci","Personnalisation, problème, preuve, proposition","Prix, remise, urgence","Liste de compétences, diplômes, prix"]'::jsonb, 1, 'Le message montre que vous avez regardé la page, propose une solution à un problème précis et prouve votre savoir-faire.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 1, 2, 'Où faire vos observations sur la page d''un commerçant ?', '["Sur votre propre page, en le nommant","En privé, avec tact, en commençant par un point positif","En commentaire sous ses publications","Dans un groupe Facebook public"]'::jsonb, 1, 'Une critique publique humilie le commerçant et vous ferme la porte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 1, 3, 'Combien de relances envoyer à un commerçant qui ne répond pas ?', '["Une par jour jusqu''à la réponse","Aucune","Dix, sur tous les réseaux","Une, 5 à 7 jours plus tard"]'::jsonb, 3, 'Une relance obtient souvent une réponse ; insister davantage abîme votre image.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 1, 4, 'Qu''est-ce qui compte le plus en prospection ?', '["La régularité : quelques messages soignés chaque jour","Envoyer 100 messages un seul jour","Copier le même message partout","Attendre que les clients viennent"]'::jsonb, 0, 'À chaque étape, une partie des contacts s''arrête. Seule la régularité remplit le parcours jusqu''aux clients.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 5, 2, 'L''appel de vente et l''accord de collaboration', 10, 'Un commerçant a accepté votre audit gratuit, ou vous demande vos tarifs. Il faut maintenant transformer cet intérêt en mission : un appel bien mené, une proposition claire, puis un **accord de collaboration** écrit qui évite les malentendus. Cette leçon vous donne le déroulé de l''appel, les réponses aux objections fréquentes, et le contenu de l''accord.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Mener un appel de vente en 5 étapes.
+> 2. Répondre calmement aux objections les plus fréquentes.
+> 3. Proposer un mois d''essai payé.
+> 4. Rédiger un accord de collaboration en 9 points.
+> 5. Définir clairement ce qui n''est pas inclus.
+
+## L''appel de vente
+
+```schema etapes
+titre: Un appel de 20 minutes
+Écouter : ce qui va mal sur la page, ce que le commerçant a déjà essayé
+Reformuler : « Si je comprends bien, vous perdez des ventes parce que… »
+Proposer : une formule précise, avec le nombre de publications et les horaires de réponse
+Rassurer : accès sans mot de passe, validation avant publication, rapport chaque mois
+Conclure : « Je vous envoie la proposition aujourd''hui ? »
+```
+
+Pendant l''appel, **écoutez plus que vous ne parlez**. Le commerçant se convainc lui-même en expliquant ce qui ne va pas sur sa page. Reprenez ses mots dans la reformulation : s''il dit « je n''ai jamais le temps de répondre », dites « vous n''avez pas le temps de répondre », pas « vous avez un problème de gestion de la relation client ».
+
+## Répondre aux objections
+
+| Objection | Ce qu''elle cache souvent | Une réponse possible |
+| --- | --- | --- |
+| « C''est trop cher. » | Il ne voit pas encore ce qu''il gagne | « Combien de messages restent sans réponse chaque semaine ? Combien vaut une vente pour vous ? » |
+| « Mon neveu s''en occupe déjà. » | Une solution gratuite mais irrégulière | « Il peut continuer à vous aider ; je vous propose la régularité, les réponses du soir et un rapport chaque mois. » |
+| « J''ai peur de perdre le contrôle de ma page. » | La confiance | « Vous restez propriétaire. Vous m''ajoutez avec un accès limité, et vous validez chaque prix. » |
+| « Je veux des résultats garantis. » | Une mauvaise expérience passée | « Je ne garantis pas des ventes, mais je m''engage sur la régularité, la réactivité et un suivi chiffré. » |
+| « Je vais réfléchir. » | Un doute non dit | « Bien sûr. Qu''est-ce qui vous fait hésiter ? » puis proposer un mois d''essai |
+
+```schema comparaison
+titre: Face à une objection
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Baisser son prix tout de suite | Montrer ce que le commerçant gagne
+Se justifier longuement | Répondre en deux phrases, puis vérifier : « Cela vous rassure ? »
+Critiquer le neveu ou l''ancien prestataire | Valoriser ce qui a été fait, et proposer la suite
+Insister après un refus clair | Remercier et proposer de rester en contact
+```
+
+## Le mois d''essai payé
+
+Quand le commerçant hésite, proposez **un mois d''essai** à la formule la plus simple, **payé**, avec un rapport à la fin. Il s''engage peu, vous êtes payé pour votre travail, et le rapport de fin de mois (leçon 5.5) devient le meilleur argument pour continuer. Évitez le « mois gratuit pour voir » : il attire les clients qui ne paieront jamais.
+
+## L''accord de collaboration
+
+Un document d''une page, validé par écrit (signature, e-mail ou message WhatsApp), évite la plupart des conflits.
+
+```schema checklist
+titre: Les 9 points de l''accord
+[ ] Les noms et coordonnées des deux parties
+[ ] Les réseaux gérés et le nombre de publications par mois
+[ ] Les horaires de réponse aux messages, y compris le week-end
+[ ] Ce que le client fournit : photos, prix, stock, validation sous 48 h
+[ ] Ce qui n''est pas inclus : budget publicitaire, séances photo professionnelles, logo
+[ ] Les accès : avec votre propre compte, retirés à la fin de la mission
+[ ] Le prix mensuel, payé au début du mois, et le moyen de paiement
+[ ] La durée (par exemple un mois d''essai, puis 3 mois) et le préavis pour arrêter
+[ ] Le rapport : sa date d''envoi chaque mois
+```
+
+> [!cle] Ce qui n''est pas inclus
+> La partie « non inclus » est souvent la plus utile. Le **budget publicitaire** est payé par le client directement à Meta. Une **séance photo professionnelle**, un **logo** ou une **vidéo de présentation** élaborée sont d''autres prestations, avec leur propre prix. Si le client les demande en cours de mois, vous pourrez les proposer en supplément, sans malentendu.
+
+> [!exemple] L''accord avec le restaurant de Toamasina
+> Miora conclut avec un restaurant de Toamasina un accord d''une page : page Facebook et compte Instagram, 12 publications par mois, réponses aux messages de 9 h à 21 h du lundi au samedi, photos des plats fournies chaque lundi par le restaurant, validation sous 48 h. Non inclus : budget publicitaire et séance photo professionnelle. Prix mensuel payé le 1er par MVola, un mois d''essai puis 3 mois, préavis de 15 jours, rapport envoyé le 2 de chaque mois. Le gérant valide par WhatsApp le jour même.
+
+> [!madagascar] Un accord simple, mais écrit
+> Avec beaucoup de commerçants malgaches, les accords se font oralement, « entre nous ». C''est une marque de confiance, mais un accord oral s''oublie ou se comprend de deux façons. Proposez simplement : « Je vous envoie un petit récapitulatif sur WhatsApp, pour que nous soyons d''accord sur tout. » Un « OK » écrit de sa part suffit souvent.
+
+> [!erreur] Les demandes qui s''ajoutent
+> Sans accord écrit, le client demande chaque semaine un peu plus : une affiche pour la boutique, la gestion d''un deuxième compte, des réponses le dimanche soir, un montage vidéo. Le community manager accepte pour ne pas le fâcher, et finit par travailler le double pour le même prix. **L''accord fixe le cadre** : toute demande en plus devient une proposition en supplément.
+
+> [!retenir]
+> - Un appel en **5 étapes** : écouter, reformuler, proposer, rassurer, conclure.
+> - Une objection est une **question** : réponse calme, sans baisser son prix tout de suite.
+> - Un **mois d''essai payé**, jamais un mois gratuit.
+> - Un **accord écrit en 9 points**, validé par signature, e-mail ou WhatsApp.
+> - Une partie **« non inclus »** claire : budget publicitaire, séance photo, logo.
+
+## Exercice pratique : l''appel et l''accord
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Faites un appel de vente de 20 minutes avec un proche qui joue un commerçant (donnez-lui 3 objections à placer).
+> 2. Notez ses objections et vos réponses ; écrivez ce que vous amélioreriez.
+> 3. Rédigez votre accord de collaboration type en 9 points.
+> 4. Rédigez le récapitulatif WhatsApp de l''accord, en 6 lignes.
+>
+> **À livrer** : vos notes d''appel, votre accord type et votre récapitulatif.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 2, 0, 'Pendant l''appel de vente, qui doit parler le plus ?', '["Vous, pour présenter toutes vos compétences","Les deux exactement autant","Personne","Le commerçant : vous écoutez, puis vous reformulez"]'::jsonb, 3, 'En expliquant ce qui ne va pas sur sa page, le commerçant se convainc lui-même.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 2, 1, 'Le commerçant dit : « J''ai peur de perdre le contrôle de ma page. » Que répondre ?', '["Il reste propriétaire, vous ajoute avec un accès limité et valide chaque prix","Il n''a pas le choix","C''est normal de perdre le contrôle","Il doit vous donner son mot de passe"]'::jsonb, 0, 'La peur cache une question de confiance. Les accès limités et la validation rassurent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 2, 2, 'Pourquoi proposer un mois d''essai payé plutôt que gratuit ?', '["Parce que le gratuit est interdit","Pour gagner plus que d''habitude","Il vaut mieux toujours travailler gratuitement","Le client s''engage, vous êtes payé, et le rapport du mois devient votre argument"]'::jsonb, 3, 'Le mois gratuit attire souvent des clients qui ne paieront jamais.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 2, 3, 'Quel élément fait partie de « ce qui n''est pas inclus » dans l''accord ?', '["Le budget publicitaire","Le rapport mensuel","Les réponses aux messages","Les publications prévues"]'::jsonb, 0, 'Le budget est payé par le client à Meta. Logo et séance photo professionnelle sont aussi d''autres prestations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 2, 4, 'Comment valider un accord avec un commerçant qui préfère l''oral ?', '["Attendre un conflit","Lui faire signer chez un notaire","Envoyer un récapitulatif sur WhatsApp et obtenir son « OK » écrit","Ne rien écrire"]'::jsonb, 2, 'Un accord oral s''oublie ou se comprend de deux façons. Un récapitulatif écrit suffit souvent.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 5, 3, 'Fixer ses formules mensuelles', 9, 'Le grand avantage du community management, c''est qu''il se vend **au mois** : un client satisfait vous paie chaque mois, parfois pendant des années. Encore faut-il fixer un prix juste, qui couvre votre temps réel, vos frais et votre revenu. Cette leçon vous apprend à calculer votre prix horaire, à estimer le temps de chaque formule, et à construire trois forfaits clairs.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Estimer vos heures réellement facturables.
+> 2. Calculer votre prix horaire à partir de vos besoins et de vos frais.
+> 3. Estimer le temps nécessaire pour une page.
+> 4. Construire trois formules mensuelles.
+> 5. Fixer les règles qui protègent vos forfaits.
+
+## Les heures réellement facturables
+
+Un mois de travail compte environ 160 heures. Mais une partie sert à trouver des clients, à vous former, à gérer votre administration et votre propre page. Ces heures ne se facturent pas.
+
+```schema barres
+titre: Exemple : un mois de 160 heures pour un community manager à son compte
+unite: h
+Travail facturé aux clients : 80
+Prospection et audits gratuits : 30
+Votre propre page et votre portfolio : 15
+Formation et veille : 15
+Administration et rapports : 20
+```
+
+Dans cet exemple, **80 heures** sont facturables. C''est ce chiffre qui sert au calcul.
+
+## Votre prix horaire
+
+```schema etapes
+titre: Le calcul en 4 étapes
+Revenu visé : ce que vous voulez gagner chaque mois
+Frais du mois : connexion, forfaits de données, électricité, téléphone, abonnements, impôts
+Total à couvrir : revenu visé + frais
+Prix horaire : total à couvrir ÷ heures facturables
+```
+
+> [!exemple] Le calcul de Miora
+> Miora vise un revenu de 1 000 000 Ar par mois. Ses frais (connexion, forfaits de données, électricité, part de son téléphone et de son ordinateur, impôts) représentent environ 200 000 Ar. Total à couvrir : 1 200 000 Ar. Avec 80 heures facturables : 1 200 000 ÷ 80 = **15 000 Ar de l''heure**. Ce chiffre est un exemple : votre calcul dépend de votre situation.
+
+## Le temps nécessaire pour une page
+
+Reprenez la semaine type du module 1. Pour estimer une formule, comptez le temps de chaque tâche sur un mois.
+
+| Tâche | Formule Essentiel (8 publications) | Formule Standard (12 publications et stories) |
+| --- | --- | --- |
+| Planifier et valider | 1 h | 2 h |
+| Créer les contenus | 5 h | 9 h |
+| Programmer | 1 h | 1 h 30 |
+| Répondre aux messages et commentaires | 4 h | 7 h |
+| Animer, rapport mensuel | 1 h | 2 h 30 |
+| **Total par mois** | **12 h** | **22 h** |
+
+Le temps de réponse dépend énormément du client : une boutique qui reçoit 30 messages par jour demande bien plus qu''un cabinet. **Demandez combien de messages la page reçoit** avant de fixer le prix.
+
+## Trois formules mensuelles
+
+| Formule | Contenu | Temps estimé | Exemple à 15 000 Ar/h | Exemple à 10 €/h |
+| --- | --- | --- | --- | --- |
+| **Essentiel** | 8 publications, réponses aux messages en semaine | 12 h | 180 000 Ar | 120 € |
+| **Standard** | 12 publications, stories, réponses 6 jours sur 7, rapport mensuel | 22 h | 330 000 Ar | 220 € |
+| **Complet** | 16 publications dont 4 vidéos, 2 réseaux, un jeu-concours, rapport détaillé | 35 h | 525 000 Ar | 350 € |
+
+Ces prix sont des **exemples** pour montrer le calcul, pas des tarifs recommandés : adaptez-les à votre niveau, à votre spécialité et au marché. Pour les clients étrangers, fixez un prix dans **leur monnaie**, en vous basant sur les tarifs de community managers débutants francophones, et pensez aux frais de réception des paiements.
+
+```schema chiffres
+titre: Pourquoi trois formules ?
+Essentiel : une porte d''entrée pour les petits commerces
+Standard : la formule que la plupart des clients choisiront
+Complet : pour les clients très actifs, et pour donner un repère de prix
+```
+
+> [!madagascar] Les prix du marché local
+> Les petits commerces malgaches ont souvent des budgets serrés, et certains « community managers » proposent des prix très bas, sans régularité ni rapport. Ne cherchez pas à être le moins cher : montrez ce que vous apportez de plus (réponses le soir, rapport chiffré, contenus soignés). Une formule Essentiel simple permet aux petits budgets de commencer, puis de passer à la formule Standard quand les résultats arrivent.
+
+## Les règles de vos forfaits
+
+```schema checklist
+titre: Les règles à écrire dans l''accord
+[ ] Paiement au début du mois, avant le travail
+[ ] Nombre de publications fixe ; les publications non utilisées ne se reportent pas, sauf accord
+[ ] Délai de validation du client : 48 heures ; au-delà, la publication peut être décalée
+[ ] Demandes supplémentaires (affiche, vidéo élaborée, autre réseau) : en supplément, sur devis
+[ ] Budget publicitaire payé par le client à Meta, jamais compris dans le forfait
+[ ] Révision des prix : annoncée un mois à l''avance, par écrit
+```
+
+> [!erreur] Le prix « pour commencer »
+> Pour décrocher son premier client, le débutant propose 50 000 Ar par mois pour 12 publications et les réponses aux messages tous les soirs. Il y passe 25 heures par mois, soit 2 000 Ar de l''heure. Six mois plus tard, il n''ose pas annoncer une hausse importante, et n''a plus le temps de chercher d''autres clients. **Partez d''un prix calculé**, et proposez plutôt la formule Essentiel à un client qui a un petit budget.
+
+> [!retenir]
+> - Comptez vos **heures facturables**, pas toutes vos heures de travail.
+> - **Prix horaire = (revenu visé + frais) ÷ heures facturables.**
+> - Estimez le temps de chaque formule, surtout le **temps de réponse aux messages**.
+> - **Trois formules** : Essentiel, Standard, Complet ; des prix d''exemple à adapter.
+> - Des **règles écrites** : paiement au début du mois, validation sous 48 h, suppléments, budget publicitaire à part.
+
+## Exercice pratique : vos formules
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Faites votre répartition d''un mois de 160 heures, comme dans l''exemple.
+> 2. Calculez votre prix horaire avec **vos** chiffres : revenu visé et frais détaillés.
+> 3. Estimez le temps de chaque formule pour une page qui reçoit environ 10 messages par jour.
+> 4. Construisez vos 3 formules avec contenu, temps et prix en ariary, et en euros pour l''étranger.
+> 5. Rédigez les 6 règles de vos forfaits.
+>
+> **À livrer** : votre répartition, votre calcul, vos estimations, vos 3 formules et vos règles.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 3, 0, 'Revenu visé 1 000 000 Ar, frais 200 000 Ar, 80 heures facturables. Quel est le prix horaire ?', '["15 000 Ar","12 500 Ar","150 000 Ar","2 500 Ar"]'::jsonb, 0, '(1 000 000 + 200 000) ÷ 80 = 15 000 Ar de l''heure.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 3, 1, 'Pourquoi ne pas diviser par 160 heures ?', '["Il faut diviser par 160","Une partie du temps sert à prospecter, se former et gérer l''administration, et ne se facture pas","Parce que les clients refusent de payer plus","Parce qu''un mois compte 80 heures"]'::jsonb, 1, 'Seules les heures facturées rapportent. Diviser par 160 donnerait un prix trop bas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 3, 2, 'Quelle question poser avant de fixer le prix d''une formule ?', '["Quel téléphone a le client ?","Combien de messages la page reçoit-elle chaque jour ?","Quelle est la couleur préférée du client ?","Combien d''employés a le concurrent ?"]'::jsonb, 1, 'Le temps de réponse aux messages varie énormément d''une page à l''autre et change le temps de travail.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 3, 3, 'Quand se paie un forfait mensuel ?', '["À la fin de l''année","Au début du mois, avant le travail","Seulement si les résultats plaisent","Quand le client le souhaite"]'::jsonb, 1, 'Le paiement d''avance protège le community manager et fixe le cadre de la collaboration.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 3, 4, 'Pourquoi éviter un prix très bas « pour commencer » ?', '["Parce que c''est interdit","Il est difficile à augmenter ensuite et ne laisse plus de temps pour d''autres clients","Parce que les clients préfèrent payer cher","Il n''y a aucun risque"]'::jsonb, 1, 'Mieux vaut un prix calculé et une petite formule Essentiel qu''un prix au rabais impossible à corriger.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('mkt-0-f', 5, 4, 'Paiement, fidélisation et plan d''action', 10, 'Un community manager qui garde ses clients pendant des années construit un revenu stable sans passer ses journées à prospecter. Pour cela, il faut être payé correctement et à temps, rester utile mois après mois, et terminer proprement les missions qui s''arrêtent. Cette leçon termine la formation avec les paiements depuis Madagascar, la fidélisation, la fin de mission et votre plan d''action pour les 30 prochains jours.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Organiser la facturation mensuelle de vos forfaits.
+> 2. Choisir le bon moyen de paiement selon le client.
+> 3. Garder vos clients longtemps.
+> 4. Terminer une mission proprement.
+> 5. Construire votre plan d''action pour les 30 prochains jours.
+
+## La facturation mensuelle
+
+```schema etapes
+titre: Le cycle d''un forfait mensuel
+Le 1er du mois : facture du forfait, envoyée avec le rapport du mois précédent
+Avant le 5 : paiement reçu, vérifié sur votre propre compte
+Pendant le mois : le travail prévu, et les suppléments proposés sur devis
+Fin du mois : statistiques relevées, rapport préparé
+Le 1er suivant : rapport, nouvelle facture, propositions pour le mois
+```
+
+Votre facture indique : un **numéro** unique (F-2027-001, puis F-2027-002…), la **date**, vos coordonnées (avec votre NIF et votre STAT si vous en avez), celles du client, la **description** (« Formule Standard, juin 2027 : 12 publications, stories, réponses aux messages, rapport »), le **montant**, le **moyen de paiement** et l''**échéance**. Tenez aussi un **tableau de vos revenus** : date, client, facture, montant, moyen, référence de la transaction.
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement courants | Points de vigilance |
+| --- | --- | --- |
+| Client à Madagascar | Mobile Money (MVola, Orange Money, Airtel Money), virement bancaire | Vérifier la réception sur votre compte, jamais sur une capture d''écran |
+| Client trouvé sur une plateforme | Selon la plateforme : retrait vers Payoneer ou vers un compte bancaire | Commissions, frais de retrait, délai de disponibilité |
+| Client étranger en direct | Virement international, Payoneer, autres services selon les pays | Frais d''envoi et de réception, taux de change |
+
+> [!madagascar] PayPal et les services de paiement
+> Les possibilités de PayPal sont limitées pour les comptes basés à Madagascar : vérifiez la situation actuelle avant de le proposer à un client. Les services de paiement, leurs frais et les pays acceptés changent : **renseignez-vous sur le site officiel du service** et auprès de freelances malgaches qui l''utilisent, avant de l''écrire dans un accord.
+
+> [!erreur] Commencer le mois sans paiement
+> Un nouveau client demande de commencer « tout de suite, je paie à la fin du mois ». Le community manager publie, répond tous les soirs, prépare le rapport… puis le client ne répond plus. **Le forfait se paie au début du mois**, avant le travail. C''est écrit dans l''accord, et c''est la règle pour tous, même pour les clients sympathiques.
+
+## Garder ses clients longtemps
+
+```schema chiffres
+titre: Ce qui fait rester un client
+La régularité : publications et réponses sans interruption, rapport à date fixe
+Les idées : une proposition nouvelle chaque mois (format, concours, partenariat)
+L''anticipation : absences, coupures longues et fêtes prévues à l''avance
+Les résultats : des chiffres qui progressent, et des explications quand ils baissent
+```
+
+> [!exemple] De la formule Essentiel à la formule Complet
+> Tojo commence avec un lodge de Nosy Be en formule Essentiel : 8 publications par mois sur Facebook. Après trois mois, son rapport montre que les photos de couchers de soleil et les avis de voyageurs apportent beaucoup de messages de réservation. Il propose d''ouvrir un compte Instagram et de publier des Reels : le gérant passe en formule Complet. Un an plus tard, Tojo gère aussi la page de deux autres lodges, recommandés par le premier.
+
+Après 2 ou 3 mois réussis, demandez un **avis** que vous pourrez publier, et une **recommandation** : « Connaissez-vous d''autres commerçants qui auraient besoin d''aide pour leur page ? »
+
+## Terminer une mission proprement
+
+```schema checklist
+titre: La fin de mission
+[ ] Prévenir selon le préavis prévu dans l''accord
+[ ] Livrer le dernier rapport et les statistiques du mois
+[ ] Remettre au client les modèles Canva, le calendrier et les textes de réponses
+[ ] Vérifier que le client garde le contrôle total de sa page et de ses comptes
+[ ] Demander au client de retirer vos accès
+[ ] Remercier, et demander un avis si la collaboration s''est bien passée
+```
+
+Une fin propre protège votre réputation : beaucoup de clients reviennent quelques mois plus tard, ou vous recommandent, quand la séparation s''est bien passée.
+
+## Votre plan d''action pour les 30 prochains jours
+
+La formation se termine ; votre activité commence.
+
+```schema etapes
+titre: Les 30 premiers jours de votre activité
+Semaine 1 : finaliser votre page professionnelle, votre portfolio et vos 3 formules
+Semaine 1 : préparer vos modèles (accord, facture, tableau des revenus et de prospection)
+Semaines 2 à 4 : prospection 30 minutes par jour, 5 messages personnalisés, des audits gratuits
+Chaque semaine : 2 publications de conseils sur votre propre page
+Chaque vendredi : tableau de prospection, relances, ajustement des messages
+Fin du mois : bilan et ajustement de vos canaux, de votre spécialité ou de vos prix
+```
+
+> [!retenir]
+> - Une **facture au début du mois**, avec le rapport du mois précédent.
+> - **Mobile Money** pour les clients locaux ; **plateformes, virement ou Payoneer** pour l''étranger, en vérifiant les conditions.
+> - Chaque paiement **vérifié sur votre compte** ; jamais de travail avant le paiement du forfait.
+> - **Régularité, idées, anticipation, résultats** : ce qui fait rester un client.
+> - Une **fin de mission propre** : rapport, fichiers remis, accès retirés, remerciements.
+
+## Exercice pratique : vos outils de gestion
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez votre modèle de facture (numérotation F-2027-001) dans Google Docs ou un tableur.
+> 2. Créez votre tableau des revenus.
+> 3. Renseignez-vous sur deux moyens de recevoir un paiement de l''étranger depuis Madagascar : frais, délais, conditions, et notez vos sources.
+> 4. Rédigez votre liste de fin de mission.
+>
+> **À livrer** : votre modèle de facture, votre tableau des revenus, votre comparaison des moyens de paiement et votre liste.
+
+## Projet final : votre activité prête à démarrer
+
+> [!projet] Projet du module · 2 heures 30
+> Ce projet rassemble toute la formation. À la fin, vous êtes prêt à travailler avec de vrais clients.
+> 1. **Portfolio** : votre étude de cas (module 5), vos meilleures publications et vidéos, votre stratégie, avec le lien de votre attestation Vitako.
+> 2. **Page professionnelle** : votre page à jour, avec au moins 4 publications de conseils.
+> 3. **Offre** : vos 3 formules avec leurs prix et leurs règles.
+> 4. **Documents** : votre accord de collaboration type, votre modèle de facture et votre liste de fin de mission.
+> 5. **Prospection** : votre tableau avec 20 pages, 2 audits gratuits préparés et la preuve d''au moins **5 messages réellement envoyés**.
+> 6. **Bilan** : relisez votre plan de démarrage du module 1, écrivez en une page ce qui a changé, et votre plan des 30 prochains jours avec des dates précises.
+>
+> **À livrer** : un dossier complet avec tous ces éléments. Félicitations : vous avez terminé la formation. Il vous reste à passer l''examen final pour obtenir votre attestation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 4, 0, 'Comment vérifier un paiement par Mobile Money ?', '["Avec la capture envoyée par le client","En demandant à un ami","Ce n''est pas nécessaire","Dans votre propre application, jamais sur une capture d''écran"]'::jsonb, 3, 'Une capture peut être ancienne ou modifiée. Seule la réception sur votre compte compte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 4, 1, 'Qu''envoyer avec la facture du début du mois ?', '["Votre CV","Vos mots de passe","Rien","Le rapport du mois précédent"]'::jsonb, 3, 'Le rapport montre ce que le client a obtenu pour son argent, juste au moment où il paie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 4, 2, 'Que vérifier avant de proposer PayPal à un client étranger ?', '["Rien, PayPal fonctionne partout pareil","Les possibilités actuelles pour un compte basé à Madagascar, sur le site officiel","La couleur du logo","L''avis d''un abonné"]'::jsonb, 1, 'Les services de paiement et leurs conditions changent : on vérifie toujours avant de s''engager.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 4, 3, 'Qu''est-ce qui fait rester un client longtemps ?', '["L''absence de rapport","Les messages toutes les heures","Les prix toujours plus bas","La régularité, des idées nouvelles, l''anticipation et des résultats expliqués"]'::jsonb, 3, 'Un client garde un community manager fiable, qui propose et qui montre ce que la page rapporte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('mkt-0-f', 5, 4, 4, 'Que faire à la fin d''une mission ?', '["Remettre les fichiers, vérifier que le client contrôle ses comptes, faire retirer vos accès","Garder les accès au cas où","Supprimer les modèles du client","Disparaître sans prévenir"]'::jsonb, 0, 'Une fin propre protège le client et votre réputation ; beaucoup de clients reviennent ou recommandent.');
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel est le rôle principal d''un community manager ?', '["Gérer la comptabilité de l''entreprise","Créer le logo de la marque","Publier le plus de photos possible","Transformer des abonnés en clients fidèles"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quels sont les 3 objectifs d''une page, dans l''ordre ?', '["Divertir, informer, décorer","Faire connaître, créer la confiance, faire vendre","Publier, supprimer, recommencer","Vendre, vendre, vendre"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Laquelle de ces tâches fait partie du métier de community manager ?', '["Livrer les commandes","Tenir la caisse de la boutique","Fabriquer les produits","Répondre aux messages et aux commentaires de la page"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel réseau est le cœur du métier pour la plupart des commerces à Madagascar ?', '["Snapchat","Facebook, avec Messenger","Pinterest","LinkedIn"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi utiliser une page plutôt qu''un profil personnel pour vendre ?', '["La page donne des statistiques et des accès propres à chaque personne","Le profil a plus d''abonnés","Il n''y a aucune différence","La page est payante"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Combien de réseaux ouvrir pour un petit client qui débute ?', '["Tous","Au moins 5","1 ou 2, bien tenus","Aucun"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Un client veut une garantie de 10 000 abonnés en un mois. Que faire ?', '["Refuser la garantie et proposer une méthode avec un suivi chiffré","Promettre plus","Ne pas répondre","Acheter des abonnés"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Une publication programmée part-elle pendant une coupure d''électricité chez vous ?', '["Seulement le week-end","Seulement si le téléphone est chargé","Non, l''ordinateur doit rester allumé","Oui, elle est enregistrée sur les serveurs du réseau"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Une publication est prévue à 18 h pour des abonnés à Paris, en hiver. Quelle heure est-il à Antananarivo ?', '["19 h","20 h","16 h","17 h"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle musique utiliser dans une vidéo pour un compte professionnel ?', '["Une musique téléchargée sur YouTube","Une musique de la bibliothèque autorisée pour les comptes professionnels","N''importe quelle chanson populaire","La chanson d''un artiste sans lui demander"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Qu''est-ce qu''une fiche client type ?', '["La description réaliste d''un client typique, avec un prénom","La facture du client","Le fichier des commandes","La liste de tous les abonnés"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel objectif est mesurable ?', '["Avoir plus de visibilité","Être plus professionnel","Faire mieux","Passer de 40 à 55 messages reçus dans le mois"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi ne pas promettre un nombre de ventes ?', '["Le community manager ne contrôle ni les prix, ni le stock, ni la livraison","Les ventes ne comptent pas","C''est interdit par la loi","Pour travailler moins"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que fixe la ligne éditoriale ?', '["Le prix des produits","Le nombre d''abonnés","Le salaire du community manager","L''objectif, la cible, les thèmes, le ton, la langue et les interdits de la page"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Dans quelle langue répondre à un client qui écrit en malgache ?', '["Toujours en anglais","En malgache","Toujours en français","Ne pas répondre"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quels sont les 4 types de publications ?', '["Informer, divertir, prouver, vendre","Facebook, Instagram, TikTok, LinkedIn","Photo, vidéo, texte, story","Lundi, mercredi, vendredi, dimanche"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'La photo d''une cliente satisfaite avec son avis est une publication de quel type ?', '["Vendre","Prouver","Informer","Divertir"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle est la meilleure source d''idées de publications ?', '["Des citations au hasard","Les questions que les clients posent souvent","Les hashtags les plus longs","Les publications d''une autre page copiées"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel rythme est le meilleur pour une petite page ?', '["5 publications un jour, puis rien pendant 2 semaines","Dix publications par jour","3 publications par semaine, chaque semaine","Une publication par mois"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que faut-il pour publier un prix ou une promotion ?', '["Une validation écrite du client","L''avis d''un abonné","Rien","Un accord oral suffit"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelles sont les 4 parties d''une bonne publication ?', '["Bonjour, texte, emojis, merci","Accroche, corps, appel à l''action, infos pratiques","Prix, prix, prix, adresse","Titre, image, hashtags, signature"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi l''accroche est-elle si importante ?', '["Seules les premières lignes s''affichent avant « Voir plus »","Elle est en gras automatiquement","Elle ne l''est pas","Les hashtags vont dedans"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Combien de hashtags utiliser sur une publication Instagram ?', '["Aucun, jamais","Le maximum possible","Exactement 30","3 à 5, précis et liés au contenu"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle taille utiliser pour une story ou un Reel ?', '["1080 × 1080 pixels","1640 × 624 pixels","1080 × 1920 pixels","500 × 500 pixels"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Combien de messages un visuel doit-il faire passer ?', '["Autant que possible","Aucun","Au moins cinq","Un seul"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle lumière choisir pour photographier un produit ?', '["Le soleil direct de midi","L''ampoule jaune du soir","Le flash du téléphone","La lumière d''une fenêtre, de côté, le matin ou en fin d''après-midi"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Jusqu''où retoucher une photo de produit ?', '["Jamais, même pas recadrer","Jusqu''à changer la couleur","Légèrement, pour qu''elle reste fidèle au produit réel","Jusqu''à cacher tous les défauts"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que montrer dans les 3 premières secondes d''une vidéo courte ?', '["Le moment le plus fort : le résultat, une question, un mouvement","Une longue présentation","Un écran noir","Le logo pendant 10 secondes"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi ajouter des sous-titres à une vidéo ?', '["Pour remplacer les images","Ce n''est jamais utile","Beaucoup de personnes regardent sans le son","Parce que la musique est interdite"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Une cliente envoie en privé une photo avec sa robe. Peut-on la publier ?', '["Oui, tout de suite","Oui, si la photo est belle","Seulement avec son accord écrit","Oui, en cachant son visage sans lui dire"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Comment accéder à la page Facebook d''un client ?', '["Avec le code reçu par SMS","En créant un faux compte","Avec votre propre compte, ajouté par le client avec un accès limité","Avec son mot de passe personnel"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Qui doit garder le contrôle total de la page ?', '["Un ancien employé","Le community manager seul","Le client","Personne"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Vous recevez « Votre page sera supprimée, faites appel ici ». Que faire ?', '["Entrer son mot de passe","Ne pas cliquer, et vérifier dans les paramètres officiels","Cliquer vite","Transférer à tous ses clients"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que permet Meta Business Suite ?', '["Programmer, répondre aux messages et voir les statistiques de Facebook et d''Instagram","Monter des films","Créer des logos","Gérer la comptabilité"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que vérifier en programmant une publication pour un client à l''étranger ?', '["La couleur du logo","Le fuseau horaire utilisé par l''outil","La météo","Le nombre d''abonnés"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'À quoi sert le message d''absence ?', '["Supprimer les messages","Remplacer toutes les réponses","Répondre automatiquement en dehors des horaires, en indiquant quand la réponse arrivera","Bloquer les clients"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle est la première étape pour répondre à une critique ?', '["Ignorer","Remercier pour le retour","Dire que le client a tort","Supprimer le commentaire"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que faire d''un faux compte qui demande des frais aux gagnants d''un concours ?', '["Le laisser","Supprimer le commentaire, signaler le compte et prévenir les abonnés","Supprimer la page","Répondre que c''est vrai"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que mesure la couverture ?', '["Le nombre de commentaires","Le nombre de publications","Le nombre de ventes","Le nombre de personnes différentes qui ont vu le contenu"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Une publication touche 2 000 personnes et reçoit 80 interactions. Quel est le taux d''interaction ?', '["0,4 %","40 %","4 %","8 %"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi ne pas se fier seulement au nombre d''abonnés ?', '["Des abonnés qui ne réagissent pas et n''écrivent pas n''apportent rien au client","Il est secret","Il ne change jamais","C''est le seul chiffre important"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Qui paie le budget publicitaire d''un boost ?', '["Le client, directement à Meta","Le community manager, sur son forfait","Vitako","Les abonnés"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle publication booster en priorité ?', '["La moins réussie","Une photo floue","Une publication qui fonctionne déjà, avec un bon taux d''interaction","N''importe laquelle"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi faire un audit de la page avant de commencer ?', '["Pour pouvoir prouver les résultats à la fin du mois","Ce n''est pas utile","Pour critiquer la gérante","Parce que Facebook l''exige"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi organiser une séance photo en début de mois ?', '["Ce n''est pas utile","Pour remplacer le calendrier","Pour publier toutes les photos le même jour","Avoir la matière de tout le mois sans demander une photo chaque jour"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Qu''est-ce que la production en lot ?', '["Publier tout en une fois","Copier une autre page","Acheter des contenus","Créer les contenus de plusieurs semaines en une ou deux journées"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel lot choisir pour le concours d''une boutique de vêtements ?', '["Un voyage","Un téléphone","Une somme d''argent","Un bon d''achat dans la boutique"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle condition de participation éviter dans un concours sur Facebook ?', '["Répondre à une question","Obliger à partager sur son profil et à identifier des amis","Voter pour une tenue","Commenter avec sa robe préférée"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Une cliente demande à payer en deux fois. Que fait le community manager ?', '["Il ignore la demande","Il refuse seul","Il transmet la demande à la gérante, avec une proposition","Il accepte seul"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Que faire d''un résultat décevant dans le rapport mensuel ?', '["L''expliquer et proposer une solution","Changer les chiffres","Le cacher","Accuser la cliente"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi envoyer le rapport à date fixe chaque mois ?', '["Ce n''est pas utile","Parce que Facebook l''exige","Il rend votre travail visible, même quand les chiffres sont moyens","Pour remplir la boîte du client"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quelle phrase présente bien un community manager ?', '["« Le moins cher de Madagascar »","« Je fais tout sur tous les réseaux »","« J''aide les boutiques de mode d''Antananarivo à recevoir plus de commandes sur Messenger »","« Disponible pour toutes missions »"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'À quoi sert l''audit gratuit de 15 minutes ?', '["Obtenir le mot de passe du client","Faire tout le travail gratuitement","Montrer votre savoir-faire sans risque pour le commerçant","Critiquer la page en public"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Où faire vos observations sur la page d''un commerçant ?', '["Dans un groupe public","En privé, avec tact","En commentaire sous ses publications","Sur votre page, en le nommant"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Combien de relances envoyer à un prospect qui ne répond pas ?', '["Dix","Aucune","Une par jour","Une, 5 à 7 jours plus tard"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Pourquoi proposer un mois d''essai payé plutôt que gratuit ?', '["Il faut toujours travailler gratuitement","Le client s''engage et vous êtes payé pour votre travail","Pour gagner plus","Le gratuit est interdit"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quel élément n''est pas inclus dans un forfait de community manager ?', '["Le budget publicitaire","Les réponses aux messages","Le rapport mensuel","Les publications prévues"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Revenu visé 1 000 000 Ar, frais 200 000 Ar, 80 heures facturables : quel est le prix horaire ?', '["12 500 Ar","150 000 Ar","2 500 Ar","15 000 Ar"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quand se paie un forfait mensuel ?', '["Au début du mois, avant le travail","Quand le client le souhaite","À la fin de l''année","Seulement si les résultats plaisent"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Comment vérifier un paiement par Mobile Money ?', '["Dans votre propre application, jamais sur une capture d''écran","En demandant à un ami","Ce n''est pas nécessaire","Avec la capture du client"]'::jsonb, 0, 2);
+update public.courses set v2_live = false where id = 'mkt-0-f';
 commit;

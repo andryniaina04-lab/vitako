@@ -1,0 +1,61 @@
+{
+  "title": "Créer des contenus qui fonctionnent",
+  "summary": "Écrire une publication, créer des visuels avec Canva, photographier des produits au téléphone, monter des vidéos courtes avec CapCut, puis animer avec les stories, les directs et les contenus des clients.",
+  "lessons": [
+    {
+      "title": "Écrire une publication qui donne envie",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Quelles sont les 4 parties d'une bonne publication ?", "options": ["Accroche, corps, appel à l'action, infos pratiques", "Titre, image, hashtags, signature", "Bonjour, texte, emojis, merci", "Prix, prix, prix, adresse"], "correct": 0, "why": "L'accroche arrête le regard, le corps informe, l'appel à l'action dit quoi faire, et les infos pratiques évitent les questions." },
+        { "q": "Pourquoi l'accroche est-elle si importante sur Facebook et Instagram ?", "options": ["Seules les premières lignes s'affichent avant « Voir plus »", "Parce qu'elle est en gras automatiquement", "Parce que les hashtags vont dedans", "Elle n'est pas importante"], "correct": 0, "why": "C'est souvent la seule ligne lue par tous. Si elle n'accroche pas, la suite n'est jamais lue." },
+        { "q": "Quel appel à l'action est le meilleur ?", "options": ["« Envoyez BASKET en message pour réserver votre paire »", "« N'hésitez pas »", "« Merci de votre attention »", "« À bientôt peut-être »"], "correct": 0, "why": "Un bon appel à l'action est unique, simple et lié à l'objectif : ici, envoyer un message pour réserver." },
+        { "q": "Combien de hashtags utiliser sur une publication Instagram ?", "options": ["3 à 5, précis et liés au contenu", "Le maximum possible, même sans rapport", "Aucun, jamais", "Exactement 30"], "correct": 0, "why": "Quelques hashtags précis aident un peu. Une longue liste sans rapport donne une impression amateur." },
+        { "q": "Que se passe-t-il souvent quand une publication de vente n'affiche pas le prix ?", "options": ["Les commentaires se remplissent de « Prix ? » et des clients passent à autre chose", "Les ventes augmentent toujours", "Facebook ajoute le prix automatiquement", "Rien du tout"], "correct": 0, "why": "Le prix est souvent la première question des acheteurs. S'il manque, une partie d'entre eux abandonne." }
+      ]
+    },
+    {
+      "title": "Créer des visuels avec Canva",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Quelle taille utiliser pour une story ou une vidéo TikTok ?", "options": ["1080 × 1920 pixels", "1080 × 1080 pixels", "1640 × 624 pixels", "500 × 500 pixels"], "correct": 0, "why": "Les stories, Reels et TikTok sont verticaux, au format 9:16, soit 1080 × 1920 pixels." },
+        { "q": "Combien de messages un visuel doit-il faire passer ?", "options": ["Un seul", "Autant que possible", "Au moins cinq", "Aucun"], "correct": 0, "why": "Un visuel se regarde en une seconde sur un petit écran. Les détails vont dans le texte de la publication." },
+        { "q": "À quoi sert le test du bras tendu ?", "options": ["Vérifier que le message se lit en une seconde sur un téléphone", "Mesurer la taille du visuel", "Prendre une photo de soi", "Choisir les couleurs"], "correct": 0, "why": "Si on ne lit pas le message principal à bout de bras, il est trop petit, trop long ou pas assez contrasté." },
+        { "q": "Que doit contenir la première image d'un carrousel ?", "options": ["Une question ou une promesse qui donne envie de faire défiler", "Le logo seul", "La liste complète des prix", "Une image vide"], "correct": 0, "why": "Comme l'accroche d'un texte, la première image décide si l'abonné fait défiler la suite." },
+        { "q": "Pourquoi créer 4 à 6 modèles aux couleurs de la marque ?", "options": ["Pour gagner du temps et garder une page cohérente", "Pour publier moins souvent", "Parce que Canva l'exige", "Pour copier une autre marque"], "correct": 0, "why": "Dupliquer des modèles prêts permet de produire vite, avec toujours la même identité visuelle." }
+      ]
+    },
+    {
+      "title": "Photographier des produits au téléphone",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "Quelle lumière choisir pour photographier un produit ?", "options": ["La lumière d'une fenêtre, de côté, le matin ou en fin d'après-midi", "Le flash du téléphone", "L'ampoule jaune du soir", "Le soleil direct de midi"], "correct": 0, "why": "Une lumière naturelle douce donne des couleurs fidèles et des ombres légères. La lumière compte plus que le téléphone." },
+        { "q": "Comment montrer la taille réelle d'un objet artisanal ?", "options": ["Le photographier dans une main ou à côté d'un objet connu", "Le photographier seul sur un fond noir", "Agrandir la photo", "Écrire « grand » dans le texte"], "correct": 0, "why": "Sans repère, impossible de deviner la taille. Une main ou un objet connu évite les déceptions." },
+        { "q": "Jusqu'où retoucher une photo de produit ?", "options": ["Légèrement, pour qu'elle reste fidèle au produit réel", "Jusqu'à cacher tous les défauts", "Jusqu'à changer la couleur du produit", "Il ne faut jamais recadrer"], "correct": 0, "why": "Une photo trompeuse provoque des retours et des commentaires négatifs. On recadre, on éclaircit, on corrige les couleurs." },
+        { "q": "Pourquoi organiser une séance photo par mois ?", "options": ["Avoir la matière de tout le calendrier du mois", "Pour remplacer toutes les vidéos", "Parce que les réseaux l'exigent", "Pour éviter de publier"], "correct": 0, "why": "30 à 40 photos prises en une séance permettent de préparer le mois sans demander une photo chaque jour au client." },
+        { "q": "Peut-on publier les photos du fournisseur étranger à la place des vrais produits ?", "options": ["Non : les clientes risquent de recevoir un produit différent de la photo", "Oui, elles sont plus belles", "Oui, si on ajoute le logo", "Oui, toujours"], "correct": 0, "why": "Les vraies photos des vrais produits évitent les déceptions et les réclamations publiques." }
+      ]
+    },
+    {
+      "title": "Les vidéos courtes : Reels et TikTok",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "Que montrer dans les 3 premières secondes d'une vidéo courte ?", "options": ["Le moment le plus fort : le résultat, une question, un mouvement", "Une longue présentation de la marque", "Le logo pendant 10 secondes", "Un écran noir"], "correct": 0, "why": "La plupart des personnes décident en moins de 3 secondes si elles regardent la suite." },
+        { "q": "Comment tenir le téléphone pour filmer un Reel ou un TikTok ?", "options": ["À la verticale", "À l'horizontale", "En diagonale", "Peu importe"], "correct": 0, "why": "Une vidéo horizontale apparaît toute petite avec des bandes noires dans un format vertical." },
+        { "q": "Pourquoi ajouter des sous-titres ?", "options": ["Beaucoup de personnes regardent sans le son", "Pour remplacer les images", "Parce que la musique est interdite", "Ce n'est jamais utile"], "correct": 0, "why": "Les sous-titres permettent de comprendre sans le son. On les relit toujours, surtout pour les noms et les prix." },
+        { "q": "Où placer les textes importants dans une vidéo verticale ?", "options": ["Dans la partie centrale de l'image", "Tout en bas", "Collés au bord droit", "Sous les boutons"], "correct": 0, "why": "Le nom du compte, la description et les boutons s'affichent en bas et à droite, par-dessus la vidéo." },
+        { "q": "Quelle idée de vidéo est la plus facile pour une petite marque ?", "options": ["Les coulisses : la préparation d'un plat, l'emballage d'une commande", "Un film publicitaire avec des acteurs", "Une vidéo de 20 minutes", "Une vidéo copiée d'une autre marque"], "correct": 0, "why": "Les coulisses demandent peu de moyens et montrent de vraies personnes, ce qui crée de la confiance." }
+      ]
+    },
+    {
+      "title": "Stories, directs et contenus des clients",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Combien de temps une story reste-t-elle visible ?", "options": ["24 heures, sauf si on la garde à la une", "Une semaine", "Un mois", "Pour toujours"], "correct": 0, "why": "La story disparaît après 24 heures, ce qui en fait un format de contact quotidien et d'urgence." },
+        { "q": "À quoi servent les stories à la une ?", "options": ["Garder les informations utiles en haut du profil : livraison, tailles, avis", "Supprimer les anciennes stories", "Publier en direct", "Payer une publicité"], "correct": 0, "why": "Une nouvelle abonnée trouve tout de suite les réponses à ses questions, sans écrire." },
+        { "q": "Que faire avant un direct de vente ?", "options": ["L'annoncer, préparer la liste et les prix validés, tester la connexion", "Le lancer à l'improviste", "Couper le son", "Ne rien préparer"], "correct": 0, "why": "Un direct improvisé attire peu de monde et donne une mauvaise image. Il se prépare comme un petit événement." },
+        { "q": "Une cliente envoie en message privé une photo avec sa robe. Peut-on la publier ?", "options": ["Seulement après lui avoir demandé son accord écrit", "Oui, tout de suite", "Oui, si on cache son visage sans lui dire", "Oui, si la photo est belle"], "correct": 0, "why": "Un message privé n'est pas une autorisation de publier. On demande l'accord et on garde la réponse écrite." },
+        { "q": "Pourquoi les contenus des clients convainquent-ils autant ?", "options": ["Ils montrent de vrais clients satisfaits, pas seulement la marque qui parle d'elle", "Ils sont toujours plus beaux", "Ils coûtent cher", "Les réseaux les mettent en premier par obligation"], "correct": 0, "why": "Une vraie cliente heureuse est une preuve. Les futures clientes s'y reconnaissent." }
+      ]
+    }
+  ]
+}
