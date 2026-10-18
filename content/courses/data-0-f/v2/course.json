@@ -1,5 +1,5 @@
 {
-  "live": false,
+  "live": true,
   "progress_map": [0, 1, 2, 4, 5],
   "description": "L'annotateur de données prépare les exemples dont les intelligences artificielles ont besoin pour apprendre : il encadre des objets sur des images, classe des textes, transcrit des enregistrements et évalue des réponses d'IA. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers projets, avec CVAT et Label Studio, depuis Madagascar et en français comme en malagasy. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [

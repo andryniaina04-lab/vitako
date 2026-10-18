@@ -832,89 +832,56 @@ export const PUBLISHED = {
   ]
  },
  "data-0-f": {
-  "hours": 14,
-  "description": "L'annotateur de données prépare les exemples qui servent à entraîner les intelligences artificielles : il entoure des objets sur des images, classe des textes, transcrit des sons. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler à distance pour des plateformes et des entreprises d'annotation depuis Madagascar, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "hours": 49,
+  "description": "L'annotateur de données prépare les exemples dont les intelligences artificielles ont besoin pour apprendre : il encadre des objets sur des images, classe des textes, transcrit des enregistrements et évalue des réponses d'IA. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers projets, avec CVAT et Label Studio, depuis Madagascar et en français comme en malagasy. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [
-   "Expliquer pourquoi une IA a besoin de données annotées",
-   "Appliquer des consignes d'annotation et traiter les cas limites",
-   "Annoter des images avec CVAT et des textes avec Label Studio",
-   "Mener un projet complet avec calibration et contrôle qualité",
-   "Reconnaître les arnaques et calculer son revenu réel",
-   "Trouver des projets sérieux et se faire payer depuis Madagascar"
+   "Expliquer comment une IA apprend, connaître les 6 types de tâches et les règles de conduite du métier",
+   "Lire des consignes, dessiner des cadres et des polygones, traiter les cas limites et mesurer sa qualité",
+   "Annoter des images et des vidéos avec CVAT, des textes avec Label Studio, et exporter aux formats courants",
+   "Classer des textes, transcrire des enregistrements, évaluer et comparer des réponses d'IA, anonymiser des données",
+   "Mener un projet complet, de la calibration au contrôle qualité et au rapport",
+   "Construire son portfolio, éviter les arnaques, réussir les tests et calculer son revenu réel"
   ],
+  "breakdown": {
+   "lecture": 263,
+   "qcm": 150,
+   "exercices": 1620,
+   "projets": 870,
+   "examen": 60
+  },
   "modules": [
    {
-    "title": "Le métier d'annotateur de données IA depuis Madagascar",
-    "minutes": 7
+    "title": "Le métier d'annotateur de données IA",
+    "minutes": 44,
+    "lessons": 5
    },
    {
-    "title": "Les bases : consignes, cadres, texte et qualité",
-    "minutes": 8
+    "title": "Les bases : consignes, cadres et qualité",
+    "minutes": 46,
+    "lessons": 5
    },
    {
-    "title": "Les outils : CVAT, Label Studio, et pourquoi rien n'est à acheter",
-    "minutes": 8
+    "title": "Les outils : CVAT et Label Studio",
+    "minutes": 43,
+    "lessons": 5
    },
    {
-    "title": "Premier projet : un projet d'annotation complet",
-    "minutes": 8
+    "title": "Texte, audio et évaluation des réponses d'IA",
+    "minutes": 43,
+    "lessons": 5
+   },
+   {
+    "title": "Premier projet : « Marché propre »",
+    "minutes": 44,
+    "lessons": 5
    },
    {
     "title": "Trouver des projets et se faire payer",
-    "minutes": 8
+    "minutes": 43,
+    "lessons": 5
    }
   ],
-  "preview": {
-   "hours": 49,
-   "description": "L'annotateur de données prépare les exemples dont les intelligences artificielles ont besoin pour apprendre : il encadre des objets sur des images, classe des textes, transcrit des enregistrements et évalue des réponses d'IA. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers projets, avec CVAT et Label Studio, depuis Madagascar et en français comme en malagasy. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
-   "objectives": [
-    "Expliquer comment une IA apprend, connaître les 6 types de tâches et les règles de conduite du métier",
-    "Lire des consignes, dessiner des cadres et des polygones, traiter les cas limites et mesurer sa qualité",
-    "Annoter des images et des vidéos avec CVAT, des textes avec Label Studio, et exporter aux formats courants",
-    "Classer des textes, transcrire des enregistrements, évaluer et comparer des réponses d'IA, anonymiser des données",
-    "Mener un projet complet, de la calibration au contrôle qualité et au rapport",
-    "Construire son portfolio, éviter les arnaques, réussir les tests et calculer son revenu réel"
-   ],
-   "breakdown": {
-    "lecture": 263,
-    "qcm": 150,
-    "exercices": 1620,
-    "projets": 870,
-    "examen": 60
-   },
-   "modules": [
-    {
-     "title": "Le métier d'annotateur de données IA",
-     "minutes": 44,
-     "lessons": 5
-    },
-    {
-     "title": "Les bases : consignes, cadres et qualité",
-     "minutes": 46,
-     "lessons": 5
-    },
-    {
-     "title": "Les outils : CVAT et Label Studio",
-     "minutes": 43,
-     "lessons": 5
-    },
-    {
-     "title": "Texte, audio et évaluation des réponses d'IA",
-     "minutes": 43,
-     "lessons": 5
-    },
-    {
-     "title": "Premier projet : « Marché propre »",
-     "minutes": 44,
-     "lessons": 5
-    },
-    {
-     "title": "Trouver des projets et se faire payer",
-     "minutes": 43,
-     "lessons": 5
-    }
-   ]
-  }
+  "format": 2
  },
  "data-1-a": {
   "hours": 15,
