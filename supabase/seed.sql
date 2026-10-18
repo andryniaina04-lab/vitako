@@ -69064,4 +69064,3629 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Un « client » demande de rembourser un trop-perçu après un paiement suspect. Que faire ?', '["Rembourser immédiatement","Donner ses codes Mobile Money","Vérifier la réception réelle sur son compte et ne rien rembourser","Commencer le travail tout de suite"]'::jsonb, 2, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment vérifier qu''un paiement Mobile Money est arrivé ?', '["Sur la capture envoyée par le client","En attendant une semaine","En demandant au client","Dans l''application ou le relevé de son propre compte"]'::jsonb, 3, 2);
 select public.course_go_live('design-0-f', array[0, 1, 2, 4, 5]::int[]);
+
+-- gestion-0-f (version 2, aperçu administrateur)
+delete from public.lesson_parts where course_id = 'gestion-0-f';
+delete from public.modules2 where course_id = 'gestion-0-f' and module_index >= 6;
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 0, 'Le métier d''assistant virtuel', 'Ce que fait un assistant virtuel, les tâches et les missions que vous recevrez, vos clients, votre organisation depuis Madagascar et les règles de confiance du métier.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 0, 0, 'Ce que fait vraiment un assistant virtuel', 12, 'Un assistant virtuel fait à distance ce que fait une assistante de direction dans un bureau : il gère les e-mails, l''agenda, les documents et toutes les petites tâches qui font perdre du temps à son client. C''est l''un des métiers du télétravail les plus accessibles depuis Madagascar, car il demande surtout de l''organisation, un bon français écrit et de la fiabilité. Cette première leçon vous montre le métier tel qu''il est vraiment, au quotidien.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer en une phrase ce que fait un assistant virtuel.
+> 2. Distinguer ce que l''assistant prépare de ce que le client décide.
+> 3. Décrire une journée de travail type.
+> 4. Connaître les trois façons d''exercer le métier.
+> 5. Repérer les qualités qui font un bon assistant virtuel.
+
+## Le métier en une phrase
+
+Un assistant virtuel **fait gagner du temps à son client** en prenant en charge ses tâches administratives et d''organisation, à distance.
+
+Le client est souvent un entrepreneur, un coach, un médecin ou le dirigeant d''une petite entreprise. Il est débordé : il passe ses soirées à répondre aux e-mails au lieu de travailler sur son vrai métier. Votre rôle est de lui rendre ces heures, sans qu''il ait à vérifier derrière vous.
+
+> [!definition] Assistant virtuel
+> Un assistant indépendant qui travaille à distance pour un ou plusieurs clients, avec des outils en ligne : messagerie, agenda partagé, documents, visioconférence. On utilise aussi l''abréviation anglaise **VA** (*virtual assistant*). Le mot « virtuel » désigne seulement la distance : le travail, lui, est bien réel.
+
+### L''assistant prépare, le client décide
+
+C''est la règle la plus importante du métier. Vous gérez beaucoup de choses, mais certaines décisions restent toujours au client.
+
+```schema comparaison
+titre: Qui fait quoi ?
+colonnes: Ce que vous faites | Ce que le client décide
+Trier ses e-mails et répondre aux demandes simples | Répondre à une réclamation ou à un client mécontent
+Proposer des créneaux et fixer les rendez-vous | Accepter ou refuser un nouveau partenaire
+Préparer un devis à partir de ses tarifs | Fixer un prix ou accorder une remise
+Relancer une facture impayée, poliment | Engager une démarche contre un mauvais payeur
+Comparer trois hôtels pour un déplacement | Choisir l''hôtel et payer la réservation
+```
+
+Avec l''expérience, le client vous confiera plus de décisions. Mais au début, et pour tout ce qui touche à l''argent, aux conflits et à sa réputation, vous préparez et il décide.
+
+## Une journée type
+
+Le travail d''un assistant virtuel est fait de nombreuses petites tâches. Voici la journée de Hanta, assistante virtuelle à Antananarivo, qui travaille pour deux clients en France.
+
+```schema etapes
+titre: Une journée de Hanta (heures de Madagascar)
+8 h 30 : trier les e-mails reçus pendant la nuit chez les deux clients
+9 h 30 : répondre aux demandes simples et fixer deux rendez-vous
+10 h 30 : mettre à jour le tableau des commandes d''un client
+13 h 00 : rechercher et comparer des salles de formation à Lyon
+15 h 00 : relancer trois factures impayées
+16 h 30 : préparer l''agenda du lendemain de chaque client
+17 h 30 : envoyer le résumé de la journée à chaque client
+```
+
+Remarquez deux choses. D''abord, Hanta commence par la boîte de réception : c''est là que tout arrive. Ensuite, elle termine par un **résumé** : le client sait ce qui a été fait sans rien demander. Ce résumé quotidien, vous l''apprendrez au module 2.
+
+> [!cle] Ce que le client achète
+> Le client n''achète pas « des heures de saisie ». Il achète **du temps libre** pour son vrai métier, **de la tranquillité** (rien n''est oublié) et **de la fiabilité** (ce qui est promis est fait). Gardez ces trois mots en tête : ils guident chacune de vos décisions.
+
+## Trois façons d''exercer le métier
+
+| Forme | Qui trouve les clients | Avantages | Limites |
+| --- | --- | --- | --- |
+| **Freelance indépendant** | Vous-même | Vous choisissez vos clients, vos horaires et vos prix | Il faut prospecter, facturer et gérer les paiements |
+| **Sous-traitant d''une agence** | L''agence, qui vous confie des missions | Des missions régulières, sans prospection | Revenu plus faible ; règles fixées par l''agence |
+| **Salarié d''une entreprise d''externalisation** | L''employeur | Salaire stable, formation, horaires fixes | Moins de liberté ; souvent des horaires décalés |
+
+Beaucoup d''assistants commencent par l''une des deux dernières formes pour gagner de l''expérience, puis deviennent indépendants. Cette formation vous prépare surtout au travail en freelance, mais tout ce que vous apprenez sert aussi en agence ou en entreprise.
+
+> [!madagascar] Les entreprises d''externalisation
+> Antananarivo compte de nombreuses entreprises qui travaillent à distance pour des clients étrangers : centres d''appels, saisie de données, service client, assistance administrative. Elles recrutent régulièrement des profils avec un bon français. Une expérience de quelques mois dans l''une d''elles est un vrai atout sur votre profil : vous y apprenez la rigueur, les outils et les attentes des clients européens.
+
+## Les qualités d''un bon assistant virtuel
+
+Les clients ne cherchent pas d''abord des diplômes. Ils cherchent quelqu''un sur qui compter.
+
+```schema chiffres
+titre: Les 5 qualités que les clients recherchent
+Fiabilité : chaque délai est tenu, même pour une petite tâche
+Discrétion : rien de ce que vous voyez ne sort de la mission
+Organisation : listes, rappels et dossiers bien rangés
+Français écrit : zéro faute, car vous écrivez au nom du client
+Autonomie : une solution proposée avec chaque question
+```
+
+L''**autonomie** est souvent la qualité qui manque aux débutants. Un client débordé ne veut pas recevoir dix questions par jour. Il veut des propositions qu''il peut valider d''un mot.
+
+> [!exemple] Poser une question avec une solution
+> **À éviter** : « M. Dupont veut changer son rendez-vous, je fais quoi ? »
+>
+> **À faire** : « M. Dupont demande à déplacer son rendez-vous de jeudi. Vous êtes libre vendredi à 10 h ou lundi à 14 h (heure de Paris). Je lui propose les deux ? »
+>
+> Dans le second message, le client répond simplement « oui ». Vous lui avez fait gagner du temps au lieu de lui en prendre.
+
+### Ce qui n''est pas demandé au début
+
+Vous n''avez pas besoin d''être comptable, juriste ou informaticien. Vous n''avez pas besoin d''un anglais parfait pour des clients francophones. Les outils (Gmail, Google Agenda, Notion) s''apprennent en quelques semaines : c''est l''objet des modules 3 et 4. En revanche, l''organisation et le sérieux ne s''improvisent pas : ils se construisent dès aujourd''hui, avec de bonnes habitudes.
+
+> [!erreur] Dire « oui » à tout
+> Pour décrocher un premier client, un débutant accepte la comptabilité complète, la création du site web et le montage des vidéos. Il passe des nuits à apprendre, livre en retard et perd le client. **Dites clairement ce que vous faites et ce que vous ne faites pas.** Une tâche hors de vos compétences se refuse poliment : « Ce n''est pas mon domaine, mais je peux vous aider à trouver un prestataire. »
+
+> [!retenir]
+> - Un assistant virtuel **fait gagner du temps** à son client, à distance.
+> - **Vous préparez, le client décide**, surtout pour l''argent, les conflits et sa réputation.
+> - Le client achète **du temps, de la tranquillité et de la fiabilité**.
+> - On peut exercer en freelance, pour une agence ou dans une entreprise d''externalisation.
+> - Fiabilité, discrétion, organisation, français écrit et autonomie.
+
+## Exercice pratique : votre portrait d''assistant
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Écrivez en une phrase ce que fait un assistant virtuel, avec vos propres mots.
+> 2. Pour chacune des 5 qualités, notez un exemple réel de votre vie (études, travail, famille, association) qui la prouve.
+> 3. Notez-vous de 1 à 5 sur chaque qualité, et écrivez une action concrète pour améliorer la plus faible.
+> 4. Réécrivez ces deux questions « avec une solution » : « Le fournisseur n''a pas répondu, je fais quoi ? » et « Il y a deux réunions à la même heure, laquelle je garde ? ».
+>
+> **À livrer** : votre phrase, votre tableau des 5 qualités avec exemples et notes, et vos 2 questions réécrites.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 0, 0, 'Quel est le rôle principal d''un assistant virtuel ?', '["Faire gagner du temps à son client en prenant en charge ses tâches administratives","Créer le site web du client","Vendre les produits du client","Remplacer le client dans ses décisions"]'::jsonb, 0, 'Le client paie pour récupérer du temps : l''assistant prend en charge les e-mails, l''agenda, les documents et le suivi, à distance, pour que le client se consacre à son vrai métier.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 0, 1, 'Un client final se plaint par e-mail d''une prestation ratée. Que fait l''assistant débutant ?', '["Il transfère l''e-mail au client sans rien dire","Il répond seul et propose un remboursement","Il supprime l''e-mail pour ne pas inquiéter le client","Il prépare un résumé et une proposition de réponse, et laisse le client décider"]'::jsonb, 3, 'Les réclamations touchent à l''argent et à la réputation : l''assistant prépare, le client décide. Un résumé avec une proposition de réponse fait gagner du temps sans prendre de risque.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 0, 2, 'Que finit Hanta, chaque jour, par envoyer à ses clients ?', '["Rien : le client vérifiera lui-même","La liste de ses mots de passe","Un résumé de ce qui a été fait et de ce qui les attend","Sa facture du jour"]'::jsonb, 2, 'Le résumé quotidien permet au client de savoir en 30 secondes ce qui a été fait et quelles décisions l''attendent, sans avoir à poser de question.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 0, 3, 'Quelle façon de poser une question montre de l''autonomie ?', '["Ne poser aucune question et décider seul","« M. Dupont veut changer, je fais quoi ? »","« Je ne sais pas quoi faire pour M. Dupont. »","« M. Dupont veut déplacer son rendez-vous ; vous êtes libre vendredi 10 h ou lundi 14 h : je lui propose les deux ? »"]'::jsonb, 3, 'Une question accompagnée d''une solution permet au client de répondre d''un mot. Il gagne du temps au lieu d''en perdre.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 0, 4, 'Quel est un avantage du travail de sous-traitant pour une agence ?', '["Une liberté totale sur les prix","Aucune règle à respecter","Des missions régulières sans avoir à prospecter","Un revenu plus élevé qu''en freelance"]'::jsonb, 2, 'L''agence trouve les clients et confie les missions. En échange, le revenu est plus faible et les règles sont fixées par l''agence.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 0, 1, 'Les tâches et les missions que vous recevrez', 12, 'Un client ne vous dira pas « J''ai besoin d''un assistant virtuel ». Il vous dira « Je n''arrive plus à suivre mes e-mails » ou « J''ai oublié deux rendez-vous ce mois-ci ». Pour transformer ces plaintes en missions claires, il faut connaître les tâches du métier, savoir lire une demande et estimer le temps nécessaire. C''est l''objet de cette leçon.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Citer les 8 tâches les plus demandées à un assistant virtuel.
+> 2. Choisir les tâches à maîtriser en premier.
+> 3. Reconnaître les trois formes de mission.
+> 4. Analyser une annonce ou une demande de client.
+> 5. Refuser les tâches qui ne relèvent pas du métier.
+
+## Les 8 tâches les plus demandées
+
+| N° | Tâche | Exemple concret | Module |
+| --- | --- | --- | --- |
+| 1 | Gestion des e-mails | Trier la boîte, répondre aux demandes simples, signaler l''urgent | 2 et 3 |
+| 2 | Gestion de l''agenda | Fixer les rendez-vous, envoyer les rappels, éviter les doubles réservations | 3 |
+| 3 | Organisation de déplacements | Comparer vols et hôtels, préparer un programme | 3 |
+| 4 | Saisie et mise à jour de données | Fichier clients, tableau des commandes | 4 |
+| 5 | Rédaction de documents simples | Courriers, comptes rendus, modèles de réponse | 2 et 4 |
+| 6 | Suivi administratif | Envoyer les factures, relancer les impayés, classer | 5 |
+| 7 | Service client de premier niveau | Répondre aux questions fréquentes par e-mail ou message | 5 |
+| 8 | Recherches sur Internet | Trouver 20 fournisseurs, comparer 5 logiciels | 4 |
+
+### Commencer par la base
+
+Vous n''avez pas besoin de tout savoir faire dès le premier jour. Les tâches se construisent par niveaux.
+
+```schema pyramide
+titre: Les tâches par niveau
+Niveau 3 : gestion de projets, assistance de direction, petites équipes
+Niveau 2 : documents, suivi administratif, service client, déplacements
+Niveau 1 : e-mails, agenda, saisie de données, recherches
+```
+
+Les tâches du **niveau 1** sont demandées par presque tous les clients et s''apprennent vite. Ce sont elles que vous proposerez en premier. Le niveau 2 vient avec les premières missions ; le niveau 3 correspond à la formation Assistant virtuel – Avancé.
+
+## Les trois formes de mission
+
+```schema comparaison
+titre: Comment les clients achètent votre travail
+colonnes: Forfait mensuel | Mission ponctuelle | Tâche à la pièce
+Un nombre d''heures fixe chaque mois (10, 20 ou 40 h) | Un projet avec un début et une fin | Une tâche précise, payée à l''unité
+Ex. : gestion des e-mails et de l''agenda | Ex. : organiser un séminaire de 2 jours | Ex. : saisir 300 fiches clients
+Revenu régulier et relation durable | Bon moyen de se faire connaître | Utile pour démarrer sur une plateforme
+```
+
+Le **forfait mensuel** est la forme la plus intéressante pour vous : vos revenus deviennent prévisibles et le client vous fait de plus en plus confiance. Les missions ponctuelles et les tâches à la pièce servent souvent de porte d''entrée : un client satisfait par une petite tâche vous propose ensuite un forfait.
+
+## Lire une annonce ou une demande
+
+Qu''elle arrive par une plateforme, un groupe Facebook ou un message direct, une demande contient presque toujours les mêmes informations. Apprenez à les repérer.
+
+```schema etapes
+titre: Analyser une demande en 6 questions
+Les tâches : la liste précise, pas « aide générale »
+Le volume : heures par semaine, nombre d''e-mails, nombre de fiches
+Les horaires : disponibilité attendue et fuseau horaire du client
+Les outils : Gmail, Outlook, Notion, un logiciel métier…
+La langue et le ton : français, malgache, anglais ; tutoiement ou vouvoiement
+Le budget et la durée : essai, mission longue, paiement
+```
+
+S''il manque une information importante, posez la question avant de répondre avec un prix. Une mission mal comprise au départ devient presque toujours un conflit plus tard.
+
+> [!exemple] Une annonce décodée
+> **L''annonce** : « Coach à Bruxelles cherche assistante virtuelle, environ 8 h par semaine, pour gérer ma boîte e-mail, mes rendez-vous Calendly et l''envoi de mes factures. Disponibilité le matin, heure belge. Démarrage rapide. »
+>
+> **Ce qu''on en retire** : 3 tâches précises (e-mails, agenda, factures) ; un volume de 8 h par semaine, soit un forfait d''environ 32 à 35 h par mois ; des horaires du matin en Belgique, soit la fin de matinée et le début d''après-midi à Madagascar ; un outil nommé (Calendly) à connaître. **Ce qu''il faut demander** : le nombre d''e-mails par jour, le logiciel de facturation et le budget.
+
+## Estimer le temps d''une tâche
+
+Pour proposer un prix ou un forfait, vous devez estimer combien de temps prend chaque tâche. Au début, vous serez plus lent ; vos durées baisseront avec la pratique et les bons outils.
+
+| Tâche | Repère pour un débutant | Ce qui fait varier la durée |
+| --- | --- | --- |
+| Trier et traiter 50 e-mails | 45 minutes à 1 heure | Nombre de réponses à rédiger |
+| Fixer un rendez-vous | 10 à 15 minutes | Nombre d''échanges avec la personne |
+| Saisir 100 fiches clients | 2 à 3 heures | Qualité des données de départ |
+| Comparer 10 fournisseurs | 1 h 30 à 2 heures | Précision des critères du client |
+| Rédiger un compte rendu de réunion d''1 heure | 45 minutes | Qualité de vos notes |
+
+Ces durées sont des **repères** pour commencer. Dès votre première mission, notez le temps réel de chaque tâche (module 5) : c''est la seule base fiable pour vos prochains prix.
+
+> [!madagascar] Le français et le malgache
+> Pour les clients de Madagascar et de la diaspora, savoir écrire **en français et en malgache** est un vrai avantage : courriers aux administrations, messages au personnel, réponses aux clients locaux. Indiquez-le dans votre offre, et précisez dans quelle langue vous écrivez le mieux.
+
+## Les tâches à refuser
+
+Certaines demandes ne relèvent pas du métier, ou sont tout simplement interdites. Savoir dire non vous protège, vous et votre client.
+
+```schema comparaison
+titre: Accepter ou refuser ?
+ton: bon-mauvais
+colonnes: Possible, avec un cadre clair | À refuser
+Payer une facture fournisseur, avec l''accord écrit du client | Signer un contrat ou un document à la place du client
+Publier un message préparé et validé | Écrire de faux avis clients ou de faux témoignages
+Envoyer une lettre d''information aux inscrits | Envoyer des e-mails en masse à des personnes qui n''ont rien demandé
+Préparer des documents pour le comptable | Modifier des factures ou des chiffres pour tromper quelqu''un
+```
+
+> [!erreur] Accepter une mission floue
+> « J''ai besoin d''aide pour tout, on verra au fur et à mesure. » Le débutant accepte, puis reçoit des demandes de plus en plus nombreuses, sans limite d''heures. Au bout d''un mois, le client trouve la facture trop chère et l''assistant se sent exploité. **Transformez toujours une demande floue en liste de tâches**, avec un volume d''heures, avant de commencer.
+
+> [!retenir]
+> - **8 tâches** reviennent sans cesse ; commencez par **e-mails, agenda, saisie et recherches**.
+> - Trois formes de mission : **forfait mensuel**, mission ponctuelle, tâche à la pièce.
+> - Une demande s''analyse en **6 questions** : tâches, volume, horaires, outils, langue, budget.
+> - Notez le **temps réel** de chaque tâche pour estimer vos prochains prix.
+> - Refusez ce qui est illégal ou trompeur, et ce qui engage le client sans son accord.
+
+## Exercice pratique : analyser trois demandes
+
+> [!exercice] Exercice pratique · 45 minutes
+> Voici trois demandes fictives :
+> - **A** : « Agence immobilière à Toamasina cherche personne pour saisir nos 400 annonces dans un tableau et répondre aux messages Facebook le week-end. »
+> - **B** : « Consultante à Montréal, je cherche une assistante 10 h par semaine pour mes e-mails, mon agenda et la préparation de mes ateliers. »
+> - **C** : « Besoin de quelqu''un pour écrire 50 avis positifs sur ma page Google. »
+>
+> 1. Pour A et B, répondez aux 6 questions de l''analyse et notez les informations manquantes.
+> 2. Classez chaque tâche de A et B dans les niveaux 1, 2 ou 3.
+> 3. Estimez le nombre d''heures par mois pour A et B, avec les repères du tableau.
+> 4. Rédigez une réponse polie de refus pour C, en expliquant pourquoi en une phrase.
+>
+> **À livrer** : vos deux analyses, vos estimations d''heures et votre message de refus.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 1, 0, 'Quelles tâches proposer en premier quand on débute ?', '["Création de sites web","Comptabilité complète et paie","E-mails, agenda, saisie de données et recherches","Gestion d''une équipe d''assistants"]'::jsonb, 2, 'Ce sont les tâches de niveau 1 : demandées par presque tous les clients, elles s''apprennent vite et permettent de prouver sa fiabilité.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 1, 1, 'Quelle forme de mission donne les revenus les plus prévisibles ?', '["La tâche à la pièce","La mission ponctuelle","L''essai gratuit","Le forfait mensuel d''heures"]'::jsonb, 3, 'Le forfait mensuel fixe un nombre d''heures chaque mois : vos revenus deviennent réguliers et la relation avec le client dure.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 1, 2, 'Une annonce dit « environ 8 h par semaine ». Quel volume mensuel cela représente-t-il à peu près ?', '["32 à 35 heures","80 heures","8 heures","16 heures"]'::jsonb, 0, 'Un mois compte un peu plus de 4 semaines : 8 h × 4,3 ≈ 34 heures. C''est la base d''un forfait mensuel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 1, 3, 'Pourquoi noter le temps réel de chaque tâche dès la première mission ?', '["C''est la seule base fiable pour estimer vos prochains prix","Parce que c''est obligatoire par la loi","Pour avoir des chiffres à publier sur les réseaux","Pour travailler plus lentement"]'::jsonb, 0, 'Les repères généraux servent à démarrer, mais seules vos propres durées permettent de proposer des forfaits justes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 1, 4, 'Un client demande d''écrire de faux avis positifs sur sa page. Que faire ?', '["Demander à un ami de les écrire","Accepter si le prix est bon","Refuser poliment, car c''est trompeur","Accepter mais écrire des avis courts"]'::jsonb, 2, 'Les faux avis trompent les acheteurs et sont interdits par les plateformes. Un assistant sérieux refuse les tâches trompeuses ou illégales.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 0, 2, 'Vos clients, à Madagascar et ailleurs', 10, 'Un assistant virtuel peut travailler pour un médecin d''Antananarivo, une coach de Lyon ou une boutique en ligne de Montréal. Ces clients n''ont pas les mêmes besoins, ni les mêmes habitudes, ni les mêmes moyens de paiement. Cette leçon vous aide à connaître vos clients possibles, à comprendre ce qu''ils attendent, et à choisir ceux que vous viserez en premier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Citer les principaux types de clients à l''étranger et à Madagascar.
+> 2. Comparer le travail avec un client local et avec un client étranger.
+> 3. Relier chaque type de client à son besoin principal.
+> 4. Choisir une cible précise plutôt que « tout le monde ».
+> 5. Repérer les signaux d''alerte avant d''accepter un client.
+
+## Les clients à l''étranger
+
+La majorité des missions d''assistance virtuelle en français viennent de pays francophones : France, Belgique, Suisse et Canada (surtout le Québec).
+
+| Type de client | Exemples | Besoin principal |
+| --- | --- | --- |
+| **Indépendants** | Coachs, consultants, thérapeutes, formateurs | Libérer du temps pour leurs séances et leurs clients |
+| **Petites entreprises sans secrétariat** | Artisans, agences immobilières, cabinets | Ne plus perdre d''appels, de devis ni de factures |
+| **Créateurs de formations en ligne** | Formateurs sur Internet, auteurs | Répondre aux élèves, gérer les inscriptions |
+| **Boutiques en ligne** | Vendeurs de vêtements, cosmétiques, produits artisanaux | Suivre les commandes et répondre aux clients |
+
+Ces clients travaillent souvent seuls. Ils n''ont pas les moyens d''embaucher une secrétaire à temps plein dans leur pays, mais peuvent payer quelques heures par semaine à un assistant à distance.
+
+## Les clients à Madagascar
+
+1. **Dirigeants de PME** : très sollicités, ils ont besoin de quelqu''un pour filtrer les demandes et tenir l''agenda.
+2. **ONG et associations** : beaucoup de rapports, de réunions et de déplacements à organiser.
+3. **Professions libérales** : médecins, avocats, architectes, experts-comptables, qui reçoivent sur rendez-vous.
+4. **Entreprises de la diaspora** : des Malgaches installés à l''étranger qui ont une activité à Madagascar (location, commerce, construction) et ont besoin de quelqu''un sur place, à l''aise avec les outils en ligne.
+
+> [!exemple] Fara et les cabinets médicaux
+> Fara, à Antananarivo, a commencé avec un cabinet de dentiste de son quartier : les patients appelaient à toute heure, les rendez-vous étaient notés dans un cahier, et il y avait des oublis. Elle a créé un agenda partagé, répond aux messages WhatsApp du cabinet et envoie un rappel la veille de chaque rendez-vous. Six mois plus tard, elle travaille pour trois cabinets, avec la même méthode.
+
+## Client local ou client étranger ?
+
+```schema comparaison
+titre: Deux façons de travailler
+colonnes: Client à Madagascar | Client à l''étranger
+Échanges souvent par WhatsApp et par appel | Échanges surtout écrits, par e-mail
+Rencontre possible en personne | Tout se passe à distance, par visioconférence
+Paiement par Mobile Money ou virement local | Paiement par virement international, plateforme ou service de paiement
+Prix en ariary, adaptés au marché local | Prix en euros ou en dollars
+Même fuseau horaire | Décalage de 1 à 8 heures selon le pays et la saison
+```
+
+Les deux sont intéressants. Les clients locaux sont souvent plus faciles à trouver au début, grâce à votre entourage. Les clients étrangers paient en général davantage, mais demandent plus de temps pour obtenir leur confiance. Beaucoup d''assistants commencent localement, puis ajoutent des clients étrangers avec leurs premiers avis.
+
+> [!madagascar] Votre avantage pour l''Europe
+> Madagascar est à seulement 1 ou 2 heures d''avance sur la France, selon la saison. Vous pouvez donc travailler **pendant toute la journée de bureau européenne**, sans horaires de nuit. Avec un français écrit soigné, c''est un argument fort face à des assistants d''autres pays.
+
+## Choisir une cible
+
+Quand on débute, on a envie de dire « je travaille pour tout le monde ». C''est une erreur : un client cherche quelqu''un qui comprend **son** métier. Plus votre cible est précise, plus vos messages sont convaincants.
+
+```schema entonnoir
+titre: Préciser sa cible, étape par étape
+Tous les entrepreneurs : trop large, aucun message ne parle à personne
+Les indépendants : déjà plus clair
+Les coachs et consultants : un métier, des habitudes communes
+Les coachs francophones en Europe : une langue et des horaires
+Les coachs en visioconférence : des besoins très précis
+```
+
+Avec une cible précise, vous savez quels outils apprendre (ici, l''agenda en ligne et la visioconférence), quels mots utiliser et où trouver ces clients. Vous pourrez toujours élargir plus tard.
+
+```schema chiffres
+titre: 3 critères pour choisir votre première cible
+Ce que vous connaissez : un secteur où vous avez étudié, travaillé ou que vous connaissez par un proche
+Ce qui se paie : des clients qui ont un vrai problème de temps et un budget
+Ce qui est accessible : des clients que vous pouvez contacter dès cette semaine
+```
+
+## Les signaux d''alerte
+
+Certains clients font perdre plus qu''ils ne rapportent. Repérez ces signaux dès les premiers échanges.
+
+```schema checklist
+titre: Méfiez-vous si le client…
+[ ] demande un long « essai gratuit » de plusieurs jours
+[ ] refuse d''écrire les tâches ou le prix
+[ ] vous demande d''avancer de l''argent ou de payer des frais pour obtenir la mission
+[ ] veut que vous fassiez quelque chose de trompeur ou d''illégal
+[ ] change sans cesse d''avis et répond rarement
+[ ] vous presse de passer en dehors de la plateforme dès le premier message
+```
+
+Un seul de ces signaux ne veut pas toujours dire « arnaque ». Mais deux ou trois ensemble doivent vous faire réfléchir avant d''accepter.
+
+> [!erreur] Payer pour obtenir une mission
+> « Pour commencer la mission, vous devez acheter notre kit de formation à 50 000 Ar » ou « payer les frais d''inscription ». C''est une arnaque très fréquente qui vise les débutants. **Un vrai client vous paie ; il ne vous demande jamais de payer pour travailler.** Si l''on vous demande de l''argent, arrêtez l''échange.
+
+> [!retenir]
+> - À l''étranger : indépendants, petites entreprises, formateurs en ligne, boutiques en ligne.
+> - À Madagascar : dirigeants de PME, ONG, professions libérales, diaspora.
+> - Client local : WhatsApp, Mobile Money, ariary. Client étranger : écrit, virement, euros ou dollars.
+> - Une **cible précise** rend vos messages plus convaincants.
+> - Un client ne vous demande **jamais** de payer pour travailler.
+
+## Exercice pratique : votre client idéal
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Listez 6 types de clients possibles (3 à Madagascar, 3 à l''étranger).
+> 2. Notez chacun de 1 à 5 sur les 3 critères : ce que vous connaissez, ce qui se paie, ce qui est accessible.
+> 3. Choisissez la cible qui a le meilleur total et précisez-la avec l''entonnoir, jusqu''au dernier niveau.
+> 4. Rédigez la fiche de votre client idéal : son métier, sa ville, ses journées, ses 3 problèmes principaux, les tâches que vous lui proposeriez.
+>
+> **À livrer** : votre tableau de notes, votre entonnoir rempli et la fiche de votre client idéal. Elle vous servira au module 6.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 2, 0, 'Comment communique-t-on le plus souvent avec un client à l''étranger ?', '["En personne, chaque semaine","Surtout par écrit, par e-mail","Uniquement par messages vocaux","Par courrier postal"]'::jsonb, 1, 'Avec un client à distance, l''écrit domine : il évite les malentendus et sert de référence. Les clients locaux utilisent plus souvent WhatsApp et les appels.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 2, 1, 'Pourquoi un assistant à Madagascar est-il intéressant pour un client en France ?', '["Il peut travailler pendant toute la journée de bureau européenne","Il travaille sans connexion Internet","Il n''a pas besoin de parler français","Il n''a jamais besoin de congés"]'::jsonb, 0, 'Avec seulement 1 ou 2 heures de décalage, vous couvrez les horaires de bureau européens sans travailler la nuit.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 2, 2, 'Quelle cible est la plus convaincante pour démarrer ?', '["Toutes les entreprises","Tous les entrepreneurs du monde","Les coachs francophones qui reçoivent en visioconférence","Tous ceux qui ont un ordinateur"]'::jsonb, 2, 'Une cible précise permet de parler des problèmes concrets du client, de savoir quels outils apprendre et où le trouver.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 2, 3, 'Un « client » vous demande 50 000 Ar de frais d''inscription pour commencer une mission. C''est…', '["Une garantie de sérieux","Obligatoire sur les plateformes","Normal pour une première mission","Une arnaque : un vrai client paie, il ne fait pas payer"]'::jsonb, 3, 'Les arnaques qui visent les débutants demandent souvent de payer un kit ou des frais. Un client ne vous demande jamais de payer pour travailler.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 2, 4, 'Quelle tâche proposer en priorité à un cabinet médical d''Antananarivo ?', '["Le montage de vidéos","La création d''un logo","La gestion des rendez-vous et les rappels aux patients","La traduction de livres"]'::jsonb, 2, 'Un cabinet reçoit sur rendez-vous : un agenda tenu et des rappels réduisent les oublis. C''est son besoin principal, comme dans l''exemple de Fara.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 0, 3, 'S''équiper et s''organiser depuis Madagascar', 11, 'Votre client ne voit pas votre bureau. Il voit seulement si vous répondez à l''heure, si l''appel vidéo est net et si la tâche promise est faite. À Madagascar, les coupures d''électricité, une connexion parfois instable et le décalage horaire sont des réalités : un bon assistant les prévoit au lieu de les subir. Cette leçon vous aide à préparer votre poste de travail et votre organisation.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Réunir l''équipement minimum pour travailler à distance.
+> 2. Préparer un plan pour les coupures d''électricité et de connexion.
+> 3. Calculer l''heure chez un client, quel que soit son pays.
+> 4. Organiser vos horaires en fonction de vos clients.
+
+## L''équipement de l''assistant virtuel
+
+| Équipement | Minimum pour commencer | Conseillé quand les revenus arrivent |
+| --- | --- | --- |
+| **Ordinateur** | Un ordinateur, même ancien, qui fait tourner un navigateur récent sans ramer | Un portable avec une bonne batterie |
+| **Connexion** | Une connexion principale (fibre, box ou clé 4G) | Une deuxième connexion de secours chez un autre opérateur |
+| **Téléphone** | Un smartphone avec WhatsApp et un forfait de données | Un forfait de données suffisant pour le partage de connexion |
+| **Son** | Des écouteurs avec micro | Un casque avec micro qui réduit les bruits |
+| **Électricité** | Une batterie externe pour le téléphone | Un onduleur ou une batterie pour la box et l''ordinateur |
+| **Espace** | Un coin calme, avec un fond neutre pour les appels vidéo | Un bureau dédié, bien éclairé |
+
+Un ordinateur portable est préférable à un ordinateur fixe : sa batterie vous laisse le temps d''enregistrer, de prévenir et de continuer à travailler pendant une coupure.
+
+> [!astuce] Testez votre connexion
+> Faites un test de débit à différentes heures de la journée (par exemple sur fast.com ou speedtest.net), et faites un appel vidéo d''essai avec un ami. Pour la visioconférence, une connexion **stable** compte plus qu''une connexion très rapide. Notez les heures où votre connexion est la plus faible, et évitez d''y placer vos rendez-vous.
+
+## Le plan anti-coupure
+
+Une coupure n''est pas une faute. Disparaître sans prévenir en est une. Préparez votre plan à l''avance, pour réagir en deux minutes.
+
+```schema etapes
+titre: Le plan anti-coupure en 3 temps
+Avant : batteries chargées, documents du jour disponibles hors ligne, forfait de données actif
+Pendant : enregistrer, passer sur le partage de connexion du téléphone
+Pendant : prévenir le client si une tâche ou un appel risque d''être en retard
+Après : vérifier que tout est enregistré et rattraper les tâches urgentes
+Toujours : annoncer des délais avec une marge
+```
+
+> [!exemple] La visioconférence de 14 h
+> À 13 h 40, l''électricité est coupée dans le quartier de Hanta. Elle a un rendez-vous vidéo à 14 h avec sa cliente. Son ordinateur portable est chargé, elle active le partage de connexion de son téléphone et envoie un message : « Coupure d''électricité chez moi : je serai bien au rendez-vous à 14 h, en connexion mobile. Si l''image est faible, je couperai la caméra. » La cliente ne voit qu''une chose : Hanta est fiable.
+
+> [!madagascar] Délestages et forfaits mobiles
+> Les trois opérateurs mobiles proposent des forfaits de données. Gardez toujours un forfait actif, même petit, pour le partage de connexion. Si votre quartier connaît des délestages réguliers, notez leurs horaires habituels et organisez votre semaine en conséquence : rédaction et préparation pendant les coupures, appels et envois de fichiers quand le courant revient.
+
+## Le décalage horaire
+
+Madagascar est à **UTC+3 toute l''année** : l''heure ne change jamais. Mais beaucoup de pays changent d''heure deux fois par an, ce qui modifie l''écart avec vous.
+
+| Pays du client | Écart en hiver | Écart en été | 9 h chez le client, c''est… à Antananarivo (hiver) |
+| --- | --- | --- | --- |
+| France, Belgique, Suisse | 2 h d''avance pour vous | 1 h d''avance | 11 h |
+| Québec (Montréal) | 8 h d''avance pour vous | 7 h d''avance | 17 h |
+| La Réunion, Maurice | 1 h de retard (toute l''année) | 1 h de retard | 8 h |
+| Sénégal, Côte d''Ivoire | 3 h d''avance (toute l''année) | 3 h d''avance | 12 h |
+
+> [!definition] UTC
+> UTC est l''heure de référence mondiale. « UTC+3 » signifie « 3 heures de plus que l''heure de référence ». La France est à UTC+1 en hiver et UTC+2 en été ; le Québec à UTC−5 en hiver et UTC−4 en été. Pour connaître l''écart, faites la différence : 3 − (−5) = 8 heures entre Antananarivo et Montréal en hiver.
+
+```schema chiffres
+titre: Les dates à connaître
+Fin mars : l''Europe passe à l''heure d''été (dernier dimanche de mars)
+Fin octobre : l''Europe revient à l''heure d''hiver (dernier dimanche d''octobre)
+Mi-mars : l''Amérique du Nord passe à l''heure d''été (deuxième dimanche de mars)
+Début novembre : l''Amérique du Nord revient à l''heure d''hiver (premier dimanche de novembre)
+```
+
+Ces dates ne sont pas les mêmes en Europe et en Amérique du Nord. Pendant une à trois semaines, au printemps et à l''automne, les écarts sont donc inhabituels. Ajoutez ces dates dans votre agenda, avec un rappel : « Vérifier les rendez-vous de la semaine, changement d''heure ».
+
+## Organiser vos horaires
+
+Choisissez des **horaires fixes**, alignés sur ceux de vos clients, et annoncez-les. Un client en France apprécie un assistant joignable de 9 h à 17 h, heure de Paris : cela correspond à 10 h ou 11 h jusqu''à 18 h ou 19 h à Madagascar, selon la saison.
+
+```schema checklist
+titre: Votre organisation est prête si…
+[ ] vos horaires de travail sont écrits et annoncés à chaque client
+[ ] le fuseau de chaque client est affiché dans votre agenda
+[ ] vous avez un forfait de données actif pour le partage de connexion
+[ ] vos documents du jour sont disponibles hors ligne
+[ ] vous savez qui prévenir, et comment, en cas de coupure
+```
+
+> [!astuce] Le deuxième fuseau dans Google Agenda
+> Dans Google Agenda, ouvrez **Paramètres → Général → Fuseau horaire** et activez l''affichage d''un **fuseau horaire secondaire**. Les heures de votre client s''affichent à côté des vôtres : vous ne vous trompez plus en proposant un rendez-vous.
+
+> [!erreur] Disparaître pendant une coupure
+> L''électricité est coupée pendant 4 heures. L''assistant n''a plus de batterie, ne prévient personne et réapparaît le soir. Le client a attendu une réponse urgente tout l''après-midi et pense qu''il a été abandonné. **Un message de deux lignes suffit à garder la confiance** : « Coupure d''électricité, je traite votre demande dès le retour du courant, au plus tard à 17 h. »
+
+> [!retenir]
+> - Un **portable**, une **connexion de secours** et des **écouteurs avec micro** : l''essentiel.
+> - Un **plan anti-coupure** : avant, pendant, après, et toujours prévenir.
+> - Madagascar est à **UTC+3 toute l''année** ; vérifiez l''écart à chaque changement d''heure du client.
+> - Des **horaires fixes**, alignés sur ceux du client, et annoncés.
+
+## Exercice pratique : votre plan de travail
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Faites l''inventaire de votre équipement avec le tableau : ce que vous avez, ce qui manque, ce que vous achèterez en premier.
+> 2. Faites 3 tests de débit à 3 heures différentes et notez les résultats.
+> 3. Rédigez votre plan anti-coupure en 5 lignes, et le message type que vous enverrez à un client.
+> 4. Pour trois clients fictifs (Paris, Montréal, Saint-Denis de La Réunion), calculez l''heure à Antananarivo quand il est 9 h et 17 h chez eux, en hiver et en été.
+> 5. Ajoutez un fuseau secondaire dans votre Google Agenda.
+>
+> **À livrer** : votre inventaire, vos tests, votre plan anti-coupure, votre tableau des heures et une capture de votre agenda.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 3, 0, 'Quand il est 9 h à Paris en hiver, quelle heure est-il à Antananarivo ?', '["11 h","9 h","8 h","10 h"]'::jsonb, 0, 'Madagascar est à UTC+3 toute l''année ; la France est à UTC+1 en hiver. L''écart est donc de 2 heures.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 3, 1, 'Quel est l''écart entre Antananarivo et Montréal en hiver ?', '["8 heures de retard pour Antananarivo","2 heures d''avance pour Antananarivo","8 heures d''avance pour Antananarivo","7 heures d''avance pour Antananarivo"]'::jsonb, 2, 'Montréal est à UTC−5 en hiver : 3 − (−5) = 8 heures. En été (UTC−4), l''écart passe à 7 heures.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 3, 2, 'L''électricité est coupée 20 minutes avant un appel vidéo. Quelle est la meilleure réaction ?', '["Annuler l''appel sans explication","Rejoindre l''appel avec une heure de retard","Passer sur le partage de connexion et prévenir la cliente par message","Attendre le retour du courant sans rien dire"]'::jsonb, 2, 'Le plan anti-coupure permet de réagir vite : batterie, connexion mobile et un message court. Le client voit votre fiabilité.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 3, 3, 'Pourquoi les écarts horaires changent-ils au printemps et à l''automne ?', '["Beaucoup de pays changent d''heure, alors que Madagascar ne change jamais","Les horloges des ordinateurs se dérèglent","Madagascar change d''heure deux fois par an","Ils ne changent jamais"]'::jsonb, 0, 'L''Europe et l''Amérique du Nord passent à l''heure d''été et d''hiver, à des dates différentes. Madagascar reste à UTC+3 toute l''année.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 3, 4, 'Quel réglage de Google Agenda évite les erreurs de rendez-vous avec un client étranger ?', '["Passer l''agenda en anglais","Désactiver les notifications","Changer la couleur de l''agenda","Afficher un fuseau horaire secondaire"]'::jsonb, 3, 'Le fuseau secondaire affiche l''heure du client à côté de la vôtre : vous voyez immédiatement l''heure exacte chez lui.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 0, 4, 'Confiance, confidentialité et travail en règle', 12, 'Un client qui engage un assistant virtuel lui ouvre sa boîte e-mail, son agenda, ses documents et parfois ses comptes. C''est une marque de confiance énorme. Cette leçon vous donne les règles qui protègent cette confiance : la confidentialité, la sécurité des accès, la protection des données personnelles et les démarches pour travailler en règle. Elle se termine par le projet du module : votre plan de démarrage.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Appliquer les règles de confidentialité du métier.
+> 2. Recevoir et gérer les accès d''un client en toute sécurité.
+> 3. Comprendre vos obligations sur les données personnelles.
+> 4. Connaître les démarches de base pour travailler en règle à Madagascar.
+> 5. Travailler de façon honnête et transparente.
+
+## La confidentialité : la base du métier
+
+Vous verrez des informations privées : les clients de votre client, ses tarifs, ses problèmes, parfois sa santé ou sa famille. Votre réputation dépend de votre discrétion.
+
+```schema chiffres
+titre: Les 6 règles de confidentialité
+1 : ne jamais parler des affaires d''un client à quelqu''un d''autre, même à un autre client
+2 : ne jamais publier de capture d''écran d''une boîte e-mail ou d''un document client
+3 : ne pas travailler sur un ordinateur partagé ni dans un cybercafé
+4 : verrouiller votre écran dès que vous vous éloignez
+5 : ranger les fichiers de chaque client dans des dossiers séparés
+6 : à la fin de la mission, rendre les accès et supprimer les fichiers si le client le demande
+```
+
+> [!definition] Accord de confidentialité
+> Un document dans lequel vous vous engagez par écrit à ne rien divulguer des informations du client. On l''appelle aussi **NDA** (*non-disclosure agreement*). Beaucoup de clients étrangers le demandent avant de commencer. Lisez-le attentivement, gardez-en une copie, et demandez des explications sur tout point que vous ne comprenez pas.
+
+## Les accès du client : jamais n''importe comment
+
+Pour travailler, vous aurez besoin d''accéder aux outils du client. Il existe une bonne et une mauvaise façon de le faire.
+
+```schema comparaison
+titre: Recevoir les accès d''un client
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Le mot de passe envoyé par WhatsApp | Une délégation ou un partage depuis le compte du client
+Les mots de passe notés dans un carnet ou un fichier | Un gestionnaire de mots de passe
+Le même mot de passe partout | Un mot de passe différent et long pour chaque compte
+Un compte sans double authentification | La double authentification activée
+Les accès gardés après la mission | Les accès rendus et supprimés à la fin
+```
+
+La **délégation** est la meilleure méthode : le client vous autorise à utiliser sa boîte e-mail ou son agenda depuis votre propre compte, sans vous donner son mot de passe. Vous verrez comment la mettre en place au module 3.
+
+> [!definition] Double authentification
+> Une protection qui demande, en plus du mot de passe, un code reçu sur votre téléphone ou affiché dans une application. Même si quelqu''un vole votre mot de passe, il ne peut pas entrer sans ce code. Activez-la sur votre messagerie, votre gestionnaire de mots de passe et tous vos comptes de travail.
+
+## Les données personnelles
+
+Un nom, un numéro de téléphone, une adresse, un e-mail : ce sont des **données personnelles**. Vous en manipulez tous les jours pour vos clients. Plusieurs lois encadrent leur utilisation.
+
+| Situation | Ce qu''il faut savoir | Ce que vous faites |
+| --- | --- | --- |
+| Client en Europe | Le **RGPD** s''applique aux données de personnes en Europe ; vous les traitez pour le compte de votre client | Vous signez si besoin son engagement de confidentialité et suivez ses consignes |
+| Client à Madagascar | Madagascar a une loi sur la protection des données personnelles (loi n° 2014-038) | Vous utilisez les données seulement pour la mission |
+| Tout client | Les données servent à la mission, et à rien d''autre | Pas de copie personnelle, pas de revente, pas de réutilisation |
+
+Vous n''avez pas besoin d''être juriste. Retenez une règle simple : **les données des clients de votre client ne servent qu''à la tâche demandée.** Vous ne les copiez pas pour vous, vous ne les envoyez à personne d''autre, et vous ne les collez pas dans un outil en ligne sans l''accord du client.
+
+> [!attention] L''intelligence artificielle et les données
+> Coller un e-mail de client, un fichier de contacts ou un contrat dans un assistant d''IA en ligne, c''est envoyer ces données à une autre entreprise. Demandez l''accord du client avant d''utiliser l''IA sur ses documents, retirez les noms et les coordonnées quand c''est possible, et vérifiez toujours le résultat.
+
+## Travailler en règle à Madagascar
+
+Pour facturer officiellement, un travailleur indépendant demande en général deux numéros : le **NIF** (numéro d''identification fiscale), au centre fiscal de votre ville, et la **carte statistique** (STAT), auprès de l''INSTAT. Le régime d''imposition dépend ensuite de votre chiffre d''affaires.
+
+Les démarches et les montants changent avec les lois de finances. **Renseignez-vous auprès du centre fiscal de votre ville**, ou demandez conseil à un comptable, avant de facturer régulièrement. Dès maintenant, prenez l''habitude de noter chaque paiement reçu dans un tableau : date, client, montant, moyen de paiement.
+
+> [!exemple] Nirina et l''ONG
+> Nirina, assistante virtuelle à Fianarantsoa, répond à une ONG qui cherche une assistante pour ses rapports et ses réunions. L''ONG demande une facture avec NIF et STAT pour pouvoir la payer : c''est une règle de ses bailleurs. Nirina avait fait ses démarches le mois précédent ; elle envoie sa facture le jour même et décroche un contrat de six mois.
+
+## L''honnêteté au quotidien
+
+La confiance se gagne aussi par de petites choses :
+
+1. **Les heures facturées sont les heures travaillées**, notées au fur et à mesure (module 5).
+2. **Pas de sous-traitance cachée** : si quelqu''un vous aide, le client doit le savoir et l''accepter.
+3. **La transparence sur les outils** : si vous utilisez l''IA pour un premier jet, vous relisez, corrigez et pouvez l''expliquer.
+4. **Les erreurs se signalent tout de suite** : « J''ai envoyé l''invitation avec la mauvaise heure ; je viens d''envoyer la correction. »
+
+> [!erreur] Cacher une erreur
+> L''assistant envoie un devis avec un mauvais prix, s''en rend compte, et espère que personne ne le remarquera. Le client final accepte le devis… au mauvais prix. **Une erreur signalée en 5 minutes se corrige facilement ; une erreur cachée devient une perte d''argent et de confiance.** Prévenez le client, proposez la correction, et notez comment éviter l''erreur la prochaine fois.
+
+> [!retenir]
+> - **Discrétion totale** : rien ne sort de la mission.
+> - **Délégation, gestionnaire de mots de passe, double authentification** : jamais de mot de passe par message.
+> - Les données personnelles servent **uniquement à la mission**.
+> - **NIF et STAT** pour facturer officiellement : renseignez-vous au centre fiscal.
+> - Les erreurs se **signalent tout de suite**.
+
+## Exercice pratique : sécuriser vos comptes
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Installez un gestionnaire de mots de passe gratuit (par exemple Bitwarden) et enregistrez-y vos comptes de travail.
+> 2. Activez la double authentification sur votre adresse e-mail et sur votre gestionnaire.
+> 3. Rédigez votre propre engagement de confidentialité en 5 points, que vous pourrez proposer à vos clients.
+> 4. Notez l''adresse du centre fiscal de votre ville et la liste des documents à préparer pour le NIF.
+>
+> **À livrer** : une capture montrant la double authentification activée (sans aucun mot de passe visible), votre engagement de confidentialité et vos notes sur les démarches.
+
+## Projet du module 1 : votre plan de démarrage
+
+> [!projet] Projet du module · 2 heures
+> Rassemblez le travail du module dans un document de 2 à 3 pages, que vous relirez à la fin de la formation.
+> 1. **Mon métier** : votre phrase de présentation et vos 5 qualités avec exemples (leçon 1.1).
+> 2. **Mes services** : les tâches que vous proposerez en premier, et celles que vous refusez (leçon 1.2).
+> 3. **Ma cible** : la fiche de votre client idéal (leçon 1.3).
+> 4. **Mon organisation** : vos horaires, votre plan anti-coupure, l''équipement à acheter et les fuseaux de vos futurs clients (leçon 1.4).
+> 5. **Mes règles** : votre engagement de confidentialité et vos démarches administratives (leçon 1.5).
+> 6. **Mes objectifs** : ce que vous voulez avoir accompli dans 3 mois.
+>
+> **À livrer** : votre plan de démarrage en PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 4, 0, 'Quelle est la meilleure façon d''accéder à la boîte e-mail d''un client ?', '["Un compte partagé avec toute l''équipe","Une délégation depuis son compte, sans son mot de passe","Son mot de passe envoyé par WhatsApp","Son mot de passe noté dans un carnet"]'::jsonb, 1, 'La délégation vous donne accès depuis votre propre compte. Le client garde son mot de passe et peut retirer l''accès à tout moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 4, 1, 'À quoi sert la double authentification ?', '["Envoyer des e-mails plus vite","Partager un compte avec un client","Retenir les mots de passe","Empêcher l''accès à un compte même si le mot de passe est volé"]'::jsonb, 3, 'En plus du mot de passe, il faut un code reçu sur le téléphone ou dans une application. Un voleur de mot de passe reste bloqué.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 4, 2, 'Que pouvez-vous faire avec le fichier des contacts d''un client ?', '["L''utiliser uniquement pour la tâche demandée","Le partager avec un autre client du même secteur","Le coller dans n''importe quel outil en ligne","En garder une copie pour vos futurs clients"]'::jsonb, 0, 'Les données personnelles servent seulement à la mission. Les copier, les partager ou les envoyer à un outil sans accord est une faute grave.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 4, 3, 'Quels numéros un indépendant demande-t-il en général pour facturer officiellement à Madagascar ?', '["Le NIF et la carte statistique (STAT)","Aucun numéro","Un numéro de passeport uniquement","Un numéro Mobile Money"]'::jsonb, 0, 'Le NIF s''obtient au centre fiscal, la carte statistique auprès de l''INSTAT. Renseignez-vous sur votre situation précise avant de facturer régulièrement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 0, 4, 4, 'Vous avez envoyé une invitation avec une mauvaise heure. Que faire ?', '["Attendre que quelqu''un s''en rende compte","Prévenir tout de suite et envoyer la correction","Accuser l''outil d''agenda","Supprimer l''invitation sans rien dire"]'::jsonb, 1, 'Une erreur signalée vite se corrige facilement. Cachée, elle devient un rendez-vous manqué et une perte de confiance.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 1, 'Écrire et communiquer pour un client', 'L''e-mail professionnel en 5 parties, la relecture sans fautes, les messages délicats écrits au nom du client, la communication au quotidien et le compte rendu de réunion.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 1, 0, 'L''e-mail professionnel en 5 parties', 10, 'L''e-mail est l''outil principal de l''assistant virtuel. Vous en écrirez des dizaines par jour, souvent **au nom de votre client** : chacun doit être clair, poli et sans faute, car il engage son image. Bonne nouvelle : un e-mail professionnel suit toujours la même structure. Cette leçon vous la donne, avec les formules à utiliser selon le destinataire.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire un e-mail professionnel en 5 parties.
+> 2. Écrire un objet précis.
+> 3. Choisir la formule d''appel et la formule de politesse adaptées.
+> 4. Placer l''essentiel au début du message.
+> 5. Créer une signature professionnelle.
+
+## Les 5 parties d''un e-mail professionnel
+
+```schema etapes
+titre: La structure d''un bon e-mail
+Objet : il résume la demande en quelques mots
+Formule d''appel : « Bonjour Madame Rabe, »
+Message : l''essentiel dans la première phrase, puis les détails
+Action attendue : ce que le destinataire doit faire, et avant quand
+Politesse et signature : « Bien cordialement, » puis nom, fonction, coordonnées
+```
+
+> [!exemple] Un e-mail complet
+> **Objet** : Rendez-vous du jeudi 18 mars : nouvelle date
+>
+> Bonjour Monsieur Martin,
+>
+> Mme Laurent a un empêchement jeudi 18 mars et vous prie de l''excuser. Elle vous propose deux nouvelles dates :
+> 1. vendredi 19 mars à 10 h (heure de Paris) ;
+> 2. lundi 22 mars à 14 h (heure de Paris).
+>
+> Pourriez-vous me dire laquelle vous convient, d''ici mercredi 17 mars au soir ?
+>
+> Bien cordialement,
+>
+> Hanta Rakoto
+> Assistante de Claire Laurent
+
+Relisez cet exemple : le destinataire comprend la situation dès la première phrase, voit les deux choix numérotés, et sait exactement quoi faire et avant quand.
+
+## L''objet : la ligne la plus lue
+
+Le destinataire voit l''objet **avant** d''ouvrir l''e-mail. Il décide en une seconde s''il le lit maintenant, plus tard ou jamais. Un bon objet permet aussi de retrouver l''e-mail dans six mois.
+
+```schema comparaison
+titre: Des objets vagues aux objets précis
+ton: mauvais-bon
+colonnes: Objet vague | Objet précis
+Bonjour | Devis n° D-2026-018 : formation du 12 avril
+Question | Salle de réunion : confirmation avant vendredi ?
+Urgent !!! | Facture F-2026-041 : échéance dépassée depuis 10 jours
+Document | Contrat de location signé : à relire avant lundi
+(pas d''objet) | Compte rendu de la réunion d''équipe du 3 mars
+```
+
+Un bon objet contient **le sujet** et, si besoin, **l''action ou la date**. Il tient en moins de 10 mots environ. Évitez les majuscules et les points d''exclamation pour signaler l''urgence : précisez plutôt la date limite.
+
+## Les formules selon le destinataire
+
+Le ton dépend de la relation avec la personne. Dans le doute, choisissez le plus formel : on peut toujours devenir plus familier ensuite, l''inverse est gênant.
+
+| Relation | Formule d''appel | Formule de politesse |
+| --- | --- | --- |
+| Inconnu, administration, courrier officiel | « Madame, Monsieur, » | « Je vous prie d''agréer, Madame, Monsieur, l''expression de mes salutations distinguées. » |
+| Contact professionnel connu | « Bonjour Madame Rabe, » | « Bien cordialement, » |
+| Contact habituel, ton plus chaleureux | « Bonjour Paul, » | « Belle journée, » ou « À bientôt, » |
+| Personne à qui l''on doit un respect particulier | « Monsieur le Directeur, » | « Veuillez agréer, Monsieur le Directeur, mes salutations respectueuses. » |
+
+Par défaut, utilisez le **vouvoiement**. Ne passez au tutoiement que si votre client vous le demande ou s''il tutoie lui-même le destinataire depuis longtemps.
+
+> [!madagascar] Le ton avec les clients malgaches
+> Dans les entreprises et les administrations malgaches, le respect de la hiérarchie compte beaucoup. Avec un directeur, un responsable d''ONG ou une administration, restez formel : « Monsieur le Directeur », formules complètes, vouvoiement. Si vous écrivez en malgache, gardez le même niveau de politesse et faites relire vos premiers messages par une personne de confiance.
+
+## Le message : l''essentiel d''abord
+
+Beaucoup de gens lisent leurs e-mails sur téléphone, entre deux rendez-vous. Ils ne lisent souvent que les deux premières lignes. Mettez donc l''information la plus importante **au début**.
+
+```schema entonnoir
+titre: L''ordre du message
+L''essentiel : ce qui se passe et ce que vous attendez
+Les détails utiles : dates, chiffres, choix possibles
+Le contexte : seulement s''il aide à comprendre
+```
+
+Quelques règles de forme :
+
+1. **Une idée par paragraphe**, de 2 à 3 lignes.
+2. **Des listes numérotées** dès qu''il y a plusieurs choix ou plusieurs questions : le destinataire peut répondre « 1 et 3 ».
+3. **Des dates complètes** : « jeudi 18 mars », jamais « jeudi prochain », qui peut se comprendre de deux façons.
+4. **L''heure avec le fuseau** pour toute personne à l''étranger : « 14 h, heure de Paris ».
+5. **Pas de majuscules pour crier** : écrivez « important » plutôt que « IMPORTANT !!! ».
+
+## La signature professionnelle
+
+La signature apparaît en bas de chaque e-mail. Elle doit être courte et utile.
+
+```schema checklist
+titre: Une bonne signature contient
+[x] Prénom et nom
+[x] Fonction : « Assistante de Claire Laurent » ou « Assistante virtuelle »
+[x] Un moyen de contact : téléphone ou WhatsApp, avec l''indicatif +261
+[x] Éventuellement le site ou le profil LinkedIn
+[x] Rien d''inutile : ni citation, ni image lourde, ni longue liste de réseaux sociaux
+```
+
+Pour les e-mails envoyés au nom d''un client, utilisez **sa** signature ou une signature validée par lui, par exemple : « Hanta Rakoto, pour Claire Laurent ».
+
+> [!erreur] L''e-mail « mur de texte »
+> Un assistant écrit un seul paragraphe de 15 lignes, avec la question importante cachée au milieu. Le destinataire lit le début, ne voit pas la question et ne répond pas. Trois jours plus tard, il faut relancer. **Découpez, numérotez et placez la demande en évidence** : un e-mail bien structuré obtient une réponse plus vite.
+
+> [!retenir]
+> - **5 parties** : objet, formule d''appel, message, action attendue, politesse et signature.
+> - Un **objet précis** : le sujet, et l''action ou la date.
+> - Dans le doute, le ton **le plus formel** et le **vouvoiement**.
+> - **L''essentiel d''abord**, des listes numérotées, des dates complètes, le fuseau horaire.
+> - Une **signature courte**, avec fonction et contact.
+
+## Exercice pratique : trois e-mails professionnels
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Créez une adresse Gmail d''exercice, qui vous servira pendant toute la formation (par exemple prenom.nom.assistante@gmail.com).
+> 2. Créez votre signature professionnelle dans les paramètres de Gmail.
+> 3. Rédigez 3 e-mails en suivant les 5 parties : une proposition de rendez-vous à un prospect de votre cliente fictive, une demande de devis à une salle de réunion à Antsirabe, une réponse à une personne qui demande les tarifs d''une formation.
+> 4. Réécrivez ces 3 objets vagues en objets précis : « Info », « Urgent », « Re: re: re: question ».
+> 5. Envoyez-vous les 3 e-mails et relisez-les sur votre téléphone.
+>
+> **À livrer** : votre signature, vos 3 e-mails et vos 3 objets réécrits.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 0, 0, 'Quel objet d''e-mail est le plus efficace ?', '["« Facture F-2026-041 : échéance dépassée depuis 10 jours »","« Question »","« Urgent !!! »","« Bonjour »"]'::jsonb, 0, 'Un bon objet donne le sujet et, si besoin, l''action ou la date. Le destinataire comprend avant d''ouvrir, et retrouve l''e-mail facilement plus tard.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 0, 1, 'Que faut-il placer dans la première phrase du message ?', '["Votre présentation détaillée","Le contexte complet de l''histoire","L''essentiel : ce qui se passe et ce que vous attendez","Des excuses pour le dérangement"]'::jsonb, 2, 'Beaucoup de lecteurs ne lisent que les deux premières lignes, souvent sur téléphone. L''essentiel doit donc arriver tout de suite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 0, 2, 'Vous écrivez pour la première fois à une administration. Quelle formule d''appel choisir ?', '["Aucune formule","« Coucou, »","« Salut, »","« Madame, Monsieur, »"]'::jsonb, 3, 'Avec un inconnu ou une administration, on choisit le ton le plus formel. On peut devenir plus familier ensuite, jamais l''inverse.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 0, 3, 'Pourquoi écrire « jeudi 18 mars » plutôt que « jeudi prochain » ?', '["« Jeudi prochain » peut se comprendre de deux façons","Parce que les jours s''écrivent toujours en chiffres","Il n''y a aucune différence","Parce que c''est plus long"]'::jsonb, 0, 'Selon le jour où l''on lit le message, « jeudi prochain » désigne cette semaine ou la suivante. Une date complète supprime le doute.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 0, 4, 'Que doit contenir une signature d''assistant écrivant pour un client ?', '["Une citation inspirante et plusieurs images","Uniquement un prénom","La liste de tous ses réseaux sociaux","Son nom et sa fonction, par exemple « assistante de Claire Laurent »"]'::jsonb, 3, 'La signature doit être courte et utile : nom, fonction, un moyen de contact. Le destinataire sait à qui il écrit.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 1, 1, 'Écrire sans fautes : relecture et pièges fréquents', 12, 'Quand vous écrivez au nom d''un client, chaque faute est la sienne aux yeux du destinataire. Un devis avec trois fautes fait douter du sérieux de toute l''entreprise. Écrire sans fautes n''est pas un don : c''est une **méthode de relecture**, de bons outils, et la connaissance des pièges les plus fréquents. Cette leçon vous donne les trois.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Relire un message avec une méthode en 4 passes.
+> 2. Utiliser un correcteur gratuit sans lui faire une confiance aveugle.
+> 3. Éviter les 10 pièges les plus fréquents du français écrit professionnel.
+> 4. Écrire correctement les dates, les heures et les montants.
+> 5. Construire votre liste personnelle de fautes à surveiller.
+
+## La relecture en 4 passes
+
+On ne voit pas toutes les fautes en une seule lecture : l''œil lit ce qu''il s''attend à lire. Relisez donc en plusieurs passes, chacune avec un objectif.
+
+```schema etapes
+titre: Relire un message important
+Le sens : le message est-il clair ? L''action attendue est-elle visible ?
+Les faits : noms, dates, heures, montants, numéros de téléphone, pièces jointes
+La langue : passer le texte dans un correcteur et vérifier chaque proposition
+La lecture finale : à voix basse, lentement, ou sur l''écran du téléphone
+```
+
+Pour un message court et courant, deux passes suffisent (les faits et la langue). Pour un devis, un courrier officiel ou un e-mail envoyé à beaucoup de personnes, faites les quatre.
+
+> [!astuce] La pause avant l''envoi
+> Dans Gmail, activez **l''annulation de l''envoi** avec le délai le plus long (30 secondes) : Paramètres → Voir tous les paramètres → Général → Annuler l''envoi. Vous aurez quelques secondes pour rattraper un message parti trop vite. Pour les messages importants, utilisez **Programmer l''envoi** (la flèche à côté du bouton Envoyer) et relisez avant l''heure prévue.
+
+## Les outils de correction
+
+| Outil | Prix | Points forts | Limites |
+| --- | --- | --- | --- |
+| **LanguageTool** | Offre gratuite | Extension pour le navigateur : corrige dans Gmail et les formulaires | Offre gratuite limitée sur les fautes de style |
+| **BonPatron** | Gratuit en ligne | Explique chaque erreur : idéal pour apprendre | Il faut copier-coller le texte |
+| **Scribens** | Offre gratuite | Grammaire, conjugaison et répétitions | Publicités dans l''offre gratuite |
+| **Antidote** | Payant | Très complet, avec dictionnaires et guides | Prix d''achat ou d''abonnement |
+| **Correcteur de Google Docs** | Gratuit | Déjà intégré à vos documents | Repère moins de fautes de grammaire |
+
+Ces outils évoluent : vérifiez les offres sur leur site officiel. Un assistant d''IA peut aussi relire un texte, mais pensez à la confidentialité (leçon 1.5) : retirez les noms et les informations sensibles avant de coller un message de client.
+
+> [!attention] Ce que le correcteur ne voit pas
+> Un correcteur ne sait pas que le rendez-vous est le **19** et non le **17**, que le client s''appelle **Rakotomalala** et non Rakotomalal, ni que vous avez écrit « mois » au lieu de « moi ». Il ne vérifie pas non plus que la pièce jointe est bien jointe. La passe des **faits** reste toujours votre travail.
+
+## Les pièges les plus fréquents
+
+```schema comparaison
+titre: 10 erreurs courantes dans les e-mails professionnels
+ton: mauvais-bon
+colonnes: À éviter | Correct
+Je vous serez reconnaissant | Je vous serais reconnaissant
+Je vais vous envoyé le devis | Je vais vous envoyer le devis
+Je vous envoi le devis | Je vous envoie le devis
+Les factures que j''ai envoyé | Les factures que j''ai envoyées
+Malgré qu''il soit absent | Bien qu''il soit absent
+Pour pallier à ce problème | Pour pallier ce problème
+Suite à votre appel | À la suite de votre appel
+Rendez-vous le Lundi 3 Mai | Rendez-vous le lundi 3 mai
+Je vous répond demain sans faute !!! | Je vous réponds demain sans faute.
+Merci de me tenir au courant svp | Merci de me tenir au courant.
+```
+
+Quelques explications utiles :
+
+1. **« Je serais »** (conditionnel, avec un *s*) exprime une demande polie. « Je serez » n''existe pas.
+2. **« Ci-joint »** reste invariable en début de phrase (« Ci-joint la facture ») ; placé après le nom, il s''accorde : « la facture ci-jointe ».
+3. **Le participe passé avec « avoir »** s''accorde avec ce qui est placé avant : « les factures (que) j''ai envoyées ».
+4. **Les jours et les mois** s''écrivent sans majuscule en français.
+5. **Les abréviations** de messagerie (svp, stp, slt) n''ont pas leur place dans un e-mail professionnel. Et l''abréviation de Monsieur est **M.**, pas « Mr », qui est anglais.
+
+## Les astuces de remplacement
+
+Pour les confusions de sons, une astuce simple permet de trancher en une seconde : remplacez le mot par un autre et écoutez si la phrase fonctionne.
+
+```schema chiffres
+titre: Remplacer pour vérifier
+é ou er : remplacez par « vendu » ou « vendre ». « Je vais envoyer » → « je vais vendre »
+a ou à : remplacez par « avait ». « Il a signé » → « il avait signé » ; sinon, c''est « à »
+ont ou on : remplacez par « avaient ». « Ils ont payé » → « ils avaient payé »
+ça ou sa : remplacez par « cela ». « Ça marche » → « cela marche » ; sinon, c''est « sa »
+ces ou ses : « ses » si c''est à lui ou à elle ; « ces » pour montrer
+```
+
+## Dates, heures et montants
+
+Les chiffres sont les erreurs les plus graves, car elles ont des conséquences concrètes : un rendez-vous manqué, une facture fausse.
+
+| Élément | Bonne écriture | À éviter |
+| --- | --- | --- |
+| Date | jeudi 18 mars 2027 | 18/3, « jeudi prochain » |
+| Heure | 14 h 30 (heure de Paris) | 2:30 pm, 14h30mn |
+| Montant en ariary | 120 000 Ar | 120.000Ar, 120000 ariary |
+| Montant en euros | 85,50 € | 85.50 €, € 85,50 |
+| Téléphone malgache | +261 34 12 345 67 | 0341234567 pour un contact à l''étranger |
+
+En français, on sépare les milliers par une **espace** et les décimales par une **virgule**. Pour un contact à l''étranger, donnez toujours le numéro avec l''indicatif **+261**.
+
+> [!madagascar] Votre liste personnelle
+> Quand le français n''est pas la langue parlée à la maison, chacun a ses propres fautes récurrentes : le genre de certains mots, des prépositions, des accords. Pendant un mois, notez dans un carnet **chaque faute** que le correcteur ou un relecteur vous signale. Vous verrez qu''elles se répètent : une dizaine d''erreurs représentent souvent la plupart de vos fautes. Relisez cette liste avant chaque message important.
+
+> [!erreur] Corriger sans relire les faits
+> Un assistant passe son devis dans un correcteur : zéro faute. Mais il a laissé le nom du client précédent, copié d''un ancien modèle. Le nouveau client reçoit un devis adressé à quelqu''un d''autre. **Quand vous partez d''un modèle, vérifiez chaque nom, chaque date et chaque montant**, ligne par ligne, avant l''envoi.
+
+> [!retenir]
+> - Relisez en **4 passes** : le sens, les faits, la langue, la lecture finale.
+> - Un **correcteur** aide, mais ne vérifie ni les noms, ni les dates, ni les pièces jointes.
+> - **Serais**, **ci-joint**, accords avec « avoir », jours et mois **sans majuscule**.
+> - Les **astuces de remplacement** règlent les confusions é / er, a / à, ça / sa.
+> - Dates complètes, heures avec fuseau, montants avec espaces et **+261** pour l''étranger.
+
+## Exercice pratique : corriger un e-mail
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Installez l''extension LanguageTool (ou un autre correcteur) dans votre navigateur.
+> 2. Corrigez cet e-mail, qui contient au moins 10 erreurs : « Objet : info. Bonjour Mr Rabe, suite à notre appel de Mardi, je vous envoi ci-jointe les factures que j''ai préparé. Je vous serez reconnaissant de me répondre avant le 5/4 svp. Malgré que le montant de 1500000Ar soit important, Mme Laurent est d''accord pour un paiement en deux fois. Cordialement !!! »
+> 3. Pour chaque correction, écrivez la règle en une phrase.
+> 4. Commencez votre liste personnelle avec 5 fautes que vous faites souvent.
+>
+> **À livrer** : l''e-mail corrigé, la liste des règles et votre liste personnelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 1, 0, 'Quelle phrase est correcte ?', '["Je vous serai reconnaissant de me répondu.","Je vous serez reconnaissant de me répondre.","Je vous serait reconnaissant de me répondre.","Je vous serais reconnaissant de me répondre."]'::jsonb, 3, 'Pour une demande polie, on utilise le conditionnel : « je serais », avec un s. « Je serez » n''existe pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 1, 1, 'Que ne vérifie pas un correcteur automatique ?', '["Les fautes de conjugaison courantes","Les fautes d''orthographe fréquentes","Les accords simples","Que la date du rendez-vous est la bonne"]'::jsonb, 3, 'Le correcteur repère des fautes de langue, mais ne peut pas savoir quelle est la bonne date, le bon nom ou le bon montant. C''est la passe des faits.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 1, 2, 'Comment écrire un rendez-vous en français ?', '["Le lundi 3 Mai à 14h30mn","Le 3/5 à 14 h","Le Lundi 3 Mai à 2:30 pm","Le lundi 3 mai à 14 h 30"]'::jsonb, 3, 'En français, les jours et les mois s''écrivent sans majuscule, et l''heure s''écrit « 14 h 30 ».');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 1, 3, '« Je vais vous (envoyer / envoyé) le devis. » Quelle astuce permet de choisir ?', '["Remplacer par « vendre » ou « vendu »","Remplacer par « cela »","Remplacer par « avait »","Compter les syllabes"]'::jsonb, 0, 'On dirait « je vais vous vendre » : c''est donc l''infinitif, « envoyer ». L''astuce du remplacement règle la confusion é / er.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 1, 4, 'Comment écrire un montant de cent vingt mille ariary ?', '["120000 ariary","Ar 120,000","120 000 Ar","120.000Ar"]'::jsonb, 2, 'En français, les milliers sont séparés par une espace, et l''unité suit le nombre, séparée par une espace.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 1, 2, 'Écrire au nom du client et les messages délicats', 12, 'Répondre à une demande de tarif est facile. Relancer une facture impayée, refuser une demande ou répondre à un client mécontent l''est beaucoup moins, surtout quand on écrit au nom de quelqu''un d''autre. Cette leçon vous apprend à écrire avec la voix de votre client, puis à rédiger les messages délicats avec une méthode qui reste polie, claire et ferme.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir comment signer un message envoyé pour le client.
+> 2. Créer le guide de ton d''un client.
+> 3. Construire une bibliothèque de modèles de réponse.
+> 4. Rédiger une relance de facture en 3 niveaux.
+> 5. Refuser poliment et répondre à une réclamation sans prendre de risque.
+
+## Écrire au nom du client : deux façons de signer
+
+```schema comparaison
+titre: Qui signe le message ?
+colonnes: Vous signez comme assistant | Vous écrivez avec la signature du client
+« Hanta Rakoto, assistante de Claire Laurent » | « Claire Laurent »
+Le destinataire sait qu''il écrit à l''assistante | Le destinataire pense écrire au client
+Pour l''agenda, les factures, l''organisation | Pour certains messages courants, si le client le demande
+Le cas le plus fréquent et le plus simple | À décider avec le client, avec des règles écrites
+```
+
+Par défaut, **signez en tant qu''assistant**. C''est honnête, et cela montre que votre client est bien organisé. N''écrivez avec la signature du client que s''il vous le demande clairement, et seulement pour les types de messages qu''il a choisis. Dans les deux cas, ne vous faites jamais passer pour quelqu''un d''autre de votre propre initiative.
+
+## Le guide de ton du client
+
+Chaque client a sa façon d''écrire : certains tutoient leurs clients, d''autres restent très formels ; certains écrivent « Belle journée ! », d''autres « Bien cordialement ». Pour écrire comme lui, construisez son **guide de ton** dès la première semaine.
+
+```schema checklist
+titre: Le guide de ton en 6 points
+[ ] Tutoiement ou vouvoiement, selon les destinataires
+[ ] Ses formules d''appel et de politesse habituelles
+[ ] Les mots qu''il utilise (« séance » ou « rendez-vous » ? « clients » ou « accompagnés » ?)
+[ ] Les mots ou les sujets à éviter
+[ ] La longueur habituelle de ses messages
+[ ] Ses signatures (la sienne et celle de l''assistant)
+```
+
+Pour le remplir, lisez une vingtaine d''e-mails envoyés par le client et notez ses habitudes. Puis faites valider le guide : « Voici ce que j''ai observé de votre façon d''écrire. Est-ce correct ? »
+
+### La bibliothèque de modèles
+
+Beaucoup de messages reviennent chaque semaine : confirmation de rendez-vous, envoi de devis, réponse aux questions fréquentes. Écrivez-les une fois, faites-les valider, puis enregistrez-les comme **modèles** (vous verrez comment dans Gmail au module 3).
+
+| Modèle | Quand l''utiliser | À personnaliser à chaque fois |
+| --- | --- | --- |
+| Confirmation de rendez-vous | Après la prise d''un rendez-vous | Nom, date, heure, fuseau, lien de visioconférence |
+| Envoi de devis | Après une demande de prix | Nom, numéro du devis, validité |
+| Réponse « informations et tarifs » | Demande d''un prospect | Nom, service demandé |
+| Accusé de réception d''une réclamation | Client mécontent | Nom, sujet, délai de réponse |
+| Relance de facture (3 niveaux) | Facture non payée | Numéro, montant, échéance |
+
+## La méthode des messages délicats
+
+Pour tous les messages délicats, suivez le même ordre. Il permet de rester poli sans être flou.
+
+```schema etapes
+titre: Un message délicat en 4 temps
+Reconnaître : remercier, ou reconnaître la situation de la personne
+Dire les faits : clairement, sans reproche ni excuse inutile
+Proposer : une solution, un choix ou une prochaine étape
+Fixer la suite : une date, une action, un contact
+```
+
+### La relance de facture en 3 niveaux
+
+Une facture non payée n''est pas toujours de la mauvaise volonté : souvent, elle a simplement été oubliée. On commence donc par un rappel aimable, puis on devient plus ferme.
+
+```schema etapes
+titre: Relancer une facture impayée (J = date d''échéance)
+Rappel aimable à J + 3 : « Sauf erreur de notre part… »
+Relance ferme à J + 10 : rappel de la date et demande d''une date de paiement
+Dernière relance à J + 20 : à faire valider par le client, avec les suites prévues
+```
+
+> [!exemple] Le rappel aimable
+> **Objet** : Facture F-2027-041 : rappel d''échéance
+>
+> Bonjour Madame Andrianina,
+>
+> Sauf erreur de notre part, la facture F-2027-041 de 450 000 Ar, arrivée à échéance le 5 avril, n''a pas encore été réglée. Vous la trouverez de nouveau en pièce jointe.
+>
+> Si le paiement a déjà été effectué, merci de ne pas tenir compte de ce message. Dans le cas contraire, pourriez-vous nous indiquer la date prévue du règlement ?
+>
+> Bien cordialement,
+> Hanta Rakoto, assistante de M. Rabe
+
+« Sauf erreur de notre part » laisse une porte ouverte : peut-être le paiement est-il en cours. Le message reste courtois et demande une **date précise**.
+
+### Refuser poliment
+
+1. **Remerciez** pour la demande ou l''intérêt.
+2. **Refusez clairement** : « Mme Laurent ne pourra pas intervenir le 12 avril. » Évitez les « peut-être » qui laissent espérer.
+3. **Donnez une raison courte**, sans entrer dans les détails : « son agenda est complet ce mois-ci ».
+4. **Proposez une alternative** si elle existe : une autre date, une ressource, un confrère.
+
+### Répondre à une réclamation
+
+Votre rôle n''est pas de régler seul le problème, mais de **montrer que la personne est entendue** et de préparer la décision du client.
+
+```schema comparaison
+titre: Face à un client mécontent
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Se justifier ou contredire la personne | Remercier pour le retour et reconnaître la gêne
+Promettre un remboursement ou un geste | Annoncer un délai de réponse : « d''ici jeudi »
+Répondre sous le coup de l''émotion | Résumer la situation pour le client avec une proposition
+Laisser le message sans réponse pendant des jours | Accuser réception dans la journée
+```
+
+> [!madagascar] Les relances avec les entreprises locales
+> Avec beaucoup d''entreprises à Madagascar, une relance écrite seule reste parfois sans effet : l''e-mail n''est pas toujours lu, ou il est lu par une autre personne. Après le rappel aimable par e-mail, un **appel courtois** ou un message WhatsApp au bon interlocuteur (le service comptable, le responsable) fait souvent avancer les choses. Notez toujours la date et le résultat de chaque relance.
+
+> [!erreur] Promettre à la place du client
+> Un client final se plaint d''une séance annulée. Pour le calmer, l''assistant répond : « Bien sûr, nous allons vous rembourser intégralement. » Le client, lui, avait prévu de proposer une nouvelle séance. Il doit maintenant choisir entre perdre de l''argent ou se contredire. **Accusez réception, donnez un délai, et laissez la décision au client.**
+
+> [!retenir]
+> - Par défaut, **signez en tant qu''assistant** ; la signature du client seulement à sa demande.
+> - Le **guide de ton** et la **bibliothèque de modèles** vous font gagner du temps et évitent les maladresses.
+> - Les messages délicats : **reconnaître, dire les faits, proposer, fixer la suite**.
+> - Relance de facture en **3 niveaux**, de l''aimable au ferme, avec une date demandée.
+> - Face à une réclamation : **accuser réception, donner un délai, préparer la décision**.
+
+## Exercice pratique : quatre messages délicats
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Rédigez les 3 niveaux de relance pour une facture de 280 000 Ar, échue depuis 3 jours, envoyée à une boutique d''Antsirabe.
+> 2. Rédigez un refus poli pour une demande d''intervention gratuite dans une école, en proposant une alternative.
+> 3. Rédigez l''accusé de réception d''une réclamation : « Votre formatrice est arrivée avec 40 minutes de retard. »
+> 4. Rédigez le résumé de cette réclamation pour votre client, avec deux réponses possibles.
+> 5. Créez un guide de ton fictif pour une cliente coach, en 6 points.
+>
+> **À livrer** : vos 3 relances, votre refus, l''accusé de réception, le résumé pour le client et le guide de ton.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 2, 0, 'Comment signer par défaut un message envoyé pour le client ?', '["En tant qu''assistant : « Hanta Rakoto, assistante de Claire Laurent »","Avec le nom du client, sans le prévenir","Sans signature","Avec un faux nom"]'::jsonb, 0, 'Signer comme assistant est honnête et montre que le client est bien organisé. La signature du client ne s''utilise que s''il le demande clairement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 2, 1, 'À quoi sert le guide de ton d''un client ?', '["Calculer le prix de ses services","Écrire comme lui : tutoiement, formules, mots habituels","Fixer ses rendez-vous","Ranger ses fichiers"]'::jsonb, 1, 'Chaque client a sa façon d''écrire. Le guide de ton, validé par lui, vous permet d''écrire en son nom sans fausse note.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 2, 2, 'Pourquoi écrire « Sauf erreur de notre part » dans un rappel de facture ?', '["C''est une formule obligatoire par la loi","Pour menacer le client","Pour reconnaître une erreur de facturation","Le paiement est peut-être en cours : on reste courtois"]'::jsonb, 3, 'Une facture impayée est souvent un simple oubli. La formule laisse une porte ouverte et garde une bonne relation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 2, 3, 'Un client final mécontent exige un remboursement. Que répond l''assistant ?', '["Il promet le remboursement pour calmer la situation","Il explique que le client a tort","Il accuse réception, annonce un délai de réponse et prépare la décision du client","Il ne répond pas"]'::jsonb, 2, 'Le remboursement est une décision du client. L''assistant montre que la personne est entendue, donne un délai et prépare un résumé avec des propositions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 2, 4, 'Dans quel ordre écrire un message délicat ?', '["Proposer, se justifier, conclure","Dire les faits, menacer, conclure","S''excuser longuement, puis dire les faits","Reconnaître, dire les faits, proposer, fixer la suite"]'::jsonb, 3, 'Cet ordre permet d''être poli sans être flou : la personne se sent reconnue, comprend la situation et sait ce qui va se passer.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 1, 3, 'Communiquer avec votre client', 11, 'Votre client ne vous voit pas travailler. Tout ce qu''il sait de votre travail passe par vos messages : s''ils sont rares, il s''inquiète ; s''ils sont trop nombreux, il est dérangé ; s''ils sont flous, il doit tout vérifier. Bien communiquer avec son client, c''est trouver le bon rythme, le bon canal et le bon format. Cette leçon vous donne une organisation simple qui rassure le client sans lui prendre de temps.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir le bon canal selon le type de message.
+> 2. Recevoir une consigne et la reformuler pour éviter les malentendus.
+> 3. Regrouper vos questions au lieu de déranger le client toute la journée.
+> 4. Rédiger un résumé quotidien utile.
+> 5. Préparer le point hebdomadaire avec le client.
+
+## Le bon canal pour chaque message
+
+| Canal | Pour quoi | Délai de réponse attendu |
+| --- | --- | --- |
+| **WhatsApp ou messagerie** | L''urgent et le très court : « Le rendez-vous de 15 h est annulé » | Dans l''heure, pendant vos horaires |
+| **E-mail** | Les demandes, les documents, les résumés : tout ce qui doit laisser une trace | Dans la journée |
+| **Outil de tâches** (Notion, Trello) | Le suivi des tâches : statut, échéance, commentaires | Consulté chaque jour |
+| **Appel ou visioconférence** | Les sujets complexes, le point hebdomadaire, les décisions importantes | Sur rendez-vous |
+
+Ces règles se décident **avec le client** dès le début de la mission (module 5). Écrivez-les et respectez-les : si le client sait que l''urgent arrive par WhatsApp, il peut lire ses e-mails une seule fois par jour, l''esprit tranquille.
+
+## Recevoir une consigne
+
+Beaucoup d''erreurs viennent d''une consigne mal comprise. Le client pense avoir été clair ; vous pensez avoir compris. Pour éviter cela, **reformulez** chaque consigne importante avant de commencer.
+
+```schema etapes
+titre: Recevoir une consigne en 4 étapes
+Écouter : lire ou écouter jusqu''au bout, sans interrompre
+Reformuler : « Si je comprends bien, vous voulez… »
+Compléter : quoi exactement, pour quand, sous quelle forme, avec quelles limites
+Confirmer : par écrit, en une ou deux lignes
+```
+
+> [!exemple] Une consigne floue, puis claire
+> **La consigne** : « Trouve-moi un hôtel pour Paris. »
+>
+> **La reformulation de Hanta** : « Pour être sûre de bien faire : vous cherchez un hôtel à Paris pour les nuits du 14 au 16 avril, près de la gare de Lyon, à moins de 150 € la nuit, avec petit-déjeuner. Je vous propose 3 options d''ici demain midi, sans réserver. C''est bien ça ? »
+>
+> Le client corrige un seul point : « Plutôt près du lieu du salon, à la porte de Versailles. » Sans la reformulation, Hanta aurait cherché dans le mauvais quartier.
+
+Les questions à se poser pour compléter une consigne :
+
+```schema chiffres
+titre: Les 4 questions d''une consigne complète
+Quoi : le résultat précis attendu, avec un exemple si possible
+Quand : la date et l''heure limites, dans le fuseau du client
+Comment : le format (tableau, e-mail, document), le niveau de détail
+Jusqu''où : ce que vous pouvez décider seul, et le budget
+```
+
+## Regrouper ses questions
+
+Un client qui reçoit une question toutes les 20 minutes ne peut plus travailler. Sauf urgence, **regroupez vos questions** dans un seul message, une ou deux fois par jour.
+
+```schema comparaison
+titre: Poser ses questions
+ton: mauvais-bon
+colonnes: Questions au fil de l''eau | Questions regroupées
+9 h 10 : « Je réponds à M. Paul ? » | 11 h 30 : un message avec 4 questions numérotées
+9 h 45 : « Le devis, c''est quel prix ? » | Chaque question avec votre proposition
+10 h 20 : « Je classe où les factures ? » | Le client répond « 1 oui, 2 non, 3 et 4 d''accord »
+11 h 05 : « Et pour vendredi ? » | En 2 minutes, tout est réglé
+```
+
+Numérotez toujours vos questions et ajoutez votre proposition à chacune : le client peut répondre en quelques mots.
+
+## Le résumé quotidien
+
+Le résumé de fin de journée est votre meilleur outil de confiance. En 30 secondes de lecture, le client sait ce qui est fait et ce qui l''attend.
+
+> [!exemple] Un résumé quotidien
+> **Objet** : Résumé du mardi 6 avril
+>
+> **Fait aujourd''hui**
+> - 42 e-mails traités ; 3 rendez-vous fixés (agenda à jour).
+> - Factures F-2027-051 et F-2027-052 envoyées.
+>
+> **En cours**
+> - Comparaison des 3 salles de formation : envoi demain à 12 h (heure de Paris).
+>
+> **Vous attend (2 décisions)**
+> 1. M. Paul demande une remise de 10 % : je lui réponds que vous étudiez sa demande ?
+> 2. Invitation au salon du 20 mai : je l''accepte ?
+>
+> **Demain** : relances de factures, préparation du point de vendredi.
+
+Gardez toujours les quatre mêmes rubriques : **Fait, En cours, Vous attend, Demain**. Le client prend l''habitude de lire directement la rubrique « Vous attend ».
+
+## Le point hebdomadaire
+
+Une fois par semaine, un appel de 15 à 30 minutes permet de faire le bilan et de préparer la semaine suivante.
+
+```schema cycle
+titre: Le rythme de la semaine
+Lundi : le plan de la semaine, envoyé au client
+Chaque jour : le résumé de fin de journée
+Vendredi : le point hebdomadaire en visioconférence
+Après le point : le compte rendu et les nouvelles tâches
+```
+
+Préparez un **ordre du jour** et envoyez-le la veille : ce qui a été fait, les chiffres de la semaine, les décisions en attente, vos propositions, la semaine suivante. Un point préparé dure 15 minutes ; un point improvisé en dure 45.
+
+> [!madagascar] Les messages vocaux
+> Beaucoup de clients, à Madagascar comme ailleurs, donnent leurs consignes par **message vocal** WhatsApp, en marchant ou en conduisant. C''est pratique pour eux, mais un vocal se retrouve mal et s''oublie vite. Écoutez-le en entier, puis répondez **par écrit** avec la reformulation : « Bien reçu. Je résume : … ». Vous gardez une trace, et le client peut corriger un malentendu tout de suite.
+
+> [!erreur] Le silence pendant trois jours
+> Un assistant travaille bien, mais n''envoie rien : il attend d''avoir « tout terminé » pour en parler. Le client, sans nouvelles, imagine que rien n''avance et finit par écrire, agacé. **Un client sans nouvelles imagine le pire.** Même quand une tâche n''est pas finie, le résumé quotidien montre qu''elle avance.
+
+> [!retenir]
+> - **WhatsApp** pour l''urgent, **e-mail** pour ce qui laisse une trace, **appel** pour les décisions.
+> - **Reformulez** chaque consigne : quoi, quand, comment, jusqu''où.
+> - **Regroupez** vos questions, numérotées, avec une proposition pour chacune.
+> - Le **résumé quotidien** : Fait, En cours, Vous attend, Demain.
+> - Un **point hebdomadaire** préparé, avec ordre du jour envoyé la veille.
+
+## Exercice pratique : vos outils de communication
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Reformulez ces 3 consignes floues en ajoutant les 4 questions : « Fais un tableau de mes clients », « Organise la réunion de la semaine prochaine », « Réponds aux gens sur Facebook ».
+> 2. Regroupez ces 4 questions en un seul message avec vos propositions : un fournisseur demande un acompte ; un prospect veut un rendez-vous samedi ; une facture semble payée deux fois ; une cliente demande une attestation.
+> 3. Rédigez un résumé quotidien fictif avec les 4 rubriques.
+> 4. Rédigez l''ordre du jour d''un point hebdomadaire de 20 minutes.
+>
+> **À livrer** : vos 3 reformulations, votre message de questions, votre résumé et votre ordre du jour.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 3, 0, 'Quel canal utiliser pour prévenir qu''un rendez-vous de 15 h est annulé ?', '["Un e-mail lu le lendemain","Le résumé de fin de semaine","Le point hebdomadaire","WhatsApp ou la messagerie convenue pour l''urgent"]'::jsonb, 3, 'L''urgent et le très court passent par la messagerie convenue avec le client. L''e-mail sert à ce qui doit laisser une trace.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 3, 1, 'Que faire avant de commencer une tâche importante demandée oralement ?', '["Commencer tout de suite sans rien demander","Reformuler la consigne et la confirmer par écrit","Demander au client de tout réécrire","Attendre une deuxième demande"]'::jsonb, 1, 'La reformulation fait apparaître les malentendus avant le travail : quoi, quand, comment, jusqu''où.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 3, 2, 'Quelles sont les 4 rubriques du résumé quotidien ?', '["Heures, Prix, Facture, Paiement","Bonjour, Travail, Problèmes, Au revoir","Fait, En cours, Vous attend, Demain","Urgent, Important, Inutile, Autre"]'::jsonb, 2, 'Toujours les mêmes rubriques : le client prend l''habitude de lire directement « Vous attend », où se trouvent ses décisions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 3, 3, 'Vous avez 4 questions non urgentes pour votre client. Que faites-vous ?', '["Les envoyer une par une dès qu''elles arrivent","Les regrouper dans un message numéroté, avec une proposition pour chacune","Les garder pour le mois suivant","Ne pas les poser et décider seul"]'::jsonb, 1, 'Un message regroupé et numéroté permet au client de tout régler en deux minutes, sans être dérangé toute la journée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 3, 4, 'Un client donne ses consignes par message vocal. Quelle est la bonne pratique ?', '["Ignorer le vocal","Répondre par écrit avec un résumé de la consigne","Répondre par un autre vocal sans rien noter","Demander au client de ne plus jamais envoyer de vocaux"]'::jsonb, 1, 'Le résumé écrit garde une trace et permet au client de corriger un malentendu tout de suite.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 1, 4, 'Prendre des notes et rédiger un compte rendu', 11, 'Après une réunion, chacun se souvient d''une version différente de ce qui a été décidé. Le **compte rendu** règle ce problème : il dit noir sur blanc ce qui a été décidé, qui doit faire quoi, et pour quand. C''est une tâche très demandée aux assistants virtuels, qui assistent aux visioconférences pour prendre des notes. Cette leçon vous donne la méthode, du carnet de notes au document envoyé. Elle se termine par le projet du module 2.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer une réunion pour prendre des notes efficacement.
+> 2. Noter l''essentiel plutôt que tout.
+> 3. Rédiger un compte rendu clair, avec un tableau des actions.
+> 4. Utiliser l''enregistrement et la transcription avec prudence.
+> 5. Envoyer et suivre le compte rendu.
+
+## Avant la réunion
+
+Une bonne prise de notes commence avant la réunion. Demandez au client :
+
+1. **L''ordre du jour** : les sujets prévus, dans l''ordre.
+2. **La liste des participants**, avec l''orthographe exacte des noms et leur fonction.
+3. **Le type de compte rendu** attendu : court (décisions et actions) ou détaillé.
+4. **Le lien de la réunion**, et si vous pouvez couper votre caméra pendant la prise de notes.
+
+Préparez ensuite votre **modèle** : un document avec l''en-tête déjà rempli et un titre pour chaque point de l''ordre du jour. Pendant la réunion, vous n''aurez plus qu''à compléter.
+
+## Pendant la réunion : noter l''essentiel
+
+On ne note pas tout ce qui se dit : c''est impossible, et inutile. On note ce qui servira **après** la réunion.
+
+```schema comparaison
+titre: Ce qu''il faut noter
+ton: bon-mauvais
+colonnes: À noter | À laisser de côté
+Les décisions prises : « On garde la date du 12 juin » | Les phrases mot pour mot
+Les actions : qui fait quoi, pour quand | Les plaisanteries et les apartés
+Les chiffres : budgets, quantités, dates | Les longues explications déjà connues
+Les questions restées sans réponse | Les opinions de chacun, sauf si elles changent la décision
+```
+
+Utilisez des abréviations personnelles pour aller vite : **D** pour décision, **A** pour action, **?** pour question ouverte. Exemple de notes : « D : séminaire maintenu le 12/06. A : Lova → devis traiteur, ven. ? : nombre exact de participants. »
+
+> [!astuce] Quand vous n''avez pas compris
+> Si une décision n''est pas claire, notez-la avec un point d''interrogation et posez la question à la fin de la réunion, ou dans un message au client juste après : « Pour le compte rendu : la date limite des inscriptions est bien le 30 mai ? » Une question vaut mieux qu''une erreur dans un document envoyé à tous.
+
+## La structure du compte rendu
+
+```schema etapes
+titre: Un compte rendu en 5 parties
+En-tête : titre, date, heure, participants présents et absents
+Points abordés : un paragraphe court par point de l''ordre du jour
+Décisions : la liste des décisions, une par ligne
+Actions : un tableau qui dit qui fait quoi, et pour quand
+Prochaine réunion : date, heure et sujets prévus
+```
+
+Le **tableau des actions** est la partie la plus utile : c''est lui que les participants relisent dans les jours qui suivent.
+
+| Action | Responsable | Échéance |
+| --- | --- | --- |
+| Demander deux devis de traiteur | Lova | vendredi 4 juin |
+| Envoyer l''invitation aux partenaires | Hanta | lundi 7 juin |
+| Confirmer le nombre de participants | M. Rabe | mercredi 9 juin |
+
+> [!exemple] La réunion de l''association Tanora Vonona
+> Hanta assiste en visioconférence à la réunion mensuelle d''une association de jeunes d''Antsirabe (une association fictive). La réunion dure 1 h 20 et part dans tous les sens. Son compte rendu tient sur une page : 4 points abordés, 3 décisions, 6 actions avec responsables et dates. Le président le transfère tel quel aux membres absents, et lui demande de faire le compte rendu de toutes les réunions suivantes.
+
+## Enregistrer et transcrire
+
+Certains outils de visioconférence permettent d''enregistrer la réunion ou d''en produire une transcription écrite ; des outils d''intelligence artificielle proposent aussi des résumés automatiques. Les fonctions disponibles dépendent de l''outil et de l''abonnement.
+
+```schema checklist
+titre: Avant d''enregistrer une réunion
+[ ] Le client est d''accord pour utiliser l''enregistrement
+[ ] Tous les participants sont prévenus au début de la réunion, et acceptent
+[ ] L''outil de transcription est approuvé par le client (confidentialité)
+[ ] Vous prenez quand même des notes : la transcription ne repère pas les décisions
+[ ] L''enregistrement est supprimé quand le compte rendu est validé, si le client le demande
+```
+
+Une transcription automatique fait des erreurs, surtout sur les noms propres, les chiffres et les accents. Un résumé automatique peut inventer une décision qui n''a pas été prise. **Le compte rendu final reste votre travail** : vous le vérifiez avec vos notes.
+
+## Après la réunion
+
+1. **Rédigez le compte rendu le jour même**, tant que vos souvenirs sont frais.
+2. **Envoyez-le d''abord à votre client** pour validation, s''il le souhaite.
+3. **Diffusez-le aux participants** dans les 24 heures, avec un objet clair : « Compte rendu : réunion de préparation du séminaire, 2 juin ».
+4. **Reportez les actions** dans l''outil de suivi du client (Notion, tableau), avec leurs échéances.
+5. **Relancez gentiment** les responsables la veille de leur échéance, si le client vous le demande.
+
+> [!madagascar] Les réunions en deux langues
+> À Madagascar, une réunion passe souvent du français au malgache, et inversement. Demandez au client dans quelle langue rédiger le compte rendu (le plus souvent en français pour les partenaires et les bailleurs), et vérifiez l''orthographe des noms malgaches avec la liste des participants : un nom mal écrit dans un document officiel est vite remarqué.
+
+> [!erreur] Tout noter mot à mot
+> Un débutant essaie de noter chaque phrase. Il prend du retard, perd le fil, et rate la décision la plus importante, prise en 10 secondes à la fin. Son compte rendu fait 6 pages et personne ne le lit. **Notez les décisions, les actions et les chiffres** : un bon compte rendu tient souvent sur une page.
+
+> [!retenir]
+> - Avant : **ordre du jour**, participants et **modèle prêt**.
+> - Pendant : **décisions, actions, chiffres, questions ouvertes**, pas le mot à mot.
+> - Le compte rendu : en-tête, points, décisions, **tableau des actions**, prochaine réunion.
+> - Enregistrement : **accord de tous**, et vérification avec vos notes.
+> - Envoi **sous 24 heures**, puis suivi des actions.
+
+## Exercice pratique : un compte rendu réel
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Choisissez une réunion ou un débat public filmé d''environ 30 minutes (conseil municipal, table ronde, webinaire), disponible en ligne.
+> 2. Préparez votre modèle de compte rendu avant de regarder.
+> 3. Prenez vos notes pendant la vidéo, sans faire de pause, avec les abréviations D, A et ?.
+> 4. Rédigez le compte rendu en 5 parties, sur une page maximum, avec un tableau des actions.
+>
+> **À livrer** : le lien de la vidéo, vos notes brutes et votre compte rendu.
+
+## Projet du module 2 : votre kit de communication
+
+> [!projet] Projet du module · 2 heures
+> Préparez un kit que vous pourrez réutiliser dès votre premier client. Votre cliente fictive : Claire Laurent, coach en reconversion professionnelle à Lyon.
+> 1. **Signature** : votre signature d''assistante, et celle à utiliser pour Claire Laurent.
+> 2. **Guide de ton** : le guide en 6 points de Claire Laurent (inventez ses habitudes de façon réaliste).
+> 3. **Bibliothèque de modèles** : 8 modèles de messages (confirmation de rendez-vous, report, réponse « informations et tarifs », envoi de devis, 3 relances de facture, accusé de réception d''une réclamation).
+> 4. **Communication avec la cliente** : vos règles de canaux, un résumé quotidien et l''ordre du jour d''un point hebdomadaire.
+> 5. **Relecture** : passez tout le kit dans la méthode des 4 passes et un correcteur.
+>
+> **À livrer** : votre kit complet dans un seul document, propre et sans faute. Il rejoint votre portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 4, 0, 'Que faut-il noter en priorité pendant une réunion ?', '["Uniquement ce que dit le client","Chaque phrase, mot pour mot","Les plaisanteries pour l''ambiance","Les décisions, les actions, les chiffres et les questions ouvertes"]'::jsonb, 3, 'Ce sont les éléments qui servent après la réunion. Le mot à mot fait perdre le fil et rate souvent la décision importante.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 4, 1, 'Quelle partie du compte rendu est la plus relue ?', '["La liste des participants","Le titre","Le tableau des actions : qui fait quoi, pour quand","La date de la prochaine réunion"]'::jsonb, 2, 'Les participants y retrouvent ce qu''ils doivent faire et pour quand. C''est aussi la base du suivi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 4, 2, 'Que faut-il avant d''enregistrer une réunion ?', '["L''accord du client et de tous les participants","Rien : c''est automatique","Seulement un bon micro","L''accord d''un seul participant"]'::jsonb, 0, 'Enregistrer des personnes sans les prévenir pose un problème de confiance et de confidentialité. Tout le monde doit être d''accord.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 4, 3, 'Pourquoi vérifier un résumé produit automatiquement par un outil d''IA ?', '["Il est toujours trop long","Il peut se tromper sur les noms et les chiffres, ou inventer une décision","Il est interdit de l''utiliser","Pour le traduire en anglais"]'::jsonb, 1, 'Les transcriptions et les résumés automatiques font des erreurs. Le compte rendu final reste votre responsabilité, vérifié avec vos notes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 1, 4, 4, 'Quand envoyer le compte rendu aux participants ?', '["Juste avant la réunion suivante","Un mois plus tard","Jamais : il reste chez le client","Dans les 24 heures, après validation du client s''il le souhaite"]'::jsonb, 3, 'Envoyé vite, le compte rendu fixe les décisions pendant qu''elles sont fraîches et lance les actions.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 2, 'Gérer la boîte e-mail et l''agenda', 'La méthode des 4 D, Gmail en professionnel (recherche, filtres, modèles, délégation), les rendez-vous sans erreur de fuseau, l''organisation de l''agenda et des réunions, les déplacements et les événements.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 2, 0, 'Trier une boîte de réception : la méthode des 4 D', 11, 'Un dirigeant peut recevoir des dizaines, parfois des centaines d''e-mails par jour. Au milieu des publicités et des notifications se cachent une demande de client, une facture à payer, une invitation importante. Trier une boîte de réception, ce n''est pas lire tous les e-mails : c''est **prendre une décision** pour chacun, vite et sans rien perdre. Cette leçon vous donne la méthode la plus utilisée par les assistants : les 4 D.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Comprendre le rôle d''une boîte de réception.
+> 2. Prendre une décision pour chaque e-mail avec la méthode des 4 D.
+> 3. Organiser les libellés d''un client.
+> 4. Traiter la boîte à heures fixes plutôt qu''en continu.
+> 5. Faire remonter au client seulement ce qui le concerne.
+
+## La boîte de réception n''est pas un placard
+
+Une boîte de réception est comme une **boîte aux lettres** : on y prend le courrier, puis on le range ou on le traite. Si on y laisse tout, elle devient un placard en désordre où l''on ne retrouve plus rien.
+
+> [!definition] La boîte à zéro
+> Une boîte de réception « à zéro » ne veut pas dire qu''il n''y a plus aucun e-mail dans le compte. Cela veut dire que **chaque e-mail reçu a été traité** : répondu, transmis, noté dans une liste de tâches ou archivé. La boîte de réception ne contient plus que les messages arrivés depuis le dernier tri.
+
+L''objectif n''est pas d''être parfait chaque minute, mais de revenir à zéro au moins une fois par jour. Le client sait alors qu''aucun message important n''est oublié.
+
+## La méthode des 4 D
+
+Chaque e-mail reçoit **une seule décision**, parmi quatre. La méthode vient de l''anglais, où les quatre mots commencent par la lettre D.
+
+| Décision | Quand | Action |
+| --- | --- | --- |
+| **Faire** (*Do*) | Le traitement prend moins de 2 minutes | Répondre ou traiter tout de suite, puis archiver |
+| **Déléguer** (*Delegate*) | Quelqu''un d''autre doit s''en occuper | Transférer avec un mot d''explication, puis noter le suivi |
+| **Différer** (*Defer*) | Le traitement prend plus de 2 minutes | Ajouter une tâche avec une date, puis archiver |
+| **Supprimer** (*Delete*) | Publicité, notification, information sans action | Archiver, et se désinscrire si c''est inutile |
+
+Pour un assistant, « déléguer » veut souvent dire **faire remonter au client** : une décision que lui seul peut prendre. Ces e-mails vont dans un libellé dédié et apparaissent dans le résumé quotidien.
+
+```schema etapes
+titre: La décision pour chaque e-mail
+Inutile : archiver, et se désinscrire si besoin
+Moins de 2 minutes : faire tout de suite
+Une décision d''un autre : transmettre au client ou à la bonne personne
+Sinon : créer une tâche avec une date, puis archiver
+```
+
+> [!astuce] La règle des 2 minutes
+> Si répondre prend moins de 2 minutes, répondez tout de suite : noter la tâche, la retrouver et la relire plus tard prendrait plus de temps que de la faire. Au-delà de 2 minutes, ne commencez pas pendant le tri : notez la tâche et continuez le tri. Vous la ferez ensuite, dans un bloc de travail prévu.
+
+## Les libellés du client
+
+Dans Gmail, on range les e-mails avec des **libellés** (l''équivalent des dossiers dans Outlook). Proposez au client une organisation courte : trop de libellés, et plus personne ne sait où ranger.
+
+```schema arbre
+titre: Les libellés conseillés
+1 - À traiter par le client/ # ce que lui seul peut décider
+2 - En attente de réponse/ # vous attendez quelqu''un
+3 - Factures et paiements/
+4 - À lire/ # lettres d''information utiles, sans urgence
+5 - Clients/
+  Client A/
+  Client B/
+6 - Administratif/
+```
+
+Les chiffres devant les noms gardent les libellés dans cet ordre. Le libellé **1 - À traiter par le client** est le plus important : le client sait que tout ce qui l''attend est là, et nulle part ailleurs.
+
+## Trier à heures fixes
+
+Regarder la boîte de réception toutes les cinq minutes coupe toutes les autres tâches. Les assistants organisés trient la boîte à **heures fixes**, en blocs, et surveillent seulement l''urgent entre deux.
+
+```schema chiffres
+titre: Un rythme de tri pour un client
+Le matin : le tri complet des e-mails de la nuit, avant tout le reste
+En début d''après-midi : un deuxième tri, plus court
+En fin de journée : le dernier tri, puis le résumé quotidien
+Entre les tris : seulement les messages urgents, signalés par le client ou par un filtre
+```
+
+Adaptez ce rythme aux horaires du client : pour un client en France, le tri du matin à Madagascar traite déjà les e-mails arrivés la veille au soir chez lui.
+
+> [!exemple] La boîte du docteur Rabe
+> Le docteur Rabe, médecin à Antananarivo, a 640 e-mails non lus. Le premier jour, Hanta archive 450 publicités et notifications, puis trie les 190 e-mails restants avec les 4 D : 64 réponses rapides envoyées, 25 e-mails transmis à la secrétaire du cabinet, 12 tâches créées, 9 e-mails rangés dans « À traiter par le client », et 80 informations sans action archivées après lecture. Le soir, son résumé tient en 6 lignes. Le docteur prend ses 9 décisions en 15 minutes.
+
+## Archiver plutôt que supprimer
+
+| Action | Où va l''e-mail ? | Peut-on le retrouver ? |
+| --- | --- | --- |
+| **Archiver** | Il quitte la boîte de réception, mais reste dans le compte | Oui, avec la recherche, à tout moment |
+| **Supprimer** | Il va dans la corbeille | Oui pendant 30 jours, puis il disparaît définitivement |
+
+Un e-mail sans intérêt aujourd''hui peut devenir utile dans six mois : une preuve de commande, un échange avec un fournisseur. **Archivez par défaut**, et ne supprimez que ce que le client vous a demandé de supprimer.
+
+> [!madagascar] Gmail hors connexion
+> Pendant une coupure de connexion, vous pouvez continuer à trier et à rédiger avec **Gmail hors connexion** (dans le navigateur Chrome : Paramètres de Gmail → Hors connexion). Les e-mails rédigés partent automatiquement au retour de la connexion. Activez cette option **uniquement sur votre ordinateur personnel**, jamais sur un ordinateur partagé : les e-mails du client y seraient enregistrés.
+
+> [!erreur] Lire sans décider
+> Un assistant ouvre un e-mail, le lit, se dit « je verrai plus tard », et le laisse dans la boîte. Il le relira trois fois avant de le traiter, et l''oubliera peut-être. **Chaque e-mail ouvert reçoit une décision immédiate** : faire, transmettre, différer ou archiver.
+
+> [!retenir]
+> - La boîte de réception est une **boîte aux lettres**, pas un placard.
+> - **4 D** : faire (moins de 2 minutes), déléguer, différer, supprimer ou archiver.
+> - Peu de libellés, dont **« À traiter par le client »**.
+> - Trier à **heures fixes**, en blocs.
+> - **Archiver** plutôt que supprimer.
+
+## Exercice pratique : le tri de 15 e-mails
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Dans votre Gmail d''exercice, créez les 6 libellés conseillés.
+> 2. Pour chacun de ces e-mails reçus par une cliente coach, choisissez la décision des 4 D et le libellé : lettre d''information d''un magazine ; demande de tarifs d''un prospect ; facture d''un logiciel ; invitation à parler dans une conférence ; notification Facebook ; question d''une cliente sur l''heure de sa séance ; relance d''un fournisseur impayé ; proposition de partenariat ; publicité pour un ordinateur ; demande d''attestation de formation ; confirmation de réservation d''hôtel ; avis négatif reçu sur Google ; question sur l''adresse du cabinet ; lettre d''information utile sur le métier de coach ; demande de rendez-vous de la banque.
+> 3. Pour les e-mails « Faire », rédigez 3 réponses rapides.
+> 4. Rédigez le résumé quotidien qui présente à la cliente les e-mails qu''elle doit traiter.
+>
+> **À livrer** : votre tableau de tri (e-mail, décision, libellé), vos 3 réponses et votre résumé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 0, 0, 'Que veut dire une boîte de réception « à zéro » ?', '["Tous les e-mails du compte ont été supprimés","Les e-mails sont tous marqués comme lus","Le client ne reçoit plus d''e-mails","Chaque e-mail reçu a été traité, répondu, transmis, noté ou archivé"]'::jsonb, 3, 'La boîte à zéro ne vide pas le compte : elle garantit qu''aucun e-mail reçu n''attend sans décision.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 0, 1, 'Un e-mail se traite en une minute. Que faites-vous pendant le tri ?', '["Vous le traitez tout de suite, puis vous l''archivez","Vous le transférez au client","Vous le laissez dans la boîte","Vous créez une tâche pour plus tard"]'::jsonb, 0, 'C''est la règle des 2 minutes : noter, retrouver et relire la tâche plus tard prendrait plus de temps que de la faire tout de suite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 0, 2, 'Où ranger un e-mail qui demande une décision que seul le client peut prendre ?', '["Dans la corbeille","Dans « À lire »","Nulle part : on attend qu''il le voie","Dans le libellé « À traiter par le client », repris dans le résumé quotidien"]'::jsonb, 3, 'Le client sait que tout ce qui l''attend est à un seul endroit, et le résumé quotidien le lui rappelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 0, 3, 'Pourquoi archiver plutôt que supprimer ?', '["La suppression est payante","L''archivage est plus rapide","Il n''y a aucune différence","Un e-mail archivé reste retrouvable par la recherche à tout moment"]'::jsonb, 3, 'Un e-mail supprimé disparaît définitivement après 30 jours dans la corbeille. Un e-mail archivé peut redevenir utile des mois plus tard.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 0, 4, 'Pourquoi trier la boîte à heures fixes plutôt qu''en continu ?', '["Parce que c''est obligatoire","Parce que Gmail ne reçoit les e-mails qu''à certaines heures","Pour ne pas couper toutes les autres tâches, en surveillant seulement l''urgent","Pour répondre plus lentement aux clients"]'::jsonb, 2, 'Le tri en blocs permet de se concentrer sur les autres tâches. Les messages urgents restent repérés grâce au canal convenu ou à un filtre.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 2, 1, 'Gmail en professionnel', 11, 'La méthode des 4 D vous dit quoi décider. Les fonctions de Gmail vous permettent de le faire **deux à trois fois plus vite** : chercher un e-mail en quelques secondes, laisser Gmail ranger automatiquement les messages répétitifs, répondre avec un modèle, travailler au clavier. Cette leçon vous fait prendre en main ces fonctions, puis la délégation, qui permet d''accéder à la boîte d''un client sans son mot de passe.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Vous repérer dans l''interface de Gmail.
+> 2. Retrouver n''importe quel e-mail avec les opérateurs de recherche.
+> 3. Créer des filtres qui rangent les e-mails automatiquement.
+> 4. Enregistrer et utiliser des modèles de réponse.
+> 5. Mettre en place la délégation d''une boîte e-mail.
+
+## L''interface de Gmail
+
+```schema ecran
+titre: Gmail sur ordinateur (mail.google.com)
+haut: Barre de recherche et options de recherche [1]
+gauche: Nouveau message, boîte de réception, libellés [2]
+centre: Liste des e-mails [3]
+droite: Panneau latéral : Agenda, Keep, Tâches [4]
+[1] L''icône à droite de la barre ouvre les options de recherche, d''où l''on crée les filtres
+[2] Cliquez sur « Plus » pour voir tous les libellés ; les trois points à côté d''un libellé changent sa couleur
+[3] La liste des e-mails, ou l''e-mail ouvert ; cochez-en plusieurs pour les archiver ou les étiqueter d''un coup
+[4] Ouvrez l''agenda sans quitter vos e-mails
+```
+
+Si votre client utilise **Outlook** (Microsoft 365), les principes sont les mêmes avec d''autres noms : des **dossiers** au lieu des libellés, des **règles** au lieu des filtres, des **QuickParts** ou des **modèles** pour les réponses enregistrées.
+
+## Trouver n''importe quel e-mail
+
+La barre de recherche de Gmail accepte des **opérateurs** : des mots-clés qui précisent la recherche. Ils fonctionnent aussi pour créer des filtres.
+
+| Opérateur | Ce qu''il trouve | Exemple |
+| --- | --- | --- |
+| `from:` | Les e-mails d''un expéditeur | `from:compta@fournisseur.mg` |
+| `to:` | Les e-mails envoyés à quelqu''un | `to:paul@exemple.fr` |
+| `subject:` | Un mot dans l''objet | `subject:devis` |
+| `has:attachment` | Les e-mails avec pièce jointe | `from:banque has:attachment` |
+| `filename:` | Un type ou un nom de fichier | `filename:pdf` |
+| `older_than:` / `newer_than:` | Plus vieux ou plus récent que | `older_than:1y` (plus d''un an) |
+| `after:` / `before:` | Après ou avant une date | `after:2027/03/01` |
+| `is:unread` | Les non lus | `is:unread label:clients` |
+| `-` | Exclut un mot | `facture -relance` |
+
+Combinez-les : `from:hotel subject:réservation after:2027/01/01` trouve toutes les réservations d''hôtel depuis le début de l''année.
+
+## Les filtres : Gmail range à votre place
+
+Un filtre applique automatiquement une action à tous les e-mails qui correspondent à une recherche, dès leur arrivée.
+
+```schema etapes
+titre: Créer un filtre dans Gmail
+Rechercher : taper la recherche, par exemple from:factures@logiciel.com
+Vérifier : les résultats sont-ils bien les bons e-mails ?
+Créer : ouvrir les options de recherche, puis cliquer sur « Créer un filtre »
+Choisir l''action : appliquer un libellé, ignorer la boîte de réception, marquer comme lu…
+Ranger l''existant : cocher « Appliquer également aux conversations correspondantes »
+```
+
+Les filtres les plus utiles pour un client :
+
+1. **Factures** des fournisseurs réguliers : libellé « Factures et paiements ».
+2. **Notifications** des réseaux sociaux et des outils : libellé « Notifications », et ignorer la boîte de réception.
+3. **Lettres d''information** utiles : libellé « À lire », et ignorer la boîte de réception.
+4. **Clients importants** : marquer comme important, pour ne jamais les manquer.
+
+> [!exemple] Les réservations du Lodge Fasika
+> Un petit hôtel de Nosy Be reçoit ses réservations par e-mail depuis deux plateformes de réservation et son site. Son assistante crée trois filtres sur les adresses d''envoi des plateformes : toutes les réservations reçoivent le libellé « Réservations » en vert et restent dans la boîte de réception. Les notifications publicitaires des mêmes plateformes, elles, sont archivées automatiquement. Le gérant voit en un coup d''œil ses nouvelles réservations du jour.
+
+## Les modèles de réponse
+
+Les modèles de Gmail permettent d''insérer un texte enregistré en deux clics. Votre bibliothèque de modèles (leçon 2.3) devient ainsi immédiatement utilisable.
+
+1. **Activez les modèles** : Paramètres → Voir tous les paramètres → Paramètres avancés → Modèles → Activer, puis enregistrez.
+2. **Créez un modèle** : rédigez un nouveau message, puis cliquez sur les trois points en bas de la fenêtre → Modèles → Enregistrer le brouillon comme modèle.
+3. **Utilisez-le** : dans une réponse, trois points → Modèles → choisissez le modèle.
+4. **Personnalisez toujours** le nom, la date et les détails avant l''envoi.
+
+## Le clavier plutôt que la souris
+
+Activez d''abord les raccourcis : Paramètres → Voir tous les paramètres → Général → Raccourcis clavier activés.
+
+```schema chiffres
+titre: Les raccourcis à connaître
+e : archiver l''e-mail ouvert ou sélectionné
+r : répondre ; a : répondre à tous ; f : transférer
+c : écrire un nouveau message
+/ : aller dans la barre de recherche
+j et k : e-mail suivant et précédent
+? : afficher la liste complète des raccourcis
+```
+
+Sur une centaine d''e-mails par jour, les raccourcis font gagner un temps précieux. Apprenez-en deux par jour, pas tous d''un coup.
+
+## La délégation : accéder à la boîte du client
+
+La délégation permet au client de vous donner accès à sa boîte **sans vous donner son mot de passe**. Vous pouvez lire, répondre, archiver et ranger ses e-mails depuis votre propre compte.
+
+| Étape | Qui | Où |
+| --- | --- | --- |
+| 1. Accorder l''accès | Le client | Paramètres → Comptes et importation (ou Comptes) → Accorder l''accès à votre compte → saisir votre adresse |
+| 2. Accepter | Vous | Le lien reçu par e-mail |
+| 3. Ouvrir la boîte | Vous | Votre photo de profil, en haut à droite de Gmail → le compte du client |
+| 4. Retirer l''accès | Le client | Au même endroit, à la fin de la mission |
+
+En général, les destinataires voient que l''e-mail a été envoyé **par vous pour le client** (un réglage de la délégation permet de changer cet affichage). Selon le type de compte (Gmail personnel ou Google Workspace d''une entreprise), l''option peut être limitée ou désactivée par l''administrateur, et l''accès peut prendre un peu de temps à s''activer : le client vérifie avec la personne qui gère ses comptes.
+
+> [!erreur] Le filtre trop large
+> Pour ranger les factures, un assistant crée un filtre sur le mot « facture », avec « ignorer la boîte de réception ». Une semaine plus tard, le client découvre qu''une réclamation (« votre facture est fausse ! ») n''est jamais apparue dans sa boîte. **Avant de créer un filtre, testez la recherche** et regardez tous les résultats. Préférez les filtres sur une adresse d''expéditeur précise.
+
+> [!retenir]
+> - Les **opérateurs** (`from:`, `subject:`, `has:attachment`, `older_than:`) retrouvent tout en secondes.
+> - Les **filtres** rangent automatiquement : testez toujours la recherche d''abord.
+> - Les **modèles** rendent votre bibliothèque de réponses utilisable en deux clics.
+> - Les **raccourcis clavier** : e, r, c, /, j et k.
+> - La **délégation** : l''accès à la boîte du client, sans son mot de passe.
+
+## Exercice pratique : un Gmail de professionnel
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Dans votre Gmail d''exercice, activez les raccourcis clavier et les modèles.
+> 2. Enregistrez 3 modèles de votre bibliothèque (leçon 2.3).
+> 3. Créez 2 filtres : l''un pour les notifications d''un réseau social, l''autre pour une lettre d''information.
+> 4. Écrivez les recherches qui trouvent : les e-mails avec PDF de plus de 6 mois ; les e-mails non lus d''un expéditeur ; les e-mails avec « devis » dans l''objet, sauf ceux qui contiennent « relance ».
+> 5. Avec un proche qui a une adresse Gmail, testez la délégation dans les deux sens, puis retirez l''accès.
+>
+> **À livrer** : des captures de vos modèles et de vos filtres, vos 3 recherches, et une capture de la délégation (sans information personnelle).');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 1, 0, 'Quelle recherche trouve les e-mails avec pièce jointe envoyés par la banque ?', '["banque -attachment","to:banque is:unread","from:banque has:attachment","subject:banque"]'::jsonb, 2, 'from: filtre l''expéditeur et has:attachment garde seulement les e-mails avec une pièce jointe.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 1, 1, 'Que faut-il faire avant de créer un filtre ?', '["Rien, le filtre se corrige seul","Tester la recherche et regarder tous les résultats","Demander le mot de passe du client","Supprimer les anciens e-mails"]'::jsonb, 1, 'Un filtre trop large peut cacher un e-mail important, comme une réclamation. On vérifie d''abord les résultats de la recherche.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 1, 2, 'Que fait le raccourci « e » dans Gmail ?', '["Il supprime définitivement l''e-mail","Il écrit un nouvel e-mail","Il ouvre l''agenda","Il archive l''e-mail ouvert ou sélectionné"]'::jsonb, 3, 'Le raccourci « e » archive. « c » écrit un nouveau message, « r » répond et « / » place le curseur dans la recherche.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 1, 3, 'Comment accéder à la boîte d''un client sans son mot de passe ?', '["Le client vous accorde l''accès par la délégation de son compte","En créant une fausse adresse","En lui demandant de vous transférer tous ses e-mails","C''est impossible"]'::jsonb, 0, 'La délégation vous permet de lire, répondre et ranger depuis votre propre compte. Le client peut retirer l''accès à tout moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 1, 4, 'Comment utiliser un modèle de réponse enregistré ?', '["L''envoyer tel quel à tout le monde","L''insérer, puis personnaliser le nom, la date et les détails avant l''envoi","Le transformer en filtre","Le copier dans WhatsApp"]'::jsonb, 1, 'Un modèle fait gagner du temps, mais un message envoyé avec le mauvais nom ou la mauvaise date fait mauvaise impression.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 2, 2, 'Fixer un rendez-vous sans erreur', 11, 'Fixer un rendez-vous paraît simple. Pourtant, c''est là que se produisent les erreurs les plus visibles : un client qui attend seul en visioconférence, deux rendez-vous à la même heure, un prospect qui se présente un jour trop tôt. Chaque erreur d''agenda se voit, et chacune coûte la confiance du client. Cette leçon vous donne une méthode en 6 étapes et les réflexes pour ne jamais vous tromper de fuseau horaire.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Connaître les règles d''agenda de votre client avant de proposer un créneau.
+> 2. Fixer un rendez-vous en 6 étapes.
+> 3. Proposer des créneaux à une personne dans un autre fuseau horaire.
+> 4. Créer un événement complet, que l''on comprend sans l''ouvrir.
+> 5. Déplacer ou annuler un rendez-vous proprement.
+
+## Les règles d''agenda du client
+
+Avant de proposer le moindre créneau, vous devez connaître les habitudes de votre client. Posez-lui ces questions dès le début de la mission, et notez les réponses.
+
+```schema checklist
+titre: Les règles à connaître
+[ ] Ses horaires de rendez-vous : pas avant 9 h ? Pas le vendredi après-midi ?
+[ ] La durée habituelle de chaque type de rendez-vous
+[ ] Le temps de pause nécessaire entre deux rendez-vous
+[ ] Les jours ou les moments réservés : travail de fond, vie personnelle
+[ ] Les rendez-vous que vous pouvez fixer seul, et ceux à valider
+[ ] L''outil de visioconférence utilisé (Google Meet, Zoom, Teams)
+```
+
+## Fixer un rendez-vous en 6 étapes
+
+```schema etapes
+titre: La méthode des 6 étapes
+Vérifier : les disponibilités du client et ses règles d''agenda
+Proposer : 2 ou 3 créneaux précis à la personne
+Indiquer le fuseau : « 14 h, heure de Paris »
+Créer l''événement : titre clair, lieu ou lien, téléphone, objet
+Inviter : la personne, depuis l''agenda
+Rappeler : un rappel la veille, pour le client et si besoin pour l''invité
+```
+
+**Pourquoi 2 ou 3 créneaux ?** Un seul créneau oblige souvent à recommencer s''il ne convient pas. Une semaine entière (« quand vous voulez ») oblige la personne à réfléchir à votre place. Deux ou trois créneaux précis permettent de répondre en un mot.
+
+Pendant que vous attendez la réponse, **bloquez provisoirement** les créneaux proposés dans l''agenda du client (par exemple avec un événement « Option : M. Paul »). Vous éviterez de proposer le même créneau à deux personnes. Supprimez les options non retenues dès la réponse.
+
+## Les rendez-vous entre plusieurs fuseaux
+
+Quand le client et l''invité ne sont pas dans le même pays, indiquez chaque heure **dans le fuseau du lecteur**. Pour vérifier une conversion, utilisez l''affichage du fuseau secondaire de Google Agenda (leçon 1.4) ou un convertisseur en ligne, comme timeanddate.com.
+
+> [!exemple] Une cliente à Paris, un prospect à Montréal
+> Claire Laurent, à Paris, veut un appel avec un prospect de Montréal. En avril, Paris est à UTC+2, Montréal à UTC−4 : il y a 6 heures d''écart. Hanta, à Antananarivo (UTC+3), propose :
+>
+> 1. jeudi 15 avril à 15 h, heure de Paris (9 h à Montréal) ;
+> 2. vendredi 16 avril à 16 h, heure de Paris (10 h à Montréal).
+>
+> Dans le message au prospect, elle écrit d''abord **l''heure de Montréal**, puis celle de Paris entre parenthèses. Dans son propre agenda, elle vérifie : 15 h à Paris, c''est 16 h pour elle.
+
+| Si l''événement est à… | Paris (avril) | Montréal (avril) | Antananarivo |
+| --- | --- | --- | --- |
+| 9 h à Paris | 9 h | 3 h | 10 h |
+| 15 h à Paris | 15 h | 9 h | 16 h |
+| 17 h à Paris | 17 h | 11 h | 18 h |
+
+Remarquez la première ligne : 9 h à Paris, c''est 3 h du matin à Montréal. Avant de proposer un créneau, vérifiez toujours qu''il tombe **dans les heures de travail des deux personnes**.
+
+> [!cle] L''invitation se convertit toute seule
+> Quand vous envoyez une invitation depuis Google Agenda, chaque invité la voit **dans son propre fuseau horaire**, à condition que son agenda soit bien réglé. C''est une sécurité de plus, mais pas une excuse : dans vos messages écrits, indiquez toujours le fuseau.
+
+## Un événement complet
+
+Le client doit comprendre un rendez-vous **sans ouvrir l''événement**, en regardant seulement son agenda sur son téléphone.
+
+| Champ | Ce qu''on y met | Exemple |
+| --- | --- | --- |
+| **Titre** | Type de rendez-vous · nom · moyen | « Appel découverte · Sophie Morel (prospect) · Meet » |
+| **Date et heure** | Avec le bon fuseau horaire | jeudi 15 avril, 15 h – 15 h 30, heure de Paris |
+| **Lieu ou lien** | Adresse complète, ou lien de visioconférence | Le lien Google Meet ajouté à l''événement |
+| **Invités** | L''adresse e-mail de la personne | sophie.morel@exemple.fr |
+| **Description** | Objet, téléphone, documents utiles | « Souhaite un accompagnement de 3 mois. Tél. : … » |
+| **Notification** | Un rappel adapté | 1 jour avant et 15 minutes avant |
+
+> [!madagascar] Les rendez-vous en présentiel à Antananarivo
+> Pour un rendez-vous en personne, tenez compte des **embouteillages** : prévoyez une marge entre deux rendez-vous dans des quartiers différents, surtout aux heures de pointe. Les adresses étant parfois difficiles à trouver, ajoutez dans la description un **repère** (« en face de la pharmacie, portail vert ») et un lien de carte. Indiquez aussi le numéro de téléphone de la personne à appeler en cas de retard.
+
+## Déplacer ou annuler un rendez-vous
+
+1. **Prévenez la personne au plus tôt**, avec une excuse brève et deux nouveaux créneaux.
+2. **Modifiez l''événement existant** au lieu de le supprimer et d''en créer un nouveau : l''invité reçoit automatiquement la mise à jour, et l''historique reste propre.
+3. **En cas d''annulation**, supprimez l''événement en envoyant la notification d''annulation aux invités, puis vérifiez qu''ils l''ont bien reçue.
+4. **Notez la raison** dans votre suivi si le client le souhaite (par exemple, un prospect qui reporte souvent).
+
+```schema comparaison
+titre: Prévenir d''un changement
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Prévenir une heure avant | Prévenir dès que le changement est connu
+« Le rendez-vous est annulé. » | « Mme Laurent a un empêchement et vous prie de l''excuser. »
+Laisser la personne proposer une autre date | Proposer tout de suite deux nouveaux créneaux
+Supprimer l''événement et en créer un autre | Modifier l''événement existant
+```
+
+> [!erreur] L''heure sans fuseau
+> Un assistant à Antananarivo écrit à un prospect en France : « Rendez-vous confirmé jeudi à 14 h. » Il pensait 14 h à Madagascar ; le prospect a compris 14 h en France. Résultat : une heure d''écart, et un client qui attend seul. **Une heure envoyée à l''étranger s''écrit toujours avec son fuseau** : « 14 h, heure de Paris ».
+
+> [!retenir]
+> - Connaissez les **règles d''agenda** du client avant de proposer un créneau.
+> - **6 étapes** : vérifier, proposer 2 ou 3 créneaux, fuseau, événement, invitation, rappel.
+> - Écrivez l''heure **dans le fuseau du lecteur**, et vérifiez qu''elle tombe dans ses heures de travail.
+> - Un **titre d''événement** qui se comprend sans ouvrir l''événement.
+> - Pour un changement : prévenir tôt, proposer, **modifier** l''événement existant.
+
+## Exercice pratique : trois rendez-vous
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Dans votre agenda d''exercice, notez les règles d''une cliente fictive : rendez-vous de 9 h à 17 h (heure de Paris), du lundi au jeudi, 30 minutes de pause entre deux appels.
+> 2. Proposez par écrit 3 créneaux à un prospect de Montréal, en été, avec les deux heures.
+> 3. Créez l''événement complet pour le créneau choisi et invitez votre propre adresse personnelle.
+> 4. Rédigez le message de report de ce rendez-vous, avec deux nouveaux créneaux, et modifiez l''événement.
+> 5. Créez un rendez-vous en présentiel à Antananarivo, avec adresse, repère et téléphone dans la description.
+>
+> **À livrer** : vos messages, des captures des événements et de l''invitation reçue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 2, 0, 'Combien de créneaux proposer à une personne pour un rendez-vous ?', '["Un seul, à prendre ou à laisser","Aucun : elle choisit seule","Toute la semaine","2 ou 3 créneaux précis"]'::jsonb, 3, 'Deux ou trois créneaux précis permettent de répondre en un mot, sans recommencer et sans faire réfléchir la personne à votre place.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 2, 1, 'En avril, il est 15 h à Paris. Quelle heure est-il à Montréal ?', '["10 h","21 h","9 h","3 h"]'::jsonb, 2, 'En avril, Paris est à UTC+2 et Montréal à UTC−4 : 6 heures d''écart. 15 h − 6 h = 9 h.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 2, 2, 'Quel titre d''événement est le meilleur ?', '["« Sophie »","« Appel découverte · Sophie Morel (prospect) · Meet »","« Rendez-vous »","« Appel »"]'::jsonb, 1, 'Le client doit comprendre le rendez-vous sans ouvrir l''événement : type, nom de la personne et moyen de rendez-vous.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 2, 3, 'Un rendez-vous doit être déplacé. Que faire dans l''agenda ?', '["Créer un deuxième événement à côté","Modifier l''événement existant, pour que l''invité reçoive la mise à jour","Supprimer l''événement et en créer un nouveau sans prévenir","Ne rien changer dans l''agenda"]'::jsonb, 1, 'Modifier l''événement envoie automatiquement la mise à jour aux invités et garde un agenda propre.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 2, 4, 'Pourquoi bloquer provisoirement les créneaux proposés ?', '["Pour que le client ne voie pas les rendez-vous","Pour remplir l''agenda","Pour ne pas proposer le même créneau à deux personnes","C''est obligatoire dans Google Agenda"]'::jsonb, 2, 'En attendant la réponse, une « option » dans l''agenda évite les doubles réservations. On la supprime dès que la personne a choisi.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 2, 3, 'L''agenda du client et ses réunions', 10, 'Fixer des rendez-vous un par un ne suffit pas : un bon assistant **organise toute la semaine** de son client. Il protège des moments pour le travail de fond, évite les journées de huit réunions d''affilée, prépare chaque réunion importante et repère les problèmes avant qu''ils n''arrivent. Cette leçon vous apprend à gérer l''agenda d''un client comme un véritable outil de travail.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Demander le bon niveau d''accès à l''agenda du client.
+> 2. Organiser l''agenda avec des couleurs, des blocs et des pauses.
+> 3. Mettre en place une page de réservation en ligne.
+> 4. Préparer une réunion importante.
+> 5. Faire la revue hebdomadaire de l''agenda.
+
+## Le bon niveau d''accès
+
+Le client partage son agenda avec vous depuis les paramètres de Google Agenda : il choisit son agenda dans la colonne de gauche, puis ajoute votre adresse dans la partie consacrée au partage avec des personnes précises, en choisissant le droit.
+
+| Droit dans Google Agenda | Ce que vous pouvez faire | Quand le demander |
+| --- | --- | --- |
+| Voir uniquement les disponibilités | Voir les créneaux occupés, sans détail | Pour proposer des créneaux, sans plus |
+| Voir tous les détails des événements | Lire les rendez-vous | Pour préparer les journées du client |
+| Apporter des modifications aux événements | Créer, déplacer, supprimer | Pour gérer complètement l''agenda |
+| Apporter des modifications et gérer le partage | Tout, y compris partager l''agenda | Rarement : le client garde ce droit |
+
+Pour gérer l''agenda, demandez **« Apporter des modifications aux événements »**. Le client garde le contrôle du partage.
+
+## Organiser la semaine du client
+
+Un agenda bien organisé se lit d''un coup d''œil. Proposez au client quelques règles simples :
+
+1. **Une couleur par type d''événement** : rendez-vous clients, réunions internes, travail de fond, personnel.
+2. **Des blocs de travail protégés** : par exemple deux matinées par semaine sans réunion, pour le travail qui demande de la concentration.
+3. **Des pauses** de 15 à 30 minutes entre deux longs rendez-vous.
+4. **Les déplacements** inscrits comme des événements, avec leur durée réelle.
+
+```schema barres
+titre: Exemple de répartition d''une semaine de 40 heures
+unite: h
+Rendez-vous clients : 14
+Travail de fond protégé : 10
+Réunions internes : 6
+Administratif et e-mails : 6
+Pauses et déplacements : 4
+```
+
+Cette répartition est un exemple : chaque client a la sienne. Demandez-lui quel équilibre il souhaite, puis faites-la respecter. Un client qui retrouve ses matinées de travail de fond vous remerciera plus que pour cent e-mails triés.
+
+> [!exemple] Le directeur d''ONG à Antananarivo
+> M. Randria dirige une ONG et passe ses journées en réunions : partenaires locaux, bailleurs en Europe, équipe sur le terrain. Son assistante met en place quatre couleurs (bailleurs en bleu, partenaires en vert, équipe en orange, déplacements en gris), protège ses mardis matin pour l''écriture des rapports, et place les appels avec l''Europe en début d''après-midi, quand la journée commence là-bas. En un mois, les rapports partent à l''heure pour la première fois de l''année.
+
+## Les pages de réservation
+
+Une page de réservation permet aux personnes de **choisir elles-mêmes un créneau** libre dans l''agenda du client, sans échange d''e-mails. Elle fait gagner beaucoup de temps aux clients qui reçoivent de nombreux rendez-vous courts.
+
+```schema comparaison
+titre: Deux outils courants
+colonnes: Agenda de réservation de Google Agenda | Calendly
+Intégré à Google Agenda | Outil séparé, relié à l''agenda du client
+Une page avec les créneaux libres du client | Plusieurs types de rendez-vous, rappels, questions avant réservation
+Certaines options sont réservées aux offres payantes | Offre gratuite limitée, offres payantes plus complètes
+Pratique pour un usage simple | Très utilisé par les coachs et consultants
+```
+
+Les fonctions et les prix changent souvent : vérifiez sur le site officiel avant de conseiller un outil. Dans la plupart des cas, **le client a l''abonnement** et vous donne accès pour le configurer.
+
+Pour configurer une page de réservation, il faut définir avec le client : les types de rendez-vous et leur durée, les plages horaires ouvertes, le délai minimum avant une réservation (par exemple 24 heures), les pauses entre deux rendez-vous, les questions à poser à la personne, et le message de confirmation.
+
+## Préparer une réunion importante
+
+```schema etapes
+titre: Le calendrier de préparation
+5 jours avant : confirmer la date avec les participants, réserver la salle ou créer le lien
+2 jours avant : envoyer l''ordre du jour et les documents à lire
+La veille : rappel aux participants, vérification du lien et des documents
+1 heure avant : préparer le modèle de compte rendu, tester la connexion
+Après : compte rendu et suivi des actions (leçon 2.5)
+```
+
+> [!astuce] Le dossier de la réunion
+> Pour chaque réunion importante, mettez dans la description de l''événement les liens utiles : l''ordre du jour, les documents, le compte rendu de la réunion précédente. Le client trouve tout en un clic, même depuis son téléphone, juste avant d''entrer en réunion.
+
+## La revue hebdomadaire de l''agenda
+
+Chaque vendredi, prenez 20 minutes pour vérifier les **deux semaines à venir**. Vous repérez les problèmes quand il est encore temps de les régler.
+
+```schema checklist
+titre: La revue du vendredi
+[ ] Pas deux événements au même moment
+[ ] Chaque rendez-vous à distance a son lien de visioconférence
+[ ] Chaque rendez-vous en personne a son adresse et un temps de déplacement
+[ ] Les pauses et les blocs de travail sont respectés
+[ ] Les changements d''heure à venir (Europe, Amérique) sont pris en compte
+[ ] Les documents des réunions importantes sont prêts ou demandés
+```
+
+Terminez la revue par un court message au client : « Semaine prochaine : 9 rendez-vous, mardi matin protégé, un conflit jeudi à 11 h : je propose de déplacer l''appel avec M. Paul à 15 h ? »
+
+> [!erreur] La journée sans respiration
+> Pour satisfaire tout le monde, l''assistant accepte des rendez-vous de 9 h à 18 h sans aucune pause. Le premier retard décale toute la journée ; le client arrive épuisé et en retard à son dernier rendez-vous, le plus important. **Une pause dans l''agenda n''est pas du temps perdu** : c''est ce qui permet aux rendez-vous suivants de commencer à l''heure.
+
+> [!retenir]
+> - Demandez le droit **« Apporter des modifications aux événements »**.
+> - **Couleurs, blocs de travail protégés, pauses** : un agenda qui se lit d''un coup d''œil.
+> - Une **page de réservation** évite les échanges d''e-mails pour les rendez-vous courts.
+> - Une réunion importante se **prépare 5 jours avant**.
+> - Chaque vendredi, la **revue des deux semaines** à venir.
+
+## Exercice pratique : la semaine d''un client
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Créez un agenda « Client test » dans votre Google Agenda et partagez-le avec une autre de vos adresses avec le droit de modification.
+> 2. Organisez une semaine complète : 8 rendez-vous clients, 3 réunions internes, 2 blocs de travail protégés, des pauses, 4 couleurs.
+> 3. Créez une page de réservation (avec l''outil gratuit de votre choix) pour des appels de 30 minutes, avec 24 heures de délai minimum.
+> 4. Faites la revue du vendredi de votre semaine et rédigez le message au client.
+>
+> **À livrer** : une capture de la semaine, le lien ou une capture de la page de réservation, et votre message de revue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 3, 0, 'Quel droit demander pour gérer complètement l''agenda d''un client ?', '["Voir uniquement les disponibilités","Apporter des modifications aux événements","Aucun droit : il suffit d''un lien public","Voir tous les détails des événements"]'::jsonb, 1, 'Ce droit permet de créer, déplacer et supprimer des événements. Le client garde le droit de gérer le partage.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 3, 1, 'À quoi sert un bloc de travail protégé dans l''agenda ?', '["Cacher l''agenda aux autres","Facturer plus d''heures","Garder du temps sans réunion pour le travail de concentration","Éviter les rappels"]'::jsonb, 2, 'Sans blocs protégés, l''agenda se remplit de réunions et le travail de fond n''est jamais fait.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 3, 2, 'Quel est l''intérêt d''une page de réservation en ligne ?', '["Les personnes choisissent elles-mêmes un créneau libre, sans échange d''e-mails","Elle traduit les e-mails","Elle remplace le client pendant ses rendez-vous","Elle envoie les factures"]'::jsonb, 0, 'Pour un client qui reçoit beaucoup de rendez-vous courts, la page de réservation supprime les allers-retours d''e-mails.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 3, 3, 'Quand envoyer l''ordre du jour d''une réunion importante ?', '["Pendant la réunion","Environ 2 jours avant, avec les documents à lire","Après la réunion","Jamais"]'::jsonb, 1, 'Envoyé 2 jours avant, l''ordre du jour laisse le temps aux participants de lire les documents et de préparer leurs questions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 3, 4, 'Que vérifie-t-on pendant la revue du vendredi ?', '["Les rendez-vous du mois passé","Les e-mails non lus","Les deux semaines à venir : conflits, liens, adresses, pauses, changements d''heure","Seulement le lundi suivant"]'::jsonb, 2, 'En regardant deux semaines à l''avance, on repère les problèmes quand il est encore temps de les régler.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 2, 4, 'Organiser un déplacement ou un événement', 12, '« Peux-tu m''organiser mon déplacement à Bruxelles ? » ou « Il faudrait préparer l''atelier du mois prochain. » Ces demandes reviennent souvent, et elles demandent de la méthode : comparer des options, vérifier des conditions, tenir un budget, ne rien oublier. Cette leçon vous apprend à organiser un déplacement et un petit événement, du recueil du besoin jusqu''au programme final. Elle se termine par le projet du module 3.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Recueillir le besoin du client avant toute recherche.
+> 2. Comparer des vols et des hôtels avec les bons critères.
+> 3. Rédiger un programme de voyage d''une page.
+> 4. Organiser un petit événement avec un rétroplanning.
+> 5. Respecter les règles de paiement et de réservation.
+
+## Recueillir le besoin
+
+Avant de chercher le moindre vol, posez les bonnes questions. Une recherche mal cadrée vous fait perdre une heure, et le client doit tout refaire avec vous.
+
+```schema checklist
+titre: La fiche de déplacement
+[ ] Dates et horaires imposés : réunion, salon, rendez-vous sur place
+[ ] Ville de départ et ville d''arrivée, aéroports ou gares acceptés
+[ ] Budget maximum : transport, hébergement, repas
+[ ] Préférences : vol direct, place côté couloir, hôtel près du lieu de réunion
+[ ] Bagages : cabine seulement ou bagage en soute
+[ ] Documents : passeport valide, visa, cartes de fidélité
+[ ] Qui réserve et qui paie : vous, le client, ou une agence
+```
+
+## Comparer les options
+
+Pour les vols, les comparateurs (Google Flights, Skyscanner, Kayak) montrent rapidement les options. Pour les hôtels, les sites de réservation et les cartes en ligne permettent de voir les prix et l''emplacement. Mais le prix affiché n''est pas toujours le vrai prix.
+
+| Critère | Vol A | Vol B | Vol C |
+| --- | --- | --- | --- |
+| Prix affiché | 520 € | 610 € | 480 € |
+| Bagage en soute | Inclus | Inclus | + 70 € |
+| **Prix total réel** | **520 €** | **610 €** | **550 €** |
+| Durée et escales | 14 h, 1 escale | 11 h, direct | 22 h, 2 escales |
+| Arrivée | 7 h, la veille de la réunion | 6 h 30, la veille | 21 h, la veille |
+| Modification ou annulation | Avec frais | Gratuite jusqu''à 7 jours avant | Impossible |
+
+Présentez toujours **3 options au maximum**, avec votre recommandation : « Je vous conseille le vol A : le prix total est raisonnable, vous arrivez reposé la veille, et il reste modifiable. » Le client décide en une minute.
+
+```schema chiffres
+titre: Les 5 points à vérifier avant toute réservation
+Prix total : bagages, frais de service, taxe de séjour compris
+Conditions : modification et annulation, jusqu''à quand et avec quels frais
+Emplacement : temps de trajet jusqu''au lieu de réunion
+Avis récents : des avis de moins d''un an, pas seulement la note
+Noms : exactement comme sur le passeport du voyageur
+```
+
+> [!attention] Paiements et données bancaires
+> Ne réservez et ne payez **jamais** sans l''accord écrit du client sur l''option choisie. Si le client vous confie sa carte bancaire pour une réservation, ne gardez jamais le numéro dans un e-mail, un message ou un fichier : utilisez son gestionnaire de mots de passe ou demandez-lui de payer lui-même. Envoyez-lui la confirmation et la facture dès la réservation faite.
+
+## Le programme de voyage
+
+Une fois tout réservé, rassemblez les informations dans un **programme d''une page**, à garder sur le téléphone. Le client ne doit plus avoir à chercher dans ses e-mails.
+
+```schema etapes
+titre: Le programme de M. Randria à Bruxelles (extrait)
+Lundi 10 mai, 23 h 50 : vol au départ d''Antananarivo, référence de réservation, terminal
+Mardi 11 mai, 10 h 15 : arrivée à Bruxelles ; train ou taxi jusqu''à l''hôtel (adresse, téléphone)
+Mardi 11 mai, 15 h : réunion avec le bailleur, adresse, contact sur place, documents à apporter
+Mercredi 12 mai, 9 h - 17 h : atelier des partenaires, lieu et programme en pièce jointe
+Jeudi 13 mai, 13 h 40 : vol retour ; quitter l''hôtel à 10 h 30
+```
+
+Ajoutez en bas : les numéros utiles (hôtel, contact sur place, compagnie), l''heure locale (Bruxelles a 1 heure de retard sur Antananarivo en mai), et les documents à emporter. Mettez aussi chaque étape dans l''agenda du client, avec la référence de réservation dans la description.
+
+> [!madagascar] Le visa pour un client malgache
+> Pour un voyage en Europe, un client malgache a souvent besoin d''un **visa**, dont la demande prend du temps : rendez-vous, documents, délai de réponse. Vérifiez les conditions et les délais **sur le site officiel de l''ambassade ou du consulat** du pays concerné, dès que le voyage est envisagé, et ajoutez des rappels dans l''agenda. Ne réservez rien de non remboursable avant la réponse.
+
+## Organiser un petit événement
+
+Atelier, formation, réunion de partenaires, séminaire d''une journée : un événement se prépare à rebours, à partir de la date. C''est le **rétroplanning**.
+
+```schema etapes
+titre: Le rétroplanning d''un atelier de 30 personnes
+J - 30 : fixer la date, le budget et le lieu ; demander 3 devis
+J - 21 : réserver le lieu et le traiteur ; envoyer les invitations avec un formulaire d''inscription
+J - 7 : relancer les invités ; confirmer le nombre au traiteur ; préparer les documents
+J - 1 : rappel aux inscrits ; vérifier le matériel (projecteur, rallonges, connexion)
+Jour J : liste de présence, accueil, photos si le client le souhaite
+J + 1 : remerciements, compte rendu, factures à régler
+```
+
+Pour les inscriptions, un formulaire gratuit (par exemple Google Forms) suffit : nom, téléphone, e-mail, régime alimentaire. Les réponses arrivent dans un tableau que vous pouvez trier et partager avec le client.
+
+> [!erreur] Le nom différent du passeport
+> Un assistant réserve un billet au nom de « Jean Randria », le nom habituel de son client. Sur le passeport, il est écrit « Randriamanantena Jean Herinirina ». À l''aéroport, la compagnie refuse l''embarquement, ou demande des frais de modification. **Copiez le nom exactement comme sur le passeport**, et faites vérifier la réservation par le client avant le paiement.
+
+> [!retenir]
+> - Une **fiche de déplacement** avant toute recherche.
+> - Comparez le **prix total réel**, les conditions d''annulation et les horaires.
+> - **3 options maximum**, avec votre recommandation ; jamais de paiement sans accord écrit.
+> - Un **programme d''une page**, et chaque étape dans l''agenda.
+> - Un événement se prépare avec un **rétroplanning**, à partir de J − 30.
+
+## Exercice pratique : un déplacement complet
+
+> [!exercice] Exercice pratique · 1 heure
+> Votre cliente, directrice d''une PME de Toamasina, doit assister à un salon à Paris pendant deux jours, en septembre.
+> 1. Remplissez la fiche de déplacement (inventez des réponses réalistes).
+> 2. Comparez 3 vols et 3 hôtels dans un tableau, avec le prix total réel et les conditions.
+> 3. Rédigez votre recommandation en 4 lignes.
+> 4. Rédigez son programme de voyage d''une page, avec les heures locales.
+>
+> **À livrer** : la fiche, les deux tableaux de comparaison, votre recommandation et le programme.
+
+## Projet du module 3 : la boîte et l''agenda d''un cabinet
+
+> [!projet] Projet du module · 2 heures 15
+> Votre client fictif : le cabinet du docteur Rabe, à Antananarivo, avec des patients locaux et quelques partenaires à La Réunion et en France.
+> 1. **Méthode** : rédigez votre méthode de gestion en 2 pages : libellés, filtres, rythme de tri, modèles, règles d''agenda, revue du vendredi.
+> 2. **Boîte de démonstration** : depuis une autre adresse, envoyez 20 e-mails variés à votre Gmail d''exercice (patients, fournisseurs, publicités, partenaires), puis triez-les avec les 4 D, les libellés et 2 filtres.
+> 3. **Agenda** : organisez deux semaines du cabinet avec couleurs, pauses et blocs protégés, dont 2 rendez-vous avec La Réunion et la France, aux bonnes heures.
+> 4. **Résumé** : rédigez le résumé quotidien et le message de revue du vendredi.
+>
+> **À livrer** : votre méthode en PDF et des captures de la boîte, des libellés, des filtres et de l''agenda. C''est une démonstration de votre savoir-faire pour votre portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 4, 0, 'Un vol à 480 € fait payer le bagage 70 €. Un autre à 520 € l''inclut. Lequel est le moins cher ?', '["Ils coûtent exactement pareil","Celui à 520 €, bagage compris","On ne peut pas comparer des vols","Celui à 480 €"]'::jsonb, 1, 'Le prix total réel du premier est de 550 €. On compare toujours le prix total, frais et bagages compris.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 4, 1, 'Combien d''options présenter au client pour un déplacement ?', '["Une seule, sans explication","3 au maximum, avec votre recommandation","Aucune : on réserve directement","Le plus possible, pour qu''il ait le choix"]'::jsonb, 1, 'Trois options comparées avec une recommandation permettent au client de décider en une minute.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 4, 2, 'Comment écrire le nom du voyageur sur une réservation de vol ?', '["Seulement le prénom","Comme on l''écrit dans les e-mails","Exactement comme sur son passeport","Avec son surnom habituel"]'::jsonb, 2, 'Un nom différent du passeport peut entraîner un refus d''embarquement ou des frais de modification.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 4, 3, 'Qu''est-ce qu''un rétroplanning ?', '["La liste des invités","Le compte rendu d''un événement passé","Le budget de l''événement","Un planning construit à rebours, à partir de la date de l''événement"]'::jsonb, 3, 'On part de la date de l''événement et on place les étapes avant : J − 30, J − 21, J − 7, J − 1, puis J + 1.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 2, 4, 4, 'Le client vous donne sa carte bancaire pour une réservation. Que faire ?', '["Le garder dans WhatsApp","L''envoyer à l''hôtel par e-mail","Noter le numéro dans un fichier pour la prochaine fois","Ne jamais garder le numéro dans un message ou un fichier, et réserver seulement après accord écrit"]'::jsonb, 3, 'Les données bancaires ne doivent jamais traîner dans un e-mail ou un fichier. On réserve seulement l''option validée par écrit.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 3, 'Les outils de l''assistant virtuel', 'Google Drive bien rangé, Google Docs et Sheets pour les documents et les tableaux de suivi, Notion pour les tâches et les procédures, la recherche et la saisie de données, la sécurité des accès et les outils payants.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 3, 0, 'Google Drive : ranger, nommer et partager', 10, '« Tu peux me renvoyer le contrat de l''an dernier ? » Si vous mettez dix minutes à le retrouver, le client le remarque. S''il est introuvable, c''est grave. Un assistant virtuel range les documents de son client pour que **n''importe qui retrouve n''importe quel fichier en moins de 30 secondes**. Cette leçon vous apprend à organiser un Google Drive, à nommer les fichiers et à les partager avec les bons droits.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire une arborescence de dossiers claire et numérotée.
+> 2. Nommer les fichiers avec une règle unique.
+> 3. Partager un fichier ou un dossier avec le bon droit d''accès.
+> 4. Savoir à qui appartiennent les fichiers que vous créez.
+> 5. Retrouver une ancienne version d''un document.
+
+## Une arborescence claire
+
+Une **arborescence** est l''organisation des dossiers les uns dans les autres. Proposez au client une arborescence courte, numérotée, la même pour tous vos clients : vous vous y retrouverez partout.
+
+```schema arbre
+titre: L''arborescence type d''un client
+Cabinet Rabe/
+  01 Administratif/ # contrats, assurances, attestations
+  02 Clients/ # un dossier par client ou par patient
+  03 Factures et devis/
+    2027/
+      2027-03/
+      2027-04/
+  04 Communication/ # logos, photos, modèles
+  05 Procédures/ # comment faire chaque tâche
+  99 Archives/ # ce qui n''est plus utilisé
+```
+
+Quelques règles simples :
+
+1. **Pas plus de 3 niveaux** de dossiers en général : au-delà, on se perd.
+2. **Des numéros devant les noms** : les dossiers restent dans l''ordre choisi.
+3. **Un dossier « Archives »** plutôt que la suppression : on y range ce qui ne sert plus.
+4. **Rien à la racine** : chaque fichier a sa place dans un dossier.
+
+## Nommer les fichiers
+
+Un bon nom de fichier se comprend sans l''ouvrir et se classe tout seul. Utilisez toujours le même ordre : **date – type – sujet**.
+
+```schema comparaison
+titre: Des noms qui se retrouvent
+ton: mauvais-bon
+colonnes: Nom à éviter | Bon nom
+scan.pdf | 2027-03-14 - Contrat - Location bureau Ankorondrano.pdf
+devis final final 2.docx | 2027-04-02 - Devis D-2027-018 - Lodge Fasika.docx
+Document1 | 2027-04-06 - Compte rendu - Réunion équipe.docx
+photo whatsapp 12.jpg | 2027-05 - Photo - Atelier Antsirabe 01.jpg
+```
+
+> [!cle] Pourquoi AAAA-MM-JJ ?
+> En écrivant la date dans l''ordre **année-mois-jour** (2027-03-14), les fichiers se classent automatiquement dans l''ordre chronologique quand on les trie par nom. Avec « 14-03-2027 », tous les « 14 » se retrouveraient ensemble, quel que soit le mois.
+
+Pour les versions d''un même document, évitez « final », « final2 », « vraiment final ». Utilisez plutôt Google Docs, qui garde l''historique, ou numérotez : « v1 », « v2 », « v3 ».
+
+## Partager avec les bons droits
+
+```schema chiffres
+titre: Les 3 droits de partage dans Google Drive
+Lecteur : peut seulement voir et télécharger, pour un document envoyé à un client final
+Commentateur : peut voir et ajouter des commentaires, pour une relecture
+Éditeur : peut tout modifier, pour l''équipe qui travaille sur le document
+```
+
+Le partage se règle avec le bouton **Partager**. Deux choix sont importants :
+
+| Réglage | Ce qu''il fait | Quand l''utiliser |
+| --- | --- | --- |
+| Ajouter des personnes par leur e-mail | Seules ces personnes ont accès | Par défaut, pour tout document de travail |
+| Accès général : **Restreint** | Seules les personnes ajoutées peuvent ouvrir le lien | Documents internes et confidentiels |
+| Accès général : **Tous les utilisateurs disposant du lien** | N''importe qui ayant le lien peut ouvrir | Documents publics : programme d''un atelier, brochure |
+
+Un lien circule vite : il est transféré, copié dans un groupe WhatsApp, oublié dans un e-mail. **Pour tout document confidentiel, gardez l''accès « Restreint »** et ajoutez les personnes une par une.
+
+> [!exemple] Le Drive de l''ONG
+> L''assistante de M. Randria découvre que le budget de l''ONG, avec les salaires de l''équipe, est partagé en « Tous les utilisateurs disposant du lien » depuis deux ans. Elle le passe en « Restreint », ajoute les trois personnes qui en ont besoin, puis vérifie les autres dossiers sensibles en 20 minutes. Elle signale ensuite au directeur ce qu''elle a changé et pourquoi.
+
+## À qui appartiennent les fichiers ?
+
+Dans Google Drive, chaque fichier a un **propriétaire** : la personne qui l''a créé. Si vous créez un document dans le dossier partagé du client, il apparaît chez lui… mais il reste à **votre** nom. Si vous supprimez votre compte, ou si la mission se termine mal, le client risque de perdre ses documents.
+
+1. **Demandez au client de créer le dossier principal** dans son propre Drive et de vous le partager comme éditeur.
+2. **Si le client a Google Workspace**, travaillez dans un **Drive partagé** de son entreprise : les fichiers appartiennent à l''entreprise, pas à vous.
+3. **À la fin de la mission**, transférez la propriété des fichiers que vous avez créés au client (Partager → choisir le client → Transférer la propriété), quand le type de compte le permet. Sinon, le client fait une copie des fichiers dans son Drive.
+
+## L''historique des versions
+
+Google Docs, Sheets et Slides enregistrent automatiquement chaque modification. Si quelqu''un a supprimé un paragraphe par erreur, ouvrez **Fichier → Historique des versions** : vous pouvez voir qui a modifié quoi, et restaurer une version précédente. Pour les autres fichiers (PDF, Word), Drive garde aussi des versions précédentes pendant un certain temps.
+
+> [!madagascar] Drive et connexion lente
+> Évitez de synchroniser tout le Drive du client sur votre ordinateur : avec une connexion lente ou un forfait limité, les gros fichiers (vidéos, photos) consomment beaucoup de données. Travaillez dans le navigateur, et rendez **disponibles hors connexion** seulement les documents du jour (clic droit sur le fichier → Disponible hors connexion, selon votre navigateur et vos réglages). Vous pourrez continuer pendant une coupure.
+
+> [!erreur] Le désordre « temporaire »
+> Pour aller vite, l''assistant dépose les fichiers à la racine du Drive « en attendant de les ranger ». Trois mois plus tard, il y en a 300, avec des noms comme « image.png ». Personne ne retrouve plus rien. **Rangez et nommez chaque fichier au moment où vous l''enregistrez** : cela prend 10 secondes, et en fait gagner des heures.
+
+> [!retenir]
+> - Une **arborescence numérotée**, courte, la même pour tous vos clients.
+> - Des noms **date – type – sujet**, avec la date en **AAAA-MM-JJ**.
+> - **Lecteur, commentateur, éditeur** ; accès **« Restreint »** pour tout ce qui est confidentiel.
+> - Les fichiers appartiennent à leur créateur : le **client doit en rester propriétaire**.
+> - L''**historique des versions** permet de revenir en arrière.
+
+## Exercice pratique : le Drive d''un client
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Dans votre Google Drive, créez l''arborescence type pour un client fictif (une boutique en ligne de Mahajanga).
+> 2. Créez ou importez 10 fichiers d''exemple et nommez-les selon la règle date – type – sujet.
+> 3. Partagez le dossier « 05 Procédures » en lecteur avec une autre de vos adresses, et un document en commentateur.
+> 4. Modifiez un Google Docs trois fois, puis restaurez la première version avec l''historique.
+> 5. Rédigez en 5 lignes votre règle de rangement, à envoyer à un nouveau client.
+>
+> **À livrer** : une capture de l''arborescence, la liste des 10 noms de fichiers, une capture des partages et votre règle de rangement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 0, 0, 'Quel nom de fichier suit la bonne règle ?', '["Document1.pdf","2027-03-14 - Contrat - Location bureau Ankorondrano.pdf","scan.pdf","contrat final final 2.pdf"]'::jsonb, 1, 'Date en AAAA-MM-JJ, puis type, puis sujet : le fichier se comprend sans l''ouvrir et se classe tout seul dans l''ordre chronologique.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 0, 1, 'Pourquoi écrire la date dans l''ordre année-mois-jour ?', '["C''est plus joli","Google Drive l''exige","Les fichiers se classent dans l''ordre chronologique quand on les trie par nom","Pour cacher la date"]'::jsonb, 2, 'Avec 14-03-2027, tous les « 14 » seraient regroupés quel que soit le mois. Avec 2027-03-14, l''ordre alphabétique devient l''ordre des dates.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 0, 2, 'Quel droit donner à une personne qui doit seulement relire et faire des remarques ?', '["Éditeur","Tous les utilisateurs disposant du lien","Commentateur","Propriétaire"]'::jsonb, 2, 'Le commentateur peut ajouter des remarques sans modifier le texte. L''éditeur peut tout changer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 0, 3, 'Quel accès général choisir pour un document confidentiel ?', '["Tous les utilisateurs disposant du lien","Restreint, en ajoutant les personnes une par une","Public sur le Web","Aucun réglage n''est nécessaire"]'::jsonb, 1, 'Un lien circule vite. En accès restreint, seules les personnes ajoutées peuvent ouvrir le document, même si le lien est transféré.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 0, 4, 'Vous créez un document dans le dossier partagé d''un client. À qui appartient-il ?', '["À Google","Automatiquement au client","À personne","À vous, qui l''avez créé, sauf si l''on transfère la propriété ou si l''on travaille dans un Drive partagé"]'::jsonb, 3, 'Dans Google Drive, le créateur est propriétaire. Pour que le client garde ses documents, on transfère la propriété ou on utilise un Drive partagé de son entreprise.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 3, 1, 'Google Docs et Sheets : documents et tableaux de suivi', 11, 'Une grande partie du travail d''un assistant passe par deux outils : un **traitement de texte**, pour les courriers, les comptes rendus et les procédures, et un **tableur**, pour suivre les factures, les commandes, les contacts ou les inscriptions. Vous n''avez pas besoin d''être expert : quelques fonctions bien choisies suffisent pour produire des documents propres et des tableaux fiables. Cette leçon utilise Google Docs et Google Sheets ; les principes sont les mêmes dans Word et Excel.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Structurer un document avec des styles de titres.
+> 2. Faire relire un document avec les suggestions et les commentaires.
+> 3. Construire un tableau de suivi propre, une ligne par élément.
+> 4. Utiliser 5 formules utiles du tableur.
+> 5. Ajouter des filtres, des listes déroulantes et des couleurs automatiques.
+
+## Des documents propres avec Google Docs
+
+### Les styles de titres
+
+Au lieu de mettre un titre en gras et en grand « à la main », utilisez les **styles** : Titre 1 pour les grandes parties, Titre 2 pour les sous-parties, Texte normal pour le reste. Le menu se trouve à gauche de la police, dans la barre d''outils.
+
+Les styles ont trois avantages : tous les titres ont la même apparence, le plan du document s''affiche dans la marge, et vous pouvez insérer une **table des matières** automatique (Insertion → Table des matières).
+
+### Faire relire sans tout casser
+
+```schema comparaison
+titre: Deux façons de travailler à plusieurs
+colonnes: Mode Suggestion | Commentaires
+Les modifications apparaissent en couleur | Une remarque dans la marge, sans toucher au texte
+Le client accepte ou refuse chaque proposition | On peut répondre et marquer comme résolu
+Pour corriger ou reformuler un texte | Pour poser une question ou expliquer un choix
+Activé en haut à droite : crayon, puis « Suggestion » | Sélectionner le texte, puis l''icône de commentaire
+```
+
+Dans un commentaire, tapez **@** suivi de l''adresse e-mail d''une personne : elle reçoit une notification, et vous pouvez même lui **attribuer** le commentaire comme une tâche.
+
+> [!astuce] Des modèles de documents
+> Préparez une fois pour toutes les documents qui reviennent : courrier avec en-tête, compte rendu de réunion, procédure, devis. Rangez-les dans un dossier « Modèles » et faites **Fichier → Créer une copie** à chaque nouvel usage. Ne modifiez jamais le modèle lui-même.
+
+## Un tableau de suivi bien construit
+
+Un tableau de suivi sert à suivre une liste d''éléments : factures, commandes, inscrits, fournisseurs. Pour qu''il reste fiable, il doit respecter quelques règles.
+
+```schema comparaison
+titre: Les règles d''un bon tableau
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Plusieurs informations dans une cellule : « Rakoto 034… payé » | Une colonne par information : nom, téléphone, statut
+Des cellules fusionnées et des lignes vides | Un tableau continu, sans trou
+Des dates écrites de façons différentes | Des dates au format date : 14/03/2027
+Des montants avec le texte « Ar » tapé dans la cellule | Des nombres, avec le format monétaire
+Un statut écrit librement : « ok », « payé ! », « c bon » | Un statut choisi dans une liste déroulante
+```
+
+```schema ecran
+titre: Google Sheets : le suivi des factures
+haut: Menus, barre d''outils et barre de formule [1]
+centre: Une ligne par facture, une colonne par information [2]
+bas: Les onglets : Factures, Clients, Paramètres [3]
+[1] La barre de formule montre le contenu exact de la cellule sélectionnée
+[2] Première ligne : les titres des colonnes, figée pour rester visible
+[3] Un onglet par liste ; un onglet « Paramètres » pour les listes déroulantes
+```
+
+### Construire le tableau en 6 étapes
+
+```schema etapes
+titre: Le suivi des factures
+Titres des colonnes : N°, Date, Client, Montant, Échéance, Statut, Date de paiement
+Figer la première ligne : Affichage → Figer → 1 ligne
+Formater : dates au format date, montants au format nombre
+Liste déroulante du statut : À envoyer, Envoyée, Payée, En retard (Insertion → Menu déroulant)
+Ajouter un filtre : Données → Créer un filtre
+Colorer automatiquement les retards : Format → Mise en forme conditionnelle
+```
+
+## Cinq formules utiles
+
+Une formule commence toujours par le signe **=**. Dans un tableur réglé en français, les noms des fonctions sont en français et les éléments sont séparés par un **point-virgule**.
+
+| Formule | Ce qu''elle fait | Exemple |
+| --- | --- | --- |
+| `=SOMME(D2:D100)` | Additionne une colonne | Total des montants facturés |
+| `=NB.SI(F2:F100;"Payée")` | Compte les lignes qui remplissent une condition | Nombre de factures payées |
+| `=SOMME.SI(F2:F100;"En retard";D2:D100)` | Additionne seulement certaines lignes | Montant total des factures en retard |
+| `=AUJOURDHUI()` | Donne la date du jour | Pour comparer avec les échéances |
+| `=SI(E2<AUJOURDHUI();"À relancer";"")` | Affiche un texte selon une condition | Repérer les échéances dépassées |
+
+Si votre tableur est réglé en anglais, les mêmes fonctions s''appellent `SUM`, `COUNTIF`, `SUMIF`, `TODAY` et `IF`, avec des virgules à la place des points-virgules.
+
+> [!definition] Plage de cellules
+> `D2:D100` désigne toutes les cellules de D2 à D100 : la colonne des montants, de la deuxième à la centième ligne. On commence à la ligne 2 parce que la ligne 1 contient les titres.
+
+> [!exemple] Les commandes de la boutique de Mahajanga
+> Une boutique en ligne de vêtements note ses commandes dans des messages WhatsApp et un cahier. Son assistante crée un tableau : date, client, téléphone, article, montant, moyen de paiement (MVola, Orange Money, espèces), statut (À préparer, Envoyée, Livrée, Payée). Avec un filtre, la gérante voit chaque matin les commandes à préparer ; avec `NB.SI` et `SOMME.SI`, elle connaît chaque soir le nombre de commandes livrées et le montant encore à encaisser.
+
+> [!madagascar] Les tableaux et les coupures
+> Google Sheets enregistre chaque modification en ligne. En cas de coupure de connexion pendant une saisie, attendez que le message « Enregistrement… » disparaisse avant de fermer l''onglet, et vérifiez les dernières lignes au retour de la connexion. Pour une longue saisie, rendez le fichier disponible hors connexion avant de commencer.
+
+> [!erreur] Le tableau « décoré »
+> Pour faire joli, un assistant fusionne des cellules, ajoute des lignes vides entre les mois et écrit « 150 000 Ar » en texte. Le tableau est beau… mais le filtre ne fonctionne plus, et la formule `SOMME` donne 0. **Un tableau de suivi est d''abord un outil** : une ligne par élément, une colonne par information, des nombres au format nombre. La mise en forme vient ensuite, avec les couleurs automatiques.
+
+> [!retenir]
+> - Dans un document : des **styles de titres**, le mode **Suggestion** et les **commentaires** avec @.
+> - Des **modèles** que l''on copie, sans jamais les modifier.
+> - Un tableau : **une ligne par élément, une colonne par information**, sans cellules fusionnées.
+> - **SOMME, NB.SI, SOMME.SI, AUJOURDHUI, SI** couvrent la plupart des besoins.
+> - **Figer, filtrer, listes déroulantes, mise en forme conditionnelle**.
+
+## Exercice pratique : un document et un tableau
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Dans Google Docs, créez un modèle de compte rendu avec des styles de titres et une table des matières.
+> 2. Partagez-le avec une autre de vos adresses et faites-y 3 suggestions et 2 commentaires depuis ce compte.
+> 3. Dans Google Sheets, créez le suivi des factures en 6 étapes, avec 15 factures fictives.
+> 4. Ajoutez les 5 formules : total facturé, nombre de factures payées, montant en retard, date du jour et colonne « À relancer ».
+> 5. Colorez automatiquement en rouge les lignes « En retard ».
+>
+> **À livrer** : les liens de votre modèle et de votre tableau, en lecteur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 1, 0, 'Pourquoi utiliser les styles de titres dans un document ?', '["Les titres sont homogènes, le plan s''affiche et la table des matières se crée automatiquement","Pour écrire plus vite","Pour protéger le document","C''est obligatoire pour imprimer"]'::jsonb, 0, 'Les styles (Titre 1, Titre 2) structurent le document : apparence identique, plan visible et table des matières automatique.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 1, 1, 'Quel mode permet au client d''accepter ou de refuser chacune de vos corrections ?', '["L''impression en PDF","L''historique des versions","Le mode Lecture","Le mode Suggestion"]'::jsonb, 3, 'En mode Suggestion, chaque modification apparaît en couleur et peut être acceptée ou refusée une par une.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 1, 2, 'Quelle formule compte les factures dont le statut est « Payée » ?', '["=MOYENNE(F2:F100)","=AUJOURDHUI()","=NB.SI(F2:F100;\"Payée\")","=SOMME(F2:F100)"]'::jsonb, 2, 'NB.SI compte les cellules qui remplissent une condition. SOMME additionne des nombres, elle ne compte pas des textes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 1, 3, 'Quelle règle respecter dans un tableau de suivi ?', '["Laisser des lignes vides entre les mois","Mettre plusieurs informations dans une cellule","Une ligne par élément et une colonne par information","Fusionner les cellules pour faire joli"]'::jsonb, 2, 'Un tableau continu, sans cellules fusionnées ni lignes vides, permet aux filtres et aux formules de fonctionner.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 1, 4, 'Pourquoi utiliser une liste déroulante pour la colonne Statut ?', '["Pour que le statut soit toujours écrit de la même façon","Pour cacher la colonne","Pour envoyer les factures","Pour calculer les montants"]'::jsonb, 0, 'Avec des statuts identiques (Payée, En retard…), les filtres, NB.SI et les couleurs automatiques fonctionnent. « ok » ou « c bon » les cassent.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 3, 2, 'Notion : les tâches et les procédures', 11, 'Un assistant gère des dizaines de petites tâches, souvent pour plusieurs clients. Sans système, il oublie, il double, il ne sait plus ce qui attend une réponse. Et le client, lui, ne voit rien de ce qui avance. Cette leçon vous apprend à choisir vos priorités, à construire un tableau de suivi des tâches partagé avec le client dans **Notion**, et à écrire des **procédures** qui permettent à quelqu''un d''autre de vous remplacer.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Classer les tâches avec la matrice urgent / important.
+> 2. Construire un tableau de tâches dans Notion.
+> 3. Suivre les tâches de plusieurs clients sans les mélanger.
+> 4. Rédiger une procédure claire pour une tâche répétitive.
+> 5. Préparer une absence sans laisser le client sans solution.
+
+## Choisir ses priorités
+
+Toutes les tâches ne se valent pas. La **matrice urgent / important** aide à décider par où commencer.
+
+| | **Urgent** | **Pas urgent** |
+| --- | --- | --- |
+| **Important** | 1. À faire tout de suite : la facture à envoyer aujourd''hui | 2. À planifier : préparer le rapport du mois |
+| **Pas important** | 3. À faire vite ou à regrouper : une demande de documentation standard | 4. À éliminer ou à reporter : ranger d''anciens fichiers |
+
+Commencez chaque journée en classant vos tâches dans ces quatre cases. Le piège est de passer sa journée dans la case 3, qui donne l''impression d''être occupé, en oubliant la case 2. Or c''est la case 2 qui évite les urgences de demain.
+
+```schema chiffres
+titre: La règle des 3 priorités
+Le matin : choisir 3 tâches importantes à terminer dans la journée
+Pendant la journée : les faire avant tout le reste, si possible le matin
+Le soir : vérifier qu''elles sont faites, et préparer les 3 de demain
+```
+
+## Le tableau de tâches dans Notion
+
+**Notion** est un outil en ligne qui permet de créer des pages, des listes et des bases de données. Il propose une offre gratuite pour un usage personnel ; les offres payantes ajoutent des fonctions de partage et d''équipe (vérifiez les conditions sur le site officiel).
+
+> [!definition] Base de données Notion
+> Dans Notion, une base de données est une liste d''éléments (ici, des tâches), avec des **propriétés** : une date, un statut, une personne. On peut afficher la même base de plusieurs façons : en tableau, en colonnes par statut, en calendrier.
+
+### Construire le tableau en 6 étapes
+
+```schema etapes
+titre: Le tableau des tâches d''un client
+Page : créer « Tâches – Nom du client »
+Base de données : une vue en colonnes par statut (vue Kanban, ou Board)
+Statuts : À faire, En cours, En attente du client, Terminé
+Propriétés : Échéance (date), Priorité (haute, moyenne, basse), Temps passé (nombre)
+Cartes : une par tâche, avec une description courte et utile
+Partage : avec le client, en lecture ou avec la possibilité de commenter
+```
+
+Les noms des menus changent selon la langue et la version de Notion, mais la logique reste la même : une base de données, des propriétés, des vues.
+
+> [!exemple] Une carte de tâche bien écrite
+> **Relancer les 3 factures impayées de février** · Échéance : 5 mars · Priorité : haute · Statut : En cours · Temps passé : 0,5 h
+>
+> Note : « Factures F-2027-012, 015 et 017. Rappel aimable envoyé le 2 mars ; si pas de réponse le 9, relance ferme (modèle n° 2). »
+>
+> N''importe qui peut lire cette carte et savoir exactement où en est la tâche.
+
+### Plusieurs clients sans mélange
+
+Chaque client ne doit voir **que ses propres tâches**. Créez donc une page séparée pour chaque client, partagée seulement avec lui. Pour votre propre organisation, tenez à côté une liste personnelle de la semaine, où vous notez vos 3 priorités du jour, tous clients confondus, avec le nom du client sur chaque ligne.
+
+Notion n''est pas le seul outil possible : **Trello**, **Google Tasks** ou un simple tableau Google Sheets fonctionnent aussi. Si le client utilise déjà un outil, adoptez le sien.
+
+## Les procédures
+
+Une **procédure** explique, étape par étape, comment réaliser une tâche répétitive. C''est l''un des documents les plus précieux que vous puissiez offrir à un client : avec elle, n''importe qui peut faire la tâche, même sans vous.
+
+```schema etapes
+titre: La structure d''une procédure
+Titre : un verbe et un objet, « Envoyer la facture mensuelle »
+Quand : la fréquence ou le déclencheur (« le 1er de chaque mois »)
+Outils et accès : ce qu''il faut ouvrir, sans jamais écrire de mot de passe
+Étapes numérotées : une action par étape, avec une capture si besoin
+Pièges : les erreurs fréquentes à éviter
+Mise à jour : la date et l''auteur de la dernière modification
+```
+
+| Bonne pratique | Pourquoi |
+| --- | --- |
+| Une action par étape | On peut suivre sans se perdre, et cocher au fur et à mesure |
+| Des captures d''écran | Un débutant reconnaît les boutons tout de suite |
+| Le vocabulaire exact des menus | « Cliquez sur Partager », pas « partagez le fichier » |
+| Un test par quelqu''un d''autre | Si un proche réussit la tâche avec la procédure, elle est claire |
+| Une date de mise à jour | Les outils changent : on sait si la procédure est récente |
+
+Rangez toutes les procédures dans une page « Procédures » de Notion ou dans le dossier « 05 Procédures » du Drive (leçon 4.1).
+
+> [!madagascar] Préparer une absence
+> Une fête de famille en province, une période de cyclone, un problème de santé : il arrive qu''on doive s''absenter. Avant une absence prévue, Hanta prévient ses clients deux semaines à l''avance, avance les tâches importantes, met à jour ses procédures et présente à ses clients une collègue de confiance qui la remplace. Ses clients ne voient presque aucune différence, et la remercient d''avoir tout prévu.
+
+> [!erreur] Le tableau abandonné
+> L''assistant crée un beau tableau Notion la première semaine, puis oublie de le mettre à jour. Le client y voit des tâches « En cours » depuis trois semaines, alors qu''elles sont terminées. Il conclut que rien n''avance. **Un tableau de suivi n''a de valeur que s''il est à jour** : mettez-le à jour à la fin de chaque bloc de travail, en même temps que votre suivi du temps.
+
+> [!retenir]
+> - La **matrice urgent / important**, et **3 priorités** par jour.
+> - Un **tableau de tâches** avec 4 statuts : À faire, En cours, En attente du client, Terminé.
+> - **Une page par client**, partagée seulement avec lui.
+> - Une **procédure** par tâche répétitive : quand, outils, étapes, pièges, mise à jour.
+> - Un tableau **toujours à jour**, et des absences **préparées**.
+
+## Exercice pratique : le tableau et une procédure
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Classez ces 8 tâches dans la matrice : facture à envoyer aujourd''hui ; rapport mensuel à préparer pour la fin du mois ; réponse à une demande de documentation ; tri des anciens fichiers ; rendez-vous à confirmer pour demain ; mise à jour du fichier clients ; réservation d''hôtel pour dans 3 mois ; lettre d''information à lire.
+> 2. Créez un compte Notion gratuit et construisez le tableau des tâches en 6 étapes, avec ces 8 tâches.
+> 3. Rédigez la procédure « Envoyer la facture mensuelle » avec la structure en 6 parties.
+> 4. Demandez à un proche de lire la procédure et notez ses questions ; améliorez-la.
+>
+> **À livrer** : votre matrice, le lien de votre page Notion en lecture et votre procédure améliorée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 2, 0, 'Dans quelle case de la matrice se trouve « préparer le rapport de fin de mois » ?', '["Urgent et pas important : à regrouper","Important et pas urgent : à planifier","Urgent et important : tout de suite","Ni urgent ni important : à éliminer"]'::jsonb, 1, 'Le rapport est important mais pas pour aujourd''hui. Le planifier évite qu''il devienne une urgence la veille de l''échéance.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 2, 1, 'Quels sont les 4 statuts conseillés pour le tableau des tâches ?', '["Lundi, Mardi, Mercredi, Jeudi","Urgent, Très urgent, Ultra urgent, Fini","À faire, En cours, En attente du client, Terminé","Facile, Moyen, Difficile, Impossible"]'::jsonb, 2, 'Ces statuts montrent où en est chaque tâche, y compris celles qui attendent une réponse du client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 2, 2, 'Comment suivre les tâches de plusieurs clients ?', '["Sans aucun outil","Une seule page partagée avec tous les clients","Dans un carnet papier","Une page par client, partagée seulement avec lui"]'::jsonb, 3, 'Chaque client ne doit voir que ses propres tâches. La confidentialité s''applique aussi à votre organisation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 2, 3, 'Que ne faut-il jamais écrire dans une procédure ?', '["La date de mise à jour","Un mot de passe","Les étapes numérotées","Les pièges à éviter"]'::jsonb, 1, 'Une procédure indique quels outils ouvrir, mais les accès se gèrent par délégation ou par gestionnaire de mots de passe.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 2, 4, 'Comment savoir si une procédure est claire ?', '["Faire réaliser la tâche par quelqu''un d''autre avec la procédure","La garder pour soi","La relire une fois soi-même","La rendre très longue"]'::jsonb, 0, 'Si un proche réussit la tâche seul avec la procédure, elle est claire. Ses questions montrent ce qu''il faut améliorer.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 3, 3, 'Recherches sur Internet et saisie de données', 11, '« Trouve-moi 20 fournisseurs d''emballages », « Compare-moi 5 logiciels de facturation », « Mets ces 300 cartes de visite dans un tableau. » La recherche et la saisie de données font partie des premières tâches confiées à un assistant. Elles paraissent simples, mais la différence entre un travail moyen et un travail professionnel est énorme : des sources fiables, des critères clairs, des données propres et vérifiées. Cette leçon vous donne la méthode.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Cadrer une recherche avec des critères avant de commencer.
+> 2. Utiliser les opérateurs de recherche de Google.
+> 3. Juger si une source est fiable.
+> 4. Présenter les résultats dans un tableau comparatif avec une recommandation.
+> 5. Saisir des données propres, sans doublons, et les vérifier.
+
+## Une recherche bien cadrée
+
+Une recherche sans critères ne finit jamais : on trouve toujours une option de plus. Avant de commencer, fixez avec le client ce que vous cherchez exactement.
+
+```schema etapes
+titre: La méthode de recherche en 5 étapes
+Cadrer : l''objectif, les critères obligatoires, le nombre de résultats, le délai
+Chercher : sources officielles d''abord, avec les bons opérateurs
+Vérifier : chaque information importante sur une deuxième source
+Organiser : un tableau comparatif, avec les sources
+Recommander : votre conseil en 3 lignes, et les limites de la recherche
+```
+
+> [!exemple] Le cadrage d''une recherche
+> **La demande** : « Trouve-moi des salles pour mon atelier à Antananarivo. »
+>
+> **Le cadrage de Hanta** : 30 personnes assises, un vidéoprojecteur, la connexion Internet, un parking si possible, un samedi de juin, budget maximum de 600 000 Ar la journée, quartier facile d''accès. Elle propose 5 options d''ici jeudi. La cliente ajoute un critère oublié : « Avec une pause café sur place. »
+
+## Chercher efficacement
+
+Les opérateurs de recherche de Google permettent de trouver plus vite des résultats précis.
+
+| Opérateur | Ce qu''il fait | Exemple |
+| --- | --- | --- |
+| `"…"` | Cherche l''expression exacte | `"salle de réunion" Antananarivo` |
+| `site:` | Cherche dans un seul site ou type de site | `site:gov.mg appel d''offres` |
+| `filetype:` | Cherche un type de fichier | `rapport annuel filetype:pdf` |
+| `-` | Exclut un mot | `logiciel facturation -gratuit` |
+| `OR` | L''un ou l''autre | `traiteur Antsirabe OR Ambositra` |
+
+Pensez aussi aux **cartes en ligne** (pour les commerces et leurs horaires), aux **annuaires professionnels**, aux **sites officiels** des administrations, et aux **pages Facebook** des entreprises.
+
+> [!madagascar] Les entreprises sur Facebook
+> À Madagascar, beaucoup de commerces, de salles et de prestataires n''ont pas de site web, mais une **page Facebook** active. C''est souvent là que vous trouverez leurs prix, leurs photos et leur numéro. Vérifiez la **date de la dernière publication** : une page sans publication depuis deux ans signale peut-être une entreprise fermée. Pour une information importante (prix, disponibilité), un appel ou un message direct reste la meilleure vérification.
+
+## Juger une source
+
+```schema checklist
+titre: Une source fiable…
+[ ] indique qui l''a écrite : une entreprise, une administration, un auteur identifié
+[ ] est récente, ou indique sa date de mise à jour
+[ ] est la source d''origine : le site du fabricant plutôt qu''un blog qui le recopie
+[ ] donne des informations qu''on retrouve sur une deuxième source sérieuse
+[ ] ne cherche pas seulement à vendre : méfiance envers les « comparatifs » sponsorisés
+```
+
+Pour les prix, les horaires, les règles et les conditions, la source officielle est la seule qui compte : le site de l''entreprise, de l''administration ou de l''outil. Les prix changent souvent : notez toujours **la date** à laquelle vous avez relevé l''information.
+
+> [!attention] La recherche avec l''intelligence artificielle
+> Un assistant d''IA peut aider à **explorer** un sujet ou à lister des pistes. Mais il peut aussi donner avec assurance un prix faux, une adresse inventée ou une entreprise qui n''existe pas. **Chaque information destinée au client doit être vérifiée sur une source réelle**, que vous citez dans votre tableau.
+
+## Présenter les résultats
+
+Le client n''a pas le temps de lire vos 30 onglets. Il veut un tableau qui compare, et votre conseil.
+
+| Salle | Capacité | Équipement | Prix (journée) | Accès | Source et date |
+| --- | --- | --- | --- | --- | --- |
+| Salle A, Ankorondrano | 35 places | Projecteur, wifi, café | 550 000 Ar | Parking | Appel du 3 mai |
+| Salle B, Analakely | 30 places | Projecteur, wifi | 400 000 Ar | Pas de parking | Page Facebook, 2 mai |
+| Salle C, Ivandry | 40 places | Projecteur, wifi, café | 750 000 Ar | Parking | Site officiel, 2 mai |
+
+Terminez par votre recommandation : « Je recommande la salle A : seule option dans le budget avec café et parking. La salle C dépasse le budget de 150 000 Ar. Disponibilités confirmées pour le 12 juin. »
+
+## La saisie de données
+
+Saisir des données, c''est copier des informations (cartes de visite, formulaires papier, anciens fichiers) dans un tableau. La qualité compte plus que la vitesse : une seule erreur de numéro rend un contact inutile.
+
+```schema comparaison
+titre: Des données propres
+ton: mauvais-bon
+colonnes: Données brutes | Données normalisées
+rakoto jean | RAKOTO Jean
+0341234567 | +261 34 12 345 67
+14-3-27 | 14/03/2027
+Antananarivo / Tana / TNR | Antananarivo
+jean.rakoto@gmail .com | jean.rakoto@gmail.com
+```
+
+**Normaliser**, c''est écrire chaque information toujours de la même façon. Fixez les règles avant de commencer (nom en majuscules, téléphone avec indicatif, une seule écriture pour chaque ville), et notez-les en haut du tableau ou dans un onglet « Règles ».
+
+1. **Supprimez les doublons** : dans Google Sheets, Données → Nettoyage des données → Supprimer les doublons.
+2. **Vérifiez un échantillon** : relisez une ligne sur dix en la comparant à la source.
+3. **Signalez les données douteuses** plutôt que de les inventer : une colonne « À vérifier ».
+4. **Faites des pauses** : la concentration baisse après une heure de saisie, et les erreurs augmentent.
+
+> [!erreur] Deviner une donnée illisible
+> Sur une carte de visite abîmée, un chiffre du numéro est illisible. Pour finir vite, l''assistant met un « 5 » au hasard. Le client appelle le mauvais numéro devant un partenaire important. **Une donnée incertaine se signale** (colonne « À vérifier »), elle ne s''invente jamais.
+
+> [!retenir]
+> - **Cadrez** la recherche : objectif, critères, nombre de résultats, délai.
+> - **Opérateurs** de recherche, sources officielles, et une **deuxième source** pour l''important.
+> - L''IA aide à explorer, mais **chaque fait se vérifie** sur une source réelle.
+> - Un **tableau comparatif** avec sources et dates, puis **votre recommandation**.
+> - Saisie : des **règles de normalisation**, pas de doublons, un échantillon vérifié.
+
+## Exercice pratique : une recherche et une saisie
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Cadrez cette demande avec 5 critères : « Trouve-moi un espace de coworking à Antananarivo pour 2 jours par semaine. »
+> 2. Trouvez 5 options et présentez-les dans un tableau comparatif avec sources et dates, puis votre recommandation.
+> 3. Créez un tableau de 20 contacts fictifs saisis volontairement « en désordre » (majuscules, téléphones, villes, doublons).
+> 4. Écrivez vos règles de normalisation, puis nettoyez le tableau et supprimez les doublons.
+>
+> **À livrer** : votre cadrage, votre tableau comparatif, votre recommandation, et le tableau de contacts avant et après nettoyage.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 3, 0, 'Que faire avant de commencer une recherche pour un client ?', '["La cadrer : objectif, critères, nombre de résultats, délai","Ouvrir le plus d''onglets possible","Chercher sans limite de temps","Demander à une IA et copier la réponse"]'::jsonb, 0, 'Une recherche sans critères ne finit jamais. Le cadrage fait gagner du temps et évite de chercher dans la mauvaise direction.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 3, 1, 'Que trouve la recherche Google rapport annuel filetype:pdf ?', '["Les rapports d''un seul site","Des rapports annuels au format PDF","Uniquement des images","Des pages sans le mot rapport"]'::jsonb, 1, 'L''opérateur filetype: limite les résultats à un type de fichier, ici les PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 3, 2, 'Un assistant d''IA vous donne le prix d''une salle. Que faites-vous ?', '["Vous demandez à une autre IA","Vous l''arrondissez","Vous le transmettez tel quel","Vous vérifiez sur une source réelle avant de le transmettre"]'::jsonb, 3, 'L''IA peut inventer un prix, une adresse ou une entreprise. Chaque information pour le client se vérifie sur une source citée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 3, 3, 'Que veut dire « normaliser » des données ?', '["Traduire les données","Supprimer les données inutiles","Trier les données par ordre alphabétique","Écrire chaque information toujours de la même façon"]'::jsonb, 3, 'Avec les mêmes règles pour les noms, les téléphones, les dates et les villes, le tableau se trie, se filtre et se vérifie facilement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 3, 4, 'Un chiffre d''un numéro de téléphone est illisible sur une carte. Que faire ?', '["Mettre un chiffre au hasard","Recopier le numéro sans ce chiffre sans le signaler","Le signaler dans une colonne « À vérifier »","Supprimer le contact sans rien dire"]'::jsonb, 2, 'Une donnée incertaine se signale, elle ne s''invente jamais. Un faux numéro peut mettre le client dans l''embarras.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 3, 4, 'Sécurité, suivi du temps et outils payants', 13, 'Un assistant qui gère la boîte e-mail d''un client est une cible pour les escrocs : un faux e-mail du « client » qui demande un virement urgent, une fausse facture, un lien qui vole les mots de passe. Cette leçon termine le module des outils avec trois sujets essentiels : protéger les accès, reconnaître les arnaques, et choisir les outils de suivi du temps et les outils payants. Elle se termine par le projet du module 4.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Partager et ranger les accès avec un gestionnaire de mots de passe.
+> 2. Reconnaître un e-mail d''hameçonnage.
+> 3. Déjouer les fraudes au virement et au changement de coordonnées bancaires.
+> 4. Choisir un outil de suivi du temps.
+> 5. Savoir quels outils payants existent et qui les paie.
+
+## Les accès dans un gestionnaire de mots de passe
+
+Vous avez installé un gestionnaire de mots de passe au module 1. Avec vos clients, il sert aussi à **partager des accès** sans jamais les écrire dans un message.
+
+```schema comparaison
+titre: Recevoir l''accès à un outil du client
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Le mot de passe dans un e-mail ou sur WhatsApp | Une invitation de l''outil à votre propre adresse, quand c''est possible
+Un fichier « mots de passe.xlsx » dans le Drive | Un partage par le gestionnaire de mots de passe du client
+Le même compte utilisé par trois personnes | Un compte par personne, avec des droits limités
+Des accès jamais retirés | La liste des accès, revue et nettoyée à la fin de la mission
+```
+
+La meilleure solution reste toujours **votre propre compte** dans l''outil du client (délégation Gmail, partage d''agenda, invitation dans Notion ou dans le logiciel de facturation). Le partage d''un mot de passe ne doit servir que pour les outils qui n''offrent pas d''autre possibilité.
+
+Tenez dans votre fiche de mission une **liste des accès** reçus : outil, type d''accès, date. À la fin de la mission, envoyez-la au client pour qu''il retire chaque accès.
+
+## Reconnaître un e-mail d''hameçonnage
+
+> [!definition] Hameçonnage
+> En anglais *phishing*. Un faux message qui imite une banque, un fournisseur, un outil ou une personne connue, pour vous faire cliquer sur un lien, ouvrir une pièce jointe piégée, donner un mot de passe ou payer.
+
+```schema checklist
+titre: Les signes qui doivent alerter
+[ ] Une adresse d''expéditeur presque juste : claire.laurent@gmaill.com, factures@paypa1.com
+[ ] Une urgence inhabituelle : « Faites-le avant midi, c''est confidentiel »
+[ ] Une demande de mot de passe, de code reçu par SMS ou de paiement
+[ ] Un lien dont l''adresse réelle ne correspond pas au site annoncé
+[ ] Une pièce jointe inattendue : archive, fichier qui demande « d''activer le contenu »
+[ ] Des fautes ou un ton qui ne ressemble pas à l''expéditeur habituel
+```
+
+Avant de cliquer sur un lien, **survolez-le avec la souris** (sans cliquer) : l''adresse réelle s''affiche en bas de l''écran. Si elle ne correspond pas au site annoncé, ne cliquez pas.
+
+## Les fraudes au virement
+
+Deux arnaques visent particulièrement les assistants, parce qu''ils ont accès aux e-mails et parfois aux paiements.
+
+| Arnaque | Ce qui se passe | La parade |
+| --- | --- | --- |
+| **La fausse demande du client** | Un e-mail qui semble venir du client demande un virement urgent et confidentiel | Vérifier par un autre canal : appeler le client au numéro habituel |
+| **Le changement de coordonnées bancaires** | Un « fournisseur » annonce un nouveau compte bancaire pour ses prochaines factures | Appeler le fournisseur au numéro déjà connu, pas à celui du message |
+| **La fausse facture** | Une facture pour un service jamais commandé, souvent d''un petit montant | Vérifier dans le suivi des commandes et demander au client |
+
+```schema etapes
+titre: Le réflexe face à une demande d''argent inhabituelle
+Stop : ne rien payer, ne rien répondre, ne cliquer sur rien
+Vérifier : par un autre canal, au numéro de téléphone que vous connaissez déjà
+Prévenir : le client, avec une capture du message
+Signaler : le message comme hameçonnage dans la messagerie
+```
+
+> [!exemple] Le faux e-mail de M. Rabe
+> Un vendredi à 16 h, l''assistante du docteur Rabe reçoit un e-mail : « Je suis en réunion, payez immédiatement cette facture de 3 500 000 Ar à ce nouveau fournisseur, sur le compte ci-dessous. Ne m''appelez pas. » L''adresse ressemble à celle du docteur, avec une lettre en plus. Elle appelle quand même le docteur sur son numéro habituel : il n''a rien envoyé. Elle signale le message et prévient le cabinet. L''argent du client est protégé, et sa confiance en elle aussi.
+
+## Le suivi du temps
+
+Votre client paie des heures : il doit pouvoir vérifier ce qu''elles contiennent. Choisissez un outil dès maintenant ; vous apprendrez à faire le rapport au module 5.
+
+| Outil | Points forts | À savoir |
+| --- | --- | --- |
+| **Tableau Google Sheets** | Gratuit, simple, partageable | Il faut noter les heures à la main |
+| **Clockify** | Offre gratuite, chronomètre, rapports par client | Application web, ordinateur et téléphone |
+| **Toggl Track** | Chronomètre simple, rapports clairs | Offre gratuite limitée pour les équipes |
+
+Vérifiez les offres sur le site officiel de chaque outil. L''important n''est pas l''outil : c''est de **noter chaque bloc de travail au moment où vous le faites**, jamais de mémoire à la fin de la semaine.
+
+## Les outils payants : qui paie ?
+
+```schema chiffres
+titre: Les outils payants les plus courants
+Google Workspace : adresse e-mail au nom de l''entreprise, stockage, gestion des comptes
+Microsoft 365 : Outlook, Word, Excel, Teams et le stockage OneDrive
+Notion (offres payantes) : partage, historique et fonctions d''équipe
+Calendly (offres payantes) : plusieurs types de rendez-vous, rappels, paiement à la réservation
+```
+
+Dans la grande majorité des cas, **c''est le client qui a l''abonnement** et qui vous donne un accès. N''achetez un abonnement à votre nom que s''il vous sert pour plusieurs clients, et seulement quand vos revenus le permettent. Les prix changent souvent : consultez toujours le site officiel.
+
+> [!madagascar] Une adresse professionnelle à votre nom
+> Une adresse comme `contact@hanta-assistance.mg` (ou en `.com`) inspire confiance aux clients étrangers. Elle demande un nom de domaine et un abonnement de messagerie : c''est un bon investissement quand vous avez vos premiers revenus réguliers. En attendant, une adresse Gmail sobre (prénom.nom.assistante@gmail.com) convient très bien.
+
+> [!erreur] Cliquer d''abord, réfléchir ensuite
+> Un e-mail « Votre compte Google sera fermé dans 24 h » arrive dans la boîte du client. Pour bien faire, l''assistant clique sur le lien et entre le mot de passe… sur un faux site. Le compte est volé le soir même. **Face à toute alerte de sécurité reçue par e-mail, n''utilisez jamais le lien du message** : ouvrez vous-même le site officiel dans un nouvel onglet, ou prévenez le client.
+
+> [!retenir]
+> - Un **compte par personne** quand c''est possible ; sinon, le **gestionnaire de mots de passe**.
+> - **Hameçonnage** : adresse presque juste, urgence, demande de mot de passe ou d''argent.
+> - Toute demande d''argent inhabituelle se **vérifie par un autre canal**, au numéro connu.
+> - Un **outil de suivi du temps**, rempli au fil de l''eau.
+> - Les **abonnements payants** sont le plus souvent ceux du client.
+
+## Exercice pratique : la sécurité en situation
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour 6 e-mails fictifs (une alerte bancaire, une facture d''un fournisseur connu, une demande urgente du « client », un changement de coordonnées bancaires, une invitation Google Drive, une lettre d''information), dites s''ils sont suspects et pourquoi.
+> 2. Rédigez le message que vous enverriez au client après avoir reçu une fausse demande de virement.
+> 3. Créez un compte gratuit sur un outil de suivi du temps et enregistrez une heure de travail réelle, en 3 blocs.
+> 4. Rédigez le modèle de votre liste des accès d''un client (outil, type d''accès, date de début, date de retrait).
+>
+> **À livrer** : votre analyse des 6 e-mails, votre message, une capture du suivi du temps et votre modèle de liste.
+
+## Projet du module 4 : l''espace de travail de Claire Laurent
+
+> [!projet] Projet du module · 2 heures
+> Au module 5, vous allez vivre le premier mois d''une mission avec Claire Laurent, coach en reconversion professionnelle à Lyon. Préparez aujourd''hui son espace de travail complet, comme si elle vous engageait demain.
+> 1. **Drive** : l''arborescence de la cliente, avec un dossier « Modèles » et un dossier « Procédures ».
+> 2. **Documents** : 3 modèles (courrier, compte rendu, devis) avec des styles de titres.
+> 3. **Tableaux** : le suivi des factures avec les 5 formules, et un fichier clients normalisé de 20 lignes.
+> 4. **Tâches** : sa page Notion avec le tableau des tâches et 3 procédures (envoyer une facture, confirmer un rendez-vous, archiver les e-mails de la semaine).
+> 5. **Sécurité** : la liste des accès que vous demanderez, et la façon de les recevoir pour chacun.
+>
+> **À livrer** : les liens en lecture de chaque élément et un document d''une page qui présente l''espace à la cliente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 4, 0, 'Quel est le meilleur moyen d''accéder à un outil du client ?', '["Le même compte pour toute l''équipe","Le mot de passe du client envoyé par WhatsApp","Votre propre compte, invité dans l''outil du client","Un fichier de mots de passe dans le Drive"]'::jsonb, 2, 'Avec votre propre compte, le client garde son mot de passe, voit qui fait quoi et peut retirer l''accès à tout moment.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 4, 1, 'Lequel de ces signes doit faire penser à un hameçonnage ?', '["Une lettre d''information à laquelle on est abonné","Un e-mail attendu d''un collègue","Une invitation à une réunion déjà prévue","Une adresse d''expéditeur presque juste, avec une lettre en trop"]'::jsonb, 3, 'Les escrocs imitent des adresses connues en changeant un détail. Vérifiez toujours l''adresse exacte de l''expéditeur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 4, 2, 'Un « fournisseur » annonce par e-mail un nouveau compte bancaire. Que faire ?', '["Répondre à l''e-mail pour demander confirmation","Mettre à jour le compte tout de suite","Payer la prochaine facture sur le nouveau compte","L''appeler au numéro déjà connu pour vérifier, et prévenir le client"]'::jsonb, 3, 'Le changement de coordonnées bancaires est une fraude fréquente. On vérifie par un autre canal, jamais en répondant au message suspect.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 4, 3, 'Comment vérifier où mène vraiment un lien dans un e-mail ?', '["Le transférer à un ami","Le survoler avec la souris sans cliquer et lire l''adresse affichée","Le copier dans WhatsApp","Cliquer pour voir"]'::jsonb, 1, 'En survolant le lien, l''adresse réelle s''affiche en bas de l''écran. Si elle ne correspond pas au site annoncé, on ne clique pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 3, 4, 4, 'Qui paie le plus souvent l''abonnement Google Workspace ou Calendly ?', '["Vitako","Personne : ils sont toujours gratuits","Le client, qui vous donne un accès","Toujours l''assistant"]'::jsonb, 2, 'Les outils servent l''entreprise du client : c''est lui qui a l''abonnement. N''achetez à votre nom que ce qui vous sert pour plusieurs clients.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 4, 'Premier projet : un mois avec une cliente', 'Le premier mois d''une mission avec Claire Laurent, coach à Lyon : appel de découverte et fiche de mission, première semaine, suivi administratif et service client, suivi du temps et rapports, bilan du mois et étude de cas.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 4, 0, 'L''appel de découverte et la fiche de mission', 11, 'Place à la pratique. Dans ce module, vous vivez le **premier mois d''une vraie mission**, avec une cliente type : de l''appel de découverte jusqu''au bilan qui décide de la suite. Tout commence par un appel bien mené et une fiche de mission écrite : c''est là que se jouent la plupart des réussites… et des malentendus. Cette leçon vous donne les questions à poser et le document à envoyer après l''appel.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer un appel de découverte.
+> 2. Mener l''appel avec 10 questions clés.
+> 3. Définir ce que vous pouvez décider seul et ce qui revient au client.
+> 4. Rédiger une fiche de mission d''une page.
+> 5. Fixer des objectifs mesurables pour le premier mois.
+
+## Votre cliente : Claire Laurent
+
+> [!exemple] Le cas pratique du module
+> **Claire Laurent** est coach en reconversion professionnelle à Lyon. Elle travaille seule et reçoit ses clients en visioconférence. Sa boîte de réception compte 1 200 e-mails non lus, elle a oublié deux rendez-vous ce mois-ci, et ses factures partent avec trois semaines de retard. Elle utilise Gmail, Google Agenda et un tableau pour ses factures. Elle vous a trouvée grâce à votre profil, et vous propose un appel de découverte pour un essai d''un mois, **10 heures par semaine**.
+
+## Préparer l''appel
+
+Un appel préparé dure 40 minutes et donne une image très professionnelle. Un appel improvisé dure une heure et demie, et vous oubliez la moitié des questions.
+
+```schema checklist
+titre: Avant l''appel
+[ ] Lire le site et le profil LinkedIn de la cliente : son métier, ses clients, son ton
+[ ] Préparer vos 10 questions dans un document, avec de la place pour les réponses
+[ ] Vérifier l''heure : 16 h à Lyon, c''est 17 h ou 18 h à Antananarivo selon la saison
+[ ] Tester la connexion, le micro et la caméra 15 minutes avant
+[ ] Avoir le partage de connexion du téléphone prêt en cas de coupure
+[ ] Choisir un fond neutre et un endroit calme
+```
+
+## Le déroulé de l''appel
+
+```schema etapes
+titre: Un appel de découverte de 40 minutes
+Accueil (3 min) : remercier, annoncer la durée et le déroulé
+Sa situation (15 min) : écouter ce qui lui prend du temps et ce qu''elle veut changer
+Son organisation (10 min) : outils, habitudes, communication
+Les règles (7 min) : décisions, sujets sensibles, ton
+La suite (5 min) : résumé, envoi de la fiche de mission, date de démarrage
+```
+
+Pendant l''appel, **écoutez plus que vous ne parlez**. Prenez des notes, reformulez les points importants, et ne promettez rien que vous ne maîtrisez pas : « Je note, je vous fais une proposition dans la fiche de mission. »
+
+### Les 10 questions clés
+
+1. Quelles tâches vous prennent le plus de temps aujourd''hui ?
+2. Si vous ne deviez me confier qu''une seule tâche, laquelle ?
+3. Quels outils utilisez-vous : messagerie, agenda, stockage, facturation ?
+4. Quelles décisions puis-je prendre seule, et lesquelles dois-je vous soumettre ?
+5. Comment préférez-vous communiquer avec moi, pour l''urgent et pour le reste ?
+6. À quelle fréquence voulez-vous un point de suivi ?
+7. Quelles sont vos règles d''agenda : horaires, pauses, jours sans rendez-vous ?
+8. Y a-t-il des personnes ou des sujets sensibles à connaître ?
+9. Comment vous adressez-vous à vos clients : tutoiement, vouvoiement, ton ?
+10. À quoi verrez-vous, dans un mois, que ma mission est réussie ?
+
+> [!cle] La question 10
+> C''est la plus importante : elle vous donne les **objectifs** de la mission, avec les mots de la cliente. Notez la réponse mot pour mot. Vous la relirez chaque semaine, et elle servira de base au bilan de fin de mois.
+
+## Ce que vous décidez, ce qu''elle décide
+
+Une mission réussie repose sur des limites claires. Pendant l''appel, classez les décisions en trois niveaux avec la cliente.
+
+```schema comparaison
+titre: Les 3 niveaux d''autonomie
+colonnes: Je fais seule | Je fais, puis j''informe | Je prépare, elle décide
+Archiver les publicités et notifications | Fixer un rendez-vous dans les créneaux autorisés | Accepter un nouveau client ou un partenariat
+Répondre aux questions fréquentes avec les modèles validés | Déplacer un rendez-vous à la demande d''un client | Répondre à une réclamation
+Envoyer les rappels de rendez-vous | Envoyer une facture conforme au tarif | Accorder une remise ou un délai de paiement
+```
+
+Avec le temps et la confiance, certaines décisions passeront d''une colonne à l''autre. Notez-le à chaque fois dans la fiche de mission.
+
+## La fiche de mission
+
+Dans les 24 heures qui suivent l''appel, envoyez une **fiche de mission** d''une page. Elle confirme par écrit ce que vous avez compris, et devient la référence de votre travail.
+
+| Rubrique | Exemple pour Claire Laurent |
+| --- | --- |
+| **Objectifs du mois** | Boîte de réception à zéro chaque soir ; aucun rendez-vous oublié ; factures envoyées sous 48 h |
+| **Tâches confiées** | E-mails, agenda, facturation, relances, rappels de rendez-vous |
+| **Je fais seule** | Tri, archivage, réponses avec les modèles validés, rappels |
+| **Je fais, puis j''informe** | Rendez-vous dans les créneaux autorisés, factures au tarif |
+| **Elle décide** | Prix, remises, réclamations, nouveaux partenariats |
+| **Communication** | WhatsApp pour l''urgent ; résumé quotidien par e-mail ; point vidéo le vendredi à 16 h (heure de Lyon) |
+| **Volume et horaires** | 10 h de travail par semaine ; joignable de 9 h à 13 h (heure de Lyon) ; suivi du temps chaque vendredi |
+| **Accès** | Délégation Gmail, agenda en modification, dossier Drive « Factures » |
+
+Terminez l''e-mail d''envoi par une question simple : « Cette fiche correspond-elle à vos attentes ? Je commence lundi dès votre accord. »
+
+> [!madagascar] L''appel depuis Madagascar
+> Le premier appel est aussi un test de votre fiabilité technique. Connectez-vous 5 minutes avant l''heure, avec un fond calme. Si une coupure survient, reconnectez-vous en partage de connexion et envoyez immédiatement un message : « Coupure d''électricité, je reviens dans 2 minutes en connexion mobile. » Une coupure bien gérée ne fait pas perdre un client ; un silence, si.
+
+> [!erreur] Commencer sans fiche écrite
+> L''appel s''est bien passé, tout semble clair, et l''assistant commence dès le lendemain. Trois semaines plus tard, la cliente s''étonne qu''il n''ait pas géré ses publications LinkedIn, « dont on avait parlé ». Personne ne se souvient exactement de ce qui avait été dit. **Une fiche de mission validée par écrit** protège les deux parties : chacun sait ce qui est inclus, et ce qui ne l''est pas.
+
+> [!retenir]
+> - **Préparez** l''appel : recherches, questions, heure, connexion.
+> - **10 questions**, dont la plus importante : « À quoi verrez-vous que c''est réussi ? »
+> - **3 niveaux d''autonomie** : je fais seule, je fais puis j''informe, je prépare et elle décide.
+> - Une **fiche de mission d''une page**, envoyée dans les 24 heures et validée par écrit.
+> - Des **objectifs mesurables** pour le premier mois.
+
+## Exercice pratique : l''appel de Claire Laurent
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Préparez votre document d''appel avec les 10 questions et le déroulé minuté.
+> 2. Faites un appel de découverte de 30 minutes avec un proche qui joue Claire Laurent (donnez-lui la présentation du cas), en visioconférence si possible.
+> 3. Notez les réponses, en particulier la réponse à la question 10, mot pour mot.
+> 4. Rédigez la fiche de mission d''une page et l''e-mail d''envoi.
+>
+> **À livrer** : vos notes d''appel, la fiche de mission et l''e-mail d''envoi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 0, 0, 'Quelle question de l''appel de découverte donne les objectifs de la mission ?', '["« Quel est votre logiciel préféré ? »","« Combien gagnez-vous par mois ? »","« Depuis quand êtes-vous coach ? »","« À quoi verrez-vous, dans un mois, que ma mission est réussie ? »"]'::jsonb, 3, 'La réponse donne les objectifs avec les mots du client. On la note mot pour mot et elle sert de base au bilan.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 0, 1, 'Pendant l''appel de découverte, qui doit parler le plus ?', '["L''assistant, pour montrer ses compétences","La cliente : l''assistant écoute, note et reformule","Personne : on échange par écrit","Les deux exactement autant"]'::jsonb, 1, 'L''appel sert à comprendre la situation de la cliente. Plus elle parle, plus la fiche de mission sera juste.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 0, 2, 'Dans quel niveau d''autonomie se trouve « accorder une remise » ?', '["Personne ne s''en occupe","Je prépare, elle décide","Je fais seule","Je fais, puis j''informe"]'::jsonb, 1, 'Tout ce qui touche aux prix et à l''argent reste une décision de la cliente. L''assistant peut préparer une proposition.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 0, 3, 'Quand envoyer la fiche de mission ?', '["Après le premier mois","Dans les 24 heures après l''appel, pour validation écrite","Avec la première facture","Seulement si la cliente la demande"]'::jsonb, 1, 'La fiche confirme par écrit ce qui a été compris et devient la référence. Envoyée vite, elle fixe les choses pendant qu''elles sont fraîches.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 0, 4, 'Pourquoi une fiche de mission écrite protège-t-elle les deux parties ?', '["Elle est obligatoire par la loi malgache","Elle remplace la facture","Chacun sait ce qui est inclus et ce qui ne l''est pas","Elle permet de travailler sans suivre son temps"]'::jsonb, 2, 'Sans écrit, chacun se souvient d''une version différente. Avec la fiche, les tâches, les décisions et le volume sont clairs.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 4, 1, 'La première semaine : accès, boîte et agenda', 10, 'La fiche de mission est validée : Claire Laurent vous attend lundi. La première semaine est décisive. La cliente va observer si vous tenez vos promesses, si vous comprenez vite, et si sa vie devient vraiment plus simple. L''objectif est clair : à la fin de la semaine, sa boîte de réception est maîtrisée, son agenda est fiable, et elle a vu des résultats concrets. Cette leçon vous donne le plan, jour par jour.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Organiser la première semaine d''une mission jour par jour.
+> 2. Recevoir et vérifier tous les accès le premier jour.
+> 3. Vider une boîte de 1 200 e-mails sans rien perdre.
+> 4. Fiabiliser l''agenda des trois semaines suivantes.
+> 5. Proposer les changements au lieu de les imposer.
+
+## Le plan de la semaine
+
+| Jour | Objectif | Actions principales |
+| --- | --- | --- |
+| **Lundi** | S''installer | Recevoir et tester les accès ; créer l''espace Notion ; message de démarrage |
+| **Mardi** | Désengorger la boîte | Archiver en masse publicités et notifications ; proposer libellés et filtres |
+| **Mercredi** | Trier le reste | 4 D sur les e-mails restants ; liste des décisions pour la cliente |
+| **Jeudi** | Fiabiliser l''agenda | Vérifier les 3 semaines à venir ; liens, rappels, règles |
+| **Vendredi** | Rattraper et faire le bilan | Factures en retard, relances, point hebdomadaire |
+
+Envoyez ce plan à la cliente dès le lundi matin. Elle sait ce qui va se passer, et chaque résumé quotidien montre que le plan avance.
+
+## Lundi : les accès
+
+```schema checklist
+titre: Les accès du premier jour
+[ ] Délégation Gmail acceptée, et test : lire, archiver, envoyer un e-mail de test
+[ ] Agenda partagé avec le droit « Apporter des modifications aux événements »
+[ ] Dossier Drive partagé en éditeur, créé par la cliente
+[ ] Accès au tableau des factures
+[ ] Liste des accès mise à jour dans la fiche de mission
+[ ] Espace Notion créé et partagé, avec le plan de la semaine
+```
+
+S''il manque un accès, demandez-le **dès le lundi matin**, avec la marche à suivre : la cliente ne sait pas forcément où se trouve le réglage. « Pour la délégation, il suffit d''aller dans Paramètres → Comptes et importation → Accorder l''accès à votre compte, puis de saisir mon adresse. Cela prend 2 minutes. »
+
+## Mardi et mercredi : la boîte de réception
+
+Avec 1 200 e-mails non lus, on ne trie pas un par un. On commence par **retirer en masse** tout ce qui ne demande aucune action, puis on applique les 4 D au reste.
+
+```schema etapes
+titre: Vider une boîte de 1 200 e-mails sans rien perdre
+Publicités : rechercher category:promotions, ou le mot « désabonner »
+Archivage en masse : tout sélectionner, choisir « toutes les conversations correspondant à cette recherche », puis archiver
+Notifications : même méthode avec category:social et les adresses des outils
+Argent : rechercher « facture », « paiement », « devis » et appliquer les libellés
+Le reste : trier avec les 4 D, du plus récent au plus ancien
+Les anciens : plus de 3 mois sans réponse, dans « Ancien – à vérifier »
+```
+
+Pour chaque recherche, **regardez les résultats avant d''archiver** : un e-mail de cliente peut se cacher parmi les lettres d''information. Et rappelez-vous : on **archive**, on ne supprime jamais en masse.
+
+```schema barres
+titre: Exemple : les e-mails non traités pendant la première semaine
+Lundi : 1 200
+Mardi : 380
+Mercredi : 95
+Jeudi : 20
+Vendredi : 0
+```
+
+Le mercredi soir, la cliente reçoit la **liste des décisions** qui l''attendent, classées par importance : « 14 e-mails vous attendent dans le libellé À traiter par le client. Les 3 premiers sont urgents : une demande de partenariat qui expire vendredi, une cliente qui veut changer de formule, une facture de logiciel contestée. »
+
+## Jeudi : l''agenda
+
+1. **Vérifiez les 3 semaines à venir** : chaque rendez-vous a-t-il un lien, une heure juste, un titre clair ?
+2. **Ajoutez les rappels** : la veille pour les clients de Claire, 15 minutes avant pour elle.
+3. **Repérez les conflits** et les journées sans pause : proposez des corrections.
+4. **Notez ses règles d''agenda** dans une page Notion, si ce n''est pas déjà fait.
+5. **Proposez une page de réservation** si elle reçoit beaucoup de demandes de rendez-vous par e-mail.
+
+## Proposer, ne pas imposer
+
+Vous allez voir beaucoup de choses à améliorer. Mais la boîte et l''agenda appartiennent à la cliente : elle doit comprendre et accepter les changements.
+
+```schema comparaison
+titre: Introduire un changement
+ton: mauvais-bon
+colonnes: Imposer | Proposer
+Créer 15 libellés sans prévenir | Proposer 6 libellés, avec la raison de chacun
+Changer toutes les couleurs de l''agenda | Montrer une semaine exemple, puis appliquer si elle est d''accord
+Désinscrire la cliente de toutes les lettres d''information | Lui envoyer la liste, et désinscrire ce qu''elle a validé
+Modifier ses modèles de réponse | Lui soumettre les nouveaux textes dans un document
+```
+
+> [!madagascar] Le décalage du lundi matin
+> Avec 1 ou 2 heures d''avance sur Lyon, vous commencez votre journée avant la cliente. Profitez-en : à son réveil, le tri de la nuit est fait et le plan du jour l''attend. Gardez pour la fin de matinée, heure de Lyon, les questions qui demandent sa réponse : elle sera alors à son bureau, et vous pourrez avancer avant la fin de votre propre journée.
+
+> [!erreur] Tout changer dès le premier jour
+> Motivé, l''assistant réorganise tout le lundi : nouveaux libellés, nouveaux filtres, agenda recoloré, anciens dossiers déplacés. Le mardi, la cliente ne retrouve plus rien et passe une heure à chercher un contrat. Elle se demande si elle a bien fait de confier sa boîte à quelqu''un. **Le premier jour, on observe, on installe les accès et on propose.** Les grands changements viennent après son accord, un par un.
+
+> [!retenir]
+> - Un **plan de semaine** envoyé le lundi, suivi par les résumés quotidiens.
+> - **Lundi** : tous les accès, testés, et la liste des accès à jour.
+> - **Archivage en masse** avec les recherches, puis les 4 D ; jamais de suppression en masse.
+> - **Jeudi** : les 3 semaines d''agenda vérifiées, avec liens et rappels.
+> - **Proposer** chaque changement, avec sa raison, avant de l''appliquer.
+
+## Exercice pratique : préparer la semaine de Claire Laurent
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Rédigez le message de démarrage du lundi, avec le plan de la semaine.
+> 2. Rédigez le message qui explique à la cliente comment vous donner la délégation Gmail et le partage de l''agenda.
+> 3. Écrivez les 5 recherches Gmail que vous utiliserez pour l''archivage en masse, et testez-les dans votre Gmail d''exercice.
+> 4. Rédigez la liste des décisions du mercredi soir pour 6 e-mails fictifs, classés par importance.
+> 5. Rédigez votre proposition de libellés et de filtres, avec la raison de chacun.
+>
+> **À livrer** : vos 2 messages, vos 5 recherches, la liste des décisions et votre proposition.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 1, 0, 'Que faire en priorité le premier jour de la mission ?', '["Changer toutes les couleurs de l''agenda","Recevoir et tester tous les accès, puis envoyer le plan de la semaine","Supprimer les vieux e-mails","Réorganiser toute la boîte de réception"]'::jsonb, 1, 'Sans accès qui fonctionnent, rien n''est possible. Le premier jour sert à s''installer, observer et proposer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 1, 1, 'Comment commencer à vider une boîte de 1 200 e-mails ?', '["Lire chaque e-mail un par un depuis le plus ancien","Archiver en masse les publicités et notifications avec des recherches, après avoir vérifié les résultats","Tout supprimer et repartir de zéro","Répondre à tous les e-mails"]'::jsonb, 1, 'On retire d''abord en masse ce qui ne demande aucune action, puis on applique les 4 D au reste. On vérifie chaque recherche avant d''archiver.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 1, 2, 'Que reçoit la cliente le mercredi soir de la première semaine ?', '["Rien avant le vendredi","La liste des décisions qui l''attendent, classées par importance","La liste de ses mots de passe","Sa première facture"]'::jsonb, 1, 'Après le tri, la cliente sait exactement quelles décisions lui reviennent, en commençant par les plus urgentes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 1, 3, 'Comment introduire un nouveau système de libellés ?', '["Le proposer avec la raison de chaque libellé, puis l''appliquer après accord","Ne jamais rien changer","Le créer sans prévenir pour faire une surprise","Laisser la cliente le créer seule"]'::jsonb, 0, 'La boîte appartient à la cliente : elle doit comprendre et accepter les changements pour s''y retrouver.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 1, 4, 'Que vérifie-t-on dans l''agenda pendant la première semaine ?', '["Les rendez-vous de l''année passée","Les 3 semaines à venir : liens, heures, titres, rappels et conflits","Seulement les anniversaires","Uniquement le jour même"]'::jsonb, 1, 'En vérifiant trois semaines à l''avance, on évite les rendez-vous oubliés, l''un des objectifs de la cliente.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 4, 2, 'Le suivi administratif et le service client', 10, 'La boîte et l''agenda sont maîtrisés. Il reste un problème qui coûte de l''argent à Claire Laurent : ses factures partent en retard, et certaines ne sont jamais payées. Un assistant ne remplace pas un comptable, mais il peut prendre en charge tout le **suivi administratif** : préparer les factures, suivre les paiements, relancer, classer les justificatifs. Il peut aussi répondre aux questions courantes des clients de sa cliente. Cette leçon vous montre comment.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer les factures de la cliente à partir de son modèle.
+> 2. Suivre les paiements et relancer au bon moment.
+> 3. Préparer chaque mois les documents pour le comptable.
+> 4. Construire une foire aux questions avec des réponses validées.
+> 5. Traiter les demandes des clients de votre cliente, et savoir quand transmettre.
+
+## Les factures de la cliente
+
+Votre rôle est de **préparer** et d''**envoyer** les factures, pas d''inventer leurs règles. Les mentions obligatoires d''une facture dépendent du pays et du statut de la cliente (en France, par exemple, son numéro d''identification d''entreprise et une mention sur la TVA). Demandez-lui le modèle validé par son comptable, et ne modifiez jamais les mentions légales vous-même.
+
+```schema etapes
+titre: Le circuit d''une facture
+Déclencheur : séance réalisée, forfait vendu, fin du mois
+Préparer : copier le modèle, numéro suivant, client, prestation, montant
+Vérifier : tarif, nom, adresse, numéro sans trou, date d''échéance
+Envoyer : e-mail clair avec la facture en PDF, dans les 48 heures
+Enregistrer : ligne dans le tableau de suivi, PDF rangé dans le Drive
+```
+
+> [!cle] La numérotation
+> Les factures sont numérotées **à la suite, sans trou ni doublon** : F-2027-041, F-2027-042, F-2027-043. Une facture envoyée ne se supprime pas : si elle contient une erreur, la cliente émet un **avoir** (un document qui l''annule) et une nouvelle facture. Demandez-lui comment elle procède avec son comptable.
+
+## Suivre les paiements
+
+Le tableau de suivi des factures (leçon 4.2) devient votre outil principal. Chaque semaine, le même jour, faites le point.
+
+| Statut | Ce que cela veut dire | Votre action |
+| --- | --- | --- |
+| Envoyée | La facture est partie, l''échéance n''est pas passée | Rien, sauf un rappel la veille si la cliente le souhaite |
+| Payée | La cliente a confirmé la réception du paiement | Date de paiement notée, ligne terminée |
+| En retard | L''échéance est passée, aucun paiement reçu | Relance du niveau suivant (leçon 2.3) |
+| Litige | Le client conteste la facture | Transmettre à la cliente avec un résumé, ne pas relancer |
+
+**Avant chaque relance, vérifiez que la facture n''est pas déjà payée.** Selon les accès que la cliente vous donne, vous vérifiez sur son relevé bancaire, dans son logiciel, ou vous lui demandez confirmation. Relancer un client qui a déjà payé est gênant pour tout le monde.
+
+> [!madagascar] Les paiements par Mobile Money
+> Avec une cliente à Madagascar payée par MVola, Orange Money ou Airtel Money, une capture d''écran envoyée par le client ne prouve rien : elle peut être ancienne ou modifiée. Seule la cliente, dans **sa** propre application, peut confirmer la réception. Notez dans le tableau la référence de la transaction et la date de confirmation.
+
+## Les documents pour le comptable
+
+Chaque mois, le comptable de la cliente a besoin des factures émises, des factures reçues et des justificatifs. Préparez-les dans un dossier par mois, toujours rangé de la même façon.
+
+```schema arbre
+titre: Le dossier mensuel pour le comptable
+03 Factures et devis/
+  2027-04/
+    Factures émises/ # F-2027-041 à F-2027-058
+    Factures fournisseurs/ # logiciels, téléphone, salle
+    Justificatifs/ # tickets, reçus, notes de frais
+    2027-04 - Récapitulatif.pdf # liste et totaux du mois
+```
+
+Le **récapitulatif** du mois liste les factures émises, payées et en retard, avec les totaux. Envoyez-le à la cliente avant la date qu''elle a fixée avec son comptable, avec la liste des justificatifs manquants : « Il manque la facture du téléphone de mars. Pouvez-vous la télécharger depuis votre espace client, ou me donner l''accès ? »
+
+## Le service client de premier niveau
+
+Les clients de Claire posent souvent les mêmes questions : le déroulé d''une séance, les tarifs, les moyens de paiement, le report d''un rendez-vous. Vous pouvez y répondre, à condition d''avoir des **réponses validées**.
+
+```schema etapes
+titre: Traiter une demande d''un client de votre cliente
+Lire et classer : question fréquente, demande de rendez-vous, réclamation, autre
+Question fréquente : répondre avec la réponse validée, personnalisée
+Rendez-vous : appliquer les règles d''agenda
+Réclamation ou demande inhabituelle : accuser réception, puis transmettre avec un résumé
+Enrichir la FAQ : noter chaque nouvelle question
+```
+
+> [!definition] Foire aux questions (FAQ)
+> Un document qui rassemble les questions fréquentes et leurs réponses, validées par la cliente. Il vous permet de répondre vite et toujours de la même façon. Il peut aussi être publié sur le site de la cliente, pour réduire le nombre de questions.
+
+> [!exemple] La FAQ de Claire Laurent
+> Pendant la première semaine, Hanta note toutes les questions reçues. Elle en trouve 9 qui reviennent : déroulé de la première séance, durée d''un accompagnement, tarifs, paiement en plusieurs fois, report d''une séance, annulation, lien de visioconférence perdu, attestation, confidentialité. Elle rédige une réponse pour chacune ; Claire en corrige deux et valide le tout. Dès la deuxième semaine, Hanta répond seule à la plupart des demandes, en quelques minutes.
+
+> [!erreur] Inventer une réponse
+> Une cliente de Claire demande si son accompagnement peut être pris en charge par son employeur. La question n''est pas dans la FAQ. Pour aider, l''assistant répond « Oui, bien sûr ». C''était faux dans son cas, et Claire doit s''excuser. **Quand la réponse n''est pas dans la FAQ, accusez réception et transmettez** : « Je transmets votre question à Mme Laurent, qui vous répondra d''ici jeudi. »
+
+> [!retenir]
+> - Vous **préparez et envoyez** les factures avec le **modèle de la cliente**, sans toucher aux mentions légales.
+> - Une **numérotation sans trou** ; une facture envoyée ne se supprime pas.
+> - **Vérifiez le paiement** avant chaque relance ; la cliente confirme les paiements Mobile Money.
+> - Un **dossier mensuel** pour le comptable, avec un récapitulatif.
+> - Une **FAQ validée** pour les questions courantes ; le reste se **transmet**.
+
+## Exercice pratique : un mois de suivi administratif
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Créez le modèle de facture de Claire Laurent (inventez des informations réalistes et laissez une zone « mentions légales à compléter par le comptable »).
+> 2. Préparez 3 factures numérotées à la suite et l''e-mail d''envoi de l''une d''elles.
+> 3. Ajoutez 12 factures au tableau de suivi, avec des statuts variés, et listez les actions de la semaine.
+> 4. Créez le dossier mensuel du comptable et rédigez le récapitulatif du mois.
+> 5. Rédigez la FAQ de Claire Laurent : 8 questions et leurs réponses.
+>
+> **À livrer** : le modèle, les 3 factures, le tableau avec les actions, le récapitulatif et la FAQ.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 2, 0, 'Une facture déjà envoyée contient une erreur. Que fait-on en général ?', '["On la modifie sans rien dire","La cliente émet un avoir et une nouvelle facture, selon la méthode de son comptable","On la supprime et on réutilise son numéro","On ne fait rien"]'::jsonb, 1, 'La numérotation doit rester sans trou ni doublon. L''avoir annule la facture fausse ; une nouvelle facture la remplace.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 2, 1, 'Que faire avant chaque relance de facture ?', '["Augmenter le montant","Supprimer la facture","Vérifier que la facture n''est pas déjà payée","Prévenir tous les clients"]'::jsonb, 2, 'Relancer un client qui a déjà payé est gênant pour la cliente. On vérifie d''abord le paiement selon les accès disponibles.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 2, 2, 'Un client local envoie la capture d''un paiement MVola. Est-ce une preuve suffisante ?', '["Oui, si le montant est petit","Oui, toujours","Oui, si la capture est nette","Non : seule la cliente peut confirmer la réception dans sa propre application"]'::jsonb, 3, 'Une capture peut être ancienne ou modifiée. Seule la réception sur le compte de la cliente compte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 2, 3, 'À quoi sert la foire aux questions validée par la cliente ?', '["Classer ses factures","Publier ses tarifs secrets","Répondre vite et toujours de la même façon aux questions fréquentes","Remplacer la cliente pour toutes les décisions"]'::jsonb, 2, 'Avec des réponses validées, l''assistant répond seul aux questions courantes, sans risque de se tromper.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 2, 4, 'Un client pose une question absente de la FAQ. Que faire ?', '["Ignorer le message","Inventer une réponse probable","Répondre que ce n''est pas possible","Accuser réception et transmettre à la cliente avec un délai de réponse"]'::jsonb, 3, 'Une réponse inventée peut être fausse et mettre la cliente dans l''embarras. On transmet, puis on enrichit la FAQ.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 4, 3, 'Suivre son temps et rendre compte', 11, 'Claire Laurent paie 10 heures par semaine. Elle a le droit de savoir ce qu''elles contiennent, et surtout ce qu''elles lui rapportent. Un assistant qui note son temps avec précision et montre ses résultats en chiffres n''a presque jamais de discussion sur ses factures. Cette leçon vous apprend à suivre votre temps, à préparer le rapport hebdomadaire et à présenter le bilan de la première semaine.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Noter chaque bloc de travail avec précision.
+> 2. Respecter le volume d''heures prévu et prévenir avant de le dépasser.
+> 3. Rédiger un rapport hebdomadaire avec des résultats chiffrés.
+> 4. Mesurer les progrès avec des indicateurs avant et après.
+> 5. Présenter un bilan au point du vendredi.
+
+## Noter chaque bloc de travail
+
+Le suivi du temps se fait **au moment où vous travaillez**, jamais de mémoire en fin de semaine. Démarrez le chronomètre de votre outil (ou notez l''heure dans votre tableau) au début de chaque bloc, arrêtez-le à la fin.
+
+| Date | Début | Fin | Durée | Tâche | Catégorie |
+| --- | --- | --- | --- | --- | --- |
+| Lun 5 avril | 10 h 00 | 11 h 30 | 1 h 30 | Accès, espace Notion, plan de semaine | Installation |
+| Mar 6 avril | 10 h 00 | 12 h 00 | 2 h 00 | Archivage en masse, libellés proposés | E-mails |
+| Mer 7 avril | 10 h 00 | 12 h 15 | 2 h 15 | Tri 4 D, liste des décisions | E-mails |
+| Jeu 8 avril | 10 h 00 | 12 h 00 | 2 h 00 | Vérification de l''agenda, rappels | Agenda |
+| Ven 9 avril | 10 h 00 | 12 h 15 | 2 h 15 | Factures en retard, relances, bilan | Factures |
+| **Total** | | | **10 h** | | |
+
+Les heures sont celles de **votre** journée à Antananarivo : 10 h chez vous, c''est 9 h à Lyon en avril. Ce qui compte pour la cliente, c''est la durée et le contenu.
+
+Mettez-vous d''accord avec la cliente sur la façon d''**arrondir** : par exemple, au quart d''heure le plus proche. Ne comptez que le temps réellement passé sur ses tâches : votre formation, votre prospection et vos pauses ne sont pas facturables.
+
+> [!madagascar] Les coupures dans le suivi du temps
+> Pendant une coupure d''électricité ou de connexion, arrêtez le chronomètre si vous ne pouvez plus travailler pour la cliente. Si la coupure a retardé une tâche, dites-le dans le résumé quotidien. Votre honnêteté sur le temps est l''une des raisons pour lesquelles un client étranger vous gardera : il ne peut pas vous voir travailler, il doit pouvoir vous croire.
+
+## Respecter le forfait
+
+Le forfait de Claire est de 10 heures par semaine, soit environ 43 heures par mois. Que faire quand les tâches dépassent ce volume ?
+
+```schema etapes
+titre: Gérer le volume d''heures
+Chaque jour : suivre le total dans votre outil
+À 80 % du forfait : prévenir la cliente des tâches qui restent
+Proposer un choix : reporter certaines tâches, ou ajouter des heures
+Jamais sans accord : aucun dépassement sans accord écrit
+Heures en plus : notées séparément, une fois acceptées
+```
+
+> [!exemple] Le message à 80 %
+> « Bonjour Claire, nous avons utilisé 8 h sur les 10 h de la semaine. Il reste les relances de factures (environ 1 h) et la mise en place de la page de réservation (environ 2 h). Je vous propose de faire les relances cette semaine et la page de réservation lundi, sur les heures de la semaine prochaine. Cela vous convient ? »
+
+## Le rapport hebdomadaire
+
+Chaque vendredi, avant le point vidéo, envoyez un rapport d''une page. Il transforme vos heures en **résultats**.
+
+```schema etapes
+titre: Le rapport hebdomadaire en 5 parties
+Heures : total de la semaine, et cumul du mois sur le forfait
+Résultats : ce qui a changé pour la cliente, en chiffres
+Décisions en attente : ce qu''elle doit trancher, avec vos propositions
+Propositions : une ou deux améliorations pour gagner du temps
+Semaine suivante : les priorités prévues
+```
+
+Joignez le détail du suivi du temps. Un graphique simple aide la cliente à voir où vont ses heures :
+
+```schema barres
+titre: Exemple : répartition des 10 heures de la semaine
+unite: h
+E-mails : 4,25
+Agenda : 2
+Factures et relances : 2,25
+Installation : 1,5
+```
+
+## Mesurer les progrès
+
+La cliente a dit, à la question 10 de l''appel : « Dans un mois, je veux une boîte à jour, plus aucun rendez-vous oublié et des factures envoyées à temps. » Mesurez ces trois points **avant** de commencer, puis chaque semaine.
+
+```schema chiffres
+titre: Les indicateurs de Claire Laurent (fin de la semaine 1)
+1 200 → 0 : e-mails non traités dans la boîte de réception
+2 → 0 : rendez-vous oubliés depuis le début de la mission
+21 jours → 2 jours : délai moyen d''envoi d''une facture
+3 : factures en retard relancées, pour un total de 960 €
+```
+
+Ces chiffres sont la meilleure preuve de votre valeur. Ils serviront aussi à votre **étude de cas** de portfolio, avec l''accord de la cliente.
+
+## Le bilan du vendredi
+
+Le point vidéo du vendredi dure 15 à 20 minutes. Suivez l''ordre du rapport, et laissez du temps aux questions.
+
+1. **Les résultats** de la semaine, en chiffres.
+2. **Les décisions** qui attendent la cliente : prenez-les ensemble pendant l''appel.
+3. **Vos propositions** pour gagner du temps.
+4. **Ce que vous avez compris** de sa façon de travailler, et ce que vous ajustez.
+5. **Vos questions**, puis la confirmation des priorités de la semaine suivante.
+
+Après l''appel, envoyez un court compte rendu avec les décisions prises, et mettez à jour la fiche de mission si quelque chose a changé.
+
+> [!erreur] Reconstituer ses heures de mémoire
+> Le vendredi soir, l''assistant essaie de se souvenir de ce qu''il a fait chaque jour. Il oublie des tâches, arrondit au hasard et annonce « environ 10 heures ». La cliente demande le détail ; il ne peut pas le donner. Le doute s''installe. **Un suivi noté au fil de l''eau** se vérifie en un coup d''œil et protège votre crédibilité.
+
+> [!retenir]
+> - Chaque **bloc de travail** est noté au moment où il est fait : date, durée, tâche.
+> - À **80 % du forfait**, on prévient ; on ne dépasse jamais sans accord écrit.
+> - Le **rapport hebdomadaire** : heures, résultats, décisions, propositions, semaine suivante.
+> - Des **indicateurs avant et après**, liés aux objectifs de la cliente.
+> - Un **point du vendredi** préparé, suivi d''un compte rendu.
+
+## Exercice pratique : le rapport de la semaine 1
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Remplissez un suivi du temps de 10 heures pour la première semaine de Claire Laurent, en blocs réalistes.
+> 2. Rédigez le message à 80 % du forfait, avec deux tâches restantes et votre proposition.
+> 3. Choisissez 4 indicateurs liés à ses objectifs et donnez leurs valeurs avant et après la semaine 1.
+> 4. Rédigez le rapport hebdomadaire en 5 parties, avec un graphique de répartition des heures (dans Google Sheets).
+> 5. Préparez l''ordre du jour du point du vendredi.
+>
+> **À livrer** : le suivi du temps, le message, vos indicateurs, le rapport et l''ordre du jour.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 3, 0, 'Quand noter ses heures de travail ?', '["Seulement si le client le demande","De mémoire, le vendredi soir","Une fois par mois","Au moment où l''on travaille, bloc par bloc"]'::jsonb, 3, 'Un suivi au fil de l''eau est précis et vérifiable. De mémoire, on oublie des tâches et on arrondit au hasard.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 3, 1, 'Vous avez utilisé 8 h sur un forfait de 10 h et il reste 3 h de tâches. Que faire ?', '["Arrêter les tâches sans prévenir","Prévenir la cliente et lui proposer de reporter ou d''ajouter des heures","Facturer 13 h sans explication","Dépasser le forfait sans rien dire"]'::jsonb, 1, 'À 80 % du forfait, on prévient. On ne dépasse jamais le volume prévu sans l''accord écrit de la cliente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 3, 2, 'Quelle partie du rapport hebdomadaire montre votre valeur ?', '["Votre emploi du temps personnel","Les résultats en chiffres, liés aux objectifs de la cliente","La liste de vos difficultés","Le nombre de messages envoyés"]'::jsonb, 1, 'La cliente veut savoir ce que ses heures lui rapportent : boîte à jour, factures envoyées, argent récupéré.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 3, 3, 'Que faire du chronomètre pendant une coupure qui vous empêche de travailler ?', '["Ajouter une heure de plus pour compenser","L''arrêter, et signaler le retard éventuel dans le résumé","Le laisser tourner","Supprimer la journée du suivi"]'::jsonb, 1, 'Seul le temps réellement passé sur les tâches de la cliente se facture. Cette honnêteté fonde la confiance à distance.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 3, 4, 'Pourquoi mesurer les indicateurs avant de commencer la mission ?', '["Parce que c''est obligatoire","Pour critiquer la cliente","Pour augmenter le prix tout de suite","Pour pouvoir montrer les progrès réels, avant et après"]'::jsonb, 3, 'Sans la situation de départ, impossible de prouver ce qui a changé. Le « avant / après » est la meilleure preuve de votre travail.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 4, 4, 'Améliorer, faire le bilan et proposer la suite', 11, 'La première semaine a rattrapé le retard. Les trois semaines suivantes installent une **routine** fiable, et c''est là que l''assistant montre sa vraie valeur : il ne se contente plus d''exécuter, il propose des améliorations qui font gagner du temps durablement. À la fin du mois d''essai, un **bilan** bien préparé transforme l''essai en mission longue. Cette leçon vous guide jusqu''à ce moment, puis vous fait construire votre étude de cas de portfolio.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Installer une routine hebdomadaire fiable.
+> 2. Repérer les tâches répétitives et proposer des améliorations.
+> 3. Présenter le bilan du mois d''essai.
+> 4. Proposer la suite de la mission.
+> 5. Demander un témoignage et rédiger une étude de cas.
+
+## La routine des semaines 2 à 4
+
+Une fois le retard rattrapé, la mission prend un rythme régulier. Ce rythme rassure la cliente : elle sait quand chaque chose est faite.
+
+```schema cycle
+titre: La semaine type chez Claire Laurent
+Lundi : plan de la semaine, tri du week-end, revue de l''agenda du jour
+Chaque jour : tri des e-mails à heures fixes, rendez-vous, résumé quotidien
+Mardi et jeudi : factures de la semaine et relances
+Vendredi : rapport hebdomadaire, point vidéo, revue de l''agenda des 2 semaines suivantes
+Fin du mois : récapitulatif pour le comptable, bilan du mois
+```
+
+Notez ce rythme dans une procédure : si vous devez vous absenter, une collègue peut le suivre.
+
+## Proposer des améliorations
+
+Pendant les premières semaines, notez chaque tâche qui revient souvent, chaque question répétée, chaque perte de temps. Puis proposez une solution, une à la fois.
+
+| Ce que vous observez | Amélioration proposée | Effet attendu |
+| --- | --- | --- |
+| 15 e-mails par semaine pour fixer des rendez-vous | Une page de réservation en ligne | Moins d''allers-retours d''e-mails |
+| Les mêmes 9 questions des clients | Une FAQ publiée sur son site | Moins de questions, réponses plus rapides |
+| Des factures préparées une par une | Un modèle et une procédure | Factures envoyées sous 48 heures |
+| Des clients qui oublient leur séance | Un rappel automatique la veille | Moins de séances manquées |
+| Des documents cherchés plusieurs fois | Un Drive rangé et des noms de fichiers clairs | Documents retrouvés en quelques secondes |
+
+```schema etapes
+titre: Présenter une amélioration
+Le constat : ce que vous avez observé, en chiffres si possible
+La proposition : la solution, simple et concrète
+Le coût : temps de mise en place, abonnement éventuel
+Le gain : le temps ou l''argent économisé
+La décision : « Voulez-vous que je la mette en place ? »
+```
+
+> [!astuce] Une amélioration à la fois
+> Ne présentez pas dix idées en même temps : la cliente ne saura pas par où commencer, et vous aurez l''air de critiquer son organisation. Proposez **une amélioration par semaine**, la plus utile d''abord, et montrez son effet au point suivant.
+
+## Le bilan du mois d''essai
+
+À la fin du mois, préparez un bilan de deux pages et présentez-le en visioconférence. C''est le moment où la cliente décide de continuer ou non.
+
+```schema etapes
+titre: Le bilan en 6 parties
+Rappel des objectifs : la réponse à la question 10, mot pour mot
+Résultats : les indicateurs, avant et après le mois
+Ce qui a été mis en place : outils, procédures, améliorations
+Les progrès possibles : ce qui peut encore s''améliorer, et comment
+La proposition pour la suite : tâches, forfait, prix
+La décision : les questions, puis le choix de la cliente
+```
+
+```schema chiffres
+titre: Exemple : le bilan de Claire Laurent après un mois
+0 : rendez-vous oublié en 4 semaines (contre 2 le mois précédent)
+2 jours : délai moyen d''envoi d''une facture (contre 21)
+2 300 € : factures en retard récupérées grâce aux relances
+4 h : temps gagné chaque semaine selon la cliente
+```
+
+Ces chiffres sont **un exemple** : vos résultats dépendront de chaque mission. L''important est de les mesurer honnêtement, à partir des objectifs fixés au départ.
+
+## Proposer la suite
+
+N''attendez pas que la cliente vous demande si vous voulez continuer. Faites une **proposition concrète** à la fin du bilan.
+
+```schema comparaison
+titre: Trois façons de proposer la suite
+colonnes: Continuer à l''identique | Ajuster le forfait | Ajouter des tâches
+Même forfait, mêmes tâches | Plus ou moins d''heures selon le volume réel | De nouvelles tâches observées pendant le mois
+Pour une mission qui fonctionne bien | Si le forfait était trop juste ou trop large | Ex. : préparer ses ateliers, gérer sa lettre d''information
+```
+
+Envoyez la proposition par écrit après l''appel, avec la nouvelle fiche de mission. Si la cliente arrête, demandez-lui calmement pourquoi : sa réponse vous aidera pour vos prochaines missions.
+
+## Le témoignage et l''étude de cas
+
+Une mission réussie est votre meilleure publicité. À la fin du bilan, si la cliente est satisfaite, demandez-lui deux choses :
+
+1. **Un témoignage** de 2 ou 3 phrases, avec son nom et son métier, que vous pourrez publier sur votre profil.
+2. **Son accord** pour présenter la mission en étude de cas, avec ou sans son nom.
+
+> [!madagascar] Le bouche-à-oreille
+> À Madagascar comme dans la diaspora, beaucoup de missions arrivent par **recommandation**. Après un bilan positif, osez demander : « Connaissez-vous deux personnes à qui mon aide pourrait être utile ? » Un client satisfait recommande volontiers, à condition qu''on le lui demande. Remerciez toujours la personne, que la recommandation aboutisse ou non.
+
+> [!erreur] Un bilan sans chiffres
+> L''assistant présente son bilan : « Ça s''est bien passé, j''ai fait beaucoup de choses, vous êtes contente ? » La cliente répond qu''elle va réfléchir, puis ne donne plus de nouvelles. Sans chiffres, elle ne voit pas clairement ce que l''assistant lui a apporté. **Un bilan montre les résultats par rapport aux objectifs fixés**, et se termine par une proposition concrète.
+
+> [!retenir]
+> - Une **routine hebdomadaire** écrite, que quelqu''un d''autre pourrait suivre.
+> - **Une amélioration par semaine** : constat, proposition, coût, gain, décision.
+> - Un **bilan en 6 parties**, avec les objectifs et les indicateurs.
+> - Une **proposition concrète** pour la suite, envoyée par écrit.
+> - Un **témoignage**, une **étude de cas** et une demande de **recommandation**.
+
+## Exercice pratique : le bilan du mois
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Rédigez la procédure de la semaine type de Claire Laurent.
+> 2. Choisissez 2 améliorations du tableau et rédigez leur présentation en 5 parties.
+> 3. Rédigez le bilan du mois d''essai en 6 parties, avec 4 indicateurs avant et après.
+> 4. Rédigez votre proposition pour la suite, et la demande de témoignage.
+>
+> **À livrer** : la procédure, les 2 présentations d''amélioration, le bilan et la proposition.
+
+## Projet du module 5 : votre étude de cas
+
+> [!projet] Projet du module · 2 heures 30
+> Rassemblez tout le travail du module dans un dossier professionnel : c''est la pièce maîtresse de votre portfolio.
+> 1. **Le dossier de mission** : notes d''appel, fiche de mission, plan de la première semaine, messages clés, FAQ, procédures.
+> 2. **Le suivi** : le suivi du temps des 4 semaines (40 à 43 heures), les 4 rapports hebdomadaires et le bilan du mois.
+> 3. **L''étude de cas d''une page** : le contexte (qui est la cliente), le problème (avec des chiffres), ce que vous avez fait (5 à 7 actions), les résultats (avant et après), et un témoignage fictif clairement présenté comme un exemple.
+> 4. **La version publique** : une version de l''étude de cas sans aucune information confidentielle, prête à être publiée sur votre profil.
+>
+> **À livrer** : le dossier complet et l''étude de cas en PDF. Dans vos futures missions réelles, vous remplacerez ce cas fictif par de vrais clients, avec leur accord.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 4, 0, 'Combien d''améliorations proposer à la fois ?', '["Une par semaine, la plus utile d''abord","Aucune : on exécute seulement","Toutes à la fin du mois","Dix d''un coup, dès la première semaine"]'::jsonb, 0, 'Une amélioration à la fois est plus facile à accepter et à mesurer. Trop d''idées d''un coup donnent l''impression de critiquer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 4, 1, 'Par quoi commence le bilan du mois d''essai ?', '["La facture du mois","La liste des problèmes de la cliente","Votre nouveau tarif","Le rappel des objectifs fixés au départ"]'::jsonb, 3, 'On rappelle d''abord les objectifs (la réponse à la question 10), puis on montre les résultats obtenus par rapport à eux.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 4, 2, 'Qui doit proposer la suite de la mission à la fin de l''essai ?', '["Personne : la mission continue toute seule","Le comptable","Uniquement la cliente","L''assistant, avec une proposition concrète écrite"]'::jsonb, 3, 'Une proposition concrète (tâches, forfait, prix) facilite la décision. Attendre que la cliente en parle risque de laisser la mission s''arrêter.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 4, 3, 'Que faut-il obtenir avant de publier une étude de cas ?', '["Un paiement supplémentaire","L''accord de Vitako","Rien, le travail vous appartient","L''accord de la cliente, avec ou sans son nom"]'::jsonb, 3, 'La mission contient des informations confidentielles. On demande l''accord et on retire tout ce qui est sensible.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 4, 4, 4, 'Comment demander une recommandation à une cliente satisfaite ?', '["« Écrivez un avis à 5 étoiles, s''il vous plaît. »","« Connaissez-vous deux personnes à qui mon aide pourrait être utile ? »","« Donnez-moi la liste de tous vos contacts. »","On ne demande jamais"]'::jsonb, 1, 'Une question précise et polie facilite la réponse. Beaucoup de clients recommandent volontiers, à condition qu''on le leur demande.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 5, 'Trouver des clients et se faire payer', 'Votre offre et votre profil, les canaux de prospection, l''appel de vente et la proposition, le calcul de vos prix et de vos forfaits, la facture, les paiements depuis Madagascar et la fidélisation.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 5, 0, 'Votre offre et votre profil professionnel', 10, 'Vous savez maintenant faire le travail. Il reste à le **faire savoir** : un client ne vous choisira pas parce que vous êtes compétent, mais parce qu''il **comprend en quelques secondes** ce que vous pouvez faire pour lui, et qu''il a des preuves. Cette leçon vous aide à formuler votre offre, à construire un profil professionnel et à rassembler un portfolio d''assistant virtuel.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rédiger votre offre en 5 parties.
+> 2. Écrire une phrase de présentation centrée sur le client.
+> 3. Construire un profil LinkedIn qui inspire confiance.
+> 4. Rassembler un portfolio d''assistant virtuel.
+> 5. Préparer une offre d''une page à envoyer aux prospects.
+
+## Votre offre en 5 parties
+
+Le client ne cherche pas « un assistant virtuel ». Il cherche quelqu''un qui règle **son** problème. Présentez-vous donc par ce que vous résolvez, pas par ce que vous êtes.
+
+```schema etapes
+titre: Les 5 parties d''une offre claire
+Pour qui : votre cible précise (leçon 1.3)
+Quel problème : ce qui fait perdre du temps ou de l''argent à ce client
+Quelles tâches : la liste précise, et ce que vous ne faites pas
+Comment : horaires, outils, résumé quotidien, suivi du temps
+Preuves : étude de cas, témoignages, attestation
+```
+
+### La phrase de présentation
+
+Une formule simple : **J''aide [qui] à [quel résultat] en [quelles tâches].**
+
+```schema comparaison
+titre: Se présenter
+ton: mauvais-bon
+colonnes: Centré sur vous | Centré sur le client
+« Assistante virtuelle polyvalente, toutes tâches » | « J''aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »
+« Sérieuse et motivée, je cherche des missions » | « J''aide les cabinets médicaux à ne plus perdre de rendez-vous grâce à un agenda tenu et des rappels »
+« Bac + 3, maîtrise de l''outil informatique » | « J''aide les PME de Madagascar à envoyer leurs factures à temps et à suivre leurs paiements »
+```
+
+La phrase de droite permet au bon client de se reconnaître immédiatement. Ceux qui ne sont pas concernés passent leur chemin, et c''est très bien ainsi.
+
+## Le profil LinkedIn
+
+LinkedIn est le réseau professionnel le plus utilisé par les entrepreneurs, les coachs et les dirigeants qui cherchent un assistant. Votre profil est souvent la première chose qu''ils regardent.
+
+```schema ecran
+titre: Un profil LinkedIn d''assistant virtuel
+haut: Photo, bannière et titre [1]
+centre: Infos, Sélection et Expérience [2]
+bas: Compétences et recommandations [3]
+[1] Photo nette, visage souriant, fond simple ; titre = votre phrase de présentation, pas seulement « Assistante virtuelle »
+[2] Infos : votre offre en 5 parties ; Sélection : votre étude de cas et votre offre en PDF
+[3] Compétences : Gmail, Google Agenda, Notion… ; demandez des recommandations à vos premiers clients
+```
+
+Les noms des rubriques peuvent varier selon la version de LinkedIn ; l''important est que votre profil réponde, dès le haut de la page, aux questions du client : « Qui aidez-vous ? À quoi ? Comment ? Puis-je vous faire confiance ? »
+
+> [!madagascar] Rassurer un client étranger
+> Un client en Europe se pose des questions précises : vos horaires, la qualité de votre connexion, votre français écrit. Répondez-y dans votre profil : « Basée à Antananarivo (UTC+3), disponible de 9 h à 17 h, heure de Paris. Connexion principale et connexion de secours. » Ajoutez votre **attestation Vitako** dans la rubrique des certifications, avec son lien de vérification.
+
+## Le portfolio d''un assistant virtuel
+
+Un graphiste montre ses visuels. Un assistant virtuel montre son **organisation** et ses **résultats**. Vous avez construit tout le nécessaire pendant la formation.
+
+| Élément du portfolio | D''où il vient | Ce qu''il prouve |
+| --- | --- | --- |
+| **L''étude de cas** d''une page | Projet du module 5 | Que vous obtenez des résultats mesurables |
+| **Le kit de communication** | Projet du module 2 | Que vous écrivez bien, au nom d''un client |
+| **La méthode boîte et agenda** | Projet du module 3 | Que vous avez une méthode claire et reproductible |
+| **L''espace de travail type** | Projet du module 4 | Que vous maîtrisez les outils |
+| **Une procédure** | Leçon 4.3 | Que le client ne dépend pas de vous seul |
+| **L''attestation Vitako** | Examen final | Que vos compétences ont été vérifiées |
+
+Rassemblez ces éléments dans une **page Notion publique** ou un **PDF** de quelques pages, avec une courte introduction. Retirez toute information confidentielle : utilisez seulement des cas fictifs ou des cas réels avec l''accord du client.
+
+> [!exemple] Le portfolio de Mialy
+> Mialy, assistante virtuelle à Toamasina, n''avait pas encore de client. Elle a publié sur une page Notion son étude de cas fictive (clairement présentée comme un exercice), son kit de modèles et un tableau de suivi des factures en démonstration. Une agence immobilière belge, qui hésitait entre plusieurs candidats, l''a choisie en expliquant : « Vous êtes la seule à nous avoir montré comment vous travaillez. »
+
+## L''offre d''une page
+
+Préparez un document d''une page, à envoyer après un premier contact. Il reprend votre offre en 5 parties, vos forfaits (leçon 6.4), un témoignage, et un appel à l''action clair : « Réservez un appel de découverte gratuit de 20 minutes : [lien]. »
+
+```schema checklist
+titre: L''offre d''une page est prête si…
+[ ] Votre phrase de présentation est en haut, en gros
+[ ] Les tâches incluses et non incluses sont listées
+[ ] Votre façon de travailler est expliquée en 3 ou 4 points
+[ ] Une preuve est visible : étude de cas, témoignage ou attestation
+[ ] Le prochain pas est clair : un lien ou un contact
+[ ] Elle a été relue avec la méthode des 4 passes
+```
+
+> [!erreur] Le profil « tout faire »
+> « Assistante virtuelle polyvalente : saisie, e-mails, réseaux sociaux, comptabilité, traduction, montage vidéo, sites web. » Le client se dit que vous ne faites rien de façon approfondie, et passe au profil suivant. **Mieux vaut trois tâches maîtrisées, pour une cible précise**, que douze tâches pour tout le monde. Vous élargirez avec l''expérience.
+
+> [!retenir]
+> - Une offre en **5 parties** : pour qui, quel problème, quelles tâches, comment, preuves.
+> - **« J''aide [qui] à [résultat] en [tâches] »** : centré sur le client.
+> - Un **profil LinkedIn** qui répond tout de suite : qui, quoi, comment, confiance.
+> - Un **portfolio** qui montre votre organisation et vos résultats.
+> - Une **offre d''une page** avec un prochain pas clair.
+
+## Exercice pratique : votre offre et votre profil
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Rédigez votre offre en 5 parties, à partir de votre plan de démarrage (module 1).
+> 2. Écrivez 3 versions de votre phrase de présentation et choisissez la meilleure.
+> 3. Créez ou complétez votre profil LinkedIn : photo, titre, infos, sélection, compétences.
+> 4. Rédigez votre offre d''une page dans Canva ou Google Docs.
+>
+> **À livrer** : votre offre en 5 parties, vos 3 phrases, le lien de votre profil et votre offre d''une page en PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 0, 0, 'Quelle phrase de présentation est la plus efficace ?', '["« J''aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »","« Assistante virtuelle polyvalente, toutes tâches »","« Sérieuse et motivée, je cherche des missions »","« Bac + 3, maîtrise de l''outil informatique »"]'::jsonb, 0, 'La formule « J''aide [qui] à [résultat] en [tâches] » permet au bon client de se reconnaître immédiatement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 0, 1, 'Quelles sont les 5 parties d''une offre claire ?', '["Nom, âge, ville, diplôme, loisirs","Pour qui, quel problème, quelles tâches, comment, preuves","Prix, prix, prix, prix, remise","Logo, couleurs, police, slogan, photo"]'::jsonb, 1, 'L''offre part du client et de son problème, précise les tâches et la façon de travailler, puis apporte des preuves.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 0, 2, 'Que met en avant le portfolio d''un assistant virtuel ?', '["Son organisation et ses résultats : étude de cas, modèles, méthode, procédures","La liste de tous les logiciels existants","Des photos de son bureau","Uniquement ses diplômes"]'::jsonb, 0, 'Le client veut voir comment vous travaillez et ce que vous obtenez. L''étude de cas et les modèles le montrent concrètement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 0, 3, 'Comment rassurer un client européen sur votre fiabilité depuis Madagascar ?', '["Promettre de travailler 24 heures sur 24","Ne pas parler de votre pays","Indiquer vos horaires en heure de Paris et votre connexion de secours","Proposer le prix le plus bas"]'::jsonb, 2, 'Le client se pose des questions sur les horaires et la connexion. Y répondre dans le profil lève ses doutes avant même l''appel.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 0, 4, 'Pourquoi éviter le profil « je fais tout » ?', '["Le client pense que vous ne maîtrisez rien en profondeur","Parce que LinkedIn l''interdit","Il n''y a aucune raison","Parce que c''est trop court"]'::jsonb, 0, 'Trois tâches maîtrisées pour une cible précise convainquent plus qu''une longue liste pour tout le monde.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 5, 1, 'Où trouver vos premiers clients', 10, 'Les premiers clients ne viennent presque jamais tout seuls. Il faut aller vers eux, avec méthode et régularité : choisir deux ou trois canaux, envoyer des messages personnalisés, relancer, et suivre ses contacts dans un tableau. Cette leçon vous présente les canaux qui fonctionnent pour un assistant virtuel, le message de prospection et la routine qui, semaine après semaine, apporte des appels de découverte.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir 2 ou 3 canaux de prospection adaptés à votre cible.
+> 2. Rédiger un message de prospection personnalisé.
+> 3. Relancer sans insister.
+> 4. Suivre vos contacts dans un tableau de prospection.
+> 5. Éviter les pièges des plateformes et des groupes.
+
+## Les canaux de prospection
+
+| Canal | Pour quels clients | Comment s''y prendre |
+| --- | --- | --- |
+| **LinkedIn** | Coachs, consultants, dirigeants de PME | Profil soigné, publications utiles, messages personnalisés |
+| **Plateformes de freelance** (Upwork, Fiverr, plateformes francophones…) | Clients internationaux | Une offre précise, un profil complet, de la patience pour les premiers avis |
+| **Groupes Facebook d''entrepreneurs** | Indépendants francophones, commerçants | Aider en répondant aux questions, sans vendre directement |
+| **Votre réseau à Madagascar** | PME, ONG, professions libérales, diaspora | Parler de votre métier, proposer un essai court et payé |
+| **Agences et sociétés d''externalisation** | Missions régulières | Postuler pour gagner de l''expérience et des références |
+| **Recommandations** | Contacts de vos clients satisfaits | Demander après chaque mission réussie (leçon 5.5) |
+
+Ne vous dispersez pas : choisissez **2 ou 3 canaux** adaptés à votre cible, et travaillez-les sérieusement pendant au moins un mois avant de juger s''ils fonctionnent.
+
+> [!attention] Les règles des plateformes
+> Avant de créer un profil, vérifiez que la plateforme **accepte les freelances basés à Madagascar** et comment vous pourrez retirer votre argent. Lisez ses règles : la plupart **interdisent de se faire payer en dehors de la plateforme** pour un client trouvé chez elle, et peuvent fermer votre compte. Un « client » qui vous presse de quitter la plateforme dès le premier message est souvent un escroc.
+
+## Le message de prospection
+
+Un bon message de prospection est **court, personnalisé et utile**. Il ne dit pas « je cherche du travail » : il montre que vous avez compris le problème de la personne.
+
+```schema etapes
+titre: Un message de prospection en 4 temps
+Personnaliser : une phrase qui prouve que vous connaissez la personne ou son activité
+Le problème : ce qui lui fait probablement perdre du temps
+La preuve : votre étude de cas, un résultat, un lien
+La proposition : un échange court, sans engagement
+```
+
+> [!exemple] Un message LinkedIn à une coach
+> « Bonjour Sophie, j''ai lu votre publication sur la difficulté de trouver du temps pour développer votre activité. J''aide des coachs indépendants à reprendre le contrôle de leur boîte e-mail et de leur agenda, quelques heures par semaine. Voici comment s''est passé le premier mois avec une coach lyonnaise : [lien]. Seriez-vous ouverte à un échange de 15 minutes la semaine prochaine ? »
+>
+> Quatre phrases : une personnalisation, un problème, une preuve, une proposition. Pas de liste de compétences, pas de supplication.
+
+```schema comparaison
+titre: Le message générique contre le message personnalisé
+ton: mauvais-bon
+colonnes: Message générique | Message personnalisé
+« Bonjour, je suis assistante virtuelle, avez-vous besoin de moi ? » | Une phrase sur l''activité réelle de la personne
+Le même texte envoyé à 200 personnes | 5 messages soignés par jour
+Une liste de toutes vos compétences | Un seul problème, celui de la personne
+« Je suis disponible pour tout » | Une proposition précise : un échange de 15 minutes
+```
+
+## Relancer sans insister
+
+Beaucoup de personnes intéressées ne répondent pas au premier message : elles l''ont vu trop vite, ou l''ont oublié. **Une relance**, polie et courte, 5 à 7 jours plus tard, obtient souvent une réponse.
+
+« Bonjour Sophie, je me permets de revenir vers vous au sujet de mon message de la semaine dernière. Si ce n''est pas le bon moment, aucun souci : je vous souhaite une belle fin de semaine. »
+
+Après une relance sans réponse, **arrêtez** : insister abîme votre image. Vous pourrez recontacter la personne quelques mois plus tard, avec une nouvelle raison (une nouvelle étude de cas, un service nouveau).
+
+## Le tableau de prospection
+
+Tenez un tableau simple de tous vos contacts. Sans lui, vous oublierez qui relancer, et vous risquez d''écrire deux fois à la même personne.
+
+| Nom | Canal | Date du message | Relance | Statut | Prochaine action |
+| --- | --- | --- | --- | --- | --- |
+| Sophie M., coach | LinkedIn | 3 mai | 10 mai | Appel prévu | Appel le 14 mai à 15 h (Paris) |
+| Cabinet Andrianina | Réseau | 4 mai | — | Pas intéressé | Recontacter en septembre |
+| Lodge Fasika | Facebook | 5 mai | 12 mai | Sans réponse | Aucune |
+
+```schema entonnoir
+titre: Le parcours d''un prospect
+Messages personnalisés envoyés
+Réponses reçues
+Appels de découverte
+Essais d''un mois
+Clients réguliers
+```
+
+À chaque étape, une partie des contacts s''arrête : c''est normal. C''est pourquoi la **régularité** compte plus que tout : 5 messages soignés par jour, chaque jour ouvré, valent beaucoup mieux que 100 messages un dimanche puis plus rien pendant un mois. Regardez votre tableau chaque vendredi : quel canal donne le plus de réponses ? Quel message fonctionne le mieux ?
+
+> [!madagascar] Votre réseau à Madagascar
+> Votre premier client est peut-être plus proche que vous ne le pensez : un ancien professeur qui dirige une école, une tante qui gère un cabinet, l''ONG où un ami travaille, un commerçant de la diaspora. Expliquez clairement votre métier autour de vous, en une phrase. Les événements professionnels (salons, rencontres d''entrepreneurs, activités des chambres de commerce) sont aussi de bonnes occasions de rencontrer des dirigeants débordés.
+
+> [!erreur] Prospecter seulement « quand on a le temps »
+> Pendant sa première mission, l''assistante arrête toute prospection : elle est occupée. Un mois plus tard, la mission se termine, et elle n''a plus aucun contact en cours. Il lui faut deux mois pour retrouver un client. **Gardez 20 à 30 minutes de prospection par jour**, même quand vous avez des clients : c''est votre assurance contre les mois vides.
+
+> [!retenir]
+> - **2 ou 3 canaux**, choisis pour votre cible, travaillés au moins un mois.
+> - Un message en 4 temps : **personnalisation, problème, preuve, proposition**.
+> - **Une relance** après 5 à 7 jours, puis on s''arrête.
+> - Un **tableau de prospection**, regardé chaque vendredi.
+> - Les règles des plateformes : **pas de paiement en dehors**, méfiance envers les clients pressés.
+
+## Exercice pratique : votre première semaine de prospection
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Choisissez vos 2 ou 3 canaux et justifiez chaque choix en une phrase.
+> 2. Créez votre tableau de prospection et listez 20 prospects réels correspondant à votre cible.
+> 3. Rédigez 5 messages personnalisés en 4 temps, et votre message de relance.
+> 4. Envoyez au moins 3 de ces messages pour de vrai, et notez-les dans le tableau.
+>
+> **À livrer** : vos canaux justifiés, votre tableau avec 20 prospects, vos 5 messages et la relance.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 1, 0, 'Combien de canaux de prospection travailler au début ?', '["Tous en même temps","2 ou 3, sérieusement, pendant au moins un mois","Un seul, pendant une semaine","Aucun : attendre que les clients arrivent"]'::jsonb, 1, 'En se dispersant, on ne fait rien sérieusement. Deux ou trois canaux adaptés à la cible, travaillés régulièrement, donnent des résultats mesurables.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 1, 1, 'Dans quel ordre écrire un message de prospection ?', '["Prix, remise, urgence","Liste des compétences, prix, diplôme","Personnalisation, problème, preuve, proposition","Présentation de sa famille, puis demande de travail"]'::jsonb, 2, 'Le message montre qu''on connaît la personne, qu''on comprend son problème, qu''on a une preuve, et propose un échange court.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 1, 2, 'Un prospect ne répond pas à votre message. Que faire ?', '["Une relance polie 5 à 7 jours plus tard, puis s''arrêter","Lui écrire sur tous les réseaux à la fois","Abandonner sans jamais relancer","Relancer chaque jour jusqu''à la réponse"]'::jsonb, 0, 'Une relance obtient souvent une réponse ; insister davantage abîme votre image.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 1, 3, 'Un client trouvé sur une plateforme veut vous payer en dehors dès le premier message. Que penser ?', '["C''est obligatoire pour être payé","C''est une excellente nouvelle","Cela n''a aucune importance","C''est souvent interdit par la plateforme, et parfois une arnaque"]'::jsonb, 3, 'La plupart des plateformes interdisent les paiements en dehors pour les clients trouvés chez elles. Un client trop pressé de quitter la plateforme est suspect.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 1, 4, 'Pourquoi continuer à prospecter quand on a déjà un client ?', '["Pour ne pas se retrouver sans aucun contact quand la mission se termine","Parce que les plateformes l''exigent","Il ne faut pas : on prospecte seulement sans client","Pour quitter son client actuel"]'::jsonb, 0, 'Une mission peut s''arrêter à tout moment. 20 à 30 minutes de prospection par jour évitent les mois sans revenus.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 5, 2, 'L''appel de vente et la proposition de collaboration', 10, 'Un prospect a répondu à votre message et accepte un échange. C''est le moment le plus important de la prospection : en 20 à 30 minutes, il va décider s''il vous confie une partie de son entreprise. Un bon appel de vente ne ressemble pas à une présentation : c''est surtout une écoute, suivie d''une proposition précise. Cette leçon vous donne le déroulé de l''appel, les réponses aux objections les plus fréquentes, et le contenu de la proposition écrite.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Mener un appel de vente en 5 étapes.
+> 2. Reformuler le besoin du prospect avec ses mots.
+> 3. Répondre aux objections les plus fréquentes avec calme.
+> 4. Proposer un essai payé plutôt qu''un travail gratuit.
+> 5. Rédiger une proposition de collaboration complète.
+
+## L''appel de vente en 5 étapes
+
+```schema etapes
+titre: Un appel de vente de 25 minutes
+Écouter (environ 60 % du temps) : ses tâches, ce qui lui pèse, ce qu''il a déjà essayé
+Reformuler : « Si je comprends bien, vous perdez environ 2 heures par jour sur… »
+Proposer : une solution précise, avec les tâches et un volume d''heures
+Rassurer : confidentialité, outils sécurisés, suivi du temps, résumé quotidien
+Conclure : « Voulez-vous que je vous envoie la proposition aujourd''hui ? »
+```
+
+Pour l''étape **Écouter**, reprenez les questions 1, 2 et 10 de l''appel de découverte (leçon 5.1) : ce qui prend du temps, la tâche à confier en premier, et ce qui fera dire que la mission est réussie.
+
+> [!cle] La reformulation
+> La reformulation est le moment où le prospect se sent compris. Utilisez **ses mots**, pas les vôtres : s''il a dit « je me noie dans mes e-mails », reprenez « vous vous noyez dans vos e-mails », pas « vous avez un problème de gestion de la messagerie ». Terminez par une question : « C''est bien ça ? » Sa réponse vous dit si vous pouvez passer à la proposition.
+
+## Répondre aux objections
+
+Une objection n''est pas un refus : c''est une question à laquelle le prospect attend une réponse. Restez calme, remerciez-le de la poser, et répondez simplement.
+
+| Objection | Ce qu''elle cache souvent | Une réponse possible |
+| --- | --- | --- |
+| « C''est trop cher. » | Il ne voit pas encore ce qu''il gagne | « Combien d''heures par semaine passez-vous sur ces tâches ? Que pourriez-vous faire de ce temps ? » |
+| « J''ai peur de donner accès à mes e-mails. » | La confiance | « Je travaille par délégation, sans votre mot de passe, et vous pouvez retirer l''accès à tout moment. Je signe un engagement de confidentialité. » |
+| « Je n''ai pas le temps de vous former. » | Il imagine un gros travail au départ | « La première semaine, je m''adapte à vos outils et je vous pose mes questions une fois par jour, regroupées. » |
+| « Vous êtes loin, à Madagascar. » | Les horaires, la fiabilité | « Je travaille aux heures de bureau européennes, avec une connexion de secours. Vous recevez un résumé chaque soir. » |
+| « Je vais réfléchir. » | Un doute non exprimé | « Bien sûr. Qu''est-ce qui vous ferait hésiter ? » puis proposer un essai |
+
+```schema comparaison
+titre: Face à une objection
+ton: mauvais-bon
+colonnes: À éviter | À faire
+Baisser son prix tout de suite | Montrer ce que le prospect gagne en temps et en tranquillité
+Se justifier longuement | Répondre en deux phrases, puis vérifier : « Cela vous rassure ? »
+Contredire : « Non, vous avez tort » | Reconnaître : « C''est une question importante »
+Insister après un refus clair | Remercier, et proposer de rester en contact
+```
+
+## L''essai payé
+
+Quand le prospect hésite, proposez un **essai court et payé** plutôt qu''un travail gratuit : par exemple un mois au forfait le plus petit, ou 5 heures sur une tâche précise (vider sa boîte de réception, organiser son agenda du mois).
+
+L''essai payé est meilleur pour tout le monde. Le client s''engage un peu, donc il vous donne les accès et répond à vos questions. Vous êtes payé pour votre travail. Et un essai réussi se transforme naturellement en forfait régulier, avec le bilan de fin de mois (leçon 5.5).
+
+## La proposition de collaboration
+
+Après l''appel, envoyez une proposition écrite, **le jour même** si possible. Elle reprend tout ce qui a été dit et permet au client de décider sans vous rappeler.
+
+```schema checklist
+titre: Ce que contient la proposition
+[ ] Vos coordonnées et celles du client
+[ ] Le besoin, reformulé avec les mots du client
+[ ] Les tâches confiées, et celles qui ne sont pas incluses
+[ ] Le forfait : nombre d''heures, prix, ce qui se passe au-delà
+[ ] Vos horaires de disponibilité et vos délais de réponse
+[ ] La confidentialité : votre engagement écrit
+[ ] Le paiement : montant, moyen, date (en début de mois)
+[ ] La durée : un mois d''essai, puis renouvellement, et le préavis pour arrêter
+```
+
+Pour une mission longue ou importante, le client peut vous proposer son propre **contrat**. Lisez-le attentivement, et demandez des explications sur tout ce que vous ne comprenez pas avant de signer.
+
+> [!exemple] La proposition au cabinet Andrianina
+> Après un appel avec Me Andrianina, avocate à Antananarivo, Hanta envoie le soir même une proposition de deux pages : gestion de l''agenda des rendez-vous et des audiences, tri des e-mails, envoi et suivi des factures. Forfait de 20 heures par mois, payé en début de mois par MVola ou virement, avec un premier mois d''essai et un préavis de 15 jours. Hanta ajoute son engagement de confidentialité, essentiel pour un cabinet d''avocat. La proposition est acceptée deux jours plus tard.
+
+> [!erreur] Parler de soi pendant tout l''appel
+> L''assistant, stressé, présente pendant 20 minutes son parcours, ses diplômes et tous les outils qu''il connaît. Le prospect n''a presque rien dit. À la fin, l''assistant ne sait toujours pas ce dont il a besoin, et le prospect ne voit pas en quoi il pourrait l''aider. **Posez des questions et écoutez** : le prospect se convainc lui-même en expliquant son problème.
+
+> [!retenir]
+> - **5 étapes** : écouter, reformuler, proposer, rassurer, conclure.
+> - La **reformulation** avec les mots du prospect, suivie de « C''est bien ça ? ».
+> - Une objection est une **question** : on répond calmement, sans baisser son prix tout de suite.
+> - Un **essai court et payé** plutôt qu''un travail gratuit.
+> - Une **proposition écrite complète**, envoyée le jour même.
+
+## Exercice pratique : un appel et une proposition
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Préparez votre déroulé d''appel de vente de 25 minutes.
+> 2. Faites l''appel avec un proche qui joue un prospect (donnez-lui 3 objections à placer).
+> 3. Notez sa reformulation et vos réponses aux objections ; écrivez ce que vous amélioreriez.
+> 4. Rédigez la proposition de collaboration complète, avec les 8 éléments.
+>
+> **À livrer** : votre déroulé, vos notes d''appel avec les objections, et la proposition.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 2, 0, 'Pendant un appel de vente, quelle part du temps passer à écouter ?', '["Aucune","10 %","La majorité, environ 60 %","100 %, sans jamais parler"]'::jsonb, 2, 'En expliquant son problème, le prospect se convainc lui-même. L''assistant écoute, reformule puis propose.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 2, 1, 'Comment reformuler le besoin d''un prospect ?', '["En changeant ce qu''il a dit","Avec des termes techniques","Avec ses propres mots, suivis de « C''est bien ça ? »","Sans jamais vérifier"]'::jsonb, 2, 'Reprendre ses mots montre qu''on a compris. La question finale permet de corriger avant de proposer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 2, 2, 'Le prospect dit : « C''est trop cher. » Quelle est la meilleure réaction ?', '["Lui faire calculer le temps qu''il perd aujourd''hui et ce qu''il pourrait en faire","Lui dire qu''il a tort","Raccrocher","Baisser immédiatement le prix de moitié"]'::jsonb, 0, 'L''objection cache souvent qu''il ne voit pas encore le gain. On montre la valeur avant de parler de remise.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 2, 3, 'Pourquoi proposer un essai payé plutôt qu''un travail gratuit ?', '["Il vaut mieux toujours travailler gratuitement d''abord","Le client s''engage, vous êtes payé, et l''essai peut devenir un forfait","Pour gagner plus que d''habitude","Parce que le gratuit est interdit"]'::jsonb, 1, 'Un client qui paie un peu donne les accès et répond aux questions. Le travail gratuit attire souvent des clients qui ne paieront jamais.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 2, 4, 'Quand envoyer la proposition de collaboration ?', '["Seulement si le prospect relance","Le jour même de l''appel, si possible","Un mois plus tard","Jamais : l''accord oral suffit"]'::jsonb, 1, 'Envoyée vite, la proposition arrive pendant que le prospect est encore motivé et se souvient de l''échange.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 5, 3, 'Fixer son prix et proposer des forfaits d''heures', 10, '« Combien prenez-vous ? » Beaucoup de débutants répondent au hasard, souvent trop bas, et se retrouvent à travailler beaucoup pour gagner peu. Un prix se **calcule** : à partir de ce dont vous avez besoin, des heures que vous pouvez réellement facturer, et du marché de vos clients. Cette leçon vous donne la méthode de calcul, la construction de trois forfaits, les règles à écrire, et le moment pour augmenter vos tarifs.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Calculer votre prix horaire à partir de vos besoins et de vos frais.
+> 2. Estimer vos heures réellement facturables.
+> 3. Construire trois forfaits d''heures.
+> 4. Écrire les règles de vos forfaits.
+> 5. Savoir quand et comment augmenter vos prix.
+
+## Les heures réellement facturables
+
+Un mois de travail compte environ 160 heures (8 heures par jour, 20 jours). Mais vous ne pourrez pas toutes les facturer : il faut aussi trouver des clients, gérer votre administration, vous former, et échanger avec vos clients au-delà des tâches prévues.
+
+```schema barres
+titre: Exemple : un mois de 160 heures pour un assistant à son compte
+unite: h
+Travail facturé aux clients : 100
+Prospection : 25
+Administration et facturation : 15
+Formation : 10
+Échanges non facturés : 10
+```
+
+Dans cet exemple, **100 heures** seulement sont facturables. C''est ce chiffre qui sert au calcul, pas 160. Au début, avec peu de clients, vos heures facturées seront encore moins nombreuses : votre prix doit en tenir compte.
+
+## Calculer votre prix horaire
+
+```schema etapes
+titre: Le calcul en 4 étapes
+Revenu visé : ce que vous voulez gagner chaque mois, pour vivre
+Frais du mois : connexion, électricité, téléphone, logiciels, matériel, impôts
+Total à couvrir : revenu visé + frais
+Prix horaire : total à couvrir ÷ heures facturables
+```
+
+> [!exemple] Le calcul de Hanta
+> Hanta vise un revenu de 1 200 000 Ar par mois. Ses frais (connexion principale et de secours, forfait mobile, électricité, part de son ordinateur, impôts) représentent environ 200 000 Ar. Total à couvrir : 1 400 000 Ar. Avec 100 heures facturables, son prix horaire est de **14 000 Ar**. Ce chiffre est un exemple : votre calcul dépend de votre situation.
+
+### Les clients étrangers
+
+Pour les clients à l''étranger, fixez un prix **dans leur monnaie** (euros, dollars canadiens), en vous basant sur le marché. Regardez une dizaine de profils d''assistants virtuels francophones débutants sur les plateformes, notez leurs tarifs, et placez-vous à un niveau raisonnable pour commencer. Vous l''augmenterez avec l''expérience et les avis.
+
+Ne cassez pas les prix : un tarif anormalement bas fait douter de votre sérieux, et attire les clients qui négocient tout. Pensez aussi aux **frais de réception** des paiements internationaux (leçon 6.5), qui réduisent ce que vous touchez réellement.
+
+## Trois forfaits d''heures
+
+Les clients préfèrent un **forfait mensuel payé d''avance** à un paiement à l''heure : ils connaissent leur budget, et vous connaissez vos revenus.
+
+| Forfait | Heures par mois | Pour qui | Exemple à 14 000 Ar/h | Exemple à 10 €/h |
+| --- | --- | --- | --- | --- |
+| **Découverte** | 10 h | Essai, petites tâches | 140 000 Ar | 100 € |
+| **Régulier** | 20 h | Gestion des e-mails et de l''agenda | 280 000 Ar | 200 € |
+| **Intensif** | 40 h | Assistance complète | 560 000 Ar | 400 € |
+
+Ces prix sont des **exemples** pour montrer le calcul, pas des tarifs recommandés : adaptez-les à votre niveau, à votre cible et au marché.
+
+```schema chiffres
+titre: Pourquoi trois forfaits ?
+Découverte : une porte d''entrée facile, pour l''essai
+Régulier : le forfait que la plupart des clients choisiront
+Intensif : pour les clients très débordés, et pour donner un repère
+```
+
+## Les règles de vos forfaits
+
+Un forfait sans règles écrites crée des malentendus. Indiquez-les dans votre proposition de collaboration (leçon 6.3).
+
+```schema checklist
+titre: Les règles à écrire
+[ ] Le paiement : en début de mois, avant le travail
+[ ] Les heures non utilisées : perdues, ou reportées au mois suivant dans une limite (par exemple 20 %)
+[ ] Les heures supplémentaires : seulement avec accord écrit, au même tarif
+[ ] Les urgences en dehors de vos horaires : acceptées ou non, et à quel tarif
+[ ] Le préavis pour arrêter : par exemple 15 jours ou un mois
+[ ] Le rapport : suivi du temps envoyé chaque semaine
+```
+
+> [!madagascar] Ariary, euros et taux de change
+> Avec un client à l''étranger, fixez le prix **dans sa monnaie** et écrivez-le clairement : « 200 € par mois ». Le taux de change entre l''euro et l''ariary varie : ce que vous recevez en ariary changera un peu d''un mois à l''autre. Avec un client malgache, fixez le prix en ariary, payable par Mobile Money ou virement. Dans les deux cas, ne changez pas le prix en cours de mois.
+
+## Augmenter vos prix
+
+Vos premiers prix ne sont pas définitifs. Avec l''expérience, vous travaillez plus vite et mieux : votre prix doit suivre.
+
+```schema etapes
+titre: Quand et comment augmenter
+Les signes : vous refusez des missions, vous avez une liste d''attente, vos clients recommandent
+Les nouveaux clients d''abord : votre nouveau tarif s''applique tout de suite
+Les clients actuels ensuite : un préavis d''un mois, par écrit
+L''explication : ce que vous apportez de plus, sans vous excuser
+Un rythme raisonnable : par exemple une fois par an
+```
+
+> [!erreur] Le prix « juste pour commencer »
+> Pour décrocher son premier client, l''assistant annonce un prix très bas, en se disant qu''il l''augmentera plus tard. Six mois après, il travaille 40 heures par mois pour ce client, n''a plus le temps d''en chercher d''autres, et n''ose pas annoncer une hausse importante. **Partez d''un prix calculé**, quitte à proposer un premier mois d''essai au forfait Découverte, plutôt que d''un prix au rabais difficile à corriger.
+
+> [!retenir]
+> - Comptez vos **heures facturables**, pas toutes vos heures de travail.
+> - **Prix horaire = (revenu visé + frais) ÷ heures facturables.**
+> - Pour l''étranger : un prix **dans la monnaie du client**, basé sur le marché, sans casser les prix.
+> - **Trois forfaits** : Découverte, Régulier, Intensif, payés en début de mois.
+> - Des **règles écrites**, et une hausse de prix annoncée avec un préavis.
+
+## Exercice pratique : vos prix et vos forfaits
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Estimez vos heures facturables pour un mois, avec un graphique de répartition comme celui de la leçon.
+> 2. Calculez votre prix horaire en ariary, avec la liste détaillée de vos frais.
+> 3. Relevez les tarifs de 10 assistants virtuels francophones sur une plateforme et choisissez votre prix pour les clients étrangers.
+> 4. Construisez vos 3 forfaits, en ariary et dans la monnaie de vos clients étrangers.
+> 5. Rédigez les 6 règles de vos forfaits.
+>
+> **À livrer** : votre répartition des heures, votre calcul, votre relevé de tarifs, vos 3 forfaits et vos règles.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 3, 0, 'Revenu visé 1 200 000 Ar, frais 200 000 Ar, 100 heures facturables. Quel est le prix horaire ?', '["140 000 Ar","2 000 Ar","14 000 Ar","12 000 Ar"]'::jsonb, 2, '(1 200 000 + 200 000) ÷ 100 = 14 000 Ar de l''heure. Les frais doivent être couverts en plus du revenu visé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 3, 1, 'Pourquoi ne pas diviser par 160 heures par mois ?', '["Une partie du temps sert à la prospection, à l''administration et à la formation, et ne se facture pas","Il faut diviser par 160","Parce qu''un mois compte toujours 100 heures","Parce que les clients refusent de payer plus de 100 heures"]'::jsonb, 0, 'Seules les heures réellement facturées aux clients rapportent de l''argent. Diviser par 160 donnerait un prix trop bas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 3, 2, 'Dans quelle monnaie fixer le prix pour un client en France ?', '["En euros, dans la monnaie du client","En dollars américains obligatoirement","Dans une monnaie différente chaque mois","En ariary uniquement"]'::jsonb, 0, 'Un prix dans la monnaie du client est clair pour lui. Le montant reçu en ariary variera un peu avec le taux de change.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 3, 3, 'Quand se paie un forfait d''heures ?', '["En début de mois, avant le travail","Seulement si le client est satisfait","Quand le client le souhaite","À la fin de l''année"]'::jsonb, 0, 'Le paiement d''avance protège l''assistant et fixe le cadre : c''est une règle écrite dans la proposition.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 3, 4, 'Comment augmenter ses prix ?', '["Nouveau tarif tout de suite pour les nouveaux clients, préavis écrit d''un mois pour les clients actuels","Augmenter chaque semaine","Augmenter sans prévenir","Ne jamais augmenter"]'::jsonb, 0, 'Les clients actuels ont besoin de temps pour s''organiser. Un préavis écrit et une explication calme préservent la relation.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('gestion-0-f', 5, 4, 'Facture, paiement et clients fidèles', 12, 'La dernière étape d''une mission est aussi la première de la suivante : être payé correctement, garder une trace de chaque paiement, terminer proprement, et faire en sorte que le client reste longtemps et vous recommande. Cette leçon termine la formation avec votre facture mensuelle, les moyens de paiement depuis Madagascar, la fidélisation, et votre plan d''action pour les 30 prochains jours.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Établir votre facture mensuelle et suivre vos revenus.
+> 2. Choisir le bon moyen de paiement selon le client.
+> 3. Garder vos clients longtemps.
+> 4. Terminer une mission proprement.
+> 5. Construire votre plan d''action pour les 30 prochains jours.
+
+## Votre facture mensuelle
+
+Avec un forfait payé d''avance, la facturation suit un rythme simple, le même chaque mois.
+
+```schema etapes
+titre: Le cycle de facturation d''un forfait
+Le 1er du mois : facture du forfait du mois, envoyée avec le récapitulatif du mois précédent
+Avant le 5 : réception du paiement, vérifiée sur votre compte
+Chaque vendredi : suivi du temps envoyé au client
+À 80 % du forfait : message au client si des heures supplémentaires semblent nécessaires
+Fin du mois : heures supplémentaires acceptées ajoutées à la facture suivante
+```
+
+Votre facture indique : un **numéro** unique (F-2027-001, puis F-2027-002…), la **date**, vos coordonnées (avec votre NIF et votre STAT si vous en avez), celles du client, la **description** (« Forfait Régulier, mai 2027, 20 heures »), le **montant**, le **moyen de paiement** avec vos coordonnées exactes, et l''**échéance**. Joignez le suivi du temps du mois précédent.
+
+Tenez aussi un **tableau de vos revenus** : date, client, facture, montant, moyen de paiement, référence de la transaction, statut. Il vous montre chaque mois ce que vous avez gagné et qui vous doit encore de l''argent, et il vous servira pour vos déclarations (leçon 1.5).
+
+## Se faire payer depuis Madagascar
+
+| Situation | Moyens de paiement courants | Points de vigilance |
+| --- | --- | --- |
+| Client à Madagascar | Mobile Money (MVola, Orange Money, Airtel Money), virement bancaire | Vérifier la réception sur votre compte, pas sur une capture |
+| Client trouvé sur une plateforme | Selon la plateforme : retrait vers Payoneer ou vers un compte bancaire | Commissions de la plateforme, frais de retrait, délai de disponibilité |
+| Client étranger en direct | Virement international, Payoneer, autres services selon les pays | Frais d''envoi et de réception, taux de change, délai de quelques jours |
+
+> [!madagascar] PayPal et les services de paiement
+> Les possibilités de PayPal sont limitées pour les comptes basés à Madagascar : vérifiez la situation actuelle avant de le proposer à un client. D''une manière générale, les services, les frais et les pays acceptés changent : **renseignez-vous sur le site officiel du service** et auprès d''assistants malgaches qui l''utilisent, avant de l''indiquer dans votre proposition.
+
+```schema chiffres
+titre: 4 bonnes pratiques de paiement
+Écrire : le moyen de paiement et vos coordonnées exactes dans la proposition et la facture
+Vérifier : chaque paiement sur votre propre compte, jamais sur une capture d''écran
+Noter : la référence, la date et le montant dans votre tableau des revenus
+Confirmer : un court message de remerciement à la réception du paiement
+```
+
+## Garder ses clients longtemps
+
+Un client fidèle vaut bien plus qu''un nouveau client : il vous connaît, il vous fait confiance, et il ne demande plus de prospection. Un assistant fiable garde souvent ses clients pendant des années.
+
+```schema chiffres
+titre: Ce qui fait rester un client
+La régularité : résumé quotidien et suivi du temps, sans exception
+Les propositions : une amélioration qui fait gagner du temps, régulièrement
+L''anticipation : absences prévenues à l''avance, avec une solution
+Les nouvelles tâches : proposer d''en faire plus quand la confiance est là
+```
+
+> [!exemple] De 10 à 40 heures avec le même client
+> Tsiry commence avec un forfait Découverte de 10 heures pour une agence immobilière de Bruxelles : le tri des e-mails. Après deux mois, il propose de gérer les visites dans l''agenda des agents. Trois mois plus tard, il prend en charge le suivi des dossiers de location. Un an après, il travaille 40 heures par mois pour l''agence, qui l''a recommandé à deux autres agences. Il n''a presque plus besoin de prospecter.
+
+## Terminer une mission proprement
+
+Même les bonnes missions se terminent : le client change d''organisation, embauche quelqu''un sur place, réduit son budget. Une fin propre préserve votre réputation, et souvent le client revient ou vous recommande.
+
+```schema checklist
+titre: La fin de mission
+[ ] Terminer ou transmettre les tâches en cours, avec une liste écrite
+[ ] Mettre à jour toutes les procédures
+[ ] Transférer la propriété des fichiers créés (leçon 4.1)
+[ ] Envoyer la liste des accès, pour que le client les retire
+[ ] Supprimer les fichiers du client de votre ordinateur, s''il le demande
+[ ] Envoyer la dernière facture et le dernier suivi du temps
+[ ] Remercier, et demander un témoignage si la mission s''est bien passée
+```
+
+> [!erreur] Livrer le travail avant le paiement… et ne jamais être payé
+> Un nouveau client local demande de commencer « tout de suite, on règle à la fin du mois ». L''assistant travaille 20 heures. À la fin du mois, le client ne répond plus. **Le forfait se paie en début de mois**, avant le travail : c''est écrit dans votre proposition, et c''est la règle pour tous les clients, même sympathiques.
+
+## Votre plan d''action pour les 30 prochains jours
+
+La formation se termine ; votre activité commence. Voici un plan simple, à adapter à votre situation.
+
+```schema etapes
+titre: Les 30 premiers jours de votre activité
+Semaine 1 : finaliser votre offre, votre profil LinkedIn et votre portfolio
+Semaine 1 : créer vos modèles (proposition, facture, tableau des revenus et de prospection)
+Semaines 2 à 4 : prospection 30 minutes par jour, 5 messages personnalisés
+Chaque semaine : une publication utile sur LinkedIn (un conseil, une méthode)
+Chaque vendredi : tableau de prospection, relances, ajustement des messages
+Fin du mois : bilan et ajustement de vos canaux, de votre cible ou de vos prix
+```
+
+> [!retenir]
+> - Une **facture mensuelle** en début de mois, avec le suivi du temps du mois précédent.
+> - **Mobile Money** pour les clients locaux ; **plateformes, virement ou Payoneer** pour l''étranger, en vérifiant les conditions.
+> - Chaque paiement **vérifié sur votre compte** et noté dans votre tableau.
+> - **Régularité, propositions, anticipation** : ce qui fait rester un client.
+> - Une **fin de mission propre** : tâches, fichiers, accès, remerciements.
+
+## Exercice pratique : vos outils de gestion
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez votre modèle de facture (numérotation F-2027-001) dans Google Docs ou un tableur.
+> 2. Créez votre tableau des revenus.
+> 3. Renseignez-vous sur deux moyens de recevoir un paiement de l''étranger depuis Madagascar : frais, délais, conditions, et notez vos sources.
+> 4. Rédigez votre modèle de liste de fin de mission.
+>
+> **À livrer** : votre modèle de facture, votre tableau des revenus, votre comparaison des moyens de paiement et votre liste de fin de mission.
+
+## Projet final : votre activité prête à démarrer
+
+> [!projet] Projet du module · 2 heures 30
+> Ce projet rassemble toute la formation. À la fin, vous êtes prêt à travailler avec de vrais clients.
+> 1. **Portfolio** : votre étude de cas (module 5), votre kit de communication (module 2) et votre méthode boîte et agenda (module 3), dans une page Notion ou un PDF, avec le lien de votre attestation Vitako.
+> 2. **Offre** : votre offre en 5 parties, votre offre d''une page et vos 3 forfaits avec leurs règles.
+> 3. **Documents** : vos modèles de proposition de collaboration, de facture, de fiche de mission et de fin de mission.
+> 4. **Prospection** : votre tableau avec 20 prospects, vos messages personnalisés et la preuve d''au moins **5 messages réellement envoyés**.
+> 5. **Plan** : votre plan d''action des 30 prochains jours, avec des dates précises.
+> 6. **Bilan** : relisez votre plan de démarrage du module 1 et écrivez en une page ce qui a changé, et vos objectifs pour les 3 prochains mois.
+>
+> **À livrer** : un dossier complet avec tous ces éléments. Félicitations : vous avez terminé la formation. Il vous reste à passer l''examen final pour obtenir votre attestation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 4, 0, 'Que joindre à la facture mensuelle d''un forfait ?', '["Vos mots de passe","Le suivi du temps du mois précédent","Votre CV","Rien"]'::jsonb, 1, 'Le suivi du temps montre au client ce que contiennent les heures payées, et évite toute discussion.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 4, 1, 'Comment vérifier qu''un client local vous a bien payé par MVola ?', '["Avec la capture envoyée par le client","En demandant à un ami","Ce n''est pas nécessaire","Dans votre propre application, pas sur une capture d''écran"]'::jsonb, 3, 'Une capture peut être ancienne ou modifiée. Seule la réception sur votre compte fait foi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 4, 2, 'Que faut-il vérifier avant de proposer PayPal à un client ?', '["Seulement la couleur du logo","Les possibilités actuelles pour un compte basé à Madagascar, sur le site officiel","L''avis d''un client","Rien, PayPal fonctionne partout de la même façon"]'::jsonb, 1, 'Les services de paiement, leurs frais et les pays acceptés changent. On vérifie toujours la situation actuelle avant de s''engager.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 4, 3, 'Qu''est-ce qui fait rester un client longtemps ?', '["La régularité, les propositions d''amélioration et l''anticipation","Les messages toutes les heures","Les prix toujours plus bas","L''absence de rapport"]'::jsonb, 0, 'Un client garde un assistant fiable qui lui fait gagner du temps et prévoit les problèmes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('gestion-0-f', 5, 4, 4, 'Que faire à la fin d''une mission ?', '["Garder les accès au cas où","Supprimer tous les fichiers sans prévenir","Transmettre les tâches, transférer les fichiers, envoyer la liste des accès à retirer, remercier","Disparaître sans rien dire"]'::jsonb, 2, 'Une fin propre protège le client et votre réputation. Beaucoup de clients reviennent ou recommandent un assistant qui a bien terminé.');
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel est le rôle principal d''un assistant virtuel ?', '["Prendre les décisions à la place du client","Développer les logiciels du client","Vendre les produits du client","Faire gagner du temps à son client en prenant en charge ses tâches administratives, à distance"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Qui décide d''accorder une remise à un client final ?', '["Le client final lui-même","Le client de l''assistant ; l''assistant peut préparer une proposition","La plateforme de freelance","L''assistant, seul"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelles tâches un débutant doit-il maîtriser en premier ?', '["Création de sites web","E-mails, agenda, saisie de données et recherches","Comptabilité complète et paie","Gestion d''une équipe d''assistants"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle forme de mission donne les revenus les plus réguliers ?', '["La mission ponctuelle","Le forfait mensuel d''heures","La tâche à la pièce","L''essai gratuit"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle qualité est indispensable parce que vous voyez des informations privées ?', '["La vitesse de frappe","L''humour","La créativité","La discrétion"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel est un vrai avantage d''un assistant à Madagascar pour un client en France ?', '["Il ne prend jamais de congés","Il n''a pas besoin de parler français","Il peut travailler pendant toute la journée de bureau européenne","Il travaille sans Internet"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quand il est 9 h à Paris en été, quelle heure est-il à Antananarivo ?', '["10 h","12 h","8 h","11 h"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel est l''écart entre Antananarivo et Montréal en hiver ?', '["7 heures d''avance pour Antananarivo","8 heures d''avance pour Antananarivo","8 heures de retard pour Antananarivo","3 heures d''avance pour Antananarivo"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Un « client » demande des frais d''inscription pour vous confier une mission. C''est…', '["Une pratique normale","Une garantie de sérieux","Une arnaque : un vrai client paie, il ne fait pas payer","Obligatoire sur les plateformes"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quels numéros un indépendant demande-t-il en général pour facturer officiellement à Madagascar ?', '["Le NIF et la carte statistique (STAT)","Aucun numéro","Un numéro Mobile Money","Un numéro de passeport uniquement"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que doit contenir l''objet d''un e-mail professionnel ?', '["Le nom de l''expéditeur","Le sujet et, si besoin, l''action ou la date","Seulement « Bonjour »","Rien, il peut rester vide"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Où placer l''information la plus importante dans un e-mail ?', '["Dans une pièce jointe","Dans l''objet uniquement","À la fin, avant la signature","Dans la première phrase"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle formule utiliser pour écrire à une administration que vous ne connaissez pas ?', '["« Salut, »","Aucune formule","« Madame, Monsieur, »","« Coucou, »"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle phrase est correcte ?', '["Les factures que j''ai envoyées sont payées.","Les factures que j''ai envoyer sont payées.","Les factures que j''ai envoyé sont payées.","Les factures que j''ai envoyés sont payées."]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Comment écrire une date dans un e-mail professionnel en français ?', '["18/3","jeudi prochain","jeudi 18 mars 2027","Jeudi 18 Mars 2027"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que ne vérifie pas un correcteur automatique ?', '["Les accords simples","Que le nom du destinataire et la date sont les bons","Les fautes de conjugaison courantes","Les fautes d''orthographe fréquentes"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Comment signer par défaut un message envoyé pour le client ?', '["En tant qu''assistant, par exemple « assistante de Claire Laurent »","Sans signature","Avec le nom du client, sans le prévenir","Avec un faux nom"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelles sont les 4 étapes d''un message délicat ?', '["S''excuser, s''excuser, s''excuser, signer","Se justifier, accuser, menacer, conclure","Proposer, insister, relancer, conclure","Reconnaître, dire les faits, proposer, fixer la suite"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelles sont les 4 rubriques du résumé quotidien ?', '["Bonjour, Travail, Problèmes, Au revoir","Heures, Prix, Facture, Paiement","Fait, En cours, Vous attend, Demain","Urgent, Important, Inutile, Autre"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que contient le tableau des actions d''un compte rendu de réunion ?', '["La liste des personnes absentes","Les plaisanteries de la réunion","Qui fait quoi, et pour quand","Le texte complet de la réunion"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que signifie « différer » dans la méthode des 4 D ?', '["Supprimer l''e-mail","Créer une tâche avec une date, puis archiver l''e-mail","Répondre tout de suite","Transférer à quelqu''un d''autre"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Un e-mail peut se traiter en une minute. Que faire pendant le tri ?', '["Le traiter tout de suite","Le supprimer","Le garder pour la semaine suivante","Le transférer au client"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Pourquoi archiver plutôt que supprimer ?', '["L''archivage est plus rapide","Il n''y a aucune différence","Un e-mail archivé reste retrouvable par la recherche","La suppression est payante"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'À quoi sert un filtre Gmail ?', '["Ranger automatiquement certains e-mails dès leur arrivée","Envoyer des e-mails plus vite","Bloquer Internet","Corriger les fautes"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que trouve la recherche Gmail from:banque has:attachment ?', '["Les e-mails de la banque avec une pièce jointe","Les e-mails non lus","Tous les e-mails envoyés à la banque","Les e-mails sans pièce jointe"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Comment accéder à la boîte e-mail d''un client sans son mot de passe ?', '["C''est impossible","Par la délégation de son compte","En lui demandant son mot de passe par WhatsApp","En créant une fausse adresse"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Combien de créneaux proposer pour un rendez-vous ?', '["Un seul, à prendre ou à laisser","Aucun","Toute la semaine","2 ou 3 créneaux précis"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faut-il toujours indiquer en proposant une heure à une personne à l''étranger ?', '["Le fuseau horaire","La météo","Le prix du rendez-vous","Votre adresse"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel droit demander pour gérer complètement l''agenda d''un client dans Google Agenda ?', '["Voir uniquement les disponibilités","Apporter des modifications aux événements","Aucun droit","Voir tous les détails des événements"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que compare-t-on pour choisir entre plusieurs vols ?', '["Seulement le prix affiché","La couleur de la compagnie","Le nombre de photos sur le site","Le prix total réel, les horaires et les conditions d''annulation"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel nom de fichier suit la bonne règle ?', '["devis final final 2.pdf","scan.pdf","Document1.pdf","2027-04-02 - Devis D-2027-018 - Lodge Fasika.pdf"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel droit Google Drive donner pour une simple relecture avec remarques ?', '["Éditeur","Propriétaire","Commentateur","Tous les utilisateurs disposant du lien"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel accès général choisir pour un document confidentiel dans Google Drive ?', '["Tous les utilisateurs disposant du lien","Public sur le Web","Aucun réglage","Restreint"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle règle respecter dans un tableau de suivi ?', '["Fusionner les cellules pour faire joli","Laisser des lignes vides entre les mois","Une ligne par élément, une colonne par information","Mettre plusieurs informations dans une cellule"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle formule additionne les montants de D2 à D100 ?', '["=AUJOURDHUI(D2:D100)","=SOMME(D2:D100)","=SI(D2:D100)","=NB.SI(D2:D100)"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Une tâche importante mais pas urgente doit être…', '["Faite tout de suite","Oubliée","Éliminée","Planifiée"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'À quoi sert une procédure écrite ?', '["Publier sur les réseaux sociaux","Stocker des photos","Envoyer des factures","Permettre à quelqu''un d''autre de faire la tâche, même en votre absence"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Une information trouvée grâce à un assistant d''IA doit être…', '["Arrondie","Transmise telle quelle","Vérifiée sur une source réelle avant d''être transmise","Traduite en anglais"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Un chiffre d''un numéro de téléphone est illisible pendant une saisie. Que faire ?', '["Supprimer le contact","Mettre un chiffre au hasard","Inventer un numéro complet","Le signaler dans une colonne « À vérifier »"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Un e-mail du « client » demande un virement urgent et confidentiel. Que faire ?', '["Transférer l''e-mail à un ami","Répondre à l''e-mail pour confirmer","Payer immédiatement","Vérifier en appelant le client au numéro habituel avant toute action"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle question de l''appel de découverte donne les objectifs de la mission ?', '["« À quoi verrez-vous, dans un mois, que ma mission est réussie ? »","« Quel âge avez-vous ? »","« Combien gagnez-vous ? »","« Quel est votre logiciel préféré ? »"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faut-il envoyer au client après l''appel de découverte ?', '["Votre mot de passe","Une fiche de mission écrite, à valider","Rien","Une facture immédiate"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle décision un assistant ne doit-il pas prendre seul ?', '["Répondre à une réclamation ou fixer un prix","Fixer un rendez-vous dans les créneaux autorisés","Archiver une publicité","Ajouter un rappel dans l''agenda"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que fait-on le premier jour d''une nouvelle mission ?', '["Supprimer les anciens e-mails","Réorganiser toute la boîte sans prévenir","Changer toutes les couleurs de l''agenda","Recevoir et tester les accès, observer et proposer"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Comment commencer à vider une boîte de 1 200 e-mails ?', '["Archiver en masse publicités et notifications, après avoir vérifié chaque recherche","Tout supprimer","Lire chaque e-mail du plus ancien au plus récent","Répondre à tous"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire avant de relancer une facture ?', '["Augmenter le montant","Vérifier qu''elle n''est pas déjà payée","Supprimer la facture","Prévenir tous les clients"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Un client pose une question absente de la FAQ. Que fait l''assistant ?', '["Il accuse réception et transmet la question au client avec un délai","Il répond que c''est impossible","Il invente une réponse probable","Il ignore le message"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Pourquoi noter chaque bloc de travail au moment où on le fait ?', '["Pour travailler plus lentement","Ce n''est pas utile","Pour que le client puisse vérifier précisément les heures qu''il paie","Parce que Gmail l''exige"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire quand 80 % du forfait de la semaine est utilisé et qu''il reste des tâches ?', '["Dépasser le forfait sans rien dire","Arrêter le travail sans prévenir","Facturer le double","Prévenir le client et lui proposer un choix"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que doit montrer le bilan du mois d''essai ?', '["Uniquement le nombre d''heures","Les problèmes personnels de l''assistant","Les résultats par rapport aux objectifs fixés, avec des chiffres","Rien de précis"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quelle phrase présente bien une offre d''assistant virtuel ?', '["« J''ai un ordinateur et Internet »","« Je suis le moins cher »","« J''aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »","« Je fais tout ce que vous voulez »"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Qu''est-ce qui convainc le plus un client dans le portfolio d''un assistant ?', '["La liste de ses loisirs","Le nombre de ses abonnés","Une photo de son ordinateur","Une étude de cas avec des résultats avant et après"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel est le bon ordre d''un message de prospection ?', '["Personnalisation, problème, preuve, proposition","Bonjour, besoin de travail, merci","Prix, remise, urgence, insistance","Diplômes, compétences, prix, disponibilité"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Combien de relances envoyer à un prospect qui ne répond pas ?', '["Une par jour jusqu''à la réponse","Une, 5 à 7 jours plus tard, puis s''arrêter","Dix, sur tous les réseaux","Aucune"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Pendant un appel de vente, quelle part du temps passer à écouter ?', '["10 %","Aucune","La majorité, environ 60 %","100 %, sans jamais parler"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Avec un revenu visé de 1 200 000 Ar, 200 000 Ar de frais et 100 heures facturables, quel est le prix horaire ?', '["14 000 Ar","140 000 Ar","12 000 Ar","1 400 Ar"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Pourquoi proposer des forfaits d''heures payés en début de mois ?', '["Pour travailler moins","Le client connaît son budget et l''assistant est payé avant de travailler","Pour éviter de suivre son temps","Parce que c''est obligatoire par la loi"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Rien","Qu''elles se font avec son accord écrit, au tarif convenu","Qu''elles sont gratuites","Qu''elles sont interdites"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel moyen de paiement utiliser le plus souvent avec un client local à Madagascar ?', '["Uniquement des espèces envoyées par la poste","Mobile Money ou virement bancaire","Uniquement PayPal","Un chèque étranger"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire à la fin d''une mission ?', '["Partir sans rien dire","Transmettre les tâches, transférer les fichiers et faire retirer les accès","Supprimer les fichiers du client sans prévenir","Garder les accès au cas où"]'::jsonb, 1, 2);
+update public.courses set v2_live = false where id = 'gestion-0-f';
 commit;

@@ -1,0 +1,61 @@
+{
+  "title": "Les outils de l'assistant virtuel",
+  "summary": "Google Drive bien rangé, Google Docs et Sheets pour les documents et les tableaux de suivi, Notion pour les tâches et les procédures, la recherche et la saisie de données, la sécurité des accès et les outils payants.",
+  "lessons": [
+    {
+      "title": "Google Drive : ranger, nommer et partager",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "Quel nom de fichier suit la bonne règle ?", "options": ["2027-03-14 - Contrat - Location bureau Ankorondrano.pdf", "contrat final final 2.pdf", "Document1.pdf", "scan.pdf"], "correct": 0, "why": "Date en AAAA-MM-JJ, puis type, puis sujet : le fichier se comprend sans l'ouvrir et se classe tout seul dans l'ordre chronologique." },
+        { "q": "Pourquoi écrire la date dans l'ordre année-mois-jour ?", "options": ["Les fichiers se classent dans l'ordre chronologique quand on les trie par nom", "C'est plus joli", "Google Drive l'exige", "Pour cacher la date"], "correct": 0, "why": "Avec 14-03-2027, tous les « 14 » seraient regroupés quel que soit le mois. Avec 2027-03-14, l'ordre alphabétique devient l'ordre des dates." },
+        { "q": "Quel droit donner à une personne qui doit seulement relire et faire des remarques ?", "options": ["Commentateur", "Éditeur", "Propriétaire", "Tous les utilisateurs disposant du lien"], "correct": 0, "why": "Le commentateur peut ajouter des remarques sans modifier le texte. L'éditeur peut tout changer." },
+        { "q": "Quel accès général choisir pour un document confidentiel ?", "options": ["Restreint, en ajoutant les personnes une par une", "Tous les utilisateurs disposant du lien", "Public sur le Web", "Aucun réglage n'est nécessaire"], "correct": 0, "why": "Un lien circule vite. En accès restreint, seules les personnes ajoutées peuvent ouvrir le document, même si le lien est transféré." },
+        { "q": "Vous créez un document dans le dossier partagé d'un client. À qui appartient-il ?", "options": ["À vous, qui l'avez créé, sauf si l'on transfère la propriété ou si l'on travaille dans un Drive partagé", "Automatiquement au client", "À Google", "À personne"], "correct": 0, "why": "Dans Google Drive, le créateur est propriétaire. Pour que le client garde ses documents, on transfère la propriété ou on utilise un Drive partagé de son entreprise." }
+      ]
+    },
+    {
+      "title": "Google Docs et Sheets : documents et tableaux de suivi",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Pourquoi utiliser les styles de titres dans un document ?", "options": ["Les titres sont homogènes, le plan s'affiche et la table des matières se crée automatiquement", "Pour écrire plus vite", "Pour protéger le document", "C'est obligatoire pour imprimer"], "correct": 0, "why": "Les styles (Titre 1, Titre 2) structurent le document : apparence identique, plan visible et table des matières automatique." },
+        { "q": "Quel mode permet au client d'accepter ou de refuser chacune de vos corrections ?", "options": ["Le mode Suggestion", "Le mode Lecture", "L'historique des versions", "L'impression en PDF"], "correct": 0, "why": "En mode Suggestion, chaque modification apparaît en couleur et peut être acceptée ou refusée une par une." },
+        { "q": "Quelle formule compte les factures dont le statut est « Payée » ?", "options": ["=NB.SI(F2:F100;\"Payée\")", "=SOMME(F2:F100)", "=AUJOURDHUI()", "=MOYENNE(F2:F100)"], "correct": 0, "why": "NB.SI compte les cellules qui remplissent une condition. SOMME additionne des nombres, elle ne compte pas des textes." },
+        { "q": "Quelle règle respecter dans un tableau de suivi ?", "options": ["Une ligne par élément et une colonne par information", "Fusionner les cellules pour faire joli", "Mettre plusieurs informations dans une cellule", "Laisser des lignes vides entre les mois"], "correct": 0, "why": "Un tableau continu, sans cellules fusionnées ni lignes vides, permet aux filtres et aux formules de fonctionner." },
+        { "q": "Pourquoi utiliser une liste déroulante pour la colonne Statut ?", "options": ["Pour que le statut soit toujours écrit de la même façon", "Pour cacher la colonne", "Pour calculer les montants", "Pour envoyer les factures"], "correct": 0, "why": "Avec des statuts identiques (Payée, En retard…), les filtres, NB.SI et les couleurs automatiques fonctionnent. « ok » ou « c bon » les cassent." }
+      ]
+    },
+    {
+      "title": "Notion : les tâches et les procédures",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "Dans quelle case de la matrice se trouve « préparer le rapport de fin de mois » ?", "options": ["Important et pas urgent : à planifier", "Urgent et important : tout de suite", "Urgent et pas important : à regrouper", "Ni urgent ni important : à éliminer"], "correct": 0, "why": "Le rapport est important mais pas pour aujourd'hui. Le planifier évite qu'il devienne une urgence la veille de l'échéance." },
+        { "q": "Quels sont les 4 statuts conseillés pour le tableau des tâches ?", "options": ["À faire, En cours, En attente du client, Terminé", "Lundi, Mardi, Mercredi, Jeudi", "Facile, Moyen, Difficile, Impossible", "Urgent, Très urgent, Ultra urgent, Fini"], "correct": 0, "why": "Ces statuts montrent où en est chaque tâche, y compris celles qui attendent une réponse du client." },
+        { "q": "Comment suivre les tâches de plusieurs clients ?", "options": ["Une page par client, partagée seulement avec lui", "Une seule page partagée avec tous les clients", "Dans un carnet papier", "Sans aucun outil"], "correct": 0, "why": "Chaque client ne doit voir que ses propres tâches. La confidentialité s'applique aussi à votre organisation." },
+        { "q": "Que ne faut-il jamais écrire dans une procédure ?", "options": ["Un mot de passe", "Les étapes numérotées", "La date de mise à jour", "Les pièges à éviter"], "correct": 0, "why": "Une procédure indique quels outils ouvrir, mais les accès se gèrent par délégation ou par gestionnaire de mots de passe." },
+        { "q": "Comment savoir si une procédure est claire ?", "options": ["Faire réaliser la tâche par quelqu'un d'autre avec la procédure", "La relire une fois soi-même", "La rendre très longue", "La garder pour soi"], "correct": 0, "why": "Si un proche réussit la tâche seul avec la procédure, elle est claire. Ses questions montrent ce qu'il faut améliorer." }
+      ]
+    },
+    {
+      "title": "Recherches sur Internet et saisie de données",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "Que faire avant de commencer une recherche pour un client ?", "options": ["La cadrer : objectif, critères, nombre de résultats, délai", "Ouvrir le plus d'onglets possible", "Demander à une IA et copier la réponse", "Chercher sans limite de temps"], "correct": 0, "why": "Une recherche sans critères ne finit jamais. Le cadrage fait gagner du temps et évite de chercher dans la mauvaise direction." },
+        { "q": "Que trouve la recherche Google rapport annuel filetype:pdf ?", "options": ["Des rapports annuels au format PDF", "Uniquement des images", "Les rapports d'un seul site", "Des pages sans le mot rapport"], "correct": 0, "why": "L'opérateur filetype: limite les résultats à un type de fichier, ici les PDF." },
+        { "q": "Un assistant d'IA vous donne le prix d'une salle. Que faites-vous ?", "options": ["Vous vérifiez sur une source réelle avant de le transmettre", "Vous le transmettez tel quel", "Vous l'arrondissez", "Vous demandez à une autre IA"], "correct": 0, "why": "L'IA peut inventer un prix, une adresse ou une entreprise. Chaque information pour le client se vérifie sur une source citée." },
+        { "q": "Que veut dire « normaliser » des données ?", "options": ["Écrire chaque information toujours de la même façon", "Supprimer les données inutiles", "Trier les données par ordre alphabétique", "Traduire les données"], "correct": 0, "why": "Avec les mêmes règles pour les noms, les téléphones, les dates et les villes, le tableau se trie, se filtre et se vérifie facilement." },
+        { "q": "Un chiffre d'un numéro de téléphone est illisible sur une carte. Que faire ?", "options": ["Le signaler dans une colonne « À vérifier »", "Mettre un chiffre au hasard", "Supprimer le contact sans rien dire", "Recopier le numéro sans ce chiffre sans le signaler"], "correct": 0, "why": "Une donnée incertaine se signale, elle ne s'invente jamais. Un faux numéro peut mettre le client dans l'embarras." }
+      ]
+    },
+    {
+      "title": "Sécurité, suivi du temps et outils payants",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "Quel est le meilleur moyen d'accéder à un outil du client ?", "options": ["Votre propre compte, invité dans l'outil du client", "Le mot de passe du client envoyé par WhatsApp", "Un fichier de mots de passe dans le Drive", "Le même compte pour toute l'équipe"], "correct": 0, "why": "Avec votre propre compte, le client garde son mot de passe, voit qui fait quoi et peut retirer l'accès à tout moment." },
+        { "q": "Lequel de ces signes doit faire penser à un hameçonnage ?", "options": ["Une adresse d'expéditeur presque juste, avec une lettre en trop", "Un e-mail attendu d'un collègue", "Une lettre d'information à laquelle on est abonné", "Une invitation à une réunion déjà prévue"], "correct": 0, "why": "Les escrocs imitent des adresses connues en changeant un détail. Vérifiez toujours l'adresse exacte de l'expéditeur." },
+        { "q": "Un « fournisseur » annonce par e-mail un nouveau compte bancaire. Que faire ?", "options": ["L'appeler au numéro déjà connu pour vérifier, et prévenir le client", "Mettre à jour le compte tout de suite", "Répondre à l'e-mail pour demander confirmation", "Payer la prochaine facture sur le nouveau compte"], "correct": 0, "why": "Le changement de coordonnées bancaires est une fraude fréquente. On vérifie par un autre canal, jamais en répondant au message suspect." },
+        { "q": "Comment vérifier où mène vraiment un lien dans un e-mail ?", "options": ["Le survoler avec la souris sans cliquer et lire l'adresse affichée", "Cliquer pour voir", "Le transférer à un ami", "Le copier dans WhatsApp"], "correct": 0, "why": "En survolant le lien, l'adresse réelle s'affiche en bas de l'écran. Si elle ne correspond pas au site annoncé, on ne clique pas." },
+        { "q": "Qui paie le plus souvent l'abonnement Google Workspace ou Calendly ?", "options": ["Le client, qui vous donne un accès", "Toujours l'assistant", "Vitako", "Personne : ils sont toujours gratuits"], "correct": 0, "why": "Les outils servent l'entreprise du client : c'est lui qui a l'abonnement. N'achetez à votre nom que ce qui vous sert pour plusieurs clients." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Gérer la boîte e-mail et l'agenda",
+  "summary": "La méthode des 4 D, Gmail en professionnel (recherche, filtres, modèles, délégation), les rendez-vous sans erreur de fuseau, l'organisation de l'agenda et des réunions, les déplacements et les événements.",
+  "lessons": [
+    {
+      "title": "Trier une boîte de réception : la méthode des 4 D",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Que veut dire une boîte de réception « à zéro » ?", "options": ["Chaque e-mail reçu a été traité, répondu, transmis, noté ou archivé", "Tous les e-mails du compte ont été supprimés", "Le client ne reçoit plus d'e-mails", "Les e-mails sont tous marqués comme lus"], "correct": 0, "why": "La boîte à zéro ne vide pas le compte : elle garantit qu'aucun e-mail reçu n'attend sans décision." },
+        { "q": "Un e-mail se traite en une minute. Que faites-vous pendant le tri ?", "options": ["Vous le traitez tout de suite, puis vous l'archivez", "Vous créez une tâche pour plus tard", "Vous le laissez dans la boîte", "Vous le transférez au client"], "correct": 0, "why": "C'est la règle des 2 minutes : noter, retrouver et relire la tâche plus tard prendrait plus de temps que de la faire tout de suite." },
+        { "q": "Où ranger un e-mail qui demande une décision que seul le client peut prendre ?", "options": ["Dans le libellé « À traiter par le client », repris dans le résumé quotidien", "Dans la corbeille", "Dans « À lire »", "Nulle part : on attend qu'il le voie"], "correct": 0, "why": "Le client sait que tout ce qui l'attend est à un seul endroit, et le résumé quotidien le lui rappelle." },
+        { "q": "Pourquoi archiver plutôt que supprimer ?", "options": ["Un e-mail archivé reste retrouvable par la recherche à tout moment", "L'archivage est plus rapide", "La suppression est payante", "Il n'y a aucune différence"], "correct": 0, "why": "Un e-mail supprimé disparaît définitivement après 30 jours dans la corbeille. Un e-mail archivé peut redevenir utile des mois plus tard." },
+        { "q": "Pourquoi trier la boîte à heures fixes plutôt qu'en continu ?", "options": ["Pour ne pas couper toutes les autres tâches, en surveillant seulement l'urgent", "Parce que Gmail ne reçoit les e-mails qu'à certaines heures", "Pour répondre plus lentement aux clients", "Parce que c'est obligatoire"], "correct": 0, "why": "Le tri en blocs permet de se concentrer sur les autres tâches. Les messages urgents restent repérés grâce au canal convenu ou à un filtre." }
+      ]
+    },
+    {
+      "title": "Gmail en professionnel",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Quelle recherche trouve les e-mails avec pièce jointe envoyés par la banque ?", "options": ["from:banque has:attachment", "subject:banque", "to:banque is:unread", "banque -attachment"], "correct": 0, "why": "from: filtre l'expéditeur et has:attachment garde seulement les e-mails avec une pièce jointe." },
+        { "q": "Que faut-il faire avant de créer un filtre ?", "options": ["Tester la recherche et regarder tous les résultats", "Supprimer les anciens e-mails", "Demander le mot de passe du client", "Rien, le filtre se corrige seul"], "correct": 0, "why": "Un filtre trop large peut cacher un e-mail important, comme une réclamation. On vérifie d'abord les résultats de la recherche." },
+        { "q": "Que fait le raccourci « e » dans Gmail ?", "options": ["Il archive l'e-mail ouvert ou sélectionné", "Il écrit un nouvel e-mail", "Il supprime définitivement l'e-mail", "Il ouvre l'agenda"], "correct": 0, "why": "Le raccourci « e » archive. « c » écrit un nouveau message, « r » répond et « / » place le curseur dans la recherche." },
+        { "q": "Comment accéder à la boîte d'un client sans son mot de passe ?", "options": ["Le client vous accorde l'accès par la délégation de son compte", "En créant une fausse adresse", "En lui demandant de vous transférer tous ses e-mails", "C'est impossible"], "correct": 0, "why": "La délégation vous permet de lire, répondre et ranger depuis votre propre compte. Le client peut retirer l'accès à tout moment." },
+        { "q": "Comment utiliser un modèle de réponse enregistré ?", "options": ["L'insérer, puis personnaliser le nom, la date et les détails avant l'envoi", "L'envoyer tel quel à tout le monde", "Le copier dans WhatsApp", "Le transformer en filtre"], "correct": 0, "why": "Un modèle fait gagner du temps, mais un message envoyé avec le mauvais nom ou la mauvaise date fait mauvaise impression." }
+      ]
+    },
+    {
+      "title": "Fixer un rendez-vous sans erreur",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "Combien de créneaux proposer à une personne pour un rendez-vous ?", "options": ["2 ou 3 créneaux précis", "Un seul, à prendre ou à laisser", "Toute la semaine", "Aucun : elle choisit seule"], "correct": 0, "why": "Deux ou trois créneaux précis permettent de répondre en un mot, sans recommencer et sans faire réfléchir la personne à votre place." },
+        { "q": "En avril, il est 15 h à Paris. Quelle heure est-il à Montréal ?", "options": ["9 h", "21 h", "10 h", "3 h"], "correct": 0, "why": "En avril, Paris est à UTC+2 et Montréal à UTC−4 : 6 heures d'écart. 15 h − 6 h = 9 h." },
+        { "q": "Quel titre d'événement est le meilleur ?", "options": ["« Appel découverte · Sophie Morel (prospect) · Meet »", "« Rendez-vous »", "« Sophie »", "« Appel »"], "correct": 0, "why": "Le client doit comprendre le rendez-vous sans ouvrir l'événement : type, nom de la personne et moyen de rendez-vous." },
+        { "q": "Un rendez-vous doit être déplacé. Que faire dans l'agenda ?", "options": ["Modifier l'événement existant, pour que l'invité reçoive la mise à jour", "Supprimer l'événement et en créer un nouveau sans prévenir", "Créer un deuxième événement à côté", "Ne rien changer dans l'agenda"], "correct": 0, "why": "Modifier l'événement envoie automatiquement la mise à jour aux invités et garde un agenda propre." },
+        { "q": "Pourquoi bloquer provisoirement les créneaux proposés ?", "options": ["Pour ne pas proposer le même créneau à deux personnes", "Pour remplir l'agenda", "Pour que le client ne voie pas les rendez-vous", "C'est obligatoire dans Google Agenda"], "correct": 0, "why": "En attendant la réponse, une « option » dans l'agenda évite les doubles réservations. On la supprime dès que la personne a choisi." }
+      ]
+    },
+    {
+      "title": "L'agenda du client et ses réunions",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "Quel droit demander pour gérer complètement l'agenda d'un client ?", "options": ["Apporter des modifications aux événements", "Voir uniquement les disponibilités", "Voir tous les détails des événements", "Aucun droit : il suffit d'un lien public"], "correct": 0, "why": "Ce droit permet de créer, déplacer et supprimer des événements. Le client garde le droit de gérer le partage." },
+        { "q": "À quoi sert un bloc de travail protégé dans l'agenda ?", "options": ["Garder du temps sans réunion pour le travail de concentration", "Cacher l'agenda aux autres", "Facturer plus d'heures", "Éviter les rappels"], "correct": 0, "why": "Sans blocs protégés, l'agenda se remplit de réunions et le travail de fond n'est jamais fait." },
+        { "q": "Quel est l'intérêt d'une page de réservation en ligne ?", "options": ["Les personnes choisissent elles-mêmes un créneau libre, sans échange d'e-mails", "Elle remplace le client pendant ses rendez-vous", "Elle envoie les factures", "Elle traduit les e-mails"], "correct": 0, "why": "Pour un client qui reçoit beaucoup de rendez-vous courts, la page de réservation supprime les allers-retours d'e-mails." },
+        { "q": "Quand envoyer l'ordre du jour d'une réunion importante ?", "options": ["Environ 2 jours avant, avec les documents à lire", "Pendant la réunion", "Après la réunion", "Jamais"], "correct": 0, "why": "Envoyé 2 jours avant, l'ordre du jour laisse le temps aux participants de lire les documents et de préparer leurs questions." },
+        { "q": "Que vérifie-t-on pendant la revue du vendredi ?", "options": ["Les deux semaines à venir : conflits, liens, adresses, pauses, changements d'heure", "Seulement le lundi suivant", "Les rendez-vous du mois passé", "Les e-mails non lus"], "correct": 0, "why": "En regardant deux semaines à l'avance, on repère les problèmes quand il est encore temps de les régler." }
+      ]
+    },
+    {
+      "title": "Organiser un déplacement ou un événement",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Un vol à 480 € fait payer le bagage 70 €. Un autre à 520 € l'inclut. Lequel est le moins cher ?", "options": ["Celui à 520 €, bagage compris", "Celui à 480 €", "Ils coûtent exactement pareil", "On ne peut pas comparer des vols"], "correct": 0, "why": "Le prix total réel du premier est de 550 €. On compare toujours le prix total, frais et bagages compris." },
+        { "q": "Combien d'options présenter au client pour un déplacement ?", "options": ["3 au maximum, avec votre recommandation", "Le plus possible, pour qu'il ait le choix", "Une seule, sans explication", "Aucune : on réserve directement"], "correct": 0, "why": "Trois options comparées avec une recommandation permettent au client de décider en une minute." },
+        { "q": "Comment écrire le nom du voyageur sur une réservation de vol ?", "options": ["Exactement comme sur son passeport", "Avec son surnom habituel", "Seulement le prénom", "Comme on l'écrit dans les e-mails"], "correct": 0, "why": "Un nom différent du passeport peut entraîner un refus d'embarquement ou des frais de modification." },
+        { "q": "Qu'est-ce qu'un rétroplanning ?", "options": ["Un planning construit à rebours, à partir de la date de l'événement", "Le compte rendu d'un événement passé", "La liste des invités", "Le budget de l'événement"], "correct": 0, "why": "On part de la date de l'événement et on place les étapes avant : J − 30, J − 21, J − 7, J − 1, puis J + 1." },
+        { "q": "Le client vous donne sa carte bancaire pour une réservation. Que faire ?", "options": ["Ne jamais garder le numéro dans un message ou un fichier, et réserver seulement après accord écrit", "Noter le numéro dans un fichier pour la prochaine fois", "L'envoyer à l'hôtel par e-mail", "Le garder dans WhatsApp"], "correct": 0, "why": "Les données bancaires ne doivent jamais traîner dans un e-mail ou un fichier. On réserve seulement l'option validée par écrit." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des clients et se faire payer",
+  "summary": "Votre offre et votre profil, les canaux de prospection, l'appel de vente et la proposition, le calcul de vos prix et de vos forfaits, la facture, les paiements depuis Madagascar et la fidélisation.",
+  "lessons": [
+    {
+      "title": "Votre offre et votre profil professionnel",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Quelle phrase de présentation est la plus efficace ?", "options": ["« J'aide les coachs indépendants à retrouver 10 heures par semaine en gérant leurs e-mails et leur agenda »", "« Assistante virtuelle polyvalente, toutes tâches »", "« Sérieuse et motivée, je cherche des missions »", "« Bac + 3, maîtrise de l'outil informatique »"], "correct": 0, "why": "La formule « J'aide [qui] à [résultat] en [tâches] » permet au bon client de se reconnaître immédiatement." },
+        { "q": "Quelles sont les 5 parties d'une offre claire ?", "options": ["Pour qui, quel problème, quelles tâches, comment, preuves", "Nom, âge, ville, diplôme, loisirs", "Prix, prix, prix, prix, remise", "Logo, couleurs, police, slogan, photo"], "correct": 0, "why": "L'offre part du client et de son problème, précise les tâches et la façon de travailler, puis apporte des preuves." },
+        { "q": "Que met en avant le portfolio d'un assistant virtuel ?", "options": ["Son organisation et ses résultats : étude de cas, modèles, méthode, procédures", "Uniquement ses diplômes", "Des photos de son bureau", "La liste de tous les logiciels existants"], "correct": 0, "why": "Le client veut voir comment vous travaillez et ce que vous obtenez. L'étude de cas et les modèles le montrent concrètement." },
+        { "q": "Comment rassurer un client européen sur votre fiabilité depuis Madagascar ?", "options": ["Indiquer vos horaires en heure de Paris et votre connexion de secours", "Ne pas parler de votre pays", "Promettre de travailler 24 heures sur 24", "Proposer le prix le plus bas"], "correct": 0, "why": "Le client se pose des questions sur les horaires et la connexion. Y répondre dans le profil lève ses doutes avant même l'appel." },
+        { "q": "Pourquoi éviter le profil « je fais tout » ?", "options": ["Le client pense que vous ne maîtrisez rien en profondeur", "Parce que LinkedIn l'interdit", "Parce que c'est trop court", "Il n'y a aucune raison"], "correct": 0, "why": "Trois tâches maîtrisées pour une cible précise convainquent plus qu'une longue liste pour tout le monde." }
+      ]
+    },
+    {
+      "title": "Où trouver vos premiers clients",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "Combien de canaux de prospection travailler au début ?", "options": ["2 ou 3, sérieusement, pendant au moins un mois", "Un seul, pendant une semaine", "Tous en même temps", "Aucun : attendre que les clients arrivent"], "correct": 0, "why": "En se dispersant, on ne fait rien sérieusement. Deux ou trois canaux adaptés à la cible, travaillés régulièrement, donnent des résultats mesurables." },
+        { "q": "Dans quel ordre écrire un message de prospection ?", "options": ["Personnalisation, problème, preuve, proposition", "Liste des compétences, prix, diplôme", "Prix, remise, urgence", "Présentation de sa famille, puis demande de travail"], "correct": 0, "why": "Le message montre qu'on connaît la personne, qu'on comprend son problème, qu'on a une preuve, et propose un échange court." },
+        { "q": "Un prospect ne répond pas à votre message. Que faire ?", "options": ["Une relance polie 5 à 7 jours plus tard, puis s'arrêter", "Relancer chaque jour jusqu'à la réponse", "Lui écrire sur tous les réseaux à la fois", "Abandonner sans jamais relancer"], "correct": 0, "why": "Une relance obtient souvent une réponse ; insister davantage abîme votre image." },
+        { "q": "Un client trouvé sur une plateforme veut vous payer en dehors dès le premier message. Que penser ?", "options": ["C'est souvent interdit par la plateforme, et parfois une arnaque", "C'est une excellente nouvelle", "C'est obligatoire pour être payé", "Cela n'a aucune importance"], "correct": 0, "why": "La plupart des plateformes interdisent les paiements en dehors pour les clients trouvés chez elles. Un client trop pressé de quitter la plateforme est suspect." },
+        { "q": "Pourquoi continuer à prospecter quand on a déjà un client ?", "options": ["Pour ne pas se retrouver sans aucun contact quand la mission se termine", "Pour quitter son client actuel", "Parce que les plateformes l'exigent", "Il ne faut pas : on prospecte seulement sans client"], "correct": 0, "why": "Une mission peut s'arrêter à tout moment. 20 à 30 minutes de prospection par jour évitent les mois sans revenus." }
+      ]
+    },
+    {
+      "title": "L'appel de vente et la proposition de collaboration",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Pendant un appel de vente, quelle part du temps passer à écouter ?", "options": ["La majorité, environ 60 %", "10 %", "Aucune", "100 %, sans jamais parler"], "correct": 0, "why": "En expliquant son problème, le prospect se convainc lui-même. L'assistant écoute, reformule puis propose." },
+        { "q": "Comment reformuler le besoin d'un prospect ?", "options": ["Avec ses propres mots, suivis de « C'est bien ça ? »", "Avec des termes techniques", "En changeant ce qu'il a dit", "Sans jamais vérifier"], "correct": 0, "why": "Reprendre ses mots montre qu'on a compris. La question finale permet de corriger avant de proposer." },
+        { "q": "Le prospect dit : « C'est trop cher. » Quelle est la meilleure réaction ?", "options": ["Lui faire calculer le temps qu'il perd aujourd'hui et ce qu'il pourrait en faire", "Baisser immédiatement le prix de moitié", "Raccrocher", "Lui dire qu'il a tort"], "correct": 0, "why": "L'objection cache souvent qu'il ne voit pas encore le gain. On montre la valeur avant de parler de remise." },
+        { "q": "Pourquoi proposer un essai payé plutôt qu'un travail gratuit ?", "options": ["Le client s'engage, vous êtes payé, et l'essai peut devenir un forfait", "Parce que le gratuit est interdit", "Pour gagner plus que d'habitude", "Il vaut mieux toujours travailler gratuitement d'abord"], "correct": 0, "why": "Un client qui paie un peu donne les accès et répond aux questions. Le travail gratuit attire souvent des clients qui ne paieront jamais." },
+        { "q": "Quand envoyer la proposition de collaboration ?", "options": ["Le jour même de l'appel, si possible", "Un mois plus tard", "Seulement si le prospect relance", "Jamais : l'accord oral suffit"], "correct": 0, "why": "Envoyée vite, la proposition arrive pendant que le prospect est encore motivé et se souvient de l'échange." }
+      ]
+    },
+    {
+      "title": "Fixer son prix et proposer des forfaits d'heures",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Revenu visé 1 200 000 Ar, frais 200 000 Ar, 100 heures facturables. Quel est le prix horaire ?", "options": ["14 000 Ar", "12 000 Ar", "2 000 Ar", "140 000 Ar"], "correct": 0, "why": "(1 200 000 + 200 000) ÷ 100 = 14 000 Ar de l'heure. Les frais doivent être couverts en plus du revenu visé." },
+        { "q": "Pourquoi ne pas diviser par 160 heures par mois ?", "options": ["Une partie du temps sert à la prospection, à l'administration et à la formation, et ne se facture pas", "Parce qu'un mois compte toujours 100 heures", "Parce que les clients refusent de payer plus de 100 heures", "Il faut diviser par 160"], "correct": 0, "why": "Seules les heures réellement facturées aux clients rapportent de l'argent. Diviser par 160 donnerait un prix trop bas." },
+        { "q": "Dans quelle monnaie fixer le prix pour un client en France ?", "options": ["En euros, dans la monnaie du client", "En ariary uniquement", "En dollars américains obligatoirement", "Dans une monnaie différente chaque mois"], "correct": 0, "why": "Un prix dans la monnaie du client est clair pour lui. Le montant reçu en ariary variera un peu avec le taux de change." },
+        { "q": "Quand se paie un forfait d'heures ?", "options": ["En début de mois, avant le travail", "À la fin de l'année", "Seulement si le client est satisfait", "Quand le client le souhaite"], "correct": 0, "why": "Le paiement d'avance protège l'assistant et fixe le cadre : c'est une règle écrite dans la proposition." },
+        { "q": "Comment augmenter ses prix ?", "options": ["Nouveau tarif tout de suite pour les nouveaux clients, préavis écrit d'un mois pour les clients actuels", "Augmenter sans prévenir", "Ne jamais augmenter", "Augmenter chaque semaine"], "correct": 0, "why": "Les clients actuels ont besoin de temps pour s'organiser. Un préavis écrit et une explication calme préservent la relation." }
+      ]
+    },
+    {
+      "title": "Facture, paiement et clients fidèles",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Que joindre à la facture mensuelle d'un forfait ?", "options": ["Le suivi du temps du mois précédent", "Vos mots de passe", "Votre CV", "Rien"], "correct": 0, "why": "Le suivi du temps montre au client ce que contiennent les heures payées, et évite toute discussion." },
+        { "q": "Comment vérifier qu'un client local vous a bien payé par MVola ?", "options": ["Dans votre propre application, pas sur une capture d'écran", "Avec la capture envoyée par le client", "En demandant à un ami", "Ce n'est pas nécessaire"], "correct": 0, "why": "Une capture peut être ancienne ou modifiée. Seule la réception sur votre compte fait foi." },
+        { "q": "Que faut-il vérifier avant de proposer PayPal à un client ?", "options": ["Les possibilités actuelles pour un compte basé à Madagascar, sur le site officiel", "Rien, PayPal fonctionne partout de la même façon", "Seulement la couleur du logo", "L'avis d'un client"], "correct": 0, "why": "Les services de paiement, leurs frais et les pays acceptés changent. On vérifie toujours la situation actuelle avant de s'engager." },
+        { "q": "Qu'est-ce qui fait rester un client longtemps ?", "options": ["La régularité, les propositions d'amélioration et l'anticipation", "Les prix toujours plus bas", "Les messages toutes les heures", "L'absence de rapport"], "correct": 0, "why": "Un client garde un assistant fiable qui lui fait gagner du temps et prévoit les problèmes." },
+        { "q": "Que faire à la fin d'une mission ?", "options": ["Transmettre les tâches, transférer les fichiers, envoyer la liste des accès à retirer, remercier", "Supprimer tous les fichiers sans prévenir", "Garder les accès au cas où", "Disparaître sans rien dire"], "correct": 0, "why": "Une fin propre protège le client et votre réputation. Beaucoup de clients reviennent ou recommandent un assistant qui a bien terminé." }
+      ]
+    }
+  ]
+}

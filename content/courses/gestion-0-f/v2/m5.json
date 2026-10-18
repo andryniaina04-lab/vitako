@@ -1,0 +1,61 @@
+{
+  "title": "Premier projet : un mois avec une cliente",
+  "summary": "Le premier mois d'une mission avec Claire Laurent, coach à Lyon : appel de découverte et fiche de mission, première semaine, suivi administratif et service client, suivi du temps et rapports, bilan du mois et étude de cas.",
+  "lessons": [
+    {
+      "title": "L'appel de découverte et la fiche de mission",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Quelle question de l'appel de découverte donne les objectifs de la mission ?", "options": ["« À quoi verrez-vous, dans un mois, que ma mission est réussie ? »", "« Quel est votre logiciel préféré ? »", "« Combien gagnez-vous par mois ? »", "« Depuis quand êtes-vous coach ? »"], "correct": 0, "why": "La réponse donne les objectifs avec les mots du client. On la note mot pour mot et elle sert de base au bilan." },
+        { "q": "Pendant l'appel de découverte, qui doit parler le plus ?", "options": ["La cliente : l'assistant écoute, note et reformule", "L'assistant, pour montrer ses compétences", "Les deux exactement autant", "Personne : on échange par écrit"], "correct": 0, "why": "L'appel sert à comprendre la situation de la cliente. Plus elle parle, plus la fiche de mission sera juste." },
+        { "q": "Dans quel niveau d'autonomie se trouve « accorder une remise » ?", "options": ["Je prépare, elle décide", "Je fais seule", "Je fais, puis j'informe", "Personne ne s'en occupe"], "correct": 0, "why": "Tout ce qui touche aux prix et à l'argent reste une décision de la cliente. L'assistant peut préparer une proposition." },
+        { "q": "Quand envoyer la fiche de mission ?", "options": ["Dans les 24 heures après l'appel, pour validation écrite", "Après le premier mois", "Seulement si la cliente la demande", "Avec la première facture"], "correct": 0, "why": "La fiche confirme par écrit ce qui a été compris et devient la référence. Envoyée vite, elle fixe les choses pendant qu'elles sont fraîches." },
+        { "q": "Pourquoi une fiche de mission écrite protège-t-elle les deux parties ?", "options": ["Chacun sait ce qui est inclus et ce qui ne l'est pas", "Elle remplace la facture", "Elle permet de travailler sans suivre son temps", "Elle est obligatoire par la loi malgache"], "correct": 0, "why": "Sans écrit, chacun se souvient d'une version différente. Avec la fiche, les tâches, les décisions et le volume sont clairs." }
+      ]
+    },
+    {
+      "title": "La première semaine : accès, boîte et agenda",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "Que faire en priorité le premier jour de la mission ?", "options": ["Recevoir et tester tous les accès, puis envoyer le plan de la semaine", "Réorganiser toute la boîte de réception", "Changer toutes les couleurs de l'agenda", "Supprimer les vieux e-mails"], "correct": 0, "why": "Sans accès qui fonctionnent, rien n'est possible. Le premier jour sert à s'installer, observer et proposer." },
+        { "q": "Comment commencer à vider une boîte de 1 200 e-mails ?", "options": ["Archiver en masse les publicités et notifications avec des recherches, après avoir vérifié les résultats", "Lire chaque e-mail un par un depuis le plus ancien", "Tout supprimer et repartir de zéro", "Répondre à tous les e-mails"], "correct": 0, "why": "On retire d'abord en masse ce qui ne demande aucune action, puis on applique les 4 D au reste. On vérifie chaque recherche avant d'archiver." },
+        { "q": "Que reçoit la cliente le mercredi soir de la première semaine ?", "options": ["La liste des décisions qui l'attendent, classées par importance", "Sa première facture", "La liste de ses mots de passe", "Rien avant le vendredi"], "correct": 0, "why": "Après le tri, la cliente sait exactement quelles décisions lui reviennent, en commençant par les plus urgentes." },
+        { "q": "Comment introduire un nouveau système de libellés ?", "options": ["Le proposer avec la raison de chaque libellé, puis l'appliquer après accord", "Le créer sans prévenir pour faire une surprise", "Laisser la cliente le créer seule", "Ne jamais rien changer"], "correct": 0, "why": "La boîte appartient à la cliente : elle doit comprendre et accepter les changements pour s'y retrouver." },
+        { "q": "Que vérifie-t-on dans l'agenda pendant la première semaine ?", "options": ["Les 3 semaines à venir : liens, heures, titres, rappels et conflits", "Uniquement le jour même", "Les rendez-vous de l'année passée", "Seulement les anniversaires"], "correct": 0, "why": "En vérifiant trois semaines à l'avance, on évite les rendez-vous oubliés, l'un des objectifs de la cliente." }
+      ]
+    },
+    {
+      "title": "Le suivi administratif et le service client",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Une facture déjà envoyée contient une erreur. Que fait-on en général ?", "options": ["La cliente émet un avoir et une nouvelle facture, selon la méthode de son comptable", "On la supprime et on réutilise son numéro", "On la modifie sans rien dire", "On ne fait rien"], "correct": 0, "why": "La numérotation doit rester sans trou ni doublon. L'avoir annule la facture fausse ; une nouvelle facture la remplace." },
+        { "q": "Que faire avant chaque relance de facture ?", "options": ["Vérifier que la facture n'est pas déjà payée", "Augmenter le montant", "Prévenir tous les clients", "Supprimer la facture"], "correct": 0, "why": "Relancer un client qui a déjà payé est gênant pour la cliente. On vérifie d'abord le paiement selon les accès disponibles." },
+        { "q": "Un client local envoie la capture d'un paiement MVola. Est-ce une preuve suffisante ?", "options": ["Non : seule la cliente peut confirmer la réception dans sa propre application", "Oui, toujours", "Oui, si la capture est nette", "Oui, si le montant est petit"], "correct": 0, "why": "Une capture peut être ancienne ou modifiée. Seule la réception sur le compte de la cliente compte." },
+        { "q": "À quoi sert la foire aux questions validée par la cliente ?", "options": ["Répondre vite et toujours de la même façon aux questions fréquentes", "Remplacer la cliente pour toutes les décisions", "Publier ses tarifs secrets", "Classer ses factures"], "correct": 0, "why": "Avec des réponses validées, l'assistant répond seul aux questions courantes, sans risque de se tromper." },
+        { "q": "Un client pose une question absente de la FAQ. Que faire ?", "options": ["Accuser réception et transmettre à la cliente avec un délai de réponse", "Inventer une réponse probable", "Ignorer le message", "Répondre que ce n'est pas possible"], "correct": 0, "why": "Une réponse inventée peut être fausse et mettre la cliente dans l'embarras. On transmet, puis on enrichit la FAQ." }
+      ]
+    },
+    {
+      "title": "Suivre son temps et rendre compte",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "Quand noter ses heures de travail ?", "options": ["Au moment où l'on travaille, bloc par bloc", "De mémoire, le vendredi soir", "Une fois par mois", "Seulement si le client le demande"], "correct": 0, "why": "Un suivi au fil de l'eau est précis et vérifiable. De mémoire, on oublie des tâches et on arrondit au hasard." },
+        { "q": "Vous avez utilisé 8 h sur un forfait de 10 h et il reste 3 h de tâches. Que faire ?", "options": ["Prévenir la cliente et lui proposer de reporter ou d'ajouter des heures", "Dépasser le forfait sans rien dire", "Arrêter les tâches sans prévenir", "Facturer 13 h sans explication"], "correct": 0, "why": "À 80 % du forfait, on prévient. On ne dépasse jamais le volume prévu sans l'accord écrit de la cliente." },
+        { "q": "Quelle partie du rapport hebdomadaire montre votre valeur ?", "options": ["Les résultats en chiffres, liés aux objectifs de la cliente", "La liste de vos difficultés", "Le nombre de messages envoyés", "Votre emploi du temps personnel"], "correct": 0, "why": "La cliente veut savoir ce que ses heures lui rapportent : boîte à jour, factures envoyées, argent récupéré." },
+        { "q": "Que faire du chronomètre pendant une coupure qui vous empêche de travailler ?", "options": ["L'arrêter, et signaler le retard éventuel dans le résumé", "Le laisser tourner", "Ajouter une heure de plus pour compenser", "Supprimer la journée du suivi"], "correct": 0, "why": "Seul le temps réellement passé sur les tâches de la cliente se facture. Cette honnêteté fonde la confiance à distance." },
+        { "q": "Pourquoi mesurer les indicateurs avant de commencer la mission ?", "options": ["Pour pouvoir montrer les progrès réels, avant et après", "Pour critiquer la cliente", "Parce que c'est obligatoire", "Pour augmenter le prix tout de suite"], "correct": 0, "why": "Sans la situation de départ, impossible de prouver ce qui a changé. Le « avant / après » est la meilleure preuve de votre travail." }
+      ]
+    },
+    {
+      "title": "Améliorer, faire le bilan et proposer la suite",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Combien d'améliorations proposer à la fois ?", "options": ["Une par semaine, la plus utile d'abord", "Dix d'un coup, dès la première semaine", "Aucune : on exécute seulement", "Toutes à la fin du mois"], "correct": 0, "why": "Une amélioration à la fois est plus facile à accepter et à mesurer. Trop d'idées d'un coup donnent l'impression de critiquer." },
+        { "q": "Par quoi commence le bilan du mois d'essai ?", "options": ["Le rappel des objectifs fixés au départ", "La facture du mois", "La liste des problèmes de la cliente", "Votre nouveau tarif"], "correct": 0, "why": "On rappelle d'abord les objectifs (la réponse à la question 10), puis on montre les résultats obtenus par rapport à eux." },
+        { "q": "Qui doit proposer la suite de la mission à la fin de l'essai ?", "options": ["L'assistant, avec une proposition concrète écrite", "Personne : la mission continue toute seule", "Uniquement la cliente", "Le comptable"], "correct": 0, "why": "Une proposition concrète (tâches, forfait, prix) facilite la décision. Attendre que la cliente en parle risque de laisser la mission s'arrêter." },
+        { "q": "Que faut-il obtenir avant de publier une étude de cas ?", "options": ["L'accord de la cliente, avec ou sans son nom", "Rien, le travail vous appartient", "L'accord de Vitako", "Un paiement supplémentaire"], "correct": 0, "why": "La mission contient des informations confidentielles. On demande l'accord et on retire tout ce qui est sensible." },
+        { "q": "Comment demander une recommandation à une cliente satisfaite ?", "options": ["« Connaissez-vous deux personnes à qui mon aide pourrait être utile ? »", "« Donnez-moi la liste de tous vos contacts. »", "On ne demande jamais", "« Écrivez un avis à 5 étoiles, s'il vous plaît. »"], "correct": 0, "why": "Une question précise et polie facilite la réponse. Beaucoup de clients recommandent volontiers, à condition qu'on le leur demande." }
+      ]
+    }
+  ]
+}

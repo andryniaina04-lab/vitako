@@ -1134,6 +1134,13 @@ a.chip{text-decoration:none}
 .sc-z{border-radius:8px;padding:8px;border:1.5px dashed color-mix(in srgb,var(--s1) 55%,transparent);background:color-mix(in srgb,var(--s1) 8%,var(--surface));line-height:1.35;overflow-wrap:anywhere}
 .sc-z.haut{grid-area:haut}.sc-z.gauche{grid-area:gauche}.sc-z.droite{grid-area:droite}.sc-z.bas{grid-area:bas}
 .sc-z.centre{grid-area:centre;min-height:110px;display:grid;place-items:center;text-align:center;background:var(--surface);border-color:color-mix(in srgb,var(--s0) 50%,transparent)}
+/* Téléphone : colonnes latérales plus larges, texte plus petit, coupure des mots seulement si nécessaire */
+@media (max-width:560px){
+  .has-l .sc-zones{grid-template-columns:minmax(96px,.45fr) 1fr}
+  .has-r .sc-zones{grid-template-columns:1fr minmax(96px,.45fr)}
+  .has-l.has-r .sc-zones{grid-template-columns:1fr minmax(72px,.8fr) 1fr}
+  .sc-z.gauche,.sc-z.droite{font-size:.76rem;padding:6px;overflow-wrap:break-word;hyphens:auto}
+}
 .sc-legend{display:flex;flex-direction:column;gap:8px;margin-top:12px!important}
 .sc-legend li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.45}
 .sc-legend .sc-badge{flex:none;margin-top:1px}

@@ -1,0 +1,61 @@
+{
+  "title": "Écrire et communiquer pour un client",
+  "summary": "L'e-mail professionnel en 5 parties, la relecture sans fautes, les messages délicats écrits au nom du client, la communication au quotidien et le compte rendu de réunion.",
+  "lessons": [
+    {
+      "title": "L'e-mail professionnel en 5 parties",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Quel objet d'e-mail est le plus efficace ?", "options": ["« Facture F-2026-041 : échéance dépassée depuis 10 jours »", "« Urgent !!! »", "« Bonjour »", "« Question »"], "correct": 0, "why": "Un bon objet donne le sujet et, si besoin, l'action ou la date. Le destinataire comprend avant d'ouvrir, et retrouve l'e-mail facilement plus tard." },
+        { "q": "Que faut-il placer dans la première phrase du message ?", "options": ["L'essentiel : ce qui se passe et ce que vous attendez", "Le contexte complet de l'histoire", "Des excuses pour le dérangement", "Votre présentation détaillée"], "correct": 0, "why": "Beaucoup de lecteurs ne lisent que les deux premières lignes, souvent sur téléphone. L'essentiel doit donc arriver tout de suite." },
+        { "q": "Vous écrivez pour la première fois à une administration. Quelle formule d'appel choisir ?", "options": ["« Madame, Monsieur, »", "« Salut, »", "« Coucou, »", "Aucune formule"], "correct": 0, "why": "Avec un inconnu ou une administration, on choisit le ton le plus formel. On peut devenir plus familier ensuite, jamais l'inverse." },
+        { "q": "Pourquoi écrire « jeudi 18 mars » plutôt que « jeudi prochain » ?", "options": ["« Jeudi prochain » peut se comprendre de deux façons", "Parce que c'est plus long", "Parce que les jours s'écrivent toujours en chiffres", "Il n'y a aucune différence"], "correct": 0, "why": "Selon le jour où l'on lit le message, « jeudi prochain » désigne cette semaine ou la suivante. Une date complète supprime le doute." },
+        { "q": "Que doit contenir une signature d'assistant écrivant pour un client ?", "options": ["Son nom et sa fonction, par exemple « assistante de Claire Laurent »", "Une citation inspirante et plusieurs images", "Uniquement un prénom", "La liste de tous ses réseaux sociaux"], "correct": 0, "why": "La signature doit être courte et utile : nom, fonction, un moyen de contact. Le destinataire sait à qui il écrit." }
+      ]
+    },
+    {
+      "title": "Écrire sans fautes : relecture et pièges fréquents",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Quelle phrase est correcte ?", "options": ["Je vous serais reconnaissant de me répondre.", "Je vous serez reconnaissant de me répondre.", "Je vous serai reconnaissant de me répondu.", "Je vous serait reconnaissant de me répondre."], "correct": 0, "why": "Pour une demande polie, on utilise le conditionnel : « je serais », avec un s. « Je serez » n'existe pas." },
+        { "q": "Que ne vérifie pas un correcteur automatique ?", "options": ["Que la date du rendez-vous est la bonne", "Les accords simples", "Les fautes de conjugaison courantes", "Les fautes d'orthographe fréquentes"], "correct": 0, "why": "Le correcteur repère des fautes de langue, mais ne peut pas savoir quelle est la bonne date, le bon nom ou le bon montant. C'est la passe des faits." },
+        { "q": "Comment écrire un rendez-vous en français ?", "options": ["Le lundi 3 mai à 14 h 30", "Le Lundi 3 Mai à 2:30 pm", "Le lundi 3 Mai à 14h30mn", "Le 3/5 à 14 h"], "correct": 0, "why": "En français, les jours et les mois s'écrivent sans majuscule, et l'heure s'écrit « 14 h 30 »." },
+        { "q": "« Je vais vous (envoyer / envoyé) le devis. » Quelle astuce permet de choisir ?", "options": ["Remplacer par « vendre » ou « vendu »", "Remplacer par « avait »", "Remplacer par « cela »", "Compter les syllabes"], "correct": 0, "why": "On dirait « je vais vous vendre » : c'est donc l'infinitif, « envoyer ». L'astuce du remplacement règle la confusion é / er." },
+        { "q": "Comment écrire un montant de cent vingt mille ariary ?", "options": ["120 000 Ar", "120.000Ar", "120000 ariary", "Ar 120,000"], "correct": 0, "why": "En français, les milliers sont séparés par une espace, et l'unité suit le nombre, séparée par une espace." }
+      ]
+    },
+    {
+      "title": "Écrire au nom du client et les messages délicats",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "Comment signer par défaut un message envoyé pour le client ?", "options": ["En tant qu'assistant : « Hanta Rakoto, assistante de Claire Laurent »", "Avec le nom du client, sans le prévenir", "Sans signature", "Avec un faux nom"], "correct": 0, "why": "Signer comme assistant est honnête et montre que le client est bien organisé. La signature du client ne s'utilise que s'il le demande clairement." },
+        { "q": "À quoi sert le guide de ton d'un client ?", "options": ["Écrire comme lui : tutoiement, formules, mots habituels", "Calculer le prix de ses services", "Ranger ses fichiers", "Fixer ses rendez-vous"], "correct": 0, "why": "Chaque client a sa façon d'écrire. Le guide de ton, validé par lui, vous permet d'écrire en son nom sans fausse note." },
+        { "q": "Pourquoi écrire « Sauf erreur de notre part » dans un rappel de facture ?", "options": ["Le paiement est peut-être en cours : on reste courtois", "Pour menacer le client", "Pour reconnaître une erreur de facturation", "C'est une formule obligatoire par la loi"], "correct": 0, "why": "Une facture impayée est souvent un simple oubli. La formule laisse une porte ouverte et garde une bonne relation." },
+        { "q": "Un client final mécontent exige un remboursement. Que répond l'assistant ?", "options": ["Il accuse réception, annonce un délai de réponse et prépare la décision du client", "Il promet le remboursement pour calmer la situation", "Il explique que le client a tort", "Il ne répond pas"], "correct": 0, "why": "Le remboursement est une décision du client. L'assistant montre que la personne est entendue, donne un délai et prépare un résumé avec des propositions." },
+        { "q": "Dans quel ordre écrire un message délicat ?", "options": ["Reconnaître, dire les faits, proposer, fixer la suite", "Proposer, se justifier, conclure", "Dire les faits, menacer, conclure", "S'excuser longuement, puis dire les faits"], "correct": 0, "why": "Cet ordre permet d'être poli sans être flou : la personne se sent reconnue, comprend la situation et sait ce qui va se passer." }
+      ]
+    },
+    {
+      "title": "Communiquer avec votre client",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Quel canal utiliser pour prévenir qu'un rendez-vous de 15 h est annulé ?", "options": ["WhatsApp ou la messagerie convenue pour l'urgent", "Un e-mail lu le lendemain", "Le résumé de fin de semaine", "Le point hebdomadaire"], "correct": 0, "why": "L'urgent et le très court passent par la messagerie convenue avec le client. L'e-mail sert à ce qui doit laisser une trace." },
+        { "q": "Que faire avant de commencer une tâche importante demandée oralement ?", "options": ["Reformuler la consigne et la confirmer par écrit", "Commencer tout de suite sans rien demander", "Attendre une deuxième demande", "Demander au client de tout réécrire"], "correct": 0, "why": "La reformulation fait apparaître les malentendus avant le travail : quoi, quand, comment, jusqu'où." },
+        { "q": "Quelles sont les 4 rubriques du résumé quotidien ?", "options": ["Fait, En cours, Vous attend, Demain", "Bonjour, Travail, Problèmes, Au revoir", "Heures, Prix, Facture, Paiement", "Urgent, Important, Inutile, Autre"], "correct": 0, "why": "Toujours les mêmes rubriques : le client prend l'habitude de lire directement « Vous attend », où se trouvent ses décisions." },
+        { "q": "Vous avez 4 questions non urgentes pour votre client. Que faites-vous ?", "options": ["Les regrouper dans un message numéroté, avec une proposition pour chacune", "Les envoyer une par une dès qu'elles arrivent", "Les garder pour le mois suivant", "Ne pas les poser et décider seul"], "correct": 0, "why": "Un message regroupé et numéroté permet au client de tout régler en deux minutes, sans être dérangé toute la journée." },
+        { "q": "Un client donne ses consignes par message vocal. Quelle est la bonne pratique ?", "options": ["Répondre par écrit avec un résumé de la consigne", "Demander au client de ne plus jamais envoyer de vocaux", "Répondre par un autre vocal sans rien noter", "Ignorer le vocal"], "correct": 0, "why": "Le résumé écrit garde une trace et permet au client de corriger un malentendu tout de suite." }
+      ]
+    },
+    {
+      "title": "Prendre des notes et rédiger un compte rendu",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "Que faut-il noter en priorité pendant une réunion ?", "options": ["Les décisions, les actions, les chiffres et les questions ouvertes", "Chaque phrase, mot pour mot", "Les plaisanteries pour l'ambiance", "Uniquement ce que dit le client"], "correct": 0, "why": "Ce sont les éléments qui servent après la réunion. Le mot à mot fait perdre le fil et rate souvent la décision importante." },
+        { "q": "Quelle partie du compte rendu est la plus relue ?", "options": ["Le tableau des actions : qui fait quoi, pour quand", "La liste des participants", "Le titre", "La date de la prochaine réunion"], "correct": 0, "why": "Les participants y retrouvent ce qu'ils doivent faire et pour quand. C'est aussi la base du suivi." },
+        { "q": "Que faut-il avant d'enregistrer une réunion ?", "options": ["L'accord du client et de tous les participants", "Seulement un bon micro", "Rien : c'est automatique", "L'accord d'un seul participant"], "correct": 0, "why": "Enregistrer des personnes sans les prévenir pose un problème de confiance et de confidentialité. Tout le monde doit être d'accord." },
+        { "q": "Pourquoi vérifier un résumé produit automatiquement par un outil d'IA ?", "options": ["Il peut se tromper sur les noms et les chiffres, ou inventer une décision", "Il est toujours trop long", "Il est interdit de l'utiliser", "Pour le traduire en anglais"], "correct": 0, "why": "Les transcriptions et les résumés automatiques font des erreurs. Le compte rendu final reste votre responsabilité, vérifié avec vos notes." },
+        { "q": "Quand envoyer le compte rendu aux participants ?", "options": ["Dans les 24 heures, après validation du client s'il le souhaite", "Un mois plus tard", "Juste avant la réunion suivante", "Jamais : il reste chez le client"], "correct": 0, "why": "Envoyé vite, le compte rendu fixe les décisions pendant qu'elles sont fraîches et lance les actions." }
+      ]
+    }
+  ]
+}

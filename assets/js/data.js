@@ -2275,7 +2275,58 @@ export const PUBLISHED = {
     "title": "Trouver des clients et se faire payer",
     "minutes": 8
    }
-  ]
+  ],
+  "preview": {
+   "hours": 50,
+   "description": "L'assistant virtuel gère à distance les e-mails, l'agenda, les documents et le suivi administratif de ses clients. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+   "objectives": [
+    "Expliquer ce que fait un assistant virtuel, pour qui, et s'organiser depuis Madagascar",
+    "Écrire des e-mails et des messages professionnels au nom d'un client, sans fautes",
+    "Trier une boîte de réception et tenir un agenda sans erreur de fuseau horaire",
+    "Organiser le travail d'un client avec Google Workspace, Notion et des accès sécurisés",
+    "Mener le premier mois d'une mission, de l'appel de découverte au bilan",
+    "Construire son offre, fixer ses forfaits, trouver des clients et se faire payer"
+   ],
+   "breakdown": {
+    "lecture": 329,
+    "qcm": 150,
+    "exercices": 1650,
+    "projets": 795,
+    "examen": 60
+   },
+   "modules": [
+    {
+     "title": "Le métier d'assistant virtuel",
+     "minutes": 57,
+     "lessons": 5
+    },
+    {
+     "title": "Écrire et communiquer pour un client",
+     "minutes": 56,
+     "lessons": 5
+    },
+    {
+     "title": "Gérer la boîte e-mail et l'agenda",
+     "minutes": 55,
+     "lessons": 5
+    },
+    {
+     "title": "Les outils de l'assistant virtuel",
+     "minutes": 56,
+     "lessons": 5
+    },
+    {
+     "title": "Premier projet : un mois avec une cliente",
+     "minutes": 53,
+     "lessons": 5
+    },
+    {
+     "title": "Trouver des clients et se faire payer",
+     "minutes": 52,
+     "lessons": 5
+    }
+   ]
+  }
  },
  "gestion-1-a": {
   "hours": 16,
