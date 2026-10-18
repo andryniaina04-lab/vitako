@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des clients et se faire payer",
+  "summary": "Transformer vos compétences en activité : un portfolio de résultats et des démonstrations, la prospection avec le diagnostic gratuit, le devis et la protection des données, les prix par la valeur et la maintenance, les paiements, la veille et votre plan pour les 30 prochains jours.",
+  "lessons": [
+    {
+      "title": "Le portfolio et les démonstrations",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Pour quoi les entreprises paient-elles vraiment ?", "options": ["Du temps gagné, des erreurs évitées, des clients mieux servis", "Le nombre de modules dans un scénario", "Des captures d'écran techniques", "Le nom des outils utilisés"], "correct": 0, "why": "Le client achète un résultat, pas la technique qui le produit." },
+        { "q": "Quelles données utiliser dans vos démonstrations ?", "options": ["Uniquement des données fictives", "Les données de votre dernier client", "Des données trouvées sur Internet", "Les contacts de votre téléphone"], "correct": 0, "why": "Montrer les données d'un vrai client trahirait sa confiance et la loi sur les données personnelles." },
+        { "q": "Que doit montrer en priorité une vidéo de démonstration pour un dirigeant non technique ?", "options": ["Le résultat sur son écran : la demande dans le tableau, l'e-mail parti", "L'éditeur de Make avec tous les routeurs", "Le code JSON des données", "La liste des abonnements"], "correct": 0, "why": "Le client veut voir ce qui change pour lui ; l'éditeur se garde pour les clients techniques." },
+        { "q": "Quelle phrase de présentation est la meilleure ?", "options": ["« J'aide les PME de Madagascar à gagner 20 heures par mois sur leurs tâches administratives »", "« Expert Make, Zapier, API, JSON et webhooks »", "« Disponible pour tout projet »", "« Je fais des automatisations avec l'IA »"], "correct": 0, "why": "Elle dit pour qui vous travaillez et quel résultat vous apportez." },
+        { "q": "Quelle durée viser pour une vidéo de démonstration ?", "options": ["Environ 2 minutes", "Environ 20 minutes", "Une heure", "10 secondes"], "correct": 0, "why": "Deux minutes suffisent pour le problème, l'action, le résultat et la conclusion, et se regardent sur un téléphone." }
+      ]
+    },
+    {
+      "title": "Trouver des clients",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "Que propose-t-on pour faire découvrir l'automatisation à une PME ?", "options": ["Un diagnostic gratuit de 30 minutes", "Un projet complet de 8 scénarios", "Un abonnement Make offert à vie", "Une formation de 3 jours"], "correct": 0, "why": "Le diagnostic montre au dirigeant le temps perdu et mène naturellement à un premier projet." },
+        { "q": "Pourquoi faire le calcul du temps perdu avec le dirigeant ?", "options": ["Un chiffre qu'il calcule lui-même le convainc mieux que vos arguments", "Pour qu'il fasse le travail à votre place", "Parce que vous ne savez pas calculer", "Ce n'est pas utile"], "correct": 0, "why": "Quand il découvre lui-même les 30 heures perdues, il est déjà convaincu." },
+        { "q": "Après un diagnostic réussi avec un nouveau client, que proposer ?", "options": ["Un petit premier projet, à fort impact et faible effort", "Le plus gros projet possible", "Rien : attendre qu'il rappelle", "Un contrat de 3 ans"], "correct": 0, "why": "Un résultat rapide crée la confiance ; le projet suivant vient ensuite." },
+        { "q": "Combien de relances après un premier message sans réponse ?", "options": ["Une relance polie après 5 à 7 jours, puis on s'arrête", "Une relance chaque jour", "Aucune, jamais", "Dix relances"], "correct": 0, "why": "Une relance montre votre sérieux ; au-delà, vous devenez insistant." },
+        { "q": "Comment parler à un dirigeant qui ne connaît pas l'automatisation ?", "options": ["Sans jargon, avec sa journée et un exemple local", "Avec la liste des modules Make", "En parlant d'API et de webhooks", "En anglais technique"], "correct": 0, "why": "« Votre assistante recopie les commandes le soir ? » parle plus qu'un terme technique." }
+      ]
+    },
+    {
+      "title": "Le devis et la protection des données",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Qui paie les abonnements Make, Zapier et l'usage de l'IA ?", "options": ["Le client, directement aux fournisseurs, présentés à part dans le devis", "Vous, inclus dans votre prix pour un an", "Personne", "Vitako"], "correct": 0, "why": "Les coûts des outils varient avec le volume : les inclure dans votre prix vous ferait payer la différence." },
+        { "q": "Que couvre la garantie de 30 jours ?", "options": ["Les erreurs de votre travail", "Toutes les nouvelles demandes du client", "Les pannes causées par une colonne renommée par le client", "Les abonnements"], "correct": 0, "why": "Les changements et les modifications faites par le client relèvent de la maintenance ou d'un nouveau devis." },
+        { "q": "À qui appartiennent les comptes et les scénarios ?", "options": ["Au client", "Au spécialiste", "À Make", "À la première personne qui les crée"], "correct": 0, "why": "Le client doit rester propriétaire et pouvoir continuer sans vous." },
+        { "q": "Quelle donnée ne doit jamais être envoyée à un service d'IA ?", "options": ["Un mot de passe ou des données bancaires complètes", "Le texte d'une question fréquente", "Le nom d'une formation", "Une date de session"], "correct": 0, "why": "Les données sensibles ne vont jamais dans les consignes envoyées à l'IA." },
+        { "q": "Pourquoi prévoir des limites (exécutions, dépense d'IA, alertes) ?", "options": ["Une erreur peut envoyer des centaines de messages ou vider un abonnement", "Pour ralentir le client", "Parce que c'est joli", "Ce n'est jamais utile"], "correct": 0, "why": "Les limites arrêtent une erreur avant qu'elle ne coûte cher." }
+      ]
+    },
+    {
+      "title": "Les prix par la valeur et la maintenance",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Avec un besoin de 1 400 000 Ar par mois et 80 heures facturables, quel est le prix horaire plancher ?", "options": ["17 500 Ar", "14 000 Ar", "8 000 Ar", "175 000 Ar"], "correct": 0, "why": "1 400 000 ÷ 80 = 17 500 Ar de l'heure." },
+        { "q": "Que faut-il compter dans le temps d'un projet ?", "options": ["Tout : entretiens, conception, construction, tests, formation, documentation", "Seulement la construction des scénarios", "Seulement les tests", "Seulement les réunions"], "correct": 0, "why": "Les étapes autour des scénarios prennent souvent plus de temps que la construction." },
+        { "q": "20 heures gagnées par mois à 6 000 Ar l'heure représentent quelle valeur par an ?", "options": ["1 440 000 Ar", "120 000 Ar", "240 000 Ar", "14 400 000 Ar"], "correct": 0, "why": "20 × 6 000 = 120 000 Ar par mois, × 12 = 1 440 000 Ar par an." },
+        { "q": "Où se situe le bon prix ?", "options": ["Entre votre prix plancher et une part raisonnable de la valeur", "En dessous de votre prix plancher", "Au-dessus de toute la valeur pour le client", "Au hasard"], "correct": 0, "why": "Vous vivez de votre travail et le client rentabilise vite son investissement." },
+        { "q": "Pourquoi proposer la maintenance mensuelle ?", "options": ["Elle apporte un revenu régulier et garde les scénarios en bon état", "Pour éviter de livrer la documentation", "Parce que le client ne peut rien faire seul", "Elle n'a aucun intérêt"], "correct": 0, "why": "Avec quelques clients en maintenance, vous avez une base de revenus stable." }
+      ]
+    },
+    {
+      "title": "Être payé, durer et évoluer",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Comment organiser le paiement d'un projet ?", "options": ["Un acompte à la commande, le solde à la mise en service", "Tout à la fin, sans acompte", "Paiement après un an", "Aucun document"], "correct": 0, "why": "L'acompte engage le client et vous protège en cas d'abandon." },
+        { "q": "Comment vérifier un paiement Mobile Money ?", "options": ["Sur votre propre compte, jamais sur une capture d'écran", "Sur la capture envoyée par le client", "En demandant à un ami", "Pas besoin de vérifier"], "correct": 0, "why": "Une capture peut être fausse ; seul votre compte fait foi." },
+        { "q": "Que contient le rapport mensuel de maintenance ?", "options": ["Les chiffres du mois, les cas à la main, les coûts et une proposition", "Seulement la facture", "Le code des scénarios", "Rien : on n'envoie pas de rapport"], "correct": 0, "why": "Le client voit chaque mois la valeur de ce qu'il paie." },
+        { "q": "Combien de temps consacrer à la veille ?", "options": ["Environ une heure par semaine", "Aucun : on a déjà tout appris", "Une heure par an", "Toute la journée"], "correct": 0, "why": "Les outils et l'IA évoluent vite : une heure régulière suffit à rester à jour." },
+        { "q": "Que faire de PayPal pour un compte basé à Madagascar ?", "options": ["Vérifier la situation actuelle, car ses possibilités sont limitées", "Le proposer sans vérifier", "Il est le seul moyen accepté", "Il est interdit de le mentionner"], "correct": 0, "why": "Les services de paiement changent : on vérifie toujours sur leur site officiel." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Premier projet : la mission Formation Mendrika",
+  "summary": "Une mission complète pour un centre de formation de Mahajanga : diagnostic chiffré, conception des scénarios reliés, construction et tests avec l'équipe, formation et remise technique, mesure des résultats et étude de cas.",
+  "lessons": [
+    {
+      "title": "Le diagnostic chiffré",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Avec qui mener l'entretien de diagnostic ?", "options": ["La directrice et l'assistante, qui montre les tâches", "Seulement la directrice", "Seulement les élèves", "Personne : on devine"], "correct": 0, "why": "La directrice connaît les objectifs ; l'assistante connaît le détail du travail et ses exceptions." },
+        { "q": "Pourquoi faire mesurer les tâches pendant une à deux semaines ?", "options": ["Les estimations de mémoire sont souvent fausses", "Pour retarder la mission", "Parce que Make l'exige", "Ce n'est pas utile"], "correct": 0, "why": "Une mesure réelle évite de promettre un gain de temps qui ne se réalisera pas." },
+        { "q": "100 réponses par mois de 5 minutes chacune représentent combien de temps ?", "options": ["Environ 8 h 20", "5 heures", "50 heures", "1 h 40"], "correct": 0, "why": "100 × 5 = 500 minutes, soit 8 heures 20." },
+        { "q": "Quel problème, au-delà du temps, convainc souvent une directrice ?", "options": ["Les demandes oubliées, qui font perdre des inscriptions", "La couleur du tableau", "Le nombre de modules", "Le nom de la plateforme"], "correct": 0, "why": "Les oublis, les erreurs et les délais ont un coût direct pour l'organisation." },
+        { "q": "Comment présenter l'automatisation à l'assistante ?", "options": ["Comme la suppression de la partie répétitive de son travail, pour le suivi des élèves", "Comme son remplacement", "Sans lui en parler", "Comme une surveillance de son travail"], "correct": 0, "why": "L'assistante connaît les cas particuliers et utilisera les scénarios : elle doit être une alliée." }
+      ]
+    },
+    {
+      "title": "La conception des scénarios",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "Qu'est-ce qui relie les 4 scénarios de Formation Mendrika ?", "options": ["Un tableau central et une colonne de statut", "Un seul scénario géant", "Des e-mails entre eux", "Rien"], "correct": 0, "why": "Chaque scénario se déclenche sur un changement de statut et passe le relais au suivant." },
+        { "q": "Quel scénario se déclenche quand le statut passe à « Terminé » ?", "options": ["Les attestations, après validation de la directrice", "La centralisation des demandes", "Les rappels de cours", "Le tri des messages"], "correct": 0, "why": "La directrice valide la réussite ; l'attestation est alors créée et envoyée." },
+        { "q": "Sur quoi l'IA s'appuie-t-elle pour préparer les brouillons ?", "options": ["Uniquement la fiche d'informations officielle", "Ses connaissances générales", "Les sites des concurrents", "Les messages des autres élèves"], "correct": 0, "why": "Sans fiche validée, l'IA risquerait d'inventer un prix ou une date." },
+        { "q": "Comment intégrer les demandes reçues par Messenger ?", "options": ["Un formulaire rapide rempli par l'assistante, qui déclenche le scénario", "Une connexion automatique gratuite et immédiate", "En les ignorant", "Avec le mot de passe Facebook de la directrice"], "correct": 0, "why": "C'est simple, fiable et sans frais, alors que les connexions aux messageries sont réglementées." },
+        { "q": "Pourquoi éviter un seul scénario géant de 40 modules ?", "options": ["Il est difficile à tester, à comprendre et à réparer", "Parce que Make l'interdit", "Parce qu'il est plus rapide", "Ce n'est pas un problème"], "correct": 0, "why": "Plusieurs scénarios simples, reliés par un tableau, s'adaptent plus facilement aux changements." }
+      ]
+    },
+    {
+      "title": "Construire et tester avec l'équipe",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Où construire les scénarios du client ?", "options": ["Dès le premier jour dans le compte du client", "Dans votre compte, puis transférer plus tard", "Sur votre ordinateur, hors ligne", "Dans le compte d'un autre client"], "correct": 0, "why": "Un transfert plus tard se passe souvent mal : connexions à refaire, scénarios oubliés." },
+        { "q": "Dans quel ordre construire les scénarios ?", "options": ["Dans l'ordre du parcours d'une personne, un par semaine", "Tous le même jour", "Le plus difficile d'abord", "Au hasard"], "correct": 0, "why": "Chaque scénario s'appuie sur le précédent, et le premier donne vite un résultat visible." },
+        { "q": "Qui juge le mieux la qualité des brouillons de l'IA ?", "options": ["L'assistante, qui connaît le ton et les informations", "Le spécialiste seul", "L'IA elle-même", "Personne"], "correct": 0, "why": "Ses remarques permettent d'améliorer la consigne, et elle prend confiance dans l'outil." },
+        { "q": "Quand basculer un scénario du test en parallèle à l'usage réel ?", "options": ["Quand ses résultats concordent avec le travail manuel", "Dès la première minute", "La veille d'un jour férié", "Jamais"], "correct": 0, "why": "La comparaison en parallèle révèle les cas oubliés avant que l'équipe arrête la tâche manuelle." },
+        { "q": "Que contient le point d'avancement du vendredi ?", "options": ["Ce qui a été construit, les tests, les premiers chiffres, ce qu'on attend du client, la suite", "Uniquement la facture", "La liste des mots de passe", "Rien"], "correct": 0, "why": "La directrice suit la mission sans avoir à poser de questions." }
+      ]
+    },
+    {
+      "title": "Former l'équipe et faire la remise technique",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "Comment mener une séance de formation efficace ?", "options": ["Laisser l'équipe faire elle-même, sur ses écrans, avec des données de test", "Faire une longue présentation théorique", "Envoyer seulement un e-mail", "Ne pas former"], "correct": 0, "why": "On retient ce qu'on fait, pas ce qu'on voit faire." },
+        { "q": "Pourquoi écrire une partie « À ne pas faire » dans le guide ?", "options": ["Une colonne renommée ou supprimée peut arrêter les scénarios", "Pour faire peur à l'équipe", "Parce que c'est obligatoire", "Ce n'est pas utile"], "correct": 0, "why": "La plupart des pannes viennent de modifications faites sans savoir qu'elles cassent les scénarios." },
+        { "q": "Que ne doit jamais contenir la remise technique ?", "options": ["Des mots de passe", "Les fiches des scénarios", "Le guide de l'équipe", "Les plans de test"], "correct": 0, "why": "La liste des comptes et connexions se fait sans aucun mot de passe." },
+        { "q": "Que propose-t-on au client à la fin de la mission ?", "options": ["L'autonomie, ou une maintenance mensuelle écrite", "Rien", "De tout recommencer", "De supprimer les scénarios"], "correct": 0, "why": "Le client choisit : garder ses scénarios seul, ou confier la surveillance et les évolutions." },
+        { "q": "À quoi sert l'enregistrement vidéo de la formation ?", "options": ["Former les futurs employés sans refaire la séance", "Surveiller l'assistante", "Le publier sur les réseaux", "Rien"], "correct": 0, "why": "Un remplaçant peut prendre en main les outils seul, avec la vidéo et le guide." }
+      ]
+    },
+    {
+      "title": "Mesurer les résultats et l'étude de cas",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Comment mesurer les résultats après un mois ?", "options": ["Avec les mêmes indicateurs et la même méthode qu'au diagnostic", "Avec de nouveaux indicateurs plus flatteurs", "En demandant une impression générale", "Sans mesurer"], "correct": 0, "why": "Une comparaison juste rend le bilan crédible." },
+        { "q": "L'assistante passait 30 h et passe 8 h par mois. Combien de temps est gagné ?", "options": ["22 heures par mois", "38 heures par mois", "8 heures par mois", "30 heures par mois"], "correct": 0, "why": "30 − 8 = 22 heures par mois." },
+        { "q": "Comment calcule-t-on le gain net mensuel ?", "options": ["La valeur du temps gagné moins les coûts mensuels des outils", "Le prix du projet seul", "Le nombre de scénarios", "Les coûts des outils seuls"], "correct": 0, "why": "On compare ce que l'automatisation rapporte à ce qu'elle coûte chaque mois." },
+        { "q": "Que montrer dans la vidéo de l'étude de cas ?", "options": ["Le scénario en action avec des données fictives", "Les vraies données des élèves", "Les mots de passe du client", "Le tableau réel du client"], "correct": 0, "why": "On ne montre jamais les vraies données d'un client dans un portfolio." },
+        { "q": "Que faire sans l'accord du client pour citer son nom ?", "options": ["Le présenter de façon anonyme, par exemple « un centre de formation de Mahajanga »", "Le citer quand même", "Ne pas faire d'étude de cas", "Inventer un autre client"], "correct": 0, "why": "L'étude de cas reste utile sans nom, tant qu'elle est honnête." }
+      ]
+    }
+  ]
+}

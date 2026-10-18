@@ -1,0 +1,61 @@
+{
+  "title": "Zapier, l'IA dans les scénarios et la mise en service",
+  "summary": "Construire des Zaps, ajouter une étape d'IA pour classer et extraire, préparer des brouillons à partir d'une fiche officielle, tester, surveiller et documenter, puis estimer et maîtriser les coûts.",
+  "lessons": [
+    {
+      "title": "Zapier : vos premiers Zaps",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "Comment s'appelle un scénario dans Zapier ?", "options": ["Un Zap", "Un module", "Un bundle", "Un routeur"], "correct": 0, "why": "Un Zap se compose d'un déclencheur (Trigger) et d'actions." },
+        { "q": "Quel est souvent le meilleur outil pour un client ?", "options": ["Celui qu'il utilise déjà, s'il relie bien ses applications", "Toujours Make", "Toujours Zapier", "Le plus cher"], "correct": 0, "why": "Travailler dans les outils du client évite de changer ses habitudes sans vrai gain." },
+        { "q": "À quoi sert Paths dans Zapier ?", "options": ["Créer plusieurs chemins selon les cas", "Changer la couleur du Zap", "Supprimer les tâches", "Payer l'abonnement"], "correct": 0, "why": "C'est l'équivalent du routeur de Make : un chemin par cas." },
+        { "q": "Que fait Formatter by Zapier ?", "options": ["Il transforme dates, textes et nombres entre deux étapes", "Il envoie des e-mails", "Il crée des formulaires", "Il remplace l'IA"], "correct": 0, "why": "Par exemple, il écrit une date au format JJ/MM/AAAA ou enlève les espaces d'un téléphone." },
+        { "q": "Pourquoi éviter un Zap séparé pour chaque cas d'un même déclencheur ?", "options": ["Un changement doit être fait plusieurs fois et un Zap risque d'être oublié", "Parce que Zapier l'interdit", "Pour économiser de l'électricité", "Ce n'est pas un problème"], "correct": 0, "why": "Un seul Zap avec des chemins et un chemin de secours reste cohérent et facile à modifier." }
+      ]
+    },
+    {
+      "title": "Ajouter une étape d'IA : classer et extraire",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Que faut-il pour utiliser un service d'IA externe dans un scénario ?", "options": ["Une connexion avec la clé d'API du compte du client", "Le mot de passe personnel du client", "Rien, c'est gratuit et illimité", "Un formulaire Google"], "correct": 0, "why": "La clé d'API relie la plateforme au compte qui paie ; elle reste dans la connexion sécurisée." },
+        { "q": "Pourquoi envoyer seulement le message nettoyé à l'IA ?", "options": ["Moins de données personnelles, et un coût plus faible", "Pour que l'IA se trompe davantage", "Parce que l'historique est interdit", "Ce n'est pas important"], "correct": 0, "why": "On envoie le strict nécessaire : c'est plus sûr et moins cher." },
+        { "q": "Que faire de la réponse texte de l'IA avant de router ?", "options": ["L'analyser en JSON pour obtenir des champs", "La copier à la main", "L'envoyer au client", "La supprimer"], "correct": 0, "why": "Dans Make, le module Parse JSON transforme le texte en champs utilisables par les filtres." },
+        { "q": "L'IA renvoie {\"categorie\": \"Commande urgente\"}. Quel chemin prendre ?", "options": ["Le chemin de secours « À traiter à la main »", "Le chemin Commande", "Le chemin Réclamation", "Aucun : supprimer le message"], "correct": 0, "why": "Le JSON est lisible, mais la valeur ne fait pas partie de la liste prévue." },
+        { "q": "Quel statut donner aux valeurs extraites par l'IA (montant, date) ?", "options": ["« À vérifier », validé par un humain avant toute action financière", "« Validé » directement", "Aucun statut", "« Payé »"], "correct": 0, "why": "L'IA peut se tromper sur un montant ; une facture fausse coûte cher." }
+      ]
+    },
+    {
+      "title": "Des brouillons à partir d'une fiche officielle",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "Qu'est-ce que la fiche d'informations officielle ?", "options": ["Le document validé et daté qui contient tout ce que l'IA peut utiliser", "La liste des clients", "Le contrat de travail", "Le code du scénario"], "correct": 0, "why": "L'IA répond uniquement à partir de cette fiche : prix, horaires, adresse, conditions." },
+        { "q": "Que doit faire l'IA si la réponse n'est pas dans la fiche ?", "options": ["Répondre MANQUANT", "Inventer une réponse probable", "Demander au client", "Ne rien renvoyer"], "correct": 0, "why": "Le mot MANQUANT est repéré par un filtre qui envoie le message à un humain." },
+        { "q": "Pourquoi créer un brouillon plutôt qu'envoyer la réponse ?", "options": ["Un humain relit et corrige avant l'envoi", "Les brouillons sont gratuits", "Gmail interdit les envois automatiques", "Pour ralentir l'assistante"], "correct": 0, "why": "L'assistante garde la maîtrise et gagne la plus grande partie du temps de rédaction." },
+        { "q": "Où ranger la fiche d'informations ?", "options": ["Dans un document que le client met à jour et que le scénario lit à chaque exécution", "Copiée dans le texte de la consigne", "Dans un e-mail", "Nulle part"], "correct": 0, "why": "Une fiche copiée dans la consigne est oubliée quand les prix changent." },
+        { "q": "100 réponses par mois passent de 5 à 1 minute. Combien de temps gagne-t-on ?", "options": ["Environ 6 h 40 par mois", "1 h 40 par mois", "10 heures par mois", "40 minutes par mois"], "correct": 0, "why": "100 × 4 minutes = 400 minutes, soit 6 heures 40." }
+      ]
+    },
+    {
+      "title": "Tester, surveiller et documenter",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "Quel test vérifie qu'une personne inscrite deux fois ne reçoit qu'un e-mail ?", "options": ["Le test de doublon", "Le test de volume", "Le cas normal", "Le test de couleur"], "correct": 0, "why": "Le plan de test couvre le cas normal, les manques, les doublons, l'inattendu, l'IA invalide et le volume." },
+        { "q": "Que veut dire tester « en parallèle » ?", "options": ["Le scénario tourne sur de vraies données pendant que l'équipe continue à la main, puis on compare", "Tester deux scénarios à la fois", "Tester sur deux ordinateurs", "Ne pas tester"], "correct": 0, "why": "On ne remplace le travail manuel que lorsque les résultats concordent." },
+        { "q": "Combien de scénarios mettre en service par semaine ?", "options": ["Un à la fois", "Tous le même jour", "Aucun", "Dix"], "correct": 0, "why": "Un scénario à la fois permet de repérer les problèmes et laisse l'équipe s'habituer." },
+        { "q": "Que contient la fiche de documentation d'un scénario ?", "options": ["Nom, plateforme et compte, déclencheur, étapes, données, procédure en cas de panne, version", "Uniquement le nom", "Le mot de passe du client", "La facture"], "correct": 0, "why": "Elle permet à quelqu'un d'autre de comprendre, réparer ou modifier le scénario." },
+        { "q": "Pourquoi un scénario sans documentation n'est-il pas terminé ?", "options": ["Personne ne pourra le réparer ou le modifier sans vous", "Parce que Make l'exige", "Parce qu'il ne fonctionne pas", "Il est terminé"], "correct": 0, "why": "Le client doit rester autonome, même si vous n'êtes plus disponible." }
+      ]
+    },
+    {
+      "title": "Les coûts, les offres et les alternatives",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "300 exécutions par mois d'un scénario de 6 modules consomment environ combien d'opérations ?", "options": ["1 800", "300", "6", "18 000"], "correct": 0, "why": "300 × 6 = 1 800 opérations, plus les vérifications du déclencheur." },
+        { "q": "L'abonnement à un assistant d'IA donne-t-il toujours accès à l'API pour les scénarios ?", "options": ["Non : ce sont en général deux choses facturées séparément", "Oui, toujours", "Oui, si on le demande", "L'API n'existe pas"], "correct": 0, "why": "Vérifiez avec le client qu'il dispose bien d'un accès API pour ses automatisations." },
+        { "q": "Comment réduire le coût de l'IA dans un scénario ?", "options": ["Filtrer avant l'IA, envoyer moins de texte et choisir un modèle adapté", "Envoyer tout l'historique au modèle le plus cher", "Doubler les appels", "Ne jamais vérifier la facture"], "correct": 0, "why": "Chaque texte envoyé est facturé ; un classement simple n'a pas besoin du modèle le plus puissant." },
+        { "q": "Qu'est-ce que n8n ?", "options": ["Un outil d'automatisation open source, installable sur un serveur ou en ligne", "Un service d'IA", "Un tableur", "Un réseau social"], "correct": 0, "why": "C'est une alternative souple à Make et Zapier, appréciée des profils techniques." },
+        { "q": "Quand présenter les coûts au client ?", "options": ["Avant la construction, avec le temps gagné en face", "Après la première facture", "Jamais", "Seulement s'il demande"], "correct": 0, "why": "Le client décide en connaissant les coûts, et n'est pas surpris par sa première facture." }
+      ]
+    }
+  ]
+}

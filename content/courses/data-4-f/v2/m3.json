@@ -1,0 +1,61 @@
+{
+  "title": "Make : construire des scénarios",
+  "summary": "Prendre en main Make, construire un premier scénario complet, utiliser filtres, routeurs et fonctions, chercher et mettre à jour des lignes, itérateurs et agrégateurs, planification, historique, erreurs et webhooks.",
+  "lessons": [
+    {
+      "title": "Prendre en main Make",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un module dans Make ?", "options": ["Une étape du scénario, liée à une application et à une action", "Un abonnement payant", "Un tableau Google Sheets", "Un client"], "correct": 0, "why": "Chaque bulle est un module : par exemple Google Sheets « Add a Row » ou Gmail « Send an Email »." },
+        { "q": "À quoi sert « Run once » ?", "options": ["Lancer le scénario une fois, pour un test", "Supprimer le scénario", "Activer la facturation", "Exporter le scénario"], "correct": 0, "why": "Après le test, les bulles montrent les données reçues et produites par chaque module." },
+        { "q": "Avec quel compte faire les connexions d'un scénario client ?", "options": ["Avec les comptes du client", "Avec votre compte personnel", "Avec un compte inventé", "Peu importe"], "correct": 0, "why": "Si vous retirez votre compte à la fin de la mission, un scénario connecté à votre compte s'arrête." },
+        { "q": "Qu'est-ce qu'un paquet (bundle) ?", "options": ["Un ensemble de données qui circule dans le scénario, par exemple une ligne", "Un forfait d'opérations", "Un module payant", "Un fichier PDF"], "correct": 0, "why": "Si le déclencheur trouve 5 nouvelles lignes, 5 paquets traversent le scénario." },
+        { "q": "Pourquoi éviter de planifier un scénario toutes les minutes sans raison ?", "options": ["Il consomme des opérations même quand il ne trouve rien", "Parce que c'est interdit", "Parce que les e-mails partent en double", "Ce n'est jamais un problème"], "correct": 0, "why": "Le déclencheur compte à chaque vérification : un intervalle trop court épuise vite le quota." }
+      ]
+    },
+    {
+      "title": "Votre premier scénario complet",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Quels sont les 3 modules du scénario d'inscription ?", "options": ["Watch New Rows, Send an Email, Update a Row", "Router, Iterator, Aggregator", "Webhook, Data store, Break", "Search Rows, Delete Row, Ignore"], "correct": 0, "why": "On surveille les nouvelles lignes, on envoie l'e-mail personnalisé, puis on met à jour le statut." },
+        { "q": "Comment remplir le destinataire de l'e-mail ?", "options": ["Choisir le champ « E-mail » du module 1 dans la liste", "Taper « E-mail » à la main", "Mettre toujours la même adresse", "Laisser vide"], "correct": 0, "why": "C'est la correspondance : la donnée vient du module précédent, pour chaque inscription." },
+        { "q": "Pourquoi tester d'abord sur une adresse de test ?", "options": ["Pour qu'aucun e-mail de test ne parte chez un vrai client", "Pour économiser des opérations", "Parce que Gmail l'exige", "Ce n'est pas utile"], "correct": 0, "why": "On remet le vrai champ « E-mail » seulement après tous les tests." },
+        { "q": "D'où vient le numéro de la ligne à mettre à jour ?", "options": ["Du module 1, qui le fournit pour chaque nouvelle ligne", "On le tape à la main", "Il est toujours égal à 2", "Du module Gmail"], "correct": 0, "why": "Un numéro tapé à la main mettrait toujours à jour la même ligne." },
+        { "q": "Pourquoi vérifier le fuseau horaire de Make ?", "options": ["Pour que les dates écrites ne soient pas décalées", "Pour accélérer le scénario", "Pour réduire les coûts", "Ce n'est pas utile"], "correct": 0, "why": "Un mauvais fuseau peut faire tomber une date la veille dans le tableau ou l'e-mail." }
+      ]
+    },
+    {
+      "title": "Filtres, routeurs et fonctions",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "Où se place un filtre dans Make ?", "options": ["Sur la ligne entre deux modules", "Dans un tableau Google Sheets", "Dans le nom du scénario", "Dans les réglages du compte"], "correct": 0, "why": "Le filtre laisse passer le paquet vers le module suivant seulement si sa condition est vraie." },
+        { "q": "À quoi sert le chemin de secours d'un routeur ?", "options": ["Traiter les cas qui ne correspondent à aucun autre chemin", "Accélérer le scénario", "Supprimer les erreurs", "Envoyer tous les paquets deux fois"], "correct": 0, "why": "Une valeur inattendue n'est jamais perdue : elle part en « À traiter à la main »." },
+        { "q": "Que fait la fonction lower() ?", "options": ["Elle met un texte en minuscules", "Elle supprime le texte", "Elle calcule une somme", "Elle traduit le texte"], "correct": 0, "why": "« Débutant » et « DÉBUTANT » deviennent identiques, ce qui facilite les comparaisons." },
+        { "q": "Quelle fonction écrit une date au format JJ/MM/AAAA ?", "options": ["formatDate", "lower", "trim", "length"], "correct": 0, "why": "formatDate(date; \"DD/MM/YYYY\") donne par exemple 18/05/2027." },
+        { "q": "Pourquoi normaliser le téléphone dans un module à part ?", "options": ["Le calcul est fait une fois et le scénario reste lisible", "Parce que c'est obligatoire", "Pour consommer plus d'opérations", "Ce n'est jamais utile"], "correct": 0, "why": "Les modules suivants utilisent tous le même numéro propre, sans répéter la formule." }
+      ]
+    },
+    {
+      "title": "Chercher, mettre à jour et traiter des listes",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "À quoi sert le module Search Rows avant d'ajouter une ligne ?", "options": ["Vérifier si l'élément existe déjà, pour éviter les doublons", "Supprimer le tableau", "Envoyer un e-mail", "Compter les opérations"], "correct": 0, "why": "Si la personne existe déjà, on met à jour sa ligne au lieu d'en créer une nouvelle." },
+        { "q": "Que fait un itérateur ?", "options": ["Il découpe une liste en paquets séparés", "Il rassemble plusieurs paquets en un seul", "Il arrête le scénario", "Il traduit les données"], "correct": 0, "why": "Une commande de 3 articles devient 3 paquets, traités un par un." },
+        { "q": "Que fait un agrégateur de texte ?", "options": ["Il rassemble plusieurs paquets dans un seul texte", "Il découpe un texte", "Il corrige les fautes", "Il envoie un e-mail"], "correct": 0, "why": "Il permet par exemple d'envoyer une seule liste des 12 inscriptions dans un e-mail." },
+        { "q": "Le rapport du lundi envoie 12 e-mails au lieu d'un. Que manque-t-il ?", "options": ["Un agrégateur entre la recherche et l'envoi", "Un itérateur", "Un deuxième déclencheur", "Une connexion Gmail"], "correct": 0, "why": "Sans agrégateur, le module Gmail s'exécute une fois par paquet trouvé." },
+        { "q": "Quel déclencheur utiliser pour un rapport chaque lundi à 8 h ?", "options": ["Un déclencheur planifié", "Un webhook", "Une nouvelle ligne", "Un nouvel e-mail"], "correct": 0, "why": "Le rapport ne dépend pas d'un événement mais d'un moment précis de la semaine." }
+      ]
+    },
+    {
+      "title": "Planification, historique, erreurs et webhooks",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Quel intervalle choisir pour un scénario planifié ?", "options": ["Le plus long acceptable pour le client", "Le plus court possible", "Une fois par an", "Au hasard"], "correct": 0, "why": "Un intervalle trop court consomme des opérations pour rien ; quelques minutes suffisent souvent." },
+        { "q": "Que montre l'historique d'un scénario ?", "options": ["Chaque exécution, avec ses données, ses erreurs et ses opérations", "La liste des clients", "Les factures", "Le code source de Make"], "correct": 0, "why": "On y retrouve les bulles de chaque exécution, comme pendant un test." },
+        { "q": "Quel gestionnaire d'erreur garde l'exécution pour la reprendre plus tard ?", "options": ["Break", "Ignore", "Resume", "Aucun"], "correct": 0, "why": "Break arrête et conserve l'exécution incomplète, utile quand un service est temporairement en panne." },
+        { "q": "Pourquoi l'adresse d'un webhook doit-elle rester secrète ?", "options": ["Quiconque la connaît peut envoyer des données au scénario", "Parce qu'elle est payante", "Parce qu'elle change chaque jour", "Elle n'a pas besoin d'être secrète"], "correct": 0, "why": "On ne la publie pas, et on vérifie si possible qu'une donnée attendue est présente." },
+        { "q": "Que faire pendant la première semaine après la mise en service ?", "options": ["Consulter l'historique chaque jour, avec des alertes envoyées à deux personnes", "Ne plus jamais regarder le scénario", "Désactiver les alertes", "Supprimer l'historique"], "correct": 0, "why": "Les erreurs de la première semaine révèlent les cas oubliés pendant les tests." }
+      ]
+    }
+  ]
+}

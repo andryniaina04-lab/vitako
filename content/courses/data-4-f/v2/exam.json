@@ -1,0 +1,602 @@
+[
+ {
+  "q": "Quel est le rôle principal d'un spécialiste automatisation et IA ?",
+  "options": [
+   "Relier les outils et ajouter l'IA pour supprimer les tâches répétitives",
+   "Remplacer toute l'équipe du client",
+   "Réparer les ordinateurs",
+   "Créer le logo de l'entreprise"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Faut-il savoir programmer pour commencer le métier ?",
+  "options": [
+   "Non : Make et Zapier permettent de commencer sans programmer",
+   "Oui, obligatoirement en C++",
+   "Oui, il faut un diplôme d'ingénieur",
+   "Oui, sinon aucun outil ne fonctionne"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans un scénario, qu'est-ce que le déclencheur ?",
+  "options": [
+   "L'événement qui lance le scénario",
+   "La dernière étape du scénario",
+   "Le prix de l'abonnement",
+   "Le nom du client"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi sert la correspondance (mapping) ?",
+  "options": [
+   "Faire voyager les données d'une étape à l'autre",
+   "Payer l'abonnement",
+   "Supprimer les doublons à la main",
+   "Traduire l'interface"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle différence entre un déclencheur instantané et un déclencheur planifié ?",
+  "options": [
+   "L'instantané réagit tout de suite, le planifié vérifie à intervalles réguliers",
+   "Aucune différence",
+   "Le planifié est toujours gratuit",
+   "L'instantané ne fonctionne que la nuit"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quels sont les 4 critères d'une tâche à automatiser ?",
+  "options": [
+   "Répétition, règles claires, outils numériques, coût des erreurs",
+   "Rareté, improvisation, papier, hasard",
+   "Beauté, couleur, taille, prix",
+   "Aucun critère : tout s'automatise"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Une tâche de 10 minutes faite 60 fois par mois représente combien de temps ?",
+  "options": [
+   "10 heures par mois",
+   "6 heures par mois",
+   "60 heures par mois",
+   "1 heure par mois"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi faut-il vérifier ce que produit l'IA ?",
+  "options": [
+   "Elle produit un texte plausible, pas forcément vrai",
+   "Elle ne se trompe jamais",
+   "Pour occuper l'équipe",
+   "Parce qu'elle écrit en anglais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que veut dire « humain dans la boucle » ?",
+  "options": [
+   "L'IA prépare, un humain valide avant les décisions importantes",
+   "Un humain recopie tout à la main",
+   "L'IA décide seule",
+   "Le client ne voit jamais rien"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Au nom de qui créer les comptes et abonnements ?",
+  "options": [
+   "Au nom du client",
+   "Au nom du spécialiste",
+   "Au nom d'un ami",
+   "Sans nom"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment obtenir une cartographie fidèle d'un processus ?",
+  "options": [
+   "En observant la personne qui fait la tâche, avec un vrai exemple",
+   "En devinant depuis chez soi",
+   "En copiant celle d'une autre entreprise",
+   "En demandant à l'IA d'imaginer"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire des cas particuliers d'un processus ?",
+  "options": [
+   "Les lister et donner un traitement à chacun",
+   "Les ignorer",
+   "Les supprimer du tableau",
+   "Les automatiser au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'apporte un identifiant unique dans le tableau central ?",
+  "options": [
+   "Retrouver chaque ligne sans ambiguïté et éviter les doublons",
+   "Rendre le tableau plus coloré",
+   "Rien du tout",
+   "Remplacer la colonne statut"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle est la règle anti-doublon ?",
+  "options": [
+   "Chercher avant de créer",
+   "Créer une ligne à chaque message, puis trier à la main",
+   "Supprimer le tableau chaque semaine",
+   "Ne jamais créer de ligne"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans le JSON {\"client\": {\"telephone\": \"034 12 345 67\"}}, quel chemin désigne le téléphone ?",
+  "options": [
+   "client.telephone",
+   "telephone.client",
+   "client[telephone]",
+   "034.client"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle valeur JSON est un texte ?",
+  "options": [
+   "\"Mahajanga\"",
+   "42",
+   "true",
+   "null"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi demander à l'IA une sortie fermée (catégories fixes, JSON précis) ?",
+  "options": [
+   "Elle se vérifie facilement par le scénario",
+   "Elle est plus longue",
+   "Elle est plus poétique",
+   "Elle coûte toujours plus cher"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que contient un jeu de test pour une consigne d'IA ?",
+  "options": [
+   "Une vingtaine de vrais messages avec les réponses attendues",
+   "Un seul message inventé",
+   "Les mots de passe du client",
+   "Rien : on teste en production"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que fait le scénario quand il a un doute ?",
+  "options": [
+   "Il s'arrête et passe le cas en « à traiter à la main »",
+   "Il choisit au hasard",
+   "Il supprime la donnée",
+   "Il envoie quand même au client final"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qui valide le dossier de conception avant la construction ?",
+  "options": [
+   "Le client",
+   "Personne",
+   "Make",
+   "Le premier élève inscrit"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans Make, à quoi sert « Run once » ?",
+  "options": [
+   "Tester le scénario une fois et voir les données dans les bulles",
+   "Supprimer le scénario",
+   "Payer l'abonnement",
+   "Traduire les modules"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que consomme chaque module traité dans Make ?",
+  "options": [
+   "Des opérations",
+   "Des mégaoctets du téléphone",
+   "Des tâches Zapier",
+   "Rien du tout"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "D'où vient le numéro de ligne à mettre à jour dans Update a Row ?",
+  "options": [
+   "Du module 1, par correspondance, jamais tapé à la main",
+   "D'une estimation",
+   "Du nom du client",
+   "D'un nombre au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Où envoyer les e-mails pendant les tests ?",
+  "options": [
+   "Sur une adresse de test",
+   "Aux vrais clients",
+   "À toute la liste de contacts",
+   "Nulle part, on ne teste pas"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi un routeur doit-il toujours avoir un chemin de secours ?",
+  "options": [
+   "Pour traiter les cas qui ne correspondent à aucun autre chemin",
+   "Pour décorer le scénario",
+   "Pour doubler les opérations",
+   "Ce n'est jamais nécessaire"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que fait la fonction trim ?",
+  "options": [
+   "Elle supprime les espaces au début et à la fin d'un texte",
+   "Elle met le texte en majuscules",
+   "Elle formate une date",
+   "Elle compte les lettres"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel est le rôle d'un itérateur ?",
+  "options": [
+   "Découper une liste en paquets, un par élément",
+   "Rassembler des paquets en un seul",
+   "Envoyer un e-mail",
+   "Supprimer un scénario"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment construire un rapport automatique du lundi ?",
+  "options": [
+   "Déclencheur planifié, recherche des lignes, agrégateur, envoi",
+   "Un webhook appelé à la main",
+   "Recopier les chiffres chaque lundi",
+   "Un filtre seul"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi sert un gestionnaire d'erreur sur un module fragile ?",
+  "options": [
+   "Envoyer le cas vers « À traiter à la main » et prévenir par une alerte",
+   "Cacher les erreurs pour toujours",
+   "Supprimer le scénario",
+   "Augmenter les opérations"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faut-il faire de l'adresse d'un webhook ?",
+  "options": [
+   "La garder secrète",
+   "La publier sur Facebook",
+   "L'écrire dans le guide de l'équipe en public",
+   "L'envoyer à tous les prospects"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans Zapier, comment s'appelle un scénario ?",
+  "options": [
+   "Un Zap",
+   "Un routeur",
+   "Un paquet",
+   "Un data store"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel outil choisir le plus souvent ?",
+  "options": [
+   "Celui que le client utilise déjà, s'il convient",
+   "Toujours le plus cher",
+   "Toujours le plus récent",
+   "Celui qu'on ne connaît pas"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi sert Formatter dans Zapier ?",
+  "options": [
+   "Transformer dates, textes et nombres",
+   "Créer des comptes",
+   "Payer les factures",
+   "Écrire les consignes d'IA"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Après l'étape d'IA, que faut-il faire de la réponse ?",
+  "options": [
+   "L'analyser en JSON et vérifier la valeur avant de l'utiliser",
+   "L'envoyer directement au client",
+   "L'ignorer",
+   "La publier telle quelle"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel statut donner à une ligne extraite d'un texte libre par l'IA ?",
+  "options": [
+   "« À vérifier »",
+   "« Validé définitivement »",
+   "« Supprimé »",
+   "Aucun statut"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle est la seule source autorisée pour les réponses préparées par l'IA ?",
+  "options": [
+   "La fiche d'informations officielle, validée et datée",
+   "La mémoire de l'IA",
+   "Les rumeurs des réseaux sociaux",
+   "Le site d'un concurrent"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que renvoie la consigne quand l'information n'est pas dans la fiche ?",
+  "options": [
+   "MANQUANT, et le cas passe à la main",
+   "Une réponse inventée",
+   "Un prix au hasard",
+   "Rien, et le message est supprimé"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Par défaut, comment partent les réponses préparées par l'IA ?",
+  "options": [
+   "En brouillon, relu et envoyé par un humain",
+   "Automatiquement, sans relecture",
+   "Par courrier postal",
+   "Elles ne partent jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment mettre les scénarios en service ?",
+  "options": [
+   "Progressivement, un scénario par semaine",
+   "Tous le même jour sans test",
+   "Seulement la veille des vacances",
+   "Jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment estimer le coût d'un scénario ?",
+  "options": [
+   "Exécutions × étapes, plus l'IA selon le texte et le modèle",
+   "Au hasard",
+   "Il est toujours gratuit",
+   "Par le nombre de couleurs du tableau"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Avec qui mener l'entretien de diagnostic chez Formation Mendrika ?",
+  "options": [
+   "La directrice et l'assistante, qui montre les tâches",
+   "Seulement les élèves",
+   "Seulement le comptable",
+   "Personne"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien de temps mesurer les tâches avant de proposer ?",
+  "options": [
+   "Une à deux semaines",
+   "Une minute",
+   "Un an",
+   "On ne mesure jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qui relie les scénarios de la mission ?",
+  "options": [
+   "Le tableau central et sa colonne de statut",
+   "Les messages WhatsApp",
+   "Les mots de passe",
+   "La couleur des modules"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans la mission, qui décide et envoie ?",
+  "options": [
+   "L'humain ; l'IA classe et prépare",
+   "L'IA seule",
+   "Make seul",
+   "Le spécialiste, à la place de l'équipe"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Dans quel ordre construire les scénarios ?",
+  "options": [
+   "Un par semaine, dans l'ordre du parcours",
+   "Tous en même temps",
+   "Du dernier au premier",
+   "Au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qui juge la qualité des brouillons de l'IA pendant les tests ?",
+  "options": [
+   "L'assistante, dont les remarques améliorent la consigne",
+   "Personne",
+   "L'IA elle-même",
+   "Un client au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que ne doit jamais contenir la remise technique ?",
+  "options": [
+   "Des mots de passe",
+   "La liste des scénarios",
+   "Le guide de l'équipe",
+   "Les noms des connexions"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que contient le guide de l'équipe ?",
+  "options": [
+   "Ce qui est automatique, ce qui reste à faire, où regarder, les alertes, le contact",
+   "Le code JSON complet",
+   "Les mots de passe",
+   "Les factures du spécialiste"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment mesurer les résultats un mois après ?",
+  "options": [
+   "Avec les mêmes indicateurs qu'au diagnostic",
+   "Avec de nouveaux indicateurs plus flatteurs",
+   "En demandant une impression vague",
+   "On ne mesure pas"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faut-il pour publier une étude de cas ?",
+  "options": [
+   "L'accord du client et des données fictives",
+   "Rien",
+   "Les vraies données des élèves",
+   "Les mots de passe du client"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que doit montrer un portfolio de spécialiste ?",
+  "options": [
+   "Le problème, le résultat et le temps gagné",
+   "Des dizaines de captures techniques",
+   "La liste de tous les outils existants",
+   "Vos diplômes uniquement"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelles données utiliser dans les démonstrations ?",
+  "options": [
+   "Uniquement des données fictives",
+   "Les données d'un vrai client",
+   "Des contacts personnels",
+   "Des données achetées"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que propose-t-on pour faire découvrir l'automatisation à une PME ?",
+  "options": [
+   "Un diagnostic gratuit de 30 minutes",
+   "Un contrat de 3 ans",
+   "Un projet de 8 scénarios d'emblée",
+   "Rien"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Après un premier diagnostic, quel projet proposer à un nouveau client ?",
+  "options": [
+   "Un petit projet à fort impact et faible effort",
+   "Le plus gros projet possible",
+   "Aucun projet",
+   "Un projet sans devis"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment présenter les coûts des outils dans le devis ?",
+  "options": [
+   "À part, payés par le client directement aux fournisseurs",
+   "Inclus dans votre prix pour un an",
+   "Cachés",
+   "Payés par vous"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que couvre la garantie ?",
+  "options": [
+   "Les erreurs de votre travail pendant une durée fixée",
+   "Toutes les nouvelles demandes",
+   "Les modifications faites par le client",
+   "Les abonnements"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Avec 1 400 000 Ar à couvrir et 80 heures facturables, quel est le prix horaire plancher ?",
+  "options": [
+   "17 500 Ar",
+   "14 000 Ar",
+   "175 000 Ar",
+   "8 000 Ar"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Où se situe le bon prix d'un projet ?",
+  "options": [
+   "Entre votre prix plancher et une part raisonnable de la valeur",
+   "En dessous du prix plancher",
+   "Au-dessus de toute la valeur",
+   "Au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment vérifier un paiement Mobile Money ?",
+  "options": [
+   "Sur votre propre compte, jamais sur une capture",
+   "Sur la capture du client",
+   "Par téléphone uniquement",
+   "On ne vérifie pas"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien de temps consacrer à la veille sur les outils et l'IA ?",
+  "options": [
+   "Environ une heure par semaine",
+   "Jamais",
+   "Une heure par an",
+   "Toute la journée"
+  ],
+  "correct": 0
+ }
+]

@@ -1135,7 +1135,58 @@ export const PUBLISHED = {
     "title": "Trouver des clients et se faire payer",
     "minutes": 7
    }
-  ]
+  ],
+  "preview": {
+   "hours": 49,
+   "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise (formulaires, e-mails, tableaux, agenda) pour que les tâches répétitives se fassent toutes seules, avec l'IA pour trier, extraire et préparer des réponses toujours relues par un humain. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec Make, Zapier et des services d'IA. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+   "objectives": [
+    "Expliquer le métier, repérer les tâches à automatiser et connaître les limites de l'IA",
+    "Cartographier un processus, préparer des données propres, lire du JSON et écrire des consignes d'IA testées",
+    "Construire des scénarios Make avec filtres, routeurs, fonctions, itérateurs et gestion des erreurs",
+    "Utiliser Zapier, intégrer l'IA dans un scénario, tester, surveiller, documenter et estimer les coûts",
+    "Mener une mission complète, du diagnostic chiffré à la mesure des résultats",
+    "Construire son portfolio, trouver des clients, rédiger un devis, fixer ses prix et se faire payer"
+   ],
+   "breakdown": {
+    "lecture": 283,
+    "qcm": 150,
+    "exercices": 1590,
+    "projets": 870,
+    "examen": 60
+   },
+   "modules": [
+    {
+     "title": "Le métier de spécialiste automatisation et IA",
+     "minutes": 49,
+     "lessons": 5
+    },
+    {
+     "title": "Les bases : processus, données et consignes d'IA",
+     "minutes": 48,
+     "lessons": 5
+    },
+    {
+     "title": "Make : construire des scénarios",
+     "minutes": 48,
+     "lessons": 5
+    },
+    {
+     "title": "Zapier, l'IA dans les scénarios et la mise en service",
+     "minutes": 49,
+     "lessons": 5
+    },
+    {
+     "title": "Premier projet : la mission Formation Mendrika",
+     "minutes": 45,
+     "lessons": 5
+    },
+    {
+     "title": "Trouver des clients et se faire payer",
+     "minutes": 44,
+     "lessons": 5
+    }
+   ]
+  }
  },
  "design-0-a": {
   "hours": 15,

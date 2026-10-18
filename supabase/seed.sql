@@ -65162,6 +65162,3126 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que publier dans son portfolio ?', '["Les résultats réels des clients","Des données personnelles","Des mots de passe","Des travaux sur son laboratoire et des cas fictifs"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
 
+-- data-4-f (version 2, aperçu administrateur)
+delete from public.lesson_parts where course_id = 'data-4-f';
+delete from public.modules2 where course_id = 'data-4-f' and module_index >= 6;
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 0, 'Le métier de spécialiste automatisation et IA', 'Ce que fait le métier, le vocabulaire des scénarios, les tâches à automatiser, ce que l''IA peut et ne peut pas faire, vos clients et les règles de confiance.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 0, 0, 'Ce que fait un spécialiste automatisation et IA', 10, 'Dans beaucoup d''entreprises, des personnes passent des heures à copier des informations d''un outil à un autre : un formulaire vers un tableau, un tableau vers un e-mail, une facture vers la comptabilité. Le spécialiste automatisation et IA relie ces outils pour que ces tâches se fassent toutes seules, et utilise l''intelligence artificielle pour trier, extraire ou rédiger. C''est un métier récent, très demandé, qui se fait entièrement à distance. Cette première leçon vous le présente tel qu''il est vraiment.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer en une phrase ce que fait un spécialiste automatisation et IA.
+> 2. Décrire un exemple d''automatisation, avant et après.
+> 3. Connaître les étapes d''une mission type.
+> 4. Distinguer ce métier des métiers voisins.
+> 5. Repérer les qualités qui font un bon spécialiste.
+
+## Le métier en une phrase
+
+Un spécialiste automatisation et IA **relie les outils d''une entreprise et y ajoute de l''intelligence artificielle pour supprimer les tâches répétitives, réduire les erreurs et faire gagner du temps**.
+
+```schema comparaison
+titre: Les inscriptions d''un centre de formation, avant et après
+ton: mauvais-bon
+colonnes: Avant | Après
+Chaque matin, l''assistante recopie les inscriptions du formulaire dans un tableau | Chaque inscription arrive seule dans le tableau, avec un statut
+Elle envoie un e-mail de bienvenue à chaque personne | L''e-mail de bienvenue part automatiquement, personnalisé
+Elle prévient le formateur par WhatsApp | Le formateur reçoit une alerte avec la liste du jour
+Une heure par jour, et des oublis | Quelques minutes pour vérifier les cas particuliers
+```
+
+L''assistante n''a pas perdu son travail : elle a perdu la partie répétitive de son travail. Elle a maintenant le temps d''appeler les personnes qui hésitent, de suivre les élèves en difficulté, de préparer les prochaines sessions.
+
+> [!definition] Automatisation
+> Une suite d''étapes qu''un logiciel exécute tout seul, chaque fois qu''un événement se produit : une nouvelle inscription, un nouvel e-mail, une nouvelle commande. On la construit une fois ; elle fonctionne ensuite des centaines de fois, sans fatigue et sans oubli.
+
+## Les outils du métier
+
+Le spécialiste travaille surtout avec des **plateformes d''automatisation sans code**, qui relient des milliers d''applications par des menus, sans écrire de programme.
+
+| Outil | Rôle | Dans cette formation |
+| --- | --- | --- |
+| **Make** | Plateforme d''automatisation visuelle, très souple | Module 3 |
+| **Zapier** | Plateforme d''automatisation simple, très connectée | Module 4 |
+| **Google Forms et Google Sheets** | Formulaires et tableaux, souvent au centre des automatisations | Module 2 |
+| **Assistants d''IA** (ChatGPT, Claude, Gemini…) | Classer, extraire, résumer, rédiger un brouillon | Modules 1, 2 et 4 |
+| **Gmail, Google Agenda, Google Docs** | Envoyer, planifier, produire des documents | Tout au long de la formation |
+
+Il en existe d''autres (n8n, Power Automate de Microsoft…). Les principes que vous apprendrez ici s''appliquent à toutes.
+
+## Une mission type
+
+```schema etapes
+titre: Les 6 étapes d''une mission d''automatisation
+Diagnostic : repérer les tâches répétitives et mesurer le temps perdu
+Conception : dessiner le processus et les scénarios, décider ce qui reste humain
+Construction : créer les scénarios, étape par étape, dans le compte du client
+Tests : vérifier les cas normaux, les cas manquants et les cas inattendus
+Formation : expliquer à l''équipe ce qui est automatique et quoi faire en cas de problème
+Suivi : surveiller, corriger, mesurer le temps gagné
+```
+
+Remarquez que la **construction** n''est qu''une étape sur six. Un bon spécialiste passe autant de temps à comprendre le travail du client, à tester et à expliquer, qu''à construire. C''est ce qui fait la différence entre une automatisation qui tient des années et une automatisation qui casse au bout d''une semaine.
+
+## Les métiers voisins
+
+```schema comparaison
+titre: Qui fait quoi ?
+colonnes: Spécialiste automatisation | Développeur | Assistant virtuel
+Relie des outils existants avec des plateformes sans code | Écrit des programmes et des applications sur mesure | Fait le travail administratif lui-même
+Ajoute l''IA pour classer, extraire, rédiger | Construit des systèmes complexes | Utilise les outils au quotidien
+Rend le travail répétitif automatique | Crée de nouveaux logiciels | Peut demander des automatisations
+```
+
+Le spécialiste automatisation n''a pas besoin de savoir programmer pour commencer. Avec l''expérience, quelques notions de code (JavaScript, Python) permettent d''aller plus loin, mais la plupart des besoins des petites entreprises se règlent sans code.
+
+## Les qualités d''un bon spécialiste
+
+```schema chiffres
+titre: Les 5 qualités du métier
+Logique : découper une tâche en étapes simples et précises
+Rigueur : tester chaque cas, ne rien laisser au hasard
+Écoute : comprendre le vrai travail de l''équipe, avec ses exceptions
+Pédagogie : expliquer simplement à des personnes non techniques
+Prudence : protéger les données et garder l''humain pour les décisions importantes
+```
+
+> [!madagascar] Votre avantage
+> Les entreprises du monde entier cherchent des personnes capables de mettre en place Make, Zapier et l''IA, et peu de freelances francophones maîtrisent bien ces outils. Les plateformes fonctionnent dans le navigateur, en ligne : vous pouvez travailler depuis Madagascar pour des clients européens, avec un faible décalage horaire, et aider aussi les entreprises locales, souvent débordées par les tâches administratives.
+
+> [!exemple] Rado et la pâtisserie
+> Rado, à Antananarivo, a commencé par aider la pâtisserie de sa sœur. Les commandes de gâteaux arrivaient par un formulaire et étaient recopiées à la main dans un cahier ; des commandes étaient oubliées chaque mois. Il a relié le formulaire à un tableau Google Sheets et à un e-mail de confirmation, avec une alerte la veille de chaque livraison. Plus aucune commande oubliée. Sa sœur l''a recommandé à deux commerçants du quartier : ses premiers clients.
+
+> [!erreur] Automatiser avant de comprendre
+> Un débutant, enthousiaste, construit en une journée un grand scénario de 20 étapes pour un client. Il n''a pas demandé comment l''équipe travaillait vraiment. Le lendemain, le scénario envoie des confirmations à des clients qui avaient annulé, et oublie tous les cas particuliers. **On ne construit jamais avant d''avoir compris le processus** avec les personnes qui le font chaque jour.
+
+> [!retenir]
+> - Le spécialiste **relie les outils et ajoute l''IA** pour supprimer les tâches répétitives.
+> - Ses outils : **Make, Zapier, Google Forms et Sheets, assistants d''IA**.
+> - Une mission : **diagnostic, conception, construction, tests, formation, suivi**.
+> - Pas besoin de savoir programmer pour commencer.
+> - **Logique, rigueur, écoute, pédagogie, prudence.**
+
+## Exercice pratique : observer une tâche répétitive
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez une petite organisation que vous connaissez (commerce, école, association, église).
+> 2. Observez ou demandez comment se fait une tâche répétitive : inscriptions, commandes, rendez-vous, relances.
+> 3. Décrivez-la « avant » : qui fait quoi, avec quel outil, combien de fois par semaine, combien de temps.
+> 4. Imaginez l''« après » : ce qui pourrait devenir automatique, et ce qui doit rester humain.
+>
+> **À livrer** : votre description avant / après, en une page.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 0, 0, 'Quel est le rôle principal d''un spécialiste automatisation et IA ?', '["Gérer les réseaux sociaux","Remplacer tous les employés par des robots","Créer des sites web","Relier les outils d''une entreprise et y ajouter l''IA pour supprimer les tâches répétitives"]'::jsonb, 3, 'Il fait disparaître la partie répétitive du travail, pour que l''équipe se consacre à ce qui demande du jugement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 0, 1, 'Quelle est la première étape d''une mission d''automatisation ?', '["La construction immédiate du scénario","Le diagnostic : repérer les tâches répétitives et mesurer le temps perdu","La facture","La formation de l''équipe"]'::jsonb, 1, 'On ne construit jamais avant d''avoir compris le processus et mesuré ce qu''on peut gagner.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 0, 2, 'Faut-il savoir programmer pour commencer ce métier ?', '["Non : la plupart des besoins des petites entreprises se règlent avec des plateformes sans code","Oui, il faut maîtriser plusieurs langages","Non, car il n''y a rien à apprendre","Oui, uniquement en Python"]'::jsonb, 0, 'Make et Zapier relient les outils par des menus. Le code devient utile plus tard, pour aller plus loin.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 0, 3, 'Quelle qualité évite le plus les automatisations qui cassent ?', '["L''humour","La rapidité de frappe","La créativité artistique","La rigueur : tester chaque cas"]'::jsonb, 3, 'Une automatisation tient dans le temps quand les cas normaux, manquants et inattendus ont été testés.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 0, 4, 'Que devient le travail de l''assistante après l''automatisation des inscriptions ?', '["Elle recopie toujours tout","Elle ne fait plus rien","Elle perd son travail","Elle garde la vérification des cas particuliers et le suivi des personnes"]'::jsonb, 3, 'La partie répétitive disparaît ; le temps libéré sert aux tâches qui demandent un humain.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 0, 1, 'Le vocabulaire : déclencheurs, actions, filtres et routeurs', 9, 'Chaque métier a son vocabulaire. Celui de l''automatisation est court, et le même d''une plateforme à l''autre : un **déclencheur** lance un **scénario**, qui exécute des **actions**, parfois après un **filtre** ou un **routeur**, en faisant passer les données d''une étape à l''autre par la **correspondance**. Cette leçon vous apprend ces mots et vous montre comment les assembler, avant même d''ouvrir Make ou Zapier.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer les mots de base : scénario, déclencheur, action, filtre, routeur.
+> 2. Comprendre la correspondance entre les données de deux étapes.
+> 3. Distinguer un déclencheur instantané d''un déclencheur planifié.
+> 4. Savoir ce qu''est un webhook.
+> 5. Décrire un scénario simple sur papier.
+
+## Les mots de base
+
+| Terme | Définition | Exemple |
+| --- | --- | --- |
+| **Scénario** (« Zap » chez Zapier, *workflow* ailleurs) | Une suite d''étapes automatiques | Formulaire → tableau → e-mail |
+| **Déclencheur** | L''événement qui lance le scénario | Une nouvelle réponse au formulaire |
+| **Action** | Ce que fait une étape | Ajouter une ligne, envoyer un e-mail |
+| **Filtre** | Une condition pour continuer ou s''arrêter | Seulement si l''e-mail n''est pas vide |
+| **Routeur** (« Paths » chez Zapier) | Plusieurs chemins selon les cas | Débutant → e-mail A ; avancé → e-mail B |
+| **Correspondance** (*mapping*) | Indiquer quelle donnée va dans quel champ | Le « Prénom » du formulaire va dans la colonne B |
+| **Exécution** | Un passage complet du scénario | Une inscription traitée |
+
+```schema etapes
+titre: Un scénario simple, de gauche à droite
+Déclencheur : une nouvelle réponse arrive dans Google Forms
+Action : ajouter une ligne dans Google Sheets
+Filtre : continuer seulement si l''adresse e-mail est remplie
+Action : envoyer l''e-mail de bienvenue avec le prénom de la personne
+Action : prévenir le formateur
+```
+
+## La correspondance : faire voyager les données
+
+Chaque étape **produit des données** que les étapes suivantes peuvent utiliser. La réponse au formulaire produit un prénom, un e-mail, une formation choisie. Dans l''étape « envoyer l''e-mail », vous indiquez : « Dans le champ Destinataire, mets l''e-mail du formulaire ; dans le texte, mets le prénom. »
+
+> [!exemple] Un e-mail personnalisé
+> Le texte du modèle est : « Bonjour {{Prénom}}, merci pour votre inscription à la formation {{Formation}}. » Pour la réponse de Fara, inscrite en bureautique, l''e-mail envoyé devient : « Bonjour Fara, merci pour votre inscription à la formation Bureautique. » Les accolades indiquent une donnée qui vient d''une étape précédente.
+
+Dans Make et Zapier, vous ne tapez pas ces données à la main : vous les **choisissez dans une liste**, qui affiche les champs produits par les étapes précédentes. C''est pour cela qu''il faut toujours **tester l''étape précédente** avec une vraie donnée avant de configurer la suivante : sinon, la liste est vide.
+
+## Déclencheur instantané ou planifié ?
+
+```schema comparaison
+titre: Deux façons de lancer un scénario
+colonnes: Déclencheur instantané | Déclencheur planifié
+Le scénario part dès que l''événement arrive | Le scénario vérifie à intervalles réguliers s''il y a du nouveau
+Ex. : une commande envoyée par un site, par webhook | Ex. : regarder toutes les 15 minutes s''il y a de nouvelles lignes
+Très rapide | Un délai entre l''événement et le traitement
+Pas toujours disponible pour chaque application | Disponible presque partout ; l''intervalle dépend de l''offre
+```
+
+Pour la plupart des besoins d''une petite entreprise, un délai de quelques minutes ne pose aucun problème : une confirmation d''inscription reçue 10 minutes plus tard reste rapide. Pour une alerte urgente, on cherche un déclencheur instantané.
+
+## Le webhook
+
+> [!definition] Webhook
+> Une adresse web, fournie par la plateforme d''automatisation, à laquelle un autre outil **envoie directement des données** dès qu''un événement se produit. C''est comme une boîte aux lettres : le site de la boutique y dépose chaque nouvelle commande, et le scénario démarre aussitôt.
+
+Les webhooks permettent de relier des outils qui n''ont pas de module tout prêt dans Make ou Zapier : un site web, un logiciel de caisse, un formulaire maison. Vous les utiliserez au module 3.
+
+## Les opérations : ce que l''on paie
+
+Les plateformes comptent ce que fait chaque scénario. Make parle d''**opérations** (ou de crédits selon les offres), Zapier de **tâches**. Les offres gratuites en donnent un nombre limité chaque mois ; les offres payantes davantage. Un scénario mal conçu, qui tourne pour rien toutes les minutes, peut consommer tout le quota d''un mois en quelques jours.
+
+```schema chiffres
+titre: Un exemple de consommation (ordre de grandeur)
+5 étapes : par scénario d''inscription
+200 : inscriptions dans le mois
+1 000 : opérations environ, pour ce seul scénario
+```
+
+Les règles exactes de calcul et les quotas changent : vérifiez-les sur les sites officiels. Retenez surtout le réflexe : **chaque étape a un coût**, et un bon scénario n''a pas d''étape inutile.
+
+> [!madagascar] Les scénarios tournent sans vous
+> Une fois activé, un scénario tourne sur les serveurs de Make ou de Zapier, pas sur votre ordinateur. Une coupure d''électricité ou de connexion chez vous ne l''arrête pas : les inscriptions continuent d''être traitées. C''est un grand avantage pour travailler depuis Madagascar. En revanche, si le scénario rencontre une erreur, c''est vous ou le client qui recevrez l''alerte : prévoyez qui la surveille.
+
+> [!erreur] Configurer sans données de test
+> Le débutant ajoute une étape « envoyer un e-mail » avant d''avoir testé le formulaire. La liste des champs est vide ; il tape « Prénom » à la main dans le texte. Résultat : chaque e-mail commence par « Bonjour Prénom ». **Testez toujours l''étape précédente avec une vraie donnée**, puis choisissez les champs dans la liste.
+
+> [!retenir]
+> - **Scénario, déclencheur, action, filtre, routeur, correspondance, exécution.**
+> - La **correspondance** fait voyager les données d''une étape à l''autre.
+> - Déclencheur **instantané** (rapide) ou **planifié** (à intervalles réguliers).
+> - Le **webhook** reçoit les données envoyées par un autre outil.
+> - **Chaque étape a un coût** en opérations ou en tâches.
+
+## Exercice pratique : des scénarios sur papier
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Décrivez sur papier 3 scénarios pour l''organisation choisie à la leçon 1.1 : déclencheur, filtre éventuel, actions.
+> 2. Pour chaque action, indiquez les données utilisées et l''étape d''où elles viennent.
+> 3. Pour chaque scénario, dites si un déclencheur planifié suffit ou s''il faut un déclencheur instantané.
+> 4. Estimez le nombre d''exécutions par mois et le nombre d''opérations de chaque scénario.
+>
+> **À livrer** : vos 3 scénarios dessinés, avec les données et vos estimations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 1, 0, 'Qu''est-ce qu''un déclencheur ?', '["L''événement qui lance le scénario","La dernière étape du scénario","Un message d''erreur","Le prix de l''abonnement"]'::jsonb, 0, 'Une nouvelle réponse au formulaire, un nouvel e-mail, une nouvelle commande : le déclencheur démarre l''exécution.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 1, 1, 'À quoi sert un routeur ?', '["Payer l''abonnement","Créer plusieurs chemins selon les cas","Envoyer un e-mail","Arrêter le scénario"]'::jsonb, 1, 'Par exemple : un débutant reçoit l''e-mail A, un niveau avancé l''e-mail B.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 1, 2, 'Qu''est-ce que la correspondance (mapping) ?', '["Un type de webhook","Une facture","La liste des clients","Indiquer quelle donnée d''une étape va dans quel champ d''une autre étape"]'::jsonb, 3, 'C''est ce qui fait voyager le prénom du formulaire jusque dans le texte de l''e-mail.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 1, 3, 'Qu''est-ce qu''un webhook ?', '["Une adresse qui reçoit directement des données envoyées par un autre outil","Un tableau Google Sheets","Un assistant d''IA","Un mot de passe"]'::jsonb, 0, 'Le site dépose chaque commande à cette adresse, et le scénario démarre aussitôt.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 1, 4, 'Pourquoi tester l''étape précédente avant de configurer la suivante ?', '["Parce que la plateforme l''impose toujours","Pour consommer des opérations","Ce n''est pas nécessaire","Pour que la liste des champs disponibles soit remplie avec de vraies données"]'::jsonb, 3, 'Sans données de test, on tape les noms de champs à la main et l''e-mail affiche « Bonjour Prénom ».');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 0, 2, 'Quelles tâches automatiser ?', 9, 'Tout ne mérite pas d''être automatisé. Une tâche faite deux fois par an ne vaut pas le temps de construire un scénario ; une tâche qui demande du jugement ne doit pas être confiée à une machine. Le bon spécialiste sait **choisir** : les tâches répétitives, claires et coûteuses en erreurs, qui feront gagner le plus de temps pour le moins d''effort. Cette leçon vous donne la méthode et le calcul pour convaincre un client.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Évaluer une tâche avec les 4 critères de l''automatisation.
+> 2. Mesurer le temps perdu sur une tâche répétitive.
+> 3. Calculer le temps gagné par mois et par an.
+> 4. Classer les automatisations par impact et par effort.
+> 5. Reconnaître les tâches qui doivent rester humaines.
+
+## Les 4 critères
+
+| Critère | Question à poser | Exemple favorable |
+| --- | --- | --- |
+| **Répétition** | La tâche revient-elle souvent ? | Chaque inscription, chaque commande, chaque jour |
+| **Règles claires** | Peut-on la décrire par des règles simples ? | « Si le paiement est reçu, envoyer la confirmation » |
+| **Outils numériques** | Les données sont-elles déjà dans des outils en ligne ? | Formulaire, e-mail, tableau partagé |
+| **Coût des erreurs** | Un oubli ou une faute pose-t-il problème ? | Une commande oubliée, un rappel non envoyé |
+
+Une tâche qui remplit les 4 critères est une excellente candidate. Une tâche qui n''en remplit qu''un ou deux peut attendre, ou demande d''abord d''améliorer l''organisation (par exemple, passer d''un cahier à un formulaire).
+
+## Mesurer le temps perdu
+
+Une bonne automatisation commence par une **mesure**. Pendant une ou deux semaines, la personne qui fait la tâche note combien de fois elle la fait et combien de temps elle y passe.
+
+```schema etapes
+titre: Calculer le temps gagné
+Fréquence : combien de fois par mois (par exemple 150 demandes)
+Durée : combien de minutes à chaque fois (par exemple 3 minutes)
+Temps perdu : fréquence × durée (150 × 3 = 450 minutes, soit 7 h 30 par mois)
+Temps restant : ce qui reste à faire après l''automatisation (par exemple 1 h de vérification)
+Temps gagné : 7 h 30 − 1 h = 6 h 30 par mois, soit 78 heures par an
+```
+
+> [!cle] Le chiffre qui convainc
+> Un dirigeant comprend tout de suite « 78 heures par an », surtout quand on le traduit en jours de travail (environ 10 jours) ou en argent (le coût de ces heures pour l''entreprise). C''est ce chiffre, plus que la technique, qui le décidera à vous confier le projet. Vous apprendrez à le transformer en prix au module 6.
+
+## Impact et effort
+
+Quand un client a beaucoup de tâches possibles, classez-les selon deux questions : **combien de temps cela fera-t-il gagner** (impact), et **combien de travail pour le construire** (effort).
+
+```schema comparaison
+titre: Par où commencer ?
+colonnes: Fort impact, faible effort | Fort impact, fort effort | Faible impact
+À faire en premier : résultats rapides | À planifier ensuite, par étapes | À laisser de côté pour l''instant
+Ex. : formulaire → tableau → e-mail de confirmation | Ex. : traitement automatique des factures avec IA | Ex. : un rapport demandé deux fois par an
+```
+
+Commencez toujours par une automatisation **à fort impact et faible effort**. Le client voit vite un résultat, il vous fait confiance, et vous comprenez mieux son organisation avant d''attaquer les projets plus lourds.
+
+> [!exemple] Les tâches de la quincaillerie de Toamasina
+> Rado rencontre le gérant d''une quincaillerie de Toamasina. Ensemble, ils listent 8 tâches. La plus rentable n''est pas la plus impressionnante : c''est l''envoi des devis, recopiés à la main depuis un tableau (40 devis par mois, 10 minutes chacun). Un modèle de devis rempli automatiquement depuis le tableau fait gagner plus de 5 heures par mois, pour une demi-journée de construction. Le projet « intelligence artificielle pour analyser les ventes », que le gérant voulait au départ, attendra.
+
+## Ce qui doit rester humain
+
+```schema checklist
+titre: Ne pas automatiser sans humain…
+[ ] Les décisions sur l''argent : remboursement, remise, crédit
+[ ] Les décisions sur les personnes : recrutement, sanction, santé
+[ ] Les réponses à une réclamation ou à un client en colère
+[ ] Les messages juridiques ou officiels
+[ ] Les cas rares que l''on ne sait pas décrire par des règles
+[ ] Toute action impossible à annuler (suppression, paiement)
+```
+
+Dans ces cas, l''automatisation peut **préparer** le travail (rassembler les informations, proposer un brouillon) mais un humain **décide et valide**. On parle d''**humain dans la boucle**.
+
+> [!madagascar] Les tâches encore sur papier
+> Beaucoup de petites organisations malgaches travaillent encore avec des cahiers, des carnets de reçus et des messages WhatsApp. Avant d''automatiser, il faut souvent **numériser** : remplacer le cahier par un formulaire simple, le carnet par un tableau partagé. Cette première étape, que vous pouvez aussi proposer, fait souvent gagner du temps à elle seule, et rend l''automatisation possible ensuite.
+
+> [!erreur] Automatiser une tâche rare
+> Un client demande d''automatiser son rapport annuel aux bailleurs. Le débutant y passe trois jours, avec des dizaines d''étapes. Le rapport est produit une fois par an, et son format change chaque année : le scénario ne resservira jamais. **Calculez toujours le temps gagné** avant de construire : une tâche rare se fait mieux à la main, avec un bon modèle de document.
+
+> [!retenir]
+> - Les **4 critères** : répétition, règles claires, outils numériques, coût des erreurs.
+> - **Mesurer** fréquence et durée avant de proposer.
+> - **Temps gagné** = temps perdu − temps restant, par mois et par an.
+> - Commencer par **fort impact, faible effort**.
+> - Les décisions importantes restent **humaines** : l''automatisation prépare, l''humain décide.
+
+## Exercice pratique : la carte des tâches
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Pour l''organisation choisie à la leçon 1.1, listez 10 tâches répétitives.
+> 2. Pour chacune, notez la fréquence par mois, la durée et les outils utilisés.
+> 3. Évaluez chaque tâche avec les 4 critères (oui ou non pour chacun).
+> 4. Calculez le temps perdu par mois et le temps gagné possible pour les 5 meilleures.
+> 5. Classez-les par impact et effort, et choisissez les 2 à faire en premier.
+>
+> **À livrer** : votre tableau des 10 tâches, vos calculs et votre choix justifié.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 2, 0, 'Quels sont les 4 critères d''une tâche à automatiser ?', '["Urgence, émotion, politique, chance","Rareté, complexité, papier, jugement","Répétition, règles claires, outils numériques, coût des erreurs","Beauté, rapidité, prix, mode"]'::jsonb, 2, 'Une tâche fréquente, décrite par des règles, déjà numérique et coûteuse en erreurs est une excellente candidate.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 2, 1, '150 demandes par mois prennent 3 minutes chacune. Combien de temps cela représente-t-il ?', '["4 h 50 par mois","1 h 30 par mois","7 h 30 par mois","45 heures par mois"]'::jsonb, 2, '150 × 3 = 450 minutes, soit 7 heures 30.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 2, 2, 'Par quelle automatisation commencer ?', '["Celle qui fait gagner le moins de temps","Celle qui a un fort impact pour un faible effort","La plus impressionnante techniquement","Celle que l''on fait deux fois par an"]'::jsonb, 1, 'Un résultat rapide crée la confiance et permet de mieux comprendre l''organisation avant les gros projets.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 2, 3, 'Quelle décision doit rester humaine ?', '["Classer un formulaire","Accorder un remboursement à un client","Envoyer une confirmation d''inscription","Ajouter une ligne dans un tableau"]'::jsonb, 1, 'Les décisions sur l''argent, les personnes et les réclamations sont validées par un humain.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 2, 4, 'Une organisation note tout dans des cahiers. Que proposer d''abord ?', '["Rien, c''est impossible","Un scénario de 30 étapes","Une IA qui lit les cahiers","Numériser : un formulaire et un tableau partagé"]'::jsonb, 3, 'Les données doivent être dans des outils en ligne avant de pouvoir être automatisées.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 0, 3, 'Ce que l''IA peut et ne peut pas faire', 10, 'L''intelligence artificielle a changé le métier de l''automatisation. Avant, un scénario ne savait traiter que des données bien rangées : un champ, une case cochée, un montant. Aujourd''hui, une étape d''IA peut lire un e-mail écrit librement, en comprendre le sujet, en extraire une date ou un montant, et préparer une réponse. Mais l''IA se trompe aussi, parfois avec assurance. Cette leçon vous apprend ce qu''elle fait bien, ce qu''elle fait mal, et comment l''utiliser sans danger.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Comprendre en termes simples comment fonctionne un assistant d''IA.
+> 2. Citer les 5 usages de l''IA les plus utiles en automatisation.
+> 3. Connaître ses limites : erreurs, inventions, réponses variables.
+> 4. Placer l''humain au bon endroit dans un scénario avec IA.
+> 5. Protéger les données envoyées à un service d''IA.
+
+## Comment fonctionne un assistant d''IA
+
+Les assistants comme ChatGPT, Claude ou Gemini reposent sur des **modèles de langage**. Ils ont appris, à partir d''une énorme quantité de textes, à produire la suite la plus probable d''un texte. C''est ce qui leur permet d''écrire, de résumer, de traduire ou de classer.
+
+> [!definition] Consigne (ou prompt)
+> Le texte qui dit à l''assistant d''IA ce qu''il doit faire. Dans une automatisation, la même consigne est utilisée des centaines de fois, avec des données différentes à chaque exécution. Elle doit donc être précise, stable et produire un résultat facile à vérifier (vous apprendrez à l''écrire au module 2).
+
+Deux conséquences importantes :
+
+1. L''IA ne « sait » pas si ce qu''elle écrit est vrai : elle produit un texte **plausible**. Elle peut donc inventer un prix, une date ou une règle, avec beaucoup d''assurance.
+2. Ses réponses peuvent **varier** d''une exécution à l''autre pour la même demande. Il faut des consignes précises et des vérifications.
+
+## Les 5 usages utiles en automatisation
+
+| Usage | Exemple | Ce qu''on vérifie |
+| --- | --- | --- |
+| **Classer** | Classer chaque message reçu : commande, question, réclamation, autre | La catégorie fait bien partie de la liste prévue |
+| **Extraire** | Trouver le nom, la date et le montant dans un e-mail de commande | Les champs sont remplis et au bon format |
+| **Résumer** | Résumer un long e-mail ou un compte rendu en 3 lignes | Rien d''important n''est perdu ou inventé |
+| **Rédiger un brouillon** | Proposer une réponse à partir d''une fiche d''informations officielle | Un humain relit avant l''envoi |
+| **Traduire** | Traduire un message reçu en anglais | Les noms et les chiffres sont intacts |
+
+```schema entonnoir
+titre: Du plus sûr au plus délicat
+Classer dans une liste fermée : le plus facile à vérifier
+Extraire des champs précis : vérifiable par le format
+Résumer : demande une relecture de temps en temps
+Rédiger un brouillon : toujours relu par un humain
+```
+
+Plus la sortie de l''IA est **fermée** (une catégorie parmi quatre, un champ au format date), plus il est facile de la vérifier automatiquement. Plus elle est **ouverte** (un texte libre envoyé à un client), plus un humain doit la relire.
+
+## Les limites de l''IA
+
+```schema checklist
+titre: Ce qu''il faut toujours garder en tête
+[ ] L''IA peut inventer une information absente des données
+[ ] Elle peut mal comprendre un message ambigu, une ironie, un mélange de langues
+[ ] Ses réponses peuvent varier pour une même demande
+[ ] Elle peut produire un format inattendu qui casse l''étape suivante
+[ ] Elle coûte de l''argent à chaque utilisation, selon la quantité de texte
+[ ] Elle ne doit pas décider seule sur l''argent, la santé, le droit ou les personnes
+```
+
+> [!definition] Humain dans la boucle
+> Une organisation du scénario où l''IA **prépare** (classe, extrait, propose un brouillon) et où un humain **valide** avant toute action importante : envoi à un client, paiement, décision. C''est la règle par défaut dans les automatisations que vous construirez.
+
+> [!exemple] Le brouillon qui attend
+> Pour une école de langues d''Antsirabe, Rado construit un scénario : chaque e-mail de parent est classé par l''IA ; pour les questions sur les horaires et les tarifs, l''IA prépare une réponse **à partir de la fiche officielle de l''école**, et l''enregistre comme **brouillon** dans Gmail. La secrétaire relit, corrige si besoin, et clique sur Envoyer. Elle gagne du temps sur chaque réponse, et aucune information fausse ne part.
+
+## Les données envoyées à l''IA
+
+Quand un scénario envoie un texte à un service d''IA, ce texte quitte les outils du client et part chez une autre entreprise. Les conditions d''utilisation des données dépendent du service et de l''offre utilisée.
+
+1. **Demandez l''accord du client** avant d''envoyer ses données à un service d''IA.
+2. **N''envoyez que le nécessaire** : pour classer un message, le texte du message suffit, pas tout le fichier client.
+3. **Jamais de données sensibles** sans accord précis et protection adaptée : santé, mots de passe, données bancaires complètes.
+4. **Lisez les conditions** du service choisi pour l''usage professionnel, et notez-les dans la documentation.
+
+> [!madagascar] Les messages en malgache
+> Les assistants d''IA comprennent souvent bien le français et l''anglais, mais leurs résultats en malgache, ou dans un mélange de français et de malgache, peuvent être moins fiables. Si les clients de votre client écrivent en malgache, **testez l''étape d''IA sur de vrais exemples** dans cette langue avant de l''utiliser, et prévoyez un chemin « à traiter à la main » quand l''IA n''est pas sûre.
+
+> [!erreur] Laisser l''IA répondre seule aux clients
+> Pour aller vite, un débutant configure un scénario qui envoie directement aux clients la réponse rédigée par l''IA. Un jour, l''IA annonce un tarif inventé, moins cher que le vrai, à une vingtaine de clients. L''entreprise doit choisir entre perdre de l''argent et se contredire. **Les messages rédigés par l''IA restent des brouillons relus**, tant que le client n''a pas validé autre chose, après de longs tests.
+
+> [!retenir]
+> - L''IA produit un texte **plausible**, pas forcément vrai, et parfois **variable**.
+> - 5 usages : **classer, extraire, résumer, rédiger un brouillon, traduire**.
+> - Plus la sortie est **fermée**, plus elle se vérifie facilement.
+> - **Humain dans la boucle** : l''IA prépare, l''humain valide.
+> - Les données envoyées à l''IA : **accord du client, le strict nécessaire, rien de sensible**.
+
+## Exercice pratique : tester l''IA
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Écrivez 10 messages fictifs qu''une boutique pourrait recevoir (commandes, questions, réclamations, messages ambigus), dont 2 en malgache ou en mélange.
+> 2. Dans un assistant d''IA gratuit, demandez de classer chaque message dans : commande, question, réclamation, autre.
+> 3. Recommencez une deuxième fois avec les mêmes messages et notez les différences.
+> 4. Comptez les erreurs et décrivez les cas où l''IA hésite.
+> 5. Pour chaque usage du tableau, écrivez où vous placeriez l''humain dans le scénario.
+>
+> **À livrer** : vos 10 messages, les deux séries de résultats, vos observations et vos réponses.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 3, 0, 'Pourquoi l''IA peut-elle inventer une information ?', '["Parce qu''elle ment volontairement","Parce qu''elle est mal installée","Elle produit un texte plausible, sans savoir s''il est vrai","Elle ne peut jamais inventer"]'::jsonb, 2, 'Les modèles de langage produisent la suite la plus probable d''un texte, qui peut être fausse.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 3, 1, 'Quel usage de l''IA est le plus facile à vérifier automatiquement ?', '["Inventer un slogan","Classer un message dans une liste fermée de catégories","Écrire un article","Rédiger une longue réponse libre"]'::jsonb, 1, 'On vérifie simplement que la catégorie fait partie de la liste prévue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 3, 2, 'Que signifie « humain dans la boucle » ?', '["Un humain surveille l''écran en permanence","L''IA décide seule","Un humain fait tout à la main","L''IA prépare, un humain valide avant toute action importante"]'::jsonb, 3, 'C''est la règle par défaut : l''IA fait gagner du temps, l''humain garde la décision.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 3, 3, 'Que faire d''une réponse aux clients rédigée par l''IA ?', '["L''enregistrer comme brouillon, relu par une personne avant l''envoi","L''envoyer directement à tous les clients","La supprimer","La publier sur Facebook"]'::jsonb, 0, 'Un tarif inventé envoyé automatiquement peut coûter cher. La relecture protège le client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 3, 4, 'Quelles données envoyer à un service d''IA ?', '["Les données bancaires complètes","Les mots de passe pour gagner du temps","Seulement le nécessaire, avec l''accord du client, sans données sensibles","Tout le fichier client"]'::jsonb, 2, 'Le texte quitte les outils du client : on limite au strict nécessaire et on respecte son accord.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 0, 4, 'Vos clients et les règles de confiance', 11, 'Qui a besoin d''un spécialiste automatisation et IA ? Presque toutes les organisations qui reçoivent des demandes, des commandes ou des inscriptions en nombre. Mais un client vous confie aussi ses outils, ses données et parfois les messages envoyés à ses propres clients : il faut des règles claires. Cette leçon vous présente vos clients possibles, les règles de confiance du métier, et votre organisation depuis Madagascar. Elle se termine par le projet du module 1.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Citer les principaux types de clients, à Madagascar et à l''étranger.
+> 2. Appliquer la règle « tout au nom du client ».
+> 3. Protéger les accès, les clés et les données.
+> 4. Organiser la surveillance des scénarios depuis Madagascar.
+> 5. Connaître les démarches pour travailler en règle.
+
+## Vos clients
+
+| Type de client | Besoins fréquents | Exemple d''automatisation |
+| --- | --- | --- |
+| **PME et commerces** | Commandes, devis, relances | Commande du formulaire → tableau → confirmation → alerte de livraison |
+| **Centres de formation et écoles** | Inscriptions, rappels, attestations | Inscription → e-mail de bienvenue → rappels de cours |
+| **ONG et associations** | Collecte de données, rapports, bénéficiaires | Formulaire de terrain → tableau → rapport hebdomadaire |
+| **Agences de marketing** (souvent à l''étranger) | Prospects, rapports clients | Nouveau prospect → fiche dans l''outil commercial → e-mail de suivi |
+| **Boutiques en ligne** | Commandes, stocks, service client | Commande → tableau de préparation → message de suivi |
+| **Indépendants étrangers** (coachs, consultants) | Rendez-vous, factures, e-mails | Réservation → rappel → facture après la séance |
+
+```schema chiffres
+titre: Où trouver les premiers clients
+Votre entourage : commerces, écoles, associations qui croulent sous les tâches répétitives
+Les entreprises locales : PME, centres de formation, ONG
+Les agences et indépendants à l''étranger : plateformes de freelance, LinkedIn
+Les communautés : forums et groupes d''utilisateurs de Make et de Zapier
+```
+
+Vous apprendrez à trouver et convaincre ces clients au module 6.
+
+## La règle d''or : tout au nom du client
+
+```schema comparaison
+titre: À qui appartiennent les automatisations ?
+ton: mauvais-bon
+colonnes: Tout à votre nom | Tout au nom du client
+Les scénarios sont dans votre compte Make | Le client crée le compte, vous y êtes invité
+Vous payez les abonnements et les refacturez | Le client paie directement ses abonnements
+Le client dépend de vous pour tout | Le client garde ses scénarios s''il change de prestataire
+Si votre compte est bloqué, tout s''arrête chez lui | Ses automatisations restent indépendantes de vous
+```
+
+Le client **crée les comptes à son nom** (Make, Zapier, service d''IA), les paie, et vous invite comme membre de son équipe ou vous donne un accès. Vous construisez dans **son** espace. C''est plus honnête, plus sûr pour lui, et plus simple pour vous : vous ne portez pas le risque des factures.
+
+## Les accès, les clés et les données
+
+> [!definition] Clé d''API
+> Un code secret qui permet à une plateforme comme Make ou Zapier d''utiliser un service (par exemple un service d''IA) au nom du compte qui paie. Quiconque possède la clé peut utiliser le service… et faire payer le client. Elle se garde comme un mot de passe.
+
+```schema checklist
+titre: Les règles de sécurité
+[ ] Les connexions aux outils du client se font avec ses comptes, dans la plateforme
+[ ] Les clés d''API restent dans les connexions sécurisées, jamais dans un e-mail ou un document
+[ ] Double authentification activée sur vos comptes et ceux que vous gérez
+[ ] Un gestionnaire de mots de passe, jamais un fichier ou un message
+[ ] Les données des clients servent uniquement à la mission
+[ ] Les accès sont retirés à la fin de la mission, sauf contrat de maintenance
+```
+
+Les lois sur les données personnelles s''appliquent aussi aux automatisations : la loi malgache (loi n° 2014-038) pour les données traitées à Madagascar, et le RGPD pour les personnes en Europe. Retenez la règle simple : **un scénario ne déplace que les données nécessaires**, vers des outils que le client a acceptés.
+
+## Votre organisation depuis Madagascar
+
+Les scénarios tournent sur les serveurs des plateformes, pas sur votre ordinateur : une coupure chez vous ne les arrête pas. Mais quand un scénario rencontre une erreur, quelqu''un doit le voir.
+
+```schema etapes
+titre: Organiser la surveillance
+Activer les alertes d''erreur de la plateforme, envoyées à vous et au client
+Décider par écrit qui surveille quoi, et dans quel délai
+Consulter l''historique des exécutions chaque jour pendant la première semaine
+Prévoir une procédure manuelle si un scénario s''arrête (« traiter à la main depuis le formulaire »)
+Vérifier chaque mois la consommation d''opérations et les coûts d''IA
+```
+
+> [!madagascar] Travailler en règle
+> Pour facturer officiellement à Madagascar, un indépendant demande en général un **NIF** (au centre fiscal de votre ville) et une **carte statistique** (STAT, auprès de l''INSTAT). Les démarches et les montants changent avec les lois de finances : renseignez-vous au centre fiscal ou auprès d''un comptable. Les abonnements des plateformes se paient souvent par carte bancaire internationale, en euros ou en dollars : une raison de plus pour que ce soit le client qui les paie.
+
+> [!exemple] Le compte de l''ONG
+> Une ONG de Fianarantsoa demande à Rado d''automatiser ses fiches de terrain. Rado lui explique comment créer elle-même un compte Make au nom de l''ONG, avec l''adresse e-mail générique de la structure, puis de l''inviter comme membre. Deux ans plus tard, quand l''ONG change de responsable informatique, toutes les automatisations sont toujours là, dans son propre compte, avec leur documentation.
+
+> [!erreur] La clé d''API dans un document partagé
+> Pour « faciliter la passation », un débutant colle la clé d''API du service d''IA du client dans un document Google partagé. Le document est transmis, puis copié. Un mois plus tard, la facture d''IA du client est multipliée par dix : quelqu''un utilise la clé. **Une clé d''API ne se copie jamais dans un document, un e-mail ou un message** : elle reste dans la connexion sécurisée de la plateforme.
+
+> [!retenir]
+> - Clients : **PME, écoles, ONG, agences, boutiques en ligne, indépendants**.
+> - **Tout au nom du client** : comptes, abonnements, scénarios.
+> - Les **clés d''API** sont des secrets ; les données servent **uniquement à la mission**.
+> - Les scénarios tournent sans vous, mais **quelqu''un surveille les alertes**.
+> - **NIF et STAT** pour facturer officiellement : renseignez-vous au centre fiscal.
+
+## Exercice pratique : vos règles de travail
+
+> [!exercice] Exercice pratique · 40 minutes
+> 1. Activez la double authentification sur votre adresse e-mail et installez un gestionnaire de mots de passe.
+> 2. Rédigez le message qui explique à un client pourquoi et comment créer lui-même ses comptes, puis vous inviter.
+> 3. Rédigez votre charte de sécurité en 6 points, à joindre à vos devis.
+>
+> **À livrer** : une capture de la double authentification activée (sans information personnelle), votre message et votre charte.
+
+## Projet du module 1 : la carte des automatisations
+
+> [!projet] Projet du module · 2 heures
+> Pour l''organisation choisie à la leçon 1.1, préparez une carte des automatisations de 2 à 3 pages, comme un premier diagnostic.
+> 1. **L''organisation** : son activité, ses outils actuels, les personnes concernées.
+> 2. **Les tâches** : votre tableau des 10 tâches avec fréquence, durée et les 4 critères (leçon 1.3).
+> 3. **Les 3 meilleures automatisations** : décrites avec déclencheur, filtres, actions et données (leçon 1.2).
+> 4. **Le rôle de l''IA** : où elle serait utile, et où l''humain valide (leçon 1.4).
+> 5. **Le temps gagné** estimé par mois et par an.
+> 6. **Les règles** : comptes au nom du client, données concernées, surveillance (leçon 1.5).
+>
+> **À livrer** : votre carte des automatisations en PDF.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 4, 0, 'Au nom de qui créer les comptes Make, Zapier et d''IA d''un client ?', '["À votre nom, pour garder le contrôle","Au nom du client, qui vous invite","Au nom de Vitako","Au nom d''un ami"]'::jsonb, 1, 'Le client garde ses scénarios s''il change de prestataire, et paie directement ses abonnements.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 4, 1, 'Où garder une clé d''API ?', '["Dans un document partagé","Dans la connexion sécurisée de la plateforme","Dans un e-mail","Sur WhatsApp"]'::jsonb, 1, 'Quiconque possède la clé peut utiliser le service et faire payer le client.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 4, 2, 'Une coupure d''électricité chez vous arrête-t-elle les scénarios ?', '["Oui, si l''ordinateur est éteint","Oui, toujours","Seulement la nuit","Non : ils tournent sur les serveurs de la plateforme"]'::jsonb, 3, 'C''est un avantage pour travailler depuis Madagascar. Il faut seulement organiser la surveillance des alertes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 4, 3, 'Que faut-il décider par écrit avec le client ?', '["Le nom des modules","La couleur des scénarios","Rien","Qui surveille les alertes d''erreur, et dans quel délai"]'::jsonb, 3, 'Quand un scénario rencontre une erreur, quelqu''un doit réagir. Sans règle écrite, personne ne le fait.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 0, 4, 4, 'Quels numéros un indépendant demande-t-il en général pour facturer à Madagascar ?', '["Un numéro Mobile Money","Le NIF et la carte statistique (STAT)","Un numéro de passeport","Aucun"]'::jsonb, 1, 'Renseignez-vous au centre fiscal de votre ville pour votre situation précise.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 1, 'Les bases : processus, données et consignes d''IA', 'Cartographier un processus, construire des formulaires et des tableaux propres, lire le JSON, écrire et tester des consignes d''IA, prévoir les erreurs et rédiger le dossier de conception.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 1, 0, 'Cartographier un processus', 10, 'Avant d''ouvrir Make ou Zapier, un bon spécialiste prend une feuille et **dessine le processus** : qui fait quoi, avec quel outil, dans quel ordre, et ce qui se passe quand quelque chose ne va pas. Ce dessin révèle les étapes à automatiser, celles qui doivent rester humaines, et les cas particuliers qui feraient casser un scénario construit trop vite. Cette leçon vous apprend à cartographier un processus.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Expliquer ce qu''est une cartographie de processus.
+> 2. Recueillir les étapes réelles auprès des personnes qui font le travail.
+> 3. Dessiner un processus étape par étape.
+> 4. Repérer les étapes répétitives, les décisions humaines et les cas particuliers.
+> 5. Choisir la partie du processus à automatiser en premier.
+
+## La cartographie de processus
+
+> [!definition] Cartographie de processus
+> Un schéma qui décrit étape par étape comment une tâche se fait **aujourd''hui** : qui fait quoi, avec quel outil, dans quel ordre, et ce qui se passe en cas de problème. On dessine d''abord la réalité, pas la façon dont le travail « devrait » se faire.
+
+## Recueillir les étapes réelles
+
+Le dirigeant connaît rarement le détail du travail : c''est la personne qui fait la tâche chaque jour qui le connaît. Demandez-lui de vous **montrer** la tâche, en partage d''écran ou sur place, avec un vrai exemple.
+
+```schema chiffres
+titre: Les 6 questions de l''entretien
+Le départ : qu''est-ce qui déclenche la tâche ? (un e-mail, un appel, une heure fixe)
+Les étapes : que faites-vous ensuite, dans l''ordre exact ?
+Les outils : où lisez-vous, où écrivez-vous les informations ?
+Les décisions : à quel moment devez-vous réfléchir ou demander à quelqu''un ?
+Les exceptions : que se passe-t-il quand ce n''est pas le cas habituel ?
+Le temps : combien de fois par semaine, et combien de minutes à chaque fois ?
+```
+
+## Dessiner le processus : la commande de gâteau
+
+```schema etapes
+titre: Une commande de gâteau sur mesure, aujourd''hui
+Le client remplit le formulaire du site : nom, téléphone, date, type de gâteau, message
+La gérante lit l''e-mail de notification
+Elle vérifie la disponibilité dans son agenda
+Elle recopie la commande dans un tableau
+Elle envoie un devis par e-mail ou WhatsApp
+Le client paie un acompte par Mobile Money
+Elle vérifie le paiement et confirme la commande
+```
+
+Puis analysez chaque étape avec trois couleurs :
+
+| Étape | Type | Pourquoi |
+| --- | --- | --- |
+| 2. Lire l''e-mail de notification | **Répétitive** | Aucune décision, toujours la même chose |
+| 3. Vérifier la disponibilité | **Décision humaine** | La gérante connaît sa charge de travail |
+| 4. Recopier dans le tableau | **Répétitive** | Copier des champs d''un outil à un autre |
+| 5. Envoyer le devis | **En partie répétitive** | Le texte est un modèle ; le prix peut demander une décision |
+| 7. Vérifier le paiement | **Décision humaine** | Vérification sur le compte Mobile Money de la gérante |
+
+## Les cas particuliers
+
+Un processus n''est jamais aussi simple qu''il en a l''air. Les cas particuliers sont ce qui fait casser les automatisations construites trop vite.
+
+```schema checklist
+titre: Les cas particuliers de la commande de gâteau
+[ ] La date demandée est trop proche (moins de 48 heures)
+[ ] Le gâteau demandé n''est pas réalisable
+[ ] Le client envoie le formulaire deux fois
+[ ] Le client annule ou change la date
+[ ] Le numéro de téléphone est mal écrit
+[ ] Le client commande par Messenger au lieu du formulaire
+```
+
+Pour chaque cas, décidez avec le client : le scénario le gère seul (par une règle), ou il envoie le cas à un humain (« à traiter à la main ») ?
+
+## Choisir ce qu''on automatise en premier
+
+```schema comparaison
+titre: Le processus après la première automatisation
+colonnes: Automatique | Humain
+Chaque formulaire arrive dans le tableau, avec un numéro et le statut « Nouveau » | Vérifier la disponibilité et fixer le prix
+Un e-mail accuse réception au client | Vérifier l''acompte sur Mobile Money
+Une alerte prévient la gérante des commandes à moins de 48 heures | Confirmer la commande d''un clic (statut « Confirmé »)
+Le statut « Confirmé » envoie la confirmation au client et la date dans l''agenda | Gérer les annulations et les cas rares
+```
+
+> [!astuce] Automatiser une partie, pas tout
+> Automatisez d''abord **une partie** du processus, la plus simple et la plus répétitive. Un petit scénario fiable vaut mieux qu''un grand scénario fragile. Quand il fonctionne depuis quelques semaines, ajoutez l''étape suivante.
+
+> [!madagascar] Les processus qui passent par WhatsApp
+> À Madagascar, beaucoup de processus passent par WhatsApp ou Messenger : commandes, confirmations, envoi de captures de paiement. Ces messageries sont difficiles à automatiser directement (leurs connexions officielles sont réglementées et souvent payantes). Dessinez quand même ces étapes : une solution simple est souvent un **formulaire rapide** que la personne remplit en 30 secondes à partir du message reçu, et qui déclenche toute la suite.
+
+> [!exemple] Ce que la gérante n''avait pas dit
+> En regardant la gérante travailler, Rado découvre une étape qu''elle avait oubliée de mentionner : chaque vendredi, elle recopie toutes les commandes de la semaine suivante dans un cahier, pour la cuisine. Cette étape, la plus longue de toutes, n''apparaissait dans aucune discussion. **Observer la tâche réelle** révèle souvent ce que les personnes font sans y penser.
+
+> [!erreur] Dessiner le processus idéal
+> Le débutant dessine le processus tel que le dirigeant le décrit en réunion : propre, en 5 étapes. Dans la réalité, l''équipe fait 9 étapes, avec deux vérifications que personne n''avait mentionnées. Le scénario construit sur le processus « idéal » ne correspond à rien. **Dessinez ce qui se fait vraiment**, avec la personne qui le fait.
+
+> [!retenir]
+> - Une **cartographie** décrit le processus réel : qui, quoi, quel outil, quel ordre.
+> - On l''obtient en **observant** la personne qui fait la tâche, avec un vrai exemple.
+> - Chaque étape est **répétitive, décision humaine, ou en partie les deux**.
+> - Les **cas particuliers** sont listés, et chacun a son traitement.
+> - On automatise **une partie d''abord**, la plus simple et la plus répétitive.
+
+## Exercice pratique : cartographier un processus
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez une des 2 automatisations retenues au module 1.
+> 2. Interrogez la personne qui fait la tâche avec les 6 questions, et observez-la sur un vrai exemple si possible.
+> 3. Dessinez le processus actuel étape par étape (sur papier, ou dans un outil comme Google Drawings).
+> 4. Classez chaque étape : répétitive, décision humaine, ou en partie.
+> 5. Listez au moins 5 cas particuliers et leur traitement, puis dessinez le processus « après ».
+>
+> **À livrer** : vos notes d''entretien, le processus avant, le tableau de classement, les cas particuliers et le processus après.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 0, 0, 'Qu''est-ce qu''une cartographie de processus ?', '["Une carte géographique des clients","Un schéma qui décrit comment une tâche se fait aujourd''hui, étape par étape","Un tableau de prix","La liste des abonnements"]'::jsonb, 1, 'On dessine la réalité : qui fait quoi, avec quel outil, dans quel ordre, et ce qui se passe en cas de problème.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 0, 1, 'Qui connaît le mieux le détail d''une tâche ?', '["Le spécialiste, avant même d''avoir vu la tâche","La personne qui la fait chaque jour","Le dirigeant, toujours","Un assistant d''IA"]'::jsonb, 1, 'Observer la personne qui fait la tâche révèle les étapes et les exceptions que personne ne mentionne en réunion.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 0, 2, 'Dans la commande de gâteau, quelle étape doit rester humaine ?', '["Vérifier la disponibilité et fixer le prix","Recopier la commande dans le tableau","Ajouter un numéro de commande","Accuser réception au client"]'::jsonb, 0, 'La gérante connaît sa charge de travail et décide du prix ; les copies d''un outil à l''autre s''automatisent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 0, 3, 'Pourquoi lister les cas particuliers avant de construire ?', '["Ils n''ont pas d''importance","Parce que Make l''exige","Ce sont eux qui font casser les automatisations construites trop vite","Pour allonger le dossier"]'::jsonb, 2, 'Chaque cas particulier doit avoir un traitement : une règle automatique ou un passage à un humain.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 0, 4, 'Que faire quand les commandes arrivent par WhatsApp ?', '["Ignorer ces commandes","Demander le mot de passe WhatsApp du client","Abandonner l''automatisation","Prévoir un formulaire rapide rempli à partir du message, qui déclenche la suite"]'::jsonb, 3, 'Les messageries sont difficiles à automatiser directement ; un formulaire de 30 secondes relie le message au reste du processus.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 1, 1, 'Des données propres : formulaires et tableaux', 9, 'Une automatisation n''est jamais meilleure que les données qu''elle reçoit. Un prénom dans la colonne du téléphone, une date écrite de trois façons, une ville mal orthographiée : le scénario se trompe, ou s''arrête. La plupart des pannes d''automatisation viennent de **données sales**. Cette leçon vous apprend à construire des formulaires et des tableaux qui produisent des données propres, prêtes à être automatisées.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire un formulaire qui produit des données propres.
+> 2. Organiser un tableau central avec identifiant et statut.
+> 3. Normaliser les données : dates, téléphones, noms, villes.
+> 4. Éviter les doublons.
+> 5. Préparer un tableau prêt à être relié à un scénario.
+
+## Le formulaire : la porte d''entrée
+
+```schema comparaison
+titre: Un formulaire qui produit des données propres
+ton: mauvais-bon
+colonnes: Formulaire mal conçu | Formulaire bien conçu
+Un seul champ « Vos coordonnées » | Des champs séparés : nom, prénom, téléphone, e-mail
+La ville en texte libre : « Tana », « TNR », « Antananarivo » | La ville choisie dans une liste déroulante
+La date écrite librement | Un champ de type date
+Aucun champ obligatoire | Les champs indispensables obligatoires
+Le téléphone sans consigne | Une consigne : « 034 12 345 67 », et une vérification du format si possible
+```
+
+Dans Google Forms, les types de questions (réponse courte, liste déroulante, date, choix multiples) et l''option « obligatoire » suffisent pour la plupart des besoins. Chaque réponse arrive dans une feuille Google Sheets liée au formulaire.
+
+## Le tableau central
+
+Le tableau est souvent le **cœur** d''un système d''automatisation : les scénarios y écrivent, les personnes y lisent et y changent les statuts.
+
+| N° | Date | Nom | Téléphone | Formation | Statut | Traité le |
+| --- | --- | --- | --- | --- | --- | --- |
+| I-2027-0041 | 03/05/2027 | RAKOTO Fara | +261 34 12 345 67 | Bureautique | Nouveau | |
+| I-2027-0042 | 03/05/2027 | RABE Tojo | +261 33 98 765 43 | Comptabilité | Inscrit | 04/05/2027 |
+| I-2027-0043 | 04/05/2027 | ANDRIA Lova | +261 32 11 222 33 | Bureautique | À traiter à la main | |
+
+```schema chiffres
+titre: Les 5 règles d''un tableau prêt à automatiser
+Un identifiant unique : un numéro par ligne, pour retrouver et mettre à jour la bonne ligne
+Une colonne de statut : Nouveau, Inscrit, Terminé, À traiter à la main…
+Une ligne par élément : une inscription, une commande, une demande
+Des formats fixes : dates, téléphones, montants toujours écrits pareil
+Pas de cellules fusionnées ni de lignes vides au milieu
+```
+
+> [!definition] Statut
+> Une colonne qui dit où en est chaque élément. Elle sert à la fois aux personnes (« qu''est-ce qui reste à faire ? ») et aux scénarios (« traiter seulement les lignes au statut Nouveau, puis passer le statut à Traité »). C''est l''outil le plus simple pour éviter de traiter deux fois la même ligne.
+
+## Normaliser les données
+
+Normaliser, c''est écrire une même information **toujours de la même façon**.
+
+| Donnée | Formes rencontrées | Forme normalisée |
+| --- | --- | --- |
+| Téléphone malgache | 0341234567, 034 12 345 67, +261341234567 | +261 34 12 345 67 |
+| Date | 3/5/27, 03-05-2027, 3 mai | 2027-05-03 (dans les échanges entre outils) |
+| Nom | rakoto fara, Rakoto FARA | RAKOTO Fara |
+| Ville | Tana, TNR, antananarivo | Antananarivo |
+| Montant | 150.000 Ar, 150000, 150 000 ariary | 150000 (un nombre, sans texte) |
+
+> [!madagascar] Les numéros de téléphone malgaches
+> Les numéros malgaches sont écrits de nombreuses façons : avec ou sans le 0, avec ou sans +261, avec des espaces, des points ou des tirets. Un scénario qui envoie un SMS ou un message a besoin d''un **format unique**, souvent international (+261…). Prévoyez une étape qui normalise le numéro (vous verrez les fonctions de texte au module 3), et une vérification de sa longueur avant l''envoi.
+
+## Éviter les doublons
+
+Le même formulaire envoyé deux fois, la même personne inscrite par e-mail et par formulaire : les doublons faussent les chiffres et provoquent des envois en double.
+
+```schema etapes
+titre: La règle anti-doublon d''un scénario
+Recevoir la nouvelle demande
+Chercher dans le tableau une ligne avec le même e-mail ou le même téléphone
+Si elle existe : mettre à jour la ligne, ou marquer « Doublon possible »
+Si elle n''existe pas : créer une nouvelle ligne avec un nouvel identifiant
+```
+
+> [!exemple] Les inscriptions en double
+> Le centre Formation Mendrika recevait parfois deux inscriptions de la même personne : une le soir sur le téléphone, une le lendemain sur l''ordinateur, « pour être sûr ». Les élèves recevaient deux e-mails de bienvenue et deux rappels. Rado ajoute une recherche par e-mail avant la création de la ligne : la deuxième inscription met simplement à jour la première. Les envois en double disparaissent.
+
+> [!erreur] Le tableau « joli »
+> Le client a un beau tableau avec des titres fusionnés, des lignes vides entre les mois, des totaux au milieu et des couleurs partout. Le scénario n''arrive pas à lire les colonnes, écrit au mauvais endroit et s''arrête. **Un tableau relié à un scénario est d''abord un outil** : une ligne de titres, une ligne par élément, sans fusion. Les jolis résumés se font dans un autre onglet.
+
+> [!retenir]
+> - Un **formulaire** avec des champs séparés, des listes, des types et des champs obligatoires.
+> - Un **tableau central** : identifiant unique, statut, une ligne par élément, formats fixes.
+> - **Normaliser** téléphones, dates, noms, villes et montants.
+> - Une **règle anti-doublon** : chercher avant de créer.
+> - Les résumés et mises en forme dans **un autre onglet**.
+
+## Exercice pratique : un formulaire et un tableau propres
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez dans Google Forms le formulaire du processus cartographié à la leçon 2.1, avec des types de questions adaptés et les champs obligatoires.
+> 2. Reliez-le à une feuille Google Sheets et ajoutez les colonnes Identifiant, Statut et Traité le.
+> 3. Envoyez 10 réponses de test, dont 2 doublons et 3 téléphones écrits différemment.
+> 4. Écrivez vos règles de normalisation et la règle anti-doublon de votre futur scénario.
+>
+> **À livrer** : le lien du formulaire, une capture du tableau et vos règles écrites.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 1, 0, 'Pourquoi utiliser une liste déroulante pour la ville dans un formulaire ?', '["Parce que Google l''exige","Pour faire joli","Pour que la ville soit toujours écrite de la même façon","Pour cacher la ville"]'::jsonb, 2, 'En texte libre, « Tana », « TNR » et « Antananarivo » seraient trois villes différentes pour le scénario.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 1, 1, 'À quoi sert l''identifiant unique dans le tableau ?', '["Faire joli","Retrouver et mettre à jour la bonne ligne","Compter les clients","Remplacer le nom"]'::jsonb, 1, 'Le scénario retrouve une ligne précise par son identifiant, sans risque de confusion.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 1, 2, 'À quoi sert la colonne de statut ?', '["Indiquer la couleur de la ligne","Classer par ordre alphabétique","Savoir où en est chaque élément et éviter de le traiter deux fois","Calculer les prix"]'::jsonb, 2, 'Le scénario traite les lignes « Nouveau », puis passe le statut à « Traité ».');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 1, 3, 'Comment normaliser 0341234567 dans un format international ?', '["261 0 34 12","0341234567","34-12-345-67","+261 34 12 345 67"]'::jsonb, 3, 'Le format international avec +261 est celui qu''attendent la plupart des services d''envoi de messages.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 1, 4, 'Quelle est la règle anti-doublon d''un scénario ?', '["Créer toujours une nouvelle ligne","Chercher une ligne existante (même e-mail ou téléphone) avant de créer une nouvelle ligne","Envoyer deux e-mails pour être sûr","Supprimer toutes les anciennes lignes"]'::jsonb, 1, 'Chercher avant de créer évite les envois en double et les chiffres faussés.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 1, 2, 'Lire et comprendre le JSON', 9, 'Les outils s''échangent leurs données dans un format commun, le **JSON**. Vous le verrez partout : dans les résultats des étapes de Make et de Zapier, dans les webhooks, et surtout dans les réponses des étapes d''IA, que l''on demande en JSON pour pouvoir les lire automatiquement. Pas besoin d''être développeur : il suffit de savoir le lire et d''y retrouver une information. Cette leçon vous l''apprend.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Reconnaître les éléments d''un JSON : objet, champ, valeur, liste.
+> 2. Distinguer les types de valeurs : texte, nombre, vrai ou faux, vide.
+> 3. Retrouver une information dans un JSON imbriqué.
+> 4. Comprendre une liste d''éléments.
+> 5. Repérer un JSON invalide.
+
+## Un premier JSON
+
+```json
+{
+  "commande_id": "C-2027-0412",
+  "client": {
+    "nom": "RASOA Hanta",
+    "telephone": "+261 34 12 345 67"
+  },
+  "date_livraison": "2027-05-18",
+  "produit": "Gâteau d''anniversaire chocolat",
+  "parts": 20,
+  "acompte_recu": false,
+  "message": "Joyeux anniversaire Tiana !"
+}
+```
+
+| Élément | Signification | Dans l''exemple |
+| --- | --- | --- |
+| `{ }` | Un **objet** : un ensemble de champs | Toute la commande |
+| `"nom": "RASOA Hanta"` | Un **champ** (à gauche) et sa **valeur** (à droite) | Le nom du client |
+| `"client": { … }` | Un objet **dans** un objet | Les informations du client |
+| `"…"` | Un **texte** (entre guillemets) | `"Gâteau d''anniversaire chocolat"` |
+| `20` | Un **nombre** (sans guillemets) | Le nombre de parts |
+| `true` / `false` | **Vrai** ou **faux** | `"acompte_recu": false` |
+| `null` | Une valeur **vide** | (absente ici) |
+| `[ … ]` | Une **liste** | (voir plus bas) |
+
+## Retrouver une information : le chemin
+
+Dans un JSON imbriqué, on désigne une information par son **chemin** : les noms des champs, du plus général au plus précis. Le téléphone du client se trouve dans `client`, puis dans `telephone` : on écrit souvent `client.telephone`.
+
+```schema arbre
+titre: Les chemins dans la commande
+commande/
+  commande_id # "C-2027-0412"
+  client/
+    nom # client.nom
+    telephone # client.telephone
+  date_livraison # "2027-05-18"
+  parts # 20
+  acompte_recu # false
+```
+
+Dans Make et Zapier, vous n''écrivez pas ces chemins : vous cliquez sur le champ voulu dans la liste des données. Mais savoir lire le chemin vous permet de comprendre ce que vous choisissez, et de trouver une information cachée dans un objet.
+
+## Les listes
+
+Une commande peut contenir plusieurs produits. On utilise alors une **liste**, entre crochets, qui contient plusieurs objets.
+
+```json
+{
+  "commande_id": "C-2027-0413",
+  "articles": [
+    { "produit": "Gâteau chocolat", "quantite": 1, "prix": 85000 },
+    { "produit": "Bougies", "quantite": 2, "prix": 3000 }
+  ]
+}
+```
+
+Ici, `articles` est une liste de 2 objets. Pour traiter chaque article séparément (par exemple, ajouter une ligne par article dans un tableau), on utilise dans Make un **itérateur**, que vous verrez au module 3. Pour faire un total, on additionne les valeurs avec un **agrégateur**.
+
+> [!cle] Pourquoi le JSON compte pour l''IA
+> Quand une étape d''IA classe un message, on lui demande de répondre **uniquement** par un JSON, par exemple `{"categorie": "commande", "urgence": "haute"}`. L''étape suivante du scénario peut alors lire `categorie` et `urgence` comme des champs, et choisir le bon chemin. Une réponse en texte libre (« Je pense que c''est plutôt une commande… ») casserait le scénario.
+
+## Repérer un JSON invalide
+
+Un JSON a des règles strictes. Une seule erreur, et l''outil refuse de le lire.
+
+```schema comparaison
+titre: JSON valide ou invalide ?
+ton: mauvais-bon
+colonnes: Invalide | Valide
+{''nom'': ''Fara''} : apostrophes au lieu de guillemets | {"nom": "Fara"}
+{"nom": "Fara",} : virgule de trop à la fin | {"nom": "Fara"}
+{"parts": "vingt"} quand un nombre est attendu | {"parts": 20}
+{"categorie": commande} : texte sans guillemets | {"categorie": "commande"}
+Un texte avant le JSON : « Voici le résultat : {…} » | Seulement le JSON, sans autre texte
+```
+
+La dernière erreur est très fréquente avec l''IA : elle ajoute une phrase avant ou après le JSON. Votre consigne doit l''interdire, et votre scénario doit prévoir un chemin si le JSON est invalide (leçon 2.5).
+
+> [!madagascar] Les accents et les caractères spéciaux
+> Les noms malgaches et français contiennent des accents, des apostrophes et parfois des guillemets (« Gâteau d''anniversaire »). Le JSON les accepte, mais un guillemet non protégé à l''intérieur d''un texte casse tout. Les plateformes gèrent cela automatiquement quand vous choisissez les champs dans les listes ; méfiez-vous seulement des JSON que vous écrivez à la main, et testez-les avec un validateur en ligne.
+
+> [!exemple] Le champ introuvable
+> Le scénario de Rado n''arrive pas à remplir le téléphone du client dans le tableau. En regardant le JSON reçu, il voit que le téléphone n''est pas au premier niveau, mais dans l''objet `client`. Il choisit `client.telephone` au lieu d''un champ `telephone` vide. Le problème est réglé en une minute, parce qu''il savait **lire le JSON**.
+
+> [!erreur] Modifier un JSON à la main sans le vérifier
+> Le débutant corrige rapidement un JSON de test dans un bloc-notes, oublie une virgule entre deux champs, et colle le texte dans son scénario. Le module renvoie une erreur peu claire, et il passe une heure à chercher dans Make. **Après chaque modification à la main, passez le JSON dans un validateur** : l''erreur est signalée en quelques secondes, avec sa ligne.
+
+> [!retenir]
+> - Un JSON : **objets** `{ }`, **champs** et **valeurs**, **listes** `[ ]`.
+> - Les valeurs : **texte** entre guillemets, **nombre**, **true/false**, **null**.
+> - Un **chemin** désigne une information : `client.telephone`.
+> - Une **liste** se traite élément par élément (itérateur) ou se résume (agrégateur).
+> - Un JSON est **invalide** pour une seule erreur : guillemets, virgule, texte en trop.
+
+## Exercice pratique : lire et écrire du JSON
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Écrivez le JSON d''une inscription à une formation : identifiant, personne (nom, téléphone, e-mail), formation, date, montant payé, et une liste de 2 modules choisis.
+> 2. Vérifiez qu''il est valide avec un validateur JSON en ligne.
+> 3. Écrivez le chemin de 5 informations de votre JSON (par exemple `personne.email`).
+> 4. Corrigez ces 3 JSON invalides : `{''ville'': ''Toliara''}`, `{"prix": 15000,}`, `Résultat : {"categorie": "question"}`.
+>
+> **À livrer** : votre JSON validé, vos 5 chemins et vos 3 corrections.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 2, 0, 'Que représentent les accolades { } dans un JSON ?', '["Une erreur","Une liste","Un texte","Un objet, c''est-à-dire un ensemble de champs"]'::jsonb, 3, 'Un objet regroupe des champs et leurs valeurs. Les crochets [ ] représentent une liste.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 2, 1, 'Dans {"client": {"telephone": "+261..."}}, quel est le chemin du téléphone ?', '["telephone.client","+261","client","client.telephone"]'::jsonb, 3, 'Le téléphone se trouve dans l''objet client : on suit les champs du plus général au plus précis.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 2, 2, 'Comment s''écrit un nombre dans un JSON ?', '["Entre guillemets, comme \"vingt\"","Avec « Ar » à la suite","Entre crochets","Sans guillemets, comme 20"]'::jsonb, 3, 'Un nombre s''écrit sans guillemets pour pouvoir être calculé ; « Ar » en ferait un texte.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 2, 3, 'Pourquoi ce JSON est-il invalide : {"nom": "Fara",} ?', '["Il manque des crochets","Il est valide","Le nom est trop court","Il y a une virgule de trop à la fin"]'::jsonb, 3, 'Une seule virgule en trop suffit pour que l''outil refuse de lire le JSON.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 2, 4, 'Pourquoi demander à l''IA de répondre uniquement en JSON ?', '["C''est inutile","Pour que l''étape suivante lise les champs sans erreur","Pour que la réponse soit plus jolie","Pour économiser l''électricité"]'::jsonb, 1, 'Un texte libre ne se lit pas automatiquement ; un JSON avec des champs fixes se lit et se vérifie.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 1, 3, 'Écrire et tester des consignes d''IA', 10, 'Dans une conversation avec un assistant d''IA, une consigne approximative n''est pas grave : on reformule. Dans une automatisation, la même consigne sera utilisée des centaines de fois, sans personne pour reformuler. Elle doit donc être **précise, stable et vérifiable** : produire toujours le même type de résultat, dans un format que l''étape suivante sait lire. Cette leçon vous apprend à écrire et à tester ces consignes.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Écrire une consigne d''automatisation en 6 éléments.
+> 2. Imposer un format de sortie strict en JSON.
+> 3. Prévoir le cas incertain et les interdits.
+> 4. Tester une consigne sur un jeu d''exemples.
+> 5. Améliorer et numéroter les versions d''une consigne.
+
+## Les 6 éléments d''une consigne d''automatisation
+
+| Élément | Rôle | Exemple |
+| --- | --- | --- |
+| **Rôle et tâche** | Dire ce que l''IA fait, en une phrase | « Tu classes les messages reçus par une pâtisserie d''Antananarivo. » |
+| **Règles** | Les catégories, les critères | « Catégories : commande, question, reclamation, autre. Urgence haute si livraison dans les 48 heures. » |
+| **Données d''entrée** | Le texte à traiter, inséré par le scénario | « Message : {{message}} » |
+| **Format de sortie strict** | Ce que l''IA doit renvoyer, exactement | « Réponds uniquement par un JSON : {"categorie": "...", "urgence": "haute ou normale"} » |
+| **Cas incertain** | Que faire en cas de doute | « Si tu n''es pas sûr, utilise la catégorie autre. » |
+| **Interdits** | Ce que l''IA ne doit jamais faire | « N''invente aucune information absente du message. » |
+
+> [!exemple] Une consigne complète
+> « Tu classes les messages reçus par une pâtisserie d''Antananarivo. Catégories possibles : commande, question, reclamation, autre. Urgence : haute si le client parle d''une livraison dans les 48 heures ou d''un problème avec une commande, sinon normale. Le message peut être en français, en malgache ou dans un mélange des deux. Réponds uniquement par un JSON valide de la forme {"categorie": "...", "urgence": "..."}, sans aucun autre texte. Si tu n''es pas sûr de la catégorie, utilise "autre". N''invente aucune information. Message : {{message}} »
+
+Remarquez les catégories écrites **sans accent ni espace** (`reclamation`) : elles seront comparées par le scénario à des valeurs fixes. Un « Réclamation » avec majuscule et accent ne correspondrait pas au filtre `reclamation`.
+
+## Le format de sortie : fermé et vérifiable
+
+```schema comparaison
+titre: Des sorties ouvertes aux sorties fermées
+ton: mauvais-bon
+colonnes: Sortie ouverte | Sortie fermée
+« Dis-moi de quoi parle ce message » | « Réponds par une catégorie parmi : commande, question, reclamation, autre »
+Une phrase libre, différente à chaque fois | Un JSON avec des champs fixes
+« Donne-moi les informations importantes » | {"nom": "...", "date": "AAAA-MM-JJ", "montant": nombre ou null}
+Impossible à vérifier automatiquement | Le scénario vérifie que la valeur fait partie de la liste
+```
+
+Pour l''**extraction**, précisez le format de chaque champ (date en AAAA-MM-JJ, montant en nombre sans « Ar ») et ce qu''il faut renvoyer quand l''information est absente (`null`), pour que l''IA ne l''invente pas.
+
+> [!cle] Les réglages du modèle
+> Les étapes d''IA de Make et de Zapier proposent souvent des réglages. La **température** règle la variété des réponses : basse, les réponses sont plus stables, ce qui convient au classement et à l''extraction. Certains services proposent aussi un mode qui **force une réponse en JSON** : utilisez-le quand il existe. Les noms et les options changent selon le service ; testez toujours.
+
+## Tester une consigne sur un jeu d''exemples
+
+On ne valide jamais une consigne sur un ou deux exemples. On construit un **jeu de test** : une vingtaine de vrais messages (anonymisés), dont des cas difficiles, avec pour chacun la réponse attendue.
+
+```schema etapes
+titre: Tester une consigne
+Rassembler 20 messages réels, anonymisés, dont des cas difficiles
+Noter pour chacun la réponse attendue (la bonne catégorie)
+Passer les 20 messages avec la consigne, et noter les réponses de l''IA
+Compter les erreurs et les JSON invalides
+Corriger la consigne, puis tout repasser
+```
+
+| Message (extrait) | Attendu | Réponse de l''IA | Correct ? |
+| --- | --- | --- | --- |
+| « Je voudrais un gâteau pour samedi, 20 parts » | commande, haute | commande, haute | Oui |
+| « Vous êtes ouverts le dimanche ? » | question, normale | question, normale | Oui |
+| « Le gâteau était sec, je suis déçue » | reclamation, normale | reclamation, haute | Non |
+| « Misaotra betsaka ! » | autre, normale | question, normale | Non |
+
+Ici, la consigne doit être précisée : l''urgence « haute » ne s''applique qu''aux problèmes de commande **en cours**, et un simple remerciement va dans « autre ».
+
+> [!madagascar] Tester avec les vrais messages des clients
+> Les messages réels des clients malgaches mélangent souvent le français et le malgache, avec des abréviations (« slt », « mrc », « dispo ? »). Une consigne testée seulement sur des messages en français soigné échouera dans la vraie vie. Construisez votre jeu de test avec **les vrais messages** reçus par le client (sans les noms ni les numéros), et indiquez dans la consigne que les messages peuvent être en malgache ou mélangés.
+
+## Les versions de la consigne
+
+Une consigne évolue : nouvelles catégories, nouveaux cas. Numérotez-la (v1, v2, v3), notez la date et les résultats du jeu de test pour chaque version, et gardez-la dans la documentation du scénario. Si une nouvelle version donne de moins bons résultats, vous pouvez revenir à la précédente.
+
+> [!erreur] La consigne trop courte
+> « Classe ce message. » L''IA répond une fois « Commande », une fois « C''est une commande de gâteau », une fois « Demande de commande ». Aucune de ces réponses ne correspond au filtre `commande` du scénario : tous les messages partent dans « à traiter à la main », et l''automatisation ne sert à rien. **Une consigne d''automatisation donne la liste exacte des réponses possibles et un format strict.**
+
+> [!retenir]
+> - **6 éléments** : rôle et tâche, règles, données, format strict, cas incertain, interdits.
+> - Des **sorties fermées** : catégories fixes, JSON avec des champs et des formats précis.
+> - Une **température basse** et le mode JSON quand ils existent.
+> - Un **jeu de test** de 20 vrais messages, avec les réponses attendues.
+> - Des **versions numérotées**, avec leurs résultats.
+
+## Exercice pratique : une consigne testée
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Écrivez une consigne de classement en 6 éléments pour l''organisation de votre projet (4 ou 5 catégories).
+> 2. Construisez un jeu de test de 20 messages, dont 5 difficiles et 3 en malgache ou en mélange, avec les réponses attendues.
+> 3. Passez les 20 messages dans un assistant d''IA avec votre consigne, et remplissez le tableau de résultats.
+> 4. Corrigez la consigne (v2) et repassez le jeu de test.
+> 5. Écrivez une consigne d''extraction (nom, date, montant) avec `null` pour les informations absentes, et testez-la sur 5 messages.
+>
+> **À livrer** : vos consignes v1 et v2, votre jeu de test, vos deux tableaux de résultats et votre consigne d''extraction.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 3, 0, 'Pourquoi une consigne d''automatisation doit-elle être plus précise qu''une conversation ?', '["Pour coûter plus cher","Elle n''a pas besoin d''être précise","Elle est utilisée des centaines de fois sans personne pour reformuler","Parce que l''IA est plus lente"]'::jsonb, 2, 'Le scénario dépend d''une réponse stable et vérifiable, à chaque exécution.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 3, 1, 'Que faut-il prévoir dans la consigne pour les cas de doute ?', '["Une catégorie de secours, comme « autre »","Que l''IA réponde par une question","Rien","Que l''IA devine"]'::jsonb, 0, 'Le cas « autre » part ensuite vers un humain, au lieu d''être mal classé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 3, 2, 'Pourquoi écrire les catégories sans accent ni majuscule (reclamation) ?', '["Le scénario compare la réponse à des valeurs fixes, exactement","Aucune raison","Parce que les accents sont interdits en français","Pour faire moderne"]'::jsonb, 0, '« Réclamation » et « reclamation » sont deux valeurs différentes pour un filtre.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 3, 3, 'Comment valider une consigne ?', '["Sans test","En demandant à l''IA si elle est sûre","Sur un jeu de test d''une vingtaine de vrais messages, avec les réponses attendues","Sur un seul exemple"]'::jsonb, 2, 'Seul un jeu de test varié, avec des cas difficiles, montre les vraies erreurs.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 3, 4, 'Quel réglage rend les réponses de l''IA plus stables pour un classement ?', '["Aucun réglage","Une température basse","Une température très haute","Des consignes plus courtes"]'::jsonb, 1, 'Une température basse réduit la variété des réponses, ce qui convient au classement et à l''extraction.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 1, 4, 'Prévoir les erreurs et le dossier de conception', 10, 'Une automatisation fonctionne parfaitement… jusqu''au jour où quelque chose d''inhabituel arrive : un champ vide, un service en panne, une réponse de l''IA au mauvais format, un client qui envoie le même formulaire trois fois. Le spécialiste expérimenté se reconnaît à une chose : il a **prévu ces cas avant qu''ils n''arrivent**. Cette leçon vous apprend à lister les erreurs possibles et à leur donner un chemin. Elle se termine par le projet du module 2.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Lister les erreurs possibles d''un scénario.
+> 2. Donner à chaque erreur un chemin : correction automatique ou humain.
+> 3. Prévoir le chemin « à traiter à la main ».
+> 4. Mettre des limites pour éviter les catastrophes.
+> 5. Rédiger le dossier de conception d''une automatisation.
+
+## Les erreurs les plus fréquentes
+
+| Situation | Ce qu''il faut prévoir |
+| --- | --- |
+| Un champ obligatoire est vide | Un filtre qui arrête le traitement et alerte une personne |
+| L''IA renvoie un format inattendu | Une vérification du format ; sinon, le statut « À traiter à la main » |
+| Un service externe est en panne | Une nouvelle tentative automatique, puis une alerte |
+| Le même formulaire est envoyé deux fois | Une recherche de l''identifiant ou de l''e-mail avant de créer la ligne |
+| Un cas particulier non prévu | Un chemin « autre » vers un humain |
+| Un téléphone ou un e-mail mal écrit | Une vérification du format avant l''envoi d''un message |
+
+## Le chemin « à traiter à la main »
+
+Chaque scénario doit avoir une **sortie de secours** : quand il ne sait pas quoi faire, il ne devine pas, il met l''élément de côté pour un humain.
+
+```schema etapes
+titre: Le chemin de secours
+Le scénario rencontre un cas qu''il ne sait pas traiter
+Il met le statut « À traiter à la main » dans le tableau, avec la raison
+Il envoie une alerte courte à la personne responsable
+La personne traite le cas, puis change le statut
+Chaque mois, on regarde les cas fréquents pour améliorer le scénario
+```
+
+> [!cle] Mieux vaut s''arrêter que se tromper
+> Un scénario qui s''arrête et prévient une personne fait perdre quelques minutes. Un scénario qui continue avec une donnée fausse envoie un mauvais e-mail, crée une fausse facture ou confirme une commande impossible. **En cas de doute, le scénario s''arrête et passe la main.**
+
+## Les limites de sécurité
+
+Une automatisation mal conçue peut faire en quelques minutes ce qu''un humain mettrait des jours à faire… y compris des erreurs.
+
+```schema checklist
+titre: Les garde-fous d''un scénario
+[ ] Un nombre maximal d''éléments traités par exécution (pas 5 000 e-mails d''un coup)
+[ ] Une mise à jour du statut juste après le traitement, pour ne pas traiter deux fois
+[ ] Des messages aux clients testés d''abord sur une adresse de test
+[ ] Les alertes d''erreur activées et envoyées à une personne précise
+[ ] Une surveillance de la consommation d''opérations et des coûts d''IA
+[ ] Aucune action impossible à annuler (suppression, paiement) sans validation humaine
+```
+
+> [!exemple] La boucle qui a tout consommé
+> Un débutant construit un scénario qui lit les lignes « Nouveau » d''un tableau, envoie un e-mail… mais oublie de changer le statut. À chaque passage, toutes les lignes sont de nouveau « Nouveau ». En une nuit, les mêmes 40 personnes reçoivent 30 fois le même e-mail, et le quota mensuel d''opérations est épuisé. **Changer le statut juste après le traitement** est l''un des garde-fous les plus importants.
+
+## Le dossier de conception
+
+Avant de construire, rassemblez votre travail dans un **dossier de conception** d''une ou deux pages, validé par le client. Il évite les malentendus et sert de base à la documentation finale.
+
+```schema chiffres
+titre: Le dossier de conception en 6 parties
+L''objectif : la tâche automatisée et le temps gagné attendu
+Le processus : avant et après, avec ce qui reste humain
+Les données : formulaire, tableau, champs, identifiant, statut
+L''IA : la consigne, le format de sortie, les résultats du jeu de test
+Les erreurs : chaque cas et son chemin, dont « à traiter à la main »
+Les comptes et la surveillance : au nom du client, qui reçoit les alertes
+```
+
+> [!madagascar] Les coupures chez le client
+> Les scénarios tournent dans le nuage, mais les personnes, elles, peuvent être coupées : l''assistante sans électricité pendant une journée ne verra pas les alertes. Prévoyez dans le dossier **une deuxième personne** qui reçoit les alertes, et une procédure simple pour rattraper les cas « à traiter à la main » après une coupure.
+
+> [!erreur] Ne prévoir que le cas normal
+> Le débutant teste son scénario avec une inscription parfaite : tout fonctionne, il le met en service. Le premier jour, une personne laisse l''e-mail vide, une autre écrit son téléphone avec des lettres, une troisième s''inscrit deux fois. Le scénario s''arrête trois fois, ou crée des lignes fausses. **Listez les erreurs avant de construire**, et testez-les toutes avant la mise en service.
+
+> [!retenir]
+> - Chaque **erreur possible** a son chemin : correction automatique, nouvelle tentative, ou humain.
+> - Le chemin **« à traiter à la main »** : en cas de doute, on s''arrête et on passe la main.
+> - Des **garde-fous** : limites, statut mis à jour, tests sur adresse de test, alertes, coûts.
+> - Un **dossier de conception** en 6 parties, validé par le client avant de construire.
+> - **Deux personnes** reçoivent les alertes.
+
+## Exercice pratique : les erreurs de votre scénario
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour l''automatisation de votre projet, listez au moins 8 erreurs possibles.
+> 2. Pour chacune, écrivez le chemin prévu : correction automatique, nouvelle tentative ou « à traiter à la main ».
+> 3. Écrivez le texte de l''alerte envoyée à la personne responsable.
+> 4. Remplissez la liste des garde-fous pour votre scénario.
+>
+> **À livrer** : votre tableau des erreurs, le texte de l''alerte et votre liste de garde-fous.
+
+## Projet du module 2 : le dossier de conception
+
+> [!projet] Projet du module · 2 heures 30
+> Rassemblez le travail du module dans le dossier de conception de l''automatisation choisie, comme pour un vrai client.
+> 1. **L''objectif** et le temps gagné attendu (module 1).
+> 2. **Le processus** avant et après, avec les cas particuliers (leçon 2.1).
+> 3. **Les données** : votre formulaire et votre tableau propres, avec identifiant et statut (leçon 2.2).
+> 4. **Les échanges** : le JSON d''un élément traité par le scénario (leçon 2.3).
+> 5. **L''IA** : votre consigne v2 et les résultats du jeu de test (leçon 2.4).
+> 6. **Les erreurs et la surveillance** : votre tableau, vos garde-fous et qui reçoit les alertes (leçon 2.5).
+>
+> **À livrer** : votre dossier de conception en PDF, de 2 à 4 pages. Vous le construirez au module 3.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 4, 0, 'Que fait un scénario bien conçu quand il ne sait pas traiter un cas ?', '["Il met le statut « À traiter à la main » et alerte une personne","Il devine","Il recommence sans fin","Il supprime l''élément"]'::jsonb, 0, 'Mieux vaut s''arrêter et passer la main que continuer avec une donnée fausse.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 4, 1, 'Quel oubli peut faire envoyer 30 fois le même e-mail ?', '["Activer les alertes","Utiliser un formulaire","Tester le scénario","Ne pas changer le statut juste après le traitement"]'::jsonb, 3, 'Sans changement de statut, les mêmes lignes sont traitées à chaque passage.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 4, 2, 'Quelle action ne doit jamais être automatique sans validation humaine ?', '["Le changement d''un statut","L''ajout d''une ligne dans un tableau","L''accusé de réception d''un formulaire","Une action impossible à annuler, comme un paiement ou une suppression"]'::jsonb, 3, 'Une erreur sur une action irréversible ne se rattrape pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 4, 3, 'Pourquoi deux personnes doivent-elles recevoir les alertes ?', '["Ce n''est pas utile","Pour doubler les e-mails","Parce que les plateformes l''exigent","Pour que quelqu''un réagisse même si l''une est absente ou coupée"]'::jsonb, 3, 'Une coupure ou une absence ne doit pas laisser les erreurs sans réponse.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 1, 4, 4, 'À quoi sert le dossier de conception ?', '["Rien","Valider avec le client ce qui sera construit, avant de construire","Remplacer la facture","Décorer le portfolio"]'::jsonb, 1, 'Il évite les malentendus et sert de base à la documentation finale.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 2, 'Make : construire des scénarios', 'Prendre en main Make, construire un premier scénario complet, utiliser filtres, routeurs et fonctions, chercher et mettre à jour des lignes, itérateurs et agrégateurs, planification, historique, erreurs et webhooks.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 2, 0, 'Prendre en main Make', 10, '**Make** est l''une des deux plateformes d''automatisation les plus utilisées au monde. Sa force : les scénarios s''y dessinent comme des schémas, avec des bulles reliées entre elles, et l''on voit exactement les données qui passent d''une étape à l''autre. Cette leçon vous fait prendre en main l''interface, les modules, les connexions et le test, avant de construire votre premier scénario.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Créer un compte Make et un premier scénario vide.
+> 2. Vous repérer dans l''éditeur de scénario.
+> 3. Ajouter un module et créer une connexion à une application.
+> 4. Lancer un test avec « Run once » et lire les résultats.
+> 5. Comprendre les paquets de données (*bundles*) et les opérations.
+
+## Le compte et l''organisation
+
+Make propose une offre gratuite limitée et plusieurs offres payantes (les limites et les prix changent : vérifiez sur le site officiel). Pour vous former, l''offre gratuite suffit. Pour un client, rappelez-vous la règle du module 1 : **le compte est créé au nom du client**, qui vous invite dans son organisation.
+
+Les noms des boutons et des modules de cette leçon sont donnés en anglais, la langue la plus courante de l''interface de Make et de sa documentation, avec leur traduction.
+
+## L''éditeur de scénario
+
+```schema ecran
+titre: Make : l''éditeur de scénario
+haut: Nom du scénario, historique, réglages [1]
+centre: Les modules (bulles) reliés entre eux [2]
+bas: Run once, planification, outils, enregistrement [3]
+[1] Donnez un nom clair : « Inscriptions → tableau + e-mail de bienvenue »
+[2] Le premier module est le déclencheur ; le « + » ajoute un module après le dernier
+[3] « Run once » lance un test ; l''interrupteur de planification active le scénario
+```
+
+Chaque **bulle** est un **module** : une étape du scénario, liée à une application (Google Sheets, Gmail, un service d''IA…) et à une action précise (ajouter une ligne, envoyer un e-mail). Les lignes entre les bulles montrent le chemin des données ; on peut y placer des **filtres** (leçon 3.3).
+
+## Ajouter un module et une connexion
+
+```schema etapes
+titre: Ajouter un module
+Cliquer sur le « + » (ou sur la bulle vide du début)
+Chercher l''application : Google Sheets, Gmail…
+Choisir l''action : par exemple « Add a Row » (ajouter une ligne)
+Créer la connexion : se connecter au compte Google du client et autoriser l''accès
+Remplir les champs du module : quel fichier, quelle feuille, quelles données
+```
+
+> [!definition] Connexion
+> L''autorisation donnée à Make d''utiliser un compte (Google, Microsoft, un service d''IA). Elle est enregistrée une fois et réutilisée par tous les modules de cette application. Pour un client, la connexion doit être faite **avec son compte**, idéalement par lui-même ou en sa présence, et jamais avec votre compte personnel.
+
+## Tester avec « Run once »
+
+« Run once » (exécuter une fois) lance le scénario manuellement, pour un test. Après l''exécution, une **petite bulle** apparaît au-dessus de chaque module. En cliquant dessus, vous voyez ce que le module a reçu (*input*) et ce qu''il a produit (*output*).
+
+```schema comparaison
+titre: Lire le résultat d''un test
+colonnes: Ce qu''on voit | Ce que cela veut dire
+Une bulle avec un chiffre au-dessus du module | Le module a fonctionné, et le nombre de paquets traités
+Un point d''exclamation ou un module en rouge | Une erreur : ouvrez la bulle pour lire le message
+Un module sans bulle | Il n''a pas été atteint : un filtre a arrêté les données avant
+```
+
+> [!astuce] Tester avec une vraie donnée
+> Avant le test, envoyez une vraie réponse de test au formulaire (ou ajoutez une ligne de test au tableau). Ensuite, quand vous configurez le module suivant, la liste des champs disponibles contient les vraies données de ce test : prénom, e-mail, formation. Vous choisissez les bons champs sans vous tromper.
+
+## Les paquets de données et les opérations
+
+> [!definition] Paquet (bundle)
+> Un ensemble de données qui circule dans le scénario : une réponse au formulaire, une ligne de tableau, un e-mail. Si le déclencheur trouve 5 nouvelles lignes, 5 paquets traversent le scénario, et chaque module les traite un par un.
+
+| Situation | Paquets | Opérations consommées (ordre de grandeur) |
+| --- | --- | --- |
+| 1 nouvelle inscription, scénario de 4 modules | 1 | Environ 4 |
+| 5 nouvelles inscriptions, scénario de 4 modules | 5 | Environ 20 |
+| Le déclencheur vérifie, rien de nouveau | 0 | Le déclencheur compte quand même |
+
+Ce dernier point est important : un scénario planifié **toutes les minutes** consomme des opérations même quand il ne trouve rien. Choisissez un intervalle adapté au besoin réel (leçon 3.5). Les règles exactes de calcul peuvent changer : vérifiez la documentation de Make.
+
+> [!madagascar] Make et la connexion lente
+> L''éditeur de Make fonctionne dans le navigateur et demande une connexion stable pour enregistrer. Enregistrez souvent (le bouton d''enregistrement en bas de l''éditeur), surtout avant un test, et évitez de construire pendant les heures où votre connexion est la plus faible. Une fois le scénario activé, il tourne sur les serveurs de Make : votre connexion n''a plus d''importance.
+
+> [!exemple] Le premier test de Rado
+> Rado ajoute le module Google Sheets « Watch New Rows » à un tableau d''inscriptions et clique sur « Run once ». La bulle affiche « 3 » : trois lignes de test ont été lues. En ouvrant la bulle, il voit pour chaque ligne les colonnes A, B, C… avec leurs valeurs. Il comprend tout de suite que la colonne C contient l''e-mail, et qu''une des lignes de test a un e-mail vide : il faudra un filtre.
+
+> [!erreur] Connecter le compte personnel
+> Pour aller vite, le débutant connecte son propre compte Google dans le scénario du client. Tout fonctionne… jusqu''à la fin de la mission, quand il supprime l''accès à son compte : le scénario du client s''arrête net. **Chaque connexion se fait avec les comptes du client**, et la liste des connexions figure dans la documentation.
+
+> [!retenir]
+> - Un scénario Make est un **schéma de modules** (bulles) reliés entre eux.
+> - Chaque module a une **application**, une **action** et une **connexion** au compte du client.
+> - **Run once** teste le scénario ; les **bulles** montrent les données reçues et produites.
+> - Un **paquet** circule pour chaque élément ; chaque module traité consomme des **opérations**.
+> - **Enregistrer souvent**, et tester avec une vraie donnée.
+
+## Exercice pratique : premiers pas dans Make
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Créez un compte gratuit Make et un scénario nommé clairement.
+> 2. Ajoutez le module Google Sheets « Watch New Rows » sur le tableau créé à la leçon 2.2, avec votre compte d''exercice.
+> 3. Lancez « Run once » et ouvrez la bulle de résultat ; notez les colonnes et leurs valeurs.
+> 4. Ajoutez une ligne de test au tableau, relancez, et comparez le nombre de paquets.
+>
+> **À livrer** : des captures de votre scénario et de la bulle de résultat, et vos notes sur les données lues.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 0, 0, 'Qu''est-ce qu''un module dans Make ?', '["Une étape du scénario, liée à une application et à une action","Un client","Un tableau Google Sheets","Un abonnement payant"]'::jsonb, 0, 'Chaque bulle est un module : par exemple Google Sheets « Add a Row » ou Gmail « Send an Email ».');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 0, 1, 'À quoi sert « Run once » ?', '["Activer la facturation","Exporter le scénario","Lancer le scénario une fois, pour un test","Supprimer le scénario"]'::jsonb, 2, 'Après le test, les bulles montrent les données reçues et produites par chaque module.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 0, 2, 'Avec quel compte faire les connexions d''un scénario client ?', '["Avec les comptes du client","Avec votre compte personnel","Peu importe","Avec un compte inventé"]'::jsonb, 0, 'Si vous retirez votre compte à la fin de la mission, un scénario connecté à votre compte s''arrête.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 0, 3, 'Qu''est-ce qu''un paquet (bundle) ?', '["Un fichier PDF","Un module payant","Un ensemble de données qui circule dans le scénario, par exemple une ligne","Un forfait d''opérations"]'::jsonb, 2, 'Si le déclencheur trouve 5 nouvelles lignes, 5 paquets traversent le scénario.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 0, 4, 'Pourquoi éviter de planifier un scénario toutes les minutes sans raison ?', '["Ce n''est jamais un problème","Parce que c''est interdit","Parce que les e-mails partent en double","Il consomme des opérations même quand il ne trouve rien"]'::jsonb, 3, 'Le déclencheur compte à chaque vérification : un intervalle trop court épuise vite le quota.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 2, 1, 'Votre premier scénario complet', 9, 'Place à la construction. Dans cette leçon, vous construisez dans Make un scénario complet et utile, celui que l''on retrouve dans presque toutes les petites organisations : **une inscription arrive dans le tableau, un e-mail de bienvenue part, et le statut est mis à jour**. En chemin, vous apprendrez la correspondance des champs, la personnalisation d''un e-mail et la mise à jour d''une ligne.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire un scénario de 3 modules dans Make.
+> 2. Faire correspondre les champs d''un module à l''autre.
+> 3. Écrire un e-mail personnalisé avec les données du formulaire.
+> 4. Mettre à jour le statut d''une ligne après traitement.
+> 5. Tester le scénario de bout en bout.
+
+## Le scénario à construire
+
+```schema etapes
+titre: Inscription → e-mail de bienvenue → statut
+Google Sheets « Watch New Rows » : surveiller les nouvelles lignes du tableau d''inscriptions
+Gmail « Send an Email » : envoyer l''e-mail de bienvenue personnalisé
+Google Sheets « Update a Row » : écrire « Bienvenue envoyée » dans la colonne Statut
+```
+
+Le formulaire Google Forms écrit chaque réponse dans une feuille Google Sheets : surveiller cette feuille est souvent la façon la plus simple et la plus fiable de démarrer un scénario.
+
+## Module 1 : surveiller les nouvelles lignes
+
+1. Ajoutez le module **Google Sheets → Watch New Rows**.
+2. Choisissez la connexion au compte Google, puis le fichier et la feuille.
+3. Indiquez que la première ligne contient les titres des colonnes : les champs porteront leurs noms (Prénom, E-mail, Formation…), ce qui rend la suite plus lisible.
+4. Indiquez le nombre maximal de lignes à traiter à chaque exécution (par exemple 10) : c''est un garde-fou.
+5. Choisissez à partir d''où commencer (par exemple, seulement les nouvelles lignes à partir de maintenant).
+
+## Module 2 : l''e-mail personnalisé
+
+Ajoutez le module **Gmail → Send an Email** et remplissez ses champs avec la **correspondance** : pour chaque champ, cliquez et choisissez la donnée venant du module 1.
+
+| Champ du module Gmail | Ce qu''on y met | D''où vient la donnée |
+| --- | --- | --- |
+| Destinataire | L''e-mail de la personne | Colonne « E-mail » du module 1 |
+| Objet | « Bienvenue dans la formation » + le nom de la formation | Texte fixe + colonne « Formation » |
+| Contenu | Le message, avec le prénom et la date de début | Texte fixe + colonnes « Prénom » et « Date de début » |
+
+> [!exemple] Le contenu de l''e-mail
+> Bonjour {{Prénom}},
+>
+> Merci pour votre inscription à la formation {{Formation}}, qui commence le {{Date de début}} à Mahajanga.
+>
+> Vous recevrez un rappel la veille du premier cours. Pour toute question, répondez simplement à cet e-mail.
+>
+> L''équipe de Formation Mendrika
+>
+> *(Dans Make, chaque {{…}} est une donnée choisie dans la liste du module 1, qui apparaît comme une petite étiquette colorée.)*
+
+> [!cle] Tester d''abord sur une adresse de test
+> Pendant la construction, mettez **votre propre adresse** dans le champ Destinataire, ou utilisez des lignes de test avec vos adresses. Ce n''est qu''après tous les tests que vous remettez le champ « E-mail » de la personne. Ainsi, aucun e-mail de test ne part chez un vrai client.
+
+## Module 3 : mettre à jour le statut
+
+Ajoutez **Google Sheets → Update a Row**. Ce module a besoin de savoir **quelle ligne** modifier : le module 1 fournit le **numéro de ligne** (*Row number*) de chaque nouvelle ligne. Choisissez-le, puis indiquez la valeur à écrire dans la colonne Statut : « Bienvenue envoyée », et éventuellement la date du jour dans « Traité le ».
+
+```schema comparaison
+titre: Pourquoi mettre à jour le statut ?
+ton: mauvais-bon
+colonnes: Sans mise à jour | Avec mise à jour
+Personne ne sait quelles personnes ont reçu l''e-mail | L''assistante voit d''un coup d''œil qui l''a reçu
+En cas de relance ou de problème, risque d''envoyer deux fois | Les autres scénarios peuvent s''appuyer sur ce statut
+Impossible de rattraper proprement un oubli | Les lignes sans statut signalent un problème
+```
+
+## Tester de bout en bout
+
+```schema checklist
+titre: Le test complet
+[ ] Une réponse de test envoyée par le formulaire, avec votre adresse e-mail
+[ ] « Run once » : les 3 modules affichent une bulle sans erreur
+[ ] L''e-mail est bien reçu, avec le bon prénom, la bonne formation et la bonne date
+[ ] La ligne du tableau affiche « Bienvenue envoyée » et la date
+[ ] Une deuxième exécution ne renvoie pas l''e-mail à la même personne
+[ ] Une ligne avec un e-mail vide : que se passe-t-il ? (vous ajouterez un filtre à la leçon 3.3)
+```
+
+> [!madagascar] Les dates et les fuseaux horaires
+> Make utilise un fuseau horaire, réglé dans le profil et l''organisation. Si ce réglage n''est pas « Indian/Antananarivo » (ou le fuseau du client à l''étranger), les dates écrites dans le tableau ou les e-mails peuvent être décalées de quelques heures, et parfois tomber la veille. Vérifiez ce réglage dès le premier scénario d''un client.
+
+> [!erreur] Mettre à jour la mauvaise ligne
+> Le débutant écrit un numéro de ligne fixe (« 2 ») dans le module « Update a Row ». Toutes les inscriptions mettent à jour… la ligne 2. Le tableau affiche un seul statut, toujours écrasé. **Le numéro de ligne vient toujours du module précédent**, choisi dans la liste, jamais tapé à la main.
+
+> [!retenir]
+> - Un scénario utile en 3 modules : **surveiller, envoyer, mettre à jour**.
+> - La **correspondance** : chaque champ est choisi dans les données du module précédent.
+> - Un **nombre maximal** de lignes par exécution comme garde-fou.
+> - Les tests partent **sur une adresse de test** avant la mise en service.
+> - Le **numéro de ligne** vient du module 1, jamais tapé à la main.
+
+## Exercice pratique : votre premier scénario complet
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Construisez dans Make le scénario « Inscription → e-mail de bienvenue → statut » avec votre formulaire et votre tableau de la leçon 2.2.
+> 2. Rédigez un e-mail de bienvenue personnalisé avec au moins 3 données du formulaire.
+> 3. Faites le test complet avec la liste de contrôle, sur votre propre adresse.
+> 4. Vérifiez le fuseau horaire de votre compte Make.
+>
+> **À livrer** : des captures du scénario, de l''e-mail reçu et du tableau mis à jour, et votre liste de contrôle remplie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 1, 0, 'Quels sont les 3 modules du scénario d''inscription ?', '["Router, Iterator, Aggregator","Watch New Rows, Send an Email, Update a Row","Search Rows, Delete Row, Ignore","Webhook, Data store, Break"]'::jsonb, 1, 'On surveille les nouvelles lignes, on envoie l''e-mail personnalisé, puis on met à jour le statut.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 1, 1, 'Comment remplir le destinataire de l''e-mail ?', '["Taper « E-mail » à la main","Choisir le champ « E-mail » du module 1 dans la liste","Laisser vide","Mettre toujours la même adresse"]'::jsonb, 1, 'C''est la correspondance : la donnée vient du module précédent, pour chaque inscription.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 1, 2, 'Pourquoi tester d''abord sur une adresse de test ?', '["Parce que Gmail l''exige","Pour économiser des opérations","Pour qu''aucun e-mail de test ne parte chez un vrai client","Ce n''est pas utile"]'::jsonb, 2, 'On remet le vrai champ « E-mail » seulement après tous les tests.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 1, 3, 'D''où vient le numéro de la ligne à mettre à jour ?', '["Il est toujours égal à 2","On le tape à la main","Du module 1, qui le fournit pour chaque nouvelle ligne","Du module Gmail"]'::jsonb, 2, 'Un numéro tapé à la main mettrait toujours à jour la même ligne.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 1, 4, 'Pourquoi vérifier le fuseau horaire de Make ?', '["Pour accélérer le scénario","Pour que les dates écrites ne soient pas décalées","Pour réduire les coûts","Ce n''est pas utile"]'::jsonb, 1, 'Un mauvais fuseau peut faire tomber une date la veille dans le tableau ou l''e-mail.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 2, 2, 'Filtres, routeurs et fonctions', 10, 'Le scénario de la leçon précédente traite toutes les lignes de la même façon. Mais la réalité a des cas : une inscription sans e-mail, un débutant et un niveau avancé, une formation à Mahajanga et une autre en ligne. Les **filtres** arrêtent ce qui ne doit pas continuer, les **routeurs** envoient chaque cas sur son chemin, et les **fonctions** transforment les données (une date, un nom, un téléphone). Cette leçon vous apprend les trois.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Ajouter un filtre entre deux modules.
+> 2. Construire un routeur avec plusieurs chemins et un chemin de secours.
+> 3. Utiliser les fonctions de texte et de date les plus courantes.
+> 4. Normaliser une donnée avant de l''utiliser.
+> 5. Tester chaque chemin du routeur.
+
+## Les filtres
+
+Un filtre se place **sur la ligne entre deux modules** (en cliquant dessus). Il laisse passer le paquet seulement si une condition est vraie.
+
+| Condition | Opérateur (dans Make) | Exemple |
+| --- | --- | --- |
+| Le champ existe et n''est pas vide | « Exists » | Continuer seulement si l''e-mail existe |
+| Le texte est égal à | « Equal to » | Continuer seulement si Statut = Nouveau |
+| Le texte contient | « Contains » | Continuer si le message contient « urgent » |
+| Le nombre est supérieur à | « Greater than » | Continuer si le montant est supérieur à 500 000 |
+
+On peut combiner plusieurs conditions avec **ET** (toutes doivent être vraies) ou **OU** (une seule suffit). Donnez toujours un **nom** au filtre (« E-mail présent », « Statut Nouveau ») : la lecture du scénario devient beaucoup plus simple.
+
+## Les routeurs
+
+Le **routeur** (dans les outils de contrôle du flux, *Flow Control → Router*) divise le scénario en plusieurs chemins. Chaque chemin commence par un filtre.
+
+```schema comparaison
+titre: Un routeur selon le niveau
+colonnes: Chemin 1 : Débutant | Chemin 2 : Avancé | Chemin de secours
+Filtre : Niveau = Débutant | Filtre : Niveau = Avancé | Aucun des autres chemins ne correspond
+E-mail de bienvenue débutant, avec le planning des bases | E-mail de bienvenue avancé, avec le test de niveau | Statut « À traiter à la main » et alerte à l''assistante
+```
+
+> [!cle] Le chemin de secours
+> Make permet de marquer un chemin comme **chemin de secours** (*fallback route*) : il est pris seulement quand aucun autre chemin ne correspond. C''est l''endroit idéal pour le statut « À traiter à la main ». Ainsi, une valeur inattendue (un niveau mal écrit, un nouveau choix ajouté au formulaire) n''est jamais perdue.
+
+## Les fonctions : transformer les données
+
+Dans un champ de module, Make permet d''utiliser des **fonctions** (le petit panneau qui s''ouvre quand on clique dans un champ). Elles transforment une donnée avant de l''utiliser. Les fonctions de Make utilisent le point-virgule pour séparer leurs éléments.
+
+| Fonction | Ce qu''elle fait | Exemple |
+| --- | --- | --- |
+| `lower(texte)` | Met en minuscules | `lower(Niveau)` : « Débutant » devient « débutant » |
+| `trim(texte)` | Enlève les espaces au début et à la fin | `trim(E-mail)` |
+| `replace(texte; a; b)` | Remplace a par b | `replace(Téléphone; " "; "")` enlève les espaces |
+| `formatDate(date; format)` | Écrit une date dans un format | `formatDate(Date; "DD/MM/YYYY")` donne 18/05/2027 |
+| `if(condition; a; b)` | Donne a si la condition est vraie, sinon b | Afficher « en ligne » ou « à Mahajanga » selon le lieu |
+| `length(texte)` | Donne la longueur d''un texte | Vérifier qu''un numéro a le bon nombre de chiffres |
+
+Vous n''avez pas besoin de connaître toutes les fonctions : retenez qu''elles existent, cherchez-les dans le panneau, et **testez** chaque formule avec « Run once ». La documentation de Make décrit chaque fonction avec des exemples.
+
+## Normaliser avant d''utiliser
+
+```schema etapes
+titre: Normaliser un numéro de téléphone malgache
+Enlever les espaces, les points et les tirets (replace)
+Si le numéro commence par 0, remplacer ce 0 par +261
+Vérifier la longueur : sinon, statut « Téléphone à vérifier »
+Utiliser le numéro normalisé pour le message ou l''enregistrer dans le tableau
+```
+
+Pour garder le scénario lisible, on fait souvent la normalisation dans un module à part (l''outil *Set variable*, « définir une variable », dans les outils de Make) : il calcule le numéro propre une fois, et les modules suivants l''utilisent.
+
+> [!madagascar] Les choix écrits librement
+> Si le formulaire laisse écrire le niveau ou la ville librement, vous recevrez « debutant », « Débutant », « DÉBUTANT » et « debut ». Un filtre « Niveau = Débutant » laisserait passer seulement une partie. Deux solutions : une **liste déroulante** dans le formulaire (la meilleure), ou une fonction `lower` et un chemin de secours pour les autres cas.
+
+> [!exemple] Les sessions de Mahajanga et en ligne
+> Formation Mendrika propose ses formations à Mahajanga et en ligne. Rado ajoute un routeur à deux chemins : pour Mahajanga, l''e-mail donne l''adresse du centre et un repère (« en face de la station-service ») ; pour la formation en ligne, il donne le lien de la salle virtuelle. Le chemin de secours attrape une réponse « Majunga » écrite par un ancien formulaire : elle arrive chez l''assistante au lieu de partir sans adresse.
+
+> [!erreur] Le routeur sans chemin de secours
+> Le formulaire du client ajoute un troisième niveau, « Intermédiaire ». Le routeur n''a que deux chemins, Débutant et Avancé : les personnes de niveau intermédiaire ne reçoivent rien, et personne ne s''en aperçoit pendant trois semaines. **Chaque routeur a un chemin de secours** qui alerte un humain.
+
+> [!retenir]
+> - Un **filtre** sur la ligne entre deux modules, avec un nom clair.
+> - Un **routeur** : un chemin par cas, et toujours un **chemin de secours**.
+> - Les **fonctions** transforment les données : `lower`, `trim`, `replace`, `formatDate`, `if`, `length`.
+> - **Normaliser** avant d''utiliser, de préférence dans un module à part.
+> - **Tester chaque chemin** avec une ligne de test qui lui correspond.
+
+## Exercice pratique : filtres, routeur et fonctions
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Ajoutez au scénario de la leçon 3.2 un filtre « E-mail présent ».
+> 2. Ajoutez un routeur à 2 chemins selon le niveau (ou le lieu), avec un e-mail différent pour chacun, et un chemin de secours « À traiter à la main ».
+> 3. Écrivez la date de début au format JJ/MM/AAAA dans l''e-mail avec `formatDate`.
+> 4. Normalisez le téléphone (sans espaces, avec +261) dans un module « Set variable ».
+> 5. Testez 4 lignes : débutant, avancé, niveau inconnu, e-mail vide.
+>
+> **À livrer** : des captures du scénario et des résultats des 4 tests.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 2, 0, 'Où se place un filtre dans Make ?', '["Dans un tableau Google Sheets","Sur la ligne entre deux modules","Dans le nom du scénario","Dans les réglages du compte"]'::jsonb, 1, 'Le filtre laisse passer le paquet vers le module suivant seulement si sa condition est vraie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 2, 1, 'À quoi sert le chemin de secours d''un routeur ?', '["Envoyer tous les paquets deux fois","Supprimer les erreurs","Traiter les cas qui ne correspondent à aucun autre chemin","Accélérer le scénario"]'::jsonb, 2, 'Une valeur inattendue n''est jamais perdue : elle part en « À traiter à la main ».');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 2, 2, 'Que fait la fonction lower() ?', '["Elle supprime le texte","Elle traduit le texte","Elle calcule une somme","Elle met un texte en minuscules"]'::jsonb, 3, '« Débutant » et « DÉBUTANT » deviennent identiques, ce qui facilite les comparaisons.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 2, 3, 'Quelle fonction écrit une date au format JJ/MM/AAAA ?', '["formatDate","lower","trim","length"]'::jsonb, 0, 'formatDate(date; "DD/MM/YYYY") donne par exemple 18/05/2027.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 2, 4, 'Pourquoi normaliser le téléphone dans un module à part ?', '["Ce n''est jamais utile","Le calcul est fait une fois et le scénario reste lisible","Pour consommer plus d''opérations","Parce que c''est obligatoire"]'::jsonb, 1, 'Les modules suivants utilisent tous le même numéro propre, sans répéter la formule.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 2, 3, 'Chercher, mettre à jour et traiter des listes', 9, 'Beaucoup de besoins réels demandent de **chercher** une information existante, ou de traiter **plusieurs éléments** à la fois : retrouver un élève déjà inscrit, mettre à jour une commande, envoyer un rapport avec toutes les inscriptions de la semaine, traiter chaque article d''une commande. Cette leçon vous apprend à chercher et mettre à jour des lignes, puis à utiliser deux outils essentiels de Make : l''**itérateur** et l''**agrégateur**.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Chercher une ligne dans un tableau avant d''agir.
+> 2. Mettre à jour une ligne existante au lieu d''en créer une nouvelle.
+> 3. Découper une liste en éléments avec un itérateur.
+> 4. Rassembler plusieurs éléments avec un agrégateur.
+> 5. Construire un rapport hebdomadaire automatique.
+
+## Chercher avant d''agir
+
+Le module **Google Sheets → Search Rows** (rechercher des lignes) trouve les lignes qui remplissent une condition : même e-mail, même numéro de commande, statut « Inscrit ».
+
+```schema etapes
+titre: La règle anti-doublon dans Make
+Déclencheur : une nouvelle demande arrive (formulaire, webhook, e-mail)
+Search Rows : chercher une ligne avec le même e-mail dans le tableau
+Routeur, chemin 1 : aucune ligne trouvée → Add a Row (créer une nouvelle ligne)
+Routeur, chemin 2 : une ligne trouvée → Update a Row (mettre à jour, ou marquer « Doublon possible »)
+```
+
+Pour savoir si la recherche a trouvé quelque chose, on utilise le **nombre de résultats** fourni par le module, ou un filtre « le numéro de ligne existe ». Testez les deux cas : une personne nouvelle, une personne déjà présente.
+
+## L''itérateur : traiter chaque élément d''une liste
+
+> [!definition] Itérateur
+> Un module qui **découpe une liste** en éléments séparés. Une commande avec 3 articles devient 3 paquets ; chaque module suivant traite chaque article un par un. Dans Make, il se trouve dans les outils de contrôle du flux (*Flow Control → Iterator*).
+
+```schema comparaison
+titre: Une commande de 3 articles
+colonnes: Avant l''itérateur | Après l''itérateur
+1 paquet : la commande, avec une liste « articles » | 3 paquets : un par article
+Impossible d''ajouter une ligne par article directement | « Add a Row » ajoute 3 lignes dans le tableau de préparation
+La liste reste groupée | Chaque article a son produit, sa quantité, son prix
+```
+
+Beaucoup de modules produisent déjà plusieurs paquets sans itérateur (par exemple « Search Rows » produit un paquet par ligne trouvée). L''itérateur sert quand une liste se trouve **à l''intérieur** d''un seul paquet, comme les articles d''une commande ou les pièces jointes d''un e-mail.
+
+## L''agrégateur : rassembler plusieurs éléments
+
+> [!definition] Agrégateur
+> Le contraire de l''itérateur : il **rassemble plusieurs paquets en un seul**. Le *Text aggregator* (agrégateur de texte) colle les éléments dans un seul texte, par exemple une liste de noms pour un e-mail ; l''*Array aggregator* (agrégateur de tableau) les rassemble dans une liste. Les deux se trouvent dans les outils de Make.
+
+> [!exemple] Le rapport du lundi
+> Chaque lundi à 8 h, la directrice de Formation Mendrika veut recevoir la liste des inscriptions de la semaine passée. Rado construit : un déclencheur **planifié** chaque lundi à 8 h, un module « Search Rows » qui cherche les lignes inscrites dans les 7 derniers jours (un paquet par inscription), un **Text aggregator** qui assemble une ligne par inscription (« RAKOTO Fara – Bureautique – 03/05 »), puis un e-mail qui contient ce texte et le nombre total. La directrice reçoit un seul e-mail, clair, au lieu de demander le tableau.
+
+| Module | Paquets en entrée | Paquets en sortie |
+| --- | --- | --- |
+| Déclencheur planifié (lundi 8 h) | — | 1 |
+| Search Rows (inscriptions de la semaine) | 1 | 12 (une par inscription) |
+| Text aggregator | 12 | 1 (un texte avec les 12 lignes) |
+| Gmail Send an Email | 1 | 1 e-mail |
+
+```schema cycle
+titre: Itérateur et agrégateur
+Un paquet contient une liste
+L''itérateur la découpe : un paquet par élément
+Les modules traitent chaque élément
+L''agrégateur rassemble les résultats en un seul paquet
+```
+
+> [!cle] Où placer l''agrégateur
+> Un agrégateur doit savoir **quels paquets rassembler** : on lui indique le module de départ (la recherche ou l''itérateur). Si l''e-mail est placé avant l''agrégateur, il part une fois par élément : 12 e-mails au lieu d''un. Regardez toujours le nombre de paquets dans les bulles de test.
+
+## Garder des informations entre deux exécutions
+
+Make propose aussi des **data stores** (magasins de données) : de petites tables internes à Make, utiles pour retenir une information d''une exécution à l''autre (par exemple, le dernier numéro de facture utilisé). Pour un débutant, un onglet de Google Sheets fait souvent le même travail, avec l''avantage d''être visible par le client.
+
+> [!madagascar] Les rapports en ariary
+> Dans un rapport automatique, les montants sortent souvent bruts : 150000. Pour un client malgache, présentez-les lisiblement (150 000 Ar) avec la fonction de formatage des nombres de Make, et vérifiez le total dans le tableau avant d''envoyer le premier rapport à la direction. Une erreur de total dans un rapport financier fait perdre la confiance en toute l''automatisation.
+
+> [!erreur] L''e-mail envoyé 12 fois
+> Le débutant construit le rapport du lundi sans agrégateur : « Search Rows » trouve 12 inscriptions, et le module Gmail envoie… 12 e-mails à la directrice, un par inscription. **Quand plusieurs paquets doivent devenir un seul message, il faut un agrégateur** entre la recherche et l''envoi.
+
+> [!retenir]
+> - **Search Rows** cherche avant d''agir : créer si absent, mettre à jour si présent.
+> - L''**itérateur** découpe une liste en paquets ; l''**agrégateur** les rassemble.
+> - Un **rapport automatique** : déclencheur planifié, recherche, agrégateur, envoi.
+> - Regardez toujours le **nombre de paquets** dans les bulles de test.
+> - Pour retenir une information : un **onglet Google Sheets** ou un **data store**.
+
+## Exercice pratique : anti-doublon et rapport
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Ajoutez la règle anti-doublon à votre scénario d''inscription : « Search Rows » sur l''e-mail, puis créer ou mettre à jour.
+> 2. Testez avec une nouvelle personne, puis avec la même personne une deuxième fois.
+> 3. Construisez un deuxième scénario : le rapport hebdomadaire des inscriptions, avec un agrégateur de texte et un seul e-mail.
+> 4. Vérifiez dans les bulles le nombre de paquets à chaque étape.
+>
+> **À livrer** : des captures des deux scénarios, des tests et de l''e-mail de rapport reçu.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 3, 0, 'À quoi sert le module Search Rows avant d''ajouter une ligne ?', '["Envoyer un e-mail","Compter les opérations","Supprimer le tableau","Vérifier si l''élément existe déjà, pour éviter les doublons"]'::jsonb, 3, 'Si la personne existe déjà, on met à jour sa ligne au lieu d''en créer une nouvelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 3, 1, 'Que fait un itérateur ?', '["Il arrête le scénario","Il découpe une liste en paquets séparés","Il traduit les données","Il rassemble plusieurs paquets en un seul"]'::jsonb, 1, 'Une commande de 3 articles devient 3 paquets, traités un par un.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 3, 2, 'Que fait un agrégateur de texte ?', '["Il corrige les fautes","Il rassemble plusieurs paquets dans un seul texte","Il découpe un texte","Il envoie un e-mail"]'::jsonb, 1, 'Il permet par exemple d''envoyer une seule liste des 12 inscriptions dans un e-mail.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 3, 3, 'Le rapport du lundi envoie 12 e-mails au lieu d''un. Que manque-t-il ?', '["Une connexion Gmail","Un agrégateur entre la recherche et l''envoi","Un itérateur","Un deuxième déclencheur"]'::jsonb, 1, 'Sans agrégateur, le module Gmail s''exécute une fois par paquet trouvé.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 3, 4, 'Quel déclencheur utiliser pour un rapport chaque lundi à 8 h ?', '["Une nouvelle ligne","Un webhook","Un déclencheur planifié","Un nouvel e-mail"]'::jsonb, 2, 'Le rapport ne dépend pas d''un événement mais d''un moment précis de la semaine.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 2, 4, 'Planification, historique, erreurs et webhooks', 10, 'Un scénario testé doit maintenant tourner seul, chaque jour, pendant des mois. Il faut décider **quand** il s''exécute, savoir **ce qui s''est passé** quand quelque chose ne va pas, et prévoir **ce qu''il fait en cas d''erreur**. Cette leçon vous apprend la planification, l''historique, la gestion des erreurs et les webhooks de Make. Elle se termine par le projet du module 3 : construire l''automatisation de votre dossier de conception.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir la planification d''un scénario.
+> 2. Lire l''historique des exécutions.
+> 3. Ajouter un gestionnaire d''erreur à un module.
+> 4. Recevoir des données par webhook.
+> 5. Mettre un scénario en service proprement.
+
+## La planification
+
+L''interrupteur de planification (en bas de l''éditeur) **active** le scénario. Vous choisissez ensuite quand il s''exécute.
+
+| Planification | Quand l''utiliser | Exemple |
+| --- | --- | --- |
+| **À intervalles réguliers** | Pour surveiller un tableau ou une boîte e-mail | Toutes les 15 minutes |
+| **Chaque jour, chaque semaine** | Pour les rapports et les rappels | Chaque lundi à 8 h ; chaque jour à 18 h pour les rappels du lendemain |
+| **Immédiatement** | Pour les déclencheurs instantanés, comme un webhook | Dès qu''une commande arrive du site |
+
+L''intervalle minimal dépend de l''offre (les offres gratuites imposent souvent un intervalle plus long). Choisissez l''intervalle **le plus long acceptable pour le client** : une vérification toutes les minutes consomme beaucoup d''opérations pour rien.
+
+## L''historique des exécutions
+
+L''**historique** (*History*) liste chaque exécution du scénario : date, durée, réussite ou erreur, opérations consommées. En ouvrant une exécution, on retrouve les bulles et les données de chaque module, comme pendant un test.
+
+```schema checklist
+titre: La surveillance de la première semaine
+[ ] Ouvrir l''historique chaque jour
+[ ] Vérifier qu''il n''y a pas d''erreur, ou en comprendre la cause
+[ ] Comparer le nombre d''exécutions au nombre réel d''inscriptions
+[ ] Vérifier dans le tableau que tous les statuts sont à jour
+[ ] Surveiller la consommation d''opérations
+```
+
+## La gestion des erreurs
+
+Par défaut, quand un module rencontre une erreur (un service en panne, une donnée invalide), l''exécution s''arrête et Make envoie une notification. Make permet aussi d''ajouter un **gestionnaire d''erreur** (*error handler*) à un module, avec un clic droit sur la bulle.
+
+| Gestionnaire | Ce qu''il fait | Quand l''utiliser |
+| --- | --- | --- |
+| **Ignore** | Ignore l''erreur et passe au paquet suivant | Rarement : l''erreur est perdue |
+| **Resume** | Remplace le résultat par une valeur choisie et continue | Une valeur de secours raisonnable existe |
+| **Break** | Arrête et garde l''exécution incomplète pour la reprendre plus tard | Un service temporairement en panne |
+| **Rollback** et **Commit** | Annule ou valide ce qui a été fait, selon les modules | Cas avancés |
+
+> [!cle] Un chemin d''erreur utile
+> Une bonne pratique simple : derrière un module fragile (une étape d''IA, un service externe), un chemin d''erreur qui **écrit « À traiter à la main » dans le tableau** et **envoie une alerte**. L''élément n''est pas perdu, et une personne le traite. Activez aussi, dans les réglages du scénario, la conservation des **exécutions incomplètes**, pour pouvoir les reprendre après une panne.
+
+## Recevoir des données par webhook
+
+```schema etapes
+titre: Un scénario déclenché par webhook
+Ajouter le module Webhooks « Custom webhook » comme déclencheur
+Copier l''adresse fournie par Make
+La donner à l''outil qui envoie (site web, formulaire, logiciel)
+Envoyer une donnée de test pour que Make apprenne la structure
+Construire la suite du scénario avec ces champs
+```
+
+L''adresse d''un webhook est **secrète** : quiconque la connaît peut envoyer des données au scénario. Ne la publiez pas, et ajoutez si possible un filtre qui vérifie qu''une donnée attendue est bien présente.
+
+> [!exemple] Les commandes du site
+> Une boutique en ligne de Toamasina a un site qui peut envoyer chaque commande à une adresse web. Rado crée un « Custom webhook » dans Make, donne l''adresse au développeur du site, et reçoit une commande de test. Le scénario ajoute la commande au tableau de préparation, prévient la personne qui prépare les colis et envoie une confirmation au client. Les commandes arrivent en quelques secondes, au lieu d''attendre la vérification suivante.
+
+> [!madagascar] Les alertes quand vous êtes coupé
+> Les alertes d''erreur de Make arrivent par e-mail. Si vous êtes privé de connexion pendant une journée, personne ne les voit. Ajoutez le client ou une autre personne de son équipe aux destinataires des alertes, et prévoyez avec lui une procédure simple : « Si le tableau n''a pas été mis à jour depuis ce matin, traiter les inscriptions depuis le formulaire. »
+
+> [!erreur] Activer sans regarder l''historique
+> Le débutant active son scénario un vendredi soir et part en week-end. Le lundi, il découvre dans l''historique que le scénario s''est arrêté samedi matin sur une erreur (un champ vide) : 40 inscriptions n''ont reçu aucun e-mail. **La première semaine, on regarde l''historique chaque jour**, et les alertes d''erreur sont envoyées à deux personnes.
+
+> [!retenir]
+> - La **planification** : l''intervalle le plus long acceptable, ou un déclencheur instantané.
+> - L''**historique** montre chaque exécution, ses données et ses erreurs.
+> - Un **gestionnaire d''erreur** sur les modules fragiles : chemin « À traiter à la main » et alerte.
+> - Le **webhook** reçoit les données instantanément ; son adresse est secrète.
+> - La première semaine : **historique chaque jour**, alertes à deux personnes.
+
+## Exercice pratique : mise en service
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Planifiez votre scénario d''inscription avec un intervalle raisonnable, et le rapport chaque lundi à 8 h.
+> 2. Ajoutez un gestionnaire d''erreur au module d''envoi d''e-mail : statut « À traiter à la main » et alerte.
+> 3. Créez un petit scénario avec un « Custom webhook » et envoyez-lui une donnée de test (par exemple depuis un outil en ligne d''envoi de requêtes ou un formulaire qui accepte les webhooks).
+> 4. Pendant 3 jours, consultez l''historique et notez ce que vous observez.
+>
+> **À livrer** : des captures de la planification, du gestionnaire d''erreur, du webhook et vos notes d''historique.
+
+## Projet du module 3 : construire votre automatisation
+
+> [!projet] Projet du module · 2 heures 30
+> Construisez dans Make l''automatisation décrite dans votre dossier de conception (module 2).
+> 1. **Le scénario principal** : déclencheur, filtres, routeur avec chemin de secours, actions, mise à jour du statut.
+> 2. **Les données** : normalisation d''au moins un champ et règle anti-doublon.
+> 3. **Un scénario secondaire** : un rapport ou un rappel planifié, avec agrégateur si besoin.
+> 4. **Les erreurs** : gestionnaire d''erreur et alertes à deux personnes.
+> 5. **Les tests** : au moins 8 cas, dont tous les cas particuliers de votre dossier, sur des adresses de test.
+> 6. **La vidéo** : une courte vidéo d''écran (2 minutes) qui montre le scénario en action avec des données fictives.
+>
+> **À livrer** : des captures des scénarios, votre tableau de tests et la vidéo. C''est la première pièce technique de votre portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 4, 0, 'Quel intervalle choisir pour un scénario planifié ?', '["Le plus court possible","Le plus long acceptable pour le client","Au hasard","Une fois par an"]'::jsonb, 1, 'Un intervalle trop court consomme des opérations pour rien ; quelques minutes suffisent souvent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 4, 1, 'Que montre l''historique d''un scénario ?', '["La liste des clients","Les factures","Chaque exécution, avec ses données, ses erreurs et ses opérations","Le code source de Make"]'::jsonb, 2, 'On y retrouve les bulles de chaque exécution, comme pendant un test.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 4, 2, 'Quel gestionnaire d''erreur garde l''exécution pour la reprendre plus tard ?', '["Ignore","Break","Resume","Aucun"]'::jsonb, 1, 'Break arrête et conserve l''exécution incomplète, utile quand un service est temporairement en panne.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 4, 3, 'Pourquoi l''adresse d''un webhook doit-elle rester secrète ?', '["Parce qu''elle change chaque jour","Parce qu''elle est payante","Elle n''a pas besoin d''être secrète","Quiconque la connaît peut envoyer des données au scénario"]'::jsonb, 3, 'On ne la publie pas, et on vérifie si possible qu''une donnée attendue est présente.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 2, 4, 4, 'Que faire pendant la première semaine après la mise en service ?', '["Désactiver les alertes","Consulter l''historique chaque jour, avec des alertes envoyées à deux personnes","Ne plus jamais regarder le scénario","Supprimer l''historique"]'::jsonb, 1, 'Les erreurs de la première semaine révèlent les cas oubliés pendant les tests.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 3, 'Zapier, l''IA dans les scénarios et la mise en service', 'Construire des Zaps, ajouter une étape d''IA pour classer et extraire, préparer des brouillons à partir d''une fiche officielle, tester, surveiller et documenter, puis estimer et maîtriser les coûts.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 3, 0, 'Zapier : vos premiers Zaps', 10, '**Zapier** est l''autre grande plateforme d''automatisation. Moins visuelle que Make, elle présente les étapes les unes sous les autres, comme une liste, et elle est réputée pour sa simplicité et pour le très grand nombre d''applications qu''elle relie. Beaucoup de clients, surtout à l''étranger, l''utilisent déjà : un bon spécialiste sait travailler avec les deux. Cette leçon vous fait construire vos premiers Zaps.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Comparer Make et Zapier pour choisir l''outil adapté.
+> 2. Construire un Zap avec un déclencheur et plusieurs actions.
+> 3. Ajouter un filtre et des chemins.
+> 4. Transformer des données avec Formatter.
+> 5. Lire l''historique des Zaps.
+
+## Make ou Zapier ?
+
+| Point | Make | Zapier |
+| --- | --- | --- |
+| **Présentation** | Scénarios visuels en forme de schéma | Étapes présentées les unes sous les autres |
+| **Points forts** | Très souple : routeurs, itérateurs, transformation de données | Très simple à prendre en main, très grand nombre d''applications |
+| **Unité de mesure** | Opérations (chaque module exécuté compte) | Tâches (chaque action réussie compte) |
+| **Pour qui** | Scénarios avec beaucoup de cas et de données | Équipes qui veulent des automatisations simples, vite |
+
+Les offres, les limites et les noms des unités changent souvent : vérifiez sur les sites officiels. En pratique, **le meilleur outil est souvent celui que le client utilise déjà**, ou celui qui relie le mieux ses applications.
+
+## Le vocabulaire de Zapier
+
+```schema chiffres
+titre: Les mots de Zapier
+Zap : un scénario d''automatisation
+Trigger : le déclencheur
+Action : une étape qui fait quelque chose
+Filter : une condition pour continuer
+Paths : plusieurs chemins selon les cas (l''équivalent du routeur)
+Formatter : un outil pour transformer textes, dates et nombres
+```
+
+## Votre premier Zap
+
+```schema etapes
+titre: Un Zap de prise de rendez-vous
+Trigger : nouvelle ligne dans Google Sheets (demande de rendez-vous)
+Filter : seulement si la colonne Statut vaut « Nouveau »
+Action : créer un événement dans Google Agenda
+Action : envoyer un e-mail de confirmation avec la date
+Action : mettre à jour la ligne, Statut = « Confirmé »
+```
+
+Comme dans Make, chaque étape se **teste** : Zapier récupère une donnée d''exemple au moment de configurer le déclencheur, puis vous propose ses champs dans les étapes suivantes. Testez chaque étape avant de passer à la suivante, et utilisez des adresses de test.
+
+> [!attention] La dernière étape compte
+> La mise à jour du statut à « Confirmé » est essentielle : elle évite de traiter deux fois la même ligne si la ligne est modifiée ou si le Zap se relance. C''est le même garde-fou que dans Make.
+
+## Filtres et chemins
+
+Le **Filter** arrête le Zap si la condition est fausse : l''action suivante ne s''exécute pas, et aucune tâche n''est consommée pour la suite. **Paths** crée plusieurs branches, chacune avec sa règle.
+
+```schema comparaison
+titre: Les chemins d''un Zap de contact
+colonnes: Chemin A : Devis | Chemin B : Question | Chemin C : Autre
+Règle : le type de demande est « Devis » | Règle : le type est « Question » | Règle : aucun des autres
+Ajouter au tableau des devis, alerter le commercial | Envoyer la réponse type, avec le lien de la FAQ | Statut « À traiter à la main »
+```
+
+Certaines fonctions (chemins, étapes multiples, certaines applications) peuvent être réservées aux offres payantes : vérifiez ce que permet l''offre du client avant de concevoir le Zap.
+
+## Formatter : transformer les données
+
+**Formatter by Zapier** est un outil intégré qui transforme les données entre deux étapes.
+
+| Besoin | Fonction de Formatter | Exemple |
+| --- | --- | --- |
+| Écrire une date dans un autre format | Date / Time → Format | 2027-05-18 devient 18/05/2027 |
+| Mettre en majuscules ou minuscules | Text → Uppercase, Lowercase | « rakoto » devient « RAKOTO » |
+| Remplacer un texte | Text → Replace | Enlever les espaces d''un téléphone |
+| Extraire un morceau de texte | Text → Split, Extract | Garder le prénom seul |
+| Calculer | Numbers → Spreadsheet-style formula | Calculer un total ou une remise |
+
+> [!exemple] Le cabinet de kinésithérapie à Lyon
+> Une cliente de Rado, kinésithérapeute à Lyon, utilise déjà Zapier. Elle veut que chaque demande de rendez-vous de son site crée un événement dans son agenda et envoie une confirmation. Rado construit le Zap en une heure, avec un Formatter pour écrire la date à la française, et un filtre qui ignore les demandes de test. Il programme les heures de l''agenda dans le **fuseau de Paris**, pas celui d''Antananarivo.
+
+> [!madagascar] Choisir l''outil selon le client
+> Les clients malgaches qui débutent n''ont souvent aucun outil : vous pouvez leur proposer Make, souvent apprécié pour sa souplesse. Les clients européens ou canadiens ont parfois déjà un abonnement Zapier, utilisé par leur équipe. Ne leur imposez pas votre outil préféré : **travaillez dans leurs outils**, et proposez un changement seulement s''il apporte un vrai gain.
+
+## L''historique des Zaps
+
+L''**historique des Zaps** (*Zap history*) liste chaque exécution : réussie, filtrée (arrêtée par un filtre) ou en erreur. En l''ouvrant, on voit les données de chaque étape. Comme dans Make, la première semaine, on le consulte chaque jour.
+
+> [!erreur] Un Zap par cas, sans chemins
+> Pour gérer trois types de demandes, le débutant crée trois Zaps séparés, chacun avec le même déclencheur et un filtre différent. Le jour où le formulaire change, il faut tout modifier trois fois, et l''un des Zaps est oublié. **Quand un même déclencheur mène à plusieurs cas, utilisez Paths** (ou un routeur dans Make) dans un seul scénario, avec un chemin de secours.
+
+> [!retenir]
+> - Make : **visuel et souple** ; Zapier : **simple et très connecté** ; le meilleur outil est souvent **celui du client**.
+> - Zap = **Trigger + Actions**, avec **Filter** et **Paths**.
+> - **Formatter** transforme dates, textes et nombres.
+> - La **mise à jour du statut** évite les doubles traitements.
+> - L''**historique des Zaps** se consulte chaque jour la première semaine.
+
+## Exercice pratique : vos premiers Zaps
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez un compte gratuit Zapier.
+> 2. Construisez le Zap de prise de rendez-vous : nouvelle ligne → filtre → événement d''agenda → e-mail → mise à jour du statut.
+> 3. Ajoutez un Formatter pour écrire la date au format JJ/MM/AAAA dans l''e-mail.
+> 4. Si votre offre le permet, ajoutez des chemins selon le type de rendez-vous ; sinon, décrivez-les sur papier.
+> 5. Testez 3 lignes et consultez l''historique.
+>
+> **À livrer** : des captures du Zap, des tests et de l''historique, et une comparaison en 5 lignes avec votre scénario Make.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 0, 0, 'Comment s''appelle un scénario dans Zapier ?', '["Un module","Un routeur","Un Zap","Un bundle"]'::jsonb, 2, 'Un Zap se compose d''un déclencheur (Trigger) et d''actions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 0, 1, 'Quel est souvent le meilleur outil pour un client ?', '["Le plus cher","Celui qu''il utilise déjà, s''il relie bien ses applications","Toujours Zapier","Toujours Make"]'::jsonb, 1, 'Travailler dans les outils du client évite de changer ses habitudes sans vrai gain.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 0, 2, 'À quoi sert Paths dans Zapier ?', '["Créer plusieurs chemins selon les cas","Supprimer les tâches","Payer l''abonnement","Changer la couleur du Zap"]'::jsonb, 0, 'C''est l''équivalent du routeur de Make : un chemin par cas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 0, 3, 'Que fait Formatter by Zapier ?', '["Il crée des formulaires","Il remplace l''IA","Il envoie des e-mails","Il transforme dates, textes et nombres entre deux étapes"]'::jsonb, 3, 'Par exemple, il écrit une date au format JJ/MM/AAAA ou enlève les espaces d''un téléphone.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 0, 4, 'Pourquoi éviter un Zap séparé pour chaque cas d''un même déclencheur ?', '["Ce n''est pas un problème","Pour économiser de l''électricité","Parce que Zapier l''interdit","Un changement doit être fait plusieurs fois et un Zap risque d''être oublié"]'::jsonb, 3, 'Un seul Zap avec des chemins et un chemin de secours reste cohérent et facile à modifier.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 3, 1, 'Ajouter une étape d''IA : classer et extraire', 10, 'Vous savez écrire une consigne testée (module 2) et construire un scénario (module 3). Il est temps de les assembler : ajouter une **étape d''IA** dans un scénario, pour classer des messages ou en extraire des informations, puis utiliser sa réponse pour choisir le bon chemin. C''est le cœur du métier de spécialiste automatisation **et IA**. Cette leçon vous montre comment le faire de façon fiable.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Ajouter une étape d''IA dans Make ou Zapier.
+> 2. Envoyer les bonnes données à l''IA, et seulement celles-là.
+> 3. Lire la réponse JSON de l''IA dans le scénario.
+> 4. Router selon la réponse, avec un chemin pour les réponses invalides.
+> 5. Extraire des informations d''un texte libre vers un tableau.
+
+## Les étapes d''IA dans les plateformes
+
+Make et Zapier proposent des modules pour les principaux services d''IA (OpenAI, Anthropic, Google et d''autres), ainsi que leurs propres fonctions d''IA. Pour utiliser un service d''IA externe, il faut en général une **connexion** avec une **clé d''API** du compte qui paie (leçon 1.5) : c''est le client qui crée ce compte et l''enregistre dans la plateforme.
+
+```schema etapes
+titre: Le scénario de tri des messages
+Déclencheur : un nouvel e-mail arrive dans la boîte « contact »
+Préparer : garder seulement le texte du message, sans signature ni pièces jointes
+IA : la consigne de classement renvoie {"categorie": "...", "urgence": "..."}
+Lire : analyser le JSON pour obtenir categorie et urgence comme des champs
+Router : un chemin par catégorie, et un chemin pour les réponses invalides
+```
+
+## Envoyer les bonnes données
+
+Dans le champ de la consigne, le texte fixe est écrit une fois ; la donnée variable est insérée par correspondance, à l''endroit prévu (« Message : {{texte du message}} »).
+
+```schema comparaison
+titre: Que transmettre à l''IA ?
+ton: mauvais-bon
+colonnes: Trop de données | Le nécessaire
+Tout l''e-mail, avec l''historique de la conversation | Le dernier message, nettoyé
+Le nom, le téléphone et l''adresse du client | Seulement le texte utile au classement
+La liste complète des clients pour « donner du contexte » | Les catégories et les règles, dans la consigne
+```
+
+Moins de texte envoyé, c''est aussi **moins cher** : les services d''IA facturent souvent selon la quantité de texte traitée.
+
+## Lire la réponse JSON
+
+L''IA renvoie un **texte** qui contient un JSON. Pour l''utiliser, le scénario doit le **transformer en champs** : dans Make, avec le module « JSON → Parse JSON » ; dans Zapier, avec une étape de Formatter ou une étape d''IA qui fournit directement des champs structurés, selon les options disponibles. Certains modules d''IA proposent eux-mêmes une sortie structurée.
+
+| Réponse de l''IA | Le JSON est-il lisible ? | Chemin |
+| --- | --- | --- |
+| `{"categorie": "commande", "urgence": "haute"}` | Oui | Commande, urgence haute |
+| `{"categorie": "question", "urgence": "normale"}` | Oui | Question |
+| `Voici le résultat : {"categorie": "autre"}` | Non (texte en trop) | À traiter à la main |
+| `{"categorie": "Commande urgente"}` | Lisible, mais valeur hors liste | À traiter à la main |
+
+> [!cle] Deux vérifications, pas une
+> Un JSON **lisible** ne suffit pas : il faut aussi que la **valeur** fasse partie de la liste prévue. Les filtres de chaque chemin vérifient la valeur exacte (`commande`, `question`, `reclamation`) ; tout le reste, y compris une erreur de lecture du JSON, part sur le chemin de secours « À traiter à la main ».
+
+## Router selon la réponse
+
+```schema comparaison
+titre: Les chemins du tri des messages
+colonnes: Commande | Réclamation urgente | Le reste
+Ajouter au tableau des commandes, statut « Nouveau » | Alerte immédiate au responsable, avec le message | Question : brouillon de réponse (leçon 4.3)
+La gérante confirme ensuite | Le responsable rappelle le client | Autre ou invalide : « À traiter à la main »
+```
+
+## Extraire des informations
+
+L''IA peut aussi **extraire** des champs d''un texte libre : un e-mail de commande écrit à la main devient une ligne propre du tableau.
+
+> [!exemple] Les commandes par e-mail du grossiste
+> Un grossiste en épices de Toamasina reçoit des commandes par e-mail, écrites librement : « Bonjour, pour la semaine prochaine il me faudrait 20 kg de poivre et 5 kg de vanille, livraison à Antsirabe. » Rado ajoute une étape d''extraction qui renvoie `{"client": "...", "produits": [{"produit": "poivre", "quantite_kg": 20}, ...], "ville": "Antsirabe", "date_souhaitee": null}`. Un itérateur ajoute une ligne par produit dans le tableau des commandes, avec le statut « À vérifier ». Le commercial vérifie en un coup d''œil, au lieu de tout recopier.
+
+> [!madagascar] Les coûts de l''IA en devises
+> Les services d''IA facturent en dollars ou en euros, selon la quantité de texte traitée. Pour un petit volume (quelques centaines de messages courts par mois), le coût est souvent modeste, mais il augmente vite avec de longs textes ou un modèle très puissant. Estimez le coût avec le client avant la mise en service, choisissez un modèle adapté à la tâche (un classement simple n''a pas besoin du modèle le plus cher), et fixez une **limite de dépense** dans le compte du service quand c''est possible.
+
+> [!erreur] Faire confiance à la valeur extraite
+> L''étape d''extraction renvoie un montant de 150 000 Ar… alors que l''e-mail disait « 15 000 Ar ». Le scénario crée directement une facture avec ce montant. **Les valeurs extraites par l''IA arrivent avec un statut « À vérifier »**, surtout pour les montants, les dates et les quantités ; un humain valide avant toute action qui engage de l''argent.
+
+> [!retenir]
+> - Une étape d''IA = **consigne testée + données nécessaires + connexion au compte du client**.
+> - La réponse est **analysée en JSON**, puis la **valeur** est vérifiée.
+> - Un **routeur** par catégorie, et un chemin de secours pour l''invalide et l''inconnu.
+> - L''**extraction** transforme un texte libre en ligne de tableau, au statut « À vérifier ».
+> - Les **coûts d''IA** s''estiment, se limitent, et se paient par le client.
+
+## Exercice pratique : un tri automatique des messages
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Dans Make (ou Zapier), construisez le scénario de tri : déclencheur, étape d''IA avec votre consigne v2 (leçon 2.4), lecture du JSON, routeur avec chemin de secours.
+> 2. Si vous n''avez pas accès à un service d''IA payant, utilisez la fonction d''IA intégrée de la plateforme si votre offre la propose, ou simulez l''étape avec des réponses JSON écrites à la main.
+> 3. Testez avec 10 messages de votre jeu de test, dont un qui produit une réponse invalide.
+> 4. Ajoutez une étape d''extraction (nom, date, montant) qui écrit une ligne « À vérifier » dans un tableau.
+>
+> **À livrer** : des captures du scénario, le tableau des 10 tests et la ligne extraite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 1, 0, 'Que faut-il pour utiliser un service d''IA externe dans un scénario ?', '["Rien, c''est gratuit et illimité","Le mot de passe personnel du client","Un formulaire Google","Une connexion avec la clé d''API du compte du client"]'::jsonb, 3, 'La clé d''API relie la plateforme au compte qui paie ; elle reste dans la connexion sécurisée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 1, 1, 'Pourquoi envoyer seulement le message nettoyé à l''IA ?', '["Pour que l''IA se trompe davantage","Ce n''est pas important","Parce que l''historique est interdit","Moins de données personnelles, et un coût plus faible"]'::jsonb, 3, 'On envoie le strict nécessaire : c''est plus sûr et moins cher.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 1, 2, 'Que faire de la réponse texte de l''IA avant de router ?', '["La copier à la main","L''analyser en JSON pour obtenir des champs","La supprimer","L''envoyer au client"]'::jsonb, 1, 'Dans Make, le module Parse JSON transforme le texte en champs utilisables par les filtres.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 1, 3, 'L''IA renvoie {"categorie": "Commande urgente"}. Quel chemin prendre ?', '["Le chemin de secours « À traiter à la main »","Le chemin Commande","Aucun : supprimer le message","Le chemin Réclamation"]'::jsonb, 0, 'Le JSON est lisible, mais la valeur ne fait pas partie de la liste prévue.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 1, 4, 'Quel statut donner aux valeurs extraites par l''IA (montant, date) ?', '["« À vérifier », validé par un humain avant toute action financière","Aucun statut","« Validé » directement","« Payé »"]'::jsonb, 0, 'L''IA peut se tromper sur un montant ; une facture fausse coûte cher.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 3, 2, 'Des brouillons à partir d''une fiche officielle', 9, 'Rédiger les réponses aux questions fréquentes prend des heures chaque semaine : prix, horaires, adresse, programme, conditions d''inscription. L''IA peut préparer ces réponses en quelques secondes… à condition de ne **jamais inventer**. La méthode : lui donner une **fiche d''informations officielle**, lui interdire d''en sortir, et laisser un humain relire chaque brouillon avant l''envoi. Cette leçon vous apprend à construire ce scénario, l''un des plus demandés.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rédiger une fiche d''informations officielle avec le client.
+> 2. Écrire une consigne de rédaction limitée à cette fiche.
+> 3. Enregistrer la réponse comme brouillon plutôt que l''envoyer.
+> 4. Prévoir le cas où l''information manque.
+> 5. Mettre à jour la fiche quand les informations changent.
+
+## La fiche d''informations officielle
+
+> [!definition] Fiche d''informations officielle
+> Un document court, validé par le client, qui rassemble toutes les informations que l''IA a le droit d''utiliser : prix, horaires, adresse, programmes, conditions, moyens de paiement. Elle porte une **date de mise à jour**. L''IA ne doit répondre qu''à partir de cette fiche.
+
+| Rubrique | Exemple pour Formation Mendrika |
+| --- | --- |
+| Formations et prix | Bureautique : 180 000 Ar ; Comptabilité de base : 250 000 Ar |
+| Dates des prochaines sessions | Bureautique : à partir du lundi 7 juin 2027 |
+| Horaires | Du lundi au vendredi, 8 h – 12 h ou 14 h – 17 h |
+| Adresse | Centre-ville de Mahajanga, avec un repère précis |
+| Inscription | Formulaire en ligne ; acompte de 50 % par Mobile Money |
+| Ce que nous ne faisons pas | Pas de formation à domicile ; pas de paiement en plusieurs fois au-delà de 2 versements |
+
+*(Informations données en exemple.)*
+
+## La consigne de rédaction
+
+```schema etapes
+titre: Les règles d''une consigne de brouillon
+Rôle : tu rédiges un brouillon de réponse pour l''assistante du centre
+Source unique : tu utilises uniquement la fiche d''informations ci-dessous
+Interdit : n''invente aucun prix, aucune date, aucune condition
+Information absente : réponds MANQUANT au lieu de rédiger
+Ton : vouvoiement, chaleureux, 5 lignes maximum, en français
+Données : la fiche, puis le message du client
+```
+
+> [!exemple] Une consigne de brouillon
+> « Tu rédiges un brouillon de réponse pour l''assistante du centre de formation Mendrika, à Mahajanga. Utilise **uniquement** les informations de la fiche ci-dessous. N''invente aucun prix, aucune date et aucune condition. Si la réponse à la question n''est pas dans la fiche, réponds uniquement par le mot MANQUANT. Écris en français, avec le vouvoiement, sur un ton chaleureux, en 5 lignes au maximum, sans signature. Fiche (mise à jour le 2 mai 2027) : {{fiche}}. Message du client : {{message}} »
+
+## Brouillon, pas envoi
+
+```schema comparaison
+titre: Envoyer ou enregistrer un brouillon ?
+ton: mauvais-bon
+colonnes: Envoi automatique | Brouillon relu
+La réponse part sans que personne ne la lise | La réponse est enregistrée comme brouillon dans Gmail
+Une erreur de l''IA part chez le client | L''assistante relit, corrige si besoin, et envoie
+Le client ne sait pas qui lui a répondu | La réponse part de l''adresse habituelle, signée par l''équipe
+```
+
+Dans Gmail, le module de création de **brouillon** (*Create a Draft*) prépare la réponse dans la conversation du client : l''assistante n''a plus qu''à l''ouvrir, la relire et cliquer sur Envoyer. Elle garde la maîtrise, et gagne la plus grande partie du temps de rédaction.
+
+```schema chiffres
+titre: Ce que gagne l''assistante (exemple)
+5 minutes : pour rédiger une réponse à la main
+1 minute : pour relire et envoyer un brouillon correct
+100 questions par mois : environ 6 h 40 gagnées chaque mois
+```
+
+## Quand l''information manque
+
+Le mot **MANQUANT** est un signal pour le scénario. Un filtre le repère : au lieu de créer un brouillon, le scénario met le message au statut « À traiter à la main ». Chaque mois, regardez ces cas : si la même question revient souvent, ajoutez la réponse à la fiche.
+
+> [!madagascar] Les questions en malgache
+> Les parents ou les élèves écrivent parfois en malgache. Si le client veut des réponses en malgache, testez soigneusement la qualité des brouillons dans cette langue avec un jeu de vrais messages, et faites-les relire par une personne de l''équipe. Sinon, prévoyez une règle simple : les messages en malgache partent directement « à traiter à la main », et l''assistante y répond elle-même.
+
+## Tenir la fiche à jour
+
+Une fiche périmée produit des brouillons faux : l''ancien prix, l''ancienne date de session. Rangez la fiche dans un document (Google Docs) que le scénario **lit à chaque exécution**, au lieu de la copier dans la consigne. Le client met le document à jour ; le scénario utilise toujours la dernière version. Notez sur la fiche qui la met à jour et quand.
+
+> [!erreur] La fiche copiée dans la consigne
+> Le débutant colle les prix directement dans le texte de la consigne. Trois mois plus tard, le centre augmente ses tarifs, met à jour son site… mais personne ne pense au scénario. Pendant deux semaines, les brouillons annoncent les anciens prix, et l''assistante, en confiance, les envoie sans vérifier. **La fiche vit dans un document que le client met à jour**, et le scénario la lit à chaque fois.
+
+> [!retenir]
+> - Une **fiche d''informations officielle**, validée et datée, seule source de l''IA.
+> - Une consigne qui **interdit d''inventer** et renvoie **MANQUANT** si l''information n''y est pas.
+> - Un **brouillon** dans Gmail, relu par un humain, jamais un envoi automatique par défaut.
+> - **MANQUANT** → « À traiter à la main » ; les questions fréquentes enrichissent la fiche.
+> - La fiche vit dans un **document lu à chaque exécution**, tenu à jour par le client.
+
+## Exercice pratique : des brouillons fiables
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Rédigez la fiche d''informations officielle de l''organisation de votre projet, dans un Google Docs daté.
+> 2. Écrivez la consigne de brouillon avec les 6 règles.
+> 3. Testez-la sur 10 questions, dont 3 dont la réponse n''est pas dans la fiche : vérifiez que l''IA répond MANQUANT.
+> 4. Si possible, construisez le scénario : lecture de la fiche, étape d''IA, filtre MANQUANT, création d''un brouillon Gmail.
+>
+> **À livrer** : votre fiche, votre consigne, le tableau des 10 tests et, si vous l''avez construit, une capture du scénario et d''un brouillon.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 2, 0, 'Qu''est-ce que la fiche d''informations officielle ?', '["Le document validé et daté qui contient tout ce que l''IA peut utiliser","Le contrat de travail","Le code du scénario","La liste des clients"]'::jsonb, 0, 'L''IA répond uniquement à partir de cette fiche : prix, horaires, adresse, conditions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 2, 1, 'Que doit faire l''IA si la réponse n''est pas dans la fiche ?', '["Ne rien renvoyer","Inventer une réponse probable","Demander au client","Répondre MANQUANT"]'::jsonb, 3, 'Le mot MANQUANT est repéré par un filtre qui envoie le message à un humain.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 2, 2, 'Pourquoi créer un brouillon plutôt qu''envoyer la réponse ?', '["Pour ralentir l''assistante","Les brouillons sont gratuits","Gmail interdit les envois automatiques","Un humain relit et corrige avant l''envoi"]'::jsonb, 3, 'L''assistante garde la maîtrise et gagne la plus grande partie du temps de rédaction.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 2, 3, 'Où ranger la fiche d''informations ?', '["Dans un document que le client met à jour et que le scénario lit à chaque exécution","Dans un e-mail","Nulle part","Copiée dans le texte de la consigne"]'::jsonb, 0, 'Une fiche copiée dans la consigne est oubliée quand les prix changent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 2, 4, '100 réponses par mois passent de 5 à 1 minute. Combien de temps gagne-t-on ?', '["Environ 6 h 40 par mois","1 h 40 par mois","40 minutes par mois","10 heures par mois"]'::jsonb, 0, '100 × 4 minutes = 400 minutes, soit 6 heures 40.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 3, 3, 'Tester, surveiller et documenter', 9, 'Un scénario qui fonctionne chez vous n''est pas encore un scénario fiable chez le client. Il doit avoir été testé sur tous les cas, surveillé après la mise en service, et **documenté** pour que quelqu''un d''autre puisse le comprendre, le réparer ou le modifier, même dans deux ans, même sans vous. Cette leçon vous donne la méthode de test, la routine de surveillance, et la fiche de documentation.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Construire un plan de test complet.
+> 2. Tester avec des données de test, puis en parallèle du travail réel.
+> 3. Organiser la surveillance après la mise en service.
+> 4. Rédiger la fiche de documentation d''un scénario.
+> 5. Nommer et ranger les scénarios d''un client.
+
+## Le plan de test
+
+| Type de test | Exemple | Ce qu''on vérifie |
+| --- | --- | --- |
+| **Cas normal** | Une inscription complète | Toutes les étapes s''exécutent, le résultat est juste |
+| **Champ manquant** | Pas d''e-mail | Le filtre arrête, le statut « À traiter à la main » apparaît |
+| **Doublon** | La même personne s''inscrit deux fois | Une seule ligne, un seul e-mail |
+| **Cas inattendu** | Message en anglais, message vide, valeur hors liste | Le chemin de secours est pris |
+| **Réponse d''IA invalide** | JSON avec du texte en trop | Le scénario ne casse pas, l''élément part « à la main » |
+| **Volume** | 20 réponses en même temps | Pas de limite dépassée, pas d''envoi en double |
+
+Pour chaque test, notez la **donnée utilisée**, le **résultat attendu**, le **résultat obtenu** et la **correction** apportée. Ce tableau rejoint la documentation : il prouve au client que le scénario a été vérifié.
+
+## Tester en parallèle avant de remplacer
+
+```schema etapes
+titre: La mise en service progressive
+Données de test : tous les cas du plan, sur des adresses de test
+Parallèle : le scénario tourne sur de vraies données, mais l''équipe continue à la main
+Comparaison : pendant quelques jours, on compare les résultats du scénario et de l''équipe
+Bascule : quand tout concorde, l''équipe arrête la tâche manuelle
+Surveillance : historique chaque jour pendant une semaine, puis chaque semaine
+```
+
+> [!cle] Un scénario à la fois
+> Ne mettez pas en service quatre scénarios le même jour. Si un problème apparaît, vous ne saurez pas lequel en est la cause, et l''équipe sera débordée par les changements. **Un scénario par semaine** : chacun a le temps d''être vérifié et adopté.
+
+## La surveillance
+
+```schema checklist
+titre: La surveillance après la mise en service
+[ ] Alertes d''erreur activées, envoyées à deux personnes
+[ ] Historique consulté chaque jour la première semaine, puis chaque semaine
+[ ] Statuts « À traiter à la main » traités et analysés chaque semaine
+[ ] Consommation d''opérations ou de tâches vérifiée chaque mois
+[ ] Coûts d''IA vérifiés chaque mois, avec une limite de dépense
+[ ] Fiche d''informations et consignes revues quand l''activité change
+```
+
+## La fiche de documentation
+
+Chaque scénario a sa fiche, rangée dans un dossier partagé avec le client.
+
+```schema arbre
+titre: Le dossier de documentation d''un client
+Automatisations - Formation Mendrika/
+  00 Lisez-moi.pdf # vue d''ensemble et contacts
+  01 Inscriptions/
+    Fiche du scénario.pdf
+    Plan de test.xlsx
+  02 Tri des messages/
+    Fiche du scénario.pdf
+    Consigne IA v3.txt
+    Fiche d''informations officielle (lien)
+  03 Rapport du lundi/
+    Fiche du scénario.pdf
+  Guide de l''équipe.pdf
+```
+
+| Rubrique de la fiche | Exemple |
+| --- | --- |
+| **Nom** | « 02 Tri des messages → tableau + brouillons » |
+| **Plateforme et compte** | Make, compte de Formation Mendrika |
+| **Déclencheur** | Nouvel e-mail dans la boîte contact, vérifié toutes les 15 minutes |
+| **Étapes** | Nettoyage, IA (consigne v3), lecture JSON, routeur à 4 chemins |
+| **Données personnelles** | Texte des messages ; aucune donnée sensible envoyée à l''IA |
+| **En cas de panne** | L''assistante reçoit une alerte ; traiter la boîte contact à la main |
+| **Responsable et version** | Mme Lova (côté client) ; version 1.3 du 12/06/2027 |
+
+> [!madagascar] Une documentation lisible hors connexion
+> L''équipe du client peut avoir besoin de la procédure « en cas de panne » justement quand la connexion est mauvaise. Exportez le guide de l''équipe et les procédures en **PDF léger**, envoyés aussi par WhatsApp à la personne responsable, en plus du dossier en ligne.
+
+## Nommer et ranger
+
+Donnez à chaque scénario un **nom clair et numéroté** (« 01 Inscriptions → tableau + e-mail »), rangez-les dans un dossier du client dans la plateforme, et écrivez la version et la date dans la fiche à chaque modification importante. Un nom comme « Integration Webhooks, Google Sheets » ne dit rien à personne six mois plus tard.
+
+> [!exemple] La panne de dimanche
+> Un dimanche, le scénario de tri des messages de Formation Mendrika s''arrête : le service d''IA est temporairement indisponible. L''assistante reçoit l''alerte, ouvre le guide de l''équipe (page 2, « En cas de panne »), et traite les quelques messages du jour à la main. Le lundi, Rado relance les exécutions incomplètes. Personne n''a paniqué : **la panne était prévue dans la documentation**.
+
+> [!erreur] Pas de documentation
+> Un spécialiste construit huit scénarios pour un client, sans aucune fiche. Il part travailler pour une autre entreprise. Six mois plus tard, un scénario casse : personne ne sait ce qu''il fait, à quoi il sert, ni comment le réparer. Le client doit tout faire refaire. **Un scénario sans documentation n''est pas terminé.**
+
+> [!retenir]
+> - Un **plan de test** : cas normal, champ manquant, doublon, inattendu, IA invalide, volume.
+> - Une **mise en service progressive** : test, parallèle, comparaison, bascule, **un scénario par semaine**.
+> - Une **surveillance** régulière : alertes, historique, cas « à la main », opérations, coûts.
+> - Une **fiche de documentation** par scénario, et un **guide de l''équipe**.
+> - Des **noms clairs et numérotés**, avec versions et dates.
+
+## Exercice pratique : tester et documenter
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Rédigez le plan de test complet de votre scénario de tri des messages (au moins 8 cas).
+> 2. Exécutez les tests et remplissez le tableau : donnée, attendu, obtenu, correction.
+> 3. Rédigez la fiche de documentation de ce scénario et de votre scénario d''inscription.
+> 4. Organisez le dossier de documentation avec l''arborescence de la leçon.
+>
+> **À livrer** : votre plan de test rempli, vos 2 fiches et une capture du dossier.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 3, 0, 'Quel test vérifie qu''une personne inscrite deux fois ne reçoit qu''un e-mail ?', '["Le test de volume","Le test de doublon","Le test de couleur","Le cas normal"]'::jsonb, 1, 'Le plan de test couvre le cas normal, les manques, les doublons, l''inattendu, l''IA invalide et le volume.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 3, 1, 'Que veut dire tester « en parallèle » ?', '["Le scénario tourne sur de vraies données pendant que l''équipe continue à la main, puis on compare","Tester sur deux ordinateurs","Ne pas tester","Tester deux scénarios à la fois"]'::jsonb, 0, 'On ne remplace le travail manuel que lorsque les résultats concordent.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 3, 2, 'Combien de scénarios mettre en service par semaine ?', '["Dix","Un à la fois","Aucun","Tous le même jour"]'::jsonb, 1, 'Un scénario à la fois permet de repérer les problèmes et laisse l''équipe s''habituer.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 3, 3, 'Que contient la fiche de documentation d''un scénario ?', '["Le mot de passe du client","La facture","Nom, plateforme et compte, déclencheur, étapes, données, procédure en cas de panne, version","Uniquement le nom"]'::jsonb, 2, 'Elle permet à quelqu''un d''autre de comprendre, réparer ou modifier le scénario.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 3, 4, 'Pourquoi un scénario sans documentation n''est-il pas terminé ?', '["Parce que Make l''exige","Parce qu''il ne fonctionne pas","Personne ne pourra le réparer ou le modifier sans vous","Il est terminé"]'::jsonb, 2, 'Le client doit rester autonome, même si vous n''êtes plus disponible.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 3, 4, 'Les coûts, les offres et les alternatives', 11, 'Une automatisation a un coût : les abonnements des plateformes, l''utilisation de l''IA, parfois des applications payantes. Un bon spécialiste sait l''estimer, l''expliquer au client et le maîtriser. Il connaît aussi les autres outils du marché, pour conseiller la bonne solution. Cette leçon termine le module 4 avec les offres payantes, les coûts de l''IA et les alternatives. Elle se termine par le projet du module 4.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Savoir ce qu''apportent les offres payantes de Make et de Zapier.
+> 2. Estimer le coût mensuel d''une automatisation.
+> 3. Comprendre comment se paie l''IA à l''usage.
+> 4. Connaître les alternatives : n8n, Power Automate et d''autres.
+> 5. Présenter les coûts au client de façon claire.
+
+## Les offres payantes
+
+| Outil | Ce qu''apporte une offre payante (en général) |
+| --- | --- |
+| **Make** | Plus d''opérations par mois, exécutions plus fréquentes, plus de scénarios actifs, fonctions avancées |
+| **Zapier** | Plus de tâches par mois, Zaps à plusieurs étapes, chemins, exécution plus rapide, applications réservées |
+| **Abonnements d''assistants d''IA** | Usage plus important d''un assistant dans une interface de discussion, pour une personne ou une équipe |
+| **API d''IA** | Paiement à l''usage, selon la quantité de texte traitée par les scénarios |
+
+Les offres, les limites et les prix changent souvent : **vérifiez toujours sur les sites officiels**, et notez la date de vos vérifications dans vos devis.
+
+> [!cle] Abonnement d''assistant ou API ?
+> L''abonnement à un assistant d''IA (pour discuter avec lui dans son application) et l''**API** (pour l''utiliser depuis un scénario) sont en général **deux choses différentes**, facturées séparément. Un client qui paie un abonnement à un assistant n''a pas forcément d''accès à l''API pour ses automatisations : vérifiez-le avec lui.
+
+## Estimer le coût mensuel
+
+```schema etapes
+titre: Estimer le coût d''une automatisation
+Compter les exécutions : par exemple 300 messages par mois
+Compter les étapes par exécution : par exemple 6 modules
+Calculer les opérations : 300 × 6 = environ 1 800 par mois, plus les vérifications du déclencheur
+Choisir l''offre de la plateforme qui couvre ce volume, avec une marge
+Ajouter le coût de l''IA : selon le nombre et la longueur des messages, et le modèle choisi
+```
+
+```schema barres
+titre: Exemple : consommation estimée par scénario (opérations par mois)
+unite: op.
+Inscriptions : 900
+Tri des messages : 1800
+Rappels de cours : 1200
+Rapport du lundi : 40
+```
+
+*(Chiffres donnés en exemple : calculez-les pour chaque client.)*
+
+Présentez ces estimations au client **avant** la construction, avec une marge, et vérifiez la consommation réelle après le premier mois. C''est souvent l''occasion d''optimiser : un intervalle de vérification plus long, un filtre placé plus tôt, une étape inutile supprimée.
+
+## Maîtriser les coûts de l''IA
+
+1. **Envoyer moins de texte** : le message nettoyé, pas tout l''historique.
+2. **Choisir un modèle adapté** : un classement simple n''a pas besoin du modèle le plus puissant et le plus cher.
+3. **Filtrer avant l''IA** : les e-mails publicitaires et les notifications n''ont pas besoin d''être classés par l''IA.
+4. **Fixer une limite de dépense** dans le compte du service, quand c''est possible.
+5. **Surveiller chaque mois** la facture d''IA du client, avec lui.
+
+## Les alternatives
+
+```schema comparaison
+titre: Trois autres outils à connaître
+colonnes: n8n | Power Automate | Les fonctions intégrées
+Outil d''automatisation open source, installable sur un serveur ou en offre en ligne | L''outil d''automatisation de Microsoft 365 | Les automatisations proposées par les applications elles-mêmes
+Très souple, apprécié des profils techniques | Adapté aux entreprises qui travaillent avec Outlook, Excel, Teams | Gmail (filtres), Google Forms, Notion, outils de réservation
+Demande plus de compétences techniques | Souvent inclus dans certains abonnements Microsoft 365 | Gratuites et simples, mais limitées
+```
+
+> [!astuce] La solution la plus simple d''abord
+> Avant de construire un scénario, demandez-vous si une **fonction intégrée** suffit : un filtre Gmail, une réponse automatique d''un formulaire, une notification d''un outil de réservation. Un client sera plus satisfait d''une solution simple et gratuite que d''un scénario complexe qu''il ne comprend pas. Gardez les plateformes pour ce qui demande vraiment de relier plusieurs outils.
+
+> [!madagascar] Payer depuis Madagascar
+> Ces services sont facturés en dollars ou en euros, souvent par carte bancaire internationale. La bonne pratique reste que **le client crée les comptes à son nom et les paie**, puis vous invite. Pour un client malgache sans carte internationale, renseignez-vous avec lui auprès de sa banque, ou commencez avec les offres gratuites et des fonctions intégrées, puis passez à une offre payante quand le gain de temps le justifie.
+
+> [!exemple] La facture expliquée à l''avance
+> Avant de construire les scénarios de Formation Mendrika, Rado présente à la directrice un tableau simple : les 4 scénarios, leur consommation estimée, l''offre Make adaptée, et une estimation prudente du coût de l''IA pour 150 messages par mois, en dollars et en ariary au taux du jour. Il compare avec les 30 heures de travail gagnées chaque mois. La directrice valide en connaissant les coûts, et ne sera pas surprise par sa première facture.
+
+> [!erreur] La facture surprise
+> Un débutant met en service un scénario qui envoie chaque e-mail reçu, avec tout l''historique de la conversation, au modèle d''IA le plus cher. Personne n''a estimé le coût. À la fin du mois, la facture d''IA du client est dix fois plus élevée que prévu. **Estimez, limitez et surveillez les coûts** dès la conception, avec le client.
+
+> [!retenir]
+> - Les **offres payantes** apportent plus d''opérations, de tâches et de fonctions : vérifiez sur les sites officiels.
+> - **Coût = exécutions × étapes**, plus l''IA selon le texte et le modèle.
+> - L''**abonnement à un assistant** et l''**API** sont deux choses différentes.
+> - **n8n, Power Automate, fonctions intégrées** : la solution la plus simple d''abord.
+> - Les coûts sont **présentés avant** la construction, payés par le client, surveillés chaque mois.
+
+## Exercice pratique : estimer les coûts
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Pour les scénarios de votre projet, estimez les exécutions et les opérations par mois.
+> 2. Consultez les pages de prix de Make et de Zapier, et choisissez l''offre adaptée (notez la date de consultation).
+> 3. Estimez le coût de l''IA pour votre scénario de tri (nombre de messages, longueur moyenne), en consultant la page de prix d''un service d''IA.
+> 4. Présentez le tout dans un tableau pour le client, avec le temps gagné en face.
+>
+> **À livrer** : votre tableau de coûts et de gains, avec vos sources et leurs dates.
+
+## Projet du module 4 : l''automatisation avec IA complète
+
+> [!projet] Projet du module · 2 heures 30
+> Complétez votre automatisation du module 3 avec l''IA, les tests et la documentation, comme pour une vraie mise en service.
+> 1. **L''IA** : une étape de classement ou d''extraction, avec lecture du JSON et chemin de secours.
+> 2. **Les brouillons** : un scénario de réponse à partir d''une fiche officielle, avec brouillon Gmail et filtre MANQUANT (ou sa description détaillée si vous n''avez pas d''accès à l''IA).
+> 3. **Un Zap** : une automatisation simple construite aussi dans Zapier, pour montrer que vous maîtrisez les deux outils.
+> 4. **Les tests** : votre plan de test complet, rempli.
+> 5. **La documentation** : les fiches des scénarios, le guide de l''équipe et le tableau des coûts.
+>
+> **À livrer** : votre dossier complet (captures, plan de test, documentation) et une vidéo de démonstration de 2 à 3 minutes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 4, 0, '300 exécutions par mois d''un scénario de 6 modules consomment environ combien d''opérations ?', '["1 800","6","300","18 000"]'::jsonb, 0, '300 × 6 = 1 800 opérations, plus les vérifications du déclencheur.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 4, 1, 'L''abonnement à un assistant d''IA donne-t-il toujours accès à l''API pour les scénarios ?', '["Non : ce sont en général deux choses facturées séparément","Oui, si on le demande","L''API n''existe pas","Oui, toujours"]'::jsonb, 0, 'Vérifiez avec le client qu''il dispose bien d''un accès API pour ses automatisations.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 4, 2, 'Comment réduire le coût de l''IA dans un scénario ?', '["Ne jamais vérifier la facture","Filtrer avant l''IA, envoyer moins de texte et choisir un modèle adapté","Doubler les appels","Envoyer tout l''historique au modèle le plus cher"]'::jsonb, 1, 'Chaque texte envoyé est facturé ; un classement simple n''a pas besoin du modèle le plus puissant.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 4, 3, 'Qu''est-ce que n8n ?', '["Un tableur","Un service d''IA","Un réseau social","Un outil d''automatisation open source, installable sur un serveur ou en ligne"]'::jsonb, 3, 'C''est une alternative souple à Make et Zapier, appréciée des profils techniques.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 3, 4, 4, 'Quand présenter les coûts au client ?', '["Après la première facture","Seulement s''il demande","Jamais","Avant la construction, avec le temps gagné en face"]'::jsonb, 3, 'Le client décide en connaissant les coûts, et n''est pas surpris par sa première facture.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 4, 'Premier projet : la mission Formation Mendrika', 'Une mission complète pour un centre de formation de Mahajanga : diagnostic chiffré, conception des scénarios reliés, construction et tests avec l''équipe, formation et remise technique, mesure des résultats et étude de cas.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 4, 0, 'Le diagnostic chiffré', 8, 'Place à la pratique. Dans ce module, vous menez une mission complète d''automatisation pour une petite entreprise : diagnostic, conception, construction, tests, formation, mesure des résultats. Tout commence par un **diagnostic chiffré** : sans lui, impossible de choisir les bonnes automatisations, ni de prouver ensuite le temps gagné. Cette leçon vous présente le client du module et la méthode de diagnostic.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer et mener l''entretien de diagnostic.
+> 2. Faire mesurer les tâches pendant une à deux semaines.
+> 3. Construire le tableau du temps perdu.
+> 4. Repérer les problèmes au-delà du temps : oublis, erreurs, délais.
+> 5. Présenter le diagnostic et fixer les objectifs de la mission.
+
+## Votre client : Formation Mendrika
+
+> [!exemple] Le cas pratique du module
+> **Formation Mendrika** est un centre de formation en bureautique et en comptabilité de base à Mahajanga. Il reçoit chaque mois environ 150 demandes d''information par son site, Facebook et e-mail, et inscrit 60 élèves. L''assistante, **Mme Lova**, passe ses journées à recopier les demandes, répondre aux mêmes questions, envoyer les rappels de cours et préparer les attestations de fin de formation. La directrice, **Mme Hanitra**, veut libérer du temps pour le suivi des élèves.
+
+## L''entretien de diagnostic
+
+```schema chiffres
+titre: Les 8 questions de l''entretien
+Les demandes : d''où viennent-elles, combien par semaine ?
+Les outils : site, formulaire, Facebook, Gmail, tableaux, logiciels ?
+Les tâches : qu''est-ce qui revient chaque jour, chaque semaine ?
+Le temps : combien de minutes pour chaque tâche ?
+Les problèmes : oublis, erreurs, retards, plaintes des élèves ?
+Les décisions : qu''est-ce qui doit rester décidé par une personne ?
+Les données : quelles informations personnelles circulent ?
+La réussite : à quoi verrez-vous, dans deux mois, que la mission est réussie ?
+```
+
+Menez l''entretien avec **la directrice et l''assistante** : la directrice connaît les objectifs, l''assistante connaît le détail du travail. Demandez à l''assistante de vous **montrer** chaque tâche sur un vrai exemple.
+
+## Mesurer pendant une à deux semaines
+
+Les estimations faites de mémoire sont souvent fausses. Demandez à l''assistante de noter, pendant une ou deux semaines, chaque tâche répétitive : combien de fois, et combien de minutes. Préparez-lui un tableau simple, avec une ligne par jour et une colonne par tâche.
+
+| Tâche | Fréquence par mois | Durée | Temps total par mois |
+| --- | --- | --- | --- |
+| Recopier les demandes dans le tableau | 150 | 3 min | 7 h 30 |
+| Répondre aux questions fréquentes (prix, horaires) | 100 | 5 min | 8 h 20 |
+| Envoyer les confirmations d''inscription | 60 | 4 min | 4 h |
+| Envoyer les rappels la veille des cours | 240 | 1 min | 4 h |
+| Préparer les attestations | 60 | 6 min | 6 h |
+| **Total** | | | **environ 30 heures par mois** |
+
+*(Chiffres donnés en exemple : mesurez-les avec votre client.)*
+
+```schema barres
+titre: Le temps perdu par tâche (heures par mois)
+unite: h
+Questions fréquentes : 8,3
+Recopier les demandes : 7,5
+Attestations : 6
+Confirmations : 4
+Rappels : 4
+```
+
+## Au-delà du temps
+
+Le temps perdu n''est pas le seul problème. Notez aussi ce qui coûte en qualité :
+
+1. **Les oublis** : demandes restées sans réponse, rappels non envoyés.
+2. **Les erreurs** : nom mal écrit sur une attestation, mauvaise date de session.
+3. **Les délais** : une demande reçue le vendredi soir traitée le mardi.
+4. **La fatigue** : une assistante débordée, qui n''a plus le temps du suivi des élèves.
+
+Ces problèmes sont souvent ce qui décide le client, plus que les heures : « Plus aucune demande oubliée » parle à une directrice qui a perdu des inscriptions.
+
+## Présenter le diagnostic
+
+```schema etapes
+titre: Le diagnostic en une page
+La situation : volumes, outils, personnes concernées
+Le temps perdu : le tableau et le total par mois
+Les problèmes : oublis, erreurs, délais, avec des exemples
+Les priorités : les automatisations à fort impact et faible effort
+Les objectifs : 3 objectifs chiffrés pour la mission
+```
+
+> [!madagascar] Rassurer l''assistante
+> À Madagascar comme ailleurs, le mot « automatisation » peut inquiéter : l''assistante peut croire qu''on veut la remplacer. Expliquez dès le diagnostic, devant la directrice, que l''objectif est de supprimer **la partie répétitive** de son travail, pour qu''elle se consacre au suivi des élèves. Faites-en votre alliée : c''est elle qui connaît les cas particuliers, et c''est elle qui utilisera les scénarios chaque jour.
+
+> [!erreur] Un diagnostic sans mesure
+> Le débutant demande à la directrice : « Combien de temps perdez-vous ? » Elle répond « beaucoup », il note « environ 50 heures par mois ». Après la mission, l''assistante gagne 20 heures, un très bon résultat… mais la directrice est déçue, car on lui avait promis 50. **Mesurez avant de promettre**, avec la personne qui fait le travail.
+
+> [!retenir]
+> - Un **entretien** avec la directrice et l''assistante, avec démonstration des tâches.
+> - Une **mesure** sur une à deux semaines : fréquence et durée.
+> - Le **tableau du temps perdu**, par tâche et au total.
+> - Les problèmes de **qualité** : oublis, erreurs, délais, fatigue.
+> - Un **diagnostic d''une page**, avec 3 objectifs chiffrés.
+
+## Exercice pratique : le diagnostic d''une organisation
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Choisissez une vraie petite organisation (celle de votre projet, ou une autre), ou utilisez le cas Formation Mendrika.
+> 2. Menez l''entretien avec les 8 questions, et observez au moins 2 tâches.
+> 3. Construisez le tableau du temps perdu (mesuré si possible, sinon estimé et signalé comme tel).
+> 4. Listez les problèmes de qualité, avec un exemple pour chacun.
+> 5. Rédigez le diagnostic d''une page, avec 3 objectifs chiffrés.
+>
+> **À livrer** : vos notes d''entretien, votre tableau et votre diagnostic.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 0, 0, 'Avec qui mener l''entretien de diagnostic ?', '["Personne : on devine","Seulement les élèves","La directrice et l''assistante, qui montre les tâches","Seulement la directrice"]'::jsonb, 2, 'La directrice connaît les objectifs ; l''assistante connaît le détail du travail et ses exceptions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 0, 1, 'Pourquoi faire mesurer les tâches pendant une à deux semaines ?', '["Pour retarder la mission","Les estimations de mémoire sont souvent fausses","Ce n''est pas utile","Parce que Make l''exige"]'::jsonb, 1, 'Une mesure réelle évite de promettre un gain de temps qui ne se réalisera pas.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 0, 2, '100 réponses par mois de 5 minutes chacune représentent combien de temps ?', '["1 h 40","50 heures","5 heures","Environ 8 h 20"]'::jsonb, 3, '100 × 5 = 500 minutes, soit 8 heures 20.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 0, 3, 'Quel problème, au-delà du temps, convainc souvent une directrice ?', '["Les demandes oubliées, qui font perdre des inscriptions","Le nombre de modules","Le nom de la plateforme","La couleur du tableau"]'::jsonb, 0, 'Les oublis, les erreurs et les délais ont un coût direct pour l''organisation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 0, 4, 'Comment présenter l''automatisation à l''assistante ?', '["Comme la suppression de la partie répétitive de son travail, pour le suivi des élèves","Comme une surveillance de son travail","Sans lui en parler","Comme son remplacement"]'::jsonb, 0, 'L''assistante connaît les cas particuliers et utilisera les scénarios : elle doit être une alliée.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 4, 1, 'La conception des scénarios', 9, 'Le diagnostic est validé. Il faut maintenant **concevoir** l''ensemble des automatisations : quels scénarios, reliés comment, avec quel rôle pour l''IA, et ce qui reste humain. Une bonne conception relie les scénarios par un **tableau central** et une **colonne de statut** : chaque scénario fait sa part et passe le relais au suivant. Cette leçon vous montre la conception complète de Formation Mendrika.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Concevoir un ensemble de scénarios reliés par un tableau central.
+> 2. Définir les statuts qui font avancer chaque élément.
+> 3. Limiter l''IA à une fiche d''informations officielle.
+> 4. Préciser ce qui reste humain pour chaque scénario.
+> 5. Faire valider la conception par le client.
+
+## Le tableau central et les statuts
+
+Toutes les demandes et les inscriptions arrivent dans **un seul tableau**. La colonne Statut fait avancer chaque personne d''une étape à l''autre, et chaque scénario se déclenche sur un changement de statut.
+
+```schema etapes
+titre: Le parcours d''une personne, de statut en statut
+Nouveau : la demande vient d''arriver dans le tableau
+Répondu : un brouillon de réponse a été relu et envoyé
+Inscrit : l''assistante a confirmé l''inscription et l''acompte
+En formation : la session a commencé, les rappels partent
+Terminé : la directrice a validé la réussite, l''attestation part
+```
+
+## Les 4 scénarios
+
+| N° | Scénario | Déclencheur | Ce qu''il fait | Ce qui reste humain |
+| --- | --- | --- | --- | --- |
+| 1 | **Centralisation des demandes** | Formulaire du site, e-mail | Ajoute chaque demande au tableau, avec la source et le statut « Nouveau » | Les demandes venues de Facebook sont saisies par un formulaire rapide |
+| 2 | **Réponse aux questions fréquentes** | Nouvelle demande | L''IA classe la demande ; pour une question fréquente, elle prépare un brouillon à partir de la fiche officielle | L''assistante relit et envoie |
+| 3 | **Inscription et rappels** | Statut passé à « Inscrit » | E-mail de confirmation avec le planning ; rappel automatique la veille de chaque cours | La vérification de l''acompte, les changements de planning |
+| 4 | **Attestations** | Statut passé à « Terminé » | Crée l''attestation à partir d''un modèle Google Docs, l''exporte en PDF et l''envoie | La directrice valide la liste des élèves qui ont réussi |
+
+```schema comparaison
+titre: Le rôle de l''IA dans la mission
+ton: bon-mauvais
+colonnes: L''IA fait | L''IA ne fait pas
+Classer chaque demande : question, inscription, réclamation, autre | Décider d''une inscription ou d''un remboursement
+Préparer un brouillon à partir de la fiche officielle | Inventer un prix, une date ou une condition
+Répondre MANQUANT si l''information n''est pas dans la fiche | Envoyer seule une réponse au client
+```
+
+> [!attention] La fiche officielle d''abord
+> Pour le scénario 2, l''IA répond **uniquement** à partir de la fiche d''informations officielle (prix, horaires, adresse, programmes), validée par la directrice et datée (leçon 4.3). Sans fiche validée, le scénario 2 ne se construit pas.
+
+## Les données personnelles de la mission
+
+```schema checklist
+titre: Les données et leur protection
+[ ] Données traitées : nom, téléphone, e-mail, formation choisie
+[ ] Aucune donnée sensible (santé, situation financière) dans les formulaires
+[ ] Seul le texte de la demande est envoyé à l''IA, sans le téléphone
+[ ] Le tableau est partagé uniquement avec la directrice et l''assistante
+[ ] Tous les comptes sont au nom du centre, qui paie les abonnements
+[ ] Les élèves sont informés, dans le formulaire, de l''usage de leurs données
+```
+
+## Le document de conception
+
+Rassemblez la conception dans un document de 2 à 3 pages : le tableau central et ses colonnes, les statuts, les 4 scénarios, le rôle de l''IA, ce qui reste humain, les données, les coûts estimés, et le calendrier de mise en service (un scénario par semaine). Présentez-le à la directrice **et** à l''assistante, et faites-le valider par écrit.
+
+> [!madagascar] Les demandes Facebook et WhatsApp
+> Beaucoup de demandes arrivent par Messenger ou WhatsApp. Les connexions automatiques à ces messageries sont soumises à des règles strictes de Meta, souvent payantes et longues à mettre en place pour une petite structure. La solution retenue pour Mendrika : un **formulaire rapide** sur le téléphone de l''assistante, rempli en 30 secondes à partir du message, qui déclenche le scénario 1 comme une demande du site. Simple, fiable, sans frais.
+
+> [!exemple] Ce que l''assistante a ajouté
+> En présentant la conception, Rado demande à Mme Lova de relire les statuts. Elle remarque qu''il manque un cas fréquent : les personnes qui s''inscrivent mais ne paient jamais l''acompte. Ensemble, ils ajoutent un statut « En attente d''acompte » et un rappel automatique après 3 jours, puis le passage à « Abandon » après 10 jours, décidé par l''assistante. Sans elle, ce cas aurait encombré le tableau pendant des mois.
+
+> [!erreur] Un grand scénario qui fait tout
+> Le débutant construit un seul scénario géant de 40 modules, de la demande à l''attestation. Au moindre changement (une nouvelle formation, un nouveau statut), tout est à revoir, et une erreur dans une partie bloque tout le reste. **Plusieurs scénarios simples, reliés par un tableau et des statuts**, sont plus faciles à tester, à comprendre et à réparer.
+
+> [!retenir]
+> - Un **tableau central** et une **colonne de statut** relient les scénarios.
+> - **4 scénarios** : centralisation, réponses, inscription et rappels, attestations.
+> - L''IA **classe et prépare**, à partir d''une **fiche officielle** ; l''humain **décide et envoie**.
+> - Les **données personnelles** sont listées et protégées.
+> - Un **document de conception** validé par la directrice et l''assistante.
+
+## Exercice pratique : la conception de la mission
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Pour l''organisation de votre diagnostic, définissez le tableau central (colonnes) et les statuts.
+> 2. Concevez 3 ou 4 scénarios avec le tableau de la leçon : déclencheur, ce qu''il fait, ce qui reste humain.
+> 3. Décrivez le rôle de l''IA et ce qu''elle ne fait pas.
+> 4. Remplissez la liste des données personnelles.
+> 5. Rédigez le document de conception et le calendrier de mise en service.
+>
+> **À livrer** : votre document de conception de 2 à 3 pages.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 1, 0, 'Qu''est-ce qui relie les 4 scénarios de Formation Mendrika ?', '["Un seul scénario géant","Un tableau central et une colonne de statut","Des e-mails entre eux","Rien"]'::jsonb, 1, 'Chaque scénario se déclenche sur un changement de statut et passe le relais au suivant.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 1, 1, 'Quel scénario se déclenche quand le statut passe à « Terminé » ?', '["Les attestations, après validation de la directrice","La centralisation des demandes","Les rappels de cours","Le tri des messages"]'::jsonb, 0, 'La directrice valide la réussite ; l''attestation est alors créée et envoyée.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 1, 2, 'Sur quoi l''IA s''appuie-t-elle pour préparer les brouillons ?', '["Ses connaissances générales","Uniquement la fiche d''informations officielle","Les messages des autres élèves","Les sites des concurrents"]'::jsonb, 1, 'Sans fiche validée, l''IA risquerait d''inventer un prix ou une date.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 1, 3, 'Comment intégrer les demandes reçues par Messenger ?', '["En les ignorant","Une connexion automatique gratuite et immédiate","Avec le mot de passe Facebook de la directrice","Un formulaire rapide rempli par l''assistante, qui déclenche le scénario"]'::jsonb, 3, 'C''est simple, fiable et sans frais, alors que les connexions aux messageries sont réglementées.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 1, 4, 'Pourquoi éviter un seul scénario géant de 40 modules ?', '["Il est difficile à tester, à comprendre et à réparer","Parce qu''il est plus rapide","Ce n''est pas un problème","Parce que Make l''interdit"]'::jsonb, 0, 'Plusieurs scénarios simples, reliés par un tableau, s''adaptent plus facilement aux changements.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 4, 2, 'Construire et tester avec l''équipe', 9, 'La conception est validée. Vous allez maintenant construire les scénarios de Formation Mendrika **dans le compte du centre**, un par un, en les testant avec l''équipe avant de les mettre en service. La construction elle-même, vous la connaissez (modules 3 et 4). Ce qui change ici : le travail avec de vraies personnes, de vraies données et un vrai calendrier. Cette leçon vous donne la méthode.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Préparer l''environnement de travail dans le compte du client.
+> 2. Construire les scénarios dans l''ordre, un par semaine.
+> 3. Tester avec des données fictives, puis avec de vraies demandes en parallèle.
+> 4. Ajuster la consigne d''IA avec l''avis de l''assistante.
+> 5. Tenir le client informé chaque semaine.
+
+## Préparer l''environnement
+
+```schema checklist
+titre: Avant de construire
+[ ] Le compte Make (ou Zapier) est créé au nom du centre, et vous y êtes invité
+[ ] Le compte du service d''IA est au nom du centre, avec une limite de dépense
+[ ] Les connexions Google sont faites avec le compte du centre
+[ ] Le tableau central existe, avec ses colonnes, ses statuts et des lignes de test
+[ ] La fiche d''informations officielle est validée et datée
+[ ] Une adresse e-mail de test reçoit tous les envois pendant la construction
+```
+
+## Le calendrier de construction
+
+| Semaine | Scénario | Ce qui est mis en service |
+| --- | --- | --- |
+| 1 | Centralisation des demandes (scénario 1) | Toutes les demandes arrivent dans le tableau |
+| 2 | Réponse aux questions fréquentes (scénario 2) | Les brouillons sont préparés, l''assistante relit |
+| 3 | Inscription et rappels (scénario 3) | Confirmations et rappels automatiques |
+| 4 | Attestations (scénario 4) | Attestations créées après validation de la directrice |
+
+L''ordre suit le parcours d''une personne : chaque scénario s''appuie sur le précédent. Le premier, le plus simple, donne un résultat visible dès la première semaine.
+
+## Tester en trois temps
+
+```schema etapes
+titre: Tester chaque scénario
+Données fictives : tous les cas du plan de test, sur l''adresse de test
+Démonstration : montrer les résultats à l''assistante, qui repère ce qui cloche
+Parallèle : quelques jours sur les vraies demandes, l''assistante continue aussi à la main
+Bascule : quand les résultats concordent, l''assistante arrête la tâche manuelle
+```
+
+> [!astuce] L''assistante juge les brouillons
+> Pour le scénario 2, c''est l''assistante qui sait si un brouillon est bon : le ton, les informations, la façon dont elle parle aux parents. Pendant la phase en parallèle, demandez-lui de noter chaque brouillon : bon, à corriger, faux. Ses remarques vous servent à améliorer la consigne (v2, v3), et elle prend confiance dans l''outil qu''elle utilisera chaque jour.
+
+## Ajuster la consigne
+
+| Remarque de l''assistante | Correction de la consigne |
+| --- | --- |
+| « Les réponses sont trop longues pour le téléphone » | 4 lignes au maximum |
+| « Il oublie toujours de dire que l''acompte se paie par Mobile Money » | Ajouter l''acompte à la fiche et demander de le citer pour toute question d''inscription |
+| « Il répond aux questions sur les cours à domicile, qu''on ne fait pas » | Ajouter la rubrique « Ce que nous ne faisons pas » à la fiche |
+| « Les messages en malgache sont mal compris » | Les messages en malgache partent « à traiter à la main » |
+
+## Tenir le client informé
+
+Chaque vendredi, envoyez un court point d''avancement à la directrice :
+
+1. **Ce qui a été construit et mis en service** cette semaine.
+2. **Les résultats des tests**, et les corrections faites.
+3. **Les premiers chiffres** : demandes centralisées, brouillons préparés.
+4. **Ce que vous attendez d''eux** : une validation, une information pour la fiche.
+5. **Le programme de la semaine suivante.**
+
+> [!madagascar] Les coupures pendant la phase en parallèle
+> Pendant les tests en parallèle, une coupure chez le client peut fausser la comparaison : l''assistante n''a pas pu traiter les demandes à la main ce jour-là. Notez ces jours dans votre suivi, prolongez la phase en parallèle de quelques jours si besoin, et ne basculez pas un scénario la veille d''un week-end ou d''un jour férié : choisissez un début de semaine, quand vous pouvez surveiller.
+
+> [!exemple] La bascule du scénario 3
+> Pendant une semaine, le scénario 3 envoie les rappels de cours en copie à l''assistante, qui continue aussi d''envoyer les siens. Les deux listes concordent, sauf un jour : un élève avait changé de session, et le tableau n''était pas à jour. Rado ajoute une règle : les changements de session se font dans le tableau, nulle part ailleurs. Le lundi suivant, l''assistante arrête ses rappels manuels.
+
+> [!erreur] Construire dans votre propre compte
+> Pour aller plus vite, le débutant construit tout dans son compte Make, en se disant qu''il « transférera plus tard ». Le transfert se passe mal : les connexions sont à refaire, deux scénarios sont oubliés, et le centre se retrouve avec des scénarios qui tournent encore dans le compte du prestataire. **On construit dès le premier jour dans le compte du client.**
+
+> [!retenir]
+> - Un **environnement prêt** : comptes du client, limite de dépense, fiche validée, adresse de test.
+> - **Un scénario par semaine**, dans l''ordre du parcours.
+> - Tester en **trois temps** : données fictives, démonstration, parallèle, puis bascule.
+> - L''**assistante juge les brouillons** ; ses remarques améliorent la consigne.
+> - Un **point d''avancement** chaque vendredi à la directrice.
+
+## Exercice pratique : construire et tester
+
+> [!exercice] Exercice pratique · 1 heure 15
+> 1. Préparez l''environnement de votre projet avec la liste de vérification.
+> 2. Construisez (ou complétez) les 2 premiers scénarios de votre conception.
+> 3. Testez-les sur tous les cas de votre plan, puis faites une démonstration à une personne qui joue l''assistante.
+> 4. Notez ses remarques et corrigez la consigne ou le scénario.
+> 5. Rédigez le point d''avancement du vendredi.
+>
+> **À livrer** : votre liste de préparation, des captures des scénarios, vos tests, les remarques et corrections, et le point d''avancement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 2, 0, 'Où construire les scénarios du client ?', '["Dès le premier jour dans le compte du client","Dans votre compte, puis transférer plus tard","Sur votre ordinateur, hors ligne","Dans le compte d''un autre client"]'::jsonb, 0, 'Un transfert plus tard se passe souvent mal : connexions à refaire, scénarios oubliés.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 2, 1, 'Dans quel ordre construire les scénarios ?', '["Le plus difficile d''abord","Tous le même jour","Au hasard","Dans l''ordre du parcours d''une personne, un par semaine"]'::jsonb, 3, 'Chaque scénario s''appuie sur le précédent, et le premier donne vite un résultat visible.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 2, 2, 'Qui juge le mieux la qualité des brouillons de l''IA ?', '["Le spécialiste seul","L''assistante, qui connaît le ton et les informations","L''IA elle-même","Personne"]'::jsonb, 1, 'Ses remarques permettent d''améliorer la consigne, et elle prend confiance dans l''outil.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 2, 3, 'Quand basculer un scénario du test en parallèle à l''usage réel ?', '["Dès la première minute","Quand ses résultats concordent avec le travail manuel","La veille d''un jour férié","Jamais"]'::jsonb, 1, 'La comparaison en parallèle révèle les cas oubliés avant que l''équipe arrête la tâche manuelle.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 2, 4, 'Que contient le point d''avancement du vendredi ?', '["Uniquement la facture","Ce qui a été construit, les tests, les premiers chiffres, ce qu''on attend du client, la suite","La liste des mots de passe","Rien"]'::jsonb, 1, 'La directrice suit la mission sans avoir à poser de questions.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 4, 3, 'Former l''équipe et faire la remise technique', 9, 'Une automatisation ne réussit vraiment que si l''équipe l''adopte : elle doit savoir ce qui est automatique, où regarder, et quoi faire quand quelque chose ne va pas. Et le client doit pouvoir continuer sans vous, ou avec un autre prestataire. Cette leçon vous apprend à former l''équipe, à rédiger le guide et à faire la **remise technique** de la mission.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Former l''équipe en une séance courte et pratique.
+> 2. Rédiger un guide de l''équipe de 2 pages.
+> 3. Préparer la remise technique complète.
+> 4. Accompagner les premières semaines d''utilisation.
+> 5. Organiser la suite : maintenance ou autonomie.
+
+## La séance de formation
+
+Une séance de 45 minutes à 1 heure, avec l''assistante et la directrice, sur leurs propres écrans, avec de vraies données de test.
+
+```schema etapes
+titre: Une séance de formation de 45 minutes
+Le principe (5 min) : ce qui est automatique, ce qui reste humain
+Le tableau (10 min) : les colonnes, les statuts, comment les changer
+Les brouillons (10 min) : les relire, les corriger, les envoyer
+Les alertes (10 min) : à quoi elles ressemblent, que faire
+Les questions et un exercice (10 min) : l''assistante traite un cas de bout en bout
+```
+
+> [!astuce] Faire faire, pas montrer
+> Pendant la séance, ne prenez pas la souris. Laissez l''assistante changer elle-même un statut, ouvrir un brouillon, réagir à une alerte de test. On retient ce qu''on fait, pas ce qu''on voit faire. Enregistrez la séance en vidéo (avec leur accord) : elle servira aux futurs employés.
+
+## Le guide de l''équipe
+
+| Partie | Contenu |
+| --- | --- |
+| **Ce qui est automatique** | La liste des 4 scénarios, en une phrase chacun |
+| **Ce qui reste à faire** | Relire les brouillons, vérifier les acomptes, valider les attestations |
+| **Où regarder** | Le tableau central, les brouillons dans Gmail, les statuts |
+| **En cas d''alerte** | Que faire pour chaque type d''alerte, et comment traiter « à la main » |
+| **À ne pas faire** | Renommer les colonnes du tableau, supprimer des lignes, modifier les scénarios |
+| **Qui contacter** | Vos coordonnées, vos horaires, le délai de réponse |
+
+> [!cle] Ce qu''il ne faut pas toucher
+> La partie « À ne pas faire » évite la plupart des pannes : une colonne renommée ou déplacée dans le tableau central, et les scénarios ne trouvent plus leurs données. Écrivez-la en gros, et expliquez pourquoi pendant la formation.
+
+## La remise technique
+
+```schema arbre
+titre: La remise technique au client
+Remise - Formation Mendrika/
+  Guide de l''équipe.pdf
+  Fiches des scénarios/ # une fiche par scénario, avec version
+  Plans de test/
+  Consignes IA/ # versions numérotées et résultats des tests
+  Fiche d''informations officielle (lien)
+  Comptes et connexions.pdf # liste des comptes, sans aucun mot de passe
+  Procédure en cas de panne.pdf
+  Vidéo de formation (lien)
+```
+
+La remise se fait lors d''un court rendez-vous final, où vous parcourez chaque élément avec la directrice. Elle doit repartir en sachant **où tout se trouve**, et en ayant vérifié que tous les comptes sont bien à son nom.
+
+## Les premières semaines
+
+```schema checklist
+titre: L''accompagnement après la mise en service
+[ ] Un point rapide avec l''assistante chaque semaine pendant un mois
+[ ] Les cas « à traiter à la main » analysés chaque semaine
+[ ] La fiche d''informations mise à jour avec les nouvelles questions
+[ ] Les corrections faites rapidement, avec la version notée dans la fiche
+[ ] Le bilan à un mois préparé (leçon 5.5)
+```
+
+## La suite : maintenance ou autonomie
+
+À la fin de la mission, le client choisit :
+
+1. **L''autonomie** : il garde ses scénarios, avec la documentation ; vous retirez vos accès.
+2. **La maintenance mensuelle** : vous surveillez, corrigez, faites de petites évolutions et un rapport mensuel, pour un prix fixe (module 6). Vous gardez un accès, prévu par écrit.
+
+> [!madagascar] Former en français… et en malgache
+> Dans beaucoup d''organisations malgaches, l''équipe est plus à l''aise en malgache pour les explications techniques. Si c''est le cas, faites la séance de formation en malgache ou en mélangeant les deux langues, et gardez les noms des boutons tels qu''ils apparaissent à l''écran. Le guide écrit peut rester en français, avec des captures d''écran annotées qui parlent d''elles-mêmes.
+
+> [!exemple] Le nouvel assistant, six mois plus tard
+> Six mois après la mission, Mme Lova part en congé maternité. Son remplaçant regarde la vidéo de formation, lit le guide de l''équipe et traite son premier « à la main » dès le deuxième jour, sans appeler Rado. La directrice écrit à Rado pour le remercier : la documentation a fait son travail.
+
+> [!erreur] Partir sans remise
+> Le débutant termine la construction, envoie un message « Tout fonctionne ! » et passe à un autre client. Trois semaines plus tard, l''assistante renomme une colonne du tableau pour qu''elle soit « plus claire » : deux scénarios s''arrêtent. Personne ne sait pourquoi, ni comment réparer. **Une mission se termine par une formation, un guide et une remise technique**, pas par un message.
+
+> [!retenir]
+> - Une **formation courte et pratique**, où l''équipe fait elle-même.
+> - Un **guide de 2 pages** : automatique, à faire, où regarder, alertes, à ne pas faire, contact.
+> - Une **remise technique** complète, sans aucun mot de passe dans les documents.
+> - Un **accompagnement** chaque semaine pendant le premier mois.
+> - Au choix : **autonomie** ou **maintenance mensuelle**, écrite.
+
+## Exercice pratique : former et remettre
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Rédigez le guide de l''équipe de votre projet (2 pages, avec captures).
+> 2. Préparez le déroulé de la séance de formation de 45 minutes.
+> 3. Faites la séance avec une personne qui joue l''assistante, et enregistrez-la si possible.
+> 4. Préparez le dossier de remise technique avec l''arborescence de la leçon.
+>
+> **À livrer** : le guide, le déroulé, la vidéo ou vos notes de séance, et une capture du dossier de remise.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 3, 0, 'Comment mener une séance de formation efficace ?', '["Laisser l''équipe faire elle-même, sur ses écrans, avec des données de test","Envoyer seulement un e-mail","Faire une longue présentation théorique","Ne pas former"]'::jsonb, 0, 'On retient ce qu''on fait, pas ce qu''on voit faire.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 3, 1, 'Pourquoi écrire une partie « À ne pas faire » dans le guide ?', '["Parce que c''est obligatoire","Une colonne renommée ou supprimée peut arrêter les scénarios","Ce n''est pas utile","Pour faire peur à l''équipe"]'::jsonb, 1, 'La plupart des pannes viennent de modifications faites sans savoir qu''elles cassent les scénarios.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 3, 2, 'Que ne doit jamais contenir la remise technique ?', '["Les plans de test","Des mots de passe","Le guide de l''équipe","Les fiches des scénarios"]'::jsonb, 1, 'La liste des comptes et connexions se fait sans aucun mot de passe.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 3, 3, 'Que propose-t-on au client à la fin de la mission ?', '["De tout recommencer","De supprimer les scénarios","Rien","L''autonomie, ou une maintenance mensuelle écrite"]'::jsonb, 3, 'Le client choisit : garder ses scénarios seul, ou confier la surveillance et les évolutions.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 3, 4, 'À quoi sert l''enregistrement vidéo de la formation ?', '["Former les futurs employés sans refaire la séance","Rien","Surveiller l''assistante","Le publier sur les réseaux"]'::jsonb, 0, 'Un remplaçant peut prendre en main les outils seul, avec la vidéo et le guide.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 4, 4, 'Mesurer les résultats et l''étude de cas', 10, 'Un mois après la mise en service, il est temps de **mesurer** : combien de temps l''équipe a vraiment gagné, combien d''oublis et d''erreurs ont disparu, combien coûtent les outils. Ces chiffres prouvent la valeur de votre travail, décident souvent de la suite (une maintenance, un nouveau projet) et deviennent votre meilleure étude de cas. Cette leçon vous apprend à faire ce bilan. Elle se termine par le projet du module 5.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Mesurer les résultats un mois après la mise en service.
+> 2. Comparer avant et après avec les mêmes indicateurs.
+> 3. Calculer le retour sur investissement pour le client.
+> 4. Présenter le bilan et proposer la suite.
+> 5. Rédiger une étude de cas pour votre portfolio.
+
+## Mesurer après un mois
+
+Reprenez les indicateurs du diagnostic (leçon 5.1) et mesurez-les de la même façon : l''assistante note de nouveau, pendant une semaine, le temps passé sur les tâches restantes. Ajoutez les chiffres des plateformes : nombre d''exécutions, cas « à traiter à la main », erreurs.
+
+| Indicateur | Avant | Après 1 mois |
+| --- | --- | --- |
+| Temps de l''assistante sur ces tâches | 30 h par mois | 8 h par mois |
+| Délai de réponse aux demandes | 1 à 2 jours | Moins de 4 heures |
+| Demandes oubliées | Plusieurs par mois | Aucune constatée |
+| Erreurs sur les attestations | 3 par mois | Aucune constatée |
+| Cas « à traiter à la main » | — | 12 % des demandes |
+
+*(Chiffres donnés en exemple.)*
+
+```schema barres
+titre: Le temps de l''assistante, avant et après (heures par mois)
+unite: h
+Avant : 30
+Après 1 mois : 8
+```
+
+## Le retour sur investissement
+
+Le **retour sur investissement** compare ce que l''automatisation coûte à ce qu''elle rapporte.
+
+```schema etapes
+titre: Calculer le retour sur investissement
+Temps gagné : 30 h − 8 h = 22 heures par mois
+Valeur du temps : 22 h × le coût d''une heure de travail pour le centre (par exemple 6 000 Ar) = 132 000 Ar par mois
+Coûts mensuels : abonnements et IA, par exemple 60 000 Ar par mois
+Gain net : 132 000 − 60 000 = 72 000 Ar par mois
+Remboursement du projet : prix du projet ÷ gain net mensuel = nombre de mois
+```
+
+*(Montants donnés en exemple : utilisez les chiffres réels du client.)*
+
+Ajoutez ce qui ne se compte pas en argent : plus aucune demande oubliée, des parents qui reçoivent une réponse le jour même, une assistante qui a enfin le temps de suivre les élèves.
+
+## Le bilan avec le client
+
+```schema chiffres
+titre: Le bilan en 5 parties
+Les objectifs : rappel des 3 objectifs fixés au diagnostic
+Les résultats : le tableau avant / après, et ce que dit l''équipe
+Les coûts : abonnements et IA, comparés au temps gagné
+Les améliorations : les cas « à la main » fréquents et comment les réduire
+La suite : maintenance, nouveaux scénarios, ou autonomie
+```
+
+> [!madagascar] Le témoignage de l''équipe
+> Les chiffres convainquent la directrice ; le témoignage de l''assistante convainc les futurs clients. Demandez à Mme Lova, avec son accord, une phrase sur ce qui a changé pour elle (« Je n''ai plus à recopier les demandes le soir, j''ai le temps d''appeler les élèves »). Dans le milieu professionnel malgache, où beaucoup de clients arrivent par recommandation, un témoignage sincère d''une personne reconnaissable vaut beaucoup.
+
+## L''étude de cas
+
+```schema etapes
+titre: L''étude de cas en 5 parties
+Le problème : la tâche, sa fréquence, le temps perdu, les oublis
+La solution : les scénarios, en schéma simple
+Le rôle de l''IA et les garde-fous : fiche officielle, brouillons relus
+Les résultats : heures gagnées, délais, erreurs évitées
+La démonstration : une courte vidéo du scénario, avec des données fictives
+```
+
+Une étude de cas ne montre **jamais** les vraies données du client : utilisez des données fictives dans la vidéo et les captures, et demandez l''accord du client pour citer son nom. Sans accord, présentez-le de façon anonyme : « un centre de formation de Mahajanga ».
+
+> [!exemple] La suite de la mission
+> Au bilan, la directrice de Formation Mendrika choisit la maintenance mensuelle, et demande un nouveau scénario : un questionnaire de satisfaction envoyé automatiquement à la fin de chaque formation, avec un résumé mensuel préparé par l''IA. Elle recommande aussi Rado à un autre centre de formation de Toamasina. Une mission bien mesurée amène souvent la suivante.
+
+> [!erreur] Un bilan sans mesure
+> Le spécialiste présente : « Tout fonctionne bien, l''équipe est contente. » La directrice ne voit pas ce que la mission a rapporté, hésite à payer la maintenance, et ne recommande personne. **Mesurez avec les mêmes indicateurs qu''au diagnostic**, et présentez des chiffres, des coûts et un retour sur investissement.
+
+> [!retenir]
+> - Mesurer **un mois après**, avec les **mêmes indicateurs** qu''au diagnostic.
+> - Le **retour sur investissement** : valeur du temps gagné moins les coûts mensuels.
+> - Un **bilan en 5 parties**, qui propose la suite.
+> - Un **témoignage** de l''équipe, avec son accord.
+> - Une **étude de cas** avec des données fictives et l''accord du client.
+
+## Exercice pratique : le bilan de la mission
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Construisez le tableau avant / après de votre projet (mesuré si possible, sinon estimé et signalé comme tel).
+> 2. Calculez le retour sur investissement avec des chiffres réalistes.
+> 3. Rédigez le bilan en 5 parties et la proposition de suite.
+>
+> **À livrer** : votre tableau, votre calcul et votre bilan.
+
+## Projet du module 5 : l''étude de cas complète
+
+> [!projet] Projet du module · 2 heures 30
+> Rassemblez toute la mission dans une étude de cas de 4 à 6 pages : c''est la pièce maîtresse de votre portfolio.
+> 1. **Le diagnostic** : la situation, le tableau du temps perdu, les problèmes (leçon 5.1).
+> 2. **La conception** : le tableau central, les statuts, les scénarios, le rôle de l''IA (leçon 5.2).
+> 3. **La construction** : des captures des scénarios et le résumé des tests (leçon 5.3).
+> 4. **La formation et la remise** : le guide de l''équipe et la liste des documents remis (leçon 5.4).
+> 5. **Les résultats** : avant / après, retour sur investissement, témoignage (leçon 5.5).
+> 6. **La vidéo** : une démonstration de 2 à 3 minutes avec des données fictives.
+>
+> Indiquez clairement « projet d''étude » si l''organisation n''est pas un vrai client, ou si les chiffres sont estimés.
+>
+> **À livrer** : votre étude de cas en PDF léger et le lien de la vidéo.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 4, 0, 'Comment mesurer les résultats après un mois ?', '["Avec de nouveaux indicateurs plus flatteurs","Sans mesurer","Avec les mêmes indicateurs et la même méthode qu''au diagnostic","En demandant une impression générale"]'::jsonb, 2, 'Une comparaison juste rend le bilan crédible.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 4, 1, 'L''assistante passait 30 h et passe 8 h par mois. Combien de temps est gagné ?', '["38 heures par mois","22 heures par mois","30 heures par mois","8 heures par mois"]'::jsonb, 1, '30 − 8 = 22 heures par mois.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 4, 2, 'Comment calcule-t-on le gain net mensuel ?', '["Le nombre de scénarios","Les coûts des outils seuls","Le prix du projet seul","La valeur du temps gagné moins les coûts mensuels des outils"]'::jsonb, 3, 'On compare ce que l''automatisation rapporte à ce qu''elle coûte chaque mois.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 4, 3, 'Que montrer dans la vidéo de l''étude de cas ?', '["Les mots de passe du client","Le tableau réel du client","Les vraies données des élèves","Le scénario en action avec des données fictives"]'::jsonb, 3, 'On ne montre jamais les vraies données d''un client dans un portfolio.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 4, 4, 4, 'Que faire sans l''accord du client pour citer son nom ?', '["Le présenter de façon anonyme, par exemple « un centre de formation de Mahajanga »","Inventer un autre client","Ne pas faire d''étude de cas","Le citer quand même"]'::jsonb, 0, 'L''étude de cas reste utile sans nom, tant qu''elle est honnête.');
+insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 5, 'Trouver des clients et se faire payer', 'Transformer vos compétences en activité : un portfolio de résultats et des démonstrations, la prospection avec le diagnostic gratuit, le devis et la protection des données, les prix par la valeur et la maintenance, les paiements, la veille et votre plan pour les 30 prochains jours.')
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary;
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 5, 0, 'Le portfolio et les démonstrations', 9, 'Les entreprises ne paient pas pour des scénarios : elles paient pour du **temps gagné**, des **erreurs évitées** et des **clients mieux servis**. Votre portfolio doit donc montrer des résultats, et vos **démonstrations** doivent permettre à un client de voir, en deux minutes, ce que l''automatisation ferait chez lui. Cette leçon vous aide à construire ce portfolio, même avant vos premiers clients.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rassembler un portfolio de spécialiste automatisation et IA.
+> 2. Construire 3 automatisations de démonstration.
+> 3. Enregistrer une vidéo de démonstration courte et claire.
+> 4. Écrire une phrase de présentation centrée sur le client.
+> 5. Présenter votre profil sur LinkedIn et sur une plateforme.
+
+## Les éléments du portfolio
+
+| Élément | D''où il vient | Ce qu''il prouve |
+| --- | --- | --- |
+| **L''étude de cas** | Projet du module 5 | Que vous menez une mission complète et mesurez les résultats |
+| **Les démonstrations** | Cette leçon | Que vous savez répondre aux besoins les plus courants |
+| **Les vidéos** | Modules 3, 4 et 5 | Que les scénarios fonctionnent vraiment |
+| **Un exemple de documentation** | Leçon 4.4 | Que le client restera autonome |
+| **L''attestation Vitako** | Examen final | Que vos compétences ont été vérifiées |
+
+## Les 3 démonstrations
+
+Construisez, dans un compte de démonstration, **3 automatisations** pour des besoins que presque toutes les petites organisations ont. Elles servent de vitrine, et de base pour vos futurs projets.
+
+```schema chiffres
+titre: 3 démonstrations très demandées
+Les demandes centralisées : formulaire, e-mail → tableau avec statut → accusé de réception
+Les devis relancés : devis non signé depuis 7 jours → relance polie → alerte au commercial
+Le rapport automatique : chaque lundi, les chiffres de la semaine → un e-mail clair au dirigeant
+```
+
+Utilisez **uniquement des données fictives** (« Boutique Exemple », « client.test@… ») : jamais les données d''un client réel.
+
+## La vidéo de démonstration
+
+Un client non technique comprend mieux une vidéo de deux minutes qu''un long document.
+
+```schema etapes
+titre: Une vidéo de démonstration de 2 minutes
+Le problème (20 s) : « Chaque demande est recopiée à la main : 7 heures par mois. »
+L''avant (15 s) : montrer rapidement la tâche manuelle
+L''action (40 s) : remplir le formulaire, et montrer tout ce qui se passe seul
+Le résultat (25 s) : le tableau à jour, l''e-mail reçu, le brouillon préparé
+La conclusion (20 s) : le temps gagné, et votre proposition
+```
+
+> [!astuce] Montrer le résultat, pas la technique
+> Le client ne s''intéresse pas aux modules et aux routeurs : il veut voir **la demande qui arrive toute seule dans le tableau** et **l''e-mail qui part sans que personne n''y touche**. Montrez l''écran du client, pas l''éditeur de Make. Gardez l''éditeur pour les clients techniques, ou pour une seconde vidéo.
+
+## Votre phrase de présentation
+
+```schema comparaison
+titre: Se présenter
+ton: mauvais-bon
+colonnes: Centré sur la technique | Centré sur le client
+« Expert Make, Zapier, API, JSON et webhooks » | « J''aide les centres de formation à ne plus recopier leurs inscriptions à la main »
+« Je fais des automatisations avec l''IA » | « J''aide les PME de Madagascar à gagner 20 heures par mois sur leurs tâches administratives »
+« Disponible pour tout projet » | « J''automatise le suivi des commandes des boutiques en ligne, de la commande à la livraison »
+```
+
+## Votre profil en ligne
+
+1. **LinkedIn** : un titre avec votre phrase de présentation, l''étude de cas et une vidéo dans la rubrique de mise en avant, et des publications régulières sur des automatisations simples (« Comment un centre de formation a supprimé 7 heures de saisie par mois »).
+2. **Une plateforme de freelance** : une offre précise (« Je relie votre formulaire à votre tableau et à vos e-mails ») avec la vidéo, après avoir vérifié qu''elle accepte les freelances basés à Madagascar.
+3. **Les communautés** d''utilisateurs de Make et de Zapier : répondre aux questions est une excellente façon de montrer votre savoir-faire.
+
+> [!madagascar] Une vidéo légère
+> Vos clients malgaches regarderont souvent votre vidéo sur un téléphone, avec une connexion limitée. Gardez-la courte (2 minutes), en résolution moyenne, avec des sous-titres ou un texte à l''écran pour ceux qui regardent sans le son. Publiez-la sur une plateforme vidéo en lien, plutôt que d''envoyer un gros fichier par WhatsApp.
+
+> [!exemple] La démonstration qui a convaincu
+> Rado envoie à la gérante d''une agence de voyage d''Antananarivo sa vidéo « Les demandes centralisées » : en 2 minutes, elle voit une demande de devis arriver dans le tableau, un accusé de réception partir, et le commercial recevoir une alerte. Elle répond : « C''est exactement ce qu''il nous faut. » Il adapte la démonstration à l''agence en deux jours : son premier projet payé.
+
+> [!erreur] Un portfolio de captures techniques
+> Le débutant présente 15 captures d''écran de scénarios Make, avec des dizaines de bulles et de routeurs. Le dirigeant d''une PME n''y comprend rien et pense que c''est compliqué et cher. **Montrez le problème, le résultat et le temps gagné**, pas la complexité technique.
+
+> [!retenir]
+> - Un portfolio : **étude de cas, démonstrations, vidéos, documentation, attestation**.
+> - **3 démonstrations** : demandes centralisées, devis relancés, rapport automatique, avec des données fictives.
+> - Une **vidéo de 2 minutes** : problème, avant, action, résultat, conclusion.
+> - **« J''aide [qui] à [quel résultat] »**, pas une liste d''outils.
+> - **LinkedIn, plateformes, communautés** : montrer des résultats.
+
+## Exercice pratique : vos démonstrations
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Construisez une des 3 démonstrations (en plus de votre projet), avec des données fictives.
+> 2. Enregistrez sa vidéo de 2 minutes en suivant le déroulé.
+> 3. Écrivez 3 versions de votre phrase de présentation et choisissez la meilleure.
+> 4. Mettez à jour votre profil LinkedIn avec la phrase, l''étude de cas et la vidéo.
+>
+> **À livrer** : des captures de la démonstration, le lien de la vidéo, votre phrase et le lien de votre profil.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 0, 0, 'Pour quoi les entreprises paient-elles vraiment ?', '["Le nombre de modules dans un scénario","Du temps gagné, des erreurs évitées, des clients mieux servis","Des captures d''écran techniques","Le nom des outils utilisés"]'::jsonb, 1, 'Le client achète un résultat, pas la technique qui le produit.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 0, 1, 'Quelles données utiliser dans vos démonstrations ?', '["Des données trouvées sur Internet","Uniquement des données fictives","Les données de votre dernier client","Les contacts de votre téléphone"]'::jsonb, 1, 'Montrer les données d''un vrai client trahirait sa confiance et la loi sur les données personnelles.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 0, 2, 'Que doit montrer en priorité une vidéo de démonstration pour un dirigeant non technique ?', '["L''éditeur de Make avec tous les routeurs","Le résultat sur son écran : la demande dans le tableau, l''e-mail parti","Le code JSON des données","La liste des abonnements"]'::jsonb, 1, 'Le client veut voir ce qui change pour lui ; l''éditeur se garde pour les clients techniques.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 0, 3, 'Quelle phrase de présentation est la meilleure ?', '["« Expert Make, Zapier, API, JSON et webhooks »","« Disponible pour tout projet »","« Je fais des automatisations avec l''IA »","« J''aide les PME de Madagascar à gagner 20 heures par mois sur leurs tâches administratives »"]'::jsonb, 3, 'Elle dit pour qui vous travaillez et quel résultat vous apportez.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 0, 4, 'Quelle durée viser pour une vidéo de démonstration ?', '["Environ 2 minutes","Environ 20 minutes","Une heure","10 secondes"]'::jsonb, 0, 'Deux minutes suffisent pour le problème, l''action, le résultat et la conclusion, et se regardent sur un téléphone.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 5, 1, 'Trouver des clients', 8, 'Beaucoup de dirigeants ne savent pas qu''on peut automatiser leurs tâches répétitives, ni combien de temps ils y perdent. Votre prospection consiste donc moins à « vendre » qu''à **faire découvrir** : montrer une démonstration, calculer avec eux le temps perdu, proposer un premier petit projet. Cette leçon vous présente les canaux qui fonctionnent, le diagnostic gratuit, et le message de prospection.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir vos canaux de prospection selon votre spécialité.
+> 2. Proposer un diagnostic gratuit de 30 minutes.
+> 3. Rédiger un message de prospection centré sur le temps gagné.
+> 4. Relancer et suivre vos contacts.
+> 5. Transformer un diagnostic en premier projet.
+
+## Les canaux de prospection
+
+| Canal | Pour qui | Comment s''y prendre |
+| --- | --- | --- |
+| **PME et centres de formation malgaches** | Premiers clients, paiement en ariary | Proposer un diagnostic gratuit avec le calcul du temps perdu |
+| **Agences de marketing et web** | Sous-traitance régulière | Automatiser les prospects, les rapports clients, l''arrivée des nouveaux clients |
+| **Boutiques en ligne** | Commandes, stocks, service client | Montrer la démonstration « commande → préparation → suivi » |
+| **Petites entreprises étrangères** | Clients en euros ou en dollars | Plateformes de freelance (vérifier qu''elles acceptent Madagascar) et LinkedIn |
+| **Communautés Make et Zapier** | Personnes qui cherchent un spécialiste | Aider sur les forums, partager vos démonstrations |
+
+Choisissez **2 ou 3 canaux**, adaptés à votre spécialité, et travaillez-les régulièrement pendant au moins un mois.
+
+## Le diagnostic gratuit de 30 minutes
+
+```schema etapes
+titre: Le diagnostic gratuit qui mène à un projet
+Écouter : quelles tâches reviennent chaque jour, avec quels outils
+Chiffrer ensemble : fréquence × durée, pour 2 ou 3 tâches
+Montrer : votre démonstration la plus proche de leur besoin
+Proposer : un premier petit projet, à fort impact et faible effort
+Conclure : « Je vous envoie une proposition chiffrée cette semaine ? »
+```
+
+> [!cle] Calculer avec le client, pas pour lui
+> Pendant le diagnostic, faites le calcul **avec** le dirigeant : « Combien de demandes par semaine ? Combien de minutes chacune ? » Quand il découvre lui-même que son équipe perd 30 heures par mois, il est déjà convaincu. Un chiffre qu''il a calculé lui-même vaut plus que tous vos arguments.
+
+## Le message de prospection
+
+> [!exemple] Message à une PME
+> « Bonjour Madame, beaucoup d''entreprises perdent 20 à 30 heures par mois à recopier des demandes, envoyer des confirmations et des rappels. Je suis spécialiste en automatisation : je relie vos outils (formulaires, e-mails, tableaux, agenda) pour que ces tâches se fassent toutes seules, avec l''IA pour trier les demandes et préparer les réponses, toujours relues par votre équipe. Voici une démonstration de 2 minutes : [lien]. Je vous propose un diagnostic gratuit de 30 minutes pour chiffrer le temps que vous pourriez gagner. »
+
+```schema comparaison
+titre: Message technique ou message de résultat ?
+ton: mauvais-bon
+colonnes: Message technique | Message de résultat
+« Je maîtrise Make, Zapier, les API et les webhooks » | « Votre équipe pourrait gagner 20 heures par mois »
+« Je fais de l''intelligence artificielle » | « Les demandes sont triées, les réponses préparées, votre équipe relit »
+« Avez-vous besoin d''automatisation ? » | « Je vous propose un diagnostic gratuit de 30 minutes »
+Le même texte envoyé à 100 entreprises | Un exemple adapté à leur activité
+```
+
+## Relancer et suivre
+
+Une relance polie après 5 à 7 jours, puis on s''arrête. Notez chaque contact dans un tableau de prospection : entreprise, canal, date, relance, statut (contacté, diagnostic prévu, proposition envoyée, projet, refus), prochaine action. Regardez-le chaque vendredi.
+
+```schema entonnoir
+titre: Du contact au client
+Messages personnalisés
+Réponses
+Diagnostics gratuits
+Propositions envoyées
+Premiers projets
+Clients en maintenance mensuelle
+```
+
+> [!madagascar] Les entreprises qui découvrent l''automatisation
+> Beaucoup de dirigeants malgaches n''ont jamais entendu parler de Make ou de Zapier, et associent « intelligence artificielle » à quelque chose de lointain et de coûteux. Évitez le jargon. Parlez de **leur** journée : « Votre assistante recopie les commandes le soir ? » Une démonstration avec un exemple local (une commande de gâteau, une inscription à une formation) vaut mieux que toutes les explications.
+
+> [!erreur] Proposer un grand projet tout de suite
+> Après un diagnostic réussi, le débutant propose un projet complet à 2 millions d''ariary, avec 8 scénarios et de l''IA partout. Le dirigeant, qui ne le connaît pas encore, préfère « réfléchir » et ne revient jamais. **Proposez d''abord un petit projet** à fort impact et faible effort : un résultat rapide crée la confiance, et le projet suivant vient naturellement.
+
+> [!retenir]
+> - **2 ou 3 canaux** selon votre spécialité : PME, agences, boutiques, étranger, communautés.
+> - Un **diagnostic gratuit de 30 minutes** : écouter, chiffrer ensemble, montrer, proposer.
+> - Un message centré sur le **temps gagné**, avec une démonstration.
+> - **Une relance**, puis on s''arrête ; un **tableau de prospection**.
+> - Un **petit premier projet** avant le grand.
+
+## Exercice pratique : votre première semaine de prospection
+
+> [!exercice] Exercice pratique · 1 heure
+> 1. Choisissez vos 2 ou 3 canaux et justifiez chaque choix.
+> 2. Listez 15 organisations à contacter dans votre tableau de prospection.
+> 3. Rédigez 5 messages adaptés à leur activité, avec le lien de votre démonstration, et envoyez-en au moins 3.
+> 4. Préparez le déroulé de votre diagnostic gratuit de 30 minutes, avec les questions et le calcul.
+>
+> **À livrer** : vos canaux, votre tableau, vos messages et le déroulé du diagnostic.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 1, 0, 'Que propose-t-on pour faire découvrir l''automatisation à une PME ?', '["Un abonnement Make offert à vie","Un projet complet de 8 scénarios","Un diagnostic gratuit de 30 minutes","Une formation de 3 jours"]'::jsonb, 2, 'Le diagnostic montre au dirigeant le temps perdu et mène naturellement à un premier projet.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 1, 1, 'Pourquoi faire le calcul du temps perdu avec le dirigeant ?', '["Parce que vous ne savez pas calculer","Ce n''est pas utile","Pour qu''il fasse le travail à votre place","Un chiffre qu''il calcule lui-même le convainc mieux que vos arguments"]'::jsonb, 3, 'Quand il découvre lui-même les 30 heures perdues, il est déjà convaincu.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 1, 2, 'Après un diagnostic réussi avec un nouveau client, que proposer ?', '["Un petit premier projet, à fort impact et faible effort","Un contrat de 3 ans","Le plus gros projet possible","Rien : attendre qu''il rappelle"]'::jsonb, 0, 'Un résultat rapide crée la confiance ; le projet suivant vient ensuite.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 1, 3, 'Combien de relances après un premier message sans réponse ?', '["Une relance chaque jour","Une relance polie après 5 à 7 jours, puis on s''arrête","Aucune, jamais","Dix relances"]'::jsonb, 1, 'Une relance montre votre sérieux ; au-delà, vous devenez insistant.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 1, 4, 'Comment parler à un dirigeant qui ne connaît pas l''automatisation ?', '["Sans jargon, avec sa journée et un exemple local","En anglais technique","Avec la liste des modules Make","En parlant d''API et de webhooks"]'::jsonb, 0, '« Votre assistante recopie les commandes le soir ? » parle plus qu''un terme technique.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 5, 2, 'Le devis et la protection des données', 8, 'Le diagnostic a convaincu le client : il attend votre proposition. Un **devis** clair évite la plupart des conflits : ce qui est automatisé et ce qui reste humain, qui paie les abonnements, ce qui est livré, ce qui est garanti. Et parce que vous allez manipuler les données de son entreprise, le devis doit aussi contenir vos **règles de protection des données**. Cette leçon vous apprend à rédiger les deux.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Rédiger un devis d''automatisation en 8 points.
+> 2. Séparer clairement votre prix et les coûts des outils.
+> 3. Définir la garantie et la maintenance.
+> 4. Écrire vos 6 règles de protection des données.
+> 5. Prévoir les limites et les responsabilités de surveillance.
+
+## Le devis en 8 points
+
+```schema checklist
+titre: Ce que contient le devis
+[ ] Les tâches automatisées, et ce qui reste humain
+[ ] Les outils et les comptes, créés au nom du client
+[ ] Les coûts des abonnements et de l''IA, estimés et payés par le client
+[ ] Les tests et la mise en service progressive
+[ ] La formation et la documentation livrées
+[ ] Le calendrier, semaine par semaine
+[ ] Le prix et les échéances de paiement
+[ ] La garantie (corrections pendant 30 jours) et la maintenance proposée
+```
+
+> [!exemple] L''essentiel d''un devis
+> **Projet** : centralisation des demandes et réponses aux questions fréquentes, Formation Mendrika. **Automatisé** : arrivée de toutes les demandes dans le tableau ; brouillons de réponse à partir de la fiche officielle. **Humain** : relecture et envoi des brouillons ; décisions d''inscription. **Outils** : Make et un service d''IA, comptes au nom du centre ; coût estimé présenté en annexe. **Livré** : 2 scénarios testés, guide de l''équipe, documentation, formation d''une heure. **Calendrier** : 2 semaines. **Prix** : 50 % à la commande, 50 % à la mise en service. **Garantie** : corrections gratuites pendant 30 jours ; maintenance mensuelle proposée en option.
+
+## Votre prix et les coûts des outils
+
+```schema comparaison
+titre: Deux montants à ne jamais mélanger
+colonnes: Votre prix | Les coûts des outils
+Le travail : diagnostic, conception, construction, tests, formation | Les abonnements Make ou Zapier, et l''usage de l''IA
+Payé à vous, selon les échéances du devis | Payés par le client directement aux fournisseurs, chaque mois
+Fixe pour le projet | Variables selon le volume, en euros ou en dollars
+```
+
+Présentez les deux dans le devis, séparément. Le client sait ce qu''il vous paie une fois, et ce qu''il paiera chaque mois pour faire tourner ses automatisations.
+
+## La garantie et la maintenance
+
+La **garantie** couvre les corrections des erreurs de votre travail pendant une durée fixée (par exemple 30 jours). Elle ne couvre pas les **changements** demandés après la livraison (un nouveau statut, une nouvelle formation), ni les pannes causées par une modification faite par le client (une colonne renommée). Écrivez-le.
+
+La **maintenance mensuelle**, en option, couvre la surveillance, les corrections, les petites évolutions et un rapport mensuel, pour un prix fixe (leçon 6.4).
+
+## Les 6 règles de protection des données
+
+| Règle | Ce qu''elle veut dire |
+| --- | --- |
+| **1. Le client est propriétaire** | Des comptes, des scénarios, des documents et des données |
+| **2. Le strict nécessaire à l''IA** | Seules les données utiles, avec l''accord du client |
+| **3. Aucune donnée sensible à l''IA** | Pas de santé, de mots de passe ni de données bancaires complètes dans les consignes |
+| **4. Les clés restent protégées** | Dans les connexions sécurisées, jamais dans un document ou un message |
+| **5. Les lois respectées** | Loi malgache sur les données personnelles, RGPD pour les personnes en Europe |
+| **6. Les accès retirés** | À la fin de la mission, sauf contrat de maintenance |
+
+> [!attention] Les limites et la surveillance
+> Une automatisation mal surveillée peut envoyer des centaines de messages par erreur, ou consommer tout un abonnement en quelques heures. Prévoyez des **limites** (nombre maximal d''exécutions, limite de dépense d''IA, alertes) et indiquez clairement dans le devis **qui surveille quoi** : vous pendant la garantie et la maintenance, le client sinon.
+
+> [!madagascar] Le devis pour un client malgache
+> Avec beaucoup de clients malgaches, le devis se discute de vive voix, et se valide parfois par un simple message. Envoyez quand même un devis écrit, même d''une page, et demandez une validation écrite (« Bon pour accord », signature, ou réponse par e-mail ou WhatsApp). Pour une ONG ou une entreprise structurée, ajoutez vos NIF et STAT : c''est souvent obligatoire pour qu''elle puisse vous payer.
+
+> [!erreur] Les abonnements dans votre prix
+> Pour simplifier, le débutant inclut « tout compris » les abonnements dans son prix, pendant un an. Au bout de quatre mois, le volume du client a doublé, les abonnements coûtent deux fois plus cher, et c''est lui qui paie la différence. **Les coûts des outils sont payés par le client**, directement, et présentés à part dans le devis.
+
+> [!retenir]
+> - Un **devis en 8 points** : tâches, outils, coûts, tests, livrables, calendrier, prix, garantie.
+> - **Votre prix** et les **coûts des outils** toujours séparés.
+> - La **garantie** couvre vos erreurs, pas les changements ni les modifications du client.
+> - **6 règles** de protection des données, dans chaque devis.
+> - Des **limites** et une règle claire sur **qui surveille**.
+
+## Exercice pratique : votre devis type
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Rédigez votre devis type en 8 points, avec l''exemple de votre projet.
+> 2. Ajoutez l''annexe des coûts des outils (leçon 4.5).
+> 3. Rédigez vos 6 règles de protection des données, dans vos propres mots.
+> 4. Rédigez le paragraphe sur la garantie, la maintenance et la surveillance.
+>
+> **À livrer** : votre devis type avec ses annexes.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 2, 0, 'Qui paie les abonnements Make, Zapier et l''usage de l''IA ?', '["Vitako","Le client, directement aux fournisseurs, présentés à part dans le devis","Personne","Vous, inclus dans votre prix pour un an"]'::jsonb, 1, 'Les coûts des outils varient avec le volume : les inclure dans votre prix vous ferait payer la différence.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 2, 1, 'Que couvre la garantie de 30 jours ?', '["Les erreurs de votre travail","Les abonnements","Les pannes causées par une colonne renommée par le client","Toutes les nouvelles demandes du client"]'::jsonb, 0, 'Les changements et les modifications faites par le client relèvent de la maintenance ou d''un nouveau devis.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 2, 2, 'À qui appartiennent les comptes et les scénarios ?', '["À Make","Au client","Au spécialiste","À la première personne qui les crée"]'::jsonb, 1, 'Le client doit rester propriétaire et pouvoir continuer sans vous.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 2, 3, 'Quelle donnée ne doit jamais être envoyée à un service d''IA ?', '["Le nom d''une formation","Un mot de passe ou des données bancaires complètes","Une date de session","Le texte d''une question fréquente"]'::jsonb, 1, 'Les données sensibles ne vont jamais dans les consignes envoyées à l''IA.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 2, 4, 'Pourquoi prévoir des limites (exécutions, dépense d''IA, alertes) ?', '["Une erreur peut envoyer des centaines de messages ou vider un abonnement","Ce n''est jamais utile","Pour ralentir le client","Parce que c''est joli"]'::jsonb, 0, 'Les limites arrêtent une erreur avant qu''elle ne coûte cher.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 5, 3, 'Les prix par la valeur et la maintenance', 9, 'Combien facturer une automatisation ? Si vous comptez seulement vos heures, vous serez souvent sous-payé : un scénario construit en une journée peut faire gagner des centaines d''heures par an à une entreprise. Le spécialiste expérimenté raisonne **par la valeur** : ce que l''automatisation rapporte au client, comparé à son prix. Cette leçon vous apprend à calculer vos prix et à construire vos offres, dont la maintenance mensuelle.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Calculer votre prix plancher à partir de votre temps.
+> 2. Calculer la valeur d''une automatisation pour le client.
+> 3. Fixer un prix entre votre plancher et la valeur.
+> 4. Construire vos offres : diagnostic, scénario simple, projet complet, maintenance.
+> 5. Adapter vos prix aux clients locaux et étrangers.
+
+## Votre prix plancher
+
+Le prix plancher est le prix en dessous duquel vous perdez de l''argent. Il se calcule à partir de votre temps, comme pour tous les métiers en freelance.
+
+```schema etapes
+titre: Le prix plancher d''un projet
+Revenu visé et frais du mois : par exemple 1 200 000 Ar + 200 000 Ar
+Heures facturables du mois : par exemple 80 heures
+Prix horaire plancher : 1 400 000 ÷ 80 = 17 500 Ar de l''heure
+Temps du projet : diagnostic, conception, construction, tests, formation, documentation (par exemple 30 h)
+Prix plancher : 30 h × 17 500 Ar = 525 000 Ar
+```
+
+*(Montants donnés en exemple.)*
+
+Comptez **tout** le temps du projet, pas seulement la construction : les entretiens, les tests, la formation et la documentation prennent souvent plus de temps que les scénarios eux-mêmes.
+
+## La valeur pour le client
+
+> [!exemple] Le calcul de valeur
+> L''automatisation fait gagner 20 heures par mois à une assistante. Si une heure de son travail coûte 6 000 Ar à l''entreprise, cela représente 120 000 Ar par mois, soit 1 440 000 Ar par an, sans compter les oublis et les erreurs évités. Les outils coûtent par exemple 60 000 Ar par mois. Gain net : 60 000 Ar par mois. Un projet à 600 000 Ar est remboursé en 10 mois, puis rapporte chaque mois.
+
+```schema comparaison
+titre: Deux façons de fixer le prix
+colonnes: Au temps passé | Par la valeur
+« 30 heures × mon tarif » | « Vous gagnerez environ 1 400 000 Ar par an »
+Le client compare avec le prix d''une heure de travail local | Le client compare avec ce qu''il gagne
+Vous êtes pénalisé quand vous allez plus vite | Votre expérience et vos démonstrations ont de la valeur
+```
+
+Le bon prix se situe **entre votre prix plancher et une part raisonnable de la valeur** : assez pour bien vivre de votre travail, assez bas pour que le client rentabilise vite son investissement. Pour un premier client, restez proche de votre plancher ; avec des études de cas, montez vers la valeur.
+
+## Vos offres
+
+| Offre | Contenu | Exemple de prix |
+| --- | --- | --- |
+| **Diagnostic** | Analyse des tâches, calcul du temps perdu, propositions | Gratuit (30 min) ou 100 000 Ar (détaillé, avec rapport) |
+| **Scénario simple** | 1 scénario de 3 à 5 étapes, tests, documentation, courte formation | 150 000 à 300 000 Ar |
+| **Projet complet** | 3 à 5 scénarios reliés, IA, guide, formation | 600 000 à 1 500 000 Ar |
+| **Maintenance mensuelle** | Surveillance, corrections, petites évolutions, rapport mensuel | 80 000 à 200 000 Ar par mois |
+
+*(Montants donnés en exemple pour des clients locaux. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché. Les abonnements Make, Zapier et IA sont toujours payés par le client, en plus.)*
+
+> [!cle] La maintenance, le revenu régulier
+> Un projet se paie une fois ; la maintenance se paie chaque mois. Avec 5 ou 6 clients en maintenance, vous avez une base de revenus stable, qui laisse le temps de faire de nouveaux projets. Proposez-la à chaque fin de mission, avec un rapport mensuel qui montre la valeur : exécutions réussies, cas traités, temps gagné, évolutions faites.
+
+## Les clients étrangers
+
+Pour les clients en Europe ou au Canada, le temps gagné a plus de valeur (une heure de travail y coûte bien plus cher), et les prix du marché sont plus élevés. Regardez les tarifs des spécialistes francophones sur les plateformes, fixez vos prix **dans leur monnaie**, et tenez compte des frais de réception des paiements. Ne cassez pas les prix : un tarif anormalement bas fait douter de la qualité.
+
+> [!madagascar] Expliquer la valeur aux clients locaux
+> Beaucoup de dirigeants malgaches comparent votre prix au salaire mensuel d''un employé, et le trouvent élevé. Le calcul de valeur change la discussion : « Votre assistante passe 30 heures par mois sur ces tâches. Avec l''automatisation, elle en gagne 20, que vous pouvez consacrer à vos clients. Le projet est remboursé en moins d''un an, puis il vous fait gagner du temps chaque mois. » Présentez-le simplement, avec les chiffres du diagnostic.
+
+> [!erreur] Facturer seulement la construction
+> Le débutant facture « 4 heures de construction » pour un scénario. Il oublie les 2 heures d''entretien, les 3 heures de tests, l''heure de formation et les 2 heures de documentation. Il travaille 12 heures pour le prix de 4. **Comptez tout le temps du projet** dans votre prix plancher.
+
+> [!retenir]
+> - Le **prix plancher** : votre prix horaire × tout le temps du projet.
+> - La **valeur** : le temps gagné par le client, en argent, moins les coûts des outils.
+> - Le bon prix : **entre le plancher et une part raisonnable de la valeur**.
+> - 4 offres : **diagnostic, scénario simple, projet complet, maintenance mensuelle**.
+> - Les **abonnements** sont toujours payés par le client, en plus.
+
+## Exercice pratique : vos prix
+
+> [!exercice] Exercice pratique · 50 minutes
+> 1. Calculez votre prix horaire plancher avec vos propres chiffres.
+> 2. Estimez le temps total de votre projet (toutes les étapes) et son prix plancher.
+> 3. Calculez la valeur de votre projet pour le client, sur un an, et le délai de remboursement.
+> 4. Construisez vos 4 offres avec vos prix, en ariary et dans la monnaie de vos clients étrangers.
+>
+> **À livrer** : vos calculs et votre grille d''offres.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 3, 0, 'Avec un besoin de 1 400 000 Ar par mois et 80 heures facturables, quel est le prix horaire plancher ?', '["8 000 Ar","17 500 Ar","14 000 Ar","175 000 Ar"]'::jsonb, 1, '1 400 000 ÷ 80 = 17 500 Ar de l''heure.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 3, 1, 'Que faut-il compter dans le temps d''un projet ?', '["Tout : entretiens, conception, construction, tests, formation, documentation","Seulement les réunions","Seulement la construction des scénarios","Seulement les tests"]'::jsonb, 0, 'Les étapes autour des scénarios prennent souvent plus de temps que la construction.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 3, 2, '20 heures gagnées par mois à 6 000 Ar l''heure représentent quelle valeur par an ?', '["240 000 Ar","120 000 Ar","1 440 000 Ar","14 400 000 Ar"]'::jsonb, 2, '20 × 6 000 = 120 000 Ar par mois, × 12 = 1 440 000 Ar par an.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 3, 3, 'Où se situe le bon prix ?', '["Entre votre prix plancher et une part raisonnable de la valeur","Au hasard","En dessous de votre prix plancher","Au-dessus de toute la valeur pour le client"]'::jsonb, 0, 'Vous vivez de votre travail et le client rentabilise vite son investissement.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 3, 4, 'Pourquoi proposer la maintenance mensuelle ?', '["Parce que le client ne peut rien faire seul","Pour éviter de livrer la documentation","Elle n''a aucun intérêt","Elle apporte un revenu régulier et garde les scénarios en bon état"]'::jsonb, 3, 'Avec quelques clients en maintenance, vous avez une base de revenus stable.');
+insert into public.lesson_parts (course_id, module_index, part_index, title, minutes, body_md) values ('data-4-f', 5, 4, 'Être payé, durer et évoluer', 10, 'Cette dernière leçon rassemble ce qui permet de durer dans le métier : être payé correctement depuis Madagascar, tenir des maintenances qui fidélisent les clients, continuer à apprendre dans un domaine qui change vite, et passer à l''action dès les 30 prochains jours. Elle se termine par le projet final de la formation.
+
+> [!objectifs] Objectifs de la leçon
+> 1. Choisir les moyens de paiement selon le client.
+> 2. Organiser vos maintenances mensuelles.
+> 3. Faire votre veille sur les outils et l''IA.
+> 4. Connaître les évolutions possibles du métier.
+> 5. Construire votre plan d''action pour les 30 prochains jours.
+
+## Se faire payer
+
+| Situation | Moyens de paiement courants | Points de vigilance |
+| --- | --- | --- |
+| Client à Madagascar | Mobile Money (MVola, Orange Money, Airtel Money), virement bancaire | Vérifier la réception sur votre compte, jamais sur une capture |
+| Client trouvé sur une plateforme | Selon la plateforme : Payoneer ou virement bancaire | Commissions, frais de retrait, délais |
+| Client étranger en direct | Virement international, Payoneer, autres services selon les pays | Frais d''envoi et de réception, taux de change |
+
+Pour un projet, demandez un **acompte** (par exemple 50 % à la commande) et le solde à la mise en service. Pour la maintenance, une facture **au début de chaque mois**. Notez chaque paiement dans votre tableau de revenus.
+
+> [!madagascar] PayPal et les démarches
+> Les possibilités de PayPal sont limitées pour les comptes basés à Madagascar : vérifiez la situation actuelle avant de le proposer. Renseignez-vous sur le NIF et la carte statistique auprès du centre fiscal de votre ville, et gardez une trace de chaque paiement. Les services de paiement changent : vérifiez toujours sur leur site officiel.
+
+## Les maintenances mensuelles
+
+```schema cycle
+titre: Le mois d''une maintenance
+Chaque semaine : consulter l''historique et les alertes de chaque scénario
+Chaque semaine : analyser les cas « à traiter à la main »
+Pendant le mois : corrections et petites évolutions demandées
+Fin du mois : consommation d''opérations et coûts d''IA vérifiés
+Début du mois suivant : rapport au client, avec les chiffres et une proposition
+```
+
+> [!exemple] Le rapport de maintenance
+> Chaque début de mois, Rado envoie à Formation Mendrika un rapport d''une page : 312 demandes centralisées, 198 brouillons préparés, 38 cas « à la main » (dont 12 questions nouvelles ajoutées à la fiche), aucune panne, coût des outils conforme à l''estimation. Il termine par une proposition : un questionnaire de satisfaction automatique en fin de formation. La directrice renouvelle la maintenance sans hésiter : elle voit chaque mois ce qu''elle paie.
+
+## La veille
+
+Les plateformes et les services d''IA évoluent très vite : nouveaux modules, nouveaux modèles, changements de prix et de limites.
+
+```schema checklist
+titre: Votre veille d''une heure par semaine
+[ ] Les nouveautés de Make et de Zapier (blogs et notes de version officiels)
+[ ] Les nouveaux modèles et les prix des principaux services d''IA
+[ ] Les règles sur les données et l''IA qui concernent vos clients
+[ ] Une question ou une réponse dans une communauté d''utilisateurs
+[ ] Une petite expérience : un nouveau module, une nouvelle façon de faire
+```
+
+## Évoluer dans le métier
+
+| Étape | Ce qu''il faut ajouter |
+| --- | --- |
+| **Spécialiste confirmé** | Scénarios complexes, API et webhooks, gestion avancée des erreurs |
+| **Développeur d''automatisations** | JavaScript ou Python pour les étapes sur mesure |
+| **Spécialiste de l''IA appliquée** | Consignes avancées, évaluation de la qualité, bases de connaissances, assistants internes |
+| **Consultant en processus** | Analyse et amélioration de l''organisation des entreprises |
+| **Analyste de données** | Tableaux de bord alimentés automatiquement (formation Analyste de données) |
+
+La formation **Spécialiste automatisation et IA – Avancé** prolonge celle-ci : audit de processus, outils professionnels, jeux de test, clients internationaux et offres mensuelles.
+
+## Votre plan d''action pour les 30 prochains jours
+
+```schema etapes
+titre: Les 30 premiers jours de votre activité
+Semaine 1 : finaliser le portfolio, les 3 démonstrations et leurs vidéos
+Semaine 1 : préparer le devis type, les règles des données et la grille d''offres
+Semaines 2 à 4 : prospection 30 minutes par jour, 5 messages, des diagnostics gratuits
+Chaque semaine : une publication sur LinkedIn (une automatisation, un résultat)
+Chaque vendredi : tableau de prospection, relances, une heure de veille
+Fin du mois : bilan et ajustement de vos canaux, de votre spécialité ou de vos offres
+```
+
+> [!erreur] Arrêter d''apprendre
+> Un spécialiste qui a appris Make il y a deux ans continue à construire de la même façon. Il ignore qu''une nouvelle fonction ferait en deux étapes ce qu''il fait en dix, et que le service d''IA qu''il utilise propose un modèle bien moins cher pour le même résultat. Ses clients finissent par trouver mieux ailleurs. **Une heure de veille par semaine** fait partie du métier.
+
+> [!retenir]
+> - **Acompte** pour les projets, **facture en début de mois** pour la maintenance.
+> - **Mobile Money** en local ; **plateformes, virement ou Payoneer** pour l''étranger, en vérifiant les conditions.
+> - Une **maintenance** avec un **rapport mensuel** qui montre la valeur.
+> - **Une heure de veille par semaine** sur les outils et l''IA.
+> - Un **plan d''action** concret pour les 30 prochains jours.
+
+## Exercice pratique : vos outils de gestion
+
+> [!exercice] Exercice pratique · 45 minutes
+> 1. Créez votre modèle de facture (projet avec acompte, et maintenance mensuelle).
+> 2. Créez votre tableau des revenus.
+> 3. Rédigez le modèle de votre rapport mensuel de maintenance.
+> 4. Choisissez 3 sources de veille officielles et notez-les.
+>
+> **À livrer** : vos modèles, votre tableau et vos sources de veille.
+
+## Projet final : votre activité prête à démarrer
+
+> [!projet] Projet du module · 2 heures 30
+> Ce projet rassemble toute la formation. À la fin, vous êtes prêt à travailler avec de vrais clients.
+> 1. **Portfolio** : votre étude de cas (module 5), vos 3 démonstrations avec leurs vidéos, un exemple de documentation, et le lien de votre attestation Vitako.
+> 2. **Offre** : votre phrase de présentation et votre grille d''offres avec vos prix.
+> 3. **Documents** : votre devis type avec ses annexes, vos 6 règles de protection des données, vos modèles de facture et de rapport de maintenance.
+> 4. **Prospection** : votre tableau avec 15 organisations, le déroulé du diagnostic gratuit et la preuve d''au moins **5 messages réellement envoyés**.
+> 5. **Plan** : votre plan d''action des 30 prochains jours, avec des dates précises.
+> 6. **Bilan** : relisez votre carte des automatisations du module 1 et écrivez en une page ce que vous savez faire maintenant, et vos objectifs pour les 3 prochains mois.
+>
+> **À livrer** : un dossier complet avec tous ces éléments. Félicitations : vous avez terminé la formation. Il vous reste à passer l''examen final pour obtenir votre attestation.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 4, 0, 'Comment organiser le paiement d''un projet ?', '["Tout à la fin, sans acompte","Paiement après un an","Aucun document","Un acompte à la commande, le solde à la mise en service"]'::jsonb, 3, 'L''acompte engage le client et vous protège en cas d''abandon.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 4, 1, 'Comment vérifier un paiement Mobile Money ?', '["En demandant à un ami","Pas besoin de vérifier","Sur votre propre compte, jamais sur une capture d''écran","Sur la capture envoyée par le client"]'::jsonb, 2, 'Une capture peut être fausse ; seul votre compte fait foi.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 4, 2, 'Que contient le rapport mensuel de maintenance ?', '["Rien : on n''envoie pas de rapport","Seulement la facture","Les chiffres du mois, les cas à la main, les coûts et une proposition","Le code des scénarios"]'::jsonb, 2, 'Le client voit chaque mois la valeur de ce qu''il paie.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 4, 3, 'Combien de temps consacrer à la veille ?', '["Une heure par an","Environ une heure par semaine","Toute la journée","Aucun : on a déjà tout appris"]'::jsonb, 1, 'Les outils et l''IA évoluent vite : une heure régulière suffit à rester à jour.');
+insert into public.part_questions (course_id, module_index, part_index, position, question, options, correct, explanation) values ('data-4-f', 5, 4, 4, 'Que faire de PayPal pour un compte basé à Madagascar ?', '["Vérifier la situation actuelle, car ses possibilités sont limitées","Il est interdit de le mentionner","Il est le seul moyen accepté","Le proposer sans vérifier"]'::jsonb, 0, 'Les services de paiement changent : on vérifie toujours sur leur site officiel.');
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quel est le rôle principal d''un spécialiste automatisation et IA ?', '["Relier les outils et ajouter l''IA pour supprimer les tâches répétitives","Remplacer toute l''équipe du client","Créer le logo de l''entreprise","Réparer les ordinateurs"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Faut-il savoir programmer pour commencer le métier ?', '["Oui, sinon aucun outil ne fonctionne","Oui, obligatoirement en C++","Oui, il faut un diplôme d''ingénieur","Non : Make et Zapier permettent de commencer sans programmer"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans un scénario, qu''est-ce que le déclencheur ?', '["La dernière étape du scénario","L''événement qui lance le scénario","Le prix de l''abonnement","Le nom du client"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'À quoi sert la correspondance (mapping) ?', '["Faire voyager les données d''une étape à l''autre","Supprimer les doublons à la main","Traduire l''interface","Payer l''abonnement"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quelle différence entre un déclencheur instantané et un déclencheur planifié ?', '["L''instantané ne fonctionne que la nuit","Aucune différence","Le planifié est toujours gratuit","L''instantané réagit tout de suite, le planifié vérifie à intervalles réguliers"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quels sont les 4 critères d''une tâche à automatiser ?', '["Beauté, couleur, taille, prix","Aucun critère : tout s''automatise","Rareté, improvisation, papier, hasard","Répétition, règles claires, outils numériques, coût des erreurs"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Une tâche de 10 minutes faite 60 fois par mois représente combien de temps ?', '["10 heures par mois","6 heures par mois","60 heures par mois","1 heure par mois"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Pourquoi faut-il vérifier ce que produit l''IA ?', '["Pour occuper l''équipe","Elle produit un texte plausible, pas forcément vrai","Parce qu''elle écrit en anglais","Elle ne se trompe jamais"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que veut dire « humain dans la boucle » ?', '["Le client ne voit jamais rien","L''IA décide seule","L''IA prépare, un humain valide avant les décisions importantes","Un humain recopie tout à la main"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Au nom de qui créer les comptes et abonnements ?', '["Sans nom","Au nom du spécialiste","Au nom d''un ami","Au nom du client"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment obtenir une cartographie fidèle d''un processus ?', '["En devinant depuis chez soi","En copiant celle d''une autre entreprise","En observant la personne qui fait la tâche, avec un vrai exemple","En demandant à l''IA d''imaginer"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que faire des cas particuliers d''un processus ?', '["Les ignorer","Les supprimer du tableau","Les automatiser au hasard","Les lister et donner un traitement à chacun"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Qu''apporte un identifiant unique dans le tableau central ?', '["Retrouver chaque ligne sans ambiguïté et éviter les doublons","Rendre le tableau plus coloré","Remplacer la colonne statut","Rien du tout"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quelle est la règle anti-doublon ?', '["Supprimer le tableau chaque semaine","Chercher avant de créer","Ne jamais créer de ligne","Créer une ligne à chaque message, puis trier à la main"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans le JSON {"client": {"telephone": "034 12 345 67"}}, quel chemin désigne le téléphone ?', '["telephone.client","034.client","client.telephone","client[telephone]"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quelle valeur JSON est un texte ?', '["null","42","true","\"Mahajanga\""]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Pourquoi demander à l''IA une sortie fermée (catégories fixes, JSON précis) ?', '["Elle est plus longue","Elle se vérifie facilement par le scénario","Elle coûte toujours plus cher","Elle est plus poétique"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que contient un jeu de test pour une consigne d''IA ?', '["Une vingtaine de vrais messages avec les réponses attendues","Les mots de passe du client","Un seul message inventé","Rien : on teste en production"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que fait le scénario quand il a un doute ?', '["Il choisit au hasard","Il envoie quand même au client final","Il s''arrête et passe le cas en « à traiter à la main »","Il supprime la donnée"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Qui valide le dossier de conception avant la construction ?', '["Le client","Make","Le premier élève inscrit","Personne"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans Make, à quoi sert « Run once » ?', '["Tester le scénario une fois et voir les données dans les bulles","Payer l''abonnement","Supprimer le scénario","Traduire les modules"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que consomme chaque module traité dans Make ?', '["Rien du tout","Des tâches Zapier","Des opérations","Des mégaoctets du téléphone"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'D''où vient le numéro de ligne à mettre à jour dans Update a Row ?', '["Du module 1, par correspondance, jamais tapé à la main","Du nom du client","D''un nombre au hasard","D''une estimation"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Où envoyer les e-mails pendant les tests ?', '["Aux vrais clients","À toute la liste de contacts","Nulle part, on ne teste pas","Sur une adresse de test"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Pourquoi un routeur doit-il toujours avoir un chemin de secours ?', '["Pour doubler les opérations","Ce n''est jamais nécessaire","Pour décorer le scénario","Pour traiter les cas qui ne correspondent à aucun autre chemin"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que fait la fonction trim ?', '["Elle compte les lettres","Elle formate une date","Elle met le texte en majuscules","Elle supprime les espaces au début et à la fin d''un texte"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quel est le rôle d''un itérateur ?', '["Découper une liste en paquets, un par élément","Envoyer un e-mail","Supprimer un scénario","Rassembler des paquets en un seul"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment construire un rapport automatique du lundi ?', '["Un webhook appelé à la main","Recopier les chiffres chaque lundi","Un filtre seul","Déclencheur planifié, recherche des lignes, agrégateur, envoi"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'À quoi sert un gestionnaire d''erreur sur un module fragile ?', '["Supprimer le scénario","Cacher les erreurs pour toujours","Augmenter les opérations","Envoyer le cas vers « À traiter à la main » et prévenir par une alerte"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que faut-il faire de l''adresse d''un webhook ?', '["La publier sur Facebook","L''écrire dans le guide de l''équipe en public","La garder secrète","L''envoyer à tous les prospects"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans Zapier, comment s''appelle un scénario ?', '["Un data store","Un routeur","Un paquet","Un Zap"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quel outil choisir le plus souvent ?', '["Toujours le plus récent","Celui qu''on ne connaît pas","Toujours le plus cher","Celui que le client utilise déjà, s''il convient"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'À quoi sert Formatter dans Zapier ?', '["Créer des comptes","Payer les factures","Écrire les consignes d''IA","Transformer dates, textes et nombres"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Après l''étape d''IA, que faut-il faire de la réponse ?', '["L''analyser en JSON et vérifier la valeur avant de l''utiliser","L''envoyer directement au client","L''ignorer","La publier telle quelle"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quel statut donner à une ligne extraite d''un texte libre par l''IA ?', '["« Supprimé »","« Validé définitivement »","« À vérifier »","Aucun statut"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quelle est la seule source autorisée pour les réponses préparées par l''IA ?', '["Le site d''un concurrent","La mémoire de l''IA","La fiche d''informations officielle, validée et datée","Les rumeurs des réseaux sociaux"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que renvoie la consigne quand l''information n''est pas dans la fiche ?', '["Une réponse inventée","Rien, et le message est supprimé","MANQUANT, et le cas passe à la main","Un prix au hasard"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Par défaut, comment partent les réponses préparées par l''IA ?', '["Elles ne partent jamais","Par courrier postal","En brouillon, relu et envoyé par un humain","Automatiquement, sans relecture"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment mettre les scénarios en service ?', '["Tous le même jour sans test","Jamais","Seulement la veille des vacances","Progressivement, un scénario par semaine"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment estimer le coût d''un scénario ?', '["Exécutions × étapes, plus l''IA selon le texte et le modèle","Au hasard","Par le nombre de couleurs du tableau","Il est toujours gratuit"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Avec qui mener l''entretien de diagnostic chez Formation Mendrika ?', '["La directrice et l''assistante, qui montre les tâches","Seulement les élèves","Seulement le comptable","Personne"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Combien de temps mesurer les tâches avant de proposer ?', '["Une à deux semaines","Un an","Une minute","On ne mesure jamais"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Qu''est-ce qui relie les scénarios de la mission ?', '["Les messages WhatsApp","Le tableau central et sa colonne de statut","La couleur des modules","Les mots de passe"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans la mission, qui décide et envoie ?', '["Make seul","Le spécialiste, à la place de l''équipe","L''IA seule","L''humain ; l''IA classe et prépare"]'::jsonb, 3, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Dans quel ordre construire les scénarios ?', '["Du dernier au premier","Tous en même temps","Un par semaine, dans l''ordre du parcours","Au hasard"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Qui juge la qualité des brouillons de l''IA pendant les tests ?', '["Un client au hasard","L''assistante, dont les remarques améliorent la consigne","L''IA elle-même","Personne"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que ne doit jamais contenir la remise technique ?', '["La liste des scénarios","Des mots de passe","Les noms des connexions","Le guide de l''équipe"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que contient le guide de l''équipe ?', '["Le code JSON complet","Les mots de passe","Ce qui est automatique, ce qui reste à faire, où regarder, les alertes, le contact","Les factures du spécialiste"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment mesurer les résultats un mois après ?', '["On ne mesure pas","Avec les mêmes indicateurs qu''au diagnostic","En demandant une impression vague","Avec de nouveaux indicateurs plus flatteurs"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que faut-il pour publier une étude de cas ?', '["Rien","Les mots de passe du client","L''accord du client et des données fictives","Les vraies données des élèves"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que doit montrer un portfolio de spécialiste ?', '["Des dizaines de captures techniques","Vos diplômes uniquement","Le problème, le résultat et le temps gagné","La liste de tous les outils existants"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Quelles données utiliser dans les démonstrations ?', '["Les données d''un vrai client","Des données achetées","Uniquement des données fictives","Des contacts personnels"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que propose-t-on pour faire découvrir l''automatisation à une PME ?', '["Rien","Un contrat de 3 ans","Un diagnostic gratuit de 30 minutes","Un projet de 8 scénarios d''emblée"]'::jsonb, 2, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Après un premier diagnostic, quel projet proposer à un nouveau client ?', '["Un projet sans devis","Un petit projet à fort impact et faible effort","Aucun projet","Le plus gros projet possible"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment présenter les coûts des outils dans le devis ?', '["À part, payés par le client directement aux fournisseurs","Inclus dans votre prix pour un an","Cachés","Payés par vous"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Que couvre la garantie ?', '["Les abonnements","Les erreurs de votre travail pendant une durée fixée","Les modifications faites par le client","Toutes les nouvelles demandes"]'::jsonb, 1, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Avec 1 400 000 Ar à couvrir et 80 heures facturables, quel est le prix horaire plancher ?', '["17 500 Ar","8 000 Ar","175 000 Ar","14 000 Ar"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Où se situe le bon prix d''un projet ?', '["Entre votre prix plancher et une part raisonnable de la valeur","Au hasard","Au-dessus de toute la valeur","En dessous du prix plancher"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment vérifier un paiement Mobile Money ?', '["Sur votre propre compte, jamais sur une capture","Sur la capture du client","Par téléphone uniquement","On ne vérifie pas"]'::jsonb, 0, 2);
+insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Combien de temps consacrer à la veille sur les outils et l''IA ?', '["Environ une heure par semaine","Jamais","Une heure par an","Toute la journée"]'::jsonb, 0, 2);
+update public.courses set v2_live = false where id = 'data-4-f';
+
 -- design-0-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'design-0-f';
 delete from public.modules2 where course_id = 'design-0-f' and module_index >= 6;

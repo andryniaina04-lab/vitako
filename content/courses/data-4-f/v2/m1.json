@@ -1,0 +1,61 @@
+{
+  "title": "Le métier de spécialiste automatisation et IA",
+  "summary": "Ce que fait le métier, le vocabulaire des scénarios, les tâches à automatiser, ce que l'IA peut et ne peut pas faire, vos clients et les règles de confiance.",
+  "lessons": [
+    {
+      "title": "Ce que fait un spécialiste automatisation et IA",
+      "file": "m1-l1.md",
+      "questions": [
+        { "q": "Quel est le rôle principal d'un spécialiste automatisation et IA ?", "options": ["Relier les outils d'une entreprise et y ajouter l'IA pour supprimer les tâches répétitives", "Remplacer tous les employés par des robots", "Créer des sites web", "Gérer les réseaux sociaux"], "correct": 0, "why": "Il fait disparaître la partie répétitive du travail, pour que l'équipe se consacre à ce qui demande du jugement." },
+        { "q": "Quelle est la première étape d'une mission d'automatisation ?", "options": ["Le diagnostic : repérer les tâches répétitives et mesurer le temps perdu", "La construction immédiate du scénario", "La facture", "La formation de l'équipe"], "correct": 0, "why": "On ne construit jamais avant d'avoir compris le processus et mesuré ce qu'on peut gagner." },
+        { "q": "Faut-il savoir programmer pour commencer ce métier ?", "options": ["Non : la plupart des besoins des petites entreprises se règlent avec des plateformes sans code", "Oui, il faut maîtriser plusieurs langages", "Oui, uniquement en Python", "Non, car il n'y a rien à apprendre"], "correct": 0, "why": "Make et Zapier relient les outils par des menus. Le code devient utile plus tard, pour aller plus loin." },
+        { "q": "Quelle qualité évite le plus les automatisations qui cassent ?", "options": ["La rigueur : tester chaque cas", "La rapidité de frappe", "La créativité artistique", "L'humour"], "correct": 0, "why": "Une automatisation tient dans le temps quand les cas normaux, manquants et inattendus ont été testés." },
+        { "q": "Que devient le travail de l'assistante après l'automatisation des inscriptions ?", "options": ["Elle garde la vérification des cas particuliers et le suivi des personnes", "Elle perd son travail", "Elle recopie toujours tout", "Elle ne fait plus rien"], "correct": 0, "why": "La partie répétitive disparaît ; le temps libéré sert aux tâches qui demandent un humain." }
+      ]
+    },
+    {
+      "title": "Le vocabulaire : déclencheurs, actions, filtres et routeurs",
+      "file": "m1-l2.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un déclencheur ?", "options": ["L'événement qui lance le scénario", "La dernière étape du scénario", "Un message d'erreur", "Le prix de l'abonnement"], "correct": 0, "why": "Une nouvelle réponse au formulaire, un nouvel e-mail, une nouvelle commande : le déclencheur démarre l'exécution." },
+        { "q": "À quoi sert un routeur ?", "options": ["Créer plusieurs chemins selon les cas", "Arrêter le scénario", "Envoyer un e-mail", "Payer l'abonnement"], "correct": 0, "why": "Par exemple : un débutant reçoit l'e-mail A, un niveau avancé l'e-mail B." },
+        { "q": "Qu'est-ce que la correspondance (mapping) ?", "options": ["Indiquer quelle donnée d'une étape va dans quel champ d'une autre étape", "La liste des clients", "Un type de webhook", "Une facture"], "correct": 0, "why": "C'est ce qui fait voyager le prénom du formulaire jusque dans le texte de l'e-mail." },
+        { "q": "Qu'est-ce qu'un webhook ?", "options": ["Une adresse qui reçoit directement des données envoyées par un autre outil", "Un mot de passe", "Un tableau Google Sheets", "Un assistant d'IA"], "correct": 0, "why": "Le site dépose chaque commande à cette adresse, et le scénario démarre aussitôt." },
+        { "q": "Pourquoi tester l'étape précédente avant de configurer la suivante ?", "options": ["Pour que la liste des champs disponibles soit remplie avec de vraies données", "Parce que la plateforme l'impose toujours", "Pour consommer des opérations", "Ce n'est pas nécessaire"], "correct": 0, "why": "Sans données de test, on tape les noms de champs à la main et l'e-mail affiche « Bonjour Prénom »." }
+      ]
+    },
+    {
+      "title": "Quelles tâches automatiser ?",
+      "file": "m1-l3.md",
+      "questions": [
+        { "q": "Quels sont les 4 critères d'une tâche à automatiser ?", "options": ["Répétition, règles claires, outils numériques, coût des erreurs", "Beauté, rapidité, prix, mode", "Rareté, complexité, papier, jugement", "Urgence, émotion, politique, chance"], "correct": 0, "why": "Une tâche fréquente, décrite par des règles, déjà numérique et coûteuse en erreurs est une excellente candidate." },
+        { "q": "150 demandes par mois prennent 3 minutes chacune. Combien de temps cela représente-t-il ?", "options": ["7 h 30 par mois", "4 h 50 par mois", "45 heures par mois", "1 h 30 par mois"], "correct": 0, "why": "150 × 3 = 450 minutes, soit 7 heures 30." },
+        { "q": "Par quelle automatisation commencer ?", "options": ["Celle qui a un fort impact pour un faible effort", "La plus impressionnante techniquement", "Celle qui fait gagner le moins de temps", "Celle que l'on fait deux fois par an"], "correct": 0, "why": "Un résultat rapide crée la confiance et permet de mieux comprendre l'organisation avant les gros projets." },
+        { "q": "Quelle décision doit rester humaine ?", "options": ["Accorder un remboursement à un client", "Ajouter une ligne dans un tableau", "Envoyer une confirmation d'inscription", "Classer un formulaire"], "correct": 0, "why": "Les décisions sur l'argent, les personnes et les réclamations sont validées par un humain." },
+        { "q": "Une organisation note tout dans des cahiers. Que proposer d'abord ?", "options": ["Numériser : un formulaire et un tableau partagé", "Une IA qui lit les cahiers", "Rien, c'est impossible", "Un scénario de 30 étapes"], "correct": 0, "why": "Les données doivent être dans des outils en ligne avant de pouvoir être automatisées." }
+      ]
+    },
+    {
+      "title": "Ce que l'IA peut et ne peut pas faire",
+      "file": "m1-l4.md",
+      "questions": [
+        { "q": "Pourquoi l'IA peut-elle inventer une information ?", "options": ["Elle produit un texte plausible, sans savoir s'il est vrai", "Parce qu'elle est mal installée", "Parce qu'elle ment volontairement", "Elle ne peut jamais inventer"], "correct": 0, "why": "Les modèles de langage produisent la suite la plus probable d'un texte, qui peut être fausse." },
+        { "q": "Quel usage de l'IA est le plus facile à vérifier automatiquement ?", "options": ["Classer un message dans une liste fermée de catégories", "Rédiger une longue réponse libre", "Écrire un article", "Inventer un slogan"], "correct": 0, "why": "On vérifie simplement que la catégorie fait partie de la liste prévue." },
+        { "q": "Que signifie « humain dans la boucle » ?", "options": ["L'IA prépare, un humain valide avant toute action importante", "Un humain fait tout à la main", "L'IA décide seule", "Un humain surveille l'écran en permanence"], "correct": 0, "why": "C'est la règle par défaut : l'IA fait gagner du temps, l'humain garde la décision." },
+        { "q": "Que faire d'une réponse aux clients rédigée par l'IA ?", "options": ["L'enregistrer comme brouillon, relu par une personne avant l'envoi", "L'envoyer directement à tous les clients", "La supprimer", "La publier sur Facebook"], "correct": 0, "why": "Un tarif inventé envoyé automatiquement peut coûter cher. La relecture protège le client." },
+        { "q": "Quelles données envoyer à un service d'IA ?", "options": ["Seulement le nécessaire, avec l'accord du client, sans données sensibles", "Tout le fichier client", "Les mots de passe pour gagner du temps", "Les données bancaires complètes"], "correct": 0, "why": "Le texte quitte les outils du client : on limite au strict nécessaire et on respecte son accord." }
+      ]
+    },
+    {
+      "title": "Vos clients et les règles de confiance",
+      "file": "m1-l5.md",
+      "questions": [
+        { "q": "Au nom de qui créer les comptes Make, Zapier et d'IA d'un client ?", "options": ["Au nom du client, qui vous invite", "À votre nom, pour garder le contrôle", "Au nom de Vitako", "Au nom d'un ami"], "correct": 0, "why": "Le client garde ses scénarios s'il change de prestataire, et paie directement ses abonnements." },
+        { "q": "Où garder une clé d'API ?", "options": ["Dans la connexion sécurisée de la plateforme", "Dans un document partagé", "Dans un e-mail", "Sur WhatsApp"], "correct": 0, "why": "Quiconque possède la clé peut utiliser le service et faire payer le client." },
+        { "q": "Une coupure d'électricité chez vous arrête-t-elle les scénarios ?", "options": ["Non : ils tournent sur les serveurs de la plateforme", "Oui, toujours", "Oui, si l'ordinateur est éteint", "Seulement la nuit"], "correct": 0, "why": "C'est un avantage pour travailler depuis Madagascar. Il faut seulement organiser la surveillance des alertes." },
+        { "q": "Que faut-il décider par écrit avec le client ?", "options": ["Qui surveille les alertes d'erreur, et dans quel délai", "La couleur des scénarios", "Le nom des modules", "Rien"], "correct": 0, "why": "Quand un scénario rencontre une erreur, quelqu'un doit réagir. Sans règle écrite, personne ne le fait." },
+        { "q": "Quels numéros un indépendant demande-t-il en général pour facturer à Madagascar ?", "options": ["Le NIF et la carte statistique (STAT)", "Un numéro Mobile Money", "Un numéro de passeport", "Aucun"], "correct": 0, "why": "Renseignez-vous au centre fiscal de votre ville pour votre situation précise." }
+      ]
+    }
+  ]
+}

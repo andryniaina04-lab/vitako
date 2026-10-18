@@ -1,0 +1,61 @@
+{
+  "title": "Les bases : processus, données et consignes d'IA",
+  "summary": "Cartographier un processus, construire des formulaires et des tableaux propres, lire le JSON, écrire et tester des consignes d'IA, prévoir les erreurs et rédiger le dossier de conception.",
+  "lessons": [
+    {
+      "title": "Cartographier un processus",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'une cartographie de processus ?", "options": ["Un schéma qui décrit comment une tâche se fait aujourd'hui, étape par étape", "Une carte géographique des clients", "La liste des abonnements", "Un tableau de prix"], "correct": 0, "why": "On dessine la réalité : qui fait quoi, avec quel outil, dans quel ordre, et ce qui se passe en cas de problème." },
+        { "q": "Qui connaît le mieux le détail d'une tâche ?", "options": ["La personne qui la fait chaque jour", "Le dirigeant, toujours", "Le spécialiste, avant même d'avoir vu la tâche", "Un assistant d'IA"], "correct": 0, "why": "Observer la personne qui fait la tâche révèle les étapes et les exceptions que personne ne mentionne en réunion." },
+        { "q": "Dans la commande de gâteau, quelle étape doit rester humaine ?", "options": ["Vérifier la disponibilité et fixer le prix", "Recopier la commande dans le tableau", "Accuser réception au client", "Ajouter un numéro de commande"], "correct": 0, "why": "La gérante connaît sa charge de travail et décide du prix ; les copies d'un outil à l'autre s'automatisent." },
+        { "q": "Pourquoi lister les cas particuliers avant de construire ?", "options": ["Ce sont eux qui font casser les automatisations construites trop vite", "Pour allonger le dossier", "Parce que Make l'exige", "Ils n'ont pas d'importance"], "correct": 0, "why": "Chaque cas particulier doit avoir un traitement : une règle automatique ou un passage à un humain." },
+        { "q": "Que faire quand les commandes arrivent par WhatsApp ?", "options": ["Prévoir un formulaire rapide rempli à partir du message, qui déclenche la suite", "Abandonner l'automatisation", "Demander le mot de passe WhatsApp du client", "Ignorer ces commandes"], "correct": 0, "why": "Les messageries sont difficiles à automatiser directement ; un formulaire de 30 secondes relie le message au reste du processus." }
+      ]
+    },
+    {
+      "title": "Des données propres : formulaires et tableaux",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Pourquoi utiliser une liste déroulante pour la ville dans un formulaire ?", "options": ["Pour que la ville soit toujours écrite de la même façon", "Pour faire joli", "Pour cacher la ville", "Parce que Google l'exige"], "correct": 0, "why": "En texte libre, « Tana », « TNR » et « Antananarivo » seraient trois villes différentes pour le scénario." },
+        { "q": "À quoi sert l'identifiant unique dans le tableau ?", "options": ["Retrouver et mettre à jour la bonne ligne", "Compter les clients", "Faire joli", "Remplacer le nom"], "correct": 0, "why": "Le scénario retrouve une ligne précise par son identifiant, sans risque de confusion." },
+        { "q": "À quoi sert la colonne de statut ?", "options": ["Savoir où en est chaque élément et éviter de le traiter deux fois", "Indiquer la couleur de la ligne", "Classer par ordre alphabétique", "Calculer les prix"], "correct": 0, "why": "Le scénario traite les lignes « Nouveau », puis passe le statut à « Traité »." },
+        { "q": "Comment normaliser 0341234567 dans un format international ?", "options": ["+261 34 12 345 67", "0341234567", "34-12-345-67", "261 0 34 12"], "correct": 0, "why": "Le format international avec +261 est celui qu'attendent la plupart des services d'envoi de messages." },
+        { "q": "Quelle est la règle anti-doublon d'un scénario ?", "options": ["Chercher une ligne existante (même e-mail ou téléphone) avant de créer une nouvelle ligne", "Supprimer toutes les anciennes lignes", "Créer toujours une nouvelle ligne", "Envoyer deux e-mails pour être sûr"], "correct": 0, "why": "Chercher avant de créer évite les envois en double et les chiffres faussés." }
+      ]
+    },
+    {
+      "title": "Lire et comprendre le JSON",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "Que représentent les accolades { } dans un JSON ?", "options": ["Un objet, c'est-à-dire un ensemble de champs", "Une liste", "Un texte", "Une erreur"], "correct": 0, "why": "Un objet regroupe des champs et leurs valeurs. Les crochets [ ] représentent une liste." },
+        { "q": "Dans {\"client\": {\"telephone\": \"+261...\"}}, quel est le chemin du téléphone ?", "options": ["client.telephone", "telephone.client", "client", "+261"], "correct": 0, "why": "Le téléphone se trouve dans l'objet client : on suit les champs du plus général au plus précis." },
+        { "q": "Comment s'écrit un nombre dans un JSON ?", "options": ["Sans guillemets, comme 20", "Entre guillemets, comme \"vingt\"", "Entre crochets", "Avec « Ar » à la suite"], "correct": 0, "why": "Un nombre s'écrit sans guillemets pour pouvoir être calculé ; « Ar » en ferait un texte." },
+        { "q": "Pourquoi ce JSON est-il invalide : {\"nom\": \"Fara\",} ?", "options": ["Il y a une virgule de trop à la fin", "Le nom est trop court", "Il manque des crochets", "Il est valide"], "correct": 0, "why": "Une seule virgule en trop suffit pour que l'outil refuse de lire le JSON." },
+        { "q": "Pourquoi demander à l'IA de répondre uniquement en JSON ?", "options": ["Pour que l'étape suivante lise les champs sans erreur", "Pour que la réponse soit plus jolie", "Pour économiser l'électricité", "C'est inutile"], "correct": 0, "why": "Un texte libre ne se lit pas automatiquement ; un JSON avec des champs fixes se lit et se vérifie." }
+      ]
+    },
+    {
+      "title": "Écrire et tester des consignes d'IA",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Pourquoi une consigne d'automatisation doit-elle être plus précise qu'une conversation ?", "options": ["Elle est utilisée des centaines de fois sans personne pour reformuler", "Parce que l'IA est plus lente", "Pour coûter plus cher", "Elle n'a pas besoin d'être précise"], "correct": 0, "why": "Le scénario dépend d'une réponse stable et vérifiable, à chaque exécution." },
+        { "q": "Que faut-il prévoir dans la consigne pour les cas de doute ?", "options": ["Une catégorie de secours, comme « autre »", "Que l'IA devine", "Que l'IA réponde par une question", "Rien"], "correct": 0, "why": "Le cas « autre » part ensuite vers un humain, au lieu d'être mal classé." },
+        { "q": "Pourquoi écrire les catégories sans accent ni majuscule (reclamation) ?", "options": ["Le scénario compare la réponse à des valeurs fixes, exactement", "Parce que les accents sont interdits en français", "Pour faire moderne", "Aucune raison"], "correct": 0, "why": "« Réclamation » et « reclamation » sont deux valeurs différentes pour un filtre." },
+        { "q": "Comment valider une consigne ?", "options": ["Sur un jeu de test d'une vingtaine de vrais messages, avec les réponses attendues", "Sur un seul exemple", "En demandant à l'IA si elle est sûre", "Sans test"], "correct": 0, "why": "Seul un jeu de test varié, avec des cas difficiles, montre les vraies erreurs." },
+        { "q": "Quel réglage rend les réponses de l'IA plus stables pour un classement ?", "options": ["Une température basse", "Une température très haute", "Des consignes plus courtes", "Aucun réglage"], "correct": 0, "why": "Une température basse réduit la variété des réponses, ce qui convient au classement et à l'extraction." }
+      ]
+    },
+    {
+      "title": "Prévoir les erreurs et le dossier de conception",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "Que fait un scénario bien conçu quand il ne sait pas traiter un cas ?", "options": ["Il met le statut « À traiter à la main » et alerte une personne", "Il devine", "Il supprime l'élément", "Il recommence sans fin"], "correct": 0, "why": "Mieux vaut s'arrêter et passer la main que continuer avec une donnée fausse." },
+        { "q": "Quel oubli peut faire envoyer 30 fois le même e-mail ?", "options": ["Ne pas changer le statut juste après le traitement", "Utiliser un formulaire", "Activer les alertes", "Tester le scénario"], "correct": 0, "why": "Sans changement de statut, les mêmes lignes sont traitées à chaque passage." },
+        { "q": "Quelle action ne doit jamais être automatique sans validation humaine ?", "options": ["Une action impossible à annuler, comme un paiement ou une suppression", "L'ajout d'une ligne dans un tableau", "L'accusé de réception d'un formulaire", "Le changement d'un statut"], "correct": 0, "why": "Une erreur sur une action irréversible ne se rattrape pas." },
+        { "q": "Pourquoi deux personnes doivent-elles recevoir les alertes ?", "options": ["Pour que quelqu'un réagisse même si l'une est absente ou coupée", "Pour doubler les e-mails", "Parce que les plateformes l'exigent", "Ce n'est pas utile"], "correct": 0, "why": "Une coupure ou une absence ne doit pas laisser les erreurs sans réponse." },
+        { "q": "À quoi sert le dossier de conception ?", "options": ["Valider avec le client ce qui sera construit, avant de construire", "Remplacer la facture", "Décorer le portfolio", "Rien"], "correct": 0, "why": "Il évite les malentendus et sert de base à la documentation finale." }
+      ]
+    }
+  ]
+}
