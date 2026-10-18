@@ -83,7 +83,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, true),
   ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true),
   ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 13, true),
-  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 14, true),
+  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 50, true),
   ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
   ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
   ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
@@ -69065,7 +69065,7 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('design-0-f', 'Comment vérifier qu''un paiement Mobile Money est arrivé ?', '["Sur la capture envoyée par le client","En attendant une semaine","En demandant au client","Dans l''application ou le relevé de son propre compte"]'::jsonb, 3, 2);
 select public.course_go_live('design-0-f', array[0, 1, 2, 4, 5]::int[]);
 
--- gestion-0-f (version 2, aperçu administrateur)
+-- gestion-0-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'gestion-0-f';
 delete from public.modules2 where course_id = 'gestion-0-f' and module_index >= 6;
 insert into public.modules2 (course_id, module_index, title, summary) values ('gestion-0-f', 0, 'Le métier d''assistant virtuel', 'Ce que fait un assistant virtuel, les tâches et les missions que vous recevrez, vos clients, votre organisation depuis Madagascar et les règles de confiance du métier.')
@@ -72688,5 +72688,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que doit préciser la proposition si le client demande plus d''heures que le forfait ?', '["Rien","Qu''elles se font avec son accord écrit, au tarif convenu","Qu''elles sont gratuites","Qu''elles sont interdites"]'::jsonb, 1, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Quel moyen de paiement utiliser le plus souvent avec un client local à Madagascar ?', '["Uniquement des espèces envoyées par la poste","Mobile Money ou virement bancaire","Uniquement PayPal","Un chèque étranger"]'::jsonb, 1, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire à la fin d''une mission ?', '["Partir sans rien dire","Transmettre les tâches, transférer les fichiers et faire retirer les accès","Supprimer les fichiers du client sans prévenir","Garder les accès au cas où"]'::jsonb, 1, 2);
-update public.courses set v2_live = false where id = 'gestion-0-f';
+select public.course_go_live('gestion-0-f', array[0, 2, 3, 4, 5]::int[]);
 commit;
