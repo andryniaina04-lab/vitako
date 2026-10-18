@@ -1,5 +1,5 @@
 {
-  "live": false,
+  "live": true,
   "progress_map": [0, 1, 2, 4, 5],
   "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise (formulaires, e-mails, tableaux, agenda) pour que les tâches répétitives se fassent toutes seules, avec l'IA pour trier, extraire et préparer des réponses toujours relues par un humain. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec Make, Zapier et des services d'IA. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [

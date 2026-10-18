@@ -71,7 +71,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
   ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true),
   ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 18, true),
-  ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 16, true),
+  ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 49, true),
   ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 17, true),
   ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
   ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
@@ -65162,7 +65162,7 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Que publier dans son portfolio ?', '["Les résultats réels des clients","Des données personnelles","Des mots de passe","Des travaux sur son laboratoire et des cas fictifs"]'::jsonb, 3);
 insert into public.exam_questions (course_id, question, options, correct) values ('tech-4-f', 'Quel moyen de paiement utiliser avec un client local ?', '["Aucun","Uniquement des chèques étrangers","Uniquement PayPal","Mobile Money ou virement"]'::jsonb, 3);
 
--- data-4-f (version 2, aperçu administrateur)
+-- data-4-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'data-4-f';
 delete from public.modules2 where course_id = 'data-4-f' and module_index >= 6;
 insert into public.modules2 (course_id, module_index, title, summary) values ('data-4-f', 0, 'Le métier de spécialiste automatisation et IA', 'Ce que fait le métier, le vocabulaire des scénarios, les tâches à automatiser, ce que l''IA peut et ne peut pas faire, vos clients et les règles de confiance.')
@@ -68280,7 +68280,7 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Où se situe le bon prix d''un projet ?', '["Entre votre prix plancher et une part raisonnable de la valeur","Au hasard","Au-dessus de toute la valeur","En dessous du prix plancher"]'::jsonb, 0, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Comment vérifier un paiement Mobile Money ?', '["Sur votre propre compte, jamais sur une capture","Sur la capture du client","Par téléphone uniquement","On ne vérifie pas"]'::jsonb, 0, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('data-4-f', 'Combien de temps consacrer à la veille sur les outils et l''IA ?', '["Environ une heure par semaine","Jamais","Une heure par an","Toute la journée"]'::jsonb, 0, 2);
-update public.courses set v2_live = false where id = 'data-4-f';
+select public.course_go_live('data-4-f', array[0, 1, 2, 4, 5]::int[]);
 
 -- design-0-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'design-0-f';

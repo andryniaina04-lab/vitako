@@ -1104,89 +1104,56 @@ export const PUBLISHED = {
   ]
  },
  "data-4-f": {
-  "hours": 16,
-  "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise et y ajoute l'intelligence artificielle pour supprimer les tâches répétitives et réduire les erreurs. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à travailler pour des PME, des centres de formation, des agences et des boutiques en ligne, avec Make, Zapier et des assistants d'IA : processus, données propres, consignes d'IA, scénarios, tests, documentation et mesure du temps gagné. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "hours": 49,
+  "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise (formulaires, e-mails, tableaux, agenda) pour que les tâches répétitives se fassent toutes seules, avec l'IA pour trier, extraire et préparer des réponses toujours relues par un humain. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec Make, Zapier et des services d'IA. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [
-   "Expliquer le métier et le vocabulaire de l'automatisation",
-   "Repérer les tâches à automatiser et mesurer le temps perdu",
-   "Préparer des données propres, lire un JSON et écrire des consignes d'IA strictes",
-   "Construire, tester et documenter des scénarios dans Make et Zapier",
-   "Mener une mission complète avec l'équipe du client et mesurer les résultats",
-   "Vendre par la valeur, protéger les données et se faire payer"
+   "Expliquer le métier, repérer les tâches à automatiser et connaître les limites de l'IA",
+   "Cartographier un processus, préparer des données propres, lire du JSON et écrire des consignes d'IA testées",
+   "Construire des scénarios Make avec filtres, routeurs, fonctions, itérateurs et gestion des erreurs",
+   "Utiliser Zapier, intégrer l'IA dans un scénario, tester, surveiller, documenter et estimer les coûts",
+   "Mener une mission complète, du diagnostic chiffré à la mesure des résultats",
+   "Construire son portfolio, trouver des clients, rédiger un devis, fixer ses prix et se faire payer"
   ],
+  "breakdown": {
+   "lecture": 283,
+   "qcm": 150,
+   "exercices": 1590,
+   "projets": 870,
+   "examen": 60
+  },
   "modules": [
    {
-    "title": "Le métier de spécialiste automatisation et IA depuis Madagascar",
-    "minutes": 7
+    "title": "Le métier de spécialiste automatisation et IA",
+    "minutes": 49,
+    "lessons": 5
    },
    {
-    "title": "Les bases : processus, données propres, JSON, consignes d'IA et erreurs",
-    "minutes": 7
+    "title": "Les bases : processus, données et consignes d'IA",
+    "minutes": 48,
+    "lessons": 5
    },
    {
-    "title": "Les outils : Make, Zapier, étapes d'IA et offres payantes",
-    "minutes": 7
+    "title": "Make : construire des scénarios",
+    "minutes": 48,
+    "lessons": 5
    },
    {
-    "title": "Premier projet : l'automatisation de Formation Mendrika",
-    "minutes": 7
+    "title": "Zapier, l'IA dans les scénarios et la mise en service",
+    "minutes": 49,
+    "lessons": 5
+   },
+   {
+    "title": "Premier projet : la mission Formation Mendrika",
+    "minutes": 45,
+    "lessons": 5
    },
    {
     "title": "Trouver des clients et se faire payer",
-    "minutes": 7
+    "minutes": 44,
+    "lessons": 5
    }
   ],
-  "preview": {
-   "hours": 49,
-   "description": "Le spécialiste automatisation et IA relie les outils d'une entreprise (formulaires, e-mails, tableaux, agenda) pour que les tâches répétitives se fassent toutes seules, avec l'IA pour trier, extraire et préparer des réponses toujours relues par un humain. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec Make, Zapier et des services d'IA. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
-   "objectives": [
-    "Expliquer le métier, repérer les tâches à automatiser et connaître les limites de l'IA",
-    "Cartographier un processus, préparer des données propres, lire du JSON et écrire des consignes d'IA testées",
-    "Construire des scénarios Make avec filtres, routeurs, fonctions, itérateurs et gestion des erreurs",
-    "Utiliser Zapier, intégrer l'IA dans un scénario, tester, surveiller, documenter et estimer les coûts",
-    "Mener une mission complète, du diagnostic chiffré à la mesure des résultats",
-    "Construire son portfolio, trouver des clients, rédiger un devis, fixer ses prix et se faire payer"
-   ],
-   "breakdown": {
-    "lecture": 283,
-    "qcm": 150,
-    "exercices": 1590,
-    "projets": 870,
-    "examen": 60
-   },
-   "modules": [
-    {
-     "title": "Le métier de spécialiste automatisation et IA",
-     "minutes": 49,
-     "lessons": 5
-    },
-    {
-     "title": "Les bases : processus, données et consignes d'IA",
-     "minutes": 48,
-     "lessons": 5
-    },
-    {
-     "title": "Make : construire des scénarios",
-     "minutes": 48,
-     "lessons": 5
-    },
-    {
-     "title": "Zapier, l'IA dans les scénarios et la mise en service",
-     "minutes": 49,
-     "lessons": 5
-    },
-    {
-     "title": "Premier projet : la mission Formation Mendrika",
-     "minutes": 45,
-     "lessons": 5
-    },
-    {
-     "title": "Trouver des clients et se faire payer",
-     "minutes": 44,
-     "lessons": 5
-    }
-   ]
-  }
+  "format": 2
  },
  "design-0-a": {
   "hours": 15,
