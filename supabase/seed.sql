@@ -43,7 +43,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 17, true),
   ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true),
   ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Administrateur Microsoft 365 et Google Workspace', 17, true),
-  ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 14, true),
+  ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 49, true),
   ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
   ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
   ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
@@ -72690,7 +72690,7 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('gestion-0-f', 'Que faire à la fin d''une mission ?', '["Partir sans rien dire","Transmettre les tâches, transférer les fichiers et faire retirer les accès","Supprimer les fichiers du client sans prévenir","Garder les accès au cas où"]'::jsonb, 1, 2);
 select public.course_go_live('gestion-0-f', array[0, 2, 3, 4, 5]::int[]);
 
--- mkt-0-f (version 2, aperçu administrateur)
+-- mkt-0-f (version 2, en ligne)
 delete from public.lesson_parts where course_id = 'mkt-0-f';
 delete from public.modules2 where course_id = 'mkt-0-f' and module_index >= 6;
 insert into public.modules2 (course_id, module_index, title, summary) values ('mkt-0-f', 0, 'Le métier de community manager', 'Ce que fait un community manager, les réseaux sociaux et leur fonctionnement, vos clients, votre organisation depuis Madagascar et les règles du métier.')
@@ -75939,5 +75939,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Revenu visé 1 000 000 Ar, frais 200 000 Ar, 80 heures facturables : quel est le prix horaire ?', '["12 500 Ar","150 000 Ar","2 500 Ar","15 000 Ar"]'::jsonb, 3, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Quand se paie un forfait mensuel ?', '["Au début du mois, avant le travail","Quand le client le souhaite","À la fin de l''année","Seulement si les résultats plaisent"]'::jsonb, 0, 2);
 insert into public.exam_questions (course_id, question, options, correct, version) values ('mkt-0-f', 'Comment vérifier un paiement par Mobile Money ?', '["Dans votre propre application, jamais sur une capture d''écran","En demandant à un ami","Ce n''est pas nécessaire","Avec la capture du client"]'::jsonb, 0, 2);
-update public.courses set v2_live = false where id = 'mkt-0-f';
+select public.course_go_live('mkt-0-f', array[0, 1, 3, 4, 5]::int[]);
 commit;

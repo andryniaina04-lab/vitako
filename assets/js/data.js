@@ -3282,89 +3282,56 @@ export const PUBLISHED = {
   ]
  },
  "mkt-0-f": {
-  "hours": 14,
-  "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation, en 5 modules numérotés et progressifs, prépare un débutant à gérer les réseaux sociaux de commerces malgaches et de clients étrangers, en télétravail, avec des outils gratuits. Chaque module contient une leçon détaillée, des exemples, un exercice guidé et un petit test.",
+  "hours": 49,
+  "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
   "objectives": [
-   "Expliquer ce que fait un community manager et qui le paie",
-   "Rédiger une fiche client type et une ligne éditoriale",
-   "Écrire des publications avec accroche et appel à l'action",
-   "Programmer, répondre et mesurer avec Meta Business Suite et Canva",
-   "Gérer une page pendant un mois et rédiger un rapport",
-   "Vendre des forfaits mensuels et se faire payer depuis Madagascar"
+   "Expliquer ce que fait un community manager, choisir les bons réseaux et s'organiser depuis Madagascar",
+   "Construire une stratégie : fiche client type, objectifs mesurables, ligne éditoriale et calendrier",
+   "Écrire des publications, créer des visuels, des photos et des vidéos courtes qui fonctionnent",
+   "Programmer, répondre, modérer et mesurer avec Meta Business Suite",
+   "Gérer une page pendant un mois, de l'audit au rapport mensuel",
+   "Construire son portfolio, fixer ses formules, trouver des clients et se faire payer"
   ],
+  "breakdown": {
+   "lecture": 297,
+   "qcm": 150,
+   "exercices": 1630,
+   "projets": 810,
+   "examen": 60
+  },
   "modules": [
    {
-    "title": "Le métier de community manager depuis Madagascar",
-    "minutes": 7
+    "title": "Le métier de community manager",
+    "minutes": 50,
+    "lessons": 5
    },
    {
-    "title": "Les bases : cible, ligne éditoriale et écriture",
-    "minutes": 7
+    "title": "La stratégie : cible, objectifs et ligne éditoriale",
+    "minutes": 50,
+    "lessons": 5
    },
    {
-    "title": "Les outils : Meta Business Suite, Canva, et les outils payants",
-    "minutes": 8
+    "title": "Créer des contenus qui fonctionnent",
+    "minutes": 49,
+    "lessons": 5
+   },
+   {
+    "title": "Les outils : publier, répondre et mesurer",
+    "minutes": 50,
+    "lessons": 5
    },
    {
     "title": "Premier projet : gérer une page pendant un mois",
-    "minutes": 8
+    "minutes": 50,
+    "lessons": 5
    },
    {
     "title": "Trouver des clients et se faire payer",
-    "minutes": 8
+    "minutes": 48,
+    "lessons": 5
    }
   ],
-  "preview": {
-   "hours": 49,
-   "description": "Le community manager fait vivre la page d'une marque : il publie, répond aux clients, anime et mesure les résultats. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, en télétravail et avec des outils gratuits. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
-   "objectives": [
-    "Expliquer ce que fait un community manager, choisir les bons réseaux et s'organiser depuis Madagascar",
-    "Construire une stratégie : fiche client type, objectifs mesurables, ligne éditoriale et calendrier",
-    "Écrire des publications, créer des visuels, des photos et des vidéos courtes qui fonctionnent",
-    "Programmer, répondre, modérer et mesurer avec Meta Business Suite",
-    "Gérer une page pendant un mois, de l'audit au rapport mensuel",
-    "Construire son portfolio, fixer ses formules, trouver des clients et se faire payer"
-   ],
-   "breakdown": {
-    "lecture": 297,
-    "qcm": 150,
-    "exercices": 1630,
-    "projets": 810,
-    "examen": 60
-   },
-   "modules": [
-    {
-     "title": "Le métier de community manager",
-     "minutes": 50,
-     "lessons": 5
-    },
-    {
-     "title": "La stratégie : cible, objectifs et ligne éditoriale",
-     "minutes": 50,
-     "lessons": 5
-    },
-    {
-     "title": "Créer des contenus qui fonctionnent",
-     "minutes": 49,
-     "lessons": 5
-    },
-    {
-     "title": "Les outils : publier, répondre et mesurer",
-     "minutes": 50,
-     "lessons": 5
-    },
-    {
-     "title": "Premier projet : gérer une page pendant un mois",
-     "minutes": 50,
-     "lessons": 5
-    },
-    {
-     "title": "Trouver des clients et se faire payer",
-     "minutes": 48,
-     "lessons": 5
-    }
-   ]
-  }
+  "format": 2
  },
  "mkt-1-a": {
   "hours": 16,
