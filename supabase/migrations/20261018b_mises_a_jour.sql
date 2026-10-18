@@ -6,8 +6,7 @@
 -- une partie terminée dans la formation, ou son attestation.
 -- Comment : une notification dans la cloche du site (fonction my_course_updates) et un e-mail
 -- (même clé Resend que les autres e-mails, secret Vault « resend_api_key »).
--- Au plus un e-mail par formation et par personne toutes les 24 heures, pour ne pas inonder les
--- abonnés quand on corrige plusieurs fois la même formation dans la journée.
+-- (La limite d'un e-mail par 24 heures prévue ici a été retirée par la migration 20261018c.)
 -- Un problème d'envoi ne bloque jamais la mise à jour du contenu.
 
 alter table public.courses add column if not exists content_hash text;
