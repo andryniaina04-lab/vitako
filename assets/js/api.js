@@ -342,6 +342,17 @@ export async function adminUsers() {
     if (rows.length < 1000) return out;
   }
 }
+// Toutes les attestations (lecture réservée à l'administrateur par la sécurité de la base).
+export async function adminCertificates() {
+  need();
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    const rows = await run(sb.from('certificates').select('id, user_id, kind, course_id, title, score, issued_at')
+      .order('issued_at', { ascending: false }).range(from, from + 999));
+    out.push(...rows);
+    if (rows.length < 1000) return out;
+  }
+}
 export async function adminStats() {
   need();
   return run(sb.rpc('admin_stats'));

@@ -1067,6 +1067,8 @@ a.chip{text-decoration:none}
 .us-n{display:inline-flex;align-items:center;gap:8px}
 .av.av-xs{width:28px;height:28px;font-size:.7rem}
 .us-tbl td{vertical-align:middle}
+.us-certs summary{cursor:pointer;font-weight:600;white-space:nowrap}
+.us-certs ul{margin:6px 0 0;padding-left:16px;display:flex;flex-direction:column;gap:4px;min-width:220px;font-size:.88rem}
 
 /* ===== Leçons : schémas dessinés et nouveaux encadrés ===== */
 :root{--s0:#0B7A55;--s1:#2F6FB5;--s2:#B7791F;--s3:#7C3AED;--s4:#D9480F;--s5:#0E7490;--good:#0B7A55;--good-soft:#E0F0E8;--bad:#B42318;--bad-soft:#FCE7E4}
