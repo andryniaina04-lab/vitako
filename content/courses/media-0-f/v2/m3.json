@@ -1,0 +1,61 @@
+{
+  "title": "Les outils : DaVinci Resolve",
+  "summary": "Organiser chaque projet, prendre en main DaVinci Resolve (pages, réglages, import, timeline), couper vite au clavier avec plans de coupe, zooms et fichiers allégés, régler le son et la couleur, ajouter les textes, exporter correctement et savoir quand passer aux logiciels payants.",
+  "lessons": [
+    {
+      "title": "Les outils et l'organisation des fichiers",
+      "file": "m3-l1.md",
+      "questions": [
+        { "q": "Quel outil gratuit utiliser pour un montage complet de projet client ?", "options": ["DaVinci Resolve", "Un traitement de texte", "Un lecteur vidéo", "Un tableur"], "correct": 0, "why": "CapCut est surtout fait pour les vidéos courtes." },
+        { "q": "Quand créer l'arborescence d'un projet ?", "options": ["Avant d'ouvrir le logiciel", "Après l'export", "Jamais", "Au milieu du montage"], "correct": 0, "why": "On range tout avant d'importer." },
+        { "q": "Que se passe-t-il si on déplace un rush après l'import ?", "options": ["Le projet ne le retrouve plus : il passe « hors ligne »", "Rien du tout", "Le rush est supprimé", "La vidéo s'exporte plus vite"], "correct": 0, "why": "Le logiciel garde l'adresse du fichier, il ne le copie pas." },
+        { "q": "Quel nom de fichier est le plus clair ?", "options": ["VolaMalina_Video12_V2_validation.mp4", "video final 2 vrai.mp4", "ok ok.mp4", "nouveau.mp4"], "correct": 0, "why": "Le client, la vidéo et la version se lisent immédiatement." },
+        { "q": "Comment utiliser FilmCraft pour l'instant ?", "options": ["Pour des projets personnels, en gardant DaVinci Resolve et CapCut pour les clients", "Pour tous les projets clients", "Le télécharger depuis n'importe quel site", "L'indiquer sur son profil sans l'avoir utilisé"], "correct": 0, "why": "C'est une version alpha, encore en test." }
+      ]
+    },
+    {
+      "title": "DaVinci Resolve : prise en main",
+      "file": "m3-l2.md",
+      "questions": [
+        { "q": "Quelle page sert au montage principal ?", "options": ["Edit", "Media", "Deliver", "Fusion"], "correct": 0, "why": "Media sert à importer, Deliver à exporter." },
+        { "q": "Quand régler la résolution et la cadence du projet ?", "options": ["Avant de placer la première vidéo dans la timeline", "Après l'export", "Pendant l'étalonnage", "Jamais"], "correct": 0, "why": "La cadence de la timeline ne peut plus être changée ensuite." },
+        { "q": "À quoi sert l'Inspecteur ?", "options": ["Régler le zoom, la position et le volume du plan sélectionné", "Importer les fichiers", "Exporter la vidéo", "Créer le projet"], "correct": 0, "why": "Les réglages se font plan par plan." },
+        { "q": "Sur quelle piste placer les plans de coupe ?", "options": ["V2, au-dessus de la parole", "A1", "Dans un autre projet", "Sous la piste V1"], "correct": 0, "why": "V1 pour la personne qui parle, V2 pour les illustrations." },
+        { "q": "Que faire si DaVinci Resolve ne démarre pas sur un ordinateur ancien ?", "options": ["Commencer avec CapCut et revenir à Resolve après amélioration du matériel", "Abandonner le montage", "Acheter une licence non officielle", "Désinstaller le système"], "correct": 0, "why": "Certaines cartes graphiques anciennes ne sont pas prises en charge." }
+      ]
+    },
+    {
+      "title": "Couper vite au clavier",
+      "file": "m3-l3.md",
+      "questions": [
+        { "q": "À quoi servent les touches J, K et L ?", "options": ["Reculer, mettre en pause, avancer", "Couper, copier, coller", "Zoomer, dézoomer, exporter", "Ouvrir les pages"], "correct": 0, "why": "Appuyer plusieurs fois sur J ou L accélère." },
+        { "q": "Que fait la suppression avec fermeture du trou (ripple delete) ?", "options": ["Supprime un morceau et recolle la suite automatiquement", "Supprime toute la timeline", "Ajoute un fondu", "Exporte la vidéo"], "correct": 0, "why": "On n'a pas à rapprocher les morceaux un par un." },
+        { "q": "Comment cacher un jump cut en face caméra ?", "options": ["Zoom de 10 à 15 % sur un morceau sur deux, plan de coupe ou texte", "Ajouter un cube qui tourne", "Baisser le son", "Allonger le plan"], "correct": 0, "why": "Les sauts d'image paraissent alors voulus." },
+        { "q": "Pourquoi travailler une passe à la fois ?", "options": ["On va plus vite qu'en perfectionnant chaque seconde dès le début", "Parce que le logiciel l'impose", "Pour rallonger le travail", "Ce n'est pas utile"], "correct": 0, "why": "Grosses erreurs, puis hésitations, puis habillage." },
+        { "q": "À quoi servent les proxys ou médias optimisés ?", "options": ["Monter avec des copies légères, puis exporter avec les originaux", "Supprimer les rushes", "Envoyer les fichiers au client", "Ajouter des sous-titres"], "correct": 0, "why": "La lecture devient fluide sur un ordinateur modeste." }
+      ]
+    },
+    {
+      "title": "Le son et la couleur dans DaVinci Resolve",
+      "file": "m3-l4.md",
+      "questions": [
+        { "q": "Comment harmoniser le volume de plusieurs plans de voix ?", "options": ["Les sélectionner et normaliser leurs niveaux", "Les supprimer", "Ajouter de la musique forte", "Les exporter séparément"], "correct": 0, "why": "Normalize Audio Levels, selon la version." },
+        { "q": "À quoi servent les images clés de volume ?", "options": ["Faire varier le volume dans le temps, par exemple baisser la musique sous la voix", "Couper la vidéo", "Changer la couleur", "Créer un projet"], "correct": 0, "why": "On monte la musique en introduction, puis on la baisse à la parole." },
+        { "q": "Que règlent les roues Lift, Gamma et Gain ?", "options": ["Les ombres, les tons moyens et les hautes lumières", "Le volume, la vitesse et la durée", "Les sous-titres", "La résolution"], "correct": 0, "why": "Ce sont les outils de base de la correction d'exposition." },
+        { "q": "Comment corriger 30 morceaux d'un même rush ?", "options": ["Corriger un morceau et appliquer la même correction aux autres", "Les corriger un par un à la main", "Ne pas les corriger", "Les exporter et les réimporter"], "correct": 0, "why": "Puis vérifier quelques plans au hasard." },
+        { "q": "Pourquoi vérifier les couleurs sur deux écrans ?", "options": ["Les écrans de portables sont souvent trop bleus ou trop lumineux", "Pour aller plus vite", "Parce que c'est obligatoire", "Ce n'est pas utile"], "correct": 0, "why": "Un visage parfait sur un écran peut paraître orange sur un autre." }
+      ]
+    },
+    {
+      "title": "Textes, export et logiciels payants",
+      "file": "m3-l5.md",
+      "questions": [
+        { "q": "Quel format et quel codec pour YouTube ?", "options": ["MP4 en H.264", "AVI non compressé", "GIF", "MP3"], "correct": 0, "why": "Bonne qualité, fichier raisonnable, lu partout." },
+        { "q": "Quelle résolution pour une version de validation ?", "options": ["1280 × 720", "3840 × 2160", "1920 × 1080 en qualité maximale", "640 × 480"], "correct": 0, "why": "Un fichier léger, envoyé rapidement." },
+        { "q": "Que faire avant d'envoyer un export ?", "options": ["Le regarder en entier", "Seulement regarder le début", "L'envoyer sans l'ouvrir", "Le renommer « final »"], "correct": 0, "why": "Un son coupé à 6 minutes se voit seulement en regardant tout." },
+        { "q": "Pourquoi enregistrer un style de texte comme modèle ?", "options": ["Pour le réutiliser sur chaque vidéo du même client", "Pour l'effacer", "Pour exporter plus vite", "Ce n'est pas utile"], "correct": 0, "why": "On ne règle le style qu'une fois." },
+        { "q": "Quand acheter un logiciel payant ?", "options": ["Quand un client l'exige ou qu'une fonction fait vraiment gagner du temps", "Dès le premier jour", "Jamais, en aucun cas", "Quand une licence non officielle est bon marché"], "correct": 0, "why": "La version gratuite de DaVinci Resolve suffit à la plupart des projets de débutant." }
+      ]
+    }
+  ]
+}

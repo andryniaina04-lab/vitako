@@ -1,0 +1,61 @@
+{
+  "title": "Le métier de monteur vidéo",
+  "summary": "Comprendre ce que fait un monteur vidéo et les vidéos qu'on lui commande, connaître ses clients à Madagascar et à l'étranger, évaluer son ordinateur, s'organiser avec les gros fichiers et les coupures, et apprendre à analyser ce qui retient le spectateur.",
+  "lessons": [
+    {
+      "title": "Le métier et les vidéos les plus commandées",
+      "file": "m1-l1.md",
+      "questions": [
+        { "q": "Que fait un monteur vidéo ?", "options": ["Il transforme des rushes en une vidéo qui retient l'attention jusqu'au bout", "Il filme toujours les vidéos lui-même", "Il vend des caméras", "Il écrit seulement les textes des vidéos"], "correct": 0, "why": "Il choisit, coupe, assemble, ajoute son, musique, textes et effets." },
+        { "q": "Que sont les rushes ?", "options": ["Les images et sons bruts, avant montage", "La vidéo finale", "Les sous-titres", "Les factures du client"], "correct": 0, "why": "Pour 10 minutes de vidéo, il y a souvent 30 minutes à 2 heures de rushes." },
+        { "q": "Quelles vidéos sont les plus accessibles pour commencer ?", "options": ["Les vidéos courtes verticales et les vidéos YouTube face caméra", "Les longs métrages de cinéma", "Les films d'animation 3D", "Les retransmissions sportives en direct"], "correct": 0, "why": "Elles sont très demandées et les créateurs publient chaque semaine." },
+        { "q": "Qu'est-ce qui fait d'abord un bon monteur ?", "options": ["Savoir choisir et raconter une histoire au bon rythme", "Mettre le plus d'effets possible", "Avoir le logiciel le plus cher", "Monter le plus vite possible sans regarder"], "correct": 0, "why": "Un effet doit avoir une raison ; les professionnels utilisent surtout des coupes simples." },
+        { "q": "Pourquoi les projets locaux sont-ils utiles au début ?", "options": ["Ils remplissent vite un premier portfolio", "Ils sont toujours les mieux payés", "Ils ne demandent aucun soin", "Ils remplacent la formation"], "correct": 0, "why": "Mariages, publicités de boutiques, clips : de vrais projets à montrer." }
+      ]
+    },
+    {
+      "title": "Les clients et les réalités du métier",
+      "file": "m1-l2.md",
+      "questions": [
+        { "q": "Qu'attendent d'abord les créateurs YouTube qui publient chaque semaine ?", "options": ["La régularité et le respect du style de la chaîne", "Des effets spectaculaires partout", "Des vidéos plus longues que prévu", "Des livraisons quand le monteur a le temps"], "correct": 0, "why": "La régularité transforme un premier client en revenu mensuel stable." },
+        { "q": "Combien d'heures de décalage entre Madagascar et la France en été ?", "options": ["1 heure", "5 heures", "8 heures", "Aucune"], "correct": 0, "why": "1 heure en été, 2 heures en hiver : on peut livrer « pendant la nuit » du client." },
+        { "q": "Combien de temps demande souvent une vidéo YouTube de 10 minutes au début ?", "options": ["4 à 10 heures", "10 minutes", "Une semaine entière", "30 minutes"], "correct": 0, "why": "Ce temps diminue avec l'expérience, les modèles et les raccourcis." },
+        { "q": "Que faire au début face à beaucoup de commandes ?", "options": ["N'accepter que ce qu'on peut livrer à temps", "Tout accepter", "Tout refuser", "Accepter puis livrer en retard"], "correct": 0, "why": "Livrer en retard fait perdre des clients." },
+        { "q": "Pourquoi commencer par une seule spécialité ?", "options": ["Pour construire un portfolio clair et progresser vite", "Parce qu'il est interdit d'en avoir plusieurs", "Pour éviter les clients", "Ce n'est pas utile"], "correct": 0, "why": "On élargit ensuite, une fois la première spécialité maîtrisée." }
+      ]
+    },
+    {
+      "title": "L'ordinateur et le matériel du monteur",
+      "file": "m1-l3.md",
+      "questions": [
+        { "q": "Quel minimum de mémoire vive est conseillé pour commencer ?", "options": ["8 Go", "1 Go", "64 Go", "2 Go"], "correct": 0, "why": "16 Go ou plus est confortable." },
+        { "q": "Quel est le meilleur test de votre ordinateur ?", "options": ["Monter et exporter une minute de vidéo et noter le temps", "Lire uniquement la fiche technique", "Regarder un film en ligne", "Demander au vendeur"], "correct": 0, "why": "Le temps d'export réel sert à estimer vos délais." },
+        { "q": "Quel est le premier achat conseillé ?", "options": ["Une souris", "Un écran 4K", "Un logiciel payant", "Une caméra de cinéma"], "correct": 0, "why": "Puis le casque, l'onduleur et le disque externe." },
+        { "q": "À quoi servent les proxys ?", "options": ["Monter avec des copies légères, puis exporter avec les originaux", "Envoyer les fichiers plus vite", "Ajouter des effets", "Supprimer les rushes"], "correct": 0, "why": "Ils permettent de monter sur un ordinateur modeste." },
+        { "q": "Que faire avant d'accepter un projet filmé en 4K ?", "options": ["Demander un extrait des rushes et le tester", "Accepter sans rien vérifier", "Refuser tous les projets 4K", "Promettre un délai très court"], "correct": 0, "why": "Un ordinateur trop faible peut saccader et faire planter l'export." }
+      ]
+    },
+    {
+      "title": "Travailler à distance : fichiers, coupures et délais",
+      "file": "m1-l4.md",
+      "questions": [
+        { "q": "Comment recevoir des rushes volumineux ?", "options": ["Par un lien de dossier partagé, téléchargé aux bonnes heures", "Par WhatsApp, fichier par fichier", "Par e-mail en pièce jointe", "Sur une clé envoyée par la poste"], "correct": 0, "why": "On vérifie d'abord le poids total pour estimer le temps de téléchargement." },
+        { "q": "Quand commence le délai de livraison ?", "options": ["À la réception de tous les rushes", "Au premier message du client", "Après le paiement final", "Quand le monteur le décide"], "correct": 0, "why": "Un fichier manquant peut bloquer tout le montage." },
+        { "q": "À quoi sert la version de validation ?", "options": ["Permettre au client de faire ses retours avec un fichier léger", "Remplacer la version finale", "Être publiée directement", "Tester l'ordinateur"], "correct": 0, "why": "Elle s'envoie vite, même avec une connexion lente." },
+        { "q": "Que dit la règle de sauvegarde 3-2-1 ?", "options": ["3 copies, sur 2 supports, dont 1 hors de chez soi", "3 projets, 2 clients, 1 ordinateur", "3 jours, 2 heures, 1 minute", "Sauvegarder une fois par an"], "correct": 0, "why": "Au minimum : le projet sur l'ordinateur et sur un disque externe." },
+        { "q": "Quand fixer le délai d'une commande ?", "options": ["Après avoir vu la taille des fichiers, avec une marge", "Avant de connaître les rushes", "Le plus court possible pour plaire", "Jamais"], "correct": 0, "why": "Des rushes de 25 Go peuvent demander une nuit de téléchargement." }
+      ]
+    },
+    {
+      "title": "Ce qui retient le spectateur",
+      "file": "m1-l5.md",
+      "questions": [
+        { "q": "Qu'est-ce que la rétention ?", "options": ["La part des spectateurs qui continuent à regarder à chaque moment", "Le nombre d'abonnés", "La taille du fichier", "Le prix de la vidéo"], "correct": 0, "why": "YouTube la montre sous forme de courbe au créateur." },
+        { "q": "Où se trouve presque toujours la plus grosse perte de spectateurs ?", "options": ["Dans les 30 premières secondes", "À la toute dernière seconde", "Au milieu exact", "Il n'y a jamais de perte"], "correct": 0, "why": "C'est là que le montage compte le plus." },
+        { "q": "Que faire d'une introduction lente avec un long générique ?", "options": ["Commencer par le moment le plus fort", "La rallonger", "Ajouter de la musique forte", "La laisser telle quelle"], "correct": 0, "why": "Beaucoup de spectateurs partent avant la fin du générique." },
+        { "q": "Que peut-on reprendre des vidéos qui marchent ?", "options": ["Leurs méthodes : accroche, rythme, relances", "Leurs images et leur musique", "Leurs textes mot pour mot", "Leur logo"], "correct": 0, "why": "On copie la méthode, jamais le contenu d'un autre créateur." },
+        { "q": "Quelle question se poser à chaque passage ?", "options": ["« Le spectateur a-t-il une raison de rester ? »", "« Ce plan est-il beau pour moi ? »", "« Combien d'effets puis-je ajouter ? »", "« Puis-je rallonger la vidéo ? »"], "correct": 0, "why": "On monte pour le spectateur, pas pour soi." }
+      ]
+    }
+  ]
+}

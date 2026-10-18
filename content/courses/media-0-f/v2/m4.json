@@ -1,0 +1,61 @@
+{
+  "title": "Les vidéos courtes verticales avec CapCut",
+  "summary": "Les codes des vidéos courtes (accroche immédiate, 4 temps, durée juste), la prise en main de CapCut et le recadrage vertical, des sous-titres corrigés mot par mot et lisibles, un habillage dosé avec une musique autorisée, et la déclinaison d'une vidéo longue en série de vidéos courtes.",
+  "lessons": [
+    {
+      "title": "Les codes des vidéos courtes",
+      "file": "m4-l1.md",
+      "questions": [
+        { "q": "Combien de temps a-t-on pour arrêter le spectateur qui fait défiler ?", "options": ["Moins de 2 secondes", "30 secondes", "Une minute", "Il n'y a pas de limite"], "correct": 0, "why": "L'accroche doit être immédiate." },
+        { "q": "Quels sont les 4 temps d'une vidéo courte ?", "options": ["Accroche, promesse, contenu, fin", "Logo, générique, contenu, générique", "Introduction, remerciements, contenu, crédits", "Musique, silence, musique, silence"], "correct": 0, "why": "La fin peut boucler vers le début, poser une question ou inviter à suivre." },
+        { "q": "Quelle est la bonne durée d'une vidéo courte ?", "options": ["La plus courte qui transmet le message", "Toujours la durée maximale autorisée", "Toujours exactement 60 secondes", "Au moins 3 minutes"], "correct": 0, "why": "Une vidéo regardée en entier est souvent mieux diffusée." },
+        { "q": "Où placer le logo d'une boutique dans une vidéo courte ?", "options": ["À la fin, ou en petit dans un coin", "Pendant les 3 premières secondes, en grand", "Au milieu, en plein écran", "Nulle part, jamais"], "correct": 0, "why": "La première seconde appartient au moment le plus fort." },
+        { "q": "Que valorisent les plateformes ?", "options": ["Les vidéos regardées jusqu'au bout, revues, partagées ou commentées", "Les vidéos les plus longues", "Les vidéos sans sous-titres", "Les vidéos avec le plus d'effets"], "correct": 0, "why": "Le monteur agit directement sur ces chiffres." }
+      ]
+    },
+    {
+      "title": "CapCut : projet vertical, coupe et recadrage",
+      "file": "m4-l2.md",
+      "questions": [
+        { "q": "Quelle version de CapCut est recommandée pour les commandes de clients ?", "options": ["La version ordinateur", "Uniquement la version téléphone", "Aucune", "Une version modifiée trouvée en ligne"], "correct": 0, "why": "Grand écran, souris et raccourcis : plus précis." },
+        { "q": "Quelle résolution d'export pour une vidéo verticale ?", "options": ["1080 × 1920", "1920 × 1080", "720 × 720", "3840 × 2160"], "correct": 0, "why": "Le format 9:16." },
+        { "q": "Comment transformer une vidéo horizontale en verticale ?", "options": ["Augmenter l'échelle et ajuster la position, plan par plan", "Laisser les bandes noires", "Étirer l'image", "Exporter en horizontal"], "correct": 0, "why": "Le visage reste au centre, l'écran est rempli." },
+        { "q": "Que faire après la suppression automatique des silences ?", "options": ["Réécouter le résultat", "Exporter sans écouter", "Supprimer la voix", "Ajouter des silences"], "correct": 0, "why": "L'outil coupe parfois une respiration utile ou le début d'un mot." },
+        { "q": "Où placer les yeux de la personne en vertical ?", "options": ["Vers le tiers haut de l'écran", "Tout en bas", "Sous les boutons de l'application", "Hors de l'écran"], "correct": 0, "why": "Les sous-titres et les boutons ne cachent alors rien d'important." }
+      ]
+    },
+    {
+      "title": "Les sous-titres",
+      "file": "m4-l3.md",
+      "questions": [
+        { "q": "Que sont les sous-titres automatiques ?", "options": ["Un brouillon à relire mot par mot", "Une version parfaite", "Une option inutile", "Une traduction officielle"], "correct": 0, "why": "Noms propres, marques, chiffres et mots locaux sont souvent faux." },
+        { "q": "Combien de mots par sous-titre pour une lecture facile ?", "options": ["3 à 6 mots, sur une ou deux lignes", "Une phrase de 15 mots sur 3 lignes", "Un seul mot à la fois toujours", "Tout le texte d'un coup"], "correct": 0, "why": "Le découpage suit la respiration et le sens." },
+        { "q": "Pourquoi une faute dans un sous-titre est-elle grave ?", "options": ["Elle se voit immédiatement, en gros au milieu de l'écran", "Elle ralentit l'export", "Elle change la musique", "Elle n'est jamais grave"], "correct": 0, "why": "Les sous-titres sont souvent ce que le client vérifie en premier." },
+        { "q": "Que faire si la reconnaissance du malagasy est peu fiable ?", "options": ["Transcrire à la main ou importer un fichier de sous-titres", "Laisser les erreurs", "Ne jamais sous-titrer", "Traduire au hasard"], "correct": 0, "why": "Transcrire est souvent plus rapide que corriger une mauvaise reconnaissance." },
+        { "q": "Où placer les sous-titres ?", "options": ["Sous le visage, dans la zone sûre, sur une ou deux lignes", "Sur la bouche, en très gros", "Tout en bas, sous la description", "Sous les boutons à droite"], "correct": 0, "why": "Ils ne doivent cacher ni le visage ni être cachés par l'application." }
+      ]
+    },
+    {
+      "title": "L'habillage et la musique",
+      "file": "m4-l4.md",
+      "questions": [
+        { "q": "À quoi sert l'habillage d'une vidéo courte ?", "options": ["Relancer l'attention et servir le message", "Remplir chaque seconde d'effets", "Cacher la personne qui parle", "Rallonger la vidéo"], "correct": 0, "why": "S'il ne sert pas le message, on l'enlève." },
+        { "q": "Combien d'effets sonores différents par vidéo ?", "options": ["2 ou 3 au maximum, toujours les mêmes pour un client", "Un nouveau à chaque coupe", "Au moins 20", "Aucun, jamais"], "correct": 0, "why": "Ils deviennent la signature du client." },
+        { "q": "Quelle musique pour la publicité d'une marque ?", "options": ["Une musique avec une licence qui couvre l'usage commercial", "Le son le plus populaire de l'application", "Une chanson connue téléchargée", "N'importe quelle musique de moins de 10 secondes"], "correct": 0, "why": "Les sons populaires sont souvent réservés à un usage personnel." },
+        { "q": "Quel habillage pour un hôtel haut de gamme ?", "options": ["Peu de textes, transitions douces, musique d'ambiance", "Beaucoup d'émojis et d'effets sonores", "Des zooms à chaque seconde", "Trois polices différentes"], "correct": 0, "why": "Le dosage dépend du client." },
+        { "q": "Que contient la fiche de style d'un client ?", "options": ["Police, couleurs, effets sonores, sous-titres, musique et fin habituelle", "Son mot de passe", "Ses factures", "La liste de ses concurrents"], "correct": 0, "why": "Chaque vidéo garde la même identité, et on gagne du temps." }
+      ]
+    },
+    {
+      "title": "D'une vidéo longue à une série de vidéos courtes",
+      "file": "m4-l5.md",
+      "questions": [
+        { "q": "Qu'est-ce qu'un bon extrait ?", "options": ["Un passage compréhensible seul, avec une idée complète", "Les 30 premières secondes de la vidéo", "Un passage coupé au milieu d'une phrase", "Le générique de fin"], "correct": 0, "why": "Il commence fort et donne envie d'en savoir plus." },
+        { "q": "L'extrait commence par « Et donc, comme je disais… ». Que faire ?", "options": ["Couper ce début ou ajouter un titre qui donne le contexte", "Le laisser tel quel", "Supprimer l'extrait", "Ajouter un long générique"], "correct": 0, "why": "L'extrait doit se comprendre sans la vidéo longue." },
+        { "q": "Pourquoi créer un modèle de projet vertical ?", "options": ["Il fait gagner environ la moitié du temps sur une série", "Il remplace les rushes", "Il évite de corriger les sous-titres", "Ce n'est pas utile"], "correct": 0, "why": "On remplace la vidéo et on ajuste, sans tout régler à nouveau." },
+        { "q": "Mieux vaut un extrait de 50 secondes complet ou de 30 secondes coupé ?", "options": ["50 secondes complètes", "30 secondes coupées", "Les deux se valent", "Aucun des deux"], "correct": 0, "why": "Un extrait incompréhensible frustre le spectateur." },
+        { "q": "Que livrer avec une série de vidéos courtes ?", "options": ["Des fichiers nommés et numérotés, avec un titre proposé pour chacun", "Un seul fichier avec toutes les vidéos collées", "Les rushes bruts", "Le projet sans les vidéos"], "correct": 0, "why": "Le client publie plus facilement." }
+      ]
+    }
+  ]
+}

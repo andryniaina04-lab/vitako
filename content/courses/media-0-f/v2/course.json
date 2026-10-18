@@ -1,0 +1,15 @@
+{
+  "live": false,
+  "progress_map": [0, 1, 2, 4, 5],
+  "description": "Le monteur vidéo transforme des images brutes en vidéos qui retiennent l'attention : vidéos YouTube, vidéos courtes pour TikTok, Reels et Shorts, publicités et événements. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec des logiciels gratuits : DaVinci Resolve et CapCut. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+  "objectives": [
+    "Expliquer le métier, connaître ses clients et organiser son travail à distance malgré les gros fichiers et les coupures",
+    "Choisir les bons formats, construire le rythme et l'accroche, maîtriser les coupes, le son, les textes et la couleur de base",
+    "Monter une vidéo complète dans DaVinci Resolve, de l'import à l'export",
+    "Créer des vidéos courtes verticales avec CapCut : recadrage, sous-titres, habillage et séries",
+    "Mener une commande de créateur complète, du brief aux retours et à la livraison",
+    "Construire sa bande démo et son portfolio, trouver des clients, fixer ses prix et se faire payer"
+  ],
+  "modules": ["m1.json", "m2.json", "m3.json", "m4.json", "m5.json", "m6.json"],
+  "exam": "exam.json"
+}

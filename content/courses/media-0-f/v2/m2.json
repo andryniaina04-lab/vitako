@@ -1,0 +1,61 @@
+{
+  "title": "Les bases : formats, rythme, coupes et son",
+  "summary": "Le vocabulaire et les réglages de départ, les 6 règles du rythme et l'accroche, les types de coupes et les plans de coupe, les niveaux de son et les droits de la musique, puis les textes, les sous-titres, les zones sûres et les corrections de couleur de base.",
+  "lessons": [
+    {
+      "title": "Vocabulaire, résolution, orientation et cadence",
+      "file": "m2-l1.md",
+      "questions": [
+        { "q": "Quelles dimensions pour une vidéo verticale TikTok ou Reels ?", "options": ["1080 × 1920", "1920 × 1080", "1080 × 1080", "1280 × 720"], "correct": 0, "why": "Le format 9:16 vertical ; 1920 × 1080 est le 16:9 horizontal de YouTube." },
+        { "q": "Quelle résolution est le standard pour YouTube et la plupart des clients ?", "options": ["1080p (1920 × 1080)", "480p", "8K", "240p"], "correct": 0, "why": "Le 720p sert aux validations légères, la 4K aux clients exigeants." },
+        { "q": "Sur quoi régler la cadence d'images du projet ?", "options": ["Sur celle des rushes, avant de commencer", "Toujours sur 60 i/s", "Au hasard", "À la fin du montage"], "correct": 0, "why": "Mélanger les cadences crée des saccades, et certains logiciels bloquent le changement ensuite." },
+        { "q": "Qu'est-ce qu'un plan de coupe ?", "options": ["Une image d'illustration posée au-dessus de la personne qui parle", "Un plan supprimé", "Le dernier plan de la vidéo", "Une erreur de tournage"], "correct": 0, "why": "En anglais : B-roll. Le son de la parole continue en dessous." },
+        { "q": "Comment passer une vidéo du 16:9 au 9:16 ?", "options": ["Recadrer chaque plan dans un projet vertical", "Étirer l'image pour remplir l'écran", "Ajouter des bandes noires partout", "Changer seulement le nom du fichier"], "correct": 0, "why": "On ne déforme jamais une image." }
+      ]
+    },
+    {
+      "title": "Le rythme et l'accroche",
+      "file": "m2-l2.md",
+      "questions": [
+        { "q": "Que mettre dans les 3 premières secondes ?", "options": ["Le moment le plus fort, une question ou une promesse", "Un long générique", "« Bonjour à tous, bienvenue sur ma chaîne »", "Un écran noir"], "correct": 0, "why": "C'est là que la plupart des spectateurs décident de rester." },
+        { "q": "Où trouve-t-on souvent la meilleure accroche ?", "options": ["Au milieu des rushes, et le monteur la place en premier", "Toujours dans la première seconde filmée", "Dans le générique", "Nulle part"], "correct": 0, "why": "Le monteur va chercher le moment le plus fort." },
+        { "q": "À quelle fréquence changer quelque chose à l'écran en face caméra ?", "options": ["Toutes les 5 à 10 secondes environ", "Toutes les 2 minutes", "Jamais", "À chaque mot"], "correct": 0, "why": "Zoom, plan de coupe ou texte : l'œil se lasse d'une image fixe." },
+        { "q": "Pourquoi garder certaines respirations ?", "options": ["Une parole coupée trop serré devient robotique", "Pour rallonger la vidéo", "Parce que le logiciel l'exige", "Ce n'est pas utile"], "correct": 0, "why": "Rapide ne veut pas dire sans souffle." },
+        { "q": "Quel rythme pour le témoignage d'une ONG ?", "options": ["Plus lent, en laissant parler la personne", "Le plus rapide possible", "Avec des effets sonores à chaque phrase", "Le même que l'humour"], "correct": 0, "why": "Le rythme s'adapte au contenu et à l'émotion." }
+      ]
+    },
+    {
+      "title": "Les coupes, les plans de coupe et les transitions",
+      "file": "m2-l3.md",
+      "questions": [
+        { "q": "Quelle coupe utilise-t-on dans la grande majorité des cas ?", "options": ["La coupe franche", "Le cube qui tourne", "Le fondu à chaque plan", "La page qui se tourne"], "correct": 0, "why": "Une transition doit avoir une raison." },
+        { "q": "Qu'est-ce qu'une coupe en L ?", "options": ["Le son du plan A continue sur l'image du plan B", "Le son du plan B arrive avant son image", "Une coupe en forme de lettre", "Un fondu au noir"], "correct": 0, "why": "Elle rend une interview fluide et naturelle." },
+        { "q": "Qu'est-ce qu'un jump cut ?", "options": ["Une coupe dans le même plan, qui fait sauter l'image", "Un saut de caméra", "Une transition animée", "Un ralenti"], "correct": 0, "why": "Très utilisé en face caméra pour enlever les hésitations." },
+        { "q": "Que doit montrer un plan de coupe ?", "options": ["Ce que dit la personne, ou au moins le sujet", "Un coucher de soleil sans rapport", "Le logo du logiciel", "Un écran noir"], "correct": 0, "why": "Un plan hors sujet fait décrocher le spectateur." },
+        { "q": "Quand utiliser un fondu au noir ?", "options": ["Pour la fin de la vidéo, par exemple", "Entre chaque plan", "Jamais", "Au début de chaque phrase"], "correct": 0, "why": "Chaque transition doit avoir une raison." }
+      ]
+    },
+    {
+      "title": "Le son et les droits de la musique",
+      "file": "m2-l4.md",
+      "questions": [
+        { "q": "Quel son est la priorité ?", "options": ["La voix", "La musique", "Les effets sonores", "Le bruit de fond"], "correct": 0, "why": "La musique reste sous la voix, les effets accompagnent." },
+        { "q": "Quel est le niveau maximum à ne jamais dépasser ?", "options": ["0 dB", "−20 dB", "+12 dB", "−60 dB"], "correct": 0, "why": "Au-delà, le son sature et grésille." },
+        { "q": "À quel niveau placer une musique sous la voix (repère) ?", "options": ["Environ −25 à −20 dB", "0 dB", "+6 dB", "−3 dB"], "correct": 0, "why": "La voix se place autour de −12 à −6 dB." },
+        { "q": "Pourquoi écouter sur un haut-parleur de téléphone ?", "options": ["La plupart des spectateurs écoutent ainsi, et la musique peut y couvrir la voix", "Pour économiser la batterie", "Parce que le casque est interdit", "Ce n'est pas utile"], "correct": 0, "why": "Un mélange parfait au casque peut être mauvais sur un téléphone." },
+        { "q": "Peut-on utiliser une chanson malgache à la mode pour la publicité d'une entreprise ?", "options": ["Seulement avec l'accord écrit de ses ayants droit", "Oui, tout le monde le fait", "Oui, si on n'en met que 10 secondes", "Oui, si on cite l'artiste"], "correct": 0, "why": "Sinon, on utilise une musique libre de droits." }
+      ]
+    },
+    {
+      "title": "Textes, sous-titres et couleur de base",
+      "file": "m2-l5.md",
+      "questions": [
+        { "q": "Où ne jamais placer de sous-titres sur une vidéo TikTok ?", "options": ["Tout en bas, sous la description", "Au centre", "Un peu au-dessus du tiers bas", "Dans la zone sûre"], "correct": 0, "why": "Le bas et le côté droit sont cachés par l'application." },
+        { "q": "Combien de temps afficher un texte ?", "options": ["Le temps de le lire deux fois", "Une image", "Toute la vidéo", "Une demi-seconde"], "correct": 0, "why": "Un texte trop court ne sera pas lu." },
+        { "q": "Pourquoi relire les sous-titres automatiques ?", "options": ["Ils font des erreurs, surtout sur les noms propres et les chiffres", "Ils sont toujours parfaits", "Pour les rallonger", "Ce n'est pas utile"], "correct": 0, "why": "« Toamasina » peut devenir « tout ma scie »." },
+        { "q": "Que corrige la balance des blancs ?", "options": ["Les couleurs : un mur blanc doit paraître blanc", "Le volume du son", "La durée de la vidéo", "La taille du texte"], "correct": 0, "why": "Avec l'exposition et l'harmonie, c'est l'une des 3 corrections de base." },
+        { "q": "Que regarder en premier en corrigeant la couleur d'une vidéo avec des personnes ?", "options": ["La peau, qui doit paraître naturelle", "Le ciel", "Le sol", "Le logo"], "correct": 0, "why": "Un spectateur pardonne un ciel terne, pas un visage d'une couleur étrange." }
+      ]
+    }
+  ]
+}

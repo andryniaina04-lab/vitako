@@ -3009,7 +3009,58 @@ export const PUBLISHED = {
     "title": "Trouver des clients et se faire payer",
     "minutes": 9
    }
-  ]
+  ],
+  "preview": {
+   "hours": 49,
+   "description": "Le monteur vidéo transforme des images brutes en vidéos qui retiennent l'attention : vidéos YouTube, vidéos courtes pour TikTok, Reels et Shorts, publicités et événements. Cette formation complète, en 6 modules et 30 leçons, mène un débutant jusqu'à ses premiers clients payants, à Madagascar et à l'étranger, avec des logiciels gratuits : DaVinci Resolve et CapCut. Chaque leçon contient des schémas, des exemples, un exercice pratique et un QCM corrigé ; chaque module se termine par un projet qui rejoint votre portfolio.",
+   "objectives": [
+    "Expliquer le métier, connaître ses clients et organiser son travail à distance malgré les gros fichiers et les coupures",
+    "Choisir les bons formats, construire le rythme et l'accroche, maîtriser les coupes, le son, les textes et la couleur de base",
+    "Monter une vidéo complète dans DaVinci Resolve, de l'import à l'export",
+    "Créer des vidéos courtes verticales avec CapCut : recadrage, sous-titres, habillage et séries",
+    "Mener une commande de créateur complète, du brief aux retours et à la livraison",
+    "Construire sa bande démo et son portfolio, trouver des clients, fixer ses prix et se faire payer"
+   ],
+   "breakdown": {
+    "lecture": 241,
+    "qcm": 150,
+    "exercices": 1605,
+    "projets": 870,
+    "examen": 60
+   },
+   "modules": [
+    {
+     "title": "Le métier de monteur vidéo",
+     "minutes": 40,
+     "lessons": 5
+    },
+    {
+     "title": "Les bases : formats, rythme, coupes et son",
+     "minutes": 41,
+     "lessons": 5
+    },
+    {
+     "title": "Les outils : DaVinci Resolve",
+     "minutes": 41,
+     "lessons": 5
+    },
+    {
+     "title": "Les vidéos courtes verticales avec CapCut",
+     "minutes": 39,
+     "lessons": 5
+    },
+    {
+     "title": "Premier projet : la commande « Vola Malina »",
+     "minutes": 41,
+     "lessons": 5
+    },
+    {
+     "title": "Trouver des clients et se faire payer",
+     "minutes": 39,
+     "lessons": 5
+    }
+   ]
+  }
  },
  "media-1-a": {
   "hours": 17,

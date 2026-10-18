@@ -1,0 +1,602 @@
+[
+ {
+  "q": "Que fait un monteur vidéo ?",
+  "options": [
+   "Il transforme des rushes en une vidéo qui retient l'attention",
+   "Il filme toujours lui-même",
+   "Il vend du matériel vidéo",
+   "Il écrit seulement les scripts"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que sont les rushes ?",
+  "options": [
+   "Les images et sons bruts, avant montage",
+   "La vidéo finale",
+   "Les sous-titres",
+   "Les miniatures"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelles vidéos sont les plus accessibles pour commencer ?",
+  "options": [
+   "Vidéos courtes verticales et YouTube face caméra",
+   "Longs métrages",
+   "Films d'animation 3D",
+   "Directs sportifs"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'attendent d'abord les créateurs qui publient chaque semaine ?",
+  "options": [
+   "La régularité et le respect de leur style",
+   "Le plus d'effets possible",
+   "Des vidéos plus longues",
+   "Des prix qui changent chaque semaine"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel minimum de mémoire vive est conseillé pour commencer le montage ?",
+  "options": [
+   "8 Go",
+   "1 Go",
+   "2 Go",
+   "64 Go"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel est le meilleur test de son ordinateur ?",
+  "options": [
+   "Monter et exporter une minute et noter le temps",
+   "Lire la fiche technique seulement",
+   "Regarder un film",
+   "Demander au vendeur"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand commence le délai de livraison ?",
+  "options": [
+   "À la réception de tous les rushes",
+   "Au premier message",
+   "Après le paiement final",
+   "Quand le monteur décide"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que dit la règle de sauvegarde 3-2-1 ?",
+  "options": [
+   "3 copies, sur 2 supports, dont 1 hors de chez soi",
+   "3 clients, 2 projets, 1 ordinateur",
+   "Sauvegarder 3 fois par an",
+   "3 heures, 2 pauses, 1 export"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Où se trouve presque toujours la plus grosse perte de spectateurs ?",
+  "options": [
+   "Dans les 30 premières secondes",
+   "À la dernière seconde",
+   "Au milieu exact",
+   "Il n'y en a jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que peut-on reprendre des vidéos qui marchent ?",
+  "options": [
+   "Leurs méthodes : accroche, rythme, relances",
+   "Leurs images",
+   "Leur musique",
+   "Leurs textes mot pour mot"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelles dimensions pour une vidéo verticale TikTok ou Reels ?",
+  "options": [
+   "1080 × 1920",
+   "1920 × 1080",
+   "1080 × 1080",
+   "1280 × 720"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Sur quoi régler la cadence d'images du projet ?",
+  "options": [
+   "Sur celle des rushes, avant de monter",
+   "Toujours 60 i/s",
+   "Au hasard",
+   "À la fin du montage"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que mettre dans les 3 premières secondes ?",
+  "options": [
+   "Le moment le plus fort, une question ou une promesse",
+   "Un long générique",
+   "« Bonjour à tous, bienvenue »",
+   "Le logo en grand"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'une coupe en L ?",
+  "options": [
+   "Le son du plan A continue sur l'image du plan B",
+   "Le son du plan B arrive avant son image",
+   "Un fondu au noir",
+   "Une transition en forme de lettre"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'un plan de coupe ?",
+  "options": [
+   "Une image d'illustration posée au-dessus de la personne qui parle",
+   "Un plan supprimé",
+   "Le dernier plan",
+   "Une erreur de tournage"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel est le niveau sonore à ne jamais dépasser ?",
+  "options": [
+   "0 dB",
+   "−20 dB",
+   "+12 dB",
+   "−60 dB"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quel niveau placer une musique sous la voix (repère) ?",
+  "options": [
+   "Environ −25 à −20 dB",
+   "0 dB",
+   "+6 dB",
+   "−3 dB"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Peut-on utiliser une chanson connue pour la publicité d'une entreprise ?",
+  "options": [
+   "Seulement avec une licence ou l'accord écrit des ayants droit",
+   "Oui, si on n'en met que 10 secondes",
+   "Oui, si tout le monde le fait",
+   "Oui, si on cite l'artiste"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Où ne jamais placer de sous-titres sur une vidéo TikTok ?",
+  "options": [
+   "Tout en bas, sous la description",
+   "Au centre",
+   "Un peu au-dessus du tiers bas",
+   "Dans la zone sûre"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que regarder en premier en corrigeant la couleur d'une vidéo avec des personnes ?",
+  "options": [
+   "La peau, qui doit paraître naturelle",
+   "Le ciel",
+   "Le sol",
+   "Le logo"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que se passe-t-il si on déplace un rush après l'import ?",
+  "options": [
+   "Le projet ne le retrouve plus : il passe « hors ligne »",
+   "Rien",
+   "Il est supprimé",
+   "L'export va plus vite"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle page de DaVinci Resolve sert au montage principal ?",
+  "options": [
+   "Edit",
+   "Media",
+   "Deliver",
+   "Fusion"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi servent les touches J, K et L ?",
+  "options": [
+   "Reculer, mettre en pause, avancer",
+   "Couper, copier, coller",
+   "Zoomer, dézoomer, exporter",
+   "Ouvrir les pages"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que fait la suppression avec fermeture du trou (ripple delete) ?",
+  "options": [
+   "Supprime un morceau et recolle la suite",
+   "Supprime toute la timeline",
+   "Ajoute un fondu",
+   "Exporte la vidéo"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment cacher un jump cut en face caméra ?",
+  "options": [
+   "Zoom de 10 à 15 %, plan de coupe ou texte",
+   "Un cube qui tourne",
+   "Baisser le son",
+   "Allonger le plan"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "À quoi servent les proxys ?",
+  "options": [
+   "Monter avec des copies légères, puis exporter avec les originaux",
+   "Supprimer les rushes",
+   "Envoyer les fichiers",
+   "Ajouter des sous-titres"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment corriger 30 morceaux d'un même rush ?",
+  "options": [
+   "Corriger un morceau et appliquer la correction aux autres",
+   "Les corriger un par un",
+   "Ne pas les corriger",
+   "Les réimporter"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel format et quel codec pour YouTube ?",
+  "options": [
+   "MP4 en H.264",
+   "AVI non compressé",
+   "GIF",
+   "MP3"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire avant d'envoyer un export ?",
+  "options": [
+   "Le regarder en entier",
+   "Regarder seulement le début",
+   "L'envoyer sans l'ouvrir",
+   "Le renommer « final »"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand acheter un logiciel de montage payant ?",
+  "options": [
+   "Quand un client l'exige ou qu'il fait vraiment gagner du temps",
+   "Dès le premier jour",
+   "Quand une licence non officielle est bon marché",
+   "Jamais, en aucun cas"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quels sont les 4 temps d'une vidéo courte ?",
+  "options": [
+   "Accroche, promesse, contenu, fin",
+   "Logo, générique, contenu, crédits",
+   "Introduction, remerciements, contenu, crédits",
+   "Musique, silence, musique, silence"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle est la bonne durée d'une vidéo courte ?",
+  "options": [
+   "La plus courte qui transmet le message",
+   "Toujours la durée maximale",
+   "Toujours 60 secondes",
+   "Au moins 3 minutes"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment transformer une vidéo horizontale en verticale dans CapCut ?",
+  "options": [
+   "Augmenter l'échelle et ajuster la position, plan par plan",
+   "Laisser les bandes noires",
+   "Étirer l'image",
+   "Exporter en horizontal"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que sont les sous-titres automatiques ?",
+  "options": [
+   "Un brouillon à relire mot par mot",
+   "Une version parfaite",
+   "Une traduction officielle",
+   "Une option inutile"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien de mots par sous-titre pour une lecture facile ?",
+  "options": [
+   "3 à 6 mots, sur une ou deux lignes",
+   "15 mots sur 3 lignes",
+   "Tout le texte d'un coup",
+   "Un seul mot toujours"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que faire si la reconnaissance du malagasy est peu fiable ?",
+  "options": [
+   "Transcrire à la main ou importer un fichier de sous-titres",
+   "Laisser les erreurs",
+   "Ne jamais sous-titrer",
+   "Traduire au hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien d'effets sonores différents par vidéo courte ?",
+  "options": [
+   "2 ou 3 au maximum, toujours les mêmes pour un client",
+   "Un nouveau à chaque coupe",
+   "Au moins 20",
+   "Aucun, jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle musique pour la publicité d'une marque ?",
+  "options": [
+   "Une musique dont la licence couvre l'usage commercial",
+   "Le son le plus populaire de l'application",
+   "Une chanson téléchargée",
+   "N'importe quelle musique courte"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce qu'un bon extrait pour une vidéo courte ?",
+  "options": [
+   "Un passage compréhensible seul, avec une idée complète",
+   "Les 30 premières secondes",
+   "Un passage coupé au milieu d'une phrase",
+   "Le générique"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi créer un modèle de projet vertical ?",
+  "options": [
+   "Il fait gagner beaucoup de temps sur une série",
+   "Il remplace les rushes",
+   "Il évite de corriger les sous-titres",
+   "Ce n'est pas utile"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand recueillir le brief ?",
+  "options": [
+   "Avant d'ouvrir le logiciel",
+   "Après la première version",
+   "Après la livraison",
+   "Jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Pourquoi demander une vidéo de référence au client ?",
+  "options": [
+   "Elle montre exactement ce qu'il imagine",
+   "Pour la copier entièrement",
+   "Pour rallonger le brief",
+   "Ce n'est pas utile"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce que le dérushage ?",
+  "options": [
+   "Le visionnage des rushes pour noter les bonnes prises et moments forts",
+   "La suppression des rushes",
+   "L'export final",
+   "La correction des couleurs"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Qu'est-ce que l'ours ?",
+  "options": [
+   "Le premier assemblage des bonnes prises dans l'ordre",
+   "La version finale",
+   "Une transition",
+   "Le logo"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que vérifier en priorité à l'étape de l'ours ?",
+  "options": [
+   "Que l'histoire tient et que l'ordre est logique",
+   "Chaque « euh »",
+   "La couleur des textes",
+   "Le niveau de la musique"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Sur quoi s'appuie l'habillage d'une vidéo client ?",
+  "options": [
+   "Sa fiche de style",
+   "Les goûts du monteur",
+   "Les effets à la mode",
+   "Le hasard"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment demander les retours du client ?",
+  "options": [
+   "En une seule fois, avec un repère de temps par remarque",
+   "Un par un dans la journée",
+   "Sans repère",
+   "Par téléphone sans rien écrire"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Le client demande une vidéo dans un tout autre style après le brief. Que faire ?",
+  "options": [
+   "Proposer poliment un supplément",
+   "Refaire gratuitement",
+   "Refuser sèchement",
+   "Ignorer"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Sur quoi remplir la grille de vérification en 12 points ?",
+  "options": [
+   "Sur l'export final, regardé en entier",
+   "Sur la timeline seulement",
+   "Sur les rushes",
+   "Sur la miniature"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Combien de temps garder le projet après la livraison ?",
+  "options": [
+   "Au moins 30 jours, ou la durée prévue au devis",
+   "Le supprimer le soir même",
+   "Une heure",
+   "Pour toujours sur l'ordinateur principal"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle durée pour une bande démo ?",
+  "options": [
+   "30 à 90 secondes",
+   "10 minutes",
+   "5 secondes",
+   "Une heure"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle pièce montre le mieux ce que fait un monteur ?",
+  "options": [
+   "Un avant / après",
+   "Une liste de logiciels",
+   "Une photo de l'ordinateur",
+   "Un CV de trois pages"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quelle limite pour un extrait offert à un prospect ?",
+  "options": [
+   "Un passage court, moins de 30 minutes de travail",
+   "Une vidéo entière",
+   "Dix vidéos",
+   "Aucune limite"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Peut-on promettre un nombre de vues à un client ?",
+  "options": [
+   "Non, les vues ne dépendent pas seulement du montage",
+   "Oui, 100 000 garanties",
+   "Oui, s'il paie plus",
+   "Oui, pour les vidéos courtes"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Avec 1 500 000 Ar visés et 100 heures facturables, quel prix horaire ?",
+  "options": [
+   "15 000 Ar",
+   "150 000 Ar",
+   "1 500 Ar",
+   "10 000 Ar"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Que compter dans le temps réel d'une vidéo ?",
+  "options": [
+   "Tout : rushes, dérushage, montage, retours, exports, envoi",
+   "Seulement le montage",
+   "Seulement l'export",
+   "Seulement les retours"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quel est l'avantage d'un forfait mensuel ?",
+  "options": [
+   "Un revenu prévisible et une organisation simple",
+   "Il évite de livrer à l'heure",
+   "Il supprime le devis",
+   "Il est toujours moins cher pour le monteur"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand envoyer la version finale en haute qualité ?",
+  "options": [
+   "Après le paiement du solde",
+   "Avec la facture, avant le paiement",
+   "Avant le brief",
+   "Jamais"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Comment vérifier un paiement Mobile Money ?",
+  "options": [
+   "Sur votre propre compte, jamais sur une capture",
+   "Sur la capture du client",
+   "En demandant à un ami",
+   "Pas besoin"
+  ],
+  "correct": 0
+ },
+ {
+  "q": "Quand commencer à prospecter ?",
+  "options": [
+   "Maintenant, avec les logiciels gratuits et le portfolio",
+   "Après l'achat du meilleur ordinateur",
+   "Après l'achat de Premiere Pro",
+   "Dans un an"
+  ],
+  "correct": 0
+ }
+]

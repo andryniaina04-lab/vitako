@@ -1,0 +1,61 @@
+{
+  "title": "Trouver des clients et se faire payer",
+  "summary": "Transformer vos compétences en activité : une bande démo et un portfolio avec un avant / après, la prospection avec un extrait offert mesuré, le calcul des prix et des forfaits mensuels, un devis en 7 points qui protège votre travail, les paiements depuis Madagascar, la fidélisation des clients et votre plan des 30 prochains jours.",
+  "lessons": [
+    {
+      "title": "La bande démo et le portfolio",
+      "file": "m6-l1.md",
+      "questions": [
+        { "q": "Quelle durée pour une bande démo ?", "options": ["30 à 90 secondes", "10 minutes", "5 secondes", "Une heure"], "correct": 0, "why": "Uniquement d'excellents passages, de 2 à 5 secondes chacun." },
+        { "q": "Sur quoi le client juge-t-il votre niveau dans une bande démo ?", "options": ["Sur votre plus faible passage", "Sur la durée totale", "Sur la musique seulement", "Sur votre logo"], "correct": 0, "why": "Il faut enlever tout ce qui n'est pas excellent." },
+        { "q": "Quelle pièce montre le mieux ce que fait un monteur ?", "options": ["Un avant / après : rushes bruts puis le même passage monté", "Une liste de logiciels", "Une photo de son ordinateur", "Un CV de trois pages"], "correct": 0, "why": "Un client non spécialiste comprend immédiatement." },
+        { "q": "Quelle phrase de présentation est la meilleure ?", "options": ["« Je monte vos vidéos YouTube pour que vos spectateurs restent jusqu'au bout »", "« Monteur passionné, je maîtrise DaVinci Resolve »", "« Je fais tous types de vidéos »", "« Disponible pour tout projet »"], "correct": 0, "why": "Elle est centrée sur le résultat pour le client." },
+        { "q": "Que mettre dans son portfolio ?", "options": ["Uniquement ses propres projets, avec l'accord des clients", "Des vidéos trouvées en ligne et retouchées", "Les projets clients sans leur accord", "Les rushes bruts de clients"], "correct": 0, "why": "Une vidéo d'un autre découverte fait perdre toute confiance." }
+      ]
+    },
+    {
+      "title": "Trouver des clients",
+      "file": "m6-l2.md",
+      "questions": [
+        { "q": "Quel créateur a probablement besoin d'un monteur ?", "options": ["Celui qui publie régulièrement un bon contenu avec un montage lent", "Celui qui ne publie plus depuis un an", "Celui qui a déjà une équipe de 10 monteurs", "N'importe qui, sans vérifier"], "correct": 0, "why": "Régulier, bon contenu, montage à améliorer : un bon prospect." },
+        { "q": "Qu'est-ce qui rend un message de prospection efficace ?", "options": ["Le prénom, une vidéo précise et une idée concrète pour sa chaîne", "Le même texte envoyé à 100 créateurs", "« Mes prix sont très bas »", "Un CV en pièce jointe sans message"], "correct": 0, "why": "Un court extrait monté pour lui convainc encore plus." },
+        { "q": "Quelle limite pour un extrait offert ?", "options": ["Un passage court, moins de 30 minutes de travail", "Une vidéo entière gratuite", "Dix vidéos pour tester", "Aucune limite"], "correct": 0, "why": "Montrer, pas travailler gratuitement." },
+        { "q": "Combien de relances après un message sans réponse ?", "options": ["Une relance polie après 5 à 7 jours, puis on s'arrête", "Une par jour", "Aucune", "Dix relances"], "correct": 0, "why": "Au-delà, on devient insistant." },
+        { "q": "Peut-on promettre un nombre de vues ?", "options": ["Non, les vues ne dépendent pas seulement du montage", "Oui, 100 000 vues garanties", "Oui, si le client paie plus", "Oui, pour les vidéos courtes"], "correct": 0, "why": "On promet ce qu'on maîtrise : un montage soigné, à l'heure." }
+      ]
+    },
+    {
+      "title": "Calculer ses prix et ses forfaits",
+      "file": "m6-l3.md",
+      "questions": [
+        { "q": "Avec 1 500 000 Ar visés et 100 heures facturables, quel est le prix horaire ?", "options": ["15 000 Ar", "150 000 Ar", "1 500 Ar", "10 000 Ar"], "correct": 0, "why": "1 500 000 ÷ 100 = 15 000 Ar de l'heure." },
+        { "q": "Que compter dans le temps réel d'une vidéo ?", "options": ["Tout : rushes, dérushage, montage, retours, exports, envoi", "Seulement le montage", "Seulement l'export", "Seulement les retours"], "correct": 0, "why": "Sinon on travaille presque deux fois plus que ce qu'on facture." },
+        { "q": "4 vidéos de 6 h et 12 vidéos courtes de 1 h par mois, à 15 000 Ar de l'heure : quel forfait ?", "options": ["540 000 Ar", "360 000 Ar", "90 000 Ar", "1 080 000 Ar"], "correct": 0, "why": "(4 × 6) + (12 × 1) = 36 h ; 36 × 15 000 = 540 000 Ar." },
+        { "q": "Quel est l'avantage d'un forfait mensuel ?", "options": ["Un revenu prévisible et une organisation simple", "Il évite de livrer à l'heure", "Il est toujours moins cher pour le monteur", "Il supprime le devis"], "correct": 0, "why": "Deux ou trois forfaits forment une base de revenus stable." },
+        { "q": "Faut-il appliquer ses prix locaux aux clients étrangers ?", "options": ["Non, on s'adapte à leur marché sans casser les prix", "Oui, toujours", "Oui, et les baisser encore", "On ne travaille jamais avec l'étranger"], "correct": 0, "why": "Un tarif anormalement bas fait douter de la qualité." }
+      ]
+    },
+    {
+      "title": "Le devis et la protection du travail",
+      "file": "m6-l4.md",
+      "questions": [
+        { "q": "Combien de tours de retours prévoit-on souvent dans un devis ?", "options": ["2", "Aucun", "Illimités", "20"], "correct": 0, "why": "Au-delà, les demandes supplémentaires ont un prix connu." },
+        { "q": "Quand envoyer la version finale en haute qualité ?", "options": ["Après le paiement du solde", "Avec la facture, avant le paiement", "Avant le brief", "Jamais"], "correct": 0, "why": "Avant, le client reçoit une version de validation légère ou avec filigrane." },
+        { "q": "À partir de quand court le délai indiqué au devis ?", "options": ["La réception de tous les rushes", "Le premier message", "Le paiement du solde", "La publication de la vidéo"], "correct": 0, "why": "Un fichier manquant peut bloquer le montage." },
+        { "q": "Que préciser au devis sur la musique ?", "options": ["Libre de droits avec la source, ou fournie par le client sous sa responsabilité", "Rien", "« Musique trouvée en ligne »", "Que le monteur en est propriétaire"], "correct": 0, "why": "Les droits évitent les blocages et les conflits." },
+        { "q": "Faut-il un devis écrit avec un client local qui préfère discuter de vive voix ?", "options": ["Oui, même d'une page, avec une validation écrite", "Non, jamais", "Seulement après la livraison", "Seulement s'il le demande"], "correct": 0, "why": "La trace écrite protège les deux parties." }
+      ]
+    },
+    {
+      "title": "Être payé, durer et évoluer",
+      "file": "m6-l5.md",
+      "questions": [
+        { "q": "Comment vérifier un paiement Mobile Money ?", "options": ["Sur votre propre compte, jamais sur une capture", "Sur la capture envoyée par le client", "En demandant à un ami", "Pas besoin de vérifier"], "correct": 0, "why": "Une capture peut être fausse." },
+        { "q": "Qu'est-ce qui garde un créateur fidèle ?", "options": ["Délai, style respecté, statistiques suivies, idées, avis demandé", "Des prix qui baissent chaque mois", "Des livraisons irrégulières", "Changer de style à chaque vidéo"], "correct": 0, "why": "Les 5 habitudes qui gardent un client." },
+        { "q": "Que faire de PayPal pour un compte basé à Madagascar ?", "options": ["Vérifier la situation actuelle avant de le proposer", "Le proposer sans vérifier", "C'est le seul moyen possible", "L'interdire à ses clients"], "correct": 0, "why": "Ses possibilités sont limitées pour Madagascar." },
+        { "q": "Combien de temps consacrer à la veille ?", "options": ["Environ une heure par semaine", "Aucun", "Une heure par an", "Toute la journée"], "correct": 0, "why": "Les logiciels et les formats des plateformes changent vite." },
+        { "q": "Quand commencer à prospecter ?", "options": ["Maintenant, avec les logiciels gratuits et le portfolio", "Après avoir acheté le meilleur ordinateur", "Après avoir acheté Premiere Pro", "Dans un an"], "correct": 0, "why": "On améliore son matériel avec ses premiers revenus." }
+      ]
+    }
+  ]
+}

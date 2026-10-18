@@ -1,0 +1,61 @@
+{
+  "title": "Premier projet : la commande « Vola Malina »",
+  "summary": "Une vraie commande de créateur, du brief à la livraison : brief en 10 questions et dérushage, ours et montage serré, habillage, son et couleur selon la fiche de style, version de validation et retours avec repères de temps, 3 vidéos courtes, grille de vérification en 12 points et étude de cas.",
+  "lessons": [
+    {
+      "title": "Le brief et le dérushage",
+      "file": "m5-l1.md",
+      "questions": [
+        { "q": "Quand faut-il recueillir le brief ?", "options": ["Avant d'ouvrir le logiciel", "Après la première version", "Jamais", "Après la livraison"], "correct": 0, "why": "Dix questions évitent une journée perdue à monter dans le mauvais style." },
+        { "q": "Pourquoi demander une vidéo de référence ?", "options": ["Elle montre exactement ce que le client imagine", "Pour la copier entièrement", "Pour rallonger le brief", "Ce n'est pas utile"], "correct": 0, "why": "« Dynamique » ou « moderne » n'ont pas le même sens pour tout le monde." },
+        { "q": "Qu'est-ce que le dérushage ?", "options": ["Le visionnage des rushes pour noter les bonnes prises et les moments forts", "La suppression des rushes", "L'export final", "La correction des couleurs"], "correct": 0, "why": "On note les repères de temps pour ne regarder les rushes qu'une fois." },
+        { "q": "Que repérer dès le dérushage ?", "options": ["L'accroche possible et les passages pour les vidéos courtes", "Seulement la dernière minute", "Les fautes d'orthographe des textes", "La couleur du logo"], "correct": 0, "why": "On gagne du temps pour la suite du projet." },
+        { "q": "Que faire avant d'ouvrir la timeline ?", "options": ["Écrire le plan de la vidéo avec les repères choisis", "Ajouter les effets sonores", "Exporter une version", "Envoyer la facture"], "correct": 0, "why": "Accroche, promesse, parties, conclusion, fin." }
+      ]
+    },
+    {
+      "title": "L'ours et le montage serré",
+      "file": "m5-l2.md",
+      "questions": [
+        { "q": "Qu'est-ce que l'ours ?", "options": ["Le premier assemblage des bonnes prises dans l'ordre", "La version finale", "Un effet de transition", "Le logo de la chaîne"], "correct": 0, "why": "Il est long et brut, mais il montre si l'histoire tient." },
+        { "q": "Que vérifier en priorité à l'étape de l'ours ?", "options": ["Que l'histoire tient et que l'ordre est logique", "Chaque « euh »", "La couleur des textes", "Le niveau de la musique"], "correct": 0, "why": "Une erreur d'ordre découverte à la fin oblige à refaire l'habillage." },
+        { "q": "Que garder pendant le montage serré ?", "options": ["Les respirations naturelles et les pauses qui ont un sens", "Toutes les hésitations", "Les phrases recommencées", "Les silences longs"], "correct": 0, "why": "On coupe silences, hésitations et répétitions, pas le souffle." },
+        { "q": "Où placer le calcul « 2 000 Ar par jour = 730 000 Ar par an » trouvé au milieu des rushes ?", "options": ["Au tout début, comme accroche", "À la fin seulement", "Nulle part", "Dans le générique"], "correct": 0, "why": "Un chiffre concret accroche le spectateur dès les premières secondes." },
+        { "q": "Pourquoi ne pas peaufiner dès l'ours ?", "options": ["Le passage peut être remplacé ensuite, et le travail serait perdu", "Parce que le logiciel l'interdit", "Pour finir plus tard", "Ce n'est pas un problème"], "correct": 0, "why": "L'ours d'abord, en entier, puis le serré, puis l'habillage." }
+      ]
+    },
+    {
+      "title": "Habillage, son et couleur",
+      "file": "m5-l3.md",
+      "questions": [
+        { "q": "Sur quoi s'appuie l'habillage ?", "options": ["La fiche de style du client", "Les goûts du monteur", "Les effets à la mode", "Le hasard"], "correct": 0, "why": "Police, couleurs, effets sonores, zooms, musique, fin." },
+        { "q": "À quelle fréquence prévoir un changement visible dans une vidéo face caméra ?", "options": ["Toutes les 15 à 20 secondes environ, en plus des zooms", "Toutes les 2 minutes", "Jamais", "À chaque image"], "correct": 0, "why": "Les éléments d'habillage doivent être répartis dans toute la vidéo." },
+        { "q": "Comment régler la musique dans la vidéo longue ?", "options": ["Plus forte dans l'introduction et la fin, très basse sous la parole", "Toujours au maximum", "Plus forte que la voix", "Sans fondus"], "correct": 0, "why": "La voix reste la priorité." },
+        { "q": "La lumière a baissé pendant le tournage. Que faire ?", "options": ["Une correction pour le début, une pour la fin, et une transition invisible", "Ne rien corriger", "Supprimer la fin", "Passer la vidéo en noir et blanc"], "correct": 0, "why": "Début, milieu et fin doivent avoir la même allure." },
+        { "q": "Pourquoi éviter un habillage « métronome » toutes les 10 secondes exactes ?", "options": ["Le spectateur sent la mécanique et décroche", "Parce que c'est interdit", "Pour économiser du temps", "Ce n'est pas un problème"], "correct": 0, "why": "L'habillage suit le contenu." }
+      ]
+    },
+    {
+      "title": "La version de validation et les retours",
+      "file": "m5-l4.md",
+      "questions": [
+        { "q": "Comment demander les retours du client ?", "options": ["En une seule fois, avec un repère de temps pour chaque remarque", "Un par un au fil de la journée", "Sans repère", "Par téléphone, sans rien écrire"], "correct": 0, "why": "Des retours dispersés se contredisent et font rouvrir le projet dix fois." },
+        { "q": "À quoi sert le tableau des retours ?", "options": ["Traiter chaque retour sans en oublier, et le montrer au client", "Calculer le prix", "Remplacer le brief", "Lister les musiques"], "correct": 0, "why": "Le client voit que rien n'a été oublié." },
+        { "q": "Le client demande de refaire la vidéo dans un tout autre style. Que faire ?", "options": ["Proposer poliment un supplément, car ce n'était pas au brief", "Refaire gratuitement sans rien dire", "Refuser sèchement", "Ignorer la demande"], "correct": 0, "why": "Les tours de retours couvrent les ajustements, pas une nouvelle demande." },
+        { "q": "Que faire de retours reçus par message vocal ?", "options": ["Remplir le tableau soi-même et le faire confirmer par le client", "Les écouter une fois et travailler de mémoire", "Les ignorer", "Demander au client de les réenregistrer"], "correct": 0, "why": "On évite les oublis et les malentendus." },
+        { "q": "Quand monter les vidéos courtes de la commande ?", "options": ["Une fois la vidéo longue validée", "Avant même le dérushage", "Après le paiement final seulement", "Jamais"], "correct": 0, "why": "Les extraits viennent de la version validée." }
+      ]
+    },
+    {
+      "title": "La vérification, la livraison et l'étude de cas",
+      "file": "m5-l5.md",
+      "questions": [
+        { "q": "Sur quoi remplir la grille en 12 points ?", "options": ["Sur l'export final, regardé en entier", "Sur la timeline seulement", "Sur les rushes", "Sur la miniature"], "correct": 0, "why": "Un problème d'export ne se voit pas dans la timeline." },
+        { "q": "Combien de temps garder le projet après la livraison ?", "options": ["Au moins 30 jours, ou la durée prévue au devis", "Le supprimer le soir même", "Une heure", "Pour toujours sur l'ordinateur principal"], "correct": 0, "why": "Le client peut demander une petite modification." },
+        { "q": "Que faut-il avant de publier la vidéo d'un client dans son portfolio ?", "options": ["Son accord écrit, et celui des personnes filmées si besoin", "Rien", "Retirer son logo", "Changer la musique"], "correct": 0, "why": "Sinon, on présente son projet d'entraînement." },
+        { "q": "Qu'est-ce qui montre le mieux votre travail dans une étude de cas ?", "options": ["Un avant / après : rushes bruts puis le même passage monté", "La liste de vos logiciels", "Une capture du bureau", "Le nom du client seulement"], "correct": 0, "why": "On voit immédiatement ce que le montage a apporté." },
+        { "q": "Que faire après la livraison ?", "options": ["Confirmer la réception, encaisser le solde, noter son temps, demander un avis", "Disparaître jusqu'à la prochaine commande", "Supprimer les échanges", "Envoyer une nouvelle facture"], "correct": 0, "why": "Clore proprement prépare la commande suivante." }
+      ]
+    }
+  ]
+}
