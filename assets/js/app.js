@@ -46,6 +46,7 @@ const isAdmin = () => !!S.profile?.is_admin;
 const isTrainer = () => S.profile?.role === 'trainer';
 const homeAfterLogin = () => (isAdmin() ? '/admin' : isTrainer() ? '/espace-formateur' : '/mon-espace');
 const hasAccess = () => !!S.profile && (S.profile.is_admin || (S.profile.sub_end && new Date(S.profile.sub_end) > new Date()));
+const subBtn = (cls = 'btn') => `<a class="${cls}" href="#/abonnement">S'abonner · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>`;
 const canReadCourse = (c) => hasAccess() || (!!S.profile && c?.freePreview);
 const daysLeft = () => Math.max(0, Math.ceil((new Date(S.profile.sub_end) - Date.now()) / DAY));
 const doneSet = (cid) => S.progress.get(cid) || new Set();
@@ -794,7 +795,7 @@ function coursePage(id) {
           }).join('')}
           <div class="mod${cert ? ' done' : ''}"><span class="n">${cert ? smallCheck : 'EX'}</span>
             <div class="t"><b>Examen final</b><small>10 questions · 50/100 pour réussir · essais illimités</small></div>
-            ${c.published && ok && allDone ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published ? `<span class="lock">${I.lock}</span>` : ''}
+            ${c.published && ok && allDone ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published && okRead && S.profile ? subBtn('btn sm') : c.published ? `<span class="lock">${I.lock}</span>` : ''}
           </div>
         </div>
       </div>
@@ -980,7 +981,7 @@ function partQuizHtml() {
   const msg = s === n ? 'Parfait, tout est juste !' : s >= Math.ceil(n * 0.6) ? 'Bien joué. Lisez les explications des questions manquées.' : 'Relisez les parties de la leçon liées aux questions en rouge, puis refaites le QCM.';
   const allDone = flat.length && flat.every(({ m, l }) => partsDone(Q.courseId).has(pkey(m.module_index, l.part_index)));
   const next = nx ? `<a class="btn" href="${partHref(Q.courseId, nx.m.module_index, nx.l.part_index)}">${nx.m.module_index !== Q.mi ? `Module suivant : ${nx.m.module_index + 1}.1` : `Leçon suivante : ${nx.m.module_index + 1}.${nx.l.part_index + 1}`}</a>`
-    : allDone ? `<a class="btn" href="#/formation/${Q.courseId}/examen">Passer l'examen final</a>` : `<a class="btn" href="#/formation/${Q.courseId}">Voir les leçons restantes</a>`;
+    : allDone ? (hasAccess() ? `<a class="btn" href="#/formation/${Q.courseId}/examen">Passer l'examen final</a>` : subBtn()) : `<a class="btn" href="#/formation/${Q.courseId}">Voir les leçons restantes</a>`;
   return `<form id="pquiz-form" class="stack">${qsHtml}
     <div class="panel stack quiz-res ${s === n ? 'all' : s >= Math.ceil(n * 0.6) ? 'ok' : 'low'}" style="gap:10px"><b>Résultat : <span class="mono">${s}/${n}</span> bonne${s > 1 ? 's' : ''} réponse${s > 1 ? 's' : ''} · leçon ${Q.mi + 1}.${Q.pi + 1} validée</b><p class="muted">${msg}</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">${next}<button type="button" class="btn ghost" data-act="pquiz-retry">Refaire le QCM</button></div></div></form>`;
@@ -1045,7 +1046,7 @@ function moduleQuizHtml() {
     ? `<div class="panel stack" style="gap:10px"><b>Résultat : <span class="mono">${Q.score}/${Q.qs.length}</span> bonnes réponses</b><p class="muted">Module ${Q.mi + 1} terminé.</p>
        <div style="display:flex;gap:10px;flex-wrap:wrap">${Q.mi < n - 1
          ? `<a class="btn" href="#/formation/${c.id}/module/${Q.mi + 2}">Module suivant</a>`
-         : doneSet(c.id).size >= n ? `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>` : `<a class="btn" href="#/formation/${c.id}">Voir les modules restants</a>`}
+         : doneSet(c.id).size >= n ? (hasAccess() ? `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>` : `<p class="muted" style="flex-basis:100%">Formation terminée ! Abonnez-vous pour passer l'examen et obtenir votre attestation.</p>${subBtn()}`) : `<a class="btn" href="#/formation/${c.id}">Voir les modules restants</a>`}
        <button type="button" class="btn ghost" data-act="mquiz-retry">Refaire le test</button></div></div>`
     : '<p id="mqerr" class="notice err" hidden>Répondez à toutes les questions avant de valider.</p><div><button class="btn" type="submit">Valider mes réponses</button></div>';
   return `<form id="mquiz-form" class="stack">${qsHtml}${footer}</form>`;
