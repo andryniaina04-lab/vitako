@@ -1,4 +1,4 @@
-Le travail en ligne n'est pas réservé aux développeurs qui écrivent du code. Il existe des dizaines de métiers accessibles depuis Madagascar, avec des niveaux d'entrée très différents. Ce module vous en présente les principales familles — avec ce que chacune demande et ce qu'elle peut rapporter.
+Le travail en ligne n'est pas réservé aux développeurs qui écrivent du code. Il existe des dizaines de métiers accessibles depuis Madagascar, avec des niveaux d'entrée très différents. Ce module vous en présente les principales familles : ce que chacune demande et ce qu'elle peut rapporter.
 
 > [!objectifs] Objectifs du module
 > 1. Connaître les grandes familles de métiers du travail en ligne.
@@ -16,8 +16,8 @@ Ces métiers consistent à créer des images, des vidéos, des animations ou des
 | **Motion designer** | Animations de textes, logos animés, effets visuels | After Effects, DaVinci Fusion |
 | **Illustrateur** | Dessins numériques, illustrations pour livres, sites, BD | Procreate, Krita |
 
-> [!exemple] Un graphiste à Antsirabe
-> Volatiana a appris Canva en 3 semaines. Elle crée des posts Instagram pour des boutiques françaises. Elle facture 15 à 30 euros par visuel. En travaillant 4 heures par jour, elle gagne l'équivalent de 500 000 Ar par mois — tout depuis son appartement.
+> [!exemple] Andry, graphiste freelance Senior
+> Andry est graphiste freelance et fondateur de Vitako, entrepreneur dans le digital. Il a commencé par maîtriser les outils du design, puis a décroché ses premiers clients locaux à Madagascar. En 2022, son premier client lui paie **1 400 000 Ar par mois**. La même année, un deuxième client lui en paie **2 500 000**. En 2025, un contrat étranger lui rapporte **900 euros par mois** (plus de 4 200 000 Ar). Tout depuis son espace de travail, sans transport, sans bureau fixe.
 
 ## Les métiers de l'écriture et du contenu
 

@@ -1,4 +1,4 @@
-Combien peut-on vraiment gagner avec le travail en ligne depuis Madagascar ? Cette question mérite une réponse honnête, avec de vrais chiffres — pas des promesses exagérées, pas non plus une prudence inutile. Ce module compare les revenus du travail en ligne avec les salaires locaux, pour que vous puissiez évaluer ce que ça représente concrètement.
+Combien peut-on vraiment gagner avec le travail en ligne depuis Madagascar ? Cette question mérite une réponse honnête, avec de vrais chiffres : pas de promesses exagérées, mais pas de fausse prudence non plus. Ce module compare les revenus du travail en ligne avec les salaires locaux, pour que vous puissiez évaluer ce que ça représente concrètement.
 
 > [!objectifs] Objectifs du module
 > 1. Connaître les revenus réels des freelances débutants et confirmés.
@@ -63,14 +63,14 @@ Voici ce que ces revenus représentent par rapport aux salaires locaux :
 | 800 € par mois (4 000 000 Ar) | Salaire d'un directeur dans une PME |
 | 1 500 € par mois (7 500 000 Ar) | Exceptionnel, mais atteint par des freelances confirmés |
 
-> [!exemple] L'histoire de Fara
-> Fara, 26 ans, était secrétaire dans une société à Antsirabe et gagnait 450 000 Ar par mois. Elle a suivi une formation de rédactrice web pendant 3 mois. Six mois plus tard, elle avait 4 clients réguliers et gagnait 1 200 000 Ar par mois — presque 3 fois son ancien salaire, sans quitter sa ville, sans transport, avec des horaires qu'elle choisissait elle-même.
+> [!exemple] La progression d'Andry, fondateur de Vitako
+> Andry est graphiste freelance et entrepreneur web Senior dans le digital. Il raconte lui-même sa progression : premier client local en 2022 à **1 400 000 Ar par mois**, puis un deuxième client la même année à **2 500 000 Ar par mois**, et en début 2025 un contrat étranger à **900 euros par mois** (plus de 4 200 000 Ar). En moins de 3 ans, ses revenus ont été multipliés par 3. Sans changer de ville. Sans transport quotidien. C'est cette réalité qu'il a voulu rendre accessible à d'autres jeunes Malgaches en créant Vitako.
 
 ## Pourquoi l'écart est si grand ?
 
 Les clients étrangers (France, Belgique, Canada, Suisse) paient aux tarifs de leur marché. Un article de blog « bas de gamme » en France vaut 30 à 50 euros. C'est presque l'équivalent d'une semaine de salaire minimum à Madagascar.
 
-Ce n'est pas de l'exploitation : le client paie un prix normal pour lui, et vous recevez un revenu exceptionnel pour vous. C'est ce qu'on appelle **l'arbitrage géographique** — et c'est l'un des grands avantages du travail en ligne pour les pays à faible coût de la vie.
+Ce n'est pas de l'exploitation : le client paie un prix normal pour lui, et vous recevez un revenu exceptionnel pour vous. C'est ce qu'on appelle **l'arbitrage géographique** : l'un des grands avantages du travail en ligne pour les pays à faible coût de la vie.
 
 > [!astuce] Les revenus augmentent avec l'expérience
 > Un graphiste débutant à 30 euros le logo peut passer à 80 euros après 6 mois, puis à 150 euros après un an, à mesure que son portfolio grandit et que sa réputation s'établit. Les freelances confirmés qui ont investi dans leur formation et leur portfolio gagnent souvent 3 à 5 fois plus que leurs débuts.
@@ -79,7 +79,7 @@ Ce n'est pas de l'exploitation : le client paie un prix normal pour lui, et vous
 
 Pour rester honnête, voici aussi ce que le travail en ligne ne garantit pas :
 
-1. **Les revenus ne sont pas réguliers au début.** Le premier mois, vous gagnez peut-être 50 000 Ar. Le troisième, 300 000. Le sixième, 800 000. C'est normal — il faut du temps pour construire sa clientèle.
+1. **Les revenus ne sont pas réguliers au début.** Le premier mois, vous gagnez peut-être 50 000 Ar. Le troisième, 300 000. Le sixième, 800 000. C'est normal : il faut du temps pour construire sa clientèle.
 2. **Il faut du temps pour trouver ses premiers clients.** Sans formation, sans portfolio, sans profil soigné, les premières missions ne viennent pas.
 3. **La concurrence existe.** Des freelances du monde entier proposent les mêmes services. La formation et la qualité font la différence.
 
@@ -87,7 +87,7 @@ Pour rester honnête, voici aussi ce que le travail en ligne ne garantit pas :
 > - Le SMIC malgache est d'environ 320 000 Ar. Un graphiste débutant peut gagner 2 à 5 fois plus.
 > - Les revenus dépendent de votre compétence, votre régularité et vos clients.
 > - L'écart de coût de la vie entre Madagascar et l'Europe est un avantage immense pour les freelances malgaches.
-> - Au départ, les revenus sont irréguliers — c'est normal et ça s'améliore avec le temps.
+> - Au départ, les revenus sont irréguliers : c'est normal et ça s'améliore avec le temps.
 
 ## Exercice pratique : mon objectif de revenus
 

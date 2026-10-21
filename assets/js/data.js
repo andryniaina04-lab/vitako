@@ -2254,7 +2254,7 @@ export const PUBLISHED = {
   ]
  },
  "free-1-f": {
-  "hours": 6,
+  "hours": 10,
   "description": "Le travail en ligne, c'est travailler pour des clients du monde entier depuis chez vous — sans transport, sans horaire imposé, sans chef. Cette formation gratuite vous explique ce que c'est vraiment : les métiers possibles, ce qu'on gagne, la différence avec un salaire à Madagascar, et pourquoi se former avec Vitako peut changer votre vie. Vous terminerez avec un plan clair pour commencer.",
   "objectives": [
    "Comprendre ce qu'est le télétravail et le freelance, et la différence entre les deux",
@@ -2282,7 +2282,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Pourquoi se former et commencer avec Vitako",
-    "minutes": 7
+    "minutes": 8
    }
   ]
  },

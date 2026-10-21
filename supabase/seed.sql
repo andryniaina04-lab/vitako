@@ -114,7 +114,7 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true, false),
   ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true, false),
   ('free-0-f', 'free-0', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 12, true, false),
-  ('free-1-f', 'free-1', 'Comment devenir freelance', 'f', 'Comment devenir freelance', 6, true, true)
+  ('free-1-f', 'free-1', 'Comment devenir freelance', 'f', 'Comment devenir freelance', 10, true, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published, free_preview = excluded.free_preview;
 
@@ -31011,16 +31011,18 @@ La grande différence : le salarié a un seul employeur qui le paie chaque mois.
 
 Devenir freelance ne demande pas d''être génial dès le départ. Mais ça demande trois choses concrètes :
 
-1. **Une compétence** qu''un client est prêt à payer — pas besoin de tout savoir, mais maîtriser un domaine précis.
-2. **Un accès à Internet** — une connexion stable suffit pour la plupart des métiers.
-3. **De la régularité** — respecter les délais, répondre aux messages, livrer ce qui a été promis.
+1. **Une compétence** qu''un client est prêt à payer : pas besoin de tout savoir, mais maîtriser un domaine précis.
+2. **Un accès à Internet** : une connexion stable suffit pour la plupart des métiers.
+3. **De la régularité** : respecter les délais, répondre aux messages, livrer ce qui a été promis.
 
 C''est tout. Pas de diplôme obligatoire. Pas de visa. Pas de bureau.
 
-> [!exemple] Voici deux exemples réels
-> **Haingo, 24 ans, Antananarivo.** Elle s''est formée en rédaction web pendant 2 mois. Aujourd''hui elle écrit des articles pour trois boutiques en ligne françaises. Elle travaille 4 heures par matin, depuis son appartement, et gagne l''équivalent de 400 000 Ar par mois.
+> [!exemple] Le parcours d''Andry, fondateur de Vitako
+> **Andry** est graphiste freelance et entrepreneur dans le digital. Il a commencé comme beaucoup : une compétence, une connexion, et la volonté de travailler autrement.
 >
-> **Tojo, 29 ans, Fianarantsoa.** Il a appris à monter des vidéos en regardant des tutoriels, puis en suivant une formation complète. Il a un client régulier en France et deux boutiques à Madagascar. Il gagne entre 600 000 et 900 000 Ar par mois selon le mois.
+> En 2022, il décroche son premier client en local, à Madagascar, avec un salaire de **1 400 000 Ar par mois**. La même année, il signe un deuxième client qui lui paie **2 500 000 Ar par mois**. En début 2025, il remporte un contrat de **900 euros par mois** (plus de 4 200 000 Ar) avec un client étranger.
+>
+> Pas de bureau. Pas de transport. Pas de patron. Juste une compétence, des clients et de la régularité. C''est pour partager ce chemin qu''il a créé Vitako.
 
 ## Les idées reçues les plus courantes
 
@@ -31071,7 +31073,7 @@ Il n''y a pas de profil type. Des personnes de tous les âges, toutes les villes
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 0, 'Quelle est la différence principale entre un salarié en télétravail et un freelance ?', '["Le salarié a un seul employeur, le freelance choisit ses clients","Il n''y a aucune différence","Le freelance doit aller au bureau parfois","Le salarié peut refuser des missions"]'::jsonb, 0);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 1, 'Pour devenir freelance à distance, quel est le prérequis le plus important ?', '["Parler anglais couramment","Avoir un diplôme universitaire","Habiter dans un pays étranger","Maîtriser une compétence que des clients sont prêts à payer"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 2, 'Laquelle de ces idées reçues est fausse ?', '["Internet suffit pour commencer","On peut travailler en ligne depuis Madagascar","Des clients francophones existent","Le travail en ligne est réservé aux informaticiens"]'::jsonb, 3);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 1, 'Les avantages de la liberté', 'Liberté d''horaire, de lieu, de clients, de revenus. Fini les transports, les réunions inutiles, le chef. Les vraies responsabilités qui viennent avec.', 'Imaginez une matinée sans embouteillage sur la RN1. Pas de bus bondé. Pas de chef qui surveille l''heure d''arrivée. Pas de réunion inutile. C''est ce que vivent chaque jour des milliers de freelances à Madagascar. Ce module explique les vrais avantages du travail en ligne — et les vraies responsabilités qui viennent avec.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 1, 'Les avantages de la liberté', 'Liberté d''horaire, de lieu, de clients, de revenus. Fini les transports, les réunions inutiles, le chef. Les vraies responsabilités qui viennent avec.', 'Imaginez une matinée sans embouteillage sur la RN1. Pas de bus bondé. Pas de chef qui surveille l''heure d''arrivée. Pas de réunion inutile. C''est ce que vivent chaque jour des milliers de freelances à Madagascar. Ce module explique les vrais avantages du travail en ligne, et les vraies responsabilités qui viennent avec.
 
 > [!objectifs] Objectifs du module
 > 1. Identifier les avantages concrets du travail en ligne par rapport au travail au bureau.
@@ -31080,7 +31082,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 ## Plus de transport, plus de temps perdu
 
-À Antananarivo, un trajet domicile-bureau prend souvent 45 minutes à 2 heures dans chaque sens. C''est 1 à 4 heures perdues chaque jour — dans les embouteillages, sous la pluie, dans un bus sans place assise.
+À Antananarivo, un trajet domicile-bureau prend souvent 45 minutes à 2 heures dans chaque sens. C''est 1 à 4 heures perdues chaque jour : embouteillages, pluie, bus sans place assise.
 
 En freelance, vous travaillez depuis chez vous. Ou depuis un café. Ou depuis Toliara, Mahajanga ou Antsirabe. La ville ne compte plus. Le temps de transport tombe à zéro.
 
@@ -31092,23 +31094,23 @@ titre: Ce que représente le transport au bureau
 2 mois : de temps de vie gagnés chaque année en travaillant depuis chez soi
 ```
 
-> [!exemple] La journée de Miora avant et après
-> **Avant (bureau) :** Réveil à 5h30. Bus à 6h. Arrive au bureau à 8h. Réunion de 30 minutes sans résultat concret. Déjeuner en vitesse. Bus à 17h30, rentre à 19h. Souper, dodo, recommencer.
+> [!exemple] La journée d''Andry, graphiste freelance
+> **Avant (bureau) :** Réveil à 5h30. Bus à 6h. Arrivée au bureau à 8h. Réunion de 30 minutes sans résultat concret. Déjeuner en vitesse. Bus à 17h30, retour à 19h. Souper, dodo, recommencer.
 >
-> **Après (freelance) :** Réveil à 7h. Café. Travail de 8h à 12h en profondeur, sans interruption. Déjeuner calme. Réponse aux clients. Fin à 16h. Temps libre pour sa famille, son projet personnel, ses formations.
+> **Après (freelance) :** Réveil à 7h. Café. Travail de 8h à 12h en profondeur, sans interruption. Déjeuner calme. Réponse aux clients. Fin à 16h. Temps libre pour créer, se former, développer de nouveaux projets.
 
 ## La liberté de choisir ses horaires
 
 En freelance, vous fixez vos heures de travail. Vous pouvez travailler le matin si vous êtes plus productif le matin. Le soir si vous préférez. Vous pouvez vous reposer un mercredi et rattraper le samedi.
 
-La seule contrainte : **respecter les délais convenus avec vos clients**. Si vous avez promis une vidéo pour vendredi, elle doit être livrée vendredi. Mais vous choisissez de la monter le lundi, ou le jeudi nuit — c''est votre affaire.
+La seule contrainte : **respecter les délais convenus avec vos clients**. Si vous avez promis une vidéo pour vendredi, elle doit être livrée vendredi. Mais vous choisissez de la monter le lundi, ou le jeudi nuit : c''est votre affaire.
 
 > [!astuce] Les horaires décalés, un avantage
 > Si vos clients sont en France, ils commencent à 9h heure française (11h ou 12h à Madagascar selon la saison). Vous pouvez travailler serenement le matin, répondre à leurs messages en fin de matinée, et avoir votre après-midi libre.
 
 ## La liberté de choisir où travailler
 
-Un bureau, une table, une chaise et une connexion — c''est tout ce qu''il faut. Beaucoup de freelances travaillent :
+Un bureau, une table, une chaise et une connexion : c''est tout ce qu''il faut. Beaucoup de freelances travaillent :
 
 - Depuis leur salon ou leur chambre
 - Dans un cybercafé ou un espace de coworking
@@ -31122,12 +31124,12 @@ Vous n''avez pas à demander de congé pour vous déplacer. Vous emportez votre 
 Au bureau, vous n''avez pas le choix : vous travaillez pour l''entreprise qui vous emploie, avec les collègues qu''on vous donne, sur les projets qu''on vous impose.
 
 En freelance, vous choisissez :
-1. Les clients avec qui vous travaillez — et vous pouvez refuser ceux qui vous traitent mal.
-2. Les projets que vous acceptez — selon votre intérêt, votre disponibilité et vos valeurs.
+1. Les clients avec qui vous travaillez : vous pouvez refuser ceux qui vous traitent mal.
+2. Les projets que vous acceptez : selon votre intérêt, votre disponibilité et vos valeurs.
 3. Le nombre d''heures que vous consacrez à chaque client.
 
 > [!exemple] Refuser un client, c''est possible
-> Hery travaille avec trois clients réguliers. Un nouveau client le contacte en lui demandant de travailler vite, pour peu, avec beaucoup de corrections. Hery explique ses conditions. Le client refuse. Hery dit non et passe à autre chose. Au bureau, il n''aurait pas eu ce choix.
+> Andry travaille avec plusieurs clients réguliers. Un nouveau contact lui demande de livrer vite, pour un budget insuffisant, avec des corrections illimitées. Andry explique ses conditions. Le client refuse. Andry dit non et passe à autre chose. Au bureau, il n''aurait pas eu ce choix.
 
 ## La liberté de faire évoluer ses revenus
 
@@ -31155,7 +31157,7 @@ Collègues et manager présents | Vous travaillez souvent seul
 ```
 
 > [!attention] Le piège de la procrastination
-> La liberté d''horaire est un avantage — et un danger. Sans structure, certains freelances repoussent le travail, passent leurs journées sur les réseaux sociaux et peinent à livrer à temps. La discipline personnelle remplace le contrôle du chef. C''est ce qui fait la différence entre un freelance qui réussit et un freelance qui abandonne.
+> La liberté d''horaire est un avantage, et aussi un danger. Sans structure, certains freelances repoussent le travail, passent leurs journées sur les réseaux sociaux et peinent à livrer à temps. La discipline personnelle remplace le contrôle du chef. C''est ce qui fait la différence entre un freelance qui réussit et un freelance qui abandonne.
 
 ## Est-ce que ce mode de vie vous convient ?
 
@@ -31190,7 +31192,7 @@ Si vous avez répondu oui à la plupart de ces questions, le freelance est fait 
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 0, 'Quel avantage majeur du freelance par rapport au travail au bureau à Antananarivo ?', '["Pas de transport : on travaille depuis chez soi ou un café","On n''a jamais de délais à respecter","On ne travaille jamais le week-end","Les clients paient toujours à l''avance"]'::jsonb, 0);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 1, 'Quelle responsabilité accompagne la liberté du freelance ?', '["Se gérer soi-même : trouver ses clients, respecter les délais, gérer ses revenus","Avoir un bureau loué","Payer plus d''impôts qu''un salarié","Travailler obligatoirement la nuit"]'::jsonb, 0);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 2, 'Un freelance peut-il choisir ses horaires de travail ?', '["Non, il doit travailler de 8h à 17h","Oui, dans la limite des délais convenus avec ses clients","Non, ses clients imposent tout","Seulement le week-end"]'::jsonb, 1);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 2, 'Les métiers du travail en ligne', 'Tour d''horizon des métiers accessibles : design, rédaction, développement, marketing, assistance, data, traduction, et plus encore. Ce que chacun demande.', 'Le travail en ligne n''est pas réservé aux développeurs qui écrivent du code. Il existe des dizaines de métiers accessibles depuis Madagascar, avec des niveaux d''entrée très différents. Ce module vous en présente les principales familles — avec ce que chacune demande et ce qu''elle peut rapporter.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 2, 'Les métiers du travail en ligne', 'Tour d''horizon des métiers accessibles : design, rédaction, développement, marketing, assistance, data, traduction, et plus encore. Ce que chacun demande.', 'Le travail en ligne n''est pas réservé aux développeurs qui écrivent du code. Il existe des dizaines de métiers accessibles depuis Madagascar, avec des niveaux d''entrée très différents. Ce module vous en présente les principales familles : ce que chacune demande et ce qu''elle peut rapporter.
 
 > [!objectifs] Objectifs du module
 > 1. Connaître les grandes familles de métiers du travail en ligne.
@@ -31208,8 +31210,8 @@ Ces métiers consistent à créer des images, des vidéos, des animations ou des
 | **Motion designer** | Animations de textes, logos animés, effets visuels | After Effects, DaVinci Fusion |
 | **Illustrateur** | Dessins numériques, illustrations pour livres, sites, BD | Procreate, Krita |
 
-> [!exemple] Un graphiste à Antsirabe
-> Volatiana a appris Canva en 3 semaines. Elle crée des posts Instagram pour des boutiques françaises. Elle facture 15 à 30 euros par visuel. En travaillant 4 heures par jour, elle gagne l''équivalent de 500 000 Ar par mois — tout depuis son appartement.
+> [!exemple] Andry, graphiste freelance Senior
+> Andry est graphiste freelance et fondateur de Vitako, entrepreneur dans le digital. Il a commencé par maîtriser les outils du design, puis a décroché ses premiers clients locaux à Madagascar. En 2022, son premier client lui paie **1 400 000 Ar par mois**. La même année, un deuxième client lui en paie **2 500 000**. En 2025, un contrat étranger lui rapporte **900 euros par mois** (plus de 4 200 000 Ar). Tout depuis son espace de travail, sans transport, sans bureau fixe.
 
 ## Les métiers de l''écriture et du contenu
 
@@ -31304,7 +31306,7 @@ Les revenus possibles au départ | De 30 000 Ar (opérateur de saisie) à 500 00
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 0, 'Lequel de ces métiers peut se faire entièrement à distance ?', '["Chauffeur de taxi","Cuisinier","Maçon","Community manager"]'::jsonb, 3);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 1, 'Quel métier numérique ne nécessite pas de coder ?', '["Administrateur serveur","Ingénieur réseau","Rédacteur web","Développeur back-end"]'::jsonb, 2);
 insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 2, 'Pour commencer à travailler en ligne, quelle approche est la plus réaliste ?', '["Proposer tous les services possibles dès le départ","Attendre d''avoir 10 ans d''expérience","Créer une entreprise d''abord","Choisir un seul métier, se former sérieusement et chercher ses premiers clients"]'::jsonb, 3);
-insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 3, 'Ce qu''on peut gagner : salaires et comparaisons', 'Revenus réels des freelances débutants et confirmés. Comparaison avec les salaires à Madagascar. Ce que ça représente en ariary. Les plateformes où ces revenus sont possibles.', 'Combien peut-on vraiment gagner avec le travail en ligne depuis Madagascar ? Cette question mérite une réponse honnête, avec de vrais chiffres — pas des promesses exagérées, pas non plus une prudence inutile. Ce module compare les revenus du travail en ligne avec les salaires locaux, pour que vous puissiez évaluer ce que ça représente concrètement.
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 3, 'Ce qu''on peut gagner : salaires et comparaisons', 'Revenus réels des freelances débutants et confirmés. Comparaison avec les salaires à Madagascar. Ce que ça représente en ariary. Les plateformes où ces revenus sont possibles.', 'Combien peut-on vraiment gagner avec le travail en ligne depuis Madagascar ? Cette question mérite une réponse honnête, avec de vrais chiffres : pas de promesses exagérées, mais pas de fausse prudence non plus. Ce module compare les revenus du travail en ligne avec les salaires locaux, pour que vous puissiez évaluer ce que ça représente concrètement.
 
 > [!objectifs] Objectifs du module
 > 1. Connaître les revenus réels des freelances débutants et confirmés.
@@ -31369,14 +31371,14 @@ Voici ce que ces revenus représentent par rapport aux salaires locaux :
 | 800 € par mois (4 000 000 Ar) | Salaire d''un directeur dans une PME |
 | 1 500 € par mois (7 500 000 Ar) | Exceptionnel, mais atteint par des freelances confirmés |
 
-> [!exemple] L''histoire de Fara
-> Fara, 26 ans, était secrétaire dans une société à Antsirabe et gagnait 450 000 Ar par mois. Elle a suivi une formation de rédactrice web pendant 3 mois. Six mois plus tard, elle avait 4 clients réguliers et gagnait 1 200 000 Ar par mois — presque 3 fois son ancien salaire, sans quitter sa ville, sans transport, avec des horaires qu''elle choisissait elle-même.
+> [!exemple] La progression d''Andry, fondateur de Vitako
+> Andry est graphiste freelance et entrepreneur web Senior dans le digital. Il raconte lui-même sa progression : premier client local en 2022 à **1 400 000 Ar par mois**, puis un deuxième client la même année à **2 500 000 Ar par mois**, et en début 2025 un contrat étranger à **900 euros par mois** (plus de 4 200 000 Ar). En moins de 3 ans, ses revenus ont été multipliés par 3. Sans changer de ville. Sans transport quotidien. C''est cette réalité qu''il a voulu rendre accessible à d''autres jeunes Malgaches en créant Vitako.
 
 ## Pourquoi l''écart est si grand ?
 
 Les clients étrangers (France, Belgique, Canada, Suisse) paient aux tarifs de leur marché. Un article de blog « bas de gamme » en France vaut 30 à 50 euros. C''est presque l''équivalent d''une semaine de salaire minimum à Madagascar.
 
-Ce n''est pas de l''exploitation : le client paie un prix normal pour lui, et vous recevez un revenu exceptionnel pour vous. C''est ce qu''on appelle **l''arbitrage géographique** — et c''est l''un des grands avantages du travail en ligne pour les pays à faible coût de la vie.
+Ce n''est pas de l''exploitation : le client paie un prix normal pour lui, et vous recevez un revenu exceptionnel pour vous. C''est ce qu''on appelle **l''arbitrage géographique** : l''un des grands avantages du travail en ligne pour les pays à faible coût de la vie.
 
 > [!astuce] Les revenus augmentent avec l''expérience
 > Un graphiste débutant à 30 euros le logo peut passer à 80 euros après 6 mois, puis à 150 euros après un an, à mesure que son portfolio grandit et que sa réputation s''établit. Les freelances confirmés qui ont investi dans leur formation et leur portfolio gagnent souvent 3 à 5 fois plus que leurs débuts.
@@ -31385,7 +31387,7 @@ Ce n''est pas de l''exploitation : le client paie un prix normal pour lui, et vo
 
 Pour rester honnête, voici aussi ce que le travail en ligne ne garantit pas :
 
-1. **Les revenus ne sont pas réguliers au début.** Le premier mois, vous gagnez peut-être 50 000 Ar. Le troisième, 300 000. Le sixième, 800 000. C''est normal — il faut du temps pour construire sa clientèle.
+1. **Les revenus ne sont pas réguliers au début.** Le premier mois, vous gagnez peut-être 50 000 Ar. Le troisième, 300 000. Le sixième, 800 000. C''est normal : il faut du temps pour construire sa clientèle.
 2. **Il faut du temps pour trouver ses premiers clients.** Sans formation, sans portfolio, sans profil soigné, les premières missions ne viennent pas.
 3. **La concurrence existe.** Des freelances du monde entier proposent les mêmes services. La formation et la qualité font la différence.
 
@@ -31393,7 +31395,7 @@ Pour rester honnête, voici aussi ce que le travail en ligne ne garantit pas :
 > - Le SMIC malgache est d''environ 320 000 Ar. Un graphiste débutant peut gagner 2 à 5 fois plus.
 > - Les revenus dépendent de votre compétence, votre régularité et vos clients.
 > - L''écart de coût de la vie entre Madagascar et l''Europe est un avantage immense pour les freelances malgaches.
-> - Au départ, les revenus sont irréguliers — c''est normal et ça s''améliore avec le temps.
+> - Au départ, les revenus sont irréguliers : c''est normal et ça s''améliore avec le temps.
 
 ## Exercice pratique : mon objectif de revenus
 
@@ -31439,7 +31441,7 @@ Se former sérieusement vous permet de :
 5. **Obtenir une attestation** qui prouve votre niveau à vos futurs clients
 
 > [!astuce] L''attestation, un argument commercial
-> Certains clients demandent si vous avez une formation ou un certificat. Avec l''attestation Vitako, vous pouvez répondre « oui » — et la partager par son numéro vérifiable en ligne. C''est une preuve que vous avez appris sérieusement.
+> Certains clients demandent si vous avez une formation ou un certificat. Avec l''attestation Vitako, vous pouvez répondre « oui » et la partager par son numéro vérifiable en ligne. C''est une preuve que vous avez appris sérieusement.
 
 ## Vitako : des formations pour chaque métier du travail en ligne
 
@@ -31480,14 +31482,14 @@ Voici comment se passe typiquement le parcours d''un étudiant Vitako :
 4. **Mois 4-6 :** Vous obtenez vos premières missions. Vous gagnez vos premiers revenus. Vous continuez à vous améliorer.
 5. **Après 6 mois :** Vous passez au niveau Avancé, vous augmentez vos tarifs, vous stabilisez vos revenus.
 
-> [!exemple] Le parcours de Tsanta
-> Tsanta, 22 ans, habitait à Toliara. Il n''avait pas d''emploi après son bac. Il a suivi la formation Community manager sur Vitako pendant 6 semaines. Il a passé l''examen, obtenu son attestation, et créé un profil sur ComeUp. 3 semaines après, il avait son premier client : un restaurant à Réunion qui voulait gérer son Facebook. Aujourd''hui, 8 mois plus tard, il a 4 clients réguliers et gagne 1 500 000 Ar par mois.
+> [!exemple] Le parcours d''Andry, fondateur de Vitako
+> Andry est graphiste freelance Senior, entrepreneur web dans le digital. Il a commencé par se former sérieusement au design, puis a décroché ses premiers clients locaux. En 2022 : premier client à **1 400 000 Ar par mois**, puis un deuxième à **2 500 000 Ar**. En 2025 : un contrat étranger à **900 euros par mois** (plus de 4 200 000 Ar). C''est parce qu''il a vécu cette progression de l''intérieur qu''il a créé Vitako : pour que d''autres jeunes Malgaches puissent faire le même chemin, plus vite et avec de vraies bases.
 
 ## Cette formation est gratuite. Et après ?
 
 Cette formation — « Comment devenir freelance » — est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
 
-La suite — les formations complètes par métier, les exercices, les projets, les examens, les attestations — est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
+La suite (les formations complètes par métier, les exercices, les projets, les examens, les attestations) est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
 
 ```schema chiffres
 titre: L''abonnement Vitako
@@ -31500,7 +31502,7 @@ Prix normal : 60 000 Ar par mois
 ```
 
 > [!astuce] Ce que représente l''abonnement
-> 30 000 Ar, c''est moins que 2 semaines de transport à Antananarivo. En vous formant pendant un mois et en obtenant vos premiers clients, vous pouvez récupérer cet investissement dès votre première mission. Un seul logo facturé 35 euros représente 175 000 Ar — soit 5 fois le prix de l''abonnement.
+> 30 000 Ar, c''est moins que 2 semaines de transport à Antananarivo. En vous formant pendant un mois et en obtenant vos premiers clients, vous pouvez récupérer cet investissement dès votre première mission. Un seul logo facturé 35 euros représente 175 000 Ar : soit 5 fois le prix de l''abonnement.
 
 > [!retenir]
 > - La compétence, pas le talent, fait la différence sur les plateformes de freelance.
@@ -85748,5 +85750,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 select public.course_go_live('mkt-0-f', array[0, 1, 3, 4, 5]::int[]);
 
 -- Mises à jour : prévient les abonnés concernés quand le contenu visible change
-select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"3cb011a0acfcf2ec2f794ccf9a1e35f6"},"client-2-a":{"h":"91f1be6c9a3513f4c1e7cc4439f4d5c1"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"9e954523a261ef5246e5b7cbb0b06b1d"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"a5fdaeadd0085bc2c18557b5d493744f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"56ad15f969b91d23d661b55955644d18"},"data-2-f":{"h":"e730e983f8b1f353eb0df1d8d009f83b"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"9969b3d8f8d0e7c7a148e2bb1ef5bcd1"},"design-0-a":{"h":"fdf8fc464b06b5957f5d7a9729a63b0a"},"design-0-f":{"h":"c66790fa488e2404da67bd3fb3ab4eba"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"74ae925d593d986c64900acaf96cab79"},"dev-1-a":{"h":"895b53da046400eae97d904592aed2a2"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"620e55e74ba39d90fcc555e5398b6a64"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"1b53bfae62cd774356fa14eb5fddade6"},"edu-0-a":{"h":"77330575554fac777ca29c61bfb6c87b"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"4aa4a04703ab832f5ca08b13d4dc483b"},"edu-1-f":{"h":"10f713ec6c9f418cd0316fb6594f3af1"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"036486cc1c86a893bf1cb5bd2a02098c"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"free-1-f":{"h":"4b2e3630ac465a17ea4d72f43270350a"},"gestion-0-a":{"h":"9f6b5fd1640f60f498454c4a5b332604"},"gestion-0-f":{"h":"15586519c8cec2e142a95cd535cea5e2"},"gestion-1-a":{"h":"429aa050db46b20faa84feea1ae0587f"},"gestion-1-f":{"h":"3b654285122f3a201aca3187f4558d68"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"f230dec82ca42c2cd9405dbe8cddb81e"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"0f5a0d7a1ab03f5ccd961c928387c27f"},"gestion-4-f":{"h":"02365aaaa57cd1b000fb6d285cd59cd9"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"2e5051143334663b734b97d96b6a3c0e"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"06d9653b2a8d6c4af25488445df62539"},"media-0-f":{"h":"f02c92a54e6e7f1d3b04d4fcb5b7a6bb"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"e00dba45cb70382ac132f4b0a26aa7d1"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"058ff4aeccc60914d8bdec2271d0d1b8"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"77141ef46489aea611b3514255d157c1"},"mkt-2-a":{"h":"b068b5f17035500ad38eb7cea81b0b45"},"mkt-2-f":{"h":"c8e6f1ca2e53916d99953a1465099021"},"mkt-3-a":{"h":"f7a8e234a5cdade0ae839978f4bc4220"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"e1384ab21069eb1661acd68ebf955f34"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
+select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"3cb011a0acfcf2ec2f794ccf9a1e35f6"},"client-2-a":{"h":"91f1be6c9a3513f4c1e7cc4439f4d5c1"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"9e954523a261ef5246e5b7cbb0b06b1d"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"a5fdaeadd0085bc2c18557b5d493744f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"56ad15f969b91d23d661b55955644d18"},"data-2-f":{"h":"e730e983f8b1f353eb0df1d8d009f83b"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"9969b3d8f8d0e7c7a148e2bb1ef5bcd1"},"design-0-a":{"h":"fdf8fc464b06b5957f5d7a9729a63b0a"},"design-0-f":{"h":"c66790fa488e2404da67bd3fb3ab4eba"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"74ae925d593d986c64900acaf96cab79"},"dev-1-a":{"h":"895b53da046400eae97d904592aed2a2"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"620e55e74ba39d90fcc555e5398b6a64"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"1b53bfae62cd774356fa14eb5fddade6"},"edu-0-a":{"h":"77330575554fac777ca29c61bfb6c87b"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"4aa4a04703ab832f5ca08b13d4dc483b"},"edu-1-f":{"h":"10f713ec6c9f418cd0316fb6594f3af1"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"036486cc1c86a893bf1cb5bd2a02098c"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"free-1-f":{"h":"37ac2332fbaa54c6476a90a211a311eb"},"gestion-0-a":{"h":"9f6b5fd1640f60f498454c4a5b332604"},"gestion-0-f":{"h":"15586519c8cec2e142a95cd535cea5e2"},"gestion-1-a":{"h":"429aa050db46b20faa84feea1ae0587f"},"gestion-1-f":{"h":"3b654285122f3a201aca3187f4558d68"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"f230dec82ca42c2cd9405dbe8cddb81e"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"0f5a0d7a1ab03f5ccd961c928387c27f"},"gestion-4-f":{"h":"02365aaaa57cd1b000fb6d285cd59cd9"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"2e5051143334663b734b97d96b6a3c0e"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"06d9653b2a8d6c4af25488445df62539"},"media-0-f":{"h":"f02c92a54e6e7f1d3b04d4fcb5b7a6bb"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"e00dba45cb70382ac132f4b0a26aa7d1"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"058ff4aeccc60914d8bdec2271d0d1b8"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"77141ef46489aea611b3514255d157c1"},"mkt-2-a":{"h":"b068b5f17035500ad38eb7cea81b0b45"},"mkt-2-f":{"h":"c8e6f1ca2e53916d99953a1465099021"},"mkt-3-a":{"h":"f7a8e234a5cdade0ae839978f4bc4220"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"e1384ab21069eb1661acd68ebf955f34"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
 commit;

@@ -25,16 +25,18 @@ La grande différence : le salarié a un seul employeur qui le paie chaque mois.
 
 Devenir freelance ne demande pas d'être génial dès le départ. Mais ça demande trois choses concrètes :
 
-1. **Une compétence** qu'un client est prêt à payer — pas besoin de tout savoir, mais maîtriser un domaine précis.
-2. **Un accès à Internet** — une connexion stable suffit pour la plupart des métiers.
-3. **De la régularité** — respecter les délais, répondre aux messages, livrer ce qui a été promis.
+1. **Une compétence** qu'un client est prêt à payer : pas besoin de tout savoir, mais maîtriser un domaine précis.
+2. **Un accès à Internet** : une connexion stable suffit pour la plupart des métiers.
+3. **De la régularité** : respecter les délais, répondre aux messages, livrer ce qui a été promis.
 
 C'est tout. Pas de diplôme obligatoire. Pas de visa. Pas de bureau.
 
-> [!exemple] Voici deux exemples réels
-> **Haingo, 24 ans, Antananarivo.** Elle s'est formée en rédaction web pendant 2 mois. Aujourd'hui elle écrit des articles pour trois boutiques en ligne françaises. Elle travaille 4 heures par matin, depuis son appartement, et gagne l'équivalent de 400 000 Ar par mois.
+> [!exemple] Le parcours d'Andry, fondateur de Vitako
+> **Andry** est graphiste freelance et entrepreneur dans le digital. Il a commencé comme beaucoup : une compétence, une connexion, et la volonté de travailler autrement.
 >
-> **Tojo, 29 ans, Fianarantsoa.** Il a appris à monter des vidéos en regardant des tutoriels, puis en suivant une formation complète. Il a un client régulier en France et deux boutiques à Madagascar. Il gagne entre 600 000 et 900 000 Ar par mois selon le mois.
+> En 2022, il décroche son premier client en local, à Madagascar, avec un salaire de **1 400 000 Ar par mois**. La même année, il signe un deuxième client qui lui paie **2 500 000 Ar par mois**. En début 2025, il remporte un contrat de **900 euros par mois** (plus de 4 200 000 Ar) avec un client étranger.
+>
+> Pas de bureau. Pas de transport. Pas de patron. Juste une compétence, des clients et de la régularité. C'est pour partager ce chemin qu'il a créé Vitako.
 
 ## Les idées reçues les plus courantes
 

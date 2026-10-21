@@ -29,7 +29,7 @@ Se former sérieusement vous permet de :
 5. **Obtenir une attestation** qui prouve votre niveau à vos futurs clients
 
 > [!astuce] L'attestation, un argument commercial
-> Certains clients demandent si vous avez une formation ou un certificat. Avec l'attestation Vitako, vous pouvez répondre « oui » — et la partager par son numéro vérifiable en ligne. C'est une preuve que vous avez appris sérieusement.
+> Certains clients demandent si vous avez une formation ou un certificat. Avec l'attestation Vitako, vous pouvez répondre « oui » et la partager par son numéro vérifiable en ligne. C'est une preuve que vous avez appris sérieusement.
 
 ## Vitako : des formations pour chaque métier du travail en ligne
 
@@ -70,14 +70,14 @@ Voici comment se passe typiquement le parcours d'un étudiant Vitako :
 4. **Mois 4-6 :** Vous obtenez vos premières missions. Vous gagnez vos premiers revenus. Vous continuez à vous améliorer.
 5. **Après 6 mois :** Vous passez au niveau Avancé, vous augmentez vos tarifs, vous stabilisez vos revenus.
 
-> [!exemple] Le parcours de Tsanta
-> Tsanta, 22 ans, habitait à Toliara. Il n'avait pas d'emploi après son bac. Il a suivi la formation Community manager sur Vitako pendant 6 semaines. Il a passé l'examen, obtenu son attestation, et créé un profil sur ComeUp. 3 semaines après, il avait son premier client : un restaurant à Réunion qui voulait gérer son Facebook. Aujourd'hui, 8 mois plus tard, il a 4 clients réguliers et gagne 1 500 000 Ar par mois.
+> [!exemple] Le parcours d'Andry, fondateur de Vitako
+> Andry est graphiste freelance Senior, entrepreneur web dans le digital. Il a commencé par se former sérieusement au design, puis a décroché ses premiers clients locaux. En 2022 : premier client à **1 400 000 Ar par mois**, puis un deuxième à **2 500 000 Ar**. En 2025 : un contrat étranger à **900 euros par mois** (plus de 4 200 000 Ar). C'est parce qu'il a vécu cette progression de l'intérieur qu'il a créé Vitako : pour que d'autres jeunes Malgaches puissent faire le même chemin, plus vite et avec de vraies bases.
 
 ## Cette formation est gratuite. Et après ?
 
 Cette formation — « Comment devenir freelance » — est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
 
-La suite — les formations complètes par métier, les exercices, les projets, les examens, les attestations — est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
+La suite (les formations complètes par métier, les exercices, les projets, les examens, les attestations) est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
 
 ```schema chiffres
 titre: L'abonnement Vitako
@@ -90,7 +90,7 @@ Prix normal : 60 000 Ar par mois
 ```
 
 > [!astuce] Ce que représente l'abonnement
-> 30 000 Ar, c'est moins que 2 semaines de transport à Antananarivo. En vous formant pendant un mois et en obtenant vos premiers clients, vous pouvez récupérer cet investissement dès votre première mission. Un seul logo facturé 35 euros représente 175 000 Ar — soit 5 fois le prix de l'abonnement.
+> 30 000 Ar, c'est moins que 2 semaines de transport à Antananarivo. En vous formant pendant un mois et en obtenant vos premiers clients, vous pouvez récupérer cet investissement dès votre première mission. Un seul logo facturé 35 euros représente 175 000 Ar : soit 5 fois le prix de l'abonnement.
 
 > [!retenir]
 > - La compétence, pas le talent, fait la différence sur les plateformes de freelance.
