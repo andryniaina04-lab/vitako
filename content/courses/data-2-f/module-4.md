@@ -37,8 +37,8 @@ Avant de saisir la première ligne, lisez toute la consigne et posez vos questio
 > | | Puits | 3 |
 > | | Rivière ou source | 4 |
 > | | Autre | 9 |
-> | Réponse illisible | — | 98 |
-> | Pas de réponse | — | 99 |
+> | Réponse illisible | - | 98 |
+> | Pas de réponse | - | 99 |
 
 ## Étape 2 : préparer le tableau et les documents
 

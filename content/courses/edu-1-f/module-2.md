@@ -46,8 +46,8 @@ Un bon objectif décrit **ce que le participant saura faire**, avec un verbe d'a
 | 0:10 | Pourquoi cette formation ? | Discussion : vos difficultés avec les rapports | Tableau blanc |
 | 0:20 | Les fonctions SOMME et MOYENNE | Démonstration courte | Partage d'écran |
 | 0:30 | Exercice 1 | Pratique individuelle sur un vrai fichier | Fichier d'exercice |
-| 0:50 | Correction et questions | Partage d'écran d'un participant | — |
-| 1:00 | Pause | — | — |
+| 0:50 | Correction et questions | Partage d'écran d'un participant | - |
+| 1:00 | Pause | - | - |
 | 1:05 | Les filtres | Démonstration + exercice en binômes | Salles de sous-groupes |
 | 1:35 | Synthèse | Chaque participant cite un apprentissage | Chat |
 | 1:50 | Évaluation rapide et suite | Quiz de 5 questions, sondage de satisfaction | Formulaire |

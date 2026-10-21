@@ -17,7 +17,7 @@ Un graphiste avancé ne se distingue pas seulement par la beauté de son travail
 | 3 | **Création** | 2 ou 3 pistes, présentées en situation | Une piste |
 | 4 | **Affinage** | Retouches sur la piste choisie | La version finale |
 | 5 | **Déclinaisons** | Charte, supports, modèles | Les supports |
-| 6 | **Livraison** | Fichiers rangés, guide, mot de passation | — |
+| 6 | **Livraison** | Fichiers rangés, guide, mot de passation | - |
 
 **La règle d'or** : on ne passe à la phase suivante **qu'après validation écrite**. Si le client change d'avis sur la direction pendant l'affinage, c'est un changement de projet, à facturer.
 

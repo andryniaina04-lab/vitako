@@ -94,7 +94,7 @@ Au niveau Avancé, vous travaillez avec les outils payants des boutiques sérieu
 | E-mail | 45 € | Oui | 18 % du chiffre d'affaires | Garder |
 | Avis | 15 € | Oui | Conversion des fiches avec avis +20 % | Garder |
 | Fenêtre surgissante | 20 € | Oui | Fonction déjà dans l'outil e-mail | Supprimer |
-| Compte à rebours | 10 € | Non | — | Supprimer |
+| Compte à rebours | 10 € | Non | - | Supprimer |
 
 > [!madagascar]
 > Pour une boutique malgache qui vend en ariary, chaque abonnement en dollars ou en euros pèse lourd. Faites ce tableau chaque trimestre : supprimer 2 ou 3 applications inutiles peut payer une partie de vos honoraires.

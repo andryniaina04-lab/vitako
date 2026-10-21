@@ -12,7 +12,7 @@ Les boutiques qui vendent dans plusieurs pays ont besoin d'un service client en 
 
 > [!exemple] Réponse en anglais
 > Hi Emily,
-> I'm sorry your necklace arrived damaged — that's not the experience we want for you.
+> I'm sorry your necklace arrived damaged - that's not the experience we want for you.
 > I've just sent a replacement at no cost; you'll receive the tracking link within 24 hours. No need to return the damaged one.
 > If there's anything else I can do, just reply to this email.
 > Best, Fanja – Lamba Studio

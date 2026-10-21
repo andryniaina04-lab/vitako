@@ -84,7 +84,7 @@ Ce module vous fait prendre en main les outils gratuits du spécialiste SEO : **
 | Usage | Gratuit | Payant |
 | --- | --- | --- |
 | Idées de mots clés | Google, Ubersuggest limité | Semrush, Ahrefs |
-| Données réelles du site | Search Console | — (Search Console reste la référence) |
+| Données réelles du site | Search Console | - (Search Console reste la référence) |
 | Analyse des concurrents | Très limitée | Semrush, Ahrefs |
 | Liens entrants | Search Console (pour votre site) | Ahrefs, Semrush (pour tous les sites) |
 | Audit technique | Manuel ou limité | Automatique et complet |

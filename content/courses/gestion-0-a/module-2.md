@@ -45,7 +45,7 @@ Au niveau Fondamentaux, vous avez créé un tableau de tâches. Au niveau avanc�
 | **Tâches** | Statut, priorité, échéance, temps passé, responsable | Projets, Contacts |
 | **Projets** | Objectif, date de début et de fin, avancement | Tâches |
 | **Contacts** | Nom, entreprise, rôle, coordonnées, dernière interaction | Tâches |
-| **Procédures** | Étapes, outil, fréquence, dernière mise à jour | — |
+| **Procédures** | Étapes, outil, fréquence, dernière mise à jour | - |
 
 ### Les fonctions avancées
 

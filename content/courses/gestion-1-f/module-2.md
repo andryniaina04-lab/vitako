@@ -94,7 +94,7 @@ Chaque promotion a une **date de début**, une **date de fin** et des **conditio
 | Indicateur | Calcul | Ce qu'il dit |
 | --- | --- | --- |
 | **Chiffre d'affaires** | Somme des ventes | Combien la boutique vend |
-| **Nombre de commandes** | — | L'activité |
+| **Nombre de commandes** | - | L'activité |
 | **Panier moyen** | Chiffre d'affaires ÷ nombre de commandes | Combien dépense un client en moyenne |
 | **Taux de conversion** | Commandes ÷ visites × 100 | La part des visiteurs qui achètent |
 | **Taux d'abandon de panier** | Paniers abandonnés ÷ paniers créés × 100 | La part des clients qui partent avant de payer |

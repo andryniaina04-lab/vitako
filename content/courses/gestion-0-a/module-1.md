@@ -45,9 +45,9 @@ Une offre spécialisée décrit **le résultat**, pas seulement les heures.
 > | Heures par mois | 20 h | 40 h | 60 h |
 > | Agenda et rendez-vous | Oui | Oui | Oui |
 > | E-mails et messages des clients | Oui | Oui | Oui |
-> | Gestion de la plateforme de cours (inscriptions, accès) | — | Oui | Oui |
-> | Newsletter hebdomadaire | — | Oui | Oui |
-> | Organisation d'un lancement (pages, e-mails, calendrier, webinaire) | — | — | Oui |
+> | Gestion de la plateforme de cours (inscriptions, accès) | - | Oui | Oui |
+> | Newsletter hebdomadaire | - | Oui | Oui |
+> | Organisation d'un lancement (pages, e-mails, calendrier, webinaire) | - | - | Oui |
 > | Point de suivi | Toutes les 2 semaines | Chaque semaine | 2 fois par semaine |
 
 Calculez le prix de chaque forfait à partir de votre prix horaire (Fondamentaux, module 5), puis **ajoutez la valeur de votre spécialité** : un assistant qui sait déjà gérer une plateforme de cours fait gagner des semaines au client.

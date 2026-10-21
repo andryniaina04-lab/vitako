@@ -18,7 +18,7 @@ Les marques d'Europe, d'Amérique du Nord et d'Afrique achètent des vidéos UGC
 | **Sous-titres soignés** | Beaucoup de vidéos sont regardées sans le son |
 
 > [!exemple] Script court en anglais
-> « I've been using this hair oil for three weeks — and my ends finally feel soft again. I just warm two drops in my hands and apply it before bed. It's made in Madagascar with plant oils, and a little goes a long way. Link below if you want to try it. »
+> « I've been using this hair oil for three weeks - and my ends finally feel soft again. I just warm two drops in my hands and apply it before bed. It's made in Madagascar with plant oils, and a little goes a long way. Link below if you want to try it. »
 
 ## Les règles de publicité selon les régions
 

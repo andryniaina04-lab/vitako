@@ -11,13 +11,13 @@ Les boutiques, créateurs et entreprises d'Europe, d'Amérique du Nord et d'Afri
 ## Écrire en anglais
 
 > [!exemple] E-mail de bienvenue en anglais
-> **Subject**: Welcome to Raphia & Co — here's 10% off your first order
+> **Subject**: Welcome to Raphia & Co - here's 10% off your first order
 > **Preview text**: Handwoven in Madagascar, made to last.
 > Hi Sarah,
 > Thanks for joining us! Every bag we sell is handwoven by artisans in Madagascar using natural raffia.
 > As a welcome gift, here's 10% off your first order: **WELCOME10** (valid for 7 days).
 > [Shop the collection]
-> Have a question? Just reply to this email — a real person will answer.
+> Have a question? Just reply to this email - a real person will answer.
 
 ### Les différences de style
 

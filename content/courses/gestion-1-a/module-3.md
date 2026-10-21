@@ -96,11 +96,11 @@ Procédure : traiter un retour produit
 | Indicateur | Semaine | Semaine précédente | Variation | Commentaire |
 | --- | --- | --- | --- | --- |
 | Chiffre d'affaires | 4 200 € | 3 800 € | +11 % | E-mail du jeudi |
-| Commandes | 92 | 85 | +8 % | — |
+| Commandes | 92 | 85 | +8 % | - |
 | Taux de conversion | 2,1 % | 1,9 % | +0,2 point | Nouvelle fiche produit |
-| Panier moyen | 45,7 € | 44,7 € | +2 % | — |
-| Ruptures | 1 produit | 3 produits | — | Commande passée |
-| Retours | 3 | 2 | — | Motif : taille |
+| Panier moyen | 45,7 € | 44,7 € | +2 % | - |
+| Ruptures | 1 produit | 3 produits | - | Commande passée |
+| Retours | 3 | 2 | - | Motif : taille |
 
 > [!retenir]
 > - Améliorez chaque étape du parcours ; testez seulement avec assez de trafic.

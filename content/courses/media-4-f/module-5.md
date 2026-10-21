@@ -48,7 +48,7 @@ Le tarif le plus courant est **à la minute de vidéo**, qui varie selon le type
 | Sous-titres dans la même langue (transcription, repérage) | 10 min | 2 000 Ar |
 | Sous-titres traduits (à partir d'un fichier modèle) | 8 min | 1 600 Ar |
 | Sous-titres traduits complets (transcription, repérage, traduction) | 15 min | 3 000 Ar |
-| Incrustation et version courte verticale | Forfait selon la durée | — |
+| Incrustation et version courte verticale | Forfait selon la durée | - |
 
 *(Temps et prix donnés en exemple. Mesurez les vôtres. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
 

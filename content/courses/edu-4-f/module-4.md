@@ -76,7 +76,7 @@ Règles : des critères **liés au poste**, sans discrimination (âge, sexe, rel
 | --- | --- | --- | --- | --- |
 | A | Entretien | 18 avril 9 h | Retenue | Oui, le 22 avril |
 | B | Entretien | 18 avril 10 h 30 | Non retenue | Oui, le 22 avril |
-| D | Non présélectionné | — | — | Oui, le 16 avril |
+| D | Non présélectionné | - | - | Oui, le 16 avril |
 
 > [!astuce]
 > Envoyez une **réponse à chaque candidat**, même non retenu, avec un message poli. C'est une question de respect, et cela protège l'image de l'entreprise.

@@ -26,11 +26,11 @@ Les cabinets comptables étrangers et les organisations internationales offrent 
 
 | Tâche | Aide-comptable (vous) | Collaborateur ou chef de mission | Expert-comptable |
 | --- | --- | --- | --- |
-| Saisie, rapprochements, lettrage | Réalise | Contrôle | — |
-| Contrôles de cohérence | Réalise et explique | Vérifie | — |
+| Saisie, rapprochements, lettrage | Réalise | Contrôle | - |
+| Contrôles de cohérence | Réalise et explique | Vérifie | - |
 | Écritures d'inventaire | Prépare | Valide | Supervise |
 | Déclarations fiscales | Peut préparer les données | Établit | Supervise et signe selon les règles |
-| Comptes annuels | — | Prépare | Signe et engage sa responsabilité |
+| Comptes annuels | - | Prépare | Signe et engage sa responsabilité |
 | Conseil au client | Transmet les questions | Répond | Conseille |
 
 ### Les bonnes pratiques

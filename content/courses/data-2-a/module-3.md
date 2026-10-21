@@ -61,7 +61,7 @@ Toute correction de données doit être **traçable** : on doit pouvoir savoir q
 | --- | --- | --- | --- | --- | --- | --- |
 | 14/03 | Q0127 | Âge | 250 | 25 | Erreur de saisie, vérifiée sur le document | HR |
 | 14/03 | Q0188 | Commune | Ambohidratrimo | Ambohidratrimo | Espace en trop supprimé | HR |
-| 15/03 | Q0213 | Enfants | 7 | — | Incohérent avec 4 personnes ; document illisible ; signalé au client | HR |
+| 15/03 | Q0213 | Enfants | 7 | - | Incohérent avec 4 personnes ; document illisible ; signalé au client | HR |
 
 > [!attention]
 > Ne corrigez **jamais** une donnée d'enquête ou une donnée comptable « parce qu'elle semble fausse » sans source. Si le document ne permet pas de trancher, **signalez** au client au lieu de deviner.

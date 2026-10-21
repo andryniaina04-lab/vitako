@@ -29,8 +29,8 @@ Ce module vous donne les bases communes à tous les outils no-code : décrire un
 
 | Table | Champs | Relation |
 | --- | --- | --- |
-| **Produits** | Nom, prix, photo, disponible (oui ou non), catégorie | — |
-| **Clients** | Nom, téléphone, e-mail | — |
+| **Produits** | Nom, prix, photo, disponible (oui ou non), catégorie | - |
+| **Clients** | Nom, téléphone, e-mail | - |
 | **Commandes** | Client, date, heure de retrait, statut, total | Liée à un client |
 | **Lignes de commande** | Commande, produit, quantité, prix | Liée à une commande et à un produit |
 

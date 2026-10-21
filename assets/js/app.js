@@ -1913,7 +1913,7 @@ function usersTable() {
   const st = (u) => { const s = userState(u);
     return s === 'active' ? `<span class="pill">Abonné</span> <small class="muted">jusqu'au ${fmtDate(u.sub_end)}</small>`
       : s === 'expired' ? `<span class="pill red">Terminé</span> <small class="muted">le ${fmtDate(u.sub_end)}</small>` : '<span class="pill grey">Jamais abonné</span>'; };
-  const certs = (u) => { const c = u.certs || []; if (!c.length) return '<span class="muted">—</span>';
+  const certs = (u) => { const c = u.certs || []; if (!c.length) return '<span class="muted">-</span>';
     return `<details class="us-certs"><summary>${c.length} attestation${c.length > 1 ? 's' : ''}</summary><ul>${c.map((x) => `<li><a href="#/attestation/${esc(x.id)}">${esc(x.title)}</a>${x.kind === 'job' ? ' <span class="pill">Parcours complet</span>' : x.score != null ? ` <small class="muted">${x.score}/100</small>` : ''} <small class="muted">· ${fmtD(x.issued_at)}</small></li>`).join('')}</ul></details>`; };
   return `<div class="count">${list.length} personne${list.length > 1 ? 's' : ''}</div>
   ${list.length ? `<div class="tbl"><table class="us-tbl"><thead><tr><th>Inscrit le</th><th>Nom</th><th>E-mail</th><th>Type</th><th>Abonnement</th><th>Attestations</th></tr></thead><tbody>

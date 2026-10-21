@@ -13,7 +13,7 @@ La prospection internationale ouvre de grands marchés, mais chaque pays a ses r
 > [!exemple] Premier e-mail en anglais
 > **Subject**: Direct bookings at Seaview Lodge
 > Hi Emma,
-> I noticed Seaview Lodge added 6 new rooms this year — congratulations. Right now, guests can only book by phone or email, and many travelers book late in the evening, when they can confirm instantly elsewhere.
+> I noticed Seaview Lodge added 6 new rooms this year - congratulations. Right now, guests can only book by phone or email, and many travelers book late in the evening, when they can confirm instantly elsewhere.
 > Ravinala Web builds booking websites for small hotels in the Indian Ocean, connected to the platforms you already use.
 > Would it be worth a quick 15-minute call next week?
 > Best,
@@ -34,7 +34,7 @@ La prospection internationale ouvre de grands marchés, mais chaque pays a ses r
 
 | Étape | Exemple |
 | --- | --- |
-| **Ouverture** | "Hi Emma, this is Fara from Ravinala Web. I know I'm calling out of the blue — do you have 30 seconds?" |
+| **Ouverture** | "Hi Emma, this is Fara from Ravinala Web. I know I'm calling out of the blue - do you have 30 seconds?" |
 | **Raison** | "We help small hotels get more direct bookings online." |
 | **Question** | "How do most of your guests book today?" |
 | **Proposition** | "Would it make sense to look at how a similar lodge doubled its direct bookings?" |

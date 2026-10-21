@@ -47,7 +47,7 @@ Dans ce module, vous traitez un mois complet de comptabilité pour une petite en
 | Compte | Solde du relevé | Solde comptable | Écart | Explication |
 | --- | --- | --- | --- | --- |
 | Banque | 8 420 000 Ar | 8 120 000 Ar | 300 000 Ar | Chèque n° 4127 émis le 30/03, pas encore encaissé |
-| MVola | 1 245 000 Ar | 1 245 000 Ar | 0 | — |
+| MVola | 1 245 000 Ar | 1 245 000 Ar | 0 | - |
 | Orange Money | 380 000 Ar | 392 500 Ar | −12 500 Ar | Frais de retrait non saisis : à enregistrer |
 
 ## Étape 4 : suivre les impayés et préparer les relances
@@ -58,7 +58,7 @@ Dans ce module, vous traitez un mois complet de comptabilité pour une petite en
 | --- | --- | --- | --- | --- | --- |
 | Soa Distribution | F2026-031 | 1 800 000 Ar | 28/02 | 32 jours | 2e relance |
 | Port Logistique | F2026-044 | 650 000 Ar | 15/03 | 17 jours | 1re relance |
-| Épicerie Mirana | F2026-052 | 220 000 Ar | 10/04 | — | À surveiller |
+| Épicerie Mirana | F2026-052 | 220 000 Ar | 10/04 | - | À surveiller |
 
 > [!exemple] Message de première relance (à valider par le client)
 > « Bonjour, sauf erreur de notre part, la facture F2026-044 du 15 février, d'un montant de 650 000 Ar, arrivée à échéance le 15 mars, reste impayée. Pourriez-vous nous indiquer la date de règlement prévue ? Si le paiement a déjà été effectué, merci de ne pas tenir compte de ce message et de nous transmettre la référence. Cordialement. »

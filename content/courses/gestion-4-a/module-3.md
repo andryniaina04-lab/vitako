@@ -83,9 +83,9 @@ Un dossier comptable de qualité se reconnaît à ce que le réviseur n'a presqu
 
 | Dossier | Pièces reçues | Saisie | Rapprochement | Contrôles | Envoyé | Retards |
 | --- | --- | --- | --- | --- | --- | --- |
-| Taxi Be Express | 05/04 | ✓ | ✓ | En cours | — | 2 pièces |
-| ONG Rano | 03/04 | ✓ | ✓ | ✓ | 08/04 | — |
-| Épicerie Mirana | En attente | — | — | — | — | Relance le 06/04 |
+| Taxi Be Express | 05/04 | ✓ | ✓ | En cours | - | 2 pièces |
+| ONG Rano | 03/04 | ✓ | ✓ | ✓ | 08/04 | - |
+| Épicerie Mirana | En attente | - | - | - | - | Relance le 06/04 |
 
 ### Les règles
 

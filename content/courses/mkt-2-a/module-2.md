@@ -34,9 +34,9 @@ Au niveau Avancé, vous travaillez avec les outils payants que les agences et le
 
 | Mot clé | Concurrent A | Concurrent B | Site | Action |
 | --- | --- | --- | --- | --- |
-| circuit nord madagascar 10 jours | 4 | 7 | — | Créer une page circuit |
+| circuit nord madagascar 10 jours | 4 | 7 | - | Créer une page circuit |
 | meilleure période madagascar | 2 | 5 | 38 | Améliorer l'article existant |
-| vol paris nosy be | 6 | — | — | Article d'information + lien vers les circuits |
+| vol paris nosy be | 6 | - | - | Article d'information + lien vers les circuits |
 
 ## Analyser un profil de liens
 

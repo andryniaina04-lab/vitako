@@ -84,9 +84,9 @@ Les annonceurs testent souvent **plusieurs versions** d'une même publicité pou
 > | | **Montage** | **Montage + extraits** | **Partenaire de chaîne** |
 > | --- | --- | --- | --- |
 > | Vidéos longues par mois | 4 | 4 | 4 |
-> | Vidéos courtes tirées des longues | — | 12 | 16 |
-> | Analyse de la rétention et recommandations | — | Mensuelle | Après chaque vidéo |
-> | Conseils sur titres et miniatures | — | — | Oui |
+> | Vidéos courtes tirées des longues | - | 12 | 16 |
+> | Analyse de la rétention et recommandations | - | Mensuelle | Après chaque vidéo |
+> | Conseils sur titres et miniatures | - | - | Oui |
 > | Délai par vidéo | 72 h | 72 h | 48 h |
 
 ## Les études de cas avec des chiffres

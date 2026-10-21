@@ -42,7 +42,7 @@ Au niveau Avancé, vous maîtrisez les logiciels comptables payants que les cabi
 | JIRAMA | Électricité et eau | JIRAMA |
 | FRAIS TENUE COMPTE | Frais bancaires | Banque |
 | TELMA ou ORANGE (abonnement) | Télécommunications | Opérateur |
-| VIR SALAIRE | Rémunérations dues (selon la procédure du dossier) | — |
+| VIR SALAIRE | Rémunérations dues (selon la procédure du dossier) | - |
 
 ### Les règles d'or
 

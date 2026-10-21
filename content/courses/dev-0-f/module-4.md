@@ -24,12 +24,12 @@ Dans ce module, vous réalisez un projet complet de développeur front-end : int
 
 | Composant | Où il apparaît | Props |
 | --- | --- | --- |
-| `EnTete` | Toutes les pages | — |
+| `EnTete` | Toutes les pages | - |
 | `Hero` | Accueil | `titre`, `image` |
 | `CarteChambre` | Liste des chambres | `nom`, `prix`, `capacite`, `photo` |
 | `FiltreChambres` | Liste des chambres | `valeur`, `onChange` |
-| `FormulaireReservation` | Page réservation | — |
-| `PiedDePage` | Toutes les pages | — |
+| `FormulaireReservation` | Page réservation | - |
+| `PiedDePage` | Toutes les pages | - |
 
 > [!astuce]
 > Placez les couleurs et les espacements de la maquette dans des **variables CSS** au début de votre feuille de style. Si la designer change une couleur, vous ne la modifiez qu'à un seul endroit.

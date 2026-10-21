@@ -64,7 +64,7 @@ Les petites boutiques en ligne et les startups ont souvent besoin d'un support *
 > | --- | --- | --- | --- |
 > | E-mails traités | Du lundi au vendredi | Du lundi au samedi | 7 jours sur 7 |
 > | Délai de première réponse | 8 h ouvrées | 4 h ouvrées | 2 h |
-> | Chat en direct | — | 2 h par jour | 4 h par jour |
+> | Chat en direct | - | 2 h par jour | 4 h par jour |
 > | Rapport | Mensuel | Hebdomadaire | Hebdomadaire + propositions d'amélioration |
 > | Heures estimées par mois | 20 h | 40 h | 70 h |
 

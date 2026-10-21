@@ -24,9 +24,9 @@ Place à un vrai projet de client : le site d'un restaurant avec commande en lig
 | 1 | **Cadrage** | Objectifs, pages, fonctions, budget, délai | Oui |
 | 2 | **Contenus** | Textes, photos, menu, logo, informations pratiques | Oui (le client les fournit) |
 | 3 | **Arborescence et maquette** | Plan du site et croquis de la page d'accueil | Oui |
-| 4 | **Construction** | Site complet en local | — |
-| 5 | **Optimisation** | Vitesse, référencement, sécurité | — |
-| 6 | **Tests** | Grille de 15 points | — |
+| 4 | **Construction** | Site complet en local | - |
+| 5 | **Optimisation** | Vitesse, référencement, sécurité | - |
+| 6 | **Tests** | Grille de 15 points | - |
 | 7 | **Mise en ligne** | Site sur l'hébergement du client, HTTPS actif | Oui |
 | 8 | **Formation et remise** | Formation du client, guide, accès rendus | Oui |
 

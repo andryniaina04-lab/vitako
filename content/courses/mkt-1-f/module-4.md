@@ -39,7 +39,7 @@ Partez du résultat voulu et remontez :
 
 | Étape | Hypothèse (à vérifier pendant le test) | Calcul |
 | --- | --- | --- |
-| Inscriptions voulues | 60 | — |
+| Inscriptions voulues | 60 | - |
 | Taux de transformation message → inscription | 1 inscription pour 5 conversations | 60 × 5 = **300 conversations** nécessaires |
 | Coût estimé par conversation | 3 000 Ar | 300 × 3 000 = **900 000 Ar** |
 | Marge pour les tests et les imprévus | Environ 25 % | **≈ 1 125 000 Ar**, proche du budget prévu |

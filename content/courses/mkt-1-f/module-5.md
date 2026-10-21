@@ -40,7 +40,7 @@ Le client veut voir des **résultats**. Au début, vous n'en avez pas encore bea
 | **Forfait mensuel** | Un prix fixe pour la gestion des campagnes | Simple, revenu stable | À ajuster si le budget publicitaire augmente beaucoup |
 | **Pourcentage du budget** | Un pourcentage du budget publicitaire dépensé | S'adapte à la taille du client | Peut pousser à dépenser plus ; prévoir un minimum |
 | **Forfait + pourcentage** | Un minimum fixe, plus un pourcentage au-delà d'un certain budget | Équilibré | Plus complexe à expliquer |
-| **Frais de mise en place** | Un prix unique pour la première campagne (installation du suivi, création des annonces) | Paie le travail de départ | — |
+| **Frais de mise en place** | Un prix unique pour la première campagne (installation du suivi, création des annonces) | Paie le travail de départ | - |
 
 ### Calculer un forfait mensuel
 

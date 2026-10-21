@@ -23,7 +23,7 @@ Les élèves restent avec un professeur qui les fait **progresser de façon visi
 > | 1 | Accueillir un client à la réception | Salutations, présentations, chiffres |
 > | 2 | Présenter les chambres et les services | Description, comparatifs |
 > | 3 | Répondre à une réclamation | Excuses, propositions, conditionnel |
-> | 4 | Révision et jeu de rôle évalué | — |
+> | 4 | Révision et jeu de rôle évalué | - |
 > | 5 | Proposer une excursion | Futur, horaires, prix |
 
 > [!astuce]
@@ -53,8 +53,8 @@ Les élèves restent avec un professeur qui les fait **progresser de façon visi
 | **G** | Grammaire | « Les fleurs est belles » → G |
 | **O** | Orthographe | « beaucoups » → O |
 | **C** | Conjugaison | « Hier, je vais » → C |
-| **S** | Structure ou ordre des mots | — |
-| **?** | Pas clair | — |
+| **S** | Structure ou ordre des mots | - |
+| **?** | Pas clair | - |
 
 ### La méthode
 

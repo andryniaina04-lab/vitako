@@ -103,8 +103,8 @@ Pour chaque salarié, un dossier (à **accès restreint**) contient en général
 
 | Salarié | Absences | Congés pris | Heures supplémentaires | Primes | Avances | Remarques |
 | --- | --- | --- | --- | --- | --- | --- |
-| Rakoto Jean | 0 | 5 j | 6 h | — | — | — |
-| Rasoa Marie | 1 j (maladie, justificatif reçu) | 0 | 0 | Prime de résultat validée | 50 000 Ar | — |
+| Rakoto Jean | 0 | 5 j | 6 h | - | - | - |
+| Rasoa Marie | 1 j (maladie, justificatif reçu) | 0 | 0 | Prime de résultat validée | 50 000 Ar | - |
 
 1. Remplissez le tableau à partir des **documents validés** (registre des congés, feuilles d'heures, décisions de la direction).
 2. **Vérifiez** chaque ligne.

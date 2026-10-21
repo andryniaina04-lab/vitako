@@ -15,7 +15,7 @@ Les hôtels, les propriétaires de logements et les sociétés de gestion d'Euro
 > We're looking forward to welcoming you to the Seaview Apartment on Friday!
 > Check-in is from 3 pm. The key box code will be sent on the morning of your arrival.
 > Address and directions: (lien)
-> If you need anything, just reply here — we answer from 7 am to 10 pm.
+> If you need anything, just reply here - we answer from 7 am to 10 pm.
 > Best, Fara – Guest team
 
 | Situation | Bonne pratique |

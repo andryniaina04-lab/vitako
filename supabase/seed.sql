@@ -2554,7 +2554,7 @@ Les petites boutiques en ligne et les startups ont souvent besoin d''un support 
 > | --- | --- | --- | --- |
 > | E-mails traités | Du lundi au vendredi | Du lundi au samedi | 7 jours sur 7 |
 > | Délai de première réponse | 8 h ouvrées | 4 h ouvrées | 2 h |
-> | Chat en direct | — | 2 h par jour | 4 h par jour |
+> | Chat en direct | - | 2 h par jour | 4 h par jour |
 > | Rapport | Mensuel | Hebdomadaire | Hebdomadaire + propositions d''amélioration |
 > | Heures estimées par mois | 20 h | 40 h | 70 h |
 
@@ -3005,7 +3005,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 > [!exemple] Premier e-mail en anglais
 > **Subject**: Direct bookings at Seaview Lodge
 > Hi Emma,
-> I noticed Seaview Lodge added 6 new rooms this year — congratulations. Right now, guests can only book by phone or email, and many travelers book late in the evening, when they can confirm instantly elsewhere.
+> I noticed Seaview Lodge added 6 new rooms this year - congratulations. Right now, guests can only book by phone or email, and many travelers book late in the evening, when they can confirm instantly elsewhere.
 > Ravinala Web builds booking websites for small hotels in the Indian Ocean, connected to the platforms you already use.
 > Would it be worth a quick 15-minute call next week?
 > Best,
@@ -3026,7 +3026,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Étape | Exemple |
 | --- | --- |
-| **Ouverture** | "Hi Emma, this is Fara from Ravinala Web. I know I''m calling out of the blue — do you have 30 seconds?" |
+| **Ouverture** | "Hi Emma, this is Fara from Ravinala Web. I know I''m calling out of the blue - do you have 30 seconds?" |
 | **Raison** | "We help small hotels get more direct bookings online." |
 | **Question** | "How do most of your guests book today?" |
 | **Proposition** | "Would it make sense to look at how a similar lodge doubled its direct bookings?" |
@@ -4162,7 +4162,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 > We''re looking forward to welcoming you to the Seaview Apartment on Friday!
 > Check-in is from 3 pm. The key box code will be sent on the morning of your arrival.
 > Address and directions: (lien)
-> If you need anything, just reply here — we answer from 7 am to 10 pm.
+> If you need anything, just reply here - we answer from 7 am to 10 pm.
 > Best, Fara – Guest team
 
 | Situation | Bonne pratique |
@@ -8827,7 +8827,7 @@ Toute correction de données doit être **traçable** : on doit pouvoir savoir q
 | --- | --- | --- | --- | --- | --- | --- |
 | 14/03 | Q0127 | Âge | 250 | 25 | Erreur de saisie, vérifiée sur le document | HR |
 | 14/03 | Q0188 | Commune | Ambohidratrimo | Ambohidratrimo | Espace en trop supprimé | HR |
-| 15/03 | Q0213 | Enfants | 7 | — | Incohérent avec 4 personnes ; document illisible ; signalé au client | HR |
+| 15/03 | Q0213 | Enfants | 7 | - | Incohérent avec 4 personnes ; document illisible ; signalé au client | HR |
 
 > [!attention]
 > Ne corrigez **jamais** une donnée d''enquête ou une donnée comptable « parce qu''elle semble fausse » sans source. Si le document ne permet pas de trancher, **signalez** au client au lieu de deviner.
@@ -9619,8 +9619,8 @@ Avant de saisir la première ligne, lisez toute la consigne et posez vos questio
 > | | Puits | 3 |
 > | | Rivière ou source | 4 |
 > | | Autre | 9 |
-> | Réponse illisible | — | 98 |
-> | Pas de réponse | — | 99 |
+> | Réponse illisible | - | 98 |
+> | Pas de réponse | - | 99 |
 
 ## Étape 2 : préparer le tableau et les documents
 
@@ -12628,7 +12628,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | 3 | **Création** | 2 ou 3 pistes, présentées en situation | Une piste |
 | 4 | **Affinage** | Retouches sur la piste choisie | La version finale |
 | 5 | **Déclinaisons** | Charte, supports, modèles | Les supports |
-| 6 | **Livraison** | Fichiers rangés, guide, mot de passation | — |
+| 6 | **Livraison** | Fichiers rangés, guide, mot de passation | - |
 
 **La règle d''or** : on ne passe à la phase suivante **qu''après validation écrite**. Si le client change d''avis sur la direction pendant l''affinage, c''est un changement de projet, à facturer.
 
@@ -19328,12 +19328,12 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Composant | Où il apparaît | Props |
 | --- | --- | --- |
-| `EnTete` | Toutes les pages | — |
+| `EnTete` | Toutes les pages | - |
 | `Hero` | Accueil | `titre`, `image` |
 | `CarteChambre` | Liste des chambres | `nom`, `prix`, `capacite`, `photo` |
 | `FiltreChambres` | Liste des chambres | `valeur`, `onChange` |
-| `FormulaireReservation` | Page réservation | — |
-| `PiedDePage` | Toutes les pages | — |
+| `FormulaireReservation` | Page réservation | - |
+| `PiedDePage` | Toutes les pages | - |
 
 > [!astuce]
 > Placez les couleurs et les espacements de la maquette dans des **variables CSS** au début de votre feuille de style. Si la designer change une couleur, vous ne la modifiez qu''à un seul endroit.
@@ -20160,9 +20160,9 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | Conception et modèle de données | 2 j | 3 j | Besoins encore flous |
 | API principale (12 routes) | 6 j | 9 j | Règles métier découvertes en cours |
 | Intégration de paiement | 3 j | 7 j | Documentation et environnement de test du fournisseur |
-| Tests et intégration continue | 3 j | 4 j | — |
+| Tests et intégration continue | 3 j | 4 j | - |
 | Déploiement, surveillance, sauvegardes | 2 j | 3 j | Accès au serveur du client |
-| Documentation | 1 j | 2 j | — |
+| Documentation | 1 j | 2 j | - |
 | **Total** | **17 j** | **28 j** | |
 
 > [!attention]
@@ -23290,9 +23290,9 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | 1 | **Cadrage** | Objectifs, pages, fonctions, budget, délai | Oui |
 | 2 | **Contenus** | Textes, photos, menu, logo, informations pratiques | Oui (le client les fournit) |
 | 3 | **Arborescence et maquette** | Plan du site et croquis de la page d''accueil | Oui |
-| 4 | **Construction** | Site complet en local | — |
-| 5 | **Optimisation** | Vitesse, référencement, sécurité | — |
-| 6 | **Tests** | Grille de 15 points | — |
+| 4 | **Construction** | Site complet en local | - |
+| 5 | **Optimisation** | Vitesse, référencement, sécurité | - |
+| 6 | **Tests** | Grille de 15 points | - |
 | 7 | **Mise en ligne** | Site sur l''hébergement du client, HTTPS actif | Oui |
 | 8 | **Formation et remise** | Formation du client, guide, accès rendus | Oui |
 
@@ -24262,8 +24262,8 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Table | Champs | Relation |
 | --- | --- | --- |
-| **Produits** | Nom, prix, photo, disponible (oui ou non), catégorie | — |
-| **Clients** | Nom, téléphone, e-mail | — |
+| **Produits** | Nom, prix, photo, disponible (oui ou non), catégorie | - |
+| **Clients** | Nom, téléphone, e-mail | - |
 | **Commandes** | Client, date, heure de retrait, statut, total | Liée à un client |
 | **Lignes de commande** | Commande, produit, quantité, prix | Liée à une commande et à un produit |
 
@@ -24951,7 +24951,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 > | 1 | Accueillir un client à la réception | Salutations, présentations, chiffres |
 > | 2 | Présenter les chambres et les services | Description, comparatifs |
 > | 3 | Répondre à une réclamation | Excuses, propositions, conditionnel |
-> | 4 | Révision et jeu de rôle évalué | — |
+> | 4 | Révision et jeu de rôle évalué | - |
 > | 5 | Proposer une excursion | Futur, horaires, prix |
 
 > [!astuce]
@@ -24981,8 +24981,8 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | **G** | Grammaire | « Les fleurs est belles » → G |
 | **O** | Orthographe | « beaucoups » → O |
 | **C** | Conjugaison | « Hier, je vais » → C |
-| **S** | Structure ou ordre des mots | — |
-| **?** | Pas clair | — |
+| **S** | Structure ou ordre des mots | - |
+| **?** | Pas clair | - |
 
 ### La méthode
 
@@ -26197,7 +26197,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Situation | Formule utile |
 | --- | --- |
-| Ouvrir | « Welcome, everyone. Let''s make sure you can all hear me — please react with a thumbs up. » |
+| Ouvrir | « Welcome, everyone. Let''s make sure you can all hear me - please react with a thumbs up. » |
 | Donner une consigne | « In your breakout rooms, you have 10 minutes to list three challenges. Please choose a spokesperson. » |
 | Relancer | « What do others think? Feel free to use the chat. » |
 | Gérer le temps | « We have five minutes left for this activity. » |
@@ -26542,8 +26542,8 @@ Un bon objectif décrit **ce que le participant saura faire**, avec un verbe d''
 | 0:10 | Pourquoi cette formation ? | Discussion : vos difficultés avec les rapports | Tableau blanc |
 | 0:20 | Les fonctions SOMME et MOYENNE | Démonstration courte | Partage d''écran |
 | 0:30 | Exercice 1 | Pratique individuelle sur un vrai fichier | Fichier d''exercice |
-| 0:50 | Correction et questions | Partage d''écran d''un participant | — |
-| 1:00 | Pause | — | — |
+| 0:50 | Correction et questions | Partage d''écran d''un participant | - |
+| 1:00 | Pause | - | - |
 | 1:05 | Les filtres | Démonstration + exercice en binômes | Salles de sous-groupes |
 | 1:35 | Synthèse | Chaque participant cite un apprentissage | Chat |
 | 1:50 | Évaluation rapide et suite | Quiz de 5 questions, sondage de satisfaction | Formulaire |
@@ -30022,8 +30022,8 @@ Pour chaque salarié, un dossier (à **accès restreint**) contient en général
 
 | Salarié | Absences | Congés pris | Heures supplémentaires | Primes | Avances | Remarques |
 | --- | --- | --- | --- | --- | --- | --- |
-| Rakoto Jean | 0 | 5 j | 6 h | — | — | — |
-| Rasoa Marie | 1 j (maladie, justificatif reçu) | 0 | 0 | Prime de résultat validée | 50 000 Ar | — |
+| Rakoto Jean | 0 | 5 j | 6 h | - | - | - |
+| Rasoa Marie | 1 j (maladie, justificatif reçu) | 0 | 0 | Prime de résultat validée | 50 000 Ar | - |
 
 1. Remplissez le tableau à partir des **documents validés** (registre des congés, feuilles d''heures, décisions de la direction).
 2. **Vérifiez** chaque ligne.
@@ -30258,7 +30258,7 @@ Règles : des critères **liés au poste**, sans discrimination (âge, sexe, rel
 | --- | --- | --- | --- | --- |
 | A | Entretien | 18 avril 9 h | Retenue | Oui, le 22 avril |
 | B | Entretien | 18 avril 10 h 30 | Non retenue | Oui, le 22 avril |
-| D | Non présélectionné | — | — | Oui, le 16 avril |
+| D | Non présélectionné | - | - | Oui, le 16 avril |
 
 > [!astuce]
 > Envoyez une **réponse à chaque candidat**, même non retenu, avec un message poli. C''est une question de respect, et cela protège l''image de l''entreprise.
@@ -31587,9 +31587,9 @@ Une offre spécialisée décrit **le résultat**, pas seulement les heures.
 > | Heures par mois | 20 h | 40 h | 60 h |
 > | Agenda et rendez-vous | Oui | Oui | Oui |
 > | E-mails et messages des clients | Oui | Oui | Oui |
-> | Gestion de la plateforme de cours (inscriptions, accès) | — | Oui | Oui |
-> | Newsletter hebdomadaire | — | Oui | Oui |
-> | Organisation d''un lancement (pages, e-mails, calendrier, webinaire) | — | — | Oui |
+> | Gestion de la plateforme de cours (inscriptions, accès) | - | Oui | Oui |
+> | Newsletter hebdomadaire | - | Oui | Oui |
+> | Organisation d''un lancement (pages, e-mails, calendrier, webinaire) | - | - | Oui |
 > | Point de suivi | Toutes les 2 semaines | Chaque semaine | 2 fois par semaine |
 
 Calculez le prix de chaque forfait à partir de votre prix horaire (Fondamentaux, module 5), puis **ajoutez la valeur de votre spécialité** : un assistant qui sait déjà gérer une plateforme de cours fait gagner des semaines au client.
@@ -31699,7 +31699,7 @@ Au niveau Fondamentaux, vous avez créé un tableau de tâches. Au niveau avanc�
 | **Tâches** | Statut, priorité, échéance, temps passé, responsable | Projets, Contacts |
 | **Projets** | Objectif, date de début et de fin, avancement | Tâches |
 | **Contacts** | Nom, entreprise, rôle, coordonnées, dernière interaction | Tâches |
-| **Procédures** | Étapes, outil, fréquence, dernière mise à jour | — |
+| **Procédures** | Étapes, outil, fréquence, dernière mise à jour | - |
 
 ### Les fonctions avancées
 
@@ -33062,7 +33062,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | E-mail | 45 € | Oui | 18 % du chiffre d''affaires | Garder |
 | Avis | 15 € | Oui | Conversion des fiches avec avis +20 % | Garder |
 | Fenêtre surgissante | 20 € | Oui | Fonction déjà dans l''outil e-mail | Supprimer |
-| Compte à rebours | 10 € | Non | — | Supprimer |
+| Compte à rebours | 10 € | Non | - | Supprimer |
 
 > [!madagascar]
 > Pour une boutique malgache qui vend en ariary, chaque abonnement en dollars ou en euros pèse lourd. Faites ce tableau chaque trimestre : supprimer 2 ou 3 applications inutiles peut payer une partie de vos honoraires.
@@ -33185,11 +33185,11 @@ Procédure : traiter un retour produit
 | Indicateur | Semaine | Semaine précédente | Variation | Commentaire |
 | --- | --- | --- | --- | --- |
 | Chiffre d''affaires | 4 200 € | 3 800 € | +11 % | E-mail du jeudi |
-| Commandes | 92 | 85 | +8 % | — |
+| Commandes | 92 | 85 | +8 % | - |
 | Taux de conversion | 2,1 % | 1,9 % | +0,2 point | Nouvelle fiche produit |
-| Panier moyen | 45,7 € | 44,7 € | +2 % | — |
-| Ruptures | 1 produit | 3 produits | — | Commande passée |
-| Retours | 3 | 2 | — | Motif : taille |
+| Panier moyen | 45,7 € | 44,7 € | +2 % | - |
+| Ruptures | 1 produit | 3 produits | - | Commande passée |
+| Retours | 3 | 2 | - | Motif : taille |
 
 > [!retenir]
 > - Améliorez chaque étape du parcours ; testez seulement avec assez de trafic.
@@ -33660,7 +33660,7 @@ Chaque promotion a une **date de début**, une **date de fin** et des **conditio
 | Indicateur | Calcul | Ce qu''il dit |
 | --- | --- | --- |
 | **Chiffre d''affaires** | Somme des ventes | Combien la boutique vend |
-| **Nombre de commandes** | — | L''activité |
+| **Nombre de commandes** | - | L''activité |
 | **Panier moyen** | Chiffre d''affaires ÷ nombre de commandes | Combien dépense un client en moyenne |
 | **Taux de conversion** | Commandes ÷ visites × 100 | La part des visiteurs qui achètent |
 | **Taux d''abandon de panier** | Paniers abandonnés ÷ paniers créés × 100 | La part des clients qui partent avant de payer |
@@ -35572,7 +35572,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 > [!exemple] Réponse en anglais
 > Hi Emily,
-> I''m sorry your necklace arrived damaged — that''s not the experience we want for you.
+> I''m sorry your necklace arrived damaged - that''s not the experience we want for you.
 > I''ve just sent a replacement at no cost; you''ll receive the tracking link within 24 hours. No need to return the damaged one.
 > If there''s anything else I can do, just reply to this email.
 > Best, Fanja – Lamba Studio
@@ -36541,7 +36541,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | JIRAMA | Électricité et eau | JIRAMA |
 | FRAIS TENUE COMPTE | Frais bancaires | Banque |
 | TELMA ou ORANGE (abonnement) | Télécommunications | Opérateur |
-| VIR SALAIRE | Rémunérations dues (selon la procédure du dossier) | — |
+| VIR SALAIRE | Rémunérations dues (selon la procédure du dossier) | - |
 
 ### Les règles d''or
 
@@ -36703,9 +36703,9 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Dossier | Pièces reçues | Saisie | Rapprochement | Contrôles | Envoyé | Retards |
 | --- | --- | --- | --- | --- | --- | --- |
-| Taxi Be Express | 05/04 | ✓ | ✓ | En cours | — | 2 pièces |
-| ONG Rano | 03/04 | ✓ | ✓ | ✓ | 08/04 | — |
-| Épicerie Mirana | En attente | — | — | — | — | Relance le 06/04 |
+| Taxi Be Express | 05/04 | ✓ | ✓ | En cours | - | 2 pièces |
+| ONG Rano | 03/04 | ✓ | ✓ | ✓ | 08/04 | - |
+| Épicerie Mirana | En attente | - | - | - | - | Relance le 06/04 |
 
 ### Les règles
 
@@ -36766,11 +36766,11 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Tâche | Aide-comptable (vous) | Collaborateur ou chef de mission | Expert-comptable |
 | --- | --- | --- | --- |
-| Saisie, rapprochements, lettrage | Réalise | Contrôle | — |
-| Contrôles de cohérence | Réalise et explique | Vérifie | — |
+| Saisie, rapprochements, lettrage | Réalise | Contrôle | - |
+| Contrôles de cohérence | Réalise et explique | Vérifie | - |
 | Écritures d''inventaire | Prépare | Valide | Supervise |
 | Déclarations fiscales | Peut préparer les données | Établit | Supervise et signe selon les règles |
-| Comptes annuels | — | Prépare | Signe et engage sa responsabilité |
+| Comptes annuels | - | Prépare | Signe et engage sa responsabilité |
 | Conseil au client | Transmet les questions | Répond | Conseille |
 
 ### Les bonnes pratiques
@@ -37392,7 +37392,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | Compte | Solde du relevé | Solde comptable | Écart | Explication |
 | --- | --- | --- | --- | --- |
 | Banque | 8 420 000 Ar | 8 120 000 Ar | 300 000 Ar | Chèque n° 4127 émis le 30/03, pas encore encaissé |
-| MVola | 1 245 000 Ar | 1 245 000 Ar | 0 | — |
+| MVola | 1 245 000 Ar | 1 245 000 Ar | 0 | - |
 | Orange Money | 380 000 Ar | 392 500 Ar | −12 500 Ar | Frais de retrait non saisis : à enregistrer |
 
 ## Étape 4 : suivre les impayés et préparer les relances
@@ -37403,7 +37403,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | --- | --- | --- | --- | --- | --- |
 | Soa Distribution | F2026-031 | 1 800 000 Ar | 28/02 | 32 jours | 2e relance |
 | Port Logistique | F2026-044 | 650 000 Ar | 15/03 | 17 jours | 1re relance |
-| Épicerie Mirana | F2026-052 | 220 000 Ar | 10/04 | — | À surveiller |
+| Épicerie Mirana | F2026-052 | 220 000 Ar | 10/04 | - | À surveiller |
 
 > [!exemple] Message de première relance (à valider par le client)
 > « Bonjour, sauf erreur de notre part, la facture F2026-044 du 15 février, d''un montant de 650 000 Ar, arrivée à échéance le 15 mars, reste impayée. Pourriez-vous nous indiquer la date de règlement prévue ? Si le paiement a déjà été effectué, merci de ne pas tenir compte de ce message et de nous transmettre la référence. Cordialement. »
@@ -39815,7 +39815,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 4. **Quel effet** le texte doit-il produire ? Informer, rassurer, faire acheter, faire rire ?
 
 > [!exemple] Même phrase, deux publics
-> Anglais : « Don''t miss out — grab yours today! »
+> Anglais : « Don''t miss out - grab yours today! »
 > Pour une marque de vêtements pour jeunes : « Ne la rate pas : fonce, c''est aujourd''hui ! »
 > Pour une banque : « Profitez de cette offre dès aujourd''hui. »
 
@@ -43800,9 +43800,9 @@ Les annonceurs testent souvent **plusieurs versions** d''une même publicité po
 > | | **Montage** | **Montage + extraits** | **Partenaire de chaîne** |
 > | --- | --- | --- | --- |
 > | Vidéos longues par mois | 4 | 4 | 4 |
-> | Vidéos courtes tirées des longues | — | 12 | 16 |
-> | Analyse de la rétention et recommandations | — | Mensuelle | Après chaque vidéo |
-> | Conseils sur titres et miniatures | — | — | Oui |
+> | Vidéos courtes tirées des longues | - | 12 | 16 |
+> | Analyse de la rétention et recommandations | - | Mensuelle | Après chaque vidéo |
+> | Conseils sur titres et miniatures | - | - | Oui |
 > | Délai par vidéo | 72 h | 72 h | 48 h |
 
 ## Les études de cas avec des chiffres
@@ -49499,7 +49499,7 @@ Le tarif le plus courant est **à la minute de vidéo**, qui varie selon le type
 | Sous-titres dans la même langue (transcription, repérage) | 10 min | 2 000 Ar |
 | Sous-titres traduits (à partir d''un fichier modèle) | 8 min | 1 600 Ar |
 | Sous-titres traduits complets (transcription, repérage, traduction) | 15 min | 3 000 Ar |
-| Incrustation et version courte verticale | Forfait selon la durée | — |
+| Incrustation et version courte verticale | Forfait selon la durée | - |
 
 *(Temps et prix donnés en exemple. Mesurez les vôtres. Pour les clients étrangers, fixez vos prix en euros ou en dollars selon leur marché.)*
 
@@ -51890,7 +51890,7 @@ Partez du résultat voulu et remontez :
 
 | Étape | Hypothèse (à vérifier pendant le test) | Calcul |
 | --- | --- | --- |
-| Inscriptions voulues | 60 | — |
+| Inscriptions voulues | 60 | - |
 | Taux de transformation message → inscription | 1 inscription pour 5 conversations | 60 × 5 = **300 conversations** nécessaires |
 | Coût estimé par conversation | 3 000 Ar | 300 × 3 000 = **900 000 Ar** |
 | Marge pour les tests et les imprévus | Environ 25 % | **≈ 1 125 000 Ar**, proche du budget prévu |
@@ -52041,7 +52041,7 @@ Le client veut voir des **résultats**. Au début, vous n''en avez pas encore be
 | **Forfait mensuel** | Un prix fixe pour la gestion des campagnes | Simple, revenu stable | À ajuster si le budget publicitaire augmente beaucoup |
 | **Pourcentage du budget** | Un pourcentage du budget publicitaire dépensé | S''adapte à la taille du client | Peut pousser à dépenser plus ; prévoir un minimum |
 | **Forfait + pourcentage** | Un minimum fixe, plus un pourcentage au-delà d''un certain budget | Équilibré | Plus complexe à expliquer |
-| **Frais de mise en place** | Un prix unique pour la première campagne (installation du suivi, création des annonces) | Paie le travail de départ | — |
+| **Frais de mise en place** | Un prix unique pour la première campagne (installation du suivi, création des annonces) | Paie le travail de départ | - |
 
 ### Calculer un forfait mensuel
 
@@ -52270,9 +52270,9 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 
 | Mot clé | Concurrent A | Concurrent B | Site | Action |
 | --- | --- | --- | --- | --- |
-| circuit nord madagascar 10 jours | 4 | 7 | — | Créer une page circuit |
+| circuit nord madagascar 10 jours | 4 | 7 | - | Créer une page circuit |
 | meilleure période madagascar | 2 | 5 | 38 | Améliorer l''article existant |
-| vol paris nosy be | 6 | — | — | Article d''information + lien vers les circuits |
+| vol paris nosy be | 6 | - | - | Article d''information + lien vers les circuits |
 
 ## Analyser un profil de liens
 
@@ -53007,7 +53007,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | Usage | Gratuit | Payant |
 | --- | --- | --- |
 | Idées de mots clés | Google, Ubersuggest limité | Semrush, Ahrefs |
-| Données réelles du site | Search Console | — (Search Console reste la référence) |
+| Données réelles du site | Search Console | - (Search Console reste la référence) |
 | Analyse des concurrents | Très limitée | Semrush, Ahrefs |
 | Liens entrants | Search Console (pour votre site) | Ahrefs, Semrush (pour tous les sites) |
 | Audit technique | Manuel ou limité | Automatique et complet |
@@ -53637,13 +53637,13 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 ## Écrire en anglais
 
 > [!exemple] E-mail de bienvenue en anglais
-> **Subject**: Welcome to Raphia & Co — here''s 10% off your first order
+> **Subject**: Welcome to Raphia & Co - here''s 10% off your first order
 > **Preview text**: Handwoven in Madagascar, made to last.
 > Hi Sarah,
 > Thanks for joining us! Every bag we sell is handwoven by artisans in Madagascar using natural raffia.
 > As a welcome gift, here''s 10% off your first order: **WELCOME10** (valid for 7 days).
 > [Shop the collection]
-> Have a question? Just reply to this email — a real person will answer.
+> Have a question? Just reply to this email - a real person will answer.
 
 ### Les différences de style
 
@@ -54776,7 +54776,7 @@ insert into public.lessons (course_id, module_index, title, summary, body_md, vi
 | **Sous-titres soignés** | Beaucoup de vidéos sont regardées sans le son |
 
 > [!exemple] Script court en anglais
-> « I''ve been using this hair oil for three weeks — and my ends finally feel soft again. I just warm two drops in my hands and apply it before bed. It''s made in Madagascar with plant oils, and a little goes a long way. Link below if you want to try it. »
+> « I''ve been using this hair oil for three weeks - and my ends finally feel soft again. I just warm two drops in my hands and apply it before bed. It''s made in Madagascar with plant oils, and a little goes a long way. Link below if you want to try it. »
 
 ## Les règles de publicité selon les régions
 
@@ -66175,8 +66175,8 @@ Un annotateur qui mesure son travail progresse plus vite et négocie mieux. Cré
 
 | Date | Projet | Type de tâche | Tâches faites | Temps | Tâches par heure | Précision affichée | Cas limites |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 15/03/2027 | Véhicules (entraînement) | Cadres | 60 | 1 h 30 | 40 | — | 4 |
-| 16/03/2027 | Avis clients (entraînement) | Classification | 200 | 1 h 15 | 160 | — | 7 |
+| 15/03/2027 | Véhicules (entraînement) | Cadres | 60 | 1 h 30 | 40 | - | 4 |
+| 16/03/2027 | Avis clients (entraînement) | Classification | 200 | 1 h 15 | 160 | - | 7 |
 
 Ajoutez une colonne « Revenu » quand vous serez payé : vous pourrez calculer votre revenu réel à l''heure (module 6).
 
@@ -66581,7 +66581,7 @@ Le journal garantit que vous prenez **la même décision** pour des cas identiqu
 | --- | --- | --- | --- | --- |
 | 2318 | Charrette à zébus | En attente, signalée | Aucune | « Autre » (règle ajoutée) |
 | 2402 | Taxi-brousse Mazda transformé | Bus | Règle 3 : plus de 9 places | Confirmé |
-| 2457 | Moto dans un reflet de vitrine | Non annotée | Règle 7 : pas de reflets | — |
+| 2457 | Moto dans un reflet de vitrine | Non annotée | Règle 7 : pas de reflets | - |
 
 > [!exemple] Le journal qui a sauvé un lot
 > Sur un projet de 2 000 images, Nirina note chaque cas limite. Au bout d''une semaine, le responsable change une règle : les charrettes passent de « Autre » à une nouvelle étiquette « Charrette ». Grâce à son journal, Nirina retrouve en dix minutes les 37 images concernées et les corrige. Les autres annotateurs doivent tout revoir.
@@ -70312,7 +70312,7 @@ Beaucoup de modules produisent déjà plusieurs paquets sans itérateur (par exe
 
 | Module | Paquets en entrée | Paquets en sortie |
 | --- | --- | --- |
-| Déclencheur planifié (lundi 8 h) | — | 1 |
+| Déclencheur planifié (lundi 8 h) | - | 1 |
 | Search Rows (inscriptions de la semaine) | 1 | 12 (une par inscription) |
 | Text aggregator | 12 | 1 (un texte avec les 12 lignes) |
 | Gmail Send an Email | 1 | 1 e-mail |
@@ -71399,7 +71399,7 @@ Reprenez les indicateurs du diagnostic (leçon 5.1) et mesurez-les de la même f
 | Délai de réponse aux demandes | 1 à 2 jours | Moins de 4 heures |
 | Demandes oubliées | Plusieurs par mois | Aucune constatée |
 | Erreurs sur les attestations | 3 par mois | Aucune constatée |
-| Cas « à traiter à la main » | — | 12 % des demandes |
+| Cas « à traiter à la main » | - | 12 % des demandes |
 
 *(Chiffres donnés en exemple.)*
 
@@ -73535,7 +73535,7 @@ Cliquez sur **Partager → Télécharger**, puis choisissez le format :
 | --- | --- | --- |
 | PNG | Visuels avec texte, logos, réseaux sociaux | Taille × 1 ; « Arrière-plan transparent » pour un logo (option Pro) |
 | JPG | Photos, aperçus légers pour WhatsApp | Qualité 80 environ |
-| PDF standard | Documents à lire à l''écran, devis | — |
+| PDF standard | Documents à lire à l''écran, devis | - |
 | PDF pour impression | Imprimeur | Cocher « Traits de coupe et fond perdu » |
 | MP4 | Visuels animés, vidéos courtes | Selon la plateforme |
 
@@ -75138,7 +75138,7 @@ Blanche (une couleur) | Sur photos et fonds foncés
 | Principale couleur | SVG, PDF, PNG transparent | PNG en grande taille (au moins 2000 px de large) |
 | Horizontale, verticale | SVG, PNG transparent | Les deux dispositions |
 | Compacte | SVG, PNG 1080 × 1080 px | Avec un fond de couleur pour la photo de profil |
-| Noire | SVG, PNG transparent | — |
+| Noire | SVG, PNG transparent | - |
 | Blanche | SVG, PNG transparent | Le PNG blanc paraît vide à l''écran : c''est normal, prévenez le client |
 
 Les fichiers SVG et PDF sont les fichiers **sources vectoriels** : ce sont eux que le client transmettra à un imprimeur, à un brodeur ou à un fabricant d''enseigne. Les PNG servent au quotidien (réseaux, documents, site).
@@ -75471,9 +75471,9 @@ Un tableau simple évite d''oublier une relance et vous montre ce qui fonctionne
 
 | Date | Prospect | Canal | Message envoyé | Relance 1 | Relance 2 | Résultat |
 | --- | --- | --- | --- | --- | --- | --- |
-| 03/11 | Lamba Shop | Messenger | Proposition 3 visuels | 07/11 | — | Devis envoyé |
+| 03/11 | Lamba Shop | Messenger | Proposition 3 visuels | 07/11 | - | Devis envoyé |
 | 03/11 | Chez Lova | WhatsApp | Refonte du menu | 07/11 | 15/11 | Pas de réponse |
-| 04/11 | Chaîne « Cuisine de Julie » | E-mail | Miniatures | 09/11 | — | Essai accepté |
+| 04/11 | Chaîne « Cuisine de Julie » | E-mail | Miniatures | 09/11 | - | Essai accepté |
 
 > [!astuce] La routine des 30 minutes
 > Chaque jour de travail, à heure fixe (leçon 1.4) : **10 minutes** pour trouver 5 prospects, **15 minutes** pour leur écrire, **5 minutes** pour les relances et le tableau. Au bout d''un mois, vous aurez contacté une centaine de prospects. Même avec peu de réponses, cela suffit généralement à décrocher vos premiers clients.
@@ -75554,8 +75554,8 @@ colonnes: Essentiel | Standard | Complet
 1 proposition de logo | 2 propositions de logo | 3 propositions de logo
 1 tour de retouches | 2 tours de retouches | 3 tours de retouches
 Logo en couleur et en noir (PNG, SVG) | Pack complet (5 versions) | Pack complet (5 versions)
-— | Mini-charte d''une page | Charte de 3 pages
-— | — | Carte de visite et 3 modèles de publications
+- | Mini-charte d''une page | Charte de 3 pages
+- | - | Carte de visite et 3 modèles de publications
 Exemple : 120 000 Ar | Exemple : 180 000 Ar | Exemple : 300 000 Ar
 ```
 
@@ -75783,7 +75783,7 @@ Tenez un **tableau de suivi** de vos revenus, même simple :
 | Date | Client | Projet | Facture | Montant | Moyen | Référence | Statut |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 05/11 | Lamba Shop | 6 visuels | F-2026-014 | 120 000 Ar | MVola | MP2611… | Payé |
-| 12/11 | Cuisine de Julie | 4 miniatures | F-2026-015 | 80 € | Payoneer | — | En attente |
+| 12/11 | Cuisine de Julie | 4 miniatures | F-2026-015 | 80 € | Payoneer | - | En attente |
 
 Ce tableau vous montre chaque mois ce que vous avez gagné, qui vous doit encore de l''argent, et quels clients rapportent le plus. Il vous servira aussi pour vos déclarations (leçon 1.5).
 
@@ -79109,7 +79109,7 @@ Tenez un tableau simple de tous vos contacts. Sans lui, vous oublierez qui relan
 | Nom | Canal | Date du message | Relance | Statut | Prochaine action |
 | --- | --- | --- | --- | --- | --- |
 | Sophie M., coach | LinkedIn | 3 mai | 10 mai | Appel prévu | Appel le 14 mai à 15 h (Paris) |
-| Cabinet Andrianina | Réseau | 4 mai | — | Pas intéressé | Recontacter en septembre |
+| Cabinet Andrianina | Réseau | 4 mai | - | Pas intéressé | Recontacter en septembre |
 | Lodge Fasika | Facebook | 5 mai | 12 mai | Sans réponse | Aucune |
 
 ```schema entonnoir
@@ -82120,7 +82120,7 @@ Le même texte envoyé à 100 créateurs | Un court extrait monté pour lui
 | --- | --- | --- | --- | --- | --- |
 | Chaîne cuisine Laura | E-mail | 12/04/2027 | Oui | 19/04/2027 | Réponse positive |
 | Coach sport Marc | Instagram | 13/04/2027 | Non | 20/04/2027 | Pas de réponse |
-| Boutique Lamba Soa | Facebook | 14/04/2027 | Oui | — | Devis envoyé |
+| Boutique Lamba Soa | Facebook | 14/04/2027 | Oui | - | Devis envoyé |
 
 Une relance polie après 5 à 7 jours, puis on s''arrête.
 
@@ -85323,7 +85323,7 @@ Beaucoup de commerçants ne répondent pas au premier message : ils sont occupé
 | Commerce | Canal | Date du message | Relance | Statut | Prochaine action |
 | --- | --- | --- | --- | --- | --- |
 | Boutique Soa Style | Messenger | 3 mai | 10 mai | Audit prévu | Audit le 14 mai à 15 h |
-| Snack Mofo Gasy | WhatsApp | 4 mai | — | Pas intéressé | Recontacter en septembre |
+| Snack Mofo Gasy | WhatsApp | 4 mai | - | Pas intéressé | Recontacter en septembre |
 | Lodge Fasika | E-mail | 5 mai | 12 mai | Sans réponse | Aucune |
 
 ```schema entonnoir
@@ -85746,5 +85746,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 select public.course_go_live('mkt-0-f', array[0, 1, 3, 4, 5]::int[]);
 
 -- Mises à jour : prévient les abonnés concernés quand le contenu visible change
-select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"3cb011a0acfcf2ec2f794ccf9a1e35f6"},"client-2-a":{"h":"91f1be6c9a3513f4c1e7cc4439f4d5c1"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"9e954523a261ef5246e5b7cbb0b06b1d"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"a5fdaeadd0085bc2c18557b5d493744f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"56ad15f969b91d23d661b55955644d18"},"data-2-f":{"h":"e730e983f8b1f353eb0df1d8d009f83b"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"9969b3d8f8d0e7c7a148e2bb1ef5bcd1"},"design-0-a":{"h":"fdf8fc464b06b5957f5d7a9729a63b0a"},"design-0-f":{"h":"c66790fa488e2404da67bd3fb3ab4eba"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"74ae925d593d986c64900acaf96cab79"},"dev-1-a":{"h":"895b53da046400eae97d904592aed2a2"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"620e55e74ba39d90fcc555e5398b6a64"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"1b53bfae62cd774356fa14eb5fddade6"},"edu-0-a":{"h":"77330575554fac777ca29c61bfb6c87b"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"4aa4a04703ab832f5ca08b13d4dc483b"},"edu-1-f":{"h":"10f713ec6c9f418cd0316fb6594f3af1"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"036486cc1c86a893bf1cb5bd2a02098c"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"free-1-f":{"h":"76e8a99740757e46cb4a09700deb0bb3"},"gestion-0-a":{"h":"9f6b5fd1640f60f498454c4a5b332604"},"gestion-0-f":{"h":"15586519c8cec2e142a95cd535cea5e2"},"gestion-1-a":{"h":"429aa050db46b20faa84feea1ae0587f"},"gestion-1-f":{"h":"3b654285122f3a201aca3187f4558d68"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"f230dec82ca42c2cd9405dbe8cddb81e"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"0f5a0d7a1ab03f5ccd961c928387c27f"},"gestion-4-f":{"h":"02365aaaa57cd1b000fb6d285cd59cd9"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"2e5051143334663b734b97d96b6a3c0e"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"06d9653b2a8d6c4af25488445df62539"},"media-0-f":{"h":"f02c92a54e6e7f1d3b04d4fcb5b7a6bb"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"e00dba45cb70382ac132f4b0a26aa7d1"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"058ff4aeccc60914d8bdec2271d0d1b8"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"77141ef46489aea611b3514255d157c1"},"mkt-2-a":{"h":"b068b5f17035500ad38eb7cea81b0b45"},"mkt-2-f":{"h":"c8e6f1ca2e53916d99953a1465099021"},"mkt-3-a":{"h":"f7a8e234a5cdade0ae839978f4bc4220"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"e1384ab21069eb1661acd68ebf955f34"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
+select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"bb051b99030c970f6a680ad5b439616f"},"client-2-a":{"h":"dfc95ed1dad9e29efbd8602a8ccf2d4c"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"e32cf4e13a9801bfaca3c554e38a4810"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"78c7cf80bcb5b9ff97686fefff9a672f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"27d73424d058499c7fd447a6ddf01b55"},"data-2-f":{"h":"430eda8e71629d439d24adb5f319d4fb"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"90386e0bd89d38e145a6d4ea1ec8ff2e"},"design-0-a":{"h":"3d9e6a6dbfbd572b2b546910d585729b"},"design-0-f":{"h":"0be262c6458759ca4c3c993f64722493"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"89a6b3c1e84aecfb3052e49fc68b570c"},"dev-1-a":{"h":"55fffc0b03b74a729c0f2d5facd953e6"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"1c27814602a0bd86a593ff225f975f2b"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"bf770782cbe96aa90cbfb6f75982b9cd"},"edu-0-a":{"h":"1b562cf3ea42d36944d88146b1b2abe2"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"ddf47ed7a0844c7c9aa2fff2c3c26557"},"edu-1-f":{"h":"2fc2046167371c165d3442557f608a2c"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"0b1bc33a590b001f9d7f9d692f5129bb"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"free-1-f":{"h":"76e8a99740757e46cb4a09700deb0bb3"},"gestion-0-a":{"h":"554132ebb6a0e9af9055f79b2e3e09ec"},"gestion-0-f":{"h":"4f8bc63e54a8f2ad19f01b321617f3a2"},"gestion-1-a":{"h":"9cfdcd8ea7f3c3cd25c7ec7528d4271e"},"gestion-1-f":{"h":"5e19ed877a39b702def3909a049b9048"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"ec9d990fc94c6d9ecf30e3829fc906e5"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"7bd15b35ef6bb2cd760ee98017234e1d"},"gestion-4-f":{"h":"7b16b46a9e22f0d95d3caaf636787067"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"815f00e4a096fa08aad4962fa7b19b48"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"c7f4946286651d0f1810394c93bdd982"},"media-0-f":{"h":"36744e1b548d3a254ebad84b0c1422a1"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"46454011a3ae104b3498f73077e035a5"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"d7f961ee24443e51401c814bc7b586ef"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"717511d9291b0e45e1ca1316e613e537"},"mkt-2-a":{"h":"9b7f6359db9589a330d528437109a5b8"},"mkt-2-f":{"h":"46f395ff15f295efee2fcad4aa4e8e7d"},"mkt-3-a":{"h":"39af799d9bf929836c80accb7c13377a"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"7370c6c238ef93bebc845acbba586bb2"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
 commit;

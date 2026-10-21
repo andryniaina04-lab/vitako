@@ -60,7 +60,7 @@ Une bonne traduction ne doit rien au hasard. Les traducteurs professionnels suiv
 4. **Quel effet** le texte doit-il produire ? Informer, rassurer, faire acheter, faire rire ?
 
 > [!exemple] Même phrase, deux publics
-> Anglais : « Don't miss out — grab yours today! »
+> Anglais : « Don't miss out - grab yours today! »
 > Pour une marque de vêtements pour jeunes : « Ne la rate pas : fonce, c'est aujourd'hui ! »
 > Pour une banque : « Profitez de cette offre dès aujourd'hui. »
 

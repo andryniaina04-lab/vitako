@@ -12,7 +12,7 @@ Les organisations internationales, les entreprises multinationales et les organi
 
 | Situation | Formule utile |
 | --- | --- |
-| Ouvrir | « Welcome, everyone. Let's make sure you can all hear me — please react with a thumbs up. » |
+| Ouvrir | « Welcome, everyone. Let's make sure you can all hear me - please react with a thumbs up. » |
 | Donner une consigne | « In your breakout rooms, you have 10 minutes to list three challenges. Please choose a spokesperson. » |
 | Relancer | « What do others think? Feel free to use the chat. » |
 | Gérer le temps | « We have five minutes left for this activity. » |

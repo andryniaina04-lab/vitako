@@ -31,9 +31,9 @@ Un développeur back-end confirmé peut construire une carrière solide depuis M
 | Conception et modèle de données | 2 j | 3 j | Besoins encore flous |
 | API principale (12 routes) | 6 j | 9 j | Règles métier découvertes en cours |
 | Intégration de paiement | 3 j | 7 j | Documentation et environnement de test du fournisseur |
-| Tests et intégration continue | 3 j | 4 j | — |
+| Tests et intégration continue | 3 j | 4 j | - |
 | Déploiement, surveillance, sauvegardes | 2 j | 3 j | Accès au serveur du client |
-| Documentation | 1 j | 2 j | — |
+| Documentation | 1 j | 2 j | - |
 | **Total** | **17 j** | **28 j** | |
 
 > [!attention]
