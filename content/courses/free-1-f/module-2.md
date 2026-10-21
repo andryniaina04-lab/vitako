@@ -19,7 +19,7 @@ titre: Ce que représente le transport au bureau
 2 mois : de temps de vie gagnés chaque année en travaillant depuis chez soi
 ```
 
-> [!exemple] La journée d'Andry, graphiste freelance
+> [!exemple] La journée d'Andry, freelance Senior
 > **Avant (bureau) :** Réveil à 5h30. Bus à 6h. Arrivée au bureau à 8h. Réunion de 30 minutes sans résultat concret. Déjeuner en vitesse. Bus à 17h30, retour à 19h. Souper, dodo, recommencer.
 >
 > **Après (freelance) :** Réveil à 7h. Café. Travail de 8h à 12h en profondeur, sans interruption. Déjeuner calme. Réponse aux clients. Fin à 16h. Temps libre pour créer, se former, développer de nouveaux projets.

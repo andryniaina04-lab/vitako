@@ -16,8 +16,8 @@ Ces métiers consistent à créer des images, des vidéos, des animations ou des
 | **Motion designer** | Animations de textes, logos animés, effets visuels | After Effects, DaVinci Fusion |
 | **Illustrateur** | Dessins numériques, illustrations pour livres, sites, BD | Procreate, Krita |
 
-> [!exemple] Andry, graphiste freelance Senior
-> Andry est graphiste freelance et fondateur de Vitako, entrepreneur dans le digital. Il a commencé par maîtriser les outils du design, puis a décroché ses premiers clients locaux à Madagascar. En 2022, son premier client lui paie **1 400 000 Ar par mois**. La même année, un deuxième client lui en paie **2 500 000**. En 2025, un contrat étranger lui rapporte **900 euros par mois** (plus de 4 200 000 Ar). Tout depuis son espace de travail, sans transport, sans bureau fixe.
+> [!exemple] Andry, fondateur de Vitako, freelance Senior
+> Andry est freelance Senior, entrepreneur web dans le digital et fondateur de Vitako. Il a décroché ses premiers clients locaux à Madagascar et n'a jamais arrêté depuis. En 2022, son premier client lui paie **1 400 000 Ar par mois à lui seul**. La même année, un deuxième client lui en paie **2 500 000 pour lui seul**. En 2025, un contrat étranger lui rapporte **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** — parmi plusieurs. Tout depuis son espace de travail, sans transport, sans bureau fixe.
 
 ## Les métiers de l'écriture et du contenu
 

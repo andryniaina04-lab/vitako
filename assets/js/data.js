@@ -2274,7 +2274,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les métiers du travail en ligne",
-    "minutes": 7
+    "minutes": 8
    },
    {
     "title": "Ce qu'on peut gagner : salaires et comparaisons",

@@ -64,7 +64,7 @@ Voici ce que ces revenus représentent par rapport aux salaires locaux :
 | 1 500 € par mois (7 500 000 Ar) | Exceptionnel, mais atteint par des freelances confirmés |
 
 > [!exemple] La progression d'Andry, fondateur de Vitako
-> Andry est graphiste freelance et entrepreneur web Senior dans le digital. Il raconte lui-même sa progression : premier client local en 2022 à **1 400 000 Ar par mois**, puis un deuxième client la même année à **2 500 000 Ar par mois**, et en début 2025 un contrat étranger à **900 euros par mois** (plus de 4 200 000 Ar). En moins de 3 ans, ses revenus ont été multipliés par 3. Sans changer de ville. Sans transport quotidien. C'est cette réalité qu'il a voulu rendre accessible à d'autres jeunes Malgaches en créant Vitako.
+> Andry est freelance Senior et entrepreneur web dans le digital. Il raconte lui-même sa progression : premier client local en 2022 à **1 400 000 Ar par mois pour ce seul client**, puis un deuxième la même année à **2 500 000 Ar par mois pour lui seul**, et en début 2025 un contrat étranger à **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** — et il en a plusieurs. Sans changer de ville. Sans transport quotidien. C'est cette réalité qu'il a voulu rendre accessible à d'autres jeunes Malgaches en créant Vitako.
 
 ## Pourquoi l'écart est si grand ?
 
