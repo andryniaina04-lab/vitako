@@ -75,7 +75,7 @@ Voici comment se passe typiquement le parcours d'un étudiant Vitako :
 
 ## Cette formation est gratuite. Et après ?
 
-Cette formation - « Comment devenir freelance » - est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
+Cette formation, « Comment devenir freelance », est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
 
 La suite (les formations complètes par métier, les exercices, les projets, les examens, les attestations) est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
 
