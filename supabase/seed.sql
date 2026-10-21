@@ -113,8 +113,8 @@ insert into public.courses (id, job_key, job_name, level, title, hours, publishe
   ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true, false),
   ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true, false),
   ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true, false),
-  ('free-0-f', 'free-0', 'Comment devenir freelance', 'f', 'Comment devenir freelance', 12, true, true),
-  ('free-1-f', 'free-1', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 6, true, false)
+  ('free-0-f', 'free-0', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 12, true, false),
+  ('free-1-f', 'free-1', 'Comment devenir freelance', 'f', 'Comment devenir freelance', 6, true, true)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
   title = excluded.title, hours = excluded.hours, published = excluded.published, free_preview = excluded.free_preview;
 
