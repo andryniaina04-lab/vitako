@@ -2167,7 +2167,7 @@ document.addEventListener('click', async (e) => {
   if (!t) return;
   if (t.dataset.act === 'hero-play') {
     const id = t.dataset.yt;
-    t.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    t.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&controls=1&rel=0&playsinline=1&modestbranding=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
     return;
   }
   if (t.dataset.act === 'hero-quality') {
