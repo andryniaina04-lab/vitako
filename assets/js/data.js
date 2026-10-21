@@ -2274,7 +2274,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Les métiers du travail en ligne",
-    "minutes": 8
+    "minutes": 7
    },
    {
     "title": "Ce qu'on peut gagner : salaires et comparaisons",
@@ -2282,7 +2282,7 @@ export const PUBLISHED = {
    },
    {
     "title": "Pourquoi se former et commencer avec Vitako",
-    "minutes": 8
+    "minutes": 7
    }
   ]
  },
