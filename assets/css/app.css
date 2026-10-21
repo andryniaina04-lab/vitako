@@ -1194,11 +1194,11 @@ a.chip{text-decoration:none}
 .sc-notes{display:flex;flex-direction:column;gap:6px;margin-top:12px!important;font-size:.9rem}
 .sc-notes li::before{content:"▸ ";color:var(--s4);font-weight:800}
 /* chiffres clés */
-.sc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.sc-kpis li{--c:var(--s0);padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border-left:4px solid var(--c);display:flex;flex-direction:column;gap:4px}
+.sc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.sc-kpis li{--c:var(--s0);padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border-left:4px solid var(--c);display:flex;flex-direction:column;gap:4px;min-width:0}
 .sc-kpis li:nth-child(6n+2){--c:var(--s1)}.sc-kpis li:nth-child(6n+3){--c:var(--s2)}.sc-kpis li:nth-child(6n+4){--c:var(--s3)}.sc-kpis li:nth-child(6n+5){--c:var(--s4)}
-.sc-kpis b{font-family:var(--display);font-size:1.45rem;color:var(--c);line-height:1.1}
-.sc-kpis span{font-size:.88rem;line-height:1.4}
+.sc-kpis b{font-family:var(--display);font-size:clamp(.88rem,2.5vw,1.15rem);color:var(--c);line-height:1.2;overflow-wrap:break-word;word-break:break-word;hyphens:auto}
+.sc-kpis span{font-size:.85rem;line-height:1.4;overflow-wrap:break-word}
 /* liste à cocher */
 .sc-check{display:flex;flex-direction:column;gap:6px}
 .sc-check li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;line-height:1.45}
