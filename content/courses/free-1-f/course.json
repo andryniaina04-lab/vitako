@@ -1,0 +1,87 @@
+{
+  "id": "free-1-f",
+  "hours": 6,
+  "free_preview": true,
+  "description": "Le travail en ligne, c'est travailler pour des clients du monde entier depuis chez vous — sans transport, sans horaire imposé, sans chef. Cette formation gratuite vous explique ce que c'est vraiment : les métiers possibles, ce qu'on gagne, la différence avec un salaire à Madagascar, et pourquoi se former avec Vitako peut changer votre vie. Vous terminerez avec un plan clair pour commencer.",
+  "objectives": [
+    "Comprendre ce qu'est le télétravail et le freelance, et la différence entre les deux",
+    "Connaître les avantages concrets du travail en ligne par rapport au travail au bureau",
+    "Découvrir les principaux métiers qu'on peut exercer à distance depuis Madagascar",
+    "Comparer les revenus en ligne avec les salaires locaux, avec des chiffres réels",
+    "Savoir pourquoi se former est indispensable et comment Vitako peut vous aider"
+  ],
+  "modules": [
+    {
+      "title": "Télétravail et freelance : ce que c'est vraiment",
+      "summary": "Définitions claires, différences entre salarié à distance, freelance et prestataire. Qui peut le faire. Les idées reçues les plus courantes.",
+      "file": "module-1.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quelle est la différence principale entre un salarié en télétravail et un freelance ?", "options": ["Le salarié a un seul employeur, le freelance choisit ses clients", "Le freelance doit aller au bureau parfois", "Le salarié peut refuser des missions", "Il n'y a aucune différence"], "correct": 0 },
+        { "q": "Pour devenir freelance à distance, quel est le prérequis le plus important ?", "options": ["Maîtriser une compétence que des clients sont prêts à payer", "Habiter dans un pays étranger", "Avoir un diplôme universitaire", "Parler anglais couramment"], "correct": 0 },
+        { "q": "Laquelle de ces idées reçues est fausse ?", "options": ["Le travail en ligne est réservé aux informaticiens", "On peut travailler en ligne depuis Madagascar", "Internet suffit pour commencer", "Des clients francophones existent"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les avantages de la liberté",
+      "summary": "Liberté d'horaire, de lieu, de clients, de revenus. Fini les transports, les réunions inutiles, le chef. Les vraies responsabilités qui viennent avec.",
+      "file": "module-2.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel avantage majeur du freelance par rapport au travail au bureau à Antananarivo ?", "options": ["Pas de transport : on travaille depuis chez soi ou un café", "On ne travaille jamais le week-end", "Les clients paient toujours à l'avance", "On n'a jamais de délais à respecter"], "correct": 0 },
+        { "q": "Quelle responsabilité accompagne la liberté du freelance ?", "options": ["Se gérer soi-même : trouver ses clients, respecter les délais, gérer ses revenus", "Payer plus d'impôts qu'un salarié", "Travailler obligatoirement la nuit", "Avoir un bureau loué"], "correct": 0 },
+        { "q": "Un freelance peut-il choisir ses horaires de travail ?", "options": ["Oui, dans la limite des délais convenus avec ses clients", "Non, il doit travailler de 8h à 17h", "Seulement le week-end", "Non, ses clients imposent tout"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Les métiers du travail en ligne",
+      "summary": "Tour d'horizon des métiers accessibles : design, rédaction, développement, marketing, assistance, data, traduction, et plus encore. Ce que chacun demande.",
+      "file": "module-3.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Lequel de ces métiers peut se faire entièrement à distance ?", "options": ["Community manager", "Maçon", "Chauffeur de taxi", "Cuisinier"], "correct": 0 },
+        { "q": "Quel métier numérique ne nécessite pas de coder ?", "options": ["Rédacteur web", "Développeur back-end", "Administrateur serveur", "Ingénieur réseau"], "correct": 0 },
+        { "q": "Pour commencer à travailler en ligne, quelle approche est la plus réaliste ?", "options": ["Choisir un seul métier, se former sérieusement et chercher ses premiers clients", "Proposer tous les services possibles dès le départ", "Attendre d'avoir 10 ans d'expérience", "Créer une entreprise d'abord"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Ce qu'on peut gagner : salaires et comparaisons",
+      "summary": "Revenus réels des freelances débutants et confirmés. Comparaison avec les salaires à Madagascar. Ce que ça représente en ariary. Les plateformes où ces revenus sont possibles.",
+      "file": "module-4.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Quel est le salaire minimum légal à Madagascar en 2024 ?", "options": ["Autour de 260 000 à 320 000 Ar par mois selon le secteur", "3 000 000 Ar par mois", "100 000 Ar par mois", "Il n'en existe pas"], "correct": 0 },
+        { "q": "Un graphiste débutant sur ComeUp peut facturer combien pour un logo simple ?", "options": ["Entre 30 et 80 euros, soit 150 000 à 400 000 Ar", "5 euros seulement", "Toujours plus de 1 000 euros", "Rien : les débutants ne sont pas payés"], "correct": 0 },
+        { "q": "Pourquoi les revenus en ligne sont-ils avantageux pour quelqu'un qui vit à Madagascar ?", "options": ["Les tarifs internationaux sont élevés par rapport au coût de la vie local", "Les clients étrangers paient en or", "Il n'y a pas de concurrence", "Les plateformes donnent de l'argent gratuitement"], "correct": 0 }
+      ]
+    },
+    {
+      "title": "Pourquoi se former et commencer avec Vitako",
+      "summary": "Pourquoi la compétence fait toute la différence. Ce que Vitako propose : les domaines, les formations, le suivi. Comment débuter et quelles formations choisir.",
+      "file": "module-5.md",
+      "video_url": "",
+      "questions": [
+        { "q": "Pourquoi se former avant de chercher des clients ?", "options": ["Pour livrer un travail de qualité et se démarquer de la concurrence", "Pour obtenir un badge officiel de l'État", "Parce que les plateformes le demandent", "Pour repousser le moment de commencer"], "correct": 0 },
+        { "q": "Que propose Vitako pour vous aider à démarrer ?", "options": ["Des formations complètes par métier, avec exercices, projets et attestation", "Trouver des clients à votre place", "Créer votre profil sur Upwork", "Un emploi garanti"], "correct": 0 },
+        { "q": "Quelle est la première chose à faire après cette formation d'introduction ?", "options": ["Choisir un métier et commencer sa formation Vitako", "Attendre d'être prêt pendant 6 mois", "S'inscrire sur toutes les plateformes", "Demander un visa pour travailler à l'étranger"], "correct": 0 }
+      ]
+    }
+  ],
+  "exam": [
+    { "q": "Quelle est la définition du freelance ?", "options": ["Un travailleur indépendant qui vend ses services à plusieurs clients", "Un employé qui travaille chez lui", "Un étudiant qui cherche un stage", "Un informaticien qui programme"], "correct": 0 },
+    { "q": "Qu'est-ce que le télétravail ?", "options": ["Travailler à distance pour un employeur, sans se déplacer au bureau", "Travailler la nuit", "Avoir deux emplois en même temps", "Regarder des formations en ligne"], "correct": 0 },
+    { "q": "Quel avantage du freelance est cité le plus souvent par les travailleurs malgaches ?", "options": ["Plus besoin de passer des heures dans les transports à Antananarivo", "On ne travaille jamais plus de 4 heures par jour", "Les clients paient toujours en espèces", "On peut refuser tous les délais"], "correct": 0 },
+    { "q": "Peut-on travailler depuis n'importe où en freelance ?", "options": ["Oui, depuis chez soi, un café, une ville de province ou un autre pays", "Non, uniquement depuis Antananarivo", "Non, il faut un bureau loué", "Seulement si on a la fibre optique"], "correct": 0 },
+    { "q": "Quel métier numérique consiste à gérer les réseaux sociaux d'une entreprise ?", "options": ["Community manager", "Développeur web", "Traducteur", "Annotateur de données"], "correct": 0 },
+    { "q": "Un rédacteur web freelance débutant peut espérer combien pour un article de 800 mots ?", "options": ["Entre 15 et 40 euros, soit 75 000 à 200 000 Ar", "5 centimes", "Toujours plus de 500 euros", "Rien les premières années"], "correct": 0 },
+    { "q": "Pourquoi le travail en ligne est-il particulièrement intéressant pour quelqu'un qui vit à Madagascar ?", "options": ["On est payé à des tarifs internationaux mais on vit avec un coût de la vie local", "On évite de payer des impôts", "Les clients donnent des billets d'avion", "Il n'y a pas de concurrence en Afrique"], "correct": 0 },
+    { "q": "Qu'est-ce qu'un portfolio ?", "options": ["Une collection d'exemples de travaux réalisés, pour montrer ses compétences", "Un diplôme universitaire", "Un compte bancaire pour recevoir ses paiements", "Un profil sur LinkedIn"], "correct": 0 },
+    { "q": "Quelle est la principale raison pour laquelle les freelances sans formation peinent à trouver des clients ?", "options": ["Leur travail n'est pas assez professionnel face à la concurrence mondiale", "Ils manquent de chance", "Les plateformes bloquent les Malgaches", "Internet est trop lent"], "correct": 0 },
+    { "q": "Quel métier numérique consiste à vérifier et corriger des textes en français ?", "options": ["Correcteur et relecteur", "Développeur front-end", "Monteur vidéo", "Gestionnaire de publicités"], "correct": 0 },
+    { "q": "Peut-on avoir plusieurs clients en même temps en freelance ?", "options": ["Oui, c'est même l'idéal pour stabiliser ses revenus", "Non, c'est interdit sur les plateformes", "Non, un seul client à la fois est obligatoire", "Seulement si on est inscrit sur plusieurs plateformes"], "correct": 0 },
+    { "q": "Combien d'heures par semaine faut-il consacrer au minimum pour démarrer un freelance sérieux ?", "options": ["15 à 20 heures, entre la formation, la pratique et la prospection", "2 heures le dimanche", "80 heures sans pause", "Aucune heure si on est talentueux"], "correct": 0 },
+    { "q": "Quelle est la différence entre un revenu fixe et un revenu variable ?", "options": ["Le revenu fixe est le même chaque mois (salarié), le variable dépend des missions (freelance)", "Le revenu fixe est toujours plus élevé", "Le revenu variable est réservé aux chefs d'entreprise", "Il n'y a pas de différence"], "correct": 0 },
+    { "q": "Pourquoi faut-il choisir un seul métier pour commencer ?", "options": ["Pour se concentrer, progresser vite et avoir un portfolio cohérent", "Parce que les plateformes le demandent", "Pour éviter de travailler trop", "Parce que les autres métiers sont trop difficiles"], "correct": 0 },
+    { "q": "Qu'est-ce qu'une attestation Vitako ?", "options": ["Un certificat qui prouve qu'on a réussi une formation et qu'on maîtrise le métier", "Un diplôme d'État reconnu par le gouvernement", "Une autorisation de travailler à l'étranger", "Une inscription sur une plateforme de freelance"], "correct": 0 }
+  ]
+}

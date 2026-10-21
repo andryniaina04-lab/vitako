@@ -2,120 +2,121 @@
 -- À exécuter dans Supabase > SQL Editor après schema.sql, et à chaque mise à jour du contenu.
 -- Il remplace le contenu des formations sans toucher aux comptes, paiements ni attestations.
 begin;
-insert into public.courses (id, job_key, job_name, level, title, hours, published) values
-  ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 50, true),
-  ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true),
-  ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true),
-  ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true),
-  ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 18, true),
-  ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 17, true),
-  ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true),
-  ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true),
-  ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 12, true),
-  ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 17, true),
-  ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 49, true),
-  ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true),
-  ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 18, true),
-  ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, true),
-  ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true),
-  ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true),
-  ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 15, true),
-  ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 17, true),
-  ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true),
-  ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true),
-  ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true),
-  ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true),
-  ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true),
-  ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 20, true),
-  ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 18, true),
-  ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 17, true),
-  ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true),
-  ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true),
-  ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true),
-  ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 16, true),
-  ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 22, true),
-  ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 17, true),
-  ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true),
-  ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true),
-  ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true),
-  ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true),
-  ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true),
-  ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 17, true),
-  ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true),
-  ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Administrateur Microsoft 365 et Google Workspace', 17, true),
-  ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 49, true),
-  ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true),
-  ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true),
-  ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true),
-  ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true),
-  ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true),
-  ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true),
-  ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 16, true),
-  ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, true),
-  ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 14, true),
-  ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true),
-  ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true),
-  ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true),
-  ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 16, true),
-  ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 13, true),
-  ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 15, true),
-  ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true),
-  ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 15, true),
-  ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, true),
-  ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 15, true),
-  ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 49, true),
-  ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true),
-  ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 13, true),
-  ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 15, true),
-  ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true),
-  ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true),
-  ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true),
-  ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 18, true),
-  ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 49, true),
-  ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 17, true),
-  ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true),
-  ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true),
-  ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true),
-  ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true),
-  ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true),
-  ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true),
-  ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true),
-  ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, true),
-  ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true),
-  ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 13, true),
-  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 50, true),
-  ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true),
-  ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true),
-  ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true),
-  ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 15, true),
-  ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 16, true),
-  ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true),
-  ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 15, true),
-  ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true),
-  ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true),
-  ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true),
-  ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true),
-  ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true),
-  ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 16, true),
-  ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 16, true),
-  ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 17, true),
-  ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true),
-  ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true),
-  ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true),
-  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true),
-  ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true),
-  ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true),
-  ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true),
-  ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true),
-  ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true),
-  ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true),
-  ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true),
-  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true),
-  ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true),
-  ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true),
-  ('free-0-f', 'free-0', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 12, true)
+insert into public.courses (id, job_key, job_name, level, title, hours, published, free_preview) values
+  ('design-0-f', 'design-0', 'Graphiste', 'f', 'Graphiste – Fondamentaux', 50, true, false),
+  ('design-0-a', 'design-0', 'Graphiste', 'a', 'Graphiste – Avancé', 15, true, false),
+  ('design-1-f', 'design-1', 'Designer UI/UX', 'f', 'Designer UI/UX – Fondamentaux', 16, true, false),
+  ('design-1-a', 'design-1', 'Designer UI/UX', 'a', 'Designer UI/UX – Avancé', 17, true, false),
+  ('design-2-f', 'design-2', 'Illustrateur numérique', 'f', 'Illustrateur numérique – Fondamentaux', 18, true, false),
+  ('design-2-a', 'design-2', 'Illustrateur numérique', 'a', 'Illustrateur numérique – Avancé', 17, true, false),
+  ('design-3-f', 'design-3', 'Retoucheur photo', 'f', 'Retoucheur photo – Fondamentaux', 15, true, false),
+  ('design-3-a', 'design-3', 'Retoucheur photo', 'a', 'Retoucheur photo – Avancé', 17, true, false),
+  ('design-4-f', 'design-4', 'Créateur de miniatures YouTube', 'f', 'Créateur de miniatures YouTube – Fondamentaux', 12, true, false),
+  ('design-4-a', 'design-4', 'Créateur de miniatures YouTube', 'a', 'Créateur de miniatures YouTube – Avancé', 17, true, false),
+  ('media-0-f', 'media-0', 'Monteur vidéo', 'f', 'Monteur vidéo – Fondamentaux', 49, true, false),
+  ('media-0-a', 'media-0', 'Monteur vidéo', 'a', 'Monteur vidéo – Avancé', 17, true, false),
+  ('media-1-f', 'media-1', 'Motion designer', 'f', 'Motion designer – Fondamentaux', 18, true, false),
+  ('media-1-a', 'media-1', 'Motion designer', 'a', 'Motion designer – Avancé', 17, true, false),
+  ('media-2-f', 'media-2', 'Monteur audio et podcast', 'f', 'Monteur audio et podcast – Fondamentaux', 15, true, false),
+  ('media-2-a', 'media-2', 'Monteur audio et podcast', 'a', 'Monteur audio et podcast – Avancé', 17, true, false),
+  ('media-3-f', 'media-3', 'Comédien voix off', 'f', 'Comédien voix off – Fondamentaux', 15, true, false),
+  ('media-3-a', 'media-3', 'Comédien voix off', 'a', 'Comédien voix off – Avancé', 17, true, false),
+  ('media-4-f', 'media-4', 'Sous-titreur', 'f', 'Sous-titreur – Fondamentaux', 13, true, false),
+  ('media-4-a', 'media-4', 'Sous-titreur', 'a', 'Sous-titreur – Avancé', 15, true, false),
+  ('dev-0-f', 'dev-0', 'Développeur front-end', 'f', 'Développeur front-end – Fondamentaux', 20, true, false),
+  ('dev-0-a', 'dev-0', 'Développeur front-end', 'a', 'Développeur front-end – Avancé', 20, true, false),
+  ('dev-1-f', 'dev-1', 'Développeur back-end', 'f', 'Développeur back-end – Fondamentaux', 20, true, false),
+  ('dev-1-a', 'dev-1', 'Développeur back-end', 'a', 'Développeur back-end – Avancé', 20, true, false),
+  ('dev-2-f', 'dev-2', 'Intégrateur web', 'f', 'Intégrateur web – Fondamentaux', 18, true, false),
+  ('dev-2-a', 'dev-2', 'Intégrateur web', 'a', 'Intégrateur web – Avancé', 17, true, false),
+  ('dev-3-f', 'dev-3', 'Développeur WordPress et Shopify', 'f', 'Développeur WordPress et Shopify – Fondamentaux', 16, true, false),
+  ('dev-3-a', 'dev-3', 'Développeur WordPress et Shopify', 'a', 'Développeur WordPress et Shopify – Avancé', 17, true, false),
+  ('dev-4-f', 'dev-4', 'Développeur no-code', 'f', 'Développeur no-code – Fondamentaux', 16, true, false),
+  ('dev-4-a', 'dev-4', 'Développeur no-code', 'a', 'Développeur no-code – Avancé', 16, true, false),
+  ('tech-0-f', 'tech-0', 'Développeur mobile', 'f', 'Développeur mobile – Fondamentaux', 22, true, false),
+  ('tech-0-a', 'tech-0', 'Développeur mobile', 'a', 'Développeur mobile – Avancé', 17, true, false),
+  ('tech-1-f', 'tech-1', 'Testeur logiciel (QA)', 'f', 'Testeur logiciel (QA) – Fondamentaux', 16, true, false),
+  ('tech-1-a', 'tech-1', 'Testeur logiciel (QA)', 'a', 'Testeur logiciel (QA) – Avancé', 17, true, false),
+  ('tech-2-f', 'tech-2', 'Technicien support à distance', 'f', 'Technicien support à distance – Fondamentaux', 16, true, false),
+  ('tech-2-a', 'tech-2', 'Technicien support à distance', 'a', 'Technicien support à distance – Avancé', 17, true, false),
+  ('tech-3-f', 'tech-3', 'Administrateur systèmes et DevOps', 'f', 'Administrateur systèmes et DevOps – Fondamentaux', 22, true, false),
+  ('tech-3-a', 'tech-3', 'Administrateur systèmes et DevOps', 'a', 'Administrateur systèmes et DevOps – Avancé', 17, true, false),
+  ('tech-4-f', 'tech-4', 'Analyste en cybersécurité', 'f', 'Analyste en cybersécurité – Fondamentaux', 22, true, false),
+  ('tech-4-a', 'tech-4', 'Analyste en cybersécurité', 'a', 'Administrateur Microsoft 365 et Google Workspace', 17, true, false),
+  ('mkt-0-f', 'mkt-0', 'Community manager', 'f', 'Community manager – Fondamentaux', 49, true, false),
+  ('mkt-0-a', 'mkt-0', 'Community manager', 'a', 'Community manager – Avancé', 17, true, false),
+  ('mkt-1-f', 'mkt-1', 'Gestionnaire de publicités en ligne', 'f', 'Gestionnaire de publicités en ligne – Fondamentaux', 14, true, false),
+  ('mkt-1-a', 'mkt-1', 'Gestionnaire de publicités en ligne', 'a', 'Gestionnaire de publicités en ligne – Avancé', 16, true, false),
+  ('mkt-2-f', 'mkt-2', 'Spécialiste SEO', 'f', 'Spécialiste SEO – Fondamentaux', 15, true, false),
+  ('mkt-2-a', 'mkt-2', 'Spécialiste SEO', 'a', 'Spécialiste SEO – Avancé', 16, true, false),
+  ('mkt-3-f', 'mkt-3', 'Email marketeur', 'f', 'Email marketeur – Fondamentaux', 14, true, false),
+  ('mkt-3-a', 'mkt-3', 'Email marketeur', 'a', 'Email marketeur – Avancé', 16, true, false),
+  ('mkt-4-f', 'mkt-4', 'Créateur de contenu UGC', 'f', 'Créateur de contenu UGC – Fondamentaux', 13, true, false),
+  ('mkt-4-a', 'mkt-4', 'Créateur de contenu UGC', 'a', 'Créateur de contenu UGC – Avancé', 14, true, false),
+  ('lang-0-f', 'lang-0', 'Rédacteur web et copywriter', 'f', 'Rédacteur web et copywriter – Fondamentaux', 15, true, false),
+  ('lang-0-a', 'lang-0', 'Rédacteur web et copywriter', 'a', 'Rédacteur web et copywriter – Avancé', 15, true, false),
+  ('lang-1-f', 'lang-1', 'Traducteur', 'f', 'Traducteur – Fondamentaux', 15, true, false),
+  ('lang-1-a', 'lang-1', 'Traducteur', 'a', 'Traducteur – Avancé', 16, true, false),
+  ('lang-2-f', 'lang-2', 'Transcripteur', 'f', 'Transcripteur – Fondamentaux', 13, true, false),
+  ('lang-2-a', 'lang-2', 'Transcripteur', 'a', 'Transcripteur – Avancé', 15, true, false),
+  ('lang-3-f', 'lang-3', 'Correcteur et relecteur', 'f', 'Correcteur et relecteur – Fondamentaux', 15, true, false),
+  ('lang-3-a', 'lang-3', 'Correcteur et relecteur', 'a', 'Correcteur et relecteur – Avancé', 15, true, false),
+  ('lang-4-f', 'lang-4', 'Rédacteur de fiches produits', 'f', 'Rédacteur de fiches produits – Fondamentaux', 14, true, false),
+  ('lang-4-a', 'lang-4', 'Rédacteur de fiches produits', 'a', 'Rédacteur de fiches produits – Avancé', 15, true, false),
+  ('data-0-f', 'data-0', 'Annotateur de données IA', 'f', 'Annotateur de données IA – Fondamentaux', 49, true, false),
+  ('data-0-a', 'data-0', 'Annotateur de données IA', 'a', 'Annotateur de données IA – Avancé', 16, true, false),
+  ('data-1-f', 'data-1', 'Évaluateur de réponses d’IA', 'f', 'Évaluateur de réponses d’IA – Fondamentaux', 13, true, false),
+  ('data-1-a', 'data-1', 'Évaluateur de réponses d’IA', 'a', 'Évaluateur de réponses d’IA – Avancé', 15, true, false),
+  ('data-2-f', 'data-2', 'Opérateur de saisie de données', 'f', 'Opérateur de saisie de données – Fondamentaux', 14, true, false),
+  ('data-2-a', 'data-2', 'Opérateur de saisie de données', 'a', 'Opérateur de saisie de données – Avancé', 18, true, false),
+  ('data-3-f', 'data-3', 'Analyste de données', 'f', 'Analyste de données – Fondamentaux', 18, true, false),
+  ('data-3-a', 'data-3', 'Analyste de données', 'a', 'Analyste de données – Avancé', 18, true, false),
+  ('data-4-f', 'data-4', 'Spécialiste automatisation et IA', 'f', 'Spécialiste automatisation et IA – Fondamentaux', 49, true, false),
+  ('data-4-a', 'data-4', 'Spécialiste automatisation et IA', 'a', 'Spécialiste automatisation et IA – Avancé', 17, true, false),
+  ('client-0-f', 'client-0', 'Téléconseiller à distance', 'f', 'Téléconseiller à distance – Fondamentaux', 14, true, false),
+  ('client-0-a', 'client-0', 'Téléconseiller à distance', 'a', 'Téléconseiller à distance – Avancé', 18, true, false),
+  ('client-1-f', 'client-1', 'Agent support chat et e-mail', 'f', 'Agent support chat et e-mail – Fondamentaux', 13, true, false),
+  ('client-1-a', 'client-1', 'Agent support chat et e-mail', 'a', 'Agent support chat et e-mail – Avancé', 16, true, false),
+  ('client-2-f', 'client-2', 'Prospecteur et prise de rendez-vous', 'f', 'Prospecteur et prise de rendez-vous – Fondamentaux', 14, true, false),
+  ('client-2-a', 'client-2', 'Prospecteur et prise de rendez-vous', 'a', 'Prospecteur et prise de rendez-vous – Avancé', 15, true, false),
+  ('client-3-f', 'client-3', 'Gestionnaire de réservations', 'f', 'Gestionnaire de réservations – Fondamentaux', 14, true, false),
+  ('client-3-a', 'client-3', 'Gestionnaire de réservations', 'a', 'Gestionnaire de réservations – Avancé', 16, true, false),
+  ('client-4-f', 'client-4', 'Modérateur de contenu', 'f', 'Modérateur de contenu – Fondamentaux', 12, true, false),
+  ('client-4-a', 'client-4', 'Modérateur de contenu', 'a', 'Modérateur de contenu – Avancé', 13, true, false),
+  ('gestion-0-f', 'gestion-0', 'Assistant virtuel', 'f', 'Assistant virtuel – Fondamentaux', 50, true, false),
+  ('gestion-0-a', 'gestion-0', 'Assistant virtuel', 'a', 'Assistant virtuel – Avancé', 15, true, false),
+  ('gestion-1-f', 'gestion-1', 'Gestionnaire de boutique en ligne', 'f', 'Gestionnaire de boutique en ligne – Fondamentaux', 14, true, false),
+  ('gestion-1-a', 'gestion-1', 'Gestionnaire de boutique en ligne', 'a', 'Gestionnaire de boutique en ligne – Avancé', 16, true, false),
+  ('gestion-2-f', 'gestion-2', 'Gestionnaire de catalogue produits', 'f', 'Gestionnaire de catalogue produits – Fondamentaux', 15, true, false),
+  ('gestion-2-a', 'gestion-2', 'Gestionnaire de catalogue produits', 'a', 'Gestionnaire de catalogue produits – Avancé', 16, true, false),
+  ('gestion-3-f', 'gestion-3', 'Agent SAV e-commerce', 'f', 'Agent SAV e-commerce – Fondamentaux', 14, true, false),
+  ('gestion-3-a', 'gestion-3', 'Agent SAV e-commerce', 'a', 'Agent SAV e-commerce – Avancé', 15, true, false),
+  ('gestion-4-f', 'gestion-4', 'Aide-comptable en ligne', 'f', 'Aide-comptable en ligne – Fondamentaux', 16, true, false),
+  ('gestion-4-a', 'gestion-4', 'Aide-comptable en ligne', 'a', 'Aide-comptable en ligne – Avancé', 17, true, false),
+  ('edu-0-f', 'edu-0', 'Professeur de langue en ligne', 'f', 'Professeur de langue en ligne – Fondamentaux', 14, true, false),
+  ('edu-0-a', 'edu-0', 'Professeur de langue en ligne', 'a', 'Professeur de langue en ligne – Avancé', 16, true, false),
+  ('edu-1-f', 'edu-1', 'Formateur en ligne', 'f', 'Formateur en ligne – Fondamentaux', 15, true, false),
+  ('edu-1-a', 'edu-1', 'Formateur en ligne', 'a', 'Formateur en ligne – Avancé', 16, true, false),
+  ('edu-2-f', 'edu-2', 'Créateur de cours en ligne', 'f', 'Créateur de cours en ligne – Fondamentaux', 16, true, false),
+  ('edu-2-a', 'edu-2', 'Créateur de cours en ligne', 'a', 'Créateur de cours en ligne – Avancé', 17, true, false),
+  ('edu-3-f', 'edu-3', 'Chef de projet digital', 'f', 'Chef de projet digital – Fondamentaux', 15, true, false),
+  ('edu-3-a', 'edu-3', 'Chef de projet digital', 'a', 'Chef de projet digital – Avancé', 16, true, false),
+  ('edu-4-f', 'edu-4', 'Assistant administratif et RH', 'f', 'Assistant administratif et RH – Fondamentaux', 14, true, false),
+  ('edu-4-a', 'edu-4', 'Assistant administratif et RH', 'a', 'Assistant administratif et RH – Avancé', 16, true, false),
+  ('perso-0-f', 'perso-0', 'Confiance en soi', 'f', 'Confiance en soi', 8, true, false),
+  ('perso-1-f', 'perso-1', 'Leadership personnel', 'f', 'Leadership personnel', 8, true, false),
+  ('perso-2-f', 'perso-2', 'Gestion du temps et productivité', 'f', 'Gestion du temps et productivité', 8, true, false),
+  ('perso-3-f', 'perso-3', 'Gérer ses projets et ses missions', 'f', 'Gérer ses projets et ses missions', 9, true, false),
+  ('perso-4-f', 'perso-4', 'Communication professionnelle', 'f', 'Communication professionnelle', 9, true, false),
+  ('perso-5-f', 'perso-5', 'Réussir ses entretiens avec les clients', 'f', 'Réussir ses entretiens avec les clients', 9, true, false),
+  ('perso-6-f', 'perso-6', 'Prise de parole et visioconférence', 'f', 'Prise de parole et visioconférence', 8, true, false),
+  ('perso-7-f', 'perso-7', 'Gestion du stress et équilibre de vie', 'f', 'Gestion du stress et équilibre de vie', 8, true, false),
+  ('num-0-f', 'num-0', 'Informatique et bureautique', 'f', 'Informatique et bureautique', 12, true, false),
+  ('num-1-f', 'num-1', 'Intelligence artificielle au quotidien', 'f', 'Intelligence artificielle au quotidien', 10, true, false),
+  ('free-0-f', 'free-0', 'Comment devenir freelance', 'f', 'Comment devenir freelance', 12, true, true),
+  ('free-1-f', 'free-1', 'Trouver des clients en freelance', 'f', 'Trouver des clients en freelance', 6, true, false)
 on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,
-  title = excluded.title, hours = excluded.hours, published = excluded.published;
+  title = excluded.title, hours = excluded.hours, published = excluded.published, free_preview = excluded.free_preview;
 
 -- client-0-a
 delete from public.exam_questions where course_id = 'client-0-a';
@@ -30978,6 +30979,564 @@ insert into public.exam_questions (course_id, question, options, correct) values
 insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que faire si un client sur une plateforme ne paie pas ?', '["Livrer quand même","Ouvrir un litige via le service d''aide","Publier son nom partout","Abandonner"]'::jsonb, 1);
 insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Que noter dans un tableau de suivi ?', '["Ses mots de passe","Rien","Date, client, source, étape, prochaine action, montant","Seulement les clients gagnés"]'::jsonb, 2);
 insert into public.exam_questions (course_id, question, options, correct) values ('free-0-f', 'Quelle erreur faire quand on a du travail ?', '["Continuer à prospecter un peu","Demander des avis","Fidéliser","Arrêter complètement de chercher des clients"]'::jsonb, 3);
+
+-- free-1-f
+delete from public.exam_questions where course_id = 'free-1-f';
+delete from public.module_questions where course_id = 'free-1-f';
+delete from public.lessons where course_id = 'free-1-f' and module_index >= 5;
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 0, 'Télétravail et freelance : ce que c''est vraiment', 'Définitions claires, différences entre salarié à distance, freelance et prestataire. Qui peut le faire. Les idées reçues les plus courantes.', 'Chaque jour, des milliers de personnes dans le monde travaillent depuis chez elles pour des clients qu''elles n''ont jamais rencontrés. Ce n''est pas de la magie : c''est le travail en ligne. Cette leçon vous explique exactement ce que cela signifie, comment cela fonctionne, et pourquoi c''est tout à fait possible depuis Madagascar.
+
+> [!objectifs] Objectifs du module
+> 1. Comprendre la différence entre télétravail et freelance.
+> 2. Savoir qui peut travailler en ligne et ce que ça demande réellement.
+> 3. Reconnaître et dépasser les idées reçues les plus courantes.
+
+## Télétravail ou freelance ?
+
+Ces deux mots décrivent des réalités différentes. Beaucoup de gens les confondent.
+
+| Situation | Définition | Exemple |
+| --- | --- | --- |
+| **Salarié au bureau** | Employé d''une entreprise, présent physiquement | Comptable dans une société à Antananarivo |
+| **Salarié en télétravail** | Employé d''une entreprise, travaille depuis chez lui | Développeur pour une entreprise française, depuis Tamatave |
+| **Freelance** | Indépendant, vend ses services à plusieurs clients | Graphiste qui crée des logos pour des boutiques en ligne |
+| **Prestataire** | Entreprise individuelle ou petite société, travaille pour d''autres sociétés | Agence de 2 personnes qui gère les réseaux sociaux de 5 restaurants |
+
+La grande différence : le salarié a un seul employeur qui le paie chaque mois. Le freelance a plusieurs clients, facture ses services, et gère son propre temps.
+
+> [!definition] Freelance
+> Un freelance (ou travailleur indépendant) vend ses compétences à des clients, mission par mission ou au forfait mensuel. Il choisit ses clients, fixe ses prix et s''organise seul. Il n''a pas de patron fixe.
+
+## Ce que ça demande vraiment
+
+Devenir freelance ne demande pas d''être génial dès le départ. Mais ça demande trois choses concrètes :
+
+1. **Une compétence** qu''un client est prêt à payer — pas besoin de tout savoir, mais maîtriser un domaine précis.
+2. **Un accès à Internet** — une connexion stable suffit pour la plupart des métiers.
+3. **De la régularité** — respecter les délais, répondre aux messages, livrer ce qui a été promis.
+
+C''est tout. Pas de diplôme obligatoire. Pas de visa. Pas de bureau.
+
+> [!exemple] Voici deux exemples réels
+> **Haingo, 24 ans, Antananarivo.** Elle s''est formée en rédaction web pendant 2 mois. Aujourd''hui elle écrit des articles pour trois boutiques en ligne françaises. Elle travaille 4 heures par matin, depuis son appartement, et gagne l''équivalent de 400 000 Ar par mois.
+>
+> **Tojo, 29 ans, Fianarantsoa.** Il a appris à monter des vidéos en regardant des tutoriels, puis en suivant une formation complète. Il a un client régulier en France et deux boutiques à Madagascar. Il gagne entre 600 000 et 900 000 Ar par mois selon le mois.
+
+## Les idées reçues les plus courantes
+
+Beaucoup de gens à Madagascar entendent parler du travail en ligne, mais ont des doutes. Voici les plus fréquents, et la réalité.
+
+```schema comparaison
+titre: Idées reçues vs réalité
+colonnes: Ce qu''on croit | Ce qui est vrai
+C''est réservé aux informaticiens | Il existe des dizaines de métiers : graphiste, rédacteur, assistant, traducteur, community manager...
+Il faut parler anglais parfaitement | Beaucoup de clients sont francophones (France, Belgique, Canada, Suisse, Afrique)
+C''est compliqué à mettre en place | Une connexion, un métier, un profil en ligne : c''est tout
+Il faut beaucoup d''argent pour démarrer | Beaucoup de métiers démarrent avec un téléphone ou un ordinateur basique
+On ne peut pas gagner assez | Un graphiste débutant gagne souvent 2 à 5 fois le SMIC malgache dès ses premiers clients
+Internet à Madagascar est trop lent | La plupart des métiers numériques utilisent peu de bande passante (textes, petits fichiers)
+```
+
+> [!attention] L''erreur qui coûte le plus cher
+> Attendre « d''être prêt » avant de commencer à se former. Beaucoup de gens passent des années à se dire qu''ils n''ont pas encore le bon moment, le bon ordinateur, ou la bonne connexion. En réalité, les gens qui réussissent commencent avec ce qu''ils ont et s''améliorent en chemin.
+
+## Qui peut le faire ?
+
+Il n''y a pas de profil type. Des personnes de tous les âges, toutes les villes et tous les niveaux d''études réussissent en freelance à Madagascar. Ce qui compte vraiment :
+
+- Vouloir apprendre et pratiquer régulièrement
+- Avoir accès à Internet (même avec du mobile data)
+- Savoir lire et écrire en français (pour la plupart des métiers)
+- Être capable de respecter des engagements
+
+> [!madagascar] Madagascar a des atouts
+> Madagascar est dans le fuseau horaire UTC+3. C''est proche de l''Europe (1 à 3 heures de décalage avec la France). Un client français qui envoie un brief le soir le retrouve fait le lendemain matin. Le faible coût de la vie permet de vivre très bien avec des revenus qui paraissent modestes en Europe mais sont élevés ici.
+
+> [!retenir]
+> - Le **télétravail** = salarié qui travaille depuis chez lui. Le **freelance** = indépendant avec plusieurs clients.
+> - Pour commencer : une compétence, Internet, de la régularité. Pas de diplôme obligatoire.
+> - Les idées reçues les plus courantes sont fausses : ce n''est pas réservé aux informaticiens ou aux anglophones.
+> - Madagascar a des atouts réels : fuseau horaire proche de l''Europe, coût de la vie bas.
+
+## Exercice pratique : mon état des lieux
+
+> [!exercice] Exercice pratique · 20 minutes
+> 1. Listez 3 choses que vous savez faire mieux que la plupart des gens autour de vous (même si vous n''y pensez pas comme à une compétence).
+> 2. Notez votre niveau d''accès à Internet : téléphone uniquement, ordinateur basique, bonne connexion, fibre.
+> 3. Écrivez en une phrase ce qui vous attire dans le travail en ligne.
+> 4. Notez votre plus grande crainte ou question sur ce sujet.
+>
+> **À livrer** : vos 3 compétences, votre accès, votre motivation en une phrase et votre question principale.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 0, 'Quelle est la différence principale entre un salarié en télétravail et un freelance ?', '["Le salarié a un seul employeur, le freelance choisit ses clients","Il n''y a aucune différence","Le freelance doit aller au bureau parfois","Le salarié peut refuser des missions"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 1, 'Pour devenir freelance à distance, quel est le prérequis le plus important ?', '["Parler anglais couramment","Avoir un diplôme universitaire","Habiter dans un pays étranger","Maîtriser une compétence que des clients sont prêts à payer"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 0, 2, 'Laquelle de ces idées reçues est fausse ?', '["Internet suffit pour commencer","On peut travailler en ligne depuis Madagascar","Des clients francophones existent","Le travail en ligne est réservé aux informaticiens"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 1, 'Les avantages de la liberté', 'Liberté d''horaire, de lieu, de clients, de revenus. Fini les transports, les réunions inutiles, le chef. Les vraies responsabilités qui viennent avec.', 'Imaginez une matinée sans embouteillage sur la RN1. Pas de bus bondé. Pas de chef qui surveille l''heure d''arrivée. Pas de réunion inutile. C''est ce que vivent chaque jour des milliers de freelances à Madagascar. Ce module explique les vrais avantages du travail en ligne — et les vraies responsabilités qui viennent avec.
+
+> [!objectifs] Objectifs du module
+> 1. Identifier les avantages concrets du travail en ligne par rapport au travail au bureau.
+> 2. Comprendre ce que la liberté exige en retour.
+> 3. Savoir si ce mode de vie vous convient.
+
+## Plus de transport, plus de temps perdu
+
+À Antananarivo, un trajet domicile-bureau prend souvent 45 minutes à 2 heures dans chaque sens. C''est 1 à 4 heures perdues chaque jour — dans les embouteillages, sous la pluie, dans un bus sans place assise.
+
+En freelance, vous travaillez depuis chez vous. Ou depuis un café. Ou depuis Toliara, Mahajanga ou Antsirabe. La ville ne compte plus. Le temps de transport tombe à zéro.
+
+```schema chiffres
+titre: Ce que représente le transport au bureau
+2 heures : temps de transport par jour en moyenne à Antananarivo
+10 heures : perdues chaque semaine en déplacement
+40 heures : perdues chaque mois dans les transports
+2 mois : de temps de vie gagnés chaque année en travaillant depuis chez soi
+```
+
+> [!exemple] La journée de Miora avant et après
+> **Avant (bureau) :** Réveil à 5h30. Bus à 6h. Arrive au bureau à 8h. Réunion de 30 minutes sans résultat concret. Déjeuner en vitesse. Bus à 17h30, rentre à 19h. Souper, dodo, recommencer.
+>
+> **Après (freelance) :** Réveil à 7h. Café. Travail de 8h à 12h en profondeur, sans interruption. Déjeuner calme. Réponse aux clients. Fin à 16h. Temps libre pour sa famille, son projet personnel, ses formations.
+
+## La liberté de choisir ses horaires
+
+En freelance, vous fixez vos heures de travail. Vous pouvez travailler le matin si vous êtes plus productif le matin. Le soir si vous préférez. Vous pouvez vous reposer un mercredi et rattraper le samedi.
+
+La seule contrainte : **respecter les délais convenus avec vos clients**. Si vous avez promis une vidéo pour vendredi, elle doit être livrée vendredi. Mais vous choisissez de la monter le lundi, ou le jeudi nuit — c''est votre affaire.
+
+> [!astuce] Les horaires décalés, un avantage
+> Si vos clients sont en France, ils commencent à 9h heure française (11h ou 12h à Madagascar selon la saison). Vous pouvez travailler serenement le matin, répondre à leurs messages en fin de matinée, et avoir votre après-midi libre.
+
+## La liberté de choisir où travailler
+
+Un bureau, une table, une chaise et une connexion — c''est tout ce qu''il faut. Beaucoup de freelances travaillent :
+
+- Depuis leur salon ou leur chambre
+- Dans un cybercafé ou un espace de coworking
+- Chez leur famille en province pendant les vacances
+- Depuis une autre ville ou un autre pays lors d''un déplacement
+
+Vous n''avez pas à demander de congé pour vous déplacer. Vous emportez votre travail avec vous.
+
+## La liberté de choisir ses clients
+
+Au bureau, vous n''avez pas le choix : vous travaillez pour l''entreprise qui vous emploie, avec les collègues qu''on vous donne, sur les projets qu''on vous impose.
+
+En freelance, vous choisissez :
+1. Les clients avec qui vous travaillez — et vous pouvez refuser ceux qui vous traitent mal.
+2. Les projets que vous acceptez — selon votre intérêt, votre disponibilité et vos valeurs.
+3. Le nombre d''heures que vous consacrez à chaque client.
+
+> [!exemple] Refuser un client, c''est possible
+> Hery travaille avec trois clients réguliers. Un nouveau client le contacte en lui demandant de travailler vite, pour peu, avec beaucoup de corrections. Hery explique ses conditions. Le client refuse. Hery dit non et passe à autre chose. Au bureau, il n''aurait pas eu ce choix.
+
+## La liberté de faire évoluer ses revenus
+
+Au bureau, votre salaire est fixe. Il évolue lentement, si votre patron l''accepte, une fois par an au mieux.
+
+En freelance, vos revenus dépendent de vous :
+- Plus vous avez de compétences, plus vous pouvez facturer cher.
+- Plus vous avez de clients, plus vous travaillez (dans la limite de votre temps).
+- Avec de l''expérience, vous pouvez augmenter vos tarifs.
+- Vous pouvez avoir plusieurs clients en même temps, donc plusieurs sources de revenus.
+
+## Les vraies responsabilités
+
+La liberté a un prix. Ce n''est pas un inconvénient, mais c''est une réalité à connaître.
+
+```schema comparaison
+titre: Salarié vs Freelance : les responsabilités
+colonnes: Salarié | Freelance
+L''entreprise trouve les clients | Vous trouvez vos propres clients
+Salaire fixe le même chaque mois | Revenus variables selon les missions
+Congés maladie pris en charge | Pas de travail = pas de revenu ce mois-là
+Matériel fourni par l''employeur | Vous achetez votre propre matériel
+Cotisations sociales automatiques | Vous gérez vous-même vos impôts et cotisations
+Collègues et manager présents | Vous travaillez souvent seul
+```
+
+> [!attention] Le piège de la procrastination
+> La liberté d''horaire est un avantage — et un danger. Sans structure, certains freelances repoussent le travail, passent leurs journées sur les réseaux sociaux et peinent à livrer à temps. La discipline personnelle remplace le contrôle du chef. C''est ce qui fait la différence entre un freelance qui réussit et un freelance qui abandonne.
+
+## Est-ce que ce mode de vie vous convient ?
+
+Voici quelques questions honnêtes à vous poser :
+
+| Question | Ce que ça révèle |
+| --- | --- |
+| Savez-vous vous organiser sans qu''on vous le rappelle ? | La gestion du temps est clé |
+| Supportez-vous l''incertitude des revenus variables ? | Le début est toujours irrégulier |
+| Aimez-vous apprendre par vous-même ? | La formation continue est indispensable |
+| Savez-vous communiquer clairement par écrit ? | La plupart des échanges se font par message |
+| Pouvez-vous travailler seul pendant des heures ? | Le freelance est souvent un travail solitaire |
+
+Si vous avez répondu oui à la plupart de ces questions, le freelance est fait pour vous. Sinon, ce n''est pas une raison d''abandonner : ces compétences s''apprennent.
+
+> [!retenir]
+> - En freelance, **fini les transports** : vous gagnez des heures de vie chaque jour.
+> - Vous choisissez vos **horaires, votre lieu, vos clients et vos projets**.
+> - En échange : vous gérez votre temps, trouvez vos clients et assumez un revenu variable.
+> - La **discipline personnelle** remplace le contrôle du chef.
+
+## Exercice pratique : ma liberté idéale
+
+> [!exercice] Exercice pratique · 20 minutes
+> 1. Calculez le temps que vous perdez actuellement en transport chaque semaine (aller + retour × jours).
+> 2. Décrivez en 5 lignes à quoi ressemblerait votre journée idéale en tant que freelance.
+> 3. Identifiez 2 responsabilités du freelance qui vous semblent difficiles pour vous personnellement.
+> 4. Pour chacune, proposez une solution concrète (exemple : « Je vais me faire un planning chaque dimanche soir »).
+>
+> **À livrer** : votre journée idéale décrite et vos 2 solutions concrètes aux défis que vous avez identifiés.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 0, 'Quel avantage majeur du freelance par rapport au travail au bureau à Antananarivo ?', '["Pas de transport : on travaille depuis chez soi ou un café","On n''a jamais de délais à respecter","On ne travaille jamais le week-end","Les clients paient toujours à l''avance"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 1, 'Quelle responsabilité accompagne la liberté du freelance ?', '["Se gérer soi-même : trouver ses clients, respecter les délais, gérer ses revenus","Avoir un bureau loué","Payer plus d''impôts qu''un salarié","Travailler obligatoirement la nuit"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 1, 2, 'Un freelance peut-il choisir ses horaires de travail ?', '["Non, il doit travailler de 8h à 17h","Oui, dans la limite des délais convenus avec ses clients","Non, ses clients imposent tout","Seulement le week-end"]'::jsonb, 1);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 2, 'Les métiers du travail en ligne', 'Tour d''horizon des métiers accessibles : design, rédaction, développement, marketing, assistance, data, traduction, et plus encore. Ce que chacun demande.', 'Le travail en ligne n''est pas réservé aux développeurs qui écrivent du code. Il existe des dizaines de métiers accessibles depuis Madagascar, avec des niveaux d''entrée très différents. Ce module vous en présente les principales familles — avec ce que chacune demande et ce qu''elle peut rapporter.
+
+> [!objectifs] Objectifs du module
+> 1. Connaître les grandes familles de métiers du travail en ligne.
+> 2. Comprendre ce que chaque métier demande réellement.
+> 3. Identifier un premier métier qui vous correspond.
+
+## Les métiers du design et de la création visuelle
+
+Ces métiers consistent à créer des images, des vidéos, des animations ou des interfaces. Ils demandent un œil visuel, de la pratique avec des logiciels, et une capacité à comprendre ce que le client veut.
+
+| Métier | Ce qu''on fait | Outil principal |
+| --- | --- | --- |
+| **Graphiste** | Logos, visuels pour les réseaux sociaux, affiches, supports imprimés | Canva, Figma, Photopea |
+| **Monteur vidéo** | Montage de vidéos YouTube, TikTok, publicités, clips | DaVinci Resolve, CapCut |
+| **Motion designer** | Animations de textes, logos animés, effets visuels | After Effects, DaVinci Fusion |
+| **Illustrateur** | Dessins numériques, illustrations pour livres, sites, BD | Procreate, Krita |
+
+> [!exemple] Un graphiste à Antsirabe
+> Volatiana a appris Canva en 3 semaines. Elle crée des posts Instagram pour des boutiques françaises. Elle facture 15 à 30 euros par visuel. En travaillant 4 heures par jour, elle gagne l''équivalent de 500 000 Ar par mois — tout depuis son appartement.
+
+## Les métiers de l''écriture et du contenu
+
+Ces métiers demandent de bien maîtriser le français écrit. Ils ne nécessitent aucun logiciel particulier : un traitement de texte suffit.
+
+| Métier | Ce qu''on fait |
+| --- | --- |
+| **Rédacteur web** | Articles de blog, fiches produits, pages de sites |
+| **Correcteur et relecteur** | Corriger les fautes, améliorer le style des textes |
+| **Traducteur** | Traduire des documents (FR-EN, FR-malgache, etc.) |
+| **Assistant virtuel** | Gérer les mails, agendas, dossiers, recherches d''un client |
+| **Opérateur de saisie** | Retranscrire des documents manuscrits ou audios en texte |
+
+> [!madagascar] Le français, un atout majeur
+> Madagascar a le français comme langue officielle. Des millions de clients potentiels en France, en Belgique, en Suisse, au Canada et dans toute l''Afrique francophone ont besoin de rédacteurs, traducteurs et assistants francophones. C''est un avantage énorme sur les freelances non-francophones.
+
+## Les métiers du marketing et des réseaux sociaux
+
+Ces métiers consistent à aider des entreprises à se faire connaître et à vendre sur Internet.
+
+| Métier | Ce qu''on fait |
+| --- | --- |
+| **Community manager** | Gérer les pages Facebook, Instagram, LinkedIn d''une marque |
+| **Gestionnaire de publicités** | Créer et piloter des campagnes Facebook Ads, Google Ads |
+| **Créateur de contenu UGC** | Filmer de courtes vidéos de présentation de produits |
+| **E-mail marketeur** | Rédiger des newsletters, gérer des listes de contacts |
+
+## Les métiers du développement et de la tech
+
+Ces métiers demandent d''apprendre à programmer ou à configurer des outils numériques. L''investissement en formation est plus long, mais les revenus sont souvent plus élevés.
+
+| Métier | Ce qu''on fait | Niveau d''entrée |
+| --- | --- | --- |
+| **Développeur web** | Créer des sites et applications web | Formation de 6 à 12 mois |
+| **Intégrateur web** | Transformer des maquettes en pages web | Formation de 2 à 4 mois |
+| **Administrateur WordPress** | Installer, configurer et maintenir des sites WordPress | Formation de 1 à 2 mois |
+| **Spécialiste automatisation et IA** | Connecter des outils entre eux avec Zapier, Make, n8n | Formation de 2 à 3 mois |
+
+## Les métiers de la data et de l''intelligence artificielle
+
+Ces métiers sont en forte croissance mondiale. Ils consistent à préparer, vérifier ou analyser des données pour des entreprises et des chercheurs.
+
+| Métier | Ce qu''on fait |
+| --- | --- |
+| **Annotateur de données IA** | Étiqueter des images, textes ou sons pour entraîner des intelligences artificielles |
+| **Analyste de données** | Analyser des chiffres et produire des rapports clairs |
+| **Modérateur de contenu** | Vérifier et filtrer des publications pour des plateformes |
+
+> [!exemple] L''annotation de données, un métier méconnu
+> Des entreprises comme Google, Amazon ou des startups européennes paient des gens pour étiqueter des images (« est-ce que cette photo montre un chien ? »), corriger des réponses d''IA, ou transcrire des audios. Aucune compétence technique n''est requise. C''est un excellent point d''entrée pour quelqu''un qui commence.
+
+## Les métiers de l''accompagnement et de la formation
+
+Ces métiers permettent de partager ses connaissances ou d''aider d''autres personnes à progresser.
+
+| Métier | Ce qu''on fait |
+| --- | --- |
+| **Formateur en ligne** | Donner des cours sur Zoom, créer des formations vidéo |
+| **Coach** | Accompagner des personnes dans un domaine précis |
+| **Téléconseiller** | Gérer le service client d''une entreprise par chat ou téléphone |
+
+## Comment choisir son premier métier ?
+
+```schema comparaison
+titre: Critères pour choisir son métier
+colonnes: Critère | Exemples
+Ce que j''aime faire | Images → design ; mots → rédaction ; chiffres → data
+Ce que je sais déjà faire | Bonne orthographe, bon œil visuel, à l''aise avec les outils
+Ce que je peux apprendre vite | Certains métiers se démarrent en quelques semaines
+Les revenus possibles au départ | De 30 000 Ar (opérateur de saisie) à 500 000+ Ar (graphiste, développeur)
+```
+
+> [!attention] Ne pas choisir par ce qui semble le plus facile
+> Beaucoup de débutants choisissent l''opérateur de saisie parce que « ça n''a pas l''air difficile ». En réalité, les tarifs sont très bas et la concurrence est très forte. Il vaut mieux investir 2 ou 3 mois dans une formation sérieuse sur un métier bien rémunéré.
+
+> [!retenir]
+> - Il existe des dizaines de métiers du travail en ligne, pas seulement le développement web.
+> - Le français est un atout majeur pour les freelances malgaches.
+> - Chaque métier peut s''apprendre, mais certains demandent plus de temps que d''autres.
+> - Mieux vaut choisir un métier qui vous intéresse vraiment et vous former sérieusement.
+
+## Exercice pratique : mon métier idéal
+
+> [!exercice] Exercice pratique · 30 minutes
+> 1. Parcourez la liste des métiers présentés dans ce module.
+> 2. Mettez une étoile à côté de ceux qui vous attirent (même un peu).
+> 3. Pour vos 3 métiers préférés, notez : ce que ça demande, ce que ça rapporte, et si vous voyez une formation possible.
+> 4. Choisissez un seul métier prioritaire et justifiez votre choix en 3 phrases.
+>
+> **À livrer** : votre liste annotée et votre choix justifié en 3 phrases.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 0, 'Lequel de ces métiers peut se faire entièrement à distance ?', '["Chauffeur de taxi","Cuisinier","Maçon","Community manager"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 1, 'Quel métier numérique ne nécessite pas de coder ?', '["Administrateur serveur","Ingénieur réseau","Rédacteur web","Développeur back-end"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 2, 2, 'Pour commencer à travailler en ligne, quelle approche est la plus réaliste ?', '["Proposer tous les services possibles dès le départ","Attendre d''avoir 10 ans d''expérience","Créer une entreprise d''abord","Choisir un seul métier, se former sérieusement et chercher ses premiers clients"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 3, 'Ce qu''on peut gagner : salaires et comparaisons', 'Revenus réels des freelances débutants et confirmés. Comparaison avec les salaires à Madagascar. Ce que ça représente en ariary. Les plateformes où ces revenus sont possibles.', 'Combien peut-on vraiment gagner avec le travail en ligne depuis Madagascar ? Cette question mérite une réponse honnête, avec de vrais chiffres — pas des promesses exagérées, pas non plus une prudence inutile. Ce module compare les revenus du travail en ligne avec les salaires locaux, pour que vous puissiez évaluer ce que ça représente concrètement.
+
+> [!objectifs] Objectifs du module
+> 1. Connaître les revenus réels des freelances débutants et confirmés.
+> 2. Comprendre ce que ces revenus représentent en ariary.
+> 3. Comparer avec les salaires à Madagascar pour mesurer l''opportunité.
+
+## Les salaires à Madagascar : la réalité
+
+Avant de parler des revenus en ligne, regardons la réalité du marché du travail local.
+
+```schema chiffres
+titre: Salaires bruts mensuels à Madagascar (2024, en Ar)
+SMIC légal : 260 000 à 320 000 Ar selon le secteur
+Secrétaire débutant : 350 000 à 500 000 Ar
+Enseignant du primaire : 250 000 à 450 000 Ar
+Agent de service : 280 000 à 400 000 Ar
+Comptable junior : 500 000 à 800 000 Ar
+Informaticien junior : 600 000 à 1 000 000 Ar
+```
+
+> [!definition] SMIC
+> Le SMIC (Salaire Minimum Interprofessionnel de Croissance) est le salaire légal minimum. En France, il est d''environ 1 800 euros par mois. À Madagascar, il est d''environ 320 000 Ar par mois dans certains secteurs — soit environ 65 euros.
+
+## Ce que gagnent les freelances débutants
+
+Les chiffres ci-dessous sont des revenus réalistes pour quelqu''un qui commence, après 2 à 4 mois de formation et ses premières missions.
+
+| Métier | Tarif par mission (débutant) | Missions par mois possibles | Revenu mensuel estimé |
+| --- | --- | --- | --- |
+| **Graphiste** (logo simple) | 30 à 60 € | 5 à 8 | 150 à 480 € |
+| **Rédacteur web** (article 800 mots) | 15 à 35 € | 15 à 25 | 225 à 875 € |
+| **Monteur vidéo** (vidéo courte) | 20 à 50 € | 8 à 15 | 160 à 750 € |
+| **Traducteur** (1 000 mots FR-EN) | 20 à 40 € | 10 à 20 | 200 à 800 € |
+| **Community manager** (forfait mensuel) | 80 à 200 € | 2 à 4 clients | 160 à 800 € |
+| **Annotateur de données IA** | 3 à 8 $/heure | 20 à 40 h/semaine | 240 à 1 280 $/mois |
+
+> [!attention] Ce sont des estimations
+> Ces chiffres sont donnés à titre d''exemples. Ils dépendent de la plateforme, du client, de la qualité de votre travail et du marché à ce moment. Il n''y a pas de revenu garanti en freelance. Ces chiffres montrent ce qui est possible, pas ce qui est automatique.
+
+## Ce que ça représente en ariary
+
+Pour donner du sens à ces chiffres, voici leur équivalent en ariary (avec un taux de change indicatif d''environ 5 000 Ar pour 1 euro, et 4 600 Ar pour 1 dollar).
+
+```schema chiffres
+titre: Revenus mensuels possibles en ariary (débutant confirmé, 6 mois d''expérience)
+Graphiste débutant (5 logos) : 750 000 à 1 500 000 Ar
+Rédacteur web (15 articles) : 1 125 000 à 1 750 000 Ar
+Monteur vidéo (10 vidéos courtes) : 800 000 à 2 000 000 Ar
+Community manager (3 clients) : 1 200 000 à 2 400 000 Ar
+Annotateur de données IA (40 h/semaine) : 1 100 000 à 2 300 000 Ar
+```
+
+## La comparaison qui change tout
+
+Voici ce que ces revenus représentent par rapport aux salaires locaux :
+
+| Revenu freelance | Équivalent local |
+| --- | --- |
+| 100 € par mois (500 000 Ar) | Légèrement au-dessus du SMIC |
+| 200 € par mois (1 000 000 Ar) | 2 à 3 fois le SMIC malgache |
+| 400 € par mois (2 000 000 Ar) | Salaire d''un cadre moyen à Antananarivo |
+| 800 € par mois (4 000 000 Ar) | Salaire d''un directeur dans une PME |
+| 1 500 € par mois (7 500 000 Ar) | Exceptionnel, mais atteint par des freelances confirmés |
+
+> [!exemple] L''histoire de Fara
+> Fara, 26 ans, était secrétaire dans une société à Antsirabe et gagnait 450 000 Ar par mois. Elle a suivi une formation de rédactrice web pendant 3 mois. Six mois plus tard, elle avait 4 clients réguliers et gagnait 1 200 000 Ar par mois — presque 3 fois son ancien salaire, sans quitter sa ville, sans transport, avec des horaires qu''elle choisissait elle-même.
+
+## Pourquoi l''écart est si grand ?
+
+Les clients étrangers (France, Belgique, Canada, Suisse) paient aux tarifs de leur marché. Un article de blog « bas de gamme » en France vaut 30 à 50 euros. C''est presque l''équivalent d''une semaine de salaire minimum à Madagascar.
+
+Ce n''est pas de l''exploitation : le client paie un prix normal pour lui, et vous recevez un revenu exceptionnel pour vous. C''est ce qu''on appelle **l''arbitrage géographique** — et c''est l''un des grands avantages du travail en ligne pour les pays à faible coût de la vie.
+
+> [!astuce] Les revenus augmentent avec l''expérience
+> Un graphiste débutant à 30 euros le logo peut passer à 80 euros après 6 mois, puis à 150 euros après un an, à mesure que son portfolio grandit et que sa réputation s''établit. Les freelances confirmés qui ont investi dans leur formation et leur portfolio gagnent souvent 3 à 5 fois plus que leurs débuts.
+
+## Les plafonds et les réalités
+
+Pour rester honnête, voici aussi ce que le travail en ligne ne garantit pas :
+
+1. **Les revenus ne sont pas réguliers au début.** Le premier mois, vous gagnez peut-être 50 000 Ar. Le troisième, 300 000. Le sixième, 800 000. C''est normal — il faut du temps pour construire sa clientèle.
+2. **Il faut du temps pour trouver ses premiers clients.** Sans formation, sans portfolio, sans profil soigné, les premières missions ne viennent pas.
+3. **La concurrence existe.** Des freelances du monde entier proposent les mêmes services. La formation et la qualité font la différence.
+
+> [!retenir]
+> - Le SMIC malgache est d''environ 320 000 Ar. Un graphiste débutant peut gagner 2 à 5 fois plus.
+> - Les revenus dépendent de votre compétence, votre régularité et vos clients.
+> - L''écart de coût de la vie entre Madagascar et l''Europe est un avantage immense pour les freelances malgaches.
+> - Au départ, les revenus sont irréguliers — c''est normal et ça s''améliore avec le temps.
+
+## Exercice pratique : mon objectif de revenus
+
+> [!exercice] Exercice pratique · 20 minutes
+> 1. Notez vos dépenses mensuelles actuelles (loyer, nourriture, transport, téléphone, etc.).
+> 2. Définissez un revenu cible en ariary : ce dont vous avez besoin pour vivre correctement.
+> 3. Choisissez le métier du module 3 qui vous correspond et estimez combien de missions par mois il vous faudrait pour atteindre cet objectif.
+> 4. Calculez combien de temps vous devrez travailler par semaine pour atteindre ce nombre de missions.
+>
+> **À livrer** : vos dépenses, votre objectif de revenu, le métier choisi et le calcul des missions nécessaires.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 3, 0, 'Quel est le salaire minimum légal à Madagascar en 2024 ?', '["100 000 Ar par mois","3 000 000 Ar par mois","Autour de 260 000 à 320 000 Ar par mois selon le secteur","Il n''en existe pas"]'::jsonb, 2);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 3, 1, 'Un graphiste débutant sur ComeUp peut facturer combien pour un logo simple ?', '["Entre 30 et 80 euros, soit 150 000 à 400 000 Ar","Rien : les débutants ne sont pas payés","5 euros seulement","Toujours plus de 1 000 euros"]'::jsonb, 0);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 3, 2, 'Pourquoi les revenus en ligne sont-ils avantageux pour quelqu''un qui vit à Madagascar ?', '["Les clients étrangers paient en or","Il n''y a pas de concurrence","Les plateformes donnent de l''argent gratuitement","Les tarifs internationaux sont élevés par rapport au coût de la vie local"]'::jsonb, 3);
+insert into public.lessons (course_id, module_index, title, summary, body_md, video_url) values ('free-1-f', 4, 'Pourquoi se former et commencer avec Vitako', 'Pourquoi la compétence fait toute la différence. Ce que Vitako propose : les domaines, les formations, le suivi. Comment débuter et quelles formations choisir.', 'Vous savez maintenant ce qu''est le travail en ligne, quels sont ses avantages, quels métiers existent et ce qu''on peut gagner. Mais entre « savoir que c''est possible » et « avoir ses premiers clients », il y a une étape incontournable : **se former vraiment**. Ce module vous explique pourquoi, et comment Vitako peut vous y aider.
+
+> [!objectifs] Objectifs du module
+> 1. Comprendre pourquoi la formation fait toute la différence.
+> 2. Découvrir ce que Vitako propose concrètement.
+> 3. Choisir votre prochaine formation et démarrer.
+
+## Pourquoi la compétence change tout
+
+Imaginez deux graphistes qui s''inscrivent sur ComeUp le même mois :
+
+- **Graphiste A** : a regardé quelques tutoriels sur YouTube. Il crée un profil, propose un logo à 10 euros. Le résultat est correct mais pas professionnel. Aucun client ne lui fait confiance.
+- **Graphiste B** : a suivi une formation complète de 40 heures. Elle a réalisé 5 projets d''entraînement, a un portfolio propre, comprend ce que les clients attendent. Elle propose son premier logo à 35 euros. Elle reçoit sa première commande en 2 semaines.
+
+La différence n''est pas le talent. C''est la **préparation**.
+
+> [!exemple] La vraie compétition sur les plateformes
+> Sur Fiverr ou ComeUp, des freelances de France, de Roumanie, d''Inde et du Maroc proposent les mêmes services que vous. Ce qui fait la différence pour un client qui hésite entre deux profils : la qualité du portfolio, la clarté du profil, et la confiance que le travail sera livré correctement.
+> Se former, c''est se donner les moyens de gagner cette comparaison.
+
+## Ce que la formation apporte
+
+Se former sérieusement vous permet de :
+
+1. **Comprendre le métier** en profondeur, pas juste en surface
+2. **Pratiquer avec des projets réels** avant d''avoir un client
+3. **Construire un portfolio** qui montre vos capacités
+4. **Éviter les erreurs de débutant** qui font perdre des clients
+5. **Obtenir une attestation** qui prouve votre niveau à vos futurs clients
+
+> [!astuce] L''attestation, un argument commercial
+> Certains clients demandent si vous avez une formation ou un certificat. Avec l''attestation Vitako, vous pouvez répondre « oui » — et la partager par son numéro vérifiable en ligne. C''est une preuve que vous avez appris sérieusement.
+
+## Vitako : des formations pour chaque métier du travail en ligne
+
+Vitako a été conçu pour les jeunes Malgaches qui veulent travailler en ligne. Chaque formation est adaptée à la réalité de Madagascar : exemples locaux, outils gratuits, revenus en ariary, connexion Internet prise en compte.
+
+```schema chiffres
+titre: Ce que Vitako propose
+50 métiers : dans tous les domaines du travail en ligne
+5 modules par formation : du métier aux premiers clients
+Exercices pratiques : un par module, à ajouter dans votre portfolio
+Examen final : pour valider vos connaissances
+Attestation vérifiable : téléchargeable en PDF avec numéro unique
+```
+
+## Les domaines de formation
+
+Vitako couvre tous les grands domaines du travail en ligne :
+
+| Domaine | Exemples de formations |
+| --- | --- |
+| **Design et création visuelle** | Graphiste, Monteur vidéo, Motion designer, Illustrateur |
+| **Marketing et réseaux sociaux** | Community manager, Gestionnaire de publicités, Créateur de contenu |
+| **Développement et tech** | Développeur web, WordPress et Shopify, Automatisation et IA |
+| **Rédaction et langues** | Rédacteur web, Traducteur, Correcteur |
+| **Data et IA** | Annotateur de données IA, Analyste de données |
+| **Administration et assistance** | Assistant virtuel, Téléconseiller, Opérateur de saisie |
+| **Démarrer en freelance** | Comment devenir freelance (cette formation), Trouver des clients |
+| **Compétences numériques** | Informatique et bureautique, Intelligence artificielle au quotidien |
+| **Développement personnel** | Gestion du temps, Confiance en soi, Communication professionnelle |
+
+## La progression type avec Vitako
+
+Voici comment se passe typiquement le parcours d''un étudiant Vitako :
+
+1. **Mois 1 :** Vous suivez la formation Fondamentaux de votre métier. Vous faites les exercices, vous construisez vos premiers projets d''entraînement.
+2. **Mois 2 :** Vous passez l''examen final et obtenez votre attestation. Vous créez votre profil sur une ou deux plateformes de freelance.
+3. **Mois 3 :** Vous cherchez vos premiers clients avec la formation « Trouver des clients ». Vous envoyez vos premières propositions.
+4. **Mois 4-6 :** Vous obtenez vos premières missions. Vous gagnez vos premiers revenus. Vous continuez à vous améliorer.
+5. **Après 6 mois :** Vous passez au niveau Avancé, vous augmentez vos tarifs, vous stabilisez vos revenus.
+
+> [!exemple] Le parcours de Tsanta
+> Tsanta, 22 ans, habitait à Toliara. Il n''avait pas d''emploi après son bac. Il a suivi la formation Community manager sur Vitako pendant 6 semaines. Il a passé l''examen, obtenu son attestation, et créé un profil sur ComeUp. 3 semaines après, il avait son premier client : un restaurant à Réunion qui voulait gérer son Facebook. Aujourd''hui, 8 mois plus tard, il a 4 clients réguliers et gagne 1 500 000 Ar par mois.
+
+## Cette formation est gratuite. Et après ?
+
+Cette formation — « Comment devenir freelance » — est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
+
+La suite — les formations complètes par métier, les exercices, les projets, les examens, les attestations — est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
+
+```schema chiffres
+titre: L''abonnement Vitako
+Accès illimité : à toutes les formations (100+)
+Durée : 30 jours, renouvelable
+Attestations : téléchargeables pour chaque formation réussie
+Formation incluse : Trouver des clients, Développement personnel, Compétences numériques
+Prix de lancement : 30 000 Ar (promotion jusqu''au 30 novembre 2026)
+Prix normal : 60 000 Ar par mois
+```
+
+> [!astuce] Ce que représente l''abonnement
+> 30 000 Ar, c''est moins que 2 semaines de transport à Antananarivo. En vous formant pendant un mois et en obtenant vos premiers clients, vous pouvez récupérer cet investissement dès votre première mission. Un seul logo facturé 35 euros représente 175 000 Ar — soit 5 fois le prix de l''abonnement.
+
+> [!retenir]
+> - La compétence, pas le talent, fait la différence sur les plateformes de freelance.
+> - Vitako propose des formations complètes pour chaque métier du travail en ligne, adaptées à Madagascar.
+> - Chaque formation comprend des exercices, un examen et une attestation vérifiable.
+> - Cette formation est gratuite pour les inscrits. L''abonnement débloque toutes les formations et les attestations.
+
+## Exercice pratique : mon plan de démarrage
+
+> [!exercice] Exercice pratique · 30 minutes
+> 1. Reprenez le métier que vous avez choisi dans le module 3.
+> 2. Trouvez la formation correspondante dans le catalogue Vitako et notez ce qu''elle contient (nombre de modules, durée, objectifs).
+> 3. Calculez combien de temps vous pourrez consacrer à la formation chaque semaine (en heures).
+> 4. Estimez en combien de semaines vous pourrez la terminer à ce rythme.
+> 5. Fixez une date cible pour passer votre premier examen.
+>
+> **À livrer** : votre formation choisie, votre rythme de formation, votre date cible pour l''attestation.', null)
+  on conflict (course_id, module_index) do update set title = excluded.title, summary = excluded.summary, body_md = excluded.body_md, video_url = excluded.video_url;
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 4, 0, 'Pourquoi se former avant de chercher des clients ?', '["Parce que les plateformes le demandent","Pour repousser le moment de commencer","Pour obtenir un badge officiel de l''État","Pour livrer un travail de qualité et se démarquer de la concurrence"]'::jsonb, 3);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 4, 1, 'Que propose Vitako pour vous aider à démarrer ?', '["Créer votre profil sur Upwork","Des formations complètes par métier, avec exercices, projets et attestation","Un emploi garanti","Trouver des clients à votre place"]'::jsonb, 1);
+insert into public.module_questions (course_id, module_index, position, question, options, correct) values ('free-1-f', 4, 2, 'Quelle est la première chose à faire après cette formation d''introduction ?', '["Demander un visa pour travailler à l''étranger","Choisir un métier et commencer sa formation Vitako","S''inscrire sur toutes les plateformes","Attendre d''être prêt pendant 6 mois"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quelle est la définition du freelance ?', '["Un employé qui travaille chez lui","Un travailleur indépendant qui vend ses services à plusieurs clients","Un étudiant qui cherche un stage","Un informaticien qui programme"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Qu''est-ce que le télétravail ?', '["Avoir deux emplois en même temps","Travailler à distance pour un employeur, sans se déplacer au bureau","Regarder des formations en ligne","Travailler la nuit"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quel avantage du freelance est cité le plus souvent par les travailleurs malgaches ?', '["On peut refuser tous les délais","On ne travaille jamais plus de 4 heures par jour","Plus besoin de passer des heures dans les transports à Antananarivo","Les clients paient toujours en espèces"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Peut-on travailler depuis n''importe où en freelance ?', '["Non, il faut un bureau loué","Oui, depuis chez soi, un café, une ville de province ou un autre pays","Seulement si on a la fibre optique","Non, uniquement depuis Antananarivo"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quel métier numérique consiste à gérer les réseaux sociaux d''une entreprise ?', '["Annotateur de données","Community manager","Traducteur","Développeur web"]'::jsonb, 1);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Un rédacteur web freelance débutant peut espérer combien pour un article de 800 mots ?', '["Rien les premières années","Toujours plus de 500 euros","Entre 15 et 40 euros, soit 75 000 à 200 000 Ar","5 centimes"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Pourquoi le travail en ligne est-il particulièrement intéressant pour quelqu''un qui vit à Madagascar ?', '["On évite de payer des impôts","Les clients donnent des billets d''avion","On est payé à des tarifs internationaux mais on vit avec un coût de la vie local","Il n''y a pas de concurrence en Afrique"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Qu''est-ce qu''un portfolio ?', '["Une collection d''exemples de travaux réalisés, pour montrer ses compétences","Un diplôme universitaire","Un profil sur LinkedIn","Un compte bancaire pour recevoir ses paiements"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quelle est la principale raison pour laquelle les freelances sans formation peinent à trouver des clients ?', '["Ils manquent de chance","Internet est trop lent","Les plateformes bloquent les Malgaches","Leur travail n''est pas assez professionnel face à la concurrence mondiale"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quel métier numérique consiste à vérifier et corriger des textes en français ?', '["Développeur front-end","Gestionnaire de publicités","Monteur vidéo","Correcteur et relecteur"]'::jsonb, 3);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Peut-on avoir plusieurs clients en même temps en freelance ?', '["Oui, c''est même l''idéal pour stabiliser ses revenus","Non, un seul client à la fois est obligatoire","Seulement si on est inscrit sur plusieurs plateformes","Non, c''est interdit sur les plateformes"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Combien d''heures par semaine faut-il consacrer au minimum pour démarrer un freelance sérieux ?', '["15 à 20 heures, entre la formation, la pratique et la prospection","80 heures sans pause","2 heures le dimanche","Aucune heure si on est talentueux"]'::jsonb, 0);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Quelle est la différence entre un revenu fixe et un revenu variable ?', '["Il n''y a pas de différence","Le revenu fixe est toujours plus élevé","Le revenu fixe est le même chaque mois (salarié), le variable dépend des missions (freelance)","Le revenu variable est réservé aux chefs d''entreprise"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Pourquoi faut-il choisir un seul métier pour commencer ?', '["Parce que les autres métiers sont trop difficiles","Parce que les plateformes le demandent","Pour se concentrer, progresser vite et avoir un portfolio cohérent","Pour éviter de travailler trop"]'::jsonb, 2);
+insert into public.exam_questions (course_id, question, options, correct) values ('free-1-f', 'Qu''est-ce qu''une attestation Vitako ?', '["Une inscription sur une plateforme de freelance","Un certificat qui prouve qu''on a réussi une formation et qu''on maîtrise le métier","Un diplôme d''État reconnu par le gouvernement","Une autorisation de travailler à l''étranger"]'::jsonb, 1);
 
 -- gestion-0-a
 delete from public.exam_questions where course_id = 'gestion-0-a';
@@ -85189,5 +85748,5 @@ insert into public.exam_questions (course_id, question, options, correct, versio
 select public.course_go_live('mkt-0-f', array[0, 1, 3, 4, 5]::int[]);
 
 -- Mises à jour : prévient les abonnés concernés quand le contenu visible change
-select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"3cb011a0acfcf2ec2f794ccf9a1e35f6"},"client-2-a":{"h":"91f1be6c9a3513f4c1e7cc4439f4d5c1"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"9e954523a261ef5246e5b7cbb0b06b1d"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"a5fdaeadd0085bc2c18557b5d493744f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"56ad15f969b91d23d661b55955644d18"},"data-2-f":{"h":"e730e983f8b1f353eb0df1d8d009f83b"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"9969b3d8f8d0e7c7a148e2bb1ef5bcd1"},"design-0-a":{"h":"fdf8fc464b06b5957f5d7a9729a63b0a"},"design-0-f":{"h":"c66790fa488e2404da67bd3fb3ab4eba"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"74ae925d593d986c64900acaf96cab79"},"dev-1-a":{"h":"895b53da046400eae97d904592aed2a2"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"620e55e74ba39d90fcc555e5398b6a64"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"1b53bfae62cd774356fa14eb5fddade6"},"edu-0-a":{"h":"77330575554fac777ca29c61bfb6c87b"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"4aa4a04703ab832f5ca08b13d4dc483b"},"edu-1-f":{"h":"10f713ec6c9f418cd0316fb6594f3af1"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"036486cc1c86a893bf1cb5bd2a02098c"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"gestion-0-a":{"h":"9f6b5fd1640f60f498454c4a5b332604"},"gestion-0-f":{"h":"15586519c8cec2e142a95cd535cea5e2"},"gestion-1-a":{"h":"429aa050db46b20faa84feea1ae0587f"},"gestion-1-f":{"h":"3b654285122f3a201aca3187f4558d68"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"f230dec82ca42c2cd9405dbe8cddb81e"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"0f5a0d7a1ab03f5ccd961c928387c27f"},"gestion-4-f":{"h":"02365aaaa57cd1b000fb6d285cd59cd9"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"2e5051143334663b734b97d96b6a3c0e"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"06d9653b2a8d6c4af25488445df62539"},"media-0-f":{"h":"f02c92a54e6e7f1d3b04d4fcb5b7a6bb"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"e00dba45cb70382ac132f4b0a26aa7d1"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"058ff4aeccc60914d8bdec2271d0d1b8"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"77141ef46489aea611b3514255d157c1"},"mkt-2-a":{"h":"b068b5f17035500ad38eb7cea81b0b45"},"mkt-2-f":{"h":"c8e6f1ca2e53916d99953a1465099021"},"mkt-3-a":{"h":"f7a8e234a5cdade0ae839978f4bc4220"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"e1384ab21069eb1661acd68ebf955f34"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
+select public.sync_course_hashes('{"client-0-a":{"h":"473387e9050c6fafd2f0dae09008902f"},"client-0-f":{"h":"5757686c5eafc22e150b14521097627d"},"client-1-a":{"h":"27f4290831fa9c5599842b3594727718"},"client-1-f":{"h":"3cb011a0acfcf2ec2f794ccf9a1e35f6"},"client-2-a":{"h":"91f1be6c9a3513f4c1e7cc4439f4d5c1"},"client-2-f":{"h":"3a343640d4d4e2d8a01f95ae326a6e76"},"client-3-a":{"h":"9e954523a261ef5246e5b7cbb0b06b1d"},"client-3-f":{"h":"9fd4346c575c3d072ca45dccea96269e"},"client-4-a":{"h":"df1a9981b59728c0bce5b42b4425a7ba"},"client-4-f":{"h":"1aee364a908c4cf71d981f0e6cc0b7c5"},"data-0-a":{"h":"c3897332b4e5fb71e40eeba8a4e2d846"},"data-0-f":{"h":"a5fdaeadd0085bc2c18557b5d493744f"},"data-1-a":{"h":"754a256db27520e2bab851706c43554b"},"data-1-f":{"h":"7b2a5106ac809fa94d607fb4449c867c"},"data-2-a":{"h":"56ad15f969b91d23d661b55955644d18"},"data-2-f":{"h":"e730e983f8b1f353eb0df1d8d009f83b"},"data-3-a":{"h":"e53b1c4f105631035fb3edb27d790fb6"},"data-3-f":{"h":"0c3c7efdcd7a7a23a7f656413498ac35"},"data-4-a":{"h":"2db05773c98b79a48bf79af684c8773b"},"data-4-f":{"h":"9969b3d8f8d0e7c7a148e2bb1ef5bcd1"},"design-0-a":{"h":"fdf8fc464b06b5957f5d7a9729a63b0a"},"design-0-f":{"h":"c66790fa488e2404da67bd3fb3ab4eba"},"design-1-a":{"h":"639e53d4de161028ab09653f290dcc59"},"design-1-f":{"h":"cdbbc94bd87d5a592bbb6ffbf0bdcd31"},"design-2-a":{"h":"569b5626d18c7d03b23052ee8e3eaa55"},"design-2-f":{"h":"eb80bad6e5efed0fe51d34b5f9834154"},"design-3-a":{"h":"e3a8543d80c58f951e97d399257ed647"},"design-3-f":{"h":"285c08bd3c602e9306bad4a269335f8a"},"design-4-a":{"h":"d15f38b55241b5944204747bfd3af19e"},"design-4-f":{"h":"99602ee81e2c60a89c69dd09d405c106"},"dev-0-a":{"h":"8a386f63431a94ccf58978f8b646cb06"},"dev-0-f":{"h":"74ae925d593d986c64900acaf96cab79"},"dev-1-a":{"h":"895b53da046400eae97d904592aed2a2"},"dev-1-f":{"h":"058476519d491ba59fec54acccadec43"},"dev-2-a":{"h":"87527705ea6143afc505485ad8e91a7a"},"dev-2-f":{"h":"bd90b971ac5b944ad0a992be0bef86f4"},"dev-3-a":{"h":"30a424076ab1c33c18e1ad1c2f1a32e4"},"dev-3-f":{"h":"620e55e74ba39d90fcc555e5398b6a64"},"dev-4-a":{"h":"eaef3d8386fd11c84e9645b97d1d4fa0"},"dev-4-f":{"h":"1b53bfae62cd774356fa14eb5fddade6"},"edu-0-a":{"h":"77330575554fac777ca29c61bfb6c87b"},"edu-0-f":{"h":"2198daf9e8bfef7bf8f5cce1253d763a"},"edu-1-a":{"h":"4aa4a04703ab832f5ca08b13d4dc483b"},"edu-1-f":{"h":"10f713ec6c9f418cd0316fb6594f3af1"},"edu-2-a":{"h":"cb8d9c307c3f6c917171646dbf46e585"},"edu-2-f":{"h":"c70b526b1289c963f604515355c3c40b"},"edu-3-a":{"h":"1839634ec987a856285bf533d18fb8d1"},"edu-3-f":{"h":"c302bb07a7a996ae8c634cfa7c270931"},"edu-4-a":{"h":"d5189cefc482ed050ff3384398f6b5aa"},"edu-4-f":{"h":"036486cc1c86a893bf1cb5bd2a02098c"},"free-0-f":{"h":"7aa8c4d3ff0bcb9c9c0a637db5b2bbeb"},"free-1-f":{"h":"4b2e3630ac465a17ea4d72f43270350a"},"gestion-0-a":{"h":"9f6b5fd1640f60f498454c4a5b332604"},"gestion-0-f":{"h":"15586519c8cec2e142a95cd535cea5e2"},"gestion-1-a":{"h":"429aa050db46b20faa84feea1ae0587f"},"gestion-1-f":{"h":"3b654285122f3a201aca3187f4558d68"},"gestion-2-a":{"h":"61c1cae32d3485048ba4aa7d40fb1ed0"},"gestion-2-f":{"h":"b5d80f10d3cb283b96a4797471d796a4"},"gestion-3-a":{"h":"f230dec82ca42c2cd9405dbe8cddb81e"},"gestion-3-f":{"h":"62bfeab383f0e1f2f14f7d51cef93ad1"},"gestion-4-a":{"h":"0f5a0d7a1ab03f5ccd961c928387c27f"},"gestion-4-f":{"h":"02365aaaa57cd1b000fb6d285cd59cd9"},"lang-0-a":{"h":"6d5625dc8e2e9ce6549154eeca6e100f"},"lang-0-f":{"h":"f2f5b0102e263de5ccdbbd7aeba23ee9"},"lang-1-a":{"h":"f8833f44d9e1c60de95825d79be27bcd"},"lang-1-f":{"h":"2e5051143334663b734b97d96b6a3c0e"},"lang-2-a":{"h":"5557f6970618317847c848e5ba804497"},"lang-2-f":{"h":"f93f78dc010026e1237b7c3f1f2a3404"},"lang-3-a":{"h":"3360e1a99413500d2e80e7354cbaaa71"},"lang-3-f":{"h":"e2dd181baff45e9824f568f4a783396b"},"lang-4-a":{"h":"aa9e5d9172c05827bbdbac45de9b0bac"},"lang-4-f":{"h":"f8633c7daf2219be3f9ddef509d3bb55"},"media-0-a":{"h":"06d9653b2a8d6c4af25488445df62539"},"media-0-f":{"h":"f02c92a54e6e7f1d3b04d4fcb5b7a6bb"},"media-1-a":{"h":"fa18ec48ac307b16f67acbe68f19f1d8"},"media-1-f":{"h":"554fef02e647eab3d8c412571d5386f7"},"media-2-a":{"h":"a84fa4eed8ae73750572b91a4a3e07fe"},"media-2-f":{"h":"5e99b4ca7aaccc9bd3d0fba0292bff36"},"media-3-a":{"h":"8488b2201579b370c1dfba451b64f348"},"media-3-f":{"h":"13ab9b43991e6733037b5444047c84c0"},"media-4-a":{"h":"3383a5da8d667888f77240d932a893a5"},"media-4-f":{"h":"e00dba45cb70382ac132f4b0a26aa7d1"},"mkt-0-a":{"h":"e3eb582b46c1d9151cd4cbbcfd69c120"},"mkt-0-f":{"h":"058ff4aeccc60914d8bdec2271d0d1b8"},"mkt-1-a":{"h":"3c8e2ba8baecbd0f7911bacfb8512459"},"mkt-1-f":{"h":"77141ef46489aea611b3514255d157c1"},"mkt-2-a":{"h":"b068b5f17035500ad38eb7cea81b0b45"},"mkt-2-f":{"h":"c8e6f1ca2e53916d99953a1465099021"},"mkt-3-a":{"h":"f7a8e234a5cdade0ae839978f4bc4220"},"mkt-3-f":{"h":"930d9c9ea29641d71c414c6677d3279b"},"mkt-4-a":{"h":"e1384ab21069eb1661acd68ebf955f34"},"mkt-4-f":{"h":"2774820b7d909e04482916992b0e53ad"},"num-0-f":{"h":"aa2ef5286c174feb5a73787ad44c0a4c"},"num-1-f":{"h":"9c85b2e94d7a46e6f4572edd4e009141"},"perso-0-f":{"h":"67ceb0da22136165b79764f53afe4c5b"},"perso-1-f":{"h":"a7927fe57e3aec978daa5b7ca9c4130d"},"perso-2-f":{"h":"d53dea11a1e64ca9755ff238b82a3a24"},"perso-3-f":{"h":"8fd03d396d3b8e7c2c960fae835abd43"},"perso-4-f":{"h":"cd02a915e72f7b7cb8f40931206a35cf"},"perso-5-f":{"h":"903795ab6e78ec64e81bf53be5aed126"},"perso-6-f":{"h":"b8e11db0b8acab29eb015a9e9c77515e"},"perso-7-f":{"h":"7ee47fa235c7ef96b7eb936d8ef694a6"},"tech-0-a":{"h":"09791da3f677d4e534ada03183cb6634"},"tech-0-f":{"h":"eefaaee1a32e5b30632a017c20726ad1"},"tech-1-a":{"h":"572b869855ff5179185b84b4a6a6ba1d"},"tech-1-f":{"h":"fcb69a55b246e7094d2449dc157e8788"},"tech-2-a":{"h":"9b0a9fefeba6c01242c5457a41135d52"},"tech-2-f":{"h":"9598c6b050b5cc7fc157acce44fa2a0a"},"tech-3-a":{"h":"ce07cc12d2ed719f68c1c27fb57db22e"},"tech-3-f":{"h":"e1783042c213e204b32b2d30a8981e20"},"tech-4-a":{"h":"54c280459b7fd1e20772b72109e47c97"},"tech-4-f":{"h":"7de0d56ef3fe44eb9ef18f77daa425c8"}}'::jsonb);
 commit;

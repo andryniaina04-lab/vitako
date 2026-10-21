@@ -46,6 +46,7 @@ const isAdmin = () => !!S.profile?.is_admin;
 const isTrainer = () => S.profile?.role === 'trainer';
 const homeAfterLogin = () => (isAdmin() ? '/admin' : isTrainer() ? '/espace-formateur' : '/mon-espace');
 const hasAccess = () => !!S.profile && (S.profile.is_admin || (S.profile.sub_end && new Date(S.profile.sub_end) > new Date()));
+const canReadCourse = (c) => hasAccess() || (!!S.profile && c?.freePreview);
 const daysLeft = () => Math.max(0, Math.ceil((new Date(S.profile.sub_end) - Date.now()) / DAY));
 const doneSet = (cid) => S.progress.get(cid) || new Set();
 const courseCert = (cid) => S.certs.find((c) => c.kind === 'course' && c.course_id === cid);
@@ -198,6 +199,13 @@ function gate(next) {
   if (!S.session) return needLogin(next);
   if (!S.profile) return loadingView();
   if (!hasAccess()) return needSub();
+  return null;
+}
+// Variante pour les cours en aperçu gratuit : inscrits peuvent lire les leçons.
+function gateFreePreview(next) {
+  if (!api.configured) return needConfig();
+  if (!S.session) return needLogin(next);
+  if (!S.profile) return loadingView();
   return null;
 }
 
@@ -723,22 +731,25 @@ function coursePage(id) {
   const allDone = done.size >= n;
   const cert = courseCert(c.id);
   const ok = hasAccess();
+  const okRead = canReadCourse(c);
 
   let cta;
   if (!c.published) cta = `<p class="muted">Cette formation est en préparation. Elle sera bientôt disponible pour les abonnés.</p>${other?.published ? `<a class="btn ghost" href="#/formation/${other.id}">Voir le niveau ${other.levelName}</a>` : ''}`;
   else if (!api.configured) cta = '<p class="muted">Inscriptions bientôt ouvertes.</p>';
-  else if (!S.session) cta = `<p class="muted">Créez un compte gratuit pour suivre votre progression, puis abonnez-vous pour suivre les cours.</p>
+  else if (!S.session) cta = `<p class="muted">Créez un compte gratuit pour commencer${c.freePreview ? ' cette formation offerte' : ', puis abonnez-vous pour suivre les cours'}.</p>
       <a class="btn" href="#/inscription?suite=${encodeURIComponent('/formation/' + c.id)}">Créer un compte</a>
       <a class="btn ghost" href="#/connexion?suite=${encodeURIComponent('/formation/' + c.id)}">J'ai déjà un compte</a>`;
   else if (!S.profile) cta = loadingView();
-  else if (!ok) cta = `<p class="muted">${S.profile.sub_end ? `Votre abonnement s'est terminé le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Un abonnement est nécessaire pour suivre cette formation.'}</p>
+  else if (!okRead) cta = `<p class="muted">${S.profile.sub_end ? `Votre abonnement s'est terminé le ${fmtDate(S.profile.sub_end)}. Vos attestations restent disponibles.` : 'Un abonnement est nécessaire pour suivre cette formation.'}</p>
       <a class="btn" href="#/abonnement">${S.profile.sub_end ? 'Renouveler' : "S'abonner"} · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>`;
   else {
     const next = [...Array(n).keys()].find((i) => !done.has(i));
     cta = next !== undefined
       ? `<a class="btn" href="#/formation/${c.id}/module/${next + 1}">${done.size ? 'Continuer' : 'Commencer'} : module ${next + 1}</a>`
       : cert ? `<a class="btn" href="#/attestation/${cert.id}">Voir mon attestation</a>`
-        : `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>`;
+        : ok ? `<a class="btn" href="#/formation/${c.id}/examen">Passer l'examen final</a>`
+        : `<p class="muted">Vous avez terminé tous les modules ! Abonnez-vous pour passer l'examen et obtenir votre attestation.</p>
+          <a class="btn" href="#/abonnement">S'abonner · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>`;
   }
   const pct = Math.round((done.size / n) * 100);
   const tries = attemptsOf(c.id).length;
@@ -767,10 +778,10 @@ function coursePage(id) {
         <div class="mods">
           ${c.modules.map((m, i) => {
             const d = done.has(i);
-            const action = c.published && ok
+            const action = c.published && okRead
               ? `<a class="btn ghost sm" href="#/formation/${c.id}/module/${i + 1}">${d ? 'Revoir' : 'Ouvrir'}</a>`
               : c.published ? `<span class="lock">${I.lock}</span>` : '';
-            const L = ok ? (S.lessons.get(c.id) || []).find((l) => l.module_index === i) : null;
+            const L = okRead ? (S.lessons.get(c.id) || []).find((l) => l.module_index === i) : null;
             const subs = L ? sections(L.body_md || '') : [];
             const secs = subs.length ? `<ol class="mod-secs">${subs.map((s2, k) => `<li><span>${i + 1}.${k + 1}</span>${esc(s2)}</li>`).join('')}<li><span>${i + 1}.${subs.length + 1}</span>Test du module (3 questions)</li></ol>` : '';
             const info = L ? `${esc(L.summary || '')}${m.minutes ? ` · environ ${m.minutes} min de lecture` : ''}` : (c.published ? `Leçon${m.minutes ? ` d'environ ${m.minutes} min` : ''} + petit test` : '');
@@ -978,7 +989,7 @@ async function lessonPage(id, num) {
   const c = courseById(id);
   if (!c || !c.published) return notFound();
   if (isV2(c)) return lessonPage2(id, num, null);
-  const blocked = gate(`/formation/${id}/module/${num}`);
+  const blocked = c.freePreview ? gateFreePreview(`/formation/${id}/module/${num}`) : gate(`/formation/${id}/module/${num}`);
   if (blocked) return blocked;
   const mi = Number(num) - 1;
   if (!S.lessons.has(id)) S.lessons.set(id, await api.getLessons(id));
@@ -1042,8 +1053,17 @@ function moduleQuizHtml() {
 function examPage(id) {
   const c = courseById(id);
   if (!c || !c.published) return notFound();
+  // Pour les cours free_preview, l'examen exige un abonnement même si les leçons sont libres.
   const blocked = gate(`/formation/${id}/examen`);
-  if (blocked) return blocked;
+  if (blocked) {
+    if (c.freePreview && S.session && S.profile) {
+      return `${back(`#/formation/${id}`, c.title)}<div class="narrow panel stack"><h2>Abonnez-vous pour passer l'examen</h2>
+        <p class="muted">Vous avez suivi cette formation gratuitement. Pour passer l'examen, obtenir votre attestation et accéder à toutes les autres formations Vitako, un abonnement est nécessaire.</p>
+        <a class="btn" href="#/abonnement">S'abonner · ${ar(priceNow())} / ${S.days} jours${promoOn() ? ` <span class="btn-pct">-${promoPct()} %</span>` : ''}</a>
+        <a class="btn ghost" href="#/formations">Voir toutes les formations</a></div>`;
+    }
+    return blocked;
+  }
   const v2 = isV2(c);
   const n = v2 ? meta2(c).modules.length : c.modules.length;
   if (doneSet(id).size < n) {

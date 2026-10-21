@@ -447,6 +447,14 @@ export const DOMAINS = [
   "name": "Démarrer en freelance",
   "jobs": [
    {
+    "name": "Comment devenir freelance",
+    "blurb": "découvrir le travail en ligne et en télétravail, les métiers, les salaires et les avantages de la liberté, et comprendre pourquoi se former change tout",
+    "tools": "",
+    "paid": "",
+    "single": true,
+    "free_preview": true
+   },
+   {
     "name": "Trouver des clients en freelance",
     "blurb": "savoir où et comment chercher du travail et des clients, sur les plateformes et ailleurs, et se faire payer",
     "tools": "LinkedIn, Upwork, Fiverr, ComeUp, Codeur.com, groupes Facebook, Google Sheets et Payoneer",
@@ -2242,6 +2250,39 @@ export const PUBLISHED = {
    {
     "title": "Ma routine et mon plan d'action",
     "minutes": 5
+   }
+  ]
+ },
+ "free-1-f": {
+  "hours": 6,
+  "description": "Le travail en ligne, c'est travailler pour des clients du monde entier depuis chez vous — sans transport, sans horaire imposé, sans chef. Cette formation gratuite vous explique ce que c'est vraiment : les métiers possibles, ce qu'on gagne, la différence avec un salaire à Madagascar, et pourquoi se former avec Vitako peut changer votre vie. Vous terminerez avec un plan clair pour commencer.",
+  "objectives": [
+   "Comprendre ce qu'est le télétravail et le freelance, et la différence entre les deux",
+   "Connaître les avantages concrets du travail en ligne par rapport au travail au bureau",
+   "Découvrir les principaux métiers qu'on peut exercer à distance depuis Madagascar",
+   "Comparer les revenus en ligne avec les salaires locaux, avec des chiffres réels",
+   "Savoir pourquoi se former est indispensable et comment Vitako peut vous aider"
+  ],
+  "modules": [
+   {
+    "title": "Télétravail et freelance : ce que c'est vraiment",
+    "minutes": 6
+   },
+   {
+    "title": "Les avantages de la liberté",
+    "minutes": 7
+   },
+   {
+    "title": "Les métiers du travail en ligne",
+    "minutes": 7
+   },
+   {
+    "title": "Ce qu'on peut gagner : salaires et comparaisons",
+    "minutes": 8
+   },
+   {
+    "title": "Pourquoi se former et commencer avec Vitako",
+    "minutes": 7
    }
   ]
  },

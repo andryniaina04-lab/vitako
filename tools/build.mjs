@@ -132,10 +132,10 @@ out.push('-- Fichier généré par tools/build.mjs. Ne pas modifier à la main :
 out.push('-- À exécuter dans Supabase > SQL Editor après schema.sql, et à chaque mise à jour du contenu.');
 out.push('-- Il remplace le contenu des formations sans toucher aux comptes, paiements ni attestations.');
 out.push('begin;');
-out.push('insert into public.courses (id, job_key, job_name, level, title, hours, published) values');
-out.push(COURSES.map((c) => `  (${lit(c.id)}, ${lit(c.job.key)}, ${lit(c.job.name)}, ${lit(c.level)}, ${lit(c.title)}, ${c.hours}, ${c.published})`).join(',\n'));
+out.push('insert into public.courses (id, job_key, job_name, level, title, hours, published, free_preview) values');
+out.push(COURSES.map((c) => `  (${lit(c.id)}, ${lit(c.job.key)}, ${lit(c.job.name)}, ${lit(c.level)}, ${lit(c.title)}, ${c.hours}, ${c.published}, ${!!c.freePreview})`).join(',\n'));
 out.push('on conflict (id) do update set job_key = excluded.job_key, job_name = excluded.job_name, level = excluded.level,');
-out.push('  title = excluded.title, hours = excluded.hours, published = excluded.published;');
+out.push('  title = excluded.title, hours = excluded.hours, published = excluded.published, free_preview = excluded.free_preview;');
 
 for (const [id, c] of Object.entries(full)) {
   out.push(`\n-- ${id}`);

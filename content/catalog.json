@@ -446,6 +446,14 @@
   "name": "Démarrer en freelance",
   "jobs": [
    {
+    "name": "Comment devenir freelance",
+    "blurb": "découvrir le travail en ligne et en télétravail, les métiers, les salaires et les avantages de la liberté, et comprendre pourquoi se former change tout",
+    "tools": "",
+    "paid": "",
+    "single": true,
+    "free_preview": true
+   },
+   {
     "name": "Trouver des clients en freelance",
     "blurb": "savoir où et comment chercher du travail et des clients, sur les plateformes et ailleurs, et se faire payer",
     "tools": "LinkedIn, Upwork, Fiverr, ComeUp, Codeur.com, groupes Facebook, Google Sheets et Payoneer",

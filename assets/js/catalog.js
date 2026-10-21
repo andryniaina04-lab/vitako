@@ -62,7 +62,7 @@ export const COURSES = [];
 
 DOMAINS.forEach((dom, di) => {
   dom.jobs.forEach((j, ji) => {
-    const job = { key: `${dom.id}-${ji}`, name: j.name, blurb: j.blurb, tools: j.tools, paid: j.paid, cover: j.cover || null, single: !!j.single, dom, courses: [] };
+    const job = { key: `${dom.id}-${ji}`, name: j.name, blurb: j.blurb, tools: j.tools, paid: j.paid, cover: j.cover || null, single: !!j.single, freePreview: !!j.free_preview, dom, courses: [] };
     (job.single ? ['f'] : ['f', 'a']).forEach((level) => {
       const id = `${job.key}-${level}`;
       const pub = PUBLISHED[id];
@@ -81,6 +81,7 @@ DOMAINS.forEach((dom, di) => {
         objectives: pub?.objectives ?? defaultObjectives(job, level),
         modules: pub?.modules ?? defaultModules(job, level),
         published: !!pub,
+        freePreview: job.freePreview,
         // Version 2 (modules découpés en leçons) : en ligne (format 2) ou en aperçu pour l'administrateur.
         format: pub?.format || 1,
         breakdown: pub?.breakdown || null,
