@@ -70,7 +70,7 @@ with sync_playwright() as p:
     page.goto(BASE + '#/'); page.wait_for_timeout(600)
 
     # --- Accueil (page d'atterrissage)
-    check('accueil : vidéo de présentation avec image d\'attente', page.locator('#hero-video[poster$="vitako-presentation.jpg"]').count() == 1)
+    check('accueil : vidéo YouTube de présentation', page.locator('.lp-video iframe[src*="D63K93JUxXE"]').count() == 1)
     page.click('[data-act=hero-sound]'); page.wait_for_timeout(100)
     check('accueil : bouton son de la vidéo', page.evaluate("document.getElementById('hero-video').muted") is False and 'Couper' in page.locator('.lp-sound').inner_text())
     check('accueil : vidéo marquée « vue » en fin de lecture', page.evaluate("""() => { const v = document.getElementById('hero-video'); Object.defineProperty(v, 'duration', { value: 120, configurable: true }); Object.defineProperty(v, 'currentTime', { value: 110, configurable: true, writable: true }); v.dispatchEvent(new Event('timeupdate')); return localStorage.getItem('vitako_video_seen') === '1'; }"""))
