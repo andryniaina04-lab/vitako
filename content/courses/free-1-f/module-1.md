@@ -34,7 +34,7 @@ C'est tout. Pas de diplôme obligatoire. Pas de visa. Pas de bureau.
 > [!exemple] Le parcours d'Andry, fondateur de Vitako
 > **Andry** est freelance Senior et entrepreneur web dans le digital. Il a commencé comme beaucoup : une compétence, une connexion, et la volonté de travailler autrement.
 >
-> En 2022, il décroche son premier client en local, à Madagascar : **1 400 000 Ar par mois rien que pour ce client**. La même année, il signe un deuxième client qui lui paie **2 500 000 Ar par mois à lui seul**. En début 2025, il remporte un contrat étranger à **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** — et il en a plusieurs.
+> En 2022, il décroche son premier client en local, à Madagascar : **1 400 000 Ar par mois rien que pour ce client**. La même année, il signe un deuxième client qui lui paie **2 500 000 Ar par mois à lui seul**. En début 2025, il remporte un contrat étranger à **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** - et il en a plusieurs.
 >
 > Pas de bureau. Pas de transport. Pas de patron. Juste une compétence, des clients et de la régularité. C'est pour partager ce chemin qu'il a créé Vitako.
 

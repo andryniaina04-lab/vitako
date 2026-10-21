@@ -71,11 +71,11 @@ Voici comment se passe typiquement le parcours d'un étudiant Vitako :
 5. **Après 6 mois :** Vous passez au niveau Avancé, vous augmentez vos tarifs, vous stabilisez vos revenus.
 
 > [!exemple] Le parcours d'Andry, fondateur de Vitako
-> Andry est freelance Senior, entrepreneur web dans le digital. Il a décroché ses premiers clients locaux, puis n'a pas arrêté. En 2022 : premier client à **1 400 000 Ar par mois pour lui seul**, puis un deuxième à **2 500 000 Ar pour lui seul**. En 2025 : un contrat étranger à **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** — parmi beaucoup d'autres. C'est parce qu'il a vécu cette progression de l'intérieur qu'il a créé Vitako : pour que d'autres jeunes Malgaches puissent faire le même chemin, plus vite et avec de vraies bases.
+> Andry est freelance Senior, entrepreneur web dans le digital. Il a décroché ses premiers clients locaux, puis n'a pas arrêté. En 2022 : premier client à **1 400 000 Ar par mois pour lui seul**, puis un deuxième à **2 500 000 Ar pour lui seul**. En 2025 : un contrat étranger à **900 euros par mois (plus de 4 200 000 Ar) pour un seul client** - parmi beaucoup d'autres. C'est parce qu'il a vécu cette progression de l'intérieur qu'il a créé Vitako : pour que d'autres jeunes Malgaches puissent faire le même chemin, plus vite et avec de vraies bases.
 
 ## Cette formation est gratuite. Et après ?
 
-Cette formation — « Comment devenir freelance » — est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
+Cette formation - « Comment devenir freelance » - est **gratuite pour toutes les personnes inscrites sur Vitako**. Elle est là pour vous montrer ce qui est possible et vous aider à choisir votre chemin.
 
 La suite (les formations complètes par métier, les exercices, les projets, les examens, les attestations) est accessible avec un **abonnement mensuel**. Cet abonnement vous donne accès à toutes les formations de la plateforme, sans limite.
 
