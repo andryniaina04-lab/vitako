@@ -562,7 +562,11 @@ function heroMedia() {
   if (v) {
     const yt = v.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
     const vm = v.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-    if (yt) return `<div class="lp-video"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&mute=1&loop=1&playlist=${yt[1]}&controls=0&rel=0&playsinline=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+    // YouTube : image + bouton lecture ; la vidéo se charge au clic, avec le son (un démarrage automatique serait forcément muet).
+    if (yt) {
+      const poster = CFG.heroPoster || `https://i.ytimg.com/vi/${yt[1]}/hqdefault.jpg`;
+      return `<div class="lp-video"><button class="lp-yt" type="button" data-act="hero-play" data-yt="${yt[1]}" aria-label="Lire la vidéo de présentation de Vitako"><img src="${esc(poster)}" alt="" loading="lazy"><span class="lp-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div>`;
+    }
     if (vm) return `<div class="lp-video"><iframe src="https://player.vimeo.com/video/${vm[1]}?autoplay=1&muted=1&loop=1&background=1" title="Présentation de Vitako" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
     const hd = String(CFG.heroVideoHD || '').trim();
     const useHd = hd && heroQuality() === '1080';
@@ -2161,6 +2165,11 @@ document.addEventListener('click', async (e) => {
   }
   const t = e.target.closest('[data-act],[data-dom],[data-op]');
   if (!t) return;
+  if (t.dataset.act === 'hero-play') {
+    const id = t.dataset.yt;
+    t.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="Présentation de Vitako" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    return;
+  }
   if (t.dataset.act === 'hero-quality') {
     const v = document.getElementById('hero-video');
     if (v && CFG.heroVideoHD) {
