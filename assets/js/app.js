@@ -540,7 +540,7 @@ function catalog() {
 
 // Accueil : page d'atterrissage aérée
 // Les 10 formations mises en avant (identifiants des formations, dans l'ordre d'affichage).
-const FEATURED = ['gestion-0-f', 'mkt-0-f', 'design-0-f', 'media-0-f', 'lang-0-f', 'dev-3-f', 'data-0-f', 'data-4-f', 'client-0-f', 'lang-1-f'];
+const FEATURED = ['gestion-0-f', 'mkt-0-f', 'design-0-f', 'media-0-f', 'lang-0-f', 'dev-3-f', 'data-0-f', 'data-4-f', 'client-0-f', 'free-0-f'];
 const STEPS = [
   ['Créez votre compte', 'Gratuit. Parcourez toutes les formations, leurs objectifs et leurs programmes.'],
   ['Abonnez-vous', 'Par MVola ou Orange Money, pour 30 jours d\'accès à toutes les formations.'],
