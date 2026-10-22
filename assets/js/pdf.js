@@ -3,7 +3,7 @@
 // Les polices de base de jsPDF ne gèrent pas certains caractères : on les remplace.
 const clean = (s) => String(s ?? '')
   .replace(/[’‘]/g, "'").replace(/[“”]/g, '"')
-  .replace(/[–-]/g, '-').replace(/[  ]/g, ' ').replace(/…/g, '...');
+  .replace(/[\u2013\u2014]/g, '-').replace(/[  ]/g, ' ').replace(/…/g, '...');
 
 export function slug(s) {
   return clean(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

@@ -61,18 +61,24 @@ const fmtDT = (t) => new Date(t).toLocaleString('fr-FR', { day: 'numeric', month
 const ar = (n) => Number(n).toLocaleString('fr-FR').replace(/ | /g, ' ') + ' Ar';
 // Promotion : active jusqu'au dernier jour inclus, date de Madagascar (UTC+3), comme dans la base.
 const mgDate = () => new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10);
-const promoOn = () => S.promoPrice > 0 && S.promoPrice < S.price && /^\d{4}-\d{2}-\d{2}$/.test(S.promoUntil) && mgDate() <= S.promoUntil;
-const priceNow = () => (promoOn() ? S.promoPrice : S.price);
-const promoPct = () => Math.round((1 - S.promoPrice / S.price) * 100);
-const promoEnd = () => new Date(`${S.promoUntil}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+const siteDeal = () => S.promoPrice > 0 && S.promoPrice < S.price && /^\d{4}-\d{2}-\d{2}$/.test(S.promoUntil) && mgDate() <= S.promoUntil;
+const sitePrice = () => (siteDeal() ? S.promoPrice : S.price);
+// Offre personnelle reçue par e-mail (campagne de l'onglet Emailing) : prioritaire si elle est plus basse.
+const offerOn = () => !!(S.offer && S.offer.price < sitePrice() && new Date(S.offer.deadline) > new Date());
+const promoOn = () => offerOn() || siteDeal();
+const priceNow = () => (offerOn() ? S.offer.price : sitePrice());
+const promoPct = () => Math.round((1 - priceNow() / S.price) * 100);
+const promoEnd = () => (offerOn()
+  ? new Date(S.offer.deadline).toLocaleString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).replace(':', ' h ')
+  : new Date(`${S.promoUntil}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }));
 // Prix affiché : ancien prix barré en rouge pendant la promotion
 const priceHtml = () => (promoOn()
-  ? `<s class="old-price">${ar(S.price)}</s> <span class="new-price">${ar(S.promoPrice)}</span>`
+  ? `<s class="old-price">${ar(S.price)}</s> <span class="new-price">${ar(priceNow())}</span>`
   : ar(S.price));
-const promoBanner = () => (promoOn() ? `<a class="promo" href="#/abonnement">
+const promoBanner = () => (promoOn() ? `<a class="promo" href="#/${offerOn() ? 'offre' : 'abonnement'}">
     <span class="promo-pct">-${promoPct()} %</span>
-    <span class="promo-txt"><b>Offre de lancement jusqu'au ${promoEnd()}</b>
-      <span><b class="promo-new">${ar(S.promoPrice)}</b> au lieu de <s class="old-price">${ar(S.price)}</s> pour ${S.days} jours d'accès à toutes les formations.</span></span>
+    <span class="promo-txt"><b>${offerOn() ? 'Ton offre personnelle' : 'Offre de lancement'} jusqu'au ${promoEnd()}</b>
+      <span><b class="promo-new">${ar(priceNow())}</b> au lieu de <s class="old-price">${ar(S.price)}</s> pour ${S.days} jours d'accès à toutes les formations.</span></span>
     <span class="promo-go">J'en profite <span aria-hidden="true">→</span></span></a>` : '');
 const fmtTel = (t) => String(t || '').replace(/(\d{3})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4');
 const opById = (id) => CFG.operators.find((o) => o.id === id) || CFG.operators[0];
@@ -83,7 +89,7 @@ const verifyUrl = (id) => `${location.origin}${location.pathname}#/attestation/$
 async function loadUser() {
   const id = uid();
   if (!id) {
-    Object.assign(S, { profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [], trainer: null, trainerDraft: null, partDone: new Map() });
+    Object.assign(S, { offer: null, profile: null, progress: new Map(), certs: [], attempts: [], payments: [], reviews: [], trainer: null, trainerDraft: null, partDone: new Map() });
     return;
   }
   let profile = await api.getProfile(id);
@@ -107,6 +113,7 @@ async function loadUser() {
   S.trainer = profile?.role === 'trainer' ? await api.getMyTrainer(id).catch(() => null) : null;
   S.updates = profile && !profile.is_admin ? await api.myCourseUpdates().catch(() => []) : [];
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
+  S.offer = profile && !profile.is_admin ? await api.myOffer().catch(() => null) : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -411,7 +418,7 @@ function topbar() {
       const st = trStatus(S.trainer);
       items += item('#/espace-formateur', 'Espace formateur', st === 'draft' ? ' <span class="pill grey">À compléter</span>' : st === 'rejected' ? ' <span class="pill red">À corriger</span>' : '');
     }
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/formateurs', 'Formateurs', S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', S.admin.reviews ? ` <span class="pill gold">${S.admin.reviews}</span>` : '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/formateurs', 'Formateurs', S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', S.admin.reviews ? ` <span class="pill gold">${S.admin.reviews}</span>` : '') + item('#/admin/emailing', 'Emailing', '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
@@ -1347,6 +1354,7 @@ function subscribePage() {
       <div class="price">${priceHtml()} <small>/ ${S.days} jours</small></div>
       <ul class="obj sub-perks">${perks}</ul>
       ${act ? notice('info', `Abonnement actif jusqu'au ${fmtDate(S.profile.sub_end)}. Un nouveau paiement ajoute ${S.days} jours.`) : ''}
+      ${offerOn() && !act ? notice('info', `<b>Votre offre personnelle :</b> ${ar(priceNow())} au lieu de ${ar(S.price)}, jusqu'au ${promoEnd()}.`) : ''}
     </div>
     <div class="sub-pay stack" style="gap:18px">
     ${pending ? `<div class="panel stack" style="gap:10px">
@@ -1473,6 +1481,7 @@ function accountPage() {
     <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
     <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
   </form>
+  ${P.is_admin ? '' : `<div class="panel stack dsh-card" style="gap:8px;margin-top:22px;max-width:520px"><label class="em-opt"><input type="checkbox" id="em-optout"${P.email_optout ? '' : ' checked'}> <span><b>Recevoir les offres et nouveautés par e-mail</b><small class="muted">Les e-mails liés à votre compte (paiement, accès, mot de passe) arrivent toujours.</small></span></label></div>`}
   ${!isTrainer() && !P.is_admin ? `<p class="tr-invite muted">Vous voulez accompagner des étudiants dans votre métier ? <a href="#/devenir-formateur">Devenir formateur</a></p>` : ''}`;
 }
 
@@ -1898,7 +1907,8 @@ const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'formateurs' ? ' on' : ''}" href="#/admin/formateurs"${on === 'formateurs' ? ' aria-current="page"' : ''}>Formateurs${S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : ''}</a>
   <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
   <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis${S.admin.reviews ? ` <span class="pill gold">${S.admin.reviews}</span>` : ''}</a>
-  <a class="tab${on === 'remarques' ? ' on' : ''}" href="#/admin/remarques"${on === 'remarques' ? ' aria-current="page"' : ''}>Remarques${S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : ''}</a></nav>`;
+  <a class="tab${on === 'remarques' ? ' on' : ''}" href="#/admin/remarques"${on === 'remarques' ? ' aria-current="page"' : ''}>Remarques${S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : ''}</a>
+  <a class="tab${on === 'emailing' ? ' on' : ''}" href="#/admin/emailing"${on === 'emailing' ? ' aria-current="page"' : ''}>Emailing</a></nav>`;
 const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const kpi = (label, value, sub = '', tone = '') => `<div class="kpi${tone ? ' ' + tone : ''}"><span class="kpi-l">${label}</span><b class="kpi-v">${value}</b>${sub ? `<span class="kpi-s">${sub}</span>` : ''}</div>`;
@@ -2127,6 +2137,9 @@ const ROUTES = [
   [/^\/espace-formateur$/, trainerSpacePage],
   [/^\/devenir-formateur$/, becomeTrainerPage],
   [/^\/remarque$/, feedbackPage],
+  [/^\/offre$/, offerPage],
+  [/^\/desinscription$/, unsubscribePage],
+  [/^\/admin\/emailing$/, adminEmailingPage],
 ];
 let renderToken = 0;
 async function render() {
@@ -2658,4 +2671,332 @@ document.addEventListener('change', async (e) => {
   if (e.target.name === 't-dom') { e.target.closest('.chip')?.classList.toggle('on', e.target.checked); return; }
   if (e.target.name === 'a-role') { const n = document.getElementById('role-note'); if (n) n.hidden = e.target.value !== 'trainer'; return; }
   if (e.target.name === 'rv-rating') { const el = document.getElementById('rverr'); if (el) el.hidden = true; }
+});
+
+// ---------------------------------------------------------------------------
+// Page de l'offre (lien des e-mails : #/offre?t=<jeton>) et désinscription
+// ---------------------------------------------------------------------------
+const OFFER_PERKS = [
+  ['Plus de 100 formations', 'Graphisme, montage vidéo, rédaction web, community management, assistance virtuelle, développement web, IA…'],
+  ['Des leçons courtes et concrètes', 'Avec des exemples de Madagascar, à suivre sur téléphone ou ordinateur, à ton rythme.'],
+  ['Des exercices pratiques', 'Un exercice par module pour construire ton portfolio et montrer ton travail aux clients.'],
+  ['Une attestation vérifiable', 'Pour chaque formation réussie, avec un numéro unique que tes clients peuvent vérifier en ligne.'],
+  ['Sans engagement', `Tu paies une fois par MVola ou Orange Money : l'accès s'arrête seul au bout de 30 jours, aucun prélèvement.`],
+];
+const OFFER_FAQ = [
+  ['Comment je paie ?', `Par MVola ou Orange Money. Sur la page Abonnement, tu envoies le montant au numéro affiché, puis tu colles la référence du SMS de confirmation. Ton accès est activé en ${CFG.validationDelay || 'quelques minutes'}.`],
+  ['Est-ce que le prix augmente après le premier mois ?', 'Cette offre concerne ton premier mois d\'accès. Ensuite, tu choisis librement de renouveler ou non : rien n\'est prélevé automatiquement.'],
+  ['Je n\'ai jamais suivi de formation en ligne, c\'est pour moi ?', 'Oui. Les formations commencent par les bases, avec des leçons courtes, des exemples concrets et un test après chaque partie. Tu avances à ton rythme.'],
+  ['Pourquoi l\'offre est limitée dans le temps ?', 'C\'est une offre de bienvenue réservée aux inscrits qui n\'ont pas encore pris d\'abonnement. Elle est personnelle et s\'arrête à la fin du compte à rebours.'],
+];
+const cdParts = (ms) => { const t = Math.max(0, Math.floor(ms / 1000)); return [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60]; };
+const countdown = (deadline, cls = '') => {
+  const [d, h, m, s] = cdParts(new Date(deadline) - Date.now());
+  const box = (v, l, k) => `<span class="cd-box"><b data-k="${k}">${pad2(v)}</b><small>${l}</small></span>`;
+  return `<div class="cd ${cls}" data-deadline="${esc(deadline)}" role="timer" aria-label="Temps restant">${box(d, 'jours', 'd')}${box(h, 'heures', 'h')}${box(m, 'min', 'm')}${box(s, 'sec', 's')}</div>`;
+};
+// Met à jour tous les comptes à rebours affichés, chaque seconde.
+setInterval(() => {
+  document.querySelectorAll('.cd[data-deadline]').forEach((el) => {
+    const parts = cdParts(new Date(el.dataset.deadline) - Date.now());
+    ['d', 'h', 'm', 's'].forEach((k, i) => { const b = el.querySelector(`[data-k="${k}"]`); if (b) b.textContent = pad2(parts[i]); });
+    if (parts.every((x) => x === 0) && !el.dataset.done) { el.dataset.done = '1'; S.offerView = null; S.offer = null; render(); }
+  });
+}, 1000);
+
+async function offerPage() {
+  const token = route().query.get('t') || '';
+  if (/^[0-9a-f-]{36}$/i.test(token)) { try { localStorage.setItem('vitako_offer_t', token); } catch (e) { /* stockage indisponible */ } }
+  let tk = /^[0-9a-f-]{36}$/i.test(token) ? token : '';
+  if (!tk && !S.session) { try { tk = localStorage.getItem('vitako_offer_t') || ''; } catch (e) { /* stockage indisponible */ } }
+  const key = `${tk}|${uid() || ''}`;
+  if (api.configured && (tk || S.session) && S.offerView?.key !== key) {
+    const data = await api.offerOpen(tk || null).catch(() => ({ found: false }));
+    S.offerView = { key, data };
+    if (S.session && S.profile && !S.profile.is_admin) S.offer = await api.myOffer().catch(() => S.offer);
+  }
+  const O = S.offerView?.key === key ? S.offerView.data : { found: false };
+  const valid = O.found && O.valid && !O.already_subscribed;
+  const price = valid ? O.price : priceNow();
+  const pct = Math.round((1 - price / S.price) * 100);
+  const first = O.first_name ? esc(O.first_name) : '';
+  const subActive = hasAccess() && !isAdmin();
+  const otherAccount = valid && S.session && O.mine === false;
+
+  let cta, ctaNote;
+  if (subActive || (O.found && O.already_subscribed)) {
+    cta = `<a class="btn lg" href="#/formations">Continuer mes formations <span aria-hidden="true">→</span></a>`;
+    ctaNote = 'Ton abonnement est déjà actif : profite de toutes les formations.';
+  } else if (!S.session) {
+    cta = `<a class="btn lg" href="#/connexion?suite=${encodeURIComponent('/abonnement')}">Je profite de l'offre à ${ar(price)} <span aria-hidden="true">→</span></a>`;
+    ctaNote = valid ? 'Connecte-toi avec l\'adresse e-mail qui a reçu l\'offre, puis paie par MVola ou Orange Money.' : 'Connecte-toi, puis paie par MVola ou Orange Money.';
+  } else {
+    cta = `<a class="btn lg" href="#/abonnement">Je profite de l'offre à ${ar(priceNow())} <span aria-hidden="true">→</span></a>`;
+    ctaNote = 'Paiement par MVola ou Orange Money · accès activé en ' + esc(CFG.validationDelay || 'quelques minutes');
+  }
+  const expired = O.found && !O.valid && !O.already_subscribed;
+  const head = valid
+    ? `<div class="eyebrow lp-eyebrow">${first ? `${first}, ton` : 'Ton'} offre personnelle</div>
+       <h1>30 jours d'accès à <em>toutes les formations</em> pour ${ar(price)}</h1>`
+    : `<div class="eyebrow lp-eyebrow">${promoOn() ? `Offre jusqu'au ${promoEnd()}` : 'Abonnement Vitako'}</div>
+       <h1>Apprends un <em>métier</em>. Travaille à <em>distance</em>.</h1>`;
+  const priceBlock = `<div class="of-price"><span class="of-new">${ar(price)}</span>${price < S.price ? `<s class="of-old">${ar(S.price)}</s><span class="of-pct">-${pct} %</span>` : ''}<span class="of-per">/ ${S.days} jours</span></div>`;
+  const timer = valid && !subActive ? `<div class="of-timer"><span class="of-timer-l">L'offre se termine dans</span>${countdown(O.deadline)}</div>` : '';
+  const finalCta = `<div class="lp-ctas">${cta}</div><p class="of-note">${ctaNote}</p>`;
+
+  return `
+  <section class="lp-hero of-hero">
+    <div class="lp-hero-in">
+      <div class="lp-hero-txt">
+        ${head}
+        ${expired ? `<p class="of-ended">Cette offre est terminée. Tu peux toujours t'abonner au prix actuel.</p>` : ''}
+        ${otherAccount ? `<p class="of-ended">Cette offre est liée à un autre compte. Connecte-toi avec l'adresse e-mail qui a reçu l'offre pour en profiter.</p>` : ''}
+        <p class="lp-lead">Choisis un métier du freelance, apprends-le avec des leçons courtes et des exercices pratiques, et obtiens une attestation à montrer à tes clients.</p>
+        ${priceBlock}
+        ${timer}
+        ${finalCta}
+      </div>
+      <div class="of-img"><img src="assets/img/offre/etudiante.webp" width="760" height="672" alt="Une étudiante heureuse devant son ordinateur portable"></div>
+    </div>
+  </section>
+
+  <section class="lp-sec-block" aria-labelledby="of-perks">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Ce que tu débloques</div><h2 id="of-perks">Tout Vitako, pendant ${S.days} jours</h2></div>
+    <ul class="of-perks">${OFFER_PERKS.map(([t, d]) => `<li><span class="of-check">${I.check}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ul>
+  </section>
+
+  <section class="lp-sec-block of-jobs" aria-labelledby="of-jobs">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Les métiers les plus demandés</div><h2 id="of-jobs">Choisis ton métier</h2></div>
+    <div class="of-chips">${FEATURED.map(courseById).filter(Boolean).map((c) => `<a class="of-chip" href="#/formation/${c.id}">${esc(c.job.name)}</a>`).join('')}<a class="of-chip more" href="#/formations">Voir les ${COURSES.length} formations →</a></div>
+  </section>
+
+  <section class="lp-sec-block" aria-labelledby="of-calc">
+    <div class="of-calc">
+      <div><div class="eyebrow lp-eyebrow">Fais le calcul</div><h2 id="of-calc">Moins de ${ar(Math.ceil(price / S.days / 10) * 10)} par jour</h2>
+      <p class="muted">Un seul petit travail en freelance rembourse ton mois de formation. Un logo facturé 35 euros, c'est environ 175 000 Ar : plus de ${Math.floor(175000 / price)} fois le prix de l'offre.</p></div>
+      <figure class="of-quote"><blockquote>« En 2022, mon premier client local me payait 1 400 000 Ar par mois. En 2025, un client étranger me paie 900 euros par mois. J'ai créé Vitako pour que d'autres jeunes Malgaches fassent le même chemin, plus vite. »</blockquote><figcaption><b>Andry</b>, fondateur de Vitako, freelance Senior</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="lp-sec-block" aria-labelledby="of-steps">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">En 3 étapes</div><h2 id="of-steps">Comment profiter de l'offre</h2></div>
+    <ol class="lp-steps of-steps">
+      <li><span class="lp-num">1</span><h3>Connecte-toi</h3><p>Avec l'adresse e-mail de ton compte Vitako, celle qui a reçu l'offre.</p></li>
+      <li><span class="lp-num">2</span><h3>Paie ${ar(price)}</h3><p>Par MVola ou Orange Money, puis colle la référence du SMS de confirmation.</p></li>
+      <li><span class="lp-num">3</span><h3>Commence à apprendre</h3><p>Ton accès est activé en ${esc(CFG.validationDelay || 'quelques minutes')}, pour ${S.days} jours.</p></li>
+    </ol>
+  </section>
+
+  ${temoignages()}
+
+  <section class="lp-sec-block" aria-labelledby="of-faq">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">Questions fréquentes</div><h2 id="of-faq">Tu te poses une question ?</h2></div>
+    <div class="of-faq">${OFFER_FAQ.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
+  </section>
+
+  <section class="lp-band lp-final of-final">
+    <h2>${valid ? `${first ? first + ', ton' : 'Ton'} offre t'attend` : 'Ton premier client commence ici'}</h2>
+    ${priceBlock}
+    ${timer}
+    ${finalCta}
+  </section>
+
+  ${CFG.heroVideo ? `<section class="lp-sec-block of-video" aria-labelledby="of-vid">
+    <div class="lp-head"><div class="eyebrow lp-eyebrow">En vidéo</div><h2 id="of-vid">Découvre Vitako en 1 minute</h2></div>
+    <div class="of-video-in">${heroMedia()}</div>
+  </section>` : ''}`;
+}
+
+async function unsubscribePage() {
+  const token = route().query.get('t') || '';
+  let ok = false;
+  if (api.configured && /^[0-9a-f-]{36}$/i.test(token)) ok = await api.emailUnsubscribe(token).catch(() => false);
+  return `<div class="narrow panel stack" style="gap:14px">
+    <h2>${ok ? 'Tu es désinscrit(e)' : 'Lien de désinscription invalide'}</h2>
+    <p class="muted">${ok ? 'Tu ne recevras plus nos e-mails d\'offres et de nouveautés. Les e-mails liés à ton compte (paiement, accès, mot de passe) continuent d\'arriver normalement.' : 'Ce lien n\'est pas reconnu. Tu peux gérer tes préférences depuis Mon espace.'}</p>
+    <p class="muted">Tu peux changer d'avis à tout moment dans <a href="#/mon-espace">Mon espace</a>.</p>
+    <div><a class="btn ghost" href="#/">Retour à l'accueil</a></div></div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Administration : Emailing
+// ---------------------------------------------------------------------------
+const CAMP_DEFAULT = {
+  subject: '{prenom}, ton accès Vitako à {prix} au lieu de {prix_normal}',
+  preheader: 'Offre réservée aux inscrits : 30 jours d\'accès à toutes les formations. Pendant {jours} jours seulement.',
+  title: '{prenom}, c\'est le moment de te lancer',
+  body: `Tu as créé ton compte sur Vitako, et on aimerait t'aider à passer à l'étape suivante : apprendre un vrai métier du freelance et décrocher tes premiers clients.
+
+Pour ça, on t'a réservé une offre spéciale : **30 jours d'accès à toutes les formations pour {prix}** au lieu de {prix_normal}.
+
+Avec ton abonnement, tu débloques :
+✓ Plus de 100 formations : graphisme, montage vidéo, rédaction web, community management, assistance virtuelle, développement web…
+✓ Des leçons courtes avec des exemples de Madagascar
+✓ Des exercices pratiques pour construire ton portfolio
+✓ Une attestation vérifiable pour chaque formation réussie
+
+**Cette offre est personnelle et limitée** : dès que tu ouvres la page de l'offre, tu as {jours} jours pour en profiter.
+
+À très vite sur Vitako,
+Andry, fondateur de Vitako`,
+  cta_label: 'Je profite de l\'offre à {prix}',
+  audience: 'never', offer_price: 20000, offer_days: 10, countdown_days: 5,
+};
+const AUD_LABEL = { never: 'Inscrits jamais abonnés', expired: 'Abonnement terminé', all: 'Tous les inscrits' };
+const CAMP_STATUS = { draft: ['Brouillon', 'grey'], sending: ['Envoi en cours', 'gold'], sent: ['Envoyée', ''] };
+
+async function adminEmailingPage() {
+  if (!S.session) return needLogin('/admin/emailing');
+  if (!S.profile) return loadingView();
+  if (!isAdmin()) return notFound();
+  const [list, aud] = await Promise.all([api.adminCampaigns(), api.adminAudienceCounts()]);
+  S.camps = list;
+  const E = S.ui.campEdit;
+  const domainOk = !/resend\.dev/i.test(aud.mail_from || '');
+  const head = `${adminTabs('emailing')}${pageHead('Administration', 'Emailing', `<p class="muted">Expéditeur : <b class="mono">${esc(aud.mail_from || '')}</b> · ${nf(aud.optout)} désinscrit${aud.optout > 1 ? 's' : ''}</p>`)}
+    ${domainOk ? '' : `<div style="margin-bottom:18px">${notice('warn', 'Le domaine vitako.mg n\'est pas encore configuré comme expéditeur : Resend refusera d\'envoyer à vos inscrits. Vérifiez le domaine dans Resend, puis créez le secret « mail_from » dans Supabase (voir les instructions de configuration).')}</div>`}`;
+
+  if (E) {
+    const c = E;
+    const aopt = (k) => `<option value="${k}"${c.audience === k ? ' selected' : ''}>${AUD_LABEL[k]} (${nf(aud[k])})</option>`;
+    const field = (id, label, val, attrs = '') => `<div class="f"><label class="l" for="${id}">${label}</label><input class="in" id="${id}" value="${esc(val ?? '')}" ${attrs}></div>`;
+    return `${head}
+    <form id="camp-form" class="panel stack" style="gap:14px;max-width:820px" novalidate>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:1.2rem">${c.id ? 'Modifier la campagne' : 'Nouvelle campagne'}</h2><button type="button" class="btn ghost sm" data-em="close">Retour à la liste</button></div>
+      ${field('c-subject', 'Objet de l\'e-mail', c.subject, 'maxlength="150" required')}
+      ${field('c-pre', 'Texte d\'aperçu (affiché après l\'objet dans la boîte de réception)', c.preheader, 'maxlength="200"')}
+      ${field('c-title', 'Titre dans l\'e-mail', c.title, 'maxlength="150"')}
+      <div class="f"><label class="l" for="c-body">Message</label><textarea class="in" id="c-body" rows="16" maxlength="6000">${esc(c.body || '')}</textarea>
+        <small class="muted">Une ligne vide sépare deux paragraphes. **texte** pour du gras. Variables : {prenom}, {prix}, {prix_normal}, {jours}.</small></div>
+      ${field('c-cta', 'Texte du bouton', c.cta_label, 'maxlength="60"')}
+      <div class="em-grid">
+        <div class="f"><label class="l" for="c-aud">Destinataires</label><select class="in" id="c-aud">${aopt('never')}${aopt('expired')}${aopt('all')}</select></div>
+        <div class="f" id="c-offer-f"${c.audience === 'never' ? '' : ' hidden'}><label class="l" for="c-price">Prix de l'offre (Ar)</label><input class="in mono" id="c-price" inputmode="numeric" value="${c.offer_price ?? ''}" placeholder="Vide = pas d'offre"></div>
+        <div class="f"><label class="l" for="c-days">Durée de l'offre (jours)</label><input class="in mono" id="c-days" inputmode="numeric" value="${c.offer_days ?? 10}"></div>
+        <div class="f"><label class="l" for="c-cd">Compte à rebours après le 1er clic (jours)</label><input class="in mono" id="c-cd" inputmode="numeric" value="${c.countdown_days ?? 5}"></div>
+      </div>
+      <p class="muted" style="font-size:.88rem">L'offre n'est valable que pour les destinataires jamais abonnés. Elle reste ouverte pendant la durée choisie après l'envoi ; au premier clic, chaque personne a le nombre de jours du compte à rebours pour en profiter, sans dépasser la fin de l'offre. Le prix de la promotion du site ne change pas.</p>
+      <p id="cerr" class="notice err" hidden></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">Enregistrer</button>
+        ${c.id ? `<button type="button" class="btn ghost" data-em="preview" data-id="${c.id}">Aperçu</button><button type="button" class="btn ghost" data-em="test" data-id="${c.id}">M'envoyer un test</button><button type="button" class="btn ghost danger" data-em="delete" data-id="${c.id}">Supprimer</button>` : ''}</div>
+    </form>
+    <div id="em-preview"></div>`;
+  }
+
+  const row = (c) => {
+    const [lab, tone] = CAMP_STATUS[c.status] || ['', ''];
+    const total = c.recipients || c.audience_now;
+    const done = c.sent + c.failed;
+    const confirm = S.ui.campConfirm === c.id;
+    let actions = '';
+    if (c.status === 'draft') {
+      actions = `<button class="btn ghost sm" data-em="edit" data-id="${c.id}">Modifier</button><button class="btn ghost sm" data-em="preview" data-id="${c.id}">Aperçu</button><button class="btn ghost sm" data-em="test" data-id="${c.id}">M'envoyer un test</button>`
+        + (confirm ? `<button class="btn sm danger" data-em="start" data-id="${c.id}" ${domainOk ? '' : 'disabled'}>Confirmer l'envoi à ${nf(c.audience_now)} personnes</button><button class="btn ghost sm" data-em="cancel">Annuler</button>`
+          : `<button class="btn sm" data-em="ask" data-id="${c.id}" ${domainOk && c.audience_now ? '' : 'disabled'}>Envoyer à ${nf(c.audience_now)} personnes</button>`);
+    } else {
+      actions = `<button class="btn ghost sm" data-em="preview" data-id="${c.id}">Aperçu</button>`
+        + (c.status === 'sending' && S.ui.campSending !== c.id ? `<button class="btn sm" data-em="resume" data-id="${c.id}">Reprendre l'envoi</button>` : '')
+        + (c.failed ? `<button class="btn ghost sm" data-em="retry" data-id="${c.id}">Renvoyer les ${nf(c.failed)} échecs</button>` : '');
+    }
+    const progress = c.status !== 'draft' ? `<div class="em-prog"><i style="width:${total ? Math.round(done / total * 100) : 0}%"></i></div>` : '';
+    const offerTxt = c.offer_price ? `Offre ${ar(c.offer_price)} · ${c.offer_days} j · compte à rebours ${c.countdown_days} j${c.started_at ? ` · fin le ${fmtDate(new Date(new Date(c.started_at).getTime() + c.offer_days * DAY))}` : ''}` : 'Sans offre';
+    return `<article class="panel em-card" id="camp-${c.id}">
+      <div class="em-top"><span class="pill ${tone}">${lab}</span><small class="muted">${c.started_at ? `Envoyée le ${fmtDT(c.started_at)}` : `Créée le ${fmtDT(c.created_at)}`}</small></div>
+      <h3>${esc(c.subject)}</h3>
+      <p class="muted" style="margin:4px 0 0">${AUD_LABEL[c.audience]} · ${offerTxt}</p>
+      ${c.status !== 'draft' ? `<div class="kpis em-kpis">
+        ${kpi('Destinataires', nf(total))}${kpi('Envoyés', nf(c.sent), c.queued ? `${nf(c.queued)} en cours` : '', 'good')}${kpi('Échecs', nf(c.failed), c.last_error ? esc(c.last_error).slice(0, 90) : '')}
+        ${kpi('Ont ouvert l\'offre', nf(c.clicked), `${total ? Math.round(c.clicked / total * 100) : 0} %`)}${kpi('Paiements', nf(c.paid), c.paid_pending ? `${nf(c.paid_pending)} à valider` : '', 'gold')}${kpi('Revenus', ar(c.revenue))}
+      </div>${progress}` : ''}
+      <div class="em-actions">${actions}</div>
+      <div class="em-prev" id="prev-${c.id}"></div>
+    </article>`;
+  };
+  return `${head}
+  <div class="kpis" style="margin-bottom:18px">${kpi('Inscrits jamais abonnés', nf(aud.never))}${kpi('Abonnement terminé', nf(aud.expired))}${kpi('Tous les inscrits', nf(aud.all), 'hors désinscrits')}</div>
+  <div style="margin-bottom:18px"><button class="btn" data-em="new">Nouvelle campagne</button></div>
+  ${list.length ? list.map(row).join('') : '<p class="muted">Aucune campagne pour l\'instant.</p>'}`;
+}
+
+const readCamp = (f) => ({
+  id: S.ui.campEdit?.id || '',
+  subject: f.querySelector('#c-subject').value.trim(),
+  preheader: f.querySelector('#c-pre').value.trim(),
+  title: f.querySelector('#c-title').value.trim(),
+  body: f.querySelector('#c-body').value.replace(/\r/g, ''),
+  cta_label: f.querySelector('#c-cta').value.trim(),
+  audience: f.querySelector('#c-aud').value,
+  offer_price: f.querySelector('#c-price').value.replace(/\D/g, ''),
+  offer_days: f.querySelector('#c-days').value.replace(/\D/g, ''),
+  countdown_days: f.querySelector('#c-cd').value.replace(/\D/g, ''),
+});
+
+async function campaignSendLoop(id) {
+  if (S.ui.campSending) return;
+  S.ui.campSending = id;
+  try {
+    let st, idle = 0;
+    do {
+      st = await api.adminCampaignSendBatch(id);
+      const el = document.querySelector(`#camp-${id} .em-actions`);
+      if (el) el.innerHTML = `<span class="muted">Envoi… ${nf(st.sent)} envoyés, ${nf(st.queued)} en cours, ${nf(st.pending)} restants${st.failed ? `, ${nf(st.failed)} échecs` : ''}</span>`;
+      if (!st.batch) idle++;
+      await new Promise((r) => setTimeout(r, st.batch ? 1500 : 4000));
+    } while ((st.pending > 0 || st.queued > 0) && idle < 60 && location.hash.startsWith('#/admin/emailing'));
+    toast(st.pending || st.queued ? 'Envoi en pause : revenez sur cette page pour le reprendre.' : `Campagne envoyée : ${nf(st.sent)} e-mail${st.sent > 1 ? 's' : ''}${st.failed ? `, ${nf(st.failed)} échecs` : ''}.`);
+  } catch (err) { toast(err.message); }
+  S.ui.campSending = null;
+  if (location.hash.startsWith('#/admin/emailing')) render();
+}
+
+document.addEventListener('click', async (e) => {
+  const t = e.target.closest('[data-em]');
+  if (!t) return;
+  const a = t.dataset.em, id = t.dataset.id;
+  if (a === 'new') { S.ui.campEdit = { ...CAMP_DEFAULT }; render(); return; }
+  if (a === 'close') { S.ui.campEdit = null; render(); return; }
+  if (a === 'edit') { S.ui.campEdit = { ...(S.camps || []).find((c) => c.id === id) }; render(); return; }
+  if (a === 'ask') { S.ui.campConfirm = id; render(); return; }
+  if (a === 'cancel') { S.ui.campConfirm = null; render(); return; }
+  t.disabled = true;
+  try {
+    if (a === 'preview') {
+      const html = await api.adminCampaignPreview(id);
+      const box = document.getElementById(`prev-${id}`) || document.getElementById('em-preview');
+      if (box) {
+        box.innerHTML = `<div class="em-frame"><div class="em-frame-h"><b>Aperçu</b><button type="button" class="lnk" data-em="hide">Fermer</button></div><iframe title="Aperçu de l'e-mail" sandbox></iframe></div>`;
+        box.querySelector('iframe').srcdoc = html;
+      }
+    } else if (a === 'hide') { t.closest('.em-frame')?.remove(); }
+    else if (a === 'test') { const to = await api.adminCampaignTest(id); toast(`E-mail de test envoyé à ${to}.`); }
+    else if (a === 'delete') { await api.adminCampaignDelete(id); S.ui.campEdit = null; toast('Campagne supprimée.'); render(); return; }
+    else if (a === 'start') { const n = await api.adminCampaignStart(id); S.ui.campConfirm = null; toast(`Envoi lancé à ${nf(n)} personnes.`); await render(); campaignSendLoop(id); return; }
+    else if (a === 'resume') { campaignSendLoop(id); return; }
+    else if (a === 'retry') { const n = await api.adminCampaignRetry(id); toast(`${nf(n)} envoi(s) remis dans la file.`); await render(); campaignSendLoop(id); return; }
+  } catch (err) { toast(err.message); }
+  t.disabled = false;
+});
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'c-aud') { const f = document.getElementById('c-offer-f'); if (f) f.hidden = e.target.value !== 'never'; }
+  if (e.target.id === 'em-optout') {
+    const want = e.target.checked;
+    api.setEmailOptout(!want).then(() => { S.profile.email_optout = !want; toast(want ? 'Vous recevrez nos offres et nouveautés.' : 'Vous ne recevrez plus nos offres par e-mail.'); }).catch((err) => { e.target.checked = !want; toast(err.message); });
+  }
+});
+document.addEventListener('submit', async (e) => {
+  if (e.target.id !== 'camp-form') return;
+  e.preventDefault();
+  const f = e.target, btn = f.querySelector('button[type=submit]');
+  const c = readCamp(f);
+  const err = (m) => showErr('cerr', m);
+  if (!c.subject) return err('Indiquez l\'objet de l\'e-mail.');
+  if (c.audience === 'never' && c.offer_price && (+c.offer_price < 1000 || +c.offer_price >= S.price)) return err(`Le prix de l'offre doit être compris entre 1 000 Ar et ${ar(S.price - 1)}.`);
+  if (!(+c.offer_days >= 1 && +c.offer_days <= 60) || !(+c.countdown_days >= 1 && +c.countdown_days <= 60)) return err('Les durées doivent être comprises entre 1 et 60 jours.');
+  busy(btn, true);
+  try {
+    const saved = await api.adminCampaignSave(c);
+    S.ui.campEdit = { ...saved };
+    toast('Campagne enregistrée.');
+    render();
+  } catch (er) { err(er.message); busy(btn, false); }
 });

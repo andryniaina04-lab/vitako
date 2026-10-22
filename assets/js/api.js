@@ -48,6 +48,9 @@ const MESSAGES = {
   expired: 'Ce passage a expiré (plus de 3 heures). Recommencez l\'examen.',
   no_certificate: 'Vous pourrez donner votre avis après avoir obtenu l\'attestation de cette formation.',
   bad_rating: 'Choisissez une note de 1 à 5 étoiles.',
+  campaign_locked: 'Cette campagne a déjà été envoyée : elle ne peut plus être modifiée ni supprimée.',
+  not_started: 'Lancez d\'abord l\'envoi de la campagne.',
+  resend_missing: 'La clé Resend est absente du coffre-fort Supabase (secret « resend_api_key »).',
   bad_category: 'Choisissez le type de remarque.',
   message_too_short: 'Votre message est trop court : écrivez au moins 10 caractères.',
   message_too_long: 'Votre message est trop long : 2 000 caractères au maximum.',
@@ -377,4 +380,60 @@ export async function adminCounts() {
   if (active.error) throw new ApiError(active.error);
   const [fb, tr, rv] = await Promise.all([sb.rpc('admin_feedback_new_count'), sb.rpc('admin_trainer_todo'), sb.rpc('admin_reviews_new_count')]);
   return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0), trainers: tr.error ? 0 : (tr.data || 0), reviews: rv.error ? 0 : (rv.data || 0) };
+}
+
+// ---------------------------------------------------------------------------
+// Emailing et offre réservée aux destinataires
+// ---------------------------------------------------------------------------
+export async function myOffer() {
+  need();
+  return run(sb.rpc('my_offer'));
+}
+export async function offerOpen(token) {
+  need();
+  return run(sb.rpc('offer_open', { p_token: token || null }));
+}
+export async function emailUnsubscribe(token) {
+  need();
+  return run(sb.rpc('email_unsubscribe', { p_token: token }));
+}
+export async function setEmailOptout(optout) {
+  need();
+  return run(sb.rpc('set_email_optout', { p_optout: optout }));
+}
+export async function adminCampaigns() {
+  need();
+  return run(sb.rpc('admin_campaigns'));
+}
+export async function adminAudienceCounts() {
+  need();
+  return run(sb.rpc('admin_audience_counts'));
+}
+export async function adminCampaignSave(c) {
+  need();
+  return run(sb.rpc('admin_campaign_save', { p: c }));
+}
+export async function adminCampaignDelete(id) {
+  need();
+  return run(sb.rpc('admin_campaign_delete', { p_id: id }));
+}
+export async function adminCampaignPreview(id) {
+  need();
+  return run(sb.rpc('admin_campaign_preview', { p_id: id }));
+}
+export async function adminCampaignTest(id) {
+  need();
+  return run(sb.rpc('admin_campaign_test', { p_id: id }));
+}
+export async function adminCampaignStart(id) {
+  need();
+  return run(sb.rpc('admin_campaign_start', { p_id: id }));
+}
+export async function adminCampaignSendBatch(id) {
+  need();
+  return run(sb.rpc('admin_campaign_send_batch', { p_id: id }));
+}
+export async function adminCampaignRetry(id) {
+  need();
+  return run(sb.rpc('admin_campaign_retry', { p_id: id }));
 }

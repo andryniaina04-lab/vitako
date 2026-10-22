@@ -114,6 +114,7 @@
   const DOMAIN_IDS = () => new Set(FIX.courses.map((c) => c.job_key.split('-')[0]));
 
   const newCertId = () => 'VTK-' + new Date().getFullYear() + '-' + Math.random().toString(16).slice(2, 8).toUpperCase();
+  const campAudience = (k) => db.profiles.filter((p) => !p.is_admin && !p.email_optout && (k === 'all' || (k === 'never' ? !p.sub_end && (p.role || 'student') === 'student' : p.sub_end && new Date(p.sub_end) <= new Date())));
   const RPC = {
     my_course_updates() {
       if (!me()) return err('not_authenticated');
@@ -139,7 +140,7 @@
       if (sender && ((p_operator === 'mvola' && !['034', '038'].includes(sender.slice(0, 3))) || (p_operator === 'orange' && !['032', '037'].includes(sender.slice(0, 3))))) return err('sender_operator_mismatch');
       if (db.payments.some((p) => p.user_id === me() && p.status === 'pending')) return err('already_pending');
       if (db.payments.some((p) => p.operator === p_operator && p.reference === ref && p.status !== 'rejected')) return err('reference_used');
-      const row = { id: uuid(), user_id: me(), operator: p_operator, reference: ref, sender, amount: (new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10) <= '2026-11-30' ? 30000 : 60000), status: 'pending', reason: null, created_at: now(), decided_at: null, access_until: null };
+      const row = { id: uuid(), user_id: me(), operator: p_operator, reference: ref, sender, amount: (RPC.my_offer().data?.price || (new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10) <= '2026-11-30' ? 30000 : 60000)), status: 'pending', reason: null, created_at: now(), decided_at: null, access_until: null };
       db.payments.push(row); save(); return { data: row, error: null };
     },
     admin_decide_payment({ p_id, p_approve, p_reason }) {
@@ -245,6 +246,83 @@
       const row = { id: uuid(), user_id: me(), course_id: p_course, rating: p_rating, comment: String(p_comment || '').trim().slice(0, 1000), can_publish: !!p_publish, created_at: now() };
       db.reviews.push(row); save(); return { data: row, error: null };
     },
+
+    // --- Emailing et offre (version simplifiée de supabase/migrations/20261022b_emailing.sql) ---
+    admin_reviews_new_count() { return { data: 0, error: null }; },
+    admin_reviews_mark_seen() { return { data: null, error: null }; },
+    my_offer() {
+      if (!me()) return { data: null, error: null };
+      const r = (db.recipients || []).find((x) => x.user_id === me() && x.status !== 'pending');
+      const c = r && (db.campaigns || []).find((x) => x.id === r.campaign_id);
+      const p = profile();
+      if (!c || !c.offer_price || p.sub_end) return { data: null, error: null };
+      const end = new Date(new Date(c.started_at).getTime() + c.offer_days * 864e5);
+      const dl = new Date(Math.min(end, new Date(r.first_seen_at || Date.now()).getTime() + c.countdown_days * 864e5));
+      return { data: { campaign_id: c.id, price: c.offer_price, deadline: dl.toISOString(), offer_end: end.toISOString(), started: !!r.first_seen_at }, error: null };
+    },
+    offer_open({ p_token }) {
+      const r = (db.recipients || []).find((x) => (p_token ? x.token === p_token : x.user_id === me()));
+      if (!r) return { data: { found: false }, error: null };
+      r.first_seen_at ||= now(); save();
+      const c = db.campaigns.find((x) => x.id === r.campaign_id), p = db.profiles.find((x) => x.id === r.user_id);
+      const end = new Date(new Date(c.started_at).getTime() + c.offer_days * 864e5);
+      const dl = new Date(Math.min(end, new Date(r.first_seen_at).getTime() + c.countdown_days * 864e5));
+      return { data: { found: true, valid: dl > new Date() && !p.sub_end, price: c.offer_price, deadline: dl.toISOString(), offer_end: end.toISOString(),
+        already_subscribed: !!p.sub_end, first_name: p.full_name.split(' ')[0], mine: me() ? r.user_id === me() : null }, error: null };
+    },
+    email_unsubscribe({ p_token }) {
+      const r = (db.recipients || []).find((x) => x.token === p_token); if (!r) return { data: false, error: null };
+      db.profiles.find((x) => x.id === r.user_id).email_optout = true; save(); return { data: true, error: null };
+    },
+    set_email_optout({ p_optout }) { profile().email_optout = !!p_optout; save(); return { data: null, error: null }; },
+    admin_audience_counts() {
+      if (!isAdmin()) return err('forbidden');
+      const aud = (k) => campAudience(k).length;
+      return { data: { never: aud('never'), expired: aud('expired'), all: aud('all'), optout: db.profiles.filter((x) => x.email_optout).length, mail_from: 'Vitako <contact@vitako.mg>' }, error: null };
+    },
+    admin_campaigns() {
+      if (!isAdmin()) return err('forbidden');
+      const list = (db.campaigns || []).slice().reverse().map((c) => {
+        const rs = (db.recipients || []).filter((r) => r.campaign_id === c.id), n = (st) => rs.filter((r) => r.status === st).length;
+        return { ...c, recipients: rs.length, pending: n('pending'), queued: n('queued'), sent: n('sent'), failed: n('failed'), last_error: null,
+          clicked: rs.filter((r) => r.first_seen_at).length, paid: 0, paid_pending: db.payments.filter((x) => x.status === 'pending' && rs.some((r) => r.user_id === x.user_id)).length, revenue: 0, audience_now: campAudience(c.audience).length };
+      });
+      return { data: list, error: null };
+    },
+    admin_campaign_save({ p }) {
+      if (!isAdmin()) return err('forbidden');
+      db.campaigns ||= [];
+      let c = p.id && db.campaigns.find((x) => x.id === p.id);
+      if (c && c.status !== 'draft') return err('campaign_locked');
+      if (!c) { c = { id: uuid(), created_at: now(), status: 'draft', started_at: null }; db.campaigns.push(c); }
+      Object.assign(c, { subject: p.subject, preheader: p.preheader, title: p.title, body: p.body, cta_label: p.cta_label || "Voir l'offre", audience: p.audience,
+        offer_price: p.audience === 'never' && p.offer_price ? +p.offer_price : null, offer_days: +p.offer_days || 10, countdown_days: +p.countdown_days || 5, updated_at: now() });
+      save(); return { data: c, error: null };
+    },
+    admin_campaign_delete({ p_id }) { db.campaigns = db.campaigns.filter((c) => !(c.id === p_id && c.status === 'draft')); save(); return { data: null, error: null }; },
+    admin_campaign_preview({ p_id }) {
+      const c = db.campaigns.find((x) => x.id === p_id);
+      return { data: `<html><body style="font-family:Arial"><h1>${c.title}</h1><p>${c.body.replace(/\n/g, '<br>')}</p><a href="#">${c.cta_label}</a></body></html>`, error: null };
+    },
+    admin_campaign_test() { return { data: profile().email, error: null }; },
+    admin_campaign_start({ p_id }) {
+      const c = db.campaigns.find((x) => x.id === p_id);
+      if (c.status === 'draft') {
+        db.recipients ||= [];
+        campAudience(c.audience).forEach((p) => db.recipients.push({ campaign_id: c.id, user_id: p.id, email: p.email, token: uuid(), status: 'pending', first_seen_at: null }));
+        c.status = 'sending'; c.started_at = now();
+      }
+      save(); return { data: db.recipients.filter((r) => r.campaign_id === c.id).length, error: null };
+    },
+    admin_campaign_send_batch({ p_id }) {
+      const rs = db.recipients.filter((r) => r.campaign_id === p_id);
+      rs.filter((r) => r.status === 'queued').forEach((r) => { r.status = 'sent'; });
+      const batch = rs.filter((r) => r.status === 'pending').slice(0, 50); batch.forEach((r) => { r.status = 'queued'; });
+      const n = (st) => rs.filter((r) => r.status === st).length;
+      if (!n('pending') && !n('queued')) db.campaigns.find((x) => x.id === p_id).status = 'sent';
+      save(); return { data: { batch: batch.length, pending: n('pending'), queued: n('queued'), sent: n('sent'), failed: n('failed') }, error: null };
+    },
+    admin_campaign_retry() { return { data: 0, error: null }; },
     admin_reviews() {
       if (!isAdmin()) return err('forbidden');
       const list = (db.reviews || []).slice().reverse().map((r) => {
