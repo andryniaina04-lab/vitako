@@ -20,7 +20,7 @@ const S = {
   attempts: [],
   payments: [],
   updates: [],           // mises à jour des formations commencées (cloche)
-  admin: { pending: 0, active: 0, feedback: 0, trainers: 0 },
+  admin: { pending: 0, active: 0, feedback: 0, trainers: 0, reviews: 0 },
   trainer: null,         // profil formateur de la personne connectée (si formateur)
   trainers: null,        // formateurs visibles (liste publique, en cache)
   trainersAt: 0,
@@ -337,6 +337,8 @@ function notifications() {
     // Toujours non lues tant qu'il reste quelque chose à traiter
     if (p) out.push({ id: 'adm-pay-' + p + '-' + Date.now(), tone: 'gold', sticky: true, title: `${p} ${plural(p, 'paiement', 'paiements')} à valider`, text: 'Vérifiez la référence dans votre application, puis validez ou refusez.', href: '#/admin' });
     if (f) out.push({ id: 'adm-fb-' + f + '-' + Date.now(), tone: 'blue', sticky: true, title: `${f} ${plural(f, 'nouvelle remarque', 'nouvelles remarques')}`, text: 'Des visiteurs ou des apprenants vous ont écrit.', href: '#/admin/remarques' });
+    const rv = S.admin.reviews || 0;
+    if (rv) out.push({ id: 'adm-rv-' + rv + '-' + Date.now(), tone: 'gold', sticky: true, title: `${rv} ${plural(rv, 'nouvel avis', 'nouveaux avis')}`, text: 'Des apprenants ont noté une formation après leur attestation.', href: '#/admin/avis' });
     const tr = S.admin.trainers || 0;
     if (tr) out.push({ id: 'adm-tr-' + tr + '-' + Date.now(), tone: 'gold', sticky: true, title: `${tr} ${plural(tr, 'profil formateur', 'profils formateurs')} à valider`, text: 'Profils complétés ou corrigés par des formateurs déjà abonnés.', href: '#/admin/formateurs' });
     return out;
@@ -409,7 +411,7 @@ function topbar() {
       const st = trStatus(S.trainer);
       items += item('#/espace-formateur', 'Espace formateur', st === 'draft' ? ' <span class="pill grey">À compléter</span>' : st === 'rejected' ? ' <span class="pill red">À corriger</span>' : '');
     }
-    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/formateurs', 'Formateurs', S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
+    if (isAdmin()) items += item('#/admin', 'Administration', S.admin.pending ? ` <span class="pill gold">${S.admin.pending}</span>` : '') + item('#/admin/formateurs', 'Formateurs', S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : '') + item('#/admin/stats', 'Statistiques', '') + item('#/admin/avis', 'Avis', S.admin.reviews ? ` <span class="pill gold">${S.admin.reviews}</span>` : '') + item('#/admin/remarques', 'Remarques', S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : '');
     else if (S.profile && !hasAccess()) items += item('#/abonnement', "S'abonner");
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
@@ -1895,7 +1897,7 @@ const adminTabs = (on) => `<nav class="tabs" aria-label="Administration">
   <a class="tab${on === 'inscrits' ? ' on' : ''}" href="#/admin/inscrits"${on === 'inscrits' ? ' aria-current="page"' : ''}>Inscrits</a>
   <a class="tab${on === 'formateurs' ? ' on' : ''}" href="#/admin/formateurs"${on === 'formateurs' ? ' aria-current="page"' : ''}>Formateurs${S.admin.trainers ? ` <span class="pill gold">${S.admin.trainers}</span>` : ''}</a>
   <a class="tab${on === 'stats' ? ' on' : ''}" href="#/admin/stats"${on === 'stats' ? ' aria-current="page"' : ''}>Statistiques</a>
-  <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis</a>
+  <a class="tab${on === 'avis' ? ' on' : ''}" href="#/admin/avis"${on === 'avis' ? ' aria-current="page"' : ''}>Avis${S.admin.reviews ? ` <span class="pill gold">${S.admin.reviews}</span>` : ''}</a>
   <a class="tab${on === 'remarques' ? ' on' : ''}" href="#/admin/remarques"${on === 'remarques' ? ' aria-current="page"' : ''}>Remarques${S.admin.feedback ? ` <span class="pill gold">${S.admin.feedback}</span>` : ''}</a></nav>`;
 const nf = (n) => Number(n || 0).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ');
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
@@ -2008,6 +2010,8 @@ async function adminReviewsPage() {
   if (!S.profile) return loadingView();
   if (!isAdmin()) return notFound();
   const list = await api.adminReviews();
+  // Ouvrir l'onglet Avis marque les nouveaux avis comme vus (ils restent surlignés sur cette page).
+  if (list.some((r) => r.is_new)) { await api.adminReviewsMarkSeen().catch(() => {}); S.admin.reviews = 0; topbar(); }
   const n = list.length;
   const avg = n ? list.reduce((a, r) => a + r.rating, 0) / n : 0;
   const dist = [5, 4, 3, 2, 1].map((k) => [k, list.filter((r) => r.rating === k).length]);
@@ -2021,7 +2025,7 @@ async function adminReviewsPage() {
     ${kpi('Satisfaits (4 et 5 ★)', n ? `${pct(dist[0][1] + dist[1][1], n)} %` : '–', dist.map(([k, c]) => `${k} ★ : ${c}`).join(' · '))}
   </div>
   ${n ? `<div class="tbl" style="margin-top:18px"><table class="rv-tbl"><thead><tr><th>Date</th><th>Apprenant</th><th>Formation</th><th>Note</th><th>Commentaire</th><th>Publication</th></tr></thead><tbody>
-    ${list.map((r) => `<tr><td>${fmtD(r.created_at)}</td><td>${esc(r.full_name || '')}<br><small class="muted">${esc(r.email || '')}</small></td>
+    ${list.map((r) => `<tr${r.is_new ? ' class="rv-new"' : ''}><td>${fmtD(r.created_at)}${r.is_new ? '<br><span class="pill gold">Nouveau</span>' : ''}</td><td>${esc(r.full_name || '')}<br><small class="muted">${esc(r.email || '')}</small></td>
       <td><a href="#/formation/${esc(r.course_id)}">${esc(r.course_title || r.course_id)}</a></td><td>${stars(r.rating)}</td>
       <td class="rv-com">${r.comment ? esc(r.comment) : '<span class="muted">Pas de commentaire</span>'}</td>
       <td>${r.can_publish ? '<span class="pill">Accord pour publier</span>' : '<span class="muted">Privé</span>'}</td></tr>`).join('')}

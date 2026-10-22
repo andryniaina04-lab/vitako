@@ -321,6 +321,10 @@ export async function submitReview(courseId, rating, comment, publish) {
   need();
   return run(sb.rpc('submit_review', { p_course: courseId, p_rating: rating, p_comment: comment, p_publish: publish }));
 }
+export async function adminReviewsMarkSeen() {
+  need();
+  return run(sb.rpc('admin_reviews_mark_seen'));
+}
 export async function adminReviews() {
   need();
   return run(sb.rpc('admin_reviews'));
@@ -371,6 +375,6 @@ export async function adminCounts() {
   ]);
   if (pending.error) throw new ApiError(pending.error);
   if (active.error) throw new ApiError(active.error);
-  const [fb, tr] = await Promise.all([sb.rpc('admin_feedback_new_count'), sb.rpc('admin_trainer_todo')]);
-  return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0), trainers: tr.error ? 0 : (tr.data || 0) };
+  const [fb, tr, rv] = await Promise.all([sb.rpc('admin_feedback_new_count'), sb.rpc('admin_trainer_todo'), sb.rpc('admin_reviews_new_count')]);
+  return { pending: pending.count || 0, active: active.count || 0, feedback: fb.error ? 0 : (fb.data || 0), trainers: tr.error ? 0 : (tr.data || 0), reviews: rv.error ? 0 : (rv.data || 0) };
 }
