@@ -132,6 +132,16 @@ declare
   o record;
   v_first text;
 begin
+  -- Lien de l'e-mail de test (jeton zéro) : aperçu de la dernière offre, pour l'administrateur seulement.
+  if p_token = '00000000-0000-0000-0000-000000000000'::uuid then
+    if not public.is_admin() then return jsonb_build_object('found', false); end if;
+    select * into c from public.email_campaigns where offer_price is not null order by created_at desc limit 1;
+    if c.id is null then return jsonb_build_object('found', false); end if;
+    select split_part(btrim(full_name), ' ', 1) into v_first from public.profiles where id = auth.uid();
+    return jsonb_build_object('found', true, 'valid', true, 'preview', true, 'price', c.offer_price,
+      'deadline', now() + make_interval(days => c.countdown_days), 'offer_end', now() + make_interval(days => c.offer_days),
+      'already_subscribed', false, 'first_name', v_first, 'mine', true);
+  end if;
   if p_token is not null then
     select * into r from public.email_recipients where token = p_token;
   elsif auth.uid() is not null then

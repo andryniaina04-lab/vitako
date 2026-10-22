@@ -2721,6 +2721,7 @@ async function offerPage() {
   const pct = Math.round((1 - price / S.price) * 100);
   const first = O.first_name ? esc(O.first_name) : '';
   const subActive = hasAccess() && !isAdmin();
+  const preview = !!O.preview;
   const otherAccount = valid && S.session && O.mine === false;
 
   let cta, ctaNote;
@@ -2731,7 +2732,7 @@ async function offerPage() {
     cta = `<a class="btn lg" href="#/connexion?suite=${encodeURIComponent('/abonnement')}">Je profite de l'offre à ${ar(price)} <span aria-hidden="true">→</span></a>`;
     ctaNote = valid ? 'Connecte-toi avec l\'adresse e-mail qui a reçu l\'offre, puis paie par MVola ou Orange Money.' : 'Connecte-toi, puis paie par MVola ou Orange Money.';
   } else {
-    cta = `<a class="btn lg" href="#/abonnement">Je profite de l'offre à ${ar(priceNow())} <span aria-hidden="true">→</span></a>`;
+    cta = `<a class="btn lg" href="#/abonnement">Je profite de l'offre à ${ar(preview ? price : priceNow())} <span aria-hidden="true">→</span></a>`;
     ctaNote = 'Paiement par MVola ou Orange Money · accès activé en ' + esc(CFG.validationDelay || 'quelques minutes');
   }
   const expired = O.found && !O.valid && !O.already_subscribed;
@@ -2748,6 +2749,7 @@ async function offerPage() {
   <section class="lp-hero of-hero">
     <div class="lp-hero-in">
       <div class="lp-hero-txt">
+        ${preview ? `<p class="of-ended">Aperçu administrateur : c'est ce que verront les destinataires de l'e-mail (prix et compte à rebours personnels).</p>` : ''}
         ${head}
         ${expired ? `<p class="of-ended">Cette offre est terminée. Tu peux toujours t'abonner au prix actuel.</p>` : ''}
         ${otherAccount ? `<p class="of-ended">Cette offre est liée à un autre compte. Connecte-toi avec l'adresse e-mail qui a reçu l'offre pour en profiter.</p>` : ''}
