@@ -19,6 +19,7 @@ const importMap = `<script type="importmap" id="vitako-importmap">${JSON.stringi
 let html = readFileSync(file, 'utf8');
 html = html.replace(/assets\/css\/app\.css(\?v=[\w-]+)?/, `assets/css/app.css?v=${v}`);
 html = html.replace(/assets\/js\/config\.js(\?v=[\w-]+)?/, `assets/js/config.js?v=${v}`);
+html = html.replace(/assets\/js\/pwa\.js(\?v=[\w-]+)?/, `assets/js/pwa.js?v=${v}`);
 html = html.replace(/assets\/js\/assistant\.js(\?v=[\w-]+)?/, `assets/js/assistant.js?v=${v}`);
 html = html.replace(/<script type="module" src="assets\/js\/app\.js(\?v=[\w-]+)?"><\/script>/, `<script type="module" src="assets/js/app.js?v=${v}"></script>`);
 html = html.replace(/<script type="importmap" id="vitako-importmap">.*?<\/script>\n?\s*/s, '');

@@ -423,6 +423,7 @@ function topbar() {
     else if (S.profile) items += item('#/abonnement', 'Prolonger mon abonnement');
   }
   items += item('#/verifier', 'Vérifier une attestation') + item('#/remarque', 'Envoyer une remarque');
+  if (!window.vitakoPWA?.standalone()) items += item('#/installer', "Installer l'application");
   items += `<button class="menu-item menu-theme" data-act="theme">${isDark() ? 'Passer au thème clair' : 'Passer au thème sombre'}</button>`;
   const who = S.session
     ? `<div class="menu-who">${avatarHtml(S.profile, 'av-sm')}<b>${esc(S.profile?.full_name || '')}</b><small>${esc(S.session.user.email || '')}</small>
@@ -2138,6 +2139,7 @@ const ROUTES = [
   [/^\/devenir-formateur$/, becomeTrainerPage],
   [/^\/remarque$/, feedbackPage],
   [/^\/offre$/, offerPage],
+  [/^\/installer$/, installPage],
   [/^\/desinscription$/, unsubscribePage],
   [/^\/admin\/emailing$/, adminEmailingPage],
 ];
@@ -3002,3 +3004,34 @@ document.addEventListener('submit', async (e) => {
     render();
   } catch (er) { err(er.message); busy(btn, false); }
 });
+
+// ---------------------------------------------------------------------------
+// Application installable (voir assets/js/pwa.js)
+// ---------------------------------------------------------------------------
+function installPage() {
+  const P = window.vitakoPWA || { standalone: () => false, isIOS: false, canPrompt: () => false };
+  if (P.standalone()) {
+    return `<div class="narrow panel stack" style="gap:14px"><h2>L'application est installée</h2>
+      <p class="muted">Tu utilises déjà l'application Vitako. Elle se met à jour toute seule, comme le site.</p>
+      <div><a class="btn" href="#/formations">Voir les formations</a></div></div>`;
+  }
+  const step = (n, t) => `<li><span class="lp-num">${n}</span><p>${t}</p></li>`;
+  return `${pageHead('Application', "Installer l'application Vitako", '<p class="muted">Gratuit, sans Play Store : l\'icône Vitako s\'ajoute à ton écran d\'accueil et s\'ouvre en plein écran. L\'application se met à jour toute seule.</p>')}
+  <div class="inst-grid">
+    <div class="panel stack inst-card" style="gap:14px">
+      <div class="inst-h"><img src="assets/img/app/icon-192.png" alt="" width="56" height="56"><div><b>Vitako</b><small class="muted">Formations aux métiers du freelance</small></div></div>
+      ${P.isIOS ? '<p class="muted" style="margin:0">Sur iPhone, l\'installation se fait depuis Safari : suis les 3 étapes.</p>' : `<button class="btn lg" type="button" data-pwa-install>Installer l'application</button>
+      <p class="muted" style="font-size:.88rem;margin:0">Si rien ne se passe, suis les étapes selon ton téléphone.</p>`}
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="panel stack${P.isIOS ? '' : ' inst-on'}" style="gap:10px"><h3>Android (Chrome)</h3><ol class="inst-steps">
+        ${step(1, 'Ouvre <b>vitako.mg</b> dans <b>Chrome</b>.')}
+        ${step(2, 'Touche le menu <b>⋮</b> en haut à droite.')}
+        ${step(3, 'Choisis <b>Installer l\'application</b> (ou <b>Ajouter à l\'écran d\'accueil</b>), puis confirme.')}</ol></div>
+      <div class="panel stack${P.isIOS ? ' inst-on' : ''}" style="gap:10px"><h3>iPhone (Safari)</h3><ol class="inst-steps">
+        ${step(1, 'Ouvre <b>vitako.mg</b> dans <b>Safari</b>.')}
+        ${step(2, 'Touche le bouton <b>Partager</b> (carré avec une flèche vers le haut).')}
+        ${step(3, 'Choisis <b>Sur l\'écran d\'accueil</b>, puis <b>Ajouter</b>.')}</ol></div>
+    </div>
+  </div>`;
+}

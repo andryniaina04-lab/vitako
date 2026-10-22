@@ -1,0 +1,23 @@
+{
+  "name": "Vitako : formations aux métiers du freelance",
+  "short_name": "Vitako",
+  "description": "Apprends un métier du freelance et du télétravail depuis Madagascar : leçons, exercices, examen et attestation vérifiable.",
+  "lang": "fr",
+  "id": "/",
+  "start_url": "/?source=app#/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F3F6F1",
+  "theme_color": "#0B7A55",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/assets/img/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Mon espace", "url": "/?source=app#/mon-espace", "icons": [{ "src": "/assets/img/app/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Toutes les formations", "url": "/?source=app#/formations", "icons": [{ "src": "/assets/img/app/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
