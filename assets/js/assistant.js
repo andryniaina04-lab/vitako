@@ -99,7 +99,7 @@
 
   const css = `
   .va-fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 26px rgba(0,0,0,.25);display:grid;place-items:center;transition:transform .2s}
-  .va-fab:hover{transform:scale(1.06)}.va-fab svg{width:28px;height:28px}
+  .va-fab:hover{transform:scale(1.06)}.va-fab svg{width:32px;height:32px}
   .va-fab .va-dot{position:absolute;top:4px;right:4px;width:12px;height:12px;border-radius:50%;background:#F0C04C;border:2px solid var(--surface)}
   .va-panel{position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:61;width:380px;max-width:calc(100vw - 32px);height:min(600px,calc(100vh - 120px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.28);display:flex;flex-direction:column;overflow:hidden;font-family:var(--body)}
   .va-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#0B3D2A;color:#fff}
@@ -125,7 +125,7 @@
   @media print{.va-fab,.va-panel{display:none!important}}`;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
-  const ICON_CHAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></svg>';
+  const ICON_CHAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7.34 18.87A9 9 0 1 0 4.71 16L3 21z"/><circle cx="8.3" cy="11.5" r="1.1"/><circle cx="12.5" cy="11.5" r="1.1"/><circle cx="16.7" cy="11.5" r="1.1"/></svg>';
   const ICON_X = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   const ICON_SEND = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>';
 
