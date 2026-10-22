@@ -795,7 +795,7 @@ function coursePage(id) {
           }).join('')}
           <div class="mod${cert ? ' done' : ''}"><span class="n">${cert ? smallCheck : 'EX'}</span>
             <div class="t"><b>Examen final</b><small>10 questions · 50/100 pour réussir · essais illimités</small></div>
-            ${c.published && ok && allDone ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published && c.freePreview && okRead && S.profile ? `<a class="btn sm" href="#/abonnement">S'abonner</a>` : c.published ? `<span class="lock">${I.lock}</span>` : ''}
+            ${c.published && ok && allDone ? `<a class="btn ghost sm" href="#/formation/${c.id}/examen">${tries ? 'Repasser' : 'Commencer'}</a>` : c.published && c.freePreview && !ok && okRead && S.profile ? `<a class="btn sm" href="#/abonnement">S'abonner</a>` : c.published ? `<span class="lock">${I.lock}</span>` : ''}
           </div>
         </div>
       </div>
