@@ -1984,7 +1984,6 @@ async function adminStatsPage() {
       <i style="height:${d.n ? Math.max(4, Math.round((d.n / max) * 100)) : 0}%"></i></div>`).join('');
   const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
   return `${adminTabs('stats')}${pageHead('Administration', 'Statistiques', `<p class="muted">Chiffres en temps réel, mis à jour à ${time}. <button class="lnk" data-act="reload" style="padding:0 4px">Actualiser</button></p>`)}
-  ${visitsSection(vs)}
   <h2 class="st-h">Utilisateurs</h2>
   <div class="kpis">
     ${kpi('Inscrits', nf(U.total), `+${nf(U.today)} aujourd'hui · +${nf(U.week)} en 7 jours · +${nf(U.month)} en 30 jours`)}
@@ -1997,6 +1996,7 @@ async function adminStatsPage() {
     <div class="bars" role="img" aria-label="Inscriptions par jour sur les 30 derniers jours, ${total30} au total">${bars}</div>
     <div class="bars-x"><span>${days[0] ? fmtDay(days[0].d) : ''}</span><span>${days.length ? fmtDay(days[days.length - 1].d) : ''}</span></div>
   </div>
+  ${visitsSection(vs)}
   <h2 class="st-h">Paiements</h2>
   <div class="kpis">
     ${kpi('Recettes ce mois', ar(P.revenue_month), 'Paiements validés depuis le 1er du mois', 'good')}
