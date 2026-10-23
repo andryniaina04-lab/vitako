@@ -294,11 +294,28 @@ begin
     || '</td></tr></table></td></tr></table></body></html>';
 end $$;
 
+-- Expéditeur des campagnes, distinct des e-mails de compte (paiement, accès) : Gmail classe chaque
+-- adresse séparément, les offres ne font donc pas passer les e-mails de paiement dans « Promotions ».
+-- Secret Vault facultatif « mail_from_marketing » ; sinon offres@<domaine de mail_from> si c'est vitako.mg.
+create or replace function public.mail_from_marketing()
+returns text language plpgsql stable security definer set search_path = public as $$
+declare v text;
+begin
+  begin
+    select decrypted_secret into v from vault.decrypted_secrets where name = 'mail_from_marketing' limit 1;
+  exception when others then v := null;
+  end;
+  if nullif(trim(v), '') is not null then return trim(v); end if;
+  if public.mail_from() ~* '@vitako\.mg>?\s*$' then return 'Vitako <offres@vitako.mg>'; end if;
+  return public.mail_from();
+end $$;
+revoke execute on function public.mail_from_marketing() from public, anon, authenticated;
+
 -- Un e-mail prêt pour l'API Resend.
 create or replace function public.campaign_message(c public.email_campaigns, p_to text, p_first text, p_token text)
 returns jsonb language sql stable security definer set search_path = public as $$
   select jsonb_build_object(
-    'from', public.mail_from(),
+    'from', public.mail_from_marketing(),
     'reply_to', 'contact@vitako.mg',
     'to', jsonb_build_array(p_to),
     'subject', public.campaign_fill(c.subject, c, p_first),
@@ -345,7 +362,7 @@ begin
     'expired', (select count(*) from public.campaign_audience('expired')),
     'all',     (select count(*) from public.campaign_audience('all')),
     'optout',  (select count(*) from public.profiles where email_optout and not is_admin),
-    'mail_from', public.mail_from()
+    'mail_from', public.mail_from_marketing()
   );
 end $$;
 
