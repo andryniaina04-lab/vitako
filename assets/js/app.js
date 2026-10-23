@@ -1973,7 +1973,7 @@ async function adminStatsPage() {
   if (!S.session) return needLogin('/admin/stats');
   if (!S.profile) return loadingView();
   if (!isAdmin()) return notFound();
-  const [st, counts] = await Promise.all([api.adminStats(), api.adminCounts()]);
+  const [st, counts, vs] = await Promise.all([api.adminStats(), api.adminCounts(), api.adminVisitStats().catch(() => null)]);
   S.admin = counts; topbar();
   const U = st.users, Sb = st.subs, P = st.payments, L = st.learning;
   const days = st.signups || [];
@@ -1984,6 +1984,7 @@ async function adminStatsPage() {
       <i style="height:${d.n ? Math.max(4, Math.round((d.n / max) * 100)) : 0}%"></i></div>`).join('');
   const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
   return `${adminTabs('stats')}${pageHead('Administration', 'Statistiques', `<p class="muted">Chiffres en temps réel, mis à jour à ${time}. <button class="lnk" data-act="reload" style="padding:0 4px">Actualiser</button></p>`)}
+  ${visitsSection(vs)}
   <h2 class="st-h">Utilisateurs</h2>
   <div class="kpis">
     ${kpi('Inscrits', nf(U.total), `+${nf(U.today)} aujourd'hui · +${nf(U.week)} en 7 jours · +${nf(U.month)} en 30 jours`)}
@@ -2163,6 +2164,7 @@ async function render() {
   }
   if (token !== renderToken) return;
   app.innerHTML = html;
+  trackView(path);
   renderReviewSlot();
   startHeroVideo();
   document.title = path === '/' ? 'Vitako · Formations aux métiers du freelance' : `${document.querySelector('#app h1, #app h2')?.textContent || 'Vitako'} · Vitako`;
@@ -3034,4 +3036,77 @@ function installPage() {
         ${step(3, 'Choisis <b>Sur l\'écran d\'accueil</b>, puis <b>Ajouter</b>.')}</ol></div>
     </div>
   </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Visites du site : une page vue par changement de page (anonyme, sans adresse IP)
+// ---------------------------------------------------------------------------
+function uuid4() { return crypto.randomUUID ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => { const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16); }); }
+function visitIds() {
+  let visitor = null, session = null, source = null;
+  try { visitor = localStorage.getItem('vitako_vid'); if (!visitor) { visitor = uuid4(); localStorage.setItem('vitako_vid', visitor); } } catch (e) { visitor = uuid4(); }
+  try { session = sessionStorage.getItem('vitako_sid'); source = sessionStorage.getItem('vitako_src'); } catch (e) { /* stockage indisponible */ }
+  if (!session || !source) {
+    session = uuid4();
+    // Origine de la visite : lien d'e-mail, application installée, paramètre utm_source, ou site précédent.
+    const qs = new URLSearchParams(location.search), utm = (qs.get('utm_source') || '').toLowerCase();
+    const ref = (() => { try { return new URL(document.referrer).hostname; } catch (e) { return ''; } })();
+    const hay = utm || ref;
+    source = /^#\/offre\?t=/.test(location.hash) || utm === 'email' ? 'email'
+      : qs.get('source') === 'app' || window.vitakoPWA?.standalone() ? 'app'
+      : /facebook|fb\.|messenger/.test(hay) ? 'facebook' : /instagram/.test(hay) ? 'instagram' : /tiktok/.test(hay) ? 'tiktok'
+      : /whatsapp|wa\.me/.test(hay) ? 'whatsapp' : /google\./.test(hay) || utm === 'google' ? 'google' : /youtube|youtu\.be/.test(hay) ? 'youtube'
+      : /linkedin|lnkd/.test(hay) ? 'linkedin' : !hay || ref === location.hostname ? 'direct' : 'autre';
+    try { sessionStorage.setItem('vitako_sid', session); sessionStorage.setItem('vitako_src', source); } catch (e) { /* stockage indisponible */ }
+  }
+  return { visitor, session, source };
+}
+var lastTracked = '';
+function trackView(path) {
+  if (!api.configured || isAdmin() || path.startsWith('/admin') || path === lastTracked) return;
+  lastTracked = path;
+  const ua = navigator.userAgent;
+  const device = /ipad|tablet/i.test(ua) || (/android/i.test(ua) && !/mobile/i.test(ua)) ? 'tablette' : /mobi|android|iphone/i.test(ua) ? 'mobile' : 'ordinateur';
+  const clean = path.toLowerCase().replace(/[^a-z0-9/_-]/g, '').slice(0, 80) || '/';
+  api.trackVisit({ ...visitIds(), path: clean, device });
+}
+
+function pageLabel(p) {
+  const m = p.match(/^\/formation\/([\w-]+)(\/.*)?$/);
+  if (m) { const c = courseById(m[1]); const t = c ? c.title : m[1]; return m[2] ? `${t} · ${m[2].includes('examen') ? 'examen' : 'leçon'}` : t; }
+  const names = { '/': 'Accueil', '/formations': 'Toutes les formations', '/offre': "Page de l'offre", '/abonnement': 'Abonnement', '/inscription': 'Inscription', '/connexion': 'Connexion',
+    '/mon-espace': 'Mon espace', '/accompagnement': 'Accompagnement', '/installer': "Installer l'application", '/verifier': 'Vérifier une attestation', '/remarque': 'Envoyer une remarque', '/devenir-formateur': 'Devenir formateur' };
+  return names[p] || p;
+}
+function visitsSection(vs) {
+  const SOURCE_LABEL = { direct: 'Accès direct', facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok', whatsapp: 'WhatsApp', google: 'Google', youtube: 'YouTube', linkedin: 'LinkedIn', email: 'E-mails Vitako', app: 'Application installée', autre: 'Autres sites' };
+  if (!vs) return `<h2 class="st-h">Visites du site</h2><p class="muted">Les visites ne sont pas encore disponibles.</p>`;
+  const days = vs.days || [];
+  const max = Math.max(1, ...days.map((d) => d.views));
+  const fmtDay = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+  const bars = days.map((d) => `<div class="cbar" tabindex="0" data-tip="${fmtDay(d.d)} : ${d.visitors} visiteur${d.visitors > 1 ? 's' : ''}, ${d.views} page${d.views > 1 ? 's' : ''} vue${d.views > 1 ? 's' : ''}" aria-label="${fmtDay(d.d)} : ${d.visitors} visiteurs, ${d.views} pages vues">
+      <i style="height:${d.views ? Math.max(4, Math.round((d.views / max) * 100)) : 0}%"></i></div>`).join('');
+  const M = vs.month;
+  const totalV = (vs.sources || []).reduce((n, x) => n + x.visitors, 0) || 1;
+  const rows = (list, label) => list.map((x) => `<div class="vs-row"><span>${esc(label(x))}</span><b class="mono">${nf(x.visitors)}</b><i style="width:${Math.round(x.visitors / totalV * 100)}%"></i></div>`).join('');
+  return `<h2 class="st-h">Visites du site</h2>
+  <div class="kpis">
+    ${kpi("Aujourd'hui", nf(vs.today.visitors), `visiteur${vs.today.visitors > 1 ? 's' : ''} · ${nf(vs.today.views)} pages vues`, 'good')}
+    ${kpi('7 derniers jours', nf(vs.week.visitors), `visiteurs · ${nf(vs.week.views)} pages vues`)}
+    ${kpi('30 derniers jours', nf(M.visitors), `visiteurs · ${nf(M.views)} pages vues · ${nf(M.sessions)} visites`)}
+    ${kpi('Pages par visite', M.sessions ? (M.views / M.sessions).toFixed(1).replace('.', ',') : '–', `${pct(M.logged, M.visitors)} % des visiteurs connectés à un compte`)}
+  </div>
+  <div class="panel chart">
+    <div class="chart-h"><b>Pages vues sur 30 jours</b><span class="muted">${nf(M.views)} au total · maximum ${nf(days.some((d) => d.views) ? max : 0)} en un jour</span></div>
+    <div class="bars" role="img" aria-label="Pages vues par jour sur les 30 derniers jours">${bars}</div>
+    <div class="bars-x"><span>${days[0] ? fmtDay(days[0].d) : ''}</span><span>${days.length ? fmtDay(days[days.length - 1].d) : ''}</span></div>
+  </div>
+  <div class="vs-grid">
+    <div class="panel"><b>D'où viennent les visiteurs</b><small class="muted"> · 30 jours</small><div class="vs-list">${vs.sources?.length ? rows(vs.sources, (x) => SOURCE_LABEL[x.source] || x.source) : '<p class="muted">Pas encore de données.</p>'}</div></div>
+    <div class="panel"><b>Appareils</b><small class="muted"> · 30 jours</small><div class="vs-list">${vs.devices?.length ? rows(vs.devices, (x) => x.device.charAt(0).toUpperCase() + x.device.slice(1)) : '<p class="muted">Pas encore de données.</p>'}</div></div>
+  </div>
+  ${vs.pages?.length ? `<div class="tbl" style="margin-top:14px"><table><thead><tr><th>Pages les plus vues (30 jours)</th><th>Pages vues</th><th>Visiteurs</th></tr></thead><tbody>
+    ${vs.pages.map((p) => `<tr><td>${esc(pageLabel(p.path))}</td><td class="mono">${nf(p.views)}</td><td class="mono">${nf(p.visitors)}</td></tr>`).join('')}
+  </tbody></table></div>` : ''}
+  <p class="muted" style="font-size:.85rem;margin-top:8px">Mesure anonyme depuis le 23 octobre 2026 (sans adresse IP). Vos propres visites d'administrateur ne sont pas comptées.</p>`;
 }

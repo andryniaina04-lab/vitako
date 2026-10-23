@@ -323,6 +323,20 @@
       save(); return { data: { batch: batch.length, pending: n('pending'), queued: n('queued'), sent: n('sent'), failed: n('failed') }, error: null };
     },
     admin_campaign_retry() { return { data: 0, error: null }; },
+
+    track_visit(a) { if (isAdmin() || a.p_path.startsWith('/admin')) return { data: null, error: null }; (db.visits ||= []).push({ ...a, at: now(), user_id: me() || null }); save(); return { data: null, error: null }; },
+    admin_visit_stats() {
+      if (!isAdmin()) return err('forbidden');
+      const v = db.visits || [], uniq = (l) => new Set(l.map((x) => x.p_visitor)).size;
+      const group = (k) => Object.entries(v.reduce((m, x) => { (m[x[k]] ||= []).push(x); return m; }, {}));
+      const today = new Date().toISOString().slice(0, 10);
+      const days = Array.from({ length: 30 }, (_, i) => { const d = new Date(Date.now() - (29 - i) * 864e5).toISOString().slice(0, 10); const l = v.filter((x) => x.at.slice(0, 10) === d); return { d, views: l.length, visitors: uniq(l) }; });
+      const block = { views: v.length, visitors: uniq(v) };
+      return { data: { today: { views: v.filter((x) => x.at.slice(0, 10) === today).length, visitors: uniq(v.filter((x) => x.at.slice(0, 10) === today)) }, week: block,
+        month: { ...block, sessions: new Set(v.map((x) => x.p_session)).size, logged: uniq(v.filter((x) => x.user_id)) }, total: v.length, days,
+        pages: group('p_path').map(([path, l]) => ({ path, views: l.length, visitors: uniq(l) })).sort((a, b) => b.views - a.views).slice(0, 15),
+        sources: group('p_source').map(([source, l]) => ({ source, visitors: uniq(l) })), devices: group('p_device').map(([device, l]) => ({ device, visitors: uniq(l) })) }, error: null };
+    },
     admin_reviews() {
       if (!isAdmin()) return err('forbidden');
       const list = (db.reviews || []).slice().reverse().map((r) => {

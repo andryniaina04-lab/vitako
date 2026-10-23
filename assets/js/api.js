@@ -437,3 +437,15 @@ export async function adminCampaignRetry(id) {
   need();
   return run(sb.rpc('admin_campaign_retry', { p_id: id }));
 }
+
+// ---------------------------------------------------------------------------
+// Visites du site (mesure anonyme, voir supabase/migrations/20261023_visites.sql)
+// ---------------------------------------------------------------------------
+export function trackVisit(v) {
+  if (!configured) return;
+  sb.rpc('track_visit', { p_visitor: v.visitor, p_session: v.session, p_path: v.path, p_source: v.source, p_device: v.device }).then(() => {}, () => {});
+}
+export async function adminVisitStats() {
+  need();
+  return run(sb.rpc('admin_visit_stats'));
+}
