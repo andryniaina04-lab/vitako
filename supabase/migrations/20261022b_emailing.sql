@@ -47,6 +47,12 @@ create table if not exists public.email_recipients (
 create index if not exists email_recipients_user on public.email_recipients (user_id);
 create index if not exists email_recipients_status on public.email_recipients (campaign_id, status);
 
+-- Relance (23/10/2026) : une campagne peut relancer une campagne avec offre (parent_id). Elle part aux
+-- destinataires qui n'ont pas encore cliqué, avec la même offre, le même lien et la même date de fin.
+alter table public.email_campaigns add column if not exists parent_id uuid references public.email_campaigns (id) on delete cascade;
+alter table public.email_campaigns drop constraint if exists email_campaigns_audience_check;
+alter table public.email_campaigns add constraint email_campaigns_audience_check check (audience in ('never', 'expired', 'all', 'relance'));
+
 -- Accès uniquement par les fonctions ci-dessous (security definer).
 alter table public.email_campaigns  enable row level security;
 alter table public.email_recipients enable row level security;
@@ -236,6 +242,33 @@ $$;
 -- ---------------------------------------------------------------------
 -- Contenu de l'e-mail
 -- ---------------------------------------------------------------------
+-- Destinataires d'une relance : ont reçu la campagne d'origine, n'ont pas cliqué, toujours jamais abonnés,
+-- pas désinscrits et sans paiement en attente.
+create or replace function public.relance_audience(p_parent uuid)
+returns table (user_id uuid, email text, full_name text)
+language sql stable security definer set search_path = public as $$
+  select p.id, r.email, p.full_name
+  from public.email_recipients r
+  join public.profiles p on p.id = r.user_id
+  where r.campaign_id = p_parent and r.status = 'sent' and r.first_seen_at is null
+    and not p.email_optout and public.never_subscribed(p.id)
+    and not exists (select 1 from public.payments x where x.user_id = p.id and x.status = 'pending');
+$$;
+
+-- Une relance reprend le prix et les durées de sa campagne d'origine (pour le texte de l'e-mail).
+create or replace function public.campaign_effective(c public.email_campaigns)
+returns public.email_campaigns language plpgsql stable security definer set search_path = public as $$
+declare o public.email_campaigns;
+begin
+  if c.parent_id is not null then
+    select * into o from public.email_campaigns where id = c.parent_id;
+    if o.id is not null then
+      c.offer_price := o.offer_price; c.offer_days := o.offer_days; c.countdown_days := o.countdown_days;
+    end if;
+  end if;
+  return c;
+end $$;
+
 create or replace function public.fmt_ar(p int)
 returns text language sql immutable as $$
   select replace(replace(to_char(p, 'FM999G999G999'), ',', ' '), '.', ' ') || ' Ar';
@@ -258,7 +291,9 @@ declare
   v_unsub text := 'https://vitako.mg/#/desinscription?t=' || p_token;
   v_body  text;
   v_price text := '';
+  v_relance boolean := c.parent_id is not null;
 begin
+  c := public.campaign_effective(c);
   -- Corps : texte échappé, paragraphes séparés par une ligne vide, **gras** autorisé.
   v_body := public.campaign_fill(public.html_escape(c.body), c, p_first);
   v_body := regexp_replace(v_body, '\*\*([^*]+)\*\*', '<b>\1</b>', 'g');
@@ -278,7 +313,7 @@ begin
     || '<div style="display:none;max-height:0;overflow:hidden;opacity:0">' || public.campaign_fill(public.html_escape(c.preheader), c, p_first) || '</div>'
     || '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F3F6F1"><tr><td align="center" style="padding:20px 12px">'
     || '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;background:#FFFFFF;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;color:#13241B">'
-    || '<tr><td><a href="' || v_link || '" target="_blank"><img src="https://vitako.mg/assets/img/email/offre-banniere.jpg" width="600" alt="Vitako : apprends un métier, travaille à distance" style="display:block;width:100%;height:auto;border:0"></a></td></tr>'
+    || case when v_relance then '' else '<tr><td><a href="' || v_link || '" target="_blank"><img src="https://vitako.mg/assets/img/email/offre-banniere.jpg" width="600" alt="Vitako : apprends un métier, travaille à distance" style="display:block;width:100%;height:auto;border:0"></a></td></tr>' end
     || '<tr><td style="padding:28px 28px 8px;font-size:16px;line-height:25px">'
     || case when c.title <> '' then '<h1 style="margin:0 0 16px;font-size:24px;line-height:31px;color:#0B3D2A">' || public.campaign_fill(public.html_escape(c.title), c, p_first) || '</h1>' else '' end
     || v_body
@@ -313,17 +348,19 @@ revoke execute on function public.mail_from_marketing() from public, anon, authe
 
 -- Un e-mail prêt pour l'API Resend.
 create or replace function public.campaign_message(c public.email_campaigns, p_to text, p_first text, p_token text)
-returns jsonb language sql stable security definer set search_path = public as $$
-  select jsonb_build_object(
+returns jsonb language plpgsql stable security definer set search_path = public as $$
+declare e public.email_campaigns := public.campaign_effective(c);
+begin
+  return jsonb_build_object(
     'from', public.mail_from_marketing(),
     'reply_to', 'contact@vitako.mg',
     'to', jsonb_build_array(p_to),
-    'subject', public.campaign_fill(c.subject, c, p_first),
+    'subject', public.campaign_fill(e.subject, e, p_first),
     'html', public.campaign_html(c, p_first, p_token),
     'headers', jsonb_build_object('List-Unsubscribe',
       '<https://vitako.mg/#/desinscription?t=' || p_token || '>, <mailto:contact@vitako.mg?subject=D%C3%A9sinscription>')
   );
-$$;
+end $$;
 
 -- ---------------------------------------------------------------------
 -- Administration
@@ -340,14 +377,21 @@ begin
       'sent',       (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'sent'),
       'failed',     (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'failed'),
       'last_error', (select r.error from public.email_recipients r where r.campaign_id = c.id and r.status = 'failed' limit 1),
-      'clicked',    (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.first_seen_at is not null),
+      'clicked',    case when c.parent_id is null
+                      then (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.first_seen_at is not null)
+                      else (select count(*) from public.email_recipients r join public.email_recipients o on o.user_id = r.user_id and o.campaign_id = c.parent_id
+                             where r.campaign_id = c.id and c.started_at is not null and o.first_seen_at >= c.started_at) end,
+      'relance_now', case when c.parent_id is null and c.offer_price is not null and c.status = 'sent'
+                      then (select count(*) from public.relance_audience(c.id)) else 0 end,
+      'parent_subject', (select o.subject from public.email_campaigns o where o.id = c.parent_id),
       'paid',       (select count(distinct x.user_id) from public.payments x join public.email_recipients r on r.user_id = x.user_id and r.campaign_id = c.id
                       where x.status = 'approved' and c.started_at is not null and x.created_at >= c.started_at),
       'paid_pending', (select count(distinct x.user_id) from public.payments x join public.email_recipients r on r.user_id = x.user_id and r.campaign_id = c.id
                       where x.status = 'pending' and c.started_at is not null and x.created_at >= c.started_at),
       'revenue',    (select coalesce(sum(x.amount), 0) from public.payments x join public.email_recipients r on r.user_id = x.user_id and r.campaign_id = c.id
                       where x.status = 'approved' and c.started_at is not null and x.created_at >= c.started_at),
-      'audience_now', (select count(*) from public.campaign_audience(c.audience))
+      'audience_now', case when c.parent_id is null then (select count(*) from public.campaign_audience(c.audience))
+                           else (select count(*) from public.relance_audience(c.parent_id)) end
     ) order by c.created_at desc)
     from public.email_campaigns c
   ), '[]'::jsonb);
@@ -374,14 +418,23 @@ declare
   v_row public.email_campaigns;
   v_aud text := coalesce(nullif(p->>'audience', ''), 'never');
   v_price int := nullif(p->>'offer_price', '')::int;
+  v_parent uuid := nullif(p->>'parent_id', '')::uuid;
 begin
   if not public.is_admin() then raise exception 'forbidden'; end if;
+  if v_id is not null then select parent_id into v_parent from public.email_campaigns where id = v_id; end if;
+  if v_parent is not null then
+    if not exists (select 1 from public.email_campaigns where id = v_parent and parent_id is null and offer_price is not null and started_at is not null) then
+      raise exception 'not_found';
+    end if;
+    v_aud := 'relance';
+  elsif v_aud = 'relance' then v_aud := 'never';
+  end if;
   if v_aud <> 'never' then v_price := null; end if;
   if v_id is null then
-    insert into public.email_campaigns (subject, preheader, title, body, cta_label, audience, offer_price, offer_days, countdown_days)
+    insert into public.email_campaigns (subject, preheader, title, body, cta_label, audience, offer_price, offer_days, countdown_days, parent_id)
     values (btrim(p->>'subject'), coalesce(btrim(p->>'preheader'), ''), coalesce(btrim(p->>'title'), ''), coalesce(p->>'body', ''),
             coalesce(nullif(btrim(p->>'cta_label'), ''), 'Voir l''offre'), v_aud, v_price,
-            coalesce(nullif(p->>'offer_days', '')::int, 10), coalesce(nullif(p->>'countdown_days', '')::int, 5))
+            coalesce(nullif(p->>'offer_days', '')::int, 10), coalesce(nullif(p->>'countdown_days', '')::int, 5), v_parent)
     returning * into v_row;
   else
     update public.email_campaigns set
@@ -448,9 +501,15 @@ begin
   if c.id is null then raise exception 'not_found'; end if;
   if not exists (select 1 from vault.decrypted_secrets where name = 'resend_api_key') then raise exception 'resend_missing'; end if;
   if c.status = 'draft' then
-    insert into public.email_recipients (campaign_id, user_id, email)
-      select c.id, a.user_id, lower(btrim(a.email)) from public.campaign_audience(c.audience) a
-      on conflict do nothing;
+    if c.parent_id is not null then
+      insert into public.email_recipients (campaign_id, user_id, email)
+        select c.id, a.user_id, lower(btrim(a.email)) from public.relance_audience(c.parent_id) a
+        on conflict do nothing;
+    else
+      insert into public.email_recipients (campaign_id, user_id, email)
+        select c.id, a.user_id, lower(btrim(a.email)) from public.campaign_audience(c.audience) a
+        on conflict do nothing;
+    end if;
     update public.email_campaigns set status = 'sending', started_at = now(), updated_at = now() where id = c.id;
   end if;
   select count(*) into v_n from public.email_recipients where campaign_id = c.id;
@@ -491,7 +550,8 @@ begin
 
   perform public.campaign_sync(p_id);
 
-  select coalesce(jsonb_agg(public.campaign_message(c, r.email, split_part(btrim(p.full_name), ' ', 1), r.token::text)), '[]'::jsonb),
+  select coalesce(jsonb_agg(public.campaign_message(c, r.email, split_part(btrim(p.full_name), ' ', 1),
+           coalesce((select o.token from public.email_recipients o where o.campaign_id = c.parent_id and o.user_id = r.user_id), r.token)::text)), '[]'::jsonb),
          coalesce(array_agg(r.user_id), '{}')
     into v_batch, v_users
     from (select * from public.email_recipients
@@ -545,6 +605,8 @@ revoke execute on function public.campaign_html(public.email_campaigns, text, te
 revoke execute on function public.campaign_message(public.email_campaigns, text, text, text) from public, anon, authenticated;
 revoke execute on function public.campaign_sync(uuid)                         from public, anon, authenticated;
 revoke execute on function public.fmt_ar(int)                                 from public, anon, authenticated;
+revoke execute on function public.relance_audience(uuid)                      from public, anon, authenticated;
+revoke execute on function public.campaign_effective(public.email_campaigns)  from public, anon, authenticated;
 revoke execute on function public.my_offer()                                  from public, anon;
 revoke execute on function public.offer_open(uuid)                            from public;
 revoke execute on function public.email_unsubscribe(uuid)                     from public;

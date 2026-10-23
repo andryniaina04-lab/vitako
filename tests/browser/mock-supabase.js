@@ -115,6 +115,8 @@
 
   const newCertId = () => 'VTK-' + new Date().getFullYear() + '-' + Math.random().toString(16).slice(2, 8).toUpperCase();
   const campAudience = (k) => db.profiles.filter((p) => !p.is_admin && !p.email_optout && (k === 'all' || (k === 'never' ? !p.sub_end && (p.role || 'student') === 'student' : p.sub_end && new Date(p.sub_end) <= new Date())));
+  const relanceAud = (pid) => (db.recipients || []).filter((r) => r.campaign_id === pid && r.status === 'sent' && !r.first_seen_at)
+    .map((r) => db.profiles.find((x) => x.id === r.user_id)).filter((p) => p && !p.email_optout && !p.sub_end && !db.payments.some((x) => x.user_id === p.id && x.status === 'pending'));
   const RPC = {
     my_course_updates() {
       if (!me()) return err('not_authenticated');
@@ -285,7 +287,8 @@
       const list = (db.campaigns || []).slice().reverse().map((c) => {
         const rs = (db.recipients || []).filter((r) => r.campaign_id === c.id), n = (st) => rs.filter((r) => r.status === st).length;
         return { ...c, recipients: rs.length, pending: n('pending'), queued: n('queued'), sent: n('sent'), failed: n('failed'), last_error: null,
-          clicked: rs.filter((r) => r.first_seen_at).length, paid: 0, paid_pending: db.payments.filter((x) => x.status === 'pending' && rs.some((r) => r.user_id === x.user_id)).length, revenue: 0, audience_now: campAudience(c.audience).length };
+          clicked: rs.filter((r) => r.first_seen_at).length, paid: 0, paid_pending: db.payments.filter((x) => x.status === 'pending' && rs.some((r) => r.user_id === x.user_id)).length, revenue: 0, audience_now: c.parent_id ? relanceAud(c.parent_id).length : campAudience(c.audience).length,
+          relance_now: !c.parent_id && c.offer_price && c.status === 'sent' ? relanceAud(c.id).length : 0, parent_subject: c.parent_id ? db.campaigns.find((x) => x.id === c.parent_id).subject : null };
       });
       return { data: list, error: null };
     },
@@ -294,7 +297,8 @@
       db.campaigns ||= [];
       let c = p.id && db.campaigns.find((x) => x.id === p.id);
       if (c && c.status !== 'draft') return err('campaign_locked');
-      if (!c) { c = { id: uuid(), created_at: now(), status: 'draft', started_at: null }; db.campaigns.push(c); }
+      if (!c) { c = { id: uuid(), created_at: now(), status: 'draft', started_at: null, parent_id: p.parent_id || null }; db.campaigns.push(c); }
+      if (c.parent_id) p = { ...p, audience: 'relance', offer_price: '' };
       Object.assign(c, { subject: p.subject, preheader: p.preheader, title: p.title, body: p.body, cta_label: p.cta_label || "Voir l'offre", audience: p.audience,
         offer_price: p.audience === 'never' && p.offer_price ? +p.offer_price : null, offer_days: +p.offer_days || 10, countdown_days: +p.countdown_days || 5, updated_at: now() });
       save(); return { data: c, error: null };
@@ -309,7 +313,7 @@
       const c = db.campaigns.find((x) => x.id === p_id);
       if (c.status === 'draft') {
         db.recipients ||= [];
-        campAudience(c.audience).forEach((p) => db.recipients.push({ campaign_id: c.id, user_id: p.id, email: p.email, token: uuid(), status: 'pending', first_seen_at: null }));
+        (c.parent_id ? relanceAud(c.parent_id) : campAudience(c.audience)).forEach((p) => db.recipients.push({ campaign_id: c.id, user_id: p.id, email: p.email, token: uuid(), status: 'pending', first_seen_at: null }));
         c.status = 'sending'; c.started_at = now();
       }
       save(); return { data: db.recipients.filter((r) => r.campaign_id === c.id).length, error: null };

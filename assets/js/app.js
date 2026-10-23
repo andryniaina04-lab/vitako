@@ -2848,7 +2848,18 @@ Andry, fondateur de Vitako`,
   cta_label: 'Je profite de l\'offre à {prix}',
   audience: 'never', offer_price: 20000, offer_days: 10, countdown_days: 5,
 };
-const AUD_LABEL = { never: 'Inscrits jamais abonnés', expired: 'Abonnement terminé', all: 'Tous les inscrits' };
+const AUD_LABEL = { never: 'Inscrits jamais abonnés', expired: 'Abonnement terminé', all: 'Tous les inscrits', relance: 'Relance : pas encore cliqué' };
+// Relance : e-mail très court, même offre et même date de fin que la campagne d'origine.
+const RELANCE_DEFAULT = {
+  subject: '{prenom}, ton offre à {prix} se termine bientôt',
+  preheader: 'Plus que quelques jours pour accéder à toutes les formations Vitako.',
+  title: 'Plus que quelques jours, {prenom} !',
+  body: `Ton offre personnelle est toujours disponible : **30 jours d'accès à toutes les formations pour {prix}** au lieu de {prix_normal}.
+
+Après, elle ne reviendra pas.`,
+  cta_label: "J'en profite maintenant",
+  audience: 'relance',
+};
 const CAMP_STATUS = { draft: ['Brouillon', 'grey'], sending: ['Envoi en cours', 'gold'], sent: ['Envoyée', ''] };
 
 async function adminEmailingPage() {
@@ -2875,13 +2886,14 @@ async function adminEmailingPage() {
       <div class="f"><label class="l" for="c-body">Message</label><textarea class="in" id="c-body" rows="16" maxlength="6000">${esc(c.body || '')}</textarea>
         <small class="muted">Une ligne vide sépare deux paragraphes. **texte** pour du gras. Variables : {prenom}, {prix}, {prix_normal}, {jours}.</small></div>
       ${field('c-cta', 'Texte du bouton', c.cta_label, 'maxlength="60"')}
-      <div class="em-grid">
+      ${c.parent_id ? `<input type="hidden" id="c-aud" value="relance"><input type="hidden" id="c-price" value=""><input type="hidden" id="c-days" value="10"><input type="hidden" id="c-cd" value="5">
+      ${notice('info', `<b>Relance</b> de « ${esc((S.camps || []).find((x) => x.id === c.parent_id)?.subject || '')} » : elle part aux personnes qui n'ont pas encore cliqué, ni payé (${nf((S.camps || []).find((x) => x.id === c.parent_id)?.relance_now || 0)} aujourd'hui). Même offre, même lien et même date de fin.`)}` : `<div class="em-grid">
         <div class="f"><label class="l" for="c-aud">Destinataires</label><select class="in" id="c-aud">${aopt('never')}${aopt('expired')}${aopt('all')}</select></div>
         <div class="f" id="c-offer-f"${c.audience === 'never' ? '' : ' hidden'}><label class="l" for="c-price">Prix de l'offre (Ar)</label><input class="in mono" id="c-price" inputmode="numeric" value="${c.offer_price ?? ''}" placeholder="Vide = pas d'offre"></div>
         <div class="f"><label class="l" for="c-days">Durée de l'offre (jours)</label><input class="in mono" id="c-days" inputmode="numeric" value="${c.offer_days ?? 10}"></div>
         <div class="f"><label class="l" for="c-cd">Compte à rebours après le 1er clic (jours)</label><input class="in mono" id="c-cd" inputmode="numeric" value="${c.countdown_days ?? 5}"></div>
-      </div>
-      <p class="muted" style="font-size:.88rem">L'offre n'est valable que pour les destinataires jamais abonnés. Elle reste ouverte pendant la durée choisie après l'envoi ; au premier clic, chaque personne a le nombre de jours du compte à rebours pour en profiter, sans dépasser la fin de l'offre. Le prix de la promotion du site ne change pas.</p>
+      </div>`}
+      <p class="muted" style="font-size:.88rem"${c.parent_id ? ' hidden' : ''}>L'offre n'est valable que pour les destinataires jamais abonnés. Elle reste ouverte pendant la durée choisie après l'envoi ; au premier clic, chaque personne a le nombre de jours du compte à rebours pour en profiter, sans dépasser la fin de l'offre. Le prix de la promotion du site ne change pas.</p>
       <p id="cerr" class="notice err" hidden></p>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">Enregistrer</button>
         ${c.id ? `<button type="button" class="btn ghost" data-em="preview" data-id="${c.id}">Aperçu</button><button type="button" class="btn ghost" data-em="test" data-id="${c.id}">M'envoyer un test</button><button type="button" class="btn ghost danger" data-em="delete" data-id="${c.id}">Supprimer</button>` : ''}</div>
@@ -2902,10 +2914,11 @@ async function adminEmailingPage() {
     } else {
       actions = `<button class="btn ghost sm" data-em="preview" data-id="${c.id}">Aperçu</button>`
         + (c.status === 'sending' && S.ui.campSending !== c.id ? `<button class="btn sm" data-em="resume" data-id="${c.id}">Reprendre l'envoi</button>` : '')
-        + (c.failed ? `<button class="btn ghost sm" data-em="retry" data-id="${c.id}">Renvoyer les ${nf(c.failed)} échecs</button>` : '');
+        + (c.failed ? `<button class="btn ghost sm" data-em="retry" data-id="${c.id}">Renvoyer les ${nf(c.failed)} échecs</button>` : '')
+        + (c.relance_now ? `<button class="btn sm" data-em="relance" data-id="${c.id}">${c.relance_now > 1 ? `Relancer les ${nf(c.relance_now)} personnes qui n'ont pas cliqué` : "Relancer la personne qui n'a pas cliqué"}</button>` : '');
     }
     const progress = c.status !== 'draft' ? `<div class="em-prog"><i style="width:${total ? Math.round(done / total * 100) : 0}%"></i></div>` : '';
-    const offerTxt = c.offer_price ? `Offre ${ar(c.offer_price)} · ${c.offer_days} j · compte à rebours ${c.countdown_days} j${c.started_at ? ` · fin le ${fmtDate(new Date(new Date(c.started_at).getTime() + c.offer_days * DAY))}` : ''}` : 'Sans offre';
+    const offerTxt = c.parent_id ? `Relance de « ${esc(c.parent_subject || '')} » · même offre et même date de fin` : c.offer_price ? `Offre ${ar(c.offer_price)} · ${c.offer_days} j · compte à rebours ${c.countdown_days} j${c.started_at ? ` · fin le ${fmtDate(new Date(new Date(c.started_at).getTime() + c.offer_days * DAY))}` : ''}` : 'Sans offre';
     return `<article class="panel em-card" id="camp-${c.id}">
       <div class="em-top"><span class="pill ${tone}">${lab}</span><small class="muted">${c.started_at ? `Envoyée le ${fmtDT(c.started_at)}` : `Créée le ${fmtDT(c.created_at)}`}</small></div>
       <h3>${esc(c.subject)}</h3>
@@ -2926,6 +2939,7 @@ async function adminEmailingPage() {
 
 const readCamp = (f) => ({
   id: S.ui.campEdit?.id || '',
+  parent_id: S.ui.campEdit?.parent_id || '',
   subject: f.querySelector('#c-subject').value.trim(),
   preheader: f.querySelector('#c-pre').value.trim(),
   title: f.querySelector('#c-title').value.trim(),
@@ -2961,6 +2975,7 @@ document.addEventListener('click', async (e) => {
   const a = t.dataset.em, id = t.dataset.id;
   if (a === 'new') { S.ui.campEdit = { ...CAMP_DEFAULT }; render(); return; }
   if (a === 'close') { S.ui.campEdit = null; render(); return; }
+  if (a === 'relance') { S.ui.campEdit = { ...RELANCE_DEFAULT, parent_id: id }; render(); return; }
   if (a === 'edit') { S.ui.campEdit = { ...(S.camps || []).find((c) => c.id === id) }; render(); return; }
   if (a === 'ask') { S.ui.campConfirm = id; render(); return; }
   if (a === 'cancel') { S.ui.campConfirm = null; render(); return; }
