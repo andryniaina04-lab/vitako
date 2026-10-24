@@ -334,7 +334,7 @@ begin
     || '<div style="display:none;max-height:0;overflow:hidden;opacity:0">' || public.campaign_fill(public.html_escape(c.preheader), c, p_first) || '</div>'
     || '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F3F6F1"><tr><td align="center" style="padding:20px 12px">'
     || '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;background:#FFFFFF;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;color:#13241B">'
-    || case when v_relance then '' else '<tr><td><a href="' || v_link || '" target="_blank"><img src="https://vitako.mg/assets/img/email/offre-banniere.jpg" width="600" alt="Vitako : apprends un métier, travaille à distance" style="display:block;width:100%;height:auto;border:0"></a></td></tr>' end
+    || '<tr><td><a href="' || v_link || '" target="_blank"><img src="https://vitako.mg/assets/img/email/offre-banniere.jpg" width="600" alt="Vitako : apprends un métier, travaille à distance" style="display:block;width:100%;height:auto;border:0"></a></td></tr>'
     || '<tr><td style="padding:28px 28px 8px;font-size:16px;line-height:25px">'
     || case when c.title <> '' then '<h1 style="margin:0 0 16px;font-size:24px;line-height:31px;color:#0B3D2A">' || public.campaign_fill(public.html_escape(c.title), c, p_first) || '</h1>' else '' end
     || v_body
