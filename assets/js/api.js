@@ -471,3 +471,7 @@ export async function adminPushStats() {
   need();
   return run(sb.rpc('admin_push_stats'));
 }
+export async function adminPushTest() {
+  need();
+  return run(sb.rpc('admin_push_test'));
+}

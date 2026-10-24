@@ -3223,7 +3223,7 @@ function pushCard() {
     denied: 'Bloquées dans ce navigateur. Pour les recevoir, autorise les notifications pour vitako.mg dans les réglages du navigateur.',
     install: 'Sur iPhone, installe d\'abord l\'application Vitako sur l\'écran d\'accueil, puis active les notifications depuis l\'application.',
   }[st];
-  const btn = st === 'on' ? '<button type="button" class="btn ghost sm" data-act="push-off">Désactiver</button>'
+  const btn = st === 'on' ? `<button type="button" class="btn ghost sm" data-act="push-off">Désactiver</button>${isAdmin() ? ' <button type="button" class="btn sm" data-act="push-test">M\'envoyer une notification de test</button>' : ''}`
     : st === 'off' ? '<button type="button" class="btn sm" data-act="push-on">Activer les notifications</button>'
     : st === 'install' ? '<a class="btn ghost sm" href="#/installer">Installer l\'application</a>' : '';
   return `<div class="panel stack dsh-card push-card" style="gap:10px;margin-top:22px;max-width:520px">
@@ -3231,8 +3231,12 @@ function pushCard() {
     <p class="muted" style="margin:0">${txt}</p>${btn ? `<div>${btn}</div>` : ''}</div>`;
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-act=push-on],[data-act=push-off]');
+  const t = e.target.closest('[data-act=push-on],[data-act=push-off],[data-act=push-test]');
   if (!t) return;
   e.preventDefault();
+  if (t.dataset.act === 'push-test') {
+    api.adminPushTest().then((n) => toast(n ? `Notification de test envoyée (${n} appareil${n > 1 ? 's' : ''}). Elle arrive en quelques secondes.` : 'Aucun appareil enregistré : active d\'abord les notifications.')).catch((err) => toast(err.message));
+    return;
+  }
   if (t.dataset.act === 'push-on') pushEnable(); else pushDisable();
 });

@@ -214,6 +214,14 @@ begin
   return v_n;
 end $$;
 
+-- Notification de test sur les appareils de l'administrateur connecté.
+create or replace function public.admin_push_test()
+returns int language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'forbidden'; end if;
+  return public.push_send(array[auth.uid()], 'Test Vitako 🔔', 'Les notifications fonctionnent sur ce téléphone.', '/#/admin/stats', 'test', 'test');
+end $$;
+
 -- Bilan pour l'administrateur (onglet Statistiques).
 create or replace function public.admin_push_stats()
 returns jsonb language plpgsql stable security definer set search_path = public as $$
@@ -236,6 +244,8 @@ revoke execute on function public.push_payment_events()                         
 revoke execute on function public.push_campaign_started()                            from public, anon, authenticated;
 revoke execute on function public.push_offer_reminders()                             from public, anon, authenticated;
 revoke execute on function public.admin_push_stats()                                 from public, anon;
+revoke execute on function public.admin_push_test()                                  from public, anon;
+grant  execute on function public.admin_push_test()                                  to authenticated;
 grant  execute on function public.push_check(text)                                   to anon, authenticated;
 grant  execute on function public.push_subscribe(text, text, text)                   to authenticated;
 grant  execute on function public.push_unsubscribe(text)                             to authenticated;
