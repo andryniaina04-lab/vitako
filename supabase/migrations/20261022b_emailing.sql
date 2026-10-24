@@ -292,8 +292,29 @@ declare
   v_body  text;
   v_price text := '';
   v_relance boolean := c.parent_id is not null;
+  v_ld    text := '';
+  v_start timestamptz;
 begin
   c := public.campaign_effective(c);
+  -- Annotations Gmail (onglet Promotions) : grande image, prix et date de fin affichés dans la liste.
+  -- Même image pour tous les destinataires ; Gmail décide seul de l'afficher (filtres de qualité).
+  if c.offer_price is not null then
+    v_start := coalesce((select o.started_at from public.email_campaigns o where o.id = c.parent_id), c.started_at, now());
+    v_ld := '<script type="application/ld+json">' || jsonb_build_array(
+      jsonb_build_object('@context', 'http://schema.org/', '@type', 'Organization', 'name', 'Vitako', 'url', 'https://vitako.mg',
+                         'logo', 'https://vitako.mg/assets/img/app/icon-512.png'),
+      jsonb_build_object('@context', 'http://schema.org/', '@type', 'PromotionCard',
+                         'image', 'https://vitako.mg/assets/img/email/offre-gmail.jpg', 'url', v_link,
+                         'headline', 'Toutes les formations : ' || public.fmt_ar(c.offer_price) || ' au lieu de ' || public.fmt_ar(public.setting_int('price_ar', 60000)),
+                         'price', c.offer_price, 'priceCurrency', 'MGA',
+                         'discountValue', public.setting_int('price_ar', 60000) - c.offer_price),
+      jsonb_build_object('@context', 'http://schema.org/', '@type', 'DiscountOffer',
+                         'description', public.fmt_ar(c.offer_price) || ' au lieu de ' || public.fmt_ar(public.setting_int('price_ar', 60000)),
+                         'offerPageUrl', v_link, 'merchantHomepageUrl', 'https://vitako.mg',
+                         'availabilityStarts', to_char(v_start at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
+                         'availabilityEnds', to_char((v_start + make_interval(days => c.offer_days)) at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"'))
+    )::text || '</script>';
+  end if;
   -- Corps : texte échappé, paragraphes séparés par une ligne vide, **gras** autorisé.
   v_body := public.campaign_fill(public.html_escape(c.body), c, p_first);
   v_body := regexp_replace(v_body, '\*\*([^*]+)\*\*', '<b>\1</b>', 'g');
@@ -308,7 +329,7 @@ begin
       || '</td></tr></table>';
   end if;
 
-  return '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' || public.html_escape(c.subject) || '</title></head>'
+  return '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' || public.html_escape(c.subject) || '</title>' || v_ld || '</head>'
     || '<body style="margin:0;padding:0;background:#F3F6F1">'
     || '<div style="display:none;max-height:0;overflow:hidden;opacity:0">' || public.campaign_fill(public.html_escape(c.preheader), c, p_first) || '</div>'
     || '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F3F6F1"><tr><td align="center" style="padding:20px 12px">'
