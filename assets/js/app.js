@@ -1978,7 +1978,7 @@ async function adminStatsPage() {
   if (!S.session) return needLogin('/admin/stats');
   if (!S.profile) return loadingView();
   if (!isAdmin()) return notFound();
-  const [st, counts, vs] = await Promise.all([api.adminStats(), api.adminCounts(), api.adminVisitStats().catch(() => null)]);
+  const [st, counts, vs, os] = await Promise.all([api.adminStats(), api.adminCounts(), api.adminVisitStats().catch(() => null), api.adminOfferStats().catch(() => null)]);
   S.admin = counts; topbar();
   const U = st.users, Sb = st.subs, P = st.payments, L = st.learning;
   const days = st.signups || [];
@@ -2001,6 +2001,7 @@ async function adminStatsPage() {
     <div class="bars" role="img" aria-label="Inscriptions par jour sur les 30 derniers jours, ${total30} au total">${bars}</div>
     <div class="bars-x"><span>${days[0] ? fmtDay(days[0].d) : ''}</span><span>${days.length ? fmtDay(days[days.length - 1].d) : ''}</span></div>
   </div>
+  ${offerStatsSection(os)}
   ${visitsSection(vs)}
   <h2 class="st-h">Paiements</h2>
   <div class="kpis">
@@ -3148,4 +3149,21 @@ function offerStrip(path) {
     <span class="os-txt"><b>${ar(S.offer.price)}</b> au lieu de <s>${ar(S.price)}</s> · toutes les formations</span>
     <span class="os-cd cd" data-deadline="${esc(dl)}"><b data-k="d">${pad2(d)}</b>j <b data-k="h">${pad2(h)}</b>h <b data-k="m">${pad2(m)}</b>min <b data-k="s">00</b>s</span>
     <span class="os-go">J'en profite →</span></a>`;
+}
+
+// Statistiques de la dernière offre : vue par l'e-mail ou directement sur le site, et abonnements.
+function offerStatsSection(o) {
+  if (!o) return '';
+  const end = new Date(o.ends_at);
+  const paid = o.paid_email + o.paid_site + o.paid_unknown + o.paid_unseen;
+  const seen = o.seen_email + o.seen_site + o.seen_unknown;
+  return `<h2 class="st-h">Offre à ${ar(o.price)}</h2>
+  <p class="muted" style="margin:-6px 0 12px">${o.active ? `En cours jusqu'au ${fmtDT(end)}` : `Terminée le ${fmtDT(end)}`} · lancée le ${fmtDT(o.started_at)}</p>
+  <div class="kpis">
+    ${kpi("Ont vu l'offre par l'e-mail", nf(o.seen_email), `sur ${nf(o.emailed)} e-mail${o.emailed > 1 ? 's' : ''} envoyé${o.emailed > 1 ? 's' : ''} (${pct(o.seen_email, o.emailed)} %)`)}
+    ${kpi("Ont vu l'offre sur le site", nf(o.seen_site), `bandeau ou cloche · dont ${nf(o.site_only)} sans l'e-mail`, 'good')}
+    ${kpi('Abonnements avec l\'offre', nf(paid), `${nf(o.paid_email)} par l'e-mail · ${nf(o.paid_site)} par le site${o.pending ? ` · ${nf(o.pending)} à valider` : ''}`, 'gold')}
+    ${kpi('Recettes de l\'offre', ar(o.revenue), seen ? `${pct(paid, seen)} % des personnes qui ont vu l'offre` : '')}
+  </div>
+  ${o.seen_unknown ? `<p class="muted" style="font-size:.85rem;margin-top:8px">${nf(o.seen_unknown)} personne${o.seen_unknown > 1 ? 's ont' : ' a'} vu l'offre le 24 octobre avant la mise en place de ce suivi (e-mail ou site, non déterminé).</p>` : ''}`;
 }

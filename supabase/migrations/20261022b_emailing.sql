@@ -47,6 +47,11 @@ create table if not exists public.email_recipients (
 create index if not exists email_recipients_user on public.email_recipients (user_id);
 -- via (24/10/2026) : « email » = a reçu l'e-mail ; « site » = rattaché à l'offre en se connectant au site.
 alter table public.email_recipients add column if not exists via text not null default 'email';
+-- seen_via : par où la personne a vu l'offre la première fois (« email » = lien de l'e-mail, « site » = bandeau ou cloche).
+alter table public.email_recipients add column if not exists seen_via text;
+-- Avant ce suivi : rattachés par le site = vus sur le site ; vus avant la mise en ligne du bandeau (24/10, 11 h 40) = lien de l'e-mail.
+update public.email_recipients set seen_via = 'site' where seen_via is null and first_seen_at is not null and via = 'site';
+update public.email_recipients set seen_via = 'email' where seen_via is null and first_seen_at is not null and via = 'email' and first_seen_at < '2026-10-24 08:40:00+00';
 create index if not exists email_recipients_status on public.email_recipients (campaign_id, status);
 
 -- Relance (23/10/2026) : une campagne peut relancer une campagne avec offre (parent_id). Elle part aux
@@ -163,7 +168,7 @@ begin
   if c.offer_price is null or c.started_at is null then return jsonb_build_object('found', false); end if;
 
   if r.first_seen_at is null and now() < c.started_at + make_interval(days => c.offer_days) then
-    update public.email_recipients set first_seen_at = now(), clicks = clicks + 1
+    update public.email_recipients set first_seen_at = now(), clicks = clicks + 1, seen_via = case when p_token is not null then 'email' else 'site' end
       where campaign_id = r.campaign_id and user_id = r.user_id;
   else
     update public.email_recipients set clicks = clicks + 1 where campaign_id = r.campaign_id and user_id = r.user_id;
@@ -639,12 +644,50 @@ begin
   end if;
   -- L'offre est affichée sur le site (bandeau, cloche) : le compte à rebours personnel démarre maintenant.
   if public.never_subscribed(v_uid) and exists (select 1 from public.profiles where id = v_uid and not is_admin) then
-    update public.email_recipients r set first_seen_at = now()
+    update public.email_recipients r set first_seen_at = now(), seen_via = 'site'
       from public.email_campaigns k
      where k.id = r.campaign_id and r.user_id = v_uid and r.first_seen_at is null and r.status in ('queued', 'sent')
        and k.offer_price is not null and k.started_at is not null and now() < k.started_at + make_interval(days => k.offer_days);
   end if;
   return public.my_offer();
+end $$;
+
+-- Statistiques de la dernière offre (onglet Statistiques) : qui l'a vue, par où, et qui a payé.
+create or replace function public.admin_offer_stats()
+returns jsonb language plpgsql stable security definer set search_path = public as $$
+declare c public.email_campaigns;
+begin
+  if not public.is_admin() then raise exception 'forbidden'; end if;
+  select * into c from public.email_campaigns
+   where offer_price is not null and parent_id is null and started_at is not null
+   order by started_at desc limit 1;
+  if c.id is null then return null; end if;
+  return (
+    with r as (
+      select x.*, coalesce(x.seen_via, case when x.first_seen_at is not null then 'inconnu' end) as seen,
+             exists (select 1 from public.payments p where p.user_id = x.user_id and p.status = 'approved' and p.created_at >= c.started_at) as paid,
+             exists (select 1 from public.payments p where p.user_id = x.user_id and p.status = 'pending') as pending
+      from public.email_recipients x where x.campaign_id = c.id
+    )
+    select jsonb_build_object(
+      'subject', c.subject, 'price', c.offer_price, 'started_at', c.started_at,
+      'ends_at', c.started_at + make_interval(days => c.offer_days),
+      'active', now() < c.started_at + make_interval(days => c.offer_days),
+      'emailed',      (select count(*) from r where via = 'email' and status = 'sent'),
+      'site_only',    (select count(*) from r where via = 'site'),
+      'seen_email',   (select count(*) from r where seen = 'email'),
+      'seen_site',    (select count(*) from r where seen = 'site'),
+      'paid_email',   (select count(*) from r where seen = 'email' and paid),
+      'paid_site',    (select count(*) from r where seen = 'site' and paid),
+      'seen_unknown', (select count(*) from r where seen = 'inconnu'),
+      'paid_unknown', (select count(*) from r where seen = 'inconnu' and paid),
+      'paid_unseen',  (select count(*) from r where seen is null and paid),
+      'pending',      (select count(*) from r where pending),
+      'revenue',      (select coalesce(sum(p.amount), 0) from public.payments p
+                        where p.status = 'approved' and p.created_at >= c.started_at
+                          and p.user_id in (select user_id from r))
+    )
+  );
 end $$;
 
 -- ---------------------------------------------------------------------
@@ -677,6 +720,8 @@ revoke execute on function public.admin_campaign_send_batch(uuid)             fr
 revoke execute on function public.admin_campaign_retry(uuid)                  from public, anon;
 grant  execute on function public.my_offer()                                  to authenticated;
 revoke execute on function public.claim_site_offer()                          from public, anon;
+revoke execute on function public.admin_offer_stats()                         from public, anon;
+grant  execute on function public.admin_offer_stats()                         to authenticated;
 grant  execute on function public.claim_site_offer()                          to authenticated;
 grant  execute on function public.offer_open(uuid)                            to anon, authenticated;
 grant  execute on function public.email_unsubscribe(uuid)                     to anon, authenticated;

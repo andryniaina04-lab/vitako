@@ -252,6 +252,16 @@
     // --- Emailing et offre (version simplifiée de supabase/migrations/20261022b_emailing.sql) ---
     admin_reviews_new_count() { return { data: 0, error: null }; },
     admin_reviews_mark_seen() { return { data: null, error: null }; },
+    admin_offer_stats() {
+      if (!isAdmin()) return err('forbidden');
+      const c = (db.campaigns || []).filter((x) => x.offer_price && !x.parent_id && x.started_at).pop(); if (!c) return { data: null, error: null };
+      const rs = db.recipients.filter((r) => r.campaign_id === c.id), seen = (v) => rs.filter((r) => r.first_seen_at && (r.seen_via || (r.via === 'site' ? 'site' : 'email')) === v);
+      const paidIds = new Set(db.payments.filter((x) => x.status === 'approved').map((x) => x.user_id));
+      return { data: { subject: c.subject, price: c.offer_price, started_at: c.started_at, ends_at: new Date(new Date(c.started_at).getTime() + c.offer_days * 864e5).toISOString(), active: true,
+        emailed: rs.filter((r) => r.via !== 'site').length, site_only: rs.filter((r) => r.via === 'site').length, seen_email: seen('email').length, seen_site: seen('site').length, seen_unknown: 0,
+        paid_email: seen('email').filter((r) => paidIds.has(r.user_id)).length, paid_site: seen('site').filter((r) => paidIds.has(r.user_id)).length, paid_unknown: 0, paid_unseen: 0,
+        pending: db.payments.filter((x) => x.status === 'pending' && rs.some((r) => r.user_id === x.user_id)).length, revenue: 0 }, error: null };
+    },
     claim_site_offer() {
       const p = profile(); if (!p || p.is_admin) return { data: null, error: null };
       const c = (db.campaigns || []).filter((x) => x.offer_price && !x.parent_id && x.started_at && Date.now() < new Date(x.started_at).getTime() + x.offer_days * 864e5).pop();
@@ -259,7 +269,7 @@
         db.recipients ||= [];
         let r = db.recipients.find((x) => x.user_id === p.id && x.campaign_id === c.id);
         if (!r) { r = { campaign_id: c.id, user_id: p.id, email: p.email, token: uuid(), status: 'sent', via: 'site', first_seen_at: null }; db.recipients.push(r); }
-        r.first_seen_at ||= now(); save();
+        if (!r.first_seen_at) { r.first_seen_at = now(); r.seen_via = 'site'; } save();
       }
       return RPC.my_offer();
     },

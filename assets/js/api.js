@@ -453,3 +453,7 @@ export async function adminVisitStats() {
   need();
   return run(sb.rpc('admin_visit_stats'));
 }
+export async function adminOfferStats() {
+  need();
+  return run(sb.rpc('admin_offer_stats'));
+}
