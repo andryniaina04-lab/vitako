@@ -3141,13 +3141,14 @@ function offerStrip(path) {
   let el = document.getElementById('offer-strip');
   const show = offerOn() && !hasAccess() && !isAdmin() && !/^\/(offre|abonnement|admin)|\/examen$/.test(path);
   if (!show) { el?.remove(); return; }
-  if (!el) { el = document.createElement('div'); el.id = 'offer-strip'; document.querySelector('header.top')?.after(el); }
+  // Dans l'en-tête (collant) : le bandeau reste visible en haut quand on fait défiler la page.
+  if (!el) { el = document.createElement('div'); el.id = 'offer-strip'; document.querySelector('header.top')?.appendChild(el); }
   const dl = S.offer.deadline;
   const [d, h, m] = cdParts(new Date(dl) - Date.now());
   el.className = 'offer-strip';
   el.innerHTML = `<a href="#/offre" class="wrap os-in"><span class="os-pct">-${promoPct()} %</span>
     <span class="os-txt"><b>${ar(S.offer.price)}</b> au lieu de <s>${ar(S.price)}</s> · toutes les formations</span>
-    <span class="os-cd cd" data-deadline="${esc(dl)}"><b data-k="d">${pad2(d)}</b>j <b data-k="h">${pad2(h)}</b>h <b data-k="m">${pad2(m)}</b>min <b data-k="s">00</b>s</span>
+    <span class="os-cd cd" data-deadline="${esc(dl)}" aria-label="Temps restant"><b data-k="d">${pad2(d)}</b>j <b data-k="h">${pad2(h)}</b>h <b data-k="m">${pad2(m)}</b>min <b data-k="s">00</b>s</span>
     <span class="os-go">J'en profite →</span></a>`;
 }
 
