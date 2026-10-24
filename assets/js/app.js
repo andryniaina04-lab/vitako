@@ -2918,10 +2918,13 @@ async function adminEmailingPage() {
         + (c.relance_now ? `<button class="btn sm" data-em="relance" data-id="${c.id}">${c.relance_now > 1 ? `Relancer les ${nf(c.relance_now)} personnes qui n'ont pas cliqué` : "Relancer la personne qui n'a pas cliqué"}</button>` : '');
     }
     const progress = c.status !== 'draft' ? `<div class="em-prog"><i style="width:${total ? Math.round(done / total * 100) : 0}%"></i></div>` : '';
-    const offerTxt = c.parent_id ? `Relance de « ${esc(c.parent_subject || '')} » · même offre et même date de fin` : c.offer_price ? `Offre ${ar(c.offer_price)} · ${c.offer_days} j · compte à rebours ${c.countdown_days} j${c.started_at ? ` · fin le ${fmtDate(new Date(new Date(c.started_at).getTime() + c.offer_days * DAY))}` : ''}` : 'Sans offre';
+    const par = c.parent_id ? (S.camps || []).find((x) => x.id === c.parent_id) : null;
+    const fillT = (t, k) => String(t || '').replace(/\{prenom\}/g, 'Prénom').replace(/\{prix_normal\}/g, ar(S.price))
+      .replace(/\{prix\}/g, ar(k?.offer_price || priceNow())).replace(/\{jours\}/g, String(k?.countdown_days || 5));
+    const offerTxt = c.parent_id ? `Relance de « ${esc(fillT(c.parent_subject, par))} » · même offre et même date de fin` : c.offer_price ? `Offre ${ar(c.offer_price)} · ${c.offer_days} j · compte à rebours ${c.countdown_days} j${c.started_at ? ` · fin le ${fmtDate(new Date(new Date(c.started_at).getTime() + c.offer_days * DAY))}` : ''}` : 'Sans offre';
     return `<article class="panel em-card" id="camp-${c.id}">
       <div class="em-top"><span class="pill ${tone}">${lab}</span><small class="muted">${c.started_at ? `Envoyée le ${fmtDT(c.started_at)}` : `Créée le ${fmtDT(c.created_at)}`}</small></div>
-      <h3>${esc(c.subject)}</h3>
+      <h3>${esc(fillT(c.subject, par || c))}</h3>
       <p class="muted" style="margin:4px 0 0">${AUD_LABEL[c.audience]} · ${offerTxt}</p>
       ${c.status !== 'draft' ? `<div class="kpis em-kpis">
         ${kpi('Destinataires', nf(total))}${kpi('Envoyés', nf(c.sent), c.queued ? `${nf(c.queued)} en cours` : '', 'good')}${kpi('Échecs', nf(c.failed), c.last_error ? esc(c.last_error).slice(0, 90) : '')}

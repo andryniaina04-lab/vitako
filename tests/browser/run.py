@@ -294,7 +294,7 @@ with sync_playwright() as p:
     check('attestation : nom et formation', 'Fanja Rakoto' in page.content() and 'Graphiste – Avancé' in page.content())
     cert_id = page.locator('.dip-rows b').nth(2).inner_text()
     check('attestation : tampon affiché', page.locator('.dip-seal').count() == 1)
-    page.click('[data-act=pdf]'); page.wait_for_timeout(200)
+    page.click('[data-act=pdf]'); page.wait_for_timeout(1000)
     saved = page.evaluate('window.__pdfSaved')
     check(f'PDF : téléchargement lancé ({saved})', bool(saved) and saved.endswith('.pdf'))
     page.screenshot(path=f'{SHOTS}/06-attestation.png', full_page=True)
