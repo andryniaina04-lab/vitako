@@ -262,6 +262,9 @@
         paid_email: seen('email').filter((r) => paidIds.has(r.user_id)).length, paid_site: seen('site').filter((r) => paidIds.has(r.user_id)).length, paid_unknown: 0, paid_unseen: 0,
         pending: db.payments.filter((x) => x.status === 'pending' && rs.some((r) => r.user_id === x.user_id)).length, revenue: 0 }, error: null };
     },
+    push_subscribe() { return { data: null, error: null }; },
+    push_unsubscribe() { return { data: null, error: null }; },
+    admin_push_stats() { return { data: { users: 0, devices: 0, sent30: 0, last_error: null }, error: null }; },
     claim_site_offer() {
       const p = profile(); if (!p || p.is_admin) return { data: null, error: null };
       const c = (db.campaigns || []).filter((x) => x.offer_price && !x.parent_id && x.started_at && Date.now() < new Date(x.started_at).getTime() + x.offer_days * 864e5).pop();

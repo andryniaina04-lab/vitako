@@ -318,7 +318,7 @@ with sync_playwright() as p:
     check('catalogue : « Réussi » au survol de la coche', page.evaluate("getComputedStyle(document.querySelector('.done-chk'), '::after').opacity") == '1')
     page.locator('.card.job').first.screenshot(path=f'{SHOTS}/06b-coche-reussi.png')
     goto(page, '#/mon-espace')
-    check('mon espace : en-tête coloré et cartes', page.locator('.dsh-hero').count() == 1 and page.locator('.dsh-card').count() == 5)
+    check('mon espace : en-tête coloré et cartes', page.locator('.dsh-hero').count() == 1 and page.locator('.dsh-card:not(.push-card)').count() == 5)
     page.screenshot(path=f'{SHOTS}/06c-mon-espace.png', full_page=True)
 
     # --- Nom, thème, mot de passe
@@ -504,6 +504,8 @@ with sync_playwright() as p:
     check(f'offre : paiement enregistré à 20 000 Ar ({amt})', amt == 20000)
     goto(page, '#/mon-espace'); page.wait_for_selector('#em-optout')
     check('mon espace : case « Recevoir les offres » cochée', page.is_checked('#em-optout'))
+    page.wait_for_selector('.push-card', timeout=5000)
+    check('mon espace : carte « Notifications sur ce téléphone » avec bouton Activer', page.locator('.push-card').count() == 1 and (page.locator('.push-card [data-act=push-on]').count() == 1 or 'Bloquées' in page.locator('.push-card').inner_text()))
     logout(page)
     goto(page, f'#/desinscription?t={tok}'); page.wait_for_timeout(400)
     check('désinscription par le lien de l\'e-mail', 'désinscrit' in page.content() and page.evaluate("window.__mockdb().profiles.find((p) => p.email === 'hery@exemple.mg').email_optout") is True)

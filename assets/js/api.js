@@ -457,3 +457,17 @@ export async function adminOfferStats() {
   need();
   return run(sb.rpc('admin_offer_stats'));
 }
+
+// Notifications push (voir supabase/migrations/20261024_push.sql et api/push.js)
+export async function pushSubscribe(endpoint, p256dh, auth) {
+  need();
+  return run(sb.rpc('push_subscribe', { p_endpoint: endpoint, p_p256dh: p256dh, p_auth: auth }));
+}
+export async function pushUnsubscribe(endpoint) {
+  need();
+  return run(sb.rpc('push_unsubscribe', { p_endpoint: endpoint }));
+}
+export async function adminPushStats() {
+  need();
+  return run(sb.rpc('admin_push_stats'));
+}

@@ -25,6 +25,9 @@ window.VITAKO_CONFIG = {
   heroVideoHD: '', // version 1080p proposée au choix (facultatif)
   heroPoster: 'assets/video/vitako-presentation.jpg', // image affichée avant le chargement d'une vidéo .mp4 (facultatif)
 
+  // Notifications push : clé publique VAPID (la clé privée est seulement dans Vercel, variable VAPID_PRIVATE_KEY).
+  vapidPublicKey: 'BEOoN28pcVHY6_6VBPMtPKCkMXvFTzx67sAXBMGRQ1ZgrQMHtU24tIdwLqrRF4zqyPhAh4suy0cpOEViDbmBiG8',
+
   // Délai de validation annoncé aux étudiants.
   validationDelay: 'quelques minutes',
 };

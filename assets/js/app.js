@@ -114,6 +114,7 @@ async function loadUser() {
   S.updates = profile && !profile.is_admin ? await api.myCourseUpdates().catch(() => []) : [];
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
   S.offer = profile && !profile.is_admin ? await api.claimSiteOffer().catch(() => null) : null;
+  pushRefresh(true);
 }
 
 // ---------------------------------------------------------------------------
@@ -382,8 +383,9 @@ function notifUnread(list = notifications()) {
 }
 function notifPanel(list) {
   const seen = notifSeen();
-  if (!list.length) return '<p class="nt-empty">Aucune notification pour le moment.</p>';
-  return list.map((n) => `<a class="nt-item ${n.tone}${n.sticky || !seen.has(n.id) ? ' new' : ''}" href="${n.href}">
+  const ask = S.push === 'off' ? `<div class="nt-push"><span>📱 Reçois tes notifications sur ce téléphone, même quand Vitako est fermé.</span><button type="button" class="btn sm" data-act="push-on">Activer</button></div>` : '';
+  if (!list.length) return ask + '<p class="nt-empty">Aucune notification pour le moment.</p>';
+  return ask + list.map((n) => `<a class="nt-item ${n.tone}${n.sticky || !seen.has(n.id) ? ' new' : ''}" href="${n.href}">
       <span class="nt-dot" aria-hidden="true"></span>
       <span class="nt-body"><b>${esc(n.title)}</b><small>${esc(n.text)}</small>${n.ts ? `<em>${fmtDT(n.ts)}</em>` : ''}</span></a>`).join('');
 }
@@ -1487,6 +1489,7 @@ function accountPage() {
     <p class="muted" style="font-size:.88rem">Le nouveau nom s'applique aux prochaines attestations. Celles déjà délivrées gardent le nom d'origine.</p>
     <div><button class="btn ghost" type="submit">Enregistrer le nom</button></div>
   </form>
+  ${pushCard()}
   ${P.is_admin ? '' : `<div class="panel stack dsh-card" style="gap:8px;margin-top:22px;max-width:520px"><label class="em-opt"><input type="checkbox" id="em-optout"${P.email_optout ? '' : ' checked'}> <span><b>Recevoir les offres et nouveautés par e-mail</b><small class="muted">Les e-mails liés à votre compte (paiement, accès, mot de passe) arrivent toujours.</small></span></label></div>`}
   ${!isTrainer() && !P.is_admin ? `<p class="tr-invite muted">Vous voulez accompagner des étudiants dans votre métier ? <a href="#/devenir-formateur">Devenir formateur</a></p>` : ''}`;
 }
@@ -1978,7 +1981,7 @@ async function adminStatsPage() {
   if (!S.session) return needLogin('/admin/stats');
   if (!S.profile) return loadingView();
   if (!isAdmin()) return notFound();
-  const [st, counts, vs, os] = await Promise.all([api.adminStats(), api.adminCounts(), api.adminVisitStats().catch(() => null), api.adminOfferStats().catch(() => null)]);
+  const [st, counts, vs, os, ps] = await Promise.all([api.adminStats(), api.adminCounts(), api.adminVisitStats().catch(() => null), api.adminOfferStats().catch(() => null), api.adminPushStats().catch(() => null)]);
   S.admin = counts; topbar();
   const U = st.users, Sb = st.subs, P = st.payments, L = st.learning;
   const days = st.signups || [];
@@ -2001,6 +2004,7 @@ async function adminStatsPage() {
     <div class="bars" role="img" aria-label="Inscriptions par jour sur les 30 derniers jours, ${total30} au total">${bars}</div>
     <div class="bars-x"><span>${days[0] ? fmtDay(days[0].d) : ''}</span><span>${days.length ? fmtDay(days[days.length - 1].d) : ''}</span></div>
   </div>
+  ${ps ? `<p class="muted st-push">🔔 Notifications sur téléphone activées par <b>${nf(ps.users)}</b> personne${ps.users > 1 ? 's' : ''} (${nf(ps.devices)} appareil${ps.devices > 1 ? 's' : ''}) · ${nf(ps.sent30)} notification${ps.sent30 > 1 ? 's' : ''} envoyée${ps.sent30 > 1 ? 's' : ''} en 30 jours${ps.last_error ? ` · dernière erreur : ${esc(ps.last_error)}` : ''}</p>` : ''}
   ${offerStatsSection(os)}
   ${visitsSection(vs)}
   <h2 class="st-h">Paiements</h2>
@@ -3168,3 +3172,67 @@ function offerStatsSection(o) {
   </div>
   ${o.seen_unknown ? `<p class="muted" style="font-size:.85rem;margin-top:8px">${nf(o.seen_unknown)} personne${o.seen_unknown > 1 ? 's ont' : ' a'} vu l'offre le 24 octobre avant la mise en place de ce suivi (e-mail ou site, non déterminé).</p>` : ''}`;
 }
+
+// ---------------------------------------------------------------------------
+// Notifications push sur ce téléphone (état dans S.push)
+// 'unsupported' | 'install' (iPhone : installer l'application d'abord) | 'denied' | 'off' | 'on'
+// ---------------------------------------------------------------------------
+function pushSupported() { return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window && !!CFG.vapidPublicKey; }
+function vapidBytes(k) { const b = atob(k.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - k.length % 4) % 4)); return Uint8Array.from(b, (c) => c.charCodeAt(0)); }
+async function pushSub() { const reg = await navigator.serviceWorker.getRegistration(); return reg ? reg.pushManager.getSubscription() : null; }
+async function pushRefresh(bind) {
+  const ios = window.vitakoPWA?.isIOS, standalone = window.vitakoPWA?.standalone();
+  let st;
+  if (!pushSupported()) st = ios && !standalone ? 'install' : 'unsupported';
+  else if (Notification.permission === 'denied') st = 'denied';
+  else {
+    const sub = Notification.permission === 'granted' ? await pushSub().catch(() => null) : null;
+    st = sub ? 'on' : 'off';
+    // Abonnement déjà présent : on le rattache au compte connecté (changement de compte sur le même téléphone).
+    if (sub && bind && S.session) { const j = sub.toJSON(); api.pushSubscribe(j.endpoint, j.keys.p256dh, j.keys.auth).catch(() => {}); }
+  }
+  if (st !== S.push) { S.push = st; if (S.session) { if (S.ui.notif) topbar(); else if (route().path === '/mon-espace') render(); } }
+  return st;
+}
+async function pushEnable() {
+  if (!pushSupported()) { toast(window.vitakoPWA?.isIOS ? "Sur iPhone, installe d'abord l'application Vitako (Partager → Sur l'écran d'accueil)." : 'Ce navigateur ne permet pas les notifications.'); return; }
+  const perm = await Notification.requestPermission();
+  if (perm !== 'granted') { toast(perm === 'denied' ? 'Notifications refusées : tu peux les autoriser dans les réglages du navigateur.' : 'Notifications non activées.'); await pushRefresh(); return; }
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: vapidBytes(CFG.vapidPublicKey) });
+    const j = sub.toJSON();
+    await api.pushSubscribe(j.endpoint, j.keys.p256dh, j.keys.auth);
+    toast('Notifications activées sur ce téléphone.');
+  } catch (err) { toast("Les notifications n'ont pas pu être activées. Réessaie dans un instant."); }
+  await pushRefresh();
+}
+async function pushDisable() {
+  const sub = await pushSub().catch(() => null);
+  if (sub) { await api.pushUnsubscribe(sub.endpoint).catch(() => {}); await sub.unsubscribe().catch(() => {}); }
+  toast('Notifications désactivées sur ce téléphone.');
+  await pushRefresh();
+}
+function pushCard() {
+  const st = S.push;
+  if (!st || st === 'unsupported') return '';
+  const txt = {
+    on: 'Activées : tu reçois une notification avec le son du téléphone (paiement validé, offres), même quand Vitako est fermé.',
+    off: 'Reçois une notification avec le son du téléphone quand ton paiement est validé ou qu\'une offre arrive, même quand Vitako est fermé.',
+    denied: 'Bloquées dans ce navigateur. Pour les recevoir, autorise les notifications pour vitako.mg dans les réglages du navigateur.',
+    install: 'Sur iPhone, installe d\'abord l\'application Vitako sur l\'écran d\'accueil, puis active les notifications depuis l\'application.',
+  }[st];
+  const btn = st === 'on' ? '<button type="button" class="btn ghost sm" data-act="push-off">Désactiver</button>'
+    : st === 'off' ? '<button type="button" class="btn sm" data-act="push-on">Activer les notifications</button>'
+    : st === 'install' ? '<a class="btn ghost sm" href="#/installer">Installer l\'application</a>' : '';
+  return `<div class="panel stack dsh-card push-card" style="gap:10px;margin-top:22px;max-width:520px">
+    <div class="dsh-h"><span class="dsh-ic">${I.bell}</span><b>Notifications sur ce téléphone</b>${st === 'on' ? '<span class="pill">Activées</span>' : ''}</div>
+    <p class="muted" style="margin:0">${txt}</p>${btn ? `<div>${btn}</div>` : ''}</div>`;
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-act=push-on],[data-act=push-off]');
+  if (!t) return;
+  e.preventDefault();
+  if (t.dataset.act === 'push-on') pushEnable(); else pushDisable();
+});
