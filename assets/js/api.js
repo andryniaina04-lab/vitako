@@ -389,6 +389,10 @@ export async function myOffer() {
   need();
   return run(sb.rpc('my_offer'));
 }
+export async function claimSiteOffer() {
+  need();
+  return run(sb.rpc('claim_site_offer'));
+}
 export async function offerOpen(token) {
   need();
   return run(sb.rpc('offer_open', { p_token: token || null }));

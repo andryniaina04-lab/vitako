@@ -113,7 +113,7 @@ async function loadUser() {
   S.trainer = profile?.role === 'trainer' ? await api.getMyTrainer(id).catch(() => null) : null;
   S.updates = profile && !profile.is_admin ? await api.myCourseUpdates().catch(() => []) : [];
   if (profile?.is_admin) S.admin = await api.adminCounts().catch(() => S.admin);
-  S.offer = profile && !profile.is_admin ? await api.myOffer().catch(() => null) : null;
+  S.offer = profile && !profile.is_admin ? await api.claimSiteOffer().catch(() => null) : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -349,6 +349,11 @@ function notifications() {
     const tr = S.admin.trainers || 0;
     if (tr) out.push({ id: 'adm-tr-' + tr + '-' + Date.now(), tone: 'gold', sticky: true, title: `${tr} ${plural(tr, 'profil formateur', 'profils formateurs')} à valider`, text: 'Profils complétés ou corrigés par des formateurs déjà abonnés.', href: '#/admin/formateurs' });
     return out;
+  }
+  if (offerOn() && !hasAccess()) {
+    const left = Math.max(1, Math.ceil((new Date(S.offer.deadline) - Date.now()) / DAY));
+    out.push({ id: 'offer-' + S.offer.campaign_id, tone: 'gold', title: `Ton offre : ${ar(S.offer.price)} au lieu de ${ar(S.price)}`,
+      text: `30 jours d'accès à toutes les formations. Plus que ${left} jour${left > 1 ? 's' : ''} pour en profiter.`, href: '#/offre' });
   }
   for (const pay of S.payments.slice(0, 5)) {
     if (pay.status === 'pending') out.push({ id: 'pay-p-' + pay.id, tone: 'gold', title: 'Paiement en cours de vérification', text: `Référence ${pay.reference}. Votre accès sera activé en ${CFG.validationDelay}.`, href: '#/abonnement', ts: pay.created_at });
@@ -2164,6 +2169,7 @@ async function render() {
   }
   if (token !== renderToken) return;
   app.innerHTML = html;
+  offerStrip(path);
   trackView(path);
   renderReviewSlot();
   startHeroVideo();
@@ -3127,4 +3133,19 @@ function visitsSection(vs) {
     ${vs.pages.map((p) => `<tr><td>${esc(pageLabel(p.path))}</td><td class="mono">${nf(p.views)}</td><td class="mono">${nf(p.visitors)}</td></tr>`).join('')}
   </tbody></table></div>` : ''}
   <p class="muted" style="font-size:.85rem;margin-top:8px">Mesure anonyme depuis le 23 octobre 2026 (sans adresse IP). Vos propres visites d'administrateur ne sont pas comptées.</p>`;
+}
+
+// Bandeau de l'offre personnelle sous la barre du haut (inscrits jamais abonnés, offre en cours).
+function offerStrip(path) {
+  let el = document.getElementById('offer-strip');
+  const show = offerOn() && !hasAccess() && !isAdmin() && !/^\/(offre|abonnement|admin)|\/examen$/.test(path);
+  if (!show) { el?.remove(); return; }
+  if (!el) { el = document.createElement('div'); el.id = 'offer-strip'; document.querySelector('header.top')?.after(el); }
+  const dl = S.offer.deadline;
+  const [d, h, m] = cdParts(new Date(dl) - Date.now());
+  el.className = 'offer-strip';
+  el.innerHTML = `<a href="#/offre" class="wrap os-in"><span class="os-pct">-${promoPct()} %</span>
+    <span class="os-txt"><b>${ar(S.offer.price)}</b> au lieu de <s>${ar(S.price)}</s> · toutes les formations</span>
+    <span class="os-cd cd" data-deadline="${esc(dl)}"><b data-k="d">${pad2(d)}</b>j <b data-k="h">${pad2(h)}</b>h <b data-k="m">${pad2(m)}</b>min <b data-k="s">00</b>s</span>
+    <span class="os-go">J'en profite →</span></a>`;
 }

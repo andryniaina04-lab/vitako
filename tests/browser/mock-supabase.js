@@ -252,6 +252,17 @@
     // --- Emailing et offre (version simplifiée de supabase/migrations/20261022b_emailing.sql) ---
     admin_reviews_new_count() { return { data: 0, error: null }; },
     admin_reviews_mark_seen() { return { data: null, error: null }; },
+    claim_site_offer() {
+      const p = profile(); if (!p || p.is_admin) return { data: null, error: null };
+      const c = (db.campaigns || []).filter((x) => x.offer_price && !x.parent_id && x.started_at && Date.now() < new Date(x.started_at).getTime() + x.offer_days * 864e5).pop();
+      if (c && !p.sub_end && (p.role || 'student') === 'student') {
+        db.recipients ||= [];
+        let r = db.recipients.find((x) => x.user_id === p.id && x.campaign_id === c.id);
+        if (!r) { r = { campaign_id: c.id, user_id: p.id, email: p.email, token: uuid(), status: 'sent', via: 'site', first_seen_at: null }; db.recipients.push(r); }
+        r.first_seen_at ||= now(); save();
+      }
+      return RPC.my_offer();
+    },
     my_offer() {
       if (!me()) return { data: null, error: null };
       const r = (db.recipients || []).find((x) => x.user_id === me() && x.status !== 'pending');

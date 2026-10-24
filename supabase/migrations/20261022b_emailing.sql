@@ -45,6 +45,8 @@ create table if not exists public.email_recipients (
   primary key (campaign_id, user_id)
 );
 create index if not exists email_recipients_user on public.email_recipients (user_id);
+-- via (24/10/2026) : « email » = a reçu l'e-mail ; « site » = rattaché à l'offre en se connectant au site.
+alter table public.email_recipients add column if not exists via text not null default 'email';
 create index if not exists email_recipients_status on public.email_recipients (campaign_id, status);
 
 -- Relance (23/10/2026) : une campagne peut relancer une campagne avec offre (parent_id). Elle part aux
@@ -250,7 +252,7 @@ language sql stable security definer set search_path = public as $$
   select p.id, r.email, p.full_name
   from public.email_recipients r
   join public.profiles p on p.id = r.user_id
-  where r.campaign_id = p_parent and r.status = 'sent' and r.first_seen_at is null
+  where r.campaign_id = p_parent and r.status = 'sent' and r.via = 'email' and r.first_seen_at is null
     and not p.email_optout and public.never_subscribed(p.id)
     and not exists (select 1 from public.payments x where x.user_id = p.id and x.status = 'pending');
 $$;
@@ -392,10 +394,11 @@ begin
   if not public.is_admin() then raise exception 'forbidden'; end if;
   return coalesce((
     select jsonb_agg(to_jsonb(c) || jsonb_build_object(
-      'recipients', (select count(*) from public.email_recipients r where r.campaign_id = c.id),
+      'recipients', (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.via = 'email'),
+      'site_users', (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.via = 'site'),
       'pending',    (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'pending'),
       'queued',     (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'queued'),
-      'sent',       (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'sent'),
+      'sent',       (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'sent' and r.via = 'email'),
       'failed',     (select count(*) from public.email_recipients r where r.campaign_id = c.id and r.status = 'failed'),
       'last_error', (select r.error from public.email_recipients r where r.campaign_id = c.id and r.status = 'failed' limit 1),
       'clicked',    case when c.parent_id is null
@@ -614,6 +617,36 @@ begin
   return v_n;
 end $$;
 
+-- Offre sur le site (24/10/2026) : un inscrit jamais abonné qui se connecte pendant une offre en cours
+-- y est rattaché (même prix, même compte à rebours personnel), même s'il n'a pas reçu l'e-mail.
+create or replace function public.claim_site_offer()
+returns jsonb language plpgsql security definer set search_path = public as $$
+declare v_uid uuid := auth.uid(); c public.email_campaigns;
+begin
+  if v_uid is null then return null; end if;
+  if exists (select 1 from public.profiles where id = v_uid and role = 'student' and not is_admin) and public.never_subscribed(v_uid)
+     and not exists (select 1 from public.email_recipients r join public.email_campaigns k on k.id = r.campaign_id
+                     where r.user_id = v_uid and k.offer_price is not null and k.started_at is not null) then
+    select * into c from public.email_campaigns
+     where offer_price is not null and parent_id is null and started_at is not null
+       and now() < started_at + make_interval(days => offer_days)
+     order by started_at desc limit 1;
+    if c.id is not null then
+      insert into public.email_recipients (campaign_id, user_id, email, status, via)
+        select c.id, v_uid, coalesce(email, ''), 'sent', 'site' from public.profiles where id = v_uid
+        on conflict do nothing;
+    end if;
+  end if;
+  -- L'offre est affichée sur le site (bandeau, cloche) : le compte à rebours personnel démarre maintenant.
+  if public.never_subscribed(v_uid) and exists (select 1 from public.profiles where id = v_uid and not is_admin) then
+    update public.email_recipients r set first_seen_at = now()
+      from public.email_campaigns k
+     where k.id = r.campaign_id and r.user_id = v_uid and r.first_seen_at is null and r.status in ('queued', 'sent')
+       and k.offer_price is not null and k.started_at is not null and now() < k.started_at + make_interval(days => k.offer_days);
+  end if;
+  return public.my_offer();
+end $$;
+
 -- ---------------------------------------------------------------------
 -- Droits
 -- ---------------------------------------------------------------------
@@ -643,6 +676,8 @@ revoke execute on function public.admin_campaign_start(uuid)                  fr
 revoke execute on function public.admin_campaign_send_batch(uuid)             from public, anon;
 revoke execute on function public.admin_campaign_retry(uuid)                  from public, anon;
 grant  execute on function public.my_offer()                                  to authenticated;
+revoke execute on function public.claim_site_offer()                          from public, anon;
+grant  execute on function public.claim_site_offer()                          to authenticated;
 grant  execute on function public.offer_open(uuid)                            to anon, authenticated;
 grant  execute on function public.email_unsubscribe(uuid)                     to anon, authenticated;
 grant  execute on function public.set_email_optout(boolean)                   to authenticated;
